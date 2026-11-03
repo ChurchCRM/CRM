@@ -2415,14 +2415,6 @@ msgid "Enable non-deductible payments"
 msgstr "Aktivizoni pagesat jo të zbritshme"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Margjina e majtë (1 = 1/100 inç)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Trashësia e vijës (1 = 1/100 inç)"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Teksti për rreshtin e parë të raportit tatimor. Datat do të shtohen në fund të këtij rreshti."
 
@@ -4868,14 +4860,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Shuma minimale që një fjalëkalim i ri duhet të ndryshojë nga i vjetri (# i karaktereve të ndryshuara)\n"
 "Vendos zero për të çaktivizuar këtë veçori"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Mënyra e trajtimit të PDF.\n"
-"1 = Dialogu i ruajtjes së skedarit\n"
-"2 = Hap në dritaren aktuale të shfletuesit"
 
 #: 
 msgid "Verify People"
@@ -16175,10 +16159,6 @@ msgid "Anonymous Telemetry"
 msgstr "Telemetri Anonime"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Niveli i telemetrisë anonime. Kontrollon sa të dhëna diagnostike anonime ndahen me ekipin e ChurchCRM. Asnjë emër kishe, të dhëna anëtarësh apo informacion personal nuk dërgohet kurrë."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Jeni i sigurt që dëshironi të fshini përgjithmonë këtë regjistrim pagese?"
 
@@ -16237,10 +16217,6 @@ msgstr "Numëro instalimet unike"
 #: 
 msgid "Data"
 msgstr "Të dhëna"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Të dhënat përpunohen nga PostHog në infrastrukturën e BE-së."
 
 #: 
 msgid "Date is required"
@@ -16475,10 +16451,6 @@ msgid "Sending to"
 msgstr "Po dërgon tek"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Ndani statistika anonime të përdorimit me ekipin e ChurchCRM që të dimë cilat veçori dhe gjuhë të japim përparësi. Asnjë emër kishe, të dhëna anëtarësh apo informacion personal nuk dërgohet kurrë."
-
-#: 
 msgid "Test email sent to"
 msgstr "Email testues u dërgua tek"
 
@@ -16523,10 +16495,6 @@ msgid "What is sent"
 msgstr "Çfarë dërgohet"
 
 #: 
-msgid "What we collect"
-msgstr "Çfarë mbledhim"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Ju urojmë një ditëlindje të mrekullueshme %d vjeçare!"
 
@@ -16549,10 +16517,6 @@ msgstr "vetëm i plotë"
 #: 
 msgid "is thinking of you today."
 msgstr "po mendon për ju sot."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "rrugët e faqeve, lokali aktiv, versioni CRM, versioni PHP, familja OS dhe një ID instalimi e rastësishme. Asgjë tjetër. Të dhënat ruhen në BE."
 
 #: 
 msgid "% Paid"

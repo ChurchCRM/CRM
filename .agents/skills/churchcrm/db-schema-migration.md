@@ -15,6 +15,7 @@ Process:
 2. Run the migration on a staging copy and smoke-test the app
 3. Back up the production DB before applying; keep a rollback script and a snapshot
 4. Apply in a maintenance window and watch for errors
+5. For every PR that adds or changes a file under `src/mysql/upgrade/`, report before-and-after per-statement timings on the repeatable large-dataset upgrade benchmark. Include the dataset sizes and database version, and identify lock duration for hot tables.
 
 Backward compatibility: add nullable columns or new tables first, populate them (background job if large), then tighten to non-null in a later step.
 
@@ -101,6 +102,15 @@ npm run build:php:validate:orm
 ```
 
 `scripts/validate-orm-base-classes.js` passes silently when `Base/` is absent, so run `composer install` first.
+
+## How the Upgrader Runs a Script
+
+The web upgrader runs one `.sql` or `.php` file per HTTP request and records it in `database_upgrade_progress` (`started`, then `complete`). The version advances only after every file in the block completes. Details: `docs/development/upgrade-request-batches.md`.
+
+- A file that dies midway stays `started` and stops the run. Its statements already applied stay applied (DDL auto-commits), and the upgrader does not re-run it. An administrator repairs the database and the checkpoint, or restores a backup.
+- Write every file so that re-running it from the start is safe: guard each `ADD COLUMN` / `ALTER` with `information_schema` (below), and use `INSERT IGNORE` and `DROP ... IF EXISTS`. After a crash, an administrator can then reset the file's checkpoint and run it again safely.
+- Keep a file to one concern and list the files in order in `scripts`. A small file limits what a crash can leave half done.
+- `upgrade.json` has no retry metadata, and the upgrader does not retry or skip a `started` file by itself. Do not add either without a stuck-upgrade report on a released script (deferred under #10943). When a report arrives, split only that block's files, and give the split files the exact end state of the original for a fresh database.
 
 ## MySQL-Compatible SQL
 

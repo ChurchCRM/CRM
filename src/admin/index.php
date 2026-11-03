@@ -23,6 +23,7 @@ require __DIR__ . '/routes/api/options.php';
 require __DIR__ . '/routes/api/grades.php';
 require __DIR__ . '/routes/api/member-portal.php';
 require __DIR__ . '/routes/api/system/church-logo.php';
+require __DIR__ . '/routes/api/system/letterhead.php';
 require __DIR__ . '/routes/api/system/property-definitions.php';
 require __DIR__ . '/routes/api/system/property-types.php';
 require __DIR__ . '/routes/api/system/system-config.php';

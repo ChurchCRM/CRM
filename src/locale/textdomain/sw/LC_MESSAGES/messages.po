@@ -2414,14 +2414,6 @@ msgid "Enable non-deductible payments"
 msgstr "Washa malipo yasiyokatwa"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Pambizo la Kushoto (1 = inchi 1/100)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Unene wa Mstari (1 = inchi 1/100"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Verbage kwa mstari wa juu wa ripoti ya ushuru. Tarehe zitaongezwa hadi mwisho wa mstari huu."
 
@@ -4873,14 +4865,6 @@ msgid "Minimum amount that a new password must differ from the old one (# of cha
 "Set to zero to disable this feature"
 msgstr "Kiasi cha chini ambacho nenosiri jipya lazima litofautiane na lile la zamani (# ya herufi zimebadilishwa)\n"
 "Weka hadi sufuri ili kuzima kipengele hiki"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Hali ya kushughulikia PDF.\n"
-"1 = Hifadhi kidirisha cha faili\n"
-"2 = Fungua katika dirisha la kivinjari la sasa"
 
 #: 
 msgid "Verify People"
@@ -16180,10 +16164,6 @@ msgid "Anonymous Telemetry"
 msgstr "Telemetry Isiyojulikana"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Kiwango cha telemetry isiyojulikana. Inadhibiti kiasi gani cha data ya uchunzuji isiyojulikana inayoshirikiwa na timu ya ChurchCRM. Hakuna majina ya kanisa, data ya wanachama, au taarifa za kibinafsi zinazotumwa."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Je, una uhakika unataka kufuta kabisa rekodi hii ya malipo?"
 
@@ -16242,10 +16222,6 @@ msgstr "Hesabu usakinishaji wa kipekee"
 #: 
 msgid "Data"
 msgstr "Data"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Data inashughulikiwa na PostHog kwenye miundombinu ya EU."
 
 #: 
 msgid "Date is required"
@@ -16480,10 +16456,6 @@ msgid "Sending to"
 msgstr "Inatumwa kwa"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Shiriki takwimu za matumizi zisizojulikana na timu ya ChurchCRM ili tujue vipengele na lugha zipi za kutanguliza. Hakuna majina ya kanisa, data ya wanachama, au taarifa za kibinafsi zinazotumwa."
-
-#: 
 msgid "Test email sent to"
 msgstr "Barua pepe ya majaribio imetumwa kwa"
 
@@ -16528,10 +16500,6 @@ msgid "What is sent"
 msgstr "Kinachotumwa"
 
 #: 
-msgid "What we collect"
-msgstr "Tunachokusanya"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Tunakutakia siku njema ya kuzaliwa ya miaka %d!"
 
@@ -16554,10 +16522,6 @@ msgstr "kamili peke yake"
 #: 
 msgid "is thinking of you today."
 msgstr "anakufikiria leo."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "njia za ukurasa, lugha inayotumika, toleo la CRM, toleo la PHP, familia ya OS, na kitambulisho cha usakinishaji cha nasibu. Hakuna kingine. Data inahifadhiwa EU."
 
 #: 
 msgid "% Paid"

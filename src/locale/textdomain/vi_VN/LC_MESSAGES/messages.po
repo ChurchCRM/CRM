@@ -2427,14 +2427,6 @@ msgid "Enable non-deductible payments"
 msgstr "Cho phép thanh toán không khấu trừ"
 
 #: 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr "Lề trái (1 = 1/100 inch)"
-
-#: 
-msgid "Line Thickness (1 = 1/100th inch"
-msgstr "Độ dày dòng (1 = 1/100 inch"
-
-#: 
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr "Rác cho dòng trên cùng của báo cáo thuế. Ngày sẽ được thêm vào cuối dòng này."
 
@@ -4885,12 +4877,6 @@ msgstr "Độ dài thời gian chờ của phiên tính bằng giây. Đặt th�
 msgid "Minimum amount that a new password must differ from the old one (# of characters changed)\n"
 "Set to zero to disable this feature"
 msgstr "Số tiền tối thiểu mà mật khẩu mới phải khác mật khẩu cũ (# ký tự đã thay đổi).  Đặt thành 0 để tắt tính năng này"
-
-#: 
-msgid "PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
-msgstr "Thông tin người không có sẵn được kế thừa từ gia đình được chỉ định để hiển thị?"
 
 #: 
 msgid "Verify People"
@@ -16178,10 +16164,6 @@ msgid "Anonymous Telemetry"
 msgstr "Dữ liệu đo lường ẩn danh"
 
 #: 
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
-msgstr "Mức độ đo lường ẩn danh. Kiểm soát lượng dữ liệu chẩn đoán ẩn danh được chia sẻ với nhóm ChurchCRM. Không bao giờ gửi tên hội thánh, dữ liệu thành viên hay thông tin cá nhân."
-
-#: 
 msgid "Are you sure you want to permanently delete this payment record?"
 msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn bản ghi dâng hiến này không?"
 
@@ -16240,10 +16222,6 @@ msgstr "Đếm số lượt cài đặt duy nhất"
 #: 
 msgid "Data"
 msgstr "Dữ liệu"
-
-#: 
-msgid "Data is processed by PostHog on EU infrastructure."
-msgstr "Dữ liệu được xử lý bởi PostHog trên cơ sở hạ tầng EU."
 
 #: 
 msgid "Date is required"
@@ -16478,10 +16456,6 @@ msgid "Sending to"
 msgstr "Đang gửi đến"
 
 #: 
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
-msgstr "Chia sẻ thống kê sử dụng ẩn danh với nhóm ChurchCRM để chúng tôi biết những tính năng và ngôn ngữ nào cần ưu tiên. Không bao giờ gửi tên hội thánh, dữ liệu thành viên hay thông tin cá nhân."
-
-#: 
 msgid "Test email sent to"
 msgstr "Email thử nghiệm đã gửi đến"
 
@@ -16526,10 +16500,6 @@ msgid "What is sent"
 msgstr "Những gì được gửi"
 
 #: 
-msgid "What we collect"
-msgstr "Những gì chúng tôi thu thập"
-
-#: 
 msgid "Wishing you a wonderful %d year birthday!"
 msgstr "Chúc bạn một sinh nhật tuyệt vời %d tuổi!"
 
@@ -16552,10 +16522,6 @@ msgstr "chỉ đầy đủ"
 #: 
 msgid "is thinking of you today."
 msgstr "đang nghĩ đến bạn hôm nay."
-
-#: 
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
-msgstr "đường dẫn trang, ngôn ngữ đang dùng, phiên bản CRM, phiên bản PHP, hệ điều hành và một ID cài đặt ngẫu nhiên. Không có gì khác. Dữ liệu được lưu trữ tại EU."
 
 #: 
 msgid "% Paid"

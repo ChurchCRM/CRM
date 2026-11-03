@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Utils;
 
+use ChurchCRM\Exceptions\ImageStorageException;
 use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\Service\SystemService;
 
@@ -359,18 +360,18 @@ class ImageSupportUtils
             if ($tempPath !== false) {
                 @unlink($tempPath);
             }
-            throw new \Exception('Failed to create a temporary file in the image directory');
+            throw new ImageStorageException('Failed to create a temporary file in the image directory');
         }
 
         $replaced = false;
         try {
             if (!imagepng($image, $tempPath)) {
-                throw new \Exception('Failed to encode the image as PNG');
+                throw new ImageStorageException('Failed to encode the image as PNG');
             }
 
             clearstatcache(true, $tempPath);
             if ((int) @filesize($tempPath) === 0) {
-                throw new \Exception('The encoded image is empty');
+                throw new ImageStorageException('The encoded image is empty');
             }
 
             // tempnam() creates the file 0600; give it the permissions a plain
@@ -378,7 +379,7 @@ class ImageSupportUtils
             @chmod($tempPath, 0644);
 
             if (!@rename($tempPath, $targetPath)) {
-                throw new \Exception('Failed to replace the stored image');
+                throw new ImageStorageException('Failed to replace the stored image');
             }
             $replaced = true;
         } finally {

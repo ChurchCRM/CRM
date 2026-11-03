@@ -214,9 +214,14 @@ function cleanupFixtures() {
     dbOk(`DELETE FROM events_event WHERE event_title LIKE ?`, [`${EVENT_TITLE}%`]);
 }
 
-/** Put the member back on one PENDING Door assignment and nothing else. */
+function setOccurrenceStatus(status) {
+    adminApi("POST", `${VOLUNTEER_URL}/occurrences/${occurrenceId}/status`, { status }, 200);
+}
+
+/** Put the member back on one PENDING Door assignment, on a scheduled date, and nothing else. */
 function seedPendingDoorAssignment() {
     clearWorkflowRows();
+    setOccurrenceStatus("scheduled");
     adminApi(
         "POST",
         `${VOLUNTEER_URL}/occurrences/${occurrenceId}/assignments`,
@@ -522,6 +527,37 @@ describe("Member Portal (MP6, #9867) — volunteering inside the portal", () => 
                     expect(resp.body.members.map((m) => m.personId)).to.include(PERSON_MEMBER);
                 },
             );
+        });
+
+        describe("Member Portal — a cancelled date (#10388)", () => {
+            beforeEach(() => {
+                setOccurrenceStatus("cancelled");
+                freshMemberLogin();
+            });
+
+            it("marks the schedule card cancelled and offers no reply", () => {
+                cy.visit(SCHEDULE_URL);
+
+                cy.contains(".volunteer-assignment-card", `${PREFIX} Door`, {
+                    timeout: 20000,
+                }).within(() => {
+                    cy.get(".volunteer-card-status").should("have.text", "Cancelled");
+                    cy.get(".volunteer-card-cancelled")
+                        .should("be.visible")
+                        .and("contain", "Nothing more is needed from you.");
+                    cy.get(".volunteer-accept").should("not.exist");
+                    cy.get(".volunteer-decline").should("not.exist");
+                    cy.get(".volunteer-find-sub").should("not.exist");
+                });
+            });
+
+            it("leaves the cancelled date off the home page's volunteering card", () => {
+                cy.visit("/portal");
+
+                cy.get("#portal-volunteering-loading", { timeout: 20000 }).should("not.be.visible");
+                cy.get("#portal-volunteering-next").should("not.contain", `${PREFIX} Door`);
+                cy.get("#portal-volunteering-pending").should("not.be.visible");
+            });
         });
     });
 });

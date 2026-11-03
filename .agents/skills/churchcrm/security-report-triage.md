@@ -36,6 +36,8 @@ public place.
    findings are routinely filed as "critical"; state what the precondition
    reduces the impact to.
 
+   Check the deployment too: an issue that exists only in an example or unsupported setup (for example `docker/examples/`) is rated for the people who run it, usually as a hardening fix or docs note, not a product vulnerability.
+
 3. **Is there a reproducible proof of concept?** A concrete request, payload
    and observed result against a stated version, or prose about what "could"
    happen? If a PoC is given, reproduce it only in the local Docker dev stack

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-02 13:27+0000\n"
+"POT-Creation-Date: 2026-11-03 15:39+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1627,9 +1627,6 @@ msgid "Anonymous"
 msgstr ""
 
 msgid "Anonymous Telemetry"
-msgstr ""
-
-msgid "Anonymous telemetry level. Controls how much anonymous diagnostic data is shared with the ChurchCRM team. No church names, member data, or personal information is ever sent."
 msgstr ""
 
 msgid "Another ministry"
@@ -3262,6 +3259,9 @@ msgstr ""
 msgid "Church Name"
 msgstr ""
 
+msgid "Church Tax ID (EIN)"
+msgstr ""
+
 msgid "Church calendar"
 msgstr ""
 
@@ -3470,6 +3470,9 @@ msgid "Closest"
 msgstr ""
 
 msgid "Closing"
+msgstr ""
+
+msgid "Closing Line"
 msgstr ""
 
 msgid "Closing line"
@@ -3764,6 +3767,9 @@ msgid "Contributor"
 msgstr ""
 
 msgid "Contributors"
+msgstr ""
+
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
 msgstr ""
 
 msgid "Convert All"
@@ -4264,9 +4270,6 @@ msgid "Data"
 msgstr ""
 
 msgid "Data Quality"
-msgstr ""
-
-msgid "Data is processed by PostHog on EU infrastructure."
 msgstr ""
 
 msgid "Database"
@@ -4837,6 +4840,9 @@ msgid "Details"
 msgstr ""
 
 msgid "Developer mode"
+msgstr ""
+
+msgid "Diagnose failed installs and database upgrades"
 msgstr ""
 
 msgid "Did Not Attend"
@@ -6399,6 +6405,9 @@ msgstr ""
 msgid "Failed to remove group"
 msgstr ""
 
+msgid "Failed to remove letterhead"
+msgstr ""
+
 msgid "Failed to rename category"
 msgstr ""
 
@@ -6456,6 +6465,9 @@ msgstr ""
 msgid "Failed to set default role. Please try again."
 msgstr ""
 
+msgid "Failed to store the letterhead"
+msgstr ""
+
 msgid "Failed to uninstall plugin"
 msgstr ""
 
@@ -6499,6 +6511,9 @@ msgid "Failed to upload church logo"
 msgstr ""
 
 msgid "Failed to upload family photo"
+msgstr ""
+
+msgid "Failed to upload letterhead"
 msgstr ""
 
 msgid "Failed to upload person photo"
@@ -7594,6 +7609,9 @@ msgstr ""
 msgid "Greeter Message 2"
 msgstr ""
 
+msgid "Greeting"
+msgstr ""
+
 #. Context: countries
 msgid "Grenada"
 msgstr ""
@@ -8313,6 +8331,9 @@ msgstr ""
 msgid "Install a TLS/SSL certificate for secure connections"
 msgstr ""
 
+msgid "Install and upgrade failure details"
+msgstr ""
+
 msgid "Install failed"
 msgstr ""
 
@@ -8921,9 +8942,6 @@ msgstr ""
 msgid "Lebanon (‫لبنان‬‎)"
 msgstr ""
 
-msgid "Left Margin (1 = 1/100th inch)"
-msgstr ""
-
 msgid "Legend"
 msgstr ""
 
@@ -8950,6 +8968,12 @@ msgid "Let's restore your previous ChurchCRM data."
 msgstr ""
 
 msgid "Lets that ministry's coordinators schedule volunteers for this event — and edit the event itself."
+msgstr ""
+
+msgid "Letter greeting and signature"
+msgstr ""
+
+msgid "Letterhead"
 msgstr ""
 
 msgid "Letters"
@@ -8983,9 +9007,6 @@ msgid "Light"
 msgstr ""
 
 msgid "Lime"
-msgstr ""
-
-msgid "Line Thickness (1 = 1/100th inch"
 msgstr ""
 
 msgid "Link"
@@ -11275,6 +11296,9 @@ msgstr ""
 msgid "Open in New Tab"
 msgstr ""
 
+msgid "Open in browser window"
+msgstr ""
+
 msgid "Open in calendar app"
 msgstr ""
 
@@ -11327,6 +11351,9 @@ msgstr ""
 msgid "OpenLP is free, open-source presentation software designed for churches. This plugin allows ChurchCRM to send notifications and alerts directly to your OpenLP display."
 msgstr ""
 
+msgid "Opening Line"
+msgstr ""
+
 msgid "Opening a calendar to ministries requires Add Events permission"
 msgstr ""
 
@@ -11361,6 +11388,12 @@ msgid "Optional family giving requirement"
 msgstr ""
 
 msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
+msgstr ""
+
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr ""
+
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
 msgstr ""
 
 msgid "Optional · up to {{max}} welcome"
@@ -11455,13 +11488,16 @@ msgstr ""
 msgid "Owe"
 msgstr ""
 
+msgid "PDF Handling"
+msgstr ""
+
+msgid "PDF Output"
+msgstr ""
+
 msgid "PDF Temporary Directory"
 msgstr ""
 
-msgid ""
-"PDF handling mode.\n"
-"1 = Save File dialog\n"
-"2 = Open in current browser window"
+msgid "PDF handling mode"
 msgstr ""
 
 #, php-format
@@ -11495,6 +11531,9 @@ msgid "PHPMailer SMTP session"
 msgstr ""
 
 msgid "PNG, JPG, GIF or WebP. A wide banner of roughly 3.5:1 (for example 700x200) works best; transparent PNG preferred."
+msgstr ""
+
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
 msgstr ""
 
 msgid "Paddle"
@@ -12450,6 +12489,9 @@ msgstr ""
 msgid "Printable directory of all people, grouped by family"
 msgstr ""
 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr ""
+
 msgid "Prioritise translations"
 msgstr ""
 
@@ -12609,6 +12651,9 @@ msgid "Quarantined"
 msgstr ""
 
 msgid "Quarterly"
+msgstr ""
+
+msgid "Questions Line"
 msgstr ""
 
 msgid "Queue"
@@ -12948,6 +12993,9 @@ msgid "Remove from Group"
 msgstr ""
 
 msgid "Remove the class from them"
+msgstr ""
+
+msgid "Remove the letterhead? Letters will print the church name and address."
 msgstr ""
 
 msgid "Remove the team leader"
@@ -13466,6 +13514,9 @@ msgid "Save Email Settings"
 msgstr ""
 
 msgid "Save Event Type"
+msgstr ""
+
+msgid "Save File dialog"
 msgstr ""
 
 msgid "Save Localization Settings"
@@ -14089,6 +14140,9 @@ msgstr ""
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr ""
 
+msgid "Set the letterhead that PDF letters print"
+msgstr ""
+
 msgid "Set true to disable entering Friend Date in Person Editor.  Set false to enable entering Friend Date in Person Editor."
 msgstr ""
 
@@ -14166,9 +14220,6 @@ msgid "Seychelles"
 msgstr ""
 
 msgid "Share"
-msgstr ""
-
-msgid "Share anonymous usage statistics with the ChurchCRM team so we know which features and languages to prioritise. No church names, member data, or personal information is ever sent."
 msgstr ""
 
 msgid "Share this URL with family members to verify their information"
@@ -14318,6 +14369,9 @@ msgid "Signed in"
 msgstr ""
 
 msgid "Signed up"
+msgstr ""
+
+msgid "Signer"
 msgstr ""
 
 msgid "Since"
@@ -14583,6 +14637,12 @@ msgid "State (Other)"
 msgstr ""
 
 msgid "State is required."
+msgstr ""
+
+msgid "Statement Settings"
+msgstr ""
+
+msgid "Statement Wording"
 msgstr ""
 
 msgid "Statistics"
@@ -14927,6 +14987,9 @@ msgstr ""
 msgid "Tax ID (EIN)"
 msgstr ""
 
+msgid "Tax Information"
+msgstr ""
+
 msgid "Tax Report Verbiage"
 msgstr ""
 
@@ -14989,6 +15052,9 @@ msgid "Teams, positions and the people who fill them"
 msgstr ""
 
 msgid "Technical Details"
+msgstr ""
+
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
 msgstr ""
 
 msgid "Tell us about your family"
@@ -15870,6 +15936,9 @@ msgid "This assignment is no longer active"
 msgstr ""
 
 msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
+msgstr ""
+
+msgid "This date was cancelled. Nothing more is needed from you."
 msgstr ""
 
 msgid "This email batch was queued by another user"
@@ -17063,6 +17132,12 @@ msgstr ""
 msgid "Using default ChurchCRM logo"
 msgstr ""
 
+msgid "Using the church name and address"
+msgstr ""
+
+msgid "Using the letterhead path set in System Settings"
+msgstr ""
+
 #. Context: countries
 msgid "Uzbekistan (Oʻzbekiston)"
 msgstr ""
@@ -17731,9 +17806,6 @@ msgstr ""
 msgid "What this plugin does"
 msgstr ""
 
-msgid "What we collect"
-msgstr ""
-
 msgid "What went wrong? What did you expect to happen?"
 msgstr ""
 
@@ -17874,6 +17946,9 @@ msgid "Without a scheduler these jobs only run when somebody loads a page, so a 
 msgstr ""
 
 msgid "Witness"
+msgstr ""
+
+msgid "Wording, tax ID and PDF handling for giving statements"
 msgstr ""
 
 msgid "Work"
@@ -18341,6 +18416,9 @@ msgstr ""
 msgid "already staffed by this team"
 msgstr ""
 
+msgid "always sent"
+msgstr ""
+
 msgid "am / pm"
 msgstr ""
 
@@ -18650,9 +18728,6 @@ msgid "our church"
 msgstr ""
 
 msgid "page"
-msgstr ""
-
-msgid "page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Nothing else. Data is stored in the EU."
 msgstr ""
 
 msgid "past"

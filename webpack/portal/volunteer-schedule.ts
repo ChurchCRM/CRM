@@ -76,6 +76,10 @@ function modal(): { show(): void; hide(): void } | null {
 
 /** The badge §5.6 puts on the right of every card, in the volunteer's own words. */
 function statusBadge(assignment: VolunteerMyAssignment): { label: string; className: string } {
+  if (assignment.occurrenceStatus === "cancelled") {
+    return { label: i18next.t("Cancelled"), className: "bg-red-lt text-red" };
+  }
+
   if (assignment.pendingSwapId !== null) {
     return {
       label: assignment.pendingSwapPersonName
@@ -103,7 +107,8 @@ function statusBadge(assignment: VolunteerMyAssignment): { label: string; classN
 
 function cardHtml(assignment: VolunteerMyAssignment): string {
   const badge = statusBadge(assignment);
-  const waiting = assignment.pendingSwapId !== null;
+  const cancelled = assignment.occurrenceStatus === "cancelled";
+  const waiting = !cancelled && assignment.pendingSwapId !== null;
   const buttons: string[] = [];
 
   if (assignment.canRespond && assignment.status !== "accepted") {
@@ -135,6 +140,10 @@ function cardHtml(assignment: VolunteerMyAssignment): string {
     ? `<div class="mt-2 small text-body-secondary"><i class="fa-solid fa-hourglass-half me-1"></i>` +
       `${escapeHtml(i18next.t("Waiting for your coordinator to confirm."))}</div>`
     : "";
+  const cancelledNote = cancelled
+    ? `<div class="mt-2 small text-body-secondary volunteer-card-cancelled"><i class="fa-solid fa-ban me-1"></i>` +
+      `${escapeHtml(i18next.t("This date was cancelled. Nothing more is needed from you."))}</div>`
+    : "";
 
   return `
     <div class="card mb-3 volunteer-assignment-card" data-assignment-id="${assignment.id}">
@@ -150,6 +159,7 @@ function cardHtml(assignment: VolunteerMyAssignment): string {
           </div>
           <span class="badge volunteer-card-status ${badge.className}">${escapeHtml(badge.label)}</span>
         </div>
+        ${cancelledNote}
         ${waitingNote}
         ${buttons.length > 0 ? `<div class="mt-3 d-grid gap-2 d-sm-flex volunteer-card-actions">${buttons.join("")}</div>` : ""}
       </div>

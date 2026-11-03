@@ -195,8 +195,13 @@ class SQLUtils
         if (preg_match("/DEFINER\s*=.*@.*/", $sql)) {
             return;
         }
-        if (!$query = $mysqli->query($sql)) {
-            throw new \Exception("Cannot execute request to the database {$sql}: " . $mysqli->error);
+        try {
+            $query = $mysqli->query($sql);
+        } catch (\PDOException $e) {
+            throw new SQLImportException($sql, $e->getMessage(), $e);
+        }
+        if (!$query) {
+            throw new SQLImportException($sql, (string) $mysqli->error);
         }
     }
 }
