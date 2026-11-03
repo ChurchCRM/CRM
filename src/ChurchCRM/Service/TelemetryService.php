@@ -31,7 +31,7 @@ class TelemetryService
             return 'test';
         }
 
-        return in_array($storedProfile, ['production', 'demo', 'seed', 'test'], true) ? $storedProfile : 'production';
+        return in_array($storedProfile, ['production', 'demo', 'test'], true) ? $storedProfile : 'production';
     }
 
     public static function installProfile(): string
@@ -279,7 +279,7 @@ class TelemetryService
      */
     private static function capture(string $event, array $properties, ?string $distinctId = null): bool
     {
-        if (in_array(self::installProfile(), ['seed', 'test'], true)) {
+        if (in_array(self::installProfile(), ['test'], true)) {
             return true;
         }
 

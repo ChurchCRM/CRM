@@ -141,7 +141,7 @@ INSERT INTO `calendars` (`calendar_id`, `name`, `accesstoken`, `foregroundColor`
 (6,'Youth Ministry',NULL,'FFFFFF','795548',NULL);
 
 INSERT INTO `config_cfg` (`cfg_name`, `cfg_value`) VALUES ('bAllowPrereleaseUpgrade',''),
-('sInstallDataProfile','seed'),
+('sInstallDataProfile','test'),
 ('bEnableExternalCalendarAPI',''),
 ('bEnableNonDeductible',''),
 ('bEnableSelfRegistration','1'),

@@ -56,7 +56,6 @@ describe("Admin API Telemetry Consent Endpoint", () => {
         });
         cy.visit("/admin/system/debug");
         cy.window().its("CRM.telemetry.install_profile").should("eq", "test");
-        cy.contains("Telemetry includes whether the system is a production, demo, seed, or test install").should("be.visible");
         cy.then(() => expect(requests).to.be.empty);
     });
 

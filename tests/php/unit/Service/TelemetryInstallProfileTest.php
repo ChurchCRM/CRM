@@ -24,7 +24,7 @@ putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY');
 putenv('PHP_TEST_DISPOSABLE_DB');
 SystemURLs::init('', [], APP_ROOT);
 
-foreach (['' => 'production', 'invalid' => 'production', 'production' => 'production', 'demo' => 'demo', 'seed' => 'seed', 'test' => 'test'] as $stored => $expected) {
+foreach (['' => 'production', 'invalid' => 'production', 'production' => 'production', 'demo' => 'demo', 'test' => 'test', 'test' => 'test'] as $stored => $expected) {
     Assert::same($expected, TelemetryService::resolveInstallProfile($stored, false));
     Assert::same('test', TelemetryService::resolveInstallProfile($stored, true));
 }
@@ -38,7 +38,7 @@ $configs = new \ReflectionProperty(SystemConfig::class, 'configs');
 $baseProperties = new \ReflectionMethod(TelemetryService::class, 'baseProperties');
 $capture = new \ReflectionMethod(TelemetryService::class, 'capture');
 
-foreach (['production', 'demo', 'seed', 'test'] as $profile) {
+foreach (['production', 'demo', 'test'] as $profile) {
     $configs->setValue(null, [
         'sLanguage' => $value('en_US'),
         'sInstallDataProfile' => $value($profile),
@@ -48,7 +48,7 @@ foreach (['production', 'demo', 'seed', 'test'] as $profile) {
     Assert::same($profile, TelemetryService::installProfile());
     Assert::same($profile, $baseProperties->invoke(null)['install_profile']);
     $before = $GLOBALS['telemetryTransportCalls'];
-    $suppressed = in_array($profile, ['seed', 'test'], true);
+    $suppressed = in_array($profile, ['test'], true);
     Assert::same($suppressed, $capture->invoke(null, 'install_observed', $baseProperties->invoke(null)));
     Assert::same($suppressed, $capture->invoke(null, 'upgrade_completed', $baseProperties->invoke(null)));
     TelemetryService::capturePageView('/people/person');
@@ -79,6 +79,6 @@ $configs->setValue(null, ['sInstallDataProfile' => new class {
 Assert::same('production', TelemetryService::installProfile());
 
 $seed = file_get_contents(dirname(APP_ROOT) . '/cypress/data/seed.sql');
-Assert::contains("('sInstallDataProfile','seed')", $seed);
+Assert::contains("('sInstallDataProfile','test')", $seed);
 $demo = file_get_contents(APP_ROOT . '/ChurchCRM/Service/DemoDataService.php');
 Assert::contains("\$this->importSystemConfig(\$force);\n            SystemConfig::setValue('sInstallDataProfile', 'demo');", $demo);
