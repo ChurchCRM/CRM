@@ -23,6 +23,11 @@ final class PersonDeletionService
 {
     public static function assertCanDelete(Person $person, ?ConnectionInterface $connection = null): void
     {
+        $blockedReason = $person->getLoginDeletionBlockedReason();
+        if ($blockedReason !== null) {
+            throw new PersonDeletionBlockedException($blockedReason);
+        }
+
         $personId = (int) $person->getId();
         $categories = [];
 

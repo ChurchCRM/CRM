@@ -58,7 +58,7 @@ The core plugin tree registers `PERSON_DELETED` only in MailChimp. Its handler u
 The audited person deletion callers are:
 
 1. `DELETE /api/person/{personId}` -> `Person::delete()` -> `Person::preDelete()`.
-2. `DELETE /api/family/{familyId}?deleteMembers=true` -> preflight each `Person` with `PersonDeletionService::assertCanDelete()` before family notes/properties or member rows are touched, then call `delete()` on each loaded `Person`, which runs `Person::preDelete()`.
+2. `DELETE /api/family/{familyId}?deleteMembers=true` -> preflight each `Person` with `PersonDeletionService::assertCanDelete()` before family notes/properties or member rows are touched, then delete the loaded collection. Perpl's collection calls each person's `delete()` within a transaction, running `Person::preDelete()` for every member. Both preflight and model deletion use the same service for login safeguards and history checks.
 
 Repository search of production `src/` finds no raw SQL `DELETE FROM person_per` or `DELETE FROM family_fam`, no `PersonQuery` / `FamilyQuery` bulk delete, and only these model delete callers. The `DELETE FROM person2group2role_p2g2r` and `DELETE FROM groupprop_<id>` in `GroupService` remove current group relationships only; they cannot remove a person or family row. Cypress fixture cleanup may use direct SQL for test activity rows, but deletes test people and families through these same API/model paths.
 

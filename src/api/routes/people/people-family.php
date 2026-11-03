@@ -535,16 +535,12 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             $membersToDelete = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
                 ->filterByFamId($familyId)
                 ->find();
-            foreach ($membersToDelete as $member) {
-                $blockedReason = $member->getLoginDeletionBlockedReason();
-                if ($blockedReason !== null) {
-                    return SlimUtils::renderErrorJSON($response, $blockedReason, [], 403);
-                }
-                try {
+            try {
+                foreach ($membersToDelete as $member) {
                     PersonDeletionService::assertCanDelete($member);
-                } catch (PersonDeletionBlockedException $exception) {
-                    return SlimUtils::renderErrorJSON($response, $exception->getMessage(), [], 403, $exception, $request);
                 }
+            } catch (PersonDeletionBlockedException $exception) {
+                return SlimUtils::renderErrorJSON($response, $exception->getMessage(), [], 403, $exception, $request);
             }
         }
 
@@ -565,9 +561,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
 
         if ($deleteMembers) {
-            foreach ($membersToDelete as $member) {
-                $member->delete();
-            }
+            $membersToDelete->delete();
         } else {
             // Unlink members from the family
             $members = \ChurchCRM\model\ChurchCRM\PersonQuery::create()

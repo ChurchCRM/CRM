@@ -11,7 +11,6 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\SystemService;
-use ChurchCRM\Service\PersonDeletionService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
@@ -246,10 +245,6 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     // Delete person
     $group->delete('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
-        $blockedReason = $person->getLoginDeletionBlockedReason();
-        if ($blockedReason !== null) {
-            throw new HttpForbiddenException($request, $blockedReason);
-        }
         // PERSON_DELETED is dispatched from Person::postDelete() so that the
         // family-member cascade in DELETE /family/{id}?deleteMembers=true
         // fires it too. See #9768.

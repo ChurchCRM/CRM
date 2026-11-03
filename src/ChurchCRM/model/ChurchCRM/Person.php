@@ -8,7 +8,6 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
-use ChurchCRM\Exceptions\PersonDeletionBlockedException;
 use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
@@ -700,11 +699,6 @@ class Person extends BasePerson implements PhotoInterface
 
     public function preDelete(?ConnectionInterface $con = null): bool
     {
-        $blockedReason = $this->getLoginDeletionBlockedReason();
-        if ($blockedReason !== null) {
-            throw new PersonDeletionBlockedException($blockedReason);
-        }
-
         PersonDeletionService::assertCanDelete($this, $con);
 
         EventQuery::create()
