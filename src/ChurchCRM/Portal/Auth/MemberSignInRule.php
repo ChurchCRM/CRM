@@ -4,6 +4,7 @@ namespace ChurchCRM\Portal\Auth;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSignin;
@@ -25,6 +26,8 @@ use Propel\Runtime\ActiveQuery\Criteria;
  */
 final class MemberSignInRule
 {
+    private const EMAIL_KEY = 'LOWER(TRIM(Person.Email))';
+
     /**
      * @param int[] $familyRoleIds       family roles that may sign in; 0 is "no family role"
      * @param int[] $classificationIds   classifications that may sign in; 0 is Unassigned
@@ -148,7 +151,7 @@ final class MemberSignInRule
         }
 
         $people = PersonQuery::create()
-            ->where('LOWER(TRIM(Person.Email)) = ?', $email)
+            ->where(self::EMAIL_KEY . ' = ?', $email)
             ->orderById()
             ->find();
         if ($people->isEmpty()) {
@@ -230,23 +233,29 @@ final class MemberSignInRule
             return [];
         }
 
-        $byEmail = [];
         $emails = [];
+        $everyone = [];
         foreach ($people as $person) {
             $email = self::normalizeEmail((string) $person->getEmail());
             if ($email !== '') {
                 $emails[$email] = $email;
             }
-        }
-        $everyone = [];
-        foreach ($people as $person) {
             $everyone[(int) $person->getId()] = $person;
         }
-        if ($emails !== []) {
-            $sharing = PersonQuery::create()->where('LOWER(TRIM(Person.Email)) IN ?', array_values($emails))->orderById()->find();
-            foreach ($sharing as $person) {
-                $byEmail[self::normalizeEmail((string) $person->getEmail())][] = $person;
-                $everyone[(int) $person->getId()] ??= $person;
+        $groups = $emails === []
+            ? []
+            : self::groupIdsByEmail(PersonQuery::create()->where(self::EMAIL_KEY . ' IN ?', array_values($emails)));
+        $otherIds = array_values(array_diff(array_merge(...array_values($groups)), array_keys($everyone)));
+        if ($otherIds !== []) {
+            foreach (PersonQuery::create()->filterById($otherIds, Criteria::IN)->find() as $person) {
+                $everyone[(int) $person->getId()] = $person;
+            }
+        }
+        $sharers = [];
+        foreach ($groups as $ids) {
+            $group = array_values(array_filter(array_map(static fn (int $id): ?Person => $everyone[$id] ?? null, $ids)));
+            foreach ($ids as $id) {
+                $sharers[$id] = $group;
             }
         }
 
@@ -261,12 +270,38 @@ final class MemberSignInRule
                 $email = self::normalizeEmail((string) $person->getEmail());
                 $reason = $email === ''
                     ? SignInReason::NO_EMAIL
-                    : $this->candidateFromMatches($email, $byEmail[$email] ?? [$person], $states)->refusal;
+                    : $this->candidateFromMatches($email, $sharers[$personId] ?? [$person], $states)->refusal;
             }
             $statuses[$personId] = $reason;
         }
 
         return $statuses;
+    }
+
+    /**
+     * Groups the people `$query` finds by personal email the way the database
+     * compares addresses, as `findSignInCandidate()` does: under the column's
+     * collation `jose@example.com` and `josé@example.com` are one address.
+     * People with no personal email are left out.
+     *
+     * @return array<string, int[]> each address's person ids in id order, by one spelling of the address
+     */
+    public static function groupIdsByEmail(PersonQuery $query): array
+    {
+        $rows = $query
+            ->withColumn(self::EMAIL_KEY, 'EmailKey')
+            ->withColumn('GROUP_CONCAT(' . PersonTableMap::COL_PER_ID . ' ORDER BY ' . PersonTableMap::COL_PER_ID . ')', 'Ids')
+            ->where(self::EMAIL_KEY . " <> ''")
+            ->groupBy('EmailKey')
+            ->select(['EmailKey', 'Ids'])
+            ->find();
+
+        $groups = [];
+        foreach ($rows as $row) {
+            $groups[(string) $row['EmailKey']] = array_map('intval', explode(',', (string) $row['Ids']));
+        }
+
+        return $groups;
     }
 
     /**

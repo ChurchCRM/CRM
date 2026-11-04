@@ -289,7 +289,8 @@ final class MemberSignInListService
 
     /**
      * Personal emails, trimmed and in lower case, that two or more people who
-     * may sign in share. Neither of them can use it (A2).
+     * may sign in share, one spelling per address as the database compares
+     * them. Neither of them can use it (A2).
      *
      * @return string[]
      */
@@ -299,17 +300,14 @@ final class MemberSignInListService
             return $this->sharedEmails;
         }
 
-        $counts = [];
-        $emails = $this->rule->maySignInQuery()
-            ->where("(Person.Email IS NOT NULL AND TRIM(Person.Email) <> '')")
-            ->select(['Email'])
-            ->find();
-        foreach ($emails as $email) {
-            $normalized = MemberSignInRule::normalizeEmail((string) $email);
-            $counts[$normalized] = ($counts[$normalized] ?? 0) + 1;
+        $shared = [];
+        foreach (MemberSignInRule::groupIdsByEmail($this->rule->maySignInQuery()) as $email => $ids) {
+            if (count($ids) > 1) {
+                $shared[] = (string) $email;
+            }
         }
 
-        return $this->sharedEmails = array_keys(array_filter($counts, static fn (int $count): bool => $count > 1));
+        return $this->sharedEmails = $shared;
     }
 
     private function searchPeople(PersonQuery $query, string $search): PersonQuery
@@ -371,27 +369,22 @@ final class MemberSignInListService
             $kind = null;
         }
         $page = $this->peoplePage($this->emailAttentionQuery($problem, $kind), $start, $length, $search);
-        $shared = array_flip($this->sharedEmails());
+        $sharedWith = $this->sharedWith($page['rows']);
 
-        $sharedOnPage = [];
         $unconfirmedOnPage = [];
         foreach ($page['rows'] as &$row) {
-            $email = MemberSignInRule::normalizeEmail((string) $row['email']);
             $reason = match (true) {
-                $email === '' => SignInReason::NO_EMAIL,
-                isset($shared[$email]) => SignInReason::SHARED_EMAIL,
+                MemberSignInRule::normalizeEmail((string) $row['email']) === '' => SignInReason::NO_EMAIL,
+                isset($sharedWith[$row['personId']]) => SignInReason::SHARED_EMAIL,
                 default => SignInReason::EMAIL_UNCONFIRMED,
             };
             $row['problem'] = $reason->value;
             $row['problemLabel'] = $reason->label();
-            $row['sharedWith'] = [];
+            $row['sharedWith'] = $sharedWith[$row['personId']] ?? [];
             $row['canConfirmEmail'] = false;
             $row['confirmEmailRefusal'] = null;
             if ($reason === SignInReason::EMAIL_UNCONFIRMED) {
                 $unconfirmedOnPage[] = $row['personId'];
-            }
-            if ($reason === SignInReason::SHARED_EMAIL) {
-                $sharedOnPage[$email] = true;
             }
         }
         unset($row);
@@ -400,29 +393,63 @@ final class MemberSignInListService
             $this->addConfirmRefusals($page['rows'], $unconfirmedOnPage);
         }
 
-        if ($sharedOnPage !== []) {
-            $holders = [];
-            $people = $this->rule->maySignInQuery()
-                ->where(self::NORMALIZED_EMAIL . ' IN ?', array_keys($sharedOnPage))
-                ->orderByLastName()
-                ->orderByFirstName()
-                ->find();
-            foreach ($people as $person) {
-                $holders[MemberSignInRule::normalizeEmail((string) $person->getEmail())][] = ['personId' => (int) $person->getId(), 'name' => $person->getFullName()];
+        return $page;
+    }
+
+    /**
+     * The other people who may sign in and share the email of each person in
+     * `$rows`, by name, with addresses compared the way the database compares
+     * them. People whose email nobody else shares are left out.
+     *
+     * @param list<array<string, mixed>> $rows
+     *
+     * @return array<int, list<array{personId: int, name: string}>> by person id
+     */
+    private function sharedWith(array $rows): array
+    {
+        $emails = [];
+        foreach ($rows as $row) {
+            $email = MemberSignInRule::normalizeEmail((string) $row['email']);
+            if ($email !== '') {
+                $emails[$email] = $email;
             }
-            foreach ($page['rows'] as &$row) {
-                if ($row['problem'] === SignInReason::SHARED_EMAIL->value) {
-                    $email = MemberSignInRule::normalizeEmail((string) $row['email']);
-                    $row['sharedWith'] = array_values(array_filter(
-                        $holders[$email] ?? [],
-                        static fn (array $holder): bool => $holder['personId'] !== $row['personId'],
-                    ));
-                }
-            }
-            unset($row);
+        }
+        if ($emails === [] || $this->sharedEmails() === []) {
+            return [];
         }
 
-        return $page;
+        $groupOf = [];
+        $groups = MemberSignInRule::groupIdsByEmail($this->rule->maySignInQuery()->where(self::NORMALIZED_EMAIL . ' IN ?', array_values($emails)));
+        foreach ($groups as $ids) {
+            if (count($ids) > 1) {
+                foreach ($ids as $id) {
+                    $groupOf[$id] = $ids[0];
+                }
+            }
+        }
+        if ($groupOf === []) {
+            return [];
+        }
+
+        $holders = [];
+        $people = PersonQuery::create()
+            ->filterById(array_keys($groupOf), Criteria::IN)
+            ->orderByLastName()
+            ->orderByFirstName()
+            ->find();
+        foreach ($people as $person) {
+            $holders[$groupOf[(int) $person->getId()]][] = ['personId' => (int) $person->getId(), 'name' => $person->getFullName()];
+        }
+
+        $sharedWith = [];
+        foreach ($groupOf as $personId => $group) {
+            $sharedWith[$personId] = array_values(array_filter(
+                $holders[$group] ?? [],
+                static fn (array $holder): bool => $holder['personId'] !== $personId,
+            ));
+        }
+
+        return $sharedWith;
     }
 
     /**
