@@ -101,7 +101,7 @@ final class PortalCapabilityRegistry
         return 'plugin.' . $pluginId . '.';
     }
 
-    /** @internal tests, and code that changes what is registered within one request */
+    /** @internal for code that changes what is registered within one request */
     public static function reset(): void
     {
         self::$capabilities = [];

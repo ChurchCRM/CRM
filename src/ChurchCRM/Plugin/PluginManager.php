@@ -718,7 +718,7 @@ class PluginManager
     }
 
     /**
-     * Reset the plugin manager (useful for testing).
+     * Reset the plugin manager to its initial state.
      */
     public static function reset(): void
     {

@@ -12,6 +12,9 @@ vendor
 node_modules
 temp
 
+# Generated output from PHP tests
+tests/php/**/output/
+
 # Locale build artifacts (all intermediate build output in one place)
 locale/.work
 
