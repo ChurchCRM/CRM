@@ -21,7 +21,7 @@ import { LOCALE } from '../support/env';
  * the API call once per locale — no UI interaction, no page navigation
  * required, and no re-seeding of data. See locale-session.ts for the
  * actual POST /api/user/{id}/setting/ui.locale call this wraps, and
- * scripts/capture-all-locales.sh for how this project is invoked between
+ * scripts/marketing/capture-all-locales.sh for how this project is invoked between
  * 'screenshots' passes with --no-deps (see the 'locale-set' project in
  * playwright.config.ts — no dependency on 'setup', so this alone runs).
  */

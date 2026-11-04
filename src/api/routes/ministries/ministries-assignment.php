@@ -165,8 +165,8 @@ function volunteerAssignmentToArray(
 }
 
 /**
- * One response row. The history is what `GET /assignments/{id}` exposes so a spec can
- * count it and prove idempotency (§6.6) — and what a coordinator reads to see that the
+ * One response row. The history is what `GET /assignments/{id}` exposes so a client can
+ * count it and confirm idempotency (§6.6) — and what a coordinator reads to see that the
  * decline was recorded by the office, not by the volunteer (`channel`).
  *
  * @param array<int, string> $personNames

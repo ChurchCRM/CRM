@@ -22,7 +22,7 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Deposit extends BaseDeposit
 {
-    public function preDelete(ConnectionInterface $con = null): bool
+    public function preDelete(?ConnectionInterface $con = null): bool
     {
         $this->getPledges()->delete();
 
@@ -140,7 +140,7 @@ class Deposit extends BaseDeposit
         ->find();
     }
 
-    public function getPledgesJoinAll(Criteria $criteria = null, ConnectionInterface $con = null, $joinBehavior = Criteria::LEFT_JOIN)
+    public function getPledgesJoinAll(?Criteria $criteria = null, ?ConnectionInterface $con = null, $joinBehavior = Criteria::LEFT_JOIN)
     {
         $query = ChildPledgeQuery::create(null, $criteria);
         $query->joinWith('Family', Criteria::RIGHT_JOIN);

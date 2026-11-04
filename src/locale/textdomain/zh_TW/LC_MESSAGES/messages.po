@@ -458,10 +458,6 @@ msgid "Family Cell Phone"
 msgstr "家庭手機"
 
 #: 
-msgid "Family Email"
-msgstr "家庭電子郵件"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "個人住宅電話"
 
@@ -3981,10 +3977,6 @@ msgid "Oops! Page not found."
 msgstr "哎呀！找不到網頁。"
 
 #: 
-msgid "Family Registration"
-msgstr "家庭登記"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "請輸入以下內容以驗證您的家人"
 
@@ -5452,24 +5444,8 @@ msgid "Email address"
 msgstr "電子郵件地址"
 
 #: 
-msgid "Enter family name"
-msgstr "輸入家庭姓氏"
-
-#: 
 msgid "Family name is required"
 msgstr "家庭姓氏是必填項"
-
-#: 
-msgid "First name"
-msgstr "名"
-
-#: 
-msgid "Home phone number"
-msgstr "家庭電話號碼"
-
-#: 
-msgid "Last name"
-msgstr "姓"
 
 #: 
 msgid "Next Member"
@@ -9891,10 +9867,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "我們將使用此資訊與您保持聯繫並發送教會動態。"
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "很高興您的到來！只需3個簡單步驟即可註冊您的家庭。"
-
-#: 
 msgid "Welcome Back!"
 msgstr "歡迎回來！"
 
@@ -13868,10 +13840,6 @@ msgid "Generate new code"
 msgstr "產生新驗證碼"
 
 #: 
-msgid "Go to homepage"
-msgstr "前往首頁"
-
-#: 
 msgid "Group added to cart"
 msgstr "團體已添加到購物車"
 
@@ -13894,10 +13862,6 @@ msgstr "準備好您的驗證器應用程式（Google Authenticator、Microsoft 
 #: 
 msgid "Hide advanced options"
 msgstr "隱藏進階選項"
-
-#: 
-msgid "Home phone is required"
-msgstr "家庭電話是必填項"
 
 #: 
 msgid "ICS URL"
@@ -14572,10 +14536,6 @@ msgid "Warnings"
 msgstr "警告"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "很高興您的家庭加入了我們！"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "歡迎加入大家庭！"
 
@@ -14630,10 +14590,6 @@ msgstr "您的瀏覽器語言偏好與您的ChurchCRM語言設定不同"
 #: 
 msgid "Your database already contains data"
 msgstr "您的資料庫已包含資料"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "您的註冊已收到。我們的團隊將盡快與您聯繫，親自歡迎您。"
 
 #: 
 msgid "Zip code is required"
@@ -14712,10 +14668,6 @@ msgid "open rate"
 msgstr "開放率"
 
 #: 
-msgid "our church"
-msgstr "我們的教會"
-
-#: 
 msgid "payment(s)?"
 msgstr "付款？"
 
@@ -14754,14 +14706,6 @@ msgstr "年"
 #: 
 msgid "yrs"
 msgstr "年"
-
-#: 
-msgid "Account options"
-msgstr "帳戶選項"
-
-#: 
-msgid "Register"
-msgstr "註冊"
 
 #. Context: locales
 #: 
@@ -15043,16 +14987,8 @@ msgid "Always granted"
 msgstr "永久授予"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "僅能檢視和確認自己的家庭資料，無其他存取權限。"
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "請於下方選擇特定權限。"
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "請聯繫管理員以變更您的權限。"
 
 #: 
 msgid "Custom permissions"
@@ -15067,20 +15003,8 @@ msgid "People &amp; Families"
 msgstr "會眾與家庭"
 
 #: 
-msgid "Self-service"
-msgstr "自助服務"
-
-#: 
-msgid "Self-service only"
-msgstr "僅限自助服務"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "您嘗試編輯的備註已不存在。"
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "此使用者僅能檢視和更新自己的家庭資料，個別權限設定不適用。"
 
 #: 
 msgid "User List"
@@ -18340,16 +18264,8 @@ msgid "Second Home"
 msgstr "第二住所"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "關聯的人已故或不活躍。登入、工作階段和API金鑰被封鎖，直到該人重新啟用。"
-
-#: 
 msgid "This is the mailing address"
 msgstr "這是郵寄地址"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "此人已故或不活躍，因此此帳戶無法登入"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -19030,10 +18946,6 @@ msgid "Account unlocked"
 msgstr "帳戶已解鎖"
 
 #: 
-msgid "Accounts"
-msgstr "賬戶"
-
-#: 
 msgid "Active must be true or false"
 msgstr "“啟用”必須為真或假"
 
@@ -19226,10 +19138,6 @@ msgid "Author"
 msgstr "作者"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "許可權授予的是個人，而不是登入賬戶，因此可以在對方有賬戶之前授予。登入賬戶僅限自助服務的人，在管理員放寬其賬戶許可權之前，只能看到自己的排班。"
-
-#: 
 msgid "Automatic"
 msgstr "自動"
 
@@ -19352,10 +19260,6 @@ msgstr "選擇班級"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "請選擇每月 1 至 31 日中的某一天"
-
-#: 
-msgid "Choose a new photo"
-msgstr "選擇新照片"
 
 #: 
 msgid "Choose a person"
@@ -20128,10 +20032,6 @@ msgid "Last attempt"
 msgstr "上次嘗試"
 
 #: 
-msgid "Last check"
-msgstr "上次檢查"
-
-#: 
 msgid "Last date"
 msgstr "結束日期"
 
@@ -20358,10 +20258,6 @@ msgstr "尚未向會眾共享任何日曆。"
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "沒有向此事工開放的日曆，因此這些活動不會顯示在任何日曆上。"
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "沒有向會眾共享的日曆。"
 
 #: 
 msgid "No class"
@@ -20896,14 +20792,6 @@ msgid "Please tell us what needs changing."
 msgstr "請告訴我們需要更改什麼。"
 
 #: 
-msgid "Portal settings"
-msgstr "門戶設定"
-
-#: 
-msgid "Portal theme"
-msgstr "門戶主題"
-
-#: 
 msgid "Position"
 msgstr "職位"
 
@@ -21120,10 +21008,6 @@ msgid "SMTP test"
 msgstr "SMTP 測試"
 
 #: 
-msgid "Save calendars"
-msgstr "儲存日曆"
-
-#: 
 msgid "Save changes"
 msgstr "保存更改"
 
@@ -21134,10 +21018,6 @@ msgstr "已儲存：此事工不再徵求幫助"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "已儲存：此事工現在正在徵求幫助"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "已儲存。會眾可以看到上面開啟的日曆。"
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21242,10 +21122,6 @@ msgid "Self-assignable must be true or false"
 msgstr "“可自行報名”必須為真或假"
 
 #: 
-msgid "Self-service accounts"
-msgstr "自助服務賬戶"
-
-#: 
 msgid "Send"
 msgstr "傳送"
 
@@ -21314,18 +21190,6 @@ msgstr "在會眾門戶中顯示"
 #: 
 msgid "Show past events"
 msgstr "顯示過往活動"
-
-#: 
-msgid "Show the church calendar"
-msgstr "顯示教會日曆"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "在會眾門戶中顯示教會日曆。"
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "在會眾門戶中顯示教會日曆部分。"
 
 #: 
 msgid "Show the next"
@@ -21734,10 +21598,6 @@ msgstr "%s 必須是整數分鐘數"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s 必須在活動前後 %d 分鐘以內"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "會眾門戶日曆已儲存。"
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22188,10 +22048,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "這些需求來自排班。在此儲存只會更改這一場活動。"
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "這些數字僅統計自助服務賬戶：即登入後只能進入會眾門戶的人。"
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "這些人仍被分配著，但他們擔任的職位已不在此日期的人員安排計劃中。"
 
@@ -22274,14 +22130,6 @@ msgid "This is not a valid theme folder name."
 msgstr "這不是有效的主題資料夾名稱。"
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "這不是您團隊的日期。"
-
-#: 
-msgid "This is not one of your teams."
-msgstr "這不是您的團隊。"
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "這是教會寄信的地址，以及就您家庭事宜致電的聯絡人。"
 
@@ -22340,10 +22188,6 @@ msgstr "此頁面不屬於您的賬戶。如果您認為應該屬於，請詢問
 #: 
 msgid "This page was not found"
 msgstr "找不到此頁面"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "會眾門戶的這一部分供志工團隊負責人使用。"
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -24012,16 +23856,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "已指派 {{name}}，並記錄為已接受"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "請讓管理員更改你的登入電子郵件。"
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "管理員已將電子郵件從 %1$s 更改為 %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "只有管理員可以更改擁有使用者帳號的人員的電子郵件。"
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24922,4 +24758,16 @@ msgstr "硬幣總計"
 #: 
 msgid "Witness"
 msgstr "證人"
+
+#: 
+msgid "No changes"
+msgstr "沒有變化"
+
+#: 
+msgid "Set up email"
+msgstr "設定電子郵件"
+
+#: 
+msgid "This person is deceased."
+msgstr "此人已故"
 

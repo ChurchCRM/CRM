@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "가족 휴대전화"
 
 #: 
-msgid "Family Email"
-msgstr "가족 이메일"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "개인 자택 전화"
 
@@ -3899,10 +3895,6 @@ msgid "Oops! Page not found."
 msgstr "페이지를 찾을 수 없습니다."
 
 #: 
-msgid "Family Registration"
-msgstr "가족 등록"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "가족 정보 확인을 시작하려면 아래 내용을 입력하세요"
 
@@ -5305,24 +5297,8 @@ msgid "Email address"
 msgstr "이메일 주소"
 
 #: 
-msgid "Enter family name"
-msgstr "가족 이름 입력"
-
-#: 
 msgid "Family name is required"
 msgstr "가족 이름은 필수입니다"
-
-#: 
-msgid "First name"
-msgstr "이름"
-
-#: 
-msgid "Home phone number"
-msgstr "집 전화번호"
-
-#: 
-msgid "Last name"
-msgstr "성"
 
 #: 
 msgid "Next Member"
@@ -9744,10 +9720,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "연락을 유지하고 교회 소식을 보내는 데 사용됩니다."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "방문해 주셔서 감사합니다! 간단한 3단계로 가족을 등록하세요."
-
-#: 
 msgid "Welcome Back!"
 msgstr "다시 오신 것을 환영합니다!"
 
@@ -13721,10 +13693,6 @@ msgid "Generate new code"
 msgstr "새 코드 생성"
 
 #: 
-msgid "Go to homepage"
-msgstr "홈페이지로 이동"
-
-#: 
 msgid "Group added to cart"
 msgstr "그룹이 장바구니에 추가되었습니다"
 
@@ -13747,10 +13715,6 @@ msgstr "인증 앱을 준비하세요 (Google Authenticator, Microsoft Authentic
 #: 
 msgid "Hide advanced options"
 msgstr "고급 옵션 숨기기"
-
-#: 
-msgid "Home phone is required"
-msgstr "집 전화번호는 필수입니다"
 
 #: 
 msgid "ICS URL"
@@ -14425,10 +14389,6 @@ msgid "Warnings"
 msgstr "경고"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "가족이 함께해 주셔서 감사합니다!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "가족이 되신 것을 환영합니다!"
 
@@ -14483,10 +14443,6 @@ msgstr "브라우저 언어 기본 설정이 ChurchCRM 로케일과 다릅니다
 #: 
 msgid "Your database already contains data"
 msgstr "데이터베이스에 이미 데이터가 있습니다"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "등록이 접수되었습니다. 저희 팀이 곧 직접 환영 인사를 드리기 위해 연락드리겠습니다."
 
 #: 
 msgid "Zip code is required"
@@ -14565,10 +14521,6 @@ msgid "open rate"
 msgstr "오픈율"
 
 #: 
-msgid "our church"
-msgstr "우리 교회"
-
-#: 
 msgid "payment(s)?"
 msgstr "결제 건을 삭제하시겠습니까?"
 
@@ -14607,14 +14559,6 @@ msgstr "년"
 #: 
 msgid "yrs"
 msgstr "년"
-
-#: 
-msgid "Account options"
-msgstr "계정 옵션"
-
-#: 
-msgid "Register"
-msgstr "등록하기"
 
 #. Context: locales
 #: 
@@ -14896,16 +14840,8 @@ msgid "Always granted"
 msgstr "항상 허용됨"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "본인 가족만 확인하고 검토할 수 있습니다. 다른 접근 권한은 없습니다."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "아래에서 특정 권한을 선택하세요."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "권한 변경을 위해 관리자에게 문의하세요."
 
 #: 
 msgid "Custom permissions"
@@ -14920,20 +14856,8 @@ msgid "People &amp; Families"
 msgstr "교인 및 가족"
 
 #: 
-msgid "Self-service"
-msgstr "셀프서비스"
-
-#: 
-msgid "Self-service only"
-msgstr "셀프서비스 전용"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "수정하려는 메모가 더 이상 존재하지 않습니다."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "이 사용자는 본인의 가족 프로필만 확인하고 업데이트할 수 있습니다. 개별 권한은 적용되지 않습니다."
 
 #: 
 msgid "User List"
@@ -18193,16 +18117,8 @@ msgid "Second Home"
 msgstr "두 번째 집"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "연결된 사람이 사망했거나 비활성 상태입니다. 그 사람이 다시 활성화될 때까지 로그인, 세션 및 API 키가 차단됩니다."
-
-#: 
 msgid "This is the mailing address"
 msgstr "이것이 우편 주소입니다"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "이 사람이 사망했거나 비활성 상태이므로 이 계정은 로그인할 수 없습니다"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18883,10 +18799,6 @@ msgid "Account unlocked"
 msgstr "계정 잠금 해제"
 
 #: 
-msgid "Accounts"
-msgstr "계정"
-
-#: 
 msgid "Active must be true or false"
 msgstr "활성 여부는 true 또는 false여야 합니다"
 
@@ -19079,10 +18991,6 @@ msgid "Author"
 msgstr "작성자"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "권한은 로그인이 아니라 사람에게 부여되므로 로그인이 생기기 전에도 부여할 수 있습니다. 셀프서비스 전용 로그인을 가진 사람은 관리자가 계정 범위를 넓혀 주기 전까지 자신의 일정만 계속 보게 됩니다."
-
-#: 
 msgid "Automatic"
 msgstr "자동"
 
@@ -19205,10 +19113,6 @@ msgstr "반 선택"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "1에서 31 사이의 날짜를 선택하세요"
-
-#: 
-msgid "Choose a new photo"
-msgstr "새 사진 선택"
 
 #: 
 msgid "Choose a person"
@@ -19981,10 +19885,6 @@ msgid "Last attempt"
 msgstr "마지막 시도"
 
 #: 
-msgid "Last check"
-msgstr "마지막 확인"
-
-#: 
 msgid "Last date"
 msgstr "마지막 날짜"
 
@@ -20211,10 +20111,6 @@ msgstr "교인과 공유된 캘린더가 아직 없습니다."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "이 사역에 공개된 캘린더가 없어서 행사가 어떤 캘린더에도 표시되지 않습니다."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "교인과 공유된 캘린더가 없습니다."
 
 #: 
 msgid "No class"
@@ -20749,14 +20645,6 @@ msgid "Please tell us what needs changing."
 msgstr "무엇을 변경해야 하는지 알려 주세요."
 
 #: 
-msgid "Portal settings"
-msgstr "포털 설정"
-
-#: 
-msgid "Portal theme"
-msgstr "포털 테마"
-
-#: 
 msgid "Position"
 msgstr "직책"
 
@@ -20973,10 +20861,6 @@ msgid "SMTP test"
 msgstr "SMTP 테스트"
 
 #: 
-msgid "Save calendars"
-msgstr "캘린더 저장"
-
-#: 
 msgid "Save changes"
 msgstr "변경 사항 저장"
 
@@ -20987,10 +20871,6 @@ msgstr "저장되었습니다. 이 사역은 더 이상 도움을 요청하지 �
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "저장되었습니다. 이 사역은 이제 도움을 요청하고 있습니다"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "저장되었습니다. 교인에게는 위에서 켜 둔 캘린더가 표시됩니다."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21095,10 +20975,6 @@ msgid "Self-assignable must be true or false"
 msgstr "직접 배정 가능은 true 또는 false여야 합니다"
 
 #: 
-msgid "Self-service accounts"
-msgstr "셀프서비스 계정"
-
-#: 
 msgid "Send"
 msgstr "보내기"
 
@@ -21167,18 +21043,6 @@ msgstr "교인 포털에 표시"
 #: 
 msgid "Show past events"
 msgstr "지난 행사 표시"
-
-#: 
-msgid "Show the church calendar"
-msgstr "교회 캘린더 표시"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "교인 포털에 교회 캘린더를 표시합니다."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "교인 포털에 교회 캘린더 섹션을 표시합니다."
 
 #: 
 msgid "Show the next"
@@ -21587,10 +21451,6 @@ msgstr "%s은(는) 분 단위의 정수여야 합니다"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s은(는) 행사 기준 %d분 이내여야 합니다"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "교인 포털 캘린더가 저장되었습니다."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22041,10 +21901,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "이 필요 인원은 일정에서 가져온 것입니다. 여기서 저장하면 이 회차만 변경됩니다."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "이 숫자는 셀프서비스 계정, 즉 로그인으로 교인 포털에만 접근할 수 있는 사람만 집계합니다."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "이 사람들은 아직 배정되어 있지만, 맡은 직책이 더 이상 이 날짜의 인원 배치 계획에 포함되지 않습니다."
 
@@ -22127,14 +21983,6 @@ msgid "This is not a valid theme folder name."
 msgstr "올바른 테마 폴더 이름이 아닙니다."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "회원님 팀의 날짜가 아닙니다."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "회원님의 팀이 아닙니다."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "교회가 우편물을 보내는 곳과 회원님 가정에 대해 전화할 사람입니다."
 
@@ -22193,10 +22041,6 @@ msgstr "이 페이지는 회원님의 계정에 속하지 않습니다. 있어�
 #: 
 msgid "This page was not found"
 msgstr "페이지를 찾을 수 없습니다"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "교인 포털의 이 부분은 봉사 팀 리더용입니다."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23865,16 +23709,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}}을(를) 배정하고 수락으로 기록했습니다"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "로그인 이메일 변경은 관리자에게 요청하세요."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "관리자가 이메일을 %1$s에서 %2$s(으)로 변경했습니다"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "사용자 계정이 있는 사람의 이메일은 관리자만 바꿀 수 있습니다."
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24775,4 +24611,16 @@ msgstr "동전 합계"
 #: 
 msgid "Witness"
 msgstr "증인"
+
+#: 
+msgid "No changes"
+msgstr "변경 사항 없음"
+
+#: 
+msgid "Set up email"
+msgstr "이메일 설정"
+
+#: 
+msgid "This person is deceased."
+msgstr "이 사람은 별세했습니다"
 

@@ -68,10 +68,6 @@ class SlimUtils
     /**
      * True when the message looks like it carries a secret value and must not
      * be shown to the caller.
-     *
-     * Regression coverage for both directions — values that must be redacted
-     * and ordinary messages that must stay readable — lives in
-     * `scripts/test-error-redaction.php` (`npm run test:php`).
      */
     public static function containsSensitiveValue(string $message): bool
     {

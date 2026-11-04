@@ -441,10 +441,6 @@ msgid "Family Cell Phone"
 msgstr "የቤተሰብ ሞባይል ስልክ"
 
 #: 
-msgid "Family Email"
-msgstr "የቤተሰብ ኢሜይል"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "የግል የቤት ስልክ"
 
@@ -3901,10 +3897,6 @@ msgid "Oops! Page not found."
 msgstr "ውይ! ገጹ አልተገኘም."
 
 #: 
-msgid "Family Registration"
-msgstr "የቤተሰብ ምዝገባ"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "የቤተሰብዎን ማረጋገጫ ለመጀመር እባክዎ የሚከተለውን ያስገቡ"
 
@@ -5318,24 +5310,8 @@ msgid "Email address"
 msgstr "የኢሜይል አድራሻ"
 
 #: 
-msgid "Enter family name"
-msgstr "የቤተሰብ ስም ያስገቡ"
-
-#: 
 msgid "Family name is required"
 msgstr "የቤተሰብ ስም ያስፈልጋል"
-
-#: 
-msgid "First name"
-msgstr "የመጀመሪያ ስም"
-
-#: 
-msgid "Home phone number"
-msgstr "የቤት ስልክ ቁጥር"
-
-#: 
-msgid "Last name"
-msgstr "የአያት ስም"
 
 #: 
 msgid "Next Member"
@@ -9764,10 +9740,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "ይህ ለ ሙገግ ጉዞ እና ተዋጽኦ ዘመን ላክ ያገለግል።"
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "ወደ ጋ ከሆንክ! ቤተሰብ ምንም 3 ቀላል ደረጃ ተመዝገብ።"
-
-#: 
 msgid "Welcome Back!"
 msgstr "እንደገና ወደ!"
 
@@ -13743,10 +13715,6 @@ msgid "Generate new code"
 msgstr "አዲስ ኮድ አዘጋጅ"
 
 #: 
-msgid "Go to homepage"
-msgstr "ወደ ቤት ገጽ ዛሬ"
-
-#: 
 msgid "Group added to cart"
 msgstr "ቡድን ወደ ጋሪ ተጨምሯል"
 
@@ -13769,10 +13737,6 @@ msgstr "ማረጋገጫ ትግበራዎን ዝግጁ ያድርጉ (Google Authen
 #: 
 msgid "Hide advanced options"
 msgstr "የተዘረጉ አማራጮችን ደብቅ"
-
-#: 
-msgid "Home phone is required"
-msgstr "የቤት ስልክ ያስፈልጋል"
 
 #: 
 msgid "ICS URL"
@@ -14447,10 +14411,6 @@ msgid "Warnings"
 msgstr "ማስጠንቀቂያዎች"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "ቤተሰብ ወጦ ሙ ገባ ታላቅ ደስ!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "ወደ ቤተሰብ ወደ!"
 
@@ -14505,10 +14465,6 @@ msgstr "የአሳሽ ቋንቋ ምርጫዎ ከ ChurchCRM አካባቢዎ ይለ
 #: 
 msgid "Your database already contains data"
 msgstr "ዳታቤዝዎ ቀድሞ መረጃ ይዟል"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "ተመዝገብ ተቀበለ። ወጦ ሙ ክህን ወደ ግል ዝንብ።"
 
 #: 
 msgid "Zip code is required"
@@ -14587,10 +14543,6 @@ msgid "open rate"
 msgstr "የመክፍት ፍጥነት"
 
 #: 
-msgid "our church"
-msgstr "ተዋጽኦ"
-
-#: 
 msgid "payment(s)?"
 msgstr "ክፍያ(ዎች)?"
 
@@ -14629,14 +14581,6 @@ msgstr "ዓ."
 #: 
 msgid "yrs"
 msgstr "ዓ.ም"
-
-#: 
-msgid "Account options"
-msgstr "የሂሳብ ምርጫዎች"
-
-#: 
-msgid "Register"
-msgstr "ይመዝገቡ"
 
 #. Context: locales
 #: 
@@ -14919,16 +14863,8 @@ msgid "Always granted"
 msgstr "ሁልጊዜ የተፈቀደ"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "የራሳቸውን ቤተሰብ ብቻ ሊያረጋግጡ እና ሊገመግሙ ይችላሉ። ሌላ ምንም ተደራሽነት የለም።"
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "ከዚህ በታች ልዩ ፈቃዶችን ይምረጡ።"
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "ፈቃዶችዎን ለመቀየር አስተዳዳሪን ያነጋግሩ።"
 
 #: 
 msgid "Custom permissions"
@@ -14943,20 +14879,8 @@ msgid "People &amp; Families"
 msgstr "ሰዎች &amp; ቤተሰቦች"
 
 #: 
-msgid "Self-service"
-msgstr "ራስን ማገልገል"
-
-#: 
-msgid "Self-service only"
-msgstr "ራስን ማገልገል ብቻ"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "ለማስተካከል እየሞከሩት ያሉት ማስታወሻ አሁን የለም።"
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "ይህ ተጠቃሚ የራሱን ቤተሰብ መገለጫ ብቻ ሊያረጋግጥ እና ሊያዘምን ይችላል። የግለሰብ ፈቃዶች አይተገበሩም።"
 
 #: 
 msgid "User List"
@@ -18221,16 +18145,8 @@ msgid "Second Home"
 msgstr "ሁለተኛ ቤት"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "የተገናኘው ሰው ሞተ ወይም ንቁ ያልሆነ. ሰው ወደ ገበሮ ከተገበሮ ድረስ ውስጥ-ይሰለፉ, ክፍለ-ጊዜ እና API ቁልፍ ተከልክሎ ሉቅሩ."
-
-#: 
 msgid "This is the mailing address"
 msgstr "ይህ ደብዳቤ አድራሻ ነው"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "ይህ ሰው የሞተ ወይም ንቁ ያልሆነ ነው፣ ስለዚህ ይህ መለያ መግባት አይችልም"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18919,10 +18835,6 @@ msgid "Account unlocked"
 msgstr "መለያ ተከፍቷል።"
 
 #: 
-msgid "Accounts"
-msgstr "መለያዎች"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Active እውነት ወይም ሐሰት መሆን አለበት"
 
@@ -19115,10 +19027,6 @@ msgid "Author"
 msgstr "ደራሲ"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "ሥልጣን የሚሰጠው ለሰውየው እንጂ ለመግቢያ አይደለም፣ ስለዚህ መግቢያ ከማግኘታቸው በፊት ሊሰጥ ይችላል። መግቢያው ራስን ማገልገል ብቻ የሆነ ሰው አስተዳዳሪ መለያውን እስኪያሰፋ ድረስ የራሱን መርሐ ግብር ብቻ ማየቱን ይቀጥላል።"
-
-#: 
 msgid "Automatic"
 msgstr "ራስ-ሰር"
 
@@ -19241,10 +19149,6 @@ msgstr "ክፍል ይምረጡ"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "ከ1 እስከ 31 ያለውን የወሩን ቀን ይምረጡ"
-
-#: 
-msgid "Choose a new photo"
-msgstr "አዲስ ፎቶ ይምረጡ"
 
 #: 
 msgid "Choose a person"
@@ -20017,10 +19921,6 @@ msgid "Last attempt"
 msgstr "የመጨረሻ ሙከራ"
 
 #: 
-msgid "Last check"
-msgstr "የመጨረሻ ፍተሻ"
-
-#: 
 msgid "Last date"
 msgstr "የመጨረሻ ቀን"
 
@@ -20247,10 +20147,6 @@ msgstr "እስካሁን ለአባላት የተጋራ የቀን መቁጠሪያ �
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "ለዚህ አገልግሎት ክፍት የሆነ የቀን መቁጠሪያ የለም፣ ስለዚህ ዝግጅቶቹ በየትኛውም የቀን መቁጠሪያ ላይ አይታዩም።"
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "ለአባላት የተጋራ የቀን መቁጠሪያ የለም።"
 
 #: 
 msgid "No class"
@@ -20787,14 +20683,6 @@ msgid "Please tell us what needs changing."
 msgstr "እባክዎ ምን መቀየር እንዳለበት ይንገሩን።"
 
 #: 
-msgid "Portal settings"
-msgstr "የፖርታል ቅንብሮች"
-
-#: 
-msgid "Portal theme"
-msgstr "የፖርታል ገጽታ"
-
-#: 
 msgid "Position"
 msgstr "የአገልግሎት ቦታ"
 
@@ -21011,10 +20899,6 @@ msgid "SMTP test"
 msgstr "የSMTP ሙከራ"
 
 #: 
-msgid "Save calendars"
-msgstr "የቀን መቁጠሪያዎችን አስቀምጥ"
-
-#: 
 msgid "Save changes"
 msgstr "ለውጦችን አስቀምጥ"
 
@@ -21025,10 +20909,6 @@ msgstr "ተቀምጧል — ይህ አገልግሎት ከእንግዲህ እር�
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "ተቀምጧል — ይህ አገልግሎት አሁን እርዳታ እየጠየቀ ነው"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "ተቀምጧል። አባላት ከላይ የነቁትን የቀን መቁጠሪያዎች ያያሉ።"
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21133,10 +21013,6 @@ msgid "Self-assignable must be true or false"
 msgstr "ራስ ሊመደብ የሚችል እውነት ወይም ሐሰት መሆን አለበት"
 
 #: 
-msgid "Self-service accounts"
-msgstr "ራስን የሚያገለግሉ መለያዎች"
-
-#: 
 msgid "Send"
 msgstr "ላክ"
 
@@ -21205,18 +21081,6 @@ msgstr "በአባላት ፖርታል አሳይ"
 #: 
 msgid "Show past events"
 msgstr "ያለፉ ዝግጅቶችን አሳይ"
-
-#: 
-msgid "Show the church calendar"
-msgstr "የቤተ ክርስቲያኑን የቀን መቁጠሪያ አሳይ"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "የቤተ ክርስቲያኑን የቀን መቁጠሪያ በአባላት ፖርታል ውስጥ አሳይ።"
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "የቤተ ክርስቲያኑን የቀን መቁጠሪያ ክፍል በአባላት ፖርታል ውስጥ አሳይ።"
 
 #: 
 msgid "Show the next"
@@ -21625,10 +21489,6 @@ msgstr "%s ሙሉ የደቂቃዎች ቁጥር መሆን አለበት"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s ከዝግጅቱ በ%d ደቂቃዎች ውስጥ መሆን አለበት"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "የአባላት ፖርታል የቀን መቁጠሪያዎች ተቀምጠዋል።"
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22079,10 +21939,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "እነዚህ ፍላጎቶች የመጡት ከመርሐ ግብሩ ነው። እዚህ ማስቀመጥ የሚቀይረው ይህን የአገልግሎት ቀን ብቻ ነው።"
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "እነዚህ ቁጥሮች የሚቆጥሩት ራስን የሚያገለግሉ መለያዎችን ብቻ ነው፦ መግቢያቸው የአባላት ፖርታልን እንጂ ሌላ ምንም መድረስ የማይችል ሰዎችን።"
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "እነዚህ ሰዎች አሁንም ተመድበዋል፣ ነገር ግን የያዙት የአገልግሎት ቦታ ከዚህ ቀን የሰው ኃይል ዕቅድ ከእንግዲህ አካል አይደለም።"
 
@@ -22167,14 +22023,6 @@ msgid "This is not a valid theme folder name."
 msgstr "ይህ ትክክለኛ የገጽታ አቃፊ ስም አይደለም።"
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "ይህ ከቡድንዎ ቀኖች አንዱ አይደለም።"
-
-#: 
-msgid "This is not one of your teams."
-msgstr "ይህ ከቡድኖችዎ አንዱ አይደለም።"
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "ቤተ ክርስቲያኑ ፖስታ የሚልክበት አድራሻ እና ስለ ቤተሰብዎ የሚደውልበት ሰው እዚህ ይገኛል።"
 
@@ -22233,10 +22081,6 @@ msgstr "ይህ ገጽ የመለያዎ አካል አይደለም። መሆን አ
 #: 
 msgid "This page was not found"
 msgstr "ይህ ገጽ አልተገኘም"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "ይህ የአባላት ፖርታል ክፍል ለበጎ ፈቃደኛ ቡድን መሪዎች ነው።"
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23907,16 +23751,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} ተመድቦ እንደተቀበለ ተመዝግቧል"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "የመግቢያ ደብዳቤዎን እንዲቀይር አስተዳዳሪን ይጠይቁ።"
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "አስተዳዳሪ ደብዳቤውን ከ%1$s ወደ %2$s ቀይሯል"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "የተጠቃሚ መለያ ያለውን ሰው ደብዳቤ መቀየር የሚችለው አስተዳዳሪ ብቻ ነው።"
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24401,4 +24237,16 @@ msgstr "የሚታየው እርስዎ የላኩት ኢሜይል ብቻ ነው።"
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "ተደጋጋሚ ክስተቶች ሊፈጠሩ አልቻሉም። ለዝርዝር መረጃ የመተግበሪያውን ምዝግብ ማስታወሻ ይመልከቱ።"
+
+#: 
+msgid "No changes"
+msgstr "ምንም ለውጦች የሉም"
+
+#: 
+msgid "Set up email"
+msgstr "ኢሜይል አዋቅር"
+
+#: 
+msgid "This person is deceased."
+msgstr "ይህ ሰው ሞቷል"
 

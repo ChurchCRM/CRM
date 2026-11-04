@@ -64,8 +64,8 @@ export default defineConfig({
     // this directory so both suites can run as parallel CI matrix legs.
     specPattern: ['cypress/e2e/ui-admin/**/*.spec.js'],
     setupNodeEvents(on, config) {
-      // Narrows specPattern to this shard when CI sets SPLIT / SPLIT_INDEX (scripts/shard-specs.js).
-      require('../../scripts/shard-specs').applyShard(config);
+      // Narrows specPattern to this shard when CI sets SPLIT / SPLIT_INDEX (scripts/ci/shard-specs.js).
+      require('../../scripts/ci/shard-specs').applyShard(config);
       const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
       installLogsPrinter(on, {
         outputRoot: 'cypress/logs',

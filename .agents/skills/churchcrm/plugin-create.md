@@ -24,7 +24,7 @@ For plugin UI, follow [Frontend Development](./frontend-development.md): use Tab
 ## 1. Scaffold
 
 ```bash
-php scripts/create-plugin.php my-plugin --author="Your Name"
+php scripts/plugin/create-plugin.php my-plugin --author="Your Name"
 ```
 
 This clones [ChurchCRM/community-plugin-hello-world](https://github.com/ChurchCRM/community-plugin-hello-world) into `src/plugins/community/my-plugin/` and rewrites namespace, id, and class name (forking that repo and renaming works too):
@@ -158,8 +158,8 @@ Guide: [`plugin-development.md → Plugin Localization`](./plugin-development.md
 ## 6. Self-scan
 
 ```bash
-php scripts/plugin-scan.php src/plugins/community/my-plugin
-php scripts/plugin-scan.php --json src/plugins/community/my-plugin | jq
+php scripts/plugin/plugin-scan.php src/plugins/community/my-plugin
+php scripts/plugin/plugin-scan.php --json src/plugins/community/my-plugin | jq
 ```
 
 The scan runs the maintainer checklist against your directory. Errors block; fix every one. Warnings need a one-sentence justification in the PR body (why the sink exists, which input it receives); delete what you cannot justify. Infos are the capability inventory for the PR body. Exit code 0 means no errors.

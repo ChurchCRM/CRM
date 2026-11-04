@@ -441,10 +441,6 @@ msgid "Family Cell Phone"
 msgstr "هاتف محمول الأسرة"
 
 #: 
-msgid "Family Email"
-msgstr "البريد الإلكتروني للعائلة"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "هاتف المنزل الشخصي"
 
@@ -3899,10 +3895,6 @@ msgid "Oops! Page not found."
 msgstr "وجه الفتاة! الصفحة غير موجودة."
 
 #: 
-msgid "Family Registration"
-msgstr "التسجيل الأسرة"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "الرجاء إدخال التالية لبدء التحقق عائلتك"
 
@@ -5316,24 +5308,8 @@ msgid "Email address"
 msgstr "عنوان البريد الإلكتروني"
 
 #: 
-msgid "Enter family name"
-msgstr "أدخل اسم العائلة"
-
-#: 
 msgid "Family name is required"
 msgstr "اسم العائلة مطلوب"
-
-#: 
-msgid "First name"
-msgstr "الاسم الأول"
-
-#: 
-msgid "Home phone number"
-msgstr "رقم هاتف المنزل"
-
-#: 
-msgid "Last name"
-msgstr "اسم العائلة"
 
 #: 
 msgid "Next Member"
@@ -9790,10 +9766,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "سنستخدم هذا للبقاء على اتصال وإرسال تحديثات الكنيسة."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "نحن سعداء جدا بأنك هنا! سجل عائلتك في 3 خطوات سهلة فقط."
-
-#: 
 msgid "Welcome Back!"
 msgstr "أهلا وسهلا!"
 
@@ -13772,10 +13744,6 @@ msgid "Generate new code"
 msgstr "إنشاء رمز جديد"
 
 #: 
-msgid "Go to homepage"
-msgstr "انتقل إلى الصفحة الرئيسية"
-
-#: 
 msgid "Group added to cart"
 msgstr "تمت إضافة المجموعة إلى السلة"
 
@@ -13798,10 +13766,6 @@ msgstr "جهّز تطبيق المصادقة (Google Authenticator أو Microsof
 #: 
 msgid "Hide advanced options"
 msgstr "إخفاء الخيارات المتقدمة"
-
-#: 
-msgid "Home phone is required"
-msgstr "رقم هاتف المنزل مطلوب"
 
 #: 
 msgid "ICS URL"
@@ -14476,10 +14440,6 @@ msgid "Warnings"
 msgstr "تحذيرات"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "نحن سعداء جدا بأن عائلتك انضمت إلينا!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "أهلا بك في العائلة!"
 
@@ -14534,10 +14494,6 @@ msgstr "تفضيل لغة متصفحك يختلف عن إعدادات اللغة
 #: 
 msgid "Your database already contains data"
 msgstr "قاعدة بياناتك تحتوي على بيانات بالفعل"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "تم استلام التسجيل. سيتصل بك فريقنا قريبا لترحيب شخصي."
 
 #: 
 msgid "Zip code is required"
@@ -14616,10 +14572,6 @@ msgid "open rate"
 msgstr "معدل مفتوح"
 
 #: 
-msgid "our church"
-msgstr "كنيستنا"
-
-#: 
 msgid "payment(s)?"
 msgstr "المدفوعات (ق)؟"
 
@@ -14658,14 +14610,6 @@ msgstr "سنة"
 #: 
 msgid "yrs"
 msgstr "سنوات"
-
-#: 
-msgid "Account options"
-msgstr "خيارات الحساب"
-
-#: 
-msgid "Register"
-msgstr "سجل"
 
 #. Context: locales
 #: 
@@ -14952,16 +14896,8 @@ msgid "Always granted"
 msgstr "ممنوح دائمًا"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "يمكنه فقط مراجعة والتحقق من بيانات عائلته. لا يوجد وصول آخر."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "اختر الأذونات المحددة أدناه."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "تواصل مع المسؤول لتغيير صلاحياتك."
 
 #: 
 msgid "Custom permissions"
@@ -14976,20 +14912,8 @@ msgid "People &amp; Families"
 msgstr "الأفراد والعائلات"
 
 #: 
-msgid "Self-service"
-msgstr "الخدمة الذاتية"
-
-#: 
-msgid "Self-service only"
-msgstr "الخدمة الذاتية فقط"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "الملاحظة التي تحاول تعديلها لم تعد موجودة."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "يمكن لهذا المستخدم فقط مراجعة وتحديث ملف عائلته. لا تُطبَّق الأذونات الفردية."
 
 #: 
 msgid "User List"
@@ -18274,16 +18198,8 @@ msgid "Second Home"
 msgstr "البيت الثاني"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "الشخص المرتبط متوفى أو غير نشط. تسجيل الدخول والجلسات ومفتاح API محظورة حتى يتم تنشيط الشخص مرة أخرى."
-
-#: 
 msgid "This is the mailing address"
 msgstr "هذا هو عنوان البريد"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "هذا الشخص متوفى أو غير نشط، لذا لا يمكن لهذا الحساب تسجيل الدخول"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -19004,10 +18920,6 @@ msgid "Account unlocked"
 msgstr "مفتوح الحساب"
 
 #: 
-msgid "Accounts"
-msgstr "الحسابات"
-
-#: 
 msgid "Active must be true or false"
 msgstr "يجب أن تكون قيمة \"نشط\" صحيحة أو خاطئة"
 
@@ -19200,10 +19112,6 @@ msgid "Author"
 msgstr "الكاتب"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "تُمنح الصلاحية للشخص لا لحساب الدخول، فيمكن منحها قبل أن يكون له حساب. الشخص الذي حسابه للخدمة الذاتية فقط لا يرى إلا جدوله حتى يوسّع المسؤول حسابه."
-
-#: 
 msgid "Automatic"
 msgstr "تلقائي"
 
@@ -19326,10 +19234,6 @@ msgstr "اختر فصلًا"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "اختر يومًا من الشهر من 1 إلى 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "اختر صورة جديدة"
 
 #: 
 msgid "Choose a person"
@@ -20102,10 +20006,6 @@ msgid "Last attempt"
 msgstr "آخر محاولة"
 
 #: 
-msgid "Last check"
-msgstr "آخر فحص"
-
-#: 
 msgid "Last date"
 msgstr "آخر تاريخ"
 
@@ -20332,10 +20232,6 @@ msgstr "لم يُشارك أي تقويم مع الأعضاء بعد."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "لا يوجد تقويم مفتوح لهذه الخدمة، لذا لن تظهر الفعاليات في أي تقويم."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "لا يوجد تقويم مشارك مع الأعضاء."
 
 #: 
 msgid "No class"
@@ -20880,14 +20776,6 @@ msgid "Please tell us what needs changing."
 msgstr "يُرجى إخبارنا بما يحتاج إلى تغيير."
 
 #: 
-msgid "Portal settings"
-msgstr "إعدادات البوابة"
-
-#: 
-msgid "Portal theme"
-msgstr "سمة البوابة"
-
-#: 
 msgid "Position"
 msgstr "المهمة"
 
@@ -21104,10 +20992,6 @@ msgid "SMTP test"
 msgstr "اختبار SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "حفظ التقويمات"
-
-#: 
 msgid "Save changes"
 msgstr "حفظ التغييرات"
 
@@ -21118,10 +21002,6 @@ msgstr "تم الحفظ — لم تعد هذه الخدمة تطلب مساعد�
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "تم الحفظ — أصبحت هذه الخدمة تطلب مساعدة الآن"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "تم الحفظ. يرى الأعضاء التقويمات المفعّلة أعلاه."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21226,10 +21106,6 @@ msgid "Self-assignable must be true or false"
 msgstr "يجب أن تكون قيمة \"يمكن تكليف النفس\" صحيحة أو خاطئة"
 
 #: 
-msgid "Self-service accounts"
-msgstr "حسابات الخدمة الذاتية"
-
-#: 
 msgid "Send"
 msgstr "إرسال"
 
@@ -21298,18 +21174,6 @@ msgstr "عرض في بوابة الأعضاء"
 #: 
 msgid "Show past events"
 msgstr "عرض الفعاليات السابقة"
-
-#: 
-msgid "Show the church calendar"
-msgstr "عرض تقويم الكنيسة"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "عرض تقويم الكنيسة في بوابة الأعضاء."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "عرض قسم تقويم الكنيسة في بوابة الأعضاء."
 
 #: 
 msgid "Show the next"
@@ -21718,10 +21582,6 @@ msgstr "يجب أن يكون %s عددًا صحيحًا من الدقائق"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "يجب أن يكون %s ضمن %d دقيقة من الفعالية"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "تم حفظ تقويمات بوابة الأعضاء."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22172,10 +22032,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "تأتي هذه الاحتياجات من الجدول. الحفظ هنا يغيّر هذا الموعد فقط."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "تحسب هذه الأرقام حسابات الخدمة الذاتية فقط: الأشخاص الذين يصل حساب دخولهم إلى بوابة الأعضاء ولا شيء غيرها."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "لا يزال هؤلاء الأشخاص مكلَّفين، لكن المهمة التي يشغلونها لم تعد جزءًا من خطة التكليف لهذا التاريخ."
 
@@ -22268,14 +22124,6 @@ msgid "This is not a valid theme folder name."
 msgstr "هذا ليس اسم مجلد سمة صالحًا."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "هذا ليس من تواريخ فريقك."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "هذا ليس من فرقك."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "هنا تُرسل الكنيسة البريد وتحدد من تتصل به بشأن أسرتك."
 
@@ -22334,10 +22182,6 @@ msgstr "هذه الصفحة ليست جزءًا من حسابك. إن كنت ت�
 #: 
 msgid "This page was not found"
 msgstr "لم يتم العثور على هذه الصفحة"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "هذا الجزء من بوابة الأعضاء لقادة فرق المتطوعين."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -24016,16 +23860,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} اتعيّن واتسجل كموافق"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "اطلب من مسؤول يغيّر بريد تسجيل الدخول بتاعك."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "مسؤول غيّر البريد من %1$s إلى %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "المسؤول بس هو اللي يقدر يغيّر بريد شخص عنده حساب مستخدم."
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24926,4 +24762,16 @@ msgstr "إجمالي العملات المعدنية"
 #: 
 msgid "Witness"
 msgstr "شاهد"
+
+#: 
+msgid "No changes"
+msgstr "لا تغييرات"
+
+#: 
+msgid "Set up email"
+msgstr "إعداد البريد الإلكتروني"
+
+#: 
+msgid "This person is deceased."
+msgstr "هذا الشخص متوفى"
 

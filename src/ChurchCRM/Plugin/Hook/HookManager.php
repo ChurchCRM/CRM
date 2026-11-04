@@ -280,7 +280,7 @@ class HookManager
     }
 
     /**
-     * Clear all hooks (useful for testing).
+     * Clear all registered hooks.
      */
     public static function reset(): void
     {

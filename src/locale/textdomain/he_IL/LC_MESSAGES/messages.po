@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "טלפון נייד משפחתי"
 
 #: 
-msgid "Family Email"
-msgstr "דוא\"ל משפחתי"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "טלפון בית אישי"
 
@@ -3902,10 +3898,6 @@ msgid "Oops! Page not found."
 msgstr "אופס! הדף לא נמצא."
 
 #: 
-msgid "Family Registration"
-msgstr "רישום משפחה"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "אנא הזן את הפרטים הבאים כדי להתחיל את אימות המשפחה שלך"
 
@@ -5310,24 +5302,8 @@ msgid "Email address"
 msgstr "כתובת אימייל"
 
 #: 
-msgid "Enter family name"
-msgstr "הזן שם משפחה"
-
-#: 
 msgid "Family name is required"
 msgstr "שם משפחה הוא שדה חובה"
-
-#: 
-msgid "First name"
-msgstr "שם פרטי"
-
-#: 
-msgid "Home phone number"
-msgstr "מספר טלפון בבית"
-
-#: 
-msgid "Last name"
-msgstr "שם משפחה"
 
 #: 
 msgid "Next Member"
@@ -9756,10 +9732,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "נשתמש בזה כדי לשמור על קשר ולשלוח עדכוני קהילה."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "שמחים שאתם כאן! רשמו את משפחתכם ב-3 שלבים פשוטים."
-
-#: 
 msgid "Welcome Back!"
 msgstr "ברוכים השבים!"
 
@@ -13734,10 +13706,6 @@ msgid "Generate new code"
 msgstr "צור קוד חדש"
 
 #: 
-msgid "Go to homepage"
-msgstr "מעבר לדף הבית"
-
-#: 
 msgid "Group added to cart"
 msgstr "הקבוצה נוספה לסל"
 
@@ -13760,10 +13728,6 @@ msgstr "הכן את אפליקציית האימות שלך (Google Authenticator
 #: 
 msgid "Hide advanced options"
 msgstr "הסתר אפשרויות מתקדמות"
-
-#: 
-msgid "Home phone is required"
-msgstr "טלפון בבית הוא שדה חובה"
 
 #: 
 msgid "ICS URL"
@@ -14438,10 +14402,6 @@ msgid "Warnings"
 msgstr "אזהרות"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "שמחים שמשפחתכם הצטרפה אלינו!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "ברוכים הבאים למשפחה!"
 
@@ -14496,10 +14456,6 @@ msgstr "העדפת השפה של הדפדפן שלך שונה מהלוקאל ש�
 #: 
 msgid "Your database already contains data"
 msgstr "מסד הנתונים שלך כבר מכיל נתונים"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "ההרשמה שלכם התקבלה. הצוות שלנו ייצור קשר בקרוב כדי לקבל את פניכם באופן אישי."
 
 #: 
 msgid "Zip code is required"
@@ -14578,10 +14534,6 @@ msgid "open rate"
 msgstr "שיעור פתיחה"
 
 #: 
-msgid "our church"
-msgstr "הקהילה שלנו"
-
-#: 
 msgid "payment(s)?"
 msgstr "תשלומים?"
 
@@ -14620,14 +14572,6 @@ msgstr "שנ׳"
 #: 
 msgid "yrs"
 msgstr "שנ׳"
-
-#: 
-msgid "Account options"
-msgstr "אפשרויות חשבון"
-
-#: 
-msgid "Register"
-msgstr "הרשם"
 
 #. Context: locales
 #: 
@@ -14910,16 +14854,8 @@ msgid "Always granted"
 msgstr "מוענק תמיד"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "יכול לבדוק ולאמת את משפחתו בלבד. אין גישה אחרת."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "בחר הרשאות ספציפיות למטה."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "צור קשר עם מנהל כדי לשנות את ההרשאות שלך."
 
 #: 
 msgid "Custom permissions"
@@ -14934,20 +14870,8 @@ msgid "People &amp; Families"
 msgstr "אנשים &amp; משפחות"
 
 #: 
-msgid "Self-service"
-msgstr "שירות עצמי"
-
-#: 
-msgid "Self-service only"
-msgstr "שירות עצמי בלבד"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "ההערה שאתה מנסה לערוך כבר אינה קיימת."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "משתמש זה יכול לבדוק ולעדכן רק את פרופיל משפחתו. הרשאות אישיות אינן חלות."
 
 #: 
 msgid "User List"
@@ -18212,16 +18136,8 @@ msgid "Second Home"
 msgstr "בית שני"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "האדם המקושר מת או לא פעיל. כניסה, הפעלות ומפתח API חסומים עד שהאדם מופעל שוב."
-
-#: 
 msgid "This is the mailing address"
 msgstr "זו כתובת הדואר"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "האדם הזה מת או לא פעיל, כך שחשבון זה לא יכול להיכנס"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18910,10 +18826,6 @@ msgid "Account unlocked"
 msgstr "החשבון שוחרר"
 
 #: 
-msgid "Accounts"
-msgstr "חשבונות"
-
-#: 
 msgid "Active must be true or false"
 msgstr "הערך Active חייב להיות true או false"
 
@@ -19106,10 +19018,6 @@ msgid "Author"
 msgstr "מחבר"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "הסמכות ניתנת לאדם, לא לחשבון התחברות, ולכן אפשר להעניק אותה לפני שיש לו חשבון. אדם שחשבונו לשירות עצמי בלבד ימשיך לראות רק את לוח הזמנים שלו עד שמנהל מערכת ירחיב את חשבונו."
-
-#: 
 msgid "Automatic"
 msgstr "אוטומטי"
 
@@ -19232,10 +19140,6 @@ msgstr "בחירת כיתה"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "בחרו יום בחודש מ-1 עד 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "בחירת תמונה חדשה"
 
 #: 
 msgid "Choose a person"
@@ -20008,10 +19912,6 @@ msgid "Last attempt"
 msgstr "ניסיון אחרון"
 
 #: 
-msgid "Last check"
-msgstr "בדיקה אחרונה"
-
-#: 
 msgid "Last date"
 msgstr "תאריך אחרון"
 
@@ -20238,10 +20138,6 @@ msgstr "עדיין לא שותף לוח שנה עם החברים."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "אין לוח שנה הפתוח לשירות זה, ולכן האירועים לא יופיעו באף לוח שנה."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "אין לוח שנה המשותף עם החברים."
 
 #: 
 msgid "No class"
@@ -20778,14 +20674,6 @@ msgid "Please tell us what needs changing."
 msgstr "אנא ספרו לנו מה צריך להשתנות."
 
 #: 
-msgid "Portal settings"
-msgstr "הגדרות הפורטל"
-
-#: 
-msgid "Portal theme"
-msgstr "ערכת נושא של הפורטל"
-
-#: 
 msgid "Position"
 msgstr "תפקיד"
 
@@ -21002,10 +20890,6 @@ msgid "SMTP test"
 msgstr "בדיקת SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "שמירת לוחות השנה"
-
-#: 
 msgid "Save changes"
 msgstr "שמור שינויים"
 
@@ -21016,10 +20900,6 @@ msgstr "נשמר — שירות זה אינו מבקש עוד עזרה"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "נשמר — שירות זה מבקש כעת עזרה"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "נשמר. החברים רואים את לוחות השנה שהופעלו למעלה."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21124,10 +21004,6 @@ msgid "Self-assignable must be true or false"
 msgstr "הערך ניתן לשיבוץ עצמי חייב להיות true או false"
 
 #: 
-msgid "Self-service accounts"
-msgstr "חשבונות שירות עצמי"
-
-#: 
 msgid "Send"
 msgstr "שליחה"
 
@@ -21196,18 +21072,6 @@ msgstr "הצגה בפורטל החברים"
 #: 
 msgid "Show past events"
 msgstr "הצגת אירועי עבר"
-
-#: 
-msgid "Show the church calendar"
-msgstr "הצגת לוח השנה של הקהילה"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "הצגת לוח השנה של הקהילה בפורטל החברים."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "הצגת מדור לוח השנה של הקהילה בפורטל החברים."
 
 #: 
 msgid "Show the next"
@@ -21616,10 +21480,6 @@ msgstr "%s חייב להיות מספר שלם של דקות"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s חייב להיות בטווח של %d דקות מהאירוע"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "לוחות השנה של פורטל החברים נשמרו."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22070,10 +21930,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "צרכים אלה מגיעים מלוח הזמנים. שמירה כאן משנה את המופע הזה בלבד."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "מספרים אלה סופרים חשבונות שירות עצמי בלבד: אנשים שהחשבון שלהם יכול להגיע לפורטל החברים ולא לשום דבר אחר."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "אנשים אלה עדיין משובצים, אך התפקיד שהם מחזיקים אינו עוד חלק מתוכנית האיוש של תאריך זה."
 
@@ -22158,14 +22014,6 @@ msgid "This is not a valid theme folder name."
 msgstr "זה אינו שם תקין של תיקיית ערכת נושא."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "זה אינו אחד מתאריכי הצוות שלכם."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "זה אינו אחד מהצוותים שלכם."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "כאן הקהילה שולחת דואר ואל מי היא מתקשרת בנוגע למשק הבית שלכם."
 
@@ -22224,10 +22072,6 @@ msgstr "דף זה אינו חלק מהחשבון שלכם. אם לדעתכם ה�
 #: 
 msgid "This page was not found"
 msgstr "הדף לא נמצא"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "חלק זה של פורטל החברים מיועד למנהלי צוותי מתנדבים."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23898,16 +23742,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} שובץ ונרשם כמי שאישר"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "בקש ממנהל לשנות את דוא״ל הכניסה שלך."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "מנהל שינה את הדוא״ל מ־%1$s אל %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "רק מנהל יכול לשנות את הדוא״ל של אדם עם חשבון משתמש."
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24392,4 +24228,16 @@ msgstr "מוצגת רק הודעת הדוא״ל ששלחת."
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "לא ניתן היה ליצור אירועים חוזרים. בדוק את יומן היישום לפרטים."
+
+#: 
+msgid "No changes"
+msgstr "אין שינויים"
+
+#: 
+msgid "Set up email"
+msgstr "הגדרת דואר אלקטרוני"
+
+#: 
+msgid "This person is deceased."
+msgstr "אדם זה נפטר"
 

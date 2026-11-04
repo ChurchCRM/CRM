@@ -58,4 +58,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number || inputs.pr }}
-        run: node scripts/dependabot-review.js
+        run: node scripts/maintainer/dependabot-review.js

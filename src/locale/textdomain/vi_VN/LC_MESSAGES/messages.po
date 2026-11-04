@@ -453,10 +453,6 @@ msgid "Family Cell Phone"
 msgstr "Điện thoại gia đình"
 
 #: 
-msgid "Family Email"
-msgstr "Email gia đình"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Điện thoại nhà cá nhân"
 
@@ -3912,10 +3908,6 @@ msgid "Oops! Page not found."
 msgstr "Giáo sư! Không tìm thấy trang."
 
 #: 
-msgid "Family Registration"
-msgstr "Đăng ký Gia đình"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Vui lòng nhập thông tin sau để bắt đầu xác minh gia đình bạn"
 
@@ -5319,24 +5311,8 @@ msgid "Email address"
 msgstr "Địa chỉ Email"
 
 #: 
-msgid "Enter family name"
-msgstr "Nhập tên gia đình"
-
-#: 
 msgid "Family name is required"
 msgstr "Yêu cầu nhập tên hộ gia đình (tộc họ)"
-
-#: 
-msgid "First name"
-msgstr "Tên"
-
-#: 
-msgid "Home phone number"
-msgstr "Số điện thoại nhà"
-
-#: 
-msgid "Last name"
-msgstr "Họ và tên đệm"
 
 #: 
 msgid "Next Member"
@@ -9758,10 +9734,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Chung toi se su dung thong tin nay de giu lien lac va gui cap nhat giao hoi."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Chung toi rat vui ban o day! Dang ky gia dinh cua ban chi trong 3 buoc don gian."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Chao mung tro lai!"
 
@@ -13735,10 +13707,6 @@ msgid "Generate new code"
 msgstr "Tạo mã mới"
 
 #: 
-msgid "Go to homepage"
-msgstr "Di den trang chu"
-
-#: 
 msgid "Group added to cart"
 msgstr "Đã thêm nhóm vào danh sách"
 
@@ -13761,10 +13729,6 @@ msgstr "Chuẩn bị sẵn ứng dụng xác thực (Google Authenticator, Micro
 #: 
 msgid "Hide advanced options"
 msgstr "Ẩn tùy chọn nâng cao"
-
-#: 
-msgid "Home phone is required"
-msgstr "Yêu cầu số điện thoại nhà"
 
 #: 
 msgid "ICS URL"
@@ -14439,10 +14403,6 @@ msgid "Warnings"
 msgstr "Cảnh báo"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Chung toi rat vui gia dinh ban da tham gia!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Chao mung gia nhap gia dinh!"
 
@@ -14497,10 +14457,6 @@ msgstr "Tùy chọn ngôn ngữ trình duyệt của bạn khác với địa ph
 #: 
 msgid "Your database already contains data"
 msgstr "Cơ sở dữ liệu của bạn đã chứa dữ liệu"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Dang ky cua ban da duoc nhan. Doi ngu chung toi se som lien he de don tiep ban."
 
 #: 
 msgid "Zip code is required"
@@ -14579,10 +14535,6 @@ msgid "open rate"
 msgstr "tỉ lệ mở"
 
 #: 
-msgid "our church"
-msgstr "giao hoi cua chung toi"
-
-#: 
 msgid "payment(s)?"
 msgstr "(các) khoản thanh toán?"
 
@@ -14621,14 +14573,6 @@ msgstr "năm"
 #: 
 msgid "yrs"
 msgstr "năm"
-
-#: 
-msgid "Account options"
-msgstr "Tùy chọn tài khoản"
-
-#: 
-msgid "Register"
-msgstr "Đăng ký"
 
 #. Context: locales
 #: 
@@ -14910,16 +14854,8 @@ msgid "Always granted"
 msgstr "Luôn được cấp"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Chỉ có thể xem xét và xác nhận thông tin gia đình của mình. Không có quyền truy cập nào khác."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Chọn các quyền cụ thể bên dưới."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Liên hệ quản trị viên để thay đổi quyền của bạn."
 
 #: 
 msgid "Custom permissions"
@@ -14934,20 +14870,8 @@ msgid "People &amp; Families"
 msgstr "Cá nhân &amp; Gia đình"
 
 #: 
-msgid "Self-service"
-msgstr "Tự phục vụ"
-
-#: 
-msgid "Self-service only"
-msgstr "Chỉ tự phục vụ"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Ghi chú bạn đang cố chỉnh sửa không còn tồn tại."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Người dùng này chỉ có thể xem xét và cập nhật hồ sơ gia đình của mình. Quyền riêng lẻ không áp dụng."
 
 #: 
 msgid "User List"
@@ -18207,16 +18131,8 @@ msgid "Second Home"
 msgstr "Ngôi nhà Thứ hai"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Người được liên kết đã mất hoặc không hoạt động. Đăng nhập, phiên và khóa API bị chặn cho đến khi người đó được kích hoạt lại."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Đây là địa chỉ gửi thư"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Người này đã mất hoặc không hoạt động, do đó tài khoản này không thể đăng nhập"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18897,10 +18813,6 @@ msgid "Account unlocked"
 msgstr "Tài khoản được mở khóa"
 
 #: 
-msgid "Accounts"
-msgstr "Tài khoản"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Hoạt động phải là đúng hoặc sai"
 
@@ -19093,10 +19005,6 @@ msgid "Author"
 msgstr "Tác giả"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Quyền hạn được trao cho người, không phải cho tài khoản đăng nhập, nên có thể trao trước khi họ có tài khoản. Người có tài khoản chỉ tự phục vụ sẽ chỉ thấy lịch của chính mình cho đến khi quản trị viên mở rộng tài khoản."
-
-#: 
 msgid "Automatic"
 msgstr "Tự động"
 
@@ -19219,10 +19127,6 @@ msgstr "Chọn một lớp"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Chọn một ngày trong tháng từ 1 đến 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Chọn ảnh mới"
 
 #: 
 msgid "Choose a person"
@@ -19995,10 +19899,6 @@ msgid "Last attempt"
 msgstr "Lần thử cuối"
 
 #: 
-msgid "Last check"
-msgstr "Lần kiểm tra cuối"
-
-#: 
 msgid "Last date"
 msgstr "Ngày cuối"
 
@@ -20225,10 +20125,6 @@ msgstr "Chưa có lịch nào được chia sẻ với thành viên."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Không có lịch nào mở cho mục vụ này, nên các sự kiện sẽ không hiện trên lịch nào."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Không có lịch nào được chia sẻ với thành viên."
 
 #: 
 msgid "No class"
@@ -20763,14 +20659,6 @@ msgid "Please tell us what needs changing."
 msgstr "Vui lòng cho chúng tôi biết cần thay đổi gì."
 
 #: 
-msgid "Portal settings"
-msgstr "Cài đặt cổng"
-
-#: 
-msgid "Portal theme"
-msgstr "Giao diện cổng"
-
-#: 
 msgid "Position"
 msgstr "Vị trí"
 
@@ -20987,10 +20875,6 @@ msgid "SMTP test"
 msgstr "Kiểm tra SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "Lưu các lịch"
-
-#: 
 msgid "Save changes"
 msgstr "Lưu thay đổi"
 
@@ -21001,10 +20885,6 @@ msgstr "Đã lưu — mục vụ này không còn nhờ giúp đỡ"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Đã lưu — mục vụ này đang nhờ giúp đỡ"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Đã lưu. Thành viên thấy các lịch được bật ở trên."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21109,10 +20989,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Tự phân công được phải là đúng hoặc sai"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Tài khoản tự phục vụ"
-
-#: 
 msgid "Send"
 msgstr "Gửi"
 
@@ -21181,18 +21057,6 @@ msgstr "Hiển thị trong Cổng Hội thánh"
 #: 
 msgid "Show past events"
 msgstr "Hiện sự kiện đã qua"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Hiển thị lịch Hội thánh"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Hiển thị lịch Hội thánh trong Cổng Hội thánh."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Hiển thị phần lịch Hội thánh trong Cổng Hội thánh."
 
 #: 
 msgid "Show the next"
@@ -21601,10 +21465,6 @@ msgstr "%s phải là một số phút nguyên"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s phải nằm trong khoảng %d phút so với sự kiện"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Các lịch của Cổng Hội thánh đã được lưu."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22055,10 +21915,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Các nhu cầu này lấy từ lịch phục vụ. Lưu tại đây chỉ thay đổi lần diễn ra này."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Các con số này chỉ tính tài khoản tự phục vụ: những người có tài khoản chỉ vào được Cổng Hội thánh và không gì khác."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Những người này vẫn được phân công, nhưng vị trí họ giữ không còn thuộc kế hoạch nhân sự của ngày này."
 
@@ -22141,14 +21997,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Đây không phải là tên thư mục giao diện hợp lệ."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Đây không phải là một trong các ngày của đội bạn."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Đây không phải là một trong các đội của bạn."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Đây là nơi Hội thánh gửi thư và gọi điện về gia đình bạn."
 
@@ -22207,10 +22055,6 @@ msgstr "Trang này không thuộc tài khoản của bạn. Nếu bạn nghĩ n�
 #: 
 msgid "This page was not found"
 msgstr "Không tìm thấy trang này"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Phần này của Cổng Hội thánh dành cho các trưởng đội tình nguyện."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23879,16 +23723,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} đã được phân công và ghi nhận là đã nhận"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Nhờ quản trị viên đổi email đăng nhập của bạn."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Quản trị viên đã đổi email từ %1$s thành %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Chỉ quản trị viên mới đổi được email của người có tài khoản người dùng."
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24373,4 +24209,16 @@ msgstr "Chỉ hiển thị email bạn đã gửi."
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Không thể tạo các sự kiện lặp lại. Kiểm tra nhật ký ứng dụng để biết chi tiết."
+
+#: 
+msgid "No changes"
+msgstr "Không thay đổi"
+
+#: 
+msgid "Set up email"
+msgstr "Thiết lập Email"
+
+#: 
+msgid "This person is deceased."
+msgstr "Người này đã qua đời"
 

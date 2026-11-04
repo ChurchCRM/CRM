@@ -439,10 +439,6 @@ msgid "Family Cell Phone"
 msgstr "परिवार का सेल फोन"
 
 #: 
-msgid "Family Email"
-msgstr "परिवार का ईमेल"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "व्यक्तिगत घर का फोन"
 
@@ -3879,10 +3875,6 @@ msgid "Oops! Page not found."
 msgstr "ओह! पृष्ठ नहीं मिला।"
 
 #: 
-msgid "Family Registration"
-msgstr "परिवार पंजीकरण"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "अपने परिवार का सत्यापन शुरू करने के लिए निम्नलिखित दर्ज करें"
 
@@ -5281,24 +5273,8 @@ msgid "Email address"
 msgstr "ईमेल पता"
 
 #: 
-msgid "Enter family name"
-msgstr "परिवार का नाम दर्ज करें"
-
-#: 
 msgid "Family name is required"
 msgstr "परिवार का नाम आवश्यक है"
-
-#: 
-msgid "First name"
-msgstr "पहला नाम"
-
-#: 
-msgid "Home phone number"
-msgstr "घर का फोन नंबर"
-
-#: 
-msgid "Last name"
-msgstr "अंतिम नाम"
 
 #: 
 msgid "Next Member"
@@ -9727,10 +9703,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "हम इसका उपयोग संपर्क में रहने और कलीसिया अपडेट भेजने के लिए करेंगे।"
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "हम बहुत खुश हैं कि आप यहाँ हैं! केवल 3 आसान चरणों में अपने परिवार का पंजीकरण करें।"
-
-#: 
 msgid "Welcome Back!"
 msgstr "वापसी पर स्वागत है!"
 
@@ -13705,10 +13677,6 @@ msgid "Generate new code"
 msgstr "नया कोड उत्पन्न करें"
 
 #: 
-msgid "Go to homepage"
-msgstr "मुख्य पृष्ठ पर जाएँ"
-
-#: 
 msgid "Group added to cart"
 msgstr "समूह को कार्ट में जोड़ा गया"
 
@@ -13731,10 +13699,6 @@ msgstr "अपना प्रमाणीकरण ऐप तैयार र�
 #: 
 msgid "Hide advanced options"
 msgstr "उन्नत विकल्प छिपाएँ"
-
-#: 
-msgid "Home phone is required"
-msgstr "घर का फोन आवश्यक है"
 
 #: 
 msgid "ICS URL"
@@ -14409,10 +14373,6 @@ msgid "Warnings"
 msgstr "चेतावनियाँ"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "हम बहुत खुश हैं कि आपका परिवार हमसे जुड़ गया है!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "परिवार में स्वागत है!"
 
@@ -14467,10 +14427,6 @@ msgstr "आपकी ब्राउज़र भाषा प्राथमि
 #: 
 msgid "Your database already contains data"
 msgstr "आपके डेटाबेस में पहले से डेटा है"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "आपका पंजीकरण प्राप्त हो गया है। हमारी टीम शीघ्र ही आपका व्यक्तिगत रूप से स्वागत करने के लिए संपर्क करेगी।"
 
 #: 
 msgid "Zip code is required"
@@ -14549,10 +14505,6 @@ msgid "open rate"
 msgstr "खुलने की दर"
 
 #: 
-msgid "our church"
-msgstr "हमारी कलीसिया"
-
-#: 
 msgid "payment(s)?"
 msgstr "भुगतान?"
 
@@ -14591,14 +14543,6 @@ msgstr "वर्ष"
 #: 
 msgid "yrs"
 msgstr "वर्ष"
-
-#: 
-msgid "Account options"
-msgstr "खाता विकल्प"
-
-#: 
-msgid "Register"
-msgstr "पंजीकरण करें"
 
 #. Context: locales
 #: 
@@ -14881,16 +14825,8 @@ msgid "Always granted"
 msgstr "हमेशा दी गई"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "केवल अपने परिवार की समीक्षा और सत्यापन कर सकते हैं। कोई अन्य पहुँच नहीं।"
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "नीचे विशिष्ट अनुमतियाँ चुनें।"
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "अपनी अनुमतियाँ बदलने के लिए किसी प्रशासक से संपर्क करें।"
 
 #: 
 msgid "Custom permissions"
@@ -14905,20 +14841,8 @@ msgid "People &amp; Families"
 msgstr "लोग &amp; परिवार"
 
 #: 
-msgid "Self-service"
-msgstr "स्व-सेवा"
-
-#: 
-msgid "Self-service only"
-msgstr "केवल स्व-सेवा"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "जिस नोट को आप संपादित करने का प्रयास कर रहे हैं वह अब मौजूद नहीं है।"
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "यह उपयोगकर्ता केवल अपनी पारिवारिक प्रोफ़ाइल की समीक्षा और अद्यतन कर सकता है। व्यक्तिगत अनुमतियाँ लागू नहीं होती हैं।"
 
 #: 
 msgid "User List"
@@ -18183,16 +18107,8 @@ msgid "Second Home"
 msgstr "दूसरा घर"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "संबद्ध व्यक्ति दिवंगत या निष्क्रिय है। व्यक्ति के पुनः सक्रिय होने तक साइन-इन, सत्र और API कुंजी अवरुद्ध हैं।"
-
-#: 
 msgid "This is the mailing address"
 msgstr "यह डाक पता है"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "यह व्यक्ति दिवंगत या निष्क्रिय है, इसलिए यह खाता साइन इन नहीं कर सकता"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18881,10 +18797,6 @@ msgid "Account unlocked"
 msgstr "खाता अनलॉक किया गया"
 
 #: 
-msgid "Accounts"
-msgstr "खाते"
-
-#: 
 msgid "Active must be true or false"
 msgstr "सक्रिय सत्य या असत्य होना चाहिए"
 
@@ -19077,10 +18989,6 @@ msgid "Author"
 msgstr "लेखक"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "अधिकार व्यक्ति को दिया जाता है, लॉगिन को नहीं, इसलिए यह लॉगिन होने से पहले भी दिया जा सकता है। जिस व्यक्ति का लॉगिन केवल स्व-सेवा का है वह तब तक केवल अपनी अनुसूची देखता रहता है जब तक व्यवस्थापक उसका खाता विस्तृत नहीं करता।"
-
-#: 
 msgid "Automatic"
 msgstr "स्वचालित"
 
@@ -19203,10 +19111,6 @@ msgstr "कक्षा चुनें"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "माह का एक दिन 1 से 31 के बीच चुनें"
-
-#: 
-msgid "Choose a new photo"
-msgstr "नई फ़ोटो चुनें"
 
 #: 
 msgid "Choose a person"
@@ -19979,10 +19883,6 @@ msgid "Last attempt"
 msgstr "अंतिम प्रयास"
 
 #: 
-msgid "Last check"
-msgstr "अंतिम जाँच"
-
-#: 
 msgid "Last date"
 msgstr "अंतिम तारीख़"
 
@@ -20209,10 +20109,6 @@ msgstr "अभी तक सदस्यों के साथ कोई कै
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "इस सेवकाई के लिए कोई कैलेंडर खुला नहीं है, इसलिए आयोजन किसी कैलेंडर पर नहीं दिखेंगे।"
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "सदस्यों के साथ कोई कैलेंडर साझा नहीं है।"
 
 #: 
 msgid "No class"
@@ -20749,14 +20645,6 @@ msgid "Please tell us what needs changing."
 msgstr "कृपया बताएँ कि क्या बदलना है।"
 
 #: 
-msgid "Portal settings"
-msgstr "पोर्टल सेटिंग"
-
-#: 
-msgid "Portal theme"
-msgstr "पोर्टल थीम"
-
-#: 
 msgid "Position"
 msgstr "पद"
 
@@ -20973,10 +20861,6 @@ msgid "SMTP test"
 msgstr "SMTP परीक्षण"
 
 #: 
-msgid "Save calendars"
-msgstr "कैलेंडर सहेजें"
-
-#: 
 msgid "Save changes"
 msgstr "परिवर्तन सहेजें"
 
@@ -20987,10 +20871,6 @@ msgstr "सहेजा गया — यह सेवकाई अब सहा
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "सहेजा गया — यह सेवकाई अब सहायता माँग रही है"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "सहेजा गया। सदस्य ऊपर चालू किए गए कैलेंडर देखते हैं।"
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21095,10 +20975,6 @@ msgid "Self-assignable must be true or false"
 msgstr "स्वयं नियुक्त होने योग्य सत्य या असत्य होना चाहिए"
 
 #: 
-msgid "Self-service accounts"
-msgstr "स्व-सेवा खाते"
-
-#: 
 msgid "Send"
 msgstr "भेजें"
 
@@ -21167,18 +21043,6 @@ msgstr "सदस्य पोर्टल में दिखाएँ"
 #: 
 msgid "Show past events"
 msgstr "पिछले आयोजन दिखाएँ"
-
-#: 
-msgid "Show the church calendar"
-msgstr "कलीसिया कैलेंडर दिखाएँ"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "सदस्य पोर्टल में कलीसिया कैलेंडर दिखाएँ।"
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "सदस्य पोर्टल में कलीसिया कैलेंडर अनुभाग दिखाएँ।"
 
 #: 
 msgid "Show the next"
@@ -21587,10 +21451,6 @@ msgstr "%s मिनटों की पूर्ण संख्या हो�
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s आयोजन के %d मिनट के भीतर होना चाहिए"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "सदस्य पोर्टल कैलेंडर सहेजे गए।"
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22041,10 +21901,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "ये आवश्यकताएँ अनुसूची से आती हैं। यहाँ सहेजने से केवल यह अवसर बदलता है।"
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "ये संख्याएँ केवल स्व-सेवा खातों को गिनती हैं: वे लोग जिनका लॉगिन केवल सदस्य पोर्टल तक पहुँच सकता है और कहीं नहीं।"
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "ये लोग अब भी नियुक्त हैं, लेकिन जो पद वे संभालते हैं वह अब इस तारीख़ की नियुक्ति योजना का हिस्सा नहीं है।"
 
@@ -22129,14 +21985,6 @@ msgid "This is not a valid theme folder name."
 msgstr "यह मान्य थीम फ़ोल्डर नाम नहीं है।"
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "यह आपकी टीम की तारीख़ों में से नहीं है।"
-
-#: 
-msgid "This is not one of your teams."
-msgstr "यह आपकी टीमों में से नहीं है।"
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "यहीं कलीसिया डाक भेजती है और आपके घराने के बारे में किसे फ़ोन करती है।"
 
@@ -22195,10 +22043,6 @@ msgstr "यह पृष्ठ आपके खाते का हिस्स�
 #: 
 msgid "This page was not found"
 msgstr "यह पृष्ठ नहीं मिला"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "सदस्य पोर्टल का यह भाग स्वयंसेवक टीम अगुआओं के लिए है।"
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23869,16 +23713,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} नियुक्त हुआ और स्वीकार के रूप में दर्ज हुआ"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "अपना प्रवेश ईमेल बदलने के लिए प्रशासक से कहें।"
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "प्रशासक ने ईमेल %1$s से %2$s में बदला"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "उपयोगकर्ता खाते वाले व्यक्ति का ईमेल केवल प्रशासक बदल सकता है।"
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24363,4 +24199,16 @@ msgstr "केवल आपके द्वारा भेजा गया ई�
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "दोहराए जाने वाले कार्यक्रम नहीं बनाए जा सके। विवरण के लिए एप्लिकेशन लॉग देखें।"
+
+#: 
+msgid "No changes"
+msgstr "कोई बदलाव नहीं"
+
+#: 
+msgid "Set up email"
+msgstr "ईमेल सेट अप करें"
+
+#: 
+msgid "This person is deceased."
+msgstr "यह व्यक्ति दिवंगत है"
 

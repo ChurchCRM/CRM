@@ -77,7 +77,7 @@ cy.makePrivateAdminAPICall("POST", "/api/events", event, 200).then(({ body }) =>
 });
 ```
 
-`npm run lint` runs `scripts/validate-cypress-db-access.js` over `cypress/`. A file may use SQL only when `cypress/db-access.json` approves it (`kind` `schema` or `fixture`, and a `reason`) or its baseline allows that many uses. Approval is for schema specs and support utilities; a behavior spec sits on the baseline. The baseline only goes down: after moving a spec to the API, run `node scripts/validate-cypress-db-access.js --update`. `--report` prints the counts by category. The `db:query` and `db:upgradeBlock` tasks enforce the same list at run time: they refuse a spec the list does not name, and only an approved schema spec changes the schema or runs an upgrade block. If an endpoint lacks what a real client needs (an id, a field), fix the endpoint; do not add one only for tests.
+`npm run lint` checks SQL use under `cypress/`. A file may use SQL only when `cypress/db-access.json` approves it (`kind` `schema` or `fixture`, and a `reason`) or its baseline allows that many uses. Approval is for schema specs and support utilities; a behavior spec sits on the baseline. The baseline only goes down: after moving a spec to the API, run `node scripts/lint/validate-cypress-db-access.js --update`. `--report` prints the counts by category. The `db:query` and `db:upgradeBlock` tasks enforce the same list at run time: they refuse a spec the list does not name, and only an approved schema spec changes the schema or runs an upgrade block. If an endpoint lacks what a real client needs (an id, a field), fix the endpoint; do not add one only for tests.
 
 ## PDF reports
 

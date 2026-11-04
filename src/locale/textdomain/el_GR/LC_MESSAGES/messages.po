@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "Οικογενειακό κινητό τηλέφωνο"
 
 #: 
-msgid "Family Email"
-msgstr "Οικογενειακό email"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Προσωπικό τηλέφωνο σπιτιού"
 
@@ -3901,10 +3897,6 @@ msgid "Oops! Page not found."
 msgstr "Ωχ! Η σελίδα δεν βρέθηκε."
 
 #: 
-msgid "Family Registration"
-msgstr "Εγγραφή Οικογένειας"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Εισαγάγετε τα ακόλουθα για να ξεκινήσετε την επαλήθευση της οικογένειάς σας"
 
@@ -5312,24 +5304,8 @@ msgid "Email address"
 msgstr "Διεύθυνση email"
 
 #: 
-msgid "Enter family name"
-msgstr "Εισάγετε όνομα οικογένειας"
-
-#: 
 msgid "Family name is required"
 msgstr "Το όνομα της οικογένειας είναι απαραίτητο"
-
-#: 
-msgid "First name"
-msgstr "Όνομα"
-
-#: 
-msgid "Home phone number"
-msgstr "Αριθμός τηλεφώνου του σπιτιού"
-
-#: 
-msgid "Last name"
-msgstr "Επώνυμο"
 
 #: 
 msgid "Next Member"
@@ -9758,10 +9734,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Θα το χρησιμοποιήσουμε για να μένουμε σε επαφή και να στέλνουμε ενημερώσεις της ενορίας."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Χαιρόμαστε πολύ που είστε εδώ! Εγγράψτε την οικογένειά σας σε μόλις 3 εύκολα βήματα."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Καλώς ήρθατε ξανά!"
 
@@ -13736,10 +13708,6 @@ msgid "Generate new code"
 msgstr "Δημιουργία νέου κωδικού"
 
 #: 
-msgid "Go to homepage"
-msgstr "Μετάβαση στην αρχική σελίδα"
-
-#: 
 msgid "Group added to cart"
 msgstr "Ομάδα προστέθηκε στο καλάθι"
 
@@ -13762,10 +13730,6 @@ msgstr "Έχετε έτοιμη την εφαρμογή ελέγχου ταυτ�
 #: 
 msgid "Hide advanced options"
 msgstr "Απόκρυψη προχωρημένων επιλογών"
-
-#: 
-msgid "Home phone is required"
-msgstr "Το τηλέφωνο του σπιτιού είναι απαραίτητο"
 
 #: 
 msgid "ICS URL"
@@ -14440,10 +14404,6 @@ msgid "Warnings"
 msgstr "Προειδοποιήσεις"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Χαιρόμαστε πολύ που η οικογένειά σας ενώθηκε μαζί μας!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Καλώς ήρθατε στην οικογένεια!"
 
@@ -14498,10 +14458,6 @@ msgstr "Η προτίμηση γλώσσας του προγράμματος π�
 #: 
 msgid "Your database already contains data"
 msgstr "Η βάση δεδομένων σας περιέχει ήδη δεδομένα"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Η εγγραφή σας ελήφθη. Η ομάδα μας θα επικοινωνήσει σύντομα για να σας καλωσορίσει προσωπικά."
 
 #: 
 msgid "Zip code is required"
@@ -14580,10 +14536,6 @@ msgid "open rate"
 msgstr "ανοικτό ποσοστό"
 
 #: 
-msgid "our church"
-msgstr "η ενορία μας"
-
-#: 
 msgid "payment(s)?"
 msgstr "πληρωμές;"
 
@@ -14622,14 +14574,6 @@ msgstr "έτ."
 #: 
 msgid "yrs"
 msgstr "έτη"
-
-#: 
-msgid "Account options"
-msgstr "Επιλογές λογαριασμού"
-
-#: 
-msgid "Register"
-msgstr "Εγγραφή"
 
 #. Context: locales
 #: 
@@ -14912,16 +14856,8 @@ msgid "Always granted"
 msgstr "Πάντα χορηγείται"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Μπορεί να ελέγχει και να επαληθεύει μόνο τη δική του οικογένεια. Καμία άλλη πρόσβαση."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Επιλέξτε συγκεκριμένες άδειες παρακάτω."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Επικοινωνήστε με έναν διαχειριστή για να αλλάξετε τις άδειές σας."
 
 #: 
 msgid "Custom permissions"
@@ -14936,20 +14872,8 @@ msgid "People &amp; Families"
 msgstr "Ενορίτες &amp; Οικογένειες"
 
 #: 
-msgid "Self-service"
-msgstr "Αυτοεξυπηρέτηση"
-
-#: 
-msgid "Self-service only"
-msgstr "Μόνο αυτοεξυπηρέτηση"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Η σημείωση που προσπαθείτε να επεξεργαστείτε δεν υπάρχει πλέον."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Αυτός ο χρήστης μπορεί να ελέγχει και να ενημερώνει μόνο το προφίλ της δικής του οικογένειας. Οι επιμέρους άδειες δεν ισχύουν."
 
 #: 
 msgid "User List"
@@ -18214,16 +18138,8 @@ msgid "Second Home"
 msgstr "Δεύτερη κατοικία"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Το συνδεδεμένο άτομο είναι αποθανόν ή ανενεργό. Η σύνδεση, οι περίοδοι και το κλειδί API αποκλείονται έως ότου το άτομο ενεργοποιηθεί ξανά."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Αυτή είναι η διεύθυνση αλληλογραφίας"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Αυτό το άτομο είναι αποθανόν ή ανενεργό, οπότε αυτός ο λογαριασμός δεν μπορεί να συνδεθεί"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18912,10 +18828,6 @@ msgid "Account unlocked"
 msgstr "Ο λογαριασμός ξεκλειδώθηκε"
 
 #: 
-msgid "Accounts"
-msgstr "Λογαριασμοί"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Το πεδίο Ενεργό πρέπει να είναι αληθές ή ψευδές"
 
@@ -19108,10 +19020,6 @@ msgid "Author"
 msgstr "Συγγραφέας"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Η εξουσία δίνεται στο άτομο, όχι σε μια σύνδεση, ώστε να μπορεί να παραχωρηθεί πριν αποκτήσει σύνδεση. Ένα άτομο του οποίου η σύνδεση είναι μόνο αυτοεξυπηρέτησης βλέπει μόνο το δικό του πρόγραμμα μέχρι να διευρύνει τον λογαριασμό του ένας διαχειριστής."
-
-#: 
 msgid "Automatic"
 msgstr "Αυτόματο"
 
@@ -19234,10 +19142,6 @@ msgstr "Επιλέξτε τάξη"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Επιλέξτε ημέρα του μήνα από 1 έως 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Επιλέξτε νέα φωτογραφία"
 
 #: 
 msgid "Choose a person"
@@ -20010,10 +19914,6 @@ msgid "Last attempt"
 msgstr "Τελευταία προσπάθεια"
 
 #: 
-msgid "Last check"
-msgstr "Τελευταίος έλεγχος"
-
-#: 
 msgid "Last date"
 msgstr "Τελευταία ημερομηνία"
 
@@ -20240,10 +20140,6 @@ msgstr "Κανένα ημερολόγιο δεν έχει κοινοποιηθε
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Κανένα ημερολόγιο δεν είναι ανοιχτό σε αυτή τη διακονία, επομένως οι εκδηλώσεις δεν θα εμφανίζονται σε κανένα ημερολόγιο."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Κανένα ημερολόγιο δεν κοινοποιείται στα μέλη."
 
 #: 
 msgid "No class"
@@ -20780,14 +20676,6 @@ msgid "Please tell us what needs changing."
 msgstr "Πείτε μας τι πρέπει να αλλάξει."
 
 #: 
-msgid "Portal settings"
-msgstr "Ρυθμίσεις πύλης"
-
-#: 
-msgid "Portal theme"
-msgstr "Θέμα πύλης"
-
-#: 
 msgid "Position"
 msgstr "Θέση"
 
@@ -21004,10 +20892,6 @@ msgid "SMTP test"
 msgstr "Δοκιμή SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "Αποθήκευση ημερολογίων"
-
-#: 
 msgid "Save changes"
 msgstr "Αποθήκευσε τις αλλαγές"
 
@@ -21018,10 +20902,6 @@ msgstr "Αποθηκεύτηκε — αυτή η διακονία δεν ζητ�
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Αποθηκεύτηκε — αυτή η διακονία ζητά πλέον βοήθεια"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Αποθηκεύτηκε. Τα μέλη βλέπουν τα ημερολόγια που είναι ενεργοποιημένα παραπάνω."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21126,10 +21006,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Η αυτόνομη ανάθεση πρέπει να είναι αληθής ή ψευδής"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Λογαριασμοί αυτοεξυπηρέτησης"
-
-#: 
 msgid "Send"
 msgstr "Αποστολή"
 
@@ -21198,18 +21074,6 @@ msgstr "Εμφάνιση στην Πύλη μελών"
 #: 
 msgid "Show past events"
 msgstr "Εμφάνιση παρελθουσών εκδηλώσεων"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Εμφάνιση του ημερολογίου της εκκλησίας"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Εμφάνιση του ημερολογίου της εκκλησίας στην Πύλη μελών."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Εμφάνιση της ενότητας ημερολογίου της εκκλησίας στην Πύλη μελών."
 
 #: 
 msgid "Show the next"
@@ -21618,10 +21482,6 @@ msgstr "Το πεδίο %s πρέπει να είναι ακέραιος αρι�
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "Το πεδίο %s πρέπει να είναι εντός %d λεπτών από την εκδήλωση"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Τα ημερολόγια της Πύλης μελών αποθηκεύτηκαν."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22072,10 +21932,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Αυτές οι ανάγκες προέρχονται από το πρόγραμμα. Η αποθήκευση εδώ αλλάζει μόνο αυτή την πραγματοποίηση."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Αυτοί οι αριθμοί μετρούν μόνο λογαριασμούς αυτοεξυπηρέτησης: άτομα των οποίων η σύνδεση έχει πρόσβαση στην Πύλη μελών και μόνο σε αυτήν."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Αυτά τα άτομα είναι ακόμη ανατεθειμένα, αλλά η θέση που κατέχουν δεν είναι πια μέρος του σχεδίου στελέχωσης αυτής της ημερομηνίας."
 
@@ -22160,14 +22016,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Αυτό δεν είναι έγκυρο όνομα φακέλου θέματος."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Αυτή δεν είναι μία από τις ημερομηνίες της ομάδας σας."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Αυτή δεν είναι μία από τις ομάδες σας."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Εδώ η εκκλησία στέλνει αλληλογραφία και εδώ ποιον καλεί για το νοικοκυριό σας."
 
@@ -22226,10 +22074,6 @@ msgstr "Αυτή η σελίδα δεν είναι μέρος του λογαρ�
 #: 
 msgid "This page was not found"
 msgstr "Αυτή η σελίδα δεν βρέθηκε"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Αυτό το τμήμα της Πύλης μελών είναι για υπεύθυνους εθελοντικών ομάδων."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23900,16 +23744,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "Το πρόσωπο {{name}} ανατέθηκε και καταγράφηκε ως αποδεκτό"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Ζητήστε από έναν διαχειριστή να αλλάξει το ηλ. ταχυδρομείο σύνδεσής σας."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Το ηλ. ταχυδρομείο άλλαξε από διαχειριστή από %1$s σε %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Μόνο διαχειριστής μπορεί να αλλάξει το ηλ. ταχυδρομείο προσώπου με λογαριασμό χρήστη."
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24394,4 +24230,16 @@ msgstr "Εμφανίζεται μόνο το email που στείλατε."
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Δεν ήταν δυνατή η δημιουργία επαναλαμβανόμενων εκδηλώσεων. Ελέγξτε το αρχείο καταγραφής της εφαρμογής για λεπτομέρειες."
+
+#: 
+msgid "No changes"
+msgstr "Χωρίς αλλαγές"
+
+#: 
+msgid "Set up email"
+msgstr "Ρύθμιση email"
+
+#: 
+msgid "This person is deceased."
+msgstr "Αυτό το άτομο έχει αποβιώσει"
 

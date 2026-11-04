@@ -24,7 +24,7 @@ $app->group('/api/system/logs', function (RouteCollectorProxy $group): void {
         // Fall back to temp directory if application logs are there
         $tempLogPattern = sys_get_temp_dir() . '/churchcrm-*.log';
         if (!empty(glob($tempLogPattern)) || defined('UNIT_TEST')) {
-            // Temp directory has logs or we're in tests, use it
+            // Temp directory has logs or the unit-test constant is set, use it
             return sys_get_temp_dir();
         }
         

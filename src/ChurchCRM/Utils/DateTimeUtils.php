@@ -182,7 +182,7 @@ class DateTimeUtils
      * Return the number of days in a given month/year.
      *
      * Use this instead of `cal_days_in_month()` — the PHP calendar extension
-     * is not enabled in all environments (notably the Docker test image).
+     * is not enabled in all environments (notably the Docker image).
      *
      * @param int $month The month (1-12)
      * @param int $year  The year (e.g., 2026)

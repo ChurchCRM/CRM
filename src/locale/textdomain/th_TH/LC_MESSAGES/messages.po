@@ -448,10 +448,6 @@ msgid "Family Cell Phone"
 msgstr "โทรศัพท์มือถือครอบครัว"
 
 #: 
-msgid "Family Email"
-msgstr "อีเมลครอบครัว"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "โทรศัพท์บ้านส่วนตัว"
 
@@ -3888,10 +3884,6 @@ msgid "Oops! Page not found."
 msgstr "อุ๊ปส์! ไม่พบหน้า"
 
 #: 
-msgid "Family Registration"
-msgstr "การลงทะเบียนครอบครัว"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "กรุณาป้อนข้อมูลต่อไปนี้เพื่อเริ่มการยืนยันครอบครัวของคุณ"
 
@@ -5289,24 +5281,8 @@ msgid "Email address"
 msgstr "ที่อยู่อีเมล"
 
 #: 
-msgid "Enter family name"
-msgstr "ป้อนชื่อครอบครัว"
-
-#: 
 msgid "Family name is required"
 msgstr "ต้องมีชื่อครอบครัว"
-
-#: 
-msgid "First name"
-msgstr "ชื่อจริง"
-
-#: 
-msgid "Home phone number"
-msgstr "หมายเลขโทรศัพท์บ้าน"
-
-#: 
-msgid "Last name"
-msgstr "นามสกุล"
 
 #: 
 msgid "Next Member"
@@ -9728,10 +9704,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "เราจะใช้ข้อมูลนี้เพื่อติดต่อและส่งข่าวสารคริสตจักร"
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "ยินดีที่คุณมาที่นี่! ลงทะเบียนครอบครัวของคุณใน 3 ขั้นตอนง่ายๆ"
-
-#: 
 msgid "Welcome Back!"
 msgstr "ยินดีต้อนรับกลับ!"
 
@@ -13705,10 +13677,6 @@ msgid "Generate new code"
 msgstr "สร้างรหัสใหม่"
 
 #: 
-msgid "Go to homepage"
-msgstr "ไปยังหน้าหลัก"
-
-#: 
 msgid "Group added to cart"
 msgstr "เพิ่มกลุ่มลงในตะกร้าแล้ว"
 
@@ -13731,10 +13699,6 @@ msgstr "เตรียมแอปยืนยันตัวตนของค
 #: 
 msgid "Hide advanced options"
 msgstr "ซ่อนตัวเลือกขั้นสูง"
-
-#: 
-msgid "Home phone is required"
-msgstr "ต้องมีโทรศัพท์บ้าน"
 
 #: 
 msgid "ICS URL"
@@ -14409,10 +14373,6 @@ msgid "Warnings"
 msgstr "คำเตือน"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "ยินดีที่ครอบครัวของคุณเข้าร่วมกับเรา!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "ยินดีต้อนรับสู่ครอบครัว!"
 
@@ -14467,10 +14427,6 @@ msgstr "การตั้งค่าภาษาในเบราว์เซ
 #: 
 msgid "Your database already contains data"
 msgstr "ฐานข้อมูลของคุณมีข้อมูลอยู่แล้ว"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "ได้รับการลงทะเบียนของคุณแล้ว ทีมของเราจะติดต่อเพื่อต้อนรับคุณเป็นการส่วนตัวในเร็วๆ นี้"
 
 #: 
 msgid "Zip code is required"
@@ -14549,10 +14505,6 @@ msgid "open rate"
 msgstr "อัตราการเปิด"
 
 #: 
-msgid "our church"
-msgstr "คริสตจักรของเรา"
-
-#: 
 msgid "payment(s)?"
 msgstr "การชำระเงิน?"
 
@@ -14591,14 +14543,6 @@ msgstr "ปี"
 #: 
 msgid "yrs"
 msgstr "ปี"
-
-#: 
-msgid "Account options"
-msgstr "ตัวเลือกบัญชี"
-
-#: 
-msgid "Register"
-msgstr "ลงทะเบียน"
 
 #. Context: locales
 #: 
@@ -14880,16 +14824,8 @@ msgid "Always granted"
 msgstr "ได้รับสิทธิ์เสมอ"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "สามารถตรวจสอบและยืนยันข้อมูลครอบครัวของตนเองเท่านั้น ไม่มีสิทธิ์เข้าถึงอื่น"
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "เลือกสิทธิ์เฉพาะด้านล่าง"
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "ติดต่อผู้ดูแลระบบเพื่อเปลี่ยนแปลงสิทธิ์ของคุณ"
 
 #: 
 msgid "Custom permissions"
@@ -14904,20 +14840,8 @@ msgid "People &amp; Families"
 msgstr "ผู้คน &amp; ครอบครัว"
 
 #: 
-msgid "Self-service"
-msgstr "บริการด้วยตนเอง"
-
-#: 
-msgid "Self-service only"
-msgstr "บริการด้วยตนเองเท่านั้น"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "บันทึกที่คุณพยายามแก้ไขไม่มีอยู่อีกต่อไปแล้ว"
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "ผู้ใช้นี้สามารถตรวจสอบและอัปเดตโปรไฟล์ครอบครัวของตนเองเท่านั้น สิทธิ์รายบุคคลไม่มีผลบังคับใช้"
 
 #: 
 msgid "User List"
@@ -18177,16 +18101,8 @@ msgid "Second Home"
 msgstr "บ้านที่สอง"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "บุคคลที่เชื่อมโยงเสียชีวิตแล้วหรือไม่ทำงาน การเข้าสู่ระบบ เซสชัน และคีย์ API ถูกบล็อก จนกว่าบุคคลดังกล่าวจะทำให้ใช้งานได้อีกครั้ง"
-
-#: 
 msgid "This is the mailing address"
 msgstr "นี่คือที่อยู่สำหรับส่งจดหมาย"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "บุคคลนี้เสียชีวิตแล้วหรือไม่ทำงาน ดังนั้นบัญชีนี้ไม่สามารถเข้าสู่ระบบได้"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18867,10 +18783,6 @@ msgid "Account unlocked"
 msgstr "บัญชีถูกปลดล็อค"
 
 #: 
-msgid "Accounts"
-msgstr "บัญชี"
-
-#: 
 msgid "Active must be true or false"
 msgstr "ค่า Active ต้องเป็นจริงหรือเท็จ"
 
@@ -19063,10 +18975,6 @@ msgid "Author"
 msgstr "ผู้เขียน"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "สิทธิ์มอบให้กับบุคคล ไม่ใช่บัญชีผู้ใช้ จึงมอบให้ได้ก่อนที่เขามีบัญชี บุคคลที่บัญชีใช้ได้เฉพาะบริการตนเองจะเห็นเพียงตารางของตนเองจนกว่าผู้ดูแลระบบจะขยายสิทธิ์บัญชี"
-
-#: 
 msgid "Automatic"
 msgstr "อัตโนมัติ"
 
@@ -19189,10 +19097,6 @@ msgstr "เลือกชั้นเรียน"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "เลือกวันของเดือนตั้งแต่ 1 ถึง 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "เลือกรูปภาพใหม่"
 
 #: 
 msgid "Choose a person"
@@ -19965,10 +19869,6 @@ msgid "Last attempt"
 msgstr "ความพยายามล่าสุด"
 
 #: 
-msgid "Last check"
-msgstr "การตรวจสอบล่าสุด"
-
-#: 
 msgid "Last date"
 msgstr "วันที่สุดท้าย"
 
@@ -20195,10 +20095,6 @@ msgstr "ยังไม่มีการแชร์ปฏิทินให้
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "ไม่มีปฏิทินเปิดให้พันธกิจนี้ กิจกรรมจึงจะไม่แสดงในปฏิทินใด"
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "ไม่มีการแชร์ปฏิทินให้สมาชิก"
 
 #: 
 msgid "No class"
@@ -20733,14 +20629,6 @@ msgid "Please tell us what needs changing."
 msgstr "โปรดแจ้งเราว่าต้องเปลี่ยนอะไร"
 
 #: 
-msgid "Portal settings"
-msgstr "การตั้งค่าพอร์ทัล"
-
-#: 
-msgid "Portal theme"
-msgstr "ธีมพอร์ทัล"
-
-#: 
 msgid "Position"
 msgstr "ตำแหน่ง"
 
@@ -20957,10 +20845,6 @@ msgid "SMTP test"
 msgstr "ทดสอบ SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "บันทึกปฏิทิน"
-
-#: 
 msgid "Save changes"
 msgstr "บันทึกการเปลี่ยนแปลง"
 
@@ -20971,10 +20855,6 @@ msgstr "บันทึกแล้ว — พันธกิจนี้ไม�
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "บันทึกแล้ว — พันธกิจนี้กำลังขอความช่วยเหลือ"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "บันทึกแล้ว สมาชิกเห็นปฏิทินที่เปิดไว้ด้านบน"
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21079,10 +20959,6 @@ msgid "Self-assignable must be true or false"
 msgstr "ค่ามอบหมายตนเองได้ต้องเป็นจริงหรือเท็จ"
 
 #: 
-msgid "Self-service accounts"
-msgstr "บัญชีบริการตนเอง"
-
-#: 
 msgid "Send"
 msgstr "ส่ง"
 
@@ -21151,18 +21027,6 @@ msgstr "แสดงในพอร์ทัลสมาชิก"
 #: 
 msgid "Show past events"
 msgstr "แสดงกิจกรรมที่ผ่านมา"
-
-#: 
-msgid "Show the church calendar"
-msgstr "แสดงปฏิทินคริสตจักร"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "แสดงปฏิทินคริสตจักรในพอร์ทัลสมาชิก"
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "แสดงส่วนปฏิทินคริสตจักรในพอร์ทัลสมาชิก"
 
 #: 
 msgid "Show the next"
@@ -21571,10 +21435,6 @@ msgstr "%s ต้องเป็นจำนวนเต็มของนาท
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s ต้องอยู่ภายใน %d นาทีของกิจกรรม"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "บันทึกปฏิทินของพอร์ทัลสมาชิกแล้ว"
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22025,10 +21885,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "ความต้องการเหล่านี้มาจากตารางเวลา การบันทึกที่นี่เปลี่ยนเฉพาะรอบนี้"
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "ตัวเลขเหล่านี้นับเฉพาะบัญชีบริการตนเอง คือผู้ที่บัญชีเข้าถึงได้เฉพาะพอร์ทัลสมาชิกเท่านั้น"
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "คนเหล่านี้ยังคงถูกมอบหมาย แต่ตำแหน่งที่ดำรงอยู่ไม่ได้เป็นส่วนของแผนกำลังคนของวันนี้อีกแล้ว"
 
@@ -22111,14 +21967,6 @@ msgid "This is not a valid theme folder name."
 msgstr "นี่ไม่ใช่ชื่อโฟลเดอร์ธีมที่ถูกต้อง"
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "นี่ไม่ใช่วันที่ของทีมคุณ"
-
-#: 
-msgid "This is not one of your teams."
-msgstr "นี่ไม่ใช่ทีมของคุณ"
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "ที่นี่คือที่ที่คริสตจักรส่งไปรษณีย์และโทรหาเกี่ยวกับครัวเรือนของคุณ"
 
@@ -22177,10 +22025,6 @@ msgstr "หน้านี้ไม่ใช่ส่วนของบัญช
 #: 
 msgid "This page was not found"
 msgstr "ไม่พบหน้านี้"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "ส่วนนี้ของพอร์ทัลสมาชิกสำหรับหัวหน้าทีมอาสาสมัคร"
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23849,16 +23693,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "มอบหมาย {{name}} แล้วและบันทึกว่าตอบรับ"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "ขอให้ผู้ดูแลระบบเปลี่ยนอีเมลสำหรับเข้าสู่ระบบของคุณ"
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "ผู้ดูแลระบบเปลี่ยนอีเมลจาก %1$s เป็น %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "มีเพียงผู้ดูแลระบบที่เปลี่ยนอีเมลของบุคคลที่มีบัญชีผู้ใช้ได้"
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24343,4 +24179,16 @@ msgstr "แสดงเฉพาะอีเมลที่คุณส่งเ
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "ไม่สามารถสร้างกิจกรรมซ้ำได้ โปรดตรวจสอบบันทึกแอปพลิเคชันสำหรับรายละเอียด"
+
+#: 
+msgid "No changes"
+msgstr "ไม่มีการเปลี่ยนแปลง"
+
+#: 
+msgid "Set up email"
+msgstr "ตั้งค่าอีเมล"
+
+#: 
+msgid "This person is deceased."
+msgstr "บุคคลนี้เสียชีวิตแล้ว"
 

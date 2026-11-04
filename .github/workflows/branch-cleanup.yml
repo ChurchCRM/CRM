@@ -1,0 +1,24 @@
+name: "Branches: delete branches without open PRs"
+
+on:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  delete-branches:
+    name: Delete unused repository branches
+    runs-on: ubuntu-latest
+    concurrency:
+      group: delete-unused-branches
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Delete branches without open PRs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node scripts/maintainer/cleanup-branches.js

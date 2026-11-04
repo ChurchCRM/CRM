@@ -16,7 +16,7 @@ agents obtain permission before switching that checkout for Docker testing.
 git fetch origin
 git switch feature/member-sign-in
 git merge --ff-only origin/feature/member-sign-in
-bash scripts/setup-dev.sh --integration
+bash scripts/dev/setup-dev.sh --integration
 npm run env:check -- integration --services
 ```
 

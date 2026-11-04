@@ -437,10 +437,6 @@ msgid "Family Cell Phone"
 msgstr "Családi mobiltelefon"
 
 #: 
-msgid "Family Email"
-msgstr "Családi Email"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Személyes otthoni telefon"
 
@@ -3935,10 +3931,6 @@ msgid "Oops! Page not found."
 msgstr "Hoppá! Az oldal nem található."
 
 #: 
-msgid "Family Registration"
-msgstr "Családi regisztráció"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Kérjük, adja meg a következőket a család ellenőrzésének megkezdéséhez"
 
@@ -5338,24 +5330,8 @@ msgid "Email address"
 msgstr "E-mail cím"
 
 #: 
-msgid "Enter family name"
-msgstr "Adjon meg család nevet"
-
-#: 
 msgid "Family name is required"
 msgstr "A család neve szükséges"
-
-#: 
-msgid "First name"
-msgstr "Keresztnév"
-
-#: 
-msgid "Home phone number"
-msgstr "Saját telefonszám"
-
-#: 
-msgid "Last name"
-msgstr "Vezetéknév"
 
 #: 
 msgid "Next Member"
@@ -9784,10 +9760,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Ezt fogjuk használni a kapcsolattartáshoz és a gyülekezeti hírek küldéséhez."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Nagyon örülünk, hogy itt van! Regisztrálja családját mindössze 3 egyszerű lépésben."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Üdvözöljük újra!"
 
@@ -13762,10 +13734,6 @@ msgid "Generate new code"
 msgstr "Új kód generálása"
 
 #: 
-msgid "Go to homepage"
-msgstr "Ugrás a kezdőlapra"
-
-#: 
 msgid "Group added to cart"
 msgstr "Csoport hozzáadva a kosárba"
 
@@ -13788,10 +13756,6 @@ msgstr "Legyen kéznél a hitelesítő alkalmazása (Google Authenticator, Micro
 #: 
 msgid "Hide advanced options"
 msgstr "Speciális beállítások elrejtése"
-
-#: 
-msgid "Home phone is required"
-msgstr "A saját telefon szükséges"
 
 #: 
 msgid "ICS URL"
@@ -14466,10 +14430,6 @@ msgid "Warnings"
 msgstr "Figyelmeztetések"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Nagyon örülünk, hogy családja csatlakozott hozzánk!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Isten hozta a családban!"
 
@@ -14524,10 +14484,6 @@ msgstr "A böngésző nyelvi beállítása eltér a ChurchCRM területi beállí
 #: 
 msgid "Your database already contains data"
 msgstr "Az adatbázis már tartalmaz adatokat"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Regisztrációját megkaptuk. Csapatunk hamarosan felveszi Önnel a kapcsolatot, hogy személyesen üdvözölje."
 
 #: 
 msgid "Zip code is required"
@@ -14606,10 +14562,6 @@ msgid "open rate"
 msgstr "megnyitási arány"
 
 #: 
-msgid "our church"
-msgstr "gyülekezetünk"
-
-#: 
 msgid "payment(s)?"
 msgstr "fizetés(ek)?"
 
@@ -14648,14 +14600,6 @@ msgstr "év"
 #: 
 msgid "yrs"
 msgstr "év"
-
-#: 
-msgid "Account options"
-msgstr "Fiók beállításai"
-
-#: 
-msgid "Register"
-msgstr "Regisztráció"
 
 #. Context: locales
 #: 
@@ -14938,16 +14882,8 @@ msgid "Always granted"
 msgstr "Mindig megadva"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Csak a saját családját tekintheti meg és ellenőrizheti. Más hozzáférése nincs."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Válasszon egyéni jogosultságokat az alábbiakban."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Jogosultságai módosításához forduljon egy rendszergazdához."
 
 #: 
 msgid "Custom permissions"
@@ -14962,20 +14898,8 @@ msgid "People &amp; Families"
 msgstr "Személyek &amp; Családok"
 
 #: 
-msgid "Self-service"
-msgstr "Önkiszolgáló"
-
-#: 
-msgid "Self-service only"
-msgstr "Csak önkiszolgáló"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "A szerkeszteni kívánt megjegyzés már nem létezik."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Ez a felhasználó csak a saját családi profilját tekintheti meg és frissítheti. Az egyéni jogosultságok nem vonatkoznak rá."
 
 #: 
 msgid "User List"
@@ -18240,16 +18164,8 @@ msgid "Second Home"
 msgstr "Másik otthon"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "A csatolt személy elhunyt vagy inaktív. A bejelentkezés, a munkamenetek és az API-kulcs le van tiltva, amíg a személyt ismét aktívvá nem teszik."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Ez a levelezési cím"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Ez a személy elhunyt vagy inaktív, ezért ez a fiók nem tud bejelentkezni"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18938,10 +18854,6 @@ msgid "Account unlocked"
 msgstr "Fiók feloldva"
 
 #: 
-msgid "Accounts"
-msgstr "Fiókok"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Az aktív értéke igaz vagy hamis lehet"
 
@@ -19134,10 +19046,6 @@ msgid "Author"
 msgstr "Szerző"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "A jogosultság a személyhez tartozik, nem a bejelentkezéshez, így megadható, mielőtt lenne neki. Az a személy, akinek a bejelentkezése csak önkiszolgáló, addig csak a saját ütemezését látja, amíg egy rendszergazda ki nem bővíti a fiókját."
-
-#: 
 msgid "Automatic"
 msgstr "Automatikus"
 
@@ -19260,10 +19168,6 @@ msgstr "Válassz osztályt"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Válassz egy hónapnapot 1-től 31-ig"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Új fotó választása"
 
 #: 
 msgid "Choose a person"
@@ -20036,10 +19940,6 @@ msgid "Last attempt"
 msgstr "Utolsó kísérlet"
 
 #: 
-msgid "Last check"
-msgstr "Utolsó ellenőrzés"
-
-#: 
 msgid "Last date"
 msgstr "Utolsó dátum"
 
@@ -20266,10 +20166,6 @@ msgstr "Még egyetlen naptár sincs megosztva a tagokkal."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Egyetlen naptár sincs megnyitva ennek a szolgálati területnek, így az események egyik naptáron sem jelennek meg."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Egyetlen naptár sincs megosztva a tagokkal."
 
 #: 
 msgid "No class"
@@ -20806,14 +20702,6 @@ msgid "Please tell us what needs changing."
 msgstr "Kérjük, írd meg, mit kell módosítani."
 
 #: 
-msgid "Portal settings"
-msgstr "Portálbeállítások"
-
-#: 
-msgid "Portal theme"
-msgstr "Portál téma"
-
-#: 
 msgid "Position"
 msgstr "Pozíció"
 
@@ -21030,10 +20918,6 @@ msgid "SMTP test"
 msgstr "SMTP-teszt"
 
 #: 
-msgid "Save calendars"
-msgstr "Naptárak mentése"
-
-#: 
 msgid "Save changes"
 msgstr "Változtatások mentése"
 
@@ -21044,10 +20928,6 @@ msgstr "Elmentve – ez a szolgálati terület már nem kér segítséget"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Elmentve – ez a szolgálati terület most segítséget kér"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Elmentve. A tagok a fent bekapcsolt naptárakat látják."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21152,10 +21032,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Az önállóan beosztható értéke igaz vagy hamis lehet"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Önkiszolgáló fiókok"
-
-#: 
 msgid "Send"
 msgstr "Küldés"
 
@@ -21224,18 +21100,6 @@ msgstr "Megjelenítés a Tagi portálon"
 #: 
 msgid "Show past events"
 msgstr "Múltbeli események megjelenítése"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Gyülekezeti naptár megjelenítése"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "A gyülekezeti naptár megjelenítése a Tagi portálon."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "A gyülekezeti naptár szakasz megjelenítése a Tagi portálon."
 
 #: 
 msgid "Show the next"
@@ -21644,10 +21508,6 @@ msgstr "A(z) %s mezőnek egész számú percnek kell lennie"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "A(z) %s mezőnek az esemény időpontjától számított %d percen belül kell lennie"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "A Tagi portál naptárai el lettek mentve."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22098,10 +21958,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Ezek az igények az ütemezésből származnak. Az itteni mentés csak ezt az alkalmat módosítja."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Ezek a számok csak az önkiszolgáló fiókokat számolják: azokat a személyeket, akiknek a bejelentkezésével csak a Tagi portál érhető el."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Ezek a személyek továbbra is be vannak osztva, de a betöltött pozíciójuk már nem része ennek a dátumnak a beosztási tervében."
 
@@ -22186,14 +22042,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Ez nem érvényes témamappa-név."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Ez nem a csapatod egyik dátuma."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Ez nem a csapataid egyike."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Ide küldi a gyülekezet a postát, és ezen a számon hívják a háztartásodat."
 
@@ -22252,10 +22100,6 @@ msgstr "Ez az oldal nem része a fiókodnak. Ha úgy gondolod, annak kellene len
 #: 
 msgid "This page was not found"
 msgstr "Ez az oldal nem található"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "A Tagi portálnak ez a része az önkéntes csapatvezetőknek szól."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23926,16 +23770,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} beosztva és elfogadottként rögzítve"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Kérjen meg egy adminisztrátort, hogy módosítsa a bejelentkezési e-mail-címét."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Egy adminisztrátor módosította az e-mailt erről: %1$s erre: %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Csak adminisztrátor módosíthatja egy felhasználói fiókkal rendelkező személy e-mail-címét."
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24420,4 +24256,16 @@ msgstr "Csak az Ön által küldött e-mail jelenik meg."
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Az ismétlődő eseményeket nem sikerült létrehozni. Részletekért ellenőrizze az alkalmazás naplóját."
+
+#: 
+msgid "No changes"
+msgstr "Nincs változás"
+
+#: 
+msgid "Set up email"
+msgstr "E-mail beállítása"
+
+#: 
+msgid "This person is deceased."
+msgstr "Ez a személy elhunyt"
 

@@ -14,16 +14,16 @@ This is a media-generation pipeline. A passing run is necessary, and the capture
 ## Running it
 
 ```bash
-npm run marketing                   # scripts/capture-all-locales.sh: fresh instance, all 8 locales, check, manifest
+npm run marketing                   # fresh instance, all 8 locales, check, manifest
 npm run marketing:screenshots -- --grep "person-.*-profile"   # re-run a subset (setup runs first)
 npm run docker:ci:new-system:down   # tear down when done
 ```
 
 `npm run marketing` installs a fresh instance once, captures the first locale (every screenshot for English, tagged captures for other locales), then applies each remaining locale (`en es pt zh fr ru de ar` by default) through the `locale-set` project and re-runs `screenshots --no-deps --grep @all-locales`. ChurchCRM resolves locale per request from a DB-stored user preference, so no reinstall or re-seed is needed. `marketing:check` and `marketing:manifest` run once at the end across all locales. Pass locales as arguments to capture a subset.
 
-The pipeline uses Playwright's bundled Chromium (`npm run marketing:install`). Set `BROWSER_CHANNEL=chrome` (or `npm run marketing:chrome`) to drive system Chrome.
+The pipeline uses Playwright's bundled Chromium (`npm run marketing:install`). Set `BROWSER_CHANNEL=chrome` to drive system Chrome.
 
-`marketing:manifest` (`scripts/generate-marketing-manifest.js`) merges the per-capture JSON sidecars under `playwright/artifacts/metadata/` into `playwright/artifacts/manifest.json`: one object per capture, grouped by workflow with devices together, carrying name, device, kind, relative path, file existence and size, purpose text, viewport and commit. The website screenshot gallery reads it. `marketing:check` is the correctness gate. `playwright/artifacts/` is gitignored: manifest, screenshots and videos are generated, never committed.
+`marketing:manifest` merges the per-capture JSON sidecars under `playwright/artifacts/metadata/` into `playwright/artifacts/manifest.json`: one object per capture, grouped by workflow with devices together, carrying name, device, kind, relative path, file existence and size, purpose text, viewport and commit. The website screenshot gallery reads it. `marketing:check` is the correctness gate. `playwright/artifacts/` is gitignored: manifest, screenshots and videos are generated, never committed.
 
 ### How visuals reach the website
 
@@ -69,7 +69,7 @@ A broken locator fails the same test in every locale, and serial specs skip the 
 - A run's log downloads only after the run finishes. While it runs, read the `marketing-failure-<locale>-<run id>` artifact (kept 14 days): each failed test has `error-context.md` and `test-failed-*.png`. Open the screenshot first; a page that renders correctly means the locator is stale.
 - Locators must not use English text. Captures run in 8 locales and FullCalendar translates its aria-labels. Videos run in `en` only.
 - Verify locally before another CI run, in a worktree on its own compose project (see "Adding a capture in a feature PR"). Start the stack once, then run only the failed tests with `npx playwright test --config=playwright/playwright.config.ts --project=screenshots --no-deps --grep "<name>|<name>"`, and run a second locale through the `locale-set` project. Repeat until they pass.
-- Reset the database between runs. The volunteer fixture leaves users behind, so a locale set in one run shows up in the next (an English-only video failed on Portuguese text). `scripts/capture-all-locales.sh <locales>` tears the stack down and reinstalls, so use it for the final check, English first. macOS has no `timeout`.
+- Reset the database between runs. The volunteer fixture leaves users behind, so a locale set in one run shows up in the next (an English-only video failed on Portuguese text). `scripts/marketing/capture-all-locales.sh <locales>` tears the stack down and reinstalls, so use it for the final check, English first. macOS has no `timeout`.
 - The full run (`capture-all-locales.sh en pt`, about 15 minutes) must pass `marketing:check` before the fix goes up.
 
 ## Architecture
@@ -87,7 +87,7 @@ The screenshot shot list maps to `playwright/workflows/*.spec.ts` (`playwright/R
 ## Patterns and gotchas
 
 - **UI-driving logic lives in the `setup` project.** `use.video: 'on'` applies to a real test's `page` fixture, so setup-wizard and demo-import steps live in tests; `playwright/global-setup.ts` only waits for the server to accept connections
-- **Video finalization is a post-run step.** Playwright finalizes a video after the context closes, after the test returns. `scripts/finalize-marketing-videos.js` reads the JSON reporter output and copies each video to `artifacts/videos/<device>/<test-title>.webm`. Each test title equals the artifact name passed to `captureScreen()`; `capture.ts` throws on a mismatch
+- **Video finalization is a post-run step.** Playwright finalizes a video after the context closes, after the test returns. `scripts/marketing/finalize-marketing-videos.js` reads the JSON reporter output and copies each video to `artifacts/videos/<device>/<test-title>.webm`. Each test title equals the artifact name passed to `captureScreen()`; `capture.ts` throws on a mismatch
 - **Wait for AJAX before each capture, bounded.** `captureScreen()` calls `page.waitForLoadState('networkidle', { timeout: 5000 }).catch(() => undefined)` before screenshotting; the bound keeps pages with a permanent background poll from hanging
 - **Human-paced interaction.** `playwright/support/human.ts` (`humanClick`, `humanType`, `humanSelect`, `humanPause`) replaces raw `.click()` / `.fill()` so videos show someone working through the app
   - `humanType` calls `.clear()` before `.pressSequentially()` because some fields arrive pre-filled (setup wizard DB Server/Port)

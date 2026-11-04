@@ -55,9 +55,7 @@ src/plugins/
 
 Community plugins are excluded from the orphan-scan in
 `AppIntegrityService::isExcludedFromOrphanDetection()` and from
-`scripts/generate-signatures-node.js`. This is enforced by the Cypress
-regression test
-`cypress/e2e/api/private/admin/private.admin.orphaned-files.plugins.spec.js`.
+`scripts/build/generate-signatures-node.js`.
 
 ---
 
@@ -175,9 +173,6 @@ if ($portalArea === 'pages') {
     }, 'plugin.my-plugin.notices');
 }
 ```
-
-A complete example is the Cypress fixture
-`cypress/fixtures/plugins/portal-example/`.
 
 ---
 

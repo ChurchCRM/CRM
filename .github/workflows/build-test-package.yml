@@ -174,7 +174,7 @@ jobs:
       run: npm run package
 
     - name: Validate PHP syntax
-      run: npm run build:php:validate:all
+      run: npm run build:php:validate -- --all
 
     - name: Build Docker images
       run: |
@@ -361,7 +361,7 @@ jobs:
         docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
 
     - name: Generate file signatures
-      run: node scripts/generate-signatures-node.js
+      run: node scripts/build/generate-signatures-node.js
 
     - name: Remove Config.php for fresh install test
       run: rm -f src/Include/Config.php
