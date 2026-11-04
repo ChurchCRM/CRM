@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-image=${1:?Usage: test-production-image.sh IMAGE apache|fpm}
+image=${1:?Usage: tests/docker/test-production-image.sh IMAGE apache|fpm}
 flavor=${2:?Specify apache or fpm}
 case "$flavor" in
   apache) port=8080 ;;

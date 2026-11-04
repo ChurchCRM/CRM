@@ -9,7 +9,7 @@ from pathlib import Path
 sys.dont_write_bytecode = True
 
 spec = importlib.util.spec_from_file_location(
-    "context", Path(__file__).with_name("prepare-release-context.py")
+    "context", Path(__file__).parents[2] / "docker" / "prepare-release-context.py"
 )
 context = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(context)

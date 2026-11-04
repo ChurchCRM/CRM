@@ -8,6 +8,8 @@ import tempfile
 import unittest
 from pathlib import Path
 
+DOCKER = Path(__file__).parents[2] / "docker"
+
 
 class ComposeSecurityTest(unittest.TestCase):
     def render(self, files, profile=None, environment=None):
@@ -16,7 +18,7 @@ class ComposeSecurityTest(unittest.TestCase):
             (directory / ".env").touch()
             command = ["docker", "compose"]
             for filename in files:
-                source = Path(__file__).parent / filename
+                source = DOCKER / filename
                 target = directory / source.name
                 shutil.copyfile(source, target)
                 command.extend(["-f", str(target)])
@@ -76,7 +78,7 @@ class ComposeSecurityTest(unittest.TestCase):
     def test_shipped_env_example_cannot_start_the_production_stack(self):
         """An operator who copies .env.example unedited must be stopped, not handed
         a database whose password is in the repository."""
-        example = Path(__file__).parent / "production" / ".env.example"
+        example = DOCKER / "production" / ".env.example"
         values = {}
         for line in example.read_text().splitlines():
             line = line.strip()

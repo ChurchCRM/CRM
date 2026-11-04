@@ -1,6 +1,6 @@
 name: CodeQL Config
 paths-ignore:
-  - docker/test-compose-security.py
+  - tests/docker/test-compose-security.py
 queries:
   - uses: security-extended
 languages:

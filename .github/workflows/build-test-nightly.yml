@@ -224,21 +224,11 @@ jobs:
         docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
 
     - name: Wait for server (root path)
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -sf http://127.0.0.1/api/public/echo; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
+      uses: ./.github/actions/wait-for-server
+      with:
+        url: http://127.0.0.1/api/public/echo
+        docker-compose-files: docker/docker-compose.yaml,docker/docker-compose.parallel.yaml
+        docker-compose-profile: ci-root
 
     - name: Run Cypress ${{ matrix.test-type.name }} tests (root, PHP 8.5)
       uses: ./.github/actions/run-cypress-tests
@@ -329,21 +319,11 @@ jobs:
         docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir up -d
 
     - name: Wait for server (subdirectory path)
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -sf http://127.0.0.1:8080/churchcrm/api/public/echo; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
+      uses: ./.github/actions/wait-for-server
+      with:
+        url: http://127.0.0.1:8080/churchcrm/api/public/echo
+        docker-compose-files: docker/docker-compose.yaml,docker/docker-compose.parallel.yaml
+        docker-compose-profile: ci-subdir
 
     - name: Run Cypress ${{ matrix.test-type.name }} tests (subdir, PHP 8.5)
       uses: ./.github/actions/run-cypress-tests
@@ -402,21 +382,12 @@ jobs:
       run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system up -d
 
     - name: Wait for server (new system)
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/ | grep -q "302\|200"; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
+      uses: ./.github/actions/wait-for-server
+      with:
+        url: http://127.0.0.1:8081/
+        expect-status: '302|200'
+        docker-compose-files: docker/docker-compose.yaml,docker/docker-compose.parallel.yaml
+        docker-compose-profile: ci-new-system
 
     - name: Run Cypress tests (setup wizard, PHP 8.5)
       uses: ./.github/actions/run-cypress-tests
@@ -470,21 +441,12 @@ jobs:
       run: npm run docker:ci:new-system:subdir:start
 
     - name: Wait for server (new system subdirectory)
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/churchcrm/ | grep -q "302\|200"; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.subdir.yaml --profile ci-new-system logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
+      uses: ./.github/actions/wait-for-server
+      with:
+        url: http://127.0.0.1:8081/churchcrm/
+        expect-status: '302|200'
+        docker-compose-files: docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.subdir.yaml
+        docker-compose-profile: ci-new-system
 
     - name: Run Cypress tests (setup wizard subdir, PHP 8.5)
       uses: ./.github/actions/run-cypress-tests
@@ -550,21 +512,11 @@ jobs:
         docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
 
     - name: Wait for server (root path)
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -sf http://127.0.0.1/api/public/echo; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
+      uses: ./.github/actions/wait-for-server
+      with:
+        url: http://127.0.0.1/api/public/echo
+        docker-compose-files: docker/docker-compose.yaml,docker/docker-compose.parallel.yaml
+        docker-compose-profile: ci-root
 
     - name: Run full locale sweep (root, PHP 8.5)
       uses: ./.github/actions/run-cypress-tests
@@ -627,21 +579,11 @@ jobs:
         docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir up -d
 
     - name: Wait for server (subdirectory path)
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -sf http://127.0.0.1:8080/churchcrm/api/public/echo; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-subdir logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
+      uses: ./.github/actions/wait-for-server
+      with:
+        url: http://127.0.0.1:8080/churchcrm/api/public/echo
+        docker-compose-files: docker/docker-compose.yaml,docker/docker-compose.parallel.yaml
+        docker-compose-profile: ci-subdir
 
     - name: Run full locale sweep (subdir, PHP 8.5)
       uses: ./.github/actions/run-cypress-tests
@@ -749,21 +691,12 @@ jobs:
       run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.mysql.yaml --profile ci-new-system up -d
 
     - name: Wait for server
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/ | grep -q "302\|200"; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.mysql.yaml --profile ci-new-system ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml -f docker/docker-compose.mysql.yaml --profile ci-new-system logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
+      uses: ./.github/actions/wait-for-server
+      with:
+        url: http://127.0.0.1:8081/
+        expect-status: '302|200'
+        docker-compose-files: docker/docker-compose.yaml,docker/docker-compose.parallel.yaml,docker/docker-compose.mysql.yaml
+        docker-compose-profile: ci-new-system
 
     - name: Run Cypress upgrade test (MySQL, ${{ matrix.schema.label }})
       uses: ./.github/actions/run-cypress-tests
@@ -844,21 +777,12 @@ jobs:
       run: docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system up -d
 
     - name: Wait for server
-      run: |
-        max_attempts=12
-        attempt=1
-        until curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:8081/ | grep -q "302\|200"; do
-          if [ $attempt -eq $max_attempts ]; then
-            echo "Server failed to respond after $max_attempts attempts"
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system ps -a
-            docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-new-system logs
-            exit 1
-          fi
-          echo "Attempt $attempt/$max_attempts — retrying in 5s..."
-          sleep 5
-          attempt=$((attempt + 1))
-        done
-        echo "Server ready."
+      uses: ./.github/actions/wait-for-server
+      with:
+        url: http://127.0.0.1:8081/
+        expect-status: '302|200'
+        docker-compose-files: docker/docker-compose.yaml,docker/docker-compose.parallel.yaml
+        docker-compose-profile: ci-new-system
 
     - name: Run Cypress upgrade test (MariaDB, ${{ matrix.schema.label }})
       uses: ./.github/actions/run-cypress-tests
