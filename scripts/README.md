@@ -3,6 +3,8 @@
 
 This folder contains Node.js and shell scripts used for building, packaging, and maintaining ChurchCRM.
 
+Other tooling lives with its owner: [`locale/scripts/`](../locale/scripts/) (PoEditor and locale builds, own `package.json`) and [`docker/`](../docker/) (release build context).
+
 Tests for these scripts, and for workflow YAML and server config, live in [`tests/tooling/`](../tests/tooling/) and run in `npm run lint`.
 
 ## Scripts Overview

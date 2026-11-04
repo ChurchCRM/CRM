@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const { test } = require('node:test');
-const { options, run } = require('../../scripts/test-php');
+const { options, run } = require('../php/run');
 
 function fixture(t) {
     const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'churchcrm-runner-'));

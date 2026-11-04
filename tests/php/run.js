@@ -3,12 +3,12 @@ const os = require('node:os');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 
-const root = path.join(__dirname, '..');
+const root = path.join(__dirname, '../..');
 
 function options(args, repo = root) {
     const [suite, ...rest] = args;
     if (!['unit', 'integration'].includes(suite)) {
-        throw new Error('Usage: node scripts/test-php.js unit|integration [package-or-file] [--junit]');
+        throw new Error('Usage: node tests/php/run.js unit|integration [package-or-file] [--junit]');
     }
     const targets = rest.filter((arg) => arg !== '--junit');
     if (targets.length > 1 || targets.some((arg) => arg.startsWith('-'))) {

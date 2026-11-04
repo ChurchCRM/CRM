@@ -27,7 +27,7 @@ const scriptTests = fs
 
 const checks = {
     'composer lock': script('validate-composer-lock.js'),
-    'PHP regression tests': script('test-php.js', 'unit', '--junit'),
+    'PHP regression tests': [node, [path.join(root, 'tests', 'php', 'run.js'), 'unit', '--junit']],
     'biome lint': npx('biome', 'check', 'webpack/'),
     'biome format': npx('biome', 'format', '.'),
     typecheck: npx('tsc', '--noEmit', '--pretty'),
