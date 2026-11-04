@@ -35,7 +35,7 @@ const disableSignIn = () => admin(`/admin/api/person/${staffUser.personId}/sign-
 
 const signIn = ({ username, password }) => {
     cy.clearCookies();
-    cy.request({ method: "POST", url: "/admin/", form: true, body: { User: username, Password: password } });
+    cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: username, Password: password } });
 };
 
 const openPortal = () => cy.request("/portal/").its("status").should("eq", 200);

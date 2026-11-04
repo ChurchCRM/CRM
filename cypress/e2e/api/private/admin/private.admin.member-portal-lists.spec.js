@@ -54,8 +54,13 @@ const resetFixtures = () => {
 
 describe("Admin → Member Portal lists, audit and statistics", () => {
     const saved = {};
+    let savedMemberSignIn;
 
     before(() => {
+        cy.getSystemConfig("bMemberSignIn").then((value) => {
+            savedMemberSignIn = value;
+        });
+        cy.makePrivateAdminAPICall("POST", "admin/api/system/config/bMemberSignIn", { value: "1" }, 200);
         cy.makePrivateAdminAPICall("GET", SETTINGS_URL, null, 200).then(({ body }) => {
             RULE_KEYS.forEach((key) => {
                 saved[key] = body.values[key];
@@ -76,6 +81,7 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
     });
 
     after(() => {
+        cy.restoreSystemConfig("bMemberSignIn", savedMemberSignIn);
         resetFixtures();
         cy.makePrivateAdminAPICall("POST", SETTINGS_URL, saved, 200);
     });
@@ -145,6 +151,22 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
         ].forEach(([personId, reason]) => {
             cy.makePrivateAdminAPICall("GET", `/api/person/${personId}/sign-in`, null, 200).its("body.reason").should("eq", reason);
         });
+    });
+
+    it("looks anyone up, saying whether they may sign in and why not", () => {
+        list("everyone").then((body) => {
+            const byId = Object.fromEntries(body.rows.map((row) => [row.personId, row]));
+            expect(byId[92].maySignIn).to.eq(true);
+            expect(byId[92].reasonLabel).to.be.null;
+            expect(byId[2]).to.include({ maySignIn: false, reasonLabel: "No personal email" });
+            expect(byId[6]).to.include({ maySignIn: false, reasonLabel: "Their email is shared with someone else" });
+            expect(byId[14]).to.include({ maySignIn: false, reasonLabel: "Their email is not confirmed yet" });
+        });
+        list("everyone", { search: "Lewis" }).then((body) => {
+            expect(ids(body)).to.include(14);
+            expect(body.filtered).to.be.at.most(body.total);
+        });
+        summary().its("everyone").should("be.greaterThan", 0);
     });
 
     it("pages and searches a list on the server", () => {
@@ -284,7 +306,7 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
     it("reads Statistics from the person sign-in rows, and stops stamping the account", () => {
         stats().then((before) => {
             recordPastSignIn(92, 20, "device");
-            cy.request({ method: "POST", url: "/admin/", form: true, body: { User: "judith.matthews@example.com", Password: "noMoney$" } });
+            cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: "judith.matthews@example.com", Password: "noMoney$" } });
             cy.request("/portal/");
 
             stats().then((after) => {
@@ -308,6 +330,7 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
     it("is for administrators only", () => {
         cy.makePrivateUserAPICall("GET", "/admin/api/member-portal/lists", null, 403);
         cy.makePrivateEditRecordsAPICall("GET", "/admin/api/member-portal/lists/may-sign-in", null, 403);
+        cy.makePrivateEditRecordsAPICall("GET", "/admin/api/member-portal/lists/everyone", null, 403);
         cy.makePrivateEditRecordsAPICall("GET", "/admin/api/member-portal/audit", null, 403);
     });
 });

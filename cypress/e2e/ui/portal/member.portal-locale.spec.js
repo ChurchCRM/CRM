@@ -61,7 +61,7 @@ const setStaffLanguage = (value) => adminPost(`/api/user/${ALICE}/setting/ui.loc
 
 const signInAsStaff = () => {
     cy.clearCookies();
-    cy.request({ method: "POST", url: "/admin/", form: true, body: { User: "noperm.user", Password: "changeme" } });
+    cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: "noperm.user", Password: "changeme" } });
 };
 
 const csrfToken = () =>

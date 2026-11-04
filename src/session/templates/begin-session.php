@@ -39,44 +39,13 @@ $contactWebsite = ChurchMetaData::getChurchWebSite();
     <!-- Card body -->
     <div class="login-card-body">
 
-      <?php if ($hasSelfReg): ?>
-        <!--
-          Segmented pill control — visible only when self-registration is enabled.
-          "Register" opens the registration page in a new tab.
-        -->
-        <div class="login-tab-control" role="tablist" aria-label="<?= gettext('Account options') ?>">
-          <button
-            class="login-tab-btn active"
-            id="tab-signin"
-            role="tab"
-            aria-selected="true"
-          >
-            <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
-            <?= gettext('Sign In') ?>
-          </button>
-          <a
-            href="<?= SystemURLs::getRootPath() ?>/external/register/"
-            class="login-tab-btn"
-            id="tab-register"
-            role="tab"
-            aria-selected="false"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
-            <?= gettext('Register') ?>
-          </a>
-        </div>
-      <?php else: ?>
-        <!-- No pill when self-registration is disabled — plain form title -->
-        <div class="login-form-title">
-          <h1>
-            <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
-            <?= gettext('Login to your account') ?>
-          </h1>
-          <p><?= gettext('Welcome back! Please enter your details to continue') ?></p>
-        </div>
-      <?php endif; ?>
+      <div class="login-form-title">
+        <h1>
+          <i class="fa-solid fa-right-to-bracket" aria-hidden="true"></i>
+          <?= gettext('Login to your account') ?>
+        </h1>
+        <p><?= gettext('Welcome back! Please enter your details to continue') ?></p>
+      </div>
 
       <!-- Sign In form -->
       <?php if (isset($sErrorText)): ?>

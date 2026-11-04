@@ -16,7 +16,7 @@ describe("Unfinished logins are not sessions", () => {
     const postLogin = (user, password) =>
         cy.request({
             method: "POST",
-            url: "/admin/",
+            url: "/session/begin",
             form: true,
             body: { User: user, Password: password },
             followRedirect: false,

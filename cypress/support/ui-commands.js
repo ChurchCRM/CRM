@@ -8,8 +8,8 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-// /admin/ is both the staff sign-in and, while the admin is the only person, the
-// Admin Dashboard, so a sign-in is proved by the user menu's Sign out link.
+// Staff sign-in lives at /session/begin; a successful login is proved by the
+// user menu's Sign out link.
 Cypress.Commands.add('expectStaffSignedIn', (options = {}) => {
     cy.get('a[href$="/session/end"]', options).should('exist');
     cy.get('#UserBox, #PasswordBox').should('not.exist');
@@ -39,7 +39,7 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
     cy.session(
         effectiveSessionName,
         () => {
-            cy.visit('/admin/');
+            cy.visit('/session/begin');
             cy.get('input[name=User]').type(username);
             cy.get('input[name=Password]').type(password + '{enter}');
             cy.expectStaffSignedIn();
@@ -153,7 +153,7 @@ Cypress.Commands.add('setupManageGroupsOnlySession', (options = {}) =>
  */
 Cypress.Commands.add('loginWithCredentials', (username, password, sessionName = 'custom-session', expectSuccess = true) => {
     cy.session(sessionName, () => {
-        cy.visit('/admin/');
+        cy.visit('/session/begin');
         cy.get('input[name=User]').type(username);
         cy.get('input[name=Password]').type(password + '{enter}');
     }, {

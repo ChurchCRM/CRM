@@ -15,14 +15,14 @@ const admin = (method, url, body = null, status = 200) => cy.makePrivateAdminAPI
 const setSetting = (name, value) => admin("POST", `admin/api/system/config/${name}`, { value });
 
 // Posts the staff sign-in form rather than typing into it. A staff page left open
-// in the browser answers its own pending requests with a redirect to /admin/ once
+// in the browser answers its own pending requests with a redirect to /session/begin once
 // the session ends, which could reload the form while Cypress typed into it.
 const signInAsAdmin = () =>
     cy.env(["admin.username", "admin.password"]).then((env) => {
         cy.clearCookies();
         cy.request({
             method: "POST",
-            url: "/admin/",
+            url: "/session/begin",
             form: true,
             followRedirect: false,
             body: { User: env["admin.username"], Password: env["admin.password"] },

@@ -4,7 +4,7 @@
 const signInAs = ({ username, password }) => {
     cy.clearCookies();
     return cy
-        .request({ method: "POST", url: "/admin/", form: true, followRedirect: false, body: { User: username, Password: password } })
+        .request({ method: "POST", url: "/session/begin", form: true, followRedirect: false, body: { User: username, Password: password } })
         .its("status")
         .should("eq", 302);
 };

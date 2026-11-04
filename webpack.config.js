@@ -90,7 +90,6 @@ module.exports = {
     'photo-uploader': './webpack/photo-uploader-entry',
     'root-dashboard': './webpack/root-dashboard',
     setup: './webpack/setup',
-    'family-register': './webpack/family-register',
     'family-verify': './webpack/family-verify',
     'upgrade-wizard': './webpack/upgrade-wizard',
     'locale-loader': './webpack/locale-loader',

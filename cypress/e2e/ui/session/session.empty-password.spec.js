@@ -67,7 +67,7 @@ describe("Empty password", () => {
         it("cannot sign in to the browser with a blank password", () => {
             cy.request({
                 method: "POST",
-                url: "/admin/",
+                url: "/session/begin",
                 form: true,
                 body: { User: USER_NAME, Password: "" },
                 followRedirect: false,
@@ -103,7 +103,7 @@ describe("Empty password", () => {
             it("cannot sign in with it", () => {
                 cy.request({
                     method: "POST",
-                    url: "/admin/",
+                    url: "/session/begin",
                     form: true,
                     body: { User: USER_NAME, Password: password },
                     followRedirect: false,

@@ -50,6 +50,9 @@ describe("Sign-in pages", () => {
 
     before(() => {
         cy.rememberTestEnv(["admin.username", "admin.password"]);
+        cy.getSystemConfig("bEnableSelfRegistration").then((value) => {
+            saved.selfRegistrationEnabled = value;
+        });
         cy.task("mail:available").its("available").should("eq", true);
         lookUpPerson(judith);
         lookUpPerson(constance);
@@ -59,17 +62,19 @@ describe("Sign-in pages", () => {
     beforeEach(() => {
         cy.clearCookies();
         setConfig("bMemberSignIn", "1");
+        setConfig("bEnableSelfRegistration", "0");
         resetEmailSignIn([judith.personId, constance.personId]);
     });
 
     after(() => {
         restoreSettings(saved);
+        cy.restoreSystemConfig("bEnableSelfRegistration", saved.selfRegistrationEnabled);
     });
 
     const admin = () => ({ username: Cypress.testEnv("admin.username"), password: Cypress.testEnv("admin.password") });
 
     describe("signed out", () => {
-        it("sends the web root to /portal/login while member sign-in is on, with no staff sign-in link, and staff sign in at /admin", () => {
+        it("sends the web root to /portal/login while member sign-in is on, with no staff sign-in link, and /admin is the staff sign-in", () => {
             cy.visit("/");
             cy.location("pathname").should("match", /\/portal\/login$/);
             cy.get("#portalSignInEmail").should("be.visible");
@@ -78,31 +83,71 @@ describe("Sign-in pages", () => {
             cy.location("pathname").should("match", /\/admin\/$/);
             cy.get("#UserBox").should("be.visible");
             cy.get("#PasswordBox").should("be.visible");
+            cy.request({ url: "/admin/system/users", followRedirect: false }).then((response) => {
+                expect(response.status).to.eq(302);
+                expect(response.redirectedToUrl).to.match(/\/admin\/$/);
+            });
         });
 
-        it("sends the web root to the staff sign-in at /admin while member sign-in is off, and /portal/login still says why", () => {
+        it("offers Register your family in the top bar of the sign-in page only while registration is on, and Sign in on the registration page", () => {
+            cy.visit("/portal/login");
+            cy.get(".portal-header-guest").should("not.exist");
+
+            setConfig("bEnableSelfRegistration", "1");
+            cy.visit("/portal/login");
+            cy.get(".portal-header-guest a").should("have.length", 1).and("contain", "Register your family").and("have.attr", "href").and("include", "/portal/register");
+
+            cy.visit("/portal/register");
+            cy.get(".portal-header-guest a").should("have.length", 1).and("contain", "Sign in").and("have.attr", "href").and("include", "/portal/login");
+        });
+
+        it("locks the sign-in button while the code is being sent", () => {
+            cy.visit("/portal/login");
+            // Stay on the page after the press, as a slow send does, so the button can be read.
+            cy.get("#portalSignInForm").then(($form) => $form[0].addEventListener("submit", (event) => event.preventDefault()));
+            cy.get("#portalSignInEmail").type("someone@example.com");
+            cy.get("#portalSignInSubmit").click();
+            cy.get("#portalSignInSubmit").should("be.disabled").and("contain", "Sending");
+        });
+
+        it("sends the web root and /portal/login to staff sign-in when member sign-in and registration are off", () => {
             setConfig("bMemberSignIn", "0");
+            setConfig("bEnableSelfRegistration", "0");
             cy.visit("/");
             cy.location("pathname").should("match", /\/admin\/$/);
             cy.get("#UserBox").should("be.visible");
             cy.get("#PasswordBox").should("be.visible");
             cy.visit("/portal/login");
-            cy.contains("Member sign-in isn't available yet");
-            cy.get("#portalStaffSignIn").should("not.exist");
+            cy.location("pathname").should("match", /\/admin\/$/);
+            cy.get("#UserBox").should("be.visible");
         });
 
-        it("redirects /session/begin to /admin, keeping the query, and re-posts an old form there", () => {
+        it("keeps the portal registration choice at the web root when member sign-in is off", () => {
+            setConfig("bMemberSignIn", "0");
+            setConfig("bEnableSelfRegistration", "1");
+            cy.visit("/");
+            cy.location("pathname").should("match", /\/portal\/login$/);
+            cy.contains("Member sign-in isn't available yet");
+            cy.contains("a", "Register your family").should("have.attr", "href").and("include", "/portal/register");
+            cy.get("#portalStaffSignIn").should("have.attr", "href").and("match", /\/admin\/$/);
+            cy.get("#portalStaffSignIn").click();
+            cy.location("pathname").should("match", /\/admin\/$/);
+            cy.get("#UserBox").should("be.visible");
+        });
+
+        it("serves staff sign-in at /session/begin, keeping the query and accepting form posts", () => {
             cy.request({ url: "/session/begin?username=someone%40example.com", followRedirect: false }).then((response) => {
-                expect(response.status).to.eq(302);
-                expect(response.redirectedToUrl).to.match(/\/admin\/\?username=someone%40example\.com$/);
+                expect(response.status).to.eq(200);
             });
             cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: "x", Password: "y" }, followRedirect: false }).then(
                 (response) => {
-                    expect(response.status).to.eq(307);
-                    expect(response.redirectedToUrl).to.match(/\/admin\/$/);
+                    expect(response.status).to.eq(200);
                 },
             );
             cy.visit("/session/begin?username=someone%40example.com");
+            cy.location("pathname").should("match", /\/session\/begin$/);
+            cy.get("#UserBox").should("have.value", "someone@example.com");
+            cy.visit("/admin/?username=someone%40example.com");
             cy.location("pathname").should("match", /\/admin\/$/);
             cy.get("#UserBox").should("have.value", "someone@example.com");
         });
@@ -114,7 +159,7 @@ describe("Sign-in pages", () => {
             cy.request("/api/persons/latest").its("status").should("eq", 200);
         });
 
-        it("sends a signed-out staff page to /admin and back to it after sign-in", () => {
+        it("sends a signed-out staff page to the /admin sign-in and back to it after sign-in", () => {
             cy.visit("/groups/dashboard");
             cy.location("pathname").should("match", /\/admin\/$/);
             signInAtAdmin(admin());
@@ -183,6 +228,7 @@ describe("Sign-in pages", () => {
             cy.request({ url: "/api/persons/latest", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.request({ url: "/admin/api/member-portal/sign-in", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.visit("/admin/");
+            cy.location("pathname").should("match", /\/admin\/$/);
             cy.get("#UserBox").should("be.visible");
             cy.request("/api/portal/me").its("body.profile.id").should("eq", judith.personId);
         });
@@ -202,7 +248,7 @@ describe("Sign-in pages", () => {
             cy.get("#portalAccountAdminConsole").should("not.exist");
         });
 
-        it("sends Admin Console to the /admin sign-in, where a staff sign-in replaces the member session", () => {
+        it("sends Admin Console to the staff sign-in, where a staff sign-in replaces the member session", () => {
             emailSignIn(judith.email);
             lastAuditId().then((startId) => {
                 cy.visit("/portal/");

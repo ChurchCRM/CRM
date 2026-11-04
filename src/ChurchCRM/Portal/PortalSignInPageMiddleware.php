@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Portal;
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Service\EmailSignInService;
 use Laminas\Diactoros\Response;
 use Psr\Http\Message\ResponseInterface;
@@ -30,7 +32,17 @@ class PortalSignInPageMiddleware implements MiddlewareInterface
         PortalTwig::preparePage();
 
         if (!EmailSignInService::isEnabled()) {
-            return PortalTwig::render(new Response(), 'login/unavailable.html.twig', ['pageTitle' => gettext('Sign in')]);
+            // No member sign-in: offer registration when it is on, otherwise the staff sign-in is the only way in.
+            if (!SystemConfig::getBooleanValue('bEnableSelfRegistration')) {
+                return (new Response())->withStatus(302)->withHeader('Location', AuthenticationManager::getStaffSignInURL());
+            }
+
+            return PortalTwig::render(new Response(), 'login/unavailable.html.twig', [
+                'pageTitle' => gettext('Sign in'),
+                'guestPage' => 'register',
+                'selfRegistrationEnabled' => true,
+                'memberSignInEnabled' => false,
+            ]);
         }
 
         try {

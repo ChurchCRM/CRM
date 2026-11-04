@@ -1,7 +1,5 @@
 <?php
 
-use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Authentication\StaffSignInPage;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
@@ -47,18 +45,8 @@ $app->get('/get-started', function (Request $request, Response $response) {
     return $renderer->render($response, 'get-started.php', $pageArgs);
 });
 
-// The /admin root (member sign-in design §7): the staff sign-in page when no
-// staff session is active (signed out, or a member session), the Admin
-// Dashboard for an administrator, and the staff dashboard for other staff.
-// AuthMiddleware and AdminRoleAuthMiddleware let this one path through.
-$app->map(['GET', 'POST'], '/', function (Request $request, Response $response) {
-    if ($request->getMethod() === 'POST' || !AuthenticationManager::validateUserSessionIsActive(false)) {
-        return StaffSignInPage::handle($request, $response);
-    }
-    if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-        return $response->withStatus(302)->withHeader('Location', SystemURLs::getRootPath() . '/v2/dashboard');
-    }
-
+// The admin dashboard and all other /admin routes require an authenticated administrator.
+$app->get('/', function (Request $request, Response $response) {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
     // Setup progress checklist

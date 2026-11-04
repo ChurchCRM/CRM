@@ -195,6 +195,31 @@ describe("Admin → Member Portal page", () => {
             cy.get("#portal-calendars").should("exist");
         });
 
+        it("shows sign-in metrics in a compact responsive summary", () => {
+            cy.viewport(2048, 1000);
+            cy.visit("/admin/member-portal");
+            cy.get("#portalStatCards .row > .col").should("have.length", 6);
+
+            const checkColumns = (width, expectedColumns) => {
+                cy.viewport(width, 1000);
+                cy.visit("/admin/member-portal");
+                cy.get("#portalStatCards .row > .col").then(($columns) => {
+                    const tops = [...$columns].map((column) => column.getBoundingClientRect().top);
+                    expect(tops[0]).to.eq(tops[expectedColumns - 1]);
+                    if (expectedColumns < tops.length) {
+                        expect(tops[expectedColumns]).to.be.greaterThan(tops[0]);
+                    }
+                });
+                cy.document().then((document) => {
+                    expect(document.documentElement.scrollWidth).to.be.at.most(width);
+                });
+            };
+
+            checkColumns(2048, 6);
+            checkColumns(820, 3);
+            checkColumns(390, 2);
+        });
+
         it("Is reachable from the Admin menu", () => {
             cy.visit("/v2/dashboard");
             cy.get('a[href$="/admin/member-portal"]').should("exist");

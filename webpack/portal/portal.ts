@@ -287,6 +287,7 @@ function start(): void {
   ensureCrmHelpers();
   wireNavigationToggle();
   wireAccountMenu();
+  wireSubmitOnce();
   publishToastHelper();
   wireRenderedToasts();
   formatTimeElements();
@@ -296,6 +297,33 @@ function start(): void {
   } else {
     wireLocalisedLabels();
   }
+}
+
+/** A form marked `data-submit-once` locks its submit button, showing `data-busy-label`, so a slow send is not repeated. */
+function wireSubmitOnce(): void {
+  document.querySelectorAll<HTMLFormElement>("form[data-submit-once]").forEach((form) => {
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    if (!button) {
+      return;
+    }
+    const idleLabel = button.textContent;
+    form.addEventListener("submit", () => {
+      if (!form.checkValidity()) {
+        return;
+      }
+      window.setTimeout(() => {
+        button.disabled = true;
+        if (button.dataset.busyLabel) {
+          button.textContent = button.dataset.busyLabel;
+        }
+      }, 0);
+    });
+    // Back from the next page (bfcache): the button must work again.
+    window.addEventListener("pageshow", () => {
+      button.disabled = false;
+      button.textContent = idleLabel;
+    });
+  });
 }
 
 if (document.readyState === "loading") {

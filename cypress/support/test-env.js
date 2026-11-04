@@ -65,7 +65,7 @@ Cypress.Commands.add("freshAdminFormLogin", (options = {}) => {
         } else {
             cy.clearCookies();
         }
-        cy.visit(options.path || "/admin/");
+        cy.visit(options.path || "/session/begin");
         const userOpts = options.timeout ? { timeout: options.timeout } : undefined;
         const field = (selector, opts) => {
             let input = cy.get(selector, opts);

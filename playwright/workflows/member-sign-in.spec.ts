@@ -267,7 +267,7 @@ test.describe('in a browser of its own', () => {
   test('staff-sign-in', async ({ browser }, testInfo) => {
     context = await freshContext(browser);
     const page = await context.newPage();
-    await page.goto('/admin/');
+    await page.goto('/session/begin');
     await expect(page.locator('input[name=User]')).toBeVisible({ timeout: 15000 });
     await settle(page, 600);
 
@@ -275,7 +275,7 @@ test.describe('in a browser of its own', () => {
       name: 'staff-sign-in',
       title: 'Staff Sign-In Page',
       category: 'Admin & Settings',
-      purpose: 'Staff sign in at /admin/ with their username, password and two-factor code.',
+      purpose: 'Staff sign in at /session/begin with their username, password and two-factor code.',
     });
   });
 

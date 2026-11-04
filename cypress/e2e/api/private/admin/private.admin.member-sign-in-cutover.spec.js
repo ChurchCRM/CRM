@@ -291,7 +291,7 @@ describe("7.8.3 upgrade: what the removed self-service account leaves behind", (
     const historyCard = () =>
         cy.env(["admin.username", "admin.password"]).then((env) => {
             cy.clearCookies();
-            cy.request({ method: "POST", url: "/admin/", form: true, body: { User: env["admin.username"], Password: env["admin.password"] } });
+            cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: env["admin.username"], Password: env["admin.password"] } });
             return cy.request(`/people/view/${id.author}`).then(({ body }) => {
                 const sessions = [...body.matchAll(/data-cy="login-as-person-session"[^>]*>\s*<div class="fw-medium">\s*([^<]+?)\s*<\/div>/g)];
                 return sessions.map((match) => match[1]);
@@ -392,7 +392,7 @@ describe("7.8.3 upgrade: what the removed self-service account leaves behind", (
 
         cy.then(() => {
             cy.clearCookies();
-            cy.request({ method: "POST", url: "/admin/", form: true, body: { User: `author.${prefix}`, Password: "changeme" } });
+            cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: `author.${prefix}`, Password: "changeme" } });
             cy.request({ method: "POST", url: `${VOLUNTEER}/me/assignments/${id.assignment}/respond`, body: { response: "accepted" } });
             cy.request("/portal/profile/edit").then(({ body }) => {
                 const token = body.match(/name="csrf_token" value="([^"]+)"/)[1];

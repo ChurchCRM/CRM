@@ -1,0 +1,302 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Family self-registration: a three-step form (family, members, review) at
+  GET /portal/register. src/skin/js/FamilyRegister.js drives it through the ids
+  and `member-*` classes below and posts the result to the public registration
+  API, so keep them when a theme overrides this page.
+
+  Variables: `pageTitle`, `familyRoles` [{id, name}], `phoneFormat`,
+  `phoneFormatCell`, `defaults` {city, state, zip, country}, `guestPage`.
+#}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+{% set json_flags = constant('JSON_HEX_TAG') b-or constant('JSON_HEX_AMP') b-or constant('JSON_HEX_APOS') b-or constant('JSON_HEX_QUOT') %}
+<script nonce="{{ nonce() }}">
+    window.CRM = Object.assign(window.CRM || {}, {
+        phoneFormats: {
+            home: {{ phoneFormat|json_encode(json_flags)|raw }},
+            cell: {{ phoneFormatCell|json_encode(json_flags)|raw }},
+            work: {{ phoneFormat|json_encode(json_flags)|raw }}
+        }
+    });
+</script>
+
+<div class="portal-register">
+    <div class="portal-signin-welcome">
+        <h1 class="portal-signin-title">{{ gettext('Register your family') }}</h1>
+        <p class="portal-signin-lead">{{ gettext("We're so glad you're here! It takes about three minutes.") }}</p>
+    </div>
+
+    <section class="portal-card portal-register-done" id="registration-success" hidden>
+        <i class="fa-solid fa-circle-check portal-register-done-icon" aria-hidden="true"></i>
+        <h2 class="portal-signin-title">{{ gettext('Welcome to the Family!') }}</h2>
+        <p class="portal-signin-lead">{{ gettext("We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you.") }}</p>
+        <div class="portal-form-actions">
+            <a class="portal-button portal-button-quiet" href="{{ url('/portal/register') }}">{{ gettext('Register another family') }}</a>
+            {% if memberSignInEnabled %}
+            <a class="portal-button" href="{{ url('/portal/login') }}">{{ gettext('Go to sign in') }}</a>
+            {% endif %}
+        </div>
+    </section>
+
+    <div class="portal-card portal-register-card">
+        <div id="registration-stepper" class="bs-stepper portal-stepper">
+            <div class="bs-stepper-header" role="tablist">
+                <div class="step" data-target="#step-family-info">
+                    <button type="button" class="step-trigger" role="tab" aria-controls="step-family-info" id="step-family-info-trigger">
+                        <span class="bs-stepper-circle">1</span>
+                        <span class="bs-stepper-label">{{ gettext('Family Info') }}</span>
+                    </button>
+                </div>
+                <div class="line"></div>
+                <div class="step" data-target="#step-members">
+                    <button type="button" class="step-trigger" role="tab" aria-controls="step-members" id="step-members-trigger">
+                        <span class="bs-stepper-circle">2</span>
+                        <span class="bs-stepper-label">{{ gettext('Members') }}</span>
+                    </button>
+                </div>
+                <div class="line"></div>
+                <div class="step" data-target="#step-review">
+                    <button type="button" class="step-trigger" role="tab" aria-controls="step-review" id="step-review-trigger">
+                        <span class="bs-stepper-circle">3</span>
+                        <span class="bs-stepper-label">{{ gettext('Review') }}</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="bs-stepper-content">
+                <form id="registration-form" novalidate>
+                    <div id="step-family-info" class="content" role="tabpanel" aria-labelledby="step-family-info-trigger">
+                        <h2 class="portal-card-title">{{ gettext('Tell us about your family') }}</h2>
+                        <p class="portal-card-text portal-register-intro">{{ gettext("We'll use this to keep in touch and send church updates.") }}</p>
+
+                        <div class="portal-field">
+                            <label class="portal-field-label" for="familyName">{{ gettext('Family Name') }} <span class="portal-required" aria-hidden="true">*</span></label>
+                            <input class="portal-input" id="familyName" name="familyName" type="text" autocomplete="family-name" required>
+                            <p class="portal-field-error" role="alert"></p>
+                        </div>
+
+                        <div class="portal-field">
+                            <label class="portal-field-label" for="familyAddress1">{{ gettext('Address') }} <span class="portal-required" aria-hidden="true">*</span></label>
+                            <input class="portal-input" id="familyAddress1" name="familyAddress1" type="text" autocomplete="address-line1" placeholder="{{ gettext('Street address') }}" required>
+                            <p class="portal-field-error" role="alert"></p>
+                        </div>
+
+                        <div class="portal-field-grid">
+                            <div class="portal-field">
+                                <label class="portal-field-label" for="familyCity">{{ gettext('City') }} <span class="portal-required" aria-hidden="true">*</span></label>
+                                <input class="portal-input" id="familyCity" name="familyCity" type="text" autocomplete="address-level2" value="{{ defaults.city }}" required>
+                                <p class="portal-field-error" role="alert"></p>
+                            </div>
+                            <div class="portal-field">
+                                <label class="portal-field-label" for="familyState">{{ gettext('State') }}</label>
+                                <div id="familyStateContainer">
+                                    <input class="portal-input" id="familyState" name="familyState" type="text" autocomplete="address-level1" value="{{ defaults.state }}" data-default="{{ defaults.state }}">
+                                </div>
+                            </div>
+                            <div class="portal-field">
+                                <label class="portal-field-label" for="familyZip">{{ gettext('Zip Code') }} <span class="portal-required" aria-hidden="true">*</span></label>
+                                <input class="portal-input" id="familyZip" name="familyZip" type="text" autocomplete="postal-code" value="{{ defaults.zip }}" required>
+                                <p class="portal-field-error" role="alert"></p>
+                            </div>
+                            <div class="portal-field">
+                                <label class="portal-field-label" for="familyCountry">{{ gettext('Country') }}</label>
+                                <select class="portal-input" id="familyCountry" name="familyCountry" autocomplete="country-name" data-system-default="{{ defaults.country }}"></select>
+                            </div>
+                        </div>
+
+                        <div class="portal-field">
+                            <label class="portal-field-label" for="familyHomePhone">{{ gettext('Home Phone') }}</label>
+                            <input class="portal-input" id="familyHomePhone" name="familyHomePhone" type="tel" autocomplete="tel" inputmode="tel"
+                                   data-inputmask='"mask":"{{ phoneFormat }}"' data-mask>
+                            <label class="portal-choice portal-register-noformat" for="NoFormat_familyHomePhone">
+                                <input type="checkbox" id="NoFormat_familyHomePhone" name="NoFormat_familyHomePhone" value="1">
+                                <span>{{ gettext('No format') }}</span>
+                            </label>
+                            <p class="portal-field-error" role="alert"></p>
+                        </div>
+
+                        <p class="portal-field-hint"><span class="portal-required" aria-hidden="true">*</span> {{ gettext('Required fields') }}</p>
+
+                        <div class="portal-form-actions portal-register-actions">
+                            <button type="button" class="portal-button" id="family-info-next">{{ gettext('Next') }}</button>
+                        </div>
+                    </div>
+
+                    <div id="step-members" class="content" role="tabpanel" aria-labelledby="step-members-trigger">
+                        <h2 class="portal-card-title">
+                            {{ gettext('Who is in your family?') }}
+                            <span id="member-count-display" class="portal-register-count"></span>
+                        </h2>
+                        <p class="portal-card-text portal-register-intro">{{ gettext('Add everyone in your household — adults and children alike.') }}</p>
+
+                        <div id="members-container"></div>
+
+                        <template id="member-card-template">
+                            <div class="member-card portal-reg-member" data-member-index="">
+                                <div class="member-card-header-clickable portal-reg-member-header">
+                                    <button type="button" class="member-toggle-btn portal-reg-member-toggle" aria-label="{{ gettext('Show or hide this member') }}">
+                                        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                                    </button>
+                                    <h3 class="portal-reg-member-name member-display-name">{{ gettext('Next Member') }}</h3>
+                                    <button type="button" class="portal-button portal-button-quiet portal-button-small remove-member-btn d-none">
+                                        <i class="fa-solid fa-trash" aria-hidden="true"></i>
+                                        <span>{{ gettext('Remove') }}</span>
+                                    </button>
+                                </div>
+                                <div class="member-card-body portal-reg-member-body d-none">
+                                    <div class="portal-field-grid">
+                                        <div class="portal-field">
+                                            <label class="portal-field-label">{{ gettext('First Name') }} <span class="portal-required" aria-hidden="true">*</span></label>
+                                            <input class="portal-input member-first-name" maxlength="50" autocomplete="off" required>
+                                            <p class="portal-field-error" role="alert"></p>
+                                        </div>
+                                        <div class="portal-field">
+                                            <label class="portal-field-label">{{ gettext('Last Name') }} <span class="portal-required" aria-hidden="true">*</span></label>
+                                            <input class="portal-input member-last-name" maxlength="50" autocomplete="off" required>
+                                            <p class="portal-field-error" role="alert"></p>
+                                        </div>
+                                        <div class="portal-field">
+                                            <label class="portal-field-label">{{ gettext('Role in Family') }}</label>
+                                            <select class="portal-input member-role">
+                                                {% for role in familyRoles %}
+                                                <option value="{{ role.id }}">{{ role.name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="portal-field">
+                                            <label class="portal-field-label">{{ gettext('Gender') }}</label>
+                                            <select class="portal-input member-gender">
+                                                <option value="1">{{ gettext('Male') }}</option>
+                                                <option value="2">{{ gettext('Female') }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="portal-field portal-field-wide">
+                                            <label class="portal-field-label">{{ gettext('Email Address') }}</label>
+                                            <input class="portal-input member-email" type="email" inputmode="email" autocapitalize="none" maxlength="50" autocomplete="off">
+                                            <p class="portal-field-error" role="alert"></p>
+                                        </div>
+                                        <div class="portal-field">
+                                            <label class="portal-field-label">{{ gettext('Phone Number') }}</label>
+                                            <input class="portal-input member-phone" type="tel" inputmode="tel" maxlength="30" autocomplete="off"
+                                                   data-inputmask='"mask":"{{ phoneFormat }}"' data-mask
+                                                   data-phone-format-home="{{ phoneFormat }}" data-phone-format-cell="{{ phoneFormatCell }}">
+                                            <label class="portal-choice portal-register-noformat">
+                                                <input class="member-phone-noformat" type="checkbox" id="member-phone-noformat" name="member-phone-noformat" value="1">
+                                                <span class="member-phone-noformat-label">{{ gettext('No format') }}</span>
+                                            </label>
+                                            <p class="portal-field-error" role="alert"></p>
+                                        </div>
+                                        <div class="portal-field">
+                                            <label class="portal-field-label">{{ gettext('Phone Type') }}</label>
+                                            <select class="portal-input member-phone-type">
+                                                <option value="mobile">{{ gettext('Mobile') }}</option>
+                                                <option value="home">{{ gettext('Home') }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="portal-field">
+                                            <label class="portal-field-label">{{ gettext('Birthday') }}</label>
+                                            <input type="text" class="portal-input inputDatePicker member-birthday" placeholder="{{ gettext('Select date') }}" autocomplete="off">
+                                        </div>
+                                        <div class="portal-field">
+                                            <label class="portal-field-label portal-register-spacer" aria-hidden="true">&nbsp;</label>
+                                            <label class="portal-choice">
+                                                <input type="checkbox" class="member-hide-age">
+                                                <span>{{ gettext('Hide Age') }}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+
+                        <div class="portal-form-actions">
+                            <button type="button" class="portal-button portal-button-quiet" id="add-member-btn">
+                                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                                <span>{{ gettext('Add Family Member') }}</span>
+                            </button>
+                        </div>
+
+                        <p class="portal-field-hint"><span class="portal-required" aria-hidden="true">*</span> {{ gettext('Required fields') }}</p>
+
+                        <div class="portal-form-actions portal-register-actions">
+                            <button type="button" class="portal-button portal-button-quiet" id="members-previous">{{ gettext('Previous') }}</button>
+                            <button type="button" class="portal-button" id="members-next">{{ gettext('Next') }}</button>
+                        </div>
+                    </div>
+
+                    <div id="step-review" class="content" role="tabpanel" aria-labelledby="step-review-trigger">
+                        <h2 class="portal-card-title">{{ gettext('Almost there — review your details') }}</h2>
+                        <p class="portal-card-text portal-register-intro">{{ gettext('Please check everything looks right before submitting.') }}</p>
+
+                        <div class="portal-register-summary">
+                            <h3 class="portal-register-summary-title"><span id="displayFamilyName"></span> {{ gettext('Family') }}</h3>
+                            <dl class="portal-card-details">
+                                <dt>{{ gettext('Address') }}</dt>
+                                <dd id="displayFamilyAddress"></dd>
+                                <dt>{{ gettext('Phone') }}</dt>
+                                <dd id="displayFamilyPhone"></dd>
+                            </dl>
+                        </div>
+
+                        <h3 class="portal-register-summary-title">{{ gettext('Family Members') }}</h3>
+                        <table class="portal-register-table">
+                            <thead>
+                                <tr>
+                                    <th>{{ gettext('First Name') }}</th>
+                                    <th>{{ gettext('Last Name') }}</th>
+                                    <th>{{ gettext('Email') }}</th>
+                                    <th>{{ gettext('Phone') }}</th>
+                                    <th>{{ gettext('Birthday') }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in 1..8 %}
+                                <tr id="displayFamilyPerson{{ x }}" class="d-none">
+                                    <td><span id="displayFamilyPersonFName{{ x }}"></span></td>
+                                    <td><span id="displayFamilyPersonLName{{ x }}"></span></td>
+                                    <td><span id="displayFamilyPersonEmail{{ x }}"></span></td>
+                                    <td><span id="displayFamilyPersonPhone{{ x }}"></span></td>
+                                    <td><span id="displayFamilyPersonBDay{{ x }}"></span></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                        <div class="portal-register-cards">
+                            {% for x in 1..8 %}
+                            <div id="displayFamilyPersonCard{{ x }}" class="portal-register-person d-none">
+                                <h4 class="portal-register-person-name">
+                                    <i id="displayFamilyPersonCardGenderIcon{{ x }}" class="fa-solid fa-user" aria-hidden="true"></i>
+                                    <span id="displayFamilyPersonCardFName{{ x }}"></span>
+                                    <span id="displayFamilyPersonCardLName{{ x }}"></span>
+                                </h4>
+                                <p id="displayFamilyPersonCardEmailBlock{{ x }}" class="d-none"><strong>{{ gettext('Email') }}:</strong> <span id="displayFamilyPersonCardEmail{{ x }}"></span></p>
+                                <p id="displayFamilyPersonCardPhoneBlock{{ x }}" class="d-none"><strong>{{ gettext('Phone') }}:</strong> <span id="displayFamilyPersonCardPhone{{ x }}"></span></p>
+                                <p id="displayFamilyPersonCardBDayBlock{{ x }}" class="d-none"><strong>{{ gettext('Birthday') }}:</strong> <span id="displayFamilyPersonCardBDay{{ x }}"></span></p>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <p class="portal-card-text portal-register-next"><strong>{{ gettext('What happens next?') }}</strong>
+                            {{ gettext('Once you submit, our team will receive your registration and reach out to personally welcome your family. If anything looks wrong, use the Previous button to go back and make changes.') }}</p>
+
+                        <div class="portal-form-actions portal-register-actions">
+                            <button type="button" class="portal-button portal-button-quiet" id="review-previous">{{ gettext('Previous') }}</button>
+                            <button type="button" class="portal-button" id="submit-registration">{{ gettext('Submit Registration') }}</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts_extra %}
+<script src="{{ asset('/skin/js/DropdownManager.js') }}"></script>
+<script src="{{ asset('/skin/js/FamilyRegister.js') }}"></script>
+{% endblock %}

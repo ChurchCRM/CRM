@@ -37,6 +37,9 @@ require __DIR__ . '/routes/theme-asset.php';
 // §9). The link alone identifies the request, so it needs no session.
 require __DIR__ . '/routes/email-confirm.php';
 
+// Public: optional family self-registration form (the write API remains under /api/public).
+require __DIR__ . '/routes/register.php';
+
 PluginManager::init(SystemURLs::getDocumentRoot() . '/plugins');
 
 // Public: member sign-in by email (member sign-in design §6.1). AuthMiddleware

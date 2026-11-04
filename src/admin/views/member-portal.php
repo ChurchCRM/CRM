@@ -393,36 +393,27 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                 <?= gettext('Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in.') ?>
             </p>
 
-            <div class="row row-cards mb-3" id="portalStatCards">
+            <div class="card card-sm mb-3" id="portalStatCards">
+                <div class="row row-cols-2 row-cols-md-3 row-cols-xl-6 g-0">
                 <?php
                 $statCards = [
-                    ['id' => 'activeNow', 'label' => gettext('Active now'), 'hint' => gettext('In the last 15 minutes'), 'icon' => 'fa-circle-dot', 'color' => 'bg-green'],
-                    ['id' => 'signedIn24Hours', 'label' => gettext('Last 24 hours'), 'hint' => gettext('Signed in'), 'icon' => 'fa-clock', 'color' => 'bg-blue'],
-                    ['id' => 'signedIn7Days', 'label' => gettext('Last 7 days'), 'hint' => gettext('Signed in'), 'icon' => 'fa-calendar-week', 'color' => 'bg-azure'],
-                    ['id' => 'signedIn30Days', 'label' => gettext('Last 30 days'), 'hint' => gettext('Signed in'), 'icon' => 'fa-calendar-days', 'color' => 'bg-indigo'],
-                    ['id' => 'maySignIn', 'label' => gettext('May sign in'), 'hint' => gettext('Total'), 'icon' => 'fa-users', 'color' => 'bg-secondary'],
-                    ['id' => 'neverSignedIn', 'label' => gettext('Never signed in'), 'hint' => gettext('May sign in'), 'icon' => 'fa-user-slash', 'color' => 'bg-orange'],
+                    ['id' => 'activeNow', 'label' => gettext('Active now'), 'hint' => gettext('In the last 15 minutes'), 'icon' => 'fa-circle-dot'],
+                    ['id' => 'signedIn24Hours', 'label' => gettext('Last 24 hours'), 'hint' => gettext('Signed in'), 'icon' => 'fa-clock'],
+                    ['id' => 'signedIn7Days', 'label' => gettext('Last 7 days'), 'hint' => gettext('Signed in'), 'icon' => 'fa-calendar-week'],
+                    ['id' => 'signedIn30Days', 'label' => gettext('Last 30 days'), 'hint' => gettext('Signed in'), 'icon' => 'fa-calendar-days'],
+                    ['id' => 'maySignIn', 'label' => gettext('May sign in'), 'hint' => gettext('Total'), 'icon' => 'fa-users'],
+                    ['id' => 'neverSignedIn', 'label' => gettext('Never signed in'), 'hint' => gettext('May sign in'), 'icon' => 'fa-user-slash'],
                 ];
                 foreach ($statCards as $card): ?>
-                    <div class="col-6 col-lg-4 col-xl-2">
-                        <div class="card card-sm">
-                            <div class="card-body">
-                                <div class="row align-items-center">
-                                    <div class="col-auto">
-                                        <span class="<?= $card['color'] ?> text-white avatar rounded-circle">
-                                            <i class="fa-solid <?= $card['icon'] ?>"></i>
-                                        </span>
-                                    </div>
-                                    <div class="col">
-                                        <div class="h2 mb-0" id="portalStat-<?= $card['id'] ?>"><?= (int) $stats[$card['id']] ?></div>
-                                        <div class="fw-medium"><?= InputUtils::escapeHTML($card['label']) ?></div>
-                                        <div class="text-secondary small"><?= InputUtils::escapeHTML($card['hint']) ?></div>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="col">
+                        <div class="h-100 px-3 py-2 text-center border-end border-bottom">
+                            <div class="h2 mb-0" id="portalStat-<?= $card['id'] ?>"><?= (int) $stats[$card['id']] ?></div>
+                            <div class="fw-medium"><i class="fa-solid <?= $card['icon'] ?> text-secondary me-1" aria-hidden="true"></i><?= InputUtils::escapeHTML($card['label']) ?></div>
+                            <div class="text-secondary small"><?= InputUtils::escapeHTML($card['hint']) ?></div>
                         </div>
                     </div>
                 <?php endforeach; ?>
+                </div>
             </div>
 
             <div class="card">

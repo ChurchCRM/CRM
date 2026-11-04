@@ -90,7 +90,19 @@ Record that run's URL and outcome on the integration PR. Test the member cutover
 on a disposable copy of a pre-cutover database as well; a freshly seeded database
 does not demonstrate that existing self-service accounts and family emails migrate.
 
-## 4. Check the workflow in a browser
+## 4. Check the login and registration routes
+
+With `bMemberSignIn` enabled, signed-out visitors reach `/portal/login`. With member sign-in off but self-registration enabled, `/portal/login` offers registration; with both settings off, signed-out visitors go to `/session/begin`. Staff sign in at `/session/begin`. `/admin/` always requires an authenticated admin and opens the admin dashboard; signed-out visitors are redirected to staff sign-in, and authenticated non-admin staff land at `/v2/dashboard`. When `bEnableSelfRegistration` is enabled, `/portal/login` links to `/portal/register` and the legacy `/external/register/` URL redirects there. When disabled, no portal registration link appears and `/portal/register` is denied. The family submission still uses the existing `/api/public/register/family` endpoint.
+
+Run the focused route and registration specs after a test database reset:
+
+```bash
+npm run docker:test:reset:db
+npx cypress run --config-file cypress/configs/docker.config.ts \
+  --spec 'cypress/e2e/ui/session/session.sign-in-pages.spec.js,cypress/e2e/ui/session/auth-page-css.spec.js,cypress/e2e/ui/guest/guest.family.reg.spec.js,cypress/e2e/ui/mobile/mobile-ux.spec.js'
+```
+
+## 5. Check the workflow in a browser
 
 Use `admin` / `changeme` at `http://localhost` and Mailpit at
 `http://localhost:8025`. Use seeded people and test addresses. Check light/dark

@@ -408,7 +408,7 @@ class AuthenticationManager
         return false;
     }
 
-    /** The staff sign-in page, the `/admin` root (design §7). `/session/begin` redirects there. */
+    /** The staff sign-in address: the /admin root signs staff in. /session/begin serves the same form. */
     public static function getStaffSignInURL(): string
     {
         return SystemURLs::getRootPath() . '/admin/';

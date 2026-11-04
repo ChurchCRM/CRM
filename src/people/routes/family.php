@@ -12,6 +12,7 @@ use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Service\CustomFieldService;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\PersonSignInService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -230,7 +231,11 @@ function viewFamily(Request $request, Response $response, array $args): Response
         'taxYears' => [],
     ];
 
-    // Pre-compute available tax years for Finance users (used by Tax Doc action menu items)
+    // Sign-in status under each member, for staff who edit records
+    if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() && SystemConfig::getBooleanValue('bMemberSignIn')) {
+        $pageArgs['portalSignInStatuses'] = (new PersonSignInService())->statusesFor($family->getPeople());
+    }
+
     if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) {
         $finService = new FinancialService();
         $maxTaxYears = SystemConfig::getIntValue('iMaxTaxYears');
