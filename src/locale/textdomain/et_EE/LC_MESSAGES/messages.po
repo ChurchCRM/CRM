@@ -24231,14 +24231,2962 @@ msgid "Repeat events could not be created. Check the application log for details
 msgstr "Korduvaid sündmusi ei õnnestunud luua. Üksikasjade saamiseks vaadake rakenduse logi."
 
 #: 
+msgid "Confirm Password"
+msgstr "Kinnitage parool"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Teie parool on muudetud. Nüüd saate uue parooliga sisse logida."
+
+#: 
+msgid "1st"
+msgstr "1."
+
+#: 
+msgid "2nd"
+msgstr "2."
+
+#: 
+msgid "3rd"
+msgstr "3."
+
+#: 
+msgid "4th"
+msgstr "4."
+
+#: 
+msgid "5th"
+msgstr "5."
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Administraatoriõigusi ei saa eemaldada ainsalt administraatorilt, kes saab sisse logida"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Valige kuu nädal, 1. kuni 5."
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Loob {{total}} sündmust iga kuu {{week}} {{day}} ajavahemikus {{first}} kuni {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Sobimatu nädalapäev"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Kord kuus, nädalapäeval"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Kuud, millel ei ole 5. nädalat, jäetakse vahele."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM peab olema täisarv vahemikus 1 kuni 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Kuu nädal"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Kuu nädal peab olema vahemikus 1 kuni 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s kuni %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Annetuste tõenditele trükitav kiriku maksukohustuslase number (EIN)"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Annetuste tõendid väljastatakse leibkonna täiskasvanutele. Kui vajate tõendit, võtke palun ühendust koguduse kantseleiga."
+
+#: 
+msgid "Download statement"
+msgstr "Laadige tõend alla"
+
+#: 
+msgid "Generated"
+msgstr "Koostatud"
+
+#: 
+msgid "Goods and services"
+msgstr "Kaubad ja teenused"
+
+#: 
+msgid "My Giving"
+msgstr "Minu annetused"
+
+#: 
+msgid "No contributions"
+msgstr "Annetusi ei ole"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Selle perioodi kohta ei ole annetusi kirjas."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Nende annetuste eest ei antud kaupu ega teenuseid, välja arvatud mittemateriaalsed usulised hüved."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Valikuline. Trükitakse annetuste tõenditele."
+
+#: 
+msgid "Tax ID"
+msgstr "Maksukohustuslase number"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Maksukohustuslase number (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Maksust mahaarvatav summa"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "See on leibkonna tõend. See sisaldab teie pere annetusi."
+
+#: 
+msgid "Total contributions"
+msgstr "Annetused kokku"
+
+#: 
+msgid "Year-end statement"
+msgstr "Aasta lõpu tõend"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d annetuste tõend saadeti perele e-postiga."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s annetuste tõend"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Kohandage annetuste tõenditel kuvatavat teksti (sTaxReport1, sTaxReport2 jne)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Lugupeetud %s perekond,\n"
+"\n"
+"Selle kirja manusest leiate oma %s annetuste tõendi koguduselt %s.\n"
+"\n"
+"Küsimuste korral võtke palun ühendust koguduse kantseleiga.\n"
+"\n"
+"Täname teid helduse eest."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Saatke %s annetuste tõend e-postiga"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Ümbriku numbrid"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Koostage annetuste tõendid"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Koostage aruandeid annetuste tõendite, annetuslubaduste jälgimise ja finantsanalüüsi jaoks."
+
+#: 
+msgid "Giving Reports"
+msgstr "Annetuste aruanded"
+
+#: 
+msgid "Giving Statement"
+msgstr "Annetuste tõend"
+
+#: 
+msgid "Giving Statements"
+msgstr "Annetuste tõendid"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Annetuste tõendi e-kirja saatmine ebaõnnestus. Kontrollige palun meiliserveri sätteid."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Palun saatke järgmine annetus postiga aadressile %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Printige %s annetuste tõend"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Annetuste tõendit ei saa e-postiga saata: selle aasta makseandmeid ei leitud."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Annetuste tõendit ei saa e-postiga saata: sellel perel ei ole e-posti aadressi."
+
+#: 
+msgid "Undesignated"
+msgstr "Sihtotstarbeta"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Kontrollige, et koguduse nimi, aadress ja kontaktandmed oleksid annetuste tõenditel."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Koht on nüüd määratud isikule %s, kes on selle vastu võtnud."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Koht on nüüd määratud isikule %s, kes ei ole seda veel vastu võtnud."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Tema põhjus: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Vaadake ülesandeid"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Selle toimumise jaoks on veel vaja vabatahtlikke: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Selle koha jaoks on veel vaja vabatahtlikke: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Iganädalane kohaloleku tabel iga klassi jaoks. Klasside nimekirjad ja fotoraamatud on pühapäevakooli töölaual ja iga klassi lehel."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Õppeaasta iganädalane kohaloleku tabel, üks veerg iga pühapäeva jaoks"
+
+#: 
+msgid "Age %d"
+msgstr "Vanus %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Kohalolekulehe koostamiseks tuleb valida vähemalt üks rühm."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Kohalolekuleht"
+
+#: 
+msgid "Class List"
+msgstr "Klassi nimekiri"
+
+#: 
+msgid "Download PDF"
+msgstr "Laadige PDF alla"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Blokeerimisperiood minutites\n"
+"Lukustatud konto avaneb iseenesest pärast nii mitut minutit. Ühelt IP-aadressilt ebaõnnestunud sisselogimisi loetakse sama perioodi jooksul."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Ühelt IP-aadressilt ebaõnnestunud sisselogimiste suurim arv\n"
+"Ühelt IP-aadressilt tehtud ebaõnnestunud sisselogimised ja parooli lähtestamise taotlused arvestatakse selle piirangu sisse blokeerimisperioodi jooksul. Kui piir on täis, keeldutakse sellelt aadressilt sisselogimisest kuni perioodi lõpuni.\n"
+"Määrake null, et see funktsioon välja lülitada, näiteks kui kõik jõuavad ChurchCRM-i ühe puhverserveri aadressi kaudu."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Ebaõnnestunud sisselogimiste suurim arv enne kasutajakonto lukustamist.\n"
+"Lukustatud konto avaneb iseenesest pärast blokeerimisperioodi või varem, kui administraator lähtestab selle ebaõnnestunud sisselogimised.\n"
+"See funktsioon aitab kaitsta automaatsete parooli äraarvamise rünnakute eest.\n"
+"Määrake null, et see funktsioon välja lülitada."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Minuteid iseenesliku avanemiseni: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Pühapäevakooli kohalolekuleht"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Pühapäevad, mil tundi ei ole, jäetakse lehelt välja."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Andmebaasi uuendus"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Teie andmebaasi uuendatakse. Hoidke palun see leht avatuna, kuni uuendus lõpeb."
+
+#: 
+msgid "Family Labels"
+msgstr "Pere sildid"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – kokku"
+
+#: 
+msgid "Bill"
+msgstr "Paberraha"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Valige deposiit või sisestage mõlemad aruande kuupäevad."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Valige üks deposiit, et vaadata selle makseid või printida pangakviitung. Valitud deposiit tühistab kuupäevavahemiku."
+
+#: 
+msgid "Coin"
+msgstr "Mündid"
+
+#: 
+msgid "Deposit Report"
+msgstr "Deposiidi aruanne"
+
+#: 
+msgid "Download Report"
+msgstr "Laadige aruanne alla"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Sisestage kehtivad aruande kuupäevad."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Sobimatud aruandefiltrid."
+
+#: 
+msgid "Invalid report options."
+msgstr "Sobimatud aruandesuvandid."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Jätke filtrid tühjaks, et kaasata kõik maksed. Need sätted kehtivad aruandele, mitte pangakviitungile."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Kirjeid ei leitud. Kohandage filtreid ja proovige uuesti."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Valmistage pangale ette"
+
+#: 
+msgid "Preview Totals"
+msgstr "Vaadake kogusummasid"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Printige pangakviitung"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Printige valitud deposiit täielikult, koos sularaha ja tšekkide kogusummade, loenduslehtede ja tunnistajate ridadega. Aruandefiltreid eiratakse. Elektroonilised maksed jäävad kokkuvõttesse ja jäetakse füüsilise pangakviitungi kogusummast välja."
+
+#: 
+msgid "Review Payments"
+msgstr "Vaadake makseid"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Vaadake perioodi makseid või valmistage üks deposiit pangale ette."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Vaadake makseid, laadige alla PDF või CSV või printige ühe deposiidi pangakviitung."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Valige kehtiv deposiit."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Valige pangakviitungi printimiseks üks deposiit."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Aruande lõppkuupäev peab olema alguskuupäeval või hiljem."
+
+#: 
+msgid "Total Cash"
+msgstr "Sularaha kokku"
+
+#: 
+msgid "Total Coin"
+msgstr "Mündid kokku"
+
+#: 
+msgid "Witness"
+msgstr "Tunnistaja"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d annetusel ei ole peret. Neid ei saa tõendile panna."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "%d selle aasta avatud deposiiti. Sulgege need, et iga annetus oleks lõplik enne tõendite väljastamist."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d makset ei ole veel ühelgi deposiidil."
+
+#: 
+msgid "Can be emailed"
+msgstr "Saab saata e-postiga"
+
+#: 
+msgid "Closing line"
+msgstr "Lõpurida"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Kõik selle aasta deposiidid on suletud."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Iga annetus kuulub perele."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Iga selle aasta makse on deposiidil."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Koostage maksutõendid"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Annetuste aruanne (maksutõendid)"
+
+#: 
+msgid "Opening line"
+msgstr "Avalause"
+
+#: 
+msgid "Print and mail"
+msgstr "Printige ja saatke postiga"
+
+#: 
+msgid "Qty"
+msgstr "Kogus"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Vaadake aasta üle, seejärel printige või saatke annetuste tõendid e-postiga."
+
+#: 
+msgid "Signed by"
+msgstr "Allkirjastaja"
+
+#: 
+msgid "Thank-you line"
+msgstr "Tänurida"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Kontrollige, et koguduse nimi, aadress ja kontaktandmed oleksid maksutõenditel."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Aasta lõpu annetused"
+
+#: 
+msgid "As of: %s"
+msgstr "Seisuga: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Vähemalt üks positiivne peremakse valitud %d eelarveaasta jooksul kuni ülevaatuskuupäevani: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Ristimine, valimisnimekirja taotlused, elukoht, armulauaosavõtja staatus, osalemine, hea liikmestaatus ja kohalikud erandid tuleb eraldi kontrollida, kui teie põhikiri seda nõuab. Liikmelisuse kestus ei tõenda osalemist."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Valige olemasolev klassifikatsioon."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Valige ülevaatamiseks vähemalt üks klassifikatsioon."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Valige klassifikatsioonid, mida teie kogudus kasutab. Ühelgi klassifikatsioonil ei eeldata hääleõigust."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Koguduse juhtkond peab kinnitama sobivuse koguduse põhikirja järgi. See nimekiri näitab ainult valitud filtritele vastavaid inimesi."
+
+#: 
+msgid "Classifications to review"
+msgstr "Ülevaatatavad klassifikatsioonid"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Klassifikatsioonid: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Surnud inimesed, mitteaktiivsed inimesed ja klassifikatsioonid ning mitteaktiivsed või ülevaatust ootavad pered ja inimesed on välja jäetud."
+
+#: 
+msgid "Download Review List"
+msgstr "Laadige ülevaatusnimekiri alla"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Sisestage kehtiv ülevaatuskuupäev vahemikus 1900 kuni 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Sisestage kuvatud piirides täisarvud."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Kontrollitavad eelarveaastad (0–100; 0 tähendab, et annetusnõuet ei ole)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Annetused kantakse pere, mitte üksikisiku kaupa. Lülitage see sisse ainult siis, kui teie põhikiri lubab peremaksel seda kriteeriumi täita. See ei tõenda, et iga inimene annetas. Ajavahemik hõlmab valitud eelarveaastat ja lõpeb hiljemalt ülevaatuskuupäeval."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Viimane kaasatav eelarveaasta"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Miinimumvanus (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Miinimumvanus: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Liikmelisuse minimaalne kestus kuudes (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Liikmelisuse minimaalne kestus: %d kuud"
+
+#: 
+msgid "No donation requirement."
+msgstr "Annetusnõuet ei ole."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Nendele filtritele ei vasta ükski inimene. Kontrollige puuduvaid sünni- või liikmelisuse kuupäevi ja kohandage kriteeriume."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Valikuline pere annetusnõue"
+
+#: 
+msgid "People matching filters"
+msgstr "Filtritele vastavad inimesed"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Inimesed, kes jäeti välja, sest nõutavad kuupäevad puuduvad"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Koostage koguduse ülevaatuseks nimekiri klassifikatsioonide ning valikuliste vanuse-, liikmelisuse- ja pereannetuse filtrite abil."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Koostage koguduse ülevaatuseks nimekiri oma põhikirja järgi."
+
+#: 
+msgid "Review date"
+msgstr "Ülevaatuskuupäev"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Kasutage filtreid valides koguduse põhikirja ja laske seejärel volitatud koguduse juhtkonnal nimekiri üle vaadata. Nendele filtritele vastamine ei anna hääleõigust. See aruanne ei salvesta sobivust ega vii läbi valimisi."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Hääleõiguslikud liikmed — ülevaatusnimekiri"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Null lülitab valikulise nõude välja. Vanus nõuab täielikku sünnikuupäeva; liikmelisuse kestus nõuab liikmelisuse kuupäeva. Inimesed, kellel nõutavad kuupäevad puuduvad, jäetakse välja ja loetakse eraldi. Surnud inimesed, mitteaktiivsed inimesed ja klassifikatsioonid ning mitteaktiivsed või ülevaatust ootavad pered ja inimesed jäetakse alati välja; kasutatakse praegust klassifikatsiooni ja olekut, mitte ajaloolist olekut."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Tasumisele kuuluv summa (%s): %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Valitud kaustas ei saa luua privaatset PDF-i ajutist salvestuskohta."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Jätke tühjaks, et kasutada süsteemi ajutist kausta. Muul juhul sisestage olemasolev kirjutatav kaust, mis on veebijuurdepääsu eest kaitstud."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "PDF-i ajutine kaust"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "PDF-i ajutine salvestuskoht peab olema privaatne ja kirjutatav."
+
+#: 
+msgid "Reporting"
+msgstr "Aruandlus"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "PDF-i ajutist kausta ei ole või see ei ole juurdepääsetav."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "PDF-i ajutine kaust peab olema absoluutne kaustatee."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Kiriku maksukohustuslase number (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Lõpurida"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Juhib valikulist telemeetriat. Paigalduse ja andmebaasi uuenduse tõrked saadavad PostHogile piiratud diagnostika ka siis, kui telemeetria on välja lülitatud. Need tõrketeated sisaldavad tarkvara ja keskkonna versioone ning puhastatud andmebaasi viga, kuid mitte paigalduse ID-d ega SQL-lauset."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Diagnoosige ebaõnnestunud paigaldusi ja andmebaasi uuendusi"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Paigalduse ja uuenduse tõrgete üksikasjad"
+
+#: 
+msgid "Open in browser window"
+msgstr "Avage brauseriaknas"
+
+#: 
+msgid "Opening Line"
+msgstr "Avalause"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Valikulist kasutustelemeetriat saadetakse ainult siis, kui see on sisse lülitatud. Paigalduse ja andmebaasi uuenduse tõrked saadavad kogukonna abistamiseks alati piiratud diagnostika, isegi kui valite Ei, aitäh. Tõrketeated sisaldavad tarkvara ja keskkonna versioone ning puhastatud andmebaasi viga, ilma paigalduse ID või SQL-lauseta."
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF-i käsitlemine"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF-i väljund"
+
+#: 
+msgid "PDF handling mode"
+msgstr "PDF-i käsitlemise režiim"
+
+#: 
+msgid "Questions Line"
+msgstr "Küsimuste rida"
+
+#: 
+msgid "Save File dialog"
+msgstr "Faili salvestamise dialoog"
+
+#: 
+msgid "Signer"
+msgstr "Allkirjastaja"
+
+#: 
+msgid "Statement Settings"
+msgstr "Tõendi sätted"
+
+#: 
+msgid "Statement Wording"
+msgstr "Tõendi sõnastus"
+
+#: 
+msgid "Tax Information"
+msgstr "Maksuteave"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Telemeetria saadetakse PostHogile Ameerika Ühendriikides. Paigalduse ja uuenduse tõrketeated saadetakse ka siis, kui valikuline telemeetria on välja lülitatud."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "See kuupäev tühistati. Teilt ei ole rohkem midagi vaja."
+
+#: 
+msgid "always sent"
+msgstr "saadetakse alati"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Kirjaplangi eemaldamine ebaõnnestus"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Kirjaplangi salvestamine ebaõnnestus"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Kirjaplangi üleslaadimine ebaõnnestus"
+
+#: 
+msgid "Greeting"
+msgstr "Tervitus"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Kirja tervitus ja allkiri"
+
+#: 
+msgid "Letterhead"
+msgstr "Kirjaplank"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF või WebP. Kõige paremini sobib lai riba, näiteks 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Trükitakse graafilist kirjaplanki kasutavate PDF-kirjade, näiteks annetuste tõendite, ülaossa. Ilma selleta trükivad kirjad koguduse nime ja aadressi."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Kas eemaldada kirjaplank? Kirjad trükivad koguduse nime ja aadressi."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Määrake kirjaplank, mille PDF-kirjad trükivad"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Kasutatakse koguduse nime ja aadressi"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Kasutatakse süsteemisätetes määratud kirjaplangi teed"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Annetuste tõendite sõnastus, maksukohustuslase number ja PDF-i käsitlemine"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s kui %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s on nüüd teie e-posti aadress. Saate seda kasutada liikmeportaali sisselogimiseks."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} veel"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "Teie e-posti aadressi muutmist taotleti"
+
+#: 
+msgid "A family"
+msgstr "Pere"
+
+#: 
+msgid "A group"
+msgstr "Rühm"
+
+#: 
+msgid "A ministry"
+msgstr "Teenistusvaldkond"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "Uus aadress muutub alles siis, kui kasutate linki, mille me sellele saadame."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "Pääsuvõtme saab lisada ainult %d minuti jooksul pärast e-posti aadressiga sisselogimist. Logige välja, logige e-postiga uuesti sisse ja tulge siis siia tagasi."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "Pääsuvõti logib teid sisse Face ID, sõrmejälje või seadme PIN-koodiga, ilma e-posti koodita."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "Teie liikmeportaali sisselogimisele lisati pääsuvõti"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "Teie liikmeportaali sisselogimisele lisati pääsuvõti kell %1$s kuupäeval %2$s aadressilt %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "Teie liikmeportaali sisselogimisele lisati pääsuvõti kell %1$s kuupäeval %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "Inimesel, kes selle kaotab, ei ole siis oma e-posti aadressi: ainult temale saadetud kiri, näiteks rühma kiri, jäetakse vahele ja kirja koostaja ütleb seda."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "Inimese kirje, mis peidab vanuse, ei näita kunagi sünniaastat."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "Liikmeportaalis taotleti kell %s teie e-posti aadressi muutmist aadressilt %s aadressile %s. Muudatus toimub ainult siis, kui kasutatakse aadressile %s saadetud linki."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Rida ei ole oodatud kujul."
+
+#: 
+msgid "A team"
+msgstr "Meeskond"
+
+#: 
+msgid "Add a passkey"
+msgstr "Lisage pääsuvõti"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Lisage pääsuvõti ainult oma telefonis või arvutis, mitte kunagi jagatud või avalikus seadmes."
+
+#: 
+msgid "Add an email"
+msgstr "Lisage e-posti aadress"
+
+#: 
+msgid "Added %s"
+msgstr "Lisatud %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Administraatori erandid"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "%s pere täiskasvanu"
+
+#: 
+msgid "Adult of the family"
+msgstr "Pere täiskasvanu"
+
+#: 
+msgid "All events"
+msgstr "Kõik sündmused"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Lubage sisselogimine isikuna"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Lubage muudatused isikuna sisselogimise ajal"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Lubage muudatused, kui administraator kasutab sisselogimist isikuna. Kui see on välja lülitatud, on sisselogimine isikuna kirjutuskaitstud."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Pereliige juba kasutab seda"
+
+#: 
+msgid "Also used by"
+msgstr "Kasutavad ka"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Administraator saab inimese lehel anda sellele inimesele mis tahes õiguse. Siis kuvatakse siin „Administraatori erandid“ koos inimeste arvuga, kellele see anti."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "Teine inimene kasutab seda aadressi juba"
+
+#: 
+msgid "Applies to"
+msgstr "Kehtib"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Kinnitage või lükake tagasi vabatahtlike meeskonna asendustaotlused."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Küsige uut e-kirja"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Õigus antakse inimesele, mitte sisselogimisele, nii et selle saab anda enne, kui tal sisselogimine on. Inimene, kes logib sisse ainult liikmeportaali, näeb edasi ainult oma ajakava, kuni administraator annab talle töötajakonto."
+
+#: 
+msgid "Awaiting review"
+msgstr "Ootab ülevaatust"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Tagasi sisselogimisele"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Sirvige kogu kataloogi"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Saab liikmeportaali sisse logida"
+
+#: 
+msgid "Can sign in?"
+msgstr "Kas saab sisse logida?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Sisselogimist ei saa välja lülitada ainsal administraatoril, kes saab sisse logida."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Ei saa sisse logida"
+
+#: 
+msgid "Change family details"
+msgstr "Muutke pere andmeid"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Muutke pere aadressi ja kontaktandmeid ning lisage pereliige ülevaatamiseks."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Muuta oma nime, kontaktandmeid ja fotot."
+
+#: 
+msgid "Changed"
+msgstr "Muudetud"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Muudetud pärast inimese sisselogimist"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Muudetud impordiga pärast inimese sisselogimist"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Muudetud töötajate poolt pärast inimese sisselogimist"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Muudetud API kaudu pärast inimese sisselogimist"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Muudatused on isikuna sisselogimise ajal välja lülitatud."
+
+#: 
+msgid "Changes needed"
+msgstr "Vaja on muudatusi"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Muudatused salvestatakse nende tegemisel."
+
+#: 
+msgid "Check your email"
+msgstr "Kontrollige oma e-posti"
+
+#: 
+msgid "Choose a permission"
+msgstr "Valige õigus"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Valige õigus, mille jaoks see on ja selle viimane päev, ning öelge, miks."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Valige foto või tehke selfi"
+
+#: 
+msgid "Choose a theme"
+msgstr "Valige teema"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Valige vähemalt üks rida."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Valige korraga kõige rohkem %d rida."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Valige loendist, kuidas kuupäevi kuvatakse."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Valige selle õiguse viimane päev."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Valige, mille jaoks õigus on."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Valige jah või ei."
+
+#: 
+msgid "Church Office"
+msgstr "Koguduse kantselei"
+
+#: 
+msgid "Church country"
+msgstr "Koguduse riik"
+
+#: 
+msgid "Church default: %s"
+msgstr "Koguduse vaikeväärtus: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Koguduse juhi sisselogimine"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Klassifikatsioonid, mille liikmed võivad liikmeportaali sisse logida, klassifikatsiooni ID-de komadega eraldatud loendina."
+
+#: 
+msgid "Clear selection"
+msgstr "Tühjendage valik"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Koodid, seansid ja seadmed"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Kinnitage e-posti aadress"
+
+#: 
+msgid "Confirm email address"
+msgstr "Kinnitage e-posti aadress"
+
+#: 
+msgid "Confirm family details"
+msgstr "Kinnitage pere andmed"
+
+#: 
+msgid "Confirm selected"
+msgstr "Kinnitage valitud"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Kinnitage see e-posti aadress alles pärast seda, kui olete isiklikult või telefoni teel kontrollinud, et see on selle inimese oma aadress. Pärast kinnitamist saab seda kasutada liikmeportaali sisselogimiseks."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Kinnitage oma e-posti aadress"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Kinnitage oma uus e-posti aadress"
+
+#: 
+msgid "Confirmed"
+msgstr "Kinnitatud"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Kuupäevad tuleb kirjutada kujul YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Otsustage asendustaotluste üle"
+
+#: 
+msgid "Device"
+msgstr "Seade"
+
+#: 
+msgid "Device remembered"
+msgstr "Seade jäeti meelde"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Seadmed ja pääsuvõtmed"
+
+#: 
+msgid "Directory classifications"
+msgstr "Kataloogi klassifikatsioonid"
+
+#: 
+msgid "Directory section"
+msgstr "Kataloogi jaotis"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Lülitage sisselogimine välja"
+
+#: 
+msgid "Do not show"
+msgstr "Ärge näidake"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Igaühel neist peab olema ka oma e-posti aadress, mida keegi teine ei kasuta."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Iga sisselogimiskiri töötab ühe korra piiratud aja jooksul ja uuem kiri asendab selle."
+
+#: 
+msgid "Edit my details"
+msgstr "Muutke minu andmeid"
+
+#: 
+msgid "Email address changed"
+msgstr "E-posti aadress muudetud"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Sisestatud e-posti aadress: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "Kinnitatavaid e-posti aadresse: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "E-post muudetud"
+
+#: 
+msgid "Email code"
+msgstr "E-posti kood"
+
+#: 
+msgid "Email confirmed"
+msgstr "E-post kinnitatud"
+
+#: 
+msgid "Email link"
+msgstr "E-posti link"
+
+#: 
+msgid "Email me a code"
+msgstr "Saatke mulle kood"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Saatke mulle kinnituslink"
+
+#: 
+msgid "Email needs attention"
+msgstr "E-post vajab tähelepanu"
+
+#: 
+msgid "Email problem"
+msgstr "E-posti probleem"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "E-postiga saadetud sisselogimiskood ja link tühistati"
+
+#: 
+msgid "Emailed verification link"
+msgstr "E-postiga saadetud kinnituslink"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Kinnitatud e-kirju: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Lülitage sisselogimine sisse"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Kas lõpetada selle inimese kõik liikmeportaali seansid ja unustada tema meeldejäetud seadmed? Tema pääsuvõtmed jäävad alles, nii et ta saab uuesti sisse logida."
+
+#: 
+msgid "Ended %s"
+msgstr "Lõpetatud %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Lõpetatud nende sisselogimise muudatuse tõttu"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Lõpetatud, kui liikme sisselogimine lülitati välja"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Sisestage täisarv vahemikus %1$d kuni %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Sisestage oma e-posti aadress."
+
+#: 
+msgid "Every kind"
+msgstr "Iga liik"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Iga liikme sisselogimine, keeldumine ja sisselogimise muudatus, uusimad eespool. See ei sisalda kunagi koodi, linki ega pääsuvõtit."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Kõik loetletud A-st Z-ni, koos otsinguväljaga."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Kõik, keda sisselogimisreeglid sisse lasevad, saavad seejärel oma e-postiga liikmeportaali sisse logida."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Kõik, kes logisid liikmeportaali viimase 30 päeva jooksul, uusimad eespool."
+
+#: 
+msgid "Everywhere"
+msgstr "Igal pool"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Pered, mille liige viimase 30 päeva jooksul kinnitas, liikmeportaalist või e-postiga saadetud kinnituslingilt."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Kinnitatud pered, viimased 30 päeva"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Pere andmed kinnitatud"
+
+#: 
+msgid "Family email"
+msgstr "Pere e-post"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Pere e-posti aadresse ei teisaldatud"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Pererollid, mille liikmed võivad liikmeportaali sisse logida, rolli ID-de komadega eraldatud loendina."
+
+#: 
+msgid "Find someone"
+msgstr "Leidke keegi"
+
+#: 
+msgid "Fix by hand"
+msgstr "Parandage käsitsi"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Parandage jagatud e-posti aadressid"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Töötaja sisselogimisest"
+
+#: 
+msgid "Give a permission"
+msgstr "Andke õigus"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Andke portaaliõigus"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Andke igale inimesele oma e-posti aadress"
+
+#: 
+msgid "Give permission"
+msgstr "Andke õigus"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Andis %1$s kuni %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Andis %s"
+
+#: 
+msgid "Given to"
+msgstr "Antud"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Antud kõigile"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Antud, kuid ei kehti"
+
+#: 
+msgid "Go to sign in"
+msgstr "Minge sisselogimisele"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Minge liikmeportaali"
+
+#: 
+msgid "Has signed in"
+msgstr "On sisse loginud"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "On sisse loginud: tema seansid ja seadmed lõpetatakse"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Siin on teie kood liikmeportaali sisselogimiseks. Sisestage see sisselogimislehel brauseris, kus te seda küsisite. Või vajutage nuppu, et selles seadmes sisse logida."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Peidake õigused"
+
+#: 
+msgid "How"
+msgstr "Kuidas"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Mitu liikmeportaali sisselogimiskirja võib üks IP-aadress tunnis küsida. Määrake 0, kui piirangut ei ole, näiteks kui kõik jõuavad ChurchCRM-i ühe aadressi kaudu."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Mitu päeva jääb seade liikmeportaali sisselogituks pärast seda, kui liige valib sisselogituks jäämise. Määrake 0, et valik eemaldada."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Mitu tegevusetut minutit lõpetab liikmeportaali seansi."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Mitu minutit jäävad liikmeportaali sisselogimiskood ja link kehtima."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Tegevusetu aeg (minutid)"
+
+#: 
+msgid "Idle too long"
+msgstr "Liiga kaua tegevusetu"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Kui %1$s on teie uus aadress, kasutage selle kinnitamiseks allolevat nuppu. Kuni see ei ole kinnitatud, ei saa seda sisselogimiseks kasutada. Link töötab ühe korra kuni %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Kui seda aadressi saab sisselogimiseks kasutada, saatsime teile koodi. Midagi ei tulnud mõne minuti pärast? Küsige koguduse kantseleist."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Kui te seda ei lisanud, eemaldage see lehel Sisselogimine ja seadmed ning võtke ühendust koguduse kantseleiga."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Kui te seda muudatust ei taotlenud, võtke palun ühendust koguduse kantseleiga."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Kui te seda ei taotlenud, võtke palun ühendust koguduse kantseleiga."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "See võib olla aegunud või juba kasutatud. Kui vajate abi, võtke palun ühendust koguduse kantseleiga."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Selle plugin ei ole paigaldatud"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Minge tähe juurde"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Hoidke mind sisselogituna (päevad)"
+
+#: 
+msgid "Keeps it"
+msgstr "Säilitab selle"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Kinnitamata e-posti liik"
+
+#: 
+msgid "Last day"
+msgstr "Viimane päev"
+
+#: 
+msgid "Last used"
+msgstr "Viimati kasutatud"
+
+#: 
+msgid "Last used %s"
+msgstr "Viimati kasutatud %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "%s juht"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Lubage administraatoritel avada inimese liikmeportaal selle inimesena inimese menüüst Toimingud, kui liikme sisselogimine on sees."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Lubage liikmetel lisada pääsuvõtmeid ja nendega liikmeportaali sisse logida."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Lubage liikmetel oma e-posti aadressiga liikmeportaali sisse logida. Seda saab sisse lülitada ainult siis, kui e-posti saatmine töötab."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Lubage liikmetel e-postiga sisse logida"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Lingi ja koodi kehtivus (minutid)"
+
+#: 
+msgid "Login as %s"
+msgstr "Logige sisse isikuna %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Sisselogimine isikuna"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Sisselogimist isikuna ei saanud alustada."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Sisselogimine isikuna lõppes: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Isikuna sisselogimise ajalugu"
+
+#: 
+msgid "Login as Person started"
+msgstr "Sisselogimine isikuna algas"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Sisselogimine isikuna peatati"
+
+#: 
+msgid "Look up anyone"
+msgstr "Otsige kedagi"
+
+#: 
+msgid "Loses it"
+msgstr "Kaotab selle"
+
+#: 
+msgid "Manage a team"
+msgstr "Haldage meeskonda"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Haldage minu sisselogimist ja seadmeid"
+
+#: 
+msgid "Matches: %s"
+msgstr "Vasted: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Võib sisse logida"
+
+#: 
+msgid "May sign in now"
+msgstr "Võib nüüd sisse logida"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Liikmeportaali sisselogimiskood"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Liikmeportaali sisselogimisteade"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Liikmeportaali sisselogimised ja tegevus liikmetele ning töötajatele, kes avavad portaali oma töötaja sisselogimisest."
+
+#: 
+msgid "Member sign-in"
+msgstr "Liikme sisselogimine"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Liikme sisselogimine saadab igale inimesele koodi, seega peab e-post (SMTP) enne sisselülitamist töötama."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Liikme sisselogimine on väljas"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Liikme sisselogimine on koguduse jaoks väljas."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Liikme sisselogimine on väljas."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Liikme sisselogimine ei ole veel saadaval. Võtke palun ühendust koguduse kantseleiga."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Liikme sisselogimine ei lase kunagi sisse inimesi, kes on surnud, mitteaktiivsed, mitteaktiivses peres, ootavad ülevaatust või kellel on „Lülitage sisselogimine välja“ sees. Need valikud otsustavad, kes veel tohib."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Liikme sisselogimine saadab igale liikmele koodi e-postiga, seega saab selle sisse lülitada ainult siis, kui ChurchCRM saab e-kirju saata. Lülitage esmalt e-post sisse ja seadistage meiliserver."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Liikmed näevad kalendrilehte, kui vähemalt üks kalender on sisse lülitatud."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Liikmed sisestavad nime vähemalt %d tähte ja näevad kuni %d vastet. Täielikku nimekirja ei näidata kunagi."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Praegu sisselogitud liikmed logitakse välja ja keegi ei saa oma e-postiga sisse logida, kuni liikme sisselogimine uuesti sisse lülitatakse."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Nende klassifikatsioonidega liikmed leiavad liikmeportaali menüüst kataloogi."
+
+#: 
+msgid "Minimum age"
+msgstr "Miinimumvanus"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Rohkem katseid selle aadressiga järgmise tunni jooksul ei saada uut teadet."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Teisaldatud pere e-postilt"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Teisaldatud leibkonnapeale"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Teisaldatud abikaasale"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Kas olete meie koguduses uus? Rääkige meile oma perest ja me võtame teiega ühendust, et teid tervitada."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Isikuna sisselogimise seansse ei ole veel."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Sünnikuupäeva ei ole ning ei ole leibkonnapea ega abikaasa"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Ükski kalender ei ole sisse lülitatud, seega liikmed ei näe kalendrilehte."
+
+#: 
 msgid "No changes"
 msgstr "Muudatused puuduvad"
+
+#: 
+msgid "No changes made."
+msgstr "Muudatusi ei tehtud."
+
+#: 
+msgid "No family role"
+msgstr "Pererolli ei ole"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Ükski leibkonnapea ega abikaasa ei saa pere e-posti vastu võtta."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Ükski leibkonnapea ega abikaasa ei jaga seda"
+
+#: 
+msgid "No match"
+msgstr "Vasted puuduvad"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Sisselogimisreeglile ei vasta veel keegi. Märkige rohkem pererolle või klassifikatsioone või vähendage miinimumvanust."
+
+#: 
+msgid "No passkey was added."
+msgstr "Pääsuvõtit ei lisatud."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Pääsuvõtit ei kasutatud. Proovige uuesti või logige sisse oma e-posti aadressiga."
+
+#: 
+msgid "No person has this email"
+msgstr "Ühelgi inimesel ei ole seda e-posti aadressi"
+
+#: 
+msgid "No personal email"
+msgstr "Isiklikku e-posti ei ole"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Ükski jagatud e-posti aadress ei takista kellelgi sisse logida."
+
+#: 
+msgid "No such person"
+msgstr "Sellist inimest ei ole"
+
+#: 
+msgid "No, thanks"
+msgstr "Ei, aitäh"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Keegi ei saa sisse logida isikliku e-posti aadressiga, mida jagavad kaks sisselogimisõigusega inimest. Ühe pere sees jagatud aadressi säilitab leibkonnapea, muidu abikaasa (vanim eespool). Kõik teised, kes seda jagavad, kaotavad selle. Eemaldage märge nendelt, mida soovite teistmoodi parandada."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Keegi ei saa veel sisse logida: märkige jaotises Kes võib sisse logida vähemalt üks klassifikatsioon."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Keegi ei saa veel sisse logida: märkige jaotises Kes võib sisse logida vähemalt üks pereroll ja vähemalt üks klassifikatsioon."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Keegi ei saa veel sisse logida: märkige jaotises Kes võib sisse logida vähemalt üks pereroll."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Kataloogis ei vasta sellele nimele keegi."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Kataloogis ei ole veel kedagi."
+
+#: 
+msgid "Not ended"
+msgstr "Ei ole lõpetatud"
+
+#: 
+msgid "Not moved"
+msgstr "Ei ole teisaldatud"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Ei ole kindel, milline e-posti aadress meil on? Võtke ühendust koguduse kantseleiga."
+
+#: 
+msgid "Not yet"
+msgstr "Veel mitte"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Märgitud pere ajajoonel"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Neist sisse loginud inimesi: {{total}}. Nad logitakse kõikjal välja ja aadress saab teate."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Väljas kõigile: „%s“ on välja lülitatud"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Väljas kõigile: vabatahtlike haldus ei ole seatud versioonile V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Väljas kõigile: selle funktsioon on välja lülitatud"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Väljas kõigile: selle plugin on välja lülitatud"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Väljas kõigile: ühtegi kalendrit ei jagata liikmetega"
+
+#: 
+msgid "Office list"
+msgstr "Kantselei nimekiri"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Kui see on kinnitatud, saab seda kasutada liikmeportaali sisselogimiseks."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Valida saab ainult aadresse, mida teil on lubatud kinnitada."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Põhjust näevad ainult administraatorid."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Ainult administraator saab muuta inimese e-posti, kellel on töötajakonto või portaaliõigused."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Ainult administraator saab kinnitada e-posti, mis asendas selle, millega inimene sisse logis."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Ainult administraator saab kinnitada inimese e-posti, kellel on töötajakonto või portaaliõigused."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Ainult administraator saab seda aadressi parandada: keegi, kes seda jagab, omab töötajakontot või portaaliõigusi."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Neid andmeid saab kinnitada ainult teie pere täiskasvanu. Võtke palun ühendust koguduse kantseleiga."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Kinnitage ainult aadresse, mille kohta teate, et need kuuluvad sellele inimesele. Igaüks, kes aadressi loeb, saab selle inimesena sisse logida."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Kantselei nimekirjas saavad olla ainult elus inimesed, kellel on oma e-posti aadress."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Lisada saab ainult inimesi, kellel on oma e-posti aadress."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Valikuline telemeetria võib sisaldada lehtede teid, aktiivset lokaati, CRM-i versiooni, PHP versiooni, operatsioonisüsteemi perekonda, riiki teie koguduse teabe sätetest ja juhuslikku paigalduse ID-d. Tõrketeated ei sisalda paigalduse ID-d. Andmed saadetakse PostHogile Ameerika Ühendriikides."
+
+#: 
+msgid "Passkey"
+msgstr "Pääsuvõti"
+
+#: 
+msgid "Passkey added"
+msgstr "Pääsuvõti lisatud"
+
+#: 
+msgid "Passkey removed"
+msgstr "Pääsuvõti eemaldatud"
+
+#: 
+msgid "Passkeys"
+msgstr "Pääsuvõtmed"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Pääsuvõtmed on välja lülitatud."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Pääsuvõtmeid ei saa siin kasutada."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Pääsuvõtmeid ei saa sellel saidil veel kasutada. Võtke palun ühendust koguduse kantseleiga."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Pääsuvõtmed vajavad saidi aadressis hostinime, mitte IP-aadressi."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Pääsuvõtmed vajavad selle saidiga turvalist (HTTPS) ühendust."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Pääsuvõtmed vajavad, et saidi aadress oleks määratud failis Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Pääsuvõtmed vajavad, et saiti teenindataks HTTPS-i kaudu. Liikmetele ei pakuta pääsuvõtmeid enne seda."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Pääsuvõtmed töötavad ainult aadressil %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Pääsuvõtmed: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Inimesed, keda salvestatud sätted sisse lasevad: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Inimesed, kellele saata e-kiri, kui keegi ei saanud liikmeportaali sisse logida"
+
+#: 
+msgid "People who hold it"
+msgstr "Inimesed, kellel see on"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Inimesed, kes kaotavad aadressi: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Inimesed, kes kaotasid aadressi: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Inimesed, kes võivad sisse logida: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Inimesed, kes varem liikmeportaali sisse logisid: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Nende klassifikatsioonidega inimesed ilmuvad kataloogi. Number näitab, kui paljudel aktiivsetel inimestel on iga klassifikatsioon."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Inimesed selle e-postiga: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Isik %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Valige loendist klassifikatsioonid."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Valige loendist pererollid."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Valige inimesed kantselei nimekirja."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Valige palun loendist keel."
+
+#: 
+msgid "Portal permission given"
+msgstr "Portaaliõigus antud"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Portaaliõigus eemaldatud"
+
+#: 
+msgid "Portal permissions"
+msgstr "Portaaliõigused"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Portaali sisselogimine"
+
+#: 
+msgid "Problem"
+msgstr "Probleem"
+
+#: 
+msgid "Reason"
+msgstr "Põhjus"
+
+#: 
+msgid "Reason: %s"
+msgstr "Põhjus: %s"
+
+#: 
+msgid "Refused"
+msgstr "Keeldutud"
+
+#: 
+msgid "Register your family"
+msgstr "Registreerige oma pere"
+
+#: 
+msgid "Remembered device"
+msgstr "Meeldejäetud seade"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Meeldejäetud seade eemaldatud"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Meeldejäetud seadmed: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Eemaldage e-posti aadressid"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Eemaldage see pääsuvõti"
+
+#: 
+msgid "Remove this permission"
+msgstr "Eemaldage see õigus"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Eemaldatud: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Asendatud pärast sisselogimist"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Asendatud teise sisselogimisega"
+
+#: 
+msgid "Result"
+msgstr "Tulemus"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Juhtige vabatahtlike meeskonda: kohad, vabatahtlikud, graafikud, mehitamine ja inimeste arv."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Öelge, miks sisselogimine välja lülitatakse."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Öelge, miks seda õigust antakse."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Otsige kedagi toimikust. Iga rida ütleb, kas ta võib liikmeportaali sisse logida ja kui mitte, siis miks."
+
+#: 
+msgid "Search method"
+msgstr "Otsingumeetod"
+
+#: 
+msgid "Search only"
+msgstr "Ainult otsing"
+
+#: 
+msgid "See family contact details"
+msgstr "Näete pere kontaktandmeid"
+
+#: 
+msgid "See my family"
+msgstr "Näete minu peret"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Kas näha liikmeportaali nii, nagu see inimene seda näeb? Töötajalehed jäävad suletuks, kuni vajutate nuppu Peatage, ja seanss salvestatakse sellel lehel ning teie kasutajalehel."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Näha kalendreid, mida kogudus liikmetega jagab, ja tellida neid."
+
+#: 
+msgid "See the church calendar"
+msgstr "Näete koguduse kalendrit"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Näha seadmeid ja pääsuvõtmeid, millega nad sisse logivad, ning logida välja või eemaldada neist mis tahes."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Näha oma pere inimeste e-posti aadresse ja telefoninumbreid."
+
+#: 
+msgid "See the member directory"
+msgstr "Näete liikmete kataloogi"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Näha oma pere inimeste nimesid ja fotosid."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Näha inimesi, keda kogudus oma kataloogis loetleb, koos andmetega, mida kogudus jagada otsustab."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Näha oma vabatahtliku graafikut, registreeruda vabadele kohtadele ja küsida asendajat."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Saatke sirvimine väärtusena true või false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Saatke klassifikatsioonid ID-de loendina."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Saatke kataloogi sätted JSON-objektina."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Saatke kuvatavad väljad objektina väärtustega true ja false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Saatke sätted JSON-objektina."
+
+#: 
+msgid "Session ended"
+msgstr "Seanss lõppes"
 
 #: 
 msgid "Set up email"
 msgstr "Seadista e-post"
 
 #: 
+msgid "Set up email first."
+msgstr "Seadistage esmalt e-post."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Parandatud jagatud aadresse: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Parandamist vajavaid jagatud aadresse: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Jagavad"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Jagatud e-posti aadressid, mis takistavad inimestel sisse logida"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Näidake või peitke see liige"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Näidake kataloogilehte liikmeportaalis allpool valitud klassifikatsioonidele."
+
+#: 
+msgid "Show the member directory"
+msgstr "Näidake liikmete kataloogi"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Näidake liikmete kataloogi liikmeportaalis."
+
+#: 
+msgid "Show with year"
+msgstr "Näidake aastaga"
+
+#: 
+msgid "Show without year"
+msgstr "Näidake aastata"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Kuvatakse esimesed %d vastet. Sisestage nimest rohkem, et leida otsitav inimene."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Kas logite sisse isikuna %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Järgmisel korral logige selles seadmes sisse Face ID, sõrmejälje või seadme PIN-koodiga."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Logige sisse, et näha oma peret, koguduse kalendrit ja teenimisvõimalusi. Parooli ega kontot ei ole vaja."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Logige sisse pääsuvõtmega"
+
+#: 
+msgid "Sign out every device"
+msgstr "Logige igast seadmest välja"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Kas logite nüüd igast seadmest välja?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Logige kõikjal välja"
+
+#: 
+msgid "Sign out this device"
+msgstr "Logige sellest seadmest välja"
+
+#: 
+msgid "Sign-in"
+msgstr "Sisselogimine"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Sisselogimine ja seadmed"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Sisselogimist ei saanud välja lülitada."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Sisselogimist ei saanud sisse lülitada."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Sisselogimine välja lülitatud"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Sisselogimiskirja küsiti"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Sisselogimiskirju IP-aadressi kohta tunnis"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Sisselogimine sisse lülitatud"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Selle inimese sisselogimine on juba välja lülitatud."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Sisselogimine on välja lülitatud"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Selle inimese sisselogimine on välja lülitatud."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Selle inimese sisselogimine on sisse lülitatud."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Selle inimese sisselogimine ei ole välja lülitatud."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Sisselogimisest keelduti"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Sisselogimine, seansid ja API võti on blokeeritud, kuni see lahendatakse seotud inimese kirjes."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Sisse logitud, viimased 30 päeva"
+
+#: 
+msgid "Signed out"
+msgstr "Välja logitud"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Välja logitud nende sisselogimise muudatuse tõttu"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Kõikjal välja logitud"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Keegi küsis liikmeportaali sisselogimiskirja, kuid seda ei saadetud."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Keegi ei saanud liikmeportaali sisse logida"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Töötajalehed jäävad isikuna sisselogimise ajal suletuks. Tagasi minemiseks vajutage ribal nuppu Peatage."
+
+#: 
+msgid "Stop"
+msgstr "Peatage"
+
+#: 
+msgid "Stopped"
+msgstr "Peatatud"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Öelge koguduse kantseleile, kas pere andmed on endiselt õiged."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "See kood ei töötanud. Kontrollige meie uusimat kirja või küsige uut."
+
+#: 
+msgid "That could not be removed."
+msgstr "Seda ei saanud eemaldada."
+
+#: 
+msgid "That device is signed out."
+msgstr "See seade on välja logitud."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "See ei ole kehtiv e-posti aadress."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "See leht oli liiga kaua avatud olnud. Proovige palun uuesti."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "See pääsuvõti on eemaldatud. Sellega ei saa teid enam sisse logida."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "See võttis liiga kaua. Proovige palun uuesti."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Versiooni 7.8.3 uuendus andis iga pere e-posti inimesele. Neid see ei suutnud, seega jättis selle asemel märkuse pere ajajoonele."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Liikmeportaal ja kirjad, mida see teile saadab, kasutavad seda keelt."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Muudatust ei saanud salvestada."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Kood ja nupp töötavad ühe korra kuni %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Kood või link läks aadressile, mis ei ole enam nende e-post"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Kinnituskirja ei saanud saata. Proovige palun hiljem uuesti."
+
+#: 
+msgid "The device is signed out."
+msgstr "Seade on välja logitud."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "E-posti aadress %2$s eemaldati teie kirjest kell %1$s. Teid on liikmeportaalist igas seadmes välja logitud."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "Teie kirje e-posti aadress muudeti kell %1$s aadressilt %2$s aadressile %3$s. Teid on liikmeportaalist igas seadmes välja logitud."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "E-posti ei saanud kinnitada."
+
+#: 
+msgid "The email could not be sent."
+msgstr "E-kirja ei saanud saata."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "E-post on kinnitatud. Nüüd saab seda sisselogimiseks kasutada."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Lõppkuupäev on enne alguskuupäeva."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Perel ei ole elus ja aktiivset leibkonnapead ega abikaasat"
+
+#: 
+msgid "The family is inactive"
+msgstr "Pere on mitteaktiivne"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Leibkonnapeal ja abikaasal on mõlemal oma e-post"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Viimane päev ei saa olla minevikus."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Seotud inimene ei tohi sisse logida, seega see konto ei saa sisse logida"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Nimekirja ei saanud laadida."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Pääsuvõtit ei saanud lisada. Proovige palun uuesti."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Pääsuvõtit ei saanud kinnitada"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Pääsuvõti ei ole kirjas või see eemaldati"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Pääsuvõti eemaldati."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Inimesed, kes seda jagavad, on eri peredes või ei kuulu perre"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Inimesed, kes seda aadressi jagavad, on muutunud. Avage uuesti Parandage jagatud e-posti aadressid."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Õigust ei saanud anda."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Õigus lõpeb pärast seda päeva. Selle saab uuesti anda."
+
+#: 
+msgid "The permission was given."
+msgstr "Õigus anti."
+
+#: 
+msgid "The permission was removed."
+msgstr "Õigus eemaldati."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Õigusi ei saanud laadida."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Inimene kaotab selle õiguse liikmeportaalis kohe."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Põhjus võib olla kõige rohkem %d märki pikk."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Sisselogimisreeglid lasevad nad sisse ja igaühel on oma e-post, mida keegi teine sisselogimisõigusega inimene ei kasuta."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Sisselogimisreeglid lasevad nad sisse, kuid nende e-post ei lase: neil ei ole seda, nad jagavad seda kellegi teisega, kes võib sisse logida, või see ei ole veel kinnitatud."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Sisselogimissätteid ei saanud salvestada."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Kinnitamata e-post on muutunud. Laadige leht uuesti ja proovige uuesti."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Nende klassifikatsioon ei tohi sisse logida"
+
+#: 
+msgid "Their email changed"
+msgstr "Nende e-post muutus"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "Nende e-post ei ole veel kinnitatud"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "Nende e-posti jagatakse kellegi teisega"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Nende pereroll ei tohi sisse logida"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Uuendus eemaldas nende vanad sisselogimised. Lülitage liikme sisselogimine sisse, et nad saaksid oma e-postiga sisse logida."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Nende meeldejäetud seade oli aegunud"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Nende meeldejäetud seade logiti välja"
+
+#: 
+msgid "Theme development"
+msgstr "Teemaarendus"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Klassifikatsiooni ID-ga %d ei ole."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Selle ulatuse liigi jaoks valijat ei ole."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Sellist auditisündmust ei ole."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Sellist e-posti probleemi ei ole."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Sellist kinnitamata e-posti liiki ei ole."
+
+#: 
+msgid "There is no such list."
+msgstr "Sellist nimekirja ei ole."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Sellist portaaliõigust ei ole."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Need on telefonid ja arvutid, kus te valisite sisselogituks jääda. Logige välja neist, mida te enam ei kasuta või ei tunne ära."
+
+#: 
+msgid "They have a staff account"
+msgstr "Neil on töötajakonto"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Nad võivad sisse logida, kuid ei ole seda kunagi teinud."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "See toiming vajab sisselogitud brauseriseanssi."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Seda aadressi ei saanud muuta. Avage uuesti Parandage jagatud e-posti aadressid, et näha, mis seisus see on."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Seda aadressi ei jaga enam inimesed, kes võivad sisse logida."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "See brauser ei saa pääsuvõtmeid luua."
+
+#: 
+msgid "This device"
+msgstr "See seade"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Sellel seadmel on teie jaoks juba pääsuvõti."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "See seade ei hoia inimest enam sisselogituna ja sellel avatud seanss lõpeb. Nad saavad e-postiga uuesti sisse logida."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "See on minu enda seade. Hoidke mind sisselogituna."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Siin otsustate külaliste üle. Number näitab, kui paljudel aktiivsetel inimestel on iga klassifikatsioon."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Seda linki ei saa kasutada"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "See link on aegunud või seda on juba kasutatud"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "See liikmeportaali osa ei ole teile kättesaadav."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "See pääsuvõti on juba kirjas."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "See pääsuvõti ei logi inimest enam sisse. Nad saavad e-postiga sisse logida ja uue lisada."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Seda õigust ei saa inimese lehel anda."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Sellel inimesel on juba kõik õigused, mida saab anda."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Sellel inimesel on see õigus juba olemas."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "See inimene ei saa enam kusagil sisse logida, ei liikmeportaali ega töötajana. Iga seanss lõpeb ning tema meeldejäetud seadmed ja pääsuvõtmed eemaldatakse."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Seda inimest ei saanud välja logida."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Sellel inimesel on töötajakonto. Sisselogimine isikuna ei ava kunagi töötajakontot."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Sellel inimesel ei ole sellist pääsuvõtit."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Sellel inimesel ei ole sellist õigust."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Sellel inimesel ei ole sellist meeldejäetud seadet."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Sellel inimesel ei ole kinnitamata e-posti."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "See inimene on liikmeportaali sisse loginud. Selle e-posti muutmine logib nad kõikjal välja ja uut aadressi ei saa sisselogimiseks kasutada enne kinnitamist."
+
+#: 
 msgid "This person is deceased."
 msgstr "See isik on surnud"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "See inimene on liikmeportaalist kõikjal välja logitud."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Seda inimest ei ole enam."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "See logib teid kõikjal, ka siin, välja ja unustab iga seadme. Saate oma e-posti aadressiga uuesti sisse logida."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "See logib teid kõikjal, ka siin, välja ja unustab iga seadme. Teie pääsuvõtmed jäävad alles: saate uuesti sisse logida pääsuvõtme või oma e-posti aadressiga."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "See tööriist ei muuda neid kunagi. Andke igale inimesele tema kirjes oma e-posti aadress."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Märkige see ainult oma telefonis või arvutis, mitte kunagi jagatud või avalikus seadmes."
+
+#: 
+msgid "Time: %s"
+msgstr "Aeg: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Aegus"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Selle e-posti muutmiseks võtke palun ühendust koguduse kantseleiga."
+
+#: 
+msgid "To fix"
+msgstr "Parandada"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Et oma telefonis või arvutis sisselogituks jääda, märkige järgmisel sisselogimisel „See on minu enda seade“."
+
+#: 
+msgid "Too many attempts"
+msgstr "Liiga palju katseid"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Täna on liiga palju sisselogimiskirju"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Selle e-posti aadressi jaoks on liiga palju sisselogimistaotlusi"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Sellelt IP-aadressilt on liiga palju sisselogimistaotlusi"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Liiga palju valesid koode"
+
+#: 
+msgid "Turn off"
+msgstr "Lülitage välja"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Kas lülitada liikme sisselogimine välja?"
+
+#: 
+msgid "Turn on"
+msgstr "Lülitage sisse"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Lülitage liikme sisselogimine sisse"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Kas lülitada liikme sisselogimine sisse?"
+
+#: 
+msgid "Type a name"
+msgstr "Sisestage nimi"
+
+#: 
+msgid "Type a name or email"
+msgstr "Sisestage nimi või e-post"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Sisestage nime vähemalt %d tähte ja otsige siis."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Kinnitamata e-post"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Saage aru, kus ChurchCRM-i kasutatakse"
+
+#: 
+msgid "Unknown device"
+msgstr "Tundmatu seade"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Tundmatu kataloogiväli: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Tundmatu kataloogisäte: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Nimetu seade"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Nimetu pääsuvõti"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Kuni koguduse kantselei seda ei kinnita, ei saa uut aadressi sisselogimiseks kasutada."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Kas kasutada aadressi %1$s isiku %2$s e-postina kell %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Kasutage teist e-posti aadressi"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Kas kasutada selles seadmes pääsuvõtit?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Kasutage allolevat nuppu, et kinnitada, et %1$s on teie e-posti aadress kell %2$s. Link töötab ühe korra kuni %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Kasutaja %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Vaadake õigusi"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Ootame, et kinnitaksite aadressi %s. Kasutage linki, mille saatsime sellele aadressile."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Ootame, et kinnitaksite aadressi {{email}}. Kasutage linki, mille saatsime sellele aadressile."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Me ei saanud e-kirja saata. Proovige palun hiljem uuesti või võtke ühendust koguduse kantseleiga."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Me ei saanud teid sisse logida"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Saatsime lingi aadressile %s. Kasutage seda oma uue e-posti aadressi kinnitamiseks."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Saatsime lingi aadressile {{email}}. Teie e-post muutub, kui te seda kasutate."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Saadame teile e-postiga koodi ja lingi, millega sisse logida."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Meil on hea meel, et olete siin! See võtab umbes kolm minutit."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Meil on hea meel, et teie pere on meiega liitunud! Teie registreerimine on vastu võetud. Meie meeskond võtab peagi ühendust, et teid isiklikult tervitada."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Pulma-aastapäev"
+
+#: 
+msgid "Welcome"
+msgstr "Tere tulemast"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "See, mille jaoks see anti, ei ole enam olemas"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Mida liikmed portaalis näha ja teha saavad ning kust iga õigus tuleb. Inimesi loetakse kõigi seas, keda sisselogimisreeglid sisse lasevad, ja töötajate seas."
+
+#: 
+msgid "What members can use"
+msgstr "Mida liikmed saavad kasutada"
+
+#: 
+msgid "What to do"
+msgstr "Mida teha"
+
+#: 
+msgid "Who can see it"
+msgstr "Kes seda näeb"
+
+#: 
+msgid "Who is listed"
+msgstr "Kes on loetletud"
+
+#: 
+msgid "Who may sign in"
+msgstr "Kes võib sisse logida"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Kes võib liikmeportaali sisse logida, kes on seda teinud ja kelle e-post neid takistab. Nimekirjad järgivad vahekaardi Sisselogimine reegleid."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Keda liikmeportaali kataloog loetleb, kes seda näeb ja mida see näitab, valitud kohas Haldus -> Liikmeportaal -> Kataloog."
+
+#: 
+msgid "Why"
+msgstr "Miks"
+
+#: 
+msgid "Why not"
+msgstr "Miks mitte"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Loaga, mille seade hetk tagasi asendas"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Jah, lisage pääsuvõti"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Jah, eemaldage see pääsuvõti"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Jah, logige igast seadmest välja"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Teil ei ole lubatud seda e-posti kinnitada."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Teid ei hoita üheski seadmes sisselogituna."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Te olete igas seadmes välja logitud."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Te olete selles seadmes välja logitud."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Saate sisse logida ka oma e-posti aadressiga."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Te ei saa oma sisselogimist välja lülitada."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Te ei saa liikmeportaali avada. Võtke palun ühendust koguduse kantseleiga."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Olete palunud oma e-posti liiga palju kordi muuta. Proovige palun hiljem uuesti."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Teil ei ole pääsuvõtmeid."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Olete liikmeportaali sisse logitud isikuna %s (muudatused on lubatud)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Olete liikmeportaali sisse logitud isikuna %s (kirjutuskaitstud)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Noorem kui miinimumvanus"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Noorim vanus, mil inimene võib liikmeportaali sisse logida. Kui sünnikuupäev on teadmata, kvalifitseerub ainult leibkonnapea või abikaasa."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Teie liikmeportaali sisselogimiskood"
+
+#: 
+msgid "Your code"
+msgstr "Teie kood"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Teie e-posti aadress %s ei ole veel kinnitatud, seega ei saa seda sisselogimiseks kasutada. Saadame sellele lingi; lingi kasutamine kinnitab selle."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Teie e-posti aadressi ei saa siin eemaldada. Võtke palun ühendust koguduse kantseleiga."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Teie e-posti aadress on kinnitatud"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Teie e-posti aadress muudeti"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Teie pääsuvõti lisati. Järgmisel korral logige sellega selles seadmes sisse."
+
+#: 
+msgid "an administrator"
+msgstr "administraator"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "ühelgi leibkonnapeal ega abikaasal ei ole e-posti aadressi"
+
+#: 
+msgid "or"
+msgstr "või"
+
+#: 
+msgid "until %s"
+msgstr "kuni %s"
 
