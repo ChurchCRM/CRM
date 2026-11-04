@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { branchesToDelete, main } = require('./cleanup-branches');
+const { branchesToDelete, main } = require('../../scripts/maintainer/cleanup-branches');
 const oldDate = new Date(Date.now() - 25 * 60 * 60 * 1000).toISOString();
 const recentDate = new Date(Date.now() - 23 * 60 * 60 * 1000).toISOString();
 

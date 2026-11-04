@@ -21,4 +21,4 @@ jobs:
       - name: Delete branches without open PRs
         env:
           GH_TOKEN: ${{ github.token }}
-        run: node scripts/cleanup-branches.js
+        run: node scripts/maintainer/cleanup-branches.js
