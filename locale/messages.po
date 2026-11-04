@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-03 15:39+0000\n"
+"POT-Creation-Date: 2026-11-04 12:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,6 +52,10 @@ msgstr ""
 
 #, php-format
 msgid "%1$s added %2$s to the %3$s volunteers"
+msgstr ""
+
+#, php-format
+msgid "%1$s as %2$s"
 msgstr ""
 
 #, php-format
@@ -307,6 +311,10 @@ msgid "%s has no upcoming meetings on the calendar. A schedule follows events th
 msgstr ""
 
 #, php-format
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr ""
+
+#, php-format
 msgid "%s is still expected to serve. Please contact the coordinator if that is not possible."
 msgstr ""
 
@@ -385,6 +393,9 @@ msgid "(optional — leave blank to include all roles)"
 msgstr ""
 
 msgid "(this action cannot be undone)"
+msgstr ""
+
+msgid "+{{total}} more"
 msgstr ""
 
 #. plugin:mailchimp:section:1:content
@@ -482,6 +493,9 @@ msgstr ""
 msgid "A calendar id must be a number."
 msgstr ""
 
+msgid "A change of your email address was requested"
+msgstr ""
+
 msgid "A class is a Group with type \"Sunday School\". It holds the students and teachers (members with roles)."
 msgstr ""
 
@@ -524,6 +538,9 @@ msgstr ""
 msgid "A downloadUrl is required to install a plugin."
 msgstr ""
 
+msgid "A family"
+msgstr ""
+
 msgid "A family represents a household. It holds the shared address and home phone number for all family members living together."
 msgstr ""
 
@@ -533,6 +550,9 @@ msgstr ""
 msgid "A geocoding error occurred — try again later"
 msgstr ""
 
+msgid "A group"
+msgstr ""
+
 msgid "A household. Stores the shared mailing address and home phone."
 msgstr ""
 
@@ -540,6 +560,9 @@ msgid "A map will appear here once coordinates are saved — either auto-detecte
 msgstr ""
 
 msgid "A minimum count is required"
+msgstr ""
+
+msgid "A ministry"
 msgstr ""
 
 msgid "A ministry is created with its own calendar, volunteer pool and first team, so the only things to decide here are its name and what it does."
@@ -557,10 +580,37 @@ msgstr ""
 msgid "A ministry's own calendar cannot be opened to other ministries"
 msgstr ""
 
+msgid "A new address changes only after you use the link we send to it."
+msgstr ""
+
+#, php-format
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr ""
+
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr ""
+
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr ""
+
+#, php-format
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr ""
+
+#, php-format
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr ""
+
 msgid "A payment is an actual donation received. It will be added to the selected deposit."
 msgstr ""
 
 msgid "A person does not need to belong to a family, but assigning one makes address management much easier."
+msgstr ""
+
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr ""
+
+msgid "A person whose record hides their age never shows a birth year."
 msgstr ""
 
 msgid "A phone number or email address is required"
@@ -596,7 +646,14 @@ msgstr ""
 msgid "A recurring event needs a last date, so it is back to {{date}}."
 msgstr ""
 
+#, php-format
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr ""
+
 msgid "A response must be accepted or declined"
+msgstr ""
+
+msgid "A row is not in the expected form."
 msgstr ""
 
 msgid "A schedule belongs to a team; choose one"
@@ -645,6 +702,9 @@ msgid "A system update is available. Please upgrade your installation."
 msgstr ""
 
 msgid "A tablet assigned to one event. The kiosk pulls the event's linked group roster and shows tap-to-check-in. Without a linked group the kiosk has no roster to display."
+msgstr ""
+
+msgid "A team"
 msgstr ""
 
 msgid "A team leader can manage their own team — its positions, its schedules and who serves in them — and nothing else in the ministry."
@@ -768,16 +828,10 @@ msgstr ""
 msgid "Account locked due to too many failed login attempts"
 msgstr ""
 
-msgid "Account options"
-msgstr ""
-
 msgid "Account status"
 msgstr ""
 
 msgid "Account unlocked"
-msgstr ""
-
-msgid "Accounts"
 msgstr ""
 
 msgid "Action"
@@ -1011,6 +1065,12 @@ msgstr ""
 msgid "Add a family member"
 msgstr ""
 
+msgid "Add a passkey"
+msgstr ""
+
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr ""
+
 msgid "Add a position first, then come back and say how many of them are needed."
 msgstr ""
 
@@ -1021,6 +1081,9 @@ msgid "Add all cart items to a group"
 msgstr ""
 
 msgid "Add all to Cart"
+msgstr ""
+
+msgid "Add an email"
 msgstr ""
 
 msgid "Add an extra layer of security to your account"
@@ -1137,6 +1200,10 @@ msgstr ""
 msgid "Added"
 msgstr ""
 
+#, php-format
+msgid "Added %s"
+msgstr ""
+
 msgid "Added and qualified"
 msgstr ""
 
@@ -1200,6 +1267,9 @@ msgstr ""
 msgid "Admin Dashboard"
 msgstr ""
 
+msgid "Admin overrides"
+msgstr ""
+
 msgid "Administrator"
 msgstr ""
 
@@ -1213,6 +1283,13 @@ msgid "Administrator privileges"
 msgstr ""
 
 msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgstr ""
+
+#, php-format
+msgid "Adult of the %s family"
+msgstr ""
+
+msgid "Adult of the family"
 msgstr ""
 
 msgid "Adults"
@@ -1372,6 +1449,9 @@ msgstr ""
 msgid "All email sends failed. Please check your SMTP settings in System Settings."
 msgstr ""
 
+msgid "All events"
+msgstr ""
+
 msgid "All events and attendance records"
 msgstr ""
 
@@ -1432,10 +1512,19 @@ msgstr ""
 msgid "All users can view congregation members. This permission cannot be removed."
 msgstr ""
 
+msgid "Allow Login as Person"
+msgstr ""
+
 msgid "Allow Pre-release Upgrades"
 msgstr ""
 
 msgid "Allow Self-Signed Certificates"
+msgstr ""
+
+msgid "Allow changes during Login as Person"
+msgstr ""
+
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
 msgstr ""
 
 msgid "Allow members to change their own and their family members' birthdays."
@@ -1472,6 +1561,9 @@ msgstr ""
 msgid "Almost there — review your details"
 msgstr ""
 
+msgid "Already held by a family member"
+msgstr ""
+
 msgid "Already in"
 msgstr ""
 
@@ -1485,6 +1577,9 @@ msgid "Also runs automatically via WebDAV based on your configured interval."
 msgstr ""
 
 msgid "Also send to church address ({{email}})"
+msgstr ""
+
+msgid "Also used by"
 msgstr ""
 
 msgid "Always granted"
@@ -1524,6 +1619,9 @@ msgid "An Error Occurred"
 msgstr ""
 
 msgid "An Event Type is a template — name, default start time, recurrence, attendance count categories. Optionally linked to one class group as its default audience."
+msgstr ""
+
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
 msgstr ""
 
 msgid "An automatic database upgrade was attempted but failed. Please check the server logs or contact your system administrator."
@@ -1632,6 +1730,9 @@ msgstr ""
 msgid "Another ministry"
 msgstr ""
 
+msgid "Another person already uses this address"
+msgstr ""
+
 #. Context: countries
 msgid "Antarctica"
 msgstr ""
@@ -1679,6 +1780,9 @@ msgstr ""
 msgid "Applied preset"
 msgstr ""
 
+msgid "Applies to"
+msgstr ""
+
 msgid "Apply"
 msgstr ""
 
@@ -1695,6 +1799,9 @@ msgid "Applying..."
 msgstr ""
 
 msgid "Approve"
+msgstr ""
+
+msgid "Approve or decline substitute requests for a volunteer team."
 msgstr ""
 
 msgid "Approve selected"
@@ -1814,7 +1921,7 @@ msgstr ""
 msgid "Ask a volunteer manager to create a ministry and make you its coordinator."
 msgstr ""
 
-msgid "Ask an administrator to change your sign-in email."
+msgid "Ask for a new email"
 msgstr ""
 
 msgid "Ask someone to cover for you"
@@ -1988,7 +2095,7 @@ msgstr ""
 msgid "Author"
 msgstr ""
 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
 msgstr ""
 
 msgid "Auto"
@@ -2047,6 +2154,9 @@ msgid "Awaiting Acceptance"
 msgstr ""
 
 msgid "Awaiting reply"
+msgstr ""
+
+msgid "Awaiting review"
 msgstr ""
 
 #. Context: countries
@@ -2138,6 +2248,9 @@ msgid "Back to login"
 msgstr ""
 
 msgid "Back to my schedule"
+msgstr ""
+
+msgid "Back to sign-in"
 msgstr ""
 
 msgid "Back to the Member Portal"
@@ -2462,6 +2575,9 @@ msgstr ""
 msgid "Browse photos of congregation members"
 msgstr ""
 
+msgid "Browse the full directory"
+msgstr ""
+
 msgid "Browser"
 msgstr ""
 
@@ -2609,7 +2725,10 @@ msgstr ""
 msgid "Can be emailed"
 msgstr ""
 
-msgid "Can only review and verify their own family. No other access."
+msgid "Can sign in to the Member Portal"
+msgstr ""
+
+msgid "Can sign in?"
 msgstr ""
 
 msgid "Can this ministry provide teachers for Sunday School?"
@@ -2622,6 +2741,9 @@ msgid "Can't deactivate the only administrator who can sign in"
 msgstr ""
 
 msgid "Can't delete yourself"
+msgstr ""
+
+msgid "Can't disable sign-in for the only administrator who can sign in."
 msgstr ""
 
 msgid "Can't mark the only administrator who can sign in as deceased"
@@ -2730,6 +2852,9 @@ msgid "Cannot prepare query."
 msgstr ""
 
 msgid "Cannot send test email"
+msgstr ""
+
+msgid "Cannot sign in"
 msgstr ""
 
 msgid "Cannot write to ChurchCRM installation directory. Please check that the web server has write permissions."
@@ -2843,6 +2968,9 @@ msgstr ""
 msgid "Change Your Locale"
 msgstr ""
 
+msgid "Change family details"
+msgstr ""
+
 msgid "Change in People Settings"
 msgstr ""
 
@@ -2852,13 +2980,43 @@ msgstr ""
 msgid "Change role"
 msgstr ""
 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr ""
+
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
+msgstr ""
+
+msgid "Change their own name, contact details and photo."
 msgstr ""
 
 msgid "Change your password"
 msgstr ""
 
+msgid "Changed"
+msgstr ""
+
+msgid "Changed after the person signed in"
+msgstr ""
+
+msgid "Changed by an import after the person signed in"
+msgstr ""
+
+msgid "Changed by staff after the person signed in"
+msgstr ""
+
+msgid "Changed through the API after the person signed in"
+msgstr ""
+
+msgid "Changes are turned off during Login as Person."
+msgstr ""
+
+msgid "Changes needed"
+msgstr ""
+
 msgid "Changes not saved! Please correct and try again!"
+msgstr ""
+
+msgid "Changes save as you make them."
 msgstr ""
 
 msgid "Changes saved successfully"
@@ -2938,6 +3096,9 @@ msgid "Check that the event start/end times are correct"
 msgstr ""
 
 msgid "Check the server logs for more details"
+msgstr ""
+
+msgid "Check your email"
 msgstr ""
 
 msgid "Check your email for a password reset link"
@@ -3068,13 +3229,22 @@ msgstr ""
 msgid "Choose a group..."
 msgstr ""
 
-msgid "Choose a new photo"
+msgid "Choose a permission"
+msgstr ""
+
+msgid "Choose a permission, what it is for and its last day, and say why."
 msgstr ""
 
 msgid "Choose a person"
 msgstr ""
 
+msgid "Choose a photo or take a selfie"
+msgstr ""
+
 msgid "Choose a property..."
+msgstr ""
+
+msgid "Choose a theme"
 msgstr ""
 
 msgid "Choose a volunteer"
@@ -3107,10 +3277,20 @@ msgstr ""
 msgid "Choose at least one classification to review."
 msgstr ""
 
+msgid "Choose at least one row."
+msgstr ""
+
+#, php-format
+msgid "Choose at most %d rows at a time."
+msgstr ""
+
 msgid "Choose events"
 msgstr ""
 
 msgid "Choose family"
+msgstr ""
+
+msgid "Choose how dates are shown from the list."
 msgstr ""
 
 msgid "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running."
@@ -3170,6 +3350,9 @@ msgstr ""
 msgid "Choose the last date"
 msgstr ""
 
+msgid "Choose the last day of this permission."
+msgstr ""
+
 #, php-format
 msgid "Choose the position of %1$s that the teachers of %2$s are qualified for. Teachers: %3$d"
 msgstr ""
@@ -3198,6 +3381,9 @@ msgid ""
 "• Blank - Transparent (falls back to initials)"
 msgstr ""
 
+msgid "Choose what the permission is for."
+msgstr ""
+
 msgid "Choose where the schedule's dates come from"
 msgstr ""
 
@@ -3205,6 +3391,9 @@ msgid "Choose who fills each position by default. The choice is saved on the sch
 msgstr ""
 
 msgid "Choose who is covering for you."
+msgstr ""
+
+msgid "Choose yes or no."
 msgstr ""
 
 msgid "Choose..."
@@ -3259,10 +3448,20 @@ msgstr ""
 msgid "Church Name"
 msgstr ""
 
+msgid "Church Office"
+msgstr ""
+
 msgid "Church Tax ID (EIN)"
 msgstr ""
 
 msgid "Church calendar"
+msgstr ""
+
+msgid "Church country"
+msgstr ""
+
+#, php-format
+msgid "Church default: %s"
 msgstr ""
 
 msgid "Church email address automatically added as a removable recipient when composing emails from CRM"
@@ -3282,6 +3481,9 @@ msgid "Church information saved successfully"
 msgstr ""
 
 msgid "Church information saved, but the address could not be auto-located. Please enter the latitude and longitude manually under Map Coordinates."
+msgstr ""
+
+msgid "Church leader sign-in"
 msgstr ""
 
 msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
@@ -3362,6 +3564,9 @@ msgstr ""
 msgid "Classifications to review"
 msgstr ""
 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr ""
+
 #, php-format
 msgid "Classifications: %s"
 msgstr ""
@@ -3403,6 +3608,9 @@ msgid "Clear all items from cart"
 msgstr ""
 
 msgid "Clear filter"
+msgstr ""
+
+msgid "Clear selection"
 msgstr ""
 
 msgid "Clear the quarantine only after the underlying issue has been fixed. Enabling a quarantined plugin is refused by the server."
@@ -3489,6 +3697,9 @@ msgid "Code incomplete"
 msgstr ""
 
 msgid "Code is invalid"
+msgstr ""
+
+msgid "Codes, sessions and devices"
 msgstr ""
 
 msgid "Coin"
@@ -3641,6 +3852,9 @@ msgstr ""
 msgid "Confirm Disable Group Specific Properties"
 msgstr ""
 
+msgid "Confirm Email Address"
+msgstr ""
+
 msgid "Confirm Enable Group Specific Properties"
 msgstr ""
 
@@ -3665,13 +3879,34 @@ msgstr ""
 msgid "Confirm data labels"
 msgstr ""
 
+msgid "Confirm email address"
+msgstr ""
+
+msgid "Confirm family details"
+msgstr ""
+
+msgid "Confirm selected"
+msgstr ""
+
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr ""
+
 msgid "Confirm with a code from your authenticator app"
+msgstr ""
+
+msgid "Confirm your email address"
 msgstr ""
 
 msgid "Confirm your family details"
 msgstr ""
 
+msgid "Confirm your new email address"
+msgstr ""
+
 msgid "Confirm your new password"
+msgstr ""
+
+msgid "Confirmed"
 msgstr ""
 
 #. Context: countries
@@ -3734,9 +3969,6 @@ msgid "Contact & Personal Info"
 msgstr ""
 
 msgid "Contact Information"
-msgstr ""
-
-msgid "Contact an administrator to change your permissions."
 msgstr ""
 
 msgid "Contact info, family roles, and key dates"
@@ -4371,6 +4603,9 @@ msgstr ""
 msgid "Dates must be in YYYY-MM-DD form"
 msgstr ""
 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr ""
+
 msgid "Day"
 msgstr ""
 
@@ -4443,6 +4678,9 @@ msgid "Deceased — cannot sign in"
 msgstr ""
 
 msgid "December"
+msgstr ""
+
+msgid "Decide substitute requests"
 msgstr ""
 
 msgid "Decimal Separator"
@@ -4842,6 +5080,15 @@ msgstr ""
 msgid "Developer mode"
 msgstr ""
 
+msgid "Device"
+msgstr ""
+
+msgid "Device remembered"
+msgstr ""
+
+msgid "Devices and passkeys"
+msgstr ""
+
 msgid "Diagnose failed installs and database upgrades"
 msgstr ""
 
@@ -4870,10 +5117,16 @@ msgstr ""
 msgid "Directory Reports"
 msgstr ""
 
+msgid "Directory classifications"
+msgstr ""
+
 msgid "Directory inclusion can only be toggled for the classifications list"
 msgstr ""
 
 msgid "Directory reports"
+msgstr ""
+
+msgid "Directory section"
 msgstr ""
 
 msgid "Disable"
@@ -4889,6 +5142,9 @@ msgid "Disable Plugin"
 msgstr ""
 
 msgid "Disable Two-Factor Authentication"
+msgstr ""
+
+msgid "Disable sign-in"
 msgstr ""
 
 msgid "Disabled"
@@ -4935,6 +5191,9 @@ msgid "Do Not SMS Property"
 msgstr ""
 
 msgid "Do not auto-format"
+msgstr ""
+
+msgid "Do not show"
 msgstr ""
 
 msgid "Do you have any suggestions for us?"
@@ -5118,6 +5377,9 @@ msgstr ""
 msgid "Each message is recorded in the person's email history."
 msgstr ""
 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr ""
+
 msgid "Each person can have their own email and mobile number."
 msgstr ""
 
@@ -5125,6 +5387,9 @@ msgid "Each plugin requires a"
 msgstr ""
 
 msgid "Each row is one person. People in the same family share a FamilyID. Leave columns blank when you have no value for them."
+msgstr ""
+
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
 msgstr ""
 
 msgid "Each staffing need must name a position"
@@ -5219,6 +5484,9 @@ msgid "Edit existing pledge or payment"
 msgstr ""
 
 msgid "Edit ministry"
+msgstr ""
+
+msgid "Edit my details"
 msgstr ""
 
 msgid "Edit position"
@@ -5341,17 +5609,36 @@ msgstr ""
 msgid "Email address"
 msgstr ""
 
+msgid "Email address changed"
+msgstr ""
+
 msgid "Email address is required."
+msgstr ""
+
+#, php-format
+msgid "Email address typed: %s"
 msgstr ""
 
 msgid "Email addresses copied to clipboard"
 msgstr ""
 
+msgid "Email addresses to confirm: {{total}}"
+msgstr ""
+
 msgid "Email batch not found. If it was still queued, an administrator deleted the queue and it will not be sent."
+msgstr ""
+
+msgid "Email changed"
 msgstr ""
 
 #, php-format
 msgid "Email changed by an administrator from %1$s to %2$s"
+msgstr ""
+
+msgid "Email code"
+msgstr ""
+
+msgid "Email confirmed"
 msgstr ""
 
 msgid "Email content"
@@ -5378,10 +5665,22 @@ msgstr ""
 msgid "Email is not configured. Please configure SMTP settings in System Settings."
 msgstr ""
 
+msgid "Email link"
+msgstr ""
+
 msgid "Email links in group and people views"
 msgstr ""
 
 msgid "Email lists are synced with Mailchimp."
+msgstr ""
+
+msgid "Email me a code"
+msgstr ""
+
+msgid "Email me a confirmation link"
+msgstr ""
+
+msgid "Email needs attention"
 msgstr ""
 
 #, php-format
@@ -5392,6 +5691,9 @@ msgid "Email not found"
 msgstr ""
 
 msgid "Email preview"
+msgstr ""
+
+msgid "Email problem"
 msgstr ""
 
 msgid "Email sending is not enabled. Configure SMTP settings and enable email before sending."
@@ -5417,7 +5719,16 @@ msgstr ""
 msgid "Email/Username"
 msgstr ""
 
+msgid "Emailed sign-in code and link cancelled"
+msgstr ""
+
+msgid "Emailed verification link"
+msgstr ""
+
 msgid "Emails"
+msgstr ""
+
+msgid "Emails confirmed: {{total}}"
 msgstr ""
 
 msgid "Emptied into Event"
@@ -5504,6 +5815,9 @@ msgstr ""
 msgid "Enable or disable the Sunday School module and sidebar menu."
 msgstr ""
 
+msgid "Enable sign-in"
+msgstr ""
+
 msgid "Enable the MailChimp plugin to sync contacts"
 msgstr ""
 
@@ -5546,6 +5860,9 @@ msgstr ""
 msgid "End date must be on or after the start date"
 msgstr ""
 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr ""
+
 msgid "End time"
 msgstr ""
 
@@ -5553,6 +5870,16 @@ msgid "End time must be after start time."
 msgstr ""
 
 msgid "Ended"
+msgstr ""
+
+#, php-format
+msgid "Ended %s"
+msgstr ""
+
+msgid "Ended by a change to their sign-in"
+msgstr ""
+
+msgid "Ended when member sign-in was turned off"
 msgstr ""
 
 msgid "Endpoint URL"
@@ -5633,6 +5960,10 @@ msgstr ""
 msgid "Enter a valid review date between 1900 and 2200."
 msgstr ""
 
+#, php-format
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr ""
+
 msgid "Enter comma-separated count categories (e.g., Members, Visitors, Children)."
 msgstr ""
 
@@ -5643,9 +5974,6 @@ msgid "Enter email subject…"
 msgstr ""
 
 msgid "Enter event description..."
-msgstr ""
-
-msgid "Enter family name"
 msgstr ""
 
 msgid "Enter group name"
@@ -5691,6 +6019,9 @@ msgid "Enter your current password, then your new password twice."
 msgstr ""
 
 msgid "Enter your current password, then your new password twice.  Passwords must be at least"
+msgstr ""
+
+msgid "Enter your email address."
 msgstr ""
 
 msgid "Enter your login name"
@@ -5948,7 +6279,13 @@ msgstr ""
 msgid "Every gift belongs to a family."
 msgstr ""
 
+msgid "Every kind"
+msgstr ""
+
 msgid "Every matching occurrence between From and To will get its own event at the same Start/End time."
+msgstr ""
+
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
 msgstr ""
 
 msgid "Every month on the"
@@ -5987,10 +6324,22 @@ msgstr ""
 msgid "Everyone is here!"
 msgstr ""
 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr ""
+
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr ""
+
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr ""
+
 msgid "Everyone with a grade will move up one grade now, and this will count as this year's promotion."
 msgstr ""
 
 msgid "Everything is correct"
+msgstr ""
+
+msgid "Everywhere"
 msgstr ""
 
 msgid "Example: \"l, j F Y\" produces \"Friday, 7 March 2025\". Any other characters (spaces, commas, slashes) appear as typed."
@@ -6535,6 +6884,12 @@ msgstr ""
 msgid "Families"
 msgstr ""
 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr ""
+
+msgid "Families confirmed, last 30 days"
+msgstr ""
+
 msgid "Families share an address and phone number."
 msgstr ""
 
@@ -6572,9 +6927,6 @@ msgid "Family Delete Confirmation"
 msgstr ""
 
 msgid "Family Editor"
-msgstr ""
-
-msgid "Family Email"
 msgstr ""
 
 msgid "Family Home Phone"
@@ -6622,9 +6974,6 @@ msgstr ""
 msgid "Family Property"
 msgstr ""
 
-msgid "Family Registration"
-msgstr ""
-
 msgid "Family Role"
 msgstr ""
 
@@ -6652,6 +7001,15 @@ msgstr ""
 msgid "Family check-in failed. Please try again."
 msgstr ""
 
+msgid "Family details confirmed"
+msgstr ""
+
+msgid "Family email"
+msgstr ""
+
+msgid "Family emails not moved"
+msgstr ""
+
 msgid "Family has no emails to use"
 msgstr ""
 
@@ -6677,6 +7035,9 @@ msgid "Family removed from cart"
 msgstr ""
 
 msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgstr ""
+
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
 msgstr ""
 
 msgid "Family verification"
@@ -6904,6 +7265,9 @@ msgstr ""
 msgid "Find people who did not attend an event"
 msgstr ""
 
+msgid "Find someone"
+msgstr ""
+
 msgid "Find something to do"
 msgstr ""
 
@@ -6966,9 +7330,6 @@ msgstr ""
 msgid "First month of the fiscal year"
 msgstr ""
 
-msgid "First name"
-msgstr ""
-
 msgid "First name and last name are required"
 msgstr ""
 
@@ -6997,6 +7358,12 @@ msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
 msgstr ""
 
 msgid "Fix Settings"
+msgstr ""
+
+msgid "Fix by hand"
+msgstr ""
+
+msgid "Fix shared emails"
 msgstr ""
 
 msgid "Fixing incorrect or awkward translations in your language"
@@ -7117,6 +7484,9 @@ msgid "From Grade"
 msgstr ""
 
 msgid "From Phone Number"
+msgstr ""
+
+msgid "From a staff sign-in"
 msgstr ""
 
 msgid "From dashboard.vonage.com"
@@ -7432,6 +7802,18 @@ msgstr ""
 msgid "Girls"
 msgstr ""
 
+msgid "Give a permission"
+msgstr ""
+
+msgid "Give a portal permission"
+msgstr ""
+
+msgid "Give each person their own email"
+msgstr ""
+
+msgid "Give permission"
+msgstr ""
+
 msgid "Give the ministry a name"
 msgstr ""
 
@@ -7442,6 +7824,23 @@ msgid "Give the start and end times as HH:MM"
 msgstr ""
 
 msgid "Give the team a name"
+msgstr ""
+
+#, php-format
+msgid "Given by %1$s until %2$s"
+msgstr ""
+
+#, php-format
+msgid "Given by %s"
+msgstr ""
+
+msgid "Given to"
+msgstr ""
+
+msgid "Given to Everyone"
+msgstr ""
+
+msgid "Given, but not in effect"
 msgstr ""
 
 msgid "Giving History"
@@ -7480,10 +7879,13 @@ msgstr ""
 msgid "Go to home"
 msgstr ""
 
-msgid "Go to homepage"
+msgid "Go to my volunteering"
 msgstr ""
 
-msgid "Go to my volunteering"
+msgid "Go to sign in"
+msgstr ""
+
+msgid "Go to the Member Portal"
 msgstr ""
 
 msgid "Go to the Member Portal settings"
@@ -7789,6 +8191,12 @@ msgstr ""
 msgid "Happy Birthday"
 msgstr ""
 
+msgid "Has signed in"
+msgstr ""
+
+msgid "Has signed in: their sessions and devices end"
+msgstr ""
+
 msgid "Have Existing Data?"
 msgstr ""
 
@@ -7849,6 +8257,9 @@ msgstr ""
 msgid "Here"
 msgstr ""
 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr ""
+
 msgid "Hide Address Without Family"
 msgstr ""
 
@@ -7865,6 +8276,9 @@ msgid "Hide Latitude/Longitude"
 msgstr ""
 
 msgid "Hide Newsletter Subscriptions"
+msgstr ""
+
+msgid "Hide Permissions"
 msgstr ""
 
 msgid "Hide Wedding Date"
@@ -7909,12 +8323,6 @@ msgstr ""
 msgid "Home Phone"
 msgstr ""
 
-msgid "Home phone is required"
-msgstr ""
-
-msgid "Home phone number"
-msgstr ""
-
 msgid "Home/Work Phone Format"
 msgstr ""
 
@@ -7947,6 +8355,9 @@ msgstr ""
 msgid "Hours"
 msgstr ""
 
+msgid "How"
+msgstr ""
+
 msgid "How Sunday School + Events + Kiosks fit together"
 msgstr ""
 
@@ -7961,7 +8372,13 @@ msgstr ""
 msgid "How it works"
 msgstr ""
 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr ""
+
 msgid "How many checks to print per deposit slip page"
+msgstr ""
+
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
 msgstr ""
 
 msgid "How many hours before a volunteer occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected."
@@ -7974,6 +8391,12 @@ msgid "How many hours before an occurrence its coordinators are told about posit
 msgstr ""
 
 msgid "How many hours before an occurrence the reminder email is sent. Set to 0 to send no reminders at all."
+msgstr ""
+
+msgid "How many idle minutes end a Member Portal session."
+msgstr ""
+
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
 msgstr ""
 
 msgid "How many people each position needs, every time this runs. One date can be changed on its own later. A default volunteer is assigned on every new occurrence while they stay qualified; changing one never changes occurrences that already exist."
@@ -8045,6 +8468,16 @@ msgstr ""
 msgid "Identify members who have not made any donations within a date range."
 msgstr ""
 
+msgid "Idle time (minutes)"
+msgstr ""
+
+msgid "Idle too long"
+msgstr ""
+
+#, php-format
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr ""
+
 #. plugin:vonage:section:3:content
 msgid ""
 "If SMS messages aren't being sent:\n"
@@ -8086,6 +8519,9 @@ msgstr ""
 msgid "If the message doesn't arrive within a few minutes, check the spam/junk folder and the SMTP debug log below."
 msgstr ""
 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr ""
+
 msgid "If you can no longer make it, please decline on your volunteer schedule as soon as you can so the position can be filled."
 msgstr ""
 
@@ -8093,6 +8529,15 @@ msgid "If you can read this message in your inbox, your SMTP configuration is wo
 msgstr ""
 
 msgid "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments."
+msgstr ""
+
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr ""
+
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr ""
+
+msgid "If you didn't ask for this, please contact the church office."
 msgstr ""
 
 msgid "If you have many records in a spreadsheet, the CSV import may be faster than entering data manually."
@@ -8580,6 +9025,9 @@ msgstr ""
 msgid "It is strongly recommended to have a backup before proceeding."
 msgstr ""
 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr ""
+
 #. Context: locales
 msgid "Italian - Italy"
 msgstr ""
@@ -8607,6 +9055,9 @@ msgid "Items Sold"
 msgstr ""
 
 msgid "Its occurrences will be made without positions to fill. Edit the schedule to add its staffing needs."
+msgstr ""
+
+msgid "Its plugin is not installed"
 msgstr ""
 
 msgid "JS exceptions"
@@ -8653,6 +9104,9 @@ msgstr ""
 msgid "July"
 msgstr ""
 
+msgid "Jump to a letter"
+msgstr ""
+
 msgid "Jump to any setup step"
 msgstr ""
 
@@ -8672,10 +9126,16 @@ msgstr ""
 msgid "Kebab-case. Must match the top-level directory name inside the zip and the id in plugin.json."
 msgstr ""
 
+msgid "Keep me signed in (days)"
+msgstr ""
+
 msgid "Keep one copy in a fire-proof safe on-site and another off-site."
 msgstr ""
 
 msgid "Keep them on {{className}}"
+msgstr ""
+
+msgid "Keeps it"
 msgstr ""
 
 #. Context: countries
@@ -8689,6 +9149,9 @@ msgid "Kids"
 msgstr ""
 
 msgid "Kind"
+msgstr ""
+
+msgid "Kind of unconfirmed email"
 msgstr ""
 
 msgid "Kiosk"
@@ -8841,19 +9304,16 @@ msgstr ""
 msgid "Last campaign"
 msgstr ""
 
-msgid "Last check"
+msgid "Last date"
 msgstr ""
 
-msgid "Last date"
+msgid "Last day"
 msgstr ""
 
 msgid "Last fiscal year to include"
 msgstr ""
 
 msgid "Last login"
-msgstr ""
-
-msgid "Last name"
 msgstr ""
 
 msgid "Last name is required"
@@ -8872,6 +9332,13 @@ msgid "Last seen in the portal"
 msgstr ""
 
 msgid "Last sign-in"
+msgstr ""
+
+msgid "Last used"
+msgstr ""
+
+#, php-format
+msgid "Last used %s"
 msgstr ""
 
 msgid "LastName FirstName"
@@ -8909,6 +9376,10 @@ msgstr ""
 
 #. Context: countries
 msgid "Latvia (Latvija)"
+msgstr ""
+
+#, php-format
+msgid "Leader of %s"
 msgstr ""
 
 msgid "Learn more"
@@ -8949,10 +9420,22 @@ msgstr ""
 msgid "Lesotho"
 msgstr ""
 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr ""
+
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr ""
+
 msgid "Let members change their own and their family members' birthdays in the Member Portal."
 msgstr ""
 
 msgid "Let members edit birthdays"
+msgstr ""
+
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr ""
+
+msgid "Let members sign in with their email"
 msgstr ""
 
 msgid "Let the church office know whether everything above is still right."
@@ -9022,6 +9505,9 @@ msgid "Link address cannot contain HTML tags"
 msgstr ""
 
 msgid "Link address is required"
+msgstr ""
+
+msgid "Link and code lifetime (minutes)"
 msgstr ""
 
 msgid "Link deleted"
@@ -9193,6 +9679,29 @@ msgid "Login already in use, please select a different login!"
 msgstr ""
 
 #, php-format
+msgid "Login as %s"
+msgstr ""
+
+msgid "Login as Person"
+msgstr ""
+
+msgid "Login as Person could not start."
+msgstr ""
+
+#, php-format
+msgid "Login as Person ended: %s"
+msgstr ""
+
+msgid "Login as Person history"
+msgstr ""
+
+msgid "Login as Person started"
+msgstr ""
+
+msgid "Login as Person stopped"
+msgstr ""
+
+#, php-format
 msgid "Login must be %d characters or fewer!"
 msgstr ""
 
@@ -9211,7 +9720,13 @@ msgstr ""
 msgid "Longitude must be a number between -180 and 180."
 msgstr ""
 
+msgid "Look up anyone"
+msgstr ""
+
 msgid "Looking for stuck events..."
+msgstr ""
+
+msgid "Loses it"
 msgstr ""
 
 msgid "Lost Password Link"
@@ -9388,6 +9903,9 @@ msgstr ""
 msgid "Manage Two-Factor Authentication"
 msgstr ""
 
+msgid "Manage a team"
+msgstr ""
+
 msgid "Manage additional preferences like email delimiters and display options"
 msgstr ""
 
@@ -9404,6 +9922,9 @@ msgid "Manage events, birthdays, and anniversaries"
 msgstr ""
 
 msgid "Manage families, people, and demographic information"
+msgstr ""
+
+msgid "Manage my sign-in and devices"
 msgstr ""
 
 msgid "Manage people in your cart"
@@ -9504,6 +10025,10 @@ msgstr ""
 msgid "Matches an entry on the approved plugin list"
 msgstr ""
 
+#, php-format
+msgid "Matches: %s"
+msgstr ""
+
 msgid "Material"
 msgstr ""
 
@@ -9591,6 +10116,12 @@ msgstr ""
 msgid "May"
 msgstr ""
 
+msgid "May sign in"
+msgstr ""
+
+msgid "May sign in now"
+msgstr ""
+
 #. Context: countries
 msgid "Mayotte"
 msgstr ""
@@ -9602,6 +10133,15 @@ msgid "Member"
 msgstr ""
 
 msgid "Member Portal"
+msgstr ""
+
+msgid "Member Portal sign-in code"
+msgstr ""
+
+msgid "Member Portal sign-in notice"
+msgstr ""
+
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
 msgstr ""
 
 msgid "Member Properties"
@@ -9617,6 +10157,30 @@ msgid "Member is not an adult family member of the roster child"
 msgstr ""
 
 msgid "Member or family records"
+msgstr ""
+
+msgid "Member sign-in"
+msgstr ""
+
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr ""
+
+msgid "Member sign-in is off"
+msgstr ""
+
+msgid "Member sign-in is off for the church."
+msgstr ""
+
+msgid "Member sign-in is off."
+msgstr ""
+
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr ""
+
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr ""
+
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
 msgstr ""
 
 msgid "Member's Name"
@@ -9638,6 +10202,19 @@ msgid "Members copied: {{total}}"
 msgstr ""
 
 msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
+msgstr ""
+
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr ""
+
+#, php-format
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr ""
+
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr ""
+
+msgid "Members with these classifications find Directory in the Member Portal menu."
 msgstr ""
 
 msgid "Members, Visitors, Children"
@@ -9715,6 +10292,9 @@ msgid "Minimum Price"
 msgstr ""
 
 msgid "Minimum Total Amount"
+msgstr ""
+
+msgid "Minimum age"
 msgstr ""
 
 msgid "Minimum age (0–120)"
@@ -9916,6 +10496,9 @@ msgstr ""
 msgid "Montserrat"
 msgstr ""
 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr ""
+
 #. Context: countries
 msgid "Morocco (‫المغرب‬‎)"
 msgstr ""
@@ -9945,6 +10528,15 @@ msgid "Move to Group"
 msgstr ""
 
 msgid "Move up"
+msgstr ""
+
+msgid "Moved from the family email"
+msgstr ""
+
+msgid "Moved to a head of household"
+msgstr ""
+
+msgid "Moved to a spouse"
 msgstr ""
 
 #, php-format
@@ -10218,6 +10810,9 @@ msgstr ""
 msgid "New recurring event titled {{title}}"
 msgstr ""
 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr ""
+
 msgid "New users will not receive a welcome email, and the generated password is never displayed. After creating the account, set one from System Users using Change Password — or configure email first."
 msgstr ""
 
@@ -10314,6 +10909,9 @@ msgstr ""
 msgid "No Group Selected"
 msgstr ""
 
+msgid "No Login as Person sessions yet."
+msgstr ""
+
 msgid "No Orphaned Files Found"
 msgstr ""
 
@@ -10347,6 +10945,9 @@ msgstr ""
 msgid "No backups recorded"
 msgstr ""
 
+msgid "No birth date, and not a head of household or spouse"
+msgstr ""
+
 msgid "No birthdays in the past or next 7 days"
 msgstr ""
 
@@ -10356,13 +10957,19 @@ msgstr ""
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr ""
 
-msgid "No calendar is shared with members."
+msgid "No calendar is switched on, so members do not see the Calendar page."
 msgstr ""
 
 msgid "No calendar selected — this event will appear under the \"Unpinned Events\" system calendar until you pin it."
 msgstr ""
 
 msgid "No cell phone on file"
+msgstr ""
+
+msgid "No changes"
+msgstr ""
+
+msgid "No changes made."
 msgstr ""
 
 msgid "No changes to save"
@@ -10475,6 +11082,9 @@ msgstr ""
 msgid "No families with an email address were found. Nothing was sent."
 msgstr ""
 
+msgid "No family role"
+msgstr ""
+
 msgid "No file uploaded"
 msgstr ""
 
@@ -10499,6 +11109,12 @@ msgstr ""
 msgid "No group assignments yet."
 msgstr ""
 
+msgid "No head of household or spouse can receive family email."
+msgstr ""
+
+msgid "No head of household or spouse shares it"
+msgstr ""
+
 msgid "No headcount recorded yet"
 msgstr ""
 
@@ -10518,6 +11134,9 @@ msgid "No logged in user"
 msgstr ""
 
 msgid "No longer needed"
+msgstr ""
+
+msgid "No match"
 msgstr ""
 
 msgid "No match found — check the street address, city, and ZIP"
@@ -10559,6 +11178,15 @@ msgstr ""
 msgid "No one has been checked in to this event yet."
 msgstr ""
 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr ""
+
+msgid "No passkey was added."
+msgstr ""
+
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr ""
+
 msgid "No past events"
 msgstr ""
 
@@ -10593,6 +11221,12 @@ msgid "No people to add - all are already in cart"
 msgstr ""
 
 msgid "No people to add - filter returned no results"
+msgstr ""
+
+msgid "No person has this email"
+msgstr ""
+
+msgid "No personal email"
 msgstr ""
 
 msgid "No phone number on file"
@@ -10652,6 +11286,9 @@ msgstr ""
 msgid "No settings provided"
 msgstr ""
 
+msgid "No shared emails stop anyone from signing in."
+msgstr ""
+
 msgid "No staffing needs set"
 msgstr ""
 
@@ -10662,6 +11299,9 @@ msgid "No substitution requests"
 msgstr ""
 
 msgid "No substitutions to decide"
+msgstr ""
+
+msgid "No such person"
 msgstr ""
 
 msgid "No teams yet"
@@ -10713,7 +11353,22 @@ msgstr ""
 msgid "No, cancel this deletion"
 msgstr ""
 
+msgid "No, thanks"
+msgstr ""
+
 msgid "Nobody assigned yet"
+msgstr ""
+
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr ""
+
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr ""
+
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr ""
+
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
 msgstr ""
 
 msgid "Nobody else is trained for this yet — tell your coordinator instead."
@@ -10725,7 +11380,13 @@ msgstr ""
 msgid "Nobody has said how many volunteers each position needs, so there is nothing to fill."
 msgstr ""
 
+msgid "Nobody in the directory matches that name."
+msgstr ""
+
 msgid "Nobody in this window is still deciding."
+msgstr ""
+
+msgid "Nobody is listed in the directory yet."
 msgstr ""
 
 msgid "Nobody is qualified for this position yet"
@@ -10898,6 +11559,9 @@ msgstr ""
 msgid "Not configured"
 msgstr ""
 
+msgid "Not ended"
+msgstr ""
+
 msgid "Not found"
 msgstr ""
 
@@ -10914,6 +11578,9 @@ msgid "Not installed on the server — dates and numbers may not format correctl
 msgstr ""
 
 msgid "Not listed here: {{total}} more"
+msgstr ""
+
+msgid "Not moved"
 msgstr ""
 
 msgid "Not needed this time"
@@ -10941,7 +11608,13 @@ msgstr ""
 msgid "Not staffed"
 msgstr ""
 
+msgid "Not sure which email we have? Contact the church office."
+msgstr ""
+
 msgid "Not volunteering yet"
+msgstr ""
+
+msgid "Not yet"
 msgstr ""
 
 msgid "Note"
@@ -10964,6 +11637,9 @@ msgid "Note text is required"
 msgstr ""
 
 msgid "Note: This will also delete all Notes associated with this Family record."
+msgstr ""
+
+msgid "Noted in the family timeline"
 msgstr ""
 
 msgid "Notes"
@@ -11097,10 +11773,32 @@ msgstr ""
 msgid "October"
 msgstr ""
 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr ""
+
 msgid "Off"
 msgstr ""
 
+#, php-format
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr ""
+
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr ""
+
+msgid "Off for everyone: its feature is switched off"
+msgstr ""
+
+msgid "Off for everyone: its plugin is turned off"
+msgstr ""
+
+msgid "Off for everyone: no calendar is shared with members"
+msgstr ""
+
 msgid "Offer to help"
+msgstr ""
+
+msgid "Office list"
 msgstr ""
 
 msgid "Offline"
@@ -11127,6 +11825,9 @@ msgid "Once a day every active schedule gets occurrences for the events it follo
 msgid_plural "Once a day every active schedule gets occurrences for the events it follows, up to %d weeks ahead, and each position's default volunteer is assigned on the new ones while they stay qualified."
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr ""
 
 msgid "Once this person is qualified for a position they appear here, along with the dates they are scheduled to serve."
 msgstr ""
@@ -11212,13 +11913,34 @@ msgstr ""
 msgid "Only a volunteer manager can change who coordinates a ministry"
 msgstr ""
 
-msgid "Only an administrator can change the email of a person with a user account."
+msgid "Only addresses you may confirm can be selected."
+msgstr ""
+
+msgid "Only administrators see the reason."
+msgstr ""
+
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr ""
+
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr ""
+
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
 msgstr ""
 
 msgid "Only an administrator can delete a person who has a login."
 msgstr ""
 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr ""
+
 msgid "Only an adult of your family can change these details. Please contact the church office."
+msgstr ""
+
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr ""
+
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
 msgstr ""
 
 msgid "Only do this after the underlying issue has been fixed. You will still need to click Enable before the plugin runs again."
@@ -11227,7 +11949,13 @@ msgstr ""
 msgid "Only http and https schemes are allowed."
 msgstr ""
 
+msgid "Only living people with their own email can be on the office list."
+msgstr ""
+
 msgid "Only people trained for this are listed."
+msgstr ""
+
+msgid "Only people with their own email can be added."
 msgstr ""
 
 msgid "Only positions of this team can be ticked"
@@ -11390,7 +12118,7 @@ msgstr ""
 msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
 msgstr ""
 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
 msgstr ""
 
 msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
@@ -11619,6 +12347,47 @@ msgstr ""
 msgid "Passed"
 msgstr ""
 
+msgid "Passkey"
+msgstr ""
+
+msgid "Passkey added"
+msgstr ""
+
+msgid "Passkey removed"
+msgstr ""
+
+msgid "Passkeys"
+msgstr ""
+
+msgid "Passkeys are turned off."
+msgstr ""
+
+msgid "Passkeys cannot be used here."
+msgstr ""
+
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr ""
+
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr ""
+
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr ""
+
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr ""
+
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr ""
+
+#, php-format
+msgid "Passkeys work only at %s."
+msgstr ""
+
+#, php-format
+msgid "Passkeys: %d"
+msgstr ""
+
 msgid "Password"
 msgstr ""
 
@@ -11781,13 +12550,36 @@ msgstr ""
 msgid "People omitted because required dates are missing"
 msgstr ""
 
+#, php-format
+msgid "People the saved settings let in: %s"
+msgstr ""
+
 msgid "People to assign"
+msgstr ""
+
+msgid "People to email when someone could not sign in to the Member Portal"
 msgstr ""
 
 msgid "People to notify when a new family or person is added"
 msgstr ""
 
+msgid "People who hold it"
+msgstr ""
+
 msgid "People who joined in a particular month"
+msgstr ""
+
+msgid "People who lose an address: {{total}}"
+msgstr ""
+
+msgid "People who lost an address: {{total}}"
+msgstr ""
+
+msgid "People who may sign in: {{total}}"
+msgstr ""
+
+#, php-format
+msgid "People who used to sign in to the Member Portal: %d"
 msgstr ""
 
 msgid "People whose grade is cleared: {{total}}"
@@ -11800,6 +12592,13 @@ msgid "People with birthdays or wedding anniversaries in a particular month"
 msgstr ""
 
 msgid "People with no personal or work email on record"
+msgstr ""
+
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr ""
+
+#, php-format
+msgid "People with this email: %s"
 msgstr ""
 
 msgid "People with wedding anniversaries in a particular month"
@@ -11821,6 +12620,10 @@ msgid "Permissions"
 msgstr ""
 
 msgid "Person"
+msgstr ""
+
+#, php-format
+msgid "Person %d"
 msgstr ""
 
 msgid "Person / Family"
@@ -12005,6 +12808,15 @@ msgstr ""
 msgid "Pick an upcoming calendar event and say who it needs. The event keeps its own date and time; to staff a whole series, add a schedule instead."
 msgstr ""
 
+msgid "Pick classifications from the list."
+msgstr ""
+
+msgid "Pick family roles from the list."
+msgstr ""
+
+msgid "Pick people for the office list."
+msgstr ""
+
 msgid "Pick someone who has already agreed to take your place. Your coordinator will confirm it."
 msgstr ""
 
@@ -12043,6 +12855,9 @@ msgid "Please check everything looks right before submitting."
 msgstr ""
 
 msgid "Please check the backup file and try again."
+msgstr ""
+
+msgid "Please choose a language from the list."
 msgstr ""
 
 msgid "Please choose calendars from the list."
@@ -12368,10 +13183,16 @@ msgstr ""
 msgid "Populates the fields below without saving. Click Save to apply."
 msgstr ""
 
-msgid "Portal settings"
+msgid "Portal permission given"
 msgstr ""
 
-msgid "Portal theme"
+msgid "Portal permission removed"
+msgstr ""
+
+msgid "Portal permissions"
+msgstr ""
+
+msgid "Portal sign-in"
 msgstr ""
 
 #. Context: countries
@@ -12511,6 +13332,9 @@ msgid "Private"
 msgstr ""
 
 msgid "Private Calendar"
+msgstr ""
+
+msgid "Problem"
 msgstr ""
 
 msgid "Processing..."
@@ -12743,6 +13567,13 @@ msgstr ""
 msgid "Ready to restore"
 msgstr ""
 
+msgid "Reason"
+msgstr ""
+
+#, php-format
+msgid "Reason: %s"
+msgstr ""
+
 msgid "Receives Mail"
 msgstr ""
 
@@ -12877,10 +13708,10 @@ msgstr ""
 msgid "Refreshing..."
 msgstr ""
 
-msgid "Regenerate"
+msgid "Refused"
 msgstr ""
 
-msgid "Register"
+msgid "Regenerate"
 msgstr ""
 
 msgid "Register & Check In"
@@ -12905,6 +13736,9 @@ msgid "Register another family"
 msgstr ""
 
 msgid "Register walk-in guest"
+msgstr ""
+
+msgid "Register your family"
 msgstr ""
 
 msgid "Registered"
@@ -12947,6 +13781,16 @@ msgstr ""
 msgid "Remaining"
 msgstr ""
 
+msgid "Remembered device"
+msgstr ""
+
+msgid "Remembered device removed"
+msgstr ""
+
+#, php-format
+msgid "Remembered devices: %d"
+msgstr ""
+
 msgid "Reminder lead time (hours)"
 msgstr ""
 
@@ -12969,6 +13813,9 @@ msgid "Remove"
 msgstr ""
 
 msgid "Remove All from Cart"
+msgstr ""
+
+msgid "Remove Emails"
 msgstr ""
 
 msgid "Remove Property"
@@ -13010,6 +13857,12 @@ msgstr ""
 msgid "Remove this group from cart?"
 msgstr ""
 
+msgid "Remove this passkey"
+msgstr ""
+
+msgid "Remove this permission"
+msgstr ""
+
 msgid "Remove this person from cart?"
 msgstr ""
 
@@ -13020,6 +13873,9 @@ msgid "Remove {{personName}} from this class?"
 msgstr ""
 
 msgid "Removed from cart successfully"
+msgstr ""
+
+msgid "Removed from: {{names}}"
 msgstr ""
 
 msgid "Removed. {{qualifications}} qualifications, {{assignments}} upcoming assignments, {{defaults}} schedule defaults."
@@ -13041,6 +13897,12 @@ msgid "Repeat events could not be created. Check the application log for details
 msgstr ""
 
 msgid "Repeats"
+msgstr ""
+
+msgid "Replaced after a sign-in"
+msgstr ""
+
+msgid "Replaced by another sign-in"
 msgstr ""
 
 msgid "Replicate item"
@@ -13198,6 +14060,9 @@ msgstr ""
 msgid "Restore your church database from a backup file"
 msgstr ""
 
+msgid "Result"
+msgstr ""
+
 msgid "Results"
 msgstr ""
 
@@ -13333,6 +14198,9 @@ msgid "Run"
 msgstr ""
 
 msgid "Run Report"
+msgstr ""
+
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
 msgstr ""
 
 msgid "Run background jobs now"
@@ -13540,9 +14408,6 @@ msgstr ""
 msgid "Save and Add New Family"
 msgstr ""
 
-msgid "Save calendars"
-msgstr ""
-
 msgid "Save changes"
 msgstr ""
 
@@ -13570,10 +14435,13 @@ msgstr ""
 msgid "Saved — this ministry is now asking for help"
 msgstr ""
 
-msgid "Saved. Members see the calendars switched on above."
+msgid "Saving..."
 msgstr ""
 
-msgid "Saving..."
+msgid "Say why sign-in is being disabled."
+msgstr ""
+
+msgid "Say why this permission is being given."
 msgstr ""
 
 msgid "Scan QR Code"
@@ -13696,6 +14564,9 @@ msgstr ""
 msgid "Search and manage deposit slip records"
 msgstr ""
 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr ""
+
 msgid "Search by family name"
 msgstr ""
 
@@ -13712,6 +14583,12 @@ msgid "Search for supervisor..."
 msgstr ""
 
 msgid "Search groups..."
+msgstr ""
+
+msgid "Search method"
+msgstr ""
+
+msgid "Search only"
 msgstr ""
 
 msgid "Search or select..."
@@ -13764,7 +14641,40 @@ msgstr ""
 msgid "Security token missing. Please refresh the page."
 msgstr ""
 
+msgid "See family contact details"
+msgstr ""
+
+msgid "See my family"
+msgstr ""
+
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr ""
+
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr ""
+
+msgid "See the church calendar"
+msgstr ""
+
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr ""
+
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr ""
+
+msgid "See the member directory"
+msgstr ""
+
+msgid "See the names and photos of the people in their family."
+msgstr ""
+
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr ""
+
 msgid "See the whole calendar"
+msgstr ""
+
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
 msgstr ""
 
 msgid "See what needs filling"
@@ -13950,15 +14860,6 @@ msgstr ""
 msgid "Self-registration is enabled"
 msgstr ""
 
-msgid "Self-service"
-msgstr ""
-
-msgid "Self-service accounts"
-msgstr ""
-
-msgid "Self-service only"
-msgstr ""
-
 msgid "Sell to everyone"
 msgstr ""
 
@@ -13998,6 +14899,9 @@ msgstr ""
 msgid "Send an email notifying users when their account has been deleted"
 msgstr ""
 
+msgid "Send browse as true or false."
+msgstr ""
+
 msgid "Send email from ChurchCRM"
 msgstr ""
 
@@ -14011,6 +14915,18 @@ msgid "Send the assignment message again"
 msgstr ""
 
 msgid "Send the calendars to show as a list."
+msgstr ""
+
+msgid "Send the classifications as a list of ids."
+msgstr ""
+
+msgid "Send the directory settings as a JSON object."
+msgstr ""
+
+msgid "Send the fields to show as an object of true and false values."
+msgstr ""
+
+msgid "Send the settings as a JSON object."
 msgstr ""
 
 msgid "Send to the church office"
@@ -14105,6 +15021,9 @@ msgstr ""
 msgid "Session Save Path"
 msgstr ""
 
+msgid "Session ended"
+msgstr ""
+
 msgid ""
 "Session timeout length in seconds\n"
 "Set to zero to disable session timeouts."
@@ -14159,6 +15078,12 @@ msgid "Set up Email"
 msgstr ""
 
 msgid "Set up a new fundraiser campaign or event"
+msgstr ""
+
+msgid "Set up email"
+msgstr ""
+
+msgid "Set up email first."
 msgstr ""
 
 msgid "Set up now"
@@ -14225,6 +15150,18 @@ msgstr ""
 msgid "Share this URL with family members to verify their information"
 msgstr ""
 
+msgid "Shared addresses fixed: {{total}}"
+msgstr ""
+
+msgid "Shared addresses to fix: {{total}}"
+msgstr ""
+
+msgid "Shared by"
+msgstr ""
+
+msgid "Shared emails that stop people from signing in"
+msgstr ""
+
 msgid "Shipped with ChurchCRM."
 msgstr ""
 
@@ -14265,16 +15202,19 @@ msgstr ""
 msgid "Show or hide the Sunday School module in the sidebar navigation"
 msgstr ""
 
+msgid "Show or hide this member"
+msgstr ""
+
 msgid "Show past events"
 msgstr ""
 
-msgid "Show the church calendar"
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
 msgstr ""
 
-msgid "Show the church calendar in the Member Portal."
+msgid "Show the member directory"
 msgstr ""
 
-msgid "Show the church calendar section in the Member Portal."
+msgid "Show the member directory in the Member Portal."
 msgstr ""
 
 msgid "Show the next"
@@ -14293,6 +15233,12 @@ msgid "Show volunteering and team pages in the Member Portal."
 msgstr ""
 
 msgid "Show what I have already done"
+msgstr ""
+
+msgid "Show with year"
+msgstr ""
+
+msgid "Show without year"
 msgstr ""
 
 msgid "Show/Hide Lost Password Link on the login screen"
@@ -14318,6 +15264,10 @@ msgstr ""
 msgid "Showing students with birthdays in"
 msgstr ""
 
+#, php-format
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr ""
+
 msgid "Showing total for selected fund only"
 msgstr ""
 
@@ -14337,13 +15287,83 @@ msgstr ""
 msgid "Sign in"
 msgstr ""
 
+#, php-format
+msgid "Sign in as %s?"
+msgstr ""
+
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr ""
+
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr ""
+
+msgid "Sign in with a passkey"
+msgstr ""
+
 msgid "Sign out"
+msgstr ""
+
+msgid "Sign out every device"
+msgstr ""
+
+msgid "Sign out every device now?"
+msgstr ""
+
+msgid "Sign out everywhere"
+msgstr ""
+
+msgid "Sign out this device"
 msgstr ""
 
 msgid "Sign up"
 msgstr ""
 
+msgid "Sign-in"
+msgstr ""
+
+msgid "Sign-in and devices"
+msgstr ""
+
 msgid "Sign-in and security"
+msgstr ""
+
+msgid "Sign-in could not be disabled."
+msgstr ""
+
+msgid "Sign-in could not be enabled."
+msgstr ""
+
+msgid "Sign-in disabled"
+msgstr ""
+
+msgid "Sign-in email requested"
+msgstr ""
+
+msgid "Sign-in emails per IP address per hour"
+msgstr ""
+
+msgid "Sign-in enabled"
+msgstr ""
+
+msgid "Sign-in is already disabled for this person."
+msgstr ""
+
+msgid "Sign-in is disabled"
+msgstr ""
+
+msgid "Sign-in is disabled for this person."
+msgstr ""
+
+msgid "Sign-in is enabled for this person."
+msgstr ""
+
+msgid "Sign-in is not disabled for this person."
+msgstr ""
+
+msgid "Sign-in refused"
+msgstr ""
+
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
 msgstr ""
 
 msgid "Signature"
@@ -14366,6 +15386,18 @@ msgid "Signed by"
 msgstr ""
 
 msgid "Signed in"
+msgstr ""
+
+msgid "Signed in, last 30 days"
+msgstr ""
+
+msgid "Signed out"
+msgstr ""
+
+msgid "Signed out by a change to their sign-in"
+msgstr ""
+
+msgid "Signed out everywhere"
 msgstr ""
 
 msgid "Signed up"
@@ -14474,6 +15506,12 @@ msgstr ""
 msgid "Some settings could not be saved"
 msgstr ""
 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr ""
+
+msgid "Someone could not sign in to the Member Portal"
+msgstr ""
+
 msgid "Someone else is covering"
 msgstr ""
 
@@ -14568,6 +15606,9 @@ msgid "St. Vincent & Grenadines"
 msgstr ""
 
 msgid "Staff an event"
+msgstr ""
+
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
 msgstr ""
 
 msgid "Staff them"
@@ -14672,7 +15713,13 @@ msgstr ""
 msgid "Still queued, to be sent automatically: {{total}}"
 msgstr ""
 
+msgid "Stop"
+msgstr ""
+
 msgid "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched."
+msgstr ""
+
+msgid "Stopped"
 msgstr ""
 
 msgid "Streak"
@@ -15057,6 +16104,9 @@ msgstr ""
 msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
 msgstr ""
 
+msgid "Tell the church office whether the family details are still right."
+msgstr ""
+
 msgid "Tell us about your family"
 msgstr ""
 
@@ -15178,10 +16228,19 @@ msgstr ""
 msgid "That birthday is not a valid date."
 msgstr ""
 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr ""
+
+msgid "That could not be removed."
+msgstr ""
+
 msgid "That could not be saved."
 msgstr ""
 
 msgid "That could not be sent."
+msgstr ""
+
+msgid "That device is signed out."
 msgstr ""
 
 msgid "That family member could not be added. Please check the highlighted fields."
@@ -15196,10 +16255,19 @@ msgstr ""
 msgid "That is not a valid date."
 msgstr ""
 
+msgid "That is not a valid email address."
+msgstr ""
+
 msgid "That list could not be loaded."
 msgstr ""
 
 msgid "That name already exists."
+msgstr ""
+
+msgid "That page had been open too long. Please try again."
+msgstr ""
+
+msgid "That passkey is removed. It can no longer sign you in."
 msgstr ""
 
 msgid "That person already holds this position on this occurrence"
@@ -15259,6 +16327,9 @@ msgstr ""
 msgid "That theme has errors, so it was not activated."
 msgstr ""
 
+msgid "That took too long. Please try again."
+msgstr ""
+
 msgid "That volunteer could not be assigned"
 msgstr ""
 
@@ -15277,6 +16348,9 @@ msgstr ""
 msgid "The %s must be within %d minutes of the event"
 msgstr ""
 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr ""
+
 msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
 msgstr ""
 
@@ -15291,7 +16365,7 @@ msgstr ""
 msgid "The External Backup plugin allows you to automatically backup your ChurchCRM database to WebDAV-compatible cloud storage services. This includes popular services like Nextcloud, ownCloud, or any server supporting WebDAV protocol."
 msgstr ""
 
-msgid "The Member Portal calendars were saved."
+msgid "The Member Portal and the emails it sends you use this language."
 msgstr ""
 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -15365,6 +16439,9 @@ msgstr ""
 msgid "The cart could not be added"
 msgstr ""
 
+msgid "The change could not be saved."
+msgstr ""
+
 msgid "The church administrator has not enabled external calendar sharing. Please contact them if you believe this is in error."
 msgstr ""
 
@@ -15378,6 +16455,16 @@ msgid "The class does not exist"
 msgstr ""
 
 msgid "The class this schedule follows no longer exists."
+msgstr ""
+
+#, php-format
+msgid "The code and the button work once, until %s."
+msgstr ""
+
+msgid "The code or link went to an address that is no longer their email"
+msgstr ""
+
+msgid "The confirmation email could not be sent. Please try again later."
 msgstr ""
 
 msgid "The content of this email is not stored. ChurchCRM keeps the text of messages written in the email composer and of volunteer emails only."
@@ -15421,6 +16508,29 @@ msgid "The default volunteers must be a list"
 msgstr ""
 
 msgid "The description is too long"
+msgstr ""
+
+msgid "The device is signed out."
+msgstr ""
+
+#, php-format
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr ""
+
+#, php-format
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr ""
+
+msgid "The email could not be confirmed."
+msgstr ""
+
+msgid "The email could not be sent."
+msgstr ""
+
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr ""
+
+msgid "The end date is before the start date."
 msgstr ""
 
 msgid "The end of the range is before its start."
@@ -15468,6 +16578,12 @@ msgstr ""
 msgid "The events could not be staffed"
 msgstr ""
 
+msgid "The family has no living, active head of household or spouse"
+msgstr ""
+
+msgid "The family is inactive"
+msgstr ""
+
 msgid "The geocoding service did not answer — try again later"
 msgstr ""
 
@@ -15483,16 +16599,25 @@ msgstr ""
 msgid "The group could not be found. Please try again."
 msgstr ""
 
+msgid "The head of household and spouse both have their own email"
+msgstr ""
+
 msgid "The last administrator cannot be deleted."
 msgstr ""
 
 msgid "The last date is before the first date"
 msgstr ""
 
+msgid "The last day cannot be in the past."
+msgstr ""
+
 msgid "The latest stable release is {{version}}. You can reinstall it below."
 msgstr ""
 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr ""
+
+msgid "The list could not be loaded."
 msgstr ""
 
 msgid "The list of eligible volunteers could not be loaded"
@@ -15562,8 +16687,44 @@ msgstr ""
 msgid "The page-load fallback keeps working meanwhile. Change how long ChurchCRM waits before showing this warning with the %1$s setting, or set it to 0 to hide it."
 msgstr ""
 
+msgid "The passkey could not be added. Please try again."
+msgstr ""
+
+msgid "The passkey could not be verified"
+msgstr ""
+
+msgid "The passkey is not on record, or was removed"
+msgstr ""
+
+msgid "The passkey was removed."
+msgstr ""
+
 #, php-format
 msgid "The password for %s has been updated."
+msgstr ""
+
+msgid "The people sharing it are in different families, or not in a family"
+msgstr ""
+
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr ""
+
+msgid "The permission could not be given."
+msgstr ""
+
+msgid "The permission ends after this day. It can be given again."
+msgstr ""
+
+msgid "The permission was given."
+msgstr ""
+
+msgid "The permission was removed."
+msgstr ""
+
+msgid "The permissions could not be loaded."
+msgstr ""
+
+msgid "The person loses this permission in the Member Portal at once."
 msgstr ""
 
 msgid "The plugin was automatically disabled after a runtime failure."
@@ -15626,6 +16787,10 @@ msgid "The qualified volunteers could not be loaded"
 msgstr ""
 
 msgid "The queue was cleared. Messages that will not be sent: {{total}}"
+msgstr ""
+
+#, php-format
+msgid "The reason can be at most %d characters long."
 msgstr ""
 
 msgid "The record could not be found."
@@ -15693,6 +16858,15 @@ msgstr ""
 msgid "The selected person was not found."
 msgstr ""
 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr ""
+
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr ""
+
+msgid "The sign-in settings could not be saved."
+msgstr ""
+
 msgid "The staffing needs could not be loaded"
 msgstr ""
 
@@ -15754,6 +16928,9 @@ msgstr ""
 msgid "The type a new event on a ministry's Calendar tab starts with. It can still be changed for each event, for example for a class that needs headcount categories."
 msgstr ""
 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr ""
+
 msgid "The volunteer assignment could not be saved"
 msgstr ""
 
@@ -15767,17 +16944,44 @@ msgstr ""
 msgid "The window ends before it starts"
 msgstr ""
 
+msgid "Their classification may not sign in"
+msgstr ""
+
 msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr ""
+
+msgid "Their email changed"
+msgstr ""
+
+msgid "Their email is not confirmed yet"
+msgstr ""
+
+msgid "Their email is shared with someone else"
+msgstr ""
+
+msgid "Their family role may not sign in"
+msgstr ""
+
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
 msgstr ""
 
 #, php-format
 msgid "Their reason: %s"
 msgstr ""
 
+msgid "Their remembered device had expired"
+msgstr ""
+
+msgid "Their remembered device was signed out"
+msgstr ""
+
 msgid "Theme"
 msgstr ""
 
 msgid "Theme Mode"
+msgstr ""
+
+msgid "Theme development"
 msgstr ""
 
 msgid "Themes"
@@ -15791,6 +16995,28 @@ msgstr ""
 
 #, php-format
 msgid "There is no church calendar with id %d."
+msgstr ""
+
+#, php-format
+msgid "There is no classification with id %d."
+msgstr ""
+
+msgid "There is no picker for this kind of scope."
+msgstr ""
+
+msgid "There is no such audit event."
+msgstr ""
+
+msgid "There is no such email problem."
+msgstr ""
+
+msgid "There is no such kind of unconfirmed email."
+msgstr ""
+
+msgid "There is no such list."
+msgstr ""
+
+msgid "There is no such portal permission."
 msgstr ""
 
 #, php-format
@@ -15810,6 +17036,9 @@ msgid "These are the family role numbers designated as head of house"
 msgstr ""
 
 msgid "These are the family role numbers designated as spouse"
+msgstr ""
+
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
 msgstr ""
 
 msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
@@ -15834,9 +17063,6 @@ msgid "These ministries would like more people. Tell them you are interested and
 msgstr ""
 
 msgid "These needs come from the schedule. Saving here changes this occurrence only."
-msgstr ""
-
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
 msgstr ""
 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
@@ -15898,6 +17124,12 @@ msgctxt "other"
 msgid "They finish {{count}} minutes before the event ends."
 msgstr ""
 
+msgid "They have a staff account"
+msgstr ""
+
+msgid "They may sign in but never have."
+msgstr ""
+
 msgid "They were already a volunteer here"
 msgstr ""
 
@@ -15925,7 +17157,16 @@ msgstr ""
 msgid "This action cannot be undone. Make sure you have a backup of the current data if needed."
 msgstr ""
 
+msgid "This action needs a signed-in browser session."
+msgstr ""
+
 msgid "This action will automatically add paddle numbers for all item donors in this fundraiser who do not yet have a buyer number assigned."
+msgstr ""
+
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr ""
+
+msgid "This address is no longer shared by people who may sign in."
 msgstr ""
 
 #, php-format
@@ -15935,10 +17176,22 @@ msgstr ""
 msgid "This assignment is no longer active"
 msgstr ""
 
+msgid "This browser cannot make passkeys."
+msgstr ""
+
 msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
 msgstr ""
 
 msgid "This date was cancelled. Nothing more is needed from you."
+msgstr ""
+
+msgid "This device"
+msgstr ""
+
+msgid "This device already has a passkey for you."
+msgstr ""
+
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
 msgstr ""
 
 msgid "This email batch was queued by another user"
@@ -16009,13 +17262,10 @@ msgstr ""
 msgid "This is how your church information will appear on reports and directories."
 msgstr ""
 
+msgid "This is my own device. Keep me signed in."
+msgstr ""
+
 msgid "This is not a valid theme folder name."
-msgstr ""
-
-msgid "This is not one of your team's dates."
-msgstr ""
-
-msgid "This is not one of your teams."
 msgstr ""
 
 msgid "This is the household statement. It includes gifts for your family."
@@ -16028,6 +17278,9 @@ msgid "This is the only role in this group."
 msgstr ""
 
 msgid "This is where the church sends post and who it calls about your household."
+msgstr ""
+
+msgid "This is where you decide about guests. The number is how many active people have each classification."
 msgstr ""
 
 msgid "This is your church account. Everything you can do for yourself and your family lives here."
@@ -16043,6 +17296,12 @@ msgid "This kiosk is assigned to an event, but no members are available for chec
 msgstr ""
 
 msgid "This kiosk is best viewed on a tablet in landscape mode for optimal check-in experience."
+msgstr ""
+
+msgid "This link cannot be used"
+msgstr ""
+
+msgid "This link has expired or was already used"
 msgstr ""
 
 msgid "This may take a few minutes for large databases."
@@ -16106,22 +17365,67 @@ msgstr ""
 msgid "This page will automatically update once the kiosk is accepted."
 msgstr ""
 
-msgid "This part of the Member Portal is for volunteer team leaders."
+msgid "This part of the Member Portal is not available to you."
+msgstr ""
+
+msgid "This passkey is already on record."
+msgstr ""
+
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr ""
+
+msgid "This permission cannot be given on the person page."
 msgstr ""
 
 msgid "This person already has a user account."
 msgstr ""
 
+msgid "This person already has every permission that can be given."
+msgstr ""
+
+msgid "This person already has this permission."
+msgstr ""
+
 msgid "This person belongs to a family — approve the family instead"
+msgstr ""
+
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr ""
+
+msgid "This person could not be signed out."
+msgstr ""
+
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr ""
+
+msgid "This person has no such passkey."
+msgstr ""
+
+msgid "This person has no such permission."
+msgstr ""
+
+msgid "This person has no such remembered device."
+msgstr ""
+
+msgid "This person has no unconfirmed email."
+msgstr ""
+
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
 msgstr ""
 
 msgid "This person is deceased"
 msgstr ""
 
-msgid "This person is deceased or inactive, so this account cannot sign in"
+msgid "This person is deceased."
 msgstr ""
 
 msgid "This person is not a pending self-registration"
+msgstr ""
+
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr ""
+
+msgid "This person no longer exists."
 msgstr ""
 
 msgid "This plugin does not support connection testing."
@@ -16173,6 +17477,12 @@ msgstr ""
 msgid "This setting must be a number"
 msgstr ""
 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr ""
+
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr ""
+
 msgid "This substitution request has already been decided"
 msgstr ""
 
@@ -16195,7 +17505,7 @@ msgstr ""
 msgid "This title will be used for all generated events."
 msgstr ""
 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
+msgid "This tool never changes these. Give each person their own email on their record."
 msgstr ""
 
 msgid "This user must set a new password the next time they sign in."
@@ -16246,6 +17556,9 @@ msgstr ""
 msgid "Tick them on the Volunteers tab of this team, then assign them here."
 msgstr ""
 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr ""
+
 msgid "Ticks save as you make them."
 msgstr ""
 
@@ -16261,7 +17574,14 @@ msgstr ""
 msgid "Time zone"
 msgstr ""
 
+#, php-format
+msgid "Time: %s"
+msgstr ""
+
 msgid "Timed"
+msgstr ""
+
+msgid "Timed out"
 msgstr ""
 
 msgid "Timeline"
@@ -16336,6 +17656,9 @@ msgid ""
 "The link will immediately appear in the Links menu."
 msgstr ""
 
+msgid "To change this email, please contact the church office."
+msgstr ""
+
 #. plugin:external-backup:section:1:content
 msgid ""
 "To configure external backups:\n"
@@ -16350,7 +17673,13 @@ msgstr ""
 msgid "To date"
 msgstr ""
 
+msgid "To fix"
+msgstr ""
+
 msgid "To start over with a clean database, use Reset Database from the Admin Dashboard before importing demo data."
+msgstr ""
+
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
 msgstr ""
 
 msgid "To stop receiving these emails, you can email"
@@ -16402,11 +17731,26 @@ msgstr ""
 msgid "Tonga"
 msgstr ""
 
+msgid "Too many attempts"
+msgstr ""
+
 #, php-format
 msgid "Too many occurrences (%d) — narrow the date range. Maximum allowed: %d"
 msgstr ""
 
 msgid "Too many recipients for email client ({{total}} > {{max}}). Use Copy Addresses instead."
+msgstr ""
+
+msgid "Too many sign-in emails today"
+msgstr ""
+
+msgid "Too many sign-in requests for this email address"
+msgstr ""
+
+msgid "Too many sign-in requests from this IP address"
+msgstr ""
+
+msgid "Too many wrong codes"
 msgstr ""
 
 msgid "Tops up every schedule, sends whatever is queued and closes out finished occurrences, without waiting for the next scheduled run."
@@ -16572,7 +17916,22 @@ msgstr ""
 msgid "Turn down {{name}}? The original volunteer stays on and is told."
 msgstr ""
 
+msgid "Turn off"
+msgstr ""
+
+msgid "Turn off member sign-in?"
+msgstr ""
+
 msgid "Turn off the Member Portal template cache and print the name of each template in an HTML comment. For theme designers; leave off in normal use."
+msgstr ""
+
+msgid "Turn on"
+msgstr ""
+
+msgid "Turn on member sign-in"
+msgstr ""
+
+msgid "Turn on member sign-in?"
 msgstr ""
 
 msgid "Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one."
@@ -16622,6 +17981,16 @@ msgid "Type"
 msgstr ""
 
 msgid "Type RESET to confirm"
+msgstr ""
+
+msgid "Type a name"
+msgstr ""
+
+msgid "Type a name or email"
+msgstr ""
+
+#, php-format
+msgid "Type at least %d letters of a name, then search."
 msgstr ""
 
 msgid "Type must be 'Pledge' or 'Payment'"
@@ -16725,6 +18094,9 @@ msgstr ""
 msgid "Unclassified"
 msgstr ""
 
+msgid "Unconfirmed email"
+msgstr ""
+
 msgid "Underpaid"
 msgstr ""
 
@@ -16732,6 +18104,9 @@ msgid "Understand deployments"
 msgstr ""
 
 msgid "Understand feature usage"
+msgstr ""
+
+msgid "Understand where ChurchCRM is used"
 msgstr ""
 
 msgid "Undesignated"
@@ -16791,6 +18166,17 @@ msgstr ""
 msgid "Unknown delivery error"
 msgstr ""
 
+msgid "Unknown device"
+msgstr ""
+
+#, php-format
+msgid "Unknown directory field: %s"
+msgstr ""
+
+#, php-format
+msgid "Unknown directory setting: %s"
+msgstr ""
+
 msgid "Unknown error"
 msgstr ""
 
@@ -16815,6 +18201,12 @@ msgstr ""
 msgid "Unmet Prerequisites"
 msgstr ""
 
+msgid "Unnamed device"
+msgstr ""
+
+msgid "Unnamed passkey"
+msgstr ""
+
 msgid "Unpinned Events"
 msgstr ""
 
@@ -16828,6 +18220,9 @@ msgid "Unsuccessful API Key authentication attempt"
 msgstr ""
 
 msgid "Until"
+msgstr ""
+
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
 msgstr ""
 
 msgid "Unverified"
@@ -16975,6 +18370,10 @@ msgstr ""
 msgid "Usage"
 msgstr ""
 
+#, php-format
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr ""
+
 msgid "Use 9 as a digit placeholder (e.g. (999) 999-9999). Leave blank to use the system default."
 msgstr ""
 
@@ -16997,6 +18396,12 @@ msgstr ""
 msgid "Use a different account"
 msgstr ""
 
+msgid "Use a different email address"
+msgstr ""
+
+msgid "Use a passkey on this device?"
+msgstr ""
+
 msgid "Use a recovery code instead"
 msgstr ""
 
@@ -17011,6 +18416,10 @@ msgid "Use the Countries picker to choose one or more countries. Each country yo
 msgstr ""
 
 msgid "Use the button above to create today's event in one click. It will be auto-linked to this class so a Kiosk can pull the roster."
+msgstr ""
+
+#, php-format
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
 msgstr ""
 
 msgid "Use the schedule's needs"
@@ -17044,6 +18453,10 @@ msgid "Used to end a letter before Signer"
 msgstr ""
 
 msgid "User"
+msgstr ""
+
+#, php-format
+msgid "User %d"
 msgstr ""
 
 msgid "User Config"
@@ -17342,6 +18755,9 @@ msgstr ""
 msgid "View People"
 msgstr ""
 
+msgid "View Permissions"
+msgstr ""
+
 msgid "View Person"
 msgstr ""
 
@@ -17634,6 +19050,13 @@ msgstr ""
 msgid "Waiting for review"
 msgstr ""
 
+#, php-format
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr ""
+
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr ""
+
 msgid "Waiting for your coordinator to confirm."
 msgstr ""
 
@@ -17671,10 +19094,26 @@ msgstr ""
 msgid "We could not find the record you were looking for."
 msgstr ""
 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr ""
+
+msgid "We could not sign you in"
+msgstr ""
+
+#, php-format
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr ""
+
 msgid "We encountered an error processing your verification. Please try again or contact us directly."
 msgstr ""
 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr ""
+
 msgid "We were unable to process your password reset request."
+msgstr ""
+
+msgid "We will email you a code and a link to sign in with."
 msgstr ""
 
 msgid "We will email you when something needs filling."
@@ -17686,10 +19125,10 @@ msgstr ""
 msgid "We'll use this to keep in touch and send church updates."
 msgstr ""
 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
+msgid "We're so glad you're here! It takes about three minutes."
 msgstr ""
 
-msgid "We're so glad your family has joined us!"
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
 msgstr ""
 
 msgid "Web Server"
@@ -17725,6 +19164,9 @@ msgstr ""
 msgid "Wedding Anniversaries"
 msgstr ""
 
+msgid "Wedding Anniversary"
+msgstr ""
+
 msgid "Wedding Date"
 msgstr ""
 
@@ -17747,6 +19189,9 @@ msgid "Weekly"
 msgstr ""
 
 msgid "Weekly on"
+msgstr ""
+
+msgid "Welcome"
 msgstr ""
 
 msgid "Welcome Back!"
@@ -17791,6 +19236,15 @@ msgstr ""
 msgid "What is sent"
 msgstr ""
 
+msgid "What it was given for no longer exists"
+msgstr ""
+
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr ""
+
+msgid "What members can use"
+msgstr ""
+
 msgid "What needs changing?"
 msgstr ""
 
@@ -17804,6 +19258,9 @@ msgid "What the volunteer experiences are"
 msgstr ""
 
 msgid "What this plugin does"
+msgstr ""
+
+msgid "What to do"
 msgstr ""
 
 msgid "What went wrong? What did you expect to happen?"
@@ -17896,6 +19353,9 @@ msgstr ""
 msgid "Which volunteer experience this church uses"
 msgstr ""
 
+msgid "Who can see it"
+msgstr ""
+
 msgid "Who is bringing in {{name}}?"
 msgstr ""
 
@@ -17908,13 +19368,28 @@ msgstr ""
 msgid "Who is in your family?"
 msgstr ""
 
+msgid "Who is listed"
+msgstr ""
+
 msgid "Who is needed, who is on, and what is still short"
 msgstr ""
 
 msgid "Who is picking up {{name}}?"
 msgstr ""
 
+msgid "Who may sign in"
+msgstr ""
+
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr ""
+
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr ""
+
 msgid "Whoever served least recently is listed first."
+msgstr ""
+
+msgid "Why"
 msgstr ""
 
 msgid "Why Came"
@@ -17924,6 +19399,9 @@ msgid "Why did you come to the church?"
 msgstr ""
 
 msgid "Why do you keep coming?"
+msgstr ""
+
+msgid "Why not"
 msgstr ""
 
 msgid "Winner"
@@ -17937,6 +19415,9 @@ msgid "Wishing you a wonderful %d year birthday!"
 msgstr ""
 
 msgid "Wishing you a wonderful birthday!"
+msgstr ""
+
+msgid "With the token the device replaced moments ago"
 msgstr ""
 
 msgid "Without Vonage, text actions will open your device's native SMS app or copy phone numbers to clipboard."
@@ -18021,7 +19502,16 @@ msgstr ""
 msgid "Yes, Remove"
 msgstr ""
 
+msgid "Yes, add a passkey"
+msgstr ""
+
 msgid "Yes, delete"
+msgstr ""
+
+msgid "Yes, remove this passkey"
+msgstr ""
+
+msgid "Yes, sign out every device"
 msgstr ""
 
 msgid "Yesterday"
@@ -18051,7 +19541,13 @@ msgstr ""
 msgid "You are not allowed to change this. Please contact the church office."
 msgstr ""
 
+msgid "You are not allowed to confirm this email."
+msgstr ""
+
 msgid "You are not currently associated with a family"
+msgstr ""
+
+msgid "You are not kept signed in on any device."
 msgstr ""
 
 msgid "You are not part of a family record yet."
@@ -18064,6 +19560,15 @@ msgid "You are on the schedule"
 msgstr ""
 
 msgid "You are running a pre-release version."
+msgstr ""
+
+msgid "You are signed out on every device."
+msgstr ""
+
+msgid "You are signed out on this device."
+msgstr ""
+
+msgid "You can also sign in with your email address."
 msgstr ""
 
 #. plugin:external-backup:section:3:content
@@ -18097,7 +19602,13 @@ msgstr ""
 msgid "You can still proceed with the upgrade without viewing release notes."
 msgstr ""
 
+msgid "You can't disable your own sign-in."
+msgstr ""
+
 msgid "You cannot delete your own account."
+msgstr ""
+
+msgid "You cannot open the Member Portal. Please contact the church office."
 msgstr ""
 
 msgid "You cannot open this page"
@@ -18133,6 +19644,9 @@ msgstr ""
 msgid "You have a new calendar address. The old one no longer works."
 msgstr ""
 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr ""
+
 msgid "You have been scheduled to serve"
 msgstr ""
 
@@ -18140,6 +19654,9 @@ msgid "You have been scheduled to serve."
 msgstr ""
 
 msgid "You have no items in your cart."
+msgstr ""
+
+msgid "You have no passkeys."
 msgstr ""
 
 msgid "You lead this"
@@ -18193,7 +19710,21 @@ msgstr ""
 msgid "You'll receive backup codes that can be used if you lose access to your app"
 msgstr ""
 
+#, php-format
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr ""
+
+#, php-format
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr ""
+
 msgid "You're up to date!"
+msgstr ""
+
+msgid "Younger than the minimum age"
+msgstr ""
+
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
 msgstr ""
 
 msgid "Your Account was Deleted"
@@ -18227,6 +19758,9 @@ msgid "Your GA4 Measurement ID (G-XXXXXXXXXX)"
 msgstr ""
 
 msgid "Your MailChimp account does not have any audiences (lists) configured."
+msgstr ""
+
+msgid "Your Member Portal sign-in code"
 msgstr ""
 
 msgid "Your New Account"
@@ -18274,6 +19808,9 @@ msgstr ""
 msgid "Your child"
 msgstr ""
 
+msgid "Your code"
+msgstr ""
+
 msgid "Your coordinator"
 msgstr ""
 
@@ -18298,6 +19835,19 @@ msgstr ""
 msgid "Your details have been saved."
 msgstr ""
 
+#, php-format
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr ""
+
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr ""
+
+msgid "Your email address is confirmed"
+msgstr ""
+
+msgid "Your email address was changed"
+msgstr ""
+
 msgid "Your family details have been saved."
 msgstr ""
 
@@ -18312,6 +19862,9 @@ msgid "Your new password must be at least"
 msgstr ""
 
 msgid "Your new password must not match your old one."
+msgstr ""
+
+msgid "Your passkey was added. Next time, sign in with it on this device."
 msgstr ""
 
 msgid "Your password choice is too obvious. Please choose something else."
@@ -18333,9 +19886,6 @@ msgid "Your previous session timed out. Please login again."
 msgstr ""
 
 msgid "Your privacy is important. We never share your information with third parties."
-msgstr ""
-
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
 msgstr ""
 
 msgid "Your schedule could not be loaded."
@@ -18420,6 +19970,9 @@ msgid "always sent"
 msgstr ""
 
 msgid "am / pm"
+msgstr ""
+
+msgid "an administrator"
 msgstr ""
 
 msgid "and"
@@ -18685,6 +20238,9 @@ msgstr ""
 msgid "mos"
 msgstr ""
 
+msgid "name@example.com"
+msgstr ""
+
 msgid "needs to be picked up from"
 msgstr ""
 
@@ -18692,6 +20248,9 @@ msgid "never"
 msgstr ""
 
 msgid "no email address"
+msgstr ""
+
+msgid "no head of household or spouse has an email address"
 msgstr ""
 
 msgid "not found"
@@ -18715,6 +20274,9 @@ msgstr ""
 msgid "optional"
 msgstr ""
 
+msgid "or"
+msgstr ""
+
 msgid "or click to browse"
 msgstr ""
 
@@ -18722,9 +20284,6 @@ msgid "or connect an external service"
 msgstr ""
 
 msgid "or later to continue."
-msgstr ""
-
-msgid "our church"
 msgstr ""
 
 msgid "page"
@@ -18884,6 +20443,10 @@ msgid "to enable the reset button"
 msgstr ""
 
 msgid "total"
+msgstr ""
+
+#, php-format
+msgid "until %s"
 msgstr ""
 
 msgid "user"
