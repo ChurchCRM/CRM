@@ -55,7 +55,7 @@ src/skin/scss/_portal.scss   part of portal.min.css
 
 ## Request flow
 
-1. Members sign in at `/portal/login`, staff at `/session/begin`; `/admin/` is the authenticated admin dashboard. Landing follows P10. `/external/limited-access` redirects to `/portal`. The portal is always on.
+1. Members sign in at `/portal/login`, staff at `/admin/` (`/session/begin` serves the same form); administrators then use the Admin Dashboard there. Landing follows P10. `/external/limited-access` redirects to `/portal`. The portal is always on.
 2. A request with a portal principal and no staff session passes `AuthMiddleware` only on `/portal`, `/api/portal` and the volunteer API (`/api/ministries/`). `AuthMiddleware` redirects an Edit-Self-only browser request outside `isLimitedAccessAllowedPath()` to `/portal`. The allowed paths include `/portal`, `/api/portal`, the auth-flow pages, `/api/ministries/me/` and `/api/ministries/` (team leaders). `/volunteer` and other admin areas stay closed. API-key calls from these accounts get 403. `Include/PageInit.php` applies the same rule to PHP pages; `AuthenticationManager::getDefaultLandingPath()` picks the post-login destination.
 3. `src/portal/index.php` mounts `PortalSessionMiddleware` (the portal principal: a member session, or a staff session opening the portal as its own person; it ends the session on a block, a session-version change or idle time), then `PortalAccessMiddleware` (302 to `/portal/login` when signed out, API keys refused) and `CSRFMiddleware`, on the page group. `/api/portal/*` groups use `PortalSessionMiddleware` + `PortalApiMiddleware`. Portal code reads who it serves from `PortalContext`, never `AuthenticationManager::getCurrentUser()`.
 4. A route handler builds a view-model and calls `PortalTwig::render($response, 'calendar/index.html.twig', $model, PortalNav::CALENDAR)`. The loader order is active theme, then default theme; a theme file with the same relative path wins.
@@ -227,7 +227,7 @@ Cards: next portal-visible events, the member's next volunteer assignment and pe
 ### Directory (`/portal/directory`)
 
 - Capability `portal.directory.view`: feature switch `bPortalShowDirectory`, granted by `DirectoryViewerRule` to people whose classification is in the viewer list. The rule reads the setting on every request.
-- `PortalDirectoryService` decides who is listed: the listed classifications, alive, active, not awaiting review, outside deactivated families. `withRecordPolicy()` is where #10524's protected-household policy applies. A family with two or more listed people is one entry (head, spouse, children, others, as the printed directory orders them); anyone else is a person entry. A field the administrator leaves off is never read into an entry. A person with Hide Age never shows a birth year.
+- `PortalDirectoryService` decides who is listed: the listed classifications, alive, active, not awaiting review, outside deactivated families. `withRecordPolicy()` is where the protected-household policy applies. A family with two or more listed people is one entry (head, spouse, children, others, as the printed directory orders them); anyone else is a person entry. A field the administrator leaves off is never read into an entry. A person with Hide Age never shows a birth year.
 - `GET /api/portal/directory` returns the same groups the page renders. `GET /api/portal/directory/{person|family}/{id}/photo` serves a photo only of someone the directory shows (`private, no-store`); anything else is 404.
 - Browsing, the page lists every entry, filters by name in the browser (`webpack/portal/portal-directory.ts`) and links each first letter. Search only, `PortalDirectoryService::find()` answers nothing below `SEARCH_MIN_LENGTH` characters and at most `SEARCH_LIMIT` entries, on the page (`?q=`) and the API alike, so the whole list never leaves the server.
 
@@ -262,7 +262,7 @@ What the church has emailed this member, newest first, paginated; reached from t
 | Item | Where |
 |---|---|
 | `calendars.ministry_id` (nullable, indexed, FK to `volunteer_ministry_vmin`) | `orm/schema.xml`, `Install.sql` |
-| `person_signin_psi.psi_LastActivity`, `psi_CalendarToken` (UNIQUE), `psi_CalendarSelection` (the `user_usr` columns are no longer read), `psi_Language` (NULL = the church's) | `orm/schema.xml`, `Install.sql` |
+| `person_signin_psi.psi_LastActivity`, `psi_CalendarToken` (UNIQUE), `psi_CalendarSelection`, `psi_Language` (NULL = the church's) | `orm/schema.xml`, `Install.sql` |
 | Config items listed above, no System Settings category | `SystemConfig::buildConfigs()` |
 
 ## Tests

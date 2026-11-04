@@ -284,7 +284,7 @@ Requests over a limit get the same answer screen and no email. They are audited 
   - the portal header's **Admin Console** link goes straight back.
   - Neither link asks for anything. The portal sees a principal for their own person with method `STAFF`, which gets the blocks for everyone (§4) but not the member-only blocks or the member rule.
 - **Signed in at `/portal/login`** (email or passkey), by someone who also has a staff account:
-  - the portal's **Admin Console** link goes to the `/session/begin` sign-in page;
+  - the portal's **Admin Console** link goes to the `/admin` sign-in page;
   - only a username, password and two-factor sign-in there opens the staff side, and it then replaces the member session.
   - An email link or a passkey never opens the staff side.
 - **The portal's Change Password and two-factor pages** show only in a staff session. Members have neither.
@@ -791,7 +791,7 @@ This work does not wait for #10511's F0, as George said on 10-10. It is built so
   - `/admin` serves the staff sign-in page, and `/session/begin` serves the same form;
   - a member session can't open any staff route;
   - a staff session goes to the portal and back without signing in again;
-  - a member session's Admin Console link goes to the `/session/begin` sign-in.
+  - a member session's Admin Console link goes to the `/admin` sign-in.
 - **Portal permissions:**
   - deny for an unknown capability, and for a capability whose plugin is off or whose feature switch is off;
   - a team leader manages only their own team, and gets 404 for another team;

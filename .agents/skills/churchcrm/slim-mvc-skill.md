@@ -64,7 +64,7 @@ Each module's entry point is `src/<module>/index.php` and its routes live in `sr
 | `/external` | Often unauthenticated or token-based. Validate inputs strictly. |
 | `/kiosk` | Kiosk device token and cookie flows with a deliberately limited action set. |
 | `/plugins` | `/plugins/management/*` and `/plugins/api/*` are admin only. Each enabled plugin registers `/plugins/{plugin-name}/...` with its own permission settings (see `plugin-security-scan.md`). |
-| `/session` | Staff sign-in (`/session/begin`), two-factor, password reset, sign-out (`/session/end`). `/admin/` is the authenticated admin dashboard. |
+| `/session` | Staff sign-in form (`/session/begin`, the same form `/admin/` shows), two-factor, password reset, sign-out (`/session/end`). |
 | `/setup` | Installer. Sensitive; runs once. |
 
 ## Route organization
