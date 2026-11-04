@@ -25,7 +25,7 @@ Load `skill-architecture.md` only when adding or editing a skill.
 | [Configuration Management](./configuration-management.md) | SystemConfig |
 | [Settings Placement](./settings-placement.md) | Where a setting lives, area admin hub |
 | [Volunteer Management v2](./volunteer-v2.md) | Ministries / Volunteer v2 (full design: `docs/design/volunteer-v2.md`) |
-| [Member Portal Design](./member-portal-design.md) | `/portal` and themes |
+| [Member Portal Design](./member-portal-design.md) | `/portal` and themes (flow, screens, data: `docs/design/member-portal.md`) |
 
 ## Reports
 
