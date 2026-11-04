@@ -23,9 +23,10 @@ class RequestUtils
      * The address of the client behind this request. When the direct peer is
      * listed in CHURCHCRM_TRUSTED_PROXIES, X-Forwarded-For is read from the
      * right, past the listed proxies, to the first address that is not one.
-     * Only the trusted proxies' entries are believed, so a client cannot choose
-     * its own address. Otherwise, or when that walk meets something that is not
-     * an IP address or finds no client, the direct peer.
+     * Every listed address is believed, so the list must name proxies only: a
+     * client inside a listed range could choose the address it is counted by.
+     * Otherwise, or when that walk meets something that is not an IP address
+     * or finds no client, the direct peer.
      */
     public static function clientAddress(?array $server = null, ?string $trustedProxies = null): string
     {
@@ -49,18 +50,27 @@ class RequestUtils
         return $peer;
     }
 
+    /**
+     * An IPv4-mapped address (::ffff:a.b.c.d), as a dual-stack server reports
+     * an IPv4 peer, matches both IPv4 entries and IPv6 entries.
+     */
     public static function isTrustedProxy(string $ip, string $trustedProxies): bool
     {
-        $packed = @inet_pton($ip);
-        if ($packed === false) {
+        $address = @inet_pton($ip);
+        if ($address === false) {
             return false;
+        }
+        $forms = [strlen($address) => $address];
+        if (str_starts_with($address, str_repeat("\0", 10) . "\xff\xff")) {
+            $forms[4] = substr($address, 12);
         }
         foreach (array_filter(array_map('trim', explode(',', $trustedProxies))) as $entry) {
             [$net, $bits] = array_pad(explode('/', $entry, 2), 2, null);
             $netPacked = @inet_pton($net);
-            if ($netPacked === false || strlen($netPacked) !== strlen($packed)) {
+            if ($netPacked === false || !isset($forms[strlen($netPacked)])) {
                 continue;
             }
+            $packed = $forms[strlen($netPacked)];
             $width = strlen($packed) * 8;
             if ($bits !== null && (!ctype_digit($bits) || (int) $bits > $width)) {
                 continue;
