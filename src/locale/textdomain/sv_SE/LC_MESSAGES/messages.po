@@ -24735,14 +24735,2546 @@ msgid "Witness"
 msgstr "Vittne"
 
 #: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d gåvor saknar familj. De kan inte stå på ett intyg."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "%d öppna insättningar är daterade i år. Stäng dem så att varje gåva är slutgiltig innan intygen skickas."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d betalningar ligger ännu inte på någon insättning."
+
+#: 
+msgid "Can be emailed"
+msgstr "Kan skickas med e-post"
+
+#: 
+msgid "Closing line"
+msgstr "Avslutningsrad"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Alla insättningar daterade i år är stängda."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Varje gåva tillhör en familj."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Varje betalning i år ligger på en insättning."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Skapa skatteintyg"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Gåvorapport (skatteintyg)"
+
+#: 
+msgid "Opening line"
+msgstr "Inledningsrad"
+
+#: 
+msgid "Print and mail"
+msgstr "Skriv ut och posta"
+
+#: 
+msgid "Qty"
+msgstr "Antal"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Granska året, och skriv sedan ut eller skicka gåvointygen med e-post."
+
+#: 
+msgid "Signed by"
+msgstr "Undertecknat av"
+
+#: 
+msgid "Thank-you line"
+msgstr "Tackrad"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Kontrollera att församlingens namn, adress och kontaktuppgifter visas på skatteintygen."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Gåvor vid årsskiftet"
+
+#: 
+msgid "As of: %s"
+msgstr "Per: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Minst en positiv familjebetalning under de valda %d räkenskapsåren, fram till granskningsdatumet: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Dop, ansökningar till röstlängden, bosättning, nattvardsstatus, närvaro, god ordning och lokala undantag måste kontrolleras separat där era stadgar kräver det. Medlemskapets längd är inte ett bevis på närvaro."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Välj en befintlig klassificering."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Välj minst en klassificering att granska."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Välj de klassificeringar som din församling använder. Ingen klassificering antas ge rösträtt."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Församlingsledningen måste bekräfta behörigheten enligt församlingens stadgar. Listan visar bara personer som matchar de valda filtren."
+
+#: 
+msgid "Classifications to review"
+msgstr "Klassificeringar att granska"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Klassificeringar: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Avlidna personer, inaktiva personer och klassificeringar samt inaktiva familjer och personer, eller sådana som väntar på granskning, utesluts."
+
+#: 
+msgid "Download Review List"
+msgstr "Ladda ner granskningslistan"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Ange ett giltigt granskningsdatum mellan 1900 och 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Ange heltal inom de angivna gränserna."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Räkenskapsår att kontrollera (0–100; 0 betyder inget gåvokrav)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Gåvor registreras per familj, inte per person. Slå på det här bara när era stadgar låter en familjebetalning uppfylla det här villkoret. Det bevisar inte att varje person har gett. Perioden omfattar det valda räkenskapsåret och slutar senast på granskningsdatumet."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Sista räkenskapsår som ska tas med"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Lägsta ålder (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Lägsta ålder: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Kortaste medlemskap i månader (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Kortaste medlemskap: %d månader"
+
+#: 
+msgid "No donation requirement."
+msgstr "Inget gåvokrav."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Inga personer matchar de här filtren. Kontrollera saknade födelse- eller medlemsdatum och justera villkoren."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Valfritt krav på familjens gåvor"
+
+#: 
+msgid "People matching filters"
+msgstr "Personer som matchar filtren"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Personer som utelämnats eftersom obligatoriska datum saknas"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Ta fram en lista för församlingens granskning med klassificeringar och valfria filter för ålder, medlemskap och familjens gåvor."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Ta fram en lista för församlingens granskning utifrån era stadgar."
+
+#: 
+msgid "Review date"
+msgstr "Granskningsdatum"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Använd församlingens stadgar för att välja filtren, och låt sedan behörig församlingsledning granska listan. Att matcha filtren fastställer inte rösträtt. Den här rapporten registrerar inte behörighet och genomför inget val."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Röstberättigade medlemmar — granskningslista"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Noll stänger av ett valfritt krav. Ålder kräver ett fullständigt födelsedatum, och medlemskapets längd kräver ett medlemsdatum. Personer som saknar obligatoriska datum utelämnas och räknas för sig. Avlidna personer, inaktiva personer och klassificeringar samt inaktiva familjer och personer, eller sådana som väntar på granskning, utesluts alltid. Aktuell klassificering och status används, inte historisk status."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Belopp att betala för %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Kan inte skapa privat tillfällig lagring för PDF i den valda katalogen."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Lämna tomt för att använda systemets tillfälliga katalog. Ange annars en befintlig skrivbar katalog som är skyddad mot åtkomst via webben."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Tillfällig katalog för PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "Tillfällig lagring för PDF måste vara privat och skrivbar."
+
+#: 
+msgid "Reporting"
+msgstr "Rapportering"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "Den tillfälliga katalogen för PDF finns inte eller går inte att nå."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "Den tillfälliga katalogen för PDF måste vara en absolut sökväg."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Församlingens skatte-ID (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Avslutningsrad"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Styr valfri telemetri. Fel vid installation och databasuppgradering skickar begränsad diagnostik till PostHog även när telemetrin är av. De här felrapporterna innehåller versioner av programvara och miljö samt ett rensat databasfel, men inget installations-ID och inget SQL-uttryck."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Diagnostisera misslyckade installationer och databasuppgraderingar"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Detaljer om fel vid installation och uppgradering"
+
+#: 
+msgid "Open in browser window"
+msgstr "Öppna i webbläsarfönster"
+
+#: 
+msgid "Opening Line"
+msgstr "Inledningsrad"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Valfri användningstelemetri skickas bara när den är påslagen. Fel vid installation och databasuppgradering skickar alltid begränsad diagnostik för att hjälpa gemenskapen, även om du väljer Nej tack. Felrapporter innehåller versioner av programvara och miljö samt ett rensat databasfel, utan installations-ID eller SQL-uttryck."
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF-hantering"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF-utdata"
+
+#: 
+msgid "PDF handling mode"
+msgstr "Hanteringssätt för PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "Rad för frågor"
+
+#: 
+msgid "Save File dialog"
+msgstr "Dialogrutan Spara fil"
+
+#: 
+msgid "Signer"
+msgstr "Undertecknare"
+
+#: 
+msgid "Statement Settings"
+msgstr "Intygsinställningar"
+
+#: 
+msgid "Statement Wording"
+msgstr "Intygets lydelse"
+
+#: 
+msgid "Tax Information"
+msgstr "Skatteuppgifter"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Telemetri skickas till PostHog i USA. Felrapporter vid installation och uppgradering skickas även när valfri telemetri är avstängd."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Det här tillfället har ställts in. Du behöver inte göra något mer."
+
+#: 
+msgid "always sent"
+msgstr "skickas alltid"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Det gick inte att ta bort brevhuvudet"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Det gick inte att lagra brevhuvudet"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Det gick inte att ladda upp brevhuvudet"
+
+#: 
+msgid "Greeting"
+msgstr "Hälsning"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Hälsning och underskrift i brevet"
+
+#: 
+msgid "Letterhead"
+msgstr "Brevhuvud"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF eller WebP. En bred banderoll fungerar bäst, till exempel 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Skrivs ut överst på PDF-brev som använder ett grafiskt brevhuvud, till exempel gåvointyg. Utan brevhuvud skriver breven ut församlingens namn och adress."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Ta bort brevhuvudet? Breven skriver då ut församlingens namn och adress."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Ange det brevhuvud som PDF-breven skriver ut"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Använder församlingens namn och adress"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Använder sökvägen till brevhuvudet som angetts i systeminställningarna"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Lydelse, skatte-ID och PDF-hantering för gåvointyg"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s som %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s är nu din e-postadress. Du kan använda den för att logga in i medlemsportalen."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} till"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "En ändring av din e-postadress har begärts"
+
+#: 
+msgid "A family"
+msgstr "En familj"
+
+#: 
+msgid "A group"
+msgstr "En grupp"
+
+#: 
+msgid "A ministry"
+msgstr "Ett tjänsteområde"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "En ny adress gäller först när du använder länken vi skickar till den."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "En lösennyckel kan bara läggas till inom %d minuter efter att du loggat in med din e-postadress. Logga ut, logga in igen med din e-post och kom sedan tillbaka hit."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "En lösennyckel loggar in dig med Face ID, ett fingeravtryck eller enhetens PIN-kod, utan en kod via e-post."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "En lösennyckel har lagts till för din inloggning i medlemsportalen"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "En lösennyckel lades till för din inloggning i medlemsportalen kl. %1$s den %2$s, från %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "En lösennyckel lades till för din inloggning i medlemsportalen kl. %1$s den %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "En person som förlorar den har då ingen egen e-post: utskick bara till den personen, till exempel e-post till en grupp, hoppas över, och det står i e-postredigeraren."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "En person vars post döljer åldern visar aldrig födelseår."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "En begäran gjordes i medlemsportalen om att ändra din e-postadress vid %s från %s till %s. Ändringen sker bara när länken som skickats till %s används."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "En rad har inte den förväntade formen."
+
+#: 
+msgid "A team"
+msgstr "Ett lag"
+
+#: 
+msgid "Add a passkey"
+msgstr "Lägg till en lösennyckel"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Lägg bara till en lösennyckel på din egen telefon eller dator, aldrig på en delad eller offentlig."
+
+#: 
+msgid "Add an email"
+msgstr "Lägg till e-post"
+
+#: 
+msgid "Added %s"
+msgstr "Lade till %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Administratörsundantag"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "Vuxen i familjen %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "Vuxen i familjen"
+
+#: 
+msgid "All events"
+msgstr "Alla händelser"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Tillåt Logga in som person"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Tillåt ändringar under Logga in som person"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Tillåt ändringar medan en administratör använder Logga in som person. När funktionen är av är Logga in som person skrivskyddad."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Används redan av en familjemedlem"
+
+#: 
+msgid "Also used by"
+msgstr "Används också av"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "En administratör kan ge vilken behörighet som helst till en person på personens sida. \"Administratörsundantag\" visas då här, med antalet personer som fick den."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "En annan person använder redan den här adressen"
+
+#: 
+msgid "Applies to"
+msgstr "Gäller"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Godkänn eller avslå önskemål om vikarie i ett volontärlag."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Be om ett nytt meddelande"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Behörigheten ges till personen, inte till en inloggning, så den kan ges innan personen har en. En person som bara loggar in i medlemsportalen ser bara sitt eget schema tills en administratör ger personen ett personalkonto."
+
+#: 
+msgid "Awaiting review"
+msgstr "Väntar på granskning"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Tillbaka till inloggningen"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Bläddra i hela katalogen"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Kan logga in i medlemsportalen"
+
+#: 
+msgid "Can sign in?"
+msgstr "Kan logga in?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Kan inte stänga av inloggningen för den enda administratören som kan logga in."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Kan inte logga in"
+
+#: 
+msgid "Change family details"
+msgstr "Ändra familjeuppgifter"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Ändra familjens adress och kontaktuppgifter, och lägg till en familjemedlem för granskning."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Ändra sitt eget namn, sina kontaktuppgifter och sitt foto."
+
+#: 
+msgid "Changed"
+msgstr "Ändrad"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Ändrad efter att personen loggat in"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Ändrad av en import efter att personen loggat in"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Ändrad av personal efter att personen loggat in"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Ändrad via API:et efter att personen loggat in"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Ändringar är avstängda under Logga in som person."
+
+#: 
+msgid "Changes needed"
+msgstr "Ändringar behövs"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Ändringarna sparas efter hand."
+
+#: 
+msgid "Check your email"
+msgstr "Kontrollera din e-post"
+
+#: 
+msgid "Choose a permission"
+msgstr "Välj en behörighet"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Välj en behörighet, vad den gäller, dess sista dag och ange varför."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Välj ett foto eller ta en selfie"
+
+#: 
+msgid "Choose a theme"
+msgstr "Välj ett tema"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Välj minst en rad."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Välj högst %d rader åt gången."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Välj i listan hur datum ska visas."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Välj behörighetens sista dag."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Välj vad behörigheten gäller."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Välj ja eller nej."
+
+#: 
+msgid "Church Office"
+msgstr "Församlingsexpeditionen"
+
+#: 
+msgid "Church country"
+msgstr "Församlingens land"
+
+#: 
+msgid "Church default: %s"
+msgstr "Församlingens standard: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Inloggning för församlingsledare"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Klassificeringar vars medlemmar får logga in i medlemsportalen, som en kommaseparerad lista med klassificerings-id."
+
+#: 
+msgid "Clear selection"
+msgstr "Rensa markeringen"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Koder, sessioner och enheter"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Bekräfta e-postadress"
+
+#: 
+msgid "Confirm email address"
+msgstr "Bekräfta e-postadress"
+
+#: 
+msgid "Confirm family details"
+msgstr "Bekräfta familjeuppgifter"
+
+#: 
+msgid "Confirm selected"
+msgstr "Bekräfta valda"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Bekräfta den här e-postadressen bara efter att du, personligen eller per telefon, kontrollerat att den är personens egen adress. När den är bekräftad kan den användas för att logga in i medlemsportalen."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Bekräfta din e-postadress"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Bekräfta din nya e-postadress"
+
+#: 
+msgid "Confirmed"
+msgstr "Bekräftad"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Datum måste skrivas som YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Avgör önskemål om vikarie"
+
+#: 
+msgid "Device"
+msgstr "Enhet"
+
+#: 
+msgid "Device remembered"
+msgstr "Enheten ihågkommen"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Enheter och lösennycklar"
+
+#: 
+msgid "Directory classifications"
+msgstr "Katalogens klassificeringar"
+
+#: 
+msgid "Directory section"
+msgstr "Katalogavsnitt"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Stäng av inloggning"
+
+#: 
+msgid "Do not show"
+msgstr "Visa inte"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Var och en behöver också en egen e-postadress som ingen annan använder."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Varje inloggningsmeddelande fungerar en gång, under begränsad tid, och ett nyare meddelande ersätter det."
+
+#: 
+msgid "Edit my details"
+msgstr "Redigera mina uppgifter"
+
+#: 
+msgid "Email address changed"
+msgstr "E-postadressen ändrad"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Angiven e-postadress: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "E-postadresser att bekräfta: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "E-post ändrad"
+
+#: 
+msgid "Email code"
+msgstr "E-postkod"
+
+#: 
+msgid "Email confirmed"
+msgstr "E-post bekräftad"
+
+#: 
+msgid "Email link"
+msgstr "E-postlänk"
+
+#: 
+msgid "Email me a code"
+msgstr "Skicka en kod till mig"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Skicka en bekräftelselänk till mig"
+
+#: 
+msgid "Email needs attention"
+msgstr "E-posten behöver ses över"
+
+#: 
+msgid "Email problem"
+msgstr "E-postproblem"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Skickad inloggningskod och länk har återkallats"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Skickad verifieringslänk"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Bekräftade e-postadresser: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Slå på inloggning"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Avsluta varje session i medlemsportalen för den här personen och glöm personens ihågkomna enheter? Lösennycklarna finns kvar, så personen kan logga in igen."
+
+#: 
+msgid "Ended %s"
+msgstr "Avslutades %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Avslutad genom en ändring av inloggningen"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Avslutad när medlemsinloggningen stängdes av"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Ange ett heltal från %1$d till %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Ange din e-postadress."
+
+#: 
+msgid "Every kind"
+msgstr "Alla slag"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Varje medlemsinloggning, avvisning och ändring av inloggningen, de senaste först. Den innehåller aldrig en kod, länk eller lösennyckel."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Alla som listas, A till Ö, med en sökruta."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Alla som inloggningsreglerna släpper in kan sedan logga in i medlemsportalen med sin egen e-post."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Alla som loggat in i medlemsportalen de senaste 30 dagarna, de senaste först."
+
+#: 
+msgid "Everywhere"
+msgstr "Överallt"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Familjer som en medlem bekräftat de senaste 30 dagarna, från medlemsportalen eller verifieringslänken i e-post."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Bekräftade familjer, senaste 30 dagarna"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Familjeuppgifter bekräftade"
+
+#: 
+msgid "Family email"
+msgstr "Familjens e-post"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Familjens e-post som inte flyttades"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Familjeroller vars medlemmar får logga in i medlemsportalen, som en kommaseparerad lista med roll-id."
+
+#: 
+msgid "Find someone"
+msgstr "Hitta någon"
+
+#: 
+msgid "Fix by hand"
+msgstr "Åtgärda för hand"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Åtgärda delade e-postadresser"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Från en personalinloggning"
+
+#: 
+msgid "Give a permission"
+msgstr "Ge en behörighet"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Ge en portalbehörighet"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Ge varje person en egen e-postadress"
+
+#: 
+msgid "Give permission"
+msgstr "Ge behörighet"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Tilldelad av %1$s till %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Tilldelad av %s"
+
+#: 
+msgid "Given to"
+msgstr "Tilldelad"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Tilldelad alla"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Tilldelad, men gäller inte"
+
+#: 
+msgid "Go to sign in"
+msgstr "Gå till inloggningen"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Gå till medlemsportalen"
+
+#: 
+msgid "Has signed in"
+msgstr "Har loggat in"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Har loggat in: sessionerna och enheterna avslutas"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Här är din kod för att logga in i medlemsportalen. Skriv in den på inloggningssidan, i webbläsaren där du bad om den. Eller tryck på knappen för att logga in på den här enheten."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Dölj behörigheter"
+
+#: 
+msgid "How"
+msgstr "Hur"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Hur många inloggningsmeddelanden till medlemsportalen en IP-adress kan begära på en timme. Ange 0 för ingen gräns, till exempel när alla når ChurchCRM via en adress."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Hur många dagar en enhet förblir inloggad i medlemsportalen efter att medlemmen valt att vara kvar inloggad. Ange 0 för att ta bort valet."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Hur många minuter utan aktivitet som avslutar en session i medlemsportalen."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Hur många minuter en inloggningskod och länk till medlemsportalen är giltiga."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Tid utan aktivitet (minuter)"
+
+#: 
+msgid "Idle too long"
+msgstr "Inaktiv för länge"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Om %1$s är din nya adress använder du knappen nedan för att bekräfta den. Tills den är bekräftad kan den inte användas för inloggning. Länken fungerar en gång, till %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Om den här adressen kan användas för inloggning har vi skickat en kod till dig. Inget efter några minuter? Hör av dig till församlingsexpeditionen."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Om du inte lade till den tar du bort den på sidan Inloggning och enheter och kontaktar församlingsexpeditionen."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Om du inte bad om den här ändringen, kontakta församlingsexpeditionen."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Om du inte bad om det här, kontakta församlingsexpeditionen."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Den kan ha gått ut eller redan ha använts. Kontakta församlingsexpeditionen om du behöver hjälp."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Dess plugin är inte installerat"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Hoppa till en bokstav"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Håll mig inloggad (dagar)"
+
+#: 
+msgid "Keeps it"
+msgstr "Behåller den"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Typ av obekräftad e-post"
+
+#: 
+msgid "Last day"
+msgstr "Sista dag"
+
+#: 
+msgid "Last used"
+msgstr "Senast använd"
+
+#: 
+msgid "Last used %s"
+msgstr "Senast använd %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Ledare för %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Låt administratörer öppna en persons medlemsportal som den personen, från personens meny Åtgärder, när medlemsinloggning är på."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Låt medlemmar lägga till lösennycklar och logga in i medlemsportalen med dem."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Låt medlemmar logga in i medlemsportalen med sin egen e-postadress. Det kan bara slås på när utskick av e-post fungerar."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Låt medlemmar logga in med sin e-post"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Giltighetstid för länk och kod (minuter)"
+
+#: 
+msgid "Login as %s"
+msgstr "Logga in som %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Logga in som person"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Logga in som person kunde inte startas."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Logga in som person avslutades: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Historik för Logga in som person"
+
+#: 
+msgid "Login as Person started"
+msgstr "Logga in som person startad"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Logga in som person stoppad"
+
+#: 
+msgid "Look up anyone"
+msgstr "Slå upp vem som helst"
+
+#: 
+msgid "Loses it"
+msgstr "Förlorar den"
+
+#: 
+msgid "Manage a team"
+msgstr "Hantera ett lag"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Hantera min inloggning och mina enheter"
+
+#: 
+msgid "Matches: %s"
+msgstr "Träffar: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Får logga in"
+
+#: 
+msgid "May sign in now"
+msgstr "Får logga in nu"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Inloggningskod till medlemsportalen"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Avisering om inloggning i medlemsportalen"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Inloggningar och aktivitet i medlemsportalen, för medlemmar och för personal som öppnar portalen från sin personalinloggning."
+
+#: 
+msgid "Member sign-in"
+msgstr "Medlemsinloggning"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Medlemsinloggning skickar en kod till varje person, så e-post (SMTP) måste fungera innan du slår på den."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Medlemsinloggningen är av"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Medlemsinloggningen är av för församlingen."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Medlemsinloggningen är av."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Medlemsinloggning finns inte ännu. Kontakta församlingsexpeditionen."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Medlemsinloggning släpper aldrig in personer som är avlidna, inaktiva, tillhör en inaktiv familj, väntar på granskning eller har Stäng av inloggning påslaget. De här valen avgör vilka andra som får komma in."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Medlemsinloggning skickar en kod till varje medlem med e-post, så den kan bara slås på när ChurchCRM kan skicka e-post. Slå på e-post och konfigurera e-postservern först."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Medlemmar ser kalendersidan så länge minst en kalender är påslagen."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Medlemmar skriver minst %d bokstäver i ett namn och ser upp till %d träffar. Hela listan visas aldrig."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Medlemmar som är inloggade nu loggas ut, och ingen kan logga in med sin e-post förrän medlemsinloggningen slås på igen."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Medlemmar med de här klassificeringarna hittar Katalog i medlemsportalens meny."
+
+#: 
+msgid "Minimum age"
+msgstr "Lägsta ålder"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Fler försök med den här adressen under den närmaste timmen skickar inget nytt meddelande."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Flyttad från familjens e-post"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Flyttad till familjeöverhuvudet"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Flyttad till maken/makan"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Ny i vår församling? Berätta om din familj så hör vi av oss och hälsar er välkomna."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Inga sessioner av Logga in som person ännu."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Saknar födelsedatum och är varken familjeöverhuvud eller make/maka"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Ingen kalender är påslagen, så medlemmarna ser inte kalendersidan."
+
+#: 
 msgid "No changes"
 msgstr "Inga förändringar"
+
+#: 
+msgid "No changes made."
+msgstr "Inga ändringar gjordes."
+
+#: 
+msgid "No family role"
+msgstr "Ingen familjeroll"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Varken familjeöverhuvudet eller maken/makan kan ta emot familjens e-post."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Varken familjeöverhuvudet eller maken/makan delar den"
+
+#: 
+msgid "No match"
+msgstr "Ingen träff"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Ingen matchar inloggningsregeln ännu. Markera fler familjeroller eller klassificeringar, eller sänk lägsta ålder."
+
+#: 
+msgid "No passkey was added."
+msgstr "Ingen lösennyckel lades till."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Ingen lösennyckel användes. Försök igen, eller logga in med din e-postadress."
+
+#: 
+msgid "No person has this email"
+msgstr "Ingen person har den här e-posten"
+
+#: 
+msgid "No personal email"
+msgstr "Ingen personlig e-post"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Inga delade e-postadresser hindrar någon från att logga in."
+
+#: 
+msgid "No such person"
+msgstr "Ingen sådan person"
+
+#: 
+msgid "No, thanks"
+msgstr "Nej tack"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Ingen kan logga in med en personlig e-postadress som två personer som får logga in delar. För en adress som delas inom en familj behåller familjeöverhuvudet den, annars maken/makan (den äldsta först). Alla andra som delar den förlorar den. Avmarkera dem du vill åtgärda på ett annat sätt."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Ingen kan logga in ännu: markera minst en klassificering under Vem som får logga in."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Ingen kan logga in ännu: markera minst en familjeroll och minst en klassificering under Vem som får logga in."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Ingen kan logga in ännu: markera minst en familjeroll under Vem som får logga in."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Ingen i katalogen matchar det namnet."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Ingen är listad i katalogen ännu."
+
+#: 
+msgid "Not ended"
+msgstr "Inte avslutad"
+
+#: 
+msgid "Not moved"
+msgstr "Inte flyttad"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Osäker på vilken e-postadress vi har? Kontakta församlingsexpeditionen."
+
+#: 
+msgid "Not yet"
+msgstr "Inte ännu"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Noterat i familjens tidslinje"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Av dem har {{total}} loggat in. De loggas ut överallt, och adressen får ett meddelande."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Av för alla: \"%s\" är avstängd"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Av för alla: volontärhantering är inte inställd på V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Av för alla: dess funktion är avstängd"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Av för alla: dess plugin är avstängt"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Av för alla: ingen kalender delas med medlemmar"
+
+#: 
+msgid "Office list"
+msgstr "Expeditionslista"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "När den är bekräftad kan den användas för att logga in i medlemsportalen."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Bara adresser som du får bekräfta kan väljas."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Bara administratörer ser orsaken."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Bara en administratör kan ändra e-postadressen för en person som har ett personalkonto eller portalbehörigheter."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Bara en administratör kan bekräfta en e-postadress som ersatte en som personen loggade in med."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Bara en administratör kan bekräfta e-postadressen för en person som har ett personalkonto eller portalbehörigheter."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Bara en administratör kan åtgärda den här adressen: någon som delar den har ett personalkonto eller portalbehörigheter."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Bara en vuxen i din familj kan bekräfta de här uppgifterna. Kontakta församlingsexpeditionen."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Bekräfta bara adresser som du vet tillhör den personen. Den som kan läsa en adress kan logga in som den personen."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Bara levande personer med egen e-post kan stå på expeditionslistan."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Bara personer med egen e-post kan läggas till."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Valfri telemetri kan innehålla sidvägar, aktivt språk, CRM-version, PHP-version, OS-familj, landet från församlingens uppgifter och ett slumpmässigt installations-ID. Felrapporter innehåller inte installations-ID:t. Data skickas till PostHog i USA."
+
+#: 
+msgid "Passkey"
+msgstr "Lösennyckel"
+
+#: 
+msgid "Passkey added"
+msgstr "Lösennyckel tillagd"
+
+#: 
+msgid "Passkey removed"
+msgstr "Lösennyckel borttagen"
+
+#: 
+msgid "Passkeys"
+msgstr "Lösennycklar"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Lösennycklar är avstängda."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Lösennycklar kan inte användas här."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Lösennycklar kan inte användas på den här webbplatsen ännu. Kontakta församlingsexpeditionen."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Lösennycklar behöver ett värdnamn, inte en IP-adress, i webbplatsadressen."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Lösennycklar behöver en säker anslutning (HTTPS) till den här webbplatsen."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Lösennycklar kräver att webbplatsadressen är angiven i Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Lösennycklar kräver att webbplatsen nås via HTTPS. Medlemmar erbjuds inte lösennycklar förrän så är fallet."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Lösennycklar fungerar bara på %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Lösennycklar: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Personer som de sparade inställningarna släpper in: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Personer som ska få e-post när någon inte kunde logga in i medlemsportalen"
+
+#: 
+msgid "People who hold it"
+msgstr "Personer som har den"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Personer som förlorar en adress: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Personer som förlorat en adress: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Personer som får logga in: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Personer som tidigare loggade in i medlemsportalen: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Personer med de här klassificeringarna visas i katalogen. Siffran visar hur många aktiva personer som har varje klassificering."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Personer med den här e-posten: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Person %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Välj klassificeringar i listan."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Välj familjeroller i listan."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Välj personer till expeditionslistan."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Välj ett språk i listan."
+
+#: 
+msgid "Portal permission given"
+msgstr "Portalbehörighet tilldelad"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Portalbehörighet borttagen"
+
+#: 
+msgid "Portal permissions"
+msgstr "Portalbehörigheter"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Portalinloggning"
+
+#: 
+msgid "Problem"
+msgstr "Problem"
+
+#: 
+msgid "Reason"
+msgstr "Orsak"
+
+#: 
+msgid "Reason: %s"
+msgstr "Orsak: %s"
+
+#: 
+msgid "Refused"
+msgstr "Avvisades"
+
+#: 
+msgid "Register your family"
+msgstr "Registrera din familj"
+
+#: 
+msgid "Remembered device"
+msgstr "Ihågkommen enhet"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Ihågkommen enhet borttagen"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Ihågkomna enheter: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Ta bort e-postadresser"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Ta bort den här lösennyckeln"
+
+#: 
+msgid "Remove this permission"
+msgstr "Ta bort den här behörigheten"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Borttagen från: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Ersatt efter en inloggning"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Ersatt av en annan inloggning"
+
+#: 
+msgid "Result"
+msgstr "Resultat"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Sköt ett volontärlag: platser, volontärer, scheman, bemanning och antal."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Ange varför inloggningen stängs av."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Ange varför den här behörigheten ges."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Sök bland alla som finns i registret. Varje rad anger om personen får logga in i medlemsportalen och, om inte, varför."
+
+#: 
+msgid "Search method"
+msgstr "Sökmetod"
+
+#: 
+msgid "Search only"
+msgstr "Endast sökning"
+
+#: 
+msgid "See family contact details"
+msgstr "Se familjens kontaktuppgifter"
+
+#: 
+msgid "See my family"
+msgstr "Se min familj"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Vill du se medlemsportalen som den här personen ser den? Personalsidorna förblir stängda tills du trycker på Stoppa, och sessionen registreras på den här sidan och på din användarsida."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Se de kalendrar församlingen delar med medlemmarna, och prenumerera på dem."
+
+#: 
+msgid "See the church calendar"
+msgstr "Se församlingens kalender"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Se enheterna och lösennycklarna som loggar in personen, och logga ut eller ta bort någon av dem."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Se e-postadresser och telefonnummer för personerna i sin familj."
+
+#: 
+msgid "See the member directory"
+msgstr "Se medlemskatalogen"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Se namn och foton på personerna i sin familj."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Se de personer församlingen listar i sin katalog, med de uppgifter församlingen väljer att dela."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Se sitt volontärschema, anmäl sig till lediga platser och be om en vikarie."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Skicka browse som true eller false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Skicka klassificeringarna som en lista med id."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Skicka kataloginställningarna som ett JSON-objekt."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Skicka fälten som ska visas som ett objekt med värdena true och false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Skicka inställningarna som ett JSON-objekt."
+
+#: 
+msgid "Session ended"
+msgstr "Sessionen avslutad"
 
 #: 
 msgid "Set up email"
 msgstr "Konfigurera e-post"
 
 #: 
+msgid "Set up email first."
+msgstr "Konfigurera e-post först."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Delade adresser som åtgärdats: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Delade adresser att åtgärda: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Delas av"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Delade e-postadresser som hindrar personer från att logga in"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Visa eller dölj den här medlemmen"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Visa katalogsidan i medlemsportalen för klassificeringarna som valts nedan."
+
+#: 
+msgid "Show the member directory"
+msgstr "Visa medlemskatalogen"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Visa medlemskatalogen i medlemsportalen."
+
+#: 
+msgid "Show with year"
+msgstr "Visa med årtal"
+
+#: 
+msgid "Show without year"
+msgstr "Visa utan årtal"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Visar de %d första träffarna. Skriv mer av namnet för att hitta personen du söker."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Logga in som %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Logga in nästa gång på den här enheten med Face ID, ett fingeravtryck eller enhetens PIN-kod."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Logga in för att se din familj, församlingens kalender och sätt att tjäna. Du behöver varken lösenord eller konto."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Logga in med lösennyckel"
+
+#: 
+msgid "Sign out every device"
+msgstr "Logga ut alla enheter"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Logga ut alla enheter nu?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Logga ut överallt"
+
+#: 
+msgid "Sign out this device"
+msgstr "Logga ut den här enheten"
+
+#: 
+msgid "Sign-in"
+msgstr "Inloggning"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Inloggning och enheter"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Inloggningen kunde inte stängas av."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Inloggningen kunde inte slås på."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Inloggning avstängd"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Inloggningsmeddelande begärt"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Inloggningsmeddelanden per IP-adress och timme"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Inloggning påslagen"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Inloggningen är redan avstängd för den här personen."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Inloggningen är avstängd"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Inloggningen är avstängd för den här personen."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Inloggningen är påslagen för den här personen."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Inloggningen är inte avstängd för den här personen."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Inloggning avvisad"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Inloggning, sessioner och API-nyckeln är spärrade tills det här är löst i den länkade personens post."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Inloggade, senaste 30 dagarna"
+
+#: 
+msgid "Signed out"
+msgstr "Utloggad"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Utloggad genom en ändring av inloggningen"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Utloggad överallt"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Någon bad om ett inloggningsmeddelande till medlemsportalen, men inget skickades."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Någon kunde inte logga in i medlemsportalen"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Personalsidorna förblir stängda under Logga in som person. Tryck på Stoppa i banderollen för att gå tillbaka."
+
+#: 
+msgid "Stop"
+msgstr "Stoppa"
+
+#: 
+msgid "Stopped"
+msgstr "Stoppades"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Meddela församlingsexpeditionen om familjeuppgifterna fortfarande stämmer."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Den koden fungerade inte. Kontrollera det senaste meddelandet från oss, eller be om ett nytt."
+
+#: 
+msgid "That could not be removed."
+msgstr "Det kunde inte tas bort."
+
+#: 
+msgid "That device is signed out."
+msgstr "Den enheten är utloggad."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Det är inte en giltig e-postadress."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Sidan hade varit öppen för länge. Försök igen."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Den lösennyckeln är borttagen. Den kan inte längre logga in dig."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Det tog för lång tid. Försök igen."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Uppgraderingen till 7.8.3 gav varje familjs e-postadress till en person. Dessa kunde den inte flytta, så den lämnade i stället en anteckning i familjens tidslinje."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Medlemsportalen och de e-postmeddelanden den skickar använder det här språket."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Ändringen kunde inte sparas."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Koden och knappen fungerar en gång, till %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Koden eller länken gick till en adress som inte längre är personens e-post"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Bekräftelsemeddelandet kunde inte skickas. Försök igen senare."
+
+#: 
+msgid "The device is signed out."
+msgstr "Enheten är utloggad."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "E-postadressen %2$s togs bort från din post vid %1$s. Du har loggats ut ur medlemsportalen på alla enheter."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "E-postadressen i din post ändrades vid %1$s från %2$s till %3$s. Du har loggats ut ur medlemsportalen på alla enheter."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "E-postadressen kunde inte bekräftas."
+
+#: 
+msgid "The email could not be sent."
+msgstr "E-postmeddelandet kunde inte skickas."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "E-postadressen är bekräftad. Den kan nu användas för att logga in."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Slutdatumet är före startdatumet."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Familjen har inget levande, aktivt familjeöverhuvud eller någon make/maka"
+
+#: 
+msgid "The family is inactive"
+msgstr "Familjen är inaktiv"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Familjeöverhuvudet och maken/makan har båda egen e-post"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Sista dagen kan inte ligga i det förflutna."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Den länkade personen får inte logga in, så det här kontot kan inte logga in"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Listan kunde inte läsas in."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Lösennyckeln kunde inte läggas till. Försök igen."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Lösennyckeln kunde inte verifieras"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Lösennyckeln finns inte registrerad eller har tagits bort"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Lösennyckeln togs bort."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Personerna som delar den tillhör olika familjer, eller ingen familj"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Personerna som delar den här adressen har ändrats. Öppna Åtgärda delade e-postadresser igen."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Behörigheten kunde inte ges."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Behörigheten upphör efter den här dagen. Den kan ges på nytt."
+
+#: 
+msgid "The permission was given."
+msgstr "Behörigheten tilldelades."
+
+#: 
+msgid "The permission was removed."
+msgstr "Behörigheten togs bort."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Behörigheterna kunde inte läsas in."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Personen förlorar den här behörigheten i medlemsportalen genast."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Orsaken får vara högst %d tecken lång."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Inloggningsreglerna släpper in dem, och var och en har en egen e-postadress som ingen annan som får logga in använder."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Inloggningsreglerna släpper in dem, men deras e-post gör det inte: de saknar adress, delar den med någon annan som får logga in, eller så är den inte bekräftad ännu."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Inloggningsinställningarna kunde inte sparas."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Den obekräftade e-postadressen har ändrats. Ladda om sidan och försök igen."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Klassificeringen får inte logga in"
+
+#: 
+msgid "Their email changed"
+msgstr "E-posten har ändrats"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "E-posten är inte bekräftad ännu"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "E-posten delas med någon annan"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Familjerollen får inte logga in"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Deras gamla inloggningar togs bort vid uppgraderingen. Slå på medlemsinloggning så att de kan logga in med sin egen e-post."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Personens ihågkomna enhet hade gått ut"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Personens ihågkomna enhet loggades ut"
+
+#: 
+msgid "Theme development"
+msgstr "Temautveckling"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Det finns ingen klassificering med id %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Det finns ingen väljare för den här typen av omfattning."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Det finns ingen sådan granskningshändelse."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Det finns inget sådant e-postproblem."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Det finns ingen sådan typ av obekräftad e-post."
+
+#: 
+msgid "There is no such list."
+msgstr "Det finns ingen sådan lista."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Det finns ingen sådan portalbehörighet."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Det här är telefonerna och datorerna där du valde att förbli inloggad. Logga ut dem du inte längre använder eller inte känner igen."
+
+#: 
+msgid "They have a staff account"
+msgstr "Har ett personalkonto"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Får logga in men har aldrig gjort det."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Den här åtgärden kräver en inloggad session i webbläsaren."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Den här adressen kunde inte ändras. Öppna Åtgärda delade e-postadresser igen för att se läget."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Den här adressen delas inte längre av personer som får logga in."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Den här webbläsaren kan inte skapa lösennycklar."
+
+#: 
+msgid "This device"
+msgstr "Den här enheten"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Den här enheten har redan en lösennyckel för dig."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Den här enheten håller inte längre personen inloggad, och en öppen session på den avslutas. Personen kan logga in igen med e-post."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Det här är min egen enhet. Håll mig inloggad."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Här bestämmer du om gäster. Siffran visar hur många aktiva personer som har varje klassificering."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Den här länken kan inte användas"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Den här länken har gått ut eller har redan använts"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Den här delen av medlemsportalen är inte tillgänglig för dig."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Den här lösennyckeln finns redan."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Den här lösennyckeln loggar inte längre in personen. Personen kan logga in med e-post och lägga till en ny."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Den här behörigheten kan inte ges på personsidan."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Den här personen har redan alla behörigheter som kan ges."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Den här personen har redan den här behörigheten."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Den här personen kan inte längre logga in någonstans, varken i medlemsportalen eller som personal. Alla sessioner avslutas, och personens ihågkomna enheter och lösennycklar tas bort."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Den här personen kunde inte loggas ut."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Den här personen har ett personalkonto. Logga in som person öppnar aldrig ett personalkonto."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Den här personen har ingen sådan lösennyckel."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Den här personen har ingen sådan behörighet."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Den här personen har ingen sådan ihågkommen enhet."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Den här personen har ingen obekräftad e-post."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Den här personen har loggat in i medlemsportalen. Om e-postadressen ändras loggas personen ut överallt, och den nya adressen kan inte användas för inloggning förrän den är bekräftad."
+
+#: 
 msgid "This person is deceased."
 msgstr "Denna person är avliden"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Den här personen är utloggad ur medlemsportalen överallt."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Den här personen finns inte längre."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Det här loggar ut dig överallt, även här, och glömmer alla enheter. Du kan logga in igen med din e-postadress."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Det här loggar ut dig överallt, även här, och glömmer alla enheter. Dina lösennycklar finns kvar: du kan logga in igen med en lösennyckel eller din e-postadress."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Det här verktyget ändrar aldrig dessa. Ge varje person en egen e-postadress på personens post."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Markera det här bara på din egen telefon eller dator, aldrig på en delad eller offentlig."
+
+#: 
+msgid "Time: %s"
+msgstr "Tid: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Tiden gick ut"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Kontakta församlingsexpeditionen om du vill ändra den här e-postadressen."
+
+#: 
+msgid "To fix"
+msgstr "Att åtgärda"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "För att förbli inloggad på din egen telefon eller dator markerar du \"Det här är min egen enhet\" nästa gång du loggar in."
+
+#: 
+msgid "Too many attempts"
+msgstr "För många försök"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "För många inloggningsmeddelanden i dag"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "För många inloggningsförsök för den här e-postadressen"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "För många inloggningsförsök från den här IP-adressen"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "För många felaktiga koder"
+
+#: 
+msgid "Turn off"
+msgstr "Stäng av"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Stäng av medlemsinloggningen?"
+
+#: 
+msgid "Turn on"
+msgstr "Slå på"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Slå på medlemsinloggning"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Slå på medlemsinloggningen?"
+
+#: 
+msgid "Type a name"
+msgstr "Skriv ett namn"
+
+#: 
+msgid "Type a name or email"
+msgstr "Skriv ett namn eller en e-postadress"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Skriv minst %d bokstäver av ett namn och sök sedan."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Obekräftad e-post"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Förstå var ChurchCRM används"
+
+#: 
+msgid "Unknown device"
+msgstr "Okänd enhet"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Okänt katalogfält: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Okänd kataloginställning: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Namnlös enhet"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Namnlös lösennyckel"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Tills församlingsexpeditionen bekräftar den kan den nya adressen inte användas för inloggning."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Använd %1$s som e-postadress för %2$s vid %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Använd en annan e-postadress"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Använd en lösennyckel på den här enheten?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Använd knappen nedan för att bekräfta att %1$s är din e-postadress hos %2$s. Länken fungerar en gång, till %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Användare %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Visa behörigheter"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Vi väntar på att du bekräftar %s. Använd länken vi skickade till den adressen."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Vi väntar på att du bekräftar {{email}}. Använd länken vi skickade till den adressen."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Vi kunde inte skicka e-postmeddelandet. Försök igen senare, eller kontakta församlingsexpeditionen."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Vi kunde inte logga in dig"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Vi skickade en länk till %s. Använd den för att bekräfta din nya e-postadress."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Vi skickade en länk till {{email}}. Din e-postadress ändras när du använder den."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Vi skickar en kod och en länk som du loggar in med."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Vad roligt att du är här! Det tar ungefär tre minuter."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Vad roligt att er familj har kommit med! Registreringen är mottagen. Vårt team hör snart av sig för att personligen hälsa er välkomna."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Bröllopsdag"
+
+#: 
+msgid "Welcome"
+msgstr "Välkommen"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Det den gavs för finns inte längre"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Vad medlemmar kan se och göra i portalen, och var varje behörighet kommer ifrån. Personer räknas bland alla som inloggningsreglerna släpper in, och bland personalen."
+
+#: 
+msgid "What members can use"
+msgstr "Vad medlemmar kan använda"
+
+#: 
+msgid "What to do"
+msgstr "Vad som ska göras"
+
+#: 
+msgid "Who can see it"
+msgstr "Vem som kan se den"
+
+#: 
+msgid "Who is listed"
+msgstr "Vem som listas"
+
+#: 
+msgid "Who may sign in"
+msgstr "Vem som får logga in"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Vem som får logga in i medlemsportalen, vem som har gjort det och vems e-post som hindrar dem. Listorna följer reglerna på fliken Inloggning."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Vem medlemsportalens katalog listar, vem som kan se den och vad den visar, valt under Administration -> Medlemsportal -> Katalog."
+
+#: 
+msgid "Why"
+msgstr "Varför"
+
+#: 
+msgid "Why not"
+msgstr "Varför inte"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Med den token som enheten just ersatte"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Ja, lägg till en lösennyckel"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Ja, ta bort den här lösennyckeln"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Ja, logga ut alla enheter"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Du får inte bekräfta den här e-postadressen."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Du hålls inte inloggad på någon enhet."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Du är utloggad på alla enheter."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Du är utloggad på den här enheten."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Du kan också logga in med din e-postadress."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Du kan inte stänga av din egen inloggning."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Du kan inte öppna medlemsportalen. Kontakta församlingsexpeditionen."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Du har bett om att ändra din e-post för många gånger. Försök igen senare."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Du har inga lösennycklar."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Du är inloggad som %s i medlemsportalen (ändringar tillåtna)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Du är inloggad som %s i medlemsportalen (skrivskyddad)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Yngre än lägsta ålder"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Lägsta ålder för att en person ska få logga in i medlemsportalen. Om födelsedatum saknas är det bara familjeöverhuvud eller make/maka som kvalificerar sig."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Din inloggningskod till medlemsportalen"
+
+#: 
+msgid "Your code"
+msgstr "Din kod"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Din e-postadress %s är inte bekräftad ännu och kan därför inte användas för inloggning. Vi skickar en länk dit. När du använder länken bekräftas adressen."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Din e-postadress kan inte tas bort här. Kontakta församlingsexpeditionen."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Din e-postadress är bekräftad"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Din e-postadress har ändrats"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Din lösennyckel har lagts till. Nästa gång loggar du in med den på den här enheten."
+
+#: 
+msgid "an administrator"
+msgstr "en administratör"
+
+#: 
+msgid "name@example.com"
+msgstr "namn@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "inget familjeöverhuvud eller någon make/maka har en e-postadress"
+
+#: 
+msgid "or"
+msgstr "eller"
+
+#: 
+msgid "until %s"
+msgstr "till %s"
 

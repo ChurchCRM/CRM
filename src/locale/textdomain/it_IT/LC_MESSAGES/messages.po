@@ -24668,14 +24668,2546 @@ msgid "Witness"
 msgstr "Testimone"
 
 #: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d offerte non hanno una famiglia. Non possono comparire su un'attestazione."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "%d depositi aperti sono datati in quest'anno. Li chiuda affinché ogni offerta sia definitiva prima dell'invio delle attestazioni."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d pagamenti non sono ancora in alcun deposito."
+
+#: 
+msgid "Can be emailed"
+msgstr "Può essere inviata via email"
+
+#: 
+msgid "Closing line"
+msgstr "Riga di chiusura"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Ogni deposito datato in quest'anno è chiuso."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Ogni offerta appartiene a una famiglia."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Ogni pagamento di quest'anno è in un deposito."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Generare le attestazioni fiscali"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Report delle offerte (attestazioni fiscali)"
+
+#: 
+msgid "Opening line"
+msgstr "Riga di apertura"
+
+#: 
+msgid "Print and mail"
+msgstr "Stampa e posta"
+
+#: 
+msgid "Qty"
+msgstr "Qtà"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Verifichi l'anno, quindi stampi o invii via email le attestazioni delle offerte."
+
+#: 
+msgid "Signed by"
+msgstr "Firmato da"
+
+#: 
+msgid "Thank-you line"
+msgstr "Riga di ringraziamento"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Verifichi che il nome, l'indirizzo e i recapiti della chiesa compaiano sulle attestazioni fiscali."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Offerte di fine anno"
+
+#: 
+msgid "As of: %s"
+msgstr "Alla data: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Almeno un pagamento positivo della famiglia negli %d anni fiscali selezionati, fino alla data di verifica: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Il battesimo, le domande di iscrizione all'elenco elettorale, la residenza, lo stato di comunicando, la frequenza, la buona reputazione e le eccezioni locali devono essere verificati separatamente quando lo statuto lo richiede. La durata dell'appartenenza non dimostra la frequenza."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Scelga una classificazione esistente."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Scelga almeno una classificazione da verificare."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Scelga le classificazioni usate dalla Sua chiesa. Nessuna classificazione conferisce di per sé il diritto di voto."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "I responsabili della chiesa devono confermare l'idoneità secondo lo statuto. Questo elenco mostra solo le persone che corrispondono ai filtri selezionati."
+
+#: 
+msgid "Classifications to review"
+msgstr "Classificazioni da verificare"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Classificazioni: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Sono escluse le persone decedute, le persone e le classificazioni inattive e le famiglie e le persone inattive o in attesa di verifica."
+
+#: 
+msgid "Download Review List"
+msgstr "Scaricare l'elenco di verifica"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Inserisca una data di verifica valida tra il 1900 e il 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Inserisca numeri interi entro i limiti indicati."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Anni fiscali da verificare (0–100; 0 significa nessun requisito di offerte)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Le offerte sono registrate per famiglia, non per persona. Attivi questa opzione solo se lo statuto consente che un pagamento della famiglia soddisfi questo criterio. Ciò non dimostra che ciascuna persona abbia donato. L'intervallo include l'anno fiscale selezionato e termina non oltre la data di verifica."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Ultimo anno fiscale da includere"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Età minima (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Età minima: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Durata minima di appartenenza in mesi (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Durata minima di appartenenza: %d mesi"
+
+#: 
+msgid "No donation requirement."
+msgstr "Nessun requisito di donazione."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Nessuna persona corrisponde a questi filtri. Controlli le date di nascita o di appartenenza mancanti e modifichi i criteri."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Requisito facoltativo di offerte della famiglia"
+
+#: 
+msgid "People matching filters"
+msgstr "Persone corrispondenti ai filtri"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Persone omesse perché mancano le date richieste"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Preparare un elenco per la verifica della chiesa usando classificazioni e filtri facoltativi di età, appartenenza e offerte della famiglia."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Preparare un elenco per la verifica della chiesa secondo lo statuto."
+
+#: 
+msgid "Review date"
+msgstr "Data di verifica"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Usi lo statuto della chiesa per scegliere i filtri, quindi faccia verificare l'elenco ai responsabili autorizzati. Corrispondere a questi filtri non stabilisce il diritto di voto. Questo report non registra l'idoneità né svolge un'elezione."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Fedeli con diritto di voto — Elenco di verifica"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Zero disattiva un requisito facoltativo. L'età richiede una data di nascita completa; la durata dell'appartenenza richiede una data di appartenenza. Le persone senza le date richieste sono omesse e conteggiate a parte. Le persone decedute, le persone e le classificazioni inattive e le famiglie e le persone inattive o in attesa di verifica sono sempre escluse; si usano la classificazione e lo stato attuali, non lo stato storico."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Importo dovuto per %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Impossibile creare l'archivio temporaneo privato dei PDF nella cartella selezionata."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Lasciare vuoto per usare la cartella temporanea di sistema. Altrimenti inserisca una cartella esistente, scrivibile e protetta dall'accesso web."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Cartella temporanea PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "L'archivio temporaneo dei PDF deve essere privato e scrivibile."
+
+#: 
+msgid "Reporting"
+msgstr "Report"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "La cartella temporanea PDF non esiste o non è accessibile."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "La cartella temporanea PDF deve essere un percorso assoluto di cartella."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Codice fiscale della chiesa (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Riga di chiusura"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Controlla la telemetria facoltativa. Gli errori di installazione e di aggiornamento del database inviano diagnosi limitate a PostHog anche quando la telemetria è disattivata. Questi rapporti includono le versioni del software e dell'ambiente e un errore del database reso anonimo, ma non l'ID di installazione né un'istruzione SQL."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Diagnosticare installazioni e aggiornamenti del database non riusciti"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Dettagli degli errori di installazione e aggiornamento"
+
+#: 
+msgid "Open in browser window"
+msgstr "Aprire nella finestra del browser"
+
+#: 
+msgid "Opening Line"
+msgstr "Riga di apertura"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "La telemetria d'uso facoltativa viene inviata solo se attivata. Gli errori di installazione e di aggiornamento del database inviano sempre una diagnosi limitata per aiutare la comunità, anche se sceglie No, grazie. I rapporti di errore includono le versioni del software e dell'ambiente e un errore del database reso anonimo, senza ID di installazione né istruzione SQL."
+
+#: 
+msgid "PDF Handling"
+msgstr "Gestione PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "Output PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "Modalità di gestione PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "Riga delle domande"
+
+#: 
+msgid "Save File dialog"
+msgstr "Finestra Salva file"
+
+#: 
+msgid "Signer"
+msgstr "Firmatario"
+
+#: 
+msgid "Statement Settings"
+msgstr "Impostazioni delle attestazioni"
+
+#: 
+msgid "Statement Wording"
+msgstr "Testo delle attestazioni"
+
+#: 
+msgid "Tax Information"
+msgstr "Dati fiscali"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "La telemetria viene inviata a PostHog negli Stati Uniti. I rapporti di errore di installazione e aggiornamento vengono inviati anche quando la telemetria facoltativa è disattivata."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Questa data è stata annullata. Non occorre altro da parte Sua."
+
+#: 
+msgid "always sent"
+msgstr "sempre inviato"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Rimozione dell'intestazione non riuscita"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Salvataggio dell'intestazione non riuscito"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Caricamento dell'intestazione non riuscito"
+
+#: 
+msgid "Greeting"
+msgstr "Saluto"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Saluto e firma della lettera"
+
+#: 
+msgid "Letterhead"
+msgstr "Intestazione"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF o WebP. Funziona meglio un banner largo, per esempio 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Stampata in cima alle lettere PDF che usano un'intestazione grafica, come le attestazioni delle offerte. Senza intestazione, le lettere stampano il nome e l'indirizzo della chiesa."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Rimuovere l'intestazione? Le lettere stamperanno il nome e l'indirizzo della chiesa."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Impostare l'intestazione stampata dalle lettere PDF"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Uso del nome e dell'indirizzo della chiesa"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Uso del percorso dell'intestazione impostato in Impostazioni di sistema"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Testo, codice fiscale e gestione PDF per le attestazioni delle offerte"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s come %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s è ora il Suo indirizzo email. Può usarlo per accedere al Portale dei fedeli."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} altri"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "È stata richiesta una modifica del Suo indirizzo email"
+
+#: 
+msgid "A family"
+msgstr "Una famiglia"
+
+#: 
+msgid "A group"
+msgstr "Un gruppo"
+
+#: 
+msgid "A ministry"
+msgstr "Un ministero"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "Un nuovo indirizzo cambia solo dopo che Lei usa il link che vi inviamo."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "Una passkey può essere aggiunta solo entro %d minuti dall'accesso con il Suo indirizzo email. Si disconnetta, acceda di nuovo con l'email e torni qui."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "Una passkey Le consente di accedere con Face ID, un'impronta digitale o il PIN del dispositivo, senza un codice email."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "È stata aggiunta una passkey al Suo accesso al Portale dei fedeli"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "Una passkey è stata aggiunta al Suo accesso al Portale dei fedeli alle %1$s del %2$s, da %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "Una passkey è stata aggiunta al Suo accesso al Portale dei fedeli alle %1$s del %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "Chi la perde non ha più un'email propria: i messaggi inviati solo a quella persona, come un'email di gruppo, vengono saltati e l'editor delle email lo indica."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "Una persona la cui scheda nasconde l'età non mostra mai l'anno di nascita."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "Nel Portale dei fedeli è stata richiesta, alle %s, la modifica del Suo indirizzo email da %s a %s. La modifica avviene solo quando viene usato il link inviato a %s."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Una riga non ha la forma prevista."
+
+#: 
+msgid "A team"
+msgstr "Una squadra"
+
+#: 
+msgid "Add a passkey"
+msgstr "Aggiungere una passkey"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Aggiunga una passkey solo sul Suo telefono o computer, mai su uno condiviso o pubblico."
+
+#: 
+msgid "Add an email"
+msgstr "Aggiungere un'email"
+
+#: 
+msgid "Added %s"
+msgstr "Aggiunto %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Eccezioni dell'amministratore"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "Adulto della famiglia %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "Adulto della famiglia"
+
+#: 
+msgid "All events"
+msgstr "Tutti gli eventi"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Consentire l'accesso come persona"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Consentire modifiche durante l'accesso come persona"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Consentire modifiche mentre un amministratore usa l'accesso come persona. Se disattivato, l'accesso come persona è in sola lettura."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Già in possesso di un familiare"
+
+#: 
+msgid "Also used by"
+msgstr "Usata anche da"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Un amministratore può assegnare qualsiasi autorizzazione a una persona nella pagina di quella persona. «Eccezioni dell'amministratore» compare poi qui, con il numero di persone a cui è stata assegnata."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "Un'altra persona usa già questo indirizzo"
+
+#: 
+msgid "Applies to"
+msgstr "Si applica a"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Approvare o rifiutare le richieste di sostituzione per una squadra di volontari."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Chiedere una nuova email"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "L'autorità è data alla persona, non a un accesso, quindi può essere concessa prima che ne abbia uno. Chi accede solo al Portale dei fedeli continua a vedere solo il proprio calendario di servizio finché un amministratore non gli assegna un account del personale."
+
+#: 
+msgid "Awaiting review"
+msgstr "In attesa di verifica"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Torna all'accesso"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Sfogliare l'intera directory"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Può accedere al Portale dei fedeli"
+
+#: 
+msgid "Can sign in?"
+msgstr "Può accedere?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Non è possibile disattivare l'accesso dell'unico amministratore che può accedere."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Accesso non consentito"
+
+#: 
+msgid "Change family details"
+msgstr "Modificare i dati della famiglia"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Modificare l'indirizzo e i recapiti della famiglia e aggiungere un familiare per la verifica."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Modificare il proprio nome, i recapiti e la foto."
+
+#: 
+msgid "Changed"
+msgstr "Modificato"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Modificata dopo l'accesso della persona"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Modificata da un'importazione dopo l'accesso della persona"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Modificata dal personale dopo l'accesso della persona"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Modificata tramite l'API dopo l'accesso della persona"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Le modifiche sono disattivate durante l'accesso come persona."
+
+#: 
+msgid "Changes needed"
+msgstr "Modifiche necessarie"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Le modifiche si salvano man mano che le effettua."
+
+#: 
+msgid "Check your email"
+msgstr "Controlli la Sua email"
+
+#: 
+msgid "Choose a permission"
+msgstr "Scelga un'autorizzazione"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Scelga un'autorizzazione, a che cosa serve e l'ultimo giorno, e indichi il motivo."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Scelga una foto o scatti un selfie"
+
+#: 
+msgid "Choose a theme"
+msgstr "Scelga un tema"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Scelga almeno una riga."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Scelga al massimo %d righe alla volta."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Scelga dall'elenco come mostrare le date."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Scelga l'ultimo giorno di questa autorizzazione."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Scelga a che cosa serve l'autorizzazione."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Scelga sì o no."
+
+#: 
+msgid "Church Office"
+msgstr "Segreteria"
+
+#: 
+msgid "Church country"
+msgstr "Paese della chiesa"
+
+#: 
+msgid "Church default: %s"
+msgstr "Predefinito della chiesa: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Accesso dei responsabili della chiesa"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Classificazioni i cui fedeli possono accedere al Portale dei fedeli, come elenco di id di classificazione separati da virgole."
+
+#: 
+msgid "Clear selection"
+msgstr "Cancella la selezione"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Codici, sessioni e dispositivi"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Confermare l'indirizzo email"
+
+#: 
+msgid "Confirm email address"
+msgstr "Confermare l'indirizzo email"
+
+#: 
+msgid "Confirm family details"
+msgstr "Confermare i dati della famiglia"
+
+#: 
+msgid "Confirm selected"
+msgstr "Confermare la selezione"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Confermi questa email solo dopo aver verificato, di persona o per telefono, che sia l'indirizzo proprio di questa persona. Una volta confermata, può essere usata per accedere al Portale dei fedeli."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Confermi il Suo indirizzo email"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Confermi il Suo nuovo indirizzo email"
+
+#: 
+msgid "Confirmed"
+msgstr "Confermato"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Le date devono essere scritte nel formato YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Decidere le richieste di sostituzione"
+
+#: 
+msgid "Device"
+msgstr "Dispositivo"
+
+#: 
+msgid "Device remembered"
+msgstr "Dispositivo memorizzato"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Dispositivi e passkey"
+
+#: 
+msgid "Directory classifications"
+msgstr "Classificazioni della directory"
+
+#: 
+msgid "Directory section"
+msgstr "Sezione directory"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Disattivare l'accesso"
+
+#: 
+msgid "Do not show"
+msgstr "Non mostrare"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Ciascuno deve avere anche un'email propria che nessun altro usa."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Ogni email di accesso funziona una sola volta, per un tempo limitato, e un'email più recente la sostituisce."
+
+#: 
+msgid "Edit my details"
+msgstr "Modificare i miei dati"
+
+#: 
+msgid "Email address changed"
+msgstr "Indirizzo email modificato"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Indirizzo email digitato: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "Indirizzi email da confermare: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "Email modificata"
+
+#: 
+msgid "Email code"
+msgstr "Codice email"
+
+#: 
+msgid "Email confirmed"
+msgstr "Email confermata"
+
+#: 
+msgid "Email link"
+msgstr "Link email"
+
+#: 
+msgid "Email me a code"
+msgstr "Mi invii un codice"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Mi invii un link di conferma"
+
+#: 
+msgid "Email needs attention"
+msgstr "Email da verificare"
+
+#: 
+msgid "Email problem"
+msgstr "Problema email"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Codice e link di accesso inviati via email annullati"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Link di verifica inviato via email"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Email confermate: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Attivare l'accesso"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Terminare ogni sessione del Portale dei fedeli di questa persona e dimenticare i dispositivi memorizzati? Le passkey restano, quindi potrà accedere di nuovo."
+
+#: 
+msgid "Ended %s"
+msgstr "Terminato %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Terminato per una modifica al suo accesso"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Terminato quando l'accesso dei fedeli è stato disattivato"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Inserisca un numero intero da %1$d a %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Inserisca il Suo indirizzo email."
+
+#: 
+msgid "Every kind"
+msgstr "Ogni tipo"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Ogni accesso dei fedeli, rifiuto e modifica dell'accesso, dal più recente. Non contiene mai un codice, un link o una passkey."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Tutti in elenco, dalla A alla Z, con una casella di ricerca."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Chi è ammesso dalle regole di accesso può poi accedere al Portale dei fedeli con la propria email."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Chi ha effettuato l'accesso al Portale dei fedeli negli ultimi 30 giorni, dal più recente."
+
+#: 
+msgid "Everywhere"
+msgstr "Ovunque"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Famiglie confermate da un fedele negli ultimi 30 giorni, dal Portale dei fedeli o dal link di verifica inviato via email."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Famiglie confermate, ultimi 30 giorni"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Dati della famiglia confermati"
+
+#: 
+msgid "Family email"
+msgstr "Email della famiglia"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Email della famiglia non trasferite"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Ruoli familiari i cui fedeli possono accedere al Portale dei fedeli, come elenco di id di ruolo separati da virgole."
+
+#: 
+msgid "Find someone"
+msgstr "Cercare una persona"
+
+#: 
+msgid "Fix by hand"
+msgstr "Correggere a mano"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Correggere le email condivise"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Da un accesso del personale"
+
+#: 
+msgid "Give a permission"
+msgstr "Assegnare un'autorizzazione"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Assegnare un'autorizzazione del portale"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Assegnare a ciascuna persona la propria email"
+
+#: 
+msgid "Give permission"
+msgstr "Assegnare l'autorizzazione"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Assegnata da %1$s fino al %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Assegnata da %s"
+
+#: 
+msgid "Given to"
+msgstr "Assegnata a"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Assegnata a tutti"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Assegnata, ma non in vigore"
+
+#: 
+msgid "Go to sign in"
+msgstr "Vada all'accesso"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Vada al Portale dei fedeli"
+
+#: 
+msgid "Has signed in"
+msgstr "Ha effettuato l'accesso"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Ha effettuato l'accesso: le sue sessioni e i suoi dispositivi terminano"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Ecco il Suo codice per accedere al Portale dei fedeli. Lo digiti nella pagina di accesso, nel browser in cui l'ha richiesto. Oppure prema il pulsante per accedere su questo dispositivo."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Nascondere le autorizzazioni"
+
+#: 
+msgid "How"
+msgstr "Come"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Quante email di accesso al Portale dei fedeli un indirizzo IP può richiedere in un'ora. Impostare 0 per nessun limite, per esempio quando tutti raggiungono ChurchCRM tramite un solo indirizzo."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Per quanti giorni un dispositivo resta connesso al Portale dei fedeli dopo che il fedele sceglie di restare connesso. Impostare 0 per rimuovere la scelta."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Dopo quanti minuti di inattività termina una sessione del Portale dei fedeli."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Per quanti minuti restano validi il codice e il link di accesso al Portale dei fedeli."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Tempo di inattività (minuti)"
+
+#: 
+msgid "Idle too long"
+msgstr "Inattivo troppo a lungo"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Se %1$s è il Suo nuovo indirizzo, usi il pulsante qui sotto per confermarlo. Finché non è confermato, non può essere usato per accedere. Il link funziona una sola volta, fino al %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Se questo indirizzo può essere usato per accedere, Le abbiamo inviato un codice via email. Non arriva nulla dopo qualche minuto? Chieda alla segreteria della chiesa."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Se non l'ha aggiunta Lei, la rimuova nella pagina Accesso e dispositivi e contatti la segreteria della chiesa."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Se non ha richiesto questa modifica, contatti la segreteria della chiesa."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Se non l'ha richiesto Lei, contatti la segreteria della chiesa."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Potrebbe essere scaduto o essere già stato usato. Se ha bisogno di aiuto, contatti la segreteria della chiesa."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Il relativo plugin non è installato"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Vai a una lettera"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Mantieni l'accesso (giorni)"
+
+#: 
+msgid "Keeps it"
+msgstr "La conserva"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Tipo di email non confermata"
+
+#: 
+msgid "Last day"
+msgstr "Ultimo giorno"
+
+#: 
+msgid "Last used"
+msgstr "Ultimo utilizzo"
+
+#: 
+msgid "Last used %s"
+msgstr "Ultimo utilizzo %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Responsabile di %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Consentire agli amministratori di aprire il Portale dei fedeli di una persona come quella persona, dal menu Azioni della persona, mentre l'accesso dei fedeli è attivo."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Consentire ai fedeli di aggiungere passkey e di accedere al Portale dei fedeli con esse."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Consentire ai fedeli di accedere al Portale dei fedeli con il proprio indirizzo email. Si può attivare solo se l'invio delle email funziona."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Consentire ai fedeli di accedere con la propria email"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Durata di link e codice (minuti)"
+
+#: 
+msgid "Login as %s"
+msgstr "Accesso come %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Accesso come persona"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Impossibile avviare l'accesso come persona."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Accesso come persona terminato: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Cronologia dell'accesso come persona"
+
+#: 
+msgid "Login as Person started"
+msgstr "Accesso come persona avviato"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Accesso come persona interrotto"
+
+#: 
+msgid "Look up anyone"
+msgstr "Cercare chiunque"
+
+#: 
+msgid "Loses it"
+msgstr "La perde"
+
+#: 
+msgid "Manage a team"
+msgstr "Gestire una squadra"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Gestire il mio accesso e i dispositivi"
+
+#: 
+msgid "Matches: %s"
+msgstr "Corrispondenze: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Può accedere"
+
+#: 
+msgid "May sign in now"
+msgstr "Può accedere ora"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Codice di accesso al Portale dei fedeli"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Avviso di accesso al Portale dei fedeli"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Accessi e attività del Portale dei fedeli, per i fedeli e per il personale che apre il portale dal proprio accesso del personale."
+
+#: 
+msgid "Member sign-in"
+msgstr "Accesso dei fedeli"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "L'accesso dei fedeli invia un codice via email a ciascuna persona, quindi l'email (SMTP) deve funzionare prima di attivarlo."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "L'accesso dei fedeli è disattivato"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "L'accesso dei fedeli è disattivato per la chiesa."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "L'accesso dei fedeli è disattivato."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "L'accesso dei fedeli non è ancora disponibile. Contatti la segreteria della chiesa."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "L'accesso dei fedeli non ammette mai persone decedute, inattive, in una famiglia inattiva, in attesa di verifica o con Disattivare l'accesso attivo. Queste scelte decidono chi altro può accedere."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "L'accesso dei fedeli invia a ciascun fedele un codice via email, quindi si può attivare solo se ChurchCRM può inviare email. Attivi prima l'email e configuri il server di posta."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "I fedeli vedono la pagina Calendario se almeno un calendario è attivato."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "I fedeli digitano almeno %d lettere di un nome e vedono fino a %d corrispondenze. L'elenco completo non viene mai mostrato."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "I fedeli attualmente connessi vengono disconnessi e nessuno può accedere con la propria email finché l'accesso dei fedeli non viene riattivato."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "I fedeli con queste classificazioni trovano Directory nel menu del Portale dei fedeli."
+
+#: 
+msgid "Minimum age"
+msgstr "Età minima"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Altri tentativi con questo indirizzo nell'ora successiva non invieranno un altro avviso."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Spostata dall'email della famiglia"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Assegnata al capofamiglia"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Assegnata al coniuge"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "È nuovo nella nostra chiesa? Ci parli della Sua famiglia e La contatteremo per darLe il benvenuto."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Nessuna sessione di accesso come persona finora."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Senza data di nascita e non è capofamiglia né coniuge"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Nessun calendario è attivato, quindi i fedeli non vedono la pagina Calendario."
+
+#: 
 msgid "No changes"
 msgstr "Nessun cambiamento"
+
+#: 
+msgid "No changes made."
+msgstr "Nessuna modifica effettuata."
+
+#: 
+msgid "No family role"
+msgstr "Nessun ruolo familiare"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Né il capofamiglia né il coniuge possono ricevere l'email della famiglia."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Né il capofamiglia né il coniuge la condividono"
+
+#: 
+msgid "No match"
+msgstr "Nessuna corrispondenza"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Nessuno corrisponde ancora alla regola di accesso. Selezioni altri ruoli familiari o classificazioni, oppure abbassi l'età minima."
+
+#: 
+msgid "No passkey was added."
+msgstr "Nessuna passkey è stata aggiunta."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Nessuna passkey è stata usata. Riprovi oppure acceda con il Suo indirizzo email."
+
+#: 
+msgid "No person has this email"
+msgstr "Nessuna persona ha questa email"
+
+#: 
+msgid "No personal email"
+msgstr "Nessuna email personale"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Nessuna email condivisa impedisce l'accesso."
+
+#: 
+msgid "No such person"
+msgstr "Persona inesistente"
+
+#: 
+msgid "No, thanks"
+msgstr "No, grazie"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Nessuno può accedere con un'email personale condivisa da due persone che possono accedere. Per un indirizzo condiviso entro una sola famiglia, lo conserva il capofamiglia, altrimenti il coniuge (prima il più anziano). Tutti gli altri che lo condividono lo perdono. Deselezioni quelli che vuole correggere in un altro modo."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Nessuno può ancora accedere: selezioni almeno una classificazione in Chi può accedere."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Nessuno può ancora accedere: selezioni almeno un ruolo familiare e almeno una classificazione in Chi può accedere."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Nessuno può ancora accedere: selezioni almeno un ruolo familiare in Chi può accedere."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Nessuno nella directory corrisponde a quel nome."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Nessuno è ancora elencato nella directory."
+
+#: 
+msgid "Not ended"
+msgstr "Non terminato"
+
+#: 
+msgid "Not moved"
+msgstr "Non spostata"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Non è sicuro di quale email abbiamo? Contatti la segreteria della chiesa."
+
+#: 
+msgid "Not yet"
+msgstr "Non ancora"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Annotato nella cronologia della famiglia"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Tra queste, persone che hanno effettuato l'accesso: {{total}}. Vengono disconnesse ovunque e l'indirizzo riceve un avviso."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Disattivato per tutti: «%s» è disattivato"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Disattivato per tutti: la gestione dei volontari non è impostata su V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Disattivato per tutti: la relativa funzione è disattivata"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Disattivato per tutti: il relativo plugin è disattivato"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Disattivato per tutti: nessun calendario è condiviso con i fedeli"
+
+#: 
+msgid "Office list"
+msgstr "Elenco della segreteria"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Una volta confermato, può essere usato per accedere al Portale dei fedeli."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Si possono selezionare solo gli indirizzi che Lei può confermare."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Solo gli amministratori vedono il motivo."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Solo un amministratore può modificare l'email di una persona che ha un account del personale o autorizzazioni del portale."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Solo un amministratore può confermare un'email che ha sostituito quella con cui la persona ha effettuato l'accesso."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Solo un amministratore può confermare l'email di una persona che ha un account del personale o autorizzazioni del portale."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Solo un amministratore può correggere questo indirizzo: qualcuno che lo condivide ha un account del personale o autorizzazioni del portale."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Solo un adulto della Sua famiglia può confermare questi dati. Contatti la segreteria della chiesa."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Confermi solo indirizzi che sa appartenere a quella persona. Chiunque legga un indirizzo può accedere come quella persona."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Nell'elenco della segreteria possono esserci solo persone in vita con un'email propria."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Si possono aggiungere solo persone con un'email propria."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "La telemetria facoltativa può includere i percorsi delle pagine, la lingua attiva, la versione del CRM, la versione di PHP, la famiglia del sistema operativo, il Paese dalle impostazioni della chiesa e un ID di installazione casuale. I rapporti di errore non includono l'ID di installazione. I dati vengono inviati a PostHog negli Stati Uniti."
+
+#: 
+msgid "Passkey"
+msgstr "Passkey"
+
+#: 
+msgid "Passkey added"
+msgstr "Passkey aggiunta"
+
+#: 
+msgid "Passkey removed"
+msgstr "Passkey rimossa"
+
+#: 
+msgid "Passkeys"
+msgstr "Passkey"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Le passkey sono disattivate."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Le passkey non possono essere usate qui."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Le passkey non possono ancora essere usate su questo sito. Contatti la segreteria della chiesa."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Le passkey richiedono un nome host, non un indirizzo IP, nell'indirizzo del sito."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Le passkey richiedono una connessione sicura (HTTPS) a questo sito."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Le passkey richiedono che l'indirizzo del sito sia impostato in Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Le passkey richiedono che il sito sia servito tramite HTTPS. I fedeli non vedono le passkey finché non lo è."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Le passkey funzionano solo su %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Passkey: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Persone ammesse dalle impostazioni salvate: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Persone da avvisare via email quando qualcuno non riesce ad accedere al Portale dei fedeli"
+
+#: 
+msgid "People who hold it"
+msgstr "Persone che la possiedono"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Persone che perdono un indirizzo: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Persone che hanno perso un indirizzo: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Persone che possono accedere: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Persone che in passato accedevano al Portale dei fedeli: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Le persone con queste classificazioni compaiono nella directory. Il numero indica quanti fedeli attivi hanno ciascuna classificazione."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Persone con questa email: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Persona %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Scelga le classificazioni dall'elenco."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Scelga i ruoli familiari dall'elenco."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Scelga le persone per l'elenco della segreteria."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Scelga una lingua dall'elenco."
+
+#: 
+msgid "Portal permission given"
+msgstr "Autorizzazione del portale assegnata"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Autorizzazione del portale rimossa"
+
+#: 
+msgid "Portal permissions"
+msgstr "Autorizzazioni del portale"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Accesso al portale"
+
+#: 
+msgid "Problem"
+msgstr "Problema"
+
+#: 
+msgid "Reason"
+msgstr "Motivo"
+
+#: 
+msgid "Reason: %s"
+msgstr "Motivo: %s"
+
+#: 
+msgid "Refused"
+msgstr "Rifiutato"
+
+#: 
+msgid "Register your family"
+msgstr "Registri la Sua famiglia"
+
+#: 
+msgid "Remembered device"
+msgstr "Dispositivo memorizzato"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Dispositivo memorizzato rimosso"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Dispositivi memorizzati: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Rimuovere le email"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Rimuovere questa passkey"
+
+#: 
+msgid "Remove this permission"
+msgstr "Rimuovere questa autorizzazione"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Rimossa da: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Sostituita dopo un accesso"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Sostituita da un altro accesso"
+
+#: 
+msgid "Result"
+msgstr "Esito"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Gestire una squadra di volontari: incarichi, volontari, calendari, organico e presenze."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Indichi perché l'accesso viene disattivato."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Indichi perché viene assegnata questa autorizzazione."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Cercare chiunque sia in archivio. Ogni riga indica se può accedere al Portale dei fedeli e, in caso contrario, perché."
+
+#: 
+msgid "Search method"
+msgstr "Metodo di ricerca"
+
+#: 
+msgid "Search only"
+msgstr "Solo ricerca"
+
+#: 
+msgid "See family contact details"
+msgstr "Vedere i recapiti della famiglia"
+
+#: 
+msgid "See my family"
+msgstr "Vedere la mia famiglia"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Vedere il Portale dei fedeli come lo vede questa persona? Le pagine del personale restano chiuse finché non preme Interrompi e la sessione viene registrata in questa pagina e nella Sua pagina utente."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Vedere i calendari che la chiesa condivide con i fedeli e iscriversi."
+
+#: 
+msgid "See the church calendar"
+msgstr "Vedere il calendario della chiesa"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Vedere i dispositivi e le passkey con cui accede e disconnettere o rimuovere quelli che vuole."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Vedere gli indirizzi email e i numeri di telefono delle persone della propria famiglia."
+
+#: 
+msgid "See the member directory"
+msgstr "Vedere la directory dei fedeli"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Vedere i nomi e le foto delle persone della propria famiglia."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Vedere le persone che la chiesa elenca nella directory, con i dati che la chiesa sceglie di condividere."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Vedere il proprio calendario di volontariato, iscriversi ai posti liberi e chiedere un sostituto."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Inviare browse come true o false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Inviare le classificazioni come elenco di id."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Inviare le impostazioni della directory come oggetto JSON."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Inviare i campi da mostrare come oggetto di valori true e false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Inviare le impostazioni come oggetto JSON."
+
+#: 
+msgid "Session ended"
+msgstr "Sessione terminata"
 
 #: 
 msgid "Set up email"
 msgstr "Configura email"
 
 #: 
+msgid "Set up email first."
+msgstr "Configuri prima l'email."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Indirizzi condivisi corretti: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Indirizzi condivisi da correggere: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Condiviso da"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Email condivise che impediscono l'accesso"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Mostrare o nascondere questo fedele"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Mostrare la pagina Directory nel Portale dei fedeli alle classificazioni scelte sotto."
+
+#: 
+msgid "Show the member directory"
+msgstr "Mostrare la directory dei fedeli"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Mostrare la directory dei fedeli nel Portale dei fedeli."
+
+#: 
+msgid "Show with year"
+msgstr "Mostrare con l'anno"
+
+#: 
+msgid "Show without year"
+msgstr "Mostrare senza l'anno"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Sono mostrate le prime %d corrispondenze. Digiti altre lettere del nome per trovare la persona che cerca."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Accedere come %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "La prossima volta acceda su questo dispositivo con Face ID, un'impronta digitale o il PIN del dispositivo."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Acceda per vedere la Sua famiglia, il calendario della chiesa e i modi di servire. Non occorrono una password né un account."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Accedere con una passkey"
+
+#: 
+msgid "Sign out every device"
+msgstr "Disconnettere ogni dispositivo"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Disconnettere ora ogni dispositivo?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Disconnettersi ovunque"
+
+#: 
+msgid "Sign out this device"
+msgstr "Disconnettere questo dispositivo"
+
+#: 
+msgid "Sign-in"
+msgstr "Accesso"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Accesso e dispositivi"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Impossibile disattivare l'accesso."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Impossibile attivare l'accesso."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Accesso disattivato"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Email di accesso richiesta"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Email di accesso per indirizzo IP all'ora"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Accesso attivato"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "L'accesso è già disattivato per questa persona."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "L'accesso è disattivato"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "L'accesso è disattivato per questa persona."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "L'accesso è attivato per questa persona."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "L'accesso non è disattivato per questa persona."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Accesso rifiutato"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Accesso, sessioni e chiave API restano bloccati finché il problema non è risolto nella scheda della persona collegata."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Accessi effettuati, ultimi 30 giorni"
+
+#: 
+msgid "Signed out"
+msgstr "Disconnesso"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Disconnesso per una modifica al suo accesso"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Disconnesso ovunque"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Qualcuno ha chiesto un'email di accesso al Portale dei fedeli, ma non ne è stata inviata alcuna."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Qualcuno non è riuscito ad accedere al Portale dei fedeli"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Le pagine del personale restano chiuse durante l'accesso come persona. Prema Interrompi nel banner per tornare indietro."
+
+#: 
+msgid "Stop"
+msgstr "Interrompi"
+
+#: 
+msgid "Stopped"
+msgstr "Interrotto"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Dica alla segreteria della chiesa se i dati della famiglia sono ancora corretti."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Quel codice non ha funzionato. Controlli l'email più recente che Le abbiamo inviato oppure ne chieda uno nuovo."
+
+#: 
+msgid "That could not be removed."
+msgstr "Impossibile rimuoverlo."
+
+#: 
+msgid "That device is signed out."
+msgstr "Quel dispositivo è stato disconnesso."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Non è un indirizzo email valido."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Quella pagina era aperta da troppo tempo. Riprovi."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Quella passkey è stata rimossa. Non può più usarla per accedere."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "L'operazione ha richiesto troppo tempo. Riprovi."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "L'aggiornamento 7.8.3 ha assegnato ogni email della famiglia a una persona. Per queste non è stato possibile, quindi ha lasciato una nota nella cronologia della famiglia."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Il Portale dei fedeli e le email che Le invia usano questa lingua."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Impossibile salvare la modifica."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Il codice e il pulsante funzionano una sola volta, fino al %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Il codice o il link è stato inviato a un indirizzo che non è più la sua email"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Impossibile inviare l'email di conferma. Riprovi più tardi."
+
+#: 
+msgid "The device is signed out."
+msgstr "Il dispositivo è stato disconnesso."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "L'indirizzo email %2$s è stato rimosso dalla Sua scheda il %1$s. È stato disconnesso dal Portale dei fedeli su ogni dispositivo."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "L'indirizzo email sulla Sua scheda il %1$s è stato modificato da %2$s a %3$s. È stato disconnesso dal Portale dei fedeli su ogni dispositivo."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "Impossibile confermare l'email."
+
+#: 
+msgid "The email could not be sent."
+msgstr "Impossibile inviare l'email."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "L'email è confermata. Ora può essere usata per accedere."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "La data di fine è precedente alla data di inizio."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "La famiglia non ha un capofamiglia o un coniuge in vita e attivo"
+
+#: 
+msgid "The family is inactive"
+msgstr "La famiglia è inattiva"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Il capofamiglia e il coniuge hanno entrambi un'email propria"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "L'ultimo giorno non può essere nel passato."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "La persona collegata non può accedere, quindi questo account non può accedere"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Impossibile caricare l'elenco."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Impossibile aggiungere la passkey. Riprovi."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Impossibile verificare la passkey"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "La passkey non è registrata oppure è stata rimossa"
+
+#: 
+msgid "The passkey was removed."
+msgstr "La passkey è stata rimossa."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Le persone che lo condividono sono in famiglie diverse oppure non sono in una famiglia"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Le persone che condividono questo indirizzo sono cambiate. Apra di nuovo Correggere le email condivise."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Impossibile assegnare l'autorizzazione."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "L'autorizzazione termina dopo questo giorno. Può essere assegnata di nuovo."
+
+#: 
+msgid "The permission was given."
+msgstr "L'autorizzazione è stata assegnata."
+
+#: 
+msgid "The permission was removed."
+msgstr "L'autorizzazione è stata rimossa."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Impossibile caricare le autorizzazioni."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "La persona perde subito questa autorizzazione nel Portale dei fedeli."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Il motivo può contenere al massimo %d caratteri."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Le regole di accesso li ammettono e ciascuno ha un'email propria che nessun altro che può accedere usa."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Le regole di accesso li ammettono, ma la loro email no: non ne hanno una, la condividono con un'altra persona che può accedere oppure non è ancora confermata."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Impossibile salvare le impostazioni di accesso."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "L'email non confermata è cambiata. Ricarichi la pagina e riprovi."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "La sua classificazione non può accedere"
+
+#: 
+msgid "Their email changed"
+msgstr "La sua email è cambiata"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "La sua email non è ancora confermata"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "La sua email è condivisa con un'altra persona"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Il suo ruolo familiare non può accedere"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "I vecchi accessi sono stati rimossi dall'aggiornamento. Attivi l'accesso dei fedeli così potranno accedere con la propria email."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Il suo dispositivo memorizzato era scaduto"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Il suo dispositivo memorizzato è stato disconnesso"
+
+#: 
+msgid "Theme development"
+msgstr "Sviluppo del tema"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Non esiste una classificazione con id %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Non esiste un selettore per questo tipo di ambito."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Questo evento di audit non esiste."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Questo problema email non esiste."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Questo tipo di email non confermata non esiste."
+
+#: 
+msgid "There is no such list."
+msgstr "Questo elenco non esiste."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Questa autorizzazione del portale non esiste."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Questi sono i telefoni e i computer su cui ha scelto di restare connesso. Disconnetta quelli che non usa più o non riconosce."
+
+#: 
+msgid "They have a staff account"
+msgstr "Ha un account del personale"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Può accedere, ma non l'ha mai fatto."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Questa azione richiede una sessione del browser con accesso effettuato."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Impossibile modificare questo indirizzo. Apra di nuovo Correggere le email condivise per vedere a che punto è."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Questo indirizzo non è più condiviso da persone che possono accedere."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Questo browser non può creare passkey."
+
+#: 
+msgid "This device"
+msgstr "Questo dispositivo"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Questo dispositivo ha già una passkey per Lei."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Questo dispositivo non manterrà più l'accesso della persona e una sessione aperta su di esso termina. Potrà accedere di nuovo via email."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Questo è un mio dispositivo. Mantenga l'accesso."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Qui decide chi sono gli ospiti. Il numero indica quanti fedeli attivi hanno ciascuna classificazione."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Questo link non può essere usato"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Questo link è scaduto oppure è già stato usato"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Questa parte del Portale dei fedeli non è disponibile per Lei."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Questa passkey è già registrata."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Questa passkey non consentirà più l'accesso della persona. Potrà accedere via email e aggiungerne una nuova."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Questa autorizzazione non può essere assegnata nella pagina della persona."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Questa persona ha già tutte le autorizzazioni assegnabili."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Questa persona ha già questa autorizzazione."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Questa persona non può più accedere da nessuna parte, né al Portale dei fedeli né come personale. Ogni sessione termina e i dispositivi memorizzati e le passkey vengono rimossi."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Impossibile disconnettere questa persona."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Questa persona ha un account del personale. L'accesso come persona non apre mai un account del personale."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Questa persona non ha questa passkey."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Questa persona non ha questa autorizzazione."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Questa persona non ha questo dispositivo memorizzato."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Questa persona non ha un'email non confermata."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Questa persona ha effettuato l'accesso al Portale dei fedeli. Modificare questa email la disconnette ovunque e il nuovo indirizzo non può essere usato per accedere finché non è confermato."
+
+#: 
 msgid "This person is deceased."
 msgstr "Questa persona è deceduta"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Questa persona è disconnessa dal Portale dei fedeli su tutti i dispositivi."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Questa persona non esiste più."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "La disconnette ovunque, anche qui, e dimentica ogni dispositivo. Può accedere di nuovo con il Suo indirizzo email."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "La disconnette ovunque, anche qui, e dimentica ogni dispositivo. Le passkey restano: può accedere di nuovo con una passkey o con il Suo indirizzo email."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Questo strumento non modifica questi dati. Assegni a ciascuna persona la propria email nella scheda."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Selezioni questa opzione solo sul Suo telefono o computer, mai su uno condiviso o pubblico."
+
+#: 
+msgid "Time: %s"
+msgstr "Ora: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Tempo scaduto"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Per modificare questa email, contatti la segreteria della chiesa."
+
+#: 
+msgid "To fix"
+msgstr "Da correggere"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Per restare connesso sul Suo telefono o computer, selezioni «Questo è un mio dispositivo» la prossima volta che accede."
+
+#: 
+msgid "Too many attempts"
+msgstr "Troppi tentativi"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Troppe email di accesso oggi"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Troppe richieste di accesso per questo indirizzo email"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Troppe richieste di accesso da questo indirizzo IP"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Troppi codici errati"
+
+#: 
+msgid "Turn off"
+msgstr "Disattivare"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Disattivare l'accesso dei fedeli?"
+
+#: 
+msgid "Turn on"
+msgstr "Attivare"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Attivare l'accesso dei fedeli"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Attivare l'accesso dei fedeli?"
+
+#: 
+msgid "Type a name"
+msgstr "Digiti un nome"
+
+#: 
+msgid "Type a name or email"
+msgstr "Digiti un nome o un'email"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Digiti almeno %d lettere di un nome, quindi cerchi."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Email non confermata"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Capire dove viene usato ChurchCRM"
+
+#: 
+msgid "Unknown device"
+msgstr "Dispositivo sconosciuto"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Campo sconosciuto della directory: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Impostazione sconosciuta della directory: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Dispositivo senza nome"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Passkey senza nome"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Finché la segreteria della chiesa non lo conferma, il nuovo indirizzo non può essere usato per accedere."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Usare %1$s come indirizzo email di %2$s alle %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Usare un altro indirizzo email"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Usare una passkey su questo dispositivo?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Usi il pulsante qui sotto per confermare che %1$s è il Suo indirizzo email presso %2$s. Il link funziona una sola volta, fino al %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Utente %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Visualizzare le autorizzazioni"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "In attesa che Lei confermi %s. Usi il link inviato a quell'indirizzo."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "In attesa che Lei confermi {{email}}. Usi il link inviato a quell'indirizzo."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Non è stato possibile inviare l'email. Riprovi più tardi oppure contatti la segreteria della chiesa."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Non è stato possibile farLa accedere"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Abbiamo inviato un link a %s. Lo usi per confermare il Suo nuovo indirizzo email."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Abbiamo inviato un link a {{email}}. L'email cambia quando lo usa."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Le invieremo via email un codice e un link per accedere."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Siamo lieti che sia qui. Occorrono circa tre minuti."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Siamo lieti che la Sua famiglia si sia unita a noi. La registrazione è stata ricevuta. Il nostro team La contatterà presto per darLe personalmente il benvenuto."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Anniversario di matrimonio"
+
+#: 
+msgid "Welcome"
+msgstr "Benvenuto"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Ciò per cui era stata assegnata non esiste più"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Che cosa i fedeli possono vedere e fare nel portale e da dove proviene ciascuna autorizzazione. Le persone sono contate tra tutti quelli ammessi dalle regole di accesso e tra il personale."
+
+#: 
+msgid "What members can use"
+msgstr "Ciò che i fedeli possono usare"
+
+#: 
+msgid "What to do"
+msgstr "Cosa fare"
+
+#: 
+msgid "Who can see it"
+msgstr "Chi può vederlo"
+
+#: 
+msgid "Who is listed"
+msgstr "Chi è in elenco"
+
+#: 
+msgid "Who may sign in"
+msgstr "Chi può accedere"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Chi può accedere al Portale dei fedeli, chi l'ha fatto e quale email lo impedisce. Gli elenchi seguono le regole della scheda Accesso."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Chi compare nella directory del Portale dei fedeli, chi può vederla e che cosa mostra, scelto in Amministrazione -> Portale dei fedeli -> Directory."
+
+#: 
+msgid "Why"
+msgstr "Perché"
+
+#: 
+msgid "Why not"
+msgstr "Perché no"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Con il token che il dispositivo ha sostituito pochi istanti fa"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Sì, aggiungere una passkey"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Sì, rimuovere questa passkey"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Sì, disconnettere ogni dispositivo"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Non è autorizzato a confermare questa email."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "L'accesso non è mantenuto su alcun dispositivo."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "È stato disconnesso su ogni dispositivo."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "È stato disconnesso su questo dispositivo."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Può accedere anche con il Suo indirizzo email."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Non può disattivare il Suo stesso accesso."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Non può aprire il Portale dei fedeli. Contatti la segreteria della chiesa."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Ha chiesto di cambiare l'email troppe volte. Riprovi più tardi."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Non ha passkey."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Ha effettuato l'accesso come %s nel Portale dei fedeli (modifiche consentite)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Ha effettuato l'accesso come %s nel Portale dei fedeli (sola lettura)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Inferiore all'età minima"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Età minima a cui una persona può accedere al Portale dei fedeli. Se la data di nascita è sconosciuta, sono idonei solo un capofamiglia o un coniuge."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Il Suo codice di accesso al Portale dei fedeli"
+
+#: 
+msgid "Your code"
+msgstr "Il Suo codice"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Il Suo indirizzo email %s non è ancora confermato, quindi non può essere usato per accedere. Le invieremo un link; usarlo conferma l'indirizzo."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Il Suo indirizzo email non può essere rimosso qui. Contatti la segreteria della chiesa."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Il Suo indirizzo email è confermato"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Il Suo indirizzo email è stato modificato"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "La Sua passkey è stata aggiunta. La prossima volta acceda con essa su questo dispositivo."
+
+#: 
+msgid "an administrator"
+msgstr "un amministratore"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "né il capofamiglia né il coniuge hanno un indirizzo email"
+
+#: 
+msgid "or"
+msgstr "oppure"
+
+#: 
+msgid "until %s"
+msgstr "fino al %s"
 
