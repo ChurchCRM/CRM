@@ -76,6 +76,7 @@ paths:
                   example: 206-555-0100
                   nullable: true
                 Email:
+                  description: "Saved as the first person's email when that person gives none. Families have no email of their own."
                   type: string
                   format: email
                   example: smith@example.com
@@ -99,6 +100,7 @@ paths:
                   City: { type: string }
                   State: { type: string }
                   Zip: { type: string }
+                  Email: { description: "Deprecated in 7.8.3: the head of household's email, else the spouse's. Removed with the family email column.", type: string, readOnly: true, deprecated: true }
                 type: object
         '400':
           description: 'Validation error'
@@ -193,7 +195,7 @@ paths:
       tags:
         - 'Member Portal'
       summary: "A member's Member Portal calendar feed (iCalendar)"
-      description: 'Serves the events of the calendars a member subscribed to in the Member Portal, as an RFC 5545 VCALENDAR covering three months back to eighteen months ahead. No session: the token in the path is the credential, and it grants read access to those calendars and to nothing else. The feed is always narrowed to the calendars the administrator currently shares with members, so un-sharing a calendar removes it from every feed immediately. An unknown or retired token is a bare 404, indistinguishable from an account that has no feed.'
+      description: 'Serves the events of the calendars a member subscribed to in the Member Portal, as an RFC 5545 VCALENDAR covering three months back to eighteen months ahead. No session: the token in the path is the credential, and it grants read access to those calendars and to nothing else. The feed is always narrowed to the calendars the administrator currently shares with members, so un-sharing a calendar removes it from every feed immediately. An unknown or retired token is a bare 404, as is the token of a person who may no longer sign in to the Member Portal.'
       operationId: getPortalCalendarFeed
       parameters:
         -
@@ -213,7 +215,7 @@ paths:
                 type: string
                 format: binary
         '404':
-          description: 'Unknown token, a token that has been reset, or an account with no feed'
+          description: 'Unknown token, a token that has been reset, or a person who may no longer sign in'
   /public/echo:
     get:
       tags:

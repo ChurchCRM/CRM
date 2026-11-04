@@ -130,7 +130,7 @@ paths:
             application/json:
               schema:
                 properties:
-                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, sentByUserId: { type: integer, nullable: true }, sentBy: { description: 'Name of the user who wrote a composer message', type: string, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { description: 'queued: waiting to be sent (a retry keeps the last error); sending: a run is sending it now', type: string, enum: [sent, failed, skipped, queued, sending] }, statusLabel: { type: string }, attempts: { description: 'Delivery attempts so far', type: integer }, error: { description: "The mail server's error; null for callers without admin rights", type: string, nullable: true }, dateSent: { type: string }, hasBody: { type: boolean }, recipientName: { description: 'Email log only: the person, or else the family, the address belonged to', type: string, nullable: true }, recipientUrl: { description: "Email log only: that record's page", type: string, nullable: true } }, type: object } }
+                  rows: { type: array, items: { properties: { id: { type: integer }, personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, sentByUserId: { type: integer, nullable: true }, sentBy: { description: 'Name of the person who wrote a composer message', type: string, nullable: true }, address: { type: string }, kind: { type: string }, kindLabel: { type: string }, subject: { type: string }, status: { description: 'queued: waiting to be sent (a retry keeps the last error); sending: a run is sending it now', type: string, enum: [sent, failed, skipped, queued, sending] }, statusLabel: { type: string }, attempts: { description: 'Delivery attempts so far', type: integer }, error: { description: "The mail server's error; null for callers without admin rights", type: string, nullable: true }, dateSent: { type: string }, hasBody: { type: boolean }, recipientName: { description: 'Email log only: the person, or else the family, the address belonged to', type: string, nullable: true }, recipientUrl: { description: "Email log only: that record's page", type: string, nullable: true } }, type: object } }
                   total: { type: integer }
                   page: { type: integer }
                   limit: { type: integer }
@@ -1983,6 +1983,7 @@ paths:
       tags:
         - Families
       summary: 'Get a family object by ID'
+      operationId: getFamily
       parameters:
         -
           name: familyId
@@ -2748,6 +2749,102 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/person/{personId}/sign-in':
+    get:
+      tags:
+        - People
+      summary: 'Whether a person may sign in to the Member Portal, and why not (EditRecords role required)'
+      description: "What the person page's Portal sign-in card shows: the blocks for everyone, the member rule and the email rule, Disable sign-in, the last sign-in, and how many devices and passkeys the person has. The administrator's reason for Disable sign-in is returned to administrators only."
+      operationId: getPersonSignInStatus
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+      responses:
+        '200':
+          description: 'Sign-in status'
+          content:
+            application/json:
+              schema:
+                properties:
+                  personId: { type: integer, example: 42 }
+                  memberSignInEnabled: { type: boolean }
+                  maySignIn: { type: boolean }
+                  reason: { type: string, example: under_minimum_age, nullable: true }
+                  reasonLabel: { type: string, nullable: true }
+                  signInDisabled: { type: boolean }
+                  disabledAt: { type: string, nullable: true }
+                  disabledBy: { type: object, nullable: true }
+                  disabledReason: { type: string, nullable: true }
+                  lastSignIn: { type: string, nullable: true }
+                  unconfirmedEmail: { description: 'An address that receives mail but may not sign in until confirmed', type: string, nullable: true }
+                  unconfirmedSource: { description: 'family_email, staff, import or api', type: string, example: family_email, nullable: true }
+                  unconfirmedSourceLabel: { type: string, nullable: true }
+                  unconfirmedAt: { type: string, nullable: true }
+                  canConfirmEmail: { description: 'Whether the caller may confirm the unconfirmed email', type: boolean }
+                  confirmEmailRefusal: { description: 'Why the caller may not confirm it', type: string, nullable: true }
+                  devices: { type: integer }
+                  passkeys: { type: integer }
+                type: object
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'EditRecords role required'
+        '404':
+          description: 'Person not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/person/{personId}/sign-in/confirm-email':
+    post:
+      tags:
+        - People
+      summary: "Confirm a person's unconfirmed email after checking who they are (EditRecords role required)"
+      description: "An unconfirmed address receives mail but may not be used to sign in (member sign-in design §9). Staff with Edit Records may confirm an address moved from the family email; a replacement address after the person's first sign-in, and any address of a person with a staff account or given portal permissions, only an administrator. Writes an email_confirmed audit row."
+      operationId: confirmPersonSignInEmail
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - email
+              properties:
+                email:
+                  description: 'The unconfirmed address being confirmed'
+                  type: string
+                  example: pat@example.com
+              type: object
+      responses:
+        '200':
+          description: Confirmed
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '403':
+          description: 'EditRecords role required, an invalid CSRF token, or an address only an administrator may confirm'
+        '404':
+          description: 'Person not found'
+        '409':
+          description: 'No unconfirmed email, or it is not the address sent'
+      security:
+        -
+          ApiKeyAuth: []
   '/person/{personId}/role/{roleId}':
     post:
       tags:
@@ -2937,11 +3034,12 @@ paths:
     get:
       tags:
         - People
-      summary: 'Find duplicate email addresses across persons and families'
+      summary: 'Find personal email addresses shared by more than one person'
+      description: 'Compared trimmed and in lower case. Lists the people sharing each address and their families.'
       operationId: getEmailDuplicates
       responses:
         '200':
-          description: 'Emails used by more than one record'
+          description: 'Personal emails used by more than one person'
           content:
             application/json:
               schema:
@@ -3037,6 +3135,187 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /persons/sign-in-email/attention:
+    get:
+      tags:
+        - People
+      summary: 'One page of Email needs attention: people the Member Portal sign-in rules let in whose email stops them (EditRecords role required)'
+      description: 'Each row has the problem (no_email, shared_email or email_unconfirmed), who else shares a shared address, and for an unconfirmed one whether the caller may confirm it (canConfirmEmail, confirmEmailRefusal).'
+      operationId: getSignInEmailAttention
+      parameters:
+        -
+          name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+        -
+          name: length
+          in: query
+          schema:
+            type: integer
+            default: 25
+            maximum: 100
+        -
+          name: search
+          in: query
+          description: 'Part of a name or email'
+          schema:
+            type: string
+        -
+          name: problem
+          in: query
+          schema:
+            type: string
+            enum:
+              - no_email
+              - shared_email
+              - email_unconfirmed
+        -
+          name: kind
+          in: query
+          description: 'With problem=email_unconfirmed: moved from the family email, or a replacement after the first sign-in'
+          schema:
+            type: string
+            enum:
+              - family_email
+              - replacement
+      responses:
+        '200':
+          description: 'The page'
+          content:
+            application/json:
+              schema:
+                properties:
+                  total: { type: integer }
+                  filtered: { type: integer }
+                  rows: { type: array, items: { type: object } }
+                type: object
+        '400':
+          description: 'An unknown problem or kind'
+        '403':
+          description: 'EditRecords role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/sign-in-email/attention/counts:
+    get:
+      tags:
+        - People
+      summary: 'How many people Email needs attention lists per problem, and the shared addresses behind them (EditRecords role required)'
+      operationId: getSignInEmailAttentionCounts
+      responses:
+        '200':
+          description: 'The counts'
+          content:
+            application/json:
+              schema:
+                properties:
+                  emailProblems: { type: object, example: { no_email: 3, shared_email: 4, email_unconfirmed: 1 } }
+                  sharedAddresses: { type: integer, example: 2 }
+                  unconfirmedKinds: { type: object, example: { family_email: 1, replacement: 0 } }
+                type: object
+        '403':
+          description: 'EditRecords role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/sign-in-email/shared:
+    get:
+      tags:
+        - People
+      summary: 'Fix shared emails preview: every shared personal email that stops sign-in, with who keeps it (EditRecords role required)'
+      description: 'status fix: everyone sharing it is in one family; the head of household among them keeps it, else the spouse, the oldest first, and the people in losers would have it cleared. status by_hand: shared across families or with no head of household or spouse among them; the tool never changes these. canApply is false, with refusal, where the caller may not apply the row: only an administrator may fix a row in which anyone has a staff account or given portal permissions.'
+      operationId: getSharedSignInEmails
+      responses:
+        '200':
+          description: 'The preview'
+          content:
+            application/json:
+              schema:
+                properties:
+                  rows: { type: array, items: { properties: { email: { type: string }, status: { type: string, enum: [fix, by_hand] }, reason: { type: string, nullable: true, enum: [families, no_adult] }, familyId: { type: integer, nullable: true }, familyName: { type: string, nullable: true }, keeper: { type: object, nullable: true }, losers: { type: array, items: { type: object } }, people: { type: array, items: { type: object } }, needsAdministrator: { type: boolean }, canApply: { type: boolean }, refusal: { type: string, nullable: true } }, type: object } }
+                type: object
+        '403':
+          description: 'EditRecords role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/sign-in-email/shared/fix:
+    post:
+      tags:
+        - People
+      summary: 'Fix shared emails: clear the address from everyone but its keeper, for the chosen rows (EditRecords role required)'
+      description: 'Each row repeats the address, keeper and losers the preview showed. A row whose sharers changed since is skipped; a by-hand row, or one the caller may not apply, is refused. Each cleared address is a staff email change (member sign-in design §9): audited as email_changed via shared_email_fix and, for a person who has signed in, their sessions and remembered devices end and the old address gets a notice.'
+      operationId: fixSharedSignInEmails
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - rows
+              properties:
+                rows:
+                  type: array
+                  items: { required: [email, keeperId, loserIds], properties: { email: { type: string, example: pat.and.sam@example.com }, keeperId: { type: integer, example: 12 }, loserIds: { type: array, items: { type: integer }, example: [13] } }, type: object }
+              type: object
+      responses:
+        '200':
+          description: 'What happened to each row'
+          content:
+            application/json:
+              schema:
+                properties:
+                  changed: { type: array, items: { type: object } }
+                  skipped: { type: array, items: { type: object } }
+                  refused: { type: array, items: { type: object } }
+                  peopleChanged: { type: integer }
+                type: object
+        '400':
+          description: 'No rows, too many rows, or a malformed row'
+        '403':
+          description: 'EditRecords role required or an invalid CSRF token'
+      security:
+        -
+          ApiKeyAuth: []
+  /persons/sign-in-email/confirm:
+    post:
+      tags:
+        - People
+      summary: 'Confirm selected: confirm many unconfirmed emails after checking who each person is (EditRecords role required)'
+      description: 'Each row goes through the same check as POST /person/{id}/sign-in/confirm-email: staff with Edit Records may confirm an address moved from the family email; a replacement address after the first sign-in, and any address of a person with a staff account or given portal permissions, only an administrator. Audited as email_confirmed via bulk_confirm.'
+      operationId: confirmSignInEmails
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - rows
+              properties:
+                rows:
+                  type: array
+                  items: { required: [personId, email], properties: { personId: { type: integer, example: 42 }, email: { description: 'The unconfirmed address being confirmed', type: string, example: pat@example.com } }, type: object }
+              type: object
+      responses:
+        '200':
+          description: 'What happened to each row'
+          content:
+            application/json:
+              schema:
+                properties:
+                  confirmed: { type: array, items: { type: object } }
+                  skipped: { description: 'Nothing to confirm, or the address changed', type: array, items: { type: object } }
+                  refused: { description: 'The caller may not confirm it', type: array, items: { type: object } }
+                type: object
+        '400':
+          description: 'No rows, too many rows, or a malformed row'
+        '403':
+          description: 'EditRecords role required or an invalid CSRF token'
+      security:
+        -
+          ApiKeyAuth: []
   /families/familiesInCart:
     get:
       tags:
@@ -3059,6 +3338,7 @@ paths:
       tags:
         - Families
       summary: 'Get families with no email address on record'
+      operationId: getFamiliesWithoutEmail
       responses:
         '200':
           description: 'Families without any email address'
@@ -3067,7 +3347,7 @@ paths:
               schema:
                 properties:
                   count: { type: integer }
-                  families: { type: array, items: { type: object } }
+                  families: { type: array, items: { $ref: '#/components/schemas/Family' } }
                 type: object
       security:
         -
@@ -3101,6 +3381,7 @@ paths:
       tags:
         - Families
       summary: 'Get self-registered families still awaiting review'
+      operationId: getSelfRegisteredFamilies
       responses:
         '200':
           description: 'Self-registered families awaiting review, ordered by date entered descending'
@@ -3108,7 +3389,7 @@ paths:
             application/json:
               schema:
                 properties:
-                  families: { type: array, items: { type: object } }
+                  families: { type: array, items: { allOf: [{ $ref: '#/components/schemas/Family' }, { properties: { Members: { description: "Members' first names", type: array, items: { type: string } }, MemberEmails: { type: array, items: { type: string } }, MemberPhones: { type: array, items: { type: string } } }, type: object }] } }
                 type: object
       security:
         -
@@ -3118,14 +3399,15 @@ paths:
       tags:
         - Families
       summary: 'Get the last 100 families with self-verification notes'
+      operationId: getSelfVerifiedFamilies
       responses:
         '200':
-          description: 'Families that submitted self-verification notes'
+          description: 'Self-verification notes, each with the family that wrote it'
           content:
             application/json:
               schema:
                 properties:
-                  families: { type: array, items: { type: object } }
+                  families: { type: array, items: { properties: { Family: { $ref: '#/components/schemas/Family' } }, type: object } }
                 type: object
       security:
         -
@@ -3691,6 +3973,7 @@ paths:
       tags:
         - Groups
       summary: 'Get members of a group with family address info'
+      operationId: getGroupMembers
       parameters:
         -
           name: groupID
@@ -3705,7 +3988,7 @@ paths:
             application/json:
               schema:
                 properties:
-                  Person2group2roleP2g2rs: { type: array, items: { type: object } }
+                  Person2group2roleP2g2rs: { type: array, items: { properties: { Person: { properties: { Family: { $ref: '#/components/schemas/Family' } }, type: object } }, type: object } }
                 type: object
       security:
         -
@@ -4594,7 +4877,7 @@ paths:
             application/json:
               schema:
                 properties:
-                  profile: { properties: { id: { type: integer, example: 100 }, firstName: { type: string, example: Lena }, lastName: { type: string, example: Black }, email: { type: string, example: lena@example.com }, cellPhone: { type: string, example: '(206) 555-0100' }, birthday: { description: 'ISO date, empty when unknown', type: string, example: '1971-12-24' }, photoUrl: { type: string }, canEditBirthday: { description: 'Mirrors bPortalAllowBirthdayEdit', type: boolean } }, type: object }
+                  profile: { properties: { id: { type: integer, example: 100 }, firstName: { type: string, example: Lena }, lastName: { type: string, example: Black }, email: { type: string, example: lena@example.com }, pendingEmail: { description: 'The new address the member asked for, while its confirmation link is open; empty otherwise', type: string }, emailLocked: { description: 'True when only an administrator may change this email: the person has a staff account or given portal permissions', type: boolean }, cellPhone: { type: string, example: '(206) 555-0100' }, birthday: { description: 'ISO date, empty when unknown', type: string, example: '1971-12-24' }, photoUrl: { type: string }, canEditBirthday: { description: 'Mirrors bPortalAllowBirthdayEdit', type: boolean }, language: { description: "The language the member chose for the portal and its emails; empty for the church's language", type: string, example: fr_FR } }, type: object }
                 type: object
         '401':
           description: 'No signed-in session'
@@ -4604,7 +4887,7 @@ paths:
       tags:
         - 'Member Portal'
       summary: "Update the signed-in member's own profile"
-      description: "Applies the allow-listed fields present in the body to the member's own person record and writes a timeline note naming what changed. Anything else in the body is ignored. Birthday is accepted only when bPortalAllowBirthdayEdit is on."
+      description: "Applies the allow-listed fields present in the body to the member's own person record and writes a timeline note naming what changed. Anything else in the body is ignored. Birthday is accepted only when bPortalAllowBirthdayEdit is on. A new email is not saved: a confirmation link goes to the new address, a notice goes to the old one, and the change happens when the link is used (member sign-in design §9). Language is ignored in a staff session, which keeps the staff account's own setting."
       operationId: updatePortalMe
       requestBody:
         required: true
@@ -4635,6 +4918,10 @@ paths:
                 birthday:
                   type: string
                   example: '1971-12-24'
+                language:
+                  description: "A locale from src/locale/locales.json, or empty for the church's language"
+                  type: string
+                  example: fr_FR
               type: object
       responses:
         '200':
@@ -4646,11 +4933,16 @@ paths:
                   success: { type: boolean, example: true }
                   profile: { type: object }
                   updated: { description: 'The fields that actually changed', type: array, items: { type: string } }
+                  pendingEmail: { description: 'The new email a confirmation link was sent to; empty when the email did not change', type: string }
                 type: object
         '400':
-          description: 'Validation error'
+          description: 'Validation error, or an email that is empty or not valid'
         '403':
-          description: 'API-key caller, or an invalid CSRF token'
+          description: 'API-key caller, an invalid CSRF token, or an email only an administrator may change'
+        '429':
+          description: 'Too many email change requests in an hour'
+        '503':
+          description: 'The confirmation email could not be sent'
   /portal/me/photo:
     get:
       tags:
@@ -4709,7 +5001,7 @@ paths:
       tags:
         - 'Member Portal'
       summary: "The signed-in member's own family"
-      description: "Returns the acting member's family, its members, and whether this member is one of the adults who may change it. The family is the member's own; there is no family id to pass."
+      description: "Returns the acting member's family, its members, and what this member may do with it. Other members' email and cellPhone are empty unless the member holds portal.family.contacts.view (an adult of the family). The family is the member's own; there is no family id to pass."
       operationId: getPortalFamily
       responses:
         '200':
@@ -4718,12 +5010,16 @@ paths:
             application/json:
               schema:
                 properties:
-                  family: { type: object, nullable: true }
+                  family: { properties: { email: { description: "Deprecated in 7.8.3: the head of household's email, else the spouse's, empty unless the member may see it. Removed with the family email column.", type: string, readOnly: true, deprecated: true } }, type: object, nullable: true }
                   members: { type: array, items: { type: object } }
-                  canEdit: { description: "True for the family's head or spouse", type: boolean }
+                  canEdit: { description: 'portal.family.edit: an adult of the family', type: boolean }
+                  canConfirm: { description: 'portal.family.confirm: an adult of the family', type: boolean }
+                  canSeeContacts: { description: 'portal.family.contacts.view: an adult of the family', type: boolean }
                 type: object
         '403':
           description: 'API-key caller'
+        '404':
+          description: 'The member has no family record'
     post:
       tags:
         - 'Member Portal'
@@ -4751,7 +5047,9 @@ paths:
                 homePhone:
                   type: string
                 email:
+                  description: 'Deprecated in 7.8.3 and ignored: families have no email. A member changes their own email on their profile.'
                   type: string
+                  deprecated: true
                 weddingDate:
                   type: string
                   example: '2004-06-12'
@@ -4764,7 +5062,7 @@ paths:
               schema:
                 properties:
                   success: { type: boolean, example: true }
-                  family: { type: object }
+                  family: { properties: { email: { description: "Deprecated in 7.8.3: the head of household's email, else the spouse's, empty unless the member may see it. Removed with the family email column.", type: string, readOnly: true, deprecated: true } }, type: object }
                   updated: { type: array, items: { type: string } }
                 type: object
         '400':
@@ -4778,7 +5076,7 @@ paths:
       tags:
         - 'Member Portal'
       summary: "Confirm the member's family details are current"
-      description: "Writes exactly the note the emailed verify link writes — type 'verify', entered by SELF_VERIFY, the text 'No Changes' or the member's comment — so a portal confirmation reaches the People → Verify dashboard the same way a token-link one does."
+      description: "Writes exactly the note the emailed verify link writes — type 'verify', entered by SELF_VERIFY, the text 'No Changes' or the member's comment — so a portal confirmation reaches the People → Verify dashboard the same way a token-link one does. Needs portal.family.confirm: an adult of the family."
       operationId: confirmPortalFamily
       requestBody:
         required: true
@@ -4806,6 +5104,8 @@ paths:
                 type: object
         '400':
           description: 'No choice made, or a change requested with no comment'
+        '403':
+          description: 'Not an adult of this family'
         '404':
           description: 'The member has no family record'
   '/portal/family/members/{personId}/photo':
@@ -4940,6 +5240,54 @@ paths:
                 $ref: '#/components/schemas/PortalCalendarSubscription'
         '403':
           description: 'Not a signed-in member, an API key was used, or the CSRF token was missing'
+  /portal/directory:
+    get:
+      tags:
+        - Portal
+      summary: 'The member directory, or the entries matching a name, grouped by first letter'
+      operationId: getPortalDirectory
+      parameters:
+        -
+          name: q
+          in: query
+          description: "Words that must all appear in an entry's names. Required, with at least two characters, when the directory is search only; that answer holds at most 20 entries"
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Groups of family and person entries'
+        '403':
+          description: "The member's classification may not see the directory"
+        '404':
+          description: 'The directory is switched off'
+  '/portal/directory/{type}/{id}/photo':
+    get:
+      tags:
+        - Portal
+      summary: 'The photo of a person or family the directory shows'
+      operationId: getPortalDirectoryPhoto
+      parameters:
+        -
+          name: type
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - person
+              - family
+        -
+          name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: 'The image'
+        '404':
+          description: 'Not shown in the directory, or no photo'
   /portal/me/emails:
     get:
       tags:
@@ -5021,7 +5369,7 @@ paths:
                   type: array
                   items: { type: integer }
                 familyIds:
-                  description: 'Family ids to email at the family address'
+                  description: "Family ids to email at the head of household's address, else the spouse's"
                   type: array
                   items: { type: integer }
                 subject:
@@ -5041,7 +5389,7 @@ paths:
                 properties:
                   batch: { description: 'Batch id of the queued messages; null when nobody could be emailed', type: string, example: 3f2a9c0d4b6e8f1a2c3d4e5f60718293, nullable: true }
                   queued: { description: 'Recipients whose message was queued', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, email: { type: string } }, type: object } }
-                  skipped: { description: 'Requested recipients that were not emailed', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, reason: { type: string, enum: [not-found, no-email, do-not-email, deceased, inactive, duplicate-address] } }, type: object } }
+                  skipped: { description: 'Requested recipients that were not emailed', type: array, items: { properties: { personId: { type: integer, nullable: true }, familyId: { type: integer, nullable: true }, name: { type: string }, reason: { type: string, enum: [not-found, no-email, no-adult-email, do-not-email, deceased, inactive, duplicate-address] } }, type: object } }
                   sent: { description: 'Always empty: sending happens after the request (kept for older clients)', type: array, items: { type: object } }
                   failed: { description: 'Always empty: sending happens after the request (kept for older clients)', type: array, items: { type: object } }
                   counts: { properties: { queued: { type: integer }, sent: { description: 'Always 0', type: integer }, skipped: { type: integer }, failed: { description: 'Always 0', type: integer } }, type: object }
@@ -5177,7 +5525,7 @@ paths:
             schema:
               properties:
                 force:
-                  description: "Administrators only: run now even inside the minimum interval, and top up the volunteer schedules even if today's top-up has run"
+                  description: "Administrators only: run now even inside the minimum interval, and run the once-a-day jobs (the volunteer schedule top-up, the sign-in audit retention) even if today's run has happened"
                   type: boolean
               type: object
       responses:
@@ -9982,6 +10330,305 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /admin/api/member-portal/lists:
+    get:
+      tags:
+        - Admin
+      summary: 'How many people each Member Portal list holds (Admin role required)'
+      operationId: getMemberPortalListSummary
+      responses:
+        '200':
+          description: "A count per list, the email problems, and the family email move's outcomes"
+          content:
+            application/json:
+              schema:
+                properties:
+                  may-sign-in: { type: integer }
+                  signed-in-recently: { type: integer }
+                  never-signed-in: { type: integer }
+                  email-attention: { type: integer }
+                  emailProblems: { type: object, example: { no_email: 3, shared_email: 2, email_unconfirmed: 1 } }
+                  sharedAddresses: { description: 'Shared addresses behind the shared_email people', type: integer }
+                  unconfirmedKinds: { type: object, example: { family_email: 1, replacement: 0 } }
+                  families-confirmed: { type: integer }
+                  family-emails-not-moved: { type: integer }
+                  familyEmailMoves: { type: object, example: { head: 120, spouse: 4, held: 30, noted: 6, pending: 0, total: 160 } }
+                  recentDays: { type: integer, example: 30 }
+                type: object
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/member-portal/lists/{list}':
+    get:
+      tags:
+        - Admin
+      summary: 'One page of a Member Portal list (Admin role required)'
+      description: "may-sign-in: the blocks, the member rule and the email rule all let them in. everyone: anyone on file with a maySignIn flag and reasonLabel. signed-in-recently: a portal sign-in in the last 30 days. never-signed-in: may sign in but never has. email-attention: the member rule lets them in but their email does not (no_email, shared_email or email_unconfirmed); an unconfirmed row says whether the caller may confirm it (canConfirmEmail, confirmEmailRefusal) through POST /api/person/{id}/sign-in/confirm-email. families-confirmed: a member confirmed the family's details in the last 30 days. family-emails-not-moved: the 7.8.3 upgrade could not give the family email to a person."
+      operationId: getMemberPortalList
+      parameters:
+        -
+          name: list
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - everyone
+              - may-sign-in
+              - signed-in-recently
+              - never-signed-in
+              - email-attention
+              - families-confirmed
+              - family-emails-not-moved
+        -
+          name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+        -
+          name: length
+          in: query
+          schema:
+            type: integer
+            default: 25
+            maximum: 100
+        -
+          name: search
+          in: query
+          description: 'Part of a name or email'
+          schema:
+            type: string
+        -
+          name: problem
+          in: query
+          description: 'email-attention only'
+          schema:
+            type: string
+            enum:
+              - no_email
+              - shared_email
+              - email_unconfirmed
+        -
+          name: kind
+          in: query
+          description: 'email-attention with problem=email_unconfirmed only: moved from the family email, or a replacement after the first sign-in'
+          schema:
+            type: string
+            enum:
+              - family_email
+              - replacement
+      responses:
+        '200':
+          description: 'The page'
+          content:
+            application/json:
+              schema:
+                properties:
+                  total: { description: 'Rows in the list', type: integer }
+                  filtered: { description: 'Rows matching the search', type: integer }
+                  rows: { type: array, items: { type: object } }
+                type: object
+        '400':
+          description: 'An unknown list or email problem'
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/member-portal/audit:
+    get:
+      tags:
+        - Admin
+      summary: 'The member sign-in audit, newest first (Admin role required)'
+      description: 'Each row: time, person, event, method, reason, the administrator for staff actions, and the address that was typed or used. The audit never holds a code, link, token, password or passkey secret.'
+      operationId: getMemberSignInAudit
+      parameters:
+        -
+          name: personId
+          in: query
+          schema:
+            type: integer
+        -
+          name: from
+          in: query
+          description: 'First day, YYYY-MM-DD'
+          schema:
+            type: string
+            format: date
+        -
+          name: to
+          in: query
+          description: 'Last day, YYYY-MM-DD, inclusive'
+          schema:
+            type: string
+            format: date
+        -
+          name: event
+          in: query
+          schema:
+            type: string
+            example: refused
+        -
+          name: afterId
+          in: query
+          description: 'Only rows written after this audit row'
+          schema:
+            type: integer
+        -
+          name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+        -
+          name: length
+          in: query
+          schema:
+            type: integer
+            default: 25
+            maximum: 100
+      responses:
+        '200':
+          description: 'The page'
+          content:
+            application/json:
+              schema:
+                properties:
+                  total: { type: integer }
+                  filtered: { type: integer }
+                  rows: { type: array, items: { type: object } }
+                  events: { type: array, items: { type: object } }
+                type: object
+        '400':
+          description: 'A malformed date, a range that ends before it starts, or an unknown event'
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/member-portal/permissions:
+    get:
+      tags:
+        - Admin
+      summary: 'Every portal capability with its sources and how many people hold it (Admin role required)'
+      description: 'Holders are counted among the people who can open the portal: everyone the sign-in rules let in, and staff.'
+      operationId: getMemberPortalPermissions
+      responses:
+        '200':
+          description: 'The catalog'
+          content:
+            application/json:
+              schema:
+                properties:
+                  capabilities: { type: array, items: { properties: { key: { type: string, example: volunteer.team.manage }, label: { type: string }, description: { type: string }, owner: { type: string, example: core }, scopeType: { type: string, example: team }, status: { type: string, example: 'on' }, sources: { description: "The rules that grant it, and 'given' only when someone was given it", type: array, items: { type: object } }, holderCount: { type: integer }, givenCount: { description: 'Holders who were given it by an administrator', type: integer } }, type: object } }
+                type: object
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/member-portal/permissions/{capability}/holders':
+    get:
+      tags:
+        - Admin
+      summary: 'The people who hold one portal capability, and where each grant comes from (Admin role required)'
+      operationId: getMemberPortalPermissionHolders
+      parameters:
+        -
+          name: capability
+          in: path
+          required: true
+          schema:
+            type: string
+            example: volunteer.team.manage
+        -
+          name: start
+          in: query
+          schema:
+            type: integer
+            default: 0
+        -
+          name: length
+          in: query
+          schema:
+            type: integer
+            default: 25
+            maximum: 100
+        -
+          name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'The page'
+          content:
+            application/json:
+              schema:
+                properties:
+                  capability: { type: object }
+                  total: { type: integer }
+                  filtered: { type: integer }
+                  rows: { type: array, items: { type: object } }
+                type: object
+        '403':
+          description: 'Admin role required'
+        '404':
+          description: 'No such capability'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/member-portal/grant-scopes/{type}':
+    get:
+      tags:
+        - Admin
+      summary: 'Families, teams, ministries or groups a portal permission can be given on (Admin role required)'
+      operationId: searchPortalGrantScopes
+      parameters:
+        -
+          name: type
+          in: path
+          required: true
+          schema:
+            type: string
+            enum:
+              - family
+              - team
+              - ministry
+              - group
+        -
+          name: q
+          in: query
+          description: 'Part of the name'
+          schema:
+            type: string
+        -
+          name: exclude
+          in: query
+          description: 'Comma-separated ids to leave out, such as the scopes the person already holds'
+          schema:
+            type: string
+            example: '3,7'
+      responses:
+        '200':
+          description: 'Up to 25 choices'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, text: { type: string } }
+                  type: object
+        '400':
+          description: 'A scope type with no picker'
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
   /admin/api/system/church-logo:
     get:
       tags:
@@ -10615,13 +11262,260 @@ paths:
                   value: { type: string, example: '10' }
                 type: object
         '400':
-          description: 'A number setting was given a value that is not a number'
+          description: 'A number setting was given a value that is not a number, or a Member Portal sign-in setting failed its check (for example, member sign-in while email is off)'
         '401':
           description: Unauthorized
         '403':
           description: 'Admin role required'
         '404':
           description: 'Configuration item not found'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/person/{personId}/login-as-person':
+    post:
+      tags:
+        - Admin
+      summary: 'Open the Member Portal as this person (Admin role, browser session only)'
+      description: "Starts a Login as Person session: the administrator's staff session waits, staff pages are closed until Stop, and every write is recorded with both people. Read-only unless Allow changes during Login as Person is on."
+      operationId: startLoginAsPerson
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 2
+      responses:
+        '200':
+          description: Started
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  redirect: { type: string, example: /portal/ }
+                type: object
+        '403':
+          description: 'Admin role required, an invalid CSRF token, an API key, or the person is deceased, has Disable sign-in or has a staff account'
+        '404':
+          description: 'Allow Login as Person is off, or the person was not found'
+  /admin/api/member-portal/sign-in:
+    get:
+      tags:
+        - Admin
+      summary: 'The Member Portal sign-in settings (Admin role required)'
+      operationId: getMemberSignInSettings
+      responses:
+        '200':
+          description: "Stored values, the choices, and why member sign-in or passkeys can't be used"
+          content:
+            application/json:
+              schema:
+                properties:
+                  values: { type: object, example: { bMemberSignIn: '0', sMemberSignInFamilyRoles: '1,2', iMemberSignInMinAge: '13' } }
+                  emailProblem: { type: string, nullable: true }
+                  passkeyProblem: { type: string, nullable: true }
+                  familyRoles: { type: array, items: { type: object } }
+                  classifications: { type: array, items: { type: object } }
+                  officeRecipients: { type: array, items: { type: object } }
+                  maySignInCount: { description: 'People the saved settings let in, before the email rule', type: integer }
+                type: object
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Admin
+      summary: 'Save Member Portal sign-in settings (Admin role required)'
+      description: 'Send any of the sign-in settings. All of them are checked first; if any is wrong, none is saved. Member sign-in can only be turned on while ChurchCRM can send email. Family roles, classifications and the office list may be arrays of ids or comma-separated strings.'
+      operationId: saveMemberSignInSettings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                bMemberSignIn:
+                  type: boolean
+                sMemberSignInFamilyRoles:
+                  type: array
+                  items: { type: integer }
+                  example: [1, 2]
+                sMemberSignInClassifications:
+                  type: array
+                  items: { type: integer }
+                  example: [1, 2]
+                iMemberSignInMinAge:
+                  type: integer
+                  example: 13
+                  maximum: 120
+                  minimum: 0
+                iSignInLinkMinutes:
+                  type: integer
+                  example: 120
+                  maximum: 1440
+                  minimum: 1
+                iMemberSignInRequestsPerIP:
+                  type: integer
+                  example: 20
+                  maximum: 10000
+                  minimum: 0
+                iPortalIdleMinutes:
+                  type: integer
+                  example: 30
+                  maximum: 1440
+                  minimum: 1
+                iRememberDeviceDays:
+                  type: integer
+                  example: 14
+                  maximum: 365
+                  minimum: 0
+                bPortalPasskeys:
+                  type: boolean
+                sMemberSignInNotificationRecipientIDs:
+                  type: array
+                  items: { type: integer }
+                bAllowLoginAsPerson:
+                  type: boolean
+                bLoginAsPersonCanWrite:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: 'Saved; the stored values come back'
+          content:
+            application/json:
+              schema:
+                properties:
+                  values: { type: object }
+                  maySignInCount: { type: integer }
+                  sharedAddresses: { description: 'Shared personal emails that stop sign-in under the saved rule', type: integer }
+                type: object
+        '400':
+          description: 'A value is wrong; `errors` names each setting and its problem, and nothing was saved'
+        '403':
+          description: 'Admin role required, or an invalid CSRF token'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/member-portal/sign-in/office-candidates/{query}':
+    get:
+      tags:
+        - Admin
+      summary: 'Find people who can be on the sign-in office list (Admin role required)'
+      description: 'Living people with their own email whose name or email contains the query. Same shape as GET /api/persons/search/{query}.'
+      operationId: searchMemberSignInOfficeCandidates
+      parameters:
+        -
+          name: query
+          in: path
+          required: true
+          schema:
+            type: string
+            example: smith
+      responses:
+        '200':
+          description: 'Up to 15 people'
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties: { id: { type: integer }, objid: { type: integer }, text: { type: string, example: 'Jane Smith (jane@example.com)' } }
+                  type: object
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/member-portal/former-accounts-notice/dismiss:
+    post:
+      tags:
+        - Admin
+      summary: 'Hide the Admin Dashboard notice about the removed self-service accounts (Admin role required)'
+      description: 'The 7.8.3 upgrade removes self-service accounts and records how many. The Admin Dashboard asks to turn member sign-in on until it is on or this is called.'
+      operationId: dismissMemberPortalFormerAccountsNotice
+      responses:
+        '200':
+          description: Dismissed
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '403':
+          description: 'Admin role required, or the CSRF token was missing'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/member-portal/directory:
+    get:
+      tags:
+        - Admin
+      summary: 'The Member Portal directory settings (Admin role required)'
+      operationId: getMemberPortalDirectory
+      responses:
+        '200':
+          description: 'Who is listed, who may view, which fields show'
+          content:
+            application/json:
+              schema:
+                properties:
+                  settings: { type: object }
+                type: object
+        '403':
+          description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Admin
+      summary: 'Save the Member Portal directory settings (Admin role required)'
+      description: 'Send any subset of listed (classification ids), viewers (classification ids), fields, browse, birthday and anniversary (withYear, withoutYear or hidden). Every part is checked first; a malformed part or an unknown classification or field returns 400 and nothing is saved.'
+      operationId: saveMemberPortalDirectory
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                listed:
+                  type: array
+                  items: { type: integer }
+                viewers:
+                  type: array
+                  items: { type: integer }
+                fields:
+                  type: object
+                birthday:
+                  type: string
+                  enum: [withYear, withoutYear, hidden]
+                anniversary:
+                  type: string
+                  enum: [withYear, withoutYear, hidden]
+                browse:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: 'Saved; the whole stored choice comes back'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean }
+                  settings: { type: object }
+                type: object
+        '400':
+          description: 'A part is malformed or names a classification or field that does not exist'
+        '403':
+          description: 'Admin role required'
       security:
         -
           ApiKeyAuth: []
@@ -10808,6 +11702,121 @@ paths:
           description: 'Forbidden — Admin role required'
         '500':
           description: 'Error deleting files'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/person/{personId}/sign-in/disable':
+    post:
+      tags:
+        - Admin
+      summary: 'Turn on Disable sign-in for a person (Admin role required)'
+      description: "Stops the person signing in anywhere, staff or Member Portal. Ends every portal session on its next request, removes their remembered devices and passkeys, and writes a sign_in_disabled audit row. The reason is kept on the person's sign-in record, not in the audit."
+      operationId: disablePersonSignIn
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - reason
+              properties:
+                reason:
+                  type: string
+                  example: 'Asked us to close their access'
+                  maxLength: 255
+              type: object
+      responses:
+        '200':
+          description: 'Sign-in disabled'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  devicesRemoved: { type: integer, example: 1 }
+                  passkeysRemoved: { type: integer, example: 0 }
+                type: object
+        '400':
+          description: 'The reason is missing or longer than 255 characters'
+        '403':
+          description: 'Admin role required, an invalid CSRF token, your own sign-in, or the only administrator who can sign in'
+        '404':
+          description: 'Person not found'
+        '409':
+          description: 'Sign-in is already disabled'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/person/{personId}/sign-in/enable':
+    post:
+      tags:
+        - Admin
+      summary: 'Turn off Disable sign-in for a person (Admin role required)'
+      description: 'Writes a sign_in_enabled audit row. Removed devices and passkeys do not come back.'
+      operationId: enablePersonSignIn
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+      responses:
+        '200':
+          description: 'Sign-in enabled'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '403':
+          description: 'Admin role required, or an invalid CSRF token'
+        '404':
+          description: 'Person not found'
+        '409':
+          description: 'Sign-in is not disabled'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/person/{personId}/sign-in/sign-out-everywhere':
+    post:
+      tags:
+        - Admin
+      summary: 'End every Member Portal session of a person (Admin role required)'
+      description: "Each portal session ends on its next request and the person's remembered devices are revoked. Passkeys stay. Writes a session_ended audit row with the reason signed_out_everywhere."
+      operationId: signOutPersonEverywhere
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 42
+      responses:
+        '200':
+          description: 'Signed out everywhere'
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  devicesRevoked: { type: integer, example: 2 }
+                type: object
+        '403':
+          description: 'Admin role required, or an invalid CSRF token'
+        '404':
+          description: 'Person not found'
       security:
         -
           ApiKeyAuth: []
@@ -11012,6 +12021,176 @@ paths:
           description: 'Admin role required'
         '500':
           description: 'Database reset failed'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/person/{personId}/sign-in/devices/{deviceId}/remove':
+    post:
+      tags:
+        - Admin
+      summary: 'Forget one remembered device of a person (Admin role required)'
+      description: 'The device can no longer bring back a Member Portal session. Writes a device_removed audit row.'
+      operationId: removePersonDevice
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: deviceId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Removed
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '403':
+          description: 'Admin role required, or an invalid CSRF token'
+        '404':
+          description: 'No such person, or no such device of theirs'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/person/{personId}/sign-in/passkeys/{passkeyId}/remove':
+    post:
+      tags:
+        - Admin
+      summary: 'Remove one passkey of a person (Admin role required)'
+      description: 'The passkey can no longer sign in. Writes a passkey_removed audit row.'
+      operationId: removePersonPasskey
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: passkeyId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Removed
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '403':
+          description: 'Admin role required, or an invalid CSRF token'
+        '404':
+          description: 'No such person, or no such passkey of theirs'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/person/{personId}/sign-in/grants':
+    post:
+      tags:
+        - Admin
+      summary: 'Give a person a portal permission (Admin role required)'
+      description: "A capability, on a scope of its scope type (none, family, team, ministry or group), with a required last day and a required reason. Takes effect on the person's next portal request. Writes a grant_added audit row; the reason is kept on the grant only."
+      operationId: givePersonPortalGrant
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - capability
+                - endsOn
+                - reason
+              properties:
+                capability:
+                  type: string
+                  example: volunteer.team.manage
+                scopeId:
+                  description: 'The family, team, ministry or group; omit for a capability without a scope'
+                  type: integer
+                  example: 3
+                endsOn:
+                  description: 'Last day it counts, inclusive'
+                  type: string
+                  format: date
+                  example: '2026-12-31'
+                reason:
+                  type: string
+                  example: 'Leads the greeters while Pat is away'
+                  maxLength: 255
+              type: object
+      responses:
+        '201':
+          description: Given
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                  grantId: { type: integer }
+                type: object
+        '400':
+          description: 'An unknown capability, a missing or unknown scope, a missing last day or one in the past, or a missing reason'
+        '403':
+          description: 'Admin role required, or an invalid CSRF token'
+        '404':
+          description: 'Person not found'
+        '409':
+          description: 'The person already has this permission on this scope'
+      security:
+        -
+          ApiKeyAuth: []
+  '/admin/api/person/{personId}/sign-in/grants/{grantId}/remove':
+    post:
+      tags:
+        - Admin
+      summary: 'Remove a portal permission an administrator gave a person (Admin role required)'
+      description: "Takes effect on the person's next portal request. Writes a grant_removed audit row."
+      operationId: removePersonPortalGrant
+      parameters:
+        -
+          name: personId
+          in: path
+          required: true
+          schema:
+            type: integer
+        -
+          name: grantId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Removed
+          content:
+            application/json:
+              schema:
+                properties:
+                  success: { type: boolean, example: true }
+                type: object
+        '403':
+          description: 'Admin role required, or an invalid CSRF token'
+        '404':
+          description: 'No such person, or no such given permission of theirs'
       security:
         -
           ApiKeyAuth: []
@@ -12042,8 +13221,10 @@ components:
           type: string
           nullable: true
         Email:
+          description: "Deprecated in 7.8.3: the head of household's email, else the spouse's. Removed with the family email column."
           type: string
-          nullable: true
+          readOnly: true
+          deprecated: true
         Weddingdate:
           type: string
           format: date
@@ -12261,6 +13442,9 @@ tags:
   -
     name: 'Member Portal'
     description: 'Member Portal'
+  -
+    name: Portal
+    description: Portal
   -
     name: Import
     description: Import
