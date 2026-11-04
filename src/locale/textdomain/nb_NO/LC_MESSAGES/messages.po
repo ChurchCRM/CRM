@@ -457,10 +457,6 @@ msgid "Family Cell Phone"
 msgstr "Familie Cell Phone"
 
 #: 
-msgid "Family Email"
-msgstr "Familien e"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Personal Home Phone"
 
@@ -3982,10 +3978,6 @@ msgid "Oops! Page not found."
 msgstr "Oops! Siden ble ikke funnet."
 
 #: 
-msgid "Family Registration"
-msgstr "Familieregistrering"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Vennligst oppgi følgende for å starte familiens verifisering"
 
@@ -5383,24 +5375,8 @@ msgid "Email address"
 msgstr "E-postadresse"
 
 #: 
-msgid "Enter family name"
-msgstr "Skriv inn familienavn"
-
-#: 
 msgid "Family name is required"
 msgstr "Familienavn er obligatorisk"
-
-#: 
-msgid "First name"
-msgstr "Fornavn"
-
-#: 
-msgid "Home phone number"
-msgstr "Fasttelefonnummer"
-
-#: 
-msgid "Last name"
-msgstr "Etternavn"
 
 #: 
 msgid "Next Member"
@@ -9829,10 +9805,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Vi bruker dette for å holde kontakten og sende oppdateringer fra menigheten."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Vi er så glade for at du er her! Registrer familien din i bare 3 enkle trinn."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Velkommen tilbake!"
 
@@ -13807,10 +13779,6 @@ msgid "Generate new code"
 msgstr "Generer ny kode"
 
 #: 
-msgid "Go to homepage"
-msgstr "Gå til startsiden"
-
-#: 
 msgid "Group added to cart"
 msgstr "Gruppe lagt til i handlekurven"
 
@@ -13833,10 +13801,6 @@ msgstr "Ha autentiseringsappen din klar (Google Authenticator, Microsoft Authent
 #: 
 msgid "Hide advanced options"
 msgstr "Skjul avanserte alternativer"
-
-#: 
-msgid "Home phone is required"
-msgstr "Fasttelefon er obligatorisk"
 
 #: 
 msgid "ICS URL"
@@ -14511,10 +14475,6 @@ msgid "Warnings"
 msgstr "Advarsler"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Vi er så glade for at familien din har blitt med oss!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Velkommen til menigheten!"
 
@@ -14569,10 +14529,6 @@ msgstr "Nettleserens språkinnstilling avviker fra ChurchCRM-locale"
 #: 
 msgid "Your database already contains data"
 msgstr "Databasen din inneholder allerede data"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Registreringen din er mottatt. Vårt team tar snart kontakt for å ønske deg personlig velkommen."
 
 #: 
 msgid "Zip code is required"
@@ -14651,10 +14607,6 @@ msgid "open rate"
 msgstr "åpningsrate"
 
 #: 
-msgid "our church"
-msgstr "vår menighet"
-
-#: 
 msgid "payment(s)?"
 msgstr "betaling(er)?"
 
@@ -14693,14 +14645,6 @@ msgstr "år"
 #: 
 msgid "yrs"
 msgstr "år"
-
-#: 
-msgid "Account options"
-msgstr "Kontoalternativer"
-
-#: 
-msgid "Register"
-msgstr "Registrer"
 
 #. Context: locales
 #: 
@@ -14983,16 +14927,8 @@ msgid "Always granted"
 msgstr "Alltid innvilget"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Kan kun gjennomgå og bekrefte sin egen familie. Ingen annen tilgang."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Velg spesifikke tillatelser nedenfor."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Kontakt en administrator for å endre tillatelsene dine."
 
 #: 
 msgid "Custom permissions"
@@ -15007,20 +14943,8 @@ msgid "People &amp; Families"
 msgstr "Personer &amp; familier"
 
 #: 
-msgid "Self-service"
-msgstr "Selvbetjening"
-
-#: 
-msgid "Self-service only"
-msgstr "Kun selvbetjening"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Notatet du prøver å redigere eksisterer ikke lenger."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Denne brukeren kan kun gjennomgå og oppdatere sin egen familieprofil. Individuelle tillatelser gjelder ikke."
 
 #: 
 msgid "User List"
@@ -18285,16 +18209,8 @@ msgid "Second Home"
 msgstr "Annet hjem"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Den tilknyttede personen er avdød eller inaktiv. Innlogging, økter og API-nøkkelen er blokkert til personen er aktiv igjen."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Dette er postadressens"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Denne personen er avdød eller inaktiv, så denne kontoen kan ikke logge inn"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18983,10 +18899,6 @@ msgid "Account unlocked"
 msgstr "Konto låst opp"
 
 #: 
-msgid "Accounts"
-msgstr "Kontoer"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Active må være true eller false"
 
@@ -19179,10 +19091,6 @@ msgid "Author"
 msgstr "Forfatter"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Myndighet gis til personen, ikke til en innlogging, så den kan gis før personen har en. En person med innlogging bare for selvbetjening ser fortsatt bare sin egen plan til en administrator utvider kontoen."
-
-#: 
 msgid "Automatic"
 msgstr "Automatisk"
 
@@ -19305,10 +19213,6 @@ msgstr "Velg en klasse"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Velg en dag i måneden fra 1 til 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Velg et nytt bilde"
 
 #: 
 msgid "Choose a person"
@@ -20081,10 +19985,6 @@ msgid "Last attempt"
 msgstr "Siste forsøk"
 
 #: 
-msgid "Last check"
-msgstr "Siste kontroll"
-
-#: 
 msgid "Last date"
 msgstr "Siste dato"
 
@@ -20311,10 +20211,6 @@ msgstr "Ingen kalender er delt med medlemmer ennå."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Ingen kalender er åpen for denne tjenesten, så arrangementene vises ikke i noen kalender."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Ingen kalender er delt med medlemmer."
 
 #: 
 msgid "No class"
@@ -20851,14 +20747,6 @@ msgid "Please tell us what needs changing."
 msgstr "Fortell oss hva som må endres."
 
 #: 
-msgid "Portal settings"
-msgstr "Portalinnstillinger"
-
-#: 
-msgid "Portal theme"
-msgstr "Portaltema"
-
-#: 
 msgid "Position"
 msgstr "Oppgave"
 
@@ -21075,10 +20963,6 @@ msgid "SMTP test"
 msgstr "SMTP-test"
 
 #: 
-msgid "Save calendars"
-msgstr "Lagre kalendere"
-
-#: 
 msgid "Save changes"
 msgstr "Lagre endringer"
 
@@ -21089,10 +20973,6 @@ msgstr "Lagret — denne tjenesten ber ikke lenger om hjelp"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Lagret — denne tjenesten ber nå om hjelp"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Lagret. Medlemmer ser kalenderne som er slått på ovenfor."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21197,10 +21077,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Kan velges selv må være true eller false"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Selvbetjeningskontoer"
-
-#: 
 msgid "Send"
 msgstr "Send"
 
@@ -21269,18 +21145,6 @@ msgstr "Vis i Medlemsportalen"
 #: 
 msgid "Show past events"
 msgstr "Vis tidligere arrangementer"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Vis menighetskalenderen"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Vis menighetskalenderen i Medlemsportalen."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Vis avsnittet for menighetskalenderen i Medlemsportalen."
 
 #: 
 msgid "Show the next"
@@ -21689,10 +21553,6 @@ msgstr "%s må være et helt antall minutter"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s må være innenfor %d minutter fra arrangementet"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Kalenderne for Medlemsportalen ble lagret."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22143,10 +22003,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Disse behovene kommer fra planen. Å lagre her endrer bare denne gjennomføringen."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Disse tallene teller bare selvbetjeningskontoer: personer hvis innlogging bare gir tilgang til Medlemsportalen og ingenting annet."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Disse personene er fortsatt tildelt, men oppgaven de har er ikke lenger en del av bemanningsplanen for denne datoen."
 
@@ -22231,14 +22087,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Dette er ikke et gyldig navn på en temamappe."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Dette er ikke en av teamets datoer."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Dette er ikke ett av teamene dine."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Hit sender menigheten post, og dette er personen de ringer angående husstanden din."
 
@@ -22297,10 +22145,6 @@ msgstr "Denne siden er ikke en del av kontoen din. Hvis du mener den bør være 
 #: 
 msgid "This page was not found"
 msgstr "Siden ble ikke funnet"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Denne delen av Medlemsportalen er for ledere av frivilligteam."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23971,16 +23815,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} tildelt og registrert som godtatt"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Be en administrator endre innloggingsadressen din."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "E-post endret av en administrator fra %1$s til %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Bare en administrator kan endre e-postadressen til en person med en brukerkonto."
 
 #: 
 msgid "Fund totals appear here once payments are added."

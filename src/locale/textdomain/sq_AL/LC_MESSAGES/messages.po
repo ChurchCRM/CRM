@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "Cell Phone Family"
 
 #: 
-msgid "Family Email"
-msgstr "Familja Email"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Personal Home Phone"
 
@@ -3900,10 +3896,6 @@ msgid "Oops! Page not found."
 msgstr "Oops! Faqja nuk u gjend."
 
 #: 
-msgid "Family Registration"
-msgstr "Regjistrimi i Familjes"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Ju lutem vendosni sa më poshtë për të filluar verifikimin e familjes suaj"
 
@@ -5303,24 +5295,8 @@ msgid "Email address"
 msgstr "Adresa e email-it"
 
 #: 
-msgid "Enter family name"
-msgstr "Shkruani mbiemrin e familjes"
-
-#: 
 msgid "Family name is required"
 msgstr "Mbiemri i familjes kërkohet"
-
-#: 
-msgid "First name"
-msgstr "Emri"
-
-#: 
-msgid "Home phone number"
-msgstr "Numri i telefonit të shtëpisë"
-
-#: 
-msgid "Last name"
-msgstr "Mbiemri"
 
 #: 
 msgid "Next Member"
@@ -9749,10 +9725,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Ne do ta përdorim këtë për të qëndruar në kontakt dhe për të dërguar përditësimet e kishës."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Jemi kaq të gëzuar që je këtu! Regjistro familjen tuaj në vetëm 3 hapa të lehtë."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Mirë se Vjen Përsëri!"
 
@@ -13727,10 +13699,6 @@ msgid "Generate new code"
 msgstr "Gjenero kod të ri"
 
 #: 
-msgid "Go to homepage"
-msgstr "Shko në faqen bazë"
-
-#: 
 msgid "Group added to cart"
 msgstr "Grupi u shtua në shportë"
 
@@ -13753,10 +13721,6 @@ msgstr "Keni gati aplikacionin tuaj të vërtetimit (Google Authenticator, Micro
 #: 
 msgid "Hide advanced options"
 msgstr "Fshih opsionet e avancuara"
-
-#: 
-msgid "Home phone is required"
-msgstr "Telefoni i shtëpisë kërkohet"
 
 #: 
 msgid "ICS URL"
@@ -14431,10 +14395,6 @@ msgid "Warnings"
 msgstr "Paralajmërime"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Jemi kaq të gëzuar që familja juaj na është bashkuar!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Mirë se Vjen në Familje!"
 
@@ -14489,10 +14449,6 @@ msgstr "Preferenca e gjuhës së shfletuesit tuaj ndryshon nga vendndodhja juaj 
 #: 
 msgid "Your database already contains data"
 msgstr "Baza juaj e të dhënave tashmë përmban të dhëna"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Regjistrimi juaj ka qenë i pranuar. Skuadra jonë do të jetë në kontakt shpejt për të personalisht ju mirëpritur."
 
 #: 
 msgid "Zip code is required"
@@ -14571,10 +14527,6 @@ msgid "open rate"
 msgstr "shkalla e hapjes"
 
 #: 
-msgid "our church"
-msgstr "kisha jonë"
-
-#: 
 msgid "payment(s)?"
 msgstr "pagesë(at)?"
 
@@ -14613,14 +14565,6 @@ msgstr "vj."
 #: 
 msgid "yrs"
 msgstr "vje."
-
-#: 
-msgid "Account options"
-msgstr "Opsionet e llogarisë"
-
-#: 
-msgid "Register"
-msgstr "Regjistrohu"
 
 #. Context: locales
 #: 
@@ -14903,16 +14847,8 @@ msgid "Always granted"
 msgstr "Gjithmonë e dhënë"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Mund të rishikojë dhe verifikojë vetëm familjen e vet. Asnjë qasje tjetër."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Zgjidhni lejet specifike më poshtë."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Kontaktoni një administrator për të ndryshuar lejet tuaja."
 
 #: 
 msgid "Custom permissions"
@@ -14927,20 +14863,8 @@ msgid "People &amp; Families"
 msgstr "Njerëz &amp; Familje"
 
 #: 
-msgid "Self-service"
-msgstr "Vetëshërbim"
-
-#: 
-msgid "Self-service only"
-msgstr "Vetëm vetëshërbim"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Shënimi që po përpiqeni të redaktoni nuk ekziston më."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Ky përdorues mund të rishikojë dhe përditësojë vetëm profilin e familjes së vet. Lejet individuale nuk zbatohen."
 
 #: 
 msgid "User List"
@@ -18205,16 +18129,8 @@ msgid "Second Home"
 msgstr "Shtëpia e Dytë"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Personi i lidhur është i vdekur ose joaktiv. Hyrja, seanseve dhe çelësi i API janë bllokuar derisa personi të bëhet përsëri aktiv."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Kjo është adresa postale"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Ky person është i vdekur ose joaktiv, kështu që ky llogari nuk mund të hyj"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18903,10 +18819,6 @@ msgid "Account unlocked"
 msgstr "Llogaria u zhbllokua"
 
 #: 
-msgid "Accounts"
-msgstr "Llogaritë"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Aktiv duhet të jetë e vërtetë ose e gabuar"
 
@@ -19099,10 +19011,6 @@ msgid "Author"
 msgstr "Autori"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Autoriteti i jepet personit, jo hyrjes, ndaj mund të jepet para se ai të ketë hyrje. Një personi, hyrja e të cilit është vetëm vetëshërbim, vazhdon të shohë vetëm orarin e vet derisa një administrator të zgjerojë llogarinë e tij."
-
-#: 
 msgid "Automatic"
 msgstr "Automatik"
 
@@ -19225,10 +19133,6 @@ msgstr "Zgjidhni një klasë"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Zgjidhni një ditë të muajit nga 1 deri në 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Zgjidhni një foto të re"
 
 #: 
 msgid "Choose a person"
@@ -20001,10 +19905,6 @@ msgid "Last attempt"
 msgstr "Përpjekja e fundit"
 
 #: 
-msgid "Last check"
-msgstr "Kontrolli i fundit"
-
-#: 
 msgid "Last date"
 msgstr "Data e fundit"
 
@@ -20231,10 +20131,6 @@ msgstr "Asnjë kalendar nuk është ndarë ende me anëtarët."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Asnjë kalendar nuk është i hapur për këtë shërbesë, ndaj ngjarjet nuk do të shfaqen në asnjë kalendar."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Asnjë kalendar nuk ndahet me anëtarët."
 
 #: 
 msgid "No class"
@@ -20771,14 +20667,6 @@ msgid "Please tell us what needs changing."
 msgstr "Na tregoni çfarë duhet ndryshuar."
 
 #: 
-msgid "Portal settings"
-msgstr "Cilësimet e portalit"
-
-#: 
-msgid "Portal theme"
-msgstr "Tema e portalit"
-
-#: 
 msgid "Position"
 msgstr "Pozicioni"
 
@@ -20995,10 +20883,6 @@ msgid "SMTP test"
 msgstr "Test SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "Ruaj kalendarët"
-
-#: 
 msgid "Save changes"
 msgstr "Ruaj Ndryshimet"
 
@@ -21009,10 +20893,6 @@ msgstr "U ruajt – kjo shërbesë nuk po kërkon më ndihmë"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "U ruajt – kjo shërbesë tani po kërkon ndihmë"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "U ruajt. Anëtarët shohin kalendarët e aktivizuar më sipër."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21117,10 +20997,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Vetëcaktimi duhet të jetë e vërtetë ose e gabuar"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Llogari vetëshërbimi"
-
-#: 
 msgid "Send"
 msgstr "Dërgo"
 
@@ -21189,18 +21065,6 @@ msgstr "Shfaq në Portalin e anëtarëve"
 #: 
 msgid "Show past events"
 msgstr "Shfaq ngjarjet e kaluara"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Shfaq kalendarin e kishës"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Shfaq kalendarin e kishës në Portalin e anëtarëve."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Shfaq seksionin e kalendarit të kishës në Portalin e anëtarëve."
 
 #: 
 msgid "Show the next"
@@ -21609,10 +21473,6 @@ msgstr "Fusha %s duhet të jetë një numër i plotë minutash"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "Fusha %s duhet të jetë brenda %d minutave nga ngjarja"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Kalendarët e Portalit të anëtarëve u ruajtën."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22063,10 +21923,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Këto nevoja vijnë nga orari. Ruajtja këtu ndryshon vetëm këtë zhvillim."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Këta numra numërojnë vetëm llogaritë e vetëshërbimit: persona hyrja e të cilëve arrin vetëm te Portali i anëtarëve dhe asgjë tjetër."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Këta persona janë ende të caktuar, por pozicioni që mbajnë nuk është më pjesë e planit të stafimit të kësaj date."
 
@@ -22151,14 +22007,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Ky nuk është emër i vlefshëm dosjeje teme."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Kjo nuk është një nga datat e ekipit tuaj."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Ky nuk është një nga ekipet tuaja."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Këtu kisha dërgon postën dhe kë thërret për familjen tuaj."
 
@@ -22217,10 +22065,6 @@ msgstr "Kjo faqe nuk është pjesë e llogarisë suaj. Nëse mendoni se duhet t�
 #: 
 msgid "This page was not found"
 msgstr "Kjo faqe nuk u gjet"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Ky pjesë e Portalit të anëtarëve është për udhëheqësit e ekipeve të vullnetarëve."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23891,16 +23735,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} u caktua dhe u regjistrua si i pranuar"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Kërkoji një administratori të ndryshojë emailin tënd të hyrjes."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Emaili u ndryshua nga një administrator nga %1$s në %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Vetëm një administrator mund të ndryshojë emailin e një personi me llogari përdoruesi."
 
 #: 
 msgid "Fund totals appear here once payments are added."

@@ -436,10 +436,6 @@ msgid "Family Cell Phone"
 msgstr "കുടുംബ സെൽ ഫോൺ"
 
 #: 
-msgid "Family Email"
-msgstr "കുടുംബ ഇമെയിൽ"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "വ്യക്തിഗത വീട്ടു ഫോൺ"
 
@@ -3876,10 +3872,6 @@ msgid "Oops! Page not found."
 msgstr "ക്ഷമിക്കണം! പേജ് കണ്ടെത്തിയില്ല."
 
 #: 
-msgid "Family Registration"
-msgstr "കുടുംബ രജിസ്‌ട്രേഷൻ"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "നിങ്ങളുടെ കുടുംബ സ്ഥിരീകരണം ആരംഭിക്കാൻ ഇനിപ്പറയുന്നത് നൽകുക"
 
@@ -5279,24 +5271,8 @@ msgid "Email address"
 msgstr "ഇമെയിൽ വിലാസം"
 
 #: 
-msgid "Enter family name"
-msgstr "കുടുംബ പേര് നൽകുക"
-
-#: 
 msgid "Family name is required"
 msgstr "കുടുംബ പേര് ആവശ്യമാണ്"
-
-#: 
-msgid "First name"
-msgstr "പേര്"
-
-#: 
-msgid "Home phone number"
-msgstr "വീട്ടിലെ ഫോൺ നമ്പർ"
-
-#: 
-msgid "Last name"
-msgstr "കുടുംബപ്പേര്"
 
 #: 
 msgid "Next Member"
@@ -9725,10 +9701,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "ഞങ്ങൾ ഇത് ബന്ധം നിലനിർത്തുന്നതിനും സഭാ അദ്യതനങ്ങൾ അയക്കുന്നതിനും ഉപയോഗിക്കും."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "നിങ്ങൾ ഇവിടെ ഉണ്ടെന്ന് ഞങ്ങൾ വളരെ സന്തോഷിക്കുന്നു! 3 എളുപ്പ ഘട്ടങ്ങളിൽ നിങ്ങളുടെ കുടുംബം രജിസ്റ്റർ ചെയ്യുക."
-
-#: 
 msgid "Welcome Back!"
 msgstr "സ്വാഗതം!"
 
@@ -13703,10 +13675,6 @@ msgid "Generate new code"
 msgstr "പുതിയ കോഡ് ഉണ്ടാക്കൂ"
 
 #: 
-msgid "Go to homepage"
-msgstr "ഹോം പേജിലേക്ക് പോകുക"
-
-#: 
 msgid "Group added to cart"
 msgstr "ഗ്രൂപ്പ് കാർട്ടിൽ ചേർത്തു"
 
@@ -13729,10 +13697,6 @@ msgstr "ഓതന്റിക്കേറ്റർ ആപ്പ് തയ്യ�
 #: 
 msgid "Hide advanced options"
 msgstr "വിപുലമായ ഓപ്ഷനുകൾ മറയ്ക്കുക"
-
-#: 
-msgid "Home phone is required"
-msgstr "വീട്ടിലെ ഫോൺ ആവശ്യമാണ്"
 
 #: 
 msgid "ICS URL"
@@ -14407,10 +14371,6 @@ msgid "Warnings"
 msgstr "മുന്നറിയിപ്പുകൾ"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "നിങ്ങളുടെ കുടുംബം ഞങ്ങളോടൊപ്പം ചേർന്നതിൽ ഞങ്ങൾ വളരെ സന്തോഷിക്കുന്നു!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "കുടുംബത്തിലേക്ക് സ്വാഗതം!"
 
@@ -14465,10 +14425,6 @@ msgstr "ബ്രൗസർ ഭാഷ ChurchCRM ലോക്കലിൽ നി�
 #: 
 msgid "Your database already contains data"
 msgstr "നിങ്ങളുടെ ഡാറ്റാബേസിൽ ഇതിനകം ഡേറ്റ ഉണ്ട്"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "നിങ്ങളുടെ രജിസ്ട്രേഷൻ ലഭിച്ചു. ഞങ്ങളുടെ ടീം ഉടൻ നിങ്ങളെ വ്യക്തിപരമായി സ്വാഗതം ചെയ്യാൻ ബന്ധപ്പെടും."
 
 #: 
 msgid "Zip code is required"
@@ -14547,10 +14503,6 @@ msgid "open rate"
 msgstr "ഓപ്പൺ നിരക്ക്"
 
 #: 
-msgid "our church"
-msgstr "ഞങ്ങളുടെ സഭ"
-
-#: 
 msgid "payment(s)?"
 msgstr "പേമെന്റ്(കൾ)?"
 
@@ -14589,14 +14541,6 @@ msgstr "വർ"
 #: 
 msgid "yrs"
 msgstr "വർഷ"
-
-#: 
-msgid "Account options"
-msgstr "അക്കൗണ്ട് ഓപ്ഷനുകൾ"
-
-#: 
-msgid "Register"
-msgstr "രജിസ്ട്രർ"
 
 #. Context: locales
 #: 
@@ -14879,16 +14823,8 @@ msgid "Always granted"
 msgstr "എല്ലായ്പ്പോഴും അനുവദിച്ചിരിക്കുന്നു"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "സ്വന്തം കുടുംബം മാത്രം അവലോകനം ചെയ്യാനും സ്ഥിരീകരിക്കാനും കഴിയും. മറ്റ് പ്രവേശനം ഇല്ല."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "താഴെ നിർദ്ദിഷ്ട അനുമതികൾ തിരഞ്ഞെടുക്കുക."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "നിങ്ങളുടെ അനുമതികൾ മാറ്റാൻ ഒരു അഡ്മിനിസ്ട്രേറ്ററെ ബന്ധപ്പെടുക."
 
 #: 
 msgid "Custom permissions"
@@ -14903,20 +14839,8 @@ msgid "People &amp; Families"
 msgstr "ആളുകളും &amp; കുടുംബങ്ങളും"
 
 #: 
-msgid "Self-service"
-msgstr "സ്വയം സേവനം"
-
-#: 
-msgid "Self-service only"
-msgstr "സ്വയം സേവനം മാത്രം"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "നിങ്ങൾ എഡിറ്റ് ചെയ്യാൻ ശ്രമിക്കുന്ന കുറിപ്പ് ഇനി നിലവിലില്ല."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "ഈ ഉപയോക്താവിന് സ്വന്തം കുടുംബ പ്രൊഫൈൽ മാത്രം അവലോകനം ചെയ്യാനും അപ്‌ഡേറ്റ് ചെയ്യാനും കഴിയും. വ്യക്തിഗത അനുമതികൾ ബാധകമല്ല."
 
 #: 
 msgid "User List"
@@ -18181,16 +18105,8 @@ msgid "Second Home"
 msgstr "രണ്ടാം വീട്"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "ബന്ധപ്പെട്ട വ്യക്തി മരിച്ച അല്ലെങ്കിൽ നിഷ്‍ക്രിയമാണ്. വ്യക്തിയെ പുനരാരംഭിക്കുവര കൂടെ സൈൻ-ഇൻ, സെഷനുകൾ കൂടാതെ API കീ തടസ്സപ്പെട്ടിരിക്കുന്നു."
-
-#: 
 msgid "This is the mailing address"
 msgstr "ഇത് മെയിലിംഗ് വിലാസമാണ്"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "ഈ വ്യക്തി മരിച്ച അല്ലെങ്കിൽ നിഷ്‍ക്രിയമാണ്, അതിനാൽ ഈ ഖാതകൾ സൈൻ ഇൻ ചെയ്യാൻ കഴിയില്ല"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18879,10 +18795,6 @@ msgid "Account unlocked"
 msgstr "അക്കൗണ്ട് അൺലോക്ക് ചെയ്തു"
 
 #: 
-msgid "Accounts"
-msgstr "അക്കൗണ്ടുകൾ"
-
-#: 
 msgid "Active must be true or false"
 msgstr "സജീവം എന്നത് ശരി അല്ലെങ്കിൽ തെറ്റ് ആയിരിക്കണം"
 
@@ -19075,10 +18987,6 @@ msgid "Author"
 msgstr "രചയിതാവ്"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "അധികാരം നൽകുന്നത് വ്യക്തിക്കാണ്, ലോഗിനല്ല, അതിനാൽ അവർക്ക് ലോഗിൻ ലഭിക്കുന്നതിന് മുമ്പ് തന്നെ അത് നൽകാം. സ്വയം സേവനം മാത്രമുള്ള ലോഗിൻ ഉള്ള വ്യക്തിക്ക്, ഒരു അഡ്മിനിസ്ട്രേറ്റർ അവരുടെ അക്കൗണ്ട് വിപുലപ്പെടുത്തുന്നതുവരെ സ്വന്തം ഷെഡ്യൂൾ മാത്രമേ കാണാൻ കഴിയൂ."
-
-#: 
 msgid "Automatic"
 msgstr "സ്വയമേവ"
 
@@ -19201,10 +19109,6 @@ msgstr "ഒരു ക്ലാസ് തിരഞ്ഞെടുക്കുക"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "മാസത്തിലെ 1 മുതൽ 31 വരെയുള്ള ഒരു ദിവസം തിരഞ്ഞെടുക്കുക"
-
-#: 
-msgid "Choose a new photo"
-msgstr "ഒരു പുതിയ ഫോട്ടോ തിരഞ്ഞെടുക്കുക"
 
 #: 
 msgid "Choose a person"
@@ -19977,10 +19881,6 @@ msgid "Last attempt"
 msgstr "അവസാന ശ്രമം"
 
 #: 
-msgid "Last check"
-msgstr "അവസാന പരിശോധന"
-
-#: 
 msgid "Last date"
 msgstr "അവസാനത്തെ തീയതി"
 
@@ -20207,10 +20107,6 @@ msgstr "അംഗങ്ങളുമായി ഇതുവരെ ഒരു കല
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "ഈ ശുശ്രൂഷയ്ക്കായി ഒരു കലണ്ടറും തുറന്നിട്ടില്ല, അതിനാൽ പരിപാടികൾ ഒരു കലണ്ടറിലും കാണിക്കില്ല."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "അംഗങ്ങളുമായി ഒരു കലണ്ടറും പങ്കിട്ടിട്ടില്ല."
 
 #: 
 msgid "No class"
@@ -20747,14 +20643,6 @@ msgid "Please tell us what needs changing."
 msgstr "എന്താണ് മാറ്റേണ്ടതെന്ന് ദയവായി ഞങ്ങളോട് പറയുക."
 
 #: 
-msgid "Portal settings"
-msgstr "പോർട്ടൽ ക്രമീകരണങ്ങൾ"
-
-#: 
-msgid "Portal theme"
-msgstr "പോർട്ടൽ തീം"
-
-#: 
 msgid "Position"
 msgstr "സ്ഥാനം"
 
@@ -20971,10 +20859,6 @@ msgid "SMTP test"
 msgstr "SMTP പരീക്ഷണം"
 
 #: 
-msgid "Save calendars"
-msgstr "കലണ്ടറുകൾ സേവ് ചെയ്യുക"
-
-#: 
 msgid "Save changes"
 msgstr "മാറ്റങ്ങൾ സംരക്ഷിക്കുക"
 
@@ -20985,10 +20869,6 @@ msgstr "സേവ് ചെയ്തു — ഈ ശുശ്രൂഷ ഇനി 
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "സേവ് ചെയ്തു — ഈ ശുശ്രൂഷ ഇപ്പോൾ സഹായം ചോദിക്കുന്നു"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "സേവ് ചെയ്തു. മുകളിൽ ഓണാക്കിയ കലണ്ടറുകൾ അംഗങ്ങൾ കാണും."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21093,10 +20973,6 @@ msgid "Self-assignable must be true or false"
 msgstr "സ്വയം നിയോഗിക്കാവുന്നത് ശരി അല്ലെങ്കിൽ തെറ്റ് ആയിരിക്കണം"
 
 #: 
-msgid "Self-service accounts"
-msgstr "സ്വയം സേവന അക്കൗണ്ടുകൾ"
-
-#: 
 msgid "Send"
 msgstr "അയയ്ക്കുക"
 
@@ -21165,18 +21041,6 @@ msgstr "അംഗ പോർട്ടലിൽ കാണിക്കുക"
 #: 
 msgid "Show past events"
 msgstr "കഴിഞ്ഞ പരിപാടികൾ കാണിക്കുക"
-
-#: 
-msgid "Show the church calendar"
-msgstr "ചർച്ച് കലണ്ടർ കാണിക്കുക"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "അംഗ പോർട്ടലിൽ ചർച്ച് കലണ്ടർ കാണിക്കുക."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "അംഗ പോർട്ടലിൽ ചർച്ച് കലണ്ടർ വിഭാഗം കാണിക്കുക."
 
 #: 
 msgid "Show the next"
@@ -21585,10 +21449,6 @@ msgstr "%s മിനിറ്റുകളുടെ ഒരു പൂർണ്ണ�
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s പരിപാടിയുടെ %d മിനിറ്റിനുള്ളിൽ ആയിരിക്കണം"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "അംഗ പോർട്ടൽ കലണ്ടറുകൾ സേവ് ചെയ്തു."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22039,10 +21899,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "ഈ ആവശ്യങ്ങൾ ഷെഡ്യൂളിൽ നിന്ന് വരുന്നു. ഇവിടെ സേവ് ചെയ്യുന്നത് ഈ തീയതിയെ മാത്രം മാറ്റുന്നു."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "ഈ സംഖ്യകൾ സ്വയം സേവന അക്കൗണ്ടുകളെ മാത്രം കണക്കാക്കുന്നു: ലോഗിൻ വഴി അംഗ പോർട്ടലിൽ മാത്രം പ്രവേശിക്കാൻ കഴിയുന്ന ആളുകൾ."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "ഈ ആളുകളെ ഇപ്പോഴും നിയോഗിച്ചിട്ടുണ്ട്, എന്നാൽ അവർ വഹിക്കുന്ന സ്ഥാനം ഈ തീയതിയുടെ ആൾബല പദ്ധതിയുടെ ഭാഗമല്ല."
 
@@ -22127,14 +21983,6 @@ msgid "This is not a valid theme folder name."
 msgstr "ഇത് സാധുവായ തീം ഫോൾഡർ പേര് അല്ല."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "ഇത് നിങ്ങളുടെ ടീമിന്റെ തീയതികളിൽ ഒന്നല്ല."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "ഇത് നിങ്ങളുടെ ടീമുകളിൽ ഒന്നല്ല."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "ചർച്ച് തപാൽ അയയ്ക്കുന്നതും നിങ്ങളുടെ കുടുംബത്തെക്കുറിച്ച് ആരെ വിളിക്കുന്നു എന്നതും ഇവിടെയാണ്."
 
@@ -22193,10 +22041,6 @@ msgstr "ഈ പേജ് നിങ്ങളുടെ അക്കൗണ്ടി
 #: 
 msgid "This page was not found"
 msgstr "ഈ പേജ് കണ്ടെത്തിയില്ല"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "അംഗ പോർട്ടലിന്റെ ഈ ഭാഗം സന്നദ്ധസേവക ടീം ലീഡർമാർക്കുള്ളതാണ്."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23867,16 +23711,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} നിയോഗിച്ച് സ്വീകരിച്ചതായി രേഖപ്പെടുത്തി"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "നിങ്ങളുടെ പ്രവേശന ഇമെയിൽ മാറ്റാൻ ഒരു നിർവാഹകനോട് ചോദിക്കുക."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "ഒരു നിർവാഹകൻ ഇമെയിൽ %1$s-ൽ നിന്ന് %2$s-ലേക്ക് മാറ്റി"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "ഉപയോക്തൃ അംഗത്വമുള്ള വ്യക്തിയുടെ ഇമെയിൽ ഒരു നിർവാഹകന് മാത്രമേ മാറ്റാനാകൂ."
 
 #: 
 msgid "Fund totals appear here once payments are added."

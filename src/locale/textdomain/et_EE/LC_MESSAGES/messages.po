@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "Perekonna mobiiltelefon"
 
 #: 
-msgid "Family Email"
-msgstr "Perekonna e-post"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Isiklik kodutelefon"
 
@@ -3900,10 +3896,6 @@ msgid "Oops! Page not found."
 msgstr "Oih! Lehte ei leitud."
 
 #: 
-msgid "Family Registration"
-msgstr "Perekonna registreerimine"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Perekonna kinnitamise alustamiseks sisestage järgmine"
 
@@ -5311,24 +5303,8 @@ msgid "Email address"
 msgstr "E-posti aadress"
 
 #: 
-msgid "Enter family name"
-msgstr "Sisestage perekonna nimi"
-
-#: 
 msgid "Family name is required"
 msgstr "Perekonna nimi on nõutav"
-
-#: 
-msgid "First name"
-msgstr "Eesnimi"
-
-#: 
-msgid "Home phone number"
-msgstr "Kodune telefoninumber"
-
-#: 
-msgid "Last name"
-msgstr "Perekonnanimi"
 
 #: 
 msgid "Next Member"
@@ -9757,10 +9733,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Kasutame seda teiega ühenduse hoidmiseks ja kiriku uudiste saatmiseks."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Meil on nii hea meel, et olete siin! Registreerige oma perekond vaid 3 lihtsa sammuga."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Tere tulemast tagasi!"
 
@@ -13735,10 +13707,6 @@ msgid "Generate new code"
 msgstr "Genereeri uus kood"
 
 #: 
-msgid "Go to homepage"
-msgstr "Mine avalehele"
-
-#: 
 msgid "Group added to cart"
 msgstr "Rühm on lisatud ostukorvi"
 
@@ -13761,10 +13729,6 @@ msgstr "Valmistage ette oma autentimisrakendus (Google Authenticator, Microsoft 
 #: 
 msgid "Hide advanced options"
 msgstr "Peida täpsemad suvandid"
-
-#: 
-msgid "Home phone is required"
-msgstr "Kodune telefon on nõutav"
 
 #: 
 msgid "ICS URL"
@@ -14439,10 +14403,6 @@ msgid "Warnings"
 msgstr "Hoiatused"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Meil on väga hea meel, et teie perekond on meiega liitunud!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Tere tulemast perekonda!"
 
@@ -14497,10 +14457,6 @@ msgstr "Teie brauseri keeleeelistus erineb teie ChurchCRM lokaalist"
 #: 
 msgid "Your database already contains data"
 msgstr "Teie andmebaas sisaldab juba andmeid"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Teie registreerumine on vastu võetud. Meie meeskond võtab peagi ühendust, et teid isiklikult tervitada."
 
 #: 
 msgid "Zip code is required"
@@ -14579,10 +14535,6 @@ msgid "open rate"
 msgstr "avatud määr"
 
 #: 
-msgid "our church"
-msgstr "meie kirik"
-
-#: 
 msgid "payment(s)?"
 msgstr "makse(d)?"
 
@@ -14621,14 +14573,6 @@ msgstr "a."
 #: 
 msgid "yrs"
 msgstr "a."
-
-#: 
-msgid "Account options"
-msgstr "Konto sätted"
-
-#: 
-msgid "Register"
-msgstr "Registreeri"
 
 #. Context: locales
 #: 
@@ -14911,16 +14855,8 @@ msgid "Always granted"
 msgstr "Alati antud"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Saab vaadata ja kinnitada ainult oma perekonda. Muud juurdepääsu ei ole."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Valige allpool konkreetsed load."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Lubade muutmiseks võtke ühendust administraatoriga."
 
 #: 
 msgid "Custom permissions"
@@ -14935,20 +14871,8 @@ msgid "People &amp; Families"
 msgstr "Inimesed &amp; Perekonnad"
 
 #: 
-msgid "Self-service"
-msgstr "Iseteenindus"
-
-#: 
-msgid "Self-service only"
-msgstr "Ainult iseteenindus"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Märkus, mida proovite muuta, ei ole enam olemas."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "See kasutaja saab vaadata ja uuendada ainult oma perekonna profiili. Individuaalsed load ei kehti."
 
 #: 
 msgid "User List"
@@ -18213,16 +18137,8 @@ msgid "Second Home"
 msgstr "Teine kodu"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Seotud isik on surnud või mitteaktiivne. Sisselogimine, seansid ja API võti on blokeeritud, kuni isik aktiveeritakse uuesti."
-
-#: 
 msgid "This is the mailing address"
 msgstr "See on postiaadress"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "See isik on surnud või mitteaktiivne, seega see konto ei saa sisse logida"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18911,10 +18827,6 @@ msgid "Account unlocked"
 msgstr "Konto on lukust lahti"
 
 #: 
-msgid "Accounts"
-msgstr "Kontod"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Aktiivne peab olema tõene või väär"
 
@@ -19107,10 +19019,6 @@ msgid "Author"
 msgstr "Autor"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Volitus antakse isikule, mitte sisselogimisele, seega saab seda anda enne, kui tal see on. Isik, kelle sisselogimine on ainult iseteenindus, näeb jätkuvalt vaid oma ajakava, kuni administraator tema kontot laiendab."
-
-#: 
 msgid "Automatic"
 msgstr "Automaatne"
 
@@ -19233,10 +19141,6 @@ msgstr "Vali klass"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Vali kuupäev kuus vahemikus 1 kuni 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Vali uus foto"
 
 #: 
 msgid "Choose a person"
@@ -20009,10 +19913,6 @@ msgid "Last attempt"
 msgstr "Viimane katse"
 
 #: 
-msgid "Last check"
-msgstr "Viimane kontroll"
-
-#: 
 msgid "Last date"
 msgstr "Viimane kuupäev"
 
@@ -20239,10 +20139,6 @@ msgstr "Liikmetega pole veel ühtegi kalendrit jagatud."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Selle valdkonna jaoks pole ühtegi kalendrit avatud, seega sündmused ei ilmu üheski kalendris."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Liikmetega pole ühtegi kalendrit jagatud."
 
 #: 
 msgid "No class"
@@ -20779,14 +20675,6 @@ msgid "Please tell us what needs changing."
 msgstr "Ütle meile, mida on vaja muuta."
 
 #: 
-msgid "Portal settings"
-msgstr "Portaali seaded"
-
-#: 
-msgid "Portal theme"
-msgstr "Portaali teema"
-
-#: 
 msgid "Position"
 msgstr "Ülesanne"
 
@@ -21003,10 +20891,6 @@ msgid "SMTP test"
 msgstr "SMTP test"
 
 #: 
-msgid "Save calendars"
-msgstr "Salvesta kalendrid"
-
-#: 
 msgid "Save changes"
 msgstr "Salvesta muudatused"
 
@@ -21017,10 +20901,6 @@ msgstr "Salvestatud – see valdkond enam abi ei küsi"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Salvestatud – see valdkond küsib nüüd abi"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Salvestatud. Liikmed näevad ülal sisse lülitatud kalendreid."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21125,10 +21005,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Ise määratav peab olema tõene või väär"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Iseteeninduskontod"
-
-#: 
 msgid "Send"
 msgstr "Saada"
 
@@ -21197,18 +21073,6 @@ msgstr "Näita Liikmeportaalis"
 #: 
 msgid "Show past events"
 msgstr "Näita möödunud sündmusi"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Näita koguduse kalendrit"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Näita koguduse kalendrit Liikmeportaalis."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Näita koguduse kalendri jaotist Liikmeportaalis."
 
 #: 
 msgid "Show the next"
@@ -21617,10 +21481,6 @@ msgstr "Väli %s peab olema täisarv minuteid"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "Väli %s peab olema sündmusest %d minuti piires"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Liikmeportaali kalendrid salvestati."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22071,10 +21931,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Need vajadused tulevad ajakavast. Siin salvestamine muudab ainult seda toimumiskorda."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Need arvud loevad ainult iseteeninduskontosid: inimesi, kelle sisselogimisega pääseb Liikmeportaali ja mitte kuhugi mujale."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Need inimesed on endiselt määratud, kuid nende ülesanne ei kuulu enam selle kuupäeva komplekteerimisplaani."
 
@@ -22159,14 +22015,6 @@ msgid "This is not a valid theme folder name."
 msgstr "See ei ole kehtiv teema kausta nimi."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "See ei ole ükski su meeskonna kuupäev."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "See ei ole ükski su meeskondadest."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Siia saadab kogudus posti ja siin on näha, kellele su leibkonna asjus helistatakse."
 
@@ -22225,10 +22073,6 @@ msgstr "See leht ei kuulu sinu kontole. Kui arvad, et peaks, küsi koguduse kont
 #: 
 msgid "This page was not found"
 msgstr "Seda lehte ei leitud"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "See Liikmeportaali osa on vabatahtlike meeskonnajuhtidele."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23899,16 +23743,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} määratud ja märgitud nõustunuks"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Palu administraatoril muuta sinu sisselogimise e-posti aadressi."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Administraator muutis e-posti aadressilt %1$s aadressile %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Ainult administraator saab muuta kasutajakontoga isiku e-posti aadressi."
 
 #: 
 msgid "Fund totals appear here once payments are added."

@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "Handphone"
 
 #: 
-msgid "Family Email"
-msgstr "E-mail"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Telepon Pribadi"
 
@@ -3902,10 +3898,6 @@ msgid "Oops! Page not found."
 msgstr "Ups! Halaman tidak ditemukan."
 
 #: 
-msgid "Family Registration"
-msgstr "Registrasi Keluarga"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Silakan masukkan yang berikut untuk memulai verifikasi keluarga Anda"
 
@@ -5309,24 +5301,8 @@ msgid "Email address"
 msgstr "Alamat email"
 
 #: 
-msgid "Enter family name"
-msgstr "Masukkan nama keluarga"
-
-#: 
 msgid "Family name is required"
 msgstr "Nama keluarga wajib diisi"
-
-#: 
-msgid "First name"
-msgstr "Nama depan"
-
-#: 
-msgid "Home phone number"
-msgstr "Nomor telepon rumah"
-
-#: 
-msgid "Last name"
-msgstr "Nama belakang"
 
 #: 
 msgid "Next Member"
@@ -9748,10 +9724,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Kami akan menggunakan ini untuk tetap berkomunikasi dan mengirim kabar gereja."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Kami sangat senang Anda di sini! Daftarkan keluarga Anda hanya dalam 3 langkah mudah."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Selamat Datang Kembali!"
 
@@ -13725,10 +13697,6 @@ msgid "Generate new code"
 msgstr "Buat kode baru"
 
 #: 
-msgid "Go to homepage"
-msgstr "Ke beranda"
-
-#: 
 msgid "Group added to cart"
 msgstr "Grup ditambahkan ke keranjang"
 
@@ -13751,10 +13719,6 @@ msgstr "Siapkan aplikasi autentikator Anda (Google Authenticator, Microsoft Auth
 #: 
 msgid "Hide advanced options"
 msgstr "Sembunyikan opsi lanjutan"
-
-#: 
-msgid "Home phone is required"
-msgstr "Telepon rumah wajib diisi"
 
 #: 
 msgid "ICS URL"
@@ -14429,10 +14393,6 @@ msgid "Warnings"
 msgstr "Peringatan"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Kami sangat senang keluarga Anda bergabung dengan kami!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Selamat Bergabung dalam Keluarga kami!"
 
@@ -14487,10 +14447,6 @@ msgstr "Preferensi bahasa peramban Anda berbeda dari lokal ChurchCRM Anda"
 #: 
 msgid "Your database already contains data"
 msgstr "Basis data Anda sudah berisi data"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Pendaftaran Anda telah diterima. Tim kami akan segera menghubungi untuk menyambut Anda secara personal."
 
 #: 
 msgid "Zip code is required"
@@ -14569,10 +14525,6 @@ msgid "open rate"
 msgstr "Buka Kurs"
 
 #: 
-msgid "our church"
-msgstr "gereja kami"
-
-#: 
 msgid "payment(s)?"
 msgstr "pembayaran?"
 
@@ -14611,14 +14563,6 @@ msgstr "th."
 #: 
 msgid "yrs"
 msgstr "th."
-
-#: 
-msgid "Account options"
-msgstr "Opsi Akun"
-
-#: 
-msgid "Register"
-msgstr "Daftar"
 
 #. Context: locales
 #: 
@@ -14900,16 +14844,8 @@ msgid "Always granted"
 msgstr "Selalu diberikan"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Hanya dapat meninjau dan memverifikasi keluarga sendiri. Tidak ada akses lain."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Pilih izin tertentu di bawah ini."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Hubungi administrator untuk mengubah izin Anda."
 
 #: 
 msgid "Custom permissions"
@@ -14924,20 +14860,8 @@ msgid "People &amp; Families"
 msgstr "Anggota &amp; Keluarga"
 
 #: 
-msgid "Self-service"
-msgstr "Layanan mandiri"
-
-#: 
-msgid "Self-service only"
-msgstr "Hanya layanan mandiri"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Catatan yang ingin Anda edit sudah tidak ada."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Pengguna ini hanya dapat meninjau dan memperbarui profil keluarga mereka sendiri. Izin individu tidak berlaku."
 
 #: 
 msgid "User List"
@@ -18197,16 +18121,8 @@ msgid "Second Home"
 msgstr "Rumah Kedua"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Orang yang terhubung telah meninggal atau tidak aktif. Masuk, sesi, dan kunci API diblokir sampai orang tersebut diaktifkan kembali."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Ini adalah alamat surat"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Orang ini telah meninggal atau tidak aktif, sehingga akun ini tidak dapat masuk"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18887,10 +18803,6 @@ msgid "Account unlocked"
 msgstr "Akun Tidak Terkunci"
 
 #: 
-msgid "Accounts"
-msgstr "Akun"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Aktif harus benar atau salah"
 
@@ -19083,10 +18995,6 @@ msgid "Author"
 msgstr "Penulis"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Wewenang diberikan kepada orangnya, bukan kepada akun masuk, sehingga dapat diberikan sebelum ia memiliki akun. Orang yang akunnya hanya layanan mandiri tetap hanya melihat jadwalnya sendiri sampai administrator memperluas akunnya."
-
-#: 
 msgid "Automatic"
 msgstr "Otomatis"
 
@@ -19209,10 +19117,6 @@ msgstr "Pilih kelas"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Pilih tanggal dalam bulan, dari 1 sampai 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Pilih foto baru"
 
 #: 
 msgid "Choose a person"
@@ -19985,10 +19889,6 @@ msgid "Last attempt"
 msgstr "Percobaan terakhir"
 
 #: 
-msgid "Last check"
-msgstr "Pemeriksaan terakhir"
-
-#: 
 msgid "Last date"
 msgstr "Tanggal terakhir"
 
@@ -20215,10 +20115,6 @@ msgstr "Belum ada kalender yang dibagikan kepada jemaat."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Tidak ada kalender yang terbuka untuk pelayanan ini, sehingga acara tidak akan tampil di kalender mana pun."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Tidak ada kalender yang dibagikan kepada jemaat."
 
 #: 
 msgid "No class"
@@ -20753,14 +20649,6 @@ msgid "Please tell us what needs changing."
 msgstr "Mohon beri tahu kami apa yang perlu diubah."
 
 #: 
-msgid "Portal settings"
-msgstr "Pengaturan portal"
-
-#: 
-msgid "Portal theme"
-msgstr "Tema portal"
-
-#: 
 msgid "Position"
 msgstr "Posisi"
 
@@ -20977,10 +20865,6 @@ msgid "SMTP test"
 msgstr "Uji SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "Simpan kalender"
-
-#: 
 msgid "Save changes"
 msgstr "Simpan perubahan"
 
@@ -20991,10 +20875,6 @@ msgstr "Disimpan — pelayanan ini tidak lagi meminta bantuan"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Disimpan — pelayanan ini sekarang meminta bantuan"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Disimpan. Jemaat melihat kalender yang diaktifkan di atas."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21099,10 +20979,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Dapat ditugaskan sendiri harus benar atau salah"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Akun layanan mandiri"
-
-#: 
 msgid "Send"
 msgstr "Kirim"
 
@@ -21171,18 +21047,6 @@ msgstr "Tampilkan di Portal Jemaat"
 #: 
 msgid "Show past events"
 msgstr "Tampilkan acara yang lalu"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Tampilkan kalender gereja"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Tampilkan kalender gereja di Portal Jemaat."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Tampilkan bagian kalender gereja di Portal Jemaat."
 
 #: 
 msgid "Show the next"
@@ -21591,10 +21455,6 @@ msgstr "%s harus berupa bilangan bulat menit"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s harus dalam %d menit dari acara"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Kalender Portal Jemaat telah disimpan."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22045,10 +21905,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Kebutuhan ini berasal dari jadwal. Menyimpan di sini hanya mengubah kejadian ini."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Angka-angka ini hanya menghitung akun layanan mandiri: orang yang akun masuknya hanya dapat mengakses Portal Jemaat dan tidak yang lain."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Orang-orang ini masih ditugaskan, tetapi posisi yang mereka pegang tidak lagi menjadi bagian dari rencana petugas tanggal ini."
 
@@ -22131,14 +21987,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Ini bukan nama folder tema yang valid."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Ini bukan salah satu tanggal tim Anda."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Ini bukan salah satu tim Anda."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Di sinilah gereja mengirim surat dan siapa yang dihubungi tentang keluarga Anda."
 
@@ -22197,10 +22045,6 @@ msgstr "Halaman ini bukan bagian dari akun Anda. Jika menurut Anda seharusnya, t
 #: 
 msgid "This page was not found"
 msgstr "Halaman ini tidak ditemukan"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Bagian Portal Jemaat ini untuk pemimpin tim relawan."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23869,16 +23713,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} ditugaskan dan dicatat sebagai menerima"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Minta administrator mengubah surel masuk Anda."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Surel diubah oleh administrator dari %1$s menjadi %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Hanya administrator yang dapat mengubah surel orang yang memiliki akun pengguna."
 
 #: 
 msgid "Fund totals appear here once payments are added."

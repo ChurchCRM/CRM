@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "குடும்ப கைபேசி"
 
 #: 
-msgid "Family Email"
-msgstr "குடும்ப மின்னஞ்சல்"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "தனிப்பட்ட வீட்டு தொலைபேசி"
 
@@ -3899,10 +3895,6 @@ msgid "Oops! Page not found."
 msgstr "அச்சச்சோ! பக்கம் கிடைக்கவில்லை."
 
 #: 
-msgid "Family Registration"
-msgstr "குடும்பப் பதிவு"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "உங்கள் குடும்பச் சரிபார்ப்பைத் தொடங்க, பின்வருவனவற்றை உள்ளிடவும்"
 
@@ -5311,24 +5303,8 @@ msgid "Email address"
 msgstr "மின்னஞ்சல் முகவரி"
 
 #: 
-msgid "Enter family name"
-msgstr "குடும்பப் பெயரை உள்ளிடவும்"
-
-#: 
 msgid "Family name is required"
 msgstr "குடும்பப் பெயர் தேவை"
-
-#: 
-msgid "First name"
-msgstr "முதல் பெயர்"
-
-#: 
-msgid "Home phone number"
-msgstr "வீட்டு தொலைபேசி எண்"
-
-#: 
-msgid "Last name"
-msgstr "கடைசி பெயர்"
 
 #: 
 msgid "Next Member"
@@ -9764,10 +9740,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "தொடர்பில் இருக்கவும் திருச்சபை புதுப்பிப்புகளை அனுப்பவும் இதைப் பயன்படுத்துவோம்."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "நீங்கள் இங்கு வந்ததில் மிகவும் மகிழ்ச்சி! 3 எளிய படிகளில் உங்கள் குடும்பத்தைப் பதிவு செய்யுங்கள்."
-
-#: 
 msgid "Welcome Back!"
 msgstr "மீண்டும் வருக!"
 
@@ -13746,10 +13718,6 @@ msgid "Generate new code"
 msgstr "புதிய குறியீட்டை உருவாக்கு"
 
 #: 
-msgid "Go to homepage"
-msgstr "முகப்புப் பக்கத்திற்குச் செல்க"
-
-#: 
 msgid "Group added to cart"
 msgstr "குழு கூடையில் சேர்க்கப்பட்டது"
 
@@ -13772,10 +13740,6 @@ msgstr "உங்கள் அங்கீகரிப்பான் செய�
 #: 
 msgid "Hide advanced options"
 msgstr "மேம்பட்ட விருப்பங்களை மறை"
-
-#: 
-msgid "Home phone is required"
-msgstr "வீட்டுத் தொலைபேசி எண் தேவை"
 
 #: 
 msgid "ICS URL"
@@ -14452,10 +14416,6 @@ msgid "Warnings"
 msgstr "Warnings"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "We're so glad your family has joined us!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Welcome to the Family!"
 
@@ -14510,10 +14470,6 @@ msgstr "உங்கள் உலாவியின் மொழித் தே
 #: 
 msgid "Your database already contains data"
 msgstr "உங்கள் தரவுத்தளத்தில் ஏற்கனவே தரவுகள் உள்ளன"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "உங்கள் பதிவு பெறப்பட்டது. உங்களை நேரில் வரவேற்க எங்கள் குழு விரைவில் உங்களைத் தொடர்புகொள்ளும்."
 
 #: 
 msgid "Zip code is required"
@@ -14592,10 +14548,6 @@ msgid "open rate"
 msgstr "திறப்பு விகிதம்"
 
 #: 
-msgid "our church"
-msgstr "எங்கள் திருச்சபை"
-
-#: 
 msgid "payment(s)?"
 msgstr "கட்டணம்(கள்)?"
 
@@ -14634,14 +14586,6 @@ msgstr "வருடம்"
 #: 
 msgid "yrs"
 msgstr "ஆண்டுகள்"
-
-#: 
-msgid "Account options"
-msgstr "கணக்கு விருப்பங்கள்"
-
-#: 
-msgid "Register"
-msgstr "பதிவு செய்"
 
 #. Context: locales
 #: 
@@ -14924,16 +14868,8 @@ msgid "Always granted"
 msgstr "எப்போதும் வழங்கப்பட்டது"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "தங்கள் சொந்த குடும்பத்தை மட்டுமே மதிப்பாய்வு செய்து சரிபார்க்க முடியும். வேறு அணுகல் இல்லை."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "கீழே குறிப்பிட்ட அனுமதிகளைத் தேர்ந்தெடுக்கவும்."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "உங்கள் அனுமதிகளை மாற்ற ஒரு நிர்வாகியை தொடர்பு கொள்ளவும்."
 
 #: 
 msgid "Custom permissions"
@@ -14948,20 +14884,8 @@ msgid "People &amp; Families"
 msgstr "நபர்கள் &amp; குடும்பங்கள்"
 
 #: 
-msgid "Self-service"
-msgstr "சுய சேவை"
-
-#: 
-msgid "Self-service only"
-msgstr "சுய சேவை மட்டும்"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "நீங்கள் திருத்த முயற்சிக்கும் குறிப்பு இனி இல்லை."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "இந்த பயனர் தங்கள் சொந்த குடும்ப சுயவிவரத்தை மட்டுமே மதிப்பாய்வு செய்து புதுப்பிக்க முடியும். தனிப்பட்ட அனுமதிகள் பொருந்தாது."
 
 #: 
 msgid "User List"
@@ -18226,16 +18150,8 @@ msgid "Second Home"
 msgstr "இரண்டாவது வீடு"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "இணைக்கப்பட்ட நபர் இறந்துவிட்டார் அல்லது செயல்பாடற்றவர். நபர் மீண்டும் செயல்பாடுக்கு வருவார் வரை உள்நுழைவு, அமர்வுகள் மற்றும் API சாவி தடுக்கப்பட்டுள்ளன."
-
-#: 
 msgid "This is the mailing address"
 msgstr "இது தபால் முகவரி"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "இந்த நபர் இறந்துவிட்டார் அல்லது செயலற்றவர், எனவே இந்தக் கணக்கில் உள்நுழைய முடியாது"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18924,10 +18840,6 @@ msgid "Account unlocked"
 msgstr "கணக்கு திறக்கப்பட்டது"
 
 #: 
-msgid "Accounts"
-msgstr "கணக்குகள்"
-
-#: 
 msgid "Active must be true or false"
 msgstr "செயலில் என்பது சரி அல்லது தவறு ஆக இருக்க வேண்டும்"
 
@@ -19120,10 +19032,6 @@ msgid "Author"
 msgstr "ஆசிரியர்"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "அதிகாரம் நபருக்கு வழங்கப்படுகிறது, உள்நுழைவுக்கு அல்ல, எனவே அவருக்கு உள்நுழைவு வருவதற்கு முன்பே அதை வழங்கலாம். உள்நுழைவு சுயசேவை மட்டும் உள்ள நபர், நிர்வாகி அவரது கணக்கை விரிவாக்கும் வரை தனது சொந்த அட்டவணையை மட்டுமே தொடர்ந்து காண்பார்."
-
-#: 
 msgid "Automatic"
 msgstr "தானியங்கி"
 
@@ -19246,10 +19154,6 @@ msgstr "ஒரு வகுப்பைத் தேர்ந்தெடுக�
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "மாதத்தின் 1 முதல் 31 வரை ஒரு நாளைத் தேர்ந்தெடுக்கவும்"
-
-#: 
-msgid "Choose a new photo"
-msgstr "புதிய புகைப்படத்தைத் தேர்ந்தெடுக்கவும்"
 
 #: 
 msgid "Choose a person"
@@ -20022,10 +19926,6 @@ msgid "Last attempt"
 msgstr "கடைசி முயற்சி"
 
 #: 
-msgid "Last check"
-msgstr "கடைசிச் சோதனை"
-
-#: 
 msgid "Last date"
 msgstr "கடைசி தேதி"
 
@@ -20252,10 +20152,6 @@ msgstr "உறுப்பினர்களுடன் இன்னும் �
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "இந்த ஊழியத்துக்கு எந்த நாட்காட்டியும் திறக்கப்படவில்லை, எனவே நிகழ்ச்சிகள் எந்த நாட்காட்டியிலும் தோன்றாது."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "உறுப்பினர்களுடன் எந்த நாட்காட்டியும் பகிரப்படவில்லை."
 
 #: 
 msgid "No class"
@@ -20792,14 +20688,6 @@ msgid "Please tell us what needs changing."
 msgstr "எதை மாற்ற வேண்டும் என்று எங்களுக்குக் கூறவும்."
 
 #: 
-msgid "Portal settings"
-msgstr "போர்ட்டல் அமைப்புகள்"
-
-#: 
-msgid "Portal theme"
-msgstr "போர்ட்டல் தீம்"
-
-#: 
 msgid "Position"
 msgstr "பொறுப்பு"
 
@@ -21016,10 +20904,6 @@ msgid "SMTP test"
 msgstr "SMTP சோதனை"
 
 #: 
-msgid "Save calendars"
-msgstr "நாட்காட்டிகளைச் சேமி"
-
-#: 
 msgid "Save changes"
 msgstr "மாற்றங்களை சேமியுங்கள்"
 
@@ -21030,10 +20914,6 @@ msgstr "சேமிக்கப்பட்டது — இந்த ஊழி
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "சேமிக்கப்பட்டது — இந்த ஊழியம் இப்போது உதவி கேட்கிறது"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "சேமிக்கப்பட்டது. மேலே இயக்கப்பட்ட நாட்காட்டிகளை உறுப்பினர்கள் காண்பார்கள்."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21138,10 +21018,6 @@ msgid "Self-assignable must be true or false"
 msgstr "தானாக ஏற்கத்தக்கது சரி அல்லது தவறு ஆக இருக்க வேண்டும்"
 
 #: 
-msgid "Self-service accounts"
-msgstr "சுயசேவைக் கணக்குகள்"
-
-#: 
 msgid "Send"
 msgstr "அனுப்பு"
 
@@ -21210,18 +21086,6 @@ msgstr "உறுப்பினர் போர்ட்டலில் கா�
 #: 
 msgid "Show past events"
 msgstr "கடந்த நிகழ்ச்சிகளைக் காட்டு"
-
-#: 
-msgid "Show the church calendar"
-msgstr "திருச்சபை நாட்காட்டியைக் காட்டு"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "உறுப்பினர் போர்ட்டலில் திருச்சபை நாட்காட்டியைக் காட்டு."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "உறுப்பினர் போர்ட்டலில் திருச்சபை நாட்காட்டிப் பிரிவைக் காட்டு."
 
 #: 
 msgid "Show the next"
@@ -21630,10 +21494,6 @@ msgstr "%s முழு எண் நிமிடங்களாக இருக
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s நிகழ்ச்சியிலிருந்து %d நிமிடங்களுக்குள் இருக்க வேண்டும்"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "உறுப்பினர் போர்ட்டல் நாட்காட்டிகள் சேமிக்கப்பட்டன."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22084,10 +21944,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "இந்தத் தேவைகள் அட்டவணையிலிருந்து வருகின்றன. இங்கே சேமித்தால் இந்த நிகழ்வு மட்டுமே மாறும்."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "இந்த எண்ணிக்கைகள் சுயசேவைக் கணக்குகளை மட்டுமே கணக்கிடுகின்றன: உள்நுழைவு மூலம் உறுப்பினர் போர்ட்டலை மட்டுமே அணுக முடிந்து வேறு எதையும் அணுக முடியாத நபர்கள்."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "இந்த நபர்கள் இன்னும் நியமிக்கப்பட்டுள்ளனர், ஆனால் அவர்கள் வகிக்கும் பொறுப்பு இப்போது இந்தத் தேதியின் ஆட்கள் அமர்த்தல் திட்டத்தின் பகுதி அல்ல."
 
@@ -22172,14 +22028,6 @@ msgid "This is not a valid theme folder name."
 msgstr "இது சரியான தீம் கோப்புறைப் பெயர் அல்ல."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "இது உங்கள் குழுவின் தேதிகளில் ஒன்றல்ல."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "இது உங்கள் குழுக்களில் ஒன்றல்ல."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "இங்கேதான் திருச்சபை அஞ்சல் அனுப்புகிறது, உங்கள் குடும்பம் குறித்து யாரைத் தொடர்புகொள்கிறது என்பதும்."
 
@@ -22238,10 +22086,6 @@ msgstr "இந்தப் பக்கம் உங்கள் கணக்க
 #: 
 msgid "This page was not found"
 msgstr "இந்தப் பக்கம் கிடைக்கவில்லை"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "உறுப்பினர் போர்ட்டலின் இந்தப் பகுதி தன்னார்வக் குழுத் தலைவர்களுக்கானது."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23912,16 +23756,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} ஒதுக்கப்பட்டு ஏற்றதாகப் பதிவாகியது"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "உங்கள் உள்நுழைவு மின்னஞ்சலை மாற்ற ஒரு நிர்வாகியிடம் கேளுங்கள்."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "ஒரு நிர்வாகி மின்னஞ்சலை %1$s இலிருந்து %2$sக்கு மாற்றினார்"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "பயனர் கணக்கு உள்ள நபரின் மின்னஞ்சலை நிர்வாகி மட்டுமே மாற்ற முடியும்."
 
 #: 
 msgid "Fund totals appear here once payments are added."

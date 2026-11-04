@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "Aile Cep Telefonu"
 
 #: 
-msgid "Family Email"
-msgstr "Aile e -postası"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Kişisel ev telefonu"
 
@@ -3901,10 +3897,6 @@ msgid "Oops! Page not found."
 msgstr "Oops! Sayfa bulunamadı."
 
 #: 
-msgid "Family Registration"
-msgstr "Aile kaydı"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Ailenizin doğrulamasını başlatmak için lütfen aşağıdakileri girin"
 
@@ -5312,24 +5304,8 @@ msgid "Email address"
 msgstr "E-posta adresi"
 
 #: 
-msgid "Enter family name"
-msgstr "Aile adını girin"
-
-#: 
 msgid "Family name is required"
 msgstr "Aile adı gereklidir"
-
-#: 
-msgid "First name"
-msgstr "Ad"
-
-#: 
-msgid "Home phone number"
-msgstr "Ev telefon numarası"
-
-#: 
-msgid "Last name"
-msgstr "Soyad"
 
 #: 
 msgid "Next Member"
@@ -9758,10 +9734,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Bunu iletişimde kalmak ve kilise güncellemeleri göndermek için kullanacağız."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Burada olmanıza çok sevindik! Ailenizi sadece 3 kolay adımda kaydedin."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Tekrar Hoş Geldiniz!"
 
@@ -13736,10 +13708,6 @@ msgid "Generate new code"
 msgstr "Yeni kod oluştur"
 
 #: 
-msgid "Go to homepage"
-msgstr "Ana sayfaya git"
-
-#: 
 msgid "Group added to cart"
 msgstr "Grup sepete eklendi"
 
@@ -13762,10 +13730,6 @@ msgstr "Kimlik doğrulayıcı uygulamanızı hazır bulundurun (Google Authentic
 #: 
 msgid "Hide advanced options"
 msgstr "Gelişmiş seçenekleri gizle"
-
-#: 
-msgid "Home phone is required"
-msgstr "Ev telefonu gereklidir"
 
 #: 
 msgid "ICS URL"
@@ -14440,10 +14404,6 @@ msgid "Warnings"
 msgstr "Uyarılar"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Ailenizin bize katılmasına çok sevindik!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Aileye Hoş Geldiniz!"
 
@@ -14498,10 +14458,6 @@ msgstr "Tarayıcı dil tercihiniz ChurchCRM yerel ayarınızdan farklı"
 #: 
 msgid "Your database already contains data"
 msgstr "Veritabanınız zaten veri içeriyor"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Kaydınız alınmıştır. Ekibimiz sizi şahsen karşılamak için yakında sizinle iletişime geçecektir."
 
 #: 
 msgid "Zip code is required"
@@ -14580,10 +14536,6 @@ msgid "open rate"
 msgstr "açık oran"
 
 #: 
-msgid "our church"
-msgstr "kilisemiz"
-
-#: 
 msgid "payment(s)?"
 msgstr "Ödemeler?"
 
@@ -14622,14 +14574,6 @@ msgstr "yıl"
 #: 
 msgid "yrs"
 msgstr "yıl"
-
-#: 
-msgid "Account options"
-msgstr "Hesap seçenekleri"
-
-#: 
-msgid "Register"
-msgstr "Kayıt Ol"
 
 #. Context: locales
 #: 
@@ -14912,16 +14856,8 @@ msgid "Always granted"
 msgstr "Her zaman verilir"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Yalnızca kendi ailesini inceleyebilir ve doğrulayabilir. Başka erişim yoktur."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Aşağıdan belirli izinleri seçin."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "İzinlerinizi değiştirmek için bir yöneticiyle iletişime geçin."
 
 #: 
 msgid "Custom permissions"
@@ -14936,20 +14872,8 @@ msgid "People &amp; Families"
 msgstr "Kişiler &amp; Aileler"
 
 #: 
-msgid "Self-service"
-msgstr "Self servis"
-
-#: 
-msgid "Self-service only"
-msgstr "Yalnızca self servis"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Düzenlemeye çalıştığınız not artık mevcut değil."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Bu kullanıcı yalnızca kendi aile profilini inceleyebilir ve güncelleyebilir. Bireysel izinler geçerli değildir."
 
 #: 
 msgid "User List"
@@ -18214,16 +18138,8 @@ msgid "Second Home"
 msgstr "İkinci Ev"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Bağlantılı kişi vefat etmiş veya etkin değil. Kişi yeniden etkin hale getirilene kadar oturum açma, oturumlar ve API anahtarı engellenir."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Bu, posta adresidir"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Bu kişi vefat etmiş veya etkin değil, bu nedenle bu hesap giriş yapamaz"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18912,10 +18828,6 @@ msgid "Account unlocked"
 msgstr "Hesap Kilidi"
 
 #: 
-msgid "Accounts"
-msgstr "Hesaplar"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Etkin değeri doğru veya yanlış olmalıdır"
 
@@ -19108,10 +19020,6 @@ msgid "Author"
 msgstr "Yazar"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Yetki, bir girişe değil kişiye verilir; bu nedenle kişinin girişi olmadan önce de verilebilir. Girişi yalnızca self-servis olan bir kişi, bir yönetici hesabını genişletene kadar yalnızca kendi programını görmeye devam eder."
-
-#: 
 msgid "Automatic"
 msgstr "Otomatik"
 
@@ -19234,10 +19142,6 @@ msgstr "Bir sınıf seçin"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Ayın 1 ile 31 arasında bir gününü seçin"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Yeni bir fotoğraf seçin"
 
 #: 
 msgid "Choose a person"
@@ -20010,10 +19914,6 @@ msgid "Last attempt"
 msgstr "Son deneme"
 
 #: 
-msgid "Last check"
-msgstr "Son kontrol"
-
-#: 
 msgid "Last date"
 msgstr "Son tarih"
 
@@ -20240,10 +20140,6 @@ msgstr "Henüz üyelerle hiçbir takvim paylaşılmadı."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Bu hizmete açık bir takvim yok; bu nedenle etkinlikler hiçbir takvimde görünmeyecek."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Üyelerle hiçbir takvim paylaşılmıyor."
 
 #: 
 msgid "No class"
@@ -20780,14 +20676,6 @@ msgid "Please tell us what needs changing."
 msgstr "Lütfen neyin değişmesi gerektiğini bize bildirin."
 
 #: 
-msgid "Portal settings"
-msgstr "Portal ayarları"
-
-#: 
-msgid "Portal theme"
-msgstr "Portal teması"
-
-#: 
 msgid "Position"
 msgstr "Pozisyon"
 
@@ -21004,10 +20892,6 @@ msgid "SMTP test"
 msgstr "SMTP testi"
 
 #: 
-msgid "Save calendars"
-msgstr "Takvimleri kaydet"
-
-#: 
 msgid "Save changes"
 msgstr "Değişiklikleri Kaydet"
 
@@ -21018,10 +20902,6 @@ msgstr "Kaydedildi — bu hizmet artık yardım istemiyor"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Kaydedildi — bu hizmet artık yardım istiyor"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Kaydedildi. Üyeler yukarıda açık olan takvimleri görür."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21126,10 +21006,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Kendi kendine atanabilir doğru veya yanlış olmalıdır"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Self-servis hesapları"
-
-#: 
 msgid "Send"
 msgstr "Gönder"
 
@@ -21198,18 +21074,6 @@ msgstr "Üye Portalı'nda göster"
 #: 
 msgid "Show past events"
 msgstr "Geçmiş etkinlikleri göster"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Kilise takvimini göster"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Kilise takvimini Üye Portalı'nda göster."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Kilise takvimi bölümünü Üye Portalı'nda göster."
 
 #: 
 msgid "Show the next"
@@ -21618,10 +21482,6 @@ msgstr "%s tam sayı olarak dakika olmalıdır"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s, etkinliğe en fazla %d dakika uzaklıkta olmalıdır"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Üye Portalı takvimleri kaydedildi."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22072,10 +21932,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Bu ihtiyaçlar programdan gelir. Burada kaydetmek yalnızca bu oluşumu değiştirir."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Bu sayılar yalnızca self-servis hesaplarını sayar: girişi Üye Portalı'na ulaşabilen ve başka hiçbir yere ulaşamayan kişiler."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Bu kişiler hâlâ atanmış durumda, ancak üstlendikleri pozisyon artık bu tarihin kadro planının parçası değil."
 
@@ -22160,14 +22016,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Bu geçerli bir tema klasörü adı değil."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Bu, ekibinizin tarihlerinden biri değil."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Bu, ekiplerinizden biri değil."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Kilisenin posta gönderdiği yer ve hanenizle ilgili kimi aradığı burada."
 
@@ -22226,10 +22074,6 @@ msgstr "Bu sayfa hesabınızın parçası değil. Olması gerektiğini düşün�
 #: 
 msgid "This page was not found"
 msgstr "Bu sayfa bulunamadı"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Üye Portalı'nın bu kısmı gönüllü ekip liderleri içindir."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23900,16 +23744,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} atandı ve kabul edilmiş olarak kaydedildi"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Oturum e-postanızı değiştirmesi için bir yöneticiden isteyin."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "E-posta bir yönetici tarafından %1$s adresinden %2$s adresine değiştirildi"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Kullanıcı hesabı olan bir kişinin e-postasını yalnızca yönetici değiştirebilir."
 
 #: 
 msgid "Fund totals appear here once payments are added."

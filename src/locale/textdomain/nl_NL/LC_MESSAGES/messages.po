@@ -436,10 +436,6 @@ msgid "Family Cell Phone"
 msgstr "Mobiele Tel.No van gezin"
 
 #: 
-msgid "Family Email"
-msgstr "Gezins e-mail"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Persoonlijke Tel.No Thuis"
 
@@ -3878,10 +3874,6 @@ msgid "Oops! Page not found."
 msgstr "Excuus! De pagina is niet gevonden. "
 
 #: 
-msgid "Family Registration"
-msgstr "Registratie gezinnen"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Voer het volgende in om de verificatie van uw gezin te starten:"
 
@@ -5281,24 +5273,8 @@ msgid "Email address"
 msgstr "E-mailadres"
 
 #: 
-msgid "Enter family name"
-msgstr "Vul achternaam in"
-
-#: 
 msgid "Family name is required"
 msgstr "Achternaam is vereist"
-
-#: 
-msgid "First name"
-msgstr "Voornaam"
-
-#: 
-msgid "Home phone number"
-msgstr "Telefoonnummer thuis"
-
-#: 
-msgid "Last name"
-msgstr "Achternaam"
 
 #: 
 msgid "Next Member"
@@ -9728,10 +9704,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "We gebruiken dit om contact te houden en nieuws van de gemeente te sturen."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "We zijn zo blij dat u hier bent! Registreer uw gezin in slechts 3 eenvoudige stappen."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Welkom terug!"
 
@@ -13706,10 +13678,6 @@ msgid "Generate new code"
 msgstr "Nieuwe code genereren"
 
 #: 
-msgid "Go to homepage"
-msgstr "Naar startpagina"
-
-#: 
 msgid "Group added to cart"
 msgstr "Groep toegevoegd aan verzamelmap"
 
@@ -13732,10 +13700,6 @@ msgstr "Zorg dat uw authenticator-app gereed is (Google Authenticator, Microsoft
 #: 
 msgid "Hide advanced options"
 msgstr "Geavanceerde opties verbergen"
-
-#: 
-msgid "Home phone is required"
-msgstr "Thuistelefoon is verplicht"
 
 #: 
 msgid "ICS URL"
@@ -14410,10 +14374,6 @@ msgid "Warnings"
 msgstr "Waarschuwingen"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "We zijn zo blij dat uw gezin zich bij ons heeft aangesloten!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Welkom in de familie!"
 
@@ -14468,10 +14428,6 @@ msgstr "Uw browser-taalvoorkeur wijkt af van uw ChurchCRM-landinstelling"
 #: 
 msgid "Your database already contains data"
 msgstr "Uw database bevat al gegevens"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Uw registratie is ontvangen. Ons team neemt binnenkort persoonlijk contact met u op."
 
 #: 
 msgid "Zip code is required"
@@ -14550,10 +14506,6 @@ msgid "open rate"
 msgstr "open ratio"
 
 #: 
-msgid "our church"
-msgstr "onze gemeente"
-
-#: 
 msgid "payment(s)?"
 msgstr "betalingen(en)?"
 
@@ -14592,14 +14544,6 @@ msgstr "jr."
 #: 
 msgid "yrs"
 msgstr "jr."
-
-#: 
-msgid "Account options"
-msgstr "Accountopties"
-
-#: 
-msgid "Register"
-msgstr "Registreren"
 
 #. Context: locales
 #: 
@@ -14882,16 +14826,8 @@ msgid "Always granted"
 msgstr "Altijd verleend"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Kan alleen de eigen familie inzien en verifiëren. Geen andere toegang."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Kies hieronder specifieke machtigingen."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Neem contact op met een beheerder om uw machtigingen te wijzigen."
 
 #: 
 msgid "Custom permissions"
@@ -14906,20 +14842,8 @@ msgid "People &amp; Families"
 msgstr "Personen &amp; Gezinnen"
 
 #: 
-msgid "Self-service"
-msgstr "Zelfbediening"
-
-#: 
-msgid "Self-service only"
-msgstr "Alleen zelfbediening"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "De notitie die u probeert te bewerken bestaat niet meer."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Deze gebruiker kan alleen het eigen gezinsprofiel inzien en bijwerken. Individuele machtigingen zijn niet van toepassing."
 
 #: 
 msgid "User List"
@@ -18184,16 +18108,8 @@ msgid "Second Home"
 msgstr "Tweede huis"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "De gekoppelde persoon is overledene of inactief. Aanmelden, sessies en de API-sleutel zijn geblokkeerd totdat de persoon opnieuw actief is."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Dit is het postadres"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Deze persoon is overledene of inactief, daarom kan deze account zich niet aanmelden"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18882,10 +18798,6 @@ msgid "Account unlocked"
 msgstr "Account ontgrendeld"
 
 #: 
-msgid "Accounts"
-msgstr "Accounts"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Actief moet waar of onwaar zijn"
 
@@ -19078,10 +18990,6 @@ msgid "Author"
 msgstr "Auteur"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Bevoegdheid wordt aan de persoon gegeven, niet aan een login, dus ze kan worden verleend voordat die er een heeft. Iemand wiens login alleen voor zelfbediening is, ziet alleen zijn of haar eigen rooster totdat een beheerder het account uitbreidt."
-
-#: 
 msgid "Automatic"
 msgstr "Automatisch"
 
@@ -19204,10 +19112,6 @@ msgstr "Kies een klas"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Kies een dag van de maand van 1 tot 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Kies een nieuwe foto"
 
 #: 
 msgid "Choose a person"
@@ -19980,10 +19884,6 @@ msgid "Last attempt"
 msgstr "Laatste poging"
 
 #: 
-msgid "Last check"
-msgstr "Laatste controle"
-
-#: 
 msgid "Last date"
 msgstr "Laatste datum"
 
@@ -20210,10 +20110,6 @@ msgstr "Er is nog geen agenda met gemeenteleden gedeeld."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Er is geen agenda voor deze bediening opengesteld, dus de activiteiten verschijnen in geen enkele agenda."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Er is geen agenda met gemeenteleden gedeeld."
 
 #: 
 msgid "No class"
@@ -20750,14 +20646,6 @@ msgid "Please tell us what needs changing."
 msgstr "Vertel ons wat er gewijzigd moet worden."
 
 #: 
-msgid "Portal settings"
-msgstr "Portaalinstellingen"
-
-#: 
-msgid "Portal theme"
-msgstr "Portaalthema"
-
-#: 
 msgid "Position"
 msgstr "Functie"
 
@@ -20974,10 +20862,6 @@ msgid "SMTP test"
 msgstr "SMTP-test"
 
 #: 
-msgid "Save calendars"
-msgstr "Agenda's opslaan"
-
-#: 
 msgid "Save changes"
 msgstr "Wijziging opslaan"
 
@@ -20988,10 +20872,6 @@ msgstr "Opgeslagen; deze bediening vraagt niet langer om hulp"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Opgeslagen; deze bediening vraagt nu om hulp"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Opgeslagen. Gemeenteleden zien de hierboven ingeschakelde agenda's."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21096,10 +20976,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Zelf in te roosteren moet waar of onwaar zijn"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Zelfbedieningsaccounts"
-
-#: 
 msgid "Send"
 msgstr "Verzenden"
 
@@ -21168,18 +21044,6 @@ msgstr "Tonen in het Ledenportaal"
 #: 
 msgid "Show past events"
 msgstr "Eerdere activiteiten tonen"
-
-#: 
-msgid "Show the church calendar"
-msgstr "De kerkagenda tonen"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "De kerkagenda tonen in het Ledenportaal."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Het onderdeel kerkagenda tonen in het Ledenportaal."
 
 #: 
 msgid "Show the next"
@@ -21588,10 +21452,6 @@ msgstr "De %s moet een heel aantal minuten zijn"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "De %s moet binnen %d minuten van de activiteit liggen"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "De agenda's van het Ledenportaal zijn opgeslagen."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22042,10 +21902,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Deze behoeften komen uit het rooster. Hier opslaan wijzigt alleen dit moment."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Deze cijfers tellen alleen zelfbedieningsaccounts: mensen wier login alleen het Ledenportaal kan bereiken."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Deze mensen zijn nog ingeroosterd, maar de functie die ze hebben maakt geen deel meer uit van het bezettingsplan van deze datum."
 
@@ -22130,14 +21986,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Dit is geen geldige naam voor een thememap."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Dit is niet een van de data van uw team."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Dit is niet een van uw teams."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Hier stuurt de kerk post naartoe en wie ze over uw huishouden belt."
 
@@ -22196,10 +22044,6 @@ msgstr "Deze pagina hoort niet bij uw account. Als u denkt dat dat wel zo zou mo
 #: 
 msgid "This page was not found"
 msgstr "Deze pagina is niet gevonden"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Dit deel van het Ledenportaal is voor vrijwilligersteamleiders."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23870,16 +23714,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} toegewezen en vastgelegd als toegezegd"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Vraag een beheerder om uw aanmeld-e-mail te wijzigen."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "E-mail door een beheerder gewijzigd van %1$s naar %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Alleen een beheerder kan het e-mailadres wijzigen van een persoon met een gebruikersaccount."
 
 #: 
 msgid "Fund totals appear here once payments are added."
