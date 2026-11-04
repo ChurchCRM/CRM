@@ -24719,14 +24719,2546 @@ msgid "Witness"
 msgstr "Vitne"
 
 #: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d gaver har ingen familie. De kan ikke stå på en oppgave."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "%d åpne innskudd er datert i år. Lukk dem slik at hver gave er endelig før oppgavene sendes ut."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d betalinger er ikke på noe innskudd ennå."
+
+#: 
+msgid "Can be emailed"
+msgstr "Kan sendes på e-post"
+
+#: 
+msgid "Closing line"
+msgstr "Avslutningslinje"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Alle innskudd datert i år er lukket."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Hver gave tilhører en familie."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Hver betaling i år ligger på et innskudd."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Lag skatteoppgaver"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Gaverapport (skatteoppgaver)"
+
+#: 
+msgid "Opening line"
+msgstr "Åpningslinje"
+
+#: 
+msgid "Print and mail"
+msgstr "Skriv ut og send i posten"
+
+#: 
+msgid "Qty"
+msgstr "Ant."
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Gå gjennom året, og skriv deretter ut eller send giveroppgaver på e-post."
+
+#: 
+msgid "Signed by"
+msgstr "Signert av"
+
+#: 
+msgid "Thank-you line"
+msgstr "Takkelinje"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Kontroller at kirkens navn, adresse og kontaktinformasjon vises på skatteoppgavene."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Gaver ved årsslutt"
+
+#: 
+msgid "As of: %s"
+msgstr "Per: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Minst én positiv familiebetaling i de valgte %d regnskapsårene, fram til vurderingsdatoen: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Dåp, søknader til valgmanntall, bosted, nattverdstatus, oppmøte, god anseelse og lokale unntak må kontrolleres separat der vedtektene krever det. Medlemskapets varighet er ikke bevis på oppmøte."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Velg en eksisterende klassifisering."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Velg minst én klassifisering å vurdere."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Velg klassifiseringene kirken bruker. Ingen klassifisering antas å gi stemmerett."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Kirkens ledelse må bekrefte valgbarhet etter kirkens vedtekter. Denne listen viser bare personer som samsvarer med de valgte filtrene."
+
+#: 
+msgid "Classifications to review"
+msgstr "Klassifiseringer som skal vurderes"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Klassifiseringer: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Avdøde, inaktive personer og klassifiseringer, og inaktive familier og personer eller de som venter på vurdering, er utelatt."
+
+#: 
+msgid "Download Review List"
+msgstr "Last ned vurderingsliste"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Oppgi en gyldig vurderingsdato mellom 1900 og 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Oppgi hele tall innenfor de viste grensene."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Regnskapsår som skal kontrolleres (0–100; 0 betyr ingen giverkrav)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Gaver registreres per familie, ikke per person. Slå dette på bare når vedtektene tillater at en familiebetaling oppfyller dette kriteriet. Dette beviser ikke at hver person har gitt. Perioden omfatter det valgte regnskapsåret og slutter senest på vurderingsdatoen."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Siste regnskapsår som skal tas med"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Minstealder (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Minstealder: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Minste medlemsvarighet i måneder (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Minste medlemsvarighet: %d måneder"
+
+#: 
+msgid "No donation requirement."
+msgstr "Ingen giverkrav."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Ingen personer samsvarer med disse filtrene. Kontroller manglende fødsels- eller medlemsdatoer og juster kriteriene."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Valgfritt familiekrav for gaver"
+
+#: 
+msgid "People matching filters"
+msgstr "Personer som samsvarer med filtrene"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Personer utelatt fordi nødvendige datoer mangler"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Lag en liste til kirkens vurdering med klassifiseringer og valgfrie filtre for alder, medlemskap og familiens gaver."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Lag en liste til kirkens vurdering ut fra vedtektene."
+
+#: 
+msgid "Review date"
+msgstr "Vurderingsdato"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Bruk kirkens vedtekter til å velge filtrene, og la autorisert kirkelig ledelse vurdere listen. At filtrene samsvarer, fastslår ikke stemmerett. Denne rapporten registrerer ikke valgbarhet og gjennomfører ikke et valg."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Stemmeberettigede medlemmer — vurderingsliste"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Null slår av et valgfritt krav. Alder krever fullstendig fødselsdato; medlemsvarighet krever en medlemsdato. Personer som mangler nødvendige datoer, utelates og telles for seg. Avdøde, inaktive personer og klassifiseringer, og inaktive familier og personer eller de som venter på vurdering, utelates alltid. Gjeldende klassifisering og status brukes, ikke historisk status."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Skyldig beløp for %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Kan ikke opprette privat midlertidig PDF-lagring i den valgte mappen."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "La feltet stå tomt for å bruke systemets midlertidige mappe. Ellers oppgir du en eksisterende skrivbar mappe som er beskyttet mot nettilgang."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Midlertidig PDF-mappe"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "Midlertidig PDF-lagring må være privat og skrivbar."
+
+#: 
+msgid "Reporting"
+msgstr "Rapportering"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "Den midlertidige PDF-mappen finnes ikke eller er ikke tilgjengelig."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "Den midlertidige PDF-mappen må være en absolutt mappebane."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Kirkens skatte-ID (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Avslutningslinje"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Styrer valgfri telemetri. Feil ved installasjon og databaseoppgradering sender begrenset diagnostikk til PostHog selv når telemetri er av. Disse feilrapportene inneholder programvare- og miljøversjoner og en renset databasefeil, men ingen installasjons-ID eller SQL-setning."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Diagnostiser mislykkede installasjoner og databaseoppgraderinger"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Detaljer om feil ved installasjon og oppgradering"
+
+#: 
+msgid "Open in browser window"
+msgstr "Åpne i nettleservindu"
+
+#: 
+msgid "Opening Line"
+msgstr "Åpningslinje"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Valgfri brukstelemetri sendes bare når den er slått på. Feil ved installasjon og databaseoppgradering sender alltid begrenset diagnostikk for å hjelpe fellesskapet, selv om du velger Nei takk. Feilrapporter inneholder programvare- og miljøversjoner og en renset databasefeil, uten installasjons-ID eller SQL-setning."
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF-håndtering"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF-utdata"
+
+#: 
+msgid "PDF handling mode"
+msgstr "Modus for PDF-håndtering"
+
+#: 
+msgid "Questions Line"
+msgstr "Spørsmålslinje"
+
+#: 
+msgid "Save File dialog"
+msgstr "Dialogboksen Lagre fil"
+
+#: 
+msgid "Signer"
+msgstr "Undertegner"
+
+#: 
+msgid "Statement Settings"
+msgstr "Oppgaveinnstillinger"
+
+#: 
+msgid "Statement Wording"
+msgstr "Oppgavetekst"
+
+#: 
+msgid "Tax Information"
+msgstr "Skatteopplysninger"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Telemetri sendes til PostHog i USA. Rapporter om feil ved installasjon og oppgradering sendes selv når valgfri telemetri er slått av."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Denne datoen ble avlyst. Du trenger ikke gjøre noe mer."
+
+#: 
+msgid "always sent"
+msgstr "sendes alltid"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Kunne ikke fjerne brevhode"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Kunne ikke lagre brevhode"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Kunne ikke laste opp brevhode"
+
+#: 
+msgid "Greeting"
+msgstr "Hilsen"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Brevhilsen og signatur"
+
+#: 
+msgid "Letterhead"
+msgstr "Brevhode"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF eller WebP. Et bredt banner fungerer best, for eksempel 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Trykkes øverst på PDF-brev som bruker grafisk brevhode, for eksempel giveroppgaver. Uten brevhode skrives kirkens navn og adresse."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Fjerne brevhode? Brevene skriver ut kirkens navn og adresse."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Angi brevhode som PDF-brev skriver ut"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Bruker kirkens navn og adresse"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Bruker brevhodestien angitt i systeminnstillinger"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Tekst, skatte-ID og PDF-håndtering for giveroppgaver"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s som %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s er nå e-postadressen din. Du kan bruke den til å logge inn på Medlemsportalen."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} til"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "En endring av e-postadressen din ble bedt om"
+
+#: 
+msgid "A family"
+msgstr "En familie"
+
+#: 
+msgid "A group"
+msgstr "En gruppe"
+
+#: 
+msgid "A ministry"
+msgstr "En tjeneste"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "En ny adresse endres først når du bruker lenken vi sender til den."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "En passnøkkel kan bare legges til innen %d minutter etter at du har logget inn med e-postadressen din. Logg ut, logg inn igjen med e-posten, og kom tilbake hit."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "En passnøkkel logger deg inn med Face ID, et fingeravtrykk eller enhetens PIN, uten e-postkode."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "En passnøkkel ble lagt til innloggingen din på Medlemsportalen"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "En passnøkkel ble lagt til innloggingen din på Medlemsportalen kl. %1$s den %2$s, fra %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "En passnøkkel ble lagt til innloggingen din på Medlemsportalen kl. %1$s den %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "En person som mister den, har da ingen egen e-post: e-post sendt bare til dem, for eksempel en gruppe-e-post, hoppes over, og e-postredigereren sier fra om det."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "En person hvis post skjuler alderen, viser aldri fødselsår."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "Det ble bedt om i Medlemsportalen å endre e-postadressen din kl. %s fra %s til %s. Endringen skjer bare når lenken sendt til %s brukes."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "En rad har ikke forventet form."
+
+#: 
+msgid "A team"
+msgstr "Et lag"
+
+#: 
+msgid "Add a passkey"
+msgstr "Legg til en passnøkkel"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Legg til en passnøkkel bare på din egen telefon eller datamaskin, aldri på en delt eller offentlig enhet."
+
+#: 
+msgid "Add an email"
+msgstr "Legg til en e-post"
+
+#: 
+msgid "Added %s"
+msgstr "Lagt til %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Administratoroverstyringer"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "Voksen i familien %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "Voksen i familien"
+
+#: 
+msgid "All events"
+msgstr "Alle hendelser"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Tillat Logg inn som person"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Tillat endringer under Logg inn som person"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Tillat endringer mens en administrator bruker Logg inn som person. Når det er av, er Logg inn som person skrivebeskyttet."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Allerede hos et familiemedlem"
+
+#: 
+msgid "Also used by"
+msgstr "Også brukt av"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "En administrator kan gi enhver tillatelse til én person på personens side. «Administratoroverstyringer» vises da her, med antallet personer som fikk den."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "En annen person bruker allerede denne adressen"
+
+#: 
+msgid "Applies to"
+msgstr "Gjelder"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Godkjenn eller avslå vikarforespørsler for et frivilliglag."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Be om en ny e-post"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Myndigheten gis til personen, ikke til en innlogging, så den kan gis før de har en. En person som bare logger inn på Medlemsportalen, ser fortsatt bare sin egen vaktplan til en administrator gir dem en ansattkonto."
+
+#: 
+msgid "Awaiting review"
+msgstr "Venter på vurdering"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Tilbake til innlogging"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Bla gjennom hele katalogen"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Kan logge inn på Medlemsportalen"
+
+#: 
+msgid "Can sign in?"
+msgstr "Kan logge inn?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Kan ikke slå av innlogging for den eneste administratoren som kan logge inn."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Kan ikke logge inn"
+
+#: 
+msgid "Change family details"
+msgstr "Endre familieopplysninger"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Endre familiens adresse og kontaktopplysninger, og legg til et familiemedlem til vurdering."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Endre sitt eget navn, kontaktopplysninger og bilde."
+
+#: 
+msgid "Changed"
+msgstr "Endret"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Endret etter at personen logget inn"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Endret av en import etter at personen logget inn"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Endret av ansatte etter at personen logget inn"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Endret via API-et etter at personen logget inn"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Endringer er slått av under Logg inn som person."
+
+#: 
+msgid "Changes needed"
+msgstr "Endringer trengs"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Endringer lagres mens du gjør dem."
+
+#: 
+msgid "Check your email"
+msgstr "Sjekk e-posten din"
+
+#: 
+msgid "Choose a permission"
+msgstr "Velg en tillatelse"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Velg en tillatelse, hva den gjelder, og siste dag, og si hvorfor."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Velg et bilde eller ta en selfie"
+
+#: 
+msgid "Choose a theme"
+msgstr "Velg et tema"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Velg minst én rad."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Velg høyst %d rader om gangen."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Velg hvordan datoer vises, fra listen."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Velg siste dag for denne tillatelsen."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Velg hva tillatelsen gjelder."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Velg ja eller nei."
+
+#: 
+msgid "Church Office"
+msgstr "Kirkekontoret"
+
+#: 
+msgid "Church country"
+msgstr "Kirkens land"
+
+#: 
+msgid "Church default: %s"
+msgstr "Kirkens standard: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Innlogging for kirkeleder"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Klassifiseringer hvis medlemmer kan logge inn på Medlemsportalen, som en kommaseparert liste over klassifiserings-ID-er."
+
+#: 
+msgid "Clear selection"
+msgstr "Tøm utvalget"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Koder, økter og enheter"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Bekreft e-postadresse"
+
+#: 
+msgid "Confirm email address"
+msgstr "Bekreft e-postadresse"
+
+#: 
+msgid "Confirm family details"
+msgstr "Bekreft familieopplysninger"
+
+#: 
+msgid "Confirm selected"
+msgstr "Bekreft valgte"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Bekreft denne e-posten bare etter å ha kontrollert, personlig eller på telefon, at den er personens egen adresse. Når den er bekreftet, kan den brukes til å logge inn på Medlemsportalen."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Bekreft e-postadressen din"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Bekreft den nye e-postadressen din"
+
+#: 
+msgid "Confirmed"
+msgstr "Bekreftet"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Datoer må skrives som YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Avgjør vikarforespørsler"
+
+#: 
+msgid "Device"
+msgstr "Enhet"
+
+#: 
+msgid "Device remembered"
+msgstr "Enhet husket"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Enheter og passnøkler"
+
+#: 
+msgid "Directory classifications"
+msgstr "Katalogklassifiseringer"
+
+#: 
+msgid "Directory section"
+msgstr "Katalogdel"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Slå av innlogging"
+
+#: 
+msgid "Do not show"
+msgstr "Ikke vis"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Hver av dem trenger også sin egen e-post som ingen andre bruker."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Hver innloggings-e-post virker én gang, i begrenset tid, og en nyere e-post erstatter den."
+
+#: 
+msgid "Edit my details"
+msgstr "Rediger opplysningene mine"
+
+#: 
+msgid "Email address changed"
+msgstr "E-postadresse endret"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "E-postadresse skrevet inn: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "E-postadresser som skal bekreftes: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "E-post endret"
+
+#: 
+msgid "Email code"
+msgstr "E-postkode"
+
+#: 
+msgid "Email confirmed"
+msgstr "E-post bekreftet"
+
+#: 
+msgid "Email link"
+msgstr "E-postlenke"
+
+#: 
+msgid "Email me a code"
+msgstr "Send meg en kode på e-post"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Send meg en bekreftelseslenke på e-post"
+
+#: 
+msgid "Email needs attention"
+msgstr "E-post trenger oppfølging"
+
+#: 
+msgid "Email problem"
+msgstr "E-postproblem"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Innloggingskode og lenke på e-post kansellert"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Bekreftelseslenke sendt på e-post"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "E-poster bekreftet: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Slå på innlogging"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Avslutte alle Medlemsportal-økter for denne personen og glemme enhetene som er husket? Passnøklene beholdes, så de kan logge inn igjen."
+
+#: 
+msgid "Ended %s"
+msgstr "Avsluttet %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Avsluttet av en endring i innloggingen deres"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Avsluttet da medlemsinnlogging ble slått av"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Oppgi et helt tall fra %1$d til %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Oppgi e-postadressen din."
+
+#: 
+msgid "Every kind"
+msgstr "Alle typer"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Hver medlemsinnlogging, avvisning og endring av innlogging, nyeste først. Den inneholder aldri en kode, lenke eller passnøkkel."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Alle som er oppført, A til Å, med et søkefelt."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Alle som innloggingsreglene slipper inn, kan deretter logge inn på Medlemsportalen med sin egen e-post."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Alle som logget inn på Medlemsportalen de siste 30 dagene, nyeste først."
+
+#: 
+msgid "Everywhere"
+msgstr "Overalt"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Familier et medlem bekreftet de siste 30 dagene, fra Medlemsportalen eller bekreftelseslenken på e-post."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Familier bekreftet, siste 30 dager"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Familieopplysninger bekreftet"
+
+#: 
+msgid "Family email"
+msgstr "Familie-e-post"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Familie-e-poster som ikke ble flyttet"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Familieroller hvis medlemmer kan logge inn på Medlemsportalen, som en kommaseparert liste over rolle-ID-er."
+
+#: 
+msgid "Find someone"
+msgstr "Finn noen"
+
+#: 
+msgid "Fix by hand"
+msgstr "Rett opp for hånd"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Rett opp delte e-poster"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Fra en ansattinnlogging"
+
+#: 
+msgid "Give a permission"
+msgstr "Gi en tillatelse"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Gi en portaltillatelse"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Gi hver person sin egen e-post"
+
+#: 
+msgid "Give permission"
+msgstr "Gi tillatelse"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Gitt av %1$s til %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Gitt av %s"
+
+#: 
+msgid "Given to"
+msgstr "Gitt til"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Gitt til alle"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Gitt, men ikke i kraft"
+
+#: 
+msgid "Go to sign in"
+msgstr "Gå til innlogging"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Gå til Medlemsportalen"
+
+#: 
+msgid "Has signed in"
+msgstr "Har logget inn"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Har logget inn: øktene og enhetene deres avsluttes"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Her er koden din for å logge inn på Medlemsportalen. Skriv den inn på innloggingssiden, i nettleseren der du ba om den. Eller trykk på knappen for å logge inn på denne enheten."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Skjul tillatelser"
+
+#: 
+msgid "How"
+msgstr "Hvordan"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Hvor mange innloggings-e-poster til Medlemsportalen én IP-adresse kan be om i løpet av en time. Sett til 0 for ingen grense, for eksempel når alle når ChurchCRM gjennom én adresse."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Hvor mange dager en enhet forblir innlogget på Medlemsportalen etter at medlemmet velger å forbli innlogget. Sett til 0 for å fjerne valget."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Hvor mange inaktive minutter som avslutter en Medlemsportal-økt."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Hvor mange minutter en innloggingskode og lenke til Medlemsportalen forblir gyldig."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Inaktiv tid (minutter)"
+
+#: 
+msgid "Idle too long"
+msgstr "Inaktiv for lenge"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Hvis %1$s er den nye adressen din, bruker du knappen nedenfor for å bekrefte den. Før den er bekreftet, kan den ikke brukes til innlogging. Lenken virker én gang, til %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Hvis denne adressen kan brukes til innlogging, har vi sendt deg en kode på e-post. Ingenting etter noen minutter? Spør kirkekontoret."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Hvis du ikke la den til, fjerner du den på siden Innlogging og enheter og kontakter kirkekontoret."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Hvis du ikke ba om denne endringen, kan du kontakte kirkekontoret."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Hvis du ikke ba om dette, kan du kontakte kirkekontoret."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Den kan ha utløpt eller allerede være brukt. Trenger du hjelp, kan du kontakte kirkekontoret."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Programtillegget er ikke installert"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Hopp til en bokstav"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Hold meg innlogget (dager)"
+
+#: 
+msgid "Keeps it"
+msgstr "Beholder den"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Type ubekreftet e-post"
+
+#: 
+msgid "Last day"
+msgstr "Siste dag"
+
+#: 
+msgid "Last used"
+msgstr "Sist brukt"
+
+#: 
+msgid "Last used %s"
+msgstr "Sist brukt %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Leder for %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "La administratorer åpne en persons Medlemsportal som den personen, fra personens Handlinger-meny, mens medlemsinnlogging er på."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "La medlemmer legge til passnøkler og logge inn på Medlemsportalen med dem."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "La medlemmer logge inn på Medlemsportalen med sin egen e-postadresse. Det kan bare slås på mens e-postsending virker."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "La medlemmer logge inn med e-posten sin"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Levetid for lenke og kode (minutter)"
+
+#: 
+msgid "Login as %s"
+msgstr "Logg inn som %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Logg inn som person"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Logg inn som person kunne ikke starte."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Logg inn som person avsluttet: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Historikk for Logg inn som person"
+
+#: 
+msgid "Login as Person started"
+msgstr "Logg inn som person startet"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Logg inn som person stoppet"
+
+#: 
+msgid "Look up anyone"
+msgstr "Slå opp hvem som helst"
+
+#: 
+msgid "Loses it"
+msgstr "Mister den"
+
+#: 
+msgid "Manage a team"
+msgstr "Administrer et lag"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Administrer innloggingen og enhetene mine"
+
+#: 
+msgid "Matches: %s"
+msgstr "Treff: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Kan logge inn"
+
+#: 
+msgid "May sign in now"
+msgstr "Kan logge inn nå"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Innloggingskode til Medlemsportalen"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Varsel om innlogging på Medlemsportalen"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Innlogginger og aktivitet på Medlemsportalen, for medlemmer og for ansatte som åpner portalen fra ansattinnloggingen."
+
+#: 
+msgid "Member sign-in"
+msgstr "Medlemsinnlogging"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Medlemsinnlogging sender hver person en kode på e-post, så e-post (SMTP) må virke før du slår den på."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Medlemsinnlogging er av"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Medlemsinnlogging er av for kirken."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Medlemsinnlogging er av."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Medlemsinnlogging er ikke tilgjengelig ennå. Kontakt kirkekontoret."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Medlemsinnlogging slipper aldri inn personer som er avdøde, inaktive, i en inaktiv familie, venter på vurdering, eller har Slå av innlogging på. Disse valgene avgjør hvem andre som kan."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Medlemsinnlogging sender hvert medlem en kode på e-post, så den kan bare slås på mens ChurchCRM kan sende e-post. Slå på e-post og sett opp e-postserveren først."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Medlemmer ser Kalender-siden så lenge minst én kalender er slått på."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Medlemmer skriver minst %d bokstaver av et navn og ser opptil %d treff. Hele listen vises aldri."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Medlemmer som er innlogget nå, logges ut, og ingen kan logge inn med e-posten sin før medlemsinnlogging slås på igjen."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Medlemmer med disse klassifiseringene finner Katalog i menyen i Medlemsportalen."
+
+#: 
+msgid "Minimum age"
+msgstr "Minstealder"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Flere forsøk med denne adressen den neste timen sender ikke et nytt varsel."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Flyttet fra familie-e-posten"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Flyttet til et familieoverhode"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Flyttet til en ektefelle"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Ny i kirken vår? Fortell oss om familien din, så tar vi kontakt for å ønske deg velkommen."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Ingen økter med Logg inn som person ennå."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Ingen fødselsdato, og verken familieoverhode eller ektefelle"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Ingen kalender er slått på, så medlemmer ser ikke Kalender-siden."
+
+#: 
 msgid "No changes"
 msgstr "Ingen endringer"
+
+#: 
+msgid "No changes made."
+msgstr "Ingen endringer gjort."
+
+#: 
+msgid "No family role"
+msgstr "Ingen familierolle"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Verken familieoverhode eller ektefelle kan motta familie-e-post."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Verken familieoverhode eller ektefelle deler den"
+
+#: 
+msgid "No match"
+msgstr "Ingen treff"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Ingen samsvarer med innloggingsregelen ennå. Kryss av flere familieroller eller klassifiseringer, eller senk minstealderen."
+
+#: 
+msgid "No passkey was added."
+msgstr "Ingen passnøkkel ble lagt til."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Ingen passnøkkel ble brukt. Prøv igjen, eller logg inn med e-postadressen din."
+
+#: 
+msgid "No person has this email"
+msgstr "Ingen person har denne e-posten"
+
+#: 
+msgid "No personal email"
+msgstr "Ingen personlig e-post"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Ingen delte e-poster hindrer noen i å logge inn."
+
+#: 
+msgid "No such person"
+msgstr "Ingen slik person"
+
+#: 
+msgid "No, thanks"
+msgstr "Nei takk"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Ingen kan logge inn med en personlig e-post som to personer som kan logge inn, deler. For en adresse som deles innen én familie, beholder familieoverhodet den, ellers ektefellen (den eldste først). Alle andre som deler den, mister den. Fjern avkrysningen for dem du vil rette på en annen måte."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Ingen kan logge inn ennå: kryss av minst én klassifisering under Hvem som kan logge inn."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Ingen kan logge inn ennå: kryss av minst én familierolle og minst én klassifisering under Hvem som kan logge inn."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Ingen kan logge inn ennå: kryss av minst én familierolle under Hvem som kan logge inn."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Ingen i katalogen samsvarer med det navnet."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Ingen er oppført i katalogen ennå."
+
+#: 
+msgid "Not ended"
+msgstr "Ikke avsluttet"
+
+#: 
+msgid "Not moved"
+msgstr "Ikke flyttet"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Usikker på hvilken e-post vi har? Kontakt kirkekontoret."
+
+#: 
+msgid "Not yet"
+msgstr "Ikke ennå"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Notert i familiens tidslinje"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Av dem, personer som har logget inn: {{total}}. De logges ut overalt, og adressen får et varsel."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Av for alle: «%s» er slått av"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Av for alle: Frivillighetsstyring er ikke satt til V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Av for alle: funksjonen er slått av"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Av for alle: programtillegget er slått av"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Av for alle: ingen kalender er delt med medlemmer"
+
+#: 
+msgid "Office list"
+msgstr "Kontorliste"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Når den er bekreftet, kan den brukes til å logge inn på Medlemsportalen."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Bare adresser du kan bekrefte, kan velges."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Bare administratorer ser begrunnelsen."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Bare en administrator kan endre e-posten til en person som har en ansattkonto eller portaltillatelser."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Bare en administrator kan bekrefte en e-post som erstattet en personen logget inn med."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Bare en administrator kan bekrefte e-posten til en person som har en ansattkonto eller portaltillatelser."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Bare en administrator kan rette denne adressen: noen som deler den, har en ansattkonto eller portaltillatelser."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Bare en voksen i familien din kan bekrefte disse opplysningene. Kontakt kirkekontoret."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Bekreft bare adresser du vet tilhører den personen. Alle som leser en adresse, kan logge inn som personen den tilhører."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Bare levende personer med egen e-post kan stå på kontorlisten."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Bare personer med egen e-post kan legges til."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Valgfri telemetri kan omfatte sidebaner, aktivt språk, CRM-versjon, PHP-versjon, OS-familie, landet fra kirkens informasjonsinnstillinger og en tilfeldig installasjons-ID. Feilrapporter inneholder ikke installasjons-ID-en. Data sendes til PostHog i USA."
+
+#: 
+msgid "Passkey"
+msgstr "Passnøkkel"
+
+#: 
+msgid "Passkey added"
+msgstr "Passnøkkel lagt til"
+
+#: 
+msgid "Passkey removed"
+msgstr "Passnøkkel fjernet"
+
+#: 
+msgid "Passkeys"
+msgstr "Passnøkler"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Passnøkler er slått av."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Passnøkler kan ikke brukes her."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Passnøkler kan ikke brukes på dette nettstedet ennå. Kontakt kirkekontoret."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Passnøkler trenger et vertsnavn, ikke en IP-adresse, i nettstedsadressen."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Passnøkler trenger en sikker tilkobling (HTTPS) til dette nettstedet."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Passnøkler krever at nettstedsadressen er satt i Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Passnøkler krever at nettstedet leveres over HTTPS. Medlemmer tilbys ikke passnøkler før det er det."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Passnøkler virker bare på %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Passnøkler: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Personer de lagrede innstillingene slipper inn: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Personer som skal få e-post når noen ikke kunne logge inn på Medlemsportalen"
+
+#: 
+msgid "People who hold it"
+msgstr "Personer som har den"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Personer som mister en adresse: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Personer som mistet en adresse: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Personer som kan logge inn: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Personer som tidligere logget inn på Medlemsportalen: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Personer med disse klassifiseringene vises i katalogen. Tallet er hvor mange aktive personer som har hver klassifisering."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Personer med denne e-posten: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Person %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Velg klassifiseringer fra listen."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Velg familieroller fra listen."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Velg personer til kontorlisten."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Velg et språk fra listen."
+
+#: 
+msgid "Portal permission given"
+msgstr "Portaltillatelse gitt"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Portaltillatelse fjernet"
+
+#: 
+msgid "Portal permissions"
+msgstr "Portaltillatelser"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Portalinnlogging"
+
+#: 
+msgid "Problem"
+msgstr "Problem"
+
+#: 
+msgid "Reason"
+msgstr "Begrunnelse"
+
+#: 
+msgid "Reason: %s"
+msgstr "Begrunnelse: %s"
+
+#: 
+msgid "Refused"
+msgstr "Avvist"
+
+#: 
+msgid "Register your family"
+msgstr "Registrer familien din"
+
+#: 
+msgid "Remembered device"
+msgstr "Husket enhet"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Husket enhet fjernet"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Huskede enheter: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Fjern e-poster"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Fjern denne passnøkkelen"
+
+#: 
+msgid "Remove this permission"
+msgstr "Fjern denne tillatelsen"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Fjernet fra: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Erstattet etter en innlogging"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Erstattet av en annen innlogging"
+
+#: 
+msgid "Result"
+msgstr "Resultat"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Styr et frivilliglag: oppgaver, frivillige, vaktplaner, bemanning og antall."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Si hvorfor innlogging slås av."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Si hvorfor denne tillatelsen gis."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Søk etter hvem som helst i registeret. Hver rad sier om de kan logge inn på Medlemsportalen, og hvis ikke, hvorfor."
+
+#: 
+msgid "Search method"
+msgstr "Søkemetode"
+
+#: 
+msgid "Search only"
+msgstr "Bare søk"
+
+#: 
+msgid "See family contact details"
+msgstr "Se familiens kontaktopplysninger"
+
+#: 
+msgid "See my family"
+msgstr "Se familien min"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Se Medlemsportalen slik denne personen ser den? Ansattsider forblir lukket til du trykker Stopp, og økten registreres på denne siden og på brukersiden din."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Se kalenderne kirken deler med medlemmer, og abonner på dem."
+
+#: 
+msgid "See the church calendar"
+msgstr "Se kirkekalenderen"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Se enhetene og passnøklene som logger dem inn, og logg ut eller fjern en av dem."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Se e-postadressene og telefonnumrene til personene i familien deres."
+
+#: 
+msgid "See the member directory"
+msgstr "Se medlemskatalogen"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Se navnene og bildene til personene i familien deres."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Se personene kirken fører i katalogen, med opplysningene kirken velger å dele."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Se vaktplanen deres som frivillig, meld deg på ledige plasser og be om en vikar."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Send browse som true eller false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Send klassifiseringene som en liste over ID-er."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Send kataloginnstillingene som et JSON-objekt."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Send feltene som skal vises, som et objekt med verdiene true og false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Send innstillingene som et JSON-objekt."
+
+#: 
+msgid "Session ended"
+msgstr "Økt avsluttet"
 
 #: 
 msgid "Set up email"
 msgstr "Konfigurer e-post"
 
 #: 
+msgid "Set up email first."
+msgstr "Sett opp e-post først."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Delte adresser rettet: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Delte adresser som skal rettes: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Delt av"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Delte e-poster som hindrer personer i å logge inn"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Vis eller skjul dette medlemmet"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Vis Katalog-siden i Medlemsportalen for klassifiseringene valgt nedenfor."
+
+#: 
+msgid "Show the member directory"
+msgstr "Vis medlemskatalogen"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Vis medlemskatalogen i Medlemsportalen."
+
+#: 
+msgid "Show with year"
+msgstr "Vis med år"
+
+#: 
+msgid "Show without year"
+msgstr "Vis uten år"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Viser de første %d treffene. Skriv mer av navnet for å finne personen du leter etter."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Logge inn som %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Logg inn neste gang på denne enheten med Face ID, et fingeravtrykk eller enhetens PIN."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Logg inn for å se familien din, kirkekalenderen og måter å tjene på. Du trenger ikke passord eller konto."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Logg inn med en passnøkkel"
+
+#: 
+msgid "Sign out every device"
+msgstr "Logg ut alle enheter"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Logge ut alle enheter nå?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Logg ut overalt"
+
+#: 
+msgid "Sign out this device"
+msgstr "Logg ut denne enheten"
+
+#: 
+msgid "Sign-in"
+msgstr "Innlogging"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Innlogging og enheter"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Innlogging kunne ikke slås av."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Innlogging kunne ikke slås på."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Innlogging slått av"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Innloggings-e-post forespurt"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Innloggings-e-poster per IP-adresse per time"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Innlogging slått på"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Innlogging er allerede slått av for denne personen."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Innlogging er slått av"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Innlogging er slått av for denne personen."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Innlogging er slått på for denne personen."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Innlogging er ikke slått av for denne personen."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Innlogging avvist"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Innlogging, økter og API-nøkkelen er sperret til dette er løst på den tilknyttede personens post."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Logget inn, siste 30 dager"
+
+#: 
+msgid "Signed out"
+msgstr "Logget ut"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Logget ut av en endring i innloggingen deres"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Logget ut overalt"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Noen ba om en innloggings-e-post til Medlemsportalen, men ingen ble sendt."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Noen kunne ikke logge inn på Medlemsportalen"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Ansattsider forblir lukket under Logg inn som person. Trykk Stopp i banneret for å gå tilbake."
+
+#: 
+msgid "Stop"
+msgstr "Stopp"
+
+#: 
+msgid "Stopped"
+msgstr "Stoppet"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Fortell kirkekontoret om familieopplysningene fortsatt stemmer."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Den koden virket ikke. Sjekk den nyeste e-posten fra oss, eller be om en ny."
+
+#: 
+msgid "That could not be removed."
+msgstr "Det kunne ikke fjernes."
+
+#: 
+msgid "That device is signed out."
+msgstr "Den enheten er logget ut."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Det er ikke en gyldig e-postadresse."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Den siden hadde vært åpen for lenge. Prøv igjen."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Den passnøkkelen er fjernet. Den kan ikke lenger logge deg inn."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Det tok for lang tid. Prøv igjen."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Oppgraderingen til 7.8.3 ga hver familie-e-post til en person. Disse kunne den ikke, så den la i stedet igjen et notat i familiens tidslinje."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Medlemsportalen og e-postene den sender deg, bruker dette språket."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Endringen kunne ikke lagres."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Koden og knappen virker én gang, til %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Koden eller lenken gikk til en adresse som ikke lenger er e-posten deres"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Bekreftelses-e-posten kunne ikke sendes. Prøv igjen senere."
+
+#: 
+msgid "The device is signed out."
+msgstr "Enheten er logget ut."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "E-postadressen %2$s ble fjernet fra posten din kl. %1$s. Du er logget ut av Medlemsportalen på alle enheter."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "E-postadressen på posten din ble kl. %1$s endret fra %2$s til %3$s. Du er logget ut av Medlemsportalen på alle enheter."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "E-posten kunne ikke bekreftes."
+
+#: 
+msgid "The email could not be sent."
+msgstr "E-posten kunne ikke sendes."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "E-posten er bekreftet. Den kan nå brukes til innlogging."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Sluttdatoen er før startdatoen."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Familien har verken et levende, aktivt familieoverhode eller en ektefelle"
+
+#: 
+msgid "The family is inactive"
+msgstr "Familien er inaktiv"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Både familieoverhodet og ektefellen har egen e-post"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Siste dag kan ikke ligge i fortiden."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Den tilknyttede personen kan ikke logge inn, så denne kontoen kan ikke logge inn"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Listen kunne ikke lastes."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Passnøkkelen kunne ikke legges til. Prøv igjen."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Passnøkkelen kunne ikke bekreftes"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Passnøkkelen finnes ikke i registeret, eller ble fjernet"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Passnøkkelen ble fjernet."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Personene som deler den, er i ulike familier, eller ikke i en familie"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Personene som deler denne adressen, er endret. Åpne Rett opp delte e-poster på nytt."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Tillatelsen kunne ikke gis."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Tillatelsen opphører etter denne dagen. Den kan gis på nytt."
+
+#: 
+msgid "The permission was given."
+msgstr "Tillatelsen ble gitt."
+
+#: 
+msgid "The permission was removed."
+msgstr "Tillatelsen ble fjernet."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Tillatelsene kunne ikke lastes."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Personen mister denne tillatelsen i Medlemsportalen med én gang."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Begrunnelsen kan være høyst %d tegn lang."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Innloggingsreglene slipper dem inn, og hver har sin egen e-post som ingen andre som kan logge inn, bruker."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Innloggingsreglene slipper dem inn, men e-posten deres gjør det ikke: de har ingen, deler den med noen andre som kan logge inn, eller den er ikke bekreftet ennå."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Innloggingsinnstillingene kunne ikke lagres."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Den ubekreftede e-posten er endret. Last siden på nytt og prøv igjen."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Klassifiseringen deres kan ikke logge inn"
+
+#: 
+msgid "Their email changed"
+msgstr "E-posten deres ble endret"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "E-posten deres er ikke bekreftet ennå"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "E-posten deres deles med noen andre"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Familierollen deres kan ikke logge inn"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "De gamle innloggingene deres ble fjernet av oppgraderingen. Slå på medlemsinnlogging så de kan logge inn med sin egen e-post."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Den huskede enheten deres hadde utløpt"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Den huskede enheten deres ble logget ut"
+
+#: 
+msgid "Theme development"
+msgstr "Temautvikling"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Det finnes ingen klassifisering med ID %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Det finnes ingen velger for denne typen omfang."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Det finnes ingen slik revisjonshendelse."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Det finnes ikke noe slikt e-postproblem."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Det finnes ingen slik type ubekreftet e-post."
+
+#: 
+msgid "There is no such list."
+msgstr "Det finnes ingen slik liste."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Det finnes ingen slik portaltillatelse."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Dette er telefonene og datamaskinene der du valgte å forbli innlogget. Logg ut dem du ikke lenger bruker eller ikke kjenner igjen."
+
+#: 
+msgid "They have a staff account"
+msgstr "De har en ansattkonto"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "De kan logge inn, men har aldri gjort det."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Denne handlingen krever en innlogget nettleserøkt."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Denne adressen kunne ikke endres. Åpne Rett opp delte e-poster på nytt for å se status."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Denne adressen deles ikke lenger av personer som kan logge inn."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Denne nettleseren kan ikke lage passnøkler."
+
+#: 
+msgid "This device"
+msgstr "Denne enheten"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Denne enheten har allerede en passnøkkel for deg."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Denne enheten holder ikke lenger personen innlogget, og en åpen økt på den avsluttes. De kan logge inn igjen med e-post."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Dette er min egen enhet. Hold meg innlogget."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Her bestemmer du hvem som regnes som gjester. Tallet er hvor mange aktive personer som har hver klassifisering."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Denne lenken kan ikke brukes"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Denne lenken har utløpt eller er allerede brukt"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Denne delen av Medlemsportalen er ikke tilgjengelig for deg."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Denne passnøkkelen finnes allerede i registeret."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Denne passnøkkelen logger ikke lenger personen inn. De kan logge inn med e-post og legge til en ny."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Denne tillatelsen kan ikke gis på personsiden."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Denne personen har allerede alle tillatelser som kan gis."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Denne personen har allerede denne tillatelsen."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Denne personen kan ikke lenger logge inn noe sted, verken på Medlemsportalen eller som ansatt. Alle økter avsluttes, og huskede enheter og passnøkler fjernes."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Denne personen kunne ikke logges ut."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Denne personen har en ansattkonto. Logg inn som person åpner aldri en ansattkonto."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Denne personen har ingen slik passnøkkel."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Denne personen har ingen slik tillatelse."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Denne personen har ingen slik husket enhet."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Denne personen har ingen ubekreftet e-post."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Denne personen har logget inn på Medlemsportalen. Å endre denne e-posten logger dem ut overalt, og den nye adressen kan ikke brukes til innlogging før den er bekreftet."
+
+#: 
 msgid "This person is deceased."
 msgstr "Denne personen er avdød"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Denne personen er logget ut av Medlemsportalen overalt."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Denne personen finnes ikke lenger."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Dette logger deg ut overalt, også her, og glemmer alle enheter. Du kan logge inn igjen med e-postadressen din."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Dette logger deg ut overalt, også her, og glemmer alle enheter. Passnøklene dine beholdes: du kan logge inn igjen med en passnøkkel eller e-postadressen din."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Dette verktøyet endrer aldri disse. Gi hver person sin egen e-post på posten deres."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Kryss av dette bare på din egen telefon eller datamaskin, aldri på en delt eller offentlig enhet."
+
+#: 
+msgid "Time: %s"
+msgstr "Tid: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Tidsavbrutt"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "For å endre denne e-posten, kontakt kirkekontoret."
+
+#: 
+msgid "To fix"
+msgstr "Å rette"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "For å forbli innlogget på din egen telefon eller datamaskin, kryss av «Dette er min egen enhet» neste gang du logger inn."
+
+#: 
+msgid "Too many attempts"
+msgstr "For mange forsøk"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "For mange innloggings-e-poster i dag"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "For mange innloggingsforespørsler for denne e-postadressen"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "For mange innloggingsforespørsler fra denne IP-adressen"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "For mange feil koder"
+
+#: 
+msgid "Turn off"
+msgstr "Slå av"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Slå av medlemsinnlogging?"
+
+#: 
+msgid "Turn on"
+msgstr "Slå på"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Slå på medlemsinnlogging"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Slå på medlemsinnlogging?"
+
+#: 
+msgid "Type a name"
+msgstr "Skriv et navn"
+
+#: 
+msgid "Type a name or email"
+msgstr "Skriv et navn eller en e-post"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Skriv minst %d bokstaver av et navn, og søk deretter."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Ubekreftet e-post"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Forstå hvor ChurchCRM brukes"
+
+#: 
+msgid "Unknown device"
+msgstr "Ukjent enhet"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Ukjent katalogfelt: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Ukjent kataloginnstilling: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Enhet uten navn"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Passnøkkel uten navn"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Før kirkekontoret bekrefter den, kan den nye adressen ikke brukes til innlogging."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Bruke %1$s som e-postadresse for %2$s hos %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Bruk en annen e-postadresse"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Bruke en passnøkkel på denne enheten?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Bruk knappen nedenfor for å bekrefte at %1$s er e-postadressen din hos %2$s. Lenken virker én gang, til %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Bruker %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Vis tillatelser"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Venter på at du bekrefter %s. Bruk lenken vi sendte til den adressen."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Venter på at du bekrefter {{email}}. Bruk lenken vi sendte til den adressen."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Vi kunne ikke sende e-posten. Prøv igjen senere, eller kontakt kirkekontoret."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Vi kunne ikke logge deg inn"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Vi sendte en lenke til %s. Bruk den til å bekrefte den nye e-postadressen din."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Vi sendte en lenke til {{email}}. E-posten din endres når du bruker den."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Vi sender deg en kode og en lenke du kan logge inn med."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Så fint at du er her! Det tar omtrent tre minutter."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Så fint at familien din har blitt med! Registreringen er mottatt. Vi tar snart kontakt for å ønske dere personlig velkommen."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Bryllupsdag"
+
+#: 
+msgid "Welcome"
+msgstr "Velkommen"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Det den ble gitt for, finnes ikke lenger"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Hva medlemmer kan se og gjøre i portalen, og hvor hver tillatelse kommer fra. Personer telles blant alle som innloggingsreglene slipper inn, og ansatte."
+
+#: 
+msgid "What members can use"
+msgstr "Hva medlemmer kan bruke"
+
+#: 
+msgid "What to do"
+msgstr "Hva du skal gjøre"
+
+#: 
+msgid "Who can see it"
+msgstr "Hvem som kan se den"
+
+#: 
+msgid "Who is listed"
+msgstr "Hvem som er oppført"
+
+#: 
+msgid "Who may sign in"
+msgstr "Hvem som kan logge inn"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Hvem som kan logge inn på Medlemsportalen, hvem som har gjort det, og hvem e-posten stopper. Listene følger reglene på fanen Innlogging."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Hvem katalogen i Medlemsportalen viser, hvem som kan se den og hva den viser, valgt under Admin -> Medlemsportal -> Katalog."
+
+#: 
+msgid "Why"
+msgstr "Hvorfor"
+
+#: 
+msgid "Why not"
+msgstr "Hvorfor ikke"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Med tokenet enheten byttet ut for et øyeblikk siden"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Ja, legg til en passnøkkel"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Ja, fjern denne passnøkkelen"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Ja, logg ut alle enheter"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Du har ikke lov til å bekrefte denne e-posten."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Du holdes ikke innlogget på noen enhet."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Du er logget ut på alle enheter."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Du er logget ut på denne enheten."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Du kan også logge inn med e-postadressen din."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Du kan ikke slå av din egen innlogging."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Du kan ikke åpne Medlemsportalen. Kontakt kirkekontoret."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Du har bedt om å endre e-posten for mange ganger. Prøv igjen senere."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Du har ingen passnøkler."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Du er logget inn som %s i Medlemsportalen (endringer tillatt)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Du er logget inn som %s i Medlemsportalen (skrivebeskyttet)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Yngre enn minstealderen"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Laveste alder en person kan logge inn på Medlemsportalen. Når fødselsdatoen er ukjent, kvalifiserer bare et familieoverhode eller en ektefelle."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Innloggingskoden din til Medlemsportalen"
+
+#: 
+msgid "Your code"
+msgstr "Koden din"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "E-postadressen din %s er ikke bekreftet ennå, så den kan ikke brukes til innlogging. Vi sender en lenke til den; å bruke lenken bekrefter den."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "E-postadressen din kan ikke fjernes her. Kontakt kirkekontoret."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "E-postadressen din er bekreftet"
+
+#: 
+msgid "Your email address was changed"
+msgstr "E-postadressen din ble endret"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Passnøkkelen din ble lagt til. Neste gang logger du inn med den på denne enheten."
+
+#: 
+msgid "an administrator"
+msgstr "en administrator"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "verken familieoverhode eller ektefelle har en e-postadresse"
+
+#: 
+msgid "or"
+msgstr "eller"
+
+#: 
+msgid "until %s"
+msgstr "til %s"
 
