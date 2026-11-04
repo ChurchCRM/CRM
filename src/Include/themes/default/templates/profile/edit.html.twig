@@ -36,8 +36,10 @@
             </span>
             {% endif %}
             <div>
-                <label class="portal-field-label" for="portal-photo-input">{{ gettext('Choose a new photo') }}</label>
-                <input class="portal-input" type="file" id="portal-photo-input" accept="image/*">
+                <button class="portal-button portal-button-quiet" type="button" id="portal-photo-button">
+                    <i class="fa-solid fa-camera" aria-hidden="true"></i>
+                    {{ gettext('Choose a photo or take a selfie') }}
+                </button>
                 <p class="portal-field-hint">{{ gettext('A square picture of your face works best.') }}</p>
                 <p class="portal-field-error" id="portal-photo-error" role="alert"></p>
             </div>
@@ -157,5 +159,7 @@
 {% endblock %}
 
 {% block scripts_extra %}
+<link rel="stylesheet" href="{{ asset('/skin/v2/photo-uploader.min.css') }}">
+<script src="{{ asset('/skin/v2/photo-uploader.min.js') }}"></script>
 <script src="{{ asset('/skin/v2/portal-profile.min.js') }}"></script>
 {% endblock %}

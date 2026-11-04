@@ -190,6 +190,44 @@ class UserService
     }
 
     /**
+     * Member Portal login identifies the account by the person's personal email,
+     * so another person using the same address must be fixed first.
+     *
+     * @throws \RuntimeException when another person shares the personal email
+     */
+    private function assertPersonEmailUniqueForPortalLogin(int $personId): void
+    {
+        $person = PersonQuery::create()->findPk($personId);
+        if ($person === null) {
+            return;
+        }
+
+        $email = trim((string) $person->getEmail());
+        if ($email === '') {
+            return;
+        }
+
+        $others = PersonQuery::create()
+            ->filterByEmail($email)
+            ->filterById($personId, Criteria::NOT_EQUAL)
+            ->find();
+        if ($others->isEmpty()) {
+            return;
+        }
+
+        $names = [];
+        foreach ($others as $other) {
+            $names[] = $other->getFullName();
+        }
+
+        throw new \RuntimeException(sprintf(
+            gettext("This person's email address (%s) is also used by %s. Member Portal login cannot be enabled until each person has a unique email address."),
+            $email,
+            implode(', ', $names)
+        ));
+    }
+
+    /**
      * Resolves the access mode and every permission from the submitted form body.
      *
      * Two modes: admin (Admin=1) and custom (Admin=0, the module permissions as
@@ -267,6 +305,10 @@ class UserService
 
         if ($dupCount > 0) {
             throw new \RuntimeException(gettext('Login already in use, please select a different login!'));
+        }
+
+        if (!empty($perms['editSelf'])) {
+            $this->assertPersonEmailUniqueForPortalLogin($personId);
         }
 
         $rawPassword = User::randomPassword();
@@ -385,6 +427,10 @@ class UserService
 
         if ($dupCount > 0) {
             throw new \RuntimeException(gettext('Login already in use, please select a different login!'));
+        }
+
+        if (!empty($perms['editSelf'])) {
+            $this->assertPersonEmailUniqueForPortalLogin($personId);
         }
 
         $user = UserQuery::create()->findPk($personId);
