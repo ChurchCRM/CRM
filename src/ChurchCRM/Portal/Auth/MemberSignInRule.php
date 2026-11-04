@@ -282,23 +282,33 @@ final class MemberSignInRule
      * Groups the people `$query` finds by personal email the way the database
      * compares addresses, as `findSignInCandidate()` does: under the column's
      * collation `jose@example.com` and `josé@example.com` are one address.
-     * People with no personal email are left out.
+     * People with no personal email are left out. Each person is read as their
+     * own row, tagged with the lowest id at their address, so a group of any
+     * size comes back whole.
      *
-     * @return array<string, int[]> each address's person ids in id order, by one spelling of the address
+     * @return array<string, int[]> each address's person ids in id order, by the lowest id's spelling of the address
      */
     public static function groupIdsByEmail(PersonQuery $query): array
     {
         $rows = $query
             ->withColumn(self::EMAIL_KEY, 'EmailKey')
-            ->withColumn('GROUP_CONCAT(' . PersonTableMap::COL_PER_ID . ' ORDER BY ' . PersonTableMap::COL_PER_ID . ')', 'Ids')
+            ->withColumn('MIN(' . PersonTableMap::COL_PER_ID . ') OVER (PARTITION BY ' . self::EMAIL_KEY . ')', 'GroupId')
             ->where(self::EMAIL_KEY . " <> ''")
-            ->groupBy('EmailKey')
-            ->select(['EmailKey', 'Ids'])
+            ->orderById()
+            ->select(['Id', 'EmailKey', 'GroupId'])
             ->find();
 
-        $groups = [];
+        $keys = [];
+        $idsByGroup = [];
         foreach ($rows as $row) {
-            $groups[(string) $row['EmailKey']] = array_map('intval', explode(',', (string) $row['Ids']));
+            $groupId = (int) $row['GroupId'];
+            $keys[$groupId] ??= (string) $row['EmailKey'];
+            $idsByGroup[$groupId][] = (int) $row['Id'];
+        }
+
+        $groups = [];
+        foreach ($idsByGroup as $groupId => $ids) {
+            $groups[$keys[$groupId]] = $ids;
         }
 
         return $groups;
