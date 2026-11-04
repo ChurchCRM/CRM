@@ -38,5 +38,6 @@ existing historical behavior of uploading other Semgrep findings.
 `generic.html-templates.security.var-in-script-tag.var-in-script-tag`
 (both excluded by ID in `security-analysis.yml`). It adds the sanitizers
 Twig templates here use: `url()` in an `href`, the server-built `loginUrl`
-and `member.adminConsoleUrl`, and `|json_encode(json_flags)|raw` in a
+and `member.adminConsoleUrl`, the email classes' `fullURL` and `churchCRMURL`, the
+http(s)-checked report letterhead addresses, and `|json_encode(json_flags)|raw` in a
 `<script>`. Do not add `nosemgrep` comments to a template for these cases.

@@ -3,7 +3,7 @@ rules:
     message: >-
       A template variable in an anchor `href` can carry a `javascript:` URI.
       Build the address with `url()` (it prefixes the install root) or pass a
-      server-built address (`loginUrl`, `member.adminConsoleUrl`).
+      server-built address (`loginUrl`, `member.adminConsoleUrl`, `fullURL`, `churchCRMURL`) or an http(s)-checked address (`church_website`, `link.url`).
     languages: [generic]
     paths:
       include: ['*.twig']
@@ -21,6 +21,10 @@ rules:
       - pattern-not-inside: href = '{{ url(...) ... }}'
       - pattern-not-inside: href = "{{ loginUrl }}"
       - pattern-not-inside: href = "{{ member.adminConsoleUrl }}"
+      - pattern-not-inside: href = "{{ church_website }}"
+      - pattern-not-inside: href = "{{ link.url }}"
+      - pattern-not-inside: href = "{{fullURL}}"
+      - pattern-not-inside: href = "{{churchCRMURL}}"
       - pattern-not-inside: href = "/{{ ... }}"
       - pattern-not-inside: href = '/{{ ... }}'
 
