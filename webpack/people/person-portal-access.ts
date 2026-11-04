@@ -90,50 +90,52 @@ function wirePermissionsToggle(card: HTMLElement): void {
   }
 }
 
-const REMOVALS: Array<{
+// Built on demand: t() reads i18next, which is not ready at module load.
+const removals = (): Array<{
   selector: string;
   data: string;
   path: (id: string) => string;
   title: string;
   message: string;
   done: string;
-}> = [
+}> => [
   {
     selector: ".portal-signin-remove-device",
     data: "deviceId",
     path: (id) => `devices/${id}/remove`,
-    title: "Sign out this device",
-    message:
+    title: t("Sign out this device"),
+    message: t(
       "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email.",
-    done: "The device is signed out.",
+    ),
+    done: t("The device is signed out."),
   },
   {
     selector: ".portal-signin-remove-passkey",
     data: "passkeyId",
     path: (id) => `passkeys/${id}/remove`,
-    title: "Remove this passkey",
-    message: "This passkey will no longer sign the person in. They can sign in by email and add a new one.",
-    done: "The passkey was removed.",
+    title: t("Remove this passkey"),
+    message: t("This passkey will no longer sign the person in. They can sign in by email and add a new one."),
+    done: t("The passkey was removed."),
   },
   {
     selector: ".portal-signin-remove-grant",
     data: "grantId",
     path: (id) => `grants/${id}/remove`,
-    title: "Remove this permission",
-    message: "The person loses this permission in the Member Portal at once.",
-    done: "The permission was removed.",
+    title: t("Remove this permission"),
+    message: t("The person loses this permission in the Member Portal at once."),
+    done: t("The permission was removed."),
   },
 ];
 
 function wireRemovals(card: HTMLElement): void {
-  for (const removal of REMOVALS) {
+  for (const removal of removals()) {
     for (const button of card.querySelectorAll<HTMLButtonElement>(removal.selector)) {
       button.addEventListener("click", () => {
         const id = button.dataset[removal.data] ?? "";
         window.bootbox?.confirm({
-          title: t(removal.title),
-          message: t(removal.message),
-          buttons: { confirm: { label: t(removal.title), className: "btn-danger" } },
+          title: removal.title,
+          message: removal.message,
+          buttons: { confirm: { label: removal.title, className: "btn-danger" } },
           callback: async (confirmed: boolean) => {
             if (!confirmed) {
               return;
@@ -145,7 +147,7 @@ function wireRemovals(card: HTMLElement): void {
               window.CRM?.notify?.(await errorMessage(response, t("That could not be removed.")), { type: "danger" });
               return;
             }
-            window.CRM?.notify?.(t(removal.done), { type: "success" });
+            window.CRM?.notify?.(removal.done, { type: "success" });
             reloadSignInCard();
           },
         });
