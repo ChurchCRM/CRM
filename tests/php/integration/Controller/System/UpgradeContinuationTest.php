@@ -35,7 +35,6 @@ $request = static function (string $path) use ($temp, $origin): array {
     $body = curl_exec($curl);
     $status = curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
     if ($body === false) { throw new RuntimeException(curl_error($curl)); }
-    curl_close($curl);
     return [$status, $headers, $body];
 };
 try {

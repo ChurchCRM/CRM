@@ -30,7 +30,7 @@ class Pledge extends BasePledge
      *
      * @return bool
      */
-    public function preDelete(ConnectionInterface $con = null): bool
+    public function preDelete(?ConnectionInterface $con = null): bool
     {
         $deposit = DepositQuery::create()->findOneById($this->getDepId());
         if (!$deposit->getClosed()) {

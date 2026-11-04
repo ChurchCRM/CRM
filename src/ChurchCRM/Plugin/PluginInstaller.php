@@ -723,7 +723,6 @@ HTACCESS;
         $httpCode = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $errno = curl_errno($ch);
         $error = curl_error($ch);
-        curl_close($ch);
         fclose($fh);
 
         if ($tooLarge) {
