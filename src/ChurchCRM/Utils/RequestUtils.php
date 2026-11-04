@@ -19,6 +19,36 @@ class RequestUtils
             && self::isTrustedProxy($server['REMOTE_ADDR'] ?? '', $trustedProxies ?? (string) getenv('CHURCHCRM_TRUSTED_PROXIES'));
     }
 
+    /**
+     * The address of the client behind this request. When the direct peer is
+     * listed in CHURCHCRM_TRUSTED_PROXIES, X-Forwarded-For is read from the
+     * right, past the listed proxies, to the first address that is not one.
+     * Only the trusted proxies' entries are believed, so a client cannot choose
+     * its own address. Otherwise, or when that walk meets something that is not
+     * an IP address or finds no client, the direct peer.
+     */
+    public static function clientAddress(?array $server = null, ?string $trustedProxies = null): string
+    {
+        $server ??= $_SERVER;
+        $trustedProxies ??= (string) getenv('CHURCHCRM_TRUSTED_PROXIES');
+        $peer = (string) ($server['REMOTE_ADDR'] ?? '');
+        if (!self::isTrustedProxy($peer, $trustedProxies)) {
+            return $peer;
+        }
+
+        $forwarded = array_map('trim', explode(',', (string) ($server['HTTP_X_FORWARDED_FOR'] ?? '')));
+        foreach (array_reverse($forwarded) as $address) {
+            if (filter_var($address, FILTER_VALIDATE_IP) === false) {
+                return $peer;
+            }
+            if (!self::isTrustedProxy($address, $trustedProxies)) {
+                return $address;
+            }
+        }
+
+        return $peer;
+    }
+
     public static function isTrustedProxy(string $ip, string $trustedProxies): bool
     {
         $packed = @inet_pton($ip);
