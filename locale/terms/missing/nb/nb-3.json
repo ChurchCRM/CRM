@@ -1,5 +1,4 @@
 {
-  "No changes": "",
   "No changes made.": "",
   "No family role": "",
   "No head of household or spouse can receive family email.": "",
@@ -112,7 +111,6 @@
   "Send the fields to show as an object of true and false values.": "",
   "Send the settings as a JSON object.": "",
   "Session ended": "",
-  "Set up email": "",
   "Set up email first.": "",
   "Shared addresses fixed: {{total}}": "",
   "Shared addresses to fix: {{total}}": "",
@@ -148,5 +146,7 @@
   "Sign-in is not disabled for this person.": "",
   "Sign-in refused": "",
   "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record.": "",
-  "Signed in, last 30 days": ""
+  "Signed in, last 30 days": "",
+  "Signed out": "",
+  "Signed out by a change to their sign-in": ""
 }

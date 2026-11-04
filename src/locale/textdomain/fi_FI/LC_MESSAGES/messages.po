@@ -24618,3 +24618,15 @@ msgstr "Kolikot yhteensä"
 msgid "Witness"
 msgstr "Todistaja"
 
+#: 
+msgid "No changes"
+msgstr "Ei muutoksia"
+
+#: 
+msgid "Set up email"
+msgstr "Määritä sähköposti"
+
+#: 
+msgid "This person is deceased."
+msgstr "Tämä henkilö on kuollut"
+

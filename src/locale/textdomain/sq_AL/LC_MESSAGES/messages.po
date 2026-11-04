@@ -24222,3 +24222,15 @@ msgstr "Shfaqet vetëm emaili që keni dërguar."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Ngjarjet e përsëritura nuk mund të krijoheshin. Kontrolloni regjistrin e aplikacionit për detaje."
 
+#: 
+msgid "No changes"
+msgstr "Asnjë ndryshim"
+
+#: 
+msgid "Set up email"
+msgstr "Konfiguro Emailin"
+
+#: 
+msgid "This person is deceased."
+msgstr "Ky person është i/e ndjerë"
+

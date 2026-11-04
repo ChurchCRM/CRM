@@ -6107,6 +6107,9 @@
   "Total Cash": "إجمالي النقد",
   "Total Coin": "إجمالي العملات المعدنية",
   "Witness": "شاهد",
+  "No changes": "لا تغييرات",
+  "Set up email": "إعداد البريد الإلكتروني",
+  "This person is deceased.": "هذا الشخص متوفى",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "تم إنشاء {{count}} موعد لـ \"{{name}}\"",
     "other": "تم إنشاء {{count}} مواعيد لـ \"{{name}}\""

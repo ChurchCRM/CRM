@@ -5957,6 +5957,9 @@
   "Total Cash": "현금 합계",
   "Total Coin": "동전 합계",
   "Witness": "증인",
+  "No changes": "변경 사항 없음",
+  "Set up email": "이메일 설정",
+  "This person is deceased.": "이 사람은 별세했습니다",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：생성된 {{count}}개 발생",
     "other": "\"{{name}}\"：생성된 {{count}}개 발생"

@@ -24644,3 +24644,15 @@ msgstr "Total en pièces"
 msgid "Witness"
 msgstr "Témoin"
 
+#: 
+msgid "No changes"
+msgstr "Pas de changements"
+
+#: 
+msgid "Set up email"
+msgstr "Configurer la messagerie"
+
+#: 
+msgid "This person is deceased."
+msgstr "Cette personne est décédée"
+

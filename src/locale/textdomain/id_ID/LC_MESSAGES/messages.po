@@ -24200,3 +24200,15 @@ msgstr "Hanya email yang Anda kirim yang ditampilkan."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Acara berulang tidak dapat dibuat. Periksa log aplikasi untuk detailnya."
 
+#: 
+msgid "No changes"
+msgstr "Tidak ada perubahan"
+
+#: 
+msgid "Set up email"
+msgstr "Atur Email"
+
+#: 
+msgid "This person is deceased."
+msgstr "Orang ini telah meninggal dunia"
+

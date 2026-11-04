@@ -24320,3 +24320,15 @@ msgstr "Este afișat doar e-mailul pe care l-ați trimis."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Evenimentele repetitive nu au putut fi create. Verificați jurnalul aplicației pentru detalii."
 
+#: 
+msgid "No changes"
+msgstr "Fără schimbări"
+
+#: 
+msgid "Set up email"
+msgstr "Configurați e-mailul"
+
+#: 
+msgid "This person is deceased."
+msgstr "Această persoană este decedată"
+

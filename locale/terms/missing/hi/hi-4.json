@@ -1,5 +1,4 @@
 {
-  "Passkeys need a secure (HTTPS) connection to this site.": "",
   "Passkeys need the site address to be set in Config.php.": "",
   "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is.": "",
   "Passkeys work only at %s.": "",
@@ -60,7 +59,6 @@
   "Send the fields to show as an object of true and false values.": "",
   "Send the settings as a JSON object.": "",
   "Session ended": "",
-  "Set up email": "",
   "Set up email first.": "",
   "Shared addresses fixed: {{total}}": "",
   "Shared addresses to fix: {{total}}": "",
@@ -148,5 +146,7 @@
   "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses.": "",
   "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet.": "",
   "The sign-in settings could not be saved.": "",
-  "The unconfirmed email has changed. Reload the page and try again.": ""
+  "The unconfirmed email has changed. Reload the page and try again.": "",
+  "Their classification may not sign in": "",
+  "Their email changed": ""
 }

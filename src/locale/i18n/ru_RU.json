@@ -6047,6 +6047,9 @@
   "Total Cash": "Итого наличные",
   "Total Coin": "Итого монеты",
   "Witness": "Свидетель",
+  "No changes": "Нет изменений",
+  "Set up email": "Настроить почту",
+  "This person is deceased.": "Этот человек умер",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} событие создано",
     "other": "\"{{name}}\": {{count}} событий создано"

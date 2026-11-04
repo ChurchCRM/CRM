@@ -24258,3 +24258,15 @@ msgstr "Zobrazuje sa iba e-mail, ktorý ste odoslali."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Opakujúce sa udalosti sa nepodarilo vytvoriť. Podrobnosti nájdete v protokole aplikácie."
 
+#: 
+msgid "No changes"
+msgstr "Žiadne zmeny"
+
+#: 
+msgid "Set up email"
+msgstr "Nastaviť e-mail"
+
+#: 
+msgid "This person is deceased."
+msgstr "Táto osoba je zosnulá"
+

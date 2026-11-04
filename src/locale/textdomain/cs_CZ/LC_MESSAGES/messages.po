@@ -24666,3 +24666,15 @@ msgstr "Celkem mince"
 msgid "Witness"
 msgstr "Svědek"
 
+#: 
+msgid "No changes"
+msgstr "Žádné změny"
+
+#: 
+msgid "Set up email"
+msgstr "Nastavit e-mail"
+
+#: 
+msgid "This person is deceased."
+msgstr "Tato osoba je zesnulá"
+

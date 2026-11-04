@@ -6017,6 +6017,9 @@
   "Total Cash": "Suma gotówki",
   "Total Coin": "Suma monet",
   "Witness": "Świadek",
+  "No changes": "Brak zmian",
+  "Set up email": "Skonfiguruj pocztę",
+  "This person is deceased.": "Ta osoba nie żyje",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} zdarzenie utworzone",
     "other": "\"{{name}}\": {{count}} zdarzeń utworzonych"

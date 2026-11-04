@@ -24231,3 +24231,15 @@ msgstr "Slegs die e-pos wat jy gestuur het, word gewys."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Herhalende gebeure kon nie geskep word nie. Kyk na die toepassingslogboek vir besonderhede."
 
+#: 
+msgid "No changes"
+msgstr "Geen veranderinge nie"
+
+#: 
+msgid "Set up email"
+msgstr "Stel e-pos op"
+
+#: 
+msgid "This person is deceased."
+msgstr "Hierdie persoon is oorlede"
+

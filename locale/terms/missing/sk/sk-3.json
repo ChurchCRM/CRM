@@ -97,7 +97,6 @@
   "No Login as Person sessions yet.": "",
   "No birth date, and not a head of household or spouse": "",
   "No calendar is switched on, so members do not see the Calendar page.": "",
-  "No changes": "",
   "No changes made.": "",
   "No family role": "",
   "No head of household or spouse can receive family email.": "",
@@ -148,5 +147,6 @@
   "Passkeys are turned off.": "",
   "Passkeys cannot be used here.": "",
   "Passkeys cannot be used on this site yet. Please contact the church office.": "",
-  "Passkeys need a host name, not an IP address, in the site address.": ""
+  "Passkeys need a host name, not an IP address, in the site address.": "",
+  "Passkeys need a secure (HTTPS) connection to this site.": ""
 }

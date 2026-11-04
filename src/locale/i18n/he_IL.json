@@ -5889,6 +5889,9 @@
   "The geocoding service did not answer — try again later": "שירות הקידוד הגאוגרפי לא הגיב — יש לנסות שוב מאוחר יותר",
   "Only the email you sent is shown.": "מוצגת רק הודעת הדוא״ל ששלחת.",
   "Repeat events could not be created. Check the application log for details.": "לא ניתן היה ליצור אירועים חוזרים. בדוק את יומן היישום לפרטים.",
+  "No changes": "אין שינויים",
+  "Set up email": "הגדרת דואר אלקטרוני",
+  "This person is deceased.": "אדם זה נפטר",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": נוצר {{count}} מופע",
     "other": "\"{{name}}\": נוצרו {{count}} מופעים"

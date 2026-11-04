@@ -5889,6 +5889,9 @@
   "The geocoding service did not answer — try again later": "Coğrafi kodlama hizmeti yanıt vermedi — daha sonra tekrar deneyin",
   "Only the email you sent is shown.": "Yalnızca gönderdiğiniz e-posta gösterilir.",
   "Repeat events could not be created. Check the application log for details.": "Tekrarlayan etkinlikler oluşturulamadı. Ayrıntılar için uygulama günlüğünü kontrol edin.",
+  "No changes": "Değişiklik yok",
+  "Set up email": "E-postayı Yapılandır",
+  "This person is deceased.": "Bu kişi vefat etmiş",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} olay oluşturuldu",
     "other": "\"{{name}}\": {{count}} olay oluşturuldu"

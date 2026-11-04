@@ -24210,3 +24210,15 @@ msgstr "Chỉ hiển thị email bạn đã gửi."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Không thể tạo các sự kiện lặp lại. Kiểm tra nhật ký ứng dụng để biết chi tiết."
 
+#: 
+msgid "No changes"
+msgstr "Không thay đổi"
+
+#: 
+msgid "Set up email"
+msgstr "Thiết lập Email"
+
+#: 
+msgid "This person is deceased."
+msgstr "Người này đã qua đời"
+

@@ -5957,6 +5957,9 @@
   "Total Cash": "現金合計",
   "Total Coin": "硬貨合計",
   "Witness": "証人",
+  "No changes": "変更なし",
+  "Set up email": "メールを設定する",
+  "This person is deceased.": "この人物は故人です",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} 個の発生が作成されました",
     "other": "\"{{name}}\"：{{count}} 個の発生が作成されました"

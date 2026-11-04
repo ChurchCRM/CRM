@@ -1,6 +1,4 @@
 {
-  "Signed out": "",
-  "Signed out by a change to their sign-in": "",
   "Signed out everywhere": "",
   "Someone asked for a Member Portal sign-in email, but none was sent.": "",
   "Someone could not sign in to the Member Portal": "",
@@ -95,7 +93,6 @@
   "This person has no such remembered device.": "",
   "This person has no unconfirmed email.": "",
   "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed.": "",
-  "This person is deceased.": "",
   "This person is signed out of the Member Portal everywhere.": "",
   "This person no longer exists.": "",
   "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address.": "",
@@ -148,5 +145,8 @@
   "What it was given for no longer exists": "",
   "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff.": "",
   "What members can use": "",
-  "What to do": ""
+  "What to do": "",
+  "Who can see it": "",
+  "Who is listed": "",
+  "Who may sign in": ""
 }
