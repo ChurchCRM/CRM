@@ -146,7 +146,7 @@ describe('Error Handler — /plugins (unauthenticated redirects to login)', () =
       followRedirect: false,
     }).then((response) => {
       expect(response.status).to.equal(302);
-      expect(response.headers['location']).to.match(/\/session\/begin$/);
+      expect(response.headers['location']).to.match(/\/admin\/$/);
     });
   });
 });

@@ -107,11 +107,6 @@ class AuthMiddleware implements MiddlewareInterface
                     return $response->withStatus(403)->withHeader('Content-Type', 'application/json');
                 }
 
-                $adminRoot = SystemURLs::getRootPath() . '/admin';
-                if (($request->getUri()->getPath() === $adminRoot || $request->getUri()->getPath() === $adminRoot . '/')
-                    && !$sessionUser->isAdmin()) {
-                    return (new Response())->withStatus(302)->withHeader('Location', SystemURLs::getRootPath() . '/v2/dashboard');
-                }
 
                 // User with an active browser session is still authenticated.
                 // For browser requests (non-background), enforce any required redirect steps (e.g. forced password change).

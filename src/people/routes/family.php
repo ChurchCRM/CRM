@@ -231,7 +231,7 @@ function viewFamily(Request $request, Response $response, array $args): Response
         'taxYears' => [],
     ];
 
-    // Pre-compute available tax years for Finance users (used by Tax Doc action menu items)
+    // Sign-in status under each member, for staff who edit records
     if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() && SystemConfig::getBooleanValue('bMemberSignIn')) {
         $pageArgs['portalSignInStatuses'] = (new PersonSignInService())->statusesFor($family->getPeople());
     }

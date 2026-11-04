@@ -2,7 +2,7 @@
 
 {#
   Every /portal/login page while member sign-in is off and self-registration is on
-  (member sign-in design §7). With both off, the middleware redirects to the staff sign-in.
+  (member sign-in design §7). With both off, the middleware redirects to the staff sign-in. Leaders get a sign-in link here.
 
   Variables: `pageTitle`, `guestPage`, `selfRegistrationEnabled`.
 #}
@@ -18,6 +18,7 @@
             <a class="portal-button portal-button-large" id="portalRegisterFamily" href="{{ url('/portal/register') }}">{{ gettext('Register your family') }}</a>
         </div>
         <p class="portal-card-text">{{ gettext("Member sign-in isn't available yet. Please contact the church office.") }}</p>
+        <p class="portal-card-text"><a id="portalStaffSignIn" href="{{ url('/admin/') }}">{{ gettext('Church leader sign-in') }}</a></p>
     </section>
 </div>
 {% endblock %}

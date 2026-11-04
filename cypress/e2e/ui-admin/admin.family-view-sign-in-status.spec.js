@@ -60,4 +60,11 @@ describe("Family page: who may sign in to the Member Portal", () => {
         cy.get("[data-portal-signin-status]").should("not.exist");
         setConfig("bMemberSignIn", "1");
     });
+
+    it("shows nothing to staff without Edit Records", () => {
+        cy.setupPersonaSession("zero-permission-staff");
+        cy.visit(`/people/family/${FAMILY}`);
+        cy.contains("Jon");
+        cy.get("[data-portal-signin-status]").should("not.exist");
+    });
 });

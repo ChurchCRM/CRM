@@ -16,8 +16,6 @@
 {% set json_flags = constant('JSON_HEX_TAG') b-or constant('JSON_HEX_AMP') b-or constant('JSON_HEX_APOS') b-or constant('JSON_HEX_QUOT') %}
 <script nonce="{{ nonce() }}">
     window.CRM = Object.assign(window.CRM || {}, {
-        churchName: {{ church.name|json_encode(json_flags)|raw }},
-        churchWebSite: {{ url('/portal/login')|json_encode(json_flags)|raw }},
         phoneFormats: {
             home: {{ phoneFormat|json_encode(json_flags)|raw }},
             cell: {{ phoneFormatCell|json_encode(json_flags)|raw }},

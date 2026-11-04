@@ -91,7 +91,7 @@ describe("Member sign-in turned off", () => {
 
         // Sign-in and self-registration both off: the staff sign-in is the way in.
         cy.visit("/portal/profile");
-        cy.location("pathname").should("match", /\/session\/begin$/);
+        cy.location("pathname").should("match", /\/admin\/$/);
     });
 
     it("offers a Register your family button when only self-registration is on", () => {

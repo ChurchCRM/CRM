@@ -200,7 +200,7 @@ describe("Admin → Member Portal page", () => {
             cy.visit("/admin/member-portal");
             cy.get("#portalStatCards .row > .col").should("have.length", 6);
 
-            const checkColumns = (width, expectedColumns, screenshotName) => {
+            const checkColumns = (width, expectedColumns) => {
                 cy.viewport(width, 1000);
                 cy.visit("/admin/member-portal");
                 cy.get("#portalStatCards .row > .col").then(($columns) => {
@@ -213,15 +213,11 @@ describe("Admin → Member Portal page", () => {
                 cy.document().then((document) => {
                     expect(document.documentElement.scrollWidth).to.be.at.most(width);
                 });
-                cy.screenshot(screenshotName, { capture: "viewport" });
-                cy.document().then((document) => document.documentElement.setAttribute("data-bs-theme", "dark"));
-                cy.screenshot(`${screenshotName}-dark`, { capture: "viewport" });
-                cy.document().then((document) => document.documentElement.removeAttribute("data-bs-theme"));
             };
 
-            checkColumns(2048, 6, "portal-sign-in-metrics-desktop");
-            checkColumns(820, 3, "portal-sign-in-metrics-tablet");
-            checkColumns(390, 2, "portal-sign-in-metrics-phone");
+            checkColumns(2048, 6);
+            checkColumns(820, 3);
+            checkColumns(390, 2);
         });
 
         it("Is reachable from the Admin menu", () => {

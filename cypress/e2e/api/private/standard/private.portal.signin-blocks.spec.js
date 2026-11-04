@@ -155,7 +155,7 @@ describe("Sign-in blocks for everyone", () => {
         cy.request({ method: "POST", url: "/session/two-factor", form: true, body: { TwoFACode: "000000" } }).then(
             (response) => {
                 expect(response.redirects.some((url) => url.includes("/session/two-factor"))).to.eq(false);
-                expect(response.redirects.some((url) => url.endsWith("/session/begin"))).to.eq(true);
+                expect(response.redirects.some((url) => url.endsWith("/admin/"))).to.eq(true);
             },
         );
         cy.request({ url: "/v2/dashboard", followRedirect: false }).its("status").should("eq", 302);

@@ -60,20 +60,20 @@ describe("Member Portal — member landing", () => {
     it("A direct visit to /v2/dashboard goes to the staff sign-in", () => {
         login();
         cy.visit("v2/dashboard", { failOnStatusCode: false });
-        cy.location("pathname", { timeout: 10000 }).should("match", /\/session\/begin$/);
+        cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
         cy.get("#UserBox").should("be.visible");
     });
 
     it("A direct visit to another MVC module goes to the staff sign-in", () => {
         login();
         cy.visit("people/dashboard", { failOnStatusCode: false });
-        cy.location("pathname", { timeout: 10000 }).should("match", /\/session\/begin$/);
+        cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
     });
 
     it("A legacy *.php page goes to the staff sign-in", () => {
         login();
         cy.visit("SystemSettings.php", { failOnStatusCode: false });
-        cy.location("pathname", { timeout: 10000 }).should("match", /\/session\/begin$/);
+        cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
     });
 
     // The bar is gone for everyone (2026-09-17): the account menu's "Admin
