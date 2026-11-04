@@ -1913,7 +1913,7 @@ The pattern is `usr_ManageFundraisers` (`src/mysql/upgrade/7.4.3-manage-fundrais
 1. `orm/schema.xml` after `usr_ManageFundraisers`: `<column name="usr_ManageMinistries" phpName="ManageMinistries" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>`.
 2. An upgrade script (`7.8.0-volunteer-v2-manager-permission.sql`): `ALTER TABLE \`user_usr\` ADD COLUMN \`usr_ManageMinistries\` tinyint(1) unsigned NOT NULL DEFAULT 0 AFTER \`usr_ManageFundraisers\`;` as a plain `ALTER`, not `IF NOT EXISTS` (`7.4.3-manage-fundraisers.sql`). Registered in `upgrade.json` by the epic PR (D17, F29).
 3. `src/mysql/install/Install.sql`, and `cypress/data/seed.sql` for a seeded manager and coordinator (§6.4; named-column `INSERT`s only).
-4. ORM regeneration: `cd src && composer run orm-gen`, then `npm run build:php:validate:orm`.
+4. ORM regeneration: `cd src && composer run orm-gen`, then `npm run lint`.
 5. `User.php`: the predicates, beside `isManageFundraisersEnabled()` (`isVolunteerV2Enabled()`, `isManageMinistriesEnabled()`, `isManageMyMinistriesEnabled()`, `isVolunteerCoordinatorEnabled()`, `isVolunteerTeamLeaderEnabled()`).
 6. `UserService::extractModulePerms()` (`'manageMinistries' => …`) and the `$permissions` array in `src/admin/views/user-editor.php`.
 7. `$allowedRoles` in `src/v2/routes/root.php`: `'ManageMinistries'` and `'VolunteerCoordinator'`.
@@ -2899,7 +2899,7 @@ The JS extractor reads `src/skin/js/**` and `webpack/**` (and `src/**/*.php` thr
 `php-inline-i18next-plugin`, `locale/scripts/i18next.config.ts`); V2 keeps its JS strings in its bundles.
 
 Rules the pre-commit hook enforces (`.githooks/pre-commit` →
-`scripts/locale-check.js`): no trailing colon inside the call (`gettext('Position') . ':'`), no HTML
+`scripts/lint/locale-check.js`): no trailing colon inside the call (`gettext('Position') . ':'`), no HTML
 inside a translatable string, no decorative em-dash wrappers. Also:
 
 - Defer any module-scope `i18next.t()` behind `window.CRM.onLocalesReady(init)` or it returns
@@ -3303,7 +3303,7 @@ Follow this for every V2 migration PR (#9705, #9706's permission column, #9713's
    ```bash
    cp orm/propel.php.dist orm/propel.php      # orm/propel.php is not in the tree
    cd src && composer run orm-gen             # = php vendor/bin/propel --config-dir=../orm model:build
-   cd .. && npm run build:php:validate:orm
+   cd .. && npm run lint
    ```
    > `npm run build:orm` runs the composer script and needs `orm/propel.php` copied from
    > `orm/propel.php.dist` first (gitignored, absent from a fresh checkout).
@@ -3311,7 +3311,7 @@ Follow this for every V2 migration PR (#9705, #9706's permission column, #9713's
    > `src/ChurchCRM/model/ChurchCRM/Base/` and `Map/` are gitignored: only the hand-written
    > skeleton subclasses are committed.
    >
-   > `scripts/validate-orm-base-classes.js` passes (exit 0) when `Base/` is absent, so run
+   > `scripts/lint/validate-orm-base-classes.js` passes (exit 0) when `Base/` is absent, so run
    > `composer install` first for it to catch a schema/model mismatch.
 7. **Hand-write the model subclasses** — `src/ChurchCRM/model/ChurchCRM/VolunteerX.php` and
    `VolunteerXQuery.php`, each extending its generated Base class. Put lifecycle enum constants and

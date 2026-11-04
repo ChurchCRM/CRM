@@ -304,7 +304,7 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: Build release-notes context
-        run: node scripts/release-notes-context.js "$PREVIOUS_TAG" "$TARGET_COMMIT" > "release-notes-context-$TAG.md"
+        run: node scripts/release/release-notes-context.js "$PREVIOUS_TAG" "$TARGET_COMMIT" > "release-notes-context-$TAG.md"
 
       - name: Upload context
         uses: ./.github/actions/upload-artifact
@@ -342,7 +342,7 @@ jobs:
           VERSION: ${{ needs.publish.outputs.release_tag }}
           NEXT_VERSION: ${{ inputs.next_version }}
           MERGE: 'false'
-        run: ./scripts/notify-docs-release.sh
+        run: ./scripts/release/notify-docs-release.sh
 
   start_next:
     needs: publish

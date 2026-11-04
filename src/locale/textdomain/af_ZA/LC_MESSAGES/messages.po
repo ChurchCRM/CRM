@@ -24231,3 +24231,2963 @@ msgstr "Slegs die e-pos wat jy gestuur het, word gewys."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Herhalende gebeure kon nie geskep word nie. Kyk na die toepassingslogboek vir besonderhede."
 
+#: 
+msgid "Confirm Password"
+msgstr "Bevestig wagwoord"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Jou wagwoord is verander. Jy kan nou met jou nuwe wagwoord aanmeld."
+
+#: 
+msgid "1st"
+msgstr "1ste"
+
+#: 
+msgid "2nd"
+msgstr "2de"
+
+#: 
+msgid "3rd"
+msgstr "3de"
+
+#: 
+msgid "4th"
+msgstr "4de"
+
+#: 
+msgid "5th"
+msgstr "5de"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Kan nie administrateurtoegang van die enigste administrateur wat kan aanmeld verwyder nie"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Kies die week van die maand, van die 1ste tot die 5de"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Skep {{total}} geleenthede, op die {{week}} {{day}} van elke maand van {{first}} tot {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Ongeldige dag van die week"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Maandeliks, op 'n weeksdag"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Maande sonder 'n 5de een word oorgeslaan."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM moet 'n heelgetal van 1 tot 5 wees"
+
+#: 
+msgid "Week of the month"
+msgstr "Week van die maand"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Week van die maand moet van 1 tot 5 wees"
+
+#: 
+msgid "%s through %s"
+msgstr "%s tot %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Kerkbelastingnommer (EIN) wat op bydraestate gedruk word"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Bydraestate word aan die volwassenes van 'n huishouding uitgereik. Kontak asseblief die kerkkantoor as jy een benodig."
+
+#: 
+msgid "Download statement"
+msgstr "Laai staat af"
+
+#: 
+msgid "Generated"
+msgstr "Gegenereer"
+
+#: 
+msgid "Goods and services"
+msgstr "Goedere en dienste"
+
+#: 
+msgid "My Giving"
+msgstr "My bydraes"
+
+#: 
+msgid "No contributions"
+msgstr "Geen bydraes"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Geen bydraes is vir hierdie tydperk aangeteken nie."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Geen goedere of dienste is in ruil vir hierdie bydraes verskaf nie, behalwe ontasbare godsdienstige voordele."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Opsioneel. Word op bydraestate gedruk."
+
+#: 
+msgid "Tax ID"
+msgstr "Belastingnommer"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Belastingnommer (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Belastingaftrekbare bedrag"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Dit is die huishoudelike staat. Dit sluit gawes vir jou gesin in."
+
+#: 
+msgid "Total contributions"
+msgstr "Totale bydraes"
+
+#: 
+msgid "Year-end statement"
+msgstr "Jaareindstaat"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d bydraestaat is suksesvol aan die gesin ge-e-pos."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s Bydraestaat"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Pas die teks aan wat op bydraestate verskyn (sTaxReport1, sTaxReport2, ens.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Liewe %s-gesin,\n"
+"\n"
+"Vind asseblief jou %s-bydraestaat van %s aangeheg by hierdie e-pos.\n"
+"\n"
+"As jy enige vrae het, kontak asseblief die kerkkantoor.\n"
+"\n"
+"Dankie vir jou vrygewigheid."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "E-pos %s-bydraestaat"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Koevertnommers"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Genereer bydraestate"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Genereer verslae vir bydraestate, belofteopvolging en finansiële ontleding."
+
+#: 
+msgid "Giving Reports"
+msgstr "Bydraeverlagte"
+
+#: 
+msgid "Giving Statement"
+msgstr "Bydraestaat"
+
+#: 
+msgid "Giving Statements"
+msgstr "Bydraestate"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Die bydraestaat-e-pos kon nie gestuur word nie. Kontroleer asseblief jou e-posbedienerinstellings."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Pos asseblief jou volgende gawe aan %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Druk %s-bydraestaat"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Kan nie bydraestaat e-pos nie: geen betalingsdata vir daardie jaar gevind nie."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Kan nie bydraestaat e-pos nie: hierdie gesin het geen e-posadres op lêer nie."
+
+#: 
+msgid "Undesignated"
+msgstr "Onaangewys"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Bevestig dat die kerknaam, adres en kontakbesonderhede op bydraestate verskyn."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Die posisie is nou aan %s toegewys, wat dit aanvaar het."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Die posisie is nou aan %s toegewys, wat dit nog nie aanvaar het nie."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Hul rede: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Bekyk toewysings"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Vrywilligers nog nodig vir hierdie geleentheid: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Vrywilligers nog nodig vir hierdie posisie: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "'n Weeklikse intekenrooster vir elke klas. Klaslyste en fotoboeke is op die Sondagskool-kontroleskerm en elke klasbladsy."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "'n Weeklikse intekenrooster vir die skooljaar, een kolom vir elke Sondag"
+
+#: 
+msgid "Age %d"
+msgstr "Ouderdom %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Minstens een groep moet gekies word om 'n bywoningsblad te maak."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Bywoningsblad"
+
+#: 
+msgid "Class List"
+msgstr "Klaslys"
+
+#: 
+msgid "Download PDF"
+msgstr "Laai PDF af"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Sluittydperk in minute\n"
+"'n Geslote rekening ontsluit vanself ná soveel minute. Mislukte aanmeldings van een IP-adres word oor dieselfde tydperk getel."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Maksimum aantal mislukte aanmeldings van een IP-adres\n"
+"Mislukte aanmeldings en wagwoordherstelversoeke van een IP-adres tel teen hierdie perk binne die sluittydperk. Sodra dit bereik word, word aanmelding van daardie adres geweier totdat die tydperk eindig.\n"
+"Stel op nul om hierdie funksie te deaktiveer, byvoorbeeld wanneer almal ChurchCRM deur een instaanadres bereik."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Maksimum aantal mislukte aanmeldings wat toegelaat word voordat 'n gebruikersrekening gesluit word.\n"
+"'n Geslote rekening ontsluit vanself ná die sluittydperk, of vroeër wanneer 'n administrateur sy mislukte aanmeldings terugstel.\n"
+"Hierdie funksie help om teen outomatiese wagwoordraai-aanvalle te beskerm.\n"
+"Stel op nul om hierdie funksie te deaktiveer."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Minute totdat dit vanself ontsluit: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Sondagskool-bywoningsblad"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Sondae sonder klas word van die blad weggelaat."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Databasisopgradering"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Jou databasis word opgedateer. Hou asseblief hierdie bladsy oop totdat die opgradering klaar is."
+
+#: 
+msgid "Family Labels"
+msgstr "Gesinsetikette"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Totaal"
+
+#: 
+msgid "Bill"
+msgstr "Rekening"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Kies 'n deposito of voer albei verslagdatums in."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Kies een deposito om sy betalings na te gaan of sy bankstrokie te druk. 'n Gekose deposito oorheers die datumreeks."
+
+#: 
+msgid "Coin"
+msgstr "Munt"
+
+#: 
+msgid "Deposit Report"
+msgstr "Depositoverslag"
+
+#: 
+msgid "Download Report"
+msgstr "Laai verslag af"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Voer geldige verslagdatums in."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Ongeldige verslagfilters."
+
+#: 
+msgid "Invalid report options."
+msgstr "Ongeldige verslagopsies."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Laat filters leeg om alle betalings in te sluit. Hierdie instellings geld vir die verslag, nie die bankstrokie nie."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Geen rekords is teruggegee nie. Pas jou filters aan en probeer weer."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Berei voor vir die bank"
+
+#: 
+msgid "Preview Totals"
+msgstr "Voorskou totale"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Druk bankstrokie"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Druk die gekose deposito volledig, met kontant- en tjek-totale, telblaaie en getuielyne. Verslagfilters word geïgnoreer. Elektroniese betalings bly in die opsomming en word uit die fisiese bankkaartjie-totaal uitgesluit."
+
+#: 
+msgid "Review Payments"
+msgstr "Hersien betalings"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Hersien betalings vir 'n tydperk, of berei een deposito vir die bank voor."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Hersien betalings, laai PDF of CSV af, of druk 'n bankstrokie vir een deposito."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Kies 'n geldige deposito."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Kies een deposito om 'n bankstrokie te druk."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Die verslag se einddatum moet op of ná die begindatum wees."
+
+#: 
+msgid "Total Cash"
+msgstr "Totale kontant"
+
+#: 
+msgid "Total Coin"
+msgstr "Totale munt"
+
+#: 
+msgid "Witness"
+msgstr "Getuie"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d gawes het geen gesin nie. Hulle kan nie op 'n staat wees nie."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "%d oop deposito's gedateer in hierdie jaar. Sluit hulle sodat elke gawe finaal is voordat state uitgaan."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d betalings is nog nie op enige deposito nie."
+
+#: 
+msgid "Can be emailed"
+msgstr "Kan ge-e-pos word"
+
+#: 
+msgid "Closing line"
+msgstr "Slotreël"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Elke deposito wat in hierdie jaar gedateer is, is gesluit."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Elke gawe behoort aan 'n gesin."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Elke betaling in hierdie jaar is op 'n deposito."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Genereer belastingstate"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Bydraeverlag (Belastingstate)"
+
+#: 
+msgid "Opening line"
+msgstr "Openingsreël"
+
+#: 
+msgid "Print and mail"
+msgstr "Druk en pos"
+
+#: 
+msgid "Qty"
+msgstr "Aantal"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Hersien die jaar, druk dan of e-pos bydraestate."
+
+#: 
+msgid "Signed by"
+msgstr "Geteken deur"
+
+#: 
+msgid "Thank-you line"
+msgstr "Dankie-reël"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Bevestig dat die kerknaam, adres en kontakbesonderhede op belastingstate verskyn."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Jaareindbydraes"
+
+#: 
+msgid "As of: %s"
+msgstr "Soos op: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Minstens een positiewe gesinsbetaling in die gekose %d boekjare, tot en met die hersiendatum: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Doop, kiesersrol-aansoeke, verblyf, nagmaalstatus, bywoning, goeie stand en plaaslike uitsonderings moet afsonderlik nagegaan word waar julle statute dit vereis. Lidmaatskapduur is nie bewys van bywoning nie."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Kies 'n bestaande klassifikasie."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Kies minstens een klassifikasie om te hersien."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Kies die klassifikasies wat jou kerk gebruik. Geen klassifikasie word veronderstel om stemreg te verleen nie."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Kerkeleierskap moet geskiktheid volgens die kerkstatute bevestig. Hierdie lys wys slegs mense wat by die gekose filters pas."
+
+#: 
+msgid "Classifications to review"
+msgstr "Klassifikasies om te hersien"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Klassifikasies: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Oorlede mense, onaktiewe mense en klassifikasies, en onaktiewe of hangende-hersiening-gesinne en -mense word uitgesluit."
+
+#: 
+msgid "Download Review List"
+msgstr "Laai hersieningslys af"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Voer 'n geldige hersiendatum tussen 1900 en 2200 in."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Voer heelgetalle binne die vertoonde perke in."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Boekjare om na te gaan (0–100; 0 beteken geen bydraevereiste nie)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Bydraes word per gesin aangeteken, nie per persoon nie. Skakel dit slegs aan wanneer julle statute toelaat dat 'n gesinsbetaling hierdie maatstaf bevredig. Dit bewys nie dat elke persoon geskenk het nie. Die venster sluit die gekose boekjaar in en eindig nie later as die hersiendatum nie."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Laaste boekjaar om in te sluit"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Minimum ouderdom (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Minimum ouderdom: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Minimum lidmaatskapduur in maande (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Minimum lidmaatskapduur: %d maande"
+
+#: 
+msgid "No donation requirement."
+msgstr "Geen skenkingsvereiste nie."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Geen mense pas by hierdie filters nie. Kontroleer ontbrekende geboorte- of lidmaatskapdatums en pas jou maatstawwe aan."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Opsionele gesinsbydraevereiste"
+
+#: 
+msgid "People matching filters"
+msgstr "Mense wat by filters pas"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Mense weggelaat omdat vereiste datums ontbreek"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Berei 'n lys vir kerkhersiening voor met klassifikasies en opsionele ouderdom-, lidmaatskap- en gesinsbydraefilters."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Berei 'n lys vir kerkhersiening voor volgens julle statute."
+
+#: 
+msgid "Review date"
+msgstr "Hersiendatum"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Gebruik julle kerkstatute om die filters te kies, en laat dan gemagtigde kerkeleierskap die lys hersien. Om by hierdie filters te pas, vestig nie stemgeregtigheid nie. Hierdie verslag teken nie geskiktheid aan en voer nie 'n verkiesing nie."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Stemgeregtigde lede — Hersieningslys"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Nul skakel 'n opsionele vereiste af. Ouderdom vereis 'n volledige geboortedatum; lidmaatskapduur vereis 'n lidmaatskapdatum. Mense sonder vereiste datums word weggelaat en afsonderlik getel. Oorlede mense, onaktiewe mense en klassifikasies, en onaktiewe of hangende-hersiening-gesinne en -mense word altyd uitgesluit; huidige klassifikasie en status word gebruik, nie historiese status nie."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Bedrag verskuldig vir %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Kan nie private tydelike PDF-berging in die gekose gids skep nie."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Laat leeg om die stelsel se tydelike gids te gebruik. Anders, voer 'n bestaande skryfbare gids in wat teen webtoegang beskerm is."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Tydelike PDF-gids"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "Tydelike PDF-berging moet privaat en skryfbaar wees."
+
+#: 
+msgid "Reporting"
+msgstr "Verslagdoening"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "Die tydelike PDF-gids bestaan nie of is nie toeganklik nie."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "Die tydelike PDF-gids moet 'n absolute gidspad wees."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Kerkbelastingnommer (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Slotreël"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Beheer opsionele telemetrie. Mislukte installasies en databasisopgraderings stuur beperkte diagnostiek na PostHog selfs wanneer telemetrie af is. Hierdie mislukkingsverslae sluit sagteware- en omgewingsweergawes en 'n gesuiwerde databasisfout in, maar geen installasie-ID of SQL-stelling nie."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Diagnoseer mislukte installasies en databasisopgraderings"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Besonderhede van installasie- en opgraderingsmislukkings"
+
+#: 
+msgid "Open in browser window"
+msgstr "Maak in blaaiervenster oop"
+
+#: 
+msgid "Opening Line"
+msgstr "Openingsreël"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Opsionele gebruikstelemetrie word slegs gestuur wanneer dit geaktiveer is. Mislukte installasies en databasisopgraderings stuur altyd 'n beperkte diagnostiek om die gemeenskap te help, selfs as jy Nee dankie kies. Mislukkingsverslae sluit sagteware- en omgewingsweergawes en 'n gesuiwerde databasisfout in, sonder 'n installasie-ID of SQL-stelling."
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF-hantering"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF-uitvoer"
+
+#: 
+msgid "PDF handling mode"
+msgstr "PDF-hanteringsmodus"
+
+#: 
+msgid "Questions Line"
+msgstr "Vraereël"
+
+#: 
+msgid "Save File dialog"
+msgstr "Stoor lêer-dialoog"
+
+#: 
+msgid "Signer"
+msgstr "Ondertekenaar"
+
+#: 
+msgid "Statement Settings"
+msgstr "Staatinstellings"
+
+#: 
+msgid "Statement Wording"
+msgstr "Staatbewoording"
+
+#: 
+msgid "Tax Information"
+msgstr "Belastinginligting"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Telemetrie word na PostHog in die Verenigde State gestuur. Verslae oor mislukte installasies en opgraderings word gestuur selfs wanneer opsionele telemetrie afgeskakel is."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Hierdie datum is gekanselleer. Niks meer word van jou verwag nie."
+
+#: 
+msgid "always sent"
+msgstr "altyd gestuur"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Kon nie briefhoof verwyder nie"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Kon nie die briefhoof stoor nie"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Kon nie briefhoof oplaai nie"
+
+#: 
+msgid "Greeting"
+msgstr "Groet"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Briefgroet en handtekening"
+
+#: 
+msgid "Letterhead"
+msgstr "Briefhoof"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF of WebP. 'n Wye banier werk die beste, byvoorbeeld 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Word bo-aan PDF-briewe gedruk wat 'n grafiese briefhoof gebruik, soos bydraestate. Sonder een druk briewe die kerknaam en adres."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Verwyder die briefhoof? Briewe sal die kerknaam en adres druk."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Stel die briefhoof wat PDF-briewe druk"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Gebruik die kerknaam en adres"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Gebruik die briefhoofpad wat in Stelselinstellings gestel is"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Bewoording, belastingnommer en PDF-hantering vir bydraestate"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s as %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s is nou jou e-posadres. Jy kan dit gebruik om by die Lidportaal aan te meld."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} meer"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "'n Verandering van jou e-posadres is versoek"
+
+#: 
+msgid "A family"
+msgstr "'n Gesin"
+
+#: 
+msgid "A group"
+msgstr "'n Groep"
+
+#: 
+msgid "A ministry"
+msgstr "'n Bediening"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "'n Nuwe adres verander eers nadat jy die skakel gebruik wat ons daarna stuur."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "'n Wagwoordsleutel kan slegs binne %d minute ná aanmelding met jou e-posadres bygevoeg word. Meld af, meld weer met jou e-pos aan, en kom dan hierheen terug."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "'n Wagwoordsleutel meld jou aan met Face ID, 'n vingerafdruk of jou toestel-PIN, sonder 'n e-poskode."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "'n Wagwoordsleutel is by jou Lidportaal-aanmelding gevoeg"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "'n Wagwoordsleutel is by jou Lidportaal-aanmelding gevoeg om %1$s op %2$s, vanaf %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "'n Wagwoordsleutel is by jou Lidportaal-aanmelding gevoeg om %1$s op %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "'n Persoon wat dit verloor, het dan geen eie e-pos nie: pos wat slegs aan hulle gestuur word, soos 'n groep-e-pos, word oorgeslaan, en die e-posskrywer sê so."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "'n Persoon wie se rekord hul ouderdom versteek, wys nooit 'n geboortejaar nie."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "'n Versoek is in die Lidportaal gemaak om jou e-posadres om %s van %s na %s te verander. Die verandering gebeur slegs wanneer die skakel wat na %s gestuur is, gebruik word."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "'n Ry is nie in die verwagte vorm nie."
+
+#: 
+msgid "A team"
+msgstr "'n Span"
+
+#: 
+msgid "Add a passkey"
+msgstr "Voeg 'n wagwoordsleutel by"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Voeg 'n wagwoordsleutel slegs op jou eie foon of rekenaar by, nooit op 'n gedeelde of openbare een nie."
+
+#: 
+msgid "Add an email"
+msgstr "Voeg 'n e-pos by"
+
+#: 
+msgid "Added %s"
+msgstr "%s bygevoeg"
+
+#: 
+msgid "Admin overrides"
+msgstr "Administrateur-oorheersings"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "Volwassene van die %s-gesin"
+
+#: 
+msgid "Adult of the family"
+msgstr "Volwassene van die gesin"
+
+#: 
+msgid "All events"
+msgstr "Alle geleenthede"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Laat Aanmeld as persoon toe"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Laat veranderinge tydens Aanmeld as persoon toe"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Laat veranderinge toe terwyl 'n administrateur Aanmeld as persoon gebruik. Wanneer af, is Aanmeld as persoon leesalleen."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Reeds deur 'n gesinslid gehou"
+
+#: 
+msgid "Also used by"
+msgstr "Ook gebruik deur"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "'n Administrateur kan enige toestemming aan een persoon op daardie persoon se bladsy gee. \"Administrateur-oorheersings\" wys dan hier, met die aantal mense aan wie dit gegee is."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "'n Ander persoon gebruik reeds hierdie adres"
+
+#: 
+msgid "Applies to"
+msgstr "Geld vir"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Keur goed of weier plaasvervangerversoeke vir 'n vrywilligerspan."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Vra vir 'n nuwe e-pos"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Gesag word aan die persoon gegee, nie aan 'n aanmelding nie, sodat dit toegestaan kan word voordat hulle een het. 'n Persoon wat slegs by die Lidportaal aanmeld, sien net hul eie skedule totdat 'n administrateur hulle 'n personeelrekening gee."
+
+#: 
+msgid "Awaiting review"
+msgstr "Wag op hersiening"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Terug na aanmelding"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Blaai deur die volle gids"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Kan by die Lidportaal aanmeld"
+
+#: 
+msgid "Can sign in?"
+msgstr "Kan aanmeld?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Kan nie aanmelding vir die enigste administrateur wat kan aanmeld deaktiveer nie."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Kan nie aanmeld nie"
+
+#: 
+msgid "Change family details"
+msgstr "Verander gesinsbesonderhede"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Verander die gesinsadres en kontakbesonderhede, en voeg 'n gesinslid vir hersiening by."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Verander hul eie naam, kontakbesonderhede en foto."
+
+#: 
+msgid "Changed"
+msgstr "Verander"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Verander nadat die persoon aangemeld het"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Deur 'n invoer verander nadat die persoon aangemeld het"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Deur personeel verander nadat die persoon aangemeld het"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Deur die API verander nadat die persoon aangemeld het"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Veranderinge is afgeskakel tydens Aanmeld as persoon."
+
+#: 
+msgid "Changes needed"
+msgstr "Veranderinge nodig"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Veranderinge word gestoor soos jy hulle maak."
+
+#: 
+msgid "Check your email"
+msgstr "Kontroleer jou e-pos"
+
+#: 
+msgid "Choose a permission"
+msgstr "Kies 'n toestemming"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Kies 'n toestemming, waarvoor dit is en sy laaste dag, en sê waarom."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Kies 'n foto of neem 'n selfie"
+
+#: 
+msgid "Choose a theme"
+msgstr "Kies 'n tema"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Kies minstens een ry."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Kies hoogstens %d rye op 'n slag."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Kies uit die lys hoe datums gewys word."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Kies die laaste dag van hierdie toestemming."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Kies waarvoor die toestemming is."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Kies ja of nee."
+
+#: 
+msgid "Church Office"
+msgstr "Kerkkantoor"
+
+#: 
+msgid "Church country"
+msgstr "Kerkland"
+
+#: 
+msgid "Church default: %s"
+msgstr "Kerkverstek: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Kerkeleier-aanmelding"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Klassifikasies waarvan lede by die Lidportaal mag aanmeld, as 'n kommageskeide lys van klassifikasie-ID's."
+
+#: 
+msgid "Clear selection"
+msgstr "Maak keuse skoon"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Kodes, sessies en toestelle"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Bevestig e-posadres"
+
+#: 
+msgid "Confirm email address"
+msgstr "Bevestig e-posadres"
+
+#: 
+msgid "Confirm family details"
+msgstr "Bevestig gesinsbesonderhede"
+
+#: 
+msgid "Confirm selected"
+msgstr "Bevestig gekose"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Bevestig hierdie e-pos eers nadat jy persoonlik of per telefoon nagegaan het dat dit hierdie persoon se eie adres is. Sodra dit bevestig is, kan dit gebruik word om by die Lidportaal aan te meld."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Bevestig jou e-posadres"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Bevestig jou nuwe e-posadres"
+
+#: 
+msgid "Confirmed"
+msgstr "Bevestig"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Datums moet as YYYY-MM-DD geskryf word."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Besluit oor plaasvervangerversoeke"
+
+#: 
+msgid "Device"
+msgstr "Toestel"
+
+#: 
+msgid "Device remembered"
+msgstr "Toestel onthou"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Toestelle en wagwoordsleutels"
+
+#: 
+msgid "Directory classifications"
+msgstr "Gidsklassifikasies"
+
+#: 
+msgid "Directory section"
+msgstr "Gidsafdeling"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Deaktiveer aanmelding"
+
+#: 
+msgid "Do not show"
+msgstr "Moenie wys nie"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Elkeen van hulle het ook hul eie e-pos nodig wat niemand anders gebruik nie."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Elke aanmeld-e-pos werk een keer, vir 'n beperkte tyd, en 'n nuwer e-pos vervang dit."
+
+#: 
+msgid "Edit my details"
+msgstr "Wysig my besonderhede"
+
+#: 
+msgid "Email address changed"
+msgstr "E-posadres verander"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "E-posadres getik: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "E-posadresse om te bevestig: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "E-pos verander"
+
+#: 
+msgid "Email code"
+msgstr "E-poskode"
+
+#: 
+msgid "Email confirmed"
+msgstr "E-pos bevestig"
+
+#: 
+msgid "Email link"
+msgstr "E-posskakel"
+
+#: 
+msgid "Email me a code"
+msgstr "E-pos vir my 'n kode"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "E-pos vir my 'n bevestigingskakel"
+
+#: 
+msgid "Email needs attention"
+msgstr "E-pos benodig aandag"
+
+#: 
+msgid "Email problem"
+msgstr "E-posprobleem"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Ge-e-poste aanmeldkode en skakel gekanselleer"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Ge-e-poste verifikasieskakel"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "E-posse bevestig: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Aktiveer aanmelding"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Beëindig elke Lidportaal-sessie van hierdie persoon en vergeet hul onthoude toestelle? Hul wagwoordsleutels bly, sodat hulle weer kan aanmeld."
+
+#: 
+msgid "Ended %s"
+msgstr "Geëindig %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Geëindig deur 'n verandering aan hul aanmelding"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Geëindig toe lidaanmelding afgeskakel is"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Voer 'n heelgetal van %1$d tot %2$d in."
+
+#: 
+msgid "Enter your email address."
+msgstr "Voer jou e-posadres in."
+
+#: 
+msgid "Every kind"
+msgstr "Elke soort"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Elke lidaanmelding, weiering en verandering aan aanmelding, nuutste eerste. Dit hou nooit 'n kode, skakel of wagwoordsleutel nie."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Almal gelys, A tot Z, met 'n soekkassie."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Almal wat die aanmeldreëls toelaat, kan dan met hul eie e-pos by die Lidportaal aanmeld."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Almal wat in die afgelope 30 dae by die Lidportaal aangemeld het, nuutste eerste."
+
+#: 
+msgid "Everywhere"
+msgstr "Oral"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Gesinne wat 'n lid in die afgelope 30 dae bevestig het, vanaf die Lidportaal of die ge-e-poste verifikasieskakel."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Gesinne bevestig, afgelope 30 dae"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Gesinsbesonderhede bevestig"
+
+#: 
+msgid "Family email"
+msgstr "Gesin-e-pos"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Gesin-e-posse nie geskuif nie"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Gesinsrolle waarvan lede by die Lidportaal mag aanmeld, as 'n kommageskeide lys van rol-ID's."
+
+#: 
+msgid "Find someone"
+msgstr "Vind iemand"
+
+#: 
+msgid "Fix by hand"
+msgstr "Herstel met die hand"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Herstel gedeelde e-posse"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Vanaf 'n personeelaanmelding"
+
+#: 
+msgid "Give a permission"
+msgstr "Gee 'n toestemming"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Gee 'n portaaltoestemming"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Gee elke persoon hul eie e-pos"
+
+#: 
+msgid "Give permission"
+msgstr "Gee toestemming"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Gegee deur %1$s tot %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Gegee deur %s"
+
+#: 
+msgid "Given to"
+msgstr "Gegee aan"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Aan almal gegee"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Gegee, maar nie van krag nie"
+
+#: 
+msgid "Go to sign in"
+msgstr "Gaan na aanmelding"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Gaan na die Lidportaal"
+
+#: 
+msgid "Has signed in"
+msgstr "Het aangemeld"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Het aangemeld: hul sessies en toestelle eindig"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Hier is jou kode om by die Lidportaal aan te meld. Tik dit op die aanmeldbladsy, in die blaaier waar jy dit gevra het. Of druk die knoppie om op hierdie toestel aan te meld."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Versteek toestemmings"
+
+#: 
+msgid "How"
+msgstr "Hoe"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Hoeveel Lidportaal-aanmeld-e-posse een IP-adres in 'n uur kan vra. Stel op 0 vir geen perk nie, byvoorbeeld wanneer almal ChurchCRM deur een adres bereik."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Hoeveel dae 'n toestel by die Lidportaal aangemeld bly nadat die lid kies om aangemeld te bly. Stel op 0 om die keuse te verwyder."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Hoeveel ledige minute 'n Lidportaal-sessie beëindig."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Hoeveel minute 'n Lidportaal-aanmeldkode en -skakel geldig bly."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Ledige tyd (minute)"
+
+#: 
+msgid "Idle too long"
+msgstr "Te lank ledig"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "As %1$s jou nuwe adres is, gebruik die knoppie hieronder om dit te bevestig. Totdat dit bevestig is, kan dit nie gebruik word om aan te meld nie. Die skakel werk een keer, tot %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "As hierdie adres gebruik kan word om aan te meld, het ons vir jou 'n kode ge-e-pos. Niks ná 'n paar minute nie? Vra die kerkkantoor."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "As jy dit nie bygevoeg het nie, verwyder dit op die Aanmelding en toestelle-bladsy en kontak die kerkkantoor."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "As jy nie hierdie verandering gevra het nie, kontak asseblief die kerkkantoor."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "As jy nie dit gevra het nie, kontak asseblief die kerkkantoor."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Dit het dalk verval of is reeds gebruik. As jy hulp nodig het, kontak asseblief die kerkkantoor."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Sy inprop is nie geïnstalleer nie"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Spring na 'n letter"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Hou my aangemeld (dae)"
+
+#: 
+msgid "Keeps it"
+msgstr "Behou dit"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Soort onbevestigde e-pos"
+
+#: 
+msgid "Last day"
+msgstr "Laaste dag"
+
+#: 
+msgid "Last used"
+msgstr "Laas gebruik"
+
+#: 
+msgid "Last used %s"
+msgstr "Laas gebruik %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Leier van %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Laat administrateurs 'n persoon se Lidportaal as daardie persoon oopmaak, vanaf die persoon se Aksies-kieslys, terwyl lidaanmelding aan is."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Laat lede wagwoordsleutels byvoeg en daarmee by die Lidportaal aanmeld."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Laat lede met hul eie e-posadres by die Lidportaal aanmeld. Dit kan slegs aangeskakel word terwyl e-posstuur werk."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Laat lede met hul e-pos aanmeld"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Lewensduur van skakel en kode (minute)"
+
+#: 
+msgid "Login as %s"
+msgstr "Meld aan as %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Aanmeld as persoon"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Aanmeld as persoon kon nie begin nie."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Aanmeld as persoon geëindig: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Aanmeld as persoon-geskiedenis"
+
+#: 
+msgid "Login as Person started"
+msgstr "Aanmeld as persoon het begin"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Aanmeld as persoon gestop"
+
+#: 
+msgid "Look up anyone"
+msgstr "Soek enigiemand op"
+
+#: 
+msgid "Loses it"
+msgstr "Verloor dit"
+
+#: 
+msgid "Manage a team"
+msgstr "Bestuur 'n span"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Bestuur my aanmelding en toestelle"
+
+#: 
+msgid "Matches: %s"
+msgstr "Passings: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Mag aanmeld"
+
+#: 
+msgid "May sign in now"
+msgstr "Mag nou aanmeld"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Lidportaal-aanmeldkode"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Lidportaal-aanmeldkennisgewing"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Lidportaal-aanmeldings en aktiwiteit, vir lede en vir personeel wat die portaal vanaf hul personeelaanmelding oopmaak."
+
+#: 
+msgid "Member sign-in"
+msgstr "Lidaanmelding"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Lidaanmelding e-pos vir elke persoon 'n kode, dus moet e-pos (SMTP) werk voordat jy dit aanskakel."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Lidaanmelding is af"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Lidaanmelding is af vir die kerk."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Lidaanmelding is af."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Lidaanmelding is nog nie beskikbaar nie. Kontak asseblief die kerkkantoor."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Lidaanmelding laat nooit mense in wat oorlede, onaktief, in 'n onaktiewe gesin, wag op hersiening is, of Deaktiveer aanmelding aan het nie. Hierdie keuses bepaal wie anders mag."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Lidaanmelding stuur elke lid 'n kode per e-pos, dus kan dit slegs aangeskakel word terwyl ChurchCRM e-pos kan stuur. Skakel e-pos aan en stel eers die posbediener op."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Lede sien die Kalender-bladsy terwyl minstens een kalender aangeskakel is."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Lede tik minstens %d letters van 'n naam en sien tot %d passings. Die volle lys word nooit gewys nie."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Lede wat nou aangemeld is, word afgemeld, en niemand kan met hul e-pos aanmeld totdat lidaanmelding weer aangeskakel word nie."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Lede met hierdie klassifikasies vind Gids in die Lidportaal-kieslys."
+
+#: 
+msgid "Minimum age"
+msgstr "Minimum ouderdom"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Meer pogings met hierdie adres in die volgende uur sal nie nog 'n kennisgewing stuur nie."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Geskuif vanaf die gesin-e-pos"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Geskuif na 'n hoof van die huishouding"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Geskuif na 'n gade"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Nuut by ons kerk? Vertel ons van jou gesin en ons sal uitreik om jou welkom te heet."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Nog geen Aanmeld as persoon-sessies nie."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Geen geboortedatum nie, en nie 'n hoof van die huishouding of gade nie"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Geen kalender is aangeskakel nie, dus sien lede nie die Kalender-bladsy nie."
+
+#: 
+msgid "No changes"
+msgstr "Geen veranderinge nie"
+
+#: 
+msgid "No changes made."
+msgstr "Geen veranderinge gemaak nie."
+
+#: 
+msgid "No family role"
+msgstr "Geen gesinsrol"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Geen hoof van die huishouding of gade kan gesin-e-pos ontvang nie."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Geen hoof van die huishouding of gade deel dit nie"
+
+#: 
+msgid "No match"
+msgstr "Geen passing"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Niemand pas nog by die aanmeldreël nie. Merk meer gesinsrolle of klassifikasies, of verlaag die minimum ouderdom."
+
+#: 
+msgid "No passkey was added."
+msgstr "Geen wagwoordsleutel is bygevoeg nie."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Geen wagwoordsleutel is gebruik nie. Probeer weer, of meld aan met jou e-posadres."
+
+#: 
+msgid "No person has this email"
+msgstr "Geen persoon het hierdie e-pos nie"
+
+#: 
+msgid "No personal email"
+msgstr "Geen persoonlike e-pos"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Geen gedeelde e-posse keer iemand om aan te meld nie."
+
+#: 
+msgid "No such person"
+msgstr "Geen sodanige persoon"
+
+#: 
+msgid "No, thanks"
+msgstr "Nee, dankie"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Niemand kan aanmeld met 'n persoonlike e-pos wat twee mense wat mag aanmeld, deel nie. Vir 'n adres wat binne een gesin gedeel word, hou die hoof van die huishouding dit, anders die gade (die oudste eerste). Almal anders wat dit deel, verloor dit. Ontmerk enige wat jy op 'n ander manier wil herstel."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Niemand kan nog aanmeld nie: merk minstens een klassifikasie onder Wie mag aanmeld."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Niemand kan nog aanmeld nie: merk minstens een gesinsrol en minstens een klassifikasie onder Wie mag aanmeld."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Niemand kan nog aanmeld nie: merk minstens een gesinsrol onder Wie mag aanmeld."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Niemand in die gids pas by daardie naam nie."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Niemand is nog in die gids gelys nie."
+
+#: 
+msgid "Not ended"
+msgstr "Nie geëindig nie"
+
+#: 
+msgid "Not moved"
+msgstr "Nie geskuif nie"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Nie seker watter e-pos ons het nie? Kontak die kerkkantoor."
+
+#: 
+msgid "Not yet"
+msgstr "Nog nie"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Aangeteken in die gesinstydlyn"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Van hulle, mense wat aangemeld het: {{total}}. Hulle word oral afgemeld, en die adres kry 'n kennisgewing."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Af vir almal: \"%s\" is afgeskakel"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Af vir almal: Vrywilligerbestuur is nie op V2 gestel nie"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Af vir almal: sy funksie is afgeskakel"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Af vir almal: sy inprop is afgeskakel"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Af vir almal: geen kalender word met lede gedeel nie"
+
+#: 
+msgid "Office list"
+msgstr "Kantoorlys"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Sodra dit bevestig is, kan dit gebruik word om by die Lidportaal aan te meld."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Slegs adresse wat jy mag bevestig, kan gekies word."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Slegs administrateurs sien die rede."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Slegs 'n administrateur kan die e-pos verander van 'n persoon wat 'n personeelrekening of portaaltoestemmings het."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Slegs 'n administrateur kan 'n e-pos bevestig wat een vervang het waarmee die persoon aangemeld het."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Slegs 'n administrateur kan die e-pos bevestig van 'n persoon wat 'n personeelrekening of portaaltoestemmings het."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Slegs 'n administrateur kan hierdie adres herstel: iemand wat dit deel, het 'n personeelrekening of portaaltoestemmings."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Slegs 'n volwassene van jou gesin kan hierdie besonderhede bevestig. Kontak asseblief die kerkkantoor."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Bevestig slegs adresse wat jy weet aan daardie persoon behoort. Enigiemand wat 'n adres lees, kan as daardie persoon aanmeld."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Slegs lewende mense met hul eie e-pos kan op die kantoorlys wees."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Slegs mense met hul eie e-pos kan bygevoeg word."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Opsionele telemetrie kan bladsyroetes, aktiewe locale, CRM-weergawe, PHP-weergawe, bedryfstelselfamilie, die land uit jou kerkinligtinginstellings en 'n ewekansige installasie-ID insluit. Mislukkingsverslae sluit nie die installasie-ID in nie. Data word na PostHog in die Verenigde State gestuur."
+
+#: 
+msgid "Passkey"
+msgstr "Wagwoordsleutel"
+
+#: 
+msgid "Passkey added"
+msgstr "Wagwoordsleutel bygevoeg"
+
+#: 
+msgid "Passkey removed"
+msgstr "Wagwoordsleutel verwyder"
+
+#: 
+msgid "Passkeys"
+msgstr "Wagwoordsleutels"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Wagwoordsleutels is afgeskakel."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Wagwoordsleutels kan nie hier gebruik word nie."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Wagwoordsleutels kan nog nie op hierdie werf gebruik word nie. Kontak asseblief die kerkkantoor."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Wagwoordsleutels benodig 'n gasheernaam, nie 'n IP-adres nie, in die werfadres."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Wagwoordsleutels benodig 'n veilige (HTTPS) verbinding met hierdie werf."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Wagwoordsleutels benodig dat die werfadres in Config.php gestel is."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Wagwoordsleutels benodig dat die werf oor HTTPS bedien word. Lede word nie wagwoordsleutels aangebied totdat dit so is nie."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Wagwoordsleutels werk slegs by %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Wagwoordsleutels: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Mense wat die gestoorde instellings toelaat: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Mense om te e-pos wanneer iemand nie by die Lidportaal kon aanmeld nie"
+
+#: 
+msgid "People who hold it"
+msgstr "Mense wat dit hou"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Mense wat 'n adres verloor: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Mense wat 'n adres verloor het: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Mense wat mag aanmeld: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Mense wat vroeër by die Lidportaal aangemeld het: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Mense met hierdie klassifikasies verskyn in die gids. Die getal is hoeveel aktiewe mense elke klassifikasie het."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Mense met hierdie e-pos: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Persoon %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Kies klassifikasies uit die lys."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Kies gesinsrolle uit die lys."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Kies mense vir die kantoorlys."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Kies asseblief 'n taal uit die lys."
+
+#: 
+msgid "Portal permission given"
+msgstr "Portaaltoestemming gegee"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Portaaltoestemming verwyder"
+
+#: 
+msgid "Portal permissions"
+msgstr "Portaaltoestemmings"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Portaal-aanmelding"
+
+#: 
+msgid "Problem"
+msgstr "Probleem"
+
+#: 
+msgid "Reason"
+msgstr "Rede"
+
+#: 
+msgid "Reason: %s"
+msgstr "Rede: %s"
+
+#: 
+msgid "Refused"
+msgstr "Geweier"
+
+#: 
+msgid "Register your family"
+msgstr "Registreer jou gesin"
+
+#: 
+msgid "Remembered device"
+msgstr "Onthoude toestel"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Onthoude toestel verwyder"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Onthoude toestelle: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Verwyder e-posse"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Verwyder hierdie wagwoordsleutel"
+
+#: 
+msgid "Remove this permission"
+msgstr "Verwyder hierdie toestemming"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Verwyder van: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Vervang ná 'n aanmelding"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Vervang deur 'n ander aanmelding"
+
+#: 
+msgid "Result"
+msgstr "Resultaat"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Bestuur 'n vrywilligerspan: posisies, vrywilligers, skedules, bemanning en kopgetalle."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Sê waarom aanmelding gedeaktiveer word."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Sê waarom hierdie toestemming gegee word."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Soek enigiemand op lêer. Elke ry sê of hulle by die Lidportaal mag aanmeld en, indien nie, waarom."
+
+#: 
+msgid "Search method"
+msgstr "Soekmetode"
+
+#: 
+msgid "Search only"
+msgstr "Slegs soek"
+
+#: 
+msgid "See family contact details"
+msgstr "Sien gesinskontakbesonderhede"
+
+#: 
+msgid "See my family"
+msgstr "Sien my gesin"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Sien die Lidportaal soos hierdie persoon dit sien? Personeelbladsye bly gesluit totdat jy Stop druk, en die sessie word op hierdie bladsy en op jou gebruikerbladsy aangeteken."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Sien die kalenders wat die kerk met lede deel, en teken daarop in."
+
+#: 
+msgid "See the church calendar"
+msgstr "Sien die kerkkalender"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Sien die toestelle en wagwoordsleutels wat hulle aanmeld, en meld af of verwyder enige daarvan."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Sien die e-posadresse en telefoonnommers van die mense in hul gesin."
+
+#: 
+msgid "See the member directory"
+msgstr "Sien die ledegids"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Sien die name en foto's van die mense in hul gesin."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Sien die mense wat die kerk in sy gids lys, met die besonderhede wat die kerk kies om te deel."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Sien hul vrywilligerskedule, teken in vir oop plekke en vra vir 'n plaasvervanger."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Stuur browse as true of false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Stuur die klassifikasies as 'n lys van ID's."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Stuur die gidsinstellings as 'n JSON-objek."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Stuur die velde om te wys as 'n objek van true- en false-waardes."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Stuur die instellings as 'n JSON-objek."
+
+#: 
+msgid "Session ended"
+msgstr "Sessie geëindig"
+
+#: 
+msgid "Set up email"
+msgstr "Stel e-pos op"
+
+#: 
+msgid "Set up email first."
+msgstr "Stel eers e-pos op."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Gedeelde adresse herstel: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Gedeelde adresse om te herstel: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Gedeel deur"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Gedeelde e-posse wat mense keer om aan te meld"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Wys of versteek hierdie lid"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Wys die Gids-bladsy in die Lidportaal aan die klassifikasies wat hieronder gekies is."
+
+#: 
+msgid "Show the member directory"
+msgstr "Wys die ledegids"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Wys die ledegids in die Lidportaal."
+
+#: 
+msgid "Show with year"
+msgstr "Wys met jaar"
+
+#: 
+msgid "Show without year"
+msgstr "Wys sonder jaar"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Wys die eerste %d passings. Tik meer van die naam om die persoon te vind wat jy soek."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Meld aan as %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Meld volgende keer op hierdie toestel aan met Face ID, 'n vingerafdruk of jou toestel-PIN."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Meld aan om jou gesin, die kerkkalender en maniere om te dien te sien. Jy het nie 'n wagwoord of 'n rekening nodig nie."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Meld aan met 'n wagwoordsleutel"
+
+#: 
+msgid "Sign out every device"
+msgstr "Meld elke toestel af"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Meld nou elke toestel af?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Meld oral af"
+
+#: 
+msgid "Sign out this device"
+msgstr "Meld hierdie toestel af"
+
+#: 
+msgid "Sign-in"
+msgstr "Aanmelding"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Aanmelding en toestelle"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Aanmelding kon nie gedeaktiveer word nie."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Aanmelding kon nie geaktiveer word nie."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Aanmelding gedeaktiveer"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Aanmeld-e-pos versoek"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Aanmeld-e-posse per IP-adres per uur"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Aanmelding geaktiveer"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Aanmelding is reeds vir hierdie persoon gedeaktiveer."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Aanmelding is gedeaktiveer"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Aanmelding is vir hierdie persoon gedeaktiveer."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Aanmelding is vir hierdie persoon geaktiveer."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Aanmelding is nie vir hierdie persoon gedeaktiveer nie."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Aanmelding geweier"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Aanmelding, sessies en die API-sleutel is geblokkeer totdat dit op die gekoppelde persoon se rekord opgelos is."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Aangemeld, afgelope 30 dae"
+
+#: 
+msgid "Signed out"
+msgstr "Afgemeld"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Afgemeld deur 'n verandering aan hul aanmelding"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Oral afgemeld"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Iemand het 'n Lidportaal-aanmeld-e-pos gevra, maar geen is gestuur nie."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Iemand kon nie by die Lidportaal aanmeld nie"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Personeelbladsye bly gesluit tydens Aanmeld as persoon. Druk Stop in die banier om terug te gaan."
+
+#: 
+msgid "Stop"
+msgstr "Stop"
+
+#: 
+msgid "Stopped"
+msgstr "Gestop"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Sê vir die kerkkantoor of die gesinsbesonderhede nog reg is."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Daardie kode het nie gewerk nie. Kontroleer die nuutste e-pos van ons, of vra vir 'n nuwe een."
+
+#: 
+msgid "That could not be removed."
+msgstr "Dit kon nie verwyder word nie."
+
+#: 
+msgid "That device is signed out."
+msgstr "Daardie toestel is afgemeld."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Dit is nie 'n geldige e-posadres nie."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Daardie bladsy was te lank oop. Probeer asseblief weer."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Daardie wagwoordsleutel is verwyder. Dit kan jou nie meer aanmeld nie."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Dit het te lank geneem. Probeer asseblief weer."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Die 7.8.3-opgradering het elke gesin-e-pos aan 'n persoon gegee. Hierdie kon dit nie, dus het dit eerder 'n nota in die gesin se tydlyn gelaat."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Die Lidportaal en die e-posse wat dit aan jou stuur, gebruik hierdie taal."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Die verandering kon nie gestoor word nie."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Die kode en die knoppie werk een keer, tot %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Die kode of skakel het na 'n adres gegaan wat nie meer hul e-pos is nie"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Die bevestigingse-pos kon nie gestuur word nie. Probeer asseblief later weer."
+
+#: 
+msgid "The device is signed out."
+msgstr "Die toestel is afgemeld."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "Die e-posadres %2$s is om %1$s van jou rekord verwyder. Jy is op elke toestel van die Lidportaal afgemeld."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "Die e-posadres op jou rekord is om %1$s van %2$s na %3$s verander. Jy is op elke toestel van die Lidportaal afgemeld."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "Die e-pos kon nie bevestig word nie."
+
+#: 
+msgid "The email could not be sent."
+msgstr "Die e-pos kon nie gestuur word nie."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "Die e-pos is bevestig. Dit kan nou gebruik word om aan te meld."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Die einddatum is voor die begindatum."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Die gesin het geen lewende, aktiewe hoof van die huishouding of gade nie"
+
+#: 
+msgid "The family is inactive"
+msgstr "Die gesin is onaktief"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Die hoof van die huishouding en die gade het albei hul eie e-pos"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Die laaste dag kan nie in die verlede wees nie."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Die gekoppelde persoon mag nie aanmeld nie, dus kan hierdie rekening nie aanmeld nie"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Die lys kon nie gelaai word nie."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Die wagwoordsleutel kon nie bygevoeg word nie. Probeer asseblief weer."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Die wagwoordsleutel kon nie geverifieer word nie"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Die wagwoordsleutel is nie op rekord nie, of is verwyder"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Die wagwoordsleutel is verwyder."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Die mense wat dit deel, is in verskillende gesinne, of nie in 'n gesin nie"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Die mense wat hierdie adres deel, het verander. Maak Herstel gedeelde e-posse weer oop."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Die toestemming kon nie gegee word nie."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Die toestemming eindig ná hierdie dag. Dit kan weer gegee word."
+
+#: 
+msgid "The permission was given."
+msgstr "Die toestemming is gegee."
+
+#: 
+msgid "The permission was removed."
+msgstr "Die toestemming is verwyder."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Die toestemmings kon nie gelaai word nie."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Die persoon verloor hierdie toestemming dadelik in die Lidportaal."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Die rede kan hoogstens %d karakters lank wees."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Die aanmeldreëls laat hulle in, en elkeen het hul eie e-pos wat niemand anders wat mag aanmeld, gebruik nie."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Die aanmeldreëls laat hulle in, maar hul e-pos nie: hulle het geen, deel dit met iemand anders wat mag aanmeld, of dit is nog nie bevestig nie."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Die aanmeldinstellings kon nie gestoor word nie."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Die onbevestigde e-pos het verander. Herlaai die bladsy en probeer weer."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Hul klassifikasie mag nie aanmeld nie"
+
+#: 
+msgid "Their email changed"
+msgstr "Hul e-pos het verander"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "Hul e-pos is nog nie bevestig nie"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "Hul e-pos word met iemand anders gedeel"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Hul gesinsrol mag nie aanmeld nie"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Hul ou aanmeldings is deur die opgradering verwyder. Skakel lidaanmelding aan sodat hulle met hul eie e-pos kan aanmeld."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Hul onthoude toestel het verval"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Hul onthoude toestel is afgemeld"
+
+#: 
+msgid "Theme development"
+msgstr "Tema-ontwikkeling"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Daar is geen klassifikasie met id %d nie."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Daar is geen kieser vir hierdie soort omvang nie."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Daar is geen sodanige ouditgebeurtenis nie."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Daar is geen sodanige e-posprobleem nie."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Daar is geen sodanige soort onbevestigde e-pos nie."
+
+#: 
+msgid "There is no such list."
+msgstr "Daar is geen sodanige lys nie."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Daar is geen sodanige portaaltoestemming nie."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Dit is die fone en rekenaars waar jy gekies het om aangemeld te bly. Meld enige af wat jy nie meer gebruik of nie herken nie."
+
+#: 
+msgid "They have a staff account"
+msgstr "Hulle het 'n personeelrekening"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Hulle mag aanmeld, maar het nog nooit nie."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Hierdie handeling benodig 'n aangemelde blaaiersessie."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Hierdie adres kon nie verander word nie. Maak Herstel gedeelde e-posse weer oop om te sien waar dit staan."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Hierdie adres word nie meer deur mense wat mag aanmeld, gedeel nie."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Hierdie blaaier kan nie wagwoordsleutels maak nie."
+
+#: 
+msgid "This device"
+msgstr "Hierdie toestel"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Hierdie toestel het reeds 'n wagwoordsleutel vir jou."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Hierdie toestel sal die persoon nie meer aangemeld hou nie, en 'n sessie wat daarop oop is, eindig. Hulle kan weer per e-pos aanmeld."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Dit is my eie toestel. Hou my aangemeld."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Dit is waar jy oor gaste besluit. Die getal is hoeveel aktiewe mense elke klassifikasie het."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Hierdie skakel kan nie gebruik word nie"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Hierdie skakel het verval of is reeds gebruik"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Hierdie deel van die Lidportaal is nie vir jou beskikbaar nie."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Hierdie wagwoordsleutel is reeds op rekord."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Hierdie wagwoordsleutel sal die persoon nie meer aanmeld nie. Hulle kan per e-pos aanmeld en 'n nuwe een byvoeg."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Hierdie toestemming kan nie op die persoonbladsy gegee word nie."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Hierdie persoon het reeds elke toestemming wat gegee kan word."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Hierdie persoon het reeds hierdie toestemming."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Hierdie persoon kan nêrens meer aanmeld nie, nie by die Lidportaal of as personeel nie. Elke sessie eindig, en hul onthoude toestelle en wagwoordsleutels word verwyder."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Hierdie persoon kon nie afgemeld word nie."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Hierdie persoon het 'n personeelrekening. Aanmeld as persoon maak nooit 'n personeelrekening oop nie."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Hierdie persoon het geen sodanige wagwoordsleutel nie."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Hierdie persoon het geen sodanige toestemming nie."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Hierdie persoon het geen sodanige onthoude toestel nie."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Hierdie persoon het geen onbevestigde e-pos nie."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Hierdie persoon het by die Lidportaal aangemeld. Om hierdie e-pos te verander, meld hulle oral af, en die nuwe adres kan nie gebruik word om aan te meld totdat dit bevestig is nie."
+
+#: 
+msgid "This person is deceased."
+msgstr "Hierdie persoon is oorlede"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Hierdie persoon is oral van die Lidportaal afgemeld."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Hierdie persoon bestaan nie meer nie."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Dit meld jou oral af, insluitend hier, en vergeet elke toestel. Jy kan weer met jou e-posadres aanmeld."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Dit meld jou oral af, insluitend hier, en vergeet elke toestel. Jou wagwoordsleutels bly: jy kan weer met 'n wagwoordsleutel of jou e-posadres aanmeld."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Hierdie hulpmiddel verander nooit hierdie nie. Gee elke persoon hul eie e-pos op hul rekord."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Merk dit slegs op jou eie foon of rekenaar, nooit op 'n gedeelde of openbare een nie."
+
+#: 
+msgid "Time: %s"
+msgstr "Tyd: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Het uitgetel"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Om hierdie e-pos te verander, kontak asseblief die kerkkantoor."
+
+#: 
+msgid "To fix"
+msgstr "Om te herstel"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Om op jou eie foon of rekenaar aangemeld te bly, merk \"Dit is my eie toestel\" die volgende keer wat jy aanmeld."
+
+#: 
+msgid "Too many attempts"
+msgstr "Te veel pogings"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Te veel aanmeld-e-posse vandag"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Te veel aanmeldversoeke vir hierdie e-posadres"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Te veel aanmeldversoeke van hierdie IP-adres"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Te veel verkeerde kodes"
+
+#: 
+msgid "Turn off"
+msgstr "Skakel af"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Skakel lidaanmelding af?"
+
+#: 
+msgid "Turn on"
+msgstr "Skakel aan"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Skakel lidaanmelding aan"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Skakel lidaanmelding aan?"
+
+#: 
+msgid "Type a name"
+msgstr "Tik 'n naam"
+
+#: 
+msgid "Type a name or email"
+msgstr "Tik 'n naam of e-pos"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Tik minstens %d letters van 'n naam, en soek dan."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Onbevestigde e-pos"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Verstaan waar ChurchCRM gebruik word"
+
+#: 
+msgid "Unknown device"
+msgstr "Onbekende toestel"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Onbekende gidsveld: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Onbekende gidsinstelling: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Naamlose toestel"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Naamlose wagwoordsleutel"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Totdat die kerkkantoor dit bevestig, kan die nuwe adres nie gebruik word om aan te meld nie."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Gebruik %1$s as die e-posadres vir %2$s by %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Gebruik 'n ander e-posadres"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Gebruik 'n wagwoordsleutel op hierdie toestel?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Gebruik die knoppie hieronder om te bevestig dat %1$s jou e-posadres by %2$s is. Die skakel werk een keer, tot %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Gebruiker %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Bekyk toestemmings"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Wag dat jy %s bevestig. Gebruik die skakel wat ons na daardie adres gestuur het."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Wag dat jy {{email}} bevestig. Gebruik die skakel wat ons na daardie adres gestuur het."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Ons kon nie die e-pos stuur nie. Probeer asseblief later weer, of kontak die kerkkantoor."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Ons kon jou nie aanmeld nie"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Ons het 'n skakel na %s ge-e-pos. Gebruik dit om jou nuwe e-posadres te bevestig."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Ons het 'n skakel na {{email}} gestuur. Jou e-pos verander wanneer jy dit gebruik."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Ons sal vir jou 'n kode en 'n skakel e-pos om mee aan te meld."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Ons is so bly jy is hier! Dit neem ongeveer drie minute."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Ons is so bly julle gesin het by ons aangesluit! Julle registrasie is ontvang. Ons span sal binnekort kontak maak om julle persoonlik welkom te heet."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Huweliksherdenking"
+
+#: 
+msgid "Welcome"
+msgstr "Welkom"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Waarvoor dit gegee is, bestaan nie meer nie"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Wat lede in die portaal kan sien en doen, en waar elke toestemming vandaan kom. Mense word getel onder almal wat die aanmeldreëls toelaat, en personeel."
+
+#: 
+msgid "What members can use"
+msgstr "Wat lede kan gebruik"
+
+#: 
+msgid "What to do"
+msgstr "Wat om te doen"
+
+#: 
+msgid "Who can see it"
+msgstr "Wie dit kan sien"
+
+#: 
+msgid "Who is listed"
+msgstr "Wie gelys is"
+
+#: 
+msgid "Who may sign in"
+msgstr "Wie mag aanmeld"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Wie by die Lidportaal mag aanmeld, wie het, en wie se e-pos hulle keer. Die lyste volg die reëls op die Aanmelding-oortjie."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Wie die Lidportaal-gids lys, wie dit kan sien en wat dit wys, gekies op Admin -> Lidportaal -> Gids."
+
+#: 
+msgid "Why"
+msgstr "Waarom"
+
+#: 
+msgid "Why not"
+msgstr "Waarom nie"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Met die token wat die toestel oomblikke gelede vervang het"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Ja, voeg 'n wagwoordsleutel by"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Ja, verwyder hierdie wagwoordsleutel"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Ja, meld elke toestel af"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Jy mag nie hierdie e-pos bevestig nie."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Jy word nie op enige toestel aangemeld gehou nie."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Jy is op elke toestel afgemeld."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Jy is op hierdie toestel afgemeld."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Jy kan ook met jou e-posadres aanmeld."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Jy kan nie jou eie aanmelding deaktiveer nie."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Jy kan nie die Lidportaal oopmaak nie. Kontak asseblief die kerkkantoor."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Jy het te veel kere gevra om jou e-pos te verander. Probeer asseblief later weer."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Jy het geen wagwoordsleutels nie."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Jy is as %s in die Lidportaal aangemeld (veranderinge toegelaat)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Jy is as %s in die Lidportaal aangemeld (leesalleen)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Jonger as die minimum ouderdom"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Jongste ouderdom waarop 'n persoon by die Lidportaal mag aanmeld. Wanneer die geboortedatum onbekend is, kwalifiseer slegs 'n hoof van die huishouding of gade."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Jou Lidportaal-aanmeldkode"
+
+#: 
+msgid "Your code"
+msgstr "Jou kode"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Jou e-posadres %s is nog nie bevestig nie, dus kan dit nie gebruik word om aan te meld nie. Ons sal 'n skakel daarna e-pos; die gebruik van die skakel bevestig dit."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Jou e-posadres kan nie hier verwyder word nie. Kontak asseblief die kerkkantoor."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Jou e-posadres is bevestig"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Jou e-posadres is verander"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Jou wagwoordsleutel is bygevoeg. Meld volgende keer daarmee op hierdie toestel aan."
+
+#: 
+msgid "an administrator"
+msgstr "'n administrateur"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "geen hoof van die huishouding of gade het 'n e-posadres nie"
+
+#: 
+msgid "or"
+msgstr "of"
+
+#: 
+msgid "until %s"
+msgstr "tot %s"
+

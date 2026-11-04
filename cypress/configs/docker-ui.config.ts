@@ -65,8 +65,8 @@ export default defineConfig({
     // The api/ suite runs through docker-api.config.ts.
     specPattern: ['cypress/e2e/ui/**/*.spec.js'],
     setupNodeEvents(on, config) {
-      // Narrows specPattern to this shard when CI sets SPLIT / SPLIT_INDEX (scripts/shard-specs.js).
-      require('../../scripts/shard-specs').applyShard(config);
+      // Narrows specPattern to this shard when CI sets SPLIT / SPLIT_INDEX (scripts/ci/shard-specs.js).
+      require('../../scripts/ci/shard-specs').applyShard(config);
       const installLogsPrinter = require('cypress-terminal-report/src/installLogsPrinter');
       installLogsPrinter(on, {
         outputRoot: 'cypress/logs',

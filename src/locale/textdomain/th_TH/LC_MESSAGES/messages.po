@@ -24180,3 +24180,2963 @@ msgstr "แสดงเฉพาะอีเมลที่คุณส่งเ
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "ไม่สามารถสร้างกิจกรรมซ้ำได้ โปรดตรวจสอบบันทึกแอปพลิเคชันสำหรับรายละเอียด"
 
+#: 
+msgid "Confirm Password"
+msgstr "ยืนยันรหัสผ่าน"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "เปลี่ยนรหัสผ่านของคุณแล้ว ตอนนี้คุณลงชื่อเข้าใช้ด้วยรหัสผ่านใหม่ได้ครับ"
+
+#: 
+msgid "1st"
+msgstr "สัปดาห์ที่ 1"
+
+#: 
+msgid "2nd"
+msgstr "สัปดาห์ที่ 2"
+
+#: 
+msgid "3rd"
+msgstr "สัปดาห์ที่ 3"
+
+#: 
+msgid "4th"
+msgstr "สัปดาห์ที่ 4"
+
+#: 
+msgid "5th"
+msgstr "สัปดาห์ที่ 5"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "นำสิทธิ์ผู้ดูแลออกจากผู้ดูแลคนเดียวที่ลงชื่อเข้าใช้ได้ไม่ได้"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "เลือกสัปดาห์ของเดือน ตั้งแต่สัปดาห์ที่ 1 ถึงสัปดาห์ที่ 5"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "สร้างกิจกรรม {{total}} รายการ ใน{{week}} {{day}} ของทุกเดือน ตั้งแต่ {{first}} ถึง {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "วันในสัปดาห์ไม่ถูกต้อง"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "รายเดือน ในวันของสัปดาห์"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "เดือนที่ไม่มีสัปดาห์ที่ 5 จะถูกข้าม"
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM ต้องเป็นจำนวนเต็มตั้งแต่ 1 ถึง 5"
+
+#: 
+msgid "Week of the month"
+msgstr "สัปดาห์ของเดือน"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "สัปดาห์ของเดือนต้องอยู่ระหว่าง 1 ถึง 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s ถึง %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "เลขประจำตัวผู้เสียภาษีของคริสตจักร (EIN) ที่พิมพ์บนใบแจ้งการถวาย"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "ใบแจ้งการถวายออกให้ผู้ใหญ่ในครัวเรือน หากต้องการ โปรดติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "Download statement"
+msgstr "ดาวน์โหลดใบแจ้ง"
+
+#: 
+msgid "Generated"
+msgstr "สร้างแล้ว"
+
+#: 
+msgid "Goods and services"
+msgstr "สินค้าและบริการ"
+
+#: 
+msgid "My Giving"
+msgstr "การถวายของฉัน"
+
+#: 
+msgid "No contributions"
+msgstr "ไม่มีการถวาย"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "ไม่มีบันทึกการถวายในช่วงนี้"
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "ไม่มีสินค้าหรือบริการที่ให้แลกกับการถวายเหล่านี้ นอกจากประโยชน์ทางศาสนาที่จับต้องไม่ได้"
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "ไม่บังคับ พิมพ์บนใบแจ้งการถวาย"
+
+#: 
+msgid "Tax ID"
+msgstr "เลขผู้เสียภาษี"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "เลขผู้เสียภาษี (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "จำนวนที่หักลดหย่อนภาษีได้"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "นี่คือใบแจ้งของครัวเรือน รวมของถวายสำหรับครอบครัวของคุณ"
+
+#: 
+msgid "Total contributions"
+msgstr "ยอดถวายรวม"
+
+#: 
+msgid "Year-end statement"
+msgstr "ใบแจ้งสิ้นปี"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "ส่งใบแจ้งการถวายทางอีเมลถึงครอบครัวสำเร็จ %d ฉบับ"
+
+#: 
+msgid "%s Giving Statement"
+msgstr "ใบแจ้งการถวาย %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "ปรับแต่งข้อความที่ปรากฏบนใบแจ้งการถวาย (sTaxReport1, sTaxReport2 ฯลฯ)"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "เรียนครอบครัว %s\n"
+"\n"
+"โปรดดูใบแจ้งการถวาย %s จาก %s ที่แนบมากับอีเมลนี้\n"
+"\n"
+"หากมีข้อสงสัย โปรดติดต่อสำนักงานคริสตจักรครับ\n"
+"\n"
+"ขอบคุณสำหรับความเอื้อเฟื้อของท่าน"
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "ส่งใบแจ้งการถวาย %s ทางอีเมล"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "หมายเลขซอง"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "สร้างใบแจ้งการถวาย"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "สร้างรายงานใบแจ้งการถวาย การติดตามคำปฏิญาณถวาย และการวิเคราะห์การเงิน"
+
+#: 
+msgid "Giving Reports"
+msgstr "รายงานการถวาย"
+
+#: 
+msgid "Giving Statement"
+msgstr "ใบแจ้งการถวาย"
+
+#: 
+msgid "Giving Statements"
+msgstr "ใบแจ้งการถวาย"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "ส่งอีเมลใบแจ้งการถวายไม่สำเร็จ โปรดตรวจสอบการตั้งค่าเซิร์ฟเวอร์อีเมลครับ"
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "โปรดส่งของถวายครั้งต่อไปทางไปรษณีย์ถึง %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "พิมพ์ใบแจ้งการถวาย %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "ส่งใบแจ้งการถวายทางอีเมลไม่ได้: ไม่พบข้อมูลการชำระของปีนั้น"
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "ส่งใบแจ้งการถวายทางอีเมลไม่ได้: ครอบครัวนี้ไม่มีที่อยู่อีเมลในระบบ"
+
+#: 
+msgid "Undesignated"
+msgstr "ไม่ได้ระบุกองทุน"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "ตรวจว่าชื่อ ที่อยู่ และข้อมูลติดต่อของคริสตจักรปรากฏบนใบแจ้งการถวาย"
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "ตอนนี้มอบหมายตำแหน่งนี้ให้ %s ซึ่งตอบรับแล้ว"
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "ตอนนี้มอบหมายตำแหน่งนี้ให้ %s ซึ่งยังไม่ตอบรับ"
+
+#: 
+msgid "Their reason: %s"
+msgstr "เหตุผลของบุคคลนั้น: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "ดูงานที่มอบหมาย"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "ยังต้องการอาสาสมัครสำหรับครั้งนี้: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "ยังต้องการอาสาสมัครสำหรับตำแหน่งนี้: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "ตารางลงชื่อรายสัปดาห์ของแต่ละชั้น รายชื่อชั้นเรียนและสมุดรูปอยู่ที่แดชบอร์ดโรงเรียนวันอาทิตย์และหน้าของแต่ละชั้น"
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "ตารางลงชื่อรายสัปดาห์ของปีการศึกษา หนึ่งคอลัมน์ต่อหนึ่งวันอาทิตย์"
+
+#: 
+msgid "Age %d"
+msgstr "อายุ %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "ต้องเลือกอย่างน้อยหนึ่งกลุ่มเพื่อทำใบลงชื่อ"
+
+#: 
+msgid "Attendance Sheet"
+msgstr "ใบลงชื่อ"
+
+#: 
+msgid "Class List"
+msgstr "รายชื่อชั้นเรียน"
+
+#: 
+msgid "Download PDF"
+msgstr "ดาวน์โหลด PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "ระยะเวลาล็อกเป็นนาที\n"
+"บัญชีที่ถูกล็อกจะปลดล็อกเองหลังจากผ่านไปตามจำนวนนาทีนี้ การลงชื่อเข้าใช้ที่ล้มเหลวจากที่อยู่ IP เดียวกันจะถูกนับในช่วงเวลาเดียวกัน"
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "จำนวนครั้งสูงสุดของการลงชื่อเข้าใช้ที่ล้มเหลวจากที่อยู่ IP หนึ่ง\n"
+"การลงชื่อเข้าใช้ที่ล้มเหลวและคำขอรีเซ็ตรหัสผ่านจากที่อยู่ IP หนึ่งจะนับรวมในขีดจำกัดนี้ภายในระยะเวลาล็อก เมื่อถึงขีดจำกัด การลงชื่อเข้าใช้จากที่อยู่นั้นจะถูกปฏิเสธจนกว่าระยะเวลาจะสิ้นสุด\n"
+"ตั้งเป็นศูนย์เพื่อปิดคุณสมบัตินี้ เช่น เมื่อทุกคนเข้าถึง ChurchCRM ผ่านที่อยู่พร็อกซีเดียว"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "จำนวนครั้งสูงสุดของการลงชื่อเข้าใช้ที่ล้มเหลวที่อนุญาตก่อนบัญชีผู้ใช้จะถูกล็อก\n"
+"บัญชีที่ถูกล็อกจะปลดล็อกเองหลังระยะเวลาล็อก หรือเร็วกว่านั้นเมื่อผู้ดูแลรีเซ็ตจำนวนครั้งที่ล้มเหลว\n"
+"คุณสมบัตินี้ช่วยป้องกันการเดารหัสผ่านโดยอัตโนมัติ\n"
+"ตั้งเป็นศูนย์เพื่อปิดคุณสมบัตินี้"
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "นาทีจนกว่าจะปลดล็อกเอง: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "ใบลงชื่อโรงเรียนวันอาทิตย์"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "วันอาทิตย์ที่ไม่มีชั้นเรียนจะไม่ปรากฏในใบ"
+
+#: 
+msgid "Database Upgrade"
+msgstr "อัปเกรดฐานข้อมูล"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "กำลังอัปเดตฐานข้อมูลของคุณ โปรดเปิดหน้านี้ค้างไว้จนกว่าการอัปเกรดจะเสร็จครับ"
+
+#: 
+msgid "Family Labels"
+msgstr "ป้ายชื่อครอบครัว"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – รวม"
+
+#: 
+msgid "Bill"
+msgstr "ธนบัตร"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "เลือกรายการนำฝาก หรือกรอกวันที่รายงานทั้งสองวัน"
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "เลือกรายการนำฝากหนึ่งรายการเพื่อตรวจการชำระเงินหรือพิมพ์ใบนำฝากธนาคาร รายการนำฝากที่เลือกจะใช้แทนช่วงวันที่"
+
+#: 
+msgid "Coin"
+msgstr "เหรียญ"
+
+#: 
+msgid "Deposit Report"
+msgstr "รายงานการนำฝาก"
+
+#: 
+msgid "Download Report"
+msgstr "ดาวน์โหลดรายงาน"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "กรอกวันที่รายงานที่ถูกต้อง"
+
+#: 
+msgid "Invalid report filters."
+msgstr "ตัวกรองรายงานไม่ถูกต้อง"
+
+#: 
+msgid "Invalid report options."
+msgstr "ตัวเลือกรายงานไม่ถูกต้อง"
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "เว้นตัวกรองว่างไว้เพื่อรวมการชำระเงินทั้งหมด การตั้งค่านี้ใช้กับรายงาน ไม่ใช่ใบนำฝากธนาคาร"
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "ไม่มีรายการที่ส่งกลับมา ปรับตัวกรองแล้วลองอีกครั้งครับ"
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "เตรียมนำฝากธนาคาร"
+
+#: 
+msgid "Preview Totals"
+msgstr "ดูตัวอย่างยอดรวม"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "พิมพ์ใบนำฝากธนาคาร"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "พิมพ์รายการนำฝากที่เลือกทั้งหมด พร้อมยอดเงินสดและเช็ค ใบนับเงิน และบรรทัดลงนามพยาน ระบบไม่ใช้ตัวกรองรายงาน การชำระเงินอิเล็กทรอนิกส์อยู่ในสรุป และไม่รวมในยอดรวมของใบนำฝากธนาคารฉบับจริง"
+
+#: 
+msgid "Review Payments"
+msgstr "ตรวจสอบการชำระเงิน"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "ตรวจสอบการชำระเงินในช่วงเวลาหนึ่ง หรือเตรียมรายการนำฝากหนึ่งรายการสำหรับธนาคาร"
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "ตรวจสอบการชำระเงิน ดาวน์โหลด PDF หรือ CSV หรือพิมพ์ใบนำฝากธนาคารของรายการนำฝากหนึ่งรายการ"
+
+#: 
+msgid "Select a valid deposit."
+msgstr "เลือกรายการนำฝากที่ถูกต้อง"
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "เลือกรายการนำฝากหนึ่งรายการเพื่อพิมพ์ใบนำฝากธนาคาร"
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "วันที่สิ้นสุดของรายงานต้องเป็นวันเดียวกันหรือหลังวันที่เริ่มต้น"
+
+#: 
+msgid "Total Cash"
+msgstr "เงินสดรวม"
+
+#: 
+msgid "Total Coin"
+msgstr "เหรียญรวม"
+
+#: 
+msgid "Witness"
+msgstr "พยาน"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "ของถวาย %d รายการไม่มีครอบครัว จึงอยู่ในใบแจ้งไม่ได้"
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "มีรายการนำฝากที่ยังเปิด %d รายการซึ่งลงวันที่ในปีนี้ ปิดให้เรียบร้อยเพื่อให้ของถวายทุกรายการสิ้นสุดก่อนออกใบแจ้ง"
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "การชำระเงิน %d รายการยังไม่อยู่ในรายการนำฝากใด"
+
+#: 
+msgid "Can be emailed"
+msgstr "ส่งอีเมลได้"
+
+#: 
+msgid "Closing line"
+msgstr "บรรทัดปิด"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "รายการนำฝากทุกรายการที่ลงวันที่ในปีนี้ปิดแล้ว"
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "ของถวายทุกรายการเป็นของครอบครัว"
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "การชำระเงินทุกรายการในปีนี้อยู่ในรายการนำฝาก"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "สร้างใบแจ้งภาษี"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "รายงานการถวาย (ใบแจ้งภาษี)"
+
+#: 
+msgid "Opening line"
+msgstr "บรรทัดเปิด"
+
+#: 
+msgid "Print and mail"
+msgstr "พิมพ์และส่งไปรษณีย์"
+
+#: 
+msgid "Qty"
+msgstr "จำนวน"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "ตรวจทานปีนั้น แล้วพิมพ์หรือส่งใบแจ้งการถวายทางอีเมล"
+
+#: 
+msgid "Signed by"
+msgstr "ลงนามโดย"
+
+#: 
+msgid "Thank-you line"
+msgstr "บรรทัดขอบคุณ"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "ตรวจว่าชื่อ ที่อยู่ และข้อมูลติดต่อของคริสตจักรปรากฏบนใบแจ้งภาษี"
+
+#: 
+msgid "Year-End Giving"
+msgstr "การถวายสิ้นปี"
+
+#: 
+msgid "As of: %s"
+msgstr "ณ วันที่: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "มีการชำระของครอบครัวที่เป็นจำนวนบวกอย่างน้อยหนึ่งครั้ง ใน %d ปีงบประมาณที่เลือก จนถึงวันที่ตรวจ: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "การบัพติศมา ใบสมัครบัญชีรายชื่อผู้มีสิทธิเลือกตั้ง ที่อยู่อาศัย สถานะผู้ร่วมพิธีมหาสนิท การเข้าโบสถ์ สถานภาพที่ดี และข้อยกเว้นในท้องถิ่น ต้องตรวจแยกในจุดที่ข้อบังคับของคริสตจักรกำหนด ระยะเวลาการเป็นสมาชิกไม่ใช่หลักฐานการเข้าโบสถ์"
+
+#: 
+msgid "Choose an existing classification."
+msgstr "เลือกประเภทสมาชิกที่มีอยู่"
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "เลือกประเภทสมาชิกอย่างน้อยหนึ่งประเภทเพื่อตรวจทาน"
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "เลือกประเภทสมาชิกที่คริสตจักรใช้ ไม่ถือว่าประเภทใดให้สิทธิออกเสียงโดยอัตโนมัติ"
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "ผู้นำคริสตจักรต้องยืนยันคุณสมบัติตามข้อบังคับของคริสตจักร รายการนี้แสดงเฉพาะคนที่ตรงกับตัวกรองที่เลือก"
+
+#: 
+msgid "Classifications to review"
+msgstr "ประเภทสมาชิกที่จะตรวจทาน"
+
+#: 
+msgid "Classifications: %s"
+msgstr "ประเภทสมาชิก: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "ไม่รวมผู้เสียชีวิต คนและประเภทสมาชิกที่ไม่ใช้งาน และครอบครัวกับคนที่ไม่ใช้งานหรือรอการตรวจ"
+
+#: 
+msgid "Download Review List"
+msgstr "ดาวน์โหลดรายการตรวจทาน"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "กรอกวันที่ตรวจที่ถูกต้องระหว่างปี 1900 ถึง 2200"
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "กรอกจำนวนเต็มภายในขอบเขตที่แสดง"
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "ปีงบประมาณที่จะตรวจ (0–100; 0 หมายถึงไม่มีเงื่อนไขการถวาย)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "การถวายบันทึกตามครอบครัว ไม่ใช่รายบุคคล เปิดใช้เฉพาะเมื่อข้อบังคับอนุญาตให้การชำระของครอบครัวผ่านเกณฑ์นี้ได้ สิ่งนี้ไม่ได้พิสูจน์ว่าแต่ละคนได้ถวาย ช่วงเวลารวมปีงบประมาณที่เลือก และสิ้นสุดไม่ช้ากว่าวันที่ตรวจ"
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "ปีงบประมาณสุดท้ายที่จะรวม"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "อายุขั้นต่ำ (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "อายุขั้นต่ำ: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "ระยะเวลาเป็นสมาชิกขั้นต่ำเป็นเดือน (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "ระยะเวลาเป็นสมาชิกขั้นต่ำ: %d เดือน"
+
+#: 
+msgid "No donation requirement."
+msgstr "ไม่มีเงื่อนไขการถวาย"
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "ไม่มีคนที่ตรงกับตัวกรองเหล่านี้ ตรวจวันเกิดหรือวันที่เป็นสมาชิกที่ขาด และปรับเกณฑ์ครับ"
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "เงื่อนไขการถวายของครอบครัว (ไม่บังคับ)"
+
+#: 
+msgid "People matching filters"
+msgstr "คนที่ตรงกับตัวกรอง"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "คนที่ถูกข้ามเพราะขาดวันที่ที่จำเป็น"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "เตรียมรายชื่อให้คริสตจักรตรวจทาน โดยใช้ประเภทสมาชิก และตัวกรองอายุ การเป็นสมาชิก และการถวายของครอบครัวได้ตามต้องการ"
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "เตรียมรายชื่อให้คริสตจักรตรวจทานตามข้อบังคับของคุณ"
+
+#: 
+msgid "Review date"
+msgstr "วันที่ตรวจ"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "ใช้ข้อบังคับของคริสตจักรเพื่อเลือกตัวกรอง แล้วให้ผู้นำคริสตจักรที่ได้รับมอบอำนาจตรวจทานรายการ การตรงกับตัวกรองเหล่านี้ไม่ได้ทำให้มีสิทธิออกเสียง รายงานนี้ไม่บันทึกคุณสมบัติ และไม่ดำเนินการเลือกตั้ง"
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "สมาชิกที่มีสิทธิออกเสียง — รายการตรวจทาน"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "ค่าศูนย์ปิดเงื่อนไขที่ไม่บังคับ อายุต้องมีวันเกิดที่ครบ ระยะเวลาการเป็นสมาชิกต้องมีวันที่เป็นสมาชิก คนที่ขาดวันที่ที่จำเป็นจะถูกข้ามและนับแยก ผู้เสียชีวิต คนและประเภทสมาชิกที่ไม่ใช้งาน และครอบครัวกับคนที่ไม่ใช้งานหรือรอการตรวจ จะถูกยกเว้นเสมอ ใช้ประเภทและสถานะปัจจุบัน ไม่ใช่สถานะในอดีต"
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "ยอดที่ต้องชำระสำหรับ %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "สร้างที่เก็บไฟล์ PDF ชั่วคราวแบบส่วนตัวในไดเรกทอรีที่เลือกไม่ได้"
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "เว้นว่างไว้เพื่อใช้ไดเรกทอรีชั่วคราวของระบบ มิฉะนั้นให้กรอกไดเรกทอรีที่มีอยู่ เขียนได้ และป้องกันการเข้าถึงจากเว็บ"
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "ไดเรกทอรีชั่วคราวของ PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "ที่เก็บ PDF ชั่วคราวต้องเป็นส่วนตัวและเขียนได้"
+
+#: 
+msgid "Reporting"
+msgstr "การรายงาน"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "ไดเรกทอรีชั่วคราวของ PDF ไม่มีอยู่หรือเข้าถึงไม่ได้"
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "ไดเรกทอรีชั่วคราวของ PDF ต้องเป็นเส้นทางไดเรกทอรีแบบเต็ม"
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "เลขผู้เสียภาษีของคริสตจักร (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "บรรทัดปิด"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "ควบคุมข้อมูลการใช้งานที่ไม่บังคับ ความล้มเหลวของการติดตั้งและการอัปเกรดฐานข้อมูลจะส่งข้อมูลวินิจฉัยอย่างจำกัดไปยัง PostHog แม้ปิดข้อมูลการใช้งาน รายงานความล้มเหลวเหล่านี้รวมเวอร์ชันของซอฟต์แวร์และสภาพแวดล้อม และข้อผิดพลาดของฐานข้อมูลที่ทำให้ปลอดภัยแล้ว แต่ไม่มีรหัสการติดตั้งหรือคำสั่ง SQL"
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "วินิจฉัยการติดตั้งและการอัปเกรดฐานข้อมูลที่ล้มเหลว"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "รายละเอียดความล้มเหลวของการติดตั้งและการอัปเกรด"
+
+#: 
+msgid "Open in browser window"
+msgstr "เปิดในหน้าต่างเบราว์เซอร์"
+
+#: 
+msgid "Opening Line"
+msgstr "บรรทัดเปิด"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "ข้อมูลการใช้งานที่ไม่บังคับจะถูกส่งเฉพาะเมื่อเปิดใช้ ความล้มเหลวของการติดตั้งและการอัปเกรดฐานข้อมูลจะส่งข้อมูลวินิจฉัยอย่างจำกัดเสมอเพื่อช่วยชุมชน แม้คุณเลือกไม่ขอบคุณ รายงานความล้มเหลวรวมเวอร์ชันของซอฟต์แวร์และสภาพแวดล้อม และข้อผิดพลาดของฐานข้อมูลที่ทำให้ปลอดภัยแล้ว โดยไม่มีรหัสการติดตั้งหรือคำสั่ง SQL"
+
+#: 
+msgid "PDF Handling"
+msgstr "การจัดการ PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "ผลลัพธ์ PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "โหมดการจัดการ PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "บรรทัดคำถาม"
+
+#: 
+msgid "Save File dialog"
+msgstr "กล่องบันทึกไฟล์"
+
+#: 
+msgid "Signer"
+msgstr "ผู้ลงนาม"
+
+#: 
+msgid "Statement Settings"
+msgstr "การตั้งค่าใบแจ้ง"
+
+#: 
+msgid "Statement Wording"
+msgstr "ถ้อยคำในใบแจ้ง"
+
+#: 
+msgid "Tax Information"
+msgstr "ข้อมูลภาษี"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "ส่งข้อมูลการใช้งานไปที่ PostHog ในสหรัฐอเมริกา รายงานความล้มเหลวของการติดตั้งและการอัปเกรดจะถูกส่งแม้ปิดข้อมูลการใช้งานที่ไม่บังคับ"
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "วันที่ยกเลิกแล้ว คุณไม่ต้องทำอะไรเพิ่มครับ"
+
+#: 
+msgid "always sent"
+msgstr "ส่งเสมอ"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "นำหัวจดหมายออกไม่สำเร็จ"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "จัดเก็บหัวจดหมายไม่สำเร็จ"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "อัปโหลดหัวจดหมายไม่สำเร็จ"
+
+#: 
+msgid "Greeting"
+msgstr "คำขึ้นต้น"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "คำขึ้นต้นและลายมือชื่อในจดหมาย"
+
+#: 
+msgid "Letterhead"
+msgstr "หัวจดหมาย"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF หรือ WebP แบนเนอร์แนวกว้างเหมาะที่สุด เช่น 2000x300"
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "พิมพ์ที่ด้านบนของจดหมาย PDF ที่ใช้หัวจดหมายแบบรูป เช่น ใบแจ้งการถวาย หากไม่มี จดหมายจะพิมพ์ชื่อและที่อยู่ของคริสตจักร"
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "นำหัวจดหมายออกหรือไม่ จดหมายจะพิมพ์ชื่อและที่อยู่ของคริสตจักร"
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "ตั้งหัวจดหมายที่จดหมาย PDF จะพิมพ์"
+
+#: 
+msgid "Using the church name and address"
+msgstr "ใช้ชื่อและที่อยู่ของคริสตจักร"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "ใช้เส้นทางหัวจดหมายที่ตั้งไว้ในการตั้งค่าระบบ"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "ถ้อยคำ เลขผู้เสียภาษี และการจัดการ PDF สำหรับใบแจ้งการถวาย"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s ในฐานะ %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "ตอนนี้ %s เป็นที่อยู่อีเมลของคุณแล้ว คุณใช้มันลงชื่อเข้าพอร์ทัลสมาชิกได้ครับ"
+
+#: 
+msgid "+{{total}} more"
+msgstr "+อีก {{total}}"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "มีคำขอเปลี่ยนที่อยู่อีเมลของคุณ"
+
+#: 
+msgid "A family"
+msgstr "ครอบครัว"
+
+#: 
+msgid "A group"
+msgstr "กลุ่ม"
+
+#: 
+msgid "A ministry"
+msgstr "พันธกิจ"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "ที่อยู่ใหม่จะเปลี่ยนต่อเมื่อคุณใช้ลิงก์ที่เราส่งไปยังที่อยู่นั้น"
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "เพิ่มพาสคีย์ได้ภายใน %d นาทีหลังจากลงชื่อเข้าใช้ด้วยที่อยู่อีเมล ออกจากระบบ ลงชื่อเข้าใช้ด้วยอีเมลอีกครั้ง แล้วกลับมาที่นี่ครับ"
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "พาสคีย์ให้คุณลงชื่อเข้าใช้ด้วย Face ID ลายนิ้วมือ หรือ PIN ของอุปกรณ์ โดยไม่ต้องใช้รหัสจากอีเมล"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "มีการเพิ่มพาสคีย์ให้การลงชื่อเข้าพอร์ทัลสมาชิกของคุณ"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "มีการเพิ่มพาสคีย์ให้การลงชื่อเข้าพอร์ทัลสมาชิกของคุณเวลา %1$s วันที่ %2$s จาก %3$s"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "มีการเพิ่มพาสคีย์ให้การลงชื่อเข้าพอร์ทัลสมาชิกของคุณเวลา %1$s วันที่ %2$s"
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "คนที่เสียที่อยู่นี้จะไม่มีอีเมลของตนเอง จดหมายที่ส่งถึงคนนั้นคนเดียว เช่น อีเมลกลุ่ม จะถูกข้าม และหน้าเขียนอีเมลจะบอกไว้"
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "คนที่ระเบียนซ่อนอายุจะไม่แสดงปีเกิด"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "มีคำขอในพอร์ทัลสมาชิกให้เปลี่ยนที่อยู่อีเมลของคุณเวลา %s จาก %s เป็น %s การเปลี่ยนจะเกิดขึ้นเมื่อใช้ลิงก์ที่ส่งไปยัง %s"
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "มีแถวที่ไม่อยู่ในรูปแบบที่คาดไว้"
+
+#: 
+msgid "A team"
+msgstr "ทีม"
+
+#: 
+msgid "Add a passkey"
+msgstr "เพิ่มพาสคีย์"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "เพิ่มพาสคีย์บนโทรศัพท์หรือคอมพิวเตอร์ของคุณเองเท่านั้น ห้ามเพิ่มบนเครื่องที่ใช้ร่วมกันหรือเครื่องสาธารณะ"
+
+#: 
+msgid "Add an email"
+msgstr "เพิ่มอีเมล"
+
+#: 
+msgid "Added %s"
+msgstr "เพิ่ม %s แล้ว"
+
+#: 
+msgid "Admin overrides"
+msgstr "การกำหนดเพิ่มโดยผู้ดูแล"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "ผู้ใหญ่ของครอบครัว %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "ผู้ใหญ่ของครอบครัว"
+
+#: 
+msgid "All events"
+msgstr "กิจกรรมทั้งหมด"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "อนุญาตเข้าสู่ระบบในฐานะบุคคล"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "อนุญาตให้เปลี่ยนแปลงระหว่างเข้าสู่ระบบในฐานะบุคคล"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "อนุญาตให้เปลี่ยนแปลงขณะผู้ดูแลใช้เข้าสู่ระบบในฐานะบุคคล เมื่อปิด การเข้าสู่ระบบในฐานะบุคคลจะดูได้อย่างเดียว"
+
+#: 
+msgid "Already held by a family member"
+msgstr "สมาชิกครอบครัวถืออยู่แล้ว"
+
+#: 
+msgid "Also used by"
+msgstr "ใช้โดย"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "ผู้ดูแลให้สิทธิ์ใดก็ได้แก่บุคคลหนึ่งในหน้าของบุคคลนั้น จากนั้น “การกำหนดเพิ่มโดยผู้ดูแล” จะแสดงที่นี่ พร้อมจำนวนคนที่ได้รับสิทธิ์นั้น"
+
+#: 
+msgid "Another person already uses this address"
+msgstr "มีบุคคลอื่นใช้อีเมลนี้อยู่แล้ว"
+
+#: 
+msgid "Applies to"
+msgstr "ใช้กับ"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "อนุมัติหรือปฏิเสธคำขอหาตัวแทนของทีมอาสาสมัคร"
+
+#: 
+msgid "Ask for a new email"
+msgstr "ขออีเมลใหม่"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "มอบอำนาจให้บุคคล ไม่ใช่บัญชีเข้าสู่ระบบ จึงให้ได้ก่อนที่บุคคลนั้นจะมีบัญชี คนที่ลงชื่อเข้าใช้เฉพาะพอร์ทัลสมาชิกจะเห็นเพียงตารางของตนเอง จนกว่าผู้ดูแลจะให้บัญชีเจ้าหน้าที่"
+
+#: 
+msgid "Awaiting review"
+msgstr "รอการตรวจ"
+
+#: 
+msgid "Back to sign-in"
+msgstr "กลับไปลงชื่อเข้าใช้"
+
+#: 
+msgid "Browse the full directory"
+msgstr "เรียกดูสมุดรายชื่อทั้งหมด"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "ลงชื่อเข้าพอร์ทัลสมาชิกได้"
+
+#: 
+msgid "Can sign in?"
+msgstr "ลงชื่อเข้าใช้ได้หรือไม่"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "ปิดการลงชื่อเข้าใช้ของผู้ดูแลคนเดียวที่ลงชื่อเข้าใช้ได้ไม่ได้"
+
+#: 
+msgid "Cannot sign in"
+msgstr "ลงชื่อเข้าใช้ไม่ได้"
+
+#: 
+msgid "Change family details"
+msgstr "เปลี่ยนรายละเอียดครอบครัว"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "เปลี่ยนที่อยู่และข้อมูลติดต่อของครอบครัว และเพิ่มสมาชิกครอบครัวเพื่อรอการตรวจ"
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "เปลี่ยนชื่อ ข้อมูลติดต่อ และรูปของตนเอง"
+
+#: 
+msgid "Changed"
+msgstr "เปลี่ยนแปลงแล้ว"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "เปลี่ยนแปลงหลังจากบุคคลนั้นลงชื่อเข้าใช้"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "เปลี่ยนแปลงโดยการนำเข้าหลังจากบุคคลนั้นลงชื่อเข้าใช้"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "เปลี่ยนแปลงโดยเจ้าหน้าที่หลังจากบุคคลนั้นลงชื่อเข้าใช้"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "เปลี่ยนแปลงผ่าน API หลังจากบุคคลนั้นลงชื่อเข้าใช้"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "ปิดการเปลี่ยนแปลงระหว่างเข้าสู่ระบบในฐานะบุคคล"
+
+#: 
+msgid "Changes needed"
+msgstr "ต้องเปลี่ยนแปลง"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "ระบบบันทึกทันทีที่คุณเปลี่ยนแปลง"
+
+#: 
+msgid "Check your email"
+msgstr "ตรวจสอบอีเมลของคุณ"
+
+#: 
+msgid "Choose a permission"
+msgstr "เลือกสิทธิ์"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "เลือกสิทธิ์ สิ่งที่ใช้สิทธิ์นั้น วันสุดท้าย และบอกเหตุผล"
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "เลือกรูปหรือถ่ายรูปตนเอง"
+
+#: 
+msgid "Choose a theme"
+msgstr "เลือกธีม"
+
+#: 
+msgid "Choose at least one row."
+msgstr "เลือกอย่างน้อยหนึ่งแถว"
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "เลือกได้ครั้งละไม่เกิน %d แถว"
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "เลือกรูปแบบการแสดงวันที่จากรายการ"
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "เลือกวันสุดท้ายของสิทธิ์นี้"
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "เลือกสิ่งที่สิทธิ์นี้ใช้สำหรับ"
+
+#: 
+msgid "Choose yes or no."
+msgstr "เลือกใช่หรือไม่"
+
+#: 
+msgid "Church Office"
+msgstr "สำนักงานคริสตจักร"
+
+#: 
+msgid "Church country"
+msgstr "ประเทศของคริสตจักร"
+
+#: 
+msgid "Church default: %s"
+msgstr "ค่าเริ่มต้นของคริสตจักร: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "การลงชื่อเข้าใช้ของผู้นำคริสตจักร"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "ประเภทสมาชิกที่สมาชิกของประเภทนั้นลงชื่อเข้าพอร์ทัลสมาชิกได้ เป็นรายการรหัสประเภทคั่นด้วยจุลภาค"
+
+#: 
+msgid "Clear selection"
+msgstr "ล้างสิ่งที่เลือก"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "รหัส เซสชัน และอุปกรณ์"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "ยืนยันที่อยู่อีเมล"
+
+#: 
+msgid "Confirm email address"
+msgstr "ยืนยันที่อยู่อีเมล"
+
+#: 
+msgid "Confirm family details"
+msgstr "ยืนยันรายละเอียดครอบครัว"
+
+#: 
+msgid "Confirm selected"
+msgstr "ยืนยันรายการที่เลือก"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "ยืนยันอีเมลนี้หลังจากตรวจด้วยตนเองหรือทางโทรศัพท์ว่าเป็นที่อยู่ของบุคคลนี้เอง เมื่อยืนยันแล้ว จะใช้ลงชื่อเข้าพอร์ทัลสมาชิกได้"
+
+#: 
+msgid "Confirm your email address"
+msgstr "ยืนยันที่อยู่อีเมลของคุณ"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "ยืนยันที่อยู่อีเมลใหม่ของคุณ"
+
+#: 
+msgid "Confirmed"
+msgstr "ยืนยันแล้ว"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "วันที่ต้องเขียนในรูปแบบ YYYY-MM-DD"
+
+#: 
+msgid "Decide substitute requests"
+msgstr "พิจารณาคำขอหาตัวแทน"
+
+#: 
+msgid "Device"
+msgstr "อุปกรณ์"
+
+#: 
+msgid "Device remembered"
+msgstr "จดจำอุปกรณ์แล้ว"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "อุปกรณ์และพาสคีย์"
+
+#: 
+msgid "Directory classifications"
+msgstr "ประเภทสมาชิกในสมุดรายชื่อ"
+
+#: 
+msgid "Directory section"
+msgstr "ส่วนสมุดรายชื่อ"
+
+#: 
+msgid "Disable sign-in"
+msgstr "ปิดการลงชื่อเข้าใช้"
+
+#: 
+msgid "Do not show"
+msgstr "ไม่แสดง"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "แต่ละคนต้องมีอีเมลของตนเองที่ไม่มีใครอื่นใช้ด้วย"
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "อีเมลลงชื่อเข้าใช้แต่ละฉบับใช้ได้ครั้งเดียวภายในเวลาจำกัด และอีเมลที่ใหม่กว่าจะแทนที่ฉบับเดิม"
+
+#: 
+msgid "Edit my details"
+msgstr "แก้ไขรายละเอียดของฉัน"
+
+#: 
+msgid "Email address changed"
+msgstr "เปลี่ยนที่อยู่อีเมลแล้ว"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "ที่อยู่อีเมลที่พิมพ์: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "ที่อยู่อีเมลที่ต้องยืนยัน: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "เปลี่ยนอีเมลแล้ว"
+
+#: 
+msgid "Email code"
+msgstr "รหัสจากอีเมล"
+
+#: 
+msgid "Email confirmed"
+msgstr "ยืนยันอีเมลแล้ว"
+
+#: 
+msgid "Email link"
+msgstr "ลิงก์จากอีเมล"
+
+#: 
+msgid "Email me a code"
+msgstr "ส่งรหัสให้ฉันทางอีเมล"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "ส่งลิงก์ยืนยันให้ฉันทางอีเมล"
+
+#: 
+msgid "Email needs attention"
+msgstr "อีเมลต้องได้รับการดูแล"
+
+#: 
+msgid "Email problem"
+msgstr "ปัญหาอีเมล"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "ยกเลิกรหัสและลิงก์ลงชื่อเข้าใช้ที่ส่งทางอีเมลแล้ว"
+
+#: 
+msgid "Emailed verification link"
+msgstr "ลิงก์ยืนยันที่ส่งทางอีเมล"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "อีเมลที่ยืนยันแล้ว: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "เปิดการลงชื่อเข้าใช้"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "จบเซสชันพอร์ทัลสมาชิกทั้งหมดของบุคคลนี้ และลืมอุปกรณ์ที่จดจำไว้หรือไม่ พาสคีย์ยังอยู่ จึงลงชื่อเข้าใช้ได้อีก"
+
+#: 
+msgid "Ended %s"
+msgstr "สิ้นสุดเมื่อ %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "สิ้นสุดเพราะการลงชื่อเข้าใช้ของบุคคลนั้นเปลี่ยน"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "สิ้นสุดเมื่อปิดการลงชื่อเข้าใช้ของสมาชิก"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "กรอกจำนวนเต็มตั้งแต่ %1$d ถึง %2$d"
+
+#: 
+msgid "Enter your email address."
+msgstr "กรอกที่อยู่อีเมลของคุณ"
+
+#: 
+msgid "Every kind"
+msgstr "ทุกชนิด"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "การลงชื่อเข้าใช้ของสมาชิก การปฏิเสธ และการเปลี่ยนแปลงการลงชื่อเข้าใช้ทั้งหมด รายการใหม่สุดก่อน ไม่เก็บรหัส ลิงก์ หรือพาสคีย์"
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "ทุกคนในรายการจาก A ถึง Z พร้อมช่องค้นหา"
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "ทุกคนที่กฎการลงชื่อเข้าใช้อนุญาต จะลงชื่อเข้าพอร์ทัลสมาชิกด้วยอีเมลของตนเองได้"
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "ทุกคนที่ลงชื่อเข้าพอร์ทัลสมาชิกใน 30 วันที่ผ่านมา รายการใหม่สุดก่อน"
+
+#: 
+msgid "Everywhere"
+msgstr "ทุกแห่ง"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "ครอบครัวที่สมาชิกยืนยันใน 30 วันที่ผ่านมา จากพอร์ทัลสมาชิกหรือลิงก์ยืนยันทางอีเมล"
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "ครอบครัวที่ยืนยันแล้ว ใน 30 วันที่ผ่านมา"
+
+#: 
+msgid "Family details confirmed"
+msgstr "ยืนยันรายละเอียดครอบครัวแล้ว"
+
+#: 
+msgid "Family email"
+msgstr "อีเมลครอบครัว"
+
+#: 
+msgid "Family emails not moved"
+msgstr "อีเมลครอบครัวที่ยังไม่ถูกย้าย"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "บทบาทในครอบครัวที่สมาชิกของบทบาทนั้นลงชื่อเข้าพอร์ทัลสมาชิกได้ เป็นรายการรหัสบทบาทคั่นด้วยจุลภาค"
+
+#: 
+msgid "Find someone"
+msgstr "ค้นหาบุคคล"
+
+#: 
+msgid "Fix by hand"
+msgstr "แก้ด้วยตนเอง"
+
+#: 
+msgid "Fix shared emails"
+msgstr "แก้อีเมลที่ใช้ร่วมกัน"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "จากการลงชื่อเข้าใช้ของเจ้าหน้าที่"
+
+#: 
+msgid "Give a permission"
+msgstr "ให้สิทธิ์"
+
+#: 
+msgid "Give a portal permission"
+msgstr "ให้สิทธิ์พอร์ทัล"
+
+#: 
+msgid "Give each person their own email"
+msgstr "ให้แต่ละคนมีอีเมลของตนเอง"
+
+#: 
+msgid "Give permission"
+msgstr "ให้สิทธิ์"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "ให้โดย %1$s จนถึง %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "ให้โดย %s"
+
+#: 
+msgid "Given to"
+msgstr "ให้แก่"
+
+#: 
+msgid "Given to Everyone"
+msgstr "ให้แก่ทุกคน"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "ให้แล้ว แต่ยังไม่มีผล"
+
+#: 
+msgid "Go to sign in"
+msgstr "ไปลงชื่อเข้าใช้"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "ไปที่พอร์ทัลสมาชิก"
+
+#: 
+msgid "Has signed in"
+msgstr "เคยลงชื่อเข้าใช้"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "เคยลงชื่อเข้าใช้: เซสชันและอุปกรณ์ของบุคคลนั้นจะสิ้นสุด"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "นี่คือรหัสสำหรับลงชื่อเข้าพอร์ทัลสมาชิก พิมพ์รหัสในหน้าลงชื่อเข้าใช้ ในเบราว์เซอร์ที่คุณขอรหัส หรือกดปุ่มเพื่อลงชื่อเข้าใช้บนอุปกรณ์นี้"
+
+#: 
+msgid "Hide Permissions"
+msgstr "ซ่อนสิทธิ์"
+
+#: 
+msgid "How"
+msgstr "วิธี"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "จำนวนอีเมลลงชื่อเข้าพอร์ทัลสมาชิกที่ที่อยู่ IP หนึ่งขอได้ในหนึ่งชั่วโมง ตั้งเป็น 0 หากไม่จำกัด เช่น เมื่อทุกคนเข้าถึง ChurchCRM ผ่านที่อยู่เดียว"
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "จำนวนวันที่อุปกรณ์ยังคงลงชื่อเข้าพอร์ทัลสมาชิกหลังจากสมาชิกเลือกให้คงการลงชื่อเข้าใช้ ตั้งเป็น 0 เพื่อเอาตัวเลือกนี้ออก"
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "จำนวนนาทีที่ไม่ได้ใช้งานก่อนเซสชันพอร์ทัลสมาชิกจะสิ้นสุด"
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "จำนวนนาทีที่รหัสและลิงก์ลงชื่อเข้าพอร์ทัลสมาชิกยังใช้ได้"
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "เวลาที่ไม่ได้ใช้งาน (นาที)"
+
+#: 
+msgid "Idle too long"
+msgstr "ไม่ได้ใช้งานนานเกินไป"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "หาก %1$s เป็นที่อยู่ใหม่ของคุณ ให้ใช้ปุ่มด้านล่างเพื่อยืนยัน จนกว่าจะยืนยัน จะใช้ลงชื่อเข้าใช้ไม่ได้ ลิงก์ใช้ได้ครั้งเดียว จนถึง %2$s"
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "หากที่อยู่นี้ใช้ลงชื่อเข้าใช้ได้ เราได้ส่งรหัสให้คุณทางอีเมลแล้ว หากผ่านไปสักครู่แล้วยังไม่ได้รับ ให้สอบถามสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "หากคุณไม่ได้เพิ่ม ให้ลบออกที่หน้าการลงชื่อเข้าใช้และอุปกรณ์ แล้วติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "หากคุณไม่ได้ขอเปลี่ยนนี้ โปรดติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "หากคุณไม่ได้ขอสิ่งนี้ โปรดติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "ลิงก์อาจหมดอายุหรือถูกใช้ไปแล้ว หากต้องการความช่วยเหลือ โปรดติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "ยังไม่ได้ติดตั้งปลั๊กอิน"
+
+#: 
+msgid "Jump to a letter"
+msgstr "ไปที่ตัวอักษร"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "ให้ฉันลงชื่อเข้าใช้ค้างไว้ (วัน)"
+
+#: 
+msgid "Keeps it"
+msgstr "คงไว้"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "ชนิดของอีเมลที่ยังไม่ยืนยัน"
+
+#: 
+msgid "Last day"
+msgstr "วันสุดท้าย"
+
+#: 
+msgid "Last used"
+msgstr "ใช้ล่าสุด"
+
+#: 
+msgid "Last used %s"
+msgstr "ใช้ล่าสุด %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "ผู้นำของ %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "ให้ผู้ดูแลเปิดพอร์ทัลสมาชิกของบุคคลในฐานะบุคคลนั้น จากเมนูการทำงานของบุคคล ขณะที่การลงชื่อเข้าใช้ของสมาชิกเปิดอยู่"
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "ให้สมาชิกเพิ่มพาสคีย์และใช้ลงชื่อเข้าพอร์ทัลสมาชิก"
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "ให้สมาชิกลงชื่อเข้าพอร์ทัลสมาชิกด้วยที่อยู่อีเมลของตนเอง เปิดได้เฉพาะเมื่อการส่งอีเมลทำงานอยู่"
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "ให้สมาชิกลงชื่อเข้าใช้ด้วยอีเมล"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "อายุของลิงก์และรหัส (นาที)"
+
+#: 
+msgid "Login as %s"
+msgstr "เข้าสู่ระบบในฐานะ %s"
+
+#: 
+msgid "Login as Person"
+msgstr "เข้าสู่ระบบในฐานะบุคคล"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "เริ่มเข้าสู่ระบบในฐานะบุคคลไม่ได้"
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "การเข้าสู่ระบบในฐานะบุคคลสิ้นสุด: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "ประวัติการเข้าสู่ระบบในฐานะบุคคล"
+
+#: 
+msgid "Login as Person started"
+msgstr "เริ่มเข้าสู่ระบบในฐานะบุคคลแล้ว"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "หยุดเข้าสู่ระบบในฐานะบุคคลแล้ว"
+
+#: 
+msgid "Look up anyone"
+msgstr "ค้นหาบุคคลใดก็ได้"
+
+#: 
+msgid "Loses it"
+msgstr "เสียไป"
+
+#: 
+msgid "Manage a team"
+msgstr "จัดการทีม"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "จัดการการลงชื่อเข้าใช้และอุปกรณ์ของฉัน"
+
+#: 
+msgid "Matches: %s"
+msgstr "ผลที่ตรงกัน: %s"
+
+#: 
+msgid "May sign in"
+msgstr "อาจลงชื่อเข้าใช้ได้"
+
+#: 
+msgid "May sign in now"
+msgstr "ลงชื่อเข้าใช้ได้ตอนนี้"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "รหัสลงชื่อเข้าพอร์ทัลสมาชิก"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "ประกาศการลงชื่อเข้าพอร์ทัลสมาชิก"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "การลงชื่อเข้าใช้และกิจกรรมของพอร์ทัลสมาชิก สำหรับสมาชิกและเจ้าหน้าที่ที่เปิดพอร์ทัลจากการลงชื่อเข้าใช้ของเจ้าหน้าที่"
+
+#: 
+msgid "Member sign-in"
+msgstr "การลงชื่อเข้าใช้ของสมาชิก"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "การลงชื่อเข้าใช้ของสมาชิกส่งรหัสให้แต่ละคนทางอีเมล ดังนั้นอีเมล (SMTP) ต้องทำงานก่อนจึงจะเปิดได้"
+
+#: 
+msgid "Member sign-in is off"
+msgstr "การลงชื่อเข้าใช้ของสมาชิกปิดอยู่"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "การลงชื่อเข้าใช้ของสมาชิกปิดอยู่สำหรับคริสตจักรนี้"
+
+#: 
+msgid "Member sign-in is off."
+msgstr "การลงชื่อเข้าใช้ของสมาชิกปิดอยู่"
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "การลงชื่อเข้าใช้ของสมาชิกยังใช้ไม่ได้ โปรดติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "การลงชื่อเข้าใช้ของสมาชิกไม่ให้ผู้เสียชีวิต คนที่ไม่ใช้งาน คนในครอบครัวที่ไม่ใช้งาน คนที่รอการตรวจ หรือคนที่เปิด “ปิดการลงชื่อเข้าใช้” เข้าได้ ตัวเลือกเหล่านี้กำหนดว่าใครอื่นเข้าได้"
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "การลงชื่อเข้าใช้ของสมาชิกส่งรหัสให้สมาชิกแต่ละคนทางอีเมล จึงเปิดได้เฉพาะเมื่อ ChurchCRM ส่งอีเมลได้ โปรดเปิดอีเมลและตั้งค่าเซิร์ฟเวอร์จดหมายก่อนครับ"
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "สมาชิกจะเห็นหน้าปฏิทินเมื่อมีปฏิทินอย่างน้อยหนึ่งรายการที่เปิดอยู่"
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "สมาชิกพิมพ์อย่างน้อย %d ตัวอักษรของชื่อ และเห็นผลที่ตรงกันได้ไม่เกิน %d รายการ ไม่แสดงรายการทั้งหมด"
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "สมาชิกที่กำลังลงชื่อเข้าใช้อยู่จะถูกออกจากระบบ และไม่มีใครลงชื่อเข้าใช้ด้วยอีเมลได้จนกว่าจะเปิดการลงชื่อเข้าใช้ของสมาชิกอีกครั้ง"
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "สมาชิกที่มีประเภทเหล่านี้จะพบสมุดรายชื่อในเมนูพอร์ทัลสมาชิก"
+
+#: 
+msgid "Minimum age"
+msgstr "อายุขั้นต่ำ"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "การลองอีกด้วยที่อยู่นี้ในชั่วโมงถัดไปจะไม่ส่งประกาศอีก"
+
+#: 
+msgid "Moved from the family email"
+msgstr "ย้ายจากอีเมลครอบครัว"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "ย้ายให้หัวหน้าครัวเรือน"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "ย้ายให้คู่สมรส"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "เพิ่งมาที่คริสตจักรของเราใช่ไหม บอกเราเกี่ยวกับครอบครัวของคุณ แล้วเราจะติดต่อเพื่อต้อนรับคุณครับ"
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "ยังไม่มีเซสชันเข้าสู่ระบบในฐานะบุคคล"
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "ไม่มีวันเกิด และไม่ใช่หัวหน้าครัวเรือนหรือคู่สมรส"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "ไม่มีปฏิทินที่เปิดอยู่ ดังนั้นสมาชิกจึงไม่เห็นหน้าปฏิทิน"
+
+#: 
+msgid "No changes"
+msgstr "ไม่มีการเปลี่ยนแปลง"
+
+#: 
+msgid "No changes made."
+msgstr "ไม่มีการเปลี่ยนแปลง"
+
+#: 
+msgid "No family role"
+msgstr "ไม่มีบทบาทในครอบครัว"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "ไม่มีหัวหน้าครัวเรือนหรือคู่สมรสที่รับอีเมลครอบครัวได้"
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "ไม่มีหัวหน้าครัวเรือนหรือคู่สมรสที่ใช้ร่วมกัน"
+
+#: 
+msgid "No match"
+msgstr "ไม่พบที่ตรงกัน"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "ยังไม่มีใครตรงกับกฎการลงชื่อเข้าใช้ เลือกบทบาทในครอบครัวหรือประเภทสมาชิกเพิ่ม หรือลดอายุขั้นต่ำ"
+
+#: 
+msgid "No passkey was added."
+msgstr "ไม่ได้เพิ่มพาสคีย์"
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "ไม่ได้ใช้พาสคีย์ ลองอีกครั้ง หรือลงชื่อเข้าใช้ด้วยที่อยู่อีเมลครับ"
+
+#: 
+msgid "No person has this email"
+msgstr "ไม่มีบุคคลใดมีอีเมลนี้"
+
+#: 
+msgid "No personal email"
+msgstr "ไม่มีอีเมลส่วนบุคคล"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "ไม่มีอีเมลที่ใช้ร่วมกันที่ทำให้ใครลงชื่อเข้าใช้ไม่ได้"
+
+#: 
+msgid "No such person"
+msgstr "ไม่มีบุคคลนี้"
+
+#: 
+msgid "No, thanks"
+msgstr "ไม่ ขอบคุณ"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "ไม่มีใครลงชื่อเข้าใช้ด้วยอีเมลส่วนบุคคลที่คนสองคนซึ่งอาจลงชื่อเข้าใช้ใช้อยู่ร่วมกัน สำหรับที่อยู่ที่ใช้ร่วมกันภายในครอบครัวเดียว หัวหน้าครัวเรือนจะคงไว้ มิฉะนั้นเป็นคู่สมรส (คนที่อายุมากกว่าก่อน) คนอื่นที่ใช้ร่วมกันจะเสียที่อยู่นั้น เอาเครื่องหมายออกจากรายการที่คุณต้องการแก้ด้วยวิธีอื่น"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "ยังไม่มีใครลงชื่อเข้าใช้ได้: เลือกประเภทสมาชิกอย่างน้อยหนึ่งประเภทในส่วนใครลงชื่อเข้าใช้ได้"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "ยังไม่มีใครลงชื่อเข้าใช้ได้: เลือกบทบาทในครอบครัวอย่างน้อยหนึ่งบทบาท และประเภทสมาชิกอย่างน้อยหนึ่งประเภทในส่วนใครลงชื่อเข้าใช้ได้"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "ยังไม่มีใครลงชื่อเข้าใช้ได้: เลือกบทบาทในครอบครัวอย่างน้อยหนึ่งบทบาทในส่วนใครลงชื่อเข้าใช้ได้"
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "ไม่มีใครในสมุดรายชื่อที่ตรงกับชื่อนั้น"
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "ยังไม่มีใครอยู่ในสมุดรายชื่อ"
+
+#: 
+msgid "Not ended"
+msgstr "ยังไม่สิ้นสุด"
+
+#: 
+msgid "Not moved"
+msgstr "ยังไม่ถูกย้าย"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "ไม่แน่ใจว่าเรามีอีเมลใด ติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "Not yet"
+msgstr "ยังไม่"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "บันทึกในไทม์ไลน์ของครอบครัว"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "ในจำนวนนั้น คนที่เคยลงชื่อเข้าใช้: {{total}} พวกเขาจะถูกออกจากระบบทุกแห่ง และที่อยู่นั้นจะได้รับประกาศ"
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "ปิดสำหรับทุกคน: “%s” ถูกปิดอยู่"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "ปิดสำหรับทุกคน: การจัดการอาสาสมัครไม่ได้ตั้งเป็น V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "ปิดสำหรับทุกคน: คุณสมบัตินั้นถูกปิดอยู่"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "ปิดสำหรับทุกคน: ปลั๊กอินถูกปิดอยู่"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "ปิดสำหรับทุกคน: ไม่มีปฏิทินที่แชร์กับสมาชิก"
+
+#: 
+msgid "Office list"
+msgstr "รายชื่อสำนักงาน"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "เมื่อยืนยันแล้ว จะใช้ลงชื่อเข้าพอร์ทัลสมาชิกได้"
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "เลือกได้เฉพาะที่อยู่ที่คุณยืนยันได้"
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "มีเพียงผู้ดูแลที่เห็นเหตุผล"
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "มีเพียงผู้ดูแลที่เปลี่ยนอีเมลของบุคคลที่มีบัญชีเจ้าหน้าที่หรือสิทธิ์พอร์ทัลได้"
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "มีเพียงผู้ดูแลที่ยืนยันอีเมลซึ่งแทนที่อีเมลที่บุคคลนั้นใช้ลงชื่อเข้าใช้ได้"
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "มีเพียงผู้ดูแลที่ยืนยันอีเมลของบุคคลที่มีบัญชีเจ้าหน้าที่หรือสิทธิ์พอร์ทัลได้"
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "มีเพียงผู้ดูแลที่แก้ที่อยู่นี้ได้: คนที่ใช้ร่วมกันมีบัญชีเจ้าหน้าที่หรือสิทธิ์พอร์ทัล"
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "มีเพียงผู้ใหญ่ในครอบครัวของคุณที่ยืนยันรายละเอียดเหล่านี้ได้ โปรดติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "ยืนยันเฉพาะที่อยู่ที่คุณรู้ว่าเป็นของบุคคลนั้น ใครก็ตามที่อ่านที่อยู่จะลงชื่อเข้าใช้ในฐานะบุคคลนั้นได้"
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "มีเพียงคนที่ยังมีชีวิตและมีอีเมลของตนเองที่อยู่ในรายชื่อสำนักงานได้"
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "เพิ่มได้เฉพาะคนที่มีอีเมลของตนเอง"
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "ข้อมูลการใช้งานที่ไม่บังคับอาจรวมเส้นทางหน้า ภาษาที่ใช้งาน เวอร์ชัน CRM เวอร์ชัน PHP ตระกูล OS ประเทศจากการตั้งค่าข้อมูลคริสตจักร และรหัสการติดตั้งแบบสุ่ม รายงานความล้มเหลวไม่มีรหัสการติดตั้ง ข้อมูลถูกส่งไปที่ PostHog ในสหรัฐอเมริกา"
+
+#: 
+msgid "Passkey"
+msgstr "พาสคีย์"
+
+#: 
+msgid "Passkey added"
+msgstr "เพิ่มพาสคีย์แล้ว"
+
+#: 
+msgid "Passkey removed"
+msgstr "นำพาสคีย์ออกแล้ว"
+
+#: 
+msgid "Passkeys"
+msgstr "พาสคีย์"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "ปิดพาสคีย์อยู่"
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "ใช้พาสคีย์ที่นี่ไม่ได้"
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "ยังใช้พาสคีย์บนไซต์นี้ไม่ได้ โปรดติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "พาสคีย์ต้องใช้ชื่อโฮสต์ ไม่ใช่ที่อยู่ IP ในที่อยู่ของไซต์"
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "พาสคีย์ต้องใช้การเชื่อมต่อที่ปลอดภัย (HTTPS) มายังไซต์นี้"
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "พาสคีย์ต้องตั้งที่อยู่ของไซต์ใน Config.php"
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "พาสคีย์ต้องให้ไซต์ให้บริการผ่าน HTTPS สมาชิกจะไม่เห็นตัวเลือกพาสคีย์จนกว่าจะเป็นเช่นนั้น"
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "พาสคีย์ใช้ได้เฉพาะที่ %s"
+
+#: 
+msgid "Passkeys: %d"
+msgstr "พาสคีย์: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "คนที่การตั้งค่าที่บันทึกไว้อนุญาต: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "คนที่จะรับอีเมลเมื่อมีคนลงชื่อเข้าพอร์ทัลสมาชิกไม่ได้"
+
+#: 
+msgid "People who hold it"
+msgstr "คนที่ถือสิทธิ์นี้"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "คนที่จะเสียที่อยู่: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "คนที่เสียที่อยู่ไปแล้ว: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "คนที่อาจลงชื่อเข้าใช้ได้: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "คนที่เคยลงชื่อเข้าพอร์ทัลสมาชิก: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "คนที่มีประเภทเหล่านี้จะปรากฏในสมุดรายชื่อ ตัวเลขคือจำนวนคนที่ใช้งานของแต่ละประเภท"
+
+#: 
+msgid "People with this email: %s"
+msgstr "คนที่มีอีเมลนี้: %s"
+
+#: 
+msgid "Person %d"
+msgstr "บุคคล %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "เลือกประเภทสมาชิกจากรายการ"
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "เลือกบทบาทในครอบครัวจากรายการ"
+
+#: 
+msgid "Pick people for the office list."
+msgstr "เลือกคนสำหรับรายชื่อสำนักงาน"
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "โปรดเลือกภาษาจากรายการครับ"
+
+#: 
+msgid "Portal permission given"
+msgstr "ให้สิทธิ์พอร์ทัลแล้ว"
+
+#: 
+msgid "Portal permission removed"
+msgstr "นำสิทธิ์พอร์ทัลออกแล้ว"
+
+#: 
+msgid "Portal permissions"
+msgstr "สิทธิ์พอร์ทัล"
+
+#: 
+msgid "Portal sign-in"
+msgstr "การลงชื่อเข้าพอร์ทัล"
+
+#: 
+msgid "Problem"
+msgstr "ปัญหา"
+
+#: 
+msgid "Reason"
+msgstr "เหตุผล"
+
+#: 
+msgid "Reason: %s"
+msgstr "เหตุผล: %s"
+
+#: 
+msgid "Refused"
+msgstr "ถูกปฏิเสธ"
+
+#: 
+msgid "Register your family"
+msgstr "ลงทะเบียนครอบครัวของคุณ"
+
+#: 
+msgid "Remembered device"
+msgstr "อุปกรณ์ที่จดจำไว้"
+
+#: 
+msgid "Remembered device removed"
+msgstr "นำอุปกรณ์ที่จดจำไว้ออกแล้ว"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "อุปกรณ์ที่จดจำไว้: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "นำอีเมลออก"
+
+#: 
+msgid "Remove this passkey"
+msgstr "นำพาสคีย์นี้ออก"
+
+#: 
+msgid "Remove this permission"
+msgstr "นำสิทธิ์นี้ออก"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "นำออกจาก: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "ถูกแทนที่หลังลงชื่อเข้าใช้"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "ถูกแทนที่ด้วยการลงชื่อเข้าใช้อื่น"
+
+#: 
+msgid "Result"
+msgstr "ผลลัพธ์"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "ดูแลทีมอาสาสมัคร: ตำแหน่ง อาสาสมัคร ตาราง การจัดคน และจำนวนคน"
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "บอกเหตุผลที่กำลังปิดการลงชื่อเข้าใช้"
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "บอกเหตุผลที่กำลังให้สิทธิ์นี้"
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "ค้นหาใครก็ได้ที่มีในระบบ แต่ละแถวบอกว่าบุคคลนั้นลงชื่อเข้าพอร์ทัลสมาชิกได้หรือไม่ และหากไม่ได้ เพราะเหตุใด"
+
+#: 
+msgid "Search method"
+msgstr "วิธีค้นหา"
+
+#: 
+msgid "Search only"
+msgstr "ค้นหาเท่านั้น"
+
+#: 
+msgid "See family contact details"
+msgstr "ดูข้อมูลติดต่อของครอบครัว"
+
+#: 
+msgid "See my family"
+msgstr "ดูครอบครัวของฉัน"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "ดูพอร์ทัลสมาชิกอย่างที่บุคคลนี้เห็นหรือไม่ หน้าของเจ้าหน้าที่จะปิดอยู่จนกว่าคุณจะกดหยุด และเซสชันจะถูกบันทึกในหน้านี้และในหน้าผู้ใช้ของคุณ"
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "ดูปฏิทินที่คริสตจักรแชร์กับสมาชิก และสมัครรับปฏิทินนั้น"
+
+#: 
+msgid "See the church calendar"
+msgstr "ดูปฏิทินของคริสตจักร"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "ดูอุปกรณ์และพาสคีย์ที่ใช้ลงชื่อเข้าใช้ของบุคคลนั้น และออกจากระบบหรือนำรายการใดออกก็ได้"
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "ดูที่อยู่อีเมลและหมายเลขโทรศัพท์ของคนในครอบครัวของบุคคลนั้น"
+
+#: 
+msgid "See the member directory"
+msgstr "ดูสมุดรายชื่อสมาชิก"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "ดูชื่อและรูปของคนในครอบครัวของบุคคลนั้น"
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "ดูคนที่คริสตจักรใส่ไว้ในสมุดรายชื่อ พร้อมรายละเอียดที่คริสตจักรเลือกแชร์"
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "ดูตารางอาสาสมัครของบุคคลนั้น สมัครตำแหน่งที่ว่าง และขอตัวแทน"
+
+#: 
+msgid "Send browse as true or false."
+msgstr "ส่ง browse เป็น true หรือ false"
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "ส่งประเภทสมาชิกเป็นรายการ ids"
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "ส่งการตั้งค่าสมุดรายชื่อเป็นอ็อบเจกต์ JSON"
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "ส่งฟิลด์ที่จะแสดงเป็นอ็อบเจกต์ของค่า true และ false"
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "ส่งการตั้งค่าเป็นอ็อบเจกต์ JSON"
+
+#: 
+msgid "Session ended"
+msgstr "เซสชันสิ้นสุดแล้ว"
+
+#: 
+msgid "Set up email"
+msgstr "ตั้งค่าอีเมล"
+
+#: 
+msgid "Set up email first."
+msgstr "ตั้งค่าอีเมลก่อนครับ"
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "ที่อยู่ที่ใช้ร่วมกันที่แก้แล้ว: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "ที่อยู่ที่ใช้ร่วมกันที่ต้องแก้: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "ใช้ร่วมโดย"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "อีเมลที่ใช้ร่วมกันที่ทำให้คนลงชื่อเข้าใช้ไม่ได้"
+
+#: 
+msgid "Show or hide this member"
+msgstr "แสดงหรือซ่อนสมาชิกนี้"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "แสดงหน้าสมุดรายชื่อในพอร์ทัลสมาชิกแก่ประเภทสมาชิกที่เลือกด้านล่าง"
+
+#: 
+msgid "Show the member directory"
+msgstr "แสดงสมุดรายชื่อสมาชิก"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "แสดงสมุดรายชื่อสมาชิกในพอร์ทัลสมาชิก"
+
+#: 
+msgid "Show with year"
+msgstr "แสดงพร้อมปี"
+
+#: 
+msgid "Show without year"
+msgstr "แสดงโดยไม่มีปี"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "กำลังแสดงผลที่ตรงกัน %d รายการแรก พิมพ์ชื่อเพิ่มเพื่อหาบุคคลที่คุณต้องการ"
+
+#: 
+msgid "Sign in as %s?"
+msgstr "ลงชื่อเข้าใช้ในฐานะ %s หรือไม่"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "ครั้งถัดไปให้ลงชื่อเข้าใช้บนอุปกรณ์นี้ด้วย Face ID ลายนิ้วมือ หรือ PIN ของอุปกรณ์"
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "ลงชื่อเข้าใช้เพื่อดูครอบครัว ปฏิทินของคริสตจักร และช่องทางรับใช้ คุณไม่ต้องใช้รหัสผ่านหรือบัญชีครับ"
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "ลงชื่อเข้าใช้ด้วยพาสคีย์"
+
+#: 
+msgid "Sign out every device"
+msgstr "ออกจากระบบทุกอุปกรณ์"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "ออกจากระบบทุกอุปกรณ์ตอนนี้หรือไม่"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "ออกจากระบบทุกแห่ง"
+
+#: 
+msgid "Sign out this device"
+msgstr "ออกจากระบบอุปกรณ์นี้"
+
+#: 
+msgid "Sign-in"
+msgstr "การลงชื่อเข้าใช้"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "การลงชื่อเข้าใช้และอุปกรณ์"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "ปิดการลงชื่อเข้าใช้ไม่ได้"
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "เปิดการลงชื่อเข้าใช้ไม่ได้"
+
+#: 
+msgid "Sign-in disabled"
+msgstr "ปิดการลงชื่อเข้าใช้แล้ว"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "ขออีเมลลงชื่อเข้าใช้แล้ว"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "อีเมลลงชื่อเข้าใช้ต่อที่อยู่ IP ต่อชั่วโมง"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "เปิดการลงชื่อเข้าใช้แล้ว"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "การลงชื่อเข้าใช้ของบุคคลนี้ถูกปิดอยู่แล้ว"
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "การลงชื่อเข้าใช้ถูกปิด"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "การลงชื่อเข้าใช้ของบุคคลนี้ถูกปิด"
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "การลงชื่อเข้าใช้ของบุคคลนี้ถูกเปิด"
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "การลงชื่อเข้าใช้ของบุคคลนี้ไม่ได้ถูกปิด"
+
+#: 
+msgid "Sign-in refused"
+msgstr "ปฏิเสธการลงชื่อเข้าใช้"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "การลงชื่อเข้าใช้ เซสชัน และคีย์ API ถูกปิดกั้นจนกว่าจะแก้เรื่องนี้ในระเบียนของบุคคลที่เชื่อมไว้"
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "ลงชื่อเข้าใช้แล้ว ใน 30 วันที่ผ่านมา"
+
+#: 
+msgid "Signed out"
+msgstr "ออกจากระบบแล้ว"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "ถูกออกจากระบบเพราะการลงชื่อเข้าใช้ของบุคคลนั้นเปลี่ยน"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "ออกจากระบบทุกแห่งแล้ว"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "มีคนขออีเมลลงชื่อเข้าพอร์ทัลสมาชิก แต่ไม่ได้ส่งอีเมล"
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "มีคนลงชื่อเข้าพอร์ทัลสมาชิกไม่ได้"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "หน้าของเจ้าหน้าที่จะปิดอยู่ระหว่างเข้าสู่ระบบในฐานะบุคคล กดหยุดบนแถบแจ้งเพื่อกลับ"
+
+#: 
+msgid "Stop"
+msgstr "หยุด"
+
+#: 
+msgid "Stopped"
+msgstr "หยุดแล้ว"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "แจ้งสำนักงานคริสตจักรว่ารายละเอียดครอบครัวยังถูกต้องอยู่หรือไม่"
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "รหัสนั้นใช้ไม่ได้ ตรวจอีเมลล่าสุดจากเรา หรือขอรหัสใหม่ครับ"
+
+#: 
+msgid "That could not be removed."
+msgstr "นำรายการนั้นออกไม่ได้"
+
+#: 
+msgid "That device is signed out."
+msgstr "อุปกรณ์นั้นออกจากระบบแล้ว"
+
+#: 
+msgid "That is not a valid email address."
+msgstr "นั่นไม่ใช่ที่อยู่อีเมลที่ถูกต้อง"
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "หน้านั้นเปิดไว้นานเกินไป โปรดลองอีกครั้งครับ"
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "นำพาสคีย์นั้นออกแล้ว จึงลงชื่อเข้าใช้คุณไม่ได้อีก"
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "ใช้เวลานานเกินไป โปรดลองอีกครั้งครับ"
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "การอัปเกรด 7.8.3 มอบอีเมลของแต่ละครอบครัวให้บุคคลหนึ่ง รายการเหล่านี้ทำไม่ได้ จึงบันทึกโน้ตไว้ในไทม์ไลน์ของครอบครัวแทน"
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "พอร์ทัลสมาชิกและอีเมลที่ส่งถึงคุณใช้ภาษานี้"
+
+#: 
+msgid "The change could not be saved."
+msgstr "บันทึกการเปลี่ยนแปลงไม่ได้"
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "รหัสและปุ่มใช้ได้ครั้งเดียว จนถึง %s"
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "รหัสหรือลิงก์ถูกส่งไปยังที่อยู่ที่ไม่ใช่อีเมลของบุคคลนั้นอีกต่อไป"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "ส่งอีเมลยืนยันไม่ได้ โปรดลองใหม่ภายหลังครับ"
+
+#: 
+msgid "The device is signed out."
+msgstr "อุปกรณ์ออกจากระบบแล้ว"
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "ที่อยู่อีเมล %2$s ถูกนำออกจากระเบียนของคุณเวลา %1$s คุณถูกออกจากพอร์ทัลสมาชิกบนทุกอุปกรณ์"
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "ที่อยู่อีเมลในระเบียนของคุณเวลา %1$s ถูกเปลี่ยนจาก %2$s เป็น %3$s คุณถูกออกจากพอร์ทัลสมาชิกบนทุกอุปกรณ์"
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "ยืนยันอีเมลไม่ได้"
+
+#: 
+msgid "The email could not be sent."
+msgstr "ส่งอีเมลไม่ได้"
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "ยืนยันอีเมลแล้ว ตอนนี้ใช้ลงชื่อเข้าใช้ได้"
+
+#: 
+msgid "The end date is before the start date."
+msgstr "วันที่สิ้นสุดอยู่ก่อนวันที่เริ่มต้น"
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "ครอบครัวไม่มีหัวหน้าครัวเรือนหรือคู่สมรสที่ยังมีชีวิตและใช้งานอยู่"
+
+#: 
+msgid "The family is inactive"
+msgstr "ครอบครัวไม่ใช้งาน"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "หัวหน้าครัวเรือนและคู่สมรสต่างมีอีเมลของตนเอง"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "วันสุดท้ายเป็นวันที่ผ่านมาแล้วไม่ได้"
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "บุคคลที่เชื่อมไว้อาจลงชื่อเข้าใช้ไม่ได้ ดังนั้นบัญชีนี้จึงลงชื่อเข้าใช้ไม่ได้"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "โหลดรายการไม่ได้"
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "เพิ่มพาสคีย์ไม่ได้ โปรดลองอีกครั้งครับ"
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "ตรวจสอบพาสคีย์ไม่ได้"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "พาสคีย์ไม่มีในระเบียน หรือถูกนำออกแล้ว"
+
+#: 
+msgid "The passkey was removed."
+msgstr "นำพาสคีย์ออกแล้ว"
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "คนที่ใช้อีเมลนี้อยู่คนละครอบครัว หรือไม่ได้อยู่ในครอบครัว"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "คนที่ใช้อีเมลนี้ร่วมกันเปลี่ยนไป เปิดแก้อีเมลที่ใช้ร่วมกันอีกครั้งครับ"
+
+#: 
+msgid "The permission could not be given."
+msgstr "ให้สิทธิ์ไม่ได้"
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "สิทธิ์สิ้นสุดหลังวันนี้ และให้ใหม่ได้อีก"
+
+#: 
+msgid "The permission was given."
+msgstr "ให้สิทธิ์แล้ว"
+
+#: 
+msgid "The permission was removed."
+msgstr "นำสิทธิ์ออกแล้ว"
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "โหลดสิทธิ์ไม่ได้"
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "บุคคลนั้นเสียสิทธิ์นี้ในพอร์ทัลสมาชิกทันที"
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "เหตุผลยาวได้ไม่เกิน %d อักขระ"
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "กฎการลงชื่อเข้าใช้อนุญาตบุคคลเหล่านี้ และแต่ละคนมีอีเมลของตนเองที่ไม่มีคนอื่นซึ่งอาจลงชื่อเข้าใช้ใช้อยู่"
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "กฎการลงชื่อเข้าใช้อนุญาตบุคคลเหล่านี้ แต่อีเมลไม่อนุญาต: พวกเขาไม่มีอีเมล ใช้อีเมลร่วมกับคนอื่นที่อาจลงชื่อเข้าใช้ หรือยังไม่ยืนยัน"
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "บันทึกการตั้งค่าการลงชื่อเข้าใช้ไม่ได้"
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "อีเมลที่ยังไม่ยืนยันเปลี่ยนไป โหลดหน้านี้ใหม่แล้วลองอีกครั้งครับ"
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "ประเภทสมาชิกของบุคคลนั้นอาจลงชื่อเข้าใช้ไม่ได้"
+
+#: 
+msgid "Their email changed"
+msgstr "อีเมลของบุคคลนั้นเปลี่ยนแล้ว"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "อีเมลของบุคคลนั้นยังไม่ยืนยัน"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "อีเมลของบุคคลนั้นใช้ร่วมกับคนอื่น"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "บทบาทในครอบครัวของบุคคลนั้นอาจลงชื่อเข้าใช้ไม่ได้"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "การเข้าสู่ระบบเดิมของบุคคลนั้นถูกนำออกโดยการอัปเกรด เปิดการลงชื่อเข้าใช้ของสมาชิกเพื่อให้ลงชื่อเข้าใช้ด้วยอีเมลของตนเอง"
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "อุปกรณ์ที่จดจำไว้ของบุคคลนั้นหมดอายุแล้ว"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "อุปกรณ์ที่จดจำไว้ของบุคคลนั้นถูกออกจากระบบ"
+
+#: 
+msgid "Theme development"
+msgstr "การพัฒนาธีม"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "ไม่มีประเภทสมาชิกที่มี id %d"
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "ไม่มีตัวเลือกสำหรับขอบเขตชนิดนี้"
+
+#: 
+msgid "There is no such audit event."
+msgstr "ไม่มีเหตุการณ์ตรวจสอบนี้"
+
+#: 
+msgid "There is no such email problem."
+msgstr "ไม่มีปัญหาอีเมลนี้"
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "ไม่มีชนิดของอีเมลที่ยังไม่ยืนยันนี้"
+
+#: 
+msgid "There is no such list."
+msgstr "ไม่มีรายการนี้"
+
+#: 
+msgid "There is no such portal permission."
+msgstr "ไม่มีสิทธิ์พอร์ทัลนี้"
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "นี่คือโทรศัพท์และคอมพิวเตอร์ที่คุณเลือกให้คงการลงชื่อเข้าใช้ ออกจากระบบอุปกรณ์ที่คุณไม่ได้ใช้แล้วหรือไม่รู้จักครับ"
+
+#: 
+msgid "They have a staff account"
+msgstr "บุคคลนั้นมีบัญชีเจ้าหน้าที่"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "บุคคลนั้นอาจลงชื่อเข้าใช้ได้ แต่ยังไม่เคยทำ"
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "การกระทำนี้ต้องมีเซสชันเบราว์เซอร์ที่ลงชื่อเข้าใช้แล้ว"
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "เปลี่ยนที่อยู่นี้ไม่ได้ เปิดแก้อีเมลที่ใช้ร่วมกันอีกครั้งเพื่อดูสถานะครับ"
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "ที่อยู่นี้ไม่ได้ถูกใช้ร่วมกันโดยคนที่อาจลงชื่อเข้าใช้อีกต่อไป"
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "เบราว์เซอร์นี้สร้างพาสคีย์ไม่ได้"
+
+#: 
+msgid "This device"
+msgstr "อุปกรณ์นี้"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "อุปกรณ์นี้มีพาสคีย์ของคุณอยู่แล้ว"
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "อุปกรณ์นี้จะไม่คงการลงชื่อเข้าใช้ของบุคคลนั้นอีก และเซสชันที่เปิดอยู่บนอุปกรณ์จะสิ้นสุด บุคคลนั้นลงชื่อเข้าใช้ใหม่ทางอีเมลได้"
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "นี่คืออุปกรณ์ของฉันเอง ให้ฉันลงชื่อเข้าใช้ค้างไว้"
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "ที่นี่คือที่คุณตัดสินใจเรื่องผู้มาเยือน ตัวเลขคือจำนวนคนที่ใช้งานของแต่ละประเภท"
+
+#: 
+msgid "This link cannot be used"
+msgstr "ใช้ลิงก์นี้ไม่ได้"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "ลิงก์นี้หมดอายุหรือถูกใช้ไปแล้ว"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "ส่วนนี้ของพอร์ทัลสมาชิกใช้ไม่ได้สำหรับคุณ"
+
+#: 
+msgid "This passkey is already on record."
+msgstr "พาสคีย์นี้อยู่ในระเบียนแล้ว"
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "พาสคีย์นี้จะไม่ลงชื่อเข้าใช้บุคคลนั้นอีก บุคคลนั้นลงชื่อเข้าใช้ทางอีเมลและเพิ่มพาสคีย์ใหม่ได้"
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "ให้สิทธิ์นี้ในหน้าบุคคลไม่ได้"
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "บุคคลนี้มีสิทธิ์ทุกอย่างที่ให้ได้แล้ว"
+
+#: 
+msgid "This person already has this permission."
+msgstr "บุคคลนี้มีสิทธิ์นี้อยู่แล้ว"
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "บุคคลนี้ลงชื่อเข้าใช้ที่ใดไม่ได้อีก ทั้งพอร์ทัลสมาชิกและในฐานะเจ้าหน้าที่ ทุกเซสชันจะสิ้นสุด และอุปกรณ์ที่จดจำไว้กับพาสคีย์จะถูกนำออก"
+
+#: 
+msgid "This person could not be signed out."
+msgstr "ออกจากระบบบุคคลนี้ไม่ได้"
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "บุคคลนี้มีบัญชีเจ้าหน้าที่ การเข้าสู่ระบบในฐานะบุคคลจะไม่เปิดบัญชีเจ้าหน้าที่"
+
+#: 
+msgid "This person has no such passkey."
+msgstr "บุคคลนี้ไม่มีพาสคีย์นี้"
+
+#: 
+msgid "This person has no such permission."
+msgstr "บุคคลนี้ไม่มีสิทธิ์นี้"
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "บุคคลนี้ไม่มีอุปกรณ์ที่จดจำไว้นี้"
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "บุคคลนี้ไม่มีอีเมลที่ยังไม่ยืนยัน"
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "บุคคลนี้เคยลงชื่อเข้าพอร์ทัลสมาชิก การเปลี่ยนอีเมลนี้จะออกจากระบบบุคคลนั้นทุกแห่ง และที่อยู่ใหม่จะใช้ลงชื่อเข้าใช้ไม่ได้จนกว่าจะยืนยัน"
+
+#: 
+msgid "This person is deceased."
+msgstr "บุคคลนี้เสียชีวิตแล้ว"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "บุคคลนี้ออกจากพอร์ทัลสมาชิกทุกแห่งแล้ว"
+
+#: 
+msgid "This person no longer exists."
+msgstr "บุคคลนี้ไม่มีอยู่อีกแล้ว"
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "การทำนี้จะออกจากระบบคุณทุกแห่ง รวมถึงที่นี่ และลืมทุกอุปกรณ์ คุณลงชื่อเข้าใช้ใหม่ด้วยที่อยู่อีเมลได้ครับ"
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "การทำนี้จะออกจากระบบคุณทุกแห่ง รวมถึงที่นี่ และลืมทุกอุปกรณ์ พาสคีย์ของคุณยังอยู่ คุณลงชื่อเข้าใช้ใหม่ด้วยพาสคีย์หรือที่อยู่อีเมลได้ครับ"
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "เครื่องมือนี้ไม่เปลี่ยนสิ่งเหล่านี้ ให้แต่ละคนมีอีเมลของตนเองในระเบียนของบุคคลนั้น"
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "เลือกข้อนี้บนโทรศัพท์หรือคอมพิวเตอร์ของคุณเองเท่านั้น ห้ามเลือกบนเครื่องที่ใช้ร่วมกันหรือเครื่องสาธารณะ"
+
+#: 
+msgid "Time: %s"
+msgstr "เวลา: %s"
+
+#: 
+msgid "Timed out"
+msgstr "หมดเวลา"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "หากต้องการเปลี่ยนอีเมลนี้ โปรดติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "To fix"
+msgstr "ต้องแก้"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "หากต้องการคงการลงชื่อเข้าใช้บนโทรศัพท์หรือคอมพิวเตอร์ของคุณเอง ให้เลือก “นี่คืออุปกรณ์ของฉันเอง” ในการลงชื่อเข้าใช้ครั้งถัดไป"
+
+#: 
+msgid "Too many attempts"
+msgstr "พยายามหลายครั้งเกินไป"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "อีเมลลงชื่อเข้าใช้วันนี้มากเกินไป"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "คำขอลงชื่อเข้าใช้สำหรับอีเมลนี้มากเกินไป"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "คำขอลงชื่อเข้าใช้จากที่อยู่ IP นี้มากเกินไป"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "ใส่รหัสผิดหลายครั้งเกินไป"
+
+#: 
+msgid "Turn off"
+msgstr "ปิด"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "ปิดการลงชื่อเข้าใช้ของสมาชิกหรือไม่"
+
+#: 
+msgid "Turn on"
+msgstr "เปิด"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "เปิดการลงชื่อเข้าใช้ของสมาชิก"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "เปิดการลงชื่อเข้าใช้ของสมาชิกหรือไม่"
+
+#: 
+msgid "Type a name"
+msgstr "พิมพ์ชื่อ"
+
+#: 
+msgid "Type a name or email"
+msgstr "พิมพ์ชื่อหรืออีเมล"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "พิมพ์อย่างน้อย %d ตัวอักษรของชื่อ แล้วค้นหา"
+
+#: 
+msgid "Unconfirmed email"
+msgstr "อีเมลที่ยังไม่ยืนยัน"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "ทำความเข้าใจว่ามีการใช้ ChurchCRM ที่ใด"
+
+#: 
+msgid "Unknown device"
+msgstr "อุปกรณ์ที่ไม่รู้จัก"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "ฟิลด์สมุดรายชื่อที่ไม่รู้จัก: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "การตั้งค่าสมุดรายชื่อที่ไม่รู้จัก: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "อุปกรณ์ที่ไม่มีชื่อ"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "พาสคีย์ที่ไม่มีชื่อ"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "จนกว่าสำนักงานคริสตจักรจะยืนยัน ที่อยู่ใหม่จะใช้ลงชื่อเข้าใช้ไม่ได้"
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "ใช้ %1$s เป็นที่อยู่อีเมลของ %2$s เวลา %3$s หรือไม่"
+
+#: 
+msgid "Use a different email address"
+msgstr "ใช้ที่อยู่อีเมลอื่น"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "ใช้พาสคีย์บนอุปกรณ์นี้หรือไม่"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "ใช้ปุ่มด้านล่างเพื่อยืนยันว่า %1$s เป็นที่อยู่อีเมลของคุณเวลา %2$s ลิงก์ใช้ได้ครั้งเดียว จนถึง %3$s"
+
+#: 
+msgid "User %d"
+msgstr "ผู้ใช้ %d"
+
+#: 
+msgid "View Permissions"
+msgstr "ดูสิทธิ์"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "กำลังรอให้คุณยืนยัน %s ใช้ลิงก์ที่เราส่งไปยังที่อยู่นั้นครับ"
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "กำลังรอให้คุณยืนยัน {{email}} ใช้ลิงก์ที่เราส่งไปยังที่อยู่นั้นครับ"
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "เราส่งอีเมลไม่ได้ โปรดลองใหม่ภายหลัง หรือติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "We could not sign you in"
+msgstr "เราลงชื่อเข้าใช้ให้คุณไม่ได้"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "เราส่งลิงก์ไปยัง %s แล้ว ใช้ลิงก์นั้นเพื่อยืนยันที่อยู่อีเมลใหม่ของคุณครับ"
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "เราส่งลิงก์ไปยัง {{email}} แล้ว อีเมลของคุณจะเปลี่ยนเมื่อคุณใช้ลิงก์นั้น"
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "เราจะส่งรหัสและลิงก์ให้คุณทางอีเมลเพื่อใช้ลงชื่อเข้าใช้"
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "เราดีใจมากที่คุณมาที่นี่ ใช้เวลาประมาณสามนาทีครับ"
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "เราดีใจมากที่ครอบครัวของคุณมาร่วมกับเรา เราได้รับใบลงทะเบียนแล้ว ทีมของเราจะติดต่อเร็ว ๆ นี้เพื่อต้อนรับคุณเป็นการส่วนตัวครับ"
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "วันครบรอบสมรส"
+
+#: 
+msgid "Welcome"
+msgstr "ยินดีต้อนรับ"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "สิ่งที่ให้สิทธิ์นี้สำหรับไม่มีอยู่แล้ว"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "สิ่งที่สมาชิกเห็นและทำได้ในพอร์ทัล และสิทธิ์แต่ละอย่างมาจากที่ใด คนจะถูกนับรวมในทุกคนที่กฎการลงชื่อเข้าใช้อนุญาต และในเจ้าหน้าที่"
+
+#: 
+msgid "What members can use"
+msgstr "สิ่งที่สมาชิกใช้ได้"
+
+#: 
+msgid "What to do"
+msgstr "สิ่งที่ต้องทำ"
+
+#: 
+msgid "Who can see it"
+msgstr "ใครเห็นได้"
+
+#: 
+msgid "Who is listed"
+msgstr "ใครอยู่ในรายการ"
+
+#: 
+msgid "Who may sign in"
+msgstr "ใครลงชื่อเข้าใช้ได้"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "ใครลงชื่อเข้าพอร์ทัลสมาชิกได้ ใครเคยลงชื่อเข้าใช้ และอีเมลของใครเป็นอุปสรรค รายการเป็นไปตามกฎในแท็บการลงชื่อเข้าใช้"
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "ใครที่สมุดรายชื่อของพอร์ทัลสมาชิกรวมไว้ ใครเห็นได้ และแสดงอะไร เลือกได้ที่ ผู้ดูแล -> พอร์ทัลสมาชิก -> สมุดรายชื่อ"
+
+#: 
+msgid "Why"
+msgstr "เหตุใด"
+
+#: 
+msgid "Why not"
+msgstr "เหตุใดจึงไม่ได้"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "ด้วยโทเค็นที่อุปกรณ์เพิ่งแทนที่ไปเมื่อครู่"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "ใช่ เพิ่มพาสคีย์"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "ใช่ นำพาสคีย์นี้ออก"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "ใช่ ออกจากระบบทุกอุปกรณ์"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "คุณไม่ได้รับอนุญาตให้ยืนยันอีเมลนี้"
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "คุณไม่ได้คงการลงชื่อเข้าใช้บนอุปกรณ์ใด"
+
+#: 
+msgid "You are signed out on every device."
+msgstr "คุณออกจากระบบบนทุกอุปกรณ์แล้ว"
+
+#: 
+msgid "You are signed out on this device."
+msgstr "คุณออกจากระบบบนอุปกรณ์นี้แล้ว"
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "คุณลงชื่อเข้าใช้ด้วยที่อยู่อีเมลได้ด้วยครับ"
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "คุณปิดการลงชื่อเข้าใช้ของตนเองไม่ได้"
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "คุณเปิดพอร์ทัลสมาชิกไม่ได้ โปรดติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "คุณขอเปลี่ยนอีเมลหลายครั้งเกินไป โปรดลองใหม่ภายหลังครับ"
+
+#: 
+msgid "You have no passkeys."
+msgstr "คุณไม่มีพาสคีย์"
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "คุณเข้าสู่ระบบในฐานะ %s ในพอร์ทัลสมาชิก (อนุญาตให้เปลี่ยนแปลง)"
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "คุณเข้าสู่ระบบในฐานะ %s ในพอร์ทัลสมาชิก (ดูได้อย่างเดียว)"
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "อายุน้อยกว่าอายุขั้นต่ำ"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "อายุน้อยที่สุดที่บุคคลลงชื่อเข้าพอร์ทัลสมาชิกได้ เมื่อไม่ทราบวันเกิด มีเพียงหัวหน้าครัวเรือนหรือคู่สมรสที่เข้าเกณฑ์"
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "รหัสลงชื่อเข้าพอร์ทัลสมาชิกของคุณ"
+
+#: 
+msgid "Your code"
+msgstr "รหัสของคุณ"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "ที่อยู่อีเมลของคุณ %s ยังไม่ยืนยัน จึงใช้ลงชื่อเข้าใช้ไม่ได้ เราจะส่งลิงก์ไปยังที่อยู่นั้น การใช้ลิงก์ถือเป็นการยืนยัน"
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "นำที่อยู่อีเมลของคุณออกที่นี่ไม่ได้ โปรดติดต่อสำนักงานคริสตจักรครับ"
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "ที่อยู่อีเมลของคุณได้รับการยืนยันแล้ว"
+
+#: 
+msgid "Your email address was changed"
+msgstr "ที่อยู่อีเมลของคุณถูกเปลี่ยนแล้ว"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "เพิ่มพาสคีย์ของคุณแล้ว ครั้งถัดไปให้ลงชื่อเข้าใช้ด้วยพาสคีย์บนอุปกรณ์นี้ครับ"
+
+#: 
+msgid "an administrator"
+msgstr "ผู้ดูแลระบบ"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "ไม่มีหัวหน้าครัวเรือนหรือคู่สมรสที่มีที่อยู่อีเมล"
+
+#: 
+msgid "or"
+msgstr "หรือ"
+
+#: 
+msgid "until %s"
+msgstr "จนถึง %s"
+

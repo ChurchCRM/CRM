@@ -12,9 +12,9 @@ Setup does not change application behavior or install real church data.
 
 | Path | Host prerequisites | Command |
 | --- | --- | --- |
-| Native build and PHP tests | Git, Bash, Node 24/npm, PHP 8.4+, Composer | `bash scripts/setup-dev.sh` |
-| Container build and PHP tests | Git, Bash, Node 24+, running Docker Engine and Compose v2 | `bash scripts/setup-dev.sh --docker` |
-| Native build and integration stack | Native prerequisites plus Docker Engine/Compose v2, curl, Cypress OS libraries | `bash scripts/setup-dev.sh --integration` |
+| Native build and PHP tests | Git, Bash, Node 24/npm, PHP 8.4+, Composer | `bash scripts/dev/setup-dev.sh` |
+| Container build and PHP tests | Git, Bash, Node 24+, running Docker Engine and Compose v2 | `bash scripts/dev/setup-dev.sh --docker` |
+| Native build and integration stack | Native prerequisites plus Docker Engine/Compose v2, curl, Cypress OS libraries | `bash scripts/dev/setup-dev.sh --integration` |
 
 The container path provisions PHP, Composer, and Node using the existing
 [docker/Dockerfile.churchcrm-apache-php8](docker/Dockerfile.churchcrm-apache-php8)

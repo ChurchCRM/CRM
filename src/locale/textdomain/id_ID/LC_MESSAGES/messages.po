@@ -24200,3 +24200,2963 @@ msgstr "Hanya email yang Anda kirim yang ditampilkan."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Acara berulang tidak dapat dibuat. Periksa log aplikasi untuk detailnya."
 
+#: 
+msgid "Confirm Password"
+msgstr "Konfirmasi Kata Sandi"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Kata sandi Anda telah diubah. Anda kini dapat masuk dengan kata sandi baru."
+
+#: 
+msgid "1st"
+msgstr "ke-1"
+
+#: 
+msgid "2nd"
+msgstr "ke-2"
+
+#: 
+msgid "3rd"
+msgstr "ke-3"
+
+#: 
+msgid "4th"
+msgstr "ke-4"
+
+#: 
+msgid "5th"
+msgstr "ke-5"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Tidak dapat menghapus akses administrator dari satu-satunya administrator yang dapat masuk"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Pilih minggu dalam bulan, dari ke-1 hingga ke-5"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Membuat {{total}} acara, pada {{week}} {{day}} setiap bulan dari {{first}} hingga {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Hari dalam minggu tidak valid"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Bulanan, pada hari kerja"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Bulan yang tidak memiliki minggu ke-5 dilewati."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM harus berupa bilangan bulat dari 1 hingga 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Minggu dalam bulan"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Minggu dalam bulan harus dari 1 hingga 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s hingga %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "ID pajak gereja (EIN) yang dicetak pada laporan kontribusi"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Laporan kontribusi diterbitkan untuk orang dewasa dalam satu rumah tangga. Hubungi kantor gereja jika Anda memerlukannya."
+
+#: 
+msgid "Download statement"
+msgstr "Unduh laporan"
+
+#: 
+msgid "Generated"
+msgstr "Dibuat"
+
+#: 
+msgid "Goods and services"
+msgstr "Barang dan jasa"
+
+#: 
+msgid "My Giving"
+msgstr "Pemberian Saya"
+
+#: 
+msgid "No contributions"
+msgstr "Tidak ada kontribusi"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Tidak ada kontribusi yang tercatat untuk periode ini."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Tidak ada barang atau jasa yang diberikan sebagai imbalan atas kontribusi ini, selain manfaat keagamaan yang tidak berwujud."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Opsional. Dicetak pada laporan kontribusi."
+
+#: 
+msgid "Tax ID"
+msgstr "ID pajak"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "ID pajak (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Jumlah yang dapat dikurangkan dari pajak"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Ini adalah laporan rumah tangga. Laporan ini mencakup pemberian untuk keluarga Anda."
+
+#: 
+msgid "Total contributions"
+msgstr "Total kontribusi"
+
+#: 
+msgid "Year-end statement"
+msgstr "Laporan akhir tahun"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d laporan pemberian berhasil dikirim melalui surel kepada keluarga."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "Laporan Pemberian %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Sesuaikan teks yang muncul pada laporan pemberian (sTaxReport1, sTaxReport2, dan seterusnya)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Keluarga %s yang terhormat,\n"
+"\n"
+"Terlampir laporan pemberian %s Anda dari %s.\n"
+"\n"
+"Jika ada pertanyaan, hubungi kantor gereja.\n"
+"\n"
+"Terima kasih atas kemurahan hati Anda."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Kirim surel Laporan Pemberian %s"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Nomor Amplop"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Buat Laporan Pemberian"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Buat laporan untuk laporan pemberian, pelacakan janji, dan analisis keuangan."
+
+#: 
+msgid "Giving Reports"
+msgstr "Laporan Pemberian"
+
+#: 
+msgid "Giving Statement"
+msgstr "Laporan Pemberian"
+
+#: 
+msgid "Giving Statements"
+msgstr "Laporan-laporan Pemberian"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Surel laporan pemberian gagal terkirim. Periksa pengaturan server surel Anda."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Kirimkan pemberian berikutnya melalui pos ke %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Cetak Laporan Pemberian %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Tidak dapat mengirim surel laporan pemberian: tidak ada data pembayaran untuk tahun tersebut."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Tidak dapat mengirim surel laporan pemberian: keluarga ini tidak memiliki alamat surel yang tercatat."
+
+#: 
+msgid "Undesignated"
+msgstr "Tanpa peruntukan"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Pastikan nama gereja, alamat, dan info kontak muncul pada laporan pemberian."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Jabatan ini kini ditugaskan kepada %s, yang telah menerimanya."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Jabatan ini kini ditugaskan kepada %s, yang belum menerimanya."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Alasan mereka: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Lihat Penugasan"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Relawan yang masih dibutuhkan untuk kejadian ini: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Relawan yang masih dibutuhkan untuk jabatan ini: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Kisi absen mingguan untuk setiap kelas. Daftar kelas dan buku foto ada di dasbor Sekolah Minggu dan setiap halaman kelas."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Kisi absen mingguan untuk tahun ajaran, satu kolom untuk setiap hari Minggu"
+
+#: 
+msgid "Age %d"
+msgstr "Usia %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Pilih setidaknya satu kelompok untuk membuat lembar kehadiran."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Lembar Kehadiran"
+
+#: 
+msgid "Class List"
+msgstr "Daftar Kelas"
+
+#: 
+msgid "Download PDF"
+msgstr "Unduh PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Periode penguncian dalam menit\n"
+"Akun yang terkunci terbuka dengan sendirinya setelah sejumlah menit ini. Upaya masuk yang gagal dari satu alamat IP dihitung selama periode yang sama."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Jumlah maksimum upaya masuk yang gagal dari satu alamat IP\n"
+"Upaya masuk yang gagal dan permintaan pengaturan ulang kata sandi dari satu alamat IP dihitung terhadap batas ini dalam periode penguncian. Setelah tercapai, masuk dari alamat tersebut ditolak hingga periode berakhir.\n"
+"Atur ke nol untuk menonaktifkan fitur ini, misalnya ketika semua orang mengakses ChurchCRM melalui satu alamat proksi."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Jumlah maksimum upaya masuk yang gagal sebelum akun pengguna dikunci.\n"
+"Akun yang terkunci terbuka dengan sendirinya setelah periode penguncian, atau lebih cepat jika administrator mengatur ulang upaya masuk yang gagal.\n"
+"Fitur ini membantu melindungi dari serangan tebakan kata sandi otomatis.\n"
+"Atur ke nol untuk menonaktifkan fitur ini."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Menit hingga terbuka dengan sendirinya: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Lembar Kehadiran Sekolah Minggu"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Hari Minggu tanpa kelas tidak dicantumkan pada lembar."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Peningkatan Basis Data"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Basis data Anda sedang diperbarui. Biarkan halaman ini tetap terbuka hingga peningkatan selesai."
+
+#: 
+msgid "Family Labels"
+msgstr "Label Keluarga"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Total"
+
+#: 
+msgid "Bill"
+msgstr "Uang kertas"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Pilih setoran atau masukkan kedua tanggal laporan."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Pilih satu setoran untuk meninjau pembayarannya atau mencetak slip banknya. Setoran yang dipilih mengesampingkan rentang tanggal."
+
+#: 
+msgid "Coin"
+msgstr "Koin"
+
+#: 
+msgid "Deposit Report"
+msgstr "Laporan Setoran"
+
+#: 
+msgid "Download Report"
+msgstr "Unduh Laporan"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Masukkan tanggal laporan yang valid."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Filter laporan tidak valid."
+
+#: 
+msgid "Invalid report options."
+msgstr "Opsi laporan tidak valid."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Biarkan filter kosong untuk menyertakan semua pembayaran. Pengaturan ini berlaku untuk laporan, bukan slip bank."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Tidak ada data yang dikembalikan. Sesuaikan filter Anda dan coba lagi."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Siapkan untuk Bank"
+
+#: 
+msgid "Preview Totals"
+msgstr "Pratinjau Total"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Cetak Slip Bank"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Cetak setoran yang dipilih secara lengkap, dengan total uang tunai dan cek, lembar hitung, dan baris saksi. Filter laporan diabaikan. Pembayaran elektronik tetap ada di ringkasan dan tidak termasuk dalam total tiket bank fisik."
+
+#: 
+msgid "Review Payments"
+msgstr "Tinjau Pembayaran"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Tinjau pembayaran untuk suatu periode, atau siapkan satu setoran untuk bank."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Tinjau pembayaran, unduh PDF atau CSV, atau cetak slip bank untuk satu setoran."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Pilih setoran yang valid."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Pilih satu setoran untuk mencetak slip bank."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Tanggal akhir laporan harus sama dengan atau setelah tanggal mulai."
+
+#: 
+msgid "Total Cash"
+msgstr "Total Uang Tunai"
+
+#: 
+msgid "Total Coin"
+msgstr "Total Koin"
+
+#: 
+msgid "Witness"
+msgstr "Saksi"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d pemberian tidak memiliki keluarga. Pemberian tersebut tidak dapat masuk ke laporan."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "%d setoran terbuka bertanggal tahun ini. Tutup agar setiap pemberian final sebelum laporan dikirim."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d pembayaran belum masuk ke setoran mana pun."
+
+#: 
+msgid "Can be emailed"
+msgstr "Dapat dikirim melalui surel"
+
+#: 
+msgid "Closing line"
+msgstr "Baris penutup"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Setiap setoran bertanggal tahun ini sudah ditutup."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Setiap pemberian milik suatu keluarga."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Setiap pembayaran tahun ini sudah masuk ke setoran."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Buat Laporan Pajak"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Laporan Pemberian (Laporan Pajak)"
+
+#: 
+msgid "Opening line"
+msgstr "Baris pembuka"
+
+#: 
+msgid "Print and mail"
+msgstr "Cetak dan kirim pos"
+
+#: 
+msgid "Qty"
+msgstr "Jml"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Tinjau tahun tersebut, lalu cetak atau kirim surel laporan pemberian."
+
+#: 
+msgid "Signed by"
+msgstr "Ditandatangani oleh"
+
+#: 
+msgid "Thank-you line"
+msgstr "Baris terima kasih"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Pastikan nama gereja, alamat, dan info kontak muncul pada laporan pajak."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Pemberian Akhir Tahun"
+
+#: 
+msgid "As of: %s"
+msgstr "Per: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Setidaknya satu pembayaran keluarga yang positif dalam %d tahun fiskal yang dipilih, hingga tanggal tinjauan: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Baptisan, permohonan daftar pemilih, tempat tinggal, status komunikant, kehadiran, nama baik, dan pengecualian lokal harus diperiksa secara terpisah jika anggaran dasar Anda mensyaratkannya. Lama keanggotaan bukan bukti kehadiran."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Pilih klasifikasi yang sudah ada."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Pilih setidaknya satu klasifikasi untuk ditinjau."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Pilih klasifikasi yang digunakan gereja Anda. Tidak ada klasifikasi yang dianggap memberikan hak suara."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Pimpinan gereja harus mengonfirmasi kelayakan menurut anggaran dasar gereja. Daftar ini hanya menampilkan orang yang sesuai dengan filter yang dipilih."
+
+#: 
+msgid "Classifications to review"
+msgstr "Klasifikasi yang ditinjau"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Klasifikasi: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Orang yang telah meninggal, orang dan klasifikasi yang tidak aktif, serta keluarga dan orang yang tidak aktif atau menunggu tinjauan dikecualikan."
+
+#: 
+msgid "Download Review List"
+msgstr "Unduh Daftar Tinjauan"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Masukkan tanggal tinjauan yang valid antara 1900 dan 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Masukkan bilangan bulat dalam batas yang ditampilkan."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Tahun fiskal yang diperiksa (0–100; 0 berarti tidak ada syarat pemberian)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Pemberian dicatat per keluarga, bukan per orang. Aktifkan ini hanya jika anggaran dasar Anda mengizinkan pembayaran keluarga memenuhi kriteria ini. Ini tidak membuktikan bahwa setiap orang memberi. Jendela mencakup tahun fiskal yang dipilih dan berakhir paling lambat pada tanggal tinjauan."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Tahun fiskal terakhir yang disertakan"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Usia minimum (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Usia minimum: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Lama keanggotaan minimum dalam bulan (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Lama keanggotaan minimum: %d bulan"
+
+#: 
+msgid "No donation requirement."
+msgstr "Tidak ada syarat donasi."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Tidak ada orang yang sesuai dengan filter ini. Periksa tanggal lahir atau keanggotaan yang kosong dan sesuaikan kriteria Anda."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Syarat pemberian keluarga opsional"
+
+#: 
+msgid "People matching filters"
+msgstr "Orang yang sesuai filter"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Orang yang diabaikan karena tanggal wajib tidak ada"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Siapkan daftar untuk tinjauan gereja menggunakan klasifikasi serta filter usia, keanggotaan, dan pemberian keluarga yang opsional."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Siapkan daftar untuk tinjauan gereja menggunakan anggaran dasar Anda."
+
+#: 
+msgid "Review date"
+msgstr "Tanggal tinjauan"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Gunakan anggaran dasar gereja Anda untuk memilih filter, lalu minta pimpinan gereja yang berwenang meninjau daftar tersebut. Kesesuaian dengan filter ini tidak menetapkan kelayakan memilih. Laporan ini tidak mencatat kelayakan atau menyelenggarakan pemilihan."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Anggota Pemilih — Daftar Tinjauan"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Nol menonaktifkan syarat opsional. Usia memerlukan tanggal lahir lengkap; lama keanggotaan memerlukan tanggal keanggotaan. Orang yang tidak memiliki tanggal wajib diabaikan dan dihitung secara terpisah. Orang yang telah meninggal, orang dan klasifikasi yang tidak aktif, serta keluarga dan orang yang tidak aktif atau menunggu tinjauan selalu dikecualikan; klasifikasi dan status saat ini yang digunakan, bukan status historis."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Jumlah terutang untuk %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Tidak dapat membuat penyimpanan sementara PDF yang privat di direktori yang dipilih."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Biarkan kosong untuk menggunakan direktori sementara sistem. Jika tidak, masukkan direktori yang sudah ada, dapat ditulis, dan terlindung dari akses web."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Direktori Sementara PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "Penyimpanan sementara PDF harus privat dan dapat ditulis."
+
+#: 
+msgid "Reporting"
+msgstr "Pelaporan"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "Direktori sementara PDF tidak ada atau tidak dapat diakses."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "Direktori sementara PDF harus berupa jalur direktori absolut."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "ID Pajak Gereja (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Baris Penutup"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Mengatur telemetri opsional. Kegagalan pemasangan dan peningkatan basis data mengirim diagnostik terbatas ke PostHog meskipun telemetri dimatikan. Laporan kegagalan ini mencakup versi perangkat lunak dan lingkungan serta kesalahan basis data yang telah disanitasi, tetapi tidak ada ID pemasangan atau pernyataan SQL."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Diagnosis pemasangan dan peningkatan basis data yang gagal"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Detail kegagalan pemasangan dan peningkatan"
+
+#: 
+msgid "Open in browser window"
+msgstr "Buka di jendela peramban"
+
+#: 
+msgid "Opening Line"
+msgstr "Baris Pembuka"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Telemetri penggunaan opsional hanya dikirim jika diaktifkan. Kegagalan pemasangan dan peningkatan basis data selalu mengirim diagnostik terbatas untuk membantu komunitas, meskipun Anda memilih Tidak, terima kasih. Laporan kegagalan mencakup versi perangkat lunak dan lingkungan serta kesalahan basis data yang telah disanitasi, tanpa ID pemasangan atau pernyataan SQL."
+
+#: 
+msgid "PDF Handling"
+msgstr "Penanganan PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "Keluaran PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "Mode penanganan PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "Baris Pertanyaan"
+
+#: 
+msgid "Save File dialog"
+msgstr "Dialog Simpan Berkas"
+
+#: 
+msgid "Signer"
+msgstr "Penanda tangan"
+
+#: 
+msgid "Statement Settings"
+msgstr "Pengaturan Laporan"
+
+#: 
+msgid "Statement Wording"
+msgstr "Redaksi Laporan"
+
+#: 
+msgid "Tax Information"
+msgstr "Informasi Pajak"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Telemetri dikirim ke PostHog di Amerika Serikat. Laporan kegagalan pemasangan dan peningkatan tetap dikirim meskipun telemetri opsional dinonaktifkan."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Tanggal ini dibatalkan. Tidak ada lagi yang perlu Anda lakukan."
+
+#: 
+msgid "always sent"
+msgstr "selalu dikirim"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Gagal menghapus kop surat"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Gagal menyimpan kop surat"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Gagal mengunggah kop surat"
+
+#: 
+msgid "Greeting"
+msgstr "Salam"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Salam dan tanda tangan surat"
+
+#: 
+msgid "Letterhead"
+msgstr "Kop surat"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF, atau WebP. Spanduk lebar paling sesuai, misalnya 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Dicetak di bagian atas surat PDF yang menggunakan kop grafis, seperti laporan pemberian. Tanpa kop, surat mencetak nama dan alamat gereja."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Hapus kop surat? Surat akan mencetak nama dan alamat gereja."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Atur kop surat yang dicetak surat PDF"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Menggunakan nama dan alamat gereja"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Menggunakan jalur kop surat yang diatur di Pengaturan Sistem"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Redaksi, ID pajak, dan penanganan PDF untuk laporan pemberian"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s sebagai %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s kini adalah alamat surel Anda. Anda dapat menggunakannya untuk masuk ke Portal Anggota."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} lainnya"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "Perubahan alamat surel Anda diminta"
+
+#: 
+msgid "A family"
+msgstr "Sebuah keluarga"
+
+#: 
+msgid "A group"
+msgstr "Sebuah kelompok"
+
+#: 
+msgid "A ministry"
+msgstr "Sebuah pelayanan"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "Alamat baru berubah hanya setelah Anda menggunakan tautan yang kami kirim ke alamat tersebut."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "Kunci sandi hanya dapat ditambahkan dalam %d menit setelah masuk dengan alamat surel Anda. Keluar, masuk lagi dengan surel Anda, lalu kembali ke sini."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "Kunci sandi membuat Anda masuk dengan Face ID, sidik jari, atau PIN perangkat, tanpa kode surel."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "Kunci sandi ditambahkan ke masuk Portal Anggota Anda"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "Kunci sandi ditambahkan ke masuk Portal Anggota Anda pukul %1$s pada %2$s, dari %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "Kunci sandi ditambahkan ke masuk Portal Anggota Anda pukul %1$s pada %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "Orang yang kehilangan alamat tersebut kemudian tidak memiliki surel sendiri: surat yang dikirim hanya kepada mereka, seperti surel kelompok, dilewati, dan penyusun surel menunjukkannya."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "Orang yang catatannya menyembunyikan usia tidak pernah menampilkan tahun lahir."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "Permintaan dibuat di Portal Anggota untuk mengubah alamat surel Anda pukul %s dari %s menjadi %s. Perubahan terjadi hanya ketika tautan yang dikirim ke %s digunakan."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Sebuah baris tidak dalam bentuk yang diharapkan."
+
+#: 
+msgid "A team"
+msgstr "Sebuah tim"
+
+#: 
+msgid "Add a passkey"
+msgstr "Tambah kunci sandi"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Tambahkan kunci sandi hanya di ponsel atau komputer Anda sendiri, jangan di perangkat bersama atau publik."
+
+#: 
+msgid "Add an email"
+msgstr "Tambah surel"
+
+#: 
+msgid "Added %s"
+msgstr "Ditambahkan %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Penggantian admin"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "Dewasa dari keluarga %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "Dewasa dari keluarga"
+
+#: 
+msgid "All events"
+msgstr "Semua acara"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Izinkan Masuk sebagai Orang"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Izinkan perubahan selama Masuk sebagai Orang"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Izinkan perubahan saat administrator menggunakan Masuk sebagai Orang. Jika dimatikan, Masuk sebagai Orang hanya baca."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Sudah dimiliki anggota keluarga"
+
+#: 
+msgid "Also used by"
+msgstr "Juga digunakan oleh"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Administrator dapat memberi izin apa pun kepada satu orang di halaman orang tersebut. \"Penggantian admin\" kemudian tampil di sini, dengan jumlah orang yang menerimanya."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "Orang lain sudah menggunakan alamat ini"
+
+#: 
+msgid "Applies to"
+msgstr "Berlaku untuk"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Setujui atau tolak permintaan pengganti untuk tim relawan."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Minta surel baru"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Wewenang diberikan kepada orangnya, bukan kepada akun masuk, sehingga dapat diberikan sebelum mereka memilikinya. Orang yang hanya masuk ke Portal Anggota tetap hanya melihat jadwal mereka sendiri sampai administrator memberi mereka akun staf."
+
+#: 
+msgid "Awaiting review"
+msgstr "Menunggu tinjauan"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Kembali ke masuk"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Jelajahi direktori lengkap"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Dapat masuk ke Portal Anggota"
+
+#: 
+msgid "Can sign in?"
+msgstr "Dapat masuk?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Tidak dapat menonaktifkan masuk untuk satu-satunya administrator yang dapat masuk."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Tidak dapat masuk"
+
+#: 
+msgid "Change family details"
+msgstr "Ubah data keluarga"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Ubah alamat dan data kontak keluarga, serta tambahkan anggota keluarga untuk ditinjau."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Mengubah nama, data kontak, dan foto mereka sendiri."
+
+#: 
+msgid "Changed"
+msgstr "Diubah"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Diubah setelah orang tersebut masuk"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Diubah oleh impor setelah orang tersebut masuk"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Diubah oleh staf setelah orang tersebut masuk"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Diubah melalui API setelah orang tersebut masuk"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Perubahan dimatikan selama Masuk sebagai Orang."
+
+#: 
+msgid "Changes needed"
+msgstr "Perubahan diperlukan"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Perubahan tersimpan saat Anda membuatnya."
+
+#: 
+msgid "Check your email"
+msgstr "Periksa surel Anda"
+
+#: 
+msgid "Choose a permission"
+msgstr "Pilih izin"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Pilih izin, untuk apa izin itu, dan hari terakhirnya, lalu sebutkan alasannya."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Pilih foto atau ambil swafoto"
+
+#: 
+msgid "Choose a theme"
+msgstr "Pilih tema"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Pilih setidaknya satu baris."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Pilih paling banyak %d baris sekaligus."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Pilih cara tanggal ditampilkan dari daftar."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Pilih hari terakhir izin ini."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Pilih untuk apa izin ini."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Pilih ya atau tidak."
+
+#: 
+msgid "Church Office"
+msgstr "Kantor Gereja"
+
+#: 
+msgid "Church country"
+msgstr "Negara gereja"
+
+#: 
+msgid "Church default: %s"
+msgstr "Bawaan gereja: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Masuk pimpinan gereja"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Klasifikasi yang anggotanya boleh masuk ke Portal Anggota, sebagai daftar id klasifikasi yang dipisahkan koma."
+
+#: 
+msgid "Clear selection"
+msgstr "Hapus pilihan"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Kode, sesi, dan perangkat"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Konfirmasi Alamat Surel"
+
+#: 
+msgid "Confirm email address"
+msgstr "Konfirmasi alamat surel"
+
+#: 
+msgid "Confirm family details"
+msgstr "Konfirmasi data keluarga"
+
+#: 
+msgid "Confirm selected"
+msgstr "Konfirmasi yang dipilih"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Konfirmasi surel ini hanya setelah memeriksa, secara langsung atau melalui telepon, bahwa ini adalah alamat milik orang tersebut. Setelah dikonfirmasi, alamat ini dapat digunakan untuk masuk ke Portal Anggota."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Konfirmasi alamat surel Anda"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Konfirmasi alamat surel baru Anda"
+
+#: 
+msgid "Confirmed"
+msgstr "Dikonfirmasi"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Tanggal harus ditulis sebagai YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Putuskan permintaan pengganti"
+
+#: 
+msgid "Device"
+msgstr "Perangkat"
+
+#: 
+msgid "Device remembered"
+msgstr "Perangkat diingat"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Perangkat dan kunci sandi"
+
+#: 
+msgid "Directory classifications"
+msgstr "Klasifikasi direktori"
+
+#: 
+msgid "Directory section"
+msgstr "Bagian direktori"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Nonaktifkan masuk"
+
+#: 
+msgid "Do not show"
+msgstr "Jangan tampilkan"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Masing-masing juga memerlukan surel sendiri yang tidak digunakan orang lain."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Setiap surel masuk berlaku sekali, untuk waktu terbatas, dan surel yang lebih baru menggantikannya."
+
+#: 
+msgid "Edit my details"
+msgstr "Ubah data saya"
+
+#: 
+msgid "Email address changed"
+msgstr "Alamat surel diubah"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Alamat surel yang diketik: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "Alamat surel yang perlu dikonfirmasi: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "Surel diubah"
+
+#: 
+msgid "Email code"
+msgstr "Kode surel"
+
+#: 
+msgid "Email confirmed"
+msgstr "Surel dikonfirmasi"
+
+#: 
+msgid "Email link"
+msgstr "Tautan surel"
+
+#: 
+msgid "Email me a code"
+msgstr "Kirimkan saya kode melalui surel"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Kirimkan saya tautan konfirmasi melalui surel"
+
+#: 
+msgid "Email needs attention"
+msgstr "Surel perlu perhatian"
+
+#: 
+msgid "Email problem"
+msgstr "Masalah surel"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Kode dan tautan masuk yang dikirim surel dibatalkan"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Tautan verifikasi yang dikirim surel"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Surel yang dikonfirmasi: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Aktifkan masuk"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Akhiri setiap sesi Portal Anggota orang ini dan lupakan perangkat yang diingat? Kunci sandi mereka tetap ada, sehingga mereka dapat masuk lagi."
+
+#: 
+msgid "Ended %s"
+msgstr "Berakhir %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Berakhir karena perubahan pada masuk mereka"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Berakhir ketika masuk anggota dimatikan"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Masukkan bilangan bulat dari %1$d hingga %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Masukkan alamat surel Anda."
+
+#: 
+msgid "Every kind"
+msgstr "Setiap jenis"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Setiap masuk anggota, penolakan, dan perubahan masuk, yang terbaru lebih dahulu. Catatan ini tidak pernah menyimpan kode, tautan, atau kunci sandi."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Semua yang tercantum, A sampai Z, dengan kotak pencarian."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Setiap orang yang diizinkan aturan masuk kemudian dapat masuk ke Portal Anggota dengan surel mereka sendiri."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Setiap orang yang masuk ke Portal Anggota dalam 30 hari terakhir, yang terbaru lebih dahulu."
+
+#: 
+msgid "Everywhere"
+msgstr "Di mana saja"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Keluarga yang dikonfirmasi anggota dalam 30 hari terakhir, dari Portal Anggota atau tautan verifikasi surel."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Keluarga yang dikonfirmasi, 30 hari terakhir"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Data keluarga dikonfirmasi"
+
+#: 
+msgid "Family email"
+msgstr "Surel keluarga"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Surel keluarga tidak dipindahkan"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Peran keluarga yang anggotanya boleh masuk ke Portal Anggota, sebagai daftar id peran yang dipisahkan koma."
+
+#: 
+msgid "Find someone"
+msgstr "Cari seseorang"
+
+#: 
+msgid "Fix by hand"
+msgstr "Perbaiki secara manual"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Perbaiki surel bersama"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Dari masuk staf"
+
+#: 
+msgid "Give a permission"
+msgstr "Beri sebuah izin"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Beri izin portal"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Beri setiap orang surel mereka sendiri"
+
+#: 
+msgid "Give permission"
+msgstr "Beri izin"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Diberikan oleh %1$s hingga %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Diberikan oleh %s"
+
+#: 
+msgid "Given to"
+msgstr "Diberikan kepada"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Diberikan kepada Semua Orang"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Diberikan, tetapi belum berlaku"
+
+#: 
+msgid "Go to sign in"
+msgstr "Buka halaman masuk"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Buka Portal Anggota"
+
+#: 
+msgid "Has signed in"
+msgstr "Pernah masuk"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Pernah masuk: sesi dan perangkat mereka berakhir"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Ini kode Anda untuk masuk ke Portal Anggota. Ketik di halaman masuk, di peramban tempat Anda memintanya. Atau tekan tombol untuk masuk di perangkat ini."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Sembunyikan Izin"
+
+#: 
+msgid "How"
+msgstr "Cara"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Berapa banyak surel masuk Portal Anggota yang dapat diminta satu alamat IP dalam satu jam. Atur ke 0 untuk tanpa batas, misalnya ketika semua orang mengakses ChurchCRM melalui satu alamat."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Berapa hari perangkat tetap masuk ke Portal Anggota setelah anggota memilih untuk tetap masuk. Atur ke 0 untuk menghapus pilihan tersebut."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Berapa menit tidak aktif yang mengakhiri sesi Portal Anggota."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Berapa menit kode dan tautan masuk Portal Anggota tetap berlaku."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Waktu tidak aktif (menit)"
+
+#: 
+msgid "Idle too long"
+msgstr "Tidak aktif terlalu lama"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Jika %1$s adalah alamat baru Anda, gunakan tombol di bawah untuk mengonfirmasinya. Sebelum dikonfirmasi, alamat itu tidak dapat digunakan untuk masuk. Tautan berlaku sekali, hingga %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Jika alamat ini dapat digunakan untuk masuk, kami telah mengirimkan kode melalui surel. Tidak ada setelah beberapa menit? Hubungi kantor gereja."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Jika Anda tidak menambahkannya, hapus di halaman Masuk dan perangkat, lalu hubungi kantor gereja."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Jika Anda tidak meminta perubahan ini, hubungi kantor gereja."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Jika Anda tidak meminta ini, hubungi kantor gereja."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Mungkin sudah kedaluwarsa atau sudah digunakan. Jika Anda memerlukan bantuan, hubungi kantor gereja."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Plugin-nya tidak terpasang"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Lompat ke huruf"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Biarkan saya tetap masuk (hari)"
+
+#: 
+msgid "Keeps it"
+msgstr "Mempertahankannya"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Jenis surel yang belum dikonfirmasi"
+
+#: 
+msgid "Last day"
+msgstr "Hari terakhir"
+
+#: 
+msgid "Last used"
+msgstr "Terakhir digunakan"
+
+#: 
+msgid "Last used %s"
+msgstr "Terakhir digunakan %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Pemimpin %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Izinkan administrator membuka Portal Anggota seseorang sebagai orang itu, dari menu Tindakan orang tersebut, saat masuk anggota aktif."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Izinkan anggota menambahkan kunci sandi dan masuk ke Portal Anggota dengannya."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Izinkan anggota masuk ke Portal Anggota dengan alamat surel mereka sendiri. Ini hanya dapat diaktifkan saat pengiriman surel berfungsi."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Izinkan anggota masuk dengan surel mereka"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Masa berlaku tautan dan kode (menit)"
+
+#: 
+msgid "Login as %s"
+msgstr "Masuk sebagai %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Masuk sebagai Orang"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Masuk sebagai Orang tidak dapat dimulai."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Masuk sebagai Orang berakhir: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Riwayat Masuk sebagai Orang"
+
+#: 
+msgid "Login as Person started"
+msgstr "Masuk sebagai Orang dimulai"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Masuk sebagai Orang dihentikan"
+
+#: 
+msgid "Look up anyone"
+msgstr "Cari siapa pun"
+
+#: 
+msgid "Loses it"
+msgstr "Kehilangannya"
+
+#: 
+msgid "Manage a team"
+msgstr "Kelola tim"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Kelola masuk dan perangkat saya"
+
+#: 
+msgid "Matches: %s"
+msgstr "Kecocokan: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Boleh masuk"
+
+#: 
+msgid "May sign in now"
+msgstr "Boleh masuk sekarang"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Kode masuk Portal Anggota"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Pemberitahuan masuk Portal Anggota"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Masuk dan aktivitas Portal Anggota, untuk anggota dan untuk staf yang membuka portal dari masuk staf mereka."
+
+#: 
+msgid "Member sign-in"
+msgstr "Masuk anggota"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Masuk anggota mengirim kode kepada setiap orang melalui surel, jadi surel (SMTP) harus berfungsi sebelum Anda mengaktifkannya."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Masuk anggota nonaktif"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Masuk anggota nonaktif untuk gereja."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Masuk anggota nonaktif."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Masuk anggota belum tersedia. Hubungi kantor gereja."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Masuk anggota tidak pernah mengizinkan orang yang telah meninggal, tidak aktif, berada dalam keluarga tidak aktif, menunggu tinjauan, atau memiliki Nonaktifkan masuk yang aktif. Pilihan ini menentukan siapa lagi yang boleh."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Masuk anggota mengirim kode kepada setiap anggota melalui surel, jadi hanya dapat diaktifkan saat ChurchCRM dapat mengirim surel. Aktifkan surel dan siapkan server surat terlebih dahulu."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Anggota melihat halaman Kalender selama setidaknya satu kalender diaktifkan."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Anggota mengetik setidaknya %d huruf dari sebuah nama dan melihat hingga %d kecocokan. Daftar lengkap tidak pernah ditampilkan."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Anggota yang sedang masuk akan dikeluarkan, dan tidak ada yang dapat masuk dengan surel mereka sampai masuk anggota diaktifkan lagi."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Anggota dengan klasifikasi ini menemukan Direktori di menu Portal Anggota."
+
+#: 
+msgid "Minimum age"
+msgstr "Usia minimum"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Upaya lebih lanjut dengan alamat ini dalam satu jam ke depan tidak akan mengirim pemberitahuan lain."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Dipindahkan dari surel keluarga"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Dipindahkan ke kepala rumah tangga"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Dipindahkan ke pasangan"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Baru di gereja kami? Ceritakan tentang keluarga Anda dan kami akan menghubungi untuk menyambut Anda."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Belum ada sesi Masuk sebagai Orang."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Tidak ada tanggal lahir, dan bukan kepala rumah tangga atau pasangan"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Tidak ada kalender yang diaktifkan, jadi anggota tidak melihat halaman Kalender."
+
+#: 
+msgid "No changes"
+msgstr "Tidak ada perubahan"
+
+#: 
+msgid "No changes made."
+msgstr "Tidak ada perubahan."
+
+#: 
+msgid "No family role"
+msgstr "Tidak ada peran keluarga"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Tidak ada kepala rumah tangga atau pasangan yang dapat menerima surel keluarga."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Tidak ada kepala rumah tangga atau pasangan yang memakainya bersama"
+
+#: 
+msgid "No match"
+msgstr "Tidak ada kecocokan"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Belum ada yang sesuai dengan aturan masuk. Centang lebih banyak peran keluarga atau klasifikasi, atau turunkan usia minimum."
+
+#: 
+msgid "No passkey was added."
+msgstr "Tidak ada kunci sandi yang ditambahkan."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Tidak ada kunci sandi yang digunakan. Coba lagi, atau masuk dengan alamat surel Anda."
+
+#: 
+msgid "No person has this email"
+msgstr "Tidak ada orang yang memiliki surel ini"
+
+#: 
+msgid "No personal email"
+msgstr "Tidak ada surel pribadi"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Tidak ada surel bersama yang menghalangi siapa pun untuk masuk."
+
+#: 
+msgid "No such person"
+msgstr "Tidak ada orang seperti itu"
+
+#: 
+msgid "No, thanks"
+msgstr "Tidak, terima kasih"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Tidak ada yang dapat masuk dengan surel pribadi yang dipakai bersama oleh dua orang yang boleh masuk. Untuk alamat yang dipakai bersama dalam satu keluarga, kepala rumah tangga mempertahankannya, jika tidak maka pasangan (yang tertua lebih dahulu). Semua orang lain yang memakainya bersama akan kehilangannya. Hapus centang yang ingin Anda perbaiki dengan cara lain."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Belum ada yang dapat masuk: centang setidaknya satu klasifikasi di Siapa yang boleh masuk."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Belum ada yang dapat masuk: centang setidaknya satu peran keluarga dan setidaknya satu klasifikasi di Siapa yang boleh masuk."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Belum ada yang dapat masuk: centang setidaknya satu peran keluarga di Siapa yang boleh masuk."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Tidak ada orang di direktori yang sesuai dengan nama itu."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Belum ada yang tercantum di direktori."
+
+#: 
+msgid "Not ended"
+msgstr "Belum berakhir"
+
+#: 
+msgid "Not moved"
+msgstr "Tidak dipindahkan"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Tidak yakin surel mana yang kami miliki? Hubungi kantor gereja."
+
+#: 
+msgid "Not yet"
+msgstr "Belum"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Dicatat di linimasa keluarga"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Di antaranya, orang yang pernah masuk: {{total}}. Mereka dikeluarkan di mana saja, dan alamat tersebut menerima pemberitahuan."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Nonaktif untuk semua orang: \"%s\" dimatikan"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Nonaktif untuk semua orang: Manajemen Relawan tidak diatur ke V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Nonaktif untuk semua orang: fiturnya dimatikan"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Nonaktif untuk semua orang: plugin-nya dimatikan"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Nonaktif untuk semua orang: tidak ada kalender yang dibagikan kepada anggota"
+
+#: 
+msgid "Office list"
+msgstr "Daftar kantor"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Setelah dikonfirmasi, alamat ini dapat digunakan untuk masuk ke Portal Anggota."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Hanya alamat yang boleh Anda konfirmasi yang dapat dipilih."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Hanya administrator yang melihat alasannya."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Hanya administrator yang dapat mengubah surel orang yang memiliki akun staf atau izin portal."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Hanya administrator yang dapat mengonfirmasi surel yang menggantikan surel yang dipakai orang tersebut untuk masuk."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Hanya administrator yang dapat mengonfirmasi surel orang yang memiliki akun staf atau izin portal."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Hanya administrator yang dapat memperbaiki alamat ini: seseorang yang memakainya bersama memiliki akun staf atau izin portal."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Hanya orang dewasa dalam keluarga Anda yang dapat mengonfirmasi data ini. Hubungi kantor gereja."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Hanya konfirmasi alamat yang Anda ketahui milik orang itu. Siapa pun yang membaca alamat dapat masuk sebagai orang tersebut."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Hanya orang yang masih hidup dengan surel sendiri yang dapat masuk daftar kantor."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Hanya orang dengan surel sendiri yang dapat ditambahkan."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Telemetri opsional dapat mencakup rute halaman, lokal yang aktif, versi CRM, versi PHP, keluarga OS, negara dari pengaturan informasi gereja Anda, dan ID pemasangan acak. Laporan kegagalan tidak mencakup ID pemasangan. Data dikirim ke PostHog di Amerika Serikat."
+
+#: 
+msgid "Passkey"
+msgstr "Kunci sandi"
+
+#: 
+msgid "Passkey added"
+msgstr "Kunci sandi ditambahkan"
+
+#: 
+msgid "Passkey removed"
+msgstr "Kunci sandi dihapus"
+
+#: 
+msgid "Passkeys"
+msgstr "Kunci-kunci sandi"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Kunci sandi dimatikan."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Kunci sandi tidak dapat digunakan di sini."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Kunci sandi belum dapat digunakan di situs ini. Hubungi kantor gereja."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Kunci sandi memerlukan nama host, bukan alamat IP, pada alamat situs."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Kunci sandi memerlukan koneksi aman (HTTPS) ke situs ini."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Kunci sandi memerlukan alamat situs yang diatur di Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Kunci sandi memerlukan situs yang dilayani melalui HTTPS. Anggota tidak ditawari kunci sandi sebelum itu."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Kunci sandi hanya berfungsi di %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Kunci sandi: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Orang yang diizinkan pengaturan tersimpan: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Orang yang dikirimi surel ketika seseorang tidak dapat masuk ke Portal Anggota"
+
+#: 
+msgid "People who hold it"
+msgstr "Orang yang memegangnya"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Orang yang kehilangan alamat: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Orang yang telah kehilangan alamat: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Orang yang boleh masuk: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Orang yang dulu masuk ke Portal Anggota: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Orang dengan klasifikasi ini muncul di direktori. Angkanya adalah berapa banyak orang aktif yang memiliki setiap klasifikasi."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Orang dengan surel ini: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Orang %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Pilih klasifikasi dari daftar."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Pilih peran keluarga dari daftar."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Pilih orang untuk daftar kantor."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Pilih bahasa dari daftar."
+
+#: 
+msgid "Portal permission given"
+msgstr "Izin portal diberikan"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Izin portal dihapus"
+
+#: 
+msgid "Portal permissions"
+msgstr "Izin portal"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Masuk portal"
+
+#: 
+msgid "Problem"
+msgstr "Masalah"
+
+#: 
+msgid "Reason"
+msgstr "Alasan"
+
+#: 
+msgid "Reason: %s"
+msgstr "Alasan: %s"
+
+#: 
+msgid "Refused"
+msgstr "Ditolak"
+
+#: 
+msgid "Register your family"
+msgstr "Daftarkan keluarga Anda"
+
+#: 
+msgid "Remembered device"
+msgstr "Perangkat yang diingat"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Perangkat yang diingat dihapus"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Perangkat yang diingat: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Hapus Surel"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Hapus kunci sandi ini"
+
+#: 
+msgid "Remove this permission"
+msgstr "Hapus izin ini"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Dihapus dari: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Diganti setelah masuk"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Diganti oleh masuk lain"
+
+#: 
+msgid "Result"
+msgstr "Hasil"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Jalankan tim relawan: jabatan, relawan, jadwal, pengisian staf, dan jumlah orang."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Sebutkan mengapa masuk dinonaktifkan."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Sebutkan mengapa izin ini diberikan."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Cari siapa pun yang tercatat. Setiap baris menyatakan apakah mereka boleh masuk ke Portal Anggota dan, jika tidak, mengapa."
+
+#: 
+msgid "Search method"
+msgstr "Metode pencarian"
+
+#: 
+msgid "Search only"
+msgstr "Hanya pencarian"
+
+#: 
+msgid "See family contact details"
+msgstr "Lihat data kontak keluarga"
+
+#: 
+msgid "See my family"
+msgstr "Lihat keluarga saya"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Lihat Portal Anggota seperti yang dilihat orang ini? Halaman staf tetap tertutup sampai Anda menekan Berhenti, dan sesi dicatat di halaman ini serta di halaman pengguna Anda."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Lihat kalender yang dibagikan gereja kepada anggota, dan berlangganan."
+
+#: 
+msgid "See the church calendar"
+msgstr "Lihat kalender gereja"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Lihat perangkat dan kunci sandi yang membuat mereka masuk, lalu keluarkan atau hapus salah satunya."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Lihat alamat surel dan nomor telepon orang-orang dalam keluarga mereka."
+
+#: 
+msgid "See the member directory"
+msgstr "Lihat direktori anggota"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Lihat nama dan foto orang-orang dalam keluarga mereka."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Lihat orang yang dicantumkan gereja di direktorinya, dengan detail yang dipilih gereja untuk dibagikan."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Lihat jadwal relawan mereka, daftar untuk tempat yang terbuka, dan minta pengganti."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Kirim browse sebagai true atau false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Kirim klasifikasi sebagai daftar id."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Kirim pengaturan direktori sebagai objek JSON."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Kirim bidang yang ditampilkan sebagai objek nilai true dan false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Kirim pengaturan sebagai objek JSON."
+
+#: 
+msgid "Session ended"
+msgstr "Sesi berakhir"
+
+#: 
+msgid "Set up email"
+msgstr "Atur Email"
+
+#: 
+msgid "Set up email first."
+msgstr "Siapkan surel terlebih dahulu."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Alamat bersama yang diperbaiki: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Alamat bersama yang perlu diperbaiki: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Dipakai bersama oleh"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Surel bersama yang menghalangi orang untuk masuk"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Tampilkan atau sembunyikan anggota ini"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Tampilkan halaman Direktori di Portal Anggota kepada klasifikasi yang dipilih di bawah."
+
+#: 
+msgid "Show the member directory"
+msgstr "Tampilkan direktori anggota"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Tampilkan direktori anggota di Portal Anggota."
+
+#: 
+msgid "Show with year"
+msgstr "Tampilkan dengan tahun"
+
+#: 
+msgid "Show without year"
+msgstr "Tampilkan tanpa tahun"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Menampilkan %d kecocokan pertama. Ketik lebih banyak nama untuk menemukan orang yang Anda cari."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Masuk sebagai %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Masuk lain kali di perangkat ini dengan Face ID, sidik jari, atau PIN perangkat Anda."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Masuk untuk melihat keluarga Anda, kalender gereja, dan cara melayani. Anda tidak memerlukan kata sandi atau akun."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Masuk dengan kunci sandi"
+
+#: 
+msgid "Sign out every device"
+msgstr "Keluar dari setiap perangkat"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Keluar dari setiap perangkat sekarang?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Keluar di mana saja"
+
+#: 
+msgid "Sign out this device"
+msgstr "Keluar dari perangkat ini"
+
+#: 
+msgid "Sign-in"
+msgstr "Masuk"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Masuk dan perangkat"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Masuk tidak dapat dinonaktifkan."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Masuk tidak dapat diaktifkan."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Masuk dinonaktifkan"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Surel masuk diminta"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Surel masuk per alamat IP per jam"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Masuk diaktifkan"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Masuk sudah dinonaktifkan untuk orang ini."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Masuk sedang dinonaktifkan"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Masuk dinonaktifkan untuk orang ini."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Masuk diaktifkan untuk orang ini."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Masuk tidak dinonaktifkan untuk orang ini."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Masuk ditolak"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Masuk, sesi, dan kunci API diblokir sampai ini diselesaikan pada catatan orang yang tertaut."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Masuk, 30 hari terakhir"
+
+#: 
+msgid "Signed out"
+msgstr "Keluar"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Dikeluarkan karena perubahan pada masuk mereka"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Dikeluarkan di mana saja"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Seseorang meminta surel masuk Portal Anggota, tetapi tidak ada yang terkirim."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Seseorang tidak dapat masuk ke Portal Anggota"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Halaman staf tetap tertutup selama Masuk sebagai Orang. Tekan Berhenti di spanduk untuk kembali."
+
+#: 
+msgid "Stop"
+msgstr "Berhenti"
+
+#: 
+msgid "Stopped"
+msgstr "Dihentikan"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Beri tahu kantor gereja apakah data keluarga masih benar."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Kode itu tidak berhasil. Periksa surel terbaru dari kami, atau minta yang baru."
+
+#: 
+msgid "That could not be removed."
+msgstr "Itu tidak dapat dihapus."
+
+#: 
+msgid "That device is signed out."
+msgstr "Perangkat itu sudah keluar."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Itu bukan alamat surel yang valid."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Halaman itu terbuka terlalu lama. Coba lagi."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Kunci sandi itu dihapus. Kunci itu tidak lagi dapat membuat Anda masuk."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Itu terlalu lama. Coba lagi."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Peningkatan 7.8.3 memberikan setiap surel keluarga kepada seseorang. Yang tidak dapat dilakukan dibiarkan sebagai catatan di linimasa keluarga."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Portal Anggota dan surel yang dikirimkannya kepada Anda menggunakan bahasa ini."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Perubahan tidak dapat disimpan."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Kode dan tombol berlaku sekali, hingga %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Kode atau tautan terkirim ke alamat yang bukan lagi surel mereka"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Surel konfirmasi tidak dapat dikirim. Coba lagi nanti."
+
+#: 
+msgid "The device is signed out."
+msgstr "Perangkat tersebut sudah keluar."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "Alamat surel %2$s dihapus dari catatan Anda pukul %1$s. Anda telah dikeluarkan dari Portal Anggota di setiap perangkat."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "Alamat surel pada catatan Anda pukul %1$s diubah dari %2$s menjadi %3$s. Anda telah dikeluarkan dari Portal Anggota di setiap perangkat."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "Surel tidak dapat dikonfirmasi."
+
+#: 
+msgid "The email could not be sent."
+msgstr "Surel tidak dapat dikirim."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "Surel dikonfirmasi. Kini dapat digunakan untuk masuk."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Tanggal akhir sebelum tanggal mulai."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Keluarga tidak memiliki kepala rumah tangga atau pasangan yang masih hidup dan aktif"
+
+#: 
+msgid "The family is inactive"
+msgstr "Keluarga tidak aktif"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Kepala rumah tangga dan pasangan sama-sama memiliki surel sendiri"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Hari terakhir tidak boleh di masa lalu."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Orang yang tertaut tidak boleh masuk, jadi akun ini tidak dapat masuk"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Daftar tidak dapat dimuat."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Kunci sandi tidak dapat ditambahkan. Coba lagi."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Kunci sandi tidak dapat diverifikasi"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Kunci sandi tidak tercatat, atau sudah dihapus"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Kunci sandi telah dihapus."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Orang yang memakainya bersama berada di keluarga berbeda, atau tidak dalam keluarga"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Orang yang memakai alamat ini bersama telah berubah. Buka Perbaiki surel bersama lagi."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Izin tidak dapat diberikan."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Izin berakhir setelah hari ini. Izin dapat diberikan lagi."
+
+#: 
+msgid "The permission was given."
+msgstr "Izin telah diberikan."
+
+#: 
+msgid "The permission was removed."
+msgstr "Izin telah dihapus."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Izin tidak dapat dimuat."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Orang tersebut segera kehilangan izin ini di Portal Anggota."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Alasan paling banyak %d karakter."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Aturan masuk mengizinkan mereka, dan masing-masing memiliki surel sendiri yang tidak digunakan orang lain yang boleh masuk."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Aturan masuk mengizinkan mereka, tetapi surel mereka tidak: mereka tidak memilikinya, memakainya bersama orang lain yang boleh masuk, atau belum dikonfirmasi."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Pengaturan masuk tidak dapat disimpan."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Surel yang belum dikonfirmasi telah berubah. Muat ulang halaman dan coba lagi."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Klasifikasi mereka tidak boleh masuk"
+
+#: 
+msgid "Their email changed"
+msgstr "Surel mereka berubah"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "Surel mereka belum dikonfirmasi"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "Surel mereka dipakai bersama orang lain"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Peran keluarga mereka tidak boleh masuk"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Masuk lama mereka dihapus oleh peningkatan. Aktifkan masuk anggota agar mereka dapat masuk dengan surel sendiri."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Perangkat yang diingat telah kedaluwarsa"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Perangkat yang diingat telah dikeluarkan"
+
+#: 
+msgid "Theme development"
+msgstr "Pengembangan tema"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Tidak ada klasifikasi dengan id %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Tidak ada pemilih untuk jenis cakupan ini."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Tidak ada peristiwa audit seperti itu."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Tidak ada masalah surel seperti itu."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Tidak ada jenis surel yang belum dikonfirmasi seperti itu."
+
+#: 
+msgid "There is no such list."
+msgstr "Tidak ada daftar seperti itu."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Tidak ada izin portal seperti itu."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Ini ponsel dan komputer tempat Anda memilih untuk tetap masuk. Keluar dari yang tidak lagi Anda gunakan atau tidak Anda kenali."
+
+#: 
+msgid "They have a staff account"
+msgstr "Mereka memiliki akun staf"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Mereka boleh masuk tetapi belum pernah."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Tindakan ini memerlukan sesi peramban yang sudah masuk."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Alamat ini tidak dapat diubah. Buka Perbaiki surel bersama lagi untuk melihat statusnya."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Alamat ini tidak lagi dipakai bersama oleh orang yang boleh masuk."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Peramban ini tidak dapat membuat kunci sandi."
+
+#: 
+msgid "This device"
+msgstr "Perangkat ini"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Perangkat ini sudah memiliki kunci sandi untuk Anda."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Perangkat ini tidak lagi membuat orang tersebut tetap masuk, dan sesi yang terbuka di perangkat itu berakhir. Mereka dapat masuk lagi melalui surel."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Ini perangkat saya sendiri. Biarkan saya tetap masuk."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Di sinilah Anda memutuskan tentang tamu. Angkanya adalah berapa banyak orang aktif yang memiliki setiap klasifikasi."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Tautan ini tidak dapat digunakan"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Tautan ini telah kedaluwarsa atau sudah digunakan"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Bagian Portal Anggota ini tidak tersedia untuk Anda."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Kunci sandi ini sudah tercatat."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Kunci sandi ini tidak lagi membuat orang tersebut masuk. Mereka dapat masuk melalui surel dan menambahkan yang baru."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Izin ini tidak dapat diberikan di halaman orang."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Orang ini sudah memiliki setiap izin yang dapat diberikan."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Orang ini sudah memiliki izin ini."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Orang ini tidak lagi dapat masuk di mana pun, ke Portal Anggota atau sebagai staf. Setiap sesi berakhir, dan perangkat yang diingat serta kunci sandi mereka dihapus."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Orang ini tidak dapat dikeluarkan."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Orang ini memiliki akun staf. Masuk sebagai Orang tidak pernah membuka akun staf."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Orang ini tidak memiliki kunci sandi seperti itu."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Orang ini tidak memiliki izin seperti itu."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Orang ini tidak memiliki perangkat yang diingat seperti itu."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Orang ini tidak memiliki surel yang belum dikonfirmasi."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Orang ini telah masuk ke Portal Anggota. Mengubah surel ini mengeluarkan mereka di mana saja, dan alamat baru tidak dapat digunakan untuk masuk sampai dikonfirmasi."
+
+#: 
+msgid "This person is deceased."
+msgstr "Orang ini telah meninggal dunia"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Orang ini dikeluarkan dari Portal Anggota di mana saja."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Orang ini tidak ada lagi."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Ini mengeluarkan Anda di mana saja, termasuk di sini, dan melupakan setiap perangkat. Anda dapat masuk lagi dengan alamat surel Anda."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Ini mengeluarkan Anda di mana saja, termasuk di sini, dan melupakan setiap perangkat. Kunci sandi Anda tetap ada: Anda dapat masuk lagi dengan kunci sandi atau alamat surel Anda."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Alat ini tidak pernah mengubah hal-hal ini. Beri setiap orang surel sendiri pada catatan mereka."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Centang ini hanya di ponsel atau komputer Anda sendiri, jangan di perangkat bersama atau publik."
+
+#: 
+msgid "Time: %s"
+msgstr "Waktu: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Waktu habis"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Untuk mengubah surel ini, hubungi kantor gereja."
+
+#: 
+msgid "To fix"
+msgstr "Untuk diperbaiki"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Agar tetap masuk di ponsel atau komputer Anda sendiri, centang \"Ini perangkat saya sendiri\" saat Anda masuk berikutnya."
+
+#: 
+msgid "Too many attempts"
+msgstr "Terlalu banyak upaya"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Terlalu banyak surel masuk hari ini"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Terlalu banyak permintaan masuk untuk alamat surel ini"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Terlalu banyak permintaan masuk dari alamat IP ini"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Terlalu banyak kode yang salah"
+
+#: 
+msgid "Turn off"
+msgstr "Matikan"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Matikan masuk anggota?"
+
+#: 
+msgid "Turn on"
+msgstr "Aktifkan"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Aktifkan masuk anggota"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Aktifkan masuk anggota?"
+
+#: 
+msgid "Type a name"
+msgstr "Ketik nama"
+
+#: 
+msgid "Type a name or email"
+msgstr "Ketik nama atau surel"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Ketik setidaknya %d huruf dari sebuah nama, lalu cari."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Surel yang belum dikonfirmasi"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Pahami di mana ChurchCRM digunakan"
+
+#: 
+msgid "Unknown device"
+msgstr "Perangkat tidak dikenal"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Bidang direktori tidak dikenal: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Pengaturan direktori tidak dikenal: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Perangkat tanpa nama"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Kunci sandi tanpa nama"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Sampai kantor gereja mengonfirmasinya, alamat baru tidak dapat digunakan untuk masuk."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Gunakan %1$s sebagai alamat surel untuk %2$s pukul %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Gunakan alamat surel lain"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Gunakan kunci sandi di perangkat ini?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Gunakan tombol di bawah untuk mengonfirmasi bahwa %1$s adalah alamat surel Anda pukul %2$s. Tautan berlaku sekali, hingga %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Pengguna %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Lihat Izin"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Menunggu Anda mengonfirmasi %s. Gunakan tautan yang kami kirim ke alamat itu."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Menunggu Anda mengonfirmasi {{email}}. Gunakan tautan yang kami kirim ke alamat itu."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Kami tidak dapat mengirim surel. Coba lagi nanti, atau hubungi kantor gereja."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Kami tidak dapat membuat Anda masuk"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Kami mengirim tautan ke %s. Gunakan untuk mengonfirmasi alamat surel baru Anda."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Kami mengirim tautan ke {{email}}. Surel Anda berubah ketika Anda menggunakannya."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Kami akan mengirimkan kode dan tautan untuk masuk melalui surel."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Kami senang Anda ada di sini! Ini memerlukan sekitar tiga menit."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Kami senang keluarga Anda bergabung dengan kami! Pendaftaran Anda telah diterima. Tim kami akan segera menghubungi untuk menyambut Anda secara pribadi."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Hari Jadi Pernikahan"
+
+#: 
+msgid "Welcome"
+msgstr "Selamat datang"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Tujuan pemberiannya tidak ada lagi"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Apa yang dapat dilihat dan dilakukan anggota di portal, dan dari mana setiap izin berasal. Orang dihitung di antara semua yang diizinkan aturan masuk, dan staf."
+
+#: 
+msgid "What members can use"
+msgstr "Apa yang dapat digunakan anggota"
+
+#: 
+msgid "What to do"
+msgstr "Yang perlu dilakukan"
+
+#: 
+msgid "Who can see it"
+msgstr "Siapa yang dapat melihatnya"
+
+#: 
+msgid "Who is listed"
+msgstr "Siapa yang tercantum"
+
+#: 
+msgid "Who may sign in"
+msgstr "Siapa yang boleh masuk"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Siapa yang boleh masuk ke Portal Anggota, siapa yang sudah, dan surel siapa yang menghalangi mereka. Daftar mengikuti aturan di tab Masuk."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Siapa yang dicantumkan direktori Portal Anggota, siapa yang dapat melihatnya, dan apa yang ditampilkannya, dipilih di Admin -> Portal Anggota -> Direktori."
+
+#: 
+msgid "Why"
+msgstr "Mengapa"
+
+#: 
+msgid "Why not"
+msgstr "Mengapa tidak"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Dengan token yang diganti perangkat beberapa saat lalu"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Ya, tambah kunci sandi"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Ya, hapus kunci sandi ini"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Ya, keluar dari setiap perangkat"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Anda tidak diizinkan mengonfirmasi surel ini."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Anda tidak tetap masuk di perangkat mana pun."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Anda keluar di setiap perangkat."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Anda keluar di perangkat ini."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Anda juga dapat masuk dengan alamat surel Anda."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Anda tidak dapat menonaktifkan masuk Anda sendiri."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Anda tidak dapat membuka Portal Anggota. Hubungi kantor gereja."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Anda terlalu sering meminta perubahan surel. Coba lagi nanti."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Anda tidak memiliki kunci sandi."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Anda masuk sebagai %s di Portal Anggota (perubahan diizinkan)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Anda masuk sebagai %s di Portal Anggota (hanya baca)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Lebih muda dari usia minimum"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Usia termuda saat seseorang boleh masuk ke Portal Anggota. Jika tanggal lahir tidak diketahui, hanya kepala rumah tangga atau pasangan yang memenuhi syarat."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Kode masuk Portal Anggota Anda"
+
+#: 
+msgid "Your code"
+msgstr "Kode Anda"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Alamat surel Anda %s belum dikonfirmasi, jadi tidak dapat digunakan untuk masuk. Kami akan mengirim tautan ke alamat itu; menggunakan tautan mengonfirmasinya."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Alamat surel Anda tidak dapat dihapus di sini. Hubungi kantor gereja."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Alamat surel Anda dikonfirmasi"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Alamat surel Anda diubah"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Kunci sandi Anda ditambahkan. Lain kali, masuk dengannya di perangkat ini."
+
+#: 
+msgid "an administrator"
+msgstr "seorang administrator"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "tidak ada kepala rumah tangga atau pasangan yang memiliki alamat surel"
+
+#: 
+msgid "or"
+msgstr "atau"
+
+#: 
+msgid "until %s"
+msgstr "hingga %s"
+

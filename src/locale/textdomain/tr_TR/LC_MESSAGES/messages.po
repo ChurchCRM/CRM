@@ -24231,3 +24231,2963 @@ msgstr "Yalnızca gönderdiğiniz e-posta gösterilir."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Tekrarlayan etkinlikler oluşturulamadı. Ayrıntılar için uygulama günlüğünü kontrol edin."
 
+#: 
+msgid "Confirm Password"
+msgstr "Parolayı doğrulayın"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Parolanız değiştirildi. Artık yeni parolanızla oturum açabilirsiniz."
+
+#: 
+msgid "1st"
+msgstr "1."
+
+#: 
+msgid "2nd"
+msgstr "2."
+
+#: 
+msgid "3rd"
+msgstr "3."
+
+#: 
+msgid "4th"
+msgstr "4."
+
+#: 
+msgid "5th"
+msgstr "5."
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Oturum açabilen tek yöneticinin yönetici erişimi kaldırılamaz"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Ayın haftasını 1. ile 5. arasında seçin"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "{{total}} etkinlik, her ayın {{week}} {{day}} gününde, {{first}} ile {{last}} arasında oluşturulur"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Geçersiz haftanın günü"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Aylık, bir hafta gününde"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "5. haftası olmayan aylar atlanır."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM 1 ile 5 arasında bir tam sayı olmalıdır"
+
+#: 
+msgid "Week of the month"
+msgstr "Ayın haftası"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Ayın haftası 1 ile 5 arasında olmalıdır"
+
+#: 
+msgid "%s through %s"
+msgstr "%s – %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Bağış bildirimlerinde basılan kilise vergi kimliği (EIN)"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Bağış bildirimleri hanedeki yetişkinlere düzenlenir. Birine ihtiyacınız varsa lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "Download statement"
+msgstr "Bildirimi indir"
+
+#: 
+msgid "Generated"
+msgstr "Oluşturuldu"
+
+#: 
+msgid "Goods and services"
+msgstr "Mal ve hizmetler"
+
+#: 
+msgid "My Giving"
+msgstr "Bağışlarım"
+
+#: 
+msgid "No contributions"
+msgstr "Bağış yok"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Bu dönem için kayıtlı bağış yoktur."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Bu bağışlar karşılığında, manevi dini yararlar dışında mal veya hizmet sunulmamıştır."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "İsteğe bağlı. Bağış bildirimlerinde basılır."
+
+#: 
+msgid "Tax ID"
+msgstr "Vergi kimliği"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Vergi kimliği (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Vergiden düşülebilir tutar"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Bu, hane bildirimidir. Ailenize ait bağışları içerir."
+
+#: 
+msgid "Total contributions"
+msgstr "Toplam bağışlar"
+
+#: 
+msgid "Year-end statement"
+msgstr "Yıl sonu bildirimi"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d bağış bildirimi aileye e-posta ile başarıyla gönderildi."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s bağış bildirimi"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Bağış bildirimlerinde görünen metni özelleştirin (sTaxReport1, sTaxReport2 vb.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Sayın %s Ailesi,\n"
+"\n"
+"Lütfen %s bağış bildiriminizi (%s) bu e-postanın ekinde bulabilirsiniz.\n"
+"\n"
+"Sorularınız varsa lütfen kilise ofisiyle iletişime geçin.\n"
+"\n"
+"Cömertliğiniz için teşekkür ederiz."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "%s bağış bildirimini e-posta ile gönder"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Zarf numaraları"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Bağış bildirimleri oluştur"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Bağış bildirimleri, taahhüt takibi ve finansal analiz için raporlar oluşturun."
+
+#: 
+msgid "Giving Reports"
+msgstr "Bağış raporları"
+
+#: 
+msgid "Giving Statement"
+msgstr "Bağış bildirimi"
+
+#: 
+msgid "Giving Statements"
+msgstr "Bağış bildirimleri"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Bağış bildirimi e-postası gönderilemedi. Lütfen e-posta sunucusu ayarlarınızı kontrol edin."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Lütfen bir sonraki bağışınızı %s adresine postalayın"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "%s bağış bildirimini yazdır"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Bağış bildirimi e-posta ile gönderilemedi: o yıl için ödeme verisi bulunamadı."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Bağış bildirimi e-posta ile gönderilemedi: bu ailenin kayıtlı e-posta adresi yok."
+
+#: 
+msgid "Undesignated"
+msgstr "Belirtilmemiş"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Kilise adı, adresi ve iletişim bilgilerinin bağış bildirimlerinde göründüğünü doğrulayın."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Görev artık kabul etmiş olan %s kişisine atanmıştır."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Görev henüz kabul etmemiş olan %s kişisine atanmıştır."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Gerekçeleri: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Atamaları görüntüle"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Bu gerçekleşme için hâlâ gereken gönüllü sayısı: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Bu görev için hâlâ gereken gönüllü sayısı: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Her sınıf için haftalık bir yoklama tablosu. Sınıf listeleri ve fotoğraf albümleri Pazar Okulu panosunda ve her sınıf sayfasındadır."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Öğretim yılı için haftalık bir yoklama tablosu; her pazar günü için bir sütun"
+
+#: 
+msgid "Age %d"
+msgstr "Yaş %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Yoklama çizelgesi oluşturmak için en az bir grup seçilmelidir."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Yoklama çizelgesi"
+
+#: 
+msgid "Class List"
+msgstr "Sınıf listesi"
+
+#: 
+msgid "Download PDF"
+msgstr "PDF indir"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Kilitleme süresi (dakika)\n"
+"Kilitli bir hesap bu kadar dakika sonra kendiliğinden açılır. Bir IP adresinden başarısız oturum açma denemeleri aynı süre boyunca sayılır."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Bir IP adresinden en fazla başarısız oturum açma sayısı\n"
+"Bir IP adresinden gelen başarısız oturum açma denemeleri ve parola sıfırlama istekleri, kilitleme süresi içinde bu sınıra sayılır. Sınıra ulaşıldığında süre bitene kadar o adresten oturum açma reddedilir.\n"
+"Bu özelliği kapatmak için sıfır yazın; örneğin herkes ChurchCRM’e tek bir vekil adresi üzerinden ulaşıyorsa."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Bir kullanıcı hesabı kilitlenmeden önce izin verilen en fazla başarısız oturum açma sayısı.\n"
+"Kilitli bir hesap kilitleme süresi sonunda kendiliğinden açılır; bir yönetici başarısız oturum açmaları sıfırlarsa daha erken açılır.\n"
+"Bu özellik, otomatik parola tahmin saldırılarına karşı korumaya yardımcı olur.\n"
+"Bu özelliği kapatmak için sıfır yazın."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Kendiliğinden açılmasına kalan dakika: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Pazar Okulu yoklama çizelgesi"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Ders olmayan pazar günleri çizelgeye alınmaz."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Veritabanı yükseltmesi"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Veritabanınız güncelleniyor. Yükseltme bitene kadar lütfen bu sayfayı açık tutun."
+
+#: 
+msgid "Family Labels"
+msgstr "Aile etiketleri"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Toplam"
+
+#: 
+msgid "Bill"
+msgstr "Banknot"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Bir depozito seçin veya her iki rapor tarihini de girin."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Ödemelerini incelemek veya banka fişini yazdırmak için bir depozito seçin. Seçilen depozito tarih aralığının yerine geçer."
+
+#: 
+msgid "Coin"
+msgstr "Madeni para"
+
+#: 
+msgid "Deposit Report"
+msgstr "Depozito raporu"
+
+#: 
+msgid "Download Report"
+msgstr "Raporu indir"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Geçerli rapor tarihleri girin."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Geçersiz rapor süzgeçleri."
+
+#: 
+msgid "Invalid report options."
+msgstr "Geçersiz rapor seçenekleri."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Tüm ödemeleri dahil etmek için süzgeçleri boş bırakın. Bu ayarlar banka fişine değil rapora uygulanır."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Kayıt dönmedi. Süzgeçlerinizi ayarlayıp yeniden deneyin."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Banka için hazırla"
+
+#: 
+msgid "Preview Totals"
+msgstr "Toplamları önizle"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Banka fişini yazdır"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Seçilen depozitoyu nakit ve çek toplamları, sayım çizelgeleri ve tanık satırlarıyla birlikte tam olarak yazdırın. Rapor süzgeçleri yok sayılır. Elektronik ödemeler özette kalır ve fiziksel banka fişi toplamının dışında tutulur."
+
+#: 
+msgid "Review Payments"
+msgstr "Ödemeleri incele"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Bir dönem için ödemeleri inceleyin veya banka için bir depozito hazırlayın."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Ödemeleri inceleyin, PDF veya CSV indirin ya da bir depozito için banka fişi yazdırın."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Geçerli bir depozito seçin."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Banka fişi yazdırmak için bir depozito seçin."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Rapor bitiş tarihi, başlangıç tarihinde veya ondan sonra olmalıdır."
+
+#: 
+msgid "Total Cash"
+msgstr "Toplam nakit"
+
+#: 
+msgid "Total Coin"
+msgstr "Toplam madeni para"
+
+#: 
+msgid "Witness"
+msgstr "Tanık"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d bağışın ailesi yok. Bir bildirime konamazlar."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "Bu yıl tarihli %d açık depozito var. Bildirimler çıkmadan önce her bağış kesinleşsin diye bunları kapatın."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d ödeme henüz hiçbir depozitoda değil."
+
+#: 
+msgid "Can be emailed"
+msgstr "E-posta ile gönderilebilir"
+
+#: 
+msgid "Closing line"
+msgstr "Kapanış satırı"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Bu yıl tarihli her depozito kapatılmıştır."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Her bağış bir aileye aittir."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Bu yıldaki her ödeme bir depozitodadır."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Vergi bildirimleri oluştur"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Bağış raporu (vergi bildirimleri)"
+
+#: 
+msgid "Opening line"
+msgstr "Açılış satırı"
+
+#: 
+msgid "Print and mail"
+msgstr "Yazdır ve postala"
+
+#: 
+msgid "Qty"
+msgstr "Adet"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Yılı inceleyin, ardından bağış bildirimlerini yazdırın veya e-posta ile gönderin."
+
+#: 
+msgid "Signed by"
+msgstr "İmzalayan"
+
+#: 
+msgid "Thank-you line"
+msgstr "Teşekkür satırı"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Kilise adı, adresi ve iletişim bilgilerinin vergi bildirimlerinde göründüğünü doğrulayın."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Yıl sonu bağışları"
+
+#: 
+msgid "As of: %s"
+msgstr "Şu tarih itibarıyla: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Seçilen %d mali yılda, inceleme tarihi olan %s tarihine kadar en az bir pozitif aile ödemesi"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Vaftiz, seçmen listesi başvuruları, ikamet, komünyon durumu, devam, iyi hal ve yerel istisnalar, tüzüğünüz gerektirdiğinde ayrıca kontrol edilmelidir. Üyelik süresi devamın kanıtı değildir."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Var olan bir sınıflandırma seçin."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "İncelemek için en az bir sınıflandırma seçin."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Kilisenizin kullandığı sınıflandırmaları seçin. Hiçbir sınıflandırmanın oy hakkı verdiği varsayılmaz."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Kilise yönetimi, kilise tüzüğüne göre uygunluğu onaylamalıdır. Bu liste yalnızca seçilen süzgeçlere uyan kişileri gösterir."
+
+#: 
+msgid "Classifications to review"
+msgstr "İncelenecek sınıflandırmalar"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Sınıflandırmalar: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Vefat etmiş kişiler, etkin olmayan kişiler ve sınıflandırmalar ile etkin olmayan veya inceleme bekleyen aileler ve kişiler hariç tutulur."
+
+#: 
+msgid "Download Review List"
+msgstr "İnceleme listesini indir"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "1900 ile 2200 arasında geçerli bir inceleme tarihi girin."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Gösterilen sınırlar içinde tam sayılar girin."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Kontrol edilecek mali yıllar (0–100; 0, bağış şartı olmadığı anlamına gelir)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Bağışlar kişi bazında değil aile bazında kaydedilir. Bunu yalnızca tüzüğünüz bir aile ödemesinin bu ölçütü karşılamasına izin verdiğinde açın. Bu, her kişinin bağış yaptığını kanıtlamaz. Aralık seçilen mali yılı kapsar ve en geç inceleme tarihinde biter."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Dahil edilecek son mali yıl"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "En düşük yaş (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "En düşük yaş: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Ay cinsinden en düşük üyelik süresi (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "En düşük üyelik süresi: %d ay"
+
+#: 
+msgid "No donation requirement."
+msgstr "Bağış şartı yok."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Bu süzgeçlere uyan kişi yok. Eksik doğum veya üyelik tarihlerini kontrol edin ve ölçütlerinizi ayarlayın."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "İsteğe bağlı aile bağışı şartı"
+
+#: 
+msgid "People matching filters"
+msgstr "Süzgeçlere uyan kişiler"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Gerekli tarihler eksik olduğu için atlanan kişiler"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Sınıflandırmalar ile isteğe bağlı yaş, üyelik ve aile bağışı süzgeçlerini kullanarak kilise incelemesi için bir liste hazırlayın."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Tüzüğünüzü kullanarak kilise incelemesi için bir liste hazırlayın."
+
+#: 
+msgid "Review date"
+msgstr "İnceleme tarihi"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Süzgeçleri seçmek için kilise tüzüğünüzü kullanın, ardından yetkili kilise yönetiminin listeyi incelemesini sağlayın. Bu süzgeçlere uymak oy kullanma uygunluğunu oluşturmaz. Bu rapor uygunluğu kaydetmez ve seçim yapmaz."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Oy kullanacak üyeler — İnceleme listesi"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Sıfır, isteğe bağlı bir şartı kapatır. Yaş için tam bir doğum tarihi, üyelik süresi için bir üyelik tarihi gerekir. Gerekli tarihleri eksik kişiler atlanır ve ayrı sayılır. Vefat etmiş kişiler, etkin olmayan kişiler ve sınıflandırmalar ile etkin olmayan veya inceleme bekleyen aileler ve kişiler her zaman hariç tutulur; geçmiş durum değil, güncel sınıflandırma ve durum kullanılır."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "%s için ödenecek tutar: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Seçilen dizinde özel PDF geçici deposu oluşturulamıyor."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Sistem geçici dizinini kullanmak için boş bırakın. Aksi halde web erişiminden korunan, yazılabilir ve var olan bir dizin girin."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "PDF geçici dizini"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "PDF geçici deposu özel ve yazılabilir olmalıdır."
+
+#: 
+msgid "Reporting"
+msgstr "Raporlama"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "PDF geçici dizini yok veya erişilebilir değil."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "PDF geçici dizini mutlak bir dizin yolu olmalıdır."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Kilise vergi kimliği (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Kapanış satırı"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "İsteğe bağlı telemetriyi denetler. Kurulum ve veritabanı yükseltme hataları, telemetri kapalı olsa bile PostHog’a sınırlı tanı bilgisi gönderir. Bu hata raporları yazılım ve ortam sürümleri ile temizlenmiş bir veritabanı hatası içerir; kurulum kimliği veya SQL ifadesi içermez."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Başarısız kurulumları ve veritabanı yükseltmelerini tanılayın"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Kurulum ve yükseltme hata ayrıntıları"
+
+#: 
+msgid "Open in browser window"
+msgstr "Tarayıcı penceresinde aç"
+
+#: 
+msgid "Opening Line"
+msgstr "Açılış satırı"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "İsteğe bağlı kullanım telemetrisi yalnızca etkinleştirildiğinde gönderilir. Kurulum ve veritabanı yükseltme hataları, Hayır, teşekkürler seçseniz bile topluluğa yardımcı olmak için her zaman sınırlı bir tanı gönderir. Hata raporları yazılım ve ortam sürümleri ile temizlenmiş bir veritabanı hatası içerir; kurulum kimliği veya SQL ifadesi içermez."
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF işleme"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF çıktısı"
+
+#: 
+msgid "PDF handling mode"
+msgstr "PDF işleme kipi"
+
+#: 
+msgid "Questions Line"
+msgstr "Sorular satırı"
+
+#: 
+msgid "Save File dialog"
+msgstr "Dosyayı kaydet iletişim kutusu"
+
+#: 
+msgid "Signer"
+msgstr "İmzalayan"
+
+#: 
+msgid "Statement Settings"
+msgstr "Bildirim ayarları"
+
+#: 
+msgid "Statement Wording"
+msgstr "Bildirim metni"
+
+#: 
+msgid "Tax Information"
+msgstr "Vergi bilgileri"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Telemetri Amerika Birleşik Devletleri’ndeki PostHog’a gönderilir. İsteğe bağlı telemetri kapalı olsa bile kurulum ve yükseltme hata raporları gönderilir."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Bu tarih iptal edildi. Sizden başka bir şey gerekmiyor."
+
+#: 
+msgid "always sent"
+msgstr "her zaman gönderilir"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Antet kaldırılamadı"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Antet saklanamadı"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Antet yüklenemedi"
+
+#: 
+msgid "Greeting"
+msgstr "Selamlama"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Mektup selamlaması ve imzası"
+
+#: 
+msgid "Letterhead"
+msgstr "Antet"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF veya WebP. Geniş bir şerit en iyi sonucu verir; örneğin 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Grafik antet kullanan PDF mektuplarının, örneğin bağış bildirimlerinin, üstüne basılır. Antet yoksa mektuplarda kilise adı ve adresi basılır."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Antet kaldırılsın mı? Mektuplarda kilise adı ve adresi basılır."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "PDF mektuplarının bastığı anteti ayarlayın"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Kilise adı ve adresi kullanılıyor"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Sistem Ayarları’nda belirlenen antet yolu kullanılıyor"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Bağış bildirimleri için metin, vergi kimliği ve PDF işleme"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s, %2$s olarak"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s artık e-posta adresinizdir. Üye Portalı’nda oturum açmak için kullanabilirsiniz."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} daha"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "E-posta adresinizin değiştirilmesi istendi"
+
+#: 
+msgid "A family"
+msgstr "Bir aile"
+
+#: 
+msgid "A group"
+msgstr "Bir grup"
+
+#: 
+msgid "A ministry"
+msgstr "Bir hizmet"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "Yeni bir adres, ancak o adrese gönderdiğimiz bağlantıyı kullandıktan sonra değişir."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "Bir geçiş anahtarı, e-posta adresinizle oturum açtıktan sonra yalnızca %d dakika içinde eklenebilir. Oturumu kapatın, e-postanızla yeniden oturum açın, sonra buraya dönün."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "Geçiş anahtarı, e-posta kodu olmadan Face ID, parmak izi veya cihaz PIN’inizle oturum açmanızı sağlar."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "Üye Portalı oturumunuza bir geçiş anahtarı eklendi"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "Üye Portalı oturumunuza saat %1$s’de, %2$s tarihinde, %3$s üzerinden bir geçiş anahtarı eklendi."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "Üye Portalı oturumunuza saat %1$s’de, %2$s tarihinde bir geçiş anahtarı eklendi."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "Adresi kaybeden kişinin artık kendine ait bir e-postası olmaz: yalnızca ona gönderilen postalar, örneğin bir grup e-postası, atlanır ve e-posta düzenleyici bunu belirtir."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "Kaydı yaşını gizleyen bir kişinin doğum yılı hiç gösterilmez."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "Üye Portalı’nda saat %s’de e-posta adresinizin %s adresinden %s adresine değiştirilmesi istendi. Değişiklik yalnızca %s adresine gönderilen bağlantı kullanıldığında gerçekleşir."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Bir satır beklenen biçimde değil."
+
+#: 
+msgid "A team"
+msgstr "Bir ekip"
+
+#: 
+msgid "Add a passkey"
+msgstr "Geçiş anahtarı ekle"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Geçiş anahtarını yalnızca kendi telefonunuza veya bilgisayarınıza ekleyin; paylaşılan veya herkese açık bir cihaza asla eklemeyin."
+
+#: 
+msgid "Add an email"
+msgstr "E-posta ekle"
+
+#: 
+msgid "Added %s"
+msgstr "%s eklendi"
+
+#: 
+msgid "Admin overrides"
+msgstr "Yönetici geçersiz kılmaları"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "%s ailesinin yetişkini"
+
+#: 
+msgid "Adult of the family"
+msgstr "Ailenin yetişkini"
+
+#: 
+msgid "All events"
+msgstr "Tüm etkinlikler"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Kişi olarak oturum açmaya izin ver"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Kişi olarak oturum açarken değişikliklere izin ver"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Bir yönetici Kişi olarak oturum aç özelliğini kullanırken değişikliklere izin verin. Kapalıyken Kişi olarak oturum aç salt okunurdur."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Zaten bir aile üyesinde"
+
+#: 
+msgid "Also used by"
+msgstr "Şunlar da kullanıyor"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Bir yönetici, bir kişinin sayfasında o kişiye herhangi bir izin verebilir. “Yönetici geçersiz kılmaları” burada, iznin verildiği kişi sayısıyla birlikte görünür."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "Bu adresi başka bir kişi zaten kullanıyor"
+
+#: 
+msgid "Applies to"
+msgstr "Şunlara uygulanır"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Bir gönüllü ekibi için vekil isteklerini onaylayın veya reddedin."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Yeni bir e-posta iste"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Yetki bir oturuma değil kişiye verilir; bu yüzden oturumları olmadan önce de verilebilir. Yalnızca Üye Portalı’nda oturum açan bir kişi, bir yönetici ona personel hesabı verene kadar yalnızca kendi programını görmeye devam eder."
+
+#: 
+msgid "Awaiting review"
+msgstr "İnceleme bekliyor"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Oturum açmaya dön"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Dizinin tamamına göz at"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Üye Portalı’nda oturum açabilir"
+
+#: 
+msgid "Can sign in?"
+msgstr "Oturum açabilir mi?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Oturum açabilen tek yöneticinin oturum açması kapatılamaz."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Oturum açılamaz"
+
+#: 
+msgid "Change family details"
+msgstr "Aile bilgilerini değiştir"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Aile adresini ve iletişim bilgilerini değiştirin ve inceleme için bir aile üyesi ekleyin."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Kendi adını, iletişim bilgilerini ve fotoğrafını değiştirir."
+
+#: 
+msgid "Changed"
+msgstr "Değiştirildi"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Kişi oturum açtıktan sonra değiştirildi"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Kişi oturum açtıktan sonra bir içe aktarma ile değiştirildi"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Kişi oturum açtıktan sonra personel tarafından değiştirildi"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Kişi oturum açtıktan sonra API üzerinden değiştirildi"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Kişi olarak oturum aç sırasında değişiklikler kapalıdır."
+
+#: 
+msgid "Changes needed"
+msgstr "Değişiklik gerekiyor"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Değişiklikler yaptıkça kaydedilir."
+
+#: 
+msgid "Check your email"
+msgstr "E-postanızı kontrol edin"
+
+#: 
+msgid "Choose a permission"
+msgstr "Bir izin seçin"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Bir izin, ne için olduğu ve son gününü seçin ve nedenini belirtin."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Bir fotoğraf seçin veya özçekim yapın"
+
+#: 
+msgid "Choose a theme"
+msgstr "Bir tema seçin"
+
+#: 
+msgid "Choose at least one row."
+msgstr "En az bir satır seçin."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Aynı anda en fazla %d satır seçin."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Tarihlerin nasıl gösterileceğini listeden seçin."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Bu iznin son gününü seçin."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "İznin ne için olduğunu seçin."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Evet veya hayır seçin."
+
+#: 
+msgid "Church Office"
+msgstr "Kilise ofisi"
+
+#: 
+msgid "Church country"
+msgstr "Kilise ülkesi"
+
+#: 
+msgid "Church default: %s"
+msgstr "Kilise varsayılanı: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Kilise lideri oturumu"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Üyeleri Üye Portalı’nda oturum açabilen sınıflandırmalar; virgülle ayrılmış sınıflandırma kimlikleri listesi."
+
+#: 
+msgid "Clear selection"
+msgstr "Seçimi temizle"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Kodlar, oturumlar ve cihazlar"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "E-posta adresini doğrula"
+
+#: 
+msgid "Confirm email address"
+msgstr "E-posta adresini doğrula"
+
+#: 
+msgid "Confirm family details"
+msgstr "Aile bilgilerini doğrula"
+
+#: 
+msgid "Confirm selected"
+msgstr "Seçilenleri doğrula"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Bu e-postayı, yüz yüze veya telefonla bu kişinin kendi adresi olduğunu kontrol ettikten sonra doğrulayın. Doğrulandıktan sonra Üye Portalı’nda oturum açmak için kullanılabilir."
+
+#: 
+msgid "Confirm your email address"
+msgstr "E-posta adresinizi doğrulayın"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Yeni e-posta adresinizi doğrulayın"
+
+#: 
+msgid "Confirmed"
+msgstr "Doğrulandı"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Tarihler YYYY-MM-DD biçiminde yazılmalıdır."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Vekil isteklerine karar ver"
+
+#: 
+msgid "Device"
+msgstr "Cihaz"
+
+#: 
+msgid "Device remembered"
+msgstr "Cihaz hatırlandı"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Cihazlar ve geçiş anahtarları"
+
+#: 
+msgid "Directory classifications"
+msgstr "Dizin sınıflandırmaları"
+
+#: 
+msgid "Directory section"
+msgstr "Dizin bölümü"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Oturum açmayı kapat"
+
+#: 
+msgid "Do not show"
+msgstr "Gösterme"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Her birinin, başka kimsenin kullanmadığı kendine ait bir e-postası da olmalıdır."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Her oturum açma e-postası sınırlı bir süre için bir kez çalışır ve daha yeni bir e-posta onun yerini alır."
+
+#: 
+msgid "Edit my details"
+msgstr "Bilgilerimi düzenle"
+
+#: 
+msgid "Email address changed"
+msgstr "E-posta adresi değiştirildi"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Yazılan e-posta adresi: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "Doğrulanacak e-posta adresleri: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "E-posta değiştirildi"
+
+#: 
+msgid "Email code"
+msgstr "E-posta kodu"
+
+#: 
+msgid "Email confirmed"
+msgstr "E-posta doğrulandı"
+
+#: 
+msgid "Email link"
+msgstr "E-posta bağlantısı"
+
+#: 
+msgid "Email me a code"
+msgstr "Bana bir kod e-postala"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Bana bir doğrulama bağlantısı e-postala"
+
+#: 
+msgid "Email needs attention"
+msgstr "E-posta ilgilenmeyi bekliyor"
+
+#: 
+msgid "Email problem"
+msgstr "E-posta sorunu"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "E-postayla gönderilen oturum açma kodu ve bağlantısı iptal edildi"
+
+#: 
+msgid "Emailed verification link"
+msgstr "E-postayla gönderilen doğrulama bağlantısı"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Doğrulanan e-postalar: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Oturum açmayı aç"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Bu kişinin tüm Üye Portalı oturumları sonlandırılsın ve hatırlanan cihazları unutulsun mu? Geçiş anahtarları kalır, bu yüzden yeniden oturum açabilirler."
+
+#: 
+msgid "Ended %s"
+msgstr "Sona erdi: %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Oturum açma bilgilerindeki bir değişiklikle sona erdi"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Üye oturumu kapatıldığında sona erdi"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "%1$d ile %2$d arasında bir tam sayı girin."
+
+#: 
+msgid "Enter your email address."
+msgstr "E-posta adresinizi girin."
+
+#: 
+msgid "Every kind"
+msgstr "Her tür"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Her üye oturumu, ret ve oturum açma değişikliği; en yeni önce. Hiçbir zaman kod, bağlantı veya geçiş anahtarı tutmaz."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Listelenen herkes, A’dan Z’ye, bir arama kutusuyla."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Oturum açma kurallarının içeri aldığı herkes, ardından kendi e-postasıyla Üye Portalı’nda oturum açabilir."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Son 30 günde Üye Portalı’nda oturum açan herkes, en yeni önce."
+
+#: 
+msgid "Everywhere"
+msgstr "Her yerde"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Bir üyenin son 30 günde Üye Portalı’ndan veya e-postayla gönderilen doğrulama bağlantısından doğruladığı aileler."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Doğrulanan aileler, son 30 gün"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Aile bilgileri doğrulandı"
+
+#: 
+msgid "Family email"
+msgstr "Aile e-postası"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Taşınmayan aile e-postaları"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Üyeleri Üye Portalı’nda oturum açabilen aile rolleri; virgülle ayrılmış rol kimlikleri listesi."
+
+#: 
+msgid "Find someone"
+msgstr "Birini bulun"
+
+#: 
+msgid "Fix by hand"
+msgstr "Elle düzelt"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Paylaşılan e-postaları düzelt"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Bir personel oturumundan"
+
+#: 
+msgid "Give a permission"
+msgstr "Bir izin ver"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Bir portal izni ver"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Her kişiye kendi e-postasını verin"
+
+#: 
+msgid "Give permission"
+msgstr "İzin ver"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "%1$s tarafından %2$s tarihine kadar verildi"
+
+#: 
+msgid "Given by %s"
+msgstr "%s tarafından verildi"
+
+#: 
+msgid "Given to"
+msgstr "Verildiği kişi"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Herkese verildi"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Verildi, ancak yürürlükte değil"
+
+#: 
+msgid "Go to sign in"
+msgstr "Oturum açmaya git"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Üye Portalı’na git"
+
+#: 
+msgid "Has signed in"
+msgstr "Oturum açmış"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Oturum açmış: oturumları ve cihazları sona erer"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Üye Portalı’nda oturum açma kodunuz burada. Kodu istediğiniz tarayıcıdaki oturum açma sayfasına yazın. Ya da bu cihazda oturum açmak için düğmeye basın."
+
+#: 
+msgid "Hide Permissions"
+msgstr "İzinleri gizle"
+
+#: 
+msgid "How"
+msgstr "Nasıl"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Bir IP adresinin bir saatte kaç Üye Portalı oturum açma e-postası isteyebileceği. Sınır olmaması için 0 yazın; örneğin herkes ChurchCRM’e tek bir adres üzerinden ulaşıyorsa."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Üye oturumun açık kalmasını seçtikten sonra bir cihazın Üye Portalı’nda kaç gün oturum açık kalacağı. Seçeneği kaldırmak için 0 yazın."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Kaç boşta dakika bir Üye Portalı oturumunu sonlandırır."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Bir Üye Portalı oturum açma kodu ve bağlantısının kaç dakika geçerli kalacağı."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Boşta süre (dakika)"
+
+#: 
+msgid "Idle too long"
+msgstr "Çok uzun süre boşta"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "%1$s yeni adresinizse, doğrulamak için aşağıdaki düğmeyi kullanın. Doğrulanana kadar oturum açmak için kullanılamaz. Bağlantı %2$s tarihine kadar bir kez çalışır."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Bu adres oturum açmak için kullanılabiliyorsa size bir kod e-postası gönderdik. Birkaç dakika sonra hâlâ bir şey yok mu? Kilise ofisine sorun."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Siz eklemediyseniz, Oturum açma ve cihazlar sayfasından kaldırın ve kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Bu değişikliği siz istemediyseniz lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Bunu siz istemediyseniz lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Süresi dolmuş veya daha önce kullanılmış olabilir. Yardıma ihtiyacınız varsa lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Eklentisi yüklü değil"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Bir harfe git"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Oturumumu açık tut (gün)"
+
+#: 
+msgid "Keeps it"
+msgstr "Kendisinde kalır"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Doğrulanmamış e-posta türü"
+
+#: 
+msgid "Last day"
+msgstr "Son gün"
+
+#: 
+msgid "Last used"
+msgstr "Son kullanım"
+
+#: 
+msgid "Last used %s"
+msgstr "Son kullanım: %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "%s lideri"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Üye oturumu açıkken yöneticilerin, kişinin Eylemler menüsünden o kişinin Üye Portalı’nı o kişi olarak açmasına izin verin."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Üyelerin geçiş anahtarı eklemesine ve bunlarla Üye Portalı’nda oturum açmasına izin verin."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Üyelerin kendi e-posta adresleriyle Üye Portalı’nda oturum açmasına izin verin. Yalnızca e-posta gönderimi çalışırken açılabilir."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Üyelerin e-postalarıyla oturum açmasına izin ver"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Bağlantı ve kod ömrü (dakika)"
+
+#: 
+msgid "Login as %s"
+msgstr "%s olarak oturum aç"
+
+#: 
+msgid "Login as Person"
+msgstr "Kişi olarak oturum aç"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Kişi olarak oturum aç başlatılamadı."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Kişi olarak oturum aç sona erdi: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Kişi olarak oturum aç geçmişi"
+
+#: 
+msgid "Login as Person started"
+msgstr "Kişi olarak oturum aç başladı"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Kişi olarak oturum aç durduruldu"
+
+#: 
+msgid "Look up anyone"
+msgstr "Herkesi ara"
+
+#: 
+msgid "Loses it"
+msgstr "Kaybeder"
+
+#: 
+msgid "Manage a team"
+msgstr "Bir ekibi yönet"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Oturumumu ve cihazlarımı yönet"
+
+#: 
+msgid "Matches: %s"
+msgstr "Eşleşmeler: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Oturum açabilir"
+
+#: 
+msgid "May sign in now"
+msgstr "Şimdi oturum açabilir"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Üye Portalı oturum açma kodu"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Üye Portalı oturum açma bildirimi"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Üyeler ve personel oturumlarından portalı açan personel için Üye Portalı oturumları ve etkinliği."
+
+#: 
+msgid "Member sign-in"
+msgstr "Üye oturumu"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Üye oturumu her kişiye bir kod e-postalar; bu yüzden açmadan önce e-posta (SMTP) çalışmalıdır."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Üye oturumu kapalı"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Üye oturumu kilise için kapalı."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Üye oturumu kapalı."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Üye oturumu henüz kullanılamıyor. Lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Üye oturumu vefat etmiş, etkin olmayan, etkin olmayan bir ailede olan, inceleme bekleyen veya Oturum açmayı kapat açık olan kişileri asla içeri almaz. Bu seçimler başka kimin girebileceğini belirler."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Üye oturumu her üyeye e-posta ile bir kod gönderir; bu yüzden yalnızca ChurchCRM e-posta gönderebilirken açılabilir. Önce e-postayı açın ve posta sunucusunu kurun."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "En az bir takvim açıkken üyeler Takvim sayfasını görür."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Üyeler bir adın en az %d harfini yazar ve en fazla %d eşleşme görür. Tam liste hiç gösterilmez."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Şu anda oturum açmış üyelerin oturumu kapatılır ve üye oturumu yeniden açılana kadar kimse e-postasıyla oturum açamaz."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Bu sınıflandırmalardaki üyeler Üye Portalı menüsünde Dizini bulur."
+
+#: 
+msgid "Minimum age"
+msgstr "En düşük yaş"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Bu adresle önümüzdeki bir saat içindeki başka denemeler yeni bir bildirim göndermez."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Aile e-postasından taşındı"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Hane reisine taşındı"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Eşe taşındı"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Kilisemize yeni misiniz? Ailenizi bize anlatın; sizi karşılamak için size ulaşacağız."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Henüz Kişi olarak oturum aç oturumu yok."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Doğum tarihi yok ve hane reisi veya eş değil"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Hiçbir takvim açık değil; bu yüzden üyeler Takvim sayfasını görmez."
+
+#: 
+msgid "No changes"
+msgstr "Değişiklik yok"
+
+#: 
+msgid "No changes made."
+msgstr "Değişiklik yapılmadı."
+
+#: 
+msgid "No family role"
+msgstr "Aile rolü yok"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Hane reisi veya eş aile e-postasını alamıyor."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Hane reisi veya eş bunu paylaşmıyor"
+
+#: 
+msgid "No match"
+msgstr "Eşleşme yok"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Henüz kimse oturum açma kuralına uymuyor. Daha fazla aile rolü veya sınıflandırma işaretleyin ya da en düşük yaşı düşürün."
+
+#: 
+msgid "No passkey was added."
+msgstr "Geçiş anahtarı eklenmedi."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Geçiş anahtarı kullanılmadı. Yeniden deneyin veya e-posta adresinizle oturum açın."
+
+#: 
+msgid "No person has this email"
+msgstr "Bu e-postaya sahip kişi yok"
+
+#: 
+msgid "No personal email"
+msgstr "Kişisel e-posta yok"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Kimsenin oturum açmasını engelleyen paylaşılan e-posta yok."
+
+#: 
+msgid "No such person"
+msgstr "Böyle bir kişi yok"
+
+#: 
+msgid "No, thanks"
+msgstr "Hayır, teşekkürler"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Oturum açabilen iki kişinin paylaştığı kişisel bir e-posta ile kimse oturum açamaz. Bir aile içinde paylaşılan bir adresi hane reisi tutar; yoksa eş (önce en yaşlısı). Paylaşan diğer herkes adresi kaybeder. Başka bir yolla düzeltmek istediklerinizin işaretini kaldırın."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Henüz kimse oturum açamaz: Kim oturum açabilir altında en az bir sınıflandırma işaretleyin."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Henüz kimse oturum açamaz: Kim oturum açabilir altında en az bir aile rolü ve en az bir sınıflandırma işaretleyin."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Henüz kimse oturum açamaz: Kim oturum açabilir altında en az bir aile rolü işaretleyin."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Dizinde bu ada uyan kimse yok."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Dizinde henüz kimse listelenmiyor."
+
+#: 
+msgid "Not ended"
+msgstr "Sona ermedi"
+
+#: 
+msgid "Not moved"
+msgstr "Taşınmadı"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Hangi e-postaya sahip olduğumuzdan emin değil misiniz? Kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "Not yet"
+msgstr "Henüz değil"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Aile zaman çizelgesine not edildi"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Bunlardan oturum açmış kişiler: {{total}}. Her yerde oturumları kapatılır ve adrese bir bildirim gider."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Herkes için kapalı: “%s” kapalı"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Herkes için kapalı: Gönüllü Yönetimi V2 olarak ayarlı değil"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Herkes için kapalı: özelliği kapalı"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Herkes için kapalı: eklentisi kapalı"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Herkes için kapalı: üyelerle paylaşılan takvim yok"
+
+#: 
+msgid "Office list"
+msgstr "Ofis listesi"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Doğrulandıktan sonra Üye Portalı’nda oturum açmak için kullanılabilir."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Yalnızca doğrulayabileceğiniz adresler seçilebilir."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Gerekçeyi yalnızca yöneticiler görür."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Personel hesabı veya portal izinleri olan bir kişinin e-postasını yalnızca bir yönetici değiştirebilir."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Kişinin oturum açtığı e-postanın yerini alan bir e-postayı yalnızca bir yönetici doğrulayabilir."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Personel hesabı veya portal izinleri olan bir kişinin e-postasını yalnızca bir yönetici doğrulayabilir."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Bu adresi yalnızca bir yönetici düzeltebilir: paylaşan birinin personel hesabı veya portal izinleri var."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Bu bilgileri yalnızca ailenizin bir yetişkini doğrulayabilir. Lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Yalnızca o kişiye ait olduğunu bildiğiniz adresleri doğrulayın. Bir adresi okuyan herkes, o kişi olarak oturum açabilir."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Ofis listesinde yalnızca kendi e-postası olan yaşayan kişiler olabilir."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Yalnızca kendi e-postası olan kişiler eklenebilir."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "İsteğe bağlı telemetri sayfa yollarını, etkin yerel ayarı, CRM sürümünü, PHP sürümünü, işletim sistemi ailesini, kilise bilgisi ayarlarınızdaki ülkeyi ve rastgele bir kurulum kimliğini içerebilir. Hata raporları kurulum kimliğini içermez. Veriler Amerika Birleşik Devletleri’ndeki PostHog’a gönderilir."
+
+#: 
+msgid "Passkey"
+msgstr "Geçiş anahtarı"
+
+#: 
+msgid "Passkey added"
+msgstr "Geçiş anahtarı eklendi"
+
+#: 
+msgid "Passkey removed"
+msgstr "Geçiş anahtarı kaldırıldı"
+
+#: 
+msgid "Passkeys"
+msgstr "Geçiş anahtarları"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Geçiş anahtarları kapalı."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Geçiş anahtarları burada kullanılamaz."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Geçiş anahtarları bu sitede henüz kullanılamaz. Lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Geçiş anahtarları, site adresinde IP adresi değil bir ana bilgisayar adı gerektirir."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Geçiş anahtarları bu siteye güvenli (HTTPS) bir bağlantı gerektirir."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Geçiş anahtarları, site adresinin Config.php içinde ayarlanmasını gerektirir."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Geçiş anahtarları sitenin HTTPS üzerinden sunulmasını gerektirir. Öyle olana kadar üyelere geçiş anahtarı sunulmaz."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Geçiş anahtarları yalnızca %s adresinde çalışır."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Geçiş anahtarları: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Kayıtlı ayarların içeri aldığı kişiler: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Birisi Üye Portalı’nda oturum açamadığında e-posta gönderilecek kişiler"
+
+#: 
+msgid "People who hold it"
+msgstr "Sahip olan kişiler"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Bir adresi kaybedecek kişiler: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Bir adresi kaybeden kişiler: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Oturum açabilecek kişiler: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Eskiden Üye Portalı’nda oturum açan kişiler: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Bu sınıflandırmalardaki kişiler dizinde görünür. Sayı, her sınıflandırmaya sahip etkin kişi sayısıdır."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Bu e-postaya sahip kişiler: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Kişi %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Listeden sınıflandırmalar seçin."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Listeden aile rolleri seçin."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Ofis listesi için kişileri seçin."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Lütfen listeden bir dil seçin."
+
+#: 
+msgid "Portal permission given"
+msgstr "Portal izni verildi"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Portal izni kaldırıldı"
+
+#: 
+msgid "Portal permissions"
+msgstr "Portal izinleri"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Portal oturumu"
+
+#: 
+msgid "Problem"
+msgstr "Sorun"
+
+#: 
+msgid "Reason"
+msgstr "Gerekçe"
+
+#: 
+msgid "Reason: %s"
+msgstr "Gerekçe: %s"
+
+#: 
+msgid "Refused"
+msgstr "Reddedildi"
+
+#: 
+msgid "Register your family"
+msgstr "Ailenizi kaydedin"
+
+#: 
+msgid "Remembered device"
+msgstr "Hatırlanan cihaz"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Hatırlanan cihaz kaldırıldı"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Hatırlanan cihazlar: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "E-postaları kaldır"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Bu geçiş anahtarını kaldır"
+
+#: 
+msgid "Remove this permission"
+msgstr "Bu izni kaldır"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Şuradan kaldırıldı: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Bir oturum açmadan sonra değiştirildi"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Başka bir oturum açma ile değiştirildi"
+
+#: 
+msgid "Result"
+msgstr "Sonuç"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Bir gönüllü ekibini yürütün: görevler, gönüllüler, programlar, kadro ve kişi sayıları."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Oturum açmanın neden kapatıldığını belirtin."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Bu iznin neden verildiğini belirtin."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Kayıttaki herkesi arayın. Her satır, Üye Portalı’nda oturum açıp açamayacaklarını ve açamıyorlarsa nedenini söyler."
+
+#: 
+msgid "Search method"
+msgstr "Arama yöntemi"
+
+#: 
+msgid "Search only"
+msgstr "Yalnızca ara"
+
+#: 
+msgid "See family contact details"
+msgstr "Aile iletişim bilgilerini gör"
+
+#: 
+msgid "See my family"
+msgstr "Ailemi gör"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Üye Portalı’nı bu kişinin gördüğü gibi görmek ister misiniz? Durdur’a basana kadar personel sayfaları kapalı kalır ve oturum bu sayfada ve kullanıcı sayfanızda kaydedilir."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Kilisenin üyelerle paylaştığı takvimleri görün ve onlara abone olun."
+
+#: 
+msgid "See the church calendar"
+msgstr "Kilise takvimini gör"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Onları oturum açtıran cihazları ve geçiş anahtarlarını görün; herhangi birinin oturumunu kapatın veya kaldırın."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Ailelerindeki kişilerin e-posta adreslerini ve telefon numaralarını görün."
+
+#: 
+msgid "See the member directory"
+msgstr "Üye dizinini gör"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Ailelerindeki kişilerin adlarını ve fotoğraflarını görün."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Kilisenin dizininde listelediği kişileri, kilisenin paylaşmayı seçtiği ayrıntılarla görün."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Gönüllü programlarını görün, açık yerlere kaydolun ve vekil isteyin."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Göz atmayı true veya false olarak gönderin."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Sınıflandırmaları kimlik listesi olarak gönderin."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Dizin ayarlarını bir JSON nesnesi olarak gönderin."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Gösterilecek alanları true ve false değerlerinden oluşan bir nesne olarak gönderin."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Ayarları bir JSON nesnesi olarak gönderin."
+
+#: 
+msgid "Session ended"
+msgstr "Oturum sona erdi"
+
+#: 
+msgid "Set up email"
+msgstr "E-postayı Yapılandır"
+
+#: 
+msgid "Set up email first."
+msgstr "Önce e-postayı kurun."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Düzeltilen paylaşılan adresler: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Düzeltilecek paylaşılan adresler: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Paylaşan"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Kişilerin oturum açmasını engelleyen paylaşılan e-postalar"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Bu üyeyi göster veya gizle"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Üye Portalı’ndaki Dizin sayfasını aşağıda seçilen sınıflandırmalara gösterin."
+
+#: 
+msgid "Show the member directory"
+msgstr "Üye dizinini göster"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Üye dizinini Üye Portalı’nda gösterin."
+
+#: 
+msgid "Show with year"
+msgstr "Yılıyla göster"
+
+#: 
+msgid "Show without year"
+msgstr "Yılı olmadan göster"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "İlk %d eşleşme gösteriliyor. Aradığınız kişiyi bulmak için adın daha fazlasını yazın."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "%s olarak oturum açılsın mı?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Bir sonraki sefer bu cihazda Face ID, parmak izi veya cihaz PIN’inizle oturum açın."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Ailenizi, kilise takvimini ve hizmet etme yollarını görmek için oturum açın. Parola veya hesap gerekmez."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Geçiş anahtarıyla oturum aç"
+
+#: 
+msgid "Sign out every device"
+msgstr "Her cihazdan çık"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Şimdi her cihazdan çıkılsın mı?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Her yerden çık"
+
+#: 
+msgid "Sign out this device"
+msgstr "Bu cihazdan çık"
+
+#: 
+msgid "Sign-in"
+msgstr "Oturum açma"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Oturum açma ve cihazlar"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Oturum açma kapatılamadı."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Oturum açma açılamadı."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Oturum açma kapatıldı"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Oturum açma e-postası istendi"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "IP adresi başına saatte oturum açma e-postası"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Oturum açma açıldı"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Bu kişi için oturum açma zaten kapalı."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Oturum açma kapalı"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Bu kişi için oturum açma kapalı."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Bu kişi için oturum açma açık."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Bu kişi için oturum açma kapalı değil."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Oturum açma reddedildi"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Bu, bağlı kişinin kaydında çözülene kadar oturum açma, oturumlar ve API anahtarı engellenir."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Son 30 günde oturum açtı"
+
+#: 
+msgid "Signed out"
+msgstr "Oturum kapatıldı"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Oturum açma bilgilerindeki bir değişiklikle oturumu kapatıldı"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Her yerde oturumu kapatıldı"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Birisi Üye Portalı oturum açma e-postası istedi, ancak hiçbiri gönderilmedi."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Birisi Üye Portalı’nda oturum açamadı"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Kişi olarak oturum aç sırasında personel sayfaları kapalı kalır. Geri dönmek için şeritte Durdur’a basın."
+
+#: 
+msgid "Stop"
+msgstr "Durdur"
+
+#: 
+msgid "Stopped"
+msgstr "Durduruldu"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Aile bilgilerinin hâlâ doğru olup olmadığını kilise ofisine bildirin."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Bu kod işe yaramadı. Bizden gelen en yeni e-postayı kontrol edin veya yeni bir kod isteyin."
+
+#: 
+msgid "That could not be removed."
+msgstr "Bu kaldırılamadı."
+
+#: 
+msgid "That device is signed out."
+msgstr "O cihazın oturumu kapatıldı."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Bu geçerli bir e-posta adresi değil."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "O sayfa çok uzun süre açık kalmıştı. Lütfen yeniden deneyin."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "O geçiş anahtarı kaldırıldı. Artık oturum açmanızı sağlayamaz."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Bu çok uzun sürdü. Lütfen yeniden deneyin."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "7.8.3 yükseltmesi her aile e-postasını bir kişiye verdi. Bunları veremedi; bunun yerine ailenin zaman çizelgesine bir not bıraktı."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Üye Portalı ve size gönderdiği e-postalar bu dili kullanır."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Değişiklik kaydedilemedi."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Kod ve düğme %s tarihine kadar bir kez çalışır."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Kod veya bağlantı artık e-postaları olmayan bir adrese gitti"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Doğrulama e-postası gönderilemedi. Lütfen daha sonra yeniden deneyin."
+
+#: 
+msgid "The device is signed out."
+msgstr "Cihazın oturumu kapatıldı."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "%2$s e-posta adresi kaydınızdan saat %1$s’de kaldırıldı. Üye Portalı’ndan her cihazda oturumunuz kapatıldı."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "Kaydınızdaki e-posta adresi saat %1$s’de %2$s adresinden %3$s adresine değiştirildi. Üye Portalı’ndan her cihazda oturumunuz kapatıldı."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "E-posta doğrulanamadı."
+
+#: 
+msgid "The email could not be sent."
+msgstr "E-posta gönderilemedi."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "E-posta doğrulandı. Artık oturum açmak için kullanılabilir."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Bitiş tarihi başlangıç tarihinden önce."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Ailenin yaşayan, etkin bir hane reisi veya eşi yok"
+
+#: 
+msgid "The family is inactive"
+msgstr "Aile etkin değil"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Hane reisi ve eşin ikisinin de kendi e-postası var"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Son gün geçmişte olamaz."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Bağlı kişinin oturum açmasına izin yok; bu yüzden bu hesap oturum açamaz"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Liste yüklenemedi."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Geçiş anahtarı eklenemedi. Lütfen yeniden deneyin."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Geçiş anahtarı doğrulanamadı"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Geçiş anahtarı kayıtta değil veya kaldırılmış"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Geçiş anahtarı kaldırıldı."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Paylaşan kişiler farklı ailelerde veya bir ailede değil"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Bu adresi paylaşan kişiler değişti. Paylaşılan e-postaları düzelt’i yeniden açın."
+
+#: 
+msgid "The permission could not be given."
+msgstr "İzin verilemedi."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "İzin bu günden sonra biter. Yeniden verilebilir."
+
+#: 
+msgid "The permission was given."
+msgstr "İzin verildi."
+
+#: 
+msgid "The permission was removed."
+msgstr "İzin kaldırıldı."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "İzinler yüklenemedi."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Kişi bu izni Üye Portalı’nda hemen kaybeder."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Gerekçe en fazla %d karakter olabilir."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Oturum açma kuralları onları içeri alır ve her birinin, oturum açabilen başka kimsenin kullanmadığı kendi e-postası vardır."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Oturum açma kuralları onları içeri alır, ancak e-postaları almaz: e-postaları yoktur, oturum açabilen başka biriyle paylaşırlar veya henüz doğrulanmamıştır."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Oturum açma ayarları kaydedilemedi."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Doğrulanmamış e-posta değişti. Sayfayı yeniden yükleyip yeniden deneyin."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Sınıflandırmalarının oturum açmasına izin yok"
+
+#: 
+msgid "Their email changed"
+msgstr "E-postaları değişti"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "E-postaları henüz doğrulanmadı"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "E-postaları başka biriyle paylaşılıyor"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Aile rollerinin oturum açmasına izin yok"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Eski oturumları yükseltme ile kaldırıldı. Kendi e-postalarıyla oturum açabilmeleri için üye oturumunu açın."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Hatırlanan cihazlarının süresi dolmuştu"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Hatırlanan cihazlarının oturumu kapatıldı"
+
+#: 
+msgid "Theme development"
+msgstr "Tema geliştirme"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "%d kimlikli bir sınıflandırma yok."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Bu tür kapsam için bir seçici yok."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Böyle bir denetim olayı yok."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Böyle bir e-posta sorunu yok."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Böyle bir doğrulanmamış e-posta türü yok."
+
+#: 
+msgid "There is no such list."
+msgstr "Böyle bir liste yok."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Böyle bir portal izni yok."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Bunlar, oturumun açık kalmasını seçtiğiniz telefonlar ve bilgisayarlardır. Artık kullanmadığınız veya tanımadığınız herhangi birinin oturumunu kapatın."
+
+#: 
+msgid "They have a staff account"
+msgstr "Personel hesapları var"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Oturum açabilirler ama hiç açmamışlardır."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Bu işlem, oturum açılmış bir tarayıcı oturumu gerektirir."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Bu adres değiştirilemedi. Durumunu görmek için Paylaşılan e-postaları düzelt’i yeniden açın."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Bu adres artık oturum açabilen kişilerce paylaşılmıyor."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Bu tarayıcı geçiş anahtarı oluşturamaz."
+
+#: 
+msgid "This device"
+msgstr "Bu cihaz"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Bu cihazda sizin için zaten bir geçiş anahtarı var."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Bu cihaz artık kişiyi oturum açık tutmaz ve üzerinde açık bir oturum sona erer. E-posta ile yeniden oturum açabilirler."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Bu benim kendi cihazım. Oturumumu açık tut."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Konuklar hakkında burada karar verirsiniz. Sayı, her sınıflandırmaya sahip etkin kişi sayısıdır."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Bu bağlantı kullanılamaz"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Bu bağlantının süresi dolmuş veya daha önce kullanılmış"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Üye Portalı’nın bu bölümü size açık değil."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Bu geçiş anahtarı zaten kayıtta."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Bu geçiş anahtarı artık kişiyi oturum açtırmaz. E-posta ile oturum açıp yeni bir tane ekleyebilirler."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Bu izin kişi sayfasında verilemez."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Bu kişinin verilebilecek her izni zaten var."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Bu kişinin bu izni zaten var."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Bu kişi artık hiçbir yerde, Üye Portalı’nda veya personel olarak oturum açamaz. Her oturum sona erer ve hatırlanan cihazları ile geçiş anahtarları kaldırılır."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Bu kişinin oturumu kapatılamadı."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Bu kişinin bir personel hesabı var. Kişi olarak oturum aç asla bir personel hesabı açmaz."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Bu kişinin böyle bir geçiş anahtarı yok."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Bu kişinin böyle bir izni yok."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Bu kişinin böyle bir hatırlanan cihazı yok."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Bu kişinin doğrulanmamış e-postası yok."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Bu kişi Üye Portalı’nda oturum açmıştır. Bu e-postayı değiştirmek onları her yerde oturumdan çıkarır ve yeni adres doğrulanana kadar oturum açmak için kullanılamaz."
+
+#: 
+msgid "This person is deceased."
+msgstr "Bu kişi vefat etmiş"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Bu kişinin Üye Portalı oturumu her yerde kapatıldı."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Bu kişi artık yok."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Bu sizi burada dahil her yerde oturumdan çıkarır ve her cihazı unutur. E-posta adresinizle yeniden oturum açabilirsiniz."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Bu sizi burada dahil her yerde oturumdan çıkarır ve her cihazı unutur. Geçiş anahtarlarınız kalır: bir geçiş anahtarı veya e-posta adresinizle yeniden oturum açabilirsiniz."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Bu araç bunları hiç değiştirmez. Her kişiye kaydında kendi e-postasını verin."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Bunu yalnızca kendi telefonunuzda veya bilgisayarınızda işaretleyin; paylaşılan veya herkese açık bir cihazda asla işaretlemeyin."
+
+#: 
+msgid "Time: %s"
+msgstr "Saat: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Süre doldu"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Bu e-postayı değiştirmek için lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "To fix"
+msgstr "Düzeltilecek"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Kendi telefonunuzda veya bilgisayarınızda oturumun açık kalması için bir sonraki oturum açışınızda “Bu benim kendi cihazım”ı işaretleyin."
+
+#: 
+msgid "Too many attempts"
+msgstr "Çok fazla deneme"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Bugün çok fazla oturum açma e-postası"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Bu e-posta adresi için çok fazla oturum açma isteği"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Bu IP adresinden çok fazla oturum açma isteği"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Çok fazla yanlış kod"
+
+#: 
+msgid "Turn off"
+msgstr "Kapat"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Üye oturumu kapatılsın mı?"
+
+#: 
+msgid "Turn on"
+msgstr "Aç"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Üye oturumunu aç"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Üye oturumu açılsın mı?"
+
+#: 
+msgid "Type a name"
+msgstr "Bir ad yazın"
+
+#: 
+msgid "Type a name or email"
+msgstr "Bir ad veya e-posta yazın"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Bir adın en az %d harfini yazın, sonra arayın."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Doğrulanmamış e-posta"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "ChurchCRM’in nerede kullanıldığını anlayın"
+
+#: 
+msgid "Unknown device"
+msgstr "Bilinmeyen cihaz"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Bilinmeyen dizin alanı: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Bilinmeyen dizin ayarı: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Adsız cihaz"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Adsız geçiş anahtarı"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Kilise ofisi doğrulayana kadar yeni adres oturum açmak için kullanılamaz."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "%1$s, %2$s için %3$s saatinde e-posta adresi olarak kullanılsın mı?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Farklı bir e-posta adresi kullanın"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Bu cihazda bir geçiş anahtarı kullanılsın mı?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "%1$s adresinin %2$s’deki e-posta adresiniz olduğunu doğrulamak için aşağıdaki düğmeyi kullanın. Bağlantı %3$s tarihine kadar bir kez çalışır."
+
+#: 
+msgid "User %d"
+msgstr "Kullanıcı %d"
+
+#: 
+msgid "View Permissions"
+msgstr "İzinleri görüntüle"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "%s adresini doğrulamanızı bekliyoruz. O adrese gönderdiğimiz bağlantıyı kullanın."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "{{email}} adresini doğrulamanızı bekliyoruz. O adrese gönderdiğimiz bağlantıyı kullanın."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "E-postayı gönderemedik. Lütfen daha sonra yeniden deneyin veya kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Oturumunuzu açamadık"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "%s adresine bir bağlantı e-postası gönderdik. Yeni e-posta adresinizi doğrulamak için kullanın."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "{{email}} adresine bir bağlantı gönderdik. Kullandığınızda e-postanız değişir."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Oturum açmanız için size bir kod ve bir bağlantı e-postası göndereceğiz."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Burada olmanıza çok sevindik! Yaklaşık üç dakika sürer."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Ailenizin bize katılmasına çok sevindik! Kaydınız alındı. Ekibimiz sizi kişisel olarak karşılamak için yakında sizinle iletişime geçecek."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Evlilik yıldönümü"
+
+#: 
+msgid "Welcome"
+msgstr "Hoş geldiniz"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Verildiği şey artık yok"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Üyelerin portalda neleri görüp yapabileceği ve her iznin nereden geldiği. Kişiler, oturum açma kurallarının içeri aldığı herkes ve personel arasında sayılır."
+
+#: 
+msgid "What members can use"
+msgstr "Üyelerin kullanabilecekleri"
+
+#: 
+msgid "What to do"
+msgstr "Ne yapılmalı"
+
+#: 
+msgid "Who can see it"
+msgstr "Kim görebilir"
+
+#: 
+msgid "Who is listed"
+msgstr "Kim listelenir"
+
+#: 
+msgid "Who may sign in"
+msgstr "Kim oturum açabilir"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Üye Portalı’nda kimin oturum açabileceği, kimin açtığı ve kimin e-postasının bunu engellediği. Listeler Oturum açma sekmesindeki kuralları izler."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Üye Portalı dizininin kimi listelediği, kimin görebildiği ve ne gösterdiği; Yönetim -> Üye Portalı -> Dizin üzerinden seçilir."
+
+#: 
+msgid "Why"
+msgstr "Neden"
+
+#: 
+msgid "Why not"
+msgstr "Neden değil"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Cihazın az önce değiştirdiği belirteçle"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Evet, geçiş anahtarı ekle"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Evet, bu geçiş anahtarını kaldır"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Evet, her cihazdan çık"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Bu e-postayı doğrulamanıza izin verilmiyor."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Hiçbir cihazda oturumunuz açık tutulmuyor."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Her cihazda oturumunuz kapatıldı."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Bu cihazda oturumunuz kapatıldı."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "E-posta adresinizle de oturum açabilirsiniz."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Kendi oturum açmanızı kapatamazsınız."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Üye Portalı’nı açamazsınız. Lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "E-postanızı çok fazla kez değiştirmeyi istediniz. Lütfen daha sonra yeniden deneyin."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Geçiş anahtarınız yok."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Üye Portalı’nda %s olarak oturum açtınız (değişikliklere izin var)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Üye Portalı’nda %s olarak oturum açtınız (salt okunur)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "En düşük yaştan küçük"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Bir kişinin Üye Portalı’nda oturum açabileceği en küçük yaş. Doğum tarihi bilinmiyorsa yalnızca hane reisi veya eş uygun olur."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Üye Portalı oturum açma kodunuz"
+
+#: 
+msgid "Your code"
+msgstr "Kodunuz"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "%s e-posta adresiniz henüz doğrulanmadı; bu yüzden oturum açmak için kullanılamaz. Ona bir bağlantı e-postası göndereceğiz; bağlantıyı kullanmak adresi doğrular."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "E-posta adresiniz burada kaldırılamaz. Lütfen kilise ofisiyle iletişime geçin."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "E-posta adresiniz doğrulandı"
+
+#: 
+msgid "Your email address was changed"
+msgstr "E-posta adresiniz değiştirildi"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Geçiş anahtarınız eklendi. Bir sonraki sefer bu cihazda onunla oturum açın."
+
+#: 
+msgid "an administrator"
+msgstr "bir yönetici"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "hane reisinin veya eşin e-posta adresi yok"
+
+#: 
+msgid "or"
+msgstr "veya"
+
+#: 
+msgid "until %s"
+msgstr "%s tarihine kadar"
+

@@ -473,7 +473,7 @@ class AppIntegrityService
             '/^integrityCheck\.json$/',
             '/^Images\/Person\/thumbnails\//',
             // Uploaded church logo — runtime data, never part of signatures.json.
-            // Keep in sync with scripts/generate-signatures-node.js and package-release.js.
+            // Keep in sync with scripts/build/generate-signatures-node.js and package-release.js.
             '/^Images\/church-logo\.png$/',
             '/^vendor\/.*\/example\//',
             '/^vendor\/.*\/examples\//',

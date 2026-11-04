@@ -26,8 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
       },
       events: {
         click: (_event, _chartContext, opts) => {
-          if (opts.dataPointIndex !== undefined) {
-            applyBirthdayFilter(barLabels[opts.dataPointIndex]);
+          // -1 means the tap missed every bar. search(undefined) is a getter and returns a string.
+          const index = opts.dataPointIndex;
+          const month = index >= 0 ? barLabels[index] : "";
+          if (month) {
+            applyBirthdayFilter(month);
           }
         },
       },
@@ -79,6 +82,9 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!birthDayFilter || !monthLabel) return;
 
   function applyBirthdayFilter(month) {
+    if (!month) {
+      return;
+    }
     dataTable.column(0).search(month).draw();
     birthDayFilter.classList.remove("d-none");
     monthLabel.textContent = month;

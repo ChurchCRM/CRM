@@ -100,3 +100,7 @@ git clone https://github.com/ChurchCRM/CRM.wiki.git
 ```
 
 Resources: [ChurchCRM Wiki](https://github.com/ChurchCRM/CRM/wiki), [GitHub Wiki guide](https://docs.github.com/en/communities/documenting-your-project-with-wikis/adding-or-editing-wiki-pages), [ChurchCRM Issues](https://github.com/ChurchCRM/CRM/issues).
+
+## Verify product claims against the code
+
+The codebase decides what ChurchCRM does. Before a feature claim appears in marketing copy, a blog post, the README or documentation, check that `orm/schema.xml` has the claimed fields and tables, `src/plugins/core/` exposes the capability, and a spec under `cypress/` covers it. When the claim and the product differ, reword the claim to match the code, and update the docs if the feature exists but is underdocumented. Check again after refactors and after schema or plugin changes.

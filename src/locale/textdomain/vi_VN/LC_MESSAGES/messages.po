@@ -24210,3 +24210,2963 @@ msgstr "Chỉ hiển thị email bạn đã gửi."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Không thể tạo các sự kiện lặp lại. Kiểm tra nhật ký ứng dụng để biết chi tiết."
 
+#: 
+msgid "Confirm Password"
+msgstr "Xác nhận mật khẩu"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Mật khẩu của bạn đã được đổi. Bạn có thể đăng nhập bằng mật khẩu mới."
+
+#: 
+msgid "1st"
+msgstr "thứ nhất"
+
+#: 
+msgid "2nd"
+msgstr "thứ hai"
+
+#: 
+msgid "3rd"
+msgstr "thứ ba"
+
+#: 
+msgid "4th"
+msgstr "thứ tư"
+
+#: 
+msgid "5th"
+msgstr "thứ năm"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Không thể gỡ quyền quản trị của quản trị viên duy nhất còn đăng nhập được"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Chọn tuần trong tháng, từ thứ nhất đến thứ năm"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Tạo {{total}} sự kiện, vào {{day}} {{week}} mỗi tháng, từ {{first}} đến {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Ngày trong tuần không hợp lệ"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Hàng tháng, vào một ngày trong tuần"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Tháng không có lần thứ năm sẽ được bỏ qua."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM phải là số nguyên từ 1 đến 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Tuần trong tháng"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Tuần trong tháng phải từ 1 đến 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s đến %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Mã số thuế nhà thờ (EIN) in trên bản kê đóng góp"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Bản kê đóng góp được cấp cho người lớn trong hộ gia đình. Vui lòng liên hệ văn phòng nhà thờ nếu bạn cần bản kê."
+
+#: 
+msgid "Download statement"
+msgstr "Tải bản kê"
+
+#: 
+msgid "Generated"
+msgstr "Đã tạo"
+
+#: 
+msgid "Goods and services"
+msgstr "Hàng hóa và dịch vụ"
+
+#: 
+msgid "My Giving"
+msgstr "Khoản dâng của tôi"
+
+#: 
+msgid "No contributions"
+msgstr "Không có khoản đóng góp"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Không có khoản dâng hiến nào được ghi trong kỳ này."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Không có hàng hóa hay dịch vụ nào được cung cấp để đổi lấy các khoản dâng hiến này, ngoài lợi ích tôn giáo vô hình."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Không bắt buộc. Được in trên bản kê đóng góp."
+
+#: 
+msgid "Tax ID"
+msgstr "Mã số thuế"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Mã số thuế (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Số tiền được khấu trừ thuế"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Đây là bản kê của hộ gia đình. Bản kê gồm các khoản dâng cho gia đình bạn."
+
+#: 
+msgid "Total contributions"
+msgstr "Tổng đóng góp"
+
+#: 
+msgid "Year-end statement"
+msgstr "Bản kê cuối năm"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "Đã gửi email thành công %d bản kê dâng hiến cho gia đình."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "Bản kê dâng hiến %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Tùy chỉnh đoạn chữ hiện trên bản kê dâng hiến (sTaxReport1, sTaxReport2, v.v.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Kính gửi gia đình %s,\n"
+"\n"
+"Xin xem bản kê dâng hiến %s của quý vị từ %s trong tệp đính kèm email này.\n"
+"\n"
+"Nếu có thắc mắc, vui lòng liên hệ văn phòng nhà thờ.\n"
+"\n"
+"Cảm ơn sự quảng đại của quý vị."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Gửi email bản kê dâng hiến %s"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Số phong bì"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Tạo bản kê dâng hiến"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Tạo báo cáo cho bản kê dâng hiến, theo dõi cam kết và phân tích tài chính."
+
+#: 
+msgid "Giving Reports"
+msgstr "Báo cáo dâng hiến"
+
+#: 
+msgid "Giving Statement"
+msgstr "Bản kê dâng hiến"
+
+#: 
+msgid "Giving Statements"
+msgstr "Các bản kê dâng hiến"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Không gửi được email bản kê dâng hiến. Vui lòng kiểm tra cài đặt máy chủ email."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Vui lòng gửi bưu điện khoản dâng tiếp theo tới %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "In bản kê dâng hiến %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Không thể gửi email bản kê dâng hiến: không có dữ liệu thanh toán cho năm đó."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Không thể gửi email bản kê dâng hiến: gia đình này chưa có địa chỉ email."
+
+#: 
+msgid "Undesignated"
+msgstr "Không chỉ định"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Kiểm tra tên, địa chỉ và thông tin liên hệ của nhà thờ có hiện trên bản kê dâng hiến."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Vị trí này hiện được giao cho %s, và người đó đã nhận."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Vị trí này hiện được giao cho %s, nhưng người đó chưa nhận."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Lý do của họ: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Xem phân công"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Vẫn cần tình nguyện viên cho lần này: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Vẫn cần tình nguyện viên cho vị trí này: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Lưới điểm danh theo tuần cho từng lớp. Danh sách lớp và sổ ảnh nằm trên bảng điều khiển Trường Chúa Nhật và trang từng lớp."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Lưới điểm danh theo tuần cho năm học, mỗi cột là một Chúa Nhật"
+
+#: 
+msgid "Age %d"
+msgstr "%d tuổi"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Phải chọn ít nhất một nhóm để tạo phiếu điểm danh."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Phiếu điểm danh"
+
+#: 
+msgid "Class List"
+msgstr "Danh sách lớp"
+
+#: 
+msgid "Download PDF"
+msgstr "Tải PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Thời gian khóa, tính bằng phút\n"
+"Tài khoản bị khóa sẽ tự mở sau số phút này. Các lần đăng nhập thất bại từ một địa chỉ IP được đếm trong cùng khoảng thời gian đó."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Số lần đăng nhập thất bại tối đa từ một địa chỉ IP\n"
+"Các lần đăng nhập thất bại và yêu cầu đặt lại mật khẩu từ một địa chỉ IP được tính vào giới hạn này trong thời gian khóa. Khi đạt giới hạn, đăng nhập từ địa chỉ đó bị từ chối cho đến khi hết thời gian.\n"
+"Đặt bằng 0 để tắt tính năng này, ví dụ khi mọi người vào ChurchCRM qua một địa chỉ proxy."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Số lần đăng nhập thất bại tối đa trước khi khóa tài khoản người dùng.\n"
+"Tài khoản bị khóa sẽ tự mở sau thời gian khóa, hoặc sớm hơn khi quản trị viên đặt lại số lần đăng nhập thất bại.\n"
+"Tính năng này giúp chống việc đoán mật khẩu tự động.\n"
+"Đặt bằng 0 để tắt tính năng này."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Số phút còn lại trước khi tự mở khóa: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Phiếu điểm danh Trường Chúa Nhật"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Các Chúa Nhật không có lớp sẽ không có trên phiếu."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Nâng cấp cơ sở dữ liệu"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Cơ sở dữ liệu đang được cập nhật. Vui lòng giữ trang này mở cho đến khi nâng cấp xong."
+
+#: 
+msgid "Family Labels"
+msgstr "Nhãn gia đình"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Tổng"
+
+#: 
+msgid "Bill"
+msgstr "Tiền giấy"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Chọn một đợt nộp hoặc nhập cả hai ngày của báo cáo."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Chọn một đợt nộp để xem các khoản thanh toán hoặc in phiếu ngân hàng. Đợt nộp được chọn sẽ thay cho khoảng ngày."
+
+#: 
+msgid "Coin"
+msgstr "Tiền xu"
+
+#: 
+msgid "Deposit Report"
+msgstr "Báo cáo đợt nộp"
+
+#: 
+msgid "Download Report"
+msgstr "Tải báo cáo"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Nhập ngày báo cáo hợp lệ."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Bộ lọc báo cáo không hợp lệ."
+
+#: 
+msgid "Invalid report options."
+msgstr "Tùy chọn báo cáo không hợp lệ."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Để trống bộ lọc để gồm mọi khoản thanh toán. Các cài đặt này áp dụng cho báo cáo, không áp dụng cho phiếu ngân hàng."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Không có bản ghi nào. Hãy chỉnh bộ lọc rồi thử lại."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Chuẩn bị nộp ngân hàng"
+
+#: 
+msgid "Preview Totals"
+msgstr "Xem trước tổng"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "In phiếu ngân hàng"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "In đầy đủ đợt nộp đã chọn, kèm tổng tiền mặt và séc, tờ kiểm đếm và dòng người chứng. Bộ lọc báo cáo không được áp dụng. Thanh toán điện tử vẫn nằm trong phần tóm tắt và không tính vào tổng phiếu nộp ngân hàng bằng tiền mặt."
+
+#: 
+msgid "Review Payments"
+msgstr "Xem lại thanh toán"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Xem lại thanh toán trong một kỳ, hoặc chuẩn bị một đợt nộp cho ngân hàng."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Xem lại thanh toán, tải PDF hoặc CSV, hoặc in phiếu ngân hàng cho một đợt nộp."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Chọn một đợt nộp hợp lệ."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Chọn một đợt nộp để in phiếu ngân hàng."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Ngày kết thúc báo cáo phải trùng hoặc sau ngày bắt đầu."
+
+#: 
+msgid "Total Cash"
+msgstr "Tổng tiền mặt"
+
+#: 
+msgid "Total Coin"
+msgstr "Tổng tiền xu"
+
+#: 
+msgid "Witness"
+msgstr "Người chứng"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d khoản dâng không thuộc gia đình nào. Chúng không thể có trên bản kê."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "%d đợt nộp còn mở có ngày trong năm nay. Hãy đóng chúng để mọi khoản dâng được chốt trước khi gửi bản kê."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d khoản thanh toán chưa thuộc đợt nộp nào."
+
+#: 
+msgid "Can be emailed"
+msgstr "Gửi được qua email"
+
+#: 
+msgid "Closing line"
+msgstr "Dòng kết"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Mọi đợt nộp có ngày trong năm nay đã được đóng."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Mọi khoản dâng đều thuộc một gia đình."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Mọi khoản thanh toán trong năm nay đều thuộc một đợt nộp."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Tạo bản kê thuế"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Báo cáo dâng hiến (bản kê thuế)"
+
+#: 
+msgid "Opening line"
+msgstr "Dòng mở đầu"
+
+#: 
+msgid "Print and mail"
+msgstr "In và gửi bưu điện"
+
+#: 
+msgid "Qty"
+msgstr "SL"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Xem lại năm, rồi in hoặc gửi email bản kê dâng hiến."
+
+#: 
+msgid "Signed by"
+msgstr "Ký bởi"
+
+#: 
+msgid "Thank-you line"
+msgstr "Dòng cảm ơn"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Kiểm tra tên, địa chỉ và thông tin liên hệ của nhà thờ có hiện trên bản kê thuế."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Dâng hiến cuối năm"
+
+#: 
+msgid "As of: %s"
+msgstr "Tính đến: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Có ít nhất một khoản thanh toán dương của gia đình trong %d năm tài chính đã chọn, đến ngày rà soát: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Phép rửa, hồ sơ danh sách bầu cử, nơi cư trú, tư cách người chịu lễ, chuyên cần, tư cách tốt và các ngoại lệ tại chỗ phải được kiểm tra riêng khi nội quy yêu cầu. Thời gian hội viên không chứng minh sự chuyên cần."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Chọn một phân loại hiện có."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Chọn ít nhất một phân loại để rà soát."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Chọn các phân loại nhà thờ bạn đang dùng. Không phân loại nào được coi là mặc định có quyền bầu cử."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Ban lãnh đạo nhà thờ phải xác nhận tư cách theo nội quy. Danh sách này chỉ hiện những người khớp bộ lọc đã chọn."
+
+#: 
+msgid "Classifications to review"
+msgstr "Phân loại cần rà soát"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Phân loại: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Người đã qua đời, người và phân loại không hoạt động, cùng gia đình và người không hoạt động hoặc đang chờ duyệt đều bị loại."
+
+#: 
+msgid "Download Review List"
+msgstr "Tải danh sách rà soát"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Nhập ngày rà soát hợp lệ từ năm 1900 đến 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Nhập số nguyên trong giới hạn đang hiện."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Số năm tài chính cần kiểm tra (0–100; 0 nghĩa là không yêu cầu dâng hiến)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Dâng hiến được ghi theo gia đình, không theo từng người. Chỉ bật khi nội quy cho phép một khoản thanh toán của gia đình đáp ứng tiêu chí này. Điều này không chứng minh từng người đã dâng. Khoảng thời gian gồm năm tài chính đã chọn và kết thúc không muộn hơn ngày rà soát."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Năm tài chính cuối được tính"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Tuổi tối thiểu (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Tuổi tối thiểu: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Thời gian hội viên tối thiểu, tính bằng tháng (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Thời gian hội viên tối thiểu: %d tháng"
+
+#: 
+msgid "No donation requirement."
+msgstr "Không yêu cầu dâng hiến."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Không có ai khớp các bộ lọc này. Hãy kiểm tra ngày sinh hoặc ngày gia nhập còn thiếu và chỉnh tiêu chí."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Yêu cầu dâng hiến theo gia đình (không bắt buộc)"
+
+#: 
+msgid "People matching filters"
+msgstr "Người khớp bộ lọc"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Người bị bỏ vì thiếu ngày bắt buộc"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Lập danh sách để nhà thờ rà soát theo phân loại, cùng bộ lọc tuổi, thời gian hội viên và dâng hiến gia đình nếu cần."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Lập danh sách để nhà thờ rà soát theo nội quy."
+
+#: 
+msgid "Review date"
+msgstr "Ngày rà soát"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Dùng nội quy nhà thờ để chọn bộ lọc, rồi để ban lãnh đạo được ủy quyền rà soát danh sách. Khớp các bộ lọc này không xác lập quyền bầu cử. Báo cáo này không ghi nhận tư cách và không tổ chức bầu cử."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Hội viên có quyền bầu — Danh sách rà soát"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Số 0 tắt một yêu cầu không bắt buộc. Tuổi cần ngày sinh đầy đủ; thời gian hội viên cần ngày gia nhập. Người thiếu ngày bắt buộc bị bỏ qua và được đếm riêng. Người đã qua đời, người và phân loại không hoạt động, cùng gia đình và người không hoạt động hoặc đang chờ duyệt luôn bị loại; hệ thống dùng phân loại và trạng thái hiện tại, không dùng trạng thái cũ."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Số phải nộp cho %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Không thể tạo nơi lưu PDF tạm riêng tư trong thư mục đã chọn."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Để trống để dùng thư mục tạm của hệ thống. Nếu không, hãy nhập một thư mục đã có, ghi được và được chặn truy cập từ web."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Thư mục tạm PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "Nơi lưu PDF tạm phải riêng tư và ghi được."
+
+#: 
+msgid "Reporting"
+msgstr "Báo cáo"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "Thư mục tạm PDF không tồn tại hoặc không truy cập được."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "Thư mục tạm PDF phải là đường dẫn thư mục tuyệt đối."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Mã số thuế nhà thờ (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Dòng kết"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Điều khiển đo lường sử dụng không bắt buộc. Lỗi cài đặt và nâng cấp cơ sở dữ liệu vẫn gửi chẩn đoán giới hạn tới PostHog ngay cả khi đo lường tắt. Các báo cáo lỗi này gồm phiên bản phần mềm, phiên bản môi trường và lỗi cơ sở dữ liệu đã được làm sạch, nhưng không có mã cài đặt hay câu lệnh SQL."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Chẩn đoán cài đặt và nâng cấp cơ sở dữ liệu bị lỗi"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Chi tiết lỗi cài đặt và nâng cấp"
+
+#: 
+msgid "Open in browser window"
+msgstr "Mở trong cửa sổ trình duyệt"
+
+#: 
+msgid "Opening Line"
+msgstr "Dòng mở đầu"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Đo lường sử dụng không bắt buộc chỉ được gửi khi được bật. Lỗi cài đặt và nâng cấp cơ sở dữ liệu luôn gửi một bản chẩn đoán giới hạn để hỗ trợ cộng đồng, kể cả khi bạn chọn Không, cảm ơn. Báo cáo lỗi gồm phiên bản phần mềm, phiên bản môi trường và lỗi cơ sở dữ liệu đã được làm sạch, không có mã cài đặt hay câu lệnh SQL."
+
+#: 
+msgid "PDF Handling"
+msgstr "Xử lý PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "Đầu ra PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "Chế độ xử lý PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "Dòng câu hỏi"
+
+#: 
+msgid "Save File dialog"
+msgstr "Hộp thoại Lưu tệp"
+
+#: 
+msgid "Signer"
+msgstr "Người ký"
+
+#: 
+msgid "Statement Settings"
+msgstr "Cài đặt bản kê"
+
+#: 
+msgid "Statement Wording"
+msgstr "Lời văn bản kê"
+
+#: 
+msgid "Tax Information"
+msgstr "Thông tin thuế"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Dữ liệu đo lường được gửi tới PostHog tại Hoa Kỳ. Báo cáo lỗi cài đặt và nâng cấp vẫn được gửi ngay cả khi đo lường không bắt buộc bị tắt."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Ngày này đã được hủy. Bạn không cần làm gì thêm."
+
+#: 
+msgid "always sent"
+msgstr "luôn được gửi"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Không gỡ được phần đầu thư"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Không lưu được phần đầu thư"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Không tải lên được phần đầu thư"
+
+#: 
+msgid "Greeting"
+msgstr "Lời chào"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Lời chào và chữ ký thư"
+
+#: 
+msgid "Letterhead"
+msgstr "Phần đầu thư"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF hoặc WebP. Banner ngang cho kết quả tốt nhất, ví dụ 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Được in ở đầu các thư PDF dùng phần đầu thư dạng hình, chẳng hạn bản kê dâng hiến. Nếu không có, thư in tên và địa chỉ nhà thờ."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Gỡ phần đầu thư? Thư sẽ in tên và địa chỉ nhà thờ."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Đặt phần đầu thư mà thư PDF sẽ in"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Đang dùng tên và địa chỉ nhà thờ"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Đang dùng đường dẫn phần đầu thư đã đặt trong Cài đặt hệ thống"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Lời văn, mã số thuế và cách xử lý PDF cho bản kê dâng hiến"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s với tư cách %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s hiện là địa chỉ email của bạn. Bạn có thể dùng địa chỉ này để đăng nhập Cổng hội viên."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} nữa"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "Đã có yêu cầu đổi địa chỉ email của bạn"
+
+#: 
+msgid "A family"
+msgstr "Một gia đình"
+
+#: 
+msgid "A group"
+msgstr "Một nhóm"
+
+#: 
+msgid "A ministry"
+msgstr "Một mục vụ"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "Địa chỉ mới chỉ đổi sau khi bạn dùng liên kết chúng tôi gửi tới địa chỉ đó."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "Chỉ thêm được khóa đăng nhập trong vòng %d phút sau khi đăng nhập bằng địa chỉ email. Hãy đăng xuất, đăng nhập lại bằng email, rồi quay lại đây."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "Khóa đăng nhập giúp bạn đăng nhập bằng Face ID, vân tay hoặc PIN của thiết bị, không cần mã email."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "Đã thêm một khóa đăng nhập cho phần đăng nhập Cổng hội viên của bạn"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "Đã thêm một khóa đăng nhập cho Cổng hội viên của bạn lúc %1$s ngày %2$s, từ %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "Đã thêm một khóa đăng nhập cho Cổng hội viên của bạn lúc %1$s ngày %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "Người mất địa chỉ đó sẽ không còn email riêng: thư chỉ gửi cho riêng họ, chẳng hạn email nhóm, sẽ bị bỏ qua, và trình soạn email sẽ nói rõ điều đó."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "Người có hồ sơ ẩn tuổi sẽ không bao giờ hiện năm sinh."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "Có yêu cầu trên Cổng hội viên lúc %s đổi địa chỉ email của bạn từ %s thành %s. Thay đổi chỉ xảy ra khi liên kết gửi tới %s được dùng."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Một dòng không đúng dạng mong đợi."
+
+#: 
+msgid "A team"
+msgstr "Một đội"
+
+#: 
+msgid "Add a passkey"
+msgstr "Thêm khóa đăng nhập"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Chỉ thêm khóa đăng nhập trên điện thoại hoặc máy tính của chính bạn, không bao giờ trên máy dùng chung hoặc máy công cộng."
+
+#: 
+msgid "Add an email"
+msgstr "Thêm email"
+
+#: 
+msgid "Added %s"
+msgstr "Đã thêm %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Quyền quản trị ghi đè"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "Người lớn của gia đình %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "Người lớn của gia đình"
+
+#: 
+msgid "All events"
+msgstr "Mọi sự kiện"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Cho phép Đăng nhập với tư cách người này"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Cho phép thay đổi khi Đăng nhập với tư cách người này"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Cho phép thay đổi khi quản trị viên dùng Đăng nhập với tư cách người này. Khi tắt, chế độ này chỉ để xem."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Đã do một thành viên gia đình giữ"
+
+#: 
+msgid "Also used by"
+msgstr "Cũng được dùng bởi"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Quản trị viên có thể cấp bất kỳ quyền nào cho một người trên trang của người đó. \"Quyền quản trị ghi đè\" khi đó hiện ở đây, kèm số người đã được cấp quyền đó."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "Đã có người khác dùng địa chỉ này"
+
+#: 
+msgid "Applies to"
+msgstr "Áp dụng cho"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Duyệt hoặc từ chối yêu cầu người thay cho một đội tình nguyện."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Xin một email mới"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Quyền được cấp cho người, không phải cho một tài khoản đăng nhập, nên có thể cấp trước khi họ có tài khoản. Người chỉ đăng nhập Cổng hội viên vẫn chỉ thấy lịch của chính mình cho đến khi quản trị viên cấp tài khoản nhân sự."
+
+#: 
+msgid "Awaiting review"
+msgstr "Đang chờ duyệt"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Về trang đăng nhập"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Xem toàn bộ danh bạ"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Có thể đăng nhập Cổng hội viên"
+
+#: 
+msgid "Can sign in?"
+msgstr "Đăng nhập được?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Không thể tắt đăng nhập của quản trị viên duy nhất còn đăng nhập được."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Không đăng nhập được"
+
+#: 
+msgid "Change family details"
+msgstr "Đổi thông tin gia đình"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Đổi địa chỉ và thông tin liên hệ của gia đình, và thêm một thành viên gia đình để duyệt."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Đổi tên, thông tin liên hệ và ảnh của chính họ."
+
+#: 
+msgid "Changed"
+msgstr "Đã đổi"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Đổi sau khi người này đăng nhập"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Đổi bởi một lần nhập dữ liệu sau khi người này đăng nhập"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Nhân sự đổi sau khi người này đăng nhập"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Đổi qua API sau khi người này đăng nhập"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Thay đổi bị tắt khi đang Đăng nhập với tư cách người này."
+
+#: 
+msgid "Changes needed"
+msgstr "Cần thay đổi"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Thay đổi được lưu ngay khi bạn thực hiện."
+
+#: 
+msgid "Check your email"
+msgstr "Kiểm tra email của bạn"
+
+#: 
+msgid "Choose a permission"
+msgstr "Chọn một quyền"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Chọn một quyền, quyền dùng cho việc gì, ngày cuối, và nêu lý do."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Chọn một ảnh hoặc chụp ảnh selfie"
+
+#: 
+msgid "Choose a theme"
+msgstr "Chọn giao diện"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Chọn ít nhất một dòng."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Chọn tối đa %d dòng mỗi lần."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Chọn cách hiện ngày trong danh sách."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Chọn ngày cuối của quyền này."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Chọn quyền này dùng cho việc gì."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Chọn có hoặc không."
+
+#: 
+msgid "Church Office"
+msgstr "Văn phòng nhà thờ"
+
+#: 
+msgid "Church country"
+msgstr "Quốc gia của nhà thờ"
+
+#: 
+msgid "Church default: %s"
+msgstr "Mặc định của nhà thờ: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Đăng nhập của lãnh đạo nhà thờ"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Các phân loại có thành viên được đăng nhập Cổng hội viên, viết thành danh sách mã phân loại cách nhau bằng dấu phẩy."
+
+#: 
+msgid "Clear selection"
+msgstr "Bỏ chọn"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Mã, phiên và thiết bị"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Xác nhận địa chỉ email"
+
+#: 
+msgid "Confirm email address"
+msgstr "Xác nhận địa chỉ email"
+
+#: 
+msgid "Confirm family details"
+msgstr "Xác nhận thông tin gia đình"
+
+#: 
+msgid "Confirm selected"
+msgstr "Xác nhận mục đã chọn"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Chỉ xác nhận email này sau khi đã kiểm tra trực tiếp hoặc qua điện thoại rằng đây đúng là địa chỉ của người đó. Sau khi xác nhận, địa chỉ có thể dùng để đăng nhập Cổng hội viên."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Xác nhận địa chỉ email của bạn"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Xác nhận địa chỉ email mới của bạn"
+
+#: 
+msgid "Confirmed"
+msgstr "Đã xác nhận"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Ngày phải viết theo dạng YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Quyết định yêu cầu người thay"
+
+#: 
+msgid "Device"
+msgstr "Thiết bị"
+
+#: 
+msgid "Device remembered"
+msgstr "Đã ghi nhớ thiết bị"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Thiết bị và khóa đăng nhập"
+
+#: 
+msgid "Directory classifications"
+msgstr "Phân loại trong danh bạ"
+
+#: 
+msgid "Directory section"
+msgstr "Phần danh bạ"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Tắt đăng nhập"
+
+#: 
+msgid "Do not show"
+msgstr "Không hiện"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Mỗi người cũng cần một email riêng mà không ai khác dùng."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Mỗi email đăng nhập chỉ dùng một lần, trong thời gian có hạn, và email mới hơn sẽ thay thế email đó."
+
+#: 
+msgid "Edit my details"
+msgstr "Sửa thông tin của tôi"
+
+#: 
+msgid "Email address changed"
+msgstr "Đã đổi địa chỉ email"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Địa chỉ email đã nhập: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "Số địa chỉ email cần xác nhận: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "Đã đổi email"
+
+#: 
+msgid "Email code"
+msgstr "Mã email"
+
+#: 
+msgid "Email confirmed"
+msgstr "Đã xác nhận email"
+
+#: 
+msgid "Email link"
+msgstr "Liên kết email"
+
+#: 
+msgid "Email me a code"
+msgstr "Gửi mã cho tôi qua email"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Gửi liên kết xác nhận cho tôi qua email"
+
+#: 
+msgid "Email needs attention"
+msgstr "Email cần xử lý"
+
+#: 
+msgid "Email problem"
+msgstr "Sự cố email"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Đã hủy mã và liên kết đăng nhập gửi qua email"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Liên kết xác minh đã gửi qua email"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Số email đã xác nhận: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Bật đăng nhập"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Kết thúc mọi phiên Cổng hội viên của người này và quên các thiết bị đã ghi nhớ? Khóa đăng nhập của họ vẫn giữ, nên họ có thể đăng nhập lại."
+
+#: 
+msgid "Ended %s"
+msgstr "Đã kết thúc %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Kết thúc vì đăng nhập của họ thay đổi"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Kết thúc khi đăng nhập hội viên bị tắt"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Nhập một số nguyên từ %1$d đến %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Nhập địa chỉ email của bạn."
+
+#: 
+msgid "Every kind"
+msgstr "Mọi loại"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Mọi lần đăng nhập hội viên, lần bị từ chối và thay đổi đăng nhập, mới nhất trước. Nhật ký không bao giờ lưu mã, liên kết hay khóa đăng nhập."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Mọi người trong danh sách, từ A đến Z, kèm ô tìm kiếm."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Mọi người mà quy tắc đăng nhập cho phép sau đó có thể đăng nhập Cổng hội viên bằng email riêng."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Mọi người đã đăng nhập Cổng hội viên trong 30 ngày qua, mới nhất trước."
+
+#: 
+msgid "Everywhere"
+msgstr "Mọi nơi"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Các gia đình một hội viên đã xác nhận trong 30 ngày qua, từ Cổng hội viên hoặc liên kết xác minh gửi qua email."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Gia đình đã xác nhận, 30 ngày qua"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Đã xác nhận thông tin gia đình"
+
+#: 
+msgid "Family email"
+msgstr "Email gia đình"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Email gia đình chưa được chuyển"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Các vai trò gia đình có thành viên được đăng nhập Cổng hội viên, viết thành danh sách mã vai trò cách nhau bằng dấu phẩy."
+
+#: 
+msgid "Find someone"
+msgstr "Tìm một người"
+
+#: 
+msgid "Fix by hand"
+msgstr "Sửa bằng tay"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Sửa email dùng chung"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Từ lần đăng nhập nhân sự"
+
+#: 
+msgid "Give a permission"
+msgstr "Cấp một quyền"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Cấp một quyền cổng"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Cho mỗi người một email riêng"
+
+#: 
+msgid "Give permission"
+msgstr "Cấp quyền"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Do %1$s cấp đến %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Do %s cấp"
+
+#: 
+msgid "Given to"
+msgstr "Cấp cho"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Cấp cho mọi người"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Đã cấp, nhưng chưa có hiệu lực"
+
+#: 
+msgid "Go to sign in"
+msgstr "Tới trang đăng nhập"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Tới Cổng hội viên"
+
+#: 
+msgid "Has signed in"
+msgstr "Đã đăng nhập"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Đã đăng nhập: phiên và thiết bị của họ sẽ kết thúc"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Đây là mã để bạn đăng nhập Cổng hội viên. Hãy nhập mã trên trang đăng nhập, trong trình duyệt nơi bạn đã xin mã. Hoặc nhấn nút để đăng nhập trên thiết bị này."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Ẩn quyền"
+
+#: 
+msgid "How"
+msgstr "Cách thức"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Số email đăng nhập Cổng hội viên mà một địa chỉ IP có thể xin trong một giờ. Đặt 0 nếu không giới hạn, ví dụ khi mọi người vào ChurchCRM qua một địa chỉ."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Số ngày một thiết bị giữ đăng nhập Cổng hội viên sau khi hội viên chọn giữ đăng nhập. Đặt 0 để bỏ lựa chọn này."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Số phút không hoạt động sẽ kết thúc một phiên Cổng hội viên."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Số phút mã và liên kết đăng nhập Cổng hội viên còn hiệu lực."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Thời gian chờ (phút)"
+
+#: 
+msgid "Idle too long"
+msgstr "Không hoạt động quá lâu"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Nếu %1$s là địa chỉ mới của bạn, hãy dùng nút bên dưới để xác nhận. Cho đến khi được xác nhận, địa chỉ không dùng để đăng nhập được. Liên kết chỉ dùng một lần, đến %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Nếu địa chỉ này dùng để đăng nhập được, chúng tôi đã gửi cho bạn một mã qua email. Vài phút vẫn chưa thấy? Hãy hỏi văn phòng nhà thờ."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Nếu bạn không thêm khóa này, hãy gỡ khóa trên trang Đăng nhập và thiết bị rồi liên hệ văn phòng nhà thờ."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Nếu bạn không yêu cầu thay đổi này, vui lòng liên hệ văn phòng nhà thờ."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Nếu bạn không yêu cầu điều này, vui lòng liên hệ văn phòng nhà thờ."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Liên kết có thể đã hết hạn hoặc đã được dùng. Nếu cần giúp đỡ, vui lòng liên hệ văn phòng nhà thờ."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Plugin của mục này chưa được cài"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Nhảy tới một chữ cái"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Giữ tôi đăng nhập (ngày)"
+
+#: 
+msgid "Keeps it"
+msgstr "Giữ địa chỉ"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Loại email chưa xác nhận"
+
+#: 
+msgid "Last day"
+msgstr "Ngày cuối"
+
+#: 
+msgid "Last used"
+msgstr "Lần dùng cuối"
+
+#: 
+msgid "Last used %s"
+msgstr "Lần dùng cuối %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Người phụ trách %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Cho phép quản trị viên mở Cổng hội viên của một người với tư cách chính người đó, từ menu Thao tác của người đó, khi đăng nhập hội viên đang bật."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Cho phép hội viên thêm khóa đăng nhập và dùng khóa đó để đăng nhập Cổng hội viên."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Cho phép hội viên đăng nhập Cổng hội viên bằng địa chỉ email riêng. Chỉ bật được khi việc gửi email đang hoạt động."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Cho hội viên đăng nhập bằng email"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Thời hạn liên kết và mã (phút)"
+
+#: 
+msgid "Login as %s"
+msgstr "Đăng nhập với tư cách %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Đăng nhập với tư cách người này"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Không bắt đầu được Đăng nhập với tư cách người này."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Đăng nhập với tư cách người này đã kết thúc: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Lịch sử Đăng nhập với tư cách người này"
+
+#: 
+msgid "Login as Person started"
+msgstr "Đã bắt đầu Đăng nhập với tư cách người này"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Đã dừng Đăng nhập với tư cách người này"
+
+#: 
+msgid "Look up anyone"
+msgstr "Tra cứu bất kỳ ai"
+
+#: 
+msgid "Loses it"
+msgstr "Mất địa chỉ"
+
+#: 
+msgid "Manage a team"
+msgstr "Quản lý một đội"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Quản lý đăng nhập và thiết bị của tôi"
+
+#: 
+msgid "Matches: %s"
+msgstr "Khớp: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Được phép đăng nhập"
+
+#: 
+msgid "May sign in now"
+msgstr "Hiện được phép đăng nhập"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Mã đăng nhập Cổng hội viên"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Thông báo đăng nhập Cổng hội viên"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Các lần đăng nhập và hoạt động trên Cổng hội viên, của hội viên và của nhân sự mở cổng từ lần đăng nhập nhân sự của họ."
+
+#: 
+msgid "Member sign-in"
+msgstr "Đăng nhập hội viên"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Đăng nhập hội viên gửi cho mỗi người một mã qua email, nên email (SMTP) phải hoạt động trước khi bạn bật tính năng này."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Đăng nhập hội viên đang tắt"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Đăng nhập hội viên đang tắt đối với nhà thờ."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Đăng nhập hội viên đang tắt."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Đăng nhập hội viên chưa dùng được. Vui lòng liên hệ văn phòng nhà thờ."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Đăng nhập hội viên không bao giờ cho vào người đã qua đời, người không hoạt động, người trong gia đình không hoạt động, người đang chờ duyệt, hoặc người đã bật Tắt đăng nhập. Các lựa chọn này quyết định những ai khác được vào."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Đăng nhập hội viên gửi mã cho từng hội viên qua email, nên chỉ bật được khi ChurchCRM gửi được email. Hãy bật email và thiết lập máy chủ thư trước."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Hội viên thấy trang Lịch khi có ít nhất một lịch đang bật."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Hội viên nhập ít nhất %d chữ cái của một tên và thấy tối đa %d kết quả. Danh sách đầy đủ không bao giờ được hiện."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Hội viên đang đăng nhập sẽ bị đăng xuất, và không ai đăng nhập bằng email được cho đến khi đăng nhập hội viên được bật lại."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Hội viên thuộc các phân loại này thấy Danh bạ trong menu Cổng hội viên."
+
+#: 
+msgid "Minimum age"
+msgstr "Tuổi tối thiểu"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Các lần thử thêm với địa chỉ này trong giờ tới sẽ không gửi thông báo khác."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Đã chuyển từ email gia đình"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Đã chuyển cho chủ hộ"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Đã chuyển cho vợ hoặc chồng"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Mới đến nhà thờ chúng tôi? Hãy cho biết về gia đình bạn và chúng tôi sẽ liên hệ để chào đón bạn."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Chưa có phiên Đăng nhập với tư cách người này."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Không có ngày sinh, và không phải chủ hộ hay vợ hoặc chồng"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Không có lịch nào đang bật, nên hội viên không thấy trang Lịch."
+
+#: 
+msgid "No changes"
+msgstr "Không thay đổi"
+
+#: 
+msgid "No changes made."
+msgstr "Không có thay đổi nào."
+
+#: 
+msgid "No family role"
+msgstr "Không có vai trò gia đình"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Không có chủ hộ hay vợ hoặc chồng nào nhận được email gia đình."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Không có chủ hộ hay vợ hoặc chồng nào dùng chung địa chỉ này"
+
+#: 
+msgid "No match"
+msgstr "Không khớp"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Chưa có ai khớp quy tắc đăng nhập. Hãy chọn thêm vai trò gia đình hoặc phân loại, hoặc hạ tuổi tối thiểu."
+
+#: 
+msgid "No passkey was added."
+msgstr "Không có khóa đăng nhập nào được thêm."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Không dùng khóa đăng nhập nào. Hãy thử lại, hoặc đăng nhập bằng địa chỉ email."
+
+#: 
+msgid "No person has this email"
+msgstr "Không có ai có email này"
+
+#: 
+msgid "No personal email"
+msgstr "Không có email cá nhân"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Không có email dùng chung nào ngăn ai đăng nhập."
+
+#: 
+msgid "No such person"
+msgstr "Không có người này"
+
+#: 
+msgid "No, thanks"
+msgstr "Không, cảm ơn"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Không ai đăng nhập được bằng một email cá nhân mà hai người được phép đăng nhập cùng dùng. Với địa chỉ dùng chung trong một gia đình, chủ hộ giữ địa chỉ đó; nếu không thì vợ hoặc chồng giữ (người lớn tuổi hơn trước). Những người khác dùng chung sẽ mất địa chỉ. Hãy bỏ chọn địa chỉ nào bạn muốn sửa theo cách khác."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Chưa ai đăng nhập được: hãy chọn ít nhất một phân loại trong mục Ai được đăng nhập."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Chưa ai đăng nhập được: hãy chọn ít nhất một vai trò gia đình và ít nhất một phân loại trong mục Ai được đăng nhập."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Chưa ai đăng nhập được: hãy chọn ít nhất một vai trò gia đình trong mục Ai được đăng nhập."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Không có ai trong danh bạ khớp tên đó."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Chưa có ai trong danh bạ."
+
+#: 
+msgid "Not ended"
+msgstr "Chưa kết thúc"
+
+#: 
+msgid "Not moved"
+msgstr "Chưa chuyển"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Không chắc chúng tôi đang có email nào? Hãy liên hệ văn phòng nhà thờ."
+
+#: 
+msgid "Not yet"
+msgstr "Chưa"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Đã ghi trong dòng thời gian gia đình"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Trong số đó, những người đã đăng nhập: {{total}}. Họ bị đăng xuất ở mọi nơi, và địa chỉ nhận một thông báo."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Tắt với mọi người: \"%s\" đang tắt"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Tắt với mọi người: Quản lý tình nguyện viên chưa được đặt là V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Tắt với mọi người: tính năng của mục này đang tắt"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Tắt với mọi người: plugin của mục này đang tắt"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Tắt với mọi người: không có lịch nào được chia sẻ với hội viên"
+
+#: 
+msgid "Office list"
+msgstr "Danh sách văn phòng"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Sau khi được xác nhận, địa chỉ có thể dùng để đăng nhập Cổng hội viên."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Chỉ chọn được những địa chỉ bạn được phép xác nhận."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Chỉ quản trị viên thấy lý do."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Chỉ quản trị viên mới đổi được email của người có tài khoản nhân sự hoặc quyền cổng."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Chỉ quản trị viên mới xác nhận được email đã thay cho email mà người đó từng dùng để đăng nhập."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Chỉ quản trị viên mới xác nhận được email của người có tài khoản nhân sự hoặc quyền cổng."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Chỉ quản trị viên mới sửa được địa chỉ này: có người dùng chung đang có tài khoản nhân sự hoặc quyền cổng."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Chỉ người lớn trong gia đình bạn mới xác nhận được các thông tin này. Vui lòng liên hệ văn phòng nhà thờ."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Chỉ xác nhận địa chỉ bạn biết là của người đó. Ai đọc được một địa chỉ đều có thể đăng nhập với tư cách người đó."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Chỉ người còn sống và có email riêng mới được đưa vào danh sách văn phòng."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Chỉ thêm được người có email riêng."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Đo lường không bắt buộc có thể gồm đường dẫn trang, ngôn ngữ đang dùng, phiên bản CRM, phiên bản PHP, họ hệ điều hành, quốc gia lấy từ cài đặt thông tin nhà thờ, và một mã cài đặt ngẫu nhiên. Báo cáo lỗi không gồm mã cài đặt. Dữ liệu được gửi tới PostHog tại Hoa Kỳ."
+
+#: 
+msgid "Passkey"
+msgstr "Khóa đăng nhập"
+
+#: 
+msgid "Passkey added"
+msgstr "Đã thêm khóa đăng nhập"
+
+#: 
+msgid "Passkey removed"
+msgstr "Đã gỡ khóa đăng nhập"
+
+#: 
+msgid "Passkeys"
+msgstr "Các khóa đăng nhập"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Khóa đăng nhập đang tắt."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Không dùng được khóa đăng nhập tại đây."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Chưa dùng được khóa đăng nhập trên trang này. Vui lòng liên hệ văn phòng nhà thờ."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Khóa đăng nhập cần tên máy chủ, không phải địa chỉ IP, trong địa chỉ trang."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Khóa đăng nhập cần kết nối an toàn (HTTPS) tới trang này."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Khóa đăng nhập cần địa chỉ trang được đặt trong Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Khóa đăng nhập cần trang được phục vụ qua HTTPS. Hội viên chưa được đề nghị khóa đăng nhập cho đến khi có HTTPS."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Khóa đăng nhập chỉ hoạt động tại %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Khóa đăng nhập: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Những người mà cài đặt đã lưu cho vào: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Những người sẽ nhận email khi có người không đăng nhập được Cổng hội viên"
+
+#: 
+msgid "People who hold it"
+msgstr "Những người đang giữ quyền này"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Những người sẽ mất một địa chỉ: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Những người đã mất một địa chỉ: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Những người được phép đăng nhập: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Những người từng đăng nhập Cổng hội viên: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Những người thuộc các phân loại này hiện trong danh bạ. Con số là số người đang hoạt động của từng phân loại."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Những người có email này: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Người %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Chọn phân loại trong danh sách."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Chọn vai trò gia đình trong danh sách."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Chọn người cho danh sách văn phòng."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Vui lòng chọn một ngôn ngữ trong danh sách."
+
+#: 
+msgid "Portal permission given"
+msgstr "Đã cấp quyền cổng"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Đã gỡ quyền cổng"
+
+#: 
+msgid "Portal permissions"
+msgstr "Quyền cổng"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Đăng nhập cổng"
+
+#: 
+msgid "Problem"
+msgstr "Sự cố"
+
+#: 
+msgid "Reason"
+msgstr "Lý do"
+
+#: 
+msgid "Reason: %s"
+msgstr "Lý do: %s"
+
+#: 
+msgid "Refused"
+msgstr "Bị từ chối"
+
+#: 
+msgid "Register your family"
+msgstr "Đăng ký gia đình của bạn"
+
+#: 
+msgid "Remembered device"
+msgstr "Thiết bị đã ghi nhớ"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Đã gỡ thiết bị đã ghi nhớ"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Thiết bị đã ghi nhớ: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Gỡ email"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Gỡ khóa đăng nhập này"
+
+#: 
+msgid "Remove this permission"
+msgstr "Gỡ quyền này"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Đã gỡ khỏi: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Bị thay sau một lần đăng nhập"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Bị thay bởi lần đăng nhập khác"
+
+#: 
+msgid "Result"
+msgstr "Kết quả"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Điều hành một đội tình nguyện: vị trí, tình nguyện viên, lịch, bố trí người và sĩ số."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Nêu lý do đăng nhập đang bị tắt."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Nêu lý do quyền này đang được cấp."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Tìm bất kỳ ai trong hồ sơ. Mỗi dòng cho biết họ có được đăng nhập Cổng hội viên hay không, và nếu không thì vì sao."
+
+#: 
+msgid "Search method"
+msgstr "Cách tìm"
+
+#: 
+msgid "Search only"
+msgstr "Chỉ tìm"
+
+#: 
+msgid "See family contact details"
+msgstr "Xem thông tin liên hệ của gia đình"
+
+#: 
+msgid "See my family"
+msgstr "Xem gia đình của tôi"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Xem Cổng hội viên như người này đang thấy? Các trang nhân sự vẫn đóng cho đến khi bạn nhấn Dừng, và phiên được ghi trên trang này cùng trang người dùng của bạn."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Xem các lịch nhà thờ chia sẻ với hội viên, và đăng ký theo dõi các lịch đó."
+
+#: 
+msgid "See the church calendar"
+msgstr "Xem lịch nhà thờ"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Xem các thiết bị và khóa đăng nhập dùng để đăng nhập họ, rồi đăng xuất hoặc gỡ bất kỳ mục nào."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Xem địa chỉ email và số điện thoại của những người trong gia đình họ."
+
+#: 
+msgid "See the member directory"
+msgstr "Xem danh bạ hội viên"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Xem tên và ảnh của những người trong gia đình họ."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Xem những người nhà thờ liệt kê trong danh bạ, với các chi tiết nhà thờ chọn chia sẻ."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Xem lịch tình nguyện của họ, đăng ký chỗ còn trống và xin người thay."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Gửi browse dưới dạng true hoặc false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Gửi các phân loại dưới dạng danh sách mã."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Gửi cài đặt danh bạ dưới dạng đối tượng JSON."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Gửi các trường cần hiện dưới dạng đối tượng gồm giá trị true và false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Gửi cài đặt dưới dạng đối tượng JSON."
+
+#: 
+msgid "Session ended"
+msgstr "Phiên đã kết thúc"
+
+#: 
+msgid "Set up email"
+msgstr "Thiết lập Email"
+
+#: 
+msgid "Set up email first."
+msgstr "Hãy thiết lập email trước."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Địa chỉ dùng chung đã sửa: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Địa chỉ dùng chung cần sửa: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Dùng chung bởi"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Các email dùng chung khiến mọi người không đăng nhập được"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Hiện hoặc ẩn hội viên này"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Hiện trang Danh bạ trong Cổng hội viên cho các phân loại được chọn bên dưới."
+
+#: 
+msgid "Show the member directory"
+msgstr "Hiện danh bạ hội viên"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Hiện danh bạ hội viên trong Cổng hội viên."
+
+#: 
+msgid "Show with year"
+msgstr "Hiện kèm năm"
+
+#: 
+msgid "Show without year"
+msgstr "Hiện không kèm năm"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Đang hiện %d kết quả khớp đầu tiên. Hãy nhập thêm tên để tìm người bạn cần."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Đăng nhập với tư cách %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Lần sau, hãy đăng nhập trên thiết bị này bằng Face ID, vân tay hoặc PIN của thiết bị."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Đăng nhập để xem gia đình bạn, lịch nhà thờ và các cách để phục vụ. Bạn không cần mật khẩu hay tài khoản."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Đăng nhập bằng khóa đăng nhập"
+
+#: 
+msgid "Sign out every device"
+msgstr "Đăng xuất mọi thiết bị"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Đăng xuất mọi thiết bị ngay bây giờ?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Đăng xuất ở mọi nơi"
+
+#: 
+msgid "Sign out this device"
+msgstr "Đăng xuất thiết bị này"
+
+#: 
+msgid "Sign-in"
+msgstr "Đăng nhập"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Đăng nhập và thiết bị"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Không tắt được đăng nhập."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Không bật được đăng nhập."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Đã tắt đăng nhập"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Đã yêu cầu email đăng nhập"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Số email đăng nhập trên mỗi địa chỉ IP mỗi giờ"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Đã bật đăng nhập"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Đăng nhập của người này đã được tắt từ trước."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Đăng nhập đang tắt"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Đăng nhập của người này đang tắt."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Đăng nhập của người này đang bật."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Đăng nhập của người này không bị tắt."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Đăng nhập bị từ chối"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Đăng nhập, các phiên và khóa API bị chặn cho đến khi việc này được xử lý trên hồ sơ của người được liên kết."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Đã đăng nhập, 30 ngày qua"
+
+#: 
+msgid "Signed out"
+msgstr "Đã đăng xuất"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Bị đăng xuất vì đăng nhập của họ thay đổi"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Đã đăng xuất ở mọi nơi"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Có người đã xin email đăng nhập Cổng hội viên, nhưng không có email nào được gửi."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Có người không đăng nhập được Cổng hội viên"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Các trang nhân sự vẫn đóng khi Đăng nhập với tư cách người này. Nhấn Dừng trên thanh thông báo để quay lại."
+
+#: 
+msgid "Stop"
+msgstr "Dừng"
+
+#: 
+msgid "Stopped"
+msgstr "Đã dừng"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Cho văn phòng nhà thờ biết thông tin gia đình còn đúng hay không."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Mã đó không dùng được. Hãy xem email mới nhất từ chúng tôi, hoặc xin mã mới."
+
+#: 
+msgid "That could not be removed."
+msgstr "Không gỡ được mục đó."
+
+#: 
+msgid "That device is signed out."
+msgstr "Thiết bị đó đã được đăng xuất."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Đó không phải địa chỉ email hợp lệ."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Trang đó đã mở quá lâu. Vui lòng thử lại."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Khóa đăng nhập đó đã được gỡ. Khóa không còn đăng nhập được cho bạn."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Việc đó mất quá lâu. Vui lòng thử lại."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Bản nâng cấp 7.8.3 đã giao mỗi email gia đình cho một người. Những email không giao được thì để lại ghi chú trong dòng thời gian của gia đình."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Cổng hội viên và các email cổng gửi cho bạn dùng ngôn ngữ này."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Không lưu được thay đổi."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Mã và nút chỉ dùng một lần, đến %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Mã hoặc liên kết đã gửi tới địa chỉ không còn là email của họ"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Không gửi được email xác nhận. Vui lòng thử lại sau."
+
+#: 
+msgid "The device is signed out."
+msgstr "Thiết bị đã được đăng xuất."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "Lúc %1$s, địa chỉ email %2$s đã được gỡ khỏi hồ sơ của bạn. Bạn đã bị đăng xuất Cổng hội viên trên mọi thiết bị."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "Lúc %1$s, địa chỉ email trên hồ sơ của bạn đã đổi từ %2$s thành %3$s. Bạn đã bị đăng xuất Cổng hội viên trên mọi thiết bị."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "Không xác nhận được email."
+
+#: 
+msgid "The email could not be sent."
+msgstr "Không gửi được email."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "Email đã được xác nhận. Giờ có thể dùng email này để đăng nhập."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Ngày kết thúc đứng trước ngày bắt đầu."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Gia đình không có chủ hộ hay vợ hoặc chồng nào còn sống và đang hoạt động"
+
+#: 
+msgid "The family is inactive"
+msgstr "Gia đình không hoạt động"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Chủ hộ và vợ hoặc chồng đều có email riêng"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Ngày cuối không được nằm trong quá khứ."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Người được liên kết không được phép đăng nhập, nên tài khoản này không đăng nhập được"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Không tải được danh sách."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Không thêm được khóa đăng nhập. Vui lòng thử lại."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Không xác minh được khóa đăng nhập"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Khóa đăng nhập không có trong hồ sơ, hoặc đã bị gỡ"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Khóa đăng nhập đã được gỡ."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Những người dùng chung địa chỉ thuộc các gia đình khác nhau, hoặc không thuộc gia đình nào"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Những người dùng chung địa chỉ này đã thay đổi. Hãy mở lại Sửa email dùng chung."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Không cấp được quyền."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Quyền kết thúc sau ngày này. Có thể cấp lại."
+
+#: 
+msgid "The permission was given."
+msgstr "Quyền đã được cấp."
+
+#: 
+msgid "The permission was removed."
+msgstr "Quyền đã được gỡ."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Không tải được các quyền."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Người này mất quyền này trên Cổng hội viên ngay lập tức."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Lý do dài tối đa %d ký tự."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Quy tắc đăng nhập cho họ vào, và mỗi người có email riêng mà không ai khác được phép đăng nhập đang dùng."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Quy tắc đăng nhập cho họ vào, nhưng email thì không: họ không có email, đang dùng chung với người khác được phép đăng nhập, hoặc email chưa được xác nhận."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Không lưu được cài đặt đăng nhập."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Email chưa xác nhận đã thay đổi. Hãy tải lại trang rồi thử lại."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Phân loại của họ không được đăng nhập"
+
+#: 
+msgid "Their email changed"
+msgstr "Email của họ đã đổi"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "Email của họ chưa được xác nhận"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "Email của họ đang được dùng chung với người khác"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Vai trò gia đình của họ không được đăng nhập"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Các tài khoản đăng nhập cũ của họ đã bị bản nâng cấp gỡ. Hãy bật đăng nhập hội viên để họ đăng nhập bằng email riêng."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Thiết bị đã ghi nhớ của họ đã hết hạn"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Thiết bị đã ghi nhớ của họ đã bị đăng xuất"
+
+#: 
+msgid "Theme development"
+msgstr "Phát triển giao diện"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Không có phân loại với mã %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Không có bộ chọn cho loại phạm vi này."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Không có sự kiện kiểm tra nào như vậy."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Không có sự cố email nào như vậy."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Không có loại email chưa xác nhận nào như vậy."
+
+#: 
+msgid "There is no such list."
+msgstr "Không có danh sách nào như vậy."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Không có quyền cổng nào như vậy."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Đây là những điện thoại và máy tính nơi bạn đã chọn giữ đăng nhập. Hãy đăng xuất thiết bị bạn không còn dùng hoặc không nhận ra."
+
+#: 
+msgid "They have a staff account"
+msgstr "Họ có tài khoản nhân sự"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Họ được phép đăng nhập nhưng chưa từng đăng nhập."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Thao tác này cần một phiên trình duyệt đã đăng nhập."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Không đổi được địa chỉ này. Hãy mở lại Sửa email dùng chung để xem tình trạng hiện tại."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Địa chỉ này không còn được những người được phép đăng nhập dùng chung."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Trình duyệt này không tạo được khóa đăng nhập."
+
+#: 
+msgid "This device"
+msgstr "Thiết bị này"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Thiết bị này đã có khóa đăng nhập cho bạn."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Thiết bị này sẽ không còn giữ người đó đăng nhập, và phiên đang mở trên thiết bị sẽ kết thúc. Họ có thể đăng nhập lại bằng email."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Đây là thiết bị của tôi. Hãy giữ tôi đăng nhập."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Đây là nơi bạn quyết định về khách. Con số là số người đang hoạt động của từng phân loại."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Không dùng được liên kết này"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Liên kết này đã hết hạn hoặc đã được dùng"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Phần này của Cổng hội viên không dành cho bạn."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Khóa đăng nhập này đã có trong hồ sơ."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Khóa đăng nhập này sẽ không còn đăng nhập được cho người đó. Họ có thể đăng nhập bằng email và thêm khóa mới."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Không thể cấp quyền này trên trang của người."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Người này đã có mọi quyền có thể cấp."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Người này đã có quyền này."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Người này không còn đăng nhập được ở đâu nữa, cả Cổng hội viên lẫn với tư cách nhân sự. Mọi phiên kết thúc, và thiết bị đã ghi nhớ cùng khóa đăng nhập của họ bị gỡ."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Không đăng xuất được người này."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Người này có tài khoản nhân sự. Đăng nhập với tư cách người này không bao giờ mở tài khoản nhân sự."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Người này không có khóa đăng nhập đó."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Người này không có quyền đó."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Người này không có thiết bị đã ghi nhớ đó."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Người này không có email chưa xác nhận."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Người này đã đăng nhập Cổng hội viên. Đổi email này sẽ đăng xuất họ ở mọi nơi, và địa chỉ mới không dùng để đăng nhập được cho đến khi được xác nhận."
+
+#: 
+msgid "This person is deceased."
+msgstr "Người này đã qua đời"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Người này đã đăng xuất khỏi Cổng hội viên ở mọi nơi."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Người này không còn tồn tại."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Việc này đăng xuất bạn ở mọi nơi, kể cả tại đây, và quên mọi thiết bị. Bạn có thể đăng nhập lại bằng địa chỉ email."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Việc này đăng xuất bạn ở mọi nơi, kể cả tại đây, và quên mọi thiết bị. Khóa đăng nhập của bạn vẫn còn: bạn có thể đăng nhập lại bằng khóa đăng nhập hoặc địa chỉ email."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Công cụ này không đổi các mục đó. Hãy cho mỗi người một email riêng trên hồ sơ của họ."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Chỉ chọn mục này trên điện thoại hoặc máy tính của chính bạn, không bao giờ trên máy dùng chung hoặc máy công cộng."
+
+#: 
+msgid "Time: %s"
+msgstr "Thời gian: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Hết thời gian"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Để đổi email này, vui lòng liên hệ văn phòng nhà thờ."
+
+#: 
+msgid "To fix"
+msgstr "Cần sửa"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Để giữ đăng nhập trên điện thoại hoặc máy tính của bạn, hãy chọn \"Đây là thiết bị của tôi\" vào lần đăng nhập tới."
+
+#: 
+msgid "Too many attempts"
+msgstr "Quá nhiều lần thử"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Quá nhiều email đăng nhập hôm nay"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Quá nhiều yêu cầu đăng nhập cho địa chỉ email này"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Quá nhiều yêu cầu đăng nhập từ địa chỉ IP này"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Quá nhiều mã sai"
+
+#: 
+msgid "Turn off"
+msgstr "Tắt"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Tắt đăng nhập hội viên?"
+
+#: 
+msgid "Turn on"
+msgstr "Bật"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Bật đăng nhập hội viên"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Bật đăng nhập hội viên?"
+
+#: 
+msgid "Type a name"
+msgstr "Nhập một tên"
+
+#: 
+msgid "Type a name or email"
+msgstr "Nhập tên hoặc email"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Nhập ít nhất %d chữ cái của một tên, rồi tìm."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Email chưa xác nhận"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Hiểu ChurchCRM đang được dùng ở đâu"
+
+#: 
+msgid "Unknown device"
+msgstr "Thiết bị không rõ"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Trường danh bạ không rõ: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Cài đặt danh bạ không rõ: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Thiết bị chưa đặt tên"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Khóa đăng nhập chưa đặt tên"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Cho đến khi văn phòng nhà thờ xác nhận, địa chỉ mới không dùng để đăng nhập được."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Dùng %1$s làm địa chỉ email của %2$s tại %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Dùng một địa chỉ email khác"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Dùng khóa đăng nhập trên thiết bị này?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Dùng nút bên dưới để xác nhận %1$s là địa chỉ email của bạn tại %2$s. Liên kết chỉ dùng một lần, đến %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Người dùng %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Xem quyền"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Đang chờ bạn xác nhận %s. Hãy dùng liên kết chúng tôi đã gửi tới địa chỉ đó."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Đang chờ bạn xác nhận {{email}}. Hãy dùng liên kết chúng tôi đã gửi tới địa chỉ đó."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Chúng tôi không gửi được email. Vui lòng thử lại sau, hoặc liên hệ văn phòng nhà thờ."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Chúng tôi không đăng nhập được cho bạn"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Chúng tôi đã gửi một liên kết tới %s. Hãy dùng liên kết đó để xác nhận địa chỉ email mới của bạn."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Chúng tôi đã gửi một liên kết tới {{email}}. Email của bạn đổi khi bạn dùng liên kết đó."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Chúng tôi sẽ gửi email cho bạn một mã và một liên kết để đăng nhập."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Rất vui vì bạn ở đây! Việc này mất khoảng ba phút."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Rất vui vì gia đình bạn đã đến với chúng tôi! Đăng ký đã được nhận. Nhóm của chúng tôi sẽ sớm liên hệ để chào đón bạn."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Ngày kỷ niệm cưới"
+
+#: 
+msgid "Welcome"
+msgstr "Chào mừng"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Việc mà quyền này được cấp cho không còn tồn tại"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Những gì hội viên xem và làm được trên cổng, và mỗi quyền đến từ đâu. Mọi người được tính trong số những người mà quy tắc đăng nhập cho vào, cùng với nhân sự."
+
+#: 
+msgid "What members can use"
+msgstr "Những gì hội viên dùng được"
+
+#: 
+msgid "What to do"
+msgstr "Việc cần làm"
+
+#: 
+msgid "Who can see it"
+msgstr "Ai xem được"
+
+#: 
+msgid "Who is listed"
+msgstr "Ai được liệt kê"
+
+#: 
+msgid "Who may sign in"
+msgstr "Ai được đăng nhập"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Ai được đăng nhập Cổng hội viên, ai đã đăng nhập, và email của ai đang ngăn họ. Các danh sách theo quy tắc ở tab Đăng nhập."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Danh bạ Cổng hội viên liệt kê ai, ai xem được và hiện những gì, được chọn tại Quản trị -> Cổng hội viên -> Danh bạ."
+
+#: 
+msgid "Why"
+msgstr "Vì sao"
+
+#: 
+msgid "Why not"
+msgstr "Vì sao không"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Với mã thông báo mà thiết bị vừa thay thế"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Có, thêm khóa đăng nhập"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Có, gỡ khóa đăng nhập này"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Có, đăng xuất mọi thiết bị"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Bạn không được phép xác nhận email này."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Bạn không được giữ đăng nhập trên thiết bị nào."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Bạn đã đăng xuất trên mọi thiết bị."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Bạn đã đăng xuất trên thiết bị này."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Bạn cũng có thể đăng nhập bằng địa chỉ email."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Bạn không thể tắt đăng nhập của chính mình."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Bạn không mở được Cổng hội viên. Vui lòng liên hệ văn phòng nhà thờ."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Bạn đã yêu cầu đổi email quá nhiều lần. Vui lòng thử lại sau."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Bạn không có khóa đăng nhập nào."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Bạn đang đăng nhập với tư cách %s trên Cổng hội viên (được phép thay đổi)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Bạn đang đăng nhập với tư cách %s trên Cổng hội viên (chỉ xem)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Nhỏ hơn tuổi tối thiểu"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Tuổi nhỏ nhất để một người được đăng nhập Cổng hội viên. Khi không rõ ngày sinh, chỉ chủ hộ hoặc vợ/chồng đủ điều kiện."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Mã đăng nhập Cổng hội viên của bạn"
+
+#: 
+msgid "Your code"
+msgstr "Mã của bạn"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Địa chỉ email %s của bạn chưa được xác nhận, nên không dùng để đăng nhập được. Chúng tôi sẽ gửi một liên kết tới địa chỉ đó; dùng liên kết là xác nhận địa chỉ."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Không gỡ được địa chỉ email của bạn tại đây. Vui lòng liên hệ văn phòng nhà thờ."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Địa chỉ email của bạn đã được xác nhận"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Địa chỉ email của bạn đã được đổi"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Khóa đăng nhập của bạn đã được thêm. Lần sau, hãy đăng nhập bằng khóa đó trên thiết bị này."
+
+#: 
+msgid "an administrator"
+msgstr "một quản trị viên"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "không chủ hộ hay vợ hoặc chồng nào có địa chỉ email"
+
+#: 
+msgid "or"
+msgstr "hoặc"
+
+#: 
+msgid "until %s"
+msgstr "đến %s"
+

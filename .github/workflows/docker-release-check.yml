@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'docker/**'
+      - 'tests/docker/**'
       - '.github/workflows/docker-release*.yml'
   workflow_dispatch:
 
@@ -22,7 +23,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Test archive validation
-        run: python3 docker/test-release-context.py
+        run: python3 tests/docker/test-release-context.py
       - name: Prepare a known release fixture
         env:
           GH_TOKEN: ${{ github.token }}
@@ -45,4 +46,4 @@ jobs:
       - name: Test non-root startup and runtime dependencies
         env:
           FLAVOR: ${{ matrix.flavor }}
-        run: bash docker/test-production-image.sh "churchcrm-check:$FLAVOR" "$FLAVOR"
+        run: bash tests/docker/test-production-image.sh "churchcrm-check:$FLAVOR" "$FLAVOR"

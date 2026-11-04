@@ -24584,3 +24584,2547 @@ msgstr "硬貨合計"
 msgid "Witness"
 msgstr "証人"
 
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d 件の献金には家族がありません。明細書に載せることができません。"
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "今年の日付の未締切入金が %d 件あります。明細書を送る前に、すべての献金を確定するため、これらを締め切ってください。"
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d 件の支払いは、まだどの入金にも含まれていません。"
+
+#: 
+msgid "Can be emailed"
+msgstr "メールで送れます"
+
+#: 
+msgid "Closing line"
+msgstr "結びの文"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "今年の日付の入金はすべて締め切られています。"
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "すべての献金が家族に属しています。"
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "今年の支払いはすべて入金に含まれています。"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "税務明細書を作成"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "献金レポート（税務明細書）"
+
+#: 
+msgid "Opening line"
+msgstr "冒頭の文"
+
+#: 
+msgid "Print and mail"
+msgstr "印刷して郵送"
+
+#: 
+msgid "Qty"
+msgstr "数量"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "年度を確認してから、献金明細書を印刷するか、メールで送ってください。"
+
+#: 
+msgid "Signed by"
+msgstr "署名者"
+
+#: 
+msgid "Thank-you line"
+msgstr "感謝の文"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "教会名、住所、連絡先が税務明細書に表示されることを確認してください。"
+
+#: 
+msgid "Year-End Giving"
+msgstr "年末献金"
+
+#: 
+msgid "As of: %s"
+msgstr "基準日: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "選択した %d 会計年度について、確認日 %s までに、金額が正の家族の支払いが少なくとも1件あること"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "洗礼、選挙人名簿への申請、居住、陪餐資格、出席、良好な会員資格、および地域ごとの例外は、会則で求められる場合は別途確認してください。会員期間は出席の証明にはなりません。"
+
+#: 
+msgid "Choose an existing classification."
+msgstr "既存の分類を選んでください。"
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "確認する分類を少なくとも1つ選んでください。"
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "教会で使っている分類を選んでください。どの分類も、投票権を与えるとはみなされません。"
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "教会の指導者は、会則に基づいて資格を確認する必要があります。この一覧は、選択した条件に合う人だけを表示します。"
+
+#: 
+msgid "Classifications to review"
+msgstr "確認する分類"
+
+#: 
+msgid "Classifications: %s"
+msgstr "分類: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "逝去した人、無効な人と分類、および無効または確認待ちの家族と人は除外されます。"
+
+#: 
+msgid "Download Review List"
+msgstr "確認一覧をダウンロード"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "1900年から2200年の間の有効な確認日を入力してください。"
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "表示された範囲内の整数を入力してください。"
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "確認する会計年度数（0～100。0は献金の条件なし）"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "献金は個人ではなく家族単位で記録されます。家族の支払いがこの条件を満たすことを会則が認める場合にのみ、有効にしてください。各人が献金したことの証明にはなりません。対象期間には選択した会計年度が含まれ、終了は確認日より後にはなりません。"
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "含める最後の会計年度"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "最低年齢（0～120）"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "最低年齢: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "最低会員期間（月数）（0～1200）"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "最低会員期間: %d か月"
+
+#: 
+msgid "No donation requirement."
+msgstr "献金の条件はありません。"
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "これらの条件に合う人はいません。生年月日または入会日の不足を確認し、条件を調整してください。"
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "任意の家族献金条件"
+
+#: 
+msgid "People matching filters"
+msgstr "条件に合う人"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "必要な日付がないため除外された人"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "分類と、任意の年齢、会員期間、家族献金の条件を使って、教会が確認する一覧を作成します。"
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "会則に基づいて、教会が確認する一覧を作成します。"
+
+#: 
+msgid "Review date"
+msgstr "確認日"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "会則に基づいて条件を選び、権限のある教会指導者が一覧を確認してください。これらの条件に合うことは、投票資格を定めるものではありません。このレポートは資格を記録せず、選挙も行いません。"
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "投票会員 — 確認一覧"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "0にすると、任意の条件は無効になります。年齢には完全な生年月日が必要です。会員期間には入会日が必要です。必要な日付がない人は除外され、別に数えられます。逝去した人、無効な人と分類、および無効または確認待ちの家族と人は常に除外されます。過去の状態ではなく、現在の分類と状態が使われます。"
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "%s の請求額: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "選択したディレクトリに、非公開のPDF一時保存領域を作成できません。"
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "システムの一時ディレクトリを使う場合は、空のままにしてください。それ以外の場合は、ウェブから保護された、書き込み可能な既存のディレクトリを入力してください。"
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "PDF一時ディレクトリ"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "PDFの一時保存領域は、非公開で書き込み可能である必要があります。"
+
+#: 
+msgid "Reporting"
+msgstr "レポート"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "PDF一時ディレクトリが存在しないか、アクセスできません。"
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "PDF一時ディレクトリは、絶対パスである必要があります。"
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "教会の納税者番号（EIN）"
+
+#: 
+msgid "Closing Line"
+msgstr "結びの文"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "任意の利用状況送信を制御します。インストールとデータベースのアップグレードに失敗した場合は、利用状況送信がオフでも、限られた診断情報が PostHog に送られます。これらの失敗報告には、ソフトウェアと環境のバージョン、および不要な情報を除いたデータベースのエラーが含まれますが、インストールIDやSQL文は含まれません。"
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "失敗したインストールとデータベースのアップグレードを診断"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "インストールとアップグレードの失敗の詳細"
+
+#: 
+msgid "Open in browser window"
+msgstr "ブラウザのウィンドウで開く"
+
+#: 
+msgid "Opening Line"
+msgstr "冒頭の文"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "任意の利用状況は、有効なときだけ送られます。インストールとデータベースのアップグレードに失敗した場合は、「いいえ、不要です」を選んでも、コミュニティを助けるための限られた診断情報が常に送られます。失敗報告には、ソフトウェアと環境のバージョンと、不要な情報を除いたデータベースのエラーが含まれ、インストールIDやSQL文は含まれません。"
+
+#: 
+msgid "PDF Handling"
+msgstr "PDFの扱い"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF出力"
+
+#: 
+msgid "PDF handling mode"
+msgstr "PDFの扱い方"
+
+#: 
+msgid "Questions Line"
+msgstr "問い合わせの文"
+
+#: 
+msgid "Save File dialog"
+msgstr "ファイル保存ダイアログ"
+
+#: 
+msgid "Signer"
+msgstr "署名者"
+
+#: 
+msgid "Statement Settings"
+msgstr "明細書の設定"
+
+#: 
+msgid "Statement Wording"
+msgstr "明細書の文言"
+
+#: 
+msgid "Tax Information"
+msgstr "税務情報"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "利用状況は米国の PostHog に送られます。任意の利用状況送信が無効でも、インストールとアップグレードの失敗報告は送られます。"
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "この日付は取り消されました。これ以上ご対応いただく必要はありません。"
+
+#: 
+msgid "always sent"
+msgstr "常に送信"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "レターヘッドを削除できませんでした"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "レターヘッドを保存できませんでした"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "レターヘッドをアップロードできませんでした"
+
+#: 
+msgid "Greeting"
+msgstr "あいさつ"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "手紙のあいさっと署名"
+
+#: 
+msgid "Letterhead"
+msgstr "レターヘッド"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG、JPG、GIF、または WebP です。横長のバナーが適しています。例: 2000x300。"
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "献金明細書など、画像のレターヘッドを使うPDFの手紙の上部に印刷されます。ない場合は、教会名と住所が印刷されます。"
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "レターヘッドを削除しますか。手紙には教会名と住所が印刷されます。"
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "PDFの手紙に印刷するレターヘッドを設定"
+
+#: 
+msgid "Using the church name and address"
+msgstr "教会名と住所を使用"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "システム設定で指定したレターヘッドのパスを使用"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "献金明細書の文言、納税者番号、PDFの扱い"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s（%2$s として）"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s がメールアドレスになりました。会員ポータルへのサインインに使えます。"
+
+#: 
+msgid "+{{total}} more"
+msgstr "ほか {{total}} 件"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "メールアドレスの変更が依頼されました"
+
+#: 
+msgid "A family"
+msgstr "家族"
+
+#: 
+msgid "A group"
+msgstr "グループ"
+
+#: 
+msgid "A ministry"
+msgstr "ミニストリー"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "新しいアドレスは、そちらに送ったリンクを使うまで変更されません。"
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "パスキーは、メールアドレスでサインインしてから %d 分以内にのみ追加できます。サインアウトし、メールで再度サインインしてから、ここに戻ってください。"
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "パスキーを使うと、メールのコードなしで、Face ID、指紋、または端末の PIN でサインインできます。"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "会員ポータルのサインインにパスキーが追加されました"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "%2$s の %1$s に、%3$s から、会員ポータルのサインインにパスキーが追加されました。"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "%2$s の %1$s に、会員ポータルのサインインにパスキーが追加されました。"
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "そのアドレスを失う人は、自分専用のメールを持たなくなります。グループメールなど、その人だけに送るメールは送られず、メール作成画面にその旨が表示されます。"
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "年齢を非表示にしている人の記録には、生まれ年は表示されません。"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "%s に、会員ポータルでメールアドレスを %s から %s に変更する依頼がありました。変更は、%s に送ったリンクが使われたときだけ行われます。"
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "行の形式が正しくありません。"
+
+#: 
+msgid "A team"
+msgstr "チーム"
+
+#: 
+msgid "Add a passkey"
+msgstr "パスキーを追加"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "パスキーは、自分の電話またはパソコンにだけ追加してください。共用の端末や公共の端末には追加しないでください。"
+
+#: 
+msgid "Add an email"
+msgstr "メールを追加"
+
+#: 
+msgid "Added %s"
+msgstr "%s を追加しました"
+
+#: 
+msgid "Admin overrides"
+msgstr "管理者による個別許可"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "%s 家の成人"
+
+#: 
+msgid "Adult of the family"
+msgstr "家族の成人"
+
+#: 
+msgid "All events"
+msgstr "すべての行事"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "人物としてログインを許可"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "人物としてログイン中の変更を許可"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "管理者が人物としてログインしている間の変更を許可します。オフのときは、人物としてログインは閲覧専用です。"
+
+#: 
+msgid "Already held by a family member"
+msgstr "すでに家族の一員が持っています"
+
+#: 
+msgid "Also used by"
+msgstr "ほかに使用している人"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "管理者は、その人のページで任意の権限を1人に与えられます。その後、ここに「管理者による個別許可」と、与えられた人数が表示されます。"
+
+#: 
+msgid "Another person already uses this address"
+msgstr "別の人がすでにこのアドレスを使っています"
+
+#: 
+msgid "Applies to"
+msgstr "対象"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "ボランティアチームの代理依頼を承認または辞退します。"
+
+#: 
+msgid "Ask for a new email"
+msgstr "新しいメールを依頼"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "権限はログインではなく人に与えられるため、ログインを持つ前にも付与できます。会員ポータルだけにサインインする人は、管理者がスタッフアカウントを与えるまで、自分の予定だけを見ます。"
+
+#: 
+msgid "Awaiting review"
+msgstr "確認待ち"
+
+#: 
+msgid "Back to sign-in"
+msgstr "サインインに戻る"
+
+#: 
+msgid "Browse the full directory"
+msgstr "名簿全体を見る"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "会員ポータルにサインインできます"
+
+#: 
+msgid "Can sign in?"
+msgstr "サインインできますか"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "サインインできる唯一の管理者のサインインは、無効にできません。"
+
+#: 
+msgid "Cannot sign in"
+msgstr "サインインできません"
+
+#: 
+msgid "Change family details"
+msgstr "家族の情報を変更"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "家族の住所と連絡先を変更し、確認のため家族の一員を追加します。"
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "自分の氏名、連絡先、写真を変更します。"
+
+#: 
+msgid "Changed"
+msgstr "変更済み"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "その人がサインインしたあとで変更されました"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "その人がサインインしたあと、取り込みによって変更されました"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "その人がサインインしたあと、スタッフによって変更されました"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "その人がサインインしたあと、API を通じて変更されました"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "人物としてログイン中は、変更がオフになっています。"
+
+#: 
+msgid "Changes needed"
+msgstr "変更が必要です"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "変更は行うたびに保存されます。"
+
+#: 
+msgid "Check your email"
+msgstr "メールをご確認ください"
+
+#: 
+msgid "Choose a permission"
+msgstr "権限を選んでください"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "権限、その対象、最終日を選び、理由を記入してください。"
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "写真を選ぶか、自撮りをしてください"
+
+#: 
+msgid "Choose a theme"
+msgstr "テーマを選んでください"
+
+#: 
+msgid "Choose at least one row."
+msgstr "少なくとも1行を選んでください。"
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "一度に選べるのは最大 %d 行です。"
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "一覧から日付の表示方法を選んでください。"
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "この権限の最終日を選んでください。"
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "権限の対象を選んでください。"
+
+#: 
+msgid "Choose yes or no."
+msgstr "はい、またはいいえを選んでください。"
+
+#: 
+msgid "Church Office"
+msgstr "教会事務所"
+
+#: 
+msgid "Church country"
+msgstr "教会の国"
+
+#: 
+msgid "Church default: %s"
+msgstr "教会の既定: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "教会指導者のサインイン"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "会員ポータルにサインインできる分類です。分類IDをカンマ区切りで指定します。"
+
+#: 
+msgid "Clear selection"
+msgstr "選択を解除"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "コード、セッション、端末"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "メールアドレスを確認"
+
+#: 
+msgid "Confirm email address"
+msgstr "メールアドレスを確認"
+
+#: 
+msgid "Confirm family details"
+msgstr "家族の情報を確認"
+
+#: 
+msgid "Confirm selected"
+msgstr "選択したものを確認"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "対面または電話で、この人本人のアドレスであることを確かめてから、このメールを確認してください。確認後は、会員ポータルへのサインインに使えます。"
+
+#: 
+msgid "Confirm your email address"
+msgstr "メールアドレスを確認してください"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "新しいメールアドレスを確認してください"
+
+#: 
+msgid "Confirmed"
+msgstr "確認済み"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "日付は YYYY-MM-DD の形式で入力してください。"
+
+#: 
+msgid "Decide substitute requests"
+msgstr "代理依頼を判断"
+
+#: 
+msgid "Device"
+msgstr "端末"
+
+#: 
+msgid "Device remembered"
+msgstr "端末を記憶しました"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "端末とパスキー"
+
+#: 
+msgid "Directory classifications"
+msgstr "名簿の分類"
+
+#: 
+msgid "Directory section"
+msgstr "名簿の項目"
+
+#: 
+msgid "Disable sign-in"
+msgstr "サインインを無効にする"
+
+#: 
+msgid "Do not show"
+msgstr "表示しない"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "それぞれに、ほかの誰も使わない自分専用のメールも必要です。"
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "サインイン用のメールは、限られた時間に1回だけ使えます。新しいメールが届くと、前のものは置き換わります。"
+
+#: 
+msgid "Edit my details"
+msgstr "自分の情報を編集"
+
+#: 
+msgid "Email address changed"
+msgstr "メールアドレスが変更されました"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "入力されたメールアドレス: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "確認するメールアドレス: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "メールが変更されました"
+
+#: 
+msgid "Email code"
+msgstr "メールのコード"
+
+#: 
+msgid "Email confirmed"
+msgstr "メールを確認しました"
+
+#: 
+msgid "Email link"
+msgstr "メールのリンク"
+
+#: 
+msgid "Email me a code"
+msgstr "コードをメールで送る"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "確認リンクをメールで送る"
+
+#: 
+msgid "Email needs attention"
+msgstr "メールの確認が必要です"
+
+#: 
+msgid "Email problem"
+msgstr "メールの問題"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "メールで送ったサインインのコードとリンクを取り消しました"
+
+#: 
+msgid "Emailed verification link"
+msgstr "メールで送った確認リンク"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "確認したメール: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "サインインを有効にする"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "この人の会員ポータルのセッションをすべて終了し、記憶した端末を忘れますか。パスキーは残るため、再度サインインできます。"
+
+#: 
+msgid "Ended %s"
+msgstr "%s に終了"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "サインインの変更によって終了しました"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "会員サインインがオフになったときに終了しました"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "%1$d から %2$d までの整数を入力してください。"
+
+#: 
+msgid "Enter your email address."
+msgstr "メールアドレスを入力してください。"
+
+#: 
+msgid "Every kind"
+msgstr "すべての種類"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "会員のサインイン、拒否、サインインの変更を、新しい順に表示します。コード、リンク、パスキーは含まれません。"
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "掲載されている全員を A から Z の順に表示し、検索欄を付けます。"
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "サインインの規則で入れる人は、その後、自分のメールで会員ポータルにサインインできます。"
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "過去30日間に会員ポータルへサインインした人を、新しい順に表示します。"
+
+#: 
+msgid "Everywhere"
+msgstr "すべての場所"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "過去30日間に、会員ポータルまたはメールの確認リンクから、会員が確認した家族です。"
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "過去30日間に確認された家族"
+
+#: 
+msgid "Family details confirmed"
+msgstr "家族の情報を確認しました"
+
+#: 
+msgid "Family email"
+msgstr "家族のメール"
+
+#: 
+msgid "Family emails not moved"
+msgstr "移動しなかった家族のメール"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "会員ポータルにサインインできる家族内の役割です。役割IDをカンマ区切りで指定します。"
+
+#: 
+msgid "Find someone"
+msgstr "人を探す"
+
+#: 
+msgid "Fix by hand"
+msgstr "手作業で直す"
+
+#: 
+msgid "Fix shared emails"
+msgstr "共有メールを直す"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "スタッフのサインインから"
+
+#: 
+msgid "Give a permission"
+msgstr "権限を与える"
+
+#: 
+msgid "Give a portal permission"
+msgstr "ポータルの権限を与える"
+
+#: 
+msgid "Give each person their own email"
+msgstr "一人ひとりに専用のメールを与えてください"
+
+#: 
+msgid "Give permission"
+msgstr "権限を与える"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "%1$s が %2$s まで付与"
+
+#: 
+msgid "Given by %s"
+msgstr "%s が付与"
+
+#: 
+msgid "Given to"
+msgstr "付与先"
+
+#: 
+msgid "Given to Everyone"
+msgstr "全員に付与"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "付与済みですが、有効ではありません"
+
+#: 
+msgid "Go to sign in"
+msgstr "サインインへ"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "会員ポータルへ"
+
+#: 
+msgid "Has signed in"
+msgstr "サインイン済み"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "サインイン済み: セッションと端末は終了します"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "会員ポータルにサインインするコードです。依頼したブラウザのサインインページに入力してください。または、ボタンを押してこの端末でサインインしてください。"
+
+#: 
+msgid "Hide Permissions"
+msgstr "権限を隠す"
+
+#: 
+msgid "How"
+msgstr "方法"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "1つの IP アドレスが1時間に依頼できる、会員ポータルのサインインメールの数です。制限しない場合は 0 にしてください。たとえば、全員が1つのアドレス経由で ChurchCRM にアクセスする場合です。"
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "会員がサインインを維持すると選んだあと、端末が会員ポータルにサインインしたままになる日数です。その選択をなくすには 0 にしてください。"
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "操作がない状態が何分続くと、会員ポータルのセッションが終了するかです。"
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "会員ポータルのサインイン用コードとリンクが有効な分数です。"
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "待機時間（分）"
+
+#: 
+msgid "Idle too long"
+msgstr "待機時間が長すぎます"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "%1$s が新しいアドレスであれば、下のボタンで確認してください。確認されるまで、サインインには使えません。リンクは %2$s まで、1回だけ使えます。"
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "このアドレスでサインインできる場合は、コードをメールで送りました。数分たっても届かない場合は、教会事務所にお問い合わせください。"
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "ご自身で追加していない場合は、「サインインと端末」のページで削除し、教会事務所にご連絡ください。"
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "この変更を依頼していない場合は、教会事務所にご連絡ください。"
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "これを依頼していない場合は、教会事務所にご連絡ください。"
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "期限切れか、すでに使われた可能性があります。ご不明な点は、教会事務所にご連絡ください。"
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "そのプラグインはインストールされていません"
+
+#: 
+msgid "Jump to a letter"
+msgstr "文字へ移動"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "サインインを維持する（日数）"
+
+#: 
+msgid "Keeps it"
+msgstr "維持する"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "未確認メールの種類"
+
+#: 
+msgid "Last day"
+msgstr "最終日"
+
+#: 
+msgid "Last used"
+msgstr "最終使用"
+
+#: 
+msgid "Last used %s"
+msgstr "最終使用 %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "%s のリーダー"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "会員サインインがオンのとき、管理者がその人の操作メニューから、その人として会員ポータルを開けるようにします。"
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "会員がパスキーを追加し、そのパスキーで会員ポータルにサインインできるようにします。"
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "会員が自分のメールアドレスで会員ポータルにサインインできるようにします。メール送信が動作しているときだけ、オンにできます。"
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "会員がメールでサインインできるようにする"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "リンクとコードの有効時間（分）"
+
+#: 
+msgid "Login as %s"
+msgstr "%s としてログイン"
+
+#: 
+msgid "Login as Person"
+msgstr "人物としてログイン"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "人物としてログインを開始できませんでした。"
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "人物としてログインが終了しました: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "人物としてログインの履歴"
+
+#: 
+msgid "Login as Person started"
+msgstr "人物としてログインを開始しました"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "人物としてログインを停止しました"
+
+#: 
+msgid "Look up anyone"
+msgstr "誰でも検索"
+
+#: 
+msgid "Loses it"
+msgstr "失う"
+
+#: 
+msgid "Manage a team"
+msgstr "チームを管理"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "自分のサインインと端末を管理"
+
+#: 
+msgid "Matches: %s"
+msgstr "一致: %s"
+
+#: 
+msgid "May sign in"
+msgstr "サインインできる場合があります"
+
+#: 
+msgid "May sign in now"
+msgstr "今すぐサインインできます"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "会員ポータルのサインインコード"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "会員ポータルのサインイン通知"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "会員、およびスタッフのサインインからポータルを開くスタッフについて、会員ポータルのサインインと活動です。"
+
+#: 
+msgid "Member sign-in"
+msgstr "会員サインイン"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "会員サインインは一人ひとりにコードをメールで送るため、オンにする前にメール（SMTP）が動作している必要があります。"
+
+#: 
+msgid "Member sign-in is off"
+msgstr "会員サインインはオフです"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "教会の会員サインインはオフです。"
+
+#: 
+msgid "Member sign-in is off."
+msgstr "会員サインインはオフです。"
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "会員サインインはまだ利用できません。教会事務所にご連絡ください。"
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "会員サインインは、逝去した人、無効な人、無効な家族に属する人、確認待ちの人、または「サインインを無効にする」がオンの人を入れません。それ以外の誰を入れるかは、これらの選択で決まります。"
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "会員サインインは各会員にコードをメールで送るため、ChurchCRM がメールを送れるときだけオンにできます。先にメールをオンにし、メールサーバーを設定してください。"
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "少なくとも1つのカレンダーがオンのとき、会員はカレンダーのページを見られます。"
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "会員は氏名の少なくとも %d 文字を入力し、最大 %d 件の一致を見ます。一覧全体は表示されません。"
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "現在サインインしている会員はサインアウトされ、会員サインインが再びオンになるまで、誰もメールでサインインできません。"
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "これらの分類の会員は、会員ポータルのメニューに名簿を見つけます。"
+
+#: 
+msgid "Minimum age"
+msgstr "最低年齢"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "次の1時間にこのアドレスで再度試しても、別の通知は送られません。"
+
+#: 
+msgid "Moved from the family email"
+msgstr "家族のメールから移動しました"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "世帯主に移動しました"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "配偶者に移動しました"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "教会は初めてですか。ご家族のことをお知らせください。歓迎のためご連絡します。"
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "人物としてログインのセッションはまだありません。"
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "生年月日がなく、世帯主でも配偶者でもありません"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "オンのカレンダーがないため、会員はカレンダーのページを見られません。"
+
+#: 
+msgid "No changes"
+msgstr "変更なし"
+
+#: 
+msgid "No changes made."
+msgstr "変更はありません。"
+
+#: 
+msgid "No family role"
+msgstr "家族内の役割がありません"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "家族のメールを受け取れる世帯主または配偶者がいません。"
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "世帯主も配偶者も、これを共有していません"
+
+#: 
+msgid "No match"
+msgstr "一致なし"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "まだサインインの規則に合う人はいません。家族内の役割または分類をさらに選ぶか、最低年齢を下げてください。"
+
+#: 
+msgid "No passkey was added."
+msgstr "パスキーは追加されませんでした。"
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "パスキーは使われませんでした。もう一度試すか、メールアドレスでサインインしてください。"
+
+#: 
+msgid "No person has this email"
+msgstr "このメールを持つ人はいません"
+
+#: 
+msgid "No personal email"
+msgstr "個人のメールがありません"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "サインインを止める共有メールはありません。"
+
+#: 
+msgid "No such person"
+msgstr "そのような人はいません"
+
+#: 
+msgid "No, thanks"
+msgstr "いいえ、不要です"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "サインインできる二人が共有する個人メールでは、誰もサインインできません。1つの家族内で共有されているアドレスは、世帯主が維持し、世帯主がいなければ配偶者（年長の人を優先）が維持します。それ以外で共有している人は、そのアドレスを失います。別の方法で直したいものは、選択を外してください。"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "まだ誰もサインインできません。「サインインできる人」で、分類を少なくとも1つ選んでください。"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "まだ誰もサインインできません。「サインインできる人」で、家族内の役割と分類をそれぞれ少なくとも1つ選んでください。"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "まだ誰もサインインできません。「サインインできる人」で、家族内の役割を少なくとも1つ選んでください。"
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "名簿に、その名前に合う人はいません。"
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "名簿には、まだ誰も載っていません。"
+
+#: 
+msgid "Not ended"
+msgstr "終了していません"
+
+#: 
+msgid "Not moved"
+msgstr "移動していません"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "どのメールが登録されているか分からない場合は、教会事務所にご連絡ください。"
+
+#: 
+msgid "Not yet"
+msgstr "まだです"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "家族のタイムラインに記録しました"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "そのうち、サインインしたことがある人: {{total}}。すべての場所でサインアウトされ、そのアドレスに通知が送られます。"
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "全員に対してオフ: 「%s」がオフです"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "全員に対してオフ: ボランティア管理が V2 に設定されていません"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "全員に対してオフ: その機能がオフです"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "全員に対してオフ: そのプラグインがオフです"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "全員に対してオフ: 会員と共有されているカレンダーがありません"
+
+#: 
+msgid "Office list"
+msgstr "事務所の一覧"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "確認されると、会員ポータルへのサインインに使えます。"
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "確認できるアドレスだけを選択できます。"
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "理由を見られるのは、管理者だけです。"
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "スタッフアカウントまたはポータルの権限を持つ人のメールを変更できるのは、管理者だけです。"
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "その人がサインインに使っていたメールを置き換えたメールを確認できるのは、管理者だけです。"
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "スタッフアカウントまたはポータルの権限を持つ人のメールを確認できるのは、管理者だけです。"
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "このアドレスを直せるのは管理者だけです。共有している人に、スタッフアカウントまたはポータルの権限があります。"
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "これらの情報を確認できるのは、ご家族の成人だけです。教会事務所にご連絡ください。"
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "その人のものであると分かっているアドレスだけを確認してください。アドレスを読める人は、その人としてサインインできます。"
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "自分専用のメールを持つ、存命の人だけが、事務所の一覧に載れます。"
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "自分専用のメールを持つ人だけを追加できます。"
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "任意の利用状況には、ページの経路、使用中の言語、CRM のバージョン、PHP のバージョン、OS の種類、教会情報の設定にある国、および無作為なインストールIDが含まれることがあります。失敗報告にはインストールIDは含まれません。データは米国の PostHog に送られます。"
+
+#: 
+msgid "Passkey"
+msgstr "パスキー"
+
+#: 
+msgid "Passkey added"
+msgstr "パスキーを追加しました"
+
+#: 
+msgid "Passkey removed"
+msgstr "パスキーを削除しました"
+
+#: 
+msgid "Passkeys"
+msgstr "パスキー"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "パスキーはオフです。"
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "ここではパスキーを使えません。"
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "このサイトでは、まだパスキーを使えません。教会事務所にご連絡ください。"
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "パスキーには、サイトのアドレスに IP アドレスではなくホスト名が必要です。"
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "パスキーには、このサイトへの安全な接続（HTTPS）が必要です。"
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "パスキーには、Config.php にサイトのアドレスが設定されている必要があります。"
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "パスキーには、サイトが HTTPS で提供されている必要があります。そうなるまで、会員にはパスキーは表示されません。"
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "パスキーは %s でのみ動作します。"
+
+#: 
+msgid "Passkeys: %d"
+msgstr "パスキー: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "保存した設定で入れる人: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "会員ポータルにサインインできなかった人を、メールで知らせる相手"
+
+#: 
+msgid "People who hold it"
+msgstr "持っている人"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "アドレスを失う人: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "アドレスを失った人: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "サインインできる人: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "以前は会員ポータルにサインインしていた人: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "これらの分類の人が名簿に表示されます。数字は、各分類を持つ有効な人の数です。"
+
+#: 
+msgid "People with this email: %s"
+msgstr "このメールを持つ人: %s"
+
+#: 
+msgid "Person %d"
+msgstr "人物 %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "一覧から分類を選んでください。"
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "一覧から家族内の役割を選んでください。"
+
+#: 
+msgid "Pick people for the office list."
+msgstr "事務所の一覧に載せる人を選んでください。"
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "一覧から言語を選んでください。"
+
+#: 
+msgid "Portal permission given"
+msgstr "ポータルの権限を与えました"
+
+#: 
+msgid "Portal permission removed"
+msgstr "ポータルの権限を削除しました"
+
+#: 
+msgid "Portal permissions"
+msgstr "ポータルの権限"
+
+#: 
+msgid "Portal sign-in"
+msgstr "ポータルのサインイン"
+
+#: 
+msgid "Problem"
+msgstr "問題"
+
+#: 
+msgid "Reason"
+msgstr "理由"
+
+#: 
+msgid "Reason: %s"
+msgstr "理由: %s"
+
+#: 
+msgid "Refused"
+msgstr "拒否されました"
+
+#: 
+msgid "Register your family"
+msgstr "ご家族を登録"
+
+#: 
+msgid "Remembered device"
+msgstr "記憶した端末"
+
+#: 
+msgid "Remembered device removed"
+msgstr "記憶した端末を削除しました"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "記憶した端末: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "メールを削除"
+
+#: 
+msgid "Remove this passkey"
+msgstr "このパスキーを削除"
+
+#: 
+msgid "Remove this permission"
+msgstr "この権限を削除"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "削除元: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "サインインのあとで置き換えられました"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "別のサインインによって置き換えられました"
+
+#: 
+msgid "Result"
+msgstr "結果"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "ボランティアチームを運営します。役割、ボランティア、予定、人員配置、人数です。"
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "サインインを無効にする理由を記入してください。"
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "この権限を与える理由を記入してください。"
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "登録されている人を検索します。各行には、会員ポータルにサインインできるか、できない場合はその理由が表示されます。"
+
+#: 
+msgid "Search method"
+msgstr "検索方法"
+
+#: 
+msgid "Search only"
+msgstr "検索のみ"
+
+#: 
+msgid "See family contact details"
+msgstr "家族の連絡先を見る"
+
+#: 
+msgid "See my family"
+msgstr "自分の家族を見る"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "この人から見た会員ポータルを見ますか。停止を押すまで、スタッフのページは閉じたままです。セッションは、このページとあなたのユーザーページに記録されます。"
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "教会が会員と共有するカレンダーを見て、購読します。"
+
+#: 
+msgid "See the church calendar"
+msgstr "教会のカレンダーを見る"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "その人をサインインさせる端末とパスキーを見て、サインアウトまたは削除します。"
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "家族の人のメールアドレスと電話番号を見ます。"
+
+#: 
+msgid "See the member directory"
+msgstr "会員名簿を見る"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "家族の人の氏名と写真を見ます。"
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "教会が名簿に載せる人と、教会が共有すると選んだ詳細を見ます。"
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "自分のボランティア予定を見て、空きに申し込み、代理を依頼します。"
+
+#: 
+msgid "Send browse as true or false."
+msgstr "browse を true または false として送ってください。"
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "分類を ID の一覧として送ってください。"
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "名簿の設定を JSON オブジェクトとして送ってください。"
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "表示する項目を、true と false の値を持つオブジェクトとして送ってください。"
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "設定を JSON オブジェクトとして送ってください。"
+
+#: 
+msgid "Session ended"
+msgstr "セッションが終了しました"
+
+#: 
+msgid "Set up email"
+msgstr "メールを設定する"
+
+#: 
+msgid "Set up email first."
+msgstr "先にメールを設定してください。"
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "直した共有アドレス: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "直す共有アドレス: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "共有者"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "サインインを止める共有メール"
+
+#: 
+msgid "Show or hide this member"
+msgstr "この会員を表示または非表示にする"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "下で選んだ分類に、会員ポータルの名簿ページを表示します。"
+
+#: 
+msgid "Show the member directory"
+msgstr "会員名簿を表示"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "会員ポータルに会員名簿を表示します。"
+
+#: 
+msgid "Show with year"
+msgstr "年を表示"
+
+#: 
+msgid "Show without year"
+msgstr "年を表示しない"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "最初の %d 件の一致を表示しています。探している人を見つけるには、名前をもっと入力してください。"
+
+#: 
+msgid "Sign in as %s?"
+msgstr "%s としてサインインしますか。"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "次回は、この端末で Face ID、指紋、または端末の PIN でサインインします。"
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "サインインすると、ご家族、教会のカレンダー、奉仕の方法を見られます。パスワードやアカウントは不要です。"
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "パスキーでサインイン"
+
+#: 
+msgid "Sign out every device"
+msgstr "すべての端末からサインアウト"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "今すぐすべての端末からサインアウトしますか。"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "すべての場所からサインアウト"
+
+#: 
+msgid "Sign out this device"
+msgstr "この端末からサインアウト"
+
+#: 
+msgid "Sign-in"
+msgstr "サインイン"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "サインインと端末"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "サインインを無効にできませんでした。"
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "サインインを有効にできませんでした。"
+
+#: 
+msgid "Sign-in disabled"
+msgstr "サインインは無効です"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "サインインのメールを依頼しました"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "IP アドレスあたり1時間のサインインメール数"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "サインインは有効です"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "この人のサインインは、すでに無効です。"
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "サインインは無効です"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "この人のサインインは無効です。"
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "この人のサインインは有効です。"
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "この人のサインインは、無効になっていません。"
+
+#: 
+msgid "Sign-in refused"
+msgstr "サインインは拒否されました"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "リンクされた人の記録でこれが解決するまで、サインイン、セッション、API キーはブロックされます。"
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "過去30日間のサインイン"
+
+#: 
+msgid "Signed out"
+msgstr "サインアウトしました"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "サインインの変更によりサインアウトしました"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "すべての場所でサインアウトしました"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "会員ポータルのサインインメールが依頼されましたが、送られませんでした。"
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "会員ポータルにサインインできない人がいました"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "人物としてログイン中は、スタッフのページは閉じたままです。戻るには、バナーの停止を押してください。"
+
+#: 
+msgid "Stop"
+msgstr "停止"
+
+#: 
+msgid "Stopped"
+msgstr "停止しました"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "家族の情報が今も正しいかを、教会事務所にお知らせください。"
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "そのコードは使えませんでした。最新のメールを確認するか、新しいコードを依頼してください。"
+
+#: 
+msgid "That could not be removed."
+msgstr "削除できませんでした。"
+
+#: 
+msgid "That device is signed out."
+msgstr "その端末はサインアウトしました。"
+
+#: 
+msgid "That is not a valid email address."
+msgstr "有効なメールアドレスではありません。"
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "そのページを開いたまま、時間がたちすぎました。もう一度お試しください。"
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "そのパスキーは削除されました。これ以上、サインインには使えません。"
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "時間がかかりすぎました。もう一度お試しください。"
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "7.8.3 のアップグレードでは、各家族のメールを人に割り当てました。割り当てられなかったものは、代わりに家族のタイムラインにメモを残しました。"
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "会員ポータルと、そこから送られるメールは、この言語を使います。"
+
+#: 
+msgid "The change could not be saved."
+msgstr "変更を保存できませんでした。"
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "コードとボタンは、%s まで1回だけ使えます。"
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "コードまたはリンクは、もうその人のメールではないアドレスに送られました"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "確認メールを送れませんでした。あとでもう一度お試しください。"
+
+#: 
+msgid "The device is signed out."
+msgstr "端末はサインアウトしました。"
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "%1$s に、メールアドレス %2$s が記録から削除されました。すべての端末で、会員ポータルからサインアウトされました。"
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "%1$s に、記録のメールアドレスが %2$s から %3$s に変更されました。すべての端末で、会員ポータルからサインアウトされました。"
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "メールを確認できませんでした。"
+
+#: 
+msgid "The email could not be sent."
+msgstr "メールを送れませんでした。"
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "メールは確認されました。サインインに使えます。"
+
+#: 
+msgid "The end date is before the start date."
+msgstr "終了日が開始日より前です。"
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "家族に、存命で有効な世帯主または配偶者がいません"
+
+#: 
+msgid "The family is inactive"
+msgstr "家族は無効です"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "世帯主と配偶者の両方が、自分専用のメールを持っています"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "最終日を過去にすることはできません。"
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "リンクされた人はサインインできないため、このアカウントはサインインできません"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "一覧を読み込めませんでした。"
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "パスキーを追加できませんでした。もう一度お試しください。"
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "パスキーを確認できませんでした"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "パスキーは記録にないか、削除されています"
+
+#: 
+msgid "The passkey was removed."
+msgstr "パスキーは削除されました。"
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "共有している人は別の家族にいるか、家族に属していません"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "このアドレスを共有する人が変わりました。「共有メールを直す」を再度開いてください。"
+
+#: 
+msgid "The permission could not be given."
+msgstr "権限を与えられませんでした。"
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "権限はこの日のあとで終了します。再度与えることができます。"
+
+#: 
+msgid "The permission was given."
+msgstr "権限を与えました。"
+
+#: 
+msgid "The permission was removed."
+msgstr "権限を削除しました。"
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "権限を読み込めませんでした。"
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "その人は、会員ポータルでこの権限を直ちに失います。"
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "理由は最大 %d 文字です。"
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "サインインの規則で入れ、それぞれが、サインインできるほかの誰も使わない自分専用のメールを持っています。"
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "サインインの規則では入れますが、メールでは入れません。メールがない、サインインできる別の人と共有している、またはまだ確認されていないためです。"
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "サインインの設定を保存できませんでした。"
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "未確認のメールが変わりました。ページを再読み込みして、もう一度お試しください。"
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "その分類はサインインできません"
+
+#: 
+msgid "Their email changed"
+msgstr "メールが変わりました"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "メールはまだ確認されていません"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "メールがほかの人と共有されています"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "その家族内の役割はサインインできません"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "以前のログインはアップグレードで削除されました。自分のメールでサインインできるよう、会員サインインをオンにしてください。"
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "記憶した端末の期限が切れていました"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "記憶した端末はサインアウトされました"
+
+#: 
+msgid "Theme development"
+msgstr "テーマの開発"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "ID %d の分類はありません。"
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "この種類の範囲を選ぶ画面はありません。"
+
+#: 
+msgid "There is no such audit event."
+msgstr "そのような監査イベントはありません。"
+
+#: 
+msgid "There is no such email problem."
+msgstr "そのようなメールの問題はありません。"
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "そのような未確認メールの種類はありません。"
+
+#: 
+msgid "There is no such list."
+msgstr "そのような一覧はありません。"
+
+#: 
+msgid "There is no such portal permission."
+msgstr "そのようなポータルの権限はありません。"
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "サインインを維持すると選んだ電話とパソコンです。使っていないものや、見覚えのないものは、サインアウトしてください。"
+
+#: 
+msgid "They have a staff account"
+msgstr "スタッフアカウントを持っています"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "サインインできますが、まだしていません。"
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "この操作には、サインイン済みのブラウザセッションが必要です。"
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "このアドレスは変更できませんでした。「共有メールを直す」を再度開き、状態を確認してください。"
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "このアドレスは、サインインできる人には共有されていません。"
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "このブラウザはパスキーを作成できません。"
+
+#: 
+msgid "This device"
+msgstr "この端末"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "この端末には、すでにあなたのパスキーがあります。"
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "この端末は、その人のサインインを維持しなくなり、開いているセッションは終了します。メールで再度サインインできます。"
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "これは自分の端末です。サインインを維持してください。"
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "ここで来客について決めます。数字は、各分類を持つ有効な人の数です。"
+
+#: 
+msgid "This link cannot be used"
+msgstr "このリンクは使えません"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "このリンクは期限切れか、すでに使われています"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "会員ポータルのこの部分は、ご利用いただけません。"
+
+#: 
+msgid "This passkey is already on record."
+msgstr "このパスキーは、すでに記録されています。"
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "このパスキーでは、その人はサインインできなくなります。メールでサインインし、新しいパスキーを追加できます。"
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "この権限は、人のページでは与えられません。"
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "この人は、与えられる権限をすでにすべて持っています。"
+
+#: 
+msgid "This person already has this permission."
+msgstr "この人は、この権限をすでに持っています。"
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "この人は、会員ポータルにもスタッフとしても、どこにもサインインできなくなります。すべてのセッションが終了し、記憶した端末とパスキーは削除されます。"
+
+#: 
+msgid "This person could not be signed out."
+msgstr "この人をサインアウトできませんでした。"
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "この人はスタッフアカウントを持っています。人物としてログインでは、スタッフアカウントは開きません。"
+
+#: 
+msgid "This person has no such passkey."
+msgstr "この人に、そのようなパスキーはありません。"
+
+#: 
+msgid "This person has no such permission."
+msgstr "この人に、そのような権限はありません。"
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "この人に、そのような記憶した端末はありません。"
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "この人に、未確認のメールはありません。"
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "この人は会員ポータルにサインインしたことがあります。このメールを変えると、すべての場所でサインアウトされ、新しいアドレスは確認されるまでサインインに使えません。"
+
+#: 
+msgid "This person is deceased."
+msgstr "この人物は故人です"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "この人は、すべての場所で会員ポータルからサインアウトされています。"
+
+#: 
+msgid "This person no longer exists."
+msgstr "この人は、もう存在しません。"
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "ここを含め、すべての場所でサインアウトし、すべての端末を忘れます。メールアドレスで再度サインインできます。"
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "ここを含め、すべての場所でサインアウトし、すべての端末を忘れます。パスキーは残ります。パスキーまたはメールアドレスで再度サインインできます。"
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "このツールは、これらを変更しません。記録の上で、一人ひとりに専用のメールを与えてください。"
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "自分の電話またはパソコンでのみ選んでください。共用の端末や公共の端末では選ばないでください。"
+
+#: 
+msgid "Time: %s"
+msgstr "時刻: %s"
+
+#: 
+msgid "Timed out"
+msgstr "時間切れ"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "このメールを変更するには、教会事務所にご連絡ください。"
+
+#: 
+msgid "To fix"
+msgstr "直す対象"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "自分の電話またはパソコンでサインインを維持するには、次回サインインするとき「これは自分の端末です」を選んでください。"
+
+#: 
+msgid "Too many attempts"
+msgstr "試行回数が多すぎます"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "今日のサインインメールが多すぎます"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "このメールアドレスへのサインイン依頼が多すぎます"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "この IP アドレスからのサインイン依頼が多すぎます"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "誤ったコードが多すぎます"
+
+#: 
+msgid "Turn off"
+msgstr "オフにする"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "会員サインインをオフにしますか。"
+
+#: 
+msgid "Turn on"
+msgstr "オンにする"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "会員サインインをオンにする"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "会員サインインをオンにしますか。"
+
+#: 
+msgid "Type a name"
+msgstr "名前を入力"
+
+#: 
+msgid "Type a name or email"
+msgstr "名前またはメールを入力"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "名前の少なくとも %d 文字を入力してから、検索してください。"
+
+#: 
+msgid "Unconfirmed email"
+msgstr "未確認のメール"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "ChurchCRM がどこで使われているかを把握"
+
+#: 
+msgid "Unknown device"
+msgstr "不明な端末"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "不明な名簿の項目: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "不明な名簿の設定: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "名前のない端末"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "名前のないパスキー"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "教会事務所が確認するまで、新しいアドレスはサインインに使えません。"
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "%3$s において、%2$s のメールアドレスとして %1$s を使いますか。"
+
+#: 
+msgid "Use a different email address"
+msgstr "別のメールアドレスを使う"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "この端末でパスキーを使いますか。"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "下のボタンを使い、%2$s でのメールアドレスが %1$s であることを確認してください。リンクは %3$s まで、1回だけ使えます。"
+
+#: 
+msgid "User %d"
+msgstr "ユーザー %d"
+
+#: 
+msgid "View Permissions"
+msgstr "権限を見る"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "%s の確認をお待ちしています。そのアドレスに送ったリンクを使ってください。"
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "{{email}} の確認をお待ちしています。そのアドレスに送ったリンクを使ってください。"
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "メールを送れませんでした。あとでもう一度お試しになるか、教会事務所にご連絡ください。"
+
+#: 
+msgid "We could not sign you in"
+msgstr "サインインできませんでした"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "%s にリンクをメールで送りました。新しいメールアドレスの確認に使ってください。"
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "{{email}} にリンクを送りました。そのリンクを使うと、メールが変わります。"
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "サインイン用のコードとリンクを、メールで送ります。"
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "ようこそ。およそ3分で終わります。"
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "ご家族が加わってくださり、うれしく思います。登録を受け付けました。担当者から、歓迎のためまもなくご連絡します。"
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "結婚記念日"
+
+#: 
+msgid "Welcome"
+msgstr "ようこそ"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "付与の対象は、もう存在しません"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "会員がポータルで見られること、できること、各権限の出所です。人数は、サインインの規則で入れる人と、スタッフの中で数えられます。"
+
+#: 
+msgid "What members can use"
+msgstr "会員が使えるもの"
+
+#: 
+msgid "What to do"
+msgstr "すること"
+
+#: 
+msgid "Who can see it"
+msgstr "誰が見られるか"
+
+#: 
+msgid "Who is listed"
+msgstr "誰が載るか"
+
+#: 
+msgid "Who may sign in"
+msgstr "サインインできる人"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "会員ポータルにサインインできる人、した人、メールが妨げている人です。一覧は、サインインのタブの規則に従います。"
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "会員ポータルの名簿に載る人、見られる人、表示内容です。管理 -> 会員ポータル -> 名簿で選びます。"
+
+#: 
+msgid "Why"
+msgstr "理由"
+
+#: 
+msgid "Why not"
+msgstr "できない理由"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "端末が先ほど置き換えたトークンを使用"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "はい、パスキーを追加します"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "はい、このパスキーを削除します"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "はい、すべての端末からサインアウトします"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "このメールを確認する権限がありません。"
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "どの端末でも、サインインは維持されていません。"
+
+#: 
+msgid "You are signed out on every device."
+msgstr "すべての端末でサインアウトしました。"
+
+#: 
+msgid "You are signed out on this device."
+msgstr "この端末でサインアウトしました。"
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "メールアドレスでもサインインできます。"
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "自分のサインインは無効にできません。"
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "会員ポータルを開けません。教会事務所にご連絡ください。"
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "メールの変更を依頼した回数が多すぎます。あとでもう一度お試しください。"
+
+#: 
+msgid "You have no passkeys."
+msgstr "パスキーはありません。"
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "会員ポータルに %s としてログインしています（変更可）。"
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "会員ポータルに %s としてログインしています（閲覧専用）。"
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "最低年齢より若いです"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "会員ポータルにサインインできる、最も若い年齢です。生年月日が不明な場合は、世帯主または配偶者だけが対象です。"
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "会員ポータルのサインインコード"
+
+#: 
+msgid "Your code"
+msgstr "あなたのコード"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "メールアドレス %s はまだ確認されていないため、サインインに使えません。そのアドレスにリンクをメールで送ります。リンクを使うと確認されます。"
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "ここではメールアドレスを削除できません。教会事務所にご連絡ください。"
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "メールアドレスは確認されました"
+
+#: 
+msgid "Your email address was changed"
+msgstr "メールアドレスが変更されました"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "パスキーを追加しました。次回は、この端末でそのパスキーを使ってサインインしてください。"
+
+#: 
+msgid "an administrator"
+msgstr "管理者"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "世帯主も配偶者も、メールアドレスを持っていません"
+
+#: 
+msgid "or"
+msgstr "または"
+
+#: 
+msgid "until %s"
+msgstr "%s まで"
+

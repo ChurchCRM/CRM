@@ -202,6 +202,6 @@ After every section is green:
 - `src/ChurchCRM/Plugin/PluginInstaller.php` — download/verify/extract pipeline; most checks above are enforced here too
 - `src/plugins/routes/api/management.php` — `GET /plugins/api/approved`, `POST /plugins/api/plugins/install`, `POST /plugins/api/plugins/install-url`
 - `src/ChurchCRM/Service/AppIntegrityService.php::isExcludedFromOrphanDetection` — keeps community plugins out of the orphan scan
-- `scripts/generate-signatures-node.js` — the matching exclusion for the build-time signatures manifest
+- `scripts/build/generate-signatures-node.js` — the matching exclusion for the build-time signatures manifest
 
 Keep install-time enforcement and this review checklist in sync: a new class of check in one updates the other.
