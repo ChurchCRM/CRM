@@ -150,7 +150,7 @@ class ApprovedPluginRegistry
     }
 
     /**
-     * Cypress stacks set CHURCHCRM_PLUGIN_FIXTURES; a registry.json written there
+     * When CHURCHCRM_PLUGIN_FIXTURES is set, a registry.json written there
      * stands in for the remote registry. Production never sets the variable.
      */
     public static function registrySource(): string
@@ -161,7 +161,7 @@ class ApprovedPluginRegistry
     }
 
     /**
-     * Reset the in-memory cache. Intended for tests or after a remote refresh
+     * Reset the in-memory cache, e.g. after a remote refresh
      * in the same request.
      */
     public static function reset(): void

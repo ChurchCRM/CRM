@@ -57,8 +57,7 @@ $group->get('/email-history', function (Request $request, Response $response) us
 
     // A page or limit that is not a whole number greater than zero is simply
     // the default: a member who edits the URL gets the first page, not an
-    // error. `limit` exists mainly so a test can force more than one page;
-    // nothing in the UI offers it.
+    // error. Nothing in the UI offers `limit`; it only lets a caller shrink the page.
     $toPositiveInt = static function ($raw, int $fallback): int {
         $value = (is_string($raw) || is_int($raw)) ? filter_var($raw, FILTER_VALIDATE_INT) : false;
 

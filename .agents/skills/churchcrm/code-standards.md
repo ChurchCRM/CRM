@@ -23,7 +23,7 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 - Tests with behavior changes
 - `package.json` scripts are one command or a short `&&` chain of npm scripts. Shell logic (`||`, `&`, pipes, `cp`, `rm`, `find`) goes in `scripts/*.js` (Node, cross-platform)
 - `npm run build` installs Composer dependencies, builds webpack, then signs the finished tree. Formatters and validators belong in `npm run lint` and the hooks, not the build
-- Comments are rare. Names and tests carry intent. Do not restate the next line. Comment only a *why* that the code cannot say (CI trap, security invariant, deliberate deviation). Do not add paragraph comments in specs.
+- Comments are rare. Names and tests carry intent. Do not restate the next line. Comment only a *why* that the code cannot say (CI trap, security invariant, deliberate deviation). Do not add paragraph comments in specs. A comment in `src/` never names a test, spec, Cypress or Playwright; say why the code behaves as it does.
 
 ## Strict vs Loose Comparisons
 

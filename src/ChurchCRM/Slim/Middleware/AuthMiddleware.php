@@ -69,8 +69,7 @@ class AuthMiddleware implements MiddlewareInterface
                 //
                 // isLimitedAccessAllowedPath() is consulted here as well as in the
                 // session branch below: the Volunteer v2 member surface must be reachable
-                // by API key too, or cy.makePrivateEditSelfAPICall() always returns 403
-                // and the self-service specs cannot be written at all (#9706, design §4.7).
+                // by API key too (#9706, design §4.7).
                 $apiUser = AuthenticationManager::getCurrentUser();
                 if ($apiUser->isEditSelfExclusive() && !$this->isLimitedAccessAllowedPath($request)) {
                     $response = new Response();

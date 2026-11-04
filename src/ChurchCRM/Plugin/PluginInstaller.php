@@ -664,7 +664,7 @@ HTACCESS;
      */
     private static function downloadToTempFile(string $url): string
     {
-        // Test stacks serve fixture zips for this reserved host instead of the network.
+        // When CHURCHCRM_PLUGIN_FIXTURES is set, zips for this reserved host come from that directory instead of the network.
         $fixtures = getenv('CHURCHCRM_PLUGIN_FIXTURES');
         if ($fixtures !== false && str_starts_with($url, 'https://fixtures.invalid/')) {
             $zip = $fixtures . '/' . basename($url);

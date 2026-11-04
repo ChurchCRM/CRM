@@ -646,8 +646,8 @@ ALTER TABLE `user_usr` ADD COLUMN `usr_ManageMyMinistries` tinyint(1) unsigned N
 -- 7.8.0-volunteer-v2-schema.sql (which creates the FK target volunteer_ministry_vmin) and after
 -- 7.8.0-volunteer-v2-manager-permission.sql.
 --
--- Fresh installs and the Cypress seed database get the column from src/mysql/install/Install.sql
--- and cypress/data/seed.sql respectively, so only an upgrading installation needs this script.
+-- Fresh installs get the column from src/mysql/install/Install.sql,
+-- so only an upgrading installation needs this script.
 --
 -- D9: a ministry coordinator creates and owns events for their ministry without holding the
 -- global AddEvent right. There is no per-row event authorization in ChurchCRM today, and
@@ -685,8 +685,8 @@ ALTER TABLE `events_event`
 -- 7.8.0-volunteer-v2-schema.sql (which creates the FK target volunteer_ministry_vmin) and after
 -- 7.8.0-volunteer-v2-manager-permission.sql.
 --
--- Fresh installs and the Cypress seed database get the column from src/mysql/install/Install.sql
--- and cypress/data/seed.sql respectively, so only an upgrading installation needs this script.
+-- Fresh installs get the column from src/mysql/install/Install.sql,
+-- so only an upgrading installation needs this script.
 --
 -- Why this lives in its own file rather than in 7.8.0-volunteer-v2-schema.sql: `group_grp` is a
 -- CORE table. The V2 schema script creates V2's own tables; a core column that V2 owns is the
