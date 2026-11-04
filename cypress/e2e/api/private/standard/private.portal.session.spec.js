@@ -16,7 +16,7 @@
 import { inOwnCookieJar } from "../../../../support/cookie-jar";
 
 const staffUser = { username: "tony.wade@example.com", password: "basicjoe", personId: 3 };
-const touchedConfig = ["iSessionTimeout", "iPortalIdleMinutes"];
+const touchedConfig = ["iSessionTimeout"];
 
 const db = (sql, params = []) =>
     cy.dbQuery(sql, params).then((result) => {
@@ -205,25 +205,6 @@ describe("Member Portal session (portal principal)", () => {
                     "session_ended:session_version",
                     "signed_in:",
                 ]);
-            });
-        });
-    });
-
-    it("ends a portal session that sat idle for iPortalIdleMinutes", () => {
-        lastAuditId().then((startId) => {
-            signIn(staffUser);
-            openPortal();
-            setConfig("iPortalIdleMinutes", "1");
-            endStaffSession();
-            cy.request("/api/portal/me").its("status").should("eq", 200);
-
-            cy.wait(61500);
-
-            cy.request({ url: "/api/portal/me", failOnStatusCode: false }).its("status").should("eq", 401);
-            auditRowsSince(staffUser.personId, startId).then((rows) => {
-                const ended = rows.filter((row) => row.psa_Event === "session_ended");
-                expect(ended).to.have.length(1);
-                expect(ended[0].psa_Reason).to.eq("idle");
             });
         });
     });

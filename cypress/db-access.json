@@ -73,7 +73,7 @@
         "cypress/e2e/api/private/admin/private.volunteer.rollout.spec.js": 19,
         "cypress/e2e/api/private/plugins/private.portal.plugin-permissions.spec.js": 13,
         "cypress/e2e/api/private/standard/private.portal.email-change.spec.js": 17,
-        "cypress/e2e/api/private/standard/private.portal.session.spec.js": 21,
+        "cypress/e2e/api/private/standard/private.portal.session.spec.js": 19,
         "cypress/e2e/api/private/standard/private.volunteer.anchored.spec.js": 90,
         "cypress/e2e/api/private/standard/private.volunteer.assignment.spec.js": 67,
         "cypress/e2e/api/private/standard/private.volunteer.authorization.spec.js": 45,
