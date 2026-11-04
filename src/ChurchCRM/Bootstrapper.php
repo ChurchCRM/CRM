@@ -473,8 +473,7 @@ class Bootstrapper
         self::$manager->setConfiguration(self::buildConnectionManagerConfig());
         self::$serviceContainer->setConnectionManager(self::$manager);
         self::$serviceContainer->setDefaultDatasource('default');
-        // Load database map from Include directory (Perpl ORM requirement)
-        require_once __DIR__ . '/../Include/LoadDatabaseMap.php';
+        require_once __DIR__ . '/Config/PropelDatabaseMap.php';
         self::$bootStrapLogger->debug("Initialized Propel ORM");
     }
     private static function isDatabaseEmpty(): bool
