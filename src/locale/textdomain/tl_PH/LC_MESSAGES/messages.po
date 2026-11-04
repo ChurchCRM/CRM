@@ -24199,14 +24199,2962 @@ msgid "Repeat events could not be created. Check the application log for details
 msgstr "Hindi magawa ang mga paulit-ulit na kaganapan. Suriin ang log ng aplikasyon para sa mga detalye."
 
 #: 
+msgid "Confirm Password"
+msgstr "Kumpirmahin ang Password"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Nabago na ang iyong password. Maaari ka nang mag-sign in gamit ang bagong password."
+
+#: 
+msgid "1st"
+msgstr "ika-1"
+
+#: 
+msgid "2nd"
+msgstr "ika-2"
+
+#: 
+msgid "3rd"
+msgstr "ika-3"
+
+#: 
+msgid "4th"
+msgstr "ika-4"
+
+#: 
+msgid "5th"
+msgstr "ika-5"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Hindi maaaring alisin ang access ng administrator sa tanging administrator na maaaring mag-sign in"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Piliin ang linggo ng buwan, mula ika-1 hanggang ika-5"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Gumagawa ng {{total}} kaganapan, tuwing {{week}} {{day}} ng bawat buwan mula {{first}} hanggang {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Hindi wastong araw ng linggo"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Buwanan, sa isang araw ng linggo"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Nilalaktawan ang mga buwang walang ika-5."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "Ang RecurWOM ay dapat buong bilang mula 1 hanggang 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Linggo ng buwan"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Ang linggo ng buwan ay dapat mula 1 hanggang 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s hanggang %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Tax ID ng simbahan (EIN) na nakalimbag sa mga pahayag ng kontribusyon"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Ang mga pahayag ng kontribusyon ay ibinibigay sa mga adulto ng sambahayan. Makipag-ugnayan sa opisina ng simbahan kung kailangan mo nito."
+
+#: 
+msgid "Download statement"
+msgstr "I-download ang pahayag"
+
+#: 
+msgid "Generated"
+msgstr "Nabuo"
+
+#: 
+msgid "Goods and services"
+msgstr "Mga kalakal at serbisyo"
+
+#: 
+msgid "My Giving"
+msgstr "Aking Pagbibigay"
+
+#: 
+msgid "No contributions"
+msgstr "Walang kontribusyon"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Walang naitalang kontribusyon para sa panahong ito."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Walang kalakal o serbisyong ibinigay kapalit ng mga kontribusyong ito, maliban sa mga di-nasasalat na relihiyosong benepisyo."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Opsyonal. Nalilimbag sa mga pahayag ng kontribusyon."
+
+#: 
+msgid "Tax ID"
+msgstr "Tax ID"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Tax ID (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Halagang mababawas sa buwis"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Ito ang pahayag ng sambahayan. Kasama rito ang mga regalo para sa iyong pamilya."
+
+#: 
+msgid "Total contributions"
+msgstr "Kabuuang kontribusyon"
+
+#: 
+msgid "Year-end statement"
+msgstr "Pahayag sa katapusan ng taon"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "Matagumpay na na-email sa pamilya ang %d pahayag ng pagbibigay."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "Pahayag ng Pagbibigay para sa %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "I-customize ang tekstong lumalabas sa mga pahayag ng pagbibigay (sTaxReport1, sTaxReport2, atbp.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Minamahal na Pamilya %s,\n"
+"\n"
+"Nakalakip sa email na ito ang inyong pahayag ng pagbibigay para sa %s mula sa %s.\n"
+"\n"
+"Kung may mga tanong kayo, makipag-ugnayan sa opisina ng simbahan.\n"
+"\n"
+"Salamat sa inyong kabutihang-loob."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "I-email ang Pahayag ng Pagbibigay para sa %s"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Mga Numero ng Sobre"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Gumawa ng mga Pahayag ng Pagbibigay"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Gumawa ng mga ulat para sa mga pahayag ng pagbibigay, pagsubaybay ng pangako, at pagsusuri sa pananalapi."
+
+#: 
+msgid "Giving Reports"
+msgstr "Mga Ulat ng Pagbibigay"
+
+#: 
+msgid "Giving Statement"
+msgstr "Pahayag ng Pagbibigay"
+
+#: 
+msgid "Giving Statements"
+msgstr "Mga Pahayag ng Pagbibigay"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Hindi naipadala ang email ng pahayag ng pagbibigay. Suriin ang mga setting ng iyong email server."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Ipadala sa koreo ang susunod mong regalo sa %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "I-print ang Pahayag ng Pagbibigay para sa %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Hindi ma-email ang pahayag ng pagbibigay: walang nakitang datos ng bayad para sa taong iyon."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Hindi ma-email ang pahayag ng pagbibigay: walang email address sa file ang pamilyang ito."
+
+#: 
+msgid "Undesignated"
+msgstr "Hindi nakatalaga"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Tiyaking lumalabas sa mga pahayag ng pagbibigay ang pangalan, address, at impormasyon sa pakikipag-ugnayan ng simbahan."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Ang posisyon ay nakatalaga na kay %s, na tumanggap nito."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Ang posisyon ay nakatalaga na kay %s, na hindi pa tumatanggap nito."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Kanilang dahilan: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Tingnan ang mga Takdang-gawain"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Mga boluntaryong kailangan pa para sa pagkakataong ito: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Mga boluntaryong kailangan pa para sa posisyong ito: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Isang lingguhang grid ng pag-sign in para sa bawat klase. Ang mga listahan ng klase at photo book ay nasa dashboard ng Sunday School at sa bawat pahina ng klase."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Isang lingguhang grid ng pag-sign in para sa taon ng paaralan, isang hanay para sa bawat Linggo"
+
+#: 
+msgid "Age %d"
+msgstr "Edad %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Dapat pumili ng kahit isang grupo para gumawa ng attendance sheet."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Attendance Sheet"
+
+#: 
+msgid "Class List"
+msgstr "Listahan ng Klase"
+
+#: 
+msgid "Download PDF"
+msgstr "I-download ang PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Panahon ng lockout sa minuto\n"
+"Ang naka-lock na account ay nag-a-unlock nang kusa pagkalipas ng ganitong bilang ng minuto. Binibilang sa parehong panahon ang mga nabigong login mula sa isang IP address."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Pinakamaraming nabigong login mula sa isang IP address\n"
+"Binibilang sa limitasyong ito, sa loob ng panahon ng lockout, ang mga nabigong login at kahilingan ng pag-reset ng password mula sa isang IP address. Kapag naabot na ito, tinatanggihan ang pag-sign in mula sa address na iyon hanggang matapos ang panahon.\n"
+"Itakda sa zero para i-disable ang feature na ito, halimbawa kapag ang lahat ay umaabot sa ChurchCRM sa pamamagitan ng isang proxy address."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Pinakamaraming nabigong login na papayagan bago ma-lock ang account ng user.\n"
+"Ang naka-lock na account ay nag-a-unlock nang kusa pagkatapos ng panahon ng lockout, o mas maaga kapag ni-reset ng administrator ang mga nabigong login nito.\n"
+"Tumutulong ang feature na ito laban sa awtomatikong paghula ng password.\n"
+"Itakda sa zero para i-disable ang feature na ito."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Mga minuto bago ito mag-unlock nang kusa: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Attendance Sheet ng Sunday School"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Hindi isinasama sa sheet ang mga Linggong walang klase."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Pag-upgrade ng Database"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Ina-update ang iyong database. Panatilihing bukas ang pahinang ito hanggang matapos ang pag-upgrade."
+
+#: 
+msgid "Family Labels"
+msgstr "Mga Label ng Pamilya"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Kabuuan"
+
+#: 
+msgid "Bill"
+msgstr "Papel na pera"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Pumili ng deposito o ilagay ang parehong petsa ng ulat."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Pumili ng isang deposito para suriin ang mga bayad nito o i-print ang bank slip nito. Ang napiling deposito ang gagamitin sa halip na ang saklaw ng petsa."
+
+#: 
+msgid "Coin"
+msgstr "Barya"
+
+#: 
+msgid "Deposit Report"
+msgstr "Ulat ng Deposito"
+
+#: 
+msgid "Download Report"
+msgstr "I-download ang Ulat"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Maglagay ng wastong mga petsa ng ulat."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Hindi wastong mga filter ng ulat."
+
+#: 
+msgid "Invalid report options."
+msgstr "Hindi wastong mga opsyon ng ulat."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Iwanang walang laman ang mga filter para isama ang lahat ng bayad. Ang mga setting na ito ay para sa ulat, hindi sa bank slip."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Walang nakitang tala. Ayusin ang mga filter at subukan muli."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Ihanda para sa Bangko"
+
+#: 
+msgid "Preview Totals"
+msgstr "I-preview ang mga Kabuuan"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "I-print ang Bank Slip"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "I-print nang buo ang napiling deposito, kasama ang mga kabuuan ng cash at tseke, mga count sheet, at mga linya ng saksi. Hindi pinapansin ang mga filter ng ulat. Ang mga elektronikong bayad ay nananatili sa buod at hindi kasama sa kabuuang physical bank ticket."
+
+#: 
+msgid "Review Payments"
+msgstr "Suriin ang mga Bayad"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Suriin ang mga bayad para sa isang panahon, o ihanda ang isang deposito para sa bangko."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Suriin ang mga bayad, mag-download ng PDF o CSV, o mag-print ng bank slip para sa isang deposito."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Pumili ng wastong deposito."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Pumili ng isang deposito para mag-print ng bank slip."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Ang petsa ng pagtatapos ng ulat ay dapat nasa o pagkatapos ng petsa ng simula."
+
+#: 
+msgid "Total Cash"
+msgstr "Kabuuang Cash"
+
+#: 
+msgid "Total Coin"
+msgstr "Kabuuang Barya"
+
+#: 
+msgid "Witness"
+msgstr "Saksi"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "May %d regalong walang pamilya. Hindi sila mailalagay sa pahayag."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "May %d bukas na deposito na may petsa sa taong ito. Isara ang mga ito para maging pinal ang bawat regalo bago ipadala ang mga pahayag."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "May %d bayad na wala pa sa anumang deposito."
+
+#: 
+msgid "Can be emailed"
+msgstr "Maaaring i-email"
+
+#: 
+msgid "Closing line"
+msgstr "Pangwakas na linya"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Sarado na ang bawat deposito na may petsa sa taong ito."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Ang bawat regalo ay pag-aari ng isang pamilya."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Ang bawat bayad sa taong ito ay nasa isang deposito."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Gumawa ng mga Pahayag ng Buwis"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Ulat ng Pagbibigay (Mga Pahayag ng Buwis)"
+
+#: 
+msgid "Opening line"
+msgstr "Pambungad na linya"
+
+#: 
+msgid "Print and mail"
+msgstr "I-print at ipadala sa koreo"
+
+#: 
+msgid "Qty"
+msgstr "Dami"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Suriin ang taon, pagkatapos i-print o i-email ang mga pahayag ng pagbibigay."
+
+#: 
+msgid "Signed by"
+msgstr "Nilagdaan ni"
+
+#: 
+msgid "Thank-you line"
+msgstr "Linya ng pasasalamat"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Tiyaking lumalabas sa mga pahayag ng buwis ang pangalan, address, at impormasyon sa pakikipag-ugnayan ng simbahan."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Pagbibigay sa Katapusan ng Taon"
+
+#: 
+msgid "As of: %s"
+msgstr "Magmula noong: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Kahit isang positibong bayad ng pamilya sa napiling %d taon ng pananalapi, hanggang sa petsa ng pagsusuri: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Ang binyag, mga aplikasyon sa electoral roll, tirahan, katayuan bilang communicant, pagdalo, mabuting katayuan, at mga lokal na pagbubukod ay dapat suriin nang hiwalay kung hinihingi ng inyong mga bylaws. Ang tagal ng pagiging miyembro ay hindi patunay ng pagdalo."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Pumili ng umiiral na klasipikasyon."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Pumili ng kahit isang klasipikasyon na susuriin."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Piliin ang mga klasipikasyong ginagamit ng inyong simbahan. Walang klasipikasyon ang ipinapalagay na nagbibigay ng karapatang bumoto."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Dapat kumpirmahin ng pamunuan ng simbahan ang pagiging karapat-dapat ayon sa mga bylaws ng simbahan. Ipinapakita lamang ng listahang ito ang mga taong tumutugma sa mga napiling filter."
+
+#: 
+msgid "Classifications to review"
+msgstr "Mga klasipikasyong susuriin"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Mga klasipikasyon: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Hindi kasama ang mga namatay, mga hindi aktibong tao at klasipikasyon, at mga hindi aktibo o nakabinbing-pagsusuri na pamilya at tao."
+
+#: 
+msgid "Download Review List"
+msgstr "I-download ang Listahan ng Pagsusuri"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Maglagay ng wastong petsa ng pagsusuri sa pagitan ng 1900 at 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Maglagay ng mga buong bilang sa loob ng ipinapakitang mga hangganan."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Mga taon ng pananalapi na susuriin (0–100; ang 0 ay nangangahulugang walang kinakailangang pagbibigay)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Ang pagbibigay ay naitatala ayon sa pamilya, hindi ayon sa indibidwal. I-enable ito lamang kung pinapayagan ng inyong mga bylaws na matugunan ng bayad ng pamilya ang pamantayang ito. Hindi nito pinatutunayan na nagbigay ang bawat tao. Kasama sa saklaw ang napiling taon ng pananalapi at nagtatapos nang hindi lalampas sa petsa ng pagsusuri."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Huling taon ng pananalapi na isasama"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Pinakamababang edad (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Pinakamababang edad: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Pinakamaikling tagal ng pagiging miyembro sa buwan (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Pinakamaikling tagal ng pagiging miyembro: %d buwan"
+
+#: 
+msgid "No donation requirement."
+msgstr "Walang kinakailangang donasyon."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Walang taong tumutugma sa mga filter na ito. Suriin ang mga nawawalang petsa ng kapanganakan o pagiging miyembro at ayusin ang iyong mga pamantayan."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Opsyonal na kinakailangan sa pagbibigay ng pamilya"
+
+#: 
+msgid "People matching filters"
+msgstr "Mga taong tumutugma sa mga filter"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Mga taong hindi isinama dahil kulang ang kinakailangang mga petsa"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Maghanda ng listahan para sa pagsusuri ng simbahan gamit ang mga klasipikasyon at mga opsyonal na filter ng edad, pagiging miyembro, at pagbibigay ng pamilya."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Maghanda ng listahan para sa pagsusuri ng simbahan gamit ang inyong mga bylaws."
+
+#: 
+msgid "Review date"
+msgstr "Petsa ng pagsusuri"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Gamitin ang mga bylaws ng inyong simbahan sa pagpili ng mga filter, pagkatapos ay ipasuri ang listahan sa awtorisadong pamunuan ng simbahan. Ang pagtutugma sa mga filter na ito ay hindi nagtatatag ng pagiging karapat-dapat bumoto. Hindi itinatala ng ulat na ito ang pagiging karapat-dapat at hindi nagsasagawa ng halalan."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Mga Miyembrong Boboto — Listahan ng Pagsusuri"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Pinapatay ng zero ang isang opsyonal na kinakailangan. Ang edad ay nangangailangan ng kumpletong petsa ng kapanganakan; ang tagal ng pagiging miyembro ay nangangailangan ng petsa ng pagiging miyembro. Ang mga taong kulang ang kinakailangang petsa ay hindi isinasama at binibilang nang hiwalay. Palaging hindi kasama ang mga namatay, mga hindi aktibong tao at klasipikasyon, at mga hindi aktibo o nakabinbing-pagsusuri na pamilya at tao; ginagamit ang kasalukuyang klasipikasyon at katayuan, hindi ang dating katayuan."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Halagang dapat bayaran para sa %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Hindi makagawa ng pribadong pansamantalang imbakan ng PDF sa napiling direktoryo."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Iwanang blangko para gamitin ang pansamantalang direktoryo ng sistema. Kung hindi, maglagay ng umiiral at nasusulatang direktoryong protektado mula sa web access."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Pansamantalang Direktoryo ng PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "Ang pansamantalang imbakan ng PDF ay dapat pribado at nasusulatan."
+
+#: 
+msgid "Reporting"
+msgstr "Pag-uulat"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "Ang pansamantalang direktoryo ng PDF ay wala o hindi ma-access."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "Ang pansamantalang direktoryo ng PDF ay dapat ganap na landas ng direktoryo."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Tax ID ng Simbahan (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Pangwakas na Linya"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Kinokontrol ang opsyonal na telemetry. Ang mga pagkabigo sa pag-install at pag-upgrade ng database ay nagpapadala ng limitadong diagnostics sa PostHog kahit naka-off ang telemetry. Kasama sa mga ulat ng pagkabigong ito ang mga bersyon ng software at kapaligiran at isang nilinis na error ng database, ngunit walang installation ID o SQL statement."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Suriin ang mga nabigong pag-install at pag-upgrade ng database"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Mga detalye ng pagkabigo sa pag-install at pag-upgrade"
+
+#: 
+msgid "Open in browser window"
+msgstr "Buksan sa window ng browser"
+
+#: 
+msgid "Opening Line"
+msgstr "Pambungad na Linya"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Ang opsyonal na telemetry ng paggamit ay ipinapadala lamang kapag naka-enable. Ang mga pagkabigo sa pag-install at pag-upgrade ng database ay laging nagpapadala ng limitadong diagnostic para tumulong sa komunidad, kahit piliin mo ang Hindi, salamat. Kasama sa mga ulat ng pagkabigo ang mga bersyon ng software at kapaligiran at isang nilinis na error ng database, nang walang installation ID o SQL statement."
+
+#: 
+msgid "PDF Handling"
+msgstr "Paghawak ng PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "Output ng PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "Mode ng paghawak ng PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "Linya ng mga Tanong"
+
+#: 
+msgid "Save File dialog"
+msgstr "Dialog ng Save File"
+
+#: 
+msgid "Signer"
+msgstr "Lumagda"
+
+#: 
+msgid "Statement Settings"
+msgstr "Mga Setting ng Pahayag"
+
+#: 
+msgid "Statement Wording"
+msgstr "Mga Salita ng Pahayag"
+
+#: 
+msgid "Tax Information"
+msgstr "Impormasyon sa Buwis"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Ipinapadala ang telemetry sa PostHog sa United States. Ipinapadala ang mga ulat ng pagkabigo sa pag-install at pag-upgrade kahit naka-disable ang opsyonal na telemetry."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Kinansela ang petsang ito. Wala nang kailangan mula sa iyo."
+
+#: 
+msgid "always sent"
+msgstr "laging ipinapadala"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Hindi naalis ang letterhead"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Hindi naimbak ang letterhead"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Hindi na-upload ang letterhead"
+
+#: 
+msgid "Greeting"
+msgstr "Pagbati"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Pagbati at lagda ng liham"
+
+#: 
+msgid "Letterhead"
+msgstr "Letterhead"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF, o WebP. Pinakamainam ang malapad na banner, halimbawa 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Nalilimbag sa itaas ng mga liham na PDF na gumagamit ng graphic na letterhead, tulad ng mga pahayag ng pagbibigay. Kung wala ito, inililimbag ng mga liham ang pangalan at address ng simbahan."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Alisin ang letterhead? Ililimbag ng mga liham ang pangalan at address ng simbahan."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Itakda ang letterhead na inililimbag ng mga liham na PDF"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Ginagamit ang pangalan at address ng simbahan"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Ginagamit ang landas ng letterhead na nakatakda sa System Settings"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Mga salita, tax ID, at paghawak ng PDF para sa mga pahayag ng pagbibigay"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s bilang %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "Ang %s na ang iyong email address. Magagamit mo ito para mag-sign in sa Member Portal."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} pa"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "Hiniling ang pagbabago ng iyong email address"
+
+#: 
+msgid "A family"
+msgstr "Isang pamilya"
+
+#: 
+msgid "A group"
+msgstr "Isang grupo"
+
+#: 
+msgid "A ministry"
+msgstr "Isang ministeryo"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "Nagbabago lamang ang bagong address pagkatapos mong gamitin ang link na ipinapadala namin rito."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "Maaaring magdagdag ng passkey sa loob lamang ng %d minuto pagkatapos mag-sign in gamit ang iyong email address. Mag-sign out, mag-sign in muli gamit ang iyong email, pagkatapos bumalik dito."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "Nag-sign in ka ng passkey gamit ang Face ID, fingerprint, o PIN ng device, nang walang email code."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "Nagdagdag ng passkey sa iyong pag-sign in sa Member Portal"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "Nagdagdag ng passkey sa iyong pag-sign in sa Member Portal nang %1$s noong %2$s, mula sa %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "Nagdagdag ng passkey sa iyong pag-sign in sa Member Portal nang %1$s noong %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "Ang taong mawawalan nito ay wala nang sariling email: nilalaktawan ang mail na ipinadala sa kanila lamang, tulad ng email ng grupo, at sinasabi ito ng email composer."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "Ang taong itinatago ng tala ang edad ay hindi kailanman nagpapakita ng taon ng kapanganakan."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "May hiniling sa Member Portal na baguhin ang iyong email address nang %s mula %s tungo sa %s. Nangyayari lamang ang pagbabago kapag ginamit ang link na ipinadala sa %s."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Ang isang hilera ay wala sa inaasahang anyo."
+
+#: 
+msgid "A team"
+msgstr "Isang koponan"
+
+#: 
+msgid "Add a passkey"
+msgstr "Magdagdag ng passkey"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Magdagdag ng passkey sa sarili mong telepono o computer lamang, hindi kailanman sa pinaghahatian o pampubliko."
+
+#: 
+msgid "Add an email"
+msgstr "Magdagdag ng email"
+
+#: 
+msgid "Added %s"
+msgstr "Idinagdag ang %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Mga override ng admin"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "Adulto ng pamilyang %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "Adulto ng pamilya"
+
+#: 
+msgid "All events"
+msgstr "Lahat ng kaganapan"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Payagan ang Login as Person"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Payagan ang mga pagbabago habang Login as Person"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Payagan ang mga pagbabago habang ginagamit ng administrator ang Login as Person. Kapag naka-off, read-only ang Login as Person."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Hawak na ng isang miyembro ng pamilya"
+
+#: 
+msgid "Also used by"
+msgstr "Ginagamit din ni"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Maaaring magbigay ang administrator ng anumang pahintulot sa isang tao sa pahina ng taong iyon. Pagkatapos ay lumalabas dito ang \"Mga override ng admin\", kasama ang bilang ng mga taong binigyan nito."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "Ginagamit na ng ibang tao ang address na ito"
+
+#: 
+msgid "Applies to"
+msgstr "Nalalapat sa"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Aprubahan o tanggihan ang mga kahilingan ng kahalili para sa isang koponan ng boluntaryo."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Humingi ng bagong email"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Ibinibigay ang awtoridad sa tao, hindi sa isang login, kaya maaari itong ibigay bago pa sila magkaroon nito. Ang taong nag-sign in lamang sa Member Portal ay patuloy na makikita ang sarili nilang iskedyul hanggang magbigay ang administrator ng staff account."
+
+#: 
+msgid "Awaiting review"
+msgstr "Hinihintay ang pagsusuri"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Bumalik sa pag-sign in"
+
+#: 
+msgid "Browse the full directory"
+msgstr "I-browse ang buong direktoryo"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Maaaring mag-sign in sa Member Portal"
+
+#: 
+msgid "Can sign in?"
+msgstr "Maaaring mag-sign in?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Hindi maaaring i-disable ang pag-sign in ng tanging administrator na maaaring mag-sign in."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Hindi makapag-sign in"
+
+#: 
+msgid "Change family details"
+msgstr "Baguhin ang mga detalye ng pamilya"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Baguhin ang address at mga detalye ng pakikipag-ugnayan ng pamilya, at magdagdag ng miyembro ng pamilya para sa pagsusuri."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Baguhin ang sariling pangalan, mga detalye ng pakikipag-ugnayan, at larawan."
+
+#: 
+msgid "Changed"
+msgstr "Binago"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Binago pagkatapos mag-sign in ang tao"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Binago ng isang import pagkatapos mag-sign in ang tao"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Binago ng staff pagkatapos mag-sign in ang tao"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Binago sa pamamagitan ng API pagkatapos mag-sign in ang tao"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Naka-off ang mga pagbabago habang Login as Person."
+
+#: 
+msgid "Changes needed"
+msgstr "Kailangan ng mga pagbabago"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Nase-save ang mga pagbabago habang ginagawa mo ang mga ito."
+
+#: 
+msgid "Check your email"
+msgstr "Tingnan ang iyong email"
+
+#: 
+msgid "Choose a permission"
+msgstr "Pumili ng pahintulot"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Pumili ng pahintulot, kung para saan ito at ang huling araw nito, at sabihin kung bakit."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Pumili ng larawan o kumuha ng selfie"
+
+#: 
+msgid "Choose a theme"
+msgstr "Pumili ng tema"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Pumili ng kahit isang hilera."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Pumili ng hindi hihigit sa %d hilera sa isang pagkakataon."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Piliin sa listahan kung paano ipinapakita ang mga petsa."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Piliin ang huling araw ng pahintulot na ito."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Piliin kung para saan ang pahintulot."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Pumili ng oo o hindi."
+
+#: 
+msgid "Church Office"
+msgstr "Opisina ng Simbahan"
+
+#: 
+msgid "Church country"
+msgstr "Bansa ng simbahan"
+
+#: 
+msgid "Church default: %s"
+msgstr "Default ng simbahan: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Pag-sign in ng pinuno ng simbahan"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Mga klasipikasyon na ang mga miyembro ay maaaring mag-sign in sa Member Portal, bilang listahan ng mga classification id na pinaghihiwalay ng kuwit."
+
+#: 
+msgid "Clear selection"
+msgstr "I-clear ang pagpili"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Mga code, session, at device"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Kumpirmahin ang Email Address"
+
+#: 
+msgid "Confirm email address"
+msgstr "Kumpirmahin ang email address"
+
+#: 
+msgid "Confirm family details"
+msgstr "Kumpirmahin ang mga detalye ng pamilya"
+
+#: 
+msgid "Confirm selected"
+msgstr "Kumpirmahin ang napili"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Kumpirmahin ang email na ito pagkatapos lamang suriin, nang personal o sa telepono, na ito ang sariling address ng taong ito. Kapag nakumpirma, magagamit ito para mag-sign in sa Member Portal."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Kumpirmahin ang iyong email address"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Kumpirmahin ang iyong bagong email address"
+
+#: 
+msgid "Confirmed"
+msgstr "Nakumpirma"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Ang mga petsa ay dapat nakasulat bilang YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Magpasya sa mga kahilingan ng kahalili"
+
+#: 
+msgid "Device"
+msgstr "Device"
+
+#: 
+msgid "Device remembered"
+msgstr "Naalalang device"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Mga device at passkey"
+
+#: 
+msgid "Directory classifications"
+msgstr "Mga klasipikasyon ng direktoryo"
+
+#: 
+msgid "Directory section"
+msgstr "Seksyon ng direktoryo"
+
+#: 
+msgid "Disable sign-in"
+msgstr "I-disable ang pag-sign in"
+
+#: 
+msgid "Do not show"
+msgstr "Huwag ipakita"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Kailangan din ng bawat isa ang sariling email na walang ibang gumagamit."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Gumagana nang isang beses ang bawat email ng pag-sign in, sa limitadong panahon, at pinapalitan ito ng mas bagong email."
+
+#: 
+msgid "Edit my details"
+msgstr "I-edit ang aking mga detalye"
+
+#: 
+msgid "Email address changed"
+msgstr "Nabago ang email address"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Na-type na email address: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "Mga email address na kukumpirmahin: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "Nabago ang email"
+
+#: 
+msgid "Email code"
+msgstr "Code sa email"
+
+#: 
+msgid "Email confirmed"
+msgstr "Nakumpirma ang email"
+
+#: 
+msgid "Email link"
+msgstr "Link sa email"
+
+#: 
+msgid "Email me a code"
+msgstr "I-email sa akin ang isang code"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "I-email sa akin ang link ng kumpirmasyon"
+
+#: 
+msgid "Email needs attention"
+msgstr "Kailangang asikasuhin ang email"
+
+#: 
+msgid "Email problem"
+msgstr "Problema sa email"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Kinansela ang na-email na code at link ng pag-sign in"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Na-email na link ng beripikasyon"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Mga email na nakumpirma: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "I-enable ang pag-sign in"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Tapusin ang bawat session sa Member Portal ng taong ito at kalimutan ang kanilang mga naalalang device? Mananatili ang kanilang mga passkey, kaya maaari silang mag-sign in muli."
+
+#: 
+msgid "Ended %s"
+msgstr "Natapos %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Natapos dahil sa pagbabago sa kanilang pag-sign in"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Natapos nang i-off ang pag-sign in ng miyembro"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Maglagay ng buong bilang mula %1$d hanggang %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Ilagay ang iyong email address."
+
+#: 
+msgid "Every kind"
+msgstr "Bawat uri"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Bawat pag-sign in ng miyembro, pagtanggi, at pagbabago sa pag-sign in, pinakabago muna. Hindi ito kailanman nagtatago ng code, link, o passkey."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Lahat ng nakalista, A hanggang Z, na may search box."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Lahat ng pinapayagan ng mga patakaran sa pag-sign in ay maaari nang mag-sign in sa Member Portal gamit ang sarili nilang email."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Lahat ng nag-sign in sa Member Portal sa huling 30 araw, pinakabago muna."
+
+#: 
+msgid "Everywhere"
+msgstr "Saanman"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Mga pamilyang kinumpirma ng isang miyembro sa huling 30 araw, mula sa Member Portal o sa na-email na link ng beripikasyon."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Mga pamilyang nakumpirma, huling 30 araw"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Nakumpirma ang mga detalye ng pamilya"
+
+#: 
+msgid "Family email"
+msgstr "Email ng pamilya"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Hindi nailipat ang mga email ng pamilya"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Mga tungkulin sa pamilya na ang mga miyembro ay maaaring mag-sign in sa Member Portal, bilang listahan ng mga role id na pinaghihiwalay ng kuwit."
+
+#: 
+msgid "Find someone"
+msgstr "Maghanap ng tao"
+
+#: 
+msgid "Fix by hand"
+msgstr "Ayusin nang mano-mano"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Ayusin ang mga pinaghahatiang email"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Mula sa pag-sign in ng staff"
+
+#: 
+msgid "Give a permission"
+msgstr "Magbigay ng pahintulot"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Magbigay ng pahintulot sa portal"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Bigyan ang bawat tao ng sariling email"
+
+#: 
+msgid "Give permission"
+msgstr "Magbigay ng pahintulot"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Ibinigay ni %1$s hanggang %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Ibinigay ni %s"
+
+#: 
+msgid "Given to"
+msgstr "Ibinigay kay"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Ibinigay sa Lahat"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Ibinigay, ngunit hindi pa umiiral"
+
+#: 
+msgid "Go to sign in"
+msgstr "Pumunta sa pag-sign in"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Pumunta sa Member Portal"
+
+#: 
+msgid "Has signed in"
+msgstr "Nakapag-sign in na"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Nakapag-sign in na: nagtatapos ang kanilang mga session at device"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Narito ang iyong code para mag-sign in sa Member Portal. I-type ito sa pahina ng pag-sign in, sa browser kung saan mo ito hiniling. O pindutin ang button para mag-sign in sa device na ito."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Itago ang mga Pahintulot"
+
+#: 
+msgid "How"
+msgstr "Paano"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Ilang email ng pag-sign in sa Member Portal ang maaaring hilingin ng isang IP address sa loob ng isang oras. Itakda sa 0 para walang limitasyon, halimbawa kapag ang lahat ay umaabot sa ChurchCRM sa pamamagitan ng isang address."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Ilang araw mananatiling naka-sign in ang isang device sa Member Portal pagkatapos piliin ng miyembro na manatiling naka-sign in. Itakda sa 0 para alisin ang pagpipilian."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Ilang minutong walang aktibidad ang nagtatapos ng session sa Member Portal."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Ilang minuto mananatiling wasto ang code at link ng pag-sign in sa Member Portal."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Oras na walang aktibidad (minuto)"
+
+#: 
+msgid "Idle too long"
+msgstr "Masyadong matagal na walang aktibidad"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Kung ang %1$s ang iyong bagong address, gamitin ang button sa ibaba para kumpirmahin ito. Hangga't hindi nakukumpirma, hindi ito magagamit para mag-sign in. Gumagana nang isang beses ang link, hanggang %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Kung magagamit ang address na ito para mag-sign in, nag-email kami sa iyo ng code. Wala pagkalipas ng ilang minuto? Tanungin ang opisina ng simbahan."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Kung hindi ikaw ang nagdagdag nito, alisin ito sa pahina ng Pag-sign in at mga device at makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Kung hindi ikaw ang humiling ng pagbabagong ito, makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Kung hindi ikaw ang humiling nito, makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Maaaring nag-expire na ito o nagamit na. Kung kailangan mo ng tulong, makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Hindi naka-install ang plugin nito"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Tumalon sa isang titik"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Panatilihin akong naka-sign in (araw)"
+
+#: 
+msgid "Keeps it"
+msgstr "Pinapanatili ito"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Uri ng hindi nakumpirmang email"
+
+#: 
+msgid "Last day"
+msgstr "Huling araw"
+
+#: 
+msgid "Last used"
+msgstr "Huling ginamit"
+
+#: 
+msgid "Last used %s"
+msgstr "Huling ginamit %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Pinuno ng %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Payagan ang mga administrator na buksan ang Member Portal ng isang tao bilang taong iyon, mula sa menu ng Actions ng tao, habang naka-on ang pag-sign in ng miyembro."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Payagan ang mga miyembro na magdagdag ng mga passkey at mag-sign in sa Member Portal gamit ang mga ito."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Payagan ang mga miyembro na mag-sign in sa Member Portal gamit ang sarili nilang email address. Maaari lamang itong i-on habang gumagana ang pagpapadala ng email."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Payagan ang mga miyembro na mag-sign in gamit ang kanilang email"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Buhay ng link at code (minuto)"
+
+#: 
+msgid "Login as %s"
+msgstr "Login bilang %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Login as Person"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Hindi masimulan ang Login as Person."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Natapos ang Login as Person: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Kasaysayan ng Login as Person"
+
+#: 
+msgid "Login as Person started"
+msgstr "Nagsimula ang Login as Person"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Huminto ang Login as Person"
+
+#: 
+msgid "Look up anyone"
+msgstr "Maghanap ng sinuman"
+
+#: 
+msgid "Loses it"
+msgstr "Mawawala ito"
+
+#: 
+msgid "Manage a team"
+msgstr "Pamahalaan ang isang koponan"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Pamahalaan ang aking pag-sign in at mga device"
+
+#: 
+msgid "Matches: %s"
+msgstr "Mga tugma: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Maaaring mag-sign in"
+
+#: 
+msgid "May sign in now"
+msgstr "Maaaring mag-sign in ngayon"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Code ng pag-sign in sa Member Portal"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Abiso ng pag-sign in sa Member Portal"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Mga pag-sign in at aktibidad sa Member Portal, para sa mga miyembro at para sa staff na nagbubukas ng portal mula sa kanilang pag-sign in bilang staff."
+
+#: 
+msgid "Member sign-in"
+msgstr "Pag-sign in ng miyembro"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Nag-e-email ang pag-sign in ng miyembro ng code sa bawat tao, kaya dapat gumagana ang email (SMTP) bago mo ito i-on."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Naka-off ang pag-sign in ng miyembro"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Naka-off ang pag-sign in ng miyembro para sa simbahan."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Naka-off ang pag-sign in ng miyembro."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Hindi pa available ang pag-sign in ng miyembro. Makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Hindi kailanman pinapapasok ng pag-sign in ng miyembro ang mga namatay, hindi aktibo, nasa hindi aktibong pamilya, naghihintay ng pagsusuri, o may naka-on na I-disable ang pag-sign in. Ang mga pagpipiliang ito ang nagpapasya kung sino pa ang maaari."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Nagpapadala ang pag-sign in ng miyembro ng code sa bawat miyembro sa pamamagitan ng email, kaya maaari lamang itong i-on habang nakakapagpadala ng email ang ChurchCRM. I-on muna ang email at i-set up ang mail server."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Nakikita ng mga miyembro ang pahina ng Calendar habang naka-on ang kahit isang kalendaryo."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Nagta-type ang mga miyembro ng kahit %d titik ng isang pangalan at nakakakita ng hanggang %d tugma. Hindi kailanman ipinapakita ang buong listahan."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Ang mga miyembrong naka-sign in ngayon ay isi-sign out, at walang makakapag-sign in gamit ang kanilang email hanggang i-on muli ang pag-sign in ng miyembro."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Makikita ng mga miyembrong may mga klasipikasyong ito ang Directory sa menu ng Member Portal."
+
+#: 
+msgid "Minimum age"
+msgstr "Pinakamababang edad"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Ang mga susunod na pagtatangka gamit ang address na ito sa susunod na oras ay hindi magpapadala ng isa pang abiso."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Inilipat mula sa email ng pamilya"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Inilipat sa isang puno ng sambahayan"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Inilipat sa isang asawa"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Bago sa aming simbahan? Sabihin sa amin ang tungkol sa iyong pamilya at makikipag-ugnayan kami para salubungin ka."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Wala pang mga session ng Login as Person."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Walang petsa ng kapanganakan, at hindi puno ng sambahayan o asawa"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Walang naka-on na kalendaryo, kaya hindi nakikita ng mga miyembro ang pahina ng Calendar."
+
+#: 
 msgid "No changes"
 msgstr "Walang mga Pagbabago"
+
+#: 
+msgid "No changes made."
+msgstr "Walang ginawang pagbabago."
+
+#: 
+msgid "No family role"
+msgstr "Walang tungkulin sa pamilya"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Walang puno ng sambahayan o asawang maaaring tumanggap ng email ng pamilya."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Walang puno ng sambahayan o asawang nakikibahagi rito"
+
+#: 
+msgid "No match"
+msgstr "Walang tugma"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Wala pang tumutugma sa patakaran ng pag-sign in. Lagyan ng tsek ang mas maraming tungkulin sa pamilya o klasipikasyon, o babaan ang pinakamababang edad."
+
+#: 
+msgid "No passkey was added."
+msgstr "Walang naidagdag na passkey."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Walang ginamit na passkey. Subukan muli, o mag-sign in gamit ang iyong email address."
+
+#: 
+msgid "No person has this email"
+msgstr "Walang taong may email na ito"
+
+#: 
+msgid "No personal email"
+msgstr "Walang personal na email"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Walang pinaghahatiang email na pumipigil sa sinuman na mag-sign in."
+
+#: 
+msgid "No such person"
+msgstr "Walang ganoong tao"
+
+#: 
+msgid "No, thanks"
+msgstr "Hindi, salamat"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Walang maaaring mag-sign in gamit ang personal na email na pinaghahatian ng dalawang taong maaaring mag-sign in. Para sa address na pinaghahatian sa loob ng isang pamilya, pinapanatili ito ng puno ng sambahayan, kung hindi ay ng asawa (pinakamatanda muna). Nawawala ito sa lahat ng iba pang nakikibahagi. Alisin ang tsek sa alinmang gusto mong ayusin sa ibang paraan."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Wala pang maaaring mag-sign in: lagyan ng tsek ang kahit isang klasipikasyon sa ilalim ng Sino ang maaaring mag-sign in."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Wala pang maaaring mag-sign in: lagyan ng tsek ang kahit isang tungkulin sa pamilya at kahit isang klasipikasyon sa ilalim ng Sino ang maaaring mag-sign in."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Wala pang maaaring mag-sign in: lagyan ng tsek ang kahit isang tungkulin sa pamilya sa ilalim ng Sino ang maaaring mag-sign in."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Walang nasa direktoryo ang tumutugma sa pangalang iyon."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Wala pang nakalista sa direktoryo."
+
+#: 
+msgid "Not ended"
+msgstr "Hindi natapos"
+
+#: 
+msgid "Not moved"
+msgstr "Hindi nailipat"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Hindi sigurado kung aling email ang nasa amin? Makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "Not yet"
+msgstr "Hindi pa"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Naitala sa timeline ng pamilya"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Sa kanila, mga taong nakapag-sign in na: {{total}}. Naka-sign out sila saanman, at nakakatanggap ng abiso ang address."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Naka-off para sa lahat: naka-off ang \"%s\""
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Naka-off para sa lahat: hindi nakatakda sa V2 ang Volunteer Management"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Naka-off para sa lahat: naka-off ang feature nito"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Naka-off para sa lahat: naka-off ang plugin nito"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Naka-off para sa lahat: walang kalendaryong ibinabahagi sa mga miyembro"
+
+#: 
+msgid "Office list"
+msgstr "Listahan ng opisina"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Kapag nakumpirma na ito, magagamit ito para mag-sign in sa Member Portal."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Tanging mga address na maaari mong kumpirmahin ang maaaring piliin."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Mga administrator lamang ang nakakakita ng dahilan."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Tanging administrator ang maaaring magbago ng email ng taong may staff account o mga pahintulot sa portal."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Tanging administrator ang maaaring magkumpirma ng email na pumalit sa ginamit ng tao sa pag-sign in."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Tanging administrator ang maaaring magkumpirma ng email ng taong may staff account o mga pahintulot sa portal."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Tanging administrator ang maaaring ayusin ang address na ito: may staff account o mga pahintulot sa portal ang isang nakikibahagi rito."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Tanging adulto ng iyong pamilya ang maaaring magkumpirma ng mga detalyeng ito. Makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Kumpirmahin lamang ang mga address na alam mong pag-aari ng taong iyon. Sinumang makabasa ng address ay maaaring mag-sign in bilang taong iyon."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Tanging mga buhay na taong may sariling email ang maaaring nasa listahan ng opisina."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Tanging mga taong may sariling email ang maaaring idagdag."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Maaaring kasama sa opsyonal na telemetry ang mga ruta ng pahina, aktibong locale, bersyon ng CRM, bersyon ng PHP, pamilya ng OS, ang bansang mula sa mga setting ng impormasyon ng simbahan, at isang random na installation ID. Hindi kasama sa mga ulat ng pagkabigo ang installation ID. Ipinapadala ang datos sa PostHog sa United States."
+
+#: 
+msgid "Passkey"
+msgstr "Passkey"
+
+#: 
+msgid "Passkey added"
+msgstr "Naidagdag ang passkey"
+
+#: 
+msgid "Passkey removed"
+msgstr "Naalis ang passkey"
+
+#: 
+msgid "Passkeys"
+msgstr "Mga passkey"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Naka-off ang mga passkey."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Hindi magagamit ang mga passkey dito."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Hindi pa magagamit ang mga passkey sa site na ito. Makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Kailangan ng mga passkey ng host name, hindi IP address, sa address ng site."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Kailangan ng mga passkey ng secure (HTTPS) na koneksyon sa site na ito."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Kailangan ng mga passkey na nakatakda ang address ng site sa Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Kailangan ng mga passkey na ihain ang site sa pamamagitan ng HTTPS. Hindi inaalok ang mga passkey sa mga miyembro hanggang ganoon."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Gumagana ang mga passkey sa %s lamang."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Mga passkey: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Mga taong pinapapasok ng naka-save na mga setting: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Mga taong ie-email kapag may hindi nakapag-sign in sa Member Portal"
+
+#: 
+msgid "People who hold it"
+msgstr "Mga taong humahawak nito"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Mga taong mawawalan ng address: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Mga taong nawalan ng address: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Mga taong maaaring mag-sign in: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Mga taong dating nag-sign in sa Member Portal: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Lumalabas sa direktoryo ang mga taong may mga klasipikasyong ito. Ang bilang ay kung ilang aktibong tao ang may bawat klasipikasyon."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Mga taong may email na ito: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Tao %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Pumili ng mga klasipikasyon mula sa listahan."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Pumili ng mga tungkulin sa pamilya mula sa listahan."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Pumili ng mga tao para sa listahan ng opisina."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Pumili ng wika mula sa listahan."
+
+#: 
+msgid "Portal permission given"
+msgstr "Ibinigay ang pahintulot sa portal"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Inalis ang pahintulot sa portal"
+
+#: 
+msgid "Portal permissions"
+msgstr "Mga pahintulot sa portal"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Pag-sign in sa portal"
+
+#: 
+msgid "Problem"
+msgstr "Problema"
+
+#: 
+msgid "Reason"
+msgstr "Dahilan"
+
+#: 
+msgid "Reason: %s"
+msgstr "Dahilan: %s"
+
+#: 
+msgid "Refused"
+msgstr "Tinanggihan"
+
+#: 
+msgid "Register your family"
+msgstr "Irehistro ang iyong pamilya"
+
+#: 
+msgid "Remembered device"
+msgstr "Naalalang device"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Naalis ang naalalang device"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Mga naalalang device: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Alisin ang mga Email"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Alisin ang passkey na ito"
+
+#: 
+msgid "Remove this permission"
+msgstr "Alisin ang pahintulot na ito"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Inalis mula kay: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Pinalitan pagkatapos ng pag-sign in"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Pinalitan ng ibang pag-sign in"
+
+#: 
+msgid "Result"
+msgstr "Resulta"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Patakbuhin ang isang koponan ng boluntaryo: mga posisyon, boluntaryo, iskedyul, staffing, at headcount."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Sabihin kung bakit dini-disable ang pag-sign in."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Sabihin kung bakit ibinibigay ang pahintulot na ito."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Maghanap ng sinuman sa file. Sinasabi ng bawat hilera kung maaari silang mag-sign in sa Member Portal at, kung hindi, kung bakit."
+
+#: 
+msgid "Search method"
+msgstr "Paraan ng paghahanap"
+
+#: 
+msgid "Search only"
+msgstr "Paghahanap lamang"
+
+#: 
+msgid "See family contact details"
+msgstr "Tingnan ang mga detalye ng pakikipag-ugnayan ng pamilya"
+
+#: 
+msgid "See my family"
+msgstr "Tingnan ang aking pamilya"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Tingnan ang Member Portal gaya ng nakikita ng taong ito? Mananatiling sarado ang mga pahina ng staff hanggang pindutin mo ang Stop, at naitatala ang session sa pahinang ito at sa iyong user page."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Tingnan ang mga kalendaryong ibinabahagi ng simbahan sa mga miyembro, at mag-subscribe sa mga ito."
+
+#: 
+msgid "See the church calendar"
+msgstr "Tingnan ang kalendaryo ng simbahan"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Tingnan ang mga device at passkey na nag-sign in sa kanila, at mag-sign out o mag-alis ng alinman sa mga ito."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Tingnan ang mga email address at numero ng telepono ng mga tao sa kanilang pamilya."
+
+#: 
+msgid "See the member directory"
+msgstr "Tingnan ang direktoryo ng miyembro"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Tingnan ang mga pangalan at larawan ng mga tao sa kanilang pamilya."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Tingnan ang mga taong inililista ng simbahan sa direktoryo nito, kasama ang mga detalyeng pinipiling ibahagi ng simbahan."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Tingnan ang kanilang iskedyul bilang boluntaryo, mag-sign up para sa mga bakanteng puwesto, at humiling ng kahalili."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Ipadala ang browse bilang true o false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Ipadala ang mga klasipikasyon bilang listahan ng mga id."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Ipadala ang mga setting ng direktoryo bilang isang JSON object."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Ipadala ang mga field na ipapakita bilang object ng mga halagang true at false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Ipadala ang mga setting bilang isang JSON object."
+
+#: 
+msgid "Session ended"
+msgstr "Natapos ang session"
 
 #: 
 msgid "Set up email"
 msgstr "I-set up ang Email"
 
 #: 
+msgid "Set up email first."
+msgstr "I-set up muna ang email."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Mga pinaghahatiang address na naayos: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Mga pinaghahatiang address na aayusin: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Pinaghahatian ni"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Mga pinaghahatiang email na pumipigil sa mga tao na mag-sign in"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Ipakita o itago ang miyembrong ito"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Ipakita ang pahina ng Directory sa Member Portal sa mga klasipikasyong napili sa ibaba."
+
+#: 
+msgid "Show the member directory"
+msgstr "Ipakita ang direktoryo ng miyembro"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Ipakita ang direktoryo ng miyembro sa Member Portal."
+
+#: 
+msgid "Show with year"
+msgstr "Ipakita kasama ang taon"
+
+#: 
+msgid "Show without year"
+msgstr "Ipakita nang walang taon"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Ipinapakita ang unang %d tugma. Mag-type pa ng pangalan para mahanap ang taong hinahanap mo."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Mag-sign in bilang %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Mag-sign in sa susunod sa device na ito gamit ang Face ID, fingerprint, o PIN ng iyong device."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Mag-sign in para makita ang iyong pamilya, ang kalendaryo ng simbahan, at mga paraan para maglingkod. Hindi mo kailangan ng password o account."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Mag-sign in gamit ang passkey"
+
+#: 
+msgid "Sign out every device"
+msgstr "Mag-sign out sa bawat device"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Mag-sign out sa bawat device ngayon?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Mag-sign out saanman"
+
+#: 
+msgid "Sign out this device"
+msgstr "Mag-sign out sa device na ito"
+
+#: 
+msgid "Sign-in"
+msgstr "Pag-sign in"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Pag-sign in at mga device"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Hindi ma-disable ang pag-sign in."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Hindi ma-enable ang pag-sign in."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Naka-disable ang pag-sign in"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Hiniling ang email ng pag-sign in"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Mga email ng pag-sign in bawat IP address bawat oras"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Naka-enable ang pag-sign in"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Naka-disable na ang pag-sign in para sa taong ito."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Naka-disable ang pag-sign in"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Naka-disable ang pag-sign in para sa taong ito."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Naka-enable ang pag-sign in para sa taong ito."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Hindi naka-disable ang pag-sign in para sa taong ito."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Tinanggihan ang pag-sign in"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Naka-block ang pag-sign in, mga session, at API key hanggang malutas ito sa tala ng naka-link na tao."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Nag-sign in, huling 30 araw"
+
+#: 
+msgid "Signed out"
+msgstr "Naka-sign out"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Na-sign out dahil sa pagbabago sa kanilang pag-sign in"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Naka-sign out saanman"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "May humiling ng email ng pag-sign in sa Member Portal, ngunit walang naipadala."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "May hindi nakapag-sign in sa Member Portal"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Mananatiling sarado ang mga pahina ng staff habang Login as Person. Pindutin ang Stop sa banner para bumalik."
+
+#: 
+msgid "Stop"
+msgstr "Stop"
+
+#: 
+msgid "Stopped"
+msgstr "Huminto"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Sabihin sa opisina ng simbahan kung tama pa ang mga detalye ng pamilya."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Hindi gumana ang code na iyon. Tingnan ang pinakabagong email mula sa amin, o humiling ng bago."
+
+#: 
+msgid "That could not be removed."
+msgstr "Hindi iyon maalis."
+
+#: 
+msgid "That device is signed out."
+msgstr "Naka-sign out ang device na iyon."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Hindi iyon wastong email address."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Masyadong matagal nang bukas ang pahinang iyon. Subukan muli."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Naalis ang passkey na iyon. Hindi na nito magagamit para i-sign in ka."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Masyadong matagal iyon. Subukan muli."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Ibinigay ng upgrade na 7.8.3 ang bawat email ng pamilya sa isang tao. Ang mga ito ay hindi nito nagawa, kaya nag-iwan ito ng tala sa timeline ng pamilya."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Ginagamit ng Member Portal at ng mga email na ipinapadala nito sa iyo ang wikang ito."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Hindi ma-save ang pagbabago."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Gumagana nang isang beses ang code at ang button, hanggang %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Napunta ang code o link sa address na hindi na ang kanilang email"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Hindi maipadala ang email ng kumpirmasyon. Subukan muli mamaya."
+
+#: 
+msgid "The device is signed out."
+msgstr "Naka-sign out ang device."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "Inalis ang email address na %2$s sa iyong tala nang %1$s. Na-sign out ka sa Member Portal sa bawat device."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "Binago ang email address sa iyong tala nang %1$s mula %2$s tungo sa %3$s. Na-sign out ka sa Member Portal sa bawat device."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "Hindi makumpirma ang email."
+
+#: 
+msgid "The email could not be sent."
+msgstr "Hindi maipadala ang email."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "Nakumpirma na ang email. Magagamit na ito para mag-sign in."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Ang petsa ng pagtatapos ay bago ang petsa ng simula."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Walang buhay at aktibong puno ng sambahayan o asawa ang pamilya"
+
+#: 
+msgid "The family is inactive"
+msgstr "Hindi aktibo ang pamilya"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "May sariling email ang puno ng sambahayan at ang asawa"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Hindi maaaring nasa nakaraan ang huling araw."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Hindi maaaring mag-sign in ang naka-link na tao, kaya hindi maaaring mag-sign in ang account na ito"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Hindi ma-load ang listahan."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Hindi maidagdag ang passkey. Subukan muli."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Hindi maberipika ang passkey"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Wala sa tala ang passkey, o naalis na"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Naalis ang passkey."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Ang mga taong nakikibahagi rito ay nasa magkakaibang pamilya, o wala sa isang pamilya"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Nagbago ang mga taong nakikibahagi sa address na ito. Buksan muli ang Ayusin ang mga pinaghahatiang email."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Hindi maibigay ang pahintulot."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Nagtatapos ang pahintulot pagkatapos ng araw na ito. Maaari itong ibigay muli."
+
+#: 
+msgid "The permission was given."
+msgstr "Naibigay ang pahintulot."
+
+#: 
+msgid "The permission was removed."
+msgstr "Naalis ang pahintulot."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Hindi ma-load ang mga pahintulot."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Nawawala agad ang pahintulot na ito sa tao sa Member Portal."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Ang dahilan ay maaaring hanggang %d karakter ang haba."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Pinapapasok sila ng mga patakaran sa pag-sign in, at bawat isa ay may sariling email na walang ibang maaaring mag-sign in ang gumagamit."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Pinapapasok sila ng mga patakaran sa pag-sign in, ngunit hindi ang kanilang email: wala sila nito, pinaghahatian nila ito sa ibang maaaring mag-sign in, o hindi pa ito nakukumpirma."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Hindi ma-save ang mga setting ng pag-sign in."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Nagbago ang hindi nakumpirmang email. I-reload ang pahina at subukan muli."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Hindi maaaring mag-sign in ang kanilang klasipikasyon"
+
+#: 
+msgid "Their email changed"
+msgstr "Nagbago ang kanilang email"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "Hindi pa nakukumpirma ang kanilang email"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "Pinaghahatian ang kanilang email sa ibang tao"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Hindi maaaring mag-sign in ang kanilang tungkulin sa pamilya"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Inalis ng upgrade ang kanilang mga lumang login. I-on ang pag-sign in ng miyembro para makapag-sign in sila gamit ang sarili nilang email."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Nag-expire na ang kanilang naalalang device"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Na-sign out ang kanilang naalalang device"
+
+#: 
+msgid "Theme development"
+msgstr "Pagbuo ng tema"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Walang klasipikasyon na may id %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Walang picker para sa ganitong uri ng saklaw."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Walang ganoong audit event."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Walang ganoong problema sa email."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Walang ganoong uri ng hindi nakumpirmang email."
+
+#: 
+msgid "There is no such list."
+msgstr "Walang ganoong listahan."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Walang ganoong pahintulot sa portal."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Ito ang mga telepono at computer kung saan pinili mong manatiling naka-sign in. Mag-sign out sa alinmang hindi mo na ginagamit o hindi mo nakikilala."
+
+#: 
+msgid "They have a staff account"
+msgstr "May staff account sila"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Maaari silang mag-sign in ngunit hindi pa kailanman."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Kailangan ng aksyong ito ng naka-sign in na session ng browser."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Hindi mabago ang address na ito. Buksan muli ang Ayusin ang mga pinaghahatiang email para makita kung nasaan ito."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Hindi na pinaghahatian ng mga taong maaaring mag-sign in ang address na ito."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Hindi makagawa ng mga passkey ang browser na ito."
+
+#: 
+msgid "This device"
+msgstr "Device na ito"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "May passkey na para sa iyo ang device na ito."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Hindi na pananatilihin ng device na ito na naka-sign in ang tao, at nagtatapos ang session na bukas dito. Maaari silang mag-sign in muli sa pamamagitan ng email."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Ito ang sarili kong device. Panatilihin akong naka-sign in."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Dito ka nagpapasya tungkol sa mga bisita. Ang bilang ay kung ilang aktibong tao ang may bawat klasipikasyon."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Hindi magagamit ang link na ito"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Nag-expire na ang link na ito o nagamit na"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Hindi available sa iyo ang bahaging ito ng Member Portal."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Nasa tala na ang passkey na ito."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Hindi na gagamitin ng passkey na ito para i-sign in ang tao. Maaari silang mag-sign in sa pamamagitan ng email at magdagdag ng bago."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Hindi maibibigay ang pahintulot na ito sa pahina ng tao."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Mayroon na ang taong ito ng bawat pahintulot na maaaring ibigay."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Mayroon na ang taong ito ng pahintulot na ito."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Hindi na maaaring mag-sign in ang taong ito saanman, sa Member Portal o bilang staff. Nagtatapos ang bawat session, at inaalis ang kanilang mga naalalang device at passkey."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Hindi ma-sign out ang taong ito."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "May staff account ang taong ito. Hindi kailanman nagbubukas ng staff account ang Login as Person."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Walang ganoong passkey ang taong ito."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Walang ganoong pahintulot ang taong ito."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Walang ganoong naalalang device ang taong ito."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Walang hindi nakumpirmang email ang taong ito."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Nakapag-sign in na ang taong ito sa Member Portal. Ang pagbabago ng email na ito ay nag-sign out sa kanila saanman, at hindi magagamit ang bagong address para mag-sign in hanggang makumpirma ito."
+
+#: 
 msgid "This person is deceased."
 msgstr "Yumao na ang taong ito"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Naka-sign out ang taong ito sa Member Portal saanman."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Wala na ang taong ito."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Isi-sign out ka nito saanman, kasama rito, at kakalimutan ang bawat device. Maaari kang mag-sign in muli gamit ang iyong email address."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Isi-sign out ka nito saanman, kasama rito, at kakalimutan ang bawat device. Mananatili ang iyong mga passkey: maaari kang mag-sign in muli gamit ang passkey o ang iyong email address."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Hindi kailanman binabago ng tool na ito ang mga ito. Bigyan ang bawat tao ng sariling email sa kanilang tala."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Lagyan ito ng tsek sa sarili mong telepono o computer lamang, hindi kailanman sa pinaghahatian o pampubliko."
+
+#: 
+msgid "Time: %s"
+msgstr "Oras: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Nag-time out"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Para baguhin ang email na ito, makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "To fix"
+msgstr "Aayusin"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Para manatiling naka-sign in sa sarili mong telepono o computer, lagyan ng tsek ang \"Ito ang sarili kong device\" sa susunod na mag-sign in ka."
+
+#: 
+msgid "Too many attempts"
+msgstr "Masyadong maraming pagtatangka"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Masyadong maraming email ng pag-sign in ngayong araw"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Masyadong maraming kahilingan ng pag-sign in para sa email address na ito"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Masyadong maraming kahilingan ng pag-sign in mula sa IP address na ito"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Masyadong maraming maling code"
+
+#: 
+msgid "Turn off"
+msgstr "I-off"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "I-off ang pag-sign in ng miyembro?"
+
+#: 
+msgid "Turn on"
+msgstr "I-on"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "I-on ang pag-sign in ng miyembro"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "I-on ang pag-sign in ng miyembro?"
+
+#: 
+msgid "Type a name"
+msgstr "Mag-type ng pangalan"
+
+#: 
+msgid "Type a name or email"
+msgstr "Mag-type ng pangalan o email"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Mag-type ng kahit %d titik ng isang pangalan, pagkatapos maghanap."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Hindi nakumpirmang email"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Unawain kung saan ginagamit ang ChurchCRM"
+
+#: 
+msgid "Unknown device"
+msgstr "Hindi kilalang device"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Hindi kilalang field ng direktoryo: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Hindi kilalang setting ng direktoryo: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Device na walang pangalan"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Passkey na walang pangalan"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Hanggang kumpirmahin ito ng opisina ng simbahan, hindi magagamit ang bagong address para mag-sign in."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Gamitin ang %1$s bilang email address para kay %2$s nang %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Gumamit ng ibang email address"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Gumamit ng passkey sa device na ito?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Gamitin ang button sa ibaba para kumpirmahin na ang %1$s ang iyong email address sa %2$s. Gumagana nang isang beses ang link, hanggang %3$s."
+
+#: 
+msgid "User %d"
+msgstr "User %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Tingnan ang mga Pahintulot"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Hinihintay kang kumpirmahin ang %s. Gamitin ang link na ipinadala namin sa address na iyon."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Hinihintay kang kumpirmahin ang {{email}}. Gamitin ang link na ipinadala namin sa address na iyon."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Hindi namin maipadala ang email. Subukan muli mamaya, o makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Hindi ka namin ma-sign in"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Nag-email kami ng link sa %s. Gamitin ito para kumpirmahin ang iyong bagong email address."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Nagpadala kami ng link sa {{email}}. Nagbabago ang iyong email kapag ginamit mo ito."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Ie-email namin sa iyo ang isang code at link na gagamitin sa pag-sign in."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Natutuwa kaming narito ka! Mga tatlong minuto lang ito."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Natutuwa kaming sumali sa amin ang iyong pamilya! Natanggap na ang iyong rehistrasyon. Makikipag-ugnayan ang aming koponan sa lalong madaling panahon para personal kang salubungin."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Anibersaryo ng Kasal"
+
+#: 
+msgid "Welcome"
+msgstr "Maligayang pagdating"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Wala na ang pinagbigyan nito"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Kung ano ang nakikita at magagawa ng mga miyembro sa portal, at kung saan nanggagaling ang bawat pahintulot. Binibilang ang mga tao kasama ng lahat ng pinapayagan ng mga patakaran sa pag-sign in, at ng staff."
+
+#: 
+msgid "What members can use"
+msgstr "Kung ano ang magagamit ng mga miyembro"
+
+#: 
+msgid "What to do"
+msgstr "Ano ang gagawin"
+
+#: 
+msgid "Who can see it"
+msgstr "Sino ang makakakita nito"
+
+#: 
+msgid "Who is listed"
+msgstr "Sino ang nakalista"
+
+#: 
+msgid "Who may sign in"
+msgstr "Sino ang maaaring mag-sign in"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Sino ang maaaring mag-sign in sa Member Portal, sino na ang nakapag-sign in, at kaninong email ang pumipigil sa kanila. Sinusunod ng mga listahan ang mga patakaran sa tab na Pag-sign in."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Sino ang inililista ng direktoryo ng Member Portal, sino ang makakakita nito, at ano ang ipinapakita nito, pinili sa Admin -> Member Portal -> Directory."
+
+#: 
+msgid "Why"
+msgstr "Bakit"
+
+#: 
+msgid "Why not"
+msgstr "Bakit hindi"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Gamit ang token na pinalitan ng device ilang sandali ang nakalipas"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Oo, magdagdag ng passkey"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Oo, alisin ang passkey na ito"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Oo, mag-sign out sa bawat device"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Hindi ka pinapayagang kumpirmahin ang email na ito."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Hindi ka pinananatiling naka-sign in sa anumang device."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Naka-sign out ka sa bawat device."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Naka-sign out ka sa device na ito."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Maaari ka ring mag-sign in gamit ang iyong email address."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Hindi mo maaaring i-disable ang sarili mong pag-sign in."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Hindi mo mabubuksan ang Member Portal. Makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Masyadong maraming beses kang humiling na baguhin ang iyong email. Subukan muli mamaya."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Wala kang mga passkey."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Naka-log in ka bilang %s sa Member Portal (pinapayagan ang mga pagbabago)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Naka-log in ka bilang %s sa Member Portal (read-only)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Mas bata kaysa sa pinakamababang edad"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Pinakabatang edad kung kailan maaaring mag-sign in ang isang tao sa Member Portal. Kapag hindi alam ang petsa ng kapanganakan, tanging puno ng sambahayan o asawa ang kwalipikado."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Ang iyong code ng pag-sign in sa Member Portal"
+
+#: 
+msgid "Your code"
+msgstr "Ang iyong code"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Hindi pa nakukumpirma ang iyong email address na %s, kaya hindi ito magagamit para mag-sign in. Mag-e-email kami ng link dito; kinukumpirma ito ng paggamit ng link."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Hindi maaalis dito ang iyong email address. Makipag-ugnayan sa opisina ng simbahan."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Nakumpirma na ang iyong email address"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Nabago ang iyong email address"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Naidagdag ang iyong passkey. Sa susunod, mag-sign in gamit ito sa device na ito."
+
+#: 
+msgid "an administrator"
+msgstr "isang administrator"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "walang email address ang puno ng sambahayan o asawa"
+
+#: 
+msgid "or"
+msgstr "o"
+
+#: 
+msgid "until %s"
+msgstr "hanggang %s"
 
