@@ -4,7 +4,8 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 
-const { emptyDownloads, integrity, regressions } = require('./locale-download-check');
+const { execFileSync } = require('node:child_process');
+const { emptyDownloads, integrity, modifiedLocales, regressions } = require('./locale-download-check');
 
 test('an empty locale fails except the empty en_US base', () => {
     const files = [
@@ -36,4 +37,21 @@ test('a regression is a substantial file that became tiny', () => {
         { name: 'c.json', now: 800, before: 900 },
     ];
     assert.deepEqual(regressions(files).map((f) => f.name), ['a.json']);
+});
+
+test('a download that empties a committed locale is measured against the checked-out commit', () => {
+    const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'i18n-repo-'));
+    const git = (...args) => execFileSync('git', args, { cwd: repo, stdio: 'ignore' });
+    try {
+        const dir = path.join(repo, 'src/locale/i18n');
+        fs.mkdirSync(dir, { recursive: true });
+        fs.writeFileSync(path.join(dir, 'fr_FR.json'), JSON.stringify({ k: 'x'.repeat(900) }));
+        git('init', '-q');
+        git('add', '.');
+        git('-c', 'user.name=t', '-c', 'user.email=t@t', 'commit', '-q', '-m', 'locale');
+        fs.writeFileSync(path.join(dir, 'fr_FR.json'), '{}');
+        assert.deepEqual(regressions(modifiedLocales(repo)).map((f) => f.name), ['src/locale/i18n/fr_FR.json']);
+    } finally {
+        fs.rmSync(repo, { recursive: true, force: true });
+    }
 });

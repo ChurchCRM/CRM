@@ -15,7 +15,7 @@ Legend: 🤖 automated · 🧑‍💻 agent-assisted · ✋ manual
 7. **After Publish** (Phase 4): bookkeeping `sync`, `manage-milestones` and `docs-release` are green, and the release nightly is green.
 8. **Marketing** (Phase 6).
 
-Recovery for a release published under a placeholder `untagged-<hash>` tag is in `MEMORY.md`; re-run `release-bookkeeping.yml` with `tag=<version>` afterwards.
+To repair a release stuck on a placeholder `untagged-<hash>` tag: create the real tag on the release commit, move the release with `gh release edit untagged-… --tag <version>`, verify with `gh release view <version> --json tagName,isDraft`, then delete the stray tag. Re-run `release-bookkeeping.yml` with `tag=<version>` afterwards.
 
 ---
 

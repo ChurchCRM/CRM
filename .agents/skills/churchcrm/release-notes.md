@@ -176,6 +176,7 @@ The release workflow builds the CHANGELOG.md summary from the `**Theme**:` line,
 
 - Write for church administrators, staff and volunteers. Say where things are (**Admin → System → Church Information**) and what changed ("used to print blank labels; now uses the family address").
 - Leave out developer vocabulary (refactor, middleware, endpoint, TomSelect, CI, lint, chore) unless users need it. The two Behind the Scenes lines may name libraries and advisories.
+- Weight notes by reach: a change seen on every screen is a feature; a capability few use yet gets one line.
 - Never claim a benefit the change does not deliver. A refactor is not "faster"; a dependency bump is not "more secure" unless it fixes an advisory.
 - State breaking changes, removed features, new runtime requirements and required upgrade steps plainly, in their own `## ⚠️ Before You Upgrade` section placed above New Features.
 - Security: use calm, routine-maintenance framing. If the release fixes a published advisory users must act on, name it accurately. Never hide required security information. Name no GHSA or CVE ID for a draft or triage advisory: describe the change in plain words, and add the ID only after the advisory is published.

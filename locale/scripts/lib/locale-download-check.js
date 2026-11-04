@@ -26,23 +26,13 @@ function integrity(dir = path.join(ROOT, I18N)) {
     return empty.length ? [`Empty JSON locale files, so the download failed for them: ${empty.join(', ')}`] : [];
 }
 
-function git(...args) {
-    return execFileSync('git', args, { cwd: ROOT, encoding: 'buffer', stdio: ['ignore', 'pipe', 'ignore'] });
-}
-
-function modifiedLocales() {
+// Locales the download rewrote, with their size now and in the checked-out commit.
+function modifiedLocales(root = ROOT) {
+    const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'buffer', stdio: ['ignore', 'pipe', 'ignore'] });
     const names = git('diff', '--name-only', '--diff-filter=M').toString().split('\n');
     return names
-        .filter((name) => new RegExp(`^${I18N}/.*\\.json$`).test(name) && fs.existsSync(path.join(ROOT, name)))
-        .map((name) => {
-            let before = 0;
-            try {
-                before = git('show', `HEAD~1:${name}`).length;
-            } catch {
-                // A file that did not exist in the previous commit has nothing to regress from.
-            }
-            return { name, now: fs.statSync(path.join(ROOT, name)).size, before };
-        });
+        .filter((name) => new RegExp(`^${I18N}/.*\\.json$`).test(name) && fs.existsSync(path.join(root, name)))
+        .map((name) => ({ name, now: fs.statSync(path.join(root, name)).size, before: git('show', `HEAD:${name}`).length }));
 }
 
 if (require.main === module) {
@@ -60,4 +50,4 @@ if (require.main === module) {
     console.log(`✅ locale download ${check} check passed`);
 }
 
-module.exports = { emptyDownloads, integrity, regressions };
+module.exports = { emptyDownloads, integrity, modifiedLocales, regressions };
