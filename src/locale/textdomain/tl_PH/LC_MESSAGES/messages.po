@@ -436,10 +436,6 @@ msgid "Family Cell Phone"
 msgstr "Cell Phone ng Pamilya"
 
 #: 
-msgid "Family Email"
-msgstr "Email ng Pamilya"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Personal na Telepono sa Bahay"
 
@@ -3876,10 +3872,6 @@ msgid "Oops! Page not found."
 msgstr "Oops! Hindi mahanap ang pahina."
 
 #: 
-msgid "Family Registration"
-msgstr "Pagpaparehistro ng Pamilya"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Pakipasok ang sumusunod para simulan ang verification ng iyong pamilya"
 
@@ -5279,24 +5271,8 @@ msgid "Email address"
 msgstr "Email address"
 
 #: 
-msgid "Enter family name"
-msgstr "Ipasok ang pangalan ng pamilya"
-
-#: 
 msgid "Family name is required"
 msgstr "Ang pangalan ng pamilya ay kinakailangan"
-
-#: 
-msgid "First name"
-msgstr "Pangalan"
-
-#: 
-msgid "Home phone number"
-msgstr "Numero ng telepono sa bahay"
-
-#: 
-msgid "Last name"
-msgstr "Apelyido"
 
 #: 
 msgid "Next Member"
@@ -9725,10 +9701,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Gagamitin namin ito para manatiling makipag-ugnayan at magpadala ng mga update ng simbahan."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Napakasaya namin na nandito ka! Irehistro ang iyong pamilya sa 3 madaling hakbang."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Maligayang Pagbabalik!"
 
@@ -13703,10 +13675,6 @@ msgid "Generate new code"
 msgstr "Gumawa ng bagong code"
 
 #: 
-msgid "Go to homepage"
-msgstr "Pumunta sa homepage"
-
-#: 
 msgid "Group added to cart"
 msgstr "Grupo ay naidagdag sa cart"
 
@@ -13729,10 +13697,6 @@ msgstr "Ihanda ang iyong authenticator app (Google Authenticator, Microsoft Auth
 #: 
 msgid "Hide advanced options"
 msgstr "Itago ang advanced options"
-
-#: 
-msgid "Home phone is required"
-msgstr "Ang telepono sa bahay ay kinakailangan"
 
 #: 
 msgid "ICS URL"
@@ -14407,10 +14371,6 @@ msgid "Warnings"
 msgstr "Mga Babala"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Napakasaya namin na sumali na ang iyong pamilya sa amin!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Maligayang pagdating sa Pamilya!"
 
@@ -14465,10 +14425,6 @@ msgstr "Ang kagustuhang wika ng iyong browser ay naiiba mula sa iyong ChurchCRM 
 #: 
 msgid "Your database already contains data"
 msgstr "Ang iyong database ay naglalaman na ng datos"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Natanggap na ang iyong pagpaparehistro. Ang aming koponan ay makikipag-ugnayan sa iyo sa lalong madaling panahon para personal na batiin ka."
 
 #: 
 msgid "Zip code is required"
@@ -14547,10 +14503,6 @@ msgid "open rate"
 msgstr "rate ng pagbubukas"
 
 #: 
-msgid "our church"
-msgstr "aming simbahan"
-
-#: 
 msgid "payment(s)?"
 msgstr "pagbabayad(mga)?"
 
@@ -14589,14 +14541,6 @@ msgstr "taon"
 #: 
 msgid "yrs"
 msgstr "taon"
-
-#: 
-msgid "Account options"
-msgstr "Mga opsyon ng account"
-
-#: 
-msgid "Register"
-msgstr "Magrehistro"
 
 #. Context: locales
 #: 
@@ -14879,16 +14823,8 @@ msgid "Always granted"
 msgstr "Palaging ibinibigay"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Maaari lamang suriin at i-verify ang kanilang sariling pamilya. Walang ibang access."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Pumili ng mga tiyak na pahintulot sa ibaba."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Makipag-ugnayan sa isang administrador upang baguhin ang iyong mga pahintulot."
 
 #: 
 msgid "Custom permissions"
@@ -14903,20 +14839,8 @@ msgid "People &amp; Families"
 msgstr "Mga Tao &amp; Mga Pamilya"
 
 #: 
-msgid "Self-service"
-msgstr "Self-Service"
-
-#: 
-msgid "Self-service only"
-msgstr "Self-service lamang"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Ang talang sinusubukan mong i-edit ay wala na."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Ang gumagamit na ito ay maaari lamang suriin at i-update ang kanilang sariling profile ng pamilya. Hindi naaangkop ang mga indibidwal na pahintulot."
 
 #: 
 msgid "User List"
@@ -18181,16 +18105,8 @@ msgid "Second Home"
 msgstr "Pangalawang Tahanan"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Ang naka-link na tao ay namatay o inactive. Ang sign-in, mga session, at API key ay na-block hanggang sa ang tao ay maging active muli."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Ito ang mailing address"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Ang taong ito ay namatay o inactive, kaya ang account na ito ay hindi makakasign in"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18879,10 +18795,6 @@ msgid "Account unlocked"
 msgstr "Account ay Na-unlock"
 
 #: 
-msgid "Accounts"
-msgstr "Mga Account"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Dapat true o false ang Active"
 
@@ -19075,10 +18987,6 @@ msgid "Author"
 msgstr "May-akda"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Ibinibigay ang awtoridad sa tao, hindi sa isang login, kaya maibibigay ito bago pa siya magkaroon nito. Ang taong ang login ay self-service lamang ay makikita lamang ang sarili niyang iskedyul hanggang palawakin ng administrator ang kanyang account."
-
-#: 
 msgid "Automatic"
 msgstr "Awtomatiko"
 
@@ -19201,10 +19109,6 @@ msgstr "Pumili ng klase"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Pumili ng araw ng buwan mula 1 hanggang 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Pumili ng bagong larawan"
 
 #: 
 msgid "Choose a person"
@@ -19977,10 +19881,6 @@ msgid "Last attempt"
 msgstr "Huling pagtatangka"
 
 #: 
-msgid "Last check"
-msgstr "Huling pagsusuri"
-
-#: 
 msgid "Last date"
 msgstr "Huling petsa"
 
@@ -20207,10 +20107,6 @@ msgstr "Wala pang kalendaryong ibinabahagi sa mga miyembro."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Walang kalendaryong bukas sa ministeryong ito, kaya hindi lalabas ang mga kaganapan sa alinmang kalendaryo."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Walang kalendaryong ibinabahagi sa mga miyembro."
 
 #: 
 msgid "No class"
@@ -20747,14 +20643,6 @@ msgid "Please tell us what needs changing."
 msgstr "Pakisabi sa amin kung ano ang kailangang baguhin."
 
 #: 
-msgid "Portal settings"
-msgstr "Mga setting ng portal"
-
-#: 
-msgid "Portal theme"
-msgstr "Tema ng portal"
-
-#: 
 msgid "Position"
 msgstr "Posisyon"
 
@@ -20971,10 +20859,6 @@ msgid "SMTP test"
 msgstr "SMTP test"
 
 #: 
-msgid "Save calendars"
-msgstr "I-save ang mga kalendaryo"
-
-#: 
 msgid "Save changes"
 msgstr "I-save ang mga Pagbabago"
 
@@ -20985,10 +20869,6 @@ msgstr "Na-save — hindi na humihingi ng tulong ang ministeryong ito"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Na-save — humihingi na ng tulong ang ministeryong ito"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Na-save. Nakikita ng mga miyembro ang mga kalendaryong naka-on sa itaas."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21093,10 +20973,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Dapat true o false ang Self-assignable"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Mga self-service na account"
-
-#: 
 msgid "Send"
 msgstr "Ipadala"
 
@@ -21165,18 +21041,6 @@ msgstr "Ipakita sa Portal ng Miyembro"
 #: 
 msgid "Show past events"
 msgstr "Ipakita ang mga nakaraang kaganapan"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Ipakita ang kalendaryo ng simbahan"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Ipakita ang kalendaryo ng simbahan sa Portal ng Miyembro."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Ipakita ang seksyon ng kalendaryo ng simbahan sa Portal ng Miyembro."
 
 #: 
 msgid "Show the next"
@@ -21585,10 +21449,6 @@ msgstr "Dapat buong bilang ng minuto ang %s"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "Dapat nasa loob ng %2$d minuto ng kaganapan ang %1$s"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Na-save ang mga kalendaryo ng Portal ng Miyembro."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22039,10 +21899,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Nanggagaling sa iskedyul ang mga pangangailangang ito. Ang pag-save dito ay babago lamang sa pagkakataong ito."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Mga self-service na account lamang ang binibilang ng mga numerong ito: mga taong ang login ay umaabot lamang sa Portal ng Miyembro at wala nang iba."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Nakatalaga pa rin ang mga taong ito, ngunit hindi na bahagi ng plano ng pagtatalaga ng tauhan sa petsang ito ang posisyong hawak nila."
 
@@ -22127,14 +21983,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Hindi ito wastong pangalan ng folder ng tema."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Hindi ito isa sa mga petsa ng pangkat mo."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Hindi ito isa sa mga pangkat mo."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Dito ipinapadala ng simbahan ang koreo at kung sino ang tatawagan tungkol sa inyong sambahayan."
 
@@ -22193,10 +22041,6 @@ msgstr "Hindi bahagi ng account mo ang pahinang ito. Kung sa palagay mo ay dapat
 #: 
 msgid "This page was not found"
 msgstr "Hindi nahanap ang pahinang ito"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Ang bahaging ito ng Portal ng Miyembro ay para sa mga pinuno ng pangkat ng boluntaryo."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23867,16 +23711,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "Naitalaga si {{name}} at naitala bilang tumanggap"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Hilingin sa isang tagapangasiwa na baguhin ang email mo sa pagpasok."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Binago ng isang tagapangasiwa ang email mula %1$s patungo sa %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Tanging tagapangasiwa ang maaaring magbago ng email ng taong may kuwenta ng gumagamit."
 
 #: 
 msgid "Fund totals appear here once payments are added."

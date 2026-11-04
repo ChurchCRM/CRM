@@ -441,10 +441,6 @@ msgid "Family Cell Phone"
 msgstr "కుటుంబ సెల్ ఫోన్"
 
 #: 
-msgid "Family Email"
-msgstr "కుటుంబ ఇమెయిల్"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "వ్యక్తిగత హోమ్ ఫోన్"
 
@@ -3887,10 +3883,6 @@ msgid "Oops! Page not found."
 msgstr "అయ్యో! పేజీ కనుగొనబడలేదు."
 
 #: 
-msgid "Family Registration"
-msgstr "కుటుంబ నమోదు"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "మీ కుటుంబ ధృవీకరణను ప్రారంభించడానికి దయచేసి కింది వివరాలు నమోదు చేయండి"
 
@@ -5290,24 +5282,8 @@ msgid "Email address"
 msgstr "ఇమెయిల్ చిరునామా"
 
 #: 
-msgid "Enter family name"
-msgstr "కుటుంబ పేరు నమోదు చేయండి"
-
-#: 
 msgid "Family name is required"
 msgstr "కుటుంబ పేరు అవసరం"
-
-#: 
-msgid "First name"
-msgstr "మొదటి పేరు"
-
-#: 
-msgid "Home phone number"
-msgstr "ఇంటి ఫోన్ నంబర్"
-
-#: 
-msgid "Last name"
-msgstr "చివరి పేరు"
 
 #: 
 msgid "Next Member"
@@ -9736,10 +9712,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "మేము ఇది సంఘం అప్‌డేట్‌లు పంపడానికి మరియు సంప్రదించడానికి ఉపయోగిస్తాము."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "మీరు ఇక్కడ ఉన్నందుకు చాలా సంతోషంగా ఉన్నాం! కేవలం 3 సులభమైన దశలలో మీ కుటుంబాన్ని నమోదు చేయండి."
-
-#: 
 msgid "Welcome Back!"
 msgstr "తిరిగి స్వాగతం!"
 
@@ -13714,10 +13686,6 @@ msgid "Generate new code"
 msgstr "కొత్త కోడ్‌ను రూపొందించండి"
 
 #: 
-msgid "Go to homepage"
-msgstr "హోమ్‌పేజ్‌కి వెళ్ళండి"
-
-#: 
 msgid "Group added to cart"
 msgstr "గ్రూప్ కార్ట్‌కు జోడించబడింది"
 
@@ -13740,10 +13708,6 @@ msgstr "మీ ప్రామాణీకరణ అనువర్తనాన�
 #: 
 msgid "Hide advanced options"
 msgstr "అధునాతన ఎంపికలను దాచండి"
-
-#: 
-msgid "Home phone is required"
-msgstr "ఇంటి ఫోన్ అవసరం"
 
 #: 
 msgid "ICS URL"
@@ -14418,10 +14382,6 @@ msgid "Warnings"
 msgstr "హెచ్చరికలు"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "మీ కుటుంబం మాతో చేరినందుకు చాలా సంతోషంగా ఉన్నాము!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "కుటుంబానికి స్వాగతం!"
 
@@ -14476,10 +14436,6 @@ msgstr "మీ బ్రౌజర్ భాషా ప్రాధాన్యత
 #: 
 msgid "Your database already contains data"
 msgstr "మీ డేటాబేస్ ఇప్పటికే డేటాను కలిగి ఉంది"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "మీ నమోదు స్వీకరించబడింది. మా బృందం మిమ్మల్ని వ్యక్తిగతంగా స్వాగతించడానికి త్వరలో సంప్రదిస్తుంది."
 
 #: 
 msgid "Zip code is required"
@@ -14558,10 +14514,6 @@ msgid "open rate"
 msgstr "ఓపెన్ రేటు"
 
 #: 
-msgid "our church"
-msgstr "మా చర్చి"
-
-#: 
 msgid "payment(s)?"
 msgstr "చెల్లింపు(లు)?"
 
@@ -14600,14 +14552,6 @@ msgstr "స."
 #: 
 msgid "yrs"
 msgstr "సం."
-
-#: 
-msgid "Account options"
-msgstr "ఖాతా ఎంపికలు"
-
-#: 
-msgid "Register"
-msgstr "నమోదు చేయండి"
 
 #. Context: locales
 #: 
@@ -14890,16 +14834,8 @@ msgid "Always granted"
 msgstr "ఎల్లప్పుడూ మంజూరు చేయబడింది"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "వారి స్వంత కుటుంబాన్ని మాత్రమే సమీక్షించి ధృవీకరించగలరు. మరే ఇతర యాక్సెస్ లేదు."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "దిగువన నిర్దిష్ట అనుమతులను ఎంచుకోండి."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "మీ అనుమతులను మార్చడానికి నిర్వాహకుని సంప్రదించండి."
 
 #: 
 msgid "Custom permissions"
@@ -14914,20 +14850,8 @@ msgid "People &amp; Families"
 msgstr "వ్యక్తులు &amp; కుటుంబాలు"
 
 #: 
-msgid "Self-service"
-msgstr "స్వయం సేవ"
-
-#: 
-msgid "Self-service only"
-msgstr "స్వయం సేవ మాత్రమే"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "మీరు సవరించడానికి ప్రయత్నిస్తున్న గమనిక ఇకపై లేదు."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "ఈ వినియోగదారు తమ స్వంత కుటుంబ ప్రొఫైల్‌ను మాత్రమే సమీక్షించి నవీకరించగలరు. వ్యక్తిగత అనుమతులు వర్తించవు."
 
 #: 
 msgid "User List"
@@ -18192,16 +18116,8 @@ msgid "Second Home"
 msgstr "రెండవ ఇల్లు"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "లింక్ చేయబడిన వ్యక్తి చనిపోయినవారు లేదా నిష్క్రియం. వ్యక్తిని మళ్లీ సక్రియం చేసినవరకు సైన్-ఇన్, సెషన్‌లు మరియు API కీ నిరోధించబడతాయి."
-
-#: 
 msgid "This is the mailing address"
 msgstr "ఇది డాక చిరునామా"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "ఈ వ్యక్తి చనిపోయినవారు లేదా నిష్క్రియం, కనుక ఈ ఖాతా సైన్ ఇన్ చేయలేము"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18890,10 +18806,6 @@ msgid "Account unlocked"
 msgstr "ఖాతా అన్‌లాక్ చేయబడింది"
 
 #: 
-msgid "Accounts"
-msgstr "ఖాతాలు"
-
-#: 
 msgid "Active must be true or false"
 msgstr "యాక్టివ్ అనేది ఒప్పు లేదా తప్పు అయి ఉండాలి"
 
@@ -19086,10 +18998,6 @@ msgid "Author"
 msgstr "రచయిత"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "అధికారం వ్యక్తికి ఇవ్వబడుతుంది, లాగిన్‌కు కాదు, కాబట్టి వారికి లాగిన్ రాకముందే దాన్ని ఇవ్వవచ్చు. లాగిన్ స్వయం-సేవ మాత్రమే ఉన్న వ్యక్తికి, నిర్వాహకుడు వారి ఖాతాను విస్తరించే వరకు వారి స్వంత షెడ్యూల్ మాత్రమే కనిపిస్తూ ఉంటుంది."
-
-#: 
 msgid "Automatic"
 msgstr "స్వయంచాలకం"
 
@@ -19212,10 +19120,6 @@ msgstr "తరగతిని ఎంచుకోండి"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "నెలలో 1 నుండి 31 వరకు ఒక రోజును ఎంచుకోండి"
-
-#: 
-msgid "Choose a new photo"
-msgstr "కొత్త ఫోటోను ఎంచుకోండి"
 
 #: 
 msgid "Choose a person"
@@ -19988,10 +19892,6 @@ msgid "Last attempt"
 msgstr "చివరి ప్రయత్నం"
 
 #: 
-msgid "Last check"
-msgstr "చివరి తనిఖీ"
-
-#: 
 msgid "Last date"
 msgstr "చివరి తేదీ"
 
@@ -20218,10 +20118,6 @@ msgstr "ఇంకా సభ్యులతో ఏ క్యాలెండర్
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "ఈ పరిచర్యకు ఏ క్యాలెండర్ తెరవబడలేదు, కాబట్టి కార్యక్రమాలు ఏ క్యాలెండర్‌లోనూ కనిపించవు."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "సభ్యులతో ఏ క్యాలెండర్ పంచుకోబడలేదు."
 
 #: 
 msgid "No class"
@@ -20758,14 +20654,6 @@ msgid "Please tell us what needs changing."
 msgstr "దయచేసి ఏమి మార్చాలో మాకు చెప్పండి."
 
 #: 
-msgid "Portal settings"
-msgstr "పోర్టల్ సెట్టింగ్‌లు"
-
-#: 
-msgid "Portal theme"
-msgstr "పోర్టల్ థీమ్"
-
-#: 
 msgid "Position"
 msgstr "స్థానం"
 
@@ -20982,10 +20870,6 @@ msgid "SMTP test"
 msgstr "SMTP పరీక్ష"
 
 #: 
-msgid "Save calendars"
-msgstr "క్యాలెండర్లను సేవ్ చేయండి"
-
-#: 
 msgid "Save changes"
 msgstr "మార్పులను సేవ్ చేయండి"
 
@@ -20996,10 +20880,6 @@ msgstr "సేవ్ చేయబడింది — ఈ పరిచర్య �
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "సేవ్ చేయబడింది — ఈ పరిచర్య ఇప్పుడు సహాయం అడుగుతోంది"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "సేవ్ చేయబడింది. పైన ఆన్ చేసిన క్యాలెండర్లు సభ్యులకు కనిపిస్తాయి."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21104,10 +20984,6 @@ msgid "Self-assignable must be true or false"
 msgstr "స్వయంగా నియమించుకోగల అనేది ఒప్పు లేదా తప్పు అయి ఉండాలి"
 
 #: 
-msgid "Self-service accounts"
-msgstr "స్వయం-సేవ ఖాతాలు"
-
-#: 
 msgid "Send"
 msgstr "పంపండి"
 
@@ -21176,18 +21052,6 @@ msgstr "సభ్య పోర్టల్‌లో చూపించండి"
 #: 
 msgid "Show past events"
 msgstr "గత కార్యక్రమాలను చూపించండి"
-
-#: 
-msgid "Show the church calendar"
-msgstr "చర్చి క్యాలెండర్‌ను చూపించండి"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "సభ్య పోర్టల్‌లో చర్చి క్యాలెండర్‌ను చూపించండి."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "సభ్య పోర్టల్‌లో చర్చి క్యాలెండర్ విభాగాన్ని చూపించండి."
 
 #: 
 msgid "Show the next"
@@ -21596,10 +21460,6 @@ msgstr "%s తప్పనిసరిగా పూర్తి నిమిష�
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s కార్యక్రమానికి %d నిమిషాల లోపు ఉండాలి"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "సభ్య పోర్టల్ క్యాలెండర్లు సేవ్ చేయబడ్డాయి."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22050,10 +21910,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "ఈ అవసరాలు షెడ్యూల్ నుండి వచ్చాయి. ఇక్కడ సేవ్ చేస్తే ఈ సందర్భం మాత్రమే మారుతుంది."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "ఈ సంఖ్యలు స్వయం-సేవ ఖాతాలను మాత్రమే లెక్కిస్తాయి: లాగిన్ ద్వారా సభ్య పోర్టల్‌కు మాత్రమే చేరగలిగి, మరేదీ చూడలేని వ్యక్తులు."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "ఈ వ్యక్తులు ఇంకా నియమించబడి ఉన్నారు, కానీ వారు ఉన్న స్థానం ఇప్పుడు ఈ తేదీ యొక్క సిబ్బంది ప్రణాళికలో భాగం కాదు."
 
@@ -22138,14 +21994,6 @@ msgid "This is not a valid theme folder name."
 msgstr "ఇది సరైన థీమ్ ఫోల్డర్ పేరు కాదు."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "ఇది మీ బృందం తేదీలలో ఒకటి కాదు."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "ఇది మీ బృందాలలో ఒకటి కాదు."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "చర్చి తపాలా పంపే చోటు మరియు మీ కుటుంబం గురించి ఎవరిని సంప్రదిస్తుందో ఇక్కడ ఉంటుంది."
 
@@ -22204,10 +22052,6 @@ msgstr "ఈ పేజీ మీ ఖాతాలో భాగం కాదు. �
 #: 
 msgid "This page was not found"
 msgstr "ఈ పేజీ కనుగొనబడలేదు"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "సభ్య పోర్టల్‌లోని ఈ భాగం స్వచ్ఛంద సేవా బృంద నాయకుల కోసం."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23878,16 +23722,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} కేటాయించబడి అంగీకారంగా నమోదైంది"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "మీ ప్రవేశ ఈమెయిల్‌ను మార్చమని నిర్వాహకుడిని అడగండి."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "నిర్వాహకుడు ఈమెయిల్‌ను %1$s నుండి %2$sకు మార్చారు"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "వాడుకరి ఖాతా ఉన్న వ్యక్తి ఈమెయిల్‌ను నిర్వాహకుడు మాత్రమే మార్చగలరు."
 
 #: 
 msgid "Fund totals appear here once payments are added."

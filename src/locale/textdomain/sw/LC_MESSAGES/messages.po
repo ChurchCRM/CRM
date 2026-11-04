@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "Simu ya mkononi ya familia"
 
 #: 
-msgid "Family Email"
-msgstr "Barua pepe ya familia"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Simu binafsi ya nyumbani"
 
@@ -3899,10 +3895,6 @@ msgid "Oops! Page not found."
 msgstr "Lo! Ukurasa haujapatikana."
 
 #: 
-msgid "Family Registration"
-msgstr "Usajili wa Familia"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Tafadhali weka zifuatazo ili kuanza uthibitishaji wa familia yako"
 
@@ -5308,24 +5300,8 @@ msgid "Email address"
 msgstr "Anwani ya barua pepe"
 
 #: 
-msgid "Enter family name"
-msgstr "Ingiza jina la familia"
-
-#: 
 msgid "Family name is required"
 msgstr "Jina la familia linahitajika"
-
-#: 
-msgid "First name"
-msgstr "Jina la kwanza"
-
-#: 
-msgid "Home phone number"
-msgstr "Namba ya simu ya nyumbani"
-
-#: 
-msgid "Last name"
-msgstr "Jina la mwisho"
 
 #: 
 msgid "Next Member"
@@ -9754,10 +9730,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Tutatumia hii kuwasiliana na kutuma taarifa za kanisa."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Tunafuraha sana uko hapa! Sajili familia yako kwa hatua 3 rahisi tu."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Karibu Tena!"
 
@@ -13732,10 +13704,6 @@ msgid "Generate new code"
 msgstr "Tengeneza msimbo mpya"
 
 #: 
-msgid "Go to homepage"
-msgstr "Nenda kwenye ukurasa wa nyumbani"
-
-#: 
 msgid "Group added to cart"
 msgstr "Kikundi kimeongezwa kwenye kigari"
 
@@ -13758,10 +13726,6 @@ msgstr "Kuwa tayari na programu yako ya uthibitishaji (Google Authenticator, Mic
 #: 
 msgid "Hide advanced options"
 msgstr "Ficha chaguo za hali ya juu"
-
-#: 
-msgid "Home phone is required"
-msgstr "Namba ya simu ya nyumbani inahitajika"
 
 #: 
 msgid "ICS URL"
@@ -14436,10 +14400,6 @@ msgid "Warnings"
 msgstr "Maonyo"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Tunafuraha sana familia yako imejiungana nasi!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Karibu katika Familia!"
 
@@ -14494,10 +14454,6 @@ msgstr "Upendeleo wako wa lugha ya kivinjari ni tofauti na eneo lako la ChurchCR
 #: 
 msgid "Your database already contains data"
 msgstr "Hifadhidata yako tayari ina data"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Usajili wako umepokewa. Timu yetu itawasiliana nawe hivi karibuni kukukaribisha binafsi."
 
 #: 
 msgid "Zip code is required"
@@ -14576,10 +14532,6 @@ msgid "open rate"
 msgstr "kiwango cha wazi"
 
 #: 
-msgid "our church"
-msgstr "kanisa letu"
-
-#: 
 msgid "payment(s)?"
 msgstr "malipo?"
 
@@ -14618,14 +14570,6 @@ msgstr "mwk"
 #: 
 msgid "yrs"
 msgstr "mk"
-
-#: 
-msgid "Account options"
-msgstr "Chaguo za akaunti"
-
-#: 
-msgid "Register"
-msgstr "Jiandikishe"
 
 #. Context: locales
 #: 
@@ -14908,16 +14852,8 @@ msgid "Always granted"
 msgstr "Daima imetolewa"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Anaweza tu kukagua na kuthibitisha familia yake mwenyewe. Hakuna ufikiaji mwingine."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Chagua ruhusa maalum hapa chini."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Wasiliana na msimamizi kubadilisha ruhusa zako."
 
 #: 
 msgid "Custom permissions"
@@ -14932,20 +14868,8 @@ msgid "People &amp; Families"
 msgstr "Watu &amp; Familia"
 
 #: 
-msgid "Self-service"
-msgstr "Huduma ya kibinafsi"
-
-#: 
-msgid "Self-service only"
-msgstr "Huduma ya kibinafsi tu"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Kumbukumbu unayojaribu kuhariri haipo tena."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Mtumiaji huyu anaweza tu kukagua na kusasisha wasifu wa familia yake mwenyewe. Ruhusa za mtu binafsi hazitumiki."
 
 #: 
 msgid "User List"
@@ -18210,16 +18134,8 @@ msgid "Second Home"
 msgstr "Nyumba ya Pili"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Mtu aliyeunganishwa ni marehemu au hafanyi kazi. Kuingia, vipindi na ufunguo wa API vimezuiwa hadi mtu huyo afanywe hai tena."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Hii ndiyo anwani ya posta"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Mtu huyu ni marehemu au hafanyi kazi, kwa hiyo akaunti hii haiwezi kuingia"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18908,10 +18824,6 @@ msgid "Account unlocked"
 msgstr "Akaunti Imefunguliwa"
 
 #: 
-msgid "Accounts"
-msgstr "Akaunti"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Hali ya kutumika lazima iwe kweli au si kweli"
 
@@ -19104,10 +19016,6 @@ msgid "Author"
 msgstr "Mwandishi"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Mamlaka hupewa mtu, si akaunti ya kuingia, kwa hiyo yanaweza kutolewa kabla hajawa nayo. Mtu ambaye akaunti yake ni ya huduma binafsi pekee huendelea kuona ratiba yake mwenyewe tu hadi msimamizi atakapopanua akaunti yake."
-
-#: 
 msgid "Automatic"
 msgstr "Otomatiki"
 
@@ -19230,10 +19138,6 @@ msgstr "Chagua darasa"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Chagua siku ya mwezi kuanzia 1 hadi 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Chagua picha mpya"
 
 #: 
 msgid "Choose a person"
@@ -20006,10 +19910,6 @@ msgid "Last attempt"
 msgstr "Jaribio la mwisho"
 
 #: 
-msgid "Last check"
-msgstr "Ukaguzi wa mwisho"
-
-#: 
 msgid "Last date"
 msgstr "Tarehe ya mwisho"
 
@@ -20236,10 +20136,6 @@ msgstr "Hakuna kalenda iliyoshirikiwa na washirika bado."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Hakuna kalenda iliyo wazi kwa huduma hii, kwa hiyo matukio hayataonekana kwenye kalenda yoyote."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Hakuna kalenda iliyoshirikiwa na washirika."
 
 #: 
 msgid "No class"
@@ -20776,14 +20672,6 @@ msgid "Please tell us what needs changing."
 msgstr "Tafadhali tuambie nini kinahitaji kubadilishwa."
 
 #: 
-msgid "Portal settings"
-msgstr "Mipangilio ya tovuti"
-
-#: 
-msgid "Portal theme"
-msgstr "Mandhari ya tovuti"
-
-#: 
 msgid "Position"
 msgstr "Nafasi"
 
@@ -21000,10 +20888,6 @@ msgid "SMTP test"
 msgstr "Jaribio la SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "Hifadhi kalenda"
-
-#: 
 msgid "Save changes"
 msgstr "Hifadhi"
 
@@ -21014,10 +20898,6 @@ msgstr "Imehifadhiwa — huduma hii haiombi msaada tena"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Imehifadhiwa — huduma hii sasa inaomba msaada"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Imehifadhiwa. Washirika wanaona kalenda zilizowashwa hapo juu."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21122,10 +21002,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Inaweza kujipangia lazima iwe kweli au si kweli"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Akaunti za huduma binafsi"
-
-#: 
 msgid "Send"
 msgstr "Tuma"
 
@@ -21194,18 +21070,6 @@ msgstr "Onyesha kwenye Tovuti ya Washirika"
 #: 
 msgid "Show past events"
 msgstr "Onyesha matukio yaliyopita"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Onyesha kalenda ya kanisa"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Onyesha kalenda ya kanisa kwenye Tovuti ya Washirika."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Onyesha sehemu ya kalenda ya kanisa kwenye Tovuti ya Washirika."
 
 #: 
 msgid "Show the next"
@@ -21614,10 +21478,6 @@ msgstr "%s lazima iwe idadi kamili ya dakika"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s lazima iwe ndani ya dakika %d za tukio"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Kalenda za Tovuti ya Washirika zimehifadhiwa."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22068,10 +21928,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Mahitaji haya yanatoka kwenye ratiba. Kuhifadhi hapa kunabadilisha tukio hili pekee."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Nambari hizi zinahesabu akaunti za huduma binafsi tu: watu ambao akaunti zao za kuingia zinaweza kufikia Tovuti ya Washirika na hakuna kingine."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Watu hawa bado wamepangwa, lakini nafasi waliyonayo haimo tena kwenye mpango wa watumishi wa tarehe hii."
 
@@ -22156,14 +22012,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Hili si jina halali la folda ya mandhari."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Hizi si tarehe za timu yako."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Hii si mojawapo ya timu zako."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Hapa ndipo kanisa hutuma barua na ni nani wanampigia simu kuhusu kaya yako."
 
@@ -22222,10 +22070,6 @@ msgstr "Ukurasa huu si sehemu ya akaunti yako. Ikiwa unadhani unapaswa kuwa, muu
 #: 
 msgid "This page was not found"
 msgstr "Ukurasa huu haukupatikana"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Sehemu hii ya Tovuti ya Washirika ni ya viongozi wa timu za watu wa kujitolea."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23896,16 +23740,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} amegawiwa na amerekodiwa kama amekubali"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Muombe msimamizi abadilishe barua pepe yako ya kuingia."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Barua pepe imebadilishwa na msimamizi kutoka %1$s hadi %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Msimamizi pekee ndiye anayeweza kubadilisha barua pepe ya mtu mwenye akaunti ya mtumiaji."
 
 #: 
 msgid "Fund totals appear here once payments are added."

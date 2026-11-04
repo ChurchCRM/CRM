@@ -459,10 +459,6 @@ msgid "Family Cell Phone"
 msgstr "Familjens mobiltelefon"
 
 #: 
-msgid "Family Email"
-msgstr "Familjens epost"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Personlig hem telefon"
 
@@ -3988,10 +3984,6 @@ msgid "Oops! Page not found."
 msgstr "hoppsan! Sidan hittas inte."
 
 #: 
-msgid "Family Registration"
-msgstr "Familjeregistrering"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Ange följande för att starta familjens verifiering"
 
@@ -5399,24 +5391,8 @@ msgid "Email address"
 msgstr "E-postadress"
 
 #: 
-msgid "Enter family name"
-msgstr "Ange familjenamn"
-
-#: 
 msgid "Family name is required"
 msgstr "Familjenamn krävs"
-
-#: 
-msgid "First name"
-msgstr "Förnamn"
-
-#: 
-msgid "Home phone number"
-msgstr "Hemtelefonnummer"
-
-#: 
-msgid "Last name"
-msgstr "Efternamn"
 
 #: 
 msgid "Next Member"
@@ -9845,10 +9821,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Vi använder detta för att hålla kontakten och skicka uppdateringar från församlingen."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Vad roligt att du är här! Registrera din familj i bara 3 enkla steg."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Välkommen tillbaka!"
 
@@ -13823,10 +13795,6 @@ msgid "Generate new code"
 msgstr "Generera ny kod"
 
 #: 
-msgid "Go to homepage"
-msgstr "Gå till startsidan"
-
-#: 
 msgid "Group added to cart"
 msgstr "Grupp tillagd i kundvagnen"
 
@@ -13849,10 +13817,6 @@ msgstr "Ha din autentiseringsapp redo (Google Authenticator, Microsoft Authentic
 #: 
 msgid "Hide advanced options"
 msgstr "Dölj avancerade alternativ"
-
-#: 
-msgid "Home phone is required"
-msgstr "Hemtelefon krävs"
 
 #: 
 msgid "ICS URL"
@@ -14527,10 +14491,6 @@ msgid "Warnings"
 msgstr "Varningar"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Vi är så glada att din familj har anslutit sig till oss!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Välkommen till familjen!"
 
@@ -14585,10 +14545,6 @@ msgstr "Din webbläsares språkpreferens skiljer sig från din ChurchCRM-lokal"
 #: 
 msgid "Your database already contains data"
 msgstr "Din databas innehåller redan data"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Din registrering har mottagits. Vårt team hör av sig snart för att personligen välkomna dig."
 
 #: 
 msgid "Zip code is required"
@@ -14667,10 +14623,6 @@ msgid "open rate"
 msgstr "öppen kostnad"
 
 #: 
-msgid "our church"
-msgstr "vår församling"
-
-#: 
 msgid "payment(s)?"
 msgstr "betalningar (s)?"
 
@@ -14709,14 +14661,6 @@ msgstr "år"
 #: 
 msgid "yrs"
 msgstr "år"
-
-#: 
-msgid "Account options"
-msgstr "Kontoalternativ"
-
-#: 
-msgid "Register"
-msgstr "Registrera"
 
 #. Context: locales
 #: 
@@ -14999,16 +14943,8 @@ msgid "Always granted"
 msgstr "Alltid beviljad"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Kan bara granska och verifiera sin egen familj. Ingen annan åtkomst."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Välj specifika behörigheter nedan."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Kontakta en administratör för att ändra dina behörigheter."
 
 #: 
 msgid "Custom permissions"
@@ -15023,20 +14959,8 @@ msgid "People &amp; Families"
 msgstr "Personer &amp; familjer"
 
 #: 
-msgid "Self-service"
-msgstr "Självbetjäning"
-
-#: 
-msgid "Self-service only"
-msgstr "Endast självbetjäning"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Anteckningen du försöker redigera finns inte längre."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Denna användare kan bara granska och uppdatera sin egen familjeprofil. Individuella behörigheter gäller inte."
 
 #: 
 msgid "User List"
@@ -18301,16 +18225,8 @@ msgid "Second Home"
 msgstr "Andra hemmet"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Den länkade personen är avliden eller inaktiv. Inloggning, sessioner och API-nyckeln är blockerade tills personen är aktiv igen."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Det här är postadressens"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Denna person är avliden eller inaktiv, så detta konto kan inte logga in"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18999,10 +18915,6 @@ msgid "Account unlocked"
 msgstr "Konto låst upp"
 
 #: 
-msgid "Accounts"
-msgstr "Konton"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Aktiv måste vara sant eller falskt"
 
@@ -19195,10 +19107,6 @@ msgid "Author"
 msgstr "Författare"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Behörighet ges till personen, inte till en inloggning, så den kan ges innan personen har en. En person vars inloggning bara är för självbetjäning ser bara sitt eget schema tills en administratör utökar kontot."
-
-#: 
 msgid "Automatic"
 msgstr "Automatisk"
 
@@ -19321,10 +19229,6 @@ msgstr "Välj en klass"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Välj en dag i månaden, från 1 till 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Välj ett nytt foto"
 
 #: 
 msgid "Choose a person"
@@ -20097,10 +20001,6 @@ msgid "Last attempt"
 msgstr "Senaste försök"
 
 #: 
-msgid "Last check"
-msgstr "Senaste kontroll"
-
-#: 
 msgid "Last date"
 msgstr "Sista datum"
 
@@ -20327,10 +20227,6 @@ msgstr "Ingen kalender har delats med medlemmar ännu."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Ingen kalender är öppen för det här tjänsteområdet, så aktiviteterna visas inte i någon kalender."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Ingen kalender delas med medlemmar."
 
 #: 
 msgid "No class"
@@ -20867,14 +20763,6 @@ msgid "Please tell us what needs changing."
 msgstr "Berätta vad som behöver ändras."
 
 #: 
-msgid "Portal settings"
-msgstr "Portalinställningar"
-
-#: 
-msgid "Portal theme"
-msgstr "Portaltema"
-
-#: 
 msgid "Position"
 msgstr "Uppgift"
 
@@ -21091,10 +20979,6 @@ msgid "SMTP test"
 msgstr "SMTP-test"
 
 #: 
-msgid "Save calendars"
-msgstr "Spara kalendrar"
-
-#: 
 msgid "Save changes"
 msgstr "Spara ändringar"
 
@@ -21105,10 +20989,6 @@ msgstr "Sparat; det här tjänsteområdet ber inte längre om hjälp"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Sparat; det här tjänsteområdet ber nu om hjälp"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Sparat. Medlemmar ser kalendrarna som är påslagna ovan."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21213,10 +21093,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Kan tilldelas själv måste vara sant eller falskt"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Självbetjäningskonton"
-
-#: 
 msgid "Send"
 msgstr "Skicka"
 
@@ -21285,18 +21161,6 @@ msgstr "Visa i Medlemsportalen"
 #: 
 msgid "Show past events"
 msgstr "Visa tidigare händelser"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Visa församlingskalendern"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Visa församlingskalendern i Medlemsportalen."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Visa avsnittet för församlingskalendern i Medlemsportalen."
 
 #: 
 msgid "Show the next"
@@ -21705,10 +21569,6 @@ msgstr "%s måste vara ett helt antal minuter"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s måste ligga inom %d minuter från händelsen"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Kalendrarna för Medlemsportalen sparades."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22159,10 +22019,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Dessa behov kommer från schemat. Att spara här ändrar bara detta tillfälle."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Dessa siffror räknar endast självbetjäningskonton: personer vars inloggning bara ger tillgång till Medlemsportalen och inget annat."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Dessa personer är fortfarande tilldelade, men funktionen de har ingår inte längre i bemanningsplanen för detta datum."
 
@@ -22247,14 +22103,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Detta är inte ett giltigt namn på en temamapp."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Detta är inte ett av ditt teams datum."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Detta är inte ett av dina team."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Hit skickar församlingen post och det är den person församlingen ringer angående ert hushåll."
 
@@ -22313,10 +22161,6 @@ msgstr "Den här sidan ingår inte i ditt konto. Om du tycker att den borde gör
 #: 
 msgid "This page was not found"
 msgstr "Sidan hittades inte"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Den här delen av Medlemsportalen är för ledare av volontärteam."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23987,16 +23831,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} tilldelad och registrerad som godtagen"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Be en administratör ändra din inloggningsadress."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "E-post ändrad av en administratör från %1$s till %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Bara en administratör kan ändra e-postadressen för en person med ett användarkonto."
 
 #: 
 msgid "Fund totals appear here once payments are added."

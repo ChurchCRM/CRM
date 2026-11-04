@@ -436,10 +436,6 @@ msgid "Family Cell Phone"
 msgstr "Mobitel obitelji"
 
 #: 
-msgid "Family Email"
-msgstr "E-pošta obitelji"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Osobni kućni telefon"
 
@@ -3876,10 +3872,6 @@ msgid "Oops! Page not found."
 msgstr "Ups! Stranica nije pronađena."
 
 #: 
-msgid "Family Registration"
-msgstr "Registracija obitelji"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Unesite sljedeće za početak provjere vaše obitelji"
 
@@ -5279,24 +5271,8 @@ msgid "Email address"
 msgstr "Adresa e-pošte"
 
 #: 
-msgid "Enter family name"
-msgstr "Unesite obiteljsko ime"
-
-#: 
 msgid "Family name is required"
 msgstr "Obiteljsko ime je obavezno"
-
-#: 
-msgid "First name"
-msgstr "Ime"
-
-#: 
-msgid "Home phone number"
-msgstr "Kućni broj telefona"
-
-#: 
-msgid "Last name"
-msgstr "Prezime"
 
 #: 
 msgid "Next Member"
@@ -9732,10 +9708,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Koristit ćemo ovo za ostavljanje u kontaktu i slanje župnih ažuriranja."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Tako smo dragi što ste ovdje! Registrirajte vašu obitelj u samo 3 jednostavna koraka."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Dobrodošli nazad!"
 
@@ -13711,10 +13683,6 @@ msgid "Generate new code"
 msgstr "Generiraj novi kod"
 
 #: 
-msgid "Go to homepage"
-msgstr "Idi na početnu stranicu"
-
-#: 
 msgid "Group added to cart"
 msgstr "Skupini dodana u košaricu"
 
@@ -13737,10 +13705,6 @@ msgstr "Pripremite vašu autentifikacijsku aplikaciju (Google Authenticator, Mic
 #: 
 msgid "Hide advanced options"
 msgstr "Sakrij napredne opcije"
-
-#: 
-msgid "Home phone is required"
-msgstr "Kućni telefon je obavezan"
 
 #: 
 msgid "ICS URL"
@@ -14415,10 +14379,6 @@ msgid "Warnings"
 msgstr "Upozorenja"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Tako smo dragi što nam se vaša obitelj pridružila!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Dobrodošli u obitelj!"
 
@@ -14473,10 +14433,6 @@ msgstr "Jezična preferencija vašeg preglednika se razlikuje od vaše regionaln
 #: 
 msgid "Your database already contains data"
 msgstr "Vaša baza podataka već sadrži podatke"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Vaša registracija je primljena. Naš tim će vas uskoro kontaktirati za osobni pozdrav."
 
 #: 
 msgid "Zip code is required"
@@ -14555,10 +14511,6 @@ msgid "open rate"
 msgstr "stopa otvaranja"
 
 #: 
-msgid "our church"
-msgstr "naša župa"
-
-#: 
 msgid "payment(s)?"
 msgstr "uplata/uplate?"
 
@@ -14597,14 +14549,6 @@ msgstr "god."
 #: 
 msgid "yrs"
 msgstr "god."
-
-#: 
-msgid "Account options"
-msgstr "Opcije računa"
-
-#: 
-msgid "Register"
-msgstr "Registriraj se"
 
 #. Context: locales
 #: 
@@ -14888,16 +14832,8 @@ msgid "Always granted"
 msgstr "Uvijek dodijeljena"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Može pregledati i potvrditi samo vlastitu obitelj. Bez drugog pristupa."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Odaberite specifične dozvole u nastavku."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Obratite se administratoru za promjenu vaših dozvola."
 
 #: 
 msgid "Custom permissions"
@@ -14912,20 +14848,8 @@ msgid "People &amp; Families"
 msgstr "Osobe i obitelji"
 
 #: 
-msgid "Self-service"
-msgstr "Samousluga"
-
-#: 
-msgid "Self-service only"
-msgstr "Samo samousluga"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Bilješka koju pokušavate urediti više ne postoji."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Ovaj korisnik može pregledati i ažurirati samo vlastiti obiteljski profil. Pojedinačne dozvole se ne primjenjuju."
 
 #: 
 msgid "User List"
@@ -18195,16 +18119,8 @@ msgid "Second Home"
 msgstr "Drugi dom"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Povezana osoba je umrla ili neaktivna. Prijava, sesije i API ključ su blokirani dok se osoba ne reaktivatira."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Ovo je adresa za slanje pošte"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Ova osoba je umrla ili neaktivna, pa se ovaj račun ne može prijaviti"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18901,10 +18817,6 @@ msgid "Account unlocked"
 msgstr "Račun otključan"
 
 #: 
-msgid "Accounts"
-msgstr "Računi"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Aktivno mora biti istina ili laž"
 
@@ -19097,10 +19009,6 @@ msgid "Author"
 msgstr "Autor"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Ovlaštenje se dodjeljuje osobi, a ne prijavi, pa se može dodijeliti prije nego što osoba ima prijavu. Osoba čija je prijava samo za samoposluživanje i dalje vidi samo vlastiti raspored dok administrator ne proširi njezin račun."
-
-#: 
 msgid "Automatic"
 msgstr "Automatski"
 
@@ -19223,10 +19131,6 @@ msgstr "Odaberite razred"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Odaberite dan u mjesecu od 1 do 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Odaberite novu fotografiju"
 
 #: 
 msgid "Choose a person"
@@ -19999,10 +19903,6 @@ msgid "Last attempt"
 msgstr "Posljednji pokušaj"
 
 #: 
-msgid "Last check"
-msgstr "Posljednja provjera"
-
-#: 
 msgid "Last date"
 msgstr "Posljednji datum"
 
@@ -20229,10 +20129,6 @@ msgstr "Članovima još nije podijeljen nijedan kalendar."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Nijedan kalendar nije otvoren za ovu službu pa se događaji neće prikazati ni u jednom kalendaru."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Nijedan kalendar nije podijeljen s članovima."
 
 #: 
 msgid "No class"
@@ -20771,14 +20667,6 @@ msgid "Please tell us what needs changing."
 msgstr "Recite nam što treba promijeniti."
 
 #: 
-msgid "Portal settings"
-msgstr "Postavke portala"
-
-#: 
-msgid "Portal theme"
-msgstr "Tema portala"
-
-#: 
 msgid "Position"
 msgstr "Pozicija"
 
@@ -20995,10 +20883,6 @@ msgid "SMTP test"
 msgstr "SMTP test"
 
 #: 
-msgid "Save calendars"
-msgstr "Spremi kalendare"
-
-#: 
 msgid "Save changes"
 msgstr "Spremi promjene"
 
@@ -21009,10 +20893,6 @@ msgstr "Spremljeno – ova služba više ne traži pomoć"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Spremljeno – ova služba sada traži pomoć"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Spremljeno. Članovi vide kalendare uključene gore."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21117,10 +20997,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Samododjela mora biti istina ili laž"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Računi za samoposluživanje"
-
-#: 
 msgid "Send"
 msgstr "Pošalji"
 
@@ -21189,18 +21065,6 @@ msgstr "Prikaži u Portalu članova"
 #: 
 msgid "Show past events"
 msgstr "Prikaži prošle događaje"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Prikaži kalendar crkve"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Prikaži kalendar crkve u Portalu članova."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Prikaži odjeljak kalendara crkve u Portalu članova."
 
 #: 
 msgid "Show the next"
@@ -21609,10 +21473,6 @@ msgstr "Polje %s mora biti cijeli broj minuta"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "Polje %s mora biti unutar %d minuta od događaja"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Kalendari Portala članova su spremljeni."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22063,10 +21923,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Te potrebe dolaze iz rasporeda. Spremanje ovdje mijenja samo ovaj termin."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Ovi brojevi uključuju samo račune za samoposluživanje: osobe čija se prijava može koristiti samo za Portal članova i ništa drugo."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Ti su ljudi još uvijek dodijeljeni, ali pozicija koju obnašaju više nije dio plana popune za ovaj datum."
 
@@ -22153,14 +22009,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Ovo nije valjan naziv mape teme."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Ovo nije jedan od datuma vašeg tima."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Ovo nije jedan od vaših timova."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Ovdje crkva šalje poštu i koga zove u vezi s vašim kućanstvom."
 
@@ -22219,10 +22067,6 @@ msgstr "Ova stranica nije dio vašeg računa. Ako mislite da bi trebala biti, ob
 #: 
 msgid "This page was not found"
 msgstr "Ova stranica nije pronađena"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Ovaj dio Portala članova namijenjen je voditeljima volonterskih timova."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23895,16 +23739,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} dodijeljen i zabilježen kao prihvaćen"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Zamolite administratora da promijeni vašu e-poštu za prijavu."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Administrator je promijenio e-poštu s %1$s na %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Samo administrator može promijeniti e-poštu osobe s korisničkim računom."
 
 #: 
 msgid "Fund totals appear here once payments are added."

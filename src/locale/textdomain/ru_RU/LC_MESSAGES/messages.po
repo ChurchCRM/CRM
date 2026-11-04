@@ -453,10 +453,6 @@ msgid "Family Cell Phone"
 msgstr "Семья сотовый телефон"
 
 #: 
-msgid "Family Email"
-msgstr "Семья Email"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Личная Домашний телефон"
 
@@ -3961,10 +3957,6 @@ msgid "Oops! Page not found."
 msgstr "Ой! Страница не найдена."
 
 #: 
-msgid "Family Registration"
-msgstr "Регистрация семьи"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Пожалуйста, введите следующее, чтобы начать проверку вашей семьи"
 
@@ -5369,24 +5361,8 @@ msgid "Email address"
 msgstr "Адрес эл. почты"
 
 #: 
-msgid "Enter family name"
-msgstr "Введите фамилию семьи"
-
-#: 
 msgid "Family name is required"
 msgstr "Фамилия семьи обязательна"
-
-#: 
-msgid "First name"
-msgstr "Имя"
-
-#: 
-msgid "Home phone number"
-msgstr "Номер домашнего телефона"
-
-#: 
-msgid "Last name"
-msgstr "Фамилия"
 
 #: 
 msgid "Next Member"
@@ -9829,10 +9805,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Мы будем использовать это для поддержания связи и отправки новостей церкви."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Мы очень рады вас видеть! Зарегистрируйте свою семью всего за 3 простых шага."
-
-#: 
 msgid "Welcome Back!"
 msgstr "С возвращением!"
 
@@ -13809,10 +13781,6 @@ msgid "Generate new code"
 msgstr "Сгенерировать новый код"
 
 #: 
-msgid "Go to homepage"
-msgstr "На главную страницу"
-
-#: 
 msgid "Group added to cart"
 msgstr "Группа добавлена в корзину"
 
@@ -13835,10 +13803,6 @@ msgstr "Подготовьте приложение аутентификации
 #: 
 msgid "Hide advanced options"
 msgstr "Скрыть расширенные параметры"
-
-#: 
-msgid "Home phone is required"
-msgstr "Домашний телефон обязателен"
 
 #: 
 msgid "ICS URL"
@@ -14513,10 +14477,6 @@ msgid "Warnings"
 msgstr "Предупреждения"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Мы очень рады, что ваша семья присоединилась к нам!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Добро пожаловать в семью!"
 
@@ -14571,10 +14531,6 @@ msgstr "Настройка языка браузера отличается от
 #: 
 msgid "Your database already contains data"
 msgstr "Ваша база данных уже содержит данные"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Ваша регистрация получена. Наша команда скоро свяжется с вами для личного приветствия."
 
 #: 
 msgid "Zip code is required"
@@ -14653,10 +14609,6 @@ msgid "open rate"
 msgstr "процент открытий"
 
 #: 
-msgid "our church"
-msgstr "наш приход"
-
-#: 
 msgid "payment(s)?"
 msgstr "платеж(и)?"
 
@@ -14695,14 +14647,6 @@ msgstr "г."
 #: 
 msgid "yrs"
 msgstr "лет"
-
-#: 
-msgid "Account options"
-msgstr "Параметры учётной записи"
-
-#: 
-msgid "Register"
-msgstr "Зарегистрироваться"
 
 #. Context: locales
 #: 
@@ -14987,16 +14931,8 @@ msgid "Always granted"
 msgstr "Всегда предоставлено"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Может просматривать и редактировать только свою семью. Другой доступ отсутствует."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Выберите конкретные разрешения ниже."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Обратитесь к администратору для изменения ваших разрешений."
 
 #: 
 msgid "Custom permissions"
@@ -15011,20 +14947,8 @@ msgid "People &amp; Families"
 msgstr "Прихожане &amp; Семьи"
 
 #: 
-msgid "Self-service"
-msgstr "Самообслуживание"
-
-#: 
-msgid "Self-service only"
-msgstr "Только самообслуживание"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Заметка, которую вы пытаетесь редактировать, больше не существует."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Этот пользователь может просматривать и обновлять только профиль своей семьи. Индивидуальные разрешения не применяются."
 
 #: 
 msgid "User List"
@@ -18299,16 +18223,8 @@ msgid "Second Home"
 msgstr "Второй дом"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Связанный человек является умершим или неактивным. Вход, сеансы и ключ API блокируются до тех пор, пока человек не будет активирован."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Это адрес для почтовых отправлений"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Это лицо является умершим или неактивным, поэтому эта учетная запись не может войти"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -19013,10 +18929,6 @@ msgid "Account unlocked"
 msgstr "Учетная запись разблокирована"
 
 #: 
-msgid "Accounts"
-msgstr "Учётные записи"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Значение «Активно» должно быть истиной или ложью"
 
@@ -19209,10 +19121,6 @@ msgid "Author"
 msgstr "Автор"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Полномочия даются человеку, а не логину, поэтому их можно выдать до появления логина. Человек, чей логин рассчитан только на самообслуживание, видит лишь своё расписание, пока администратор не расширит его учётную запись."
-
-#: 
 msgid "Automatic"
 msgstr "Автоматически"
 
@@ -19335,10 +19243,6 @@ msgstr "Выберите класс"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Выберите день месяца от 1 до 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Выберите новое фото"
 
 #: 
 msgid "Choose a person"
@@ -20111,10 +20015,6 @@ msgid "Last attempt"
 msgstr "Последняя попытка"
 
 #: 
-msgid "Last check"
-msgstr "Последняя проверка"
-
-#: 
 msgid "Last date"
 msgstr "Последняя дата"
 
@@ -20341,10 +20241,6 @@ msgstr "Ни один календарь пока не открыт для чл�
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Ни один календарь не открыт для этого служения, поэтому события не будут отображаться ни в одном календаре."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Ни один календарь не открыт для членов общины."
 
 #: 
 msgid "No class"
@@ -20885,14 +20781,6 @@ msgid "Please tell us what needs changing."
 msgstr "Пожалуйста, расскажите, что нужно изменить."
 
 #: 
-msgid "Portal settings"
-msgstr "Настройки портала"
-
-#: 
-msgid "Portal theme"
-msgstr "Тема портала"
-
-#: 
 msgid "Position"
 msgstr "Позиция"
 
@@ -21109,10 +20997,6 @@ msgid "SMTP test"
 msgstr "Проверка SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "Сохранить календари"
-
-#: 
 msgid "Save changes"
 msgstr "Сохранить изменения"
 
@@ -21123,10 +21007,6 @@ msgstr "Сохранено — это служение больше не про�
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Сохранено — это служение теперь просит о помощи"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Сохранено. Члены общины видят календари, включённые выше."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21231,10 +21111,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Значение «Можно записаться самому» должно быть истиной или ложью"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Учётные записи самообслуживания"
-
-#: 
 msgid "Send"
 msgstr "Отправить"
 
@@ -21303,18 +21179,6 @@ msgstr "Показывать в портале общины"
 #: 
 msgid "Show past events"
 msgstr "Показать прошедшие события"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Показывать церковный календарь"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Показывать церковный календарь в портале общины."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Показывать раздел церковного календаря в портале общины."
 
 #: 
 msgid "Show the next"
@@ -21723,10 +21587,6 @@ msgstr "Значение «%s» должно быть целым числом м
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "Значение «%s» должно быть в пределах %d минут от события"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Календари портала общины сохранены."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22177,10 +22037,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Эти потребности берутся из расписания. Сохранение здесь изменяет только это проведение."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Эти числа учитывают только учётные записи самообслуживания: людей, чей логин даёт доступ только к порталу общины и ни к чему другому."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Эти люди по-прежнему назначены, но их позиция больше не входит в план назначений на эту дату."
 
@@ -22269,14 +22125,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Это недопустимое имя папки темы."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Это не одна из дат вашей команды."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Это не одна из ваших команд."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Сюда церковь отправляет почту, и этому человеку она звонит по вопросам вашей семьи."
 
@@ -22335,10 +22183,6 @@ msgstr "Эта страница не входит в вашу учётную з�
 #: 
 msgid "This page was not found"
 msgstr "Эта страница не найдена"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Эта часть портала общины предназначена для руководителей волонтёрских команд."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -24013,16 +23857,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} назначен и записан как согласившийся"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Попросите администратора изменить почту для входа."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Администратор изменил почту с %1$s на %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Почту человека с учётной записью может изменить только администратор."
 
 #: 
 msgid "Fund totals appear here once payments are added."

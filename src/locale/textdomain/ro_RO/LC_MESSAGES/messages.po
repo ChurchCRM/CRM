@@ -457,10 +457,6 @@ msgid "Family Cell Phone"
 msgstr "Număr de mobil al Familiei"
 
 #: 
-msgid "Family Email"
-msgstr "E-mail familie"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Număr de telefon de acasă personal"
 
@@ -3961,10 +3957,6 @@ msgid "Oops! Page not found."
 msgstr "Oops! Pagină negăsită"
 
 #: 
-msgid "Family Registration"
-msgstr "Înregistrare familie"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Introduceți următoarele pentru a începe verificarea familiei"
 
@@ -5373,24 +5365,8 @@ msgid "Email address"
 msgstr "Adresă de e-mail"
 
 #: 
-msgid "Enter family name"
-msgstr "Introduceți numele familiei"
-
-#: 
 msgid "Family name is required"
 msgstr "Numele familiei este obligatoriu"
-
-#: 
-msgid "First name"
-msgstr "Prenume"
-
-#: 
-msgid "Home phone number"
-msgstr "Număr de telefon de acasă"
-
-#: 
-msgid "Last name"
-msgstr "Nume de familie"
 
 #: 
 msgid "Next Member"
@@ -9826,10 +9802,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Vom folosi aceste date pentru a păstra legătura și a trimite noutăți de la parohie."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Ne bucurăm că sunteți aici! Înregistrați-vă familia în doar 3 pași simpli."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Bine ați revenit!"
 
@@ -13805,10 +13777,6 @@ msgid "Generate new code"
 msgstr "Generare cod nou"
 
 #: 
-msgid "Go to homepage"
-msgstr "Mergi la pagina principală"
-
-#: 
 msgid "Group added to cart"
 msgstr "Grup adăugat în coș"
 
@@ -13831,10 +13799,6 @@ msgstr "Pregătiți aplicația de autentificare (Google Authenticator, Microsoft
 #: 
 msgid "Hide advanced options"
 msgstr "Ascundeți opțiunile avansate"
-
-#: 
-msgid "Home phone is required"
-msgstr "Telefonul de acasă este obligatoriu"
 
 #: 
 msgid "ICS URL"
@@ -14509,10 +14473,6 @@ msgid "Warnings"
 msgstr "Avertismente"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Ne bucurăm că familia dumneavoastră ni s-a alăturat!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Bine ați venit în parohie!"
 
@@ -14567,10 +14527,6 @@ msgstr "Preferința de limbă a browserului dvs. diferă de localizarea ChurchCR
 #: 
 msgid "Your database already contains data"
 msgstr "Baza dvs. de date conține deja date"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Înregistrarea dumneavoastră a fost primită. Echipa noastră vă va contacta în curând pentru a vă ura personal bun venit."
 
 #: 
 msgid "Zip code is required"
@@ -14649,10 +14605,6 @@ msgid "open rate"
 msgstr "Rata de deschidere"
 
 #: 
-msgid "our church"
-msgstr "parohia noastră"
-
-#: 
 msgid "payment(s)?"
 msgstr "plată(ți)?"
 
@@ -14691,14 +14643,6 @@ msgstr "an"
 #: 
 msgid "yrs"
 msgstr "ani"
-
-#: 
-msgid "Account options"
-msgstr "Opțiuni cont"
-
-#: 
-msgid "Register"
-msgstr "Înregistrare"
 
 #. Context: locales
 #: 
@@ -14982,16 +14926,8 @@ msgid "Always granted"
 msgstr "Întotdeauna acordat"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Poate doar să revizuiască și să verifice propria familie. Niciun alt acces."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Alegeți permisiunile specifice de mai jos."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Contactați un administrator pentru a vă modifica permisiunile."
 
 #: 
 msgid "Custom permissions"
@@ -15006,20 +14942,8 @@ msgid "People &amp; Families"
 msgstr "Persoane &amp; Familii"
 
 #: 
-msgid "Self-service"
-msgstr "Auto-servire"
-
-#: 
-msgid "Self-service only"
-msgstr "Doar auto-servire"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Nota pe care încercați să o editați nu mai există."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Acest utilizator poate doar să revizuiască și să actualizeze propriul profil de familie. Permisiunile individuale nu se aplică."
 
 #: 
 msgid "User List"
@@ -18289,16 +18213,8 @@ msgid "Second Home"
 msgstr "A doua casă"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Persoana conectată este decedată sau inactivă. Autentificarea, sesiunile și cheia API sunt blocate până când persoana este reactivată."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Aceasta este adresa poștală"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Această persoană este decedată sau inactivă, deci acest cont nu se poate autentifica"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18995,10 +18911,6 @@ msgid "Account unlocked"
 msgstr "Cont deblocat"
 
 #: 
-msgid "Accounts"
-msgstr "Conturi"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Activ trebuie să fie adevărat sau fals"
 
@@ -19191,10 +19103,6 @@ msgid "Author"
 msgstr "Autor"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Autoritatea este dată persoanei, nu unui cont de autentificare, deci poate fi acordată înainte ca persoana să aibă unul. O persoană al cărei cont este doar de autoservire continuă să vadă doar propriul program până când un administrator îi extinde contul."
-
-#: 
 msgid "Automatic"
 msgstr "Automat"
 
@@ -19317,10 +19225,6 @@ msgstr "Alegeți o clasă"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Alegeți o zi a lunii de la 1 la 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Alegeți o fotografie nouă"
 
 #: 
 msgid "Choose a person"
@@ -20093,10 +19997,6 @@ msgid "Last attempt"
 msgstr "Ultima încercare"
 
 #: 
-msgid "Last check"
-msgstr "Ultima verificare"
-
-#: 
 msgid "Last date"
 msgstr "Ultima dată"
 
@@ -20323,10 +20223,6 @@ msgstr "Niciun calendar nu a fost încă partajat cu credincioșii."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Niciun calendar nu este deschis acestei slujiri, deci evenimentele nu vor apărea în niciun calendar."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Niciun calendar nu este partajat cu credincioșii."
 
 #: 
 msgid "No class"
@@ -20865,14 +20761,6 @@ msgid "Please tell us what needs changing."
 msgstr "Vă rugăm să ne spuneți ce trebuie schimbat."
 
 #: 
-msgid "Portal settings"
-msgstr "Setările portalului"
-
-#: 
-msgid "Portal theme"
-msgstr "Tema portalului"
-
-#: 
 msgid "Position"
 msgstr "Post"
 
@@ -21089,10 +20977,6 @@ msgid "SMTP test"
 msgstr "Test SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "Salvează calendarele"
-
-#: 
 msgid "Save changes"
 msgstr "Salvați modificările"
 
@@ -21103,10 +20987,6 @@ msgstr "Salvat — această slujire nu mai cere ajutor"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Salvat — această slujire cere acum ajutor"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Salvat. Credincioșii văd calendarele activate mai sus."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21211,10 +21091,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Autorepartizabil trebuie să fie adevărat sau fals"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Conturi de autoservire"
-
-#: 
 msgid "Send"
 msgstr "Trimite"
 
@@ -21283,18 +21159,6 @@ msgstr "Arată în Portalul comunității"
 #: 
 msgid "Show past events"
 msgstr "Arată evenimentele trecute"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Arată calendarul bisericii"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Arată calendarul bisericii în Portalul comunității."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Arată secțiunea calendarului bisericii în Portalul comunității."
 
 #: 
 msgid "Show the next"
@@ -21703,10 +21567,6 @@ msgstr "%s trebuie să fie un număr întreg de minute"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s trebuie să fie în limita a %d minute față de eveniment"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Calendarele Portalului comunității au fost salvate."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22157,10 +22017,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Aceste necesare provin din program. Salvarea aici schimbă doar această ocurență."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Aceste numere cuprind doar conturile de autoservire: persoane al căror cont poate accesa Portalul comunității și nimic altceva."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Aceste persoane sunt în continuare repartizate, dar postul pe care îl ocupă nu mai face parte din planul de personal al acestei date."
 
@@ -22247,14 +22103,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Acesta nu este un nume valid de dosar de temă."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Aceasta nu este una dintre datele echipei dumneavoastră."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Aceasta nu este una dintre echipele dumneavoastră."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Aici biserica trimite corespondență și știe pe cine să sune pentru gospodăria dumneavoastră."
 
@@ -22313,10 +22161,6 @@ msgstr "Această pagină nu face parte din contul dumneavoastră. Dacă credeți
 #: 
 msgid "This page was not found"
 msgstr "Această pagină nu a fost găsită"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Această parte a Portalului comunității este pentru liderii echipelor de voluntari."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23989,16 +23833,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} repartizat și înregistrat ca acceptat"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Cereți unui administrator să vă schimbe e-mailul de conectare."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "E-mail schimbat de un administrator de la %1$s la %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Doar un administrator poate schimba e-mailul unei persoane cu cont de utilizator."
 
 #: 
 msgid "Fund totals appear here once payments are added."

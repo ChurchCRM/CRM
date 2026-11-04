@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "Mobil rodiny"
 
 #: 
-msgid "Family Email"
-msgstr "E-mail rodiny"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Osobní číslo domů"
 
@@ -3898,10 +3894,6 @@ msgid "Oops! Page not found."
 msgstr "Jéje! Strana nebyla nalezena."
 
 #: 
-msgid "Family Registration"
-msgstr "Registrace rodiny"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Pro zahájení ověřování vaší rodiny zadejte následující údaje"
 
@@ -5303,24 +5295,8 @@ msgid "Email address"
 msgstr "E-mailová adresa"
 
 #: 
-msgid "Enter family name"
-msgstr "Zadej název rodiny"
-
-#: 
 msgid "Family name is required"
 msgstr "Je vyžadován název rodiny"
-
-#: 
-msgid "First name"
-msgstr "Křestní jméno"
-
-#: 
-msgid "Home phone number"
-msgstr "Telefonní číslo domů"
-
-#: 
-msgid "Last name"
-msgstr "Příjmení"
 
 #: 
 msgid "Next Member"
@@ -9756,10 +9732,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Použijeme to pro udržení kontaktu a zasílání novinek ze sboru."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Jsme tak rádi, že jste tu! Zaregistrujte svou rodinu ve 3 snadných krocích."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Vítejte zpět!"
 
@@ -13735,10 +13707,6 @@ msgid "Generate new code"
 msgstr "Generovat nový kód"
 
 #: 
-msgid "Go to homepage"
-msgstr "Přejít na úvodní stránku"
-
-#: 
 msgid "Group added to cart"
 msgstr "Skupina byla přidána do košíku"
 
@@ -13761,10 +13729,6 @@ msgstr "Mějte připravenou ověřovací aplikaci (Google Authenticator, Microso
 #: 
 msgid "Hide advanced options"
 msgstr "Skrýt pokročilé možnosti"
-
-#: 
-msgid "Home phone is required"
-msgstr "Je vyžadováno telefonní číslo domů"
 
 #: 
 msgid "ICS URL"
@@ -14439,10 +14403,6 @@ msgid "Warnings"
 msgstr "Chyby"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Jsme velmi rádi, že se vaše rodina k nám přidala!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Vítejte v rodině!"
 
@@ -14497,10 +14457,6 @@ msgstr "Jazyková předvolba vašeho prohlížeče se liší od nastavení jazyk
 #: 
 msgid "Your database already contains data"
 msgstr "Vaše databáze již obsahuje data"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Vaše registrace byla přijata. Náš tým se vám brzy ozve a osobně vás přivítá."
 
 #: 
 msgid "Zip code is required"
@@ -14579,10 +14535,6 @@ msgid "open rate"
 msgstr "míra otevření"
 
 #: 
-msgid "our church"
-msgstr "náš sbor"
-
-#: 
 msgid "payment(s)?"
 msgstr "platba(-y)?"
 
@@ -14621,14 +14573,6 @@ msgstr "r."
 #: 
 msgid "yrs"
 msgstr "let"
-
-#: 
-msgid "Account options"
-msgstr "Možnosti účtu"
-
-#: 
-msgid "Register"
-msgstr "Registrovat se"
 
 #. Context: locales
 #: 
@@ -14912,16 +14856,8 @@ msgid "Always granted"
 msgstr "Vždy uděleno"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Může pouze prohlížet a ověřovat vlastní rodinu. Žádný jiný přístup."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Vyberte konkrétní oprávnění níže."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Chcete-li změnit svá oprávnění, kontaktujte správce."
 
 #: 
 msgid "Custom permissions"
@@ -14936,20 +14872,8 @@ msgid "People &amp; Families"
 msgstr "Osoby &amp; Rodiny"
 
 #: 
-msgid "Self-service"
-msgstr "Samoobsluha"
-
-#: 
-msgid "Self-service only"
-msgstr "Pouze samoobsluha"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Poznámka, kterou se pokoušíte upravit, již neexistuje."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Tento uživatel může pouze prohlížet a aktualizovat profil vlastní rodiny. Individuální oprávnění se nevztahují."
 
 #: 
 msgid "User List"
@@ -18219,16 +18143,8 @@ msgid "Second Home"
 msgstr "Druhý dům"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Propojená osoba je zemřelá nebo neaktivní. Přihlášení, relace a klíč API jsou blokovány, dokud osoba není opět aktivní."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Toto je poštovní adresa"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Tato osoba je zemřelá nebo neaktivní, takže se tento účet nemůže přihlásit"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18925,10 +18841,6 @@ msgid "Account unlocked"
 msgstr "Účet odemčen"
 
 #: 
-msgid "Accounts"
-msgstr "Účty"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Aktivní musí být true nebo false"
 
@@ -19121,10 +19033,6 @@ msgid "Author"
 msgstr "Autor"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Oprávnění se uděluje osobě, nikoli přihlášení, takže je lze udělit dříve, než osoba přihlášení má. Osoba, jejíž přihlášení je pouze samoobslužné, vidí nadále jen svůj vlastní rozvrh, dokud administrátor její účet nerozšíří."
-
-#: 
 msgid "Automatic"
 msgstr "Automaticky"
 
@@ -19247,10 +19155,6 @@ msgstr "Vyberte třídu"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Vyberte den v měsíci od 1 do 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Vyberte novou fotografii"
 
 #: 
 msgid "Choose a person"
@@ -20023,10 +19927,6 @@ msgid "Last attempt"
 msgstr "Poslední pokus"
 
 #: 
-msgid "Last check"
-msgstr "Poslední kontrola"
-
-#: 
 msgid "Last date"
 msgstr "Poslední datum"
 
@@ -20253,10 +20153,6 @@ msgstr "Zatím nebyl členům sdílen žádný kalendář."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Žádný kalendář není pro tuto službu otevřen, takže se události nezobrazí v žádném kalendáři."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Členům není sdílen žádný kalendář."
 
 #: 
 msgid "No class"
@@ -20795,14 +20691,6 @@ msgid "Please tell us what needs changing."
 msgstr "Napište nám prosím, co je třeba změnit."
 
 #: 
-msgid "Portal settings"
-msgstr "Nastavení portálu"
-
-#: 
-msgid "Portal theme"
-msgstr "Motiv portálu"
-
-#: 
 msgid "Position"
 msgstr "Pozice"
 
@@ -21019,10 +20907,6 @@ msgid "SMTP test"
 msgstr "Test SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "Uložit kalendáře"
-
-#: 
 msgid "Save changes"
 msgstr "Uložit změny"
 
@@ -21033,10 +20917,6 @@ msgstr "Uloženo — tato služba už nežádá o pomoc"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Uloženo — tato služba nyní žádá o pomoc"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Uloženo. Členové vidí kalendáře zapnuté výše."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21141,10 +21021,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Lze si přiřadit samostatně musí být true nebo false"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Samoobslužné účty"
-
-#: 
 msgid "Send"
 msgstr "Odeslat"
 
@@ -21213,18 +21089,6 @@ msgstr "Zobrazit v Členském portálu"
 #: 
 msgid "Show past events"
 msgstr "Zobrazit minulé události"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Zobrazit kalendář církve"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Zobrazit kalendář církve v Členském portálu."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Zobrazit sekci kalendáře církve v Členském portálu."
 
 #: 
 msgid "Show the next"
@@ -21633,10 +21497,6 @@ msgstr "%s musí být celé číslo minut"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s musí být do %d minut od události"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Kalendáře Členského portálu byly uloženy."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22087,10 +21947,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Tyto potřeby pocházejí z rozvrhu. Uložení zde změní pouze tento výskyt."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Tato čísla počítají pouze samoobslužné účty: osoby, jejichž přihlášení dosáhne na Členský portál a nic jiného."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Tyto osoby jsou stále přiřazeny, ale pozice, kterou zastávají, již není součástí plánu obsazení tohoto data."
 
@@ -22177,14 +22033,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Toto není platný název složky motivu."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Toto není jedno z dat vašeho týmu."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Toto není jeden z vašich týmů."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Sem církev posílá poštu a podle toho vám volá ohledně vaší domácnosti."
 
@@ -22243,10 +22091,6 @@ msgstr "Tato stránka není součástí vašeho účtu. Pokud si myslíte, že b
 #: 
 msgid "This page was not found"
 msgstr "Tato stránka nebyla nalezena"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Tato část Členského portálu je určena pro vedoucí dobrovolnických týmů."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23919,16 +23763,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} přiřazeno a zaznamenáno jako přijaté"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Požádejte správce o změnu přihlašovacího e-mailu."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Správce změnil e-mail z %1$s na %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "E-mail osoby s uživatelským účtem může změnit jen správce."
 
 #: 
 msgid "Fund totals appear here once payments are added."

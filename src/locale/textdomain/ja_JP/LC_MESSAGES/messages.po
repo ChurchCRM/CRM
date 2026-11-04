@@ -436,10 +436,6 @@ msgid "Family Cell Phone"
 msgstr "世帯の携帯電話"
 
 #: 
-msgid "Family Email"
-msgstr "世帯のメールアドレス"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "個人の自宅電話"
 
@@ -3876,10 +3872,6 @@ msgid "Oops! Page not found."
 msgstr "エラー!ページが見つかりません。"
 
 #: 
-msgid "Family Registration"
-msgstr "ファミリー登録"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "ご家族の確認を開始するために以下を入力してください"
 
@@ -5277,24 +5269,8 @@ msgid "Email address"
 msgstr "メールアドレス"
 
 #: 
-msgid "Enter family name"
-msgstr "家族名を入力"
-
-#: 
 msgid "Family name is required"
 msgstr "家族名は必須です"
-
-#: 
-msgid "First name"
-msgstr "名"
-
-#: 
-msgid "Home phone number"
-msgstr "自宅電話番号"
-
-#: 
-msgid "Last name"
-msgstr "姓"
 
 #: 
 msgid "Next Member"
@@ -9716,10 +9692,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "この情報を使って連絡を取り合い、教会のお知らせをお送りします。"
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "ようこそ！簡単3ステップでご家族を登録できます。"
-
-#: 
 msgid "Welcome Back!"
 msgstr "おかえりなさい！"
 
@@ -13693,10 +13665,6 @@ msgid "Generate new code"
 msgstr "新しいコードを生成する"
 
 #: 
-msgid "Go to homepage"
-msgstr "ホームページへ"
-
-#: 
 msgid "Group added to cart"
 msgstr "グループがカートに追加されました"
 
@@ -13719,10 +13687,6 @@ msgstr "認証アプリを準備してください（Google Authenticator、Micr
 #: 
 msgid "Hide advanced options"
 msgstr "詳細オプションを非表示"
-
-#: 
-msgid "Home phone is required"
-msgstr "自宅電話は必須です"
 
 #: 
 msgid "ICS URL"
@@ -14397,10 +14361,6 @@ msgid "Warnings"
 msgstr "警告"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "ご家族が加わってくださり、とてもうれしいです！"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "ようこそ、家族の一員として！"
 
@@ -14455,10 +14415,6 @@ msgstr "ブラウザの言語設定が ChurchCRM のロケールと異なりま�
 #: 
 msgid "Your database already contains data"
 msgstr "データベースにはすでにデータが含まれています"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "ご登録を受け付けました。チームがまもなくご連絡して個別にお迎えいたします。"
 
 #: 
 msgid "Zip code is required"
@@ -14537,10 +14493,6 @@ msgid "open rate"
 msgstr "開封率"
 
 #: 
-msgid "our church"
-msgstr "私たちの教会"
-
-#: 
 msgid "payment(s)?"
 msgstr "支払い?"
 
@@ -14579,14 +14531,6 @@ msgstr "年"
 #: 
 msgid "yrs"
 msgstr "年"
-
-#: 
-msgid "Account options"
-msgstr "アカウント設定"
-
-#: 
-msgid "Register"
-msgstr "登録"
 
 #. Context: locales
 #: 
@@ -14868,16 +14812,8 @@ msgid "Always granted"
 msgstr "常に付与"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "自分の家族の確認と検証のみ可能です。その他のアクセスはありません。"
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "以下から特定の権限を選択してください。"
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "権限を変更するには管理者にお問い合わせください。"
 
 #: 
 msgid "Custom permissions"
@@ -14892,20 +14828,8 @@ msgid "People &amp; Families"
 msgstr "人々 &amp; 家族"
 
 #: 
-msgid "Self-service"
-msgstr "セルフサービス"
-
-#: 
-msgid "Self-service only"
-msgstr "セルフサービスのみ"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "編集しようとしているメモはすでに存在しません。"
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "このユーザーは自分の家族プロフィールの確認と更新のみ可能です。個別の権限は適用されません。"
 
 #: 
 msgid "User List"
@@ -18165,16 +18089,8 @@ msgid "Second Home"
 msgstr "セカンドホーム"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "リンクされた人は故人または非アクティブです。その人が再度アクティブになるまで、ログイン、セッション、APIキーはブロックされます。"
-
-#: 
 msgid "This is the mailing address"
 msgstr "これが郵送先住所です"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "この人は故人または非アクティブのため、このアカウントはログインできません"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18855,10 +18771,6 @@ msgid "Account unlocked"
 msgstr "アカウントがロック解除"
 
 #: 
-msgid "Accounts"
-msgstr "アカウント"
-
-#: 
 msgid "Active must be true or false"
 msgstr "有効は true または false でなければなりません"
 
@@ -19051,10 +18963,6 @@ msgid "Author"
 msgstr "作成者"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "権限はログインではなく人に付与されるため、ログインを持つ前に付与できます。セルフサービス専用のログインを持つ人は、管理者がアカウントの範囲を広げるまで、自分のスケジュールだけが表示されます。"
-
-#: 
 msgid "Automatic"
 msgstr "自動"
 
@@ -19177,10 +19085,6 @@ msgstr "クラスを選択"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "1から31までの月の日を選択してください"
-
-#: 
-msgid "Choose a new photo"
-msgstr "新しい写真を選択"
 
 #: 
 msgid "Choose a person"
@@ -19953,10 +19857,6 @@ msgid "Last attempt"
 msgstr "最後の試行"
 
 #: 
-msgid "Last check"
-msgstr "最終確認"
-
-#: 
 msgid "Last date"
 msgstr "最終日"
 
@@ -20183,10 +20083,6 @@ msgstr "会員と共有されているカレンダーはまだありません。
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "このミニストリーに公開されているカレンダーがないため、行事はどのカレンダーにも表示されません。"
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "会員と共有されているカレンダーはありません。"
 
 #: 
 msgid "No class"
@@ -20721,14 +20617,6 @@ msgid "Please tell us what needs changing."
 msgstr "変更が必要な点をお知らせください。"
 
 #: 
-msgid "Portal settings"
-msgstr "ポータル設定"
-
-#: 
-msgid "Portal theme"
-msgstr "ポータルのテーマ"
-
-#: 
 msgid "Position"
 msgstr "役割"
 
@@ -20945,10 +20833,6 @@ msgid "SMTP test"
 msgstr "SMTPテスト"
 
 #: 
-msgid "Save calendars"
-msgstr "カレンダーを保存"
-
-#: 
 msgid "Save changes"
 msgstr "変更内容を保存"
 
@@ -20959,10 +20843,6 @@ msgstr "保存しました。このミニストリーは奉仕者を募集しな
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "保存しました。このミニストリーは奉仕者を募集しています"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "保存しました。会員には、上でオンにしたカレンダーが表示されます。"
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21067,10 +20947,6 @@ msgid "Self-assignable must be true or false"
 msgstr "自分で割り当て可能は true または false でなければなりません"
 
 #: 
-msgid "Self-service accounts"
-msgstr "セルフサービスアカウント"
-
-#: 
 msgid "Send"
 msgstr "送信"
 
@@ -21139,18 +21015,6 @@ msgstr "メンバーポータルに表示"
 #: 
 msgid "Show past events"
 msgstr "過去の行事を表示"
-
-#: 
-msgid "Show the church calendar"
-msgstr "教会カレンダーを表示"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "メンバーポータルに教会カレンダーを表示します。"
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "メンバーポータルに教会カレンダーのセクションを表示します。"
 
 #: 
 msgid "Show the next"
@@ -21559,10 +21423,6 @@ msgstr "%s は分単位の整数でなければなりません"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s は行事から %d 分以内でなければなりません"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "メンバーポータルのカレンダーを保存しました。"
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22013,10 +21873,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "この必要人員はスケジュールから来ています。ここで保存すると、この開催回のみが変わります。"
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "これらの数字は、セルフサービスアカウント（ログインでメンバーポータルにのみアクセスできる人）のみを数えています。"
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "これらの人は引き続き割り当てられていますが、担当している役割は、この日付の人員配置計画に含まれなくなりました。"
 
@@ -22099,14 +21955,6 @@ msgid "This is not a valid theme folder name."
 msgstr "有効なテーマフォルダー名ではありません。"
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "これはあなたのチームの日付ではありません。"
-
-#: 
-msgid "This is not one of your teams."
-msgstr "これはあなたのチームではありません。"
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "教会が郵便を送る先と、あなたの世帯について電話をかける相手です。"
 
@@ -22165,10 +22013,6 @@ msgstr "このページはあなたのアカウントに含まれていません
 #: 
 msgid "This page was not found"
 msgstr "このページが見つかりません"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "メンバーポータルのこの部分は、奉仕チームのリーダー用です。"
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23837,16 +23681,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} を割り当て、承諾済みとして記録しました"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "ログイン用メールの変更は、管理者に依頼してください。"
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "管理者がメールを %1$s から %2$s に変更しました"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "ユーザーアカウントを持つ人のメールを変更できるのは、管理者だけです。"
 
 #: 
 msgid "Fund totals appear here once payments are added."
