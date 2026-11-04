@@ -24613,14 +24613,2546 @@ msgid "Witness"
 msgstr "증인"
 
 #: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d건의 헌금에 가정이 없습니다. 이 헌금은 명세서에 넣을 수 없습니다."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "올해 날짜의 미마감 입금이 %d건 있습니다. 명세서를 보내기 전에 모든 헌금이 확정되도록 입금을 마감하십시오."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "아직 어떤 입금에도 포함되지 않은 납부가 %d건 있습니다."
+
+#: 
+msgid "Can be emailed"
+msgstr "이메일로 보낼 수 있음"
+
+#: 
+msgid "Closing line"
+msgstr "맺음말"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "올해 날짜의 입금은 모두 마감되었습니다."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "모든 헌금이 가정에 속합니다."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "올해의 모든 납부가 입금에 포함되어 있습니다."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "세금 명세서 생성"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "헌금 보고서(세금 명세서)"
+
+#: 
+msgid "Opening line"
+msgstr "인사말"
+
+#: 
+msgid "Print and mail"
+msgstr "인쇄 후 우편 발송"
+
+#: 
+msgid "Qty"
+msgstr "수량"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "해당 연도를 검토한 다음 헌금 명세서를 인쇄하거나 이메일로 보내십시오."
+
+#: 
+msgid "Signed by"
+msgstr "서명한 사람"
+
+#: 
+msgid "Thank-you line"
+msgstr "감사 문구"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "교회 이름, 주소, 연락처가 세금 명세서에 표시되는지 확인하십시오."
+
+#: 
+msgid "Year-End Giving"
+msgstr "연말 헌금"
+
+#: 
+msgid "As of: %s"
+msgstr "기준일: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "선택한 %d개 회계연도에서 검토일 %s까지 양수인 가정 납부가 한 건 이상 있습니다."
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "세례, 선거인 명부 신청, 거주, 성찬 회원 자격, 출석, 신분이 양호한지 여부, 지역 예외는 교회 정관이 요구하는 경우 따로 확인해야 합니다. 교인 등록 기간은 출석을 증명하지 않습니다."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "기존 분류를 선택하십시오."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "검토할 분류를 하나 이상 선택하십시오."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "교회에서 사용하는 분류를 선택하십시오. 어떤 분류도 투표권을 준다고 가정하지 않습니다."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "교회 지도부는 교회 정관에 따라 자격을 확인해야 합니다. 이 목록은 선택한 필터에 맞는 사람만 보여 줍니다."
+
+#: 
+msgid "Classifications to review"
+msgstr "검토할 분류"
+
+#: 
+msgid "Classifications: %s"
+msgstr "분류: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "사망한 사람, 비활성 사람과 분류, 비활성이거나 검토 대기 중인 가정과 사람은 제외됩니다."
+
+#: 
+msgid "Download Review List"
+msgstr "검토 목록 다운로드"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "1900년에서 2200년 사이의 올바른 검토일을 입력하십시오."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "표시된 범위 안의 정수를 입력하십시오."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "확인할 회계연도 수(0–100, 0은 헌금 요건 없음)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "헌금은 개인이 아니라 가정 단위로 기록됩니다. 교회 정관이 가정 납부로 이 기준을 충족할 수 있을 때만 사용하십시오. 이 설정은 각 사람이 헌금했음을 증명하지 않습니다. 기간에는 선택한 회계연도가 포함되며, 검토일보다 늦지 않게 끝납니다."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "포함할 마지막 회계연도"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "최소 연령(0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "최소 연령: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "최소 교인 기간(개월, 0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "최소 교인 기간: %d개월"
+
+#: 
+msgid "No donation requirement."
+msgstr "헌금 요건이 없습니다."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "이 필터에 맞는 사람이 없습니다. 빠진 출생일이나 교인 등록일을 확인하고 기준을 조정하십시오."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "선택적 가정 헌금 요건"
+
+#: 
+msgid "People matching filters"
+msgstr "필터에 맞는 사람"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "필요한 날짜가 없어 제외된 사람"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "분류와 선택적 연령, 교인 기간, 가정 헌금 필터로 교회 검토용 목록을 준비합니다."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "교회 정관에 따라 교회 검토용 목록을 준비합니다."
+
+#: 
+msgid "Review date"
+msgstr "검토일"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "교회 정관에 따라 필터를 선택한 다음, 권한이 있는 교회 지도부가 목록을 검토하게 하십시오. 이 필터에 맞는다고 투표 자격이 확정되지는 않습니다. 이 보고서는 자격을 기록하거나 선거를 진행하지 않습니다."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "투표 교인 — 검토 목록"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "0은 선택 요건을 끕니다. 연령에는 완전한 출생일이 필요하고, 교인 기간에는 교인 등록일이 필요합니다. 필요한 날짜가 없는 사람은 제외되며 따로 집계됩니다. 사망한 사람, 비활성 사람과 분류, 비활성이거나 검토 대기 중인 가정과 사람은 항상 제외됩니다. 과거 상태가 아니라 현재 분류와 상태를 사용합니다."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "%s 미납액: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "선택한 디렉터리에 비공개 PDF 임시 저장소를 만들 수 없습니다."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "시스템 임시 디렉터리를 사용하려면 비워 두십시오. 그렇지 않으면 웹에서 접근할 수 없고 쓰기가 가능한 기존 디렉터리를 입력하십시오."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "PDF 임시 디렉터리"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "PDF 임시 저장소는 비공개이며 쓸 수 있어야 합니다."
+
+#: 
+msgid "Reporting"
+msgstr "보고"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "PDF 임시 디렉터리가 없거나 접근할 수 없습니다."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "PDF 임시 디렉터리는 절대 경로여야 합니다."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "교회 납세자 번호(EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "맺음말"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "선택적 원격 측정을 제어합니다. 원격 측정을 꺼도 설치 및 데이터베이스 업그레이드 실패는 제한된 진단 정보를 PostHog로 보냅니다. 이 실패 보고서에는 소프트웨어와 환경 버전, 그리고 민감 정보가 제거된 데이터베이스 오류가 포함되며, 설치 ID나 SQL 문은 포함되지 않습니다."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "실패한 설치와 데이터베이스 업그레이드 진단"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "설치 및 업그레이드 실패 세부 정보"
+
+#: 
+msgid "Open in browser window"
+msgstr "브라우저 창에서 열기"
+
+#: 
+msgid "Opening Line"
+msgstr "인사말"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "선택적 사용 원격 측정은 사용하도록 설정한 경우에만 전송됩니다. 설치 및 데이터베이스 업그레이드 실패는 사양합니다를 선택해도 커뮤니티를 돕기 위해 제한된 진단을 항상 보냅니다. 실패 보고서에는 소프트웨어와 환경 버전, 민감 정보가 제거된 데이터베이스 오류가 포함되며, 설치 ID나 SQL 문은 포함되지 않습니다."
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF 처리"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF 출력"
+
+#: 
+msgid "PDF handling mode"
+msgstr "PDF 처리 방식"
+
+#: 
+msgid "Questions Line"
+msgstr "문의 문구"
+
+#: 
+msgid "Save File dialog"
+msgstr "파일 저장 대화 상자"
+
+#: 
+msgid "Signer"
+msgstr "서명자"
+
+#: 
+msgid "Statement Settings"
+msgstr "명세서 설정"
+
+#: 
+msgid "Statement Wording"
+msgstr "명세서 문구"
+
+#: 
+msgid "Tax Information"
+msgstr "세금 정보"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "원격 측정은 미국의 PostHog로 전송됩니다. 선택적 원격 측정을 꺼도 설치 및 업그레이드 실패 보고서는 전송됩니다."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "이 날짜는 취소되었습니다. 더 하실 일은 없습니다."
+
+#: 
+msgid "always sent"
+msgstr "항상 전송됨"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "서신 머리글을 제거하지 못했습니다"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "서신 머리글을 저장하지 못했습니다"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "서신 머리글을 업로드하지 못했습니다"
+
+#: 
+msgid "Greeting"
+msgstr "인사"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "서신 인사와 서명"
+
+#: 
+msgid "Letterhead"
+msgstr "서신 머리글"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF 또는 WebP. 넓은 배너가 가장 좋습니다. 예: 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "헌금 명세서처럼 그래픽 서신 머리글을 쓰는 PDF 서신 맨 위에 인쇄됩니다. 머리글이 없으면 서신에 교회 이름과 주소가 인쇄됩니다."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "서신 머리글을 제거하시겠습니까? 서신에는 교회 이름과 주소가 인쇄됩니다."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "PDF 서신에 인쇄할 서신 머리글 설정"
+
+#: 
+msgid "Using the church name and address"
+msgstr "교회 이름과 주소 사용"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "시스템 설정에 지정된 서신 머리글 경로 사용"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "헌금 명세서의 문구, 납세자 번호, PDF 처리"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%2$s 자격의 %1$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s이(가) 이제 귀하의 이메일 주소입니다. 이 주소로 교인 포털에 로그인할 수 있습니다."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}}건 더"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "이메일 주소 변경이 요청되었습니다"
+
+#: 
+msgid "A family"
+msgstr "가정"
+
+#: 
+msgid "A group"
+msgstr "그룹"
+
+#: 
+msgid "A ministry"
+msgstr "사역"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "새 주소는 그 주소로 보낸 링크를 사용하신 뒤에만 변경됩니다."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "패스키는 이메일 주소로 로그인한 뒤 %d분 안에만 추가할 수 있습니다. 로그아웃한 다음 이메일로 다시 로그인하고 이 페이지로 돌아오십시오."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "패스키를 사용하면 이메일 코드 없이 Face ID, 지문 또는 기기 PIN으로 로그인합니다."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "교인 포털 로그인에 패스키가 추가되었습니다"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "%2$s %1$s에 %3$s에서 교인 포털 로그인용 패스키가 추가되었습니다."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "%2$s %1$s에 교인 포털 로그인용 패스키가 추가되었습니다."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "주소를 잃는 사람은 그 뒤로 개인 이메일이 없습니다. 그룹 이메일처럼 그 사람에게만 보내는 메일은 건너뛰며, 이메일 작성 화면에 그 사실이 표시됩니다."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "기록에서 나이를 숨긴 사람은 출생 연도가 표시되지 않습니다."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "%s에 교인 포털에서 이메일 주소를 %s에서 %s(으)로 바꾸라는 요청이 있었습니다. %s(으)로 보낸 링크를 사용할 때만 변경됩니다."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "행의 형식이 예상과 다릅니다."
+
+#: 
+msgid "A team"
+msgstr "팀"
+
+#: 
+msgid "Add a passkey"
+msgstr "패스키 추가"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "패스키는 본인 휴대폰이나 컴퓨터에만 추가하십시오. 공유되거나 공용인 기기에는 추가하지 마십시오."
+
+#: 
+msgid "Add an email"
+msgstr "이메일 추가"
+
+#: 
+msgid "Added %s"
+msgstr "%s 추가됨"
+
+#: 
+msgid "Admin overrides"
+msgstr "관리자 재정의"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "%s 가정의 성인"
+
+#: 
+msgid "Adult of the family"
+msgstr "가정의 성인"
+
+#: 
+msgid "All events"
+msgstr "모든 행사"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "다른 사람으로 로그인 허용"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "다른 사람으로 로그인하는 동안 변경 허용"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "관리자가 다른 사람으로 로그인하는 동안 변경을 허용합니다. 끄면 다른 사람으로 로그인은 읽기 전용입니다."
+
+#: 
+msgid "Already held by a family member"
+msgstr "이미 가족 구성원이 보유함"
+
+#: 
+msgid "Also used by"
+msgstr "함께 사용하는 사람"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "관리자는 해당 사람의 페이지에서 한 사람에게 어떤 권한이든 줄 수 있습니다. 그러면 이곳에 \"관리자 재정의\"가 표시되고, 그 권한을 받은 사람 수가 함께 나옵니다."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "다른 사람이 이미 이 주소를 사용합니다"
+
+#: 
+msgid "Applies to"
+msgstr "적용 대상"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "봉사 팀의 대체 요청을 승인하거나 거절합니다."
+
+#: 
+msgid "Ask for a new email"
+msgstr "새 이메일 요청"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "권한은 로그인이 아니라 사람에게 주어지므로, 로그인이 생기기 전에도 부여할 수 있습니다. 교인 포털에만 로그인하는 사람은 관리자가 직원 계정을 주기 전까지 자신의 일정만 봅니다."
+
+#: 
+msgid "Awaiting review"
+msgstr "검토 대기"
+
+#: 
+msgid "Back to sign-in"
+msgstr "로그인으로 돌아가기"
+
+#: 
+msgid "Browse the full directory"
+msgstr "전체 명부 둘러보기"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "교인 포털에 로그인할 수 있음"
+
+#: 
+msgid "Can sign in?"
+msgstr "로그인할 수 있습니까?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "로그인할 수 있는 유일한 관리자의 로그인은 끌 수 없습니다."
+
+#: 
+msgid "Cannot sign in"
+msgstr "로그인할 수 없음"
+
+#: 
+msgid "Change family details"
+msgstr "가정 정보 변경"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "가정 주소와 연락처를 변경하고, 검토를 위해 가족 구성원을 추가합니다."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "자신의 이름, 연락처, 사진을 변경합니다."
+
+#: 
+msgid "Changed"
+msgstr "변경됨"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "그 사람이 로그인한 뒤에 변경됨"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "그 사람이 로그인한 뒤 가져오기로 변경됨"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "그 사람이 로그인한 뒤 직원이 변경함"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "그 사람이 로그인한 뒤 API를 통해 변경됨"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "다른 사람으로 로그인하는 동안에는 변경이 꺼져 있습니다."
+
+#: 
+msgid "Changes needed"
+msgstr "변경이 필요함"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "변경 내용은 입력하는 즉시 저장됩니다."
+
+#: 
+msgid "Check your email"
+msgstr "이메일을 확인하십시오"
+
+#: 
+msgid "Choose a permission"
+msgstr "권한 선택"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "권한, 적용 대상, 마지막 날을 선택하고 이유를 적으십시오."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "사진을 선택하거나 셀카를 찍으십시오"
+
+#: 
+msgid "Choose a theme"
+msgstr "테마 선택"
+
+#: 
+msgid "Choose at least one row."
+msgstr "행을 하나 이상 선택하십시오."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "한 번에 최대 %d개 행을 선택하십시오."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "목록에서 날짜 표시 방법을 선택하십시오."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "이 권한의 마지막 날을 선택하십시오."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "권한이 적용될 대상을 선택하십시오."
+
+#: 
+msgid "Choose yes or no."
+msgstr "예 또는 아니요를 선택하십시오."
+
+#: 
+msgid "Church Office"
+msgstr "교회 사무실"
+
+#: 
+msgid "Church country"
+msgstr "교회 국가"
+
+#: 
+msgid "Church default: %s"
+msgstr "교회 기본값: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "교회 지도자 로그인"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "교인 포털에 로그인할 수 있는 구성원의 분류입니다. 분류 ID를 쉼표로 구분해 적습니다."
+
+#: 
+msgid "Clear selection"
+msgstr "선택 해제"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "코드, 세션, 기기"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "이메일 주소 확인"
+
+#: 
+msgid "Confirm email address"
+msgstr "이메일 주소 확인"
+
+#: 
+msgid "Confirm family details"
+msgstr "가정 정보 확인"
+
+#: 
+msgid "Confirm selected"
+msgstr "선택 항목 확인"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "직접 만나거나 전화로 이 사람의 주소인지 확인한 뒤에만 이 이메일을 확인하십시오. 확인되면 교인 포털 로그인에 사용할 수 있습니다."
+
+#: 
+msgid "Confirm your email address"
+msgstr "이메일 주소를 확인하십시오"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "새 이메일 주소를 확인하십시오"
+
+#: 
+msgid "Confirmed"
+msgstr "확인됨"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "날짜는 YYYY-MM-DD 형식으로 적어야 합니다."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "대체 요청 결정"
+
+#: 
+msgid "Device"
+msgstr "기기"
+
+#: 
+msgid "Device remembered"
+msgstr "기기가 기억됨"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "기기와 패스키"
+
+#: 
+msgid "Directory classifications"
+msgstr "명부 분류"
+
+#: 
+msgid "Directory section"
+msgstr "명부 구역"
+
+#: 
+msgid "Disable sign-in"
+msgstr "로그인 끄기"
+
+#: 
+msgid "Do not show"
+msgstr "표시하지 않음"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "각 사람에게도 다른 사람이 쓰지 않는 개인 이메일이 필요합니다."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "로그인 이메일은 제한된 시간 동안 한 번만 사용할 수 있으며, 더 새로운 이메일이 이전 이메일을 대체합니다."
+
+#: 
+msgid "Edit my details"
+msgstr "내 정보 편집"
+
+#: 
+msgid "Email address changed"
+msgstr "이메일 주소가 변경됨"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "입력한 이메일 주소: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "확인할 이메일 주소: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "이메일이 변경됨"
+
+#: 
+msgid "Email code"
+msgstr "이메일 코드"
+
+#: 
+msgid "Email confirmed"
+msgstr "이메일이 확인됨"
+
+#: 
+msgid "Email link"
+msgstr "이메일 링크"
+
+#: 
+msgid "Email me a code"
+msgstr "코드 이메일 받기"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "확인 링크 이메일 받기"
+
+#: 
+msgid "Email needs attention"
+msgstr "이메일을 확인해야 함"
+
+#: 
+msgid "Email problem"
+msgstr "이메일 문제"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "이메일로 보낸 로그인 코드와 링크가 취소됨"
+
+#: 
+msgid "Emailed verification link"
+msgstr "이메일로 보낸 확인 링크"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "확인된 이메일: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "로그인 켜기"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "이 사람의 교인 포털 세션을 모두 끝내고 기억된 기기를 지우시겠습니까? 패스키는 남아 있으므로 다시 로그인할 수 있습니다."
+
+#: 
+msgid "Ended %s"
+msgstr "%s에 종료됨"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "로그인 변경으로 종료됨"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "교인 로그인이 꺼져서 종료됨"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "%1$d에서 %2$d 사이의 정수를 입력하십시오."
+
+#: 
+msgid "Enter your email address."
+msgstr "이메일 주소를 입력하십시오."
+
+#: 
+msgid "Every kind"
+msgstr "모든 종류"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "교인 로그인, 거부, 로그인 변경을 최신순으로 모두 표시합니다. 코드, 링크, 패스키는 저장하지 않습니다."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "검색 상자와 함께 이름순으로 모두 표시합니다."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "로그인 규칙이 허용하는 사람은 모두 자신의 이메일로 교인 포털에 로그인할 수 있습니다."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "최근 30일 동안 교인 포털에 로그인한 모든 사람을 최신순으로 표시합니다."
+
+#: 
+msgid "Everywhere"
+msgstr "모든 곳"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "최근 30일 동안 교인이 교인 포털 또는 이메일 확인 링크로 확인한 가정입니다."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "확인된 가정, 최근 30일"
+
+#: 
+msgid "Family details confirmed"
+msgstr "가정 정보가 확인됨"
+
+#: 
+msgid "Family email"
+msgstr "가정 이메일"
+
+#: 
+msgid "Family emails not moved"
+msgstr "이동하지 않은 가정 이메일"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "교인 포털에 로그인할 수 있는 구성원의 가정 역할입니다. 역할 ID를 쉼표로 구분해 적습니다."
+
+#: 
+msgid "Find someone"
+msgstr "사람 찾기"
+
+#: 
+msgid "Fix by hand"
+msgstr "직접 수정"
+
+#: 
+msgid "Fix shared emails"
+msgstr "공유 이메일 정리"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "직원 로그인에서"
+
+#: 
+msgid "Give a permission"
+msgstr "권한 부여"
+
+#: 
+msgid "Give a portal permission"
+msgstr "포털 권한 부여"
+
+#: 
+msgid "Give each person their own email"
+msgstr "각 사람에게 개인 이메일 지정"
+
+#: 
+msgid "Give permission"
+msgstr "권한 주기"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "%1$s이(가) %2$s까지 부여함"
+
+#: 
+msgid "Given by %s"
+msgstr "%s이(가) 부여함"
+
+#: 
+msgid "Given to"
+msgstr "부여 대상"
+
+#: 
+msgid "Given to Everyone"
+msgstr "모든 사람에게 부여됨"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "부여되었으나 적용되지 않음"
+
+#: 
+msgid "Go to sign in"
+msgstr "로그인으로 이동"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "교인 포털로 이동"
+
+#: 
+msgid "Has signed in"
+msgstr "로그인한 적 있음"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "로그인한 적 있음: 세션과 기기가 종료됨"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "교인 포털 로그인 코드입니다. 코드를 요청한 브라우저의 로그인 페이지에 입력하십시오. 또는 버튼을 눌러 이 기기에서 로그인하십시오."
+
+#: 
+msgid "Hide Permissions"
+msgstr "권한 숨기기"
+
+#: 
+msgid "How"
+msgstr "방법"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "IP 주소 하나가 한 시간에 요청할 수 있는 교인 포털 로그인 이메일 수입니다. 제한이 없으면 0으로 설정하십시오. 예를 들어 모두가 하나의 주소를 통해 ChurchCRM에 접속할 때입니다."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "교인이 로그인 유지를 선택한 뒤 기기가 교인 포털에 로그인된 상태로 남는 일수입니다. 선택 항목을 없애려면 0으로 설정하십시오."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "교인 포털 세션을 끝내는 유휴 시간(분)입니다."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "교인 포털 로그인 코드와 링크가 유효한 시간(분)입니다."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "유휴 시간(분)"
+
+#: 
+msgid "Idle too long"
+msgstr "유휴 시간이 너무 김"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "%1$s이(가) 새 주소라면 아래 버튼으로 확인하십시오. 확인되기 전에는 로그인에 사용할 수 없습니다. 링크는 %2$s까지 한 번만 사용할 수 있습니다."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "이 주소로 로그인할 수 있으면 코드를 이메일로 보냈습니다. 몇 분이 지나도 오지 않으면 교회 사무실에 문의하십시오."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "직접 추가하지 않으셨다면 로그인 및 기기 페이지에서 제거하시고 교회 사무실에 연락하십시오."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "이 변경을 요청하지 않으셨다면 교회 사무실에 연락해 주십시오."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "이것을 요청하지 않으셨다면 교회 사무실에 연락해 주십시오."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "만료되었거나 이미 사용되었을 수 있습니다. 도움이 필요하면 교회 사무실에 연락해 주십시오."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "해당 플러그인이 설치되지 않음"
+
+#: 
+msgid "Jump to a letter"
+msgstr "글자로 이동"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "로그인 유지(일)"
+
+#: 
+msgid "Keeps it"
+msgstr "주소를 유지함"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "미확인 이메일 종류"
+
+#: 
+msgid "Last day"
+msgstr "마지막 날"
+
+#: 
+msgid "Last used"
+msgstr "마지막 사용"
+
+#: 
+msgid "Last used %s"
+msgstr "마지막 사용 %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "%s의 인도자"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "교인 로그인이 켜져 있는 동안 관리자가 그 사람의 작업 메뉴에서 그 사람으로서 교인 포털을 열 수 있게 합니다."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "교인이 패스키를 추가하고 그 패스키로 교인 포털에 로그인할 수 있게 합니다."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "교인이 자신의 이메일 주소로 교인 포털에 로그인할 수 있게 합니다. 이메일 전송이 동작할 때만 켤 수 있습니다."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "교인이 이메일로 로그인하도록 허용"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "링크와 코드 유효 시간(분)"
+
+#: 
+msgid "Login as %s"
+msgstr "%s(으)로 로그인"
+
+#: 
+msgid "Login as Person"
+msgstr "다른 사람으로 로그인"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "다른 사람으로 로그인을 시작하지 못했습니다."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "다른 사람으로 로그인 종료: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "다른 사람으로 로그인 기록"
+
+#: 
+msgid "Login as Person started"
+msgstr "다른 사람으로 로그인이 시작됨"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "다른 사람으로 로그인이 중지됨"
+
+#: 
+msgid "Look up anyone"
+msgstr "누구나 조회"
+
+#: 
+msgid "Loses it"
+msgstr "주소를 잃음"
+
+#: 
+msgid "Manage a team"
+msgstr "팀 관리"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "내 로그인과 기기 관리"
+
+#: 
+msgid "Matches: %s"
+msgstr "일치: %s"
+
+#: 
+msgid "May sign in"
+msgstr "로그인할 수 있음"
+
+#: 
+msgid "May sign in now"
+msgstr "지금 로그인할 수 있음"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "교인 포털 로그인 코드"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "교인 포털 로그인 알림"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "교인과, 직원 로그인에서 포털을 여는 직원의 교인 포털 로그인 및 활동입니다."
+
+#: 
+msgid "Member sign-in"
+msgstr "교인 로그인"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "교인 로그인은 각 사람에게 코드를 이메일로 보내므로, 켜기 전에 이메일(SMTP)이 동작해야 합니다."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "교인 로그인이 꺼져 있음"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "이 교회의 교인 로그인이 꺼져 있습니다."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "교인 로그인이 꺼져 있습니다."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "교인 로그인을 아직 사용할 수 없습니다. 교회 사무실에 연락해 주십시오."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "교인 로그인은 사망한 사람, 비활성인 사람, 비활성 가정의 사람, 검토 대기 중인 사람, 로그인이 꺼진 사람은 절대 들이지 않습니다. 이 선택으로 그 밖의 누가 들어올 수 있는지 정합니다."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "교인 로그인은 각 교인에게 코드를 이메일로 보내므로, ChurchCRM이 이메일을 보낼 수 있을 때만 켤 수 있습니다. 먼저 이메일을 켜고 메일 서버를 설정하십시오."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "달력이 하나 이상 켜져 있으면 교인에게 달력 페이지가 보입니다."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "교인은 이름의 글자를 %d자 이상 입력하고 최대 %d개의 일치 항목을 봅니다. 전체 목록은 표시되지 않습니다."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "지금 로그인한 교인은 로그아웃되며, 교인 로그인을 다시 켤 때까지 아무도 이메일로 로그인할 수 없습니다."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "이 분류의 교인은 교인 포털 메뉴에서 명부를 찾습니다."
+
+#: 
+msgid "Minimum age"
+msgstr "최소 연령"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "다음 한 시간 동안 이 주소로 다시 시도해도 알림은 더 보내지 않습니다."
+
+#: 
+msgid "Moved from the family email"
+msgstr "가정 이메일에서 이동됨"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "세대주로 이동됨"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "배우자로 이동됨"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "우리 교회에 처음이십니까? 가정에 대해 알려 주시면 환영하기 위해 연락드리겠습니다."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "아직 다른 사람으로 로그인한 세션이 없습니다."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "출생일이 없고 세대주나 배우자도 아님"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "켜진 달력이 없어 교인에게 달력 페이지가 보이지 않습니다."
+
+#: 
 msgid "No changes"
 msgstr "변경 사항 없음"
+
+#: 
+msgid "No changes made."
+msgstr "변경된 내용이 없습니다."
+
+#: 
+msgid "No family role"
+msgstr "가정 역할 없음"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "가정 이메일을 받을 수 있는 세대주나 배우자가 없습니다."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "세대주나 배우자는 이 주소를 공유하지 않음"
+
+#: 
+msgid "No match"
+msgstr "일치 없음"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "아직 로그인 규칙에 맞는 사람이 없습니다. 가정 역할이나 분류를 더 선택하거나 최소 연령을 낮추십시오."
+
+#: 
+msgid "No passkey was added."
+msgstr "추가된 패스키가 없습니다."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "사용된 패스키가 없습니다. 다시 시도하거나 이메일 주소로 로그인하십시오."
+
+#: 
+msgid "No person has this email"
+msgstr "이 이메일을 가진 사람이 없음"
+
+#: 
+msgid "No personal email"
+msgstr "개인 이메일 없음"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "공유 이메일 때문에 로그인이 막힌 사람은 없습니다."
+
+#: 
+msgid "No such person"
+msgstr "해당 사람이 없음"
+
+#: 
+msgid "No, thanks"
+msgstr "사양합니다"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "로그인할 수 있는 두 사람이 공유하는 개인 이메일로는 아무도 로그인할 수 없습니다. 한 가정 안에서 공유되는 주소는 세대주가 유지하고, 세대주가 없으면 배우자(나이가 많은 사람 먼저)가 유지합니다. 그 주소를 공유하는 다른 사람은 모두 주소를 잃습니다. 다른 방법으로 정리하려는 항목은 선택을 해제하십시오."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "아직 아무도 로그인할 수 없습니다. 로그인할 수 있는 사람에서 분류를 하나 이상 선택하십시오."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "아직 아무도 로그인할 수 없습니다. 로그인할 수 있는 사람에서 가정 역할과 분류를 각각 하나 이상 선택하십시오."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "아직 아무도 로그인할 수 없습니다. 로그인할 수 있는 사람에서 가정 역할을 하나 이상 선택하십시오."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "명부에 그 이름과 일치하는 사람이 없습니다."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "아직 명부에 등록된 사람이 없습니다."
+
+#: 
+msgid "Not ended"
+msgstr "종료되지 않음"
+
+#: 
+msgid "Not moved"
+msgstr "이동되지 않음"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "등록된 이메일이 무엇인지 모르시겠습니까? 교회 사무실에 연락하십시오."
+
+#: 
+msgid "Not yet"
+msgstr "아직 아님"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "가정 타임라인에 기록됨"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "그중 로그인한 적 있는 사람: {{total}}. 이들은 모든 곳에서 로그아웃되며, 해당 주소로 알림이 갑니다."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "모두에게 꺼짐: \"%s\"이(가) 꺼져 있음"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "모두에게 꺼짐: 봉사 관리가 V2로 설정되지 않음"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "모두에게 꺼짐: 해당 기능이 꺼져 있음"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "모두에게 꺼짐: 해당 플러그인이 꺼져 있음"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "모두에게 꺼짐: 교인과 공유된 달력이 없음"
+
+#: 
+msgid "Office list"
+msgstr "사무실 목록"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "확인되면 교인 포털 로그인에 사용할 수 있습니다."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "확인할 수 있는 주소만 선택할 수 있습니다."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "이유는 관리자만 봅니다."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "직원 계정이나 포털 권한이 있는 사람의 이메일은 관리자만 변경할 수 있습니다."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "그 사람이 로그인에 쓰던 주소를 바꾼 이메일은 관리자만 확인할 수 있습니다."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "직원 계정이나 포털 권한이 있는 사람의 이메일은 관리자만 확인할 수 있습니다."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "이 주소는 관리자만 정리할 수 있습니다. 주소를 공유하는 사람 중에 직원 계정이나 포털 권한이 있는 사람이 있습니다."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "이 정보는 가정의 성인만 확인할 수 있습니다. 교회 사무실에 연락해 주십시오."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "그 사람의 주소라고 아는 주소만 확인하십시오. 주소를 아는 사람은 누구나 그 사람으로 로그인할 수 있습니다."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "개인 이메일이 있는 생존한 사람만 사무실 목록에 올릴 수 있습니다."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "개인 이메일이 있는 사람만 추가할 수 있습니다."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "선택적 원격 측정에는 페이지 경로, 사용 중인 로캘, CRM 버전, PHP 버전, OS 종류, 교회 정보 설정의 국가, 임의의 설치 ID가 포함될 수 있습니다. 실패 보고서에는 설치 ID가 포함되지 않습니다. 데이터는 미국의 PostHog로 전송됩니다."
+
+#: 
+msgid "Passkey"
+msgstr "패스키"
+
+#: 
+msgid "Passkey added"
+msgstr "패스키가 추가됨"
+
+#: 
+msgid "Passkey removed"
+msgstr "패스키가 제거됨"
+
+#: 
+msgid "Passkeys"
+msgstr "패스키"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "패스키가 꺼져 있습니다."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "여기서는 패스키를 사용할 수 없습니다."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "이 사이트에서는 아직 패스키를 사용할 수 없습니다. 교회 사무실에 연락해 주십시오."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "패스키를 사용하려면 사이트 주소에 IP 주소가 아니라 호스트 이름이 있어야 합니다."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "패스키를 사용하려면 이 사이트에 보안(HTTPS) 연결이 필요합니다."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "패스키를 사용하려면 Config.php에 사이트 주소가 설정되어 있어야 합니다."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "패스키를 사용하려면 사이트가 HTTPS로 제공되어야 합니다. 그때까지 교인에게 패스키가 제공되지 않습니다."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "패스키는 %s에서만 동작합니다."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "패스키: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "저장된 설정이 허용하는 사람: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "누군가 교인 포털에 로그인하지 못했을 때 이메일을 받을 사람"
+
+#: 
+msgid "People who hold it"
+msgstr "보유한 사람"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "주소를 잃는 사람: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "주소를 잃은 사람: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "로그인할 수 있는 사람: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "예전에 교인 포털에 로그인하던 사람: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "이 분류의 사람이 명부에 나타납니다. 숫자는 각 분류의 활성 인원입니다."
+
+#: 
+msgid "People with this email: %s"
+msgstr "이 이메일을 가진 사람: %s"
+
+#: 
+msgid "Person %d"
+msgstr "사람 %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "목록에서 분류를 고르십시오."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "목록에서 가정 역할을 고르십시오."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "사무실 목록에 넣을 사람을 고르십시오."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "목록에서 언어를 선택해 주십시오."
+
+#: 
+msgid "Portal permission given"
+msgstr "포털 권한이 부여됨"
+
+#: 
+msgid "Portal permission removed"
+msgstr "포털 권한이 제거됨"
+
+#: 
+msgid "Portal permissions"
+msgstr "포털 권한"
+
+#: 
+msgid "Portal sign-in"
+msgstr "포털 로그인"
+
+#: 
+msgid "Problem"
+msgstr "문제"
+
+#: 
+msgid "Reason"
+msgstr "이유"
+
+#: 
+msgid "Reason: %s"
+msgstr "이유: %s"
+
+#: 
+msgid "Refused"
+msgstr "거부됨"
+
+#: 
+msgid "Register your family"
+msgstr "가정 등록"
+
+#: 
+msgid "Remembered device"
+msgstr "기억된 기기"
+
+#: 
+msgid "Remembered device removed"
+msgstr "기억된 기기가 제거됨"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "기억된 기기: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "이메일 제거"
+
+#: 
+msgid "Remove this passkey"
+msgstr "이 패스키 제거"
+
+#: 
+msgid "Remove this permission"
+msgstr "이 권한 제거"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "제거된 대상: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "로그인 후 대체됨"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "다른 로그인으로 대체됨"
+
+#: 
+msgid "Result"
+msgstr "결과"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "봉사 팀을 운영합니다. 역할, 봉사자, 일정, 배치, 인원을 다룹니다."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "로그인을 끄는 이유를 적으십시오."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "이 권한을 주는 이유를 적으십시오."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "등록된 사람을 검색합니다. 각 행에는 교인 포털에 로그인할 수 있는지와, 할 수 없다면 그 이유가 표시됩니다."
+
+#: 
+msgid "Search method"
+msgstr "검색 방법"
+
+#: 
+msgid "Search only"
+msgstr "검색만"
+
+#: 
+msgid "See family contact details"
+msgstr "가정 연락처 보기"
+
+#: 
+msgid "See my family"
+msgstr "내 가정 보기"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "이 사람에게 보이는 대로 교인 포털을 보시겠습니까? 중지를 누를 때까지 직원 페이지는 닫혀 있으며, 세션은 이 페이지와 사용자 페이지에 기록됩니다."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "교회가 교인과 공유하는 달력을 보고 구독합니다."
+
+#: 
+msgid "See the church calendar"
+msgstr "교회 달력 보기"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "그 사람을 로그인시키는 기기와 패스키를 보고, 로그아웃하거나 제거합니다."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "가족 구성원의 이메일 주소와 전화번호를 봅니다."
+
+#: 
+msgid "See the member directory"
+msgstr "교인 명부 보기"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "가족 구성원의 이름과 사진을 봅니다."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "교회가 명부에 올린 사람과, 교회가 공유하기로 한 세부 정보를 봅니다."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "자신의 봉사 일정을 보고, 빈자리에 신청하며, 대체를 요청합니다."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "browse를 true 또는 false로 보내십시오."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "분류를 ID 목록으로 보내십시오."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "명부 설정을 JSON 객체로 보내십시오."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "표시할 필드를 true와 false 값의 객체로 보내십시오."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "설정을 JSON 객체로 보내십시오."
+
+#: 
+msgid "Session ended"
+msgstr "세션이 종료됨"
 
 #: 
 msgid "Set up email"
 msgstr "이메일 설정"
 
 #: 
+msgid "Set up email first."
+msgstr "먼저 이메일을 설정하십시오."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "정리된 공유 주소: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "정리할 공유 주소: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "공유한 사람"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "로그인을 막는 공유 이메일"
+
+#: 
+msgid "Show or hide this member"
+msgstr "이 교인 표시 또는 숨기기"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "아래에서 선택한 분류에 교인 포털의 명부 페이지를 표시합니다."
+
+#: 
+msgid "Show the member directory"
+msgstr "교인 명부 표시"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "교인 포털에 교인 명부를 표시합니다."
+
+#: 
+msgid "Show with year"
+msgstr "연도와 함께 표시"
+
+#: 
+msgid "Show without year"
+msgstr "연도 없이 표시"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "처음 %d개의 일치 항목을 표시합니다. 찾는 사람을 찾으려면 이름을 더 입력하십시오."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "%s(으)로 로그인하시겠습니까?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "다음번에는 이 기기에서 Face ID, 지문 또는 기기 PIN으로 로그인합니다."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "로그인하면 가정, 교회 달력, 섬길 방법을 볼 수 있습니다. 비밀번호나 계정은 필요하지 않습니다."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "패스키로 로그인"
+
+#: 
+msgid "Sign out every device"
+msgstr "모든 기기에서 로그아웃"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "지금 모든 기기에서 로그아웃하시겠습니까?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "모든 곳에서 로그아웃"
+
+#: 
+msgid "Sign out this device"
+msgstr "이 기기에서 로그아웃"
+
+#: 
+msgid "Sign-in"
+msgstr "로그인"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "로그인 및 기기"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "로그인을 끄지 못했습니다."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "로그인을 켜지 못했습니다."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "로그인이 꺼짐"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "로그인 이메일이 요청됨"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "IP 주소당 시간당 로그인 이메일 수"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "로그인이 켜짐"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "이 사람의 로그인은 이미 꺼져 있습니다."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "로그인이 꺼져 있음"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "이 사람의 로그인이 꺼져 있습니다."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "이 사람의 로그인이 켜져 있습니다."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "이 사람의 로그인은 꺼져 있지 않습니다."
+
+#: 
+msgid "Sign-in refused"
+msgstr "로그인이 거부됨"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "연결된 사람의 기록에서 이 문제가 해결될 때까지 로그인, 세션, API 키가 차단됩니다."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "로그인함, 최근 30일"
+
+#: 
+msgid "Signed out"
+msgstr "로그아웃됨"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "로그인 변경으로 로그아웃됨"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "모든 곳에서 로그아웃됨"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "누군가 교인 포털 로그인 이메일을 요청했지만 보내지 않았습니다."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "누군가 교인 포털에 로그인하지 못했습니다"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "다른 사람으로 로그인하는 동안 직원 페이지는 닫혀 있습니다. 돌아가려면 배너의 중지를 누르십시오."
+
+#: 
+msgid "Stop"
+msgstr "중지"
+
+#: 
+msgid "Stopped"
+msgstr "중지됨"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "가정 정보가 아직 맞는지 교회 사무실에 알려 주십시오."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "그 코드는 맞지 않습니다. 가장 최근 이메일을 확인하거나 새 코드를 요청하십시오."
+
+#: 
+msgid "That could not be removed."
+msgstr "제거하지 못했습니다."
+
+#: 
+msgid "That device is signed out."
+msgstr "그 기기는 로그아웃되었습니다."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "올바른 이메일 주소가 아닙니다."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "그 페이지가 너무 오래 열려 있었습니다. 다시 시도해 주십시오."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "그 패스키는 제거되었습니다. 더 이상 로그인에 사용할 수 없습니다."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "시간이 너무 오래 걸렸습니다. 다시 시도해 주십시오."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "7.8.3 업그레이드는 각 가정 이메일을 한 사람에게 넘겼습니다. 넘기지 못한 것은 대신 가정의 타임라인에 기록을 남겼습니다."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "교인 포털과 포털이 보내는 이메일은 이 언어를 사용합니다."
+
+#: 
+msgid "The change could not be saved."
+msgstr "변경을 저장하지 못했습니다."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "코드와 버튼은 %s까지 한 번만 사용할 수 있습니다."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "코드나 링크가 더 이상 그 사람의 이메일이 아닌 주소로 갔습니다"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "확인 이메일을 보내지 못했습니다. 나중에 다시 시도해 주십시오."
+
+#: 
+msgid "The device is signed out."
+msgstr "기기가 로그아웃되었습니다."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "%1$s에 이메일 주소 %2$s이(가) 기록에서 제거되었습니다. 모든 기기의 교인 포털에서 로그아웃되었습니다."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "%1$s에 기록의 이메일 주소가 %2$s에서 %3$s(으)로 변경되었습니다. 모든 기기의 교인 포털에서 로그아웃되었습니다."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "이메일을 확인하지 못했습니다."
+
+#: 
+msgid "The email could not be sent."
+msgstr "이메일을 보내지 못했습니다."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "이메일이 확인되었습니다. 이제 로그인에 사용할 수 있습니다."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "종료일이 시작일보다 앞섭니다."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "가정에 생존해 있고 활성인 세대주나 배우자가 없음"
+
+#: 
+msgid "The family is inactive"
+msgstr "가정이 비활성임"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "세대주와 배우자 모두 개인 이메일이 있음"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "마지막 날은 과거일 수 없습니다."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "연결된 사람이 로그인할 수 없어 이 계정도 로그인할 수 없습니다"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "목록을 불러오지 못했습니다."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "패스키를 추가하지 못했습니다. 다시 시도해 주십시오."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "패스키를 확인하지 못했습니다"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "패스키가 기록에 없거나 제거되었습니다"
+
+#: 
+msgid "The passkey was removed."
+msgstr "패스키가 제거되었습니다."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "이 주소를 공유하는 사람들이 서로 다른 가정에 있거나 가정에 속하지 않음"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "이 주소를 공유하는 사람이 바뀌었습니다. 공유 이메일 정리를 다시 여십시오."
+
+#: 
+msgid "The permission could not be given."
+msgstr "권한을 부여하지 못했습니다."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "권한은 이 날이 지나면 끝납니다. 다시 부여할 수 있습니다."
+
+#: 
+msgid "The permission was given."
+msgstr "권한이 부여되었습니다."
+
+#: 
+msgid "The permission was removed."
+msgstr "권한이 제거되었습니다."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "권한을 불러오지 못했습니다."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "그 사람은 교인 포털에서 이 권한을 즉시 잃습니다."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "이유는 최대 %d자입니다."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "로그인 규칙이 이들을 허용하며, 각 사람에게 로그인할 수 있는 다른 사람이 쓰지 않는 개인 이메일이 있습니다."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "로그인 규칙은 이들을 허용하지만 이메일은 그렇지 않습니다. 이메일이 없거나, 로그인할 수 있는 다른 사람과 공유하거나, 아직 확인되지 않았습니다."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "로그인 설정을 저장하지 못했습니다."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "미확인 이메일이 바뀌었습니다. 페이지를 다시 불러온 뒤 시도하십시오."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "그 사람의 분류는 로그인할 수 없음"
+
+#: 
+msgid "Their email changed"
+msgstr "그 사람의 이메일이 변경됨"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "그 사람의 이메일이 아직 확인되지 않음"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "그 사람의 이메일이 다른 사람과 공유됨"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "그 사람의 가정 역할은 로그인할 수 없음"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "업그레이드로 이전 로그인이 제거되었습니다. 자신의 이메일로 로그인할 수 있도록 교인 로그인을 켜십시오."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "기억된 기기가 만료됨"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "기억된 기기가 로그아웃됨"
+
+#: 
+msgid "Theme development"
+msgstr "테마 개발"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "ID가 %d인 분류가 없습니다."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "이 종류의 범위에는 선택 도구가 없습니다."
+
+#: 
+msgid "There is no such audit event."
+msgstr "그런 감사 이벤트가 없습니다."
+
+#: 
+msgid "There is no such email problem."
+msgstr "그런 이메일 문제가 없습니다."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "그런 종류의 미확인 이메일이 없습니다."
+
+#: 
+msgid "There is no such list."
+msgstr "그런 목록이 없습니다."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "그런 포털 권한이 없습니다."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "로그인 유지를 선택한 휴대폰과 컴퓨터입니다. 더 이상 쓰지 않거나 모르는 기기는 로그아웃하십시오."
+
+#: 
+msgid "They have a staff account"
+msgstr "직원 계정이 있음"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "로그인할 수 있지만 한 번도 하지 않았습니다."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "이 작업에는 로그인된 브라우저 세션이 필요합니다."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "이 주소를 변경하지 못했습니다. 현재 상태를 보려면 공유 이메일 정리를 다시 여십시오."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "이 주소는 더 이상 로그인할 수 있는 사람들이 공유하지 않습니다."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "이 브라우저는 패스키를 만들 수 없습니다."
+
+#: 
+msgid "This device"
+msgstr "이 기기"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "이 기기에는 이미 귀하의 패스키가 있습니다."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "이 기기는 더 이상 그 사람의 로그인을 유지하지 않으며, 그 기기에서 열린 세션은 끝납니다. 이메일로 다시 로그인할 수 있습니다."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "내 기기입니다. 로그인을 유지합니다."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "여기에서 손님에 대해 결정합니다. 숫자는 각 분류의 활성 인원입니다."
+
+#: 
+msgid "This link cannot be used"
+msgstr "이 링크는 사용할 수 없습니다"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "이 링크는 만료되었거나 이미 사용되었습니다"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "교인 포털의 이 부분은 사용할 수 없습니다."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "이 패스키는 이미 기록에 있습니다."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "이 패스키로는 더 이상 그 사람이 로그인할 수 없습니다. 이메일로 로그인한 뒤 새 패스키를 추가할 수 있습니다."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "이 권한은 사람 페이지에서 부여할 수 없습니다."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "이 사람은 부여할 수 있는 권한을 이미 모두 가지고 있습니다."
+
+#: 
+msgid "This person already has this permission."
+msgstr "이 사람은 이미 이 권한을 가지고 있습니다."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "이 사람은 교인 포털이든 직원이든 더 이상 어디에도 로그인할 수 없습니다. 모든 세션이 끝나고, 기억된 기기와 패스키가 제거됩니다."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "이 사람을 로그아웃하지 못했습니다."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "이 사람에게는 직원 계정이 있습니다. 다른 사람으로 로그인은 직원 계정을 열지 않습니다."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "이 사람에게는 그런 패스키가 없습니다."
+
+#: 
+msgid "This person has no such permission."
+msgstr "이 사람에게는 그런 권한이 없습니다."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "이 사람에게는 그런 기억된 기기가 없습니다."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "이 사람에게는 미확인 이메일이 없습니다."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "이 사람은 교인 포털에 로그인한 적이 있습니다. 이 이메일을 바꾸면 모든 곳에서 로그아웃되며, 새 주소는 확인될 때까지 로그인에 사용할 수 없습니다."
+
+#: 
 msgid "This person is deceased."
 msgstr "이 사람은 별세했습니다"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "이 사람은 교인 포털의 모든 곳에서 로그아웃되었습니다."
+
+#: 
+msgid "This person no longer exists."
+msgstr "이 사람은 더 이상 존재하지 않습니다."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "여기를 포함해 모든 곳에서 로그아웃되고 모든 기기가 잊혀집니다. 이메일 주소로 다시 로그인할 수 있습니다."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "여기를 포함해 모든 곳에서 로그아웃되고 모든 기기가 잊혀집니다. 패스키는 남습니다. 패스키나 이메일 주소로 다시 로그인할 수 있습니다."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "이 도구는 이것을 바꾸지 않습니다. 각 사람의 기록에 개인 이메일을 지정하십시오."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "본인 휴대폰이나 컴퓨터에서만 선택하십시오. 공유되거나 공용인 기기에서는 선택하지 마십시오."
+
+#: 
+msgid "Time: %s"
+msgstr "시간: %s"
+
+#: 
+msgid "Timed out"
+msgstr "시간 초과"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "이 이메일을 바꾸려면 교회 사무실에 연락해 주십시오."
+
+#: 
+msgid "To fix"
+msgstr "정리할 항목"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "본인 휴대폰이나 컴퓨터에서 로그인을 유지하려면 다음에 로그인할 때 \"내 기기입니다. 로그인을 유지합니다.\"를 선택하십시오."
+
+#: 
+msgid "Too many attempts"
+msgstr "시도 횟수가 너무 많음"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "오늘 로그인 이메일이 너무 많음"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "이 이메일 주소의 로그인 요청이 너무 많음"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "이 IP 주소의 로그인 요청이 너무 많음"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "틀린 코드가 너무 많음"
+
+#: 
+msgid "Turn off"
+msgstr "끄기"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "교인 로그인을 끄시겠습니까?"
+
+#: 
+msgid "Turn on"
+msgstr "켜기"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "교인 로그인 켜기"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "교인 로그인을 켜시겠습니까?"
+
+#: 
+msgid "Type a name"
+msgstr "이름 입력"
+
+#: 
+msgid "Type a name or email"
+msgstr "이름 또는 이메일 입력"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "이름의 글자를 %d자 이상 입력한 다음 검색하십시오."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "미확인 이메일"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "ChurchCRM이 어디서 사용되는지 파악"
+
+#: 
+msgid "Unknown device"
+msgstr "알 수 없는 기기"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "알 수 없는 명부 필드: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "알 수 없는 명부 설정: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "이름 없는 기기"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "이름 없는 패스키"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "교회 사무실이 확인할 때까지 새 주소는 로그인에 사용할 수 없습니다."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "%3$s에 %2$s의 이메일 주소로 %1$s을(를) 사용하시겠습니까?"
+
+#: 
+msgid "Use a different email address"
+msgstr "다른 이메일 주소 사용"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "이 기기에서 패스키를 사용하시겠습니까?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "아래 버튼으로 %2$s에서 %1$s이(가) 귀하의 이메일 주소임을 확인하십시오. 링크는 %3$s까지 한 번만 사용할 수 있습니다."
+
+#: 
+msgid "User %d"
+msgstr "사용자 %d"
+
+#: 
+msgid "View Permissions"
+msgstr "권한 보기"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "%s 확인을 기다리고 있습니다. 그 주소로 보낸 링크를 사용하십시오."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "{{email}} 확인을 기다리고 있습니다. 그 주소로 보낸 링크를 사용하십시오."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "이메일을 보내지 못했습니다. 나중에 다시 시도하거나 교회 사무실에 연락해 주십시오."
+
+#: 
+msgid "We could not sign you in"
+msgstr "로그인하지 못했습니다"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "%s(으)로 링크를 보냈습니다. 그 링크로 새 이메일 주소를 확인하십시오."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "{{email}}(으)로 링크를 보냈습니다. 링크를 사용하면 이메일이 변경됩니다."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "로그인에 사용할 코드와 링크를 이메일로 보내 드립니다."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "오셔서 반갑습니다! 약 3분이 걸립니다."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "가정이 함께하게 되어 반갑습니다! 등록을 받았습니다. 담당자가 곧 직접 환영하기 위해 연락드리겠습니다."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "결혼 기념일"
+
+#: 
+msgid "Welcome"
+msgstr "환영합니다"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "부여 대상이 더 이상 존재하지 않음"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "교인이 포털에서 보고 할 수 있는 일과 각 권한의 출처입니다. 사람은 로그인 규칙이 허용하는 모든 사람과 직원 중에서 집계됩니다."
+
+#: 
+msgid "What members can use"
+msgstr "교인이 사용할 수 있는 기능"
+
+#: 
+msgid "What to do"
+msgstr "해야 할 일"
+
+#: 
+msgid "Who can see it"
+msgstr "볼 수 있는 사람"
+
+#: 
+msgid "Who is listed"
+msgstr "등록된 사람"
+
+#: 
+msgid "Who may sign in"
+msgstr "로그인할 수 있는 사람"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "교인 포털에 로그인할 수 있는 사람, 로그인한 사람, 이메일 때문에 막힌 사람입니다. 목록은 로그인 탭의 규칙을 따릅니다."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "교인 포털 명부에 누가 나오고, 누가 보며, 무엇을 보여 주는지는 관리 -> 교인 포털 -> 명부에서 선택합니다."
+
+#: 
+msgid "Why"
+msgstr "이유"
+
+#: 
+msgid "Why not"
+msgstr "안 되는 이유"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "기기가 방금 바꾼 토큰으로"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "예, 패스키를 추가합니다"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "예, 이 패스키를 제거합니다"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "예, 모든 기기에서 로그아웃합니다"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "이 이메일을 확인할 권한이 없습니다."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "어떤 기기에서도 로그인이 유지되지 않습니다."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "모든 기기에서 로그아웃되었습니다."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "이 기기에서 로그아웃되었습니다."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "이메일 주소로도 로그인할 수 있습니다."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "자신의 로그인은 끌 수 없습니다."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "교인 포털을 열 수 없습니다. 교회 사무실에 연락해 주십시오."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "이메일 변경을 너무 여러 번 요청하셨습니다. 나중에 다시 시도해 주십시오."
+
+#: 
+msgid "You have no passkeys."
+msgstr "패스키가 없습니다."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "교인 포털에 %s(으)로 로그인되어 있습니다(변경 허용)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "교인 포털에 %s(으)로 로그인되어 있습니다(읽기 전용)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "최소 연령보다 어림"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "교인 포털에 로그인할 수 있는 가장 어린 연령입니다. 출생일을 모르면 세대주나 배우자만 해당합니다."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "교인 포털 로그인 코드"
+
+#: 
+msgid "Your code"
+msgstr "코드"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "이메일 주소 %s이(가) 아직 확인되지 않아 로그인에 사용할 수 없습니다. 그 주소로 링크를 보내 드리며, 링크를 사용하면 확인됩니다."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "여기서는 이메일 주소를 제거할 수 없습니다. 교회 사무실에 연락해 주십시오."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "이메일 주소가 확인되었습니다"
+
+#: 
+msgid "Your email address was changed"
+msgstr "이메일 주소가 변경되었습니다"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "패스키가 추가되었습니다. 다음번에는 이 기기에서 그 패스키로 로그인하십시오."
+
+#: 
+msgid "an administrator"
+msgstr "관리자"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "세대주나 배우자 중 이메일 주소가 있는 사람이 없음"
+
+#: 
+msgid "or"
+msgstr "또는"
+
+#: 
+msgid "until %s"
+msgstr "%s까지"
 
