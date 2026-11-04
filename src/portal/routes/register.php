@@ -4,12 +4,15 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\Portal\PortalTwig;
 use ChurchCRM\Service\EmailSignInService;
-use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 use ChurchCRM\Utils\AddressDefaults;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 $app->get('/register', function (Request $request, Response $response): Response {
+    if (!SystemConfig::getBooleanValue('bEnableSelfRegistration')) {
+        return $response->withStatus(404);
+    }
+
     PortalTwig::preparePage();
 
     $familyRoles = [];
@@ -32,4 +35,4 @@ $app->get('/register', function (Request $request, Response $response): Response
             'country' => AddressDefaults::country(),
         ],
     ]);
-})->add(PublicRegistrationAuthMiddleware::class);
+});
