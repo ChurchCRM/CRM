@@ -24210,14 +24210,2962 @@ msgid "Repeat events could not be created. Check the application log for details
 msgstr "పునరావృత ఈవెంట్‌లను సృష్టించలేకపోయాము. వివరాల కోసం అప్లికేషన్ లాగ్‌ను తనిఖీ చేయండి."
 
 #: 
+msgid "Confirm Password"
+msgstr "పాస్‌వర్డ్ నిర్ధారించండి"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "మీ పాస్‌వర్డ్ మార్చబడింది. ఇప్పుడు మీరు కొత్త పాస్‌వర్డ్‌తో సైన్ ఇన్ చేయవచ్చు."
+
+#: 
+msgid "1st"
+msgstr "1వ"
+
+#: 
+msgid "2nd"
+msgstr "2వ"
+
+#: 
+msgid "3rd"
+msgstr "3వ"
+
+#: 
+msgid "4th"
+msgstr "4వ"
+
+#: 
+msgid "5th"
+msgstr "5వ"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "సైన్ ఇన్ చేయగల ఏకైక నిర్వాహకుడి నుండి నిర్వాహక ప్రవేశాన్ని తీసివేయలేరు"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "నెలలోని వారాన్ని 1వ నుండి 5వ వరకు ఎంచుకోండి"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "{{first}} నుండి {{last}} వరకు ప్రతి నెల {{week}} {{day}} న {{total}} ఈవెంట్‌లను సృష్టిస్తుంది"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "వారంలోని రోజు చెల్లదు"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "నెలవారీగా, వారపు రోజున"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "5వ వారం లేని నెలలు దాటవేయబడతాయి."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM 1 నుండి 5 వరకు పూర్ణాంకం అయి ఉండాలి"
+
+#: 
+msgid "Week of the month"
+msgstr "నెలలోని వారం"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "నెలలోని వారం 1 నుండి 5 వరకు ఉండాలి"
+
+#: 
+msgid "%s through %s"
+msgstr "%s నుండి %s వరకు"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "విరాళ ప్రకటనలపై ముద్రించే చర్చి పన్ను గుర్తింపు (EIN)"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "విరాళ ప్రకటనలు ఇంటి పెద్దలకు జారీ చేయబడతాయి. మీకు అవసరమైతే చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "Download statement"
+msgstr "ప్రకటనను డౌన్‌లోడ్ చేయండి"
+
+#: 
+msgid "Generated"
+msgstr "రూపొందించబడింది"
+
+#: 
+msgid "Goods and services"
+msgstr "వస్తువులు మరియు సేవలు"
+
+#: 
+msgid "My Giving"
+msgstr "నా దానం"
+
+#: 
+msgid "No contributions"
+msgstr "విరాళాలు లేవు"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "ఈ కాలానికి విరాళాలు నమోదు కాలేదు."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "ఈ విరాళాలకు బదులుగా, అమూర్త మతపరమైన ప్రయోజనాలు తప్ప, ఏ వస్తువులు లేదా సేవలు ఇవ్వబడలేదు."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "ఐచ్ఛికం. విరాళ ప్రకటనలపై ముద్రించబడుతుంది."
+
+#: 
+msgid "Tax ID"
+msgstr "పన్ను గుర్తింపు"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "పన్ను గుర్తింపు (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "పన్ను మినహాయింపు మొత్తం"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "ఇది ఇంటి ప్రకటన. ఇందులో మీ కుటుంబానికి సంబంధించిన బహుమతులు ఉంటాయి."
+
+#: 
+msgid "Total contributions"
+msgstr "మొత్తం విరాళాలు"
+
+#: 
+msgid "Year-end statement"
+msgstr "సంవత్సరాంత ప్రకటన"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d దాన ప్రకటన కుటుంబానికి విజయవంతంగా ఇమెయిల్ చేయబడింది."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s దాన ప్రకటన"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "దాన ప్రకటనలపై కనిపించే పాఠ్యాన్ని అనుకూలీకరించండి (sTaxReport1, sTaxReport2 మొదలైనవి)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "ప్రియమైన %s కుటుంబమా,\n"
+"\n"
+"%s నుండి మీ %s దాన ప్రకటన ఈ ఇమెయిల్‌కు జతచేయబడింది.\n"
+"\n"
+"మీకు ఏవైనా ప్రశ్నలు ఉంటే, దయచేసి చర్చి కార్యాలయాన్ని సంప్రదించండి.\n"
+"\n"
+"మీ ఔదార్యానికి ధన్యవాదాలు."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "%s దాన ప్రకటనను ఇమెయిల్ చేయండి"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "కవరు సంఖ్యలు"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "దాన ప్రకటనలను రూపొందించండి"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "దాన ప్రకటనలు, ప్రతిజ్ఞ ట్రాకింగ్ మరియు ఆర్థిక విశ్లేషణ కోసం నివేదికలను రూపొందించండి."
+
+#: 
+msgid "Giving Reports"
+msgstr "దాన నివేదికలు"
+
+#: 
+msgid "Giving Statement"
+msgstr "దాన ప్రకటన"
+
+#: 
+msgid "Giving Statements"
+msgstr "దాన ప్రకటనలు"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "దాన ప్రకటన ఇమెయిల్ పంపడం విఫలమైంది. మీ ఇమెయిల్ సర్వర్ సెట్టింగ్‌లను తనిఖీ చేయండి."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "మీ తదుపరి బహుమతిని %s కు పంపండి"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "%s దాన ప్రకటనను ముద్రించండి"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "దాన ప్రకటనను ఇమెయిల్ చేయలేకపోయాము: ఆ సంవత్సరానికి చెల్లింపు డేటా కనుగొనబడలేదు."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "దాన ప్రకటనను ఇమెయిల్ చేయలేకపోయాము: ఈ కుటుంబానికి ఫైలులో ఇమెయిల్ చిరునామా లేదు."
+
+#: 
+msgid "Undesignated"
+msgstr "నిర్దేశించని"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "దాన ప్రకటనలపై చర్చి పేరు, చిరునామా మరియు సంప్రదింపు సమాచారం కనిపిస్తుందని నిర్ధారించండి."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "ఈ స్థానం ఇప్పుడు %s కు కేటాయించబడింది, వారు దానిని అంగీకరించారు."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "ఈ స్థానం ఇప్పుడు %s కు కేటాయించబడింది, వారు ఇంకా దానిని అంగీకరించలేదు."
+
+#: 
+msgid "Their reason: %s"
+msgstr "వారి కారణం: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "కేటాయింపులను చూడండి"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "ఈ సందర్భానికి ఇంకా అవసరమైన స్వచ్ఛంద సేవకులు: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "ఈ స్థానానికి ఇంకా అవసరమైన స్వచ్ఛంద సేవకులు: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "ప్రతి తరగతికి వారపు సైన్-ఇన్ పట్టిక. తరగతి జాబితాలు మరియు ఫోటో పుస్తకాలు ఆదివారపు పాఠశాల డాష్‌బోర్డ్‌లో మరియు ప్రతి తరగతి పేజీలో ఉంటాయి."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "పాఠశాల సంవత్సరానికి వారపు సైన్-ఇన్ పట్టిక, ప్రతి ఆదివారానికి ఒక నిలువు వరుస"
+
+#: 
+msgid "Age %d"
+msgstr "వయస్సు %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "హాజరు పట్టికను తయారు చేయడానికి కనీసం ఒక సమూహాన్ని ఎంచుకోవాలి."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "హాజరు పట్టిక"
+
+#: 
+msgid "Class List"
+msgstr "తరగతి జాబితా"
+
+#: 
+msgid "Download PDF"
+msgstr "PDF డౌన్‌లోడ్ చేయండి"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "లాక్‌అవుట్ కాలం నిమిషాల్లో\n"
+"లాక్ అయిన ఖాతా ఇన్ని నిమిషాల తర్వాత స్వయంగా అన్‌లాక్ అవుతుంది. ఒక IP చిరునామా నుండి విఫలమైన లాగిన్‌లు అదే కాలంలో లెక్కించబడతాయి."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "ఒక IP చిరునామా నుండి విఫలమైన లాగిన్‌ల గరిష్ట సంఖ్య\n"
+"లాక్‌అవుట్ కాలంలో ఒక IP చిరునామా నుండి విఫలమైన లాగిన్‌లు మరియు పాస్‌వర్డ్ రీసెట్ అభ్యర్థనలు ఈ పరిమితికి లెక్కించబడతాయి. అది చేరిన తర్వాత, కాలం ముగిసే వరకు ఆ చిరునామా నుండి సైన్-ఇన్ తిరస్కరించబడుతుంది.\n"
+"ఈ ఫీచర్‌ను నిలిపివేయడానికి సున్నాకు సెట్ చేయండి, ఉదాహరణకు అందరూ ఒక ప్రాక్సీ చిరునామా ద్వారా ChurchCRM ను చేరుకున్నప్పుడు."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "వినియోగదారు ఖాతా లాక్ అయ్యే ముందు అనుమతించే విఫలమైన లాగిన్‌ల గరిష్ట సంఖ్య.\n"
+"లాక్ అయిన ఖాతా లాక్‌అవుట్ కాలం తర్వాత స్వయంగా అన్‌లాక్ అవుతుంది, లేదా నిర్వాహకుడు విఫలమైన లాగిన్‌లను రీసెట్ చేస్తే ముందుగా.\n"
+"ఈ ఫీచర్ స్వయంచాలక పాస్‌వర్డ్ ఊహించే దాడుల నుండి రక్షించడానికి సహాయపడుతుంది.\n"
+"ఈ ఫీచర్‌ను నిలిపివేయడానికి సున్నాకు సెట్ చేయండి."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "అది స్వయంగా అన్‌లాక్ అయ్యే వరకు నిమిషాలు: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "ఆదివారపు పాఠశాల హాజరు పట్టిక"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "తరగతి లేని ఆదివారాలు పట్టికలో చేర్చబడవు."
+
+#: 
+msgid "Database Upgrade"
+msgstr "డేటాబేస్ నవీకరణ"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "మీ డేటాబేస్ నవీకరించబడుతోంది. నవీకరణ పూర్తయ్యే వరకు ఈ పేజీని తెరిచి ఉంచండి."
+
+#: 
+msgid "Family Labels"
+msgstr "కుటుంబ లేబుల్‌లు"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – మొత్తం"
+
+#: 
+msgid "Bill"
+msgstr "నోటు"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "ఒక డిపాజిట్‌ను ఎంచుకోండి లేదా రెండు నివేదిక తేదీలను నమోదు చేయండి."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "చెల్లింపులను సమీక్షించడానికి లేదా బ్యాంక్ స్లిప్‌ను ముద్రించడానికి ఒక డిపాజిట్‌ను ఎంచుకోండి. ఎంచుకున్న డిపాజిట్ తేదీ పరిధిని అధిగమిస్తుంది."
+
+#: 
+msgid "Coin"
+msgstr "నాణెం"
+
+#: 
+msgid "Deposit Report"
+msgstr "డిపాజిట్ నివేదిక"
+
+#: 
+msgid "Download Report"
+msgstr "నివేదికను డౌన్‌లోడ్ చేయండి"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "చెల్లుబాటు అయ్యే నివేదిక తేదీలను నమోదు చేయండి."
+
+#: 
+msgid "Invalid report filters."
+msgstr "నివేదిక వడపోతలు చెల్లవు."
+
+#: 
+msgid "Invalid report options."
+msgstr "నివేదిక ఎంపికలు చెల్లవు."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "అన్ని చెల్లింపులను చేర్చడానికి వడపోతలను ఖాళీగా ఉంచండి. ఈ సెట్టింగ్‌లు నివేదికకు వర్తిస్తాయి, బ్యాంక్ స్లిప్‌కు కాదు."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "ఏ రికార్డులు రాలేదు. మీ వడపోతలను సర్దుబాటు చేసి మళ్లీ ప్రయత్నించండి."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "బ్యాంక్ కోసం సిద్ధం చేయండి"
+
+#: 
+msgid "Preview Totals"
+msgstr "మొత్తాల మునుజూపు"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "బ్యాంక్ స్లిప్‌ను ముద్రించండి"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "ఎంచుకున్న డిపాజిట్‌ను పూర్తిగా ముద్రించండి, నగదు మరియు చెక్ మొత్తాలు, లెక్క పట్టికలు మరియు సాక్షి పంక్తులతో. నివేదిక వడపోతలు విస్మరించబడతాయి. ఎలక్ట్రానిక్ చెల్లింపులు సారాంశంలో ఉంటాయి మరియు భౌతిక బ్యాంక్ టికెట్ మొత్తం నుండి మినహాయించబడతాయి."
+
+#: 
+msgid "Review Payments"
+msgstr "చెల్లింపులను సమీక్షించండి"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "ఒక కాలానికి చెల్లింపులను సమీక్షించండి, లేదా బ్యాంక్ కోసం ఒక డిపాజిట్‌ను సిద్ధం చేయండి."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "చెల్లింపులను సమీక్షించండి, PDF లేదా CSV డౌన్‌లోడ్ చేయండి, లేదా ఒక డిపాజిట్ కోసం బ్యాంక్ స్లిప్‌ను ముద్రించండి."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "చెల్లుబాటు అయ్యే డిపాజిట్‌ను ఎంచుకోండి."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "బ్యాంక్ స్లిప్‌ను ముద్రించడానికి ఒక డిపాజిట్‌ను ఎంచుకోండి."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "నివేదిక ముగింపు తేదీ ప్రారంభ తేదీన లేదా దాని తర్వాత ఉండాలి."
+
+#: 
+msgid "Total Cash"
+msgstr "మొత్తం నగదు"
+
+#: 
+msgid "Total Coin"
+msgstr "మొత్తం నాణేలు"
+
+#: 
+msgid "Witness"
+msgstr "సాక్షి"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d బహుమతులకు కుటుంబం లేదు. అవి ప్రకటనలో ఉండలేవు."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "ఈ సంవత్సరం తేదీతో %d తెరిచిన డిపాజిట్‌లు. ప్రకటనలు వెళ్లే ముందు ప్రతి బహుమతి తుది కావడానికి వాటిని మూసివేయండి."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d చెల్లింపులు ఇంకా ఏ డిపాజిట్‌లోనూ లేవు."
+
+#: 
+msgid "Can be emailed"
+msgstr "ఇమెయిల్ చేయవచ్చు"
+
+#: 
+msgid "Closing line"
+msgstr "ముగింపు వాక్యం"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "ఈ సంవత్సరం తేదీతో ఉన్న ప్రతి డిపాజిట్ మూసివేయబడింది."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "ప్రతి బహుమతి ఒక కుటుంబానికి చెందుతుంది."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "ఈ సంవత్సరంలోని ప్రతి చెల్లింపు ఒక డిపాజిట్‌లో ఉంది."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "పన్ను ప్రకటనలను రూపొందించండి"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "దాన నివేదిక (పన్ను ప్రకటనలు)"
+
+#: 
+msgid "Opening line"
+msgstr "ప్రారంభ వాక్యం"
+
+#: 
+msgid "Print and mail"
+msgstr "ముద్రించి పంపండి"
+
+#: 
+msgid "Qty"
+msgstr "పరిమాణం"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "సంవత్సరాన్ని సమీక్షించి, ఆపై దాన ప్రకటనలను ముద్రించండి లేదా ఇమెయిల్ చేయండి."
+
+#: 
+msgid "Signed by"
+msgstr "సంతకం చేసినవారు"
+
+#: 
+msgid "Thank-you line"
+msgstr "కృతజ్ఞత వాక్యం"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "పన్ను ప్రకటనలపై చర్చి పేరు, చిరునామా మరియు సంప్రదింపు సమాచారం కనిపిస్తుందని నిర్ధారించండి."
+
+#: 
+msgid "Year-End Giving"
+msgstr "సంవత్సరాంత దానం"
+
+#: 
+msgid "As of: %s"
+msgstr "ఈ తేదీ నాటికి: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "ఎంచుకున్న %d ఆర్థిక సంవత్సరాలలో, సమీక్ష తేదీ %s వరకు, కనీసం ఒక సానుకూల కుటుంబ చెల్లింపు"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "మీ ఉపనియమాలు అవసరమైన చోట బాప్తిస్మం, ఎన్నికల జాబితా దరఖాస్తులు, నివాసం, కమ్యూనికెంట్ స్థితి, హాజరు, మంచి స్థాయి మరియు స్థానిక మినహాయింపులను విడిగా తనిఖీ చేయాలి. సభ్యత్వ వ్యవధి హాజరుకు రుజువు కాదు."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "ఉన్న వర్గీకరణను ఎంచుకోండి."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "సమీక్షించడానికి కనీసం ఒక వర్గీకరణను ఎంచుకోండి."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "మీ చర్చి ఉపయోగించే వర్గీకరణలను ఎంచుకోండి. ఏ వర్గీకరణా ఓటు హక్కును ఇస్తుందని భావించబడదు."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "చర్చి నాయకత్వం చర్చి ఉపనియమాల ప్రకారం అర్హతను నిర్ధారించాలి. ఈ జాబితా ఎంచుకున్న వడపోతలకు సరిపోయే వ్యక్తులను మాత్రమే చూపుతుంది."
+
+#: 
+msgid "Classifications to review"
+msgstr "సమీక్షించవలసిన వర్గీకరణలు"
+
+#: 
+msgid "Classifications: %s"
+msgstr "వర్గీకరణలు: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "మరణించిన వ్యక్తులు, నిష్క్రియ వ్యక్తులు మరియు వర్గీకరణలు, మరియు నిష్క్రియ లేదా సమీక్ష పెండింగ్‌లో ఉన్న కుటుంబాలు మరియు వ్యక్తులు మినహాయించబడతారు."
+
+#: 
+msgid "Download Review List"
+msgstr "సమీక్ష జాబితాను డౌన్‌లోడ్ చేయండి"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "1900 మరియు 2200 మధ్య చెల్లుబాటు అయ్యే సమీక్ష తేదీని నమోదు చేయండి."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "చూపిన పరిమితులలో పూర్ణాంకాలను నమోదు చేయండి."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "తనిఖీ చేయవలసిన ఆర్థిక సంవత్సరాలు (0–100; 0 అంటే దాన అవసరం లేదు)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "దానం కుటుంబం వారీగా నమోదు అవుతుంది, వ్యక్తి వారీగా కాదు. మీ ఉపనియమాలు కుటుంబ చెల్లింపు ఈ ప్రమాణాన్ని తీర్చనిచ్చినప్పుడు మాత్రమే దీన్ని ప్రారంభించండి. ప్రతి వ్యక్తి విరాళం ఇచ్చారని ఇది రుజువు చేయదు. విండో ఎంచుకున్న ఆర్థిక సంవత్సరాన్ని కలిగి ఉంటుంది మరియు సమీక్ష తేదీ తర్వాత ముగియదు."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "చేర్చవలసిన చివరి ఆర్థిక సంవత్సరం"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "కనీస వయస్సు (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "కనీస వయస్సు: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "నెలల్లో కనీస సభ్యత్వ వ్యవధి (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "కనీస సభ్యత్వ వ్యవధి: %d నెలలు"
+
+#: 
+msgid "No donation requirement."
+msgstr "విరాళ అవసరం లేదు."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "ఈ వడపోతలకు ఎవరూ సరిపోరు. లేని పుట్టిన లేదా సభ్యత్వ తేదీలను తనిఖీ చేసి మీ ప్రమాణాలను సర్దుబాటు చేయండి."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "ఐచ్ఛిక కుటుంబ దాన అవసరం"
+
+#: 
+msgid "People matching filters"
+msgstr "వడపోతలకు సరిపోయే వ్యక్తులు"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "అవసరమైన తేదీలు లేకపోవడంతో వదిలివేసిన వ్యక్తులు"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "వర్గీకరణలు మరియు ఐచ్ఛిక వయస్సు, సభ్యత్వం మరియు కుటుంబ దాన వడపోతలతో చర్చి సమీక్ష కోసం జాబితాను సిద్ధం చేయండి."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "మీ ఉపనియమాల ప్రకారం చర్చి సమీక్ష కోసం జాబితాను సిద్ధం చేయండి."
+
+#: 
+msgid "Review date"
+msgstr "సమీక్ష తేదీ"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "వడపోతలను ఎంచుకోవడానికి మీ చర్చి ఉపనియమాలను ఉపయోగించండి, ఆపై అధికారం ఉన్న చర్చి నాయకత్వం జాబితాను సమీక్షించనివ్వండి. ఈ వడపోతలకు సరిపోవడం ఓటు అర్హతను నిర్ధారించదు. ఈ నివేదిక అర్హతను నమోదు చేయదు లేదా ఎన్నికను నిర్వహించదు."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "ఓటు సభ్యులు — సమీక్ష జాబితా"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "సున్నా ఐచ్ఛిక అవసరాన్ని నిలిపివేస్తుంది. వయస్సుకు పూర్తి పుట్టిన తేదీ అవసరం; సభ్యత్వ వ్యవధికి సభ్యత్వ తేదీ అవసరం. అవసరమైన తేదీలు లేని వ్యక్తులు వదిలివేయబడి విడిగా లెక్కించబడతారు. మరణించిన వ్యక్తులు, నిష్క్రియ వ్యక్తులు మరియు వర్గీకరణలు, మరియు నిష్క్రియ లేదా సమీక్ష పెండింగ్‌లో ఉన్న కుటుంబాలు మరియు వ్యక్తులు ఎల్లప్పుడూ మినహాయించబడతారు; చారిత్రక స్థితి కాదు, ప్రస్తుత వర్గీకరణ మరియు స్థితి ఉపయోగించబడతాయి."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "%s కు చెల్లించవలసిన మొత్తం: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "ఎంచుకున్న డైరెక్టరీలో ప్రైవేట్ PDF తాత్కాలిక నిల్వను సృష్టించలేరు."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "సిస్టమ్ తాత్కాలిక డైరెక్టరీని ఉపయోగించడానికి ఖాళీగా ఉంచండి. లేకపోతే, వెబ్ ప్రవేశం నుండి రక్షించబడిన, వ్రాయగల ఉన్న డైరెక్టరీని నమోదు చేయండి."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "PDF తాత్కాలిక డైరెక్టరీ"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "PDF తాత్కాలిక నిల్వ ప్రైవేట్‌గా మరియు వ్రాయదగినదిగా ఉండాలి."
+
+#: 
+msgid "Reporting"
+msgstr "నివేదించడం"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "PDF తాత్కాలిక డైరెక్టరీ లేదు లేదా అందుబాటులో లేదు."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "PDF తాత్కాలిక డైరెక్టరీ సంపూర్ణ డైరెక్టరీ మార్గం అయి ఉండాలి."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "చర్చి పన్ను గుర్తింపు (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "ముగింపు వాక్యం"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "ఐచ్ఛిక టెలిమెట్రీని నియంత్రిస్తుంది. టెలిమెట్రీ ఆఫ్‌లో ఉన్నా సంస్థాపన మరియు డేటాబేస్ నవీకరణ వైఫల్యాలు PostHog కు పరిమిత నిర్ధారణలను పంపుతాయి. ఈ వైఫల్య నివేదికలలో సాఫ్ట్‌వేర్ మరియు వాతావరణ సంస్కరణలు మరియు శుభ్రం చేసిన డేటాబేస్ లోపం ఉంటాయి, కానీ సంస్థాపన ID లేదా SQL ప్రకటన ఉండదు."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "విఫలమైన సంస్థాపనలు మరియు డేటాబేస్ నవీకరణలను నిర్ధారించండి"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "సంస్థాపన మరియు నవీకరణ వైఫల్య వివరాలు"
+
+#: 
+msgid "Open in browser window"
+msgstr "బ్రౌజర్ విండోలో తెరవండి"
+
+#: 
+msgid "Opening Line"
+msgstr "ప్రారంభ వాక్యం"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "ఐచ్ఛిక వినియోగ టెలిమెట్రీ ప్రారంభించినప్పుడు మాత్రమే పంపబడుతుంది. మీరు వద్దు, ధన్యవాదాలు ఎంచుకున్నా సంస్థాపన మరియు డేటాబేస్ నవీకరణ వైఫల్యాలు సముదాయానికి సహాయం చేయడానికి ఎల్లప్పుడూ పరిమిత నిర్ధారణను పంపుతాయి. వైఫల్య నివేదికలలో సాఫ్ట్‌వేర్ మరియు వాతావరణ సంస్కరణలు మరియు శుభ్రం చేసిన డేటాబేస్ లోపం ఉంటాయి, సంస్థాపన ID లేదా SQL ప్రకటన లేకుండా."
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF నిర్వహణ"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF అవుట్‌పుట్"
+
+#: 
+msgid "PDF handling mode"
+msgstr "PDF నిర్వహణ విధానం"
+
+#: 
+msgid "Questions Line"
+msgstr "ప్రశ్నల వాక్యం"
+
+#: 
+msgid "Save File dialog"
+msgstr "ఫైల్ సేవ్ డైలాగ్"
+
+#: 
+msgid "Signer"
+msgstr "సంతకం చేసేవారు"
+
+#: 
+msgid "Statement Settings"
+msgstr "ప్రకటన సెట్టింగ్‌లు"
+
+#: 
+msgid "Statement Wording"
+msgstr "ప్రకటన పదాలు"
+
+#: 
+msgid "Tax Information"
+msgstr "పన్ను సమాచారం"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "టెలిమెట్రీ యునైటెడ్ స్టేట్స్‌లోని PostHog కు పంపబడుతుంది. ఐచ్ఛిక టెలిమెట్రీ నిలిపివేయబడినా సంస్థాపన మరియు నవీకరణ వైఫల్య నివేదికలు పంపబడతాయి."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "ఈ తేదీ రద్దు చేయబడింది. మీ నుండి ఇంకేమీ అవసరం లేదు."
+
+#: 
+msgid "always sent"
+msgstr "ఎల్లప్పుడూ పంపబడుతుంది"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "లేఖ శీర్షికను తీసివేయడం విఫలమైంది"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "లేఖ శీర్షికను నిల్వ చేయడం విఫలమైంది"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "లేఖ శీర్షికను అప్‌లోడ్ చేయడం విఫలమైంది"
+
+#: 
+msgid "Greeting"
+msgstr "శుభాకాంక్ష"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "లేఖ శుభాకాంక్ష మరియు సంతకం"
+
+#: 
+msgid "Letterhead"
+msgstr "లేఖ శీర్షిక"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF లేదా WebP. వెడల్పైన బ్యానర్ ఉత్తమం, ఉదాహరణకు 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "గ్రాఫిక్ లేఖ శీర్షిక ఉపయోగించే PDF లేఖల పైభాగంలో ముద్రించబడుతుంది, దాన ప్రకటనల వంటివి. ఒకటి లేకుండా, లేఖలు చర్చి పేరు మరియు చిరునామాను ముద్రిస్తాయి."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "లేఖ శీర్షికను తీసివేయాలా? లేఖలు చర్చి పేరు మరియు చిరునామాను ముద్రిస్తాయి."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "PDF లేఖలు ముద్రించే లేఖ శీర్షికను సెట్ చేయండి"
+
+#: 
+msgid "Using the church name and address"
+msgstr "చర్చి పేరు మరియు చిరునామాను ఉపయోగిస్తోంది"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "సిస్టమ్ సెట్టింగ్‌లలో సెట్ చేసిన లేఖ శీర్షిక మార్గాన్ని ఉపయోగిస్తోంది"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "దాన ప్రకటనల కోసం పదాలు, పన్ను గుర్తింపు మరియు PDF నిర్వహణ"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%2$s గా %1$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s ఇప్పుడు మీ ఇమెయిల్ చిరునామా. సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయడానికి దీన్ని ఉపయోగించవచ్చు."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} మరిన్ని"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "మీ ఇమెయిల్ చిరునామా మార్పు అభ్యర్థించబడింది"
+
+#: 
+msgid "A family"
+msgstr "ఒక కుటుంబం"
+
+#: 
+msgid "A group"
+msgstr "ఒక సమూహం"
+
+#: 
+msgid "A ministry"
+msgstr "ఒక పరిచర్య"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "మేము పంపే లింక్‌ను మీరు ఉపయోగించిన తర్వాత మాత్రమే కొత్త చిరునామా మారుతుంది."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "మీ ఇమెయిల్ చిరునామాతో సైన్ ఇన్ చేసిన %d నిమిషాలలోపు మాత్రమే పాస్‌కీని జోడించవచ్చు. సైన్ అవుట్ చేసి, మళ్లీ మీ ఇమెయిల్‌తో సైన్ ఇన్ చేసి, ఇక్కడికి తిరిగి రండి."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "పాస్‌కీ ఇమెయిల్ కోడ్ లేకుండా Face ID, వేలిముద్ర లేదా మీ పరికర PIN తో మిమ్మల్ని సైన్ ఇన్ చేస్తుంది."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "మీ సభ్యుల పోర్టల్ సైన్-ఇన్‌కు ఒక పాస్‌కీ జోడించబడింది"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "%2$s న %1$s కు, %3$s నుండి, మీ సభ్యుల పోర్టల్ సైన్-ఇన్‌కు ఒక పాస్‌కీ జోడించబడింది."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "%2$s న %1$s కు మీ సభ్యుల పోర్టల్ సైన్-ఇన్‌కు ఒక పాస్‌కీ జోడించబడింది."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "దానిని కోల్పోయిన వ్యక్తికి తమ సొంత ఇమెయిల్ ఉండదు: వారికి మాత్రమే పంపే మెయిల్, సమూహ ఇమెయిల్ వంటిది, దాటవేయబడుతుంది, ఇమెయిల్ కంపోజర్ అలా చెబుతుంది."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "వయస్సును దాచే రికార్డు ఉన్న వ్యక్తి పుట్టిన సంవత్సరాన్ని ఎప్పుడూ చూపించరు."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "సభ్యుల పోర్టల్‌లో %s కు మీ ఇమెయిల్ చిరునామాను %s నుండి %s కు మార్చమని అభ్యర్థన జరిగింది. %s కు పంపిన లింక్ ఉపయోగించినప్పుడు మాత్రమే మార్పు జరుగుతుంది."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "ఒక అడ్డు వరుస ఆశించిన రూపంలో లేదు."
+
+#: 
+msgid "A team"
+msgstr "ఒక బృందం"
+
+#: 
+msgid "Add a passkey"
+msgstr "పాస్‌కీని జోడించండి"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "పాస్‌కీని మీ సొంత ఫోన్ లేదా కంప్యూటర్‌లో మాత్రమే జోడించండి, పంచుకున్న లేదా బహిరంగ పరికరంలో ఎప్పుడూ కాదు."
+
+#: 
+msgid "Add an email"
+msgstr "ఇమెయిల్‌ను జోడించండి"
+
+#: 
+msgid "Added %s"
+msgstr "%s జోడించబడింది"
+
+#: 
+msgid "Admin overrides"
+msgstr "నిర్వాహక అధిగమనాలు"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "%s కుటుంబంలోని పెద్దవారు"
+
+#: 
+msgid "Adult of the family"
+msgstr "కుటుంబంలోని పెద్దవారు"
+
+#: 
+msgid "All events"
+msgstr "అన్ని ఈవెంట్‌లు"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "వ్యక్తిగా లాగిన్‌ను అనుమతించండి"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "వ్యక్తిగా లాగిన్ సమయంలో మార్పులను అనుమతించండి"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "నిర్వాహకుడు వ్యక్తిగా లాగిన్ ఉపయోగించేటప్పుడు మార్పులను అనుమతించండి. ఆఫ్‌గా ఉంటే, వ్యక్తిగా లాగిన్ చదవడానికి మాత్రమే."
+
+#: 
+msgid "Already held by a family member"
+msgstr "ఇప్పటికే ఒక కుటుంబ సభ్యుడు కలిగి ఉన్నారు"
+
+#: 
+msgid "Also used by"
+msgstr "ఇంకా ఉపయోగించేవారు"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "నిర్వాహకుడు ఆ వ్యక్తి పేజీలో ఒక వ్యక్తికి ఏ అనుమతినైనా ఇవ్వవచ్చు. అప్పుడు \"నిర్వాహక అధిగమనాలు\" ఇక్కడ కనిపిస్తాయి, అది ఇవ్వబడిన వ్యక్తుల సంఖ్యతో."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "మరొక వ్యక్తి ఇప్పటికే ఈ చిరునామాను ఉపయోగిస్తున్నారు"
+
+#: 
+msgid "Applies to"
+msgstr "వర్తించేది"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "స్వచ్ఛంద బృందానికి ప్రత్యామ్నాయ అభ్యర్థనలను ఆమోదించండి లేదా తిరస్కరించండి."
+
+#: 
+msgid "Ask for a new email"
+msgstr "కొత్త ఇమెయిల్‌ను అడగండి"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "అధికారం లాగిన్‌కు కాదు, వ్యక్తికి ఇవ్వబడుతుంది, కాబట్టి వారికి లాగిన్ లేకముందే దానిని ఇవ్వవచ్చు. సభ్యుల పోర్టల్‌లో మాత్రమే సైన్ ఇన్ చేసే వ్యక్తి, నిర్వాహకుడు వారికి సిబ్బంది ఖాతా ఇచ్చే వరకు తమ సొంత షెడ్యూల్‌ను మాత్రమే చూస్తూ ఉంటారు."
+
+#: 
+msgid "Awaiting review"
+msgstr "సమీక్ష కోసం వేచి ఉంది"
+
+#: 
+msgid "Back to sign-in"
+msgstr "సైన్-ఇన్‌కు తిరిగి"
+
+#: 
+msgid "Browse the full directory"
+msgstr "పూర్తి డైరెక్టరీని చూడండి"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయవచ్చు"
+
+#: 
+msgid "Can sign in?"
+msgstr "సైన్ ఇన్ చేయగలరా?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "సైన్ ఇన్ చేయగల ఏకైక నిర్వాహకుడి సైన్-ఇన్‌ను నిలిపివేయలేరు."
+
+#: 
+msgid "Cannot sign in"
+msgstr "సైన్ ఇన్ చేయలేరు"
+
+#: 
+msgid "Change family details"
+msgstr "కుటుంబ వివరాలను మార్చండి"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "కుటుంబ చిరునామా మరియు సంప్రదింపు వివరాలను మార్చండి, సమీక్ష కోసం ఒక కుటుంబ సభ్యుడిని జోడించండి."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "వారి సొంత పేరు, సంప్రదింపు వివరాలు మరియు ఫోటోను మార్చండి."
+
+#: 
+msgid "Changed"
+msgstr "మార్చబడింది"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "వ్యక్తి సైన్ ఇన్ చేసిన తర్వాత మార్చబడింది"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "వ్యక్తి సైన్ ఇన్ చేసిన తర్వాత దిగుమతి ద్వారా మార్చబడింది"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "వ్యక్తి సైన్ ఇన్ చేసిన తర్వాత సిబ్బంది ద్వారా మార్చబడింది"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "వ్యక్తి సైన్ ఇన్ చేసిన తర్వాత API ద్వారా మార్చబడింది"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "వ్యక్తిగా లాగిన్ సమయంలో మార్పులు ఆఫ్ చేయబడ్డాయి."
+
+#: 
+msgid "Changes needed"
+msgstr "మార్పులు అవసరం"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "మీరు చేస్తున్నప్పుడే మార్పులు సేవ్ అవుతాయి."
+
+#: 
+msgid "Check your email"
+msgstr "మీ ఇమెయిల్‌ను తనిఖీ చేయండి"
+
+#: 
+msgid "Choose a permission"
+msgstr "ఒక అనుమతిని ఎంచుకోండి"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "ఒక అనుమతి, అది దేనికి, దాని చివరి రోజు ఎంచుకుని, ఎందుకు అని చెప్పండి."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "ఫోటోను ఎంచుకోండి లేదా సెల్ఫీ తీయండి"
+
+#: 
+msgid "Choose a theme"
+msgstr "థీమ్‌ను ఎంచుకోండి"
+
+#: 
+msgid "Choose at least one row."
+msgstr "కనీసం ఒక అడ్డు వరుసను ఎంచుకోండి."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "ఒకేసారి గరిష్టంగా %d అడ్డు వరుసలను ఎంచుకోండి."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "జాబితా నుండి తేదీలు ఎలా చూపబడతాయో ఎంచుకోండి."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "ఈ అనుమతి చివరి రోజును ఎంచుకోండి."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "అనుమతి దేనికో ఎంచుకోండి."
+
+#: 
+msgid "Choose yes or no."
+msgstr "అవును లేదా కాదు ఎంచుకోండి."
+
+#: 
+msgid "Church Office"
+msgstr "చర్చి కార్యాలయం"
+
+#: 
+msgid "Church country"
+msgstr "చర్చి దేశం"
+
+#: 
+msgid "Church default: %s"
+msgstr "చర్చి అప్రమేయం: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "చర్చి నాయకుడి సైన్-ఇన్"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయగల సభ్యుల వర్గీకరణలు, కామాతో వేరు చేసిన వర్గీకరణ id ల జాబితాగా."
+
+#: 
+msgid "Clear selection"
+msgstr "ఎంపికను తొలగించండి"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "కోడ్‌లు, సెషన్‌లు మరియు పరికరాలు"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "ఇమెయిల్ చిరునామాను నిర్ధారించండి"
+
+#: 
+msgid "Confirm email address"
+msgstr "ఇమెయిల్ చిరునామాను నిర్ధారించండి"
+
+#: 
+msgid "Confirm family details"
+msgstr "కుటుంబ వివరాలను నిర్ధారించండి"
+
+#: 
+msgid "Confirm selected"
+msgstr "ఎంచుకున్నవాటిని నిర్ధారించండి"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "ఇది ఈ వ్యక్తి సొంత చిరునామా అని వ్యక్తిగతంగా లేదా ఫోన్ ద్వారా తనిఖీ చేసిన తర్వాత మాత్రమే ఈ ఇమెయిల్‌ను నిర్ధారించండి. నిర్ధారించిన తర్వాత, సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయడానికి దీన్ని ఉపయోగించవచ్చు."
+
+#: 
+msgid "Confirm your email address"
+msgstr "మీ ఇమెయిల్ చిరునామాను నిర్ధారించండి"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "మీ కొత్త ఇమెయిల్ చిరునామాను నిర్ధారించండి"
+
+#: 
+msgid "Confirmed"
+msgstr "నిర్ధారించబడింది"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "తేదీలు YYYY-MM-DD రూపంలో వ్రాయాలి."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "ప్రత్యామ్నాయ అభ్యర్థనలను నిర్ణయించండి"
+
+#: 
+msgid "Device"
+msgstr "పరికరం"
+
+#: 
+msgid "Device remembered"
+msgstr "పరికరం గుర్తుంచుకోబడింది"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "పరికరాలు మరియు పాస్‌కీలు"
+
+#: 
+msgid "Directory classifications"
+msgstr "డైరెక్టరీ వర్గీకరణలు"
+
+#: 
+msgid "Directory section"
+msgstr "డైరెక్టరీ విభాగం"
+
+#: 
+msgid "Disable sign-in"
+msgstr "సైన్-ఇన్‌ను నిలిపివేయండి"
+
+#: 
+msgid "Do not show"
+msgstr "చూపవద్దు"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "వారిలో ప్రతి ఒక్కరికీ ఇతరులు ఉపయోగించని సొంత ఇమెయిల్ కూడా అవసరం."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "ప్రతి సైన్-ఇన్ ఇమెయిల్ ఒకసారి, పరిమిత సమయం వరకు పని చేస్తుంది, కొత్త ఇమెయిల్ దాని స్థానం తీసుకుంటుంది."
+
+#: 
+msgid "Edit my details"
+msgstr "నా వివరాలను సవరించండి"
+
+#: 
+msgid "Email address changed"
+msgstr "ఇమెయిల్ చిరునామా మార్చబడింది"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "టైప్ చేసిన ఇమెయిల్ చిరునామా: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "నిర్ధారించవలసిన ఇమెయిల్ చిరునామాలు: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "ఇమెయిల్ మార్చబడింది"
+
+#: 
+msgid "Email code"
+msgstr "ఇమెయిల్ కోడ్"
+
+#: 
+msgid "Email confirmed"
+msgstr "ఇమెయిల్ నిర్ధారించబడింది"
+
+#: 
+msgid "Email link"
+msgstr "ఇమెయిల్ లింక్"
+
+#: 
+msgid "Email me a code"
+msgstr "నాకు కోడ్‌ను ఇమెయిల్ చేయండి"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "నాకు నిర్ధారణ లింక్‌ను ఇమెయిల్ చేయండి"
+
+#: 
+msgid "Email needs attention"
+msgstr "ఇమెయిల్‌కు శ్రద్ధ అవసరం"
+
+#: 
+msgid "Email problem"
+msgstr "ఇమెయిల్ సమస్య"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "ఇమెయిల్ చేసిన సైన్-ఇన్ కోడ్ మరియు లింక్ రద్దు చేయబడ్డాయి"
+
+#: 
+msgid "Emailed verification link"
+msgstr "ఇమెయిల్ చేసిన ధృవీకరణ లింక్"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "నిర్ధారించిన ఇమెయిల్‌లు: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "సైన్-ఇన్‌ను ప్రారంభించండి"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "ఈ వ్యక్తి ప్రతి సభ్యుల పోర్టల్ సెషన్‌ను ముగించి వారి గుర్తుంచుకున్న పరికరాలను మరచిపోవాలా? వారి పాస్‌కీలు ఉంటాయి, కాబట్టి వారు మళ్లీ సైన్ ఇన్ చేయవచ్చు."
+
+#: 
+msgid "Ended %s"
+msgstr "%s ముగిసింది"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "వారి సైన్-ఇన్ మార్పు వల్ల ముగిసింది"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "సభ్య సైన్-ఇన్ ఆఫ్ చేసినప్పుడు ముగిసింది"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "%1$d నుండి %2$d వరకు పూర్ణాంకాన్ని నమోదు చేయండి."
+
+#: 
+msgid "Enter your email address."
+msgstr "మీ ఇమెయిల్ చిరునామాను నమోదు చేయండి."
+
+#: 
+msgid "Every kind"
+msgstr "ప్రతి రకం"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "ప్రతి సభ్య సైన్-ఇన్, తిరస్కరణ మరియు సైన్-ఇన్ మార్పు, కొత్తవి ముందు. ఇది ఎప్పుడూ కోడ్, లింక్ లేదా పాస్‌కీని ఉంచదు."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "జాబితా చేయబడిన ప్రతి ఒక్కరూ, A నుండి Z వరకు, శోధన పెట్టెతో."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "సైన్-ఇన్ నియమాలు అనుమతించే ప్రతి ఒక్కరూ తమ సొంత ఇమెయిల్‌తో సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయవచ్చు."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "గత 30 రోజుల్లో సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేసిన ప్రతి ఒక్కరూ, కొత్తవారు ముందు."
+
+#: 
+msgid "Everywhere"
+msgstr "అన్నిచోట్లా"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "గత 30 రోజుల్లో ఒక సభ్యుడు సభ్యుల పోర్టల్ లేదా ఇమెయిల్ చేసిన ధృవీకరణ లింక్ నుండి నిర్ధారించిన కుటుంబాలు."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "నిర్ధారించిన కుటుంబాలు, గత 30 రోజులు"
+
+#: 
+msgid "Family details confirmed"
+msgstr "కుటుంబ వివరాలు నిర్ధారించబడ్డాయి"
+
+#: 
+msgid "Family email"
+msgstr "కుటుంబ ఇమెయిల్"
+
+#: 
+msgid "Family emails not moved"
+msgstr "కుటుంబ ఇమెయిల్‌లు తరలించబడలేదు"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయగల సభ్యుల కుటుంబ పాత్రలు, కామాతో వేరు చేసిన పాత్ర id ల జాబితాగా."
+
+#: 
+msgid "Find someone"
+msgstr "ఎవరినైనా కనుగొనండి"
+
+#: 
+msgid "Fix by hand"
+msgstr "చేతితో సరిచేయండి"
+
+#: 
+msgid "Fix shared emails"
+msgstr "పంచుకున్న ఇమెయిల్‌లను సరిచేయండి"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "సిబ్బంది సైన్-ఇన్ నుండి"
+
+#: 
+msgid "Give a permission"
+msgstr "ఒక అనుమతిని ఇవ్వండి"
+
+#: 
+msgid "Give a portal permission"
+msgstr "పోర్టల్ అనుమతిని ఇవ్వండి"
+
+#: 
+msgid "Give each person their own email"
+msgstr "ప్రతి వ్యక్తికి వారి సొంత ఇమెయిల్ ఇవ్వండి"
+
+#: 
+msgid "Give permission"
+msgstr "అనుమతి ఇవ్వండి"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "%2$s వరకు %1$s ఇచ్చారు"
+
+#: 
+msgid "Given by %s"
+msgstr "%s ఇచ్చారు"
+
+#: 
+msgid "Given to"
+msgstr "ఇవ్వబడినది"
+
+#: 
+msgid "Given to Everyone"
+msgstr "అందరికీ ఇవ్వబడింది"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "ఇవ్వబడింది, కానీ అమలులో లేదు"
+
+#: 
+msgid "Go to sign in"
+msgstr "సైన్ ఇన్‌కు వెళ్లండి"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "సభ్యుల పోర్టల్‌కు వెళ్లండి"
+
+#: 
+msgid "Has signed in"
+msgstr "సైన్ ఇన్ చేశారు"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "సైన్ ఇన్ చేశారు: వారి సెషన్‌లు మరియు పరికరాలు ముగుస్తాయి"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయడానికి మీ కోడ్ ఇది. మీరు అడిగిన బ్రౌజర్‌లోని సైన్-ఇన్ పేజీలో దీన్ని టైప్ చేయండి. లేదా ఈ పరికరంలో సైన్ ఇన్ చేయడానికి బటన్‌ను నొక్కండి."
+
+#: 
+msgid "Hide Permissions"
+msgstr "అనుమతులను దాచండి"
+
+#: 
+msgid "How"
+msgstr "ఎలా"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "ఒక IP చిరునామా గంటకు ఎన్ని సభ్యుల పోర్టల్ సైన్-ఇన్ ఇమెయిల్‌లను అడగవచ్చు. పరిమితి లేకుండా 0 సెట్ చేయండి, ఉదాహరణకు అందరూ ఒక చిరునామా ద్వారా ChurchCRM ను చేరుకున్నప్పుడు."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "సభ్యుడు సైన్ ఇన్‌లో ఉండాలని ఎంచుకున్న తర్వాత పరికరం సభ్యుల పోర్టల్‌లో ఎన్ని రోజులు సైన్ ఇన్‌లో ఉంటుంది. ఎంపికను తీసివేయడానికి 0 సెట్ చేయండి."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "ఎన్ని నిష్క్రియ నిమిషాలు సభ్యుల పోర్టల్ సెషన్‌ను ముగిస్తాయి."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "సభ్యుల పోర్టల్ సైన్-ఇన్ కోడ్ మరియు లింక్ ఎన్ని నిమిషాలు చెల్లుబాటు అవుతాయి."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "నిష్క్రియ సమయం (నిమిషాలు)"
+
+#: 
+msgid "Idle too long"
+msgstr "చాలా సేపు నిష్క్రియం"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "%1$s మీ కొత్త చిరునామా అయితే, దానిని నిర్ధారించడానికి క్రింది బటన్‌ను ఉపయోగించండి. నిర్ధారించే వరకు సైన్ ఇన్ చేయడానికి దీన్ని ఉపయోగించలేరు. లింక్ ఒకసారి, %2$s వరకు పని చేస్తుంది."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "ఈ చిరునామాతో సైన్ ఇన్ చేయగలిగితే, మేము మీకు కోడ్‌ను ఇమెయిల్ చేశాము. కొన్ని నిమిషాల తర్వాత ఏమీ లేదా? చర్చి కార్యాలయాన్ని అడగండి."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "మీరు దీన్ని జోడించకపోతే, సైన్-ఇన్ మరియు పరికరాలు పేజీలో దానిని తీసివేసి చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "మీరు ఈ మార్పును అడగకపోతే, దయచేసి చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "మీరు దీన్ని అడగకపోతే, దయచేసి చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "ఇది గడువు ముగిసి ఉండవచ్చు లేదా ఇప్పటికే ఉపయోగించబడి ఉండవచ్చు. సహాయం కావాలంటే, దయచేసి చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "దాని ప్లగిన్ సంస్థాపించబడలేదు"
+
+#: 
+msgid "Jump to a letter"
+msgstr "ఒక అక్షరానికి వెళ్లండి"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "నన్ను సైన్ ఇన్‌లో ఉంచు (రోజులు)"
+
+#: 
+msgid "Keeps it"
+msgstr "దానిని ఉంచుకుంటారు"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "నిర్ధారించని ఇమెయిల్ రకం"
+
+#: 
+msgid "Last day"
+msgstr "చివరి రోజు"
+
+#: 
+msgid "Last used"
+msgstr "చివరిసారి ఉపయోగించినది"
+
+#: 
+msgid "Last used %s"
+msgstr "చివరిసారి ఉపయోగించినది %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "%s నాయకుడు"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "సభ్య సైన్-ఇన్ ఆన్‌లో ఉన్నప్పుడు, వ్యక్తి చర్యల మెనూ నుండి నిర్వాహకులు ఆ వ్యక్తి సభ్యుల పోర్టల్‌ను ఆ వ్యక్తిగా తెరవనివ్వండి."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "సభ్యులు పాస్‌కీలను జోడించి వాటితో సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయనివ్వండి."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "సభ్యులు తమ సొంత ఇమెయిల్ చిరునామాతో సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయనివ్వండి. ఇమెయిల్ పంపడం పని చేస్తున్నప్పుడు మాత్రమే దీన్ని ఆన్ చేయవచ్చు."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "సభ్యులు తమ ఇమెయిల్‌తో సైన్ ఇన్ చేయనివ్వండి"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "లింక్ మరియు కోడ్ వ్యవధి (నిమిషాలు)"
+
+#: 
+msgid "Login as %s"
+msgstr "%s గా లాగిన్"
+
+#: 
+msgid "Login as Person"
+msgstr "వ్యక్తిగా లాగిన్"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "వ్యక్తిగా లాగిన్ ప్రారంభం కాలేదు."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "వ్యక్తిగా లాగిన్ ముగిసింది: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "వ్యక్తిగా లాగిన్ చరిత్ర"
+
+#: 
+msgid "Login as Person started"
+msgstr "వ్యక్తిగా లాగిన్ ప్రారంభమైంది"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "వ్యక్తిగా లాగిన్ ఆగింది"
+
+#: 
+msgid "Look up anyone"
+msgstr "ఎవరినైనా చూడండి"
+
+#: 
+msgid "Loses it"
+msgstr "దానిని కోల్పోతారు"
+
+#: 
+msgid "Manage a team"
+msgstr "ఒక బృందాన్ని నిర్వహించండి"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "నా సైన్-ఇన్ మరియు పరికరాలను నిర్వహించండి"
+
+#: 
+msgid "Matches: %s"
+msgstr "సరిపోలికలు: %s"
+
+#: 
+msgid "May sign in"
+msgstr "సైన్ ఇన్ చేయవచ్చు"
+
+#: 
+msgid "May sign in now"
+msgstr "ఇప్పుడు సైన్ ఇన్ చేయవచ్చు"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "సభ్యుల పోర్టల్ సైన్-ఇన్ కోడ్"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "సభ్యుల పోర్టల్ సైన్-ఇన్ నోటీసు"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "సభ్యుల పోర్టల్ సైన్-ఇన్‌లు మరియు కార్యకలాపం, సభ్యులకు మరియు తమ సిబ్బంది సైన్-ఇన్ నుండి పోర్టల్‌ను తెరిచే సిబ్బందికి."
+
+#: 
+msgid "Member sign-in"
+msgstr "సభ్య సైన్-ఇన్"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "సభ్య సైన్-ఇన్ ప్రతి వ్యక్తికి కోడ్‌ను ఇమెయిల్ చేస్తుంది, కాబట్టి దీన్ని ఆన్ చేయడానికి ముందు ఇమెయిల్ (SMTP) పని చేయాలి."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "సభ్య సైన్-ఇన్ ఆఫ్‌లో ఉంది"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "చర్చికి సభ్య సైన్-ఇన్ ఆఫ్‌లో ఉంది."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "సభ్య సైన్-ఇన్ ఆఫ్‌లో ఉంది."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "సభ్య సైన్-ఇన్ ఇంకా అందుబాటులో లేదు. దయచేసి చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "సభ్య సైన్-ఇన్ మరణించినవారు, నిష్క్రియులు, నిష్క్రియ కుటుంబంలో ఉన్నవారు, సమీక్ష కోసం వేచి ఉన్నవారు లేదా సైన్-ఇన్ నిలిపివేయి ఆన్‌లో ఉన్నవారిని ఎప్పుడూ లోపలికి రానివ్వదు. ఇంకెవరు రావచ్చో ఈ ఎంపికలు నిర్ణయిస్తాయి."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "సభ్య సైన్-ఇన్ ప్రతి సభ్యుడికి ఇమెయిల్ ద్వారా కోడ్‌ను పంపుతుంది, కాబట్టి ChurchCRM ఇమెయిల్ పంపగలిగినప్పుడు మాత్రమే దీన్ని ఆన్ చేయవచ్చు. ముందు ఇమెయిల్‌ను ఆన్ చేసి మెయిల్ సర్వర్‌ను సెటప్ చేయండి."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "కనీసం ఒక క్యాలెండర్ ఆన్‌లో ఉన్నంత వరకు సభ్యులు క్యాలెండర్ పేజీని చూస్తారు."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "సభ్యులు పేరులో కనీసం %d అక్షరాలు టైప్ చేసి గరిష్టంగా %d సరిపోలికలు చూస్తారు. పూర్తి జాబితా ఎప్పుడూ చూపబడదు."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "ఇప్పుడు సైన్ ఇన్‌లో ఉన్న సభ్యులు సైన్ అవుట్ అవుతారు, సభ్య సైన్-ఇన్ మళ్లీ ఆన్ అయ్యే వరకు ఎవరూ తమ ఇమెయిల్‌తో సైన్ ఇన్ చేయలేరు."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "ఈ వర్గీకరణలు ఉన్న సభ్యులు సభ్యుల పోర్టల్ మెనూలో డైరెక్టరీని కనుగొంటారు."
+
+#: 
+msgid "Minimum age"
+msgstr "కనీస వయస్సు"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "తదుపరి గంటలో ఈ చిరునామాతో మరిన్ని ప్రయత్నాలు మరొక నోటీసు పంపవు."
+
+#: 
+msgid "Moved from the family email"
+msgstr "కుటుంబ ఇమెయిల్ నుండి తరలించబడింది"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "ఇంటి అధిపతికి తరలించబడింది"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "జీవిత భాగస్వామికి తరలించబడింది"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "మా చర్చికి కొత్తవారా? మీ కుటుంబం గురించి చెప్పండి, మేము మిమ్మల్ని స్వాగతించడానికి సంప్రదిస్తాము."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "ఇంకా వ్యక్తిగా లాగిన్ సెషన్‌లు లేవు."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "పుట్టిన తేదీ లేదు, మరియు ఇంటి అధిపతి లేదా జీవిత భాగస్వామి కాదు"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "ఏ క్యాలెండర్ ఆన్‌లో లేదు, కాబట్టి సభ్యులు క్యాలెండర్ పేజీని చూడరు."
+
+#: 
 msgid "No changes"
 msgstr "మార్పులేమీ లేవు"
+
+#: 
+msgid "No changes made."
+msgstr "మార్పులు ఏవీ చేయలేదు."
+
+#: 
+msgid "No family role"
+msgstr "కుటుంబ పాత్ర లేదు"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "ఇంటి అధిపతి లేదా జీవిత భాగస్వామి కుటుంబ ఇమెయిల్‌ను స్వీకరించలేరు."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "ఇంటి అధిపతి లేదా జీవిత భాగస్వామి దీన్ని పంచుకోరు"
+
+#: 
+msgid "No match"
+msgstr "సరిపోలిక లేదు"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "ఇంకా ఎవరూ సైన్-ఇన్ నియమానికి సరిపోరు. మరిన్ని కుటుంబ పాత్రలు లేదా వర్గీకరణలను టిక్ చేయండి, లేదా కనీస వయస్సును తగ్గించండి."
+
+#: 
+msgid "No passkey was added."
+msgstr "ఏ పాస్‌కీ జోడించబడలేదు."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "ఏ పాస్‌కీ ఉపయోగించబడలేదు. మళ్లీ ప్రయత్నించండి, లేదా మీ ఇమెయిల్ చిరునామాతో సైన్ ఇన్ చేయండి."
+
+#: 
+msgid "No person has this email"
+msgstr "ఈ ఇమెయిల్ ఏ వ్యక్తికీ లేదు"
+
+#: 
+msgid "No personal email"
+msgstr "వ్యక్తిగత ఇమెయిల్ లేదు"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "పంచుకున్న ఇమెయిల్‌లు ఎవరినీ సైన్ ఇన్ చేయకుండా ఆపవు."
+
+#: 
+msgid "No such person"
+msgstr "అలాంటి వ్యక్తి లేరు"
+
+#: 
+msgid "No, thanks"
+msgstr "వద్దు, ధన్యవాదాలు"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "సైన్ ఇన్ చేయగల ఇద్దరు వ్యక్తులు పంచుకునే వ్యక్తిగత ఇమెయిల్‌తో ఎవరూ సైన్ ఇన్ చేయలేరు. ఒక కుటుంబంలో పంచుకున్న చిరునామాకు, ఇంటి అధిపతి దానిని ఉంచుకుంటారు, లేకపోతే జీవిత భాగస్వామి (పెద్దవారు ముందు). దానిని పంచుకునే ఇతరులందరూ దానిని కోల్పోతారు. మరో విధంగా సరిచేయాలనుకున్నవాటిని అన్‌టిక్ చేయండి."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "ఇంకా ఎవరూ సైన్ ఇన్ చేయలేరు: ఎవరు సైన్ ఇన్ చేయవచ్చు కింద కనీసం ఒక వర్గీకరణను టిక్ చేయండి."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "ఇంకా ఎవరూ సైన్ ఇన్ చేయలేరు: ఎవరు సైన్ ఇన్ చేయవచ్చు కింద కనీసం ఒక కుటుంబ పాత్రను మరియు కనీసం ఒక వర్గీకరణను టిక్ చేయండి."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "ఇంకా ఎవరూ సైన్ ఇన్ చేయలేరు: ఎవరు సైన్ ఇన్ చేయవచ్చు కింద కనీసం ఒక కుటుంబ పాత్రను టిక్ చేయండి."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "డైరెక్టరీలో ఆ పేరుకు ఎవరూ సరిపోరు."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "డైరెక్టరీలో ఇంకా ఎవరూ జాబితా చేయబడలేదు."
+
+#: 
+msgid "Not ended"
+msgstr "ముగియలేదు"
+
+#: 
+msgid "Not moved"
+msgstr "తరలించబడలేదు"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "మా వద్ద ఏ ఇమెయిల్ ఉందో ఖచ్చితంగా తెలియదా? చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "Not yet"
+msgstr "ఇంకా కాదు"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "కుటుంబ కాలరేఖలో నమోదు చేయబడింది"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "వారిలో, సైన్ ఇన్ చేసిన వ్యక్తులు: {{total}}. వారు అన్నిచోట్లా సైన్ అవుట్ అవుతారు, చిరునామాకు నోటీసు వస్తుంది."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "అందరికీ ఆఫ్: \"%s\" ఆఫ్ చేయబడింది"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "అందరికీ ఆఫ్: స్వచ్ఛంద నిర్వహణ V2 కు సెట్ చేయబడలేదు"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "అందరికీ ఆఫ్: దాని ఫీచర్ ఆఫ్ చేయబడింది"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "అందరికీ ఆఫ్: దాని ప్లగిన్ ఆఫ్ చేయబడింది"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "అందరికీ ఆఫ్: సభ్యులతో ఏ క్యాలెండర్ పంచుకోబడలేదు"
+
+#: 
+msgid "Office list"
+msgstr "కార్యాలయ జాబితా"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "నిర్ధారించిన తర్వాత, సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయడానికి దీన్ని ఉపయోగించవచ్చు."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "మీరు నిర్ధారించగల చిరునామాలను మాత్రమే ఎంచుకోవచ్చు."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "నిర్వాహకులు మాత్రమే కారణాన్ని చూస్తారు."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "సిబ్బంది ఖాతా లేదా పోర్టల్ అనుమతులు ఉన్న వ్యక్తి ఇమెయిల్‌ను నిర్వాహకుడు మాత్రమే మార్చగలరు."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "వ్యక్తి సైన్ ఇన్ చేసిన ఇమెయిల్ స్థానంలో వచ్చిన ఇమెయిల్‌ను నిర్వాహకుడు మాత్రమే నిర్ధారించగలరు."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "సిబ్బంది ఖాతా లేదా పోర్టల్ అనుమతులు ఉన్న వ్యక్తి ఇమెయిల్‌ను నిర్వాహకుడు మాత్రమే నిర్ధారించగలరు."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "ఈ చిరునామాను నిర్వాహకుడు మాత్రమే సరిచేయగలరు: దీన్ని పంచుకునే ఎవరికైనా సిబ్బంది ఖాతా లేదా పోర్టల్ అనుమతులు ఉన్నాయి."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "మీ కుటుంబంలోని పెద్దవారు మాత్రమే ఈ వివరాలను నిర్ధారించగలరు. దయచేసి చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "ఆ వ్యక్తికి చెందినవని మీకు తెలిసిన చిరునామాలను మాత్రమే నిర్ధారించండి. చిరునామాను చదివే ఎవరైనా ఆ వ్యక్తిగా సైన్ ఇన్ చేయవచ్చు."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "సొంత ఇమెయిల్ ఉన్న సజీవులు మాత్రమే కార్యాలయ జాబితాలో ఉండగలరు."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "సొంత ఇమెయిల్ ఉన్న వ్యక్తులను మాత్రమే జోడించవచ్చు."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "ఐచ్ఛిక టెలిమెట్రీలో పేజీ మార్గాలు, క్రియాశీల లొకేల్, CRM సంస్కరణ, PHP సంస్కరణ, OS కుటుంబం, మీ చర్చి సమాచార సెట్టింగ్‌ల నుండి దేశం మరియు యాదృచ్ఛిక సంస్థాపన ID ఉండవచ్చు. వైఫల్య నివేదికలలో సంస్థాపన ID ఉండదు. డేటా యునైటెడ్ స్టేట్స్‌లోని PostHog కు పంపబడుతుంది."
+
+#: 
+msgid "Passkey"
+msgstr "పాస్‌కీ"
+
+#: 
+msgid "Passkey added"
+msgstr "పాస్‌కీ జోడించబడింది"
+
+#: 
+msgid "Passkey removed"
+msgstr "పాస్‌కీ తీసివేయబడింది"
+
+#: 
+msgid "Passkeys"
+msgstr "పాస్‌కీలు"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "పాస్‌కీలు ఆఫ్ చేయబడ్డాయి."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "ఇక్కడ పాస్‌కీలను ఉపయోగించలేరు."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "ఈ సైట్‌లో ఇంకా పాస్‌కీలను ఉపయోగించలేరు. దయచేసి చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "పాస్‌కీలకు సైట్ చిరునామాలో IP చిరునామా కాకుండా హోస్ట్ పేరు అవసరం."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "పాస్‌కీలకు ఈ సైట్‌కు సురక్షిత (HTTPS) కనెక్షన్ అవసరం."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "పాస్‌కీలకు సైట్ చిరునామా Config.php లో సెట్ చేయబడాలి."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "పాస్‌కీలకు సైట్ HTTPS ద్వారా అందించబడాలి. అలా అయ్యే వరకు సభ్యులకు పాస్‌కీలు ఇవ్వబడవు."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "పాస్‌కీలు %s వద్ద మాత్రమే పని చేస్తాయి."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "పాస్‌కీలు: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "సేవ్ చేసిన సెట్టింగ్‌లు లోపలికి అనుమతించే వ్యక్తులు: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "ఎవరైనా సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయలేకపోయినప్పుడు ఇమెయిల్ చేయవలసిన వ్యక్తులు"
+
+#: 
+msgid "People who hold it"
+msgstr "దానిని కలిగి ఉన్నవారు"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "చిరునామాను కోల్పోయే వ్యక్తులు: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "చిరునామాను కోల్పోయిన వ్యక్తులు: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "సైన్ ఇన్ చేయగల వ్యక్తులు: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేసేవారు: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "ఈ వర్గీకరణలు ఉన్న వ్యక్తులు డైరెక్టరీలో కనిపిస్తారు. సంఖ్య ప్రతి వర్గీకరణలో ఎంతమంది క్రియాశీల వ్యక్తులు ఉన్నారో చెబుతుంది."
+
+#: 
+msgid "People with this email: %s"
+msgstr "ఈ ఇమెయిల్ ఉన్నవారు: %s"
+
+#: 
+msgid "Person %d"
+msgstr "వ్యక్తి %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "జాబితా నుండి వర్గీకరణలను ఎంచుకోండి."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "జాబితా నుండి కుటుంబ పాత్రలను ఎంచుకోండి."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "కార్యాలయ జాబితా కోసం వ్యక్తులను ఎంచుకోండి."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "దయచేసి జాబితా నుండి భాషను ఎంచుకోండి."
+
+#: 
+msgid "Portal permission given"
+msgstr "పోర్టల్ అనుమతి ఇవ్వబడింది"
+
+#: 
+msgid "Portal permission removed"
+msgstr "పోర్టల్ అనుమతి తీసివేయబడింది"
+
+#: 
+msgid "Portal permissions"
+msgstr "పోర్టల్ అనుమతులు"
+
+#: 
+msgid "Portal sign-in"
+msgstr "పోర్టల్ సైన్-ఇన్"
+
+#: 
+msgid "Problem"
+msgstr "సమస్య"
+
+#: 
+msgid "Reason"
+msgstr "కారణం"
+
+#: 
+msgid "Reason: %s"
+msgstr "కారణం: %s"
+
+#: 
+msgid "Refused"
+msgstr "తిరస్కరించబడింది"
+
+#: 
+msgid "Register your family"
+msgstr "మీ కుటుంబాన్ని నమోదు చేయండి"
+
+#: 
+msgid "Remembered device"
+msgstr "గుర్తుంచుకున్న పరికరం"
+
+#: 
+msgid "Remembered device removed"
+msgstr "గుర్తుంచుకున్న పరికరం తీసివేయబడింది"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "గుర్తుంచుకున్న పరికరాలు: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "ఇమెయిల్‌లను తీసివేయండి"
+
+#: 
+msgid "Remove this passkey"
+msgstr "ఈ పాస్‌కీని తీసివేయండి"
+
+#: 
+msgid "Remove this permission"
+msgstr "ఈ అనుమతిని తీసివేయండి"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "తీసివేసినది: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "సైన్-ఇన్ తర్వాత భర్తీ చేయబడింది"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "మరొక సైన్-ఇన్ ద్వారా భర్తీ చేయబడింది"
+
+#: 
+msgid "Result"
+msgstr "ఫలితం"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "స్వచ్ఛంద బృందాన్ని నడపండి: స్థానాలు, స్వచ్ఛంద సేవకులు, షెడ్యూల్‌లు, సిబ్బంది మరియు సంఖ్యలు."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "సైన్-ఇన్ ఎందుకు నిలిపివేయబడుతోందో చెప్పండి."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "ఈ అనుమతి ఎందుకు ఇవ్వబడుతోందో చెప్పండి."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "ఫైలులో ఎవరినైనా శోధించండి. ప్రతి అడ్డు వరుస వారు సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయవచ్చో, కాకపోతే ఎందుకో చెబుతుంది."
+
+#: 
+msgid "Search method"
+msgstr "శోధన పద్ధతి"
+
+#: 
+msgid "Search only"
+msgstr "శోధన మాత్రమే"
+
+#: 
+msgid "See family contact details"
+msgstr "కుటుంబ సంప్రదింపు వివరాలను చూడండి"
+
+#: 
+msgid "See my family"
+msgstr "నా కుటుంబాన్ని చూడండి"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "ఈ వ్యక్తి చూసినట్లు సభ్యుల పోర్టల్‌ను చూడాలా? మీరు ఆపు నొక్కే వరకు సిబ్బంది పేజీలు మూసి ఉంటాయి, సెషన్ ఈ పేజీలో మరియు మీ వినియోగదారు పేజీలో నమోదు అవుతుంది."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "చర్చి సభ్యులతో పంచుకునే క్యాలెండర్‌లను చూసి, వాటికి సభ్యత్వం పొందండి."
+
+#: 
+msgid "See the church calendar"
+msgstr "చర్చి క్యాలెండర్‌ను చూడండి"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "వారిని సైన్ ఇన్ చేసే పరికరాలు మరియు పాస్‌కీలను చూసి, వాటిలో దేనినైనా సైన్ అవుట్ చేయండి లేదా తీసివేయండి."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "వారి కుటుంబంలోని వ్యక్తుల ఇమెయిల్ చిరునామాలు మరియు ఫోన్ నంబర్‌లను చూడండి."
+
+#: 
+msgid "See the member directory"
+msgstr "సభ్యుల డైరెక్టరీని చూడండి"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "వారి కుటుంబంలోని వ్యక్తుల పేర్లు మరియు ఫోటోలను చూడండి."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "చర్చి తన డైరెక్టరీలో జాబితా చేసే వ్యక్తులను, చర్చి పంచుకోవాలని ఎంచుకునే వివరాలతో చూడండి."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "వారి స్వచ్ఛంద షెడ్యూల్‌ను చూడండి, ఖాళీ స్థానాలకు నమోదు చేసుకోండి మరియు ప్రత్యామ్నాయాన్ని అడగండి."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "browse ను true లేదా false గా పంపండి."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "వర్గీకరణలను id ల జాబితాగా పంపండి."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "డైరెక్టరీ సెట్టింగ్‌లను JSON ఆబ్జెక్ట్‌గా పంపండి."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "చూపవలసిన ఫీల్డ్‌లను true మరియు false విలువల ఆబ్జెక్ట్‌గా పంపండి."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "సెట్టింగ్‌లను JSON ఆబ్జెక్ట్‌గా పంపండి."
+
+#: 
+msgid "Session ended"
+msgstr "సెషన్ ముగిసింది"
 
 #: 
 msgid "Set up email"
 msgstr "ఇమెయిల్ సెటప్ చేయండి"
 
 #: 
+msgid "Set up email first."
+msgstr "ముందు ఇమెయిల్‌ను సెటప్ చేయండి."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "సరిచేసిన పంచుకున్న చిరునామాలు: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "సరిచేయవలసిన పంచుకున్న చిరునామాలు: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "పంచుకున్నవారు"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "వ్యక్తులను సైన్ ఇన్ చేయకుండా ఆపే పంచుకున్న ఇమెయిల్‌లు"
+
+#: 
+msgid "Show or hide this member"
+msgstr "ఈ సభ్యుడిని చూపండి లేదా దాచండి"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "క్రింద ఎంచుకున్న వర్గీకరణలకు సభ్యుల పోర్టల్‌లో డైరెక్టరీ పేజీని చూపండి."
+
+#: 
+msgid "Show the member directory"
+msgstr "సభ్యుల డైరెక్టరీని చూపండి"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "సభ్యుల పోర్టల్‌లో సభ్యుల డైరెక్టరీని చూపండి."
+
+#: 
+msgid "Show with year"
+msgstr "సంవత్సరంతో చూపండి"
+
+#: 
+msgid "Show without year"
+msgstr "సంవత్సరం లేకుండా చూపండి"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "మొదటి %d సరిపోలికలు చూపబడుతున్నాయి. మీరు వెతుకుతున్న వ్యక్తిని కనుగొనడానికి పేరులో మరింత టైప్ చేయండి."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "%s గా సైన్ ఇన్ చేయాలా?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "తదుపరిసారి ఈ పరికరంలో Face ID, వేలిముద్ర లేదా మీ పరికర PIN తో సైన్ ఇన్ చేయండి."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "మీ కుటుంబం, చర్చి క్యాలెండర్ మరియు సేవ చేసే మార్గాలను చూడటానికి సైన్ ఇన్ చేయండి. మీకు పాస్‌వర్డ్ లేదా ఖాతా అవసరం లేదు."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "పాస్‌కీతో సైన్ ఇన్ చేయండి"
+
+#: 
+msgid "Sign out every device"
+msgstr "ప్రతి పరికరం నుండి సైన్ అవుట్ చేయండి"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "ఇప్పుడు ప్రతి పరికరం నుండి సైన్ అవుట్ చేయాలా?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "అన్నిచోట్లా సైన్ అవుట్ చేయండి"
+
+#: 
+msgid "Sign out this device"
+msgstr "ఈ పరికరం నుండి సైన్ అవుట్ చేయండి"
+
+#: 
+msgid "Sign-in"
+msgstr "సైన్-ఇన్"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "సైన్-ఇన్ మరియు పరికరాలు"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "సైన్-ఇన్‌ను నిలిపివేయలేకపోయాము."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "సైన్-ఇన్‌ను ప్రారంభించలేకపోయాము."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "సైన్-ఇన్ నిలిపివేయబడింది"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "సైన్-ఇన్ ఇమెయిల్ అభ్యర్థించబడింది"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "IP చిరునామాకు గంటకు సైన్-ఇన్ ఇమెయిల్‌లు"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "సైన్-ఇన్ ప్రారంభించబడింది"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "ఈ వ్యక్తికి సైన్-ఇన్ ఇప్పటికే నిలిపివేయబడింది."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "సైన్-ఇన్ నిలిపివేయబడింది"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "ఈ వ్యక్తికి సైన్-ఇన్ నిలిపివేయబడింది."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "ఈ వ్యక్తికి సైన్-ఇన్ ప్రారంభించబడింది."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "ఈ వ్యక్తికి సైన్-ఇన్ నిలిపివేయబడలేదు."
+
+#: 
+msgid "Sign-in refused"
+msgstr "సైన్-ఇన్ తిరస్కరించబడింది"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "లింక్ చేసిన వ్యక్తి రికార్డులో ఇది పరిష్కారమయ్యే వరకు సైన్-ఇన్, సెషన్‌లు మరియు API కీ నిరోధించబడతాయి."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "సైన్ ఇన్ చేశారు, గత 30 రోజులు"
+
+#: 
+msgid "Signed out"
+msgstr "సైన్ అవుట్ అయ్యారు"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "వారి సైన్-ఇన్ మార్పు వల్ల సైన్ అవుట్ అయ్యారు"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "అన్నిచోట్లా సైన్ అవుట్ అయ్యారు"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "ఎవరో సభ్యుల పోర్టల్ సైన్-ఇన్ ఇమెయిల్ అడిగారు, కానీ ఏదీ పంపబడలేదు."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "ఎవరో సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయలేకపోయారు"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "వ్యక్తిగా లాగిన్ సమయంలో సిబ్బంది పేజీలు మూసి ఉంటాయి. తిరిగి వెళ్లడానికి బ్యానర్‌లో ఆపు నొక్కండి."
+
+#: 
+msgid "Stop"
+msgstr "ఆపు"
+
+#: 
+msgid "Stopped"
+msgstr "ఆగింది"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "కుటుంబ వివరాలు ఇంకా సరైనవేనా అని చర్చి కార్యాలయానికి చెప్పండి."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "ఆ కోడ్ పని చేయలేదు. మా నుండి కొత్త ఇమెయిల్‌ను తనిఖీ చేయండి, లేదా కొత్తదాన్ని అడగండి."
+
+#: 
+msgid "That could not be removed."
+msgstr "దానిని తీసివేయలేకపోయాము."
+
+#: 
+msgid "That device is signed out."
+msgstr "ఆ పరికరం సైన్ అవుట్ అయింది."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "అది చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామా కాదు."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "ఆ పేజీ చాలా సేపు తెరిచి ఉంది. దయచేసి మళ్లీ ప్రయత్నించండి."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "ఆ పాస్‌కీ తీసివేయబడింది. ఇక మిమ్మల్ని సైన్ ఇన్ చేయలేదు."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "అది చాలా సమయం తీసుకుంది. దయచేసి మళ్లీ ప్రయత్నించండి."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "7.8.3 నవీకరణ ప్రతి కుటుంబ ఇమెయిల్‌ను ఒక వ్యక్తికి ఇచ్చింది. వీటిని ఇవ్వలేకపోయింది, కాబట్టి బదులుగా కుటుంబ కాలరేఖలో ఒక నోట్ ఉంచింది."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "సభ్యుల పోర్టల్ మరియు అది మీకు పంపే ఇమెయిల్‌లు ఈ భాషను ఉపయోగిస్తాయి."
+
+#: 
+msgid "The change could not be saved."
+msgstr "మార్పును సేవ్ చేయలేకపోయాము."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "కోడ్ మరియు బటన్ ఒకసారి, %s వరకు పని చేస్తాయి."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "కోడ్ లేదా లింక్ ఇక వారి ఇమెయిల్ కాని చిరునామాకు వెళ్లింది"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "నిర్ధారణ ఇమెయిల్‌ను పంపలేకపోయాము. దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి."
+
+#: 
+msgid "The device is signed out."
+msgstr "పరికరం సైన్ అవుట్ అయింది."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "%1$s కు మీ రికార్డు నుండి ఇమెయిల్ చిరునామా %2$s తీసివేయబడింది. ప్రతి పరికరంలో మీరు సభ్యుల పోర్టల్ నుండి సైన్ అవుట్ అయ్యారు."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "%1$s కు మీ రికార్డులోని ఇమెయిల్ చిరునామా %2$s నుండి %3$s కు మార్చబడింది. ప్రతి పరికరంలో మీరు సభ్యుల పోర్టల్ నుండి సైన్ అవుట్ అయ్యారు."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "ఇమెయిల్‌ను నిర్ధారించలేకపోయాము."
+
+#: 
+msgid "The email could not be sent."
+msgstr "ఇమెయిల్‌ను పంపలేకపోయాము."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "ఇమెయిల్ నిర్ధారించబడింది. ఇప్పుడు సైన్ ఇన్ చేయడానికి దీన్ని ఉపయోగించవచ్చు."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "ముగింపు తేదీ ప్రారంభ తేదీకి ముందు ఉంది."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "కుటుంబానికి సజీవ, క్రియాశీల ఇంటి అధిపతి లేదా జీవిత భాగస్వామి లేరు"
+
+#: 
+msgid "The family is inactive"
+msgstr "కుటుంబం నిష్క్రియంగా ఉంది"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "ఇంటి అధిపతి మరియు జీవిత భాగస్వామి ఇద్దరికీ సొంత ఇమెయిల్ ఉంది"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "చివరి రోజు గతంలో ఉండకూడదు."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "లింక్ చేసిన వ్యక్తి సైన్ ఇన్ చేయకపోవచ్చు, కాబట్టి ఈ ఖాతా సైన్ ఇన్ చేయలేదు"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "జాబితాను లోడ్ చేయలేకపోయాము."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "పాస్‌కీని జోడించలేకపోయాము. దయచేసి మళ్లీ ప్రయత్నించండి."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "పాస్‌కీని ధృవీకరించలేకపోయాము"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "పాస్‌కీ రికార్డులో లేదు, లేదా తీసివేయబడింది"
+
+#: 
+msgid "The passkey was removed."
+msgstr "పాస్‌కీ తీసివేయబడింది."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "దీన్ని పంచుకునే వ్యక్తులు వేర్వేరు కుటుంబాలలో ఉన్నారు, లేదా కుటుంబంలో లేరు"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "ఈ చిరునామాను పంచుకునే వ్యక్తులు మారారు. పంచుకున్న ఇమెయిల్‌లను సరిచేయి ను మళ్లీ తెరవండి."
+
+#: 
+msgid "The permission could not be given."
+msgstr "అనుమతిని ఇవ్వలేకపోయాము."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "ఈ రోజు తర్వాత అనుమతి ముగుస్తుంది. దానిని మళ్లీ ఇవ్వవచ్చు."
+
+#: 
+msgid "The permission was given."
+msgstr "అనుమతి ఇవ్వబడింది."
+
+#: 
+msgid "The permission was removed."
+msgstr "అనుమతి తీసివేయబడింది."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "అనుమతులను లోడ్ చేయలేకపోయాము."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "వ్యక్తి సభ్యుల పోర్టల్‌లో ఈ అనుమతిని వెంటనే కోల్పోతారు."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "కారణం గరిష్టంగా %d అక్షరాలు ఉండవచ్చు."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "సైన్-ఇన్ నియమాలు వారిని లోపలికి అనుమతిస్తాయి, ప్రతి ఒక్కరికీ సైన్ ఇన్ చేయగల ఇతరులు ఉపయోగించని సొంత ఇమెయిల్ ఉంది."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "సైన్-ఇన్ నియమాలు వారిని లోపలికి అనుమతిస్తాయి, కానీ వారి ఇమెయిల్ అనుమతించదు: వారికి ఏదీ లేదు, సైన్ ఇన్ చేయగల ఇంకొకరితో పంచుకుంటారు, లేదా ఇంకా నిర్ధారించబడలేదు."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "సైన్-ఇన్ సెట్టింగ్‌లను సేవ్ చేయలేకపోయాము."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "నిర్ధారించని ఇమెయిల్ మారింది. పేజీని మళ్లీ లోడ్ చేసి ప్రయత్నించండి."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "వారి వర్గీకరణ సైన్ ఇన్ చేయకపోవచ్చు"
+
+#: 
+msgid "Their email changed"
+msgstr "వారి ఇమెయిల్ మారింది"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "వారి ఇమెయిల్ ఇంకా నిర్ధారించబడలేదు"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "వారి ఇమెయిల్ ఇంకొకరితో పంచుకోబడింది"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "వారి కుటుంబ పాత్ర సైన్ ఇన్ చేయకపోవచ్చు"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "నవీకరణ వారి పాత లాగిన్‌లను తీసివేసింది. వారు తమ సొంత ఇమెయిల్‌తో సైన్ ఇన్ చేయగలిగేలా సభ్య సైన్-ఇన్‌ను ఆన్ చేయండి."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "వారి గుర్తుంచుకున్న పరికరం గడువు ముగిసింది"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "వారి గుర్తుంచుకున్న పరికరం సైన్ అవుట్ అయింది"
+
+#: 
+msgid "Theme development"
+msgstr "థీమ్ అభివృద్ధి"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "id %d తో వర్గీకరణ లేదు."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "ఈ రకమైన పరిధికి ఎంపికదారు లేదు."
+
+#: 
+msgid "There is no such audit event."
+msgstr "అలాంటి ఆడిట్ ఈవెంట్ లేదు."
+
+#: 
+msgid "There is no such email problem."
+msgstr "అలాంటి ఇమెయిల్ సమస్య లేదు."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "అలాంటి నిర్ధారించని ఇమెయిల్ రకం లేదు."
+
+#: 
+msgid "There is no such list."
+msgstr "అలాంటి జాబితా లేదు."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "అలాంటి పోర్టల్ అనుమతి లేదు."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "మీరు సైన్ ఇన్‌లో ఉండాలని ఎంచుకున్న ఫోన్‌లు మరియు కంప్యూటర్‌లు ఇవి. మీరు ఇక ఉపయోగించని లేదా గుర్తించని వాటి నుండి సైన్ అవుట్ చేయండి."
+
+#: 
+msgid "They have a staff account"
+msgstr "వారికి సిబ్బంది ఖాతా ఉంది"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "వారు సైన్ ఇన్ చేయవచ్చు కానీ ఎప్పుడూ చేయలేదు."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "ఈ చర్యకు సైన్ ఇన్ చేసిన బ్రౌజర్ సెషన్ అవసరం."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "ఈ చిరునామాను మార్చలేకపోయాము. అది ఎక్కడ ఉందో చూడటానికి పంచుకున్న ఇమెయిల్‌లను సరిచేయి ను మళ్లీ తెరవండి."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "సైన్ ఇన్ చేయగల వ్యక్తులు ఇక ఈ చిరునామాను పంచుకోరు."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "ఈ బ్రౌజర్ పాస్‌కీలను తయారు చేయలేదు."
+
+#: 
+msgid "This device"
+msgstr "ఈ పరికరం"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "ఈ పరికరంలో మీకు ఇప్పటికే పాస్‌కీ ఉంది."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "ఈ పరికరం ఇక వ్యక్తిని సైన్ ఇన్‌లో ఉంచదు, దానిపై తెరిచిన సెషన్ ముగుస్తుంది. వారు ఇమెయిల్ ద్వారా మళ్లీ సైన్ ఇన్ చేయవచ్చు."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "ఇది నా సొంత పరికరం. నన్ను సైన్ ఇన్‌లో ఉంచు."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "అతిథుల గురించి మీరు నిర్ణయించేది ఇక్కడ. సంఖ్య ప్రతి వర్గీకరణలో ఎంతమంది క్రియాశీల వ్యక్తులు ఉన్నారో చెబుతుంది."
+
+#: 
+msgid "This link cannot be used"
+msgstr "ఈ లింక్‌ను ఉపయోగించలేరు"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "ఈ లింక్ గడువు ముగిసింది లేదా ఇప్పటికే ఉపయోగించబడింది"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "సభ్యుల పోర్టల్‌లోని ఈ భాగం మీకు అందుబాటులో లేదు."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "ఈ పాస్‌కీ ఇప్పటికే రికార్డులో ఉంది."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "ఈ పాస్‌కీ ఇక వ్యక్తిని సైన్ ఇన్ చేయదు. వారు ఇమెయిల్ ద్వారా సైన్ ఇన్ చేసి కొత్తదాన్ని జోడించవచ్చు."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "వ్యక్తి పేజీలో ఈ అనుమతిని ఇవ్వలేరు."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "ఇవ్వగల ప్రతి అనుమతి ఈ వ్యక్తికి ఇప్పటికే ఉంది."
+
+#: 
+msgid "This person already has this permission."
+msgstr "ఈ వ్యక్తికి ఈ అనుమతి ఇప్పటికే ఉంది."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "ఈ వ్యక్తి ఇక ఎక్కడా, సభ్యుల పోర్టల్‌లో లేదా సిబ్బందిగా, సైన్ ఇన్ చేయలేరు. ప్రతి సెషన్ ముగుస్తుంది, వారి గుర్తుంచుకున్న పరికరాలు మరియు పాస్‌కీలు తీసివేయబడతాయి."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "ఈ వ్యక్తిని సైన్ అవుట్ చేయలేకపోయాము."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "ఈ వ్యక్తికి సిబ్బంది ఖాతా ఉంది. వ్యక్తిగా లాగిన్ ఎప్పుడూ సిబ్బంది ఖాతాను తెరవదు."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "ఈ వ్యక్తికి అలాంటి పాస్‌కీ లేదు."
+
+#: 
+msgid "This person has no such permission."
+msgstr "ఈ వ్యక్తికి అలాంటి అనుమతి లేదు."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "ఈ వ్యక్తికి అలాంటి గుర్తుంచుకున్న పరికరం లేదు."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "ఈ వ్యక్తికి నిర్ధారించని ఇమెయిల్ లేదు."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "ఈ వ్యక్తి సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేశారు. ఈ ఇమెయిల్‌ను మార్చడం వారిని అన్నిచోట్లా సైన్ అవుట్ చేస్తుంది, కొత్త చిరునామా నిర్ధారించే వరకు సైన్ ఇన్ చేయడానికి ఉపయోగించలేరు."
+
+#: 
 msgid "This person is deceased."
 msgstr "ఈ వ్యక్తి మరణించారు"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "ఈ వ్యక్తి అన్నిచోట్లా సభ్యుల పోర్టల్ నుండి సైన్ అవుట్ అయ్యారు."
+
+#: 
+msgid "This person no longer exists."
+msgstr "ఈ వ్యక్తి ఇక లేరు."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "ఇది ఇక్కడతో సహా అన్నిచోట్లా మిమ్మల్ని సైన్ అవుట్ చేస్తుంది, ప్రతి పరికరాన్ని మరచిపోతుంది. మీ ఇమెయిల్ చిరునామాతో మళ్లీ సైన్ ఇన్ చేయవచ్చు."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "ఇది ఇక్కడతో సహా అన్నిచోట్లా మిమ్మల్ని సైన్ అవుట్ చేస్తుంది, ప్రతి పరికరాన్ని మరచిపోతుంది. మీ పాస్‌కీలు ఉంటాయి: పాస్‌కీ లేదా మీ ఇమెయిల్ చిరునామాతో మళ్లీ సైన్ ఇన్ చేయవచ్చు."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "ఈ సాధనం వీటిని ఎప్పుడూ మార్చదు. ప్రతి వ్యక్తి రికార్డులో వారి సొంత ఇమెయిల్ ఇవ్వండి."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "దీన్ని మీ సొంత ఫోన్ లేదా కంప్యూటర్‌లో మాత్రమే టిక్ చేయండి, పంచుకున్న లేదా బహిరంగ పరికరంలో ఎప్పుడూ కాదు."
+
+#: 
+msgid "Time: %s"
+msgstr "సమయం: %s"
+
+#: 
+msgid "Timed out"
+msgstr "సమయం ముగిసింది"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "ఈ ఇమెయిల్‌ను మార్చడానికి, దయచేసి చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "To fix"
+msgstr "సరిచేయవలసినవి"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "మీ సొంత ఫోన్ లేదా కంప్యూటర్‌లో సైన్ ఇన్‌లో ఉండటానికి, తదుపరిసారి సైన్ ఇన్ చేసేటప్పుడు \"ఇది నా సొంత పరికరం\" ను టిక్ చేయండి."
+
+#: 
+msgid "Too many attempts"
+msgstr "చాలా ప్రయత్నాలు"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "ఈ రోజు చాలా సైన్-ఇన్ ఇమెయిల్‌లు"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "ఈ ఇమెయిల్ చిరునామాకు చాలా సైన్-ఇన్ అభ్యర్థనలు"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "ఈ IP చిరునామా నుండి చాలా సైన్-ఇన్ అభ్యర్థనలు"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "చాలా తప్పు కోడ్‌లు"
+
+#: 
+msgid "Turn off"
+msgstr "ఆఫ్ చేయండి"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "సభ్య సైన్-ఇన్‌ను ఆఫ్ చేయాలా?"
+
+#: 
+msgid "Turn on"
+msgstr "ఆన్ చేయండి"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "సభ్య సైన్-ఇన్‌ను ఆన్ చేయండి"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "సభ్య సైన్-ఇన్‌ను ఆన్ చేయాలా?"
+
+#: 
+msgid "Type a name"
+msgstr "పేరును టైప్ చేయండి"
+
+#: 
+msgid "Type a name or email"
+msgstr "పేరు లేదా ఇమెయిల్‌ను టైప్ చేయండి"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "పేరులో కనీసం %d అక్షరాలు టైప్ చేసి, ఆపై శోధించండి."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "నిర్ధారించని ఇమెయిల్"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "ChurchCRM ఎక్కడ ఉపయోగించబడుతుందో అర్థం చేసుకోండి"
+
+#: 
+msgid "Unknown device"
+msgstr "తెలియని పరికరం"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "తెలియని డైరెక్టరీ ఫీల్డ్: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "తెలియని డైరెక్టరీ సెట్టింగ్: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "పేరులేని పరికరం"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "పేరులేని పాస్‌కీ"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "చర్చి కార్యాలయం దానిని నిర్ధారించే వరకు, కొత్త చిరునామాను సైన్ ఇన్ చేయడానికి ఉపయోగించలేరు."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "%3$s కు %2$s కోసం ఇమెయిల్ చిరునామాగా %1$s ను ఉపయోగించాలా?"
+
+#: 
+msgid "Use a different email address"
+msgstr "వేరే ఇమెయిల్ చిరునామాను ఉపయోగించండి"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "ఈ పరికరంలో పాస్‌కీని ఉపయోగించాలా?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "%2$s వద్ద %1$s మీ ఇమెయిల్ చిరునామా అని నిర్ధారించడానికి క్రింది బటన్‌ను ఉపయోగించండి. లింక్ ఒకసారి, %3$s వరకు పని చేస్తుంది."
+
+#: 
+msgid "User %d"
+msgstr "వినియోగదారు %d"
+
+#: 
+msgid "View Permissions"
+msgstr "అనుమతులను చూడండి"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "మీరు %s ను నిర్ధారించే వరకు వేచి ఉంది. ఆ చిరునామాకు మేము పంపిన లింక్‌ను ఉపయోగించండి."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "మీరు {{email}} ను నిర్ధారించే వరకు వేచి ఉంది. ఆ చిరునామాకు మేము పంపిన లింక్‌ను ఉపయోగించండి."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "మేము ఇమెయిల్‌ను పంపలేకపోయాము. దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి, లేదా చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "We could not sign you in"
+msgstr "మేము మిమ్మల్ని సైన్ ఇన్ చేయలేకపోయాము"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "మేము %s కు లింక్‌ను ఇమెయిల్ చేశాము. మీ కొత్త ఇమెయిల్ చిరునామాను నిర్ధారించడానికి దాన్ని ఉపయోగించండి."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "మేము {{email}} కు లింక్ పంపాము. మీరు దాన్ని ఉపయోగించినప్పుడు మీ ఇమెయిల్ మారుతుంది."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "సైన్ ఇన్ చేయడానికి మేము మీకు కోడ్ మరియు లింక్‌ను ఇమెయిల్ చేస్తాము."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "మీరు ఇక్కడ ఉండటం మాకు చాలా సంతోషం! దాదాపు మూడు నిమిషాలు పడుతుంది."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "మీ కుటుంబం మాతో చేరినందుకు మాకు చాలా సంతోషం! మీ నమోదు అందింది. మిమ్మల్ని వ్యక్తిగతంగా స్వాగతించడానికి మా బృందం త్వరలో సంప్రదిస్తుంది."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "వివాహ వార్షికోత్సవం"
+
+#: 
+msgid "Welcome"
+msgstr "స్వాగతం"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "అది దేనికి ఇవ్వబడిందో అది ఇక లేదు"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "పోర్టల్‌లో సభ్యులు ఏమి చూడగలరు మరియు చేయగలరు, ప్రతి అనుమతి ఎక్కడ నుండి వస్తుంది. వ్యక్తులు సైన్-ఇన్ నియమాలు అనుమతించే అందరిలో మరియు సిబ్బందిలో లెక్కించబడతారు."
+
+#: 
+msgid "What members can use"
+msgstr "సభ్యులు ఏమి ఉపయోగించగలరు"
+
+#: 
+msgid "What to do"
+msgstr "ఏమి చేయాలి"
+
+#: 
+msgid "Who can see it"
+msgstr "ఎవరు దానిని చూడగలరు"
+
+#: 
+msgid "Who is listed"
+msgstr "ఎవరు జాబితా చేయబడ్డారు"
+
+#: 
+msgid "Who may sign in"
+msgstr "ఎవరు సైన్ ఇన్ చేయవచ్చు"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "సభ్యుల పోర్టల్‌లో ఎవరు సైన్ ఇన్ చేయవచ్చు, ఎవరు చేశారు, ఎవరి ఇమెయిల్ వారిని ఆపుతుంది. జాబితాలు సైన్-ఇన్ ట్యాబ్‌లోని నియమాలను అనుసరిస్తాయి."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "సభ్యుల పోర్టల్ డైరెక్టరీ ఎవరిని జాబితా చేస్తుంది, ఎవరు దానిని చూడగలరు మరియు అది ఏమి చూపుతుంది, Admin -> Member Portal -> Directory లో ఎంచుకోబడింది."
+
+#: 
+msgid "Why"
+msgstr "ఎందుకు"
+
+#: 
+msgid "Why not"
+msgstr "ఎందుకు కాదు"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "పరికరం కొద్ది క్షణాల క్రితం భర్తీ చేసిన టోకెన్‌తో"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "అవును, పాస్‌కీని జోడించండి"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "అవును, ఈ పాస్‌కీని తీసివేయండి"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "అవును, ప్రతి పరికరం నుండి సైన్ అవుట్ చేయండి"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "ఈ ఇమెయిల్‌ను నిర్ధారించడానికి మీకు అనుమతి లేదు."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "ఏ పరికరంలోనూ మీరు సైన్ ఇన్‌లో ఉంచబడలేదు."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "ప్రతి పరికరంలో మీరు సైన్ అవుట్ అయ్యారు."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "ఈ పరికరంలో మీరు సైన్ అవుట్ అయ్యారు."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "మీ ఇమెయిల్ చిరునామాతో కూడా సైన్ ఇన్ చేయవచ్చు."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "మీ సొంత సైన్-ఇన్‌ను మీరు నిలిపివేయలేరు."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "మీరు సభ్యుల పోర్టల్‌ను తెరవలేరు. దయచేసి చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "మీరు మీ ఇమెయిల్‌ను మార్చమని చాలా సార్లు అడిగారు. దయచేసి తర్వాత మళ్లీ ప్రయత్నించండి."
+
+#: 
+msgid "You have no passkeys."
+msgstr "మీకు పాస్‌కీలు లేవు."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "మీరు సభ్యుల పోర్టల్‌లో %s గా లాగిన్ అయ్యారు (మార్పులు అనుమతించబడతాయి)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "మీరు సభ్యుల పోర్టల్‌లో %s గా లాగిన్ అయ్యారు (చదవడానికి మాత్రమే)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "కనీస వయస్సు కంటే తక్కువ"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "ఒక వ్యక్తి సభ్యుల పోర్టల్‌లో సైన్ ఇన్ చేయగల అతి తక్కువ వయస్సు. పుట్టిన తేదీ తెలియనప్పుడు, ఇంటి అధిపతి లేదా జీవిత భాగస్వామి మాత్రమే అర్హులు."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "మీ సభ్యుల పోర్టల్ సైన్-ఇన్ కోడ్"
+
+#: 
+msgid "Your code"
+msgstr "మీ కోడ్"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "మీ ఇమెయిల్ చిరునామా %s ఇంకా నిర్ధారించబడలేదు, కాబట్టి సైన్ ఇన్ చేయడానికి దీన్ని ఉపయోగించలేరు. మేము దానికి లింక్‌ను ఇమెయిల్ చేస్తాము; లింక్‌ను ఉపయోగించడం దానిని నిర్ధారిస్తుంది."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "మీ ఇమెయిల్ చిరునామాను ఇక్కడ తీసివేయలేరు. దయచేసి చర్చి కార్యాలయాన్ని సంప్రదించండి."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "మీ ఇమెయిల్ చిరునామా నిర్ధారించబడింది"
+
+#: 
+msgid "Your email address was changed"
+msgstr "మీ ఇమెయిల్ చిరునామా మార్చబడింది"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "మీ పాస్‌కీ జోడించబడింది. తదుపరిసారి, ఈ పరికరంలో దానితో సైన్ ఇన్ చేయండి."
+
+#: 
+msgid "an administrator"
+msgstr "ఒక నిర్వాహకుడు"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "ఇంటి అధిపతి లేదా జీవిత భాగస్వామికి ఇమెయిల్ చిరునామా లేదు"
+
+#: 
+msgid "or"
+msgstr "లేదా"
+
+#: 
+msgid "until %s"
+msgstr "%s వరకు"
 
