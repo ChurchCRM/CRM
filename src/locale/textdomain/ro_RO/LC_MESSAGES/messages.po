@@ -24321,14 +24321,2962 @@ msgid "Repeat events could not be created. Check the application log for details
 msgstr "Evenimentele repetitive nu au putut fi create. Verificați jurnalul aplicației pentru detalii."
 
 #: 
+msgid "Confirm Password"
+msgstr "Confirmați parola"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Parola dumneavoastră a fost schimbată. Acum vă puteți autentifica cu noua parolă."
+
+#: 
+msgid "1st"
+msgstr "prima"
+
+#: 
+msgid "2nd"
+msgstr "a 2-a"
+
+#: 
+msgid "3rd"
+msgstr "a 3-a"
+
+#: 
+msgid "4th"
+msgstr "a 4-a"
+
+#: 
+msgid "5th"
+msgstr "a 5-a"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Nu se poate elimina accesul de administrator al singurului administrator care se poate autentifica"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Alegeți săptămâna lunii, de la prima până la a 5-a"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Creează {{total}} evenimente, în {{week}} {{day}} a fiecărei luni, de la {{first}} până la {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Zi a săptămânii nevalidă"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Lunar, într-o zi a săptămânii"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Lunile fără o a 5-a sunt omise."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM trebuie să fie un număr întreg de la 1 la 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Săptămâna lunii"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Săptămâna lunii trebuie să fie de la 1 la 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s până la %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Codul fiscal al bisericii (EIN) tipărit pe extrasele de contribuții"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Extrasele de contribuții se emit adulților dintr-o familie. Vă rugăm să contactați biroul bisericii dacă aveți nevoie de unul."
+
+#: 
+msgid "Download statement"
+msgstr "Descărcați extrasul"
+
+#: 
+msgid "Generated"
+msgstr "Generat"
+
+#: 
+msgid "Goods and services"
+msgstr "Bunuri și servicii"
+
+#: 
+msgid "My Giving"
+msgstr "Donațiile mele"
+
+#: 
+msgid "No contributions"
+msgstr "Nicio contribuție"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Nu au fost înregistrate contribuții pentru această perioadă."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Nu au fost furnizate bunuri sau servicii în schimbul acestor contribuții, în afara beneficiilor religioase intangibile."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Opțional. Se tipărește pe extrasele de contribuții."
+
+#: 
+msgid "Tax ID"
+msgstr "Cod fiscal"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Cod fiscal (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Sumă deductibilă fiscal"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Acesta este extrasul familiei. Include darurile familiei dumneavoastră."
+
+#: 
+msgid "Total contributions"
+msgstr "Total contribuții"
+
+#: 
+msgid "Year-end statement"
+msgstr "Extras de sfârșit de an"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d extras de donații a fost trimis familiei prin e-mail."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "Extras de donații %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Personalizați textul care apare pe extrasele de donații (sTaxReport1, sTaxReport2 etc.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Dragă familie %s,\n"
+"\n"
+"Găsiți atașat la acest e-mail extrasul de donații %s de la %s.\n"
+"\n"
+"Dacă aveți întrebări, vă rugăm să contactați biroul bisericii.\n"
+"\n"
+"Vă mulțumim pentru generozitate."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Trimiteți prin e-mail extrasul de donații %s"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Numere de plic"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Generați extrasele de donații"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Generați rapoarte pentru extrase de donații, urmărirea angajamentelor și analiză financiară."
+
+#: 
+msgid "Giving Reports"
+msgstr "Rapoarte de donații"
+
+#: 
+msgid "Giving Statement"
+msgstr "Extras de donații"
+
+#: 
+msgid "Giving Statements"
+msgstr "Extrase de donații"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "E-mailul cu extrasul de donații nu a putut fi trimis. Vă rugăm să verificați setările serverului de e-mail."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Vă rugăm să trimiteți următorul dar prin poștă la %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Tipăriți extrasul de donații %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Extrasul de donații nu poate fi trimis prin e-mail: nu s-au găsit date de plată pentru acel an."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Extrasul de donații nu poate fi trimis prin e-mail: această familie nu are o adresă de e-mail înregistrată."
+
+#: 
+msgid "Undesignated"
+msgstr "Fără destinație"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Verificați că numele, adresa și datele de contact ale bisericii apar pe extrasele de donații."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Poziția este acum atribuită lui %s, care a acceptat-o."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Poziția este acum atribuită lui %s, care nu a acceptat-o încă."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Motivul lor: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Vedeți atribuirile"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Voluntari încă necesari pentru această ocazie: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Voluntari încă necesari pentru această poziție: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "O grilă săptămânală de prezență pentru fiecare clasă. Listele de clasă și albumele foto se află pe tabloul de bord al Școlii duminicale și pe pagina fiecărei clase."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "O grilă săptămânală de prezență pentru anul școlar, câte o coloană pentru fiecare duminică"
+
+#: 
+msgid "Age %d"
+msgstr "Vârsta %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Trebuie selectat cel puțin un grup pentru a crea o fișă de prezență."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Fișă de prezență"
+
+#: 
+msgid "Class List"
+msgstr "Listă de clasă"
+
+#: 
+msgid "Download PDF"
+msgstr "Descărcați PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Perioadă de blocare, în minute\n"
+"Un cont blocat se deblochează singur după acest număr de minute. Autentificările eșuate de la o adresă IP sunt numărate în aceeași perioadă."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Număr maxim de autentificări eșuate de la o adresă IP\n"
+"Autentificările eșuate și cererile de resetare a parolei de la o adresă IP se adună la această limită în perioada de blocare. Odată atinsă, autentificarea de la acea adresă este refuzată până la sfârșitul perioadei.\n"
+"Setați zero pentru a dezactiva această funcție, de exemplu când toată lumea ajunge la ChurchCRM printr-o singură adresă proxy."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Număr maxim de autentificări eșuate permis înainte ca un cont de utilizator să fie blocat.\n"
+"Un cont blocat se deblochează singur după perioada de blocare sau mai devreme, când un administrator îi resetează autentificările eșuate.\n"
+"Această funcție ajută la protecția împotriva atacurilor automate de ghicire a parolei.\n"
+"Setați zero pentru a dezactiva această funcție."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Minute până se deblochează singur: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Fișă de prezență a Școlii duminicale"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Duminicile fără curs sunt omise de pe fișă."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Actualizare bază de date"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Baza de date se actualizează. Vă rugăm să păstrați această pagină deschisă până la finalizarea actualizării."
+
+#: 
+msgid "Family Labels"
+msgstr "Etichete de familie"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Total"
+
+#: 
+msgid "Bill"
+msgstr "Bancnotă"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Alegeți un depozit sau introduceți ambele date ale raportului."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Alegeți un depozit pentru a-i revizui plățile sau a tipări borderoul bancar. Un depozit selectat are prioritate față de intervalul de date."
+
+#: 
+msgid "Coin"
+msgstr "Monedă"
+
+#: 
+msgid "Deposit Report"
+msgstr "Raport de depozit"
+
+#: 
+msgid "Download Report"
+msgstr "Descărcați raportul"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Introduceți date valide pentru raport."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Filtre de raport nevalide."
+
+#: 
+msgid "Invalid report options."
+msgstr "Opțiuni de raport nevalide."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Lăsați filtrele goale pentru a include toate plățile. Aceste setări se aplică raportului, nu borderoului bancar."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Nu a fost returnată nicio înregistrare. Ajustați filtrele și încercați din nou."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Pregătiți pentru bancă"
+
+#: 
+msgid "Preview Totals"
+msgstr "Previzualizați totalurile"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Tipăriți borderoul bancar"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Tipăriți depozitul selectat integral, cu totaluri de numerar și cecuri, foi de numărare și rânduri pentru martori. Filtrele raportului sunt ignorate. Plățile electronice rămân în rezumat și sunt excluse din totalul borderoului fizic pentru bancă."
+
+#: 
+msgid "Review Payments"
+msgstr "Revizuiți plățile"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Revizuiți plățile pentru o perioadă sau pregătiți un depozit pentru bancă."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Revizuiți plățile, descărcați PDF sau CSV ori tipăriți un borderou bancar pentru un depozit."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Selectați un depozit valid."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Selectați un depozit pentru a tipări un borderou bancar."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Data de sfârșit a raportului trebuie să fie în sau după data de început."
+
+#: 
+msgid "Total Cash"
+msgstr "Total numerar"
+
+#: 
+msgid "Total Coin"
+msgstr "Total monede"
+
+#: 
+msgid "Witness"
+msgstr "Martor"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d daruri nu au familie. Nu pot apărea pe un extras."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "%d depozite deschise datate în acest an. Închideți-le pentru ca fiecare dar să fie definitiv înainte de trimiterea extraselor."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d plăți nu sunt încă pe niciun depozit."
+
+#: 
+msgid "Can be emailed"
+msgstr "Poate fi trimis prin e-mail"
+
+#: 
+msgid "Closing line"
+msgstr "Rând de încheiere"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Fiecare depozit datat în acest an este închis."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Fiecare dar aparține unei familii."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Fiecare plată din acest an este pe un depozit."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Generați extrasele fiscale"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Raport de donații (extrase fiscale)"
+
+#: 
+msgid "Opening line"
+msgstr "Rând de deschidere"
+
+#: 
+msgid "Print and mail"
+msgstr "Tipăriți și trimiteți prin poștă"
+
+#: 
+msgid "Qty"
+msgstr "Cant."
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Revizuiți anul, apoi tipăriți sau trimiteți prin e-mail extrasele de donații."
+
+#: 
+msgid "Signed by"
+msgstr "Semnat de"
+
+#: 
+msgid "Thank-you line"
+msgstr "Rând de mulțumire"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Verificați că numele, adresa și datele de contact ale bisericii apar pe extrasele fiscale."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Donații de sfârșit de an"
+
+#: 
+msgid "As of: %s"
+msgstr "La data de: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Cel puțin o plată pozitivă a familiei în cei %d ani fiscali selectați, până la data revizuirii: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Botezul, cererile pentru lista electorală, reședința, statutul de persoană care se împărtășește, prezența, buna reputație și excepțiile locale trebuie verificate separat acolo unde statutul le cere. Durata apartenenței nu este o dovadă a prezenței."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Alegeți o clasificare existentă."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Alegeți cel puțin o clasificare de revizuit."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Alegeți clasificările pe care le folosește biserica dumneavoastră. Nicio clasificare nu se presupune că acordă drept de vot."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Conducerea bisericii trebuie să confirme eligibilitatea conform statutului bisericii. Această listă arată doar persoanele care corespund filtrelor selectate."
+
+#: 
+msgid "Classifications to review"
+msgstr "Clasificări de revizuit"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Clasificări: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Persoanele decedate, persoanele și clasificările inactive, precum și familiile și persoanele inactive sau în așteptarea revizuirii sunt excluse."
+
+#: 
+msgid "Download Review List"
+msgstr "Descărcați lista de revizuire"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Introduceți o dată de revizuire validă între 1900 și 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Introduceți numere întregi în limitele afișate."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Ani fiscali de verificat (0–100; 0 înseamnă nicio cerință de donații)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Donațiile se înregistrează pe familie, nu pe persoană. Activați această opțiune numai când statutul permite ca o plată a familiei să îndeplinească acest criteriu. Aceasta nu dovedește că fiecare persoană a donat. Intervalul include anul fiscal selectat și se încheie cel târziu la data revizuirii."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Ultimul an fiscal de inclus"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Vârstă minimă (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Vârstă minimă: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Durată minimă a apartenenței, în luni (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Durată minimă a apartenenței: %d luni"
+
+#: 
+msgid "No donation requirement."
+msgstr "Nicio cerință de donație."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Nicio persoană nu corespunde acestor filtre. Verificați datele de naștere sau de apartenență lipsă și ajustați criteriile."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Cerință opțională de donații ale familiei"
+
+#: 
+msgid "People matching filters"
+msgstr "Persoane care corespund filtrelor"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Persoane omise deoarece lipsesc datele obligatorii"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Pregătiți o listă pentru revizuirea bisericii folosind clasificări și filtre opționale de vârstă, apartenență și donații ale familiei."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Pregătiți o listă pentru revizuirea bisericii folosind statutul dumneavoastră."
+
+#: 
+msgid "Review date"
+msgstr "Data revizuirii"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Folosiți statutul bisericii pentru a alege filtrele, apoi cereți conducerii autorizate a bisericii să revizuiască lista. Corespondența cu aceste filtre nu stabilește dreptul de vot. Acest raport nu înregistrează eligibilitatea și nu organizează o alegere."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Membri cu drept de vot — Listă de revizuire"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Zero dezactivează o cerință opțională. Vârsta necesită o dată de naștere completă; durata apartenenței necesită o dată de apartenență. Persoanele cărora le lipsesc datele obligatorii sunt omise și numărate separat. Persoanele decedate, persoanele și clasificările inactive, precum și familiile și persoanele inactive sau în așteptarea revizuirii sunt întotdeauna excluse; se folosesc clasificarea și statutul actuale, nu statutul istoric."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Sumă datorată pentru %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Nu se poate crea stocarea temporară privată pentru PDF în directorul selectat."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Lăsați gol pentru a folosi directorul temporar al sistemului. Altfel, introduceți un director existent, inscriptibil și protejat împotriva accesului web."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Director temporar PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "Stocarea temporară PDF trebuie să fie privată și inscriptibilă."
+
+#: 
+msgid "Reporting"
+msgstr "Raportare"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "Directorul temporar PDF nu există sau nu este accesibil."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "Directorul temporar PDF trebuie să fie o cale absolută de director."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Cod fiscal al bisericii (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Rând de încheiere"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Controlează telemetria opțională. Eșecurile de instalare și de actualizare a bazei de date trimit diagnostice limitate către PostHog chiar și când telemetria este oprită. Aceste rapoarte de eșec includ versiunile software și ale mediului și o eroare sanitizată a bazei de date, dar niciun ID de instalare și nicio instrucțiune SQL."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Diagnosticați instalările eșuate și actualizările bazei de date"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Detalii despre eșecurile de instalare și actualizare"
+
+#: 
+msgid "Open in browser window"
+msgstr "Deschideți în fereastra browserului"
+
+#: 
+msgid "Opening Line"
+msgstr "Rând de deschidere"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Telemetria opțională de utilizare se trimite numai când este activată. Eșecurile de instalare și de actualizare a bazei de date trimit întotdeauna un diagnostic limitat pentru a ajuta comunitatea, chiar dacă alegeți Nu, mulțumesc. Rapoartele de eșec includ versiunile software și ale mediului și o eroare sanitizată a bazei de date, fără ID de instalare sau instrucțiune SQL."
+
+#: 
+msgid "PDF Handling"
+msgstr "Gestionare PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "Ieșire PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "Mod de gestionare PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "Rând de întrebări"
+
+#: 
+msgid "Save File dialog"
+msgstr "Dialog Salvare fișier"
+
+#: 
+msgid "Signer"
+msgstr "Semnatar"
+
+#: 
+msgid "Statement Settings"
+msgstr "Setări extras"
+
+#: 
+msgid "Statement Wording"
+msgstr "Formularea extrasului"
+
+#: 
+msgid "Tax Information"
+msgstr "Informații fiscale"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Telemetria este trimisă către PostHog în Statele Unite. Rapoartele de eșec la instalare și actualizare sunt trimise chiar și când telemetria opțională este dezactivată."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Această dată a fost anulată. Nu mai este nevoie de nimic din partea dumneavoastră."
+
+#: 
+msgid "always sent"
+msgstr "trimis întotdeauna"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Antetul nu a putut fi eliminat"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Antetul nu a putut fi stocat"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Antetul nu a putut fi încărcat"
+
+#: 
+msgid "Greeting"
+msgstr "Formulă de salut"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Salutul și semnătura scrisorii"
+
+#: 
+msgid "Letterhead"
+msgstr "Antet"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF sau WebP. Un banner lat funcționează cel mai bine, de exemplu 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Se tipărește în partea de sus a scrisorilor PDF care folosesc un antet grafic, cum ar fi extrasele de donații. Fără unul, scrisorile tipăresc numele și adresa bisericii."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Eliminați antetul? Scrisorile vor tipări numele și adresa bisericii."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Setați antetul pe care îl tipăresc scrisorile PDF"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Se folosesc numele și adresa bisericii"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Se folosește calea antetului setată în Setările de sistem"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Formularea, codul fiscal și gestionarea PDF pentru extrasele de donații"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s ca %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s este acum adresa dumneavoastră de e-mail. O puteți folosi pentru a vă autentifica în Portalul membrilor."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} în plus"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "A fost solicitată o schimbare a adresei dumneavoastră de e-mail"
+
+#: 
+msgid "A family"
+msgstr "O familie"
+
+#: 
+msgid "A group"
+msgstr "Un grup"
+
+#: 
+msgid "A ministry"
+msgstr "O lucrare"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "O adresă nouă se schimbă numai după ce folosiți linkul pe care vi-l trimitem la ea."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "O cheie de acces poate fi adăugată numai în %d minute de la autentificarea cu adresa de e-mail. Deconectați-vă, autentificați-vă din nou cu e-mailul, apoi reveniți aici."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "O cheie de acces vă autentifică cu Face ID, o amprentă sau PIN-ul dispozitivului, fără un cod prin e-mail."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "O cheie de acces a fost adăugată la autentificarea dumneavoastră în Portalul membrilor"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "O cheie de acces a fost adăugată la autentificarea dumneavoastră în Portalul membrilor la %1$s pe %2$s, de la %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "O cheie de acces a fost adăugată la autentificarea dumneavoastră în Portalul membrilor la %1$s pe %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "O persoană care o pierde nu mai are atunci un e-mail propriu: mesajele trimise numai ei, cum ar fi un e-mail de grup, sunt omise, iar editorul de e-mail menționează acest lucru."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "O persoană a cărei fișă ascunde vârsta nu arată niciodată anul nașterii."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "S-a făcut o cerere în Portalul membrilor de a schimba adresa dumneavoastră de e-mail la %s, de la %s la %s. Schimbarea are loc numai când este folosit linkul trimis la %s."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Un rând nu are forma așteptată."
+
+#: 
+msgid "A team"
+msgstr "O echipă"
+
+#: 
+msgid "Add a passkey"
+msgstr "Adăugați o cheie de acces"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Adăugați o cheie de acces numai pe telefonul sau computerul dumneavoastră, niciodată pe unul partajat sau public."
+
+#: 
+msgid "Add an email"
+msgstr "Adăugați un e-mail"
+
+#: 
+msgid "Added %s"
+msgstr "S-a adăugat %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Suprascrieri de administrator"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "Adult al familiei %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "Adult al familiei"
+
+#: 
+msgid "All events"
+msgstr "Toate evenimentele"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Permiteți autentificarea ca persoană"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Permiteți modificări în timpul autentificării ca persoană"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Permiteți modificări în timp ce un administrator folosește autentificarea ca persoană. Când este oprită, autentificarea ca persoană este doar pentru citire."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Deținută deja de un membru al familiei"
+
+#: 
+msgid "Also used by"
+msgstr "Folosită și de"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Un administrator poate acorda orice permisiune unei persoane pe pagina acelei persoane. „Suprascrieri de administrator” apare atunci aici, cu numărul persoanelor cărora le-a fost acordată."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "O altă persoană folosește deja această adresă"
+
+#: 
+msgid "Applies to"
+msgstr "Se aplică la"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Aprobați sau refuzați cererile de înlocuitor pentru o echipă de voluntari."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Cereți un e-mail nou"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Autoritatea se acordă persoanei, nu unui cont de autentificare, astfel încât poate fi acordată înainte ca persoana să aibă unul. O persoană care se autentifică numai în Portalul membrilor continuă să vadă doar propriul program până când un administrator îi acordă un cont de personal."
+
+#: 
+msgid "Awaiting review"
+msgstr "În așteptarea revizuirii"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Înapoi la autentificare"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Răsfoiți directorul complet"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Se poate autentifica în Portalul membrilor"
+
+#: 
+msgid "Can sign in?"
+msgstr "Se poate autentifica?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Nu se poate dezactiva autentificarea pentru singurul administrator care se poate autentifica."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Nu se poate autentifica"
+
+#: 
+msgid "Change family details"
+msgstr "Modificați datele familiei"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Modificați adresa și datele de contact ale familiei și adăugați un membru al familiei pentru revizuire."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Își pot modifica propriul nume, datele de contact și fotografia."
+
+#: 
+msgid "Changed"
+msgstr "Modificat"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Modificat după ce persoana s-a autentificat"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Modificat de un import după ce persoana s-a autentificat"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Modificat de personal după ce persoana s-a autentificat"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Modificat prin API după ce persoana s-a autentificat"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Modificările sunt oprite în timpul autentificării ca persoană."
+
+#: 
+msgid "Changes needed"
+msgstr "Sunt necesare modificări"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Modificările se salvează pe măsură ce le faceți."
+
+#: 
+msgid "Check your email"
+msgstr "Verificați e-mailul"
+
+#: 
+msgid "Choose a permission"
+msgstr "Alegeți o permisiune"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Alegeți o permisiune, la ce se referă și ultima ei zi, și spuneți de ce."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Alegeți o fotografie sau faceți un selfie"
+
+#: 
+msgid "Choose a theme"
+msgstr "Alegeți o temă"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Alegeți cel puțin un rând."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Alegeți cel mult %d rânduri odată."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Alegeți din listă modul în care sunt afișate datele."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Alegeți ultima zi a acestei permisiuni."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Alegeți la ce se referă permisiunea."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Alegeți da sau nu."
+
+#: 
+msgid "Church Office"
+msgstr "Biroul bisericii"
+
+#: 
+msgid "Church country"
+msgstr "Țara bisericii"
+
+#: 
+msgid "Church default: %s"
+msgstr "Implicit pentru biserică: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Autentificare conducere a bisericii"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Clasificările ai căror membri se pot autentifica în Portalul membrilor, ca listă de ID-uri de clasificare separate prin virgulă."
+
+#: 
+msgid "Clear selection"
+msgstr "Ștergeți selecția"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Coduri, sesiuni și dispozitive"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Confirmați adresa de e-mail"
+
+#: 
+msgid "Confirm email address"
+msgstr "Confirmați adresa de e-mail"
+
+#: 
+msgid "Confirm family details"
+msgstr "Confirmați datele familiei"
+
+#: 
+msgid "Confirm selected"
+msgstr "Confirmați selecția"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Confirmați acest e-mail numai după ce verificați, în persoană sau telefonic, că este adresa proprie a acestei persoane. Odată confirmată, poate fi folosită pentru autentificarea în Portalul membrilor."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Confirmați adresa dumneavoastră de e-mail"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Confirmați noua adresă de e-mail"
+
+#: 
+msgid "Confirmed"
+msgstr "Confirmat"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Datele trebuie scrise ca YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Decideți cererile de înlocuitor"
+
+#: 
+msgid "Device"
+msgstr "Dispozitiv"
+
+#: 
+msgid "Device remembered"
+msgstr "Dispozitiv reținut"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Dispozitive și chei de acces"
+
+#: 
+msgid "Directory classifications"
+msgstr "Clasificări din director"
+
+#: 
+msgid "Directory section"
+msgstr "Secțiune din director"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Dezactivați autentificarea"
+
+#: 
+msgid "Do not show"
+msgstr "Nu afișați"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Fiecare are nevoie și de un e-mail propriu pe care nu îl folosește nimeni altcineva."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Fiecare e-mail de autentificare funcționează o singură dată, pentru un timp limitat, iar un e-mail mai nou îl înlocuiește."
+
+#: 
+msgid "Edit my details"
+msgstr "Editați datele mele"
+
+#: 
+msgid "Email address changed"
+msgstr "Adresa de e-mail a fost schimbată"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Adresa de e-mail introdusă: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "Adrese de e-mail de confirmat: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "E-mail schimbat"
+
+#: 
+msgid "Email code"
+msgstr "Cod prin e-mail"
+
+#: 
+msgid "Email confirmed"
+msgstr "E-mail confirmat"
+
+#: 
+msgid "Email link"
+msgstr "Link prin e-mail"
+
+#: 
+msgid "Email me a code"
+msgstr "Trimiteți-mi un cod prin e-mail"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Trimiteți-mi un link de confirmare prin e-mail"
+
+#: 
+msgid "Email needs attention"
+msgstr "E-mailul necesită atenție"
+
+#: 
+msgid "Email problem"
+msgstr "Problemă de e-mail"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Codul și linkul de autentificare trimise prin e-mail au fost anulate"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Link de verificare trimis prin e-mail"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "E-mailuri confirmate: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Activați autentificarea"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Încheiați fiecare sesiune din Portalul membrilor a acestei persoane și uitați dispozitivele reținute? Cheile de acces rămân, astfel încât se poate autentifica din nou."
+
+#: 
+msgid "Ended %s"
+msgstr "Încheiat %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Încheiat de o modificare a autentificării lor"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Încheiat când autentificarea membrilor a fost oprită"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Introduceți un număr întreg de la %1$d la %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Introduceți adresa dumneavoastră de e-mail."
+
+#: 
+msgid "Every kind"
+msgstr "Orice tip"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Fiecare autentificare a unui membru, refuz și modificare a autentificării, cele mai noi primele. Nu păstrează niciodată un cod, un link sau o cheie de acces."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Toți cei listați, de la A la Z, cu o casetă de căutare."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Toți cei pe care regulile de autentificare îi acceptă se pot autentifica apoi în Portalul membrilor cu propriul e-mail."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Toți cei care s-au autentificat în Portalul membrilor în ultimele 30 de zile, cei mai noi primii."
+
+#: 
+msgid "Everywhere"
+msgstr "Peste tot"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Familii pe care un membru le-a confirmat în ultimele 30 de zile, din Portalul membrilor sau din linkul de verificare trimis prin e-mail."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Familii confirmate, ultimele 30 de zile"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Datele familiei au fost confirmate"
+
+#: 
+msgid "Family email"
+msgstr "E-mailul familiei"
+
+#: 
+msgid "Family emails not moved"
+msgstr "E-mailuri de familie nemutate"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Rolurile de familie ai căror membri se pot autentifica în Portalul membrilor, ca listă de ID-uri de rol separate prin virgulă."
+
+#: 
+msgid "Find someone"
+msgstr "Găsiți pe cineva"
+
+#: 
+msgid "Fix by hand"
+msgstr "Corectați manual"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Corectați e-mailurile partajate"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Dintr-o autentificare a personalului"
+
+#: 
+msgid "Give a permission"
+msgstr "Acordați o permisiune"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Acordați o permisiune de portal"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Acordați fiecărei persoane propriul e-mail"
+
+#: 
+msgid "Give permission"
+msgstr "Acordați permisiunea"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Acordată de %1$s până la %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Acordată de %s"
+
+#: 
+msgid "Given to"
+msgstr "Acordată către"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Acordată tuturor"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Acordată, dar fără efect"
+
+#: 
+msgid "Go to sign in"
+msgstr "Mergeți la autentificare"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Mergeți la Portalul membrilor"
+
+#: 
+msgid "Has signed in"
+msgstr "S-a autentificat"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "S-a autentificat: sesiunile și dispozitivele sale se încheie"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Acesta este codul dumneavoastră pentru autentificarea în Portalul membrilor. Introduceți-l pe pagina de autentificare, în browserul în care l-ați cerut. Sau apăsați butonul pentru a vă autentifica pe acest dispozitiv."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Ascundeți permisiunile"
+
+#: 
+msgid "How"
+msgstr "Cum"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Câte e-mailuri de autentificare în Portalul membrilor poate cere o adresă IP într-o oră. Setați 0 pentru nicio limită, de exemplu când toată lumea ajunge la ChurchCRM printr-o singură adresă."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Câte zile rămâne un dispozitiv autentificat în Portalul membrilor după ce membrul alege să rămână autentificat. Setați 0 pentru a elimina opțiunea."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "După câte minute de inactivitate se încheie o sesiune din Portalul membrilor."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Câte minute rămân valabile un cod și un link de autentificare în Portalul membrilor."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Timp de inactivitate (minute)"
+
+#: 
+msgid "Idle too long"
+msgstr "Inactiv prea mult"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Dacă %1$s este noua dumneavoastră adresă, folosiți butonul de mai jos pentru a o confirma. Până la confirmare, nu poate fi folosită pentru autentificare. Linkul funcționează o singură dată, până la %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Dacă această adresă poate fi folosită pentru autentificare, v-am trimis un cod prin e-mail. Nu a sosit nimic după câteva minute? Întrebați biroul bisericii."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Dacă nu ați adăugat-o, eliminați-o pe pagina Autentificare și dispozitive și contactați biroul bisericii."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Dacă nu ați cerut această modificare, vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Dacă nu ați cerut acest lucru, vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Este posibil să fi expirat sau să fi fost deja folosit. Dacă aveți nevoie de ajutor, vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Pluginul său nu este instalat"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Săriți la o literă"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Păstrați-mă autentificat (zile)"
+
+#: 
+msgid "Keeps it"
+msgstr "O păstrează"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Tip de e-mail neconfirmat"
+
+#: 
+msgid "Last day"
+msgstr "Ultima zi"
+
+#: 
+msgid "Last used"
+msgstr "Folosit ultima dată"
+
+#: 
+msgid "Last used %s"
+msgstr "Folosit ultima dată %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Lider al %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Permiteți administratorilor să deschidă Portalul membrilor al unei persoane ca acea persoană, din meniul Acțiuni al persoanei, cât timp autentificarea membrilor este pornită."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Permiteți membrilor să adauge chei de acces și să se autentifice în Portalul membrilor cu ele."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Permiteți membrilor să se autentifice în Portalul membrilor cu propria adresă de e-mail. Poate fi pornită numai cât timp trimiterea e-mailurilor funcționează."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Permiteți membrilor să se autentifice cu e-mailul"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Durata linkului și a codului (minute)"
+
+#: 
+msgid "Login as %s"
+msgstr "Autentificare ca %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Autentificare ca persoană"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Autentificarea ca persoană nu a putut porni."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Autentificarea ca persoană s-a încheiat: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Istoricul autentificării ca persoană"
+
+#: 
+msgid "Login as Person started"
+msgstr "Autentificarea ca persoană a pornit"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Autentificarea ca persoană s-a oprit"
+
+#: 
+msgid "Look up anyone"
+msgstr "Căutați pe oricine"
+
+#: 
+msgid "Loses it"
+msgstr "O pierde"
+
+#: 
+msgid "Manage a team"
+msgstr "Administrați o echipă"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Administrați autentificarea și dispozitivele mele"
+
+#: 
+msgid "Matches: %s"
+msgstr "Potriviri: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Se poate autentifica"
+
+#: 
+msgid "May sign in now"
+msgstr "Se poate autentifica acum"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Cod de autentificare în Portalul membrilor"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Notificare de autentificare în Portalul membrilor"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Autentificări și activitate în Portalul membrilor, pentru membri și pentru personalul care deschide portalul din autentificarea de personal."
+
+#: 
+msgid "Member sign-in"
+msgstr "Autentificare membri"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Autentificarea membrilor trimite fiecărei persoane un cod prin e-mail, astfel că e-mailul (SMTP) trebuie să funcționeze înainte de a o porni."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Autentificarea membrilor este oprită"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Autentificarea membrilor este oprită pentru biserică."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Autentificarea membrilor este oprită."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Autentificarea membrilor nu este încă disponibilă. Vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Autentificarea membrilor nu permite niciodată accesul persoanelor decedate, inactive, dintr-o familie inactivă, în așteptarea revizuirii sau care au activată opțiunea Dezactivați autentificarea. Aceste opțiuni decid cine altcineva poate."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Autentificarea membrilor trimite fiecărui membru un cod prin e-mail, astfel că poate fi pornită numai cât timp ChurchCRM poate trimite e-mail. Porniți mai întâi e-mailul și configurați serverul de e-mail."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Membrii văd pagina Calendar cât timp cel puțin un calendar este pornit."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Membrii introduc cel puțin %d litere dintr-un nume și văd până la %d potriviri. Lista completă nu este afișată niciodată."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Membrii autentificați acum sunt deconectați, iar nimeni nu se poate autentifica cu e-mailul până când autentificarea membrilor este pornită din nou."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Membrii cu aceste clasificări găsesc Directorul în meniul Portalului membrilor."
+
+#: 
+msgid "Minimum age"
+msgstr "Vârstă minimă"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Alte încercări cu această adresă în următoarea oră nu vor trimite o altă notificare."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Mutat din e-mailul familiei"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Mutat la un cap de familie"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Mutat la un soț sau o soție"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Sunteți nou la biserica noastră? Spuneți-ne despre familia dumneavoastră și vă vom contacta pentru a vă ura bun venit."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Încă nu există sesiuni de autentificare ca persoană."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Fără dată de naștere și nu este cap de familie sau soț ori soție"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Niciun calendar nu este pornit, astfel că membrii nu văd pagina Calendar."
+
+#: 
 msgid "No changes"
 msgstr "Fără schimbări"
+
+#: 
+msgid "No changes made."
+msgstr "Nu s-a făcut nicio modificare."
+
+#: 
+msgid "No family role"
+msgstr "Niciun rol de familie"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Niciun cap de familie sau soț ori soție nu poate primi e-mailul familiei."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Niciun cap de familie sau soț ori soție nu o partajează"
+
+#: 
+msgid "No match"
+msgstr "Nicio potrivire"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Nimeni nu corespunde încă regulii de autentificare. Bifați mai multe roluri de familie sau clasificări ori reduceți vârsta minimă."
+
+#: 
+msgid "No passkey was added."
+msgstr "Nu a fost adăugată nicio cheie de acces."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Nu a fost folosită nicio cheie de acces. Încercați din nou sau autentificați-vă cu adresa de e-mail."
+
+#: 
+msgid "No person has this email"
+msgstr "Nicio persoană nu are acest e-mail"
+
+#: 
+msgid "No personal email"
+msgstr "Niciun e-mail personal"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Niciun e-mail partajat nu împiedică pe cineva să se autentifice."
+
+#: 
+msgid "No such person"
+msgstr "Nu există o astfel de persoană"
+
+#: 
+msgid "No, thanks"
+msgstr "Nu, mulțumesc"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Nimeni nu se poate autentifica cu un e-mail personal pe care îl partajează două persoane care se pot autentifica. Pentru o adresă partajată în cadrul unei familii, capul de familie o păstrează, altfel soțul sau soția (cel mai în vârstă primul). Toți ceilalți care o partajează o pierd. Debifați pe oricine doriți să corectați altfel."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Nimeni nu se poate autentifica încă: bifați cel puțin o clasificare la Cine se poate autentifica."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Nimeni nu se poate autentifica încă: bifați cel puțin un rol de familie și cel puțin o clasificare la Cine se poate autentifica."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Nimeni nu se poate autentifica încă: bifați cel puțin un rol de familie la Cine se poate autentifica."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Nimeni din director nu corespunde acestui nume."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Nimeni nu este încă listat în director."
+
+#: 
+msgid "Not ended"
+msgstr "Neîncheiat"
+
+#: 
+msgid "Not moved"
+msgstr "Nemutat"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Nu sunteți sigur ce e-mail avem? Contactați biroul bisericii."
+
+#: 
+msgid "Not yet"
+msgstr "Încă nu"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Notat în cronologia familiei"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Dintre aceștia, persoane care s-au autentificat: {{total}}. Sunt deconectate peste tot, iar adresa primește o notificare."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Oprit pentru toți: „%s” este oprit"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Oprit pentru toți: Gestionarea voluntarilor nu este setată la V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Oprit pentru toți: funcția sa este oprită"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Oprit pentru toți: pluginul său este oprit"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Oprit pentru toți: niciun calendar nu este partajat cu membrii"
+
+#: 
+msgid "Office list"
+msgstr "Lista biroului"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Odată confirmată, poate fi folosită pentru autentificarea în Portalul membrilor."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Pot fi selectate numai adresele pe care le puteți confirma."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Numai administratorii văd motivul."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Numai un administrator poate schimba e-mailul unei persoane care are un cont de personal sau permisiuni de portal."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Numai un administrator poate confirma un e-mail care a înlocuit unul cu care persoana s-a autentificat."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Numai un administrator poate confirma e-mailul unei persoane care are un cont de personal sau permisiuni de portal."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Numai un administrator poate corecta această adresă: cineva care o partajează are un cont de personal sau permisiuni de portal."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Numai un adult al familiei dumneavoastră poate confirma aceste date. Vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Confirmați numai adrese despre care știți că aparțin acelei persoane. Oricine citește o adresă se poate autentifica ca persoana respectivă."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Numai persoanele în viață cu propriul e-mail pot fi pe lista biroului."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Pot fi adăugate numai persoanele cu propriul e-mail."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Telemetria opțională poate include rutele paginilor, limba activă, versiunea CRM, versiunea PHP, familia sistemului de operare, țara din setările de informații ale bisericii și un ID aleatoriu de instalare. Rapoartele de eșec nu includ ID-ul de instalare. Datele sunt trimise către PostHog în Statele Unite."
+
+#: 
+msgid "Passkey"
+msgstr "Cheie de acces"
+
+#: 
+msgid "Passkey added"
+msgstr "Cheie de acces adăugată"
+
+#: 
+msgid "Passkey removed"
+msgstr "Cheie de acces eliminată"
+
+#: 
+msgid "Passkeys"
+msgstr "Chei de acces"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Cheile de acces sunt oprite."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Cheile de acces nu pot fi folosite aici."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Cheile de acces nu pot fi folosite încă pe acest site. Vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Cheile de acces au nevoie de un nume de gazdă, nu de o adresă IP, în adresa site-ului."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Cheile de acces au nevoie de o conexiune securizată (HTTPS) la acest site."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Cheile de acces au nevoie ca adresa site-ului să fie setată în Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Cheile de acces au nevoie ca site-ul să fie servit prin HTTPS. Membrilor nu li se oferă chei de acces până atunci."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Cheile de acces funcționează numai la %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Chei de acces: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Persoane pe care setările salvate le acceptă: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Persoane de notificat prin e-mail când cineva nu s-a putut autentifica în Portalul membrilor"
+
+#: 
+msgid "People who hold it"
+msgstr "Persoane care o dețin"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Persoane care pierd o adresă: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Persoane care au pierdut o adresă: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Persoane care se pot autentifica: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Persoane care se autentificau în Portalul membrilor: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Persoanele cu aceste clasificări apar în director. Numărul arată câți oameni activi au fiecare clasificare."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Persoane cu acest e-mail: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Persoana %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Alegeți clasificări din listă."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Alegeți roluri de familie din listă."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Alegeți persoane pentru lista biroului."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Vă rugăm să alegeți o limbă din listă."
+
+#: 
+msgid "Portal permission given"
+msgstr "Permisiune de portal acordată"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Permisiune de portal eliminată"
+
+#: 
+msgid "Portal permissions"
+msgstr "Permisiuni de portal"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Autentificare în portal"
+
+#: 
+msgid "Problem"
+msgstr "Problemă"
+
+#: 
+msgid "Reason"
+msgstr "Motiv"
+
+#: 
+msgid "Reason: %s"
+msgstr "Motiv: %s"
+
+#: 
+msgid "Refused"
+msgstr "Refuzat"
+
+#: 
+msgid "Register your family"
+msgstr "Înregistrați-vă familia"
+
+#: 
+msgid "Remembered device"
+msgstr "Dispozitiv reținut"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Dispozitiv reținut eliminat"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Dispozitive reținute: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Eliminați e-mailurile"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Eliminați această cheie de acces"
+
+#: 
+msgid "Remove this permission"
+msgstr "Eliminați această permisiune"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Eliminat de la: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Înlocuit după o autentificare"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Înlocuit de o altă autentificare"
+
+#: 
+msgid "Result"
+msgstr "Rezultat"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Conduceți o echipă de voluntari: poziții, voluntari, programe, personal și efective."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Spuneți de ce se dezactivează autentificarea."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Spuneți de ce se acordă această permisiune."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Căutați pe oricine este înregistrat. Fiecare rând spune dacă se poate autentifica în Portalul membrilor și, dacă nu, de ce."
+
+#: 
+msgid "Search method"
+msgstr "Metodă de căutare"
+
+#: 
+msgid "Search only"
+msgstr "Numai căutare"
+
+#: 
+msgid "See family contact details"
+msgstr "Vedeți datele de contact ale familiei"
+
+#: 
+msgid "See my family"
+msgstr "Vedeți familia mea"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Vedeți Portalul membrilor așa cum îl vede această persoană? Paginile personalului rămân închise până apăsați Oprire, iar sesiunea este înregistrată pe această pagină și pe pagina dumneavoastră de utilizator."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Vedeți calendarele pe care biserica le partajează cu membrii și abonați-vă la ele."
+
+#: 
+msgid "See the church calendar"
+msgstr "Vedeți calendarul bisericii"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Vedeți dispozitivele și cheile de acces cu care se autentifică și deconectați sau eliminați oricare dintre ele."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Vedeți adresele de e-mail și numerele de telefon ale persoanelor din familia lor."
+
+#: 
+msgid "See the member directory"
+msgstr "Vedeți directorul membrilor"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Vedeți numele și fotografiile persoanelor din familia lor."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Vedeți persoanele pe care biserica le listează în director, cu detaliile pe care biserica alege să le partajeze."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Vedeți programul lor de voluntariat, înscrieți-vă la locurile libere și cereți un înlocuitor."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Trimiteți browse ca true sau false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Trimiteți clasificările ca o listă de ID-uri."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Trimiteți setările directorului ca un obiect JSON."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Trimiteți câmpurile de afișat ca un obiect cu valori true și false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Trimiteți setările ca un obiect JSON."
+
+#: 
+msgid "Session ended"
+msgstr "Sesiune încheiată"
 
 #: 
 msgid "Set up email"
 msgstr "Configurați e-mailul"
 
 #: 
+msgid "Set up email first."
+msgstr "Configurați mai întâi e-mailul."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Adrese partajate corectate: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Adrese partajate de corectat: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Partajat de"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "E-mailuri partajate care împiedică autentificarea"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Afișați sau ascundeți acest membru"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Afișați pagina Director din Portalul membrilor clasificărilor alese mai jos."
+
+#: 
+msgid "Show the member directory"
+msgstr "Afișați directorul membrilor"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Afișați directorul membrilor în Portalul membrilor."
+
+#: 
+msgid "Show with year"
+msgstr "Afișați cu anul"
+
+#: 
+msgid "Show without year"
+msgstr "Afișați fără an"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Se afișează primele %d potriviri. Introduceți mai mult din nume pentru a găsi persoana căutată."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Vă autentificați ca %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Autentificați-vă data viitoare pe acest dispozitiv cu Face ID, o amprentă sau PIN-ul dispozitivului."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Autentificați-vă pentru a vedea familia, calendarul bisericii și modalitățile de a sluji. Nu aveți nevoie de o parolă sau de un cont."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Autentificați-vă cu o cheie de acces"
+
+#: 
+msgid "Sign out every device"
+msgstr "Deconectați fiecare dispozitiv"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Deconectați acum fiecare dispozitiv?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Deconectați-vă peste tot"
+
+#: 
+msgid "Sign out this device"
+msgstr "Deconectați acest dispozitiv"
+
+#: 
+msgid "Sign-in"
+msgstr "Autentificare"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Autentificare și dispozitive"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Autentificarea nu a putut fi dezactivată."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Autentificarea nu a putut fi activată."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Autentificare dezactivată"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "E-mail de autentificare solicitat"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "E-mailuri de autentificare pe adresă IP pe oră"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Autentificare activată"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Autentificarea este deja dezactivată pentru această persoană."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Autentificarea este dezactivată"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Autentificarea este dezactivată pentru această persoană."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Autentificarea este activată pentru această persoană."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Autentificarea nu este dezactivată pentru această persoană."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Autentificare refuzată"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Autentificarea, sesiunile și cheia API sunt blocate până când acest lucru este rezolvat în fișa persoanei asociate."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Autentificați, ultimele 30 de zile"
+
+#: 
+msgid "Signed out"
+msgstr "Deconectat"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Deconectat de o modificare a autentificării lor"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Deconectat peste tot"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Cineva a cerut un e-mail de autentificare în Portalul membrilor, dar nu a fost trimis niciunul."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Cineva nu s-a putut autentifica în Portalul membrilor"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Paginile personalului rămân închise în timpul autentificării ca persoană. Apăsați Oprire în banner pentru a reveni."
+
+#: 
+msgid "Stop"
+msgstr "Oprire"
+
+#: 
+msgid "Stopped"
+msgstr "Oprit"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Spuneți biroului bisericii dacă datele familiei sunt încă corecte."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Codul nu a funcționat. Verificați cel mai nou e-mail de la noi sau cereți unul nou."
+
+#: 
+msgid "That could not be removed."
+msgstr "Nu a putut fi eliminat."
+
+#: 
+msgid "That device is signed out."
+msgstr "Dispozitivul respectiv este deconectat."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Aceasta nu este o adresă de e-mail validă."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Pagina a fost deschisă prea mult timp. Vă rugăm să încercați din nou."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Cheia de acces respectivă este eliminată. Nu vă mai poate autentifica."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "A durat prea mult. Vă rugăm să încercați din nou."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Actualizarea 7.8.3 a atribuit fiecărui e-mail de familie unei persoane. Pe acestea nu le-a putut atribui, așa că a lăsat în schimb o notă în cronologia familiei."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Portalul membrilor și e-mailurile pe care vi le trimite folosesc această limbă."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Modificarea nu a putut fi salvată."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Codul și butonul funcționează o singură dată, până la %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Codul sau linkul a mers la o adresă care nu mai este e-mailul lor"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "E-mailul de confirmare nu a putut fi trimis. Vă rugăm să încercați mai târziu."
+
+#: 
+msgid "The device is signed out."
+msgstr "Dispozitivul este deconectat."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "Adresa de e-mail %2$s a fost eliminată din fișa dumneavoastră la %1$s. Ați fost deconectat din Portalul membrilor pe fiecare dispozitiv."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "Adresa de e-mail din fișa dumneavoastră la %1$s a fost schimbată de la %2$s la %3$s. Ați fost deconectat din Portalul membrilor pe fiecare dispozitiv."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "E-mailul nu a putut fi confirmat."
+
+#: 
+msgid "The email could not be sent."
+msgstr "E-mailul nu a putut fi trimis."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "E-mailul este confirmat. Acum poate fi folosit pentru autentificare."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Data de sfârșit este înainte de data de început."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Familia nu are un cap de familie sau soț ori soție în viață și activ"
+
+#: 
+msgid "The family is inactive"
+msgstr "Familia este inactivă"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Capul de familie și soțul sau soția au amândoi propriul e-mail"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Ultima zi nu poate fi în trecut."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Persoana asociată nu se poate autentifica, astfel că acest cont nu se poate autentifica"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Lista nu a putut fi încărcată."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Cheia de acces nu a putut fi adăugată. Vă rugăm să încercați din nou."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Cheia de acces nu a putut fi verificată"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Cheia de acces nu este înregistrată sau a fost eliminată"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Cheia de acces a fost eliminată."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Persoanele care o partajează sunt în familii diferite sau nu sunt într-o familie"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Persoanele care partajează această adresă s-au schimbat. Deschideți din nou Corectați e-mailurile partajate."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Permisiunea nu a putut fi acordată."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Permisiunea se încheie după această zi. Poate fi acordată din nou."
+
+#: 
+msgid "The permission was given."
+msgstr "Permisiunea a fost acordată."
+
+#: 
+msgid "The permission was removed."
+msgstr "Permisiunea a fost eliminată."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Permisiunile nu au putut fi încărcate."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Persoana pierde imediat această permisiune în Portalul membrilor."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Motivul poate avea cel mult %d caractere."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Regulile de autentificare îi acceptă, iar fiecare are propriul e-mail pe care nu îl folosește nimeni altcineva care se poate autentifica."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Regulile de autentificare îi acceptă, dar e-mailul nu: nu au unul, îl partajează cu altcineva care se poate autentifica sau nu este încă confirmat."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Setările de autentificare nu au putut fi salvate."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "E-mailul neconfirmat s-a schimbat. Reîncărcați pagina și încercați din nou."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Clasificarea lor nu permite autentificarea"
+
+#: 
+msgid "Their email changed"
+msgstr "E-mailul lor s-a schimbat"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "E-mailul lor nu este încă confirmat"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "E-mailul lor este partajat cu altcineva"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Rolul lor de familie nu permite autentificarea"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Vechile lor autentificări au fost eliminate de actualizare. Porniți autentificarea membrilor ca să se poată autentifica cu propriul e-mail."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Dispozitivul lor reținut expirase"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Dispozitivul lor reținut a fost deconectat"
+
+#: 
+msgid "Theme development"
+msgstr "Dezvoltare temă"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Nu există o clasificare cu ID-ul %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Nu există un selector pentru acest tip de domeniu."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Nu există un astfel de eveniment de audit."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Nu există o astfel de problemă de e-mail."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Nu există un astfel de tip de e-mail neconfirmat."
+
+#: 
+msgid "There is no such list."
+msgstr "Nu există o astfel de listă."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Nu există o astfel de permisiune de portal."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Acestea sunt telefoanele și computerele pe care ați ales să rămâneți autentificat. Deconectați-le pe cele pe care nu le mai folosiți sau nu le recunoașteți."
+
+#: 
+msgid "They have a staff account"
+msgstr "Au un cont de personal"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Se pot autentifica, dar nu au făcut-o niciodată."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Această acțiune necesită o sesiune de browser autentificată."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Această adresă nu a putut fi schimbată. Deschideți din nou Corectați e-mailurile partajate pentru a vedea starea ei."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Această adresă nu mai este partajată de persoane care se pot autentifica."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Acest browser nu poate crea chei de acces."
+
+#: 
+msgid "This device"
+msgstr "Acest dispozitiv"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Acest dispozitiv are deja o cheie de acces pentru dumneavoastră."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Acest dispozitiv nu va mai păstra persoana autentificată, iar o sesiune deschisă pe el se încheie. Se poate autentifica din nou prin e-mail."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Acesta este propriul meu dispozitiv. Păstrați-mă autentificat."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Aici decideți despre oaspeți. Numărul arată câți oameni activi au fiecare clasificare."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Acest link nu poate fi folosit"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Acest link a expirat sau a fost deja folosit"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Această parte a Portalului membrilor nu vă este disponibilă."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Această cheie de acces este deja înregistrată."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Această cheie de acces nu va mai autentifica persoana. Se poate autentifica prin e-mail și poate adăuga una nouă."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Această permisiune nu poate fi acordată pe pagina persoanei."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Această persoană are deja fiecare permisiune care poate fi acordată."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Această persoană are deja această permisiune."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Această persoană nu se mai poate autentifica nicăieri, nici în Portalul membrilor, nici ca personal. Fiecare sesiune se încheie, iar dispozitivele reținute și cheile de acces sunt eliminate."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Această persoană nu a putut fi deconectată."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Această persoană are un cont de personal. Autentificarea ca persoană nu deschide niciodată un cont de personal."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Această persoană nu are o astfel de cheie de acces."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Această persoană nu are o astfel de permisiune."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Această persoană nu are un astfel de dispozitiv reținut."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Această persoană nu are un e-mail neconfirmat."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Această persoană s-a autentificat în Portalul membrilor. Schimbarea acestui e-mail o deconectează peste tot, iar noua adresă nu poate fi folosită pentru autentificare până la confirmare."
+
+#: 
 msgid "This person is deceased."
 msgstr "Această persoană este decedată"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Această persoană este deconectată din Portalul membrilor peste tot."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Această persoană nu mai există."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Aceasta vă deconectează peste tot, inclusiv aici, și uită fiecare dispozitiv. Vă puteți autentifica din nou cu adresa de e-mail."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Aceasta vă deconectează peste tot, inclusiv aici, și uită fiecare dispozitiv. Cheile de acces rămân: vă puteți autentifica din nou cu o cheie de acces sau cu adresa de e-mail."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Acest instrument nu le schimbă niciodată. Acordați fiecărei persoane propriul e-mail în fișa ei."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Bifați acest lucru numai pe propriul telefon sau computer, niciodată pe unul partajat sau public."
+
+#: 
+msgid "Time: %s"
+msgstr "Ora: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Timp expirat"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Pentru a schimba acest e-mail, vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "To fix"
+msgstr "De corectat"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Pentru a rămâne autentificat pe propriul telefon sau computer, bifați „Acesta este propriul meu dispozitiv” data viitoare când vă autentificați."
+
+#: 
+msgid "Too many attempts"
+msgstr "Prea multe încercări"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Prea multe e-mailuri de autentificare astăzi"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Prea multe cereri de autentificare pentru această adresă de e-mail"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Prea multe cereri de autentificare de la această adresă IP"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Prea multe coduri greșite"
+
+#: 
+msgid "Turn off"
+msgstr "Opriți"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Opriți autentificarea membrilor?"
+
+#: 
+msgid "Turn on"
+msgstr "Porniți"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Porniți autentificarea membrilor"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Porniți autentificarea membrilor?"
+
+#: 
+msgid "Type a name"
+msgstr "Introduceți un nume"
+
+#: 
+msgid "Type a name or email"
+msgstr "Introduceți un nume sau un e-mail"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Introduceți cel puțin %d litere dintr-un nume, apoi căutați."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "E-mail neconfirmat"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Înțelegeți unde este folosit ChurchCRM"
+
+#: 
+msgid "Unknown device"
+msgstr "Dispozitiv necunoscut"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Câmp de director necunoscut: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Setare de director necunoscută: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Dispozitiv fără nume"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Cheie de acces fără nume"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Până când biroul bisericii o confirmă, noua adresă nu poate fi folosită pentru autentificare."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Folosiți %1$s ca adresă de e-mail pentru %2$s la %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Folosiți o altă adresă de e-mail"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Folosiți o cheie de acces pe acest dispozitiv?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Folosiți butonul de mai jos pentru a confirma că %1$s este adresa dumneavoastră de e-mail la %2$s. Linkul funcționează o singură dată, până la %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Utilizatorul %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Vedeți permisiunile"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Se așteaptă să confirmați %s. Folosiți linkul pe care l-am trimis la acea adresă."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Se așteaptă să confirmați {{email}}. Folosiți linkul pe care l-am trimis la acea adresă."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Nu am putut trimite e-mailul. Vă rugăm să încercați mai târziu sau să contactați biroul bisericii."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Nu v-am putut autentifica"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Am trimis un link prin e-mail la %s. Folosiți-l pentru a confirma noua adresă de e-mail."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Am trimis un link la {{email}}. E-mailul se schimbă când îl folosiți."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Vă vom trimite prin e-mail un cod și un link cu care să vă autentificați."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Ne bucurăm că sunteți aici! Durează aproximativ trei minute."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Ne bucurăm că familia dumneavoastră ni s-a alăturat! Înregistrarea a fost primită. Echipa noastră vă va contacta în curând pentru a vă ura personal bun venit."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Aniversarea căsătoriei"
+
+#: 
+msgid "Welcome"
+msgstr "Bun venit"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Ceea pentru care a fost acordată nu mai există"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Ce pot vedea și face membrii în portal și de unde vine fiecare permisiune. Persoanele sunt numărate printre toți cei pe care regulile de autentificare îi acceptă și printre personal."
+
+#: 
+msgid "What members can use"
+msgstr "Ce pot folosi membrii"
+
+#: 
+msgid "What to do"
+msgstr "Ce este de făcut"
+
+#: 
+msgid "Who can see it"
+msgstr "Cine o poate vedea"
+
+#: 
+msgid "Who is listed"
+msgstr "Cine este listat"
+
+#: 
+msgid "Who may sign in"
+msgstr "Cine se poate autentifica"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Cine se poate autentifica în Portalul membrilor, cine a făcut-o și al cui e-mail îi împiedică. Listele urmează regulile din fila Autentificare."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Pe cine listează directorul Portalului membrilor, cine îl poate vedea și ce afișează, ales în Admin -> Portalul membrilor -> Director."
+
+#: 
+msgid "Why"
+msgstr "De ce"
+
+#: 
+msgid "Why not"
+msgstr "De ce nu"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Cu jetonul pe care dispozitivul l-a înlocuit cu câteva momente în urmă"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Da, adăugați o cheie de acces"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Da, eliminați această cheie de acces"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Da, deconectați fiecare dispozitiv"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Nu aveți permisiunea să confirmați acest e-mail."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Nu sunteți păstrat autentificat pe niciun dispozitiv."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Sunteți deconectat pe fiecare dispozitiv."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Sunteți deconectat pe acest dispozitiv."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Vă puteți autentifica și cu adresa de e-mail."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Nu vă puteți dezactiva propria autentificare."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Nu puteți deschide Portalul membrilor. Vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Ați cerut schimbarea e-mailului de prea multe ori. Vă rugăm să încercați mai târziu."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Nu aveți chei de acces."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Sunteți autentificat ca %s în Portalul membrilor (modificările sunt permise)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Sunteți autentificat ca %s în Portalul membrilor (doar citire)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Mai tânăr decât vârsta minimă"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Cea mai mică vârstă la care o persoană se poate autentifica în Portalul membrilor. Când data nașterii este necunoscută, se califică numai un cap de familie sau un soț ori o soție."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Codul dumneavoastră de autentificare în Portalul membrilor"
+
+#: 
+msgid "Your code"
+msgstr "Codul dumneavoastră"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Adresa dumneavoastră de e-mail %s nu este încă confirmată, astfel că nu poate fi folosită pentru autentificare. Vă vom trimite un link la ea; folosirea linkului o confirmă."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Adresa dumneavoastră de e-mail nu poate fi eliminată aici. Vă rugăm să contactați biroul bisericii."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Adresa dumneavoastră de e-mail este confirmată"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Adresa dumneavoastră de e-mail a fost schimbată"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Cheia dumneavoastră de acces a fost adăugată. Data viitoare, autentificați-vă cu ea pe acest dispozitiv."
+
+#: 
+msgid "an administrator"
+msgstr "un administrator"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "niciun cap de familie sau soț ori soție nu are o adresă de e-mail"
+
+#: 
+msgid "or"
+msgstr "sau"
+
+#: 
+msgid "until %s"
+msgstr "până la %s"
 
