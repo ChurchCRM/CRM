@@ -426,7 +426,6 @@ class ExternalBackupPlugin extends AbstractPlugin
             curl_exec($ch);
             $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             $error    = curl_error($ch);
-            curl_close($ch);
 
             if (!empty($error)) {
                 return ['success' => false, 'message' => gettext('Connection failed') . ': ' . $error];

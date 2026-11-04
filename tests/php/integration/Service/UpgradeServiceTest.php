@@ -5,6 +5,7 @@ declare(strict_types=1);
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\UpgradeService;
+use ChurchCRM\Utils\SQLImportException;
 use ChurchCRM\Utils\VersionUtils;
 use Propel\Runtime\Connection\ConnectionManagerSingle;
 use Propel\Runtime\Propel;
@@ -84,7 +85,7 @@ try {
     $db = $newDatabase();
     $manifest([['versions' => ['7.8.0'], 'scripts' => ['/scripts/fail.sql'], 'dbVersion' => '7.8.1']]);
     file_put_contents($tempRoot . '/scripts/fail.sql', 'INSERT INTO request_runs VALUES (77); SELECT missing_upgrade_column;');
-    Assert::exception(static fn () => UpgradeService::upgradeDatabaseVersion(true), PDOException::class);
+    Assert::exception(static fn () => UpgradeService::upgradeDatabaseVersion(true), SQLImportException::class);
     Assert::same('7.8.0', VersionUtils::getDBVersion(), 'Interrupted file keeps the version');
     $_SESSION = [];
     $error = Assert::exception(static fn () => UpgradeService::upgradeDatabaseVersion(true), RuntimeException::class);

@@ -308,7 +308,6 @@ class AppIntegrityService
                 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
 
                 $result = curl_exec($ch);
-                curl_close($ch);
 
                 if ($result === false) {
                     // Loopback blocked — assume available (advisory check only)

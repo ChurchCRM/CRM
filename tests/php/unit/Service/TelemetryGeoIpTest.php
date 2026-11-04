@@ -27,7 +27,6 @@ function curl_setopt_array(object $handle, array $options): bool
 
 function curl_exec(object $handle): string { return 'Ok'; }
 function curl_getinfo(object $handle, int $option): int { return 200; }
-function curl_close(object $handle): void {}
 
 putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY');
 putenv('PHP_TEST_DISPOSABLE_DB');

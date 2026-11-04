@@ -343,7 +343,6 @@ class TelemetryService
                 $error = $response === false ? curl_error($ch) : 'HTTP ' . $httpStatus;
                 error_log('TelemetryService::capture failed: ' . $error);
             }
-            curl_close($ch);
             return $acknowledged;
         } catch (\Throwable $e) {
             error_log('TelemetryService::capture failed: ' . $e->getMessage());

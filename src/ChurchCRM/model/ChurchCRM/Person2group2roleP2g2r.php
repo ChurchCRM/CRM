@@ -85,7 +85,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
         return $stored === null ? null : (int) $stored;
     }
 
-    public function preSave(ConnectionInterface $con = null): bool
+    public function preSave(?ConnectionInterface $con = null): bool
     {
         $this->assertMembershipWritable();
         parent::preSave($con);
@@ -93,7 +93,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
         return true;
     }
 
-    public function preUpdate(ConnectionInterface $con = null): bool
+    public function preUpdate(?ConnectionInterface $con = null): bool
     {
         $this->assertMembershipWritable();
         if ($this->isColumnModified(Person2group2roleP2g2rTableMap::COL_P2G2R_RLE_ID)) {
@@ -104,7 +104,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
         return true;
     }
 
-    public function preDelete(ConnectionInterface $con = null): bool
+    public function preDelete(?ConnectionInterface $con = null): bool
     {
         $this->assertMembershipWritable();
         $this->assertTeacherRoleUnlocked((int) $this->getRoleId(), null);
@@ -113,7 +113,7 @@ class Person2group2roleP2g2r extends BasePerson2group2roleP2g2r
         return true;
     }
 
-    public function preInsert(ConnectionInterface $con = null): bool
+    public function preInsert(?ConnectionInterface $con = null): bool
     {
         $this->assertMembershipWritable();
         $this->assertTeacherRoleUnlocked(null, (int) $this->getRoleId());

@@ -6,6 +6,11 @@ const path = require('node:path');
 const { execFileSync } = require('node:child_process');
 const { validateComposerLock } = require('./validate-composer-lock');
 
+// A hook run exports GIT_DIR; the temp repo must not resolve to the real one.
+for (const key of Object.keys(process.env)) {
+    if (key.startsWith('GIT_')) delete process.env[key];
+}
+
 test('checks the staged Composer pair even when the working copy is fixed', () => {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'composer-lock-test-'));
     const git = (...args) => execFileSync('git', args, { cwd: root, stdio: 'pipe' });
