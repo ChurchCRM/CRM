@@ -81,7 +81,10 @@ jobs:
             --config p/owasp-top-ten \
             --config p/php \
             --config .semgrep/echoed-request.yml \
+            --config .semgrep/twig-templates.yml \
             --exclude-rule php.lang.security.injection.echoed-request.echoed-request \
+            --exclude-rule generic.html-templates.security.var-in-href.var-in-href \
+            --exclude-rule generic.html-templates.security.var-in-script-tag.var-in-script-tag \
             --exclude .semgrep/echoed-request.php \
             --sarif \
             --output semgrep.sarif \
