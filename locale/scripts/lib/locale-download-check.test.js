@@ -41,7 +41,12 @@ test('a regression is a substantial file that became tiny', () => {
 
 test('a download that empties a committed locale is measured against the checked-out commit', () => {
     const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'i18n-repo-'));
-    const git = (...args) => execFileSync('git', args, { cwd: repo, stdio: 'ignore' });
+    // Git hooks export GIT_DIR and GIT_INDEX_FILE, which would point these commands at the outer repo.
+    const env = { ...process.env };
+    delete env.GIT_DIR;
+    delete env.GIT_INDEX_FILE;
+    delete env.GIT_WORK_TREE;
+    const git = (...args) => execFileSync('git', args, { cwd: repo, env, stdio: 'ignore' });
     try {
         const dir = path.join(repo, 'src/locale/i18n');
         fs.mkdirSync(dir, { recursive: true });
