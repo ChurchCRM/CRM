@@ -41,8 +41,8 @@ test('discovery narrows non-English captures to the exact epic list', () => {
 test('manifest retains locale policy and usedIn and omits unavailable dark twins', () => {
     const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'crm-manifest-'));
     try {
-        fs.mkdirSync(path.join(fixture, 'scripts'));
-        fs.copyFileSync(path.join(__dirname, '../../scripts/generate-marketing-manifest.js'), path.join(fixture, 'scripts/generate-marketing-manifest.js'));
+        fs.mkdirSync(path.join(fixture, 'scripts', 'marketing'), { recursive: true });
+        fs.copyFileSync(path.join(__dirname, '../../scripts/marketing/generate-marketing-manifest.js'), path.join(fixture, 'scripts/marketing/generate-marketing-manifest.js'));
         for (const [locale, name, locales, dark] of [
             ['en', 'hero', 'all', 'hero-dark'], ['es', 'hero', 'all', 'hero-dark'],
             ['en', 'hero-dark', 'en', null], ['en', 'overview', undefined, null],
@@ -53,7 +53,7 @@ test('manifest retains locale policy and usedIn and omits unavailable dark twins
                 workflow: name, locale, locales, dark, usedIn: ['docs', 'website'], artifact: `${name}.png`,
             }));
         }
-        execFileSync(process.execPath, [path.join(fixture, 'scripts/generate-marketing-manifest.js')]);
+        execFileSync(process.execPath, [path.join(fixture, 'scripts/marketing/generate-marketing-manifest.js')]);
         const manifest = JSON.parse(fs.readFileSync(path.join(fixture, 'playwright/artifacts/manifest.json')));
         assert.equal(manifest.find((entry) => entry.name === 'hero' && entry.locale === 'es').dark, null);
         assert.equal(manifest.find((entry) => entry.name === 'hero' && entry.locale === 'en').dark, 'hero-dark');

@@ -1,6 +1,6 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
-const { options, checkEnvironment } = require('../../scripts/check-environment');
+const { options, checkEnvironment } = require('../../scripts/dev/check-environment');
 
 const ready = (bin, args) => ({
     status: 0,

@@ -19,8 +19,8 @@ const trees = [];
 function makeTree(versions = { mysql: '8.4', mariadb: '10.11' }) {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'crm-databases-'));
     trees.push(root);
-    fs.mkdirSync(path.join(root, 'scripts'));
-    fs.copyFileSync(path.join(__dirname, '../../scripts/sync-supported-databases.js'), path.join(root, 'scripts', 'sync-supported-databases.js'));
+    fs.mkdirSync(path.join(root, 'scripts', 'ci'), { recursive: true });
+    fs.copyFileSync(path.join(__dirname, '../../scripts/ci/sync-supported-databases.js'), path.join(root, 'scripts', 'ci', 'sync-supported-databases.js'));
     fs.writeFileSync(path.join(root, 'supported-databases.json'), JSON.stringify(versions));
     for (const [file, content] of Object.entries(FILES)) {
         fs.mkdirSync(path.dirname(path.join(root, file)), { recursive: true });
@@ -30,7 +30,7 @@ function makeTree(versions = { mysql: '8.4', mariadb: '10.11' }) {
 }
 
 const run = (root, ...args) =>
-    spawnSync(process.execPath, [path.join(root, 'scripts', 'sync-supported-databases.js'), ...args], { cwd: root, encoding: 'utf8' });
+    spawnSync(process.execPath, [path.join(root, 'scripts', 'ci', 'sync-supported-databases.js'), ...args], { cwd: root, encoding: 'utf8' });
 const read = (root, file) => fs.readFileSync(path.join(root, file), 'utf8');
 
 afterEach(() => {

@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert');
-const { STEPS } = require('../../scripts/reset-test-db');
+const { STEPS } = require('../../scripts/ci/reset-test-db');
 
 test('the schema loads before the test data', () => {
     const files = STEPS.map((step) => step.file).filter(Boolean);

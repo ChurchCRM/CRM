@@ -1,4 +1,3 @@
-| `test-error-redaction.php` | Regression tests for the /api error redaction rules and canonical error payload (#9737); runs in CI | `npm run test:php` |
 # ChurchCRM Build & Utility Scripts
 
 This folder contains Node.js and shell scripts used for building, packaging, and maintaining ChurchCRM.
@@ -7,24 +6,22 @@ Other tooling lives with its owner: [`locale/scripts/`](../locale/scripts/) (PoE
 
 Tests for these scripts, and for workflow YAML and server config, live in [`tests/tooling/`](../tests/tooling/) and run in `npm run lint`.
 
-## Scripts Overview
+## Layout
 
-| Script | Purpose | Usage |
-|--------|---------|-------|
-| `lint.js` | Run every lint check in parallel; prints only failures | `npm run lint` (pre-push hook and CI) |
-| `build.js` | Production build: Composer and webpack in parallel, then signatures | `npm run build` |
-| `composer-install.js` | Install production Composer dependencies; refresh metadata when `src/vendor` matches `composer.lock` | `npm run composer:install` |
-| `clean.js` | Remove dependencies, build output, and logs (`--logs`: logs only) | `npm run clean`, `npm run logs:clear` |
-| `docker-config.js` | Put `src/Include/Config.php` in place for a docker profile (`--remove`: delete it) | Called by the `docker:*:start` scripts |
-| `sync-supported-databases.js` | Rewrite the compose images, nightly matrix and setup text from `supported-databases.json` (`--check` fails when one is stale) | `node scripts/sync-supported-databases.js` |
-| `generate-signatures-node.js` | Generate file integrity checksums | `npm run build:signatures` |
-| `validate-php-syntax.js` | Validate PHP syntax of changed files | `npm run build:php:validate` |
-| `package-release.js` | Create release ZIP package | `npm run package` |
-| `validate-ui-conventions.js` | Keep styling in utilities, page partials and stock Tabler | `npm run lint` |
-| `locale-check.js` | Lint locale files for issues | `npm run locale:lint` |
-| `startNewRelease.js` | Version bump for releases | Called only by `.github/workflows/release-prepare.yml` |
-| `plugin/create-plugin.php` | Scaffold a new community plugin (clones [community-plugin-hello-world](https://github.com/ChurchCRM/community-plugin-hello-world) from GitHub) | `php scripts/plugin/create-plugin.php <kebab-id> [--author="Name"]` |
-| `plugin/plugin-scan.php` | Self-audit a community plugin directory against the maintainer review checklist | `php scripts/plugin/plugin-scan.php [--json] <plugin-dir>` |
+Tooling is Node by default. PHP only when a script must load the app or ORM; shell only to bootstrap before Node exists (see `code-standards.md`).
+
+| Folder | Holds | Run by |
+|--------|-------|--------|
+| `lint/` | `lint.js` (runs every check in parallel) and the `validate-*` checks, `locale-check.js`, `ensure-biome.js` | `npm run lint`, the pre-commit and pre-push hooks, `code-quality.yml` |
+| `build/` | `build.js`, `composer-install.js`, `clean.js`, `generate-signatures-node.js`, `package-release.js`, `patch-cypress-split.js` | `npm run build`, `package`, `clean`, `build:signatures`, `postinstall` |
+| `ci/` | `docker-config.js`, `reset-test-db.js`, `shard-specs.js`, `split-timings.js`, `nightly-needed.js`, `sync-supported-databases.js` | `docker:*` scripts, Cypress configs, the build and nightly workflows |
+| `release/` | `startNewRelease.js`, `release-changelog.js`, `release-notes-context.js`, `notify-docs-release.sh` | The `release-*` workflows |
+| `marketing/` | Capture, manifest, video and visual-guard scripts for the Playwright pipeline | `npm run marketing*`, `marketing-capture` |
+| `maintainer/` | `dependabot-review.js`, `coderabbit-rereview.js`, `prune-branches.js` | One workflow or maintainer skill each |
+| `dev/` | `setup-dev.sh`, `check-environment.js` | Contributors, per `DEVELOPING.md` |
+| `plugin/` | `create-plugin.php`, `plugin-scan.php` | Community plugin authors |
+
+Add a lint check as a file in `lint/` plus one entry in the `checks` map in `lint/lint.js`.
 
 ---
 

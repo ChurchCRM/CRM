@@ -1,5 +1,5 @@
 {
-    "$comment": "Who may use raw SQL / cy.dbQuery() under cypress/ (#10377). approved: a dedicated schema spec or a fixture/reset utility, never an ordinary behavior spec. baseline: what each existing spec used when the guard arrived; it only goes down. Checked by npm run lint (scripts/validate-cypress-db-access.js).",
+    "$comment": "Who may use raw SQL / cy.dbQuery() under cypress/ (#10377). approved: a dedicated schema spec or a fixture/reset utility, never an ordinary behavior spec. baseline: what each existing spec used when the guard arrived; it only goes down. Checked by npm run lint.",
     "approved": {
         "cypress/configs/_shared.ts": {
             "kind": "fixture",

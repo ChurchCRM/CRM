@@ -20,7 +20,7 @@
  *
  * If anyone removes the `^plugins/community/` pattern from either
  * `isExcludedFromOrphanDetection()` in PHP or from the exclusion list in
- * `scripts/generate-signatures-node.js`, this test fails loudly.
+ * `scripts/build/generate-signatures-node.js`, this test fails loudly.
  */
 describe("API Private Admin Orphaned Files — community plugin exclusion", () => {
     const pluginId = "test-orphan-exclusion";

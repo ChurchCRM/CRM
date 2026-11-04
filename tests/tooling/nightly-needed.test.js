@@ -2,7 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
-const { decide, globToRegExp, isTestable, pushPatterns } = require('../../scripts/nightly-needed');
+const { decide, globToRegExp, isTestable, pushPatterns } = require('../../scripts/ci/nightly-needed');
 
 const patterns = pushPatterns(fs.readFileSync(path.join(__dirname, '..', '..', '.github', 'workflows', 'build-test-package.yml'), 'utf8'));
 const NEW = 'b'.repeat(40);

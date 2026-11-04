@@ -1,6 +1,6 @@
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
-const { gates, injections } = require('../../scripts/validate-pr-gates');
+const { gates, injections } = require('../../scripts/lint/validate-pr-gates');
 
 test('fails a schema change without an upgrade script and upgrade.json', () => {
     assert.equal(gates(['orm/schema.xml']).fail.length, 1);

@@ -55,7 +55,7 @@ src/plugins/
 
 Community plugins are excluded from the orphan-scan in
 `AppIntegrityService::isExcludedFromOrphanDetection()` and from
-`scripts/generate-signatures-node.js`.
+`scripts/build/generate-signatures-node.js`.
 
 ---
 

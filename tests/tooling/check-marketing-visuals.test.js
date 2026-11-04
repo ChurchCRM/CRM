@@ -34,7 +34,7 @@ function fixture(t, { width = 2880, height = 1800, blank = false, corrupt = fals
 }
 
 function check(root) {
-  return spawnSync(process.execPath, [path.join(__dirname, '../../scripts/check-marketing-visuals.js'), root], { encoding: 'utf8' });
+  return spawnSync(process.execPath, [path.join(__dirname, '../../scripts/marketing/check-marketing-visuals.js'), root], { encoding: 'utf8' });
 }
 
 test('viewport-sized nonblank fixture passes', (t) => {

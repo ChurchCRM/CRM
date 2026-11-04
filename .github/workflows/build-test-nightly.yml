@@ -11,7 +11,7 @@ name: Build, Test and Package (Nightly)
 # What this workflow covers
 # ─────────────────────────
 # Stage 0 – changes
-#   • A scheduled run asks scripts/nightly-needed.js whether anything the suite tests or ships
+#   • A scheduled run asks scripts/ci/nightly-needed.js whether anything the suite tests or ships
 #     changed since the last successful run. If not, the run ends green without the test jobs.
 #     Manual, release and release-branch runs always run.
 #
@@ -95,7 +95,7 @@ jobs:
         SHA: ${{ github.sha }}
         BRANCH: ${{ github.ref_name }}
         REPO: ${{ github.repository }}
-      run: node scripts/nightly-needed.js
+      run: node scripts/ci/nightly-needed.js
 
     - name: PHP integration database matrix
       id: databases
@@ -126,7 +126,7 @@ jobs:
       run: npm run package
 
     - name: Validate PHP syntax
-      run: npm run build:php:validate:all
+      run: npm run build:php:validate -- --all
 
     - name: Build Docker images (PHP 8.4 and 8.5)
       run: |
@@ -373,7 +373,7 @@ jobs:
         docker tag churchcrm/crm:php8.5-test churchcrm/crm:php8-debian
 
     - name: Generate file signatures
-      run: node scripts/generate-signatures-node.js
+      run: node scripts/build/generate-signatures-node.js
 
     - name: Remove Config.php for fresh install test
       run: rm -f src/Include/Config.php
@@ -432,7 +432,7 @@ jobs:
         docker tag churchcrm/crm:php8.5-test churchcrm/crm:php8-debian
 
     - name: Generate file signatures
-      run: node scripts/generate-signatures-node.js
+      run: node scripts/build/generate-signatures-node.js
 
     - name: Remove Config.php for fresh install test
       run: rm -f src/Include/Config.php
@@ -682,7 +682,7 @@ jobs:
         docker tag churchcrm/crm:php${{ matrix.php }}-test churchcrm/crm:php8-debian
 
     - name: Generate file signatures
-      run: node scripts/generate-signatures-node.js
+      run: node scripts/build/generate-signatures-node.js
 
     - name: Remove Config.php for fresh install
       run: rm -f src/Include/Config.php
@@ -768,7 +768,7 @@ jobs:
         docker tag churchcrm/crm:php${{ matrix.php }}-test churchcrm/crm:php8-debian
 
     - name: Generate file signatures
-      run: node scripts/generate-signatures-node.js
+      run: node scripts/build/generate-signatures-node.js
 
     - name: Remove Config.php for fresh install
       run: rm -f src/Include/Config.php

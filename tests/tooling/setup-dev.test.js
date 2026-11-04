@@ -5,7 +5,7 @@ const os = require('node:os');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 
-const setup = path.join(__dirname, '../../scripts/setup-dev.sh');
+const setup = path.join(__dirname, '../../scripts/dev/setup-dev.sh');
 
 function simulate(args, failTool = '') {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'churchcrm-setup-'));
@@ -81,6 +81,6 @@ test('container setup uses the existing image and runs shared setup inside it', 
     const result = simulate(['--docker'], 'php');
     assert.equal(result.status, 0, result.stderr);
     assert.match(result.calls, /docker compose -f docker\/docker-compose.dev.yaml up -d --build/);
-    assert.match(result.calls, /bash scripts\/setup-dev.sh/);
+    assert.match(result.calls, /bash scripts\/dev\/setup-dev.sh/);
     assert.doesNotMatch(result.calls, /php -r/);
 });

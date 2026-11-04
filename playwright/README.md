@@ -11,8 +11,8 @@ back to a stale or placeholder artifact.
 ## How to run
 
 Uses Playwright's bundled Chromium (`npm run marketing:install` once). Set
-`BROWSER_CHANNEL=chrome` or run `npm run marketing:chrome` to use installed
-Google Chrome instead.
+`BROWSER_CHANNEL=chrome` (for example `BROWSER_CHANNEL=chrome npm run marketing`)
+to use installed Google Chrome instead.
 
 ```bash
 npm run marketing                   # fresh instance, seed it, capture, finalize videos, check, manifest
@@ -52,18 +52,18 @@ npm run docker:ci:new-system:down   # tear down the instance when you're done
    "useful view" via `playwright/support/capture.ts`, using human-paced
    interactions (`playwright/support/human.ts`) so the videos show someone
    actually working through the app rather than an instant scripted bot.
-3. `marketing:videos` — `scripts/finalize-marketing-videos.js` copies
+3. `marketing:videos` — `scripts/marketing/finalize-marketing-videos.js` copies
    each workflow's recorded video from Playwright's internal report to its
    deterministic artifact path (see below). This runs as a separate step
    because Playwright only finalizes a video after its browser context
    closes, which happens after the test itself has already returned.
-4. `marketing:check` — `scripts/check-marketing-visuals.js` verifies every
+4. `marketing:check` — `scripts/marketing/check-marketing-visuals.js` verifies every
    capture produced its artifacts, decodes PNGs, checks their dimensions against
    the sidecar viewport at 2x scale, and requires contrast in at least two of a
    4×4 grid of tiles. This catches blank and cropped frames that pass the size
    minimum. To check a separate artifact directory, run
    `npm run marketing:check -- /path/to/artifacts`.
-5. `marketing:manifest` — `scripts/generate-marketing-manifest.js` rolls
+5. `marketing:manifest` — `scripts/marketing/generate-marketing-manifest.js` rolls
    every metadata sidecar (see below) into one `playwright/artifacts/manifest.json`.
 
 The instance is left running after a successful (or failed) run so you can

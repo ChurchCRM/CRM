@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const { test } = require('node:test');
-const { applyShard, partition } = require('../../scripts/shard-specs');
+const { applyShard, partition } = require('../../scripts/ci/shard-specs');
 
 const names = (count) => Array.from({ length: count }, (_, i) => `cypress/e2e/ui/s${String(i).padStart(2, '0')}.spec.js`);
 

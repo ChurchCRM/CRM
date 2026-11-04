@@ -41,7 +41,7 @@ gh run download -R ChurchCRM/CRM -n "release-notes-context-$TAG" -D /tmp/rn
 Otherwise build it locally. It is the same script and needs a token for the GitHub API:
 
 ```bash
-node scripts/release-notes-context.js "$PREV" "$TARGET" > /tmp/rn/release-notes-context-$TAG.md
+node scripts/release/release-notes-context.js "$PREV" "$TARGET" > /tmp/rn/release-notes-context-$TAG.md
 ```
 
 The script makes one API call per PR, so a 100-PR release takes several minutes: run it in the background. The file lists every PR merged between `PREV` and `TARGET` with its **full description**, author, labels, linked issues and a bucket derived from the files it touched (User-facing, Localization, Dependencies, Testing, CI & tooling, Marketing capture, Docs & agent guidance, Automated).
@@ -170,7 +170,7 @@ Write the notes to `changelog/$TAG.md` in the main checkout from the first draft
 *Thank you for being part of our global community as we continue building an intuitive, supportive, and reliable workspace for your ministry!* 🌿
 ```
 
-`scripts/release-changelog.js` builds the CHANGELOG.md summary from the `**Theme**:` line, so always include it.
+The release workflow builds the CHANGELOG.md summary from the `**Theme**:` line, so always include it.
 
 ### Writing rules
 

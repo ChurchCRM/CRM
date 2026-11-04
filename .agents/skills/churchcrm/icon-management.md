@@ -84,14 +84,7 @@ The Tabler icon webfont is not shipped, so `ti` / `ti-*` classes render blank. U
 
 ## Guards
 
-`npm run lint` runs both checks (also in the `code-quality` CI job):
-
-| Script | Rejects |
-|--------|---------|
-| `scripts/validate-no-tabler-icons.js` | any `ti` / `ti-*` class |
-| `scripts/validate-fa-icons-exist.js` | any `fa-*` class with no `.fa-<name>` rule in `all.css` |
-
-Both scan `src/` and `webpack/` through `scripts/lib/icon-source-files.js`.
+`npm run lint` (also in the `code-quality` CI job) rejects any `ti` / `ti-*` class and any `fa-*` class with no `.fa-<name>` rule in `all.css`, scanning `src/` and `webpack/`.
 
 **Dynamic icon names are whole class names.** A prefix such as `'fa-' . $icon` or `` `fa-${name}` `` cannot be verified statically. Build lookup maps from complete names:
 

@@ -5,14 +5,15 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 
-const SCRIPTS = ['build.js', 'clean.js', 'composer-install.js', 'docker-config.js'];
+const SCRIPTS = ['build/build.js', 'build/clean.js', 'build/composer-install.js', 'ci/docker-config.js'];
 const skip = process.platform === 'win32' && 'fake shell binaries need a POSIX shell';
 const trees = [];
 
 function makeTree() {
     const root = fs.mkdtempSync(path.join(os.tmpdir(), 'crm-tooling-'));
     trees.push(root);
-    fs.mkdirSync(path.join(root, 'scripts'));
+    fs.mkdirSync(path.join(root, 'scripts', 'build'), { recursive: true });
+    fs.mkdirSync(path.join(root, 'scripts', 'ci'));
     fs.mkdirSync(path.join(root, 'bin'));
     for (const name of SCRIPTS) {
         fs.copyFileSync(path.join(__dirname, '../../scripts', name), path.join(root, 'scripts', name));
@@ -61,7 +62,7 @@ describe('composer-install.js', { skip }, () => {
         const log = path.join(root, 'composer.log');
         fakeBin(root, 'composer', logComposer);
         lockWith(root, 'abc', 'abc');
-        const result = run(root, 'composer-install.js', [], { LOG: log });
+        const result = run(root, 'build/composer-install.js', [], { LOG: log });
         assert.equal(result.status, 0);
         assert.deepEqual(fs.readFileSync(log, 'utf8').trim().split('\n'), ['install --no-dev']);
     });
@@ -70,14 +71,14 @@ describe('composer-install.js', { skip }, () => {
         const root = makeTree();
         fakeBin(root, 'composer', logComposer);
         lockWith(root, 'abc', 'abc');
-        const result = run(root, 'composer-install.js', [], { LOG: path.join(root, 'composer.log'), COMPOSER_EXIT: '3' });
+        const result = run(root, 'build/composer-install.js', [], { LOG: path.join(root, 'composer.log'), COMPOSER_EXIT: '3' });
         assert.equal(result.status, 3);
     });
 
     it('fails with a message when an install is needed and composer is missing', () => {
         const root = makeTree();
         lockWith(root, 'abc');
-        const result = run(root, 'composer-install.js');
+        const result = run(root, 'build/composer-install.js');
         assert.equal(result.status, 1);
         assert.match(result.stderr, /composer is not installed/);
     });
@@ -90,7 +91,7 @@ describe('composer-install.js', { skip }, () => {
         write(root, 'src/vendor/pkg/tests/a.php', '');
         write(root, 'src/vendor/pkg/docs/readme.md', '');
         write(root, 'src/vendor/pkg/src/keep.php', '');
-        const result = run(root, 'composer-install.js', [], { LOG: log });
+        const result = run(root, 'build/composer-install.js', [], { LOG: log });
         assert.equal(result.status, 0);
         assert.deepEqual(fs.readFileSync(log, 'utf8').trim().split('\n'), ['validate --no-check-publish', 'install --no-dev']);
         assert.ok(!fs.existsSync(path.join(root, 'src/vendor/pkg/tests')));
@@ -103,7 +104,7 @@ describe('composer-install.js', { skip }, () => {
         const log = path.join(root, 'composer.log');
         fakeBin(root, 'composer', logComposer);
         lockWith(root, 'abc', 'def');
-        const result = run(root, 'composer-install.js', [], { LOG: log });
+        const result = run(root, 'build/composer-install.js', [], { LOG: log });
         assert.equal(result.status, 0);
         assert.match(fs.readFileSync(log, 'utf8'), /install --no-dev/);
     });
@@ -112,7 +113,7 @@ describe('composer-install.js', { skip }, () => {
         const root = makeTree();
         fakeBin(root, 'composer', logComposer);
         lockWith(root, 'abc');
-        const result = run(root, 'composer-install.js', [], { LOG: path.join(root, 'composer.log'), COMPOSER_EXIT: '3' });
+        const result = run(root, 'build/composer-install.js', [], { LOG: path.join(root, 'composer.log'), COMPOSER_EXIT: '3' });
         assert.equal(result.status, 3);
     });
 });
@@ -124,7 +125,7 @@ describe('build.js', { skip }, () => {
         const root = makeTree();
         const log = path.join(root, 'npm.log');
         fakeBin(root, 'npm', fakeNpm);
-        const result = run(root, 'build.js', [], { LOG: log });
+        const result = run(root, 'build/build.js', [], { LOG: log });
         assert.equal(result.status, 0);
         const steps = fs.readFileSync(log, 'utf8').trim().split('\n');
         assert.deepEqual(steps.slice(0, 2).sort(), ['build:frontend', 'build:php']);
@@ -136,7 +137,7 @@ describe('build.js', { skip }, () => {
             const root = makeTree();
             const log = path.join(root, 'npm.log');
             fakeBin(root, 'npm', fakeNpm);
-            const result = run(root, 'build.js', [], { LOG: log, FAIL: failing });
+            const result = run(root, 'build/build.js', [], { LOG: log, FAIL: failing });
             assert.equal(result.status, 1);
             assert.ok(!fs.readFileSync(log, 'utf8').includes('build:signatures'));
         });
@@ -154,7 +155,7 @@ describe('clean.js', () => {
     it('--logs removes only .log files', () => {
         const root = makeTree();
         populate(root);
-        assert.equal(run(root, 'clean.js', ['--logs']).status, 0);
+        assert.equal(run(root, 'build/clean.js', ['--logs']).status, 0);
         assert.ok(!fs.existsSync(path.join(root, 'src/logs/app.log')));
         assert.ok(fs.existsSync(path.join(root, 'src/logs/keep.txt')));
         assert.ok(fs.existsSync(path.join(root, 'node_modules')));
@@ -163,7 +164,7 @@ describe('clean.js', () => {
     it('removes dependencies and logs', () => {
         const root = makeTree();
         populate(root);
-        assert.equal(run(root, 'clean.js').status, 0);
+        assert.equal(run(root, 'build/clean.js').status, 0);
         assert.ok(!fs.existsSync(path.join(root, 'node_modules')));
         assert.ok(!fs.existsSync(path.join(root, 'src/vendor')));
         assert.ok(!fs.existsSync(path.join(root, 'src/logs/app.log')));
@@ -180,7 +181,7 @@ describe('docker-config.js', () => {
         const root = makeTree();
         write(root, 'docker/Config.php', dockerConfig);
         write(root, 'src/Include/Config.php', "<?php\n$sPASSWORD = 'changeme'; // old\n");
-        assert.equal(run(root, 'docker-config.js', ['docker/Config.php']).status, 0);
+        assert.equal(run(root, 'ci/docker-config.js', ['docker/Config.php']).status, 0);
         assert.equal(fs.readFileSync(path.join(root, 'src/Include/Config.php'), 'utf8'), dockerConfig);
         assert.deepEqual(backups(root), []);
     });
@@ -189,7 +190,7 @@ describe('docker-config.js', () => {
         const root = makeTree();
         write(root, 'docker/Config.php', dockerConfig);
         write(root, 'src/Include/Config.php', realConfig);
-        assert.equal(run(root, 'docker-config.js', ['docker/Config.php']).status, 0);
+        assert.equal(run(root, 'ci/docker-config.js', ['docker/Config.php']).status, 0);
         const [backup] = backups(root);
         assert.equal(fs.readFileSync(path.join(root, 'src/Include', backup), 'utf8'), realConfig);
         if (process.platform !== 'win32') {
@@ -201,14 +202,14 @@ describe('docker-config.js', () => {
     it('--remove backs up a real config and deletes it', () => {
         const root = makeTree();
         write(root, 'src/Include/Config.php', realConfig);
-        assert.equal(run(root, 'docker-config.js', ['--remove']).status, 0);
+        assert.equal(run(root, 'ci/docker-config.js', ['--remove']).status, 0);
         assert.ok(!fs.existsSync(path.join(root, 'src/Include/Config.php')));
         assert.equal(backups(root).length, 1);
     });
 
     it('prints usage without an argument', () => {
         const root = makeTree();
-        const result = run(root, 'docker-config.js');
+        const result = run(root, 'ci/docker-config.js');
         assert.equal(result.status, 1);
         assert.match(result.stderr, /usage/);
     });

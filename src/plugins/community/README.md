@@ -33,7 +33,7 @@ installer never auto-enables.
 ## Orphan scan
 
 `src/plugins/community/` is excluded from `AppIntegrityService`'s
-orphan-file scan (and from `scripts/generate-signatures-node.js`) so
+orphan-file scan (and from `scripts/build/generate-signatures-node.js`) so
 community plugin files never show up as "orphans".
 
 ## Plugin localization

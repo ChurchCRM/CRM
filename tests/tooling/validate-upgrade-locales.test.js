@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert');
-const { compare, shippedLocaleCodes, upgradeLocaleCodes } = require('../../scripts/validate-upgrade-locales');
+const { compare, shippedLocaleCodes, upgradeLocaleCodes } = require('../../scripts/lint/validate-upgrade-locales');
 
 const sqlWith = (codes) =>
     [

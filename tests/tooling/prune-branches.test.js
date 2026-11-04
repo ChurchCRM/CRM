@@ -6,7 +6,7 @@ const os = require('node:os');
 const path = require('node:path');
 
 const skip = process.platform === 'win32' && 'fake shell binaries need a POSIX shell';
-const SCRIPT = path.join(__dirname, '../../scripts/prune-branches.js');
+const SCRIPT = path.join(__dirname, '../../scripts/maintainer/prune-branches.js');
 const trees = [];
 const cleanEnv = Object.fromEntries(Object.entries(process.env).filter(([key]) => !key.startsWith('GIT_')));
 

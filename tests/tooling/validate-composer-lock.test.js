@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
-const { validateComposerLock } = require('../../scripts/validate-composer-lock');
+const { validateComposerLock } = require('../../scripts/lint/validate-composer-lock');
 
 // A hook run exports GIT_DIR; the temp repo must not resolve to the real one.
 for (const key of Object.keys(process.env)) {

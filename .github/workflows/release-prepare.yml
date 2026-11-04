@@ -50,7 +50,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Run release script
-        run: ./scripts/startNewRelease.js ${{ inputs.version }}
+        run: ./scripts/release/startNewRelease.js ${{ inputs.version }}
 
       - name: Format web
         run: npm run format:web
