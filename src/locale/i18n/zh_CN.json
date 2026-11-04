@@ -5957,6 +5957,9 @@
   "Total Cash": "现金总计",
   "Total Coin": "硬币总计",
   "Witness": "证人",
+  "No changes": "没有变化",
+  "Set up email": "配置电子邮件",
+  "This person is deceased.": "此人已故",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：创建了 {{count}} 个发生",
     "other": "\"{{name}}\"：创建了 {{count}} 个发生"

@@ -36,7 +36,7 @@ Read the release notes for every package between the old and new version. A patc
    - Check open alerts: `gh api "repos/ChurchCRM/CRM/dependabot/alerts?state=open"`. Say which ecosystem each alert belongs to.
 9. **Verify.** Run what CI runs for the changed ecosystem, and record what ran:
    - npm: `npm ci`, `npm run build`, `npm run lint`, and the Cypress specs for the pages a runtime package touches (`cypress-testing.md`).
-   - Composer: `cd src && composer install`, then `npm run build:php:validate:all` and `npm run test:php` from the repo root.
+   - Composer: `cd src && composer install`, then `npm run build:php:validate -- --all` and `npm run test:php` from the repo root.
    - Any generator CI runs, with a diff of its output.
    A check that could not run is listed as not run, with the reason.
 10. **Report.** Approve, merge, comment and push stay with the maintainer (`maintainer-review-gates.md`).

@@ -24612,3 +24612,15 @@ msgstr "동전 합계"
 msgid "Witness"
 msgstr "증인"
 
+#: 
+msgid "No changes"
+msgstr "변경 사항 없음"
+
+#: 
+msgid "Set up email"
+msgstr "이메일 설정"
+
+#: 
+msgid "This person is deceased."
+msgstr "이 사람은 별세했습니다"
+

@@ -24200,3 +24200,15 @@ msgstr "केवल आपके द्वारा भेजा गया ई�
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "दोहराए जाने वाले कार्यक्रम नहीं बनाए जा सके। विवरण के लिए एप्लिकेशन लॉग देखें।"
 
+#: 
+msgid "No changes"
+msgstr "कोई बदलाव नहीं"
+
+#: 
+msgid "Set up email"
+msgstr "ईमेल सेट अप करें"
+
+#: 
+msgid "This person is deceased."
+msgstr "यह व्यक्ति दिवंगत है"
+

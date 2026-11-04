@@ -5889,6 +5889,9 @@
   "The geocoding service did not answer — try again later": "Hindi tumugon ang serbisyo ng geocoding — subukan muli mamaya",
   "Only the email you sent is shown.": "Ang email na ipinadala mo lang ang ipinapakita.",
   "Repeat events could not be created. Check the application log for details.": "Hindi magawa ang mga paulit-ulit na kaganapan. Suriin ang log ng aplikasyon para sa mga detalye.",
+  "No changes": "Walang mga Pagbabago",
+  "Set up email": "I-set up ang Email",
+  "This person is deceased.": "Yumao na ang taong ito",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：lumikha ng {{count}} occurrence",
     "other": "\"{{name}}\"：lumikha ng {{count}} occurrences"

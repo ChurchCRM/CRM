@@ -24666,3 +24666,2547 @@ msgstr "Celkem mince"
 msgid "Witness"
 msgstr "Svědek"
 
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d darů nemá rodinu. Nelze je uvést na potvrzení."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "Otevřených vkladů s datem v tomto roce: %d. Uzavřete je, aby byl každý dar před odesláním potvrzení konečný."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "Plateb, které ještě nejsou na žádném vkladu: %d."
+
+#: 
+msgid "Can be emailed"
+msgstr "Lze odeslat e-mailem"
+
+#: 
+msgid "Closing line"
+msgstr "Závěrečná věta"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Všechny vklady s datem v tomto roce jsou uzavřené."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Každý dar patří k rodině."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Každá platba v tomto roce je na vkladu."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Vytvořit daňová potvrzení"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Přehled darů (daňová potvrzení)"
+
+#: 
+msgid "Opening line"
+msgstr "Úvodní věta"
+
+#: 
+msgid "Print and mail"
+msgstr "Vytisknout a odeslat poštou"
+
+#: 
+msgid "Qty"
+msgstr "Počet"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Zkontrolujte rok a poté vytiskněte nebo odešlete potvrzení o darech."
+
+#: 
+msgid "Signed by"
+msgstr "Podepsal(a)"
+
+#: 
+msgid "Thank-you line"
+msgstr "Poděkování"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Ověřte, že se na daňových potvrzeních zobrazuje název sboru, adresa a kontaktní údaje."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Dary na konci roku"
+
+#: 
+msgid "As of: %s"
+msgstr "Ke dni: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Alespoň jedna kladná rodinná platba ve vybraných %d fiskálních letech, nejpozději ke dni kontroly: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Křest, přihlášky do volebního seznamu, bydliště, status přijímajícího, účast, dobrá pověst a místní výjimky je třeba ověřit zvlášť, pokud to vyžadují vaše stanovy. Délka členství není důkazem účasti."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Vyberte existující klasifikaci."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Vyberte alespoň jednu klasifikaci ke kontrole."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Vyberte klasifikace, které váš sbor používá. U žádné klasifikace se nepředpokládá, že zakládá hlasovací právo."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Vedení sboru musí potvrdit způsobilost podle stanov sboru. Tento seznam pouze zobrazuje osoby, které odpovídají vybraným filtrům."
+
+#: 
+msgid "Classifications to review"
+msgstr "Klasifikace ke kontrole"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Klasifikace: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Zesnulé osoby, neaktivní osoby a klasifikace a neaktivní rodiny a osoby čekající na kontrolu jsou vyloučeny."
+
+#: 
+msgid "Download Review List"
+msgstr "Stáhnout kontrolní seznam"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Zadejte platné datum kontroly mezi roky 1900 a 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Zadejte celá čísla v zobrazených mezích."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Fiskální roky ke kontrole (0–100; 0 znamená bez požadavku na dary)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Dary se evidují podle rodiny, nikoli podle jednotlivce. Zapněte toto pouze tehdy, když stanovy dovolují, aby rodinná platba splnila toto kritérium. Nedokazuje to, že darovala každá osoba. Období zahrnuje vybraný fiskální rok a končí nejpozději dnem kontroly."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Poslední zahrnutý fiskální rok"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Minimální věk (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Minimální věk: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Minimální délka členství v měsících (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Minimální délka členství: %d měsíců"
+
+#: 
+msgid "No donation requirement."
+msgstr "Bez požadavku na dar."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Těmto filtrům neodpovídá žádná osoba. Zkontrolujte chybějící data narození nebo členství a upravte kritéria."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Volitelný požadavek na rodinné dary"
+
+#: 
+msgid "People matching filters"
+msgstr "Osoby odpovídající filtrům"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Osoby vynechané kvůli chybějícím požadovaným datům"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Připravte seznam ke kontrole sborem pomocí klasifikací a volitelných filtrů věku, členství a rodinných darů."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Připravte seznam ke kontrole sborem podle vašich stanov."
+
+#: 
+msgid "Review date"
+msgstr "Datum kontroly"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Podle stanov sboru zvolte filtry a poté nechte oprávněné vedení sboru seznam zkontrolovat. Splnění těchto filtrů nezakládá hlasovací způsobilost. Tato sestava nezaznamenává způsobilost ani neprovádí volbu."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Hlasující členové — kontrolní seznam"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Nula vypíná volitelný požadavek. Věk vyžaduje úplné datum narození; délka členství vyžaduje datum členství. Osoby s chybějícími požadovanými daty jsou vynechány a počítány zvlášť. Zesnulé osoby, neaktivní osoby a klasifikace a neaktivní rodiny a osoby čekající na kontrolu jsou vždy vyloučeny; použije se aktuální klasifikace a stav, nikoli historický stav."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Částka k úhradě za %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "V vybraném adresáři nelze vytvořit soukromé dočasné úložiště PDF."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Ponechte prázdné, chcete-li použít systémový dočasný adresář. Jinak zadejte existující zapisovatelný adresář chráněný před přístupem z webu."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Dočasný adresář PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "Dočasné úložiště PDF musí být soukromé a zapisovatelné."
+
+#: 
+msgid "Reporting"
+msgstr "Sestavy"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "Dočasný adresář PDF neexistuje nebo není dostupný."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "Dočasný adresář PDF musí být absolutní cesta k adresáři."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Daňové identifikační číslo sboru (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Závěrečná věta"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Řídí volitelnou telemetrii. Selhání instalace a aktualizace databáze odesílají omezené diagnostické údaje do služby PostHog i při vypnuté telemetrii. Tyto zprávy o selhání obsahují verze softwaru a prostředí a očištěnou chybu databáze, ale žádné ID instalace ani příkaz SQL."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Diagnostikovat neúspěšné instalace a aktualizace databáze"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Podrobnosti o selhání instalace a aktualizace"
+
+#: 
+msgid "Open in browser window"
+msgstr "Otevřít v okně prohlížeče"
+
+#: 
+msgid "Opening Line"
+msgstr "Úvodní věta"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Volitelná telemetrie používání se odesílá pouze tehdy, je-li zapnutá. Selhání instalace a aktualizace databáze vždy odešlou omezenou diagnostiku na pomoc komunitě, i když zvolíte Ne, děkuji. Zprávy o selhání obsahují verze softwaru a prostředí a očištěnou chybu databáze, bez ID instalace a příkazu SQL."
+
+#: 
+msgid "PDF Handling"
+msgstr "Zpracování PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "Výstup PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "Režim zpracování PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "Řádek s otázkami"
+
+#: 
+msgid "Save File dialog"
+msgstr "Dialog Uložit soubor"
+
+#: 
+msgid "Signer"
+msgstr "Podepisující"
+
+#: 
+msgid "Statement Settings"
+msgstr "Nastavení potvrzení"
+
+#: 
+msgid "Statement Wording"
+msgstr "Znění potvrzení"
+
+#: 
+msgid "Tax Information"
+msgstr "Daňové údaje"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Telemetrie se odesílá do služby PostHog ve Spojených státech. Zprávy o selhání instalace a aktualizace se odesílají i při vypnuté volitelné telemetrii."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Tento termín byl zrušen. Od vás už nic není potřeba."
+
+#: 
+msgid "always sent"
+msgstr "odesílá se vždy"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Hlavičku se nepodařilo odebrat"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Hlavičku se nepodařilo uložit"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Hlavičku se nepodařilo nahrát"
+
+#: 
+msgid "Greeting"
+msgstr "Oslovení"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Oslovení a podpis dopisu"
+
+#: 
+msgid "Letterhead"
+msgstr "Hlavička dopisu"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF nebo WebP. Nejlépe se hodí široký pruh, například 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Tiskne se v záhlaví PDF dopisů s grafickou hlavičkou, například potvrzení o darech. Bez ní se na dopisech tiskne název a adresa sboru."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Odebrat hlavičku? Na dopisech se bude tisknout název a adresa sboru."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Nastavte hlavičku, kterou tisknou PDF dopisy"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Používá se název a adresa sboru"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Používá se cesta k hlavičce nastavená v nastavení systému"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Znění, daňové číslo a zpracování PDF pro potvrzení o darech"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s jako %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s je nyní vaše e-mailová adresa. Můžete se s ní přihlásit do členského portálu."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} dalších"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "Bylo požádáno o změnu vaší e-mailové adresy"
+
+#: 
+msgid "A family"
+msgstr "Rodina"
+
+#: 
+msgid "A group"
+msgstr "Skupina"
+
+#: 
+msgid "A ministry"
+msgstr "Služba"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "Nová adresa se změní až poté, co použijete odkaz, který na ni odešleme."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "Přístupový klíč lze přidat jen do %d minut od přihlášení e-mailovou adresou. Odhlaste se, znovu se přihlaste e-mailem a vraťte se sem."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "Přístupový klíč vás přihlásí pomocí Face ID, otisku prstu nebo PIN zařízení, bez e-mailového kódu."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "K přihlášení do členského portálu byl přidán přístupový klíč"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "K přihlášení do členského portálu byl v %1$s dne %2$s přidán přístupový klíč, ze zařízení %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "K přihlášení do členského portálu byl v %1$s dne %2$s přidán přístupový klíč."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "Osoba, která o ni přijde, pak nemá vlastní e-mail: pošta určená jen jí, například e-mail skupině, se přeskočí a editor e-mailu to oznámí."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "U osoby, jejíž záznam skrývá věk, se nikdy nezobrazí rok narození."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "V členském portálu byla v %s podána žádost o změnu vaší e-mailové adresy z %s na %s. Změna proběhne jen tehdy, když se použije odkaz odeslaný na %s."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Řádek nemá očekávaný tvar."
+
+#: 
+msgid "A team"
+msgstr "Tým"
+
+#: 
+msgid "Add a passkey"
+msgstr "Přidat přístupový klíč"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Přístupový klíč přidejte jen na vlastním telefonu nebo počítači, nikdy na sdíleném nebo veřejném."
+
+#: 
+msgid "Add an email"
+msgstr "Přidat e-mail"
+
+#: 
+msgid "Added %s"
+msgstr "Přidáno %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Výjimky správce"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "Dospělý z rodiny %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "Dospělý z rodiny"
+
+#: 
+msgid "All events"
+msgstr "Všechny události"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Povolit přihlášení jako osoba"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Povolit změny během přihlášení jako osoba"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Povolit změny, když správce používá přihlášení jako osoba. Je-li vypnuto, je přihlášení jako osoba jen pro čtení."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Už ji má člen rodiny"
+
+#: 
+msgid "Also used by"
+msgstr "Používá také"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Správce může na stránce osoby udělit jakékoli oprávnění jedné osobě. Položka „Výjimky správce“ se pak zobrazí zde, s počtem osob, kterým bylo uděleno."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "Tuto adresu už používá jiná osoba"
+
+#: 
+msgid "Applies to"
+msgstr "Platí pro"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Schvalujte nebo zamítejte žádosti o zástup v dobrovolnickém týmu."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Požádat o nový e-mail"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Oprávnění se uděluje osobě, nikoli přihlášení, takže je lze udělit dříve, než ho osoba má. Osoba, která se přihlašuje jen do členského portálu, vidí jen svůj rozvrh, dokud jí správce neudělí účet personálu."
+
+#: 
+msgid "Awaiting review"
+msgstr "Čeká na kontrolu"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Zpět k přihlášení"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Procházet celý adresář"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Může se přihlásit do členského portálu"
+
+#: 
+msgid "Can sign in?"
+msgstr "Může se přihlásit?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Nelze vypnout přihlášení jedinému správci, který se může přihlásit."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Nelze se přihlásit"
+
+#: 
+msgid "Change family details"
+msgstr "Změnit údaje rodiny"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Změňte adresu a kontaktní údaje rodiny a přidejte člena rodiny ke kontrole."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Změnit vlastní jméno, kontaktní údaje a fotografii."
+
+#: 
+msgid "Changed"
+msgstr "Změněno"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Změněno po přihlášení osoby"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Změněno importem po přihlášení osoby"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Změněno personálem po přihlášení osoby"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Změněno přes API po přihlášení osoby"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Během přihlášení jako osoba jsou změny vypnuté."
+
+#: 
+msgid "Changes needed"
+msgstr "Jsou potřeba změny"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Změny se ukládají průběžně."
+
+#: 
+msgid "Check your email"
+msgstr "Zkontrolujte e-mail"
+
+#: 
+msgid "Choose a permission"
+msgstr "Vyberte oprávnění"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Vyberte oprávnění, k čemu slouží a jeho poslední den a uveďte důvod."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Vyberte fotografii nebo pořiďte selfie"
+
+#: 
+msgid "Choose a theme"
+msgstr "Vyberte motiv"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Vyberte alespoň jeden řádek."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Vyberte najednou nejvýše %d řádků."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "V seznamu zvolte, jak se mají zobrazovat data."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Zvolte poslední den tohoto oprávnění."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Zvolte, k čemu oprávnění slouží."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Zvolte ano nebo ne."
+
+#: 
+msgid "Church Office"
+msgstr "Kancelář sboru"
+
+#: 
+msgid "Church country"
+msgstr "Země sboru"
+
+#: 
+msgid "Church default: %s"
+msgstr "Výchozí nastavení sboru: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Přihlášení vedoucího sboru"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Klasifikace, jejichž členové se smějí přihlásit do členského portálu, jako seznam ID klasifikací oddělených čárkami."
+
+#: 
+msgid "Clear selection"
+msgstr "Zrušit výběr"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Kódy, relace a zařízení"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Potvrdit e-mailovou adresu"
+
+#: 
+msgid "Confirm email address"
+msgstr "Potvrdit e-mailovou adresu"
+
+#: 
+msgid "Confirm family details"
+msgstr "Potvrdit údaje rodiny"
+
+#: 
+msgid "Confirm selected"
+msgstr "Potvrdit vybrané"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Tento e-mail potvrďte až poté, co osobně nebo telefonicky ověříte, že jde o vlastní adresu této osoby. Po potvrzení ji lze použít k přihlášení do členského portálu."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Potvrďte svou e-mailovou adresu"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Potvrďte svou novou e-mailovou adresu"
+
+#: 
+msgid "Confirmed"
+msgstr "Potvrzeno"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Data musí být zapsána jako YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Rozhodovat o žádostech o zástup"
+
+#: 
+msgid "Device"
+msgstr "Zařízení"
+
+#: 
+msgid "Device remembered"
+msgstr "Zařízení zapamatováno"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Zařízení a přístupové klíče"
+
+#: 
+msgid "Directory classifications"
+msgstr "Klasifikace adresáře"
+
+#: 
+msgid "Directory section"
+msgstr "Oddíl adresáře"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Vypnout přihlášení"
+
+#: 
+msgid "Do not show"
+msgstr "Nezobrazovat"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Každý z nich také potřebuje vlastní e-mail, který nikdo jiný nepoužívá."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Každý přihlašovací e-mail funguje jednou a jen omezenou dobu; novější e-mail ho nahradí."
+
+#: 
+msgid "Edit my details"
+msgstr "Upravit moje údaje"
+
+#: 
+msgid "Email address changed"
+msgstr "E-mailová adresa změněna"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Zadaná e-mailová adresa: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "E-mailové adresy k potvrzení: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "E-mail změněn"
+
+#: 
+msgid "Email code"
+msgstr "E-mailový kód"
+
+#: 
+msgid "Email confirmed"
+msgstr "E-mail potvrzen"
+
+#: 
+msgid "Email link"
+msgstr "E-mailový odkaz"
+
+#: 
+msgid "Email me a code"
+msgstr "Poslat mi kód e-mailem"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Poslat mi potvrzovací odkaz e-mailem"
+
+#: 
+msgid "Email needs attention"
+msgstr "E-mail vyžaduje pozornost"
+
+#: 
+msgid "Email problem"
+msgstr "Problém s e-mailem"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "E-mailem odeslaný přihlašovací kód a odkaz zrušeny"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Ověřovací odkaz odeslaný e-mailem"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Potvrzené e-maily: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Zapnout přihlášení"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Ukončit všechny relace členského portálu této osoby a zapomenout její zapamatovaná zařízení? Přístupové klíče zůstanou, takže se může znovu přihlásit."
+
+#: 
+msgid "Ended %s"
+msgstr "Ukončeno %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Ukončeno změnou jejich přihlášení"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Ukončeno při vypnutí přihlášení členů"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Zadejte celé číslo od %1$d do %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Zadejte svou e-mailovou adresu."
+
+#: 
+msgid "Every kind"
+msgstr "Každý druh"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Každé přihlášení člena, odmítnutí a změna přihlášení, od nejnovějších. Nikdy neobsahuje kód, odkaz ani přístupový klíč."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Všichni uvedení od A do Z, s vyhledávacím polem."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Každý, koho pravidla přihlášení pustí, se pak může do členského portálu přihlásit vlastním e-mailem."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Všichni, kdo se za posledních 30 dní přihlásili do členského portálu, od nejnovějších."
+
+#: 
+msgid "Everywhere"
+msgstr "Všude"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Rodiny, které člen potvrdil za posledních 30 dní, z členského portálu nebo z ověřovacího odkazu v e-mailu."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Potvrzené rodiny za posledních 30 dní"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Údaje rodiny potvrzeny"
+
+#: 
+msgid "Family email"
+msgstr "E-mail rodiny"
+
+#: 
+msgid "Family emails not moved"
+msgstr "E-maily rodiny nepřesunuty"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Rodinné role, jejichž členové se smějí přihlásit do členského portálu, jako seznam ID rolí oddělených čárkami."
+
+#: 
+msgid "Find someone"
+msgstr "Najít osobu"
+
+#: 
+msgid "Fix by hand"
+msgstr "Opravit ručně"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Opravit sdílené e-maily"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Z přihlášení personálu"
+
+#: 
+msgid "Give a permission"
+msgstr "Udělit oprávnění"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Udělit oprávnění portálu"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Dejte každé osobě vlastní e-mail"
+
+#: 
+msgid "Give permission"
+msgstr "Udělit oprávnění"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Udělil(a) %1$s do %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Udělil(a) %s"
+
+#: 
+msgid "Given to"
+msgstr "Uděleno"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Uděleno všem"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Uděleno, ale není v platnosti"
+
+#: 
+msgid "Go to sign in"
+msgstr "Přejít k přihlášení"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Přejít do členského portálu"
+
+#: 
+msgid "Has signed in"
+msgstr "Už se přihlásil(a)"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Už se přihlásil(a): jejich relace a zařízení skončí"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Zde je váš kód pro přihlášení do členského portálu. Zadejte ho na přihlašovací stránce v prohlížeči, kde jste o něj požádali. Nebo stiskněte tlačítko a přihlaste se na tomto zařízení."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Skrýt oprávnění"
+
+#: 
+msgid "How"
+msgstr "Jak"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Kolik e-mailů k přihlášení do členského portálu může jedna IP adresa požádat za hodinu. Nastavte 0 pro bez omezení, například když se všichni dostávají do ChurchCRM přes jednu adresu."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Kolik dní zůstane zařízení přihlášené do členského portálu poté, co se člen rozhodne zůstat přihlášen. Nastavte 0, chcete-li volbu odebrat."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Po kolika minutách nečinnosti skončí relace členského portálu."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Kolik minut zůstane platný kód a odkaz k přihlášení do členského portálu."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Doba nečinnosti (minuty)"
+
+#: 
+msgid "Idle too long"
+msgstr "Příliš dlouhá nečinnost"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Pokud je %1$s vaše nová adresa, potvrďte ji tlačítkem níže. Dokud není potvrzena, nelze se s ní přihlásit. Odkaz funguje jednou, do %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Pokud lze tuto adresu použít k přihlášení, poslali jsme vám kód e-mailem. Nic po několika minutách? Obraťte se na kancelář sboru."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Pokud jste ho nepřidali vy, odeberte ho na stránce Přihlášení a zařízení a obraťte se na kancelář sboru."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Pokud jste o tuto změnu nežádali, obraťte se prosím na kancelář sboru."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Pokud jste o to nežádali, obraťte se prosím na kancelář sboru."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Mohlo vypršet nebo už být použito. Potřebujete-li pomoc, obraťte se prosím na kancelář sboru."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Jeho doplněk není nainstalován"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Přejít na písmeno"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Zůstat přihlášen (dny)"
+
+#: 
+msgid "Keeps it"
+msgstr "Ponechá si ji"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Druh nepotvrzeného e-mailu"
+
+#: 
+msgid "Last day"
+msgstr "Poslední den"
+
+#: 
+msgid "Last used"
+msgstr "Naposledy použito"
+
+#: 
+msgid "Last used %s"
+msgstr "Naposledy použito %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Vedoucí %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Umožnit správcům otevřít členský portál osoby jako tato osoba z nabídky Akce dané osoby, pokud je přihlášení členů zapnuté."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Umožnit členům přidávat přístupové klíče a přihlašovat se jimi do členského portálu."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Umožnit členům přihlásit se do členského portálu vlastní e-mailovou adresou. Lze zapnout jen tehdy, když odesílání e-mailů funguje."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Umožnit členům přihlášení e-mailem"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Platnost odkazu a kódu (minuty)"
+
+#: 
+msgid "Login as %s"
+msgstr "Přihlásit se jako %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Přihlášení jako osoba"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Přihlášení jako osoba se nepodařilo spustit."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Přihlášení jako osoba skončilo: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Historie přihlášení jako osoba"
+
+#: 
+msgid "Login as Person started"
+msgstr "Přihlášení jako osoba zahájeno"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Přihlášení jako osoba zastaveno"
+
+#: 
+msgid "Look up anyone"
+msgstr "Vyhledat kohokoli"
+
+#: 
+msgid "Loses it"
+msgstr "Přijde o ni"
+
+#: 
+msgid "Manage a team"
+msgstr "Spravovat tým"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Spravovat moje přihlášení a zařízení"
+
+#: 
+msgid "Matches: %s"
+msgstr "Shody: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Smí se přihlásit"
+
+#: 
+msgid "May sign in now"
+msgstr "Smí se přihlásit nyní"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Kód pro přihlášení do členského portálu"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Oznámení o přihlášení do členského portálu"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Přihlášení a aktivita v členském portálu, pro členy i pro personál, který portál otevře ze svého přihlášení personálu."
+
+#: 
+msgid "Member sign-in"
+msgstr "Přihlášení členů"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Přihlášení členů posílá každé osobě kód e-mailem, takže e-mail (SMTP) musí fungovat, než ho zapnete."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Přihlášení členů je vypnuté"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Přihlášení členů je pro sbor vypnuté."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Přihlášení členů je vypnuté."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Přihlášení členů zatím není k dispozici. Obraťte se prosím na kancelář sboru."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Přihlášení členů nikdy nepustí osoby, které jsou zesnulé, neaktivní, v neaktivní rodině, čekají na kontrolu nebo mají zapnuté Vypnout přihlášení. Tyto volby rozhodují, kdo další smí."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Přihlášení členů posílá každému členovi kód e-mailem, takže ho lze zapnout jen tehdy, když ChurchCRM umí odesílat e-mail. Nejprve zapněte e-mail a nastavte poštovní server."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Členové vidí stránku Kalendář, dokud je zapnutý alespoň jeden kalendář."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Členové zadají alespoň %d písmen jména a uvidí nejvýše %d shod. Úplný seznam se nikdy nezobrazí."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Členové, kteří jsou nyní přihlášeni, budou odhlášeni a nikdo se nebude moci přihlásit svým e-mailem, dokud se přihlášení členů znovu nezapne."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Členové s těmito klasifikacemi najdou Adresář v nabídce členského portálu."
+
+#: 
+msgid "Minimum age"
+msgstr "Minimální věk"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Další pokusy s touto adresou v příští hodině další oznámení neodešlou."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Přesunuto z e-mailu rodiny"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Přesunuto na hlavu domácnosti"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Přesunuto na manžela/manželku"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Jste u nás ve sboru noví? Řekněte nám o své rodině a ozveme se, abychom vás přivítali."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Zatím žádné relace přihlášení jako osoba."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Bez data narození a není hlavou domácnosti ani manželem/manželkou"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Není zapnutý žádný kalendář, takže členové stránku Kalendář nevidí."
+
+#: 
+msgid "No changes"
+msgstr "Žádné změny"
+
+#: 
+msgid "No changes made."
+msgstr "Nebyly provedeny žádné změny."
+
+#: 
+msgid "No family role"
+msgstr "Bez rodinné role"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Žádná hlava domácnosti ani manžel/manželka nemůže přijímat e-mail rodiny."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Nesdílí ji hlava domácnosti ani manžel/manželka"
+
+#: 
+msgid "No match"
+msgstr "Žádná shoda"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Pravidlu přihlášení zatím nikdo neodpovídá. Zaškrtněte více rodinných rolí nebo klasifikací, nebo snižte minimální věk."
+
+#: 
+msgid "No passkey was added."
+msgstr "Nebyl přidán žádný přístupový klíč."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Nebyl použit žádný přístupový klíč. Zkuste to znovu, nebo se přihlaste e-mailovou adresou."
+
+#: 
+msgid "No person has this email"
+msgstr "Tento e-mail nemá žádná osoba"
+
+#: 
+msgid "No personal email"
+msgstr "Bez osobního e-mailu"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Žádné sdílené e-maily nikomu nebrání v přihlášení."
+
+#: 
+msgid "No such person"
+msgstr "Taková osoba neexistuje"
+
+#: 
+msgid "No, thanks"
+msgstr "Ne, děkuji"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Nikdo se nemůže přihlásit osobním e-mailem, který sdílejí dvě osoby oprávněné k přihlášení. U adresy sdílené v jedné rodině si ji ponechá hlava domácnosti, jinak manžel/manželka (nejdříve nejstarší). Všichni ostatní, kdo ji sdílejí, o ni přijdou. Odškrtněte ty, které chcete opravit jinak."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Zatím se nikdo nemůže přihlásit: v části Kdo se smí přihlásit zaškrtněte alespoň jednu klasifikaci."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Zatím se nikdo nemůže přihlásit: v části Kdo se smí přihlásit zaškrtněte alespoň jednu rodinnou roli a alespoň jednu klasifikaci."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Zatím se nikdo nemůže přihlásit: v části Kdo se smí přihlásit zaškrtněte alespoň jednu rodinnou roli."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "V adresáři tomuto jménu nikdo neodpovídá."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "V adresáři zatím nikdo není uveden."
+
+#: 
+msgid "Not ended"
+msgstr "Neukončeno"
+
+#: 
+msgid "Not moved"
+msgstr "Nepřesunuto"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Nejste si jisti, který e-mail máme? Obraťte se na kancelář sboru."
+
+#: 
+msgid "Not yet"
+msgstr "Zatím ne"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Poznamenáno v časové ose rodiny"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Z nich osoby, které se přihlásily: {{total}}. Jsou odhlášeny všude a adresa dostane oznámení."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Vypnuto pro všechny: „%s“ je vypnuté"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Vypnuto pro všechny: správa dobrovolníků není nastavena na V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Vypnuto pro všechny: jeho funkce je vypnutá"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Vypnuto pro všechny: jeho doplněk je vypnutý"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Vypnuto pro všechny: s členy není sdílen žádný kalendář"
+
+#: 
+msgid "Office list"
+msgstr "Seznam kanceláře"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Jakmile je potvrzena, lze ji použít k přihlášení do členského portálu."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Lze vybrat jen adresy, které smíte potvrdit."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Důvod vidí jen správci."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "E-mail osoby, která má účet personálu nebo oprávnění portálu, může změnit jen správce."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "E-mail, který nahradil ten, jímž se osoba přihlašovala, může potvrdit jen správce."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "E-mail osoby, která má účet personálu nebo oprávnění portálu, může potvrdit jen správce."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Tuto adresu může opravit jen správce: někdo, kdo ji sdílí, má účet personálu nebo oprávnění portálu."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Tyto údaje může potvrdit jen dospělý z vaší rodiny. Obraťte se prosím na kancelář sboru."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Potvrzujte jen adresy, o kterých víte, že patří dané osobě. Kdokoli, kdo adresu přečte, se může přihlásit jako tato osoba."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Na seznamu kanceláře mohou být jen žijící osoby s vlastním e-mailem."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Přidat lze jen osoby s vlastním e-mailem."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Volitelná telemetrie může zahrnovat trasy stránek, aktivní jazyk, verzi CRM, verzi PHP, rodinu OS, zemi z nastavení údajů o sboru a náhodné ID instalace. Zprávy o selhání ID instalace neobsahují. Data se odesílají do služby PostHog ve Spojených státech."
+
+#: 
+msgid "Passkey"
+msgstr "Přístupový klíč"
+
+#: 
+msgid "Passkey added"
+msgstr "Přístupový klíč přidán"
+
+#: 
+msgid "Passkey removed"
+msgstr "Přístupový klíč odebrán"
+
+#: 
+msgid "Passkeys"
+msgstr "Přístupové klíče"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Přístupové klíče jsou vypnuté."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Zde nelze použít přístupové klíče."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Na tomto webu zatím nelze použít přístupové klíče. Obraťte se prosím na kancelář sboru."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Přístupové klíče vyžadují v adrese webu název hostitele, nikoli IP adresu."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Přístupové klíče vyžadují zabezpečené připojení (HTTPS) k tomuto webu."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Přístupové klíče vyžadují, aby byla adresa webu nastavena v Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Přístupové klíče vyžadují, aby byl web poskytován přes HTTPS. Dokud tomu tak není, členům se nenabízejí."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Přístupové klíče fungují jen na %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Přístupové klíče: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Osoby, které uložená nastavení pustí: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Osoby, kterým se pošle e-mail, když se někdo nemohl přihlásit do členského portálu"
+
+#: 
+msgid "People who hold it"
+msgstr "Osoby, které ji mají"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Osoby, které přijdou o adresu: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Osoby, které přišly o adresu: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Osoby, které se smějí přihlásit: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Osoby, které se dříve přihlašovaly do členského portálu: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Osoby s těmito klasifikacemi se zobrazí v adresáři. Číslo udává, kolik aktivních osob má každou klasifikaci."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Osoby s tímto e-mailem: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Osoba %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Vyberte klasifikace ze seznamu."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Vyberte rodinné role ze seznamu."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Vyberte osoby pro seznam kanceláře."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Vyberte prosím jazyk ze seznamu."
+
+#: 
+msgid "Portal permission given"
+msgstr "Oprávnění portálu uděleno"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Oprávnění portálu odebráno"
+
+#: 
+msgid "Portal permissions"
+msgstr "Oprávnění portálu"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Přihlášení do portálu"
+
+#: 
+msgid "Problem"
+msgstr "Problém"
+
+#: 
+msgid "Reason"
+msgstr "Důvod"
+
+#: 
+msgid "Reason: %s"
+msgstr "Důvod: %s"
+
+#: 
+msgid "Refused"
+msgstr "Odmítnuto"
+
+#: 
+msgid "Register your family"
+msgstr "Zaregistrujte svou rodinu"
+
+#: 
+msgid "Remembered device"
+msgstr "Zapamatované zařízení"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Zapamatované zařízení odebráno"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Zapamatovaná zařízení: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Odebrat e-maily"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Odebrat tento přístupový klíč"
+
+#: 
+msgid "Remove this permission"
+msgstr "Odebrat toto oprávnění"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Odebráno od: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Nahrazeno po přihlášení"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Nahrazeno jiným přihlášením"
+
+#: 
+msgid "Result"
+msgstr "Výsledek"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Vést dobrovolnický tým: pozice, dobrovolníci, rozvrhy, obsazení a počty."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Uveďte, proč se přihlášení vypíná."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Uveďte, proč se toto oprávnění uděluje."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Vyhledejte kohokoli v evidenci. Každý řádek říká, zda se smí přihlásit do členského portálu, a pokud ne, proč."
+
+#: 
+msgid "Search method"
+msgstr "Způsob hledání"
+
+#: 
+msgid "Search only"
+msgstr "Jen hledání"
+
+#: 
+msgid "See family contact details"
+msgstr "Zobrazit kontaktní údaje rodiny"
+
+#: 
+msgid "See my family"
+msgstr "Zobrazit moji rodinu"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Zobrazit členský portál tak, jak ho vidí tato osoba? Stránky personálu zůstanou zavřené, dokud nestisknete Zastavit, a relace se zaznamená na této stránce a na vaší stránce uživatele."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Zobrazit kalendáře, které sbor sdílí se členy, a přihlásit se k jejich odběru."
+
+#: 
+msgid "See the church calendar"
+msgstr "Zobrazit kalendář sboru"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Zobrazit zařízení a přístupové klíče, kterými se přihlašují, a kterékoli odhlásit nebo odebrat."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Zobrazit e-mailové adresy a telefonní čísla osob ve své rodině."
+
+#: 
+msgid "See the member directory"
+msgstr "Zobrazit adresář členů"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Zobrazit jména a fotografie osob ve své rodině."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Zobrazit osoby, které sbor uvádí ve svém adresáři, s údaji, které se sbor rozhodne sdílet."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Zobrazit svůj dobrovolnický rozvrh, přihlásit se na volná místa a požádat o zástup."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Odešlete procházení jako true nebo false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Odešlete klasifikace jako seznam ID."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Odešlete nastavení adresáře jako objekt JSON."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Odešlete pole k zobrazení jako objekt hodnot true a false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Odešlete nastavení jako objekt JSON."
+
+#: 
+msgid "Session ended"
+msgstr "Relace ukončena"
+
+#: 
+msgid "Set up email"
+msgstr "Nastavit e-mail"
+
+#: 
+msgid "Set up email first."
+msgstr "Nejprve nastavte e-mail."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Opravené sdílené adresy: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Sdílené adresy k opravě: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Sdílí"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Sdílené e-maily, které brání lidem v přihlášení"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Zobrazit nebo skrýt tohoto člena"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Zobrazit stránku Adresář v členském portálu klasifikacím zvoleným níže."
+
+#: 
+msgid "Show the member directory"
+msgstr "Zobrazit adresář členů"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Zobrazit adresář členů v členském portálu."
+
+#: 
+msgid "Show with year"
+msgstr "Zobrazit s rokem"
+
+#: 
+msgid "Show without year"
+msgstr "Zobrazit bez roku"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Zobrazuje se prvních %d shod. Zadejte více ze jména, abyste našli hledanou osobu."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Přihlásit se jako %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Příště se na tomto zařízení přihlaste pomocí Face ID, otisku prstu nebo PIN zařízení."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Přihlaste se a uvidíte svou rodinu, kalendář sboru a způsoby, jak sloužit. Nepotřebujete heslo ani účet."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Přihlásit se přístupovým klíčem"
+
+#: 
+msgid "Sign out every device"
+msgstr "Odhlásit všechna zařízení"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Odhlásit nyní všechna zařízení?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Odhlásit všude"
+
+#: 
+msgid "Sign out this device"
+msgstr "Odhlásit toto zařízení"
+
+#: 
+msgid "Sign-in"
+msgstr "Přihlášení"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Přihlášení a zařízení"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Přihlášení se nepodařilo vypnout."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Přihlášení se nepodařilo zapnout."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Přihlášení vypnuto"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Požádáno o přihlašovací e-mail"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Přihlašovací e-maily na IP adresu za hodinu"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Přihlášení zapnuto"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Přihlášení je u této osoby už vypnuté."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Přihlášení je vypnuté"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Přihlášení je u této osoby vypnuté."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Přihlášení je u této osoby zapnuté."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Přihlášení není u této osoby vypnuté."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Přihlášení odmítnuto"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Přihlášení, relace a klíč API jsou zablokovány, dokud se to nevyřeší v záznamu propojené osoby."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Přihlášeni za posledních 30 dní"
+
+#: 
+msgid "Signed out"
+msgstr "Odhlášeno"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Odhlášeno změnou jejich přihlášení"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Odhlášeno všude"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Někdo požádal o e-mail k přihlášení do členského portálu, ale žádný nebyl odeslán."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Někdo se nemohl přihlásit do členského portálu"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Během přihlášení jako osoba zůstávají stránky personálu zavřené. Stiskněte Zastavit v pruhu, abyste se vrátili."
+
+#: 
+msgid "Stop"
+msgstr "Zastavit"
+
+#: 
+msgid "Stopped"
+msgstr "Zastaveno"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Sdělte kanceláři sboru, zda údaje rodiny stále platí."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Tento kód nefungoval. Zkontrolujte nejnovější e-mail od nás, nebo požádejte o nový."
+
+#: 
+msgid "That could not be removed."
+msgstr "To se nepodařilo odebrat."
+
+#: 
+msgid "That device is signed out."
+msgstr "Toto zařízení je odhlášeno."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "To není platná e-mailová adresa."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Tato stránka byla otevřená příliš dlouho. Zkuste to prosím znovu."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Tento přístupový klíč je odebrán. Už vás nemůže přihlásit."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Trvalo to příliš dlouho. Zkuste to prosím znovu."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Aktualizace 7.8.3 přidělila každý e-mail rodiny osobě. Tyto přidělit nemohla, a proto místo toho zanechala poznámku v časové ose rodiny."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Členský portál a e-maily, které vám posílá, používají tento jazyk."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Změnu se nepodařilo uložit."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Kód i tlačítko fungují jednou, do %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Kód nebo odkaz šel na adresu, která už není jejich e-mailem"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Potvrzovací e-mail se nepodařilo odeslat. Zkuste to prosím později."
+
+#: 
+msgid "The device is signed out."
+msgstr "Zařízení je odhlášeno."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "E-mailová adresa %2$s byla v %1$s odebrána z vašeho záznamu. Byli jste odhlášeni z členského portálu na všech zařízeních."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "E-mailová adresa ve vašem záznamu byla v %1$s změněna z %2$s na %3$s. Byli jste odhlášeni z členského portálu na všech zařízeních."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "E-mail se nepodařilo potvrdit."
+
+#: 
+msgid "The email could not be sent."
+msgstr "E-mail se nepodařilo odeslat."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "E-mail je potvrzen. Nyní ho lze použít k přihlášení."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Datum konce je před datem začátku."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Rodina nemá žijící aktivní hlavu domácnosti ani manžela/manželku"
+
+#: 
+msgid "The family is inactive"
+msgstr "Rodina je neaktivní"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Hlava domácnosti i manžel/manželka mají vlastní e-mail"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Poslední den nemůže být v minulosti."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Propojená osoba se nesmí přihlásit, takže se tento účet nemůže přihlásit"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Seznam se nepodařilo načíst."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Přístupový klíč se nepodařilo přidat. Zkuste to prosím znovu."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Přístupový klíč se nepodařilo ověřit"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Přístupový klíč není v evidenci, nebo byl odebrán"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Přístupový klíč byl odebrán."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Osoby, které ji sdílejí, jsou v různých rodinách, nebo nejsou v rodině"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Osoby, které tuto adresu sdílejí, se změnily. Znovu otevřete Opravit sdílené e-maily."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Oprávnění se nepodařilo udělit."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Oprávnění po tomto dni končí. Lze ho udělit znovu."
+
+#: 
+msgid "The permission was given."
+msgstr "Oprávnění bylo uděleno."
+
+#: 
+msgid "The permission was removed."
+msgstr "Oprávnění bylo odebráno."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Oprávnění se nepodařilo načíst."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Osoba toto oprávnění v členském portálu ihned ztratí."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Důvod může mít nejvýše %d znaků."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Pravidla přihlášení je pustí a každý má vlastní e-mail, který nepoužívá nikdo jiný, kdo se smí přihlásit."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Pravidla přihlášení je pustí, ale jejich e-mail ne: nemají žádný, sdílejí ho s někým jiným, kdo se smí přihlásit, nebo ještě není potvrzen."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Nastavení přihlášení se nepodařilo uložit."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Nepotvrzený e-mail se změnil. Znovu načtěte stránku a zkuste to znovu."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Jejich klasifikace se nesmí přihlásit"
+
+#: 
+msgid "Their email changed"
+msgstr "Jejich e-mail se změnil"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "Jejich e-mail ještě není potvrzen"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "Jejich e-mail je sdílen s někým jiným"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Jejich rodinná role se nesmí přihlásit"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Jejich stará přihlášení aktualizace odebrala. Zapněte přihlášení členů, aby se mohli přihlásit vlastním e-mailem."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Jejich zapamatované zařízení vypršelo"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Jejich zapamatované zařízení bylo odhlášeno"
+
+#: 
+msgid "Theme development"
+msgstr "Vývoj motivu"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Neexistuje klasifikace s ID %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Pro tento druh rozsahu není výběr."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Taková událost auditu neexistuje."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Takový problém s e-mailem neexistuje."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Takový druh nepotvrzeného e-mailu neexistuje."
+
+#: 
+msgid "There is no such list."
+msgstr "Takový seznam neexistuje."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Takové oprávnění portálu neexistuje."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Toto jsou telefony a počítače, na kterých jste se rozhodli zůstat přihlášeni. Odhlaste ty, které už nepoužíváte nebo nepoznáváte."
+
+#: 
+msgid "They have a staff account"
+msgstr "Mají účet personálu"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Smějí se přihlásit, ale nikdy se nepřihlásili."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Tato akce vyžaduje přihlášenou relaci prohlížeče."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Tuto adresu se nepodařilo změnit. Znovu otevřete Opravit sdílené e-maily a uvidíte, jak to s ní je."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Tuto adresu už nesdílejí osoby, které se smějí přihlásit."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Tento prohlížeč neumí vytvořit přístupové klíče."
+
+#: 
+msgid "This device"
+msgstr "Toto zařízení"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Toto zařízení už pro vás má přístupový klíč."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Toto zařízení už osobu neponechá přihlášenou a otevřená relace na něm skončí. Mohou se znovu přihlásit e-mailem."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Toto je mé vlastní zařízení. Ponechat mě přihlášeného."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Zde rozhodujete o hostech. Číslo udává, kolik aktivních osob má každou klasifikaci."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Tento odkaz nelze použít"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Tento odkaz vypršel nebo už byl použit"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Tato část členského portálu pro vás není dostupná."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Tento přístupový klíč už je v evidenci."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Tento přístupový klíč už osobu nepřihlásí. Mohou se přihlásit e-mailem a přidat nový."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Toto oprávnění nelze udělit na stránce osoby."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Tato osoba už má všechna oprávnění, která lze udělit."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Tato osoba už toto oprávnění má."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Tato osoba se už nemůže nikde přihlásit, ani do členského portálu, ani jako personál. Každá relace skončí a její zapamatovaná zařízení a přístupové klíče se odeberou."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Tuto osobu se nepodařilo odhlásit."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Tato osoba má účet personálu. Přihlášení jako osoba nikdy neotevře účet personálu."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Tato osoba takový přístupový klíč nemá."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Tato osoba takové oprávnění nemá."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Tato osoba takové zapamatované zařízení nemá."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Tato osoba nemá nepotvrzený e-mail."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Tato osoba se přihlásila do členského portálu. Změna tohoto e-mailu ji odhlásí všude a novou adresu nelze použít k přihlášení, dokud nebude potvrzena."
+
+#: 
+msgid "This person is deceased."
+msgstr "Tato osoba je zesnulá"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Tato osoba je z členského portálu odhlášena všude."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Tato osoba už neexistuje."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Tím se odhlásíte všude, včetně tohoto místa, a zapomenou se všechna zařízení. Znovu se můžete přihlásit e-mailovou adresou."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Tím se odhlásíte všude, včetně tohoto místa, a zapomenou se všechna zařízení. Vaše přístupové klíče zůstanou: můžete se znovu přihlásit přístupovým klíčem nebo e-mailovou adresou."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Tento nástroj je nikdy nemění. Dejte každé osobě vlastní e-mail v jejím záznamu."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Zaškrtněte to jen na vlastním telefonu nebo počítači, nikdy na sdíleném nebo veřejném."
+
+#: 
+msgid "Time: %s"
+msgstr "Čas: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Vypršel čas"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Chcete-li tento e-mail změnit, obraťte se prosím na kancelář sboru."
+
+#: 
+msgid "To fix"
+msgstr "K opravě"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Chcete-li zůstat přihlášeni na vlastním telefonu nebo počítači, zaškrtněte při příštím přihlášení „Toto je mé vlastní zařízení“."
+
+#: 
+msgid "Too many attempts"
+msgstr "Příliš mnoho pokusů"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Dnes příliš mnoho přihlašovacích e-mailů"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Příliš mnoho žádostí o přihlášení pro tuto e-mailovou adresu"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Příliš mnoho žádostí o přihlášení z této IP adresy"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Příliš mnoho chybných kódů"
+
+#: 
+msgid "Turn off"
+msgstr "Vypnout"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Vypnout přihlášení členů?"
+
+#: 
+msgid "Turn on"
+msgstr "Zapnout"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Zapnout přihlášení členů"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Zapnout přihlášení členů?"
+
+#: 
+msgid "Type a name"
+msgstr "Zadejte jméno"
+
+#: 
+msgid "Type a name or email"
+msgstr "Zadejte jméno nebo e-mail"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Zadejte alespoň %d písmen jména a poté hledejte."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Nepotvrzený e-mail"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Zjistit, kde se ChurchCRM používá"
+
+#: 
+msgid "Unknown device"
+msgstr "Neznámé zařízení"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Neznámé pole adresáře: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Neznámé nastavení adresáře: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Nepojmenované zařízení"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Nepojmenovaný přístupový klíč"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Dokud ji kancelář sboru nepotvrdí, nelze novou adresu použít k přihlášení."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Použít %1$s jako e-mailovou adresu pro %2$s v %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Použít jinou e-mailovou adresu"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Použít přístupový klíč na tomto zařízení?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Tlačítkem níže potvrďte, že %1$s je vaše e-mailová adresa v %2$s. Odkaz funguje jednou, do %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Uživatel %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Zobrazit oprávnění"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Čekáme, až potvrdíte %s. Použijte odkaz, který jsme na tuto adresu poslali."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Čekáme, až potvrdíte {{email}}. Použijte odkaz, který jsme na tuto adresu poslali."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "E-mail se nepodařilo odeslat. Zkuste to prosím později, nebo se obraťte na kancelář sboru."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Nepodařilo se vás přihlásit"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Na %s jsme poslali odkaz. Použijte ho k potvrzení nové e-mailové adresy."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Poslali jsme odkaz na {{email}}. Váš e-mail se změní, až ho použijete."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Pošleme vám e-mailem kód a odkaz k přihlášení."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Jsme rádi, že jste tu! Zabere to asi tři minuty."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Jsme rádi, že se k nám vaše rodina přidala! Vaši registraci jsme přijali. Náš tým se brzy ozve, aby vás osobně přivítal."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Výročí svatby"
+
+#: 
+msgid "Welcome"
+msgstr "Vítejte"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "To, k čemu bylo uděleno, už neexistuje"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Co členové v portálu vidí a mohou dělat a odkud každé oprávnění pochází. Osoby se počítají mezi všechny, které pravidla přihlášení pustí, a mezi personál."
+
+#: 
+msgid "What members can use"
+msgstr "Co mohou členové používat"
+
+#: 
+msgid "What to do"
+msgstr "Co udělat"
+
+#: 
+msgid "Who can see it"
+msgstr "Kdo to vidí"
+
+#: 
+msgid "Who is listed"
+msgstr "Kdo je uveden"
+
+#: 
+msgid "Who may sign in"
+msgstr "Kdo se smí přihlásit"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Kdo se smí přihlásit do členského portálu, kdo se přihlásil a čí e-mail jim v tom brání. Seznamy se řídí pravidly na kartě Přihlášení."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Koho adresář členského portálu uvádí, kdo ho vidí a co zobrazuje, se volí v Administrace -> Členský portál -> Adresář."
+
+#: 
+msgid "Why"
+msgstr "Proč"
+
+#: 
+msgid "Why not"
+msgstr "Proč ne"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "S tokenem, který zařízení před chvílí nahradilo"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Ano, přidat přístupový klíč"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Ano, odebrat tento přístupový klíč"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Ano, odhlásit všechna zařízení"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Tento e-mail nesmíte potvrdit."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Na žádném zařízení nezůstáváte přihlášeni."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Jste odhlášeni na všech zařízeních."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Jste odhlášeni na tomto zařízení."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Můžete se také přihlásit e-mailovou adresou."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Nemůžete vypnout vlastní přihlášení."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Členský portál nemůžete otevřít. Obraťte se prosím na kancelář sboru."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "O změnu e-mailu jste požádali příliš mnohokrát. Zkuste to prosím později."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Nemáte žádné přístupové klíče."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Jste přihlášeni jako %s v členském portálu (změny jsou povoleny)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Jste přihlášeni jako %s v členském portálu (jen pro čtení)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Mladší než minimální věk"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Nejnižší věk, od kterého se osoba smí přihlásit do členského portálu. Není-li datum narození známo, vyhovuje jen hlava domácnosti nebo manžel/manželka."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Váš kód pro přihlášení do členského portálu"
+
+#: 
+msgid "Your code"
+msgstr "Váš kód"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Vaše e-mailová adresa %s ještě není potvrzena, takže ji nelze použít k přihlášení. Pošleme na ni odkaz; jeho použitím ji potvrdíte."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Vaši e-mailovou adresu zde nelze odebrat. Obraťte se prosím na kancelář sboru."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Vaše e-mailová adresa je potvrzena"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Vaše e-mailová adresa byla změněna"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Váš přístupový klíč byl přidán. Příště se jím na tomto zařízení přihlaste."
+
+#: 
+msgid "an administrator"
+msgstr "správce"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "žádná hlava domácnosti ani manžel/manželka nemá e-mailovou adresu"
+
+#: 
+msgid "or"
+msgstr "nebo"
+
+#: 
+msgid "until %s"
+msgstr "do %s"
+

@@ -52,7 +52,7 @@ export const SEED_VERSION = 'marketing-basic-v1';
  * `npm run marketing:screenshots` invocation so nothing changes for anyone
  * not opted into the multi-locale pipeline.
  *
- * Set via CHURCHCRM_LOCALE — see scripts/capture-all-locales.sh, which
+ * Set via CHURCHCRM_LOCALE — see scripts/marketing/capture-all-locales.sh, which
  * loops this across all 8 codes in LOCALE_MAP for a full #10048 run.
  */
 export const LOCALE = process.env.CHURCHCRM_LOCALE || 'en';

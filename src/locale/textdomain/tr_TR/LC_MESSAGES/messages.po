@@ -24231,3 +24231,15 @@ msgstr "Yalnızca gönderdiğiniz e-posta gösterilir."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Tekrarlayan etkinlikler oluşturulamadı. Ayrıntılar için uygulama günlüğünü kontrol edin."
 
+#: 
+msgid "No changes"
+msgstr "Değişiklik yok"
+
+#: 
+msgid "Set up email"
+msgstr "E-postayı Yapılandır"
+
+#: 
+msgid "This person is deceased."
+msgstr "Bu kişi vefat etmiş"
+

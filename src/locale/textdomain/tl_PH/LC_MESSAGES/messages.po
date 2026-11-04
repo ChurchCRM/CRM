@@ -24198,3 +24198,15 @@ msgstr "Ang email na ipinadala mo lang ang ipinapakita."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Hindi magawa ang mga paulit-ulit na kaganapan. Suriin ang log ng aplikasyon para sa mga detalye."
 
+#: 
+msgid "No changes"
+msgstr "Walang mga Pagbabago"
+
+#: 
+msgid "Set up email"
+msgstr "I-set up ang Email"
+
+#: 
+msgid "This person is deceased."
+msgstr "Yumao na ang taong ito"
+

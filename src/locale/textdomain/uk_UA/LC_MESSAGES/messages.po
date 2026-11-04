@@ -24291,3 +24291,15 @@ msgstr "Відображається лише надісланий вами ел
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Не вдалося створити повторювані події. Деталі див. у журналі програми."
 
+#: 
+msgid "No changes"
+msgstr "Без змін"
+
+#: 
+msgid "Set up email"
+msgstr "Налаштувати пошту"
+
+#: 
+msgid "This person is deceased."
+msgstr "Ця особа померла"
+

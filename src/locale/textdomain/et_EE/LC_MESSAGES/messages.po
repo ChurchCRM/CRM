@@ -24230,3 +24230,15 @@ msgstr "Kuvatakse ainult teie saadetud e-kiri."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Korduvaid sündmusi ei õnnestunud luua. Üksikasjade saamiseks vaadake rakenduse logi."
 
+#: 
+msgid "No changes"
+msgstr "Muudatused puuduvad"
+
+#: 
+msgid "Set up email"
+msgstr "Seadista e-post"
+
+#: 
+msgid "This person is deceased."
+msgstr "See isik on surnud"
+

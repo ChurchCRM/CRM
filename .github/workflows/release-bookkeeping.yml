@@ -63,7 +63,7 @@ jobs:
       - name: Sync changelog file and CHANGELOG.md table
         env:
           FORCE: ${{ github.event.inputs.force == 'true' && '--force' || '' }}
-        run: node scripts/release-changelog.js "$TAG" $FORCE
+        run: node scripts/release/release-changelog.js "$TAG" $FORCE
 
       - name: Commit and push
         run: |
@@ -176,4 +176,4 @@ jobs:
           VERSION: ${{ env.CURRENT_TAG }}
           NEXT_VERSION: ${{ steps.next_version.outputs.next_version }}
           MERGE: 'true'
-        run: ./scripts/notify-docs-release.sh
+        run: ./scripts/release/notify-docs-release.sh

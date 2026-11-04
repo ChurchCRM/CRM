@@ -50,7 +50,7 @@ export function defineCapture(options: CaptureOptions): CaptureOptions & { tag: 
  * recorded video after the browser context closes, which happens after the
  * test function itself has already returned — so there is no point inside
  * the test where the real video file is available to rename. Instead,
- * scripts/finalize-marketing-videos.js runs once after the whole suite
+ * scripts/marketing/finalize-marketing-videos.js runs once after the whole suite
  * finishes, reads the JSON reporter output, and matches each video
  * attachment back to the deterministic path claimed here by test title +
  * project name.
@@ -76,7 +76,7 @@ export async function captureScreen(page: Page, testInfo: TestInfo, opts: Captur
   if (testInfo.title !== opts.name) {
     throw new Error(
       `Test title "${testInfo.title}" must match capture name "${opts.name}" so the post-run video ` +
-        'finalize step (scripts/finalize-marketing-videos.js) can match them up.'
+        'finalize step (scripts/marketing/finalize-marketing-videos.js) can match them up.'
     );
   }
 
@@ -151,7 +151,7 @@ async function captureAtViewport(
   // Video-only projects ('setup'/'recordings') are deliberately excluded:
   // they're the bootstrap/setup-wizard videos, not part of #10048's 7
   // screenshots, they never run multi-locale, and
-  // scripts/finalize-marketing-videos.js independently hardcodes the flat
+  // scripts/marketing/finalize-marketing-videos.js independently hardcodes the flat
   // videos/<project>/<title>.webm path when it renames Playwright's own
   // recordings — inserting LOCALE here would desync capture.ts's metadata
   // from where that script actually puts the file.

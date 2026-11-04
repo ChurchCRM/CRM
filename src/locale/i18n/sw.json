@@ -5889,6 +5889,9 @@
   "The geocoding service did not answer — try again later": "Huduma ya usimbaji wa kijiografia haikujibu — jaribu tena baadaye",
   "Only the email you sent is shown.": "Barua pepe uliyotuma pekee ndiyo inayoonyeshwa.",
   "Repeat events could not be created. Check the application log for details.": "Matukio yanayojirudia hayakuweza kuundwa. Angalia kumbukumbu ya programu kwa maelezo.",
+  "No changes": "Hakuna Mabadiliko",
+  "Set up email": "Sanidi Barua Pepe",
+  "This person is deceased.": "Mtu huyu amefariki",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": tukio {{count}} la tarehe limeundwa",
     "other": "\"{{name}}\": matukio {{count}} ya tarehe yameundwa"

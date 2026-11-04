@@ -24198,3 +24198,15 @@ msgstr "നിങ്ങൾ അയച്ച ഇമെയിൽ മാത്രമ
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "ആവർത്തന ഇവന്റുകൾ സൃഷ്ടിക്കാൻ കഴിഞ്ഞില്ല. വിശദാംശങ്ങൾക്ക് ആപ്ലിക്കേഷൻ ലോഗ് പരിശോധിക്കുക."
 
+#: 
+msgid "No changes"
+msgstr "മാറ്റങ്ങൾ ഇല്ല"
+
+#: 
+msgid "Set up email"
+msgstr "ഇമെയിൽ സജ്ജമാക്കുക"
+
+#: 
+msgid "This person is deceased."
+msgstr "ഈ വ്യക്തി മരണപ്പെട്ടു"
+

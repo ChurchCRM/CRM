@@ -5889,6 +5889,9 @@
   "The geocoding service did not answer — try again later": "Shërbimi i gjeokodimit nuk u përgjigj — provoni përsëri më vonë",
   "Only the email you sent is shown.": "Shfaqet vetëm emaili që keni dërguar.",
   "Repeat events could not be created. Check the application log for details.": "Ngjarjet e përsëritura nuk mund të krijoheshin. Kontrolloni regjistrin e aplikacionit për detaje.",
+  "No changes": "Asnjë ndryshim",
+  "Set up email": "Konfiguro Emailin",
+  "This person is deceased.": "Ky person është i/e ndjerë",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} ngjarje e krijuar",
     "other": "\"{{name}}\": {{count}} ngjarje të krijuara"

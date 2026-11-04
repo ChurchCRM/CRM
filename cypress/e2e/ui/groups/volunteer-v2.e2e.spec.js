@@ -721,7 +721,7 @@ describe("Volunteer v2 — #9714's browser walk-through and the responsive pass"
                         expect(text, `${label} has an unsubstituted {{…}}`).to.not.match(
                             /\{\{\s*\w+\s*\}\}/,
                         );
-                        // Built from fragments on purpose. `scripts/locale-check.js`
+                        // Built from fragments on purpose. `scripts/lint/locale-check.js`
                         // flags a literal translation call in any file the extractor
                         // does not scan, and `cypress/` is not scanned, so spelling
                         // the needle out here would fail the pre-commit hook — even

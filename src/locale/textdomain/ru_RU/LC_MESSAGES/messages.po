@@ -24760,3 +24760,15 @@ msgstr "Итого монеты"
 msgid "Witness"
 msgstr "Свидетель"
 
+#: 
+msgid "No changes"
+msgstr "Нет изменений"
+
+#: 
+msgid "Set up email"
+msgstr "Настроить почту"
+
+#: 
+msgid "This person is deceased."
+msgstr "Этот человек умер"
+

@@ -1,6 +1,4 @@
 {
-  "Their classification may not sign in": "",
-  "Their email changed": "",
   "Their email is not confirmed yet": "",
   "Their email is shared with someone else": "",
   "Their family role may not sign in": "",
@@ -43,7 +41,6 @@
   "This person has no such remembered device.": "",
   "This person has no unconfirmed email.": "",
   "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed.": "",
-  "This person is deceased.": "",
   "This person is signed out of the Member Portal everywhere.": "",
   "This person no longer exists.": "",
   "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address.": "",

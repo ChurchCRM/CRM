@@ -24763,3 +24763,15 @@ msgstr "إجمالي العملات المعدنية"
 msgid "Witness"
 msgstr "شاهد"
 
+#: 
+msgid "No changes"
+msgstr "لا تغييرات"
+
+#: 
+msgid "Set up email"
+msgstr "إعداد البريد الإلكتروني"
+
+#: 
+msgid "This person is deceased."
+msgstr "هذا الشخص متوفى"
+

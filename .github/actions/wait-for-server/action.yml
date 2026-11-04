@@ -13,6 +13,10 @@ inputs:
     description: 'Delay between retries'
     required: false
     default: '5'
+  expect-status:
+    description: 'Regex of HTTP status codes that count as ready (e.g., 302|200). Empty: any 2xx from curl -f.'
+    required: false
+    default: ''
   docker-compose-files:
     description: 'Docker compose files (comma-separated, e.g., docker/docker-compose.yaml,docker/docker-compose.parallel.yaml)'
     required: false
@@ -30,6 +34,7 @@ runs:
         WFS_URL: ${{ inputs.url }}
         WFS_MAX_ATTEMPTS: ${{ inputs.max-attempts }}
         WFS_RETRY_DELAY: ${{ inputs.retry-delay-seconds }}
+        WFS_EXPECT_STATUS: ${{ inputs.expect-status }}
         WFS_COMPOSE_FILES: ${{ inputs.docker-compose-files }}
         WFS_COMPOSE_PROFILE: ${{ inputs.docker-compose-profile }}
       run: |
@@ -43,7 +48,15 @@ runs:
           compose_files="$compose_files -f $file"
         done
 
-        until curl -sf "$WFS_URL"; do
+        ready() {
+          if [ -n "$WFS_EXPECT_STATUS" ]; then
+            curl -s -o /dev/null -w "%{http_code}" "$WFS_URL" | grep -qE "$WFS_EXPECT_STATUS"
+          else
+            curl -sf "$WFS_URL"
+          fi
+        }
+
+        until ready; do
           if [ $attempt -eq $max_attempts ]; then
             echo "Server failed to respond after $max_attempts attempts at $WFS_URL"
             echo ""

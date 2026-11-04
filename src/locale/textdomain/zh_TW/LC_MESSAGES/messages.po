@@ -24759,3 +24759,15 @@ msgstr "硬幣總計"
 msgid "Witness"
 msgstr "證人"
 
+#: 
+msgid "No changes"
+msgstr "沒有變化"
+
+#: 
+msgid "Set up email"
+msgstr "設定電子郵件"
+
+#: 
+msgid "This person is deceased."
+msgstr "此人已故"
+
