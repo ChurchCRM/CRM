@@ -5,7 +5,7 @@ const os = require('node:os');
 const path = require('node:path');
 const test = require('node:test');
 
-const root = path.join(__dirname, '..');
+const root = path.join(__dirname, '../..');
 const allLocales = `portal-member-home portal-member-family portal-member-add-family-member
 portal-member-calendar portal-member-calendar-subscribe people-self-register-portal-member
 volunteer-portal-schedule volunteer-portal-opportunities kiosk-guest-form kiosk-guest-checked-in
@@ -42,7 +42,7 @@ test('manifest retains locale policy and usedIn and omits unavailable dark twins
     const fixture = fs.mkdtempSync(path.join(os.tmpdir(), 'crm-manifest-'));
     try {
         fs.mkdirSync(path.join(fixture, 'scripts'));
-        fs.copyFileSync(path.join(__dirname, 'generate-marketing-manifest.js'), path.join(fixture, 'scripts/generate-marketing-manifest.js'));
+        fs.copyFileSync(path.join(__dirname, '../../scripts/generate-marketing-manifest.js'), path.join(fixture, 'scripts/generate-marketing-manifest.js'));
         for (const [locale, name, locales, dark] of [
             ['en', 'hero', 'all', 'hero-dark'], ['es', 'hero', 'all', 'hero-dark'],
             ['en', 'hero-dark', 'en', null], ['en', 'overview', undefined, null],

@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { findViolations } = require('./validate-custom-field-access');
+const { findViolations } = require('../../scripts/validate-custom-field-access');
 
 test('flags a page that maps the FieldSecurity option itself', () => {
     const source = 'if ($user->isEnabledSecurity($aSecurityType[$custom_FieldSec])) {';

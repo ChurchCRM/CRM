@@ -1,6 +1,6 @@
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
-const { scan, violations, cypressViolations } = require('./validate-subdir-urls');
+const { scan, violations, cypressViolations } = require('../../scripts/validate-subdir-urls');
 
 const flagged = (code) => violations(code).length;
 const cypressFlagged = (code) => cypressViolations(code).length;

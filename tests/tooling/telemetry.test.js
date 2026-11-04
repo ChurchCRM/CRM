@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 
-const source = fs.readFileSync(path.join(__dirname, '../webpack/telemetry.js'), 'utf8').replace('import posthog from "posthog-js";', '');
+const source = fs.readFileSync(path.join(__dirname, '../../webpack/telemetry.js'), 'utf8').replace('import posthog from "posthog-js";', '');
 
 for (const profile of ['production', 'demo', 'test']) {
     test(`browser telemetry ${profile}`, () => {

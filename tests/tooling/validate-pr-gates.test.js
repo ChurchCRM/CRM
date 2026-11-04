@@ -1,6 +1,6 @@
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
-const { gates, injections } = require('./validate-pr-gates');
+const { gates, injections } = require('../../scripts/validate-pr-gates');
 
 test('fails a schema change without an upgrade script and upgrade.json', () => {
     assert.equal(gates(['orm/schema.xml']).fail.length, 1);
@@ -22,7 +22,7 @@ test('warns on behavior without a spec and accepts a covering spec', () => {
 
 test('warns on a workflow without a script test', () => {
     assert.equal(gates(['.github/workflows/a.yml']).warn.some((m) => m.startsWith('Workflow')), true);
-    assert.equal(gates(['.github/workflows/a.yml', 'scripts/a.test.js']).warn.some((m) => m.startsWith('Workflow')), false);
+    assert.equal(gates(['.github/workflows/a.yml', 'tests/tooling/a.test.js']).warn.some((m) => m.startsWith('Workflow')), false);
 });
 
 test('recognizes discovered PHP suites as behavior coverage', () => {

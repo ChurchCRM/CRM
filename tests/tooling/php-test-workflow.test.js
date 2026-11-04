@@ -5,7 +5,7 @@ const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const { test } = require('node:test');
 
-const workflow = fs.readFileSync(path.join(__dirname, '../.github/workflows/build-test-nightly.yml'), 'utf8');
+const workflow = fs.readFileSync(path.join(__dirname, '../../.github/workflows/build-test-nightly.yml'), 'utf8');
 const summaryJob = workflow.split('\n  nightly-summary:')[1];
 const summaryScript = summaryJob.match(/      run: \|\n([\s\S]*)/)[1].split('\n').map((line) => line.replace(/^ {8}/, '')).join('\n');
 

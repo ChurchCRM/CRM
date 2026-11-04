@@ -51,7 +51,7 @@
         "locale:upload:terms": "node locale/scripts/poeditor-upload-terms.js",
         "lint": "node scripts/lint.js && npm run test:frankenphp-routing",
         "lint:fix": "node scripts/ensure-biome.js && biome check --write webpack/ && biome format --write .",
-        "test:frankenphp-routing": "node --test scripts/test-frankenphp-routing.test.mjs",
+        "test:frankenphp-routing": "node --test tests/tooling/test-frankenphp-routing.test.mjs",
         "postinstall": "node scripts/patch-cypress-split.js 2>/dev/null || true",
         "prepare": "git config core.hooksPath .githooks 2>/dev/null || true",
         "locale:lint": "node scripts/locale-check.js",

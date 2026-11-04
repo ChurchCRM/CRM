@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert');
-const { needsRereview, MARKER } = require('./coderabbit-rereview');
+const { needsRereview, MARKER } = require('../../scripts/coderabbit-rereview');
 
 const review = (state, at, login = 'coderabbitai') => ({ author: { login }, state, submittedAt: at });
 const resolved = { isResolved: true };

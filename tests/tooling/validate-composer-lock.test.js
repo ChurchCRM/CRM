@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const { execFileSync } = require('node:child_process');
-const { validateComposerLock } = require('./validate-composer-lock');
+const { validateComposerLock } = require('../../scripts/validate-composer-lock');
 
 // A hook run exports GIT_DIR; the temp repo must not resolve to the real one.
 for (const key of Object.keys(process.env)) {
@@ -17,7 +17,7 @@ test('checks the staged Composer pair even when the working copy is fixed', () =
     try {
         fs.mkdirSync(path.join(root, 'src'));
         for (const file of ['composer.json', 'composer.lock']) {
-            fs.copyFileSync(path.join(__dirname, '..', 'src', file), path.join(root, 'src', file));
+            fs.copyFileSync(path.join(__dirname, '..', '..', 'src', file), path.join(root, 'src', file));
         }
         git('init', '-q');
         assert.equal(validateComposerLock(root, true), 0);

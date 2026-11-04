@@ -3,7 +3,7 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const { test } = require('node:test');
-const { check, parseRunFinished, update } = require('./split-timings');
+const { check, parseRunFinished, update } = require('../../scripts/split-timings');
 
 function repoWith(specs, durations) {
     const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'split-timings-'));

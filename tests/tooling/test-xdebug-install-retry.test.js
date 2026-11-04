@@ -2,7 +2,7 @@ const assert = require("node:assert/strict");
 const { resolve } = require("node:path");
 const test = require("node:test");
 
-const root = resolve(__dirname, "..");
+const root = resolve(__dirname, "../..");
 
 const xdebugInstall = /for i in 1 2 3; do pecl install xdebug[^\n]*/;
 

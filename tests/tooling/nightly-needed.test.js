@@ -2,9 +2,9 @@ const test = require('node:test');
 const assert = require('node:assert');
 const fs = require('fs');
 const path = require('path');
-const { decide, globToRegExp, isTestable, pushPatterns } = require('./nightly-needed');
+const { decide, globToRegExp, isTestable, pushPatterns } = require('../../scripts/nightly-needed');
 
-const patterns = pushPatterns(fs.readFileSync(path.join(__dirname, '..', '.github', 'workflows', 'build-test-package.yml'), 'utf8'));
+const patterns = pushPatterns(fs.readFileSync(path.join(__dirname, '..', '..', '.github', 'workflows', 'build-test-package.yml'), 'utf8'));
 const NEW = 'b'.repeat(40);
 const OLD = 'a'.repeat(40);
 const scheduled = (changedFiles, extra = {}) => decide({ event: 'schedule', sha: NEW, lastSha: OLD, changedFiles, patterns, ...extra });

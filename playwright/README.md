@@ -69,7 +69,7 @@ npm run docker:ci:new-system:down   # tear down the instance when you're done
 The instance is left running after a successful (or failed) run so you can
 inspect it — `docker:ci:new-system:down` tears it down explicitly.
 
-Guard fixtures run with `node --test scripts/check-marketing-visuals.test.js`
+Guard fixtures run with `node --test tests/tooling/check-marketing-visuals.test.js`
 (also included in `npm run lint`). They create synthetic PNGs in temporary
 directories outside the publish path; production captures use real demo UI.
 

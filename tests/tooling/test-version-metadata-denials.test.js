@@ -6,7 +6,7 @@ const { tmpdir } = require("node:os");
 const net = require("node:net");
 const test = require("node:test");
 
-const root = resolve(__dirname, "..");
+const root = resolve(__dirname, "../..");
 const apache = readFileSync(resolve(root, "src/.htaccess"), "utf8");
 const dockerApache = readFileSync(resolve(root, "docker/apache/default.conf"), "utf8");
 const nginx = readFileSync(resolve(root, "docker/examples/nginx/default.conf"), "utf8");

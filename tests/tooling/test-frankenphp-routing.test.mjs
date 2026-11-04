@@ -4,7 +4,7 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
 
-const root = fileURLToPath(new URL("../", import.meta.url));
+const root = fileURLToPath(new URL("../../", import.meta.url));
 const caddyfile = readFileSync(join(root, "docker/examples/frankenphp/Caddyfile"), "utf8");
 const [normal, subdirComment] = caddyfile.split("# ── SUBDIRECTORY INSTALLATION");
 assert.ok(subdirComment, "missing subdirectory example");

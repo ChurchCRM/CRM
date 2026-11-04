@@ -3,6 +3,8 @@
 
 This folder contains Node.js and shell scripts used for building, packaging, and maintaining ChurchCRM.
 
+Tests for these scripts, and for workflow YAML and server config, live in [`tests/tooling/`](../tests/tooling/) and run in `npm run lint`.
+
 ## Scripts Overview
 
 | Script | Purpose | Usage |

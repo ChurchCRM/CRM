@@ -5,7 +5,7 @@ const os = require('node:os');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 
-const setup = path.join(__dirname, 'setup-dev.sh');
+const setup = path.join(__dirname, '../../scripts/setup-dev.sh');
 
 function simulate(args, failTool = '') {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'churchcrm-setup-'));

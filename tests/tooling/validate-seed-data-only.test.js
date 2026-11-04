@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert');
-const { problems } = require('./validate-seed-data-only');
+const { problems } = require('../../scripts/validate-seed-data-only');
 
 test('data-only seed passes', () => {
     const sql = [

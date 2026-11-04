@@ -21,9 +21,9 @@ const localeTests = fs
     .map((name) => path.join('locale', 'scripts', 'lib', name));
 
 const scriptTests = fs
-    .readdirSync(__dirname)
+    .readdirSync(path.join(root, 'tests', 'tooling'))
     .filter((name) => name.endsWith('.test.js'))
-    .map((name) => path.join('scripts', name));
+    .map((name) => path.join('tests', 'tooling', name));
 
 const checks = {
     'composer lock': script('validate-composer-lock.js'),

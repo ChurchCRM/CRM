@@ -15,7 +15,7 @@ function makeTree() {
     fs.mkdirSync(path.join(root, 'scripts'));
     fs.mkdirSync(path.join(root, 'bin'));
     for (const name of SCRIPTS) {
-        fs.copyFileSync(path.join(__dirname, name), path.join(root, 'scripts', name));
+        fs.copyFileSync(path.join(__dirname, '../../scripts', name), path.join(root, 'scripts', name));
     }
     return root;
 }
