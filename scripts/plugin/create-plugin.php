@@ -1,17 +1,17 @@
 <?php
 
 /**
- * scripts/create-plugin.php — community plugin scaffolder.
+ * scripts/plugin/create-plugin.php — community plugin scaffolder.
  *
  * Usage:
- *   php scripts/create-plugin.php <kebab-id> [--author="Your Name"]
+ *   php scripts/plugin/create-plugin.php <kebab-id> [--author="Your Name"]
  *
  * Clones https://github.com/ChurchCRM/community-plugin-hello-world into
  * a temporary directory, then copies it into
  * src/plugins/community/<kebab-id>/, rewriting plugin id, namespace,
  * and class names so the result is immediately runnable.
  *
- * Pairs with scripts/plugin-scan.php (run that after you code to
+ * Pairs with scripts/plugin/plugin-scan.php (run that after you code to
  * self-audit before opening an approved-plugins.json PR).
  *
  * This script lives outside the web app — it writes files into src/
@@ -22,7 +22,7 @@
 declare(strict_types=1);
 
 (function (): void {
-    $repoRoot = dirname(__DIR__);
+    $repoRoot = dirname(__DIR__, 2);
     $communityRoot = $repoRoot . '/src/plugins/community';
     $templateRepo = 'https://github.com/ChurchCRM/community-plugin-hello-world';
 
@@ -98,7 +98,7 @@ declare(strict_types=1);
     echo "✔ Scaffold complete.\n\n";
     echo "Next steps:\n";
     echo "  1. Edit {$newMain} and any settings/routes you need.\n";
-    echo "  2. Run the self-scan:  php scripts/plugin-scan.php {$destDir}\n";
+    echo "  2. Run the self-scan:  php scripts/plugin/plugin-scan.php {$destDir}\n";
     echo "  3. Enable the plugin from Admin → Plugins once it passes the scan.\n";
     echo "  4. When you're ready to publish, follow\n";
     echo "     .agents/skills/churchcrm/plugin-create.md\n";
@@ -111,10 +111,10 @@ declare(strict_types=1);
 function usage(): void
 {
     echo <<<USAGE
-Usage: php scripts/create-plugin.php <kebab-id> [--author="Name"]
+Usage: php scripts/plugin/create-plugin.php <kebab-id> [--author="Name"]
 
 Example:
-  php scripts/create-plugin.php my-plugin --author="Jane Doe"
+  php scripts/plugin/create-plugin.php my-plugin --author="Jane Doe"
 
 This clones https://github.com/ChurchCRM/community-plugin-hello-world
 into a temp directory, then copies it into
@@ -246,7 +246,7 @@ from [ChurchCRM/community-plugin-hello-world](https://github.com/ChurchCRM/commu
 3. Run the self-scan before enabling the plugin:
 
    ```bash
-   php scripts/plugin-scan.php src/plugins/community/{$pluginId}
+   php scripts/plugin/plugin-scan.php src/plugins/community/{$pluginId}
    ```
 
 4. Enable the plugin from **Admin → Plugins** in the ChurchCRM UI.

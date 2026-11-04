@@ -21,8 +21,8 @@ Tests for these scripts, and for workflow YAML and server config, live in [`test
 | `validate-ui-conventions.js` | Keep styling in utilities, page partials and stock Tabler | `npm run lint` |
 | `locale-check.js` | Lint locale files for issues | `npm run locale:lint` |
 | `startNewRelease.js` | Version bump for releases | Called only by `.github/workflows/release-prepare.yml` |
-| `create-plugin.php` | Scaffold a new community plugin (clones [community-plugin-hello-world](https://github.com/ChurchCRM/community-plugin-hello-world) from GitHub) | `php scripts/create-plugin.php <kebab-id> [--author="Name"]` |
-| `plugin-scan.php` | Self-audit a community plugin directory against the maintainer review checklist | `php scripts/plugin-scan.php [--json] <plugin-dir>` |
+| `plugin/create-plugin.php` | Scaffold a new community plugin (clones [community-plugin-hello-world](https://github.com/ChurchCRM/community-plugin-hello-world) from GitHub) | `php scripts/plugin/create-plugin.php <kebab-id> [--author="Name"]` |
+| `plugin/plugin-scan.php` | Self-audit a community plugin directory against the maintainer review checklist | `php scripts/plugin/plugin-scan.php [--json] <plugin-dir>` |
 
 ---
 
@@ -118,7 +118,7 @@ into a temp directory, then copies it into
 namespace, and main class name so the result is immediately runnable.
 
 ```bash
-php scripts/create-plugin.php my-plugin --author="Jane Doe"
+php scripts/plugin/create-plugin.php my-plugin --author="Jane Doe"
 ```
 
 **Output:** a complete plugin skeleton with `plugin.json`,
@@ -140,8 +140,8 @@ plugin BEFORE opening a pull request against
 `src/plugins/approved-plugins.json`.
 
 ```bash
-php scripts/plugin-scan.php src/plugins/community/my-plugin
-php scripts/plugin-scan.php --json src/plugins/community/my-plugin | jq
+php scripts/plugin/plugin-scan.php src/plugins/community/my-plugin
+php scripts/plugin/plugin-scan.php --json src/plugins/community/my-plugin | jq
 ```
 
 **What it checks:**

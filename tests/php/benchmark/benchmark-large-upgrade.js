@@ -3,7 +3,7 @@
 const { execFileSync, spawnSync } = require('node:child_process');
 const path = require('node:path');
 
-const root = path.resolve(__dirname, '..');
+const root = path.resolve(__dirname, '../../..');
 const port = process.env.UPGRADE_BENCHMARK_PORT || '33318';
 const project = `crm-upgrade-benchmark-${process.pid}`;
 const composeFile = path.join(root, 'docker', 'docker-compose.yaml');
@@ -21,7 +21,7 @@ function run(command, args, options = {}) {
 }
 
 function benchmark(database, extraEnv = {}) {
-    run('php', [path.join(root, 'scripts', 'benchmark-large-upgrade.php')], {
+    run('php', [path.join(__dirname, 'benchmark-large-upgrade.php')], {
         cwd: root,
         env: {
             ...process.env,

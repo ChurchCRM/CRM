@@ -1,11 +1,11 @@
 <?php
 
 /**
- * scripts/plugin-scan.php — community plugin self-audit tool.
+ * scripts/plugin/plugin-scan.php — community plugin self-audit tool.
  *
  * Usage:
- *   php scripts/plugin-scan.php <plugin-dir>
- *   php scripts/plugin-scan.php --json <plugin-dir>
+ *   php scripts/plugin/plugin-scan.php <plugin-dir>
+ *   php scripts/plugin/plugin-scan.php --json <plugin-dir>
  *
  * Runs the same checks a ChurchCRM maintainer would run during the
  * plugin-security-scan review, against a plugin directory on disk.
@@ -454,7 +454,7 @@ function printHumanReport(string $pluginDir, array $summary, array $findings): v
 function usage(): void
 {
     echo <<<USAGE
-Usage: php scripts/plugin-scan.php [--json] <plugin-dir>
+Usage: php scripts/plugin/plugin-scan.php [--json] <plugin-dir>
 
 Runs the plugin-security-scan review checklist against a plugin
 directory on disk. Use it on your own plugin BEFORE opening a PR
@@ -470,8 +470,8 @@ Options:
   --json   emit machine-readable JSON instead of the human report
 
 Examples:
-  php scripts/plugin-scan.php src/plugins/community/my-plugin
-  php scripts/plugin-scan.php --json src/plugins/community/my-plugin | jq
+  php scripts/plugin/plugin-scan.php src/plugins/community/my-plugin
+  php scripts/plugin/plugin-scan.php --json src/plugins/community/my-plugin | jq
 
 USAGE;
 }

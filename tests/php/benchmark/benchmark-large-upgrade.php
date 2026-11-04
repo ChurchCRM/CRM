@@ -6,7 +6,7 @@ use Propel\Runtime\Propel;
 use ChurchCRM\Service\UpgradeService;
 use ChurchCRM\Utils\VersionUtils;
 
-$root = dirname(__DIR__);
+$root = dirname(__DIR__, 3);
 $dsn = getenv('UPGRADE_BENCHMARK_DSN') ?: '';
 $user = getenv('UPGRADE_BENCHMARK_USER') ?: '';
 $password = getenv('UPGRADE_BENCHMARK_PASSWORD') ?: '';
@@ -112,7 +112,7 @@ foreach ($registry as $block) {
             putenv('UPGRADE_BENCHMARK_USER=' . $user);
             putenv('UPGRADE_BENCHMARK_PASSWORD=' . $password);
             putenv('UPGRADE_BENCHMARK_DATABASE=' . $databaseName);
-            require $root . '/scripts/benchmark-large-dataset.php';
+            require __DIR__ . '/benchmark-large-dataset.php';
         }
     }
     $now = date('Y-m-d H:i:s');
