@@ -24231,3 +24231,15 @@ msgstr "Εμφανίζεται μόνο το email που στείλατε."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Δεν ήταν δυνατή η δημιουργία επαναλαμβανόμενων εκδηλώσεων. Ελέγξτε το αρχείο καταγραφής της εφαρμογής για λεπτομέρειες."
 
+#: 
+msgid "No changes"
+msgstr "Χωρίς αλλαγές"
+
+#: 
+msgid "Set up email"
+msgstr "Ρύθμιση email"
+
+#: 
+msgid "This person is deceased."
+msgstr "Αυτό το άτομο έχει αποβιώσει"
+

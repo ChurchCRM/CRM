@@ -5987,6 +5987,9 @@
   "Total Cash": "Total kontant",
   "Total Coin": "Total mynt",
   "Witness": "Vittne",
+  "No changes": "Inga förändringar",
+  "Set up email": "Konfigurera e-post",
+  "This person is deceased.": "Denna person är avliden",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} förekomst skapad",
     "other": "\"{{name}}\": {{count}} förekomster skapade"

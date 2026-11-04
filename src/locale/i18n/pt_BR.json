@@ -5987,6 +5987,9 @@
   "Total Cash": "Total em dinheiro",
   "Total Coin": "Total em moedas",
   "Witness": "Testemunha",
+  "No changes": "Nenhuma mudança",
+  "Set up email": "Configurar E-mail",
+  "This person is deceased.": "Esta pessoa é falecida",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} ocorrência criada",
     "other": "\"{{name}}\": {{count}} ocorrências criadas"

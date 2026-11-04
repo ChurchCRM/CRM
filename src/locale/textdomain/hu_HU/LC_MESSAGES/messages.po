@@ -24257,3 +24257,15 @@ msgstr "Csak az Ön által küldött e-mail jelenik meg."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Az ismétlődő eseményeket nem sikerült létrehozni. Részletekért ellenőrizze az alkalmazás naplóját."
 
+#: 
+msgid "No changes"
+msgstr "Nincs változás"
+
+#: 
+msgid "Set up email"
+msgstr "E-mail beállítása"
+
+#: 
+msgid "This person is deceased."
+msgstr "Ez a személy elhunyt"
+

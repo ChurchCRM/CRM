@@ -5987,6 +5987,9 @@
   "Total Cash": "Käteinen yhteensä",
   "Total Coin": "Kolikot yhteensä",
   "Witness": "Todistaja",
+  "No changes": "Ei muutoksia",
+  "Set up email": "Määritä sähköposti",
+  "This person is deceased.": "Tämä henkilö on kuollut",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} tapahtuma luotu",
     "other": "\"{{name}}\": {{count}} tapahtumaa luotu"

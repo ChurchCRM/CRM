@@ -5859,6 +5859,9 @@
   "The geocoding service did not answer — try again later": "Layanan geocoding tidak merespons — coba lagi nanti",
   "Only the email you sent is shown.": "Hanya email yang Anda kirim yang ditampilkan.",
   "Repeat events could not be created. Check the application log for details.": "Acara berulang tidak dapat dibuat. Periksa log aplikasi untuk detailnya.",
+  "No changes": "Tidak ada perubahan",
+  "Set up email": "Atur Email",
+  "This person is deceased.": "Orang ini telah meninggal dunia",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} kejadian dibuat",
     "other": "\"{{name}}\"：{{count}} kejadian dibuat"

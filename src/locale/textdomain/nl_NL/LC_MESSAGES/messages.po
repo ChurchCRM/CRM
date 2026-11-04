@@ -24617,3 +24617,15 @@ msgstr "Totaal munten"
 msgid "Witness"
 msgstr "Getuige"
 
+#: 
+msgid "No changes"
+msgstr "Geen veranderingen"
+
+#: 
+msgid "Set up email"
+msgstr "E-mail instellen"
+
+#: 
+msgid "This person is deceased."
+msgstr "Deze persoon is overleden"
+

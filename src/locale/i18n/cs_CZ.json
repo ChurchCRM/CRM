@@ -6017,6 +6017,9 @@
   "Total Cash": "Celkem hotovost",
   "Total Coin": "Celkem mince",
   "Witness": "Svědek",
+  "No changes": "Žádné změny",
+  "Set up email": "Nastavit e-mail",
+  "This person is deceased.": "Tato osoba je zesnulá",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} akce vytvořena",
     "other": "\"{{name}}\": {{count}} akcí vytvořeno"

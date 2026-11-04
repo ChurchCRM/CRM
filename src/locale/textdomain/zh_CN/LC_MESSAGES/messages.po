@@ -24684,3 +24684,15 @@ msgstr "硬币总计"
 msgid "Witness"
 msgstr "证人"
 
+#: 
+msgid "No changes"
+msgstr "没有变化"
+
+#: 
+msgid "Set up email"
+msgstr "配置电子邮件"
+
+#: 
+msgid "This person is deceased."
+msgstr "此人已故"
+

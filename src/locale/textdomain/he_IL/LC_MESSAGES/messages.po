@@ -24229,3 +24229,15 @@ msgstr "מוצגת רק הודעת הדוא״ל ששלחת."
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "לא ניתן היה ליצור אירועים חוזרים. בדוק את יומן היישום לפרטים."
 
+#: 
+msgid "No changes"
+msgstr "אין שינויים"
+
+#: 
+msgid "Set up email"
+msgstr "הגדרת דואר אלקטרוני"
+
+#: 
+msgid "This person is deceased."
+msgstr "אדם זה נפטר"
+

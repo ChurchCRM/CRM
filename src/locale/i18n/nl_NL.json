@@ -5987,6 +5987,9 @@
   "Total Cash": "Totaal contant",
   "Total Coin": "Totaal munten",
   "Witness": "Getuige",
+  "No changes": "Geen veranderingen",
+  "Set up email": "E-mail instellen",
+  "This person is deceased.": "Deze persoon is overleden",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} voorkomen gemaakt",
     "other": "\"{{name}}\": {{count}} voorkomens gemaakt"

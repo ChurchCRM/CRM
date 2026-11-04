@@ -24584,3 +24584,15 @@ msgstr "硬貨合計"
 msgid "Witness"
 msgstr "証人"
 
+#: 
+msgid "No changes"
+msgstr "変更なし"
+
+#: 
+msgid "Set up email"
+msgstr "メールを設定する"
+
+#: 
+msgid "This person is deceased."
+msgstr "この人物は故人です"
+

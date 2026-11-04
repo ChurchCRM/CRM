@@ -24180,3 +24180,15 @@ msgstr "แสดงเฉพาะอีเมลที่คุณส่งเ
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "ไม่สามารถสร้างกิจกรรมซ้ำได้ โปรดตรวจสอบบันทึกแอปพลิเคชันสำหรับรายละเอียด"
 
+#: 
+msgid "No changes"
+msgstr "ไม่มีการเปลี่ยนแปลง"
+
+#: 
+msgid "Set up email"
+msgstr "ตั้งค่าอีเมล"
+
+#: 
+msgid "This person is deceased."
+msgstr "บุคคลนี้เสียชีวิตแล้ว"
+

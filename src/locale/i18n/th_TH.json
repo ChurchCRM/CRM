@@ -5859,6 +5859,9 @@
   "The geocoding service did not answer — try again later": "บริการแปลงที่อยู่เป็นพิกัดไม่ตอบสนอง — โปรดลองอีกครั้งในภายหลัง",
   "Only the email you sent is shown.": "แสดงเฉพาะอีเมลที่คุณส่งเท่านั้น",
   "Repeat events could not be created. Check the application log for details.": "ไม่สามารถสร้างกิจกรรมซ้ำได้ โปรดตรวจสอบบันทึกแอปพลิเคชันสำหรับรายละเอียด",
+  "No changes": "ไม่มีการเปลี่ยนแปลง",
+  "Set up email": "ตั้งค่าอีเมล",
+  "This person is deceased.": "บุคคลนี้เสียชีวิตแล้ว",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：สร้าง {{count}} การเกิดขึ้น",
     "other": "\"{{name}}\"：สร้าง {{count}} การเกิดขึ้น"

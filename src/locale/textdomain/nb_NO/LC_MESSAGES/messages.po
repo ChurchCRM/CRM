@@ -24718,3 +24718,15 @@ msgstr "Total mynter"
 msgid "Witness"
 msgstr "Vitne"
 
+#: 
+msgid "No changes"
+msgstr "Ingen endringer"
+
+#: 
+msgid "Set up email"
+msgstr "Konfigurer e-post"
+
+#: 
+msgid "This person is deceased."
+msgstr "Denne personen er avdød"
+

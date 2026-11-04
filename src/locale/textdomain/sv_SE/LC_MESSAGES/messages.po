@@ -24734,3 +24734,15 @@ msgstr "Total mynt"
 msgid "Witness"
 msgstr "Vittne"
 
+#: 
+msgid "No changes"
+msgstr "Inga förändringar"
+
+#: 
+msgid "Set up email"
+msgstr "Konfigurera e-post"
+
+#: 
+msgid "This person is deceased."
+msgstr "Denna person är avliden"
+

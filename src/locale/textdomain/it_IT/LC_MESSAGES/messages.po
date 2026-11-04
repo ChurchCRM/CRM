@@ -24667,3 +24667,15 @@ msgstr "Totale monete"
 msgid "Witness"
 msgstr "Testimone"
 
+#: 
+msgid "No changes"
+msgstr "Nessun cambiamento"
+
+#: 
+msgid "Set up email"
+msgstr "Configura email"
+
+#: 
+msgid "This person is deceased."
+msgstr "Questa persona è deceduta"
+

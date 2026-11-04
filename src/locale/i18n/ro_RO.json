@@ -5919,6 +5919,9 @@
   "The geocoding service did not answer — try again later": "Serviciul de geocodificare nu a răspuns — încercați din nou mai târziu",
   "Only the email you sent is shown.": "Este afișat doar e-mailul pe care l-ați trimis.",
   "Repeat events could not be created. Check the application log for details.": "Evenimentele repetitive nu au putut fi create. Verificați jurnalul aplicației pentru detalii.",
+  "No changes": "Fără schimbări",
+  "Set up email": "Configurați e-mailul",
+  "This person is deceased.": "Această persoană este decedată",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} apariție creată",
     "other": "\"{{name}}\": {{count}} apariții create"

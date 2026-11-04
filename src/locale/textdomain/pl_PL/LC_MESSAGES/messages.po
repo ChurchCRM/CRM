@@ -24733,3 +24733,15 @@ msgstr "Suma monet"
 msgid "Witness"
 msgstr "Świadek"
 
+#: 
+msgid "No changes"
+msgstr "Brak zmian"
+
+#: 
+msgid "Set up email"
+msgstr "Skonfiguruj pocztę"
+
+#: 
+msgid "This person is deceased."
+msgstr "Ta osoba nie żyje"
+

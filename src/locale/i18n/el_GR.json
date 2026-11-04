@@ -5889,6 +5889,9 @@
   "The geocoding service did not answer — try again later": "Η υπηρεσία γεωκωδικοποίησης δεν απάντησε — δοκιμάστε ξανά αργότερα",
   "Only the email you sent is shown.": "Εμφανίζεται μόνο το email που στείλατε.",
   "Repeat events could not be created. Check the application log for details.": "Δεν ήταν δυνατή η δημιουργία επαναλαμβανόμενων εκδηλώσεων. Ελέγξτε το αρχείο καταγραφής της εφαρμογής για λεπτομέρειες.",
+  "No changes": "Χωρίς αλλαγές",
+  "Set up email": "Ρύθμιση email",
+  "This person is deceased.": "Αυτό το άτομο έχει αποβιώσει",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} γεγονός δημιουργήθηκε",
     "other": "\"{{name}}\": {{count}} γεγονότα δημιουργήθηκαν"
