@@ -24,7 +24,7 @@ Commands, setup and package layout: [`tests/php/README.md`](../../../tests/php/R
 
 Only files the suite runs or ships start the pipeline: `paths:` in `build-test-package.yml` excludes docs, agent files, Playwright artifacts, tooling config and every workflow file except the two test workflows. A pull request also skips generated translations; a push to `master` builds them because the release ZIP ships them. A new path that is neither tested nor shipped goes in both `paths:` lists.
 
-Pull requests run the suite at the site root. The nightly workflow runs it at the root and under `/churchcrm`, plus the setup wizard, the locale sweep and the upgrade matrix, three times a day. `scripts/nightly-needed.js` ends a scheduled run green without testing when every file changed since the last successful run is one `build-test-package.yml` ignores on push; a failed run is never the baseline, and manual and release runs always test. Shard counts and matrix cells live in `.github/workflows/build-test-package.yml` and `build-test-nightly.yml`; read them there.
+Pull requests run the suite at the site root. The nightly workflow runs it at the root and under `/churchcrm`, plus the setup wizard, the locale sweep and the upgrade matrix, three times a day. A scheduled run ends green without testing when every file changed since the last successful run is one `build-test-package.yml` ignores on push; a failed run is never the baseline, and manual and release runs always test. Shard counts and matrix cells live in `.github/workflows/build-test-package.yml` and `build-test-nightly.yml`; read them there.
 
 ## Test stack
 
@@ -47,12 +47,12 @@ A check that runs locally belongs in the commit and pre-push checkpoint first (`
 
 ## Shards
 
-`api`, `admin-ui` and `ui` split across shards by recorded duration. `scripts/shard-specs.js` reads `cypress/split-timings.json`, packs the longest specs first onto the lightest shard, and logs `shard N of M: …`.
+`api`, `admin-ui` and `ui` split across shards by recorded duration. Sharding reads `cypress/split-timings.json`, packs the longest specs first onto the lightest shard, and logs `shard N of M: …`.
 
 - Each shard has its own Docker stack and database. Specs in a shard run one after another in path order.
 - A spec's neighbours change when specs are added, removed or re-timed. A spec that depends on data another spec leaves behind passes in one split and fails in another. Fix the coupling in the spec; do not pin the split.
-- A spec missing from the timings file gets the average duration. `node scripts/split-timings.js check` (part of `npm run lint`) fails on an entry for a spec that does not exist, a duplicate or an unsorted list.
-- Refresh the timings from job logs: `gh run view --job <id> --log > job.log`, then `node scripts/split-timings.js update --area api|ui|ui-admin job.log`.
+- A spec missing from the timings file gets the average duration. `npm run lint` fails on an entry for a spec that does not exist, a duplicate or an unsorted list.
+- Refresh the timings from job logs: `gh run view --job <id> --log > job.log`, then `node scripts/ci/split-timings.js update --area api|ui|ui-admin job.log`.
 
 ## Install path
 
@@ -64,7 +64,7 @@ A form `action` that already includes `SystemURLs::getRootPath()` and is then pa
 
 ## Test database
 
-The test database is built from two files, mounted in order by `docker/docker-compose*.yaml`: `src/mysql/install/Install.sql` (`00-install.sql`), then `cypress/data/seed.sql` (`10-seed.sql`). `npm run docker:test:reset:db` (`scripts/reset-test-db.js`) drops the database and loads both again. The `new-system` job starts empty and installs through the wizard.
+The test database is built from two files, mounted in order by `docker/docker-compose*.yaml`: `src/mysql/install/Install.sql` (`00-install.sql`), then `cypress/data/seed.sql` (`10-seed.sql`). `npm run docker:test:reset:db` drops the database and loads both again. The `new-system` job starts empty and installs through the wizard.
 
 `seed.sql` is test data only. `npm run lint` (`seed data only`) fails on a `CREATE TABLE` for an installed table or an `INSERT` without a column list.
 

@@ -79,7 +79,7 @@ Success responses are `{'success': true, 'data': ...}` or `{'success': true, 'me
 
 `SlimUtils::containsSensitiveValue()` replaces a message with the generic "An error occurred..." only when it matches credential-shaped context: `name=value` assignments for credential names, DSN fragments (`host=`, `dbname=`, `user=`), credentials in a URL, PEM key material, JWTs, opaque runs of 40+ characters, and complete IPv4 addresses. Bare words such as "user" or "host" pass through, so `User not found` stays readable.
 
-`scripts/test-error-redaction.php` (`npm run test:php`, also in CI) covers both directions. Add a case there whenever `SENSITIVE_VALUE_PATTERNS` changes.
+`tests/php/unit/Slim/SlimUtilsTest.php` (`npm run test:php`, also in CI) covers both directions. Add a case there whenever `SENSITIVE_VALUE_PATTERNS` changes.
 
 `sanitizeErrorMessage()` collapses ORM/PDO failures to "A database error occurred...". Detect them by exception class (`PropelException`, `PDOException`); the generated models live under `src/ChurchCRM/model/`, so a file-path check never matches.
 
