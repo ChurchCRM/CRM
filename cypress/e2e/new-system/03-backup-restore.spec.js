@@ -26,7 +26,7 @@ describe('03 - Backup and Restore', () => {
         cy.visit('/login');
         cy.get('input[name=User]').type(adminCredentials.username);
         cy.get('input[name=Password]').type(password + '{enter}');
-        cy.url({ timeout: 15000 }).should('not.include', '/session/begin');
+        cy.expectStaffSignedIn({ timeout: 15000 });
     };
 
     describe('Step 6: Create Backup', () => {
@@ -149,9 +149,8 @@ describe('03 - Backup and Restore', () => {
             cy.get('#restoreSuccessModal', { timeout: 120000 }).should('be.visible');
 
             // Should eventually redirect to login page
-            cy.url({ timeout: 30000 }).should('satisfy', (url) => {
-                return url.includes('/session/begin') || url.includes('/login');
-            });
+            cy.location('pathname', { timeout: 30000 }).should('match', /\/admin\/$/);
+            cy.get('input[name=User]', { timeout: 30000 }).should('be.visible');
         });
     });
 

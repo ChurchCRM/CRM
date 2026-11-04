@@ -4,6 +4,7 @@
 
 import "./admin-dashboard.css";
 import "./telemetry-consent";
+import "./former-portal-accounts-notice";
 
 document.addEventListener("DOMContentLoaded", () => {
   const reportingSettings = document.getElementById("reportingSettings");

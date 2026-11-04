@@ -2,28 +2,32 @@ import { type APIRequestContext, expect, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
 import { humanClick, humanPause, humanType, settle } from '../support/human';
+import { askForCode, enterCode, signInCode, useMemberSignIn } from '../support/member-sign-in';
 import {
   adminRequest,
   ok,
+  PORTAL_MEMBER,
   type PortalDemo,
   portalCsrfToken,
   setUpPortalDemo,
-  signInAsPortalMember,
   waitForAvatars,
 } from '../support/portal-member';
 
 let api: APIRequestContext;
 let demo: PortalDemo | undefined;
+let restoreSignIn: (() => Promise<void>) | undefined;
 
 test.use({ storageState: { cookies: [], origins: [] } });
 
 test.beforeAll(async () => {
   api = await adminRequest();
   demo = await setUpPortalDemo(api);
+  restoreSignIn = await useMemberSignIn(api);
 });
 
 test.afterAll(async () => {
   try {
+    await restoreSignIn?.();
     await demo?.tearDown();
   } finally {
     await api?.dispose();
@@ -35,7 +39,10 @@ test('portal-member-update-address', async ({ page, context }, testInfo) => {
   let original: Record<string, string> | null = null;
 
   try {
-    await signInAsPortalMember(page);
+    await askForCode(page, PORTAL_MEMBER.email);
+    const code = await signInCode(PORTAL_MEMBER.email);
+    expect(code, `sign-in code for ${PORTAL_MEMBER.email}`).not.toBeNull();
+    await enterCode(page, code as string);
     await expect(page.locator('.portal-upcoming-item').first()).toBeVisible();
     await humanPause(page, 2000);
 

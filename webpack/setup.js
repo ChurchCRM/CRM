@@ -772,7 +772,7 @@ window.Stepper = Stepper;
         $("#continue-to-login")
           .off("click")
           .on("click", () => {
-            location.replace(`${rootPath}/`);
+            location.replace(`${rootPath}/admin/`);
           });
       })
       .fail((xhr) => {

@@ -5,13 +5,9 @@ $(document).ready(() => {
     new TomSelect(personSelectEl);
   }
 
-  // Access level is one of three mutually exclusive modes:
+  // Access level is one of two modes:
   //   admin  — Admin flag only; all module perms irrelevant
-  //   self   — EditSelf flag only; all module perms cleared
-  //   custom — Admin=0, EditSelf=0; module perms visible & editable
-  //
-  // EditSelf is exclusive: cannot coexist with module permissions or admin.
-  // The JS enforces this invariant so the server-side check is defense-in-depth.
+  //   custom — Admin=0; module perms visible & editable
   const modulePerms = [
     "AddRecords",
     "EditRecords",
@@ -23,7 +19,6 @@ $(document).ready(() => {
     "AddEvent",
   ];
   const adminCb = document.getElementById("Admin");
-  const editSelfCb = document.getElementById("EditSelf");
   const customBlock = document.getElementById("customPermissions");
   const pfPanel = document.getElementById("pfPanel");
   const modeRadios = document.querySelectorAll('input[name="accessMode"]');
@@ -37,9 +32,6 @@ $(document).ready(() => {
     }
     if (adminCb) {
       adminCb.checked = mode === "admin";
-    }
-    if (editSelfCb) {
-      editSelfCb.checked = mode === "self";
     }
     if (mode !== "custom" && clearModules) {
       modulePerms.forEach((name) => {

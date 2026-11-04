@@ -26,7 +26,7 @@ describe("Unfinished logins are not sessions", () => {
     const expectSignedOut = () => {
         cy.request({ url: "/v2/dashboard", followRedirect: false, failOnStatusCode: false }).then((resp) => {
             expect(resp.status, "dashboard must redirect, not render").to.eq(302);
-            expect(resp.redirectedToUrl).to.include("/session/begin");
+            expect(resp.redirectedToUrl).to.match(/\/admin\/$/);
         });
         cy.request({ url: "/api/persons/latest", failOnStatusCode: false })
             .its("status")

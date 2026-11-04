@@ -1,5 +1,7 @@
+const FILE = "cypress/support/password-reset-fixtures.js";
+
 function query(sql, params = []) {
-    return cy.task("db:query", { sql, params }).then((result) => {
+    return cy.task("db:query", { sql, params, fixture: FILE }).then((result) => {
         expect(result.error).to.equal(null);
         return result.rows;
     });

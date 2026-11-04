@@ -47,6 +47,7 @@ const ignore = [
   '**/.github/**',
   'vendor/**/example/**',
   'vendor/**/tests/**',
+  'vendor/**/_test/**',
   'vendor/**/docs/**',
   'Images/Family/**/*.jpg',
   'Images/Family/**/*.jpeg',

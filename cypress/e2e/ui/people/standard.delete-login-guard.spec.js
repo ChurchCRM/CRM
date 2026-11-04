@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 // Seeded data, read only: person 1 is an administrator, person 3 is the
-// standard user (tony.wade, DeleteRecords, non-admin), persons 99 and 102 are
-// in family 20 (99 has a login, 102 does not), person 10 has no login, and
+// standard user (tony.wade, DeleteRecords, non-admin), persons 901 and 2 are
+// in family 1 (901 has a login, 2 does not), person 10 has no login, and
 // family 3 has no member with a login.
 describe("Standard user - delete controls for people who have a login", () => {
     beforeEach(() => cy.setupStandardSession());
@@ -37,9 +37,9 @@ describe("Standard user - delete controls for people who have a login", () => {
     });
 
     it("greys out only the family members who have a login", () => {
-        cy.visit("/people/family/20");
-        cy.get('.delete-person[data-person_id="99"]').should("have.attr", "aria-disabled", "true");
-        cy.get('.delete-person[data-person_id="102"]').should("not.have.attr", "aria-disabled");
+        cy.visit("/people/family/1");
+        cy.get('.delete-person[data-person_id="901"]').should("have.attr", "aria-disabled", "true");
+        cy.get('.delete-person[data-person_id="2"]').should("not.have.attr", "aria-disabled");
     });
 
     it("exposes the blocked people to the page scripts", () => {

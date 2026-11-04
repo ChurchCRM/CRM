@@ -19,9 +19,7 @@
  *    the "Back to my schedule" button inside it.
  *
  * Persona and fixture mechanics follow `member.portal-volunteer.spec.js`: person
- * 100, Lena Black (`usr_EditSelf=1`, no admin flag), whose seeded username is
- * longer than `user_usr.usr_UserName`'s VARCHAR(32) and so must be typed
- * truncated. Order inside every hook is API setup → login → `cy.visit()`, because
+ * 100, Lena Black, signed in with her email. Order inside every hook is API setup → login → `cy.visit()`, because
  * `cy.request()` rotates the PHP session cookie (cypress-testing.md).
  *
  * The two states are separate describes on purpose, in file order: the fixture
@@ -36,8 +34,7 @@ const VOLUNTEER_URL = "/api/ministries";
 const OPPORTUNITIES_URL = "/portal/volunteer/opportunities";
 const SCHEDULE_URL = "/portal/volunteer/schedule";
 
-const MEMBER_USERNAME = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
+const MEMBER_USERNAME = 100;
 const PERSON_MEMBER = 100;
 
 const CHURCH_SERVICE_TYPE = 1;
@@ -58,11 +55,8 @@ let seriesEnd = "";
 // ── helpers (local functions, NOT cy.* commands — cypress-testing.md) ───────
 
 function freshMemberLogin() {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USERNAME);
-    cy.get("input[name=Password]").type(MEMBER_PASSWORD + "{enter}");
-    cy.url().should("not.include", "/session/begin");
+    cy.signInAsMember(MEMBER_USERNAME);
+    cy.visit("/portal/");
 }
 
 function adminApi(method, url, body, expectedStatus = 200) {

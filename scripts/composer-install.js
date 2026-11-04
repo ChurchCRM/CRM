@@ -13,7 +13,7 @@ const path = require('path');
 const srcDir = path.join(__dirname, '..', 'src');
 const lockFile = path.join(srcDir, 'composer.lock');
 const installedFile = path.join(srcDir, 'vendor', 'composer', 'installed.json');
-const strippedDirs = new Set(['tests', 'Tests', 'test', 'docs', 'examples', 'example']);
+const strippedDirs = new Set(['tests', 'Tests', 'test', '_test', 'docs', 'examples', 'example']);
 
 function packageSet(packages) {
     return new Set(packages.map((p) => `${p.name}@${p.version}@${p.dist?.reference ?? p.source?.reference ?? ''}`));

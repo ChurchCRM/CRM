@@ -7,15 +7,15 @@
  * §0.8 D33, §2.8, §3.3.2.
  *
  * Personas (seed.sql): `admin.api.key` (administrator); `user.api.key` = person 3, tony.wade,
- * made coordinator of ministry A and team leader in ministry B here; `selfedit.api.key` =
- * person 99, EditSelf-only. Both ministries come from the real create API with the Sunday School
+ * made coordinator of ministry A and team leader in ministry B here; person 99 in a
+ * member session. Both ministries come from the real create API with the Sunday School
  * switch on, so their events may have a class.
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
-const SELFEDIT_KEY = "selfedit.api.key";
+const SELFEDIT_KEY = 99;
 
 const PERSON_COORDINATOR = 3;
 const PERSON_SELFEDIT = 99;
@@ -48,7 +48,11 @@ function dbOk(sql, params = []) {
     });
 }
 
+/** A person id is a member, in their portal session; anything else names an API key. */
 function api(key, method, url, body, expectedStatus = 200) {
+    if (typeof key === "number") {
+        return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
+    }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
@@ -185,7 +189,7 @@ function cleanupFixtures() {
 // ── fixture ────────────────────────────────────────────────────────────────
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key"]);
+    cy.rememberTestEnv(["admin.api.key", "user.api.key"]);
     cy.useChurchTimeZone();
 });
 
@@ -533,7 +537,7 @@ describe("Volunteer v2 D33 — events, schedules and occurrences are created sep
             });
         });
 
-        it("is a coordinator's: a team leader, a self-service login and rollout v1 are refused", () => {
+        it("is a coordinator's: a team leader, a member session and rollout v1 are refused", () => {
             createEvents(oneEvent("Team Leader Event", 6), "B").then((made) => {
                 staffThem([made.events[0].id], "B", COORDINATOR_KEY, 403);
             });

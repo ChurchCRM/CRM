@@ -48,7 +48,7 @@ interface EmailSendOutcome {
   familyId: number | null;
   name: string;
   email?: string;
-  /** skipped: not-found | no-email | do-not-email | deceased | inactive | duplicate-address */
+  /** skipped: not-found | no-email | no-adult-email | do-not-email | deceased | inactive | duplicate-address */
   reason?: string;
   /** failed: SMTP error text */
   error?: string;
@@ -180,6 +180,8 @@ function skipReasonText(reason: string | undefined): string {
   switch (reason) {
     case "no-email":
       return i18next.t("no email address");
+    case "no-adult-email":
+      return i18next.t("no head of household or spouse has an email address");
     case "do-not-email":
       return i18next.t("marked do not email");
     case "deceased":

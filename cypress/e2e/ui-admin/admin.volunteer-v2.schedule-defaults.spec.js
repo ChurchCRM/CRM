@@ -114,6 +114,8 @@ describe("Volunteer v2 D32 — default volunteers belong to the schedule", () =>
             ministryId = resp.body.ministry.id;
             admin("GET", `${MINISTRIES_URL}/${ministryId}`).then((detail) => {
                 teamId = detail.body.teams[0].id;
+                // The portal's team pages are for the team's leaders, staff included (member sign-in §8.4).
+                admin("POST", "/api/ministries/scopes", { personId: 1, scopeType: "team", scopeId: teamId }, [200, 201]);
             });
         });
         cy.then(() => {

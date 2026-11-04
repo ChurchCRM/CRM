@@ -10,10 +10,13 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
-use ChurchCRM\model\ChurchCRM\Note;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonCustom;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
+use ChurchCRM\Portal\Auth\EmailChangeChannel;
+use ChurchCRM\Portal\Auth\SignInEmailPolicy;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\CustomFieldUtils;
@@ -22,6 +25,7 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
+use Propel\Runtime\Propel;
 use ChurchCRM\Utils\AddressDefaults;
 use ChurchCRM\Service\CustomFieldService;
 
@@ -152,15 +156,10 @@ $bFamilyCountry = 0;
 $bFamilyHomePhone = 0;
 $bFamilyWorkPhone = 0;
 $bFamilyCellPhone = 0;
-$bFamilyEmail = 0;
 $bHomeBound = false;
 $aCustomData = [];
 
 //Is this the second pass?
-$accountPerson = $iPersonID > 0 ? PersonQuery::create()->findPk($iPersonID) : null;
-$emailAccountHolder = $accountPerson !== null && $accountPerson->isUser();
-$emailLocked = $emailAccountHolder && !AuthenticationManager::getCurrentUser()->isAdmin();
-
 if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     //Get all the variables from the request object and assign them locally
     $sTitle = InputUtils::legacyFilterInput($_POST['Title']);
@@ -213,7 +212,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
     $sWorkPhone = InputUtils::legacyFilterInput($_POST['WorkPhone']);
     $sCellPhone = InputUtils::legacyFilterInput($_POST['CellPhone']);
-    $sEmail = $emailLocked ? (string) $accountPerson->getEmail() : InputUtils::legacyFilterInput($_POST['Email']);
+    $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
     $sWorkEmail = InputUtils::legacyFilterInput($_POST['WorkEmail']);
     $iBirthMonth = InputUtils::legacyFilterInput($_POST['BirthMonth'], 'int');
     $iBirthDay = InputUtils::legacyFilterInput($_POST['BirthDay'], 'int');
@@ -325,6 +324,16 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         }
     }
 
+    // The personal email is the member sign-in identity (member sign-in design §9).
+    $emailPolicy = new SignInEmailPolicy();
+    if ($sEmailError === '' && $person instanceof Person) {
+        $emailRefusal = $emailPolicy->changeRefusal($person, $sEmail, AuthenticationManager::getCurrentUser());
+        if ($emailRefusal !== null) {
+            $sEmailError = '<span class="text-danger">' . InputUtils::escapeHTML($emailRefusal) . '</span>';
+            $bErrorFlag = true;
+        }
+    }
+
     // Validate Work Email
     if (strlen($sWorkEmail) > 0) {
         if (!MiscUtils::checkEmail($sWorkEmail)) {
@@ -383,13 +392,11 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         }
 
         $person = new Person();
-        $oldEmail = '';
 
         // If a person already exists, update the preexisting record.
         $personAlreadyExist = $iPersonID > 0;
         if ($personAlreadyExist) {
             $person = PersonQuery::create()->findOneById($iPersonID);
-            $oldEmail = (string) $person->getEmail();
             $person
                 ->setDateLastEdited(date('YmdHis'))
                 ->setEditedBy(AuthenticationManager::getCurrentUser()->getId());
@@ -451,20 +458,22 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $person->setEnvelope($iEnvelope);
         }
 
-        $person->save();
-        $person->reload();
+        // The save and the sign-in changes it causes commit together, against the
+        // address on record when the row is locked, not when the form was read.
+        $connection = Propel::getWriteConnection(PersonTableMap::DATABASE_NAME);
+        $connection->beginTransaction();
+        try {
+            $sOldEmail = $personAlreadyExist
+                ? (string) PersonQuery::create()->filterById($iPersonID)->lockForUpdate()->select(['Email'])->findOne($connection)
+                : null;
+            $person->save($connection);
+            $person->reload(false, $connection);
+            $emailPolicy->recordChange($person, $sOldEmail, EmailChangeChannel::STAFF, AuthenticationManager::getCurrentUser());
+            $connection->commit();
+        } catch (Throwable $e) {
+            $connection->rollBack();
 
-        if ($emailAccountHolder && $oldEmail !== (string) $sEmail) {
-            $note = new Note();
-            $note->setPerId($iPersonID);
-            $note->setType('edit');
-            $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-            $note->setText(sprintf(
-                gettext('Email changed by an administrator from %1$s to %2$s'),
-                InputUtils::escapeHTML($oldEmail),
-                InputUtils::escapeHTML((string) $sEmail)
-            ));
-            $note->save();
+            throw $e;
         }
 
         if (!$personAlreadyExist) {
@@ -571,7 +580,6 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
         $bFamilyZip = strlen($fam_Zip);
         $bFamilyCountry = strlen($fam_Country);
         $bFamilyHomePhone = strlen($fam_HomePhone);
-        $bFamilyEmail = strlen($fam_Email);
 
         $bFacebook = strlen($per_Facebook);
         $bTwitter = strlen($per_Twitter);
@@ -598,6 +606,18 @@ $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
 $rsFamilyRoles = RunQuery($sSQL);
 
 $sCountry = Countries::toISO($sCountry);
+
+$bEmailLocked = false;
+$sEmailHint = '';
+if ($person instanceof Person && !$person->isNew()) {
+    $emailPolicy ??= new SignInEmailPolicy();
+    if (!AuthenticationManager::getCurrentUser()->isAdmin() && $emailPolicy->needsAdministrator($person)) {
+        $bEmailLocked = true;
+        $sEmailHint = gettext('Only an administrator can change the email of a person who has a staff account or portal permissions.');
+    } elseif ($emailPolicy->hasSignedIn(PersonSigninQuery::create()->findPk((int) $person->getId()))) {
+        $sEmailHint = gettext('This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed.');
+    }
+}
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('People'), '/people/dashboard'],
@@ -946,23 +966,15 @@ require_once __DIR__ . '/Include/Header.php';
                 <!-- Emails Column -->
                 <div class="col-12 col-md-6">
                     <div class="mb-3">
-                        <label for="Email">
-                            <?php
-                            if ($bFamilyEmail) {
-                                echo '<span class="text-danger">' . gettext('Email') . ':</span>';
-                            } else {
-                                echo gettext('Email') . ':';
-                            }
-                            ?>
-                        </label>
+                        <label for="Email"><?= gettext('Email') ?>:</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
                             <input type="email" name="Email" id="Email"
                                    value="<?= InputUtils::escapeAttribute(stripslashes($sEmail)) ?>"
-                                   maxlength="100" class="form-control"<?= $emailLocked ? ' readonly' : '' ?>>
+                                   maxlength="100" class="form-control"<?= $bEmailLocked ? ' readonly aria-describedby="EmailHint"' : ($sEmailHint !== '' ? ' aria-describedby="EmailHint"' : '') ?>>
                         </div>
-                        <?php if ($emailLocked) { ?>
-                            <span class="text-secondary small"><?= gettext('Only an administrator can change the email of a person with a user account.') ?></span>
+                        <?php if ($sEmailHint !== '') { ?>
+                            <div class="form-text" id="EmailHint"><?= InputUtils::escapeHTML($sEmailHint) ?></div>
                         <?php } ?>
                         <?php if ($sEmailError) { ?>
                             <span class="text-danger small"><?= $sEmailError ?></span>

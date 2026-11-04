@@ -92,7 +92,7 @@ describe("User Editor - ORM Migration Tests", () => {
         // Person 10 has no seeded user account; a different row from the other tests
         // so parallel workers never race on it.
         const personId = 10;
-        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${personId}`, null, [200, 204, 404]);
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${personId}/`, null, [200, 404]);
         cy.then(() => Cypress.session.clearAllSavedSessions());
         cy.setupAdminSession();
         cy.intercept("POST", `**/admin/system/users/new*`).as("saveUser");
@@ -114,7 +114,8 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.get("#ManageMyMinistries").should("be.checked");
         cy.get("#ManageMinistries").should("not.be.checked");
 
-        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${personId}`, null, [200, 204, 404]);
+        // The trailing slash matters: without it the route 404s and the account leaks (#9782).
+        cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${personId}/`, null, 200);
         cy.then(() => Cypress.session.clearAllSavedSessions());
     });
 
@@ -156,7 +157,7 @@ describe("User Editor - ORM Migration Tests", () => {
         // This test covers both states:
         //   - new user WITHOUT Manage Events → AddEvent unchecked after load (explicit FALSE row)
         //   - edit to enable Manage Events → AddEvent checked after reload (TRUE row)
-        //   - switching to self-service mode clears the toggle (JS exclusivity)
+        //   - switching to Administrator mode clears the toggle
         // Defensive pre-delete — 404 allowed, see createCustomUser().
         cy.makePrivateAdminAPICall("DELETE", `/admin/api/user/${throwawayPersonId3}/`, null, [200, 404]);
         cy.then(() => Cypress.session.clearAllSavedSessions());
@@ -191,8 +192,8 @@ describe("User Editor - ORM Migration Tests", () => {
         cy.get("#customPermissions").should("be.visible");
         cy.get("#AddEvent").should("be.checked");
 
-        // --- Part 3: JS exclusivity — switching to self-service must clear AddEvent ---
-        cy.contains('.form-selectgroup-item', 'Self').click();
+        // --- Part 3: switching to Administrator clears AddEvent ---
+        cy.contains(".form-selectgroup-item", "Administrator").click();
         cy.get("#AddEvent").should("not.be.checked");
 
         // Cleanup — the user was created above, so this must return 200.
@@ -214,7 +215,7 @@ describe("User Editor - Person picker (no ?personId)", () => {
         // Username field present
         cy.get("#UserName").should("exist");
         // Access level radios present
-        cy.get('input[name="accessMode"]').should("have.length", 3);
+        cy.get('input[name="accessMode"]').should("have.length", 2);
         // Save button present
         cy.get("#SaveButton").should("exist");
     });

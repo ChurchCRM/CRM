@@ -24,11 +24,9 @@
  * (#9876), which is what writes `email_log_eml` rows in the first place, so the
  * test exercises the whole chain rather than hand-written rows.
  *
- * Personas: Lena Black (user 100, person 100, family 20 — the self-service
- * member) and Samantha Black (person 102, the same family).
+ * Personas: Lena Black (person 100, family 20, signed in with her email) and
+ * Samantha Black (person 102, the same family).
  */
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
 const LENA_PERSON_ID = 100;
 const SAMANTHA_PERSON_ID = 102;
 
@@ -42,13 +40,10 @@ const tag = `portal-email-${Date.now()}`;
  */
 let sentToAddress;
 
-/** Sign in with the login form so cy.request() inherits a real session. */
+/** Sign in with the emailed code so cy.request() inherits a real session. */
 const portalLogin = () => {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USER);
-    cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
-    cy.url({ timeout: 10000 }).should("include", "/portal");
+    cy.signInAsMember(100);
+    cy.visit("/portal/");
 };
 
 const portalGet = (url, expectedStatus = 200) =>
@@ -239,10 +234,6 @@ describe("Member Portal API — /api/portal/me/emails", () => {
         it("Refuses an API-key caller, even an administrator's key", () => {
             cy.makePrivateAdminAPICall("GET", "/api/portal/me/emails", null, 403);
             cy.makePrivateAdminAPICall("GET", "/api/portal/me/emails/1", null, 403);
-        });
-
-        it("Refuses an Edit-Self account's API key too", () => {
-            cy.makePrivateEditSelfAPICall("GET", "/api/portal/me/emails", null, 403);
         });
     });
 });

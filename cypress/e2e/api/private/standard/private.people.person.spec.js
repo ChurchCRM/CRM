@@ -64,6 +64,15 @@ describe("API Private Person", () => {
                 expect(response.body).to.exist;
             });
         });
+
+        it("Lists only personal emails that more than one person shares", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/persons/duplicate/emails", null, 200).then((response) => {
+                const shared = response.body.emails.find((entry) => entry.email === "tony.wade@example.com");
+                expect(shared.people.map((p) => p.id).sort((a, b) => a - b)).to.deep.equal([3, 35]);
+                expect(shared.families).to.deep.equal([]);
+                expect(response.body.emails.find((entry) => entry.email === "boby@example.com").people.length).to.be.at.least(2);
+            });
+        });
     });
 
     describe("GET /api/persons/self-register - Self-Registered People", () => {

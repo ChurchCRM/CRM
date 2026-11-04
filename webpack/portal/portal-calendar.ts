@@ -26,6 +26,7 @@ import "fullcalendar/themes/forma/theme.css";
 import "fullcalendar/themes/forma/palettes/blue.css";
 import { applyFcLocale } from "../common/fc-locale";
 import { initCalendarSubscription } from "./portal-calendar-subscribe";
+import { reloadWhenSignedOut } from "./portal-session";
 
 /**
  * `fullcalendar/all` exports only `Calendar`, so the shapes FullCalendar hands
@@ -200,6 +201,7 @@ async function fetchEvents(url: string, info: FcEventSourceArg): Promise<PortalC
     credentials: "same-origin",
     headers: { accept: "application/json" },
   });
+  reloadWhenSignedOut(response.status);
   if (!response.ok) {
     throw new Error(`portal calendar events: ${response.status}`);
   }

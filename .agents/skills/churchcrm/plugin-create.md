@@ -140,6 +140,10 @@ $app->group('/my-plugin/api', function (RouteCollectorProxy $group) use ($plugin
 
 Pattern: [`plugin-development.md → Plugin Routes`](./plugin-development.md#plugin-routes-routesroutesphp).
 
+### Member Portal pages (optional)
+
+A plugin adds portal pages, API and nav items by declaring capabilities in `plugin.json` (`portal.capabilities`, `portalRoutesFile`) and returning rules and nav items from its plugin class. Reference and example: [`plugin-development.md → Member Portal`](./plugin-development.md#member-portal-pages-capabilities-and-nav).
+
 ## 5. Translations (optional)
 
 Community plugins keep translations inside the plugin directory.

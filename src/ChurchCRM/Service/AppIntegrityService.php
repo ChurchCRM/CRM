@@ -481,6 +481,7 @@ class AppIntegrityService
             '/^vendor\/.*\/tests\//',
             '/^vendor\/.*\/Tests\//',
             '/^vendor\/.*\/test\//',
+            '/^vendor\/.*\/_test\//',
             '/^vendor\/.*\/docs\//',
             // Community plugins are third-party extensions installed at runtime.
             // They are never part of the shipped signatures.json and must not

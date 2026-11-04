@@ -25,7 +25,7 @@ use Slim\Routing\RouteCollectorProxy;
  *             @OA\Property(property="personIds", type="array", @OA\Items(type="integer"),
  *                 description="Person ids to email at their own address (a person with none is skipped)"),
  *             @OA\Property(property="familyIds", type="array", @OA\Items(type="integer"),
- *                 description="Family ids to email at the family address"),
+ *                 description="Family ids to email at the head of household's address, else the spouse's"),
  *             @OA\Property(property="subject", type="string", maxLength=255, description="Subject line (plain text)"),
  *             @OA\Property(property="body", type="string", description="Plain-text body; newlines are preserved")
  *         )
@@ -44,7 +44,7 @@ use Slim\Routing\RouteCollectorProxy;
  *                     @OA\Property(property="personId", type="integer", nullable=true),
  *                     @OA\Property(property="familyId", type="integer", nullable=true),
  *                     @OA\Property(property="name", type="string"),
- *                     @OA\Property(property="reason", type="string", enum={"not-found","no-email","do-not-email","deceased","inactive","duplicate-address"}))),
+ *                     @OA\Property(property="reason", type="string", enum={"not-found","no-email","no-adult-email","do-not-email","deceased","inactive","duplicate-address"}))),
  *             @OA\Property(property="sent", type="array", @OA\Items(type="object"), description="Always empty: sending happens after the request (kept for older clients)"),
  *             @OA\Property(property="failed", type="array", @OA\Items(type="object"), description="Always empty: sending happens after the request (kept for older clients)"),
  *             @OA\Property(property="counts", type="object",

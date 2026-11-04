@@ -19,7 +19,7 @@
  *      NOTE: john.plainauth HAS Notes=1. Endpoints that only require the Notes flag
  *      should return 200 for this user. Endpoints that also require EditRecords (e.g.
  *      POST person note with canEditPerson()) should still return 403.
- *  - limited.user      (makePrivateLimitedAPICall) — usr_Notes=0, all other flags=0.
+ *  - noperm.user       (makePrivateNoPermAPICall) — usr_Notes=0, all other flags=0.
  *      Use this fixture whenever you need to test the "no Notes flag → 403" path.
  */
 describe("Notes Visibility Policy (#9036)", () => {
@@ -107,8 +107,8 @@ describe("Notes Visibility Policy (#9036)", () => {
             });
         });
 
-        it("limited.user (Notes=0) CANNOT GET person notes → 403", () => {
-            cy.makePrivateLimitedAPICall("GET", "/api/person/2/notes", null, 403);
+        it("noperm.user (Notes=0) CANNOT GET person notes → 403", () => {
+            cy.makePrivateNoPermAPICall("GET", "/api/person/2/notes", null, 403);
         });
 
         it("Admin can GET family notes → 200 including private", () => {
@@ -138,8 +138,8 @@ describe("Notes Visibility Policy (#9036)", () => {
             });
         });
 
-        it("limited.user (Notes=0) CANNOT GET family notes → 403", () => {
-            cy.makePrivateLimitedAPICall("GET", "/api/family/2/notes", null, 403);
+        it("noperm.user (Notes=0) CANNOT GET family notes → 403", () => {
+            cy.makePrivateNoPermAPICall("GET", "/api/family/2/notes", null, 403);
         });
     });
 
@@ -166,8 +166,8 @@ describe("Notes Visibility Policy (#9036)", () => {
                 });
         });
 
-        it("limited.user (Notes=0) CANNOT GET any note → 403", () => {
-            cy.makePrivateLimitedAPICall("GET", `/api/note/${fixtures.adminPublicPersonNote}`, null, 403);
+        it("noperm.user (Notes=0) CANNOT GET any note → 403", () => {
+            cy.makePrivateNoPermAPICall("GET", `/api/note/${fixtures.adminPublicPersonNote}`, null, 403);
         });
     });
 
@@ -202,8 +202,8 @@ describe("Notes Visibility Policy (#9036)", () => {
                 { text: "<p>Should fail</p>", private: false }, 403);
         });
 
-        it("limited.user (Notes=0) CANNOT POST person note → 403", () => {
-            cy.makePrivateLimitedAPICall("POST", "/api/person/2/note",
+        it("noperm.user (Notes=0) CANNOT POST person note → 403", () => {
+            cy.makePrivateNoPermAPICall("POST", "/api/person/2/note",
                 { text: "<p>Should fail</p>", private: false }, 403);
         });
     });
@@ -241,8 +241,8 @@ describe("Notes Visibility Policy (#9036)", () => {
                 });
         });
 
-        it("limited.user (Notes=0) CANNOT POST family note → 403", () => {
-            cy.makePrivateLimitedAPICall("POST", "/api/family/2/note",
+        it("noperm.user (Notes=0) CANNOT POST family note → 403", () => {
+            cy.makePrivateNoPermAPICall("POST", "/api/family/2/note",
                 { text: "<p>Should fail</p>", private: false }, 403);
         });
     });
@@ -263,12 +263,6 @@ describe("Notes Visibility Policy (#9036)", () => {
                 // Endpoint returns 200 with an array
                 expect(timeline).to.be.an("array");
             });
-        });
-
-        it("limited.user (Notes=0, all flags=0) CANNOT GET person timeline → 403", () => {
-            // limited.user is an EditSelf-only user blocked by AuthMiddleware (User::isEditSelfExclusive()) → 403.
-            // This is different from the 'authenticated but no notes' case above.
-            cy.makePrivateLimitedAPICall("GET", "/api/timeline/person/2", null, 403);
         });
 
         it("Notes=1 user gets person timeline → 200 with public note, WITHOUT admin's private note", () => {
@@ -325,10 +319,6 @@ describe("Notes Visibility Policy (#9036)", () => {
                 const noteItems = resp.body.timeline.filter(item => item.type === "note");
                 expect(noteItems).to.have.length(0);
             });
-        });
-
-        it("limited.user (all flags=0) CANNOT GET family timeline → 403", () => {
-            cy.makePrivateLimitedAPICall("GET", "/api/timeline/family/2", null, 403);
         });
 
         it("Notes=1 user gets family timeline → 200 with public note, admin's private absent", () => {

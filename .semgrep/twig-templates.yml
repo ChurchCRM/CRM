@@ -1,0 +1,47 @@
+rules:
+  - id: churchcrm-twig-var-in-href
+    message: >-
+      A template variable in an anchor `href` can carry a `javascript:` URI.
+      Build the address with `url()` (it prefixes the install root) or pass a
+      server-built address (`loginUrl`, `member.adminConsoleUrl`, `fullURL`, `churchCRMURL`) or an http(s)-checked address (`church_website`, `link.url`).
+    languages: [generic]
+    paths:
+      include: ['*.twig']
+    severity: WARNING
+    metadata:
+      category: security
+      cwe: ["CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"]
+    patterns:
+      - pattern-inside: <a ...>
+      - pattern-either:
+          - pattern: href = {{ ... }}
+          - pattern: href = "{{ ... }}"
+          - pattern: href = '{{ ... }}'
+      - pattern-not-inside: href = "{{ url(...) ... }}"
+      - pattern-not-inside: href = '{{ url(...) ... }}'
+      - pattern-not-inside: href = "{{ loginUrl }}"
+      - pattern-not-inside: href = "{{ member.adminConsoleUrl }}"
+      - pattern-not-inside: href = "{{ church_website }}"
+      - pattern-not-inside: href = "{{ link.url }}"
+      - pattern-not-inside: href = "{{fullURL}}"
+      - pattern-not-inside: href = "{{churchCRMURL}}"
+      - pattern-not-inside: href = "/{{ ... }}"
+      - pattern-not-inside: href = '/{{ ... }}'
+
+  - id: churchcrm-twig-var-in-script-tag
+    message: >-
+      A template variable in a `<script>` block needs a JavaScript-safe encoder.
+      Use `|json_encode(json_flags)|raw` with the JSON_HEX_* flags.
+    languages: [generic]
+    paths:
+      include: ['*.twig']
+    severity: WARNING
+    metadata:
+      category: security
+      cwe: ["CWE-79: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"]
+    patterns:
+      - pattern-inside: <script ...> ... </script>
+      - pattern-not-inside: <script ... $ATTR = "..." ...>
+      - pattern-not-inside: <script ... $ATTR = '...' ...>
+      - pattern: '{{ ... }}'
+      - pattern-not: '{{ ...|json_encode(json_flags)|raw }}'

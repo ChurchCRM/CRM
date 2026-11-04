@@ -12,14 +12,20 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerQualification;
+use ChurchCRM\Portal\Auth\LoginAsPerson;
 use ChurchCRM\Service\EmailLogService;
+use ChurchCRM\Service\LoginAsPersonHistoryService;
+use ChurchCRM\Service\PersonPortalAccessService;
 use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\PersonSignInService;
+use ChurchCRM\Service\PortalGrantService;
 use ChurchCRM\Service\PropertyService;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
 use ChurchCRM\Volunteer\Service\VolunteerQualificationService;
 use ChurchCRM\Service\TimelineService;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
@@ -346,6 +352,36 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     // ── Email history (5 most recent; the full list is /people/view/{id}/emails) ──
     $emailHistory = (new EmailLogService())->getForPerson($iPersonID, 1, 5);
 
+    // ── Portal sign-in card (member sign-in design §11.3) ───────────────────
+    $portalSignIn = $currentUser->isEditRecordsEnabled()
+        ? (new PersonSignInService())->statusFor($person, $currentUser->isAdmin())
+        : null;
+    // Its devices, passkeys and portal permissions: administrators only (§11.3, §8.6)
+    $portalAccess = $portalSignIn !== null && $currentUser->isAdmin() ? (new PersonPortalAccessService())->forPerson($person) : null;
+    $portalGrantChoices = $portalAccess === null ? [] : PortalGrantService::givableCapabilitiesFor($iPersonID);
+
+    // ── Login as Person (§6.5, §11.3): administrators only ───────────────────
+    $loginAsPerson = null;
+    $loginAsPersonHistory = null;
+    if ($currentUser->isAdmin()) {
+        if (LoginAsPerson::isEnabled()) {
+            $loginAsPersonRefusal = LoginAsPerson::refusalFor($person);
+            $loginAsPerson = [
+                'refusal' => $loginAsPersonRefusal === null ? null : LoginAsPerson::refusalMessage($loginAsPersonRefusal),
+                'label' => LoginAsPerson::menuLabel($person),
+                'csrfToken' => CSRFUtils::generateToken(),
+            ];
+        }
+        $loginAsPersonHistory = (new LoginAsPersonHistoryService())->forPerson($iPersonID);
+        if ($loginAsPersonHistory === [] && !LoginAsPerson::isEnabled()) {
+            $loginAsPersonHistory = null;
+        }
+    }
+
+    // PageInit.php (required above) took the previous request's message, e.g. why
+    // Login as Person ended, out of the session; Footer.php shows it.
+    global $sGlobalMessage, $sGlobalMessageClass;
+
     // ── Render ───────────────────────────────────────────────────────────────
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
@@ -401,6 +437,18 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'personTimeline'         => $personTimeline,
         // Email history
         'emailHistory'           => $emailHistory,
+        // Portal sign-in card: null when the viewer lacks Edit Records
+        'portalSignIn'           => $portalSignIn,
+        'portalSignInCanManage'  => $currentUser->isAdmin(),
+        'portalSignInIsSelf'     => $iPersonID === (int) $currentUser->getPersonId(),
+        'portalSignInCsrfToken'  => $portalSignIn === null ? '' : CSRFUtils::generateToken(),
+        // Login as Person: the Actions item (null while off or for non-admins) and the history card
+        'loginAsPerson'          => $loginAsPerson,
+        'loginAsPersonHistory'   => $loginAsPersonHistory,
+        'portalAccess'           => $portalAccess,
+        'portalGrantChoices'     => $portalGrantChoices,
+        'sGlobalMessage'         => $sGlobalMessage ?? '',
+        'sGlobalMessageClass'    => $sGlobalMessageClass ?? 'success',
     ];
 
     return $renderer->render($response, 'person-view.php', $pageArgs);

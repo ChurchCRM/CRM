@@ -18,6 +18,8 @@
  * "".
  */
 
+import { reloadWhenSignedOut } from "../portal/portal-session";
+
 /** One ministry as `volunteerMinistryToArray()` shapes it. */
 export interface VolunteerMinistry {
   id: number;
@@ -249,6 +251,7 @@ async function requestAt<T>(absolutePath: string, init?: RequestInit): Promise<T
     headers: { Accept: "application/json", "Content-Type": "application/json" },
     ...init,
   });
+  reloadWhenSignedOut(response.status);
 
   let body: unknown = null;
   try {

@@ -102,7 +102,6 @@ function postPeopleDirectory(Request $request, Response $response): Response
         'familyPhone' => $flag('bDirFamilyPhone'),
         'familyWork' => $flag('bDirFamilyWork'),
         'familyCell' => $flag('bDirFamilyCell'),
-        'familyEmail' => $flag('bDirFamilyEmail'),
         'personalPhone' => $flag('bDirPersonalPhone'),
         'personalWork' => $flag('bDirPersonalWork'),
         'personalCell' => $flag('bDirPersonalCell'),

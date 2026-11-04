@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 // Seed users: noperm.user (901) has every permission flag off; tony.wade (3, the
-// standard user) has Delete Records; limited.user (4) is EditSelf only.
+// standard user) has Delete Records; Darren Campbell (4) signs in to the portal as a member.
 // Seed July birthdays give the Birthdays report rows.
 const LABELS = "/people/labels?report=birthdays&month=7&labeltype=5160&labelfont=Helvetica&labelfontsize=10&startrow=1&startcol=1&filetype=CSV";
 
@@ -83,12 +83,12 @@ describe("People Reports for staff users (#10570)", () => {
         });
     });
 
-    describe("as a self-service (EditSelf only) user", () => {
-        beforeEach(() => cy.setupLoginSession("people-reports-editself", "limited.user", "changeme"));
+    describe("as a member signed in to the portal", () => {
+        beforeEach(() => cy.signInAsMember(4));
 
-        it("is kept in the portal", () => {
+        it("is sent to the staff sign-in", () => {
             cy.visit("/people/reports");
-            cy.url().should("include", "/portal");
+            cy.location("pathname").should("match", /\/admin\/$/);
             cy.get("#peopleReports").should("not.exist");
             cy.get('a[href$="/people/reports"]').should("not.exist");
         });

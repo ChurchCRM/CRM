@@ -35,6 +35,21 @@ const recordRow = (id, method, url, gate, body = {}) => ({
     deny: gate === "delete" ? deleteDeny : editDeny,
 });
 
+// Email needs attention (member sign-in): Edit Records on the API group and on the page.
+const signInEmailRow = (id, probe) => ({
+    id,
+    audience: "standard",
+    classification: "people-records",
+    ...probe,
+    allow: editAllow,
+    deny: editDeny,
+});
+
+export const SIGN_IN_EMAIL_GATES = [
+    signInEmailRow("sign-in-email-api", { api: { method: "GET", url: "/api/persons/sign-in-email/attention/counts" } }),
+    signInEmailRow("sign-in-email-page", { page: "/people/sign-in-email" }),
+];
+
 export const RECORD_GATES = [
     recordRow("person-photo-upload-api", "POST", "/api/person/2/photo", "edit"),
     recordRow("person-activate-api", "POST", "/api/person/2/activate/false", "edit"),

@@ -43,7 +43,7 @@ const MINISTRIES_URL = `${VOLUNTEER_URL}/ministries`;
 /** Every fixture name starts with this so cleanup deletes exactly what this spec made. */
 const PREFIX = "VRECRUIT";
 
-/** The EditSelf-exclusive volunteer persona (D14) — the member surface's actor. */
+/** The volunteer persona (D14), in a member session — the member surface's actor. */
 const PERSON_VOLUNTEER = 99;
 
 const TEAM_ALPHA = `${PREFIX} Alpha Crew`;
@@ -65,10 +65,6 @@ let teamAlpha = 0;
 let teamZulu = 0;
 let defaultTeamNameA = "";
 let positionAlphaFirst = 0;
-
-function volunteerKey() {
-    return Cypress.testEnv("selfedit.api.key");
-}
 
 function adminApi(method, url, body, expectedStatus = 200) {
     return cy.makePrivateAdminAPICall(method, url, body, expectedStatus);
@@ -136,7 +132,7 @@ function createPosition(ministryId, payload, expectedStatus = 201) {
 /** The `recruitingPositions` rows of one ministry on the member surface. */
 function helpWantedRow(ministryId, assert) {
     return cy
-        .makePrivateAPICall(volunteerKey(), "GET", `${VOLUNTEER_URL}/me/help-wanted`, null, 200)
+        .makeMemberAPICall(PERSON_VOLUNTEER, "GET", `${VOLUNTEER_URL}/me/help-wanted`, null, 200)
         .then((resp) => {
             assert(
                 resp.body.ministries.find((m) => m.ministryId === ministryId),
@@ -144,10 +140,6 @@ function helpWantedRow(ministryId, assert) {
             );
         });
 }
-
-before(() => {
-    cy.rememberTestEnv(["selfedit.api.key"]);
-});
 
 describe("Volunteer v2 position recruiting flag (#9701)", () => {
     before(() => {
@@ -491,8 +483,8 @@ describe("Volunteer v2 position recruiting flag (#9701)", () => {
         });
 
         it("accepts the offer, because the button is rendered for this ministry", () => {
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "POST",
                 `${VOLUNTEER_URL}/me/help-wanted/${ministryA}`,
                 null,
@@ -507,8 +499,8 @@ describe("Volunteer v2 position recruiting flag (#9701)", () => {
         });
 
         it("still refuses a ministry that is advertising in neither way", () => {
-            cy.makePrivateAPICall(
-                volunteerKey(),
+            cy.makeMemberAPICall(
+                PERSON_VOLUNTEER,
                 "POST",
                 `${VOLUNTEER_URL}/me/help-wanted/${ministryC}`,
                 null,

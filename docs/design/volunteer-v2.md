@@ -1489,7 +1489,7 @@ returns an **empty body** with the reason in the HTTP reason phrase (S2). It rea
 | Area | Path prefix | Gate |
 |---|---|---|
 | Coordinator MVC | `/ministries/dashboard`, `/ministries/{id}`, `/ministries/occurrences/{id}` | `VolunteerCoordinatorRoleAuthMiddleware` on the group. `/ministries` with no id is a 302 to the dashboard, inside the same group and behind the same gate; the sidebar's **Ministries** heading (§5.0) is the list |
-| Member MVC | `/portal/volunteer/schedule`, `/portal/volunteer/opportunities` (Member Portal pages) | **no role gate** — per-record authorization only, by authenticated person (D14). The rollout flag still applies: `PortalNav::isVolunteeringVisible()` gates both the route and the nav entry |
+| Member MVC | `/portal/volunteer/schedule`, `/portal/volunteer/opportunities` (Member Portal pages) | **no role gate** — per-record authorization only, by authenticated person (D14). The rollout flag still applies: the portal capability `portal.volunteer.use` (member sign-in design §8.4) gates both the route and the nav entry |
 | Coordinator API | `/api/ministries/...` | `VolunteerCoordinatorRoleAuthMiddleware` + `VolunteerV2EnabledMiddleware` on the group; per-entity middleware per route |
 | Member API | `/api/ministries/me/...` | `VolunteerV2EnabledMiddleware` only — every authenticated person is potentially a volunteer |
 | Global-manager-only API | `POST /api/ministries/ministries`, `DELETE /api/ministries/ministries/{id}`, `GET /api/ministries/scopes` | `ManageMinistriesRoleAuthMiddleware` on those routes |
@@ -1662,7 +1662,7 @@ are the contract; read the class for signatures.
 | Surface | File | Change |
 |---|---|---|
 | Sidebar menu | `src/ChurchCRM/Config/Menu/Menu.php` (registry) | One **Ministries** heading — see §5.0 — `'Ministries' => self::getMinistriesMenu($currentUser, $isVolunteerCoordinator)`, built the way `getGroupMenu()` builds its per-group entries. Visibility booleans are computed once in `buildMenuItems()` like the others. **Menu visibility mirrors the route middleware exactly.** |
-| Member menu entry | `ChurchCRM\Portal\PortalNav` | The member surface is the portal's **Volunteering** entry, built by `PortalNav::build()` and gated by `PortalNav::isVolunteeringVisible()`. A volunteer with no assignments still sees it: it is where they find open opportunities. |
+| Member menu entry | `ChurchCRM\Portal\PortalNav` | The member surface is the portal's **Volunteering** entry, built by `PortalNav::build()` and gated by the portal capability `portal.volunteer.use`. A volunteer with no assignments still sees it: it is where they find open opportunities. |
 | Person view tab | `src/people/views/person-view.php` (the tab nav and the Volunteer pane); route args in `src/people/routes/view.php` | **Direct edit** (F15). The route passes the rollout state; the view renders the V1 pane, the V2 pane, or both (§3.8). The V2 pane lists the person's qualifications and upcoming assignments, read-only, linking into `/ministries`. A `Hooks::PERSON_VIEW_TABS` filter is open question D-8. |
 | Event editor | `webpack/event-form.js` beside `#linkedGroupSelect` | the ministry select (§2.16 item 10) |
 | Event API | `src/api/routes/calendar/events.php` `applyEventExtendedFields()`, `getEvent` | §2.16 items 7–9 |
@@ -2222,7 +2222,7 @@ member surface:
 `isVolunteerV2Enabled()` — exactly one volunteer entry, `/api/ministries/me/`, because the portal's
 volunteering templates load bundles that call that API. The member MVC pages are
 `/portal/volunteer/schedule` and `/portal/volunteer/opportunities`. Both branches consult the
-function, so the member surface is reachable by session and by API key (`cy.makePrivateEditSelfAPICall()`, §6.6).
+function, so the member surface is reachable by session and by API key (§6.6).
 
 **Why this is safe.** The allowed paths are matched literally with `str_starts_with()`, anchored at
 the install's root path (`SystemURLs::getRootPath()`), so `/api/person/1/api/ministries/me/…` or a
@@ -2308,8 +2308,8 @@ schedule through the Member Portal, which their user menu links to.
 
 | Where | Heading / entry | Icon | Shown to | Entries |
 |---|---|---|---|---|
-| Member Portal nav | **Volunteering** | `fa-solid fa-handshake-angle` | every member, while `PortalNav::isVolunteeringVisible()` — the rollout flag `User::isVolunteerV2Enabled()` **and** the administrator's `bPortalShowVolunteer` switch (read defensively: undeclared means on, MP3 declares it) | links to *My schedule* (S5); the page's own tab bar carries *Find something to do* (S6). The route and the entry ask the same predicate, so the portal never offers a page it will then 404 |
-| Member Portal nav | **My Teams** | `fa-solid fa-people-group` | a member who holds an explicit `team` grant (`User::isVolunteerTeamLeaderEnabled()`), while volunteering is visible at all. A coordinator, manager or administrator is **not** a team leader (§4.4) and gets no entry — their way into a team is the ministry page | `/portal/teams`, then one team page each with Positions · Volunteers · Schedules · Dates, and an occurrence page under it (Member Portal §5.5). The route is more generous than the entry: it also admits a coordinator-or-above who opens the portal as themselves |
+| Member Portal nav | **Volunteering** | `fa-solid fa-handshake-angle` | every member holding `portal.volunteer.use`: everyone, while the rollout flag `User::isVolunteerV2Enabled()` **and** the administrator's `bPortalShowVolunteer` switch are on | links to *My schedule* (S5); the page's own tab bar carries *Find something to do* (S6). The route and the entry ask the same predicate, so the portal never offers a page it will then 404 |
+| Member Portal nav | **My Teams** | `fa-solid fa-people-group` | a person holding `volunteer.team.manage` on a team: a `team` scope row (the portal's team-leader rule) or a grant an administrator gave them (member sign-in design §8). A coordinator, manager or administrator is **not** a team leader (§4.4) and gets no entry — their way into a team is the ministry page | `/portal/teams`, then one team page each with Positions · Volunteers · Schedules · Dates, and an occurrence page under it (Member Portal §5.5). The routes ask the same capability, and another team's page is 404 |
 | Admin sidebar | **Ministries** | `fa-sitemap` | a volunteer coordinator-or-above (`User::isVolunteerCoordinatorEnabled()` — the same predicate `VolunteerCoordinatorRoleAuthMiddleware` asks; **false** for a self-service login, D14) | *Dashboard* (S1), then **one entry per ministry the viewer may administer**, by name, linking to `/ministries/{id}` (S3) — the administration surface |
 
 The per-ministry entries are built exactly the way the Groups heading builds its per-group
@@ -2978,8 +2978,8 @@ Reusable seed objects (verified in `seed.sql`):
 | Standard user (all flags but Admin) | person 3, `user.api.key` | coordinator once granted a scope |
 | Notes-only user | person 900, `plainauth.api.key` | the "no volunteer rights" negative case |
 | Zero-permission user | person 901 | **its seeded API key has no env var in any config** — use `plainauth` instead, or add the env var |
-| EditSelf-exclusive user | person 99, `selfedit.api.key` | **the volunteer persona** (D14) |
-| EditSelf + Notes | person 100, `selfedit.plus.notes.api.key` | second volunteer, for the swap counterparty |
+| Member (no account) | person 99, `cy.makeMemberAPICall(99, …)` | **the volunteer persona** (D14) |
+| Member (no account) | person 100, `cy.makeMemberAPICall(100, …)` | second volunteer, for the swap counterparty |
 | Group "Angels class" | grp 1 (type 4, Teacher/Student roles) | a pool group with real members |
 | Group "Worship Service" | grp 10 (**type 1 = Ministry**) | the natural pool for a Worship fixture |
 | Family Riley | fam 18 (8 members) | bulk pool members |
@@ -3023,11 +3023,11 @@ Idempotency is awkward to prove through E2E, so each case has a prescribed shape
 | Duplicate scope grant | `POST /scopes` twice; second is `200` with the same id, not `409` and not a duplicate row |
 | Concurrent double-submit | not testable through Cypress; the DB unique keys are the guarantee, and each unique key has a spec proving the second write is rejected |
 
-**Authorization negatives** (§4.8): use person 900 (`plainauth`) or person 99 (`selfedit`); a strict
+**Authorization negatives** (§4.8): use person 900 (`plainauth`) or person 99 (a member session); a strict
 `403` assertion needs a non-admin caller, because admin bypasses every role middleware except `AdminRoleAuthMiddleware`.
 
-**Member-surface specs authenticate with `cy.makePrivateEditSelfAPICall()`** (person 99). That only
-works because §4.7's exemption covers the API-key branch as well as the session branch.
+**Member-surface specs use a member session:** `cy.makeMemberAPICall(99, …)` signs person 99 in with
+an emailed code (`cypress/support/member-session.js`); there are no self-service accounts.
 
 ### 6.7 Other rules that bite
 
@@ -3038,7 +3038,7 @@ works because §4.7's exemption covers the API-key branch as well as the session
 - `x-api-key` authenticates Slim MVC pages (`/event`, `/ministries`, `/v2`), so a pure `cy.request()`
   can assert their status codes — but **not** `/people/*` or any root `.php` page: those
   require `Include/PageInit.php`, whose `ensureAuthentication()` runs at file-load time before any
-  middleware, so an API-key request 302s to `/session/begin`. Assertions on the person view or on
+  middleware, so an API-key request 302s to the staff sign-in at `/admin/`. Assertions on the person view or on
   `VolunteerOpportunityEditor.php` live in a `ui/` or `ui-admin/` spec with a real login.
 - SystemConfig is changed through the **admin** app: `POST /admin/api/system/config/{name}` with
   `{value: "…"}`. `/api/system/config/...` silently 404s.

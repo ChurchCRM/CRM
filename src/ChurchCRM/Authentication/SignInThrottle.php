@@ -50,7 +50,7 @@ final class SignInThrottle
             return;
         }
 
-        $max = SystemConfig::getIntValue('iMaxFailedLogins');
+        $max = self::maxFailedLogins();
         if ($max > 0 && $user->getFailedLogins() >= $max && !self::isAccountLocked($user)) {
             $user->setFailedLogins(0);
         }
@@ -77,9 +77,15 @@ final class SignInThrottle
         self::ipLimiter()->hit(RateLimiter::clientIpKey());
     }
 
+    /** The lock threshold, capped at the highest failure count the account can store. */
+    public static function maxFailedLogins(): int
+    {
+        return min(self::MAX_FAILED_LOGINS_STORED, SystemConfig::getIntValue('iMaxFailedLogins'));
+    }
+
     public static function isAccountLocked(User $user): bool
     {
-        $max = SystemConfig::getIntValue('iMaxFailedLogins');
+        $max = self::maxFailedLogins();
 
         return $max > 0
             && $user->getFailedLogins() >= $max

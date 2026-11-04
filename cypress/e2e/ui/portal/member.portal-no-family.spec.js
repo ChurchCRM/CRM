@@ -23,10 +23,14 @@ describe("Member without a family in the portal", () => {
     });
 
     it("answers the family-only pages with the contact-the-office page", () => {
-        for (const path of ["/portal/family", "/portal/giving/statement?year=2026"]) {
+        for (const path of ["/portal/family", "/portal/family/edit", "/portal/family/confirm", "/portal/giving/statement?year=2026"]) {
             cy.visit(path);
             cy.get("#portal-family-none").should("exist");
         }
+    });
+
+    it("answers the family API with 404", () => {
+        cy.request({ url: "/api/portal/family", failOnStatusCode: false }).its("status").should("eq", 404);
     });
 
     it("still opens Profile", () => {

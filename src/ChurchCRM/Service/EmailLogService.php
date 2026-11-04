@@ -6,7 +6,6 @@ use ChurchCRM\model\ChurchCRM\EmailLog;
 use ChurchCRM\model\ChurchCRM\EmailLogQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use PHPMailer\PHPMailer\PHPMailer;
@@ -120,7 +119,7 @@ class EmailLogService
     }
 
     /**
-     * Finds the person (primary or work email) or family behind an address.
+     * Finds the person (primary or work email) behind an address.
      *
      * @return array{personId: ?int, familyId: ?int}
      */
@@ -135,11 +134,6 @@ class EmailLogService
             ?? PersonQuery::create()->filterByWorkEmail($address)->orderById()->findOne();
         if ($person !== null) {
             $link['personId'] = (int) $person->getId();
-        } else {
-            $family = FamilyQuery::create()->filterByEmail($address)->orderById()->findOne();
-            if ($family !== null) {
-                $link['familyId'] = (int) $family->getId();
-            }
         }
         $this->resolved[$key] = $link;
 
@@ -291,14 +285,8 @@ class EmailLogService
      */
     public function toArray(EmailLog $row, bool $withBody = false): array
     {
-        $sentBy = null;
-        if ($row->getUsrId() !== null) {
-            $user = UserQuery::create()->findPk($row->getUsrId());
-            if ($user !== null) {
-                $person = $user->getPerson();
-                $sentBy = $person !== null ? $person->getFullName() : $user->getUserName();
-            }
-        }
+        // A user id is the person id, so the sender's name outlives a deleted account.
+        $sentBy = $row->getUsrId() === null ? null : PersonQuery::create()->findPk((int) $row->getUsrId())?->getFullName();
         $out = [
             'id'           => (int) $row->getId(),
             'personId'     => $row->getPerId() !== null ? (int) $row->getPerId() : null,
@@ -373,12 +361,17 @@ class EmailLogService
             'verify'              => gettext('Family verification'),
             'notification'        => gettext('Notification'),
             'notification.new-record' => gettext('New record notification'),
+            'notification.portal-sign-in' => gettext('Member Portal sign-in notice'),
+            'portal.sign-in'      => gettext('Member Portal sign-in code'),
             'account.new'         => gettext('New account'),
             'account.reset'       => gettext('Password reset'),
             'account.reset-token' => gettext('Password reset link'),
             'account.locked'      => gettext('Account locked'),
             'account.unlocked'    => gettext('Account unlocked'),
             'account.deleted'     => gettext('Account deleted'),
+            'signin.email-notice' => gettext('Email address changed'),
+            'signin.email-confirm' => gettext('Confirm email address'),
+            'signin.passkey-added' => gettext('Passkey added'),
             'test'                => gettext('SMTP test'),
             // Volunteer v2 messages log the default kind, their class name.
             'volunteerassignment'   => gettext('Volunteer assignment'),

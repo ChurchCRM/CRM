@@ -16,19 +16,13 @@
  *   - it goes away on its own after about five seconds, without a click
  *   - it is announced politely to a screen reader, and can still be dismissed
  *
- * Persona: Lena Black (user 100, person 100, family 20) — the seeded
- * self-service member the other portal specs use.
+ * Persona: Lena Black (person 100, family 20), signed in with her email, as in
+ * the other portal specs.
  */
 describe("Member Portal — notices", () => {
-    const memberUser = "lena.black.editself.notes@example.com";
-    const password = "changeme";
-
     const loginAsMember = () => {
-        cy.clearCookies();
-        cy.visit("/session/begin");
-        cy.get("input[name=User]").type(memberUser);
-        cy.get("input[name=Password]").type(password + "{enter}");
-        cy.url({ timeout: 10000 }).should("include", "/portal");
+        cy.signInAsMember(100);
+        cy.visit("/portal/");
     };
 
     /** The church logo's left edge, which must not move when a notice appears. */

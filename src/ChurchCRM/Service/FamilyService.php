@@ -301,9 +301,6 @@ class FamilyService
         $homePhone = trim($fields['HomePhone'] ?? '');
         if ($homePhone !== '') { $family->setHomePhone($homePhone); }
 
-        $email = trim($fields['Email'] ?? '');
-        if ($email !== '') { $family->setEmail($email); }
-
         // Validate WeddingDate before setting — malformed input would otherwise throw at ORM (fixes B9)
         if (!empty($fields['WeddingDate'])) {
             $wd = \DateTimeImmutable::createFromFormat('Y-m-d', $fields['WeddingDate']);

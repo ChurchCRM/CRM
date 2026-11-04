@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Portal\Auth\SignInAuditRetention;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
@@ -102,13 +103,14 @@ class SystemService
      *     cron access, and it is rate limited here so a busy Sunday morning
      *     runs the jobs once, not once per page view.
      *
-     * @param bool $force               Skip the rate limit (command-line / explicit runs)
-     * @param bool $forceScheduleTopUp  Top up the volunteer schedules even though today's
-     *                                  top-up has run (an administrator's explicit run)
+     * @param bool $force          Skip the rate limit (command-line / explicit runs)
+     * @param bool $forceDailyJobs Run the once-a-day jobs (the volunteer schedule top-up,
+     *                             the sign-in audit retention) even though today's run has
+     *                             happened (an administrator's explicit run)
      *
      * @return bool true if the jobs ran, false if the rate limit skipped them
      */
-    public static function runTimerJobs(bool $force = false, bool $forceScheduleTopUp = false): bool
+    public static function runTimerJobs(bool $force = false, bool $forceDailyJobs = false): bool
     {
         if (!self::claimTimerJobsRun($force)) {
             LoggerUtils::getAppLogger()->debug('Skipping background job processing — last run is inside the minimum interval', [
@@ -140,8 +142,8 @@ class SystemService
         // must not stop assignments being marked completed. With V1 selected they
         // all pause and the data waits (#10373).
         if (User::isVolunteerV2Enabled()) {
-            self::runTimerJob('VolunteerScheduleTopUp', static function () use ($forceScheduleTopUp): void {
-                VolunteerScheduleTopUp::run($forceScheduleTopUp);
+            self::runTimerJob('VolunteerScheduleTopUp', static function () use ($forceDailyJobs): void {
+                VolunteerScheduleTopUp::run($forceDailyJobs);
             });
 
             self::runTimerJob('VolunteerNotificationService::scheduleReminders', static function (): void {
@@ -165,6 +167,10 @@ class SystemService
         // sending, and retries that have come due (#10356).
         self::runTimerJob('EmailQueueService', static function (): void {
             EmailQueueService::runTimerJob();
+        });
+
+        self::runTimerJob('SignInAuditRetention', static function () use ($forceDailyJobs): void {
+            SignInAuditRetention::run($forceDailyJobs);
         });
 
         // Fire the CRON_RUN hook so plugins can register scheduled tasks.

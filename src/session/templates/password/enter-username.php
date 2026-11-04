@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\Utils\InputUtils;
@@ -40,7 +41,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
       <button type="button" id="resetPassword" class="btn-reset"><?= gettext('Send Reset Email') ?></button>
 
       <div class="form-footer">
-        <a href="<?= SystemURLs::getRootPath() . '/session/begin' ?>"><?= gettext('Back to login') ?></a>
+        <a href="<?= AuthenticationManager::getStaffSignInURL() ?>"><?= gettext('Back to login') ?></a>
       </div>
     </form>
   </div>

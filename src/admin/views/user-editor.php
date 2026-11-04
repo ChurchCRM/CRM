@@ -6,8 +6,7 @@ use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
-// Derive the access mode for the UI
-$accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom');
+$accessMode = $perms['admin'] ? 'admin' : 'custom';
 
 ?>
 
@@ -82,7 +81,6 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
         <?php
         $accessModes = [
             ['value' => 'admin', 'icon' => 'fa-user-shield',  'label' => gettext('Administrator'), 'desc' => gettext('Full access — grants all privileges.')],
-            ['value' => 'self',  'icon' => 'fa-user-check',   'label' => gettext('Self-service only'), 'desc' => gettext('Can only review and verify their own family. No other access.')],
             ['value' => 'custom','icon' => 'fa-sliders',      'label' => gettext('Custom'), 'desc' => gettext('Choose specific permissions below.')],
         ];
         ?>
@@ -104,9 +102,8 @@ $accessMode = $perms['admin'] ? 'admin' : ($perms['editSelf'] ? 'self' : 'custom
             </div>
         </div>
 
-        <!-- Hidden Admin/EditSelf flags driven by the access-level radio selector -->
+        <!-- Hidden Admin flag driven by the access-level radio selector -->
         <input type="checkbox" class="d-none" name="Admin" id="Admin" value="1"<?= $perms['admin'] ? ' checked' : '' ?>>
-        <input type="checkbox" class="d-none" name="EditSelf" id="EditSelf" value="1"<?= $perms['editSelf'] ? ' checked' : '' ?>>
 
         <!-- People & Families panel: shown only in Custom mode -->
         <div id="pfPanel" class="border rounded mb-3"<?= $accessMode === 'custom' ? '' : ' style="display:none;"' ?>>

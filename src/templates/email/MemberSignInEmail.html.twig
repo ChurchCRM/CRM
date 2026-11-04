@@ -1,0 +1,13 @@
+{# The member sign-in email: the account email, with the code shown large under the text. #}
+{% extends "AccountEmail.html.twig" %}
+{% block notice %}
+                <!-- start code -->
+                <tr>
+                    <td align="center" bgcolor="#ffffff" style="padding: 0 24px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;">
+                        <p style="margin: 0 0 4px; font-size: 14px; color: #666;">{{ codeLabel }}</p>
+                        <p style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: 8px; color: #1f2d3d;">{{ code }}</p>
+                    </td>
+                </tr>
+                <!-- end code -->
+{{ parent() }}
+{% endblock %}

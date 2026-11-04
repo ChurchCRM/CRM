@@ -451,7 +451,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         dataSrc:"KioskDevices",
         statusCode: {
           401: function(xhr, error, thrown) {
-            window.location = window.location.origin + '/session/begin?location=' + window.location.pathname;
+            window.location = window.CRM.root + '/admin/';
             return false;
           }
         }

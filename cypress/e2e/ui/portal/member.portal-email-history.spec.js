@@ -8,7 +8,7 @@
  *
  * What is under test:
  *   - "Email History" is the first item of the account menu, above
- *     "Change Password"
+ *     "Sign out"
  *   - the page lists the member's emails newest first, only mail that was
  *     sent, and shows no delivery status (#10356)
  *   - Previous / Next page through them and "Page X of Y" follows
@@ -17,28 +17,19 @@
  *   - an account email, whose body was deliberately not kept, says so
  *
  * Fixtures are seeded through the send API (#9876), which is what writes the
- * history rows, plus one password-reset request, which is what writes an
- * account email with no body.
+ * history rows. Each sign-in writes the account email with no body: the
+ * sign-in code.
  *
- * Persona: Lena Black (user 100, person 100). Her username is the address
- * below; the reset request has to name the *username*, not the person's email
- * (`lena.walker@example.com`), because that is what the public endpoint looks
- * up — and the reset mail then goes to the person's address, which is how the
- * row lands on person 100.
+ * Persona: Lena Black (person 100), signed in with her email.
  */
-const MEMBER_USER = "lena.black.editself.notes@example.com";
-const MEMBER_PASSWORD = "changeme";
 const LENA_PERSON_ID = 100;
 
 const tag = `portal-ui-email-${Date.now()}`;
 const SEEDED = 4;
 
 const login = () => {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(MEMBER_USER);
-    cy.get("input[name=Password]").type(`${MEMBER_PASSWORD}{enter}`);
-    cy.url({ timeout: 10000 }).should("include", "/portal");
+    cy.signInAsMember(100);
+    cy.visit("/portal/");
 };
 
 describe("Member Portal — Email History", () => {
@@ -52,17 +43,6 @@ describe("Member Portal — Email History", () => {
                 body: `<p>Body of message ${n}</p>`,
             }).then((result) => expect(result.progress.sent).to.eq(1));
         }
-
-        // An account email: the reset link is never stored, so its detail page
-        // is the "not kept" branch.
-        cy.request({
-            method: "POST",
-            url: "/api/public/user/password-reset",
-            body: { userName: MEMBER_USER },
-            failOnStatusCode: false,
-        })
-            .its("status")
-            .should("eq", 200);
     });
 
     beforeEach(() => {
@@ -70,7 +50,7 @@ describe("Member Portal — Email History", () => {
     });
 
     describe("The account menu", () => {
-        it("Offers Email History as its first item, above Change Password", () => {
+        it("Offers Email History as its first item, above Sign out", () => {
             cy.get("#portal-account-toggle").click();
             cy.get("#portal-account-menu").should("be.visible");
 
@@ -83,7 +63,7 @@ describe("Member Portal — Email History", () => {
             cy.get('#portal-account-menu [role="menuitem"]').then(($items) => {
                 const labels = [...$items].map((el) => el.textContent.trim());
                 expect(labels.indexOf("Email History")).to.eq(0);
-                expect(labels.indexOf("Email History")).to.be.lessThan(labels.indexOf("Change Password"));
+                expect(labels.indexOf("Email History")).to.be.lessThan(labels.indexOf("Sign out"));
             });
         });
 
@@ -91,9 +71,11 @@ describe("Member Portal — Email History", () => {
             cy.get("#portal-account-toggle").click();
             cy.focused().should("contain.text", "Email History");
             cy.focused().trigger("keydown", { key: "ArrowDown" });
-            cy.focused().should("contain.text", "Change Password");
+            cy.focused().should("contain.text", "Sign-in and devices");
             cy.focused().trigger("keydown", { key: "ArrowUp" });
             cy.focused().should("contain.text", "Email History");
+            cy.focused().trigger("keydown", { key: "ArrowUp" });
+            cy.focused().should("contain.text", "Sign out");
         });
 
         it("Opens the page from the menu", () => {
@@ -117,7 +99,7 @@ describe("Member Portal — Email History", () => {
                 expect(mine[1]).to.eq(`${tag} message ${SEEDED - 1}`);
             });
 
-            cy.get("[data-email-row]").first().should("contain.text", "Password reset link");
+            cy.get("[data-email-row]").first().should("contain.text", "Member Portal sign-in code");
             cy.contains("[data-email-row]", `${tag} message ${SEEDED}`).within(() => {
                 cy.get("[data-email-type]").should("contain.text", "Message");
             });
@@ -140,18 +122,19 @@ describe("Member Portal — Email History", () => {
             cy.get("[data-email-row]").should("have.length", 2);
             cy.get("#portal-email-prev").should("not.exist");
 
-            cy.get("[data-email-subject]")
+            // Rows are compared by id: every sign-in writes a sign-in code email with the same subject.
+            cy.get("[data-email-row]")
                 .first()
-                .invoke("text")
+                .invoke("attr", "data-email-row")
                 .then((firstOnPageOne) => {
                     cy.get("#portal-email-next").click();
                     cy.url().should("include", "page=2");
                     cy.get("#portal-email-pager").should("contain.text", "Page 2 of");
-                    cy.get("[data-email-subject]").first().should("not.have.text", firstOnPageOne);
+                    cy.get("[data-email-row]").first().should("not.have.attr", "data-email-row", firstOnPageOne);
 
                     cy.get("#portal-email-prev").should("be.visible").click();
                     cy.get("#portal-email-pager").should("contain.text", "Page 1 of");
-                    cy.get("[data-email-subject]").first().should("have.text", firstOnPageOne);
+                    cy.get("[data-email-row]").first().should("have.attr", "data-email-row", firstOnPageOne);
                 });
         });
     });
@@ -185,7 +168,7 @@ describe("Member Portal — Email History", () => {
 
         it("Says so when the content of an email was not kept", () => {
             cy.visit("/portal/email-history");
-            cy.contains("[data-email-row]", "Password reset link").find("[data-email-subject]").click();
+            cy.contains("[data-email-row]", "Member Portal sign-in code").find("[data-email-subject]").click();
 
             cy.get("#portal-email-detail").should("be.visible");
             cy.get("#portal-email-nobody").should("contain.text", "The content of this email was not kept.");

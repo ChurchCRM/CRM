@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Version;
+use ChurchCRM\Portal\MemberLanguage;
 use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\SQLImportException;
 use Ramsey\Uuid\Uuid;
@@ -309,12 +310,16 @@ class Bootstrapper
         return self::$bootStrapLogger;
     }
     /**
-     * Gets a LocaleInfo object for the currently configured system sLanguage
-     * 
-     * @return LocaleInfo Current locale information
+     * The request's language: a member session's own (MemberLanguage), else the
+     * staff account's `ui.locale` setting, else the church's `sLanguage`.
      */
     public static function getCurrentLocale(): LocaleInfo
     {
+        $memberLocale = MemberLanguage::forSession();
+        if ($memberLocale !== null) {
+            return new LocaleInfo(SystemConfig::getValue('sLanguage'), $memberLocale);
+        }
+
         $userLocale = "";
         try {
             $userLocale =  AuthenticationManager::getCurrentUser()->getSetting("ui.locale");
@@ -324,6 +329,33 @@ class Bootstrapper
         return new LocaleInfo(SystemConfig::getValue('sLanguage'), $userLocale);
     }
 
+    /**
+     * Runs `$work` with gettext in `$locale`, then puts the request's locale
+     * back. For text meant for someone other than the person making the
+     * request, such as an email to a member in their own language. Catalog
+     * selection follows LocaleInfo, including its fallback for missing OS locales.
+     */
+    public static function inLocale(string $locale, callable $work): mixed
+    {
+        $previous = setlocale(LC_ALL, '0');
+        $previousLanguage = getenv('LANGUAGE');
+        if ((new LocaleInfo($locale, null))->activate() === false) {
+            LoggerUtils::getAppLogger()->warning('Failed to set locale for text in another language; using the catalog fallback', ['locale' => $locale]);
+        }
+        setlocale(LC_NUMERIC, 'C');
+        try {
+            return $work();
+        } finally {
+            putenv($previousLanguage === false ? 'LANGUAGE' : 'LANGUAGE=' . $previousLanguage);
+            if ($previous !== false) {
+                setlocale(LC_ALL, $previous);
+            }
+        }
+    }
+
+    /**
+     * Configure locale settings with proper error handling
+     */
     private static function configureLocale(): void
     {
         global $aLocaleInfo, $localeInfo;
