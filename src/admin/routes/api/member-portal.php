@@ -350,7 +350,17 @@ function dismissMemberPortalFormerAccountsNoticeAPI(Request $request, Response $
 }
 
 /**
- * GET /admin/api/member-portal/directory — who the directory lists, who can see it and what it shows.
+ * @OA\Get(
+ *     path="/admin/api/member-portal/directory",
+ *     operationId="getMemberPortalDirectory",
+ *     summary="The Member Portal directory settings (Admin role required)",
+ *     tags={"Admin"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\Response(response=200, description="Who is listed, who may view, which fields show",
+ *         @OA\JsonContent(@OA\Property(property="settings", type="object"))
+ *     ),
+ *     @OA\Response(response=403, description="Admin role required")
+ * )
  */
 function getMemberPortalDirectoryAPI(Request $request, Response $response): Response
 {
@@ -358,11 +368,27 @@ function getMemberPortalDirectoryAPI(Request $request, Response $response): Resp
 }
 
 /**
- * POST /admin/api/member-portal/directory {"listed": [1], "viewers": [1], "fields": {...},
- * "birthday": "withoutYear", "anniversary": "withoutYear"} — any subset of the parts.
- *
- *   400 — a part is malformed or names a classification or field that does not exist
- *   200 — saved; the whole stored choice comes back
+ * @OA\Post(
+ *     path="/admin/api/member-portal/directory",
+ *     operationId="saveMemberPortalDirectory",
+ *     summary="Save the Member Portal directory settings (Admin role required)",
+ *     description="Send any subset of listed (classification ids), viewers (classification ids), fields, browse, birthday and anniversary (withYear, withoutYear or hidden). Every part is checked first; a malformed part or an unknown classification or field returns 400 and nothing is saved.",
+ *     tags={"Admin"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(required=true, @OA\JsonContent(type="object",
+ *         @OA\Property(property="listed", type="array", @OA\Items(type="integer")),
+ *         @OA\Property(property="viewers", type="array", @OA\Items(type="integer")),
+ *         @OA\Property(property="fields", type="object"),
+ *         @OA\Property(property="birthday", type="string", enum={"withYear", "withoutYear", "hidden"}),
+ *         @OA\Property(property="anniversary", type="string", enum={"withYear", "withoutYear", "hidden"}),
+ *         @OA\Property(property="browse", type="boolean")
+ *     )),
+ *     @OA\Response(response=200, description="Saved; the whole stored choice comes back",
+ *         @OA\JsonContent(@OA\Property(property="success", type="boolean"), @OA\Property(property="settings", type="object"))
+ *     ),
+ *     @OA\Response(response=400, description="A part is malformed or names a classification or field that does not exist"),
+ *     @OA\Response(response=403, description="Admin role required")
+ * )
  */
 function saveMemberPortalDirectoryAPI(Request $request, Response $response): Response
 {
