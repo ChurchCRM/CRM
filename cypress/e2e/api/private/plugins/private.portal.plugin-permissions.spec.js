@@ -12,6 +12,7 @@
  */
 
 import { addStoredGrant, removeStoredGrant } from "../../../../support/member-sign-in-fixtures";
+import { stripBasePath } from "../../../../support/urls";
 
 const ID = "portal-example";
 const PLUGIN_URL = `/plugins/api/plugins/${ID}`;
@@ -45,7 +46,7 @@ const status = (url) => cy.request({ url, failOnStatusCode: false, followRedirec
 const navLinks = () =>
     cy.request("/portal/").then((response) => {
         const doc = new DOMParser().parseFromString(response.body, "text/html");
-        return [...doc.querySelectorAll(".portal-nav-link")].map((link) => link.getAttribute("href"));
+        return [...doc.querySelectorAll(".portal-nav-link")].map((link) => stripBasePath(link.getAttribute("href")));
     });
 
 const install = () => {

@@ -353,7 +353,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         });
         cy.get('#portal-grant-capability option[value="portal.family.contacts.view"]').should("exist");
         cy.get('#portal-grant-capability option[value="volunteer.team.manage"]').should("have.attr", "data-held-scopes", String(teamId));
-        cy.intercept("GET", "/admin/api/member-portal/grant-scopes/team*").as("teams");
+        cy.intercept("GET", "**/admin/api/member-portal/grant-scopes/team*").as("teams");
         cy.get("#portal-grant-capability").select("volunteer.team.manage");
         cy.get("#portal-grant-scope-group .ts-control input").type(PREFIX);
         cy.wait("@teams").its("request.url").should("contain", `exclude=${teamId}`);
@@ -370,7 +370,7 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get("#portal-grant-capability").should("have.focus");
         cy.get('#portal-grant-capability option[value="portal.directory.view"]').should("not.exist");
         cy.get('#portal-grant-capability option[value="portal.family.edit"]').should("have.attr", "data-held-scopes", "1");
-        cy.intercept("GET", "/admin/api/member-portal/grant-scopes/family*").as("families");
+        cy.intercept("GET", "**/admin/api/member-portal/grant-scopes/family*").as("families");
         cy.get("#portal-grant-capability").select("portal.family.edit");
         cy.get("#portal-grant-scope-group .ts-control input").type("Campbell");
         cy.wait("@families").then(({ request, response }) => {
