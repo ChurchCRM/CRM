@@ -35,6 +35,12 @@ Best practices
 - Keep secrets out of repo; use `cypress.env.json` or CI environment variables.
 - Ensure `cypress/videos/`, `cypress/screenshots/`, and `cypress/downloads/` are in `.gitignore`.
 
+Page coverage
+- `page-load-health.spec.js`, `admin-page-load-health.spec.js`, and `member-page-load-health.spec.js` check the registered staff, legacy, admin, and member pages for successful document responses, same-origin 5xx responses, missing scripts/styles, and uncaught JavaScript errors.
+- Give every new page either a URL in `cypress/support/mvc-pages.js` or a detailed spec that visits it in a real user workflow. Add a stable seeded ID when the page needs a record; the sweep creates a load-only test for every entry.
+- Keep page-load checks free of page-specific content and control assertions. Put user workflows, saved results, permissions, and validation in focused feature specs.
+- The sweep runs with the normal UI suite: `npm run test:ui`.
+
 Local setup (recommended)
 - Create a `cypress.env.json` in your local checkout (gitignored) to store non-secret test values:
 
