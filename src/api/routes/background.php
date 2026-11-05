@@ -36,6 +36,14 @@ function runTimerJobsAPI(Request $request, Response $response, array $args): Res
     // scheduling horizon applied now rather than at tomorrow's top-up (D31).
     $body = (array) $request->getParsedBody();
     $force = !empty($body['force']) && AuthenticationManager::getCurrentUser()->isAdmin();
+
+    // The jobs can run for minutes (mail to a slow server). Holding the session lock
+    // that long makes every other request from this browser wait, each with its database
+    // connections open (#11176). No job writes to the session.
+    if (session_status() === PHP_SESSION_ACTIVE) {
+        session_write_close();
+    }
+
     $ran = SystemService::runTimerJobs($force, $force);
     $lastRun = SystemService::getLastTimerJobsRun();
 
