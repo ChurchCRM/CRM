@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Service\VolunteerV1Service;
 
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -26,13 +27,15 @@ $featureGroups = [
         ],
         'sVolunteerVersion' => [
             'label' => gettext('Volunteer Management'),
-            'description' => gettext('Which volunteer experience this church uses'),
+            'description' => VolunteerV1Service::isInUse()
+                ? gettext('Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027.')
+                : gettext('Which volunteer experience this church uses'),
             'helpOffcanvas' => '#ministry-experience-help',
-            'choices' => [
+            'choices' => array_filter([
                 'v1' => gettext('V1 — Volunteer Opportunities (legacy)'),
                 'v2' => gettext('V2 — Ministries'),
                 'both' => gettext('Both (transition)'),
-            ],
+            ], static fn (string $choice): bool => $choice === 'v2' || VolunteerV1Service::isInUse(), ARRAY_FILTER_USE_KEY),
         ],
     ],
     gettext('Communication & Email') => [

@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\GradePromotionService;
 use ChurchCRM\view\PageHeader;
+use ChurchCRM\Service\VolunteerV1Service;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
@@ -132,7 +133,7 @@ $app->get('/people', function (Request $request, Response $response): Response {
         ]),
         'sections'      => $sections,
         'gradePromotion' => gradePromotionSummary(),
-        'listLinks'     => [
+        'listLinks'     => array_values(array_filter([
             [gettext('Person Classifications'), '/admin/system/options?mode=classes', 'fa-tags'],
             [gettext('Person Properties'), '/PropertyList.php?Type=p', 'fa-person-half-dress'],
             [gettext('Person Custom Fields'), '/PersonCustomFieldsEditor.php', 'fa-sliders'],
@@ -140,9 +141,9 @@ $app->get('/people', function (Request $request, Response $response): Response {
             [gettext('Family Roles'), '/admin/system/options?mode=famroles', 'fa-people-roof'],
             [gettext('Family Properties'), '/PropertyList.php?Type=f', 'fa-people-roof'],
             [gettext('Family Custom Fields'), '/FamilyCustomFieldsEditor.php', 'fa-sliders'],
-            [gettext('Volunteer Opportunities'), '/VolunteerOpportunityEditor.php', 'fa-handshake-angle'],
+            VolunteerV1Service::isInUse() ? [gettext('Volunteer Opportunities'), '/VolunteerOpportunityEditor.php', 'fa-handshake-angle'] : null,
             [gettext('Member Portal'), '/admin/member-portal', 'fa-house-user'],
-        ],
+        ])),
     ];
 
     return $renderer->render($response, 'people.php', $pageArgs);
