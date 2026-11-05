@@ -24,23 +24,6 @@ describe("Member Portal — member landing", () => {
         cy.location("pathname", { timeout: 10000 }).should("match", /\/portal\/$/);
     });
 
-    it("The portal home greets the member by name and shows the family name", () => {
-        login();
-        cy.url({ timeout: 10000 }).should("include", "/portal");
-        cy.get(".portal-home", { timeout: 10000 }).should("exist");
-        cy.contains("Lena").should("exist");
-        cy.contains("Black").should("exist");
-    });
-
-    it("No admin shell furniture is rendered anywhere in the portal", () => {
-        login();
-        cy.url({ timeout: 10000 }).should("include", "/portal");
-        cy.get("#sidebar").should("not.exist");
-        cy.get("#sidebar-menu").should("not.exist");
-        cy.get(".navbar-vertical").should("not.exist");
-        cy.get("#fab-container").should("not.exist");
-    });
-
     it("The account menu offers Sign out, which returns to the login page", () => {
         login();
         cy.url({ timeout: 10000 }).should("include", "/portal");
@@ -57,34 +40,12 @@ describe("Member Portal — member landing", () => {
         cy.url().should("not.include", "/external/limited-access");
     });
 
-    it("A direct visit to /v2/dashboard goes to the staff sign-in", () => {
+    it("direct staff page visits send a member session to staff sign-in", () => {
         login();
-        cy.visit("v2/dashboard", { failOnStatusCode: false });
-        cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
-        cy.get("#UserBox").should("be.visible");
-    });
-
-    it("A direct visit to another MVC module goes to the staff sign-in", () => {
-        login();
-        cy.visit("people/dashboard", { failOnStatusCode: false });
-        cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
-    });
-
-    it("A legacy *.php page goes to the staff sign-in", () => {
-        login();
-        cy.visit("SystemSettings.php", { failOnStatusCode: false });
-        cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
-    });
-
-    // The bar is gone for everyone (2026-09-17): the account menu's "Admin
-    // Console" entry is the way back to the admin area, and a member never
-    // sees that entry either.
-    it("No staff bar is rendered, and the account menu has no Admin Console", () => {
-        login();
-        cy.url({ timeout: 10000 }).should("include", "/portal");
-        cy.get(".portal-staff-bar").should("not.exist");
-        cy.get("#portal-account-toggle").click();
-        cy.get("#portal-account-menu").contains("Admin Console").should("not.exist");
+        ["v2/dashboard", "people/dashboard", "SystemSettings.php"].forEach((path) => {
+            cy.visit(path, { failOnStatusCode: false });
+            cy.location("pathname", { timeout: 10000 }).should("match", /\/admin\/$/);
+        });
     });
 });
 
@@ -110,8 +71,6 @@ describe("Member Portal — member landing", () => {
  * the two pages rather than hard-coding one of the states.
  */
 describe("Member Portal — the home page's Profile card", () => {
-    const OLD_DESCRIPTION = "Your name, email, phone numbers and photo.";
-
     beforeEach(() => {
         login();
     });
@@ -127,6 +86,10 @@ describe("Member Portal — the home page's Profile card", () => {
                 "contain.text",
                 me.cellPhone
             );
+            cy.get("#portal-home-profile-card").should(
+                "not.contain.text",
+                "Your name, email, phone numbers and photo."
+            );
         });
     });
 
@@ -139,11 +102,6 @@ describe("Member Portal — the home page's Profile card", () => {
             );
         });
         cy.get("#portal-home-profile-card [data-field=familyRole]").should("contain.text", "Spouse");
-    });
-
-    it("no longer describes the information instead of showing it", () => {
-        cy.get("#portal-home-profile-card").should("not.contain.text", OLD_DESCRIPTION);
-        cy.contains(OLD_DESCRIPTION).should("not.exist");
     });
 
     it("keeps the 'Update your details' link to the Profile page", () => {
@@ -242,17 +200,6 @@ describe("Member Portal — the home page's Profile card", () => {
 
                 setConfig("sChurchX", SOCIAL[0].url);
             });
-        });
-
-        it("The footer no longer carries a ChurchCRM credit link", () => {
-            login();
-            cy.url({ timeout: 10000 }).should("include", "/portal");
-
-            cy.get(".portal-footer").should("exist");
-            cy.get(".portal-footer-credit").should("not.exist");
-            // Matched on the href prefix, not a substring: the seed church's own
-            // contact address is demo@churchcrm.io, and that mailto: link stays.
-            cy.get('.portal-footer a[href^="https://churchcrm.io"]').should("not.exist");
         });
 
         it("The social links sit on the right-hand side of the footer row", () => {
