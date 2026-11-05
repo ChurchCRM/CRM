@@ -5,7 +5,7 @@ const PREFIX = "OTL11177";
 const SETTINGS = ["sVolunteerVersion", "bEnabledEmail", "sSMTPHost", "iSMTPTimeout", "sLastTimerJobsRunDateTime"];
 const PERSON_LEADER = 3;
 const PERSON_COORDINATOR = 52;
-const PEOPLE_ADDED = [26, 27, 28, 29, 30, 31, 32, 33, 34, 36];
+const PEOPLE_ADDED = [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 48];
 const WEB_RUN_SECONDS = 15;
 
 const original = {};
@@ -86,6 +86,12 @@ describe("Volunteer v2 — the outbox stops at the web run's time limit (#11177)
             runTimerJobs(180000).then(() => {
                 expect(Date.now() - startedAt, "one web run, plus at most a few slow sends").to.be.lessThan((WEB_RUN_SECONDS + 15) * 1000);
             });
+        });
+        api("admin.api.key", "GET", `/api/email/log?personId=${PERSON_COORDINATOR}&limit=100`).then((resp) => {
+            const attempted = resp.body.rows.filter((row) => row.kind === "volunteerpooladd" && row.subject.includes(PREFIX));
+            expect(attempted.every((row) => row.status === "failed"), "every attempt waited on the silent server").to.eq(true);
+            expect(attempted.length, "the run attempted deliveries").to.be.greaterThan(0);
+            expect(attempted.length, "the rest wait for the next run").to.be.lessThan(PEOPLE_ADDED.length);
         });
     });
 });
