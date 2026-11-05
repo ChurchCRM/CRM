@@ -30,6 +30,10 @@ complexity: "beginner"
 
 **Core developer docs:** architecture, plugin internals, contributor/PR/dev-setup guides, and the release process live in this repo's skills and guides and the GitHub Wiki.
 
+### Tracking documentation work
+
+Issues about the documentation itself — a missing, wrong, or unclear page, or a how-to request — are filed in the docs repository, [ChurchCRM/docs.churchcrm.io](https://github.com/ChurchCRM/docs.churchcrm.io/issues), never in ChurchCRM/CRM. When a CRM issue closes with a documentation gap, file the docs issue in the docs repository and comment on the CRM issue with the link.
+
 ### Publishing a user-doc change
 
 The public site documents a released ChurchCRM version. A merged CRM pull request is not a release.
