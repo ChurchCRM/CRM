@@ -85,7 +85,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
         $queryParams = $request->getQueryParams();
         // Mode is a simple string — use sanitizeText (no SQL context needed).
-        // Avoid legacyFilterInput which depends on the $cnInfoCentral global.
+        // legacyFilterInput would open the legacy mysqli connection for nothing.
         $mode = InputUtils::sanitizeText((string) ($queryParams['mode'] ?? ''));
 
         $customListId = (int) ($queryParams['ListID'] ?? 0);

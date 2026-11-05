@@ -2,7 +2,8 @@
 
 namespace ChurchCRM\Utils;
 
-use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Bootstrapper;
+
 class InputUtils
 {
     private static string $AllowedHTMLTags = '<a><b><i><u><h1><h2><h3><h4><h5><h6><pre><address><img><table><td><tr><ol><li><ul><p><sub><sup><s><hr><span><blockquote><div><small><big><tt><code><kbd><samp><del><ins><cite><q>';
@@ -242,18 +243,16 @@ class InputUtils
 
     // Sanitizes user input as a security measure
     // Optionally, a filtering type and size may be specified.  By default, strip any tags from a string.
-    // Note that a database connection must already be established for the mysqli_real_escape_string function to work.
     public static function legacyFilterInput($sInput, $type = 'string', $size = 1)
     {
-        global $cnInfoCentral;
         if (strlen($sInput) > 0) {
             switch ($type) {
                 case 'string':
-                    return mysqli_real_escape_string($cnInfoCentral, self::sanitizeText($sInput));
+                    return mysqli_real_escape_string(Bootstrapper::getMysqliConnection(), self::sanitizeText($sInput));
                 case 'htmltext':
-                    return mysqli_real_escape_string($cnInfoCentral, self::sanitizeHTML($sInput));
+                    return mysqli_real_escape_string(Bootstrapper::getMysqliConnection(), self::sanitizeHTML($sInput));
                 case 'char':
-                    return mysqli_real_escape_string($cnInfoCentral, self::filterChar($sInput, $size));
+                    return mysqli_real_escape_string(Bootstrapper::getMysqliConnection(), self::filterChar($sInput, $size));
                 case 'int':
                     return self::filterInt($sInput);
                 case 'float':
