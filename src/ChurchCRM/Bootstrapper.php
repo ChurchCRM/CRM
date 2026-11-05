@@ -429,10 +429,10 @@ class Bootstrapper
 
         try {
             if (!mysqli_select_db($connection, self::$databaseName)) {
-                self::systemFailure('Could not select the MySQL database <strong>' . self::$databaseName . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . mysqli_error($connection));
+                self::systemFailure('Could not select the MySQL database <strong>' . InputUtils::escapeHTML(self::$databaseName) . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . InputUtils::escapeHTML(mysqli_error($connection)));
             }
         } catch (\mysqli_sql_exception $e) {
-            self::systemFailure('Could not access the MySQL database <strong>' . self::$databaseName . '</strong>. Please verify the database name in <strong>Include/Config.php</strong>.<br/>Error: ' . $e->getMessage());
+            self::systemFailure('Could not access the MySQL database <strong>' . InputUtils::escapeHTML(self::$databaseName) . '</strong>. Please verify the database name in <strong>Include/Config.php</strong>.<br/>Error: ' . InputUtils::escapeHTML($e->getMessage()));
         }
 
         return self::$mysqli = $connection;
@@ -450,7 +450,7 @@ class Bootstrapper
             SystemConfig::init();
         }
         LoggerUtils::getAppLogger()->error("ERROR connecting to database at '" . self::$databaseServerName . "' on port '" . $portDisplay . "' as user '" . self::$databaseUser . "' -  MySQL Error: '" . $error . "'");
-        self::systemFailure('Could not connect to MySQL on <strong>' . self::$databaseServerName . '</strong> on port <strong>' . $portDisplay . '</strong> as <strong>' . self::$databaseUser . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . $error, 'Database Connection Failure');
+        self::systemFailure('Could not connect to MySQL on <strong>' . InputUtils::escapeHTML(self::$databaseServerName) . '</strong> on port <strong>' . InputUtils::escapeHTML($portDisplay) . '</strong> as <strong>' . InputUtils::escapeHTML(self::$databaseUser) . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . InputUtils::escapeHTML($error), 'Database Connection Failure');
         exit;
     }
     private static function initPropel(): void
@@ -492,7 +492,7 @@ class Bootstrapper
             self::connectionFailure($cause->getMessage());
         } catch (\PDOException $e) {
             self::$bootStrapLogger->error("Database check failed: " . $e->getMessage());
-            self::systemFailure('Could not access the MySQL database <strong>' . self::$databaseName . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>Error: ' . $e->getMessage());
+            self::systemFailure('Could not access the MySQL database <strong>' . InputUtils::escapeHTML(self::$databaseName) . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>Error: ' . InputUtils::escapeHTML($e->getMessage()));
             return true; // This line won't be reached due to systemFailure() calling exit()
         }
     }
