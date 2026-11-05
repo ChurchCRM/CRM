@@ -40,6 +40,7 @@ Apply the existing label when design is settled, scope is bounded and low-risk, 
 
 - Documentation, screenshots/video, and marketing content are valuable follow-ups for user-visible features, not routine code-PR merge gates.
 - During review, note the useful follow-up and link or create one focused issue when it needs tracking. Keep it proportional; bug fixes and security-only changes may not need marketing.
+- File documentation issues in the docs repository ([ChurchCRM/docs.churchcrm.io](https://github.com/ChurchCRM/docs.churchcrm.io/issues)), never in this repository. When a CRM issue closes with a documentation gap, file the docs issue there and add a comment on the CRM issue linking to it.
 - User documentation must describe released behavior and follow the docs repository's release process. Prepare screenshots/video from the real product with safe demo data.
 - Invite non-code contributors to help with how-to guides, screenshots, short walkthroughs, blog posts, and translations. Give them the user problem, confirmed behavior, and a clear destination to contribute.
 - Marketing should explain the church outcome and when the feature is available. Do not turn planned or proposed work into a current-product claim.
