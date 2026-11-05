@@ -24685,14 +24685,2546 @@ msgid "Witness"
 msgstr "证人"
 
 #: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d 笔奉献没有所属家庭，无法列入报表。"
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "本年度有 %d 笔未结清的存款。请先结清，以便每笔奉献在报表发出前都已最终确认。"
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "有 %d 笔付款尚未记入任何存款。"
+
+#: 
+msgid "Can be emailed"
+msgstr "可以电邮"
+
+#: 
+msgid "Closing line"
+msgstr "结束语"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "本年度所有存款均已结清。"
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "每笔奉献都属于一个家庭。"
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "本年度每笔付款都已记入存款。"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "生成税务报表"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "奉献报告（税务报表）"
+
+#: 
+msgid "Opening line"
+msgstr "开场语"
+
+#: 
+msgid "Print and mail"
+msgstr "打印并邮寄"
+
+#: 
+msgid "Qty"
+msgstr "数量"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "核对年度后，打印或电邮奉献报表。"
+
+#: 
+msgid "Signed by"
+msgstr "签署人"
+
+#: 
+msgid "Thank-you line"
+msgstr "致谢语"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "请确认教会名称、地址和联系信息显示在税务报表上。"
+
+#: 
+msgid "Year-End Giving"
+msgstr "年终奉献"
+
+#: 
+msgid "As of: %s"
+msgstr "截至：%s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "在所选的 %d 个财政年度内，截至审核日期 %s，至少有一笔正数的家庭付款"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "若章程要求，洗礼、选举名册申请、居住地、领圣餐身份、出席情况、良好会籍以及地方例外须另行核验。会籍时长不能证明出席。"
+
+#: 
+msgid "Choose an existing classification."
+msgstr "请选择一个现有分类。"
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "请至少选择一个要审核的分类。"
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "请选择贵教会使用的分类。任何分类都不视为自动赋予投票权。"
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "教会领导须按教会章程确认资格。此名单仅显示符合所选筛选条件的人。"
+
+#: 
+msgid "Classifications to review"
+msgstr "待审核的分类"
+
+#: 
+msgid "Classifications: %s"
+msgstr "分类：%s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "已排除已故人员、非活跃人员与分类，以及非活跃或待审核的家庭与人员。"
+
+#: 
+msgid "Download Review List"
+msgstr "下载审核名单"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "请输入 1900 至 2200 之间的有效审核日期。"
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "请输入所示范围内的整数。"
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "要检查的财政年度数（0–100；0 表示无奉献要求）"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "奉献按家庭而非个人记录。仅当章程允许以家庭付款满足此条件时才启用。这不能证明每个人都作了奉献。时间范围包含所选财政年度，且不晚于审核日期结束。"
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "要纳入的最近一个财政年度"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "最低年龄（0–120）"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "最低年龄：%d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "最短会籍时长（月，0–1200）"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "最短会籍时长：%d 个月"
+
+#: 
+msgid "No donation requirement."
+msgstr "无奉献要求。"
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "没有人符合这些筛选条件。请检查缺失的出生日期或入会日期，并调整条件。"
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "可选的家庭奉献要求"
+
+#: 
+msgid "People matching filters"
+msgstr "符合筛选条件的人"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "因缺少必要日期而被略过的人"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "按分类以及可选的年龄、会籍和家庭奉献筛选条件，准备一份供教会审核的名单。"
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "按贵教会章程准备一份供教会审核的名单。"
+
+#: 
+msgid "Review date"
+msgstr "审核日期"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "请按教会章程选择筛选条件，然后由获授权的教会领导审核名单。符合这些筛选条件并不确立投票资格。此报告不记录资格，也不进行选举。"
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "有投票权会友 — 审核名单"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "零会停用一项可选要求。年龄需要完整的出生日期；会籍时长需要入会日期。缺少必要日期的人会被略过并单独计数。已故人员、非活跃人员与分类，以及非活跃或待审核的家庭与人员始终被排除；使用的是当前分类和状态，而不是历史状态。"
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "%s 的应付金额：%s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "无法在所选目录中创建专用的 PDF 临时存储。"
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "留空则使用系统临时目录。否则，请输入一个已存在、可写且无法从网页访问的目录。"
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "PDF 临时目录"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "PDF 临时存储必须为专用且可写。"
+
+#: 
+msgid "Reporting"
+msgstr "报表"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "PDF 临时目录不存在或无法访问。"
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "PDF 临时目录必须是绝对目录路径。"
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "教会税号（EIN）"
+
+#: 
+msgid "Closing Line"
+msgstr "结束语"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "控制可选遥测。即使遥测关闭，安装和数据库升级失败仍会向 PostHog 发送有限的诊断信息。这些失败报告包含软件与环境版本以及经过清理的数据库错误，但不包含安装 ID 或 SQL 语句。"
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "诊断失败的安装和数据库升级"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "安装与升级失败详情"
+
+#: 
+msgid "Open in browser window"
+msgstr "在浏览器窗口中打开"
+
+#: 
+msgid "Opening Line"
+msgstr "开场语"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "可选的使用遥测仅在启用时发送。即使您选择“不用，谢谢”，安装和数据库升级失败仍始终发送有限的诊断信息以帮助社区。失败报告包含软件与环境版本以及经过清理的数据库错误，不含安装 ID 或 SQL 语句。"
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF 处理"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF 输出"
+
+#: 
+msgid "PDF handling mode"
+msgstr "PDF 处理方式"
+
+#: 
+msgid "Questions Line"
+msgstr "问询语"
+
+#: 
+msgid "Save File dialog"
+msgstr "保存文件对话框"
+
+#: 
+msgid "Signer"
+msgstr "签署人"
+
+#: 
+msgid "Statement Settings"
+msgstr "报表设置"
+
+#: 
+msgid "Statement Wording"
+msgstr "报表用语"
+
+#: 
+msgid "Tax Information"
+msgstr "税务信息"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "遥测发送到美国的 PostHog。即使可选遥测已停用，仍会发送安装与升级失败报告。"
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "此日期已取消。您无需再做任何事。"
+
+#: 
+msgid "always sent"
+msgstr "始终发送"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "未能移除信头"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "未能保存信头"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "未能上传信头"
+
+#: 
+msgid "Greeting"
+msgstr "问候语"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "信件问候语与签名"
+
+#: 
+msgid "Letterhead"
+msgstr "信头"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG、JPG、GIF 或 WebP。宽幅横幅效果最佳，例如 2000x300。"
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "打印在使用图形信头的 PDF 信件顶部，例如奉献报表。若没有信头，信件会打印教会名称和地址。"
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "移除信头？信件将打印教会名称和地址。"
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "设置 PDF 信件打印的信头"
+
+#: 
+msgid "Using the church name and address"
+msgstr "使用教会名称和地址"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "使用系统设置中的信头路径"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "奉献报表的用语、税号和 PDF 处理"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s 作为 %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s 现在是您的电子邮箱。您可以用它登录会友门户。"
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} 更多"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "已请求更改您的电子邮箱"
+
+#: 
+msgid "A family"
+msgstr "一个家庭"
+
+#: 
+msgid "A group"
+msgstr "一个小组"
+
+#: 
+msgid "A ministry"
+msgstr "一个事工"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "新地址只有在您使用我们发到该地址的链接后才会更改。"
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "通行密钥只能在您用电子邮箱登录后的 %d 分钟内添加。请退出，再用电子邮箱登录，然后回到这里。"
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "通行密钥使用 Face ID、指纹或设备 PIN 让您登录，无需电子邮箱验证码。"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "已为您的会友门户登录添加通行密钥"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "已于 %1$s（%2$s）从 %3$s 为您的会友门户登录添加通行密钥。"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "已于 %1$s（%2$s）为您的会友门户登录添加通行密钥。"
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "失去该地址的人随后没有自己的电子邮箱：只发给他们的邮件（例如小组邮件）会被跳过，邮件编写器会如此说明。"
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "记录中隐藏年龄的人从不显示出生年份。"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "会友门户中于 %s 请求将您的电子邮箱从 %s 改为 %s。只有使用发到 %s 的链接后，更改才会生效。"
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "有一行不是预期的格式。"
+
+#: 
+msgid "A team"
+msgstr "一个团队"
+
+#: 
+msgid "Add a passkey"
+msgstr "添加通行密钥"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "只在您自己的手机或电脑上添加通行密钥，切勿在共用或公共设备上添加。"
+
+#: 
+msgid "Add an email"
+msgstr "添加电子邮箱"
+
+#: 
+msgid "Added %s"
+msgstr "已添加 %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "管理员覆盖"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "%s 家庭的成年人"
+
+#: 
+msgid "Adult of the family"
+msgstr "家庭的成年人"
+
+#: 
+msgid "All events"
+msgstr "所有事件"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "允许以该人员身份登录"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "允许在以该人员身份登录期间更改"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "允许管理员在使用“以该人员身份登录”时进行更改。关闭后，“以该人员身份登录”为只读。"
+
+#: 
+msgid "Already held by a family member"
+msgstr "已由一名家庭成员持有"
+
+#: 
+msgid "Also used by"
+msgstr "同时用于"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "管理员可以在某人员的页面上向该人员授予任何权限。此处随后会显示“管理员覆盖”，以及被授予该权限的人数。"
+
+#: 
+msgid "Another person already uses this address"
+msgstr "已有其他人使用此地址"
+
+#: 
+msgid "Applies to"
+msgstr "适用于"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "批准或拒绝义工团队的替补请求。"
+
+#: 
+msgid "Ask for a new email"
+msgstr "索取新邮件"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "权限授予人员而非登录账户，因此可以在他们拥有账户之前授予。只登录会友门户的人只能看到自己的日程，直到管理员为其提供工作人员账户。"
+
+#: 
+msgid "Awaiting review"
+msgstr "待审核"
+
+#: 
+msgid "Back to sign-in"
+msgstr "返回登录"
+
+#: 
+msgid "Browse the full directory"
+msgstr "浏览完整名录"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "可以登录会友门户"
+
+#: 
+msgid "Can sign in?"
+msgstr "可以登录吗？"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "不能停用唯一可以登录的管理员的登录。"
+
+#: 
+msgid "Cannot sign in"
+msgstr "无法登录"
+
+#: 
+msgid "Change family details"
+msgstr "更改家庭资料"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "更改家庭地址和联系资料，并添加一名家庭成员以供审核。"
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "更改自己的姓名、联系资料和照片。"
+
+#: 
+msgid "Changed"
+msgstr "已更改"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "在该人员登录后更改"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "在该人员登录后由导入更改"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "在该人员登录后由工作人员更改"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "在该人员登录后通过 API 更改"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "在以该人员身份登录期间，更改已关闭。"
+
+#: 
+msgid "Changes needed"
+msgstr "需要更改"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "更改会在您操作时保存。"
+
+#: 
+msgid "Check your email"
+msgstr "请查看您的电子邮箱"
+
+#: 
+msgid "Choose a permission"
+msgstr "选择一项权限"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "选择一项权限、其用途和最后一天，并说明原因。"
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "选择照片或拍摄自拍"
+
+#: 
+msgid "Choose a theme"
+msgstr "选择主题"
+
+#: 
+msgid "Choose at least one row."
+msgstr "请至少选择一行。"
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "每次最多选择 %d 行。"
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "请从列表中选择日期的显示方式。"
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "请选择此权限的最后一天。"
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "请选择此权限的用途。"
+
+#: 
+msgid "Choose yes or no."
+msgstr "请选择是或否。"
+
+#: 
+msgid "Church Office"
+msgstr "教会办公室"
+
+#: 
+msgid "Church country"
+msgstr "教会所在国家"
+
+#: 
+msgid "Church default: %s"
+msgstr "教会默认：%s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "教会负责人登录"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "其成员可以登录会友门户的分类，为逗号分隔的分类 id 列表。"
+
+#: 
+msgid "Clear selection"
+msgstr "清除选择"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "验证码、会话与设备"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "确认电子邮箱"
+
+#: 
+msgid "Confirm email address"
+msgstr "确认电子邮箱"
+
+#: 
+msgid "Confirm family details"
+msgstr "确认家庭资料"
+
+#: 
+msgid "Confirm selected"
+msgstr "确认所选"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "请当面或通过电话确认这是该人员本人的地址后，再确认此电子邮箱。确认后即可用于登录会友门户。"
+
+#: 
+msgid "Confirm your email address"
+msgstr "确认您的电子邮箱"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "确认您的新电子邮箱"
+
+#: 
+msgid "Confirmed"
+msgstr "已确认"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "日期必须写成 YYYY-MM-DD。"
+
+#: 
+msgid "Decide substitute requests"
+msgstr "决定替补请求"
+
+#: 
+msgid "Device"
+msgstr "设备"
+
+#: 
+msgid "Device remembered"
+msgstr "已记住设备"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "设备与通行密钥"
+
+#: 
+msgid "Directory classifications"
+msgstr "名录分类"
+
+#: 
+msgid "Directory section"
+msgstr "名录分区"
+
+#: 
+msgid "Disable sign-in"
+msgstr "停用登录"
+
+#: 
+msgid "Do not show"
+msgstr "不显示"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "他们每个人还需要一个他人未使用的电子邮箱。"
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "每封登录邮件只能使用一次、有效时间有限，较新的邮件会替换它。"
+
+#: 
+msgid "Edit my details"
+msgstr "编辑我的资料"
+
+#: 
+msgid "Email address changed"
+msgstr "电子邮箱已更改"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "输入的电子邮箱：%s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "待确认的电子邮箱：{{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "电子邮箱已更改"
+
+#: 
+msgid "Email code"
+msgstr "电子邮箱验证码"
+
+#: 
+msgid "Email confirmed"
+msgstr "电子邮箱已确认"
+
+#: 
+msgid "Email link"
+msgstr "电子邮箱链接"
+
+#: 
+msgid "Email me a code"
+msgstr "将验证码发到我的邮箱"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "将确认链接发到我的邮箱"
+
+#: 
+msgid "Email needs attention"
+msgstr "电子邮箱需要处理"
+
+#: 
+msgid "Email problem"
+msgstr "电子邮箱问题"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "已取消通过邮件发送的登录验证码和链接"
+
+#: 
+msgid "Emailed verification link"
+msgstr "已通过邮件发送验证链接"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "已确认的电子邮箱：{{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "启用登录"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "结束此人的所有会友门户会话并忘记其已记住的设备？其通行密钥会保留，因此可以再次登录。"
+
+#: 
+msgid "Ended %s"
+msgstr "已于 %s 结束"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "因其登录变更而结束"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "在会友登录关闭时结束"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "请输入 %1$d 至 %2$d 之间的整数。"
+
+#: 
+msgid "Enter your email address."
+msgstr "请输入您的电子邮箱。"
+
+#: 
+msgid "Every kind"
+msgstr "所有类型"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "每次会友登录、拒绝和登录变更，最新的在前。其中从不保存验证码、链接或通行密钥。"
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "按 A 到 Z 列出所有人，并带搜索框。"
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "登录规则允许进入的每个人随后都可以用自己的电子邮箱登录会友门户。"
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "过去 30 天登录过会友门户的所有人，最新的在前。"
+
+#: 
+msgid "Everywhere"
+msgstr "所有位置"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "会友在过去 30 天内确认的家庭，来自会友门户或邮件中的验证链接。"
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "过去 30 天已确认的家庭"
+
+#: 
+msgid "Family details confirmed"
+msgstr "家庭资料已确认"
+
+#: 
+msgid "Family email"
+msgstr "家庭电子邮箱"
+
+#: 
+msgid "Family emails not moved"
+msgstr "未转移的家庭电子邮箱"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "其成员可以登录会友门户的家庭角色，为逗号分隔的角色 id 列表。"
+
+#: 
+msgid "Find someone"
+msgstr "查找某人"
+
+#: 
+msgid "Fix by hand"
+msgstr "手动修正"
+
+#: 
+msgid "Fix shared emails"
+msgstr "修正共用电子邮箱"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "来自工作人员登录"
+
+#: 
+msgid "Give a permission"
+msgstr "授予权限"
+
+#: 
+msgid "Give a portal permission"
+msgstr "授予门户权限"
+
+#: 
+msgid "Give each person their own email"
+msgstr "为每个人提供各自的电子邮箱"
+
+#: 
+msgid "Give permission"
+msgstr "授予权限"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "由 %1$s 授予，至 %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "由 %s 授予"
+
+#: 
+msgid "Given to"
+msgstr "授予对象"
+
+#: 
+msgid "Given to Everyone"
+msgstr "授予所有人"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "已授予，但未生效"
+
+#: 
+msgid "Go to sign in"
+msgstr "前往登录"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "前往会友门户"
+
+#: 
+msgid "Has signed in"
+msgstr "已登录过"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "已登录过：其会话和设备将结束"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "这是您登录会友门户的验证码。请在索取验证码的浏览器中，于登录页输入。或按按钮在此设备上登录。"
+
+#: 
+msgid "Hide Permissions"
+msgstr "隐藏权限"
+
+#: 
+msgid "How"
+msgstr "方式"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "一个 IP 地址一小时内可以请求的会友门户登录邮件数量。设为 0 表示不限制，例如所有人都通过同一地址访问 ChurchCRM 时。"
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "会友选择保持登录后，设备在会友门户中保持登录的天数。设为 0 可移除此选项。"
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "多少分钟无操作后结束会友门户会话。"
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "会友门户登录验证码和链接的有效分钟数。"
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "空闲时间（分钟）"
+
+#: 
+msgid "Idle too long"
+msgstr "空闲过久"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "如果 %1$s 是您的新地址，请使用下面的按钮确认。在确认之前，它不能用于登录。此链接只能使用一次，有效期至 %2$s。"
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "如果此地址可以用于登录，我们已向您发送验证码。几分钟后仍未收到？请联系教会办公室。"
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "如果不是您添加的，请在“登录与设备”页面移除，并联系教会办公室。"
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "如果您没有请求此更改，请联系教会办公室。"
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "如果您没有请求此操作，请联系教会办公室。"
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "它可能已过期或已被使用。如需帮助，请联系教会办公室。"
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "其插件尚未安装"
+
+#: 
+msgid "Jump to a letter"
+msgstr "跳转到字母"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "保持登录（天）"
+
+#: 
+msgid "Keeps it"
+msgstr "保留该地址"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "未确认电子邮箱的类型"
+
+#: 
+msgid "Last day"
+msgstr "最后一天"
+
+#: 
+msgid "Last used"
+msgstr "上次使用"
+
+#: 
+msgid "Last used %s"
+msgstr "上次使用 %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "%s 的负责人"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "在会友登录开启时，允许管理员从该人员的“操作”菜单，以该人员身份打开其会友门户。"
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "允许会友添加通行密钥，并用其登录会友门户。"
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "允许会友用自己的电子邮箱登录会友门户。仅在邮件发送正常时才能开启。"
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "允许会友用电子邮箱登录"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "链接与验证码有效期（分钟）"
+
+#: 
+msgid "Login as %s"
+msgstr "以 %s 身份登录"
+
+#: 
+msgid "Login as Person"
+msgstr "以该人员身份登录"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "无法开始以该人员身份登录。"
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "以该人员身份登录已结束：%s"
+
+#: 
+msgid "Login as Person history"
+msgstr "以该人员身份登录的历史"
+
+#: 
+msgid "Login as Person started"
+msgstr "已开始以该人员身份登录"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "已停止以该人员身份登录"
+
+#: 
+msgid "Look up anyone"
+msgstr "查询任何人"
+
+#: 
+msgid "Loses it"
+msgstr "失去该地址"
+
+#: 
+msgid "Manage a team"
+msgstr "管理团队"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "管理我的登录与设备"
+
+#: 
+msgid "Matches: %s"
+msgstr "匹配：%s"
+
+#: 
+msgid "May sign in"
+msgstr "可以登录"
+
+#: 
+msgid "May sign in now"
+msgstr "现在可以登录"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "会友门户登录验证码"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "会友门户登录通知"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "会友门户的登录与活动，包括会友以及从工作人员登录打开门户的工作人员。"
+
+#: 
+msgid "Member sign-in"
+msgstr "会友登录"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "会友登录会向每个人发送验证码，因此开启前邮件（SMTP）必须可用。"
+
+#: 
+msgid "Member sign-in is off"
+msgstr "会友登录已关闭"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "教会的会友登录已关闭。"
+
+#: 
+msgid "Member sign-in is off."
+msgstr "会友登录已关闭。"
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "会友登录尚不可用。请联系教会办公室。"
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "会友登录从不会允许已故、非活跃、所属家庭非活跃、待审核或已开启“停用登录”的人进入。这些选项决定其他人是否可以。"
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "会友登录通过邮件向每位会友发送验证码，因此仅在 ChurchCRM 可以发送邮件时才能开启。请先开启邮件并设置邮件服务器。"
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "至少开启一个日历时，会友可以看到日历页面。"
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "会友至少输入姓名中的 %d 个字符，最多看到 %d 个匹配项。完整名单从不显示。"
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "当前已登录的会友会被退出，在再次开启会友登录之前，任何人都不能用电子邮箱登录。"
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "这些分类的会友可以在会友门户菜单中找到名录。"
+
+#: 
+msgid "Minimum age"
+msgstr "最低年龄"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "接下来一小时内对此地址的更多尝试不会再发送通知。"
+
+#: 
+msgid "Moved from the family email"
+msgstr "已从家庭电子邮箱转出"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "已转给户主"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "已转给配偶"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "初次来到我们教会？请告诉我们您的家庭情况，我们会与您联系并欢迎您。"
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "尚无“以该人员身份登录”的会话。"
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "没有出生日期，且不是户主或配偶"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "没有开启任何日历，因此会友看不到日历页面。"
+
+#: 
 msgid "No changes"
 msgstr "没有变化"
+
+#: 
+msgid "No changes made."
+msgstr "未作更改。"
+
+#: 
+msgid "No family role"
+msgstr "无家庭角色"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "没有户主或配偶可以接收家庭电子邮箱。"
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "没有户主或配偶共用该地址"
+
+#: 
+msgid "No match"
+msgstr "无匹配"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "尚无人符合登录规则。请再勾选家庭角色或分类，或降低最低年龄。"
+
+#: 
+msgid "No passkey was added."
+msgstr "未添加通行密钥。"
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "未使用通行密钥。请重试，或使用电子邮箱登录。"
+
+#: 
+msgid "No person has this email"
+msgstr "没有人使用此电子邮箱"
+
+#: 
+msgid "No personal email"
+msgstr "无个人电子邮箱"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "没有共用电子邮箱阻止任何人登录。"
+
+#: 
+msgid "No such person"
+msgstr "无此人员"
+
+#: 
+msgid "No, thanks"
+msgstr "不用，谢谢"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "两名可以登录的人如果共用一个个人电子邮箱，则任何人都不能用它登录。同一家庭内共用的地址由户主保留，否则由配偶保留（年长者优先）。其他共用者会失去该地址。若要以其他方式修正，请取消勾选。"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "尚无人可以登录：请在“谁可以登录”下至少勾选一个分类。"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "尚无人可以登录：请在“谁可以登录”下至少勾选一个家庭角色和一个分类。"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "尚无人可以登录：请在“谁可以登录”下至少勾选一个家庭角色。"
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "名录中没有人与该姓名匹配。"
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "名录中尚无人列出。"
+
+#: 
+msgid "Not ended"
+msgstr "未结束"
+
+#: 
+msgid "Not moved"
+msgstr "未转移"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "不确定我们存有哪个电子邮箱？请联系教会办公室。"
+
+#: 
+msgid "Not yet"
+msgstr "尚未"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "已记入家庭时间线"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "其中已登录过的人：{{total}}。他们会在所有位置退出，该地址会收到通知。"
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "对所有人关闭：“%s”已关闭"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "对所有人关闭：义工管理未设为 V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "对所有人关闭：其功能已关闭"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "对所有人关闭：其插件已关闭"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "对所有人关闭：没有与会友共享的日历"
+
+#: 
+msgid "Office list"
+msgstr "办公室名单"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "确认后即可用于登录会友门户。"
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "只能选择您可以确认的地址。"
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "只有管理员可以看到原因。"
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "只有管理员可以更改拥有工作人员账户或门户权限的人员的电子邮箱。"
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "只有管理员可以确认替换了该人员登录所用地址的电子邮箱。"
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "只有管理员可以确认拥有工作人员账户或门户权限的人员的电子邮箱。"
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "只有管理员可以修正此地址：共用它的某人拥有工作人员账户或门户权限。"
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "只有您家庭中的成年人可以确认这些资料。请联系教会办公室。"
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "只确认您知道属于该人员的地址。任何读到地址的人都可以作为该人员登录。"
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "只有在世且拥有自己电子邮箱的人可以列入办公室名单。"
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "只能添加拥有自己电子邮箱的人。"
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "可选遥测可能包括页面路径、当前语言区域、CRM 版本、PHP 版本、操作系统系列、教会信息设置中的国家，以及随机安装 ID。失败报告不含安装 ID。数据发送到美国的 PostHog。"
+
+#: 
+msgid "Passkey"
+msgstr "通行密钥"
+
+#: 
+msgid "Passkey added"
+msgstr "已添加通行密钥"
+
+#: 
+msgid "Passkey removed"
+msgstr "已移除通行密钥"
+
+#: 
+msgid "Passkeys"
+msgstr "通行密钥"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "通行密钥已关闭。"
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "此处无法使用通行密钥。"
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "此网站尚不能使用通行密钥。请联系教会办公室。"
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "通行密钥要求网站地址使用主机名，而不是 IP 地址。"
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "通行密钥需要与此网站的安全（HTTPS）连接。"
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "通行密钥需要在 Config.php 中设置网站地址。"
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "通行密钥需要网站通过 HTTPS 提供。在此之前不会向会友提供通行密钥。"
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "通行密钥仅在 %s 可用。"
+
+#: 
+msgid "Passkeys: %d"
+msgstr "通行密钥：%d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "已保存的设置允许进入的人：%s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "有人无法登录会友门户时要发邮件通知的人"
+
+#: 
+msgid "People who hold it"
+msgstr "持有该权限的人"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "将失去地址的人：{{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "已失去地址的人：{{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "可以登录的人：{{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "曾经登录会友门户的人：%d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "这些分类的人会出现在名录中。数字是每个分类的活跃人数。"
+
+#: 
+msgid "People with this email: %s"
+msgstr "使用此电子邮箱的人：%s"
+
+#: 
+msgid "Person %d"
+msgstr "人员 %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "请从列表中选择分类。"
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "请从列表中选择家庭角色。"
+
+#: 
+msgid "Pick people for the office list."
+msgstr "请为办公室名单选择人员。"
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "请从列表中选择语言。"
+
+#: 
+msgid "Portal permission given"
+msgstr "已授予门户权限"
+
+#: 
+msgid "Portal permission removed"
+msgstr "已移除门户权限"
+
+#: 
+msgid "Portal permissions"
+msgstr "门户权限"
+
+#: 
+msgid "Portal sign-in"
+msgstr "门户登录"
+
+#: 
+msgid "Problem"
+msgstr "问题"
+
+#: 
+msgid "Reason"
+msgstr "原因"
+
+#: 
+msgid "Reason: %s"
+msgstr "原因：%s"
+
+#: 
+msgid "Refused"
+msgstr "已拒绝"
+
+#: 
+msgid "Register your family"
+msgstr "登记您的家庭"
+
+#: 
+msgid "Remembered device"
+msgstr "已记住的设备"
+
+#: 
+msgid "Remembered device removed"
+msgstr "已移除记住的设备"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "已记住的设备：%d"
+
+#: 
+msgid "Remove Emails"
+msgstr "移除电子邮箱"
+
+#: 
+msgid "Remove this passkey"
+msgstr "移除此通行密钥"
+
+#: 
+msgid "Remove this permission"
+msgstr "移除此权限"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "已从以下对象移除：{{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "在一次登录后被替换"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "被另一次登录替换"
+
+#: 
+msgid "Result"
+msgstr "结果"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "运营义工团队：岗位、义工、日程、人员配置和人数。"
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "请说明停用登录的原因。"
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "请说明授予此权限的原因。"
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "搜索档案中的任何人。每一行说明他们是否可以登录会友门户，若不能则说明原因。"
+
+#: 
+msgid "Search method"
+msgstr "搜索方式"
+
+#: 
+msgid "Search only"
+msgstr "仅搜索"
+
+#: 
+msgid "See family contact details"
+msgstr "查看家庭联系资料"
+
+#: 
+msgid "See my family"
+msgstr "查看我的家庭"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "要按此人所见查看会友门户吗？在您按“停止”之前，工作人员页面保持关闭，此会话会记录在本页和您的用户页面上。"
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "查看教会与会友共享的日历，并订阅它们。"
+
+#: 
+msgid "See the church calendar"
+msgstr "查看教会日历"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "查看用于其登录的设备和通行密钥，并可退出或移除其中任何一项。"
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "查看其家庭成员的电子邮箱和电话号码。"
+
+#: 
+msgid "See the member directory"
+msgstr "查看会友名录"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "查看其家庭成员的姓名和照片。"
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "查看教会在名录中列出的人，以及教会选择共享的资料。"
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "查看其义工日程，报名空缺岗位并请求替补。"
+
+#: 
+msgid "Send browse as true or false."
+msgstr "将浏览发送为 true 或 false。"
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "将分类作为 id 列表发送。"
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "将名录设置作为 JSON 对象发送。"
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "将要显示的字段作为 true 与 false 值的对象发送。"
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "将设置作为 JSON 对象发送。"
+
+#: 
+msgid "Session ended"
+msgstr "会话已结束"
 
 #: 
 msgid "Set up email"
 msgstr "配置电子邮件"
 
 #: 
+msgid "Set up email first."
+msgstr "请先设置电子邮箱。"
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "已修正的共用地址：{{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "待修正的共用地址：{{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "共用者"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "阻止人员登录的共用电子邮箱"
+
+#: 
+msgid "Show or hide this member"
+msgstr "显示或隐藏此会友"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "向下面所选分类在会友门户中显示名录页面。"
+
+#: 
+msgid "Show the member directory"
+msgstr "显示会友名录"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "在会友门户中显示会友名录。"
+
+#: 
+msgid "Show with year"
+msgstr "显示年份"
+
+#: 
+msgid "Show without year"
+msgstr "不显示年份"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "正在显示前 %d 个匹配项。请输入姓名中更多字符，以找到要找的人。"
+
+#: 
+msgid "Sign in as %s?"
+msgstr "以 %s 身份登录？"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "下次在此设备上使用 Face ID、指纹或设备 PIN 登录。"
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "登录后可查看您的家庭、教会日历和服务方式。您不需要密码或账户。"
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "使用通行密钥登录"
+
+#: 
+msgid "Sign out every device"
+msgstr "在所有设备上退出"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "现在在所有设备上退出？"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "在所有位置退出"
+
+#: 
+msgid "Sign out this device"
+msgstr "在此设备上退出"
+
+#: 
+msgid "Sign-in"
+msgstr "登录"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "登录与设备"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "无法停用登录。"
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "无法启用登录。"
+
+#: 
+msgid "Sign-in disabled"
+msgstr "登录已停用"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "已请求登录邮件"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "每个 IP 地址每小时的登录邮件数"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "登录已启用"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "此人的登录已停用。"
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "登录已停用"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "此人的登录已停用。"
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "此人的登录已启用。"
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "此人的登录并未停用。"
+
+#: 
+msgid "Sign-in refused"
+msgstr "登录被拒绝"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "在关联人员的记录上解决此问题之前，登录、会话和 API 密钥均被阻止。"
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "过去 30 天已登录"
+
+#: 
+msgid "Signed out"
+msgstr "已退出"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "因其登录变更而退出"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "已在所有位置退出"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "有人请求会友门户登录邮件，但并未发出。"
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "有人无法登录会友门户"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "在“以该人员身份登录”期间，工作人员页面保持关闭。请按横幅中的“停止”返回。"
+
+#: 
+msgid "Stop"
+msgstr "停止"
+
+#: 
+msgid "Stopped"
+msgstr "已停止"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "请告诉教会办公室家庭资料是否仍然正确。"
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "该验证码无效。请查看我们最新的邮件，或重新索取。"
+
+#: 
+msgid "That could not be removed."
+msgstr "无法移除。"
+
+#: 
+msgid "That device is signed out."
+msgstr "该设备已退出。"
+
+#: 
+msgid "That is not a valid email address."
+msgstr "这不是有效的电子邮箱。"
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "该页面打开时间过长。请重试。"
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "该通行密钥已移除，不能再用于登录。"
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "耗时过长。请重试。"
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "7.8.3 升级把每个家庭电子邮箱给了一名人员。这些是无法处理的，因此改为在家庭时间线中留下说明。"
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "会友门户及其发给您的邮件使用此语言。"
+
+#: 
+msgid "The change could not be saved."
+msgstr "无法保存此更改。"
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "验证码和按钮只能使用一次，有效期至 %s。"
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "验证码或链接发到了一个已不再是其电子邮箱的地址"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "无法发送确认邮件。请稍后再试。"
+
+#: 
+msgid "The device is signed out."
+msgstr "该设备已退出。"
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "电子邮箱 %2$s 已于 %1$s 从您的记录中移除。您已在所有设备上退出会友门户。"
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "您记录中的电子邮箱已于 %1$s 从 %2$s 改为 %3$s。您已在所有设备上退出会友门户。"
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "无法确认该电子邮箱。"
+
+#: 
+msgid "The email could not be sent."
+msgstr "无法发送该邮件。"
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "电子邮箱已确认，现在可以用于登录。"
+
+#: 
+msgid "The end date is before the start date."
+msgstr "结束日期早于开始日期。"
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "该家庭没有在世且活跃的户主或配偶"
+
+#: 
+msgid "The family is inactive"
+msgstr "该家庭为非活跃"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "户主和配偶都有各自的电子邮箱"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "最后一天不能是过去的日期。"
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "关联人员不能登录，因此此账户无法登录"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "无法加载名单。"
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "无法添加通行密钥。请重试。"
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "无法验证通行密钥"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "通行密钥没有记录，或已被移除"
+
+#: 
+msgid "The passkey was removed."
+msgstr "通行密钥已移除。"
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "共用该地址的人分属不同家庭，或不属于任何家庭"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "共用此地址的人已变化。请重新打开“修正共用电子邮箱”。"
+
+#: 
+msgid "The permission could not be given."
+msgstr "无法授予该权限。"
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "该权限在此日之后结束，可以再次授予。"
+
+#: 
+msgid "The permission was given."
+msgstr "权限已授予。"
+
+#: 
+msgid "The permission was removed."
+msgstr "权限已移除。"
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "无法加载权限。"
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "该人员立即失去会友门户中的此权限。"
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "原因最多 %d 个字符。"
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "登录规则允许他们进入，且每个人都有自己的电子邮箱，其他可以登录的人并未使用。"
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "登录规则允许他们进入，但其电子邮箱不允许：他们没有电子邮箱、与其他可以登录的人共用，或尚未确认。"
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "无法保存登录设置。"
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "未确认的电子邮箱已变化。请重新加载页面后再试。"
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "其分类不能登录"
+
+#: 
+msgid "Their email changed"
+msgstr "其电子邮箱已更改"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "其电子邮箱尚未确认"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "其电子邮箱与他人共用"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "其家庭角色不能登录"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "升级已移除其旧登录方式。请开启会友登录，以便他们用自己的电子邮箱登录。"
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "其已记住的设备已过期"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "其已记住的设备已退出"
+
+#: 
+msgid "Theme development"
+msgstr "主题开发"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "没有 id 为 %d 的分类。"
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "此类范围没有选择器。"
+
+#: 
+msgid "There is no such audit event."
+msgstr "没有此类审核事件。"
+
+#: 
+msgid "There is no such email problem."
+msgstr "没有此类电子邮箱问题。"
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "没有此类未确认电子邮箱。"
+
+#: 
+msgid "There is no such list."
+msgstr "没有此类名单。"
+
+#: 
+msgid "There is no such portal permission."
+msgstr "没有此类门户权限。"
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "这些是您选择保持登录的手机和电脑。请退出不再使用或不认识的设备。"
+
+#: 
+msgid "They have a staff account"
+msgstr "他们有工作人员账户"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "他们可以登录，但从未登录过。"
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "此操作需要已登录的浏览器会话。"
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "无法更改此地址。请重新打开“修正共用电子邮箱”查看现状。"
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "可以登录的人不再共用此地址。"
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "此浏览器无法创建通行密钥。"
+
+#: 
+msgid "This device"
+msgstr "此设备"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "此设备已有您的通行密钥。"
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "此设备将不再保持该人员登录，其上打开的会话会结束。他们可以用电子邮箱再次登录。"
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "这是我自己的设备。保持我的登录。"
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "您在这里决定访客相关事项。数字是每个分类中的活跃人数。"
+
+#: 
+msgid "This link cannot be used"
+msgstr "此链接无法使用"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "此链接已过期或已被使用"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "会友门户的这一部分对您不可用。"
+
+#: 
+msgid "This passkey is already on record."
+msgstr "此通行密钥已有记录。"
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "此通行密钥将不能再让该人员登录。他们可以用电子邮箱登录并添加新的通行密钥。"
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "不能在人员页面授予此权限。"
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "此人已拥有所有可授予的权限。"
+
+#: 
+msgid "This person already has this permission."
+msgstr "此人已有此权限。"
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "此人不能再在任何地方登录会友门户或作为工作人员登录。所有会话结束，其已记住的设备和通行密钥将被移除。"
+
+#: 
+msgid "This person could not be signed out."
+msgstr "无法让此人退出。"
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "此人有工作人员账户。“以该人员身份登录”从不会打开工作人员账户。"
+
+#: 
+msgid "This person has no such passkey."
+msgstr "此人没有此通行密钥。"
+
+#: 
+msgid "This person has no such permission."
+msgstr "此人没有此权限。"
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "此人没有此已记住的设备。"
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "此人没有未确认的电子邮箱。"
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "此人已登录过会友门户。更改此电子邮箱会使其在所有位置退出，新地址在确认前不能用于登录。"
+
+#: 
 msgid "This person is deceased."
 msgstr "此人已故"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "此人已在所有位置退出会友门户。"
+
+#: 
+msgid "This person no longer exists."
+msgstr "此人已不存在。"
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "这将使您在所有位置退出（包括此处），并忘记所有设备。您可以用电子邮箱再次登录。"
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "这将使您在所有位置退出（包括此处），并忘记所有设备。您的通行密钥会保留：可以用通行密钥或电子邮箱再次登录。"
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "此工具从不会更改这些内容。请在各自的记录上为每个人填写自己的电子邮箱。"
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "仅在您自己的手机或电脑上勾选此项，切勿在共用或公共设备上勾选。"
+
+#: 
+msgid "Time: %s"
+msgstr "时间：%s"
+
+#: 
+msgid "Timed out"
+msgstr "已超时"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "要更改此电子邮箱，请联系教会办公室。"
+
+#: 
+msgid "To fix"
+msgstr "待修正"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "要在您自己的手机或电脑上保持登录，请在下次登录时勾选“这是我自己的设备”。"
+
+#: 
+msgid "Too many attempts"
+msgstr "尝试次数过多"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "今日登录邮件过多"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "此电子邮箱的登录请求过多"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "此 IP 地址的登录请求过多"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "错误验证码过多"
+
+#: 
+msgid "Turn off"
+msgstr "关闭"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "关闭会友登录？"
+
+#: 
+msgid "Turn on"
+msgstr "开启"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "开启会友登录"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "开启会友登录？"
+
+#: 
+msgid "Type a name"
+msgstr "输入姓名"
+
+#: 
+msgid "Type a name or email"
+msgstr "输入姓名或电子邮箱"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "请至少输入姓名中的 %d 个字符，然后搜索。"
+
+#: 
+msgid "Unconfirmed email"
+msgstr "未确认的电子邮箱"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "了解 ChurchCRM 的使用情况"
+
+#: 
+msgid "Unknown device"
+msgstr "未知设备"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "未知的名录字段：%s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "未知的名录设置：%s"
+
+#: 
+msgid "Unnamed device"
+msgstr "未命名设备"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "未命名通行密钥"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "在教会办公室确认之前，新地址不能用于登录。"
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "将 %1$s 用作 %2$s 在 %3$s 的电子邮箱？"
+
+#: 
+msgid "Use a different email address"
+msgstr "使用其他电子邮箱"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "在此设备上使用通行密钥？"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "请使用下面的按钮确认 %1$s 是您在 %2$s 的电子邮箱。此链接只能使用一次，有效期至 %3$s。"
+
+#: 
+msgid "User %d"
+msgstr "用户 %d"
+
+#: 
+msgid "View Permissions"
+msgstr "查看权限"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "正在等待您确认 %s。请使用我们发到该地址的链接。"
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "正在等待您确认 {{email}}。请使用我们发到该地址的链接。"
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "我们无法发送邮件。请稍后再试，或联系教会办公室。"
+
+#: 
+msgid "We could not sign you in"
+msgstr "我们无法让您登录"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "我们已向 %s 发送链接。请用它确认您的新电子邮箱。"
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "我们已向 {{email}} 发送链接。您使用该链接后，电子邮箱才会更改。"
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "我们会向您发送用于登录的验证码和链接。"
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "很高兴您来到这里！大约需要三分钟。"
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "很高兴您的家庭加入我们！我们已收到您的登记。我们的团队会尽快联系您，亲自欢迎您。"
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "结婚纪念日"
+
+#: 
+msgid "Welcome"
+msgstr "欢迎"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "授予时所针对的对象已不存在"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "会友在门户中可以查看和执行的操作，以及每项权限的来源。人数计入登录规则允许进入的所有人以及工作人员。"
+
+#: 
+msgid "What members can use"
+msgstr "会友可以使用的功能"
+
+#: 
+msgid "What to do"
+msgstr "要做的事"
+
+#: 
+msgid "Who can see it"
+msgstr "谁可以查看"
+
+#: 
+msgid "Who is listed"
+msgstr "列出了谁"
+
+#: 
+msgid "Who may sign in"
+msgstr "谁可以登录"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "谁可以登录会友门户、谁已经登录，以及谁的电子邮箱阻止了登录。名单遵循“登录”选项卡上的规则。"
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "会友门户名录列出谁、谁可以查看以及显示什么，在“管理 -> 会友门户 -> 名录”中选择。"
+
+#: 
+msgid "Why"
+msgstr "原因"
+
+#: 
+msgid "Why not"
+msgstr "为何不能"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "使用该设备刚才替换的令牌"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "是，添加通行密钥"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "是，移除此通行密钥"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "是，在所有设备上退出"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "您无权确认此电子邮箱。"
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "您没有在任何设备上保持登录。"
+
+#: 
+msgid "You are signed out on every device."
+msgstr "您已在所有设备上退出。"
+
+#: 
+msgid "You are signed out on this device."
+msgstr "您已在此设备上退出。"
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "您也可以用电子邮箱登录。"
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "您不能停用自己的登录。"
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "您无法打开会友门户。请联系教会办公室。"
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "您请求更改电子邮箱的次数过多。请稍后再试。"
+
+#: 
+msgid "You have no passkeys."
+msgstr "您没有通行密钥。"
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "您正以 %s 的身份在会友门户中登录（允许更改）。"
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "您正以 %s 的身份在会友门户中登录（只读）。"
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "低于最低年龄"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "可以登录会友门户的最低年龄。出生日期未知时，只有户主或配偶符合条件。"
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "您的会友门户登录验证码"
+
+#: 
+msgid "Your code"
+msgstr "您的验证码"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "您的电子邮箱 %s 尚未确认，因此不能用于登录。我们会向该地址发送链接；使用该链接即确认。"
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "此处无法移除您的电子邮箱。请联系教会办公室。"
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "您的电子邮箱已确认"
+
+#: 
+msgid "Your email address was changed"
+msgstr "您的电子邮箱已更改"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "已添加您的通行密钥。下次请在此设备上用它登录。"
+
+#: 
+msgid "an administrator"
+msgstr "管理员"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "户主或配偶都没有电子邮箱"
+
+#: 
+msgid "or"
+msgstr "或"
+
+#: 
+msgid "until %s"
+msgstr "直到 %s"
 

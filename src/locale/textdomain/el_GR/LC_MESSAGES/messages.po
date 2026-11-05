@@ -24232,14 +24232,2962 @@ msgid "Repeat events could not be created. Check the application log for details
 msgstr "Δεν ήταν δυνατή η δημιουργία επαναλαμβανόμενων εκδηλώσεων. Ελέγξτε το αρχείο καταγραφής της εφαρμογής για λεπτομέρειες."
 
 #: 
+msgid "Confirm Password"
+msgstr "Επιβεβαίωση κωδικού πρόσβασης"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Ο κωδικός πρόσβασής σας άλλαξε. Μπορείτε πλέον να συνδεθείτε με τον νέο κωδικό πρόσβασης."
+
+#: 
+msgid "1st"
+msgstr "1η"
+
+#: 
+msgid "2nd"
+msgstr "2η"
+
+#: 
+msgid "3rd"
+msgstr "3η"
+
+#: 
+msgid "4th"
+msgstr "4η"
+
+#: 
+msgid "5th"
+msgstr "5η"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Δεν είναι δυνατή η αφαίρεση της πρόσβασης διαχειριστή από τον μοναδικό διαχειριστή που μπορεί να συνδεθεί"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Επιλέξτε την εβδομάδα του μήνα, από την 1η έως την 5η"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Δημιουργεί {{total}} εκδηλώσεις, την {{week}} {{day}} κάθε μήνα από {{first}} έως {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Μη έγκυρη ημέρα της εβδομάδας"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Μηνιαία, σε ημέρα της εβδομάδας"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Οι μήνες χωρίς 5η παραλείπονται."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "Το RecurWOM πρέπει να είναι ακέραιος αριθμός από 1 έως 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Εβδομάδα του μήνα"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Η εβδομάδα του μήνα πρέπει να είναι από 1 έως 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s έως %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Φορολογικός αριθμός εκκλησίας (EIN) που εκτυπώνεται στις βεβαιώσεις συνεισφορών"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Οι βεβαιώσεις συνεισφορών εκδίδονται στους ενήλικες ενός νοικοκυριού. Επικοινωνήστε με το γραφείο της εκκλησίας αν χρειάζεστε μία."
+
+#: 
+msgid "Download statement"
+msgstr "Λήψη βεβαίωσης"
+
+#: 
+msgid "Generated"
+msgstr "Δημιουργήθηκε"
+
+#: 
+msgid "Goods and services"
+msgstr "Αγαθά και υπηρεσίες"
+
+#: 
+msgid "My Giving"
+msgstr "Οι προσφορές μου"
+
+#: 
+msgid "No contributions"
+msgstr "Δεν υπάρχουν συνεισφορές"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Δεν καταγράφηκαν συνεισφορές για αυτή την περίοδο."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Δεν παρασχέθηκαν αγαθά ή υπηρεσίες σε αντάλλαγμα για αυτές τις συνεισφορές, εκτός από άυλα θρησκευτικά οφέλη."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Προαιρετικό. Εκτυπώνεται στις βεβαιώσεις συνεισφορών."
+
+#: 
+msgid "Tax ID"
+msgstr "Φορολογικός αριθμός"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Φορολογικός αριθμός (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Εκπιπτόμενο ποσό"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Αυτή είναι η βεβαίωση του νοικοκυριού. Περιλαμβάνει τις δωρεές της οικογένειάς σας."
+
+#: 
+msgid "Total contributions"
+msgstr "Σύνολο συνεισφορών"
+
+#: 
+msgid "Year-end statement"
+msgstr "Βεβαίωση τέλους έτους"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d βεβαίωση προσφορών στάλθηκε με επιτυχία στην οικογένεια με ηλεκτρονικό ταχυδρομείο."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "Βεβαίωση προσφορών %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Προσαρμόστε το κείμενο που εμφανίζεται στις βεβαιώσεις προσφορών (sTaxReport1, sTaxReport2 κ.λπ.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Αγαπητή οικογένεια %s,\n"
+"\n"
+"Συνημμένη σε αυτό το μήνυμα θα βρείτε τη βεβαίωση προσφορών %s από %s.\n"
+"\n"
+"Αν έχετε ερωτήσεις, επικοινωνήστε με το γραφείο της εκκλησίας.\n"
+"\n"
+"Σας ευχαριστούμε για τη γενναιοδωρία σας."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Αποστολή με ηλεκτρονικό ταχυδρομείο της βεβαίωσης προσφορών %s"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Αριθμοί φακέλων"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Δημιουργία βεβαιώσεων προσφορών"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Δημιουργήστε αναφορές για βεβαιώσεις προσφορών, παρακολούθηση υποσχέσεων και οικονομική ανάλυση."
+
+#: 
+msgid "Giving Reports"
+msgstr "Αναφορές προσφορών"
+
+#: 
+msgid "Giving Statement"
+msgstr "Βεβαίωση προσφορών"
+
+#: 
+msgid "Giving Statements"
+msgstr "Βεβαιώσεις προσφορών"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Η αποστολή της βεβαίωσης προσφορών με ηλεκτρονικό ταχυδρομείο απέτυχε. Ελέγξτε τις ρυθμίσεις του διακομιστή ηλεκτρονικού ταχυδρομείου."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Στείλτε ταχυδρομικώς την επόμενη δωρεά σας στη διεύθυνση %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Εκτύπωση βεβαίωσης προσφορών %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Δεν είναι δυνατή η αποστολή της βεβαίωσης προσφορών: δεν βρέθηκαν δεδομένα πληρωμών για εκείνο το έτος."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Δεν είναι δυνατή η αποστολή της βεβαίωσης προσφορών: αυτή η οικογένεια δεν έχει καταχωρισμένη διεύθυνση ηλεκτρονικού ταχυδρομείου."
+
+#: 
+msgid "Undesignated"
+msgstr "Χωρίς προορισμό"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Επαληθεύστε ότι το όνομα, η διεύθυνση και τα στοιχεία επικοινωνίας της εκκλησίας εμφανίζονται στις βεβαιώσεις προσφορών."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Η θέση ανατέθηκε πλέον στον/στην %s, που την έχει αποδεχτεί."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Η θέση ανατέθηκε πλέον στον/στην %s, που δεν την έχει αποδεχτεί ακόμη."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Η αιτιολογία τους: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Προβολή αναθέσεων"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Εθελοντές που χρειάζονται ακόμη για αυτή την πραγματοποίηση: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Εθελοντές που χρειάζονται ακόμη για αυτή τη θέση: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Εβδομαδιαίο πλέγμα παρουσιών για κάθε τάξη. Οι κατάλογοι τάξεων και τα λευκώματα φωτογραφιών βρίσκονται στον πίνακα του Κυριακού Σχολείου και στη σελίδα κάθε τάξης."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Εβδομαδιαίο πλέγμα παρουσιών για το σχολικό έτος, μία στήλη για κάθε Κυριακή"
+
+#: 
+msgid "Age %d"
+msgstr "Ηλικία %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Πρέπει να επιλεγεί τουλάχιστον μία ομάδα για τη δημιουργία φύλλου παρουσιών."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Φύλλο παρουσιών"
+
+#: 
+msgid "Class List"
+msgstr "Κατάλογος τάξης"
+
+#: 
+msgid "Download PDF"
+msgstr "Λήψη PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Περίοδος κλειδώματος σε λεπτά\n"
+"Ένας κλειδωμένος λογαριασμός ξεκλειδώνει μόνος του μετά από τόσα λεπτά. Οι αποτυχημένες συνδέσεις από μία διεύθυνση IP μετρώνται στην ίδια περίοδο."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Μέγιστος αριθμός αποτυχημένων συνδέσεων από μία διεύθυνση IP\n"
+"Οι αποτυχημένες συνδέσεις και τα αιτήματα επαναφοράς κωδικού από μία διεύθυνση IP προσμετρώνται σε αυτό το όριο εντός της περιόδου κλειδώματος. Μόλις συμπληρωθεί, η σύνδεση από τη διεύθυνση αυτή απορρίπτεται μέχρι να λήξει η περίοδος.\n"
+"Ορίστε μηδέν για να απενεργοποιήσετε αυτή τη λειτουργία, για παράδειγμα όταν όλοι φτάνουν στο ChurchCRM μέσω μίας διεύθυνσης διακομιστή μεσολάβησης."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Μέγιστος αριθμός αποτυχημένων συνδέσεων που επιτρέπονται πριν κλειδωθεί ένας λογαριασμός χρήστη.\n"
+"Ένας κλειδωμένος λογαριασμός ξεκλειδώνει μόνος του μετά την περίοδο κλειδώματος, ή νωρίτερα όταν ένας διαχειριστής μηδενίσει τις αποτυχημένες συνδέσεις του.\n"
+"Αυτή η λειτουργία βοηθά στην προστασία από αυτοματοποιημένες επιθέσεις εικασίας κωδικού.\n"
+"Ορίστε μηδέν για να απενεργοποιήσετε αυτή τη λειτουργία."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Λεπτά μέχρι να ξεκλειδώσει μόνος του: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Φύλλο παρουσιών Κυριακού Σχολείου"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Οι Κυριακές χωρίς μάθημα δεν περιλαμβάνονται στο φύλλο."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Αναβάθμιση βάσης δεδομένων"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Η βάση δεδομένων σας ενημερώνεται. Κρατήστε αυτή τη σελίδα ανοιχτή μέχρι να ολοκληρωθεί η αναβάθμιση."
+
+#: 
+msgid "Family Labels"
+msgstr "Ετικέτες οικογένειας"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Σύνολο"
+
+#: 
+msgid "Bill"
+msgstr "Χαρτονόμισμα"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Επιλέξτε μία κατάθεση ή εισαγάγετε και τις δύο ημερομηνίες αναφοράς."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Επιλέξτε μία κατάθεση για να ελέγξετε τις πληρωμές της ή να εκτυπώσετε το τραπεζικό δελτίο. Η επιλεγμένη κατάθεση υπερισχύει του εύρους ημερομηνιών."
+
+#: 
+msgid "Coin"
+msgstr "Κέρμα"
+
+#: 
+msgid "Deposit Report"
+msgstr "Αναφορά κατάθεσης"
+
+#: 
+msgid "Download Report"
+msgstr "Λήψη αναφοράς"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Εισαγάγετε έγκυρες ημερομηνίες αναφοράς."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Μη έγκυρα φίλτρα αναφοράς."
+
+#: 
+msgid "Invalid report options."
+msgstr "Μη έγκυρες επιλογές αναφοράς."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Αφήστε τα φίλτρα κενά για να συμπεριληφθούν όλες οι πληρωμές. Αυτές οι ρυθμίσεις ισχύουν για την αναφορά, όχι για το τραπεζικό δελτίο."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Δεν επιστράφηκαν εγγραφές. Προσαρμόστε τα φίλτρα σας και δοκιμάστε ξανά."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Προετοιμασία για την τράπεζα"
+
+#: 
+msgid "Preview Totals"
+msgstr "Προεπισκόπηση συνόλων"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Εκτύπωση τραπεζικού δελτίου"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Εκτυπώστε την επιλεγμένη κατάθεση πλήρως, με σύνολα μετρητών και επιταγών, φύλλα καταμέτρησης και γραμμές μαρτύρων. Τα φίλτρα αναφοράς αγνοούνται. Οι ηλεκτρονικές πληρωμές παραμένουν στη σύνοψη και εξαιρούνται από το σύνολο του φυσικού τραπεζικού δελτίου."
+
+#: 
+msgid "Review Payments"
+msgstr "Έλεγχος πληρωμών"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Ελέγξτε τις πληρωμές μιας περιόδου ή προετοιμάστε μία κατάθεση για την τράπεζα."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Ελέγξτε πληρωμές, κατεβάστε PDF ή CSV, ή εκτυπώστε τραπεζικό δελτίο για μία κατάθεση."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Επιλέξτε έγκυρη κατάθεση."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Επιλέξτε μία κατάθεση για εκτύπωση τραπεζικού δελτίου."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Η ημερομηνία λήξης της αναφοράς πρέπει να είναι την ημερομηνία έναρξης ή μεταγενέστερη."
+
+#: 
+msgid "Total Cash"
+msgstr "Σύνολο χαρτονομισμάτων"
+
+#: 
+msgid "Total Coin"
+msgstr "Σύνολο κερμάτων"
+
+#: 
+msgid "Witness"
+msgstr "Μάρτυρας"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d δωρεές δεν έχουν οικογένεια. Δεν μπορούν να συμπεριληφθούν σε βεβαίωση."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "%d ανοιχτές καταθέσεις με ημερομηνία εντός αυτού του έτους. Κλείστε τις ώστε κάθε δωρεά να είναι οριστική πριν σταλούν οι βεβαιώσεις."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d πληρωμές δεν ανήκουν ακόμη σε καμία κατάθεση."
+
+#: 
+msgid "Can be emailed"
+msgstr "Μπορεί να σταλεί με ηλεκτρονικό ταχυδρομείο"
+
+#: 
+msgid "Closing line"
+msgstr "Καταληκτική γραμμή"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Κάθε κατάθεση με ημερομηνία εντός αυτού του έτους είναι κλειστή."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Κάθε δωρεά ανήκει σε οικογένεια."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Κάθε πληρωμή αυτού του έτους ανήκει σε κατάθεση."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Δημιουργία φορολογικών βεβαιώσεων"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Αναφορά προσφορών (Φορολογικές βεβαιώσεις)"
+
+#: 
+msgid "Opening line"
+msgstr "Εισαγωγική γραμμή"
+
+#: 
+msgid "Print and mail"
+msgstr "Εκτύπωση και ταχυδρόμηση"
+
+#: 
+msgid "Qty"
+msgstr "Ποσ."
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Ελέγξτε το έτος και έπειτα εκτυπώστε ή στείλτε με ηλεκτρονικό ταχυδρομείο τις βεβαιώσεις προσφορών."
+
+#: 
+msgid "Signed by"
+msgstr "Υπογραφή από"
+
+#: 
+msgid "Thank-you line"
+msgstr "Γραμμή ευχαριστίας"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Επαληθεύστε ότι το όνομα, η διεύθυνση και τα στοιχεία επικοινωνίας της εκκλησίας εμφανίζονται στις φορολογικές βεβαιώσεις."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Προσφορές τέλους έτους"
+
+#: 
+msgid "As of: %s"
+msgstr "Ισχύει στις: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Τουλάχιστον μία θετική οικογενειακή πληρωμή στα επιλεγμένα %d οικονομικά έτη, έως την ημερομηνία ελέγχου: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Το βάπτισμα, οι αιτήσεις εκλογικού καταλόγου, η κατοικία, η ιδιότητα του κοινωνούντος, η παρουσία, η καλή κατάσταση μέλους και οι τοπικές εξαιρέσεις πρέπει να ελέγχονται χωριστά όπου το απαιτεί το καταστατικό σας. Η διάρκεια της ιδιότητας μέλους δεν αποδεικνύει την παρουσία."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Επιλέξτε υπάρχουσα ταξινόμηση."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Επιλέξτε τουλάχιστον μία ταξινόμηση για έλεγχο."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Επιλέξτε τις ταξινομήσεις που χρησιμοποιεί η εκκλησία σας. Καμία ταξινόμηση δεν θεωρείται ότι παρέχει δικαίωμα ψήφου."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Η ηγεσία της εκκλησίας πρέπει να επιβεβαιώσει την επιλεξιμότητα σύμφωνα με το καταστατικό της εκκλησίας. Αυτή η λίστα δείχνει μόνο άτομα που ταιριάζουν στα επιλεγμένα φίλτρα."
+
+#: 
+msgid "Classifications to review"
+msgstr "Ταξινομήσεις προς έλεγχο"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Ταξινομήσεις: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Αποκλείονται τα αποβιώσαντα άτομα, τα ανενεργά άτομα και οι ανενεργές ταξινομήσεις, καθώς και οι ανενεργές οικογένειες και άτομα ή όσα εκκρεμούν για έλεγχο."
+
+#: 
+msgid "Download Review List"
+msgstr "Λήψη λίστας ελέγχου"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Εισαγάγετε έγκυρη ημερομηνία ελέγχου μεταξύ 1900 και 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Εισαγάγετε ακέραιους αριθμούς εντός των εμφανιζόμενων ορίων."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Οικονομικά έτη προς έλεγχο (0–100· το 0 σημαίνει καμία απαίτηση προσφοράς)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Οι προσφορές καταγράφονται ανά οικογένεια, όχι ανά άτομο. Ενεργοποιήστε το μόνο όταν το καταστατικό σας επιτρέπει μία οικογενειακή πληρωμή να πληροί αυτό το κριτήριο. Αυτό δεν αποδεικνύει ότι κάθε άτομο πρόσφερε. Το διάστημα περιλαμβάνει το επιλεγμένο οικονομικό έτος και λήγει το αργότερο την ημερομηνία ελέγχου."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Τελευταίο οικονομικό έτος προς συμπερίληψη"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Ελάχιστη ηλικία (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Ελάχιστη ηλικία: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Ελάχιστη διάρκεια ιδιότητας μέλους σε μήνες (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Ελάχιστη διάρκεια ιδιότητας μέλους: %d μήνες"
+
+#: 
+msgid "No donation requirement."
+msgstr "Καμία απαίτηση δωρεάς."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Κανένα άτομο δεν ταιριάζει σε αυτά τα φίλτρα. Ελέγξτε τις ελλείπουσες ημερομηνίες γέννησης ή ιδιότητας μέλους και προσαρμόστε τα κριτήριά σας."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Προαιρετική απαίτηση οικογενειακής προσφοράς"
+
+#: 
+msgid "People matching filters"
+msgstr "Άτομα που ταιριάζουν στα φίλτρα"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Άτομα που παραλείφθηκαν επειδή λείπουν απαιτούμενες ημερομηνίες"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Ετοιμάστε λίστα για έλεγχο από την εκκλησία με ταξινομήσεις και προαιρετικά φίλτρα ηλικίας, ιδιότητας μέλους και οικογενειακής προσφοράς."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Ετοιμάστε λίστα για έλεγχο από την εκκλησία σύμφωνα με το καταστατικό σας."
+
+#: 
+msgid "Review date"
+msgstr "Ημερομηνία ελέγχου"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Χρησιμοποιήστε το καταστατικό της εκκλησίας σας για να επιλέξετε τα φίλτρα και έπειτα ζητήστε από εξουσιοδοτημένη ηγεσία της εκκλησίας να ελέγξει τη λίστα. Η αντιστοίχιση σε αυτά τα φίλτρα δεν θεμελιώνει δικαίωμα ψήφου. Αυτή η αναφορά δεν καταγράφει επιλεξιμότητα ούτε διεξάγει εκλογή."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Μέλη με δικαίωμα ψήφου — Λίστα ελέγχου"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Το μηδέν απενεργοποιεί μία προαιρετική απαίτηση. Η ηλικία απαιτεί πλήρη ημερομηνία γέννησης· η διάρκεια ιδιότητας μέλους απαιτεί ημερομηνία ιδιότητας μέλους. Τα άτομα που δεν έχουν τις απαιτούμενες ημερομηνίες παραλείπονται και καταμετρώνται χωριστά. Τα αποβιώσαντα άτομα, τα ανενεργά άτομα και οι ανενεργές ταξινομήσεις, καθώς και οι ανενεργές οικογένειες και άτομα ή όσα εκκρεμούν για έλεγχο, αποκλείονται πάντα· χρησιμοποιούνται η τρέχουσα ταξινόμηση και κατάσταση, όχι η ιστορική."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Οφειλόμενο ποσό για %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Δεν είναι δυνατή η δημιουργία ιδιωτικού προσωρινού χώρου PDF στον επιλεγμένο κατάλογο."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Αφήστε κενό για να χρησιμοποιηθεί ο προσωρινός κατάλογος του συστήματος. Διαφορετικά, εισαγάγετε υπάρχοντα εγγράψιμο κατάλογο προστατευμένο από πρόσβαση μέσω ιστού."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Προσωρινός κατάλογος PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "Ο προσωρινός χώρος PDF πρέπει να είναι ιδιωτικός και εγγράψιμος."
+
+#: 
+msgid "Reporting"
+msgstr "Αναφορές"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "Ο προσωρινός κατάλογος PDF δεν υπάρχει ή δεν είναι προσβάσιμος."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "Ο προσωρινός κατάλογος PDF πρέπει να είναι απόλυτη διαδρομή καταλόγου."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Φορολογικός αριθμός εκκλησίας (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Καταληκτική γραμμή"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Ελέγχει την προαιρετική τηλεμετρία. Οι αποτυχίες εγκατάστασης και αναβάθμισης βάσης δεδομένων στέλνουν περιορισμένα διαγνωστικά στο PostHog ακόμη και όταν η τηλεμετρία είναι απενεργοποιημένη. Αυτές οι αναφορές αποτυχίας περιλαμβάνουν εκδόσεις λογισμικού και περιβάλλοντος και ένα εξυγιασμένο σφάλμα βάσης δεδομένων, αλλά όχι αναγνωριστικό εγκατάστασης ή εντολή SQL."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Διάγνωση αποτυχημένων εγκαταστάσεων και αναβαθμίσεων βάσης δεδομένων"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Λεπτομέρειες αποτυχίας εγκατάστασης και αναβάθμισης"
+
+#: 
+msgid "Open in browser window"
+msgstr "Άνοιγμα σε παράθυρο προγράμματος περιήγησης"
+
+#: 
+msgid "Opening Line"
+msgstr "Εισαγωγική γραμμή"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Η προαιρετική τηλεμετρία χρήσης αποστέλλεται μόνο όταν είναι ενεργοποιημένη. Οι αποτυχίες εγκατάστασης και αναβάθμισης βάσης δεδομένων στέλνουν πάντα περιορισμένα διαγνωστικά για να βοηθήσουν την κοινότητα, ακόμη κι αν επιλέξετε Όχι, ευχαριστώ. Οι αναφορές αποτυχίας περιλαμβάνουν εκδόσεις λογισμικού και περιβάλλοντος και ένα εξυγιασμένο σφάλμα βάσης δεδομένων, χωρίς αναγνωριστικό εγκατάστασης ή εντολή SQL."
+
+#: 
+msgid "PDF Handling"
+msgstr "Διαχείριση PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "Έξοδος PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "Λειτουργία διαχείρισης PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "Γραμμή ερωτήσεων"
+
+#: 
+msgid "Save File dialog"
+msgstr "Παράθυρο αποθήκευσης αρχείου"
+
+#: 
+msgid "Signer"
+msgstr "Υπογράφων"
+
+#: 
+msgid "Statement Settings"
+msgstr "Ρυθμίσεις βεβαίωσης"
+
+#: 
+msgid "Statement Wording"
+msgstr "Διατύπωση βεβαίωσης"
+
+#: 
+msgid "Tax Information"
+msgstr "Φορολογικές πληροφορίες"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Η τηλεμετρία αποστέλλεται στο PostHog στις Ηνωμένες Πολιτείες. Οι αναφορές αποτυχίας εγκατάστασης και αναβάθμισης αποστέλλονται ακόμη και όταν η προαιρετική τηλεμετρία είναι απενεργοποιημένη."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Αυτή η ημερομηνία ακυρώθηκε. Δεν χρειάζεται τίποτε άλλο από εσάς."
+
+#: 
+msgid "always sent"
+msgstr "αποστέλλεται πάντα"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Αποτυχία αφαίρεσης επιστολόχαρτου"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Αποτυχία αποθήκευσης του επιστολόχαρτου"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Αποτυχία μεταφόρτωσης επιστολόχαρτου"
+
+#: 
+msgid "Greeting"
+msgstr "Χαιρετισμός"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Χαιρετισμός και υπογραφή επιστολής"
+
+#: 
+msgid "Letterhead"
+msgstr "Επιστολόχαρτο"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF ή WebP. Ένα φαρδύ πανό αποδίδει καλύτερα, για παράδειγμα 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Εκτυπώνεται στην κορυφή των επιστολών PDF που χρησιμοποιούν γραφικό επιστολόχαρτο, όπως οι βεβαιώσεις προσφορών. Χωρίς αυτό, οι επιστολές εκτυπώνουν το όνομα και τη διεύθυνση της εκκλησίας."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Να αφαιρεθεί το επιστολόχαρτο; Οι επιστολές θα εκτυπώνουν το όνομα και τη διεύθυνση της εκκλησίας."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Ορίστε το επιστολόχαρτο που εκτυπώνουν οι επιστολές PDF"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Χρήση του ονόματος και της διεύθυνσης της εκκλησίας"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Χρήση της διαδρομής επιστολόχαρτου που ορίστηκε στις Ρυθμίσεις συστήματος"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Διατύπωση, φορολογικός αριθμός και διαχείριση PDF για τις βεβαιώσεις προσφορών"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s ως %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "Η διεύθυνση %s είναι πλέον η διεύθυνση ηλεκτρονικού ταχυδρομείου σας. Μπορείτε να τη χρησιμοποιήσετε για να συνδεθείτε στην Πύλη μελών."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} ακόμη"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "Ζητήθηκε αλλαγή της διεύθυνσης ηλεκτρονικού ταχυδρομείου σας"
+
+#: 
+msgid "A family"
+msgstr "Μία οικογένεια"
+
+#: 
+msgid "A group"
+msgstr "Μία ομάδα"
+
+#: 
+msgid "A ministry"
+msgstr "Μία διακονία"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "Μία νέα διεύθυνση αλλάζει μόνο αφού χρησιμοποιήσετε τον σύνδεσμο που στέλνουμε σε αυτή."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "Ένα κλειδί πρόσβασης μπορεί να προστεθεί μόνο εντός %d λεπτών από τη σύνδεση με τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας. Αποσυνδεθείτε, συνδεθείτε ξανά με το ηλεκτρονικό ταχυδρομείο σας και επιστρέψτε εδώ."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "Ένα κλειδί πρόσβασης σας συνδέει με Face ID, δακτυλικό αποτύπωμα ή το PIN της συσκευής σας, χωρίς κωδικό ηλεκτρονικού ταχυδρομείου."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "Προστέθηκε κλειδί πρόσβασης στη σύνδεσή σας στην Πύλη μελών"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "Προστέθηκε κλειδί πρόσβασης στη σύνδεσή σας στην Πύλη μελών στις %1$s, την %2$s, από %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "Προστέθηκε κλειδί πρόσβασης στη σύνδεσή σας στην Πύλη μελών στις %1$s, την %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "Ένα άτομο που τη χάνει δεν έχει τότε δικό του ηλεκτρονικό ταχυδρομείο: τα μηνύματα που απευθύνονται μόνο σε αυτό, όπως ένα ομαδικό μήνυμα, παραλείπονται, και το πρόγραμμα σύνταξης μηνυμάτων το αναφέρει."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "Ένα άτομο του οποίου η καρτέλα αποκρύπτει την ηλικία δεν εμφανίζει ποτέ έτος γέννησης."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "Υποβλήθηκε αίτημα στην Πύλη μελών για αλλαγή της διεύθυνσης ηλεκτρονικού ταχυδρομείου σας στις %s, από %s σε %s. Η αλλαγή γίνεται μόνο όταν χρησιμοποιηθεί ο σύνδεσμος που στάλθηκε στη διεύθυνση %s."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Μία γραμμή δεν έχει την αναμενόμενη μορφή."
+
+#: 
+msgid "A team"
+msgstr "Μία ομάδα εργασίας"
+
+#: 
+msgid "Add a passkey"
+msgstr "Προσθήκη κλειδιού πρόσβασης"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Προσθέστε κλειδί πρόσβασης μόνο στο δικό σας τηλέφωνο ή υπολογιστή, ποτέ σε κοινόχρηστο ή δημόσιο."
+
+#: 
+msgid "Add an email"
+msgstr "Προσθήκη ηλεκτρονικού ταχυδρομείου"
+
+#: 
+msgid "Added %s"
+msgstr "Προστέθηκε %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Παρακάμψεις διαχειριστή"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "Ενήλικας της οικογένειας %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "Ενήλικας της οικογένειας"
+
+#: 
+msgid "All events"
+msgstr "Όλες οι εκδηλώσεις"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Να επιτρέπεται η Σύνδεση ως άτομο"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Να επιτρέπονται αλλαγές κατά τη Σύνδεση ως άτομο"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Να επιτρέπονται αλλαγές ενώ ένας διαχειριστής χρησιμοποιεί τη Σύνδεση ως άτομο. Όταν είναι απενεργοποιημένο, η Σύνδεση ως άτομο είναι μόνο για ανάγνωση."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Κατέχεται ήδη από μέλος της οικογένειας"
+
+#: 
+msgid "Also used by"
+msgstr "Χρησιμοποιείται επίσης από"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Ένας διαχειριστής μπορεί να δώσει οποιοδήποτε δικαίωμα σε ένα άτομο, στη σελίδα αυτού του ατόμου. Οι «Παρακάμψεις διαχειριστή» εμφανίζονται τότε εδώ, με τον αριθμό των ατόμων στα οποία δόθηκε."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "Άλλο άτομο χρησιμοποιεί ήδη αυτή τη διεύθυνση"
+
+#: 
+msgid "Applies to"
+msgstr "Ισχύει για"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Εγκρίνετε ή απορρίψτε αιτήματα αντικατάστασης για μία ομάδα εθελοντών."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Αίτημα νέου ηλεκτρονικού ταχυδρομείου"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Η εξουσία δίνεται στο άτομο, όχι σε μία σύνδεση, ώστε να μπορεί να χορηγηθεί πριν αποκτήσει σύνδεση. Ένα άτομο που συνδέεται μόνο στην Πύλη μελών εξακολουθεί να βλέπει μόνο το δικό του πρόγραμμα, μέχρι ένας διαχειριστής να του δώσει λογαριασμό προσωπικού."
+
+#: 
+msgid "Awaiting review"
+msgstr "Αναμονή ελέγχου"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Επιστροφή στη σύνδεση"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Περιήγηση σε όλον τον κατάλογο"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Μπορεί να συνδεθεί στην Πύλη μελών"
+
+#: 
+msgid "Can sign in?"
+msgstr "Μπορεί να συνδεθεί;"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Δεν είναι δυνατή η απενεργοποίηση της σύνδεσης για τον μοναδικό διαχειριστή που μπορεί να συνδεθεί."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Δεν είναι δυνατή η σύνδεση"
+
+#: 
+msgid "Change family details"
+msgstr "Αλλαγή στοιχείων οικογένειας"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Αλλάξτε τη διεύθυνση και τα στοιχεία επικοινωνίας της οικογένειας και προσθέστε μέλος οικογένειας για έλεγχο."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Αλλαγή του δικού τους ονόματος, των στοιχείων επικοινωνίας και της φωτογραφίας."
+
+#: 
+msgid "Changed"
+msgstr "Άλλαξε"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Άλλαξε αφού το άτομο συνδέθηκε"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Άλλαξε από εισαγωγή αφού το άτομο συνδέθηκε"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Άλλαξε από το προσωπικό αφού το άτομο συνδέθηκε"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Άλλαξε μέσω του API αφού το άτομο συνδέθηκε"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Οι αλλαγές είναι απενεργοποιημένες κατά τη Σύνδεση ως άτομο."
+
+#: 
+msgid "Changes needed"
+msgstr "Απαιτούνται αλλαγές"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Οι αλλαγές αποθηκεύονται καθώς τις κάνετε."
+
+#: 
+msgid "Check your email"
+msgstr "Ελέγξτε το ηλεκτρονικό ταχυδρομείο σας"
+
+#: 
+msgid "Choose a permission"
+msgstr "Επιλέξτε δικαίωμα"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Επιλέξτε δικαίωμα, σε τι αφορά και την τελευταία του ημέρα, και αναφέρετε τον λόγο."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Επιλέξτε φωτογραφία ή τραβήξτε αυτοφωτογραφία"
+
+#: 
+msgid "Choose a theme"
+msgstr "Επιλέξτε θέμα"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Επιλέξτε τουλάχιστον μία γραμμή."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Επιλέξτε το πολύ %d γραμμές κάθε φορά."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Επιλέξτε από τη λίστα τον τρόπο εμφάνισης των ημερομηνιών."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Επιλέξτε την τελευταία ημέρα αυτού του δικαιώματος."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Επιλέξτε σε τι αφορά το δικαίωμα."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Επιλέξτε ναι ή όχι."
+
+#: 
+msgid "Church Office"
+msgstr "Γραφείο εκκλησίας"
+
+#: 
+msgid "Church country"
+msgstr "Χώρα εκκλησίας"
+
+#: 
+msgid "Church default: %s"
+msgstr "Προεπιλογή εκκλησίας: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Σύνδεση ηγεσίας εκκλησίας"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Ταξινομήσεις των οποίων τα μέλη μπορούν να συνδεθούν στην Πύλη μελών, ως λίστα αναγνωριστικών ταξινόμησης χωρισμένων με κόμμα."
+
+#: 
+msgid "Clear selection"
+msgstr "Εκκαθάριση επιλογής"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Κωδικοί, συνεδρίες και συσκευές"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Επιβεβαίωση διεύθυνσης ηλεκτρονικού ταχυδρομείου"
+
+#: 
+msgid "Confirm email address"
+msgstr "Επιβεβαίωση διεύθυνσης ηλεκτρονικού ταχυδρομείου"
+
+#: 
+msgid "Confirm family details"
+msgstr "Επιβεβαίωση στοιχείων οικογένειας"
+
+#: 
+msgid "Confirm selected"
+msgstr "Επιβεβαίωση επιλεγμένων"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Επιβεβαιώστε αυτή τη διεύθυνση μόνο αφού ελέγξετε, αυτοπροσώπως ή τηλεφωνικά, ότι είναι η προσωπική διεύθυνση αυτού του ατόμου. Μόλις επιβεβαιωθεί, μπορεί να χρησιμοποιηθεί για σύνδεση στην Πύλη μελών."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Επιβεβαιώστε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Επιβεβαιώστε τη νέα διεύθυνση ηλεκτρονικού ταχυδρομείου σας"
+
+#: 
+msgid "Confirmed"
+msgstr "Επιβεβαιώθηκε"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Οι ημερομηνίες πρέπει να γράφονται ως YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Απόφαση για αιτήματα αντικατάστασης"
+
+#: 
+msgid "Device"
+msgstr "Συσκευή"
+
+#: 
+msgid "Device remembered"
+msgstr "Η συσκευή απομνημονεύτηκε"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Συσκευές και κλειδιά πρόσβασης"
+
+#: 
+msgid "Directory classifications"
+msgstr "Ταξινομήσεις καταλόγου"
+
+#: 
+msgid "Directory section"
+msgstr "Ενότητα καταλόγου"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Απενεργοποίηση σύνδεσης"
+
+#: 
+msgid "Do not show"
+msgstr "Να μην εμφανίζεται"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Καθένας χρειάζεται επίσης δικό του ηλεκτρονικό ταχυδρομείο που δεν χρησιμοποιεί κανείς άλλος."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Κάθε μήνυμα σύνδεσης ισχύει μία φορά, για περιορισμένο χρόνο, και ένα νεότερο μήνυμα το αντικαθιστά."
+
+#: 
+msgid "Edit my details"
+msgstr "Επεξεργασία των στοιχείων μου"
+
+#: 
+msgid "Email address changed"
+msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου άλλαξε"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Διεύθυνση ηλεκτρονικού ταχυδρομείου που πληκτρολογήθηκε: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "Διευθύνσεις ηλεκτρονικού ταχυδρομείου προς επιβεβαίωση: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "Το ηλεκτρονικό ταχυδρομείο άλλαξε"
+
+#: 
+msgid "Email code"
+msgstr "Κωδικός ηλεκτρονικού ταχυδρομείου"
+
+#: 
+msgid "Email confirmed"
+msgstr "Το ηλεκτρονικό ταχυδρομείο επιβεβαιώθηκε"
+
+#: 
+msgid "Email link"
+msgstr "Σύνδεσμος ηλεκτρονικού ταχυδρομείου"
+
+#: 
+msgid "Email me a code"
+msgstr "Στείλτε μου κωδικό με ηλεκτρονικό ταχυδρομείο"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Στείλτε μου σύνδεσμο επιβεβαίωσης με ηλεκτρονικό ταχυδρομείο"
+
+#: 
+msgid "Email needs attention"
+msgstr "Το ηλεκτρονικό ταχυδρομείο χρειάζεται προσοχή"
+
+#: 
+msgid "Email problem"
+msgstr "Πρόβλημα ηλεκτρονικού ταχυδρομείου"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Ο κωδικός και ο σύνδεσμος σύνδεσης που στάλθηκαν ακυρώθηκαν"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Σύνδεσμος επαλήθευσης που στάλθηκε με ηλεκτρονικό ταχυδρομείο"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Επιβεβαιωμένα ηλεκτρονικά ταχυδρομεία: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Ενεργοποίηση σύνδεσης"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Να τερματιστεί κάθε συνεδρία αυτού του ατόμου στην Πύλη μελών και να ξεχαστούν οι απομνημονευμένες συσκευές του; Τα κλειδιά πρόσβασης παραμένουν, ώστε να μπορεί να συνδεθεί ξανά."
+
+#: 
+msgid "Ended %s"
+msgstr "Έληξε %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Έληξε λόγω αλλαγής στη σύνδεσή του"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Έληξε όταν απενεργοποιήθηκε η σύνδεση μελών"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Εισαγάγετε ακέραιο αριθμό από %1$d έως %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Εισαγάγετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας."
+
+#: 
+msgid "Every kind"
+msgstr "Κάθε είδος"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Κάθε σύνδεση μέλους, άρνηση και αλλαγή σύνδεσης, με τις νεότερες πρώτα. Δεν φυλάσσει ποτέ κωδικό, σύνδεσμο ή κλειδί πρόσβασης."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Όλοι οι καταχωρισμένοι, από το Α στο Ω, με πλαίσιο αναζήτησης."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Όσοι επιτρέπονται από τους κανόνες σύνδεσης μπορούν έπειτα να συνδεθούν στην Πύλη μελών με το δικό τους ηλεκτρονικό ταχυδρομείο."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Όσοι συνδέθηκαν στην Πύλη μελών τις τελευταίες 30 ημέρες, με τους νεότερους πρώτα."
+
+#: 
+msgid "Everywhere"
+msgstr "Παντού"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Οικογένειες που επιβεβαίωσε ένα μέλος τις τελευταίες 30 ημέρες, από την Πύλη μελών ή τον σύνδεσμο επαλήθευσης που στάλθηκε με ηλεκτρονικό ταχυδρομείο."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Επιβεβαιωμένες οικογένειες, τελευταίες 30 ημέρες"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Τα στοιχεία οικογένειας επιβεβαιώθηκαν"
+
+#: 
+msgid "Family email"
+msgstr "Ηλεκτρονικό ταχυδρομείο οικογένειας"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Ηλεκτρονικά ταχυδρομεία οικογένειας που δεν μεταφέρθηκαν"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Οικογενειακοί ρόλοι των οποίων τα μέλη μπορούν να συνδεθούν στην Πύλη μελών, ως λίστα αναγνωριστικών ρόλων χωρισμένων με κόμμα."
+
+#: 
+msgid "Find someone"
+msgstr "Εύρεση ατόμου"
+
+#: 
+msgid "Fix by hand"
+msgstr "Διόρθωση με το χέρι"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Διόρθωση κοινόχρηστων ηλεκτρονικών ταχυδρομείων"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Από σύνδεση προσωπικού"
+
+#: 
+msgid "Give a permission"
+msgstr "Παροχή δικαιώματος"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Παροχή δικαιώματος πύλης"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Δώστε σε κάθε άτομο το δικό του ηλεκτρονικό ταχυδρομείο"
+
+#: 
+msgid "Give permission"
+msgstr "Παροχή δικαιώματος"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Δόθηκε από %1$s έως %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Δόθηκε από %s"
+
+#: 
+msgid "Given to"
+msgstr "Δόθηκε σε"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Δόθηκε σε όλους"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Δόθηκε, αλλά δεν ισχύει"
+
+#: 
+msgid "Go to sign in"
+msgstr "Μετάβαση στη σύνδεση"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Μετάβαση στην Πύλη μελών"
+
+#: 
+msgid "Has signed in"
+msgstr "Έχει συνδεθεί"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Έχει συνδεθεί: οι συνεδρίες και οι συσκευές του λήγουν"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Ορίστε ο κωδικός σας για σύνδεση στην Πύλη μελών. Πληκτρολογήστε τον στη σελίδα σύνδεσης, στο πρόγραμμα περιήγησης όπου τον ζητήσατε. Ή πατήστε το κουμπί για να συνδεθείτε σε αυτή τη συσκευή."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Απόκρυψη δικαιωμάτων"
+
+#: 
+msgid "How"
+msgstr "Πώς"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Πόσα μηνύματα σύνδεσης στην Πύλη μελών μπορεί να ζητήσει μία διεύθυνση IP μέσα σε μία ώρα. Ορίστε 0 για κανένα όριο, για παράδειγμα όταν όλοι φτάνουν στο ChurchCRM μέσω μίας διεύθυνσης."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Για πόσες ημέρες μια συσκευή παραμένει συνδεδεμένη στην Πύλη μελών αφού το μέλος επιλέξει να παραμείνει συνδεδεμένο. Ορίστε 0 για να αφαιρεθεί η επιλογή."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Πόσα λεπτά αδράνειας τερματίζουν μία συνεδρία της Πύλης μελών."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Για πόσα λεπτά παραμένουν έγκυρα ο κωδικός και ο σύνδεσμος σύνδεσης στην Πύλη μελών."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Χρόνος αδράνειας (λεπτά)"
+
+#: 
+msgid "Idle too long"
+msgstr "Υπερβολική αδράνεια"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Αν η διεύθυνση %1$s είναι η νέα σας διεύθυνση, χρησιμοποιήστε το παρακάτω κουμπί για να την επιβεβαιώσετε. Μέχρι να επιβεβαιωθεί, δεν μπορεί να χρησιμοποιηθεί για σύνδεση. Ο σύνδεσμος ισχύει μία φορά, έως %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Αν αυτή η διεύθυνση μπορεί να χρησιμοποιηθεί για σύνδεση, σας στείλαμε κωδικό. Τίποτε μετά από λίγα λεπτά; Ρωτήστε το γραφείο της εκκλησίας."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Αν δεν το προσθέσατε εσείς, αφαιρέστε το στη σελίδα Σύνδεση και συσκευές και επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Αν δεν ζητήσατε αυτή την αλλαγή, επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Αν δεν το ζητήσατε εσείς, επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Μπορεί να έχει λήξει ή να έχει ήδη χρησιμοποιηθεί. Αν χρειάζεστε βοήθεια, επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Το πρόσθετό του δεν είναι εγκατεστημένο"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Μετάβαση σε γράμμα"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Παραμονή σε σύνδεση (ημέρες)"
+
+#: 
+msgid "Keeps it"
+msgstr "Το διατηρεί"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Είδος μη επιβεβαιωμένου ηλεκτρονικού ταχυδρομείου"
+
+#: 
+msgid "Last day"
+msgstr "Τελευταία ημέρα"
+
+#: 
+msgid "Last used"
+msgstr "Τελευταία χρήση"
+
+#: 
+msgid "Last used %s"
+msgstr "Τελευταία χρήση %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Υπεύθυνος του %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Να επιτρέπεται στους διαχειριστές να ανοίγουν την Πύλη μελών ενός ατόμου ως αυτό το άτομο, από το μενού Ενέργειες του ατόμου, ενώ η σύνδεση μελών είναι ενεργή."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Να επιτρέπεται στα μέλη να προσθέτουν κλειδιά πρόσβασης και να συνδέονται με αυτά στην Πύλη μελών."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Να επιτρέπεται στα μέλη να συνδέονται στην Πύλη μελών με τη δική τους διεύθυνση ηλεκτρονικού ταχυδρομείου. Μπορεί να ενεργοποιηθεί μόνο όσο λειτουργεί η αποστολή ηλεκτρονικού ταχυδρομείου."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Να επιτρέπεται στα μέλη η σύνδεση με το ηλεκτρονικό ταχυδρομείο τους"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Διάρκεια συνδέσμου και κωδικού (λεπτά)"
+
+#: 
+msgid "Login as %s"
+msgstr "Σύνδεση ως %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Σύνδεση ως άτομο"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Η Σύνδεση ως άτομο δεν μπόρεσε να ξεκινήσει."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Η Σύνδεση ως άτομο έληξε: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Ιστορικό Σύνδεσης ως άτομο"
+
+#: 
+msgid "Login as Person started"
+msgstr "Η Σύνδεση ως άτομο ξεκίνησε"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Η Σύνδεση ως άτομο σταμάτησε"
+
+#: 
+msgid "Look up anyone"
+msgstr "Αναζήτηση οποιουδήποτε"
+
+#: 
+msgid "Loses it"
+msgstr "Το χάνει"
+
+#: 
+msgid "Manage a team"
+msgstr "Διαχείριση ομάδας"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Διαχείριση της σύνδεσης και των συσκευών μου"
+
+#: 
+msgid "Matches: %s"
+msgstr "Αντιστοιχίσεις: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Μπορεί να συνδεθεί"
+
+#: 
+msgid "May sign in now"
+msgstr "Μπορεί να συνδεθεί τώρα"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Κωδικός σύνδεσης στην Πύλη μελών"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Ειδοποίηση σύνδεσης στην Πύλη μελών"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Συνδέσεις και δραστηριότητα στην Πύλη μελών, για μέλη και για προσωπικό που ανοίγει την πύλη από τη σύνδεση προσωπικού."
+
+#: 
+msgid "Member sign-in"
+msgstr "Σύνδεση μέλους"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Η σύνδεση μελών στέλνει σε κάθε άτομο κωδικό με ηλεκτρονικό ταχυδρομείο, επομένως το ηλεκτρονικό ταχυδρομείο (SMTP) πρέπει να λειτουργεί πριν την ενεργοποιήσετε."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Η σύνδεση μελών είναι απενεργοποιημένη"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Η σύνδεση μελών είναι απενεργοποιημένη για την εκκλησία."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Η σύνδεση μελών είναι απενεργοποιημένη."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Η σύνδεση μελών δεν είναι ακόμη διαθέσιμη. Επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Η σύνδεση μελών δεν επιτρέπει ποτέ την είσοδο σε άτομα που έχουν αποβιώσει, είναι ανενεργά, ανήκουν σε ανενεργή οικογένεια, εκκρεμούν για έλεγχο ή έχουν ενεργή την Απενεργοποίηση σύνδεσης. Αυτές οι επιλογές αποφασίζουν ποιοι άλλοι μπορούν."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Η σύνδεση μελών στέλνει σε κάθε μέλος κωδικό με ηλεκτρονικό ταχυδρομείο, επομένως μπορεί να ενεργοποιηθεί μόνο όσο το ChurchCRM μπορεί να στέλνει ηλεκτρονικό ταχυδρομείο. Ενεργοποιήστε πρώτα το ηλεκτρονικό ταχυδρομείο και ρυθμίστε τον διακομιστή αλληλογραφίας."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Τα μέλη βλέπουν τη σελίδα Ημερολόγιο όσο είναι ενεργοποιημένο τουλάχιστον ένα ημερολόγιο."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Τα μέλη πληκτρολογούν τουλάχιστον %d γράμματα ενός ονόματος και βλέπουν έως %d αντιστοιχίσεις. Η πλήρης λίστα δεν εμφανίζεται ποτέ."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Τα μέλη που είναι συνδεδεμένα τώρα αποσυνδέονται, και κανείς δεν μπορεί να συνδεθεί με το ηλεκτρονικό ταχυδρομείο του μέχρι να ενεργοποιηθεί ξανά η σύνδεση μελών."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Τα μέλη με αυτές τις ταξινομήσεις βρίσκουν τον Κατάλογο στο μενού της Πύλης μελών."
+
+#: 
+msgid "Minimum age"
+msgstr "Ελάχιστη ηλικία"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Περισσότερες προσπάθειες με αυτή τη διεύθυνση μέσα στην επόμενη ώρα δεν θα στείλουν άλλη ειδοποίηση."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Μεταφέρθηκε από το ηλεκτρονικό ταχυδρομείο οικογένειας"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Μεταφέρθηκε σε αρχηγό νοικοκυριού"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Μεταφέρθηκε σε σύζυγο"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Είστε νέοι στην εκκλησία μας; Πείτε μας για την οικογένειά σας και θα επικοινωνήσουμε για να σας καλωσορίσουμε."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Δεν υπάρχουν ακόμη συνεδρίες Σύνδεσης ως άτομο."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Χωρίς ημερομηνία γέννησης, και όχι αρχηγός νοικοκυριού ή σύζυγος"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Κανένα ημερολόγιο δεν είναι ενεργοποιημένο, επομένως τα μέλη δεν βλέπουν τη σελίδα Ημερολόγιο."
+
+#: 
 msgid "No changes"
 msgstr "Χωρίς αλλαγές"
+
+#: 
+msgid "No changes made."
+msgstr "Δεν έγιναν αλλαγές."
+
+#: 
+msgid "No family role"
+msgstr "Χωρίς οικογενειακό ρόλο"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Κανένας αρχηγός νοικοκυριού ή σύζυγος δεν μπορεί να λάβει το ηλεκτρονικό ταχυδρομείο οικογένειας."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Δεν το μοιράζεται αρχηγός νοικοκυριού ή σύζυγος"
+
+#: 
+msgid "No match"
+msgstr "Καμία αντιστοίχιση"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Κανείς δεν ταιριάζει ακόμη στον κανόνα σύνδεσης. Σημειώστε περισσότερους οικογενειακούς ρόλους ή ταξινομήσεις, ή χαμηλώστε την ελάχιστη ηλικία."
+
+#: 
+msgid "No passkey was added."
+msgstr "Δεν προστέθηκε κλειδί πρόσβασης."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Δεν χρησιμοποιήθηκε κλειδί πρόσβασης. Δοκιμάστε ξανά ή συνδεθείτε με τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας."
+
+#: 
+msgid "No person has this email"
+msgstr "Κανένα άτομο δεν έχει αυτό το ηλεκτρονικό ταχυδρομείο"
+
+#: 
+msgid "No personal email"
+msgstr "Χωρίς προσωπικό ηλεκτρονικό ταχυδρομείο"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Κανένα κοινόχρηστο ηλεκτρονικό ταχυδρομείο δεν εμποδίζει κάποιον να συνδεθεί."
+
+#: 
+msgid "No such person"
+msgstr "Δεν υπάρχει τέτοιο άτομο"
+
+#: 
+msgid "No, thanks"
+msgstr "Όχι, ευχαριστώ"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Κανείς δεν μπορεί να συνδεθεί με προσωπικό ηλεκτρονικό ταχυδρομείο που μοιράζονται δύο άτομα τα οποία μπορούν να συνδεθούν. Για διεύθυνση κοινή μέσα σε μία οικογένεια, την κρατά ο αρχηγός νοικοκυριού, αλλιώς ο σύζυγος (ο μεγαλύτερος πρώτα). Όλοι οι υπόλοιποι που τη μοιράζονται τη χάνουν. Αφαιρέστε την επιλογή από όσες θέλετε να διορθώσετε με άλλο τρόπο."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Κανείς δεν μπορεί να συνδεθεί ακόμη: σημειώστε τουλάχιστον μία ταξινόμηση στην ενότητα Ποιοι μπορούν να συνδεθούν."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Κανείς δεν μπορεί να συνδεθεί ακόμη: σημειώστε τουλάχιστον έναν οικογενειακό ρόλο και τουλάχιστον μία ταξινόμηση στην ενότητα Ποιοι μπορούν να συνδεθούν."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Κανείς δεν μπορεί να συνδεθεί ακόμη: σημειώστε τουλάχιστον έναν οικογενειακό ρόλο στην ενότητα Ποιοι μπορούν να συνδεθούν."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Κανείς στον κατάλογο δεν ταιριάζει σε αυτό το όνομα."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Κανείς δεν είναι ακόμη καταχωρισμένος στον κατάλογο."
+
+#: 
+msgid "Not ended"
+msgstr "Δεν έληξε"
+
+#: 
+msgid "Not moved"
+msgstr "Δεν μεταφέρθηκε"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Δεν είστε βέβαιοι ποιο ηλεκτρονικό ταχυδρομείο έχουμε; Επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "Not yet"
+msgstr "Όχι ακόμη"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Σημειώθηκε στο χρονολόγιο της οικογένειας"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Από αυτούς, άτομα που έχουν συνδεθεί: {{total}}. Αποσυνδέονται παντού και η διεύθυνση λαμβάνει ειδοποίηση."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Ανενεργό για όλους: το «%s» είναι απενεργοποιημένο"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Ανενεργό για όλους: η Διαχείριση εθελοντών δεν έχει οριστεί σε V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Ανενεργό για όλους: η λειτουργία του είναι απενεργοποιημένη"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Ανενεργό για όλους: το πρόσθετό του είναι απενεργοποιημένο"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Ανενεργό για όλους: κανένα ημερολόγιο δεν κοινοποιείται στα μέλη"
+
+#: 
+msgid "Office list"
+msgstr "Λίστα γραφείου"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Μόλις επιβεβαιωθεί, μπορεί να χρησιμοποιηθεί για σύνδεση στην Πύλη μελών."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Μπορούν να επιλεγούν μόνο διευθύνσεις που επιτρέπεται να επιβεβαιώσετε."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Μόνο οι διαχειριστές βλέπουν την αιτία."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Μόνο ένας διαχειριστής μπορεί να αλλάξει το ηλεκτρονικό ταχυδρομείο ατόμου που έχει λογαριασμό προσωπικού ή δικαιώματα πύλης."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Μόνο ένας διαχειριστής μπορεί να επιβεβαιώσει ηλεκτρονικό ταχυδρομείο που αντικατέστησε εκείνο με το οποίο είχε συνδεθεί το άτομο."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Μόνο ένας διαχειριστής μπορεί να επιβεβαιώσει το ηλεκτρονικό ταχυδρομείο ατόμου που έχει λογαριασμό προσωπικού ή δικαιώματα πύλης."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Μόνο ένας διαχειριστής μπορεί να διορθώσει αυτή τη διεύθυνση: κάποιος που τη μοιράζεται έχει λογαριασμό προσωπικού ή δικαιώματα πύλης."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Μόνο ένας ενήλικας της οικογένειάς σας μπορεί να επιβεβαιώσει αυτά τα στοιχεία. Επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Επιβεβαιώνετε μόνο διευθύνσεις που γνωρίζετε ότι ανήκουν σε αυτό το άτομο. Όποιος διαβάζει μία διεύθυνση μπορεί να συνδεθεί ως το άτομό της."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Μόνο εν ζωή άτομα με δικό τους ηλεκτρονικό ταχυδρομείο μπορούν να είναι στη λίστα γραφείου."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Μπορούν να προστεθούν μόνο άτομα με δικό τους ηλεκτρονικό ταχυδρομείο."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Η προαιρετική τηλεμετρία μπορεί να περιλαμβάνει διαδρομές σελίδων, ενεργή τοπική ρύθμιση, έκδοση ChurchCRM, έκδοση PHP, οικογένεια OS, τη χώρα από τις ρυθμίσεις στοιχείων της εκκλησίας σας και ένα τυχαίο αναγνωριστικό εγκατάστασης. Οι αναφορές αποτυχίας δεν περιλαμβάνουν το αναγνωριστικό εγκατάστασης. Τα δεδομένα αποστέλλονται στο PostHog στις Ηνωμένες Πολιτείες."
+
+#: 
+msgid "Passkey"
+msgstr "Κλειδί πρόσβασης"
+
+#: 
+msgid "Passkey added"
+msgstr "Το κλειδί πρόσβασης προστέθηκε"
+
+#: 
+msgid "Passkey removed"
+msgstr "Το κλειδί πρόσβασης αφαιρέθηκε"
+
+#: 
+msgid "Passkeys"
+msgstr "Κλειδιά πρόσβασης"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Τα κλειδιά πρόσβασης είναι απενεργοποιημένα."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Τα κλειδιά πρόσβασης δεν μπορούν να χρησιμοποιηθούν εδώ."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Τα κλειδιά πρόσβασης δεν μπορούν ακόμη να χρησιμοποιηθούν σε αυτόν τον ιστότοπο. Επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Τα κλειδιά πρόσβασης χρειάζονται όνομα υπολογιστή, όχι διεύθυνση IP, στη διεύθυνση του ιστότοπου."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Τα κλειδιά πρόσβασης χρειάζονται ασφαλή σύνδεση (HTTPS) με αυτόν τον ιστότοπο."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Τα κλειδιά πρόσβασης χρειάζονται να έχει οριστεί η διεύθυνση του ιστότοπου στο Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Τα κλειδιά πρόσβασης χρειάζονται ο ιστότοπος να εξυπηρετείται μέσω HTTPS. Στα μέλη δεν προσφέρονται κλειδιά πρόσβασης μέχρι να γίνει αυτό."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Τα κλειδιά πρόσβασης λειτουργούν μόνο στη διεύθυνση %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Κλειδιά πρόσβασης: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Άτομα που επιτρέπουν οι αποθηκευμένες ρυθμίσεις: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Άτομα που ειδοποιούνται όταν κάποιος δεν μπόρεσε να συνδεθεί στην Πύλη μελών"
+
+#: 
+msgid "People who hold it"
+msgstr "Άτομα που το κατέχουν"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Άτομα που χάνουν μία διεύθυνση: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Άτομα που έχασαν μία διεύθυνση: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Άτομα που μπορούν να συνδεθούν: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Άτομα που συνδέονταν παλαιότερα στην Πύλη μελών: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Τα άτομα με αυτές τις ταξινομήσεις εμφανίζονται στον κατάλογο. Ο αριθμός δείχνει πόσα ενεργά άτομα έχουν κάθε ταξινόμηση."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Άτομα με αυτό το ηλεκτρονικό ταχυδρομείο: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Άτομο %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Επιλέξτε ταξινομήσεις από τη λίστα."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Επιλέξτε οικογενειακούς ρόλους από τη λίστα."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Επιλέξτε άτομα για τη λίστα γραφείου."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Επιλέξτε γλώσσα από τη λίστα."
+
+#: 
+msgid "Portal permission given"
+msgstr "Το δικαίωμα πύλης δόθηκε"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Το δικαίωμα πύλης αφαιρέθηκε"
+
+#: 
+msgid "Portal permissions"
+msgstr "Δικαιώματα πύλης"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Σύνδεση στην πύλη"
+
+#: 
+msgid "Problem"
+msgstr "Πρόβλημα"
+
+#: 
+msgid "Reason"
+msgstr "Αιτία"
+
+#: 
+msgid "Reason: %s"
+msgstr "Αιτία: %s"
+
+#: 
+msgid "Refused"
+msgstr "Απορρίφθηκε"
+
+#: 
+msgid "Register your family"
+msgstr "Καταχωρίστε την οικογένειά σας"
+
+#: 
+msgid "Remembered device"
+msgstr "Απομνημονευμένη συσκευή"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Η απομνημονευμένη συσκευή αφαιρέθηκε"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Απομνημονευμένες συσκευές: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Αφαίρεση ηλεκτρονικών ταχυδρομείων"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Αφαίρεση αυτού του κλειδιού πρόσβασης"
+
+#: 
+msgid "Remove this permission"
+msgstr "Αφαίρεση αυτού του δικαιώματος"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Αφαιρέθηκε από: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Αντικαταστάθηκε μετά από σύνδεση"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Αντικαταστάθηκε από άλλη σύνδεση"
+
+#: 
+msgid "Result"
+msgstr "Αποτέλεσμα"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Διευθύνετε μία ομάδα εθελοντών: θέσεις, εθελοντές, προγράμματα, στελέχωση και καταμετρήσεις."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Αναφέρετε γιατί απενεργοποιείται η σύνδεση."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Αναφέρετε γιατί δίνεται αυτό το δικαίωμα."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Αναζητήστε οποιονδήποτε είναι καταχωρισμένος. Κάθε γραμμή αναφέρει αν μπορεί να συνδεθεί στην Πύλη μελών και, αν όχι, γιατί."
+
+#: 
+msgid "Search method"
+msgstr "Μέθοδος αναζήτησης"
+
+#: 
+msgid "Search only"
+msgstr "Μόνο αναζήτηση"
+
+#: 
+msgid "See family contact details"
+msgstr "Δείτε τα στοιχεία επικοινωνίας της οικογένειας"
+
+#: 
+msgid "See my family"
+msgstr "Δείτε την οικογένειά μου"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Να δείτε την Πύλη μελών όπως τη βλέπει αυτό το άτομο; Οι σελίδες προσωπικού παραμένουν κλειστές μέχρι να πατήσετε Διακοπή, και η συνεδρία καταγράφεται σε αυτή τη σελίδα και στη σελίδα χρήστη σας."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Δείτε τα ημερολόγια που η εκκλησία κοινοποιεί στα μέλη και εγγραφείτε σε αυτά."
+
+#: 
+msgid "See the church calendar"
+msgstr "Δείτε το ημερολόγιο της εκκλησίας"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Δείτε τις συσκευές και τα κλειδιά πρόσβασης με τα οποία συνδέονται, και αποσυνδέστε ή αφαιρέστε οποιοδήποτε από αυτά."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Δείτε τις διευθύνσεις ηλεκτρονικού ταχυδρομείου και τους αριθμούς τηλεφώνου των ατόμων της οικογένειάς τους."
+
+#: 
+msgid "See the member directory"
+msgstr "Δείτε τον κατάλογο μελών"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Δείτε τα ονόματα και τις φωτογραφίες των ατόμων της οικογένειάς τους."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Δείτε τα άτομα που η εκκλησία καταχωρίζει στον κατάλογό της, με τα στοιχεία που η εκκλησία επιλέγει να κοινοποιήσει."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Δείτε το πρόγραμμα εθελοντισμού τους, δηλώστε συμμετοχή σε ανοιχτές θέσεις και ζητήστε αντικαταστάτη."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Στείλτε την περιήγηση ως true ή false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Στείλτε τις ταξινομήσεις ως λίστα αναγνωριστικών."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Στείλτε τις ρυθμίσεις καταλόγου ως αντικείμενο JSON."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Στείλτε τα πεδία προς εμφάνιση ως αντικείμενο τιμών true και false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Στείλτε τις ρυθμίσεις ως αντικείμενο JSON."
+
+#: 
+msgid "Session ended"
+msgstr "Η συνεδρία έληξε"
 
 #: 
 msgid "Set up email"
 msgstr "Ρύθμιση email"
 
 #: 
+msgid "Set up email first."
+msgstr "Ρυθμίστε πρώτα το ηλεκτρονικό ταχυδρομείο."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Κοινόχρηστες διευθύνσεις που διορθώθηκαν: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Κοινόχρηστες διευθύνσεις προς διόρθωση: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Κοινόχρηστο από"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Κοινόχρηστα ηλεκτρονικά ταχυδρομεία που εμποδίζουν άτομα να συνδεθούν"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Εμφάνιση ή απόκρυψη αυτού του μέλους"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Εμφάνιση της σελίδας Κατάλογος στην Πύλη μελών για τις ταξινομήσεις που επιλέγονται παρακάτω."
+
+#: 
+msgid "Show the member directory"
+msgstr "Εμφάνιση του καταλόγου μελών"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Εμφάνιση του καταλόγου μελών στην Πύλη μελών."
+
+#: 
+msgid "Show with year"
+msgstr "Εμφάνιση με έτος"
+
+#: 
+msgid "Show without year"
+msgstr "Εμφάνιση χωρίς έτος"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Εμφανίζονται οι πρώτες %d αντιστοιχίσεις. Πληκτρολογήστε περισσότερο από το όνομα για να βρείτε το άτομο που αναζητάτε."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Σύνδεση ως %s;"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Την επόμενη φορά συνδεθείτε σε αυτή τη συσκευή με Face ID, δακτυλικό αποτύπωμα ή το PIN της συσκευής σας."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Συνδεθείτε για να δείτε την οικογένειά σας, το ημερολόγιο της εκκλησίας και τρόπους να υπηρετήσετε. Δεν χρειάζεστε κωδικό πρόσβασης ούτε λογαριασμό."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Σύνδεση με κλειδί πρόσβασης"
+
+#: 
+msgid "Sign out every device"
+msgstr "Αποσύνδεση κάθε συσκευής"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Να αποσυνδεθούν τώρα όλες οι συσκευές;"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Αποσύνδεση παντού"
+
+#: 
+msgid "Sign out this device"
+msgstr "Αποσύνδεση αυτής της συσκευής"
+
+#: 
+msgid "Sign-in"
+msgstr "Σύνδεση"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Σύνδεση και συσκευές"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Η σύνδεση δεν μπόρεσε να απενεργοποιηθεί."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Η σύνδεση δεν μπόρεσε να ενεργοποιηθεί."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Η σύνδεση απενεργοποιήθηκε"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Ζητήθηκε μήνυμα σύνδεσης"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Μηνύματα σύνδεσης ανά διεύθυνση IP ανά ώρα"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Η σύνδεση ενεργοποιήθηκε"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Η σύνδεση είναι ήδη απενεργοποιημένη για αυτό το άτομο."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Η σύνδεση είναι απενεργοποιημένη"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Η σύνδεση είναι απενεργοποιημένη για αυτό το άτομο."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Η σύνδεση είναι ενεργοποιημένη για αυτό το άτομο."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Η σύνδεση δεν είναι απενεργοποιημένη για αυτό το άτομο."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Η σύνδεση απορρίφθηκε"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Η σύνδεση, οι συνεδρίες και το κλειδί API αποκλείονται μέχρι να διευθετηθεί αυτό στην καρτέλα του συνδεδεμένου ατόμου."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Συνδέθηκαν, τελευταίες 30 ημέρες"
+
+#: 
+msgid "Signed out"
+msgstr "Αποσυνδέθηκε"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Αποσυνδέθηκε λόγω αλλαγής στη σύνδεσή του"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Αποσυνδέθηκε παντού"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Κάποιος ζήτησε μήνυμα σύνδεσης στην Πύλη μελών, αλλά δεν στάλθηκε κανένα."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Κάποιος δεν μπόρεσε να συνδεθεί στην Πύλη μελών"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Οι σελίδες προσωπικού παραμένουν κλειστές κατά τη Σύνδεση ως άτομο. Πατήστε Διακοπή στη γραμμή ειδοποίησης για να επιστρέψετε."
+
+#: 
+msgid "Stop"
+msgstr "Διακοπή"
+
+#: 
+msgid "Stopped"
+msgstr "Διακόπηκε"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Ενημερώστε το γραφείο της εκκλησίας αν τα στοιχεία της οικογένειας είναι ακόμη σωστά."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Αυτός ο κωδικός δεν λειτούργησε. Ελέγξτε το νεότερο μήνυμα από εμάς ή ζητήστε νέο."
+
+#: 
+msgid "That could not be removed."
+msgstr "Αυτό δεν μπόρεσε να αφαιρεθεί."
+
+#: 
+msgid "That device is signed out."
+msgstr "Αυτή η συσκευή αποσυνδέθηκε."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Αυτή δεν είναι έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Αυτή η σελίδα ήταν ανοιχτή για πολλή ώρα. Δοκιμάστε ξανά."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Αυτό το κλειδί πρόσβασης αφαιρέθηκε. Δεν μπορεί πλέον να σας συνδέσει."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Αυτό διήρκεσε υπερβολικά. Δοκιμάστε ξανά."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Η αναβάθμιση 7.8.3 έδωσε κάθε ηλεκτρονικό ταχυδρομείο οικογένειας σε ένα άτομο. Αυτά που δεν μπόρεσε τα άφησε ως σημείωση στο χρονολόγιο της οικογένειας."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Η Πύλη μελών και τα μηνύματα που σας στέλνει χρησιμοποιούν αυτή τη γλώσσα."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Η αλλαγή δεν μπόρεσε να αποθηκευτεί."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Ο κωδικός και το κουμπί ισχύουν μία φορά, έως %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Ο κωδικός ή ο σύνδεσμος στάλθηκε σε διεύθυνση που δεν είναι πλέον το ηλεκτρονικό ταχυδρομείο του"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Το μήνυμα επιβεβαίωσης δεν μπόρεσε να σταλεί. Δοκιμάστε ξανά αργότερα."
+
+#: 
+msgid "The device is signed out."
+msgstr "Η συσκευή αποσυνδέθηκε."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου %2$s αφαιρέθηκε από την καρτέλα σας στις %1$s. Έχετε αποσυνδεθεί από την Πύλη μελών σε κάθε συσκευή."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου στην καρτέλα σας στις %1$s άλλαξε από %2$s σε %3$s. Έχετε αποσυνδεθεί από την Πύλη μελών σε κάθε συσκευή."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "Το ηλεκτρονικό ταχυδρομείο δεν μπόρεσε να επιβεβαιωθεί."
+
+#: 
+msgid "The email could not be sent."
+msgstr "Το μήνυμα δεν μπόρεσε να σταλεί."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "Το ηλεκτρονικό ταχυδρομείο επιβεβαιώθηκε. Μπορεί πλέον να χρησιμοποιηθεί για σύνδεση."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Η ημερομηνία λήξης είναι πριν από την ημερομηνία έναρξης."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Η οικογένεια δεν έχει εν ζωή, ενεργό αρχηγό νοικοκυριού ή σύζυγο"
+
+#: 
+msgid "The family is inactive"
+msgstr "Η οικογένεια είναι ανενεργή"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Ο αρχηγός νοικοκυριού και ο σύζυγος έχουν και οι δύο δικό τους ηλεκτρονικό ταχυδρομείο"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Η τελευταία ημέρα δεν μπορεί να είναι στο παρελθόν."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Το συνδεδεμένο άτομο δεν επιτρέπεται να συνδεθεί, επομένως αυτός ο λογαριασμός δεν μπορεί να συνδεθεί"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Η λίστα δεν μπόρεσε να φορτωθεί."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Το κλειδί πρόσβασης δεν μπόρεσε να προστεθεί. Δοκιμάστε ξανά."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Το κλειδί πρόσβασης δεν μπόρεσε να επαληθευτεί"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Το κλειδί πρόσβασης δεν είναι καταχωρισμένο ή αφαιρέθηκε"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Το κλειδί πρόσβασης αφαιρέθηκε."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Τα άτομα που το μοιράζονται ανήκουν σε διαφορετικές οικογένειες ή δεν ανήκουν σε οικογένεια"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Τα άτομα που μοιράζονται αυτή τη διεύθυνση άλλαξαν. Ανοίξτε ξανά τη Διόρθωση κοινόχρηστων ηλεκτρονικών ταχυδρομείων."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Το δικαίωμα δεν μπόρεσε να δοθεί."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Το δικαίωμα λήγει μετά από αυτή την ημέρα. Μπορεί να δοθεί ξανά."
+
+#: 
+msgid "The permission was given."
+msgstr "Το δικαίωμα δόθηκε."
+
+#: 
+msgid "The permission was removed."
+msgstr "Το δικαίωμα αφαιρέθηκε."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Τα δικαιώματα δεν μπόρεσαν να φορτωθούν."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Το άτομο χάνει αμέσως αυτό το δικαίωμα στην Πύλη μελών."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Η αιτία μπορεί να έχει το πολύ %d χαρακτήρες."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Οι κανόνες σύνδεσης τους επιτρέπουν την είσοδο, και καθένας έχει δικό του ηλεκτρονικό ταχυδρομείο που δεν χρησιμοποιεί κανείς άλλος ο οποίος μπορεί να συνδεθεί."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Οι κανόνες σύνδεσης τους επιτρέπουν την είσοδο, αλλά το ηλεκτρονικό ταχυδρομείο τους όχι: δεν έχουν, το μοιράζονται με κάποιον άλλον που μπορεί να συνδεθεί, ή δεν έχει επιβεβαιωθεί ακόμη."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Οι ρυθμίσεις σύνδεσης δεν μπόρεσαν να αποθηκευτούν."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Το μη επιβεβαιωμένο ηλεκτρονικό ταχυδρομείο άλλαξε. Φορτώστε ξανά τη σελίδα και δοκιμάστε πάλι."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Η ταξινόμησή τους δεν επιτρέπεται να συνδεθεί"
+
+#: 
+msgid "Their email changed"
+msgstr "Το ηλεκτρονικό ταχυδρομείο τους άλλαξε"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "Το ηλεκτρονικό ταχυδρομείο τους δεν έχει επιβεβαιωθεί ακόμη"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "Το ηλεκτρονικό ταχυδρομείο τους είναι κοινό με κάποιον άλλον"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Ο οικογενειακός τους ρόλος δεν επιτρέπεται να συνδεθεί"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Οι παλιές συνδέσεις τους αφαιρέθηκαν από την αναβάθμιση. Ενεργοποιήστε τη σύνδεση μελών ώστε να μπορούν να συνδεθούν με το δικό τους ηλεκτρονικό ταχυδρομείο."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Η απομνημονευμένη συσκευή τους είχε λήξει"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Η απομνημονευμένη συσκευή τους αποσυνδέθηκε"
+
+#: 
+msgid "Theme development"
+msgstr "Ανάπτυξη θέματος"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Δεν υπάρχει ταξινόμηση με αναγνωριστικό %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Δεν υπάρχει επιλογέας για αυτό το είδος εύρους."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Δεν υπάρχει τέτοιο συμβάν ελέγχου."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Δεν υπάρχει τέτοιο πρόβλημα ηλεκτρονικού ταχυδρομείου."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Δεν υπάρχει τέτοιο είδος μη επιβεβαιωμένου ηλεκτρονικού ταχυδρομείου."
+
+#: 
+msgid "There is no such list."
+msgstr "Δεν υπάρχει τέτοια λίστα."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Δεν υπάρχει τέτοιο δικαίωμα πύλης."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Αυτά είναι τα τηλέφωνα και οι υπολογιστές όπου επιλέξατε να παραμείνετε συνδεδεμένοι. Αποσυνδέστε όσα δεν χρησιμοποιείτε πλέον ή δεν αναγνωρίζετε."
+
+#: 
+msgid "They have a staff account"
+msgstr "Έχουν λογαριασμό προσωπικού"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Μπορούν να συνδεθούν αλλά δεν το έχουν κάνει ποτέ."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Αυτή η ενέργεια χρειάζεται συνεδρία προγράμματος περιήγησης με σύνδεση."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Αυτή η διεύθυνση δεν μπόρεσε να αλλάξει. Ανοίξτε ξανά τη Διόρθωση κοινόχρηστων ηλεκτρονικών ταχυδρομείων για να δείτε πού βρίσκεται."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Αυτή η διεύθυνση δεν μοιράζεται πλέον από άτομα που μπορούν να συνδεθούν."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Αυτό το πρόγραμμα περιήγησης δεν μπορεί να δημιουργήσει κλειδιά πρόσβασης."
+
+#: 
+msgid "This device"
+msgstr "Αυτή η συσκευή"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Αυτή η συσκευή έχει ήδη κλειδί πρόσβασης για εσάς."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Αυτή η συσκευή δεν θα κρατά πλέον το άτομο συνδεδεμένο, και μία ανοιχτή συνεδρία σε αυτή λήγει. Μπορεί να συνδεθεί ξανά με ηλεκτρονικό ταχυδρομείο."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Αυτή είναι η δική μου συσκευή. Να παραμείνω σε σύνδεση."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Εδώ αποφασίζετε για τους επισκέπτες. Ο αριθμός δείχνει πόσα ενεργά άτομα έχουν κάθε ταξινόμηση."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Αυτός ο σύνδεσμος δεν μπορεί να χρησιμοποιηθεί"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Αυτός ο σύνδεσμος έχει λήξει ή έχει ήδη χρησιμοποιηθεί"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Αυτό το μέρος της Πύλης μελών δεν είναι διαθέσιμο σε εσάς."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Αυτό το κλειδί πρόσβασης είναι ήδη καταχωρισμένο."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Αυτό το κλειδί πρόσβασης δεν θα συνδέει πλέον το άτομο. Μπορεί να συνδεθεί με ηλεκτρονικό ταχυδρομείο και να προσθέσει νέο."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Αυτό το δικαίωμα δεν μπορεί να δοθεί στη σελίδα του ατόμου."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Αυτό το άτομο έχει ήδη κάθε δικαίωμα που μπορεί να δοθεί."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Αυτό το άτομο έχει ήδη αυτό το δικαίωμα."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Αυτό το άτομο δεν μπορεί πλέον να συνδεθεί πουθενά, στην Πύλη μελών ή ως προσωπικό. Κάθε συνεδρία λήγει, και οι απομνημονευμένες συσκευές και τα κλειδιά πρόσβασης αφαιρούνται."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Αυτό το άτομο δεν μπόρεσε να αποσυνδεθεί."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Αυτό το άτομο έχει λογαριασμό προσωπικού. Η Σύνδεση ως άτομο δεν ανοίγει ποτέ λογαριασμό προσωπικού."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Αυτό το άτομο δεν έχει τέτοιο κλειδί πρόσβασης."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Αυτό το άτομο δεν έχει τέτοιο δικαίωμα."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Αυτό το άτομο δεν έχει τέτοια απομνημονευμένη συσκευή."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Αυτό το άτομο δεν έχει μη επιβεβαιωμένο ηλεκτρονικό ταχυδρομείο."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Αυτό το άτομο έχει συνδεθεί στην Πύλη μελών. Η αλλαγή αυτού του ηλεκτρονικού ταχυδρομείου το αποσυνδέει παντού, και η νέα διεύθυνση δεν μπορεί να χρησιμοποιηθεί για σύνδεση μέχρι να επιβεβαιωθεί."
+
+#: 
 msgid "This person is deceased."
 msgstr "Αυτό το άτομο έχει αποβιώσει"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Αυτό το άτομο έχει αποσυνδεθεί από την Πύλη μελών παντού."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Αυτό το άτομο δεν υπάρχει πλέον."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Αυτό σας αποσυνδέει παντού, και εδώ, και ξεχνά κάθε συσκευή. Μπορείτε να συνδεθείτε ξανά με τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Αυτό σας αποσυνδέει παντού, και εδώ, και ξεχνά κάθε συσκευή. Τα κλειδιά πρόσβασης παραμένουν: μπορείτε να συνδεθείτε ξανά με κλειδί πρόσβασης ή με τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Αυτό το εργαλείο δεν αλλάζει ποτέ αυτά. Δώστε σε κάθε άτομο το δικό του ηλεκτρονικό ταχυδρομείο στην καρτέλα του."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Σημειώστε το μόνο στο δικό σας τηλέφωνο ή υπολογιστή, ποτέ σε κοινόχρηστο ή δημόσιο."
+
+#: 
+msgid "Time: %s"
+msgstr "Ώρα: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Έληξε ο χρόνος"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Για να αλλάξετε αυτό το ηλεκτρονικό ταχυδρομείο, επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "To fix"
+msgstr "Προς διόρθωση"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Για να παραμείνετε συνδεδεμένοι στο δικό σας τηλέφωνο ή υπολογιστή, σημειώστε «Αυτή είναι η δική μου συσκευή» την επόμενη φορά που θα συνδεθείτε."
+
+#: 
+msgid "Too many attempts"
+msgstr "Υπερβολικά πολλές προσπάθειες"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Υπερβολικά πολλά μηνύματα σύνδεσης σήμερα"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Υπερβολικά πολλά αιτήματα σύνδεσης για αυτή τη διεύθυνση ηλεκτρονικού ταχυδρομείου"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Υπερβολικά πολλά αιτήματα σύνδεσης από αυτή τη διεύθυνση IP"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Υπερβολικά πολλοί λανθασμένοι κωδικοί"
+
+#: 
+msgid "Turn off"
+msgstr "Απενεργοποίηση"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Να απενεργοποιηθεί η σύνδεση μελών;"
+
+#: 
+msgid "Turn on"
+msgstr "Ενεργοποίηση"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Ενεργοποίηση σύνδεσης μελών"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Να ενεργοποιηθεί η σύνδεση μελών;"
+
+#: 
+msgid "Type a name"
+msgstr "Πληκτρολογήστε όνομα"
+
+#: 
+msgid "Type a name or email"
+msgstr "Πληκτρολογήστε όνομα ή ηλεκτρονικό ταχυδρομείο"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Πληκτρολογήστε τουλάχιστον %d γράμματα ενός ονόματος και έπειτα αναζητήστε."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Μη επιβεβαιωμένο ηλεκτρονικό ταχυδρομείο"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Κατανοήστε πού χρησιμοποιείται το ChurchCRM"
+
+#: 
+msgid "Unknown device"
+msgstr "Άγνωστη συσκευή"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Άγνωστο πεδίο καταλόγου: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Άγνωστη ρύθμιση καταλόγου: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Συσκευή χωρίς όνομα"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Κλειδί πρόσβασης χωρίς όνομα"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Μέχρι να το επιβεβαιώσει το γραφείο της εκκλησίας, η νέα διεύθυνση δεν μπορεί να χρησιμοποιηθεί για σύνδεση."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Να χρησιμοποιηθεί η διεύθυνση %1$s ως ηλεκτρονικό ταχυδρομείο για %2$s στο %3$s;"
+
+#: 
+msgid "Use a different email address"
+msgstr "Χρησιμοποιήστε διαφορετική διεύθυνση ηλεκτρονικού ταχυδρομείου"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Να χρησιμοποιηθεί κλειδί πρόσβασης σε αυτή τη συσκευή;"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Χρησιμοποιήστε το παρακάτω κουμπί για να επιβεβαιώσετε ότι η διεύθυνση %1$s είναι η διεύθυνση ηλεκτρονικού ταχυδρομείου σας στο %2$s. Ο σύνδεσμος ισχύει μία φορά, έως %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Χρήστης %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Προβολή δικαιωμάτων"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Αναμένεται να επιβεβαιώσετε τη διεύθυνση %s. Χρησιμοποιήστε τον σύνδεσμο που στείλαμε σε αυτή τη διεύθυνση."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Αναμένεται να επιβεβαιώσετε τη διεύθυνση {{email}}. Χρησιμοποιήστε τον σύνδεσμο που στείλαμε σε αυτή τη διεύθυνση."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Δεν μπορέσαμε να στείλουμε το μήνυμα. Δοκιμάστε ξανά αργότερα ή επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Δεν μπορέσαμε να σας συνδέσουμε"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Στείλαμε σύνδεσμο στη διεύθυνση %s. Χρησιμοποιήστε τον για να επιβεβαιώσετε τη νέα διεύθυνση ηλεκτρονικού ταχυδρομείου σας."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Στείλαμε σύνδεσμο στη διεύθυνση {{email}}. Το ηλεκτρονικό ταχυδρομείο σας αλλάζει όταν τον χρησιμοποιήσετε."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Θα σας στείλουμε κωδικό και σύνδεσμο για να συνδεθείτε."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Χαιρόμαστε πολύ που είστε εδώ! Χρειάζονται περίπου τρία λεπτά."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Χαιρόμαστε πολύ που η οικογένειά σας είναι μαζί μας! Η εγγραφή σας ελήφθη. Η ομάδα μας θα επικοινωνήσει σύντομα για να σας καλωσορίσει προσωπικά."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Επέτειος γάμου"
+
+#: 
+msgid "Welcome"
+msgstr "Καλώς ορίσατε"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Αυτό για το οποίο δόθηκε δεν υπάρχει πλέον"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Τι μπορούν να δουν και να κάνουν τα μέλη στην πύλη, και από πού προέρχεται κάθε δικαίωμα. Τα άτομα καταμετρώνται ανάμεσα σε όλους όσους επιτρέπουν οι κανόνες σύνδεσης, και στο προσωπικό."
+
+#: 
+msgid "What members can use"
+msgstr "Τι μπορούν να χρησιμοποιούν τα μέλη"
+
+#: 
+msgid "What to do"
+msgstr "Τι να κάνετε"
+
+#: 
+msgid "Who can see it"
+msgstr "Ποιος μπορεί να το δει"
+
+#: 
+msgid "Who is listed"
+msgstr "Ποιοι είναι καταχωρισμένοι"
+
+#: 
+msgid "Who may sign in"
+msgstr "Ποιοι μπορούν να συνδεθούν"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Ποιοι μπορούν να συνδεθούν στην Πύλη μελών, ποιοι έχουν συνδεθεί και ποιανού το ηλεκτρονικό ταχυδρομείο τους σταματά. Οι λίστες ακολουθούν τους κανόνες στην καρτέλα Σύνδεση."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Ποιους καταχωρίζει ο κατάλογος της Πύλης μελών, ποιος μπορεί να τον δει και τι εμφανίζει, όπως επιλέγεται στη Διαχείριση -> Πύλη μελών -> Κατάλογος."
+
+#: 
+msgid "Why"
+msgstr "Γιατί"
+
+#: 
+msgid "Why not"
+msgstr "Γιατί όχι"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Με το διακριτικό που η συσκευή αντικατέστησε πριν από λίγο"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Ναι, προσθήκη κλειδιού πρόσβασης"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Ναι, αφαίρεση αυτού του κλειδιού πρόσβασης"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Ναι, αποσύνδεση κάθε συσκευής"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Δεν επιτρέπεται να επιβεβαιώσετε αυτό το ηλεκτρονικό ταχυδρομείο."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Δεν παραμένετε συνδεδεμένοι σε καμία συσκευή."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Έχετε αποσυνδεθεί σε κάθε συσκευή."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Έχετε αποσυνδεθεί σε αυτή τη συσκευή."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Μπορείτε επίσης να συνδεθείτε με τη διεύθυνση ηλεκτρονικού ταχυδρομείου σας."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Δεν μπορείτε να απενεργοποιήσετε τη δική σας σύνδεση."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Δεν μπορείτε να ανοίξετε την Πύλη μελών. Επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Έχετε ζητήσει να αλλάξετε το ηλεκτρονικό ταχυδρομείο σας υπερβολικά πολλές φορές. Δοκιμάστε ξανά αργότερα."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Δεν έχετε κλειδιά πρόσβασης."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Έχετε συνδεθεί ως %s στην Πύλη μελών (επιτρέπονται αλλαγές)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Έχετε συνδεθεί ως %s στην Πύλη μελών (μόνο για ανάγνωση)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Μικρότερη από την ελάχιστη ηλικία"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Η μικρότερη ηλικία στην οποία ένα άτομο μπορεί να συνδεθεί στην Πύλη μελών. Όταν η ημερομηνία γέννησης είναι άγνωστη, πληροί τις προϋποθέσεις μόνο αρχηγός νοικοκυριού ή σύζυγος."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Ο κωδικός σύνδεσής σας στην Πύλη μελών"
+
+#: 
+msgid "Your code"
+msgstr "Ο κωδικός σας"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου σας %s δεν έχει επιβεβαιωθεί ακόμη, επομένως δεν μπορεί να χρησιμοποιηθεί για σύνδεση. Θα στείλουμε σύνδεσμο σε αυτή· η χρήση του συνδέσμου την επιβεβαιώνει."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου σας δεν μπορεί να αφαιρεθεί εδώ. Επικοινωνήστε με το γραφείο της εκκλησίας."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου σας επιβεβαιώθηκε"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Η διεύθυνση ηλεκτρονικού ταχυδρομείου σας άλλαξε"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Το κλειδί πρόσβασής σας προστέθηκε. Την επόμενη φορά, συνδεθείτε με αυτό σε αυτή τη συσκευή."
+
+#: 
+msgid "an administrator"
+msgstr "ένας διαχειριστής"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "κανένας αρχηγός νοικοκυριού ή σύζυγος δεν έχει διεύθυνση ηλεκτρονικού ταχυδρομείου"
+
+#: 
+msgid "or"
+msgstr "ή"
+
+#: 
+msgid "until %s"
+msgstr "έως %s"
 

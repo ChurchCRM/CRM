@@ -24228,14 +24228,2962 @@ msgid "Repeat events could not be created. Check the application log for details
 msgstr "Matukio yanayojirudia hayakuweza kuundwa. Angalia kumbukumbu ya programu kwa maelezo."
 
 #: 
+msgid "Confirm Password"
+msgstr "Thibitisha nenosiri"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Nenosiri lako limebadilishwa. Sasa unaweza kuingia kwa nenosiri lako jipya."
+
+#: 
+msgid "1st"
+msgstr "ya kwanza"
+
+#: 
+msgid "2nd"
+msgstr "ya pili"
+
+#: 
+msgid "3rd"
+msgstr "ya tatu"
+
+#: 
+msgid "4th"
+msgstr "ya nne"
+
+#: 
+msgid "5th"
+msgstr "ya tano"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Huwezi kuondoa ufikiaji wa msimamizi kutoka kwa msimamizi pekee anayeweza kuingia"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Chagua wiki ya mwezi, kutoka ya kwanza hadi ya tano"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Inaunda matukio {{total}}, wiki {{week}} siku ya {{day}} ya kila mwezi kuanzia {{first}} hadi {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Siku ya wiki si sahihi"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Kila mwezi, siku ya wiki"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Miezi isiyo na wiki ya tano hurukwa."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM lazima iwe nambari kamili kutoka 1 hadi 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Wiki ya mwezi"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Wiki ya mwezi lazima iwe kutoka 1 hadi 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s hadi %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Kitambulisho cha kodi cha kanisa (EIN) kinachochapishwa kwenye taarifa za michango"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Taarifa za michango hutolewa kwa watu wazima wa kaya. Tafadhali wasiliana na ofisi ya kanisa ikiwa unahitaji moja."
+
+#: 
+msgid "Download statement"
+msgstr "Pakua taarifa"
+
+#: 
+msgid "Generated"
+msgstr "Imetengenezwa"
+
+#: 
+msgid "Goods and services"
+msgstr "Bidhaa na huduma"
+
+#: 
+msgid "My Giving"
+msgstr "Michango yangu"
+
+#: 
+msgid "No contributions"
+msgstr "Hakuna michango"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Hakuna michango iliyorekodiwa kwa kipindi hiki."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Hakuna bidhaa wala huduma zilizotolewa badala ya michango hii, isipokuwa manufaa ya kidini yasiyoonekana."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Si lazima. Huchapishwa kwenye taarifa za michango."
+
+#: 
+msgid "Tax ID"
+msgstr "Kitambulisho cha kodi"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Kitambulisho cha kodi (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Kiasi kinachokatwa kwenye kodi"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Hii ni taarifa ya kaya. Inajumuisha zawadi za familia yako."
+
+#: 
+msgid "Total contributions"
+msgstr "Jumla ya michango"
+
+#: 
+msgid "Year-end statement"
+msgstr "Taarifa ya mwisho wa mwaka"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "Taarifa %d ya utoaji imetumwa kwa barua pepe kwa familia kwa mafanikio."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "Taarifa ya utoaji ya %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Badilisha maandishi yanayoonekana kwenye taarifa za utoaji (sTaxReport1, sTaxReport2, n.k.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Ndugu familia ya %s,\n"
+"\n"
+"Tafadhali pokea taarifa yako ya utoaji ya %s kutoka %s iliyoambatanishwa na barua pepe hii.\n"
+"\n"
+"Ikiwa una maswali, tafadhali wasiliana na ofisi ya kanisa.\n"
+"\n"
+"Asante kwa ukarimu wako."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Tuma kwa barua pepe taarifa ya utoaji ya %s"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Nambari za bahasha"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Tengeneza taarifa za utoaji"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Tengeneza ripoti za taarifa za utoaji, ufuatiliaji wa ahadi, na uchambuzi wa fedha."
+
+#: 
+msgid "Giving Reports"
+msgstr "Ripoti za utoaji"
+
+#: 
+msgid "Giving Statement"
+msgstr "Taarifa ya utoaji"
+
+#: 
+msgid "Giving Statements"
+msgstr "Taarifa za utoaji"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Barua pepe ya taarifa ya utoaji imeshindwa kutumwa. Tafadhali angalia mipangilio ya seva yako ya barua pepe."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Tafadhali tuma zawadi yako ijayo kwa barua kwa %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Chapisha taarifa ya utoaji ya %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Imeshindwa kutuma taarifa ya utoaji kwa barua pepe: hakuna data ya malipo iliyopatikana kwa mwaka huo."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Imeshindwa kutuma taarifa ya utoaji kwa barua pepe: familia hii haina anwani ya barua pepe iliyohifadhiwa."
+
+#: 
+msgid "Undesignated"
+msgstr "Haijateuliwa"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Thibitisha kuwa jina la kanisa, anwani, na maelezo ya mawasiliano yanaonekana kwenye taarifa za utoaji."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Nafasi sasa imepewa %s, ambaye ameikubali."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Nafasi sasa imepewa %s, ambaye bado haijakubali."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Sababu yao: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Angalia mgao"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Wahudumu bado wanahitajika kwa tukio hili: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Wahudumu bado wanahitajika kwa nafasi hii: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Gridi ya kujiandikisha kila wiki kwa kila darasa. Orodha za madarasa na vitabu vya picha viko kwenye dashibodi ya Shule ya Jumapili na ukurasa wa kila darasa."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Gridi ya kujiandikisha kila wiki kwa mwaka wa shule, safu moja kwa kila Jumapili"
+
+#: 
+msgid "Age %d"
+msgstr "Umri %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Lazima uchague angalau kundi moja ili kutengeneza karatasi ya mahudhurio."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Karatasi ya mahudhurio"
+
+#: 
+msgid "Class List"
+msgstr "Orodha ya darasa"
+
+#: 
+msgid "Download PDF"
+msgstr "Pakua PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Kipindi cha kufunga kwa dakika\n"
+"Akaunti iliyofungwa hujifungua yenyewe baada ya dakika hizi. Majaribio ya kuingia yaliyoshindwa kutoka anwani moja ya IP huhesabiwa katika kipindi hicho hicho."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Idadi ya juu ya majaribio ya kuingia yaliyoshindwa kutoka anwani moja ya IP\n"
+"Majaribio ya kuingia yaliyoshindwa na maombi ya kuweka upya nenosiri kutoka anwani moja ya IP huhesabiwa kwenye kikomo hiki ndani ya kipindi cha kufunga. Kikomo kikifikiwa, kuingia kutoka anwani hiyo hukataliwa hadi kipindi kiishe.\n"
+"Weka sifuri ili kuzima kipengele hiki, kwa mfano kila mtu anapofikia ChurchCRM kupitia anwani moja ya proksi."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Idadi ya juu ya majaribio ya kuingia yaliyoshindwa yanayoruhusiwa kabla akaunti ya mtumiaji haijafungwa.\n"
+"Akaunti iliyofungwa hujifungua yenyewe baada ya kipindi cha kufunga, au mapema zaidi msimamizi anapoweka upya majaribio yake yaliyoshindwa.\n"
+"Kipengele hiki husaidia kulinda dhidi ya mashambulizi ya kubahatisha nenosiri kiotomatiki.\n"
+"Weka sifuri ili kuzima kipengele hiki."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Dakika hadi ijifungue yenyewe: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Karatasi ya mahudhurio ya Shule ya Jumapili"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Jumapili zisizo na darasa haziwekwi kwenye karatasi."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Uboreshaji wa hifadhidata"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Hifadhidata yako inasasishwa. Tafadhali acha ukurasa huu wazi hadi uboreshaji ukamilike."
+
+#: 
+msgid "Family Labels"
+msgstr "Lebo za familia"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Jumla"
+
+#: 
+msgid "Bill"
+msgstr "Noti"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Chagua amana au weka tarehe zote mbili za ripoti."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Chagua amana moja ili kukagua malipo yake au kuchapisha hati yake ya benki. Amana iliyochaguliwa inabatilisha kipindi cha tarehe."
+
+#: 
+msgid "Coin"
+msgstr "Sarafu"
+
+#: 
+msgid "Deposit Report"
+msgstr "Ripoti ya amana"
+
+#: 
+msgid "Download Report"
+msgstr "Pakua ripoti"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Weka tarehe sahihi za ripoti."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Vichujio vya ripoti si sahihi."
+
+#: 
+msgid "Invalid report options."
+msgstr "Chaguo za ripoti si sahihi."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Acha vichujio tupu ili kujumuisha malipo yote. Mipangilio hii inatumika kwenye ripoti, si hati ya benki."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Hakuna rekodi zilizorejeshwa. Rekebisha vichujio vyako kisha ujaribu tena."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Andaa kwa benki"
+
+#: 
+msgid "Preview Totals"
+msgstr "Hakiki jumla"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Chapisha hati ya benki"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Chapisha amana iliyochaguliwa kwa ukamilifu, pamoja na jumla ya fedha taslimu na hundi, karatasi za kuhesabu na mistari ya mashahidi. Vichujio vya ripoti hupuuzwa. Malipo ya kielektroniki hubaki kwenye muhtasari na hayajumuishwi kwenye jumla ya tiketi halisi ya benki."
+
+#: 
+msgid "Review Payments"
+msgstr "Kagua malipo"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Kagua malipo ya kipindi, au andaa amana moja kwa benki."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Kagua malipo, pakua PDF au CSV, au chapisha hati ya benki ya amana moja."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Chagua amana sahihi."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Chagua amana moja ili kuchapisha hati ya benki."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Tarehe ya mwisho ya ripoti lazima iwe sawa na au baada ya tarehe ya kuanza."
+
+#: 
+msgid "Total Cash"
+msgstr "Jumla ya fedha taslimu"
+
+#: 
+msgid "Total Coin"
+msgstr "Jumla ya sarafu"
+
+#: 
+msgid "Witness"
+msgstr "Shahidi"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "Zawadi %d hazina familia. Haziwezi kuwa kwenye taarifa."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "Amana %d zilizo wazi zina tarehe ya mwaka huu. Zifunge ili kila zawadi iwe ya mwisho kabla taarifa hazijatolewa."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "Malipo %d bado hayako kwenye amana yoyote."
+
+#: 
+msgid "Can be emailed"
+msgstr "Inaweza kutumwa kwa barua pepe"
+
+#: 
+msgid "Closing line"
+msgstr "Mstari wa kufunga"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Kila amana yenye tarehe ya mwaka huu imefungwa."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Kila zawadi ni ya familia."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Kila malipo ya mwaka huu yako kwenye amana."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Tengeneza taarifa za kodi"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Ripoti ya utoaji (Taarifa za kodi)"
+
+#: 
+msgid "Opening line"
+msgstr "Mstari wa kufungua"
+
+#: 
+msgid "Print and mail"
+msgstr "Chapisha na tuma kwa barua"
+
+#: 
+msgid "Qty"
+msgstr "Idadi"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Kagua mwaka, kisha chapisha au tuma taarifa za utoaji kwa barua pepe."
+
+#: 
+msgid "Signed by"
+msgstr "Imesainiwa na"
+
+#: 
+msgid "Thank-you line"
+msgstr "Mstari wa shukrani"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Thibitisha kuwa jina la kanisa, anwani, na maelezo ya mawasiliano yanaonekana kwenye taarifa za kodi."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Utoaji wa mwisho wa mwaka"
+
+#: 
+msgid "As of: %s"
+msgstr "Kufikia: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Angalau malipo moja chanya ya familia katika miaka %d ya fedha iliyochaguliwa, hadi tarehe ya ukaguzi: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Ubatizo, maombi ya daftari la wapiga kura, makazi, hadhi ya mshiriki wa meza, mahudhurio, hali njema, na vighairi vya mahali lazima vikaguliwe kando pale kanuni zenu zinapoyahitaji. Muda wa uanachama si ushahidi wa mahudhurio."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Chagua uainishaji uliopo."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Chagua angalau uainishaji mmoja wa kukagua."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Chagua uainishaji unaotumiwa na kanisa lako. Hakuna uainishaji unaodhaniwa kutoa haki ya kupiga kura."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Uongozi wa kanisa lazima uthibitishe ustahiki chini ya kanuni za kanisa. Orodha hii inaonyesha tu watu wanaolingana na vichujio vilivyochaguliwa."
+
+#: 
+msgid "Classifications to review"
+msgstr "Uainishaji wa kukagua"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Uainishaji: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Watu waliofariki, watu na uainishaji wasio hai, na familia na watu wasio hai au wanaosubiri ukaguzi hawajumuishwi."
+
+#: 
+msgid "Download Review List"
+msgstr "Pakua orodha ya ukaguzi"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Weka tarehe sahihi ya ukaguzi kati ya 1900 na 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Weka nambari kamili ndani ya mipaka inayoonyeshwa."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Miaka ya fedha ya kukagua (0–100; 0 inamaanisha hakuna sharti la utoaji)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Utoaji hurekodiwa kwa familia, si kwa mtu mmoja mmoja. Washa hii tu pale kanuni zenu zinaporuhusu malipo ya familia kutimiza kigezo hiki. Hii haithibitishi kuwa kila mtu alichangia. Kipindi kinajumuisha mwaka wa fedha uliochaguliwa na kuishia si baadaye ya tarehe ya ukaguzi."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Mwaka wa mwisho wa fedha wa kujumuisha"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Umri wa chini (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Umri wa chini: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Muda wa chini wa uanachama kwa miezi (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Muda wa chini wa uanachama: miezi %d"
+
+#: 
+msgid "No donation requirement."
+msgstr "Hakuna sharti la mchango."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Hakuna watu wanaolingana na vichujio hivi. Angalia tarehe za kuzaliwa au uanachama zilizokosekana na urekebishe vigezo vyako."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Sharti la hiari la utoaji wa familia"
+
+#: 
+msgid "People matching filters"
+msgstr "Watu wanaolingana na vichujio"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Watu walioachwa kwa sababu tarehe zinazohitajika hazipo"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Andaa orodha ya ukaguzi wa kanisa kwa kutumia uainishaji na vichujio vya hiari vya umri, uanachama, na utoaji wa familia."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Andaa orodha ya ukaguzi wa kanisa kwa kutumia kanuni zenu."
+
+#: 
+msgid "Review date"
+msgstr "Tarehe ya ukaguzi"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Tumia kanuni za kanisa lako kuchagua vichujio, kisha uongozi wa kanisa ulioidhinishwa ukague orodha. Kulingana na vichujio hivi hakuthibitishi ustahiki wa kupiga kura. Ripoti hii hairekodi ustahiki wala haifanyi uchaguzi."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Wanachama wapiga kura — Orodha ya ukaguzi"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Sifuri huzima sharti la hiari. Umri unahitaji tarehe kamili ya kuzaliwa; muda wa uanachama unahitaji tarehe ya uanachama. Watu wasio na tarehe zinazohitajika huachwa na kuhesabiwa kando. Watu waliofariki, watu na uainishaji wasio hai, na familia na watu wasio hai au wanaosubiri ukaguzi huwa hawajumuishwi; uainishaji na hadhi ya sasa hutumiwa, si hadhi ya kihistoria."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Kiasi kinachodaiwa kwa %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Haiwezi kuunda hifadhi ya muda ya faragha ya PDF katika saraka iliyochaguliwa."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Acha wazi ili kutumia saraka ya muda ya mfumo. Vinginevyo, weka saraka iliyopo inayoweza kuandikwa na kulindwa dhidi ya ufikiaji wa wavuti."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Saraka ya muda ya PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "Hifadhi ya muda ya PDF lazima iwe ya faragha na iweze kuandikwa."
+
+#: 
+msgid "Reporting"
+msgstr "Kuripoti"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "Saraka ya muda ya PDF haipo au haipatikani."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "Saraka ya muda ya PDF lazima iwe njia kamili ya saraka."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Kitambulisho cha kodi cha kanisa (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Mstari wa kufunga"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Inadhibiti telemetri ya hiari. Kushindwa kwa usakinishaji na uboreshaji wa hifadhidata hutuma uchunguzi mdogo kwa PostHog hata telemetri ikiwa imezimwa. Ripoti hizi za kushindwa zinajumuisha matoleo ya programu na mazingira na hitilafu ya hifadhidata iliyosafishwa, lakini si kitambulisho cha usakinishaji wala kauli ya SQL."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Chunguza usakinishaji na uboreshaji wa hifadhidata ulioshindwa"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Maelezo ya kushindwa kwa usakinishaji na uboreshaji"
+
+#: 
+msgid "Open in browser window"
+msgstr "Fungua kwenye dirisha la kivinjari"
+
+#: 
+msgid "Opening Line"
+msgstr "Mstari wa kufungua"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Telemetri ya hiari ya matumizi hutumwa tu inapowashwa. Kushindwa kwa usakinishaji na uboreshaji wa hifadhidata daima hutuma uchunguzi mdogo ili kusaidia jamii, hata ukichagua Hapana asante. Ripoti za kushindwa zinajumuisha matoleo ya programu na mazingira na hitilafu ya hifadhidata iliyosafishwa, bila kitambulisho cha usakinishaji wala kauli ya SQL."
+
+#: 
+msgid "PDF Handling"
+msgstr "Ushughulikiaji wa PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "Matokeo ya PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "Hali ya ushughulikiaji wa PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "Mstari wa maswali"
+
+#: 
+msgid "Save File dialog"
+msgstr "Kisanduku cha kuhifadhi faili"
+
+#: 
+msgid "Signer"
+msgstr "Msaini"
+
+#: 
+msgid "Statement Settings"
+msgstr "Mipangilio ya taarifa"
+
+#: 
+msgid "Statement Wording"
+msgstr "Maneno ya taarifa"
+
+#: 
+msgid "Tax Information"
+msgstr "Taarifa za kodi"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Telemetri hutumwa kwa PostHog nchini Marekani. Ripoti za kushindwa kwa usakinishaji na uboreshaji hutumwa hata telemetri ya hiari ikizimwa."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Tarehe hii imefutwa. Hakuna kingine kinachohitajika kutoka kwako."
+
+#: 
+msgid "always sent"
+msgstr "hutumwa daima"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Imeshindwa kuondoa kichwa cha barua"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Imeshindwa kuhifadhi kichwa cha barua"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Imeshindwa kupakia kichwa cha barua"
+
+#: 
+msgid "Greeting"
+msgstr "Salamu"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Salamu na saini ya barua"
+
+#: 
+msgid "Letterhead"
+msgstr "Kichwa cha barua"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF au WebP. Bango pana hufaa zaidi, kwa mfano 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Huchapishwa juu ya barua za PDF zinazotumia kichwa cha picha, kama taarifa za utoaji. Bila kimoja, barua huchapisha jina na anwani ya kanisa."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Ondoa kichwa cha barua? Barua zitachapisha jina na anwani ya kanisa."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Weka kichwa cha barua kinachochapishwa na barua za PDF"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Inatumia jina na anwani ya kanisa"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Inatumia njia ya kichwa cha barua iliyowekwa katika Mipangilio ya Mfumo"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Maneno, kitambulisho cha kodi na ushughulikiaji wa PDF kwa taarifa za utoaji"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s kama %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s sasa ni anwani yako ya barua pepe. Unaweza kuitumia kuingia kwenye Lango la Wanachama."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} zaidi"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "Ombi la kubadilisha anwani yako ya barua pepe limefanywa"
+
+#: 
+msgid "A family"
+msgstr "Familia"
+
+#: 
+msgid "A group"
+msgstr "Kundi"
+
+#: 
+msgid "A ministry"
+msgstr "Huduma"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "Anwani mpya hubadilika tu baada ya kutumia kiungo tunachotuma kwake."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "Ufunguo wa kuingia unaweza kuongezwa tu ndani ya dakika %d baada ya kuingia kwa anwani yako ya barua pepe. Toka, ingia tena kwa barua pepe yako, kisha rudi hapa."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "Ufunguo wa kuingia unakuingiza kwa Face ID, alama ya kidole, au PIN ya kifaa chako, bila msimbo wa barua pepe."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "Ufunguo wa kuingia umeongezwa kwenye kuingia kwako kwa Lango la Wanachama"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "Ufunguo wa kuingia umeongezwa kwenye kuingia kwako kwa Lango la Wanachama saa %1$s tarehe %2$s, kutoka %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "Ufunguo wa kuingia umeongezwa kwenye kuingia kwako kwa Lango la Wanachama saa %1$s tarehe %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "Mtu anayeipoteza basi hana barua pepe yake mwenyewe: barua zinazotumwa kwake peke yake, kama barua pepe ya kundi, hurukwa, na mtunzi wa barua pepe husema hivyo."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "Mtu ambaye rekodi yake inaficha umri wake haonyeshi kamwe mwaka wa kuzaliwa."
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
+msgstr "Ombi limefanywa katika Lango la Wanachama kubadilisha anwani yako ya barua pepe saa %s kutoka %s hadi %s. Mabadiliko hufanyika tu kiungo kilichotumwa kwa %s kinapotumiwa."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Safu haiko katika umbo linalotarajiwa."
+
+#: 
+msgid "A team"
+msgstr "Timu"
+
+#: 
+msgid "Add a passkey"
+msgstr "Ongeza ufunguo wa kuingia"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Ongeza ufunguo wa kuingia tu kwenye simu au kompyuta yako, kamwe si kwenye kifaa cha pamoja au cha umma."
+
+#: 
+msgid "Add an email"
+msgstr "Ongeza barua pepe"
+
+#: 
+msgid "Added %s"
+msgstr "Imeongezwa %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Mabadiliko ya msimamizi"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "Mtu mzima wa familia ya %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "Mtu mzima wa familia"
+
+#: 
+msgid "All events"
+msgstr "Matukio yote"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Ruhusu Kuingia kama Mtu"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Ruhusu mabadiliko wakati wa Kuingia kama Mtu"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Ruhusu mabadiliko wakati msimamizi anatumia Kuingia kama Mtu. Imezimwa, Kuingia kama Mtu ni ya kusoma tu."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Tayari inashikiliwa na mwanafamilia"
+
+#: 
+msgid "Also used by"
+msgstr "Pia inatumiwa na"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Msimamizi anaweza kumpa mtu yeyote ruhusa yoyote kwenye ukurasa wa mtu huyo. \"Mabadiliko ya msimamizi\" kisha huonekana hapa, pamoja na idadi ya watu waliopewa."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "Mtu mwingine tayari anatumia anwani hii"
+
+#: 
+msgid "Applies to"
+msgstr "Inatumika kwa"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Kubali au kataa maombi ya mbadala kwa timu ya wahudumu."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Omba barua pepe mpya"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Mamlaka yanatolewa kwa mtu, si kwa kuingia, hivyo yanaweza kutolewa kabla hawana akaunti. Mtu anayeingia tu kwenye Lango la Wanachama anaendelea kuona ratiba yake tu hadi msimamizi ampe akaunti ya wafanyakazi."
+
+#: 
+msgid "Awaiting review"
+msgstr "Inasubiri ukaguzi"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Rudi kwenye kuingia"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Vinjari saraka kamili"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Anaweza kuingia kwenye Lango la Wanachama"
+
+#: 
+msgid "Can sign in?"
+msgstr "Anaweza kuingia?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Huwezi kuzima kuingia kwa msimamizi pekee anayeweza kuingia."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Hawezi kuingia"
+
+#: 
+msgid "Change family details"
+msgstr "Badilisha maelezo ya familia"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Badilisha anwani na maelezo ya mawasiliano ya familia, na ongeza mwanafamilia kwa ukaguzi."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Badilisha jina lake, maelezo ya mawasiliano na picha."
+
+#: 
+msgid "Changed"
+msgstr "Imebadilishwa"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Imebadilishwa baada ya mtu kuingia"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Imebadilishwa na uingizaji baada ya mtu kuingia"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Imebadilishwa na wafanyakazi baada ya mtu kuingia"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Imebadilishwa kupitia API baada ya mtu kuingia"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Mabadiliko yamezimwa wakati wa Kuingia kama Mtu."
+
+#: 
+msgid "Changes needed"
+msgstr "Mabadiliko yanahitajika"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Mabadiliko huhifadhiwa unapoyafanya."
+
+#: 
+msgid "Check your email"
+msgstr "Angalia barua pepe yako"
+
+#: 
+msgid "Choose a permission"
+msgstr "Chagua ruhusa"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Chagua ruhusa, inatumika kwa nini na siku yake ya mwisho, na sema kwa nini."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Chagua picha au piga picha binafsi"
+
+#: 
+msgid "Choose a theme"
+msgstr "Chagua mandhari"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Chagua angalau safu moja."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Chagua safu zisizozidi %d kwa wakati mmoja."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Chagua jinsi tarehe zinavyoonyeshwa kutoka kwenye orodha."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Chagua siku ya mwisho ya ruhusa hii."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Chagua ruhusa hii inatumika kwa nini."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Chagua ndiyo au hapana."
+
+#: 
+msgid "Church Office"
+msgstr "Ofisi ya kanisa"
+
+#: 
+msgid "Church country"
+msgstr "Nchi ya kanisa"
+
+#: 
+msgid "Church default: %s"
+msgstr "Chaguo-msingi la kanisa: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Kuingia kwa kiongozi wa kanisa"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Uainishaji ambao wanachama wake wanaweza kuingia kwenye Lango la Wanachama, kama orodha ya vitambulisho vya uainishaji vilivyotenganishwa kwa koma."
+
+#: 
+msgid "Clear selection"
+msgstr "Futa uteuzi"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Misimbo, vipindi na vifaa"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Thibitisha anwani ya barua pepe"
+
+#: 
+msgid "Confirm email address"
+msgstr "Thibitisha anwani ya barua pepe"
+
+#: 
+msgid "Confirm family details"
+msgstr "Thibitisha maelezo ya familia"
+
+#: 
+msgid "Confirm selected"
+msgstr "Thibitisha vilivyochaguliwa"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Thibitisha barua pepe hii tu baada ya kuangalia, ana kwa ana au kwa simu, kuwa ni anwani ya mtu huyu mwenyewe. Ikithibitishwa, inaweza kutumika kuingia kwenye Lango la Wanachama."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Thibitisha anwani yako ya barua pepe"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Thibitisha anwani yako mpya ya barua pepe"
+
+#: 
+msgid "Confirmed"
+msgstr "Imethibitishwa"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Tarehe lazima ziandikwe kama YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Amua maombi ya mbadala"
+
+#: 
+msgid "Device"
+msgstr "Kifaa"
+
+#: 
+msgid "Device remembered"
+msgstr "Kifaa kimekumbukwa"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Vifaa na funguo za kuingia"
+
+#: 
+msgid "Directory classifications"
+msgstr "Uainishaji wa saraka"
+
+#: 
+msgid "Directory section"
+msgstr "Sehemu ya saraka"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Zima kuingia"
+
+#: 
+msgid "Do not show"
+msgstr "Usionyeshe"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Kila mmoja wao pia anahitaji barua pepe yake ambayo hakuna mtu mwingine anayotumia."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Kila barua pepe ya kuingia hufanya kazi mara moja, kwa muda mfupi, na barua pepe mpya huibadilisha."
+
+#: 
+msgid "Edit my details"
+msgstr "Hariri maelezo yangu"
+
+#: 
+msgid "Email address changed"
+msgstr "Anwani ya barua pepe imebadilishwa"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Anwani ya barua pepe iliyoandikwa: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "Anwani za barua pepe za kuthibitisha: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "Barua pepe imebadilishwa"
+
+#: 
+msgid "Email code"
+msgstr "Msimbo wa barua pepe"
+
+#: 
+msgid "Email confirmed"
+msgstr "Barua pepe imethibitishwa"
+
+#: 
+msgid "Email link"
+msgstr "Kiungo cha barua pepe"
+
+#: 
+msgid "Email me a code"
+msgstr "Nitumie msimbo kwa barua pepe"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Nitumie kiungo cha uthibitisho kwa barua pepe"
+
+#: 
+msgid "Email needs attention"
+msgstr "Barua pepe inahitaji uangalifu"
+
+#: 
+msgid "Email problem"
+msgstr "Tatizo la barua pepe"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Msimbo na kiungo vya kuingia vilivyotumwa kwa barua pepe vimefutwa"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Kiungo cha uthibitisho kilichotumwa kwa barua pepe"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Barua pepe zilizothibitishwa: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Washa kuingia"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Maliza kila kipindi cha Lango la Wanachama cha mtu huyu na usahau vifaa vyao vilivyokumbukwa? Funguo zao za kuingia zinabaki, hivyo wanaweza kuingia tena."
+
+#: 
+msgid "Ended %s"
+msgstr "Imeisha %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Imeisha kwa sababu ya mabadiliko ya kuingia kwao"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Imeisha kuingia kwa wanachama kulipozimwa"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Weka nambari kamili kutoka %1$d hadi %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Weka anwani yako ya barua pepe."
+
+#: 
+msgid "Every kind"
+msgstr "Kila aina"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Kila kuingia kwa mwanachama, kukataliwa na mabadiliko ya kuingia, mapya kwanza. Haishiki kamwe msimbo, kiungo wala ufunguo wa kuingia."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Kila mtu aliyeorodheshwa, A hadi Z, na kisanduku cha kutafuta."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Kila mtu anayeruhusiwa na kanuni za kuingia anaweza kisha kuingia kwenye Lango la Wanachama kwa barua pepe yake."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Kila aliyeingia kwenye Lango la Wanachama katika siku 30 zilizopita, mapya kwanza."
+
+#: 
+msgid "Everywhere"
+msgstr "Kila mahali"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Familia ambazo mwanachama amethibitisha katika siku 30 zilizopita, kutoka Lango la Wanachama au kiungo cha uthibitisho kilichotumwa kwa barua pepe."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Familia zilizothibitishwa, siku 30 zilizopita"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Maelezo ya familia yamethibitishwa"
+
+#: 
+msgid "Family email"
+msgstr "Barua pepe ya familia"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Barua pepe za familia hazijahamishwa"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Majukumu ya familia ambayo wanachama wake wanaweza kuingia kwenye Lango la Wanachama, kama orodha ya vitambulisho vya majukumu vilivyotenganishwa kwa koma."
+
+#: 
+msgid "Find someone"
+msgstr "Tafuta mtu"
+
+#: 
+msgid "Fix by hand"
+msgstr "Rekebisha kwa mkono"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Rekebisha barua pepe zinazoshirikiwa"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Kutoka kuingia kwa wafanyakazi"
+
+#: 
+msgid "Give a permission"
+msgstr "Toa ruhusa"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Toa ruhusa ya lango"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Mpe kila mtu barua pepe yake"
+
+#: 
+msgid "Give permission"
+msgstr "Toa ruhusa"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Imetolewa na %1$s hadi %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Imetolewa na %s"
+
+#: 
+msgid "Given to"
+msgstr "Imetolewa kwa"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Imetolewa kwa kila mtu"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Imetolewa, lakini haifanyi kazi"
+
+#: 
+msgid "Go to sign in"
+msgstr "Nenda kuingia"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Nenda kwenye Lango la Wanachama"
+
+#: 
+msgid "Has signed in"
+msgstr "Ameingia"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Ameingia: vipindi na vifaa vyake vinaisha"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Hii hapa msimbo wako wa kuingia kwenye Lango la Wanachama. Uandike kwenye ukurasa wa kuingia, katika kivinjari ulichoomba. Au bonyeza kitufe ili kuingia kwenye kifaa hiki."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Ficha ruhusa"
+
+#: 
+msgid "How"
+msgstr "Jinsi"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Barua pepe ngapi za kuingia kwenye Lango la Wanachama anwani moja ya IP inaweza kuomba kwa saa. Weka 0 bila kikomo, kwa mfano kila mtu anapofikia ChurchCRM kupitia anwani moja."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Siku ngapi kifaa kinabaki kimeingia kwenye Lango la Wanachama baada ya mwanachama kuchagua kubaki ameingia. Weka 0 kuondoa chaguo."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Dakika ngapi za kutotumika zinamaliza kipindi cha Lango la Wanachama."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Dakika ngapi msimbo na kiungo vya kuingia kwenye Lango la Wanachama vinabaki halali."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Muda wa kutotumika (dakika)"
+
+#: 
+msgid "Idle too long"
+msgstr "Kutotumika kwa muda mrefu sana"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Ikiwa %1$s ni anwani yako mpya, tumia kitufe hapa chini kuithibitisha. Hadi ithibitishwe, haiwezi kutumika kuingia. Kiungo hufanya kazi mara moja, hadi %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Ikiwa anwani hii inaweza kutumika kuingia, tumekutumia msimbo kwa barua pepe. Hakuna kitu baada ya dakika chache? Uliza ofisi ya kanisa."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Ikiwa hukuuongeza, uondoe kwenye ukurasa wa Kuingia na vifaa na uwasiliane na ofisi ya kanisa."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Ikiwa hukuomba mabadiliko haya, tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Ikiwa hukuomba hili, tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Huenda limeisha muda au tayari limetumika. Ikiwa unahitaji msaada, tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Programu-jalizi yake haijasakinishwa"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Ruka hadi herufi"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Niweke nimeingia (siku)"
+
+#: 
+msgid "Keeps it"
+msgstr "Anaibaki nayo"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Aina ya barua pepe isiyothibitishwa"
+
+#: 
+msgid "Last day"
+msgstr "Siku ya mwisho"
+
+#: 
+msgid "Last used"
+msgstr "Iliyotumika mwisho"
+
+#: 
+msgid "Last used %s"
+msgstr "Iliyotumika mwisho %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Kiongozi wa %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Waruhusu wasimamizi kufungua Lango la Wanachama la mtu kama mtu huyo, kutoka menyu ya Vitendo vya mtu, kuingia kwa wanachama kukiwa kimewashwa."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Waruhusu wanachama kuongeza funguo za kuingia na kuingia kwenye Lango la Wanachama nazo."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Waruhusu wanachama kuingia kwenye Lango la Wanachama kwa anwani yao ya barua pepe. Inaweza kuwashwa tu utumaji wa barua pepe unapofanya kazi."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Waruhusu wanachama kuingia kwa barua pepe yao"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Muda wa kiungo na msimbo (dakika)"
+
+#: 
+msgid "Login as %s"
+msgstr "Ingia kama %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Kuingia kama Mtu"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Kuingia kama Mtu hakukuweza kuanza."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Kuingia kama Mtu kumeisha: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Historia ya Kuingia kama Mtu"
+
+#: 
+msgid "Login as Person started"
+msgstr "Kuingia kama Mtu kumeanza"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Kuingia kama Mtu kumesimamishwa"
+
+#: 
+msgid "Look up anyone"
+msgstr "Tafuta mtu yeyote"
+
+#: 
+msgid "Loses it"
+msgstr "Anaipoteza"
+
+#: 
+msgid "Manage a team"
+msgstr "Simamia timu"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Simamia kuingia kwangu na vifaa"
+
+#: 
+msgid "Matches: %s"
+msgstr "Vinavyolingana: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Anaweza kuingia"
+
+#: 
+msgid "May sign in now"
+msgstr "Anaweza kuingia sasa"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Msimbo wa kuingia kwenye Lango la Wanachama"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Taarifa ya kuingia kwenye Lango la Wanachama"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Kuingia na shughuli za Lango la Wanachama, kwa wanachama na wafanyakazi wanaofungua lango kutoka kuingia kwao kwa wafanyakazi."
+
+#: 
+msgid "Member sign-in"
+msgstr "Kuingia kwa mwanachama"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Kuingia kwa mwanachama humtumia kila mtu msimbo kwa barua pepe, hivyo barua pepe (SMTP) lazima ifanye kazi kabla ya kuiwasha."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Kuingia kwa wanachama kumezimwa"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Kuingia kwa wanachama kumezimwa kwa kanisa."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Kuingia kwa wanachama kumezimwa."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Kuingia kwa wanachama bado hakupatikani. Tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Kuingia kwa wanachama kamwe hakuruhusu watu waliofariki, wasio hai, katika familia isiyo hai, wanaosubiri ukaguzi, au walio na Zima kuingia. Chaguo hizi huamua nani mwingine anaweza."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Kuingia kwa wanachama humtumia kila mwanachama msimbo kwa barua pepe, hivyo linaweza kuwashwa tu ChurchCRM inapoweza kutuma barua pepe. Washa barua pepe na usanidi seva ya barua kwanza."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Wanachama huona ukurasa wa Kalenda angalau kalenda moja ikiwa imewashwa."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Wanachama huandika angalau herufi %d za jina na kuona hadi vinavyolingana %d. Orodha kamili haionyeshwi kamwe."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Wanachama walioingia sasa wanatolewa, na hakuna anayeweza kuingia kwa barua pepe yao hadi kuingia kwa wanachama kuwashwa tena."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Wanachama wenye uainishaji huu hupata Saraka katika menyu ya Lango la Wanachama."
+
+#: 
+msgid "Minimum age"
+msgstr "Umri wa chini"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Majaribio zaidi kwa anwani hii katika saa ijayo hayatuma taarifa nyingine."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Imehamishwa kutoka barua pepe ya familia"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Imehamishwa kwa mkuu wa kaya"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Imehamishwa kwa mwenzi"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Mgeni katika kanisa letu? Tuambie kuhusu familia yako na tutawasiliana kukukaribisha."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Bado hakuna vipindi vya Kuingia kama Mtu."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Hakuna tarehe ya kuzaliwa, na si mkuu wa kaya wala mwenzi"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Hakuna kalenda iliyowashwa, hivyo wanachama hawaoni ukurasa wa Kalenda."
+
+#: 
 msgid "No changes"
 msgstr "Hakuna Mabadiliko"
+
+#: 
+msgid "No changes made."
+msgstr "Hakuna mabadiliko yaliyofanywa."
+
+#: 
+msgid "No family role"
+msgstr "Hakuna jukumu la familia"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Hakuna mkuu wa kaya wala mwenzi anayeweza kupokea barua pepe ya familia."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Hakuna mkuu wa kaya wala mwenzi anayeishiriki"
+
+#: 
+msgid "No match"
+msgstr "Hakuna kinacholingana"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Bado hakuna anayelingana na kanuni ya kuingia. Tia tiki majukumu zaidi ya familia au uainishaji, au punguza umri wa chini."
+
+#: 
+msgid "No passkey was added."
+msgstr "Hakuna ufunguo wa kuingia ulioongezwa."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Hakuna ufunguo wa kuingia uliotumika. Jaribu tena, au ingia kwa anwani yako ya barua pepe."
+
+#: 
+msgid "No person has this email"
+msgstr "Hakuna mtu mwenye barua pepe hii"
+
+#: 
+msgid "No personal email"
+msgstr "Hakuna barua pepe binafsi"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Hakuna barua pepe zinazoshirikiwa zinazomzuia mtu yeyote kuingia."
+
+#: 
+msgid "No such person"
+msgstr "Hakuna mtu kama huyo"
+
+#: 
+msgid "No, thanks"
+msgstr "Hapana, asante"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Hakuna anayeweza kuingia kwa barua pepe binafsi inayoshirikiwa na watu wawili wanaoweza kuingia. Kwa anwani inayoshirikiwa ndani ya familia moja, mkuu wa kaya anaibaki nayo, vinginevyo mwenzi (mkubwa kwanza). Kila mwingine anayeishiriki anaipoteza. Ondoa tiki kwa zozote unazotaka kurekebisha kwa njia nyingine."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Bado hakuna anayeweza kuingia: tia tiki angalau uainishaji mmoja chini ya Nani anaweza kuingia."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Bado hakuna anayeweza kuingia: tia tiki angalau jukumu moja la familia na angalau uainishaji mmoja chini ya Nani anaweza kuingia."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Bado hakuna anayeweza kuingia: tia tiki angalau jukumu moja la familia chini ya Nani anaweza kuingia."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Hakuna mtu katika saraka anayelingana na jina hilo."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Bado hakuna aliyeorodheshwa katika saraka."
+
+#: 
+msgid "Not ended"
+msgstr "Haijaisha"
+
+#: 
+msgid "Not moved"
+msgstr "Haijahamishwa"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Huna uhakika barua pepe ipi tunayo? Wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "Not yet"
+msgstr "Bado"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Imeandikwa kwenye mfululizo wa familia"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Kati yao, watu walioingia: {{total}}. Wanatolewa kila mahali, na anwani hupata taarifa."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Imezimwa kwa kila mtu: \"%s\" imezimwa"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Imezimwa kwa kila mtu: Usimamizi wa Wahudumu haujawekwa kuwa V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Imezimwa kwa kila mtu: kipengele chake kimezimwa"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Imezimwa kwa kila mtu: programu-jalizi yake imezimwa"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Imezimwa kwa kila mtu: hakuna kalenda inayoshirikiwa na wanachama"
+
+#: 
+msgid "Office list"
+msgstr "Orodha ya ofisi"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Ikithibitishwa, inaweza kutumika kuingia kwenye Lango la Wanachama."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Anwani unazoweza kuthibitisha tu ndizo zinazoweza kuchaguliwa."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Wasimamizi tu ndio wanaoona sababu."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Msimamizi tu ndiye anayeweza kubadilisha barua pepe ya mtu mwenye akaunti ya wafanyakazi au ruhusa za lango."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Msimamizi tu ndiye anayeweza kuthibitisha barua pepe iliyochukua nafasi ya ile mtu aliyoingia nayo."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Msimamizi tu ndiye anayeweza kuthibitisha barua pepe ya mtu mwenye akaunti ya wafanyakazi au ruhusa za lango."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Msimamizi tu ndiye anayeweza kurekebisha anwani hii: mtu anayeishiriki ana akaunti ya wafanyakazi au ruhusa za lango."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Mtu mzima wa familia yako tu ndiye anayeweza kuthibitisha maelezo haya. Tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Thibitisha tu anwani unazojua ni za mtu huyo. Yeyote anayesoma anwani anaweza kuingia kama mtu wake."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Watu walio hai wenye barua pepe yao tu ndio wanaoweza kuwa kwenye orodha ya ofisi."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Watu wenye barua pepe yao tu ndio wanaweza kuongezwa."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Telemetri ya hiari inaweza kujumuisha njia za kurasa, lugha inayotumika, toleo la CRM, toleo la PHP, familia ya OS, nchi kutoka mipangilio ya taarifa za kanisa lako, na kitambulisho cha nasibu cha usakinishaji. Ripoti za kushindwa hazijumuishi kitambulisho cha usakinishaji. Data hutumwa kwa PostHog nchini Marekani."
+
+#: 
+msgid "Passkey"
+msgstr "Ufunguo wa kuingia"
+
+#: 
+msgid "Passkey added"
+msgstr "Ufunguo wa kuingia umeongezwa"
+
+#: 
+msgid "Passkey removed"
+msgstr "Ufunguo wa kuingia umeondolewa"
+
+#: 
+msgid "Passkeys"
+msgstr "Funguo za kuingia"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Funguo za kuingia zimezimwa."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Funguo za kuingia haziwezi kutumika hapa."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Funguo za kuingia bado haziwezi kutumika kwenye tovuti hii. Tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Funguo za kuingia zinahitaji jina la mwenyeji, si anwani ya IP, katika anwani ya tovuti."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Funguo za kuingia zinahitaji muunganisho salama (HTTPS) kwa tovuti hii."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Funguo za kuingia zinahitaji anwani ya tovuti kuwekwa katika Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Funguo za kuingia zinahitaji tovuti itolewe kupitia HTTPS. Wanachama hawapewi funguo za kuingia hadi iwe hivyo."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Funguo za kuingia hufanya kazi tu katika %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Funguo za kuingia: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Watu wanaoruhusiwa na mipangilio iliyohifadhiwa: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Watu wa kutumia barua pepe mtu anaposhindwa kuingia kwenye Lango la Wanachama"
+
+#: 
+msgid "People who hold it"
+msgstr "Watu wanaoishikilia"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Watu wanaopoteza anwani: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Watu waliopoteza anwani: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Watu wanaoweza kuingia: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Watu waliokuwa wakiingia kwenye Lango la Wanachama: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Watu wenye uainishaji huu huonekana katika saraka. Nambari ni wangapi watu hai wana kila uainishaji."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Watu wenye barua pepe hii: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Mtu %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Chagua uainishaji kutoka kwenye orodha."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Chagua majukumu ya familia kutoka kwenye orodha."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Chagua watu kwa orodha ya ofisi."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Tafadhali chagua lugha kutoka kwenye orodha."
+
+#: 
+msgid "Portal permission given"
+msgstr "Ruhusa ya lango imetolewa"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Ruhusa ya lango imeondolewa"
+
+#: 
+msgid "Portal permissions"
+msgstr "Ruhusa za lango"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Kuingia kwenye lango"
+
+#: 
+msgid "Problem"
+msgstr "Tatizo"
+
+#: 
+msgid "Reason"
+msgstr "Sababu"
+
+#: 
+msgid "Reason: %s"
+msgstr "Sababu: %s"
+
+#: 
+msgid "Refused"
+msgstr "Imekataliwa"
+
+#: 
+msgid "Register your family"
+msgstr "Sajili familia yako"
+
+#: 
+msgid "Remembered device"
+msgstr "Kifaa kilichokumbukwa"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Kifaa kilichokumbukwa kimeondolewa"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Vifaa vilivyokumbukwa: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Ondoa barua pepe"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Ondoa ufunguo huu wa kuingia"
+
+#: 
+msgid "Remove this permission"
+msgstr "Ondoa ruhusa hii"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Imeondolewa kutoka: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Imebadilishwa baada ya kuingia"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Imebadilishwa na kuingia kingine"
+
+#: 
+msgid "Result"
+msgstr "Matokeo"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Endesha timu ya wahudumu: nafasi, wahudumu, ratiba, wafanyakazi na hesabu za watu."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Sema kwa nini kuingia kunazimwa."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Sema kwa nini ruhusa hii inatolewa."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Tafuta mtu yeyote aliye kwenye kumbukumbu. Kila safu inasema kama wanaweza kuingia kwenye Lango la Wanachama na, kama sivyo, kwa nini."
+
+#: 
+msgid "Search method"
+msgstr "Njia ya kutafuta"
+
+#: 
+msgid "Search only"
+msgstr "Tafuta tu"
+
+#: 
+msgid "See family contact details"
+msgstr "Ona maelezo ya mawasiliano ya familia"
+
+#: 
+msgid "See my family"
+msgstr "Ona familia yangu"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Ona Lango la Wanachama kama mtu huyu anavyoliona? Kurasa za wafanyakazi zinabaki zimefungwa hadi ubonyeze Simama, na kipindi kinarekodiwa kwenye ukurasa huu na kwenye ukurasa wako wa mtumiaji."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Ona kalenda kanisa linazoshiriki na wanachama, na ujiandikishe."
+
+#: 
+msgid "See the church calendar"
+msgstr "Ona kalenda ya kanisa"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Ona vifaa na funguo za kuingia zinazowaingiza, na toka au uondoe yoyote."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Ona anwani za barua pepe na nambari za simu za watu katika familia yao."
+
+#: 
+msgid "See the member directory"
+msgstr "Ona saraka ya wanachama"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Ona majina na picha za watu katika familia yao."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Ona watu kanisa linawaorodhesha katika saraka yake, pamoja na maelezo kanisa linachagua kushiriki."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Ona ratiba yao ya kujitolea, jiandikishe kwa nafasi wazi na omba mbadala."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Tuma browse kama true au false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Tuma uainishaji kama orodha ya vitambulisho."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Tuma mipangilio ya saraka kama kitu cha JSON."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Tuma sehemu za kuonyesha kama kitu cha thamani za true na false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Tuma mipangilio kama kitu cha JSON."
+
+#: 
+msgid "Session ended"
+msgstr "Kipindi kimeisha"
 
 #: 
 msgid "Set up email"
 msgstr "Sanidi Barua Pepe"
 
 #: 
+msgid "Set up email first."
+msgstr "Sanidi barua pepe kwanza."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Anwani zinazoshirikiwa zilizorekebishwa: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Anwani zinazoshirikiwa za kurekebisha: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Inashirikiwa na"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Barua pepe zinazoshirikiwa zinazowazuia watu kuingia"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Onyesha au ficha mwanachama huyu"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Onyesha ukurasa wa Saraka katika Lango la Wanachama kwa uainishaji uliochaguliwa hapa chini."
+
+#: 
+msgid "Show the member directory"
+msgstr "Onyesha saraka ya wanachama"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Onyesha saraka ya wanachama katika Lango la Wanachama."
+
+#: 
+msgid "Show with year"
+msgstr "Onyesha na mwaka"
+
+#: 
+msgid "Show without year"
+msgstr "Onyesha bila mwaka"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Inaonyesha vinavyolingana %d vya kwanza. Andika zaidi ya jina ili kumpata mtu unayemtafuta."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Ingia kama %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Wakati ujao ingia kwenye kifaa hiki kwa Face ID, alama ya kidole, au PIN ya kifaa chako."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Ingia ili kuona familia yako, kalenda ya kanisa na njia za kuhudumu. Huhitaji nenosiri wala akaunti."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Ingia kwa ufunguo wa kuingia"
+
+#: 
+msgid "Sign out every device"
+msgstr "Toka kwenye kila kifaa"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Toka kwenye kila kifaa sasa?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Toka kila mahali"
+
+#: 
+msgid "Sign out this device"
+msgstr "Toka kwenye kifaa hiki"
+
+#: 
+msgid "Sign-in"
+msgstr "Kuingia"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Kuingia na vifaa"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Kuingia hakukuweza kuzimwa."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Kuingia hakukuweza kuwashwa."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Kuingia kumezimwa"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Barua pepe ya kuingia imeombwa"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Barua pepe za kuingia kwa anwani ya IP kwa saa"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Kuingia kumewashwa"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Kuingia tayari kumezimwa kwa mtu huyu."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Kuingia kumezimwa"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Kuingia kumezimwa kwa mtu huyu."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Kuingia kumewashwa kwa mtu huyu."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Kuingia hakujazimwa kwa mtu huyu."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Kuingia kumekataliwa"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Kuingia, vipindi na ufunguo wa API vimezuiwa hadi hili litatuliwe kwenye rekodi ya mtu aliyeunganishwa."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Waliingia, siku 30 zilizopita"
+
+#: 
+msgid "Signed out"
+msgstr "Ametoka"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Ametoka kwa sababu ya mabadiliko ya kuingia kwao"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Ametoka kila mahali"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Mtu ameomba barua pepe ya kuingia kwenye Lango la Wanachama, lakini hakuna iliyotumwa."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Mtu hakuweza kuingia kwenye Lango la Wanachama"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Kurasa za wafanyakazi zinabaki zimefungwa wakati wa Kuingia kama Mtu. Bonyeza Simama kwenye bango ili kurudi."
+
+#: 
+msgid "Stop"
+msgstr "Simama"
+
+#: 
+msgid "Stopped"
+msgstr "Imesimamishwa"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Iambie ofisi ya kanisa kama maelezo ya familia bado ni sahihi."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Msimbo huo haukufanya kazi. Angalia barua pepe mpya zaidi kutoka kwetu, au omba mpya."
+
+#: 
+msgid "That could not be removed."
+msgstr "Hilo halikuweza kuondolewa."
+
+#: 
+msgid "That device is signed out."
+msgstr "Kifaa hicho kimetoka."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Hiyo si anwani sahihi ya barua pepe."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Ukurasa huo ulikuwa wazi kwa muda mrefu sana. Tafadhali jaribu tena."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Ufunguo huo wa kuingia umeondolewa. Hauwezi tena kukuingiza."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Hilo lilichukua muda mrefu sana. Tafadhali jaribu tena."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Uboreshaji wa 7.8.3 ulimpa kila barua pepe ya familia kwa mtu. Hizi hazikuweza, hivyo uliacha dokezo kwenye mfululizo wa familia badala yake."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Lango la Wanachama na barua pepe linazokutumia hutumia lugha hii."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Mabadiliko hayakuweza kuhifadhiwa."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Msimbo na kitufe hufanya kazi mara moja, hadi %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Msimbo au kiungo kilikwenda kwa anwani ambayo si tena barua pepe yao"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Barua pepe ya uthibitisho haikuweza kutumwa. Tafadhali jaribu tena baadaye."
+
+#: 
+msgid "The device is signed out."
+msgstr "Kifaa kimetoka."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "Anwani ya barua pepe %2$s iliondolewa kwenye rekodi yako saa %1$s. Umetolewa kwenye Lango la Wanachama kwenye kila kifaa."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "Anwani ya barua pepe kwenye rekodi yako saa %1$s ilibadilishwa kutoka %2$s hadi %3$s. Umetolewa kwenye Lango la Wanachama kwenye kila kifaa."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "Barua pepe haikuweza kuthibitishwa."
+
+#: 
+msgid "The email could not be sent."
+msgstr "Barua pepe haikuweza kutumwa."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "Barua pepe imethibitishwa. Sasa inaweza kutumika kuingia."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Tarehe ya mwisho iko kabla ya tarehe ya kuanza."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Familia haina mkuu wa kaya wala mwenzi aliye hai na hai"
+
+#: 
+msgid "The family is inactive"
+msgstr "Familia haifanyi kazi"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Mkuu wa kaya na mwenzi wote wawili wana barua pepe yao"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Siku ya mwisho haiwezi kuwa ya zamani."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Mtu aliyeunganishwa hawezi kuingia, hivyo akaunti hii haiwezi kuingia"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Orodha haikuweza kupakiwa."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Ufunguo wa kuingia haukuweza kuongezwa. Tafadhali jaribu tena."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Ufunguo wa kuingia haukuweza kuthibitishwa"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Ufunguo wa kuingia haupo kwenye kumbukumbu, au uliondolewa"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Ufunguo wa kuingia uliondolewa."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Watu wanaoishiriki wako katika familia tofauti, au hawako katika familia"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Watu wanaoshiriki anwani hii wamebadilika. Fungua Rekebisha barua pepe zinazoshirikiwa tena."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Ruhusa haikuweza kutolewa."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Ruhusa inaisha baada ya siku hii. Inaweza kutolewa tena."
+
+#: 
+msgid "The permission was given."
+msgstr "Ruhusa imetolewa."
+
+#: 
+msgid "The permission was removed."
+msgstr "Ruhusa imeondolewa."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Ruhusa hazikuweza kupakiwa."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Mtu anapoteza ruhusa hii katika Lango la Wanachama mara moja."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Sababu inaweza kuwa na herufi zisizozidi %d."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Kanuni za kuingia zinawaruhusu, na kila mmoja ana barua pepe yake ambayo hakuna mwingine anayeweza kuingia anayoitumia."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Kanuni za kuingia zinawaruhusu, lakini barua pepe yao haiwaruhusu: hawana, wanaishiriki na mtu mwingine anayeweza kuingia, au bado haijathibitishwa."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Mipangilio ya kuingia haikuweza kuhifadhiwa."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Barua pepe isiyothibitishwa imebadilika. Pakia upya ukurasa na ujaribu tena."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Uainishaji wao hauwezi kuingia"
+
+#: 
+msgid "Their email changed"
+msgstr "Barua pepe yao imebadilika"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "Barua pepe yao bado haijathibitishwa"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "Barua pepe yao inashirikiwa na mtu mwingine"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Jukumu lao la familia haliwezi kuingia"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Kuingia kwao kwa zamani kuliondolewa na uboreshaji. Washa kuingia kwa wanachama ili waweze kuingia kwa barua pepe yao."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Kifaa chao kilichokumbukwa kilikuwa kimeisha muda"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Kifaa chao kilichokumbukwa kilitolewa"
+
+#: 
+msgid "Theme development"
+msgstr "Uundaji wa mandhari"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Hakuna uainishaji wenye kitambulisho %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Hakuna kichagua kwa aina hii ya wigo."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Hakuna tukio kama hilo la ukaguzi."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Hakuna tatizo kama hilo la barua pepe."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Hakuna aina kama hiyo ya barua pepe isiyothibitishwa."
+
+#: 
+msgid "There is no such list."
+msgstr "Hakuna orodha kama hiyo."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Hakuna ruhusa kama hiyo ya lango."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Hizi ni simu na kompyuta ulizochagua kubaki umeingia. Toka kwenye zozote usizotumia tena au usizotambua."
+
+#: 
+msgid "They have a staff account"
+msgstr "Wana akaunti ya wafanyakazi"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Wanaweza kuingia lakini hawajawahi kuingia."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Kitendo hiki kinahitaji kipindi cha kivinjari kilichoingia."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Anwani hii haikuweza kubadilishwa. Fungua Rekebisha barua pepe zinazoshirikiwa tena ili kuona ilipo."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Anwani hii haishirikiwi tena na watu wanaoweza kuingia."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Kivinjari hiki hakiwezi kutengeneza funguo za kuingia."
+
+#: 
+msgid "This device"
+msgstr "Kifaa hiki"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Kifaa hiki tayari kina ufunguo wa kuingia kwa ajili yako."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Kifaa hiki hakitaendelea kumweka mtu ameingia, na kipindi kilicho wazi juu yake kinaisha. Wanaweza kuingia tena kwa barua pepe."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Hiki ni kifaa changu. Niweke nimeingia."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Hapa ndipo unaamua kuhusu wageni. Nambari ni wangapi watu hai wana kila uainishaji."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Kiungo hiki hakiwezi kutumika"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Kiungo hiki kimeisha muda au tayari kimetumika"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Sehemu hii ya Lango la Wanachama haipatikani kwako."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Ufunguo huu wa kuingia tayari uko kwenye kumbukumbu."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Ufunguo huu wa kuingia hautamwingiza tena mtu. Wanaweza kuingia kwa barua pepe na kuongeza mpya."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Ruhusa hii haiwezi kutolewa kwenye ukurasa wa mtu."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Mtu huyu tayari ana kila ruhusa inayoweza kutolewa."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Mtu huyu tayari ana ruhusa hii."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Mtu huyu hawezi tena kuingia popote, kwenye Lango la Wanachama au kama mfanyakazi. Kila kipindi kinaisha, na vifaa vilivyokumbukwa na funguo za kuingia vinaondolewa."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Mtu huyu hakuweza kutolewa."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Mtu huyu ana akaunti ya wafanyakazi. Kuingia kama Mtu kamwe hakifungui akaunti ya wafanyakazi."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Mtu huyu hana ufunguo kama huo wa kuingia."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Mtu huyu hana ruhusa kama hiyo."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Mtu huyu hana kifaa kama hicho kilichokumbukwa."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Mtu huyu hana barua pepe isiyothibitishwa."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Mtu huyu ameingia kwenye Lango la Wanachama. Kubadilisha barua pepe hii kunawatoa kila mahali, na anwani mpya haiwezi kutumika kuingia hadi ithibitishwe."
+
+#: 
 msgid "This person is deceased."
 msgstr "Mtu huyu amefariki"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Mtu huyu ametoka kwenye Lango la Wanachama kila mahali."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Mtu huyu hayupo tena."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Hii inakutolea kila mahali, pamoja na hapa, na kusahau kila kifaa. Unaweza kuingia tena kwa anwani yako ya barua pepe."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Hii inakutolea kila mahali, pamoja na hapa, na kusahau kila kifaa. Funguo zako za kuingia zinabaki: unaweza kuingia tena kwa ufunguo wa kuingia au anwani yako ya barua pepe."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Zana hii kamwe haibadilishi hizi. Mpe kila mtu barua pepe yake kwenye rekodi yake."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Tia tiki hii tu kwenye simu au kompyuta yako, kamwe si kwenye kifaa cha pamoja au cha umma."
+
+#: 
+msgid "Time: %s"
+msgstr "Wakati: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Muda umeisha"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Ili kubadilisha barua pepe hii, tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "To fix"
+msgstr "Za kurekebisha"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Ili kubaki umeingia kwenye simu au kompyuta yako, tia tiki \"Hiki ni kifaa changu\" wakati ujao unapoingia."
+
+#: 
+msgid "Too many attempts"
+msgstr "Majaribio mengi sana"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Barua pepe nyingi sana za kuingia leo"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Maombi mengi sana ya kuingia kwa anwani hii ya barua pepe"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Maombi mengi sana ya kuingia kutoka anwani hii ya IP"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Misimbo mingi isiyo sahihi"
+
+#: 
+msgid "Turn off"
+msgstr "Zima"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Zima kuingia kwa wanachama?"
+
+#: 
+msgid "Turn on"
+msgstr "Washa"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Washa kuingia kwa wanachama"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Washa kuingia kwa wanachama?"
+
+#: 
+msgid "Type a name"
+msgstr "Andika jina"
+
+#: 
+msgid "Type a name or email"
+msgstr "Andika jina au barua pepe"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Andika angalau herufi %d za jina, kisha tafuta."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Barua pepe isiyothibitishwa"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Elewa ChurchCRM inatumiwa wapi"
+
+#: 
+msgid "Unknown device"
+msgstr "Kifaa kisichojulikana"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Sehemu isiyojulikana ya saraka: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Mpangilio usiojulikana wa saraka: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Kifaa kisicho na jina"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Ufunguo wa kuingia usio na jina"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Hadi ofisi ya kanisa iithibitishe, anwani mpya haiwezi kutumika kuingia."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Tumia %1$s kama anwani ya barua pepe ya %2$s saa %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Tumia anwani tofauti ya barua pepe"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Tumia ufunguo wa kuingia kwenye kifaa hiki?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Tumia kitufe hapa chini kuthibitisha kuwa %1$s ni anwani yako ya barua pepe katika %2$s. Kiungo hufanya kazi mara moja, hadi %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Mtumiaji %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Angalia ruhusa"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Inasubiri uthibitishe %s. Tumia kiungo tulichotuma kwa anwani hiyo."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Inasubiri uthibitishe {{email}}. Tumia kiungo tulichotuma kwa anwani hiyo."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Hatukuweza kutuma barua pepe. Tafadhali jaribu tena baadaye, au wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Hatukuweza kukuingiza"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Tumetuma kiungo kwa barua pepe kwa %s. Kitumie kuthibitisha anwani yako mpya ya barua pepe."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Tumetuma kiungo kwa {{email}}. Barua pepe yako hubadilika unapokitumia."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Tutakutumia msimbo na kiungo cha kuingia kwa barua pepe."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Tunafurahi sana uko hapa! Inachukua kama dakika tatu."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Tunafurahi sana familia yako imetujiunga! Usajili wako umepokelewa. Timu yetu itawasiliana hivi karibuni kukukaribisha kibinafsi."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Maadhimisho ya harusi"
+
+#: 
+msgid "Welcome"
+msgstr "Karibu"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Kile kilichotolewa kwa ajili yake hakipo tena"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Wanachama wanaweza kuona na kufanya nini katika lango, na kila ruhusa inatoka wapi. Watu huhesabiwa miongoni mwa kila anayeruhusiwa na kanuni za kuingia, na wafanyakazi."
+
+#: 
+msgid "What members can use"
+msgstr "Wanachama wanaweza kutumia nini"
+
+#: 
+msgid "What to do"
+msgstr "Cha kufanya"
+
+#: 
+msgid "Who can see it"
+msgstr "Nani anaweza kuiona"
+
+#: 
+msgid "Who is listed"
+msgstr "Nani ameorodheshwa"
+
+#: 
+msgid "Who may sign in"
+msgstr "Nani anaweza kuingia"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Nani anaweza kuingia kwenye Lango la Wanachama, nani ameingia, na barua pepe ya nani inawazuia. Orodha zinafuata kanuni kwenye kichupo cha Kuingia."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Nani saraka ya Lango la Wanachama inaorodhesha, nani anaweza kuiona na inaonyesha nini, kilichochaguliwa kwenye Msimamizi -> Lango la Wanachama -> Saraka."
+
+#: 
+msgid "Why"
+msgstr "Kwa nini"
+
+#: 
+msgid "Why not"
+msgstr "Kwa nini sivyo"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Kwa tokeni kifaa kilichobadilisha muda mfupi uliopita"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Ndiyo, ongeza ufunguo wa kuingia"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Ndiyo, ondoa ufunguo huu wa kuingia"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Ndiyo, toka kwenye kila kifaa"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Huruhusiwi kuthibitisha barua pepe hii."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Huhifadhiwi umeingia kwenye kifaa chochote."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Umetoka kwenye kila kifaa."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Umetoka kwenye kifaa hiki."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Unaweza pia kuingia kwa anwani yako ya barua pepe."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Huwezi kuzima kuingia kwako mwenyewe."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Huwezi kufungua Lango la Wanachama. Tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Umeomba kubadilisha barua pepe yako mara nyingi sana. Tafadhali jaribu tena baadaye."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Huna funguo za kuingia."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Umeingia kama %s katika Lango la Wanachama (mabadiliko yanaruhusiwa)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Umeingia kama %s katika Lango la Wanachama (kusoma tu)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Mdogo kuliko umri wa chini"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Umri mdogo zaidi ambapo mtu anaweza kuingia kwenye Lango la Wanachama. Tarehe ya kuzaliwa isipojulikana, mkuu wa kaya au mwenzi tu ndiye anayestahili."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Msimbo wako wa kuingia kwenye Lango la Wanachama"
+
+#: 
+msgid "Your code"
+msgstr "Msimbo wako"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Anwani yako ya barua pepe %s bado haijathibitishwa, hivyo haiwezi kutumika kuingia. Tutatumia kiungo kwake kwa barua pepe; kutumia kiungo kunaithibitisha."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Anwani yako ya barua pepe haiwezi kuondolewa hapa. Tafadhali wasiliana na ofisi ya kanisa."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Anwani yako ya barua pepe imethibitishwa"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Anwani yako ya barua pepe imebadilishwa"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Ufunguo wako wa kuingia umeongezwa. Wakati ujao, ingia nao kwenye kifaa hiki."
+
+#: 
+msgid "an administrator"
+msgstr "msimamizi"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "hakuna mkuu wa kaya wala mwenzi mwenye anwani ya barua pepe"
+
+#: 
+msgid "or"
+msgstr "au"
+
+#: 
+msgid "until %s"
+msgstr "hadi %s"
 
