@@ -153,7 +153,7 @@ describe("Login as Person", () => {
         cy.get("#portalAccountChangePassword").should("not.exist");
 
         cy.get("#login-as-person-stop").click();
-        cy.location("pathname").should("eq", `/people/view/${MEMBER}`);
+        cy.location("pathname").should("match", new RegExp(`/people/view/${MEMBER}$`));
         newestSession()
             .should("contain", "Church Admin as Mathew Campbell")
             .and("contain", "Stopped")

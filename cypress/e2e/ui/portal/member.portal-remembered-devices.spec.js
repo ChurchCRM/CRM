@@ -11,6 +11,7 @@ import {
     signInEmail,
     useMemberSignIn,
 } from "../../../support/member-sign-in";
+import { basePath } from "../../../support/urls";
 
 /**
  * Member sign-in row 7 (#10463): remembered devices and the Sign-in and devices
@@ -132,7 +133,7 @@ describe("Member Portal remembered devices", () => {
             cy.getCookie(DEVICE_COOKIE).then((cookie) => {
                 expect(cookie.httpOnly).to.eq(true);
                 expect(cookie.sameSite).to.eq("lax");
-                expect(cookie.path).to.eq("/portal");
+                expect(cookie.path).to.eq(`${basePath()}/portal`);
                 const days = (cookie.expiry - Date.now() / 1000) / 86400;
                 expect(days).to.be.within(29.9, 30.1);
 
@@ -175,7 +176,7 @@ describe("Member Portal remembered devices", () => {
 
                 cy.endDeviceTokenGrace(member.personId);
                 cy.clearCookies();
-                cy.setCookie(DEVICE_COOKIE, first.value, { path: "/portal", httpOnly: true });
+                cy.setCookie(DEVICE_COOKIE, first.value, { path: `${basePath()}/portal`, httpOnly: true });
                 expectSignedOut();
                 cy.getCookie(DEVICE_COOKIE).should("be.null");
             });
