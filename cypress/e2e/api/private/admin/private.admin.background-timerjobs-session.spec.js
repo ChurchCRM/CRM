@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+import { inOwnCookieJar } from "../../../../support/cookie-jar";
 import { absoluteUrl } from "../../../../support/urls";
 
 describe("API Private Admin - Background Timer Jobs release the session", () => {
@@ -32,11 +33,13 @@ describe("API Private Admin - Background Timer Jobs release the session", () => 
         cy.setupAdminSession();
         cy.visit("/v2/dashboard");
 
-        writeConfig("bEnabledEmail", "1");
-        // Mailpit's web port accepts the connection and never greets, so each send waits out the SMTP timeout.
-        writeConfig("sSMTPHost", "mailserver:8025");
-        writeConfig("iSMTPTimeout", "2");
-        cy.makePrivateAdminAPICall("POST", "/api/email/send", { personIds: [2], subject: `crm-11176-${Date.now()}`, body: "Slow" }, 200);
+        inOwnCookieJar(() => {
+            writeConfig("bEnabledEmail", "1");
+            // Mailpit's web port accepts the connection and never greets, so each send waits out the SMTP timeout.
+            writeConfig("sSMTPHost", "mailserver:8025");
+            writeConfig("iSMTPTimeout", "2");
+            cy.makePrivateAdminAPICall("POST", "/api/email/send", { personIds: [2], subject: `crm-11176-${Date.now()}`, body: "Slow" }, 200);
+        });
 
         cy.window().then({ timeout: 60000 }, (win) => {
             const timed = (path, init = {}) =>
