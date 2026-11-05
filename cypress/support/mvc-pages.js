@@ -1,4 +1,4 @@
-// Staff pages listed here also drive the central page-load health sweep; first entry is the app home.
+// Pages of every staff MVC app that sits behind AuthMiddleware, first entry being the app's home.
 // kiosk, external, session and setup are public or use their own authentication. portal is the
 // member's own app: its pages take a member session, and /portal/login, /portal/theme and
 // /portal/email/confirm are public.
@@ -10,9 +10,6 @@ export const MVC_PAGES = {
         "/people/dashboard",
         "/people/list",
         "/people/family",
-        "/people/family/1",
-        "/people/view/2",
-        "/people/view/2/emails",
         "/people/verify",
         "/people/email",
         "/people/text",
@@ -24,50 +21,10 @@ export const MVC_PAGES = {
         "/people/email/missing",
         "/people/cart/to-family",
     ],
-    groups: [
-        "/groups/",
-        "/groups/dashboard",
-        "/groups/reports",
-        "/groups/sundayschool/dashboard",
-        "/groups/view/1",
-        "/groups/editor/1",
-    ],
-    finance: [
-        "/finance/",
-        "/finance/reports",
-        "/finance/reports/giving-statements",
-        "/finance/reports/year-end",
-        "/finance/funds",
-        "/finance/deposit/search",
-        "/finance/deposit/5",
-        "/finance/pledge/dashboard",
-        "/finance/pledge/new",
-        "/finance/statements/settings",
-        "/finance/fund/1/contributors?fyid=22",
-    ],
-    event: [
-        "/event/dashboard",
-        "/event/types",
-        "/event/audit",
-        "/event/calendars",
-        "/event/types/new",
-        "/event/types/1",
-        "/event/editor",
-        "/event/view/1",
-        "/event/checkin/1",
-        "/event/repeat-editor/1",
-    ],
-    fundraiser: [
-        "/fundraiser/",
-        "/fundraiser/editor",
-        "/fundraiser/editor/1",
-        "/fundraiser/view/3",
-        "/fundraiser/1/paddle-numbers",
-        "/fundraiser/1/paddle-numbers/editor",
-        "/fundraiser/1/donated-items/editor",
-        "/fundraiser/1/donors",
-        "/fundraiser/1/batch-winner",
-    ],
+    groups: ["/groups/", "/groups/dashboard", "/groups/reports", "/groups/sundayschool/dashboard"],
+    finance: ["/finance/", "/finance/reports", "/finance/reports/giving-statements", "/finance/reports/year-end", "/finance/funds", "/finance/pledge/new"],
+    event: ["/event/dashboard", "/event/types", "/event/audit", "/event/calendars"],
+    fundraiser: ["/fundraiser/", "/fundraiser/editor"],
     ministries: ["/ministries/", "/ministries/dashboard"],
     plugins: ["/plugins/management"],
     admin: [
@@ -82,18 +39,6 @@ export const MVC_PAGES = {
         "/admin/system/debug",
         "/admin/system/upgrade",
         "/admin/system/church-info",
-        "/admin/get-started",
-        "/admin/get-started/manual",
-        "/admin/import/csv",
-        "/admin/email",
-        "/admin/email/log",
-        "/admin/email/debug",
-        "/admin/member-portal",
-        "/admin/system/reset",
-        "/admin/system/orphaned-files",
-        "/admin/system/localization",
-        "/admin/system/feature-toggles",
-        "/admin/system/report-settings",
     ],
 };
 
@@ -103,10 +48,4 @@ export const LEGACY_PAGES = [
     "/SystemSettings.php",
     "/LettersAndLabels.php",
     "/DirectoryReports.php",
-    "/PropertyTypeList.php",
-    "/PropertyEditor.php?Type=p",
-    "/PropertyEditor.php?Type=f",
-    "/PropertyList.php?Type=g",
 ];
-
-export const MEMBER_PAGES = ["/portal/", "/portal/profile", "/portal/family"];

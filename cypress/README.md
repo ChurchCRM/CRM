@@ -36,10 +36,10 @@ Best practices
 - Ensure `cypress/videos/`, `cypress/screenshots/`, and `cypress/downloads/` are in `.gitignore`.
 
 Page coverage
-- `page-load-health.spec.js`, `admin-page-load-health.spec.js`, and `member-page-load-health.spec.js` check the registered staff, legacy, admin, and member pages for successful document responses, same-origin 5xx responses, missing scripts/styles, and uncaught JavaScript errors.
-- Give every new page either a URL in `cypress/support/mvc-pages.js` or a detailed spec that visits it in a real user workflow. Add a stable seeded ID when the page needs a record; the sweep creates a load-only test for every entry.
+- Detailed workflow specs cover the pages they visit. Add URLs to `cypress/support/page-health-pages.js` only where detailed coverage is missing; remove them as workflow tests land.
+- The staff and admin health specs check document status, same-origin 5xx responses, missing scripts/styles, and uncaught JavaScript exceptions. Informational pages may keep health-only coverage.
 - Keep page-load checks free of page-specific content and control assertions. Put user workflows, saved results, permissions, and validation in focused feature specs.
-- The sweep runs with the normal UI suite: `npm run test:ui`.
+- Track missing actionable workflows in focused issues. The sweeps run in `test:ui` and `test:ui-admin`, respectively. `mvc-pages.js` serves authentication boundaries and install-path checks, not workflow coverage gaps.
 
 Local setup (recommended)
 - Create a `cypress.env.json` in your local checkout (gitignored) to store non-secret test values:

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { LEGACY_PAGES, MVC_PAGES } from "../../support/mvc-pages";
+import { ADMIN_HEALTH_PAGES } from "../../support/page-health-pages";
 import { expectPageHealth } from "../../support/page-health";
 
 describe("Page load health: admin pages", () => {
@@ -8,7 +8,7 @@ describe("Page load health: admin pages", () => {
         cy.setupAdminSession();
     });
 
-    [...MVC_PAGES.admin, ...LEGACY_PAGES].forEach((page) => {
+    ADMIN_HEALTH_PAGES.forEach((page) => {
         it(`${page} loads without JavaScript or server errors`, () => {
             expectPageHealth(page);
         });

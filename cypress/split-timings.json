@@ -694,7 +694,7 @@
     },
     {
       "spec": "cypress/e2e/ui-admin/admin-page-load-health.spec.js",
-      "duration": 45000
+      "duration": 11000
     },
     {
       "spec": "cypress/e2e/ui-admin/admin.backup.spec.js",
@@ -1266,11 +1266,11 @@
     },
     {
       "spec": "cypress/e2e/ui/navigation/install-path-requests.spec.js",
-      "duration": 129000
+      "duration": 78000
     },
     {
       "spec": "cypress/e2e/ui/navigation/page-load-health.spec.js",
-      "duration": 88500
+      "duration": 7000
     },
     {
       "spec": "cypress/e2e/ui/people/admin.person.birthday.spec.js",
@@ -1438,7 +1438,7 @@
     },
     {
       "spec": "cypress/e2e/ui/personas/portal-only/portal-only.boundary.spec.js",
-      "duration": 11000
+      "duration": 7000
     },
     {
       "spec": "cypress/e2e/ui/personas/staff-all-but-admin/staff-all-but-admin.gates.spec.js",
@@ -1467,10 +1467,6 @@
     {
       "spec": "cypress/e2e/ui/plugins/plugin-menu-visibility.spec.js",
       "duration": 7000
-    },
-    {
-      "spec": "cypress/e2e/ui/portal/member-page-load-health.spec.js",
-      "duration": 9000
     },
     {
       "spec": "cypress/e2e/ui/portal/member.portal-calendar-legend.spec.js",
