@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-05 16:23+0000\n"
+"POT-Creation-Date: 2026-11-06 20:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15586,9 +15586,6 @@ msgid "Special Group Settings : Sunday School Type"
 msgstr ""
 
 msgid "Special option"
-msgstr ""
-
-msgid "Specify the application name to be displayed in authenticator app"
 msgstr ""
 
 msgid "Spouse Role"
