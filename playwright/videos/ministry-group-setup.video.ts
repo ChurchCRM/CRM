@@ -17,6 +17,13 @@ test('ministry-group-setup', async ({ page }, testInfo) => {
   await expect(page.locator('#groupEditForm')).toBeVisible();
   await humanType(page.locator('textarea[name="Description"]'), 'A practical team for welcoming people at church.');
   await humanPause(page, 500);
+  // A new group has only Member. Change Role opens a modal only when there
+  // is more than one role, so add Leader before leaving the editor.
+  await humanClick(page.locator('#addNewRoleBtn'));
+  await expect(page.locator('#addRoleModal')).toBeVisible();
+  await humanType(page.locator('#newRole'), 'Leader');
+  await humanClick(page.locator('#submitNewRole'));
+  await expect(page.locator('#addRoleModal')).toBeHidden();
   await humanClick(page.locator('#saveGroup'));
   // Save returns to the groups dashboard (GroupEditor.js), then the view shows the roster.
   await page.waitForURL(/\/groups\/dashboard/, { timeout: 15000 });
@@ -24,35 +31,36 @@ test('ministry-group-setup', async ({ page }, testInfo) => {
   await expect(page.locator('#membersTable')).toBeVisible();
   await settle(page, 1200);
 
-  const addMember = async (name: string) => {
+  const addMember = async (name: string, role: string) => {
+    const [first, last] = name.split(' ');
+    // The search matches one field and returns at most 15 people. "Campbell"
+    // fills that list, and Mathew Campbell is not in this demo set. A first
+    // name stays inside the limit, then the option is matched on both names.
     const control = page.locator('#addGroupMember + .ts-wrapper .ts-control');
     await humanClick(control);
-    await humanType(page.locator('#addGroupMember + .ts-wrapper input'), name);
-    await expect(page.locator('.ts-dropdown .option').filter({ hasText: name }).first()).toBeVisible();
-    await humanClick(page.locator('.ts-dropdown .option').filter({ hasText: name }).first());
+    await humanType(page.locator('#addGroupMember + .ts-wrapper input'), first);
+    const option = page.locator('body > .ts-dropdown .option').filter({ hasText: first }).filter({ hasText: last }).first();
+    await expect(option).toBeVisible({ timeout: 15000 });
+    await humanClick(option);
+    // Adding a person asks for a role once the group has more than one.
+    await expect(page.locator('#groupViewModal')).toBeVisible({ timeout: 15000 });
+    await page.locator('#gv-role-select').selectOption({ label: role });
+    await humanClick(page.locator('#gvModalConfirmBtn'));
+    await expect(page.locator('#groupViewModal')).toBeHidden({ timeout: 15000 });
+    await expect(page.locator('#membersTable tbody tr').filter({ hasText: name })).toBeVisible({ timeout: 15000 });
     await settle(page, 800);
   };
 
-  await addMember('Mathew Campbell');
-  await expect(page.locator('#membersTable tbody tr')).toHaveCount(1);
-  const firstRow = page.locator('#membersTable tbody tr').first();
-  await humanClick(firstRow.locator('[data-bs-toggle="dropdown"]'));
-  await humanClick(firstRow.locator('.changeMembership'));
-  await expect(page.locator('#groupViewModal')).toBeVisible();
-  await page.locator('#gv-role-select').selectOption({ label: 'Leader' });
-  await humanClick(page.locator('#gvModalConfirmBtn'));
-  await settle(page, 1000);
+  await addMember('Joseph Hall', 'Leader');
+  await addMember('Christopher Hall', 'Member');
 
-  await addMember('Joseph Hall');
-  await expect(page.locator('#membersTable tbody tr')).toHaveCount(2);
-  await settle(page, 700);
-
-  const memberToRemove = page.locator('#membersTable tbody tr').filter({ hasText: 'Joseph Hall' });
+  const memberToRemove = page.locator('#membersTable tbody tr').filter({ hasText: 'Christopher Hall' });
   await humanClick(memberToRemove.locator('[data-bs-toggle="dropdown"]'));
   await humanClick(memberToRemove.locator('.remove-member-btn'));
   await expect(page.locator('.bootbox')).toBeVisible();
   await humanClick(page.locator('.bootbox .btn-danger'));
-  await expect(page.locator('#membersTable tbody tr')).toHaveCount(1);
+  await expect(page.locator('#membersTable tbody tr').filter({ hasText: 'Joseph Hall' })).toBeVisible();
+  await expect(page.locator('#membersTable tbody tr').filter({ hasText: 'Christopher Hall' })).toHaveCount(0);
   await settle(page, 1200);
 
   await captureScreen(page, testInfo, {

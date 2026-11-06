@@ -4918,10 +4918,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugali keel - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Määrake autentimisrakenduses kuvatav rakenduse nimi"
-
-#: 
 msgid "Review"
 msgstr "Ülevaade"
 

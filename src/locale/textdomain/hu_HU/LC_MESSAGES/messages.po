@@ -4946,10 +4946,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugál - Portugália"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Adja meg az alkalmazásnév meg kell jeleníteni a hitelesítő alkalmazásban"
-
-#: 
 msgid "Review"
 msgstr "Áttekintés"
 

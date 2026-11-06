@@ -4916,10 +4916,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugis - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Tentukan nama aplikasi yang akan ditampilkan di aplikasi authenticator"
-
-#: 
 msgid "Review"
 msgstr "Ulasan"
 

@@ -4993,10 +4993,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Geben Sie den Anwendungsnamen an, der in der Authentifizierungsanwendung angezeigt werden soll"
-
-#: 
 msgid "Review"
 msgstr "Zusammenfassung"
 

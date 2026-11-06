@@ -4926,10 +4926,6 @@ msgid "Portuguese - Portugal"
 msgstr "Tiếng Bồ Đào Nha - Bồ Đào Nha"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Chỉ định tên ứng dụng sẽ được hiển thị trong ứng dụng xác thực"
-
-#: 
 msgid "Review"
 msgstr "Ôn tập"
 

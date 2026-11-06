@@ -80,6 +80,24 @@ describe('release-publish.yml marketing capture', () => {
     });
 });
 
+describe('marketing-capture-check.yml', () => {
+    const text = read('.github/workflows/marketing-capture-check.yml');
+    const workflow = jobs('.github/workflows/marketing-capture-check.yml');
+
+    it('runs daily after the 03:17 UTC nightly and on demand', () => {
+        assert.match(text, /cron: "17 5 \* \* \*"/);
+        assert.match(text, /workflow_dispatch:/);
+    });
+
+    it('captures English only and never publishes', () => {
+        assert.deepEqual(Object.keys(workflow), ['capture_en']);
+        assert.match(workflow.capture_en, /locale: en/);
+        assert.equal(text.includes('Publish visuals'), false);
+        assert.equal(text.includes('workflow run'), false);
+        assert.equal(text.includes('matrix:'), false);
+    });
+});
+
 describe('marketing-capture action', () => {
     const action = read('.github/actions/marketing-capture/action.yml');
 

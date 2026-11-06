@@ -61,8 +61,10 @@ class LocalAuthentication implements IAuthenticationProvider
     public static function getTwoFactorQRCode($username, $secret): QrCode
     {
         $google2fa = new Google2FA();
+        // Unicode isolates keep an RTL church name and the LTR "(ChurchCRM)" from reordering each other
+        $issuer = "\u{2068}" . SystemConfig::getValue('sChurchName') . "\u{2069} \u{2066}(ChurchCRM)\u{2069}";
         $g2faUrl = $google2fa->getQRCodeUrl(
-            SystemConfig::getValue('s2FAApplicationName'),
+            $issuer,
             $username,
             $secret
         );

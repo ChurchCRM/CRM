@@ -290,16 +290,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             || $family->isColumnModified(FamilyTableMap::COL_FAM_ZIP)
             || $family->isColumnModified(FamilyTableMap::COL_FAM_COUNTRY);
 
-        // Update Lat/Long if address changes
-        if (
-            $addressChanged
-            && !$family->isColumnModified(FamilyTableMap::COL_FAM_LATITUDE)
-            && !$family->isColumnModified(FamilyTableMap::COL_FAM_LONGITUDE)
-        ) {
-            $family->setLatitude(null);
-            $family->setLongitude(null);
-        }
-
         $family->save();
         $family->reload();
 

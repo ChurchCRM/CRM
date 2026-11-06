@@ -4887,10 +4887,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portuges - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Tukuyin ang pangalan ng aplikasyon na ipapakita sa authenticator app"
-
-#: 
 msgid "Review"
 msgstr "Suriin"
 
