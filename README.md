@@ -8,10 +8,7 @@ ChurchCRM **7.2.2 and older** fetch `notifications.json` from this branch at log
 
 ChurchCRM **7.3.0 and newer** (released 2026-04-25) read `External` and never touch this branch.
 
-| File | Status |
-|------|--------|
-| `notifications.json` | Read by 7.2.2 and older. Keep it identical to `External/notifications.json` |
-| `approved-plugins.json` | Not read by any release. Left from an early registry draft; the live registry is on `External` |
+`notifications.json` is the only file. Keep it identical to `External/notifications.json`. The plugin registry (`approved-plugins.json`) lives on `External` only.
 
 ## Keeping it current
 
