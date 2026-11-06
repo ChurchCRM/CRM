@@ -7,7 +7,7 @@ import { humanClick, humanPause, humanType, settle } from '../support/human';
 // uses. The form is captured unsaved: saving a demo family through the editor
 // re-geocodes it and rewrites its country (the import stores the country name,
 // the editor posts the code), which would change the shared demo data.
-const FAMILY_EMAIL = 'family.robinson23@demo.churchcrm.io';
+const FAMILY_EMAIL = 'nancy.robinson@demo.churchcrm.io';
 
 // captureScreen() resizes the viewport for each device, so scroll the section
 // between `top` and `bottom` into view again after every resize, below the
