@@ -233,6 +233,25 @@ class DateTimeUtils
         return '';
     }
 
+    /** Validates an ISO Y-m-d value, as sent by type="date" inputs and the API: the same date for a real calendar date in or after $minYear, otherwise ''. Reads no setting. */
+    public static function parseIsoDate(mixed $value, int $minYear = 1900): string
+    {
+        $date = is_scalar($value) ? (string) $value : '';
+        if (!preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $date, $m) || !checkdate((int) $m[2], (int) $m[3], (int) $m[1]) || (int) $m[1] < $minYear) {
+            return '';
+        }
+
+        return $date;
+    }
+
+    /** The system date-picker format in the notation of the JS datepicker widget and input placeholders (Y-m-d becomes yyyy-mm-dd). */
+    public static function datePickerJsFormat(): string
+    {
+        return strtr(SystemConfig::getValue('sDatePickerFormat'), [
+            'd' => 'dd', 'j' => 'd', 'm' => 'mm', 'n' => 'm', 'Y' => 'yyyy', 'y' => 'yy', 'M' => 'M', 'F' => 'MM', 'D' => 'D', 'l' => 'DD',
+        ]);
+    }
+
     /**
      * Reads a date typed in the system date-picker format into Y-m-d, or null when it does not
      * match or the year is not four digits. An overflow date (02/30/2014) is always rejected.

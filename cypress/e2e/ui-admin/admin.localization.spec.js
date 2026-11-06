@@ -51,7 +51,6 @@ describe("Admin - Localization & Formats Page", () => {
         cy.get("#sDateTimeFormat").should("exist");
         cy.get("#sDateFilenameFormat").should("exist");
         cy.get("#sDatePickerFormat").should("exist");
-        cy.get("#sDatePickerPlaceHolder").should("exist");
     });
 
     it("should display all phone number format fields", () => {

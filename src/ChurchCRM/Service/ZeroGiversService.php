@@ -30,8 +30,8 @@ class ZeroGiversService
      */
     public static function criteriaFromQuery(array $query): array
     {
-        $dateStart = self::validDate($query['DateStart'] ?? '');
-        $dateEnd = self::validDate($query['DateEnd'] ?? '');
+        $dateStart = DateTimeUtils::parseIsoDate(DateTimeUtils::normalizeDate($query['DateStart'] ?? ''));
+        $dateEnd = DateTimeUtils::parseIsoDate(DateTimeUtils::normalizeDate($query['DateEnd'] ?? ''));
 
         // Default to the current fiscal year when no dates are supplied.
         // This codifies FiscalYearUtils for all finance year reports.
@@ -154,13 +154,4 @@ class ZeroGiversService
         return 'ZeroGivers-' . date(SystemConfig::getValue('sDateFilenameFormat'));
     }
 
-    private static function validDate(mixed $value): string
-    {
-        $date = DateTimeUtils::normalizeDate(is_scalar($value) ? (string) $value : '');
-        if (!preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $date, $m) || !checkdate((int) $m[2], (int) $m[3], (int) $m[1]) || (int) $m[1] < 1900) {
-            return '';
-        }
-
-        return $date;
-    }
 }

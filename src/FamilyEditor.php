@@ -597,7 +597,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <label for="WeddingDate"><?= gettext('Wedding Date') ?>:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-heart"></i></span>
-                        <input type="text" class="form-control date-picker" name="WeddingDate" id="WeddingDate" value="<?= DateTimeUtils::formatForDatePicker($dWeddingDate) ?>" maxlength="12" placeholder="<?= SystemConfig::getValueForAttr("sDatePickerPlaceHolder") ?>">
+                        <input type="text" class="form-control date-picker" name="WeddingDate" id="WeddingDate" value="<?= DateTimeUtils::formatForDatePicker($dWeddingDate) ?>" maxlength="12" placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerJsFormat()) ?>">
                     </div>
                     <?php if ($sWeddingDateError) { ?>
                     <span class="text-danger small"><?= $sWeddingDateError ?></span>
