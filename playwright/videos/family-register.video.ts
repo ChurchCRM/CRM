@@ -45,7 +45,10 @@ test('family-self-register', async ({ page }, testInfo) => {
   await humanPause(page, 1200);
   await humanClick(page.locator('#submit-registration'));
 
-  await page.getByText('Welcome to the Family!').first().waitFor({ state: 'visible', timeout: 10000 });
+  // The heading lives in #registration-success, which stays hidden until the
+  // register request returns. That POST can take longer than 10s on CI.
+  await expect(page.locator('#registration-success')).toBeVisible({ timeout: 30000 });
+  await expect(page.getByRole('heading', { name: 'Welcome to the Family!' })).toBeVisible();
   // Let the confirmation sit on screen long enough for a viewer to
   // actually read it before the video ends.
   await settle(page, 2500);
