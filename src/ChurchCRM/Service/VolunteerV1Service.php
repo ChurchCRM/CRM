@@ -148,11 +148,11 @@ class VolunteerV1Service
             return 0;
         }
 
-        return (int) PersonVolunteerOpportunityQuery::create()
+        return count(array_unique(PersonVolunteerOpportunityQuery::create()
             ->filterByVolunteerOpportunityId($ids, Criteria::IN)
-            ->withColumn('COUNT(DISTINCT p2vo_per_ID)', 'People')
-            ->select(['People'])
-            ->findOne();
+            ->select(['PersonId'])
+            ->find()
+            ->toArray()));
     }
 
     /**
@@ -258,9 +258,10 @@ class VolunteerV1Service
 
         try {
             // Two administrators converting at once would both plan from the same map; the
-            // second waits here and plans from what the first committed.
+            // second waits here and plans from what the first committed. The map is read as a
+            // scalar because the Config object this request loaded at startup is pooled.
             VolunteerOpportunityQuery::create()->lockForUpdate()->find($connection);
-            $stored = self::storedConversion(ConfigQuery::create()->findOneByName(self::MAP_CONFIG)?->getValue() ?? '');
+            $stored = self::storedConversion(ConfigQuery::create()->filterByName(self::MAP_CONFIG)->select('Value')->findOne($connection) ?? '');
             $plan = $this->plan($choice, $stored);
             $map = self::conversionMap($stored);
             if ($plan['totals']['positions'] + $plan['totals']['ministries'] + $plan['totals']['pending'] === 0) {

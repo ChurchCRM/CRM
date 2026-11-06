@@ -229,16 +229,19 @@ async function convert(snapshot: Choice): Promise<void> {
       body: JSON.stringify(snapshot),
     });
   } catch {
-    window.CRM?.notify?.(t("The server could not be reached. Reload the page to see whether the conversion ran."), {
-      type: "error",
-      delay: 8000,
-    });
+    window.CRM?.notify?.(
+      escapeHtml(t("The server could not be reached. Reload the page to see whether the conversion ran.")),
+      {
+        type: "error",
+        delay: 8000,
+      },
+    );
     await refresh();
     return;
   }
   const body = (await response.json().catch(() => null)) as Plan | null;
   if (!response.ok || body === null) {
-    window.CRM?.notify?.(body?.message || t("The conversion failed. Nothing was changed."), {
+    window.CRM?.notify?.(escapeHtml(body?.message || t("The conversion failed. Nothing was changed.")), {
       type: "error",
       delay: 5000,
     });
@@ -247,7 +250,7 @@ async function convert(snapshot: Choice): Promise<void> {
   }
 
   ownMinistry.clear();
-  window.CRM?.notify?.(t("Volunteer Opportunities converted"), { type: "success", delay: 3000 });
+  window.CRM?.notify?.(escapeHtml(t("Volunteer Opportunities converted")), { type: "success", delay: 3000 });
   const summary = byId("volunteerConversionSummary");
   await refresh();
   if (summary && body.totals) {
@@ -269,7 +272,7 @@ function confirmConvert(): void {
     return;
   }
   if (!window.bootbox) {
-    window.CRM?.notify?.(t("The confirmation could not open. Reload the page and try again."), {
+    window.CRM?.notify?.(escapeHtml(t("The confirmation could not open. Reload the page and try again.")), {
       type: "error",
       delay: 5000,
     });
