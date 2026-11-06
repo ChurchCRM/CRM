@@ -12,12 +12,15 @@ test('ministry-group-setup', async ({ page }, testInfo) => {
   await humanPause(page, 700);
   await humanClick(page.locator('#addNewGroup'));
   await page.waitForURL(/\/groups\/editor\/\d+/, { timeout: 15000 });
+  const groupId = page.url().match(/\/groups\/editor\/(\d+)/)?.[1];
 
   await expect(page.locator('#groupEditForm')).toBeVisible();
   await humanType(page.locator('textarea[name="Description"]'), 'A practical team for welcoming people at church.');
   await humanPause(page, 500);
   await humanClick(page.locator('#saveGroup'));
-  await page.waitForURL(/\/groups\/view\/\d+/, { timeout: 15000 });
+  // Save returns to the groups dashboard (GroupEditor.js), then the view shows the roster.
+  await page.waitForURL(/\/groups\/dashboard/, { timeout: 15000 });
+  await page.goto(`/groups/view/${groupId}`);
   await expect(page.locator('#membersTable')).toBeVisible();
   await settle(page, 1200);
 

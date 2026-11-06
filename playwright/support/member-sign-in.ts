@@ -74,8 +74,17 @@ export async function useMemberSignIn(api: APIRequestContext): Promise<() => Pro
   }
 
   return async () => {
-    for (const name of Object.keys(wanted).reverse()) {
-      await setConfig(api, name, saved[name]);
+    // The caller's page is often already closed (afterAll). Use a new context.
+    const restoreApi = await request.newContext({
+      baseURL: BASE_URL,
+      storageState: path.join(__dirname, '..', '.auth', 'admin.json'),
+    });
+    try {
+      for (const name of Object.keys(wanted).reverse()) {
+        await setConfig(restoreApi, name, saved[name]);
+      }
+    } finally {
+      await restoreApi.dispose();
     }
   };
 }
