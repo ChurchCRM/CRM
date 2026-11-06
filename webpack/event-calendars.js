@@ -712,19 +712,12 @@ function initializeCalendar() {
       }
     },
     eventDidMount: (info) => {
-      // Long event titles get clipped by FullCalendar's default
-      // `overflow:hidden;text-overflow:ellipsis` styling on month-grid events.
-      // Set the native HTML `title` attribute so hovering reveals the full
-      // text via a browser tooltip — no JS dependency, accessible by default.
-      // Closes #8792.
-      if (info.event.title) {
-        info.el.setAttribute("title", info.event.title);
-      }
+      eventForEl.set(info.el, info.event);
       renderPinnedCalendarMarks(info);
     },
     eventsSet: () => {
       // After this render, so setProp/setExtendedProp are not called mid-render.
-      queueMicrotask(collapsePinnedCalendarEvents);
+      schedulePinCollapse();
     },
     loading: (isLoading) => {
       window.CRM.isCalendarLoading = isLoading;
@@ -879,9 +872,29 @@ function calendarPinFromEvent(event) {
   };
 }
 
+// One follow-up scan covers every setProp eventsSet fires during a collapse.
+let pinCollapseScheduled = false;
+let pinCollapseAgain = false;
+
+function schedulePinCollapse() {
+  if (pinCollapseScheduled) {
+    pinCollapseAgain = true;
+    return;
+  }
+  pinCollapseScheduled = true;
+  queueMicrotask(() => {
+    pinCollapseAgain = false;
+    collapsePinnedCalendarEvents();
+    pinCollapseScheduled = false;
+    if (pinCollapseAgain) {
+      schedulePinCollapse();
+    }
+  });
+}
+
 function collapsePinnedCalendarEvents() {
   const calendar = window.CRM.fullcalendar;
-  if (!calendar || window.CRM._collapsingPins) {
+  if (!calendar) {
     return;
   }
 
@@ -896,7 +909,6 @@ function collapsePinnedCalendarEvents() {
     }
   }
 
-  window.CRM._collapsingPins = true;
   try {
     for (const group of groups.values()) {
       const pins = [];
@@ -926,19 +938,24 @@ function collapsePinnedCalendarEvents() {
       }
     }
   } finally {
-    window.CRM._collapsingPins = false;
+    refreshMountedPinMarks();
   }
 }
 
-function renderPinnedCalendarMarks(info) {
-  const pins = info.event.extendedProps.pinnedCalendars;
-  if (!Array.isArray(pins) || pins.length < 2) {
-    return;
-  }
+const eventForEl = new WeakMap();
 
-  const names = pins.map((pin) => pin.name).filter(Boolean);
-  if (info.event.title && names.length > 0) {
-    info.el.setAttribute("title", `${info.event.title} (${names.join(", ")})`);
+function renderPinnedCalendarMarks(info) {
+  const harness = info.el.querySelector(".fc-event-main") || info.el;
+  harness.querySelectorAll(":scope > .crm-cal-pin-marks").forEach((node) => node.remove());
+
+  const pins = info.event.extendedProps.pinnedCalendars;
+  const names = Array.isArray(pins) ? pins.map((pin) => pin.name).filter(Boolean) : [];
+  if (info.event.title) {
+    const suffix = names.length > 1 ? ` (${names.join(", ")})` : "";
+    info.el.setAttribute("title", `${info.event.title}${suffix}`);
+  }
+  if (names.length < 2) {
+    return;
   }
 
   const marks = document.createElement("span");
@@ -952,8 +969,20 @@ function renderPinnedCalendarMarks(info) {
     }
     marks.appendChild(dot);
   }
-  const harness = info.el.querySelector(".fc-event-main") || info.el;
   harness.appendChild(marks);
+}
+
+function refreshMountedPinMarks() {
+  const root = document.getElementById("calendar");
+  if (!root) {
+    return;
+  }
+  root.querySelectorAll(".fc-event").forEach((el) => {
+    const event = eventForEl.get(el);
+    if (event) {
+      renderPinnedCalendarMarks({ el, event });
+    }
+  });
 }
 
 /**

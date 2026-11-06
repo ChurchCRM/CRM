@@ -95,5 +95,6 @@ describe("Events pinned to more than one calendar", () => {
             const names = (shown[0].extendedProps.pinnedCalendars || []).map((pin) => pin.name);
             expect(names).to.deep.eq([`${PREFIX} Youth`]);
         });
+        cy.get("#calendar .crm-cal-pin-mark").should("have.length", 0);
     });
 });
