@@ -24,6 +24,9 @@ if ($_crm_root === '/' || $_crm_root === '.') {
     $_crm_root = '';
 }
 
+$requirementsRootPath = $_crm_root;
+require __DIR__ . '/CheckRequirements.php';
+
 if (!file_exists(__DIR__ . '/Config.php')) {
     header("Location: {$_crm_root}/setup");
     exit;

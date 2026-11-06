@@ -45,6 +45,10 @@ if ($rootPath !== '' && $rootPath[0] !== '/') {
     $rootPath = '/' . $rootPath;
 }
 
+require_once __DIR__ . '/../vendor/autoload.php';
+$requirementsRootPath = $rootPath;
+require __DIR__ . '/../Include/CheckRequirements.php';
+
 // If Config.php already exists the app is configured — redirect to the app root.
 // Use __DIR__ so the check resolves against the script path, not the server CWD
 // (CWD-relative paths fail under PHP-FPM where CWD is the document root).
@@ -52,8 +56,6 @@ if (file_exists(__DIR__ . '/../Include/Config.php')) {
     header("Location: {$rootPath}/");
     exit;
 }
-
-require_once __DIR__ . '/../vendor/autoload.php';
 
 // Store paths in global for template access (no SystemURLs available)
 $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] = $rootPath;
