@@ -25,7 +25,7 @@ test('ministry-group-setup', async ({ page }, testInfo) => {
   await settle(page, 1200);
 
   const addMember = async (name: string) => {
-    const control = page.locator('#addGroupMember').next('.ts-wrapper').locator('.ts-control');
+    const control = page.locator('#addGroupMember + .ts-wrapper .ts-control');
     await humanClick(control);
     await humanType(page.locator('#addGroupMember + .ts-wrapper input'), name);
     await expect(page.locator('.ts-dropdown .option').filter({ hasText: name }).first()).toBeVisible();
