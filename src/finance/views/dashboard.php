@@ -499,6 +499,8 @@ $(document).ready(function() {
             { name: 'bEnableNonDeductible',  type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable non-deductible payments')) ?> },
             { name: 'bUseDonationEnvelopes', type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable use of donation envelopes')) ?> },
         ],
+        autoSave: true,
+        showAllSettingsLink: false,
         onSave: function() {
             // Reload page after short delay to show updated fiscal year data
             setTimeout(function() {

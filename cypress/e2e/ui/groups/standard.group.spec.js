@@ -3,6 +3,15 @@
 describe("Standard Groups", () => {
     beforeEach(() => cy.setupStandardSession());
 
+    it("an admin opens Group Settings with no Save button", () => {
+        cy.setupAdminSession();
+        cy.visit("/groups/dashboard");
+        cy.contains("Group Settings").click();
+        cy.get("#groupSettings .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
+        cy.get("#groupSettings input[name='bEnabledSundaySchool']").should("exist");
+        cy.get("#groupSettings .settings-panel-save").should("not.exist");
+    });
+
     it("Add Group ", () => {
         const uniqueSeed = Date.now().toString();
         const newGroupName = "New Test Group " + uniqueSeed;

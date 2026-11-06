@@ -18,6 +18,7 @@ describe("Settings Panel — Choice Dropdowns", () => {
             cy.get("#financialSettings", { timeout: 10000 }).should("be.visible");
 
             cy.get("#financialSettings").within(() => {
+                cy.get(".settings-panel-save").should("not.exist");
                 cy.contains("First month of the fiscal year");
                 cy.contains("Deposit ticket type");
                 cy.contains("Number of checks for Deposit Slip Report");
