@@ -37,6 +37,7 @@ const POEDITOR_API = 'https://api.poeditor.com/v2/projects/export';
 const localeConfig = require('./locale-config');
 const { repairJoinedPlural } = require('./lib/poeditor-plurals');
 const { pruneUploadedBatches } = require('./lib/prune-uploaded-batches');
+const { sourceTerms } = require('./lib/poeditor-terms');
 const MISSING_OUTPUT_DIR = localeConfig.terms.missing;
 const TERMS_PER_FILE = localeConfig.settings?.missingTermsBatchSize || 150;
 const MIN_MISSING_TERMS = 0; // never skip missing terms
@@ -400,6 +401,11 @@ function saveBatchedMissingTerms(poEditorCode, missingTerms) {
     return files;
 }
 
+function currentSourceTerms() {
+    const terms = sourceTerms(fs.readFileSync(path.join(MASTER_LIST_DIR, 'messages.po'), 'utf8'));
+    return new Set([...terms.values()].map((t) => t.term));
+}
+
 /**
  * Remove any existing batched missing-term files for a given poEditorCode.
  * Returns number of files removed.
@@ -682,7 +688,7 @@ async function downloadLanguage(locale, poEditorLocale, current, total, localeCf
         if (localeCfg && localeCfg.skip_audit === true) {
             const jsonFile = path.join(JSON_OUTPUT_DIR, `${locale}.json`);
             const { removed } = fs.existsSync(jsonFile)
-                ? pruneUploadedBatches(path.join(MISSING_OUTPUT_DIR, poEditorLocale), JSON.parse(fs.readFileSync(jsonFile, 'utf8')))
+                ? pruneUploadedBatches(path.join(MISSING_OUTPUT_DIR, poEditorLocale), JSON.parse(fs.readFileSync(jsonFile, 'utf8')), currentSourceTerms())
                 : { removed: 0 };
             console.log(`  ⏭️  Skipping missing-terms for ${locale} (skip_audit)${removed ? `, pruned ${removed} uploaded term(s)` : ''}`);
         } else {
