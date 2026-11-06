@@ -4891,10 +4891,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugali - Portugali"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Määritä sovelluksen nimi, joka näkyy tunnistussovelluksessa"
-
-#: 
 msgid "Review"
 msgstr "Tarkista"
 

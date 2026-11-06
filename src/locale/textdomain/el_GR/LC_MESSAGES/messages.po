@@ -4919,10 +4919,6 @@ msgid "Portuguese - Portugal"
 msgstr "Πορτογαλικά - Πορτογαλία"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Καθορίστε το όνομα της εφαρμογής που θα εμφανίζεται στην εφαρμογή ελέγχου ταυτότητας"
-
-#: 
 msgid "Review"
 msgstr "Ανασκόπηση"
 

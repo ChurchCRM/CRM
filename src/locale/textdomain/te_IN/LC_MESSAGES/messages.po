@@ -4898,10 +4898,6 @@ msgid "Portuguese - Portugal"
 msgstr "పోర్చుగీస్ - పోర్చుగల్"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "ఆథెంటికేటర్ యాప్‌లో ప్రదర్శించబడే అప్లికేషన్ పేరును పేర్కొనండి"
-
-#: 
 msgid "Review"
 msgstr "సమీక్ష"
 

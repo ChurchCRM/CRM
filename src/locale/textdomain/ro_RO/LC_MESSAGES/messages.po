@@ -4981,10 +4981,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugheză - Portugalia"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Specificați numele aplicației care va fi afișat în aplicația de autentificare"
-
-#: 
 msgid "Review"
 msgstr "Recenzie"
 

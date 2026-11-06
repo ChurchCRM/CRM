@@ -17,6 +17,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
 use ChurchCRM\Portal\Auth\EmailChangeChannel;
 use ChurchCRM\Portal\Auth\SignInEmailPolicy;
+use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\CustomFieldUtils;
@@ -474,6 +475,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $connection->rollBack();
 
             throw $e;
+        }
+
+        if ($person->hasOwnAddress() && $person->getGeocodeStatus() === Person::GEOCODE_UNTRIED) {
+            (new FamilyService())->autoGeocodePerson($person);
         }
 
         if (!$personAlreadyExist) {

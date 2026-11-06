@@ -4920,11 +4920,6 @@ msgid "Portuguese - Portugal"
 msgstr "ፖርቱጋልኛ - ፖርቱጋል"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "\n"
-"በአረጋጋጭ መተግበሪያ ውስጥ የሚታየውን የመተግበሪያ ስም ይግለጹ"
-
-#: 
 msgid "Review"
 msgstr "ግምገማ"
 

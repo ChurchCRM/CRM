@@ -4918,10 +4918,6 @@ msgid "Portuguese - Portugal"
 msgstr "פוטוגזית - פורטוגל"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "ציין את שם האפליקציה שיוצג באפליקציית האימות"
-
-#: 
 msgid "Review"
 msgstr "סקירה"
 
