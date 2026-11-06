@@ -1,15 +1,13 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
+const os = require('node:os');
 const path = require('node:path');
-const { TITLE, MARKER, LABELS, startDate, renderReport, publish } = require('../../scripts/maintainer/weekly-issue-metrics');
+const { startDate, queries, renderReport, buildReport, writeReport } = require('../../scripts/maintainer/weekly-issue-metrics');
 
 const now = new Date('2026-11-06T00:00:00Z');
 const issue = (number, age, extra = {}) => ({
     number, created_at: new Date(now.getTime() - age * 86400000).toISOString(), labels: [], ...extra,
-});
-const report = (number, extra = {}) => issue(number, 7, {
-    title: TITLE, body: MARKER, labels: LABELS.map((name) => ({ name })), user: { login: 'github-actions[bot]' }, ...extra,
 });
 
 test('calculates the UTC window across month and year boundaries', () => {
@@ -17,17 +15,32 @@ test('calculates the UTC window across month and year boundaries', () => {
     assert.equal(startDate(new Date('2026-01-01T02:00:00+02:00')), '2025-12-02');
 });
 
-test('renders both summaries and backlog age boundaries, excluding PRs and reports', () => {
+test('default queries cover all milestones and allow closed issues in the recent window', () => {
+    const output = queries('', () => assert.fail('No milestone lookup needed'), now);
+    assert.equal(output.recent_query, 'repo:ChurchCRM/CRM is:issue -label:automated-report created:>=2026-10-07');
+    assert.equal(output.backlog_query, 'repo:ChurchCRM/CRM is:issue -label:automated-report is:open');
+    assert.equal(output.milestone_number, '');
+});
+
+test('resolves milestone titles across all pages, including closed milestones', () => {
+    const output = queries('Release 7.8.3', (endpoint) => {
+        assert.equal(endpoint, 'repos/ChurchCRM/CRM/milestones?state=all&per_page=100');
+        return [[{ number: 1, title: '7.8.2' }], [{ number: 245, title: 'Release 7.8.3', state: 'closed' }]];
+    }, now);
+    assert.ok(output.recent_query.includes('milestone:"Release 7.8.3"'));
+    assert.ok(output.backlog_query.includes('milestone:"Release 7.8.3"'));
+    assert.equal(output.milestone_number, '245');
+    assert.throws(() => queries('missing', () => [[]], now), /Milestone not found/);
+    assert.throws(() => queries('bad\nquery'), /single line/);
+});
+
+test('renders summaries and age boundaries, excluding PRs and reports', () => {
     const issues = [0, 30, 31, 90, 91, 365, 366].map((age, index) => issue(index + 1, age));
-    issues.push(issue(8, 900, { pull_request: {} }), report(9));
+    issues.push(issue(8, 900, { pull_request: {} }), issue(9, 7, { labels: [{ name: 'automated-report' }] }));
     const body = renderReport('Recent summary', 'Backlog summary', issues, now);
-    assert.ok(body.includes('Recent summary'));
-    assert.ok(body.includes('Backlog summary'));
-    assert.ok(body.includes('7 open issues'));
-    assert.ok(body.includes('| 0–30 days | 2 |'));
-    assert.ok(body.includes('| 31–90 days | 2 |'));
-    assert.ok(body.includes('| 91–365 days | 2 |'));
-    assert.ok(body.includes('| Over 365 days | 1 |'));
+    for (const text of ['Recent summary', 'Backlog summary', '7 open issues',
+        '| 0–30 days | 2 |', '| 31–90 days | 2 |', '| 91–365 days | 2 |', '| Over 365 days | 1 |',
+        'all milestones, including issues without a milestone']) assert.ok(body.includes(text), text);
     assert.ok(body.indexOf('[#7]') < body.indexOf('[#6]'));
     assert.ok(!body.includes('[#8]'));
     assert.ok(!body.includes('[#9]'));
@@ -36,97 +49,70 @@ test('renders both summaries and backlog age boundaries, excluding PRs and repor
 test('handles an empty backlog and limits the oldest issues to ten', () => {
     assert.ok(renderReport('recent', 'backlog', [], now).includes('| None | — |'));
     const body = renderReport('recent', 'backlog', Array.from({ length: 12 }, (_, i) => issue(i + 1, i)), now);
-    assert.equal((body.match(/https:\/\/www.github.com/g) || []).length, 10);
+    assert.equal(body.split('https://www.github.com/').length - 1, 10);
     assert.ok(!body.includes('[#1]'));
 });
 
-test('paginates and creates the replacement before retiring only marked bot reports', () => {
+test('reads every open-issue page without mutating issues', () => {
     const calls = [];
-    const api = (...args) => {
-        calls.push(args);
-        if (args[0] === 'GET') return [
-            [report(1), report(2, { user: { login: 'maintainer' } }), report(3, { body: 'Unmarked' })],
-            [report(4), report(5, { title: 'Another report' }), report(6, { labels: [] }), issue(7, 100)],
-        ];
-        if (args[0] === 'POST') return { number: 8 };
-        return {};
-    };
-    assert.equal(publish('recent', 'backlog', api, 'ChurchCRM/CRM', now).number, 8);
-    assert.deepEqual(calls[0], ['GET', 'repos/ChurchCRM/CRM/issues?state=open&per_page=100', undefined, true]);
-    assert.equal(calls[1][0], 'POST');
-    assert.deepEqual(calls[1][2].labels, LABELS);
-    assert.deepEqual(calls.slice(2), [1, 4].map((number) => [
-        'PATCH', `repos/ChurchCRM/CRM/issues/${number}`, { state: 'closed', state_reason: 'completed' },
-    ]));
+    const body = buildReport('recent', 'backlog', (endpoint) => {
+        calls.push(endpoint);
+        return [[issue(1, 10)], [issue(2, 100)]];
+    }, 'ChurchCRM/CRM', now);
+    assert.deepEqual(calls, ['repos/ChurchCRM/CRM/issues?state=open&per_page=100']);
+    assert.ok(body.includes('2 open issues'));
 });
 
-test('a failed create never closes the last report', () => {
-    const calls = [];
-    const api = (method) => {
-        calls.push(method);
-        if (method === 'GET') return [[report(1)]];
-        throw new Error('Create failed');
-    };
-    assert.throws(() => publish('recent', 'backlog', api, 'ChurchCRM/CRM', now), /Create failed/);
-    assert.deepEqual(calls, ['GET', 'POST']);
+test('applies the milestone to the age table and identifies the scope', () => {
+    const body = buildReport('recent', 'backlog', (endpoint) => {
+        assert.equal(endpoint, 'repos/ChurchCRM/CRM/issues?state=open&per_page=100&milestone=245');
+        return [[issue(1, 100)]];
+    }, 'ChurchCRM/CRM', now, '245', '7.8.3');
+    assert.ok(body.includes('Scope: milestone "7.8.3"'));
+    assert.ok(body.includes('1 open issues'));
+    assert.throws(() => buildReport('recent', 'backlog', () => assert.fail(), 'ChurchCRM/CRM', now, '', '7.8.3'), /Invalid milestone scope/);
 });
 
-test('a retry recovers from a failed retirement without touching unrelated issues', () => {
-    let open = [report(1), issue(2, 100)];
-    let failClose = true;
-    const api = (method, endpoint, body) => {
-        if (method === 'GET') return [open];
-        if (method === 'POST') {
-            const created = report(open.length + 1, { ...body, labels: body.labels.map((name) => ({ name })) });
-            open.push(created);
-            return created;
-        }
-        if (failClose) {
-            failClose = false;
-            throw new Error('Retirement failed');
-        }
-        open = open.filter(({ number }) => !endpoint.endsWith(`/${number}`));
-        return {};
-    };
-    assert.throws(() => publish('recent', 'backlog', api, 'ChurchCRM/CRM', now), /Retirement failed/);
-    const created = publish('recent', 'backlog', api, 'ChurchCRM/CRM', now);
-    assert.deepEqual(open.map(({ number }) => number), [2, created.number]);
-});
-
-test('invalid input and oversized output fail before creating or closing any issue', () => {
-    for (const [recent, backlog, pages, error] of [
-        ['', 'backlog', [[]], /nonempty/],
-        ['recent', 'backlog', {}, /Incomplete/],
-        ['recent', 'backlog', [[issue(1, 0, { created_at: 'invalid' })]], /Invalid creation/],
-        ['x'.repeat(65000), 'backlog', [[]], /body limit/],
-    ]) {
-        const calls = [];
-        const api = (method) => { calls.push(method); return pages; };
-        assert.throws(() => publish(recent, backlog, api, 'ChurchCRM/CRM', now), error);
-        assert.deepEqual(calls, ['GET']);
+test('writes matching Markdown artifact and run summary content', () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'crm-metrics-'));
+    try {
+        const summary = path.join(dir, 'summary.md');
+        const output = path.join(dir, 'weekly-issue-metrics.md');
+        fs.writeFileSync(summary, 'Existing summary\n');
+        const body = renderReport('recent', 'backlog', [], now);
+        writeReport(body, summary, output);
+        assert.equal(fs.readFileSync(output, 'utf8'), body);
+        assert.equal(fs.readFileSync(summary, 'utf8'), `Existing summary\n${body}`);
+        assert.throws(() => writeReport(body, ''), /GITHUB_STEP_SUMMARY/);
+    } finally {
+        fs.rmSync(dir, { recursive: true, force: true });
     }
-    assert.throws(() => publish('recent', 'backlog', () => assert.fail('No API calls expected'), 'fork/CRM'), /only be published/);
 });
 
-test('workflow serializes publication and preserves independent, bounded metrics outputs', () => {
+test('rejects missing summaries, incomplete pages and invalid creation dates', () => {
+    assert.throws(() => buildReport('', 'backlog', () => [[]], 'ChurchCRM/CRM', now), /nonempty/);
+    assert.throws(() => buildReport('recent', 'backlog', () => ({}), 'ChurchCRM/CRM', now), /Incomplete/);
+    assert.throws(() => renderReport('recent', 'backlog', [issue(1, 0, { created_at: 'invalid' })], now), /Invalid creation/);
+    assert.throws(() => buildReport('recent', 'backlog', () => assert.fail(), 'fork/CRM'), /only be generated/);
+});
+
+test('workflow attaches both outputs with read-only access and an optional milestone', () => {
     const yaml = require('yaml');
     const workflow = yaml.parse(fs.readFileSync(path.join(__dirname, '../../.github/workflows/weekly-issue-metrics.yml'), 'utf8'));
     assert.equal(workflow.on.schedule[0].cron, '0 0 * * 1');
-    assert.ok(Object.hasOwn(workflow.on, 'workflow_dispatch'));
-    assert.equal(workflow.concurrency['cancel-in-progress'], false);
-    assert.ok(!workflow.concurrency.group.includes('github.ref'));
+    assert.equal(workflow.on.workflow_dispatch.inputs.milestone.required, false);
+    assert.equal(workflow.jobs.report.permissions.issues, 'read');
     assert.deepEqual(workflow.permissions, { contents: 'read' });
     const steps = workflow.jobs.report.steps;
     const metrics = steps.filter((step) => step.uses?.startsWith('github-community-projects/issue-metrics@'));
     assert.equal(metrics.length, 2);
-    assert.ok(metrics[0].env.SEARCH_QUERY.includes('created:>=${{ env.START_DATE }}'));
-    assert.ok(!metrics[0].env.SEARCH_QUERY.includes('is:open'));
-    assert.ok(metrics[1].env.SEARCH_QUERY.includes('is:open'));
-    assert.ok(!metrics[1].env.SEARCH_QUERY.includes('created:'));
+    assert.equal(metrics[0].env.SEARCH_QUERY, '${{ steps.queries.outputs.recent_query }}');
+    assert.equal(metrics[1].env.SEARCH_QUERY, '${{ steps.queries.outputs.backlog_query }}');
     assert.notEqual(metrics[0].env.OUTPUT_FILE, metrics[1].env.OUTPUT_FILE);
-    for (const { env } of metrics) {
-        assert.ok(env.SEARCH_QUERY.includes('-label:automated-report'));
-        assert.equal(env.HIDE_ITEMS_LIST, 'true');
-    }
-    assert.match(steps.at(-1).run, /weekly-issue-metrics.js publish$/);
+    assert.ok(metrics.every(({ env }) => env.HIDE_ITEMS_LIST === 'true'));
+    assert.match(steps.at(-2).run, /weekly-issue-metrics.js report$/);
+    assert.equal(steps.at(-2).env.METRICS_MILESTONE_NUMBER, '${{ steps.queries.outputs.milestone_number }}');
+    assert.equal(steps.at(-1).uses, './.github/actions/upload-artifact');
+    assert.equal(steps.at(-1).with.path, 'weekly-issue-metrics.md');
+    assert.equal(steps.at(-1).with['if-no-files-found'], 'error');
 });
