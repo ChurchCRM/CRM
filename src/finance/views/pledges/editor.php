@@ -376,9 +376,10 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
         new TomSelect(familyNameEl, {
             valueField: 'id',
             labelField: 'text',
-            searchField: 'text',
+            searchField: [],
             load: function (query, callback) {
                 if (query.length < 2 && !/^\d+$/.test(query)) return callback();
+                this.clearOptions();
                 fetch(ROOT + '/api/families/search/' + encodeURIComponent(query))
                     .then(function (res) { return res.json(); })
                     .then(function (data) {
