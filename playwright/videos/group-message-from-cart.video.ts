@@ -34,7 +34,8 @@ test('group-message-from-cart', async ({ page }, testInfo) => {
     await humanType(page.locator('#crm-email-body'), 'Thank you for serving our church. Here is this week\'s welcome-team update.');
     await humanPause(page, 700);
     await humanClick(page.locator('#crm-email-send-submit'));
-    await expect(page.locator('#crm-email-composer-modal')).toBeHidden({ timeout: 15000 });
+    // The composer stays open and marks the button Sent or Queued.
+    await expect(page.locator('#crm-email-send-submit')).toHaveText(/Sent|Queued/, { timeout: 15000 });
     await settle(page, 1200);
 
     await captureScreen(page, testInfo, {
