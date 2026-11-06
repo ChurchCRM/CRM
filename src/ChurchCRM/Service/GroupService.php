@@ -356,6 +356,33 @@ class GroupService
         FunctionsUtils::runQuery($sSQL);
     }
 
+    public function getGroupMemberDetails(int $groupId): array
+    {
+        $memberships = Person2group2roleP2g2rQuery::create()
+            ->filterByGroupId($groupId)
+            ->joinWithPerson()
+            ->usePersonQuery()
+                ->leftJoinWithFamily()
+            ->endUse()
+            ->find();
+
+        $members = [];
+        foreach ($memberships as $membership) {
+            $person = $membership->getPerson();
+            $member = $membership->toArray(includeForeignObjects: true);
+            $member['Person']['Address1'] = $person->getResolvedAddress1();
+            $member['Person']['Address2'] = $person->getResolvedAddress2();
+            $member['Person']['City'] = $person->getResolvedCity();
+            $member['Person']['State'] = $person->getResolvedState();
+            $member['Person']['Zip'] = $person->getResolvedZip();
+            $member['Person']['Country'] = $person->getResolvedCountry();
+            $member['Person']['HomePhone'] = $person->getResolvedHomePhone();
+            $members[] = $member;
+        }
+
+        return $members;
+    }
+
     /**
      * @return array<mixed, array<'displayName'|'groupRole', mixed>>
      */
