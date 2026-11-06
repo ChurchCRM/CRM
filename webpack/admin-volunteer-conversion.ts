@@ -60,7 +60,7 @@ function t(key: string, options?: Record<string, unknown>): string {
   if (typeof i18next === "undefined" || typeof i18next.t !== "function") {
     return key;
   }
-  return i18next.t(key, options);
+  return i18next.t(key, { ...options, interpolation: { escapeValue: false } });
 }
 
 function escapeHtml(value: string): string {

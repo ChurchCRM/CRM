@@ -28,7 +28,7 @@ $rootPath = SystemURLs::getRootPath();
                 ) ?>
             </p>
             <div class="d-flex flex-wrap gap-2">
-                <a href="<?= $rootPath ?>/admin/volunteer-conversion" class="btn btn-primary" id="volunteer-v1-notice-convert">
+                <a href="<?= InputUtils::escapeAttribute($rootPath) ?>/admin/volunteer-conversion" class="btn btn-primary" id="volunteer-v1-notice-convert">
                     <?= gettext('Review the conversion') ?>
                 </a>
             <?php elseif ($volunteerV1Notice['pending'] > 0): ?>
@@ -39,7 +39,7 @@ $rootPath = SystemURLs::getRootPath();
                 ) ?>
             </p>
             <div class="d-flex flex-wrap gap-2">
-                <a href="<?= $rootPath ?>/admin/volunteer-conversion" class="btn btn-primary" id="volunteer-v1-notice-convert">
+                <a href="<?= InputUtils::escapeAttribute($rootPath) ?>/admin/volunteer-conversion" class="btn btn-primary" id="volunteer-v1-notice-convert">
                     <?= gettext('Review the conversion') ?>
                 </a>
             <?php else: ?>
@@ -47,7 +47,7 @@ $rootPath = SystemURLs::getRootPath();
                 <?= gettext('Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027.') ?>
             </p>
             <div class="d-flex flex-wrap gap-2">
-                <a href="<?= $rootPath ?>/admin/system/feature-toggles" class="btn btn-primary" id="volunteer-v1-notice-switch">
+                <a href="<?= InputUtils::escapeAttribute($rootPath) ?>/admin/system/feature-toggles" class="btn btn-primary" id="volunteer-v1-notice-switch">
                     <?= gettext('Open Feature Toggles') ?>
                 </a>
             <?php endif; ?>
