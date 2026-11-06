@@ -55,9 +55,14 @@ function isoDate(offsetDays) {
     return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
-/** The screen's own short date (webpack/ministries/components/ui.ts shortDate). */
+/** The screen's own short date (webpack/ministries/components/ui.ts shortDate): the year only outside this one. */
 function shortDate(offsetDays) {
-    return localDate(offsetDays).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+    const date = localDate(offsetDays);
+    return date.toLocaleDateString(undefined, {
+        month: "short",
+        day: "numeric",
+        year: date.getFullYear() === new Date().getFullYear() ? undefined : "numeric",
+    });
 }
 
 function weekly(title, from, to, extra = {}) {
