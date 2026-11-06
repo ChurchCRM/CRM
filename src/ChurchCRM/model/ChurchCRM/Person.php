@@ -402,37 +402,14 @@ class Person extends BasePerson implements PhotoInterface
     }
 
     /**
-     * Returns the latitude and longitude for this person.
-     *
-     * Priority:
-     *  1. Person has their own address → geocode it.
-     *  2. Geocoding fails or person has no address → use family's cached coords.
-     *  3. Family has no cached coords → geocode the family address and cache it.
-     *  4. Nothing available → returns ['Latitude' => 0, 'Longitude' => 0].
+     * Returns the stored latitude and longitude of this person's family, or 0/0 when it has none.
+     * Never geocodes: coordinates are set when the family is saved and by Geocode all.
      */
     public function getLatLng(): array
     {
         $family = $this->getFamily();
-
-        // Person has their own address — try geocoding it first.
-        if (!empty($this->getAddress1())) {
-            $latLng = GeoUtils::getLatLong($this->getAddress(), null, null, null, $this->getCountry());
-            if (!empty($latLng['Latitude']) && !empty($latLng['Longitude'])) {
-                return ['Latitude' => $latLng['Latitude'], 'Longitude' => $latLng['Longitude']];
-            }
-        }
-
-        // No personal address, or geocoding failed — fall back to family coords.
-        if ($family) {
-            if ($family->hasLatitudeAndLongitude()) {
-                return ['Latitude' => $family->getLatitude(), 'Longitude' => $family->getLongitude()];
-            }
-
-            // Family has no cached coords yet — geocode family address and cache it.
-            $family->updateLanLng();
-            if ($family->hasLatitudeAndLongitude()) {
-                return ['Latitude' => $family->getLatitude(), 'Longitude' => $family->getLongitude()];
-            }
+        if ($family && $family->hasLatitudeAndLongitude()) {
+            return ['Latitude' => $family->getLatitude(), 'Longitude' => $family->getLongitude()];
         }
 
         return ['Latitude' => 0, 'Longitude' => 0];

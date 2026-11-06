@@ -57,8 +57,6 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
     $params  = $request->getQueryParams();
     $groupId = isset($params['groupId']) ? (int) $params['groupId'] : null;
     $cartIds = $_SESSION['aPeopleCart'] ?? [];
-    // Members without coordinates are geocoded below, which can wait on a slow geocoder.
-    // Release the session lock so the user's other requests do not wait too.
     session_write_close();
 
     $items = [];
