@@ -33,7 +33,7 @@ $app->get('/volunteer-conversion', function (Request $request, Response $respons
             'ministries' => $ministries,
             'opportunityCount' => VolunteerOpportunityQuery::create()->count(),
             'unconverted' => VolunteerV1Service::unconvertedCount(),
-            'previousMinistryId' => VolunteerV1Service::previousMinistryId(),
+            'previousMinistryId' => VolunteerV1Service::previousMinistryId(VolunteerV1Service::storedConversion()),
             'version' => User::getVolunteerVersion(),
             'defaultMinistryName' => gettext('Volunteer Opportunities'),
             'csrfToken' => CSRFUtils::generateToken(),

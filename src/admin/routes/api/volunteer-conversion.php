@@ -18,7 +18,8 @@ $app->group('/api/volunteer-conversion', function (RouteCollectorProxy $group): 
 });
 
 /**
- * The choice as preview() and convert() read it, from a query string or a JSON body.
+ * The choice as preview() and convert() read it, from a query string or a JSON body. The
+ * service validates each value; a query string sends the opportunity ids comma-separated.
  *
  * @return array<string, mixed>
  */
@@ -30,8 +31,8 @@ function volunteerConversionChoice(array $input): array
     }
 
     return array_filter([
-        'ministryId' => isset($input['ministryId']) ? (int) $input['ministryId'] : null,
-        'ministryName' => isset($input['ministryName']) ? (string) $input['ministryName'] : null,
+        'ministryId' => $input['ministryId'] ?? null,
+        'ministryName' => $input['ministryName'] ?? null,
         'ownMinistry' => $own,
     ], static fn ($value): bool => $value !== null);
 }

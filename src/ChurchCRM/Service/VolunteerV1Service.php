@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\Map\VolunteerMinistryTableMap;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
@@ -12,6 +13,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
+use ChurchCRM\model\ChurchCRM\VolunteerQualificationQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
 use ChurchCRM\Utils\VersionUtils;
@@ -30,7 +32,9 @@ use Propel\Runtime\Propel;
  * opportunity becomes a position (or, by choice, a ministry of its own) and each person
  * linked to it a qualification for that position. It goes through the V2 services, sends
  * no email, leaves the V1 rows as they are, and records what became of each opportunity
- * in `aVolunteerV1Conversion`, so running it again converts only what is new.
+ * in `aVolunteerV1Conversion`, so running it again converts only what is new: new
+ * opportunities, and people linked to a converted one since, who have no qualification
+ * for its position yet.
  */
 class VolunteerV1Service
 {
@@ -55,7 +59,7 @@ class VolunteerV1Service
     /** @return int[] */
     private static function unconvertedIds(): array
     {
-        $converted = array_keys(self::conversionMap());
+        $converted = array_keys(self::conversionMap(self::storedConversion()));
         $query = VolunteerOpportunityQuery::create();
         if ($converted !== []) {
             $query->filterById($converted, Criteria::NOT_IN);
@@ -67,11 +71,12 @@ class VolunteerV1Service
     /**
      * Opportunity id => the id of the position it became.
      *
+     * @param array<string, mixed> $stored the decoded `aVolunteerV1Conversion`
+     *
      * @return array<int, int>
      */
-    public static function conversionMap(): array
+    public static function conversionMap(array $stored): array
     {
-        $stored = json_decode((string) SystemConfig::getValue(self::MAP_CONFIG), true);
         $map = [];
         foreach (is_array($stored['opportunities'] ?? null) ? $stored['opportunities'] : [] as $opportunityId => $positionId) {
             $map[(int) $opportunityId] = (int) $positionId;
@@ -80,13 +85,29 @@ class VolunteerV1Service
         return $map;
     }
 
-    /** The ministry the last conversion filled, when it still exists; 0 otherwise. */
-    public static function previousMinistryId(): int
+    /**
+     * The ministry the last conversion filled, when it still exists; 0 otherwise.
+     *
+     * @param array<string, mixed> $stored the decoded `aVolunteerV1Conversion`
+     */
+    public static function previousMinistryId(array $stored): int
     {
-        $stored = json_decode((string) SystemConfig::getValue(self::MAP_CONFIG), true);
         $id = (int) ($stored['ministryId'] ?? 0);
 
         return $id > 0 && VolunteerMinistryQuery::create()->filterById($id)->exists() ? $id : 0;
+    }
+
+    /**
+     * `aVolunteerV1Conversion` decoded. `$value` is the row read inside a conversion's lock;
+     * without it, the value this request loaded.
+     *
+     * @return array<string, mixed>
+     */
+    public static function storedConversion(?string $value = null): array
+    {
+        $stored = json_decode($value ?? (string) SystemConfig::getValue(self::MAP_CONFIG), true);
+
+        return is_array($stored) ? $stored : [];
     }
 
     /**
@@ -147,8 +168,21 @@ class VolunteerV1Service
      */
     public function preview(array $choice): array
     {
-        [$target, $targetName, $ownMinistry] = $this->readChoice($choice);
-        $map = self::conversionMap();
+        return $this->plan($choice, self::storedConversion());
+    }
+
+    /**
+     * @param array<string, mixed> $choice
+     * @param array<string, mixed> $stored
+     *
+     * @throws InvalidArgumentException
+     *
+     * @return array<string, mixed>
+     */
+    private function plan(array $choice, array $stored): array
+    {
+        [$target, $targetName, $ownMinistry] = $this->readChoice($choice, $stored);
+        $map = self::conversionMap($stored);
         $teamNames = $target === null ? [] : $this->positionNamesOf($this->firstTeam($target));
         $ministryNames = $this->ministryNames();
         if ($target === null) {
@@ -156,7 +190,7 @@ class VolunteerV1Service
         }
 
         $opportunities = [];
-        $totals = ['positions' => 0, 'ministries' => 0, 'qualifications' => 0, 'skipped' => 0, 'converted' => 0];
+        $totals = ['positions' => 0, 'ministries' => 0, 'qualifications' => 0, 'skipped' => 0, 'converted' => 0, 'pending' => 0];
         foreach (VolunteerOpportunityQuery::create()->orderByOrder()->orderById()->find() as $opportunity) {
             $id = (int) $opportunity->getId();
             [$people, $skipped] = $this->linkedPeople($id);
@@ -164,6 +198,7 @@ class VolunteerV1Service
             $ownsMinistry = !$converted && in_array($id, $ownMinistry, true);
             $baseName = $this->baseName($opportunity);
             $newName = $converted ? '' : ($ownsMinistry ? $this->freeName($baseName, $ministryNames) : $this->freeName($baseName, $teamNames));
+            $pending = $converted ? $this->pendingPeople($map[$id], $people) : [];
 
             $opportunities[] = [
                 'id' => $id,
@@ -177,10 +212,12 @@ class VolunteerV1Service
                 'renamed' => !$converted && $newName !== trim((string) $opportunity->getName()),
                 'people' => $people,
                 'skipped' => $skipped,
+                'pending' => $pending,
             ];
 
             if ($converted) {
                 ++$totals['converted'];
+                $totals['pending'] += count($pending);
                 continue;
             }
             ++$totals[$ownsMinistry ? 'ministries' : 'positions'];
@@ -197,8 +234,9 @@ class VolunteerV1Service
     }
 
     /**
-     * Convert every opportunity not converted yet, in one transaction. An install on V1
-     * moves to Both first, because the result is V2 data.
+     * Convert every opportunity not converted yet, and qualify the people linked to a
+     * converted one since, in one transaction. An install on V1 moves to Both first,
+     * because the result is V2 data. With nothing to do, nothing is written.
      *
      * @param array<string, mixed> $choice as for preview()
      *
@@ -209,27 +247,41 @@ class VolunteerV1Service
      */
     public function convert(array $choice, User $actor): array
     {
-        $plan = $this->preview($choice);
         $previousVersion = User::getVolunteerVersion();
-        if ($previousVersion === 'v1') {
-            SystemConfig::setValue('sVolunteerVersion', 'both');
-            VolunteerEventService::addOtherEventType();
-        }
-
-        $ministries = new VolunteerMinistryService();
-        $qualifications = new VolunteerQualificationService($ministries->getAuthorizationService(), $ministries);
         $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
         $connection->beginTransaction();
 
         try {
+            // Two administrators converting at once would both plan from the same map; the
+            // second waits here and plans from what the first committed.
+            VolunteerOpportunityQuery::create()->lockForUpdate()->find($connection);
+            $stored = self::storedConversion(ConfigQuery::create()->findOneByName(self::MAP_CONFIG)?->getValue() ?? '');
+            $plan = $this->plan($choice, $stored);
+            $map = self::conversionMap($stored);
+            if ($plan['totals']['positions'] + $plan['totals']['ministries'] + $plan['totals']['pending'] === 0) {
+                $connection->commit();
+
+                return $plan + ['map' => $map];
+            }
+
+            if ($previousVersion === 'v1') {
+                SystemConfig::setValue('sVolunteerVersion', 'both');
+                VolunteerEventService::addOtherEventType();
+            }
+            $ministries = new VolunteerMinistryService();
+            $qualifications = new VolunteerQualificationService($ministries->getAuthorizationService(), $ministries);
+
             $target = $plan['target']['exists']
                 ? VolunteerMinistryQuery::create()->findPk($plan['target']['id'])
                 : $ministries->createMinistry($plan['target']['name'], null, $actor);
             $targetTeam = $this->firstTeam($target);
 
-            $map = self::conversionMap();
             foreach ($plan['opportunities'] as $opportunity) {
                 if ($opportunity['converted']) {
+                    if ($opportunity['pending'] !== []) {
+                        $position = VolunteerPositionQuery::create()->findPk($map[$opportunity['id']]);
+                        $qualifications->importQualifications(array_column($opportunity['pending'], 'id'), $position, $actor);
+                    }
                     continue;
                 }
                 [$ministry, $team] = $opportunity['becomes'] === 'ministry'
@@ -268,22 +320,36 @@ class VolunteerV1Service
 
     /**
      * @param array<string, mixed> $choice
+     * @param array<string, mixed> $stored
      *
      * @throws InvalidArgumentException
      *
      * @return array{0: VolunteerMinistry|null, 1: string, 2: int[]}
      */
-    private function readChoice(array $choice): array
+    private function readChoice(array $choice, array $stored): array
     {
         $ownMinistry = $choice['ownMinistry'] ?? [];
         if (!is_array($ownMinistry)) {
             throw new InvalidArgumentException(gettext('Send the opportunities that become ministries as a list of ids.'));
         }
-        $ownMinistry = array_values(array_map('intval', $ownMinistry));
+        $ownMinistryIds = [];
+        foreach ($ownMinistry as $value) {
+            $id = self::wholeNumber($value);
+            if ($id === null || $id === 0) {
+                throw new InvalidArgumentException(gettext('Send the opportunities that become ministries as a list of ids.'));
+            }
+            $ownMinistryIds[] = $id;
+        }
 
-        $ministryId = (int) ($choice['ministryId'] ?? 0);
+        $ministryId = isset($choice['ministryId']) ? self::wholeNumber($choice['ministryId']) : 0;
+        if ($ministryId === null) {
+            throw new InvalidArgumentException(gettext('That ministry does not exist.'));
+        }
+        if (isset($choice['ministryName']) && !is_string($choice['ministryName'])) {
+            throw new InvalidArgumentException(gettext('Give the new ministry a name of up to 100 characters.'));
+        }
         if ($ministryId === 0 && !isset($choice['ministryName'])) {
-            $ministryId = self::previousMinistryId();
+            $ministryId = self::previousMinistryId($stored);
         }
         if ($ministryId > 0) {
             $target = VolunteerMinistryQuery::create()->findPk($ministryId);
@@ -291,10 +357,10 @@ class VolunteerV1Service
                 throw new InvalidArgumentException(gettext('That ministry does not exist.'));
             }
 
-            return [$target, (string) $target->getName(), $ownMinistry];
+            return [$target, (string) $target->getName(), $ownMinistryIds];
         }
 
-        $name = trim((string) ($choice['ministryName'] ?? gettext('Volunteer Opportunities')));
+        $name = trim($choice['ministryName'] ?? gettext('Volunteer Opportunities'));
         if ($name === '' || mb_strlen($name) > 100) {
             throw new InvalidArgumentException(gettext('Give the new ministry a name of up to 100 characters.'));
         }
@@ -302,7 +368,17 @@ class VolunteerV1Service
             throw new InvalidArgumentException(sprintf(gettext('A ministry called "%s" already exists. Choose it from the list, or pick another name.'), $name));
         }
 
-        return [null, $name, $ownMinistry];
+        return [null, $name, $ownMinistryIds];
+    }
+
+    /** A whole number sent as JSON or in a query string; null for anything else. */
+    private static function wholeNumber(mixed $value): ?int
+    {
+        if (is_int($value)) {
+            return $value >= 0 ? $value : null;
+        }
+
+        return is_string($value) && preg_match('/^\s*\d{1,9}\s*$/', $value) === 1 ? (int) $value : null;
     }
 
     /**
@@ -340,6 +416,31 @@ class VolunteerV1Service
         }
 
         return [$people, $skipped];
+    }
+
+    /**
+     * People linked to a converted opportunity who have no qualification for its position:
+     * linked since the conversion. One whose qualification was removed in Ministries stays
+     * removed. Nobody when the position is gone or inactive.
+     *
+     * @param array<int, array{id: int, name: string}> $people
+     *
+     * @return array<int, array{id: int, name: string}>
+     */
+    private function pendingPeople(int $positionId, array $people): array
+    {
+        $position = VolunteerPositionQuery::create()->findPk($positionId);
+        if ($position === null || !$position->getActive() || $people === []) {
+            return [];
+        }
+        $known = array_flip(array_map('intval', VolunteerQualificationQuery::create()
+            ->filterByPositionId($positionId)
+            ->filterByPersonId(array_column($people, 'id'), Criteria::IN)
+            ->select(['PersonId'])
+            ->find()
+            ->toArray()));
+
+        return array_values(array_filter($people, static fn (array $person): bool => !isset($known[$person['id']])));
     }
 
     private function baseName(VolunteerOpportunity $opportunity): string

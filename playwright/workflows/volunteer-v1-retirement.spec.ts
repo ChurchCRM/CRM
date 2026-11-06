@@ -2,7 +2,8 @@ import { expect, type Page, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
 import { settle } from '../support/human';
-import { setVolunteerVersion, waitForFloatingButtonsToTuck } from '../support/volunteer';
+import { BASE_URL } from '../support/env';
+import { STORAGE_STATE_PATH, setVolunteerVersion, waitForFloatingButtonsToTuck } from '../support/volunteer';
 
 const V1_API = '/admin/api/volunteer-opportunities';
 
@@ -48,15 +49,19 @@ async function createOpportunities(page: Page): Promise<void> {
 
 test.describe('Volunteer Opportunities retirement', () => {
   test.afterAll(async ({ browser }) => {
-    const page = await browser.newPage();
-    for (const { id, personIds } of created) {
-      for (const person of personIds) {
-        await page.request.get(`/people/view/${person}?RemoveVO=${id}`);
+    const context = await browser.newContext({ baseURL: BASE_URL, storageState: STORAGE_STATE_PATH });
+    try {
+      const page = await context.newPage();
+      for (const { id, personIds } of created) {
+        for (const person of personIds) {
+          await page.request.get(`/people/view/${person}?RemoveVO=${id}`);
+        }
+        await json(page, 'DELETE', `${V1_API}/${id}`);
       }
-      await json(page, 'DELETE', `${V1_API}/${id}`);
+      await setVolunteerVersion(page, 'v2');
+    } finally {
+      await context.close();
     }
-    await setVolunteerVersion(page, 'v2');
-    await page.close();
   });
 
   test('volunteer-v1-conversion', async ({ page }, testInfo) => {

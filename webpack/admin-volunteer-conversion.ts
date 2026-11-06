@@ -24,18 +24,33 @@ interface PlannedOpportunity {
   renamed: boolean;
   people: Array<{ id: number; name: string }>;
   skipped: Array<{ personId: number; reason: string; name: string }>;
+  pending: Array<{ id: number; name: string }>;
 }
 
 interface Plan {
   version: string;
   target: { id: number | null; name: string; exists: boolean };
   opportunities: PlannedOpportunity[];
-  totals: { positions: number; ministries: number; qualifications: number; skipped: number; converted: number };
+  totals: {
+    positions: number;
+    ministries: number;
+    qualifications: number;
+    skipped: number;
+    converted: number;
+    pending: number;
+  };
   message?: string;
 }
 
+interface Choice {
+  ministryId?: number;
+  ministryName?: string;
+  ownMinistry: number[];
+}
+
 const ownMinistry = new Set<number>();
-let latest: Plan | null = null;
+/** The last plan shown and the choice it was made for; null while a newer choice waits for its plan. */
+let latest: { plan: Plan; choice: Choice } | null = null;
 let requestSeq = 0;
 
 const root = (): string => window.CRM?.root ?? "";
@@ -58,20 +73,33 @@ function byId<T extends HTMLElement>(id: string): T | null {
   return document.getElementById(id) as T | null;
 }
 
-function choice(): Record<string, unknown> {
+function choice(): Choice {
   const existing = byId<HTMLInputElement>("volunteerConversionTargetExisting")?.checked;
   const target = existing
     ? { ministryId: Number(byId<HTMLSelectElement>("volunteerConversionMinistry")?.value ?? 0) }
     : { ministryName: byId<HTMLInputElement>("volunteerConversionMinistryName")?.value ?? "" };
-  return { ...target, ownMinistry: [...ownMinistry] };
+  return { ...target, ownMinistry: [...ownMinistry].sort((a, b) => a - b) };
 }
 
-function previewUrl(): string {
+function sameChoice(a: Choice, b: Choice): boolean {
+  return JSON.stringify(a) === JSON.stringify(b);
+}
+
+function previewUrl(snapshot: Choice): string {
   const params = new URLSearchParams();
-  for (const [key, value] of Object.entries(choice())) {
+  for (const [key, value] of Object.entries(snapshot)) {
     params.set(key, Array.isArray(value) ? value.join(",") : String(value));
   }
   return `${root()}/admin/api/volunteer-conversion/preview?${params.toString()}`;
+}
+
+/** A changed choice: Convert waits until the plan for it is on screen. */
+function invalidate(): void {
+  latest = null;
+  const run = byId<HTMLButtonElement>("volunteerConversionRun");
+  if (run) {
+    run.disabled = true;
+  }
 }
 
 function skippedNote(item: PlannedOpportunity): string {
@@ -95,7 +123,11 @@ function renderRow(item: PlannedOpportunity): string {
   const volunteers = `<details><summary>${item.people.length}</summary><div class="small text-secondary">${people || "—"}</div></details>`;
 
   if (item.converted) {
-    return `<tr data-opportunity="${item.id}"><td>${name}${inactive}</td><td colspan="3"><span class="badge bg-success-lt">${escapeHtml(t("Converted"))}</span></td></tr>`;
+    const pending =
+      item.pending.length > 0
+        ? `<div class="small text-secondary mt-1">${escapeHtml(t("Linked since: {{names}}", { names: item.pending.map((person) => person.name).join(", ") }))}</div>`
+        : "";
+    return `<tr data-opportunity="${item.id}"><td>${name}${inactive}</td><td colspan="3"><span class="badge bg-success-lt">${escapeHtml(t("Converted"))}</span>${pending}</td></tr>`;
   }
 
   const becomes = `<select class="form-select form-select-sm w-auto" data-becomes="${item.id}" aria-label="${escapeHtml(t("What it becomes"))}">
@@ -111,14 +143,14 @@ function renderRow(item: PlannedOpportunity): string {
   return `<tr data-opportunity="${item.id}"><td>${name}${inactive}</td><td>${becomes}</td><td>${volunteers}</td><td class="small">${notes || "—"}</td></tr>`;
 }
 
-function render(plan: Plan): void {
-  latest = plan;
+function render(plan: Plan, snapshot: Choice): void {
+  latest = { plan, choice: snapshot };
   const tbody = document.querySelector<HTMLTableSectionElement>("#volunteerConversionTable tbody");
   if (tbody) {
     tbody.innerHTML = plan.opportunities.map(renderRow).join("");
   }
 
-  const { positions, ministries, qualifications, skipped, converted } = plan.totals;
+  const { positions, ministries, qualifications, skipped, converted, pending } = plan.totals;
   const target = plan.target.exists
     ? t("into the ministry {{name}}", { name: plan.target.name })
     : t("into a new ministry, {{name}}", { name: plan.target.name });
@@ -128,13 +160,14 @@ function render(plan: Plan): void {
     `${escapeHtml(t("Volunteers qualified"))}: <strong>${qualifications}</strong>`,
     `${escapeHtml(t("Links that cannot convert"))}: <strong>${skipped}</strong>`,
     converted > 0 ? `${escapeHtml(t("Already converted"))}: <strong>${converted}</strong>` : "",
+    pending > 0 ? `${escapeHtml(t("Volunteers to add to converted positions"))}: <strong>${pending}</strong>` : "",
   ].filter(Boolean);
   const summary = byId("volunteerConversionSummary");
   if (summary) {
     summary.innerHTML = `<ul class="mb-0">${lines.map((line) => `<li>${line}</li>`).join("")}</ul>`;
   }
 
-  const todo = positions + ministries;
+  const todo = positions + ministries + pending;
   const run = byId<HTMLButtonElement>("volunteerConversionRun");
   if (run) {
     run.disabled = todo === 0;
@@ -165,7 +198,16 @@ function renderError(message: string): void {
 
 async function refresh(): Promise<void> {
   const seq = ++requestSeq;
-  const response = await fetch(previewUrl(), { headers: { Accept: "application/json" } });
+  const snapshot = choice();
+  let response: Response;
+  try {
+    response = await fetch(previewUrl(snapshot), { headers: { Accept: "application/json" } });
+  } catch {
+    if (seq === requestSeq) {
+      renderError(t("The conversion could not be previewed."));
+    }
+    return;
+  }
   const body = (await response.json().catch(() => null)) as Plan | null;
   if (seq !== requestSeq) {
     return;
@@ -174,19 +216,26 @@ async function refresh(): Promise<void> {
     renderError(body?.message || t("The conversion could not be previewed."));
     return;
   }
-  render(body);
+  render(body, snapshot);
 }
 
-async function convert(): Promise<void> {
-  const run = byId<HTMLButtonElement>("volunteerConversionRun");
-  if (run) {
-    run.disabled = true;
+async function convert(snapshot: Choice): Promise<void> {
+  invalidate();
+  let response: Response;
+  try {
+    response = await fetch(`${root()}/admin/api/volunteer-conversion`, {
+      method: "POST",
+      headers: { "content-type": "application/json", "X-CSRF-Token": config().csrfToken },
+      body: JSON.stringify(snapshot),
+    });
+  } catch {
+    window.CRM?.notify?.(t("The server could not be reached. Reload the page to see whether the conversion ran."), {
+      type: "error",
+      delay: 8000,
+    });
+    await refresh();
+    return;
   }
-  const response = await fetch(`${root()}/admin/api/volunteer-conversion`, {
-    method: "POST",
-    headers: { "content-type": "application/json", "X-CSRF-Token": config().csrfToken },
-    body: JSON.stringify(choice()),
-  });
   const body = (await response.json().catch(() => null)) as Plan | null;
   if (!response.ok || body === null) {
     window.CRM?.notify?.(body?.message || t("The conversion failed. Nothing was changed."), {
@@ -207,7 +256,7 @@ async function convert(): Promise<void> {
       `<div class="alert alert-success" id="volunteerConversionDone">${escapeHtml(
         t(
           "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified.",
-          body.totals,
+          { ...body.totals, qualifications: body.totals.qualifications + body.totals.pending },
         ),
       )} <a href="${root()}/ministries/dashboard">${escapeHtml(t("Open Ministries"))}</a></div>`,
     );
@@ -215,26 +264,35 @@ async function convert(): Promise<void> {
 }
 
 function confirmConvert(): void {
-  const plan = latest;
-  if (!plan) {
+  const shown = latest;
+  if (!shown || !sameChoice(shown.choice, choice())) {
     return;
   }
-  const message = escapeHtml(
-    t("Convert {{count}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired.", {
-      count: plan.totals.positions + plan.totals.ministries,
-    }),
-  );
   if (!window.bootbox) {
-    void convert();
+    window.CRM?.notify?.(t("The confirmation could not open. Reload the page and try again."), {
+      type: "error",
+      delay: 5000,
+    });
     return;
   }
+  const { positions, ministries, pending } = shown.plan.totals;
+  const message = escapeHtml(
+    positions + ministries > 0
+      ? t(
+          "Convert {{count}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired.",
+          {
+            count: positions + ministries,
+          },
+        )
+      : t("Add {{count}} volunteers to positions converted before?", { count: pending }),
+  );
   window.bootbox.confirm({
     title: t("Convert Volunteer Opportunities"),
     message,
     buttons: { confirm: { label: t("Convert"), className: "btn-primary" }, cancel: { label: t("Cancel") } },
     callback: (yes: boolean) => {
-      if (yes) {
-        void convert();
+      if (yes && latest === shown && sameChoice(shown.choice, choice())) {
+        void convert(shown.choice);
       }
     },
   });
@@ -257,14 +315,19 @@ function start(): void {
       if (select) {
         select.disabled = !existing;
       }
+      invalidate();
       void refresh();
     });
   }
   name?.addEventListener("input", () => {
+    invalidate();
     window.clearTimeout(typing);
     typing = window.setTimeout(() => void refresh(), 300);
   });
-  select?.addEventListener("change", () => void refresh());
+  select?.addEventListener("change", () => {
+    invalidate();
+    void refresh();
+  });
 
   document.querySelector("#volunteerConversionTable tbody")?.addEventListener("change", (event) => {
     const target = event.target as HTMLSelectElement;
@@ -277,6 +340,7 @@ function start(): void {
     } else {
       ownMinistry.delete(id);
     }
+    invalidate();
     void refresh();
   });
 

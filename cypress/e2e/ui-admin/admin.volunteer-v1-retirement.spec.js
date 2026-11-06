@@ -182,17 +182,16 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
             cy.wait("@preview");
 
             cy.get("#volunteerConversionMinistryName").clear().type(TARGET);
-            cy.wait("@preview");
+            cy.get("#volunteerConversionSummary").should("contain.text", TARGET);
             cy.get(`#volunteerConversionTable tr[data-opportunity='${opportunities[MUSIC]}'] select`).select("ministry");
-            cy.wait("@preview").its("response.body.totals").should("deep.include", {
-                positions: 2,
-                ministries: 1,
-                qualifications: 5,
-                skipped: 1,
-            });
+            cy.get("#volunteerConversionSummary")
+                .should("contain.text", "Positions: 2")
+                .and("contain.text", "New ministries of their own: 1")
+                .and("contain.text", "Volunteers qualified: 5")
+                .and("contain.text", "Links that cannot convert: 1");
             cy.get(`#volunteerConversionTable tr[data-opportunity='${opportunities[GREETER]}']`).should("contain.text", "Salvador Berry (deceased)");
 
-            cy.get("#volunteerConversionRun").click();
+            cy.get("#volunteerConversionRun").should("be.enabled").click();
             cy.get(".bootbox .btn-primary").click();
             cy.wait("@convert").its("response.statusCode").should("eq", 200);
             cy.get("#volunteerConversionDone").should("contain.text", "2 positions and 1 ministries, 5 volunteers qualified");
@@ -238,6 +237,36 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
             });
         });
 
+        it("qualifies people linked to a converted opportunity since, and creates nothing when nothing is left", () => {
+            freshAdminLogin();
+            link(6, [GREETER, USHER]);
+            cy.makePrivateAdminAPICall("GET", `${CONVERSION_API}/preview`, null, 200).then((preview) => {
+                expect(preview.body.totals).to.deep.include({ positions: 0, ministries: 0, pending: 1 });
+                const usher = preview.body.opportunities.find((opportunity) => opportunity.name === USHER);
+                expect(usher.pending.map((person) => person.id)).to.deep.eq([6]);
+            });
+            cy.makePrivateAdminAPICall("POST", CONVERSION_API, {}, 200).its("body.totals").should("deep.include", { pending: 1 });
+            ministryByName(TARGET).then((ministry) => {
+                cy.makePrivateAdminAPICall("GET", `/api/ministries/ministries/${ministry.id}/positions`, null, 200).then((resp) => {
+                    const usher = resp.body.positions.find((position) => position.name === USHER);
+                    cy.makePrivateAdminAPICall("GET", `/api/ministries/positions/${usher.id}/qualifications`, null, 200)
+                        .its("body.qualifications")
+                        .then((qualifications) => {
+                            expect(qualifications.map((qualification) => qualification.personId)).to.have.members([7, 6]);
+                        });
+                });
+            });
+
+            cy.makePrivateAdminAPICall("POST", CONVERSION_API, { ministryName: `${PREFIX} Empty` }, 200)
+                .its("body.totals")
+                .should("deep.include", { positions: 0, ministries: 0, pending: 0 });
+            cy.makePrivateAdminAPICall("GET", "/api/ministries/ministries", null, 200)
+                .its("body.ministries")
+                .then((ministries) => {
+                    expect(ministries.map((ministry) => ministry.name)).not.to.include(`${PREFIX} Empty`);
+                });
+        });
+
         it("hides Volunteer Opportunities again on V2 once everything is converted", () => {
             setVersion("v2");
             freshAdminLogin();
@@ -251,6 +280,12 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
             cy.makePrivateAdminAPICall("GET", `${CONVERSION_API}/preview?ministryName=${encodeURIComponent(TARGET)}`, null, 400)
                 .its("body.message")
                 .should("contain", "already exists");
+        });
+
+        it("refuses ids that are not whole numbers", () => {
+            cy.makePrivateAdminAPICall("GET", `${CONVERSION_API}/preview?ownMinistry=abc`, null, 400);
+            cy.makePrivateAdminAPICall("GET", `${CONVERSION_API}/preview?ministryId=3x`, null, 400);
+            cy.makePrivateAdminAPICall("POST", CONVERSION_API, { ownMinistry: [{ id: 1 }] }, 400);
         });
     });
 });

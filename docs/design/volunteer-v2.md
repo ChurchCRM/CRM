@@ -1863,8 +1863,8 @@ While V1 is in use, administrators see a retirement notice: on the Admin Dashboa
 - name, description, order and active carry over; self sign-up starts off;
 - each living person linked to it gets a qualification for the position and joins the pool; links to missing or deceased people are listed, not converted;
 - names already taken get a suffix, `(2)`, `(3)`…;
-- it runs through the V2 services in one transaction and sends no email; an install on `v1` moves to `both` first;
-- the opportunity → position map is `aVolunteerV1Conversion`, so a re-run converts only new opportunities, into the ministry used last time;
+- it runs through the V2 services in one transaction, holding a lock on the opportunities so two conversions cannot plan from the same map, and sends no email; an install on `v1` moves to `both` first; with nothing to do it writes nothing;
+- the opportunity → position map is `aVolunteerV1Conversion`, so a re-run converts only new opportunities, into the ministry used last time, and qualifies people linked to a converted opportunity since; a qualification removed in Ministries stays removed;
 - the V1 rows are not touched.
 
 V1 is removed in the first release after about 2027-01-10, three months after 7.8.0 made V2 available. That upgrade converts whatever is left the same way, then drops the V1 tables, screens, API and reports; `sVolunteerVersion` becomes a plain Ministries on/off.
