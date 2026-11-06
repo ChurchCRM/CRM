@@ -62,7 +62,7 @@ class LocalAuthentication implements IAuthenticationProvider
     {
         $google2fa = new Google2FA();
         $g2faUrl = $google2fa->getQRCodeUrl(
-            SystemConfig::getValue('s2FAApplicationName'),
+            SystemConfig::getValue('s2FAApplicationName') ?: SystemConfig::getValue('sChurchName') ?: 'ChurchCRM',
             $username,
             $secret
         );
