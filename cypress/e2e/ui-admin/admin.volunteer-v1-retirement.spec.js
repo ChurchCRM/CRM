@@ -256,6 +256,14 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
         it("qualifies people linked to a converted opportunity since, and creates nothing when nothing is left", () => {
             freshAdminLogin();
             link(people.constance, [GREETER, USHER]);
+            setVersion("v2");
+            freshAdminLogin();
+            cy.visit("/admin/");
+            cy.get("#volunteer-v1-notice")
+                .should("contain.text", "since the conversion: 1")
+                .find("#volunteer-v1-notice-convert")
+                .should("have.attr", "href", "/admin/volunteer-conversion");
+
             cy.makePrivateAdminAPICall("GET", `${CONVERSION_API}/preview`, null, 200).then((preview) => {
                 expect(preview.body.totals).to.deep.include({ positions: 0, ministries: 0, pending: 1 });
                 const usher = preview.body.opportunities.find((opportunity) => opportunity.name === USHER);

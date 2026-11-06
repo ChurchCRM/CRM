@@ -1854,7 +1854,7 @@ These are the only places the rollout flag has to be threaded. Everything else i
 
 ### 3.9 Retiring V1 (#10606, epic #9702)
 
-**V1 is in use** while `sVolunteerVersion` is `v1` or `both`, or opportunities exist that have not been converted (`VolunteerV1Service::isInUse()`). Every V1 surface above shows only then; the `v1` and `both` choices on Feature Toggles too. A new install never sees V1.
+**V1 is in use** while `sVolunteerVersion` is `v1` or `both`, opportunities exist that have not been converted, or people linked to a converted opportunity since still wait for their qualification (`VolunteerV1Service::isInUse()`). Every V1 surface above shows only then; the `v1` and `both` choices on Feature Toggles too. A new install never sees V1.
 
 While V1 is in use, administrators see a retirement notice: on the Admin Dashboard (dismissible until the next upgrade, `sVolunteerV1NoticeDismissed`), and on the V1 editor, the person-view V1 tab and the Feature Toggles row.
 

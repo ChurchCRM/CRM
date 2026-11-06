@@ -27,8 +27,9 @@ use Propel\Runtime\Propel;
 /**
  * The legacy Volunteer Opportunities (V1) on their way out (#10606, epic #9702).
  *
- * V1 is "in use" while the install runs V1 or Both, or holds opportunities nobody has
- * converted yet; everything V1 shows hides otherwise. Conversion is one way: each
+ * V1 is "in use" while the install runs V1 or Both, holds opportunities nobody has
+ * converted yet, or has people linked to a converted one since who wait for their
+ * qualification; everything V1 shows hides otherwise. Conversion is one way: each
  * opportunity becomes a position (or, by choice, a ministry of its own) and each person
  * linked to it a qualification for that position. It goes through the V2 services, sends
  * no email, leaves the V1 rows as they are, and records what became of each opportunity
@@ -48,12 +49,30 @@ class VolunteerV1Service
 
     public static function isInUse(): bool
     {
-        return self::$inUse ??= User::isVolunteerV1Enabled() || self::unconvertedCount() > 0;
+        return self::$inUse ??= User::isVolunteerV1Enabled() || self::unconvertedCount() > 0 || self::pendingCount() > 0;
     }
 
     public static function unconvertedCount(): int
     {
         return count(self::unconvertedIds());
+    }
+
+    /** People linked to a converted opportunity since its conversion, not yet qualified for its position. */
+    public static function pendingCount(): int
+    {
+        $map = self::conversionMap(self::storedConversion());
+        if ($map === []) {
+            return 0;
+        }
+        $service = new self();
+        $links = $service->linkedPeople(array_keys($map));
+        $qualified = $service->qualificationsOf(array_values($map));
+        $pending = 0;
+        foreach ($map as $opportunityId => $positionId) {
+            $pending += count(self::pendingPeople($links[$opportunityId][0], $qualified[$positionId] ?? null));
+        }
+
+        return $pending;
     }
 
     /** @return int[] */
@@ -113,18 +132,23 @@ class VolunteerV1Service
     /**
      * What every retirement notice says: how much is left to convert and who it concerns.
      *
-     * @return array{unconverted: int, people: int, version: string}
+     * @return array{unconverted: int, people: int, pending: int, version: string}
      */
     public static function noticeFacts(): array
     {
-        return ['unconverted' => self::unconvertedCount(), 'people' => self::linkedPeopleCount(), 'version' => User::getVolunteerVersion()];
+        return [
+            'unconverted' => self::unconvertedCount(),
+            'people' => self::linkedPeopleCount(),
+            'pending' => self::pendingCount(),
+            'version' => User::getVolunteerVersion(),
+        ];
     }
 
     /**
      * The Admin Dashboard notice's facts, or null when V1 is not in use or an administrator
      * dismissed the notice on this version.
      *
-     * @return array{unconverted: int, people: int, version: string}|null
+     * @return array{unconverted: int, people: int, pending: int, version: string}|null
      */
     public static function dashboardNotice(): ?array
     {
@@ -201,9 +225,7 @@ class VolunteerV1Service
             $ownsMinistry = !$converted && in_array($id, $ownMinistry, true);
             $baseName = $this->baseName($opportunity);
             $newName = $converted ? '' : ($ownsMinistry ? $this->freeName($baseName, $ministryNames) : $this->freeName($baseName, $teamNames));
-            $pending = $converted && isset($qualified[$map[$id]])
-                ? array_values(array_filter($people, static fn (array $person): bool => !isset($qualified[$map[$id]][$person['id']])))
-                : [];
+            $pending = $converted ? self::pendingPeople($people, $qualified[$map[$id]] ?? null) : [];
 
             $opportunities[] = [
                 'id' => $id,
@@ -433,6 +455,24 @@ class VolunteerV1Service
         }
 
         return $result;
+    }
+
+    /**
+     * The people linked to a converted opportunity who are not among `$qualified`, its
+     * position's qualified people. Nobody when the position is gone or inactive (null).
+     *
+     * @param array<int, array{id: int, name: string}> $people
+     * @param array<int, true>|null                    $qualified
+     *
+     * @return array<int, array{id: int, name: string}>
+     */
+    private static function pendingPeople(array $people, ?array $qualified): array
+    {
+        if ($qualified === null) {
+            return [];
+        }
+
+        return array_values(array_filter($people, static fn (array $person): bool => !isset($qualified[$person['id']])));
     }
 
     /**
