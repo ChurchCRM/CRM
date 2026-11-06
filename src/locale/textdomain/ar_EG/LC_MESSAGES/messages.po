@@ -25184,10 +25184,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "من يُخفي سجله عمره لا تُعرض سنة ميلاده أبدًا."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "قُدّم طلب في بوابة الأعضاء لتغيير عنوان بريدكم الإلكتروني في %s من %s إلى %s. يتم التغيير فقط عند استخدام الرابط المرسَل إلى %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "أحد الصفوف ليس بالشكل المتوقع."
 

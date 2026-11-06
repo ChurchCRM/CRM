@@ -25035,10 +25035,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Ang taong itinatago ng tala ang edad ay hindi kailanman nagpapakita ng taon ng kapanganakan."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "May hiniling sa Member Portal na baguhin ang iyong email address nang %s mula %s tungo sa %s. Nangyayari lamang ang pagbabago kapag ginamit ang link na ipinadala sa %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Ang isang hilera ay wala sa inaasahang anyo."
 

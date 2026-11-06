@@ -6092,7 +6092,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "%2$s-ന് %1$s-ന് നിങ്ങളുടെ അംഗ പോർട്ടൽ സൈൻ-ഇനിലേക്ക് ഒരു പാസ്‌കീ ചേർത്തു.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "അത് നഷ്ടപ്പെടുന്ന വ്യക്തിക്ക് പിന്നെ സ്വന്തം ഇമെയിൽ ഇല്ല: ഗ്രൂപ്പ് ഇമെയിൽ പോലെ അവർക്ക് മാത്രം അയയ്ക്കുന്ന മെയിൽ ഒഴിവാക്കും, ഇമെയിൽ എഴുത്തുകാരൻ അത് പറയും.",
   "A person whose record hides their age never shows a birth year.": "പ്രായം മറയ്ക്കുന്ന റെക്കോർഡുള്ള വ്യക്തിയുടെ ജനന വർഷം ഒരിക്കലും കാണിക്കില്ല.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "%s-ന് നിങ്ങളുടെ ഇമെയിൽ വിലാസം %s-ൽ നിന്ന് %s-ലേക്ക് മാറ്റാൻ അംഗ പോർട്ടലിൽ അഭ്യർത്ഥനയുണ്ടായി. %s-ലേക്ക് അയച്ച ലിങ്ക് ഉപയോഗിച്ചാൽ മാത്രമേ മാറ്റം സംഭവിക്കൂ.",
   "A row is not in the expected form.": "ഒരു വരി പ്രതീക്ഷിച്ച രൂപത്തിലല്ല.",
   "A team": "ഒരു ടീം",
   "Add a passkey": "ഒരു പാസ്‌കീ ചേർക്കുക",

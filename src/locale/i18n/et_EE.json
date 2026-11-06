@@ -6092,7 +6092,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "Teie liikmeportaali sisselogimisele lisati pääsuvõti kell %1$s kuupäeval %2$s.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "Inimesel, kes selle kaotab, ei ole siis oma e-posti aadressi: ainult temale saadetud kiri, näiteks rühma kiri, jäetakse vahele ja kirja koostaja ütleb seda.",
   "A person whose record hides their age never shows a birth year.": "Inimese kirje, mis peidab vanuse, ei näita kunagi sünniaastat.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "Liikmeportaalis taotleti kell %s teie e-posti aadressi muutmist aadressilt %s aadressile %s. Muudatus toimub ainult siis, kui kasutatakse aadressile %s saadetud linki.",
   "A row is not in the expected form.": "Rida ei ole oodatud kujul.",
   "A team": "Meeskond",
   "Add a passkey": "Lisage pääsuvõti",
