@@ -46,4 +46,4 @@ Serves on `http://localhost`. Edit `examples/frankenphp/Caddyfile` to customize.
 
 ## Behind a TLS-terminating reverse proxy
 
-ChurchCRM trusts `X-Forwarded-Proto` only from peers listed in the `CHURCHCRM_TRUSTED_PROXIES` environment variable (comma-separated IPs or CIDRs, for example `172.18.0.0/16`). Set it on the PHP container, or the session cookie loses its `Secure` flag and HSTS is not sent.
+ChurchCRM trusts `X-Forwarded-Proto` only from peers listed in the `CHURCHCRM_TRUSTED_PROXIES` environment variable (comma-separated IPs or CIDRs, for example `172.18.0.0/16`). Set it on the PHP container, or the session cookie loses its `Secure` flag and HSTS is not sent. Sign-in throttling counts each visitor by the address those proxies add to `X-Forwarded-For`; without the setting, every visitor is counted as the proxy's address and shares its limit. List only your proxies: every listed address is believed, so a visitor inside a listed range could choose the address it is counted by.
