@@ -191,14 +191,19 @@ class VolunteerV1Service
 
         $opportunities = [];
         $totals = ['positions' => 0, 'ministries' => 0, 'qualifications' => 0, 'skipped' => 0, 'converted' => 0, 'pending' => 0];
-        foreach (VolunteerOpportunityQuery::create()->orderByOrder()->orderById()->find() as $opportunity) {
+        $rows = iterator_to_array(VolunteerOpportunityQuery::create()->orderByOrder()->orderById()->find(), false);
+        $links = $this->linkedPeople(array_map(static fn (VolunteerOpportunity $row): int => (int) $row->getId(), $rows));
+        $qualified = $this->qualificationsOf(array_values($map));
+        foreach ($rows as $opportunity) {
             $id = (int) $opportunity->getId();
-            [$people, $skipped] = $this->linkedPeople($id);
+            [$people, $skipped] = $links[$id];
             $converted = isset($map[$id]);
             $ownsMinistry = !$converted && in_array($id, $ownMinistry, true);
             $baseName = $this->baseName($opportunity);
             $newName = $converted ? '' : ($ownsMinistry ? $this->freeName($baseName, $ministryNames) : $this->freeName($baseName, $teamNames));
-            $pending = $converted ? $this->pendingPeople($map[$id], $people) : [];
+            $pending = $converted && isset($qualified[$map[$id]])
+                ? array_values(array_filter($people, static fn (array $person): bool => !isset($qualified[$map[$id]][$person['id']])))
+                : [];
 
             $opportunities[] = [
                 'id' => $id,
@@ -382,65 +387,82 @@ class VolunteerV1Service
     }
 
     /**
-     * The people linked to an opportunity, once each, and the links that cannot convert.
+     * For each opportunity: the people linked to it, once each, and the links that cannot convert.
      *
-     * @return array{0: array<int, array{id: int, name: string}>, 1: array<int, array{personId: int, reason: string}>}
+     * @param int[] $opportunityIds
+     *
+     * @return array<int, array{0: array<int, array{id: int, name: string}>, 1: array<int, array{personId: int, reason: string, name: string}>}>
      */
-    private function linkedPeople(int $opportunityId): array
+    private function linkedPeople(array $opportunityIds): array
     {
-        $ids = array_values(array_unique(array_map('intval', PersonVolunteerOpportunityQuery::create()
-            ->filterByVolunteerOpportunityId($opportunityId)
-            ->select(['PersonId'])
-            ->find()
-            ->toArray())));
-        if ($ids === []) {
-            return [[], []];
+        $links = [];
+        if ($opportunityIds !== []) {
+            foreach (PersonVolunteerOpportunityQuery::create()
+                ->filterByVolunteerOpportunityId($opportunityIds, Criteria::IN)
+                ->select(['VolunteerOpportunityId', 'PersonId'])
+                ->find() as $link) {
+                $links[(int) $link['VolunteerOpportunityId']][(int) $link['PersonId']] = true;
+            }
         }
 
         $found = [];
-        foreach (PersonQuery::create()->filterById($ids, Criteria::IN)->orderByLastName()->orderByFirstName()->find() as $person) {
-            $found[(int) $person->getId()] = $person;
-        }
-
-        $people = [];
-        $skipped = [];
-        foreach ($found as $id => $person) {
-            if ($person->isDeceased()) {
-                $skipped[] = ['personId' => $id, 'reason' => self::SKIP_DECEASED, 'name' => $person->getFullName()];
-            } else {
-                $people[] = ['id' => $id, 'name' => $person->getFullName()];
+        $personIds = array_keys(array_replace([], ...array_values($links)));
+        if ($personIds !== []) {
+            foreach (PersonQuery::create()->filterById($personIds, Criteria::IN)->orderByLastName()->orderByFirstName()->find() as $person) {
+                $found[(int) $person->getId()] = $person;
             }
         }
-        foreach (array_diff($ids, array_keys($found)) as $id) {
-            $skipped[] = ['personId' => $id, 'reason' => self::SKIP_MISSING, 'name' => ''];
+
+        $result = [];
+        foreach ($opportunityIds as $opportunityId) {
+            $linked = $links[$opportunityId] ?? [];
+            $people = [];
+            $skipped = [];
+            foreach (array_intersect_key($found, $linked) as $id => $person) {
+                if ($person->isDeceased()) {
+                    $skipped[] = ['personId' => $id, 'reason' => self::SKIP_DECEASED, 'name' => $person->getFullName()];
+                } else {
+                    $people[] = ['id' => $id, 'name' => $person->getFullName()];
+                }
+            }
+            foreach (array_keys(array_diff_key($linked, $found)) as $id) {
+                $skipped[] = ['personId' => $id, 'reason' => self::SKIP_MISSING, 'name' => ''];
+            }
+            $result[$opportunityId] = [$people, $skipped];
         }
 
-        return [$people, $skipped];
+        return $result;
     }
 
     /**
-     * People linked to a converted opportunity who have no qualification for its position:
-     * linked since the conversion. One whose qualification was removed in Ministries stays
-     * removed. Nobody when the position is gone or inactive.
+     * Each existing, active position => the people with a qualification for it, active or
+     * removed. A person linked to its opportunity and missing here was linked since the
+     * conversion; one whose qualification was removed in Ministries stays removed.
      *
-     * @param array<int, array{id: int, name: string}> $people
+     * @param int[] $positionIds
      *
-     * @return array<int, array{id: int, name: string}>
+     * @return array<int, array<int, true>>
      */
-    private function pendingPeople(int $positionId, array $people): array
+    private function qualificationsOf(array $positionIds): array
     {
-        $position = VolunteerPositionQuery::create()->findPk($positionId);
-        if ($position === null || !$position->getActive() || $people === []) {
+        if ($positionIds === []) {
             return [];
         }
-        $known = array_flip(array_map('intval', VolunteerQualificationQuery::create()
-            ->filterByPositionId($positionId)
-            ->filterByPersonId(array_column($people, 'id'), Criteria::IN)
-            ->select(['PersonId'])
-            ->find()
-            ->toArray()));
+        $qualified = [];
+        foreach (VolunteerPositionQuery::create()->filterById($positionIds, Criteria::IN)->filterByActive(true)->select(['Id'])->find() as $positionId) {
+            $qualified[(int) $positionId] = [];
+        }
+        if ($qualified === []) {
+            return [];
+        }
+        foreach (VolunteerQualificationQuery::create()
+            ->filterByPositionId(array_keys($qualified), Criteria::IN)
+            ->select(['PositionId', 'PersonId'])
+            ->find() as $qualification) {
+            $qualified[(int) $qualification['PositionId']][(int) $qualification['PersonId']] = true;
+        }
 
-        return array_values(array_filter($people, static fn (array $person): bool => !isset($known[$person['id']])));
+        return $qualified;
     }
 
     private function baseName(VolunteerOpportunity $opportunity): string

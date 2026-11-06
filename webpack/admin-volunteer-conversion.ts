@@ -279,12 +279,12 @@ function confirmConvert(): void {
   const message = escapeHtml(
     positions + ministries > 0
       ? t(
-          "Convert {{count}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired.",
+          "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired.",
           {
-            count: positions + ministries,
+            total: positions + ministries,
           },
         )
-      : t("Add {{count}} volunteers to positions converted before?", { count: pending }),
+      : t("Add {{total}} volunteers to positions converted before?", { total: pending }),
   );
   window.bootbox.confirm({
     title: t("Convert Volunteer Opportunities"),

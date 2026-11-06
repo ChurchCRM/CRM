@@ -4,8 +4,8 @@
  * Volunteer Opportunities (V1) on their way out (#10606): hidden where nobody uses them,
  * announced where somebody does, and converted to Ministries with a preview.
  *
- * Seed facts: Mathew Campbell (2), Constance Hart (6), Marion Hart (7) and Lena Black (100)
- * are living; Salvador Berry (68) is deceased. The seed holds no opportunities.
+ * Seed facts: Mathew Campbell, Constance Hart, Marion Hart and Lena Black are living; one
+ * Salvador Berry is deceased. The seed holds no opportunities.
  *
  * Order inside every hook is API setup → freshAdminLogin() → cy.visit(), because an
  * x-api-key request replaces the browser's session cookie.
@@ -22,7 +22,22 @@ const KITCHEN = `${PREFIX} Kitchen`;
 const TARGET = `${PREFIX} Ministries`;
 const HOSPITALITY = `${PREFIX} Hospitality`;
 
+const LIVING = { mathew: "Mathew Campbell", constance: "Constance Hart", marion: "Marion Hart", lena: "Lena Black" };
+// The person search leaves deceased people out, and a living Salvador Berry shares his name.
+const DECEASED_SALVADOR_BERRY = 68;
+
 const opportunities = {};
+const people = {};
+
+function lookUpPeople() {
+    Object.entries(LIVING).forEach(([key, name]) => {
+        cy.makePrivateAdminAPICall("GET", `/api/persons/search/${encodeURIComponent(name.split(" ")[1])}`, null, 200).then((resp) => {
+            const hit = resp.body.find((person) => person.text === name);
+            expect(hit, name).to.exist;
+            people[key] = hit.objid;
+        });
+    });
+}
 
 function freshAdminLogin() {
     cy.clearCookies();
@@ -78,7 +93,7 @@ function cleanUp() {
             return;
         }
         freshAdminLogin();
-        [2, 6, 7, 68, 100].forEach((personId) =>
+        [...Object.values(people), DECEASED_SALVADOR_BERRY].forEach((personId) =>
             mine.forEach((opportunity) => cy.request(`/people/view/${personId}?RemoveVO=${opportunity.id}`)),
         );
         mine.forEach((opportunity) => cy.makePrivateAdminAPICall("DELETE", `${V1_API}/${opportunity.id}`, null, 200));
@@ -90,6 +105,7 @@ function cleanUp() {
 
 before(() => {
     cy.rememberTestEnv(["admin.username", "admin.password"]);
+    lookUpPeople();
     cleanUp();
 });
 
@@ -105,7 +121,7 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
         });
 
         it("hides every Volunteer Opportunities screen", () => {
-            cy.visit("/people/view/2");
+            cy.visit(`/people/view/${people.mathew}`);
             cy.get("#nav-item-volunteer").should("not.exist");
             cy.get("a[href$='VolunteerOpportunityEditor.php']").should("not.exist");
 
@@ -134,11 +150,11 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
             createOpportunity(MUSIC);
             setVersion("v1");
             freshAdminLogin();
-            link(2, [GREETER]);
-            link(6, [GREETER]);
-            link(68, [GREETER]);
-            link(7, [USHER, MUSIC]);
-            link(100, [MUSIC]);
+            link(people.mathew, [GREETER]);
+            link(people.constance, [GREETER]);
+            link(DECEASED_SALVADOR_BERRY, [GREETER]);
+            link(people.marion, [USHER, MUSIC]);
+            link(people.lena, [MUSIC]);
         });
 
         it("shows them again on V2 while any are unconverted, with the retirement notice", () => {
@@ -151,7 +167,7 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
                 .find("#volunteer-v1-notice-convert")
                 .should("have.attr", "href", "/admin/volunteer-conversion");
 
-            cy.visit("/people/view/7");
+            cy.visit(`/people/view/${people.marion}`);
             cy.get("#nav-item-volunteer").should("contain.text", "Volunteer (Legacy)").click();
             cy.get("#volunteer #volunteer-v1-notice").should("be.visible");
 
@@ -207,7 +223,7 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
                     cy.makePrivateAdminAPICall("GET", `/api/ministries/positions/${greeter.id}/qualifications`, null, 200)
                         .its("body.qualifications")
                         .then((qualifications) => {
-                            expect(qualifications.map((qualification) => qualification.personId)).to.have.members([2, 6]);
+                            expect(qualifications.map((qualification) => qualification.personId)).to.have.members([people.mathew, people.constance]);
                         });
                 });
             });
@@ -239,11 +255,11 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
 
         it("qualifies people linked to a converted opportunity since, and creates nothing when nothing is left", () => {
             freshAdminLogin();
-            link(6, [GREETER, USHER]);
+            link(people.constance, [GREETER, USHER]);
             cy.makePrivateAdminAPICall("GET", `${CONVERSION_API}/preview`, null, 200).then((preview) => {
                 expect(preview.body.totals).to.deep.include({ positions: 0, ministries: 0, pending: 1 });
                 const usher = preview.body.opportunities.find((opportunity) => opportunity.name === USHER);
-                expect(usher.pending.map((person) => person.id)).to.deep.eq([6]);
+                expect(usher.pending.map((person) => person.id)).to.deep.eq([people.constance]);
             });
             cy.makePrivateAdminAPICall("POST", CONVERSION_API, {}, 200).its("body.totals").should("deep.include", { pending: 1 });
             ministryByName(TARGET).then((ministry) => {
@@ -252,7 +268,7 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
                     cy.makePrivateAdminAPICall("GET", `/api/ministries/positions/${usher.id}/qualifications`, null, 200)
                         .its("body.qualifications")
                         .then((qualifications) => {
-                            expect(qualifications.map((qualification) => qualification.personId)).to.have.members([7, 6]);
+                            expect(qualifications.map((qualification) => qualification.personId)).to.have.members([people.marion, people.constance]);
                         });
                 });
             });
