@@ -1,0 +1,50 @@
+name: "Issues: weekly metrics"
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weekly-issue-metrics
+  cancel-in-progress: false
+
+jobs:
+  report:
+    if: github.repository == 'ChurchCRM/CRM'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-node
+        with:
+          node-version-file: .nvmrc
+      - name: Calculate the past 30 days in UTC
+        run: node scripts/maintainer/weekly-issue-metrics.js dates
+      - name: Measure responsiveness of issues created in the past 30 days
+        uses: github-community-projects/issue-metrics@44173f9e0a3b2144a777a10a340e4c09a25ac9f8 # v4
+        env:
+          SEARCH_QUERY: 'repo:ChurchCRM/CRM is:issue created:>=${{ env.START_DATE }} -label:automated-report'
+          OUTPUT_FILE: recent-issue-metrics.md
+          HIDE_ITEMS_LIST: 'true'
+          NON_MENTIONING_LINKS: 'true'
+      - name: Measure the full open backlog
+        uses: github-community-projects/issue-metrics@44173f9e0a3b2144a777a10a340e4c09a25ac9f8 # v4
+        env:
+          SEARCH_QUERY: 'repo:ChurchCRM/CRM is:issue is:open -label:automated-report'
+          OUTPUT_FILE: backlog-issue-metrics.md
+          HIDE_ITEMS_LIST: 'true'
+          NON_MENTIONING_LINKS: 'true'
+      - name: Publish report and retire previous reports
+        run: node scripts/maintainer/weekly-issue-metrics.js publish
