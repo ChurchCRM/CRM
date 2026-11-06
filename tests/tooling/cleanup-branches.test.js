@@ -33,12 +33,16 @@ test('fetches every page before deleting and encodes branch path segments', () =
         calls.push(args);
         if (args[0] === 'repos/ChurchCRM/CRM') return repository;
         if (args[2]?.includes('/pulls?')) return [[pulls[0]], [pulls[1]]];
-        if (args[2]?.includes('/branches?')) return [[branches[0], branches[1]], branches.slice(2)];
+        if (args[2]?.includes('/branches?')) {
+            const bare = branches.map(({ name, protected: isProtected }) => ({ name, protected: isProtected, commit: { sha: name } }));
+            return [[bare[0], bare[1]], bare.slice(2)];
+        }
+        if (args[0].includes('/commits/')) return branches.find((b) => b.name === args[0].split('/commits/')[1]).commit;
         return null;
     };
 
     main(api, 'ChurchCRM/CRM');
-    assert.deepEqual(calls.slice(3), [
+    assert.deepEqual(calls.filter((c) => c[0] === '-X'), [
         ['-X', 'DELETE', 'repos/ChurchCRM/CRM/git/refs/heads/feature/without-pr'],
         ['-X', 'DELETE', 'repos/ChurchCRM/CRM/git/refs/heads/locale/translate/old'],
         ['-X', 'DELETE', 'repos/ChurchCRM/CRM/git/refs/heads/feature/topic%231'],
