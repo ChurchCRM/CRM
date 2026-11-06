@@ -10,7 +10,8 @@ $directory = sys_get_temp_dir() . '/crm-requirements-' . bin2hex(random_bytes(6)
 mkdir($directory . '/Include', 0700, true);
 mkdir($directory . '/setup/templates', 0700, true);
 symlink(APP_ROOT . '/vendor', $directory . '/vendor');
-$files = ['Include/LoadConfigs.php', 'Include/CheckRequirements.php', 'setup/index.php', 'setup/templates/system-requirements.php'];
+$files = ['Include/LoadConfigs.php', 'Include/CheckRequirements.php', 'setup/index.php', 'setup/templates/system-requirements.php', 'setup/templates/setup-steps.php', 'setup/templates/header.php', 'composer.json'];
+symlink(APP_ROOT . '/setup/routes', $directory . '/setup/routes');
 foreach ($files as $file) {
     copy(APP_ROOT . '/' . $file, $directory . '/' . $file);
 }
@@ -32,37 +33,58 @@ $run = static function (string $script, string $disabledFunctions = ''): string 
 };
 
 try {
-    foreach ([false, true] as $configured) {
-        if ($configured) {
-            file_put_contents($directory . '/Include/Config.php', '<?php throw new RuntimeException("Configuration must not load");');
-        }
-        foreach (['', '/churchcrm', '/apps/churchcrm'] as $root) {
-            foreach (['Include/LoadConfigs.php' => '/session/index.php', 'setup/index.php' => '/setup/index.php'] as $entry => $scriptName) {
-                $script = 'namespace ChurchCRM\Service; '
-                    . 'function class_exists($name) { return $name === "ZipArchive" ? false : \\class_exists($name); } '
-                    . '$_SERVER["SCRIPT_NAME"] = ' . var_export($root . $scriptName, true) . '; '
-                    . 'register_shutdown_function(static function () { if (http_response_code() !== 503) { exit(1); } }); '
-                    . 'require ' . var_export($directory . '/' . $entry, true) . '; '
-                    . 'throw new \\RuntimeException("Bootstrap must stop");';
-                $html = $run($script, 'gettext,bindtextdomain,imagecreatetruecolor');
-                Assert::contains('ChurchCRM System Check', $html);
-                Assert::contains('href="' . $root . '/skin/v2/setup.min.css"', $html);
-                foreach (['locale gettext', 'GD Library for image manipulation', 'PHP ZipArchive'] as $name) {
-                    Assert::match('~' . preg_quote($name, '~') . '</th>\s*<td class="text-danger">Failed</td>~', $html);
-                }
-                Assert::contains('PHP Session', $html);
-                Assert::notContains('Fatal error', $html);
-                Assert::notContains('<form', $html);
-                Assert::same($configured, file_exists($directory . '/Include/Config.php'));
+    foreach (['', '/churchcrm', '/apps/churchcrm'] as $root) {
+        file_put_contents($directory . '/Include/Config.php', '<?php '
+            . '$sSERVERNAME = "localhost"; $dbPort = 3306; $sUSER = "test"; $sPASSWORD = "secret"; $sDATABASE = "test"; '
+            . '$sRootPath = ' . var_export($root, true) . '; $URL = ["http://localhost/"];');
+        foreach (['Include/LoadConfigs.php' => '/session/index.php', 'setup/index.php' => '/setup/index.php'] as $entry => $scriptName) {
+            $script = 'namespace ChurchCRM; class Bootstrapper { public static function init(...$args) { \\ChurchCRM\\dto\\SystemConfig::init(); } } '
+                . 'namespace ChurchCRM\Service; '
+                . 'function class_exists($name) { return $name === "ZipArchive" ? false : \\class_exists($name); } '
+                . '$_SERVER["SCRIPT_NAME"] = ' . var_export($root . $scriptName, true) . '; '
+                . 'register_shutdown_function(static function () { if (http_response_code() !== 503) { exit(1); } }); '
+                . 'require ' . var_export($directory . '/' . $entry, true) . '; '
+                . 'throw new \\RuntimeException("Bootstrap must stop");';
+            $html = $run($script, 'gettext,bindtextdomain,imagecreatetruecolor');
+            Assert::contains('ChurchCRM System Check', $html);
+            Assert::contains('href="' . $root . '/skin/v2/setup.min.css"', $html);
+            foreach (['locale gettext', 'GD Library for image manipulation', 'PHP ZipArchive'] as $name) {
+                Assert::match('~' . preg_quote($name, '~') . '</th>\s*<td class="text-danger">Failed</td>~', $html);
             }
+            Assert::contains('PHP Session', $html);
+            Assert::notContains('Fatal error', $html);
+            Assert::notContains('<form', $html);
+            Assert::true(file_exists($directory . '/Include/Config.php'));
         }
     }
 
-    $healthy = $run('require ' . var_export(APP_ROOT . '/vendor/autoload.php', true) . '; '
-        . 'require ' . var_export($directory . '/Include/CheckRequirements.php', true) . '; echo "continue";');
+    $healthy = $run('namespace ChurchCRM; class Bootstrapper { public static function init(...$args) {} public static function isDBCurrent() { return false; } } '
+        . 'namespace ChurchCRM\\Service; function extension_loaded($name) { throw new \\Error("Requirements must not run"); } '
+        . 'require ' . var_export($directory . '/Include/LoadConfigs.php', true) . '; echo "continue";');
     Assert::same('continue', $healthy);
+
+    $unrelated = $run('namespace ChurchCRM; class Bootstrapper { public static function init(...$args) { throw new \\Error("Original failure"); } } '
+        . 'try { require ' . var_export($directory . '/Include/LoadConfigs.php', true) . '; } '
+        . 'catch (\\Error $error) { echo $error->getMessage(); }');
+    Assert::same('Original failure', $unrelated);
+
+    unlink($directory . '/Include/Config.php');
+    $setup = $run('$_SERVER["SCRIPT_NAME"] = "/setup/index.php"; $_SERVER["REQUEST_URI"] = "/setup/"; $_SERVER["REQUEST_METHOD"] = "GET"; '
+        . 'chdir(' . var_export($directory . '/setup', true) . '); '
+        . 'require ' . var_export($directory . '/setup/index.php', true) . ';', 'gettext,bindtextdomain,imagecreatetruecolor');
+    Assert::contains('id="setup-form"', $setup);
+    Assert::contains('id="php-extensions"', $setup);
+
+    $checks = $run('$_SERVER["SCRIPT_NAME"] = "/setup/index.php"; $_SERVER["REQUEST_URI"] = "/setup/SystemPrerequisiteCheck"; '
+        . '$_SERVER["REQUEST_METHOD"] = "GET"; $_SERVER["REDIRECT_STATUS"] = "200"; '
+        . 'chdir(' . var_export($directory . '/setup', true) . '); '
+        . 'require ' . var_export($directory . '/setup/index.php', true) . ';', 'gettext,bindtextdomain,imagecreatetruecolor');
+    $statuses = array_column(json_decode($checks, true, 512, JSON_THROW_ON_ERROR), 'Satisfied', 'Name');
+    Assert::false($statuses['locale gettext']);
+    Assert::false($statuses['GD Library for image manipulation']);
+    Assert::true($statuses['PHP Session']);
 } finally {
-    foreach (array_merge($files, ['Include/Config.php', 'vendor']) as $file) {
+    foreach (array_merge($files, ['Include/Config.php', 'vendor', 'setup/routes']) as $file) {
         if (file_exists($directory . '/' . $file)) {
             unlink($directory . '/' . $file);
         }
