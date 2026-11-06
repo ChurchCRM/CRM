@@ -4885,10 +4885,6 @@ msgid "Portuguese - Portugal"
 msgstr "ポルトガル語 - ポルトガル"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "認証器アプリに表示されるアプリケーション名を指定します"
-
-#: 
 msgid "Review"
 msgstr "レビュー"
 

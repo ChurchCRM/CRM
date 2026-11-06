@@ -4923,10 +4923,6 @@ msgid "Portuguese - Portugal"
 msgstr "Португальська - Португалія"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Вкажіть назву програми, яка відображатиметься в програмі автентифікації"
-
-#: 
 msgid "Review"
 msgstr "Огляд"
 

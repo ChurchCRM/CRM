@@ -4911,10 +4911,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugalština - Portugalsko"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Zadejte název aplikace, který se má zobrazit v autentizační aplikaci "
-
-#: 
 msgid "Review"
 msgstr "Přehled"
 
