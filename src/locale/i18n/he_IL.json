@@ -6092,7 +6092,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "נוסף מפתח גישה להתחברות שלכם לפורטל החברים ב-%1$s בתאריך %2$s.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "אדם שמאבד אותה נשאר בלי דוא״ל משלו: דואר שנשלח אליו בלבד, כגון דוא״ל לקבוצה, מדולג, ומחבר הדוא״ל מציין זאת.",
   "A person whose record hides their age never shows a birth year.": "אדם שהרשומה שלו מסתירה את גילו לעולם אינו מציג שנת לידה.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "בפורטל החברים התבקש ב-%s לשנות את כתובת הדוא״ל שלך מ-%s ל-%s. השינוי מתבצע רק כשמשתמשים בקישור שנשלח אל %s.",
   "A row is not in the expected form.": "שורה אינה בצורה הצפויה.",
   "A team": "צוות",
   "Add a passkey": "הוספת מפתח גישה",

@@ -25064,10 +25064,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Mtu ambaye rekodi yake inaficha umri wake haonyeshi kamwe mwaka wa kuzaliwa."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Ombi limefanywa katika Lango la Wanachama kubadilisha anwani yako ya barua pepe saa %s kutoka %s hadi %s. Mabadiliko hufanyika tu kiungo kilichotumwa kwa %s kinapotumiwa."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Safu haiko katika umbo linalotarajiwa."
 

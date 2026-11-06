@@ -6062,7 +6062,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "%2$s %1$s에 교인 포털 로그인용 패스키가 추가되었습니다.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "주소를 잃는 사람은 그 뒤로 개인 이메일이 없습니다. 그룹 이메일처럼 그 사람에게만 보내는 메일은 건너뛰며, 이메일 작성 화면에 그 사실이 표시됩니다.",
   "A person whose record hides their age never shows a birth year.": "기록에서 나이를 숨긴 사람은 출생 연도가 표시되지 않습니다.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "%s에 교인 포털에서 이메일 주소를 %s에서 %s(으)로 바꾸라는 요청이 있었습니다. %s(으)로 보낸 링크를 사용할 때만 변경됩니다.",
   "A row is not in the expected form.": "행의 형식이 예상과 다릅니다.",
   "A team": "팀",
   "Add a passkey": "패스키 추가",

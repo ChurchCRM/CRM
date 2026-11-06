@@ -25088,10 +25088,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Una persona la cui scheda nasconde l'età non mostra mai l'anno di nascita."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Nel Portale dei fedeli è stata richiesta, alle %s, la modifica del Suo indirizzo email da %s a %s. La modifica avviene solo quando viene usato il link inviato a %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Una riga non ha la forma prevista."
 

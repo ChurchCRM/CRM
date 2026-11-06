@@ -22,7 +22,7 @@ locale/terms/missing/ ─► translation agent (LLM) ─► locale/translate/* p
                                                                                                               (download only)
 ```
 
-Done for a release when `locale/terms/missing/` on `master` is empty for every locale.
+Done for a release when `npm run locale:translate:list` on `master` lists no locales. A batch counts only while it has an empty value; the filled regional English batches (`en` is en-GB, `en-au`, `en-ca`; all `skip_audit`) stay.
 
 ## Branches
 
@@ -94,4 +94,4 @@ Send each form under its own slot or context key; a pipe-joined `"A|B"` is store
 
 - Auto-merge the terms PR behind a path-allowlist (needs a GitHub App token, since a `GITHUB_TOKEN` merge starts no `Locale: sync`).
 - Start the translation agent from the merged download PR instead of a fixed schedule.
-- Release check: fail readiness when `locale/terms/missing/` is not empty.
+- Release check: fail readiness when `npm run locale:translate:list` lists a locale.

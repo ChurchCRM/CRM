@@ -25038,10 +25038,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Bij een persoon van wie de leeftijd in het dossier verborgen is, wordt nooit een geboortejaar getoond."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "In het Ledenportaal is om %s een verzoek gedaan om uw e-mailadres te wijzigen van %s naar %s. De wijziging vindt alleen plaats als de link die naar %s is gestuurd, wordt gebruikt."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Een rij heeft niet de verwachte vorm."
 

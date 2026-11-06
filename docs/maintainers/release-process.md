@@ -6,7 +6,7 @@ Legend: 🤖 automated · 🧑‍💻 agent-assisted · ✋ manual
 
 ## Checklist
 
-1. **Locales clean:** `locale/terms/missing/` is empty on `master` (Phase 1). New strings follow the count-neutral rule in `i18n-localization.md`.
+1. **Locales clean:** `npm run locale:translate:list` on `master` lists no locales (Phase 1). Filled regional English batches (`en` is en-GB, `en-au`, `en-ca`) do not count. New strings follow the count-neutral rule in `i18n-localization.md`.
 2. **Built and tested:** Build/Test/Package and the nightly are green on the same `master` HEAD, and the milestone for the `package.json` version is reviewed (Phase 2).
 3. **Release & Start Next** with `next_version`, the only input (3.1). It requires green Build/Test/Package and Nightly on the branch tip, and refuses to replace an existing release. It starts the marketing capture, the notes context, the docs staging and the `Start <next> release` PR as separate jobs that never block the draft.
 4. **Notes:** ask an agent to "write the `<version>` release notes". It reads the `release-notes-context-<version>` artifact and applies the approved text with `gh release edit <version> --tag <version> --notes-file …` (3.2).
@@ -42,7 +42,7 @@ A **hard gate** stops the release until it is met or the maintainer overrides it
 
 Goal: every feature added this cycle is localized before release. The loop is **have terms → upload → re-download → translate → upload new terms → re-download clean**. The operator doc is [locale-pipeline.md](locale-pipeline.md).
 
-Done when `npm run locale:translate:list` on `master` lists no locales (`locale/terms/missing/` empty) and no `Update locale strings` or POEditor download PR is open. A locale PR that opens after the maintainer closes this phase waits for the next release. Finish this phase before any build or nightly check: each locale merge moves `master` and voids earlier results. Write and approve the release notes (`changelog/<version>.md`) right after it, and merge any PR that carries them before Phase 2 for the same reason.
+Done when `npm run locale:translate:list` on `master` lists no locales and no `Update locale strings` or POEditor download PR is open. A locale PR that opens after the maintainer closes this phase waits for the next release. Finish this phase before any build or nightly check: each locale merge moves `master` and voids earlier results. Write and approve the release notes (`changelog/<version>.md`) right after it, and merge any PR that carries them before Phase 2 for the same reason.
 
 | # | Step | How | Status |
 |---|------|-----|--------|

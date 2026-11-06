@@ -60,3 +60,27 @@ test('a download that empties a committed locale is measured against the checked
         fs.rmSync(repo, { recursive: true, force: true });
     }
 });
+
+test('a locale larger than the default exec buffer is measured by blob size', () => {
+    const repo = fs.mkdtempSync(path.join(os.tmpdir(), 'i18n-repo-'));
+    const env = { ...process.env };
+    delete env.GIT_DIR;
+    delete env.GIT_INDEX_FILE;
+    delete env.GIT_WORK_TREE;
+    const git = (...args) => execFileSync('git', args, { cwd: repo, env, stdio: 'ignore' });
+    try {
+        const dir = path.join(repo, 'src/locale/i18n');
+        fs.mkdirSync(dir, { recursive: true });
+        fs.writeFileSync(path.join(dir, 'ta_IN.json'), JSON.stringify({ k: 'x'.repeat(1024 * 1024) }));
+        git('init', '-q');
+        git('add', '.');
+        git('-c', 'user.name=t', '-c', 'user.email=t@t', 'commit', '-q', '-m', 'locale');
+        fs.writeFileSync(path.join(dir, 'ta_IN.json'), '{}');
+        const [file] = modifiedLocales(repo);
+        assert.equal(file.name, 'src/locale/i18n/ta_IN.json');
+        assert.ok(file.before > 1024 * 1024);
+        assert.equal(file.now, 2);
+    } finally {
+        fs.rmSync(repo, { recursive: true, force: true });
+    }
+});

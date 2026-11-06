@@ -25139,10 +25139,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "En person hvis post skjuler alderen, viser aldri fødselsår."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Det ble bedt om i Medlemsportalen å endre e-postadressen din kl. %s fra %s til %s. Endringen skjer bare når lenken sendt til %s brukes."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "En rad har ikke forventet form."
 

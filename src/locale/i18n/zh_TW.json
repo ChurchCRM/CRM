@@ -6062,7 +6062,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "已於 %2$s 的 %1$s 為您的會友入口登入新增通行密鑰。",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "失去這個地址的人就沒有自己的電子郵件：只寄給本人的郵件（例如小組郵件）會被略過，郵件撰寫畫面也會如此說明。",
   "A person whose record hides their age never shows a birth year.": "紀錄隱藏年齡的人絕不會顯示出生年份。",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "會友入口於 %s 提出要求，將您的電子郵件地址從 %s 改為 %s。只有使用寄到 %s 的連結後，變更才會生效。",
   "A row is not in the expected form.": "有一列的格式不符合預期。",
   "A team": "一個團隊",
   "Add a passkey": "新增通行密鑰",

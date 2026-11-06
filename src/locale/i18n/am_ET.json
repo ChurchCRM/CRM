@@ -6092,7 +6092,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "የመግቢያ ቁልፍ ወደ የአባላት መግቢያ መግቢያዎ በ%1$s በ%2$s ታክሏል።",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "የሚያጣው ሰው የራሱ ኢሜይል አይኖረውም፦ ለእሱ ብቻ የሚላክ ደብዳቤ፣ እንደ የቡድን ኢሜይል፣ ይታለፋል፣ የኢሜይል አቀናባሪውም ይህን ይናገራል።",
   "A person whose record hides their age never shows a birth year.": "ዕድሜውን የሚደብቅ መዝገብ ያለው ሰው የልደት ዓመት በጭራሽ አያሳይም።",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "በየአባላት መግቢያ የኢሜይል አድራሻዎን በ%s ከ%s ወደ %s ለመቀየር ጥያቄ ቀርቧል። ለውጡ ወደ %s የተላከው አገናኝ ሲጠቀም ብቻ ይሆናል።",
   "A row is not in the expected form.": "ረድፍ በተጠበቀው ቅርጽ አይደለም።",
   "A team": "አንድ የሥራ ቡድን",
   "Add a passkey": "የመግቢያ ቁልፍ ጨምር",

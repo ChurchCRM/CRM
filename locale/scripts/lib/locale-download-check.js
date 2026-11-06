@@ -27,12 +27,13 @@ function integrity(dir = path.join(ROOT, I18N)) {
 }
 
 // Locales the download rewrote, with their size now and in the checked-out commit.
+// `cat-file -s` returns the blob size. `git show` of a locale over 1 MiB overflows execFileSync.
 function modifiedLocales(root = ROOT) {
-    const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'buffer', stdio: ['ignore', 'pipe', 'ignore'] });
-    const names = git('diff', '--name-only', '--diff-filter=M').toString().split('\n');
+    const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+    const names = git('diff', '--name-only', '--diff-filter=M').split('\n');
     return names
         .filter((name) => new RegExp(`^${I18N}/.*\\.json$`).test(name) && fs.existsSync(path.join(root, name)))
-        .map((name) => ({ name, now: fs.statSync(path.join(root, name)).size, before: git('show', `HEAD:${name}`).length }));
+        .map((name) => ({ name, now: fs.statSync(path.join(root, name)).size, before: Number(git('cat-file', '-s', `HEAD:${name}`)) }));
 }
 
 if (require.main === module) {

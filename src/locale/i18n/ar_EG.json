@@ -6212,7 +6212,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "أُضيف مفتاح مرور إلى تسجيل دخولكم في بوابة الأعضاء في %1$s بتاريخ %2$s.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "من يفقده لا يبقى له بريد إلكتروني خاص: يُتخطى البريد المرسَل إليه وحده، مثل بريد المجموعة، ويُبيّن محرّر البريد ذلك.",
   "A person whose record hides their age never shows a birth year.": "من يُخفي سجله عمره لا تُعرض سنة ميلاده أبدًا.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "قُدّم طلب في بوابة الأعضاء لتغيير عنوان بريدكم الإلكتروني في %s من %s إلى %s. يتم التغيير فقط عند استخدام الرابط المرسَل إلى %s.",
   "A row is not in the expected form.": "أحد الصفوف ليس بالشكل المتوقع.",
   "A team": "فريق",
   "Add a passkey": "إضافة مفتاح مرور",

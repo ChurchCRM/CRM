@@ -6062,7 +6062,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "已于 %1$s（%2$s）为您的会友门户登录添加通行密钥。",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "失去该地址的人随后没有自己的电子邮箱：只发给他们的邮件（例如小组邮件）会被跳过，邮件编写器会如此说明。",
   "A person whose record hides their age never shows a birth year.": "记录中隐藏年龄的人从不显示出生年份。",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "会友门户中于 %s 请求将您的电子邮箱从 %s 改为 %s。只有使用发到 %s 的链接后，更改才会生效。",
   "A row is not in the expected form.": "有一行不是预期的格式。",
   "A team": "一个团队",
   "Add a passkey": "添加通行密钥",
