@@ -36,7 +36,7 @@ test('family-self-register', async ({ page }, testInfo) => {
   const memberCard = page.locator('#members-container .member-card').first();
   await humanType(memberCard.locator('.member-first-name'), 'Michael');
   await humanType(memberCard.locator('.member-last-name'), 'Whitfield');
-  await humanType(memberCard.locator('.member-email'), 'family.whitfield@demo.churchcrm.io');
+  await humanType(memberCard.locator('.member-email'), 'michael.whitfield@demo.churchcrm.io');
   await humanPause(page, 600);
   await humanClick(page.locator('#members-next'));
 
