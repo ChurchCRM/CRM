@@ -1,8 +1,9 @@
 <?php
 
-use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
+use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Server\RequestHandlerInterface;
 use Slim\Exception\HttpMethodNotAllowedException;
 use Slim\Exception\HttpNotFoundException;
 use Slim\Factory\AppFactory;
@@ -45,15 +46,17 @@ if ($rootPath !== '' && $rootPath[0] !== '/') {
     $rootPath = '/' . $rootPath;
 }
 
+require_once __DIR__ . '/../vendor/autoload.php';
+
 // If Config.php already exists the app is configured — redirect to the app root.
 // Use __DIR__ so the check resolves against the script path, not the server CWD
 // (CWD-relative paths fail under PHP-FPM where CWD is the document root).
 if (file_exists(__DIR__ . '/../Include/Config.php')) {
+    $requirementsRootPath = $rootPath;
+    require __DIR__ . '/../Include/CheckRequirements.php';
     header("Location: {$rootPath}/");
     exit;
 }
-
-require_once __DIR__ . '/../vendor/autoload.php';
 
 // Store paths in global for template access (no SystemURLs available)
 $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] = $rootPath;
@@ -102,9 +105,11 @@ $errorMiddleware->setDefaultErrorHandler(function (
     return $response->withStatus($statusCode)->withHeader('Content-Type', 'application/json');
 });
 
-// CORS and version middleware
-
-$app->add(VersionMiddleware::class);
+$app->add(function (ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface {
+    return $handler->handle($request)
+        ->withHeader('X-Content-Type-Options', 'nosniff')
+        ->withHeader('Cache-Control', 'no-store');
+});
 $app->add(new CorsMiddleware());
 
 require __DIR__ . '/routes/setup.php';

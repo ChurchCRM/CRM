@@ -183,6 +183,18 @@ class AppIntegrityService
      */
     public static function getApplicationPrerequisites(): array
     {
+        return array_merge(self::getPhpPrerequisites(), [
+            new Prerequisite('URL Rewriting (mod_rewrite / nginx / LiteSpeed)', fn (): bool => self::hasModRewrite()),
+        ]);
+    }
+
+    /**
+     * These checks run before configuration, logging, sessions or database access.
+     *
+     * @return Prerequisite[]
+     */
+    public static function getPhpPrerequisites(): array
+    {
         $requiredPhp = VersionUtils::getRequiredPhpVersion();
 
         return [
@@ -193,7 +205,10 @@ class AppIntegrityService
             new Prerequisite('PHP Session', fn (): bool => function_exists('session_start')),
             new Prerequisite('PHP XML', fn (): bool => class_exists('SimpleXMLElement')),
             new Prerequisite('PHP iconv', fn (): bool => function_exists('iconv')),
-            new Prerequisite('URL Rewriting (mod_rewrite / nginx / LiteSpeed)', fn (): bool => AppIntegrityService::hasModRewrite()),
+            new Prerequisite('PHP PDO MySQL', fn (): bool => extension_loaded('pdo_mysql')),
+            new Prerequisite('PHP BCMath', fn (): bool => extension_loaded('bcmath')),
+            new Prerequisite('PHP Filter', fn (): bool => extension_loaded('filter')),
+            new Prerequisite('PHP Zlib', fn (): bool => extension_loaded('zlib')),
             new Prerequisite(
                 'GD Library for image manipulation',
                 fn (): bool =>
