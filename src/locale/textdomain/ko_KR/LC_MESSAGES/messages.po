@@ -25033,10 +25033,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "기록에서 나이를 숨긴 사람은 출생 연도가 표시되지 않습니다."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "%s에 교인 포털에서 이메일 주소를 %s에서 %s(으)로 바꾸라는 요청이 있었습니다. %s(으)로 보낸 링크를 사용할 때만 변경됩니다."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "행의 형식이 예상과 다릅니다."
 

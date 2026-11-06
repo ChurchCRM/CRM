@@ -6092,7 +6092,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "Jäsenportaalin kirjautumiseesi lisättiin pääsyavain kello %1$s päivänä %2$s.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "Henkilöllä, joka menettää sen, ei ole enää omaa sähköpostiosoitetta: vain hänelle lähetettävä posti, kuten ryhmäsähköposti, ohitetaan, ja sähköpostin kirjoitus kertoo siitä.",
   "A person whose record hides their age never shows a birth year.": "Henkilö, jonka tiedoissa ikä on piilotettu, ei näytä koskaan syntymävuotta.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "Jäsenportaalissa pyydettiin kello %s sähköpostiosoitteesi vaihtoa osoitteesta %s osoitteeseen %s. Vaihto tapahtuu vain, kun osoitteeseen %s lähetettyä linkkiä käytetään.",
   "A row is not in the expected form.": "Rivi ei ole odotetussa muodossa.",
   "A team": "Tiimi",
   "Add a passkey": "Lisää pääsyavain",

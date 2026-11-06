@@ -6092,7 +6092,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "Προστέθηκε κλειδί πρόσβασης στη σύνδεσή σας στην Πύλη μελών στις %1$s, την %2$s.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "Ένα άτομο που τη χάνει δεν έχει τότε δικό του ηλεκτρονικό ταχυδρομείο: τα μηνύματα που απευθύνονται μόνο σε αυτό, όπως ένα ομαδικό μήνυμα, παραλείπονται, και το πρόγραμμα σύνταξης μηνυμάτων το αναφέρει.",
   "A person whose record hides their age never shows a birth year.": "Ένα άτομο του οποίου η καρτέλα αποκρύπτει την ηλικία δεν εμφανίζει ποτέ έτος γέννησης.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "Υποβλήθηκε αίτημα στην Πύλη μελών για αλλαγή της διεύθυνσης ηλεκτρονικού ταχυδρομείου σας στις %s, από %s σε %s. Η αλλαγή γίνεται μόνο όταν χρησιμοποιηθεί ο σύνδεσμος που στάλθηκε στη διεύθυνση %s.",
   "A row is not in the expected form.": "Μία γραμμή δεν έχει την αναμενόμενη μορφή.",
   "A team": "Μία ομάδα εργασίας",
   "Add a passkey": "Προσθήκη κλειδιού πρόσβασης",

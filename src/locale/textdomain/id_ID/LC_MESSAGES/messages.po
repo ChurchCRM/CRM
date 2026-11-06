@@ -25037,10 +25037,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Orang yang catatannya menyembunyikan usia tidak pernah menampilkan tahun lahir."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Permintaan dibuat di Portal Anggota untuk mengubah alamat surel Anda pukul %s dari %s menjadi %s. Perubahan terjadi hanya ketika tautan yang dikirim ke %s digunakan."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Sebuah baris tidak dalam bentuk yang diharapkan."
 

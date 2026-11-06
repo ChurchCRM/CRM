@@ -25017,10 +25017,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "คนที่ระเบียนซ่อนอายุจะไม่แสดงปีเกิด"
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "มีคำขอในพอร์ทัลสมาชิกให้เปลี่ยนที่อยู่อีเมลของคุณเวลา %s จาก %s เป็น %s การเปลี่ยนจะเกิดขึ้นเมื่อใช้ลิงก์ที่ส่งไปยัง %s"
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "มีแถวที่ไม่อยู่ในรูปแบบที่คาดไว้"
 

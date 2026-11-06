@@ -25047,10 +25047,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Người có hồ sơ ẩn tuổi sẽ không bao giờ hiện năm sinh."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Có yêu cầu trên Cổng hội viên lúc %s đổi địa chỉ email của bạn từ %s thành %s. Thay đổi chỉ xảy ra khi liên kết gửi tới %s được dùng."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Một dòng không đúng dạng mong đợi."
 

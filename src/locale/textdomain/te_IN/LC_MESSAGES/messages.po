@@ -25046,10 +25046,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "వయస్సును దాచే రికార్డు ఉన్న వ్యక్తి పుట్టిన సంవత్సరాన్ని ఎప్పుడూ చూపించరు."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "సభ్యుల పోర్టల్‌లో %s కు మీ ఇమెయిల్ చిరునామాను %s నుండి %s కు మార్చమని అభ్యర్థన జరిగింది. %s కు పంపిన లింక్ ఉపయోగించినప్పుడు మాత్రమే మార్పు జరుగుతుంది."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "ఒక అడ్డు వరుస ఆశించిన రూపంలో లేదు."
 

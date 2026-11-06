@@ -6152,7 +6152,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "K vášmu prihláseniu do členského portálu bol pridaný prístupový kľúč %1$s dňa %2$s.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "Osoba, ktorá o ňu príde, potom nemá vlastný e-mail: pošta určená iba jej, napríklad skupinový e-mail, sa preskočí a editor e-mailu to oznámi.",
   "A person whose record hides their age never shows a birth year.": "Osoba, ktorej záznam skrýva vek, nikdy nezobrazuje rok narodenia.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "V členskom portáli bola %s vyžiadaná zmena vašej e-mailovej adresy z %s na %s. Zmena sa vykoná iba vtedy, keď sa použije odkaz odoslaný na %s.",
   "A row is not in the expected form.": "Riadok nemá očakávaný tvar.",
   "A team": "Tím",
   "Add a passkey": "Pridať prístupový kľúč",

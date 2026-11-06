@@ -6092,7 +6092,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "Hozzáférési kulcs került a tagportálos bejelentkezéséhez ekkor: %1$s, ezen a napon: %2$s.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "Aki elveszíti, annak ezután nincs saját e-mail-címe: a csak neki szóló levelek, például a csoportos e-mail, kimaradnak, és a levélíró ezt jelzi.",
   "A person whose record hides their age never shows a birth year.": "Annak a személynek, akinek a rekordja elrejti az életkorát, a születési év soha nem jelenik meg.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "A tagportálon %s időpontban kérték, hogy az e-mail-címe %s címről %s címre változzon. A módosítás csak akkor történik meg, ha a %s címre küldött hivatkozást használják.",
   "A row is not in the expected form.": "Egy sor nem a várt formában van.",
   "A team": "Egy csapat",
   "Add a passkey": "Hozzáférési kulcs hozzáadása",

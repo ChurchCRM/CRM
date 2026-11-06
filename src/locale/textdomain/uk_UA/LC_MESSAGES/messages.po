@@ -25128,10 +25128,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "В особи, у записі якої приховано вік, рік народження ніколи не показується."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "У порталі членів о %s запитано зміну вашої адреси електронної пошти з %s на %s. Зміна відбувається лише коли використано посилання, надіслане на %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Рядок має неочікувану форму."
 

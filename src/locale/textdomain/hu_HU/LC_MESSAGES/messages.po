@@ -25094,10 +25094,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Annak a személynek, akinek a rekordja elrejti az életkorát, a születési év soha nem jelenik meg."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "A tagportálon %s időpontban kérték, hogy az e-mail-címe %s címről %s címre változzon. A módosítás csak akkor történik meg, ha a %s címre küldött hivatkozást használják."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Egy sor nem a várt formában van."
 
