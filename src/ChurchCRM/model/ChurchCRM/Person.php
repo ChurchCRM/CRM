@@ -38,6 +38,10 @@ class Person extends BasePerson implements PhotoInterface
     public const SELF_VERIFY = -2;
     public const SCHEDULED_TASK = -3;
     public const UPGRADE = -4;
+
+    /** @var array<int, array<int, ListOption>> */
+    private static array $listOptionsByListId = [];
+
     private ?Photo $photo = null;
     private bool $skipPostUpdateNote = false;
 
@@ -164,35 +168,45 @@ class Person extends BasePerson implements PhotoInterface
 
     public function getFamilyRole()
     {
-        $familyRole = null;
         $roleId = $this->getFmrId();
-        if ($roleId !== 0) {
-            $familyRole = ListOptionQuery::create()->filterById(2)->filterByOptionId($roleId)->findOne();
+        if ($roleId === 0) {
+            return null;
         }
 
-        return $familyRole;
+        return self::listOption(2, (int) $roleId);
     }
 
     public function getFamilyRoleName(): string
     {
-        $roleName = 'Unassigned';
         $role = $this->getFamilyRole();
-        if ($role !== null) {
-            $roleName = $this->getFamilyRole()->getOptionName();
-        }
 
-        return $roleName;
+        return $role !== null ? $role->getOptionName() : 'Unassigned';
     }
 
     public function getClassification()
     {
-        $classification = null;
         $clsId = $this->getClsId();
-        if (!empty($clsId)) {
-            $classification = ListOptionQuery::create()->filterById(1)->filterByOptionId($clsId)->findOne();
+        if (empty($clsId)) {
+            return null;
         }
 
-        return $classification;
+        return self::listOption(1, (int) $clsId);
+    }
+
+    /**
+     * Classifications and family roles are the same short lists for every person.
+     * Load each list once per request instead of once per row.
+     */
+    private static function listOption(int $listId, int $optionId): ?ListOption
+    {
+        if (!isset(self::$listOptionsByListId[$listId])) {
+            self::$listOptionsByListId[$listId] = [];
+            foreach (ListOptionQuery::create()->filterById($listId)->find() as $option) {
+                self::$listOptionsByListId[$listId][(int) $option->getOptionId()] = $option;
+            }
+        }
+
+        return self::$listOptionsByListId[$listId][$optionId] ?? null;
     }
 
     public function getGradeName(): ?string
