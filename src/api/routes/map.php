@@ -78,12 +78,12 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                     'type'             => 'person',
                     'name'             => $person->getFullName(),
                     'salutation'       => $person->getFullName(),
-                    'address'          => $person->getAddress(),
+                    'address'          => $person->getFamily()->getAddress(),
                     'latitude'         => (float) $latLng['Latitude'],
                     'longitude'        => (float) $latLng['Longitude'],
                     'classificationId' => (int) $person->getClsId(),
                     'profileUrl'       => $person->getViewURI(),
-                    'directionsUrl'    => $person->getDirectionsUrl(),
+                    'directionsUrl'    => $person->getFamily()->getDirectionsUrl(),
                     'phone'            => $person->getBestPhone(),
                 ];
             }
@@ -112,13 +112,13 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                 'type'             => 'person',
                 'name'             => $person->getFullName(),
                 'salutation'       => $person->getFullName(),
-                'address'          => $person->getAddress(),
+                'address'          => $person->getFamily()->getAddress(),
                 'latitude'         => (float) $latLng['Latitude'],
                 'longitude'        => (float) $latLng['Longitude'],
                 'classificationId' => (int) $person->getClsId(),
                 'roleId'           => $roleMap[(int) $person->getId()] ?? 0,
                 'profileUrl'       => $person->getViewURI(),
-                'directionsUrl'    => $person->getDirectionsUrl(),
+                'directionsUrl'    => $person->getFamily()->getDirectionsUrl(),
                 'phone'            => $person->getBestPhone(),
             ];
         }
