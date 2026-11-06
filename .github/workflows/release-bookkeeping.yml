@@ -102,6 +102,7 @@ jobs:
       - name: Close current CRM milestone and move pending items
         env:
           NEXT_VERSION: ${{ steps.next_version.outputs.next_version }}
+          RELEASE_PUBLISHED_AT: ${{ github.event.release.published_at }}
         run: |
           set -euo pipefail
 
@@ -131,6 +132,19 @@ jobs:
             exit 0
           fi
 
+          RELEASE_TIMESTAMP="$RELEASE_PUBLISHED_AT"
+          if [ -z "$RELEASE_TIMESTAMP" ]; then
+            RELEASE_TIMESTAMP=$(gh api "repos/$GH_REPO/releases/tags/$CURRENT_TAG" --jq '.published_at // empty')
+            if [ -z "$RELEASE_TIMESTAMP" ]; then
+              RELEASE_TIMESTAMP=$(gh api "repos/$GH_REPO/releases/tags/$CURRENT_TAG" --jq '.created_at // empty')
+            fi
+          fi
+          if [ -z "$RELEASE_TIMESTAMP" ]; then
+            echo "::error::No release date found for $CURRENT_TAG."
+            exit 1
+          fi
+          RELEASE_DATE="${RELEASE_TIMESTAMP%%T*}T00:00:00Z"
+
           # CRM backlog items not shipped in this release roll forward to the next release.
           gh api --paginate "repos/$GH_REPO/issues?state=open&milestone=$current_milestone&per_page=100" \
             --jq '.[].number' | while read -r number; do
@@ -139,7 +153,7 @@ jobs:
               echo "Moved CRM #$number to $NEXT_VERSION"
             done
 
-          gh api -X PATCH "repos/$GH_REPO/milestones/$current_milestone" -f state=closed --silent
+          gh api -X PATCH "repos/$GH_REPO/milestones/$current_milestone" -f state=closed -f due_on="$RELEASE_DATE" --silent
           echo "Closed CRM milestone $CURRENT_TAG"
 
   docs-release:
