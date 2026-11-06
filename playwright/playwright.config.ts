@@ -147,7 +147,7 @@ export default defineConfig({
       // CRM #10048 — re-applies ui.locale between capture passes against
       // the already-installed instance (see locale-set.spec.ts for why
       // this can't just be another 'setup' run). Deliberately has NO
-      // 'setup' dependency: scripts/marketing/capture-all-locales.sh runs this with
+      // 'setup' dependency: scripts/marketing/capture-all-locales.js runs this with
       // --no-deps between locale passes, reusing the storageState the
       // one-time 'setup' run already saved to disk. No viewport-specific
       // behavior — the API call doesn't render anything — so a single

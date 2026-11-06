@@ -173,4 +173,4 @@ jobs:
           VERSION: ${{ env.CURRENT_TAG }}
           NEXT_VERSION: ${{ steps.next_version.outputs.next_version }}
           MERGE: 'true'
-        run: ./scripts/release/notify-docs-release.sh
+        run: node scripts/release/notify-docs-release.js
