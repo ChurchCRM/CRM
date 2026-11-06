@@ -4919,10 +4919,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portekizce - Portekiz"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Authenticator uygulamasında görüntülenecek uygulama adını belirtin"
-
-#: 
 msgid "Review"
 msgstr "Gözden geçirmek"
 

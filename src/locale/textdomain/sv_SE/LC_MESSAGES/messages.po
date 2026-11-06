@@ -5006,10 +5006,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugisiska - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Ange applikationsnamnet som ska visas i autentiseringsapp"
-
-#: 
 msgid "Review"
 msgstr "Recension"
 

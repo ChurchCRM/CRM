@@ -4913,10 +4913,6 @@ msgid "Portuguese - Portugal"
 msgstr "포르투갈어 - 포르투갈"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "인증 앱에 표시할 애플리케이션 이름 지정"
-
-#: 
 msgid "Review"
 msgstr "검토"
 

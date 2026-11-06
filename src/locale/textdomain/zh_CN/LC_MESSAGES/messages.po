@@ -4984,10 +4984,6 @@ msgid "Portuguese - Portugal"
 msgstr "葡萄牙语-葡萄牙"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "指定要在身份验证器应用程序中显示的应用程序名称"
-
-#: 
 msgid "Review"
 msgstr "审查"
 

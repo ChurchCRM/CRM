@@ -4916,10 +4916,6 @@ msgid "Portuguese - Portugal"
 msgstr "Kireno - Ureno"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Bainisha jina la programu litakaloonyeshwa katika programu ya uthibitishaji"
-
-#: 
 msgid "Review"
 msgstr "Kagua"
 

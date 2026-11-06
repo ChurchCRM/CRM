@@ -5030,11 +5030,6 @@ msgstr "葡萄牙語-葡萄牙"
 
 #: 
 #, fuzzy
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "指定要在驗證器應用程序中顯示的應用程序名稱"
-
-#: 
-#, fuzzy
 msgid "Review"
 msgstr "檢閱"
 
