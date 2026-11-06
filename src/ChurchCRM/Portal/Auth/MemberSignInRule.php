@@ -4,6 +4,7 @@ namespace ChurchCRM\Portal\Auth;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSignin;
@@ -25,6 +26,8 @@ use Propel\Runtime\ActiveQuery\Criteria;
  */
 final class MemberSignInRule
 {
+    private const EMAIL_KEY = 'LOWER(TRIM(Person.Email))';
+
     /**
      * @param int[] $familyRoleIds       family roles that may sign in; 0 is "no family role"
      * @param int[] $classificationIds   classifications that may sign in; 0 is Unassigned
@@ -148,7 +151,7 @@ final class MemberSignInRule
         }
 
         $people = PersonQuery::create()
-            ->where('LOWER(TRIM(Person.Email)) = ?', $email)
+            ->where(self::EMAIL_KEY . ' = ?', $email)
             ->orderById()
             ->find();
         if ($people->isEmpty()) {
@@ -230,23 +233,29 @@ final class MemberSignInRule
             return [];
         }
 
-        $byEmail = [];
         $emails = [];
+        $everyone = [];
         foreach ($people as $person) {
             $email = self::normalizeEmail((string) $person->getEmail());
             if ($email !== '') {
                 $emails[$email] = $email;
             }
-        }
-        $everyone = [];
-        foreach ($people as $person) {
             $everyone[(int) $person->getId()] = $person;
         }
-        if ($emails !== []) {
-            $sharing = PersonQuery::create()->where('LOWER(TRIM(Person.Email)) IN ?', array_values($emails))->orderById()->find();
-            foreach ($sharing as $person) {
-                $byEmail[self::normalizeEmail((string) $person->getEmail())][] = $person;
-                $everyone[(int) $person->getId()] ??= $person;
+        $groups = $emails === []
+            ? []
+            : self::groupIdsByEmail(PersonQuery::create()->where(self::EMAIL_KEY . ' IN ?', array_values($emails)));
+        $otherIds = array_values(array_diff(array_merge(...array_values($groups)), array_keys($everyone)));
+        if ($otherIds !== []) {
+            foreach (PersonQuery::create()->filterById($otherIds, Criteria::IN)->find() as $person) {
+                $everyone[(int) $person->getId()] = $person;
+            }
+        }
+        $sharers = [];
+        foreach ($groups as $ids) {
+            $group = array_values(array_filter(array_map(static fn (int $id): ?Person => $everyone[$id] ?? null, $ids)));
+            foreach ($ids as $id) {
+                $sharers[$id] = $group;
             }
         }
 
@@ -261,12 +270,48 @@ final class MemberSignInRule
                 $email = self::normalizeEmail((string) $person->getEmail());
                 $reason = $email === ''
                     ? SignInReason::NO_EMAIL
-                    : $this->candidateFromMatches($email, $byEmail[$email] ?? [$person], $states)->refusal;
+                    : $this->candidateFromMatches($email, $sharers[$personId] ?? [$person], $states)->refusal;
             }
             $statuses[$personId] = $reason;
         }
 
         return $statuses;
+    }
+
+    /**
+     * Groups the people `$query` finds by personal email the way the database
+     * compares addresses, as `findSignInCandidate()` does: under the column's
+     * collation `jose@example.com` and `josé@example.com` are one address.
+     * People with no personal email are left out. Each person is read as their
+     * own row, tagged with the lowest id at their address, so a group of any
+     * size comes back whole.
+     *
+     * @return array<string, int[]> each address's person ids in id order, by the lowest id's spelling of the address
+     */
+    public static function groupIdsByEmail(PersonQuery $query): array
+    {
+        $rows = $query
+            ->withColumn(self::EMAIL_KEY, 'EmailKey')
+            ->withColumn('MIN(' . PersonTableMap::COL_PER_ID . ') OVER (PARTITION BY ' . self::EMAIL_KEY . ')', 'GroupId')
+            ->where(self::EMAIL_KEY . " <> ''")
+            ->orderById()
+            ->select(['Id', 'EmailKey', 'GroupId'])
+            ->find();
+
+        $keys = [];
+        $idsByGroup = [];
+        foreach ($rows as $row) {
+            $groupId = (int) $row['GroupId'];
+            $keys[$groupId] ??= (string) $row['EmailKey'];
+            $idsByGroup[$groupId][] = (int) $row['Id'];
+        }
+
+        $groups = [];
+        foreach ($idsByGroup as $groupId => $ids) {
+            $groups[$keys[$groupId]] = $ids;
+        }
+
+        return $groups;
     }
 
     /**

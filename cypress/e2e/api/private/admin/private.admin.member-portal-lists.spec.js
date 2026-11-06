@@ -6,7 +6,8 @@
  *
  * Seed people under the rule used here (roles 1-3, classifications 1-2, age 13):
  * 2 Mathew (head, email removed here), 6 Constance and 7 Marion (made to share an
- * email), 14 Nathan (an unconfirmed moved address), 34 Alvin, 57 Jon and 92 Bruce
+ * email, written with a different case, spaces and accent, as sign-in matches it),
+ * 14 Nathan (an unconfirmed moved address), 34 Alvin, 57 Jon and 92 Bruce
  * (heads with their own email). 95 Judith has a staff account and opens the portal from it.
  * The upgrade's family email moves, old audit rows and past sign-ins are support
  * fixtures; the people's emails and sign-in rows are set up and put back in SQL.
@@ -69,8 +70,8 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
         cy.makePrivateAdminAPICall("POST", SETTINGS_URL, RULE, 200);
         resetFixtures();
         db("UPDATE person_per SET per_Email = NULL WHERE per_ID = 2");
-        db("UPDATE person_per SET per_Email = ' Shared.Pair@example.com' WHERE per_ID = 6");
-        db("UPDATE person_per SET per_Email = 'shared.pair@example.com ' WHERE per_ID = 7");
+        db("UPDATE person_per SET per_Email = ' José.Pair@example.com' WHERE per_ID = 6");
+        db("UPDATE person_per SET per_Email = 'jose.pair@example.com ' WHERE per_ID = 7");
         db(
             `INSERT INTO person_signin_psi (psi_per_ID, psi_UnconfirmedEmail, psi_UnconfirmedSource, psi_UnconfirmedAt, psi_LastSignIn, psi_LastMethod)
              VALUES (14, 'NATHAN.LEWIS@example.com', 'family_email', NOW(), NOW() - INTERVAL 3 DAY, 'email_code'),
@@ -90,8 +91,7 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
         list("may-sign-in").then((body) => {
             expect(body.total).to.eq(body.rows.length);
             expect(ids(body)).to.include.members([34, 57, 92]);
-            expect(ids(body)).to.not.include.members([2, 6, 7, 14]);
-            expect(ids(body)).to.not.include(4);
+            [2, 4, 6, 7, 14].forEach((personId) => expect(ids(body)).to.not.include(personId));
             const jon = body.rows.find((row) => row.personId === 57);
             expect(jon.familyName).to.eq("Olson");
             expect(jon.email).to.eq("jon.olson@example.com");
@@ -146,6 +146,7 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
         [
             [2, "no_email"],
             [6, "shared_email"],
+            [7, "shared_email"],
             [14, "email_unconfirmed"],
             [92, null],
         ].forEach(([personId, reason]) => {
@@ -160,6 +161,7 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
             expect(byId[92].reasonLabel).to.be.null;
             expect(byId[2]).to.include({ maySignIn: false, reasonLabel: "No personal email" });
             expect(byId[6]).to.include({ maySignIn: false, reasonLabel: "Their email is shared with someone else" });
+            expect(byId[7]).to.include({ maySignIn: false, reasonLabel: "Their email is shared with someone else" });
             expect(byId[14]).to.include({ maySignIn: false, reasonLabel: "Their email is not confirmed yet" });
         });
         list("everyone", { search: "Lewis" }).then((body) => {
