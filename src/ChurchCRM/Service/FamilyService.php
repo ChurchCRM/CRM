@@ -141,7 +141,7 @@ class FamilyService
                 'geocodeWithReason: incomplete address (no city/state/zip) for family ' . $family->getId()
             );
             $family->recordGeocode(null);
-            $family->save();
+            $family->saveWithoutUpdateNote();
             return ['success' => false, 'reason' => 'incomplete_address'];
         }
 
@@ -167,12 +167,12 @@ class FamilyService
                     'geocodeWithReason: no result from any geocoding provider for family ' . $family->getId()
                 );
                 $family->recordGeocode(null);
-                $family->save();
+                $family->saveWithoutUpdateNote();
                 return ['success' => false, 'reason' => 'no_result'];
             }
 
             $family->recordGeocode(['Latitude' => $lat, 'Longitude' => $lng]);
-            $family->save();
+            $family->saveWithoutUpdateNote();
 
             $this->logger->info(
                 'geocodeWithReason: geocoded family ' . $family->getId() . ' -> ' . $lat . ', ' . $lng
