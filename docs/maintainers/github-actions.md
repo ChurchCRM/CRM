@@ -68,6 +68,7 @@ Publishing the draft is a person's click. That `release: published` event then s
 | `Issues: hygiene` (`issue-management.yml`) | issue opened, Mondays 02:00 UTC, manual | Security guard on new issues, stale marking, review of closed stale issues. After 45 quiet days it asks the reporter to reply (that keeps it open). No reply closes it 14 days later. Exempt: `Security`, `security-delete-required`, `Epic`, `good first issue`. At most 30 items per Monday. |
 | `Issues: stamp milestone on merge` (`pr-milestone-stamp.yml`) | PR merged, manual | Puts the merged PR and every issue it `Fixes` on the PR milestone, or on the `package.json` version when the PR has none, and closes those issues if they are still open. Only `Fixes` counts; a mention does not |
 | `Marketing: capture screenshots & videos` (`marketing-capture-assets.yml`) | manual, release start | Captures English first, then 7 more locales (3 devices each), merges them, uploads the artifact `marketing-visuals-<run id>` (30 days) and, on `master` only, starts `Publish visuals` in `ChurchCRM/visuals`, which serves it at https://cdn.churchcrm.io/. Started by `Release & Start Next` as a non-blocking job. Opens no PR |
+| `Marketing: check English captures` (`marketing-capture-check.yml`) | 05:17 UTC daily, manual | English only: setup videos and English screenshots. Uploads `marketing-locale-en-<run id>` for the run. Does not capture other locales and does not publish. Follows the 03:17 UTC nightly |
 
 ### Shared building blocks
 
