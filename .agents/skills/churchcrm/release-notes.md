@@ -243,7 +243,7 @@ gh release view "$TAG" -R ChurchCRM/CRM --json tagName,isDraft,targetCommitish
 
 Only edit a **draft**. If the release is already published, show George the diff and apply it only after George explicitly approves. Never publish from this skill: publishing is George's separate approval in `release-management.md`.
 
-Before George publishes, the "Start <next> release" PR must be merged, so that `release-bookkeeping.yml` reads the next version from master. Otherwise it stops.
+Publish does not wait for the "Start <next> release" PR: bookkeeping reads the next version from `master`, or from the PR's `build/<next>` branch until it merges. Delete the local `changelog/<version>.md` once the draft holds the notes; bookkeeping writes it back at Publish.
 
 After George publishes, `release-bookkeeping.yml` copies the notes into `changelog/$TAG.md` and CHANGELOG.md, and `release-announcement.md` / `social-media-release.md` reuse them. There is nothing further to paste.
 

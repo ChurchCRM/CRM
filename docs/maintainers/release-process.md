@@ -10,8 +10,8 @@ Legend: 🤖 automated · 🧑‍💻 agent-assisted · ✋ manual
 2. **Built and tested:** Build/Test/Package and the nightly are green on the same `master` HEAD, and the milestone for the `package.json` version is reviewed (Phase 2).
 3. **Release & Start Next** with `next_version`, the only input (3.1). It requires green Build/Test/Package and Nightly on the branch tip, and refuses to replace an existing release. It starts the marketing capture, the notes context, the docs staging and the `Start <next> release` PR as separate jobs that never block the draft.
 4. **Notes:** ask an agent to "write the `<version>` release notes". It reads the `release-notes-context-<version>` artifact and applies the approved text with `gh release edit <version> --tag <version> --notes-file …` (3.2).
-5. **Open the `Start <next> release` PR, but merge it only after the release's marketing capture run has finished** (3.3).
-6. **Check the tag, then Publish** (3.4): `gh release view <version> -R ChurchCRM/CRM --json tagName,isDraft` shows `"tagName":"<version>"`.
+5. **Check the tag, then Publish** (3.4): `gh release view <version> -R ChurchCRM/CRM --json tagName,isDraft` shows `"tagName":"<version>"`. Publish does not wait for the marketing capture or the `Start <next> release` PR.
+6. **After Publish:** let the marketing capture finish, then merge the `Start <next> release` PR (3.3).
 7. **After Publish** (Phase 4): bookkeeping `sync`, `manage-milestones` and `docs-release` are green, and the release nightly is green.
 8. **Marketing** (Phase 6).
 
@@ -30,7 +30,8 @@ A **hard gate** stops the release until it is met or the maintainer overrides it
 | Version and tag sanity: `package.json` is `X.Y.Z`, `next_version` differs, no existing release or tag (3.1) | Hard gate, enforced by `release-publish.yml` | A wrong tag cannot be undone cleanly |
 | Unfixed High-severity advisory (2.4) | Hard gate, maintainer override by GHSA ID | Do not ship a known High unannounced |
 | Milestone review (2.3) | Maintainer judgment | Moves items that will not ship; not a workflow check |
-| Release notes reviewed, `Start <next> release` PR merged, tag checked, Publish click (3.2 to 3.4) | Hard gate, maintainer approval | Bookkeeping reads the next version from `master` at publish time |
+| Release notes reviewed, tag checked, Publish click (3.2 to 3.4) | Hard gate, maintainer approval | The Publish click is the release approval |
+| `Start <next> release` PR merged (3.3) | After Publish, never gates it | Bookkeeping reads the next version from `master`, or from the PR's `build/<next>` branch until it merges |
 | Locales clean (Phase 1) | Checklist, not enforced | Missing translations fall back to English; the maintainer decides |
 | Marketing capture | Automation, starts with the release | Visuals are not part of the shipped ZIP |
 | Notes context, docs staging, `Start <next> release` PR creation (3.1) | Automation, separate jobs | The draft exists before they run; a failure is re-run |
@@ -76,7 +77,7 @@ Goal: the exact commit being released is built, fully tested, and its scope is c
 |---|------|-----|--------|
 | 2.1 | Compare the latest successful nightly run's SHA with `master` HEAD. If they differ, run the nightly manually and wait for green | [`build-test-nightly.yml`](../../.github/workflows/build-test-nightly.yml): build, root and subdir suites, setup wizard, locale smoke, upgrade matrix. A manual run takes about 30 to 48 min | ✋ check and trigger / 🤖 run |
 | 2.2 | Confirm `Build, Test and Package` on `master` HEAD is completed and green; its `ChurchCRM-<version>.zip` artifact is the released file | [`build-test-package.yml`](../../.github/workflows/build-test-package.yml) runs on every push to `master`, about 25 min; its `build` job uploads the ZIP | 🤖 run / ✋ check |
-| 2.3 | Review the GitHub milestone matching the `package.json` version on `master`; remove any open issue or PR that will not ship | Milestones → `<version>`. [`pr-milestone-stamp.yml`](../../.github/workflows/pr-milestone-stamp.yml) stamps merged PRs and `release-bookkeeping.yml` rolls open items to the next milestone, so the review looks for blockers. Go through the open items one at a time and ask the maintainer for the target of each. The next releases are the next patch and the next minor (for example 7.8.3 and 7.9.0). A docs tracking issue stays in the release milestone that matches its feature's commit: check `ChurchCRM/docs.churchcrm.io` for an open or merged PR for it. A merged docs PR means the issue is finished, so ask to close it. An open docs PR keeps the issue where it is, because it can still finish before the `Start <next> release` PR merges. The same holds for any item whose remaining half is a PR in another repo (`ChurchCRM/visuals`, the website): it stays while that PR is open and can finish before then. Marketing capture issues (label `Marketing`) and their epics never gate a release and stay too; bookkeeping rolls them to the next milestone at Publish (4.5), so nothing is moved by hand. An item with no PR that is not docs or marketing, including a design decision that needs an audit, goes to the next patch milestone unless the maintainer names the next minor. The first question of every release is "What is the next version?", which is also the target milestone. Check that it exists (`gh api repos/ChurchCRM/CRM/milestones`). If it does not, ask the maintainer to create it, and apply the moves once it exists | ✋ |
+| 2.3 | Review the GitHub milestone matching the `package.json` version on `master`; remove any open issue or PR that will not ship | Milestones → `<version>`. [`pr-milestone-stamp.yml`](../../.github/workflows/pr-milestone-stamp.yml) stamps merged PRs and `release-bookkeeping.yml` stamps new merges, and a milestone with open items stays open after release, so the review looks for blockers. Go through the open items one at a time and ask the maintainer for the target of each. The next releases are the next patch and the next minor (for example 7.8.3 and 7.9.0). A docs tracking issue stays in the release milestone that matches its feature's commit: check `ChurchCRM/docs.churchcrm.io` for an open or merged PR for it. A merged docs PR means the issue is finished, so ask to close it. An open docs PR keeps the issue where it is, because it can still finish before the `Start <next> release` PR merges. The same holds for any item whose remaining half is a PR in another repo (`ChurchCRM/visuals`, the website): it stays while that PR is open and can finish before then. Marketing capture issues (label `Marketing`) and their epics never gate a release and stay too; bookkeeping rolls them to the next milestone at Publish (4.5), so nothing is moved by hand. An item with no PR that is not docs or marketing, including a design decision that needs an audit, goes to the next patch milestone unless the maintainer names the next minor. The first question of every release is "What is the next version?", which is also the target milestone. Check that it exists (`gh api repos/ChurchCRM/CRM/milestones`). If it does not, ask the maintainer to create it, and apply the moves once it exists | ✋ |
 | 2.4 | List draft advisories (`gh api 'repos/ChurchCRM/CRM/security-advisories?state=draft'`). For each High, read the description and check the code on the release commit and on `master` for a fix that was merged without updating the advisory: a High that is still exploitable blocks. Medium and Low never block. Fix it, defer the release, or have the maintainer override it by GHSA ID. Set `patched_versions` only on a fixed advisory and clear it on any other | [Security Advisory Review](../../.agents/skills/churchcrm/security-advisory-review.md) | ✋ |
 
 Notes:
@@ -94,7 +95,7 @@ Notes:
 |---|------|-----|--------|
 | 3.1 | Run **Release & Start Next** with `next_version`. It creates the draft from the tested build's ZIP, uploads the `release-notes-context-<version>` artifact, bumps `master` to `next_version` and opens the `Start <next> release` PR. It requires green build and nightly on the branch tip and refuses to replace an existing release. The marketing capture starts as its own job and does not gate the draft | [`release-publish.yml`](../../.github/workflows/release-publish.yml) → [`release-prepare.yml`](../../.github/workflows/release-prepare.yml), about 2 to 3 min | ✋ trigger / 🤖 run |
 | 3.2 | Release notes: an agent reads the context artifact, writes user-facing notes following [`release-notes.md`](../../.agents/skills/churchcrm/release-notes.md) (grouped by user impact, verified language count), and after approval applies them with `gh release edit <tag> --tag <tag> --notes-file …` | Agent and skill | 🧑‍💻 |
-| 3.3 | Open the `Start <next> release` PR, and do not merge it until the release's marketing capture run (`Marketing: capture screenshots & videos`, started in 3.1) has finished. Bookkeeping stops while `master` still carries the released version, so after the merge re-run `release-bookkeeping.yml` with `tag=<version>`. `pr-milestone-stamp.yml` stamps new merges into the next milestone once it is merged | PR from `build/<next>` | ✋ |
+| 3.3 | After Publish, wait for the release's marketing capture run (`Marketing: capture screenshots & videos`, started in 3.1) to finish, then merge the `Start <next> release` PR. Neither blocks Publish, and bookkeeping needs no re-run (`scripts/release/next-version.js` falls back to the PR's `build/<next>` branch). `pr-milestone-stamp.yml` stamps new merges into the next milestone once it is merged | PR from `build/<next>` | ✋ |
 | 3.4 | Check the tag, then Publish: `gh release view <tag> --json tagName,isDraft` shows the version | GitHub release page | ✋ (approval) |
 
 **Picking `next_version`:**
@@ -115,7 +116,7 @@ Notes:
 | 4.2 | Every admin is told an upgrade is available on their next login | `AuthenticationManager::checkSystemUpdates()` → `ChurchCRMReleaseManager::checkSystemUpdateAvailable()` (admins only, stable releases only, cached per session) | 🤖 |
 | 4.3 | The upgrade wizard ("What you'll gain") shows the release body from GitHub and links `changelog/<version>.md` on `master` | `ChurchCRMReleaseManager::getUpgradePreviewData()` | 🤖 |
 | 4.4 | Changelog: writes `changelog/<version>.md` from the release body and adds a row to `CHANGELOG.md`, committed to `master` as `chore(changelog): sync <version> release notes` | [`release-bookkeeping.yml`](../../.github/workflows/release-bookkeeping.yml) job `sync` → `scripts/release/release-changelog.js` | 🤖 |
-| 4.5 | Milestones: closes `<version>`, creates the next milestone (from `master`'s `package.json`) if missing, and moves every still-open issue/PR into it. Skipped for pre-releases | job `manage-milestones` | 🤖 |
+| 4.5 | Milestones, after the marketing capture is green: dispatch `release-bookkeeping.yml` with `tag=<version>`. Its `manage-milestones` job creates the next milestone if missing, sets `<version>`'s due date to the release's publish date, and closes it only when it has 0 open items. A milestone with open items keeps its date and stays open. It never moves items | job `manage-milestones`, `workflow_dispatch` only | ✋ trigger / 🤖 run |
 | 4.6 | Docs release: sends `crm-released` to `ChurchCRM/docs.churchcrm.io`, whose workflow merges the release docs and moves the released version's open docs items to `Current` and keeps a milestone per upcoming version. Creating `release-docs/<next>` is manual (step 6.2) | job `docs-release`; needs the `DOCS_RELEASE_TOKEN` secret to send the dispatch | 🤖 |
 | 4.7 | Post-release nightly: the full suite, including the upgrade matrix, runs against the published release | `build-test-nightly.yml` on `release: published` | 🤖 |
 | 4.8 | Advisories: list every draft or triage advisory whose `patched_versions` is the released version or older, and every published advisory with no CVE. For each, request a CVE if it has none (`POST /repos/ChurchCRM/CRM/security-advisories/{ghsa}/cve`), then publish the draft. Report any that stay unpublished, with the reason | https://github.com/ChurchCRM/CRM/security/advisories; [Security Advisory Review](../../.agents/skills/churchcrm/security-advisory-review.md) | ✋ (same day) |
@@ -127,13 +128,13 @@ Notes:
 - The in-app release notes (4.2, 4.3) are the widest-reaching copy in the release; keep them user-facing.
 - `changelog/<version>.md` appears when `release-bookkeeping.yml` finishes; the wizard link resolves after that.
 - Publishing with `prerelease=true` ships a release candidate without notifying admins.
-- Re-run a failed bookkeeping job with `workflow_dispatch` (`tag`). The workflow rejects non-version tags and stops if `master` has not been bumped.
+- Re-run a failed bookkeeping job with `workflow_dispatch` (`tag`). The workflow rejects non-version tags and stops if neither `master` nor a `build/<next>` branch holds a newer version.
 - The 4.4 commit touches only `.md` files, which Build/Test/Package ignores, so it starts no build.
 - Merging the `Start <next> release` PR starts a normal `master` build; it creates no draft release.
 
 ## Phase 5: Open the next cycle
 
-Step 3.3 covers it: merge the `Start <next> release` PR after the release's marketing capture has finished. Bookkeeping reads the next version from `master`, so re-run it with `tag=<version>` after that merge, and `pr-milestone-stamp.yml` then stamps new merges into the next milestone.
+Step 3.3 covers it: after Publish, merge the `Start <next> release` PR once the release's marketing capture has finished. `pr-milestone-stamp.yml` then stamps new merges into the next milestone.
 
 ## Phase 6: Marketing push
 
@@ -151,6 +152,21 @@ Starts after Publish (3.4) and runs about a week.
 
 Marketing judgment calls stay with the maintainer: which feature leads, whether a blog is warranted, and the week's cadence. An agent can draft the week's plan (launch posts, blog draft, blog share, follow-ups) from the final release notes.
 
+## Phase 7: Release done
+
+The release is done when every box is true. The agent reports them one by one.
+
+- [ ] Published, and `gh release view <version> --json tagName,isDraft` shows `"tagName":"<version>"`.
+- [ ] `changelog/<version>.md` and the `CHANGELOG.md` row are on `master` (4.4).
+- [ ] The post-release nightly is green (4.7).
+- [ ] Docker `latest*` digests match the version's tags (4.9).
+- [ ] Advisories fixed in this version or older are handled (4.8).
+- [ ] The docs PR is merged and `release-docs/<next>` exists (4.10, 6.2).
+- [ ] The marketing capture is green and the visuals are published (6.1).
+- [ ] The `Start <next> release` PR is merged (3.3).
+- [ ] The milestone has the release's publish date as its due date. It is closed when it has 0 open items, and open with its date when it has more (4.5).
+- [ ] Announcements are sent (6.3).
+
 ## Recovery paths
 
 A fix to a release workflow cannot run end to end before it merges. Track it as an issue in the next milestone (labels `Integration Testing` and `build`, with a done-when checklist) and confirm it in that release.
@@ -164,7 +180,7 @@ These are what to do when a step above does not run as written. Each one was nee
 1. Draft: download the ZIP from the green Build/Test/Package run on the release commit (`gh run download <run id> --pattern 'ChurchCRM-*'`), then `gh release create <version> ChurchCRM-<version>.zip --target <commit sha> --generate-notes --notes-start-tag <previous version> --draft`. A draft shows `untagged-<hash>` in its URL; `gh release view <version> --json tagName` still shows the version, and the git tag appears at Publish.
 2. Next-version PR: `gh workflow run release-prepare.yml --ref master -f version=<next version>`.
 
-Merge the `Start <next> release` PR only after the release's marketing capture run has finished (3.3). Bookkeeping reads the next version from `master`, and its milestone jobs stop while `master` still carries the released version, so Publish normally comes first. Merge that PR once the capture is done, then re-run `release-bookkeeping.yml` with `tag=<version>`.
+Publish first. Merge the `Start <next> release` PR after the release's marketing capture run has finished (3.3). Bookkeeping reads the next version from `master`, or from the PR's `build/<next>` branch until it merges, so no re-run is needed. Merge that PR once the capture is done.
 
 ### Bookkeeping failed
 
