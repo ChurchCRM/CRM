@@ -3,6 +3,7 @@
 namespace ChurchCRM\Utils;
 
 use ChurchCRM\Bootstrapper;
+use ChurchCRM\dto\SystemConfig;
 
 class InputUtils
 {
@@ -237,7 +238,14 @@ class InputUtils
         if (empty($sInput)) {
             return '';
         } else {
-            return date('Y-m-d', strtotime(str_replace('/', '-', $sInput)));
+            $picked = \DateTime::createFromFormat('!' . SystemConfig::getValue('sDatePickerFormat'), trim($sInput));
+            if ($picked !== false) {
+                return $picked->format('Y-m-d');
+            }
+
+            $timestamp = strtotime(str_replace('/', '-', $sInput));
+
+            return $timestamp === false ? '' : date('Y-m-d', $timestamp);
         }
     }
 
