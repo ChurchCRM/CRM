@@ -384,11 +384,7 @@ function formatCustomFieldValue(int $typeId, string $raw)
         case 2: // DATE — SQL DATE column requires a full year. Partial dates
             // (bare "7/4") are dropped rather than silently assigned the
             // current year, which is what strtotime() used to do.
-            $parsed = DateTimeUtils::parsePartialDate($raw);
-            if ($parsed === null || $parsed['month'] === 0 || $parsed['day'] === 0 || $parsed['year'] === null) {
-                return null;
-            }
-            return sprintf('%04d-%02d-%02d', $parsed['year'], $parsed['month'], $parsed['day']);
+            return DateTimeUtils::parseFullDate($raw);
         case 6: // YEAR
             return ctype_digit($raw) && strlen($raw) === 4 ? $raw : null;
         case 7: // ENUM('winter','spring','summer','fall')
@@ -766,9 +762,9 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         if (!empty($data['Envelope'])) $family->setEnvelope((int) $data['Envelope']);
                         if (!empty($data['WeddingDate'])) {
                             // WeddingDate is a SQL DATE column — partial dates are not storable.
-                            $wedding = DateTimeUtils::parsePartialDate((string) $data['WeddingDate']);
-                            if ($wedding !== null && $wedding['year'] !== null && $wedding['month'] > 0 && $wedding['day'] > 0) {
-                                $family->setWeddingdate(sprintf('%04d-%02d-%02d', $wedding['year'], $wedding['month'], $wedding['day']));
+                            $wedding = DateTimeUtils::parseFullDate((string) $data['WeddingDate']);
+                            if ($wedding !== null) {
+                                $family->setWeddingdate($wedding);
                             }
                         }
                         $family->setDateEntered(date('YmdHis'));
@@ -875,9 +871,9 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
 
                 if (!empty($data['MembershipDate'])) {
                     // MembershipDate is a SQL DATE column — partial dates are not storable.
-                    $member = DateTimeUtils::parsePartialDate((string) $data['MembershipDate']);
-                    if ($member !== null && $member['year'] !== null && $member['month'] > 0 && $member['day'] > 0) {
-                        $person->setMembershipDate(sprintf('%04d-%02d-%02d', $member['year'], $member['month'], $member['day']));
+                    $member = DateTimeUtils::parseFullDate((string) $data['MembershipDate']);
+                    if ($member !== null) {
+                        $person->setMembershipDate($member);
                     }
                 }
 

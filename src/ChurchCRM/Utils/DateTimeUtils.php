@@ -363,6 +363,20 @@ class DateTimeUtils
         }
     }
 
+    /**
+     * parsePartialDate() for a SQL DATE column: Y-m-d when the input names a full date,
+     * null for a missing year, month or day.
+     */
+    public static function parseFullDate(string $raw): ?string
+    {
+        $parsed = self::parsePartialDate($raw);
+        if ($parsed === null || $parsed['year'] === null || $parsed['month'] === 0 || $parsed['day'] === 0) {
+            return null;
+        }
+
+        return sprintf('%04d-%02d-%02d', $parsed['year'], $parsed['month'], $parsed['day']);
+    }
+
     /** Puts two leading numbers in (month, day) order according to the system date-picker format. */
     private static function orderMonthDay(int $first, int $second): array
     {

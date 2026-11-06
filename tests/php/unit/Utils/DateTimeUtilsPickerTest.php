@@ -52,6 +52,11 @@ Assert::false(DateTimeUtils::parseAndValidate('22/03/2014', 'past'), 'parseAndVa
 Assert::same('2014-03-22', DateTimeUtils::normalizeDate('2014-03-22'), 'ISO is accepted under any picker format');
 Assert::same('2014-03-22', DateTimeUtils::normalizeDate('March 22, 2014'), 'a textual date is accepted');
 Assert::same('', DateTimeUtils::normalizeDate('3/4/14'), 'a two-digit year is not read as year 0014');
+Assert::same('', DateTimeUtils::normalizeDate('02/30/2014'), 'an overflow date is empty, not rolled into March');
+Assert::false(DateTimeUtils::parseAndValidate('02/30/2014', 'past'), 'parseAndValidate rejects an overflow date');
+Assert::same('2014-03-04', DateTimeUtils::parseFullDate('3/4/2014'), 'parseFullDate reads a full date');
+Assert::null(DateTimeUtils::parseFullDate('3/4'), 'parseFullDate rejects a date without a year');
+Assert::null(DateTimeUtils::parseFullDate('2020'), 'parseFullDate rejects a bare year');
 Assert::null(DateTimeUtils::parseDatePicker('3/4/2014', true), 'strict parse rejects unpadded input');
 Assert::null(DateTimeUtils::parseDatePicker('02/30/2014', true), 'strict parse rejects an overflow date');
 
