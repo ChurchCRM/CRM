@@ -368,16 +368,26 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
 
         $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 
-        $dFirstSunday = DateTimeUtils::normalizeDate($post['FirstSunday'] ?? '');
-        $dLastSunday = DateTimeUtils::normalizeDate($post['LastSunday'] ?? '');
+        // A non-blank value that does not parse keeps the saved date; only a blank field clears it.
+        $dateOrKeep = static function (string $raw, ?string $current): ?string {
+            $raw = trim($raw);
+            if ($raw === '') {
+                return null;
+            }
+
+            return DateTimeUtils::normalizeDate($raw) ?: $current;
+        };
+
+        $dFirstSunday = $dateOrKeep((string) ($post['FirstSunday'] ?? ''), $userRecord->getCalStart('Y-m-d'));
+        $dLastSunday = $dateOrKeep((string) ($post['LastSunday'] ?? ''), $userRecord->getCalEnd('Y-m-d'));
 
         // Save calendar settings to user record
-        $userRecord->setCalStart($dFirstSunday ?: null);
-        $userRecord->setCalEnd($dLastSunday ?: null);
+        $userRecord->setCalStart($dFirstSunday);
+        $userRecord->setCalEnd($dLastSunday);
         for ($i = 1; $i <= 8; $i++) {
-            $val = DateTimeUtils::normalizeDate($post['NoSchool' . $i] ?? '');
+            $getter = 'getCalNoSchool' . $i;
             $setter = 'setCalNoSchool' . $i;
-            $userRecord->$setter($val ?: null);
+            $userRecord->$setter($dateOrKeep((string) ($post['NoSchool' . $i] ?? ''), $userRecord->$getter('Y-m-d')));
         }
         $userRecord->save();
 

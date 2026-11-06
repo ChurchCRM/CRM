@@ -107,8 +107,8 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             }
 
             if ($date !== '') {
-                $date = DateTimeUtils::parseDatePicker($date, true);
-                if ($date === null) {
+                $date = DateTimeUtils::parseIsoDate($date) ?: DateTimeUtils::parseDatePicker($date, true);
+                if (!$date) {
                     return SlimUtils::renderErrorJSON($response, gettext('Not a valid date'), [], 400);
                 }
             } else {
@@ -200,8 +200,8 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             if (array_key_exists('date', $input)) {
                 $date = trim((string) $input['date']);
                 if ($date !== '') {
-                    $iso = DateTimeUtils::parseDatePicker($date, true);
-                    if ($iso === null) {
+                    $iso = DateTimeUtils::parseIsoDate($date) ?: DateTimeUtils::parseDatePicker($date, true);
+                    if (!$iso) {
                         return SlimUtils::renderErrorJSON($response, gettext('Not a valid date'), [], 400);
                     }
                     $fr->setDate($iso);

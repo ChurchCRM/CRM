@@ -286,8 +286,13 @@ class DateTimeUtils
         }
 
         $timestamp = str_contains($input, '/') ? false : strtotime($input);
+        if ($timestamp === false) {
+            return '';
+        }
 
-        return $timestamp === false ? '' : date('Y-m-d', $timestamp);
+        $date = date('Y-m-d', $timestamp);
+
+        return preg_match('/^\d{4}-\d{2}-\d{2}$/', $input) && $date !== $input ? '' : $date;
     }
 
     /**

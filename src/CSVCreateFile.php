@@ -154,7 +154,13 @@ if ($sSource === 'cart') {
     $dates = [];
     foreach (['MembershipDate', 'BirthDate', 'AnniversaryDate', 'EnterDate'] as $field) {
         foreach (['1', '2'] as $end) {
-            $dates[$field . $end] = DateTimeUtils::normalizeDate($_POST[$field . $end] ?? '');
+            $raw = trim((string) ($_POST[$field . $end] ?? ''));
+            $dates[$field . $end] = DateTimeUtils::normalizeDate($raw);
+            if ($raw !== '' && $dates[$field . $end] === '') {
+                http_response_code(400);
+                echo InputUtils::escapeHTML(gettext('Not a valid date') . ': ' . $raw);
+                exit;
+            }
         }
     }
     $today = date('Y-m-d');

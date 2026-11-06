@@ -50,6 +50,7 @@ Assert::same('', DateTimeUtils::normalizeDate('not a date'), 'unparseable input 
 Assert::same('', DateTimeUtils::normalizeDate('22/03/2014'), 'a slash date in another layout is rejected, not guessed');
 Assert::false(DateTimeUtils::parseAndValidate('22/03/2014', 'past'), 'parseAndValidate rejects a slash date in another layout');
 Assert::same('2014-03-22', DateTimeUtils::normalizeDate('2014-03-22'), 'ISO is accepted under any picker format');
+Assert::same('', DateTimeUtils::normalizeDate('2024-02-30'), 'an impossible ISO date is rejected, not rolled forward');
 Assert::same('2014-03-22', DateTimeUtils::normalizeDate('March 22, 2014'), 'a textual date is accepted');
 Assert::same('', DateTimeUtils::normalizeDate('3/4/14'), 'a two-digit year is not read as year 0014');
 Assert::same('', DateTimeUtils::normalizeDate('02/30/2014'), 'an overflow date is empty, not rolled into March');
