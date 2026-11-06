@@ -78,12 +78,12 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                     'type'             => 'person',
                     'name'             => $person->getFullName(),
                     'salutation'       => $person->getFullName(),
-                    'address'          => $person->getFamily()->getAddress(),
+                    'address'          => $person->getMapAddress(),
                     'latitude'         => (float) $latLng['Latitude'],
                     'longitude'        => (float) $latLng['Longitude'],
                     'classificationId' => (int) $person->getClsId(),
                     'profileUrl'       => $person->getViewURI(),
-                    'directionsUrl'    => $person->getFamily()->getDirectionsUrl(),
+                    'directionsUrl'    => $person->getMapDirectionsUrl(),
                     'phone'            => $person->getBestPhone(),
                 ];
             }
@@ -112,13 +112,13 @@ function getMapFamilies(Request $request, Response $response, array $args): Resp
                 'type'             => 'person',
                 'name'             => $person->getFullName(),
                 'salutation'       => $person->getFullName(),
-                'address'          => $person->getFamily()->getAddress(),
+                'address'          => $person->getMapAddress(),
                 'latitude'         => (float) $latLng['Latitude'],
                 'longitude'        => (float) $latLng['Longitude'],
                 'classificationId' => (int) $person->getClsId(),
                 'roleId'           => $roleMap[(int) $person->getId()] ?? 0,
                 'profileUrl'       => $person->getViewURI(),
-                'directionsUrl'    => $person->getFamily()->getDirectionsUrl(),
+                'directionsUrl'    => $person->getMapDirectionsUrl(),
                 'phone'            => $person->getBestPhone(),
             ];
         }
@@ -282,7 +282,7 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
 /**
  * @OA\Post(
  *     path="/map/geocode-all",
- *     summary="Geocode all active families missing coordinates",
+ *     summary="Geocode all active families and people with their own address missing coordinates",
  *     description="Iterates active families that have a street address but no usable coordinates, geocoding each via the configured geocoding services (Map Settings) at ~1 request/second. Families are taken in ID order; up to 50 per call. Pass 'skip' = the number of families that failed in earlier calls so those are not re-queried, and repeat while 'remaining' > 'skip'. Requires the Edit Records role.",
  *     tags={"Map"},
  *     security={{"ApiKeyAuth":{}}},
@@ -301,6 +301,7 @@ function getMapNeighbors(Request $request, Response $response, array $args): Res
  *             @OA\Property(property="processed", type="integer", description="Families examined in this batch (0 when skip >= total)"),
  *             @OA\Property(property="geocoded",  type="integer", description="Families successfully geocoded in this batch"),
  *             @OA\Property(property="failed",    type="integer", description="Families that could not be geocoded"),
+ *             @OA\Property(property="remainingNotFound", type="integer", description="Of the remaining, how many were tried and found no match; the rest were never tried"),
  *             @OA\Property(property="remaining", type="integer", description="Families still missing coordinates after this batch, including the ones that failed (run again while remaining > failures so far)"),
  *             @OA\Property(
  *                 property="failures",
