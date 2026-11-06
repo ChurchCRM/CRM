@@ -25039,10 +25039,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Henkilö, jonka tiedoissa ikä on piilotettu, ei näytä koskaan syntymävuotta."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Jäsenportaalissa pyydettiin kello %s sähköpostiosoitteesi vaihtoa osoitteesta %s osoitteeseen %s. Vaihto tapahtuu vain, kun osoitteeseen %s lähetettyä linkkiä käytetään."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Rivi ei ole odotetussa muodossa."
 

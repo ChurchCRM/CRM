@@ -6062,7 +6062,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "Đã thêm một khóa đăng nhập cho Cổng hội viên của bạn lúc %1$s ngày %2$s.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "Người mất địa chỉ đó sẽ không còn email riêng: thư chỉ gửi cho riêng họ, chẳng hạn email nhóm, sẽ bị bỏ qua, và trình soạn email sẽ nói rõ điều đó.",
   "A person whose record hides their age never shows a birth year.": "Người có hồ sơ ẩn tuổi sẽ không bao giờ hiện năm sinh.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "Có yêu cầu trên Cổng hội viên lúc %s đổi địa chỉ email của bạn từ %s thành %s. Thay đổi chỉ xảy ra khi liên kết gửi tới %s được dùng.",
   "A row is not in the expected form.": "Một dòng không đúng dạng mong đợi.",
   "A team": "Một đội",
   "Add a passkey": "Thêm khóa đăng nhập",

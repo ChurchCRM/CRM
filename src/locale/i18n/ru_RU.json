@@ -6152,7 +6152,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "К Вашему входу в Портал члена добавлен ключ доступа в %1$s %2$s.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "Человек, который его теряет, остаётся без собственного адреса: письма только ему, например групповые, пропускаются, и составитель письма об этом сообщает.",
   "A person whose record hides their age never shows a birth year.": "У человека, в записи которого возраст скрыт, год рождения никогда не показывается.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "В Портале члена в %s запрошено изменение Вашего адреса электронной почты с %s на %s. Изменение произойдёт только при использовании ссылки, отправленной на %s.",
   "A row is not in the expected form.": "Строка имеет неожиданный вид.",
   "A team": "Команда",
   "Add a passkey": "Добавить ключ доступа",

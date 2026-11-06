@@ -6062,7 +6062,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "%2$s の %1$s に、会員ポータルのサインインにパスキーが追加されました。",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "そのアドレスを失う人は、自分専用のメールを持たなくなります。グループメールなど、その人だけに送るメールは送られず、メール作成画面にその旨が表示されます。",
   "A person whose record hides their age never shows a birth year.": "年齢を非表示にしている人の記録には、生まれ年は表示されません。",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "%s に、会員ポータルでメールアドレスを %s から %s に変更する依頼がありました。変更は、%s に送ったリンクが使われたときだけ行われます。",
   "A row is not in the expected form.": "行の形式が正しくありません。",
   "A team": "チーム",
   "Add a passkey": "パスキーを追加",

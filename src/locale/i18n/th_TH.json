@@ -6062,7 +6062,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "มีการเพิ่มพาสคีย์ให้การลงชื่อเข้าพอร์ทัลสมาชิกของคุณเวลา %1$s วันที่ %2$s",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "คนที่เสียที่อยู่นี้จะไม่มีอีเมลของตนเอง จดหมายที่ส่งถึงคนนั้นคนเดียว เช่น อีเมลกลุ่ม จะถูกข้าม และหน้าเขียนอีเมลจะบอกไว้",
   "A person whose record hides their age never shows a birth year.": "คนที่ระเบียนซ่อนอายุจะไม่แสดงปีเกิด",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "มีคำขอในพอร์ทัลสมาชิกให้เปลี่ยนที่อยู่อีเมลของคุณเวลา %s จาก %s เป็น %s การเปลี่ยนจะเกิดขึ้นเมื่อใช้ลิงก์ที่ส่งไปยัง %s",
   "A row is not in the expected form.": "มีแถวที่ไม่อยู่ในรูปแบบที่คาดไว้",
   "A team": "ทีม",
   "Add a passkey": "เพิ่มพาสคีย์",

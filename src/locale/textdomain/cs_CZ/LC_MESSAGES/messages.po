@@ -25087,10 +25087,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "U osoby, jejíž záznam skrývá věk, se nikdy nezobrazí rok narození."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "V členském portálu byla v %s podána žádost o změnu vaší e-mailové adresy z %s na %s. Změna proběhne jen tehdy, když se použije odkaz odeslaný na %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Řádek nemá očekávaný tvar."
 

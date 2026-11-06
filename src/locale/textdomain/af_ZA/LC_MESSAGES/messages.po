@@ -25068,10 +25068,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "'n Persoon wie se rekord hul ouderdom versteek, wys nooit 'n geboortejaar nie."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "'n Versoek is in die Lidportaal gemaak om jou e-posadres om %s van %s na %s te verander. Die verandering gebeur slegs wanneer die skakel wat na %s gestuur is, gebruik word."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "'n Ry is nie in die verwagte vorm nie."
 

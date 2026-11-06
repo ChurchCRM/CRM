@@ -25180,10 +25180,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "紀錄隱藏年齡的人絕不會顯示出生年份。"
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "會友入口於 %s 提出要求，將您的電子郵件地址從 %s 改為 %s。只有使用寄到 %s 的連結後，變更才會生效。"
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "有一列的格式不符合預期。"
 

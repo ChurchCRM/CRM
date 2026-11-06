@@ -25005,10 +25005,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "年齢を非表示にしている人の記録には、生まれ年は表示されません。"
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "%s に、会員ポータルでメールアドレスを %s から %s に変更する依頼がありました。変更は、%s に送ったリンクが使われたときだけ行われます。"
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "行の形式が正しくありません。"
 

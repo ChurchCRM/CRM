@@ -35,12 +35,13 @@ concurrency:
 #                   are. The capture workflow publishes the visuals when that
 #                   run is on master.
 #
-# Review the draft release + the bump PR. If happy, click "Publish release"
-# on GitHub and merge the PR.
+# Review the draft release. If happy, click "Publish release" on GitHub. The
+# marketing capture and the bump PR never block it: merge the PR once the
+# capture has finished. Bookkeeping reads the next version from the PR's
+# build/<next> branch until then, so it needs no re-run.
 #
 # For mid-cycle re-bumps (e.g. patch → minor because a feature landed) run
-# the standalone "Start New Release" workflow directly — it remains the
-# right tool for that scope change.
+# "Release: start next version" (release-prepare.yml) directly.
 
 on:
   workflow_dispatch:

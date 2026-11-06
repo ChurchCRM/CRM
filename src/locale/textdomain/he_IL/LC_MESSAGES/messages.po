@@ -25066,10 +25066,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "אדם שהרשומה שלו מסתירה את גילו לעולם אינו מציג שנת לידה."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "בפורטל החברים התבקש ב-%s לשנות את כתובת הדוא״ל שלך מ-%s ל-%s. השינוי מתבצע רק כשמשתמשים בקישור שנשלח אל %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "שורה אינה בצורה הצפויה."
 

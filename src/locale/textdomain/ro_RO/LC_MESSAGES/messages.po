@@ -25157,10 +25157,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "O persoană a cărei fișă ascunde vârsta nu arată niciodată anul nașterii."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "S-a făcut o cerere în Portalul membrilor de a schimba adresa dumneavoastră de e-mail la %s, de la %s la %s. Schimbarea are loc numai când este folosit linkul trimis la %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Un rând nu are forma așteptată."
 

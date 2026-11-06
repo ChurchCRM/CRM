@@ -6092,7 +6092,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "%2$s அன்று %1$s மணிக்கு உங்கள் உறுப்பினர் வாயில் உள்நுழைவில் ஒரு கடவுச்சாவி சேர்க்கப்பட்டது.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "அதை இழக்கும் நபருக்கு தனி மின்னஞ்சல் இருக்காது: அவருக்கு மட்டும் அனுப்பும் அஞ்சல், குழு மின்னஞ்சல் போன்றவை, தவிர்க்கப்படும்; மின்னஞ்சல் எழுதுபவர் அதைச் சொல்லும்.",
   "A person whose record hides their age never shows a birth year.": "வயதை மறைக்கும் பதிவு கொண்ட நபரின் பிறந்த ஆண்டு ஒருபோதும் காட்டப்படாது.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "%s மணிக்கு உங்கள் மின்னஞ்சல் முகவரியை %s இலிருந்து %s ஆக மாற்ற உறுப்பினர் வாயிலில் கோரிக்கை விடப்பட்டது. %s க்கு அனுப்பிய இணைப்பைப் பயன்படுத்திய பின்னரே மாற்றம் நடக்கும்.",
   "A row is not in the expected form.": "ஒரு வரிசை எதிர்பார்த்த வடிவில் இல்லை.",
   "A team": "ஒரு அணி",
   "Add a passkey": "கடவுச்சாவியைச் சேர்க்கவும்",

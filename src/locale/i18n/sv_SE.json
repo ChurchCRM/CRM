@@ -6092,7 +6092,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "En lösennyckel lades till för din inloggning i medlemsportalen kl. %1$s den %2$s.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "En person som förlorar den har då ingen egen e-post: utskick bara till den personen, till exempel e-post till en grupp, hoppas över, och det står i e-postredigeraren.",
   "A person whose record hides their age never shows a birth year.": "En person vars post döljer åldern visar aldrig födelseår.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "En begäran gjordes i medlemsportalen om att ändra din e-postadress vid %s från %s till %s. Ändringen sker bara när länken som skickats till %s används.",
   "A row is not in the expected form.": "En rad har inte den förväntade formen.",
   "A team": "Ett lag",
   "Add a passkey": "Lägg till en lösennyckel",

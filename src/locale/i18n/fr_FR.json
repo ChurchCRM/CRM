@@ -6092,7 +6092,6 @@
   "A passkey was added to your Member Portal sign-in at %1$s on %2$s.": "Une clé d'accès a été ajoutée à votre connexion au portail des membres à %1$s le %2$s.",
   "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so.": "Une personne qui la perd n'a alors plus d'e-mail personnel : les messages qui lui sont adressés seule, comme un e-mail de groupe, sont ignorés, et la rédaction du message l'indique.",
   "A person whose record hides their age never shows a birth year.": "Une personne dont la fiche masque l'âge n'affiche jamais d'année de naissance.",
-  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.": "Une demande a été faite dans le portail des membres pour changer votre adresse e-mail à %s, de %s vers %s. Le changement n'a lieu que lorsque le lien envoyé à %s est utilisé.",
   "A row is not in the expected form.": "Une ligne n'a pas la forme attendue.",
   "A team": "Une équipe",
   "Add a passkey": "Ajouter une clé d'accès",
