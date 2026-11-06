@@ -26,7 +26,8 @@ name: "Marketing: capture screenshots & videos"
 #                  That repo owns the publish steps; nothing is copied here.
 #
 # Run it on master from the Actions tab. A run on another branch captures and
-# checks but never publishes.
+# checks but never publishes. The daily English-only check, which never
+# publishes, is marketing-capture-check.yml.
 
 on:
   workflow_dispatch:
