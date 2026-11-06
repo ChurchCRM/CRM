@@ -48,7 +48,9 @@ function main(api = gh, repo = process.env.GITHUB_REPOSITORY) {
 
     const repository = api([`repos/${repo}`]);
     const pulls = listAll(`repos/${repo}/pulls?state=open&per_page=100`, api);
-    const branches = listAll(`repos/${repo}/branches?per_page=100`, api);
+    const branches = listAll(`repos/${repo}/branches?per_page=100`, api)
+        .filter((branch) => !branch.protected && branch.name !== repository.default_branch)
+        .map((branch) => ({ ...branch, commit: api([`repos/${repo}/commits/${branch.commit.sha}`]) }));
     const staleBranches = branchesToDelete(repository, pulls, branches);
 
     for (const branch of staleBranches) {
