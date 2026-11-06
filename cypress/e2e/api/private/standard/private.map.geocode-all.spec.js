@@ -40,6 +40,7 @@ describe("API Private Map — POST /api/map/geocode-all", { retries: 2 }, () => 
                 expect(response.body.geocoded).to.be.a("number").and.be.at.least(0);
                 expect(response.body.failed).to.be.a("number").and.be.at.least(0);
                 expect(response.body.remaining).to.be.a("number").and.be.at.least(0);
+                expect(response.body.remainingNotFound).to.be.a("number").and.be.within(0, response.body.remaining);
 
                 // geocoded + failed should not exceed total processed in this batch
                 expect(response.body.geocoded + response.body.failed).to.be.at.most(

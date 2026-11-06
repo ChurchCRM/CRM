@@ -128,6 +128,28 @@ describe("API Private Map", () => {
         });
     });
 
+    describe("Group members use stored family coordinates", () => {
+        it("Every member pin sits on a stored family location", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/map/families", null, 200).then(
+                (families) => {
+                    const stored = families.body.map(
+                        (f) => `${f.latitude},${f.longitude}`,
+                    );
+                    cy.makePrivateAdminAPICall(
+                        "GET",
+                        "/api/map/families?groupId=1",
+                        null,
+                        200,
+                    ).then((members) => {
+                        members.body.forEach((m) => {
+                            expect(stored).to.include(`${m.latitude},${m.longitude}`);
+                        });
+                    });
+                },
+            );
+        });
+    });
+
     describe("GET /api/map/families?groupId=0 — cart view", () => {
         it("Returns 200 with an array (empty cart returns empty array)", () => {
             cy.makePrivateAdminAPICall(
