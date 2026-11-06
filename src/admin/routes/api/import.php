@@ -765,14 +765,10 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         if (!empty($data['HomePhone'])) $family->setHomePhone($data['HomePhone']);
                         if (!empty($data['Envelope'])) $family->setEnvelope((int) $data['Envelope']);
                         if (!empty($data['WeddingDate'])) {
-                            // A bare 4-digit year (e.g. "2020") must not be passed to strtotime()
-                            // because PHP reads it as a time (8:20 PM) and returns today's date.
                             // WeddingDate is a SQL DATE column — partial dates are not storable.
-                            if (!preg_match('/^\d{4}$/', $data['WeddingDate'])) {
-                                $ts = strtotime($data['WeddingDate']);
-                                if ($ts !== false) {
-                                    $family->setWeddingdate(date('Y-m-d', $ts));
-                                }
+                            $wedding = DateTimeUtils::parsePartialDate((string) $data['WeddingDate']);
+                            if ($wedding !== null && $wedding['year'] !== null && $wedding['month'] > 0 && $wedding['day'] > 0) {
+                                $family->setWeddingdate(sprintf('%04d-%02d-%02d', $wedding['year'], $wedding['month'], $wedding['day']));
                             }
                         }
                         $family->setDateEntered(date('YmdHis'));
@@ -878,14 +874,10 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                 }
 
                 if (!empty($data['MembershipDate'])) {
-                    // A bare 4-digit year (e.g. "2020") must not be passed to strtotime()
-                    // because PHP reads it as a time (8:20 PM) and returns today's date.
                     // MembershipDate is a SQL DATE column — partial dates are not storable.
-                    if (!preg_match('/^\d{4}$/', $data['MembershipDate'])) {
-                        $ts = strtotime($data['MembershipDate']);
-                        if ($ts !== false) {
-                            $person->setMembershipDate(date('Y-m-d', $ts));
-                        }
+                    $member = DateTimeUtils::parsePartialDate((string) $data['MembershipDate']);
+                    if ($member !== null && $member['year'] !== null && $member['month'] > 0 && $member['day'] > 0) {
+                        $person->setMembershipDate(sprintf('%04d-%02d-%02d', $member['year'], $member['month'], $member['day']));
                     }
                 }
 

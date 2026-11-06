@@ -20,6 +20,7 @@ use ChurchCRM\Service\MpdfRenderer;
 use ChurchCRM\Service\SundaySchoolService;
 use ChurchCRM\Slim\Middleware\Request\Setting\SundaySchoolEnabledMiddleware;
 use ChurchCRM\Utils\FiscalYearUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -65,8 +66,8 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
     $group->get('/reports/class-attendance', function (Request $request, Response $response) {
         $query = $request->getQueryParams();
         $groupIds = array_slice(array_values(array_filter(array_map('intval', explode(',', (string) ($query['GroupID'] ?? ''))))), 0, 50);
-        $first = InputUtils::filterDate($query['FirstSunday'] ?? '');
-        $last = InputUtils::filterDate($query['LastSunday'] ?? '');
+        $first = DateTimeUtils::normalizeDate($query['FirstSunday'] ?? '');
+        $last = DateTimeUtils::normalizeDate($query['LastSunday'] ?? '');
         if ($first === '' || $last === '' || $first === '1970-01-01' || $last === '1970-01-01' || $last < $first) {
             return $response
                 ->withHeader('Location', SystemURLs::getRootPath() . '/groups/sundayschool/reports?error=dates')
@@ -75,7 +76,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
 
         $noSchool = [];
         for ($i = 1; $i <= 8; $i++) {
-            $date = InputUtils::filterDate($query['NoSchool' . $i] ?? '');
+            $date = DateTimeUtils::normalizeDate($query['NoSchool' . $i] ?? '');
             if ($date !== '' && $date !== '1970-01-01') {
                 $noSchool[] = $date;
             }
@@ -367,14 +368,14 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
 
         $iFYID = FiscalYearUtils::getCurrentFiscalYearId();
 
-        $dFirstSunday = InputUtils::filterDate($post['FirstSunday'] ?? '');
-        $dLastSunday = InputUtils::filterDate($post['LastSunday'] ?? '');
+        $dFirstSunday = DateTimeUtils::normalizeDate($post['FirstSunday'] ?? '');
+        $dLastSunday = DateTimeUtils::normalizeDate($post['LastSunday'] ?? '');
 
         // Save calendar settings to user record
         $userRecord->setCalStart($dFirstSunday ?: null);
         $userRecord->setCalEnd($dLastSunday ?: null);
         for ($i = 1; $i <= 8; $i++) {
-            $val = InputUtils::filterDate($post['NoSchool' . $i] ?? '');
+            $val = DateTimeUtils::normalizeDate($post['NoSchool' . $i] ?? '');
             $setter = 'setCalNoSchool' . $i;
             $userRecord->$setter($val ?: null);
         }
@@ -404,7 +405,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             . '&FirstSunday=' . $dFirstSunday
             . '&LastSunday=' . $dLastSunday;
         for ($i = 1; $i <= 8; $i++) {
-            $val = InputUtils::filterDate($post['NoSchool' . $i] ?? '');
+            $val = DateTimeUtils::normalizeDate($post['NoSchool' . $i] ?? '');
             if ($val) {
                 $url .= '&NoSchool' . $i . '=' . $val;
             }

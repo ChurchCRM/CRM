@@ -4,7 +4,6 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Bootstrapper;
 use ChurchCRM\data\Countries;
 use ChurchCRM\data\States;
 use ChurchCRM\dto\SystemConfig;
@@ -220,7 +219,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     // Validate Wedding Date if one was entered
-    $dateString = DateTimeUtils::parseAndValidate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
+    $dateString = DateTimeUtils::parseAndValidate($dWeddingDate, 'past');
     if (strlen($dWeddingDate) > 0 && $dateString === false) {
         $sWeddingDateError = '<span class="text-danger">'
             . gettext('Not a valid Wedding Date') . '</span>';

@@ -3,7 +3,6 @@
 namespace ChurchCRM\Utils;
 
 use ChurchCRM\Bootstrapper;
-use ChurchCRM\dto\SystemConfig;
 
 class InputUtils
 {
@@ -231,24 +230,6 @@ class InputUtils
         return floatval(trim($sInput));
     }
 
-    public static function filterDate($sInput): string
-    {
-        // Attempts to take a date in any format and convert it to YYYY-MM-DD format
-        // Logel Philippe
-        if (empty($sInput)) {
-            return '';
-        } else {
-            $picked = \DateTime::createFromFormat('!' . SystemConfig::getValue('sDatePickerFormat'), trim($sInput));
-            if ($picked !== false) {
-                return $picked->format('Y-m-d');
-            }
-
-            $timestamp = strtotime(str_replace('/', '-', $sInput));
-
-            return $timestamp === false ? '' : date('Y-m-d', $timestamp);
-        }
-    }
-
     // Sanitizes user input as a security measure
     // Optionally, a filtering type and size may be specified.  By default, strip any tags from a string.
     public static function legacyFilterInput($sInput, $type = 'string', $size = 1)
@@ -266,7 +247,7 @@ class InputUtils
                 case 'float':
                     return self::filterFloat($sInput);
                 case 'date':
-                    return self::filterDate($sInput);
+                    return DateTimeUtils::normalizeDate($sInput);
                 default:
                     throw new \InvalidArgumentException('Invalid "type" for legacyFilterInput provided');
             }

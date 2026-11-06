@@ -218,10 +218,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $iBirthDay = InputUtils::legacyFilterInput($_POST['BirthDay'], 'int');
     $iBirthYear = InputUtils::legacyFilterInput($_POST['BirthYear'], 'int');
     $bHideAge = isset($_POST['HideAge']);
-    $dFriendDate = InputUtils::filterDate($_POST['FriendDate']);
-    $dMembershipDate = InputUtils::filterDate($_POST['MembershipDate']);
+    $dFriendDate = trim((string) $_POST['FriendDate']);
+    $dMembershipDate = trim((string) $_POST['MembershipDate']);
     $bIsDeceased = isset($_POST['IsDeceased']);
-    $dDateDeceased = InputUtils::filterDate($_POST['DateDeceased'] ?? '');
+    $dDateDeceased = trim((string) ($_POST['DateDeceased'] ?? ''));
     $iClassification = InputUtils::legacyFilterInput($_POST['Classification'], 'int');
     $iGrade = GradeService::resolve($_POST['Grade'] ?? null);
     $iEnvelope = 0;
@@ -274,7 +274,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Friend Date if one was entered
     if (strlen($dFriendDate) > 0) {
-        $dateString = DateTimeUtils::parseAndValidate($dFriendDate, 'US', 'past');
+        $dateString = DateTimeUtils::parseAndValidate($dFriendDate, 'past');
         if ($dateString === false) {
             $sFriendDateError = '<span class="text-danger">'
                 . gettext('Not a valid Friend Date') . '</span>';
@@ -286,7 +286,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Membership Date if one was entered
     if (strlen($dMembershipDate) > 0) {
-        $dMembershipDate = DateTimeUtils::parseAndValidate($dMembershipDate, 'US', 'past');
+        $dMembershipDate = DateTimeUtils::parseAndValidate($dMembershipDate, 'past');
         if ($dMembershipDate === false) {
             $sMembershipDateError = '<span class="text-danger">'
                 . gettext('Not a valid Membership Date') . '</span>';
@@ -296,7 +296,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate deceased date if checkbox is ticked and a date was entered
     if ($bIsDeceased && strlen($dDateDeceased) > 0) {
-        $dDateDeceased = DateTimeUtils::parseAndValidate($dDateDeceased, 'US', 'past');
+        $dDateDeceased = DateTimeUtils::parseAndValidate($dDateDeceased, 'past');
         if ($dDateDeceased === false) {
             $sDateDeceasedError = '<span class="text-danger">'
                 . gettext('Not a valid date of death') . '</span>';

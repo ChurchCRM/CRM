@@ -297,7 +297,7 @@ class GivingStatementService
 
     private static function validDate(string $value): string
     {
-        $date = InputUtils::filterDate($value);
+        $date = DateTimeUtils::normalizeDate($value);
         if (!preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $date, $m) || !checkdate((int) $m[2], (int) $m[3], (int) $m[1]) || (int) $m[1] < self::FIRST_YEAR) {
             return '';
         }

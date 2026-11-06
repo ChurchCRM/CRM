@@ -156,7 +156,7 @@ class ZeroGiversService
 
     private static function validDate(mixed $value): string
     {
-        $date = InputUtils::filterDate(is_scalar($value) ? (string) $value : '');
+        $date = DateTimeUtils::normalizeDate(is_scalar($value) ? (string) $value : '');
         if (!preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $date, $m) || !checkdate((int) $m[2], (int) $m[3], (int) $m[1]) || (int) $m[1] < 1900) {
             return '';
         }

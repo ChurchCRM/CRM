@@ -2,12 +2,15 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
 // Normalise dates to strings for form display
 $dateValue    = ($dDate instanceof \DateTime) ? $dDate->format('Y-m-d') : (string) $dDate;
+$dateValue    = DateTimeUtils::formatForDatePicker($dateValue);
 $endDateValue = (($dEndDate ?? null) instanceof \DateTime) ? $dEndDate->format('Y-m-d') : (string) ($dEndDate ?? '');
+$endDateValue = DateTimeUtils::formatForDatePicker($endDateValue);
 $fundraiserTypes = ['Auction', 'Silent Auction', 'Live Auction', 'Raffle', 'Gala', 'Mixed'];
 // Bid sheets are a silent-auction bidding artifact — not applicable to other types.
 $showBidSheets = in_array($sType, ['Auction', 'Silent Auction'], true);

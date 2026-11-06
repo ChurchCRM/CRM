@@ -318,7 +318,7 @@ class CustomFieldUtils
 
         switch ($type) {
             case 2:
-                $data = InputUtils::filterDate($data);
+                $data = trim((string) $data);
                 if (strlen($data) > 0) {
                     $dateString = DateTimeUtils::parseAndValidate($data);
                     if ($dateString === false) {
