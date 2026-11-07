@@ -334,12 +334,12 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             ->find();
 
         $calDates = [
-            'firstSunday' => $userRecord->getCalStart()?->format(SystemConfig::getValue('sDatePickerFormat')) ?? '',
-            'lastSunday'  => $userRecord->getCalEnd()?->format(SystemConfig::getValue('sDatePickerFormat')) ?? '',
+            'firstSunday' => $userRecord->getCalStart()?->format(DateTimeUtils::datePickerFormat()) ?? '',
+            'lastSunday'  => $userRecord->getCalEnd()?->format(DateTimeUtils::datePickerFormat()) ?? '',
         ];
         for ($i = 1; $i <= 8; $i++) {
             $getter = 'getCalNoSchool' . $i;
-            $calDates['noSchool' . $i] = $userRecord->$getter()?->format(SystemConfig::getValue('sDatePickerFormat')) ?? '';
+            $calDates['noSchool' . $i] = $userRecord->$getter()?->format(DateTimeUtils::datePickerFormat()) ?? '';
         }
 
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
@@ -355,7 +355,7 @@ $app->group('/sundayschool', function (RouteCollectorProxy $group) {
             'groups'             => $groups,
             'selectedGroupId'    => (int) ($request->getQueryParams()['GroupID'] ?? 0),
             'calDates'           => $calDates,
-            'sDatePickerFormat'  => SystemConfig::getValue('sDatePickerFormat'),
+            'sDatePickerFormat'  => DateTimeUtils::datePickerFormat(),
         ];
 
         return $renderer->render($response, 'sundayschool/reports.php', $pageArgs);
