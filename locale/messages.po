@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-06 20:53+0000\n"
+"POT-Creation-Date: 2026-11-07 00:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4573,9 +4573,6 @@ msgstr ""
 msgid "Date Picker Format"
 msgstr ""
 
-msgid "Date Picker Placeholder"
-msgstr ""
-
 msgid "Date Start"
 msgstr ""
 
@@ -8295,9 +8292,6 @@ msgstr ""
 
 #. Context: locales
 msgid "Hindi - India"
-msgstr ""
-
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
 msgstr ""
 
 msgid "Hit Rate"
@@ -13048,6 +13042,9 @@ msgstr ""
 msgid "Please upgrade ChurchCRM to version"
 msgstr ""
 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr ""
+
 msgid "Please verify your family's information"
 msgstr ""
 
@@ -14106,6 +14103,9 @@ msgid "Review & Delete"
 msgstr ""
 
 msgid "Review Donation Funds"
+msgstr ""
+
+msgid "Review Family Information"
 msgstr ""
 
 msgid "Review Payments"
@@ -18653,9 +18653,6 @@ msgid "Verified"
 msgstr ""
 
 msgid "Verified In Person"
-msgstr ""
-
-msgid "Verify"
 msgstr ""
 
 msgid "Verify & Sign In"
