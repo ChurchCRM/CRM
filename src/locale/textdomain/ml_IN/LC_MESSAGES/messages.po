@@ -27138,3 +27138,15 @@ msgstr "അല്ലെങ്കിൽ"
 msgid "until %s"
 msgstr "%s വരെ"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "അംഗ പോർട്ടലിൽ %1$s-ലെ നിങ്ങളുടെ ഇമെയിൽ വിലാസം %2$s-ൽ നിന്ന് %3$s ആക്കി മാറ്റാൻ ഒരു അഭ്യർത്ഥന ഉണ്ടായി. പുതിയ വിലാസത്തിലേക്ക് അയച്ച ലിങ്ക് ഉപയോഗിച്ചാൽ മാത്രമേ മാറ്റം നടക്കൂ."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "കുടുംബ വിവരങ്ങൾ പരിശോധിക്കാൻ താഴെയുള്ള ലിങ്ക് ഉപയോഗിക്കുക. പരിശോധനാ താളിൽ എല്ലാം ശരിയാണെന്ന് ഉറപ്പാക്കാൻ “കുടുംബ വിവരം സ്ഥിരീകരിക്കുക” തിരഞ്ഞെടുക്കുക, അല്ലെങ്കിൽ തിരുത്തലുകൾ സഭാ ഓഫീസിലേക്ക് അയയ്ക്കുക."
+
+#: 
+msgid "Review Family Information"
+msgstr "കുടുംബ വിവരം പരിശോധിക്കുക"
+

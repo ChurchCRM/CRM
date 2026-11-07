@@ -56,6 +56,20 @@
   opacity: 0.7;
 }
 
+.crm-cal-pin-marks {
+  display: inline-flex;
+  gap: 2px;
+  margin-inline-start: 0.25rem;
+  vertical-align: middle;
+}
+
+.crm-cal-pin-mark {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35);
+}
+
 // JS adds .expanded to open a past-events group
 tbody.past-events-body {
   display: none;

@@ -27171,3 +27171,15 @@ msgstr "ή"
 msgid "until %s"
 msgstr "έως %s"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Υποβλήθηκε αίτημα στην πύλη μελών για αλλαγή της διεύθυνσης email σας στο %1$s από %2$s σε %3$s. Η αλλαγή γίνεται μόνο όταν χρησιμοποιηθεί ο σύνδεσμος που στάλθηκε στη νέα διεύθυνση."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Χρησιμοποιήστε τον παρακάτω σύνδεσμο για να ελέγξετε τα στοιχεία της οικογένειάς σας. Στη σελίδα ελέγχου, επιλέξτε «Επιβεβαίωση στοιχείων οικογένειας» για να επιβεβαιώσετε ότι όλα είναι σωστά ή στείλτε διορθώσεις στο γραφείο της εκκλησίας."
+
+#: 
+msgid "Review Family Information"
+msgstr "Έλεγχος στοιχείων οικογένειας"
+

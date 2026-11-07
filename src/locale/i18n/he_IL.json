@@ -6618,6 +6618,9 @@
   "no head of household or spouse has an email address": "לאף ראש משק בית או בן או בת זוג אין כתובת דוא״ל",
   "or": "או",
   "until %s": "עד %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "בפורטל החברים הוגשה בקשה לשנות את כתובת הדוא״ל שלך ב-%1$s מ-%2$s אל %3$s. השינוי מתבצע רק כשמשתמשים בקישור שנשלח לכתובת החדשה.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "השתמשו בקישור שלמטה כדי לבדוק את פרטי המשפחה. בדף הבדיקה בחרו „אישור פרטי המשפחה” כדי לאשר שהכול נכון, או שלחו תיקונים למשרד הקהילה.",
+  "Review Family Information": "בדיקת פרטי המשפחה",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": נוצר {{count}} מופע",
     "other": "\"{{name}}\": נוצרו {{count}} מופעים"

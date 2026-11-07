@@ -27281,3 +27281,15 @@ msgstr "或"
 msgid "until %s"
 msgstr "至 %s"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "有人在成員入口網站中要求將您在 %1$s 的電子郵件地址從 %2$s 變更為 %3$s。只有使用寄到新地址的連結後，此變更才會生效。"
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "請使用下方連結核對您的家庭資料。在核對頁面上，選取「確認家庭資料」以確認一切無誤，或將更正寄給教會辦公室。"
+
+#: 
+msgid "Review Family Information"
+msgstr "核對家庭資料"
+

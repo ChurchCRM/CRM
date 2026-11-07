@@ -27197,3 +27197,15 @@ msgstr "vagy"
 msgid "until %s"
 msgstr "eddig: %s"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "A tagportálon kérés érkezett, hogy a(z) %1$s oldalon az e-mail-címed %2$s címről %3$s címre változzon. A módosítás csak akkor történik meg, ha az új címre küldött hivatkozást használják."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Az alábbi hivatkozással ellenőrizd a családod adatait. Az ellenőrző oldalon válaszd a „Családi adatok megerősítése” lehetőséget, ha minden helyes, vagy küldd el a javításokat a gyülekezeti irodának."
+
+#: 
+msgid "Review Family Information"
+msgstr "Családi adatok ellenőrzése"
+

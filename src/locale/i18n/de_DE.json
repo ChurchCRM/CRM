@@ -6618,6 +6618,9 @@
   "no head of household or spouse has an email address": "weder Haushaltsvorstand noch Ehepartner hat eine E-Mail-Adresse",
   "or": "oder",
   "until %s": "bis %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "Im Mitgliederportal wurde beantragt, Ihre E-Mail-Adresse bei %1$s von %2$s in %3$s zu ändern. Die Änderung erfolgt erst, wenn der an die neue Adresse gesendete Link verwendet wird.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Bitte prüfen Sie über den Link unten die Angaben zu Ihrer Familie. Wählen Sie auf der Prüfen-Seite „Familienangaben bestätigen“, um zu bestätigen, dass alles stimmt, oder senden Sie Korrekturen an das Gemeindebüro.",
+  "Review Family Information": "Familienangaben prüfen",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} Ereignis erstellt",
     "other": "\"{{name}}\": {{count}} Ereignisse erstellt"

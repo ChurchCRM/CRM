@@ -27231,3 +27231,15 @@ msgstr "або"
 msgid "until %s"
 msgstr "до %s"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "У порталі учасників надіслано запит змінити вашу адресу електронної пошти на %1$s з %2$s на %3$s. Зміна відбувається лише після використання посилання, надісланого на нову адресу."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Скористайтеся посиланням нижче, щоб перевірити відомості про вашу родину. На сторінці перевірки виберіть «Підтвердити відомості про родину», щоб підтвердити, що все правильно, або надішліть виправлення до церковного офісу."
+
+#: 
+msgid "Review Family Information"
+msgstr "Перевірити відомості про родину"
+
