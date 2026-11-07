@@ -76,6 +76,7 @@ describe("Communication Menu and Dashboards", () => {
             cy.contains("Text Settings").click();
             cy.get("#textSettings").should("be.visible");
             cy.get("#textSettings").contains("Do Not SMS Property");
+            cy.get("#textSettings .settings-panel-save").should("not.exist");
         });
     });
 });

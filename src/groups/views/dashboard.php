@@ -172,6 +172,8 @@ $(document).ready(function () {
                 tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Enable or disable the Sunday School module and sidebar menu.')) ?>
             }
         ],
+        autoSave: true,
+        showAllSettingsLink: false,
         onSave: function () {
             setTimeout(function () { window.location.reload(); }, 1500);
         }
