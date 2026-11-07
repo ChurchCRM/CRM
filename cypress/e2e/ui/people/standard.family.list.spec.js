@@ -35,7 +35,7 @@ describe("Standard Family List", () => {
                     cy.get('[data-bs-toggle="dropdown"], .dropdown-toggle, button[aria-expanded]').first().should('exist');
                     cy.get('[data-bs-toggle="dropdown"], .dropdown-toggle, button[aria-expanded]').first().click();
                 });
-                cy.get(".dropdown-menu.show").within(() => {
+                cy.get(".dropdown-menu.show:not(.navbar-vertical .dropdown-menu)").within(() => {
                     cy.contains("View").should("exist");
                     cy.contains("Edit").should("exist");
                     cy.get(".AddToCart, .RemoveFromCart").should("exist");

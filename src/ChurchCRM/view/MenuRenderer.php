@@ -31,7 +31,7 @@ class MenuRenderer
         ?>
         <?php if (!$nested): ?><li class="nav-item<?= $isActive ? ' active' : '' ?>"><?php endif; ?>
             <a href="<?= InputUtils::escapeAttribute($menuItem->getURI()) ?>"
-               <?= $menuItem->isExternal() ? 'target="_blank"' : '' ?>
+               <?= $menuItem->isExternal() ? 'target="_blank" rel="noopener noreferrer"' : '' ?>
                class="<?= $classes ?>"<?= $isActive ? ' aria-current="page"' : '' ?>>
                 <span class="nav-link-icon"><i class="fa <?= $menuItem->getIcon() ?>"></i></span>
                 <span class="nav-link-title"><?= InputUtils::escapeHTML($menuItem->getName()) ?></span>

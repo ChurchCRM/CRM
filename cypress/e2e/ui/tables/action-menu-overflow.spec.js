@@ -46,7 +46,7 @@ function assertDropdownVisible(triggerSelector, context, containerFinder) {
     .as("trigger")
     .click();
 
-  cy.get(".dropdown-menu.show")
+  cy.get(".dropdown-menu.show:not(.navbar-vertical .dropdown-menu)")
     .as("menu")
     .should("be.visible");
 
@@ -75,7 +75,7 @@ function assertDropdownVisible(triggerSelector, context, containerFinder) {
  * @param {string} context - Label for assertion messages
  */
 function assertContainerOverflow(context) {
-  cy.get(".dropdown-menu.show")
+  cy.get(".dropdown-menu.show:not(.navbar-vertical .dropdown-menu)")
     .closest(".table-clip-x")
     .then(($el) => {
       // Use ownerDocument.defaultView rather than window — window in a .then()
