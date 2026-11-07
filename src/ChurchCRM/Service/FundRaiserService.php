@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\DonatedItemQuery;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
@@ -338,19 +337,18 @@ class FundRaiserService
         if (array_key_exists('endDate', $input)) {
             $endDate = trim((string) ($input['endDate'] ?? ''));
             if ($endDate !== '') {
-                $dateFmt   = SystemConfig::getValue('sDatePickerFormat');
-                $parsedEnd = \DateTime::createFromFormat($dateFmt, $endDate, DateTimeUtils::getConfiguredTimezone());
-                if ($parsedEnd === false || $parsedEnd->format($dateFmt) !== $endDate) {
+                $parsedEnd = DateTimeUtils::parseDatePicker($endDate, true);
+                if ($parsedEnd === null) {
                     return gettext('Not a valid end date');
                 }
                 // End date must not precede start date. Compare Y-m-d strings (not DateTime
                 // instants) so this holds regardless of what timezone Propel hydrated onto
                 // the stored start date.
                 $startDate = $fr->getDate();
-                if ($startDate !== null && $parsedEnd->format('Y-m-d') < $startDate->format('Y-m-d')) {
+                if ($startDate !== null && $parsedEnd < $startDate->format('Y-m-d')) {
                     return gettext('End date must be on or after the start date');
                 }
-                $fr->setEndDate($parsedEnd); // pass DateTime object; Propel normalises to ISO for storage
+                $fr->setEndDate($parsedEnd);
             } else {
                 $fr->setEndDate(null);
             }
