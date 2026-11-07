@@ -4919,10 +4919,6 @@ msgid "Portuguese - Portugal"
 msgstr "போர்த்துகீசியம் - போர்ச்சுகல்"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "அங்கீகரிப்பு பயன்பாட்டில் காட்டப்பட வேண்டிய பயன்பாட்டின் பெயரைக் குறிப்பிடவும்"
-
-#: 
 msgid "Review"
 msgstr "மதிப்பாய்வு"
 
@@ -5051,10 +5047,6 @@ msgstr "குடும்பப் பக்கத்தைப் பார்�
 #: 
 msgid "View Person Page"
 msgstr "நபர் பக்கத்தைப் பார்க்கவும்"
-
-#: 
-msgid "Verify"
-msgstr "சரிபார்க்கவும்"
 
 #: 
 msgid "Family has no emails to use"
@@ -14647,10 +14639,6 @@ msgid "Date Picker Format"
 msgstr "தேதி தேர்வி வடிவம்"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "தேதி தேர்வி இட நிரப்பி"
-
-#: 
 msgid "Date Without Year"
 msgstr "ஆண்டு இல்லாத தேதி"
 
@@ -14681,10 +14669,6 @@ msgstr "கோப்பு பெயர் தேதி வடிவம்"
 #: 
 msgid "Fully translated."
 msgstr "முழுமையாக மொழிபெயர்க்கப்பட்டது."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "தேதி உள்ளீடுகளில் காட்டப்படும் குறிப்பு உரை. இயல்புநிலை: yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25080,10 +25064,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "வயதை மறைக்கும் பதிவு கொண்ட நபரின் பிறந்த ஆண்டு ஒருபோதும் காட்டப்படாது."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "%s மணிக்கு உங்கள் மின்னஞ்சல் முகவரியை %s இலிருந்து %s ஆக மாற்ற உறுப்பினர் வாயிலில் கோரிக்கை விடப்பட்டது. %s க்கு அனுப்பிய இணைப்பைப் பயன்படுத்திய பின்னரே மாற்றம் நடக்கும்."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "ஒரு வரிசை எதிர்பார்த்த வடிவில் இல்லை."
 
@@ -27202,4 +27182,16 @@ msgstr "அல்லது"
 #: 
 msgid "until %s"
 msgstr "%s வரை"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "உறுப்பினர் தளத்தில் %1$s இல் உங்கள் மின்னஞ்சல் முகவரியை %2$s இலிருந்து %3$s ஆக மாற்ற கோரிக்கை வந்துள்ளது. புதிய முகவரிக்கு அனுப்பிய இணைப்பைப் பயன்படுத்தினால் மட்டுமே மாற்றம் நடக்கும்."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "குடும்பத் தகவலைச் சரிபார்க்க கீழுள்ள இணைப்பைப் பயன்படுத்துங்கள். சரிபார்ப்புப் பக்கத்தில் எல்லாம் சரி என்பதை உறுதிப்படுத்த «குடும்பத் தகவலை உறுதிப்படுத்து» என்பதைத் தேர்ந்தெடுங்கள், அல்லது திருத்தங்களை சபை அலுவலகத்திற்கு அனுப்புங்கள்."
+
+#: 
+msgid "Review Family Information"
+msgstr "குடும்பத் தகவலைச் சரிபார்"
 

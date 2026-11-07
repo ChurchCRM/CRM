@@ -4885,10 +4885,6 @@ msgid "Portuguese - Portugal"
 msgstr "ポルトガル語 - ポルトガル"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "認証器アプリに表示されるアプリケーション名を指定します"
-
-#: 
 msgid "Review"
 msgstr "レビュー"
 
@@ -5017,10 +5013,6 @@ msgstr "家族ページを表示"
 #: 
 msgid "View Person Page"
 msgstr "人物ページを表示"
-
-#: 
-msgid "Verify"
-msgstr "確認"
 
 #: 
 msgid "Family has no emails to use"
@@ -14591,10 +14583,6 @@ msgid "Date Picker Format"
 msgstr "日付ピッカーの形式"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "日付ピッカーのプレースホルダー"
-
-#: 
 msgid "Date Without Year"
 msgstr "年なしの日付"
 
@@ -14625,10 +14613,6 @@ msgstr "ファイル名の日付形式"
 #: 
 msgid "Fully translated."
 msgstr "完全に翻訳されています。"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "日付入力に表示されるヒントテキスト。デフォルト：yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25005,10 +24989,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "年齢を非表示にしている人の記録には、生まれ年は表示されません。"
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "%s に、会員ポータルでメールアドレスを %s から %s に変更する依頼がありました。変更は、%s に送ったリンクが使われたときだけ行われます。"
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "行の形式が正しくありません。"
 
@@ -27127,4 +27107,16 @@ msgstr "または"
 #: 
 msgid "until %s"
 msgstr "%s まで"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "メンバーポータルで、%1$s のメールアドレスを %2$s から %3$s に変更する依頼がありました。変更は、新しいアドレスに送られたリンクが使われたときだけ行われます。"
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "下のリンクから家族の情報を確認してください。確認ページで「家族情報を確認」を選ぶと、内容が正しいことを確定できます。訂正は教会事務所に送ってください。"
+
+#: 
+msgid "Review Family Information"
+msgstr "家族情報を確認"
 

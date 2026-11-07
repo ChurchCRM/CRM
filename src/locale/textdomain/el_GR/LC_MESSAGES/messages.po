@@ -4919,10 +4919,6 @@ msgid "Portuguese - Portugal"
 msgstr "Πορτογαλικά - Πορτογαλία"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Καθορίστε το όνομα της εφαρμογής που θα εμφανίζεται στην εφαρμογή ελέγχου ταυτότητας"
-
-#: 
 msgid "Review"
 msgstr "Ανασκόπηση"
 
@@ -5052,10 +5048,6 @@ msgstr "Προβολή οικογενειακής σελίδας"
 #: 
 msgid "View Person Page"
 msgstr "Προβολή καρτέλας Μέλους"
-
-#: 
-msgid "Verify"
-msgstr "Επαληθεύω"
 
 #: 
 msgid "Family has no emails to use"
@@ -14635,10 +14627,6 @@ msgid "Date Picker Format"
 msgstr "Μορφή επιλογέα ημερομηνίας"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Κείμενο βοήθειας επιλογέα ημερομηνίας"
-
-#: 
 msgid "Date Without Year"
 msgstr "Ημερομηνία χωρίς έτος"
 
@@ -14669,10 +14657,6 @@ msgstr "Μορφή ημερομηνίας για ονόματα αρχείων"
 #: 
 msgid "Fully translated."
 msgstr "Πλήρως μεταφρασμένο."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Κείμενο υπόδειξης σε πεδία ημερομηνίας. Προεπιλογή: εεεε-μμ-ηη"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25068,10 +25052,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Ένα άτομο του οποίου η καρτέλα αποκρύπτει την ηλικία δεν εμφανίζει ποτέ έτος γέννησης."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Υποβλήθηκε αίτημα στην Πύλη μελών για αλλαγή της διεύθυνσης ηλεκτρονικού ταχυδρομείου σας στις %s, από %s σε %s. Η αλλαγή γίνεται μόνο όταν χρησιμοποιηθεί ο σύνδεσμος που στάλθηκε στη διεύθυνση %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Μία γραμμή δεν έχει την αναμενόμενη μορφή."
 
@@ -27190,4 +27170,16 @@ msgstr "ή"
 #: 
 msgid "until %s"
 msgstr "έως %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Υποβλήθηκε αίτημα στην πύλη μελών για αλλαγή της διεύθυνσης email σας στο %1$s από %2$s σε %3$s. Η αλλαγή γίνεται μόνο όταν χρησιμοποιηθεί ο σύνδεσμος που στάλθηκε στη νέα διεύθυνση."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Χρησιμοποιήστε τον παρακάτω σύνδεσμο για να ελέγξετε τα στοιχεία της οικογένειάς σας. Στη σελίδα ελέγχου, επιλέξτε «Επιβεβαίωση στοιχείων οικογένειας» για να επιβεβαιώσετε ότι όλα είναι σωστά ή στείλτε διορθώσεις στο γραφείο της εκκλησίας."
+
+#: 
+msgid "Review Family Information"
+msgstr "Έλεγχος στοιχείων οικογένειας"
 

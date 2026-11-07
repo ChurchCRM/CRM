@@ -99,6 +99,8 @@ module.exports = {
     'admin-dashboard': './webpack/admin-dashboard',
     // Admin → Member Portal (#9864): theme picker, portal settings, statistics.
     'admin-member-portal': './webpack/admin-member-portal.ts',
+    // Admin → Convert Volunteer Opportunities (#10606).
+    'admin-volunteer-conversion': './webpack/admin-volunteer-conversion.ts',
     'get-started': './webpack/get-started',
     'church-info': './webpack/church-info',
     'report-settings': './webpack/report-settings',

@@ -4913,10 +4913,6 @@ msgid "Portuguese - Portugal"
 msgstr "포르투갈어 - 포르투갈"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "인증 앱에 표시할 애플리케이션 이름 지정"
-
-#: 
 msgid "Review"
 msgstr "검토"
 
@@ -5045,10 +5041,6 @@ msgstr "가족 페이지 보기"
 #: 
 msgid "View Person Page"
 msgstr "개인 페이지 보기"
-
-#: 
-msgid "Verify"
-msgstr "확인"
 
 #: 
 msgid "Family has no emails to use"
@@ -14619,10 +14611,6 @@ msgid "Date Picker Format"
 msgstr "날짜 선택기 형식"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "날짜 선택기 자리 표시자"
-
-#: 
 msgid "Date Without Year"
 msgstr "연도 없는 날짜"
 
@@ -14653,10 +14641,6 @@ msgstr "파일명 날짜 형식"
 #: 
 msgid "Fully translated."
 msgstr "완전히 번역됨."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "날짜 입력 필드의 힌트 텍스트. 기본값: yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25033,10 +25017,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "기록에서 나이를 숨긴 사람은 출생 연도가 표시되지 않습니다."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "%s에 교인 포털에서 이메일 주소를 %s에서 %s(으)로 바꾸라는 요청이 있었습니다. %s(으)로 보낸 링크를 사용할 때만 변경됩니다."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "행의 형식이 예상과 다릅니다."
 
@@ -27155,4 +27135,16 @@ msgstr "또는"
 #: 
 msgid "until %s"
 msgstr "%s까지"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "회원 포털에서 %1$s의 이메일 주소를 %2$s에서 %3$s(으)로 변경해 달라는 요청이 있었습니다. 변경은 새 주소로 보낸 링크를 사용할 때만 적용됩니다."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "아래 링크로 가족 정보를 검토해 주세요. 검토 페이지에서 “가족 정보 확인”을 선택하면 모든 내용이 맞다고 확인하거나, 수정 사항을 교회 사무실로 보낼 수 있습니다."
+
+#: 
+msgid "Review Family Information"
+msgstr "가족 정보 검토"
 

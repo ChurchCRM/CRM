@@ -7,6 +7,7 @@ name: "Locale: upload translations"
 # Triggers:
 #   - push to a translation branch (locale/translate/**, cut by
 #     locale-branch-manager.js): uploads every locale changed on the branch since master
+#   - push to master (a batch merged without a translation branch): uploads the locales that push changed
 #   - manual run: the locales you list, or every locale with batch files
 #
 # Pushes made with GITHUB_TOKEN do not start workflows, so a translation agent
@@ -16,6 +17,7 @@ on:
   push:
     branches:
       - 'locale/translate/**'
+      - master
     paths:
       - 'locale/terms/missing/**'
   workflow_dispatch:
@@ -80,6 +82,7 @@ jobs:
         env:
           EVENT: ${{ github.event_name }}
           INPUT_LOCALES: ${{ inputs.locales }}
+          BEFORE: ${{ github.event.before }}
         run: |
           set -euo pipefail
           changed_locales() {
@@ -92,7 +95,8 @@ jobs:
           else
             # Whole branch vs master, not just this push: a queued run superseded by a newer push is
             # cancelled, and its locales must still be uploaded by the run that replaces it
-            locales=$(changed_locales "$(git merge-base origin/master HEAD)")
+            if [ "$GITHUB_REF" = "refs/heads/master" ]; then base="$BEFORE"; else base="$(git merge-base origin/master HEAD)"; fi
+            locales=$(changed_locales "$base")
           fi
 
           if ! [[ "$locales" =~ ^[A-Za-z,-]*$ ]]; then

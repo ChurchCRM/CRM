@@ -4926,10 +4926,6 @@ msgid "Portuguese - Portugal"
 msgstr "Tiếng Bồ Đào Nha - Bồ Đào Nha"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Chỉ định tên ứng dụng sẽ được hiển thị trong ứng dụng xác thực"
-
-#: 
 msgid "Review"
 msgstr "Ôn tập"
 
@@ -5059,10 +5055,6 @@ msgstr "Xem trang gia đình"
 #: 
 msgid "View Person Page"
 msgstr "Xem trang cá nhân"
-
-#: 
-msgid "Verify"
-msgstr "Kiểm chứng"
 
 #: 
 msgid "Family has no emails to use"
@@ -14633,10 +14625,6 @@ msgid "Date Picker Format"
 msgstr "Định dạng chọn ngày"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Văn bản gợi ý chọn ngày"
-
-#: 
 msgid "Date Without Year"
 msgstr "Ngày không có năm"
 
@@ -14667,10 +14655,6 @@ msgstr "Định dạng ngày trong tên tệp"
 #: 
 msgid "Fully translated."
 msgstr "Đã dịch đầy đủ."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Văn bản gợi ý trong các trường ngày. Mặc định: nnnn-tt-nn"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25047,10 +25031,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Người có hồ sơ ẩn tuổi sẽ không bao giờ hiện năm sinh."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Có yêu cầu trên Cổng hội viên lúc %s đổi địa chỉ email của bạn từ %s thành %s. Thay đổi chỉ xảy ra khi liên kết gửi tới %s được dùng."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Một dòng không đúng dạng mong đợi."
 
@@ -27169,4 +27149,16 @@ msgstr "hoặc"
 #: 
 msgid "until %s"
 msgstr "đến %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Có yêu cầu trên Cổng thành viên đổi địa chỉ email của bạn tại %1$s từ %2$s thành %3$s. Thay đổi chỉ xảy ra khi dùng liên kết gửi tới địa chỉ mới."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Hãy dùng liên kết bên dưới để xem lại thông tin gia đình. Trên trang xem lại, chọn \"Xác nhận thông tin gia đình\" để xác nhận mọi thông tin đều đúng, hoặc gửi phần sửa tới văn phòng hội thánh."
+
+#: 
+msgid "Review Family Information"
+msgstr "Xem lại thông tin gia đình"
 
