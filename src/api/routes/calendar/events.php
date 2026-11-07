@@ -1204,7 +1204,7 @@ function quickCreateEvent(Request $request, Response $response, array $args): Re
     }
 
     // Build title
-    $formattedDate = date('M j, Y', strtotime(DateTimeUtils::parseIsoDate($date)));
+    $formattedDate = date('M j, Y', strtotime(DateTimeUtils::parseIsoDate($date, 1)));
     if ($eventType !== null) {
         $title = $eventType->getName() . ' — ' . $formattedDate;
     } else {
