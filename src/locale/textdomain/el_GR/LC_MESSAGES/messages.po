@@ -5050,10 +5050,6 @@ msgid "View Person Page"
 msgstr "Προβολή καρτέλας Μέλους"
 
 #: 
-msgid "Verify"
-msgstr "Επαληθεύω"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Η οικογένεια δεν έχει email για χρήση"
 
@@ -14631,10 +14627,6 @@ msgid "Date Picker Format"
 msgstr "Μορφή επιλογέα ημερομηνίας"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Κείμενο βοήθειας επιλογέα ημερομηνίας"
-
-#: 
 msgid "Date Without Year"
 msgstr "Ημερομηνία χωρίς έτος"
 
@@ -14665,10 +14657,6 @@ msgstr "Μορφή ημερομηνίας για ονόματα αρχείων"
 #: 
 msgid "Fully translated."
 msgstr "Πλήρως μεταφρασμένο."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Κείμενο υπόδειξης σε πεδία ημερομηνίας. Προεπιλογή: εεεε-μμ-ηη"
 
 #: 
 msgid "Home/Work Phone Format"

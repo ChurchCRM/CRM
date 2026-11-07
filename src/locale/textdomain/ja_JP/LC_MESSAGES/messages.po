@@ -5015,10 +5015,6 @@ msgid "View Person Page"
 msgstr "人物ページを表示"
 
 #: 
-msgid "Verify"
-msgstr "確認"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "家族には使用できるメールがありません"
 
@@ -14587,10 +14583,6 @@ msgid "Date Picker Format"
 msgstr "日付ピッカーの形式"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "日付ピッカーのプレースホルダー"
-
-#: 
 msgid "Date Without Year"
 msgstr "年なしの日付"
 
@@ -14621,10 +14613,6 @@ msgstr "ファイル名の日付形式"
 #: 
 msgid "Fully translated."
 msgstr "完全に翻訳されています。"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "日付入力に表示されるヒントテキスト。デフォルト：yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"

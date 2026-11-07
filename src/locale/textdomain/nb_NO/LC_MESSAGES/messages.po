@@ -5121,10 +5121,6 @@ msgid "View Person Page"
 msgstr "Vis personside"
 
 #: 
-msgid "Verify"
-msgstr "Verifiser"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Familien har ingen e-postadresser"
 
@@ -14702,10 +14698,6 @@ msgid "Date Picker Format"
 msgstr "Format for datoplukker"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Plassholder for datoplukker"
-
-#: 
 msgid "Date Without Year"
 msgstr "Dato uten år"
 
@@ -14736,10 +14728,6 @@ msgstr "Datoformat for filnavn"
 #: 
 msgid "Fully translated."
 msgstr "Fullstendig oversatt."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Hjelpetekst i datofelt. Standard: åååå-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"

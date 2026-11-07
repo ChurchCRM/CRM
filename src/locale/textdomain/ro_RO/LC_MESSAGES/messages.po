@@ -5111,10 +5111,6 @@ msgid "View Person Page"
 msgstr "Vizualizați pagina persoanei"
 
 #: 
-msgid "Verify"
-msgstr "Verifică"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Familia nu are adrese de email de utilizat"
 
@@ -14701,10 +14697,6 @@ msgid "Date Picker Format"
 msgstr "Format selector dată"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Text indicativ selector dată"
-
-#: 
 msgid "Date Without Year"
 msgstr "Dată fără an"
 
@@ -14735,10 +14727,6 @@ msgstr "Format dată pentru numele fișierului"
 #: 
 msgid "Fully translated."
 msgstr "Complet tradus."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Text indicativ afișat în câmpurile de dată. Implicit: aaaa-ll-zz"
 
 #: 
 msgid "Home/Work Phone Format"

@@ -5050,10 +5050,6 @@ msgid "View Person Page"
 msgstr "Kişi sayfasını görüntüle"
 
 #: 
-msgid "Verify"
-msgstr "Doğrulayın"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Ailenin kullanılacak e -postaları yok"
 
@@ -14631,10 +14627,6 @@ msgid "Date Picker Format"
 msgstr "Tarih Seçici Biçimi"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Tarih Seçici Yer Tutucu"
-
-#: 
 msgid "Date Without Year"
 msgstr "Yılsız Tarih"
 
@@ -14665,10 +14657,6 @@ msgstr "Dosya Adı Tarih Biçimi"
 #: 
 msgid "Fully translated."
 msgstr "Tamamen çevrildi."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Tarih alanlarında gösterilen ipucu metni. Varsayılan: yyyy-aa-gg"
 
 #: 
 msgid "Home/Work Phone Format"

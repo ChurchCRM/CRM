@@ -89,7 +89,7 @@ export async function waitForFloatingButtonsToTuck(page: Page): Promise<void> {
   }
 }
 
-/** The V1 / V2 switch lives on Feature Toggles and new installations start on V2, so specs set it through the Config API. */
+/** The V1 / V2 / Both switch (Admin → Feature Toggles), set through its API so `v1` works even where the page no longer offers it. */
 export async function setVolunteerVersion(page: Page, version: 'v1' | 'v2'): Promise<void> {
   await api(page, 'POST', '/admin/api/system/config/sVolunteerVersion', { value: version });
 }

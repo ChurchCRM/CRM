@@ -5047,10 +5047,6 @@ msgid "View Person Page"
 msgstr "Voir Page de la personne"
 
 #: 
-msgid "Verify"
-msgstr "Vérifier"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Aucune adresse email renseignée pour cette famille"
 
@@ -14628,10 +14624,6 @@ msgid "Date Picker Format"
 msgstr "Format du sélecteur de date"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Texte d'exemple du sélecteur de date"
-
-#: 
 msgid "Date Without Year"
 msgstr "Date sans année"
 
@@ -14662,10 +14654,6 @@ msgstr "Format de date pour les noms de fichiers"
 #: 
 msgid "Fully translated."
 msgstr "Entièrement traduit."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Texte indicatif dans les champs de date. Par défaut : aaaa-mm-jj"
 
 #: 
 msgid "Home/Work Phone Format"
