@@ -5041,10 +5041,6 @@ msgid "View Person Page"
 msgstr "Shiko faqjen e personit"
 
 #: 
-msgid "Verify"
-msgstr "Verifiko"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Familja nuk ka email për t'u përdorur"
 
@@ -14622,10 +14618,6 @@ msgid "Date Picker Format"
 msgstr "Formati i zgjedhësit të datës"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Teksti ndihmës i zgjedhësit të datës"
-
-#: 
 msgid "Date Without Year"
 msgstr "Data pa vit"
 
@@ -14656,10 +14648,6 @@ msgstr "Formati i datës për emrin e skedarit"
 #: 
 msgid "Fully translated."
 msgstr "Plotësisht i përkthyer."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Teksti ndihmës në fushat e datës. I paracaktuar: vvvv-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
