@@ -97,11 +97,11 @@ class Menu
     {
         $calendarMenu = new MenuItem(gettext('Calendar'), 'event/calendars', $canViewEvents, 'fa-calendar');
         // Anniversaries calendar (ID 1) - black background
-        $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-dark', 0, gettext("Today's Wedding Anniversaries")));
+        $calendarMenu->addCounter(new MenuCounter('AnniversaryNumber', 'bg-dark text-white', 0, gettext("Today's Wedding Anniversaries")));
         // Birthdays calendar (ID 0) - blue background  
-        $calendarMenu->addCounter(new MenuCounter('BirthdateNumber', 'bg-primary', 0, gettext("Today's Birthdays")));
+        $calendarMenu->addCounter(new MenuCounter('BirthdateNumber', 'bg-primary text-white', 0, gettext("Today's Birthdays")));
         // Events happening today - yellow/warning background
-        $calendarMenu->addCounter(new MenuCounter('EventsNumber', 'bg-warning', 0, gettext('Events Today')));
+        $calendarMenu->addCounter(new MenuCounter('EventsNumber', 'bg-warning text-dark', 0, gettext('Events Today')));
 
         return $calendarMenu;
     }
@@ -118,7 +118,7 @@ class Menu
         $peopleMenu->addSubMenu(new MenuItem(gettext('Family Map'), 'people/map', true, 'fa-map'));
         $selfRegisterItem = new MenuItem(gettext('Self Registrations'), 'people/self-register', true, 'fa-user-clock');
         // Count loads from the API after page load (CRMJSOM.js loadSelfRegisterPendingCount) so the menu adds no query.
-        $selfRegisterItem->addCounter(new MenuCounter('selfRegisterPending', 'bg-warning d-none', 0, gettext('Pending review')));
+        $selfRegisterItem->addCounter(new MenuCounter('selfRegisterPending', 'bg-warning text-dark d-none', 0, gettext('Pending review')));
         $peopleMenu->addSubMenu($selfRegisterItem);
 
         if ($isAdmin) {
@@ -480,7 +480,7 @@ class Menu
         // on page load (matches Fundraiser badge pattern). See CRMJSOM.js loadOpenDepositCount().
         $depositsMenu->addCounter(new MenuCounter(
             'openDeposits',
-            'bg-blue',
+            'bg-blue text-white',
             0,
             gettext('Open Deposits')
         ));
@@ -515,7 +515,7 @@ class Menu
         // on page load (matches Calendar badge pattern). See CRMJSOM.js loadFundraiserCount().
         $fundraiserMenu->addCounter(new MenuCounter(
             'activeFundraisers',
-            'bg-blue',
+            'bg-blue text-white',
             0,
             gettext('Active Fundraisers')
         ));

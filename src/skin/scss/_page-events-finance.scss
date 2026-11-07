@@ -123,8 +123,8 @@ tbody.past-events-body {
 
       &.selected,
       &.table-active {
-        background-color: rgba(var(--tblr-primary-rgb), 0.08);
-        border-left: 3px solid #0d6efd;
+        background-color: color-mix(in oklab, var(--tblr-primary) 8%, transparent);
+        border-inline-start: 3px solid var(--tblr-primary);
       }
 
       td {
@@ -223,8 +223,10 @@ tbody.past-events-body {
     transition: all 0.2s ease;
 
     &:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.1);
+      border-color: var(--tblr-primary);
+      outline: var(--tblr-focus-ring-width) solid var(--tblr-focus-ring-color);
+      outline-offset: -1px;
+      box-shadow: none;
     }
   }
 
