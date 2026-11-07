@@ -1078,7 +1078,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
                         <input type="text" name="MembershipDate" id="MembershipDate" class="form-control date-picker"
                                value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dMembershipDate), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
+                               placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
                     </div>
                     <?php if ($sMembershipDateError) { ?>
                         <span class="text-danger small"><?= $sMembershipDateError ?></span>
@@ -1091,7 +1091,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
                         <input type="text" name="FriendDate" id="FriendDate" class="form-control date-picker"
                                value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dFriendDate), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
+                               placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
                     </div>
                     <?php if ($sFriendDateError) { ?>
                         <span class="text-danger small"><?= $sFriendDateError ?></span>
@@ -1109,7 +1109,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-cross"></i></span>
                         <input type="text" name="DateDeceased" id="DateDeceased" class="form-control date-picker"
                                value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dDateDeceased), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValueForAttr('sDatePickerFormat') ?>">
+                               placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
                     </div>
                     <?php if ($sDateDeceasedError) { ?>
                         <span class="text-danger small"><?= $sDateDeceasedError ?></span>
