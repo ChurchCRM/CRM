@@ -20,6 +20,7 @@ use ChurchCRM\Utils\VersionUtils;
 use ChurchCRM\Volunteer\Service\VolunteerEventService;
 use ChurchCRM\Volunteer\Service\VolunteerMinistryService;
 use ChurchCRM\Volunteer\Service\VolunteerQualificationService;
+use ChurchCRM\Volunteer\VolunteerException;
 use InvalidArgumentException;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Propel;
@@ -180,7 +181,8 @@ class VolunteerV1Service
     }
 
     /**
-     * What converting with this choice would do. Nothing is written.
+     * What converting with this choice would do. Nothing is written. `revision` identifies
+     * this plan; convert() runs only the plan with that revision.
      *
      * @param array<string, mixed> $choice `ministryId` (an existing ministry) or `ministryName`
      *                                     (a new one), and `ownMinistry`: opportunity ids that
@@ -192,7 +194,17 @@ class VolunteerV1Service
      */
     public function preview(array $choice): array
     {
-        return $this->plan($choice, self::storedConversion());
+        $plan = $this->plan($choice, self::storedConversion());
+
+        return $plan + ['revision' => self::revisionOf($plan)];
+    }
+
+    /**
+     * @param array<string, mixed> $plan
+     */
+    private static function revisionOf(array $plan): string
+    {
+        return hash('sha256', json_encode($plan, JSON_THROW_ON_ERROR));
     }
 
     /**
@@ -265,14 +277,16 @@ class VolunteerV1Service
      * converted one since, in one transaction. An install on V1 moves to Both first,
      * because the result is V2 data. With nothing to do, nothing is written.
      *
-     * @param array<string, mixed> $choice as for preview()
+     * @param array<string, mixed> $choice   as for preview()
+     * @param string               $revision the revision of the preview the administrator confirmed
      *
      * @throws InvalidArgumentException when the choice is malformed
+     * @throws VolunteerException       409 when the plan is no longer the confirmed one; nothing is written
      * @throws \Throwable               when the conversion fails; nothing is kept
      *
      * @return array<string, mixed> the preview of what was done, plus the new map
      */
-    public function convert(array $choice, User $actor): array
+    public function convert(array $choice, string $revision, User $actor): array
     {
         $previousVersion = User::getVolunteerVersion();
         $connection = Propel::getWriteConnection(VolunteerMinistryTableMap::DATABASE_NAME);
@@ -285,6 +299,9 @@ class VolunteerV1Service
             VolunteerOpportunityQuery::create()->lockForUpdate()->find($connection);
             $stored = self::storedConversion(ConfigQuery::create()->filterByName(self::MAP_CONFIG)->select('Value')->findOne($connection) ?? '');
             $plan = $this->plan($choice, $stored);
+            if (!hash_equals(self::revisionOf($plan), $revision)) {
+                throw new VolunteerException(gettext('The Volunteer Opportunities changed since the preview. Check the preview again, then convert.'), 409);
+            }
             $map = self::conversionMap($stored);
             if ($plan['totals']['positions'] + $plan['totals']['ministries'] + $plan['totals']['pending'] === 0) {
                 $connection->commit();
@@ -423,6 +440,7 @@ class VolunteerV1Service
             foreach (PersonVolunteerOpportunityQuery::create()
                 ->filterByVolunteerOpportunityId($opportunityIds, Criteria::IN)
                 ->select(['VolunteerOpportunityId', 'PersonId'])
+                ->orderByPersonId()
                 ->find() as $link) {
                 $links[(int) $link['VolunteerOpportunityId']][(int) $link['PersonId']] = true;
             }
@@ -431,7 +449,7 @@ class VolunteerV1Service
         $found = [];
         $personIds = array_keys(array_replace([], ...array_values($links)));
         if ($personIds !== []) {
-            foreach (PersonQuery::create()->filterById($personIds, Criteria::IN)->orderByLastName()->orderByFirstName()->find() as $person) {
+            foreach (PersonQuery::create()->filterById($personIds, Criteria::IN)->orderByLastName()->orderByFirstName()->orderById()->find() as $person) {
                 $found[(int) $person->getId()] = $person;
             }
         }

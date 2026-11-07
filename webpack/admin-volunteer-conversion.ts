@@ -39,6 +39,7 @@ interface Plan {
     converted: number;
     pending: number;
   };
+  revision: string;
   message?: string;
 }
 
@@ -213,14 +214,14 @@ async function refresh(): Promise<void> {
   render(body, snapshot);
 }
 
-async function convert(snapshot: Choice): Promise<void> {
+async function convert(snapshot: Choice, revision: string): Promise<void> {
   invalidate();
   let response: Response;
   try {
     response = await fetch(`${root()}/admin/api/volunteer-conversion`, {
       method: "POST",
       headers: { "content-type": "application/json", "X-CSRF-Token": config().csrfToken },
-      body: JSON.stringify(snapshot),
+      body: JSON.stringify({ ...snapshot, revision }),
     });
   } catch {
     window.CRM?.notify?.(
@@ -289,7 +290,7 @@ function confirmConvert(): void {
     buttons: { confirm: { label: t("Convert"), className: "btn-primary" }, cancel: { label: t("Cancel") } },
     callback: (yes: boolean) => {
       if (yes && latest === shown && sameChoice(shown.choice, choice())) {
-        void convert(shown.choice);
+        void convert(shown.choice, shown.plan.revision);
       }
     },
   });

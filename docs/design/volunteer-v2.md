@@ -1864,6 +1864,7 @@ While V1 is in use, administrators see a retirement notice: on the Admin Dashboa
 - each living person linked to it gets a qualification for the position and joins the pool; links to missing or deceased people are listed, not converted;
 - names already taken get a suffix, `(2)`, `(3)`…;
 - it runs through the V2 services in one transaction, holding a lock on the opportunities so two conversions cannot plan from the same map, and sends no email; an install on `v1` moves to `both` first; with nothing to do it writes nothing;
+- it runs only the plan the administrator confirmed: the preview returns a `revision` of its plan, the conversion sends it back, and a plan that changed since (new opportunities, links, names or choice) is refused with 409 before anything is written;
 - the opportunity → position map is `aVolunteerV1Conversion`, so a re-run converts only new opportunities, into the ministry used last time, and qualifies people linked to a converted opportunity since; a qualification removed in Ministries stays removed;
 - the V1 rows are not touched.
 

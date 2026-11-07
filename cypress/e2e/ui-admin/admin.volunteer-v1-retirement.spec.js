@@ -71,6 +71,13 @@ function link(personId, names) {
     });
 }
 
+function convertAsPreviewed(choice) {
+    const query = new URLSearchParams(choice).toString();
+    return cy
+        .makePrivateAdminAPICall("GET", `${CONVERSION_API}/preview?${query}`, null, 200)
+        .then((preview) => cy.makePrivateAdminAPICall("POST", CONVERSION_API, { ...choice, revision: preview.body.revision }, 200));
+}
+
 function ministryByName(name) {
     return cy
         .makePrivateAdminAPICall("GET", "/api/ministries/ministries", null, 200)
@@ -243,11 +250,11 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
                     expect(preview.body.totals).to.deep.include({ positions: 1, converted: 3 });
                     const kitchen = preview.body.opportunities.find((opportunity) => opportunity.name === KITCHEN);
                     expect(kitchen).to.deep.include({ newName: `${KITCHEN} (2)`, renamed: true });
+                    cy.makePrivateAdminAPICall("POST", CONVERSION_API, { ministryId: hospitality.id, revision: preview.body.revision }, 200)
+                        .its("body.totals")
+                        .should("deep.include", { positions: 1, converted: 3 });
                 });
-                cy.makePrivateAdminAPICall("POST", CONVERSION_API, { ministryId: hospitality.id }, 200)
-                    .its("body.totals")
-                    .should("deep.include", { positions: 1, converted: 3 });
-                cy.makePrivateAdminAPICall("POST", CONVERSION_API, {}, 200)
+                convertAsPreviewed({})
                     .its("body.totals")
                     .should("deep.include", { positions: 0, ministries: 0, converted: 4 });
             });
@@ -269,7 +276,7 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
                 const usher = preview.body.opportunities.find((opportunity) => opportunity.name === USHER);
                 expect(usher.pending.map((person) => person.id)).to.deep.eq([people.constance]);
             });
-            cy.makePrivateAdminAPICall("POST", CONVERSION_API, {}, 200).its("body.totals").should("deep.include", { pending: 1 });
+            convertAsPreviewed({}).its("body.totals").should("deep.include", { pending: 1 });
             ministryByName(TARGET).then((ministry) => {
                 cy.makePrivateAdminAPICall("GET", `/api/ministries/ministries/${ministry.id}/positions`, null, 200).then((resp) => {
                     const usher = resp.body.positions.find((position) => position.name === USHER);
@@ -281,7 +288,7 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
                 });
             });
 
-            cy.makePrivateAdminAPICall("POST", CONVERSION_API, { ministryName: `${PREFIX} Empty` }, 200)
+            convertAsPreviewed({ ministryName: `${PREFIX} Empty` })
                 .its("body.totals")
                 .should("deep.include", { positions: 0, ministries: 0, pending: 0 });
             cy.makePrivateAdminAPICall("GET", "/api/ministries/ministries", null, 200)
@@ -309,7 +316,24 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
         it("refuses ids that are not whole numbers", () => {
             cy.makePrivateAdminAPICall("GET", `${CONVERSION_API}/preview?ownMinistry=abc`, null, 400);
             cy.makePrivateAdminAPICall("GET", `${CONVERSION_API}/preview?ministryId=3x`, null, 400);
-            cy.makePrivateAdminAPICall("POST", CONVERSION_API, { ownMinistry: [{ id: 1 }] }, 400);
+            cy.makePrivateAdminAPICall("POST", CONVERSION_API, { ownMinistry: [{ id: 1 }], revision: "any" }, 400);
+            cy.makePrivateAdminAPICall("POST", CONVERSION_API, {}, 400).its("body.message").should("contain", "Preview the conversion first");
+        });
+
+        it("refuses a conversion whose preview is out of date, writing nothing", () => {
+            const late = `${PREFIX} Late`;
+            setVersion("both");
+            cy.makePrivateAdminAPICall("GET", `${CONVERSION_API}/preview`, null, 200).then((preview) => {
+                expect(preview.body.totals).to.deep.include({ positions: 0, ministries: 0, pending: 0 });
+                createOpportunity(late);
+                cy.makePrivateAdminAPICall("POST", CONVERSION_API, { revision: preview.body.revision }, 409)
+                    .its("body.message")
+                    .should("contain", "changed since the preview");
+            });
+            cy.makePrivateAdminAPICall("GET", `${CONVERSION_API}/preview`, null, 200).then((preview) => {
+                expect(preview.body.totals).to.deep.include({ positions: 1 });
+                expect(preview.body.opportunities.find((opportunity) => opportunity.name === late).converted).to.eq(false);
+            });
         });
     });
 });
