@@ -29,6 +29,7 @@ use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsOrMinistryRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\Join;
@@ -1203,7 +1204,7 @@ function quickCreateEvent(Request $request, Response $response, array $args): Re
     }
 
     // Build title
-    $formattedDate = date('M j, Y', strtotime($date));
+    $formattedDate = date('M j, Y', strtotime(DateTimeUtils::parseIsoDate($date)));
     if ($eventType !== null) {
         $title = $eventType->getName() . ' — ' . $formattedDate;
     } else {
@@ -1769,11 +1770,13 @@ function generateRecurringEvents(Request $request, Response $response, array $ar
         return SlimUtils::renderErrorJSON($response, gettext('Invalid event type ID'), [], 400);
     }
 
-    if (empty($startDate) || empty($endDate) || strtotime($startDate) === false || strtotime($endDate) === false) {
+    $startDate = DateTimeUtils::parseIsoDate($startDate);
+    $endDate = DateTimeUtils::parseIsoDate($endDate);
+    if ($startDate === '' || $endDate === '') {
         return SlimUtils::renderErrorJSON($response, gettext('Valid startDate and endDate are required'), [], 400);
     }
 
-    if (strtotime($endDate) < strtotime($startDate)) {
+    if ($endDate < $startDate) {
         return SlimUtils::renderErrorJSON($response, gettext('endDate must be after startDate'), [], 400);
     }
 
