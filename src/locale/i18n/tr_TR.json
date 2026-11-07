@@ -6618,6 +6618,9 @@
   "no head of household or spouse has an email address": "hane reisinin veya eşin e-posta adresi yok",
   "or": "veya",
   "until %s": "%s tarihine kadar",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "Üye portalında %1$s adresindeki e-posta adresinizin %2$s adresinden %3$s adresine değiştirilmesi istendi. Değişiklik, yalnızca yeni adrese gönderilen bağlantı kullanıldığında gerçekleşir.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Aile bilgilerinizi gözden geçirmek için aşağıdaki bağlantıyı kullanın. İnceleme sayfasında her şeyin doğru olduğunu onaylamak için «Aile bilgilerini onayla» seçeneğini seçin veya düzeltmeleri kilise ofisine gönderin.",
+  "Review Family Information": "Aile bilgilerini gözden geçir",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} olay oluşturuldu",
     "other": "\"{{name}}\": {{count}} olay oluşturuldu"

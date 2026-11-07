@@ -27183,3 +27183,15 @@ msgstr "அல்லது"
 msgid "until %s"
 msgstr "%s வரை"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "உறுப்பினர் தளத்தில் %1$s இல் உங்கள் மின்னஞ்சல் முகவரியை %2$s இலிருந்து %3$s ஆக மாற்ற கோரிக்கை வந்துள்ளது. புதிய முகவரிக்கு அனுப்பிய இணைப்பைப் பயன்படுத்தினால் மட்டுமே மாற்றம் நடக்கும்."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "குடும்பத் தகவலைச் சரிபார்க்க கீழுள்ள இணைப்பைப் பயன்படுத்துங்கள். சரிபார்ப்புப் பக்கத்தில் எல்லாம் சரி என்பதை உறுதிப்படுத்த «குடும்பத் தகவலை உறுதிப்படுத்து» என்பதைத் தேர்ந்தெடுங்கள், அல்லது திருத்தங்களை சபை அலுவலகத்திற்கு அனுப்புங்கள்."
+
+#: 
+msgid "Review Family Information"
+msgstr "குடும்பத் தகவலைச் சரிபார்"
+

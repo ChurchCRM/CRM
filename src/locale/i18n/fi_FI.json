@@ -6618,6 +6618,9 @@
   "no head of household or spouse has an email address": "kenelläkään perheen päälliköllä tai puolisolla ei ole sähköpostiosoitetta",
   "or": "tai",
   "until %s": "%s asti",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "Jäsenportaalissa pyydettiin vaihtamaan sähköpostiosoitteesi sivustolla %1$s osoitteesta %2$s osoitteeseen %3$s. Muutos tapahtuu vasta, kun uuteen osoitteeseen lähetettyä linkkiä käytetään.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Tarkista perheesi tiedot alla olevasta linkistä. Valitse tarkistussivulla ”Vahvista perheen tiedot” vahvistaaksesi, että kaikki on oikein, tai lähetä korjaukset seurakunnan toimistoon.",
+  "Review Family Information": "Tarkista perheen tiedot",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} tapahtuma luotu",
     "other": "\"{{name}}\": {{count}} tapahtumaa luotu"

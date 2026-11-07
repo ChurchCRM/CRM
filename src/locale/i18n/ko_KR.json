@@ -6588,6 +6588,9 @@
   "no head of household or spouse has an email address": "세대주나 배우자 중 이메일 주소가 있는 사람이 없음",
   "or": "또는",
   "until %s": "%s까지",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "회원 포털에서 %1$s의 이메일 주소를 %2$s에서 %3$s(으)로 변경해 달라는 요청이 있었습니다. 변경은 새 주소로 보낸 링크를 사용할 때만 적용됩니다.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "아래 링크로 가족 정보를 검토해 주세요. 검토 페이지에서 “가족 정보 확인”을 선택하면 모든 내용이 맞다고 확인하거나, 수정 사항을 교회 사무실로 보낼 수 있습니다.",
+  "Review Family Information": "가족 정보 검토",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：생성된 {{count}}개 발생",
     "other": "\"{{name}}\"：생성된 {{count}}개 발생"

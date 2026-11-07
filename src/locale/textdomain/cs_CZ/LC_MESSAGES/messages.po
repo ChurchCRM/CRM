@@ -27190,3 +27190,15 @@ msgstr "nebo"
 msgid "until %s"
 msgstr "do %s"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "V portálu pro členy byl podán požadavek na změnu vaší e-mailové adresy na %1$s z %2$s na %3$s. Ke změně dojde až po použití odkazu odeslaného na novou adresu."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Pomocí odkazu níže zkontrolujte údaje o své rodině. Na stránce kontroly vyberte „Potvrdit údaje o rodině“, abyste potvrdili, že je vše správně, nebo pošlete opravy na církevní úřad."
+
+#: 
+msgid "Review Family Information"
+msgstr "Zkontrolovat údaje o rodině"
+

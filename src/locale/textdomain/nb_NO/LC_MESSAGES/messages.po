@@ -27242,3 +27242,15 @@ msgstr "eller"
 msgid "until %s"
 msgstr "til %s"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Det er bedt om i medlemsportalen å endre e-postadressen din hos %1$s fra %2$s til %3$s. Endringen skjer bare når lenken som er sendt til den nye adressen, blir brukt."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Bruk lenken nedenfor til å gå gjennom familieopplysningene dine. På gjennomgangssiden velger du «Bekreft familieopplysninger» for å bekrefte at alt stemmer, eller sender rettelser til menighetskontoret."
+
+#: 
+msgid "Review Family Information"
+msgstr "Gå gjennom familieopplysninger"
+

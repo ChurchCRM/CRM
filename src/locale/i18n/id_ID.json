@@ -6588,6 +6588,9 @@
   "no head of household or spouse has an email address": "tidak ada kepala rumah tangga atau pasangan yang memiliki alamat surel",
   "or": "atau",
   "until %s": "hingga %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "Ada permintaan di Portal Anggota untuk mengubah alamat email Anda di %1$s dari %2$s menjadi %3$s. Perubahan terjadi hanya jika tautan yang dikirim ke alamat baru digunakan.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Gunakan tautan di bawah untuk meninjau informasi keluarga Anda. Di halaman tinjauan, pilih \"Konfirmasi Info Keluarga\" untuk menegaskan bahwa semuanya benar, atau kirim koreksi ke kantor gereja.",
+  "Review Family Information": "Tinjau Informasi Keluarga",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} kejadian dibuat",
     "other": "\"{{name}}\"：{{count}} kejadian dibuat"

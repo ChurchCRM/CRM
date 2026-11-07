@@ -27166,3 +27166,15 @@ msgstr "ili"
 msgid "until %s"
 msgstr "do %s"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "U portalu za članove zatražena je promjena vaše adrese e-pošte na %1$s s %2$s na %3$s. Promjena se izvršava tek kada se upotrebi poveznica poslana na novu adresu."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Upotrijebite poveznicu u nastavku da pregledate podatke o svojoj obitelji. Na stranici za pregled odaberite „Potvrdi podatke o obitelji” da potvrdite da je sve točno ili pošaljite ispravke crkvenom uredu."
+
+#: 
+msgid "Review Family Information"
+msgstr "Pregled podataka o obitelji"
+

@@ -6618,6 +6618,9 @@
   "no head of household or spouse has an email address": "walang email address ang puno ng sambahayan o asawa",
   "or": "o",
   "until %s": "hanggang %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "May kahilingan sa Portal ng Miyembro na baguhin ang iyong email address sa %1$s mula %2$s tungo sa %3$s. Magkakabisa ang pagbabago kapag ginamit ang link na ipinadala sa bagong address.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Gamitin ang link sa ibaba upang suriin ang impormasyon ng iyong pamilya. Sa pahina ng pagsusuri, piliin ang \"Kumpirmahin ang Impormasyon ng Pamilya\" upang kumpirmahing tama ang lahat, o ipadala ang mga pagwawasto sa opisina ng simbahan.",
+  "Review Family Information": "Suriin ang Impormasyon ng Pamilya",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：lumikha ng {{count}} occurrence",
     "other": "\"{{name}}\"：lumikha ng {{count}} occurrences"

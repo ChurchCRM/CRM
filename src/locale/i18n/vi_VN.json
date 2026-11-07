@@ -6588,6 +6588,9 @@
   "no head of household or spouse has an email address": "không chủ hộ hay vợ hoặc chồng nào có địa chỉ email",
   "or": "hoặc",
   "until %s": "đến %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "Có yêu cầu trên Cổng thành viên đổi địa chỉ email của bạn tại %1$s từ %2$s thành %3$s. Thay đổi chỉ xảy ra khi dùng liên kết gửi tới địa chỉ mới.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Hãy dùng liên kết bên dưới để xem lại thông tin gia đình. Trên trang xem lại, chọn \"Xác nhận thông tin gia đình\" để xác nhận mọi thông tin đều đúng, hoặc gửi phần sửa tới văn phòng hội thánh.",
+  "Review Family Information": "Xem lại thông tin gia đình",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：tạo {{count}} lần xuất hiện",
     "other": "\"{{name}}\"：tạo {{count}} lần xuất hiện"

@@ -6618,6 +6618,9 @@
   "no head of household or spouse has an email address": "inget familjeöverhuvud eller någon make/maka har en e-postadress",
   "or": "eller",
   "until %s": "till %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "En begäran har gjorts i medlemsportalen om att ändra din e-postadress på %1$s från %2$s till %3$s. Ändringen sker bara när länken som skickats till den nya adressen används.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Använd länken nedan för att granska din familjs uppgifter. På granskningssidan väljer du ”Bekräfta familjeuppgifter” för att bekräfta att allt stämmer, eller skickar rättelser till församlingsexpeditionen.",
+  "Review Family Information": "Granska familjeuppgifter",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} förekomst skapad",
     "other": "\"{{name}}\": {{count}} förekomster skapade"

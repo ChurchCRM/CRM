@@ -6648,6 +6648,9 @@
   "no head of household or spouse has an email address": "niciun cap de familie sau soț ori soție nu are o adresă de e-mail",
   "or": "sau",
   "until %s": "până la %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "În portalul membrilor s-a cerut schimbarea adresei tale de e-mail de pe %1$s din %2$s în %3$s. Schimbarea are loc numai când este folosit linkul trimis la adresa nouă.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Folosește linkul de mai jos pentru a verifica informațiile familiei tale. Pe pagina de verificare alege „Confirmă informațiile familiei” ca să confirmi că totul este corect sau trimite corecturile la biroul bisericii.",
+  "Review Family Information": "Verifică informațiile familiei",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} apariție creată",
     "other": "\"{{name}}\": {{count}} apariții create"

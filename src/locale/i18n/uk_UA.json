@@ -6678,6 +6678,9 @@
   "no head of household or spouse has an email address": "жоден голова родини чи подружжя не має адреси електронної пошти",
   "or": "або",
   "until %s": "до %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "У порталі учасників надіслано запит змінити вашу адресу електронної пошти на %1$s з %2$s на %3$s. Зміна відбувається лише після використання посилання, надісланого на нову адресу.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Скористайтеся посиланням нижче, щоб перевірити відомості про вашу родину. На сторінці перевірки виберіть «Підтвердити відомості про родину», щоб підтвердити, що все правильно, або надішліть виправлення до церковного офісу.",
+  "Review Family Information": "Перевірити відомості про родину",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} подія створена",
     "other": "\"{{name}}\": {{count}} подій створено"
