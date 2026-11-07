@@ -5017,10 +5017,6 @@ msgid "View Person Page"
 msgstr "വ്യക്തി പേജ് കാണുക"
 
 #: 
-msgid "Verify"
-msgstr "സ്ഥിരീകരിക്കുക"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "കുടുംബത്തിന് ഉപയോഗിക്കാൻ ഇമെയിൽ ഇല്ല"
 
@@ -14598,10 +14594,6 @@ msgid "Date Picker Format"
 msgstr "ഡേറ്റ് പിക്കർ ഫോർമാറ്റ്"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "ഡേറ്റ് പിക്കർ പ്ലേസ്ഹോൾഡർ"
-
-#: 
 msgid "Date Without Year"
 msgstr "വർഷം കൂടാതെ തീയതി"
 
@@ -14632,10 +14624,6 @@ msgstr "ഫയൽ നാമ തീയതി ഫോർമാറ്റ്"
 #: 
 msgid "Fully translated."
 msgstr "പൂർണ്ണമായും വിവർത്തനം ചെയ്തു."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "തീയതി ഇൻപുട്ടുകളിൽ കാണിക്കുന്ന സൂചന ടെക്സ്റ്റ്. ഡിഫോൾട്ട്: yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"

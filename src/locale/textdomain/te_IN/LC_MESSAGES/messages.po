@@ -5028,10 +5028,6 @@ msgid "View Person Page"
 msgstr "వ్యక్తి పేజీని వీక్షించండి"
 
 #: 
-msgid "Verify"
-msgstr "ధృవీకరించండి"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "ఉపయోగించడానికి కుటుంబానికి ఇమెయిల్‌లు లేవు"
 
@@ -14609,10 +14605,6 @@ msgid "Date Picker Format"
 msgstr "తేదీ పికర్ ఫార్మాట్"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "తేదీ పికర్ ప్లేస్‌హోల్డర్"
-
-#: 
 msgid "Date Without Year"
 msgstr "సంవత్సరం లేని తేదీ"
 
@@ -14643,10 +14635,6 @@ msgstr "ఫైల్ పేరు తేదీ ఫార్మాట్"
 #: 
 msgid "Fully translated."
 msgstr "పూర్తిగా అనువదించబడింది."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "తేదీ ఇన్‌పుట్‌లలో చూపబడే హింట్ టెక్స్ట్. డిఫాల్ట్: yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"

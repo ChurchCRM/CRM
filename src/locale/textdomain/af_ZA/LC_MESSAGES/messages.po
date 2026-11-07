@@ -5050,10 +5050,6 @@ msgid "View Person Page"
 msgstr "Sien persoonbladsy"
 
 #: 
-msgid "Verify"
-msgstr "Verifieer"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Gesin het geen e-posse om te gebruik nie"
 
@@ -14631,10 +14627,6 @@ msgid "Date Picker Format"
 msgstr "Datumkieser-formaat"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Datumkieser-plekhouer"
-
-#: 
 msgid "Date Without Year"
 msgstr "Datum sonder jaar"
 
@@ -14665,10 +14657,6 @@ msgstr "Lêernaam-datumformaat"
 #: 
 msgid "Fully translated."
 msgstr "Volledig vertaal."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Wenkteks in datuminvoervelde. Standaard: jjjj-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"

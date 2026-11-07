@@ -5017,10 +5017,6 @@ msgid "View Person Page"
 msgstr "Prikaži stranicu osobe"
 
 #: 
-msgid "Verify"
-msgstr "Provjeri"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Obitelj nema e-pošta za korištenje"
 
@@ -14607,10 +14603,6 @@ msgid "Date Picker Format"
 msgstr "Format birača datuma"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Zamjenski tekst birača datuma"
-
-#: 
 msgid "Date Without Year"
 msgstr "Datum bez godine"
 
@@ -14641,10 +14633,6 @@ msgstr "Format datuma naziva datoteke"
 #: 
 msgid "Fully translated."
 msgstr "Potpuno prevedeno."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Tekst naputka prikazan u unosima datuma. Zadano: gggg-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"

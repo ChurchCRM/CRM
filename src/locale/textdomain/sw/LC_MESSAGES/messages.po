@@ -5046,10 +5046,6 @@ msgid "View Person Page"
 msgstr "Tazama Ukurasa wa Mtu"
 
 #: 
-msgid "Verify"
-msgstr "Thibitisha"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Familia haina barua pepe za kutumia"
 
@@ -14627,10 +14623,6 @@ msgid "Date Picker Format"
 msgstr "Muundo wa Kichaguzi cha Tarehe"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Msimbo wa Kichaguzi cha Tarehe"
-
-#: 
 msgid "Date Without Year"
 msgstr "Tarehe Bila Mwaka"
 
@@ -14661,10 +14653,6 @@ msgstr "Muundo wa Tarehe kwa Jina la Faili"
 #: 
 msgid "Fully translated."
 msgstr "Imetafsiriwa kikamilifu."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Maandishi ya kidokezo katika maeneo ya tarehe. Chaguo-msingi: mmmm-mm-ss"
 
 #: 
 msgid "Home/Work Phone Format"
