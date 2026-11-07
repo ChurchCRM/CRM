@@ -11,6 +11,7 @@ use ChurchCRM\model\ChurchCRM\Base\PersonQuery;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -148,33 +149,43 @@ if ($sSource === 'cart') {
         $sGroupBy = '';
     }
 
-    if (!empty($_POST['MembershipDate1'])) {
-        $sWhereExt .= 'AND per_MembershipDate >= ? ';
-        $whereParams[] = InputUtils::legacyFilterInput($_POST['MembershipDate1'], 'char', 10);
-        $whereTypes .= 's';
-    }
-    if ($_POST['MembershipDate2'] !== date('Y-m-d')) {
-        $sWhereExt .= 'AND per_MembershipDate <= ? ';
-        $whereParams[] = InputUtils::legacyFilterInput($_POST['MembershipDate2'], 'char', 10);
-        $whereTypes .= 's';
-    }
-
     $refDate = getdate(time());
 
-    if (!empty($_POST['BirthDate1'])) {
-        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') >= ? ";
-        $whereParams[] = InputUtils::legacyFilterInput($_POST['BirthDate1'], 'char', 10);
-        $whereTypes .= 's';
+    $dates = [];
+    foreach (['MembershipDate', 'BirthDate', 'AnniversaryDate', 'EnterDate'] as $field) {
+        foreach (['1', '2'] as $end) {
+            $raw = trim((string) ($_POST[$field . $end] ?? ''));
+            $dates[$field . $end] = DateTimeUtils::normalizeDate($raw);
+            if ($raw !== '' && $dates[$field . $end] === '') {
+                http_response_code(400);
+                echo InputUtils::escapeHTML(gettext('Not a valid date') . ': ' . $raw);
+                exit;
+            }
+        }
+    }
+    $today = date('Y-m-d');
+    $birthExpr = "DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d')";
+
+    $ranges = [
+        'MembershipDate' => 'per_MembershipDate',
+        'BirthDate' => $birthExpr,
+        'EnterDate' => 'DATE(per_DateEntered)',
+    ];
+    foreach ($ranges as $field => $column) {
+        if ($dates[$field . '1'] !== '') {
+            $sWhereExt .= "AND $column >= ? ";
+            $whereParams[] = $dates[$field . '1'];
+            $whereTypes .= 's';
+        }
+        if ($dates[$field . '2'] !== '' && $dates[$field . '2'] !== $today) {
+            $sWhereExt .= "AND $column <= ? ";
+            $whereParams[] = $dates[$field . '2'];
+            $whereTypes .= 's';
+        }
     }
 
-    if ($_POST['BirthDate2'] !== date('Y-m-d')) {
-        $sWhereExt .= "AND DATE_FORMAT(CONCAT(per_BirthYear,'-',per_BirthMonth,'-',per_BirthDay),'%Y-%m-%d') <= ? ";
-        $whereParams[] = InputUtils::legacyFilterInput($_POST['BirthDate2'], 'char', 10);
-        $whereTypes .= 's';
-    }
-
-    if (!empty($_POST['AnniversaryDate1'])) {
-        $annivStart = getdate(strtotime(InputUtils::legacyFilterInput($_POST['AnniversaryDate1'])));
+    if ($dates['AnniversaryDate1'] !== '') {
+        $annivStart = getdate(strtotime($dates['AnniversaryDate1']));
 
         // Add year to query if not in future
         if ($annivStart['year'] < date('Y') || ($annivStart['year'] === date('Y') && $annivStart['mon'] <= date('m') && $annivStart['mday'] <= date('d'))) {
@@ -182,32 +193,21 @@ if ($sSource === 'cart') {
         } else {
             $sWhereExt .= 'AND DAYOFYEAR(fam_WeddingDate) >= DAYOFYEAR(?) ';
         }
-        $whereParams[] = InputUtils::legacyFilterInput($_POST['AnniversaryDate1'], 'char', 10);
+        $whereParams[] = $dates['AnniversaryDate1'];
         $whereTypes .= 's';
     }
 
-    if ($_POST['AnniversaryDate2'] !== date('Y-m-d')) {
-        $annivEnd = getdate(strtotime(InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10)));
+    if ($dates['AnniversaryDate2'] !== '' && $dates['AnniversaryDate2'] !== $today) {
+        $annivEnd = getdate(strtotime($dates['AnniversaryDate2']));
 
         // Add year to query if not in future
         if ($annivEnd['year'] < date('Y') || ($annivEnd['year'] === date('Y') && $annivEnd['mon'] <= date('m') && $annivEnd['mday'] <= date('d'))) {
             $sWhereExt .= 'AND fam_WeddingDate <= ? ';
         } else {
-            $refDate = getdate(strtotime($_POST['AnniversaryDate2']));
+            $refDate = getdate(strtotime($dates['AnniversaryDate2']));
             $sWhereExt .= 'AND DAYOFYEAR(fam_WeddingDate) <= DAYOFYEAR(?) ';
         }
-        $whereParams[] = InputUtils::legacyFilterInput($_POST['AnniversaryDate2'], 'char', 10);
-        $whereTypes .= 's';
-    }
-
-    if (!empty($_POST['EnterDate1'])) {
-        $sWhereExt .= 'AND per_DateEntered >= ? ';
-        $whereParams[] = InputUtils::legacyFilterInput($_POST['EnterDate1'], 'char', 10);
-        $whereTypes .= 's';
-    }
-    if ($_POST['EnterDate2'] !== date('Y-m-d')) {
-        $sWhereExt .= 'AND per_DateEntered <= ? ';
-        $whereParams[] = InputUtils::legacyFilterInput($_POST['EnterDate2'], 'char', 10);
+        $whereParams[] = $dates['AnniversaryDate2'];
         $whereTypes .= 's';
     }
 }

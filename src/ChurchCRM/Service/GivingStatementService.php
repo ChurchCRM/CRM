@@ -35,8 +35,8 @@ class GivingStatementService
             $familyIds[] = $familyId;
         }
 
-        $dateStart = self::validDate(self::scalar($query['DateStart'] ?? ''));
-        $dateEnd = self::validDate(self::scalar($query['DateEnd'] ?? ''));
+        $dateStart = DateTimeUtils::parseIsoDate(DateTimeUtils::normalizeDate(self::scalar($query['DateStart'] ?? '')), self::FIRST_YEAR);
+        $dateEnd = DateTimeUtils::parseIsoDate(DateTimeUtils::normalizeDate(self::scalar($query['DateEnd'] ?? '')), self::FIRST_YEAR);
         if ($year >= self::FIRST_YEAR && $year <= $currentEndYear) {
             $fy = FiscalYearUtils::getFiscalYearDatesForCalendarYear($year);
             $dateStart = $fy['startDate'];
@@ -295,15 +295,6 @@ class GivingStatementService
         return is_scalar($value) ? (string) $value : '';
     }
 
-    private static function validDate(string $value): string
-    {
-        $date = InputUtils::filterDate($value);
-        if (!preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $date, $m) || !checkdate((int) $m[2], (int) $m[3], (int) $m[1]) || (int) $m[1] < self::FIRST_YEAR) {
-            return '';
-        }
-
-        return $date;
-    }
 
     /**
      * @return int[]

@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -281,7 +282,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="col-6">
                   <label class="form-label small text-secondary"><?= gettext('To') ?></label>
-                  <input id="MembershipDate2" class="form-control date-picker" type="text" name="MembershipDate2" maxlength="10" value="<?= date('Y-m-d') ?>">
+                  <input id="MembershipDate2" class="form-control date-picker" type="text" name="MembershipDate2" maxlength="10" value="<?= DateTimeUtils::formatForDatePicker(date('Y-m-d')) ?>">
                 </div>
               </div>
             </div>
@@ -295,7 +296,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="col-6">
                   <label class="form-label small text-secondary"><?= gettext('To') ?></label>
-                  <input type="text" name="BirthDate2" class="form-control date-picker" maxlength="10" value="<?= date('Y-m-d') ?>" id="BirthdayDate2">
+                  <input type="text" name="BirthDate2" class="form-control date-picker" maxlength="10" value="<?= DateTimeUtils::formatForDatePicker(date('Y-m-d')) ?>" id="BirthdayDate2">
                 </div>
               </div>
             </div>
@@ -309,7 +310,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="col-6">
                   <label class="form-label small text-secondary"><?= gettext('To') ?></label>
-                  <input type="text" class="form-control date-picker" name="AnniversaryDate2" maxlength="10" value="<?= date('Y-m-d') ?>" id="AnniversaryDate2">
+                  <input type="text" class="form-control date-picker" name="AnniversaryDate2" maxlength="10" value="<?= DateTimeUtils::formatForDatePicker(date('Y-m-d')) ?>" id="AnniversaryDate2">
                 </div>
               </div>
             </div>
@@ -323,7 +324,7 @@ require_once __DIR__ . '/Include/Header.php';
                 </div>
                 <div class="col-6">
                   <label class="form-label small text-secondary"><?= gettext('To') ?></label>
-                  <input id="EnterDate2" type="text" name="EnterDate2" maxlength="10" value="<?= date('Y-m-d') ?>" class="form-control date-picker">
+                  <input id="EnterDate2" type="text" name="EnterDate2" maxlength="10" value="<?= DateTimeUtils::formatForDatePicker(date('Y-m-d')) ?>" class="form-control date-picker">
                 </div>
               </div>
             </div>
