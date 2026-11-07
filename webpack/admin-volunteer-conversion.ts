@@ -3,7 +3,7 @@
  * the administrator chooses where the opportunities go, then run it.
  */
 
-export {};
+import { escapeAttribute, escapeHtml } from "./utils/escape-html";
 
 interface ConversionConfig {
   ministries: Array<{ id: number; name: string }>;
@@ -61,12 +61,6 @@ function t(key: string, options?: Record<string, unknown>): string {
     return key;
   }
   return i18next.t(key, { ...options, interpolation: { escapeValue: false } });
-}
-
-function escapeHtml(value: string): string {
-  const div = document.createElement("div");
-  div.textContent = value;
-  return div.innerHTML;
 }
 
 function byId<T extends HTMLElement>(id: string): T | null {
@@ -130,7 +124,7 @@ function renderRow(item: PlannedOpportunity): string {
     return `<tr data-opportunity="${item.id}"><td>${name}${inactive}</td><td colspan="3"><span class="badge bg-success-lt">${escapeHtml(t("Converted"))}</span>${pending}</td></tr>`;
   }
 
-  const becomes = `<select class="form-select form-select-sm w-auto" data-becomes="${item.id}" aria-label="${escapeHtml(t("What it becomes"))}">
+  const becomes = `<select class="form-select form-select-sm w-auto" data-becomes="${item.id}" aria-label="${escapeAttribute(t("What it becomes"))}">
       <option value="position" ${item.becomes === "position" ? "selected" : ""}>${escapeHtml(t("A position"))}</option>
       <option value="ministry" ${item.becomes === "ministry" ? "selected" : ""}>${escapeHtml(t("Its own ministry"))}</option>
     </select>
@@ -261,7 +255,7 @@ async function convert(snapshot: Choice): Promise<void> {
           "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified.",
           { ...body.totals, qualifications: body.totals.qualifications + body.totals.pending },
         ),
-      )} <a href="${root()}/ministries/dashboard">${escapeHtml(t("Open Ministries"))}</a></div>`,
+      )} <a href="${escapeAttribute(root())}/ministries/dashboard">${escapeHtml(t("Open Ministries"))}</a></div>`,
     );
   }
 }
