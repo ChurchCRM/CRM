@@ -6618,6 +6618,9 @@
   "no head of household or spouse has an email address": "geen hoof van die huishouding of gade het 'n e-posadres nie",
   "or": "of",
   "until %s": "tot %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "'n Versoek is in die lidportaal gemaak om u e-posadres by %1$s van %2$s na %3$s te verander. Die verandering gebeur eers wanneer die skakel wat na die nuwe adres gestuur is, gebruik word.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Gebruik asseblief die skakel hieronder om u gesinsinligting na te gaan. Kies op die hersieningsblad \"Bevestig gesinsinligting\" om te bevestig dat alles korrek is, of stuur regstellings na die kerkkantoor.",
+  "Review Family Information": "Hersien gesinsinligting",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} voorkoms geskep",
     "other": "\"{{name}}\": {{count}} voorkomste geskep"
