@@ -138,7 +138,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                     <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                                 </a>
                                 <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
-                                <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>">
+                                <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/family/editor?familyId=<?= $family->getId() ?>">
                                     <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                 </a>
                                 <?php endif; ?>

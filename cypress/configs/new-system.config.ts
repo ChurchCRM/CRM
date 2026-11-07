@@ -6,6 +6,9 @@ export default defineConfig({
   ...base,
   allowCypressEnv: false,
   env: {
+    'records-intake.api.key': 'recordsintakeEditorGateKey1234567890123456789',
+    'records-editor.api.key': 'recordseditorEditorGateKey1234567890123456789',
+    'self-service-account.api.key': 'selfserviceaccountEditorGateKey1234567890123456789',
     ...base.env,
     'db.host': 'database-new-system',
     'db.port': '3306',

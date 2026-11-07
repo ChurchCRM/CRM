@@ -110,10 +110,10 @@ class Menu
     {
         $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-people-group');
         $peopleMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'people/dashboard', true, 'fa-gauge'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Person'), 'PersonEditor.php', $isAddRecordsEnabled, 'fa-user-plus'));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Person'), 'people/person/editor', $isAddRecordsEnabled, 'fa-user-plus'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Person Listing'), 'people/list', true, 'fa-person-half-dress'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Photo Directory'), 'people/photos', true, 'fa-images'));
-        $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Family'), 'FamilyEditor.php', $isAddRecordsEnabled, 'fa-people-roof'));
+        $peopleMenu->addSubMenu(new MenuItem(gettext('Add New Family'), 'people/family/editor', $isAddRecordsEnabled, 'fa-people-roof'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Family Listing'), 'people/family', true, 'fa-people-roof'));
         $peopleMenu->addSubMenu(new MenuItem(gettext('Family Map'), 'people/map', true, 'fa-map'));
         $selfRegisterItem = new MenuItem(gettext('Self Registrations'), 'people/self-register', true, 'fa-user-clock');

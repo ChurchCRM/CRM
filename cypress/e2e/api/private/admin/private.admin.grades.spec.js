@@ -25,7 +25,7 @@ describe("API Private Admin - School grades", () => {
         );
 
     const createPerson = (key, level, deceased = false) => {
-        cy.visit("/PersonEditor.php");
+        cy.visit("/people/person/editor");
         cy.get("#FirstName").type("Cypress");
         cy.get("#LastName").type(`Grade ${key}`);
         if (level !== null) {
@@ -35,7 +35,7 @@ describe("API Private Admin - School grades", () => {
             cy.get("#IsDeceased").check();
             cy.get("#DateDeceased").clear().type("2020-01-01");
         }
-        cy.get("button[name='PersonSubmit']").click();
+        cy.get("button[name='personSubmit']").click();
         cy.url()
             .should("match", /\/people\/view\/\d+/)
             .then((url) => {
@@ -43,9 +43,9 @@ describe("API Private Admin - School grades", () => {
             });
     };
     const setGrade = (key, level) => {
-        cy.visit(`/PersonEditor.php?PersonID=${people[key]}`);
+        cy.visit(`/people/person/editor?personId=${people[key]}`);
         cy.get("#Grade").select(level === null ? "" : String(level));
-        cy.get("button[name='PersonSubmit']").click();
+        cy.get("button[name='personSubmit']").click();
         cy.url().should("include", `/people/view/${people[key]}`);
     };
     const gradeOf = (key) => cy.makePrivateAdminAPICall("GET", `/api/person/${people[key]}`, null, 200).its("body.GradeId");

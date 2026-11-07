@@ -40,12 +40,12 @@ describe("Person editor keeps custom fields the user cannot see", () => {
 
     const saveEditedField = (persona, value) => {
         cy.setupPersonaSession(persona);
-        cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+        cy.visit(`/people/person/editor?personId=${personId}`);
         cy.get(editedSelector).clear();
         if (value !== "") {
             cy.get(editedSelector).type(value);
         }
-        cy.get('button[name="PersonSubmit"]').click();
+        cy.get('button[name="personSubmit"]').click();
         cy.url().should("include", `/people/view/${personId}`);
     };
 
@@ -57,7 +57,7 @@ describe("Person editor keeps custom fields the user cannot see", () => {
 
             it("does not show the fields of other security classes", () => {
                 cy.setupPersonaSession(persona);
-                cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+                cy.visit(`/people/person/editor?personId=${personId}`);
                 cy.get(editedSelector).should("exist");
                 hidden.forEach((field) => {
                     cy.get(`[name="${field}"]`).should("not.exist");

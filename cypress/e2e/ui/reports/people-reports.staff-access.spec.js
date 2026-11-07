@@ -36,7 +36,7 @@ describe("People Reports for staff users (#10570)", () => {
             cy.visit("/people/reports/birthdays?month=7");
             cy.get("#reportResults tbody tr[data-person-id]").should("have.length.greaterThan", 0);
             cy.get("#reportResults .delete-person").should("not.exist");
-            cy.get('#reportResults a[href*="PersonEditor.php"]').should("not.exist");
+            cy.get('#reportResults a[href*="people/person/editor"]').should("not.exist");
         });
 
         it("prints report labels like any report", () => {

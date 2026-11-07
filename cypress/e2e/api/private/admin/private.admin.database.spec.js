@@ -30,11 +30,11 @@ describe("Admin API Database Endpoints", () => {
             const cells = (line) => line.match(/("([^"]|"")*"|[^,]*)(,|$)/g).map((cell) => cell.replace(/,$/, "").replace(/^"|"$/g, ""));
             let personId;
             cy.setupAdminSession();
-            cy.visit("/PersonEditor.php");
+            cy.visit("/people/person/editor");
             cy.get("#FirstName").type("Gil");
             cy.get("#LastName").type("ChmGrade");
             cy.get("#Grade").select("9");
-            cy.get("button[name='PersonSubmit']").click();
+            cy.get("button[name='personSubmit']").click();
             cy.url()
                 .should("match", /\/people\/view\/\d+/)
                 .then((url) => {

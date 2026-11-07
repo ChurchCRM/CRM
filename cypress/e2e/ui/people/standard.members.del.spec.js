@@ -5,12 +5,12 @@ describe("Standard Family", () => {
 
     it("Delete Person", () => {
         // Create a temporary person with minimum required fields
-        cy.visit("PersonEditor.php");
+        cy.visit("/people/person/editor");
         cy.get("#FirstName").type("TempDel");
         cy.get("#LastName").type("TestPerson");
         cy.get("#Gender").select("1");
         cy.get("#Classification").select("1");
-        cy.get('button[name="PersonSubmit"]').click();
+        cy.get('button[name="personSubmit"]').click();
 
         cy.location("pathname").should("include", "/people/view/").then((pathname) => {
             const personId = pathname.split("/").pop();
@@ -29,11 +29,11 @@ describe("Standard Family", () => {
 
     it("Delete Family", () => {
         // Create a temporary family with minimum required fields
-        cy.visit("FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.get("#FamilyName").type("TempDelFamily");
-        cy.get('input[name="FirstName1"]').type("TempDel");
-        cy.get('select[name="Classification1"]').select("1", { force: true });
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('input[name="firstName1"]').type("TempDel");
+        cy.get('select[name="classification1"]').select("1", { force: true });
+        cy.get('button[name="familySubmit"]').click();
 
         cy.location("pathname").should("include", "/people/family/").then((pathname) => {
             const familyId = pathname.split("/").pop();
@@ -49,7 +49,7 @@ describe("Standard Family", () => {
             cy.wait("@deleteFamily").its("response.statusCode").should("eq", 200);
             cy.url({ timeout: 10000 }).should("contain", "people/family");
 
-            cy.visit(`people/family/${familyId}`);
+            cy.visit(`/people/family/${familyId}`);
             cy.contains("Family not found");
         });
     });

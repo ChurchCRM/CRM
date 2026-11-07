@@ -663,7 +663,7 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
         }
 
         // Fallback default country from system settings — matches the interactive
-        // Person/Family editors (PersonEditor.php, FamilyEditor.php) so rows whose
+        // Person/Family editors (people/person/editor, people/family/editor) so rows whose
         // CSV omits a Country aren't silently stored blank and rendered as the
         // first country in the dropdown (Afghanistan). See issue #4347.
         $defaultCountry = AddressDefaults::country();

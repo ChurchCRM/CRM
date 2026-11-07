@@ -43,13 +43,13 @@ describe("Inactive classifications apply to Person Listing and dashboard (#10247
 
         // Person has no create API; the legacy editor is the only way in.
         cy.freshAdminFormLogin({ clearAll: true, visible: true });
-        cy.visit("/PersonEditor.php");
+        cy.visit("/people/person/editor");
         cy.get("#FirstName").type("Inactive");
         cy.get("#LastName").type(LAST_NAME);
         cy.get("#Gender").select("1");
         // created.classificationId is set by the earlier .then(); read it when this step runs, not when it is queued.
         cy.then(() => cy.get("#Classification").select(String(created.classificationId)));
-        cy.get('button[name="PersonSubmit"]').click();
+        cy.get('button[name="personSubmit"]').click();
         cy.location("pathname")
             .should("include", "/people/view/")
             .then((pathname) => {

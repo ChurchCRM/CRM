@@ -92,16 +92,16 @@ async function openComposerForm(page: Page): Promise<void> {
 
 /** Saves the person editor with a new personal email, without leaving the open page. */
 async function setPersonEmail(page: Page, personId: number, email: string): Promise<void> {
-  const html = await (await page.request.get(`/PersonEditor.php?PersonID=${personId}`)).text();
+  const html = await (await page.request.get(`/people/person/editor?personId=${personId}`)).text();
   const status = await page.evaluate(
     async ({ html, email, personId }) => {
       const doc = new DOMParser().parseFromString(html, 'text/html');
-      const form = doc.querySelector<HTMLFormElement>('form:has([name="Email"])');
+      const form = doc.querySelector<HTMLFormElement>('form:has([name="email"])');
       if (!form) return 0;
       const data = new FormData(form);
       data.set('Email', email);
       data.set('PersonSubmit', 'Save');
-      const res = await fetch(`/PersonEditor.php?PersonID=${personId}`, {
+      const res = await fetch(`/people/person/editor?personId=${personId}`, {
         method: 'POST',
         body: data,
         credentials: 'same-origin',
@@ -203,17 +203,17 @@ test.describe('Email composer', () => {
   });
 
   test('email-send-result-not-sent', notSent, async ({ page }, testInfo) => {
-    await page.goto('/FamilyEditor.php');
+    await page.goto('/people/family/editor');
     await expect(page.locator('#FamilyName')).toBeVisible({ timeout: 15000 });
     await page.locator('#FamilyName').fill('Ellison');
     await page.locator('#Address1').fill('18 Oak Street');
     await page.locator('#City').fill('Springfield');
     await page.locator('#State').selectOption('IL');
     await page.locator('#Zip').fill('62704');
-    await page.locator('input[name="FirstName1"]').fill('Lena');
-    await page.locator('input[name="LastName1"]').fill('Ellison');
-    await page.locator('select[name="Role1"]').selectOption('1');
-    await humanClick(page.locator('button[name="FamilySubmit"]'));
+    await page.locator('input[name="firstName1"]').fill('Lena');
+    await page.locator('input[name="lastName1"]').fill('Ellison');
+    await page.locator('select[name="role1"]').selectOption('1');
+    await humanClick(page.locator('button[name="familySubmit"]'));
     await page.waitForURL(/\/people\/family\/(\d+)/, { timeout: 15000 });
     const familyId = Number(page.url().match(/\/people\/family\/(\d+)/)?.[1]);
     const memberHref = await page.getByRole('link', { name: 'Lena Ellison' }).first().getAttribute('href');

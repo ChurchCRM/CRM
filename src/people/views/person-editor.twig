@@ -1,0 +1,535 @@
+<form method="post" action="{{ formAction }}" id="personEditor">
+    {{ csrf_input() }}    {% if bErrorFlag %}
+        <div class="alert alert-danger alert-dismissable">
+            <i class="fa-solid fa-ban"></i>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {{ gettext('Invalid fields or selections. Changes not saved! Please correct and try again!') }}        </div>
+        {% endif %}
+    <!-- Card 1: Name & Identity -->
+    <div class="card clearfix">
+        <div class="card-header d-flex align-items-center">
+            <h3 class="card-title">{{ gettext('Name & Identity') }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="mb-3 col-12 col-sm-6 col-xl-2">
+                    <label for="Title">{{ gettext('Title') }}:</label>
+                    <input type="text" name="title" id="Title"
+                           value="{{ sTitle }}"
+                           class="form-control" placeholder="{{ gettext('Mr., Mrs., Dr.') }}">
+                </div>
+                <div class="mb-3 col-12 col-sm-6 col-xl-3">
+                    <label for="FirstName">{{ gettext('First Name') }}:</label>
+                    <input type="text" name="firstName" id="FirstName"
+                           value="{{ sFirstName }}"
+                           class="form-control">
+                    {% if sFirstNameError %}
+                        <span class="text-danger small">{{ sFirstNameError }}</span>
+                    {% endif %}
+                </div>
+                <div class="mb-3 col-12 col-sm-6 col-xl-2">
+                    <label for="MiddleName">{{ gettext('Middle') }}:</label>
+                    <input type="text" name="middleName" id="MiddleName"
+                           value="{{ sMiddleName }}"
+                           class="form-control">
+                    {% if sMiddleNameError %}
+                        <span class="text-danger small">{{ sMiddleNameError }}</span>
+                    {% endif %}
+                </div>
+                <div class="mb-3 col-12 col-sm-6 col-xl-3">
+                    <label for="LastName">{{ gettext('Last Name') }}:</label>
+                    <input type="text" name="lastName" id="LastName"
+                           value="{{ sLastName }}"
+                           class="form-control">
+                    {% if sLastNameError %}
+                        <span class="text-danger small">{{ sLastNameError }}</span>
+                    {% endif %}
+                </div>
+                <div class="mb-3 col-6 col-sm-4 col-xl-1">
+                    <label for="Suffix">{{ gettext('Suffix') }}:</label>
+                    <input type="text" name="suffix" id="Suffix"
+                           value="{{ sSuffix }}"
+                           placeholder="{{ gettext('Jr., Sr.') }}" class="form-control">
+                </div>
+                <div class="mb-3 col-6 col-sm-4 col-xl-1">
+                    <label for="Gender">{{ gettext('Gender') }}:</label>
+                    <select id="Gender" name="gender" class="form-select">
+                        <option value="0">-</option>
+                        <option value="1" {{ ((iGender is same as(1)) ? 'selected' : '') }}>{{ gettext('M') }}</option>
+                        <option value="2" {{ ((iGender is same as(2)) ? 'selected' : '') }}>{{ gettext('F') }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 2: Birth & Family -->
+    <div class="card clearfix">
+        <div class="card-header d-flex align-items-center">
+            <h3 class="card-title">{{ gettext('Birth & Family') }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="mb-3 col-12 col-sm-6 col-xl-2">
+                    <label for="BirthMonth">{{ gettext('Birth Month') }}:</label>
+                    <select id="BirthMonth" name="birthMonth" class="form-select">
+                        <option value="0" {{ ((iBirthMonth is same as(0)) ? 'selected' : '') }}>-</option>
+                        <option value="01" {{ ((iBirthMonth is same as(1)) ? 'selected' : '') }}>{{ gettext('Jan') }}</option>
+                        <option value="02" {{ ((iBirthMonth is same as(2)) ? 'selected' : '') }}>{{ gettext('Feb') }}</option>
+                        <option value="03" {{ ((iBirthMonth is same as(3)) ? 'selected' : '') }}>{{ gettext('Mar') }}</option>
+                        <option value="04" {{ ((iBirthMonth is same as(4)) ? 'selected' : '') }}>{{ gettext('Apr') }}</option>
+                        <option value="05" {{ ((iBirthMonth is same as(5)) ? 'selected' : '') }}>{{ gettext('May') }}</option>
+                        <option value="06" {{ ((iBirthMonth is same as(6)) ? 'selected' : '') }}>{{ gettext('Jun') }}</option>
+                        <option value="07" {{ ((iBirthMonth is same as(7)) ? 'selected' : '') }}>{{ gettext('Jul') }}</option>
+                        <option value="08" {{ ((iBirthMonth is same as(8)) ? 'selected' : '') }}>{{ gettext('Aug') }}</option>
+                        <option value="09" {{ ((iBirthMonth is same as(9)) ? 'selected' : '') }}>{{ gettext('Sep') }}</option>
+                        <option value="10" {{ ((iBirthMonth is same as(10)) ? 'selected' : '') }}>{{ gettext('Oct') }}</option>
+                        <option value="11" {{ ((iBirthMonth is same as(11)) ? 'selected' : '') }}>{{ gettext('Nov') }}</option>
+                        <option value="12" {{ ((iBirthMonth is same as(12)) ? 'selected' : '') }}>{{ gettext('Dec') }}</option>
+                    </select>
+                </div>
+                <div class="mb-3 col-6 col-sm-4 col-xl-1">
+                    <label for="BirthDay">{{ gettext('Day') }}:</label>
+                    <select id="BirthDay" name="birthDay" class="form-select">
+                        <option value="0">-</option>
+                        {% if (32 - 1) >= 1 %}
+{% for x in 1..(32 - 1) %}
+{% set sDay = ((x < 10) ? ('0' ~ x) : x) %}
+                            <option value="{{ sDay }}" {{ ((iBirthDay is same as(x)) ? 'selected' : '') }}>{{ x }}</option>
+                        {% endfor %}
+{% endif %}
+                    </select>
+                </div>
+                <div class="mb-3 col-6 col-sm-4 col-xl-1">
+                    <label for="BirthYear">{{ gettext('Year') }}:</label>
+                    <input type="text" id="BirthYear" name="birthYear" value="{{ iBirthYear }}"
+                           maxlength="4" placeholder="YYYY" class="form-control">
+                    {% if sBirthYearError %}
+                        <span class="text-danger small">{{ sBirthYearError }}</span>
+                    {% endif %}                    {% if sBirthDateError %}
+                        <span class="text-danger small">{{ sBirthDateError }}</span>
+                    {% endif %}
+                </div>
+                <div class="mb-3 col-6 col-sm-4 col-xl-1">
+                    <label for="HideAge">{{ gettext('Hide Age') }}</label>
+                    <div class="form-check mt-2">
+                        <input type="checkbox" class="form-check-input" id="HideAge" name="hideAge" value="1" {{ (bHideAge ? 'checked' : '') }}>
+                    </div>
+                </div>
+                <div class="mb-3 col-12 col-sm-6 col-xl-4">
+                    <label for="familyId">{{ gettext('Family') }}:</label>
+                    <select name="family" id="familyId" class="form-select">
+                        <option value="0" selected>{{ gettext('Unassigned') }}</option>
+                        {% if current_user().isAddRecordsEnabled() %}
+<option value="-1">{{ gettext('Create a new family (using last name)') }}</option>{% endif %}
+                        <option value="" disabled>-----------------------</option>
+                        {% for familyOption in rsFamilies %}
+{% set fam_ID = familyOption.getId() %}
+{% set fam_Name = familyOption.getName() %}
+{% set fam_Address1 = familyOption.getAddress1() %}
+{% set fam_City = familyOption.getCity() %}
+{% set fam_State = familyOption.getState() %}
+{% set fam_ID = fam_ID %}
+<option value="{{ fam_ID }}"{% if ((iFamily is same as(fam_ID)) or (queryParamFamilyId is same as(fam_ID))) %} selected{% endif %}>{{ fam_Name }}&nbsp;{{ address_line(fam_Address1, fam_City, fam_State) }}{% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3 col-12 col-sm-6 col-xl-3">
+                    <label for="FamilyRole">{{ gettext('Family Role') }}:</label>
+                    <select name="familyRole" id="FamilyRole" class="form-select">
+                        <option value="0">{{ gettext('Unassigned') }}</option>
+                        <option value="" disabled>-----------------------</option>
+                        {% for option in rsFamilyRoles %}
+{% set lst_OptionID = option.getOptionId() %}
+{% set lst_OptionName = option.getOptionName() %}
+<option value="{{ lst_OptionID }}"{% if (iFamilyRole == lst_OptionID) %} selected{% endif %}>{{ lst_OptionName }}&nbsp;{% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3 col-12 col-sm-6 col-xl-3">
+                    <label for="Grade">{{ gettext('Grade') }}:</label>
+                    <select name="grade" id="Grade" class="form-select">
+                        <option value="">{{ gettext('Unassigned') }}</option>
+                        {% for gradeId, gradeName in grade_names() %}
+                            <option value="{{ gradeId }}"{{ ((iGrade is same as(gradeId)) ? ' selected' : '') }}>{{ gradeName }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 2: Address -->
+    {% if ((not config_bool('bHidePersonAddress')) and (iFamily is same as(0))) %}
+    <div class="card clearfix">
+        <div class="card-header d-flex align-items-center">
+            <h3 class="card-title">{{ gettext('Address') }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="mb-3 col-12 col-xl-6">
+                    <label for="Address1">
+                        {% if bFamilyAddress1 %}
+<span class="text-danger">{% else %}
+{% endif %}                        {{ gettext('Address') }} 1:
+                        {% if bFamilyAddress1 %}
+</span>{% else %}
+{% endif %}
+                    </label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-location-dot"></i></span>
+                        <input type="text" name="address1" id="Address1"
+                               value="{{ sAddress1 }}"
+                               maxlength="250" class="form-control">
+                    </div>
+                </div>
+                <div class="mb-3 col-12 col-xl-6">
+                    <label for="Address2">
+                        {% if bFamilyAddress2 %}
+<span class="text-danger">{% else %}
+{% endif %}                        {{ gettext('Address') }} 2:
+                        {% if bFamilyAddress2 %}
+</span>{% else %}
+{% endif %}
+                    </label>
+                    <input type="text" name="address2" id="Address2"
+                           value="{{ sAddress2 }}"
+                           maxlength="250" class="form-control">
+                </div>
+            </div>
+            <div class="row">
+                <div class="mb-3 col-12 col-sm-6 col-xl-4">
+                    <label for="City">
+                        {% if bFamilyCity %}
+<span class="text-danger">{% else %}
+{% endif %}                        {{ gettext('City') }}:
+                        {% if bFamilyCity %}
+</span>{% else %}
+{% endif %}
+                    </label>
+                    <input type="text" name="city" id="City"
+                           value="{{ sCity }}"
+                           class="form-control">
+                </div>
+                <div id="stateOptionDiv" class="mb-3 col-12 col-sm-6 col-xl-3">
+                    <label for="State">
+                        {% if bFamilyState %}
+<span class="text-danger">{% else %}
+{% endif %}                        {{ gettext('State') }}:
+                        {% if bFamilyState %}
+</span>{% else %}
+{% endif %}
+                    </label>
+                    <select id="State" name="state" class="form-select" data-user-selected="{{ sState }}" data-system-default="{{ config('sDefaultState') }}">
+                    </select>
+                </div>
+                <div id="stateInputDiv" class="mb-3 col-12 col-sm-6 col-xl-3 d-none">
+                    <label for="StateTextbox">{{ gettext('State (Other)') }}:</label>
+                    <input type="text" name="stateTextbox" id="StateTextbox"
+                           value="{{ sState }}"
+                           maxlength="30" class="form-control">
+                </div>
+                <div class="mb-3 col-12 col-sm-6 col-xl-2">
+                    <label for="Zip">
+                        {% if bFamilyZip %}
+<span class="text-danger">{% else %}
+{% endif %}                        {{ gettext('Zip Code') }}:
+                        {% if bFamilyZip %}
+</span>{% else %}
+{% endif %}
+                    </label>
+                    <input type="text" name="zip" id="Zip" class="form-control{{ (config_bool('bForceUppercaseZip') ? ' text-uppercase' : '') }}"
+                           value="{{ sZip }}"
+                           maxlength="10">
+                </div>
+                <div class="mb-3 col-12 col-sm-6 col-xl-3">
+                    <label for="Country">
+                        {% if bFamilyCountry %}
+<span class="text-danger">{% else %}
+{% endif %}                        {{ gettext('Country') }}:
+                        {% if bFamilyCountry %}
+</span>{% else %}
+{% endif %}
+                    </label>
+                    <select id="Country" name="country" class="form-select" data-user-selected="{{ sCountry }}" data-system-default="{{ config('sDefaultCountry') }}">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+{% set sHiddenCity = (isNewPerson ? '' : sCity) %}
+{% set sHiddenState = (isNewPerson ? '' : sState) %}
+{% set sHiddenZip = (isNewPerson ? '' : sZip) %}
+{% set sHiddenCountry = (isNewPerson ? '' : sCountry) %}
+        <input type="hidden" name="address1" value="{{ sAddress1 }}">
+        <input type="hidden" name="address2" value="{{ sAddress2 }}">
+        <input type="hidden" name="city" value="{{ sHiddenCity }}">
+        <input type="hidden" name="state" value="{{ sHiddenState }}">
+        <input type="hidden" name="stateTextbox" value="{{ sHiddenState }}">
+        <input type="hidden" name="zip" value="{{ sHiddenZip }}">
+        <input type="hidden" name="country" value="{{ sHiddenCountry }}">
+    {% endif %}
+
+    <!-- Card 3: Contact Information -->
+    <div class="card clearfix">
+        <div class="card-header d-flex align-items-center">
+            <h3 class="card-title">{{ gettext('Contact Information') }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Phones Column -->
+                <div class="col-12 col-xl-6">
+                    <div class="mb-3">
+                        <label for="HomePhone">
+                            {% if bFamilyHomePhone %}
+<span class="text-danger">{{ gettext('Home Phone') }}:</span>{% else %}{{ gettext('Home Phone') }}:{% endif %}
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
+                            <input type="tel" name="homePhone" id="HomePhone"
+                                   value="{{ sHomePhone }}"
+                                   maxlength="30" class="form-control"
+                                   data-phone-mask='{"mask":"{{ config('sPhoneFormat') }}"}'>
+                            <span class="input-group-text gap-2">
+                                <input class="form-check-input mt-0" type="checkbox" id="NoFormat_HomePhone" name="noFormatHomePhone" value="1" {{ (bNoFormat_HomePhone ? 'checked' : '') }}>
+                                <label class="form-check-label" for="NoFormat_HomePhone">{{ gettext('No format') }}</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="CellPhone">
+                            {% if bFamilyCellPhone %}
+<span class="text-danger">{{ gettext('Mobile Phone') }}:</span>{% else %}{{ gettext('Mobile Phone') }}:{% endif %}
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-mobile-screen"></i></span>
+                            <input type="tel" name="cellPhone" id="CellPhone"
+                                   value="{{ sCellPhone }}"
+                                   maxlength="30" class="form-control"
+                                   data-phone-mask='{"mask":"{{ config('sPhoneFormatCell') }}"}'>
+                            <span class="input-group-text gap-2">
+                                <input class="form-check-input mt-0" type="checkbox" id="NoFormat_CellPhone" name="noFormatCellPhone" value="1" {{ (bNoFormat_CellPhone ? 'checked' : '') }}>
+                                <label class="form-check-label" for="NoFormat_CellPhone">{{ gettext('No format') }}</label>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="WorkPhone">
+                            {% if bFamilyWorkPhone %}
+<span class="text-danger">{{ gettext('Work Phone') }}:</span>{% else %}{{ gettext('Work Phone') }}:{% endif %}
+                        </label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-building"></i></span>
+                            <input type="tel" name="workPhone" id="WorkPhone"
+                                   value="{{ sWorkPhone }}"
+                                   maxlength="30" class="form-control"
+                                   data-phone-mask='{"mask":"{{ config('sPhoneFormatWithExt') }}"}'>
+                            <span class="input-group-text gap-2">
+                                <input class="form-check-input mt-0" type="checkbox" id="NoFormat_WorkPhone" name="noFormatWorkPhone" value="1" {{ (bNoFormat_WorkPhone ? 'checked' : '') }}>
+                                <label class="form-check-label" for="NoFormat_WorkPhone">{{ gettext('No format') }}</label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Emails Column -->
+                <div class="col-12 col-xl-6">
+                    <div class="mb-3">
+                        <label for="Email">{{ gettext('Email') }}:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
+                            <input type="email" name="email" id="Email"
+                                   value="{{ sEmail }}"
+                                   maxlength="100" class="form-control"{{ (bEmailLocked ? ' readonly aria-describedby="EmailHint"' : ((sEmailHint is not same as('')) ? ' aria-describedby="EmailHint"' : '')) }}>
+                        </div>
+                        {% if (sEmailHint is not same as('')) %}
+                            <div class="form-text" id="EmailHint">{{ sEmailHint }}</div>
+                        {% endif %}                        {% if sEmailError %}
+                            <span class="text-danger small">{{ sEmailError }}</span>
+                        {% endif %}
+                    </div>
+                    <div class="mb-3">
+                        <label for="WorkEmail">{{ gettext('Work / Other Email') }}:</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fa-solid fa-briefcase"></i></span>
+                            <input type="email" name="workEmail" id="WorkEmail"
+                                   value="{{ sWorkEmail }}"
+                                   maxlength="100" class="form-control">
+                        </div>
+                        {% if sWorkEmailError %}
+                            <span class="text-danger small">{{ sWorkEmailError }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 4: Social Media -->
+    <div class="card clearfix">
+        <div class="card-header d-flex align-items-center">
+            <h3 class="card-title">{{ gettext('Social Media') }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="mb-3 col-12 col-sm-6 col-xl-4">
+                    <label for="Facebook">Facebook:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-brands fa-facebook"></i></span>
+                        <input type="text" name="facebook" id="Facebook"
+                               value="{{ sFacebook }}"
+                               maxlength="50" class="form-control">
+                    </div>
+                    {% if sFacebookError %}
+                        <span class="text-danger small">{{ sFacebookError }}</span>
+                    {% endif %}
+                </div>
+                <div class="mb-3 col-12 col-sm-6 col-xl-4">
+                    <label for="Twitter">X:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-brands fa-x-twitter"></i></span>
+                        <input type="text" name="twitter" id="Twitter"
+                               value="{{ sTwitter }}"
+                               maxlength="50" class="form-control">
+                    </div>
+                    {% if sTwitterError %}
+                        <span class="text-danger small">{{ sTwitterError }}</span>
+                    {% endif %}
+                </div>
+                <div class="mb-3 col-12 col-sm-6 col-xl-4">
+                    <label for="LinkedIn">LinkedIn:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-brands fa-linkedin"></i></span>
+                        <input type="text" name="linkedIn" id="LinkedIn"
+                               value="{{ sLinkedIn }}"
+                               maxlength="50" class="form-control">
+                    </div>
+                    {% if sLinkedInError %}
+                        <span class="text-danger small">{{ sLinkedInError }}</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 5: Church Membership -->
+    <div class="card clearfix">
+        <div class="card-header d-flex align-items-center">
+            <h3 class="card-title">{{ gettext('Church Membership') }}</h3>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="mb-3 col-12 col-sm-6 col-xl-3">
+                    <label for="Classification">{{ gettext('Classification') }}:</label>
+                    <select id="Classification" name="classification" class="form-select">
+                        <option value="0">{{ gettext('Unassigned') }}</option>
+                        <option value="" disabled>-----------------------</option>
+                        {% for option in rsClassifications %}
+{% set lst_OptionID = option.getOptionId() %}
+{% set lst_OptionName = option.getOptionName() %}
+<option value="{{ lst_OptionID }}"{% if (iClassification == lst_OptionID) %} selected{% endif %}>{{ lst_OptionName }}&nbsp;{% endfor %}
+                    </select>
+                </div>
+                <div class="mb-3 col-12 col-sm-6 col-xl-3">
+                    <label for="MembershipDate">{{ gettext('Membership Date') }}:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
+                        <input type="text" name="membershipDate" id="MembershipDate" class="form-control date-picker"
+                               value="{{ escape_attr(date_picker(dMembershipDate)) }}" maxlength="10"
+                               placeholder="{{ date_picker_format() }}">
+                    </div>
+                    {% if sMembershipDateError %}
+                        <span class="text-danger small">{{ sMembershipDateError }}</span>
+                    {% endif %}
+                </div>
+                {% if (not config_bool('bHideFriendDate')) %}
+                <div class="mb-3 col-12 col-sm-6 col-xl-3">
+                    <label for="FriendDate">{{ gettext('Friend Date') }}:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
+                        <input type="text" name="friendDate" id="FriendDate" class="form-control date-picker"
+                               value="{{ escape_attr(date_picker(dFriendDate)) }}" maxlength="10"
+                               placeholder="{{ date_picker_format() }}">
+                    </div>
+                    {% if sFriendDateError %}
+                        <span class="text-danger small">{{ sFriendDateError }}</span>
+                    {% endif %}
+                </div>
+                {% endif %}
+                <div class="mb-3 col-12 col-sm-6 col-xl-3">
+                    <label class="form-label d-block">{{ gettext('Deceased') }}</label>
+                    <div class="form-check mt-2">
+                        <input type="checkbox" class="form-check-input" id="IsDeceased" name="isDeceased"
+                               value="1" {{ (bIsDeceased ? 'checked' : '') }}>
+                        <label class="form-check-label" for="IsDeceased">{{ gettext('This person is deceased') }}</label>
+                    </div>
+                    <div class="input-group mt-2" id="DeceasedDateGroup" {{ (bIsDeceased ? '' : 'hidden') }}>
+                        <span class="input-group-text"><i class="fa-solid fa-cross"></i></span>
+                        <input type="text" name="dateDeceased" id="DateDeceased" class="form-control date-picker"
+                               value="{{ escape_attr(date_picker(dDateDeceased)) }}" maxlength="10"
+                               placeholder="{{ date_picker_format() }}">
+                    </div>
+                    {% if sDateDeceasedError %}
+                        <span class="text-danger small">{{ sDateDeceasedError }}</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if (numCustomFields > 0) %}
+        <div class="card clearfix">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title">{{ gettext('Custom Fields') }}</h3>
+            </div>
+            <div class="card-body">
+                {% set customPhoneFields = [] %}
+                {% for field in rsCustomFields %}
+                    {% set fieldId = field.getId() %}
+                    {% set fieldType = field.getTypeId() %}
+                    {% set value = aCustomData[fieldId]|default('')|trim %}
+                    {% set special = field.getSpecial() %}
+                    {% if fieldType == 11 %}
+                        {% set special = null %}
+                        {% set customPhoneFields = customPhoneFields|merge([{'checkboxName': fieldId ~ 'noformat', 'inputName': fieldId}]) %}
+                    {% endif %}
+
+                    <div class="row">
+                        <div class="mb-3 col-12 col-xl-6">
+                            <label for="{{ fieldId }}">{{ field.getName() }}</label>
+                            {{ custom_form(fieldType, fieldId, value, special, not submitted) }}
+                            {% if aCustomErrors[fieldId] is not empty %}
+
+                                <span class="text-danger small">{{ aCustomErrors[fieldId] }}</span>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    <!-- Form submit buttons -->
+    <div class="d-flex gap-2 mt-4">
+        <!-- Primary action: Save (green) -->
+        <button type="submit" name="personSubmit" class="btn btn-success flex-grow-1">
+            <i class="fa-solid fa-check me-2"></i>{{ gettext('Save') }}        </button>
+        <!-- Secondary action: Save and Add (blue) -->
+        {% if current_user().isAddRecordsEnabled() %}
+        <button type="submit" name="personSubmitAndAdd" class="btn btn-info flex-grow-1">
+            <i class="fa-solid fa-user-plus me-2"></i>{{ gettext('Save and Add') }}        </button>
+        {% endif %}
+        <!-- Tertiary action: Cancel (gray) -->
+        {% if (iPersonID > 0) %}
+        <a href="{{ person_uri(iPersonID) }}" class="btn btn-secondary">
+            <i class="fa-solid fa-xmark me-2"></i>{{ gettext('Cancel') }}        </a>
+        {% else %}
+        <a href="{{ root_path() }}/people/list" class="btn btn-secondary">
+            <i class="fa-solid fa-xmark me-2"></i>{{ gettext('Cancel') }}        </a>
+        {% endif %}
+    </div>
+</form>
+
+<script nonce="{{ csp_nonce() }}">window.CRM.customPhoneFields = {{ json_script((customPhoneFields ?? [])) }};</script>
+
+<script src="{{ asset_url('/skin/js/DropdownManager.js') }}"></script>
+<script src="{{ asset_url('/skin/v2/person-editor.min.js') }}"></script>
+

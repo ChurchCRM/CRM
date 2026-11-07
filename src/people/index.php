@@ -10,6 +10,7 @@ $app = MvcAppFactory::create('/people', [
 ]);
 
 // Register routes
+require __DIR__ . '/routes/editors.php';
 require __DIR__ . '/routes/dashboard.php';
 require __DIR__ . '/routes/people.php';
 require __DIR__ . '/routes/family.php';

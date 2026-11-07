@@ -57,16 +57,16 @@ describe("Sign-in email on the person page and the person editor (§9)", () => {
 
     it("shows the email read-only to staff who may not change it, and warns before changing a signed-in person's email", () => {
         signInAs(JUDITH);
-        cy.visit(`/PersonEditor.php?PersonID=${TONY.id}`);
+        cy.visit(`/people/person/editor?personId=${TONY.id}`);
         cy.get("#Email").should("have.attr", "readonly");
         cy.get("#EmailHint").should("contain", "Only an administrator can change the email");
 
         markReplacedAfterSignIn(LENA.id, "old.address@example.com");
-        cy.visit(`/PersonEditor.php?PersonID=${LENA.id}`);
+        cy.visit(`/people/person/editor?personId=${LENA.id}`);
         cy.get("#Email").should("not.have.attr", "readonly");
         cy.get("#EmailHint").should("contain", "signs them out everywhere");
 
-        cy.visit(`/PersonEditor.php?PersonID=${MATHEW.id}`);
+        cy.visit(`/people/person/editor?personId=${MATHEW.id}`);
         cy.get("#Email").should("not.have.attr", "readonly");
         cy.get("#EmailHint").should("not.exist");
     });

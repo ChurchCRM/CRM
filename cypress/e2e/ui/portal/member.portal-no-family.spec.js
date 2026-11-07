@@ -39,7 +39,7 @@ describe("Member without a family in the portal", () => {
     });
 
     it("opens the staff editor for her record without a family", () => {
-        cy.request("/PersonEditor.php?PersonID=95").then((response) => {
+        cy.request("/people/person/editor?personId=95").then((response) => {
             expect(response.status).to.equal(200);
             expect(response.body).to.contain("Judith");
             expect(response.body).not.to.match(/Fatal error|Uncaught|Warning:|Stack trace/);

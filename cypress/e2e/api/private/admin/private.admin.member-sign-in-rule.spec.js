@@ -82,13 +82,13 @@ describe("Member sign-in rule (person sign-in status)", () => {
 
     describe("with no birth year", () => {
         afterEach(() => {
-            savePersonEditor(2, { BirthYear: 1970 }).its("status").should("eq", 302);
+            savePersonEditor(2, { birthYear: 1970 }).its("status").should("eq", 302);
             cy.clearCookies();
         });
 
         it("lets in a head of household but not a child", () => {
             expectReason(88, "age_unknown");
-            savePersonEditor(2, { BirthYear: "" }).its("status").should("eq", 302);
+            savePersonEditor(2, { birthYear: "" }).its("status").should("eq", 302);
             expectReason(2, null);
             setRule({ iMemberSignInMinAge: 0 });
             expectReason(88, null);

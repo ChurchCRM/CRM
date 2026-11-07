@@ -15,11 +15,11 @@ describe("Standard Person", () => {
     
     it("Add Person only first and last name", () => {
         const name = "Robby " + uniqueSeed;
-        cy.visit("PersonEditor.php");
+        cy.visit("/people/person/editor");
         cy.get("#FirstName").type(name);
         cy.get("#LastName").type("Campbell");
         // Click FAB save button
-        cy.get('button[name="PersonSubmit"]').click();
+        cy.get('button[name="personSubmit"]').click();
 
         cy.url().should("contain", "people/view/");
         cy.trackPersonFromUrl(createdPersonIds);
@@ -28,12 +28,12 @@ describe("Standard Person", () => {
 
     it("Add Person with middle name", () => {
         const firstName = "Mathew " + uniqueSeed;
-        cy.visit("PersonEditor.php");
+        cy.visit("/people/person/editor");
         cy.get("#FirstName").type(firstName);
         cy.get("#MiddleName").type("Henry");
         cy.get("#LastName").type("Campbell");
         // Click FAB save button
-        cy.get('button[name="PersonSubmit"]').click();
+        cy.get('button[name="personSubmit"]').click();
         cy.url().should("contain", "people/view/");
         cy.trackPersonFromUrl(createdPersonIds);
         cy.contains(firstName).should("be.visible");

@@ -65,18 +65,18 @@ const keepingSession = (call) =>
  */
 const saveEmailInPersonEditor = (personId, email, user = JUDITH) => {
     signIn(user);
-    return cy.request(`/PersonEditor.php?PersonID=${personId}`).then((page) => {
+    return cy.request(`/people/person/editor?personId=${personId}`).then((page) => {
         const form = Cypress.$(new DOMParser().parseFromString(page.body, "text/html")).find("#personEditor");
         expect(form.length, "person editor form").to.eq(1);
         const body = {};
         form.serializeArray().forEach(({ name, value }) => {
             body[name] = value;
         });
-        body.Email = email;
-        body.PersonSubmit = "";
+        body.email = email;
+        body.personSubmit = "";
         return cy.request({
             method: "POST",
-            url: `/PersonEditor.php?PersonID=${personId}`,
+            url: `/people/person/editor?personId=${personId}`,
             form: true,
             body,
             followRedirect: false,

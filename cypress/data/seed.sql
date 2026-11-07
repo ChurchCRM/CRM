@@ -1986,3 +1986,11 @@ ALTER TABLE `property_pro` AUTO_INCREMENT = 32;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Personas for record creation, editing and self-service boundaries.
+INSERT INTO person_per (per_ID, per_FirstName, per_LastName, per_Gender, per_cls_ID, per_fam_ID, per_fmr_ID, per_DateEntered, per_EnteredBy) VALUES (920, 'Records', 'Intake', 1, 1, 0, 0, '2026-01-01 00:00:00', 1);
+INSERT INTO `user_usr` (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_UserName, usr_apiKey, usr_AddRecords, usr_EditRecords, usr_EditSelf, usr_Admin) VALUES (920, '$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S', 0, 'records-intake.user', 'recordsintakeEditorGateKey1234567890123456789', 1, 0, 0, 0);
+INSERT INTO person_per (per_ID, per_FirstName, per_LastName, per_Gender, per_cls_ID, per_fam_ID, per_fmr_ID, per_DateEntered, per_EnteredBy) VALUES (921, 'Records', 'Editor', 1, 1, 0, 0, '2026-01-01 00:00:00', 1);
+INSERT INTO `user_usr` (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_UserName, usr_apiKey, usr_AddRecords, usr_EditRecords, usr_EditSelf, usr_Admin) VALUES (921, '$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S', 0, 'records-editor.user', 'recordseditorEditorGateKey1234567890123456789', 0, 1, 0, 0);
+INSERT INTO person_per (per_ID, per_FirstName, per_LastName, per_Gender, per_cls_ID, per_fam_ID, per_fmr_ID, per_DateEntered, per_EnteredBy) VALUES (922, 'Self', 'Service', 1, 1, 0, 0, '2026-01-01 00:00:00', 1);
+INSERT INTO `user_usr` (usr_per_ID, usr_Password, usr_NeedPasswordChange, usr_UserName, usr_apiKey, usr_AddRecords, usr_EditRecords, usr_EditSelf, usr_Admin) VALUES (922, '$2y$12$e3o8rmvWUYdgzUNB/AAMK.pRvT9rwsIZx4wYB0brOmVPB1UL.HA5S', 0, 'self-service-account.user', 'selfserviceaccountEditorGateKey1234567890123456789', 0, 0, 1, 0);

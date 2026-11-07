@@ -125,7 +125,7 @@ $missingLabels = array_map(static fn (string $key): string => $report['params'][
                                     <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                                 </a>
                                 <?php if ($canEdit) : ?>
-                                <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $personId ?>">
+                                <a class="dropdown-item" href="<?= $sRootPath ?>/people/person/editor?personId=<?= $personId ?>">
                                     <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                 </a>
                                 <?php endif; ?>

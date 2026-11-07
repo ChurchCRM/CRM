@@ -134,7 +134,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <div class="col-sm-8">
                     <?= InputUtils::escapeHTML($user->getFullName()) ?>
                     <?php if ($canEditUserPerson): ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="fa-solid fa-pencil"></i></a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/people/person/editor?personId=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="fa-solid fa-pencil"></i></a>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -143,7 +143,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                   <div class="col-sm-8">
                     <?= InputUtils::escapeHTML($user->getEmail() ?? '') ?: '<span class="text-body-secondary">' . gettext("Not set") . '</span>' ?>
                     <?php if ($canEditUserPerson): ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="fa-solid fa-pencil"></i></a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/people/person/editor?personId=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="fa-solid fa-pencil"></i></a>
                     <?php endif; ?>
                   </div>
                 </div>

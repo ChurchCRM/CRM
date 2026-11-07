@@ -172,7 +172,7 @@ describe("Mobile UX — Authenticated Pages", () => {
     });
 
     it("PersonEditor form fields stack full-width on mobile", () => {
-        cy.visit("/PersonEditor.php");
+        cy.visit("/people/person/editor");
         cy.get("#FirstName").should("be.visible").then(($el) => {
             // First name field should take most of the viewport width (col-12 on mobile)
             const fieldWidth = $el.closest(".mb-3").outerWidth();
@@ -184,7 +184,7 @@ describe("Mobile UX — Authenticated Pages", () => {
     });
 
     it("FamilyEditor form fields stack full-width on mobile", () => {
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.get("#FamilyName").should("be.visible").then(($el) => {
             const fieldWidth = $el.closest(".mb-3").outerWidth();
             const containerWidth = $el.closest(".row").innerWidth();

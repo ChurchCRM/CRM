@@ -468,7 +468,7 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                                                     <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/view/<?= $personId ?>">
                                                         <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                                                     </a>
-                                                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $personId ?>">
+                                                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/person/editor?personId=<?= $personId ?>">
                                                         <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                                     </a>
                                                     <div class="dropdown-divider"></div>

@@ -10,6 +10,24 @@
 const SEED_PASSWORD = "changeme";
 
 export const PERSONAS = {
+    "records-intake": {
+        principal: "staff",
+        apiKey: "records-intake.api.key",
+        login: { username: "records-intake.user", password: SEED_PASSWORD },
+        flags: "Add Records",
+    },
+    "records-editor": {
+        principal: "staff",
+        apiKey: "records-editor.api.key",
+        login: { username: "records-editor.user", password: SEED_PASSWORD },
+        flags: "Edit Records",
+    },
+    "self-service-account": {
+        principal: "staff",
+        apiKey: "self-service-account.api.key",
+        login: { username: "self-service-account.user", password: SEED_PASSWORD },
+        flags: "EditSelf",
+    },
     "church-admin": {
         principal: "staff",
         apiKey: "admin.api.key",

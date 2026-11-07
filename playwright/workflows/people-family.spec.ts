@@ -54,7 +54,7 @@ test.describe('People & Families', () => {
     purpose: 'Show creating a new family and its resulting profile page',
   });
   test('people-family-new-family', peopleFamilyNewFamilyCapture, async ({ page }, testInfo) => {
-    await page.goto('/FamilyEditor.php');
+    await page.goto('/people/family/editor');
     await humanPause(page, 500);
 
     await humanType(page.locator('#FamilyName'), 'Whitfield');
@@ -64,12 +64,12 @@ test.describe('People & Families', () => {
     await humanType(page.locator('#Zip'), '62704');
     await humanType(page.locator('#HomePhone'), '(555) 010-1000');
 
-    await humanType(page.locator('input[name="FirstName1"]'), 'Michael');
-    await humanType(page.locator('input[name="LastName1"]'), 'Whitfield');
-    await humanSelect(page.locator('select[name="Gender1"]'), '1');
+    await humanType(page.locator('input[name="firstName1"]'), 'Michael');
+    await humanType(page.locator('input[name="lastName1"]'), 'Whitfield');
+    await humanSelect(page.locator('select[name="gender1"]'), '1');
 
     await humanPause(page, 500);
-    await humanClick(page.locator('button[name="FamilySubmit"]'));
+    await humanClick(page.locator('button[name="familySubmit"]'));
     await page.waitForURL(/\/people\/family\/(\d+)/, { timeout: 15000 });
     const michaelLink = page.getByText('Michael Whitfield', { exact: false }).first();
     await expect(michaelLink).toBeVisible({ timeout: 10000 });

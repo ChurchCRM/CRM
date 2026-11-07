@@ -46,7 +46,7 @@ describe("Person birthday", () => {
 
             // Re-opening the editor must bring the birthday back in the
             // zero-padded form the selects emit.
-            cy.visit(`/PersonEditor.php?PersonID=${id}`);
+            cy.visit(`/people/person/editor?personId=${id}`);
             cy.get("#BirthMonth").should("have.value", "05");
             cy.get("#BirthDay").should("have.value", "01");
             cy.get("#BirthYear").should("have.value", String(person.year));

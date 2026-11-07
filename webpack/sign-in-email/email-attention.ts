@@ -166,7 +166,7 @@ function attentionFixCell(row: AttentionRow): string {
     return `<div ${attributes}>${muted(row.confirmEmailRefusal ?? "")}</div>`;
   }
   const label = row.problem === "shared_email" ? t("Give each person their own email") : t("Add an email");
-  const href = `${root()}/PersonEditor.php?PersonID=${row.personId}`;
+  const href = `${root()}/people/person/editor?personId=${row.personId}`;
   return `<div ${attributes}><a class="btn btn-sm btn-outline-primary" href="${escapeAttribute(href)}">${escapeHtml(label)}</a></div>`;
 }
 

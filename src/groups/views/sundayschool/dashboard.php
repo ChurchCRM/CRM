@@ -360,7 +360,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                                     </a>
                                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
-                                    <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $kidId ?>">
+                                    <a class="dropdown-item" href="<?= $sRootPath ?>/people/person/editor?personId=<?= $kidId ?>">
                                         <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                     </a>
                                     <?php endif; ?>

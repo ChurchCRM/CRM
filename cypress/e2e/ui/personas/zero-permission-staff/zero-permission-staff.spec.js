@@ -50,19 +50,19 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
         });
 
         it("Can view the people dashboard", () => {
-            cy.visit("people/dashboard");
+            cy.visit("/people/dashboard");
             cy.url().should("include", "/people/dashboard");
             cy.url().should("not.include", "/portal");
         });
 
         it("Can view the person listing", () => {
-            cy.visit("people/list");
+            cy.visit("/people/list");
             cy.url().should("include", "/people/list");
             cy.url().should("not.include", "/v2/access-denied");
         });
 
         it("Can view the family listing", () => {
-            cy.visit("people/family");
+            cy.visit("/people/family");
             cy.url().should("include", "/people/family");
             cy.url().should("not.include", "/v2/access-denied");
         });
@@ -82,15 +82,13 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
         beforeEach(login);
 
         // Write pages are gated on AddRecords / EditRecords, which are 0.
-        // PersonEditor.php redirects denied users to the dashboard (not access-denied);
-        // FamilyEditor.php uses securityRedirect → access-denied (tested separately below).
         it("PersonEditor (add/edit person) is denied", () => {
-            cy.visit("PersonEditor.php?PersonID=2", { failOnStatusCode: false });
-            cy.url().should("include", "/v2/dashboard");
+            cy.visit("/people/person/editor?personId=2", { failOnStatusCode: false });
+            cy.url().should("include", "/v2/access-denied");
         });
 
         it("FamilyEditor (add/edit family) is denied", () => {
-            cy.visit("FamilyEditor.php?FamilyID=1", { failOnStatusCode: false });
+            cy.visit("/people/family/editor?familyId=1", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
 
@@ -101,12 +99,12 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
         });
 
         it("People Verify page is denied (EditRecords)", () => {
-            cy.visit("people/verify", { failOnStatusCode: false });
+            cy.visit("/people/verify", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
 
         it("Verify report download is denied (EditRecords)", () => {
-            cy.visit("people/report/verify", { failOnStatusCode: false });
+            cy.visit("/people/report/verify", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
 
@@ -145,12 +143,12 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
 
         // EmailMailto=0 — /people/email and /people/text are behind EmailRoleAuthMiddleware.
         it("Email dashboard is denied", () => {
-            cy.visit("people/email", { failOnStatusCode: false });
+            cy.visit("/people/email", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
 
         it("Text dashboard is denied", () => {
-            cy.visit("people/text", { failOnStatusCode: false });
+            cy.visit("/people/text", { failOnStatusCode: false });
             cy.url().should("include", "/v2/access-denied");
         });
     });

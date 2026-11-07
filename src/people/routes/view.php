@@ -1,7 +1,5 @@
 <?php
 
-require_once __DIR__ . '/../../Include/PageInit.php';
-
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
@@ -39,6 +37,7 @@ use Slim\Views\PhpRenderer;
 
 // ─── POST: assign volunteer opportunities (PRG pattern) ──────────────────────
 $app->post('/view/{personID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
+    require_once __DIR__ . '/../../Include/PageInit.php';
     $iPersonID = (int) $args['personID'];
     $currentUser = AuthenticationManager::getCurrentUser();
 
@@ -67,6 +66,7 @@ $app->post('/view/{personID:[0-9]+}', function (Request $request, Response $resp
 
 // ─── GET: main person view ───────────────────────────────────────────────────
 $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
+    require_once __DIR__ . '/../../Include/PageInit.php';
     $iPersonID   = (int) $args['personID'];
     $currentUser = AuthenticationManager::getCurrentUser();
 
@@ -383,10 +383,6 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
             $loginAsPersonHistory = null;
         }
     }
-
-    // PageInit.php (required above) took the previous request's message, e.g. why
-    // Login as Person ended, out of the session; Footer.php shows it.
-    global $sGlobalMessage, $sGlobalMessageClass;
 
     // ── Render ───────────────────────────────────────────────────────────────
     $renderer = new PhpRenderer(__DIR__ . '/../views/');

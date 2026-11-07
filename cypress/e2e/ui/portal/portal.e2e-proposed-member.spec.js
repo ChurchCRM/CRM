@@ -136,10 +136,10 @@ describe("A family member proposed in the Member Portal", () => {
         });
 
         cy.freshAdminFormLogin();
-        cy.then(() => cy.visit(`/PersonEditor.php?PersonID=${spouseId}`));
+        cy.then(() => cy.visit(`/people/person/editor?personId=${spouseId}`));
         cy.get("#Gender").select("1");
         cy.get("#Email").clear().type(spouseEmail);
-        cy.get("button[name='PersonSubmit']").click();
+        cy.get("button[name='personSubmit']").click();
         cy.url().should("include", "/people/view/");
 
         cy.getSystemConfig("sKioskVisibilityTimestamp").then((value) => {

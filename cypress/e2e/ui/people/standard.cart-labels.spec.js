@@ -19,16 +19,16 @@ describe("Cart mailing labels", () => {
     before(() => {
         cy.freshAdminFormLogin();
 
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.contains("Family Info");
         cy.get("#FamilyName").type(familyName);
-        cy.get('input[name="Address1"]').type(street);
-        cy.get('input[name="City"]').clear().type(city);
-        cy.get('select[name="State"]').select("IL", { force: true });
-        cy.get('input[name="Zip"]').clear().type(zip);
-        cy.get('input[name="FirstName1"]').type(memberFirstName);
-        cy.get('select[name="Classification1"]').select("1", { force: true });
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('input[name="address1"]').type(street);
+        cy.get('input[name="city"]').clear().type(city);
+        cy.get('select[name="state"]').select("IL", { force: true });
+        cy.get('input[name="zip"]').clear().type(zip);
+        cy.get('input[name="firstName1"]').type(memberFirstName);
+        cy.get('select[name="classification1"]').select("1", { force: true });
+        cy.get('button[name="familySubmit"]').click();
 
         cy.location("pathname")
             .should("include", "/people/family/")
@@ -100,26 +100,26 @@ describe("Cart mailing labels", () => {
         const child = "Cal" + stamp;
         const householdStreet = "9 Household Way";
 
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.contains("Family Info");
         cy.get("#FamilyName").type(household);
-        cy.get('input[name="Address1"]').type(householdStreet);
-        cy.get('input[name="City"]').clear().type(city);
-        cy.get('select[name="State"]').select("IL", { force: true });
-        cy.get('input[name="Zip"]').clear().type(zip);
-        cy.get('input[name="FirstName1"]').type(adults[0]);
-        cy.get('input[name="LastName1"]').clear().type(household);
-        cy.get('select[name="Classification1"]').select("1", { force: true });
-        cy.get('select[name="Role1"]').select("1", { force: true });
-        cy.get('input[name="FirstName2"]').type(adults[1]);
-        cy.get('input[name="LastName2"]').clear().type(household);
-        cy.get('select[name="Classification2"]').select("1", { force: true });
-        cy.get('select[name="Role2"]').select("2", { force: true });
-        cy.get('input[name="FirstName3"]').type(child);
-        cy.get('input[name="LastName3"]').clear().type(household);
-        cy.get('select[name="Classification3"]').select("1", { force: true });
-        cy.get('select[name="Role3"]').select("3", { force: true });
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('input[name="address1"]').type(householdStreet);
+        cy.get('input[name="city"]').clear().type(city);
+        cy.get('select[name="state"]').select("IL", { force: true });
+        cy.get('input[name="zip"]').clear().type(zip);
+        cy.get('input[name="firstName1"]').type(adults[0]);
+        cy.get('input[name="lastName1"]').clear().type(household);
+        cy.get('select[name="classification1"]').select("1", { force: true });
+        cy.get('select[name="role1"]').select("1", { force: true });
+        cy.get('input[name="firstName2"]').type(adults[1]);
+        cy.get('input[name="lastName2"]').clear().type(household);
+        cy.get('select[name="classification2"]').select("1", { force: true });
+        cy.get('select[name="role2"]').select("2", { force: true });
+        cy.get('input[name="firstName3"]').type(child);
+        cy.get('input[name="lastName3"]').clear().type(household);
+        cy.get('select[name="classification3"]').select("1", { force: true });
+        cy.get('select[name="role3"]').select("3", { force: true });
+        cy.get('button[name="familySubmit"]').click();
 
         cy.location("pathname")
             .should("include", "/people/family/")

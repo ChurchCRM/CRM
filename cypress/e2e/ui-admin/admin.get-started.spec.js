@@ -84,12 +84,12 @@ describe("Admin Get Started", () => {
 
     it("should show the Add First Family button linking to FamilyEditor", () => {
         cy.visit("admin/get-started/manual");
-        cy.contains("a", "Add First Family").first().should("have.attr", "href").and("include", "FamilyEditor.php");
+        cy.contains("a", "Add First Family").first().should("have.attr", "href").and("include", "people/family/editor");
     });
 
     it("should show the Add a Person button linking to PersonEditor", () => {
         cy.visit("admin/get-started/manual");
-        cy.contains("a", "Add a Person").first().should("have.attr", "href").and("include", "PersonEditor.php");
+        cy.contains("a", "Add a Person").first().should("have.attr", "href").and("include", "people/person/editor");
     });
 
     it("should show Back to Get Started link on manual page", () => {

@@ -10,38 +10,38 @@ describe("Email of a person who has a staff account", () => {
     let original = "";
 
     const saveEmail = (id, email) => {
-        cy.visit(`/PersonEditor.php?PersonID=${id}`);
+        cy.visit(`/people/person/editor?personId=${id}`);
         cy.get("#Email").clear();
         if (email) {
             cy.get("#Email").type(email);
         }
-        cy.get('button[name="PersonSubmit"]').click();
+        cy.get('button[name="personSubmit"]').click();
     };
 
     describe("standard user", () => {
         beforeEach(() => cy.setupStandardSession());
 
         it("sees the email read-only on an account holder", () => {
-            cy.visit("/PersonEditor.php?PersonID=1");
+            cy.visit("/people/person/editor?personId=1");
             cy.get("#Email").should("have.attr", "readonly");
             cy.get("#EmailHint").should("contain", "Only an administrator can change the email");
         });
 
         it("keeps the stored email when a posted change is forced through", () => {
-            cy.visit("/PersonEditor.php?PersonID=95");
+            cy.visit("/people/person/editor?personId=95");
             cy.get("#Email")
                 .invoke("val")
                 .then((before) => {
                     cy.get("#Email").invoke("removeAttr", "readonly").clear().type(changed);
-                    cy.get('button[name="PersonSubmit"]').click();
+                    cy.get('button[name="personSubmit"]').click();
                     cy.contains("Only an administrator can change the email").should("exist");
-                    cy.visit("/PersonEditor.php?PersonID=95");
+                    cy.visit("/people/person/editor?personId=95");
                     cy.get("#Email").should("have.value", before);
                 });
         });
 
         it("can still edit the email of a person without an account", () => {
-            cy.visit("/PersonEditor.php?PersonID=10");
+            cy.visit("/people/person/editor?personId=10");
             cy.get("#Email").should("not.have.attr", "readonly");
         });
     });
@@ -50,7 +50,7 @@ describe("Email of a person who has a staff account", () => {
         beforeEach(() => cy.setupAdminSession());
 
         it("changes the email and the person's timeline records it", () => {
-            cy.visit("/PersonEditor.php?PersonID=95");
+            cy.visit("/people/person/editor?personId=95");
             cy.get("#Email").should("not.have.attr", "readonly");
             cy.get("#Email")
                 .invoke("val")
@@ -60,7 +60,7 @@ describe("Email of a person who has a staff account", () => {
 
             saveEmail(95, changed);
 
-            cy.visit("/PersonEditor.php?PersonID=95");
+            cy.visit("/people/person/editor?personId=95");
             cy.get("#Email").should("have.value", changed);
             cy.visit("/people/view/95");
             cy.contains("Email changed by an administrator").should("exist");

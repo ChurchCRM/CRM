@@ -24,12 +24,12 @@ describe("Person editor saves dates in the configured date-picker format (#5966)
         it(`keeps ${typed} as 2014-03-22 with format ${format}`, () => {
             cy.setupAdminSession();
             cy.setSystemConfig("sDatePickerFormat", format);
-            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.visit(`/people/person/editor?personId=${personId}`);
             cy.get("#MembershipDate").invoke("val", typed);
-            cy.get('button[name="PersonSubmit"]').click();
+            cy.get('button[name="personSubmit"]').click();
             cy.url().should("include", `/people/view/${personId}`);
 
-            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.visit(`/people/person/editor?personId=${personId}`);
             cy.get("#MembershipDate").should("have.value", typed);
         });
     });

@@ -76,6 +76,38 @@ class CustomFieldService
         return $visible;
     }
 
+    public function getPersonValues(int $personId): array
+    {
+        $fields = $this->getVisiblePersonFields();
+        $query = PersonCustomQuery::create();
+        foreach ($fields as $field) {
+            $this->assertColumn($field->getId());
+            $query->addAsColumn($field->getId(), $field->getId());
+        }
+        $record = $query->findOneByPerId($personId);
+        $values = [];
+        foreach ($fields as $field) {
+            $values[$field->getId()] = $record?->getVirtualColumn($field->getId()) ?? '';
+        }
+        return $values;
+    }
+
+    public function getFamilyValues(int $familyId): array
+    {
+        $fields = $this->getVisibleFamilyFields();
+        $query = FamilyCustomQuery::create();
+        foreach ($fields as $field) {
+            $this->assertColumn($field->getField());
+            $query->addAsColumn($field->getField(), $field->getField());
+        }
+        $record = $query->findOneByFamId($familyId);
+        $values = [];
+        foreach ($fields as $field) {
+            $values[$field->getField()] = $record?->getVirtualColumn($field->getField()) ?? '';
+        }
+        return $values;
+    }
+
     /**
      * Saves the submitted values of the person custom fields the signed-in user may see.
      * Every other column keeps its stored value.

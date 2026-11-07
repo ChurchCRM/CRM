@@ -54,10 +54,10 @@ const visitAs = (who, path) => {
 
 const setHideAge = (personId, hide) => {
     cy.setupAdminSession();
-    cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+    cy.visit(`/people/person/editor?personId=${personId}`);
     cy.get("#HideAge")[hide ? "check" : "uncheck"]();
-    cy.get("button[name='PersonSubmit']").click();
-    cy.location("pathname").should("not.include", "PersonEditor.php");
+    cy.get("button[name='personSubmit']").click();
+    cy.location("pathname").should("not.include", "people/person/editor");
 };
 
 before(() => {
