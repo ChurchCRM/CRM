@@ -5021,10 +5021,6 @@ msgid "View Person Page"
 msgstr "Näytä henkilösivu"
 
 #: 
-msgid "Verify"
-msgstr "Vahvista"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Perheellä ei ole sähköpostiosoitteita käytettäväksi"
 
@@ -14602,10 +14598,6 @@ msgid "Date Picker Format"
 msgstr "Päivämäärävalitsimen muoto"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Päivämäärävalitsimen vihjeteksti"
-
-#: 
 msgid "Date Without Year"
 msgstr "Päivämäärä ilman vuotta"
 
@@ -14636,10 +14628,6 @@ msgstr "Päivämäärämuoto tiedostonimissä"
 #: 
 msgid "Fully translated."
 msgstr "Täysin käännetty."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Vihjeteksti päivämääräkentissä. Oletus: vvvv-kk-pp"
 
 #: 
 msgid "Home/Work Phone Format"

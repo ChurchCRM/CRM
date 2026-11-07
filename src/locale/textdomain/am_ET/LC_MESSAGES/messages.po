@@ -5055,10 +5055,6 @@ msgid "View Person Page"
 msgstr "የግል ገጽ ይመልከቱ"
 
 #: 
-msgid "Verify"
-msgstr "አረጋገጥ"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "ቤተሰብ ለመጠቀም ምንም ኢሜይሎች የሉትም።"
 
@@ -14637,10 +14633,6 @@ msgid "Date Picker Format"
 msgstr "የቀን ምረጫ ቅርጸት"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "የቀን ምረጫ ምትክ ጽሑፍ"
-
-#: 
 msgid "Date Without Year"
 msgstr "ያለ ዓመት ቀን"
 
@@ -14671,10 +14663,6 @@ msgstr "ለፋይል ስም የቀን ቅርጸት"
 #: 
 msgid "Fully translated."
 msgstr "ሙሉ ለሙሉ ተተርጉሟል።"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "በቀን ግቤቶች ውስጥ የሚታይ ፍንጭ ጽሑፍ። ነባሪ: ዓዓዓዓ-ወወ-ቀቀ"
 
 #: 
 msgid "Home/Work Phone Format"

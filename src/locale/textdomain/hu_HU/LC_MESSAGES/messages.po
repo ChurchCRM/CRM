@@ -5076,10 +5076,6 @@ msgid "View Person Page"
 msgstr "Személy oldal megtekintése"
 
 #: 
-msgid "Verify"
-msgstr "Ellenőrzés"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "A család nem rendelkezik e-mailekhez"
 
@@ -14657,10 +14653,6 @@ msgid "Date Picker Format"
 msgstr "Dátumválasztó formátuma"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Dátumválasztó helyőrzője"
-
-#: 
 msgid "Date Without Year"
 msgstr "Dátum év nélkül"
 
@@ -14691,10 +14683,6 @@ msgstr "Dátumformátum fájlnévhez"
 #: 
 msgid "Fully translated."
 msgstr "Teljesen lefordítva."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Dátummezőkben megjelenő súgószöveg. Alapértelmezett: éééé-hh-nn"
 
 #: 
 msgid "Home/Work Phone Format"

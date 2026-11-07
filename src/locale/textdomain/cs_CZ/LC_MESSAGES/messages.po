@@ -5041,10 +5041,6 @@ msgid "View Person Page"
 msgstr "Zobrazit stránku osoby"
 
 #: 
-msgid "Verify"
-msgstr "Ověřit"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Rodina nemá zadán e-mail"
 
@@ -14631,10 +14627,6 @@ msgid "Date Picker Format"
 msgstr "Formát výběru data"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Text nápovědy výběru data"
-
-#: 
 msgid "Date Without Year"
 msgstr "Datum bez roku"
 
@@ -14665,10 +14657,6 @@ msgstr "Formát data pro název souboru"
 #: 
 msgid "Fully translated."
 msgstr "Plně přeloženo."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Text nápovědy v polích pro datum. Výchozí: rrrr-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
