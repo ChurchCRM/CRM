@@ -5178,11 +5178,6 @@ msgstr "查看人員頁面"
 
 #: 
 #, fuzzy
-msgid "Verify"
-msgstr "確認"
-
-#: 
-#, fuzzy
 msgid "Family has no emails to use"
 msgstr "家庭沒有電子郵件可使用"
 
@@ -14761,10 +14756,6 @@ msgid "Date Picker Format"
 msgstr "日期選擇器格式"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "日期選擇器佔位符"
-
-#: 
 msgid "Date Without Year"
 msgstr "不含年份的日期"
 
@@ -14795,10 +14786,6 @@ msgstr "檔案名稱日期格式"
 #: 
 msgid "Fully translated."
 msgstr "已完全翻譯。"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "日期輸入欄位中的提示文字。預設：yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"

@@ -5019,10 +5019,6 @@ msgid "View Person Page"
 msgstr "व्यक्ति पृष्ठ देखें"
 
 #: 
-msgid "Verify"
-msgstr "सत्यापित करें"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "परिवार के पास उपयोग के लिए कोई ईमेल नहीं है"
 
@@ -14600,10 +14596,6 @@ msgid "Date Picker Format"
 msgstr "दिनांक चयनकर्ता प्रारूप"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "दिनांक चयनकर्ता प्लेसहोल्डर"
-
-#: 
 msgid "Date Without Year"
 msgstr "वर्ष के बिना दिनांक"
 
@@ -14634,10 +14626,6 @@ msgstr "फ़ाइल नाम दिनांक प्रारूप"
 #: 
 msgid "Fully translated."
 msgstr "पूरी तरह अनुवादित।"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "दिनांक इनपुट में दिखाई देने वाला संकेत टेक्स्ट। डिफ़ॉल्ट: yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
