@@ -24,63 +24,54 @@ class MenuRenderer
         }
     }
 
-    private static function renderMenuItem(MenuItem $menuItem): void
+    private static function renderMenuItem(MenuItem $menuItem, bool $nested = false): void
     {
-        $isActive    = $menuItem->isActive();
-        $hasCounters = $menuItem->hasCounters();
+        $isActive = $menuItem->isActive();
+        $classes = ($nested ? 'dropdown-item' : 'nav-link') . ($isActive ? ' active' : '');
         ?>
-        <li class="nav-item<?= $isActive ? ' active' : '' ?>">
-            <div class="d-flex align-items-center nav-row">
-                <a href="<?= InputUtils::escapeAttribute($menuItem->getURI()) ?>"
-                   <?= $menuItem->isExternal() ?"target='_blank'" : '' ?>
-                   class="nav-link<?= $isActive ? ' active' : '' ?> flex-fill">
-                    <span class="nav-link-icon d-inline-block">
-                        <i class="fa <?= $menuItem->getIcon() ?>"></i>
-                    </span>
-                    <span class="nav-link-title"><?= InputUtils::escapeHTML($menuItem->getName()) ?></span>
-                </a>
-                <?php if ($hasCounters): self::renderMenuCounters($menuItem); endif; ?>
-            </div>
-        </li>
+        <?php if (!$nested): ?><li class="nav-item<?= $isActive ? ' active' : '' ?>"><?php endif; ?>
+            <a href="<?= InputUtils::escapeAttribute($menuItem->getURI()) ?>"
+               <?= $menuItem->isExternal() ? 'target="_blank"' : '' ?>
+               class="<?= $classes ?>"<?= $isActive ? ' aria-current="page"' : '' ?>>
+                <span class="nav-link-icon"><i class="fa <?= $menuItem->getIcon() ?>"></i></span>
+                <span class="nav-link-title"><?= InputUtils::escapeHTML($menuItem->getName()) ?></span>
+                <?php if ($menuItem->hasCounters()): self::renderMenuCounters($menuItem); endif; ?>
+            </a>
+        <?php if (!$nested): ?></li><?php endif; ?>
         <?php
     }
 
-    private static function renderSubMenuItem(MenuItem $menuItem): void
+    private static function renderSubMenuItem(MenuItem $menuItem, bool $nested = false): void
     {
-        $collapseId  = 'menu-' . ++self::$menuItemCounter;
-        $isOpen      = $menuItem->openMenu();
-        $hasCounters = $menuItem->hasCounters();
+        $menuId = 'menu-' . ++self::$menuItemCounter;
+        $isOpen = $menuItem->openMenu();
+        $toggleClass = $nested ? 'dropdown-item dropdown-toggle' : 'nav-link dropdown-toggle';
         ?>
-        <li class="nav-item">
-            <div class="d-flex align-items-center nav-row">
-                <a class="nav-link flex-fill"
-                   href="#<?= $collapseId ?>"
-                   data-bs-toggle="collapse"
-                   role="button"
-                   aria-expanded="<?= $isOpen ? 'true' : 'false' ?>"
-                   aria-controls="<?= $collapseId ?>">
-                    <span class="nav-link-icon d-inline-block">
-                        <i class="fa <?= $menuItem->getIcon() ?>"></i>
-                    </span>
-                    <span class="nav-link-title"><?= InputUtils::escapeHTML($menuItem->getName()) ?></span>
-                </a>
-                <?php if ($hasCounters): self::renderMenuCounters($menuItem); endif; ?>
-                <span class="nav-link-arrow me-2"><i class="fa fa-chevron-down" aria-hidden="true"></i></span>
-            </div>
-            <div class="collapse<?= $isOpen ? ' show' : '' ?>" id="<?= $collapseId ?>">
-                <ul class="navbar-nav ps-3">
-                    <?php foreach ($menuItem->getSubItems() as $menuSubItem) {
-                        if ($menuSubItem->isVisible()) {
-                            if ($menuSubItem->isMenu()) {
-                                self::renderSubMenuItem($menuSubItem);
-                            } else {
-                                self::renderMenuItem($menuSubItem);
-                            }
+        <?php if (!$nested): ?><li class="nav-item dropdown<?= $isOpen ? ' show' : '' ?>"><?php else: ?><div class="dropdown<?= $isOpen ? ' show' : '' ?>"><?php endif; ?>
+            <a class="<?= $toggleClass ?>"
+               href="#<?= $menuId ?>"
+               data-bs-toggle="dropdown"
+               data-bs-auto-close="false"
+               role="button"
+               aria-expanded="<?= $isOpen ? 'true' : 'false' ?>">
+                <?php if (!$nested): ?>
+                <span class="nav-link-icon"><i class="fa <?= $menuItem->getIcon() ?>"></i></span>
+                <?php endif; ?>
+                <span class="nav-link-title"><?= InputUtils::escapeHTML($menuItem->getName()) ?></span>
+                <?php if ($menuItem->hasCounters()): self::renderMenuCounters($menuItem); endif; ?>
+            </a>
+            <div class="dropdown-menu<?= $isOpen ? ' show' : '' ?>" id="<?= $menuId ?>">
+                <?php foreach ($menuItem->getSubItems() as $menuSubItem) {
+                    if ($menuSubItem->isVisible()) {
+                        if ($menuSubItem->isMenu()) {
+                            self::renderSubMenuItem($menuSubItem, true);
+                        } else {
+                            self::renderMenuItem($menuSubItem, true);
                         }
-                    } ?>
-                </ul>
+                    }
+                } ?>
             </div>
-        </li>
+        <?php if (!$nested): ?></li><?php else: ?></div><?php endif; ?>
         <?php
     }
 

@@ -51,59 +51,6 @@ html[data-bs-theme="dark"] {
   }
 }
 
-// Tabler styles the active item as `.nav-item.active > .nav-link`, but each menu row wraps its link, counters and chevron in `.nav-row`. Style the whole row so hover and active cover it all.
-.navbar-vertical .nav-row {
-  border-radius: var(--tblr-border-radius);
-
-  &:hover {
-    background: var(--tblr-hover-bg);
-  }
-
-  > .nav-link {
-    --tblr-nav-link-hover-bg: transparent;
-  }
-}
-
-.navbar-vertical .nav-item.active > .nav-row {
-  background: var(--tblr-navbar-active-bg);
-
-  > .nav-link {
-    --tblr-nav-link-icon-color: currentColor;
-    color: var(--tblr-navbar-active-color);
-    font-weight: var(--tblr-font-weight-medium);
-  }
-}
-
-// Sidebar folder chevron; rotates when the section is open.
-.navbar-vertical .nav-link {
-  .nav-link-title { flex: 1; }
-
-  .nav-link-arrow {
-    display: inline-flex;
-    align-items: center;
-    padding-left: 0.25rem;
-    flex-shrink: 0;
-    opacity: 0.4;
-    font-size: 0.65rem;
-    transition: transform 0.2s ease;
-  }
-
-  &[aria-expanded="true"] .nav-link-arrow {
-    transform: rotate(180deg);
-    opacity: 0.7;
-  }
-}
-
-.navbar-vertical .badge {
-  color: #fff;
-  font-weight: 600;
-}
-.navbar-vertical .badge.bg-warning,
-.navbar-vertical .badge.bg-info,
-.navbar-vertical .badge.bg-light {
-  color: #333; // dark text on light badges in both themes
-}
-
 select {
   color: var(--tblr-body-color);
 }
