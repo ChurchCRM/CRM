@@ -5035,10 +5035,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portuguese - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Especifique o nome da aplicação a ser exibido ao autenticar"
-
-#: 
 msgid "Review"
 msgstr "Rever"
 

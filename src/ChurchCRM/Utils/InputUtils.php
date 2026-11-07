@@ -230,17 +230,6 @@ class InputUtils
         return floatval(trim($sInput));
     }
 
-    public static function filterDate($sInput): string
-    {
-        // Attempts to take a date in any format and convert it to YYYY-MM-DD format
-        // Logel Philippe
-        if (empty($sInput)) {
-            return '';
-        } else {
-            return date('Y-m-d', strtotime(str_replace('/', '-', $sInput)));
-        }
-    }
-
     // Sanitizes user input as a security measure
     // Optionally, a filtering type and size may be specified.  By default, strip any tags from a string.
     public static function legacyFilterInput($sInput, $type = 'string', $size = 1)
@@ -258,7 +247,7 @@ class InputUtils
                 case 'float':
                     return self::filterFloat($sInput);
                 case 'date':
-                    return self::filterDate($sInput);
+                    return DateTimeUtils::normalizeDate($sInput);
                 default:
                     throw new \InvalidArgumentException('Invalid "type" for legacyFilterInput provided');
             }

@@ -107,12 +107,10 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             }
 
             if ($date !== '') {
-                $dateFmt = SystemConfig::getValue('sDatePickerFormat');
-                $parsed  = \DateTime::createFromFormat($dateFmt, $date, DateTimeUtils::getConfiguredTimezone());
-                if ($parsed === false || $parsed->format($dateFmt) !== $date) {
+                $date = DateTimeUtils::parseIsoDate($date) ?: DateTimeUtils::parseDatePicker($date, true);
+                if (!$date) {
                     return SlimUtils::renderErrorJSON($response, gettext('Not a valid date'), [], 400);
                 }
-                $date = $parsed->format('Y-m-d'); // normalise to ISO for DB storage
             } else {
                 $date = DateTimeUtils::getToday()->format('Y-m-d');
             }
@@ -202,12 +200,11 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             if (array_key_exists('date', $input)) {
                 $date = trim((string) $input['date']);
                 if ($date !== '') {
-                    $dateFmt = SystemConfig::getValue('sDatePickerFormat');
-                    $parsed  = \DateTime::createFromFormat($dateFmt, $date, DateTimeUtils::getConfiguredTimezone());
-                    if ($parsed === false || $parsed->format($dateFmt) !== $date) {
+                    $iso = DateTimeUtils::parseIsoDate($date) ?: DateTimeUtils::parseDatePicker($date, true);
+                    if (!$iso) {
                         return SlimUtils::renderErrorJSON($response, gettext('Not a valid date'), [], 400);
                     }
-                    $fr->setDate($parsed->format('Y-m-d'));
+                    $fr->setDate($iso);
                 }
             }
             $fieldErr = (new FundRaiserService())->applyFields($fr, $input);

@@ -4911,10 +4911,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugalisht - Portugali"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Specifikoni emrin e aplikacionit që do të shfaqet në aplikacionin e vërtetimit"
-
-#: 
 msgid "Review"
 msgstr "Rishiko"
 

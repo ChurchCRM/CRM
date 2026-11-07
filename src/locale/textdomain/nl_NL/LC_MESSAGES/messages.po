@@ -4889,10 +4889,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugees - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Geef de applicatienaam op die moet worden weergegeven in de authenticator-app"
-
-#: 
 msgid "Review"
 msgstr "Recensie"
 
