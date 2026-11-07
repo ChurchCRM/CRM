@@ -35,3 +35,13 @@ test('allows the DateTimeUtils entry points and unrelated date code', () => {
 test('does not flag DateTimeUtils itself', () => {
     assert.deepEqual(findViolations('src/ChurchCRM/Utils/DateTimeUtils.php', "strtotime($_POST['x'])"), []);
 });
+
+test('flags strtotime on a request date held in a variable', () => {
+    const source = "$startDate = $input['startDate'] ?? '';\nif (strtotime($startDate) === false) {}";
+    assert.equal(findViolations('src/SomePage.php', source).length, 1);
+});
+
+test('allows a request date held in a variable once DateTimeUtils reads it', () => {
+    const source = "$startDate = $input['startDate'] ?? '';\n$ts = strtotime(DateTimeUtils::parseIsoDate($startDate));";
+    assert.deepEqual(findViolations('src/SomePage.php', source), []);
+});
