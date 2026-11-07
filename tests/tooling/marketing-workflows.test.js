@@ -103,7 +103,7 @@ describe('marketing-capture action', () => {
 
     it('passes the locale to the shell through the environment', () => {
         assert.match(action, /LOCALE: \$\{\{ inputs\.locale \}\}/);
-        assert.match(action, /capture-all-locales\.sh "\$LOCALE"/);
+        assert.match(action, /capture-all-locales\.js "\$LOCALE"/);
         for (const line of shellLines(action, 8)) {
             assert.equal(line.includes('${{'), false, line);
         }
