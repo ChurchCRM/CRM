@@ -5107,10 +5107,6 @@ msgid "View Person Page"
 msgstr "Перейти к странице человека"
 
 #: 
-msgid "Verify"
-msgstr "Проверить"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "У семьи нет адресов электронной почты"
 
@@ -14706,10 +14702,6 @@ msgid "Date Picker Format"
 msgstr "Формат выбора даты"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Подсказка выбора даты"
-
-#: 
 msgid "Date Without Year"
 msgstr "Дата без года"
 
@@ -14740,10 +14732,6 @@ msgstr "Формат даты для имени файла"
 #: 
 msgid "Fully translated."
 msgstr "Полностью переведено."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Подсказка в полях ввода даты. По умолчанию: гггг-мм-дд"
 
 #: 
 msgid "Home/Work Phone Format"
