@@ -16,11 +16,35 @@ if (!image || !ports[flavor]) {
     process.exit(1);
 }
 
+let container = '';
+
+function removeContainer() {
+    if (!container) {
+        return;
+    }
+    const id = container;
+    const removed = spawnSync('docker', ['rm', '-f', id], { encoding: 'utf8' });
+    if (removed.error || removed.status !== 0) {
+        console.error(`container left running: ${id}`);
+        console.error(removed.stderr || removed.error?.message || '');
+        return;
+    }
+    container = '';
+}
+
+function stop(code) {
+    removeContainer();
+    process.exit(code);
+}
+
+process.on('SIGINT', () => stop(130));
+process.on('SIGTERM', () => stop(143));
+
 function docker(args, options = {}) {
     const result = spawnSync('docker', args, { encoding: 'utf8', ...options });
     if (result.error) {
         console.error(result.error.message);
-        process.exit(1);
+        stop(1);
     }
     return result;
 }
@@ -28,9 +52,12 @@ function docker(args, options = {}) {
 const inspect = docker([
     'run', '--rm', '--cap-drop', 'ALL', '--security-opt', 'no-new-privileges', image, 'sh', '-ec',
     `test "$(id -u)" -ne 0
-! command -v gcc
-! command -v g++
-! command -v make
+for tool in gcc g++ make; do
+  if command -v "$tool" >/dev/null 2>&1; then
+    echo "build tool present: $tool" >&2
+    exit 1
+  fi
+done
 test ! -d /usr/include/linux
 test ! -d /usr/local/include/php
 test -f /var/www/html/.htaccess
@@ -54,11 +81,7 @@ if (started.status !== 0) {
     process.stderr.write(started.stderr || '');
     process.exit(started.status || 1);
 }
-const container = started.stdout.trim();
-
-function cleanup() {
-    docker(['rm', '-f', container], { stdio: 'ignore' });
-}
+container = started.stdout.trim();
 
 const port = ports[flavor];
 for (let attempt = 1; attempt <= 30; attempt++) {
@@ -74,11 +97,11 @@ for (let attempt = 1; attempt <= 30; attempt++) {
                 '$context = stream_context_create(["http" => ["follow_location" => 0, "ignore_errors" => true]]); file_get_contents("http://127.0.0.1:8080/", false, $context); if (!preg_match("~^HTTP/\\S+ (200|302|303) ~", $http_response_header[0] ?? "")) { exit(1); }',
             ]);
             if (http.status !== 0) {
-                cleanup();
+                removeContainer();
                 process.exit(http.status || 1);
             }
         }
-        cleanup();
+        removeContainer();
         process.exit(0);
     }
     Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 1000);
@@ -87,5 +110,5 @@ for (let attempt = 1; attempt <= 30; attempt++) {
 const logs = docker(['logs', container]);
 process.stderr.write(logs.stdout || '');
 process.stderr.write(logs.stderr || '');
-cleanup();
+removeContainer();
 process.exit(1);

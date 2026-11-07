@@ -29,14 +29,15 @@ function zip(entries) {
         const raw = Buffer.from(entry.data ?? '');
         const data = entry.deflate ? zlib.deflateRawSync(raw) : raw;
         const method = entry.deflate ? 8 : 0;
+        const crc = entry.badCrc ? 1 : zlib.crc32(raw);
         const local = Buffer.concat([
             u32(0x04034b50), u16(20), u16(0), u16(method), u16(0), u16(0),
-            u32(0), u32(data.length), u32(raw.length), u16(name.length), u16(0), name, data,
+            u32(crc), u32(data.length), u32(raw.length), u16(name.length), u16(0), name, data,
         ]);
         locals.push(local);
         central.push(Buffer.concat([
             u32(0x02014b50), u16(20), u16(20), u16(0), u16(method), u16(0), u16(0),
-            u32(0), u32(data.length), u32(raw.length), u16(name.length), u16(0), u16(0),
+            u32(crc), u32(data.length), u32(raw.length), u16(name.length), u16(0), u16(0),
             u16(0), u16(0), u32(entry.externalAttr ?? 0), u32(offset), name,
         ]));
         offset += local.length;
@@ -97,6 +98,7 @@ describe('prepare-release-context', () => {
             'other/index.php',
             'churchcrm/Include/Config.php',
             'churchcrm/nested/.npmrc',
+            'churchcrm/Include/./Config.php',
         ]) {
             withTemp((root) => {
                 const archive = path.join(root, 'release.zip');
@@ -105,6 +107,16 @@ describe('prepare-release-context', () => {
                 assert.equal(fs.existsSync(path.join(root, 'context')), false);
             });
         }
+    });
+
+    it('rejects an entry whose CRC does not match its bytes', () => {
+        withTemp((root) => {
+            const archive = path.join(root, 'release.zip');
+            const entries = requiredEntries();
+            entries[0].badCrc = true;
+            fs.writeFileSync(archive, zip(entries));
+            assert.throws(() => prepare(archive, path.join(root, 'context')), /CRC/);
+        });
     });
 
     it('rejects symlinks', () => {

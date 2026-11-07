@@ -25,7 +25,7 @@ function render(files, profile, environment) {
         args.push('config', '--format', 'json');
         const env = {};
         for (const [key, value] of Object.entries(process.env)) {
-            if (!blockedPrefix.test(key)) {
+            if (!blockedPrefix.test(key) && !key.startsWith('CHURCHCRM_')) {
                 env[key] = value;
             }
         }

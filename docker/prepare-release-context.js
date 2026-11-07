@@ -34,14 +34,16 @@ function entries(buffer) {
             fail('Not a zip archive');
         }
         const method = buffer.readUInt16LE(offset + 10);
+        const crc = buffer.readUInt32LE(offset + 16);
         const compressedSize = buffer.readUInt32LE(offset + 20);
+        const uncompressedSize = buffer.readUInt32LE(offset + 24);
         const nameLength = buffer.readUInt16LE(offset + 28);
         const extraLength = buffer.readUInt16LE(offset + 30);
         const commentLength = buffer.readUInt16LE(offset + 32);
         const externalAttr = buffer.readUInt32LE(offset + 38);
         const localOffset = buffer.readUInt32LE(offset + 42);
         const name = buffer.toString('utf8', offset + 46, offset + 46 + nameLength);
-        found.push({ name, method, compressedSize, externalAttr, localOffset });
+        found.push({ name, method, crc, compressedSize, uncompressedSize, externalAttr, localOffset });
         offset += 46 + nameLength + extraLength + commentLength;
     }
     return found;
@@ -56,13 +58,16 @@ function payload(buffer, entry) {
     const extraLength = buffer.readUInt16LE(local + 28);
     const start = local + 30 + nameLength + extraLength;
     const data = buffer.subarray(start, start + entry.compressedSize);
-    if (entry.method === 0) {
-        return data;
-    }
+    let inflated = data;
     if (entry.method === 8) {
-        return zlib.inflateRawSync(data);
+        inflated = zlib.inflateRawSync(data);
+    } else if (entry.method !== 0) {
+        fail('Unsupported compression method');
     }
-    fail('Unsupported compression method');
+    if (inflated.length !== entry.uncompressedSize || zlib.crc32(inflated) !== entry.crc) {
+        fail('Archive entry failed its CRC');
+    }
+    return inflated;
 }
 
 function prepare(archivePath, destination) {
@@ -72,10 +77,14 @@ function prepare(archivePath, destination) {
     const buffer = fs.readFileSync(archivePath);
     const planned = [];
     for (const entry of entries(buffer)) {
-        if (path.posix.isAbsolute(entry.name) || entry.name.split('/').includes('..') || entry.name.includes('\\')) {
+        if (entry.name.includes('\\') || path.posix.isAbsolute(entry.name)) {
             fail('Unsafe archive path');
         }
-        const parts = entry.name.split('/').filter((part) => part !== '');
+        const normalized = path.posix.normalize(entry.name);
+        const parts = normalized.split('/').filter((part) => part !== '');
+        if (parts.includes('..')) {
+            fail('Unsafe archive path');
+        }
         if (parts.length === 0 || parts[0] !== 'churchcrm') {
             fail('Expected churchcrm/ release prefix');
         }
@@ -84,7 +93,7 @@ function prepare(archivePath, destination) {
             fail('Archive links and special files are not allowed');
         }
         if (parts.length > 1) {
-            planned.push({ entry, relative: parts.slice(1).join(path.sep), directory: entry.name.endsWith('/') });
+            planned.push({ entry, relative: parts.slice(1).join(path.sep), directory: normalized.endsWith('/') });
         }
     }
     const names = new Set(planned.filter((item) => !item.directory).map((item) => item.relative.split(path.sep).join('/')));

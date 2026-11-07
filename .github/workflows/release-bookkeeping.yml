@@ -156,7 +156,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          ref: master
+          # A dispatch on a pull request validates that revision. A release keeps using master.
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.sha || 'master' }}
 
       - name: Determine next version
         id: next_version

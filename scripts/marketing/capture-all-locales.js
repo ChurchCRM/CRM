@@ -12,15 +12,18 @@ const fs = require('fs');
 const path = require('path');
 
 const root = path.join(__dirname, '..', '..');
-const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-const npx = process.platform === 'win32' ? 'npx.cmd' : 'npx';
 const browserChannel = process.env.BROWSER_CHANNEL || '';
 const locales = process.argv.slice(2);
 const selected = locales.length > 0 ? locales : ['en', 'es', 'pt', 'zh', 'fr', 'ru', 'de', 'ar'];
+const english = selected.indexOf('en');
+if (english > 0) {
+    selected.splice(english, 1);
+    selected.unshift('en');
+}
 
-function runStep(name, command, args, env) {
+function runNpm(name, args, env) {
     console.error(`  ↳ ${name}`);
-    const result = spawnSync(command, args, {
+    const result = spawnSync('npm', args, {
         cwd: root,
         env: { ...process.env, ...env },
         stdio: 'inherit',
@@ -37,7 +40,17 @@ function playwright(name, args, locale) {
     if (browserChannel) {
         env.BROWSER_CHANNEL = browserChannel;
     }
-    runStep(name, npx, ['playwright', 'test', '--config=playwright/playwright.config.ts', ...args], env);
+    console.error(`  ↳ ${name}`);
+    const result = spawnSync('npx', ['playwright', 'test', '--config=playwright/playwright.config.ts', ...args], {
+        cwd: root,
+        env: { ...process.env, ...env },
+        stdio: 'inherit',
+        shell: process.platform === 'win32',
+    });
+    if (result.status !== 0) {
+        console.error(`❌ ${name} failed`);
+        process.exit(result.status || 1);
+    }
 }
 
 console.error(`📸 CRM #10048 — capturing ${selected.length} locale(s): ${selected.join(' ')}`);
@@ -48,19 +61,19 @@ console.error(`▶ [1/${selected.length}] ${first} — full install + capture`);
 console.error('  ↳ Removing old artifacts');
 fs.rmSync(path.join(root, 'playwright', 'artifacts'), { recursive: true, force: true });
 
-runStep('Tearing down old Docker CI environment', npm, ['run', 'docker:ci:new-system:down']);
+runNpm('Tearing down old Docker CI environment', ['run', 'docker:ci:new-system:down']);
 
-runStep('Installing Composer dependencies', npm, ['run', 'composer:install']);
-runStep('Building JavaScript', npm, ['run', 'build:webpack']);
-runStep('Starting Docker CI environment', npm, ['run', 'docker:ci:new-system:start']);
-runStep('Building signatures', npm, ['run', 'build:signatures']);
+runNpm('Installing Composer dependencies', ['run', 'composer:install']);
+runNpm('Building JavaScript', ['run', 'build:webpack']);
+runNpm('Starting Docker CI environment', ['run', 'docker:ci:new-system:start']);
+runNpm('Building signatures', ['run', 'build:signatures']);
 
 if (first === 'en') {
-    runStep('marketing:screenshots (en)', npm, ['run', 'marketing:screenshots'], {
+    runNpm('marketing:screenshots (en)', ['run', 'marketing:screenshots'], {
         CHURCHCRM_LOCALE: first,
         BROWSER_CHANNEL: browserChannel,
     });
-    runStep('Generating marketing videos', npm, ['run', 'marketing:videos']);
+    runNpm('Generating marketing videos', ['run', 'marketing:videos']);
 } else {
     playwright(`Capturing screenshots for ${first}`, ['--project=screenshots', '--grep', '@all-locales'], first);
     console.error('  ↳ Dropping unpublished video metadata');
@@ -78,10 +91,10 @@ selected.slice(1).forEach((locale, index) => {
 
 console.error('');
 console.error('▶ Validating captures');
-runStep('Validating captures', npm, ['run', 'marketing:check']);
+runNpm('Validating captures', ['run', 'marketing:check']);
 console.error('');
 console.error('▶ Regenerating manifest.json (once, across all locales)');
-runStep('Regenerating manifest', npm, ['run', 'marketing:manifest']);
+runNpm('Regenerating manifest', ['run', 'marketing:manifest']);
 console.error('');
 console.error('✅ Done. English captures plus key captures across the other locales — verify with:');
 console.error("   find playwright/artifacts/screenshots -name '*.png' | wc -l");
