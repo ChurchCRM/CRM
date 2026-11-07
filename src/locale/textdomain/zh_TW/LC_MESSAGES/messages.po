@@ -5030,11 +5030,6 @@ msgstr "葡萄牙語-葡萄牙"
 
 #: 
 #, fuzzy
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "指定要在驗證器應用程序中顯示的應用程序名稱"
-
-#: 
-#, fuzzy
 msgid "Review"
 msgstr "檢閱"
 
@@ -5180,11 +5175,6 @@ msgstr "查看家庭頁面"
 #, fuzzy
 msgid "View Person Page"
 msgstr "查看人員頁面"
-
-#: 
-#, fuzzy
-msgid "Verify"
-msgstr "確認"
 
 #: 
 #, fuzzy
@@ -14766,10 +14756,6 @@ msgid "Date Picker Format"
 msgstr "日期選擇器格式"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "日期選擇器佔位符"
-
-#: 
 msgid "Date Without Year"
 msgstr "不含年份的日期"
 
@@ -14800,10 +14786,6 @@ msgstr "檔案名稱日期格式"
 #: 
 msgid "Fully translated."
 msgstr "已完全翻譯。"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "日期輸入欄位中的提示文字。預設：yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25178,10 +25160,6 @@ msgstr "失去這個地址的人就沒有自己的電子郵件：只寄給本人
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "紀錄隱藏年齡的人絕不會顯示出生年份。"
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "會友入口於 %s 提出要求，將您的電子郵件地址從 %s 改為 %s。只有使用寄到 %s 的連結後，變更才會生效。"
 
 #: 
 msgid "A row is not in the expected form."

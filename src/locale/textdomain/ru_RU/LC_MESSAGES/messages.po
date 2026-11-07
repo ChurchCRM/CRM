@@ -4976,10 +4976,6 @@ msgid "Portuguese - Portugal"
 msgstr "Португальский - Португалия"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Укажите имя приложения, которое будет отображаться в приложении аутентификатора"
-
-#: 
 msgid "Review"
 msgstr "Обзор"
 
@@ -5109,10 +5105,6 @@ msgstr "Перейти к странице семьи"
 #: 
 msgid "View Person Page"
 msgstr "Перейти к странице человека"
-
-#: 
-msgid "Verify"
-msgstr "Проверить"
 
 #: 
 msgid "Family has no emails to use"
@@ -14710,10 +14702,6 @@ msgid "Date Picker Format"
 msgstr "Формат выбора даты"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Подсказка выбора даты"
-
-#: 
 msgid "Date Without Year"
 msgstr "Дата без года"
 
@@ -14744,10 +14732,6 @@ msgstr "Формат даты для имени файла"
 #: 
 msgid "Fully translated."
 msgstr "Полностью переведено."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Подсказка в полях ввода даты. По умолчанию: гггг-мм-дд"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25179,10 +25163,6 @@ msgstr "Человек, который его теряет, остаётся б�
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "У человека, в записи которого возраст скрыт, год рождения никогда не показывается."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "В Портале члена в %s запрошено изменение Вашего адреса электронной почты с %s на %s. Изменение произойдёт только при использовании ссылки, отправленной на %s."
 
 #: 
 msgid "A row is not in the expected form."

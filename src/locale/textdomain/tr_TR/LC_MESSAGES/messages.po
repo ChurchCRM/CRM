@@ -4919,10 +4919,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portekizce - Portekiz"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Authenticator uygulamasında görüntülenecek uygulama adını belirtin"
-
-#: 
 msgid "Review"
 msgstr "Gözden geçirmek"
 
@@ -5052,10 +5048,6 @@ msgstr "Aile Sayfasını Görüntüle"
 #: 
 msgid "View Person Page"
 msgstr "Kişi sayfasını görüntüle"
-
-#: 
-msgid "Verify"
-msgstr "Doğrulayın"
 
 #: 
 msgid "Family has no emails to use"
@@ -14635,10 +14627,6 @@ msgid "Date Picker Format"
 msgstr "Tarih Seçici Biçimi"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Tarih Seçici Yer Tutucu"
-
-#: 
 msgid "Date Without Year"
 msgstr "Yılsız Tarih"
 
@@ -14669,10 +14657,6 @@ msgstr "Dosya Adı Tarih Biçimi"
 #: 
 msgid "Fully translated."
 msgstr "Tamamen çevrildi."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Tarih alanlarında gösterilen ipucu metni. Varsayılan: yyyy-aa-gg"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25066,10 +25050,6 @@ msgstr "Adresi kaybeden kişinin artık kendine ait bir e-postası olmaz: yalnı
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "Kaydı yaşını gizleyen bir kişinin doğum yılı hiç gösterilmez."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Üye Portalı’nda saat %s’de e-posta adresinizin %s adresinden %s adresine değiştirilmesi istendi. Değişiklik yalnızca %s adresine gönderilen bağlantı kullanıldığında gerçekleşir."
 
 #: 
 msgid "A row is not in the expected form."

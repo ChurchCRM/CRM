@@ -4918,10 +4918,6 @@ msgid "Portuguese - Portugal"
 msgstr "פוטוגזית - פורטוגל"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "ציין את שם האפליקציה שיוצג באפליקציית האימות"
-
-#: 
 msgid "Review"
 msgstr "סקירה"
 
@@ -5050,10 +5046,6 @@ msgstr "צפה בדף משפחה"
 #: 
 msgid "View Person Page"
 msgstr "צפה בדף אדם"
-
-#: 
-msgid "Verify"
-msgstr "אמת"
 
 #: 
 msgid "Family has no emails to use"
@@ -14633,10 +14625,6 @@ msgid "Date Picker Format"
 msgstr "פורמט בורר תאריך"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "טקסט מציין מקום לבורר תאריך"
-
-#: 
 msgid "Date Without Year"
 msgstr "תאריך ללא שנה"
 
@@ -14667,10 +14655,6 @@ msgstr "פורמט תאריך לשם קובץ"
 #: 
 msgid "Fully translated."
 msgstr "מתורגם במלואו."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "טקסט עזר בשדות תאריך. ברירת מחדל: שנה-חודש-יום"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -24230,14 +24214,2958 @@ msgid "Repeat events could not be created. Check the application log for details
 msgstr "לא ניתן היה ליצור אירועים חוזרים. בדוק את יומן היישום לפרטים."
 
 #: 
+msgid "Confirm Password"
+msgstr "אישור סיסמה"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "הסיסמה שלך שונתה. כעת אפשר להתחבר עם הסיסמה החדשה."
+
+#: 
+msgid "1st"
+msgstr "הראשון"
+
+#: 
+msgid "2nd"
+msgstr "השני"
+
+#: 
+msgid "3rd"
+msgstr "השלישי"
+
+#: 
+msgid "4th"
+msgstr "הרביעי"
+
+#: 
+msgid "5th"
+msgstr "החמישי"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "לא ניתן להסיר גישת מנהל מהמנהל היחיד שיכול להתחבר"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "בחרו את השבוע בחודש, מהראשון עד החמישי"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "יוצר {{total}} אירועים, ב{{week}} {{day}} של כל חודש מ-{{first}} עד {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "יום בשבוע לא תקין"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "חודשי, ביום קבוע בשבוע"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "חודשים שאין בהם מופע חמישי מדולגים."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM חייב להיות מספר שלם מ-1 עד 5"
+
+#: 
+msgid "Week of the month"
+msgstr "שבוע בחודש"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "השבוע בחודש חייב להיות מ-1 עד 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s עד %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "מספר זיהוי המס של הקהילה (EIN) המודפס על דוחות התרומות"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "דוחות תרומות מונפקים למבוגרים במשק הבית. פנו למשרד הקהילה אם אתם זקוקים לדוח."
+
+#: 
+msgid "Download statement"
+msgstr "הורדת דוח"
+
+#: 
+msgid "Generated"
+msgstr "נוצר"
+
+#: 
+msgid "Goods and services"
+msgstr "טובין ושירותים"
+
+#: 
+msgid "My Giving"
+msgstr "התרומות שלי"
+
+#: 
+msgid "No contributions"
+msgstr "אין תרומות"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "לא נרשמו תרומות לתקופה זו."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "לא ניתנו טובין או שירותים בתמורה לתרומות אלה, מלבד הטבות דתיות בלתי מוחשיות."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "רשות. מודפס על דוחות התרומות."
+
+#: 
+msgid "Tax ID"
+msgstr "מספר זיהוי מס"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "מספר זיהוי מס (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "סכום הניתן לניכוי מס"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "זה דוח משק הבית. הוא כולל מתנות של המשפחה שלכם."
+
+#: 
+msgid "Total contributions"
+msgstr "סך התרומות"
+
+#: 
+msgid "Year-end statement"
+msgstr "דוח סוף שנה"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "דוח תרומות %d נשלח בדוא״ל למשפחה בהצלחה."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "דוח תרומות %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "התאימו את הטקסט שמופיע בדוחות התרומות (sTaxReport1, sTaxReport2 וכו׳)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "משפחת %s היקרה,\n"
+"\n"
+"מצורף לדוא״ל זה דוח התרומות %s שלכם מאת %s.\n"
+"\n"
+"לשאלות, פנו למשרד הקהילה.\n"
+"\n"
+"תודה על נדיבותכם."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "שליחת דוח תרומות %s בדוא״ל"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "מספרי מעטפות"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "הפקת דוחות תרומות"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "הפיקו דוחות לדוחות תרומות, מעקב התחייבויות וניתוח כספי."
+
+#: 
+msgid "Giving Reports"
+msgstr "דוחות נתינה"
+
+#: 
+msgid "Giving Statement"
+msgstr "דוח תרומות"
+
+#: 
+msgid "Giving Statements"
+msgstr "דוחות תרומות"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "שליחת דוח התרומות בדוא״ל נכשלה. בדקו את הגדרות שרת הדוא״ל."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "שלחו את המתנה הבאה בדואר אל %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "הדפסת דוח תרומות %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "לא ניתן לשלוח את דוח התרומות בדוא״ל: לא נמצאו נתוני תשלום לשנה זו."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "לא ניתן לשלוח את דוח התרומות בדוא״ל: למשפחה זו אין כתובת דוא״ל ברשומה."
+
+#: 
+msgid "Undesignated"
+msgstr "ללא ייעוד"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "ודאו ששם הקהילה, הכתובת ופרטי הקשר מופיעים בדוחות התרומות."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "התפקיד הוקצה כעת ל-%s, שקיבל אותו."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "התפקיד הוקצה כעת ל-%s, שטרם קיבל אותו."
+
+#: 
+msgid "Their reason: %s"
+msgstr "הסיבה שלהם: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "הצגת שיבוצים"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "עדיין נדרשים מתנדבים למופע זה: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "עדיין נדרשים מתנדבים לתפקיד זה: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "רשת נוכחות שבועית לכל כיתה. רשימות כיתה וספרי תמונות נמצאים בלוח הבקרה של בית הספר של יום ראשון ובדף כל כיתה."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "רשת נוכחות שבועית לשנת הלימודים, עמודה לכל יום ראשון"
+
+#: 
+msgid "Age %d"
+msgstr "גיל %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "יש לבחור לפחות קבוצה אחת כדי להפיק דף נוכחות."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "דף נוכחות"
+
+#: 
+msgid "Class List"
+msgstr "רשימת כיתה"
+
+#: 
+msgid "Download PDF"
+msgstr "הורדת PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "תקופת נעילה בדקות\n"
+"חשבון נעול נפתח מעצמו אחרי מספר הדקות הזה. ניסיונות התחברות כושלים מכתובת IP אחת נספרים באותה תקופה."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "מספר מרבי של התחברויות כושלות מכתובת IP אחת\n"
+"התחברויות כושלות ובקשות לאיפוס סיסמה מכתובת IP אחת נספרות למגבלה זו בתוך תקופת הנעילה. כשמגיעים אליה, ההתחברות מכתובת זו נדחית עד סוף התקופה.\n"
+"הגדירו אפס כדי לבטל את התכונה, למשל כשכולם מגיעים ל-ChurchCRM דרך כתובת מתווך אחת."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "מספר מרבי של התחברויות כושלות לפני נעילת חשבון משתמש.\n"
+"חשבון נעול נפתח מעצמו אחרי תקופת הנעילה, או מוקדם יותר כשמנהל מאפס את ההתחברויות הכושלות.\n"
+"התכונה מסייעת להגן מפני ניחוש סיסמאות אוטומטי.\n"
+"הגדירו אפס כדי לבטל את התכונה."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "דקות עד שהוא נפתח מעצמו: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "דף נוכחות של בית הספר של יום ראשון"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "ימי ראשון ללא שיעור אינם מופיעים בדף."
+
+#: 
+msgid "Database Upgrade"
+msgstr "שדרוג מסד הנתונים"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "מסד הנתונים מתעדכן. השאירו את הדף פתוח עד שהשדרוג יסתיים."
+
+#: 
+msgid "Family Labels"
+msgstr "תוויות משפחה"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – סה״כ"
+
+#: 
+msgid "Bill"
+msgstr "שטר"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "בחרו הפקדה או הזינו את שני תאריכי הדוח."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "בחרו הפקדה אחת כדי לסקור את התשלומים שלה או להדפיס את תלוש הבנק. הפקדה שנבחרה גוברת על טווח התאריכים."
+
+#: 
+msgid "Coin"
+msgstr "מטבע"
+
+#: 
+msgid "Deposit Report"
+msgstr "דוח הפקדה"
+
+#: 
+msgid "Download Report"
+msgstr "הורדת דוח"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "הזינו תאריכי דוח תקינים."
+
+#: 
+msgid "Invalid report filters."
+msgstr "מסנני דוח לא תקינים."
+
+#: 
+msgid "Invalid report options."
+msgstr "אפשרויות דוח לא תקינות."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "השאירו את המסננים ריקים כדי לכלול את כל התשלומים. ההגדרות חלות על הדוח, לא על תלוש הבנק."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "לא הוחזרו רשומות. התאימו את המסננים ונסו שוב."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "הכנה לבנק"
+
+#: 
+msgid "Preview Totals"
+msgstr "תצוגה מקדימה של סיכומים"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "הדפסת תלוש בנק"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "הדפיסו את ההפקדה שנבחרה במלואה, עם סיכומי מזומן ושיקים, דפי ספירה ושורות עדים. מסנני הדוח אינם נלקחים בחשבון. תשלומים אלקטרוניים נשארים בסיכום ואינם נכללים בסך תלוש הבנק הפיזי."
+
+#: 
+msgid "Review Payments"
+msgstr "סקירת תשלומים"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "סקרו תשלומים לתקופה, או הכינו הפקדה אחת לבנק."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "סקרו תשלומים, הורידו PDF או CSV, או הדפיסו תלוש בנק להפקדה אחת."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "בחרו הפקדה תקינה."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "בחרו הפקדה אחת כדי להדפיס תלוש בנק."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "תאריך הסיום של הדוח חייב להיות בתאריך ההתחלה או אחריו."
+
+#: 
+msgid "Total Cash"
+msgstr "סך המזומן"
+
+#: 
+msgid "Total Coin"
+msgstr "סך המטבעות"
+
+#: 
+msgid "Witness"
+msgstr "עד"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d מתנות ללא משפחה. אי אפשר לכלול אותן בדוח."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "%d הפקדות פתוחות מתוארכות לשנה זו. סגרו אותן כדי שכל מתנה תהיה סופית לפני שליחת הדוחות."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d תשלומים עדיין אינם על שום הפקדה."
+
+#: 
+msgid "Can be emailed"
+msgstr "ניתן לשליחה בדוא״ל"
+
+#: 
+msgid "Closing line"
+msgstr "שורת סיום"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "כל הפקדה שתאריכה בשנה זו סגורה."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "כל מתנה שייכת למשפחה."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "כל תשלום בשנה זו נמצא על הפקדה."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "הפקת דוחות מס"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "דוח תרומות (דוחות מס)"
+
+#: 
+msgid "Opening line"
+msgstr "שורת פתיחה"
+
+#: 
+msgid "Print and mail"
+msgstr "הדפסה ומשלוח בדואר"
+
+#: 
+msgid "Qty"
+msgstr "כמות"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "סקרו את השנה, ואז הדפיסו או שלחו בדוא״ל דוחות תרומות."
+
+#: 
+msgid "Signed by"
+msgstr "חתום על ידי"
+
+#: 
+msgid "Thank-you line"
+msgstr "שורת תודה"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "ודאו ששם הקהילה, הכתובת ופרטי הקשר מופיעים בדוחות המס."
+
+#: 
+msgid "Year-End Giving"
+msgstr "תרומות סוף שנה"
+
+#: 
+msgid "As of: %s"
+msgstr "נכון ל: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "לפחות תשלום משפחתי חיובי אחד ב-%d שנות הכספים שנבחרו, עד תאריך הסקירה: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "טבילה, בקשות לפנקס בוחרים, מגורים, מעמד מתקבלים, נוכחות, מעמד תקין וחריגים מקומיים יש לבדוק בנפרד במקום שבו התקנון דורש זאת. משך החברות אינו הוכחת נוכחות."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "בחרו סיווג קיים."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "בחרו לפחות סיווג אחד לסקירה."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "בחרו את הסיווגים שהקהילה שלכם משתמשת בהם. אין סיווג שנחשב כמעניק זכות הצבעה."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "הנהגת הקהילה חייבת לאשר זכאות לפי תקנון הקהילה. הרשימה מציגה רק אנשים שתואמים למסננים שנבחרו."
+
+#: 
+msgid "Classifications to review"
+msgstr "סיווגים לסקירה"
+
+#: 
+msgid "Classifications: %s"
+msgstr "סיווגים: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "אנשים שנפטרו, אנשים וסיווגים לא פעילים, ומשפחות ואנשים לא פעילים או הממתינים לסקירה אינם נכללים."
+
+#: 
+msgid "Download Review List"
+msgstr "הורדת רשימת סקירה"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "הזינו תאריך סקירה תקין בין 1900 ל-2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "הזינו מספרים שלמים בתוך הגבולות המוצגים."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "שנות כספים לבדיקה (0–100; 0 פירושו שאין דרישת תרומה)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "התרומות נרשמות לפי משפחה, לא לפי אדם. הפעילו זאת רק כשהתקנון מאפשר שתשלום משפחתי יעמוד בקריטריון זה. אין בכך הוכחה שכל אדם תרם. החלון כולל את שנת הכספים שנבחרה ומסתיים לא יאוחר מתאריך הסקירה."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "שנת הכספים האחרונה לכלול"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "גיל מינימלי (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "גיל מינימלי: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "משך חברות מינימלי בחודשים (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "משך חברות מינימלי: %d חודשים"
+
+#: 
+msgid "No donation requirement."
+msgstr "אין דרישת תרומה."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "אין אנשים שתואמים למסננים אלה. בדקו תאריכי לידה או חברות חסרים והתאימו את הקריטריונים."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "דרישת תרומה משפחתית רשות"
+
+#: 
+msgid "People matching filters"
+msgstr "אנשים שתואמים למסננים"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "אנשים שהושמטו כי חסרים תאריכים נדרשים"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "הכינו רשימה לסקירת הקהילה לפי סיווגים ומסנני גיל, חברות ותרומה משפחתית רשות."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "הכינו רשימה לסקירת הקהילה לפי התקנון שלכם."
+
+#: 
+msgid "Review date"
+msgstr "תאריך סקירה"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "השתמשו בתקנון הקהילה כדי לבחור מסננים, ואז תנו להנהגה המוסמכת לסקור את הרשימה. התאמה למסננים אינה קובעת זכאות להצבעה. הדוח אינו רושם זכאות ואינו מקיים בחירות."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "חברים בעלי זכות הצבעה — רשימת סקירה"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "אפס מבטל דרישה רשות. גיל דורש תאריך לידה מלא; משך חברות דורש תאריך חברות. אנשים שחסרים להם תאריכים נדרשים מושמטים ונספרים בנפרד. אנשים שנפטרו, אנשים וסיווגים לא פעילים, ומשפחות ואנשים לא פעילים או הממתינים לסקירה תמיד אינם נכללים; נעשה שימוש בסיווג ובסטטוס הנוכחיים, לא בסטטוס היסטורי."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "סכום לתשלום עבור %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "לא ניתן ליצור אחסון זמני פרטי ל-PDF בתיקייה שנבחרה."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "השאירו ריק כדי להשתמש בתיקייה הזמנית של המערכת. אחרת, הזינו תיקייה קיימת הניתנת לכתיבה ומוגנת מגישה מהאינטרנט."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "תיקייה זמנית ל-PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "האחסון הזמני ל-PDF חייב להיות פרטי וניתן לכתיבה."
+
+#: 
+msgid "Reporting"
+msgstr "דיווח"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "התיקייה הזמנית ל-PDF אינה קיימת או שאינה נגישה."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "התיקייה הזמנית ל-PDF חייבת להיות נתיב תיקייה מוחלט."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "מספר זיהוי מס של הקהילה (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "שורת סיום"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "שולט בטלמטריה רשות. כשלים בהתקנה ובשדרוג מסד הנתונים שולחים אבחון מוגבל ל-PostHog גם כשהטלמטריה כבויה. דוחות הכשל כוללים גרסאות תוכנה וסביבה ושגיאת מסד נתונים מסוננת, אך ללא מזהה התקנה או משפט SQL."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "אבחון התקנות ושדרוגי מסד נתונים שנכשלו"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "פרטי כשל בהתקנה ובשדרוג"
+
+#: 
+msgid "Open in browser window"
+msgstr "פתיחה בחלון הדפדפן"
+
+#: 
+msgid "Opening Line"
+msgstr "שורת פתיחה"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "טלמטריית שימוש רשות נשלחת רק כשהיא מופעלת. כשלי התקנה ושדרוג מסד נתונים תמיד שולחים אבחון מוגבל כדי לעזור לקהילה, גם אם בחרתם לא תודה. דוחות הכשל כוללים גרסאות תוכנה וסביבה ושגיאת מסד נתונים מסוננת, ללא מזהה התקנה או משפט SQL."
+
+#: 
+msgid "PDF Handling"
+msgstr "טיפול ב-PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "פלט PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "מצב טיפול ב-PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "שורת שאלות"
+
+#: 
+msgid "Save File dialog"
+msgstr "תיבת שמירת קובץ"
+
+#: 
+msgid "Signer"
+msgstr "חותם"
+
+#: 
+msgid "Statement Settings"
+msgstr "הגדרות דוח"
+
+#: 
+msgid "Statement Wording"
+msgstr "נוסח הדוח"
+
+#: 
+msgid "Tax Information"
+msgstr "פרטי מס"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "הטלמטריה נשלחת ל-PostHog בארצות הברית. דוחות כשל בהתקנה ובשדרוג נשלחים גם כשטלמטריה רשות כבויה."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "תאריך זה בוטל. אין צורך בפעולה נוספת מצידכם."
+
+#: 
+msgid "always sent"
+msgstr "נשלח תמיד"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "הסרת כותרת המכתב נכשלה"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "שמירת כותרת המכתב נכשלה"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "העלאת כותרת המכתב נכשלה"
+
+#: 
+msgid "Greeting"
+msgstr "ברכה"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "ברכת המכתב והחתימה"
+
+#: 
+msgid "Letterhead"
+msgstr "כותרת מכתב"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF או WebP. באנר רחב מתאים ביותר, למשל 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "מודפס בראש מכתבי PDF שמשתמשים בכותרת גרפית, כגון דוחות תרומות. בלעדיה, המכתבים מדפיסים את שם הקהילה ואת הכתובת."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "להסיר את כותרת המכתב? המכתבים ידפיסו את שם הקהילה ואת הכתובת."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "הגדירו את כותרת המכתב שמכתבי PDF מדפיסים"
+
+#: 
+msgid "Using the church name and address"
+msgstr "בשימוש בשם הקהילה ובכתובת"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "בשימוש בנתיב כותרת המכתב שהוגדר בהגדרות המערכת"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "נוסח, מספר זיהוי מס וטיפול ב-PDF לדוחות תרומות"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s בתור %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s היא כעת כתובת הדוא״ל שלך. אפשר להשתמש בה כדי להתחבר לפורטל החברים."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} נוספים"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "התבקש שינוי של כתובת הדוא״ל שלך"
+
+#: 
+msgid "A family"
+msgstr "משפחה"
+
+#: 
+msgid "A group"
+msgstr "קבוצה"
+
+#: 
+msgid "A ministry"
+msgstr "שירות"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "כתובת חדשה משתנה רק אחרי שמשתמשים בקישור שאנו שולחים אליה."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "אפשר להוסיף מפתח גישה רק בתוך %d דקות מההתחברות עם כתובת הדוא״ל. התנתקו, התחברו שוב עם הדוא״ל, ואז חזרו לכאן."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "מפתח גישה מחבר אתכם עם Face ID, טביעת אצבע או קוד PIN של המכשיר, בלי קוד בדוא״ל."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "נוסף מפתח גישה להתחברות שלכם לפורטל החברים"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "נוסף מפתח גישה להתחברות שלכם לפורטל החברים ב-%1$s בתאריך %2$s, מ-%3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "נוסף מפתח גישה להתחברות שלכם לפורטל החברים ב-%1$s בתאריך %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "אדם שמאבד אותה נשאר בלי דוא״ל משלו: דואר שנשלח אליו בלבד, כגון דוא״ל לקבוצה, מדולג, ומחבר הדוא״ל מציין זאת."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "אדם שהרשומה שלו מסתירה את גילו לעולם אינו מציג שנת לידה."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "שורה אינה בצורה הצפויה."
+
+#: 
+msgid "A team"
+msgstr "צוות"
+
+#: 
+msgid "Add a passkey"
+msgstr "הוספת מפתח גישה"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "הוסיפו מפתח גישה רק בטלפון או במחשב שלכם, לעולם לא במכשיר משותף או ציבורי."
+
+#: 
+msgid "Add an email"
+msgstr "הוספת דוא״ל"
+
+#: 
+msgid "Added %s"
+msgstr "נוסף %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "עקיפות מנהל"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "מבוגר במשפחת %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "מבוגר במשפחה"
+
+#: 
+msgid "All events"
+msgstr "כל האירועים"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "אפשר התחברות כאדם"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "אפשר שינויים במהלך התחברות כאדם"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "אפשרו שינויים כשמנהל משתמש בהתחברות כאדם. כשכבוי, ההתחברות כאדם היא לקריאה בלבד."
+
+#: 
+msgid "Already held by a family member"
+msgstr "כבר מוחזק על ידי בן משפחה"
+
+#: 
+msgid "Also used by"
+msgstr "בשימוש גם על ידי"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "מנהל יכול לתת כל הרשאה לאדם אחד בדף של אותו אדם. ״עקיפות מנהל״ מוצג אז כאן, עם מספר האנשים שקיבלו אותה."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "אדם אחר כבר משתמש בכתובת זו"
+
+#: 
+msgid "Applies to"
+msgstr "חל על"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "אשרו או דחו בקשות למחליף לצוות מתנדבים."
+
+#: 
+msgid "Ask for a new email"
+msgstr "בקשו דוא״ל חדש"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "הסמכות ניתנת לאדם, לא לכניסה, ולכן אפשר להעניק אותה לפני שיש לו חשבון. אדם שמתחבר רק לפורטל החברים ממשיך לראות רק את לוח הזמנים שלו עד שמנהל נותן לו חשבון צוות."
+
+#: 
+msgid "Awaiting review"
+msgstr "ממתין לסקירה"
+
+#: 
+msgid "Back to sign-in"
+msgstr "חזרה להתחברות"
+
+#: 
+msgid "Browse the full directory"
+msgstr "עיון במדריך המלא"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "יכול להתחבר לפורטל החברים"
+
+#: 
+msgid "Can sign in?"
+msgstr "יכול להתחבר?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "לא ניתן לבטל התחברות למנהל היחיד שיכול להתחבר."
+
+#: 
+msgid "Cannot sign in"
+msgstr "לא ניתן להתחבר"
+
+#: 
+msgid "Change family details"
+msgstr "שינוי פרטי משפחה"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "שנו את כתובת המשפחה ופרטי הקשר, והוסיפו בן משפחה לסקירה."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "לשנות את השם, פרטי הקשר והתמונה שלהם."
+
+#: 
+msgid "Changed"
+msgstr "שונה"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "שונה אחרי שהאדם התחבר"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "שונה על ידי ייבוא אחרי שהאדם התחבר"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "שונה על ידי הצוות אחרי שהאדם התחבר"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "שונה דרך ה-API אחרי שהאדם התחבר"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "השינויים כבויים במהלך התחברות כאדם."
+
+#: 
+msgid "Changes needed"
+msgstr "נדרשים שינויים"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "השינויים נשמרים תוך כדי ביצוע."
+
+#: 
+msgid "Check your email"
+msgstr "בדקו את הדוא״ל"
+
+#: 
+msgid "Choose a permission"
+msgstr "בחרו הרשאה"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "בחרו הרשאה, למה היא מיועדת ואת היום האחרון שלה, וציינו למה."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "בחרו תמונה או צלמו סלפי"
+
+#: 
+msgid "Choose a theme"
+msgstr "בחרו ערכת נושא"
+
+#: 
+msgid "Choose at least one row."
+msgstr "בחרו לפחות שורה אחת."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "בחרו לכל היותר %d שורות בכל פעם."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "בחרו מהרשימה כיצד מוצגים תאריכים."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "בחרו את היום האחרון של הרשאה זו."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "בחרו למה מיועדת ההרשאה."
+
+#: 
+msgid "Choose yes or no."
+msgstr "בחרו כן או לא."
+
+#: 
+msgid "Church Office"
+msgstr "משרד הקהילה"
+
+#: 
+msgid "Church country"
+msgstr "מדינת הקהילה"
+
+#: 
+msgid "Church default: %s"
+msgstr "ברירת המחדל של הקהילה: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "התחברות מנהיג קהילה"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "סיווגים שחבריהם רשאים להתחבר לפורטל החברים, כרשימת מזהי סיווג מופרדת בפסיקים."
+
+#: 
+msgid "Clear selection"
+msgstr "ניקוי הבחירה"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "קודים, הפעלות ומכשירים"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "אישור כתובת דוא״ל"
+
+#: 
+msgid "Confirm email address"
+msgstr "אישור כתובת דוא״ל"
+
+#: 
+msgid "Confirm family details"
+msgstr "אישור פרטי משפחה"
+
+#: 
+msgid "Confirm selected"
+msgstr "אישור הנבחרים"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "אשרו דוא״ל זה רק אחרי שבדקתם, פנים אל פנים או בטלפון, שזו הכתובת של האדם עצמו. לאחר האישור אפשר להשתמש בה כדי להתחבר לפורטל החברים."
+
+#: 
+msgid "Confirm your email address"
+msgstr "אשרו את כתובת הדוא״ל שלכם"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "אשרו את כתובת הדוא״ל החדשה"
+
+#: 
+msgid "Confirmed"
+msgstr "מאושר"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "יש לכתוב תאריכים בפורמט YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "החלטה על בקשות למחליף"
+
+#: 
+msgid "Device"
+msgstr "מכשיר"
+
+#: 
+msgid "Device remembered"
+msgstr "המכשיר נזכר"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "מכשירים ומפתחות גישה"
+
+#: 
+msgid "Directory classifications"
+msgstr "סיווגי המדריך"
+
+#: 
+msgid "Directory section"
+msgstr "מקטע המדריך"
+
+#: 
+msgid "Disable sign-in"
+msgstr "ביטול התחברות"
+
+#: 
+msgid "Do not show"
+msgstr "אל תציגו"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "כל אחד מהם זקוק גם לדוא״ל משלו שאף אחד אחר אינו משתמש בו."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "כל דוא״ל התחברות פועל פעם אחת, לזמן מוגבל, ודוא״ל חדש יותר מחליף אותו."
+
+#: 
+msgid "Edit my details"
+msgstr "עריכת הפרטים שלי"
+
+#: 
+msgid "Email address changed"
+msgstr "כתובת הדוא״ל שונתה"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "כתובת הדוא״ל שהוקלדה: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "כתובות דוא״ל לאישור: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "הדוא״ל שונה"
+
+#: 
+msgid "Email code"
+msgstr "קוד בדוא״ל"
+
+#: 
+msgid "Email confirmed"
+msgstr "הדוא״ל אושר"
+
+#: 
+msgid "Email link"
+msgstr "קישור בדוא״ל"
+
+#: 
+msgid "Email me a code"
+msgstr "שלחו לי קוד בדוא״ל"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "שלחו לי קישור אישור בדוא״ל"
+
+#: 
+msgid "Email needs attention"
+msgstr "הדוא״ל דורש טיפול"
+
+#: 
+msgid "Email problem"
+msgstr "בעיית דוא״ל"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "קוד ההתחברות והקישור שנשלחו בדוא״ל בוטלו"
+
+#: 
+msgid "Emailed verification link"
+msgstr "קישור אימות שנשלח בדוא״ל"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "כתובות דוא״ל שאושרו: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "הפעלת התחברות"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "לסיים כל הפעלה של אדם זה בפורטל החברים ולשכוח את המכשירים הזכורים שלו? מפתחות הגישה נשארים, כך שהוא יכול להתחבר שוב."
+
+#: 
+msgid "Ended %s"
+msgstr "הסתיים %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "הסתיים בגלל שינוי בהתחברות שלהם"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "הסתיים כשהתחברות החברים כובתה"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "הזינו מספר שלם מ-%1$d עד %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "הזינו את כתובת הדוא״ל שלכם."
+
+#: 
+msgid "Every kind"
+msgstr "כל סוג"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "כל התחברות חבר, סירוב ושינוי בהתחברות, מהחדש לישן. הוא לעולם אינו שומר קוד, קישור או מפתח גישה."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "כולם ברשימה, לפי סדר הא״ב, עם תיבת חיפוש."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "כל מי שכללי ההתחברות מאפשרים לו להיכנס יכול אז להתחבר לפורטל החברים עם הדוא״ל שלו."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "כל מי שהתחבר לפורטל החברים ב-30 הימים האחרונים, מהחדש לישן."
+
+#: 
+msgid "Everywhere"
+msgstr "בכל מקום"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "משפחות שחבר אישר ב-30 הימים האחרונים, מפורטל החברים או מקישור האימות שנשלח בדוא״ל."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "משפחות שאושרו, 30 הימים האחרונים"
+
+#: 
+msgid "Family details confirmed"
+msgstr "פרטי המשפחה אושרו"
+
+#: 
+msgid "Family email"
+msgstr "דוא״ל המשפחה"
+
+#: 
+msgid "Family emails not moved"
+msgstr "כתובות דוא״ל של משפחה שלא הועברו"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "תפקידים במשפחה שחבריהם רשאים להתחבר לפורטל החברים, כרשימת מזהי תפקיד מופרדת בפסיקים."
+
+#: 
+msgid "Find someone"
+msgstr "מציאת אדם"
+
+#: 
+msgid "Fix by hand"
+msgstr "תיקון ידני"
+
+#: 
+msgid "Fix shared emails"
+msgstr "תיקון כתובות דוא״ל משותפות"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "מהתחברות צוות"
+
+#: 
+msgid "Give a permission"
+msgstr "מתן הרשאה"
+
+#: 
+msgid "Give a portal permission"
+msgstr "מתן הרשאת פורטל"
+
+#: 
+msgid "Give each person their own email"
+msgstr "תנו לכל אדם דוא״ל משלו"
+
+#: 
+msgid "Give permission"
+msgstr "מתן הרשאה"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "ניתן על ידי %1$s עד %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "ניתן על ידי %s"
+
+#: 
+msgid "Given to"
+msgstr "ניתן ל"
+
+#: 
+msgid "Given to Everyone"
+msgstr "ניתן לכולם"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "ניתן, אך אינו בתוקף"
+
+#: 
+msgid "Go to sign in"
+msgstr "מעבר להתחברות"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "מעבר לפורטל החברים"
+
+#: 
+msgid "Has signed in"
+msgstr "התחבר"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "התחבר: ההפעלות והמכשירים שלו מסתיימים"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "זה הקוד שלכם להתחברות לפורטל החברים. הקלידו אותו בדף ההתחברות, בדפדפן שבו ביקשתם אותו. או לחצו על הכפתור כדי להתחבר במכשיר זה."
+
+#: 
+msgid "Hide Permissions"
+msgstr "הסתרת הרשאות"
+
+#: 
+msgid "How"
+msgstr "כיצד"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "כמה הודעות דוא״ל להתחברות לפורטל החברים כתובת IP אחת יכולה לבקש בשעה. הגדירו 0 ללא מגבלה, למשל כשכולם מגיעים ל-ChurchCRM דרך כתובת אחת."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "כמה ימים מכשיר נשאר מחובר לפורטל החברים אחרי שהחבר בוחר להישאר מחובר. הגדירו 0 כדי להסיר את האפשרות."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "כמה דקות של חוסר פעילות מסיימות הפעלה בפורטל החברים."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "כמה דקות קוד וקישור להתחברות לפורטל החברים נשארים בתוקף."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "זמן חוסר פעילות (דקות)"
+
+#: 
+msgid "Idle too long"
+msgstr "חוסר פעילות ארוך מדי"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "אם %1$s היא הכתובת החדשה שלכם, השתמשו בכפתור למטה כדי לאשר אותה. עד שהיא מאושרת, אי אפשר להשתמש בה להתחברות. הקישור פועל פעם אחת, עד %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "אם אפשר להשתמש בכתובת זו להתחברות, שלחנו לכם קוד בדוא״ל. לא הגיע אחרי כמה דקות? פנו למשרד הקהילה."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "אם לא הוספתם אותו, הסירו אותו בדף ההתחברות והמכשירים ופנו למשרד הקהילה."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "אם לא ביקשתם שינוי זה, פנו למשרד הקהילה."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "אם לא ביקשתם זאת, פנו למשרד הקהילה."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "ייתכן שפג תוקפו או שכבר נעשה בו שימוש. אם אתם זקוקים לעזרה, פנו למשרד הקהילה."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "התוסף שלו אינו מותקן"
+
+#: 
+msgid "Jump to a letter"
+msgstr "קפיצה לאות"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "השאירו אותי מחובר (ימים)"
+
+#: 
+msgid "Keeps it"
+msgstr "שומר אותה"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "סוג דוא״ל לא מאושר"
+
+#: 
+msgid "Last day"
+msgstr "היום האחרון"
+
+#: 
+msgid "Last used"
+msgstr "שימוש אחרון"
+
+#: 
+msgid "Last used %s"
+msgstr "שימוש אחרון %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "מנהיג של %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "אפשרו למנהלים לפתוח את פורטל החברים של אדם כאדם זה, מתפריט הפעולות של האדם, כשהתחברות החברים פועלת."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "אפשרו לחברים להוסיף מפתחות גישה ולהתחבר איתם לפורטל החברים."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "אפשרו לחברים להתחבר לפורטל החברים עם כתובת הדוא״ל שלהם. אפשר להפעיל זאת רק כששליחת דוא״ל פועלת."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "אפשרו לחברים להתחבר עם הדוא״ל שלהם"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "משך תוקף הקישור והקוד (דקות)"
+
+#: 
+msgid "Login as %s"
+msgstr "התחברות בתור %s"
+
+#: 
+msgid "Login as Person"
+msgstr "התחברות כאדם"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "לא ניתן היה להתחיל התחברות כאדם."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "ההתחברות כאדם הסתיימה: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "היסטוריית התחברות כאדם"
+
+#: 
+msgid "Login as Person started"
+msgstr "התחברות כאדם התחילה"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "התחברות כאדם הופסקה"
+
+#: 
+msgid "Look up anyone"
+msgstr "חיפוש כל אדם"
+
+#: 
+msgid "Loses it"
+msgstr "מאבד אותה"
+
+#: 
+msgid "Manage a team"
+msgstr "ניהול צוות"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "ניהול ההתחברות והמכשירים שלי"
+
+#: 
+msgid "Matches: %s"
+msgstr "התאמות: %s"
+
+#: 
+msgid "May sign in"
+msgstr "רשאי להתחבר"
+
+#: 
+msgid "May sign in now"
+msgstr "רשאי להתחבר כעת"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "קוד התחברות לפורטל החברים"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "הודעת התחברות לפורטל החברים"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "התחברויות ופעילות בפורטל החברים, לחברים ולצוות שפותח את הפורטל מהתחברות הצוות."
+
+#: 
+msgid "Member sign-in"
+msgstr "התחברות חברים"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "התחברות חברים שולחת לכל אדם קוד בדוא״ל, ולכן דוא״ל (SMTP) חייב לפעול לפני ההפעלה."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "התחברות חברים כבויה"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "התחברות חברים כבויה עבור הקהילה."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "התחברות חברים כבויה."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "התחברות חברים עדיין אינה זמינה. פנו למשרד הקהילה."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "התחברות חברים לעולם אינה מכניסה אנשים שנפטרו, לא פעילים, במשפחה לא פעילה, הממתינים לסקירה או שמופעל אצלם ביטול התחברות. הבחירות האלה קובעות מי עוד רשאי."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "התחברות חברים שולחת לכל חבר קוד בדוא״ל, ולכן אפשר להפעיל אותה רק כש-ChurchCRM יכול לשלוח דוא״ל. הפעילו דוא״ל והגדירו את שרת הדואר תחילה."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "חברים רואים את דף היומן כל עוד לפחות יומן אחד פועל."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "חברים מקלידים לפחות %d אותיות של שם ורואים עד %d התאמות. הרשימה המלאה לעולם אינה מוצגת."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "חברים שמחוברים כעת מנותקים, ואף אחד אינו יכול להתחבר עם הדוא״ל שלו עד שהתחברות החברים תופעל שוב."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "חברים עם סיווגים אלה מוצאים את המדריך בתפריט פורטל החברים."
+
+#: 
+msgid "Minimum age"
+msgstr "גיל מינימלי"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "ניסיונות נוספים עם כתובת זו בשעה הקרובה לא ישלחו הודעה נוספת."
+
+#: 
+msgid "Moved from the family email"
+msgstr "הועבר מדוא״ל המשפחה"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "הועבר לראש משק הבית"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "הועבר לבן או בת הזוג"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "חדשים בקהילה שלנו? ספרו לנו על המשפחה שלכם ונפנה אליכם כדי לקבל את פניכם."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "אין עדיין הפעלות של התחברות כאדם."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "אין תאריך לידה, ואינו ראש משק בית או בן או בת זוג"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "אין יומן פועל, ולכן חברים אינם רואים את דף היומן."
+
+#: 
 msgid "No changes"
 msgstr "אין שינויים"
+
+#: 
+msgid "No changes made."
+msgstr "לא בוצעו שינויים."
+
+#: 
+msgid "No family role"
+msgstr "אין תפקיד במשפחה"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "אין ראש משק בית או בן או בת זוג שיכול לקבל את דוא״ל המשפחה."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "אין ראש משק בית או בן או בת זוג שחולק אותה"
+
+#: 
+msgid "No match"
+msgstr "אין התאמה"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "אף אחד עדיין אינו תואם לכלל ההתחברות. סמנו עוד תפקידים במשפחה או סיווגים, או הורידו את הגיל המינימלי."
+
+#: 
+msgid "No passkey was added."
+msgstr "לא נוסף מפתח גישה."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "לא נעשה שימוש במפתח גישה. נסו שוב, או התחברו עם כתובת הדוא״ל."
+
+#: 
+msgid "No person has this email"
+msgstr "לאף אדם אין דוא״ל זה"
+
+#: 
+msgid "No personal email"
+msgstr "אין דוא״ל אישי"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "אין כתובות דוא״ל משותפות שמונעות מאף אחד להתחבר."
+
+#: 
+msgid "No such person"
+msgstr "אין אדם כזה"
+
+#: 
+msgid "No, thanks"
+msgstr "לא, תודה"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "אף אחד אינו יכול להתחבר עם דוא״ל אישי ששני אנשים הרשאים להתחבר חולקים. לכתובת משותפת בתוך משפחה אחת, ראש משק הבית שומר אותה, ואחרת בן או בת הזוג (המבוגר תחילה). כל השאר שחולקים אותה מאבדים אותה. בטלו סימון של כל כתובת שאתם רוצים לתקן בדרך אחרת."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "אף אחד אינו יכול להתחבר עדיין: סמנו לפחות סיווג אחד תחת מי רשאי להתחבר."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "אף אחד אינו יכול להתחבר עדיין: סמנו לפחות תפקיד אחד במשפחה ולפחות סיווג אחד תחת מי רשאי להתחבר."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "אף אחד אינו יכול להתחבר עדיין: סמנו לפחות תפקיד אחד במשפחה תחת מי רשאי להתחבר."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "אף אחד במדריך אינו תואם לשם זה."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "אף אחד עדיין אינו רשום במדריך."
+
+#: 
+msgid "Not ended"
+msgstr "לא הסתיים"
+
+#: 
+msgid "Not moved"
+msgstr "לא הועבר"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "לא בטוחים איזה דוא״ל יש לנו? פנו למשרד הקהילה."
+
+#: 
+msgid "Not yet"
+msgstr "עדיין לא"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "צוין בציר הזמן של המשפחה"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "מתוכם, אנשים שהתחברו: {{total}}. הם מנותקים בכל מקום, והכתובת מקבלת הודעה."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "כבוי לכולם: ״%s״ כבוי"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "כבוי לכולם: ניהול המתנדבים אינו מוגדר ל-V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "כבוי לכולם: התכונה שלו כבויה"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "כבוי לכולם: התוסף שלו כבוי"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "כבוי לכולם: אין יומן המשותף עם חברים"
+
+#: 
+msgid "Office list"
+msgstr "רשימת המשרד"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "לאחר האישור אפשר להשתמש בה כדי להתחבר לפורטל החברים."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "אפשר לבחור רק כתובות שאתם רשאים לאשר."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "רק מנהלים רואים את הסיבה."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "רק מנהל יכול לשנות את הדוא״ל של אדם שיש לו חשבון צוות או הרשאות פורטל."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "רק מנהל יכול לאשר דוא״ל שהחליף דוא״ל שהאדם התחבר איתו."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "רק מנהל יכול לאשר את הדוא״ל של אדם שיש לו חשבון צוות או הרשאות פורטל."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "רק מנהל יכול לתקן כתובת זו: מישהו שחולק אותה יש לו חשבון צוות או הרשאות פורטל."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "רק מבוגר במשפחה שלכם יכול לאשר פרטים אלה. פנו למשרד הקהילה."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "אשרו רק כתובות שאתם יודעים ששייכות לאותו אדם. כל מי שקורא כתובת יכול להתחבר כאדם שלה."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "רק אנשים חיים עם דוא״ל משלהם יכולים להיות ברשימת המשרד."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "אפשר להוסיף רק אנשים עם דוא״ל משלהם."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "טלמטריה רשות עשויה לכלול נתיבי דפים, אזור פעיל, גרסת CRM, גרסת PHP, משפחת OS, המדינה מהגדרות פרטי הקהילה, ומזהה התקנה אקראי. דוחות כשל אינם כוללים את מזהה ההתקנה. הנתונים נשלחים ל-PostHog בארצות הברית."
+
+#: 
+msgid "Passkey"
+msgstr "מפתח גישה"
+
+#: 
+msgid "Passkey added"
+msgstr "מפתח גישה נוסף"
+
+#: 
+msgid "Passkey removed"
+msgstr "מפתח הגישה הוסר"
+
+#: 
+msgid "Passkeys"
+msgstr "מפתחות גישה"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "מפתחות הגישה כבויים."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "אי אפשר להשתמש במפתחות גישה כאן."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "אי אפשר להשתמש במפתחות גישה באתר זה עדיין. פנו למשרד הקהילה."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "מפתחות גישה זקוקים לשם מארח, לא לכתובת IP, בכתובת האתר."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "מפתחות גישה זקוקים לחיבור מאובטח (HTTPS) לאתר זה."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "מפתחות גישה זקוקים לכך שכתובת האתר תוגדר ב-Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "מפתחות גישה זקוקים לכך שהאתר יוגש ב-HTTPS. לחברים לא מוצעים מפתחות גישה עד שזה כך."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "מפתחות הגישה פועלים רק ב-%s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "מפתחות גישה: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "אנשים שההגדרות השמורות מאפשרות להם להיכנס: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "אנשים לשלוח אליהם דוא״ל כשמישהו לא הצליח להתחבר לפורטל החברים"
+
+#: 
+msgid "People who hold it"
+msgstr "אנשים שמחזיקים בה"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "אנשים שמאבדים כתובת: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "אנשים שאיבדו כתובת: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "אנשים שרשאים להתחבר: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "אנשים שהיו מתחברים לפורטל החברים: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "אנשים עם סיווגים אלה מופיעים במדריך. המספר הוא כמה אנשים פעילים יש בכל סיווג."
+
+#: 
+msgid "People with this email: %s"
+msgstr "אנשים עם דוא״ל זה: %s"
+
+#: 
+msgid "Person %d"
+msgstr "אדם %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "בחרו סיווגים מהרשימה."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "בחרו תפקידים במשפחה מהרשימה."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "בחרו אנשים לרשימת המשרד."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "בחרו שפה מהרשימה."
+
+#: 
+msgid "Portal permission given"
+msgstr "ניתנה הרשאת פורטל"
+
+#: 
+msgid "Portal permission removed"
+msgstr "הרשאת הפורטל הוסרה"
+
+#: 
+msgid "Portal permissions"
+msgstr "הרשאות פורטל"
+
+#: 
+msgid "Portal sign-in"
+msgstr "התחברות לפורטל"
+
+#: 
+msgid "Problem"
+msgstr "בעיה"
+
+#: 
+msgid "Reason"
+msgstr "סיבה"
+
+#: 
+msgid "Reason: %s"
+msgstr "סיבה: %s"
+
+#: 
+msgid "Refused"
+msgstr "סורב"
+
+#: 
+msgid "Register your family"
+msgstr "רישום המשפחה שלכם"
+
+#: 
+msgid "Remembered device"
+msgstr "מכשיר זכור"
+
+#: 
+msgid "Remembered device removed"
+msgstr "המכשיר הזכור הוסר"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "מכשירים זכורים: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "הסרת כתובות דוא״ל"
+
+#: 
+msgid "Remove this passkey"
+msgstr "הסרת מפתח גישה זה"
+
+#: 
+msgid "Remove this permission"
+msgstr "הסרת הרשאה זו"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "הוסר מ: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "הוחלף אחרי התחברות"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "הוחלף על ידי התחברות אחרת"
+
+#: 
+msgid "Result"
+msgstr "תוצאה"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "ניהול צוות מתנדבים: תפקידים, מתנדבים, לוחות זמנים, איוש וספירות."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "ציינו למה ההתחברות מבוטלת."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "ציינו למה ניתנת הרשאה זו."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "חפשו כל אדם ברשומות. כל שורה מציינת אם הוא רשאי להתחבר לפורטל החברים, ואם לא, למה."
+
+#: 
+msgid "Search method"
+msgstr "שיטת חיפוש"
+
+#: 
+msgid "Search only"
+msgstr "חיפוש בלבד"
+
+#: 
+msgid "See family contact details"
+msgstr "צפייה בפרטי הקשר של המשפחה"
+
+#: 
+msgid "See my family"
+msgstr "צפייה במשפחה שלי"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "לראות את פורטל החברים כפי שהאדם הזה רואה אותו? דפי הצוות נשארים סגורים עד שלוחצים על עצור, וההפעלה נרשמת בדף זה ובדף המשתמש שלכם."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "צפו ביומנים שהקהילה משתפת עם חברים, והירשמו אליהם."
+
+#: 
+msgid "See the church calendar"
+msgstr "צפייה ביומן הקהילה"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "צפו במכשירים ובמפתחות הגישה שמחברים אותם, ונתקו או הסירו כל אחד מהם."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "צפו בכתובות הדוא״ל ובמספרי הטלפון של האנשים במשפחה שלהם."
+
+#: 
+msgid "See the member directory"
+msgstr "צפייה במדריך החברים"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "צפו בשמות ובתמונות של האנשים במשפחה שלהם."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "צפו באנשים שהקהילה מפרסמת במדריך שלה, עם הפרטים שהקהילה בוחרת לשתף."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "צפו בלוח ההתנדבות שלהם, הירשמו למקומות פנויים ובקשו מחליף."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "שלחו את browse כ-true או false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "שלחו את הסיווגים כרשימת ids."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "שלחו את הגדרות המדריך כאובייקט JSON."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "שלחו את השדות להצגה כאובייקט של ערכי true ו-false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "שלחו את ההגדרות כאובייקט JSON."
+
+#: 
+msgid "Session ended"
+msgstr "ההפעלה הסתיימה"
 
 #: 
 msgid "Set up email"
 msgstr "הגדרת דואר אלקטרוני"
 
 #: 
+msgid "Set up email first."
+msgstr "הגדירו דוא״ל תחילה."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "כתובות משותפות שתוקנו: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "כתובות משותפות לתיקון: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "משותף על ידי"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "כתובות דוא״ל משותפות שמונעות מאנשים להתחבר"
+
+#: 
+msgid "Show or hide this member"
+msgstr "הצגה או הסתרה של חבר זה"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "הציגו את דף המדריך בפורטל החברים לסיווגים שנבחרו למטה."
+
+#: 
+msgid "Show the member directory"
+msgstr "הצגת מדריך החברים"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "הציגו את מדריך החברים בפורטל החברים."
+
+#: 
+msgid "Show with year"
+msgstr "הצגה עם שנה"
+
+#: 
+msgid "Show without year"
+msgstr "הצגה בלי שנה"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "מוצגות %d ההתאמות הראשונות. הקלידו עוד מהשם כדי למצוא את האדם שאתם מחפשים."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "להתחבר בתור %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "התחברו בפעם הבאה במכשיר זה עם Face ID, טביעת אצבע או קוד PIN של המכשיר."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "התחברו כדי לראות את המשפחה שלכם, את יומן הקהילה ודרכים לשרת. אין צורך בסיסמה או בחשבון."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "התחברות עם מפתח גישה"
+
+#: 
+msgid "Sign out every device"
+msgstr "התנתקות מכל מכשיר"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "להתנתק מכל מכשיר עכשיו?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "התנתקות בכל מקום"
+
+#: 
+msgid "Sign out this device"
+msgstr "התנתקות ממכשיר זה"
+
+#: 
+msgid "Sign-in"
+msgstr "התחברות"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "התחברות ומכשירים"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "לא ניתן היה לבטל את ההתחברות."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "לא ניתן היה להפעיל את ההתחברות."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "ההתחברות בוטלה"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "התבקש דוא״ל התחברות"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "הודעות דוא״ל להתחברות לכתובת IP בשעה"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "ההתחברות הופעלה"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "ההתחברות כבר מבוטלת לאדם זה."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "ההתחברות מבוטלת"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "ההתחברות מבוטלת לאדם זה."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "ההתחברות מופעלת לאדם זה."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "ההתחברות אינה מבוטלת לאדם זה."
+
+#: 
+msgid "Sign-in refused"
+msgstr "ההתחברות נדחתה"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "ההתחברות, ההפעלות ומפתח ה-API חסומים עד שזה ייפתר ברשומת האדם המקושר."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "התחברו, 30 הימים האחרונים"
+
+#: 
+msgid "Signed out"
+msgstr "מנותק"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "נותק בגלל שינוי בהתחברות שלהם"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "נותק בכל מקום"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "מישהו ביקש דוא״ל התחברות לפורטל החברים, אך לא נשלח."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "מישהו לא הצליח להתחבר לפורטל החברים"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "דפי הצוות נשארים סגורים במהלך התחברות כאדם. לחצו על עצור בבאנר כדי לחזור."
+
+#: 
+msgid "Stop"
+msgstr "עצור"
+
+#: 
+msgid "Stopped"
+msgstr "הופסק"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "הודיעו למשרד הקהילה אם פרטי המשפחה עדיין נכונים."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "הקוד הזה לא עבד. בדקו את הדוא״ל החדש ביותר מאיתנו, או בקשו חדש."
+
+#: 
+msgid "That could not be removed."
+msgstr "לא ניתן היה להסיר זאת."
+
+#: 
+msgid "That device is signed out."
+msgstr "המכשיר הזה מנותק."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "זו אינה כתובת דוא״ל תקינה."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "הדף היה פתוח זמן רב מדי. נסו שוב."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "מפתח הגישה הזה הוסר. הוא אינו יכול עוד לחבר אתכם."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "זה לקח זמן רב מדי. נסו שוב."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "שדרוג 7.8.3 נתן כל דוא״ל משפחה לאדם. את אלה שלא יכול, השאיר הערה בציר הזמן של המשפחה במקום זאת."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "פורטל החברים והודעות הדוא״ל שהוא שולח לכם משתמשים בשפה זו."
+
+#: 
+msgid "The change could not be saved."
+msgstr "לא ניתן היה לשמור את השינוי."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "הקוד והכפתור פועלים פעם אחת, עד %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "הקוד או הקישור נשלחו לכתובת שכבר אינה הדוא״ל שלהם"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "לא ניתן היה לשלוח את דוא״ל האישור. נסו שוב מאוחר יותר."
+
+#: 
+msgid "The device is signed out."
+msgstr "המכשיר מנותק."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "כתובת הדוא״ל %2$s הוסרה מהרשומה שלכם ב-%1$s. נותקתם מפורטל החברים בכל מכשיר."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "כתובת הדוא״ל ברשומה שלכם ב-%1$s שונתה מ-%2$s ל-%3$s. נותקתם מפורטל החברים בכל מכשיר."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "לא ניתן היה לאשר את הדוא״ל."
+
+#: 
+msgid "The email could not be sent."
+msgstr "לא ניתן היה לשלוח את הדוא״ל."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "הדוא״ל אושר. כעת אפשר להשתמש בו כדי להתחבר."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "תאריך הסיום לפני תאריך ההתחלה."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "למשפחה אין ראש משק בית או בן או בת זוג חיים ופעילים"
+
+#: 
+msgid "The family is inactive"
+msgstr "המשפחה לא פעילה"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "לראש משק הבית ולבן או בת הזוג יש לכל אחד דוא״ל משלו"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "היום האחרון אינו יכול להיות בעבר."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "האדם המקושר אינו רשאי להתחבר, ולכן חשבון זה אינו יכול להתחבר"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "לא ניתן היה לטעון את הרשימה."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "לא ניתן היה להוסיף את מפתח הגישה. נסו שוב."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "לא ניתן היה לאמת את מפתח הגישה"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "מפתח הגישה אינו ברשומה, או שהוסר"
+
+#: 
+msgid "The passkey was removed."
+msgstr "מפתח הגישה הוסר."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "האנשים שחולקים אותה נמצאים במשפחות שונות, או שאינם במשפחה"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "האנשים שחולקים כתובת זו השתנו. פתחו שוב את תיקון כתובות דוא״ל משותפות."
+
+#: 
+msgid "The permission could not be given."
+msgstr "לא ניתן היה לתת את ההרשאה."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "ההרשאה מסתיימת אחרי יום זה. אפשר לתת אותה שוב."
+
+#: 
+msgid "The permission was given."
+msgstr "ההרשאה ניתנה."
+
+#: 
+msgid "The permission was removed."
+msgstr "ההרשאה הוסרה."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "לא ניתן היה לטעון את ההרשאות."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "האדם מאבד הרשאה זו בפורטל החברים מיד."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "הסיבה יכולה להיות באורך של לכל היותר %d תווים."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "כללי ההתחברות מאפשרים להם להיכנס, ולכל אחד יש דוא״ל משלו שאף אחד אחר שרשאי להתחבר אינו משתמש בו."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "כללי ההתחברות מאפשרים להם להיכנס, אך הדוא״ל שלהם לא: אין להם, הם חולקים אותו עם מישהו אחר שרשאי להתחבר, או שהוא עדיין לא אושר."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "לא ניתן היה לשמור את הגדרות ההתחברות."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "הדוא״ל הלא מאושר השתנה. טענו מחדש את הדף ונסו שוב."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "הסיווג שלהם אינו רשאי להתחבר"
+
+#: 
+msgid "Their email changed"
+msgstr "הדוא״ל שלהם שונה"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "הדוא״ל שלהם עדיין לא אושר"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "הדוא״ל שלהם משותף עם מישהו אחר"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "התפקיד שלהם במשפחה אינו רשאי להתחבר"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "ההתחברויות הישנות שלהם הוסרו בשדרוג. הפעילו התחברות חברים כדי שיוכלו להתחבר עם הדוא״ל שלהם."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "המכשיר הזכור שלהם פג תוקף"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "המכשיר הזכור שלהם נותק"
+
+#: 
+msgid "Theme development"
+msgstr "פיתוח ערכת נושא"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "אין סיווג עם מזהה %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "אין בורר לסוג היקף זה."
+
+#: 
+msgid "There is no such audit event."
+msgstr "אין אירוע ביקורת כזה."
+
+#: 
+msgid "There is no such email problem."
+msgstr "אין בעיית דוא״ל כזו."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "אין סוג כזה של דוא״ל לא מאושר."
+
+#: 
+msgid "There is no such list."
+msgstr "אין רשימה כזו."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "אין הרשאת פורטל כזו."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "אלה הטלפונים והמחשבים שבהם בחרתם להישאר מחוברים. התנתקו מכל מכשיר שאינכם משתמשים בו עוד או שאינכם מזהים."
+
+#: 
+msgid "They have a staff account"
+msgstr "יש להם חשבון צוות"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "הם רשאים להתחבר אך מעולם לא התחברו."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "פעולה זו דורשת הפעלת דפדפן מחוברת."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "לא ניתן היה לשנות כתובת זו. פתחו שוב את תיקון כתובות דוא״ל משותפות כדי לראות מה מצבה."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "כתובת זו כבר אינה משותפת לאנשים שרשאים להתחבר."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "דפדפן זה אינו יכול ליצור מפתחות גישה."
+
+#: 
+msgid "This device"
+msgstr "מכשיר זה"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "למכשיר זה כבר יש מפתח גישה עבורכם."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "מכשיר זה לא ישאיר עוד את האדם מחובר, והפעלה פתוחה בו מסתיימת. הוא יכול להתחבר שוב בדוא״ל."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "זה המכשיר שלי. השאירו אותי מחובר."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "כאן מחליטים על אורחים. המספר הוא כמה אנשים פעילים יש בכל סיווג."
+
+#: 
+msgid "This link cannot be used"
+msgstr "לא ניתן להשתמש בקישור זה"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "תוקף הקישור פג או שכבר נעשה בו שימוש"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "חלק זה של פורטל החברים אינו זמין לכם."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "מפתח גישה זה כבר ברשומה."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "מפתח גישה זה לא יחבר עוד את האדם. הוא יכול להתחבר בדוא״ל ולהוסיף חדש."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "לא ניתן לתת הרשאה זו בדף האדם."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "לאדם זה כבר יש כל הרשאה שאפשר לתת."
+
+#: 
+msgid "This person already has this permission."
+msgstr "לאדם זה כבר יש הרשאה זו."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "אדם זה אינו יכול עוד להתחבר בשום מקום, לפורטל החברים או כצוות. כל הפעלה מסתיימת, והמכשירים הזכורים ומפתחות הגישה שלו מוסרים."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "לא ניתן היה לנתק אדם זה."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "לאדם זה יש חשבון צוות. התחברות כאדם לעולם אינה פותחת חשבון צוות."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "לאדם זה אין מפתח גישה כזה."
+
+#: 
+msgid "This person has no such permission."
+msgstr "לאדם זה אין הרשאה כזו."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "לאדם זה אין מכשיר זכור כזה."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "לאדם זה אין דוא״ל לא מאושר."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "אדם זה התחבר לפורטל החברים. שינוי דוא״ל זה מנתק אותו בכל מקום, ואי אפשר להשתמש בכתובת החדשה להתחברות עד שהיא מאושרת."
+
+#: 
 msgid "This person is deceased."
 msgstr "אדם זה נפטר"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "אדם זה מנותק מפורטל החברים בכל מקום."
+
+#: 
+msgid "This person no longer exists."
+msgstr "אדם זה אינו קיים עוד."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "פעולה זו מנתקת אתכם בכל מקום, כולל כאן, ושוכחת כל מכשיר. אפשר להתחבר שוב עם כתובת הדוא״ל."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "פעולה זו מנתקת אתכם בכל מקום, כולל כאן, ושוכחת כל מכשיר. מפתחות הגישה נשארים: אפשר להתחבר שוב עם מפתח גישה או עם כתובת הדוא״ל."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "כלי זה לעולם אינו משנה את אלה. תנו לכל אדם דוא״ל משלו ברשומה שלו."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "סמנו זאת רק בטלפון או במחשב שלכם, לעולם לא במכשיר משותף או ציבורי."
+
+#: 
+msgid "Time: %s"
+msgstr "שעה: %s"
+
+#: 
+msgid "Timed out"
+msgstr "תם הזמן"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "כדי לשנות דוא״ל זה, פנו למשרד הקהילה."
+
+#: 
+msgid "To fix"
+msgstr "לתיקון"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "כדי להישאר מחוברים בטלפון או במחשב שלכם, סמנו ״זה המכשיר שלי״ בפעם הבאה שתתחברו."
+
+#: 
+msgid "Too many attempts"
+msgstr "יותר מדי ניסיונות"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "יותר מדי הודעות דוא״ל להתחברות היום"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "יותר מדי בקשות התחברות לכתובת דוא״ל זו"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "יותר מדי בקשות התחברות מכתובת IP זו"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "יותר מדי קודים שגויים"
+
+#: 
+msgid "Turn off"
+msgstr "כיבוי"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "לכבות את התחברות החברים?"
+
+#: 
+msgid "Turn on"
+msgstr "הפעלה"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "הפעלת התחברות חברים"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "להפעיל את התחברות החברים?"
+
+#: 
+msgid "Type a name"
+msgstr "הקלידו שם"
+
+#: 
+msgid "Type a name or email"
+msgstr "הקלידו שם או דוא״ל"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "הקלידו לפחות %d אותיות של שם, ואז חפשו."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "דוא״ל לא מאושר"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "הבינו היכן נעשה שימוש ב-ChurchCRM"
+
+#: 
+msgid "Unknown device"
+msgstr "מכשיר לא ידוע"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "שדה מדריך לא ידוע: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "הגדרת מדריך לא ידועה: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "מכשיר ללא שם"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "מפתח גישה ללא שם"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "עד שמשרד הקהילה יאשר אותה, אי אפשר להשתמש בכתובת החדשה כדי להתחבר."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "להשתמש ב-%1$s ככתובת הדוא״ל של %2$s ב-%3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "השתמשו בכתובת דוא״ל אחרת"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "להשתמש במפתח גישה במכשיר זה?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "השתמשו בכפתור למטה כדי לאשר ש-%1$s היא כתובת הדוא״ל שלכם ב-%2$s. הקישור פועל פעם אחת, עד %3$s."
+
+#: 
+msgid "User %d"
+msgstr "משתמש %d"
+
+#: 
+msgid "View Permissions"
+msgstr "הצגת הרשאות"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "ממתינים שתאשרו את %s. השתמשו בקישור ששלחנו לכתובת זו."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "ממתינים שתאשרו את {{email}}. השתמשו בקישור ששלחנו לכתובת זו."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "לא הצלחנו לשלוח את הדוא״ל. נסו שוב מאוחר יותר, או פנו למשרד הקהילה."
+
+#: 
+msgid "We could not sign you in"
+msgstr "לא הצלחנו לחבר אתכם"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "שלחנו קישור אל %s. השתמשו בו כדי לאשר את כתובת הדוא״ל החדשה."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "שלחנו קישור אל {{email}}. הדוא״ל שלכם משתנה כשאתם משתמשים בו."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "נשלח לכם בדוא״ל קוד וקישור להתחברות."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "שמחים שאתם כאן! זה לוקח כשלוש דקות."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "שמחים כל כך שהמשפחה שלכם הצטרפה אלינו! הרישום התקבל. הצוות שלנו ייצור קשר בקרוב כדי לקבל את פניכם באופן אישי."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "יום נישואין"
+
+#: 
+msgid "Welcome"
+msgstr "ברוכים הבאים"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "מה שניתנה עבורו כבר אינו קיים"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "מה חברים יכולים לראות ולעשות בפורטל, ומאין מגיעה כל הרשאה. אנשים נספרים בין כל מי שכללי ההתחברות מאפשרים לו להיכנס, ובין הצוות."
+
+#: 
+msgid "What members can use"
+msgstr "במה חברים יכולים להשתמש"
+
+#: 
+msgid "What to do"
+msgstr "מה לעשות"
+
+#: 
+msgid "Who can see it"
+msgstr "מי יכול לראות זאת"
+
+#: 
+msgid "Who is listed"
+msgstr "מי רשום"
+
+#: 
+msgid "Who may sign in"
+msgstr "מי רשאי להתחבר"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "מי רשאי להתחבר לפורטל החברים, מי התחבר, ודוא״ל של מי עוצר אותו. הרשימות עוקבות אחרי הכללים בלשונית ההתחברות."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "את מי מדריך פורטל החברים מציג, מי יכול לראות אותו ומה הוא מציג, כפי שנבחר בניהול ← פורטל החברים ← מדריך."
+
+#: 
+msgid "Why"
+msgstr "למה"
+
+#: 
+msgid "Why not"
+msgstr "למה לא"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "עם האסימון שהמכשיר החליף לפני רגע"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "כן, הוסיפו מפתח גישה"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "כן, הסירו מפתח גישה זה"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "כן, התנתקו מכל מכשיר"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "אינכם רשאים לאשר דוא״ל זה."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "אינכם נשארים מחוברים באף מכשיר."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "נותקתם בכל מכשיר."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "נותקתם במכשיר זה."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "אפשר גם להתחבר עם כתובת הדוא״ל."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "אי אפשר לבטל את ההתחברות שלכם."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "אינכם יכולים לפתוח את פורטל החברים. פנו למשרד הקהילה."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "ביקשתם לשנות את הדוא״ל יותר מדי פעמים. נסו שוב מאוחר יותר."
+
+#: 
+msgid "You have no passkeys."
+msgstr "אין לכם מפתחות גישה."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "אתם מחוברים בתור %s בפורטל החברים (שינויים מותרים)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "אתם מחוברים בתור %s בפורטל החברים (קריאה בלבד)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "צעיר מהגיל המינימלי"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "הגיל הצעיר ביותר שבו אדם רשאי להתחבר לפורטל החברים. כשתאריך הלידה אינו ידוע, רק ראש משק בית או בן או בת זוג עומדים בתנאי."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "קוד ההתחברות שלכם לפורטל החברים"
+
+#: 
+msgid "Your code"
+msgstr "הקוד שלכם"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "כתובת הדוא״ל %s שלכם עדיין לא אושרה, ולכן אי אפשר להשתמש בה כדי להתחבר. נשלח אליה קישור; השימוש בקישור מאשר אותה."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "אי אפשר להסיר כאן את כתובת הדוא״ל שלכם. פנו למשרד הקהילה."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "כתובת הדוא״ל שלכם אושרה"
+
+#: 
+msgid "Your email address was changed"
+msgstr "כתובת הדוא״ל שלכם שונתה"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "מפתח הגישה שלכם נוסף. בפעם הבאה, התחברו איתו במכשיר זה."
+
+#: 
+msgid "an administrator"
+msgstr "מנהל"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "לאף ראש משק בית או בן או בת זוג אין כתובת דוא״ל"
+
+#: 
+msgid "or"
+msgstr "או"
+
+#: 
+msgid "until %s"
+msgstr "עד %s"
 

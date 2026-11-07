@@ -4919,10 +4919,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugees - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Spesifiseer die toepassingsnaam wat in die verifikasie-app vertoon moet word"
-
-#: 
 msgid "Review"
 msgstr "Hersien"
 
@@ -5052,10 +5048,6 @@ msgstr "Sien familiebladsy"
 #: 
 msgid "View Person Page"
 msgstr "Sien persoonbladsy"
-
-#: 
-msgid "Verify"
-msgstr "Verifieer"
 
 #: 
 msgid "Family has no emails to use"
@@ -14635,10 +14627,6 @@ msgid "Date Picker Format"
 msgstr "Datumkieser-formaat"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Datumkieser-plekhouer"
-
-#: 
 msgid "Date Without Year"
 msgstr "Datum sonder jaar"
 
@@ -14669,10 +14657,6 @@ msgstr "Lêernaam-datumformaat"
 #: 
 msgid "Fully translated."
 msgstr "Volledig vertaal."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Wenkteks in datuminvoervelde. Standaard: jjjj-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25066,10 +25050,6 @@ msgstr "'n Persoon wat dit verloor, het dan geen eie e-pos nie: pos wat slegs aa
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "'n Persoon wie se rekord hul ouderdom versteek, wys nooit 'n geboortejaar nie."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "'n Versoek is in die Lidportaal gemaak om jou e-posadres om %s van %s na %s te verander. Die verandering gebeur slegs wanneer die skakel wat na %s gestuur is, gebruik word."
 
 #: 
 msgid "A row is not in the expected form."

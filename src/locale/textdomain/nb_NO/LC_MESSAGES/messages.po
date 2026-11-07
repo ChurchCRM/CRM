@@ -4991,10 +4991,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugisisk - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Angi applikasjonsnavnet som skal vises i autentiseringsappen"
-
-#: 
 msgid "Review"
 msgstr "Se over"
 
@@ -5123,10 +5119,6 @@ msgstr "Vis familieside"
 #: 
 msgid "View Person Page"
 msgstr "Vis personside"
-
-#: 
-msgid "Verify"
-msgstr "Verifiser"
 
 #: 
 msgid "Family has no emails to use"
@@ -14706,10 +14698,6 @@ msgid "Date Picker Format"
 msgstr "Format for datoplukker"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Plassholder for datoplukker"
-
-#: 
 msgid "Date Without Year"
 msgstr "Dato uten år"
 
@@ -14740,10 +14728,6 @@ msgstr "Datoformat for filnavn"
 #: 
 msgid "Fully translated."
 msgstr "Fullstendig oversatt."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Hjelpetekst i datofelt. Standard: åååå-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25137,10 +25121,6 @@ msgstr "En person som mister den, har da ingen egen e-post: e-post sendt bare ti
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "En person hvis post skjuler alderen, viser aldri fødselsår."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Det ble bedt om i Medlemsportalen å endre e-postadressen din kl. %s fra %s til %s. Endringen skjer bare når lenken sendt til %s brukes."
 
 #: 
 msgid "A row is not in the expected form."

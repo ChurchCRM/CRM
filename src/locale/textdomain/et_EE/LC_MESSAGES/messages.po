@@ -4918,10 +4918,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugali keel - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Määrake autentimisrakenduses kuvatav rakenduse nimi"
-
-#: 
 msgid "Review"
 msgstr "Ülevaade"
 
@@ -5051,10 +5047,6 @@ msgstr "Vaata perelehte"
 #: 
 msgid "View Person Page"
 msgstr "Vaata isikulehte"
-
-#: 
-msgid "Verify"
-msgstr "Kinnitage"
 
 #: 
 msgid "Family has no emails to use"
@@ -14634,10 +14626,6 @@ msgid "Date Picker Format"
 msgstr "Kuupäevavalija vorming"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Kuupäevavalija kohahoidja"
-
-#: 
 msgid "Date Without Year"
 msgstr "Kuupäev ilma aastata"
 
@@ -14668,10 +14656,6 @@ msgstr "Kuupäevavorming failinimedes"
 #: 
 msgid "Fully translated."
 msgstr "Täielikult tõlgitud."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Vijetekst kuupäevaväljades. Vaikimisi: aaaa-kk-pp"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25065,10 +25049,6 @@ msgstr "Inimesel, kes selle kaotab, ei ole siis oma e-posti aadressi: ainult tem
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "Inimese kirje, mis peidab vanuse, ei näita kunagi sünniaastat."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Liikmeportaalis taotleti kell %s teie e-posti aadressi muutmist aadressilt %s aadressile %s. Muudatus toimub ainult siis, kui kasutatakse aadressile %s saadetud linki."
 
 #: 
 msgid "A row is not in the expected form."

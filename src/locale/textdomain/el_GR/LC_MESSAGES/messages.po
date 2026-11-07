@@ -4919,10 +4919,6 @@ msgid "Portuguese - Portugal"
 msgstr "Πορτογαλικά - Πορτογαλία"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Καθορίστε το όνομα της εφαρμογής που θα εμφανίζεται στην εφαρμογή ελέγχου ταυτότητας"
-
-#: 
 msgid "Review"
 msgstr "Ανασκόπηση"
 
@@ -5052,10 +5048,6 @@ msgstr "Προβολή οικογενειακής σελίδας"
 #: 
 msgid "View Person Page"
 msgstr "Προβολή καρτέλας Μέλους"
-
-#: 
-msgid "Verify"
-msgstr "Επαληθεύω"
 
 #: 
 msgid "Family has no emails to use"
@@ -14635,10 +14627,6 @@ msgid "Date Picker Format"
 msgstr "Μορφή επιλογέα ημερομηνίας"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Κείμενο βοήθειας επιλογέα ημερομηνίας"
-
-#: 
 msgid "Date Without Year"
 msgstr "Ημερομηνία χωρίς έτος"
 
@@ -14669,10 +14657,6 @@ msgstr "Μορφή ημερομηνίας για ονόματα αρχείων"
 #: 
 msgid "Fully translated."
 msgstr "Πλήρως μεταφρασμένο."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Κείμενο υπόδειξης σε πεδία ημερομηνίας. Προεπιλογή: εεεε-μμ-ηη"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25066,10 +25050,6 @@ msgstr "Ένα άτομο που τη χάνει δεν έχει τότε δικ
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "Ένα άτομο του οποίου η καρτέλα αποκρύπτει την ηλικία δεν εμφανίζει ποτέ έτος γέννησης."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Υποβλήθηκε αίτημα στην Πύλη μελών για αλλαγή της διεύθυνσης ηλεκτρονικού ταχυδρομείου σας στις %s, από %s σε %s. Η αλλαγή γίνεται μόνο όταν χρησιμοποιηθεί ο σύνδεσμος που στάλθηκε στη διεύθυνση %s."
 
 #: 
 msgid "A row is not in the expected form."

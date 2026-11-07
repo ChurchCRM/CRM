@@ -4915,10 +4915,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugais - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Spécifiez le nom de l'application à afficher dans l'application d'authentification"
-
-#: 
 msgid "Review"
 msgstr "Résumé"
 
@@ -5049,10 +5045,6 @@ msgstr "Voir page de la Famille"
 #: 
 msgid "View Person Page"
 msgstr "Voir Page de la personne"
-
-#: 
-msgid "Verify"
-msgstr "Vérifier"
 
 #: 
 msgid "Family has no emails to use"
@@ -14632,10 +14624,6 @@ msgid "Date Picker Format"
 msgstr "Format du sélecteur de date"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Texte d'exemple du sélecteur de date"
-
-#: 
 msgid "Date Without Year"
 msgstr "Date sans année"
 
@@ -14666,10 +14654,6 @@ msgstr "Format de date pour les noms de fichiers"
 #: 
 msgid "Fully translated."
 msgstr "Entièrement traduit."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Texte indicatif dans les champs de date. Par défaut : aaaa-mm-jj"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25063,10 +25047,6 @@ msgstr "Une personne qui la perd n'a alors plus d'e-mail personnel : les message
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "Une personne dont la fiche masque l'âge n'affiche jamais d'année de naissance."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Une demande a été faite dans le portail des membres pour changer votre adresse e-mail à %s, de %s vers %s. Le changement n'a lieu que lorsque le lien envoyé à %s est utilisé."
 
 #: 
 msgid "A row is not in the expected form."

@@ -121,7 +121,7 @@ describe("Deceased Person Flag", () => {
         createTestPerson("AliceDeceased").then((personId) => {
             if (!personId) return;
 
-            const dateStr = "01/15/2020"; // past date MM/DD/YYYY
+            const dateStr = "2020-01-15";
 
             cy.visit(`/PersonEditor.php?PersonID=${personId}`);
             cy.get("#IsDeceased").check();

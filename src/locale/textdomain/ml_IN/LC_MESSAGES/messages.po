@@ -4887,10 +4887,6 @@ msgid "Portuguese - Portugal"
 msgstr "പോർച്ചുഗീസ് - പോർച്ചുഗൽ"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "ഓതന്റിക്കേറ്റർ ആപ്പിൽ കാണിക്കേണ്ട ആപ്ലിക്കേഷൻ നാമം നൽകുക"
-
-#: 
 msgid "Review"
 msgstr "അവലോകനം"
 
@@ -5019,10 +5015,6 @@ msgstr "കുടുംബ പേജ് കാണുക"
 #: 
 msgid "View Person Page"
 msgstr "വ്യക്തി പേജ് കാണുക"
-
-#: 
-msgid "Verify"
-msgstr "സ്ഥിരീകരിക്കുക"
 
 #: 
 msgid "Family has no emails to use"
@@ -14602,10 +14594,6 @@ msgid "Date Picker Format"
 msgstr "ഡേറ്റ് പിക്കർ ഫോർമാറ്റ്"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "ഡേറ്റ് പിക്കർ പ്ലേസ്ഹോൾഡർ"
-
-#: 
 msgid "Date Without Year"
 msgstr "വർഷം കൂടാതെ തീയതി"
 
@@ -14636,10 +14624,6 @@ msgstr "ഫയൽ നാമ തീയതി ഫോർമാറ്റ്"
 #: 
 msgid "Fully translated."
 msgstr "പൂർണ്ണമായും വിവർത്തനം ചെയ്തു."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "തീയതി ഇൻപുട്ടുകളിൽ കാണിക്കുന്ന സൂചന ടെക്സ്റ്റ്. ഡിഫോൾട്ട്: yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -24199,14 +24183,2958 @@ msgid "Repeat events could not be created. Check the application log for details
 msgstr "ആവർത്തന ഇവന്റുകൾ സൃഷ്ടിക്കാൻ കഴിഞ്ഞില്ല. വിശദാംശങ്ങൾക്ക് ആപ്ലിക്കേഷൻ ലോഗ് പരിശോധിക്കുക."
 
 #: 
+msgid "Confirm Password"
+msgstr "പാസ്‌വേഡ് സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "നിങ്ങളുടെ പാസ്‌വേഡ് മാറ്റി. ഇനി പുതിയ പാസ്‌വേഡ് ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്യാം."
+
+#: 
+msgid "1st"
+msgstr "1-ാം"
+
+#: 
+msgid "2nd"
+msgstr "2-ാം"
+
+#: 
+msgid "3rd"
+msgstr "3-ാം"
+
+#: 
+msgid "4th"
+msgstr "4-ാം"
+
+#: 
+msgid "5th"
+msgstr "5-ാം"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "സൈൻ ഇൻ ചെയ്യാൻ കഴിയുന്ന ഏക അഡ്മിനിസ്ട്രേറ്ററിന്റെ അഡ്മിനിസ്ട്രേറ്റർ ആക്സസ് നീക്കം ചെയ്യാനാവില്ല"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "മാസത്തിലെ ആഴ്ച തിരഞ്ഞെടുക്കുക, 1-ാം മുതൽ 5-ാം വരെ"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "{{first}} മുതൽ {{last}} വരെ ഓരോ മാസവും {{week}} {{day}}-ന് {{total}} ഇവന്റുകൾ സൃഷ്ടിക്കുന്നു"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "ആഴ്ചയിലെ ദിവസം അസാധുവാണ്"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "പ്രതിമാസം, ഒരു പ്രവൃത്തിദിവസം"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "5-ാമത്തേത് ഇല്ലാത്ത മാസങ്ങൾ ഒഴിവാക്കുന്നു."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM 1 മുതൽ 5 വരെയുള്ള ഒരു പൂർണസംഖ്യയായിരിക്കണം"
+
+#: 
+msgid "Week of the month"
+msgstr "മാസത്തിലെ ആഴ്ച"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "മാസത്തിലെ ആഴ്ച 1 മുതൽ 5 വരെ ആയിരിക്കണം"
+
+#: 
+msgid "%s through %s"
+msgstr "%s മുതൽ %s വരെ"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "സംഭാവന പ്രസ്താവനകളിൽ അച്ചടിക്കുന്ന പള്ളിയുടെ നികുതി ഐഡി (EIN)"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "സംഭാവന പ്രസ്താവനകൾ ഒരു കുടുംബത്തിലെ മുതിർന്നവർക്കാണ് നൽകുന്നത്. ഒന്ന് വേണമെങ്കിൽ പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "Download statement"
+msgstr "പ്രസ്താവന ഡൗൺലോഡ് ചെയ്യുക"
+
+#: 
+msgid "Generated"
+msgstr "സൃഷ്ടിച്ചത്"
+
+#: 
+msgid "Goods and services"
+msgstr "സാധനങ്ങളും സേവനങ്ങളും"
+
+#: 
+msgid "My Giving"
+msgstr "എന്റെ ദാനം"
+
+#: 
+msgid "No contributions"
+msgstr "സംഭാവനകളില്ല"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "ഈ കാലയളവിൽ സംഭാവനകളൊന്നും രേഖപ്പെടുത്തിയിട്ടില്ല."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "അദൃശ്യമായ മതപരമായ ആനുകൂല്യങ്ങൾ ഒഴികെ, ഈ സംഭാവനകൾക്ക് പകരമായി സാധനങ്ങളോ സേവനങ്ങളോ നൽകിയിട്ടില്ല."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "ഐച്ഛികം. സംഭാവന പ്രസ്താവനകളിൽ അച്ചടിക്കും."
+
+#: 
+msgid "Tax ID"
+msgstr "നികുതി ഐഡി"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "നികുതി ഐഡി (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "നികുതി കിഴിവ് ലഭിക്കുന്ന തുക"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "ഇത് കുടുംബ പ്രസ്താവനയാണ്. നിങ്ങളുടെ കുടുംബത്തിന്റെ ദാനങ്ങൾ ഇതിൽ ഉൾപ്പെടുന്നു."
+
+#: 
+msgid "Total contributions"
+msgstr "ആകെ സംഭാവനകൾ"
+
+#: 
+msgid "Year-end statement"
+msgstr "വർഷാന്ത്യ പ്രസ്താവന"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d ദാന പ്രസ്താവന കുടുംബത്തിന് വിജയകരമായി ഇമെയിൽ ചെയ്തു."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s ദാന പ്രസ്താവന"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "ദാന പ്രസ്താവനകളിൽ കാണുന്ന വാചകം ഇഷ്ടാനുസൃതമാക്കുക (sTaxReport1, sTaxReport2 മുതലായവ)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "പ്രിയ %s കുടുംബമേ,\n"
+"\n"
+"%s-ൽ നിന്നുള്ള നിങ്ങളുടെ %s ദാന പ്രസ്താവന ഈ ഇമെയിലിനോടൊപ്പം ചേർത്തിരിക്കുന്നു.\n"
+"\n"
+"എന്തെങ്കിലും ചോദ്യങ്ങളുണ്ടെങ്കിൽ പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക.\n"
+"\n"
+"നിങ്ങളുടെ ഔദാര്യത്തിന് നന്ദി."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "%s ദാന പ്രസ്താവന ഇമെയിൽ ചെയ്യുക"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "എൻവലപ്പ് നമ്പറുകൾ"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "ദാന പ്രസ്താവനകൾ സൃഷ്ടിക്കുക"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "ദാന പ്രസ്താവനകൾ, പ്രതിജ്ഞാ ട്രാക്കിംഗ്, സാമ്പത്തിക വിശകലനം എന്നിവയ്ക്കുള്ള റിപ്പോർട്ടുകൾ സൃഷ്ടിക്കുക."
+
+#: 
+msgid "Giving Reports"
+msgstr "ദാന റിപ്പോർട്ടുകൾ"
+
+#: 
+msgid "Giving Statement"
+msgstr "ദാന പ്രസ്താവന"
+
+#: 
+msgid "Giving Statements"
+msgstr "ദാന പ്രസ്താവനകൾ"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "ദാന പ്രസ്താവന ഇമെയിൽ അയയ്ക്കാനായില്ല. ഇമെയിൽ സെർവർ ക്രമീകരണങ്ങൾ പരിശോധിക്കുക."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "അടുത്ത ദാനം %s-ലേക്ക് തപാൽ ചെയ്യുക"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "%s ദാന പ്രസ്താവന അച്ചടിക്കുക"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "ദാന പ്രസ്താവന ഇമെയിൽ ചെയ്യാനാവില്ല: ആ വർഷത്തെ പേയ്‌മെന്റ് ഡാറ്റ കണ്ടെത്തിയില്ല."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "ദാന പ്രസ്താവന ഇമെയിൽ ചെയ്യാനാവില്ല: ഈ കുടുംബത്തിന് ഫയലിൽ ഇമെയിൽ വിലാസമില്ല."
+
+#: 
+msgid "Undesignated"
+msgstr "നിയോഗിക്കാത്തത്"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "പള്ളിയുടെ പേര്, വിലാസം, ബന്ധപ്പെടാനുള്ള വിവരം ദാന പ്രസ്താവനകളിൽ കാണുന്നുണ്ടെന്ന് ഉറപ്പാക്കുക."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "ഈ സ്ഥാനം ഇപ്പോൾ %s-ന് നൽകിയിരിക്കുന്നു; അവർ അത് സ്വീകരിച്ചു."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "ഈ സ്ഥാനം ഇപ്പോൾ %s-ന് നൽകിയിരിക്കുന്നു; അവർ ഇതുവരെ അത് സ്വീകരിച്ചിട്ടില്ല."
+
+#: 
+msgid "Their reason: %s"
+msgstr "അവരുടെ കാരണം: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "നിയമനങ്ങൾ കാണുക"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "ഈ സംഭവത്തിന് ഇനിയും വേണ്ട സന്നദ്ധപ്രവർത്തകർ: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "ഈ സ്ഥാനത്തിന് ഇനിയും വേണ്ട സന്നദ്ധപ്രവർത്തകർ: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "ഓരോ ക്ലാസിനും ആഴ്ചതോറുമുള്ള സൈൻ-ഇൻ ഗ്രിഡ്. ക്ലാസ് ലിസ്റ്റുകളും ഫോട്ടോ പുസ്തകങ്ങളും സൺഡേ സ്കൂൾ ഡാഷ്‌ബോർഡിലും ഓരോ ക്ലാസ് പേജിലുമുണ്ട്."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "സ്കൂൾ വർഷത്തെ ആഴ്ചതോറുമുള്ള സൈൻ-ഇൻ ഗ്രിഡ്, ഓരോ ഞായറാഴ്ചയ്ക്കും ഒരു നിര"
+
+#: 
+msgid "Age %d"
+msgstr "പ്രായം %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "ഹാജർ ഷീറ്റ് ഉണ്ടാക്കാൻ കുറഞ്ഞത് ഒരു ഗ്രൂപ്പെങ്കിലും തിരഞ്ഞെടുക്കണം."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "ഹാജർ ഷീറ്റ്"
+
+#: 
+msgid "Class List"
+msgstr "ക്ലാസ് ലിസ്റ്റ്"
+
+#: 
+msgid "Download PDF"
+msgstr "PDF ഡൗൺലോഡ് ചെയ്യുക"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "ലോക്കൗട്ട് കാലയളവ് മിനിറ്റുകളിൽ\n"
+"ഇത്ര മിനിറ്റുകൾക്ക് ശേഷം ലോക്ക് ചെയ്ത അക്കൗണ്ട് സ്വയം തുറക്കും. ഒരു IP വിലാസത്തിൽ നിന്നുള്ള പരാജയപ്പെട്ട ലോഗിനുകൾ അതേ കാലയളവിൽ എണ്ണും."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "ഒരു IP വിലാസത്തിൽ നിന്നുള്ള പരമാവധി പരാജയപ്പെട്ട ലോഗിനുകൾ\n"
+"ലോക്കൗട്ട് കാലയളവിൽ ഒരു IP വിലാസത്തിൽ നിന്നുള്ള പരാജയപ്പെട്ട ലോഗിനുകളും പാസ്‌വേഡ് റീസെറ്റ് അഭ്യർത്ഥനകളും ഈ പരിധിയിൽ എണ്ണും. പരിധി എത്തിയാൽ, കാലയളവ് അവസാനിക്കുന്നതുവരെ ആ വിലാസത്തിൽ നിന്നുള്ള സൈൻ-ഇൻ നിരസിക്കും.\n"
+"ഈ സവിശേഷത പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ആക്കുക, ഉദാഹരണത്തിന് എല്ലാവരും ഒരു പ്രോക്സി വിലാസത്തിലൂടെ ChurchCRM-ൽ എത്തുമ്പോൾ."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "ഒരു ഉപയോക്തൃ അക്കൗണ്ട് ലോക്ക് ആകുന്നതിന് മുമ്പ് അനുവദിക്കുന്ന പരമാവധി പരാജയപ്പെട്ട ലോഗിനുകൾ.\n"
+"ലോക്ക് ചെയ്ത അക്കൗണ്ട് ലോക്കൗട്ട് കാലയളവിന് ശേഷം സ്വയം തുറക്കും, അല്ലെങ്കിൽ അഡ്മിനിസ്ട്രേറ്റർ പരാജയപ്പെട്ട ലോഗിനുകൾ റീസെറ്റ് ചെയ്താൽ നേരത്തെ തുറക്കും.\n"
+"സ്വയമേവയുള്ള പാസ്‌വേഡ് ഊഹിക്കൽ ആക്രമണങ്ങളിൽ നിന്ന് സംരക്ഷിക്കാൻ ഈ സവിശേഷത സഹായിക്കുന്നു.\n"
+"ഈ സവിശേഷത പ്രവർത്തനരഹിതമാക്കാൻ പൂജ്യം ആക്കുക."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "സ്വയം തുറക്കാൻ ബാക്കിയുള്ള മിനിറ്റുകൾ: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "സൺഡേ സ്കൂൾ ഹാജർ ഷീറ്റ്"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "ക്ലാസ് ഇല്ലാത്ത ഞായറാഴ്ചകൾ ഷീറ്റിൽ ഉൾപ്പെടുത്തുന്നില്ല."
+
+#: 
+msgid "Database Upgrade"
+msgstr "ഡാറ്റാബേസ് അപ്‌ഗ്രേഡ്"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "നിങ്ങളുടെ ഡാറ്റാബേസ് അപ്‌ഡേറ്റ് ചെയ്യുന്നു. അപ്‌ഗ്രേഡ് പൂർത്തിയാകുന്നതുവരെ ഈ പേജ് തുറന്നിടുക."
+
+#: 
+msgid "Family Labels"
+msgstr "കുടുംബ ലേബലുകൾ"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – ആകെ"
+
+#: 
+msgid "Bill"
+msgstr "നോട്ട്"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "ഒരു നിക്ഷേപം തിരഞ്ഞെടുക്കുക അല്ലെങ്കിൽ രണ്ട് റിപ്പോർട്ട് തീയതികളും നൽകുക."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "പേയ്‌മെന്റുകൾ പരിശോധിക്കാനോ ബാങ്ക് സ്ലിപ്പ് അച്ചടിക്കാനോ ഒരു നിക്ഷേപം തിരഞ്ഞെടുക്കുക. തിരഞ്ഞെടുത്ത നിക്ഷേപം തീയതി പരിധിയെ മറികടക്കും."
+
+#: 
+msgid "Coin"
+msgstr "നാണയം"
+
+#: 
+msgid "Deposit Report"
+msgstr "നിക്ഷേപ റിപ്പോർട്ട്"
+
+#: 
+msgid "Download Report"
+msgstr "റിപ്പോർട്ട് ഡൗൺലോഡ് ചെയ്യുക"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "സാധുവായ റിപ്പോർട്ട് തീയതികൾ നൽകുക."
+
+#: 
+msgid "Invalid report filters."
+msgstr "അസാധുവായ റിപ്പോർട്ട് ഫിൽട്ടറുകൾ."
+
+#: 
+msgid "Invalid report options."
+msgstr "അസാധുവായ റിപ്പോർട്ട് ഓപ്ഷനുകൾ."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "എല്ലാ പേയ്‌മെന്റുകളും ഉൾപ്പെടുത്താൻ ഫിൽട്ടറുകൾ ശൂന്യമായി വിടുക. ഈ ക്രമീകരണങ്ങൾ റിപ്പോർട്ടിനാണ്, ബാങ്ക് സ്ലിപ്പിനല്ല."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "റെക്കോർഡുകളൊന്നും ലഭിച്ചില്ല. ഫിൽട്ടറുകൾ ക്രമീകരിച്ച് വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "ബാങ്കിനായി തയ്യാറാക്കുക"
+
+#: 
+msgid "Preview Totals"
+msgstr "ആകെ തുകകൾ പ്രിവ്യൂ ചെയ്യുക"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "ബാങ്ക് സ്ലിപ്പ് അച്ചടിക്കുക"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "തിരഞ്ഞെടുത്ത നിക്ഷേപം പൂർണമായി അച്ചടിക്കുക: പണവും ചെക്ക് ആകെത്തുകയും, എണ്ണൽ ഷീറ്റുകളും സാക്ഷി വരികളും. റിപ്പോർട്ട് ഫിൽട്ടറുകൾ അവഗണിക്കും. ഇലക്ട്രോണിക് പേയ്‌മെന്റുകൾ സംഗ്രഹത്തിൽ തുടരും, ഭൗതിക ബാങ്ക് ടിക്കറ്റ് ആകെത്തുകയിൽ നിന്ന് ഒഴിവാക്കും."
+
+#: 
+msgid "Review Payments"
+msgstr "പേയ്‌മെന്റുകൾ പരിശോധിക്കുക"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "ഒരു കാലയളവിലെ പേയ്‌മെന്റുകൾ പരിശോധിക്കുക, അല്ലെങ്കിൽ ബാങ്കിനായി ഒരു നിക്ഷേപം തയ്യാറാക്കുക."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "പേയ്‌മെന്റുകൾ പരിശോധിക്കുക, PDF അല്ലെങ്കിൽ CSV ഡൗൺലോഡ് ചെയ്യുക, അല്ലെങ്കിൽ ഒരു നിക്ഷേപത്തിന്റെ ബാങ്ക് സ്ലിപ്പ് അച്ചടിക്കുക."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "സാധുവായ ഒരു നിക്ഷേപം തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "ബാങ്ക് സ്ലിപ്പ് അച്ചടിക്കാൻ ഒരു നിക്ഷേപം തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "റിപ്പോർട്ടിന്റെ അവസാന തീയതി ആരംഭ തീയതിയോ അതിന് ശേഷമോ ആയിരിക്കണം."
+
+#: 
+msgid "Total Cash"
+msgstr "ആകെ പണം"
+
+#: 
+msgid "Total Coin"
+msgstr "ആകെ നാണയം"
+
+#: 
+msgid "Witness"
+msgstr "സാക്ഷി"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d ദാനങ്ങൾക്ക് കുടുംബമില്ല. അവ ഒരു പ്രസ്താവനയിൽ ഉൾപ്പെടുത്താനാവില്ല."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "ഈ വർഷം തീയതിയിട്ട %d തുറന്ന നിക്ഷേപങ്ങൾ. പ്രസ്താവനകൾ പുറപ്പെടുന്നതിന് മുമ്പ് എല്ലാ ദാനവും അന്തിമമാകാൻ അവ അടയ്ക്കുക."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d പേയ്‌മെന്റുകൾ ഇതുവരെ ഒരു നിക്ഷേപത്തിലും ഇല്ല."
+
+#: 
+msgid "Can be emailed"
+msgstr "ഇമെയിൽ ചെയ്യാം"
+
+#: 
+msgid "Closing line"
+msgstr "അവസാന വരി"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "ഈ വർഷം തീയതിയിട്ട എല്ലാ നിക്ഷേപവും അടച്ചിരിക്കുന്നു."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "എല്ലാ ദാനവും ഒരു കുടുംബത്തിന്റേതാണ്."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "ഈ വർഷത്തെ എല്ലാ പേയ്‌മെന്റും ഒരു നിക്ഷേപത്തിലുണ്ട്."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "നികുതി പ്രസ്താവനകൾ സൃഷ്ടിക്കുക"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "ദാന റിപ്പോർട്ട് (നികുതി പ്രസ്താവനകൾ)"
+
+#: 
+msgid "Opening line"
+msgstr "ആരംഭ വരി"
+
+#: 
+msgid "Print and mail"
+msgstr "അച്ചടിച്ച് തപാൽ ചെയ്യുക"
+
+#: 
+msgid "Qty"
+msgstr "എണ്ണം"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "വർഷം പരിശോധിച്ച്, ദാന പ്രസ്താവനകൾ അച്ചടിക്കുക അല്ലെങ്കിൽ ഇമെയിൽ ചെയ്യുക."
+
+#: 
+msgid "Signed by"
+msgstr "ഒപ്പിട്ടത്"
+
+#: 
+msgid "Thank-you line"
+msgstr "നന്ദി വരി"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "പള്ളിയുടെ പേര്, വിലാസം, ബന്ധപ്പെടാനുള്ള വിവരം നികുതി പ്രസ്താവനകളിൽ കാണുന്നുണ്ടെന്ന് ഉറപ്പാക്കുക."
+
+#: 
+msgid "Year-End Giving"
+msgstr "വർഷാന്ത്യ ദാനം"
+
+#: 
+msgid "As of: %s"
+msgstr "ഇതുവരെ: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "തിരഞ്ഞെടുത്ത %d സാമ്പത്തിക വർഷങ്ങളിൽ, അവലോകന തീയതി വരെ, കുറഞ്ഞത് ഒരു ധനാത്മക കുടുംബ പേയ്‌മെന്റ്: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "സ്നാനം, വോട്ടർ പട്ടിക അപേക്ഷകൾ, താമസം, കൂട്ടായ്മാംഗത്വം, ഹാജർ, നല്ല നില, പ്രാദേശിക ഒഴിവുകൾ എന്നിവ നിങ്ങളുടെ ഉപനിയമങ്ങൾ ആവശ്യപ്പെടുന്നിടത്ത് പ്രത്യേകം പരിശോധിക്കണം. അംഗത്വ കാലാവധി ഹാജരിന്റെ തെളിവല്ല."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "നിലവിലുള്ള ഒരു വർഗീകരണം തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "അവലോകനത്തിന് കുറഞ്ഞത് ഒരു വർഗീകരണമെങ്കിലും തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "നിങ്ങളുടെ പള്ളി ഉപയോഗിക്കുന്ന വർഗീകരണങ്ങൾ തിരഞ്ഞെടുക്കുക. ഒരു വർഗീകരണവും വോട്ടവകാശം നൽകുന്നതായി കരുതുന്നില്ല."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "പള്ളി ഉപനിയമങ്ങൾ പ്രകാരമുള്ള യോഗ്യത പള്ളി നേതൃത്വം സ്ഥിരീകരിക്കണം. ഈ പട്ടിക തിരഞ്ഞെടുത്ത ഫിൽട്ടറുകൾക്ക് യോജിക്കുന്ന ആളുകളെ മാത്രം കാണിക്കുന്നു."
+
+#: 
+msgid "Classifications to review"
+msgstr "അവലോകനം ചെയ്യേണ്ട വർഗീകരണങ്ങൾ"
+
+#: 
+msgid "Classifications: %s"
+msgstr "വർഗീകരണങ്ങൾ: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "മരിച്ചവർ, നിഷ്ക്രിയരായ ആളുകളും വർഗീകരണങ്ങളും, നിഷ്ക്രിയമോ അവലോകനം കാത്തിരിക്കുന്നതോ ആയ കുടുംബങ്ങളും ആളുകളും ഒഴിവാക്കിയിരിക്കുന്നു."
+
+#: 
+msgid "Download Review List"
+msgstr "അവലോകന പട്ടിക ഡൗൺലോഡ് ചെയ്യുക"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "1900-നും 2200-നും ഇടയിലുള്ള സാധുവായ അവലോകന തീയതി നൽകുക."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "കാണിച്ച പരിധികൾക്കുള്ളിലുള്ള പൂർണസംഖ്യകൾ നൽകുക."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "പരിശോധിക്കേണ്ട സാമ്പത്തിക വർഷങ്ങൾ (0–100; 0 എന്നാൽ ദാന ആവശ്യമില്ല)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "ദാനം വ്യക്തിയല്ല, കുടുംബമായാണ് രേഖപ്പെടുത്തുന്നത്. കുടുംബ പേയ്‌മെന്റ് ഈ മാനദണ്ഡം നിറവേറ്റാൻ ഉപനിയമങ്ങൾ അനുവദിക്കുമ്പോൾ മാത്രം ഇത് ഓണാക്കുക. ഓരോ വ്യക്തിയും ദാനം ചെയ്തുവെന്ന് ഇത് തെളിയിക്കുന്നില്ല. തിരഞ്ഞെടുത്ത സാമ്പത്തിക വർഷം ഉൾപ്പെടുന്നു, അവലോകന തീയതിയിൽ കവിയില്ല."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "ഉൾപ്പെടുത്തേണ്ട അവസാന സാമ്പത്തിക വർഷം"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "കുറഞ്ഞ പ്രായം (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "കുറഞ്ഞ പ്രായം: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "മാസങ്ങളിലുള്ള കുറഞ്ഞ അംഗത്വ കാലാവധി (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "കുറഞ്ഞ അംഗത്വ കാലാവധി: %d മാസം"
+
+#: 
+msgid "No donation requirement."
+msgstr "ദാന ആവശ്യമില്ല."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "ഈ ഫിൽട്ടറുകൾക്ക് ആരും യോജിക്കുന്നില്ല. കാണാത്ത ജനന അല്ലെങ്കിൽ അംഗത്വ തീയതികൾ പരിശോധിച്ച് മാനദണ്ഡങ്ങൾ ക്രമീകരിക്കുക."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "ഐച്ഛിക കുടുംബ ദാന ആവശ്യം"
+
+#: 
+msgid "People matching filters"
+msgstr "ഫിൽട്ടറുകൾക്ക് യോജിക്കുന്ന ആളുകൾ"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "ആവശ്യമായ തീയതികൾ ഇല്ലാത്തതിനാൽ ഒഴിവാക്കിയ ആളുകൾ"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "വർഗീകരണങ്ങളും ഐച്ഛിക പ്രായം, അംഗത്വം, കുടുംബ ദാന ഫിൽട്ടറുകളും ഉപയോഗിച്ച് പള്ളി അവലോകനത്തിന് ഒരു പട്ടിക തയ്യാറാക്കുക."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "നിങ്ങളുടെ ഉപനിയമങ്ങൾ ഉപയോഗിച്ച് പള്ളി അവലോകനത്തിന് ഒരു പട്ടിക തയ്യാറാക്കുക."
+
+#: 
+msgid "Review date"
+msgstr "അവലോകന തീയതി"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "ഫിൽട്ടറുകൾ തിരഞ്ഞെടുക്കാൻ പള്ളി ഉപനിയമങ്ങൾ ഉപയോഗിക്കുക, പിന്നീട് അധികാരപ്പെട്ട പള്ളി നേതൃത്വം പട്ടിക അവലോകനം ചെയ്യട്ടെ. ഈ ഫിൽട്ടറുകൾ യോജിക്കുന്നത് വോട്ട് യോഗ്യത സ്ഥാപിക്കുന്നില്ല. ഈ റിപ്പോർട്ട് യോഗ്യത രേഖപ്പെടുത്തുകയോ തെരഞ്ഞെടുപ്പ് നടത്തുകയോ ചെയ്യുന്നില്ല."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "വോട്ട് അംഗങ്ങൾ — അവലോകന പട്ടിക"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "പൂജ്യം ഒരു ഐച്ഛിക ആവശ്യം പ്രവർത്തനരഹിതമാക്കുന്നു. പ്രായത്തിന് പൂർണ ജനന തീയതി വേണം; അംഗത്വ കാലാവധിക്ക് അംഗത്വ തീയതി വേണം. ആവശ്യമായ തീയതി ഇല്ലാത്തവരെ ഒഴിവാക്കി പ്രത്യേകം എണ്ണും. മരിച്ചവർ, നിഷ്ക്രിയരായ ആളുകളും വർഗീകരണങ്ങളും, നിഷ്ക്രിയമോ അവലോകനം കാത്തിരിക്കുന്നതോ ആയ കുടുംബങ്ങളും ആളുകളും എപ്പോഴും ഒഴിവാക്കും; ചരിത്രപരമായ നിലയല്ല, നിലവിലെ വർഗീകരണവും നിലയും ഉപയോഗിക്കും."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "%s-ന് അടയ്ക്കേണ്ട തുക: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "തിരഞ്ഞെടുത്ത ഡയറക്ടറിയിൽ സ്വകാര്യ PDF താൽക്കാലിക സംഭരണം സൃഷ്ടിക്കാനാവില്ല."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "സിസ്റ്റം താൽക്കാലിക ഡയറക്ടറി ഉപയോഗിക്കാൻ ശൂന്യമായി വിടുക. അല്ലാത്തപക്ഷം, വെബ് ആക്സസിൽ നിന്ന് സംരക്ഷിച്ച, എഴുതാൻ കഴിയുന്ന നിലവിലുള്ള ഡയറക്ടറി നൽകുക."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "PDF താൽക്കാലിക ഡയറക്ടറി"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "PDF താൽക്കാലിക സംഭരണം സ്വകാര്യവും എഴുതാവുന്നതും ആയിരിക്കണം."
+
+#: 
+msgid "Reporting"
+msgstr "റിപ്പോർട്ടിംഗ്"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "PDF താൽക്കാലിക ഡയറക്ടറി നിലവിലില്ല അല്ലെങ്കിൽ ആക്സസ് ചെയ്യാനാവില്ല."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "PDF താൽക്കാലിക ഡയറക്ടറി ഒരു സമ്പൂർണ ഡയറക്ടറി പാത്ത് ആയിരിക്കണം."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "പള്ളി നികുതി ഐഡി (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "അവസാന വരി"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "ഐച്ഛിക ടെലിമെട്രി നിയന്ത്രിക്കുന്നു. ടെലിമെട്രി ഓഫ് ആണെങ്കിലും ഇൻസ്റ്റാൾ, ഡാറ്റാബേസ് അപ്‌ഗ്രേഡ് പരാജയങ്ങൾ പരിമിതമായ ഡയഗ്നോസ്റ്റിക്സ് PostHog-ലേക്ക് അയയ്ക്കും. ഈ പരാജയ റിപ്പോർട്ടുകളിൽ സോഫ്റ്റ്‌വെയർ, പരിസ്ഥിതി പതിപ്പുകളും ശുദ്ധീകരിച്ച ഡാറ്റാബേസ് പിശകും ഉൾപ്പെടും, ഇൻസ്റ്റാളേഷൻ ഐഡിയോ SQL പ്രസ്താവനയോ ഇല്ല."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "പരാജയപ്പെട്ട ഇൻസ്റ്റാളുകളും ഡാറ്റാബേസ് അപ്‌ഗ്രേഡുകളും നിർണയിക്കുക"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "ഇൻസ്റ്റാൾ, അപ്‌ഗ്രേഡ് പരാജയ വിശദാംശങ്ങൾ"
+
+#: 
+msgid "Open in browser window"
+msgstr "ബ്രൗസർ വിൻഡോയിൽ തുറക്കുക"
+
+#: 
+msgid "Opening Line"
+msgstr "ആരംഭ വരി"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "ഐച്ഛിക ഉപയോഗ ടെലിമെട്രി പ്രവർത്തനക്ഷമമാക്കിയാൽ മാത്രമേ അയയ്ക്കൂ. No thanks തിരഞ്ഞെടുത്താലും ഇൻസ്റ്റാൾ, ഡാറ്റാബേസ് അപ്‌ഗ്രേഡ് പരാജയങ്ങൾ സമൂഹത്തെ സഹായിക്കാൻ എപ്പോഴും പരിമിതമായ ഡയഗ്നോസ്റ്റിക് അയയ്ക്കും. പരാജയ റിപ്പോർട്ടുകളിൽ സോഫ്റ്റ്‌വെയർ, പരിസ്ഥിതി പതിപ്പുകളും ശുദ്ധീകരിച്ച ഡാറ്റാബേസ് പിശകും ഉൾപ്പെടും, ഇൻസ്റ്റാളേഷൻ ഐഡിയോ SQL പ്രസ്താവനയോ ഇല്ല."
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF കൈകാര്യം"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF ഔട്ട്പുട്ട്"
+
+#: 
+msgid "PDF handling mode"
+msgstr "PDF കൈകാര്യ മോഡ്"
+
+#: 
+msgid "Questions Line"
+msgstr "ചോദ്യ വരി"
+
+#: 
+msgid "Save File dialog"
+msgstr "ഫയൽ സേവ് ഡയലോഗ്"
+
+#: 
+msgid "Signer"
+msgstr "ഒപ്പിടുന്നയാൾ"
+
+#: 
+msgid "Statement Settings"
+msgstr "പ്രസ്താവന ക്രമീകരണങ്ങൾ"
+
+#: 
+msgid "Statement Wording"
+msgstr "പ്രസ്താവന വാചകം"
+
+#: 
+msgid "Tax Information"
+msgstr "നികുതി വിവരം"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "ടെലിമെട്രി അമേരിക്കൻ ഐക്യനാടുകളിലെ PostHog-ലേക്ക് അയയ്ക്കുന്നു. ഐച്ഛിക ടെലിമെട്രി പ്രവർത്തനരഹിതമാണെങ്കിലും ഇൻസ്റ്റാൾ, അപ്‌ഗ്രേഡ് പരാജയ റിപ്പോർട്ടുകൾ അയയ്ക്കും."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "ഈ തീയതി റദ്ദാക്കി. നിങ്ങളിൽ നിന്ന് കൂടുതലൊന്നും വേണ്ട."
+
+#: 
+msgid "always sent"
+msgstr "എപ്പോഴും അയയ്ക്കും"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "ലെറ്റർഹെഡ് നീക്കം ചെയ്യാനായില്ല"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "ലെറ്റർഹെഡ് സംഭരിക്കാനായില്ല"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "ലെറ്റർഹെഡ് അപ്‌ലോഡ് ചെയ്യാനായില്ല"
+
+#: 
+msgid "Greeting"
+msgstr "അഭിവാദ്യം"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "കത്തിന്റെ അഭിവാദ്യവും ഒപ്പും"
+
+#: 
+msgid "Letterhead"
+msgstr "ലെറ്റർഹെഡ്"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF അല്ലെങ്കിൽ WebP. വിശാലമായ ബാനർ ഏറ്റവും നല്ലത്, ഉദാഹരണം 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "ഗ്രാഫിക് ലെറ്റർഹെഡ് ഉപയോഗിക്കുന്ന PDF കത്തുകളുടെ മുകളിൽ അച്ചടിക്കും, ദാന പ്രസ്താവനകൾ പോലെ. ഇല്ലെങ്കിൽ കത്തുകൾ പള്ളിയുടെ പേരും വിലാസവും അച്ചടിക്കും."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "ലെറ്റർഹെഡ് നീക്കം ചെയ്യണോ? കത്തുകൾ പള്ളിയുടെ പേരും വിലാസവും അച്ചടിക്കും."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "PDF കത്തുകൾ അച്ചടിക്കുന്ന ലെറ്റർഹെഡ് സജ്ജമാക്കുക"
+
+#: 
+msgid "Using the church name and address"
+msgstr "പള്ളിയുടെ പേരും വിലാസവും ഉപയോഗിക്കുന്നു"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "സിസ്റ്റം ക്രമീകരണങ്ങളിൽ സജ്ജമാക്കിയ ലെറ്റർഹെഡ് പാത്ത് ഉപയോഗിക്കുന്നു"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "ദാന പ്രസ്താവനകൾക്കുള്ള വാചകം, നികുതി ഐഡി, PDF കൈകാര്യം"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%2$s ആയി %1$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s ഇപ്പോൾ നിങ്ങളുടെ ഇമെയിൽ വിലാസമാണ്. അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാൻ ഇത് ഉപയോഗിക്കാം."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} കൂടുതൽ"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "നിങ്ങളുടെ ഇമെയിൽ വിലാസം മാറ്റാൻ അഭ്യർത്ഥിച്ചു"
+
+#: 
+msgid "A family"
+msgstr "ഒരു കുടുംബം"
+
+#: 
+msgid "A group"
+msgstr "ഒരു ഗ്രൂപ്പ്"
+
+#: 
+msgid "A ministry"
+msgstr "ഒരു ശുശ്രൂഷ"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "ഞങ്ങൾ അയയ്ക്കുന്ന ലിങ്ക് ഉപയോഗിച്ചാൽ മാത്രമേ പുതിയ വിലാസം മാറൂ."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "ഇമെയിൽ വിലാസം ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്ത് %d മിനിറ്റിനുള്ളിൽ മാത്രമേ പാസ്‌കീ ചേർക്കാനാവൂ. സൈൻ ഔട്ട് ചെയ്ത്, ഇമെയിൽ ഉപയോഗിച്ച് വീണ്ടും സൈൻ ഇൻ ചെയ്ത്, ഇവിടെ തിരിച്ചുവരുക."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "പാസ്‌കീ നിങ്ങളെ Face ID, വിരലടയാളം അല്ലെങ്കിൽ ഉപകരണ PIN ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്യിക്കും, ഇമെയിൽ കോഡ് ഇല്ലാതെ."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "നിങ്ങളുടെ അംഗ പോർട്ടൽ സൈൻ-ഇനിലേക്ക് ഒരു പാസ്‌കീ ചേർത്തു"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "%2$s-ന് %1$s-ന്, %3$s-ൽ നിന്ന്, നിങ്ങളുടെ അംഗ പോർട്ടൽ സൈൻ-ഇനിലേക്ക് ഒരു പാസ്‌കീ ചേർത്തു."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "%2$s-ന് %1$s-ന് നിങ്ങളുടെ അംഗ പോർട്ടൽ സൈൻ-ഇനിലേക്ക് ഒരു പാസ്‌കീ ചേർത്തു."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "അത് നഷ്ടപ്പെടുന്ന വ്യക്തിക്ക് പിന്നെ സ്വന്തം ഇമെയിൽ ഇല്ല: ഗ്രൂപ്പ് ഇമെയിൽ പോലെ അവർക്ക് മാത്രം അയയ്ക്കുന്ന മെയിൽ ഒഴിവാക്കും, ഇമെയിൽ എഴുത്തുകാരൻ അത് പറയും."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "പ്രായം മറയ്ക്കുന്ന റെക്കോർഡുള്ള വ്യക്തിയുടെ ജനന വർഷം ഒരിക്കലും കാണിക്കില്ല."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "ഒരു വരി പ്രതീക്ഷിച്ച രൂപത്തിലല്ല."
+
+#: 
+msgid "A team"
+msgstr "ഒരു ടീം"
+
+#: 
+msgid "Add a passkey"
+msgstr "ഒരു പാസ്‌കീ ചേർക്കുക"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "പാസ്‌കീ നിങ്ങളുടെ സ്വന്തം ഫോണിലോ കമ്പ്യൂട്ടറിലോ മാത്രം ചേർക്കുക, പങ്കിട്ടതോ പൊതുവായതോ ആയതിൽ ഒരിക്കലും വേണ്ട."
+
+#: 
+msgid "Add an email"
+msgstr "ഒരു ഇമെയിൽ ചേർക്കുക"
+
+#: 
+msgid "Added %s"
+msgstr "%s ചേർത്തു"
+
+#: 
+msgid "Admin overrides"
+msgstr "അഡ്മിൻ പ്രത്യേക അനുമതികൾ"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "%s കുടുംബത്തിലെ മുതിർന്നയാൾ"
+
+#: 
+msgid "Adult of the family"
+msgstr "കുടുംബത്തിലെ മുതിർന്നയാൾ"
+
+#: 
+msgid "All events"
+msgstr "എല്ലാ ഇവന്റുകളും"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "വ്യക്തിയായി ലോഗിൻ അനുവദിക്കുക"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "വ്യക്തിയായി ലോഗിൻ ചെയ്യുമ്പോൾ മാറ്റങ്ങൾ അനുവദിക്കുക"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "അഡ്മിനിസ്ട്രേറ്റർ വ്യക്തിയായി ലോഗിൻ ഉപയോഗിക്കുമ്പോൾ മാറ്റങ്ങൾ അനുവദിക്കുക. ഓഫ് ആണെങ്കിൽ വ്യക്തിയായി ലോഗിൻ വായന മാത്രമാണ്."
+
+#: 
+msgid "Already held by a family member"
+msgstr "ഇതിനകം ഒരു കുടുംബാംഗത്തിനുണ്ട്"
+
+#: 
+msgid "Also used by"
+msgstr "ഇതും ഉപയോഗിക്കുന്നവർ"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "ഒരു അഡ്മിനിസ്ട്രേറ്റർക്ക് ആ വ്യക്തിയുടെ പേജിൽ ഒരാൾക്ക് ഏത് അനുമതിയും നൽകാം. അപ്പോൾ \"അഡ്മിൻ പ്രത്യേക അനുമതികൾ\" ഇവിടെ കാണിക്കും, അത് ലഭിച്ച ആളുകളുടെ എണ്ണത്തോടെ."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "മറ്റൊരാൾ ഇതിനകം ഈ വിലാസം ഉപയോഗിക്കുന്നു"
+
+#: 
+msgid "Applies to"
+msgstr "ബാധകം"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "ഒരു സന്നദ്ധ ടീമിന്റെ പകരക്കാരൻ അഭ്യർത്ഥനകൾ അംഗീകരിക്കുകയോ നിരസിക്കുകയോ ചെയ്യുക."
+
+#: 
+msgid "Ask for a new email"
+msgstr "പുതിയ ഇമെയിൽ ആവശ്യപ്പെടുക"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "അധികാരം ലോഗിനല്ല, വ്യക്തിക്കാണ് നൽകുന്നത്, അതിനാൽ ലോഗിൻ ഉണ്ടാകുന്നതിന് മുമ്പ് നൽകാം. അംഗ പോർട്ടലിൽ മാത്രം സൈൻ ഇൻ ചെയ്യുന്നയാൾ അഡ്മിനിസ്ട്രേറ്റർ സ്റ്റാഫ് അക്കൗണ്ട് നൽകുന്നതുവരെ സ്വന്തം ഷെഡ്യൂൾ മാത്രം കാണും."
+
+#: 
+msgid "Awaiting review"
+msgstr "അവലോകനം കാത്തിരിക്കുന്നു"
+
+#: 
+msgid "Back to sign-in"
+msgstr "സൈൻ-ഇനിലേക്ക് മടങ്ങുക"
+
+#: 
+msgid "Browse the full directory"
+msgstr "മുഴുവൻ ഡയറക്ടറി ബ്രൗസ് ചെയ്യുക"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാം"
+
+#: 
+msgid "Can sign in?"
+msgstr "സൈൻ ഇൻ ചെയ്യാമോ?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "സൈൻ ഇൻ ചെയ്യാൻ കഴിയുന്ന ഏക അഡ്മിനിസ്ട്രേറ്ററിന്റെ സൈൻ-ഇൻ പ്രവർത്തനരഹിതമാക്കാനാവില്ല."
+
+#: 
+msgid "Cannot sign in"
+msgstr "സൈൻ ഇൻ ചെയ്യാനാവില്ല"
+
+#: 
+msgid "Change family details"
+msgstr "കുടുംബ വിവരങ്ങൾ മാറ്റുക"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "കുടുംബ വിലാസവും ബന്ധപ്പെടാനുള്ള വിവരവും മാറ്റുക, അവലോകനത്തിന് ഒരു കുടുംബാംഗത്തെ ചേർക്കുക."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "സ്വന്തം പേര്, ബന്ധപ്പെടാനുള്ള വിവരം, ഫോട്ടോ എന്നിവ മാറ്റുക."
+
+#: 
+msgid "Changed"
+msgstr "മാറ്റി"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "വ്യക്തി സൈൻ ഇൻ ചെയ്ത ശേഷം മാറ്റി"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "വ്യക്തി സൈൻ ഇൻ ചെയ്ത ശേഷം ഇംപോർട്ട് മൂലം മാറ്റി"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "വ്യക്തി സൈൻ ഇൻ ചെയ്ത ശേഷം സ്റ്റാഫ് മാറ്റി"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "വ്യക്തി സൈൻ ഇൻ ചെയ്ത ശേഷം API വഴി മാറ്റി"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "വ്യക്തിയായി ലോഗിൻ ചെയ്യുമ്പോൾ മാറ്റങ്ങൾ ഓഫ് ആണ്."
+
+#: 
+msgid "Changes needed"
+msgstr "മാറ്റങ്ങൾ വേണം"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "മാറ്റങ്ങൾ ചെയ്യുമ്പോൾ തന്നെ സേവ് ആകും."
+
+#: 
+msgid "Check your email"
+msgstr "നിങ്ങളുടെ ഇമെയിൽ പരിശോധിക്കുക"
+
+#: 
+msgid "Choose a permission"
+msgstr "ഒരു അനുമതി തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "ഒരു അനുമതി, അത് എന്തിന്, അവസാന ദിവസം എന്നിവ തിരഞ്ഞെടുത്ത് എന്തുകൊണ്ടെന്ന് പറയുക."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "ഒരു ഫോട്ടോ തിരഞ്ഞെടുക്കുക അല്ലെങ്കിൽ സെൽഫി എടുക്കുക"
+
+#: 
+msgid "Choose a theme"
+msgstr "ഒരു തീം തിരഞ്ഞെടുക്കുക"
+
+#: 
+msgid "Choose at least one row."
+msgstr "കുറഞ്ഞത് ഒരു വരിയെങ്കിലും തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "ഒരു സമയം പരമാവധി %d വരികൾ തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "തീയതികൾ എങ്ങനെ കാണിക്കണമെന്ന് പട്ടികയിൽ നിന്ന് തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "ഈ അനുമതിയുടെ അവസാന ദിവസം തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "അനുമതി എന്തിനാണെന്ന് തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Choose yes or no."
+msgstr "അതെ അല്ലെങ്കിൽ ഇല്ല തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Church Office"
+msgstr "പള്ളി ഓഫീസ്"
+
+#: 
+msgid "Church country"
+msgstr "പള്ളിയുടെ രാജ്യം"
+
+#: 
+msgid "Church default: %s"
+msgstr "പള്ളി സ്ഥിരം: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "പള്ളി നേതാവിന്റെ സൈൻ-ഇൻ"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "അംഗങ്ങൾക്ക് അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാമായ വർഗീകരണങ്ങൾ, കോമ കൊണ്ട് വേർതിരിച്ച വർഗീകരണ ഐഡികളുടെ പട്ടികയായി."
+
+#: 
+msgid "Clear selection"
+msgstr "തിരഞ്ഞെടുപ്പ് മായ്ക്കുക"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "കോഡുകൾ, സെഷനുകൾ, ഉപകരണങ്ങൾ"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "ഇമെയിൽ വിലാസം സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Confirm email address"
+msgstr "ഇമെയിൽ വിലാസം സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Confirm family details"
+msgstr "കുടുംബ വിവരങ്ങൾ സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Confirm selected"
+msgstr "തിരഞ്ഞെടുത്തവ സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "ഇത് ഈ വ്യക്തിയുടെ സ്വന്തം വിലാസമാണെന്ന് നേരിട്ടോ ഫോണിലോ പരിശോധിച്ച ശേഷം മാത്രം ഈ ഇമെയിൽ സ്ഥിരീകരിക്കുക. സ്ഥിരീകരിച്ചാൽ അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാൻ ഉപയോഗിക്കാം."
+
+#: 
+msgid "Confirm your email address"
+msgstr "നിങ്ങളുടെ ഇമെയിൽ വിലാസം സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "നിങ്ങളുടെ പുതിയ ഇമെയിൽ വിലാസം സ്ഥിരീകരിക്കുക"
+
+#: 
+msgid "Confirmed"
+msgstr "സ്ഥിരീകരിച്ചു"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "തീയതികൾ YYYY-MM-DD ആയി എഴുതണം."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "പകരക്കാരൻ അഭ്യർത്ഥനകൾ തീരുമാനിക്കുക"
+
+#: 
+msgid "Device"
+msgstr "ഉപകരണം"
+
+#: 
+msgid "Device remembered"
+msgstr "ഉപകരണം ഓർത്തു"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "ഉപകരണങ്ങളും പാസ്‌കീകളും"
+
+#: 
+msgid "Directory classifications"
+msgstr "ഡയറക്ടറി വർഗീകരണങ്ങൾ"
+
+#: 
+msgid "Directory section"
+msgstr "ഡയറക്ടറി വിഭാഗം"
+
+#: 
+msgid "Disable sign-in"
+msgstr "സൈൻ-ഇൻ പ്രവർത്തനരഹിതമാക്കുക"
+
+#: 
+msgid "Do not show"
+msgstr "കാണിക്കരുത്"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "അവരോരോരുത്തർക്കും മറ്റാരും ഉപയോഗിക്കാത്ത സ്വന്തം ഇമെയിൽ വേണം."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "ഓരോ സൈൻ-ഇൻ ഇമെയിലും പരിമിത സമയത്തേക്ക് ഒരിക്കൽ മാത്രം പ്രവർത്തിക്കും, പുതിയ ഇമെയിൽ അതിനെ മാറ്റിസ്ഥാപിക്കും."
+
+#: 
+msgid "Edit my details"
+msgstr "എന്റെ വിവരങ്ങൾ തിരുത്തുക"
+
+#: 
+msgid "Email address changed"
+msgstr "ഇമെയിൽ വിലാസം മാറ്റി"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "ടൈപ്പ് ചെയ്ത ഇമെയിൽ വിലാസം: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "സ്ഥിരീകരിക്കേണ്ട ഇമെയിൽ വിലാസങ്ങൾ: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "ഇമെയിൽ മാറ്റി"
+
+#: 
+msgid "Email code"
+msgstr "ഇമെയിൽ കോഡ്"
+
+#: 
+msgid "Email confirmed"
+msgstr "ഇമെയിൽ സ്ഥിരീകരിച്ചു"
+
+#: 
+msgid "Email link"
+msgstr "ഇമെയിൽ ലിങ്ക്"
+
+#: 
+msgid "Email me a code"
+msgstr "എനിക്ക് ഒരു കോഡ് ഇമെയിൽ ചെയ്യുക"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "എനിക്ക് ഒരു സ്ഥിരീകരണ ലിങ്ക് ഇമെയിൽ ചെയ്യുക"
+
+#: 
+msgid "Email needs attention"
+msgstr "ഇമെയിലിന് ശ്രദ്ധ വേണം"
+
+#: 
+msgid "Email problem"
+msgstr "ഇമെയിൽ പ്രശ്നം"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "ഇമെയിൽ ചെയ്ത സൈൻ-ഇൻ കോഡും ലിങ്കും റദ്ദാക്കി"
+
+#: 
+msgid "Emailed verification link"
+msgstr "ഇമെയിൽ ചെയ്ത സ്ഥിരീകരണ ലിങ്ക്"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "സ്ഥിരീകരിച്ച ഇമെയിലുകൾ: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "സൈൻ-ഇൻ പ്രവർത്തനക്ഷമമാക്കുക"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "ഈ വ്യക്തിയുടെ എല്ലാ അംഗ പോർട്ടൽ സെഷനും അവസാനിപ്പിച്ച് ഓർത്ത ഉപകരണങ്ങൾ മറക്കണോ? പാസ്‌കീകൾ നിലനിൽക്കും, അതിനാൽ അവർക്ക് വീണ്ടും സൈൻ ഇൻ ചെയ്യാം."
+
+#: 
+msgid "Ended %s"
+msgstr "%s അവസാനിച്ചു"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "അവരുടെ സൈൻ-ഇനിലെ മാറ്റം മൂലം അവസാനിച്ചു"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "അംഗ സൈൻ-ഇൻ ഓഫ് ആക്കിയപ്പോൾ അവസാനിച്ചു"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "%1$d മുതൽ %2$d വരെയുള്ള ഒരു പൂർണസംഖ്യ നൽകുക."
+
+#: 
+msgid "Enter your email address."
+msgstr "നിങ്ങളുടെ ഇമെയിൽ വിലാസം നൽകുക."
+
+#: 
+msgid "Every kind"
+msgstr "എല്ലാ തരവും"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "ഓരോ അംഗ സൈൻ-ഇൻ, നിരസനം, സൈൻ-ഇൻ മാറ്റം, ഏറ്റവും പുതിയത് ആദ്യം. ഇതിൽ കോഡോ ലിങ്കോ പാസ്‌കീയോ ഒരിക്കലും സൂക്ഷിക്കില്ല."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "പട്ടികയിലുള്ള എല്ലാവരും, A മുതൽ Z വരെ, ഒരു തിരയൽ ബോക്സോടെ."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "സൈൻ-ഇൻ നിയമങ്ങൾ അനുവദിക്കുന്ന എല്ലാവർക്കും പിന്നീട് സ്വന്തം ഇമെയിൽ ഉപയോഗിച്ച് അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാം."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "കഴിഞ്ഞ 30 ദിവസത്തിനുള്ളിൽ അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്ത എല്ലാവരും, ഏറ്റവും പുതിയത് ആദ്യം."
+
+#: 
+msgid "Everywhere"
+msgstr "എല്ലായിടത്തും"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "കഴിഞ്ഞ 30 ദിവസത്തിനുള്ളിൽ ഒരു അംഗം അംഗ പോർട്ടലിൽ നിന്നോ ഇമെയിൽ സ്ഥിരീകരണ ലിങ്കിൽ നിന്നോ സ്ഥിരീകരിച്ച കുടുംബങ്ങൾ."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "സ്ഥിരീകരിച്ച കുടുംബങ്ങൾ, കഴിഞ്ഞ 30 ദിവസം"
+
+#: 
+msgid "Family details confirmed"
+msgstr "കുടുംബ വിവരങ്ങൾ സ്ഥിരീകരിച്ചു"
+
+#: 
+msgid "Family email"
+msgstr "കുടുംബ ഇമെയിൽ"
+
+#: 
+msgid "Family emails not moved"
+msgstr "കുടുംബ ഇമെയിലുകൾ നീക്കിയില്ല"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "അംഗങ്ങൾക്ക് അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാമായ കുടുംബ റോളുകൾ, കോമ കൊണ്ട് വേർതിരിച്ച റോൾ ഐഡികളുടെ പട്ടികയായി."
+
+#: 
+msgid "Find someone"
+msgstr "ഒരാളെ കണ്ടെത്തുക"
+
+#: 
+msgid "Fix by hand"
+msgstr "കൈകൊണ്ട് ശരിയാക്കുക"
+
+#: 
+msgid "Fix shared emails"
+msgstr "പങ്കിട്ട ഇമെയിലുകൾ ശരിയാക്കുക"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "ഒരു സ്റ്റാഫ് സൈൻ-ഇനിൽ നിന്ന്"
+
+#: 
+msgid "Give a permission"
+msgstr "ഒരു അനുമതി നൽകുക"
+
+#: 
+msgid "Give a portal permission"
+msgstr "ഒരു പോർട്ടൽ അനുമതി നൽകുക"
+
+#: 
+msgid "Give each person their own email"
+msgstr "ഓരോ വ്യക്തിക്കും സ്വന്തം ഇമെയിൽ നൽകുക"
+
+#: 
+msgid "Give permission"
+msgstr "അനുമതി നൽകുക"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "%2$s വരെ %1$s നൽകിയത്"
+
+#: 
+msgid "Given by %s"
+msgstr "%s നൽകിയത്"
+
+#: 
+msgid "Given to"
+msgstr "നൽകിയത്"
+
+#: 
+msgid "Given to Everyone"
+msgstr "എല്ലാവർക്കും നൽകി"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "നൽകി, പക്ഷേ പ്രാബല്യത്തിലില്ല"
+
+#: 
+msgid "Go to sign in"
+msgstr "സൈൻ ഇൻ ചെയ്യാൻ പോകുക"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "അംഗ പോർട്ടലിലേക്ക് പോകുക"
+
+#: 
+msgid "Has signed in"
+msgstr "സൈൻ ഇൻ ചെയ്തിട്ടുണ്ട്"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "സൈൻ ഇൻ ചെയ്തിട്ടുണ്ട്: അവരുടെ സെഷനുകളും ഉപകരണങ്ങളും അവസാനിക്കും"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാനുള്ള കോഡ് ഇതാ. നിങ്ങൾ അത് ആവശ്യപ്പെട്ട ബ്രൗസറിലെ സൈൻ-ഇൻ പേജിൽ ടൈപ്പ് ചെയ്യുക. അല്ലെങ്കിൽ ഈ ഉപകരണത്തിൽ സൈൻ ഇൻ ചെയ്യാൻ ബട്ടൺ അമർത്തുക."
+
+#: 
+msgid "Hide Permissions"
+msgstr "അനുമതികൾ മറയ്ക്കുക"
+
+#: 
+msgid "How"
+msgstr "എങ്ങനെ"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "ഒരു മണിക്കൂറിൽ ഒരു IP വിലാസത്തിന് ആവശ്യപ്പെടാവുന്ന അംഗ പോർട്ടൽ സൈൻ-ഇൻ ഇമെയിലുകളുടെ എണ്ണം. പരിധി വേണ്ടെങ്കിൽ 0 ആക്കുക, ഉദാഹരണത്തിന് എല്ലാവരും ഒരു വിലാസത്തിലൂടെ ChurchCRM-ൽ എത്തുമ്പോൾ."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "അംഗം സൈൻ ഇൻ നിലനിർത്താൻ തിരഞ്ഞെടുത്ത ശേഷം ഒരു ഉപകരണം അംഗ പോർട്ടലിൽ എത്ര ദിവസം സൈൻ ഇൻ ആയി നിൽക്കും. തിരഞ്ഞെടുപ്പ് നീക്കം ചെയ്യാൻ 0 ആക്കുക."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "എത്ര നിഷ്ക്രിയ മിനിറ്റുകൾക്ക് ശേഷം ഒരു അംഗ പോർട്ടൽ സെഷൻ അവസാനിക്കും."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "ഒരു അംഗ പോർട്ടൽ സൈൻ-ഇൻ കോഡും ലിങ്കും എത്ര മിനിറ്റ് സാധുവായി നിൽക്കും."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "നിഷ്ക്രിയ സമയം (മിനിറ്റ്)"
+
+#: 
+msgid "Idle too long"
+msgstr "വളരെ നേരം നിഷ്ക്രിയം"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "%1$s നിങ്ങളുടെ പുതിയ വിലാസമാണെങ്കിൽ, അത് സ്ഥിരീകരിക്കാൻ താഴെയുള്ള ബട്ടൺ ഉപയോഗിക്കുക. സ്ഥിരീകരിക്കുന്നതുവരെ സൈൻ ഇൻ ചെയ്യാൻ ഉപയോഗിക്കാനാവില്ല. ലിങ്ക് ഒരിക്കൽ മാത്രം പ്രവർത്തിക്കും, %2$s വരെ."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "ഈ വിലാസം സൈൻ ഇൻ ചെയ്യാൻ ഉപയോഗിക്കാമെങ്കിൽ, ഞങ്ങൾ ഒരു കോഡ് ഇമെയിൽ ചെയ്തു. കുറച്ച് മിനിറ്റിന് ശേഷവും ഒന്നുമില്ലേ? പള്ളി ഓഫീസിനോട് ചോദിക്കുക."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "നിങ്ങൾ ചേർത്തതല്ലെങ്കിൽ, സൈൻ-ഇൻ, ഉപകരണങ്ങൾ പേജിൽ അത് നീക്കം ചെയ്ത് പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "ഈ മാറ്റം നിങ്ങൾ ആവശ്യപ്പെട്ടതല്ലെങ്കിൽ പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "ഇത് നിങ്ങൾ ആവശ്യപ്പെട്ടതല്ലെങ്കിൽ പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "ഇത് കാലഹരണപ്പെട്ടിരിക്കാം അല്ലെങ്കിൽ ഇതിനകം ഉപയോഗിച്ചിരിക്കാം. സഹായം വേണമെങ്കിൽ പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "അതിന്റെ പ്ലഗിൻ ഇൻസ്റ്റാൾ ചെയ്തിട്ടില്ല"
+
+#: 
+msgid "Jump to a letter"
+msgstr "ഒരു അക്ഷരത്തിലേക്ക് പോകുക"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "എന്നെ സൈൻ ഇൻ ആയി നിർത്തുക (ദിവസം)"
+
+#: 
+msgid "Keeps it"
+msgstr "അത് നിലനിർത്തുന്നു"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "സ്ഥിരീകരിക്കാത്ത ഇമെയിലിന്റെ തരം"
+
+#: 
+msgid "Last day"
+msgstr "അവസാന ദിവസം"
+
+#: 
+msgid "Last used"
+msgstr "അവസാനം ഉപയോഗിച്ചത്"
+
+#: 
+msgid "Last used %s"
+msgstr "അവസാനം ഉപയോഗിച്ചത് %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "%s-ന്റെ നേതാവ്"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "അംഗ സൈൻ-ഇൻ ഓൺ ആയിരിക്കുമ്പോൾ, വ്യക്തിയുടെ പ്രവർത്തന മെനുവിൽ നിന്ന് അഡ്മിനിസ്ട്രേറ്റർമാർക്ക് ആ വ്യക്തിയായി അംഗ പോർട്ടൽ തുറക്കാൻ അനുവദിക്കുക."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "അംഗങ്ങൾക്ക് പാസ്‌കീകൾ ചേർത്ത് അവ ഉപയോഗിച്ച് അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാൻ അനുവദിക്കുക."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "അംഗങ്ങൾക്ക് സ്വന്തം ഇമെയിൽ വിലാസം ഉപയോഗിച്ച് അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാൻ അനുവദിക്കുക. ഇമെയിൽ അയയ്ക്കൽ പ്രവർത്തിക്കുമ്പോൾ മാത്രമേ ഇത് ഓണാക്കാനാവൂ."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "അംഗങ്ങൾക്ക് ഇമെയിൽ ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്യാൻ അനുവദിക്കുക"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "ലിങ്കിന്റെയും കോഡിന്റെയും കാലാവധി (മിനിറ്റ്)"
+
+#: 
+msgid "Login as %s"
+msgstr "%s ആയി ലോഗിൻ"
+
+#: 
+msgid "Login as Person"
+msgstr "വ്യക്തിയായി ലോഗിൻ"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "വ്യക്തിയായി ലോഗിൻ ആരംഭിക്കാനായില്ല."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "വ്യക്തിയായി ലോഗിൻ അവസാനിച്ചു: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "വ്യക്തിയായി ലോഗിൻ ചരിത്രം"
+
+#: 
+msgid "Login as Person started"
+msgstr "വ്യക്തിയായി ലോഗിൻ ആരംഭിച്ചു"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "വ്യക്തിയായി ലോഗിൻ നിർത്തി"
+
+#: 
+msgid "Look up anyone"
+msgstr "ആരെയും തിരയുക"
+
+#: 
+msgid "Loses it"
+msgstr "അത് നഷ്ടപ്പെടുന്നു"
+
+#: 
+msgid "Manage a team"
+msgstr "ഒരു ടീം നിയന്ത്രിക്കുക"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "എന്റെ സൈൻ-ഇനും ഉപകരണങ്ങളും നിയന്ത്രിക്കുക"
+
+#: 
+msgid "Matches: %s"
+msgstr "യോജിച്ചവ: %s"
+
+#: 
+msgid "May sign in"
+msgstr "സൈൻ ഇൻ ചെയ്യാം"
+
+#: 
+msgid "May sign in now"
+msgstr "ഇപ്പോൾ സൈൻ ഇൻ ചെയ്യാം"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "അംഗ പോർട്ടൽ സൈൻ-ഇൻ കോഡ്"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "അംഗ പോർട്ടൽ സൈൻ-ഇൻ അറിയിപ്പ്"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "അംഗങ്ങൾക്കും സ്റ്റാഫ് സൈൻ-ഇനിൽ നിന്ന് പോർട്ടൽ തുറക്കുന്ന സ്റ്റാഫിനും വേണ്ടി അംഗ പോർട്ടൽ സൈൻ-ഇനുകളും പ്രവർത്തനവും."
+
+#: 
+msgid "Member sign-in"
+msgstr "അംഗ സൈൻ-ഇൻ"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "അംഗ സൈൻ-ഇൻ ഓരോ വ്യക്തിക്കും ഒരു കോഡ് ഇമെയിൽ ചെയ്യുന്നു, അതിനാൽ ഓണാക്കുന്നതിന് മുമ്പ് ഇമെയിൽ (SMTP) പ്രവർത്തിക്കണം."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "അംഗ സൈൻ-ഇൻ ഓഫ് ആണ്"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "പള്ളിക്ക് അംഗ സൈൻ-ഇൻ ഓഫ് ആണ്."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "അംഗ സൈൻ-ഇൻ ഓഫ് ആണ്."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "അംഗ സൈൻ-ഇൻ ഇതുവരെ ലഭ്യമല്ല. പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "മരിച്ചവരെയോ, നിഷ്ക്രിയരെയോ, നിഷ്ക്രിയ കുടുംബത്തിലുള്ളവരെയോ, അവലോകനം കാത്തിരിക്കുന്നവരെയോ, സൈൻ-ഇൻ പ്രവർത്തനരഹിതമാക്കൽ ഓൺ ആയവരെയോ അംഗ സൈൻ-ഇൻ ഒരിക്കലും അനുവദിക്കില്ല. മറ്റാരെ അനുവദിക്കണമെന്ന് ഈ തിരഞ്ഞെടുപ്പുകൾ തീരുമാനിക്കും."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "അംഗ സൈൻ-ഇൻ ഓരോ അംഗത്തിനും ഇമെയിൽ വഴി ഒരു കോഡ് അയയ്ക്കുന്നു, അതിനാൽ ChurchCRM-ന് ഇമെയിൽ അയയ്ക്കാൻ കഴിയുമ്പോൾ മാത്രമേ ഇത് ഓണാക്കാനാവൂ. ആദ്യം ഇമെയിൽ ഓണാക്കി മെയിൽ സെർവർ സജ്ജമാക്കുക."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "കുറഞ്ഞത് ഒരു കലണ്ടറെങ്കിലും ഓൺ ആണെങ്കിൽ അംഗങ്ങൾ കലണ്ടർ പേജ് കാണും."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "അംഗങ്ങൾ ഒരു പേരിന്റെ കുറഞ്ഞത് %d അക്ഷരങ്ങൾ ടൈപ്പ് ചെയ്ത് പരമാവധി %d യോജിപ്പുകൾ കാണും. മുഴുവൻ പട്ടിക ഒരിക്കലും കാണിക്കില്ല."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "ഇപ്പോൾ സൈൻ ഇൻ ആയ അംഗങ്ങൾ സൈൻ ഔട്ട് ആകും, അംഗ സൈൻ-ഇൻ വീണ്ടും ഓണാക്കുന്നതുവരെ ആർക്കും ഇമെയിൽ ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്യാനാവില്ല."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "ഈ വർഗീകരണങ്ങളുള്ള അംഗങ്ങൾ അംഗ പോർട്ടൽ മെനുവിൽ ഡയറക്ടറി കാണും."
+
+#: 
+msgid "Minimum age"
+msgstr "കുറഞ്ഞ പ്രായം"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "അടുത്ത മണിക്കൂറിൽ ഈ വിലാസം ഉപയോഗിച്ചുള്ള കൂടുതൽ ശ്രമങ്ങൾ മറ്റൊരു അറിയിപ്പ് അയയ്ക്കില്ല."
+
+#: 
+msgid "Moved from the family email"
+msgstr "കുടുംബ ഇമെയിലിൽ നിന്ന് നീക്കി"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "കുടുംബനാഥനിലേക്ക് നീക്കി"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "ഇണയിലേക്ക് നീക്കി"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "ഞങ്ങളുടെ പള്ളിയിൽ പുതിയതാണോ? നിങ്ങളുടെ കുടുംബത്തെക്കുറിച്ച് പറയുക, നിങ്ങളെ സ്വാഗതം ചെയ്യാൻ ഞങ്ങൾ ബന്ധപ്പെടും."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "ഇതുവരെ വ്യക്തിയായി ലോഗിൻ സെഷനുകളില്ല."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "ജനന തീയതിയില്ല, കുടുംബനാഥനോ ഇണയോ അല്ല"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "ഒരു കലണ്ടറും ഓൺ അല്ല, അതിനാൽ അംഗങ്ങൾ കലണ്ടർ പേജ് കാണുന്നില്ല."
+
+#: 
 msgid "No changes"
 msgstr "മാറ്റങ്ങൾ ഇല്ല"
+
+#: 
+msgid "No changes made."
+msgstr "മാറ്റങ്ങളൊന്നും ചെയ്തില്ല."
+
+#: 
+msgid "No family role"
+msgstr "കുടുംബ റോൾ ഇല്ല"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "കുടുംബനാഥനോ ഇണയോ കുടുംബ ഇമെയിൽ സ്വീകരിക്കാനാവില്ല."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "കുടുംബനാഥനോ ഇണയോ ഇത് പങ്കിടുന്നില്ല"
+
+#: 
+msgid "No match"
+msgstr "യോജിപ്പില്ല"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "ഇതുവരെ ആരും സൈൻ-ഇൻ നിയമവുമായി യോജിക്കുന്നില്ല. കൂടുതൽ കുടുംബ റോളുകളോ വർഗീകരണങ്ങളോ ടിക്ക് ചെയ്യുക, അല്ലെങ്കിൽ കുറഞ്ഞ പ്രായം കുറയ്ക്കുക."
+
+#: 
+msgid "No passkey was added."
+msgstr "പാസ്‌കീയൊന്നും ചേർത്തില്ല."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "പാസ്‌കീ ഉപയോഗിച്ചില്ല. വീണ്ടും ശ്രമിക്കുക, അല്ലെങ്കിൽ ഇമെയിൽ വിലാസം ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്യുക."
+
+#: 
+msgid "No person has this email"
+msgstr "ഈ ഇമെയിൽ ആർക്കുമില്ല"
+
+#: 
+msgid "No personal email"
+msgstr "വ്യക്തിഗത ഇമെയിൽ ഇല്ല"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "ആരെയും സൈൻ ഇൻ ചെയ്യുന്നതിൽ നിന്ന് തടയുന്ന പങ്കിട്ട ഇമെയിലുകളില്ല."
+
+#: 
+msgid "No such person"
+msgstr "അത്തരം വ്യക്തിയില്ല"
+
+#: 
+msgid "No, thanks"
+msgstr "വേണ്ട, നന്ദി"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "സൈൻ ഇൻ ചെയ്യാവുന്ന രണ്ടുപേർ പങ്കിടുന്ന വ്യക്തിഗത ഇമെയിൽ ഉപയോഗിച്ച് ആർക്കും സൈൻ ഇൻ ചെയ്യാനാവില്ല. ഒരു കുടുംബത്തിനുള്ളിൽ പങ്കിട്ട വിലാസം കുടുംബനാഥൻ നിലനിർത്തും, അല്ലാത്തപക്ഷം ഇണ (മൂത്തയാൾ ആദ്യം). അത് പങ്കിടുന്ന മറ്റെല്ലാവരും അത് നഷ്ടപ്പെടും. മറ്റൊരു വിധത്തിൽ ശരിയാക്കേണ്ടവ ടിക്ക് മാറ്റുക."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "ഇതുവരെ ആർക്കും സൈൻ ഇൻ ചെയ്യാനാവില്ല: ആർക്ക് സൈൻ ഇൻ ചെയ്യാം എന്നതിന് കീഴിൽ കുറഞ്ഞത് ഒരു വർഗീകരണമെങ്കിലും ടിക്ക് ചെയ്യുക."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "ഇതുവരെ ആർക്കും സൈൻ ഇൻ ചെയ്യാനാവില്ല: ആർക്ക് സൈൻ ഇൻ ചെയ്യാം എന്നതിന് കീഴിൽ കുറഞ്ഞത് ഒരു കുടുംബ റോളും ഒരു വർഗീകരണവും ടിക്ക് ചെയ്യുക."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "ഇതുവരെ ആർക്കും സൈൻ ഇൻ ചെയ്യാനാവില്ല: ആർക്ക് സൈൻ ഇൻ ചെയ്യാം എന്നതിന് കീഴിൽ കുറഞ്ഞത് ഒരു കുടുംബ റോളെങ്കിലും ടിക്ക് ചെയ്യുക."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "ഡയറക്ടറിയിൽ ആ പേരുമായി ആരും യോജിക്കുന്നില്ല."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "ഡയറക്ടറിയിൽ ഇതുവരെ ആരെയും പട്ടികപ്പെടുത്തിയിട്ടില്ല."
+
+#: 
+msgid "Not ended"
+msgstr "അവസാനിച്ചിട്ടില്ല"
+
+#: 
+msgid "Not moved"
+msgstr "നീക്കിയില്ല"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "ഏത് ഇമെയിലാണ് ഞങ്ങളുടെ പക്കലുള്ളതെന്ന് ഉറപ്പില്ലേ? പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "Not yet"
+msgstr "ഇതുവരെ ഇല്ല"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "കുടുംബ ടൈംലൈനിൽ കുറിച്ചു"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "അവരിൽ സൈൻ ഇൻ ചെയ്തിട്ടുള്ളവർ: {{total}}. അവരെ എല്ലായിടത്തും സൈൻ ഔട്ട് ചെയ്യും, വിലാസത്തിന് ഒരു അറിയിപ്പ് ലഭിക്കും."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "എല്ലാവർക്കും ഓഫ്: \"%s\" ഓഫ് ആണ്"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "എല്ലാവർക്കും ഓഫ്: Volunteer Management V2 ആയി സജ്ജമാക്കിയിട്ടില്ല"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "എല്ലാവർക്കും ഓഫ്: അതിന്റെ സവിശേഷത ഓഫ് ആണ്"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "എല്ലാവർക്കും ഓഫ്: അതിന്റെ പ്ലഗിൻ ഓഫ് ആണ്"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "എല്ലാവർക്കും ഓഫ്: അംഗങ്ങളുമായി ഒരു കലണ്ടറും പങ്കിട്ടിട്ടില്ല"
+
+#: 
+msgid "Office list"
+msgstr "ഓഫീസ് പട്ടിക"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "സ്ഥിരീകരിച്ചാൽ അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാൻ ഉപയോഗിക്കാം."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "നിങ്ങൾക്ക് സ്ഥിരീകരിക്കാവുന്ന വിലാസങ്ങൾ മാത്രമേ തിരഞ്ഞെടുക്കാനാവൂ."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "അഡ്മിനിസ്ട്രേറ്റർമാർ മാത്രമേ കാരണം കാണൂ."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "സ്റ്റാഫ് അക്കൗണ്ടോ പോർട്ടൽ അനുമതികളോ ഉള്ള വ്യക്തിയുടെ ഇമെയിൽ അഡ്മിനിസ്ട്രേറ്റർക്ക് മാത്രമേ മാറ്റാനാവൂ."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "വ്യക്തി സൈൻ ഇൻ ചെയ്ത ഇമെയിലിന് പകരമായി വന്ന ഇമെയിൽ അഡ്മിനിസ്ട്രേറ്റർക്ക് മാത്രമേ സ്ഥിരീകരിക്കാനാവൂ."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "സ്റ്റാഫ് അക്കൗണ്ടോ പോർട്ടൽ അനുമതികളോ ഉള്ള വ്യക്തിയുടെ ഇമെയിൽ അഡ്മിനിസ്ട്രേറ്റർക്ക് മാത്രമേ സ്ഥിരീകരിക്കാനാവൂ."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "ഈ വിലാസം അഡ്മിനിസ്ട്രേറ്റർക്ക് മാത്രമേ ശരിയാക്കാനാവൂ: ഇത് പങ്കിടുന്ന ഒരാൾക്ക് സ്റ്റാഫ് അക്കൗണ്ടോ പോർട്ടൽ അനുമതികളോ ഉണ്ട്."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "നിങ്ങളുടെ കുടുംബത്തിലെ ഒരു മുതിർന്നയാൾക്ക് മാത്രമേ ഈ വിവരങ്ങൾ സ്ഥിരീകരിക്കാനാവൂ. പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "ആ വ്യക്തിയുടേതാണെന്ന് നിങ്ങൾക്കറിയാവുന്ന വിലാസങ്ങൾ മാത്രം സ്ഥിരീകരിക്കുക. ഒരു വിലാസം വായിക്കുന്ന ആർക്കും ആ വ്യക്തിയായി സൈൻ ഇൻ ചെയ്യാം."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "സ്വന്തം ഇമെയിലുള്ള ജീവിച്ചിരിക്കുന്നവർക്ക് മാത്രമേ ഓഫീസ് പട്ടികയിൽ ഉണ്ടാകാനാവൂ."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "സ്വന്തം ഇമെയിലുള്ളവരെ മാത്രമേ ചേർക്കാനാവൂ."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "ഐച്ഛിക ടെലിമെട്രിയിൽ പേജ് റൂട്ടുകൾ, സജീവ ലോക്കേൽ, CRM പതിപ്പ്, PHP പതിപ്പ്, OS കുടുംബം, പള്ളി വിവര ക്രമീകരണങ്ങളിലെ രാജ്യം, ക്രമരഹിത ഇൻസ്റ്റാളേഷൻ ഐഡി എന്നിവ ഉൾപ്പെടാം. പരാജയ റിപ്പോർട്ടുകളിൽ ഇൻസ്റ്റാളേഷൻ ഐഡി ഉൾപ്പെടില്ല. ഡാറ്റ അമേരിക്കൻ ഐക്യനാടുകളിലെ PostHog-ലേക്ക് അയയ്ക്കുന്നു."
+
+#: 
+msgid "Passkey"
+msgstr "പാസ്‌കീ"
+
+#: 
+msgid "Passkey added"
+msgstr "പാസ്‌കീ ചേർത്തു"
+
+#: 
+msgid "Passkey removed"
+msgstr "പാസ്‌കീ നീക്കം ചെയ്തു"
+
+#: 
+msgid "Passkeys"
+msgstr "പാസ്‌കീകൾ"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "പാസ്‌കീകൾ ഓഫ് ആണ്."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "ഇവിടെ പാസ്‌കീകൾ ഉപയോഗിക്കാനാവില്ല."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "ഈ സൈറ്റിൽ ഇതുവരെ പാസ്‌കീകൾ ഉപയോഗിക്കാനാവില്ല. പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "പാസ്‌കീകൾക്ക് സൈറ്റ് വിലാസത്തിൽ IP വിലാസമല്ല, ഒരു ഹോസ്റ്റ് നാമം വേണം."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "പാസ്‌കീകൾക്ക് ഈ സൈറ്റിലേക്ക് സുരക്ഷിത (HTTPS) കണക്ഷൻ വേണം."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "പാസ്‌കീകൾക്ക് സൈറ്റ് വിലാസം Config.php-യിൽ സജ്ജമാക്കണം."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "പാസ്‌കീകൾക്ക് സൈറ്റ് HTTPS വഴി നൽകണം. അങ്ങനെ ആകുന്നതുവരെ അംഗങ്ങൾക്ക് പാസ്‌കീകൾ വാഗ്ദാനം ചെയ്യില്ല."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "പാസ്‌കീകൾ %s-ൽ മാത്രമേ പ്രവർത്തിക്കൂ."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "പാസ്‌കീകൾ: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "സേവ് ചെയ്ത ക്രമീകരണങ്ങൾ അനുവദിക്കുന്ന ആളുകൾ: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "ആർക്കെങ്കിലും അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാനാകാത്തപ്പോൾ ഇമെയിൽ ചെയ്യേണ്ട ആളുകൾ"
+
+#: 
+msgid "People who hold it"
+msgstr "അത് വഹിക്കുന്ന ആളുകൾ"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "ഒരു വിലാസം നഷ്ടപ്പെടുന്ന ആളുകൾ: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "ഒരു വിലാസം നഷ്ടപ്പെട്ട ആളുകൾ: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "സൈൻ ഇൻ ചെയ്യാവുന്ന ആളുകൾ: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "മുമ്പ് അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്തിരുന്ന ആളുകൾ: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "ഈ വർഗീകരണങ്ങളുള്ള ആളുകൾ ഡയറക്ടറിയിൽ കാണും. ഓരോ വർഗീകരണവും എത്ര സജീവരായ ആളുകൾക്കുണ്ടെന്നതാണ് സംഖ്യ."
+
+#: 
+msgid "People with this email: %s"
+msgstr "ഈ ഇമെയിലുള്ള ആളുകൾ: %s"
+
+#: 
+msgid "Person %d"
+msgstr "വ്യക്തി %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "പട്ടികയിൽ നിന്ന് വർഗീകരണങ്ങൾ തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "പട്ടികയിൽ നിന്ന് കുടുംബ റോളുകൾ തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "ഓഫീസ് പട്ടികയ്ക്ക് ആളുകളെ തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "പട്ടികയിൽ നിന്ന് ഒരു ഭാഷ തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "Portal permission given"
+msgstr "പോർട്ടൽ അനുമതി നൽകി"
+
+#: 
+msgid "Portal permission removed"
+msgstr "പോർട്ടൽ അനുമതി നീക്കം ചെയ്തു"
+
+#: 
+msgid "Portal permissions"
+msgstr "പോർട്ടൽ അനുമതികൾ"
+
+#: 
+msgid "Portal sign-in"
+msgstr "പോർട്ടൽ സൈൻ-ഇൻ"
+
+#: 
+msgid "Problem"
+msgstr "പ്രശ്നം"
+
+#: 
+msgid "Reason"
+msgstr "കാരണം"
+
+#: 
+msgid "Reason: %s"
+msgstr "കാരണം: %s"
+
+#: 
+msgid "Refused"
+msgstr "നിരസിച്ചു"
+
+#: 
+msgid "Register your family"
+msgstr "നിങ്ങളുടെ കുടുംബം രജിസ്റ്റർ ചെയ്യുക"
+
+#: 
+msgid "Remembered device"
+msgstr "ഓർത്ത ഉപകരണം"
+
+#: 
+msgid "Remembered device removed"
+msgstr "ഓർത്ത ഉപകരണം നീക്കം ചെയ്തു"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "ഓർത്ത ഉപകരണങ്ങൾ: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "ഇമെയിലുകൾ നീക്കം ചെയ്യുക"
+
+#: 
+msgid "Remove this passkey"
+msgstr "ഈ പാസ്‌കീ നീക്കം ചെയ്യുക"
+
+#: 
+msgid "Remove this permission"
+msgstr "ഈ അനുമതി നീക്കം ചെയ്യുക"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "നീക്കം ചെയ്തത്: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "ഒരു സൈൻ-ഇന് ശേഷം മാറ്റി"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "മറ്റൊരു സൈൻ-ഇൻ മാറ്റി"
+
+#: 
+msgid "Result"
+msgstr "ഫലം"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "ഒരു സന്നദ്ധ ടീം നടത്തുക: സ്ഥാനങ്ങൾ, സന്നദ്ധപ്രവർത്തകർ, ഷെഡ്യൂളുകൾ, സ്റ്റാഫിംഗ്, എണ്ണം."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "സൈൻ-ഇൻ എന്തുകൊണ്ട് പ്രവർത്തനരഹിതമാക്കുന്നുവെന്ന് പറയുക."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "ഈ അനുമതി എന്തുകൊണ്ട് നൽകുന്നുവെന്ന് പറയുക."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "ഫയലിലുള്ള ആരെയും തിരയുക. ഓരോ വരിയും അവർക്ക് അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാമോ എന്നും, ഇല്ലെങ്കിൽ എന്തുകൊണ്ടെന്നും പറയും."
+
+#: 
+msgid "Search method"
+msgstr "തിരയൽ രീതി"
+
+#: 
+msgid "Search only"
+msgstr "തിരയൽ മാത്രം"
+
+#: 
+msgid "See family contact details"
+msgstr "കുടുംബ ബന്ധപ്പെടൽ വിവരം കാണുക"
+
+#: 
+msgid "See my family"
+msgstr "എന്റെ കുടുംബം കാണുക"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "ഈ വ്യക്തി കാണുന്നതുപോലെ അംഗ പോർട്ടൽ കാണണോ? നിങ്ങൾ നിർത്തുക അമർത്തുന്നതുവരെ സ്റ്റാഫ് പേജുകൾ അടഞ്ഞിരിക്കും, സെഷൻ ഈ പേജിലും നിങ്ങളുടെ ഉപയോക്തൃ പേജിലും രേഖപ്പെടുത്തും."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "പള്ളി അംഗങ്ങളുമായി പങ്കിടുന്ന കലണ്ടറുകൾ കാണുക, അവ സബ്‌സ്‌ക്രൈബ് ചെയ്യുക."
+
+#: 
+msgid "See the church calendar"
+msgstr "പള്ളി കലണ്ടർ കാണുക"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "അവരെ സൈൻ ഇൻ ചെയ്യിക്കുന്ന ഉപകരണങ്ങളും പാസ്‌കീകളും കാണുക, അവയിൽ ഏതെങ്കിലും സൈൻ ഔട്ട് ചെയ്യുകയോ നീക്കം ചെയ്യുകയോ ചെയ്യുക."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "അവരുടെ കുടുംബത്തിലുള്ളവരുടെ ഇമെയിൽ വിലാസങ്ങളും ഫോൺ നമ്പറുകളും കാണുക."
+
+#: 
+msgid "See the member directory"
+msgstr "അംഗ ഡയറക്ടറി കാണുക"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "അവരുടെ കുടുംബത്തിലുള്ളവരുടെ പേരുകളും ഫോട്ടോകളും കാണുക."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "പള്ളി ഡയറക്ടറിയിൽ പട്ടികപ്പെടുത്തുന്ന ആളുകളെ, പള്ളി പങ്കിടാൻ തിരഞ്ഞെടുക്കുന്ന വിവരങ്ങളോടെ കാണുക."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "അവരുടെ സന്നദ്ധ ഷെഡ്യൂൾ കാണുക, തുറന്ന സ്ഥലങ്ങളിൽ ചേരുക, പകരക്കാരനെ ആവശ്യപ്പെടുക."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "ബ്രൗസ് true അല്ലെങ്കിൽ false ആയി അയയ്ക്കുക."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "വർഗീകരണങ്ങൾ ഐഡികളുടെ പട്ടികയായി അയയ്ക്കുക."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "ഡയറക്ടറി ക്രമീകരണങ്ങൾ ഒരു JSON ഒബ്ജക്റ്റായി അയയ്ക്കുക."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "കാണിക്കേണ്ട ഫീൽഡുകൾ true, false മൂല്യങ്ങളുടെ ഒബ്ജക്റ്റായി അയയ്ക്കുക."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "ക്രമീകരണങ്ങൾ ഒരു JSON ഒബ്ജക്റ്റായി അയയ്ക്കുക."
+
+#: 
+msgid "Session ended"
+msgstr "സെഷൻ അവസാനിച്ചു"
 
 #: 
 msgid "Set up email"
 msgstr "ഇമെയിൽ സജ്ജമാക്കുക"
 
 #: 
+msgid "Set up email first."
+msgstr "ആദ്യം ഇമെയിൽ സജ്ജമാക്കുക."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "ശരിയാക്കിയ പങ്കിട്ട വിലാസങ്ങൾ: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "ശരിയാക്കേണ്ട പങ്കിട്ട വിലാസങ്ങൾ: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "പങ്കിടുന്നത്"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "ആളുകളെ സൈൻ ഇൻ ചെയ്യുന്നതിൽ നിന്ന് തടയുന്ന പങ്കിട്ട ഇമെയിലുകൾ"
+
+#: 
+msgid "Show or hide this member"
+msgstr "ഈ അംഗത്തെ കാണിക്കുക അല്ലെങ്കിൽ മറയ്ക്കുക"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "താഴെ തിരഞ്ഞെടുത്ത വർഗീകരണങ്ങൾക്ക് അംഗ പോർട്ടലിൽ ഡയറക്ടറി പേജ് കാണിക്കുക."
+
+#: 
+msgid "Show the member directory"
+msgstr "അംഗ ഡയറക്ടറി കാണിക്കുക"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "അംഗ പോർട്ടലിൽ അംഗ ഡയറക്ടറി കാണിക്കുക."
+
+#: 
+msgid "Show with year"
+msgstr "വർഷത്തോടെ കാണിക്കുക"
+
+#: 
+msgid "Show without year"
+msgstr "വർഷമില്ലാതെ കാണിക്കുക"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "ആദ്യ %d യോജിപ്പുകൾ കാണിക്കുന്നു. നിങ്ങൾ തിരയുന്ന വ്യക്തിയെ കണ്ടെത്താൻ പേരിന്റെ കൂടുതൽ ടൈപ്പ് ചെയ്യുക."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "%s ആയി സൈൻ ഇൻ ചെയ്യണോ?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "അടുത്ത തവണ ഈ ഉപകരണത്തിൽ Face ID, വിരലടയാളം അല്ലെങ്കിൽ ഉപകരണ PIN ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്യുക."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "നിങ്ങളുടെ കുടുംബം, പള്ളി കലണ്ടർ, ശുശ്രൂഷിക്കാനുള്ള വഴികൾ കാണാൻ സൈൻ ഇൻ ചെയ്യുക. പാസ്‌വേഡോ അക്കൗണ്ടോ വേണ്ട."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "പാസ്‌കീ ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്യുക"
+
+#: 
+msgid "Sign out every device"
+msgstr "എല്ലാ ഉപകരണത്തിലും സൈൻ ഔട്ട് ചെയ്യുക"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "ഇപ്പോൾ എല്ലാ ഉപകരണത്തിലും സൈൻ ഔട്ട് ചെയ്യണോ?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "എല്ലായിടത്തും സൈൻ ഔട്ട് ചെയ്യുക"
+
+#: 
+msgid "Sign out this device"
+msgstr "ഈ ഉപകരണം സൈൻ ഔട്ട് ചെയ്യുക"
+
+#: 
+msgid "Sign-in"
+msgstr "സൈൻ-ഇൻ"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "സൈൻ-ഇനും ഉപകരണങ്ങളും"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "സൈൻ-ഇൻ പ്രവർത്തനരഹിതമാക്കാനായില്ല."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "സൈൻ-ഇൻ പ്രവർത്തനക്ഷമമാക്കാനായില്ല."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "സൈൻ-ഇൻ പ്രവർത്തനരഹിതം"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "സൈൻ-ഇൻ ഇമെയിൽ ആവശ്യപ്പെട്ടു"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "ഓരോ IP വിലാസത്തിനും ഓരോ മണിക്കൂറിലും സൈൻ-ഇൻ ഇമെയിലുകൾ"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "സൈൻ-ഇൻ പ്രവർത്തനക്ഷമം"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "ഈ വ്യക്തിക്ക് സൈൻ-ഇൻ ഇതിനകം പ്രവർത്തനരഹിതമാണ്."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "സൈൻ-ഇൻ പ്രവർത്തനരഹിതമാണ്"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "ഈ വ്യക്തിക്ക് സൈൻ-ഇൻ പ്രവർത്തനരഹിതമാണ്."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "ഈ വ്യക്തിക്ക് സൈൻ-ഇൻ പ്രവർത്തനക്ഷമമാണ്."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "ഈ വ്യക്തിക്ക് സൈൻ-ഇൻ പ്രവർത്തനരഹിതമല്ല."
+
+#: 
+msgid "Sign-in refused"
+msgstr "സൈൻ-ഇൻ നിരസിച്ചു"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "ബന്ധിപ്പിച്ച വ്യക്തിയുടെ റെക്കോർഡിൽ ഇത് പരിഹരിക്കുന്നതുവരെ സൈൻ-ഇൻ, സെഷനുകൾ, API കീ എന്നിവ തടഞ്ഞിരിക്കുന്നു."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "സൈൻ ഇൻ ചെയ്തവ, കഴിഞ്ഞ 30 ദിവസം"
+
+#: 
+msgid "Signed out"
+msgstr "സൈൻ ഔട്ട് ചെയ്തു"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "അവരുടെ സൈൻ-ഇനിലെ മാറ്റം മൂലം സൈൻ ഔട്ട് ചെയ്തു"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "എല്ലായിടത്തും സൈൻ ഔട്ട് ചെയ്തു"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "ആരോ അംഗ പോർട്ടൽ സൈൻ-ഇൻ ഇമെയിൽ ആവശ്യപ്പെട്ടു, പക്ഷേ ഒന്നും അയച്ചില്ല."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "ആർക്കോ അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാനായില്ല"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "വ്യക്തിയായി ലോഗിൻ ചെയ്യുമ്പോൾ സ്റ്റാഫ് പേജുകൾ അടഞ്ഞിരിക്കും. തിരികെ പോകാൻ ബാനറിലെ നിർത്തുക അമർത്തുക."
+
+#: 
+msgid "Stop"
+msgstr "നിർത്തുക"
+
+#: 
+msgid "Stopped"
+msgstr "നിർത്തി"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "കുടുംബ വിവരങ്ങൾ ഇപ്പോഴും ശരിയാണോ എന്ന് പള്ളി ഓഫീസിനെ അറിയിക്കുക."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "ആ കോഡ് പ്രവർത്തിച്ചില്ല. ഞങ്ങളിൽ നിന്നുള്ള ഏറ്റവും പുതിയ ഇമെയിൽ പരിശോധിക്കുക, അല്ലെങ്കിൽ പുതിയത് ആവശ്യപ്പെടുക."
+
+#: 
+msgid "That could not be removed."
+msgstr "അത് നീക്കം ചെയ്യാനായില്ല."
+
+#: 
+msgid "That device is signed out."
+msgstr "ആ ഉപകരണം സൈൻ ഔട്ട് ആയി."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "അത് സാധുവായ ഇമെയിൽ വിലാസമല്ല."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "ആ പേജ് വളരെ നേരം തുറന്നിരുന്നു. വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "ആ പാസ്‌കീ നീക്കം ചെയ്തു. ഇനി അത് നിങ്ങളെ സൈൻ ഇൻ ചെയ്യിക്കില്ല."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "അത് വളരെ നേരമെടുത്തു. വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "7.8.3 അപ്‌ഗ്രേഡ് ഓരോ കുടുംബ ഇമെയിലും ഒരു വ്യക്തിക്ക് നൽകി. ഇവയ്ക്ക് അതിന് കഴിഞ്ഞില്ല, അതിനാൽ പകരം കുടുംബ ടൈംലൈനിൽ ഒരു കുറിപ്പ് ഇട്ടു."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "അംഗ പോർട്ടലും അത് അയയ്ക്കുന്ന ഇമെയിലുകളും ഈ ഭാഷ ഉപയോഗിക്കുന്നു."
+
+#: 
+msgid "The change could not be saved."
+msgstr "മാറ്റം സേവ് ചെയ്യാനായില്ല."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "കോഡും ബട്ടണും ഒരിക്കൽ മാത്രം പ്രവർത്തിക്കും, %s വരെ."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "കോഡോ ലിങ്കോ അവരുടെ ഇമെയിൽ ഇനി അല്ലാത്ത ഒരു വിലാസത്തിലേക്ക് പോയി"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "സ്ഥിരീകരണ ഇമെയിൽ അയയ്ക്കാനായില്ല. പിന്നീട് വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "The device is signed out."
+msgstr "ഉപകരണം സൈൻ ഔട്ട് ആയി."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "%1$s-ന് നിങ്ങളുടെ റെക്കോർഡിൽ നിന്ന് ഇമെയിൽ വിലാസം %2$s നീക്കം ചെയ്തു. എല്ലാ ഉപകരണത്തിലും നിങ്ങളെ അംഗ പോർട്ടലിൽ നിന്ന് സൈൻ ഔട്ട് ചെയ്തു."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "%1$s-ന് നിങ്ങളുടെ റെക്കോർഡിലെ ഇമെയിൽ വിലാസം %2$s-ൽ നിന്ന് %3$s-ലേക്ക് മാറ്റി. എല്ലാ ഉപകരണത്തിലും നിങ്ങളെ അംഗ പോർട്ടലിൽ നിന്ന് സൈൻ ഔട്ട് ചെയ്തു."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "ഇമെയിൽ സ്ഥിരീകരിക്കാനായില്ല."
+
+#: 
+msgid "The email could not be sent."
+msgstr "ഇമെയിൽ അയയ്ക്കാനായില്ല."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "ഇമെയിൽ സ്ഥിരീകരിച്ചു. ഇനി സൈൻ ഇൻ ചെയ്യാൻ ഉപയോഗിക്കാം."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "അവസാന തീയതി ആരംഭ തീയതിക്ക് മുമ്പാണ്."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "കുടുംബത്തിന് ജീവിച്ചിരിക്കുന്ന, സജീവമായ കുടുംബനാഥനോ ഇണയോ ഇല്ല"
+
+#: 
+msgid "The family is inactive"
+msgstr "കുടുംബം നിഷ്ക്രിയമാണ്"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "കുടുംബനാഥനും ഇണയും രണ്ടുപേർക്കും സ്വന്തം ഇമെയിൽ ഉണ്ട്"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "അവസാന ദിവസം ഭൂതകാലത്തിലാകരുത്."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "ബന്ധിപ്പിച്ച വ്യക്തിക്ക് സൈൻ ഇൻ ചെയ്യാനാവില്ല, അതിനാൽ ഈ അക്കൗണ്ടിന് സൈൻ ഇൻ ചെയ്യാനാവില്ല"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "പട്ടിക ലോഡ് ചെയ്യാനായില്ല."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "പാസ്‌കീ ചേർക്കാനായില്ല. വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "പാസ്‌കീ സ്ഥിരീകരിക്കാനായില്ല"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "പാസ്‌കീ റെക്കോർഡിലില്ല, അല്ലെങ്കിൽ നീക്കം ചെയ്തു"
+
+#: 
+msgid "The passkey was removed."
+msgstr "പാസ്‌കീ നീക്കം ചെയ്തു."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "ഇത് പങ്കിടുന്നവർ വ്യത്യസ്ത കുടുംബങ്ങളിലാണ്, അല്ലെങ്കിൽ ഒരു കുടുംബത്തിലല്ല"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "ഈ വിലാസം പങ്കിടുന്ന ആളുകൾ മാറി. പങ്കിട്ട ഇമെയിലുകൾ ശരിയാക്കുക വീണ്ടും തുറക്കുക."
+
+#: 
+msgid "The permission could not be given."
+msgstr "അനുമതി നൽകാനായില്ല."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "ഈ ദിവസത്തിന് ശേഷം അനുമതി അവസാനിക്കും. വീണ്ടും നൽകാം."
+
+#: 
+msgid "The permission was given."
+msgstr "അനുമതി നൽകി."
+
+#: 
+msgid "The permission was removed."
+msgstr "അനുമതി നീക്കം ചെയ്തു."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "അനുമതികൾ ലോഡ് ചെയ്യാനായില്ല."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "വ്യക്തി അംഗ പോർട്ടലിൽ ഈ അനുമതി ഉടൻ നഷ്ടപ്പെടും."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "കാരണം പരമാവധി %d അക്ഷരങ്ങൾ ആകാം."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "സൈൻ-ഇൻ നിയമങ്ങൾ അവരെ അനുവദിക്കുന്നു, ഓരോരുത്തർക്കും സൈൻ ഇൻ ചെയ്യാവുന്ന മറ്റാരും ഉപയോഗിക്കാത്ത സ്വന്തം ഇമെയിൽ ഉണ്ട്."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "സൈൻ-ഇൻ നിയമങ്ങൾ അവരെ അനുവദിക്കുന്നു, പക്ഷേ ഇമെയിൽ അനുവദിക്കുന്നില്ല: അവർക്ക് ഇല്ല, സൈൻ ഇൻ ചെയ്യാവുന്ന മറ്റാരുമായി പങ്കിടുന്നു, അല്ലെങ്കിൽ ഇതുവരെ സ്ഥിരീകരിച്ചിട്ടില്ല."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "സൈൻ-ഇൻ ക്രമീകരണങ്ങൾ സേവ് ചെയ്യാനായില്ല."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "സ്ഥിരീകരിക്കാത്ത ഇമെയിൽ മാറി. പേജ് വീണ്ടും ലോഡ് ചെയ്ത് വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "അവരുടെ വർഗീകരണത്തിന് സൈൻ ഇൻ ചെയ്യാനാവില്ല"
+
+#: 
+msgid "Their email changed"
+msgstr "അവരുടെ ഇമെയിൽ മാറ്റി"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "അവരുടെ ഇമെയിൽ ഇതുവരെ സ്ഥിരീകരിച്ചിട്ടില്ല"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "അവരുടെ ഇമെയിൽ മറ്റാരുമായി പങ്കിട്ടിരിക്കുന്നു"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "അവരുടെ കുടുംബ റോളിന് സൈൻ ഇൻ ചെയ്യാനാവില്ല"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "അപ്‌ഗ്രേഡ് അവരുടെ പഴയ ലോഗിനുകൾ നീക്കം ചെയ്തു. സ്വന്തം ഇമെയിൽ ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്യാൻ അംഗ സൈൻ-ഇൻ ഓണാക്കുക."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "അവരുടെ ഓർത്ത ഉപകരണം കാലഹരണപ്പെട്ടു"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "അവരുടെ ഓർത്ത ഉപകരണം സൈൻ ഔട്ട് ആയി"
+
+#: 
+msgid "Theme development"
+msgstr "തീം വികസനം"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "ഐഡി %d ഉള്ള വർഗീകരണമില്ല."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "ഈ തരം പരിധിക്ക് പിക്കർ ഇല്ല."
+
+#: 
+msgid "There is no such audit event."
+msgstr "അത്തരം ഓഡിറ്റ് ഇവന്റ് ഇല്ല."
+
+#: 
+msgid "There is no such email problem."
+msgstr "അത്തരം ഇമെയിൽ പ്രശ്നമില്ല."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "അത്തരം സ്ഥിരീകരിക്കാത്ത ഇമെയിൽ തരമില്ല."
+
+#: 
+msgid "There is no such list."
+msgstr "അത്തരം പട്ടികയില്ല."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "അത്തരം പോർട്ടൽ അനുമതിയില്ല."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "നിങ്ങൾ സൈൻ ഇൻ നിലനിർത്താൻ തിരഞ്ഞെടുത്ത ഫോണുകളും കമ്പ്യൂട്ടറുകളും ഇവയാണ്. ഇനി ഉപയോഗിക്കാത്തതോ തിരിച്ചറിയാത്തതോ ആയവ സൈൻ ഔട്ട് ചെയ്യുക."
+
+#: 
+msgid "They have a staff account"
+msgstr "അവർക്ക് ഒരു സ്റ്റാഫ് അക്കൗണ്ട് ഉണ്ട്"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "അവർക്ക് സൈൻ ഇൻ ചെയ്യാം, പക്ഷേ ഒരിക്കലും ചെയ്തിട്ടില്ല."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "ഈ പ്രവർത്തനത്തിന് സൈൻ ഇൻ ചെയ്ത ബ്രൗസർ സെഷൻ വേണം."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "ഈ വിലാസം മാറ്റാനായില്ല. അത് എവിടെ നിൽക്കുന്നുവെന്ന് കാണാൻ പങ്കിട്ട ഇമെയിലുകൾ ശരിയാക്കുക വീണ്ടും തുറക്കുക."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "സൈൻ ഇൻ ചെയ്യാവുന്ന ആളുകൾ ഈ വിലാസം ഇനി പങ്കിടുന്നില്ല."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "ഈ ബ്രൗസറിന് പാസ്‌കീകൾ ഉണ്ടാക്കാനാവില്ല."
+
+#: 
+msgid "This device"
+msgstr "ഈ ഉപകരണം"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "ഈ ഉപകരണത്തിൽ നിങ്ങൾക്ക് ഇതിനകം ഒരു പാസ്‌കീ ഉണ്ട്."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "ഈ ഉപകരണം വ്യക്തിയെ ഇനി സൈൻ ഇൻ ആയി നിർത്തില്ല, അതിൽ തുറന്ന സെഷൻ അവസാനിക്കും. അവർക്ക് ഇമെയിൽ വഴി വീണ്ടും സൈൻ ഇൻ ചെയ്യാം."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "ഇത് എന്റെ സ്വന്തം ഉപകരണമാണ്. എന്നെ സൈൻ ഇൻ ആയി നിർത്തുക."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "അതിഥികളെക്കുറിച്ച് തീരുമാനിക്കുന്നത് ഇവിടെയാണ്. ഓരോ വർഗീകരണവും എത്ര സജീവരായ ആളുകൾക്കുണ്ടെന്നതാണ് സംഖ്യ."
+
+#: 
+msgid "This link cannot be used"
+msgstr "ഈ ലിങ്ക് ഉപയോഗിക്കാനാവില്ല"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "ഈ ലിങ്ക് കാലഹരണപ്പെട്ടു അല്ലെങ്കിൽ ഇതിനകം ഉപയോഗിച്ചു"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "അംഗ പോർട്ടലിന്റെ ഈ ഭാഗം നിങ്ങൾക്ക് ലഭ്യമല്ല."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "ഈ പാസ്‌കീ ഇതിനകം റെക്കോർഡിലുണ്ട്."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "ഈ പാസ്‌കീ വ്യക്തിയെ ഇനി സൈൻ ഇൻ ചെയ്യിക്കില്ല. അവർക്ക് ഇമെയിൽ വഴി സൈൻ ഇൻ ചെയ്ത് പുതിയത് ചേർക്കാം."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "ഈ അനുമതി വ്യക്തി പേജിൽ നൽകാനാവില്ല."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "നൽകാവുന്ന എല്ലാ അനുമതിയും ഈ വ്യക്തിക്ക് ഇതിനകം ഉണ്ട്."
+
+#: 
+msgid "This person already has this permission."
+msgstr "ഈ വ്യക്തിക്ക് ഈ അനുമതി ഇതിനകം ഉണ്ട്."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "ഈ വ്യക്തിക്ക് അംഗ പോർട്ടലിലേക്കോ സ്റ്റാഫായോ എവിടെയും ഇനി സൈൻ ഇൻ ചെയ്യാനാവില്ല. എല്ലാ സെഷനും അവസാനിക്കും, ഓർത്ത ഉപകരണങ്ങളും പാസ്‌കീകളും നീക്കം ചെയ്യും."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "ഈ വ്യക്തിയെ സൈൻ ഔട്ട് ചെയ്യാനായില്ല."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "ഈ വ്യക്തിക്ക് ഒരു സ്റ്റാഫ് അക്കൗണ്ട് ഉണ്ട്. വ്യക്തിയായി ലോഗിൻ ഒരിക്കലും സ്റ്റാഫ് അക്കൗണ്ട് തുറക്കില്ല."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "ഈ വ്യക്തിക്ക് അത്തരം പാസ്‌കീയില്ല."
+
+#: 
+msgid "This person has no such permission."
+msgstr "ഈ വ്യക്തിക്ക് അത്തരം അനുമതിയില്ല."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "ഈ വ്യക്തിക്ക് അത്തരം ഓർത്ത ഉപകരണമില്ല."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "ഈ വ്യക്തിക്ക് സ്ഥിരീകരിക്കാത്ത ഇമെയിൽ ഇല്ല."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "ഈ വ്യക്തി അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്തിട്ടുണ്ട്. ഈ ഇമെയിൽ മാറ്റുന്നത് അവരെ എല്ലായിടത്തും സൈൻ ഔട്ട് ചെയ്യും, പുതിയ വിലാസം സ്ഥിരീകരിക്കുന്നതുവരെ സൈൻ ഇൻ ചെയ്യാൻ ഉപയോഗിക്കാനാവില്ല."
+
+#: 
 msgid "This person is deceased."
 msgstr "ഈ വ്യക്തി മരണപ്പെട്ടു"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "ഈ വ്യക്തി അംഗ പോർട്ടലിൽ നിന്ന് എല്ലായിടത്തും സൈൻ ഔട്ട് ആയി."
+
+#: 
+msgid "This person no longer exists."
+msgstr "ഈ വ്യക്തി ഇനി നിലവിലില്ല."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "ഇത് നിങ്ങളെ ഇവിടെ ഉൾപ്പെടെ എല്ലായിടത്തും സൈൻ ഔട്ട് ചെയ്യുകയും എല്ലാ ഉപകരണവും മറക്കുകയും ചെയ്യും. ഇമെയിൽ വിലാസം ഉപയോഗിച്ച് വീണ്ടും സൈൻ ഇൻ ചെയ്യാം."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "ഇത് നിങ്ങളെ ഇവിടെ ഉൾപ്പെടെ എല്ലായിടത്തും സൈൻ ഔട്ട് ചെയ്യുകയും എല്ലാ ഉപകരണവും മറക്കുകയും ചെയ്യും. പാസ്‌കീകൾ നിലനിൽക്കും: പാസ്‌കീയോ ഇമെയിൽ വിലാസമോ ഉപയോഗിച്ച് വീണ്ടും സൈൻ ഇൻ ചെയ്യാം."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "ഈ ഉപകരണം ഇവ ഒരിക്കലും മാറ്റുന്നില്ല. ഓരോ വ്യക്തിക്കും അവരുടെ റെക്കോർഡിൽ സ്വന്തം ഇമെയിൽ നൽകുക."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "ഇത് നിങ്ങളുടെ സ്വന്തം ഫോണിലോ കമ്പ്യൂട്ടറിലോ മാത്രം ടിക്ക് ചെയ്യുക, പങ്കിട്ടതോ പൊതുവായതോ ആയതിൽ ഒരിക്കലും വേണ്ട."
+
+#: 
+msgid "Time: %s"
+msgstr "സമയം: %s"
+
+#: 
+msgid "Timed out"
+msgstr "സമയം കഴിഞ്ഞു"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "ഈ ഇമെയിൽ മാറ്റാൻ പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "To fix"
+msgstr "ശരിയാക്കാൻ"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "സ്വന്തം ഫോണിലോ കമ്പ്യൂട്ടറിലോ സൈൻ ഇൻ നിലനിർത്താൻ, അടുത്ത തവണ സൈൻ ഇൻ ചെയ്യുമ്പോൾ \"ഇത് എന്റെ സ്വന്തം ഉപകരണമാണ്\" ടിക്ക് ചെയ്യുക."
+
+#: 
+msgid "Too many attempts"
+msgstr "വളരെയധികം ശ്രമങ്ങൾ"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "ഇന്ന് വളരെയധികം സൈൻ-ഇൻ ഇമെയിലുകൾ"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "ഈ ഇമെയിൽ വിലാസത്തിന് വളരെയധികം സൈൻ-ഇൻ അഭ്യർത്ഥനകൾ"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "ഈ IP വിലാസത്തിൽ നിന്ന് വളരെയധികം സൈൻ-ഇൻ അഭ്യർത്ഥനകൾ"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "വളരെയധികം തെറ്റായ കോഡുകൾ"
+
+#: 
+msgid "Turn off"
+msgstr "ഓഫ് ചെയ്യുക"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "അംഗ സൈൻ-ഇൻ ഓഫ് ചെയ്യണോ?"
+
+#: 
+msgid "Turn on"
+msgstr "ഓൺ ചെയ്യുക"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "അംഗ സൈൻ-ഇൻ ഓൺ ചെയ്യുക"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "അംഗ സൈൻ-ഇൻ ഓൺ ചെയ്യണോ?"
+
+#: 
+msgid "Type a name"
+msgstr "ഒരു പേര് ടൈപ്പ് ചെയ്യുക"
+
+#: 
+msgid "Type a name or email"
+msgstr "ഒരു പേരോ ഇമെയിലോ ടൈപ്പ് ചെയ്യുക"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "ഒരു പേരിന്റെ കുറഞ്ഞത് %d അക്ഷരങ്ങൾ ടൈപ്പ് ചെയ്ത് തിരയുക."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "സ്ഥിരീകരിക്കാത്ത ഇമെയിൽ"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "ChurchCRM എവിടെ ഉപയോഗിക്കുന്നുവെന്ന് മനസ്സിലാക്കുക"
+
+#: 
+msgid "Unknown device"
+msgstr "അജ്ഞാത ഉപകരണം"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "അജ്ഞാത ഡയറക്ടറി ഫീൽഡ്: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "അജ്ഞാത ഡയറക്ടറി ക്രമീകരണം: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "പേരില്ലാത്ത ഉപകരണം"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "പേരില്ലാത്ത പാസ്‌കീ"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "പള്ളി ഓഫീസ് സ്ഥിരീകരിക്കുന്നതുവരെ പുതിയ വിലാസം സൈൻ ഇൻ ചെയ്യാൻ ഉപയോഗിക്കാനാവില്ല."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "%3$s-ന് %2$s-ന്റെ ഇമെയിൽ വിലാസമായി %1$s ഉപയോഗിക്കണോ?"
+
+#: 
+msgid "Use a different email address"
+msgstr "മറ്റൊരു ഇമെയിൽ വിലാസം ഉപയോഗിക്കുക"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "ഈ ഉപകരണത്തിൽ ഒരു പാസ്‌കീ ഉപയോഗിക്കണോ?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "%2$s-ൽ %1$s നിങ്ങളുടെ ഇമെയിൽ വിലാസമാണെന്ന് സ്ഥിരീകരിക്കാൻ താഴെയുള്ള ബട്ടൺ ഉപയോഗിക്കുക. ലിങ്ക് ഒരിക്കൽ മാത്രം പ്രവർത്തിക്കും, %3$s വരെ."
+
+#: 
+msgid "User %d"
+msgstr "ഉപയോക്താവ് %d"
+
+#: 
+msgid "View Permissions"
+msgstr "അനുമതികൾ കാണുക"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "%s സ്ഥിരീകരിക്കാൻ നിങ്ങളെ കാത്തിരിക്കുന്നു. ആ വിലാസത്തിലേക്ക് ഞങ്ങൾ അയച്ച ലിങ്ക് ഉപയോഗിക്കുക."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "{{email}} സ്ഥിരീകരിക്കാൻ നിങ്ങളെ കാത്തിരിക്കുന്നു. ആ വിലാസത്തിലേക്ക് ഞങ്ങൾ അയച്ച ലിങ്ക് ഉപയോഗിക്കുക."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "ഇമെയിൽ അയയ്ക്കാനായില്ല. പിന്നീട് വീണ്ടും ശ്രമിക്കുക, അല്ലെങ്കിൽ പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "We could not sign you in"
+msgstr "നിങ്ങളെ സൈൻ ഇൻ ചെയ്യിക്കാനായില്ല"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "%s-ലേക്ക് ഞങ്ങൾ ഒരു ലിങ്ക് ഇമെയിൽ ചെയ്തു. പുതിയ ഇമെയിൽ വിലാസം സ്ഥിരീകരിക്കാൻ അത് ഉപയോഗിക്കുക."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "{{email}}-ലേക്ക് ഞങ്ങൾ ഒരു ലിങ്ക് അയച്ചു. നിങ്ങൾ അത് ഉപയോഗിക്കുമ്പോൾ ഇമെയിൽ മാറും."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "സൈൻ ഇൻ ചെയ്യാനുള്ള ഒരു കോഡും ലിങ്കും ഞങ്ങൾ ഇമെയിൽ ചെയ്യും."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "നിങ്ങൾ ഇവിടെയുള്ളതിൽ ഞങ്ങൾക്ക് സന്തോഷം! ഏകദേശം മൂന്ന് മിനിറ്റ് മതി."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "നിങ്ങളുടെ കുടുംബം ഞങ്ങളോടൊപ്പം ചേർന്നതിൽ സന്തോഷം! രജിസ്ട്രേഷൻ ലഭിച്ചു. നിങ്ങളെ വ്യക്തിപരമായി സ്വാഗതം ചെയ്യാൻ ഞങ്ങളുടെ ടീം ഉടൻ ബന്ധപ്പെടും."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "വിവാഹ വാർഷികം"
+
+#: 
+msgid "Welcome"
+msgstr "സ്വാഗതം"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "അത് നൽകിയത് ഇനി നിലവിലില്ല"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "പോർട്ടലിൽ അംഗങ്ങൾക്ക് കാണാനും ചെയ്യാനും കഴിയുന്നത്, ഓരോ അനുമതിയും എവിടെ നിന്ന് വരുന്നു. സൈൻ-ഇൻ നിയമങ്ങൾ അനുവദിക്കുന്ന എല്ലാവരിലും സ്റ്റാഫിലും ആളുകളെ എണ്ണും."
+
+#: 
+msgid "What members can use"
+msgstr "അംഗങ്ങൾക്ക് ഉപയോഗിക്കാവുന്നത്"
+
+#: 
+msgid "What to do"
+msgstr "എന്ത് ചെയ്യണം"
+
+#: 
+msgid "Who can see it"
+msgstr "ആർക്ക് അത് കാണാം"
+
+#: 
+msgid "Who is listed"
+msgstr "ആരെയാണ് പട്ടികപ്പെടുത്തിയത്"
+
+#: 
+msgid "Who may sign in"
+msgstr "ആർക്ക് സൈൻ ഇൻ ചെയ്യാം"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "ആർക്ക് അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാം, ആര് ചെയ്തു, ആരുടെ ഇമെയിൽ അവരെ തടയുന്നു. പട്ടികകൾ സൈൻ-ഇൻ ടാബിലെ നിയമങ്ങൾ പിന്തുടരുന്നു."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "അംഗ പോർട്ടൽ ഡയറക്ടറി ആരെ പട്ടികപ്പെടുത്തുന്നു, ആർക്ക് കാണാം, എന്ത് കാണിക്കുന്നു, അഡ്മിൻ -> അംഗ പോർട്ടൽ -> ഡയറക്ടറി എന്നതിൽ തിരഞ്ഞെടുത്തത്."
+
+#: 
+msgid "Why"
+msgstr "എന്തുകൊണ്ട്"
+
+#: 
+msgid "Why not"
+msgstr "എന്തുകൊണ്ട് അല്ല"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "ഉപകരണം കുറച്ച് നിമിഷങ്ങൾക്ക് മുമ്പ് മാറ്റിയ ടോക്കണോടെ"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "അതെ, ഒരു പാസ്‌കീ ചേർക്കുക"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "അതെ, ഈ പാസ്‌കീ നീക്കം ചെയ്യുക"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "അതെ, എല്ലാ ഉപകരണത്തിലും സൈൻ ഔട്ട് ചെയ്യുക"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "ഈ ഇമെയിൽ സ്ഥിരീകരിക്കാൻ നിങ്ങൾക്ക് അനുവാദമില്ല."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "ഒരു ഉപകരണത്തിലും നിങ്ങളെ സൈൻ ഇൻ ആയി നിർത്തുന്നില്ല."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "എല്ലാ ഉപകരണത്തിലും നിങ്ങൾ സൈൻ ഔട്ട് ആണ്."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "ഈ ഉപകരണത്തിൽ നിങ്ങൾ സൈൻ ഔട്ട് ആണ്."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "ഇമെയിൽ വിലാസം ഉപയോഗിച്ചും സൈൻ ഇൻ ചെയ്യാം."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "നിങ്ങളുടെ സ്വന്തം സൈൻ-ഇൻ പ്രവർത്തനരഹിതമാക്കാനാവില്ല."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "അംഗ പോർട്ടൽ തുറക്കാനാവില്ല. പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "ഇമെയിൽ മാറ്റാൻ നിങ്ങൾ വളരെയധികം തവണ ആവശ്യപ്പെട്ടു. പിന്നീട് വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "You have no passkeys."
+msgstr "നിങ്ങൾക്ക് പാസ്‌കീകളില്ല."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "നിങ്ങൾ അംഗ പോർട്ടലിൽ %s ആയി ലോഗിൻ ആണ് (മാറ്റങ്ങൾ അനുവദിച്ചിരിക്കുന്നു)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "നിങ്ങൾ അംഗ പോർട്ടലിൽ %s ആയി ലോഗിൻ ആണ് (വായന മാത്രം)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "കുറഞ്ഞ പ്രായത്തേക്കാൾ ചെറുത്"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "ഒരു വ്യക്തിക്ക് അംഗ പോർട്ടലിലേക്ക് സൈൻ ഇൻ ചെയ്യാവുന്ന ഏറ്റവും കുറഞ്ഞ പ്രായം. ജനന തീയതി അറിയില്ലെങ്കിൽ കുടുംബനാഥനോ ഇണയോ മാത്രമേ യോഗ്യമാകൂ."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "നിങ്ങളുടെ അംഗ പോർട്ടൽ സൈൻ-ഇൻ കോഡ്"
+
+#: 
+msgid "Your code"
+msgstr "നിങ്ങളുടെ കോഡ്"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "നിങ്ങളുടെ ഇമെയിൽ വിലാസം %s ഇതുവരെ സ്ഥിരീകരിച്ചിട്ടില്ല, അതിനാൽ സൈൻ ഇൻ ചെയ്യാൻ ഉപയോഗിക്കാനാവില്ല. അതിലേക്ക് ഒരു ലിങ്ക് ഇമെയിൽ ചെയ്യും; ലിങ്ക് ഉപയോഗിക്കുന്നത് അത് സ്ഥിരീകരിക്കും."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "നിങ്ങളുടെ ഇമെയിൽ വിലാസം ഇവിടെ നീക്കം ചെയ്യാനാവില്ല. പള്ളി ഓഫീസുമായി ബന്ധപ്പെടുക."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "നിങ്ങളുടെ ഇമെയിൽ വിലാസം സ്ഥിരീകരിച്ചു"
+
+#: 
+msgid "Your email address was changed"
+msgstr "നിങ്ങളുടെ ഇമെയിൽ വിലാസം മാറ്റി"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "നിങ്ങളുടെ പാസ്‌കീ ചേർത്തു. അടുത്ത തവണ ഈ ഉപകരണത്തിൽ അത് ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്യുക."
+
+#: 
+msgid "an administrator"
+msgstr "ഒരു അഡ്മിനിസ്ട്രേറ്റർ"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "കുടുംബനാഥനോ ഇണയോ ആർക്കും ഇമെയിൽ വിലാസമില്ല"
+
+#: 
+msgid "or"
+msgstr "അല്ലെങ്കിൽ"
+
+#: 
+msgid "until %s"
+msgstr "%s വരെ"
 

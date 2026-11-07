@@ -4923,10 +4923,6 @@ msgid "Portuguese - Portugal"
 msgstr "برتغالى - برتغال"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "تحديد اسم التطبيق ليتم عرضها في التطبيق الموثق"
-
-#: 
 msgid "Review"
 msgstr "مراجعة"
 
@@ -5056,10 +5052,6 @@ msgstr "عرض صفحة العائلة"
 #: 
 msgid "View Person Page"
 msgstr "عرض صفحة الشخص"
-
-#: 
-msgid "Verify"
-msgstr "تحقق"
 
 #: 
 msgid "Family has no emails to use"
@@ -14675,10 +14667,6 @@ msgid "Date Picker Format"
 msgstr "تنسيق منتقي التاريخ"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "عنصر نائب منتقي التاريخ"
-
-#: 
 msgid "Date Without Year"
 msgstr "تاريخ بدون سنة"
 
@@ -14709,10 +14697,6 @@ msgstr "تنسيق تاريخ اسم الملف"
 #: 
 msgid "Fully translated."
 msgstr "مترجم بالكامل."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "نص التلميح في حقول التاريخ. الافتراضي: سسسس-شش-يي"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25182,10 +25166,6 @@ msgstr "من يفقده لا يبقى له بريد إلكتروني خاص: ي�
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "من يُخفي سجله عمره لا تُعرض سنة ميلاده أبدًا."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "قُدّم طلب في بوابة الأعضاء لتغيير عنوان بريدكم الإلكتروني في %s من %s إلى %s. يتم التغيير فقط عند استخدام الرابط المرسَل إلى %s."
 
 #: 
 msgid "A row is not in the expected form."

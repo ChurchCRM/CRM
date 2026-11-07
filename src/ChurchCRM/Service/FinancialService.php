@@ -3,6 +3,7 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\MICRUtils;
@@ -361,13 +362,13 @@ class FinancialService
         if (empty($payment->cashDenominations)) {
             return;
         }
-        global $cnInfoCentral;
+        $connection = Bootstrapper::getMysqliConnection();
         $currencyDenoms = json_decode($payment->cashDenominations, null, 512);
         foreach ($currencyDenoms as $cdom) {
             if (empty($payment->DepositID) || empty($cdom->currencyID) || empty($cdom->Count)) {
                 continue;
             }
-            $escapedGroupKey = mysqli_real_escape_string($cnInfoCentral, $groupKey);
+            $escapedGroupKey = mysqli_real_escape_string($connection, $groupKey);
             $sSQL = "INSERT INTO pledge_denominations_pdem (pdem_plg_GroupKey, plg_depID, pdem_denominationID, pdem_denominationQuantity)
       VALUES ('" . $escapedGroupKey . "','" . (int) $payment->DepositID . "','" . (int) $cdom->currencyID . "','" . (int) $cdom->Count . "')";
             FunctionsUtils::runQuery($sSQL);

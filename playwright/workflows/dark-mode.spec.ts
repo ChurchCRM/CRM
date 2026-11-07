@@ -73,12 +73,12 @@ test.describe('Dark Mode', () => {
       // With 62 demo families, "Baker" isn't on the default first page —
       // search for it (same DataTables 2.x `.dt-search input`, not the
       // 1.x `#{table}_filter` wrapper, as people-family.spec.ts). Two
-      // families are named "Baker"; the unique contact email picks the one
-      // with the family portrait, same as that spec.
-      await humanType(page.locator('.dt-search input'), 'family.baker7');
+      // families are named "Baker"; the head of household's email picks the
+      // one with the family portrait, same as that spec.
+      await humanType(page.locator('.dt-search input'), 'andrew.baker@demo.churchcrm.io');
       await humanPause(page, 500);
 
-      const bakerRow = rows.filter({ hasText: 'family.baker7' }).first();
+      const bakerRow = rows.filter({ hasText: 'andrew.baker@demo.churchcrm.io' }).first();
       await expect(bakerRow).toBeVisible({ timeout: 15000 });
       await humanClick(bakerRow.locator('td').first().locator('a').first());
       await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });

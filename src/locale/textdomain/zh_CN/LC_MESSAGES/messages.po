@@ -4984,10 +4984,6 @@ msgid "Portuguese - Portugal"
 msgstr "葡萄牙语-葡萄牙"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "指定要在身份验证器应用程序中显示的应用程序名称"
-
-#: 
 msgid "Review"
 msgstr "审查"
 
@@ -5117,10 +5113,6 @@ msgstr "查看家庭页面"
 #: 
 msgid "View Person Page"
 msgstr "查看人员页面"
-
-#: 
-msgid "Verify"
-msgstr "核实"
 
 #: 
 msgid "Family has no emails to use"
@@ -14691,10 +14683,6 @@ msgid "Date Picker Format"
 msgstr "日期选择器格式"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "日期选择器占位符"
-
-#: 
 msgid "Date Without Year"
 msgstr "不含年份的日期"
 
@@ -14725,10 +14713,6 @@ msgstr "文件名日期格式"
 #: 
 msgid "Fully translated."
 msgstr "已完全翻译。"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "日期输入框中的提示文本。默认：yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25103,10 +25087,6 @@ msgstr "失去该地址的人随后没有自己的电子邮箱：只发给他们
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "记录中隐藏年龄的人从不显示出生年份。"
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "会友门户中于 %s 请求将您的电子邮箱从 %s 改为 %s。只有使用发到 %s 的链接后，更改才会生效。"
 
 #: 
 msgid "A row is not in the expected form."

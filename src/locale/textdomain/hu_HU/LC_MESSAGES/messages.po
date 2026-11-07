@@ -4946,10 +4946,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugál - Portugália"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Adja meg az alkalmazásnév meg kell jeleníteni a hitelesítő alkalmazásban"
-
-#: 
 msgid "Review"
 msgstr "Áttekintés"
 
@@ -5078,10 +5074,6 @@ msgstr "Család oldal megtekintése"
 #: 
 msgid "View Person Page"
 msgstr "Személy oldal megtekintése"
-
-#: 
-msgid "Verify"
-msgstr "Ellenőrzés"
 
 #: 
 msgid "Family has no emails to use"
@@ -14661,10 +14653,6 @@ msgid "Date Picker Format"
 msgstr "Dátumválasztó formátuma"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Dátumválasztó helyőrzője"
-
-#: 
 msgid "Date Without Year"
 msgstr "Dátum év nélkül"
 
@@ -14695,10 +14683,6 @@ msgstr "Dátumformátum fájlnévhez"
 #: 
 msgid "Fully translated."
 msgstr "Teljesen lefordítva."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Dátummezőkben megjelenő súgószöveg. Alapértelmezett: éééé-hh-nn"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25092,10 +25076,6 @@ msgstr "Aki elveszíti, annak ezután nincs saját e-mail-címe: a csak neki sz�
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "Annak a személynek, akinek a rekordja elrejti az életkorát, a születési év soha nem jelenik meg."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "A tagportálon %s időpontban kérték, hogy az e-mail-címe %s címről %s címre változzon. A módosítás csak akkor történik meg, ha a %s címre küldött hivatkozást használják."
 
 #: 
 msgid "A row is not in the expected form."

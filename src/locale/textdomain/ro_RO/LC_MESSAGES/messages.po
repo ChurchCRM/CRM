@@ -4981,10 +4981,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugheză - Portugalia"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Specificați numele aplicației care va fi afișat în aplicația de autentificare"
-
-#: 
 msgid "Review"
 msgstr "Recenzie"
 
@@ -5113,10 +5109,6 @@ msgstr "Vizualizați pagina familiei"
 #: 
 msgid "View Person Page"
 msgstr "Vizualizați pagina persoanei"
-
-#: 
-msgid "Verify"
-msgstr "Verifică"
 
 #: 
 msgid "Family has no emails to use"
@@ -14705,10 +14697,6 @@ msgid "Date Picker Format"
 msgstr "Format selector dată"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Text indicativ selector dată"
-
-#: 
 msgid "Date Without Year"
 msgstr "Dată fără an"
 
@@ -14739,10 +14727,6 @@ msgstr "Format dată pentru numele fișierului"
 #: 
 msgid "Fully translated."
 msgstr "Complet tradus."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Text indicativ afișat în câmpurile de dată. Implicit: aaaa-ll-zz"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25155,10 +25139,6 @@ msgstr "O persoană care o pierde nu mai are atunci un e-mail propriu: mesajele 
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "O persoană a cărei fișă ascunde vârsta nu arată niciodată anul nașterii."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "S-a făcut o cerere în Portalul membrilor de a schimba adresa dumneavoastră de e-mail la %s, de la %s la %s. Schimbarea are loc numai când este folosit linkul trimis la %s."
 
 #: 
 msgid "A row is not in the expected form."

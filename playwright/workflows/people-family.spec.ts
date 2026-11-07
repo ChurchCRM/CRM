@@ -25,13 +25,13 @@ test.describe('People & Families', () => {
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
     await humanPause(page, 500);
 
-    // Two families are named "Baker" in the seed data — the unique contact
-    // email (visible in the row's Email column) picks the one with a real
+    // Two families are named "Baker" in the seed data — the head of household's
+    // email (shown in the row's Email column) picks the one with a real
     // family portrait and photographed parents (src/admin/demo/people.json),
     // not the other, photo-less Baker family.
-    await humanType(page.locator('.dt-search input'), 'family.baker7');
+    await humanType(page.locator('.dt-search input'), 'andrew.baker@demo.churchcrm.io');
     await humanPause(page, 500);
-    const bakerRow = rows.filter({ hasText: 'family.baker7' }).first();
+    const bakerRow = rows.filter({ hasText: 'andrew.baker@demo.churchcrm.io' }).first();
     await expect(bakerRow).toBeVisible({ timeout: 15000 });
     await humanClick(bakerRow.locator('td').first().locator('a').first());
     await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
@@ -63,7 +63,6 @@ test.describe('People & Families', () => {
     await humanSelect(page.locator('#State'), 'IL');
     await humanType(page.locator('#Zip'), '62704');
     await humanType(page.locator('#HomePhone'), '(555) 010-1000');
-    await humanType(page.locator('#Email'), 'family.whitfield@demo.churchcrm.io');
 
     await humanType(page.locator('input[name="FirstName1"]'), 'Michael');
     await humanType(page.locator('input[name="LastName1"]'), 'Whitfield');
