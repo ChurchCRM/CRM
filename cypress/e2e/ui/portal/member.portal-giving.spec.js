@@ -40,15 +40,16 @@ describe("Member chooses a contribution statement year", () => {
 
         statementLines(2018).then((lines) => {
             const title = lines.indexOf("Giving Statement");
-            const letterhead = lines.slice(lines.indexOf("Main St. Cathedral"), title);
-            expect(letterhead.slice(0, 4), "church details").to.deep.equal([
-                "Main St. Cathedral",
-                "123 Main St Kansas City, MO 64106 United States",
-                "555 123 4234 · demo@churchcrm.io",
-                "Tax ID: 47-3829156",
-            ]);
-            expect(letterhead.slice(4).join(""), "website and social links").to.equal(
-                "https://churchcrm.io · X · YouTube · Facebook · Instagram",
+            // mPDF may split one letterhead line across several text runs.
+            const letterhead = lines.slice(lines.indexOf("Main St. Cathedral"), title).join("");
+            expect(letterhead, "church letterhead").to.equal(
+                [
+                    "Main St. Cathedral",
+                    "123 Main St Kansas City, MO 64106 United States",
+                    "555 123 4234 · demo@churchcrm.io",
+                    "Tax ID: 47-3829156",
+                    "https://churchcrm.io · X · YouTube · Facebook · Instagram",
+                ].join(""),
             );
             expect(lines[title + 2], "household name").to.equal("Black");
             const gifts = lines.indexOf("AMOUNT") + 1;
