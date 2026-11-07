@@ -53,6 +53,7 @@ Assert::same('2014-03-22', DateTimeUtils::normalizeDate('2014-03-22'), 'ISO is a
 Assert::same('', DateTimeUtils::normalizeDate('2024-02-30'), 'an impossible ISO date is rejected, not rolled forward');
 Assert::true(DateTimeUtils::isCompleteDateFormat('d/m/Y'), 'day, month and year make a complete format');
 Assert::false(DateTimeUtils::isCompleteDateFormat('Y-m'), 'a format without a day is incomplete');
+Assert::false(DateTimeUtils::isCompleteDateFormat('Y-m-\\d'), 'an escaped d is a literal, not a day');
 $withFormat('Y-m');
 Assert::same('2014-03-22', DateTimeUtils::normalizeDate('2014-03-22'), 'an incomplete saved format falls back to Y-m-d');
 Assert::same('', DateTimeUtils::normalizeDate('2014-03'), 'a year-month value is never turned into the first of the month');
