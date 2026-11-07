@@ -27120,3 +27120,15 @@ msgstr "หรือ"
 msgid "until %s"
 msgstr "จนถึง %s"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "มีคำขอในพอร์ทัลสมาชิกให้เปลี่ยนที่อยู่อีเมลของคุณที่ %1$s จาก %2$s เป็น %3$s การเปลี่ยนแปลงจะเกิดขึ้นเมื่อใช้ลิงก์ที่ส่งไปยังที่อยู่ใหม่เท่านั้น"
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "โปรดใช้ลิงก์ด้านล่างเพื่อตรวจสอบข้อมูลครอบครัวของคุณ ในหน้าตรวจสอบ ให้เลือก \"ยืนยันข้อมูลครอบครัว\" เพื่อยืนยันว่าทุกอย่างถูกต้อง หรือส่งการแก้ไขไปที่สำนักงานคริสตจักร"
+
+#: 
+msgid "Review Family Information"
+msgstr "ตรวจสอบข้อมูลครอบครัว"
+

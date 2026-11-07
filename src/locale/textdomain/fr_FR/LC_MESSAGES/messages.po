@@ -27168,3 +27168,15 @@ msgstr "ou"
 msgid "until %s"
 msgstr "jusqu'au %s"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Une demande a été faite dans le portail des membres pour changer votre adresse e-mail sur %1$s de %2$s à %3$s. Le changement n’a lieu que lorsque le lien envoyé à la nouvelle adresse est utilisé."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Utilisez le lien ci-dessous pour vérifier les informations de votre famille. Sur la page de vérification, choisissez « Confirmer les informations de la famille » pour confirmer que tout est exact, ou envoyez les corrections au bureau de l’église."
+
+#: 
+msgid "Review Family Information"
+msgstr "Vérifier les informations de la famille"
+

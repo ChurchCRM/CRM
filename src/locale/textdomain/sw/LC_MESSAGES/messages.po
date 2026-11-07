@@ -27167,3 +27167,15 @@ msgstr "au"
 msgid "until %s"
 msgstr "hadi %s"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Ombi limefanywa kwenye lango la wanachama kubadilisha anwani yako ya barua pepe katika %1$s kutoka %2$s hadi %3$s. Mabadiliko yanafanyika tu kiungo kilichotumwa kwenye anwani mpya kinapotumika."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Tumia kiungo hapa chini kukagua taarifa za familia yako. Kwenye ukurasa wa ukaguzi, chagua \"Thibitisha taarifa za familia\" kuthibitisha kuwa kila kitu ni sahihi, au tuma marekebisho kwa ofisi ya kanisa."
+
+#: 
+msgid "Review Family Information"
+msgstr "Kagua taarifa za familia"
+

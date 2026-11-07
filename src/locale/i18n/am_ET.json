@@ -6618,6 +6618,9 @@
   "no head of household or spouse has an email address": "የቤተሰብ ኃላፊ ወይም የትዳር አጋር ኢሜይል አድራሻ የለውም",
   "or": "ወይም",
   "until %s": "እስከ %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "በአባላት መግቢያ ላይ በ %1$s ያለዎትን ኢሜይል ከ %2$s ወደ %3$s ለመቀየር ጥያቄ ቀርቧል። ለውጡ የሚፈጸመው ወደ አዲሱ አድራሻ የተላከው አገናኝ ሲጠቀም ብቻ ነው።",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "የቤተሰብዎን መረጃ ለመገምገም ከታች ያለውን አገናኝ ይጠቀሙ። በግምገማው ገጽ ላይ ሁሉም ነገር ትክክል መሆኑን ለማረጋገጥ «የቤተሰብ መረጃን አረጋግጥ» የሚለውን ይምረጡ፣ ወይም ማስተካከያዎችን ወደ የቤተ ክርስቲያን ቢሮ ይላኩ።",
+  "Review Family Information": "የቤተሰብ መረጃን ገምግም",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"፦ {{count}} ቀጠሮ ተፈጥሯል",
     "other": "\"{{name}}\"፦ {{count}} ቀጠሮዎች ተፈጥረዋል"

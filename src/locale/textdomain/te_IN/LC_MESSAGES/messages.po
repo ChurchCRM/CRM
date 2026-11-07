@@ -27149,3 +27149,15 @@ msgstr "లేదా"
 msgid "until %s"
 msgstr "%s వరకు"
 
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "సభ్యుల పోర్టల్‌లో %1$s లో మీ ఈమెయిల్ చిరునామాను %2$s నుండి %3$s కు మార్చాలని అభ్యర్థన వచ్చింది. కొత్త చిరునామాకు పంపిన లింక్ వాడితేనే మార్పు జరుగుతుంది."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "మీ కుటుంబ సమాచారాన్ని సమీక్షించడానికి కింది లింక్ వాడండి. సమీక్ష పేజీలో అంతా సరైనదని నిర్ధారించడానికి «కుటుంబ సమాచారాన్ని నిర్ధారించండి» ఎంచుకోండి, లేదా సవరణలను చర్చి కార్యాలయానికి పంపండి."
+
+#: 
+msgid "Review Family Information"
+msgstr "కుటుంబ సమాచారాన్ని సమీక్షించండి"
+

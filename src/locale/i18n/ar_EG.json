@@ -6738,6 +6738,9 @@
   "no head of household or spouse has an email address": "لا يملك رب الأسرة ولا الزوج أو الزوجة عنوان بريد إلكتروني",
   "or": "أو",
   "until %s": "حتى %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "قُدِّم طلب في بوابة الأعضاء لتغيير عنوان بريدك الإلكتروني في %1$s من %2$s إلى %3$s. لا يتم التغيير إلا عند استخدام الرابط المُرسَل إلى العنوان الجديد.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "يُرجى استخدام الرابط أدناه لمراجعة معلومات عائلتك. في صفحة المراجعة، اختر «تأكيد معلومات العائلة» لتأكيد أن كل شيء صحيح، أو أرسل التصحيحات إلى مكتب الكنيسة.",
+  "Review Family Information": "مراجعة معلومات العائلة",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "تم إنشاء {{count}} موعد لـ \"{{name}}\"",
     "other": "تم إنشاء {{count}} مواعيد لـ \"{{name}}\""
