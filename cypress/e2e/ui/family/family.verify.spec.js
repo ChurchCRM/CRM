@@ -3,10 +3,9 @@
 /**
  * Use case B — "self-verify" via a token link, opened by someone with NO account.
  * An admin mints the link (GET /api/family/{id}/verify/url) and shares it; the
- * recipient visits /external/verify/{token} with no session. Path A (EditSelf
- * account users) reaches the SAME page; since the Member Portal landed (#9863)
- * those users start at /portal, and MP4 moves the verify flow into it —
- * see cypress/e2e/ui/portal/member.portal-landing.spec.js.
+ * recipient visits /external/verify/{token} with no session. Path A, a member
+ * signed in to the Member Portal, confirms the family there (MP4) —
+ * see cypress/e2e/ui/portal/member.portal-family.spec.js.
  */
 function verifyPathFromApiUrl(absoluteUrl) {
     const { pathname, search } = new URL(absoluteUrl);

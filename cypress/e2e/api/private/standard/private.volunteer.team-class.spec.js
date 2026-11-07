@@ -8,7 +8,7 @@
  *
  * Tiers: admin (`admin.api.key`, holds Manage Groups — so every 409 on the groups
  * API below is refused to somebody who may write any group) and person 99
- * (`selfedit.api.key`), given a team-leader scope on the linked team.
+ * in a member session, given a team-leader scope on the linked team.
  *
  * Cleanup runs in `before` AND `after`: an `after` hook does not run when the
  * runner crashes mid-spec. Teams, positions and qualifications cascade from the
@@ -32,7 +32,7 @@ const PERSON_NEW = 22; // in no class
 const PERSON_TWICE = 23; // qualified for two positions of the team
 const PERSON_CORE = 24; // written through the core groups API
 const PERSON_LEADER = 99;
-const LEADER_KEY = "selfedit.api.key";
+const LEADER_KEY = 99;
 
 let originalVersion = "v1";
 let ministryId = 0;
@@ -80,14 +80,13 @@ function qualificationOf(personId, positionId) {
     ).then((rows) => rows[0] ?? null);
 }
 
-function grant(positionId, personId, status = 201, key = "admin.api.key") {
-    return cy.makePrivateAPICall(
-        Cypress.testEnv(key),
-        "POST",
-        `${POSITIONS_URL}/${positionId}/qualifications`,
-        { personId },
-        status,
-    );
+/** `as` is an API key name, or the person id of a member acting in their portal session. */
+function grant(positionId, personId, status = 201, as = "admin.api.key") {
+    const url = `${POSITIONS_URL}/${positionId}/qualifications`;
+    if (typeof as === "number") {
+        return cy.makeMemberAPICall(as, "POST", url, { personId }, status);
+    }
+    return cy.makePrivateAPICall(Cypress.testEnv(as), "POST", url, { personId }, status);
 }
 
 function revoke(personId, positionId) {
@@ -129,7 +128,7 @@ function cleanupFixtures() {
 }
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "selfedit.api.key"]);
+    cy.rememberTestEnv(["admin.api.key"]);
 });
 
 describe("Volunteer v2 — a team linked to a Sunday School class (D23)", () => {
@@ -218,8 +217,8 @@ describe("Volunteer v2 — a team linked to a Sunday School class (D23)", () => 
         });
 
         it("refuses a team leader", () => {
-            cy.makePrivateAPICall(
-                Cypress.testEnv(LEADER_KEY),
+            cy.makeMemberAPICall(
+                LEADER_KEY,
                 "POST",
                 `${TEAMS_URL}/${teamId}`,
                 { classGroupId: classA, importPositionId: positionLead },

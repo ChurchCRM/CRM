@@ -61,8 +61,10 @@ class LocalAuthentication implements IAuthenticationProvider
     public static function getTwoFactorQRCode($username, $secret): QrCode
     {
         $google2fa = new Google2FA();
+        // Unicode isolates keep an RTL church name and the LTR "(ChurchCRM)" from reordering each other
+        $issuer = "\u{2068}" . SystemConfig::getValue('sChurchName') . "\u{2069} \u{2066}(ChurchCRM)\u{2069}";
         $g2faUrl = $google2fa->getQRCodeUrl(
-            SystemConfig::getValue('s2FAApplicationName'),
+            $issuer,
             $username,
             $secret
         );
@@ -207,7 +209,7 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->tPendingTwoFactorStarted = null;
                 $this->setCurrentUser(null);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                $authenticationResult->nextStepURL = AuthenticationManager::getStaffSignInURL();
                 return $authenticationResult;
             }
             // Guard: if the account is already locked (e.g. from a prior OTP failure in
@@ -221,7 +223,7 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->bPendingTwoFactorAuth = false;
                 $this->setCurrentUser(null);
                 $authenticationResult->isAuthenticated = false;
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                $authenticationResult->nextStepURL = AuthenticationManager::getStaffSignInURL();
                 return $authenticationResult;
             }
             if (($blockedReason = $this->currentUser->getSignInBlockedReason()) !== null) {
@@ -230,7 +232,7 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->currentUser = null;
                 $authenticationResult->isAuthenticated = false;
                 $authenticationResult->message = gettext('Invalid login or password');
-                $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                $authenticationResult->nextStepURL = AuthenticationManager::getStaffSignInURL();
                 return $authenticationResult;
             }
             if ($this->currentUser->isTwoFACodeValid($AuthenticationRequest->TwoFACode)) {
@@ -256,7 +258,7 @@ class LocalAuthentication implements IAuthenticationProvider
                     // then redirect back to login.
                     $this->bPendingTwoFactorAuth = false;
                     $this->setCurrentUser(null);
-                    $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/begin';
+                    $authenticationResult->nextStepURL = AuthenticationManager::getStaffSignInURL();
                 } else {
                     $recoveryParam = $AuthenticationRequest->isRecoveryMode ? '&recovery' : '';
                     $authenticationResult->nextStepURL = SystemURLs::getRootPath() . '/session/two-factor?invalid=1' . $recoveryParam;
@@ -282,14 +284,15 @@ class LocalAuthentication implements IAuthenticationProvider
         }
 
         // The session stores only the user id, so the user is read from the database
-        // on the first call of each request. A deleted user ends the session.
+        // on the first call of each request. A deleted user ends the session, and the
+        // caller picks the sign-in page: /portal/login for a portal page.
         $user = $this->getCurrentUser();
         if (!$user instanceof User) {
             LoggerUtils::getAuthLogger()->debug(
                 'User with active session no longer exists in the database.  Expiring session',
                 ['userId' => $this->currentUserId]
             );
-            AuthenticationManager::endSession();
+            AuthenticationManager::endSession(true);
             $authenticationResult->isAuthenticated = false;
 
             return $authenticationResult;

@@ -176,4 +176,24 @@ interface PluginInterface
      * @return array<int, array{parent: string, label: string, url: string, icon?: string, permission?: string}>
      */
     public function getMenuItems(): array;
+
+    /**
+     * Rules that give the plugin's portal capabilities, evaluated live on every
+     * request (member sign-in design §8.5). The capabilities themselves are
+     * declared in plugin.json under `portal.capabilities`.
+     *
+     * @return \ChurchCRM\Portal\Permissions\PortalRule[]
+     */
+    public function getPortalRules(): array;
+
+    /**
+     * Member Portal nav items. Each is shown only to a member holding its
+     * capability on at least one scope.
+     *
+     * Example: ['label' => dgettext('my-plugin', 'Rosters'), 'url' => '/portal/plugins/my-plugin/rosters',
+     *           'icon' => 'fa-solid fa-list', 'capability' => 'plugin.my-plugin.roster.view']
+     *
+     * @return array<int, array{label: string, url: string, icon?: string, capability: string, id?: string}>
+     */
+    public function getPortalNavItems(): array;
 }

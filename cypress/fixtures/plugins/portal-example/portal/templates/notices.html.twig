@@ -1,0 +1,10 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<section class="portal-card" id="portal-example-notices">
+    <h1 class="portal-page-title">{{ pageTitle }}</h1>
+    {% if portal_can('plugin.portal-example.notices') %}
+    <p id="portal-example-notices-text">The picnic is on Saturday.</p>
+    {% endif %}
+</section>
+{% endblock %}

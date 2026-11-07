@@ -30,11 +30,8 @@ const setPortalTheme = (value) =>
     });
 
 const loginAsMember = () => {
-    cy.clearCookies();
-    cy.visit("session/begin");
-    cy.get("input[name=User]").type("lena.black.editself.notes@example.com");
-    cy.get("input[name=Password]").type("changeme{enter}");
-    cy.url({ timeout: 10000 }).should("include", "/portal");
+    cy.signInAsMember(100);
+    cy.visit("/portal/");
 };
 
 const loginAsAdmin = () => {
@@ -93,7 +90,10 @@ describe("Member Portal — church theme", () => {
     });
 
     it("A member sees the 'temporarily unavailable' page when the active theme breaks", () => {
-        loginAsMember();
+        // Signing in lands on the home page, which the broken theme can't draw.
+        setPortalTheme("default");
+        cy.signInAsMember(100);
+        setPortalTheme(THEME_ID);
         cy.visit("/portal/", { failOnStatusCode: false });
         cy.get(".portal-unavailable", { timeout: 10000 }).should("exist");
         cy.contains("The Member Portal is temporarily unavailable").should("exist");

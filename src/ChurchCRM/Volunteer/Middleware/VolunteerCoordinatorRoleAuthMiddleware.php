@@ -3,6 +3,7 @@
 namespace ChurchCRM\Volunteer\Middleware;
 
 use ChurchCRM\Slim\Middleware\Request\Auth\BaseAuthRoleMiddleware;
+use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 
 /**
  * Volunteer Management v2 (#9706): the coordinator-area gate.
@@ -37,7 +38,8 @@ class VolunteerCoordinatorRoleAuthMiddleware extends BaseAuthRoleMiddleware
 {
     protected function hasRole(): bool
     {
-        return $this->user->isVolunteerCoordinatorEnabled() || $this->user->isVolunteerTeamLeaderEnabled();
+        return $this->user->isVolunteerCoordinatorEnabled()
+            || (new VolunteerAuthorizationService())->hasTeamAuthority($this->user);
     }
 
     protected function noRoleMessage(): string

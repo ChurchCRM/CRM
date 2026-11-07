@@ -4,6 +4,7 @@
 //
 // apiKey / login are Cypress env keys when a config defines them, otherwise a
 // seed literal ({ username, password }); every seed password is "changeme".
+// A portal persona has no user account: `member` is the person it signs in as.
 // `flags` documents the user_usr values in cypress/data/seed.sql today.
 
 const SEED_PASSWORD = "changeme";
@@ -59,18 +60,9 @@ export const PERSONAS = {
     },
     "portal-only": {
         principal: "portal",
-        apiKey: "limited.api.key",
-        login: { username: "limited.user", password: SEED_PASSWORD },
-        flags: "Edit Self",
-        // Edit Self without staff flags is confined to /portal; the internal API answers 403.
-        confinedToPortal: true,
-    },
-    // Edit Self plus a dormant Notes flag: still a self-service account, never staff.
-    "portal-only-dormant-flags": {
-        principal: "portal",
-        apiKey: "selfedit.plus.notes.api.key",
-        login: { username: "lena.black.editself.notes@example.com", password: SEED_PASSWORD },
-        flags: "Edit Self, Notes",
+        // Darren Campbell: no user account; signs in to the Member Portal with an emailed code.
+        member: 4,
+        flags: "none (no user account)",
         confinedToPortal: true,
     },
 };

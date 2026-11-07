@@ -76,7 +76,6 @@ class BackupJob extends JobBase
             $effectiveUrl = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
             $authUsed = curl_getinfo($ch, CURLINFO_HTTPAUTH_AVAIL);
             $error_msg = curl_error($ch);
-            curl_close($ch);
             fclose($fileHandle);
 
             LoggerUtils::getAppLogger()->debug('cURL info - HTTP: ' . $httpCode . ', Auth available: ' . $authUsed . ', Effective URL: ' . $effectiveUrl);

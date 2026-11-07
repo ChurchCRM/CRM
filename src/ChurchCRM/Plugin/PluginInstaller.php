@@ -514,6 +514,7 @@ HTACCESS;
 
         // Clear all plugin.{id}.* config keys.
         $removedKeys = self::clearPluginConfig($pluginId);
+        self::deletePortalGrants($pluginId);
 
         $logger->info('Community plugin uninstalled', [
             'plugin' => $pluginId,
@@ -617,6 +618,24 @@ HTACCESS;
     }
 
     /**
+     * Delete the portal grants administrators gave on the plugin's capabilities
+     * (member sign-in design §8.5). Turning a plugin off keeps them.
+     */
+    private static function deletePortalGrants(string $pluginId): void
+    {
+        try {
+            \ChurchCRM\model\ChurchCRM\PortalGrantQuery::create()
+                ->filterByCapability(\ChurchCRM\Portal\Permissions\PortalCapabilityRegistry::pluginKeyPrefix($pluginId) . '%', \Propel\Runtime\ActiveQuery\Criteria::LIKE)
+                ->delete();
+        } catch (\Throwable $e) {
+            LoggerUtils::getAppLogger()->warning('Could not delete plugin portal grants', [
+                'plugin' => $pluginId,
+                'error' => $e->getMessage(),
+            ]);
+        }
+    }
+
+    /**
      * Write (or verify) the Apache `.htaccess` deny block in the community
      * plugins directory, blocking direct HTTP execution of PHP files.
      *
@@ -645,7 +664,7 @@ HTACCESS;
      */
     private static function downloadToTempFile(string $url): string
     {
-        // Test stacks serve fixture zips for this reserved host instead of the network.
+        // When CHURCHCRM_PLUGIN_FIXTURES is set, zips for this reserved host come from that directory instead of the network.
         $fixtures = getenv('CHURCHCRM_PLUGIN_FIXTURES');
         if ($fixtures !== false && str_starts_with($url, 'https://fixtures.invalid/')) {
             $zip = $fixtures . '/' . basename($url);
@@ -704,7 +723,6 @@ HTACCESS;
         $httpCode = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE);
         $errno = curl_errno($ch);
         $error = curl_error($ch);
-        curl_close($ch);
         fclose($fh);
 
         if ($tooLarge) {

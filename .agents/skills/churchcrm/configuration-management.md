@@ -15,9 +15,11 @@ Define the `ConfigItem` in `SystemConfig::buildConfigs()` (that persists the val
 
 ### Member Portal settings
 
-`/admin/member-portal` (`src/admin/routes/member-portal.php`, `src/admin/views/member-portal.php`) hosts the portal's settings on its **Settings** tab through the Settings Panel component. Its `ConfigItem`s (`sMemberPortalTheme`, `bPortalDeveloperMode`, `bPortalShowCalendar`, `bPortalShowVolunteer`, `bPortalAllowBirthdayEdit`) are declared in `buildConfigs()`.
+`/admin/member-portal` (`src/admin/routes/member-portal.php`, `src/admin/views/member-portal.php`) hosts the portal's settings, each in the tab it affects, through the Settings Panel component: `bPortalDeveloperMode` on Themes, `bPortalAllowBirthdayEdit` and `bPortalShowVolunteer` on Permissions, `bPortalShowDirectory` on Directory. Its `ConfigItem`s (`sMemberPortalTheme`, `aPortalCalendars` and those four) are declared in `buildConfigs()`. The Calendars tab saves `aPortalCalendars` one switch at a time; the portal shows its calendar while at least one calendar is switched on.
 
-The booleans save through `POST /admin/api/system/config/{name}`. `sMemberPortalTheme` saves through `POST /admin/api/member-portal/theme`, which runs `ThemeManager::validate()` and answers 409 with the findings when the theme cannot render.
+The booleans auto-save through `POST /admin/api/system/config/{name}`. `sMemberPortalTheme` saves through `POST /admin/api/member-portal/theme`, which runs `ThemeManager::validate()` and answers 409 with the findings when the theme cannot render.
+
+The **Sign-in** tab owns the keys in `MemberSignInSettingsService::KEYS`. Each control saves as it changes by posting that one key to `POST /admin/api/member-portal/sign-in` (any subset, all or none); a refused value goes back to the saved one, and turning member sign-in on or off asks first. The generic config API routes those keys through the same `normalize()`, so a rule such as "member sign-in only while email works" holds whichever way a value is written.
 
 ### Retiring a key
 
@@ -79,7 +81,7 @@ Build image and skin URLs from `getRootPath()`. `getImagesRoot()` is a filesyste
 $photoPath = SystemURLs::getDocumentRoot() . '/photos/person_' . $personId . '.jpg';
 ```
 
-ChurchCRM installs at a site root or in a subdirectory (`/churchcrm/`), and routes nest (`/admin/system/debug`), so root-relative literals like `/skin/v2/...` and relative paths like `../skin/...` resolve wrongly. `getRootPath()` makes every URL correct. `npm run lint` (`scripts/validate-subdir-urls.js`) fails on a literal that starts at `/` or `./` in a URL sink; mark a deliberate case with `// subdir-ok: <reason>`.
+ChurchCRM installs at a site root or in a subdirectory (`/churchcrm/`), and routes nest (`/admin/system/debug`), so root-relative literals like `/skin/v2/...` and relative paths like `../skin/...` resolve wrongly. `getRootPath()` makes every URL correct. `npm run lint` fails on a literal that starts at `/` or `./` in a URL sink; mark a deliberate case with `// subdir-ok: <reason>`.
 
 ## Settings Panels
 

@@ -157,6 +157,37 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
     </div>
     <?php endif; ?>
 
+    <?php if (!empty($formerPortalAccounts)): ?>
+    <div class="alert alert-info" role="alert" id="former-portal-accounts-notice" data-csrf-token="<?= InputUtils::escapeAttribute($csrfToken) ?>">
+        <div class="d-flex align-items-start">
+            <div class="me-3">
+                <i class="fa-solid fa-right-to-bracket fa-2x"></i>
+            </div>
+            <div class="flex-grow-1">
+                <h4 class="alert-heading mb-2"><?= gettext('Member sign-in is off') ?></h4>
+                <p class="mb-2">
+                    <?= sprintf(gettext('People who used to sign in to the Member Portal: %d'), (int) $formerPortalAccounts) ?>.
+                    <?= gettext('Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email.') ?>
+                </p>
+                <p class="mb-2" id="former-portal-accounts-email">
+                    <?= gettext('Member sign-in emails each person a code, so email (SMTP) must work before you turn it on.') ?>
+                    <?php if (empty($hasEmail)): ?>
+                        <a href="<?= SystemURLs::getRootPath() ?>/admin/email" id="former-portal-accounts-email-setup"><?= gettext('Set up email first.') ?></a>
+                    <?php endif; ?>
+                </p>
+                <div class="d-flex flex-wrap gap-2">
+                    <a href="<?= SystemURLs::getRootPath() ?>/admin/member-portal#portal-signin" class="btn btn-primary" id="former-portal-accounts-turn-on">
+                        <?= gettext('Turn on member sign-in') ?>
+                    </a>
+                    <button type="button" class="btn btn-ghost-secondary js-dismiss-former-portal-accounts">
+                        <?= gettext('Dismiss') ?>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
     <?php if ($showTelemetryPrompt): ?>
     <!-- Telemetry consent card -->
     <div class="card mb-4 border-info" id="telemetry-consent-card">
@@ -172,7 +203,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                         <?= gettext('Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement.') ?>
                     </p>
                     <p class="text-secondary mb-3 small">
-                        <?= gettext('Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States.') ?>
+                        <?= gettext('Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States.') ?>
                     </p>
                     <div class="d-flex gap-2 flex-wrap">
                         <button type="button" class="btn btn-info js-telemetry-consent" data-level="full">

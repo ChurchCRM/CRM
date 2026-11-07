@@ -41,7 +41,7 @@ gh run download -R ChurchCRM/CRM -n "release-notes-context-$TAG" -D /tmp/rn
 Otherwise build it locally. It is the same script and needs a token for the GitHub API:
 
 ```bash
-node scripts/release-notes-context.js "$PREV" "$TARGET" > /tmp/rn/release-notes-context-$TAG.md
+node scripts/release/release-notes-context.js "$PREV" "$TARGET" > /tmp/rn/release-notes-context-$TAG.md
 ```
 
 The script makes one API call per PR, so a 100-PR release takes several minutes: run it in the background. The file lists every PR merged between `PREV` and `TARGET` with its **full description**, author, labels, linked issues and a bucket derived from the files it touched (User-facing, Localization, Dependencies, Testing, CI & tooling, Marketing capture, Docs & agent guidance, Automated).
@@ -170,12 +170,13 @@ Write the notes to `changelog/$TAG.md` in the main checkout from the first draft
 *Thank you for being part of our global community as we continue building an intuitive, supportive, and reliable workspace for your ministry!* 🌿
 ```
 
-`scripts/release-changelog.js` builds the CHANGELOG.md summary from the `**Theme**:` line, so always include it.
+The release workflow builds the CHANGELOG.md summary from the `**Theme**:` line, so always include it.
 
 ### Writing rules
 
 - Write for church administrators, staff and volunteers. Say where things are (**Admin → System → Church Information**) and what changed ("used to print blank labels; now uses the family address").
 - Leave out developer vocabulary (refactor, middleware, endpoint, TomSelect, CI, lint, chore) unless users need it. The two Behind the Scenes lines may name libraries and advisories.
+- Weight notes by reach: a change seen on every screen is a feature; a capability few use yet gets one line.
 - Never claim a benefit the change does not deliver. A refactor is not "faster"; a dependency bump is not "more secure" unless it fixes an advisory.
 - State breaking changes, removed features, new runtime requirements and required upgrade steps plainly, in their own `## ⚠️ Before You Upgrade` section placed above New Features.
 - Security: use calm, routine-maintenance framing. If the release fixes a published advisory users must act on, name it accurately. Never hide required security information. Name no GHSA or CVE ID for a draft or triage advisory: describe the change in plain words, and add the ID only after the advisory is published.
@@ -242,7 +243,7 @@ gh release view "$TAG" -R ChurchCRM/CRM --json tagName,isDraft,targetCommitish
 
 Only edit a **draft**. If the release is already published, show George the diff and apply it only after George explicitly approves. Never publish from this skill: publishing is George's separate approval in `release-management.md`.
 
-Before George publishes, the "Start <next> release" PR must be merged, so that `release-bookkeeping.yml` reads the next version from master. Otherwise it stops.
+Publish does not wait for the "Start <next> release" PR: bookkeeping reads the next version from `master`, or from the PR's `build/<next>` branch until it merges. Delete the local `changelog/<version>.md` once the draft holds the notes; bookkeeping writes it back at Publish.
 
 After George publishes, `release-bookkeeping.yml` copies the notes into `changelog/$TAG.md` and CHANGELOG.md, and `release-announcement.md` / `social-media-release.md` reuse them. There is nothing further to paste.
 

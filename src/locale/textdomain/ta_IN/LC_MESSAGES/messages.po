@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "குடும்ப கைபேசி"
 
 #: 
-msgid "Family Email"
-msgstr "குடும்ப மின்னஞ்சல்"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "தனிப்பட்ட வீட்டு தொலைபேசி"
 
@@ -3899,10 +3895,6 @@ msgid "Oops! Page not found."
 msgstr "அச்சச்சோ! பக்கம் கிடைக்கவில்லை."
 
 #: 
-msgid "Family Registration"
-msgstr "குடும்பப் பதிவு"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "உங்கள் குடும்பச் சரிபார்ப்பைத் தொடங்க, பின்வருவனவற்றை உள்ளிடவும்"
 
@@ -4927,10 +4919,6 @@ msgid "Portuguese - Portugal"
 msgstr "போர்த்துகீசியம் - போர்ச்சுகல்"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "அங்கீகரிப்பு பயன்பாட்டில் காட்டப்பட வேண்டிய பயன்பாட்டின் பெயரைக் குறிப்பிடவும்"
-
-#: 
 msgid "Review"
 msgstr "மதிப்பாய்வு"
 
@@ -5059,10 +5047,6 @@ msgstr "குடும்பப் பக்கத்தைப் பார்�
 #: 
 msgid "View Person Page"
 msgstr "நபர் பக்கத்தைப் பார்க்கவும்"
-
-#: 
-msgid "Verify"
-msgstr "சரிபார்க்கவும்"
 
 #: 
 msgid "Family has no emails to use"
@@ -5311,24 +5295,8 @@ msgid "Email address"
 msgstr "மின்னஞ்சல் முகவரி"
 
 #: 
-msgid "Enter family name"
-msgstr "குடும்பப் பெயரை உள்ளிடவும்"
-
-#: 
 msgid "Family name is required"
 msgstr "குடும்பப் பெயர் தேவை"
-
-#: 
-msgid "First name"
-msgstr "முதல் பெயர்"
-
-#: 
-msgid "Home phone number"
-msgstr "வீட்டு தொலைபேசி எண்"
-
-#: 
-msgid "Last name"
-msgstr "கடைசி பெயர்"
 
 #: 
 msgid "Next Member"
@@ -9764,10 +9732,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "தொடர்பில் இருக்கவும் திருச்சபை புதுப்பிப்புகளை அனுப்பவும் இதைப் பயன்படுத்துவோம்."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "நீங்கள் இங்கு வந்ததில் மிகவும் மகிழ்ச்சி! 3 எளிய படிகளில் உங்கள் குடும்பத்தைப் பதிவு செய்யுங்கள்."
-
-#: 
 msgid "Welcome Back!"
 msgstr "மீண்டும் வருக!"
 
@@ -13746,10 +13710,6 @@ msgid "Generate new code"
 msgstr "புதிய குறியீட்டை உருவாக்கு"
 
 #: 
-msgid "Go to homepage"
-msgstr "முகப்புப் பக்கத்திற்குச் செல்க"
-
-#: 
 msgid "Group added to cart"
 msgstr "குழு கூடையில் சேர்க்கப்பட்டது"
 
@@ -13772,10 +13732,6 @@ msgstr "உங்கள் அங்கீகரிப்பான் செய�
 #: 
 msgid "Hide advanced options"
 msgstr "மேம்பட்ட விருப்பங்களை மறை"
-
-#: 
-msgid "Home phone is required"
-msgstr "வீட்டுத் தொலைபேசி எண் தேவை"
 
 #: 
 msgid "ICS URL"
@@ -14452,10 +14408,6 @@ msgid "Warnings"
 msgstr "Warnings"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "We're so glad your family has joined us!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Welcome to the Family!"
 
@@ -14510,10 +14462,6 @@ msgstr "உங்கள் உலாவியின் மொழித் தே
 #: 
 msgid "Your database already contains data"
 msgstr "உங்கள் தரவுத்தளத்தில் ஏற்கனவே தரவுகள் உள்ளன"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "உங்கள் பதிவு பெறப்பட்டது. உங்களை நேரில் வரவேற்க எங்கள் குழு விரைவில் உங்களைத் தொடர்புகொள்ளும்."
 
 #: 
 msgid "Zip code is required"
@@ -14592,10 +14540,6 @@ msgid "open rate"
 msgstr "திறப்பு விகிதம்"
 
 #: 
-msgid "our church"
-msgstr "எங்கள் திருச்சபை"
-
-#: 
 msgid "payment(s)?"
 msgstr "கட்டணம்(கள்)?"
 
@@ -14634,14 +14578,6 @@ msgstr "வருடம்"
 #: 
 msgid "yrs"
 msgstr "ஆண்டுகள்"
-
-#: 
-msgid "Account options"
-msgstr "கணக்கு விருப்பங்கள்"
-
-#: 
-msgid "Register"
-msgstr "பதிவு செய்"
 
 #. Context: locales
 #: 
@@ -14703,10 +14639,6 @@ msgid "Date Picker Format"
 msgstr "தேதி தேர்வி வடிவம்"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "தேதி தேர்வி இட நிரப்பி"
-
-#: 
 msgid "Date Without Year"
 msgstr "ஆண்டு இல்லாத தேதி"
 
@@ -14737,10 +14669,6 @@ msgstr "கோப்பு பெயர் தேதி வடிவம்"
 #: 
 msgid "Fully translated."
 msgstr "முழுமையாக மொழிபெயர்க்கப்பட்டது."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "தேதி உள்ளீடுகளில் காட்டப்படும் குறிப்பு உரை. இயல்புநிலை: yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -14924,16 +14852,8 @@ msgid "Always granted"
 msgstr "எப்போதும் வழங்கப்பட்டது"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "தங்கள் சொந்த குடும்பத்தை மட்டுமே மதிப்பாய்வு செய்து சரிபார்க்க முடியும். வேறு அணுகல் இல்லை."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "கீழே குறிப்பிட்ட அனுமதிகளைத் தேர்ந்தெடுக்கவும்."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "உங்கள் அனுமதிகளை மாற்ற ஒரு நிர்வாகியை தொடர்பு கொள்ளவும்."
 
 #: 
 msgid "Custom permissions"
@@ -14948,20 +14868,8 @@ msgid "People &amp; Families"
 msgstr "நபர்கள் &amp; குடும்பங்கள்"
 
 #: 
-msgid "Self-service"
-msgstr "சுய சேவை"
-
-#: 
-msgid "Self-service only"
-msgstr "சுய சேவை மட்டும்"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "நீங்கள் திருத்த முயற்சிக்கும் குறிப்பு இனி இல்லை."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "இந்த பயனர் தங்கள் சொந்த குடும்ப சுயவிவரத்தை மட்டுமே மதிப்பாய்வு செய்து புதுப்பிக்க முடியும். தனிப்பட்ட அனுமதிகள் பொருந்தாது."
 
 #: 
 msgid "User List"
@@ -18226,16 +18134,8 @@ msgid "Second Home"
 msgstr "இரண்டாவது வீடு"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "இணைக்கப்பட்ட நபர் இறந்துவிட்டார் அல்லது செயல்பாடற்றவர். நபர் மீண்டும் செயல்பாடுக்கு வருவார் வரை உள்நுழைவு, அமர்வுகள் மற்றும் API சாவி தடுக்கப்பட்டுள்ளன."
-
-#: 
 msgid "This is the mailing address"
 msgstr "இது தபால் முகவரி"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "இந்த நபர் இறந்துவிட்டார் அல்லது செயலற்றவர், எனவே இந்தக் கணக்கில் உள்நுழைய முடியாது"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18924,10 +18824,6 @@ msgid "Account unlocked"
 msgstr "கணக்கு திறக்கப்பட்டது"
 
 #: 
-msgid "Accounts"
-msgstr "கணக்குகள்"
-
-#: 
 msgid "Active must be true or false"
 msgstr "செயலில் என்பது சரி அல்லது தவறு ஆக இருக்க வேண்டும்"
 
@@ -19120,10 +19016,6 @@ msgid "Author"
 msgstr "ஆசிரியர்"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "அதிகாரம் நபருக்கு வழங்கப்படுகிறது, உள்நுழைவுக்கு அல்ல, எனவே அவருக்கு உள்நுழைவு வருவதற்கு முன்பே அதை வழங்கலாம். உள்நுழைவு சுயசேவை மட்டும் உள்ள நபர், நிர்வாகி அவரது கணக்கை விரிவாக்கும் வரை தனது சொந்த அட்டவணையை மட்டுமே தொடர்ந்து காண்பார்."
-
-#: 
 msgid "Automatic"
 msgstr "தானியங்கி"
 
@@ -19246,10 +19138,6 @@ msgstr "ஒரு வகுப்பைத் தேர்ந்தெடுக�
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "மாதத்தின் 1 முதல் 31 வரை ஒரு நாளைத் தேர்ந்தெடுக்கவும்"
-
-#: 
-msgid "Choose a new photo"
-msgstr "புதிய புகைப்படத்தைத் தேர்ந்தெடுக்கவும்"
 
 #: 
 msgid "Choose a person"
@@ -20022,10 +19910,6 @@ msgid "Last attempt"
 msgstr "கடைசி முயற்சி"
 
 #: 
-msgid "Last check"
-msgstr "கடைசிச் சோதனை"
-
-#: 
 msgid "Last date"
 msgstr "கடைசி தேதி"
 
@@ -20252,10 +20136,6 @@ msgstr "உறுப்பினர்களுடன் இன்னும் �
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "இந்த ஊழியத்துக்கு எந்த நாட்காட்டியும் திறக்கப்படவில்லை, எனவே நிகழ்ச்சிகள் எந்த நாட்காட்டியிலும் தோன்றாது."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "உறுப்பினர்களுடன் எந்த நாட்காட்டியும் பகிரப்படவில்லை."
 
 #: 
 msgid "No class"
@@ -20792,14 +20672,6 @@ msgid "Please tell us what needs changing."
 msgstr "எதை மாற்ற வேண்டும் என்று எங்களுக்குக் கூறவும்."
 
 #: 
-msgid "Portal settings"
-msgstr "போர்ட்டல் அமைப்புகள்"
-
-#: 
-msgid "Portal theme"
-msgstr "போர்ட்டல் தீம்"
-
-#: 
 msgid "Position"
 msgstr "பொறுப்பு"
 
@@ -21016,10 +20888,6 @@ msgid "SMTP test"
 msgstr "SMTP சோதனை"
 
 #: 
-msgid "Save calendars"
-msgstr "நாட்காட்டிகளைச் சேமி"
-
-#: 
 msgid "Save changes"
 msgstr "மாற்றங்களை சேமியுங்கள்"
 
@@ -21030,10 +20898,6 @@ msgstr "சேமிக்கப்பட்டது — இந்த ஊழி
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "சேமிக்கப்பட்டது — இந்த ஊழியம் இப்போது உதவி கேட்கிறது"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "சேமிக்கப்பட்டது. மேலே இயக்கப்பட்ட நாட்காட்டிகளை உறுப்பினர்கள் காண்பார்கள்."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21138,10 +21002,6 @@ msgid "Self-assignable must be true or false"
 msgstr "தானாக ஏற்கத்தக்கது சரி அல்லது தவறு ஆக இருக்க வேண்டும்"
 
 #: 
-msgid "Self-service accounts"
-msgstr "சுயசேவைக் கணக்குகள்"
-
-#: 
 msgid "Send"
 msgstr "அனுப்பு"
 
@@ -21210,18 +21070,6 @@ msgstr "உறுப்பினர் போர்ட்டலில் கா�
 #: 
 msgid "Show past events"
 msgstr "கடந்த நிகழ்ச்சிகளைக் காட்டு"
-
-#: 
-msgid "Show the church calendar"
-msgstr "திருச்சபை நாட்காட்டியைக் காட்டு"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "உறுப்பினர் போர்ட்டலில் திருச்சபை நாட்காட்டியைக் காட்டு."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "உறுப்பினர் போர்ட்டலில் திருச்சபை நாட்காட்டிப் பிரிவைக் காட்டு."
 
 #: 
 msgid "Show the next"
@@ -21630,10 +21478,6 @@ msgstr "%s முழு எண் நிமிடங்களாக இருக
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s நிகழ்ச்சியிலிருந்து %d நிமிடங்களுக்குள் இருக்க வேண்டும்"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "உறுப்பினர் போர்ட்டல் நாட்காட்டிகள் சேமிக்கப்பட்டன."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22084,10 +21928,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "இந்தத் தேவைகள் அட்டவணையிலிருந்து வருகின்றன. இங்கே சேமித்தால் இந்த நிகழ்வு மட்டுமே மாறும்."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "இந்த எண்ணிக்கைகள் சுயசேவைக் கணக்குகளை மட்டுமே கணக்கிடுகின்றன: உள்நுழைவு மூலம் உறுப்பினர் போர்ட்டலை மட்டுமே அணுக முடிந்து வேறு எதையும் அணுக முடியாத நபர்கள்."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "இந்த நபர்கள் இன்னும் நியமிக்கப்பட்டுள்ளனர், ஆனால் அவர்கள் வகிக்கும் பொறுப்பு இப்போது இந்தத் தேதியின் ஆட்கள் அமர்த்தல் திட்டத்தின் பகுதி அல்ல."
 
@@ -22172,14 +22012,6 @@ msgid "This is not a valid theme folder name."
 msgstr "இது சரியான தீம் கோப்புறைப் பெயர் அல்ல."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "இது உங்கள் குழுவின் தேதிகளில் ஒன்றல்ல."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "இது உங்கள் குழுக்களில் ஒன்றல்ல."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "இங்கேதான் திருச்சபை அஞ்சல் அனுப்புகிறது, உங்கள் குடும்பம் குறித்து யாரைத் தொடர்புகொள்கிறது என்பதும்."
 
@@ -22238,10 +22070,6 @@ msgstr "இந்தப் பக்கம் உங்கள் கணக்க
 #: 
 msgid "This page was not found"
 msgstr "இந்தப் பக்கம் கிடைக்கவில்லை"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "உறுப்பினர் போர்ட்டலின் இந்தப் பகுதி தன்னார்வக் குழுத் தலைவர்களுக்கானது."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23912,16 +23740,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} ஒதுக்கப்பட்டு ஏற்றதாகப் பதிவாகியது"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "உங்கள் உள்நுழைவு மின்னஞ்சலை மாற்ற ஒரு நிர்வாகியிடம் கேளுங்கள்."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "ஒரு நிர்வாகி மின்னஞ்சலை %1$s இலிருந்து %2$sக்கு மாற்றினார்"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "பயனர் கணக்கு உள்ள நபரின் மின்னஞ்சலை நிர்வாகி மட்டுமே மாற்ற முடியும்."
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24406,4 +24226,2960 @@ msgstr "நீங்கள் அனுப்பிய மின்னஞ்ச�
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "மீண்டும் வரும் நிகழ்வுகளை உருவாக்க முடியவில்லை. விவரங்களுக்கு பயன்பாட்டு பதிவைச் சரிபார்க்கவும்."
+
+#: 
+msgid "Confirm Password"
+msgstr "கடவுச்சொல்லை உறுதிசெய்யவும்"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "உங்கள் கடவுச்சொல் மாற்றப்பட்டது. இப்போது புதிய கடவுச்சொல்லுடன் உள்நுழையலாம்."
+
+#: 
+msgid "1st"
+msgstr "1வது"
+
+#: 
+msgid "2nd"
+msgstr "2வது"
+
+#: 
+msgid "3rd"
+msgstr "3வது"
+
+#: 
+msgid "4th"
+msgstr "4வது"
+
+#: 
+msgid "5th"
+msgstr "5வது"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "உள்நுழையக்கூடிய ஒரே நிர்வாகியின் நிர்வாக அணுகலை அகற்ற முடியாது"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "மாதத்தின் வாரத்தை 1வது முதல் 5வது வரை தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "{{first}} முதல் {{last}} வரை ஒவ்வொரு மாதமும் {{week}} {{day}} அன்று {{total}} நிகழ்வுகளை உருவாக்குகிறது"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "வாரத்தின் நாள் தவறானது"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "மாதந்தோறும், ஒரு வாரநாளில்"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "5வது இல்லாத மாதங்கள் தவிர்க்கப்படும்."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM 1 முதல் 5 வரையிலான முழு எண்ணாக இருக்க வேண்டும்"
+
+#: 
+msgid "Week of the month"
+msgstr "மாதத்தின் வாரம்"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "மாதத்தின் வாரம் 1 முதல் 5 வரை இருக்க வேண்டும்"
+
+#: 
+msgid "%s through %s"
+msgstr "%s முதல் %s வரை"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "நன்கொடை அறிக்கைகளில் அச்சிடப்படும் திருச்சபை வரி அடையாளம் (EIN)"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "நன்கொடை அறிக்கைகள் குடும்பத்தின் பெரியவர்களுக்கு வழங்கப்படுகின்றன. ஒன்று தேவைப்பட்டால் திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "Download statement"
+msgstr "அறிக்கையைப் பதிவிறக்கவும்"
+
+#: 
+msgid "Generated"
+msgstr "உருவாக்கப்பட்டது"
+
+#: 
+msgid "Goods and services"
+msgstr "பொருள்களும் சேவைகளும்"
+
+#: 
+msgid "My Giving"
+msgstr "என் கொடை"
+
+#: 
+msgid "No contributions"
+msgstr "நன்கொடைகள் இல்லை"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "இந்தக் காலத்திற்கு நன்கொடைகள் பதிவாகவில்லை."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "அருவமான மத நன்மைகளைத் தவிர, இந்த நன்கொடைகளுக்குப் பதிலாக பொருள்களோ சேவைகளோ வழங்கப்படவில்லை."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "விருப்பத்தேர்வு. நன்கொடை அறிக்கைகளில் அச்சிடப்படும்."
+
+#: 
+msgid "Tax ID"
+msgstr "வரி அடையாளம்"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "வரி அடையாளம் (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "வரி விலக்குத் தொகை"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "இது குடும்ப அறிக்கை. உங்கள் குடும்பத்திற்கான கொடைகளை இது உள்ளடக்குகிறது."
+
+#: 
+msgid "Total contributions"
+msgstr "மொத்த நன்கொடைகள்"
+
+#: 
+msgid "Year-end statement"
+msgstr "ஆண்டு இறுதி அறிக்கை"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d கொடை அறிக்கை குடும்பத்திற்கு மின்னஞ்சலில் வெற்றிகரமாக அனுப்பப்பட்டது."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s கொடை அறிக்கை"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "கொடை அறிக்கைகளில் தோன்றும் உரையைத் தனிப்பயனாக்கவும் (sTaxReport1, sTaxReport2 போன்றவை)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "அன்புள்ள %s குடும்பத்தினரே,\n"
+"\n"
+"தயவுசெய்து உங்கள் %s கொடை அறிக்கையை %s இலிருந்து இந்த மின்னஞ்சலின் இணைப்பில் காணவும்.\n"
+"\n"
+"கேள்விகள் இருந்தால், தயவுசெய்து திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்.\n"
+"\n"
+"உங்கள் தாராளத்திற்கு நன்றி."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "%s கொடை அறிக்கையை மின்னஞ்சல் செய்யவும்"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "உறை எண்கள்"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "கொடை அறிக்கைகளை உருவாக்கவும்"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "கொடை அறிக்கைகள், உறுதிமொழி கண்காணிப்பு மற்றும் நிதி பகுப்பாய்வுக்கான அறிக்கைகளை உருவாக்கவும்."
+
+#: 
+msgid "Giving Reports"
+msgstr "கொடை அறிக்கைகள்"
+
+#: 
+msgid "Giving Statement"
+msgstr "கொடை அறிக்கை"
+
+#: 
+msgid "Giving Statements"
+msgstr "கொடை அறிக்கைகள்"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "கொடை அறிக்கை மின்னஞ்சல் அனுப்ப முடியவில்லை. உங்கள் மின்னஞ்சல் சேவையக அமைப்புகளைச் சரிபார்க்கவும்."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "உங்கள் அடுத்த கொடையை %s க்கு அஞ்சலிடவும்"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "%s கொடை அறிக்கையை அச்சிடவும்"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "கொடை அறிக்கையை மின்னஞ்சல் செய்ய முடியவில்லை: அந்த ஆண்டுக்கு கட்டணத் தரவு இல்லை."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "கொடை அறிக்கையை மின்னஞ்சல் செய்ய முடியவில்லை: இந்தக் குடும்பத்திற்கு கோப்பில் மின்னஞ்சல் முகவரி இல்லை."
+
+#: 
+msgid "Undesignated"
+msgstr "நோக்கம் குறிப்பிடப்படாதது"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "திருச்சபை பெயர், முகவரி மற்றும் தொடர்புத் தகவல் கொடை அறிக்கைகளில் தோன்றுகிறதா எனச் சரிபார்க்கவும்."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "இந்தப் பதவி இப்போது %s க்கு ஒதுக்கப்பட்டுள்ளது; அவர் அதை ஏற்றுக்கொண்டுள்ளார்."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "இந்தப் பதவி இப்போது %s க்கு ஒதுக்கப்பட்டுள்ளது; அவர் இன்னும் ஏற்கவில்லை."
+
+#: 
+msgid "Their reason: %s"
+msgstr "அவர்களின் காரணம்: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "ஒதுக்கீடுகளைக் காண்க"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "இந்த நிகழ்வுக்கு இன்னும் தேவைப்படும் தன்னார்வலர்கள்: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "இந்தப் பதவிக்கு இன்னும் தேவைப்படும் தன்னார்வலர்கள்: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "ஒவ்வொரு வகுப்புக்கும் ஒரு வாரந்தோறும் வருகைப் பதிவுக் கட்டம். வகுப்புப் பட்டியல்களும் புகைப்படப் புத்தகங்களும் ஞாயிறு பள்ளி முகப்பு மற்றும் ஒவ்வொரு வகுப்புப் பக்கத்திலும் உள்ளன."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "பள்ளி ஆண்டுக்கான வாரந்தோறும் வருகைப் பதிவுக் கட்டம், ஒவ்வொரு ஞாயிற்றுக்கும் ஒரு நெடுவரிசை"
+
+#: 
+msgid "Age %d"
+msgstr "வயது %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "வருகைத் தாளை உருவாக்க குறைந்தது ஒரு குழுவைத் தேர்ந்தெடுக்க வேண்டும்."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "வருகைத் தாள்"
+
+#: 
+msgid "Class List"
+msgstr "வகுப்புப் பட்டியல்"
+
+#: 
+msgid "Download PDF"
+msgstr "PDF பதிவிறக்கவும்"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "பூட்டுக் காலம் நிமிடங்களில்\n"
+"பூட்டிய கணக்கு இத்தனை நிமிடங்களுக்குப் பிறகு தானாகத் திறக்கும். ஒரு IP முகவரியிலிருந்து தோல்வியடைந்த உள்நுழைவுகள் அதே காலத்தில் எண்ணப்படும்."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "ஒரு IP முகவரியிலிருந்து அனுமதிக்கப்படும் அதிகபட்ச தோல்வி உள்நுழைவுகள்\n"
+"ஒரு IP முகவரியிலிருந்து தோல்வியடைந்த உள்நுழைவுகளும் கடவுச்சொல் மீட்டமைப்புக் கோரிக்கைகளும் பூட்டுக் காலத்திற்குள் இந்த வரம்பை நோக்கி எண்ணப்படும். அது எட்டப்பட்டதும், காலம் முடியும் வரை அந்த முகவரியிலிருந்து உள்நுழைவு மறுக்கப்படும்.\n"
+"இந்த அம்சத்தை முடக்க பூஜ்ஜியமாக அமைக்கவும், எடுத்துக்காட்டாக அனைவரும் ஒரு பதிலி முகவரி வழியாக ChurchCRM ஐ அடையும்போது."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "ஒரு பயனர் கணக்கு பூட்டப்படுவதற்கு முன் அனுமதிக்கப்படும் அதிகபட்ச தோல்வி உள்நுழைவுகள்.\n"
+"பூட்டிய கணக்கு பூட்டுக் காலத்திற்குப் பிறகு தானாகத் திறக்கும், அல்லது நிர்வாகி அதன் தோல்வி உள்நுழைவுகளை மீட்டமைத்தால் அதற்கு முன்பே.\n"
+"தானியங்கி கடவுச்சொல் ஊகத் தாக்குதல்களிலிருந்து பாதுகாக்க இந்த அம்சம் உதவுகிறது.\n"
+"இந்த அம்சத்தை முடக்க பூஜ்ஜியமாக அமைக்கவும்."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "தானாகத் திறக்கும் வரை நிமிடங்கள்: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "ஞாயிறு பள்ளி வருகைத் தாள்"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "வகுப்பு இல்லாத ஞாயிற்றுக்கிழமைகள் தாளில் சேர்க்கப்படாது."
+
+#: 
+msgid "Database Upgrade"
+msgstr "தரவுத்தள மேம்படுத்தல்"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "உங்கள் தரவுத்தளம் புதுப்பிக்கப்படுகிறது. மேம்படுத்தல் முடியும் வரை இந்தப் பக்கத்தைத் திறந்து வைக்கவும்."
+
+#: 
+msgid "Family Labels"
+msgstr "குடும்ப அட்டைகள்"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – மொத்தம்"
+
+#: 
+msgid "Bill"
+msgstr "நோட்டு"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "ஒரு வைப்புத்தொகையைத் தேர்ந்தெடுக்கவும் அல்லது இரண்டு அறிக்கை தேதிகளையும் உள்ளிடவும்."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "அதன் கட்டணங்களைப் பார்க்க அல்லது வங்கிச் சீட்டை அச்சிட ஒரு வைப்புத்தொகையைத் தேர்ந்தெடுக்கவும். தேர்ந்தெடுத்த வைப்புத்தொகை தேதி வரம்பை மீறுகிறது."
+
+#: 
+msgid "Coin"
+msgstr "நாணயம்"
+
+#: 
+msgid "Deposit Report"
+msgstr "வைப்பு அறிக்கை"
+
+#: 
+msgid "Download Report"
+msgstr "அறிக்கையைப் பதிவிறக்கவும்"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "சரியான அறிக்கை தேதிகளை உள்ளிடவும்."
+
+#: 
+msgid "Invalid report filters."
+msgstr "அறிக்கை வடிகட்டிகள் தவறானவை."
+
+#: 
+msgid "Invalid report options."
+msgstr "அறிக்கை விருப்பங்கள் தவறானவை."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "அனைத்துக் கட்டணங்களையும் சேர்க்க வடிகட்டிகளை காலியாக விடவும். இந்த அமைப்புகள் அறிக்கைக்குப் பொருந்தும், வங்கிச் சீட்டுக்கு அல்ல."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "பதிவுகள் எதுவும் வரவில்லை. வடிகட்டிகளைச் சரிசெய்து மீண்டும் முயலவும்."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "வங்கிக்குத் தயாரிக்கவும்"
+
+#: 
+msgid "Preview Totals"
+msgstr "மொத்தங்களை முன்னோட்டமிடவும்"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "வங்கிச் சீட்டை அச்சிடவும்"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "தேர்ந்தெடுத்த வைப்புத்தொகையை முழுமையாக அச்சிடவும், பணம் மற்றும் காசோலை மொத்தங்கள், எண்ணிக்கைத் தாள்கள் மற்றும் சாட்சி வரிகளுடன். அறிக்கை வடிகட்டிகள் புறக்கணிக்கப்படும். மின்னணுக் கட்டணங்கள் சுருக்கத்தில் இருக்கும், பொருள் வங்கிச் சீட்டு மொத்தத்திலிருந்து விலக்கப்படும்."
+
+#: 
+msgid "Review Payments"
+msgstr "கட்டணங்களை மதிப்பாய்வு செய்யவும்"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "ஒரு காலத்திற்கான கட்டணங்களை மதிப்பாய்வு செய்யவும், அல்லது ஒரு வைப்புத்தொகையை வங்கிக்குத் தயாரிக்கவும்."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "கட்டணங்களை மதிப்பாய்வு செய்யவும், PDF அல்லது CSV பதிவிறக்கவும், அல்லது ஒரு வைப்புத்தொகைக்கு வங்கிச் சீட்டை அச்சிடவும்."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "சரியான வைப்புத்தொகையைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "வங்கிச் சீட்டை அச்சிட ஒரு வைப்புத்தொகையைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "அறிக்கையின் இறுதித் தேதி தொடக்கத் தேதியன்று அல்லது அதற்குப் பிறகு இருக்க வேண்டும்."
+
+#: 
+msgid "Total Cash"
+msgstr "மொத்த பணம்"
+
+#: 
+msgid "Total Coin"
+msgstr "மொத்த நாணயம்"
+
+#: 
+msgid "Witness"
+msgstr "சாட்சி"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d கொடைகளுக்கு குடும்பம் இல்லை. அவை அறிக்கையில் இருக்க முடியாது."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "இந்த ஆண்டில் தேதியிடப்பட்ட %d திறந்த வைப்புத்தொகைகள். அறிக்கைகள் வெளியேறும் முன் ஒவ்வொரு கொடையும் இறுதியாகும்படி அவற்றை மூடவும்."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d கட்டணங்கள் இன்னும் எந்த வைப்புத்தொகையிலும் இல்லை."
+
+#: 
+msgid "Can be emailed"
+msgstr "மின்னஞ்சல் செய்யலாம்"
+
+#: 
+msgid "Closing line"
+msgstr "நிறைவு வரி"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "இந்த ஆண்டில் தேதியிடப்பட்ட ஒவ்வொரு வைப்புத்தொகையும் மூடப்பட்டுள்ளது."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "ஒவ்வொரு கொடையும் ஒரு குடும்பத்திற்குச் சொந்தமானது."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "இந்த ஆண்டின் ஒவ்வொரு கட்டணமும் ஒரு வைப்புத்தொகையில் உள்ளது."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "வரி அறிக்கைகளை உருவாக்கவும்"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "கொடை அறிக்கை (வரி அறிக்கைகள்)"
+
+#: 
+msgid "Opening line"
+msgstr "தொடக்க வரி"
+
+#: 
+msgid "Print and mail"
+msgstr "அச்சிட்டு அஞ்சலிடவும்"
+
+#: 
+msgid "Qty"
+msgstr "எண்ணிக்கை"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "ஆண்டை மதிப்பாய்வு செய்து, பின்னர் கொடை அறிக்கைகளை அச்சிடவும் அல்லது மின்னஞ்சல் செய்யவும்."
+
+#: 
+msgid "Signed by"
+msgstr "கையொப்பமிட்டவர்"
+
+#: 
+msgid "Thank-you line"
+msgstr "நன்றி வரி"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "திருச்சபை பெயர், முகவரி மற்றும் தொடர்புத் தகவல் வரி அறிக்கைகளில் தோன்றுகிறதா எனச் சரிபார்க்கவும்."
+
+#: 
+msgid "Year-End Giving"
+msgstr "ஆண்டு இறுதி கொடை"
+
+#: 
+msgid "As of: %s"
+msgstr "நிலவரம்: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "தேர்ந்தெடுத்த %d நிதி ஆண்டுகளில், மதிப்பாய்வு தேதி %s வரை, குறைந்தது ஒரு நேர்மறை குடும்பக் கட்டணம்"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "ஞானஸ்நானம், வாக்காளர் பட்டியல் விண்ணப்பங்கள், வசிப்பிடம், நற்கருணை நிலை, வருகை, நல்ல நிலை மற்றும் உள்ளூர் விதிவிலக்குகள், உங்கள் விதிகள் கோரும் இடங்களில் தனியாகச் சரிபார்க்கப்பட வேண்டும். உறுப்பினர் காலம் வருகையின் சான்று அல்ல."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "உள்ள ஒரு வகைப்பாட்டைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "மதிப்பாய்வுக்கு குறைந்தது ஒரு வகைப்பாட்டைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "உங்கள் திருச்சபை பயன்படுத்தும் வகைப்பாடுகளைத் தேர்ந்தெடுக்கவும். எந்த வகைப்பாடும் வாக்களிக்கும் உரிமையை வழங்குவதாகக் கருதப்படவில்லை."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "திருச்சபை விதிகளின் கீழ் தகுதியை திருச்சபை தலைமை உறுதிசெய்ய வேண்டும். இந்தப் பட்டியல் தேர்ந்தெடுத்த வடிகட்டிகளுக்குப் பொருந்தும் நபர்களை மட்டும் காட்டுகிறது."
+
+#: 
+msgid "Classifications to review"
+msgstr "மதிப்பாய்வு செய்ய வேண்டிய வகைப்பாடுகள்"
+
+#: 
+msgid "Classifications: %s"
+msgstr "வகைப்பாடுகள்: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "இறந்தவர்கள், செயலற்றவர்கள் மற்றும் வகைப்பாடுகள், மற்றும் செயலற்ற அல்லது மதிப்பாய்வு நிலுவையில் உள்ள குடும்பங்களும் நபர்களும் விலக்கப்படுகின்றனர்."
+
+#: 
+msgid "Download Review List"
+msgstr "மதிப்பாய்வுப் பட்டியலைப் பதிவிறக்கவும்"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "1900 முதல் 2200 வரை சரியான மதிப்பாய்வுத் தேதியை உள்ளிடவும்."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "காட்டப்படும் வரம்புகளுக்குள் முழு எண்களை உள்ளிடவும்."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "சரிபார்க்க வேண்டிய நிதி ஆண்டுகள் (0–100; 0 என்றால் கொடை தேவை இல்லை)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "கொடை குடும்ப வாரியாகப் பதிவாகிறது, தனிநபர் வாரியாக அல்ல. ஒரு குடும்பக் கட்டணம் இந்த அளவுகோலை நிறைவேற்ற உங்கள் விதிகள் அனுமதிக்கும்போது மட்டுமே இதை இயக்கவும். ஒவ்வொரு நபரும் கொடுத்தார் என்பதை இது நிரூபிக்காது. சாளரம் தேர்ந்தெடுத்த நிதி ஆண்டை உள்ளடக்கும், மதிப்பாய்வுத் தேதிக்குப் பிறகு முடியாது."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "சேர்க்க வேண்டிய கடைசி நிதி ஆண்டு"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "குறைந்தபட்ச வயது (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "குறைந்தபட்ச வயது: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "குறைந்தபட்ச உறுப்பினர் காலம் மாதங்களில் (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "குறைந்தபட்ச உறுப்பினர் காலம்: %d மாதங்கள்"
+
+#: 
+msgid "No donation requirement."
+msgstr "நன்கொடை தேவை இல்லை."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "இந்த வடிகட்டிகளுக்கு யாரும் பொருந்தவில்லை. விடுபட்ட பிறப்பு அல்லது உறுப்பினர் தேதிகளைச் சரிபார்த்து உங்கள் அளவுகோல்களைச் சரிசெய்யவும்."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "விருப்ப குடும்பக் கொடைத் தேவை"
+
+#: 
+msgid "People matching filters"
+msgstr "வடிகட்டிகளுக்குப் பொருந்தும் நபர்கள்"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "தேவையான தேதிகள் இல்லாததால் விடப்பட்ட நபர்கள்"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "வகைப்பாடுகளையும் விருப்ப வயது, உறுப்பினர் மற்றும் குடும்பக் கொடை வடிகட்டிகளையும் பயன்படுத்தி திருச்சபை மதிப்பாய்வுக்கான பட்டியலைத் தயாரிக்கவும்."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "உங்கள் விதிகளைப் பயன்படுத்தி திருச்சபை மதிப்பாய்வுக்கான பட்டியலைத் தயாரிக்கவும்."
+
+#: 
+msgid "Review date"
+msgstr "மதிப்பாய்வுத் தேதி"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "வடிகட்டிகளைத் தேர்ந்தெடுக்க உங்கள் திருச்சபை விதிகளைப் பயன்படுத்தவும், பின்னர் அதிகாரம் பெற்ற திருச்சபை தலைமை பட்டியலை மதிப்பாய்வு செய்யட்டும். இந்த வடிகட்டிகளுக்குப் பொருந்துவது வாக்களிக்கும் தகுதியை நிறுவாது. இந்த அறிக்கை தகுதியைப் பதிவு செய்யாது, தேர்தலையும் நடத்தாது."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "வாக்களிக்கும் உறுப்பினர்கள் — மதிப்பாய்வுப் பட்டியல்"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "பூஜ்ஜியம் ஒரு விருப்பத் தேவையை முடக்குகிறது. வயதுக்கு முழு பிறந்த தேதி தேவை; உறுப்பினர் காலத்திற்கு உறுப்பினர் தேதி தேவை. தேவையான தேதிகள் இல்லாதவர்கள் விடப்பட்டு தனியாக எண்ணப்படுகிறார்கள். இறந்தவர்கள், செயலற்ற நபர்களும் வகைப்பாடுகளும், செயலற்ற அல்லது மதிப்பாய்வு நிலுவையில் உள்ள குடும்பங்களும் நபர்களும் எப்போதும் விலக்கப்படுகிறார்கள்; வரலாற்று நிலை அல்ல, தற்போதைய வகைப்பாடும் நிலையும் பயன்படுத்தப்படும்."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "%s க்கு செலுத்த வேண்டிய தொகை: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "தேர்ந்தெடுத்த கோப்பகத்தில் தனிப்பட்ட PDF தற்காலிக சேமிப்பை உருவாக்க முடியவில்லை."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "கணினி தற்காலிக கோப்பகத்தைப் பயன்படுத்த காலியாக விடவும். இல்லையெனில், இணைய அணுகலிலிருந்து பாதுகாக்கப்பட்ட, ஏற்கனவே உள்ள எழுதக்கூடிய கோப்பகத்தை உள்ளிடவும்."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "PDF தற்காலிக கோப்பகம்"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "PDF தற்காலிக சேமிப்பு தனிப்பட்டதாகவும் எழுதக்கூடியதாகவும் இருக்க வேண்டும்."
+
+#: 
+msgid "Reporting"
+msgstr "அறிக்கையிடல்"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "PDF தற்காலிக கோப்பகம் இல்லை அல்லது அணுக முடியவில்லை."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "PDF தற்காலிக கோப்பகம் ஒரு முழுமையான கோப்பகப் பாதையாக இருக்க வேண்டும்."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "திருச்சபை வரி அடையாளம் (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "நிறைவு வரி"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "விருப்பத் தொலைஅளவீட்டைக் கட்டுப்படுத்துகிறது. தொலைஅளவீடு அணைக்கப்பட்டிருந்தாலும் நிறுவல் மற்றும் தரவுத்தள மேம்படுத்தல் தோல்விகள் PostHog க்கு வரையறுத்த கண்டறிதல்களை அனுப்புகின்றன. இந்தத் தோல்வி அறிக்கைகளில் மென்பொருள் மற்றும் சூழல் பதிப்புகளும் சுத்தப்படுத்திய தரவுத்தளப் பிழையும் உள்ளன, நிறுவல் அடையாளமோ SQL கூற்றோ இல்லை."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "தோல்வியடைந்த நிறுவல்களையும் தரவுத்தள மேம்படுத்தல்களையும் கண்டறியவும்"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "நிறுவல் மற்றும் மேம்படுத்தல் தோல்வி விவரங்கள்"
+
+#: 
+msgid "Open in browser window"
+msgstr "உலாவி சாளரத்தில் திறக்கவும்"
+
+#: 
+msgid "Opening Line"
+msgstr "தொடக்க வரி"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "விருப்பப் பயன்பாட்டுத் தொலைஅளவீடு இயக்கப்பட்டால் மட்டுமே அனுப்பப்படும். நீங்கள் இல்லை, நன்றி என்று தேர்ந்தெடுத்தாலும், சமூகத்திற்கு உதவ நிறுவல் மற்றும் தரவுத்தள மேம்படுத்தல் தோல்விகள் எப்போதும் ஒரு வரையறுத்த கண்டறிதலை அனுப்பும். தோல்வி அறிக்கைகளில் மென்பொருள் மற்றும் சூழல் பதிப்புகளும் சுத்தப்படுத்திய தரவுத்தளப் பிழையும் உள்ளன, நிறுவல் அடையாளமோ SQL கூற்றோ இல்லை."
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF கையாளுதல்"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF வெளியீடு"
+
+#: 
+msgid "PDF handling mode"
+msgstr "PDF கையாளுதல் முறை"
+
+#: 
+msgid "Questions Line"
+msgstr "கேள்விகள் வரி"
+
+#: 
+msgid "Save File dialog"
+msgstr "கோப்பைச் சேமி உரையாடல்"
+
+#: 
+msgid "Signer"
+msgstr "கையொப்பமிடுபவர்"
+
+#: 
+msgid "Statement Settings"
+msgstr "அறிக்கை அமைப்புகள்"
+
+#: 
+msgid "Statement Wording"
+msgstr "அறிக்கை சொற்கள்"
+
+#: 
+msgid "Tax Information"
+msgstr "வரித் தகவல்"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "தொலைஅளவீடு அமெரிக்காவில் உள்ள PostHog க்கு அனுப்பப்படுகிறது. விருப்பத் தொலைஅளவீடு முடக்கப்பட்டிருந்தாலும் நிறுவல் மற்றும் மேம்படுத்தல் தோல்வி அறிக்கைகள் அனுப்பப்படும்."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "இந்தத் தேதி ரத்து செய்யப்பட்டது. உங்களிடமிருந்து மேலும் எதுவும் தேவையில்லை."
+
+#: 
+msgid "always sent"
+msgstr "எப்போதும் அனுப்பப்படும்"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "தலைப்புப் படத்தை அகற்ற முடியவில்லை"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "தலைப்புப் படத்தைச் சேமிக்க முடியவில்லை"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "தலைப்புப் படத்தைப் பதிவேற்ற முடியவில்லை"
+
+#: 
+msgid "Greeting"
+msgstr "வாழ்த்து"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "கடித வாழ்த்தும் கையொப்பமும்"
+
+#: 
+msgid "Letterhead"
+msgstr "தலைப்புப் படம்"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF அல்லது WebP. அகலமான பதாகை சிறந்தது, எடுத்துக்காட்டாக 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "வரைகலை தலைப்புப் படத்தைப் பயன்படுத்தும் PDF கடிதங்களின் மேலே அச்சிடப்படும், கொடை அறிக்கைகள் போன்றவை. இல்லையெனில், கடிதங்கள் திருச்சபை பெயரையும் முகவரியையும் அச்சிடும்."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "தலைப்புப் படத்தை அகற்றவா? கடிதங்கள் திருச்சபை பெயரையும் முகவரியையும் அச்சிடும்."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "PDF கடிதங்கள் அச்சிடும் தலைப்புப் படத்தை அமைக்கவும்"
+
+#: 
+msgid "Using the church name and address"
+msgstr "திருச்சபை பெயரையும் முகவரியையும் பயன்படுத்துகிறது"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "கணினி அமைப்புகளில் அமைக்கப்பட்ட தலைப்புப் படப் பாதையைப் பயன்படுத்துகிறது"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "கொடை அறிக்கைகளுக்கான சொற்கள், வரி அடையாளம் மற்றும் PDF கையாளுதல்"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s %2$s ஆக"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s இப்போது உங்கள் மின்னஞ்சல் முகவரி. உறுப்பினர் வாயிலில் உள்நுழைய இதைப் பயன்படுத்தலாம்."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} மேலும்"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "உங்கள் மின்னஞ்சல் முகவரியை மாற்றக் கோரப்பட்டது"
+
+#: 
+msgid "A family"
+msgstr "ஒரு குடும்பம்"
+
+#: 
+msgid "A group"
+msgstr "ஒரு குழு"
+
+#: 
+msgid "A ministry"
+msgstr "ஒரு ஊழியம்"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "புதிய முகவரிக்கு நாங்கள் அனுப்பும் இணைப்பைப் பயன்படுத்திய பின்னரே அது மாறும்."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "உங்கள் மின்னஞ்சல் முகவரியுடன் உள்நுழைந்த %d நிமிடங்களுக்குள் மட்டுமே கடவுச்சாவியைச் சேர்க்கலாம். வெளியேறி, மீண்டும் மின்னஞ்சலுடன் உள்நுழைந்து, இங்கு திரும்பவும்."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "கடவுச்சாவி Face ID, கைரேகை அல்லது சாதன PIN மூலம் மின்னஞ்சல் குறியீடு இல்லாமல் உள்நுழைக்கும்."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "உங்கள் உறுப்பினர் வாயில் உள்நுழைவில் ஒரு கடவுச்சாவி சேர்க்கப்பட்டது"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "%2$s அன்று %1$s மணிக்கு, %3$s இலிருந்து, உங்கள் உறுப்பினர் வாயில் உள்நுழைவில் ஒரு கடவுச்சாவி சேர்க்கப்பட்டது."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "%2$s அன்று %1$s மணிக்கு உங்கள் உறுப்பினர் வாயில் உள்நுழைவில் ஒரு கடவுச்சாவி சேர்க்கப்பட்டது."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "அதை இழக்கும் நபருக்கு தனி மின்னஞ்சல் இருக்காது: அவருக்கு மட்டும் அனுப்பும் அஞ்சல், குழு மின்னஞ்சல் போன்றவை, தவிர்க்கப்படும்; மின்னஞ்சல் எழுதுபவர் அதைச் சொல்லும்."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "வயதை மறைக்கும் பதிவு கொண்ட நபரின் பிறந்த ஆண்டு ஒருபோதும் காட்டப்படாது."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "ஒரு வரிசை எதிர்பார்த்த வடிவில் இல்லை."
+
+#: 
+msgid "A team"
+msgstr "ஒரு அணி"
+
+#: 
+msgid "Add a passkey"
+msgstr "கடவுச்சாவியைச் சேர்க்கவும்"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "உங்கள் சொந்த தொலைபேசி அல்லது கணினியில் மட்டுமே கடவுச்சாவியைச் சேர்க்கவும், பகிரப்பட்ட அல்லது பொது சாதனத்தில் அல்ல."
+
+#: 
+msgid "Add an email"
+msgstr "மின்னஞ்சலைச் சேர்க்கவும்"
+
+#: 
+msgid "Added %s"
+msgstr "%s சேர்க்கப்பட்டது"
+
+#: 
+msgid "Admin overrides"
+msgstr "நிர்வாக மீறல்கள்"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "%s குடும்பத்தின் பெரியவர்"
+
+#: 
+msgid "Adult of the family"
+msgstr "குடும்பத்தின் பெரியவர்"
+
+#: 
+msgid "All events"
+msgstr "அனைத்து நிகழ்வுகள்"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "நபராக உள்நுழைய அனுமதி"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "நபராக உள்நுழையும்போது மாற்றங்களை அனுமதி"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "நிர்வாகி நபராக உள்நுழையும்போது மாற்றங்களை அனுமதிக்கவும். அணைக்கப்பட்டிருந்தால், நபராக உள்நுழைவு படிக்க மட்டும்."
+
+#: 
+msgid "Already held by a family member"
+msgstr "ஏற்கனவே ஒரு குடும்ப உறுப்பினர் வைத்துள்ளார்"
+
+#: 
+msgid "Also used by"
+msgstr "இவரும் பயன்படுத்துகிறார்"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "நிர்வாகி ஒரு நபரின் பக்கத்தில் அந்த நபருக்கு எந்த அனுமதியையும் கொடுக்கலாம். \"நிர்வாக மீறல்கள்\" பின்னர் இங்கே, அது கொடுக்கப்பட்ட நபர்களின் எண்ணிக்கையுடன் தோன்றும்."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "வேறொருவர் ஏற்கனவே இந்த முகவரியைப் பயன்படுத்துகிறார்"
+
+#: 
+msgid "Applies to"
+msgstr "இதற்குப் பொருந்தும்"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "தன்னார்வலர் அணிக்கான மாற்றுக் கோரிக்கைகளை ஏற்கவும் அல்லது மறுக்கவும்."
+
+#: 
+msgid "Ask for a new email"
+msgstr "புதிய மின்னஞ்சலைக் கோரவும்"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "அதிகாரம் உள்நுழைவுக்கு அல்ல, நபருக்கு வழங்கப்படுகிறது, எனவே அவர்களுக்கு உள்நுழைவு இருக்கும் முன்பே அதை வழங்கலாம். உறுப்பினர் வாயிலில் மட்டும் உள்நுழையும் நபர், நிர்வாகி பணியாளர் கணக்கு கொடுக்கும் வரை தங்கள் சொந்த அட்டவணையை மட்டுமே பார்ப்பார்."
+
+#: 
+msgid "Awaiting review"
+msgstr "மதிப்பாய்வுக்காகக் காத்திருக்கிறது"
+
+#: 
+msgid "Back to sign-in"
+msgstr "உள்நுழைவுக்குத் திரும்பு"
+
+#: 
+msgid "Browse the full directory"
+msgstr "முழு அடைவை உலாவவும்"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "உறுப்பினர் வாயிலில் உள்நுழையலாம்"
+
+#: 
+msgid "Can sign in?"
+msgstr "உள்நுழைய முடியுமா?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "உள்நுழையக்கூடிய ஒரே நிர்வாகியின் உள்நுழைவை முடக்க முடியாது."
+
+#: 
+msgid "Cannot sign in"
+msgstr "உள்நுழைய முடியாது"
+
+#: 
+msgid "Change family details"
+msgstr "குடும்ப விவரங்களை மாற்றவும்"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "குடும்ப முகவரியையும் தொடர்பு விவரங்களையும் மாற்றி, மதிப்பாய்வுக்காக ஒரு குடும்ப உறுப்பினரைச் சேர்க்கவும்."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "தங்கள் பெயர், தொடர்பு விவரங்கள் மற்றும் புகைப்படத்தை மாற்றவும்."
+
+#: 
+msgid "Changed"
+msgstr "மாற்றப்பட்டது"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "நபர் உள்நுழைந்த பிறகு மாற்றப்பட்டது"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "நபர் உள்நுழைந்த பிறகு இறக்குமதியால் மாற்றப்பட்டது"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "நபர் உள்நுழைந்த பிறகு பணியாளரால் மாற்றப்பட்டது"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "நபர் உள்நுழைந்த பிறகு API வழியாக மாற்றப்பட்டது"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "நபராக உள்நுழையும்போது மாற்றங்கள் அணைக்கப்பட்டுள்ளன."
+
+#: 
+msgid "Changes needed"
+msgstr "மாற்றங்கள் தேவை"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "நீங்கள் செய்யும்போதே மாற்றங்கள் சேமிக்கப்படும்."
+
+#: 
+msgid "Check your email"
+msgstr "உங்கள் மின்னஞ்சலைப் பார்க்கவும்"
+
+#: 
+msgid "Choose a permission"
+msgstr "ஒரு அனுமதியைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "ஒரு அனுமதி, அது எதற்காக, அதன் கடைசி நாள் ஆகியவற்றைத் தேர்ந்தெடுத்து, ஏன் என்று சொல்லவும்."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "ஒரு புகைப்படத்தைத் தேர்ந்தெடுக்கவும் அல்லது சுயபடம் எடுக்கவும்"
+
+#: 
+msgid "Choose a theme"
+msgstr "ஒரு தோற்றத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: 
+msgid "Choose at least one row."
+msgstr "குறைந்தது ஒரு வரிசையைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "ஒரு நேரத்தில் அதிகபட்சம் %d வரிசைகளைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "தேதிகள் எப்படிக் காட்டப்படும் என்பதைப் பட்டியலிலிருந்து தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "இந்த அனுமதியின் கடைசி நாளைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "அனுமதி எதற்காக என்பதைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Choose yes or no."
+msgstr "ஆம் அல்லது இல்லை என்று தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Church Office"
+msgstr "திருச்சபை அலுவலகம்"
+
+#: 
+msgid "Church country"
+msgstr "திருச்சபை நாடு"
+
+#: 
+msgid "Church default: %s"
+msgstr "திருச்சபை இயல்பு: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "திருச்சபை தலைவர் உள்நுழைவு"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "உறுப்பினர் வாயிலில் உள்நுழையக்கூடிய உறுப்பினர்களின் வகைப்பாடுகள், வகைப்பாடு அடையாளங்களின் காற்புள்ளியால் பிரிக்கப்பட்ட பட்டியல்."
+
+#: 
+msgid "Clear selection"
+msgstr "தேர்வை அழிக்கவும்"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "குறியீடுகள், அமர்வுகள் மற்றும் சாதனங்கள்"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "மின்னஞ்சல் முகவரியை உறுதிசெய்யவும்"
+
+#: 
+msgid "Confirm email address"
+msgstr "மின்னஞ்சல் முகவரியை உறுதிசெய்யவும்"
+
+#: 
+msgid "Confirm family details"
+msgstr "குடும்ப விவரங்களை உறுதிசெய்யவும்"
+
+#: 
+msgid "Confirm selected"
+msgstr "தேர்ந்தெடுத்ததை உறுதிசெய்யவும்"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "இது இந்த நபரின் சொந்த முகவரி என்று நேரிலோ தொலைபேசியிலோ சரிபார்த்த பிறகே இந்த மின்னஞ்சலை உறுதிசெய்யவும். உறுதிசெய்யப்பட்டதும், உறுப்பினர் வாயிலில் உள்நுழைய இதைப் பயன்படுத்தலாம்."
+
+#: 
+msgid "Confirm your email address"
+msgstr "உங்கள் மின்னஞ்சல் முகவரியை உறுதிசெய்யவும்"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "உங்கள் புதிய மின்னஞ்சல் முகவரியை உறுதிசெய்யவும்"
+
+#: 
+msgid "Confirmed"
+msgstr "உறுதிசெய்யப்பட்டது"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "தேதிகள் YYYY-MM-DD வடிவில் எழுதப்பட வேண்டும்."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "மாற்றுக் கோரிக்கைகளை முடிவு செய்யவும்"
+
+#: 
+msgid "Device"
+msgstr "சாதனம்"
+
+#: 
+msgid "Device remembered"
+msgstr "சாதனம் நினைவில் வைக்கப்பட்டது"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "சாதனங்களும் கடவுச்சாவிகளும்"
+
+#: 
+msgid "Directory classifications"
+msgstr "அடைவு வகைப்பாடுகள்"
+
+#: 
+msgid "Directory section"
+msgstr "அடைவுப் பிரிவு"
+
+#: 
+msgid "Disable sign-in"
+msgstr "உள்நுழைவை முடக்கவும்"
+
+#: 
+msgid "Do not show"
+msgstr "காட்ட வேண்டாம்"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "ஒவ்வொருவருக்கும் வேறு யாரும் பயன்படுத்தாத தனி மின்னஞ்சல் தேவை."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "ஒவ்வொரு உள்நுழைவு மின்னஞ்சலும் ஒருமுறை, வரையறுத்த நேரத்திற்கு வேலை செய்யும்; புதிய மின்னஞ்சல் அதை மாற்றும்."
+
+#: 
+msgid "Edit my details"
+msgstr "என் விவரங்களைத் திருத்தவும்"
+
+#: 
+msgid "Email address changed"
+msgstr "மின்னஞ்சல் முகவரி மாற்றப்பட்டது"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "தட்டச்சு செய்த மின்னஞ்சல் முகவரி: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "உறுதிசெய்ய வேண்டிய மின்னஞ்சல் முகவரிகள்: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "மின்னஞ்சல் மாற்றப்பட்டது"
+
+#: 
+msgid "Email code"
+msgstr "மின்னஞ்சல் குறியீடு"
+
+#: 
+msgid "Email confirmed"
+msgstr "மின்னஞ்சல் உறுதிசெய்யப்பட்டது"
+
+#: 
+msgid "Email link"
+msgstr "மின்னஞ்சல் இணைப்பு"
+
+#: 
+msgid "Email me a code"
+msgstr "எனக்கு ஒரு குறியீட்டை மின்னஞ்சல் செய்யவும்"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "எனக்கு உறுதிப்படுத்தல் இணைப்பை மின்னஞ்சல் செய்யவும்"
+
+#: 
+msgid "Email needs attention"
+msgstr "மின்னஞ்சலுக்கு கவனம் தேவை"
+
+#: 
+msgid "Email problem"
+msgstr "மின்னஞ்சல் சிக்கல்"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "மின்னஞ்சல் செய்த உள்நுழைவு குறியீடும் இணைப்பும் ரத்து செய்யப்பட்டன"
+
+#: 
+msgid "Emailed verification link"
+msgstr "மின்னஞ்சல் செய்த சரிபார்ப்பு இணைப்பு"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "உறுதிசெய்யப்பட்ட மின்னஞ்சல்கள்: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "உள்நுழைவை இயக்கவும்"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "இந்த நபரின் ஒவ்வொரு உறுப்பினர் வாயில் அமர்வையும் முடித்து, நினைவில் வைத்த சாதனங்களை மறக்கவா? அவர்களின் கடவுச்சாவிகள் இருக்கும், எனவே மீண்டும் உள்நுழையலாம்."
+
+#: 
+msgid "Ended %s"
+msgstr "%s முடிந்தது"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "அவர்களின் உள்நுழைவு மாற்றத்தால் முடிந்தது"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "உறுப்பினர் உள்நுழைவு அணைக்கப்பட்டபோது முடிந்தது"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "%1$d முதல் %2$d வரை ஒரு முழு எண்ணை உள்ளிடவும்."
+
+#: 
+msgid "Enter your email address."
+msgstr "உங்கள் மின்னஞ்சல் முகவரியை உள்ளிடவும்."
+
+#: 
+msgid "Every kind"
+msgstr "ஒவ்வொரு வகையும்"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "ஒவ்வொரு உறுப்பினர் உள்நுழைவு, மறுப்பு மற்றும் உள்நுழைவு மாற்றமும், புதியது முதலில். இது குறியீடு, இணைப்பு அல்லது கடவுச்சாவியை ஒருபோதும் வைத்திருக்காது."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "பட்டியலிடப்பட்ட அனைவரும், A முதல் Z வரை, தேடல் பெட்டியுடன்."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "உள்நுழைவு விதிகள் அனுமதிக்கும் அனைவரும் பின்னர் தங்கள் சொந்த மின்னஞ்சலுடன் உறுப்பினர் வாயிலில் உள்நுழையலாம்."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "கடந்த 30 நாட்களில் உறுப்பினர் வாயிலில் உள்நுழைந்த அனைவரும், புதியது முதலில்."
+
+#: 
+msgid "Everywhere"
+msgstr "எல்லா இடங்களிலும்"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "கடந்த 30 நாட்களில் ஒரு உறுப்பினர் உறுதிசெய்த குடும்பங்கள், உறுப்பினர் வாயிலிலிருந்து அல்லது மின்னஞ்சல் சரிபார்ப்பு இணைப்பிலிருந்து."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "உறுதிசெய்யப்பட்ட குடும்பங்கள், கடந்த 30 நாட்கள்"
+
+#: 
+msgid "Family details confirmed"
+msgstr "குடும்ப விவரங்கள் உறுதிசெய்யப்பட்டன"
+
+#: 
+msgid "Family email"
+msgstr "குடும்ப மின்னஞ்சல்"
+
+#: 
+msgid "Family emails not moved"
+msgstr "நகர்த்தப்படாத குடும்ப மின்னஞ்சல்கள்"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "உறுப்பினர் வாயிலில் உள்நுழையக்கூடிய உறுப்பினர்களின் குடும்பப் பாத்திரங்கள், பாத்திர அடையாளங்களின் காற்புள்ளியால் பிரிக்கப்பட்ட பட்டியல்."
+
+#: 
+msgid "Find someone"
+msgstr "ஒருவரைக் கண்டறியவும்"
+
+#: 
+msgid "Fix by hand"
+msgstr "கையால் சரிசெய்யவும்"
+
+#: 
+msgid "Fix shared emails"
+msgstr "பகிரப்பட்ட மின்னஞ்சல்களைச் சரிசெய்யவும்"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "பணியாளர் உள்நுழைவிலிருந்து"
+
+#: 
+msgid "Give a permission"
+msgstr "ஒரு அனுமதியைக் கொடுக்கவும்"
+
+#: 
+msgid "Give a portal permission"
+msgstr "ஒரு வாயில் அனுமதியைக் கொடுக்கவும்"
+
+#: 
+msgid "Give each person their own email"
+msgstr "ஒவ்வொரு நபருக்கும் தனி மின்னஞ்சல் கொடுக்கவும்"
+
+#: 
+msgid "Give permission"
+msgstr "அனுமதி கொடுக்கவும்"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "%1$s வழங்கினார், %2$s வரை"
+
+#: 
+msgid "Given by %s"
+msgstr "%s வழங்கினார்"
+
+#: 
+msgid "Given to"
+msgstr "வழங்கப்பட்டவர்"
+
+#: 
+msgid "Given to Everyone"
+msgstr "அனைவருக்கும் வழங்கப்பட்டது"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "வழங்கப்பட்டது, ஆனால் நடைமுறையில் இல்லை"
+
+#: 
+msgid "Go to sign in"
+msgstr "உள்நுழைவுக்குச் செல்லவும்"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "உறுப்பினர் வாயிலுக்குச் செல்லவும்"
+
+#: 
+msgid "Has signed in"
+msgstr "உள்நுழைந்துள்ளார்"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "உள்நுழைந்துள்ளார்: அவர்களின் அமர்வுகளும் சாதனங்களும் முடியும்"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "உறுப்பினர் வாயிலில் உள்நுழைய உங்கள் குறியீடு இதோ. நீங்கள் அதைக் கோரிய உலாவியில், உள்நுழைவுப் பக்கத்தில் அதைத் தட்டவும். அல்லது இந்தச் சாதனத்தில் உள்நுழைய பொத்தானை அழுத்தவும்."
+
+#: 
+msgid "Hide Permissions"
+msgstr "அனுமதிகளை மறைக்கவும்"
+
+#: 
+msgid "How"
+msgstr "எப்படி"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "ஒரு IP முகவரி ஒரு மணி நேரத்தில் கோரக்கூடிய உறுப்பினர் வாயில் உள்நுழைவு மின்னஞ்சல்களின் எண்ணிக்கை. வரம்பு இல்லையென்றால் 0 என்று அமைக்கவும், எடுத்துக்காட்டாக அனைவரும் ஒரு முகவரி வழியாக ChurchCRM ஐ அடையும்போது."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "உறுப்பினர் உள்நுழைந்திருக்கத் தேர்ந்தெடுத்த பிறகு சாதனம் உறுப்பினர் வாயிலில் உள்நுழைந்திருக்கும் நாட்கள். தேர்வை அகற்ற 0 என்று அமைக்கவும்."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "எத்தனை செயலற்ற நிமிடங்கள் உறுப்பினர் வாயில் அமர்வை முடிக்கும்."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "உறுப்பினர் வாயில் உள்நுழைவு குறியீடும் இணைப்பும் எத்தனை நிமிடங்கள் செல்லுபடியாகும்."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "செயலற்ற நேரம் (நிமிடங்கள்)"
+
+#: 
+msgid "Idle too long"
+msgstr "நீண்ட நேரம் செயலற்றது"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "%1$s உங்கள் புதிய முகவரியாக இருந்தால், அதை உறுதிசெய்ய கீழே உள்ள பொத்தானைப் பயன்படுத்தவும். உறுதிசெய்யும் வரை உள்நுழைய இதைப் பயன்படுத்த முடியாது. இணைப்பு ஒருமுறை, %2$s வரை வேலை செய்யும்."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "இந்த முகவரியால் உள்நுழைய முடியுமானால், நாங்கள் உங்களுக்கு ஒரு குறியீட்டை மின்னஞ்சல் செய்துள்ளோம். சில நிமிடங்களுக்குப் பிறகு எதுவும் இல்லையா? திருச்சபை அலுவலகத்தைக் கேளுங்கள்."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "நீங்கள் அதைச் சேர்க்கவில்லை என்றால், உள்நுழைவு மற்றும் சாதனங்கள் பக்கத்தில் அதை அகற்றி திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "இந்த மாற்றத்தை நீங்கள் கோரவில்லை என்றால், தயவுசெய்து திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "இதை நீங்கள் கோரவில்லை என்றால், தயவுசெய்து திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "அது காலாவதியாகியிருக்கலாம் அல்லது ஏற்கனவே பயன்படுத்தப்பட்டிருக்கலாம். உதவி தேவைப்பட்டால், தயவுசெய்து திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "அதன் செருகுநிரல் நிறுவப்படவில்லை"
+
+#: 
+msgid "Jump to a letter"
+msgstr "ஒரு எழுத்துக்குத் தாவவும்"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "என்னை உள்நுழைந்திருக்க வைக்கவும் (நாட்கள்)"
+
+#: 
+msgid "Keeps it"
+msgstr "அதை வைத்திருக்கிறார்"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "உறுதிசெய்யப்படாத மின்னஞ்சலின் வகை"
+
+#: 
+msgid "Last day"
+msgstr "கடைசி நாள்"
+
+#: 
+msgid "Last used"
+msgstr "கடைசியாகப் பயன்படுத்தியது"
+
+#: 
+msgid "Last used %s"
+msgstr "கடைசியாகப் பயன்படுத்தியது %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "%s இன் தலைவர்"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "உறுப்பினர் உள்நுழைவு இயக்கத்தில் இருக்கும்போது, நபரின் செயல்கள் பட்டியலிலிருந்து நிர்வாகிகள் அந்த நபராக உறுப்பினர் வாயிலைத் திறக்க அனுமதிக்கவும்."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "உறுப்பினர்கள் கடவுச்சாவிகளைச் சேர்த்து அவற்றால் உறுப்பினர் வாயிலில் உள்நுழைய அனுமதிக்கவும்."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "உறுப்பினர்கள் தங்கள் சொந்த மின்னஞ்சல் முகவரியுடன் உறுப்பினர் வாயிலில் உள்நுழைய அனுமதிக்கவும். மின்னஞ்சல் அனுப்புதல் வேலை செய்யும்போது மட்டுமே இதை இயக்கலாம்."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "உறுப்பினர்கள் தங்கள் மின்னஞ்சலுடன் உள்நுழைய அனுமதிக்கவும்"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "இணைப்பு மற்றும் குறியீட்டு ஆயுள் (நிமிடங்கள்)"
+
+#: 
+msgid "Login as %s"
+msgstr "%s ஆக உள்நுழை"
+
+#: 
+msgid "Login as Person"
+msgstr "நபராக உள்நுழை"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "நபராக உள்நுழைவைத் தொடங்க முடியவில்லை."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "நபராக உள்நுழைவு முடிந்தது: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "நபராக உள்நுழைவு வரலாறு"
+
+#: 
+msgid "Login as Person started"
+msgstr "நபராக உள்நுழைவு தொடங்கியது"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "நபராக உள்நுழைவு நிறுத்தப்பட்டது"
+
+#: 
+msgid "Look up anyone"
+msgstr "யாரையும் தேடவும்"
+
+#: 
+msgid "Loses it"
+msgstr "அதை இழக்கிறார்"
+
+#: 
+msgid "Manage a team"
+msgstr "ஒரு அணியை நிர்வகிக்கவும்"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "என் உள்நுழைவையும் சாதனங்களையும் நிர்வகிக்கவும்"
+
+#: 
+msgid "Matches: %s"
+msgstr "பொருத்தங்கள்: %s"
+
+#: 
+msgid "May sign in"
+msgstr "உள்நுழையலாம்"
+
+#: 
+msgid "May sign in now"
+msgstr "இப்போது உள்நுழையலாம்"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "உறுப்பினர் வாயில் உள்நுழைவு குறியீடு"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "உறுப்பினர் வாயில் உள்நுழைவு அறிவிப்பு"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "உறுப்பினர்களுக்கும், பணியாளர் உள்நுழைவிலிருந்து வாயிலைத் திறக்கும் பணியாளர்களுக்கும், உறுப்பினர் வாயில் உள்நுழைவுகளும் செயல்பாடும்."
+
+#: 
+msgid "Member sign-in"
+msgstr "உறுப்பினர் உள்நுழைவு"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "உறுப்பினர் உள்நுழைவு ஒவ்வொரு நபருக்கும் ஒரு குறியீட்டை மின்னஞ்சல் செய்கிறது, எனவே இதை இயக்குவதற்கு முன் மின்னஞ்சல் (SMTP) வேலை செய்ய வேண்டும்."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "உறுப்பினர் உள்நுழைவு அணைக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "திருச்சபைக்கு உறுப்பினர் உள்நுழைவு அணைக்கப்பட்டுள்ளது."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "உறுப்பினர் உள்நுழைவு அணைக்கப்பட்டுள்ளது."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "உறுப்பினர் உள்நுழைவு இன்னும் கிடைக்கவில்லை. தயவுசெய்து திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "இறந்தவர்கள், செயலற்றவர்கள், செயலற்ற குடும்பத்தில் உள்ளவர்கள், மதிப்பாய்வுக்காகக் காத்திருப்பவர்கள் அல்லது உள்நுழைவு முடக்கம் இயக்கத்தில் உள்ளவர்களை உறுப்பினர் உள்நுழைவு ஒருபோதும் அனுமதிக்காது. வேறு யார் அனுமதிக்கப்படலாம் என்பதை இந்தத் தேர்வுகள் தீர்மானிக்கின்றன."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "உறுப்பினர் உள்நுழைவு ஒவ்வொரு உறுப்பினருக்கும் மின்னஞ்சலில் ஒரு குறியீட்டை அனுப்புகிறது, எனவே ChurchCRM மின்னஞ்சல் அனுப்பக்கூடியபோது மட்டுமே இதை இயக்கலாம். முதலில் மின்னஞ்சலை இயக்கி அஞ்சல் சேவையகத்தை அமைக்கவும்."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "குறைந்தது ஒரு நாள்காட்டி இயக்கத்தில் இருக்கும்போது உறுப்பினர்கள் நாள்காட்டிப் பக்கத்தைப் பார்க்கிறார்கள்."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "உறுப்பினர்கள் ஒரு பெயரின் குறைந்தது %d எழுத்துகளைத் தட்டி %d பொருத்தங்கள் வரை பார்க்கிறார்கள். முழுப் பட்டியல் ஒருபோதும் காட்டப்படாது."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "இப்போது உள்நுழைந்துள்ள உறுப்பினர்கள் வெளியேற்றப்படுவார்கள், உறுப்பினர் உள்நுழைவு மீண்டும் இயக்கப்படும் வரை யாரும் தங்கள் மின்னஞ்சலுடன் உள்நுழைய முடியாது."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "இந்த வகைப்பாடுகள் கொண்ட உறுப்பினர்கள் உறுப்பினர் வாயில் பட்டியலில் அடைவைக் காண்பார்கள்."
+
+#: 
+msgid "Minimum age"
+msgstr "குறைந்தபட்ச வயது"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "அடுத்த மணி நேரத்தில் இந்த முகவரியுடன் மேலும் முயற்சிகள் மற்றொரு அறிவிப்பை அனுப்பாது."
+
+#: 
+msgid "Moved from the family email"
+msgstr "குடும்ப மின்னஞ்சலிலிருந்து நகர்த்தப்பட்டது"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "குடும்பத் தலைவரிடம் நகர்த்தப்பட்டது"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "துணைவரிடம் நகர்த்தப்பட்டது"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "எங்கள் திருச்சபைக்குப் புதியவரா? உங்கள் குடும்பத்தைப் பற்றிச் சொல்லுங்கள்; உங்களை வரவேற்க நாங்கள் தொடர்புகொள்வோம்."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "இன்னும் நபராக உள்நுழைவு அமர்வுகள் இல்லை."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "பிறந்த தேதி இல்லை, குடும்பத் தலைவரும் துணைவரும் அல்ல"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "எந்த நாள்காட்டியும் இயக்கப்படவில்லை, எனவே உறுப்பினர்கள் நாள்காட்டிப் பக்கத்தைப் பார்க்க மாட்டார்கள்."
+
+#: 
+msgid "No changes"
+msgstr "மாற்றங்கள் இல்லை"
+
+#: 
+msgid "No changes made."
+msgstr "மாற்றங்கள் எதுவும் செய்யப்படவில்லை."
+
+#: 
+msgid "No family role"
+msgstr "குடும்பப் பாத்திரம் இல்லை"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "குடும்பத் தலைவரும் துணைவரும் குடும்ப மின்னஞ்சலைப் பெற முடியாது."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "குடும்பத் தலைவரும் துணைவரும் அதைப் பகிரவில்லை"
+
+#: 
+msgid "No match"
+msgstr "பொருத்தம் இல்லை"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "இன்னும் உள்நுழைவு விதிக்கு யாரும் பொருந்தவில்லை. மேலும் குடும்பப் பாத்திரங்கள் அல்லது வகைப்பாடுகளைத் தேர்ந்தெடுக்கவும், அல்லது குறைந்தபட்ச வயதைக் குறைக்கவும்."
+
+#: 
+msgid "No passkey was added."
+msgstr "கடவுச்சாவி எதுவும் சேர்க்கப்படவில்லை."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "கடவுச்சாவி பயன்படுத்தப்படவில்லை. மீண்டும் முயலவும், அல்லது உங்கள் மின்னஞ்சல் முகவரியுடன் உள்நுழையவும்."
+
+#: 
+msgid "No person has this email"
+msgstr "இந்த மின்னஞ்சல் யாரிடமும் இல்லை"
+
+#: 
+msgid "No personal email"
+msgstr "தனிப்பட்ட மின்னஞ்சல் இல்லை"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "பகிரப்பட்ட மின்னஞ்சல்கள் யாரும் உள்நுழைவதைத் தடுக்கவில்லை."
+
+#: 
+msgid "No such person"
+msgstr "அத்தகைய நபர் இல்லை"
+
+#: 
+msgid "No, thanks"
+msgstr "இல்லை, நன்றி"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "உள்நுழையக்கூடிய இருவர் பகிரும் தனிப்பட்ட மின்னஞ்சலுடன் யாரும் உள்நுழைய முடியாது. ஒரு குடும்பத்திற்குள் பகிரப்படும் முகவரிக்கு, குடும்பத் தலைவர் அதை வைத்திருப்பார், இல்லையெனில் துணைவர் (முதலில் மூத்தவர்). அதைப் பகிரும் மற்ற அனைவரும் அதை இழக்கிறார்கள். வேறு வழியில் சரிசெய்ய விரும்புவதைத் தேர்வு நீக்கவும்."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "இன்னும் யாரும் உள்நுழைய முடியாது: யார் உள்நுழையலாம் என்பதன் கீழ் குறைந்தது ஒரு வகைப்பாட்டைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "இன்னும் யாரும் உள்நுழைய முடியாது: யார் உள்நுழையலாம் என்பதன் கீழ் குறைந்தது ஒரு குடும்பப் பாத்திரத்தையும் ஒரு வகைப்பாட்டையும் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "இன்னும் யாரும் உள்நுழைய முடியாது: யார் உள்நுழையலாம் என்பதன் கீழ் குறைந்தது ஒரு குடும்பப் பாத்திரத்தைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "அடைவில் அந்தப் பெயருக்கு யாரும் பொருந்தவில்லை."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "அடைவில் இன்னும் யாரும் பட்டியலிடப்படவில்லை."
+
+#: 
+msgid "Not ended"
+msgstr "முடியவில்லை"
+
+#: 
+msgid "Not moved"
+msgstr "நகர்த்தப்படவில்லை"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "எங்களிடம் எந்த மின்னஞ்சல் உள்ளது என்று தெரியவில்லையா? திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "Not yet"
+msgstr "இன்னும் இல்லை"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "குடும்ப காலக்கோட்டில் குறிக்கப்பட்டது"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "அவர்களில் உள்நுழைந்த நபர்கள்: {{total}}. அவர்கள் எல்லா இடங்களிலும் வெளியேற்றப்படுகிறார்கள், முகவரிக்கு அறிவிப்பு செல்கிறது."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "அனைவருக்கும் அணைப்பு: \"%s\" அணைக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "அனைவருக்கும் அணைப்பு: தன்னார்வலர் மேலாண்மை V2 ஆக அமைக்கப்படவில்லை"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "அனைவருக்கும் அணைப்பு: அதன் அம்சம் அணைக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "அனைவருக்கும் அணைப்பு: அதன் செருகுநிரல் அணைக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "அனைவருக்கும் அணைப்பு: உறுப்பினர்களுடன் எந்த நாள்காட்டியும் பகிரப்படவில்லை"
+
+#: 
+msgid "Office list"
+msgstr "அலுவலகப் பட்டியல்"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "உறுதிசெய்யப்பட்டதும், உறுப்பினர் வாயிலில் உள்நுழைய இதைப் பயன்படுத்தலாம்."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "நீங்கள் உறுதிசெய்யக்கூடிய முகவரிகளை மட்டுமே தேர்ந்தெடுக்கலாம்."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "காரணத்தை நிர்வாகிகள் மட்டுமே பார்க்கிறார்கள்."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "பணியாளர் கணக்கு அல்லது வாயில் அனுமதிகள் உள்ள நபரின் மின்னஞ்சலை நிர்வாகி மட்டுமே மாற்றலாம்."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "நபர் உள்நுழைந்த மின்னஞ்சலை மாற்றிய மின்னஞ்சலை நிர்வாகி மட்டுமே உறுதிசெய்யலாம்."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "பணியாளர் கணக்கு அல்லது வாயில் அனுமதிகள் உள்ள நபரின் மின்னஞ்சலை நிர்வாகி மட்டுமே உறுதிசெய்யலாம்."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "இந்த முகவரியை நிர்வாகி மட்டுமே சரிசெய்யலாம்: அதைப் பகிர்பவர் பணியாளர் கணக்கு அல்லது வாயில் அனுமதிகள் உள்ளவர்."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "உங்கள் குடும்பத்தின் பெரியவர் மட்டுமே இந்த விவரங்களை உறுதிசெய்யலாம். தயவுசெய்து திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "அந்த நபருக்குச் சொந்தம் என்று தெரிந்த முகவரிகளை மட்டுமே உறுதிசெய்யவும். ஒரு முகவரியைப் படிப்பவர் அதன் நபராக உள்நுழையலாம்."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "தங்கள் சொந்த மின்னஞ்சல் உள்ள உயிருள்ள நபர்கள் மட்டுமே அலுவலகப் பட்டியலில் இருக்கலாம்."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "தங்கள் சொந்த மின்னஞ்சல் உள்ளவர்களை மட்டுமே சேர்க்கலாம்."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "விருப்பத் தொலைஅளவீட்டில் பக்க வழிகள், செயலில் உள்ள மொழி, CRM பதிப்பு, PHP பதிப்பு, இயக்க முறைமைக் குடும்பம், உங்கள் திருச்சபைத் தகவல் அமைப்புகளிலிருந்து நாடு, மற்றும் ஒரு சீரற்ற நிறுவல் அடையாளம் இருக்கலாம். தோல்வி அறிக்கைகளில் நிறுவல் அடையாளம் இல்லை. தரவு அமெரிக்காவில் உள்ள PostHog க்கு அனுப்பப்படுகிறது."
+
+#: 
+msgid "Passkey"
+msgstr "கடவுச்சாவி"
+
+#: 
+msgid "Passkey added"
+msgstr "கடவுச்சாவி சேர்க்கப்பட்டது"
+
+#: 
+msgid "Passkey removed"
+msgstr "கடவுச்சாவி அகற்றப்பட்டது"
+
+#: 
+msgid "Passkeys"
+msgstr "கடவுச்சாவிகள்"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "கடவுச்சாவிகள் அணைக்கப்பட்டுள்ளன."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "இங்கே கடவுச்சாவிகளைப் பயன்படுத்த முடியாது."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "இந்தத் தளத்தில் கடவுச்சாவிகளை இன்னும் பயன்படுத்த முடியாது. தயவுசெய்து திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "கடவுச்சாவிகளுக்கு தள முகவரியில் IP முகவரி அல்ல, புரவலன் பெயர் தேவை."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "கடவுச்சாவிகளுக்கு இந்தத் தளத்திற்கு பாதுகாப்பான (HTTPS) இணைப்பு தேவை."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "கடவுச்சாவிகளுக்கு Config.php இல் தள முகவரி அமைக்கப்பட வேண்டும்."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "தளம் HTTPS வழியாக வழங்கப்பட கடவுச்சாவிகளுக்குத் தேவை. அதுவரை உறுப்பினர்களுக்கு கடவுச்சாவிகள் வழங்கப்படாது."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "கடவுச்சாவிகள் %s இல் மட்டுமே வேலை செய்யும்."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "கடவுச்சாவிகள்: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "சேமித்த அமைப்புகள் அனுமதிக்கும் நபர்கள்: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "உறுப்பினர் வாயிலில் யாராவது உள்நுழைய முடியாதபோது மின்னஞ்சல் செய்ய வேண்டிய நபர்கள்"
+
+#: 
+msgid "People who hold it"
+msgstr "அதை வைத்திருப்பவர்கள்"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "ஒரு முகவரியை இழக்கும் நபர்கள்: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "ஒரு முகவரியை இழந்த நபர்கள்: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "உள்நுழையக்கூடிய நபர்கள்: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "முன்பு உறுப்பினர் வாயிலில் உள்நுழைந்த நபர்கள்: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "இந்த வகைப்பாடுகள் உள்ள நபர்கள் அடைவில் தோன்றுகிறார்கள். எண் என்பது ஒவ்வொரு வகைப்பாட்டிலும் எத்தனை செயலில் உள்ள நபர்கள்."
+
+#: 
+msgid "People with this email: %s"
+msgstr "இந்த மின்னஞ்சல் உள்ள நபர்கள்: %s"
+
+#: 
+msgid "Person %d"
+msgstr "நபர் %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "பட்டியலிலிருந்து வகைப்பாடுகளைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "பட்டியலிலிருந்து குடும்பப் பாத்திரங்களைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "அலுவலகப் பட்டியலுக்கான நபர்களைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "தயவுசெய்து பட்டியலிலிருந்து ஒரு மொழியைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Portal permission given"
+msgstr "வாயில் அனுமதி வழங்கப்பட்டது"
+
+#: 
+msgid "Portal permission removed"
+msgstr "வாயில் அனுமதி அகற்றப்பட்டது"
+
+#: 
+msgid "Portal permissions"
+msgstr "வாயில் அனுமதிகள்"
+
+#: 
+msgid "Portal sign-in"
+msgstr "வாயில் உள்நுழைவு"
+
+#: 
+msgid "Problem"
+msgstr "சிக்கல்"
+
+#: 
+msgid "Reason"
+msgstr "காரணம்"
+
+#: 
+msgid "Reason: %s"
+msgstr "காரணம்: %s"
+
+#: 
+msgid "Refused"
+msgstr "மறுக்கப்பட்டது"
+
+#: 
+msgid "Register your family"
+msgstr "உங்கள் குடும்பத்தைப் பதிவுசெய்யவும்"
+
+#: 
+msgid "Remembered device"
+msgstr "நினைவில் வைத்த சாதனம்"
+
+#: 
+msgid "Remembered device removed"
+msgstr "நினைவில் வைத்த சாதனம் அகற்றப்பட்டது"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "நினைவில் வைத்த சாதனங்கள்: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "மின்னஞ்சல்களை அகற்றவும்"
+
+#: 
+msgid "Remove this passkey"
+msgstr "இந்தக் கடவுச்சாவியை அகற்றவும்"
+
+#: 
+msgid "Remove this permission"
+msgstr "இந்த அனுமதியை அகற்றவும்"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "இதிலிருந்து அகற்றப்பட்டது: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "உள்நுழைவுக்குப் பிறகு மாற்றப்பட்டது"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "மற்றொரு உள்நுழைவால் மாற்றப்பட்டது"
+
+#: 
+msgid "Result"
+msgstr "முடிவு"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "ஒரு தன்னார்வலர் அணியை நடத்தவும்: பதவிகள், தன்னார்வலர்கள், அட்டவணைகள், பணியாளர் எண்ணிக்கை மற்றும் தலை எண்ணிக்கை."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "உள்நுழைவு ஏன் முடக்கப்படுகிறது என்று சொல்லவும்."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "இந்த அனுமதி ஏன் வழங்கப்படுகிறது என்று சொல்லவும்."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "கோப்பில் உள்ள யாரையும் தேடவும். ஒவ்வொரு வரிசையும் அவர்கள் உறுப்பினர் வாயிலில் உள்நுழையலாமா, இல்லையென்றால் ஏன் என்று சொல்கிறது."
+
+#: 
+msgid "Search method"
+msgstr "தேடல் முறை"
+
+#: 
+msgid "Search only"
+msgstr "தேடல் மட்டும்"
+
+#: 
+msgid "See family contact details"
+msgstr "குடும்பத் தொடர்பு விவரங்களைக் காண்க"
+
+#: 
+msgid "See my family"
+msgstr "என் குடும்பத்தைக் காண்க"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "இந்த நபர் பார்ப்பது போல் உறுப்பினர் வாயிலைப் பார்க்கவா? நீங்கள் நிறுத்து அழுத்தும் வரை பணியாளர் பக்கங்கள் மூடப்பட்டிருக்கும், அமர்வு இந்தப் பக்கத்திலும் உங்கள் பயனர் பக்கத்திலும் பதிவாகும்."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "திருச்சபை உறுப்பினர்களுடன் பகிரும் நாள்காட்டிகளைப் பார்த்து அவற்றில் சந்தா செலுத்தவும்."
+
+#: 
+msgid "See the church calendar"
+msgstr "திருச்சபை நாள்காட்டியைக் காண்க"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "அவர்களை உள்நுழைக்கும் சாதனங்களையும் கடவுச்சாவிகளையும் பார்த்து, அவற்றில் எதையும் வெளியேற்றவும் அல்லது அகற்றவும்."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "அவர்களின் குடும்பத்திலுள்ளவர்களின் மின்னஞ்சல் முகவரிகளையும் தொலைபேசி எண்களையும் காண்க."
+
+#: 
+msgid "See the member directory"
+msgstr "உறுப்பினர் அடைவைக் காண்க"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "அவர்களின் குடும்பத்திலுள்ளவர்களின் பெயர்களையும் புகைப்படங்களையும் காண்க."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "திருச்சபை தன் அடைவில் பட்டியலிடும் நபர்களை, திருச்சபை பகிரத் தேர்ந்தெடுக்கும் விவரங்களுடன் காண்க."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "அவர்களின் தன்னார்வலர் அட்டவணையைப் பார்த்து, திறந்த இடங்களுக்குப் பதிவுசெய்து மாற்றைக் கோரவும்."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "உலாவலை true அல்லது false ஆக அனுப்பவும்."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "வகைப்பாடுகளை அடையாளங்களின் பட்டியலாக அனுப்பவும்."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "அடைவு அமைப்புகளை JSON பொருளாக அனுப்பவும்."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "காட்ட வேண்டிய புலங்களை true மற்றும் false மதிப்புகளின் பொருளாக அனுப்பவும்."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "அமைப்புகளை JSON பொருளாக அனுப்பவும்."
+
+#: 
+msgid "Session ended"
+msgstr "அமர்வு முடிந்தது"
+
+#: 
+msgid "Set up email"
+msgstr "மின்னஞ்சல் அமைக்கவும்"
+
+#: 
+msgid "Set up email first."
+msgstr "முதலில் மின்னஞ்சலை அமைக்கவும்."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "சரிசெய்யப்பட்ட பகிரப்பட்ட முகவரிகள்: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "சரிசெய்ய வேண்டிய பகிரப்பட்ட முகவரிகள்: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "பகிர்பவர்"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "மக்கள் உள்நுழைவதைத் தடுக்கும் பகிரப்பட்ட மின்னஞ்சல்கள்"
+
+#: 
+msgid "Show or hide this member"
+msgstr "இந்த உறுப்பினரைக் காட்டவும் அல்லது மறைக்கவும்"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "கீழே தேர்ந்தெடுத்த வகைப்பாடுகளுக்கு உறுப்பினர் வாயிலில் அடைவுப் பக்கத்தைக் காட்டவும்."
+
+#: 
+msgid "Show the member directory"
+msgstr "உறுப்பினர் அடைவைக் காட்டவும்"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "உறுப்பினர் வாயிலில் உறுப்பினர் அடைவைக் காட்டவும்."
+
+#: 
+msgid "Show with year"
+msgstr "ஆண்டுடன் காட்டவும்"
+
+#: 
+msgid "Show without year"
+msgstr "ஆண்டு இல்லாமல் காட்டவும்"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "முதல் %d பொருத்தங்கள் காட்டப்படுகின்றன. நீங்கள் தேடும் நபரைக் கண்டறிய பெயரின் மேலும் எழுத்துகளைத் தட்டவும்."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "%s ஆக உள்நுழையவா?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "அடுத்த முறை இந்தச் சாதனத்தில் Face ID, கைரேகை அல்லது சாதன PIN மூலம் உள்நுழையவும்."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "உங்கள் குடும்பம், திருச்சபை நாள்காட்டி மற்றும் சேவை வழிகளைப் பார்க்க உள்நுழையவும். உங்களுக்குக் கடவுச்சொல்லோ கணக்கோ தேவையில்லை."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "கடவுச்சாவியுடன் உள்நுழையவும்"
+
+#: 
+msgid "Sign out every device"
+msgstr "ஒவ்வொரு சாதனத்திலும் வெளியேறவும்"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "இப்போது ஒவ்வொரு சாதனத்திலும் வெளியேறவா?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "எல்லா இடங்களிலும் வெளியேறவும்"
+
+#: 
+msgid "Sign out this device"
+msgstr "இந்தச் சாதனத்தில் வெளியேறவும்"
+
+#: 
+msgid "Sign-in"
+msgstr "உள்நுழைவு"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "உள்நுழைவும் சாதனங்களும்"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "உள்நுழைவை முடக்க முடியவில்லை."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "உள்நுழைவை இயக்க முடியவில்லை."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "உள்நுழைவு முடக்கப்பட்டது"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "உள்நுழைவு மின்னஞ்சல் கோரப்பட்டது"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "ஒரு மணி நேரத்தில் ஒரு IP முகவரிக்கு உள்நுழைவு மின்னஞ்சல்கள்"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "உள்நுழைவு இயக்கப்பட்டது"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "இந்த நபருக்கு உள்நுழைவு ஏற்கனவே முடக்கப்பட்டுள்ளது."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "உள்நுழைவு முடக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "இந்த நபருக்கு உள்நுழைவு முடக்கப்பட்டுள்ளது."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "இந்த நபருக்கு உள்நுழைவு இயக்கப்பட்டுள்ளது."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "இந்த நபருக்கு உள்நுழைவு முடக்கப்படவில்லை."
+
+#: 
+msgid "Sign-in refused"
+msgstr "உள்நுழைவு மறுக்கப்பட்டது"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "இணைக்கப்பட்ட நபரின் பதிவில் இது தீர்க்கப்படும் வரை உள்நுழைவு, அமர்வுகள் மற்றும் API விசை தடுக்கப்படும்."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "உள்நுழைந்தவர்கள், கடந்த 30 நாட்கள்"
+
+#: 
+msgid "Signed out"
+msgstr "வெளியேறியது"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "அவர்களின் உள்நுழைவு மாற்றத்தால் வெளியேற்றப்பட்டது"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "எல்லா இடங்களிலும் வெளியேற்றப்பட்டது"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "யாரோ உறுப்பினர் வாயில் உள்நுழைவு மின்னஞ்சலைக் கோரினர், ஆனால் எதுவும் அனுப்பப்படவில்லை."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "யாரோ உறுப்பினர் வாயிலில் உள்நுழைய முடியவில்லை"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "நபராக உள்நுழையும்போது பணியாளர் பக்கங்கள் மூடப்பட்டிருக்கும். திரும்ப பதாகையில் நிறுத்து அழுத்தவும்."
+
+#: 
+msgid "Stop"
+msgstr "நிறுத்து"
+
+#: 
+msgid "Stopped"
+msgstr "நிறுத்தப்பட்டது"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "குடும்ப விவரங்கள் இன்னும் சரியா என்று திருச்சபை அலுவலகத்திடம் சொல்லவும்."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "அந்தக் குறியீடு வேலை செய்யவில்லை. எங்களிடமிருந்து வந்த புதிய மின்னஞ்சலைப் பார்க்கவும், அல்லது புதியதைக் கோரவும்."
+
+#: 
+msgid "That could not be removed."
+msgstr "அதை அகற்ற முடியவில்லை."
+
+#: 
+msgid "That device is signed out."
+msgstr "அந்தச் சாதனம் வெளியேற்றப்பட்டது."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "அது சரியான மின்னஞ்சல் முகவரி அல்ல."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "அந்தப் பக்கம் நீண்ட நேரம் திறந்திருந்தது. தயவுசெய்து மீண்டும் முயலவும்."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "அந்தக் கடவுச்சாவி அகற்றப்பட்டது. இனி அது உங்களை உள்நுழைக்க முடியாது."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "அதற்கு அதிக நேரம் ஆனது. தயவுசெய்து மீண்டும் முயலவும்."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "7.8.3 மேம்படுத்தல் ஒவ்வொரு குடும்ப மின்னஞ்சலையும் ஒரு நபருக்குக் கொடுத்தது. இவற்றை அதனால் முடியவில்லை, எனவே குடும்பத்தின் காலக்கோட்டில் ஒரு குறிப்பை விட்டுச் சென்றது."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "உறுப்பினர் வாயிலும் அது உங்களுக்கு அனுப்பும் மின்னஞ்சல்களும் இந்த மொழியைப் பயன்படுத்துகின்றன."
+
+#: 
+msgid "The change could not be saved."
+msgstr "மாற்றத்தைச் சேமிக்க முடியவில்லை."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "குறியீடும் பொத்தானும் ஒருமுறை, %s வரை வேலை செய்யும்."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "குறியீடு அல்லது இணைப்பு இனி அவர்களின் மின்னஞ்சல் அல்லாத முகவரிக்குச் சென்றது"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "உறுதிப்படுத்தல் மின்னஞ்சலை அனுப்ப முடியவில்லை. தயவுசெய்து பின்னர் மீண்டும் முயலவும்."
+
+#: 
+msgid "The device is signed out."
+msgstr "சாதனம் வெளியேற்றப்பட்டது."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "%1$s மணிக்கு உங்கள் பதிவிலிருந்து %2$s மின்னஞ்சல் முகவரி அகற்றப்பட்டது. ஒவ்வொரு சாதனத்திலும் உறுப்பினர் வாயிலிலிருந்து நீங்கள் வெளியேற்றப்பட்டுள்ளீர்கள்."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "%1$s மணிக்கு உங்கள் பதிவிலுள்ள மின்னஞ்சல் முகவரி %2$s இலிருந்து %3$s ஆக மாற்றப்பட்டது. ஒவ்வொரு சாதனத்திலும் உறுப்பினர் வாயிலிலிருந்து நீங்கள் வெளியேற்றப்பட்டுள்ளீர்கள்."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "மின்னஞ்சலை உறுதிசெய்ய முடியவில்லை."
+
+#: 
+msgid "The email could not be sent."
+msgstr "மின்னஞ்சலை அனுப்ப முடியவில்லை."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "மின்னஞ்சல் உறுதிசெய்யப்பட்டது. இப்போது உள்நுழைய இதைப் பயன்படுத்தலாம்."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "இறுதித் தேதி தொடக்கத் தேதிக்கு முன் உள்ளது."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "குடும்பத்திற்கு உயிருள்ள, செயலில் உள்ள குடும்பத் தலைவர் அல்லது துணைவர் இல்லை"
+
+#: 
+msgid "The family is inactive"
+msgstr "குடும்பம் செயலற்றது"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "குடும்பத் தலைவருக்கும் துணைவருக்கும் தனி மின்னஞ்சல் உள்ளது"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "கடைசி நாள் கடந்த காலத்தில் இருக்க முடியாது."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "இணைக்கப்பட்ட நபர் உள்நுழையக்கூடாது, எனவே இந்தக் கணக்கால் உள்நுழைய முடியாது"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "பட்டியலை ஏற்ற முடியவில்லை."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "கடவுச்சாவியைச் சேர்க்க முடியவில்லை. தயவுசெய்து மீண்டும் முயலவும்."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "கடவுச்சாவியைச் சரிபார்க்க முடியவில்லை"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "கடவுச்சாவி பதிவில் இல்லை, அல்லது அகற்றப்பட்டது"
+
+#: 
+msgid "The passkey was removed."
+msgstr "கடவுச்சாவி அகற்றப்பட்டது."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "அதைப் பகிர்பவர்கள் வேறு குடும்பங்களில் உள்ளனர், அல்லது ஒரு குடும்பத்தில் இல்லை"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "இந்த முகவரியைப் பகிர்பவர்கள் மாறியுள்ளனர். பகிரப்பட்ட மின்னஞ்சல்களைச் சரிசெய் என்பதை மீண்டும் திறக்கவும்."
+
+#: 
+msgid "The permission could not be given."
+msgstr "அனுமதியைக் கொடுக்க முடியவில்லை."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "இந்த நாளுக்குப் பிறகு அனுமதி முடியும். அதை மீண்டும் கொடுக்கலாம்."
+
+#: 
+msgid "The permission was given."
+msgstr "அனுமதி வழங்கப்பட்டது."
+
+#: 
+msgid "The permission was removed."
+msgstr "அனுமதி அகற்றப்பட்டது."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "அனுமதிகளை ஏற்ற முடியவில்லை."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "நபர் உறுப்பினர் வாயிலில் இந்த அனுமதியை உடனே இழக்கிறார்."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "காரணம் அதிகபட்சம் %d எழுத்துகள் நீளமாக இருக்கலாம்."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "உள்நுழைவு விதிகள் அவர்களை அனுமதிக்கின்றன, ஒவ்வொருவருக்கும் உள்நுழையக்கூடிய வேறு யாரும் பயன்படுத்தாத தனி மின்னஞ்சல் உள்ளது."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "உள்நுழைவு விதிகள் அவர்களை அனுமதிக்கின்றன, ஆனால் அவர்களின் மின்னஞ்சல் அனுமதிக்கவில்லை: அவர்களிடம் இல்லை, உள்நுழையக்கூடிய வேறொருவருடன் பகிர்கிறார்கள், அல்லது இன்னும் உறுதிசெய்யப்படவில்லை."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "உள்நுழைவு அமைப்புகளைச் சேமிக்க முடியவில்லை."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "உறுதிசெய்யப்படாத மின்னஞ்சல் மாறியுள்ளது. பக்கத்தை மீண்டும் ஏற்றி முயலவும்."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "அவர்களின் வகைப்பாடு உள்நுழையக்கூடாது"
+
+#: 
+msgid "Their email changed"
+msgstr "அவர்களின் மின்னஞ்சல் மாறியது"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "அவர்களின் மின்னஞ்சல் இன்னும் உறுதிசெய்யப்படவில்லை"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "அவர்களின் மின்னஞ்சல் வேறொருவருடன் பகிரப்பட்டுள்ளது"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "அவர்களின் குடும்பப் பாத்திரம் உள்நுழையக்கூடாது"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "மேம்படுத்தல் அவர்களின் பழைய உள்நுழைவுகளை அகற்றியது. தங்கள் சொந்த மின்னஞ்சலுடன் உள்நுழைய உறுப்பினர் உள்நுழைவை இயக்கவும்."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "அவர்களின் நினைவில் வைத்த சாதனம் காலாவதியானது"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "அவர்களின் நினைவில் வைத்த சாதனம் வெளியேற்றப்பட்டது"
+
+#: 
+msgid "Theme development"
+msgstr "தோற்ற மேம்பாடு"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "%d அடையாளத்துடன் வகைப்பாடு இல்லை."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "இந்த வகை எல்லைக்குத் தேர்வி இல்லை."
+
+#: 
+msgid "There is no such audit event."
+msgstr "அத்தகைய தணிக்கை நிகழ்வு இல்லை."
+
+#: 
+msgid "There is no such email problem."
+msgstr "அத்தகைய மின்னஞ்சல் சிக்கல் இல்லை."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "அத்தகைய உறுதிசெய்யப்படாத மின்னஞ்சல் வகை இல்லை."
+
+#: 
+msgid "There is no such list."
+msgstr "அத்தகைய பட்டியல் இல்லை."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "அத்தகைய வாயில் அனுமதி இல்லை."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "நீங்கள் உள்நுழைந்திருக்கத் தேர்ந்தெடுத்த தொலைபேசிகளும் கணினிகளும் இவை. இனி பயன்படுத்தாத அல்லது அடையாளம் தெரியாத எதையும் வெளியேற்றவும்."
+
+#: 
+msgid "They have a staff account"
+msgstr "அவர்களுக்குப் பணியாளர் கணக்கு உள்ளது"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "அவர்கள் உள்நுழையலாம் ஆனால் ஒருபோதும் உள்நுழையவில்லை."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "இந்தச் செயலுக்கு உள்நுழைந்த உலாவி அமர்வு தேவை."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "இந்த முகவரியை மாற்ற முடியவில்லை. அது எங்கே உள்ளது என்று பார்க்க பகிரப்பட்ட மின்னஞ்சல்களைச் சரிசெய் என்பதை மீண்டும் திறக்கவும்."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "உள்நுழையக்கூடிய நபர்கள் இந்த முகவரியை இனி பகிரவில்லை."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "இந்த உலாவியால் கடவுச்சாவிகளை உருவாக்க முடியாது."
+
+#: 
+msgid "This device"
+msgstr "இந்தச் சாதனம்"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "இந்தச் சாதனத்தில் உங்களுக்கான கடவுச்சாவி ஏற்கனவே உள்ளது."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "இந்தச் சாதனம் இனி அந்த நபரை உள்நுழைந்திருக்க வைக்காது, அதில் திறந்த அமர்வு முடியும். அவர்கள் மின்னஞ்சலில் மீண்டும் உள்நுழையலாம்."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "இது என் சொந்த சாதனம். என்னை உள்நுழைந்திருக்க வைக்கவும்."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "விருந்தினர்களைப் பற்றி நீங்கள் முடிவு செய்யும் இடம் இது. எண் என்பது ஒவ்வொரு வகைப்பாட்டிலும் எத்தனை செயலில் உள்ள நபர்கள்."
+
+#: 
+msgid "This link cannot be used"
+msgstr "இந்த இணைப்பைப் பயன்படுத்த முடியாது"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "இந்த இணைப்பு காலாவதியானது அல்லது ஏற்கனவே பயன்படுத்தப்பட்டது"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "உறுப்பினர் வாயிலின் இந்தப் பகுதி உங்களுக்குக் கிடைக்கவில்லை."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "இந்தக் கடவுச்சாவி ஏற்கனவே பதிவில் உள்ளது."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "இந்தக் கடவுச்சாவி இனி அந்த நபரை உள்நுழைக்காது. அவர்கள் மின்னஞ்சலில் உள்நுழைந்து புதியதைச் சேர்க்கலாம்."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "நபர் பக்கத்தில் இந்த அனுமதியைக் கொடுக்க முடியாது."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "இந்த நபரிடம் கொடுக்கக்கூடிய ஒவ்வொரு அனுமதியும் ஏற்கனவே உள்ளது."
+
+#: 
+msgid "This person already has this permission."
+msgstr "இந்த நபரிடம் இந்த அனுமதி ஏற்கனவே உள்ளது."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "இந்த நபர் இனி உறுப்பினர் வாயிலிலோ பணியாளராகவோ எங்கும் உள்நுழைய முடியாது. ஒவ்வொரு அமர்வும் முடியும், அவர்களின் நினைவில் வைத்த சாதனங்களும் கடவுச்சாவிகளும் அகற்றப்படும்."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "இந்த நபரை வெளியேற்ற முடியவில்லை."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "இந்த நபருக்குப் பணியாளர் கணக்கு உள்ளது. நபராக உள்நுழைவு ஒருபோதும் பணியாளர் கணக்கைத் திறக்காது."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "இந்த நபருக்கு அத்தகைய கடவுச்சாவி இல்லை."
+
+#: 
+msgid "This person has no such permission."
+msgstr "இந்த நபருக்கு அத்தகைய அனுமதி இல்லை."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "இந்த நபருக்கு அத்தகைய நினைவில் வைத்த சாதனம் இல்லை."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "இந்த நபருக்கு உறுதிசெய்யப்படாத மின்னஞ்சல் இல்லை."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "இந்த நபர் உறுப்பினர் வாயிலில் உள்நுழைந்துள்ளார். இந்த மின்னஞ்சலை மாற்றினால் அவர்கள் எல்லா இடங்களிலும் வெளியேறுவார்கள், புதிய முகவரி உறுதிசெய்யப்படும் வரை உள்நுழையப் பயன்படுத்த முடியாது."
+
+#: 
+msgid "This person is deceased."
+msgstr "இந்த நபர் காலமானவர்"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "இந்த நபர் எல்லா இடங்களிலும் உறுப்பினர் வாயிலிலிருந்து வெளியேற்றப்பட்டுள்ளார்."
+
+#: 
+msgid "This person no longer exists."
+msgstr "இந்த நபர் இனி இல்லை."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "இது இங்கு உட்பட எல்லா இடங்களிலும் உங்களை வெளியேற்றி, ஒவ்வொரு சாதனத்தையும் மறக்கும். உங்கள் மின்னஞ்சல் முகவரியுடன் மீண்டும் உள்நுழையலாம்."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "இது இங்கு உட்பட எல்லா இடங்களிலும் உங்களை வெளியேற்றி, ஒவ்வொரு சாதனத்தையும் மறக்கும். உங்கள் கடவுச்சாவிகள் இருக்கும்: கடவுச்சாவி அல்லது உங்கள் மின்னஞ்சல் முகவரியுடன் மீண்டும் உள்நுழையலாம்."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "இந்தக் கருவி இவற்றை ஒருபோதும் மாற்றாது. ஒவ்வொரு நபரின் பதிவிலும் தனி மின்னஞ்சல் கொடுக்கவும்."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "இதை உங்கள் சொந்த தொலைபேசி அல்லது கணினியில் மட்டுமே தேர்ந்தெடுக்கவும், பகிரப்பட்ட அல்லது பொது சாதனத்தில் அல்ல."
+
+#: 
+msgid "Time: %s"
+msgstr "நேரம்: %s"
+
+#: 
+msgid "Timed out"
+msgstr "நேரம் முடிந்தது"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "இந்த மின்னஞ்சலை மாற்ற, தயவுசெய்து திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "To fix"
+msgstr "சரிசெய்ய"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "உங்கள் சொந்த தொலைபேசி அல்லது கணினியில் உள்நுழைந்திருக்க, அடுத்த முறை உள்நுழையும்போது \"இது என் சொந்த சாதனம்\" என்பதைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Too many attempts"
+msgstr "அதிக முயற்சிகள்"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "இன்று அதிக உள்நுழைவு மின்னஞ்சல்கள்"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "இந்த மின்னஞ்சல் முகவரிக்கு அதிக உள்நுழைவு கோரிக்கைகள்"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "இந்த IP முகவரியிலிருந்து அதிக உள்நுழைவு கோரிக்கைகள்"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "அதிக தவறான குறியீடுகள்"
+
+#: 
+msgid "Turn off"
+msgstr "அணைக்கவும்"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "உறுப்பினர் உள்நுழைவை அணைக்கவா?"
+
+#: 
+msgid "Turn on"
+msgstr "இயக்கவும்"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "உறுப்பினர் உள்நுழைவை இயக்கவும்"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "உறுப்பினர் உள்நுழைவை இயக்கவா?"
+
+#: 
+msgid "Type a name"
+msgstr "ஒரு பெயரைத் தட்டவும்"
+
+#: 
+msgid "Type a name or email"
+msgstr "ஒரு பெயர் அல்லது மின்னஞ்சலைத் தட்டவும்"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "ஒரு பெயரின் குறைந்தது %d எழுத்துகளைத் தட்டி, பின்னர் தேடவும்."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "உறுதிசெய்யப்படாத மின்னஞ்சல்"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "ChurchCRM எங்கு பயன்படுத்தப்படுகிறது என்று புரிந்துகொள்ளவும்"
+
+#: 
+msgid "Unknown device"
+msgstr "அறியப்படாத சாதனம்"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "அறியப்படாத அடைவுப் புலம்: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "அறியப்படாத அடைவு அமைப்பு: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "பெயரிடப்படாத சாதனம்"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "பெயரிடப்படாத கடவுச்சாவி"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "திருச்சபை அலுவலகம் உறுதிசெய்யும் வரை, புதிய முகவரியை உள்நுழையப் பயன்படுத்த முடியாது."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "%3$s இல் %2$s க்கு மின்னஞ்சல் முகவரியாக %1$s ஐப் பயன்படுத்தவா?"
+
+#: 
+msgid "Use a different email address"
+msgstr "வேறு மின்னஞ்சல் முகவரியைப் பயன்படுத்தவும்"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "இந்தச் சாதனத்தில் கடவுச்சாவியைப் பயன்படுத்தவா?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "%2$s இல் %1$s உங்கள் மின்னஞ்சல் முகவரி என்று உறுதிசெய்ய கீழே உள்ள பொத்தானைப் பயன்படுத்தவும். இணைப்பு ஒருமுறை, %3$s வரை வேலை செய்யும்."
+
+#: 
+msgid "User %d"
+msgstr "பயனர் %d"
+
+#: 
+msgid "View Permissions"
+msgstr "அனுமதிகளைக் காண்க"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "%s ஐ நீங்கள் உறுதிசெய்யக் காத்திருக்கிறோம். அந்த முகவரிக்கு நாங்கள் அனுப்பிய இணைப்பைப் பயன்படுத்தவும்."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "{{email}} ஐ நீங்கள் உறுதிசெய்யக் காத்திருக்கிறோம். அந்த முகவரிக்கு நாங்கள் அனுப்பிய இணைப்பைப் பயன்படுத்தவும்."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "மின்னஞ்சலை அனுப்ப முடியவில்லை. தயவுசெய்து பின்னர் மீண்டும் முயலவும், அல்லது திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "We could not sign you in"
+msgstr "உங்களை உள்நுழைக்க முடியவில்லை"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "%s க்கு ஒரு இணைப்பை மின்னஞ்சல் செய்தோம். உங்கள் புதிய மின்னஞ்சல் முகவரியை உறுதிசெய்ய அதைப் பயன்படுத்தவும்."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "{{email}} க்கு ஒரு இணைப்பை அனுப்பினோம். நீங்கள் அதைப் பயன்படுத்தும்போது உங்கள் மின்னஞ்சல் மாறும்."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "உள்நுழைய ஒரு குறியீட்டையும் இணைப்பையும் உங்களுக்கு மின்னஞ்சல் செய்வோம்."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "நீங்கள் இங்கே இருப்பதில் மிகவும் மகிழ்ச்சி! இதற்கு சுமார் மூன்று நிமிடங்கள் ஆகும்."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "உங்கள் குடும்பம் எங்களுடன் சேர்ந்ததில் மிகவும் மகிழ்ச்சி! உங்கள் பதிவு பெறப்பட்டது. உங்களை நேரில் வரவேற்க எங்கள் குழு விரைவில் தொடர்புகொள்ளும்."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "திருமண ஆண்டுவிழா"
+
+#: 
+msgid "Welcome"
+msgstr "வரவேற்பு"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "அது வழங்கப்பட்டது இனி இல்லை"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "வாயிலில் உறுப்பினர்கள் என்ன பார்க்கலாம் செய்யலாம், ஒவ்வொரு அனுமதியும் எங்கிருந்து வருகிறது. நபர்கள் உள்நுழைவு விதிகள் அனுமதிக்கும் அனைவரிலும், மற்றும் பணியாளர்களிலும் எண்ணப்படுகிறார்கள்."
+
+#: 
+msgid "What members can use"
+msgstr "உறுப்பினர்கள் எதைப் பயன்படுத்தலாம்"
+
+#: 
+msgid "What to do"
+msgstr "என்ன செய்வது"
+
+#: 
+msgid "Who can see it"
+msgstr "யார் அதைப் பார்க்கலாம்"
+
+#: 
+msgid "Who is listed"
+msgstr "யார் பட்டியலிடப்பட்டுள்ளனர்"
+
+#: 
+msgid "Who may sign in"
+msgstr "யார் உள்நுழையலாம்"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "உறுப்பினர் வாயிலில் யார் உள்நுழையலாம், யார் உள்நுழைந்துள்ளனர், யாருடைய மின்னஞ்சல் அவர்களைத் தடுக்கிறது. பட்டியல்கள் உள்நுழைவு தாவலின் விதிகளைப் பின்பற்றுகின்றன."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "உறுப்பினர் வாயில் அடைவு யாரைப் பட்டியலிடுகிறது, யார் அதைப் பார்க்கலாம், அது என்ன காட்டுகிறது, நிர்வாகம் -> உறுப்பினர் வாயில் -> அடைவு இல் தேர்ந்தெடுக்கப்பட்டது."
+
+#: 
+msgid "Why"
+msgstr "ஏன்"
+
+#: 
+msgid "Why not"
+msgstr "ஏன் இல்லை"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "சாதனம் சற்று முன் மாற்றிய டோக்கனுடன்"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "ஆம், கடவுச்சாவியைச் சேர்க்கவும்"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "ஆம், இந்தக் கடவுச்சாவியை அகற்றவும்"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "ஆம், ஒவ்வொரு சாதனத்திலும் வெளியேறவும்"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "இந்த மின்னஞ்சலை உறுதிசெய்ய உங்களுக்கு அனுமதி இல்லை."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "எந்தச் சாதனத்திலும் நீங்கள் உள்நுழைந்திருக்க வைக்கப்படவில்லை."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "ஒவ்வொரு சாதனத்திலும் நீங்கள் வெளியேறியுள்ளீர்கள்."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "இந்தச் சாதனத்தில் நீங்கள் வெளியேறியுள்ளீர்கள்."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "உங்கள் மின்னஞ்சல் முகவரியுடனும் உள்நுழையலாம்."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "உங்கள் சொந்த உள்நுழைவை நீங்கள் முடக்க முடியாது."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "உறுப்பினர் வாயிலை நீங்கள் திறக்க முடியாது. தயவுசெய்து திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "உங்கள் மின்னஞ்சலை மாற்ற அதிக முறை கோரியுள்ளீர்கள். தயவுசெய்து பின்னர் மீண்டும் முயலவும்."
+
+#: 
+msgid "You have no passkeys."
+msgstr "உங்களிடம் கடவுச்சாவிகள் இல்லை."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "உறுப்பினர் வாயிலில் %s ஆக உள்நுழைந்துள்ளீர்கள் (மாற்றங்கள் அனுமதி)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "உறுப்பினர் வாயிலில் %s ஆக உள்நுழைந்துள்ளீர்கள் (படிக்க மட்டும்)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "குறைந்தபட்ச வயதை விட இளையவர்"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "ஒரு நபர் உறுப்பினர் வாயிலில் உள்நுழையக்கூடிய இளைய வயது. பிறந்த தேதி தெரியாதபோது, குடும்பத் தலைவர் அல்லது துணைவர் மட்டுமே தகுதி பெறுகிறார்."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "உங்கள் உறுப்பினர் வாயில் உள்நுழைவு குறியீடு"
+
+#: 
+msgid "Your code"
+msgstr "உங்கள் குறியீடு"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "உங்கள் மின்னஞ்சல் முகவரி %s இன்னும் உறுதிசெய்யப்படவில்லை, எனவே உள்நுழைய இதைப் பயன்படுத்த முடியாது. அதற்கு ஒரு இணைப்பை மின்னஞ்சல் செய்வோம்; இணைப்பைப் பயன்படுத்துவது அதை உறுதிசெய்கிறது."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "உங்கள் மின்னஞ்சல் முகவரியை இங்கே அகற்ற முடியாது. தயவுசெய்து திருச்சபை அலுவலகத்தைத் தொடர்புகொள்ளவும்."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "உங்கள் மின்னஞ்சல் முகவரி உறுதிசெய்யப்பட்டது"
+
+#: 
+msgid "Your email address was changed"
+msgstr "உங்கள் மின்னஞ்சல் முகவரி மாற்றப்பட்டது"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "உங்கள் கடவுச்சாவி சேர்க்கப்பட்டது. அடுத்த முறை, இந்தச் சாதனத்தில் அதனுடன் உள்நுழையவும்."
+
+#: 
+msgid "an administrator"
+msgstr "ஒரு நிர்வாகி"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "குடும்பத் தலைவருக்கோ துணைவருக்கோ மின்னஞ்சல் முகவரி இல்லை"
+
+#: 
+msgid "or"
+msgstr "அல்லது"
+
+#: 
+msgid "until %s"
+msgstr "%s வரை"
 

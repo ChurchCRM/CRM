@@ -6,6 +6,10 @@ describe("Admin Users list - accounts that cannot sign in (#10193)", () => {
     };
 
     before(() => {
+        // Other specs try these accounts with a wrong password, which does count.
+        [910, 911].forEach((userId) => {
+            cy.makePrivateAdminAPICall("POST", `/admin/api/user/${userId}/login/reset`, null, 200);
+        });
         ["deceased.user", "inactive.user"].forEach((userName) => {
             Cypress._.times(6, () => {
                 cy.apiRequest({

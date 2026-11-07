@@ -32,7 +32,7 @@ import type { Plugin } from 'i18next-cli';
  */
 
 // Assembled rather than written out as one literal so that this file does not
-// itself look like an i18next call site to scripts/locale-check.js.
+// itself look like an i18next call site to scripts/lint/locale-check.js.
 const CALL_NAME = 'i18next.t';
 const CALL_PREFIX = `${CALL_NAME}(`;
 

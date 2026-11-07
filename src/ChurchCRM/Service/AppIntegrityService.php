@@ -308,7 +308,6 @@ class AppIntegrityService
                 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
 
                 $result = curl_exec($ch);
-                curl_close($ch);
 
                 if ($result === false) {
                     // Loopback blocked — assume available (advisory check only)
@@ -474,13 +473,14 @@ class AppIntegrityService
             '/^integrityCheck\.json$/',
             '/^Images\/Person\/thumbnails\//',
             // Uploaded church logo — runtime data, never part of signatures.json.
-            // Keep in sync with scripts/generate-signatures-node.js and package-release.js.
+            // Keep in sync with scripts/build/generate-signatures-node.js and package-release.js.
             '/^Images\/church-logo\.png$/',
             '/^vendor\/.*\/example\//',
             '/^vendor\/.*\/examples\//',
             '/^vendor\/.*\/tests\//',
             '/^vendor\/.*\/Tests\//',
             '/^vendor\/.*\/test\//',
+            '/^vendor\/.*\/_test\//',
             '/^vendor\/.*\/docs\//',
             // Community plugins are third-party extensions installed at runtime.
             // They are never part of the shipped signatures.json and must not

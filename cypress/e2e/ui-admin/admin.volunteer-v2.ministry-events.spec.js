@@ -193,6 +193,8 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
             calendarId = resp.body.calendarId;
             admin("GET", `${MINISTRIES_URL}/${ministryId}`).then((detail) => {
                 teamId = detail.body.teams[0].id;
+                // The portal's team pages are for the team's leaders, staff included (member sign-in §8.4).
+                admin("POST", "/api/ministries/scopes", { personId: 1, scopeType: "team", scopeId: teamId }, [200, 201]);
                 admin("POST", `${MINISTRIES_URL}/${ministryId}/positions`, { name: `${PREFIX} Cook`, teamId }, 201).then(
                     (position) => {
                         positionId = position.body.position.id;

@@ -81,3 +81,7 @@ the integration suite. Tests require `integration/bootstrap.php`, which checks
 isolation and database settings before connecting. Missing prerequisites fail
 the requested suite. Upgrade tests create small schemas and SQL/PHP scripts to
 exercise checkpointing, interruption, concurrency and request continuation.
+
+## Benchmarks
+
+`benchmark/` holds the large-upgrade timing run (`npm run benchmark:upgrade:large`). It starts a throwaway database and is not part of either suite.

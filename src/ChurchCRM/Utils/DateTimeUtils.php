@@ -182,7 +182,7 @@ class DateTimeUtils
      * Return the number of days in a given month/year.
      *
      * Use this instead of `cal_days_in_month()` — the PHP calendar extension
-     * is not enabled in all environments (notably the Docker test image).
+     * is not enabled in all environments (notably the Docker image).
      *
      * @param int $month The month (1-12)
      * @param int $year  The year (e.g., 2026)
@@ -231,6 +231,68 @@ class DateTimeUtils
         }
 
         return '';
+    }
+
+    /** Validates an ISO Y-m-d value, as sent by type="date" inputs and the API: the same date for a real calendar date in or after $minYear, otherwise ''. Reads no setting. */
+    public static function parseIsoDate(mixed $value, int $minYear = 1900): string
+    {
+        $date = is_scalar($value) ? (string) $value : '';
+        if (!preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $date, $m) || !checkdate((int) $m[2], (int) $m[3], (int) $m[1]) || (int) $m[1] < $minYear) {
+            return '';
+        }
+
+        return $date;
+    }
+
+    /** The system date-picker format in the notation of the JS datepicker widget and input placeholders (Y-m-d becomes yyyy-mm-dd). */
+    public static function datePickerJsFormat(): string
+    {
+        return strtr(SystemConfig::getValue('sDatePickerFormat'), [
+            'd' => 'dd', 'j' => 'd', 'm' => 'mm', 'n' => 'm', 'Y' => 'yyyy', 'y' => 'yy', 'M' => 'M', 'F' => 'MM', 'D' => 'D', 'l' => 'DD',
+        ]);
+    }
+
+    /**
+     * Reads a date typed in the system date-picker format into Y-m-d, or null when it does not
+     * match or the year is not four digits. An overflow date (02/30/2014) is always rejected.
+     * Strict also rejects unpadded input (3/4/2014) by requiring the date to format back to exactly what was typed.
+     */
+    public static function parseDatePicker(string $input, bool $strict = false): ?string
+    {
+        $input = trim($input);
+        $format = SystemConfig::getValue('sDatePickerFormat');
+        $date = \DateTime::createFromFormat('!' . $format, $input, self::getConfiguredTimezone());
+        if ($date === false || (\DateTime::getLastErrors() ?: ['warning_count' => 0])['warning_count'] > 0 || (int) $date->format('Y') < 1000 || ($strict && $date->format($format) !== $input)) {
+            return null;
+        }
+
+        return $date->format('Y-m-d');
+    }
+
+    /**
+     * Reads a date typed by a user (system date-picker format first, then anything strtotime
+     * understands) into Y-m-d. Returns '' for empty or unparseable input.
+     */
+    public static function normalizeDate(?string $input): string
+    {
+        $input = trim((string) $input);
+        if ($input === '') {
+            return '';
+        }
+
+        $picked = self::parseDatePicker($input);
+        if ($picked !== null) {
+            return $picked;
+        }
+
+        $timestamp = str_contains($input, '/') ? false : strtotime($input);
+        if ($timestamp === false) {
+            return '';
+        }
+
+        $date = date('Y-m-d', $timestamp);
+
+        return preg_match('/^\d{4}-\d{2}-\d{2}$/', $input) && $date !== $input ? '' : $date;
     }
 
     /**
@@ -326,8 +388,32 @@ class DateTimeUtils
     }
 
     /**
+     * parsePartialDate() for a SQL DATE column: Y-m-d when the input names a full date,
+     * null for a missing year, month or day.
+     */
+    public static function parseFullDate(string $raw): ?string
+    {
+        $parsed = self::parsePartialDate($raw);
+        if ($parsed === null || $parsed['year'] === null || $parsed['month'] === 0 || $parsed['day'] === 0) {
+            return null;
+        }
+
+        return sprintf('%04d-%02d-%02d', $parsed['year'], $parsed['month'], $parsed['day']);
+    }
+
+    /** Puts two leading numbers in (month, day) order according to the system date-picker format. */
+    private static function orderMonthDay(int $first, int $second): array
+    {
+        $format = SystemConfig::getValue('sDatePickerFormat');
+        $dayFirst = preg_match('/[dj]/', $format, $d, PREG_OFFSET_CAPTURE) && preg_match('/[mn]/', $format, $mo, PREG_OFFSET_CAPTURE) && $d[0][1] < $mo[0][1];
+
+        return $dayFirst ? [$second, $first] : [$first, $second];
+    }
+
+    /**
      * Parse a partial date in the formats CSV imports commonly produce:
-     * YYYY-MM-DD, YYYY-M-D, M/D/YYYY, M-D-YYYY, M/D/YY, M-D-YY, M/D, M-D,
+     * YYYY-MM-DD, YYYY-M-D, M/D/YYYY, M-D-YYYY, M/D/YY, M-D-YY, M/D, M-D
+     * (day first instead of month first when the system date-picker format puts the day first),
      * or a bare 4-digit year (YYYY).
      * Year may be omitted (bare "7/4") or zero ("0000-07-04") — in which case
      * the returned `year` is null.
@@ -375,8 +461,7 @@ class DateTimeUtils
                 // Match PHP's strtotime rules: 00-69 => 2000-2069, 70-99 => 1970-1999
                 $y += $y >= 70 ? 1900 : 2000;
             }
-            $month = (int) $m[1];
-            $day   = (int) $m[2];
+            [$month, $day] = self::orderMonthDay((int) $m[1], (int) $m[2]);
             if (!checkdate($month, $day, $y > 0 ? $y : 2000)) {
                 return null;
             }
@@ -384,8 +469,7 @@ class DateTimeUtils
         }
         if (preg_match('/^(\d{1,2})[\/\-](\d{1,2})$/', $raw, $m)) {
             // M/D or M-D (e.g. 1/1, 7/4, 7-4) — no year
-            $month = (int) $m[1];
-            $day   = (int) $m[2];
+            [$month, $day] = self::orderMonthDay((int) $m[1], (int) $m[2]);
             if (!checkdate($month, $day, 2000)) {
                 return null;
             }
@@ -416,14 +500,17 @@ class DateTimeUtils
     }
 
     /**
-     * Parses a human-entered date string into YYYY-MM-DD format.
-     * Supports US (M/D/Y), European (D/M/Y), and ISO (Y-M-D) formats.
+     * Parses a human-entered date string into YYYY-MM-DD format. The system date-picker
+     * format decides what a slash date means; a slash date in any other layout is rejected
+     * rather than guessed. ISO (Y-M-D) and textual dates are accepted as typed.
      * Migrated from parseAndValidateDate() in Functions.php.
      *
      * @return string|false YYYY-MM-DD on success, false on invalid input
      */
-    public static function parseAndValidate($data, $locale = 'US', $pasfut = 'future')
+    public static function parseAndValidate($data, $pasfut = 'future')
     {
+        $data = self::parseDatePicker(trim((string) $data)) ?? $data;
+
         if (mb_substr_count($data, '-') === 2) {
             $iFirstDelimiter = strpos($data, '-');
             $iSecondDelimiter = strpos($data, '-', $iFirstDelimiter + 1);
@@ -433,24 +520,10 @@ class DateTimeUtils
             $sDay = mb_substr($data, $iSecondDelimiter + 1);
 
             return self::assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
-        } elseif ((mb_substr_count($data, '/') == 2) && ($locale == 'US')) {
-            $iFirstDelimiter = strpos($data, '/');
-            $iSecondDelimiter = strpos($data, '/', $iFirstDelimiter + 1);
+        }
 
-            $sMonth = mb_substr($data, 0, $iFirstDelimiter);
-            $sDay = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
-            $sYear = mb_substr($data, $iSecondDelimiter + 1);
-
-            return self::assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
-        } elseif (mb_substr_count($data, '/') == 2) {
-            $iFirstDelimiter = strpos($data, '/');
-            $iSecondDelimiter = strpos($data, '/', $iFirstDelimiter + 1);
-
-            $sDay = mb_substr($data, 0, $iFirstDelimiter);
-            $sMonth = mb_substr($data, $iFirstDelimiter + 1, $iSecondDelimiter - $iFirstDelimiter - 1);
-            $sYear = mb_substr($data, $iSecondDelimiter + 1);
-
-            return self::assembleYearMonthDay($sYear, $sMonth, $sDay, $pasfut);
+        if (str_contains($data, '/')) {
+            return false;
         }
 
         $timeStamp = strtotime($data);

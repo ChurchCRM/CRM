@@ -96,6 +96,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <i class="fa-solid fa-clipboard-check me-1"></i><?= gettext('Verify People') ?>
                 </a>
                 <?php endif; ?>
+                <?php if (!empty($canFixSignInEmail)) : ?>
+                    <a href="<?= $sRootPath ?>/people/sign-in-email" class="btn btn-outline-warning" id="signInEmailAttentionLink">
+                        <i class="fa-solid fa-envelope-circle-check me-1"></i><?= gettext('Email needs attention') ?>
+                    </a>
+                <?php endif; ?>
                 <?php if ($canEmail): ?>
                     <button type="button" class="btn btn-outline-primary"
                             data-email-composer

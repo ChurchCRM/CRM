@@ -441,10 +441,6 @@ msgid "Family Cell Phone"
 msgstr "የቤተሰብ ሞባይል ስልክ"
 
 #: 
-msgid "Family Email"
-msgstr "የቤተሰብ ኢሜይል"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "የግል የቤት ስልክ"
 
@@ -3901,10 +3897,6 @@ msgid "Oops! Page not found."
 msgstr "ውይ! ገጹ አልተገኘም."
 
 #: 
-msgid "Family Registration"
-msgstr "የቤተሰብ ምዝገባ"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "የቤተሰብዎን ማረጋገጫ ለመጀመር እባክዎ የሚከተለውን ያስገቡ"
 
@@ -4928,11 +4920,6 @@ msgid "Portuguese - Portugal"
 msgstr "ፖርቱጋልኛ - ፖርቱጋል"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "\n"
-"በአረጋጋጭ መተግበሪያ ውስጥ የሚታየውን የመተግበሪያ ስም ይግለጹ"
-
-#: 
 msgid "Review"
 msgstr "ግምገማ"
 
@@ -5066,10 +5053,6 @@ msgstr "የቤተሰብ ገጽን ይመልከቱ"
 #: 
 msgid "View Person Page"
 msgstr "የግል ገጽ ይመልከቱ"
-
-#: 
-msgid "Verify"
-msgstr "አረጋገጥ"
 
 #: 
 msgid "Family has no emails to use"
@@ -5318,24 +5301,8 @@ msgid "Email address"
 msgstr "የኢሜይል አድራሻ"
 
 #: 
-msgid "Enter family name"
-msgstr "የቤተሰብ ስም ያስገቡ"
-
-#: 
 msgid "Family name is required"
 msgstr "የቤተሰብ ስም ያስፈልጋል"
-
-#: 
-msgid "First name"
-msgstr "የመጀመሪያ ስም"
-
-#: 
-msgid "Home phone number"
-msgstr "የቤት ስልክ ቁጥር"
-
-#: 
-msgid "Last name"
-msgstr "የአያት ስም"
 
 #: 
 msgid "Next Member"
@@ -9764,10 +9731,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "ይህ ለ ሙገግ ጉዞ እና ተዋጽኦ ዘመን ላክ ያገለግል።"
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "ወደ ጋ ከሆንክ! ቤተሰብ ምንም 3 ቀላል ደረጃ ተመዝገብ።"
-
-#: 
 msgid "Welcome Back!"
 msgstr "እንደገና ወደ!"
 
@@ -13743,10 +13706,6 @@ msgid "Generate new code"
 msgstr "አዲስ ኮድ አዘጋጅ"
 
 #: 
-msgid "Go to homepage"
-msgstr "ወደ ቤት ገጽ ዛሬ"
-
-#: 
 msgid "Group added to cart"
 msgstr "ቡድን ወደ ጋሪ ተጨምሯል"
 
@@ -13769,10 +13728,6 @@ msgstr "ማረጋገጫ ትግበራዎን ዝግጁ ያድርጉ (Google Authen
 #: 
 msgid "Hide advanced options"
 msgstr "የተዘረጉ አማራጮችን ደብቅ"
-
-#: 
-msgid "Home phone is required"
-msgstr "የቤት ስልክ ያስፈልጋል"
 
 #: 
 msgid "ICS URL"
@@ -14447,10 +14402,6 @@ msgid "Warnings"
 msgstr "ማስጠንቀቂያዎች"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "ቤተሰብ ወጦ ሙ ገባ ታላቅ ደስ!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "ወደ ቤተሰብ ወደ!"
 
@@ -14505,10 +14456,6 @@ msgstr "የአሳሽ ቋንቋ ምርጫዎ ከ ChurchCRM አካባቢዎ ይለ
 #: 
 msgid "Your database already contains data"
 msgstr "ዳታቤዝዎ ቀድሞ መረጃ ይዟል"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "ተመዝገብ ተቀበለ። ወጦ ሙ ክህን ወደ ግል ዝንብ።"
 
 #: 
 msgid "Zip code is required"
@@ -14587,10 +14534,6 @@ msgid "open rate"
 msgstr "የመክፍት ፍጥነት"
 
 #: 
-msgid "our church"
-msgstr "ተዋጽኦ"
-
-#: 
 msgid "payment(s)?"
 msgstr "ክፍያ(ዎች)?"
 
@@ -14629,14 +14572,6 @@ msgstr "ዓ."
 #: 
 msgid "yrs"
 msgstr "ዓ.ም"
-
-#: 
-msgid "Account options"
-msgstr "የሂሳብ ምርጫዎች"
-
-#: 
-msgid "Register"
-msgstr "ይመዝገቡ"
 
 #. Context: locales
 #: 
@@ -14698,10 +14633,6 @@ msgid "Date Picker Format"
 msgstr "የቀን ምረጫ ቅርጸት"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "የቀን ምረጫ ምትክ ጽሑፍ"
-
-#: 
 msgid "Date Without Year"
 msgstr "ያለ ዓመት ቀን"
 
@@ -14732,10 +14663,6 @@ msgstr "ለፋይል ስም የቀን ቅርጸት"
 #: 
 msgid "Fully translated."
 msgstr "ሙሉ ለሙሉ ተተርጉሟል።"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "በቀን ግቤቶች ውስጥ የሚታይ ፍንጭ ጽሑፍ። ነባሪ: ዓዓዓዓ-ወወ-ቀቀ"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -14919,16 +14846,8 @@ msgid "Always granted"
 msgstr "ሁልጊዜ የተፈቀደ"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "የራሳቸውን ቤተሰብ ብቻ ሊያረጋግጡ እና ሊገመግሙ ይችላሉ። ሌላ ምንም ተደራሽነት የለም።"
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "ከዚህ በታች ልዩ ፈቃዶችን ይምረጡ።"
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "ፈቃዶችዎን ለመቀየር አስተዳዳሪን ያነጋግሩ።"
 
 #: 
 msgid "Custom permissions"
@@ -14943,20 +14862,8 @@ msgid "People &amp; Families"
 msgstr "ሰዎች &amp; ቤተሰቦች"
 
 #: 
-msgid "Self-service"
-msgstr "ራስን ማገልገል"
-
-#: 
-msgid "Self-service only"
-msgstr "ራስን ማገልገል ብቻ"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "ለማስተካከል እየሞከሩት ያሉት ማስታወሻ አሁን የለም።"
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "ይህ ተጠቃሚ የራሱን ቤተሰብ መገለጫ ብቻ ሊያረጋግጥ እና ሊያዘምን ይችላል። የግለሰብ ፈቃዶች አይተገበሩም።"
 
 #: 
 msgid "User List"
@@ -18221,16 +18128,8 @@ msgid "Second Home"
 msgstr "ሁለተኛ ቤት"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "የተገናኘው ሰው ሞተ ወይም ንቁ ያልሆነ. ሰው ወደ ገበሮ ከተገበሮ ድረስ ውስጥ-ይሰለፉ, ክፍለ-ጊዜ እና API ቁልፍ ተከልክሎ ሉቅሩ."
-
-#: 
 msgid "This is the mailing address"
 msgstr "ይህ ደብዳቤ አድራሻ ነው"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "ይህ ሰው የሞተ ወይም ንቁ ያልሆነ ነው፣ ስለዚህ ይህ መለያ መግባት አይችልም"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18919,10 +18818,6 @@ msgid "Account unlocked"
 msgstr "መለያ ተከፍቷል።"
 
 #: 
-msgid "Accounts"
-msgstr "መለያዎች"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Active እውነት ወይም ሐሰት መሆን አለበት"
 
@@ -19115,10 +19010,6 @@ msgid "Author"
 msgstr "ደራሲ"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "ሥልጣን የሚሰጠው ለሰውየው እንጂ ለመግቢያ አይደለም፣ ስለዚህ መግቢያ ከማግኘታቸው በፊት ሊሰጥ ይችላል። መግቢያው ራስን ማገልገል ብቻ የሆነ ሰው አስተዳዳሪ መለያውን እስኪያሰፋ ድረስ የራሱን መርሐ ግብር ብቻ ማየቱን ይቀጥላል።"
-
-#: 
 msgid "Automatic"
 msgstr "ራስ-ሰር"
 
@@ -19241,10 +19132,6 @@ msgstr "ክፍል ይምረጡ"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "ከ1 እስከ 31 ያለውን የወሩን ቀን ይምረጡ"
-
-#: 
-msgid "Choose a new photo"
-msgstr "አዲስ ፎቶ ይምረጡ"
 
 #: 
 msgid "Choose a person"
@@ -20017,10 +19904,6 @@ msgid "Last attempt"
 msgstr "የመጨረሻ ሙከራ"
 
 #: 
-msgid "Last check"
-msgstr "የመጨረሻ ፍተሻ"
-
-#: 
 msgid "Last date"
 msgstr "የመጨረሻ ቀን"
 
@@ -20247,10 +20130,6 @@ msgstr "እስካሁን ለአባላት የተጋራ የቀን መቁጠሪያ �
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "ለዚህ አገልግሎት ክፍት የሆነ የቀን መቁጠሪያ የለም፣ ስለዚህ ዝግጅቶቹ በየትኛውም የቀን መቁጠሪያ ላይ አይታዩም።"
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "ለአባላት የተጋራ የቀን መቁጠሪያ የለም።"
 
 #: 
 msgid "No class"
@@ -20787,14 +20666,6 @@ msgid "Please tell us what needs changing."
 msgstr "እባክዎ ምን መቀየር እንዳለበት ይንገሩን።"
 
 #: 
-msgid "Portal settings"
-msgstr "የፖርታል ቅንብሮች"
-
-#: 
-msgid "Portal theme"
-msgstr "የፖርታል ገጽታ"
-
-#: 
 msgid "Position"
 msgstr "የአገልግሎት ቦታ"
 
@@ -21011,10 +20882,6 @@ msgid "SMTP test"
 msgstr "የSMTP ሙከራ"
 
 #: 
-msgid "Save calendars"
-msgstr "የቀን መቁጠሪያዎችን አስቀምጥ"
-
-#: 
 msgid "Save changes"
 msgstr "ለውጦችን አስቀምጥ"
 
@@ -21025,10 +20892,6 @@ msgstr "ተቀምጧል — ይህ አገልግሎት ከእንግዲህ እር�
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "ተቀምጧል — ይህ አገልግሎት አሁን እርዳታ እየጠየቀ ነው"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "ተቀምጧል። አባላት ከላይ የነቁትን የቀን መቁጠሪያዎች ያያሉ።"
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21133,10 +20996,6 @@ msgid "Self-assignable must be true or false"
 msgstr "ራስ ሊመደብ የሚችል እውነት ወይም ሐሰት መሆን አለበት"
 
 #: 
-msgid "Self-service accounts"
-msgstr "ራስን የሚያገለግሉ መለያዎች"
-
-#: 
 msgid "Send"
 msgstr "ላክ"
 
@@ -21205,18 +21064,6 @@ msgstr "በአባላት ፖርታል አሳይ"
 #: 
 msgid "Show past events"
 msgstr "ያለፉ ዝግጅቶችን አሳይ"
-
-#: 
-msgid "Show the church calendar"
-msgstr "የቤተ ክርስቲያኑን የቀን መቁጠሪያ አሳይ"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "የቤተ ክርስቲያኑን የቀን መቁጠሪያ በአባላት ፖርታል ውስጥ አሳይ።"
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "የቤተ ክርስቲያኑን የቀን መቁጠሪያ ክፍል በአባላት ፖርታል ውስጥ አሳይ።"
 
 #: 
 msgid "Show the next"
@@ -21625,10 +21472,6 @@ msgstr "%s ሙሉ የደቂቃዎች ቁጥር መሆን አለበት"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s ከዝግጅቱ በ%d ደቂቃዎች ውስጥ መሆን አለበት"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "የአባላት ፖርታል የቀን መቁጠሪያዎች ተቀምጠዋል።"
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22079,10 +21922,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "እነዚህ ፍላጎቶች የመጡት ከመርሐ ግብሩ ነው። እዚህ ማስቀመጥ የሚቀይረው ይህን የአገልግሎት ቀን ብቻ ነው።"
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "እነዚህ ቁጥሮች የሚቆጥሩት ራስን የሚያገለግሉ መለያዎችን ብቻ ነው፦ መግቢያቸው የአባላት ፖርታልን እንጂ ሌላ ምንም መድረስ የማይችል ሰዎችን።"
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "እነዚህ ሰዎች አሁንም ተመድበዋል፣ ነገር ግን የያዙት የአገልግሎት ቦታ ከዚህ ቀን የሰው ኃይል ዕቅድ ከእንግዲህ አካል አይደለም።"
 
@@ -22167,14 +22006,6 @@ msgid "This is not a valid theme folder name."
 msgstr "ይህ ትክክለኛ የገጽታ አቃፊ ስም አይደለም።"
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "ይህ ከቡድንዎ ቀኖች አንዱ አይደለም።"
-
-#: 
-msgid "This is not one of your teams."
-msgstr "ይህ ከቡድኖችዎ አንዱ አይደለም።"
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "ቤተ ክርስቲያኑ ፖስታ የሚልክበት አድራሻ እና ስለ ቤተሰብዎ የሚደውልበት ሰው እዚህ ይገኛል።"
 
@@ -22233,10 +22064,6 @@ msgstr "ይህ ገጽ የመለያዎ አካል አይደለም። መሆን አ
 #: 
 msgid "This page was not found"
 msgstr "ይህ ገጽ አልተገኘም"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "ይህ የአባላት ፖርታል ክፍል ለበጎ ፈቃደኛ ቡድን መሪዎች ነው።"
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23907,16 +23734,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} ተመድቦ እንደተቀበለ ተመዝግቧል"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "የመግቢያ ደብዳቤዎን እንዲቀይር አስተዳዳሪን ይጠይቁ።"
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "አስተዳዳሪ ደብዳቤውን ከ%1$s ወደ %2$s ቀይሯል"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "የተጠቃሚ መለያ ያለውን ሰው ደብዳቤ መቀየር የሚችለው አስተዳዳሪ ብቻ ነው።"
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24401,4 +24220,2960 @@ msgstr "የሚታየው እርስዎ የላኩት ኢሜይል ብቻ ነው።"
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "ተደጋጋሚ ክስተቶች ሊፈጠሩ አልቻሉም። ለዝርዝር መረጃ የመተግበሪያውን ምዝግብ ማስታወሻ ይመልከቱ።"
+
+#: 
+msgid "Confirm Password"
+msgstr "የይለፍ ቃል ያረጋግጡ"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "የይለፍ ቃልዎ ተቀይሯል። አሁን በአዲሱ የይለፍ ቃል መግባት ይችላሉ።"
+
+#: 
+msgid "1st"
+msgstr "1ኛ"
+
+#: 
+msgid "2nd"
+msgstr "2ኛ"
+
+#: 
+msgid "3rd"
+msgstr "3ኛ"
+
+#: 
+msgid "4th"
+msgstr "4ኛ"
+
+#: 
+msgid "5th"
+msgstr "5ኛ"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "መግባት ከሚችለው ብቸኛ አስተዳዳሪ የአስተዳዳሪ መዳረሻን ማስወገድ አይቻልም"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "የወሩን ሳምንት ከ1ኛ እስከ 5ኛ ይምረጡ"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "{{total}} ክስተቶችን ይፈጥራል፣ በ{{week}} {{day}}፣ ከ{{first}} እስከ {{last}} በየወሩ"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "የሳምንቱ ቀን ትክክል አይደለም"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "በየወሩ፣ በሳምንት ቀን"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "5ኛ የሌላቸው ወራት ይታለፋሉ።"
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM ከ1 እስከ 5 ያለ ሙሉ ቁጥር መሆን አለበት"
+
+#: 
+msgid "Week of the month"
+msgstr "የወሩ ሳምንት"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "የወሩ ሳምንት ከ1 እስከ 5 መሆን አለበት"
+
+#: 
+msgid "%s through %s"
+msgstr "ከ%s እስከ %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "በመዋጮ መግለጫዎች ላይ የሚታተም የቤተ ክርስቲያን የግብር መታወቂያ (EIN)"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "የመዋጮ መግለጫዎች ለቤተሰብ አዋቂዎች ይሰጣሉ። ከፈለጉ የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "Download statement"
+msgstr "መግለጫውን ያውርዱ"
+
+#: 
+msgid "Generated"
+msgstr "ተፈጥሯል"
+
+#: 
+msgid "Goods and services"
+msgstr "ዕቃዎች እና አገልግሎቶች"
+
+#: 
+msgid "My Giving"
+msgstr "የእኔ ስጦታ"
+
+#: 
+msgid "No contributions"
+msgstr "ምንም መዋጮ የለም"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "ለዚህ ወቅት ምንም መዋጮ አልተመዘገበም።"
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "ከማይዳሰሱ ሃይማኖታዊ ጥቅሞች በስተቀር ለእነዚህ መዋጮዎች ምትክ ዕቃ ወይም አገልግሎት አልተሰጠም።"
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "አማራጭ። በመዋጮ መግለጫዎች ላይ ይታተማል።"
+
+#: 
+msgid "Tax ID"
+msgstr "የግብር መታወቂያ"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "የግብር መታወቂያ (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "ከግብር የሚቀነስ መጠን"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "ይህ የቤተሰብ መግለጫ ነው። ለቤተሰብዎ የተሰጡ ስጦታዎችን ያካትታል።"
+
+#: 
+msgid "Total contributions"
+msgstr "ጠቅላላ መዋጮ"
+
+#: 
+msgid "Year-end statement"
+msgstr "የዓመት መጨረሻ መግለጫ"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d የስጦታ መግለጫ ለቤተሰቡ በኢሜይል በተሳካ ሁኔታ ተልኳል።"
+
+#: 
+msgid "%s Giving Statement"
+msgstr "የ%s የስጦታ መግለጫ"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "በስጦታ መግለጫዎች ላይ የሚታየውን ጽሑፍ ያብጁ (sTaxReport1፣ sTaxReport2፣ ወዘተ)።"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "ውድ የ%s ቤተሰብ፣\n"
+"\n"
+"የእርስዎን የ%s የስጦታ መግለጫ ከ%s ጋር በዚህ ኢሜይል ተያይዞ ያገኙታል።\n"
+"\n"
+"ጥያቄ ካለዎት የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።\n"
+"\n"
+"ለልግስናዎ እናመሰግናለን።"
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "የ%s የስጦታ መግለጫን በኢሜይል ላክ"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "የኤንቨሎፕ ቁጥሮች"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "የስጦታ መግለጫዎችን ፍጠር"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "ለስጦታ መግለጫዎች፣ ለቃል ኪዳን ክትትል እና ለገንዘብ ትንተና ሪፖርቶችን ይፍጠሩ።"
+
+#: 
+msgid "Giving Reports"
+msgstr "የስጦታ ሪፖርቶች"
+
+#: 
+msgid "Giving Statement"
+msgstr "የስጦታ መግለጫ"
+
+#: 
+msgid "Giving Statements"
+msgstr "የስጦታ መግለጫዎች"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "የስጦታ መግለጫ ኢሜይል መላክ አልተሳካም። የኢሜይል አገልጋይ ቅንብሮችዎን ያረጋግጡ።"
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "ቀጣዩን ስጦታዎን ወደ %s በፖስታ ይላኩ"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "የ%s የስጦታ መግለጫን አትም"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "የስጦታ መግለጫን በኢሜይል መላክ አልተቻለም፦ ለዚያ ዓመት የክፍያ መረጃ አልተገኘም።"
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "የስጦታ መግለጫን በኢሜይል መላክ አልተቻለም፦ ይህ ቤተሰብ በመዝገብ ላይ ኢሜይል አድራሻ የለውም።"
+
+#: 
+msgid "Undesignated"
+msgstr "ያልተመደበ"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "የቤተ ክርስቲያኑ ስም፣ አድራሻ እና የመገናኛ መረጃ በስጦታ መግለጫዎች ላይ እንደሚታይ ያረጋግጡ።"
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "ቦታው አሁን ለ%s ተመድቧል፣ ተቀብሎታልም።"
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "ቦታው አሁን ለ%s ተመድቧል፣ ገና ግን አልተቀበለውም።"
+
+#: 
+msgid "Their reason: %s"
+msgstr "ምክንያታቸው፦ %s"
+
+#: 
+msgid "View Assignments"
+msgstr "ምደባዎችን ይመልከቱ"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "ለዚህ ክስተት አሁንም የሚያስፈልጉ በጎ ፈቃደኞች፦ %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "ለዚህ ቦታ አሁንም የሚያስፈልጉ በጎ ፈቃደኞች፦ %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "ለእያንዳንዱ ክፍል ሳምንታዊ የመግቢያ ሰንጠረዥ። የክፍል ዝርዝሮች እና የፎቶ መጽሐፍት በየእሁድ ትምህርት ቤት ዳሽቦርድ እና በእያንዳንዱ የክፍል ገጽ ላይ ናቸው።"
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "ለትምህርት ዓመቱ ሳምንታዊ የመግቢያ ሰንጠረዥ፣ ለእያንዳንዱ እሁድ አንድ አምድ"
+
+#: 
+msgid "Age %d"
+msgstr "ዕድሜ %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "የመገኘት ወረቀት ለመስራት ቢያንስ አንድ ቡድን መመረጥ አለበት።"
+
+#: 
+msgid "Attendance Sheet"
+msgstr "የመገኘት ወረቀት"
+
+#: 
+msgid "Class List"
+msgstr "የክፍል ዝርዝር"
+
+#: 
+msgid "Download PDF"
+msgstr "PDF ያውርዱ"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "የመቆለፊያ ጊዜ በደቂቃ\n"
+"የተቆለፈ መለያ ከዚህ ያህል ደቂቃ በኋላ በራሱ ይከፈታል። ከአንድ IP አድራሻ ያልተሳኩ መግቢያዎች በዚሁ ጊዜ ይቆጠራሉ።"
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "ከአንድ IP አድራሻ ከፍተኛው ያልተሳኩ መግቢያዎች\n"
+"ያልተሳኩ መግቢያዎች እና የይለፍ ቃል ዳግም ማስጀመሪያ ጥያቄዎች ከአንድ IP አድራሻ በመቆለፊያው ጊዜ ውስጥ ወደዚህ ገደብ ይቆጠራሉ። ገደቡ ሲደረስ ጊዜው እስኪያልቅ ከዚያ አድራሻ መግባት ይከለከላል።\n"
+"ሁሉም ሰው ChurchCRMን በአንድ ተኪ አድራሻ ሲደርስ ይህን ባህሪ ለማጥፋት ወደ ዜሮ ያቀናብሩ።"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "የተጠቃሚ መለያ ከመቆለፉ በፊት የሚፈቀዱ ከፍተኛ ያልተሳኩ መግቢያዎች።\n"
+"የተቆለፈ መለያ ከመቆለፊያው ጊዜ በኋላ በራሱ ይከፈታል፣ ወይም አስተዳዳሪ ያልተሳኩ መግቢያዎቹን ሲያስጀምር ቶሎ።\n"
+"ይህ ባህሪ አውቶማቲክ የይለፍ ቃል ግምት ጥቃቶችን ለመከላከል ይረዳል።\n"
+"ይህን ባህሪ ለማጥፋት ወደ ዜሮ ያቀናብሩ።"
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "በራሱ እስኪከፈት የሚቀሩ ደቂቃዎች፦ %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "የእሁድ ትምህርት ቤት የመገኘት ወረቀት"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "ክፍል የሌላቸው እሁዶች ከወረቀቱ ይቀራሉ።"
+
+#: 
+msgid "Database Upgrade"
+msgstr "የመረጃ ቋት ማሻሻያ"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "መረጃ ቋትዎ እየተዘመነ ነው። ማሻሻያው እስኪያልቅ ይህን ገጽ ክፍት ያድርጉት።"
+
+#: 
+msgid "Family Labels"
+msgstr "የቤተሰብ መለያዎች"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – ጠቅላላ"
+
+#: 
+msgid "Bill"
+msgstr "ኖት"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "ተቀማጭ ይምረጡ ወይም ሁለቱንም የሪፖርት ቀኖች ያስገቡ።"
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "ክፍያዎቹን ለመገምገም ወይም የባንክ ደረሰኙን ለማተም አንድ ተቀማጭ ይምረጡ። የተመረጠ ተቀማጭ የቀን ክልሉን ይተካል።"
+
+#: 
+msgid "Coin"
+msgstr "ሳንቲም"
+
+#: 
+msgid "Deposit Report"
+msgstr "የተቀማጭ ሪፖርት"
+
+#: 
+msgid "Download Report"
+msgstr "ሪፖርቱን ያውርዱ"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "ትክክለኛ የሪፖርት ቀኖች ያስገቡ።"
+
+#: 
+msgid "Invalid report filters."
+msgstr "የሪፖርት ማጣሪያዎች ትክክል አይደሉም።"
+
+#: 
+msgid "Invalid report options."
+msgstr "የሪፖርት አማራጮች ትክክል አይደሉም።"
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "ሁሉንም ክፍያዎች ለማካተት ማጣሪያዎችን ባዶ ይተዉ። እነዚህ ቅንብሮች ለሪፖርቱ እንጂ ለባንክ ደረሰኙ አይደሉም።"
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "ምንም መዝገብ አልተመለሰም። ማጣሪያዎችዎን ያስተካክሉ እና እንደገና ይሞክሩ።"
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "ለባንክ ያዘጋጁ"
+
+#: 
+msgid "Preview Totals"
+msgstr "ድምሮችን አስቀድመው ይመልከቱ"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "የባንክ ደረሰኝ አትም"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "የተመረጠውን ተቀማጭ ሙሉ በሙሉ ያትሙ፣ ከጥሬ ገንዘብ እና ከቼክ ድምሮች፣ ከቆጠራ ወረቀቶች እና ከምስክር መስመሮች ጋር። የሪፖርት ማጣሪያዎች ችላ ይባላሉ። የኤሌክትሮኒክ ክፍያዎች በማጠቃለያው ውስጥ ይቆያሉ እና ከአካላዊ የባንክ ትኬት ድምር ይገለላሉ።"
+
+#: 
+msgid "Review Payments"
+msgstr "ክፍያዎችን ይገምግሙ"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "ለአንድ ወቅት ክፍያዎችን ይገምግሙ፣ ወይም አንድ ተቀማጭ ለባንክ ያዘጋጁ።"
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "ክፍያዎችን ይገምግሙ፣ PDF ወይም CSV ያውርዱ፣ ወይም ለአንድ ተቀማጭ የባንክ ደረሰኝ ያትሙ።"
+
+#: 
+msgid "Select a valid deposit."
+msgstr "ትክክለኛ ተቀማጭ ይምረጡ።"
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "የባንክ ደረሰኝ ለማተም አንድ ተቀማጭ ይምረጡ።"
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "የሪፖርቱ መጨረሻ ቀን ከመጀመሪያው ቀን ጋር ወይም ከእሱ በኋላ መሆን አለበት።"
+
+#: 
+msgid "Total Cash"
+msgstr "ጠቅላላ ጥሬ ገንዘብ"
+
+#: 
+msgid "Total Coin"
+msgstr "ጠቅላላ ሳንቲም"
+
+#: 
+msgid "Witness"
+msgstr "ምስክር"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d ስጦታዎች ቤተሰብ የላቸውም። በመግለጫ ላይ ሊሆኑ አይችሉም።"
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "በዚህ ዓመት የተቀመጡ %d ክፍት ተቀማጮች። መግለጫዎች ከመውጣታቸው በፊት እያንዳንዱ ስጦታ የመጨረሻ እንዲሆን ይዝጓቸው።"
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d ክፍያዎች እስካሁን በምንም ተቀማጭ ላይ አይደሉም።"
+
+#: 
+msgid "Can be emailed"
+msgstr "በኢሜይል ሊላክ ይችላል"
+
+#: 
+msgid "Closing line"
+msgstr "የመዝጊያ መስመር"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "በዚህ ዓመት የተቀመጠ እያንዳንዱ ተቀማጭ ተዘግቷል።"
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "እያንዳንዱ ስጦታ የቤተሰብ ነው።"
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "በዚህ ዓመት ያለ እያንዳንዱ ክፍያ በተቀማጭ ላይ ነው።"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "የግብር መግለጫዎችን ፍጠር"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "የስጦታ ሪፖርት (የግብር መግለጫዎች)"
+
+#: 
+msgid "Opening line"
+msgstr "የመክፈቻ መስመር"
+
+#: 
+msgid "Print and mail"
+msgstr "አትም እና በፖስታ ላክ"
+
+#: 
+msgid "Qty"
+msgstr "ብዛት"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "ዓመቱን ይገምግሙ፣ ከዚያ የስጦታ መግለጫዎችን ያትሙ ወይም በኢሜይል ይላኩ።"
+
+#: 
+msgid "Signed by"
+msgstr "የፈረመው"
+
+#: 
+msgid "Thank-you line"
+msgstr "የምስጋና መስመር"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "የቤተ ክርስቲያኑ ስም፣ አድራሻ እና የመገናኛ መረጃ በግብር መግለጫዎች ላይ እንደሚታይ ያረጋግጡ።"
+
+#: 
+msgid "Year-End Giving"
+msgstr "የዓመት መጨረሻ ስጦታ"
+
+#: 
+msgid "As of: %s"
+msgstr "እስከ፦ %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "በተመረጡት %d የበጀት ዓመታት፣ እስከ የግምገማ ቀኑ %s፣ ቢያንስ አንድ አዎንታዊ የቤተሰብ ክፍያ"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "ጥምቀት፣ የምርጫ ዝርዝር ማመልከቻዎች፣ መኖሪያ፣ የቅዱስ ቁርባን ተሳታፊነት፣ መገኘት፣ መልካም አቋም እና የአካባቢ ልዩ ሁኔታዎች የውስጥ ደንብዎ በሚፈልግበት ቦታ ለየብቻ መረጋገጥ አለባቸው። የአባልነት ጊዜ የመገኘት ማስረጃ አይደለም።"
+
+#: 
+msgid "Choose an existing classification."
+msgstr "ያለ ምደባ ይምረጡ።"
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "ለግምገማ ቢያንስ አንድ ምደባ ይምረጡ።"
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "ቤተ ክርስቲያንዎ የሚጠቀምባቸውን ምደባዎች ይምረጡ። ምንም ምደባ የድምጽ መስጫ መብት እንደሚሰጥ አይታሰብም።"
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "የቤተ ክርስቲያኑ አመራር በውስጥ ደንቡ መሠረት ብቁነትን ማረጋገጥ አለበት። ይህ ዝርዝር የተመረጡትን ማጣሪያዎች የሚያሟሉ ሰዎችን ብቻ ያሳያል።"
+
+#: 
+msgid "Classifications to review"
+msgstr "የሚገመገሙ ምደባዎች"
+
+#: 
+msgid "Classifications: %s"
+msgstr "ምደባዎች፦ %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "የሞቱ ሰዎች፣ ንቁ ያልሆኑ ሰዎች እና ምደባዎች፣ እና ንቁ ያልሆኑ ወይም ግምገማ የሚጠብቁ ቤተሰቦች እና ሰዎች ተገልለዋል።"
+
+#: 
+msgid "Download Review List"
+msgstr "የግምገማ ዝርዝር ያውርዱ"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "በ1900 እና 2200 መካከል ትክክለኛ የግምገማ ቀን ያስገቡ።"
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "በሚታዩት ገደቦች ውስጥ ሙሉ ቁጥሮችን ያስገቡ።"
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "የሚመረመሩ የበጀት ዓመታት (0–100፤ 0 ማለት የስጦታ መስፈርት የለም)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "ስጦታ በቤተሰብ እንጂ በግለሰብ አይመዘገብም። ይህን የሚያበሩት የውስጥ ደንብዎ የቤተሰብ ክፍያ ይህን መስፈርት እንዲያሟላ ሲፈቅድ ብቻ ነው። ይህ እያንዳንዱ ሰው እንደለገሰ አያረጋግጥም። መስኮቱ የተመረጠውን የበጀት ዓመት ያካትታል እና ከግምገማ ቀኑ በኋላ አያልቅም።"
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "የሚካተት የመጨረሻ የበጀት ዓመት"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "ዝቅተኛ ዕድሜ (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "ዝቅተኛ ዕድሜ፦ %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "ዝቅተኛ የአባልነት ጊዜ በወራት (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "ዝቅተኛ የአባልነት ጊዜ፦ %d ወራት"
+
+#: 
+msgid "No donation requirement."
+msgstr "የልገሳ መስፈርት የለም።"
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "እነዚህን ማጣሪያዎች የሚያሟላ ሰው የለም። የጎደሉ የልደት ወይም የአባልነት ቀኖችን ይመልከቱ እና መስፈርቶችዎን ያስተካክሉ።"
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "አማራጭ የቤተሰብ ስጦታ መስፈርት"
+
+#: 
+msgid "People matching filters"
+msgstr "ማጣሪያዎችን የሚያሟሉ ሰዎች"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "አስፈላጊ ቀኖች ስለጎደሉ የተተዉ ሰዎች"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "ምደባዎችን እና አማራጭ የዕድሜ፣ የአባልነት እና የቤተሰብ ስጦታ ማጣሪያዎችን በመጠቀም ለቤተ ክርስቲያን ግምገማ ዝርዝር ያዘጋጁ።"
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "የውስጥ ደንብዎን በመጠቀም ለቤተ ክርስቲያን ግምገማ ዝርዝር ያዘጋጁ።"
+
+#: 
+msgid "Review date"
+msgstr "የግምገማ ቀን"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "ማጣሪያዎችን ለመምረጥ የቤተ ክርስቲያንዎን የውስጥ ደንብ ይጠቀሙ፣ ከዚያ ሥልጣን ያለው አመራር ዝርዝሩን ይገምግም። እነዚህን ማጣሪያዎች ማሟላት የድምጽ ብቁነት አያረጋግጥም። ይህ ሪፖርት ብቁነትን አይመዘግብም ወይም ምርጫ አያካሂድም።"
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "የድምጽ መስጫ አባላት — የግምገማ ዝርዝር"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "ዜሮ አማራጭ መስፈርትን ያጠፋል። ዕድሜ ሙሉ የልደት ቀን ይፈልጋል፤ የአባልነት ጊዜ የአባልነት ቀን ይፈልጋል። አስፈላጊ ቀኖች የጎደላቸው ሰዎች ይተዋሉ እና ለየብቻ ይቆጠራሉ። የሞቱ ሰዎች፣ ንቁ ያልሆኑ ሰዎች እና ምደባዎች፣ እና ንቁ ያልሆኑ ወይም ግምገማ የሚጠብቁ ቤተሰቦች እና ሰዎች ሁልጊዜ ይገለላሉ፤ የአሁኑ ምደባ እና ሁኔታ ጥቅም ላይ ይውላል፣ ታሪካዊ ሁኔታ አይደለም።"
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "ለ%s የሚከፈል መጠን፦ %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "በተመረጠው ማውጫ ውስጥ የግል ጊዜያዊ PDF ማከማቻ መፍጠር አልተቻለም።"
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "የስርዓቱን ጊዜያዊ ማውጫ ለመጠቀም ባዶ ይተዉ። ካልሆነ ከድር መዳረሻ የተጠበቀ፣ መጻፍ የሚቻል ያለ ማውጫ ያስገቡ።"
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "ጊዜያዊ PDF ማውጫ"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "ጊዜያዊ PDF ማከማቻ የግል እና መጻፍ የሚቻል መሆን አለበት።"
+
+#: 
+msgid "Reporting"
+msgstr "ሪፖርት"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "ጊዜያዊው PDF ማውጫ የለም ወይም ሊደረስበት አይችልም።"
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "ጊዜያዊው PDF ማውጫ ፍጹም የማውጫ መንገድ መሆን አለበት።"
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "የቤተ ክርስቲያን የግብር መታወቂያ (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "የመዝጊያ መስመር"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "አማራጭ ቴሌሜትሪን ይቆጣጠራል። ጭነት እና የመረጃ ቋት ማሻሻያ ውድቀቶች ቴሌሜትሪ ጠፍቶ ቢሆንም የተገደበ ምርመራ ወደ ፖስትሆግ ይልካሉ። እነዚህ የውድቀት ሪፖርቶች የሶፍትዌር እና የአካባቢ ሥሪቶችን እና የተጣራ የመረጃ ቋት ስህተትን ያካትታሉ፣ ነገር ግን የጭነት መታወቂያ ወይም SQL መግለጫ አይደለም።"
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "ያልተሳኩ ጭነቶችን እና የመረጃ ቋት ማሻሻያዎችን ይመርምሩ"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "የጭነት እና የማሻሻያ ውድቀት ዝርዝሮች"
+
+#: 
+msgid "Open in browser window"
+msgstr "በአሳሽ መስኮት ክፈት"
+
+#: 
+msgid "Opening Line"
+msgstr "የመክፈቻ መስመር"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "አማራጭ የአጠቃቀም ቴሌሜትሪ ሲበራ ብቻ ይላካል። ጭነት እና የመረጃ ቋት ማሻሻያ ውድቀቶች አይ አመሰግናሁ ብለው ቢመርጡም ማህበረሰቡን ለመርዳት ሁልጊዜ የተገደበ ምርመራ ይልካሉ። የውድቀት ሪፖርቶች የሶፍትዌር እና የአካባቢ ሥሪቶችን እና የተጣራ የመረጃ ቋት ስህተትን ያካትታሉ፣ ያለ የጭነት መታወቂያ ወይም SQL መግለጫ።"
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF አያያዝ"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF ውጤት"
+
+#: 
+msgid "PDF handling mode"
+msgstr "የPDF አያያዝ ሁነታ"
+
+#: 
+msgid "Questions Line"
+msgstr "የጥያቄዎች መስመር"
+
+#: 
+msgid "Save File dialog"
+msgstr "የፋይል ማስቀመጫ መስኮት"
+
+#: 
+msgid "Signer"
+msgstr "ፈራሚ"
+
+#: 
+msgid "Statement Settings"
+msgstr "የመግለጫ ቅንብሮች"
+
+#: 
+msgid "Statement Wording"
+msgstr "የመግለጫ ቃላት"
+
+#: 
+msgid "Tax Information"
+msgstr "የግብር መረጃ"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "ቴሌሜትሪ በዩናይትድ ስቴትስ ወዳለው ፖስትሆግ ይላካል። የጭነት እና የማሻሻያ ውድቀት ሪፖርቶች አማራጭ ቴሌሜትሪ ጠፍቶ ቢሆንም ይላካሉ።"
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "ይህ ቀን ተሰርዟል። ከእርስዎ ሌላ ነገር አያስፈልግም።"
+
+#: 
+msgid "always sent"
+msgstr "ሁልጊዜ ይላካል"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "የደብዳቤ ራስጌን ማስወገድ አልተሳካም"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "የደብዳቤ ራስጌውን ማከማቸት አልተሳካም"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "የደብዳቤ ራስጌ መጫን አልተሳካም"
+
+#: 
+msgid "Greeting"
+msgstr "ሰላምታ"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "የደብዳቤ ሰላምታ እና ፊርማ"
+
+#: 
+msgid "Letterhead"
+msgstr "የደብዳቤ ራስጌ"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG፣ JPG፣ GIF ወይም WebP። ሰፊ ሰንደቅ በተሻለ ይሠራል፣ ለምሳሌ 2000×300።"
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "እንደ ስጦታ መግለጫዎች ያሉ ሥዕላዊ ራስጌ የሚጠቀሙ የPDF ደብዳቤዎች አናት ላይ ይታተማል። ከሌለ ደብዳቤዎች የቤተ ክርስቲያኑን ስም እና አድራሻ ያትማሉ።"
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "የደብዳቤ ራስጌው ይወገድ? ደብዳቤዎች የቤተ ክርስቲያኑን ስም እና አድራሻ ያትማሉ።"
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "የPDF ደብዳቤዎች የሚያትሙትን ራስጌ ያዘጋጁ"
+
+#: 
+msgid "Using the church name and address"
+msgstr "የቤተ ክርስቲያኑን ስም እና አድራሻ በመጠቀም"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "በስርዓት ቅንብሮች ውስጥ የተቀመጠውን የራስጌ መንገድ በመጠቀም"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "ለስጦታ መግለጫዎች ቃላት፣ የግብር መታወቂያ እና PDF አያያዝ"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s እንደ %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s አሁን የኢሜይል አድራሻዎ ነው። ወደ የአባላት መግቢያ ለመግባት ሊጠቀሙበት ይችላሉ።"
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} ተጨማሪ"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "የኢሜይል አድራሻዎ ለውጥ ተጠይቋል"
+
+#: 
+msgid "A family"
+msgstr "አንድ ቤተሰብ"
+
+#: 
+msgid "A group"
+msgstr "አንድ ቡድን"
+
+#: 
+msgid "A ministry"
+msgstr "አንድ አገልግሎት"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "አዲስ አድራሻ የምንልከውን አገናኝ ከተጠቀሙ በኋላ ብቻ ይቀየራል።"
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "የመግቢያ ቁልፍ በኢሜይል አድራሻዎ ከገቡ በኋላ በ%d ደቂቃ ውስጥ ብቻ ሊጨመር ይችላል። ይውጡ፣ በኢሜይልዎ እንደገና ይግቡ፣ ከዚያ ወደዚህ ይመለሱ።"
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "የመግቢያ ቁልፍ በፊት መታወቂያ፣ በጣት አሻራ ወይም በመሣሪያዎ PIN ያስገባዎታል፣ ያለ ኢሜይል ኮድ።"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "የመግቢያ ቁልፍ ወደ የአባላት መግቢያ መግቢያዎ ታክሏል"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "የመግቢያ ቁልፍ ወደ የአባላት መግቢያ መግቢያዎ በ%1$s በ%2$s ከ%3$s ታክሏል።"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "የመግቢያ ቁልፍ ወደ የአባላት መግቢያ መግቢያዎ በ%1$s በ%2$s ታክሏል።"
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "የሚያጣው ሰው የራሱ ኢሜይል አይኖረውም፦ ለእሱ ብቻ የሚላክ ደብዳቤ፣ እንደ የቡድን ኢሜይል፣ ይታለፋል፣ የኢሜይል አቀናባሪውም ይህን ይናገራል።"
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "ዕድሜውን የሚደብቅ መዝገብ ያለው ሰው የልደት ዓመት በጭራሽ አያሳይም።"
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "ረድፍ በተጠበቀው ቅርጽ አይደለም።"
+
+#: 
+msgid "A team"
+msgstr "አንድ የሥራ ቡድን"
+
+#: 
+msgid "Add a passkey"
+msgstr "የመግቢያ ቁልፍ ጨምር"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "የመግቢያ ቁልፍ የሚጨምሩት በራስዎ ስልክ ወይም ኮምፒውተር ላይ ብቻ ነው፣ በጋራ ወይም በሕዝብ መሣሪያ ላይ በጭራሽ አይደለም።"
+
+#: 
+msgid "Add an email"
+msgstr "ኢሜይል ጨምር"
+
+#: 
+msgid "Added %s"
+msgstr "%s ታክሏል"
+
+#: 
+msgid "Admin overrides"
+msgstr "የአስተዳዳሪ መተኪያዎች"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "የ%s ቤተሰብ አዋቂ"
+
+#: 
+msgid "Adult of the family"
+msgstr "የቤተሰቡ አዋቂ"
+
+#: 
+msgid "All events"
+msgstr "ሁሉም ክስተቶች"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "እንደ ሰው መግባትን ፍቀድ"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "በእንደ ሰው መግባት ወቅት ለውጦችን ፍቀድ"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "አስተዳዳሪ እንደ ሰው መግባትን ሲጠቀም ለውጦችን ፍቀድ። ሲጠፋ እንደ ሰው መግባት ለንባብ ብቻ ነው።"
+
+#: 
+msgid "Already held by a family member"
+msgstr "ቀድሞውኑ በቤተሰብ አባል ተይዟል"
+
+#: 
+msgid "Also used by"
+msgstr "እንዲሁም የሚጠቀመው"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "አስተዳዳሪ በዚያ ሰው ገጽ ላይ ለአንድ ሰው ማንኛውንም ፈቃድ ሊሰጥ ይችላል። «የአስተዳዳሪ መተኪያዎች» ከዚያ እዚህ ይታያል፣ ከተሰጣቸው ሰዎች ቁጥር ጋር።"
+
+#: 
+msgid "Another person already uses this address"
+msgstr "ሌላ ሰው ይህን አድራሻ አስቀድሞ ይጠቀማል"
+
+#: 
+msgid "Applies to"
+msgstr "የሚተገበርበት"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "ለበጎ ፈቃደኛ ቡድን የተተኪ ጥያቄዎችን ያጽድቁ ወይም ይቀበሉ።"
+
+#: 
+msgid "Ask for a new email"
+msgstr "አዲስ ኢሜይል ይጠይቁ"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "ሥልጣን ለሰውየው ይሰጣል እንጂ ለመግቢያ አይደለም፣ ስለዚህ መግቢያ ከመኖሩ በፊት ሊሰጥ ይችላል። ወደ የአባላት መግቢያ ብቻ የሚገባ ሰው አስተዳዳሪ የሠራተኛ መለያ እስኪሰጠው ድረስ የራሱን መርሐ ግብር ብቻ ማየቱን ይቀጥላል።"
+
+#: 
+msgid "Awaiting review"
+msgstr "ግምገማ በመጠበቅ ላይ"
+
+#: 
+msgid "Back to sign-in"
+msgstr "ወደ መግቢያ ተመለስ"
+
+#: 
+msgid "Browse the full directory"
+msgstr "ሙሉውን ማውጫ ያስሱ"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "ወደ የአባላት መግቢያ መግባት ይችላል"
+
+#: 
+msgid "Can sign in?"
+msgstr "መግባት ይችላል?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "መግባት ለሚችለው ብቸኛ አስተዳዳሪ መግቢያን ማጥፋት አይቻልም።"
+
+#: 
+msgid "Cannot sign in"
+msgstr "መግባት አይቻልም"
+
+#: 
+msgid "Change family details"
+msgstr "የቤተሰብ ዝርዝሮችን ቀይር"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "የቤተሰብ አድራሻ እና የመገናኛ ዝርዝሮችን ይቀይሩ፣ እና ለግምገማ የቤተሰብ አባል ይጨምሩ።"
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "የራሳቸውን ስም፣ የመገናኛ ዝርዝሮች እና ፎቶ ይቀይሩ።"
+
+#: 
+msgid "Changed"
+msgstr "ተቀይሯል"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "ሰውየው ከገባ በኋላ ተቀይሯል"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "ሰውየው ከገባ በኋላ በማስመጣት ተቀይሯል"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "ሰውየው ከገባ በኋላ በሠራተኛ ተቀይሯል"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "ሰውየው ከገባ በኋላ በAPI ተቀይሯል"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "በእንደ ሰው መግባት ወቅት ለውጦች ጠፍተዋል።"
+
+#: 
+msgid "Changes needed"
+msgstr "ለውጦች ያስፈልጋሉ"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "ለውጦች ሲያደርጓቸው ይቀመጣሉ።"
+
+#: 
+msgid "Check your email"
+msgstr "ኢሜይልዎን ይመልከቱ"
+
+#: 
+msgid "Choose a permission"
+msgstr "ፈቃድ ይምረጡ"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "ፈቃድ፣ ለምን ጥቅም እንደሆነ እና የመጨረሻ ቀኑን ይምረጡ፣ ምክንያቱንም ይናገሩ።"
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "ፎቶ ይምረጡ ወይም ራስዎን ፎቶ ያንሱ"
+
+#: 
+msgid "Choose a theme"
+msgstr "ገጽታ ይምረጡ"
+
+#: 
+msgid "Choose at least one row."
+msgstr "ቢያንስ አንድ ረድፍ ይምረጡ።"
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "በአንድ ጊዜ ቢበዛ %d ረድፎችን ይምረጡ።"
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "ቀኖች እንዴት እንደሚታዩ ከዝርዝሩ ይምረጡ።"
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "የዚህ ፈቃድ የመጨረሻ ቀን ይምረጡ።"
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "ፈቃዱ ለምን እንደሆነ ይምረጡ።"
+
+#: 
+msgid "Choose yes or no."
+msgstr "አዎ ወይም አይ ይምረጡ።"
+
+#: 
+msgid "Church Office"
+msgstr "የቤተ ክርስቲያን ቢሮ"
+
+#: 
+msgid "Church country"
+msgstr "የቤተ ክርስቲያን አገር"
+
+#: 
+msgid "Church default: %s"
+msgstr "የቤተ ክርስቲያን ነባሪ፦ %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "የቤተ ክርስቲያን መሪ መግቢያ"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "አባሎቻቸው ወደ የአባላት መግቢያ ሊገቡ የሚችሉ ምደባዎች፣ በነጠላ ሰረዝ የተለዩ የምደባ መታወቂያዎች።"
+
+#: 
+msgid "Clear selection"
+msgstr "ምርጫውን አጽዳ"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "ኮዶች፣ ክፍለ ጊዜዎች እና መሣሪያዎች"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "የኢሜይል አድራሻ ያረጋግጡ"
+
+#: 
+msgid "Confirm email address"
+msgstr "የኢሜይል አድራሻ ያረጋግጡ"
+
+#: 
+msgid "Confirm family details"
+msgstr "የቤተሰብ ዝርዝሮችን ያረጋግጡ"
+
+#: 
+msgid "Confirm selected"
+msgstr "የተመረጠውን ያረጋግጡ"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "ይህ የሰውየው የራሱ አድራሻ መሆኑን በአካል ወይም በስልክ ከመረመሩ በኋላ ብቻ ይህን ኢሜይል ያረጋግጡ። ከተረጋገጠ በኋላ ወደ የአባላት መግቢያ ለመግባት ሊያገለግል ይችላል።"
+
+#: 
+msgid "Confirm your email address"
+msgstr "የኢሜይል አድራሻዎን ያረጋግጡ"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "አዲሱን የኢሜይል አድራሻዎን ያረጋግጡ"
+
+#: 
+msgid "Confirmed"
+msgstr "ተረጋግጧል"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "ቀኖች እንደ YYYY-MM-DD መጻፍ አለባቸው።"
+
+#: 
+msgid "Decide substitute requests"
+msgstr "የተተኪ ጥያቄዎችን ይወስኑ"
+
+#: 
+msgid "Device"
+msgstr "መሣሪያ"
+
+#: 
+msgid "Device remembered"
+msgstr "መሣሪያው ታስቦአል"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "መሣሪያዎች እና የመግቢያ ቁልፎች"
+
+#: 
+msgid "Directory classifications"
+msgstr "የማውጫ ምደባዎች"
+
+#: 
+msgid "Directory section"
+msgstr "የማውጫ ክፍል"
+
+#: 
+msgid "Disable sign-in"
+msgstr "መግቢያን አጥፋ"
+
+#: 
+msgid "Do not show"
+msgstr "አታሳይ"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "እያንዳንዳቸው ሌላ ሰው የማይጠቀምበት የራሳቸው ኢሜይል ያስፈልጋቸዋል።"
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "እያንዳንዱ የመግቢያ ኢሜይል አንድ ጊዜ፣ ለተወሰነ ጊዜ ይሠራል፣ አዲስ ኢሜይልም ይተካዋል።"
+
+#: 
+msgid "Edit my details"
+msgstr "ዝርዝሮቼን አርትዕ"
+
+#: 
+msgid "Email address changed"
+msgstr "የኢሜይል አድራሻ ተቀይሯል"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "የተየበው የኢሜይል አድራሻ፦ %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "የሚረጋገጡ ኢሜይል አድራሻዎች፦ {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "ኢሜይል ተቀይሯል"
+
+#: 
+msgid "Email code"
+msgstr "የኢሜይል ኮድ"
+
+#: 
+msgid "Email confirmed"
+msgstr "ኢሜይል ተረጋግጧል"
+
+#: 
+msgid "Email link"
+msgstr "የኢሜይል አገናኝ"
+
+#: 
+msgid "Email me a code"
+msgstr "ኮድ በኢሜይል ላኩልኝ"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "የማረጋገጫ አገናኝ በኢሜይል ላኩልኝ"
+
+#: 
+msgid "Email needs attention"
+msgstr "ኢሜይል ትኩረት ይፈልጋል"
+
+#: 
+msgid "Email problem"
+msgstr "የኢሜይል ችግር"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "በኢሜይል የተላከ የመግቢያ ኮድ እና አገናኝ ተሰርዘዋል"
+
+#: 
+msgid "Emailed verification link"
+msgstr "በኢሜይል የተላከ የማረጋገጫ አገናኝ"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "የተረጋገጡ ኢሜይሎች፦ {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "መግቢያን አብራ"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "የዚህ ሰው እያንዳንዱ የአባላት መግቢያ ክፍለ ጊዜ ይቁም እና የታሰቡ መሣሪያዎቻቸው ይረሱ? የመግቢያ ቁልፎቻቸው ይቆያሉ፣ ስለዚህ እንደገና መግባት ይችላሉ።"
+
+#: 
+msgid "Ended %s"
+msgstr "%s አብቅቷል"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "በመግቢያቸው ለውጥ አብቅቷል"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "የአባል መግቢያ ሲጠፋ አብቅቷል"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "ከ%1$d እስከ %2$d ያለ ሙሉ ቁጥር ያስገቡ።"
+
+#: 
+msgid "Enter your email address."
+msgstr "የኢሜይል አድራሻዎን ያስገቡ።"
+
+#: 
+msgid "Every kind"
+msgstr "እያንዳንዱ ዓይነት"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "እያንዳንዱ የአባል መግቢያ፣ እምቢታ እና የመግቢያ ለውጥ፣ አዲሱ ቀድሞ። ኮድ፣ አገናኝ ወይም የመግቢያ ቁልፍ በጭራሽ አይይዝም።"
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "የተዘረዘሩ ሁሉ፣ ከሀ እስከ ፐ፣ ከፍለጋ ሳጥን ጋር።"
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "የመግቢያ ደንቦች የሚያስገቡት ሁሉ ከዚያ በራሳቸው ኢሜይል ወደ የአባላት መግቢያ መግባት ይችላሉ።"
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "ባለፉት 30 ቀናት ወደ የአባላት መግቢያ የገቡ ሁሉ፣ አዲሱ ቀድሞ።"
+
+#: 
+msgid "Everywhere"
+msgstr "በሁሉም ቦታ"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "አባል ባለፉት 30 ቀናት ካረጋገጣቸው ቤተሰቦች፣ ከየአባላት መግቢያ ወይም ከኢሜይል የማረጋገጫ አገናኝ።"
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "ባለፉት 30 ቀናት የተረጋገጡ ቤተሰቦች"
+
+#: 
+msgid "Family details confirmed"
+msgstr "የቤተሰብ ዝርዝሮች ተረጋግጠዋል"
+
+#: 
+msgid "Family email"
+msgstr "የቤተሰብ ኢሜይል"
+
+#: 
+msgid "Family emails not moved"
+msgstr "ያልተዘዋወሩ የቤተሰብ ኢሜይሎች"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "አባሎቻቸው ወደ የአባላት መግቢያ ሊገቡ የሚችሉ የቤተሰብ ሚናዎች፣ በነጠላ ሰረዝ የተለዩ የሚና መታወቂያዎች።"
+
+#: 
+msgid "Find someone"
+msgstr "ሰው ፈልግ"
+
+#: 
+msgid "Fix by hand"
+msgstr "በእጅ አስተካክል"
+
+#: 
+msgid "Fix shared emails"
+msgstr "የተጋሩ ኢሜይሎችን አስተካክል"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "ከሠራተኛ መግቢያ"
+
+#: 
+msgid "Give a permission"
+msgstr "ፈቃድ ስጥ"
+
+#: 
+msgid "Give a portal permission"
+msgstr "የመግቢያ ፈቃድ ስጥ"
+
+#: 
+msgid "Give each person their own email"
+msgstr "ለእያንዳንዱ ሰው የራሱን ኢሜይል ስጥ"
+
+#: 
+msgid "Give permission"
+msgstr "ፈቃድ ስጥ"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "በ%1$s እስከ %2$s የተሰጠ"
+
+#: 
+msgid "Given by %s"
+msgstr "በ%s የተሰጠ"
+
+#: 
+msgid "Given to"
+msgstr "የተሰጠለት"
+
+#: 
+msgid "Given to Everyone"
+msgstr "ለሁሉም የተሰጠ"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "ተሰጥቷል፣ ግን ተግባራዊ አይደለም"
+
+#: 
+msgid "Go to sign in"
+msgstr "ወደ መግቢያ ሂድ"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "ወደ የአባላት መግቢያ ሂድ"
+
+#: 
+msgid "Has signed in"
+msgstr "ገብቷል"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "ገብቷል፦ ክፍለ ጊዜዎቻቸው እና መሣሪያዎቻቸው ያበቃሉ"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "ወደ የአባላት መግቢያ ለመግባት ኮድዎ ይኸው። የጠየቁበት አሳሽ ውስጥ በመግቢያ ገጹ ላይ ይተይቡት። ወይም በዚህ መሣሪያ ለመግባት አዝራሩን ይጫኑ።"
+
+#: 
+msgid "Hide Permissions"
+msgstr "ፈቃዶችን ደብቅ"
+
+#: 
+msgid "How"
+msgstr "እንዴት"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "አንድ IP አድራሻ በአንድ ሰዓት ሊጠይቅ የሚችለው የአባላት መግቢያ ኢሜይሎች ብዛት። ገደብ እንዳይኖር 0 ያድርጉ፣ ለምሳሌ ሁሉም ሰው ChurchCRMን በአንድ አድራሻ ሲደርስ።"
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "አባል መግቢያውን ለመቆየት ከመረጠ በኋላ መሣሪያ በየአባላት መግቢያ የሚቆይባቸው ቀናት። ምርጫውን ለማስወገድ 0 ያድርጉ።"
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "የአባላት መግቢያ ክፍለ ጊዜን የሚያበቁ ሥራ ፈት ደቂቃዎች።"
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "የአባላት መግቢያ ኮድ እና አገናኝ የሚሰሩባቸው ደቂቃዎች።"
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "የሥራ ፈት ጊዜ (ደቂቃ)"
+
+#: 
+msgid "Idle too long"
+msgstr "ለረጅም ጊዜ ሥራ ፈት"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "%1$s አዲስ አድራሻዎ ከሆነ ለማረጋገጥ ከታች ያለውን አዝራር ይጠቀሙ። እስኪረጋገጥ ድረስ ለመግባት ሊያገለግል አይችልም። አገናኙ አንድ ጊዜ ይሠራል፣ እስከ %2$s።"
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "ይህ አድራሻ ለመግባት ሊያገለግል ከቻለ ኮድ በኢሜይል ልከናል። ከጥቂት ደቂቃ በኋላ ምንም? የቤተ ክርስቲያኑን ቢሮ ይጠይቁ።"
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "እርስዎ ካልጨመሩት በመግቢያ እና መሣሪያዎች ገጽ ላይ ያስወግዱት እና የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "ይህን ለውጥ ካልጠየቁ የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "ይህን ካልጠየቁ የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "ጊዜው አልፎት ወይም አስቀድሞ ጥቅም ላይ ውሎ ሊሆን ይችላል። እገዛ ከፈለጉ የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "ተሰኪው አልተጫነም"
+
+#: 
+msgid "Jump to a letter"
+msgstr "ወደ ፊደል ዝለል"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "በዚህ መሣሪያ ገብቼ ጠብቀኝ (ቀናት)"
+
+#: 
+msgid "Keeps it"
+msgstr "ይይዘዋል"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "ያልተረጋገጠ ኢሜይል ዓይነት"
+
+#: 
+msgid "Last day"
+msgstr "የመጨረሻ ቀን"
+
+#: 
+msgid "Last used"
+msgstr "መጨረሻ ጥቅም ላይ የዋለ"
+
+#: 
+msgid "Last used %s"
+msgstr "መጨረሻ ጥቅም ላይ የዋለው %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "የ%s መሪ"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "አስተዳዳሪዎች የአባል መግቢያ ሲበራ ከሰውየው የእርምጃዎች ምናሌ እንደዚያ ሰው የአባላት መግቢያ እንዲከፍቱ ይፍቀዱ።"
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "አባላት የመግቢያ ቁልፎችን እንዲጨምሩ እና በእነሱ ወደ የአባላት መግቢያ እንዲገቡ ይፍቀዱ።"
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "አባላት በራሳቸው ኢሜይል አድራሻ ወደ የአባላት መግቢያ እንዲገቡ ይፍቀዱ። የኢሜይል መላኪያ እየሠራ ብቻ ሊበራ ይችላል።"
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "አባላት በኢሜይላቸው እንዲገቡ ይፍቀዱ"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "የአገናኝ እና የኮድ ዕድሜ (ደቂቃ)"
+
+#: 
+msgid "Login as %s"
+msgstr "እንደ %s ግባ"
+
+#: 
+msgid "Login as Person"
+msgstr "እንደ ሰው መግባት"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "እንደ ሰው መግባት መጀመር አልቻለም።"
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "እንደ ሰው መግባት አብቅቷል፦ %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "የእንደ ሰው መግባት ታሪክ"
+
+#: 
+msgid "Login as Person started"
+msgstr "እንደ ሰው መግባት ተጀምሯል"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "እንደ ሰው መግባት ቆሟል"
+
+#: 
+msgid "Look up anyone"
+msgstr "ማንኛውንም ሰው ፈልግ"
+
+#: 
+msgid "Loses it"
+msgstr "ያጣዋል"
+
+#: 
+msgid "Manage a team"
+msgstr "ቡድን አስተዳድር"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "መግቢያዬን እና መሣሪያዎቼን አስተዳድር"
+
+#: 
+msgid "Matches: %s"
+msgstr "ተዛማጆች፦ %s"
+
+#: 
+msgid "May sign in"
+msgstr "ሊገባ ይችላል"
+
+#: 
+msgid "May sign in now"
+msgstr "አሁን ሊገባ ይችላል"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "የአባላት መግቢያ የመግቢያ ኮድ"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "የአባላት መግቢያ የመግቢያ ማሳወቂያ"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "የአባላት መግቢያ መግቢያዎች እና እንቅስቃሴ፣ ለአባላት እና መግቢያውን ከሠራተኛ መግቢያቸው ለሚከፍቱ ሠራተኞች።"
+
+#: 
+msgid "Member sign-in"
+msgstr "የአባል መግቢያ"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "የአባል መግቢያ ለእያንዳንዱ ሰው ኮድ በኢሜይል ይልካል፣ ስለዚህ ከማብራትዎ በፊት ኢሜይል (SMTP) መሥራት አለበት።"
+
+#: 
+msgid "Member sign-in is off"
+msgstr "የአባል መግቢያ ጠፍቷል"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "ለቤተ ክርስቲያኑ የአባል መግቢያ ጠፍቷል።"
+
+#: 
+msgid "Member sign-in is off."
+msgstr "የአባል መግቢያ ጠፍቷል።"
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "የአባል መግቢያ ገና አይገኝም። የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "የአባል መግቢያ የሞቱ፣ ንቁ ያልሆኑ፣ ንቁ ባልሆነ ቤተሰብ ውስጥ ያሉ፣ ግምገማ የሚጠብቁ ወይም መግቢያ አጥፋ ያለባቸውን ሰዎች በጭራሽ አያስገባም። እነዚህ ምርጫዎች ሌላ ማን ሊገባ እንደሚችል ይወስናሉ።"
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "የአባል መግቢያ ለእያንዳንዱ አባል ኮድ በኢሜይል ይልካል፣ ስለዚህ ChurchCRM ኢሜይል መላክ እየቻለ ብቻ ሊበራ ይችላል። መጀመሪያ ኢሜይልን ያብሩ እና የደብዳቤ አገልጋዩን ያዘጋጁ።"
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "ቢያንስ አንድ የቀን መቁጠሪያ ሲበራ አባላት የቀን መቁጠሪያ ገጹን ያያሉ።"
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "አባላት የስም ቢያንስ %d ፊደላትን ይተይባሉ እና እስከ %d ተዛማጆች ያያሉ። ሙሉው ዝርዝር በጭራሽ አይታይም።"
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "አሁን የገቡ አባላት ይወጣሉ፣ የአባል መግቢያ እንደገና እስኪበራ ድረስ ማንም በኢሜይሉ መግባት አይችልም።"
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "እነዚህ ምደባዎች ያሏቸው አባላት ማውጫን በየአባላት መግቢያ ምናሌ ውስጥ ያገኛሉ።"
+
+#: 
+msgid "Minimum age"
+msgstr "ዝቅተኛ ዕድሜ"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "በሚቀጥለው ሰዓት በዚህ አድራሻ ተጨማሪ ሙከራዎች ሌላ ማሳወቂያ አይልኩም።"
+
+#: 
+msgid "Moved from the family email"
+msgstr "ከቤተሰብ ኢሜይል ተዘዋውሯል"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "ወደ የቤተሰብ ኃላፊ ተዘዋውሯል"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "ወደ የትዳር አጋር ተዘዋውሯል"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "ለቤተ ክርስቲያናችን አዲስ ነዎት? ስለ ቤተሰብዎ ይንገሩን፣ እንኳን ደህና መጡ ለማለት እንደርስዎታለን።"
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "እስካሁን እንደ ሰው መግባት ክፍለ ጊዜ የለም።"
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "የልደት ቀን የለም፣ እና የቤተሰብ ኃላፊ ወይም የትዳር አጋር አይደለም"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "ምንም የቀን መቁጠሪያ አልበራም፣ ስለዚህ አባላት የቀን መቁጠሪያ ገጹን አያዩም።"
+
+#: 
+msgid "No changes"
+msgstr "ምንም ለውጦች የሉም"
+
+#: 
+msgid "No changes made."
+msgstr "ምንም ለውጥ አልተደረገም።"
+
+#: 
+msgid "No family role"
+msgstr "የቤተሰብ ሚና የለም"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "ምንም የቤተሰብ ኃላፊ ወይም የትዳር አጋር የቤተሰብ ኢሜይል መቀበል አይችልም።"
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "ምንም የቤተሰብ ኃላፊ ወይም የትዳር አጋር አይጋራውም"
+
+#: 
+msgid "No match"
+msgstr "ተዛማጅ የለም"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "የመግቢያ ደንቡን የሚያሟላ ሰው ገና የለም። ተጨማሪ የቤተሰብ ሚናዎች ወይም ምደባዎች ላይ ምልክት ያድርጉ፣ ወይም ዝቅተኛውን ዕድሜ ዝቅ ያድርጉ።"
+
+#: 
+msgid "No passkey was added."
+msgstr "ምንም የመግቢያ ቁልፍ አልታከለም።"
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "ምንም የመግቢያ ቁልፍ አልተጠቀመም። እንደገና ይሞክሩ፣ ወይም በኢሜይል አድራሻዎ ይግቡ።"
+
+#: 
+msgid "No person has this email"
+msgstr "ይህ ኢሜይል ያለው ሰው የለም"
+
+#: 
+msgid "No personal email"
+msgstr "የግል ኢሜይል የለም"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "መግባትን የሚያቆም የተጋራ ኢሜይል የለም።"
+
+#: 
+msgid "No such person"
+msgstr "እንደዚህ ያለ ሰው የለም"
+
+#: 
+msgid "No, thanks"
+msgstr "አይ፣ አመሰግናለሁ"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "ሊገቡ የሚችሉ ሁለት ሰዎች የሚጋሩትን የግል ኢሜይል ማንም መጠቀም አይችልም። በአንድ ቤተሰብ ውስጥ ለተጋራ አድራሻ የቤተሰብ ኃላፊው ይይዘዋል፣ ካልሆነ የትዳር አጋሩ (ታላቁ ቀድሞ)። የሚጋሩት ሌሎች ሁሉ ያጣሉታል። በሌላ መንገድ ማስተካከል የሚፈልጓቸውን ምልክት ያንሱ።"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "ገና ማንም መግባት አይችልም፦ በማን ሊገባ ይችላል ሥር ቢያንስ አንድ ምደባ ላይ ምልክት ያድርጉ።"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "ገና ማንም መግባት አይችልም፦ በማን ሊገባ ይችላል ሥር ቢያንስ አንድ የቤተሰብ ሚና እና ቢያንስ አንድ ምደባ ላይ ምልክት ያድርጉ።"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "ገና ማንም መግባት አይችልም፦ በማን ሊገባ ይችላል ሥር ቢያንስ አንድ የቤተሰብ ሚና ላይ ምልክት ያድርጉ።"
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "በማውጫው ውስጥ ያንን ስም የሚዛመድ ማንም የለም።"
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "በማውጫው ውስጥ ገና ማንም አልተዘረዘረም።"
+
+#: 
+msgid "Not ended"
+msgstr "አላበቃም"
+
+#: 
+msgid "Not moved"
+msgstr "አልተዘዋወረም"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "የትኛው ኢሜይል እንዳለን እርግጠኛ አይደሉም? የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "Not yet"
+msgstr "ገና አይደለም"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "በቤተሰብ የጊዜ መስመር ተመዝግቧል"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "ከእነሱ፣ የገቡ ሰዎች፦ {{total}}። በሁሉም ቦታ ወጥተዋል፣ አድራሻውም ማሳወቂያ ይቀበላል።"
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "ለሁሉም ጠፍቷል፦ «%s» ጠፍቷል"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "ለሁሉም ጠፍቷል፦ የበጎ ፈቃደኞች አስተዳደር ወደ V2 አልተቀናበረም"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "ለሁሉም ጠፍቷል፦ ባህሪው ጠፍቷል"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "ለሁሉም ጠፍቷል፦ ተሰኪው ጠፍቷል"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "ለሁሉም ጠፍቷል፦ ከአባላት ጋር የተጋራ የቀን መቁጠሪያ የለም"
+
+#: 
+msgid "Office list"
+msgstr "የቢሮ ዝርዝር"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "ከተረጋገጠ በኋላ ወደ የአባላት መግቢያ ለመግባት ሊያገለግል ይችላል።"
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "ማረጋገጥ የሚችሏቸው አድራሻዎች ብቻ ሊመረጡ ይችላሉ።"
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "ምክንያቱን አስተዳዳሪዎች ብቻ ያያሉ።"
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "የሠራተኛ መለያ ወይም የመግቢያ ፈቃዶች ያለውን ሰው ኢሜይል አስተዳዳሪ ብቻ ሊቀይር ይችላል።"
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "ሰውየው የገባበትን ኢሜይል የተካውን ኢሜይል አስተዳዳሪ ብቻ ሊያረጋግጥ ይችላል።"
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "የሠራተኛ መለያ ወይም የመግቢያ ፈቃዶች ያለውን ሰው ኢሜይል አስተዳዳሪ ብቻ ሊያረጋግጥ ይችላል።"
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "ይህን አድራሻ አስተዳዳሪ ብቻ ሊያስተካክል ይችላል፦ የሚጋራው ሰው የሠራተኛ መለያ ወይም የመግቢያ ፈቃዶች አሉት።"
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "እነዚህን ዝርዝሮች የቤተሰብዎ አዋቂ ብቻ ሊያረጋግጥ ይችላል። የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "የዚያ ሰው እንደሆኑ የሚያውቋቸውን አድራሻዎች ብቻ ያረጋግጡ። አድራሻን የሚያነብ ማንኛውም ሰው እንደዚያ ሰው መግባት ይችላል።"
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "የራሳቸው ኢሜይል ያላቸው በሕይወት ያሉ ሰዎች ብቻ በቢሮ ዝርዝር ላይ ሊሆኑ ይችላሉ።"
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "የራሳቸው ኢሜይል ያላቸው ሰዎች ብቻ ሊጨመሩ ይችላሉ።"
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "አማራጭ ቴሌሜትሪ የገጽ መንገዶችን፣ ንቁ ቋንቋን፣ የCRM ሥሪትን፣ የPHP ሥሪትን፣ የOS ቤተሰብን፣ ከቤተ ክርስቲያን መረጃ ቅንብሮችዎ ያለውን አገር እና የዘፈቀደ የጭነት መታወቂያን ሊያካትት ይችላል። የውድቀት ሪፖርቶች የጭነት መታወቂያን አያካትቱም። መረጃ በዩናይትድ ስቴትስ ወዳለው ፖስትሆግ ይላካል።"
+
+#: 
+msgid "Passkey"
+msgstr "የመግቢያ ቁልፍ"
+
+#: 
+msgid "Passkey added"
+msgstr "የመግቢያ ቁልፍ ታክሏል"
+
+#: 
+msgid "Passkey removed"
+msgstr "የመግቢያ ቁልፍ ተወግዷል"
+
+#: 
+msgid "Passkeys"
+msgstr "የመግቢያ ቁልፎች"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "የመግቢያ ቁልፎች ጠፍተዋል።"
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "የመግቢያ ቁልፎች እዚህ ሊያገለግሉ አይችሉም።"
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "የመግቢያ ቁልፎች በዚህ ጣቢያ ገና ሊያገለግሉ አይችሉም። የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "የመግቢያ ቁልፎች በጣቢያው አድራሻ ውስጥ IP አድራሻ ሳይሆን የአስተናጋጅ ስም ይፈልጋሉ።"
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "የመግቢያ ቁልፎች ወደዚህ ጣቢያ ደህንነቱ የተጠበቀ (HTTPS) ግንኙነት ይፈልጋሉ።"
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "የመግቢያ ቁልፎች የጣቢያው አድራሻ በConfig.php ውስጥ እንዲቀናበር ይፈልጋሉ።"
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "የመግቢያ ቁልፎች ጣቢያው በHTTPS እንዲቀርብ ይፈልጋሉ። እስኪሆን ድረስ ለአባላት የመግቢያ ቁልፎች አይቀርቡም።"
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "የመግቢያ ቁልፎች በ%s ብቻ ይሠራሉ።"
+
+#: 
+msgid "Passkeys: %d"
+msgstr "የመግቢያ ቁልፎች፦ %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "የተቀመጡት ቅንብሮች የሚያስገቧቸው ሰዎች፦ %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "አንድ ሰው ወደ የአባላት መግቢያ መግባት ሳይችል ሲቀር ኢሜይል የሚላክላቸው ሰዎች"
+
+#: 
+msgid "People who hold it"
+msgstr "የሚይዙት ሰዎች"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "አድራሻ የሚያጡ ሰዎች፦ {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "አድራሻ ያጡ ሰዎች፦ {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "ሊገቡ የሚችሉ ሰዎች፦ {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "ወደ የአባላት መግቢያ ይገቡ የነበሩ ሰዎች፦ %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "እነዚህ ምደባዎች ያሏቸው ሰዎች በማውጫው ውስጥ ይታያሉ። ቁጥሩ እያንዳንዱ ምደባ ያላቸው ንቁ ሰዎች ብዛት ነው።"
+
+#: 
+msgid "People with this email: %s"
+msgstr "ይህ ኢሜይል ያላቸው ሰዎች፦ %s"
+
+#: 
+msgid "Person %d"
+msgstr "ሰው %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "ምደባዎችን ከዝርዝሩ ይምረጡ።"
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "የቤተሰብ ሚናዎችን ከዝርዝሩ ይምረጡ።"
+
+#: 
+msgid "Pick people for the office list."
+msgstr "ለቢሮ ዝርዝር ሰዎችን ይምረጡ።"
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "ከዝርዝሩ ቋንቋ ይምረጡ።"
+
+#: 
+msgid "Portal permission given"
+msgstr "የመግቢያ ፈቃድ ተሰጥቷል"
+
+#: 
+msgid "Portal permission removed"
+msgstr "የመግቢያ ፈቃድ ተወግዷል"
+
+#: 
+msgid "Portal permissions"
+msgstr "የመግቢያ ፈቃዶች"
+
+#: 
+msgid "Portal sign-in"
+msgstr "የመግቢያ መግቢያ"
+
+#: 
+msgid "Problem"
+msgstr "ችግር"
+
+#: 
+msgid "Reason"
+msgstr "ምክንያት"
+
+#: 
+msgid "Reason: %s"
+msgstr "ምክንያት፦ %s"
+
+#: 
+msgid "Refused"
+msgstr "ተከልክሏል"
+
+#: 
+msgid "Register your family"
+msgstr "ቤተሰብዎን ይመዝግቡ"
+
+#: 
+msgid "Remembered device"
+msgstr "የታሰበ መሣሪያ"
+
+#: 
+msgid "Remembered device removed"
+msgstr "የታሰበ መሣሪያ ተወግዷል"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "የታሰቡ መሣሪያዎች፦ %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "ኢሜይሎችን አስወግድ"
+
+#: 
+msgid "Remove this passkey"
+msgstr "ይህን የመግቢያ ቁልፍ አስወግድ"
+
+#: 
+msgid "Remove this permission"
+msgstr "ይህን ፈቃድ አስወግድ"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "የተወገደበት፦ {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "ከመግቢያ በኋላ ተተክቷል"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "በሌላ መግቢያ ተተክቷል"
+
+#: 
+msgid "Result"
+msgstr "ውጤት"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "የበጎ ፈቃደኛ ቡድን ያሂዱ፦ ቦታዎች፣ በጎ ፈቃደኞች፣ መርሐ ግብሮች፣ ሠራተኛ እና የሰዎች ብዛት።"
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "መግቢያ ለምን እየጠፋ እንደሆነ ይናገሩ።"
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "ይህ ፈቃድ ለምን እየተሰጠ እንደሆነ ይናገሩ።"
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "በመዝገብ ላይ ያለን ማንኛውንም ሰው ይፈልጉ። እያንዳንዱ ረድፍ ወደ የአባላት መግቢያ ሊገቡ እንደሚችሉ እና ካልቻሉ ለምን እንደሆነ ይናገራል።"
+
+#: 
+msgid "Search method"
+msgstr "የፍለጋ ዘዴ"
+
+#: 
+msgid "Search only"
+msgstr "ፍለጋ ብቻ"
+
+#: 
+msgid "See family contact details"
+msgstr "የቤተሰብ የመገናኛ ዝርዝሮችን ይመልከቱ"
+
+#: 
+msgid "See my family"
+msgstr "ቤተሰቤን ይመልከቱ"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "የአባላት መግቢያን ይህ ሰው እንደሚያየው ይመልከቱ? እስኪቆሙ ድረስ የሠራተኛ ገጾች ይዘጋሉ፣ ክፍለ ጊዜውም በዚህ ገጽ እና በተጠቃሚ ገጽዎ ላይ ይመዘገባል።"
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "ቤተ ክርስቲያኑ ከአባላት ጋር የሚጋራቸውን የቀን መቁጠሪያዎች ይመልከቱ እና ይመዝገቡባቸው።"
+
+#: 
+msgid "See the church calendar"
+msgstr "የቤተ ክርስቲያን የቀን መቁጠሪያን ይመልከቱ"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "የሚያስገቧቸውን መሣሪያዎች እና የመግቢያ ቁልፎች ይመልከቱ፣ እና ማንኛውንም ይውጡ ወይም ያስወግዱ።"
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "በቤተሰባቸው ውስጥ ያሉ ሰዎችን ኢሜይል አድራሻዎች እና ስልክ ቁጥሮች ይመልከቱ።"
+
+#: 
+msgid "See the member directory"
+msgstr "የአባላት ማውጫን ይመልከቱ"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "በቤተሰባቸው ውስጥ ያሉ ሰዎችን ስሞች እና ፎቶዎች ይመልከቱ።"
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "ቤተ ክርስቲያኑ በማውጫው የሚዘረዝራቸውን ሰዎች፣ ቤተ ክርስቲያኑ ለማጋራት ከመረጣቸው ዝርዝሮች ጋር ይመልከቱ።"
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "የበጎ ፈቃድ መርሐ ግብራቸውን ይመልከቱ፣ ለክፍት ቦታዎች ይመዝገቡ እና ተተኪ ይጠይቁ።"
+
+#: 
+msgid "Send browse as true or false."
+msgstr "ማሰሻን እንደ true ወይም false ይላኩ።"
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "ምደባዎቹን እንደ የመታወቂያ ዝርዝር ይላኩ።"
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "የማውጫ ቅንብሮችን እንደ JSON ነገር ይላኩ።"
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "የሚታዩትን መስኮች እንደ true እና false እሴቶች ነገር ይላኩ።"
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "ቅንብሮቹን እንደ JSON ነገር ይላኩ።"
+
+#: 
+msgid "Session ended"
+msgstr "ክፍለ ጊዜ አብቅቷል"
+
+#: 
+msgid "Set up email"
+msgstr "ኢሜይል አዋቅር"
+
+#: 
+msgid "Set up email first."
+msgstr "መጀመሪያ ኢሜይል ያዘጋጁ።"
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "የተስተካከሉ የተጋሩ አድራሻዎች፦ {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "የሚስተካከሉ የተጋሩ አድራሻዎች፦ {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "የተጋራው"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "ሰዎችን ከመግባት የሚያቆሙ የተጋሩ ኢሜይሎች"
+
+#: 
+msgid "Show or hide this member"
+msgstr "ይህን አባል አሳይ ወይም ደብቅ"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "ከታች ለተመረጡት ምደባዎች የማውጫ ገጹን በየአባላት መግቢያ አሳይ።"
+
+#: 
+msgid "Show the member directory"
+msgstr "የአባላት ማውጫን አሳይ"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "የአባላት ማውጫን በየአባላት መግቢያ አሳይ።"
+
+#: 
+msgid "Show with year"
+msgstr "ከዓመት ጋር አሳይ"
+
+#: 
+msgid "Show without year"
+msgstr "ያለ ዓመት አሳይ"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "የመጀመሪያዎቹን %d ተዛማጆች በማሳየት ላይ። የሚፈልጉትን ሰው ለማግኘት ተጨማሪ ስም ይተይቡ።"
+
+#: 
+msgid "Sign in as %s?"
+msgstr "እንደ %s ይግቡ?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "በሚቀጥለው ጊዜ በዚህ መሣሪያ በፊት መታወቂያ፣ በጣት አሻራ ወይም በመሣሪያዎ PIN ይግቡ።"
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "ቤተሰብዎን፣ የቤተ ክርስቲያኑን የቀን መቁጠሪያ እና የማገልገያ መንገዶችን ለማየት ይግቡ። የይለፍ ቃል ወይም መለያ አያስፈልግዎትም።"
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "በመግቢያ ቁልፍ ይግቡ"
+
+#: 
+msgid "Sign out every device"
+msgstr "ከእያንዳንዱ መሣሪያ ውጣ"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "አሁን ከእያንዳንዱ መሣሪያ ይውጡ?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "በሁሉም ቦታ ውጣ"
+
+#: 
+msgid "Sign out this device"
+msgstr "ከዚህ መሣሪያ ውጣ"
+
+#: 
+msgid "Sign-in"
+msgstr "መግቢያ"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "መግቢያ እና መሣሪያዎች"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "መግቢያ ሊጠፋ አልቻለም።"
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "መግቢያ ሊበራ አልቻለም።"
+
+#: 
+msgid "Sign-in disabled"
+msgstr "መግቢያ ጠፍቷል"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "የመግቢያ ኢሜይል ተጠይቋል"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "በአንድ IP አድራሻ በሰዓት የመግቢያ ኢሜይሎች"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "መግቢያ በርቷል"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "ለዚህ ሰው መግቢያ አስቀድሞ ጠፍቷል።"
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "መግቢያ ጠፍቷል"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "ለዚህ ሰው መግቢያ ጠፍቷል።"
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "ለዚህ ሰው መግቢያ በርቷል።"
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "ለዚህ ሰው መግቢያ አልጠፋም።"
+
+#: 
+msgid "Sign-in refused"
+msgstr "መግቢያ ተከልክሏል"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "ይህ በተያያዘው ሰው መዝገብ ላይ እስኪፈታ ድረስ መግቢያ፣ ክፍለ ጊዜዎች እና የAPI ቁልፍ ታግደዋል።"
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "ባለፉት 30 ቀናት የገቡ"
+
+#: 
+msgid "Signed out"
+msgstr "ወጥቷል"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "በመግቢያቸው ለውጥ ወጥቷል"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "በሁሉም ቦታ ወጥቷል"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "አንድ ሰው የአባላት መግቢያ የመግቢያ ኢሜይል ጠይቋል፣ ግን ምንም አልተላከም።"
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "አንድ ሰው ወደ የአባላት መግቢያ መግባት አልቻለም"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "በእንደ ሰው መግባት ወቅት የሠራተኛ ገጾች ይዘጋሉ። ለመመለስ በሰንደቁ ውስጥ አቁምን ይጫኑ።"
+
+#: 
+msgid "Stop"
+msgstr "አቁም"
+
+#: 
+msgid "Stopped"
+msgstr "ቆሟል"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "የቤተሰብ ዝርዝሮች አሁንም ትክክል መሆናቸውን ለቤተ ክርስቲያን ቢሮ ይንገሩ።"
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "ያ ኮድ አልሠራም። ከእኛ የመጣውን አዲሱን ኢሜይል ይመልከቱ፣ ወይም አዲስ ይጠይቁ።"
+
+#: 
+msgid "That could not be removed."
+msgstr "ያ ሊወገድ አልቻለም።"
+
+#: 
+msgid "That device is signed out."
+msgstr "ያ መሣሪያ ወጥቷል።"
+
+#: 
+msgid "That is not a valid email address."
+msgstr "ያ ትክክለኛ የኢሜይል አድራሻ አይደለም።"
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "ያ ገጽ ለረጅም ጊዜ ክፍት ነበር። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "ያ የመግቢያ ቁልፍ ተወግዷል። ከእንግዲህ ሊያስገባዎት አይችልም።"
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "ያ ረጅም ጊዜ ወስዷል። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "የ7.8.3 ማሻሻያ እያንዳንዱን የቤተሰብ ኢሜይል ለሰው ሰጥቷል። እነዚህን ማድረግ አልቻለም፣ ስለዚህ በቤተሰቡ የጊዜ መስመር ማስታወሻ ተውቷል።"
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "የአባላት መግቢያ እና የሚልክልዎት ኢሜይሎች ይህን ቋንቋ ይጠቀማሉ።"
+
+#: 
+msgid "The change could not be saved."
+msgstr "ለውጡ ሊቀመጥ አልቻለም።"
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "ኮዱ እና አዝራሩ አንድ ጊዜ ይሠራሉ፣ እስከ %s።"
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "ኮዱ ወይም አገናኙ ከእንግዲህ ኢሜይላቸው ወዳልሆነ አድራሻ ሄዷል"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "የማረጋገጫ ኢሜይሉ ሊላክ አልቻለም። እባክዎ ቆይተው እንደገና ይሞክሩ።"
+
+#: 
+msgid "The device is signed out."
+msgstr "መሣሪያው ወጥቷል።"
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "የኢሜይል አድራሻ %2$s በ%1$s ከመዝገብዎ ተወግዷል። በእያንዳንዱ መሣሪያ ከየአባላት መግቢያ ወጥተዋል።"
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "በመዝገብዎ ላይ ያለው የኢሜይል አድራሻ በ%1$s ከ%2$s ወደ %3$s ተቀይሯል። በእያንዳንዱ መሣሪያ ከየአባላት መግቢያ ወጥተዋል።"
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "ኢሜይሉ ሊረጋገጥ አልቻለም።"
+
+#: 
+msgid "The email could not be sent."
+msgstr "ኢሜይሉ ሊላክ አልቻለም።"
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "ኢሜይሉ ተረጋግጧል። አሁን ለመግባት ሊያገለግል ይችላል።"
+
+#: 
+msgid "The end date is before the start date."
+msgstr "የመጨረሻው ቀን ከመጀመሪያው ቀን በፊት ነው።"
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "ቤተሰቡ በሕይወት ያለ ንቁ የቤተሰብ ኃላፊ ወይም የትዳር አጋር የለውም"
+
+#: 
+msgid "The family is inactive"
+msgstr "ቤተሰቡ ንቁ አይደለም"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "የቤተሰብ ኃላፊው እና የትዳር አጋሩ ሁለቱም የራሳቸው ኢሜይል አላቸው"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "የመጨረሻው ቀን ያለፈ ሊሆን አይችልም።"
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "የተያያዘው ሰው ላይገባ ይችላል፣ ስለዚህ ይህ መለያ መግባት አይችልም"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "ዝርዝሩ ሊጫን አልቻለም።"
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "የመግቢያ ቁልፉ ሊጨመር አልቻለም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "የመግቢያ ቁልፉ ሊረጋገጥ አልቻለም"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "የመግቢያ ቁልፉ በመዝገብ ላይ አይደለም፣ ወይም ተወግዷል"
+
+#: 
+msgid "The passkey was removed."
+msgstr "የመግቢያ ቁልፉ ተወግዷል።"
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "የሚጋሩት ሰዎች በተለያዩ ቤተሰቦች ውስጥ ናቸው፣ ወይም በቤተሰብ ውስጥ አይደሉም"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "ይህን አድራሻ የሚጋሩ ሰዎች ተቀይረዋል። የተጋሩ ኢሜይሎችን አስተካክልን እንደገና ይክፈቱ።"
+
+#: 
+msgid "The permission could not be given."
+msgstr "ፈቃዱ ሊሰጥ አልቻለም።"
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "ፈቃዱ ከዚህ ቀን በኋላ ያበቃል። እንደገና ሊሰጥ ይችላል።"
+
+#: 
+msgid "The permission was given."
+msgstr "ፈቃዱ ተሰጥቷል።"
+
+#: 
+msgid "The permission was removed."
+msgstr "ፈቃዱ ተወግዷል።"
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "ፈቃዶቹ ሊጫኑ አልቻሉም።"
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "ሰውየው ይህን ፈቃድ በየአባላት መግቢያ ወዲያውኑ ያጣል።"
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "ምክንያቱ ቢበዛ %d ቁምፊዎች ሊረዝም ይችላል።"
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "የመግቢያ ደንቦች ያስገቧቸዋል፣ እያንዳንዳቸውም ሊገባ የሚችል ሌላ ሰው የማይጠቀምበት የራሳቸው ኢሜይል አላቸው።"
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "የመግቢያ ደንቦች ያስገቧቸዋል፣ ኢሜይላቸው ግን አያደርግም፦ የላቸውም፣ ሊገባ ከሚችል ሌላ ሰው ጋር ይጋሩታል፣ ወይም ገና አልተረጋገጠም።"
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "የመግቢያ ቅንብሮች ሊቀመጡ አልቻሉም።"
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "ያልተረጋገጠው ኢሜይል ተቀይሯል። ገጹን እንደገና ይጫኑ እና እንደገና ይሞክሩ።"
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "ምደባቸው ላይገባ ይችላል"
+
+#: 
+msgid "Their email changed"
+msgstr "ኢሜይላቸው ተቀይሯል"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "ኢሜይላቸው ገና አልተረጋገጠም"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "ኢሜይላቸው ከሌላ ሰው ጋር ተጋርቷል"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "የቤተሰብ ሚናቸው ላይገባ ይችላል"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "የቆዩ መግቢያዎቻቸው በማሻሻያው ተወግደዋል። በራሳቸው ኢሜይል እንዲገቡ የአባል መግቢያን ያብሩ።"
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "የታሰበው መሣሪያቸው ጊዜው አልፎበታል"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "የታሰበው መሣሪያቸው ወጥቷል"
+
+#: 
+msgid "Theme development"
+msgstr "የገጽታ ልማት"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "መታወቂያ %d ያለው ምደባ የለም።"
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "ለዚህ የወሰን ዓይነት መራጭ የለም።"
+
+#: 
+msgid "There is no such audit event."
+msgstr "እንደዚህ ያለ የኦዲት ክስተት የለም።"
+
+#: 
+msgid "There is no such email problem."
+msgstr "እንደዚህ ያለ የኢሜይል ችግር የለም።"
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "እንደዚህ ያለ ያልተረጋገጠ ኢሜይል ዓይነት የለም።"
+
+#: 
+msgid "There is no such list."
+msgstr "እንደዚህ ያለ ዝርዝር የለም።"
+
+#: 
+msgid "There is no such portal permission."
+msgstr "እንደዚህ ያለ የመግቢያ ፈቃድ የለም።"
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "መግቢያዎን ለመቆየት የመረጡባቸው ስልኮች እና ኮምፒውተሮች እነዚህ ናቸው። ከእንግዲህ የማይጠቀሙባቸውን ወይም የማያውቋቸውን ይውጡ።"
+
+#: 
+msgid "They have a staff account"
+msgstr "የሠራተኛ መለያ አላቸው"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "ሊገቡ ይችላሉ ግን በጭራሽ አልገቡም።"
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "ይህ እርምጃ የገባ አሳሽ ክፍለ ጊዜ ይፈልጋል።"
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "ይህ አድራሻ ሊቀየር አልቻለም። ያለበትን ለማየት የተጋሩ ኢሜይሎችን አስተካክልን እንደገና ይክፈቱ።"
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "ይህ አድራሻ ከእንግዲህ ሊገቡ በሚችሉ ሰዎች አይጋራም።"
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "ይህ አሳሽ የመግቢያ ቁልፎችን መሥራት አይችልም።"
+
+#: 
+msgid "This device"
+msgstr "ይህ መሣሪያ"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "ይህ መሣሪያ አስቀድሞ ለእርስዎ የመግቢያ ቁልፍ አለው።"
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "ይህ መሣሪያ ሰውየውን ከእንግዲህ ገብቶ አይይዘውም፣ በላዩ ላይ ክፍት የሆነ ክፍለ ጊዜም ያበቃል። በኢሜይል እንደገና መግባት ይችላሉ።"
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "ይህ የራሴ መሣሪያ ነው። ገብቼ ጠብቀኝ።"
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "ስለ እንግዶች የሚወስኑበት እዚህ ነው። ቁጥሩ እያንዳንዱ ምደባ ያላቸው ንቁ ሰዎች ብዛት ነው።"
+
+#: 
+msgid "This link cannot be used"
+msgstr "ይህ አገናኝ ሊያገለግል አይችልም"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "ይህ አገናኝ ጊዜው አልፎበታል ወይም አስቀድሞ ጥቅም ላይ ውሏል"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "ይህ የአባላት መግቢያ ክፍል ለእርስዎ አይገኝም።"
+
+#: 
+msgid "This passkey is already on record."
+msgstr "ይህ የመግቢያ ቁልፍ አስቀድሞ በመዝገብ ላይ ነው።"
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "ይህ የመግቢያ ቁልፍ ሰውየውን ከእንግዲህ አያስገባም። በኢሜይል መግባት እና አዲስ መጨመር ይችላሉ።"
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "ይህ ፈቃድ በሰው ገጽ ላይ ሊሰጥ አይችልም።"
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "ይህ ሰው ሊሰጥ የሚችለውን እያንዳንዱን ፈቃድ አስቀድሞ አለው።"
+
+#: 
+msgid "This person already has this permission."
+msgstr "ይህ ሰው ይህን ፈቃድ አስቀድሞ አለው።"
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "ይህ ሰው ከእንግዲህ ወደ የአባላት መግቢያም ሆነ እንደ ሠራተኛ በየትኛውም ቦታ መግባት አይችልም። እያንዳንዱ ክፍለ ጊዜ ያበቃል፣ የታሰቡ መሣሪያዎቻቸው እና የመግቢያ ቁልፎቻቸውም ይወገዳሉ።"
+
+#: 
+msgid "This person could not be signed out."
+msgstr "ይህ ሰው ሊወጣ አልቻለም።"
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "ይህ ሰው የሠራተኛ መለያ አለው። እንደ ሰው መግባት የሠራተኛ መለያን በጭራሽ አይከፍትም።"
+
+#: 
+msgid "This person has no such passkey."
+msgstr "ይህ ሰው እንደዚህ ያለ የመግቢያ ቁልፍ የለውም።"
+
+#: 
+msgid "This person has no such permission."
+msgstr "ይህ ሰው እንደዚህ ያለ ፈቃድ የለውም።"
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "ይህ ሰው እንደዚህ ያለ የታሰበ መሣሪያ የለውም።"
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "ይህ ሰው ያልተረጋገጠ ኢሜይል የለውም።"
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "ይህ ሰው ወደ የአባላት መግቢያ ገብቷል። ይህን ኢሜይል መቀየር በሁሉም ቦታ ያስወጣቸዋል፣ አዲሱ አድራሻም እስኪረጋገጥ ድረስ ለመግባት ሊያገለግል አይችልም።"
+
+#: 
+msgid "This person is deceased."
+msgstr "ይህ ሰው ሞቷል"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "ይህ ሰው በሁሉም ቦታ ከየአባላት መግቢያ ወጥቷል።"
+
+#: 
+msgid "This person no longer exists."
+msgstr "ይህ ሰው ከእንግዲህ የለም።"
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "ይህ እዚህን ጨምሮ በሁሉም ቦታ ያስወጣዎታል እና እያንዳንዱን መሣሪያ ይረሳል። በኢሜይል አድራሻዎ እንደገና መግባት ይችላሉ።"
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "ይህ እዚህን ጨምሮ በሁሉም ቦታ ያስወጣዎታል እና እያንዳንዱን መሣሪያ ይረሳል። የመግቢያ ቁልፎችዎ ይቆያሉ፦ በመግቢያ ቁልፍ ወይም በኢሜይል አድራሻዎ እንደገና መግባት ይችላሉ።"
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "ይህ መሣሪያ እነዚህን በጭራሽ አይቀይርም። በመዝገባቸው ላይ ለእያንዳንዱ ሰው የራሱን ኢሜይል ይስጡ።"
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "ይህን የሚያመለክቱት በራስዎ ስልክ ወይም ኮምፒውተር ላይ ብቻ ነው፣ በጋራ ወይም በሕዝብ መሣሪያ ላይ በጭራሽ አይደለም።"
+
+#: 
+msgid "Time: %s"
+msgstr "ጊዜ፦ %s"
+
+#: 
+msgid "Timed out"
+msgstr "ጊዜው አልፏል"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "ይህን ኢሜይል ለመቀየር የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "To fix"
+msgstr "ለማስተካከል"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "በራስዎ ስልክ ወይም ኮምፒውተር ላይ ገብተው ለመቆየት በሚቀጥለው ጊዜ ሲገቡ «ይህ የራሴ መሣሪያ ነው» ላይ ምልክት ያድርጉ።"
+
+#: 
+msgid "Too many attempts"
+msgstr "በጣም ብዙ ሙከራዎች"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "ዛሬ በጣም ብዙ የመግቢያ ኢሜይሎች"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "ለዚህ ኢሜይል አድራሻ በጣም ብዙ የመግቢያ ጥያቄዎች"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "ከዚህ IP አድራሻ በጣም ብዙ የመግቢያ ጥያቄዎች"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "በጣም ብዙ የተሳሳቱ ኮዶች"
+
+#: 
+msgid "Turn off"
+msgstr "አጥፋ"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "የአባል መግቢያ ይጥፋ?"
+
+#: 
+msgid "Turn on"
+msgstr "አብራ"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "የአባል መግቢያን አብራ"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "የአባል መግቢያ ይብራ?"
+
+#: 
+msgid "Type a name"
+msgstr "ስም ይተይቡ"
+
+#: 
+msgid "Type a name or email"
+msgstr "ስም ወይም ኢሜይል ይተይቡ"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "የስም ቢያንስ %d ፊደላት ይተይቡ፣ ከዚያ ይፈልጉ።"
+
+#: 
+msgid "Unconfirmed email"
+msgstr "ያልተረጋገጠ ኢሜይል"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "ChurchCRM የት እንደሚያገለግል ይረዱ"
+
+#: 
+msgid "Unknown device"
+msgstr "ያልታወቀ መሣሪያ"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "ያልታወቀ የማውጫ መስክ፦ %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "ያልታወቀ የማውጫ ቅንብር፦ %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "ስም ያልተሰጠው መሣሪያ"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "ስም ያልተሰጠው የመግቢያ ቁልፍ"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "የቤተ ክርስቲያን ቢሮ እስኪያረጋግጠው ድረስ አዲሱ አድራሻ ለመግባት ሊያገለግል አይችልም።"
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "%1$s ለ%2$s በ%3$s እንደ ኢሜይል አድራሻ ይጠቀም?"
+
+#: 
+msgid "Use a different email address"
+msgstr "ሌላ የኢሜይል አድራሻ ይጠቀሙ"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "በዚህ መሣሪያ የመግቢያ ቁልፍ ይጠቀሙ?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "%1$s በ%2$s የኢሜይል አድራሻዎ መሆኑን ለማረጋገጥ ከታች ያለውን አዝራር ይጠቀሙ። አገናኙ አንድ ጊዜ ይሠራል፣ እስከ %3$s።"
+
+#: 
+msgid "User %d"
+msgstr "ተጠቃሚ %d"
+
+#: 
+msgid "View Permissions"
+msgstr "ፈቃዶችን ይመልከቱ"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "%sን እንዲያረጋግጡ በመጠበቅ ላይ። ወደዚያ አድራሻ የላክነውን አገናኝ ይጠቀሙ።"
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "{{email}} እንዲያረጋግጡ በመጠበቅ ላይ። ወደዚያ አድራሻ የላክነውን አገናኝ ይጠቀሙ።"
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "ኢሜይሉን መላክ አልቻልንም። እባክዎ ቆይተው እንደገና ይሞክሩ፣ ወይም የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "We could not sign you in"
+msgstr "ማስገባት አልቻልንም"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "ወደ %s አገናኝ በኢሜይል ልከናል። አዲሱን የኢሜይል አድራሻዎን ለማረጋገጥ ይጠቀሙበት።"
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "ወደ {{email}} አገናኝ ልከናል። ሲጠቀሙበት ኢሜይልዎ ይቀየራል።"
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "ለመግባት ኮድ እና አገናኝ በኢሜይል እንልክልዎታለን።"
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "እዚህ ስለሆኑ በጣም ደስ ብሎናል! ወደ ሦስት ደቂቃ ይወስዳል።"
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "ቤተሰብዎ ከእኛ ጋር ስለተቀላቀለ በጣም ደስ ብሎናል! ምዝገባዎ ደርሶናል። ቡድናችን በአካል እንኳን ደህና መጡ ለማለት በቅርቡ ያገኝዎታል።"
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "የጋብቻ በዓል"
+
+#: 
+msgid "Welcome"
+msgstr "እንኳን ደህና መጡ"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "የተሰጠለት ነገር ከእንግዲህ የለም"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "አባላት በመግቢያው ምን ማየት እና ማድረግ እንደሚችሉ፣ እና እያንዳንዱ ፈቃድ ከየት እንደመጣ። ሰዎች የመግቢያ ደንቦች ከሚያስገቧቸው ሁሉ እና ከሠራተኞች መካከል ይቆጠራሉ።"
+
+#: 
+msgid "What members can use"
+msgstr "አባላት ምን ሊጠቀሙ ይችላሉ"
+
+#: 
+msgid "What to do"
+msgstr "ምን ማድረግ እንዳለበት"
+
+#: 
+msgid "Who can see it"
+msgstr "ማን ሊያየው ይችላል"
+
+#: 
+msgid "Who is listed"
+msgstr "ማን ተዘርዝሯል"
+
+#: 
+msgid "Who may sign in"
+msgstr "ማን ሊገባ ይችላል"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "ወደ የአባላት መግቢያ ማን ሊገባ እንደሚችል፣ ማን እንደገባ፣ እና የማን ኢሜይል እንደሚያቆማቸው። ዝርዝሮቹ በመግቢያ ትር ላይ ያሉትን ደንቦች ይከተላሉ።"
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "የአባላት መግቢያ ማውጫ ማንን እንደሚዘረዝር፣ ማን ሊያየው እንደሚችል እና ምን እንደሚያሳይ፣ በአስተዳዳሪ -> የአባላት መግቢያ -> ማውጫ ላይ የተመረጠ።"
+
+#: 
+msgid "Why"
+msgstr "ለምን"
+
+#: 
+msgid "Why not"
+msgstr "ለምን አይሆንም"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "መሣሪያው ከጥቂት ጊዜ በፊት በተካው ቶክን"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "አዎ፣ የመግቢያ ቁልፍ ጨምር"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "አዎ፣ ይህን የመግቢያ ቁልፍ አስወግድ"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "አዎ፣ ከእያንዳንዱ መሣሪያ ውጣ"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "ይህን ኢሜይል ለማረጋገጥ አልተፈቀደልዎትም።"
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "በምንም መሣሪያ ላይ ገብተው አልተያዙም።"
+
+#: 
+msgid "You are signed out on every device."
+msgstr "በእያንዳንዱ መሣሪያ ወጥተዋል።"
+
+#: 
+msgid "You are signed out on this device."
+msgstr "በዚህ መሣሪያ ወጥተዋል።"
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "በኢሜይል አድራሻዎም መግባት ይችላሉ።"
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "የራስዎን መግቢያ ማጥፋት አይችሉም።"
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "የአባላት መግቢያን መክፈት አይችሉም። የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "ኢሜይልዎን ለመቀየር ብዙ ጊዜ ጠይቀዋል። እባክዎ ቆይተው እንደገና ይሞክሩ።"
+
+#: 
+msgid "You have no passkeys."
+msgstr "የመግቢያ ቁልፍ የለዎትም።"
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "በየአባላት መግቢያ እንደ %s ገብተዋል (ለውጦች ይፈቀዳሉ)።"
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "በየአባላት መግቢያ እንደ %s ገብተዋል (ለንባብ ብቻ)።"
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "ከዝቅተኛው ዕድሜ ያነሰ"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "አንድ ሰው ወደ የአባላት መግቢያ ሊገባ የሚችልበት ትንሹ ዕድሜ። የልደት ቀን ሳይታወቅ የቤተሰብ ኃላፊ ወይም የትዳር አጋር ብቻ ይበቃል።"
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "የአባላት መግቢያ የመግቢያ ኮድዎ"
+
+#: 
+msgid "Your code"
+msgstr "ኮድዎ"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "የኢሜይል አድራሻዎ %s ገና አልተረጋገጠም፣ ስለዚህ ለመግባት ሊያገለግል አይችልም። አገናኝ ወደ እሱ እንልካለን፤ አገናኙን መጠቀም ያረጋግጠዋል።"
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "የኢሜይል አድራሻዎ እዚህ ሊወገድ አይችልም። የቤተ ክርስቲያኑን ቢሮ ያነጋግሩ።"
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "የኢሜይል አድራሻዎ ተረጋግጧል"
+
+#: 
+msgid "Your email address was changed"
+msgstr "የኢሜይል አድራሻዎ ተቀይሯል"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "የመግቢያ ቁልፍዎ ታክሏል። በሚቀጥለው ጊዜ በዚህ መሣሪያ በእሱ ይግቡ።"
+
+#: 
+msgid "an administrator"
+msgstr "አስተዳዳሪ"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "የቤተሰብ ኃላፊ ወይም የትዳር አጋር ኢሜይል አድራሻ የለውም"
+
+#: 
+msgid "or"
+msgstr "ወይም"
+
+#: 
+msgid "until %s"
+msgstr "እስከ %s"
 

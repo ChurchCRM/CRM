@@ -128,14 +128,14 @@ resolved from live repositories, so builds are not bit-for-bit reproducible.
 ## Validation
 
 ```bash
-python3 docker/test-release-context.py
+python3 tests/docker/test-release-context.py
 python3 docker/prepare-release-context.py ChurchCRM-7.7.0.zip build-context
 mkdir -p build-context/apache
 cp docker/apache/default.conf build-context/apache/default.conf
 docker build --target prod -f docker/Dockerfile.churchcrm-apache-php8 -t churchcrm-check:apache build-context
 docker build --target prod -f docker/Dockerfile.churchcrm-fpm-php8 -t churchcrm-check:fpm build-context
-bash docker/test-production-image.sh churchcrm-check:apache apache
-bash docker/test-production-image.sh churchcrm-check:fpm fpm
+bash tests/docker/test-production-image.sh churchcrm-check:apache apache
+bash tests/docker/test-production-image.sh churchcrm-check:fpm fpm
 ```
 
 The PR validation workflow repeats these builds on amd64 without registry

@@ -114,7 +114,7 @@ describe("GET /api/email/log for the email log table", () => {
 
     it("finds every word in the subject, the address or the recipient's name", () => {
         log({ q: `${tag} Turner` }).then((resp) => expect(subjects(resp)).to.deep.equal([`${tag} admin family`]));
-        log({ q: `turner.family@example.com ${tag}` }).then((resp) => expect(subjects(resp)).to.deep.equal([`${tag} admin family`]));
+        log({ q: `michael.turner@example.com ${tag}` }).then((resp) => expect(subjects(resp)).to.deep.equal([`${tag} admin family`]));
         log({ q: `Mathew ${tag} failed` }).then((resp) => {
             expect(subjects(resp)).to.deep.equal([`${tag} admin failed`, `${tag} sender failed`]);
         });

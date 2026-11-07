@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "Сімейний стільниковий телефон"
 
 #: 
-msgid "Family Email"
-msgstr "Сімейна електронна пошта"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Особистий домашній телефон"
 
@@ -3901,10 +3897,6 @@ msgid "Oops! Page not found."
 msgstr "Ой! Сторінку не знайдено."
 
 #: 
-msgid "Family Registration"
-msgstr "Реєстрація сім’ї"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Введіть наступне, щоб розпочати перевірку вашої родини"
 
@@ -4931,10 +4923,6 @@ msgid "Portuguese - Portugal"
 msgstr "Португальська - Португалія"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Вкажіть назву програми, яка відображатиметься в програмі автентифікації"
-
-#: 
 msgid "Review"
 msgstr "Огляд"
 
@@ -5064,10 +5052,6 @@ msgstr "Переглянути сімейну сторінку"
 #: 
 msgid "View Person Page"
 msgstr "Переглянути сторінку особи"
-
-#: 
-msgid "Verify"
-msgstr "Перевірити"
 
 #: 
 msgid "Family has no emails to use"
@@ -5316,24 +5300,8 @@ msgid "Email address"
 msgstr "Електронна пошта"
 
 #: 
-msgid "Enter family name"
-msgstr "Введіть прізвище сім'ї"
-
-#: 
 msgid "Family name is required"
 msgstr "Прізвище сім'ї обов'язкове"
-
-#: 
-msgid "First name"
-msgstr "Ім'я"
-
-#: 
-msgid "Home phone number"
-msgstr "Номер домашнього телефону"
-
-#: 
-msgid "Last name"
-msgstr "Прізвище"
 
 #: 
 msgid "Next Member"
@@ -9776,10 +9744,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Ми будемо використовувати це, щоб залишатися на зв'язку та надсилати оновлення церкви."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Ми дуже раді, що ви тут! Зареєструйте вашу сім'ю всього за 3 простих кроки."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Ласкаво просимо повернутися!"
 
@@ -13756,10 +13720,6 @@ msgid "Generate new code"
 msgstr "Згенерувати новий код"
 
 #: 
-msgid "Go to homepage"
-msgstr "Перейти на домашню сторінку"
-
-#: 
 msgid "Group added to cart"
 msgstr "Групу додано до кошика"
 
@@ -13782,10 +13742,6 @@ msgstr "Підготуйте програму автентифікації (Goog
 #: 
 msgid "Hide advanced options"
 msgstr "Приховати розширені параметри"
-
-#: 
-msgid "Home phone is required"
-msgstr "Домашній телефон обов'язковий"
 
 #: 
 msgid "ICS URL"
@@ -14460,10 +14416,6 @@ msgid "Warnings"
 msgstr "Попередження"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Ми дуже раді, що ваша сім'я приєдналася до нас!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Ласкаво просимо до сім'ї!"
 
@@ -14518,10 +14470,6 @@ msgstr "Мовні налаштування вашого браузера від
 #: 
 msgid "Your database already contains data"
 msgstr "Ваша база даних вже містить дані"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Ваша реєстрація отримана. Наша команда незабаром зв'яжеться, щоб особисто вас привітати."
 
 #: 
 msgid "Zip code is required"
@@ -14600,10 +14548,6 @@ msgid "open rate"
 msgstr "відкрита ставка"
 
 #: 
-msgid "our church"
-msgstr "наша церква"
-
-#: 
 msgid "payment(s)?"
 msgstr "платежі?"
 
@@ -14642,14 +14586,6 @@ msgstr "рік"
 #: 
 msgid "yrs"
 msgstr "рр."
-
-#: 
-msgid "Account options"
-msgstr "Параметри облікового запису"
-
-#: 
-msgid "Register"
-msgstr "Зареєструватися"
 
 #. Context: locales
 #: 
@@ -14713,10 +14649,6 @@ msgid "Date Picker Format"
 msgstr "Формат вибору дати"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Підказка вибору дати"
-
-#: 
 msgid "Date Without Year"
 msgstr "Дата без року"
 
@@ -14747,10 +14679,6 @@ msgstr "Формат дати для імені файлу"
 #: 
 msgid "Fully translated."
 msgstr "Повністю перекладено."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Підказка у полях введення дати. За замовчуванням: рррр-мм-дд"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -14934,16 +14862,8 @@ msgid "Always granted"
 msgstr "Завжди надається"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Може лише переглядати та підтверджувати дані своєї родини. Інший доступ відсутній."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Виберіть конкретні дозволи нижче."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Зверніться до адміністратора для зміни ваших дозволів."
 
 #: 
 msgid "Custom permissions"
@@ -14958,20 +14878,8 @@ msgid "People &amp; Families"
 msgstr "Люди &amp; Родини"
 
 #: 
-msgid "Self-service"
-msgstr "Самообслуговування"
-
-#: 
-msgid "Self-service only"
-msgstr "Лише самообслуговування"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Нотатка, яку ви намагаєтесь редагувати, більше не існує."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Цей користувач може лише переглядати та оновлювати профіль своєї родини. Індивідуальні дозволи не застосовуються."
 
 #: 
 msgid "User List"
@@ -18246,16 +18154,8 @@ msgid "Second Home"
 msgstr "Другий будинок"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Пов'язана особа померла або неактивна. Вхід, сеанси та ключ API заблоковані до тих пір, поки особа не буде знову активована."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Це адреса для листування"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Ця особа померла або неактивна, тому цей обліковий запис не може увійти"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18960,10 +18860,6 @@ msgid "Account unlocked"
 msgstr "Обліковий запис розблоковано"
 
 #: 
-msgid "Accounts"
-msgstr "Облікові записи"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Значення «Активно» має бути істиною або хибністю"
 
@@ -19156,10 +19052,6 @@ msgid "Author"
 msgstr "Автор"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Повноваження надаються особі, а не логіну, тож їх можна надати до появи логіну. Особа, чий логін призначено лише для самообслуговування, бачить тільки власний розклад, доки адміністратор не розширить її обліковий запис."
-
-#: 
 msgid "Automatic"
 msgstr "Автоматично"
 
@@ -19282,10 +19174,6 @@ msgstr "Виберіть клас"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Виберіть день місяця від 1 до 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Виберіть нове фото"
 
 #: 
 msgid "Choose a person"
@@ -20058,10 +19946,6 @@ msgid "Last attempt"
 msgstr "Остання спроба"
 
 #: 
-msgid "Last check"
-msgstr "Остання перевірка"
-
-#: 
 msgid "Last date"
 msgstr "Остання дата"
 
@@ -20288,10 +20172,6 @@ msgstr "Жоден календар поки що не відкрито для �
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Жоден календар не відкрито для цього служіння, тому події не відображатимуться в жодному календарі."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Жоден календар не відкрито для членів парафії."
 
 #: 
 msgid "No class"
@@ -20832,14 +20712,6 @@ msgid "Please tell us what needs changing."
 msgstr "Будь ласка, розкажіть, що потрібно змінити."
 
 #: 
-msgid "Portal settings"
-msgstr "Налаштування порталу"
-
-#: 
-msgid "Portal theme"
-msgstr "Тема порталу"
-
-#: 
 msgid "Position"
 msgstr "Позиція"
 
@@ -21056,10 +20928,6 @@ msgid "SMTP test"
 msgstr "Перевірка SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "Зберегти календарі"
-
-#: 
 msgid "Save changes"
 msgstr "Зберегти зміни"
 
@@ -21070,10 +20938,6 @@ msgstr "Збережено — це служіння більше не прос�
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Збережено — це служіння тепер просить про допомогу"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Збережено. Члени парафії бачать календарі, увімкнені вище."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21178,10 +21042,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Значення «Можна записатися самому» має бути істиною або хибністю"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Облікові записи самообслуговування"
-
-#: 
 msgid "Send"
 msgstr "Надіслати"
 
@@ -21250,18 +21110,6 @@ msgstr "Показувати на порталі парафії"
 #: 
 msgid "Show past events"
 msgstr "Показати минулі події"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Показувати церковний календар"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Показувати церковний календар на порталі парафії."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Показувати розділ церковного календаря на порталі парафії."
 
 #: 
 msgid "Show the next"
@@ -21670,10 +21518,6 @@ msgstr "Значення «%s» має бути цілим числом хвил
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "Значення «%s» має бути в межах %d хвилин від події"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Календарі порталу парафії збережено."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22124,10 +21968,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Ці потреби беруться з розкладу. Збереження тут змінює лише це проведення."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Ці числа враховують лише облікові записи самообслуговування: людей, чий логін дає доступ лише до порталу парафії і ні до чого іншого."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Ці люди й надалі призначені, але їхня позиція більше не входить до плану призначень на цю дату."
 
@@ -22216,14 +22056,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Це недопустима назва теки теми."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Це не одна з дат вашої команди."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Це не одна з ваших команд."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Сюди церква надсилає пошту, і цій особі вона телефонує щодо вашої родини."
 
@@ -22282,10 +22114,6 @@ msgstr "Ця сторінка не входить до вашого обліко
 #: 
 msgid "This page was not found"
 msgstr "Цю сторінку не знайдено"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Ця частина порталу парафії призначена для керівників волонтерських команд."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23960,16 +23788,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} призначено й записано як такого, що погодився"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Попросіть адміністратора змінити пошту для входу."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Адміністратор змінив пошту з %1$s на %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Пошту людини з обліковим записом може змінити лише адміністратор."
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24454,4 +24274,2960 @@ msgstr "Відображається лише надісланий вами ел
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Не вдалося створити повторювані події. Деталі див. у журналі програми."
+
+#: 
+msgid "Confirm Password"
+msgstr "Підтвердьте пароль"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Ваш пароль змінено. Тепер ви можете ввійти з новим паролем."
+
+#: 
+msgid "1st"
+msgstr "1-й"
+
+#: 
+msgid "2nd"
+msgstr "2-й"
+
+#: 
+msgid "3rd"
+msgstr "3-й"
+
+#: 
+msgid "4th"
+msgstr "4-й"
+
+#: 
+msgid "5th"
+msgstr "5-й"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Неможливо скасувати доступ адміністратора в єдиного адміністратора, який може входити"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Оберіть тиждень місяця, від 1-го до 5-го"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Створює подій: {{total}}, у {{week}} {{day}} кожного місяця з {{first}} до {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Недійсний день тижня"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Щомісяця, у день тижня"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Місяці без 5-го пропускаються."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM має бути цілим числом від 1 до 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Тиждень місяця"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Тиждень місяця має бути від 1 до 5"
+
+#: 
+msgid "%s through %s"
+msgstr "з %s до %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Податковий номер церкви (EIN), що друкується у звітах про пожертви"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Звіти про пожертви видаються дорослим членам родини. Зверніться до церковної канцелярії, якщо вам потрібен такий звіт."
+
+#: 
+msgid "Download statement"
+msgstr "Завантажити звіт"
+
+#: 
+msgid "Generated"
+msgstr "Створено"
+
+#: 
+msgid "Goods and services"
+msgstr "Товари та послуги"
+
+#: 
+msgid "My Giving"
+msgstr "Мої пожертви"
+
+#: 
+msgid "No contributions"
+msgstr "Немає пожертв"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "За цей період пожертв не зафіксовано."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "В обмін на ці пожертви не надано товарів чи послуг, окрім нематеріальних релігійних благ."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Необов’язково. Друкується у звітах про пожертви."
+
+#: 
+msgid "Tax ID"
+msgstr "Податковий номер"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Податковий номер (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Сума податкового вирахування"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Це сімейний звіт. Він охоплює пожертви вашої родини."
+
+#: 
+msgid "Total contributions"
+msgstr "Усього пожертв"
+
+#: 
+msgid "Year-end statement"
+msgstr "Річний звіт"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "Звітів про пожертви успішно надіслано родині електронною поштою: %d."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "Звіт про пожертви за %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Налаштуйте текст, що з’являється у звітах про пожертви (sTaxReport1, sTaxReport2 тощо)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Шановна родино %s!\n"
+"\n"
+"До цього листа додано ваш звіт про пожертви за %s від %s.\n"
+"\n"
+"Якщо у вас виникнуть запитання, зверніться до церковної канцелярії.\n"
+"\n"
+"Дякуємо за вашу щедрість."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Надіслати звіт про пожертви за %s"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Номери конвертів"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Створити звіти про пожертви"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Створюйте звіти про пожертви, облік обіцянок і фінансовий аналіз."
+
+#: 
+msgid "Giving Reports"
+msgstr "Звіти про пожертви"
+
+#: 
+msgid "Giving Statement"
+msgstr "Звіт про пожертви"
+
+#: 
+msgid "Giving Statements"
+msgstr "Звіти про пожертви"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Не вдалося надіслати звіт про пожертви електронною поштою. Перевірте параметри поштового сервера."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Надішліть наступну пожертву поштою на адресу %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Надрукувати звіт про пожертви за %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Неможливо надіслати звіт про пожертви: за цей рік не знайдено даних про платежі."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Неможливо надіслати звіт про пожертви: у цієї родини немає адреси електронної пошти."
+
+#: 
+msgid "Undesignated"
+msgstr "Без призначення"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Перевірте, чи на звітах про пожертви зазначено назву церкви, адресу та контактні дані."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Посаду тепер призначено особі %s, яка її прийняла."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Посаду тепер призначено особі %s, яка ще її не прийняла."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Їхня причина: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Переглянути призначення"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Для цього разу ще потрібно волонтерів: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Для цієї посади ще потрібно волонтерів: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Тижнева сітка відміток відвідування для кожного класу. Списки класів і фотоальбоми є на панелі недільної школи та на сторінці кожного класу."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Тижнева сітка відміток відвідування на навчальний рік, один стовпець на кожну неділю"
+
+#: 
+msgid "Age %d"
+msgstr "Вік: %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Щоб створити аркуш відвідуваності, оберіть принаймні одну групу."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Аркуш відвідуваності"
+
+#: 
+msgid "Class List"
+msgstr "Список класу"
+
+#: 
+msgid "Download PDF"
+msgstr "Завантажити PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Період блокування в хвилинах\n"
+"Заблокований обліковий запис розблоковується сам через стільки хвилин. Невдалі входи з однієї IP-адреси підраховуються за той самий період."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Максимальна кількість невдалих входів з однієї IP-адреси\n"
+"Невдалі входи та запити на скидання пароля з однієї IP-адреси зараховуються до цієї межі протягом періоду блокування. Коли її досягнуто, вхід із цієї адреси відхиляється до кінця періоду.\n"
+"Установіть нуль, щоб вимкнути цю функцію, наприклад коли всі звертаються до ChurchCRM через одну проксі-адресу."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Максимальна кількість невдалих входів, після якої обліковий запис користувача блокується.\n"
+"Заблокований обліковий запис розблоковується сам після періоду блокування або раніше, коли адміністратор скидає лічильник невдалих входів.\n"
+"Ця функція допомагає захиститися від автоматичного підбору пароля.\n"
+"Установіть нуль, щоб вимкнути цю функцію."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Хвилин до самостійного розблокування: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Аркуш відвідуваності недільної школи"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Неділі без занять не включаються до аркуша."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Оновлення бази даних"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "База даних оновлюється. Залиште цю сторінку відкритою, доки оновлення не завершиться."
+
+#: 
+msgid "Family Labels"
+msgstr "Сімейні етикетки"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Усього"
+
+#: 
+msgid "Bill"
+msgstr "Купюра"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Оберіть депозит або вкажіть обидві дати звіту."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Оберіть один депозит, щоб переглянути його платежі або надрукувати банківську квитанцію. Обраний депозит має пріоритет над діапазоном дат."
+
+#: 
+msgid "Coin"
+msgstr "Монета"
+
+#: 
+msgid "Deposit Report"
+msgstr "Звіт про депозит"
+
+#: 
+msgid "Download Report"
+msgstr "Завантажити звіт"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Вкажіть дійсні дати звіту."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Недійсні фільтри звіту."
+
+#: 
+msgid "Invalid report options."
+msgstr "Недійсні параметри звіту."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Залиште фільтри порожніми, щоб включити всі платежі. Ці параметри стосуються звіту, а не банківської квитанції."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Записів не знайдено. Змініть фільтри й спробуйте знову."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Підготувати для банку"
+
+#: 
+msgid "Preview Totals"
+msgstr "Переглянути підсумки"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Надрукувати банківську квитанцію"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Надрукувати обраний депозит повністю, із підсумками готівки та чеків, аркушами підрахунку та рядками для свідків. Фільтри звіту ігноруються. Електронні платежі залишаються у зведенні й не входять до суми фізичної банківської квитанції."
+
+#: 
+msgid "Review Payments"
+msgstr "Переглянути платежі"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Перегляньте платежі за період або підготуйте один депозит для банку."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Переглядайте платежі, завантажуйте PDF або CSV чи друкуйте банківську квитанцію для одного депозиту."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Оберіть дійсний депозит."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Оберіть один депозит, щоб надрукувати банківську квитанцію."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Кінцева дата звіту має бути не раніше за початкову."
+
+#: 
+msgid "Total Cash"
+msgstr "Усього готівки"
+
+#: 
+msgid "Total Coin"
+msgstr "Усього монет"
+
+#: 
+msgid "Witness"
+msgstr "Свідок"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "Пожертв без родини: %d. Їх не можна включити до звіту."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "Відкритих депозитів із датою цього року: %d. Закрийте їх, щоб кожна пожертва була остаточною перед розсиланням звітів."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "Платежів, які ще не входять до жодного депозиту: %d."
+
+#: 
+msgid "Can be emailed"
+msgstr "Можна надіслати електронною поштою"
+
+#: 
+msgid "Closing line"
+msgstr "Завершальний рядок"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Усі депозити з датою цього року закрито."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Кожна пожертва належить родині."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Кожен платіж цього року входить до депозиту."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Створити податкові звіти"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Звіт про пожертви (податкові звіти)"
+
+#: 
+msgid "Opening line"
+msgstr "Вступний рядок"
+
+#: 
+msgid "Print and mail"
+msgstr "Надрукувати й надіслати поштою"
+
+#: 
+msgid "Qty"
+msgstr "К-сть"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Перегляньте рік, а потім надрукуйте або надішліть звіти про пожертви."
+
+#: 
+msgid "Signed by"
+msgstr "Підписав"
+
+#: 
+msgid "Thank-you line"
+msgstr "Рядок подяки"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Перевірте, чи на податкових звітах зазначено назву церкви, адресу та контактні дані."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Пожертви на кінець року"
+
+#: 
+msgid "As of: %s"
+msgstr "Станом на: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Принаймні один додатний сімейний платіж за обрані фінансові роки (%d) до дати перегляду: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Хрещення, заяви до списку виборців, місце проживання, статус причасника, відвідуваність, добре становище та місцеві винятки потрібно перевіряти окремо, якщо цього вимагає ваш статут. Тривалість членства не є доказом відвідуваності."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Оберіть наявну класифікацію."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Оберіть принаймні одну класифікацію для перегляду."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Оберіть класифікації, якими користується ваша церква. Жодна класифікація сама по собі не надає права голосу."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Керівництво церкви має підтвердити право згідно зі статутом церкви. Цей список лише показує людей, які відповідають обраним фільтрам."
+
+#: 
+msgid "Classifications to review"
+msgstr "Класифікації для перегляду"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Класифікації: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Померлі, неактивні люди та класифікації, а також неактивні родини й люди або ті, що очікують перегляду, виключені."
+
+#: 
+msgid "Download Review List"
+msgstr "Завантажити список для перегляду"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Вкажіть дійсну дату перегляду між 1900 і 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Вкажіть цілі числа в показаних межах."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Фінансові роки для перевірки (0–100; 0 означає відсутність вимоги щодо пожертв)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Пожертви обліковуються за родиною, а не за особою. Увімкніть це, лише якщо ваш статут дозволяє сімейному платежу задовольнити цей критерій. Це не доводить, що пожертвувала кожна особа. Період охоплює обраний фінансовий рік і закінчується не пізніше дати перегляду."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Останній фінансовий рік, який включити"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Мінімальний вік (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Мінімальний вік: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Мінімальна тривалість членства в місяцях (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Мінімальна тривалість членства: %d міс."
+
+#: 
+msgid "No donation requirement."
+msgstr "Вимоги щодо пожертв немає."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Жодна особа не відповідає цим фільтрам. Перевірте відсутні дати народження чи членства та змініть критерії."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Необов’язкова вимога щодо сімейних пожертв"
+
+#: 
+msgid "People matching filters"
+msgstr "Люди, які відповідають фільтрам"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Люди, пропущені через відсутність обов’язкових дат"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Підготуйте список для церковного перегляду за класифікаціями та необов’язковими фільтрами віку, членства й сімейних пожертв."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Підготуйте список для церковного перегляду згідно з вашим статутом."
+
+#: 
+msgid "Review date"
+msgstr "Дата перегляду"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Користуйтеся статутом церкви, щоб обрати фільтри, а потім доручіть уповноваженому керівництву церкви переглянути список. Відповідність цим фільтрам не встановлює права голосу. Цей звіт не фіксує право й не проводить вибори."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Члени з правом голосу — список для перегляду"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Нуль вимикає необов’язкову вимогу. Для віку потрібна повна дата народження; для тривалості членства — дата членства. Людей без обов’язкових дат пропускають і рахують окремо. Померлі, неактивні люди та класифікації, а також неактивні родини й люди або ті, що очікують перегляду, завжди виключені; використовуються поточні класифікація та статус, а не історичні."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Сума до сплати за %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Не вдається створити приватне тимчасове сховище PDF у вибраному каталозі."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Залиште порожнім, щоб використовувати системний тимчасовий каталог. Інакше вкажіть наявний каталог із правом запису, захищений від доступу через веб."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Тимчасовий каталог PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "Тимчасове сховище PDF має бути приватним і доступним для запису."
+
+#: 
+msgid "Reporting"
+msgstr "Звітування"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "Тимчасовий каталог PDF не існує або недоступний."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "Тимчасовий каталог PDF має бути абсолютним шляхом до каталогу."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Податковий номер церкви (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Завершальний рядок"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Керує необов’язковою телеметрією. Помилки встановлення та оновлення бази даних надсилають обмежену діагностику до PostHog, навіть коли телеметрію вимкнено. Ці звіти про помилки містять версії програмного забезпечення та середовища й очищене повідомлення про помилку бази даних, але не ідентифікатор установлення чи оператор SQL."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Діагностувати невдалі встановлення та оновлення бази даних"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Подробиці помилок установлення та оновлення"
+
+#: 
+msgid "Open in browser window"
+msgstr "Відкрити у вікні браузера"
+
+#: 
+msgid "Opening Line"
+msgstr "Вступний рядок"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Необов’язкова телеметрія використання надсилається лише коли її увімкнено. Помилки встановлення та оновлення бази даних завжди надсилають обмежену діагностику на допомогу спільноті, навіть якщо ви обираєте «Ні, дякую». Звіти про помилки містять версії програмного забезпечення та середовища й очищене повідомлення про помилку бази даних, без ідентифікатора установлення чи оператора SQL."
+
+#: 
+msgid "PDF Handling"
+msgstr "Обробка PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "Виведення PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "Режим обробки PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "Рядок запитань"
+
+#: 
+msgid "Save File dialog"
+msgstr "Діалогове вікно збереження файлу"
+
+#: 
+msgid "Signer"
+msgstr "Підписант"
+
+#: 
+msgid "Statement Settings"
+msgstr "Параметри звіту"
+
+#: 
+msgid "Statement Wording"
+msgstr "Формулювання звіту"
+
+#: 
+msgid "Tax Information"
+msgstr "Податкові відомості"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Телеметрія надсилається до PostHog у Сполучених Штатах. Звіти про помилки встановлення та оновлення надсилаються, навіть коли необов’язкову телеметрію вимкнено."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Цю дату скасовано. Від вас більше нічого не потрібно."
+
+#: 
+msgid "always sent"
+msgstr "завжди надсилається"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Не вдалося видалити фірмовий бланк"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Не вдалося зберегти фірмовий бланк"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Не вдалося завантажити фірмовий бланк"
+
+#: 
+msgid "Greeting"
+msgstr "Привітання"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Привітання та підпис листа"
+
+#: 
+msgid "Letterhead"
+msgstr "Фірмовий бланк"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF або WebP. Найкраще підходить широкий банер, наприклад 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Друкується вгорі PDF-листів із графічним фірмовим бланком, зокрема звітів про пожертви. Без нього листи друкують назву та адресу церкви."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Видалити фірмовий бланк? Листи друкуватимуть назву та адресу церкви."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Установіть фірмовий бланк, який друкують PDF-листи"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Використовується назва та адреса церкви"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Використовується шлях до фірмового бланка, заданий у параметрах системи"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Формулювання, податковий номер і обробка PDF для звітів про пожертви"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s як %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s тепер є вашою адресою електронної пошти. Ви можете використовувати її для входу до порталу членів."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} ще"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "Запитано зміну вашої адреси електронної пошти"
+
+#: 
+msgid "A family"
+msgstr "Родина"
+
+#: 
+msgid "A group"
+msgstr "Група"
+
+#: 
+msgid "A ministry"
+msgstr "Служіння"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "Нова адреса змінюється лише після того, як ви скористаєтеся посиланням, яке ми на неї надішлемо."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "Ключ доступу можна додати лише протягом %d хвилин після входу за адресою електронної пошти. Вийдіть, увійдіть знову за електронною поштою, а потім поверніться сюди."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "Ключ доступу виконує вхід за допомогою Face ID, відбитка пальця або PIN-коду пристрою, без коду з електронної пошти."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "До вашого входу в портал членів додано ключ доступу"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "До вашого входу в портал членів додано ключ доступу о %1$s %2$s з %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "До вашого входу в портал членів додано ключ доступу о %1$s %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "Особа, яка його втрачає, тоді не має власної електронної пошти: листи лише їй, наприклад групові, пропускаються, і редактор листів про це повідомляє."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "В особи, у записі якої приховано вік, рік народження ніколи не показується."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Рядок має неочікувану форму."
+
+#: 
+msgid "A team"
+msgstr "Команда"
+
+#: 
+msgid "Add a passkey"
+msgstr "Додати ключ доступу"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Додавайте ключ доступу лише на власному телефоні чи комп’ютері, ніколи на спільному чи публічному."
+
+#: 
+msgid "Add an email"
+msgstr "Додати електронну пошту"
+
+#: 
+msgid "Added %s"
+msgstr "Додано %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Адміністративні винятки"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "Дорослий родини %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "Дорослий родини"
+
+#: 
+msgid "All events"
+msgstr "Усі події"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Дозволити вхід від імені особи"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Дозволити зміни під час входу від імені особи"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Дозволити зміни, коли адміністратор використовує вхід від імені особи. Коли вимкнено, вхід від імені особи лише для читання."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Уже є в члена родини"
+
+#: 
+msgid "Also used by"
+msgstr "Також використовують"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Адміністратор може надати будь-який дозвіл одній особі на її сторінці. Тоді тут з’являються «Адміністративні винятки» з кількістю людей, яким його надано."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "Цю адресу вже використовує інша особа"
+
+#: 
+msgid "Applies to"
+msgstr "Застосовується до"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Схвалюйте або відхиляйте запити на заміну для волонтерської команди."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Запитати новий лист"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Повноваження надається особі, а не входу, тому його можна надати ще до того, як у неї з’явиться вхід. Особа, яка входить лише до порталу членів, і далі бачить лише власний розклад, доки адміністратор не надасть їй обліковий запис персоналу."
+
+#: 
+msgid "Awaiting review"
+msgstr "Очікує на перегляд"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Назад до входу"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Переглянути весь довідник"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Може входити до порталу членів"
+
+#: 
+msgid "Can sign in?"
+msgstr "Чи може входити?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Неможливо вимкнути вхід єдиному адміністратору, який може входити."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Не може входити"
+
+#: 
+msgid "Change family details"
+msgstr "Змінити дані родини"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Змінюйте адресу та контактні дані родини й додавайте члена родини на перегляд."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Змінювати власне ім’я, контактні дані та фото."
+
+#: 
+msgid "Changed"
+msgstr "Змінено"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Змінено після входу особи"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Змінено імпортом після входу особи"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Змінено персоналом після входу особи"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Змінено через API після входу особи"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Під час входу від імені особи зміни вимкнено."
+
+#: 
+msgid "Changes needed"
+msgstr "Потрібні зміни"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Зміни зберігаються в міру внесення."
+
+#: 
+msgid "Check your email"
+msgstr "Перевірте електронну пошту"
+
+#: 
+msgid "Choose a permission"
+msgstr "Оберіть дозвіл"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Оберіть дозвіл, для чого він і його останній день, і поясніть чому."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Оберіть фото або зробіть селфі"
+
+#: 
+msgid "Choose a theme"
+msgstr "Оберіть тему"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Оберіть принаймні один рядок."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Оберіть не більше ніж %d рядків за раз."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Оберіть зі списку, як показувати дати."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Оберіть останній день цього дозволу."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Оберіть, для чого цей дозвіл."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Оберіть так або ні."
+
+#: 
+msgid "Church Office"
+msgstr "Церковна канцелярія"
+
+#: 
+msgid "Church country"
+msgstr "Країна церкви"
+
+#: 
+msgid "Church default: %s"
+msgstr "Типове для церкви: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Вхід керівника церкви"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Класифікації, члени яких можуть входити до порталу членів, як список ідентифікаторів класифікацій через кому."
+
+#: 
+msgid "Clear selection"
+msgstr "Очистити вибір"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Коди, сеанси та пристрої"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Підтвердьте адресу електронної пошти"
+
+#: 
+msgid "Confirm email address"
+msgstr "Підтвердити адресу електронної пошти"
+
+#: 
+msgid "Confirm family details"
+msgstr "Підтвердити дані родини"
+
+#: 
+msgid "Confirm selected"
+msgstr "Підтвердити вибране"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Підтверджуйте цю електронну пошту лише після перевірки особисто або телефоном, що це власна адреса цієї особи. Після підтвердження її можна використовувати для входу до порталу членів."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Підтвердьте свою адресу електронної пошти"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Підтвердьте свою нову адресу електронної пошти"
+
+#: 
+msgid "Confirmed"
+msgstr "Підтверджено"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Дати потрібно записувати як YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Вирішувати запити на заміну"
+
+#: 
+msgid "Device"
+msgstr "Пристрій"
+
+#: 
+msgid "Device remembered"
+msgstr "Пристрій запам’ятано"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Пристрої та ключі доступу"
+
+#: 
+msgid "Directory classifications"
+msgstr "Класифікації довідника"
+
+#: 
+msgid "Directory section"
+msgstr "Розділ довідника"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Вимкнути вхід"
+
+#: 
+msgid "Do not show"
+msgstr "Не показувати"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Кожному з них також потрібна власна електронна пошта, якою ніхто інший не користується."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Кожен лист для входу діє один раз протягом обмеженого часу, а новіший лист замінює його."
+
+#: 
+msgid "Edit my details"
+msgstr "Редагувати мої дані"
+
+#: 
+msgid "Email address changed"
+msgstr "Адресу електронної пошти змінено"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Введена адреса електронної пошти: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "Адрес електронної пошти для підтвердження: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "Електронну пошту змінено"
+
+#: 
+msgid "Email code"
+msgstr "Код з електронної пошти"
+
+#: 
+msgid "Email confirmed"
+msgstr "Електронну пошту підтверджено"
+
+#: 
+msgid "Email link"
+msgstr "Посилання з електронної пошти"
+
+#: 
+msgid "Email me a code"
+msgstr "Надіслати мені код"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Надіслати мені посилання для підтвердження"
+
+#: 
+msgid "Email needs attention"
+msgstr "Електронна пошта потребує уваги"
+
+#: 
+msgid "Email problem"
+msgstr "Проблема з електронною поштою"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Надіслані код і посилання для входу скасовано"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Надіслане посилання для підтвердження"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Підтверджено адрес: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Увімкнути вхід"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Завершити всі сеанси порталу членів цієї особи й забути запам’ятані пристрої? Їхні ключі доступу залишаться, тож вони зможуть увійти знову."
+
+#: 
+msgid "Ended %s"
+msgstr "Завершено %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Завершено через зміну їхнього входу"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Завершено, коли вхід членів було вимкнено"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Введіть ціле число від %1$d до %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Введіть свою адресу електронної пошти."
+
+#: 
+msgid "Every kind"
+msgstr "Усі види"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Кожен вхід члена, відмова та зміна входу, спочатку найновіші. Тут ніколи не зберігаються код, посилання чи ключ доступу."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Усі в списку від А до Я, з полем пошуку."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Усі, кого пропускають правила входу, можуть тоді входити до порталу членів зі своєю електронною поштою."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Усі, хто входив до порталу членів за останні 30 днів, спочатку найновіші."
+
+#: 
+msgid "Everywhere"
+msgstr "Усюди"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Родини, які член підтвердив за останні 30 днів, з порталу членів або з надісланого посилання для підтвердження."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Підтверджені родини за останні 30 днів"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Дані родини підтверджено"
+
+#: 
+msgid "Family email"
+msgstr "Електронна пошта родини"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Електронну пошту родини не перенесено"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Сімейні ролі, члени яких можуть входити до порталу членів, як список ідентифікаторів ролей через кому."
+
+#: 
+msgid "Find someone"
+msgstr "Знайти когось"
+
+#: 
+msgid "Fix by hand"
+msgstr "Виправити вручну"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Виправити спільні адреси"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "З входу персоналу"
+
+#: 
+msgid "Give a permission"
+msgstr "Надати дозвіл"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Надати дозвіл порталу"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Надайте кожній особі власну електронну пошту"
+
+#: 
+msgid "Give permission"
+msgstr "Надати дозвіл"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Надано користувачем %1$s до %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Надано користувачем %s"
+
+#: 
+msgid "Given to"
+msgstr "Надано"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Надано всім"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Надано, але не діє"
+
+#: 
+msgid "Go to sign in"
+msgstr "Перейти до входу"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Перейти до порталу членів"
+
+#: 
+msgid "Has signed in"
+msgstr "Уже входив"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Уже входив: їхні сеанси та пристрої завершуються"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Ось ваш код для входу до порталу членів. Введіть його на сторінці входу в тому браузері, де ви його запитали. Або натисніть кнопку, щоб увійти на цьому пристрої."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Приховати дозволи"
+
+#: 
+msgid "How"
+msgstr "Як"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Скільки листів для входу до порталу членів одна IP-адреса може запитати за годину. Установіть 0, щоб не обмежувати, наприклад коли всі звертаються до ChurchCRM через одну адресу."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Скільки днів пристрій залишається в порталі членів після того, як член обирає залишитися в системі. Установіть 0, щоб прибрати цей вибір."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Скільки хвилин бездіяльності завершують сеанс порталу членів."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Скільки хвилин діють код і посилання для входу до порталу членів."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Час бездіяльності (хвилини)"
+
+#: 
+msgid "Idle too long"
+msgstr "Надто довга бездіяльність"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Якщо %1$s — ваша нова адреса, скористайтеся кнопкою нижче, щоб підтвердити її. До підтвердження її не можна використовувати для входу. Посилання діє один раз до %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Якщо цю адресу можна використовувати для входу, ми надіслали вам код. Нічого за кілька хвилин? Зверніться до церковної канцелярії."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Якщо ви його не додавали, видаліть його на сторінці «Вхід і пристрої» та зверніться до церковної канцелярії."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Якщо ви не просили про цю зміну, зверніться до церковної канцелярії."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Якщо ви цього не просили, зверніться до церковної канцелярії."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Можливо, строк дії минув або його вже використано. Якщо потрібна допомога, зверніться до церковної канцелярії."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Його плагін не встановлено"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Перейти до літери"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Не виходити (дні)"
+
+#: 
+msgid "Keeps it"
+msgstr "Залишає її"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Тип непідтвердженої електронної пошти"
+
+#: 
+msgid "Last day"
+msgstr "Останній день"
+
+#: 
+msgid "Last used"
+msgstr "Востаннє використано"
+
+#: 
+msgid "Last used %s"
+msgstr "Востаннє використано %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Керівник %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Дозволити адміністраторам відкривати портал членів особи від її імені з меню «Дії» особи, поки вхід членів увімкнено."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Дозволити членам додавати ключі доступу й входити до порталу членів за їх допомогою."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Дозволити членам входити до порталу членів зі своєю адресою електронної пошти. Це можна ввімкнути лише коли надсилання пошти працює."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Дозволити членам входити за електронною поштою"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Термін дії посилання та коду (хвилини)"
+
+#: 
+msgid "Login as %s"
+msgstr "Увійти як %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Вхід від імені особи"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Не вдалося почати вхід від імені особи."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Вхід від імені особи завершено: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Історія входу від імені особи"
+
+#: 
+msgid "Login as Person started"
+msgstr "Вхід від імені особи розпочато"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Вхід від імені особи зупинено"
+
+#: 
+msgid "Look up anyone"
+msgstr "Знайти будь-кого"
+
+#: 
+msgid "Loses it"
+msgstr "Втрачає її"
+
+#: 
+msgid "Manage a team"
+msgstr "Керувати командою"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Керувати моїм входом і пристроями"
+
+#: 
+msgid "Matches: %s"
+msgstr "Збіги: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Може входити"
+
+#: 
+msgid "May sign in now"
+msgstr "Може входити зараз"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Код входу до порталу членів"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Сповіщення про вхід до порталу членів"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Входи та діяльність у порталі членів — для членів і для персоналу, який відкриває портал зі свого входу персоналу."
+
+#: 
+msgid "Member sign-in"
+msgstr "Вхід членів"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Вхід членів надсилає кожній особі код електронною поштою, тому електронна пошта (SMTP) має працювати, перш ніж ви його ввімкнете."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Вхід членів вимкнено"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Вхід членів для церкви вимкнено."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Вхід членів вимкнено."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Вхід членів ще недоступний. Зверніться до церковної канцелярії."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Вхід членів ніколи не пропускає померлих, неактивних, осіб у неактивній родині, тих, хто очікує на перегляд, або тих, у кого ввімкнено «Вимкнути вхід». Ці варіанти визначають, хто ще може входити."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Вхід членів надсилає кожному члену код електронною поштою, тому його можна ввімкнути лише коли ChurchCRM може надсилати пошту. Спочатку ввімкніть електронну пошту та налаштуйте поштовий сервер."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Члени бачать сторінку календаря, поки ввімкнено принаймні один календар."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Члени вводять принаймні %d літер імені й бачать до %d збігів. Повний список ніколи не показується."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Членів, які зараз увійшли, буде виведено, і ніхто не зможе входити за електронною поштою, доки вхід членів не ввімкнуть знову."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Члени з цими класифікаціями бачать «Довідник» у меню порталу членів."
+
+#: 
+msgid "Minimum age"
+msgstr "Мінімальний вік"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Подальші спроби з цією адресою протягом наступної години не надішлють ще одне сповіщення."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Перенесено з електронної пошти родини"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Перенесено голові родини"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Перенесено подружжю"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Уперше в нашій церкві? Розкажіть про свою родину, і ми зв’яжемося, щоб привітати вас."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Сеансів входу від імені особи ще немає."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Немає дати народження, і це не голова родини чи подружжя"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Жоден календар не ввімкнено, тому члени не бачать сторінку календаря."
+
+#: 
+msgid "No changes"
+msgstr "Без змін"
+
+#: 
+msgid "No changes made."
+msgstr "Змін не внесено."
+
+#: 
+msgid "No family role"
+msgstr "Немає сімейної ролі"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Жоден голова родини чи подружжя не може отримувати електронну пошту родини."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Її не поділяють голова родини чи подружжя"
+
+#: 
+msgid "No match"
+msgstr "Немає збігу"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Поки ніхто не відповідає правилу входу. Позначте більше сімейних ролей чи класифікацій або знизьте мінімальний вік."
+
+#: 
+msgid "No passkey was added."
+msgstr "Ключ доступу не додано."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Ключ доступу не використано. Спробуйте знову або ввійдіть за адресою електронної пошти."
+
+#: 
+msgid "No person has this email"
+msgstr "Жодна особа не має цієї електронної пошти"
+
+#: 
+msgid "No personal email"
+msgstr "Немає особистої електронної пошти"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Спільні адреси нікому не заважають входити."
+
+#: 
+msgid "No such person"
+msgstr "Такої особи немає"
+
+#: 
+msgid "No, thanks"
+msgstr "Ні, дякую"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Ніхто не може входити з особистою електронною поштою, яку спільно використовують двоє людей, яким дозволено вхід. Для адреси, спільної в одній родині, її залишає голова родини, інакше подружжя (спочатку найстарші). Усі інші, хто її поділяє, її втрачають. Зніміть позначку з тих, які хочете виправити інакше."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Поки ніхто не може входити: позначте принаймні одну класифікацію в розділі «Хто може входити»."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Поки ніхто не може входити: позначте принаймні одну сімейну роль і принаймні одну класифікацію в розділі «Хто може входити»."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Поки ніхто не може входити: позначте принаймні одну сімейну роль у розділі «Хто може входити»."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "У довіднику ніхто не відповідає цьому імені."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "У довіднику ще нікого немає."
+
+#: 
+msgid "Not ended"
+msgstr "Не завершено"
+
+#: 
+msgid "Not moved"
+msgstr "Не перенесено"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Не впевнені, яка електронна пошта в нас є? Зверніться до церковної канцелярії."
+
+#: 
+msgid "Not yet"
+msgstr "Ще ні"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Зазначено в хронології родини"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Серед них тих, хто вже входив: {{total}}. Їх виведено усюди, а на адресу надходить сповіщення."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Вимкнено для всіх: «%s» вимкнено"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Вимкнено для всіх: керування волонтерами не встановлено на V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Вимкнено для всіх: його функцію вимкнено"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Вимкнено для всіх: його плагін вимкнено"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Вимкнено для всіх: з членами не поділено жоден календар"
+
+#: 
+msgid "Office list"
+msgstr "Список канцелярії"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Після підтвердження її можна використовувати для входу до порталу членів."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Можна вибрати лише адреси, які вам дозволено підтверджувати."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Причину бачать лише адміністратори."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Лише адміністратор може змінити електронну пошту особи, яка має обліковий запис персоналу або дозволи порталу."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Лише адміністратор може підтвердити електронну пошту, яка замінила ту, з якою особа входила."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Лише адміністратор може підтвердити електронну пошту особи, яка має обліковий запис персоналу або дозволи порталу."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Лише адміністратор може виправити цю адресу: хтось, хто її поділяє, має обліковий запис персоналу або дозволи порталу."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Ці дані може підтвердити лише дорослий член вашої родини. Зверніться до церковної канцелярії."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Підтверджуйте лише адреси, які, як ви знаєте, належать цій особі. Будь-хто, хто прочитає адресу, може ввійти як ця особа."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "У списку канцелярії можуть бути лише живі люди з власною електронною поштою."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Додати можна лише людей із власною електронною поштою."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Необов’язкова телеметрія може містити маршрути сторінок, активну мову, версію CRM, версію PHP, сімейство ОС, країну з параметрів відомостей про церкву та випадковий ідентифікатор установлення. Звіти про помилки не містять ідентифікатора установлення. Дані надсилаються до PostHog у Сполучених Штатах."
+
+#: 
+msgid "Passkey"
+msgstr "Ключ доступу"
+
+#: 
+msgid "Passkey added"
+msgstr "Ключ доступу додано"
+
+#: 
+msgid "Passkey removed"
+msgstr "Ключ доступу видалено"
+
+#: 
+msgid "Passkeys"
+msgstr "Ключі доступу"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Ключі доступу вимкнено."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Тут не можна використовувати ключі доступу."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "На цьому сайті ще не можна використовувати ключі доступу. Зверніться до церковної канцелярії."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Для ключів доступу в адресі сайту потрібне ім’я вузла, а не IP-адреса."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Для ключів доступу потрібне захищене з’єднання (HTTPS) із цим сайтом."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Для ключів доступу адресу сайту потрібно задати у Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Ключі доступу потребують, щоб сайт працював через HTTPS. Членам їх не пропонують, доки це не так."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Ключі доступу працюють лише на %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Ключі доступу: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Люди, яких пропускають збережені параметри: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Кому писати, коли хтось не зміг увійти до порталу членів"
+
+#: 
+msgid "People who hold it"
+msgstr "Люди, які його мають"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Люди, які втратять адресу: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Люди, які втратили адресу: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Люди, які можуть входити: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Люди, які раніше входили до порталу членів: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Люди з цими класифікаціями з’являються в довіднику. Число — скільки активних людей має кожну класифікацію."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Люди з цією електронною поштою: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Особа %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Оберіть класифікації зі списку."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Оберіть сімейні ролі зі списку."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Оберіть людей для списку канцелярії."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Оберіть мову зі списку."
+
+#: 
+msgid "Portal permission given"
+msgstr "Дозвіл порталу надано"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Дозвіл порталу вилучено"
+
+#: 
+msgid "Portal permissions"
+msgstr "Дозволи порталу"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Вхід до порталу"
+
+#: 
+msgid "Problem"
+msgstr "Проблема"
+
+#: 
+msgid "Reason"
+msgstr "Причина"
+
+#: 
+msgid "Reason: %s"
+msgstr "Причина: %s"
+
+#: 
+msgid "Refused"
+msgstr "Відмовлено"
+
+#: 
+msgid "Register your family"
+msgstr "Зареєструйте свою родину"
+
+#: 
+msgid "Remembered device"
+msgstr "Запам’ятаний пристрій"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Запам’ятаний пристрій видалено"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Запам’ятані пристрої: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Видалити адреси електронної пошти"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Видалити цей ключ доступу"
+
+#: 
+msgid "Remove this permission"
+msgstr "Вилучити цей дозвіл"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Видалено з: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Замінено після входу"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Замінено іншим входом"
+
+#: 
+msgid "Result"
+msgstr "Результат"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Керуйте волонтерською командою: посади, волонтери, розклади, укомплектування та чисельність."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Поясніть, чому вхід вимикається."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Поясніть, чому надається цей дозвіл."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Шукайте будь-кого в картотеці. Кожен рядок показує, чи може особа входити до порталу членів, і якщо ні — чому."
+
+#: 
+msgid "Search method"
+msgstr "Спосіб пошуку"
+
+#: 
+msgid "Search only"
+msgstr "Лише пошук"
+
+#: 
+msgid "See family contact details"
+msgstr "Бачити контактні дані родини"
+
+#: 
+msgid "See my family"
+msgstr "Бачити мою родину"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Бачити портал членів так, як його бачить ця особа? Сторінки персоналу залишаються закритими, доки ви не натиснете «Зупинити», а сеанс записується на цій сторінці та на вашій сторінці користувача."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Бачити календарі, якими церква ділиться з членами, і підписуватися на них."
+
+#: 
+msgid "See the church calendar"
+msgstr "Бачити церковний календар"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Бачити пристрої та ключі доступу, якими вони входять, і виходити або видаляти будь-які з них."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Бачити адреси електронної пошти та номери телефонів людей у їхній родині."
+
+#: 
+msgid "See the member directory"
+msgstr "Бачити довідник членів"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Бачити імена та фото людей у їхній родині."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Бачити людей, яких церква наводить у довіднику, з даними, якими церква вирішує поділитися."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Бачити їхній волонтерський розклад, записуватися на вільні місця й просити заміну."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Надсилайте browse як true або false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Надсилайте класифікації як список ідентифікаторів."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Надсилайте параметри довідника як об’єкт JSON."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Надсилайте поля для показу як об’єкт значень true і false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Надсилайте параметри як об’єкт JSON."
+
+#: 
+msgid "Session ended"
+msgstr "Сеанс завершено"
+
+#: 
+msgid "Set up email"
+msgstr "Налаштувати пошту"
+
+#: 
+msgid "Set up email first."
+msgstr "Спочатку налаштуйте електронну пошту."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Виправлено спільних адрес: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Спільних адрес для виправлення: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Поділяють"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Спільні адреси, які не дають людям входити"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Показати або приховати цього члена"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Показувати сторінку «Довідник» у порталі членів класифікаціям, обраним нижче."
+
+#: 
+msgid "Show the member directory"
+msgstr "Показати довідник членів"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Показувати довідник членів у порталі членів."
+
+#: 
+msgid "Show with year"
+msgstr "Показувати з роком"
+
+#: 
+msgid "Show without year"
+msgstr "Показувати без року"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Показано перші збіги: %d. Введіть більше імені, щоб знайти потрібну особу."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Увійти як %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Наступного разу входьте на цьому пристрої за допомогою Face ID, відбитка пальця або PIN-коду пристрою."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Увійдіть, щоб бачити свою родину, церковний календар і способи служити. Пароль чи обліковий запис не потрібні."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Увійти за допомогою ключа доступу"
+
+#: 
+msgid "Sign out every device"
+msgstr "Вийти на всіх пристроях"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Вийти на всіх пристроях зараз?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Вийти усюди"
+
+#: 
+msgid "Sign out this device"
+msgstr "Вийти на цьому пристрої"
+
+#: 
+msgid "Sign-in"
+msgstr "Вхід"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Вхід і пристрої"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Не вдалося вимкнути вхід."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Не вдалося ввімкнути вхід."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Вхід вимкнено"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Запитано лист для входу"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Листів для входу на IP-адресу за годину"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Вхід увімкнено"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Для цієї особи вхід уже вимкнено."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Вхід вимкнено"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Для цієї особи вхід вимкнено."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Для цієї особи вхід увімкнено."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Для цієї особи вхід не вимкнено."
+
+#: 
+msgid "Sign-in refused"
+msgstr "У вході відмовлено"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Вхід, сеанси та ключ API заблоковано, доки це не буде вирішено в записі пов’язаної особи."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Входили за останні 30 днів"
+
+#: 
+msgid "Signed out"
+msgstr "Вихід виконано"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "Виведено через зміну їхнього входу"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Виведено усюди"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Хтось запитав лист для входу до порталу членів, але його не надіслано."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Хтось не зміг увійти до порталу членів"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Під час входу від імені особи сторінки персоналу залишаються закритими. Натисніть «Зупинити» на банері, щоб повернутися."
+
+#: 
+msgid "Stop"
+msgstr "Зупинити"
+
+#: 
+msgid "Stopped"
+msgstr "Зупинено"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Повідомте церковну канцелярію, чи дані родини досі правильні."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Цей код не спрацював. Перевірте найновіший лист від нас або запитайте новий."
+
+#: 
+msgid "That could not be removed."
+msgstr "Це не вдалося видалити."
+
+#: 
+msgid "That device is signed out."
+msgstr "На цьому пристрої виконано вихід."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Це не дійсна адреса електронної пошти."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Ця сторінка була відкрита занадто довго. Спробуйте знову."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Цей ключ доступу видалено. З його допомогою більше не можна ввійти."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Це тривало занадто довго. Спробуйте знову."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Оновлення 7.8.3 передало кожну сімейну електронну пошту особі. Ці передати не вдалося, тому натомість залишено примітку в хронології родини."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Портал членів і листи, які він вам надсилає, використовують цю мову."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Зміну не вдалося зберегти."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Код і кнопка діють один раз до %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Код або посилання надіслано на адресу, яка більше не є їхньою електронною поштою"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Лист підтвердження не вдалося надіслати. Спробуйте пізніше."
+
+#: 
+msgid "The device is signed out."
+msgstr "З пристрою виконано вихід."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "Адресу електронної пошти %2$s видалено з вашого запису о %1$s. Вас виведено з порталу членів на всіх пристроях."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "Адресу електронної пошти у вашому записі о %1$s змінено з %2$s на %3$s. Вас виведено з порталу членів на всіх пристроях."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "Електронну пошту не вдалося підтвердити."
+
+#: 
+msgid "The email could not be sent."
+msgstr "Лист не вдалося надіслати."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "Електронну пошту підтверджено. Тепер її можна використовувати для входу."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Кінцева дата раніше за початкову."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "У родини немає живого активного голови родини чи подружжя"
+
+#: 
+msgid "The family is inactive"
+msgstr "Родина неактивна"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "І голова родини, і подружжя мають власну електронну пошту"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Останній день не може бути в минулому."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Пов’язана особа не може входити, тому цей обліковий запис не може входити"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Список не вдалося завантажити."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Ключ доступу не вдалося додати. Спробуйте знову."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Ключ доступу не вдалося перевірити"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Ключа доступу немає в записі або його видалено"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Ключ доступу видалено."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Люди, які її поділяють, у різних родинах або не в родині"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Люди, які поділяють цю адресу, змінилися. Знову відкрийте «Виправити спільні адреси»."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Дозвіл не вдалося надати."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Дозвіл закінчується після цього дня. Його можна надати знову."
+
+#: 
+msgid "The permission was given."
+msgstr "Дозвіл надано."
+
+#: 
+msgid "The permission was removed."
+msgstr "Дозвіл вилучено."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Дозволи не вдалося завантажити."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Особа одразу втрачає цей дозвіл у порталі членів."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Причина може містити не більше ніж %d символів."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Правила входу їх пропускають, і в кожного є власна електронна пошта, якою не користується ніхто інший, кому дозволено вхід."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Правила входу їх пропускають, але електронна пошта — ні: її немає, її поділяють із кимось іншим, кому дозволено вхід, або її ще не підтверджено."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Параметри входу не вдалося зберегти."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Непідтверджена електронна пошта змінилася. Перезавантажте сторінку й спробуйте знову."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Їхня класифікація не може входити"
+
+#: 
+msgid "Their email changed"
+msgstr "Їхню електронну пошту змінено"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "Їхню електронну пошту ще не підтверджено"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "Їхню електронну пошту поділяють з кимось іншим"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Їхня сімейна роль не може входити"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Їхні старі входи видалено оновленням. Увімкніть вхід членів, щоб вони могли входити зі своєю електронною поштою."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Термін їхнього запам’ятаного пристрою минув"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "З їхнього запам’ятаного пристрою виконано вихід"
+
+#: 
+msgid "Theme development"
+msgstr "Розробка теми"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Немає класифікації з ідентифікатором %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Для цього виду області немає засобу вибору."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Такої події аудиту немає."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Такої проблеми з електронною поштою немає."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Такого типу непідтвердженої електронної пошти немає."
+
+#: 
+msgid "There is no such list."
+msgstr "Такого списку немає."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Такого дозволу порталу немає."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Це телефони та комп’ютери, на яких ви обрали залишатися в системі. Вийдіть на тих, якими більше не користуєтеся або яких не впізнаєте."
+
+#: 
+msgid "They have a staff account"
+msgstr "Вони мають обліковий запис персоналу"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Вони можуть входити, але ніколи не входили."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Для цієї дії потрібен сеанс браузера, у якому виконано вхід."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Цю адресу не вдалося змінити. Знову відкрийте «Виправити спільні адреси», щоб побачити її стан."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Цю адресу більше не поділяють люди, які можуть входити."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Цей браузер не може створювати ключі доступу."
+
+#: 
+msgid "This device"
+msgstr "Цей пристрій"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "На цьому пристрої вже є ключ доступу для вас."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Цей пристрій більше не триматиме особу в системі, а відкритий на ньому сеанс завершиться. Вони можуть увійти знову за електронною поштою."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Це мій власний пристрій. Не виходьте."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Тут ви вирішуєте щодо гостей. Число — скільки активних людей має кожну класифікацію."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Це посилання не можна використати"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Термін цього посилання минув або його вже використано"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Ця частина порталу членів вам недоступна."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Цей ключ доступу вже є в записі."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Цей ключ доступу більше не виконуватиме вхід за цю особу. Вони можуть увійти за електронною поштою й додати новий."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Цей дозвіл не можна надати на сторінці особи."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "У цієї особи вже є всі дозволи, які можна надати."
+
+#: 
+msgid "This person already has this permission."
+msgstr "У цієї особи вже є цей дозвіл."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Ця особа більше не може входити ніде — ні до порталу членів, ні як персонал. Кожен сеанс завершується, а запам’ятані пристрої та ключі доступу видаляються."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Цю особу не вдалося вивести."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "У цієї особи є обліковий запис персоналу. Вхід від імені особи ніколи не відкриває обліковий запис персоналу."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "У цієї особи немає такого ключа доступу."
+
+#: 
+msgid "This person has no such permission."
+msgstr "У цієї особи немає такого дозволу."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "У цієї особи немає такого запам’ятаного пристрою."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "У цієї особи немає непідтвердженої електронної пошти."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Ця особа входила до порталу членів. Зміна цієї електронної пошти виводить її усюди, і нову адресу не можна використовувати для входу, доки її не підтверджено."
+
+#: 
+msgid "This person is deceased."
+msgstr "Ця особа померла"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Цю особу виведено з порталу членів усюди."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Цієї особи більше немає."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Це виводить вас усюди, зокрема тут, і забуває кожен пристрій. Ви можете ввійти знову за адресою електронної пошти."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Це виводить вас усюди, зокрема тут, і забуває кожен пристрій. Ваші ключі доступу залишаються: ви можете ввійти знову ключем доступу або адресою електронної пошти."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Цей інструмент ніколи їх не змінює. Надайте кожній особі власну електронну пошту в її записі."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Позначайте це лише на власному телефоні чи комп’ютері, ніколи на спільному чи публічному."
+
+#: 
+msgid "Time: %s"
+msgstr "Час: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Час очікування вичерпано"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Щоб змінити цю електронну пошту, зверніться до церковної канцелярії."
+
+#: 
+msgid "To fix"
+msgstr "До виправлення"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Щоб залишатися в системі на власному телефоні чи комп’ютері, наступного разу під час входу позначте «Це мій власний пристрій»."
+
+#: 
+msgid "Too many attempts"
+msgstr "Забагато спроб"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Забагато листів для входу сьогодні"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Забагато запитів на вхід для цієї адреси електронної пошти"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Забагато запитів на вхід із цієї IP-адреси"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Забагато неправильних кодів"
+
+#: 
+msgid "Turn off"
+msgstr "Вимкнути"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Вимкнути вхід членів?"
+
+#: 
+msgid "Turn on"
+msgstr "Увімкнути"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Увімкнути вхід членів"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Увімкнути вхід членів?"
+
+#: 
+msgid "Type a name"
+msgstr "Введіть ім’я"
+
+#: 
+msgid "Type a name or email"
+msgstr "Введіть ім’я або електронну пошту"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Введіть принаймні %d літер імені, а потім шукайте."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Непідтверджена електронна пошта"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Зрозуміти, де використовується ChurchCRM"
+
+#: 
+msgid "Unknown device"
+msgstr "Невідомий пристрій"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Невідоме поле довідника: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Невідомий параметр довідника: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Пристрій без назви"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Ключ доступу без назви"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Доки церковна канцелярія її не підтвердить, нову адресу не можна використовувати для входу."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Використати %1$s як адресу електронної пошти для %2$s о %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Використати іншу адресу електронної пошти"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Використати ключ доступу на цьому пристрої?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Скористайтеся кнопкою нижче, щоб підтвердити, що %1$s — ваша адреса електронної пошти о %2$s. Посилання діє один раз до %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Користувач %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Переглянути дозволи"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Очікуємо, доки ви підтвердите %s. Скористайтеся посиланням, яке ми надіслали на цю адресу."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Очікуємо, доки ви підтвердите {{email}}. Скористайтеся посиланням, яке ми надіслали на цю адресу."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Нам не вдалося надіслати лист. Спробуйте пізніше або зверніться до церковної канцелярії."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Нам не вдалося виконати ваш вхід"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Ми надіслали посилання на %s. Скористайтеся ним, щоб підтвердити нову адресу електронної пошти."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Ми надіслали посилання на {{email}}. Ваша електронна пошта зміниться, коли ви ним скористаєтеся."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Ми надішлемо вам код і посилання для входу."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Ми раді, що ви тут! Це займе близько трьох хвилин."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Ми раді, що ваша родина приєдналася до нас! Вашу реєстрацію отримано. Наша команда незабаром зв’яжеться, щоб особисто вас привітати."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Річниця весілля"
+
+#: 
+msgid "Welcome"
+msgstr "Ласкаво просимо"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Того, для чого його надано, більше немає"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Що члени можуть бачити й робити в порталі та звідки кожен дозвіл. Людей рахують серед усіх, кого пропускають правила входу, і персоналу."
+
+#: 
+msgid "What members can use"
+msgstr "Що можуть використовувати члени"
+
+#: 
+msgid "What to do"
+msgstr "Що робити"
+
+#: 
+msgid "Who can see it"
+msgstr "Хто може це бачити"
+
+#: 
+msgid "Who is listed"
+msgstr "Кого показано в списку"
+
+#: 
+msgid "Who may sign in"
+msgstr "Хто може входити"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Хто може входити до порталу членів, хто вже входив і чия електронна пошта їм заважає. Списки відповідають правилам на вкладці «Вхід»."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Кого показує довідник порталу членів, хто може його бачити і що він показує; обирається в Адміністрування -> Портал членів -> Довідник."
+
+#: 
+msgid "Why"
+msgstr "Чому"
+
+#: 
+msgid "Why not"
+msgstr "Чому ні"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "З токеном, який пристрій щойно замінив"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Так, додати ключ доступу"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Так, видалити цей ключ доступу"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Так, вийти на всіх пристроях"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Вам не дозволено підтверджувати цю електронну пошту."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Вас не залишено в системі на жодному пристрої."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Вас виведено на всіх пристроях."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Вас виведено на цьому пристрої."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Ви також можете ввійти за адресою електронної пошти."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Ви не можете вимкнути власний вхід."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Ви не можете відкрити портал членів. Зверніться до церковної канцелярії."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Ви занадто багато разів просили змінити електронну пошту. Спробуйте пізніше."
+
+#: 
+msgid "You have no passkeys."
+msgstr "У вас немає ключів доступу."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Ви ввійшли як %s у порталі членів (зміни дозволено)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Ви ввійшли як %s у порталі членів (лише читання)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Молодший за мінімальний вік"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Найменший вік, з якого особа може входити до порталу членів. Якщо дата народження невідома, підходить лише голова родини або подружжя."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Ваш код входу до порталу членів"
+
+#: 
+msgid "Your code"
+msgstr "Ваш код"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Вашу адресу електронної пошти %s ще не підтверджено, тому її не можна використовувати для входу. Ми надішлемо на неї посилання; використання посилання її підтверджує."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Вашу адресу електронної пошти тут видалити не можна. Зверніться до церковної канцелярії."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Вашу адресу електронної пошти підтверджено"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Вашу адресу електронної пошти змінено"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Ваш ключ доступу додано. Наступного разу входьте ним на цьому пристрої."
+
+#: 
+msgid "an administrator"
+msgstr "адміністратор"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "жоден голова родини чи подружжя не має адреси електронної пошти"
+
+#: 
+msgid "or"
+msgstr "або"
+
+#: 
+msgid "until %s"
+msgstr "до %s"
 

@@ -81,7 +81,10 @@ class MpdfRenderer
         $data['church_tax_id'] = ChurchMetaData::getChurchTaxId();
         $website = ChurchMetaData::getChurchWebSite();
         $data['church_website'] = preg_match('#^https?://#i', $website) ? $website : '';
-        $data['church_social'] = ChurchMetaData::getChurchSocialLinks();
+        $data['church_social'] = array_values(array_filter(
+            ChurchMetaData::getChurchSocialLinks(),
+            static fn (array $link): bool => ChurchMetaData::isValidSocialUrl((string) $link['url'])
+        ));
         $data['church_logo'] = $this->churchLogo();
         $locale = Bootstrapper::getCurrentLocale();
         $localeCode = str_replace('_', '-', (string) $locale->getLocale());

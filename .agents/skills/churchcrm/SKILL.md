@@ -25,7 +25,7 @@ Load `skill-architecture.md` only when adding or editing a skill.
 | [Configuration Management](./configuration-management.md) | SystemConfig |
 | [Settings Placement](./settings-placement.md) | Where a setting lives, area admin hub |
 | [Volunteer Management v2](./volunteer-v2.md) | Ministries / Volunteer v2 (full design: `docs/design/volunteer-v2.md`) |
-| [Member Portal Design](./member-portal-design.md) | `/portal` and themes |
+| [Member Portal Design](./member-portal-design.md) | `/portal` and themes (flow, screens, data: `docs/design/member-portal.md`) |
 
 ## Reports
 
@@ -107,6 +107,7 @@ Community feedback policy (Feature Proposals and RFC Reviews Discussions): [`doc
 | [Maintainer Review Gates](./maintainer-review-gates.md) | Review a PR |
 | [PR Review](./pr-review.md) | Standards checklist |
 | [Church Review](./church-review.md) | Review an issue from the church user's workflow |
+| [Stale Issue Triage](./stale-issue-triage.md) | Re-triage stale-closed issues |
 | [Dependabot PR Review](./dependabot-review.md) | `/dependabot-review <PR>`: npm or Composer upgrade review |
 | [PR Review Fix](../pr-review-fix.md) | Address review comments |
 | [Skill architecture](./skill-architecture.md) | Edit a skill |

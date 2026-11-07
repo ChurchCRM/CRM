@@ -4,10 +4,22 @@ Tracks #11015. Implementation merged in #10977; its final build, PHP regression,
 
 ## Acceptance record
 
-- One Finance hub entry, advanced settings, filter preservation, bank-slip separation, preserved PDF API and persona gates: implemented and covered by the merged automated workflow.
-- Light/dark at desktop 1440, tablet 820 and phone 390: new regression cases in deposit-reports.spec.js; screenshots are generated when run, not claimed here.
-- Actual PDF appearance, representative RTL content and QuickBooks stock alignment: pending.
-- Published user documentation and updated capture images: pending the release.
+- Verification date: 2026-11-03; checkout from master `f0ebcceba7d9ee87df8d1cbdae65a415b0bd27c2`. Implementation remains merged in #10977, #11027 and #11028; #11015 remains open for this evidence and post-release user documentation.
+- Preparation: `npm run env:check -- integration --services` exited 0, 19/19 checks passed; `npm run docker:test:reset:db` exited 0 using the standard seed.
+- Required workflow command: `npx --no-install cypress run --config-file cypress/configs/docker.config.ts --spec "cypress/e2e/ui/finance/deposit-reports.spec.js,cypress/e2e/ui/finance/finance.deposit-editor.spec.js"` exited 0. Deposit reports: 10 passed, 0 failed, 0 pending, 0 skipped. Deposit editor: 6 passed, 0 failed, 0 pending, 0 skipped. Total: 16 passed, 0 failed, 0 pending, 0 skipped.
+- Screenshot inspection: each file below was opened and inspected in `cypress/screenshots/deposit-reports.spec.js/` (copies retained locally in `/tmp/issue-11015-evidence/deposit-reports.spec.js/`). These are screenshot defects; their cause was not established as a live product defect. The six viewport overflow assertions passed, but the captures do not establish horizontal-scroll usability, keyboard access, focus visibility or accessible error feedback. The specs checked error text and retained filters, not keyboard operation or error announcements. Live keyboard/focus inspection was blocked by the native browser tool error `Sky Computer Use native pipe closed before response`.
+  - `deposit-report-light-desktop.png` (1440 requested): FAIL — right edge clips Download Report and Payment Date; date/output controls repeat across a capture seam; bank section is cut off.
+  - `deposit-report-light-tablet.png` (820): FAIL — warning and Review Payments sections repeat across a capture seam; lower report/bank actions are missing; visible labels wrap legibly.
+  - `deposit-report-light-phone.png` (390): FAIL — repeated header/warning/form sections; Apply Report Dates To collides with Advanced Settings, with output/preview controls missing; floating menu obscures the deposit control/help.
+  - `deposit-report-dark-desktop.png` (1440 requested): FAIL — right edge clips Download Report and Payment Date; deposit/date/output controls repeat across a capture seam; bank section is cut off.
+  - `deposit-report-dark-tablet.png` (820): FAIL — page title/warning/form sections repeat across a capture seam; output/preview and lower report/bank actions are missing; visible labels wrap legibly.
+  - `deposit-report-dark-phone.png` (390): FAIL — repeated header/warning/form sections; output/preview and Advanced Settings controls are missing; floating menu obscures the deposit control/help and end-date control.
+- Persona gates: existing API and UI `<persona>.gates.spec.js` specs under `cypress/e2e/{api,ui}/personas/`, run with the Docker config for `finance-only`, `office-staff` and `zero-permission-staff`, exited 0. API counts respectively: 13, 16, 42 passed; UI counts respectively: 6, 8, 8 passed. Total: 93 passed, 0 failed, 0 pending, 0 skipped. Deposit Reports opened for Finance and redirected office/zero-permission staff to access denied; finance API gates allowed Finance and denied both other personas.
+- Both Cypress commands warned that existing run results could not be trashed (`spawn Unknown system error -86`); both completed successfully. Screenshot existence was not treated as a pass.
+- Step 5 BLOCKED — read-only reconciliation preflight of the reset database found no electronic payments: all recorded Payment rows were CASH (9 fund rows, 645.00) or CHECK (24 fund rows, 14,421.00). Deposit 1 (Updated Test Deposit): cash 150.00 + checks 100.00 = 250.00; deposit 2: checks 900.00; deposit 3: checks 421.00; deposit 4: cash 50.00; deposit 5: cash 445.00 + checks 13,000.00 = 13,445.00. Split-fund checks exist in deposit 2 (check 100: 700.00 across three funds) and deposit 3 (check 773: 346.00; check 5532: 75.00, each across three funds), neither with cash or electronic payments. No seeded deposit has the required mix. Stopped without custom seeding or alternate specs. No qualifying deposit, analysis PDF/CSV totals, bank-ticket total or accompanying summary was compared; the automated temporary cash/card fixture does not satisfy this reconciliation.
+- Actual PDF appearance and representative RTL content: pending; no appearance pass claimed.
+- Physical QuickBooks stock printing, alignment and overflow: still outstanding. No printer or stock configuration was available; no physical printing was attempted.
+- Published user documentation and updated capture images: pending the release; post-release publication and the visuals capture run were outside this pass.
 
 ## Run and inspect
 

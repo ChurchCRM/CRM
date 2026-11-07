@@ -172,6 +172,35 @@ describe("CSV Export Page", () => {
         });
     });
 
+    it("exports each person's own email and nothing for a person without one", () => {
+        cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).then((today) =>
+            cy.request({
+                method: "POST",
+                url: "/CSVCreateFile.php",
+                form: true,
+                body: {
+                    FirstName: 1,
+                    Email: 1,
+                    Source: "all",
+                    Gender: 0,
+                    MembershipDate2: today,
+                    BirthDate2: today,
+                    AnniversaryDate2: today,
+                    EnterDate2: today,
+                    Format: "Default",
+                    Submit: "Create File",
+                },
+            }),
+        ).then((response) => {
+            const rows = response.body.split(/\r?\n/).map((line) => line.split(",").map((cell) => cell.replace(/"/g, "").trim()));
+            const emailIdx = rows[0].findIndex((cell) => cell.endsWith("Email"));
+            const rowOf = (first, last) => rows.find((cells) => cells.includes(first) && cells.includes(last));
+            expect(emailIdx).to.be.greaterThan(-1);
+            expect(rowOf("Mark", "Smith")[emailIdx]).to.eq("mark.smith@example.com");
+            expect(rowOf("Mary", "Smith")[emailIdx]).to.eq("");
+        });
+    });
+
     it("exports each person's grade name in the Grade column (#10189)", () => {
         cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).as("serverToday", { type: "static" });
         cy.visit("/PersonEditor.php");
@@ -304,7 +333,7 @@ describe("CSV Export Authorization (GHSA-4vj2-gm78-3q63)", () => {
         cy.visit("/CSVExport.php", { failOnStatusCode: false });
 
         // Should be redirected to login (or show auth error)
-        cy.url().should("include", "/session/begin");
+        cy.location("pathname").should("match", /\/admin\/$/);
     });
 
     it("should deny unauthenticated POST to CSVCreateFile.php", () => {

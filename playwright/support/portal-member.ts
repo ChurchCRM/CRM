@@ -2,19 +2,18 @@ import { type APIRequestContext, type APIResponse, expect, type Page, request } 
 import path from 'node:path';
 
 import { BASE_URL, LOCALE, LOCALE_UI_VALUE } from './env';
-import { humanPause, humanType } from './human';
 
 /**
- * A self-service ("Edit Self" only) login for one demo member, created through
- * the admin user editor and deleted again afterwards, so the Member Portal
- * captures sign in as a real member rather than as the admin.
+ * The demo member the Member Portal captures sign in as, with their own email
+ * (members have no user account since the 7.8.3 cutover).
  *
- * Sarah Carter is an adult of the demo Carter family (src/admin/demo/people.json):
- * both parents have photos, and no other capture uses the family.
+ * George Carter is the head of the demo Carter family (src/admin/demo/people.json):
+ * both parents have photos, and no other capture signs in as anyone in the
+ * family. He is not one of member-sign-in.ts's SIGN_IN_MEMBERS, whose devices
+ * that workflow signs out, so his remembered device lasts across locale passes.
  */
 export const PORTAL_MEMBER = {
-  login: 'sarah.carter@demo.churchcrm.io',
-  password: 'PortalDemo!2026',
+  email: 'george.carter@demo.churchcrm.io',
 };
 
 const ADMIN_STATE_PATH = path.join(__dirname, '..', '.auth', 'admin.json');
@@ -53,58 +52,36 @@ async function deletePendingFamilyMembers(api: APIRequestContext, familyId: numb
   }
 }
 
-async function createPortalMember(api: APIRequestContext): Promise<PortalMember> {
-  const search = `/api/persons/search/${encodeURIComponent(PORTAL_MEMBER.login)}`;
+async function findPortalMember(api: APIRequestContext): Promise<PortalMember> {
+  const search = `/api/persons/search/${encodeURIComponent(PORTAL_MEMBER.email)}`;
   const matches = await (await ok(await api.get(search), 'Find member')).json();
   const personId = Number(matches[0]?.objid);
-  expect(personId, `demo person ${PORTAL_MEMBER.login}`).toBeGreaterThan(0);
+  expect(personId, `demo person ${PORTAL_MEMBER.email}`).toBeGreaterThan(0);
   const person = await (await ok(await api.get(`/api/person/${personId}`), 'Read member')).json();
   const member = { personId, familyId: Number(person.FamId) };
 
-  // A run that stopped half way leaves its login and proposed family member behind.
-  await api.delete(`/admin/api/user/${personId}/`);
+  // A run that stopped half way leaves its proposed family member behind.
   await deletePendingFamilyMembers(api, member.familyId);
-
-  const editor = `/admin/system/users/new?personId=${personId}`;
-  await ok(
-    await api.post('/admin/system/users/new', {
-      form: {
-        csrf_token: await csrfToken(api, editor),
-        PersonID: String(personId),
-        UserName: PORTAL_MEMBER.login,
-        accessMode: 'self',
-      },
-    }),
-    'Create self-service user',
-  );
-  await ok(await api.get(`/admin/api/user/${personId}/permissions`), 'Read new user');
-
-  const passwordForm = `/admin/system/user/${personId}/changePassword`;
-  await ok(
-    await api.post(passwordForm, {
-      form: {
-        csrf_token: await csrfToken(api, passwordForm),
-        NewPassword1: PORTAL_MEMBER.password,
-        NewPassword2: PORTAL_MEMBER.password,
-        Submit: 'Save',
-      },
-    }),
-    'Set member password',
-  );
-
-  if (LOCALE !== 'en' && LOCALE_UI_VALUE) {
-    await ok(
-      await api.post(`/api/user/${personId}/setting/ui.locale`, { data: { value: LOCALE_UI_VALUE } }),
-      'Set member locale',
-    );
-  }
 
   return member;
 }
 
-async function removePortalMember(api: APIRequestContext, member: PortalMember): Promise<void> {
-  await ok(await api.delete(`/admin/api/user/${member.personId}/`), 'Delete self-service user');
-  await deletePendingFamilyMembers(api, member.familyId);
+async function setConfig(api: APIRequestContext, name: string, value: string): Promise<void> {
+  await ok(await api.post(`/admin/api/system/config/${name}`, { data: { value } }), `Set ${name}`);
+}
+
+/**
+ * A member has no account to keep a language on, so the portal speaks the
+ * church's language: for another locale pass it is set to that locale, and
+ * the returned step puts it back.
+ */
+async function useLocaleForMembers(api: APIRequestContext): Promise<() => Promise<void>> {
+  if (LOCALE === 'en' || !LOCALE_UI_VALUE) {
+    return async () => undefined;
+  }
+  const { value } = await (await ok(await api.get('/admin/api/system/config/sLanguage'), 'Read sLanguage')).json();
+  await setConfig(api, 'sLanguage', LOCALE_UI_VALUE);
+  return () => setConfig(api, 'sLanguage', String(value ?? ''));
 }
 
 interface PortalCalendarChoice {
@@ -121,8 +98,9 @@ export interface PortalDemo {
 }
 
 /**
- * The member login plus a calendar worth looking at: the calendars the demo import
- * shares, with the Holidays plugin calendar beside them. tearDown() puts every piece back.
+ * The member, in the church's language for this pass, plus a calendar worth looking at:
+ * the calendars the demo import shares, with the Holidays plugin calendar beside them.
+ * tearDown() puts every piece back.
  */
 export async function setUpPortalDemo(api: APIRequestContext): Promise<PortalDemo> {
   const undo: Array<() => Promise<unknown>> = [];
@@ -137,8 +115,9 @@ export async function setUpPortalDemo(api: APIRequestContext): Promise<PortalDem
   };
 
   try {
-    const member = await createPortalMember(api);
-    undo.push(() => removePortalMember(api, member));
+    const member = await findPortalMember(api);
+    undo.push(() => deletePendingFamilyMembers(api, member.familyId));
+    undo.push(await useLocaleForMembers(api));
 
     const { calendars } = await (
       await ok(await api.get('/admin/api/member-portal/calendars'), 'List portal calendars')
@@ -169,16 +148,6 @@ export async function setUpPortalDemo(api: APIRequestContext): Promise<PortalDem
     await tearDown().catch(() => undefined);
     throw error;
   }
-}
-
-export async function signInAsPortalMember(page: Page): Promise<void> {
-  await page.goto('/login');
-  await humanType(page.locator('input[name=User]'), PORTAL_MEMBER.login);
-  await humanType(page.locator('input[name=Password]'), PORTAL_MEMBER.password);
-  await humanPause(page, 400);
-  await page.locator('input[name=Password]').press('Enter', { noWaitAfter: true });
-  await page.waitForURL(/\/portal\/?$/, { timeout: 60000 });
-  await expect(page.locator('.portal-shell')).toBeVisible({ timeout: 15000 });
 }
 
 /** Member photos are lazy-loaded, and the capture must not catch one half drawn. */

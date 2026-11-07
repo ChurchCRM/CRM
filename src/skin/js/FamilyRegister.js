@@ -152,7 +152,7 @@
 
         // Set the label's "for" attribute if this is a checkbox/radio
         if (element.type === "checkbox" || element.type === "radio") {
-          const label = element.nextElementSibling;
+          const label = element.closest("label") || element.nextElementSibling;
           if (label && label.tagName === "LABEL") {
             label.setAttribute("for", element.id);
           }
@@ -381,7 +381,7 @@
    */
   function getErrorContainer(fieldId) {
     const field = document.getElementById(fieldId);
-    return field ? field.parentElement.querySelector(".invalid-feedback") : null;
+    return field ? field.parentElement.querySelector(".portal-field-error") : null;
   }
 
   /**
@@ -393,11 +393,11 @@
     return new window.JustValidate(formSelector, {
       errorFieldCssClass: "is-invalid",
       successFieldCssClass: "is-valid",
-      errorLabelCssClass: "invalid-feedback",
+      errorLabelCssClass: "portal-field-error",
       focusInvalidField: true,
       lockForm: false,
       errorFieldStyle: {
-        border: "1px solid #dc3545",
+        border: "1px solid var(--portal-danger)",
       },
     });
   }
@@ -471,10 +471,6 @@
     validator.addField(
       "#familyHomePhone",
       [
-        {
-          rule: "required",
-          errorMessage: i18next.t("Home phone is required"),
-        },
         {
           rule: "minLength",
           value: 7,
@@ -664,7 +660,7 @@
    */
   function expandCardsWithErrors() {
     document.querySelectorAll(".member-card").forEach((card) => {
-      const hasError = card.querySelector(".is-invalid") || card.querySelector(".invalid-feedback:not(:empty)");
+      const hasError = card.querySelector(".is-invalid") || card.querySelector(".portal-field-error:not(:empty)");
       if (hasError) {
         const body = card.querySelector(".member-card-body");
         const btn = card.querySelector(".member-toggle-btn");
@@ -693,30 +689,10 @@
       data: JSON.stringify(familyData),
     })
       .done(function () {
-        const churchName = window.CRM.churchName || i18next.t("our church");
-        bootbox.dialog({
-          title: '<i class="fa-solid fa-church me-2 text-success"></i>' + i18next.t("Welcome to the Family!"),
-          message:
-            `<div class="text-center mb-3"><i class="fa-solid fa-circle-check fa-3x text-success"></i></div>` +
-            `<p class="text-center fs-5">${i18next.t("We're so glad your family has joined us!")}</p>` +
-            `<p class="text-center text-muted">${i18next.t("Your registration has been received. Our team will be in touch soon to personally welcome you.")}</p>`,
-          buttons: {
-            another: {
-              label: '<i class="fa-solid fa-plus me-1"></i>' + i18next.t("Register another family"),
-              className: "btn-outline-secondary",
-              callback: function () {
-                window.location.href = `${rootPath}/external/register/`;
-              },
-            },
-            done: {
-              label: '<i class="fa-solid fa-house me-1"></i>' + i18next.t("Go to homepage"),
-              className: "btn-success",
-              callback: function () {
-                window.location.href = window.CRM.churchWebSite;
-              },
-            },
-          },
-        });
+        document.getElementById("registration-stepper").hidden = true;
+        const done = document.getElementById("registration-success");
+        done.hidden = false;
+        done.scrollIntoView({ behavior: "smooth", block: "start" });
       })
       .fail(function (xhr) {
         console.error("Registration failed:", xhr);

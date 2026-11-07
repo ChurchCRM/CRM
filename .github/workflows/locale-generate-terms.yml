@@ -92,38 +92,8 @@ jobs:
       
       - name: Check for meaningful changes
         id: check_changes
-        run: |
-          # Check if there are any changes to .po files
-          # The main messages.po is in locale/messages.po
-          PO_FILE="locale/messages.po"
-          
-          if [ ! -f "$PO_FILE" ]; then
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No messages.po file found at $PO_FILE"
-            exit 0
-          fi
-          
-          if git diff --quiet -- "$PO_FILE"; then
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No changes detected in locale files"
-            exit 0
-          fi
-          
-          # Skip PR only when the diff is purely auto-bumped header timestamps.
-          # Previous tail -n +25 heuristic silently dropped small valid changes.
-          CHANGES=$(git diff -- "$PO_FILE" \
-            | grep -E '^\+[^+]|^\-[^-]' \
-            | grep -vE '^[+-]"(POT-Creation-Date|PO-Revision-Date):' \
-            | wc -l)
+        run: node locale/scripts/lib/locale-po-changes.js
 
-          if [ "$CHANGES" -gt 0 ]; then
-            echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "Meaningful changes detected: $CHANGES lines"
-          else
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "Only POT-Creation-Date/PO-Revision-Date changed, skipping PR creation"
-          fi
-      
       - name: Upload generated locale files
         if: always()
         uses: ./.github/actions/upload-artifact

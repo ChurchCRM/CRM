@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { pdfText } from "../../../support/pdf-text";
+
 /**
  * Comprehensive test suite for ConfirmReport and ConfirmReportEmail features
  *
@@ -110,6 +112,17 @@ describe("Confirmation Reports - MVC Routes", () => {
                 expect(interception.response.statusCode).to.equal(200);
                 expect(interception.response.headers["content-type"]).to.include("application/pdf");
             });
+        });
+
+        it("lists no family email, only the members' own emails", () => {
+            cy.request({ url: "/people/report/verify?familyId=1", encoding: "binary" })
+                .then((response) => pdfText(response.body))
+                .then((lines) => {
+                    const text = lines.join(" ");
+                    expect(text).to.include("Home Phone");
+                    expect(text).to.not.include("Family Email");
+                    expect(text).to.include("mathew.campbell");
+                });
         });
 
         it("should handle invalid family ID gracefully", () => {

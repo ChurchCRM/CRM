@@ -11,8 +11,8 @@ back to a stale or placeholder artifact.
 ## How to run
 
 Uses Playwright's bundled Chromium (`npm run marketing:install` once). Set
-`BROWSER_CHANNEL=chrome` or run `npm run marketing:chrome` to use installed
-Google Chrome instead.
+`BROWSER_CHANNEL=chrome` (for example `BROWSER_CHANNEL=chrome npm run marketing`)
+to use installed Google Chrome instead.
 
 ```bash
 npm run marketing                   # fresh instance, seed it, capture, finalize videos, check, manifest
@@ -24,7 +24,22 @@ npm run docker:ci:new-system:down   # tear down the instance when you're done
 
 1. `docker:ci:new-system:start` — brings up a fresh ChurchCRM instance with an
    empty database (the same Docker Compose profile the `test-new-system` CI
-   job uses), reachable at `http://127.0.0.1:8081/`.
+   job uses), reachable at `http://127.0.0.1:8081/`, with the Mailpit mail
+   sink. The member sign-in captures send email there, read their sign-in
+   code from it, and put the email and sign-in settings back afterwards.
+   Passkeys show only when the instance is set up and reached as
+   `localhost`; an IP address can't carry them.
+
+   Mailpit binds `MAILSERVER_PORT` and `MAILSERVER_GUI_PORT`, 1025 and 8025
+   by default: the dev and test stacks' ports. Start the pipeline on its own
+   compose project and Mailpit ports, and run the captures with the same
+   `MAILSERVER_GUI_PORT` (or `CHURCHCRM_MAILPIT_URL`) so they read that
+   Mailpit:
+
+   ```bash
+   export COMPOSE_PROJECT_NAME=crm-pw-capture MAILSERVER_PORT=1026 MAILSERVER_GUI_PORT=8026
+   npm run marketing
+   ```
 2. `marketing:screenshots` — runs `playwright test`. Its `setup` project
    (`playwright/setup/bootstrap.setup.ts`) drives the setup wizard, sets a
    working admin password, saves church info, and imports demo data — the
@@ -37,24 +52,24 @@ npm run docker:ci:new-system:down   # tear down the instance when you're done
    "useful view" via `playwright/support/capture.ts`, using human-paced
    interactions (`playwright/support/human.ts`) so the videos show someone
    actually working through the app rather than an instant scripted bot.
-3. `marketing:videos` — `scripts/finalize-marketing-videos.js` copies
+3. `marketing:videos` — `scripts/marketing/finalize-marketing-videos.js` copies
    each workflow's recorded video from Playwright's internal report to its
    deterministic artifact path (see below). This runs as a separate step
    because Playwright only finalizes a video after its browser context
    closes, which happens after the test itself has already returned.
-4. `marketing:check` — `scripts/check-marketing-visuals.js` verifies every
+4. `marketing:check` — `scripts/marketing/check-marketing-visuals.js` verifies every
    capture produced its artifacts, decodes PNGs, checks their dimensions against
    the sidecar viewport at 2x scale, and requires contrast in at least two of a
    4×4 grid of tiles. This catches blank and cropped frames that pass the size
    minimum. To check a separate artifact directory, run
    `npm run marketing:check -- /path/to/artifacts`.
-5. `marketing:manifest` — `scripts/generate-marketing-manifest.js` rolls
+5. `marketing:manifest` — `scripts/marketing/generate-marketing-manifest.js` rolls
    every metadata sidecar (see below) into one `playwright/artifacts/manifest.json`.
 
 The instance is left running after a successful (or failed) run so you can
 inspect it — `docker:ci:new-system:down` tears it down explicitly.
 
-Guard fixtures run with `node --test scripts/check-marketing-visuals.test.js`
+Guard fixtures run with `node --test tests/tooling/check-marketing-visuals.test.js`
 (also included in `npm run lint`). They create synthetic PNGs in temporary
 directories outside the publish path; production captures use real demo UI.
 

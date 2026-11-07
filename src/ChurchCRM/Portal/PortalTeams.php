@@ -3,7 +3,6 @@
 namespace ChurchCRM\Portal;
 
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrence;
 use ChurchCRM\model\ChurchCRM\VolunteerOccurrenceQuery;
@@ -11,7 +10,6 @@ use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeam;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
-use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 use ChurchCRM\Utils\DateTimeUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -24,10 +22,10 @@ use Propel\Runtime\ActiveQuery\Criteria;
  * plain read the route can do itself. The TEAM page is the one that needs a
  * bundle, and it talks to `/api/ministries/*` like the admin page does.
  *
- * Read scoping happens in the QUERY (volunteer design §4.4): the team ids come
- * from `VolunteerAuthorizationService::getManagedTeamIds()` and are handed to the
- * filter, and an empty allow-list short-circuits rather than being trusted to a
- * `WHERE id IN ()`. Nothing here is sieved in PHP after hydration.
+ * Read scoping happens in the QUERY (volunteer design §4.4): the team ids are the
+ * person's `volunteer.team.manage` scopes (member sign-in design §8.2) and are
+ * handed to the filter, and an empty allow-list short-circuits rather than being
+ * trusted to a `WHERE id IN ()`. Nothing here is sieved in PHP after hydration.
  *
  * Counts and next dates are resolved in THREE queries for the whole list, not one
  * per team: a ministry map, a position count grouped by team, and one pass over
@@ -36,7 +34,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
 class PortalTeams
 {
     /**
-     * The teams this login may run, as the index page renders them.
+     * These teams, as the index page renders them.
      *
      * Ordered by ministry then team name, which is how a leader of several thinks
      * of them. `nextOccurrence` is null when nothing is generated ahead.
@@ -51,11 +49,11 @@ class PortalTeams
      *     nextOccurrence: array{id: int, date: string}|null,
      *     url: string
      * }>
+     *
+     * @param int[] $teamIds
      */
-    public static function listForUser(User $user): array
+    public static function listForTeamIds(array $teamIds): array
     {
-        $authz = new VolunteerAuthorizationService();
-        $teamIds = $authz->getManagedTeamIds($user);
         if ($teamIds === []) {
             return [];
         }
@@ -100,23 +98,6 @@ class PortalTeams
         );
 
         return $rows;
-    }
-
-    /**
-     * The one team a team page is about, or null when this login may not run it.
-     *
-     * Returning null rather than throwing keeps the route free to answer 404 for a
-     * team that does not exist and 403 for one that does — and the route is the
-     * only thing that knows which of those the member should be told.
-     */
-    public static function findManagedTeam(User $user, int $teamId): ?VolunteerTeam
-    {
-        $team = VolunteerTeamQuery::create()->findPk($teamId);
-        if ($team === null) {
-            return null;
-        }
-
-        return (new VolunteerAuthorizationService())->canManageTeam($user, $teamId) ? $team : null;
     }
 
     /**

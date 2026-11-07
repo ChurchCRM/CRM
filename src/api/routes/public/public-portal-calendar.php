@@ -37,9 +37,11 @@ use Slim\Routing\RouteCollectorProxy;
  *     privacy-trimmed by `PortalCalendarService` (a birthday reads as
  *     "Lena B.", never a surname and never an age).
  *  3. **An unknown token is indistinguishable from a member without a feed.**
- *     `findByToken()` answers null for both, and both become the same bare 404,
- *     so the route cannot be used to confirm that any particular token, or any
- *     particular account, exists.
+ *     `findByToken()` answers null for both, and for a person who may no
+ *     longer sign in (deceased, inactive, Disable sign-in, outside the member
+ *     rule…), and all of them become the same bare 404, so the route cannot be
+ *     used to confirm that any particular token, or any particular person,
+ *     exists.
  *  4. **The token is never logged.** Nothing here writes the path or the token
  *     to the application log; a feed URL in a log file would be the credential
  *     itself, readable by every member of staff.
@@ -56,7 +58,7 @@ $app->group('/public/portal-calendar', function (RouteCollectorProxy $group): vo
  *     path="/public/portal-calendar/{token}/calendar.ics",
  *     operationId="getPortalCalendarFeed",
  *     summary="A member's Member Portal calendar feed (iCalendar)",
- *     description="Serves the events of the calendars a member subscribed to in the Member Portal, as an RFC 5545 VCALENDAR covering three months back to eighteen months ahead. No session: the token in the path is the credential, and it grants read access to those calendars and to nothing else. The feed is always narrowed to the calendars the administrator currently shares with members, so un-sharing a calendar removes it from every feed immediately. An unknown or retired token is a bare 404, indistinguishable from an account that has no feed.",
+ *     description="Serves the events of the calendars a member subscribed to in the Member Portal, as an RFC 5545 VCALENDAR covering three months back to eighteen months ahead. No session: the token in the path is the credential, and it grants read access to those calendars and to nothing else. The feed is always narrowed to the calendars the administrator currently shares with members, so un-sharing a calendar removes it from every feed immediately. An unknown or retired token is a bare 404, as is the token of a person who may no longer sign in to the Member Portal.",
  *     tags={"Member Portal"},
  *     @OA\Parameter(
  *         name="token",
@@ -70,13 +72,13 @@ $app->group('/public/portal-calendar', function (RouteCollectorProxy $group): vo
  *         description="An iCalendar document",
  *         @OA\MediaType(mediaType="text/calendar", @OA\Schema(type="string", format="binary"))
  *     ),
- *     @OA\Response(response=404, description="Unknown token, a token that has been reset, or an account with no feed")
+ *     @OA\Response(response=404, description="Unknown token, a token that has been reset, or a person who may no longer sign in")
  * )
  */
 function getPortalCalendarFeed(Request $request, Response $response, array $args): Response
 {
-    $user = PortalCalendarSubscription::findByToken((string) ($args['token'] ?? ''));
-    if ($user === null) {
+    $state = PortalCalendarSubscription::findByToken((string) ($args['token'] ?? ''));
+    if ($state === null) {
         // Deliberately the framework's own generic 404 — no message naming a
         // member, a token or a reason, and the same answer for every kind of
         // miss.
@@ -84,7 +86,7 @@ function getPortalCalendarFeed(Request $request, Response $response, array $args
     }
 
     $document = PortalCalendarFeed::build(
-        PortalCalendarSubscription::events($user),
+        PortalCalendarSubscription::events($state),
         PortalCalendarSubscription::title(),
         $request->getUri()->getHost()
     );

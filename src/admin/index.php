@@ -2,8 +2,31 @@
 
 require_once __DIR__ . '/../Include/LoadConfigs.php';
 
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Authentication\StaffSignInPage;
 use ChurchCRM\Slim\MvcAppFactory;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
+use ChurchCRM\Portal\Auth\LoginAsPerson;
+use ChurchCRM\Utils\RedirectUtils;
+use Laminas\Diactoros\Response;
+use Laminas\Diactoros\ServerRequestFactory;
+
+// The exact /admin root is the staff sign-in address. It is decided here, before the
+// admin app exists, so AuthMiddleware and AdminRoleAuthMiddleware keep no path exception.
+if (rtrim((string) strtok($_SERVER['REQUEST_URI'], '?'), '/') === rtrim(SystemURLs::getRootPath(), '/') . '/admin'
+    && !LoginAsPerson::isActive()) {
+    if (!AuthenticationManager::validateUserSessionIsActive(false)) {
+        $request = ServerRequestFactory::fromGlobals();
+        $response = StaffSignInPage::handle($request, new Response());
+        http_response_code($response->getStatusCode());
+        echo $response->getBody();
+        exit;
+    }
+    if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
+        RedirectUtils::redirect('v2/dashboard');
+    }
+}
 
 $app = MvcAppFactory::create('/admin', [
     'dashboardUrl' => '/admin/',
@@ -22,6 +45,10 @@ require __DIR__ . '/routes/api/email-queue.php';
 require __DIR__ . '/routes/api/options.php';
 require __DIR__ . '/routes/api/grades.php';
 require __DIR__ . '/routes/api/member-portal.php';
+require __DIR__ . '/routes/api/person-sign-in.php';
+require __DIR__ . '/routes/api/member-portal-reports.php';
+require __DIR__ . '/routes/api/person-portal-access.php';
+require __DIR__ . '/routes/api/person-login-as-person.php';
 require __DIR__ . '/routes/api/system/church-logo.php';
 require __DIR__ . '/routes/api/system/letterhead.php';
 require __DIR__ . '/routes/api/system/property-definitions.php';

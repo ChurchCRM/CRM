@@ -15,6 +15,12 @@ export const DB = {
   password: process.env.CHURCHCRM_DB_PASSWORD || 'changeme',
 };
 
+// The stack's Mailpit (docker-compose mailserver), where member sign-in codes arrive:
+// CHURCHCRM_MAILPIT_URL, else the MAILSERVER_GUI_PORT the stack was started with, as Cypress does.
+export const MAILPIT_URL = (
+  process.env.CHURCHCRM_MAILPIT_URL || `http://127.0.0.1:${process.env.MAILSERVER_GUI_PORT || 8025}`
+).replace(/\/+$/, '');
+
 export const ADMIN_USERNAME = process.env.CHURCHCRM_TEST_USERNAME || 'admin';
 
 // Password on a fresh install, before the forced first-login change.
@@ -46,7 +52,7 @@ export const SEED_VERSION = 'marketing-basic-v1';
  * `npm run marketing:screenshots` invocation so nothing changes for anyone
  * not opted into the multi-locale pipeline.
  *
- * Set via CHURCHCRM_LOCALE — see scripts/capture-all-locales.sh, which
+ * Set via CHURCHCRM_LOCALE — see scripts/marketing/capture-all-locales.sh, which
  * loops this across all 8 codes in LOCALE_MAP for a full #10048 run.
  */
 export const LOCALE = process.env.CHURCHCRM_LOCALE || 'en';

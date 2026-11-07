@@ -439,10 +439,6 @@ msgid "Family Cell Phone"
 msgstr "परिवार का सेल फोन"
 
 #: 
-msgid "Family Email"
-msgstr "परिवार का ईमेल"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "व्यक्तिगत घर का फोन"
 
@@ -3879,10 +3875,6 @@ msgid "Oops! Page not found."
 msgstr "ओह! पृष्ठ नहीं मिला।"
 
 #: 
-msgid "Family Registration"
-msgstr "परिवार पंजीकरण"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "अपने परिवार का सत्यापन शुरू करने के लिए निम्नलिखित दर्ज करें"
 
@@ -4897,10 +4889,6 @@ msgid "Portuguese - Portugal"
 msgstr "पुर्तगाली - पुर्तगाल"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "प्रमाणीकरण ऐप में प्रदर्शित होने वाला एप्लिकेशन नाम निर्दिष्ट करें"
-
-#: 
 msgid "Review"
 msgstr "समीक्षा"
 
@@ -5029,10 +5017,6 @@ msgstr "परिवार पृष्ठ देखें"
 #: 
 msgid "View Person Page"
 msgstr "व्यक्ति पृष्ठ देखें"
-
-#: 
-msgid "Verify"
-msgstr "सत्यापित करें"
 
 #: 
 msgid "Family has no emails to use"
@@ -5281,24 +5265,8 @@ msgid "Email address"
 msgstr "ईमेल पता"
 
 #: 
-msgid "Enter family name"
-msgstr "परिवार का नाम दर्ज करें"
-
-#: 
 msgid "Family name is required"
 msgstr "परिवार का नाम आवश्यक है"
-
-#: 
-msgid "First name"
-msgstr "पहला नाम"
-
-#: 
-msgid "Home phone number"
-msgstr "घर का फोन नंबर"
-
-#: 
-msgid "Last name"
-msgstr "अंतिम नाम"
 
 #: 
 msgid "Next Member"
@@ -9727,10 +9695,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "हम इसका उपयोग संपर्क में रहने और कलीसिया अपडेट भेजने के लिए करेंगे।"
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "हम बहुत खुश हैं कि आप यहाँ हैं! केवल 3 आसान चरणों में अपने परिवार का पंजीकरण करें।"
-
-#: 
 msgid "Welcome Back!"
 msgstr "वापसी पर स्वागत है!"
 
@@ -13705,10 +13669,6 @@ msgid "Generate new code"
 msgstr "नया कोड उत्पन्न करें"
 
 #: 
-msgid "Go to homepage"
-msgstr "मुख्य पृष्ठ पर जाएँ"
-
-#: 
 msgid "Group added to cart"
 msgstr "समूह को कार्ट में जोड़ा गया"
 
@@ -13731,10 +13691,6 @@ msgstr "अपना प्रमाणीकरण ऐप तैयार र�
 #: 
 msgid "Hide advanced options"
 msgstr "उन्नत विकल्प छिपाएँ"
-
-#: 
-msgid "Home phone is required"
-msgstr "घर का फोन आवश्यक है"
 
 #: 
 msgid "ICS URL"
@@ -14409,10 +14365,6 @@ msgid "Warnings"
 msgstr "चेतावनियाँ"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "हम बहुत खुश हैं कि आपका परिवार हमसे जुड़ गया है!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "परिवार में स्वागत है!"
 
@@ -14467,10 +14419,6 @@ msgstr "आपकी ब्राउज़र भाषा प्राथमि
 #: 
 msgid "Your database already contains data"
 msgstr "आपके डेटाबेस में पहले से डेटा है"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "आपका पंजीकरण प्राप्त हो गया है। हमारी टीम शीघ्र ही आपका व्यक्तिगत रूप से स्वागत करने के लिए संपर्क करेगी।"
 
 #: 
 msgid "Zip code is required"
@@ -14549,10 +14497,6 @@ msgid "open rate"
 msgstr "खुलने की दर"
 
 #: 
-msgid "our church"
-msgstr "हमारी कलीसिया"
-
-#: 
 msgid "payment(s)?"
 msgstr "भुगतान?"
 
@@ -14591,14 +14535,6 @@ msgstr "वर्ष"
 #: 
 msgid "yrs"
 msgstr "वर्ष"
-
-#: 
-msgid "Account options"
-msgstr "खाता विकल्प"
-
-#: 
-msgid "Register"
-msgstr "पंजीकरण करें"
 
 #. Context: locales
 #: 
@@ -14660,10 +14596,6 @@ msgid "Date Picker Format"
 msgstr "दिनांक चयनकर्ता प्रारूप"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "दिनांक चयनकर्ता प्लेसहोल्डर"
-
-#: 
 msgid "Date Without Year"
 msgstr "वर्ष के बिना दिनांक"
 
@@ -14694,10 +14626,6 @@ msgstr "फ़ाइल नाम दिनांक प्रारूप"
 #: 
 msgid "Fully translated."
 msgstr "पूरी तरह अनुवादित।"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "दिनांक इनपुट में दिखाई देने वाला संकेत टेक्स्ट। डिफ़ॉल्ट: yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -14881,16 +14809,8 @@ msgid "Always granted"
 msgstr "हमेशा दी गई"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "केवल अपने परिवार की समीक्षा और सत्यापन कर सकते हैं। कोई अन्य पहुँच नहीं।"
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "नीचे विशिष्ट अनुमतियाँ चुनें।"
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "अपनी अनुमतियाँ बदलने के लिए किसी प्रशासक से संपर्क करें।"
 
 #: 
 msgid "Custom permissions"
@@ -14905,20 +14825,8 @@ msgid "People &amp; Families"
 msgstr "लोग &amp; परिवार"
 
 #: 
-msgid "Self-service"
-msgstr "स्व-सेवा"
-
-#: 
-msgid "Self-service only"
-msgstr "केवल स्व-सेवा"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "जिस नोट को आप संपादित करने का प्रयास कर रहे हैं वह अब मौजूद नहीं है।"
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "यह उपयोगकर्ता केवल अपनी पारिवारिक प्रोफ़ाइल की समीक्षा और अद्यतन कर सकता है। व्यक्तिगत अनुमतियाँ लागू नहीं होती हैं।"
 
 #: 
 msgid "User List"
@@ -18183,16 +18091,8 @@ msgid "Second Home"
 msgstr "दूसरा घर"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "संबद्ध व्यक्ति दिवंगत या निष्क्रिय है। व्यक्ति के पुनः सक्रिय होने तक साइन-इन, सत्र और API कुंजी अवरुद्ध हैं।"
-
-#: 
 msgid "This is the mailing address"
 msgstr "यह डाक पता है"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "यह व्यक्ति दिवंगत या निष्क्रिय है, इसलिए यह खाता साइन इन नहीं कर सकता"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18881,10 +18781,6 @@ msgid "Account unlocked"
 msgstr "खाता अनलॉक किया गया"
 
 #: 
-msgid "Accounts"
-msgstr "खाते"
-
-#: 
 msgid "Active must be true or false"
 msgstr "सक्रिय सत्य या असत्य होना चाहिए"
 
@@ -19077,10 +18973,6 @@ msgid "Author"
 msgstr "लेखक"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "अधिकार व्यक्ति को दिया जाता है, लॉगिन को नहीं, इसलिए यह लॉगिन होने से पहले भी दिया जा सकता है। जिस व्यक्ति का लॉगिन केवल स्व-सेवा का है वह तब तक केवल अपनी अनुसूची देखता रहता है जब तक व्यवस्थापक उसका खाता विस्तृत नहीं करता।"
-
-#: 
 msgid "Automatic"
 msgstr "स्वचालित"
 
@@ -19203,10 +19095,6 @@ msgstr "कक्षा चुनें"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "माह का एक दिन 1 से 31 के बीच चुनें"
-
-#: 
-msgid "Choose a new photo"
-msgstr "नई फ़ोटो चुनें"
 
 #: 
 msgid "Choose a person"
@@ -19979,10 +19867,6 @@ msgid "Last attempt"
 msgstr "अंतिम प्रयास"
 
 #: 
-msgid "Last check"
-msgstr "अंतिम जाँच"
-
-#: 
 msgid "Last date"
 msgstr "अंतिम तारीख़"
 
@@ -20209,10 +20093,6 @@ msgstr "अभी तक सदस्यों के साथ कोई कै
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "इस सेवकाई के लिए कोई कैलेंडर खुला नहीं है, इसलिए आयोजन किसी कैलेंडर पर नहीं दिखेंगे।"
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "सदस्यों के साथ कोई कैलेंडर साझा नहीं है।"
 
 #: 
 msgid "No class"
@@ -20749,14 +20629,6 @@ msgid "Please tell us what needs changing."
 msgstr "कृपया बताएँ कि क्या बदलना है।"
 
 #: 
-msgid "Portal settings"
-msgstr "पोर्टल सेटिंग"
-
-#: 
-msgid "Portal theme"
-msgstr "पोर्टल थीम"
-
-#: 
 msgid "Position"
 msgstr "पद"
 
@@ -20973,10 +20845,6 @@ msgid "SMTP test"
 msgstr "SMTP परीक्षण"
 
 #: 
-msgid "Save calendars"
-msgstr "कैलेंडर सहेजें"
-
-#: 
 msgid "Save changes"
 msgstr "परिवर्तन सहेजें"
 
@@ -20987,10 +20855,6 @@ msgstr "सहेजा गया — यह सेवकाई अब सहा
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "सहेजा गया — यह सेवकाई अब सहायता माँग रही है"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "सहेजा गया। सदस्य ऊपर चालू किए गए कैलेंडर देखते हैं।"
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21095,10 +20959,6 @@ msgid "Self-assignable must be true or false"
 msgstr "स्वयं नियुक्त होने योग्य सत्य या असत्य होना चाहिए"
 
 #: 
-msgid "Self-service accounts"
-msgstr "स्व-सेवा खाते"
-
-#: 
 msgid "Send"
 msgstr "भेजें"
 
@@ -21167,18 +21027,6 @@ msgstr "सदस्य पोर्टल में दिखाएँ"
 #: 
 msgid "Show past events"
 msgstr "पिछले आयोजन दिखाएँ"
-
-#: 
-msgid "Show the church calendar"
-msgstr "कलीसिया कैलेंडर दिखाएँ"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "सदस्य पोर्टल में कलीसिया कैलेंडर दिखाएँ।"
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "सदस्य पोर्टल में कलीसिया कैलेंडर अनुभाग दिखाएँ।"
 
 #: 
 msgid "Show the next"
@@ -21587,10 +21435,6 @@ msgstr "%s मिनटों की पूर्ण संख्या हो�
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "%s आयोजन के %d मिनट के भीतर होना चाहिए"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "सदस्य पोर्टल कैलेंडर सहेजे गए।"
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22041,10 +21885,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "ये आवश्यकताएँ अनुसूची से आती हैं। यहाँ सहेजने से केवल यह अवसर बदलता है।"
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "ये संख्याएँ केवल स्व-सेवा खातों को गिनती हैं: वे लोग जिनका लॉगिन केवल सदस्य पोर्टल तक पहुँच सकता है और कहीं नहीं।"
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "ये लोग अब भी नियुक्त हैं, लेकिन जो पद वे संभालते हैं वह अब इस तारीख़ की नियुक्ति योजना का हिस्सा नहीं है।"
 
@@ -22129,14 +21969,6 @@ msgid "This is not a valid theme folder name."
 msgstr "यह मान्य थीम फ़ोल्डर नाम नहीं है।"
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "यह आपकी टीम की तारीख़ों में से नहीं है।"
-
-#: 
-msgid "This is not one of your teams."
-msgstr "यह आपकी टीमों में से नहीं है।"
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "यहीं कलीसिया डाक भेजती है और आपके घराने के बारे में किसे फ़ोन करती है।"
 
@@ -22195,10 +22027,6 @@ msgstr "यह पृष्ठ आपके खाते का हिस्स�
 #: 
 msgid "This page was not found"
 msgstr "यह पृष्ठ नहीं मिला"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "सदस्य पोर्टल का यह भाग स्वयंसेवक टीम अगुआओं के लिए है।"
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23869,16 +23697,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} नियुक्त हुआ और स्वीकार के रूप में दर्ज हुआ"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "अपना प्रवेश ईमेल बदलने के लिए प्रशासक से कहें।"
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "प्रशासक ने ईमेल %1$s से %2$s में बदला"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "उपयोगकर्ता खाते वाले व्यक्ति का ईमेल केवल प्रशासक बदल सकता है।"
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24363,4 +24183,2960 @@ msgstr "केवल आपके द्वारा भेजा गया ई�
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "दोहराए जाने वाले कार्यक्रम नहीं बनाए जा सके। विवरण के लिए एप्लिकेशन लॉग देखें।"
+
+#: 
+msgid "Confirm Password"
+msgstr "पासवर्ड की पुष्टि करें"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "आपका पासवर्ड बदल दिया गया है। अब आप अपने नए पासवर्ड से साइन इन कर सकते हैं।"
+
+#: 
+msgid "1st"
+msgstr "पहला"
+
+#: 
+msgid "2nd"
+msgstr "दूसरा"
+
+#: 
+msgid "3rd"
+msgstr "तीसरा"
+
+#: 
+msgid "4th"
+msgstr "चौथा"
+
+#: 
+msgid "5th"
+msgstr "पाँचवाँ"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "उस एकमात्र प्रशासक से प्रशासक पहुँच नहीं हटाई जा सकती जो साइन इन कर सकता है"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "महीने का सप्ताह चुनें, पहले से पाँचवें तक"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "{{first}} से {{last}} तक प्रत्येक महीने के {{week}} {{day}} पर {{total}} कार्यक्रम बनते हैं"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "सप्ताह का दिन अमान्य है"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "मासिक, सप्ताह के एक दिन पर"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "जिन महीनों में पाँचवाँ नहीं होता, उन्हें छोड़ दिया जाता है।"
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM 1 से 5 तक की पूर्ण संख्या होनी चाहिए"
+
+#: 
+msgid "Week of the month"
+msgstr "महीने का सप्ताह"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "महीने का सप्ताह 1 से 5 तक होना चाहिए"
+
+#: 
+msgid "%s through %s"
+msgstr "%s से %s तक"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "दान विवरणों पर मुद्रित चर्च कर पहचान (EIN)"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "दान विवरण परिवार के वयस्कों को जारी किए जाते हैं। यदि आपको इसकी आवश्यकता हो, तो कृपया चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "Download statement"
+msgstr "विवरण डाउनलोड करें"
+
+#: 
+msgid "Generated"
+msgstr "तैयार"
+
+#: 
+msgid "Goods and services"
+msgstr "वस्तुएँ और सेवाएँ"
+
+#: 
+msgid "My Giving"
+msgstr "मेरा दान"
+
+#: 
+msgid "No contributions"
+msgstr "कोई दान नहीं"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "इस अवधि के लिए कोई दान दर्ज नहीं किया गया।"
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "इन दानों के बदले अमूर्त धार्मिक लाभों के अतिरिक्त कोई वस्तु या सेवा नहीं दी गई।"
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "वैकल्पिक। दान विवरणों पर मुद्रित होता है।"
+
+#: 
+msgid "Tax ID"
+msgstr "कर पहचान"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "कर पहचान (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "कर-कटौती योग्य राशि"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "यह परिवार का विवरण है। इसमें आपके परिवार के लिए दिए गए उपहार शामिल हैं।"
+
+#: 
+msgid "Total contributions"
+msgstr "कुल दान"
+
+#: 
+msgid "Year-end statement"
+msgstr "वर्षांत विवरण"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d दान विवरण परिवार को सफलतापूर्वक ईमेल कर दिया गया।"
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s दान विवरण"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "दान विवरणों पर दिखने वाले पाठ को अनुकूलित करें (sTaxReport1, sTaxReport2, आदि)।"
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "प्रिय %s परिवार,\n"
+"\n"
+"कृपया इस ईमेल के साथ संलग्न आपका %s दान विवरण देखें, जो %s की ओर से है।\n"
+"\n"
+"यदि आपके कोई प्रश्न हों, तो कृपया चर्च कार्यालय से संपर्क करें।\n"
+"\n"
+"आपकी उदारता के लिए धन्यवाद।"
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "%s दान विवरण ईमेल करें"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "लिफाफा संख्याएँ"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "दान विवरण बनाएँ"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "दान विवरण, प्रतिज्ञा ट्रैकिंग और वित्तीय विश्लेषण के लिए रिपोर्ट बनाएँ।"
+
+#: 
+msgid "Giving Reports"
+msgstr "दान रिपोर्ट"
+
+#: 
+msgid "Giving Statement"
+msgstr "दान विवरण"
+
+#: 
+msgid "Giving Statements"
+msgstr "दान विवरण"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "दान विवरण का ईमेल नहीं भेजा जा सका। कृपया अपनी ईमेल सर्वर सेटिंग जाँचें।"
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "कृपया अपना अगला उपहार %s को डाक से भेजें"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "%s दान विवरण प्रिंट करें"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "दान विवरण ईमेल नहीं किया जा सका: उस वर्ष का कोई भुगतान डेटा नहीं मिला।"
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "दान विवरण ईमेल नहीं किया जा सका: इस परिवार का कोई ईमेल पता दर्ज नहीं है।"
+
+#: 
+msgid "Undesignated"
+msgstr "अनिर्दिष्ट"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "जाँचें कि चर्च का नाम, पता और संपर्क जानकारी दान विवरणों पर दिखाई दे।"
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "यह पद अब %s को सौंपा गया है, जिन्होंने इसे स्वीकार कर लिया है।"
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "यह पद अब %s को सौंपा गया है, जिन्होंने अभी इसे स्वीकार नहीं किया है।"
+
+#: 
+msgid "Their reason: %s"
+msgstr "उनका कारण: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "नियुक्तियाँ देखें"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "इस अवसर के लिए अभी भी स्वयंसेवक चाहिए: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "इस पद के लिए अभी भी स्वयंसेवक चाहिए: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "प्रत्येक कक्षा के लिए साप्ताहिक साइन-इन ग्रिड। कक्षा सूचियाँ और फ़ोटो पुस्तकें संडे स्कूल डैशबोर्ड और प्रत्येक कक्षा पृष्ठ पर हैं।"
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "स्कूल वर्ष के लिए साप्ताहिक साइन-इन ग्रिड, प्रत्येक रविवार के लिए एक स्तंभ"
+
+#: 
+msgid "Age %d"
+msgstr "आयु %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "उपस्थिति पत्र बनाने के लिए कम से कम एक समूह चुना जाना चाहिए।"
+
+#: 
+msgid "Attendance Sheet"
+msgstr "उपस्थिति पत्र"
+
+#: 
+msgid "Class List"
+msgstr "कक्षा सूची"
+
+#: 
+msgid "Download PDF"
+msgstr "PDF डाउनलोड करें"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "लॉकआउट अवधि मिनटों में\n"
+"लॉक किया गया खाता इतने मिनटों के बाद अपने आप अनलॉक हो जाता है। एक IP पते से असफल लॉगिन इसी अवधि में गिने जाते हैं।"
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "एक IP पते से असफल लॉगिन की अधिकतम संख्या\n"
+"लॉकआउट अवधि में एक IP पते से असफल लॉगिन और पासवर्ड रीसेट अनुरोध इस सीमा में गिने जाते हैं। सीमा पूरी होने पर अवधि समाप्त होने तक उस पते से साइन इन अस्वीकार कर दिया जाता है।\n"
+"इस सुविधा को बंद करने के लिए शून्य रखें, उदाहरण के लिए जब सभी लोग एक प्रॉक्सी पते से ChurchCRM तक पहुँचते हों।"
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "उपयोगकर्ता खाता लॉक होने से पहले अनुमत असफल लॉगिन की अधिकतम संख्या।\n"
+"लॉक किया गया खाता लॉकआउट अवधि के बाद अपने आप अनलॉक हो जाता है, या उससे पहले जब कोई प्रशासक उसके असफल लॉगिन रीसेट कर दे।\n"
+"यह सुविधा स्वचालित पासवर्ड अनुमान हमलों से सुरक्षा में मदद करती है।\n"
+"इस सुविधा को बंद करने के लिए शून्य रखें।"
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "अपने आप अनलॉक होने तक मिनट: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "संडे स्कूल उपस्थिति पत्र"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "जिन रविवारों को कक्षा नहीं होती, उन्हें पत्र से छोड़ दिया जाता है।"
+
+#: 
+msgid "Database Upgrade"
+msgstr "डेटाबेस उन्नयन"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "आपका डेटाबेस अद्यतन हो रहा है। उन्नयन पूरा होने तक कृपया यह पृष्ठ खुला रखें।"
+
+#: 
+msgid "Family Labels"
+msgstr "परिवार लेबल"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – कुल"
+
+#: 
+msgid "Bill"
+msgstr "नोट"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "एक जमा चुनें या रिपोर्ट की दोनों तिथियाँ दर्ज करें।"
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "भुगतान देखने या बैंक पर्ची प्रिंट करने के लिए एक जमा चुनें। चुना गया जमा तिथि सीमा को बदल देता है।"
+
+#: 
+msgid "Coin"
+msgstr "सिक्का"
+
+#: 
+msgid "Deposit Report"
+msgstr "जमा रिपोर्ट"
+
+#: 
+msgid "Download Report"
+msgstr "रिपोर्ट डाउनलोड करें"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "मान्य रिपोर्ट तिथियाँ दर्ज करें।"
+
+#: 
+msgid "Invalid report filters."
+msgstr "अमान्य रिपोर्ट फ़िल्टर।"
+
+#: 
+msgid "Invalid report options."
+msgstr "अमान्य रिपोर्ट विकल्प।"
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "सभी भुगतान शामिल करने के लिए फ़िल्टर खाली छोड़ें। ये सेटिंग रिपोर्ट पर लागू होती हैं, बैंक पर्ची पर नहीं।"
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "कोई रिकॉर्ड नहीं मिला। अपने फ़िल्टर समायोजित करें और पुनः प्रयास करें।"
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "बैंक के लिए तैयार करें"
+
+#: 
+msgid "Preview Totals"
+msgstr "योग का पूर्वावलोकन"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "बैंक पर्ची प्रिंट करें"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "चयनित जमा को पूरा प्रिंट करें, नकद और चेक के योग, गिनती पत्र और साक्षी पंक्तियों सहित। रिपोर्ट फ़िल्टर अनदेखे रहते हैं। इलेक्ट्रॉनिक भुगतान सारांश में रहते हैं और भौतिक बैंक टिकट के योग से बाहर रहते हैं।"
+
+#: 
+msgid "Review Payments"
+msgstr "भुगतान की समीक्षा करें"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "किसी अवधि के भुगतान देखें, या बैंक के लिए एक जमा तैयार करें।"
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "भुगतान देखें, PDF या CSV डाउनलोड करें, या एक जमा की बैंक पर्ची प्रिंट करें।"
+
+#: 
+msgid "Select a valid deposit."
+msgstr "एक मान्य जमा चुनें।"
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "बैंक पर्ची प्रिंट करने के लिए एक जमा चुनें।"
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "रिपोर्ट की समाप्ति तिथि आरंभ तिथि पर या उसके बाद होनी चाहिए।"
+
+#: 
+msgid "Total Cash"
+msgstr "कुल नकद"
+
+#: 
+msgid "Total Coin"
+msgstr "कुल सिक्के"
+
+#: 
+msgid "Witness"
+msgstr "साक्षी"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d उपहारों का कोई परिवार नहीं है। वे विवरण पर नहीं आ सकते।"
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "इस वर्ष के %d जमा खुले हैं। विवरण जाने से पहले हर उपहार अंतिम हो, इसके लिए उन्हें बंद करें।"
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d भुगतान अभी किसी जमा पर नहीं हैं।"
+
+#: 
+msgid "Can be emailed"
+msgstr "ईमेल किया जा सकता है"
+
+#: 
+msgid "Closing line"
+msgstr "समापन पंक्ति"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "इस वर्ष का हर जमा बंद है।"
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "हर उपहार किसी परिवार का है।"
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "इस वर्ष का हर भुगतान किसी जमा पर है।"
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "कर विवरण बनाएँ"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "दान रिपोर्ट (कर विवरण)"
+
+#: 
+msgid "Opening line"
+msgstr "आरंभिक पंक्ति"
+
+#: 
+msgid "Print and mail"
+msgstr "प्रिंट करें और डाक से भेजें"
+
+#: 
+msgid "Qty"
+msgstr "मात्रा"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "वर्ष की समीक्षा करें, फिर दान विवरण प्रिंट करें या ईमेल करें।"
+
+#: 
+msgid "Signed by"
+msgstr "हस्ताक्षरकर्ता"
+
+#: 
+msgid "Thank-you line"
+msgstr "धन्यवाद पंक्ति"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "जाँचें कि चर्च का नाम, पता और संपर्क जानकारी कर विवरणों पर दिखाई दे।"
+
+#: 
+msgid "Year-End Giving"
+msgstr "वर्षांत दान"
+
+#: 
+msgid "As of: %s"
+msgstr "इस तिथि तक: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "चुने गए %d वित्तीय वर्षों में, समीक्षा तिथि %s तक, कम से कम एक धनात्मक परिवार भुगतान"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "बपतिस्मा, निर्वाचक नामावली के आवेदन, निवास, प्रभु-भोज की स्थिति, उपस्थिति, अच्छी स्थिति और स्थानीय अपवाद वहाँ अलग से जाँचे जाने चाहिए जहाँ आपके उपनियम उनकी माँग करते हों। सदस्यता की अवधि उपस्थिति का प्रमाण नहीं है।"
+
+#: 
+msgid "Choose an existing classification."
+msgstr "एक मौजूदा वर्गीकरण चुनें।"
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "समीक्षा के लिए कम से कम एक वर्गीकरण चुनें।"
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "वे वर्गीकरण चुनें जिनका उपयोग आपका चर्च करता है। किसी भी वर्गीकरण को मतदान का अधिकार देने वाला नहीं माना जाता।"
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "चर्च नेतृत्व को चर्च के उपनियमों के अनुसार पात्रता की पुष्टि करनी चाहिए। यह सूची केवल चुने फ़िल्टर से मेल खाने वाले लोगों को दिखाती है।"
+
+#: 
+msgid "Classifications to review"
+msgstr "समीक्षा के वर्गीकरण"
+
+#: 
+msgid "Classifications: %s"
+msgstr "वर्गीकरण: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "दिवंगत लोग, निष्क्रिय लोग और वर्गीकरण, तथा निष्क्रिय या समीक्षा-लंबित परिवार और लोग बाहर रहते हैं।"
+
+#: 
+msgid "Download Review List"
+msgstr "समीक्षा सूची डाउनलोड करें"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "1900 और 2200 के बीच एक मान्य समीक्षा तिथि दर्ज करें।"
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "दिखाई गई सीमाओं के भीतर पूर्ण संख्याएँ दर्ज करें।"
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "जाँचने के वित्तीय वर्ष (0–100; 0 का अर्थ है दान की कोई शर्त नहीं)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "दान परिवार के अनुसार दर्ज होता है, व्यक्ति के अनुसार नहीं। इसे केवल तभी चालू करें जब आपके उपनियम परिवार के भुगतान को इस मापदंड की पूर्ति मानें। इससे यह सिद्ध नहीं होता कि प्रत्येक व्यक्ति ने दान दिया। अवधि में चुना वित्तीय वर्ष शामिल है और यह समीक्षा तिथि के बाद नहीं जाती।"
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "शामिल करने का अंतिम वित्तीय वर्ष"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "न्यूनतम आयु (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "न्यूनतम आयु: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "सदस्यता की न्यूनतम अवधि महीनों में (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "सदस्यता की न्यूनतम अवधि: %d महीने"
+
+#: 
+msgid "No donation requirement."
+msgstr "दान की कोई शर्त नहीं।"
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "कोई व्यक्ति इन फ़िल्टर से मेल नहीं खाता। अनुपस्थित जन्म या सदस्यता तिथियाँ जाँचें और अपने मापदंड समायोजित करें।"
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "परिवार दान की वैकल्पिक शर्त"
+
+#: 
+msgid "People matching filters"
+msgstr "फ़िल्टर से मेल खाने वाले लोग"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "आवश्यक तिथियाँ न होने से छोड़े गए लोग"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "वर्गीकरण और वैकल्पिक आयु, सदस्यता तथा परिवार दान फ़िल्टर से चर्च समीक्षा की सूची तैयार करें।"
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "अपने उपनियमों के अनुसार चर्च समीक्षा की सूची तैयार करें।"
+
+#: 
+msgid "Review date"
+msgstr "समीक्षा तिथि"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "फ़िल्टर चुनने के लिए अपने चर्च के उपनियमों का उपयोग करें, फिर अधिकृत चर्च नेतृत्व से सूची की समीक्षा करवाएँ। इन फ़िल्टर से मेल खाना मतदान की पात्रता स्थापित नहीं करता। यह रिपोर्ट पात्रता दर्ज नहीं करती और न चुनाव कराती है।"
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "मतदाता सदस्य — समीक्षा सूची"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "शून्य किसी वैकल्पिक शर्त को बंद करता है। आयु के लिए पूरी जन्म तिथि चाहिए; सदस्यता अवधि के लिए सदस्यता तिथि चाहिए। आवश्यक तिथि न रखने वाले लोग छोड़ दिए जाते हैं और अलग गिने जाते हैं। दिवंगत लोग, निष्क्रिय लोग और वर्गीकरण, तथा निष्क्रिय या समीक्षा-लंबित परिवार और लोग हमेशा बाहर रहते हैं; वर्तमान वर्गीकरण और स्थिति का उपयोग होता है, ऐतिहासिक स्थिति का नहीं।"
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "%s के लिए देय राशि: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "चुनी निर्देशिका में निजी PDF अस्थायी संग्रहण नहीं बनाया जा सकता।"
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "सिस्टम की अस्थायी निर्देशिका उपयोग करने के लिए खाली छोड़ें। अन्यथा एक मौजूदा लेखन-योग्य निर्देशिका दर्ज करें जो वेब पहुँच से सुरक्षित हो।"
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "PDF अस्थायी निर्देशिका"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "PDF अस्थायी संग्रहण निजी और लेखन-योग्य होना चाहिए।"
+
+#: 
+msgid "Reporting"
+msgstr "रिपोर्टिंग"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "PDF अस्थायी निर्देशिका मौजूद नहीं है या पहुँच योग्य नहीं है।"
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "PDF अस्थायी निर्देशिका एक निरपेक्ष निर्देशिका पथ होनी चाहिए।"
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "चर्च कर पहचान (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "समापन पंक्ति"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "वैकल्पिक टेलीमेट्री नियंत्रित करता है। टेलीमेट्री बंद होने पर भी स्थापना और डेटाबेस उन्नयन की विफलताएँ PostHog को सीमित निदान भेजती हैं। इन विफलता रिपोर्टों में सॉफ़्टवेयर और वातावरण के संस्करण तथा स्वच्छ किया डेटाबेस त्रुटि संदेश होता है, पर स्थापना आईडी या SQL कथन नहीं।"
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "विफल स्थापनाओं और डेटाबेस उन्नयन का निदान करें"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "स्थापना और उन्नयन की विफलता का विवरण"
+
+#: 
+msgid "Open in browser window"
+msgstr "ब्राउज़र विंडो में खोलें"
+
+#: 
+msgid "Opening Line"
+msgstr "आरंभिक पंक्ति"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "वैकल्पिक उपयोग टेलीमेट्री केवल चालू होने पर भेजी जाती है। स्थापना और डेटाबेस उन्नयन की विफलताएँ हमेशा समुदाय की सहायता के लिए सीमित निदान भेजती हैं, भले ही आप नहीं, धन्यवाद चुनें। विफलता रिपोर्टों में सॉफ़्टवेयर और वातावरण के संस्करण तथा स्वच्छ किया डेटाबेस त्रुटि संदेश होता है, बिना स्थापना आईडी या SQL कथन के।"
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF प्रबंधन"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF आउटपुट"
+
+#: 
+msgid "PDF handling mode"
+msgstr "PDF प्रबंधन मोड"
+
+#: 
+msgid "Questions Line"
+msgstr "प्रश्न पंक्ति"
+
+#: 
+msgid "Save File dialog"
+msgstr "फ़ाइल सहेजें संवाद"
+
+#: 
+msgid "Signer"
+msgstr "हस्ताक्षरकर्ता"
+
+#: 
+msgid "Statement Settings"
+msgstr "विवरण सेटिंग"
+
+#: 
+msgid "Statement Wording"
+msgstr "विवरण की शब्दावली"
+
+#: 
+msgid "Tax Information"
+msgstr "कर जानकारी"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "टेलीमेट्री संयुक्त राज्य अमेरिका में PostHog को भेजी जाती है। वैकल्पिक टेलीमेट्री अक्षम होने पर भी स्थापना और उन्नयन की विफलता रिपोर्ट भेजी जाती हैं।"
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "यह तिथि रद्द कर दी गई थी। आपसे और कुछ आवश्यक नहीं है।"
+
+#: 
+msgid "always sent"
+msgstr "सदैव भेजा जाता है"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "पत्रशीर्ष हटाया नहीं जा सका"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "पत्रशीर्ष संग्रहित नहीं किया जा सका"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "पत्रशीर्ष अपलोड नहीं हो सका"
+
+#: 
+msgid "Greeting"
+msgstr "अभिवादन"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "पत्र का अभिवादन और हस्ताक्षर"
+
+#: 
+msgid "Letterhead"
+msgstr "पत्रशीर्ष"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF या WebP। चौड़ा बैनर सर्वोत्तम रहता है, उदाहरण के लिए 2000x300।"
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "ग्राफ़िक पत्रशीर्ष उपयोग करने वाले PDF पत्रों के शीर्ष पर मुद्रित होता है, जैसे दान विवरण। इसके बिना पत्रों पर चर्च का नाम और पता मुद्रित होता है।"
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "पत्रशीर्ष हटाएँ? पत्रों पर चर्च का नाम और पता मुद्रित होगा।"
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "वह पत्रशीर्ष सेट करें जिसे PDF पत्र मुद्रित करें"
+
+#: 
+msgid "Using the church name and address"
+msgstr "चर्च का नाम और पता उपयोग हो रहा है"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "सिस्टम सेटिंग में सेट पत्रशीर्ष पथ उपयोग हो रहा है"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "दान विवरणों के लिए शब्दावली, कर पहचान और PDF प्रबंधन"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%2$s के रूप में %1$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s अब आपका ईमेल पता है। आप इसका उपयोग सदस्य पोर्टल में साइन इन करने के लिए कर सकते हैं।"
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} और"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "आपके ईमेल पते के परिवर्तन का अनुरोध किया गया था"
+
+#: 
+msgid "A family"
+msgstr "एक परिवार"
+
+#: 
+msgid "A group"
+msgstr "एक समूह"
+
+#: 
+msgid "A ministry"
+msgstr "एक सेवकाई"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "नया पता तभी बदलता है जब आप उस पर भेजे लिंक का उपयोग करते हैं।"
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "पासकी केवल आपके ईमेल पते से साइन इन करने के %d मिनट के भीतर जोड़ी जा सकती है। साइन आउट करें, अपने ईमेल से फिर साइन इन करें, फिर यहाँ वापस आएँ।"
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "पासकी आपको Face ID, फ़िंगरप्रिंट या आपके उपकरण के PIN से साइन इन कराती है, बिना ईमेल कोड के।"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "आपके सदस्य पोर्टल साइन-इन में एक पासकी जोड़ी गई"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "आपके सदस्य पोर्टल साइन-इन में %2$s को %1$s बजे %3$s से एक पासकी जोड़ी गई।"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "आपके सदस्य पोर्टल साइन-इन में %2$s को %1$s बजे एक पासकी जोड़ी गई।"
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "जो व्यक्ति इसे खो देता है, उसके पास अपना ईमेल नहीं रहता: केवल उसे भेजा गया मेल, जैसे समूह ईमेल, छोड़ दिया जाता है, और ईमेल रचनाकार ऐसा बताता है।"
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "जिस व्यक्ति का रिकॉर्ड उसकी आयु छिपाता है, उसका जन्म वर्ष कभी नहीं दिखता।"
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "एक पंक्ति अपेक्षित रूप में नहीं है।"
+
+#: 
+msgid "A team"
+msgstr "एक टीम"
+
+#: 
+msgid "Add a passkey"
+msgstr "पासकी जोड़ें"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "पासकी केवल अपने फ़ोन या कंप्यूटर पर जोड़ें, साझा या सार्वजनिक उपकरण पर कभी नहीं।"
+
+#: 
+msgid "Add an email"
+msgstr "एक ईमेल जोड़ें"
+
+#: 
+msgid "Added %s"
+msgstr "%s जोड़ा गया"
+
+#: 
+msgid "Admin overrides"
+msgstr "प्रशासक अपवाद"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "%s परिवार के वयस्क"
+
+#: 
+msgid "Adult of the family"
+msgstr "परिवार के वयस्क"
+
+#: 
+msgid "All events"
+msgstr "सभी कार्यक्रम"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "व्यक्ति के रूप में लॉगिन की अनुमति दें"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "व्यक्ति के रूप में लॉगिन के दौरान परिवर्तन की अनुमति दें"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "जब कोई प्रशासक व्यक्ति के रूप में लॉगिन का उपयोग करे, तब परिवर्तन की अनुमति दें। बंद होने पर व्यक्ति के रूप में लॉगिन केवल पढ़ने योग्य होता है।"
+
+#: 
+msgid "Already held by a family member"
+msgstr "परिवार के किसी सदस्य के पास पहले से है"
+
+#: 
+msgid "Also used by"
+msgstr "इनके द्वारा भी उपयोग"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "इस पर लागू"
+
+#: 
+msgid "Another person already uses this address"
+msgstr "किसी व्यक्ति के पृष्ठ पर प्रशासक उसे कोई भी अनुमति दे सकता है। तब यहाँ \"प्रशासक अपवाद\" दिखता है, साथ में उन लोगों की संख्या जिन्हें यह दी गई।"
+
+#: 
+msgid "Applies to"
+msgstr "कोई अन्य व्यक्ति पहले से इस पते का उपयोग करता है"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "स्वयंसेवक टीम के स्थानापन्न अनुरोध स्वीकृत या अस्वीकृत करें।"
+
+#: 
+msgid "Ask for a new email"
+msgstr "नए ईमेल के लिए कहें"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "अधिकार व्यक्ति को दिया जाता है, लॉगिन को नहीं, इसलिए लॉगिन से पहले भी दिया जा सकता है। जो व्यक्ति केवल सदस्य पोर्टल में साइन इन करता है, वह केवल अपना कार्यक्रम देखता रहता है, जब तक कोई प्रशासक उसे स्टाफ़ खाता न दे।"
+
+#: 
+msgid "Awaiting review"
+msgstr "समीक्षा की प्रतीक्षा"
+
+#: 
+msgid "Back to sign-in"
+msgstr "साइन-इन पर वापस जाएँ"
+
+#: 
+msgid "Browse the full directory"
+msgstr "पूरी निर्देशिका देखें"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "सदस्य पोर्टल में साइन इन कर सकते हैं"
+
+#: 
+msgid "Can sign in?"
+msgstr "क्या साइन इन कर सकते हैं?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "उस एकमात्र प्रशासक का साइन-इन अक्षम नहीं किया जा सकता जो साइन इन कर सकता है।"
+
+#: 
+msgid "Cannot sign in"
+msgstr "साइन इन नहीं कर सकते"
+
+#: 
+msgid "Change family details"
+msgstr "परिवार का विवरण बदलें"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "परिवार का पता और संपर्क विवरण बदलें, और समीक्षा के लिए परिवार का सदस्य जोड़ें।"
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "अपना नाम, संपर्क विवरण और फ़ोटो बदलें।"
+
+#: 
+msgid "Changed"
+msgstr "बदला गया"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "व्यक्ति के साइन इन करने के बाद बदला गया"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "व्यक्ति के साइन इन करने के बाद आयात से बदला गया"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "व्यक्ति के साइन इन करने के बाद स्टाफ़ द्वारा बदला गया"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "व्यक्ति के साइन इन करने के बाद API से बदला गया"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "व्यक्ति के रूप में लॉगिन के दौरान परिवर्तन बंद हैं।"
+
+#: 
+msgid "Changes needed"
+msgstr "परिवर्तन आवश्यक"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "परिवर्तन करते ही सहेजे जाते हैं।"
+
+#: 
+msgid "Check your email"
+msgstr "अपना ईमेल देखें"
+
+#: 
+msgid "Choose a permission"
+msgstr "एक अनुमति चुनें"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "एक अनुमति, वह किसके लिए है और उसका अंतिम दिन चुनें, और कारण बताएँ।"
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "एक फ़ोटो चुनें या सेल्फ़ी लें"
+
+#: 
+msgid "Choose a theme"
+msgstr "एक थीम चुनें"
+
+#: 
+msgid "Choose at least one row."
+msgstr "कम से कम एक पंक्ति चुनें।"
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "एक बार में अधिक से अधिक %d पंक्तियाँ चुनें।"
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "सूची से चुनें कि तिथियाँ कैसे दिखाई जाएँ।"
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "इस अनुमति का अंतिम दिन चुनें।"
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "चुनें कि अनुमति किसके लिए है।"
+
+#: 
+msgid "Choose yes or no."
+msgstr "हाँ या नहीं चुनें।"
+
+#: 
+msgid "Church Office"
+msgstr "चर्च कार्यालय"
+
+#: 
+msgid "Church country"
+msgstr "चर्च का देश"
+
+#: 
+msgid "Church default: %s"
+msgstr "चर्च डिफ़ॉल्ट: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "चर्च नेता साइन-इन"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "वे वर्गीकरण जिनके सदस्य सदस्य पोर्टल में साइन इन कर सकते हैं, वर्गीकरण id की अल्पविराम-पृथक सूची के रूप में।"
+
+#: 
+msgid "Clear selection"
+msgstr "चयन साफ़ करें"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "कोड, सत्र और उपकरण"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "ईमेल पते की पुष्टि करें"
+
+#: 
+msgid "Confirm email address"
+msgstr "ईमेल पते की पुष्टि करें"
+
+#: 
+msgid "Confirm family details"
+msgstr "परिवार के विवरण की पुष्टि करें"
+
+#: 
+msgid "Confirm selected"
+msgstr "चयन की पुष्टि करें"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "इस ईमेल की पुष्टि केवल यह जाँचने के बाद करें, व्यक्तिगत रूप से या फ़ोन पर, कि यह इस व्यक्ति का अपना पता है। पुष्टि के बाद इसका उपयोग सदस्य पोर्टल में साइन इन करने के लिए किया जा सकता है।"
+
+#: 
+msgid "Confirm your email address"
+msgstr "अपने ईमेल पते की पुष्टि करें"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "अपने नए ईमेल पते की पुष्टि करें"
+
+#: 
+msgid "Confirmed"
+msgstr "पुष्टि हो गई"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "तिथियाँ YYYY-MM-DD के रूप में लिखी जानी चाहिए।"
+
+#: 
+msgid "Decide substitute requests"
+msgstr "स्थानापन्न अनुरोधों पर निर्णय लें"
+
+#: 
+msgid "Device"
+msgstr "उपकरण"
+
+#: 
+msgid "Device remembered"
+msgstr "उपकरण याद रखा गया"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "उपकरण और पासकी"
+
+#: 
+msgid "Directory classifications"
+msgstr "निर्देशिका वर्गीकरण"
+
+#: 
+msgid "Directory section"
+msgstr "निर्देशिका अनुभाग"
+
+#: 
+msgid "Disable sign-in"
+msgstr "साइन-इन अक्षम करें"
+
+#: 
+msgid "Do not show"
+msgstr "न दिखाएँ"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "उनमें से प्रत्येक को अपना ईमेल भी चाहिए, जिसका उपयोग कोई और न करे।"
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "प्रत्येक साइन-इन ईमेल एक बार, सीमित समय के लिए काम करता है, और नया ईमेल उसे बदल देता है।"
+
+#: 
+msgid "Edit my details"
+msgstr "मेरा विवरण संपादित करें"
+
+#: 
+msgid "Email address changed"
+msgstr "ईमेल पता बदल गया"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "टाइप किया गया ईमेल पता: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "पुष्टि के लिए ईमेल पते: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "ईमेल बदल गया"
+
+#: 
+msgid "Email code"
+msgstr "ईमेल कोड"
+
+#: 
+msgid "Email confirmed"
+msgstr "ईमेल की पुष्टि हो गई"
+
+#: 
+msgid "Email link"
+msgstr "ईमेल लिंक"
+
+#: 
+msgid "Email me a code"
+msgstr "मुझे एक कोड ईमेल करें"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "मुझे एक पुष्टि लिंक ईमेल करें"
+
+#: 
+msgid "Email needs attention"
+msgstr "ईमेल पर ध्यान देना आवश्यक है"
+
+#: 
+msgid "Email problem"
+msgstr "ईमेल समस्या"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "ईमेल किया गया साइन-इन कोड और लिंक रद्द कर दिया गया"
+
+#: 
+msgid "Emailed verification link"
+msgstr "ईमेल किया गया सत्यापन लिंक"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "पुष्टि हुए ईमेल: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "साइन-इन सक्षम करें"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "इस व्यक्ति का हर सदस्य पोर्टल सत्र समाप्त करें और उनके याद रखे उपकरण भुला दें? उनकी पासकी रहती हैं, इसलिए वे फिर साइन इन कर सकते हैं।"
+
+#: 
+msgid "Ended %s"
+msgstr "%s को समाप्त"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "उनके साइन-इन में परिवर्तन से समाप्त"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "सदस्य साइन-इन बंद होने पर समाप्त"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "%1$d से %2$d तक एक पूर्ण संख्या दर्ज करें।"
+
+#: 
+msgid "Enter your email address."
+msgstr "अपना ईमेल पता दर्ज करें।"
+
+#: 
+msgid "Every kind"
+msgstr "हर प्रकार"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "हर सदस्य साइन-इन, अस्वीकृति और साइन-इन का परिवर्तन, सबसे नए पहले। इसमें कभी कोड, लिंक या पासकी नहीं होती।"
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "सभी सूचीबद्ध, अ से ज्ञ तक, खोज बॉक्स के साथ।"
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "जिन लोगों को साइन-इन नियम आने देते हैं, वे फिर अपने ईमेल से सदस्य पोर्टल में साइन इन कर सकते हैं।"
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "पिछले 30 दिनों में सदस्य पोर्टल में साइन इन करने वाले सभी लोग, सबसे नए पहले।"
+
+#: 
+msgid "Everywhere"
+msgstr "हर जगह"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "पिछले 30 दिनों में किसी सदस्य द्वारा पुष्टि किए परिवार, सदस्य पोर्टल या ईमेल किए सत्यापन लिंक से।"
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "पुष्टि हुए परिवार, पिछले 30 दिन"
+
+#: 
+msgid "Family details confirmed"
+msgstr "परिवार के विवरण की पुष्टि हो गई"
+
+#: 
+msgid "Family email"
+msgstr "परिवार ईमेल"
+
+#: 
+msgid "Family emails not moved"
+msgstr "परिवार ईमेल स्थानांतरित नहीं हुए"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "वे परिवार भूमिकाएँ जिनके सदस्य सदस्य पोर्टल में साइन इन कर सकते हैं, भूमिका id की अल्पविराम-पृथक सूची के रूप में।"
+
+#: 
+msgid "Find someone"
+msgstr "किसी को खोजें"
+
+#: 
+msgid "Fix by hand"
+msgstr "स्वयं ठीक करें"
+
+#: 
+msgid "Fix shared emails"
+msgstr "साझा ईमेल ठीक करें"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "स्टाफ़ साइन-इन से"
+
+#: 
+msgid "Give a permission"
+msgstr "एक अनुमति दें"
+
+#: 
+msgid "Give a portal permission"
+msgstr "एक पोर्टल अनुमति दें"
+
+#: 
+msgid "Give each person their own email"
+msgstr "प्रत्येक व्यक्ति को अपना ईमेल दें"
+
+#: 
+msgid "Give permission"
+msgstr "अनुमति दें"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "%1$s द्वारा %2$s तक दी गई"
+
+#: 
+msgid "Given by %s"
+msgstr "%s द्वारा दी गई"
+
+#: 
+msgid "Given to"
+msgstr "किसे दी गई"
+
+#: 
+msgid "Given to Everyone"
+msgstr "सभी को दी गई"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "दी गई, पर प्रभावी नहीं"
+
+#: 
+msgid "Go to sign in"
+msgstr "साइन इन पर जाएँ"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "सदस्य पोर्टल पर जाएँ"
+
+#: 
+msgid "Has signed in"
+msgstr "साइन इन कर चुके हैं"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "साइन इन कर चुके हैं: उनके सत्र और उपकरण समाप्त होते हैं"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "यह सदस्य पोर्टल में साइन इन करने का आपका कोड है। इसे उसी ब्राउज़र के साइन-इन पृष्ठ पर टाइप करें जहाँ आपने इसे माँगा था। या इस उपकरण पर साइन इन करने के लिए बटन दबाएँ।"
+
+#: 
+msgid "Hide Permissions"
+msgstr "अनुमतियाँ छिपाएँ"
+
+#: 
+msgid "How"
+msgstr "कैसे"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "एक IP पता एक घंटे में कितने सदस्य पोर्टल साइन-इन ईमेल माँग सकता है। बिना सीमा के लिए 0 रखें, उदाहरण के लिए जब सभी लोग एक पते से ChurchCRM तक पहुँचते हों।"
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "सदस्य के साइन इन बने रहने का विकल्प चुनने के बाद उपकरण कितने दिन तक सदस्य पोर्टल में साइन इन रहता है। विकल्प हटाने के लिए 0 रखें।"
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "कितने निष्क्रिय मिनट सदस्य पोर्टल सत्र समाप्त करते हैं।"
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "सदस्य पोर्टल साइन-इन कोड और लिंक कितने मिनट तक मान्य रहते हैं।"
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "निष्क्रिय समय (मिनट)"
+
+#: 
+msgid "Idle too long"
+msgstr "बहुत देर तक निष्क्रिय"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "यदि %1$s आपका नया पता है, तो इसकी पुष्टि के लिए नीचे दिए बटन का उपयोग करें। पुष्टि से पहले इसका उपयोग साइन इन के लिए नहीं हो सकता। लिंक एक बार काम करता है, %2$s तक।"
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "यदि इस पते से साइन इन हो सकता है, तो हमने आपको एक कोड ईमेल किया है। कुछ मिनट बाद भी कुछ नहीं? चर्च कार्यालय से पूछें।"
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "यदि आपने इसे नहीं जोड़ा, तो साइन-इन और उपकरण पृष्ठ पर इसे हटाएँ और चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "यदि आपने इस परिवर्तन के लिए नहीं कहा, तो कृपया चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "यदि आपने इसके लिए नहीं कहा, तो कृपया चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "यह समाप्त हो चुका हो सकता है या पहले उपयोग हो चुका हो। सहायता चाहिए तो कृपया चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "इसका प्लगइन स्थापित नहीं है"
+
+#: 
+msgid "Jump to a letter"
+msgstr "किसी अक्षर पर जाएँ"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "मुझे साइन इन रखें (दिन)"
+
+#: 
+msgid "Keeps it"
+msgstr "इसे रखते हैं"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "अपुष्ट ईमेल का प्रकार"
+
+#: 
+msgid "Last day"
+msgstr "अंतिम दिन"
+
+#: 
+msgid "Last used"
+msgstr "अंतिम उपयोग"
+
+#: 
+msgid "Last used %s"
+msgstr "अंतिम उपयोग %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "%s के नेता"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "सदस्य साइन-इन चालू होने पर प्रशासकों को व्यक्ति के क्रिया मेनू से उस व्यक्ति के रूप में उसका सदस्य पोर्टल खोलने दें।"
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "सदस्यों को पासकी जोड़ने और उनसे सदस्य पोर्टल में साइन इन करने दें।"
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "सदस्यों को अपने ईमेल पते से सदस्य पोर्टल में साइन इन करने दें। इसे केवल तभी चालू किया जा सकता है जब ईमेल भेजना काम कर रहा हो।"
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "सदस्यों को अपने ईमेल से साइन इन करने दें"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "लिंक और कोड की अवधि (मिनट)"
+
+#: 
+msgid "Login as %s"
+msgstr "%s के रूप में लॉगिन"
+
+#: 
+msgid "Login as Person"
+msgstr "व्यक्ति के रूप में लॉगिन"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "व्यक्ति के रूप में लॉगिन आरंभ नहीं हो सका।"
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "व्यक्ति के रूप में लॉगिन समाप्त: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "व्यक्ति के रूप में लॉगिन का इतिहास"
+
+#: 
+msgid "Login as Person started"
+msgstr "व्यक्ति के रूप में लॉगिन आरंभ हुआ"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "व्यक्ति के रूप में लॉगिन रुका"
+
+#: 
+msgid "Look up anyone"
+msgstr "किसी को भी खोजें"
+
+#: 
+msgid "Loses it"
+msgstr "इसे खो देते हैं"
+
+#: 
+msgid "Manage a team"
+msgstr "एक टीम प्रबंधित करें"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "मेरा साइन-इन और उपकरण प्रबंधित करें"
+
+#: 
+msgid "Matches: %s"
+msgstr "मिलान: %s"
+
+#: 
+msgid "May sign in"
+msgstr "साइन इन कर सकते हैं"
+
+#: 
+msgid "May sign in now"
+msgstr "अभी साइन इन कर सकते हैं"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "सदस्य पोर्टल साइन-इन कोड"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "सदस्य पोर्टल साइन-इन सूचना"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "सदस्यों और उन स्टाफ़ के लिए सदस्य पोर्टल साइन-इन और गतिविधि, जो अपने स्टाफ़ साइन-इन से पोर्टल खोलते हैं।"
+
+#: 
+msgid "Member sign-in"
+msgstr "सदस्य साइन-इन"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "सदस्य साइन-इन प्रत्येक व्यक्ति को एक कोड ईमेल करता है, इसलिए इसे चालू करने से पहले ईमेल (SMTP) काम करना चाहिए।"
+
+#: 
+msgid "Member sign-in is off"
+msgstr "सदस्य साइन-इन बंद है"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "चर्च के लिए सदस्य साइन-इन बंद है।"
+
+#: 
+msgid "Member sign-in is off."
+msgstr "सदस्य साइन-इन बंद है।"
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "सदस्य साइन-इन अभी उपलब्ध नहीं है। कृपया चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "सदस्य साइन-इन कभी उन लोगों को नहीं आने देता जो दिवंगत हैं, निष्क्रिय हैं, निष्क्रिय परिवार में हैं, समीक्षा की प्रतीक्षा में हैं, या जिनका साइन-इन अक्षम है। ये विकल्प तय करते हैं कि और कौन आ सकता है।"
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "सदस्य साइन-इन प्रत्येक सदस्य को ईमेल से एक कोड भेजता है, इसलिए इसे केवल तभी चालू किया जा सकता है जब ChurchCRM ईमेल भेज सके। पहले ईमेल चालू करें और मेल सर्वर सेट करें।"
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "कम से कम एक कैलेंडर चालू होने पर सदस्य कैलेंडर पृष्ठ देखते हैं।"
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "सदस्य नाम के कम से कम %d अक्षर टाइप करते हैं और अधिक से अधिक %d मिलान देखते हैं। पूरी सूची कभी नहीं दिखाई जाती।"
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "जो सदस्य अभी साइन इन हैं, वे साइन आउट हो जाते हैं, और सदस्य साइन-इन फिर चालू होने तक कोई अपने ईमेल से साइन इन नहीं कर सकता।"
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "इन वर्गीकरणों वाले सदस्यों को सदस्य पोर्टल मेनू में निर्देशिका मिलती है।"
+
+#: 
+msgid "Minimum age"
+msgstr "न्यूनतम आयु"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "अगले घंटे में इस पते से और प्रयास एक और सूचना नहीं भेजेंगे।"
+
+#: 
+msgid "Moved from the family email"
+msgstr "परिवार ईमेल से स्थानांतरित"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "परिवार के मुखिया को स्थानांतरित"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "जीवनसाथी को स्थानांतरित"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "हमारे चर्च में नए हैं? अपने परिवार के बारे में बताएँ, और हम आपका स्वागत करने के लिए संपर्क करेंगे।"
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "अभी तक व्यक्ति के रूप में लॉगिन का कोई सत्र नहीं।"
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "जन्म तिथि नहीं है, और परिवार के मुखिया या जीवनसाथी भी नहीं हैं"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "कोई कैलेंडर चालू नहीं है, इसलिए सदस्य कैलेंडर पृष्ठ नहीं देखते।"
+
+#: 
+msgid "No changes"
+msgstr "कोई बदलाव नहीं"
+
+#: 
+msgid "No changes made."
+msgstr "कोई परिवर्तन नहीं किया गया।"
+
+#: 
+msgid "No family role"
+msgstr "कोई परिवार भूमिका नहीं"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "परिवार का कोई मुखिया या जीवनसाथी परिवार ईमेल प्राप्त नहीं कर सकता।"
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "परिवार का कोई मुखिया या जीवनसाथी इसे साझा नहीं करता"
+
+#: 
+msgid "No match"
+msgstr "कोई मिलान नहीं"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "अभी कोई भी साइन-इन नियम से मेल नहीं खाता। और परिवार भूमिकाएँ या वर्गीकरण चिह्नित करें, या न्यूनतम आयु कम करें।"
+
+#: 
+msgid "No passkey was added."
+msgstr "कोई पासकी नहीं जोड़ी गई।"
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "किसी पासकी का उपयोग नहीं हुआ। पुनः प्रयास करें, या अपने ईमेल पते से साइन इन करें।"
+
+#: 
+msgid "No person has this email"
+msgstr "किसी व्यक्ति के पास यह ईमेल नहीं है"
+
+#: 
+msgid "No personal email"
+msgstr "कोई व्यक्तिगत ईमेल नहीं"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "कोई साझा ईमेल किसी को साइन इन करने से नहीं रोकता।"
+
+#: 
+msgid "No such person"
+msgstr "ऐसा कोई व्यक्ति नहीं"
+
+#: 
+msgid "No, thanks"
+msgstr "नहीं, धन्यवाद"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "दो साइन-इन योग्य लोग जो एक व्यक्तिगत ईमेल साझा करते हैं, उससे कोई साइन इन नहीं कर सकता। एक परिवार में साझा पते पर परिवार के मुखिया इसे रखते हैं, अन्यथा जीवनसाथी (सबसे बड़े पहले)। इसे साझा करने वाले अन्य सभी इसे खो देते हैं। जिन्हें आप दूसरे तरीके से ठीक करना चाहें, उनका चिह्न हटा दें।"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "अभी कोई साइन इन नहीं कर सकता: कौन साइन इन कर सकता है के अंतर्गत कम से कम एक वर्गीकरण चिह्नित करें।"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "अभी कोई साइन इन नहीं कर सकता: कौन साइन इन कर सकता है के अंतर्गत कम से कम एक परिवार भूमिका और कम से कम एक वर्गीकरण चिह्नित करें।"
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "अभी कोई साइन इन नहीं कर सकता: कौन साइन इन कर सकता है के अंतर्गत कम से कम एक परिवार भूमिका चिह्नित करें।"
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "निर्देशिका में कोई भी उस नाम से मेल नहीं खाता।"
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "निर्देशिका में अभी कोई सूचीबद्ध नहीं है।"
+
+#: 
+msgid "Not ended"
+msgstr "समाप्त नहीं"
+
+#: 
+msgid "Not moved"
+msgstr "स्थानांतरित नहीं"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "पक्का नहीं कि हमारे पास कौन सा ईमेल है? चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "Not yet"
+msgstr "अभी नहीं"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "परिवार की समयरेखा में नोट किया गया"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "उनमें से साइन इन कर चुके लोग: {{total}}। वे हर जगह साइन आउट हो जाते हैं, और पते को एक सूचना मिलती है।"
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "सभी के लिए बंद: \"%s\" बंद है"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "सभी के लिए बंद: स्वयंसेवक प्रबंधन V2 पर सेट नहीं है"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "सभी के लिए बंद: इसकी सुविधा बंद है"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "सभी के लिए बंद: इसका प्लगइन बंद है"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "सभी के लिए बंद: सदस्यों के साथ कोई कैलेंडर साझा नहीं है"
+
+#: 
+msgid "Office list"
+msgstr "कार्यालय सूची"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "पुष्टि होने के बाद इसका उपयोग सदस्य पोर्टल में साइन इन करने के लिए किया जा सकता है।"
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "केवल वे पते चुने जा सकते हैं जिनकी पुष्टि आप कर सकते हैं।"
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "कारण केवल प्रशासक देखते हैं।"
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "स्टाफ़ खाते या पोर्टल अनुमतियों वाले व्यक्ति का ईमेल केवल प्रशासक बदल सकता है।"
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "उस ईमेल की पुष्टि केवल प्रशासक कर सकता है जिसने उस ईमेल को बदला जिससे व्यक्ति साइन इन करता था।"
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "स्टाफ़ खाते या पोर्टल अनुमतियों वाले व्यक्ति के ईमेल की पुष्टि केवल प्रशासक कर सकता है।"
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "इस पते को केवल प्रशासक ठीक कर सकता है: इसे साझा करने वाले किसी के पास स्टाफ़ खाता या पोर्टल अनुमतियाँ हैं।"
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "इन विवरणों की पुष्टि केवल आपके परिवार का कोई वयस्क कर सकता है। कृपया चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "केवल उन पतों की पुष्टि करें जिनके बारे में आप जानते हैं कि वे उस व्यक्ति के हैं। जो कोई पता पढ़ ले, वह उसके व्यक्ति के रूप में साइन इन कर सकता है।"
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "कार्यालय सूची में केवल जीवित लोग अपने ईमेल के साथ हो सकते हैं।"
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "केवल अपने ईमेल वाले लोग जोड़े जा सकते हैं।"
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "वैकल्पिक टेलीमेट्री में पृष्ठ मार्ग, सक्रिय लोकेल, CRM संस्करण, PHP संस्करण, OS परिवार, आपकी चर्च जानकारी सेटिंग का देश और एक यादृच्छिक स्थापना आईडी शामिल हो सकते हैं। विफलता रिपोर्टों में स्थापना आईडी नहीं होती। डेटा संयुक्त राज्य अमेरिका में PostHog को भेजा जाता है।"
+
+#: 
+msgid "Passkey"
+msgstr "पासकी"
+
+#: 
+msgid "Passkey added"
+msgstr "पासकी जोड़ी गई"
+
+#: 
+msgid "Passkey removed"
+msgstr "पासकी हटाई गई"
+
+#: 
+msgid "Passkeys"
+msgstr "पासकी"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "पासकी बंद हैं।"
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "पासकी यहाँ उपयोग नहीं की जा सकतीं।"
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "इस साइट पर पासकी अभी उपयोग नहीं की जा सकतीं। कृपया चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "पासकी के लिए साइट पते में IP पता नहीं, होस्ट नाम चाहिए।"
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "इस साइट के लिए पासकी को सुरक्षित (HTTPS) कनेक्शन चाहिए।"
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "पासकी के लिए साइट पता Config.php में सेट होना चाहिए।"
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "पासकी के लिए साइट HTTPS पर उपलब्ध होनी चाहिए। ऐसा होने तक सदस्यों को पासकी नहीं दी जातीं।"
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "पासकी केवल %s पर काम करती हैं।"
+
+#: 
+msgid "Passkeys: %d"
+msgstr "पासकी: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "सहेजी सेटिंग जिन लोगों को आने देती हैं: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "जब कोई सदस्य पोर्टल में साइन इन न कर सके, तो ईमेल पाने वाले लोग"
+
+#: 
+msgid "People who hold it"
+msgstr "जो इसे रखते हैं"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "पता खोने वाले लोग: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "जिन लोगों ने पता खोया: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "जो साइन इन कर सकते हैं: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "जो पहले सदस्य पोर्टल में साइन इन करते थे: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "इन वर्गीकरणों वाले लोग निर्देशिका में दिखाई देते हैं। संख्या बताती है कि प्रत्येक वर्गीकरण में कितने सक्रिय लोग हैं।"
+
+#: 
+msgid "People with this email: %s"
+msgstr "इस ईमेल वाले लोग: %s"
+
+#: 
+msgid "Person %d"
+msgstr "व्यक्ति %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "सूची से वर्गीकरण चुनें।"
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "सूची से परिवार भूमिकाएँ चुनें।"
+
+#: 
+msgid "Pick people for the office list."
+msgstr "कार्यालय सूची के लिए लोग चुनें।"
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "कृपया सूची से एक भाषा चुनें।"
+
+#: 
+msgid "Portal permission given"
+msgstr "पोर्टल अनुमति दी गई"
+
+#: 
+msgid "Portal permission removed"
+msgstr "पोर्टल अनुमति हटाई गई"
+
+#: 
+msgid "Portal permissions"
+msgstr "पोर्टल अनुमतियाँ"
+
+#: 
+msgid "Portal sign-in"
+msgstr "पोर्टल साइन-इन"
+
+#: 
+msgid "Problem"
+msgstr "समस्या"
+
+#: 
+msgid "Reason"
+msgstr "कारण"
+
+#: 
+msgid "Reason: %s"
+msgstr "कारण: %s"
+
+#: 
+msgid "Refused"
+msgstr "अस्वीकृत"
+
+#: 
+msgid "Register your family"
+msgstr "अपना परिवार पंजीकृत करें"
+
+#: 
+msgid "Remembered device"
+msgstr "याद रखा गया उपकरण"
+
+#: 
+msgid "Remembered device removed"
+msgstr "याद रखा गया उपकरण हटाया गया"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "याद रखे गए उपकरण: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "ईमेल हटाएँ"
+
+#: 
+msgid "Remove this passkey"
+msgstr "यह पासकी हटाएँ"
+
+#: 
+msgid "Remove this permission"
+msgstr "यह अनुमति हटाएँ"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "इनसे हटाया गया: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "साइन-इन के बाद बदला गया"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "दूसरे साइन-इन से बदला गया"
+
+#: 
+msgid "Result"
+msgstr "परिणाम"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "स्वयंसेवक टीम चलाएँ: पद, स्वयंसेवक, कार्यक्रम, स्टाफ़िंग और संख्या।"
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "बताएँ कि साइन-इन क्यों अक्षम किया जा रहा है।"
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "बताएँ कि यह अनुमति क्यों दी जा रही है।"
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "रिकॉर्ड पर किसी को भी खोजें। प्रत्येक पंक्ति बताती है कि वे सदस्य पोर्टल में साइन इन कर सकते हैं या नहीं, और यदि नहीं, तो क्यों।"
+
+#: 
+msgid "Search method"
+msgstr "खोज विधि"
+
+#: 
+msgid "Search only"
+msgstr "केवल खोज"
+
+#: 
+msgid "See family contact details"
+msgstr "परिवार के संपर्क विवरण देखें"
+
+#: 
+msgid "See my family"
+msgstr "मेरा परिवार देखें"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "सदस्य पोर्टल वैसे देखें जैसे यह व्यक्ति देखता है? जब तक आप रोकें नहीं दबाते, स्टाफ़ पृष्ठ बंद रहते हैं, और सत्र इस पृष्ठ तथा आपके उपयोगकर्ता पृष्ठ पर दर्ज होता है।"
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "वे कैलेंडर देखें जिन्हें चर्च सदस्यों के साथ साझा करता है, और उनकी सदस्यता लें।"
+
+#: 
+msgid "See the church calendar"
+msgstr "चर्च कैलेंडर देखें"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "वे उपकरण और पासकी देखें जो उन्हें साइन इन कराते हैं, और उनमें से किसी से साइन आउट करें या उसे हटाएँ।"
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "अपने परिवार के लोगों के ईमेल पते और फ़ोन नंबर देखें।"
+
+#: 
+msgid "See the member directory"
+msgstr "सदस्य निर्देशिका देखें"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "अपने परिवार के लोगों के नाम और फ़ोटो देखें।"
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "वे लोग देखें जिन्हें चर्च अपनी निर्देशिका में सूचीबद्ध करता है, उन विवरणों के साथ जिन्हें चर्च साझा करना चुनता है।"
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "अपना स्वयंसेवक कार्यक्रम देखें, खुले स्थानों के लिए नाम लिखें और स्थानापन्न माँगें।"
+
+#: 
+msgid "Send browse as true or false."
+msgstr "ब्राउज़ को true या false के रूप में भेजें।"
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "वर्गीकरण को id की सूची के रूप में भेजें।"
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "निर्देशिका सेटिंग को JSON ऑब्जेक्ट के रूप में भेजें।"
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "दिखाने वाले फ़ील्ड को true और false मानों के ऑब्जेक्ट के रूप में भेजें।"
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "सेटिंग को JSON ऑब्जेक्ट के रूप में भेजें।"
+
+#: 
+msgid "Session ended"
+msgstr "सत्र समाप्त"
+
+#: 
+msgid "Set up email"
+msgstr "ईमेल सेट अप करें"
+
+#: 
+msgid "Set up email first."
+msgstr "पहले ईमेल सेट करें।"
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "ठीक किए साझा पते: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "ठीक करने के साझा पते: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "साझा करने वाले"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "वे साझा ईमेल जो लोगों को साइन इन करने से रोकते हैं"
+
+#: 
+msgid "Show or hide this member"
+msgstr "इस सदस्य को दिखाएँ या छिपाएँ"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "नीचे चुने वर्गीकरणों को सदस्य पोर्टल में निर्देशिका पृष्ठ दिखाएँ।"
+
+#: 
+msgid "Show the member directory"
+msgstr "सदस्य निर्देशिका दिखाएँ"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "सदस्य पोर्टल में सदस्य निर्देशिका दिखाएँ।"
+
+#: 
+msgid "Show with year"
+msgstr "वर्ष के साथ दिखाएँ"
+
+#: 
+msgid "Show without year"
+msgstr "वर्ष के बिना दिखाएँ"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "पहले %d मिलान दिखाए जा रहे हैं। जिस व्यक्ति को आप खोज रहे हैं, उसे पाने के लिए नाम के और अक्षर टाइप करें।"
+
+#: 
+msgid "Sign in as %s?"
+msgstr "%s के रूप में साइन इन करें?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "अगली बार इस उपकरण पर Face ID, फ़िंगरप्रिंट या अपने उपकरण के PIN से साइन इन करें।"
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "अपना परिवार, चर्च कैलेंडर और सेवा के तरीके देखने के लिए साइन इन करें। आपको पासवर्ड या खाते की आवश्यकता नहीं है।"
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "पासकी से साइन इन करें"
+
+#: 
+msgid "Sign out every device"
+msgstr "हर उपकरण से साइन आउट करें"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "अभी हर उपकरण से साइन आउट करें?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "हर जगह साइन आउट करें"
+
+#: 
+msgid "Sign out this device"
+msgstr "इस उपकरण से साइन आउट करें"
+
+#: 
+msgid "Sign-in"
+msgstr "साइन-इन"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "साइन-इन और उपकरण"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "साइन-इन अक्षम नहीं किया जा सका।"
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "साइन-इन सक्षम नहीं किया जा सका।"
+
+#: 
+msgid "Sign-in disabled"
+msgstr "साइन-इन अक्षम"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "साइन-इन ईमेल का अनुरोध"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "प्रति IP पते प्रति घंटे साइन-इन ईमेल"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "साइन-इन सक्षम"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "इस व्यक्ति का साइन-इन पहले से अक्षम है।"
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "साइन-इन अक्षम है"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "इस व्यक्ति का साइन-इन अक्षम है।"
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "इस व्यक्ति का साइन-इन सक्षम है।"
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "इस व्यक्ति का साइन-इन अक्षम नहीं है।"
+
+#: 
+msgid "Sign-in refused"
+msgstr "साइन-इन अस्वीकृत"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "जब तक यह लिंक किए व्यक्ति के रिकॉर्ड पर हल नहीं होता, साइन-इन, सत्र और API कुंजी अवरुद्ध रहते हैं।"
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "साइन इन, पिछले 30 दिन"
+
+#: 
+msgid "Signed out"
+msgstr "साइन आउट"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "उनके साइन-इन में परिवर्तन से साइन आउट"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "हर जगह साइन आउट"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "किसी ने सदस्य पोर्टल साइन-इन ईमेल माँगा, पर कोई नहीं भेजा गया।"
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "कोई सदस्य पोर्टल में साइन इन नहीं कर सका"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "व्यक्ति के रूप में लॉगिन के दौरान स्टाफ़ पृष्ठ बंद रहते हैं। वापस जाने के लिए बैनर में रोकें दबाएँ।"
+
+#: 
+msgid "Stop"
+msgstr "रोकें"
+
+#: 
+msgid "Stopped"
+msgstr "रोका गया"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "चर्च कार्यालय को बताएँ कि परिवार का विवरण अभी भी सही है या नहीं।"
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "वह कोड काम नहीं किया। हमारा नवीनतम ईमेल देखें, या नया कोड माँगें।"
+
+#: 
+msgid "That could not be removed."
+msgstr "उसे हटाया नहीं जा सका।"
+
+#: 
+msgid "That device is signed out."
+msgstr "वह उपकरण साइन आउट हो गया है।"
+
+#: 
+msgid "That is not a valid email address."
+msgstr "वह मान्य ईमेल पता नहीं है।"
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "वह पृष्ठ बहुत देर तक खुला रहा। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "वह पासकी हटा दी गई है। अब वह आपको साइन इन नहीं करा सकती।"
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "इसमें बहुत समय लग गया। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "7.8.3 उन्नयन ने प्रत्येक परिवार ईमेल एक व्यक्ति को दिया। जिन्हें नहीं दे सका, उनके लिए परिवार की समयरेखा में नोट छोड़ दिया।"
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "सदस्य पोर्टल और उसके द्वारा आपको भेजे ईमेल इस भाषा का उपयोग करते हैं।"
+
+#: 
+msgid "The change could not be saved."
+msgstr "परिवर्तन सहेजा नहीं जा सका।"
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "कोड और बटन एक बार काम करते हैं, %s तक।"
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "कोड या लिंक उस पते पर गया जो अब उनका ईमेल नहीं है"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "पुष्टि ईमेल नहीं भेजा जा सका। कृपया बाद में पुनः प्रयास करें।"
+
+#: 
+msgid "The device is signed out."
+msgstr "उपकरण साइन आउट हो गया है।"
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "आपके रिकॉर्ड से ईमेल पता %2$s %1$s बजे हटा दिया गया। आपको हर उपकरण पर सदस्य पोर्टल से साइन आउट कर दिया गया है।"
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "आपके रिकॉर्ड पर %1$s बजे ईमेल पता %2$s से %3$s बदल दिया गया। आपको हर उपकरण पर सदस्य पोर्टल से साइन आउट कर दिया गया है।"
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "ईमेल की पुष्टि नहीं हो सकी।"
+
+#: 
+msgid "The email could not be sent."
+msgstr "ईमेल नहीं भेजा जा सका।"
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "ईमेल की पुष्टि हो गई है। अब इसका उपयोग साइन इन करने के लिए किया जा सकता है।"
+
+#: 
+msgid "The end date is before the start date."
+msgstr "समाप्ति तिथि आरंभ तिथि से पहले है।"
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "परिवार में कोई जीवित, सक्रिय मुखिया या जीवनसाथी नहीं है"
+
+#: 
+msgid "The family is inactive"
+msgstr "परिवार निष्क्रिय है"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "परिवार के मुखिया और जीवनसाथी दोनों का अपना ईमेल है"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "अंतिम दिन भूतकाल में नहीं हो सकता।"
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "लिंक किया व्यक्ति साइन इन नहीं कर सकता, इसलिए यह खाता साइन इन नहीं कर सकता"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "सूची लोड नहीं हो सकी।"
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "पासकी नहीं जोड़ी जा सकी। कृपया पुनः प्रयास करें।"
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "पासकी की पुष्टि नहीं हो सकी"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "पासकी रिकॉर्ड में नहीं है, या हटा दी गई थी"
+
+#: 
+msgid "The passkey was removed."
+msgstr "पासकी हटा दी गई।"
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "इसे साझा करने वाले लोग अलग परिवारों में हैं, या किसी परिवार में नहीं हैं"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "इस पते को साझा करने वाले लोग बदल गए हैं। साझा ईमेल ठीक करें फिर से खोलें।"
+
+#: 
+msgid "The permission could not be given."
+msgstr "अनुमति नहीं दी जा सकी।"
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "इस दिन के बाद अनुमति समाप्त हो जाती है। इसे फिर दिया जा सकता है।"
+
+#: 
+msgid "The permission was given."
+msgstr "अनुमति दे दी गई।"
+
+#: 
+msgid "The permission was removed."
+msgstr "अनुमति हटा दी गई।"
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "अनुमतियाँ लोड नहीं हो सकीं।"
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "व्यक्ति सदस्य पोर्टल में यह अनुमति तुरंत खो देता है।"
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "कारण अधिक से अधिक %d वर्ण लंबा हो सकता है।"
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "साइन-इन नियम उन्हें आने देते हैं, और प्रत्येक का अपना ईमेल है जिसका उपयोग कोई अन्य साइन-इन योग्य व्यक्ति नहीं करता।"
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "साइन-इन नियम उन्हें आने देते हैं, पर उनका ईमेल नहीं: उनके पास ईमेल नहीं है, वे इसे किसी अन्य साइन-इन योग्य व्यक्ति के साथ साझा करते हैं, या अभी पुष्टि नहीं हुई।"
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "साइन-इन सेटिंग सहेजी नहीं जा सकीं।"
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "अपुष्ट ईमेल बदल गया है। पृष्ठ पुनः लोड करें और फिर प्रयास करें।"
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "उनका वर्गीकरण साइन इन नहीं कर सकता"
+
+#: 
+msgid "Their email changed"
+msgstr "उनका ईमेल बदल गया"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "उनके ईमेल की अभी पुष्टि नहीं हुई"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "उनका ईमेल किसी और के साथ साझा है"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "उनकी परिवार भूमिका साइन इन नहीं कर सकती"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "उन्नयन ने उनके पुराने लॉगिन हटा दिए। सदस्य साइन-इन चालू करें ताकि वे अपने ईमेल से साइन इन कर सकें।"
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "उनका याद रखा उपकरण समाप्त हो चुका था"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "उनका याद रखा उपकरण साइन आउट कर दिया गया था"
+
+#: 
+msgid "Theme development"
+msgstr "थीम विकास"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "id %d वाला कोई वर्गीकरण नहीं है।"
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "इस प्रकार के दायरे के लिए कोई चयनक नहीं है।"
+
+#: 
+msgid "There is no such audit event."
+msgstr "ऐसी कोई ऑडिट घटना नहीं है।"
+
+#: 
+msgid "There is no such email problem."
+msgstr "ऐसी कोई ईमेल समस्या नहीं है।"
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "अपुष्ट ईमेल का ऐसा कोई प्रकार नहीं है।"
+
+#: 
+msgid "There is no such list."
+msgstr "ऐसी कोई सूची नहीं है।"
+
+#: 
+msgid "There is no such portal permission."
+msgstr "ऐसी कोई पोर्टल अनुमति नहीं है।"
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "ये वे फ़ोन और कंप्यूटर हैं जहाँ आपने साइन इन रहना चुना था। जिनका आप अब उपयोग नहीं करते या जिन्हें नहीं पहचानते, उनसे साइन आउट करें।"
+
+#: 
+msgid "They have a staff account"
+msgstr "उनका स्टाफ़ खाता है"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "वे साइन इन कर सकते हैं, पर कभी नहीं किया।"
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "इस क्रिया के लिए साइन इन किया ब्राउज़र सत्र चाहिए।"
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "यह पता बदला नहीं जा सका। स्थिति देखने के लिए साझा ईमेल ठीक करें फिर खोलें।"
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "यह पता अब साइन-इन योग्य लोगों द्वारा साझा नहीं है।"
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "यह ब्राउज़र पासकी नहीं बना सकता।"
+
+#: 
+msgid "This device"
+msgstr "यह उपकरण"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "इस उपकरण पर आपकी पासकी पहले से है।"
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "यह उपकरण अब उस व्यक्ति को साइन इन नहीं रखेगा, और उस पर खुला सत्र समाप्त हो जाएगा। वे ईमेल से फिर साइन इन कर सकते हैं।"
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "यह मेरा अपना उपकरण है। मुझे साइन इन रखें।"
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "यहीं आप अतिथियों के बारे में निर्णय करते हैं। संख्या बताती है कि प्रत्येक वर्गीकरण में कितने सक्रिय लोग हैं।"
+
+#: 
+msgid "This link cannot be used"
+msgstr "इस लिंक का उपयोग नहीं किया जा सकता"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "यह लिंक समाप्त हो चुका है या पहले उपयोग हो चुका है"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "सदस्य पोर्टल का यह भाग आपके लिए उपलब्ध नहीं है।"
+
+#: 
+msgid "This passkey is already on record."
+msgstr "यह पासकी पहले से रिकॉर्ड में है।"
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "यह पासकी अब उस व्यक्ति को साइन इन नहीं कराएगी। वे ईमेल से साइन इन कर नई पासकी जोड़ सकते हैं।"
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "यह अनुमति व्यक्ति पृष्ठ पर नहीं दी जा सकती।"
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "इस व्यक्ति के पास पहले से हर वह अनुमति है जो दी जा सकती है।"
+
+#: 
+msgid "This person already has this permission."
+msgstr "इस व्यक्ति के पास यह अनुमति पहले से है।"
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "यह व्यक्ति अब कहीं भी साइन इन नहीं कर सकता, न सदस्य पोर्टल में और न स्टाफ़ के रूप में। हर सत्र समाप्त होता है, और उनके याद रखे उपकरण तथा पासकी हटा दी जाती हैं।"
+
+#: 
+msgid "This person could not be signed out."
+msgstr "इस व्यक्ति को साइन आउट नहीं किया जा सका।"
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "इस व्यक्ति का स्टाफ़ खाता है। व्यक्ति के रूप में लॉगिन कभी स्टाफ़ खाता नहीं खोलता।"
+
+#: 
+msgid "This person has no such passkey."
+msgstr "इस व्यक्ति की ऐसी कोई पासकी नहीं है।"
+
+#: 
+msgid "This person has no such permission."
+msgstr "इस व्यक्ति की ऐसी कोई अनुमति नहीं है।"
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "इस व्यक्ति का ऐसा कोई याद रखा उपकरण नहीं है।"
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "इस व्यक्ति का कोई अपुष्ट ईमेल नहीं है।"
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "यह व्यक्ति सदस्य पोर्टल में साइन इन कर चुका है। यह ईमेल बदलने पर वे हर जगह साइन आउट हो जाते हैं, और नया पता पुष्टि से पहले साइन इन के लिए उपयोग नहीं हो सकता।"
+
+#: 
+msgid "This person is deceased."
+msgstr "यह व्यक्ति दिवंगत है"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "यह व्यक्ति सदस्य पोर्टल से हर जगह साइन आउट है।"
+
+#: 
+msgid "This person no longer exists."
+msgstr "यह व्यक्ति अब मौजूद नहीं है।"
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "यह आपको हर जगह साइन आउट करता है, यहाँ भी, और हर उपकरण भुला देता है। आप अपने ईमेल पते से फिर साइन इन कर सकते हैं।"
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "यह आपको हर जगह साइन आउट करता है, यहाँ भी, और हर उपकरण भुला देता है। आपकी पासकी रहती हैं: आप पासकी या अपने ईमेल पते से फिर साइन इन कर सकते हैं।"
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "यह उपकरण इन्हें कभी नहीं बदलता। प्रत्येक व्यक्ति के रिकॉर्ड पर अपना ईमेल दें।"
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "इसे केवल अपने फ़ोन या कंप्यूटर पर चिह्नित करें, साझा या सार्वजनिक उपकरण पर कभी नहीं।"
+
+#: 
+msgid "Time: %s"
+msgstr "समय: %s"
+
+#: 
+msgid "Timed out"
+msgstr "समय समाप्त"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "यह ईमेल बदलने के लिए कृपया चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "To fix"
+msgstr "ठीक करने के लिए"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "अपने फ़ोन या कंप्यूटर पर साइन इन बने रहने के लिए अगली बार साइन इन करते समय \"यह मेरा अपना उपकरण है\" चिह्नित करें।"
+
+#: 
+msgid "Too many attempts"
+msgstr "बहुत अधिक प्रयास"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "आज बहुत अधिक साइन-इन ईमेल"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "इस ईमेल पते के लिए बहुत अधिक साइन-इन अनुरोध"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "इस IP पते से बहुत अधिक साइन-इन अनुरोध"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "बहुत अधिक गलत कोड"
+
+#: 
+msgid "Turn off"
+msgstr "बंद करें"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "सदस्य साइन-इन बंद करें?"
+
+#: 
+msgid "Turn on"
+msgstr "चालू करें"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "सदस्य साइन-इन चालू करें"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "सदस्य साइन-इन चालू करें?"
+
+#: 
+msgid "Type a name"
+msgstr "एक नाम टाइप करें"
+
+#: 
+msgid "Type a name or email"
+msgstr "नाम या ईमेल टाइप करें"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "नाम के कम से कम %d अक्षर टाइप करें, फिर खोजें।"
+
+#: 
+msgid "Unconfirmed email"
+msgstr "अपुष्ट ईमेल"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "समझें कि ChurchCRM कहाँ उपयोग होता है"
+
+#: 
+msgid "Unknown device"
+msgstr "अज्ञात उपकरण"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "अज्ञात निर्देशिका फ़ील्ड: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "अज्ञात निर्देशिका सेटिंग: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "बिना नाम का उपकरण"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "बिना नाम की पासकी"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "जब तक चर्च कार्यालय इसकी पुष्टि नहीं करता, नया पता साइन इन के लिए उपयोग नहीं हो सकता।"
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "%3$s पर %2$s के ईमेल पते के रूप में %1$s उपयोग करें?"
+
+#: 
+msgid "Use a different email address"
+msgstr "कोई दूसरा ईमेल पता उपयोग करें"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "इस उपकरण पर पासकी उपयोग करें?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "पुष्टि के लिए नीचे दिए बटन का उपयोग करें कि %2$s पर %1$s आपका ईमेल पता है। लिंक एक बार काम करता है, %3$s तक।"
+
+#: 
+msgid "User %d"
+msgstr "उपयोगकर्ता %d"
+
+#: 
+msgid "View Permissions"
+msgstr "अनुमतियाँ देखें"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "%s की आपकी पुष्टि की प्रतीक्षा है। उस पते पर भेजे लिंक का उपयोग करें।"
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "{{email}} की आपकी पुष्टि की प्रतीक्षा है। उस पते पर भेजे लिंक का उपयोग करें।"
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "हम ईमेल नहीं भेज सके। कृपया बाद में पुनः प्रयास करें, या चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "We could not sign you in"
+msgstr "हम आपको साइन इन नहीं करा सके"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "हमने %s पर एक लिंक ईमेल किया। अपने नए ईमेल पते की पुष्टि के लिए उसका उपयोग करें।"
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "हमने {{email}} पर एक लिंक भेजा। जब आप उसका उपयोग करेंगे, आपका ईमेल बदल जाएगा।"
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "हम आपको साइन इन के लिए एक कोड और एक लिंक ईमेल करेंगे।"
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "हमें खुशी है कि आप यहाँ हैं! इसमें लगभग तीन मिनट लगते हैं।"
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "हमें खुशी है कि आपका परिवार हमसे जुड़ा है! आपका पंजीकरण प्राप्त हो गया है। हमारी टीम शीघ्र व्यक्तिगत स्वागत के लिए संपर्क करेगी।"
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "विवाह वर्षगाँठ"
+
+#: 
+msgid "Welcome"
+msgstr "स्वागत है"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "जिसके लिए यह दी गई थी, वह अब मौजूद नहीं है"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "सदस्य पोर्टल में क्या देख और कर सकते हैं, और प्रत्येक अनुमति कहाँ से आती है। लोगों की गिनती साइन-इन नियमों से आने वाले सभी लोगों और स्टाफ़ में होती है।"
+
+#: 
+msgid "What members can use"
+msgstr "सदस्य क्या उपयोग कर सकते हैं"
+
+#: 
+msgid "What to do"
+msgstr "क्या करें"
+
+#: 
+msgid "Who can see it"
+msgstr "इसे कौन देख सकता है"
+
+#: 
+msgid "Who is listed"
+msgstr "कौन सूचीबद्ध है"
+
+#: 
+msgid "Who may sign in"
+msgstr "कौन साइन इन कर सकता है"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "सदस्य पोर्टल में कौन साइन इन कर सकता है, कौन कर चुका है, और किसका ईमेल रोकता है। सूचियाँ साइन-इन टैब के नियमों का पालन करती हैं।"
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "सदस्य पोर्टल निर्देशिका किसे सूचीबद्ध करती है, कौन इसे देख सकता है और क्या दिखाती है, यह व्यवस्थापक -> सदस्य पोर्टल -> निर्देशिका पर चुना जाता है।"
+
+#: 
+msgid "Why"
+msgstr "क्यों"
+
+#: 
+msgid "Why not"
+msgstr "क्यों नहीं"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "उस टोकन के साथ जिसे उपकरण ने अभी बदला"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "हाँ, पासकी जोड़ें"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "हाँ, यह पासकी हटाएँ"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "हाँ, हर उपकरण से साइन आउट करें"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "आपको इस ईमेल की पुष्टि की अनुमति नहीं है।"
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "आप किसी भी उपकरण पर साइन इन नहीं रखे गए हैं।"
+
+#: 
+msgid "You are signed out on every device."
+msgstr "आप हर उपकरण पर साइन आउट हैं।"
+
+#: 
+msgid "You are signed out on this device."
+msgstr "आप इस उपकरण पर साइन आउट हैं।"
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "आप अपने ईमेल पते से भी साइन इन कर सकते हैं।"
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "आप अपना साइन-इन अक्षम नहीं कर सकते।"
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "आप सदस्य पोर्टल नहीं खोल सकते। कृपया चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "आपने अपना ईमेल बहुत बार बदलने को कहा है। कृपया बाद में पुनः प्रयास करें।"
+
+#: 
+msgid "You have no passkeys."
+msgstr "आपकी कोई पासकी नहीं है।"
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "आप सदस्य पोर्टल में %s के रूप में लॉग इन हैं (परिवर्तन अनुमत)।"
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "आप सदस्य पोर्टल में %s के रूप में लॉग इन हैं (केवल पढ़ने के लिए)।"
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "न्यूनतम आयु से कम"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "वह न्यूनतम आयु जिस पर कोई व्यक्ति सदस्य पोर्टल में साइन इन कर सकता है। जन्म तिथि अज्ञात होने पर केवल परिवार का मुखिया या जीवनसाथी योग्य होता है।"
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "आपका सदस्य पोर्टल साइन-इन कोड"
+
+#: 
+msgid "Your code"
+msgstr "आपका कोड"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "आपके ईमेल पते %s की अभी पुष्टि नहीं हुई, इसलिए इसका उपयोग साइन इन के लिए नहीं हो सकता। हम उस पर एक लिंक ईमेल करेंगे; लिंक का उपयोग उसकी पुष्टि करता है।"
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "आपका ईमेल पता यहाँ नहीं हटाया जा सकता। कृपया चर्च कार्यालय से संपर्क करें।"
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "आपके ईमेल पते की पुष्टि हो गई है"
+
+#: 
+msgid "Your email address was changed"
+msgstr "आपका ईमेल पता बदल दिया गया"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "आपकी पासकी जोड़ दी गई। अगली बार इस उपकरण पर उसी से साइन इन करें।"
+
+#: 
+msgid "an administrator"
+msgstr "एक प्रशासक"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "परिवार के मुखिया या जीवनसाथी का कोई ईमेल पता नहीं है"
+
+#: 
+msgid "or"
+msgstr "या"
+
+#: 
+msgid "until %s"
+msgstr "%s तक"
 

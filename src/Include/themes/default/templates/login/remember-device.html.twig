@@ -1,0 +1,14 @@
+{#
+  "This is my own device" (member sign-in design §6.2). Never ticked for the
+  member: no `checked`, and `autocomplete="off"` so a browser doesn't restore a
+  tick from an earlier visit.
+#}
+{% if offerRememberDevice %}
+<div class="portal-field">
+    <label class="portal-choice" for="portalRememberDevice">
+        <input type="checkbox" name="rememberDevice" value="1" id="portalRememberDevice" autocomplete="off">
+        <span>{{ gettext('This is my own device. Keep me signed in.') }}</span>
+    </label>
+    <p class="portal-field-hint" id="portalRememberDeviceHint">{{ gettext('Tick this only on your own phone or computer, never on a shared or public one.') }}</p>
+</div>
+{% endif %}

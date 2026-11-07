@@ -1,0 +1,36 @@
+name: "Marketing: check English captures"
+
+# Daily follow-up to the 03:17 UTC nightly. Captures English only: the setup
+# videos and every English screenshot. It does not capture the other locales
+# and it has no publish job. A failure here means the capture
+# specs are broken before the next release run of marketing-capture-assets.yml.
+#
+# The English job uploads marketing-locale-en-<run id> through the shared
+# action. That artifact stays on the run. This workflow has no publish job.
+
+on:
+  schedule:
+    # After the 03:17 UTC nightly, so a broken master is already under test.
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: marketing-capture-check
+  cancel-in-progress: true
+
+jobs:
+  capture_en:
+    name: "Capture (en)"
+    if: github.repository == 'ChurchCRM/CRM'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: ./.github/actions/marketing-capture
+        with:
+          locale: en

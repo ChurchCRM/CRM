@@ -1,0 +1,12 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+<section class="portal-card" id="portal-example-roster">
+    <h1 class="portal-page-title">{{ pageTitle }}</h1>
+    <ul>
+        {% for name in names %}
+        <li>{{ name }}</li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}

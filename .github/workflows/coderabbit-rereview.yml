@@ -31,11 +31,11 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
           sparse-checkout: |
-            scripts/coderabbit-rereview.js
+            scripts/maintainer/coderabbit-rereview.js
           sparse-checkout-cone-mode: false
 
       - name: Comment on PRs whose threads are all resolved
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9
         with:
           script: |
-            await require('./scripts/coderabbit-rereview.js').run({ github, context, core });
+            await require('./scripts/maintainer/coderabbit-rereview.js').run({ github, context, core });

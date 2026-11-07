@@ -15,15 +15,17 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 - IDs: `(int)` or `InputUtils::filterInt()`
 - Output: `InputUtils::escapeHTML()` / `escapeAttribute()`
 - JSON in `<script>`: `InputUtils::jsonEncodeForScript()`
+- Dates: inside the app a date is ISO (`Y-m-d`, church timezone). Only a date-picker text field uses `sDatePickerFormat`. Convert at the edge with `DateTimeUtils`: `normalizeDate()` / `parseAndValidate()` in, `formatForDatePicker()` out, `datePickerJsFormat()` for the widget. `type="date"` inputs and the API send ISO: check with `parseIsoDate()`. Never `strtotime()` / `createFromFormat()` on request input, never print an ISO date into a picker field (`npm run lint` checks)
 - Redirects: `RedirectUtils` — not raw `header('Location')`
 - UI and styling: `frontend-development.md` is the only rule set (Tabler, light and dark, desktop/tablet/phone, `npm run lint`). Wrap `gettext()` / `i18next.t()`
 - JS: page logic goes in a `webpack/` entry, registered in `webpack.config.js` and loaded with one `<script src="<?= SystemURLs::assetVersioned('/skin/v2/NAME.min.js') ?>">`. No inline `<script>` blocks for page logic; a one-line config handoff with `InputUtils::jsonEncodeForScript()` is fine. Read `window.CRM` at run time (inside `onLocalesReady`), never at module load (`webpack-typescript.md`)
 - Reports: follow [reports.md](reports.md). Services format dates, money and labels from settings; templates only lay them out. Church-specific reports belong in a shareable plugin (`plugin-system.md`).
 - Custom fields: `CustomFieldService` decides who may see a field (`canView()`) and writes values; pages and reports never map FieldSecurity or write `person_custom` / `family_custom` themselves (`npm run lint` checks)
 - Tests with behavior changes
-- `package.json` scripts are one command or a short `&&` chain of npm scripts. Shell logic (`||`, `&`, pipes, `cp`, `rm`, `find`) goes in `scripts/*.js` (Node, cross-platform)
+- Repo tooling is Node. PHP only when the script must load the app or ORM; shell only to bootstrap before Node exists. No new Python (#11132)
+- `package.json` scripts are what a developer runs by hand (documented), a lifecycle hook, or an entry point a workflow shares with local use. No aliases, no flag variants (`npm run x -- --flag`), no one-off tooling; run those with `node scripts/...`. A script is one command or a short `&&` chain of npm scripts. Shell logic (`||`, `&`, pipes, `cp`, `rm`, `find`) goes in `scripts/*.js` (Node, cross-platform)
 - `npm run build` installs Composer dependencies, builds webpack, then signs the finished tree. Formatters and validators belong in `npm run lint` and the hooks, not the build
-- Comments are rare. Names and tests carry intent. Do not restate the next line. Comment only a *why* that the code cannot say (CI trap, security invariant, deliberate deviation). Do not add paragraph comments in specs.
+- Comments are rare. Names and tests carry intent. Do not restate the next line. Comment only a *why* that the code cannot say (CI trap, security invariant, deliberate deviation). Do not add paragraph comments in specs. A comment in `src/` never names a test, spec, Cypress or Playwright; say why the code behaves as it does.
 
 ## Strict vs Loose Comparisons
 

@@ -286,7 +286,6 @@ class ChurchCRMReleaseManager
                     $curlErrno = curl_errno($ch);
                     $curlError = curl_error($ch);
                     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-                    curl_close($ch);
 
                     if ($result !== false && $httpCode >= 200 && $httpCode < 300 && strlen($result) > 0) {
                         $downloadContent = $result;

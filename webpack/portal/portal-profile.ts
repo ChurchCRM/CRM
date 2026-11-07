@@ -26,9 +26,6 @@ interface PortalProfile {
   hasPhoto?: boolean;
 }
 
-/** Ten megabytes, the ceiling the photo endpoint documents. */
-const MAX_PHOTO_BYTES = 10 * 1024 * 1024;
-
 function root(): string {
   return window.CRM?.root ?? "";
 }
@@ -83,7 +80,7 @@ function wireProfileForm(): void {
       saveButton.disabled = true;
     }
 
-    void postPortalJSON<{ profile: PortalProfile; updated: string[] }>(
+    void postPortalJSON<{ profile: PortalProfile; updated: string[]; pendingEmail?: string }>(
       `${root()}/api/portal/me`,
       collectFormValues(form),
       getCsrfToken(form),
@@ -96,11 +93,24 @@ function wireProfileForm(): void {
         }
 
         const updated = result.data.updated ?? [];
-        showPortalToast(
-          "success",
-          updated.length === 0 ? t("Nothing had changed, so nothing was saved.") : t("Your details have been saved."),
-        );
+        if (updated.includes("language")) {
+          window.location.reload();
+          return;
+        }
+        const pendingEmail = result.data.pendingEmail ?? "";
+        if (pendingEmail !== "") {
+          showPortalToast(
+            "success",
+            t("We sent a link to {{email}}. Your email changes when you use it.", { email: pendingEmail }),
+          );
+        } else {
+          showPortalToast(
+            "success",
+            updated.length === 0 ? t("Nothing had changed, so nothing was saved.") : t("Your details have been saved."),
+          );
+        }
         applyProfile(form, result.data.profile ?? {});
+        showPendingEmail(result.data.profile?.pendingEmail);
       })
       .catch(() => {
         showPortalToast("danger", t("Nothing was saved. Please try again."));
@@ -127,6 +137,18 @@ function applyProfile(form: HTMLFormElement, profile: PortalProfile): void {
   updatePhotoPreview(profile);
 }
 
+/** Say under the email field which new address is waiting for its link to be used, if any. */
+function showPendingEmail(pendingEmail: unknown): void {
+  const hint = document.getElementById("portal-email-hint");
+  if (!hint || document.getElementById("portal-email")?.hasAttribute("readonly")) {
+    return;
+  }
+  hint.textContent =
+    typeof pendingEmail === "string" && pendingEmail !== ""
+      ? t("Waiting for you to confirm {{email}}. Use the link we sent to that address.", { email: pendingEmail })
+      : t("A new address changes only after you use the link we send to it.");
+}
+
 function updatePhotoPreview(profile: PortalProfile): void {
   const preview = document.getElementById("portal-photo-preview");
   if (!preview || !profile.photoUrl) {
@@ -148,55 +170,41 @@ function updatePhotoPreview(profile: PortalProfile): void {
   preview.replaceWith(image);
 }
 
+interface PhotoUploader {
+  show: () => void;
+}
+
+type PhotoUploaderFactory = (config: {
+  uploadUrl: string;
+  headers: Record<string, string>;
+  title: string;
+  onComplete: (result: { successful?: { response?: { body?: { profile?: PortalProfile } } }[] }) => void;
+}) => PhotoUploader;
+
 function wirePhotoUpload(): void {
-  const input = document.getElementById("portal-photo-input") as HTMLInputElement | null;
+  const button = document.getElementById("portal-photo-button");
   const form = document.getElementById("portal-profile-form") as HTMLFormElement | null;
   const error = document.getElementById("portal-photo-error");
-  if (!input || !form) {
+  const createPhotoUploader = (window as unknown as { _CRM_createPhotoUploader?: PhotoUploaderFactory })
+    ._CRM_createPhotoUploader;
+  if (!button || !form || !createPhotoUploader) {
     return;
   }
 
-  input.addEventListener("change", () => {
-    const file = input.files?.[0];
-    if (error) {
-      error.textContent = "";
-    }
-    if (!file) {
-      return;
-    }
-    if (file.size > MAX_PHOTO_BYTES) {
+  // The same crop, webcam and HEIC uploader the staff pages use.
+  const uploader = createPhotoUploader({
+    uploadUrl: `${root()}/api/portal/me/photo`,
+    headers: { "X-CSRF-Token": getCsrfToken(form) },
+    title: t("Your photo"),
+    onComplete: (result) => {
       if (error) {
-        error.textContent = t("That photo is too large. Please choose a smaller one.");
+        error.textContent = "";
       }
-      input.value = "";
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.addEventListener("load", () => {
-      void postPortalJSON<{ profile: PortalProfile }>(
-        `${root()}/api/portal/me/photo`,
-        { imgBase64: String(reader.result ?? "") },
-        getCsrfToken(form),
-      )
-        .then((result) => {
-          if (!result.ok) {
-            if (error) {
-              error.textContent = genericFailureMessage(result);
-            }
-            return;
-          }
-          showPortalToast("success", t("Your photo has been saved."));
-          updatePhotoPreview(result.data.profile ?? {});
-        })
-        .catch(() => {
-          if (error) {
-            error.textContent = t("That photo could not be saved.");
-          }
-        });
-    });
-    reader.readAsDataURL(file);
+      showPortalToast("success", t("Your photo has been saved."));
+      updatePhotoPreview(result.successful?.[0]?.response?.body?.profile ?? {});
+    },
   });
+  button.addEventListener("click", () => uploader.show());
 }
 
 function start(): void {

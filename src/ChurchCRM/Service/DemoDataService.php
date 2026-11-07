@@ -67,7 +67,7 @@ class DemoDataService
 {
     private const DATA_PATH = __DIR__ . '/../../admin/demo';
 
-    private const DEMO_TOGGLES = ['bEnabledSundaySchool', 'bEnabledFinance', 'bEnabledEvents', 'bPortalShowCalendar', 'bPortalShowVolunteer'];
+    private const DEMO_TOGGLES = ['bEnabledSundaySchool', 'bEnabledFinance', 'bEnabledEvents', 'bPortalShowVolunteer'];
 
     private const DEMO_NOTIFICATION_REASON = 'demo data import';
 
@@ -125,6 +125,7 @@ class DemoDataService
 
             // Load demo system configuration (if present) before importing data
             $this->importSystemConfig($force);
+            SystemConfig::setValue('sInstallDataProfile', 'demo');
 
             // config.json turns Volunteer v2 on; the config API adds its "Other" event type when that happens.
             if (User::isVolunteerV2Enabled()) {
@@ -326,7 +327,6 @@ class DemoDataService
                 $contact = $famData['contact'] ?? [];
                 $phone = $contact['phone'] ?? [];
                 $family->setHomePhone($phone['home'] ?? null);
-                $family->setEmail($contact['email'] ?? null);
 
                 // Override first family's wedding date to today, otherwise use JSON data
                 if ($familyIndex === 0) {
@@ -376,7 +376,7 @@ class DemoDataService
                 $this->familyMap[$family->getId()] = $family;
                 $this->importResult['imported']['families']++;
 
-                // Build family-email → family-id map for financial data import
+                // contact.email in people.json only links the family to finance.json; families have no email.
                 $contactEmail = strtolower(trim($contact['email'] ?? ''));
                 if ($contactEmail !== '') {
                     $this->familyEmailToId[$contactEmail] = $family->getId();

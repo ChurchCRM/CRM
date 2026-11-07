@@ -24,6 +24,8 @@ class PluginMetadata
     private ?string $settingsUrl;
     private array $help;
     private ?string $routesFile;
+    private ?string $portalRoutesFile;
+    private array $portal;
     private bool $hasTest;
 
     public function __construct(array $data, string $path)
@@ -45,6 +47,8 @@ class PluginMetadata
         $this->settingsUrl = $data['settingsUrl'] ?? null;
         $this->help = $data['help'] ?? [];
         $this->routesFile = $data['routesFile'] ?? null;
+        $this->portalRoutesFile = is_string($data['portalRoutesFile'] ?? null) ? $data['portalRoutesFile'] : null;
+        $this->portal = is_array($data['portal'] ?? null) ? $data['portal'] : [];
         $this->hasTest = (bool) ($data['hasTest'] ?? false);
     }
 
@@ -147,6 +151,25 @@ class PluginMetadata
         return $this->routesFile;
     }
 
+    /** The Member Portal routes file (member sign-in design §8.5), relative to the plugin. */
+    public function getPortalRoutesFile(): ?string
+    {
+        return $this->portalRoutesFile;
+    }
+
+    /**
+     * The manifest's `portal.capabilities` declarations, unvalidated:
+     * `PortalCapabilityRegistry` checks each one.
+     *
+     * @return array<int, mixed>
+     */
+    public function getPortalCapabilities(): array
+    {
+        $capabilities = $this->portal['capabilities'] ?? [];
+
+        return is_array($capabilities) ? array_values($capabilities) : [];
+    }
+
     public function hasTest(): bool
     {
         return $this->hasTest;
@@ -207,6 +230,8 @@ class PluginMetadata
             'hooks' => $this->hooks,
             'settingsUrl' => $this->settingsUrl,
             'routesFile' => $this->routesFile,
+            'portalRoutesFile' => $this->portalRoutesFile,
+            'portal' => $this->portal,
             'help' => $this->help,
         ];
     }

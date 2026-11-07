@@ -24,7 +24,7 @@ use Propel\Runtime\ActiveQuery\Criteria;
  *  - excludeInactive  bool    leave out people of deactivated families
  *  - headRoles, spouseRoles  int[]  family role ids
  *  - show             array<string, bool>  address, mailing, wedding, birthday, familyPhone, familyWork,
- *                     familyCell, familyEmail, personalPhone, personalWork, personalCell, personalEmail,
+ *                     familyCell, personalPhone, personalWork, personalCell, personalEmail,
  *                     personalWorkEmail, photo
  *  - customFieldOrders  int[]  custom_Order of the person custom fields to print (only those the user may see are used)
  *
@@ -315,8 +315,8 @@ class DirectoryReportService
     }
 
     /**
-     * A person on their own, or the only matching member of a household. Home phone and email fall
-     * back to the household's when the person has none and the matching Family option is on.
+     * A person on their own, or the only matching member of a household. Home phone falls
+     * back to the household's when the matching Family option is on.
      *
      * @return Entry|array{}
      */
@@ -348,13 +348,12 @@ class DirectoryReportService
             }
         }
 
-        $email = (string) $person->getEmail() !== '' || !$this->on('familyEmail') ? (string) $person->getEmail() : (string) $family?->getEmail();
         $phone = $this->on('familyPhone') ? $person->getResolvedHomePhone() : (string) $person->getHomePhone();
         foreach ([
             [$this->on('familyPhone') || $this->on('personalPhone'), gettext('Phone'), $phone],
             [$this->on('familyWork') || $this->on('personalWork'), gettext('Work'), (string) $person->getWorkPhone()],
             [$this->on('familyCell') || $this->on('personalCell'), gettext('Cell'), (string) $person->getCellPhone()],
-            [$this->on('familyEmail') || $this->on('personalEmail'), gettext('Email'), $email],
+            [$this->on('personalEmail'), gettext('Email'), (string) $person->getEmail()],
             [$this->on('personalWorkEmail'), gettext('Work/Other Email'), (string) $person->getWorkEmail()],
         ] as [$enabled, $label, $value]) {
             if ($enabled && $value !== '') {
@@ -465,9 +464,6 @@ class DirectoryReportService
         }
         if ($this->on('familyPhone') && (string) $family->getHomePhone() !== '') {
             $lines[] = ['text' => gettext('Phone') . ': ' . $family->getHomePhone(), 'level' => 1];
-        }
-        if ($this->on('familyEmail') && (string) $family->getEmail() !== '') {
-            $lines[] = ['text' => gettext('Email') . ': ' . $family->getEmail(), 'level' => 1];
         }
 
         return array_merge($lines, $this->weddingLines($family));

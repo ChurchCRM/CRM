@@ -6,7 +6,7 @@ on:
       - 'docker/docker-compose*.yaml'
       - 'docker/examples/docker-compose*.yaml'
       - 'docker/production/compose.yaml'
-      - 'docker/test-compose-security.py'
+      - 'tests/docker/test-compose-security.py'
       - '.github/workflows/docker-security-check.yml'
   workflow_dispatch:
 
@@ -20,4 +20,4 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - run: python3 docker/test-compose-security.py
+      - run: python3 tests/docker/test-compose-security.py

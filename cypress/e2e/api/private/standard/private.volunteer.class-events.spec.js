@@ -9,15 +9,15 @@
  * delete with its guards.
  *
  * Personas (seed.sql): `admin.api.key` (administrator, Add Events); `user.api.key` = person 3,
- * tony.wade, no Add Events, made coordinator of the ministry here; `selfedit.api.key` = person
- * 99, made leader of the ministry's first team.
+ * tony.wade, no Add Events, made coordinator of the ministry here; person 99 in a member
+ * session (cy.makeMemberAPICall), made leader of the ministry's first team.
  */
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const URL = "/api/ministries";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
-const LEADER_KEY = "selfedit.api.key";
+const LEADER_KEY = 99;
 const PERSON_COORDINATOR = 3;
 const PERSON_LEADER = 99;
 const PERSON_VOLUNTEER = 8;
@@ -48,7 +48,11 @@ function dbOk(sql, params = []) {
     });
 }
 
+/** A person id is a member, in their portal session; anything else names an API key. */
 function api(key, method, url, body, expectedStatus = 200) {
+    if (typeof key === "number") {
+        return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
+    }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
@@ -168,7 +172,7 @@ function cleanupFixtures() {
 const CLASS_KEYS = ["keep", "remove", "move", "moveTo", "delKeep", "delRemove", "delDelete", "delCore"];
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key"]);
+    cy.rememberTestEnv(["admin.api.key", "user.api.key"]);
     cy.useChurchTimeZone();
 });
 

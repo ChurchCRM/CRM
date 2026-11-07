@@ -1,5 +1,7 @@
-// Pages of every MVC app that sits behind AuthMiddleware, first entry being the app's home.
-// kiosk, external, session and setup are public or use their own authentication.
+// Pages of every staff MVC app that sits behind AuthMiddleware, first entry being the app's home.
+// kiosk, external, session and setup are public or use their own authentication. portal is the
+// member's own app: its pages take a member session, and /portal/login, /portal/theme and
+// /portal/email/confirm are public.
 
 export const MVC_PAGES = {
     v2: ["/v2/dashboard", "/v2/search"],

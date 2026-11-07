@@ -6,14 +6,12 @@
  * Normative sections of `docs/design/volunteer-v2.md`:
  * §3.3.3 (the member API — `/me/opportunities`, `/me/signup`,
  * `/me/qualifications`, and the substitute picker S5 needs), §4.7 (the
- * `AuthMiddleware` exemption that makes an EditSelf-exclusive user able to
- * reach any of it at all), §4.8 (the negatives) and §6.6 (the idempotency
+ * member path a portal session reaches it by), §4.8 (the negatives) and §6.6 (the idempotency
  * recipes).
  *
  * **The whole point of this spec is that the acting person is the session.**
- * Person 99 (`selfedit.api.key`) is the D14 volunteer persona — EditSelf-
- * exclusive, the least-authority account that can still log in. Every
- * assertion below is made through `cy.makePrivateEditSelfAPICall()`'s key, so
+ * Person 99 is the D14 volunteer persona, a member who signs in with their
+ * email. Every assertion below is made in that member's session, so
  * "unauthorized person IDs cannot be substituted into requests" is proven the
  * only way it can be proven from outside: by sending someone else's id and
  * observing that the server used the session's.
@@ -32,15 +30,15 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
-const SELFEDIT_KEY = "selfedit.api.key";
-const SELFEDIT_NOTES_KEY = "selfedit.plus.notes.api.key";
+const SELFEDIT_KEY = 99;
+const SELFEDIT_NOTES_KEY = 100;
 const PLAINAUTH_KEY = "plainauth.api.key";
 
 const VOLUNTEER_URL = "/api/ministries";
 
-/** EditSelf-exclusive — THE volunteer persona (D14, §6.4). */
+/** THE volunteer persona (D14, §6.4), in a member session. */
 const PERSON_VOLUNTEER = 99;
-/** EditSelf + Notes — the second volunteer, the substitute counterparty. */
+/** The second volunteer, the substitute counterparty, in a member session. */
 const PERSON_SUBSTITUTE = 100;
 /** Notes only, no volunteer rights and no qualifications — the empty/negative case. */
 const PERSON_PLAIN = 900;
@@ -81,14 +79,12 @@ function dbOk(sql, params = []) {
     });
 }
 
+/** A person id is a member, in their portal session; anything else names an API key. */
 function api(key, method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(
-        Cypress.testEnv(key),
-        method,
-        url,
-        body,
-        expectedStatus,
-    );
+    if (typeof key === "number") {
+        return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
+    }
+    return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function setVersion(value) {
@@ -312,7 +308,7 @@ function cleanupFixtures() {
 // ── fixture ────────────────────────────────────────────────────────────────
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key", "plainauth.api.key"]);
+    cy.rememberTestEnv(["admin.api.key", "plainauth.api.key"]);
     cy.useChurchTimeZone();
 });
 
@@ -900,7 +896,7 @@ describe("Volunteer v2 — the member self-service surface (#9712, epic #9701)",
             });
         });
 
-        it("still refuses the coordinator surface to an EditSelf-exclusive volunteer", () => {
+        it("still refuses the coordinator surface to a member session", () => {
             api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/ministries`, null, 403);
         });
 
@@ -909,7 +905,7 @@ describe("Volunteer v2 — the member self-service surface (#9712, epic #9701)",
             api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/permissions`, null, 200);
         });
 
-        it("still redirects an EditSelf-exclusive volunteer away from the coordinator MVC area", () => {
+        it("still sends a member session away from the coordinator MVC area", () => {
             // 403 from the role middleware, or a redirect to the access-denied page —
             // never the dashboard itself.
             api(SELFEDIT_KEY, "GET", "/ministries/dashboard", null, [302, 403]);
@@ -926,16 +922,17 @@ describe("Volunteer v2 — the member self-service surface (#9712, epic #9701)",
             });
         });
 
-        it("403s every member route when the rollout flag is v1", () => {
+        it("refuses every member route when the rollout flag is v1", () => {
+            // Without V2 there is no member API: a member session is not signed in to it.
             setVersion("v1");
-            api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/opportunities`, null, 403);
-            api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/qualifications`, null, 403);
+            api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/opportunities`, null, 401);
+            api(SELFEDIT_KEY, "GET", `${VOLUNTEER_URL}/me/qualifications`, null, 401);
             api(
                 SELFEDIT_KEY,
                 "POST",
                 `${VOLUNTEER_URL}/me/signup`,
                 { occurrenceId: occurrenceOne, positionId: posDoor },
-                403,
+                401,
             );
             setVersion("v2");
         });

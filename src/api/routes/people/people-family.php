@@ -20,6 +20,7 @@ use ChurchCRM\Service\PersonDeletionService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
+use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyMiddleware;
 use ChurchCRM\Slim\Middleware\Api\FamilyReadMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -218,6 +219,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     /**
      * @OA\Get(
      *     path="/family/{familyId}",
+     *     operationId="getFamily",
      *     summary="Get a family object by ID",
      *     tags={"Families"},
      *     security={{"ApiKeyAuth":{}}},
@@ -237,7 +239,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $family = $request->getAttribute('family');
 
         return SlimUtils::renderJSON($response, $family->toArray());
-    });
+    })->add(new FamilyEmailDeprecationMiddleware('private/get-family'));
 
     /**
      * @OA\Get(

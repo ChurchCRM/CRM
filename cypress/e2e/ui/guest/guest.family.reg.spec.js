@@ -21,9 +21,20 @@ describe("Family Reg", () => {
         cy.url({ timeout: 10000 }).should("include", "church-info");
     });
 
+    it("does not ask for a home phone", () => {
+        cy.visit("portal/register");
+        cy.get("#familyName").type("Nophone");
+        cy.get("#familyAddress1").clear().type("1 Main Street");
+        cy.get("#familyCity").clear().type("Springfield");
+        cy.get("#familyZip").type("99777");
+        cy.get("#familyHomePhone").should("not.have.attr", "required");
+        cy.get("#family-info-next").click();
+        cy.get("#step-members").should("have.class", "active");
+    });
+
     it("Adam Family Registration", () => {
         cy.intercept("POST", "**/api/public/register/family").as("registerFamily");
-        cy.visit("external/register/");
+        cy.visit("portal/register");
         cy.contains("Main St. Cathedral");
 
         // Step 1: Family Info
@@ -86,15 +97,14 @@ describe("Family Reg", () => {
             }
         });
 
-        // Verify success dialog with updated welcome message
-        cy.get(".bootbox-body").should("contain", "We're so glad your family has joined us!");
-        // Close the success dialog by clicking "Register another family" to stay on register page
-        cy.get('.bootbox').contains('Register another family').click({ force: true });
-        cy.url().should("contain", "external/register/");
+        cy.get("#registration-success").should("be.visible")
+            .and("contain", "We're so glad your family has joined us!");
+        cy.get("#registration-success").contains("Register another family").click();
+        cy.url().should("contain", "portal/register");
     });
 
     it("Phone No Format Checkbox", () => {
-        cy.visit("external/register/");
+        cy.visit("portal/register");
 
         // Step 1: Family Info - fill required fields and check family home phone functionality
         cy.get("#familyName").type("TestFamily");
@@ -177,7 +187,7 @@ describe("Family Reg", () => {
     });
 
     it("Remove Member", () => {
-        cy.visit("external/register/");
+        cy.visit("portal/register");
 
         // Step 1: fill minimum required fields to advance
         cy.get("#familyName").type("RemoveTest");

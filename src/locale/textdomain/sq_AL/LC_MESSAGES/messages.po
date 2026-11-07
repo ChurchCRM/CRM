@@ -442,10 +442,6 @@ msgid "Family Cell Phone"
 msgstr "Cell Phone Family"
 
 #: 
-msgid "Family Email"
-msgstr "Familja Email"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Personal Home Phone"
 
@@ -3900,10 +3896,6 @@ msgid "Oops! Page not found."
 msgstr "Oops! Faqja nuk u gjend."
 
 #: 
-msgid "Family Registration"
-msgstr "Regjistrimi i Familjes"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Ju lutem vendosni sa më poshtë për të filluar verifikimin e familjes suaj"
 
@@ -4919,10 +4911,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugalisht - Portugali"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Specifikoni emrin e aplikacionit që do të shfaqet në aplikacionin e vërtetimit"
-
-#: 
 msgid "Review"
 msgstr "Rishiko"
 
@@ -5051,10 +5039,6 @@ msgstr "Shiko faqjen e familjes"
 #: 
 msgid "View Person Page"
 msgstr "Shiko faqjen e personit"
-
-#: 
-msgid "Verify"
-msgstr "Verifiko"
 
 #: 
 msgid "Family has no emails to use"
@@ -5303,24 +5287,8 @@ msgid "Email address"
 msgstr "Adresa e email-it"
 
 #: 
-msgid "Enter family name"
-msgstr "Shkruani mbiemrin e familjes"
-
-#: 
 msgid "Family name is required"
 msgstr "Mbiemri i familjes kërkohet"
-
-#: 
-msgid "First name"
-msgstr "Emri"
-
-#: 
-msgid "Home phone number"
-msgstr "Numri i telefonit të shtëpisë"
-
-#: 
-msgid "Last name"
-msgstr "Mbiemri"
 
 #: 
 msgid "Next Member"
@@ -9749,10 +9717,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Ne do ta përdorim këtë për të qëndruar në kontakt dhe për të dërguar përditësimet e kishës."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Jemi kaq të gëzuar që je këtu! Regjistro familjen tuaj në vetëm 3 hapa të lehtë."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Mirë se Vjen Përsëri!"
 
@@ -13727,10 +13691,6 @@ msgid "Generate new code"
 msgstr "Gjenero kod të ri"
 
 #: 
-msgid "Go to homepage"
-msgstr "Shko në faqen bazë"
-
-#: 
 msgid "Group added to cart"
 msgstr "Grupi u shtua në shportë"
 
@@ -13753,10 +13713,6 @@ msgstr "Keni gati aplikacionin tuaj të vërtetimit (Google Authenticator, Micro
 #: 
 msgid "Hide advanced options"
 msgstr "Fshih opsionet e avancuara"
-
-#: 
-msgid "Home phone is required"
-msgstr "Telefoni i shtëpisë kërkohet"
 
 #: 
 msgid "ICS URL"
@@ -14431,10 +14387,6 @@ msgid "Warnings"
 msgstr "Paralajmërime"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Jemi kaq të gëzuar që familja juaj na është bashkuar!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Mirë se Vjen në Familje!"
 
@@ -14489,10 +14441,6 @@ msgstr "Preferenca e gjuhës së shfletuesit tuaj ndryshon nga vendndodhja juaj 
 #: 
 msgid "Your database already contains data"
 msgstr "Baza juaj e të dhënave tashmë përmban të dhëna"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Regjistrimi juaj ka qenë i pranuar. Skuadra jonë do të jetë në kontakt shpejt për të personalisht ju mirëpritur."
 
 #: 
 msgid "Zip code is required"
@@ -14571,10 +14519,6 @@ msgid "open rate"
 msgstr "shkalla e hapjes"
 
 #: 
-msgid "our church"
-msgstr "kisha jonë"
-
-#: 
 msgid "payment(s)?"
 msgstr "pagesë(at)?"
 
@@ -14613,14 +14557,6 @@ msgstr "vj."
 #: 
 msgid "yrs"
 msgstr "vje."
-
-#: 
-msgid "Account options"
-msgstr "Opsionet e llogarisë"
-
-#: 
-msgid "Register"
-msgstr "Regjistrohu"
 
 #. Context: locales
 #: 
@@ -14682,10 +14618,6 @@ msgid "Date Picker Format"
 msgstr "Formati i zgjedhësit të datës"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Teksti ndihmës i zgjedhësit të datës"
-
-#: 
 msgid "Date Without Year"
 msgstr "Data pa vit"
 
@@ -14716,10 +14648,6 @@ msgstr "Formati i datës për emrin e skedarit"
 #: 
 msgid "Fully translated."
 msgstr "Plotësisht i përkthyer."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Teksti ndihmës në fushat e datës. I paracaktuar: vvvv-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -14903,16 +14831,8 @@ msgid "Always granted"
 msgstr "Gjithmonë e dhënë"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Mund të rishikojë dhe verifikojë vetëm familjen e vet. Asnjë qasje tjetër."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Zgjidhni lejet specifike më poshtë."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Kontaktoni një administrator për të ndryshuar lejet tuaja."
 
 #: 
 msgid "Custom permissions"
@@ -14927,20 +14847,8 @@ msgid "People &amp; Families"
 msgstr "Njerëz &amp; Familje"
 
 #: 
-msgid "Self-service"
-msgstr "Vetëshërbim"
-
-#: 
-msgid "Self-service only"
-msgstr "Vetëm vetëshërbim"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "Shënimi që po përpiqeni të redaktoni nuk ekziston më."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Ky përdorues mund të rishikojë dhe përditësojë vetëm profilin e familjes së vet. Lejet individuale nuk zbatohen."
 
 #: 
 msgid "User List"
@@ -18205,16 +18113,8 @@ msgid "Second Home"
 msgstr "Shtëpia e Dytë"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "Personi i lidhur është i vdekur ose joaktiv. Hyrja, seanseve dhe çelësi i API janë bllokuar derisa personi të bëhet përsëri aktiv."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Kjo është adresa postale"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Ky person është i vdekur ose joaktiv, kështu që ky llogari nuk mund të hyj"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18903,10 +18803,6 @@ msgid "Account unlocked"
 msgstr "Llogaria u zhbllokua"
 
 #: 
-msgid "Accounts"
-msgstr "Llogaritë"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Aktiv duhet të jetë e vërtetë ose e gabuar"
 
@@ -19099,10 +18995,6 @@ msgid "Author"
 msgstr "Autori"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "Autoriteti i jepet personit, jo hyrjes, ndaj mund të jepet para se ai të ketë hyrje. Një personi, hyrja e të cilit është vetëm vetëshërbim, vazhdon të shohë vetëm orarin e vet derisa një administrator të zgjerojë llogarinë e tij."
-
-#: 
 msgid "Automatic"
 msgstr "Automatik"
 
@@ -19225,10 +19117,6 @@ msgstr "Zgjidhni një klasë"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Zgjidhni një ditë të muajit nga 1 deri në 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Zgjidhni një foto të re"
 
 #: 
 msgid "Choose a person"
@@ -20001,10 +19889,6 @@ msgid "Last attempt"
 msgstr "Përpjekja e fundit"
 
 #: 
-msgid "Last check"
-msgstr "Kontrolli i fundit"
-
-#: 
 msgid "Last date"
 msgstr "Data e fundit"
 
@@ -20231,10 +20115,6 @@ msgstr "Asnjë kalendar nuk është ndarë ende me anëtarët."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Asnjë kalendar nuk është i hapur për këtë shërbesë, ndaj ngjarjet nuk do të shfaqen në asnjë kalendar."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Asnjë kalendar nuk ndahet me anëtarët."
 
 #: 
 msgid "No class"
@@ -20771,14 +20651,6 @@ msgid "Please tell us what needs changing."
 msgstr "Na tregoni çfarë duhet ndryshuar."
 
 #: 
-msgid "Portal settings"
-msgstr "Cilësimet e portalit"
-
-#: 
-msgid "Portal theme"
-msgstr "Tema e portalit"
-
-#: 
 msgid "Position"
 msgstr "Pozicioni"
 
@@ -20995,10 +20867,6 @@ msgid "SMTP test"
 msgstr "Test SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "Ruaj kalendarët"
-
-#: 
 msgid "Save changes"
 msgstr "Ruaj Ndryshimet"
 
@@ -21009,10 +20877,6 @@ msgstr "U ruajt – kjo shërbesë nuk po kërkon më ndihmë"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "U ruajt – kjo shërbesë tani po kërkon ndihmë"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "U ruajt. Anëtarët shohin kalendarët e aktivizuar më sipër."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21117,10 +20981,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Vetëcaktimi duhet të jetë e vërtetë ose e gabuar"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Llogari vetëshërbimi"
-
-#: 
 msgid "Send"
 msgstr "Dërgo"
 
@@ -21189,18 +21049,6 @@ msgstr "Shfaq në Portalin e anëtarëve"
 #: 
 msgid "Show past events"
 msgstr "Shfaq ngjarjet e kaluara"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Shfaq kalendarin e kishës"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "Shfaq kalendarin e kishës në Portalin e anëtarëve."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "Shfaq seksionin e kalendarit të kishës në Portalin e anëtarëve."
 
 #: 
 msgid "Show the next"
@@ -21609,10 +21457,6 @@ msgstr "Fusha %s duhet të jetë një numër i plotë minutash"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "Fusha %s duhet të jetë brenda %d minutave nga ngjarja"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "Kalendarët e Portalit të anëtarëve u ruajtën."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22063,10 +21907,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Këto nevoja vijnë nga orari. Ruajtja këtu ndryshon vetëm këtë zhvillim."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Këta numra numërojnë vetëm llogaritë e vetëshërbimit: persona hyrja e të cilëve arrin vetëm te Portali i anëtarëve dhe asgjë tjetër."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Këta persona janë ende të caktuar, por pozicioni që mbajnë nuk është më pjesë e planit të stafimit të kësaj date."
 
@@ -22151,14 +21991,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Ky nuk është emër i vlefshëm dosjeje teme."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Kjo nuk është një nga datat e ekipit tuaj."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Ky nuk është një nga ekipet tuaja."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Këtu kisha dërgon postën dhe kë thërret për familjen tuaj."
 
@@ -22217,10 +22049,6 @@ msgstr "Kjo faqe nuk është pjesë e llogarisë suaj. Nëse mendoni se duhet t�
 #: 
 msgid "This page was not found"
 msgstr "Kjo faqe nuk u gjet"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "Ky pjesë e Portalit të anëtarëve është për udhëheqësit e ekipeve të vullnetarëve."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23891,16 +23719,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} u caktua dhe u regjistrua si i pranuar"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Kërkoji një administratori të ndryshojë emailin tënd të hyrjes."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Emaili u ndryshua nga një administrator nga %1$s në %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Vetëm një administrator mund të ndryshojë emailin e një personi me llogari përdoruesi."
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24385,4 +24205,2960 @@ msgstr "Shfaqet vetëm emaili që keni dërguar."
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Ngjarjet e përsëritura nuk mund të krijoheshin. Kontrolloni regjistrin e aplikacionit për detaje."
+
+#: 
+msgid "Confirm Password"
+msgstr "Konfirmoni fjalëkalimin"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "Fjalëkalimi juaj është ndryshuar. Tani mund të hyni me fjalëkalimin e ri."
+
+#: 
+msgid "1st"
+msgstr "1-a"
+
+#: 
+msgid "2nd"
+msgstr "2-a"
+
+#: 
+msgid "3rd"
+msgstr "3-a"
+
+#: 
+msgid "4th"
+msgstr "4-a"
+
+#: 
+msgid "5th"
+msgstr "5-a"
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Nuk mund të hiqet qasja e administratorit nga i vetmi administrator që mund të hyjë"
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Zgjidhni javën e muajit, nga e 1-a deri te e 5-ta"
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "Krijon {{total}} ngjarje, në {{week}} {{day}} të çdo muaji nga {{first}} deri më {{last}}"
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Ditë e pavlefshme e javës"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Çdo muaj, në një ditë jave"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Muajt pa një të 5-të anashkalohen."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "RecurWOM duhet të jetë një numër i plotë nga 1 deri në 5"
+
+#: 
+msgid "Week of the month"
+msgstr "Java e muajit"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "Java e muajit duhet të jetë nga 1 deri në 5"
+
+#: 
+msgid "%s through %s"
+msgstr "%s deri më %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "Numri tatimor i kishës (EIN) i shtypur në deklaratat e kontributeve"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Deklaratat e kontributeve u lëshohen të rriturve të një familjeje. Ju lutemi, kontaktoni zyrën e kishës nëse ju nevojitet një e tillë."
+
+#: 
+msgid "Download statement"
+msgstr "Shkarkoni deklaratën"
+
+#: 
+msgid "Generated"
+msgstr "Gjeneruar"
+
+#: 
+msgid "Goods and services"
+msgstr "Mallra dhe shërbime"
+
+#: 
+msgid "My Giving"
+msgstr "Dhurimet e mia"
+
+#: 
+msgid "No contributions"
+msgstr "Pa kontribute"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Nuk u regjistruan kontribute për këtë periudhë."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Nuk u ofruan mallra apo shërbime në këmbim të këtyre kontributeve, përveç përfitimeve fetare të paprekshme."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Opsionale. Shtypet në deklaratat e kontributeve."
+
+#: 
+msgid "Tax ID"
+msgstr "Numri tatimor"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Numri tatimor (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Shuma e zbritshme nga tatimi"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Kjo është deklarata e familjes. Ajo përfshin dhuratat për familjen tuaj."
+
+#: 
+msgid "Total contributions"
+msgstr "Kontributet gjithsej"
+
+#: 
+msgid "Year-end statement"
+msgstr "Deklarata e fundvitit"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d deklaratë dhurimi iu dërgua familjes me email me sukses."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "Deklarata e dhurimeve %s"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Përshtatni tekstin që shfaqet në deklaratat e dhurimeve (sTaxReport1, sTaxReport2, etj.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "E dashur familje %s,\n"
+"\n"
+"Ju lutemi, gjeni bashkëngjitur deklaratën tuaj të dhurimeve %s nga %s.\n"
+"\n"
+"Nëse keni pyetje, ju lutemi kontaktoni zyrën e kishës.\n"
+"\n"
+"Faleminderit për bujarinë tuaj."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "Dërgoni me email deklaratën e dhurimeve %s"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Numrat e zarfeve"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Gjeneroni deklaratat e dhurimeve"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Gjeneroni raporte për deklaratat e dhurimeve, ndjekjen e zotimeve dhe analizën financiare."
+
+#: 
+msgid "Giving Reports"
+msgstr "Raportet e dhurimeve"
+
+#: 
+msgid "Giving Statement"
+msgstr "Deklarata e dhurimeve"
+
+#: 
+msgid "Giving Statements"
+msgstr "Deklaratat e dhurimeve"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Dërgimi me email i deklaratës së dhurimeve dështoi. Ju lutemi, kontrolloni cilësimet e serverit të emailit."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "Ju lutemi, dërgoni me postë dhuratën tuaj të radhës te %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "Shtypni deklaratën e dhurimeve %s"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Nuk mund të dërgohet me email deklarata e dhurimeve: nuk u gjetën të dhëna pagese për atë vit."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Nuk mund të dërgohet me email deklarata e dhurimeve: kjo familje nuk ka adresë email në dosje."
+
+#: 
+msgid "Undesignated"
+msgstr "E pacaktuar"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Verifikoni që emri, adresa dhe të dhënat e kontaktit të kishës shfaqen në deklaratat e dhurimeve."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "Pozicioni tani i është caktuar %s, i cili e ka pranuar."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "Pozicioni tani i është caktuar %s, i cili ende nuk e ka pranuar."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Arsyeja e tyre: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Shikoni caktimet"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Vullnetarë ende të nevojshëm për këtë rast: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Vullnetarë ende të nevojshëm për këtë pozicion: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Një tabelë javore hyrjeje për çdo klasë. Listat e klasave dhe librat e fotove janë në panelin e Shkollës së së Dielës dhe në faqen e çdo klase."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Një tabelë javore hyrjeje për vitin shkollor, një kolonë për çdo të diel"
+
+#: 
+msgid "Age %d"
+msgstr "Mosha %d"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "Duhet të zgjidhet të paktën një grup për të bërë një fletë pranie."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Fleta e pranisë"
+
+#: 
+msgid "Class List"
+msgstr "Lista e klasës"
+
+#: 
+msgid "Download PDF"
+msgstr "Shkarkoni PDF"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Periudha e bllokimit në minuta\n"
+"Një llogari e bllokuar zhbllokohet vetë pas kaq minutash. Hyrjet e dështuara nga një adresë IP numërohen gjatë së njëjtës periudhë."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Numri maksimal i hyrjeve të dështuara nga një adresë IP\n"
+"Hyrjet e dështuara dhe kërkesat për rivendosjen e fjalëkalimit nga një adresë IP numërohen drejt këtij kufiri brenda periudhës së bllokimit. Pasi arrihet, hyrja nga ajo adresë refuzohet derisa të mbarojë periudha.\n"
+"Vendoseni në zero për ta çaktivizuar këtë veçori, për shembull kur të gjithë arrijnë ChurchCRM përmes një adrese proxy."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Numri maksimal i hyrjeve të dështuara që lejohen para se një llogari përdoruesi të bllokohet.\n"
+"Një llogari e bllokuar zhbllokohet vetë pas periudhës së bllokimit, ose më herët kur një administrator rivendos hyrjet e saj të dështuara.\n"
+"Kjo veçori ndihmon për t’u mbrojtur nga sulmet e automatizuara të hamendësimit të fjalëkalimit.\n"
+"Vendoseni në zero për ta çaktivizuar këtë veçori."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Minuta derisa të zhbllokohet vetë: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Fleta e pranisë së Shkollës së së Dielës"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Të dielat pa mësim lihen jashtë fletës."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Përmirësimi i bazës së të dhënave"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Baza juaj e të dhënave po përditësohet. Ju lutemi, mbajeni këtë faqe të hapur derisa përmirësimi të përfundojë."
+
+#: 
+msgid "Family Labels"
+msgstr "Etiketat e familjes"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – Gjithsej"
+
+#: 
+msgid "Bill"
+msgstr "Kartëmonedhë"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Zgjidhni një depozitë ose vendosni të dy datat e raportit."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Zgjidhni një depozitë për të shqyrtuar pagesat e saj ose për të shtypur fletën e saj bankare. Një depozitë e zgjedhur anashkalon intervalin e datave."
+
+#: 
+msgid "Coin"
+msgstr "Monedhë"
+
+#: 
+msgid "Deposit Report"
+msgstr "Raporti i depozitës"
+
+#: 
+msgid "Download Report"
+msgstr "Shkarkoni raportin"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Vendosni data të vlefshme të raportit."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Filtra të pavlefshëm të raportit."
+
+#: 
+msgid "Invalid report options."
+msgstr "Opsione të pavlefshme të raportit."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Lini filtrat bosh për të përfshirë të gjitha pagesat. Këto cilësime zbatohen për raportin, jo për fletën bankare."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Nuk u kthyen regjistrime. Rregulloni filtrat dhe provoni përsëri."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Përgatitni për bankën"
+
+#: 
+msgid "Preview Totals"
+msgstr "Parashikoni totalet"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Shtypni fletën bankare"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Shtypni depozitën e zgjedhur të plotë, me totalet e parave dhe të çeqeve, fletët e numërimit dhe rreshtat e dëshmitarëve. Filtrat e raportit shpërfillen. Pagesat elektronike mbeten në përmbledhje dhe përjashtohen nga totali fizik i fletës bankare."
+
+#: 
+msgid "Review Payments"
+msgstr "Shqyrtoni pagesat"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Shqyrtoni pagesat për një periudhë, ose përgatitni një depozitë për bankën."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Shqyrtoni pagesat, shkarkoni PDF ose CSV, ose shtypni një fletë bankare për një depozitë."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Zgjidhni një depozitë të vlefshme."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "Zgjidhni një depozitë për të shtypur një fletë bankare."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "Data e përfundimit të raportit duhet të jetë në ose pas datës së fillimit."
+
+#: 
+msgid "Total Cash"
+msgstr "Para gjithsej"
+
+#: 
+msgid "Total Coin"
+msgstr "Monedha gjithsej"
+
+#: 
+msgid "Witness"
+msgstr "Dëshmitar"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d dhurata nuk kanë familje. Ato nuk mund të jenë në një deklaratë."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "%d depozita të hapura të datuara në këtë vit. Mbyllini që çdo dhuratë të jetë përfundimtare para se të dalin deklaratat."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d pagesa nuk janë ende në asnjë depozitë."
+
+#: 
+msgid "Can be emailed"
+msgstr "Mund të dërgohet me email"
+
+#: 
+msgid "Closing line"
+msgstr "Rreshti i mbylljes"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Çdo depozitë e datuar në këtë vit është mbyllur."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Çdo dhuratë i përket një familjeje."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Çdo pagesë në këtë vit është në një depozitë."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Gjeneroni deklaratat tatimore"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Raporti i dhurimeve (deklaratat tatimore)"
+
+#: 
+msgid "Opening line"
+msgstr "Rreshti i hapjes"
+
+#: 
+msgid "Print and mail"
+msgstr "Shtypni dhe dërgoni me postë"
+
+#: 
+msgid "Qty"
+msgstr "Sasia"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Shqyrtoni vitin, pastaj shtypni ose dërgoni me email deklaratat e dhurimeve."
+
+#: 
+msgid "Signed by"
+msgstr "Nënshkruar nga"
+
+#: 
+msgid "Thank-you line"
+msgstr "Rreshti i falënderimit"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Verifikoni që emri, adresa dhe të dhënat e kontaktit të kishës shfaqen në deklaratat tatimore."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Dhurimet e fundvitit"
+
+#: 
+msgid "As of: %s"
+msgstr "Që nga: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Të paktën një pagesë pozitive familjare në %d vitet fiskale të zgjedhura, deri në datën e shqyrtimit: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "Pagëzimi, kërkesat për regjistrin zgjedhor, banimi, statusi i kunguesit, pjesëmarrja, gjendja e rregullt dhe përjashtimet vendore duhet të kontrollohen veçmas aty ku statuti juaj i kërkon. Kohëzgjatja e anëtarësisë nuk është provë e pjesëmarrjes."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Zgjidhni një klasifikim ekzistues."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "Zgjidhni të paktën një klasifikim për shqyrtim."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Zgjidhni klasifikimet që përdor kisha juaj. Asnjë klasifikim nuk supozohet se jep të drejtë vote."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "Udhëheqja e kishës duhet të konfirmojë përshtatshmërinë sipas statutit të kishës. Kjo listë tregon vetëm personat që përputhen me filtrat e zgjedhur."
+
+#: 
+msgid "Classifications to review"
+msgstr "Klasifikimet për shqyrtim"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Klasifikimet: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Personat e ndjerë, personat dhe klasifikimet joaktive, si dhe familjet dhe personat joaktivë ose në pritje të shqyrtimit përjashtohen."
+
+#: 
+msgid "Download Review List"
+msgstr "Shkarkoni listën e shqyrtimit"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Vendosni një datë të vlefshme shqyrtimi midis 1900 dhe 2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Vendosni numra të plotë brenda kufijve të shfaqur."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Vitet fiskale për kontroll (0–100; 0 do të thotë pa kërkesë dhurimi)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Dhurimi regjistrohet sipas familjes, jo sipas individit. Aktivizojeni këtë vetëm kur statuti juaj lejon që një pagesë familjare të plotësojë këtë kriter. Kjo nuk provon se secili person ka dhuruar. Dritarja përfshin vitin fiskal të zgjedhur dhe mbaron jo më vonë se data e shqyrtimit."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Viti i fundit fiskal për t’u përfshirë"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Mosha minimale (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Mosha minimale: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Kohëzgjatja minimale e anëtarësisë në muaj (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Kohëzgjatja minimale e anëtarësisë: %d muaj"
+
+#: 
+msgid "No donation requirement."
+msgstr "Pa kërkesë dhurimi."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Asnjë person nuk përputhet me këta filtra. Kontrolloni datat e munguara të lindjes ose të anëtarësisë dhe rregulloni kriteret."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Kërkesë opsionale dhurimi familjar"
+
+#: 
+msgid "People matching filters"
+msgstr "Personat që përputhen me filtrat"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Personat e lënë jashtë sepse mungojnë datat e kërkuara"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Përgatitni një listë për shqyrtim nga kisha duke përdorur klasifikimet dhe filtrat opsionalë të moshës, anëtarësisë dhe dhurimit familjar."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Përgatitni një listë për shqyrtim nga kisha duke përdorur statutin tuaj."
+
+#: 
+msgid "Review date"
+msgstr "Data e shqyrtimit"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Përdorni statutin e kishës suaj për të zgjedhur filtrat, pastaj lini që udhëheqja e autorizuar e kishës ta shqyrtojë listën. Përputhja me këta filtra nuk vendos të drejtën e votës. Ky raport nuk regjistron përshtatshmërinë dhe nuk zhvillon një zgjedhje."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Anëtarët me të drejtë vote — Lista e shqyrtimit"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "Zero çaktivizon një kërkesë opsionale. Mosha kërkon një datë të plotë lindjeje; kohëzgjatja e anëtarësisë kërkon një datë anëtarësie. Personat pa datat e kërkuara lihen jashtë dhe numërohen veçmas. Personat e ndjerë, personat dhe klasifikimet joaktive, si dhe familjet dhe personat joaktivë ose në pritje të shqyrtimit përjashtohen gjithmonë; përdoret klasifikimi dhe statusi aktual, jo statusi historik."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "Shuma e detyruar për %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "Nuk mund të krijohet ruajtja e përkohshme private e PDF në drejtorinë e zgjedhur."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Lëreni bosh për të përdorur drejtorinë e përkohshme të sistemit. Përndryshe, vendosni një drejtori ekzistuese të shkrueshme, të mbrojtur nga qasja në ueb."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "Drejtoria e përkohshme e PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "Ruajtja e përkohshme e PDF duhet të jetë private dhe e shkrueshme."
+
+#: 
+msgid "Reporting"
+msgstr "Raportimi"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "Drejtoria e përkohshme e PDF nuk ekziston ose nuk është e qasshme."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "Drejtoria e përkohshme e PDF duhet të jetë një shteg absolut drejtorie."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Numri tatimor i kishës (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Rreshti i mbylljes"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Kontrollon telemetrinë opsionale. Dështimet e instalimit dhe të përmirësimit të bazës së të dhënave dërgojnë diagnostikime të kufizuara te PostHog edhe kur telemetria është e fikur. Këto raporte dështimi përfshijnë versionet e softuerit dhe të mjedisit dhe një gabim të pastruar të bazës së të dhënave, por pa ID instalimi apo deklaratë SQL."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Diagnostikoni instalimet dhe përmirësimet e dështuara të bazës së të dhënave"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Hollësitë e dështimit të instalimit dhe përmirësimit"
+
+#: 
+msgid "Open in browser window"
+msgstr "Hapni në dritaren e shfletuesit"
+
+#: 
+msgid "Opening Line"
+msgstr "Rreshti i hapjes"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Telemetria opsionale e përdorimit dërgohet vetëm kur është e aktivizuar. Dështimet e instalimit dhe të përmirësimit të bazës së të dhënave dërgojnë gjithmonë një diagnostikim të kufizuar për të ndihmuar komunitetin, edhe nëse zgjidhni Jo, faleminderit. Raportet e dështimit përfshijnë versionet e softuerit dhe të mjedisit dhe një gabim të pastruar të bazës së të dhënave, pa ID instalimi apo deklaratë SQL."
+
+#: 
+msgid "PDF Handling"
+msgstr "Trajtimi i PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "Dalja PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "Mënyra e trajtimit të PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "Rreshti i pyetjeve"
+
+#: 
+msgid "Save File dialog"
+msgstr "Dialogu Ruaj skedarin"
+
+#: 
+msgid "Signer"
+msgstr "Nënshkruesi"
+
+#: 
+msgid "Statement Settings"
+msgstr "Cilësimet e deklaratës"
+
+#: 
+msgid "Statement Wording"
+msgstr "Formulimi i deklaratës"
+
+#: 
+msgid "Tax Information"
+msgstr "Informacioni tatimor"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "Telemetria dërgohet te PostHog në Shtetet e Bashkuara. Raportet e dështimit të instalimit dhe të përmirësimit dërgohen edhe kur telemetria opsionale është e çaktivizuar."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Kjo datë u anulua. Nuk nevojitet më asgjë nga ju."
+
+#: 
+msgid "always sent"
+msgstr "dërgohet gjithmonë"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "Dështoi heqja e kokës së letrës"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "Dështoi ruajtja e kokës së letrës"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "Dështoi ngarkimi i kokës së letrës"
+
+#: 
+msgid "Greeting"
+msgstr "Përshëndetja"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Përshëndetja dhe nënshkrimi i letrës"
+
+#: 
+msgid "Letterhead"
+msgstr "Koka e letrës"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF ose WebP. Një baner i gjerë funksionon më mirë, për shembull 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "Shtypet në krye të letrave PDF që përdorin një kokë grafike letre, si deklaratat e dhurimeve. Pa të, letrat shtypin emrin dhe adresën e kishës."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Të hiqet koka e letrës? Letrat do të shtypin emrin dhe adresën e kishës."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "Vendosni kokën e letrës që shtypin letrat PDF"
+
+#: 
+msgid "Using the church name and address"
+msgstr "Duke përdorur emrin dhe adresën e kishës"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "Duke përdorur shtegun e kokës së letrës të vendosur te Cilësimet e sistemit"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Formulimi, numri tatimor dhe trajtimi i PDF për deklaratat e dhurimeve"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s si %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s është tani adresa juaj e emailit. Mund ta përdorni për të hyrë në Portalin e anëtarëve."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} të tjera"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "U kërkua një ndryshim i adresës suaj të emailit"
+
+#: 
+msgid "A family"
+msgstr "Një familje"
+
+#: 
+msgid "A group"
+msgstr "Një grup"
+
+#: 
+msgid "A ministry"
+msgstr "Një shërbesë"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "Një adresë e re ndryshon vetëm pasi të përdorni lidhjen që ju dërgojmë në të."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "Një çelës kalimi mund të shtohet vetëm brenda %d minutash nga hyrja me adresën tuaj të emailit. Dilni, hyni përsëri me emailin tuaj, pastaj kthehuni këtu."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "Një çelës kalimi ju fut me Face ID, një shenjë gishti ose PIN-in e pajisjes suaj, pa një kod email."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "U shtua një çelës kalimi te hyrja juaj në Portalin e anëtarëve"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "U shtua një çelës kalimi te hyrja juaj në Portalin e anëtarëve në %1$s më %2$s, nga %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "U shtua një çelës kalimi te hyrja juaj në Portalin e anëtarëve në %1$s më %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "Një person që e humb atëherë nuk ka email të vetin: posta e dërguar vetëm atij, si një email grupi, anashkalohet, dhe hartuesi i emailit e thotë këtë."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "Një person regjistrimi i të cilit fsheh moshën nuk shfaq kurrë vitin e lindjes."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Një rresht nuk është në formën e pritur."
+
+#: 
+msgid "A team"
+msgstr "Një ekip"
+
+#: 
+msgid "Add a passkey"
+msgstr "Shtoni një çelës kalimi"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Shtoni një çelës kalimi vetëm në telefonin ose kompjuterin tuaj, kurrë në një të përbashkët ose publik."
+
+#: 
+msgid "Add an email"
+msgstr "Shtoni një email"
+
+#: 
+msgid "Added %s"
+msgstr "U shtua %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Anashkalimet e administratorit"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "I rritur i familjes %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "I rritur i familjes"
+
+#: 
+msgid "All events"
+msgstr "Të gjitha ngjarjet"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Lejo hyrjen si person"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Lejo ndryshimet gjatë hyrjes si person"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Lejoni ndryshimet ndërsa një administrator përdor Hyrjen si person. Kur është e fikur, Hyrja si person është vetëm për lexim."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Tashmë e mbajtur nga një anëtar i familjes"
+
+#: 
+msgid "Also used by"
+msgstr "Përdoret gjithashtu nga"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Një administrator mund t’i japë çdo leje një personi në faqen e atij personi. \"Anashkalimet e administratorit\" shfaqen pastaj këtu, me numrin e personave të cilëve iu dha."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "Një person tjetër e përdor tashmë këtë adresë"
+
+#: 
+msgid "Applies to"
+msgstr "Zbatohet për"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Miratoni ose refuzoni kërkesat për zëvendësim për një ekip vullnetarësh."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Kërkoni një email të ri"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "Autoriteti i jepet personit, jo një hyrjeje, kështu që mund të jepet para se ai të ketë një të tillë. Një person që hyn vetëm në Portalin e anëtarëve vazhdon të shohë vetëm orarin e vet derisa një administrator t’i japë një llogari stafi."
+
+#: 
+msgid "Awaiting review"
+msgstr "Në pritje të shqyrtimit"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Kthehu te hyrja"
+
+#: 
+msgid "Browse the full directory"
+msgstr "Shfletoni drejtorinë e plotë"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Mund të hyjë në Portalin e anëtarëve"
+
+#: 
+msgid "Can sign in?"
+msgstr "Mund të hyjë?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Nuk mund të çaktivizohet hyrja për të vetmin administrator që mund të hyjë."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Nuk mund të hyjë"
+
+#: 
+msgid "Change family details"
+msgstr "Ndryshoni të dhënat e familjes"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "Ndryshoni adresën dhe të dhënat e kontaktit të familjes dhe shtoni një anëtar familjeje për shqyrtim."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "Të ndryshojë emrin, të dhënat e kontaktit dhe foton e vet."
+
+#: 
+msgid "Changed"
+msgstr "Ndryshuar"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Ndryshuar pasi personi hyri"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Ndryshuar nga një import pasi personi hyri"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Ndryshuar nga stafi pasi personi hyri"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Ndryshuar përmes API pasi personi hyri"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "Ndryshimet janë të fikura gjatë Hyrjes si person."
+
+#: 
+msgid "Changes needed"
+msgstr "Nevojiten ndryshime"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "Ndryshimet ruhen ndërsa i bëni."
+
+#: 
+msgid "Check your email"
+msgstr "Kontrolloni emailin tuaj"
+
+#: 
+msgid "Choose a permission"
+msgstr "Zgjidhni një leje"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Zgjidhni një leje, për çfarë është dhe ditën e saj të fundit, dhe thoni pse."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Zgjidhni një foto ose bëni një selfie"
+
+#: 
+msgid "Choose a theme"
+msgstr "Zgjidhni një temë"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Zgjidhni të paktën një rresht."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Zgjidhni më së shumti %d rreshta njëherësh."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "Zgjidhni nga lista se si shfaqen datat."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Zgjidhni ditën e fundit të kësaj lejeje."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Zgjidhni për çfarë është leja."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Zgjidhni po ose jo."
+
+#: 
+msgid "Church Office"
+msgstr "Zyra e kishës"
+
+#: 
+msgid "Church country"
+msgstr "Shteti i kishës"
+
+#: 
+msgid "Church default: %s"
+msgstr "Parazgjedhja e kishës: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Hyrja e udhëheqësit të kishës"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Klasifikimet anëtarët e të cilave mund të hyjnë në Portalin e anëtarëve, si një listë e ndarë me presje e identifikuesve të klasifikimit."
+
+#: 
+msgid "Clear selection"
+msgstr "Pastro zgjedhjen"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Kodet, sesionet dhe pajisjet"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "Konfirmoni adresën e emailit"
+
+#: 
+msgid "Confirm email address"
+msgstr "Konfirmoni adresën e emailit"
+
+#: 
+msgid "Confirm family details"
+msgstr "Konfirmoni të dhënat e familjes"
+
+#: 
+msgid "Confirm selected"
+msgstr "Konfirmoni të zgjedhurat"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Konfirmoni këtë email vetëm pasi të kontrolloni, personalisht ose me telefon, se është adresa e vetë këtij personi. Pasi të konfirmohet, mund të përdoret për të hyrë në Portalin e anëtarëve."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Konfirmoni adresën tuaj të emailit"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Konfirmoni adresën tuaj të re të emailit"
+
+#: 
+msgid "Confirmed"
+msgstr "Konfirmuar"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "Datat duhet të shkruhen si YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Vendosni për kërkesat e zëvendësimit"
+
+#: 
+msgid "Device"
+msgstr "Pajisja"
+
+#: 
+msgid "Device remembered"
+msgstr "Pajisja u mbajt mend"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Pajisjet dhe çelësat e kalimit"
+
+#: 
+msgid "Directory classifications"
+msgstr "Klasifikimet e drejtorisë"
+
+#: 
+msgid "Directory section"
+msgstr "Seksioni i drejtorisë"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Çaktivizo hyrjen"
+
+#: 
+msgid "Do not show"
+msgstr "Mos e shfaq"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Secili prej tyre ka nevojë edhe për emailin e vet që askush tjetër nuk e përdor."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Çdo email hyrjeje funksionon një herë, për një kohë të kufizuar, dhe një email më i ri e zëvendëson."
+
+#: 
+msgid "Edit my details"
+msgstr "Redaktoni të dhënat e mia"
+
+#: 
+msgid "Email address changed"
+msgstr "Adresa e emailit u ndryshua"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Adresa e emailit e shtypur: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "Adresa email për t’u konfirmuar: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "Emaili u ndryshua"
+
+#: 
+msgid "Email code"
+msgstr "Kodi i emailit"
+
+#: 
+msgid "Email confirmed"
+msgstr "Emaili u konfirmua"
+
+#: 
+msgid "Email link"
+msgstr "Lidhja e emailit"
+
+#: 
+msgid "Email me a code"
+msgstr "Më dërgoni një kod me email"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Më dërgoni një lidhje konfirmimi me email"
+
+#: 
+msgid "Email needs attention"
+msgstr "Emaili ka nevojë për vëmendje"
+
+#: 
+msgid "Email problem"
+msgstr "Problem me emailin"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Kodi dhe lidhja e hyrjes së dërguar me email u anuluan"
+
+#: 
+msgid "Emailed verification link"
+msgstr "Lidhja e verifikimit e dërguar me email"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Email të konfirmuar: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Aktivizo hyrjen"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Të përfundojë çdo sesion i Portalit të anëtarëve i këtij personi dhe të harrohen pajisjet e mbajtura mend? Çelësat e tyre të kalimit mbeten, kështu që mund të hyjnë përsëri."
+
+#: 
+msgid "Ended %s"
+msgstr "Përfundoi %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "Përfundoi nga një ndryshim i hyrjes së tyre"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Përfundoi kur hyrja e anëtarëve u fik"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Vendosni një numër të plotë nga %1$d deri në %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "Vendosni adresën tuaj të emailit."
+
+#: 
+msgid "Every kind"
+msgstr "Çdo lloj"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Çdo hyrje anëtari, refuzim dhe ndryshim i hyrjes, më të rejat së pari. Nuk mban kurrë një kod, lidhje apo çelës kalimi."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Të gjithë të listuar, nga A në Z, me një kuti kërkimi."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Kushdo që rregullat e hyrjes e lejojnë mund të hyjë pastaj në Portalin e anëtarëve me emailin e vet."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Kushdo që hyri në Portalin e anëtarëve në 30 ditët e fundit, më të rejat së pari."
+
+#: 
+msgid "Everywhere"
+msgstr "Kudo"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Familjet që një anëtar i konfirmoi në 30 ditët e fundit, nga Portali i anëtarëve ose lidhja e verifikimit e dërguar me email."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Familje të konfirmuara, 30 ditët e fundit"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Të dhënat e familjes u konfirmuan"
+
+#: 
+msgid "Family email"
+msgstr "Emaili i familjes"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Emailët e familjes nuk u zhvendosën"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Rolet familjare anëtarët e të cilave mund të hyjnë në Portalin e anëtarëve, si një listë e ndarë me presje e identifikuesve të roleve."
+
+#: 
+msgid "Find someone"
+msgstr "Gjeni dikë"
+
+#: 
+msgid "Fix by hand"
+msgstr "Rregulloni me dorë"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Rregulloni emailët e përbashkët"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Nga një hyrje stafi"
+
+#: 
+msgid "Give a permission"
+msgstr "Jepni një leje"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Jepni një leje portali"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Jepini secilit person emailin e vet"
+
+#: 
+msgid "Give permission"
+msgstr "Jepni lejen"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "Dhënë nga %1$s deri më %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Dhënë nga %s"
+
+#: 
+msgid "Given to"
+msgstr "Dhënë"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Dhënë për të gjithë"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Dhënë, por jo në fuqi"
+
+#: 
+msgid "Go to sign in"
+msgstr "Shkoni te hyrja"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Shkoni te Portali i anëtarëve"
+
+#: 
+msgid "Has signed in"
+msgstr "Ka hyrë"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Ka hyrë: sesionet dhe pajisjet e tyre mbarojnë"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Ja kodi juaj për të hyrë në Portalin e anëtarëve. Shkruajeni në faqen e hyrjes, në shfletuesin ku e kërkuat. Ose shtypni butonin për të hyrë në këtë pajisje."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Fshih lejet"
+
+#: 
+msgid "How"
+msgstr "Si"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Sa email hyrjeje të Portalit të anëtarëve mund të kërkojë një adresë IP në një orë. Vendoseni në 0 për pa kufi, për shembull kur të gjithë arrijnë ChurchCRM përmes një adrese."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Sa ditë një pajisje mbetet e futur në Portalin e anëtarëve pasi anëtari zgjedh të mbetet i futur. Vendoseni në 0 për ta hequr zgjedhjen."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Sa minuta pa veprim e mbyllin një sesion të Portalit të anëtarëve."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Sa minuta mbeten të vlefshëm kodi dhe lidhja e hyrjes në Portalin e anëtarëve."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Koha pa veprim (minuta)"
+
+#: 
+msgid "Idle too long"
+msgstr "Pa veprim shumë gjatë"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Nëse %1$s është adresa juaj e re, përdorni butonin më poshtë për ta konfirmuar. Derisa të konfirmohet, nuk mund të përdoret për hyrje. Lidhja funksionon një herë, deri më %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Nëse kjo adresë mund të përdoret për hyrje, ju kemi dërguar një kod me email. Asgjë pas disa minutash? Pyetni zyrën e kishës."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Nëse nuk e shtuat ju, hiqeni në faqen Hyrja dhe pajisjet dhe kontaktoni zyrën e kishës."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Nëse nuk e kërkuat këtë ndryshim, ju lutemi kontaktoni zyrën e kishës."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Nëse nuk e kërkuat këtë, ju lutemi kontaktoni zyrën e kishës."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Mund të ketë skaduar ose të jetë përdorur tashmë. Nëse ju nevojitet ndihmë, ju lutemi kontaktoni zyrën e kishës."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "Shtojca e tij nuk është instaluar"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Kalo te një shkronjë"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Më mbaj të futur (ditë)"
+
+#: 
+msgid "Keeps it"
+msgstr "E mban"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "Lloj emaili të pakonfirmuar"
+
+#: 
+msgid "Last day"
+msgstr "Dita e fundit"
+
+#: 
+msgid "Last used"
+msgstr "Përdorur së fundi"
+
+#: 
+msgid "Last used %s"
+msgstr "Përdorur së fundi %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "Udhëheqës i %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "Lejoni administratorët të hapin Portalin e anëtarëve të një personi si ai person, nga menuja Veprimet e personit, ndërsa hyrja e anëtarëve është e ndezur."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "Lejoni anëtarët të shtojnë çelësa kalimi dhe të hyjnë në Portalin e anëtarëve me ta."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "Lejoni anëtarët të hyjnë në Portalin e anëtarëve me adresën e tyre të emailit. Mund të ndizet vetëm ndërsa dërgimi i emailit funksionon."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "Lejoni anëtarët të hyjnë me emailin e tyre"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "Kohëzgjatja e lidhjes dhe e kodit (minuta)"
+
+#: 
+msgid "Login as %s"
+msgstr "Hyrje si %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Hyrje si person"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "Hyrja si person nuk mund të fillonte."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "Hyrja si person përfundoi: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Historia e Hyrjes si person"
+
+#: 
+msgid "Login as Person started"
+msgstr "Hyrja si person filloi"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "Hyrja si person u ndal"
+
+#: 
+msgid "Look up anyone"
+msgstr "Kërkoni këdo"
+
+#: 
+msgid "Loses it"
+msgstr "E humb"
+
+#: 
+msgid "Manage a team"
+msgstr "Menaxhoni një ekip"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Menaxhoni hyrjen dhe pajisjet e mia"
+
+#: 
+msgid "Matches: %s"
+msgstr "Përputhje: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Mund të hyjë"
+
+#: 
+msgid "May sign in now"
+msgstr "Mund të hyjë tani"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Kodi i hyrjes në Portalin e anëtarëve"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Njoftimi i hyrjes në Portalin e anëtarëve"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Hyrjet dhe veprimtaria e Portalit të anëtarëve, për anëtarët dhe për stafin që hap portalin nga hyrja e tyre e stafit."
+
+#: 
+msgid "Member sign-in"
+msgstr "Hyrja e anëtarëve"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "Hyrja e anëtarëve i dërgon secilit person një kod me email, kështu që emaili (SMTP) duhet të funksionojë para se ta ndizni."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "Hyrja e anëtarëve është e fikur"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "Hyrja e anëtarëve është e fikur për kishën."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "Hyrja e anëtarëve është e fikur."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "Hyrja e anëtarëve nuk është ende e disponueshme. Ju lutemi, kontaktoni zyrën e kishës."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "Hyrja e anëtarëve nuk lejon kurrë personat e ndjerë, joaktivë, në një familje joaktive, në pritje të shqyrtimit ose që kanë të ndezur Çaktivizo hyrjen. Këto zgjedhje vendosin se kush tjetër mundet."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "Hyrja e anëtarëve i dërgon secilit anëtar një kod me email, kështu që mund të ndizet vetëm ndërsa ChurchCRM mund të dërgojë email. Ndizni emailin dhe konfiguroni serverin e postës së pari."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "Anëtarët shohin faqen Kalendari ndërsa të paktën një kalendar është i ndezur."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "Anëtarët shtypin të paktën %d shkronja të një emri dhe shohin deri në %d përputhje. Lista e plotë nuk shfaqet kurrë."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "Anëtarët që janë të futur tani dalin, dhe askush nuk mund të hyjë me emailin e tij derisa hyrja e anëtarëve të ndizet përsëri."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Anëtarët me këto klasifikime gjejnë Drejtorinë në menunë e Portalit të anëtarëve."
+
+#: 
+msgid "Minimum age"
+msgstr "Mosha minimale"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Përpjekje të tjera me këtë adresë në orën e ardhshme nuk do të dërgojnë një njoftim tjetër."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Zhvendosur nga emaili i familjes"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Zhvendosur te një kryefamiljar"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Zhvendosur te një bashkëshort"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "I ri në kishën tonë? Na tregoni për familjen tuaj dhe do t’ju kontaktojmë për t’ju mirëpritur."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Ende pa sesione të Hyrjes si person."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Pa datë lindjeje, dhe jo kryefamiljar apo bashkëshort"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Asnjë kalendar nuk është i ndezur, kështu që anëtarët nuk e shohin faqen Kalendari."
+
+#: 
+msgid "No changes"
+msgstr "Asnjë ndryshim"
+
+#: 
+msgid "No changes made."
+msgstr "Nuk u bënë ndryshime."
+
+#: 
+msgid "No family role"
+msgstr "Pa rol familjar"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Asnjë kryefamiljar apo bashkëshort nuk mund të marrë emailin e familjes."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Asnjë kryefamiljar apo bashkëshort nuk e ndan"
+
+#: 
+msgid "No match"
+msgstr "Pa përputhje"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Askush nuk përputhet ende me rregullin e hyrjes. Zgjidhni më shumë role familjare ose klasifikime, ose ulni moshën minimale."
+
+#: 
+msgid "No passkey was added."
+msgstr "Nuk u shtua asnjë çelës kalimi."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Nuk u përdor asnjë çelës kalimi. Provoni përsëri, ose hyni me adresën tuaj të emailit."
+
+#: 
+msgid "No person has this email"
+msgstr "Asnjë person nuk e ka këtë email"
+
+#: 
+msgid "No personal email"
+msgstr "Pa email personal"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Asnjë email i përbashkët nuk e pengon askënd të hyjë."
+
+#: 
+msgid "No such person"
+msgstr "Nuk ka person të tillë"
+
+#: 
+msgid "No, thanks"
+msgstr "Jo, faleminderit"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Askush nuk mund të hyjë me një email personal që e ndajnë dy persona të cilët mund të hyjnë. Për një adresë të ndarë brenda një familjeje, kryefamiljari e mban, përndryshe bashkëshorti (më i vjetri së pari). Kushdo tjetër që e ndan e humb. Hiqni zgjedhjen nga ato që doni t’i rregulloni në një mënyrë tjetër."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Askush nuk mund të hyjë ende: zgjidhni të paktën një klasifikim te Kush mund të hyjë."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Askush nuk mund të hyjë ende: zgjidhni të paktën një rol familjar dhe të paktën një klasifikim te Kush mund të hyjë."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Askush nuk mund të hyjë ende: zgjidhni të paktën një rol familjar te Kush mund të hyjë."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "Askush në drejtori nuk përputhet me atë emër."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "Askush nuk është listuar ende në drejtori."
+
+#: 
+msgid "Not ended"
+msgstr "Nuk ka përfunduar"
+
+#: 
+msgid "Not moved"
+msgstr "Nuk është zhvendosur"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Nuk jeni të sigurt cilin email kemi? Kontaktoni zyrën e kishës."
+
+#: 
+msgid "Not yet"
+msgstr "Ende jo"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Shënuar në kronologjinë e familjes"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Prej tyre, persona që kanë hyrë: {{total}}. Ata dalin kudo, dhe adresa merr një njoftim."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "E fikur për të gjithë: \"%s\" është e fikur"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "E fikur për të gjithë: Menaxhimi i vullnetarëve nuk është vendosur në V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "E fikur për të gjithë: veçoria e tij është e fikur"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "E fikur për të gjithë: shtojca e tij është e fikur"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "E fikur për të gjithë: asnjë kalendar nuk ndahet me anëtarët"
+
+#: 
+msgid "Office list"
+msgstr "Lista e zyrës"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Pasi të konfirmohet, mund të përdoret për të hyrë në Portalin e anëtarëve."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Mund të zgjidhen vetëm adresat që ju mund t’i konfirmoni."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Vetëm administratorët e shohin arsyen."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Vetëm një administrator mund të ndryshojë emailin e një personi që ka një llogari stafi ose leje portali."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Vetëm një administrator mund të konfirmojë një email që zëvendësoi një me të cilin personi ka hyrë."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Vetëm një administrator mund të konfirmojë emailin e një personi që ka një llogari stafi ose leje portali."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Vetëm një administrator mund ta rregullojë këtë adresë: dikush që e ndan ka një llogari stafi ose leje portali."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Vetëm një i rritur i familjes suaj mund t’i konfirmojë këto të dhëna. Ju lutemi, kontaktoni zyrën e kishës."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Konfirmoni vetëm adresa që dini se i përkasin atij personi. Kushdo që lexon një adresë mund të hyjë si personi i saj."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Vetëm personat e gjallë me emailin e tyre mund të jenë në listën e zyrës."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Mund të shtohen vetëm personat me emailin e tyre."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Telemetria opsionale mund të përfshijë rrugët e faqeve, gjuhën aktive, versionin e CRM, versionin e PHP, familjen e OS, shtetin nga cilësimet e informacionit të kishës suaj dhe një ID të rastësishme instalimi. Raportet e dështimit nuk përfshijnë ID-në e instalimit. Të dhënat dërgohen te PostHog në Shtetet e Bashkuara."
+
+#: 
+msgid "Passkey"
+msgstr "Çelës kalimi"
+
+#: 
+msgid "Passkey added"
+msgstr "Çelësi i kalimit u shtua"
+
+#: 
+msgid "Passkey removed"
+msgstr "Çelësi i kalimit u hoq"
+
+#: 
+msgid "Passkeys"
+msgstr "Çelësat e kalimit"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "Çelësat e kalimit janë të fikur."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Çelësat e kalimit nuk mund të përdoren këtu."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Çelësat e kalimit nuk mund të përdoren ende në këtë sajt. Ju lutemi, kontaktoni zyrën e kishës."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "Çelësat e kalimit kanë nevojë për një emër hosti, jo një adresë IP, në adresën e sajtit."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "Çelësat e kalimit kanë nevojë për një lidhje të sigurt (HTTPS) me këtë sajt."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "Çelësat e kalimit kanë nevojë që adresa e sajtit të jetë vendosur në Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "Çelësat e kalimit kanë nevojë që sajti të shërbehet përmes HTTPS. Anëtarëve nuk u ofrohen çelësa kalimi derisa të jetë kështu."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "Çelësat e kalimit funksionojnë vetëm te %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Çelësa kalimi: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "Personat që cilësimet e ruajtura i lejojnë: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Personat për t’u dërguar email kur dikush nuk mund të hynte në Portalin e anëtarëve"
+
+#: 
+msgid "People who hold it"
+msgstr "Personat që e mbajnë"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Personat që humbasin një adresë: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Personat që humbën një adresë: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Personat që mund të hyjnë: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Personat që dikur hynin në Portalin e anëtarëve: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Personat me këto klasifikime shfaqen në drejtori. Numri është sa persona aktivë kanë secilin klasifikim."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Personat me këtë email: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Personi %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Zgjidhni klasifikimet nga lista."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Zgjidhni rolet familjare nga lista."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Zgjidhni personat për listën e zyrës."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Ju lutemi, zgjidhni një gjuhë nga lista."
+
+#: 
+msgid "Portal permission given"
+msgstr "Leja e portalit u dha"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Leja e portalit u hoq"
+
+#: 
+msgid "Portal permissions"
+msgstr "Lejet e portalit"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Hyrja në portal"
+
+#: 
+msgid "Problem"
+msgstr "Problem"
+
+#: 
+msgid "Reason"
+msgstr "Arsyeja"
+
+#: 
+msgid "Reason: %s"
+msgstr "Arsyeja: %s"
+
+#: 
+msgid "Refused"
+msgstr "Refuzuar"
+
+#: 
+msgid "Register your family"
+msgstr "Regjistroni familjen tuaj"
+
+#: 
+msgid "Remembered device"
+msgstr "Pajisje e mbajtur mend"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Pajisja e mbajtur mend u hoq"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Pajisje të mbajtura mend: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "Hiq emailët"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Hiq këtë çelës kalimi"
+
+#: 
+msgid "Remove this permission"
+msgstr "Hiq këtë leje"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Hequr nga: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Zëvendësuar pas një hyrjeje"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Zëvendësuar nga një hyrje tjetër"
+
+#: 
+msgid "Result"
+msgstr "Rezultati"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Drejtoni një ekip vullnetarësh: pozicione, vullnetarë, orare, personel dhe numërime."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Thoni pse po çaktivizohet hyrja."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Thoni pse po jepet kjo leje."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Kërkoni këdo në dosje. Çdo rresht thotë nëse mund të hyjnë në Portalin e anëtarëve dhe, nëse jo, pse."
+
+#: 
+msgid "Search method"
+msgstr "Metoda e kërkimit"
+
+#: 
+msgid "Search only"
+msgstr "Vetëm kërkim"
+
+#: 
+msgid "See family contact details"
+msgstr "Shihni të dhënat e kontaktit të familjes"
+
+#: 
+msgid "See my family"
+msgstr "Shihni familjen time"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Ta shihni Portalin e anëtarëve siç e sheh ky person? Faqet e stafit mbeten të mbyllura derisa të shtypni Ndal, dhe sesioni regjistrohet në këtë faqe dhe në faqen tuaj të përdoruesit."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "Shihni kalendarët që kisha ndan me anëtarët dhe abonohuni në ta."
+
+#: 
+msgid "See the church calendar"
+msgstr "Shihni kalendarin e kishës"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Shihni pajisjet dhe çelësat e kalimit që i fusin, dhe dilni ose hiqni cilindo prej tyre."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "Shihni adresat e emailit dhe numrat e telefonit të personave në familjen e tyre."
+
+#: 
+msgid "See the member directory"
+msgstr "Shihni drejtorinë e anëtarëve"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "Shihni emrat dhe fotot e personave në familjen e tyre."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "Shihni personat që kisha liston në drejtorinë e saj, me të dhënat që kisha zgjedh të ndajë."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Shihni orarin e tyre të vullnetarizmit, regjistrohuni për vendet e lira dhe kërkoni një zëvendësues."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "Dërgoni shfletimin si true ose false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "Dërgoni klasifikimet si një listë identifikuesish."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "Dërgoni cilësimet e drejtorisë si një objekt JSON."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "Dërgoni fushat për t’u shfaqur si një objekt vlerash true dhe false."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "Dërgoni cilësimet si një objekt JSON."
+
+#: 
+msgid "Session ended"
+msgstr "Sesioni përfundoi"
+
+#: 
+msgid "Set up email"
+msgstr "Konfiguro Emailin"
+
+#: 
+msgid "Set up email first."
+msgstr "Konfiguroni emailin së pari."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Adresa të përbashkëta të rregulluara: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Adresa të përbashkëta për t’u rregulluar: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Ndarë nga"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Emailë të përbashkët që i pengojnë njerëzit të hyjnë"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Shfaqni ose fshihni këtë anëtar"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "Shfaqni faqen Drejtoria në Portalin e anëtarëve për klasifikimet e zgjedhura më poshtë."
+
+#: 
+msgid "Show the member directory"
+msgstr "Shfaqni drejtorinë e anëtarëve"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "Shfaqni drejtorinë e anëtarëve në Portalin e anëtarëve."
+
+#: 
+msgid "Show with year"
+msgstr "Shfaq me vit"
+
+#: 
+msgid "Show without year"
+msgstr "Shfaq pa vit"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Po shfaqen %d përputhjet e para. Shtypni më shumë nga emri për të gjetur personin që kërkoni."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Të hyhet si %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Herën tjetër hyni në këtë pajisje me Face ID, një shenjë gishti ose PIN-in e pajisjes suaj."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Hyni për të parë familjen tuaj, kalendarin e kishës dhe mënyrat për të shërbyer. Nuk ju nevojitet fjalëkalim apo llogari."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Hyni me një çelës kalimi"
+
+#: 
+msgid "Sign out every device"
+msgstr "Dilni nga çdo pajisje"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Të dilni nga çdo pajisje tani?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Dilni kudo"
+
+#: 
+msgid "Sign out this device"
+msgstr "Dilni nga kjo pajisje"
+
+#: 
+msgid "Sign-in"
+msgstr "Hyrja"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Hyrja dhe pajisjet"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "Hyrja nuk mund të çaktivizohej."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "Hyrja nuk mund të aktivizohej."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Hyrja u çaktivizua"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "U kërkua email hyrjeje"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Emailë hyrjeje për adresë IP në orë"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Hyrja u aktivizua"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Hyrja është tashmë e çaktivizuar për këtë person."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "Hyrja është e çaktivizuar"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Hyrja është e çaktivizuar për këtë person."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Hyrja është e aktivizuar për këtë person."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Hyrja nuk është e çaktivizuar për këtë person."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Hyrja u refuzua"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "Hyrja, sesionet dhe çelësi API janë të bllokuar derisa kjo të zgjidhet në regjistrimin e personit të lidhur."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Të futur, 30 ditët e fundit"
+
+#: 
+msgid "Signed out"
+msgstr "I dalë"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "I dalë nga një ndryshim i hyrjes së tyre"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "I dalë kudo"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Dikush kërkoi një email hyrjeje në Portalin e anëtarëve, por asnjë nuk u dërgua."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Dikush nuk mund të hynte në Portalin e anëtarëve"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "Faqet e stafit mbeten të mbyllura gjatë Hyrjes si person. Shtypni Ndal në baner për t’u kthyer."
+
+#: 
+msgid "Stop"
+msgstr "Ndal"
+
+#: 
+msgid "Stopped"
+msgstr "Ndalur"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "I thoni zyrës së kishës nëse të dhënat e familjes janë ende të sakta."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Ai kod nuk funksionoi. Kontrolloni emailin më të ri nga ne, ose kërkoni një të ri."
+
+#: 
+msgid "That could not be removed."
+msgstr "Ai nuk mund të hiqej."
+
+#: 
+msgid "That device is signed out."
+msgstr "Ajo pajisje ka dalë."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Kjo nuk është një adresë e vlefshme email."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Ajo faqe kishte qenë e hapur shumë gjatë. Ju lutemi, provoni përsëri."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Ai çelës kalimi është hequr. Nuk mund t’ju fusë më."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Kjo zgjati shumë. Ju lutemi, provoni përsëri."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "Përmirësimi 7.8.3 ia dha çdo email familjeje një personi. Këto nuk mundi, kështu që la një shënim në kronologjinë e familjes."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "Portali i anëtarëve dhe emailët që ju dërgon përdorin këtë gjuhë."
+
+#: 
+msgid "The change could not be saved."
+msgstr "Ndryshimi nuk mund të ruhej."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "Kodi dhe butoni funksionojnë një herë, deri më %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "Kodi ose lidhja shkoi te një adresë që nuk është më emaili i tyre"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "Emaili i konfirmimit nuk mund të dërgohej. Ju lutemi, provoni përsëri më vonë."
+
+#: 
+msgid "The device is signed out."
+msgstr "Pajisja ka dalë."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "Adresa e emailit %2$s u hoq nga regjistrimi juaj më %1$s. Keni dalë nga Portali i anëtarëve në çdo pajisje."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "Adresa e emailit në regjistrimin tuaj më %1$s u ndryshua nga %2$s në %3$s. Keni dalë nga Portali i anëtarëve në çdo pajisje."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "Emaili nuk mund të konfirmohej."
+
+#: 
+msgid "The email could not be sent."
+msgstr "Emaili nuk mund të dërgohej."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "Emaili është konfirmuar. Tani mund të përdoret për hyrje."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "Data e përfundimit është para datës së fillimit."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "Familja nuk ka kryefamiljar ose bashkëshort të gjallë dhe aktiv"
+
+#: 
+msgid "The family is inactive"
+msgstr "Familja është joaktive"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "Kryefamiljari dhe bashkëshorti kanë të dy emailin e tyre"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Dita e fundit nuk mund të jetë në të kaluarën."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "Personi i lidhur nuk mund të hyjë, kështu që kjo llogari nuk mund të hyjë"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "Lista nuk mund të ngarkohej."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "Çelësi i kalimit nuk mund të shtohej. Ju lutemi, provoni përsëri."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "Çelësi i kalimit nuk mund të verifikohej"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "Çelësi i kalimit nuk është në regjistrim, ose u hoq"
+
+#: 
+msgid "The passkey was removed."
+msgstr "Çelësi i kalimit u hoq."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Personat që e ndajnë janë në familje të ndryshme, ose nuk janë në një familje"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Personat që e ndajnë këtë adresë kanë ndryshuar. Hapni përsëri Rregulloni emailët e përbashkët."
+
+#: 
+msgid "The permission could not be given."
+msgstr "Leja nuk mund të jepej."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "Leja mbaron pas kësaj dite. Mund të jepet përsëri."
+
+#: 
+msgid "The permission was given."
+msgstr "Leja u dha."
+
+#: 
+msgid "The permission was removed."
+msgstr "Leja u hoq."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "Lejet nuk mund të ngarkoheshin."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "Personi e humb këtë leje në Portalin e anëtarëve menjëherë."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Arsyeja mund të jetë më së shumti %d karaktere e gjatë."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "Rregullat e hyrjes i lejojnë, dhe secili ka emailin e vet që askush tjetër që mund të hyjë nuk e përdor."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "Rregullat e hyrjes i lejojnë, por emaili i tyre jo: nuk kanë, e ndajnë me dikë tjetër që mund të hyjë, ose ende nuk është konfirmuar."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "Cilësimet e hyrjes nuk mund të ruheshin."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "Emaili i pakonfirmuar ka ndryshuar. Ringarkoni faqen dhe provoni përsëri."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "Klasifikimi i tyre nuk mund të hyjë"
+
+#: 
+msgid "Their email changed"
+msgstr "Emaili i tyre ndryshoi"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "Emaili i tyre ende nuk është konfirmuar"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "Emaili i tyre ndahet me dikë tjetër"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "Roli i tyre familjar nuk mund të hyjë"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "Hyrjet e tyre të vjetra u hoqën nga përmirësimi. Ndizni hyrjen e anëtarëve që të mund të hyjnë me emailin e tyre."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "Pajisja e tyre e mbajtur mend kishte skaduar"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "Pajisja e tyre e mbajtur mend doli"
+
+#: 
+msgid "Theme development"
+msgstr "Zhvillimi i temës"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Nuk ka klasifikim me id %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Nuk ka zgjedhës për këtë lloj shtrirjeje."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Nuk ka ngjarje të tillë auditimi."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Nuk ka problem të tillë email."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Nuk ka lloj të tillë emaili të pakonfirmuar."
+
+#: 
+msgid "There is no such list."
+msgstr "Nuk ka listë të tillë."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Nuk ka leje të tillë portali."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Këto janë telefonat dhe kompjuterët ku zgjodhët të qëndronit të futur. Dilni nga cilido që nuk e përdorni më ose nuk e njihni."
+
+#: 
+msgid "They have a staff account"
+msgstr "Kanë një llogari stafi"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Mund të hyjnë, por nuk kanë hyrë kurrë."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Ky veprim ka nevojë për një sesion shfletuesi të futur."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Kjo adresë nuk mund të ndryshohej. Hapni përsëri Rregulloni emailët e përbashkët për të parë ku qëndron."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Kjo adresë nuk ndahet më nga persona që mund të hyjnë."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Ky shfletues nuk mund të krijojë çelësa kalimi."
+
+#: 
+msgid "This device"
+msgstr "Kjo pajisje"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Kjo pajisje ka tashmë një çelës kalimi për ju."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Kjo pajisje nuk do ta mbajë më personin të futur, dhe një sesion i hapur në të mbaron. Ata mund të hyjnë përsëri me email."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Kjo është pajisja ime. Më mbaj të futur."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Këtu vendosni për mysafirët. Numri është sa persona aktivë kanë secilin klasifikim."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Kjo lidhje nuk mund të përdoret"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Kjo lidhje ka skaduar ose është përdorur tashmë"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "Kjo pjesë e Portalit të anëtarëve nuk është e disponueshme për ju."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Ky çelës kalimi është tashmë në regjistrim."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Ky çelës kalimi nuk do ta fusë më personin. Ata mund të hyjnë me email dhe të shtojnë një të ri."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Kjo leje nuk mund të jepet në faqen e personit."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Ky person i ka tashmë të gjitha lejet që mund të jepen."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Ky person e ka tashmë këtë leje."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Ky person nuk mund të hyjë më askund, në Portalin e anëtarëve apo si staf. Çdo sesion mbaron, dhe pajisjet e mbajtura mend dhe çelësat e kalimit hiqen."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Ky person nuk mund të dilte."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Ky person ka një llogari stafi. Hyrja si person nuk hap kurrë një llogari stafi."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Ky person nuk ka çelës të tillë kalimi."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Ky person nuk ka leje të tillë."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Ky person nuk ka pajisje të tillë të mbajtur mend."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Ky person nuk ka email të pakonfirmuar."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Ky person ka hyrë në Portalin e anëtarëve. Ndryshimi i këtij emaili i nxjerr kudo, dhe adresa e re nuk mund të përdoret për hyrje derisa të konfirmohet."
+
+#: 
+msgid "This person is deceased."
+msgstr "Ky person është i/e ndjerë"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Ky person ka dalë nga Portali i anëtarëve kudo."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Ky person nuk ekziston më."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Kjo ju nxjerr kudo, përfshirë këtu, dhe harron çdo pajisje. Mund të hyni përsëri me adresën tuaj të emailit."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Kjo ju nxjerr kudo, përfshirë këtu, dhe harron çdo pajisje. Çelësat tuaj të kalimit mbeten: mund të hyni përsëri me një çelës kalimi ose me adresën tuaj të emailit."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Ky mjet nuk i ndryshon kurrë këto. Jepini secilit person emailin e vet në regjistrimin e tij."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Zgjidheni këtë vetëm në telefonin ose kompjuterin tuaj, kurrë në një të përbashkët ose publik."
+
+#: 
+msgid "Time: %s"
+msgstr "Koha: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Koha mbaroi"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Për të ndryshuar këtë email, ju lutemi kontaktoni zyrën e kishës."
+
+#: 
+msgid "To fix"
+msgstr "Për t’u rregulluar"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Për të qëndruar të futur në telefonin ose kompjuterin tuaj, zgjidhni \"Kjo është pajisja ime\" herën tjetër që hyni."
+
+#: 
+msgid "Too many attempts"
+msgstr "Shumë përpjekje"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Shumë emailë hyrjeje sot"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Shumë kërkesa hyrjeje për këtë adresë email"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Shumë kërkesa hyrjeje nga kjo adresë IP"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Shumë kode të gabuara"
+
+#: 
+msgid "Turn off"
+msgstr "Fik"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Të fiket hyrja e anëtarëve?"
+
+#: 
+msgid "Turn on"
+msgstr "Ndiz"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Ndiz hyrjen e anëtarëve"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Të ndizet hyrja e anëtarëve?"
+
+#: 
+msgid "Type a name"
+msgstr "Shtypni një emër"
+
+#: 
+msgid "Type a name or email"
+msgstr "Shtypni një emër ose email"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Shtypni të paktën %d shkronja të një emri, pastaj kërkoni."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Email i pakonfirmuar"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Kuptoni ku përdoret ChurchCRM"
+
+#: 
+msgid "Unknown device"
+msgstr "Pajisje e panjohur"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Fushë e panjohur drejtorie: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Cilësim i panjohur drejtorie: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Pajisje pa emër"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Çelës kalimi pa emër"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Derisa zyra e kishës ta konfirmojë, adresa e re nuk mund të përdoret për hyrje."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "Të përdoret %1$s si adresa e emailit për %2$s më %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Përdorni një adresë tjetër email"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Të përdoret një çelës kalimi në këtë pajisje?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Përdorni butonin më poshtë për të konfirmuar se %1$s është adresa juaj e emailit te %2$s. Lidhja funksionon një herë, deri më %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Përdoruesi %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Shikoni lejet"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Në pritje që të konfirmoni %s. Përdorni lidhjen që dërguam në atë adresë."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Në pritje që të konfirmoni {{email}}. Përdorni lidhjen që dërguam në atë adresë."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Nuk mundëm ta dërgojmë emailin. Ju lutemi, provoni përsëri më vonë, ose kontaktoni zyrën e kishës."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Nuk mundëm t’ju fusnim"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Dërguam një lidhje me email te %s. Përdoreni për të konfirmuar adresën tuaj të re të emailit."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Dërguam një lidhje te {{email}}. Emaili juaj ndryshon kur e përdorni."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "Do t’ju dërgojmë me email një kod dhe një lidhje për të hyrë."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Na vjen shumë mirë që jeni këtu! Duhen rreth tre minuta."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Na vjen shumë mirë që familja juaj na është bashkuar! Regjistrimi juaj është marrë. Ekipi ynë do t’ju kontaktojë së shpejti për t’ju mirëpritur personalisht."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Përvjetori i dasmës"
+
+#: 
+msgid "Welcome"
+msgstr "Mirë se vini"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Ajo për të cilën u dha nuk ekziston më"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Çfarë mund të shohin dhe të bëjnë anëtarët në portal, dhe nga vjen secila leje. Personat numërohen midis të gjithëve që rregullat e hyrjes i lejojnë, dhe stafit."
+
+#: 
+msgid "What members can use"
+msgstr "Çfarë mund të përdorin anëtarët"
+
+#: 
+msgid "What to do"
+msgstr "Çfarë të bëhet"
+
+#: 
+msgid "Who can see it"
+msgstr "Kush mund ta shohë"
+
+#: 
+msgid "Who is listed"
+msgstr "Kush është i listuar"
+
+#: 
+msgid "Who may sign in"
+msgstr "Kush mund të hyjë"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Kush mund të hyjë në Portalin e anëtarëve, kush ka hyrë dhe emaili i kujt i pengon. Listat ndjekin rregullat në skedën Hyrja."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Kë liston drejtoria e Portalit të anëtarëve, kush mund ta shohë dhe çfarë shfaq, të zgjedhura te Admini -> Portali i anëtarëve -> Drejtoria."
+
+#: 
+msgid "Why"
+msgstr "Pse"
+
+#: 
+msgid "Why not"
+msgstr "Pse jo"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Me tokenin që pajisja zëvendësoi pak më parë"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Po, shtoni një çelës kalimi"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Po, hiqeni këtë çelës kalimi"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Po, dilni nga çdo pajisje"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Nuk ju lejohet ta konfirmoni këtë email."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Nuk jeni mbajtur të futur në asnjë pajisje."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Keni dalë në çdo pajisje."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Keni dalë në këtë pajisje."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Mund të hyni edhe me adresën tuaj të emailit."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "Nuk mund ta çaktivizoni hyrjen tuaj."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Nuk mund ta hapni Portalin e anëtarëve. Ju lutemi, kontaktoni zyrën e kishës."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Keni kërkuar të ndryshoni emailin tuaj shumë herë. Ju lutemi, provoni përsëri më vonë."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Nuk keni çelësa kalimi."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "Jeni futur si %s në Portalin e anëtarëve (ndryshimet lejohen)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "Jeni futur si %s në Portalin e anëtarëve (vetëm lexim)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Më i ri se mosha minimale"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "Mosha më e re në të cilën një person mund të hyjë në Portalin e anëtarëve. Kur data e lindjes është e panjohur, kualifikohet vetëm një kryefamiljar ose bashkëshort."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Kodi juaj i hyrjes në Portalin e anëtarëve"
+
+#: 
+msgid "Your code"
+msgstr "Kodi juaj"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "Adresa juaj e emailit %s ende nuk është konfirmuar, kështu që nuk mund të përdoret për hyrje. Do t’i dërgojmë një lidhje me email; përdorimi i lidhjes e konfirmon."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Adresa juaj e emailit nuk mund të hiqet këtu. Ju lutemi, kontaktoni zyrën e kishës."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Adresa juaj e emailit është konfirmuar"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Adresa juaj e emailit u ndryshua"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "Çelësi juaj i kalimit u shtua. Herën tjetër, hyni me të në këtë pajisje."
+
+#: 
+msgid "an administrator"
+msgstr "një administrator"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "asnjë kryefamiljar ose bashkëshort nuk ka adresë email"
+
+#: 
+msgid "or"
+msgstr "ose"
+
+#: 
+msgid "until %s"
+msgstr "deri më %s"
 

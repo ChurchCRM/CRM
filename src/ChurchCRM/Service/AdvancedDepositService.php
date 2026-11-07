@@ -37,8 +37,8 @@ class AdvancedDepositService
         $detail = self::scalar($query, 'detail_level');
         $depositId = InputUtils::filterInt(self::scalar($query, 'deposit'));
 
-        $dateStart = self::validDate($query['DateStart'] ?? '');
-        $dateEnd = self::validDate($query['DateEnd'] ?? '');
+        $dateStart = DateTimeUtils::parseIsoDate($query['DateStart'] ?? '');
+        $dateEnd = DateTimeUtils::parseIsoDate($query['DateEnd'] ?? '');
         if ($dateStart === '' && $dateEnd === '') {
             $dateStart = $dateEnd = DateTimeUtils::getTodayDate();
         }
@@ -220,7 +220,7 @@ class AdvancedDepositService
             return gettext('Choose a deposit or enter both report dates.');
         }
         foreach (['DateStart', 'DateEnd'] as $key) {
-            if (isset($input[$key]) && $input[$key] !== '' && self::validDate($input[$key]) === '') {
+            if (isset($input[$key]) && $input[$key] !== '' && DateTimeUtils::parseIsoDate($input[$key]) === '') {
                 return gettext('Enter valid report dates.');
             }
         }
@@ -387,13 +387,4 @@ class AdvancedDepositService
         return array_values(array_unique($methods));
     }
 
-    private static function validDate(mixed $value): string
-    {
-        $date = is_string($value) ? $value : '';
-        if (!preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $date, $m) || !checkdate((int) $m[2], (int) $m[3], (int) $m[1]) || (int) $m[1] < 1900) {
-            return '';
-        }
-
-        return $date;
-    }
 }

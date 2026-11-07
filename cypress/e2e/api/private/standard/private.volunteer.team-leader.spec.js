@@ -10,9 +10,8 @@
  * self-service account, and a team leader may create schedules for their own
  * team).
  *
- * **The persona is person 99, `selfedit.api.key`** — EditSelf-exclusive, the
- * least-authority account that can still log in, and exactly the person P17 is
- * about. Before #9868 that account could reach nothing under `/api/ministries/`
+ * **The persona is person 99 in a member session** — no staff account at all,
+ * and exactly the person P17 is about. Before #9868 that account could reach nothing under `/api/ministries/`
  * except `/me/`: `AuthMiddleware` confined it and
  * `VolunteerCoordinatorRoleAuthMiddleware` refused it. Every 200/201 below fails
  * with 403 on the branch point, and every 403 below is the one that must SURVIVE
@@ -30,10 +29,10 @@
 
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
-/** EditSelf-exclusive — the member-login team leader of P17. */
-const LEADER_KEY = "selfedit.api.key";
-/** EditSelf + Notes, no scope of any kind — the negative persona. */
-const NOSCOPE_KEY = "selfedit.plus.notes.api.key";
+/** The member team leader of P17, in a member session. */
+const LEADER_KEY = 99;
+/** A member with no scope of any kind — the negative persona. */
+const NOSCOPE_KEY = 100;
 
 const VOLUNTEER_URL = "/api/ministries";
 const PORTAL_TEAMS_URL = "/portal/teams";
@@ -73,7 +72,11 @@ function dbOk(sql, params = []) {
     });
 }
 
+/** A person id is a member, in their portal session; anything else names an API key. */
 function api(key, method, url, body, expectedStatus = 200) {
+    if (typeof key === "number") {
+        return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
+    }
     return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
@@ -193,7 +196,7 @@ function cleanupFixtures() {
 // ── fixture ────────────────────────────────────────────────────────────────
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "selfedit.api.key", "selfedit.plus.notes.api.key"]);
+    cy.rememberTestEnv(["admin.api.key"]);
     cy.useChurchTimeZone();
 });
 
@@ -534,7 +537,7 @@ describe("Volunteer v2 — what a TEAM LEADER may do through the API (#9868, epi
              * but arrives without that session — is refused outright rather than
              * being given a second route to the same data.
              */
-            it("Refuses an API key on the My Teams pages", () => {
+            it("Refuses an API key on the My Teams pages, even an administrator's", () => {
                 for (const url of [
                     PORTAL_TEAMS_URL,
                     `${PORTAL_TEAMS_URL}/${teamLed}`,
@@ -543,23 +546,12 @@ describe("Volunteer v2 — what a TEAM LEADER may do through the API (#9868, epi
                     cy.request({
                         method: "GET",
                         url,
-                        headers: { "x-api-key": Cypress.testEnv(LEADER_KEY) },
+                        headers: { "x-api-key": Cypress.testEnv(ADMIN_KEY) },
                         failOnStatusCode: false,
                     }).then((resp) => {
                         expect(resp.status).to.eq(403);
                     });
                 }
-            });
-
-            it("Refuses an administrator's API key just the same", () => {
-                cy.request({
-                    method: "GET",
-                    url: PORTAL_TEAMS_URL,
-                    headers: { "x-api-key": Cypress.testEnv(ADMIN_KEY) },
-                    failOnStatusCode: false,
-                }).then((resp) => {
-                    expect(resp.status).to.eq(403);
-                });
             });
         });
     });

@@ -30,6 +30,10 @@ complexity: "beginner"
 
 **Core developer docs:** architecture, plugin internals, contributor/PR/dev-setup guides, and the release process live in this repo's skills and guides and the GitHub Wiki.
 
+### Tracking documentation work
+
+Issues about the documentation itself — a missing, wrong, or unclear page, or a how-to request — are filed in the docs repository, [ChurchCRM/docs.churchcrm.io](https://github.com/ChurchCRM/docs.churchcrm.io/issues), never in ChurchCRM/CRM. When a CRM issue closes with a documentation gap, file the docs issue in the docs repository and comment on the CRM issue with the link.
+
 ### Publishing a user-doc change
 
 The public site documents a released ChurchCRM version. A merged CRM pull request is not a release.
@@ -100,3 +104,7 @@ git clone https://github.com/ChurchCRM/CRM.wiki.git
 ```
 
 Resources: [ChurchCRM Wiki](https://github.com/ChurchCRM/CRM/wiki), [GitHub Wiki guide](https://docs.github.com/en/communities/documenting-your-project-with-wikis/adding-or-editing-wiki-pages), [ChurchCRM Issues](https://github.com/ChurchCRM/CRM/issues).
+
+## Verify product claims against the code
+
+The codebase decides what ChurchCRM does. Before a feature claim appears in marketing copy, a blog post, the README or documentation, check that `orm/schema.xml` has the claimed fields and tables, `src/plugins/core/` exposes the capability, and a spec under `cypress/` covers it. When the claim and the product differ, reword the claim to match the code, and update the docs if the feature exists but is underdocumented. Check again after refactors and after schema or plugin changes.

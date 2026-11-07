@@ -5,6 +5,8 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -68,7 +70,35 @@ class FamilyService
      */
     public function getMissingCoordinatesCount(): int
     {
-        return $this->buildMissingCoordinatesQuery()->count();
+        return $this->buildMissingCoordinatesQuery()->count() + $this->buildMissingPersonCoordinatesQuery()->count();
+    }
+
+    /**
+     * Active people with their own street address and no usable coordinates.
+     */
+    private function buildMissingPersonCoordinatesQuery(): PersonQuery
+    {
+        return PersonQuery::create()
+            ->filterByDateDeactivated(null)
+            ->filterByAddress1(null, Criteria::ISNOTNULL)
+            ->where("TRIM(Person.Address1) != ''")
+            ->condition('lat_null', 'Person.Latitude IS NULL')
+            ->condition('lat_zero', 'Person.Latitude = ?', 0.0)
+            ->where(['lat_null', 'lat_zero'], Criteria::LOGICAL_OR);
+    }
+
+    /**
+     * Addresses still without coordinates, split by whether geocoding was ever tried:
+     * `not_found` answered with no match, `untried` was never asked.
+     *
+     * @return array{not_found: int, untried: int}
+     */
+    public function getGeocodeStatusCounts(): array
+    {
+        $notFound = $this->buildMissingCoordinatesQuery()->filterByGeocodeTriedAt(null, Criteria::ISNOTNULL)->count()
+            + $this->buildMissingPersonCoordinatesQuery()->filterByGeocodeTriedAt(null, Criteria::ISNOTNULL)->count();
+
+        return ['not_found' => $notFound, 'untried' => $this->getMissingCoordinatesCount() - $notFound];
     }
 
     /**
@@ -85,17 +115,19 @@ class FamilyService
      *                          5xx); the family stays retryable
      *   'error'              — an unexpected exception was thrown
      *
-     * @param Family $family
+     * A definitive answer (coordinates, no match, incomplete address) is stored on the record, so a
+     * miss is remembered; 'unavailable' and 'error' store nothing and stay retryable.
+     *
      * @return array{success: bool, reason: string|null}
      */
-    private function geocodeFamilyWithReason(Family $family): array
+    private function geocodeWithReason(Family|Person $family): array
     {
         $street = trim($family->getAddress1() ?? '');
 
         // Empty street — skip geocoding (not a failure; address filter upstream
         // should prevent this, but guard defensively for direct callers).
         if (empty($street)) {
-            $this->logger->debug('geocodeFamilyWithReason: skipping empty address for family ' . $family->getId());
+            $this->logger->debug('geocodeWithReason: skipping empty address for family ' . $family->getId());
             return ['success' => true, 'reason' => null];
         }
 
@@ -106,20 +138,22 @@ class FamilyService
         $zip   = trim($family->getZip() ?? '');
         if ($city === '' && $state === '' && $zip === '') {
             $this->logger->warning(
-                'geocodeFamilyWithReason: incomplete address (no city/state/zip) for family ' . $family->getId()
+                'geocodeWithReason: incomplete address (no city/state/zip) for family ' . $family->getId()
             );
+            $family->recordGeocode(null);
+            $family->saveWithoutUpdateNote();
             return ['success' => false, 'reason' => 'incomplete_address'];
         }
 
         try {
             $country = $family->getCountry();
 
-            $this->logger->debug('geocodeFamilyWithReason: geocoding family ' . $family->getId());
+            $this->logger->debug('geocodeWithReason: geocoding family ' . $family->getId());
 
             $outcome = GeoUtils::lookup($street, $city, $state, $zip, $country);
             if ($outcome->isUnavailable()) {
                 $this->logger->warning(
-                    'geocodeFamilyWithReason: geocoding unavailable for family ' . $family->getId()
+                    'geocodeWithReason: geocoding unavailable for family ' . $family->getId()
                 );
                 return ['success' => false, 'reason' => 'unavailable'];
             }
@@ -130,22 +164,23 @@ class FamilyService
 
             if ($lat === 0.0 && $lng === 0.0) {
                 $this->logger->warning(
-                    'geocodeFamilyWithReason: no result from any geocoding provider for family ' . $family->getId()
+                    'geocodeWithReason: no result from any geocoding provider for family ' . $family->getId()
                 );
+                $family->recordGeocode(null);
+                $family->saveWithoutUpdateNote();
                 return ['success' => false, 'reason' => 'no_result'];
             }
 
-            $family->setLatitude($lat);
-            $family->setLongitude($lng);
-            $family->save();
+            $family->recordGeocode(['Latitude' => $lat, 'Longitude' => $lng]);
+            $family->saveWithoutUpdateNote();
 
             $this->logger->info(
-                'geocodeFamilyWithReason: geocoded family ' . $family->getId() . ' -> ' . $lat . ', ' . $lng
+                'geocodeWithReason: geocoded family ' . $family->getId() . ' -> ' . $lat . ', ' . $lng
             );
             return ['success' => true, 'reason' => null];
         } catch (\Throwable $e) {
             $this->logger->warning(
-                'geocodeFamilyWithReason: exception for family ' . $family->getId() . ': ' . $e->getMessage()
+                'geocodeWithReason: exception for family ' . $family->getId() . ': ' . $e->getMessage()
             );
             return ['success' => false, 'reason' => 'error'];
         }
@@ -167,6 +202,7 @@ class FamilyService
      *   skip: int,
      *   processed: int,
      *   remaining: int,
+     *   remainingNotFound: int,
      *   failures: list<array{id:int,name:string,address:string,editUrl:string,reason:string}>,
      *   failuresTruncated: bool
      * }
@@ -176,18 +212,32 @@ class FamilyService
         $skip = max(0, $skip);
         // Count the total BEFORE fetching the batch so `remaining` stays accurate
         // even when the batch is limited by MAX_GEOCODE_PER_RUN.
-        $total = $this->getMissingCoordinatesCount();
+        $familyTotal = $this->buildMissingCoordinatesQuery()->count();
+        $total       = $familyTotal + $this->buildMissingPersonCoordinatesQuery()->count();
 
         // Fetch only the rows we will process, not all missing rows into PHP memory.
-        // The order is fixed (by ID) and the caller passes back how many families
-        // failed in its earlier batches as $skip, so a family Nominatim cannot
-        // resolve is not re-queried at the front of every batch — that stalled
-        // installs with more than one batch of unresolvable addresses (#9846).
-        $batch = $this->buildMissingCoordinatesQuery()
-            ->orderById()
-            ->offset($skip)
-            ->limit(self::MAX_GEOCODE_PER_RUN)
-            ->find();
+        // The order is fixed (families by ID, then people by ID) and the caller passes back how
+        // many records failed in its earlier batches as $skip, so an address Nominatim cannot
+        // resolve is not re-queried at the front of every batch — that stalled installs with
+        // more than one batch of unresolvable addresses (#9846).
+        $batch = [];
+        if ($skip < $familyTotal) {
+            $batch = $this->buildMissingCoordinatesQuery()
+                ->orderById()
+                ->offset($skip)
+                ->limit(self::MAX_GEOCODE_PER_RUN)
+                ->find()
+                ->getArrayCopy();
+        }
+        $room = self::MAX_GEOCODE_PER_RUN - count($batch);
+        if ($room > 0) {
+            $batch = array_merge($batch, $this->buildMissingPersonCoordinatesQuery()
+                ->orderById()
+                ->offset(max(0, $skip - $familyTotal))
+                ->limit($room)
+                ->find()
+                ->getArrayCopy());
+        }
 
         $geocoded = 0;
         $failed   = 0;
@@ -201,7 +251,8 @@ class FamilyService
         ]);
 
         foreach ($batch as $index => $family) {
-            $result = $this->geocodeFamilyWithReason($family);
+            $result = $this->geocodeWithReason($family);
+            $isPerson = $family instanceof Person;
 
             if ($result['success']) {
                 $geocoded++;
@@ -211,9 +262,12 @@ class FamilyService
                 if (count($failures) < self::MAX_FAILURE_DETAILS) {
                     $failures[] = [
                         'id'      => (int) $family->getId(),
-                        'name'    => (string) $family->getName(),
+                        'type'    => $isPerson ? 'person' : 'family',
+                        'name'    => $isPerson ? $family->getFullName() : (string) $family->getName(),
                         'address' => (string) $family->getAddress(),
-                        'editUrl' => SystemURLs::getRootPath() . '/FamilyEditor.php?FamilyID=' . (int) $family->getId(),
+                        'editUrl' => $isPerson
+                            ? SystemURLs::getRootPath() . '/PersonEditor.php?PersonID=' . (int) $family->getId()
+                            : SystemURLs::getRootPath() . '/FamilyEditor.php?FamilyID=' . (int) $family->getId(),
                         'reason'  => (string) $result['reason'],
                     ];
                 }
@@ -245,6 +299,7 @@ class FamilyService
             'geocoded'          => $geocoded,
             'failed'            => $failed,
             'remaining'         => $remaining,
+            'remainingNotFound' => $this->getGeocodeStatusCounts()['not_found'],
             'failures'          => $failures,
             'failuresTruncated' => $failed > count($failures),
         ];
@@ -301,9 +356,6 @@ class FamilyService
         $homePhone = trim($fields['HomePhone'] ?? '');
         if ($homePhone !== '') { $family->setHomePhone($homePhone); }
 
-        $email = trim($fields['Email'] ?? '');
-        if ($email !== '') { $family->setEmail($email); }
-
         // Validate WeddingDate before setting — malformed input would otherwise throw at ORM (fixes B9)
         if (!empty($fields['WeddingDate'])) {
             $wd = \DateTimeImmutable::createFromFormat('Y-m-d', $fields['WeddingDate']);
@@ -331,6 +383,16 @@ class FamilyService
      */
     public function autoGeocodeFamily(Family $family): bool
     {
-        return $this->geocodeFamilyWithReason($family)['success'];
+        return $this->geocodeWithReason($family)['success'];
+    }
+
+    /**
+     * Geocode a person's own address after it was saved. A person without a street address is skipped.
+     *
+     * @return bool True if geocoding succeeded or wasn't needed, false if it found nothing or could not run
+     */
+    public function autoGeocodePerson(Person $person): bool
+    {
+        return $this->geocodeWithReason($person)['success'];
     }
 }

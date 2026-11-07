@@ -288,28 +288,11 @@ class Photo
             $initials = mb_strtoupper(mb_substr($name, 0, min(2, mb_strlen($name))));
         }
         
-        // Try to get email from head of household first
-        // NOTE: getHeadPeople() may trigger additional queries if not eagerly loaded.
-        // For bulk operations, consider optimizing with joinWith() in the query.
-        $email = null;
-        $heads = $family->getHeadPeople();
-        foreach ($heads as $head) {
-            $headEmail = $head->getEmail();
-            if (!empty($headEmail)) {
-                $email = $headEmail;
-                break;
-            }
-        }
-        
-        // Fall back to family email if no head has email
-        if ($email === null) {
-            $familyEmail = $family->getEmail();
-            $email = !empty($familyEmail) ? $familyEmail : null;
-        }
-        
+        $email = $family->getEmailRecipient()?->getEmail();
+
         return [
             'initials' => $initials,
-            'email' => $email,
+            'email' => !empty($email) ? $email : null,
         ];
     }
 

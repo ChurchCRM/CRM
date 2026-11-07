@@ -99,7 +99,7 @@ class KioskDevice extends BaseKioskDevice
         return true;
     }
 
-    public function preInsert(ConnectionInterface $con = null): bool
+    public function preInsert(?ConnectionInterface $con = null): bool
     {
         if (empty($this->getName())) {
             $this->setName(MiscUtils::randomWord());

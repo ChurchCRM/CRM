@@ -9,8 +9,8 @@
  *
  * `member.portal-teams.spec.js` (MP7) proves each control on the team page works. This
  * run proves the **claim the epic makes about people**: that a church can hand the
- * Sunday greeters to a volunteer — somebody with an ordinary self-service login and no
- * staff account at all — and that person can set their team up from nothing and run
+ * Sunday greeters to a volunteer — somebody who signs in to the Member Portal with their
+ * email and has no staff account at all — and that person can set their team up from nothing and run
  * it, without anybody giving them a key to the building.
  *
  * So this one starts the team EMPTY. MP7's spec seeds the position through the API
@@ -30,15 +30,14 @@
  *        └─ staff one ──────────► the qualified volunteer is on it
  *
  *     …and the refusals, which are half the point:
- *        another team's page ──► the PORTAL's 403, never the admin shell's
+ *        another team's page ──► the PORTAL's 404, never the admin shell's
  *        the admin ministry page ► never renders for this login
  *        a member with no scope ► no nav entry and no pages
  *
  * Personas (cypress/data/seed.sql):
  *
- *   person 100  Lena Black    `usr_EditSelf=1`, no admin flag. The leader. Her
- *               `usr_UserName` is stored truncated to the column's 32 characters.
- *   person 4    limited.user  EditSelf only, no volunteer scope — the control.
+ *   person 100  Lena Black       The leader, signed in with her email.
+ *   person 4    Darren Campbell  A member with no volunteer scope — the control.
  *   person 8    a seeded member to qualify and assign.
  *
  * Order inside every hook is API setup → login → `cy.visit()`: `cy.request()` rotates
@@ -50,12 +49,10 @@ const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const VOLUNTEER_URL = "/api/ministries";
 const TEAMS_URL = "/portal/teams";
 
-const LEADER_USERNAME = "lena.black.editself.notes@example.com";
-const LEADER_PASSWORD = "changeme";
+const LEADER_USERNAME = 100;
 const PERSON_LEADER = 100;
 
-const PLAIN_USERNAME = "limited.user";
-const PLAIN_PASSWORD = "changeme";
+const PLAIN_USERNAME = 4;
 
 /** Seeded member of group 1 "Angels class" — the person to qualify and assign. */
 const POOL_MEMBER = 8;
@@ -90,16 +87,13 @@ function setVersion(value) {
     adminApi("POST", SETTING_URL, { value }, 200);
 }
 
-function login(username, password) {
-    cy.clearCookies();
-    cy.visit("/session/begin");
-    cy.get("input[name=User]").type(username);
-    cy.get("input[name=Password]").type(`${password}{enter}`);
-    cy.url({ timeout: 10000 }).should("not.include", "/session/begin");
+function login(username) {
+    cy.signInAsMember(username);
+    cy.visit("/portal/");
 }
 
 function leaderLogin() {
-    login(LEADER_USERNAME, LEADER_PASSWORD);
+    login(LEADER_USERNAME);
 }
 
 function isoDate(offsetDays) {
@@ -497,7 +491,7 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
             leaderLogin();
             cy.visit(`${TEAMS_URL}/${teamOther}`, { failOnStatusCode: false });
 
-            // The PORTAL's 403, drawn in the member's theme, never the admin shell's
+            // The PORTAL's 404, drawn in the member's theme, never the admin shell's
             // access-denied page (design P10).
             cy.get(".portal-shell", { timeout: 10000 }).should("exist");
             cy.get("#portal-team").should("not.exist");
@@ -517,7 +511,7 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
         });
 
         it("gives a member with no team at all neither the entry nor the pages", () => {
-            login(PLAIN_USERNAME, PLAIN_PASSWORD);
+            login(PLAIN_USERNAME);
             cy.url({ timeout: 10000 }).should("include", "/portal");
 
             cy.get("#portal-nav").should("not.contain", "My Teams");

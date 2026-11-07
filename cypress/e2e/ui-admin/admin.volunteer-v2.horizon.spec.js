@@ -57,7 +57,12 @@ function isoDate(offsetDays) {
 
 /** The screen's own short date (webpack/ministries/components/ui.ts shortDate). */
 function shortDate(offsetDays) {
-    return localDate(offsetDays).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+    const date = localDate(offsetDays);
+    return date.toLocaleDateString(undefined, {
+        year: date.getFullYear() === new Date().getFullYear() ? undefined : "numeric",
+        month: "short",
+        day: "numeric",
+    });
 }
 
 function weekly(title, from, to, extra = {}) {
@@ -148,6 +153,8 @@ describe("Volunteer v2 D31 — schedules follow events that exist, up to the hor
                 ministryId = resp.body.ministry.id;
                 admin("GET", `${MINISTRIES_URL}/${ministryId}`).then((detail) => {
                     teamId = detail.body.teams[0].id;
+                    // The portal's team pages are for the team's leaders, staff included (member sign-in §8.4).
+                    admin("POST", "/api/ministries/scopes", { personId: 1, scopeType: "team", scopeId: teamId }, [200, 201]);
                 });
             },
         );

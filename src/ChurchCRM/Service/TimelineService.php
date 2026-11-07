@@ -219,8 +219,7 @@ class TimelineService
     public function noteToTimelineItem(Note $dbNote)
     {
         // isVisibleTo() handles: public→true, private-own→true, else→false.
-        // Notes=1 non-admin non-authors get nothing — no placeholder — so the test
-        // assertion "item is absent (not merely redacted)" holds (Issue #9039).
+        // Notes=1 non-admin non-authors get nothing, not a redacted placeholder (Issue #9039).
         if (!$dbNote->isVisibleTo($this->currentUser)) {
             return null;
         }
@@ -258,6 +257,9 @@ class TimelineService
         }
         if ($dbNote->getDisplayEditedBy() === Person::SELF_VERIFY) {
             return gettext('Self Verification');
+        }
+        if ($dbNote->getDisplayEditedBy() === Person::UPGRADE) {
+            return gettext('System Upgrade');
         }
         if ($dbNote->getDisplayEditedBy() === Person::SCHEDULED_TASK) {
             return gettext('Scheduled Task');

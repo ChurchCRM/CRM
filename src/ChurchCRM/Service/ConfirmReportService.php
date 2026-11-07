@@ -36,8 +36,8 @@ class ConfirmReportService
     private array $roleNameCache = [];
 
     /**
-     * Every family that can receive an email: at least one valid address among the family's own
-     * email and its living members' emails. Deceased members' addresses are never used.
+     * Every family that can receive an email: at least one valid address among its living
+     * members' emails. Deceased members' addresses are never used.
      *
      * @return list<array{family: Family, members: list<Person>, emails: list<string>}>
      */
@@ -56,7 +56,7 @@ class ConfirmReportService
     }
 
     /**
-     * The addresses a family's report is emailed to: the family email plus each living member's
+     * The addresses a family's report is emailed to: each living member's
      * personal and work email, valid and de-duplicated.
      *
      * @param list<Person> $members living members of the family
@@ -64,7 +64,7 @@ class ConfirmReportService
      */
     public static function recipientEmails(Family $family, array $members): array
     {
-        $candidates = [$family->getEmail()];
+        $candidates = [];
         foreach ($members as $member) {
             $candidates[] = $member->getEmail();
             $candidates[] = $member->getWorkEmail();
@@ -180,7 +180,7 @@ class ConfirmReportService
             $recipients[] = [
                 'id'    => $family->getId(),
                 'name'  => $family->getName(),
-                'email' => (string) ($family->getEmail() ?: $target['emails'][0]),
+                'email' => (string) ($family->getEmailRecipient()?->getEmail() ?: $target['emails'][0]),
             ];
         }
 
@@ -268,7 +268,6 @@ class ConfirmReportService
         if ($family->getWeddingdate()) {
             $details[] = [gettext('Anniversary Date'), (string) $family->getWeddingdate(SystemConfig::getValue('sDateFormatLong'))];
         }
-        $details[] = [gettext('Family Email'), (string) $family->getEmail()];
 
         $rows = [];
         $groups = [];

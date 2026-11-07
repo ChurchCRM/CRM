@@ -4,7 +4,6 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\Bootstrapper;
 use ChurchCRM\data\Countries;
 use ChurchCRM\data\States;
 use ChurchCRM\dto\SystemConfig;
@@ -21,7 +20,6 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\MiscUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use ChurchCRM\Utils\AddressDefaults;
@@ -62,7 +60,6 @@ $customFieldService = new CustomFieldService();
 
 $bErrorFlag = false;
 $sNameError = '';
-$sEmailError = '';
 $sWeddingDateError = '';
 $sSecondAddressError = '';
 
@@ -126,7 +123,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     $sHomePhone = InputUtils::legacyFilterInput($_POST['HomePhone']);
-    $sEmail = InputUtils::legacyFilterInput($_POST['Email']);
     $bSendNewsLetter = isset($_POST['SendNewsLetter']);
 
     $nLatitude = 0.0;
@@ -223,23 +219,13 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
     }
 
     // Validate Wedding Date if one was entered
-    $dateString = DateTimeUtils::parseAndValidate($dWeddingDate, Bootstrapper::getCurrentLocale()->getCountryCode(), $pasfut = 'past');
+    $dateString = DateTimeUtils::parseAndValidate($dWeddingDate, 'past');
     if (strlen($dWeddingDate) > 0 && $dateString === false) {
         $sWeddingDateError = '<span class="text-danger">'
             . gettext('Not a valid Wedding Date') . '</span>';
         $bErrorFlag = true;
     } else {
         $dWeddingDate = $dateString;
-    }
-
-    // Validate Email
-    if (strlen($sEmail) > 0) {
-        if (MiscUtils::checkEmail($sEmail) === false) {
-            $sEmailError = '<span class="text-danger">'
-                . gettext('Email is Not Valid') . '</span>';
-            $bErrorFlag = true;
-            $sEmail = null;
-        }
     }
 
     // Validate all the custom fields
@@ -292,7 +278,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             ->setSendNewsletter($bSendNewsLetterString)
             ->setEnvelope($nEnvelope)
             ->setWeddingdate($dWeddingDate)
-            ->setEmail($sEmail)
             ->setLatitude($nLatitude)
             ->setLongitude($nLongitude);
 
@@ -303,16 +288,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
             || $family->isColumnModified(FamilyTableMap::COL_FAM_STATE)
             || $family->isColumnModified(FamilyTableMap::COL_FAM_ZIP)
             || $family->isColumnModified(FamilyTableMap::COL_FAM_COUNTRY);
-
-        // Update Lat/Long if address changes
-        if (
-            $addressChanged
-            && !$family->isColumnModified(FamilyTableMap::COL_FAM_LATITUDE)
-            && !$family->isColumnModified(FamilyTableMap::COL_FAM_LONGITUDE)
-        ) {
-            $family->setLatitude(null);
-            $family->setLongitude(null);
-        }
 
         $family->save();
         $family->reload();
@@ -444,7 +419,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $sSecondCountry = $family->getSecondCountry();
         $bSecondIsMailing = (bool) $family->getSecondIsMailing();
         $sHomePhone = $family->getHomePhone();
-        $sEmail = $family->getEmail();
         $bSendNewsLetter = $family->getSendNewsletter() === 'TRUE';
         $dWeddingDate = $family->getWeddingdate(SystemConfig::getValue("sDatePickerFormat"));
         $nLatitude = $family->getLatitude();
@@ -521,7 +495,6 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $bNoFormat_WorkPhone = isset($_POST['NoFormat_WorkPhone']);
         $sCellPhone = '';
         $bNoFormat_CellPhone = isset($_POST['NoFormat_CellPhone']);
-        $sEmail = '';
         $bSendNewsLetter = 'TRUE';
         $dWeddingDate = '';
         $nLatitude = 0.0;
@@ -575,7 +548,7 @@ $sCountry = Countries::toISO($sCountry);
 
 require_once __DIR__ . '/Include/Header.php';
 ?>
-<form method="post" action="FamilyEditor.php?FamilyID=<?php echo $iFamilyID ?>" id="familyEditor">
+<form method="post" action="FamilyEditor.php?FamilyID=<?php echo InputUtils::escapeAttribute($iFamilyID) ?>" id="familyEditor">
     <input type="hidden" name="iFamilyID" value="<?= $iFamilyID ?>">
     <input type="hidden" name="FamCount" value="<?= $iFamilyMemberRows ?>">
     <input type="hidden" id="stateType" name="stateType" value="">
@@ -614,7 +587,7 @@ require_once __DIR__ . '/Include/Header.php';
                     <label for="WeddingDate"><?= gettext('Wedding Date') ?>:</label>
                     <div class="input-group">
                         <span class="input-group-text"><i class="fa-solid fa-heart"></i></span>
-                        <input type="text" class="form-control date-picker" name="WeddingDate" id="WeddingDate" value="<?= DateTimeUtils::formatForDatePicker($dWeddingDate) ?>" maxlength="12" placeholder="<?= SystemConfig::getValueForAttr("sDatePickerPlaceHolder") ?>">
+                        <input type="text" class="form-control date-picker" name="WeddingDate" id="WeddingDate" value="<?= DateTimeUtils::formatForDatePicker($dWeddingDate) ?>" maxlength="12" placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerJsFormat()) ?>">
                     </div>
                     <?php if ($sWeddingDateError) { ?>
                     <span class="text-danger small"><?= $sWeddingDateError ?></span>
@@ -799,16 +772,6 @@ require_once __DIR__ . '/Include/Header.php';
                             <label class="form-check-label" for="NoFormat_HomePhone"><?= gettext('No format') ?></label>
                         </span>
                     </div>
-                </div>
-                <div class="mb-3 col-12 col-md-6">
-                    <label for="Email"><?= gettext('Email') ?>:</label>
-                    <div class="input-group">
-                        <span class="input-group-text"><i class="fa-solid fa-at"></i></span>
-                        <input type="email" id="Email" name="Email" class="form-control" value="<?= InputUtils::escapeAttribute($sEmail) ?>" maxlength="100">
-                    </div>
-                    <?php if ($sEmailError) { ?>
-                    <span class="text-danger small"><?= $sEmailError ?></span>
-                    <?php } ?>
                 </div>
             </div>
             <?php if (!SystemConfig::getBooleanValue('bHideFamilyNewsletter')) { /* Newsletter can be hidden - General Settings */ ?>

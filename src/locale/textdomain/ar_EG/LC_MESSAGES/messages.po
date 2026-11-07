@@ -441,10 +441,6 @@ msgid "Family Cell Phone"
 msgstr "هاتف محمول الأسرة"
 
 #: 
-msgid "Family Email"
-msgstr "البريد الإلكتروني للعائلة"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "هاتف المنزل الشخصي"
 
@@ -3899,10 +3895,6 @@ msgid "Oops! Page not found."
 msgstr "وجه الفتاة! الصفحة غير موجودة."
 
 #: 
-msgid "Family Registration"
-msgstr "التسجيل الأسرة"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "الرجاء إدخال التالية لبدء التحقق عائلتك"
 
@@ -4931,10 +4923,6 @@ msgid "Portuguese - Portugal"
 msgstr "برتغالى - برتغال"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "تحديد اسم التطبيق ليتم عرضها في التطبيق الموثق"
-
-#: 
 msgid "Review"
 msgstr "مراجعة"
 
@@ -5064,10 +5052,6 @@ msgstr "عرض صفحة العائلة"
 #: 
 msgid "View Person Page"
 msgstr "عرض صفحة الشخص"
-
-#: 
-msgid "Verify"
-msgstr "تحقق"
 
 #: 
 msgid "Family has no emails to use"
@@ -5316,24 +5300,8 @@ msgid "Email address"
 msgstr "عنوان البريد الإلكتروني"
 
 #: 
-msgid "Enter family name"
-msgstr "أدخل اسم العائلة"
-
-#: 
 msgid "Family name is required"
 msgstr "اسم العائلة مطلوب"
-
-#: 
-msgid "First name"
-msgstr "الاسم الأول"
-
-#: 
-msgid "Home phone number"
-msgstr "رقم هاتف المنزل"
-
-#: 
-msgid "Last name"
-msgstr "اسم العائلة"
 
 #: 
 msgid "Next Member"
@@ -9790,10 +9758,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "سنستخدم هذا للبقاء على اتصال وإرسال تحديثات الكنيسة."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "نحن سعداء جدا بأنك هنا! سجل عائلتك في 3 خطوات سهلة فقط."
-
-#: 
 msgid "Welcome Back!"
 msgstr "أهلا وسهلا!"
 
@@ -13772,10 +13736,6 @@ msgid "Generate new code"
 msgstr "إنشاء رمز جديد"
 
 #: 
-msgid "Go to homepage"
-msgstr "انتقل إلى الصفحة الرئيسية"
-
-#: 
 msgid "Group added to cart"
 msgstr "تمت إضافة المجموعة إلى السلة"
 
@@ -13798,10 +13758,6 @@ msgstr "جهّز تطبيق المصادقة (Google Authenticator أو Microsof
 #: 
 msgid "Hide advanced options"
 msgstr "إخفاء الخيارات المتقدمة"
-
-#: 
-msgid "Home phone is required"
-msgstr "رقم هاتف المنزل مطلوب"
 
 #: 
 msgid "ICS URL"
@@ -14476,10 +14432,6 @@ msgid "Warnings"
 msgstr "تحذيرات"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "نحن سعداء جدا بأن عائلتك انضمت إلينا!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "أهلا بك في العائلة!"
 
@@ -14534,10 +14486,6 @@ msgstr "تفضيل لغة متصفحك يختلف عن إعدادات اللغة
 #: 
 msgid "Your database already contains data"
 msgstr "قاعدة بياناتك تحتوي على بيانات بالفعل"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "تم استلام التسجيل. سيتصل بك فريقنا قريبا لترحيب شخصي."
 
 #: 
 msgid "Zip code is required"
@@ -14616,10 +14564,6 @@ msgid "open rate"
 msgstr "معدل مفتوح"
 
 #: 
-msgid "our church"
-msgstr "كنيستنا"
-
-#: 
 msgid "payment(s)?"
 msgstr "المدفوعات (ق)؟"
 
@@ -14658,14 +14602,6 @@ msgstr "سنة"
 #: 
 msgid "yrs"
 msgstr "سنوات"
-
-#: 
-msgid "Account options"
-msgstr "خيارات الحساب"
-
-#: 
-msgid "Register"
-msgstr "سجل"
 
 #. Context: locales
 #: 
@@ -14731,10 +14667,6 @@ msgid "Date Picker Format"
 msgstr "تنسيق منتقي التاريخ"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "عنصر نائب منتقي التاريخ"
-
-#: 
 msgid "Date Without Year"
 msgstr "تاريخ بدون سنة"
 
@@ -14765,10 +14697,6 @@ msgstr "تنسيق تاريخ اسم الملف"
 #: 
 msgid "Fully translated."
 msgstr "مترجم بالكامل."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "نص التلميح في حقول التاريخ. الافتراضي: سسسس-شش-يي"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -14952,16 +14880,8 @@ msgid "Always granted"
 msgstr "ممنوح دائمًا"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "يمكنه فقط مراجعة والتحقق من بيانات عائلته. لا يوجد وصول آخر."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "اختر الأذونات المحددة أدناه."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "تواصل مع المسؤول لتغيير صلاحياتك."
 
 #: 
 msgid "Custom permissions"
@@ -14976,20 +14896,8 @@ msgid "People &amp; Families"
 msgstr "الأفراد والعائلات"
 
 #: 
-msgid "Self-service"
-msgstr "الخدمة الذاتية"
-
-#: 
-msgid "Self-service only"
-msgstr "الخدمة الذاتية فقط"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "الملاحظة التي تحاول تعديلها لم تعد موجودة."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "يمكن لهذا المستخدم فقط مراجعة وتحديث ملف عائلته. لا تُطبَّق الأذونات الفردية."
 
 #: 
 msgid "User List"
@@ -18274,16 +18182,8 @@ msgid "Second Home"
 msgstr "البيت الثاني"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "الشخص المرتبط متوفى أو غير نشط. تسجيل الدخول والجلسات ومفتاح API محظورة حتى يتم تنشيط الشخص مرة أخرى."
-
-#: 
 msgid "This is the mailing address"
 msgstr "هذا هو عنوان البريد"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "هذا الشخص متوفى أو غير نشط، لذا لا يمكن لهذا الحساب تسجيل الدخول"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -19004,10 +18904,6 @@ msgid "Account unlocked"
 msgstr "مفتوح الحساب"
 
 #: 
-msgid "Accounts"
-msgstr "الحسابات"
-
-#: 
 msgid "Active must be true or false"
 msgstr "يجب أن تكون قيمة \"نشط\" صحيحة أو خاطئة"
 
@@ -19200,10 +19096,6 @@ msgid "Author"
 msgstr "الكاتب"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "تُمنح الصلاحية للشخص لا لحساب الدخول، فيمكن منحها قبل أن يكون له حساب. الشخص الذي حسابه للخدمة الذاتية فقط لا يرى إلا جدوله حتى يوسّع المسؤول حسابه."
-
-#: 
 msgid "Automatic"
 msgstr "تلقائي"
 
@@ -19326,10 +19218,6 @@ msgstr "اختر فصلًا"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "اختر يومًا من الشهر من 1 إلى 31"
-
-#: 
-msgid "Choose a new photo"
-msgstr "اختر صورة جديدة"
 
 #: 
 msgid "Choose a person"
@@ -20102,10 +19990,6 @@ msgid "Last attempt"
 msgstr "آخر محاولة"
 
 #: 
-msgid "Last check"
-msgstr "آخر فحص"
-
-#: 
 msgid "Last date"
 msgstr "آخر تاريخ"
 
@@ -20332,10 +20216,6 @@ msgstr "لم يُشارك أي تقويم مع الأعضاء بعد."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "لا يوجد تقويم مفتوح لهذه الخدمة، لذا لن تظهر الفعاليات في أي تقويم."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "لا يوجد تقويم مشارك مع الأعضاء."
 
 #: 
 msgid "No class"
@@ -20880,14 +20760,6 @@ msgid "Please tell us what needs changing."
 msgstr "يُرجى إخبارنا بما يحتاج إلى تغيير."
 
 #: 
-msgid "Portal settings"
-msgstr "إعدادات البوابة"
-
-#: 
-msgid "Portal theme"
-msgstr "سمة البوابة"
-
-#: 
 msgid "Position"
 msgstr "المهمة"
 
@@ -21104,10 +20976,6 @@ msgid "SMTP test"
 msgstr "اختبار SMTP"
 
 #: 
-msgid "Save calendars"
-msgstr "حفظ التقويمات"
-
-#: 
 msgid "Save changes"
 msgstr "حفظ التغييرات"
 
@@ -21118,10 +20986,6 @@ msgstr "تم الحفظ — لم تعد هذه الخدمة تطلب مساعد�
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "تم الحفظ — أصبحت هذه الخدمة تطلب مساعدة الآن"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "تم الحفظ. يرى الأعضاء التقويمات المفعّلة أعلاه."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21226,10 +21090,6 @@ msgid "Self-assignable must be true or false"
 msgstr "يجب أن تكون قيمة \"يمكن تكليف النفس\" صحيحة أو خاطئة"
 
 #: 
-msgid "Self-service accounts"
-msgstr "حسابات الخدمة الذاتية"
-
-#: 
 msgid "Send"
 msgstr "إرسال"
 
@@ -21298,18 +21158,6 @@ msgstr "عرض في بوابة الأعضاء"
 #: 
 msgid "Show past events"
 msgstr "عرض الفعاليات السابقة"
-
-#: 
-msgid "Show the church calendar"
-msgstr "عرض تقويم الكنيسة"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "عرض تقويم الكنيسة في بوابة الأعضاء."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "عرض قسم تقويم الكنيسة في بوابة الأعضاء."
 
 #: 
 msgid "Show the next"
@@ -21718,10 +21566,6 @@ msgstr "يجب أن يكون %s عددًا صحيحًا من الدقائق"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "يجب أن يكون %s ضمن %d دقيقة من الفعالية"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "تم حفظ تقويمات بوابة الأعضاء."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22172,10 +22016,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "تأتي هذه الاحتياجات من الجدول. الحفظ هنا يغيّر هذا الموعد فقط."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "تحسب هذه الأرقام حسابات الخدمة الذاتية فقط: الأشخاص الذين يصل حساب دخولهم إلى بوابة الأعضاء ولا شيء غيرها."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "لا يزال هؤلاء الأشخاص مكلَّفين، لكن المهمة التي يشغلونها لم تعد جزءًا من خطة التكليف لهذا التاريخ."
 
@@ -22268,14 +22108,6 @@ msgid "This is not a valid theme folder name."
 msgstr "هذا ليس اسم مجلد سمة صالحًا."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "هذا ليس من تواريخ فريقك."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "هذا ليس من فرقك."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "هنا تُرسل الكنيسة البريد وتحدد من تتصل به بشأن أسرتك."
 
@@ -22334,10 +22166,6 @@ msgstr "هذه الصفحة ليست جزءًا من حسابك. إن كنت ت�
 #: 
 msgid "This page was not found"
 msgstr "لم يتم العثور على هذه الصفحة"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "هذا الجزء من بوابة الأعضاء لقادة فرق المتطوعين."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -24016,16 +23844,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} اتعيّن واتسجل كموافق"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "اطلب من مسؤول يغيّر بريد تسجيل الدخول بتاعك."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "مسؤول غيّر البريد من %1$s إلى %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "المسؤول بس هو اللي يقدر يغيّر بريد شخص عنده حساب مستخدم."
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24926,4 +24746,2544 @@ msgstr "إجمالي العملات المعدنية"
 #: 
 msgid "Witness"
 msgstr "شاهد"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d عطايا بلا أسرة. لا يمكن إدراجها في الكشف."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "%d إيداعات مفتوحة بتاريخ هذا العام. أغلقوها حتى تصبح كل عطية نهائية قبل إصدار الكشوف."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d مدفوعات ليست مدرجة في أي إيداع بعد."
+
+#: 
+msgid "Can be emailed"
+msgstr "يمكن إرسالها بالبريد الإلكتروني"
+
+#: 
+msgid "Closing line"
+msgstr "سطر الختام"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "كل إيداع بتاريخ هذا العام مغلق."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "كل عطية تابعة لأسرة."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "كل دفعة في هذا العام مدرجة في إيداع."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "إنشاء الكشوف الضريبية"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "تقرير العطاء (الكشوف الضريبية)"
+
+#: 
+msgid "Opening line"
+msgstr "سطر الافتتاح"
+
+#: 
+msgid "Print and mail"
+msgstr "طباعة وإرسال بالبريد"
+
+#: 
+msgid "Qty"
+msgstr "الكمية"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "راجعوا العام، ثم اطبعوا كشوف العطاء أو أرسلوها بالبريد الإلكتروني."
+
+#: 
+msgid "Signed by"
+msgstr "بتوقيع"
+
+#: 
+msgid "Thank-you line"
+msgstr "سطر الشكر"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "تحققوا من ظهور اسم الكنيسة والعنوان وبيانات الاتصال على الكشوف الضريبية."
+
+#: 
+msgid "Year-End Giving"
+msgstr "عطاء نهاية العام"
+
+#: 
+msgid "As of: %s"
+msgstr "حتى تاريخ: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "دفعة أسرية موجبة واحدة على الأقل خلال السنوات المالية المحددة وعددها %d، حتى تاريخ المراجعة: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "يجب التحقق على حدة من المعمودية وطلبات القيد في سجل الناخبين والإقامة وصفة المتناول والحضور وحسن السيرة والاستثناءات المحلية حيث تشترطها لوائحكم. مدة العضوية ليست دليلًا على الحضور."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "اختاروا تصنيفًا موجودًا."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "اختاروا تصنيفًا واحدًا على الأقل للمراجعة."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "اختاروا التصنيفات التي تستخدمها كنيستكم. لا يُفترض أن أي تصنيف يمنح حق التصويت."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "يجب أن تؤكد قيادة الكنيسة الأهلية وفق لوائح الكنيسة. تعرض هذه القائمة فقط الأشخاص المطابقين لعوامل التصفية المحددة."
+
+#: 
+msgid "Classifications to review"
+msgstr "التصنيفات المراد مراجعتها"
+
+#: 
+msgid "Classifications: %s"
+msgstr "التصنيفات: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "يُستبعد المتوفون والأشخاص والتصنيفات غير النشطين، والأسر والأشخاص غير النشطين أو قيد المراجعة."
+
+#: 
+msgid "Download Review List"
+msgstr "تنزيل قائمة المراجعة"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "أدخلوا تاريخ مراجعة صالحًا بين 1900 و2200."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "أدخلوا أعدادًا صحيحة ضمن الحدود المعروضة."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "السنوات المالية المراد فحصها (0–100؛ والصفر يعني عدم اشتراط عطاء)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "يُسجَّل العطاء حسب الأسرة لا حسب الفرد. فعّلوا هذا فقط عندما تسمح لوائحكم بأن تفي دفعة الأسرة بهذا المعيار. وهذا لا يثبت أن كل شخص تبرع. تشمل الفترة السنة المالية المحددة وتنتهي في تاريخ المراجعة على الأكثر."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "آخر سنة مالية تُدرَج"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "الحد الأدنى للعمر (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "الحد الأدنى للعمر: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "الحد الأدنى لمدة العضوية بالأشهر (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "الحد الأدنى لمدة العضوية: %d شهرًا"
+
+#: 
+msgid "No donation requirement."
+msgstr "لا اشتراط للتبرع."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "لا يطابق أي شخص عوامل التصفية هذه. راجعوا تواريخ الميلاد أو العضوية الناقصة وعدّلوا المعايير."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "شرط عطاء الأسرة الاختياري"
+
+#: 
+msgid "People matching filters"
+msgstr "الأشخاص المطابقون لعوامل التصفية"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "أشخاص أُغفلوا لغياب التواريخ المطلوبة"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "أعدّوا قائمة لمراجعة الكنيسة باستخدام التصنيفات وعوامل اختيارية للعمر والعضوية وعطاء الأسرة."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "أعدّوا قائمة لمراجعة الكنيسة وفق لوائحكم."
+
+#: 
+msgid "Review date"
+msgstr "تاريخ المراجعة"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "استخدموا لوائح كنيستكم لاختيار عوامل التصفية، ثم تتولى قيادة الكنيسة المخوَّلة مراجعة القائمة. مطابقة عوامل التصفية هذه لا تُثبت أهلية التصويت. لا يسجّل هذا التقرير الأهلية ولا يجري انتخابًا."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "الأعضاء المصوّتون — قائمة المراجعة"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "الصفر يعطّل شرطًا اختياريًا. يشترط العمر تاريخ ميلاد كاملًا، وتشترط مدة العضوية تاريخ عضوية. يُغفل من تنقصهم التواريخ المطلوبة ويُحصون على حدة. يُستبعد دائمًا المتوفون والأشخاص والتصنيفات غير النشطين، والأسر والأشخاص غير النشطين أو قيد المراجعة؛ ويُستخدم التصنيف والحالة الحاليان لا الحالة التاريخية."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "المبلغ المستحق عن %s: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "تعذّر إنشاء تخزين مؤقت خاص لملفات PDF في المجلد المحدد."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "اتركوه فارغًا لاستخدام المجلد المؤقت للنظام. وإلا فأدخلوا مجلدًا موجودًا قابلًا للكتابة ومحميًا من الوصول عبر الويب."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "المجلد المؤقت لملفات PDF"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "يجب أن يكون التخزين المؤقت لملفات PDF خاصًا وقابلًا للكتابة."
+
+#: 
+msgid "Reporting"
+msgstr "التقارير"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "المجلد المؤقت لملفات PDF غير موجود أو غير قابل للوصول."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "يجب أن يكون المجلد المؤقت لملفات PDF مسار مجلد مطلقًا."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "الرقم الضريبي للكنيسة (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "سطر الختام"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "يتحكم في القياس الاختياري عن بُعد. تُرسل إخفاقات التثبيت وترقية قاعدة البيانات تشخيصًا محدودًا إلى PostHog حتى عند إيقاف القياس. تتضمن تقارير الإخفاق إصدارات البرنامج والبيئة وخطأ قاعدة بيانات منقّحًا، دون معرّف تثبيت أو عبارة SQL."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "تشخيص عمليات التثبيت وترقيات قاعدة البيانات التي أخفقت"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "تفاصيل إخفاق التثبيت والترقية"
+
+#: 
+msgid "Open in browser window"
+msgstr "فتح في نافذة المتصفح"
+
+#: 
+msgid "Opening Line"
+msgstr "سطر الافتتاح"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "يُرسل قياس الاستخدام الاختياري فقط عند تفعيله. تُرسل إخفاقات التثبيت وترقية قاعدة البيانات دائمًا تشخيصًا محدودًا لمساعدة المجتمع، حتى إذا اخترتم «لا، شكرًا». تتضمن تقارير الإخفاق إصدارات البرنامج والبيئة وخطأ قاعدة بيانات منقّحًا، دون معرّف تثبيت أو عبارة SQL."
+
+#: 
+msgid "PDF Handling"
+msgstr "التعامل مع PDF"
+
+#: 
+msgid "PDF Output"
+msgstr "مخرجات PDF"
+
+#: 
+msgid "PDF handling mode"
+msgstr "وضع التعامل مع PDF"
+
+#: 
+msgid "Questions Line"
+msgstr "سطر الأسئلة"
+
+#: 
+msgid "Save File dialog"
+msgstr "مربع حوار حفظ الملف"
+
+#: 
+msgid "Signer"
+msgstr "الموقّع"
+
+#: 
+msgid "Statement Settings"
+msgstr "إعدادات الكشف"
+
+#: 
+msgid "Statement Wording"
+msgstr "صياغة الكشف"
+
+#: 
+msgid "Tax Information"
+msgstr "البيانات الضريبية"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "يُرسل القياس عن بُعد إلى PostHog في الولايات المتحدة. تُرسل تقارير إخفاق التثبيت والترقية حتى عند تعطيل القياس الاختياري."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "أُلغي هذا الموعد. لا يلزم منكم شيء آخر."
+
+#: 
+msgid "always sent"
+msgstr "يُرسل دائمًا"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "تعذّر إزالة الترويسة"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "تعذّر حفظ الترويسة"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "تعذّر رفع الترويسة"
+
+#: 
+msgid "Greeting"
+msgstr "التحية"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "تحية الخطاب والتوقيع"
+
+#: 
+msgid "Letterhead"
+msgstr "الترويسة"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG أو JPG أو GIF أو WebP. الشعار العريض هو الأنسب، مثل 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "تُطبع أعلى خطابات PDF التي تستخدم ترويسة مصورة، مثل كشوف العطاء. بدونها تُطبع الخطابات باسم الكنيسة وعنوانها."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "إزالة الترويسة؟ ستُطبع الخطابات باسم الكنيسة وعنوانها."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "تعيين الترويسة التي تطبعها خطابات PDF"
+
+#: 
+msgid "Using the church name and address"
+msgstr "باستخدام اسم الكنيسة وعنوانها"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "باستخدام مسار الترويسة المحدد في إعدادات النظام"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "الصياغة والرقم الضريبي والتعامل مع PDF لكشوف العطاء"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s بصفة %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "%s هو الآن عنوان بريدكم الإلكتروني. يمكنكم استخدامه لتسجيل الدخول إلى بوابة الأعضاء."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} أخرى"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "طُلب تغيير عنوان بريدكم الإلكتروني"
+
+#: 
+msgid "A family"
+msgstr "أسرة"
+
+#: 
+msgid "A group"
+msgstr "مجموعة"
+
+#: 
+msgid "A ministry"
+msgstr "خدمة"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "لا يتغير العنوان الجديد إلا بعد استخدام الرابط الذي نرسله إليه."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "لا يمكن إضافة مفتاح مرور إلا خلال %d دقيقة من تسجيل الدخول بعنوان بريدكم الإلكتروني. سجّلوا الخروج، ثم سجّلوا الدخول مجددًا ببريدكم، ثم عودوا إلى هنا."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "يسجّلكم مفتاح المرور الدخول بـ Face ID أو بصمة الإصبع أو رمز PIN للجهاز، دون رمز بريد إلكتروني."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "أُضيف مفتاح مرور إلى تسجيل دخولكم في بوابة الأعضاء"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "أُضيف مفتاح مرور إلى تسجيل دخولكم في بوابة الأعضاء في %1$s بتاريخ %2$s، من %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "أُضيف مفتاح مرور إلى تسجيل دخولكم في بوابة الأعضاء في %1$s بتاريخ %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "من يفقده لا يبقى له بريد إلكتروني خاص: يُتخطى البريد المرسَل إليه وحده، مثل بريد المجموعة، ويُبيّن محرّر البريد ذلك."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "من يُخفي سجله عمره لا تُعرض سنة ميلاده أبدًا."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "أحد الصفوف ليس بالشكل المتوقع."
+
+#: 
+msgid "A team"
+msgstr "فريق"
+
+#: 
+msgid "Add a passkey"
+msgstr "إضافة مفتاح مرور"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "أضيفوا مفتاح مرور على هاتفكم أو حاسوبكم الخاص فقط، وليس على جهاز مشترك أو عام."
+
+#: 
+msgid "Add an email"
+msgstr "إضافة بريد إلكتروني"
+
+#: 
+msgid "Added %s"
+msgstr "أُضيف %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "تجاوزات المسؤول"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "بالغ من أسرة %s"
+
+#: 
+msgid "Adult of the family"
+msgstr "بالغ من الأسرة"
+
+#: 
+msgid "All events"
+msgstr "كل الفعاليات"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "السماح بتسجيل الدخول بصفة شخص"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "السماح بالتغييرات أثناء تسجيل الدخول بصفة شخص"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "السماح بالتغييرات عندما يستخدم المسؤول تسجيل الدخول بصفة شخص. عند الإيقاف، يكون تسجيل الدخول بصفة شخص للقراءة فقط."
+
+#: 
+msgid "Already held by a family member"
+msgstr "يملكه بالفعل أحد أفراد الأسرة"
+
+#: 
+msgid "Also used by"
+msgstr "يستخدمه أيضًا"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "يمكن للمسؤول منح أي إذن لشخص واحد من صفحة ذلك الشخص. تظهر عندئذٍ «تجاوزات المسؤول» هنا، مع عدد الأشخاص الذين مُنحوا ذلك."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "شخص آخر يستخدم هذا العنوان بالفعل"
+
+#: 
+msgid "Applies to"
+msgstr "ينطبق على"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "الموافقة على طلبات البديل لفريق المتطوعين أو رفضها."
+
+#: 
+msgid "Ask for a new email"
+msgstr "طلب بريد إلكتروني جديد"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "تُمنح الصلاحية للشخص لا لحساب دخول، فيمكن منحها قبل أن يكون له حساب. من يسجّل الدخول إلى بوابة الأعضاء فقط يظل يرى جدوله وحده إلى أن يمنحه المسؤول حساب موظفين."
+
+#: 
+msgid "Awaiting review"
+msgstr "بانتظار المراجعة"
+
+#: 
+msgid "Back to sign-in"
+msgstr "العودة إلى تسجيل الدخول"
+
+#: 
+msgid "Browse the full directory"
+msgstr "تصفح الدليل كاملًا"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "يمكنه تسجيل الدخول إلى بوابة الأعضاء"
+
+#: 
+msgid "Can sign in?"
+msgstr "هل يمكنه تسجيل الدخول؟"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "لا يمكن تعطيل تسجيل الدخول للمسؤول الوحيد القادر على تسجيل الدخول."
+
+#: 
+msgid "Cannot sign in"
+msgstr "يتعذّر تسجيل الدخول"
+
+#: 
+msgid "Change family details"
+msgstr "تغيير بيانات الأسرة"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "غيّروا عنوان الأسرة وبيانات الاتصال، وأضيفوا فردًا من الأسرة للمراجعة."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "تغيير الاسم وبيانات الاتصال والصورة الخاصة بهم."
+
+#: 
+msgid "Changed"
+msgstr "تغيّر"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "تغيّر بعد تسجيل دخول الشخص"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "غيّره استيراد بعد تسجيل دخول الشخص"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "غيّره الموظفون بعد تسجيل دخول الشخص"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "تغيّر عبر واجهة API بعد تسجيل دخول الشخص"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "التغييرات متوقفة أثناء تسجيل الدخول بصفة شخص."
+
+#: 
+msgid "Changes needed"
+msgstr "تغييرات مطلوبة"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "تُحفظ التغييرات أثناء إجرائها."
+
+#: 
+msgid "Check your email"
+msgstr "راجعوا بريدكم الإلكتروني"
+
+#: 
+msgid "Choose a permission"
+msgstr "اختاروا إذنًا"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "اختاروا إذنًا وما هو مخصص له وآخر يوم له، واذكروا السبب."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "اختاروا صورة أو التقطوا صورة شخصية"
+
+#: 
+msgid "Choose a theme"
+msgstr "اختاروا سمة"
+
+#: 
+msgid "Choose at least one row."
+msgstr "اختاروا صفًا واحدًا على الأقل."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "اختاروا %d صفوف على الأكثر في المرة الواحدة."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "اختاروا من القائمة كيفية عرض التواريخ."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "اختاروا آخر يوم لهذا الإذن."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "اختاروا الغرض من الإذن."
+
+#: 
+msgid "Choose yes or no."
+msgstr "اختاروا نعم أو لا."
+
+#: 
+msgid "Church Office"
+msgstr "مكتب الكنيسة"
+
+#: 
+msgid "Church country"
+msgstr "بلد الكنيسة"
+
+#: 
+msgid "Church default: %s"
+msgstr "الافتراضي للكنيسة: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "تسجيل دخول قيادة الكنيسة"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "التصنيفات التي يجوز لأعضائها تسجيل الدخول إلى بوابة الأعضاء، في قائمة معرّفات تصنيف مفصولة بفواصل."
+
+#: 
+msgid "Clear selection"
+msgstr "مسح التحديد"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "الرموز والجلسات والأجهزة"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "تأكيد عنوان البريد الإلكتروني"
+
+#: 
+msgid "Confirm email address"
+msgstr "تأكيد عنوان البريد الإلكتروني"
+
+#: 
+msgid "Confirm family details"
+msgstr "تأكيد بيانات الأسرة"
+
+#: 
+msgid "Confirm selected"
+msgstr "تأكيد المحدد"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "أكّدوا هذا البريد فقط بعد التحقق، شخصيًا أو هاتفيًا، من أنه عنوان هذا الشخص نفسه. بعد التأكيد يمكن استخدامه لتسجيل الدخول إلى بوابة الأعضاء."
+
+#: 
+msgid "Confirm your email address"
+msgstr "أكّدوا عنوان بريدكم الإلكتروني"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "أكّدوا عنوان بريدكم الإلكتروني الجديد"
+
+#: 
+msgid "Confirmed"
+msgstr "مؤكَّد"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "يجب كتابة التواريخ بالصيغة YYYY-MM-DD."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "البت في طلبات البديل"
+
+#: 
+msgid "Device"
+msgstr "الجهاز"
+
+#: 
+msgid "Device remembered"
+msgstr "تم تذكّر الجهاز"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "الأجهزة ومفاتيح المرور"
+
+#: 
+msgid "Directory classifications"
+msgstr "تصنيفات الدليل"
+
+#: 
+msgid "Directory section"
+msgstr "قسم الدليل"
+
+#: 
+msgid "Disable sign-in"
+msgstr "تعطيل تسجيل الدخول"
+
+#: 
+msgid "Do not show"
+msgstr "عدم الإظهار"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "يحتاج كل منهم أيضًا إلى بريد إلكتروني خاص لا يستخدمه أحد غيره."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "تعمل كل رسالة تسجيل دخول مرة واحدة ولمدة محدودة، وتحل الرسالة الأحدث محلها."
+
+#: 
+msgid "Edit my details"
+msgstr "تعديل بياناتي"
+
+#: 
+msgid "Email address changed"
+msgstr "تغيّر عنوان البريد الإلكتروني"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "عنوان البريد الإلكتروني المُدخل: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "عناوين البريد الإلكتروني المراد تأكيدها: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "تغيّر البريد الإلكتروني"
+
+#: 
+msgid "Email code"
+msgstr "رمز البريد الإلكتروني"
+
+#: 
+msgid "Email confirmed"
+msgstr "تم تأكيد البريد الإلكتروني"
+
+#: 
+msgid "Email link"
+msgstr "رابط البريد الإلكتروني"
+
+#: 
+msgid "Email me a code"
+msgstr "إرسال رمز إلى بريدي"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "إرسال رابط تأكيد إلى بريدي"
+
+#: 
+msgid "Email needs attention"
+msgstr "البريد الإلكتروني يحتاج إلى متابعة"
+
+#: 
+msgid "Email problem"
+msgstr "مشكلة في البريد الإلكتروني"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "أُلغي رمز تسجيل الدخول ورابطه المرسَلان بالبريد"
+
+#: 
+msgid "Emailed verification link"
+msgstr "رابط التحقق المرسَل بالبريد"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "عناوين البريد المؤكَّدة: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "تفعيل تسجيل الدخول"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "إنهاء كل جلسات بوابة الأعضاء لهذا الشخص ونسيان أجهزته المتذكَّرة؟ تبقى مفاتيح المرور، فيمكنه تسجيل الدخول مجددًا."
+
+#: 
+msgid "Ended %s"
+msgstr "انتهى %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "انتهى بسبب تغيير في تسجيل دخوله"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "انتهى عند إيقاف تسجيل دخول الأعضاء"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "أدخلوا عددًا صحيحًا من %1$d إلى %2$d."
+
+#: 
+msgid "Enter your email address."
+msgstr "أدخلوا عنوان بريدكم الإلكتروني."
+
+#: 
+msgid "Every kind"
+msgstr "كل الأنواع"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "كل تسجيل دخول لعضو وكل رفض وكل تغيير في تسجيل الدخول، الأحدث أولًا. لا يحتفظ أبدًا برمز أو رابط أو مفتاح مرور."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "كل المدرجين من الألف إلى الياء، مع مربع بحث."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "يمكن عندئذٍ لكل من تسمح له قواعد تسجيل الدخول بالدخول أن يسجّل الدخول إلى بوابة الأعضاء ببريده الخاص."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "كل من سجّل الدخول إلى بوابة الأعضاء خلال آخر 30 يومًا، الأحدث أولًا."
+
+#: 
+msgid "Everywhere"
+msgstr "في كل مكان"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "أسر أكّدها عضو خلال آخر 30 يومًا، من بوابة الأعضاء أو رابط التحقق المرسَل بالبريد."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "الأسر المؤكَّدة، آخر 30 يومًا"
+
+#: 
+msgid "Family details confirmed"
+msgstr "تم تأكيد بيانات الأسرة"
+
+#: 
+msgid "Family email"
+msgstr "بريد الأسرة الإلكتروني"
+
+#: 
+msgid "Family emails not moved"
+msgstr "عناوين بريد الأسر التي لم تُنقَل"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "أدوار الأسرة التي يجوز لأعضائها تسجيل الدخول إلى بوابة الأعضاء، في قائمة معرّفات أدوار مفصولة بفواصل."
+
+#: 
+msgid "Find someone"
+msgstr "البحث عن شخص"
+
+#: 
+msgid "Fix by hand"
+msgstr "إصلاح يدوي"
+
+#: 
+msgid "Fix shared emails"
+msgstr "إصلاح عناوين البريد المشتركة"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "من تسجيل دخول الموظفين"
+
+#: 
+msgid "Give a permission"
+msgstr "منح إذن"
+
+#: 
+msgid "Give a portal permission"
+msgstr "منح إذن للبوابة"
+
+#: 
+msgid "Give each person their own email"
+msgstr "امنحوا كل شخص بريدًا إلكترونيًا خاصًا"
+
+#: 
+msgid "Give permission"
+msgstr "منح الإذن"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "منحه %1$s حتى %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "منحه %s"
+
+#: 
+msgid "Given to"
+msgstr "مُنح إلى"
+
+#: 
+msgid "Given to Everyone"
+msgstr "مُنح للجميع"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "مُنح، لكنه غير نافذ"
+
+#: 
+msgid "Go to sign in"
+msgstr "الانتقال إلى تسجيل الدخول"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "الانتقال إلى بوابة الأعضاء"
+
+#: 
+msgid "Has signed in"
+msgstr "سبق أن سجّل الدخول"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "سبق أن سجّل الدخول: تنتهي جلساته وأجهزته"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "هذا رمزكم لتسجيل الدخول إلى بوابة الأعضاء. أدخلوه في صفحة تسجيل الدخول، في المتصفح الذي طلبتموه منه. أو اضغطوا الزر لتسجيل الدخول على هذا الجهاز."
+
+#: 
+msgid "Hide Permissions"
+msgstr "إخفاء الأذونات"
+
+#: 
+msgid "How"
+msgstr "الكيفية"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "عدد رسائل تسجيل الدخول إلى بوابة الأعضاء التي يمكن لعنوان IP واحد طلبها في الساعة. اضبطوا القيمة على 0 لإلغاء الحد، مثلًا عندما يصل الجميع إلى ChurchCRM عبر عنوان واحد."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "عدد الأيام التي يبقى فيها الجهاز مسجّل الدخول إلى بوابة الأعضاء بعد أن يختار العضو البقاء مسجّل الدخول. اضبطوا القيمة على 0 لإزالة الخيار."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "عدد دقائق الخمول التي تُنهي جلسة بوابة الأعضاء."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "عدد الدقائق التي يبقى فيها رمز تسجيل الدخول إلى بوابة الأعضاء ورابطه صالحين."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "مدة الخمول (بالدقائق)"
+
+#: 
+msgid "Idle too long"
+msgstr "خمول لمدة أطول من اللازم"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "إذا كان %1$s عنوانكم الجديد، فاستخدموا الزر أدناه لتأكيده. إلى أن يُؤكَّد لا يمكن استخدامه لتسجيل الدخول. يعمل الرابط مرة واحدة حتى %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "إذا أمكن استخدام هذا العنوان لتسجيل الدخول، فقد أرسلنا إليكم رمزًا بالبريد. لم يصل شيء بعد بضع دقائق؟ اسألوا مكتب الكنيسة."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "إذا لم تضيفوه، فأزيلوه من صفحة تسجيل الدخول والأجهزة واتصلوا بمكتب الكنيسة."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "إذا لم تطلبوا هذا التغيير، فيُرجى الاتصال بمكتب الكنيسة."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "إذا لم تطلبوا هذا، فيُرجى الاتصال بمكتب الكنيسة."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "ربما انتهت صلاحيته أو استُخدم بالفعل. إذا احتجتم إلى مساعدة، فيُرجى الاتصال بمكتب الكنيسة."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "الإضافة غير مثبَّتة"
+
+#: 
+msgid "Jump to a letter"
+msgstr "الانتقال إلى حرف"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "إبقائي مسجّل الدخول (بالأيام)"
+
+#: 
+msgid "Keeps it"
+msgstr "يحتفظ به"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "نوع البريد الإلكتروني غير المؤكَّد"
+
+#: 
+msgid "Last day"
+msgstr "آخر يوم"
+
+#: 
+msgid "Last used"
+msgstr "آخر استخدام"
+
+#: 
+msgid "Last used %s"
+msgstr "آخر استخدام %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "قائد %s"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "السماح للمسؤولين بفتح بوابة أعضاء الشخص بصفته، من قائمة إجراءات الشخص، عندما يكون تسجيل دخول الأعضاء مفعّلًا."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "السماح للأعضاء بإضافة مفاتيح مرور وتسجيل الدخول بها إلى بوابة الأعضاء."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "السماح للأعضاء بتسجيل الدخول إلى بوابة الأعضاء بعنوان بريدهم الخاص. لا يمكن تفعيله إلا عندما يعمل إرسال البريد."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "السماح للأعضاء بتسجيل الدخول ببريدهم الإلكتروني"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "مدة صلاحية الرابط والرمز (بالدقائق)"
+
+#: 
+msgid "Login as %s"
+msgstr "تسجيل الدخول بصفة %s"
+
+#: 
+msgid "Login as Person"
+msgstr "تسجيل الدخول بصفة شخص"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "تعذّر بدء تسجيل الدخول بصفة شخص."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "انتهى تسجيل الدخول بصفة شخص: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "سجل تسجيل الدخول بصفة شخص"
+
+#: 
+msgid "Login as Person started"
+msgstr "بدأ تسجيل الدخول بصفة شخص"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "توقف تسجيل الدخول بصفة شخص"
+
+#: 
+msgid "Look up anyone"
+msgstr "البحث عن أي شخص"
+
+#: 
+msgid "Loses it"
+msgstr "يفقده"
+
+#: 
+msgid "Manage a team"
+msgstr "إدارة فريق"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "إدارة تسجيل دخولي وأجهزتي"
+
+#: 
+msgid "Matches: %s"
+msgstr "التطابقات: %s"
+
+#: 
+msgid "May sign in"
+msgstr "يجوز له تسجيل الدخول"
+
+#: 
+msgid "May sign in now"
+msgstr "يجوز له تسجيل الدخول الآن"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "رمز تسجيل الدخول إلى بوابة الأعضاء"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "إشعار تسجيل الدخول إلى بوابة الأعضاء"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "عمليات تسجيل الدخول إلى بوابة الأعضاء ونشاطها، للأعضاء وللموظفين الذين يفتحون البوابة من تسجيل دخول الموظفين."
+
+#: 
+msgid "Member sign-in"
+msgstr "تسجيل دخول الأعضاء"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "يرسل تسجيل دخول الأعضاء رمزًا بالبريد إلى كل شخص، لذا يجب أن يعمل البريد (SMTP) قبل تفعيله."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "تسجيل دخول الأعضاء متوقف"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "تسجيل دخول الأعضاء متوقف للكنيسة."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "تسجيل دخول الأعضاء متوقف."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "تسجيل دخول الأعضاء غير متاح بعد. يُرجى الاتصال بمكتب الكنيسة."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "لا يسمح تسجيل دخول الأعضاء أبدًا بدخول المتوفين أو غير النشطين أو من هم في أسرة غير نشطة أو بانتظار المراجعة أو ممن لديهم «تعطيل تسجيل الدخول». تحدد هذه الخيارات من سواهم يجوز له الدخول."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "يرسل تسجيل دخول الأعضاء رمزًا بالبريد إلى كل عضو، لذا لا يمكن تفعيله إلا عندما يستطيع ChurchCRM إرسال البريد. فعّلوا البريد وأعدّوا خادم البريد أولًا."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "يرى الأعضاء صفحة التقويم ما دام تقويم واحد على الأقل مفعّلًا."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "يكتب الأعضاء %d حرفًا على الأقل من الاسم ويرون حتى %d تطابقات. لا تُعرض القائمة الكاملة أبدًا."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "يُسجَّل خروج الأعضاء المسجّلين الآن، ولا يمكن لأحد تسجيل الدخول ببريده إلى أن يُفعَّل تسجيل دخول الأعضاء مجددًا."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "يجد الأعضاء ذوو هذه التصنيفات «الدليل» في قائمة بوابة الأعضاء."
+
+#: 
+msgid "Minimum age"
+msgstr "الحد الأدنى للعمر"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "لن ترسل المحاولات الإضافية بهذا العنوان خلال الساعة القادمة إشعارًا آخر."
+
+#: 
+msgid "Moved from the family email"
+msgstr "نُقل من بريد الأسرة"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "نُقل إلى رب أسرة"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "نُقل إلى الزوج أو الزوجة"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "جدد في كنيستنا؟ أخبرونا عن أسرتكم وسنتواصل معكم للترحيب بكم."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "لا توجد جلسات تسجيل دخول بصفة شخص بعد."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "لا تاريخ ميلاد، وليس رب أسرة ولا زوجًا أو زوجة"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "لا يوجد تقويم مفعّل، لذا لا يرى الأعضاء صفحة التقويم."
+
+#: 
+msgid "No changes"
+msgstr "لا تغييرات"
+
+#: 
+msgid "No changes made."
+msgstr "لم تُجرَ أي تغييرات."
+
+#: 
+msgid "No family role"
+msgstr "لا دور أسري"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "لا يمكن لرب الأسرة ولا للزوج أو الزوجة استلام بريد الأسرة."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "لا يشاركه رب أسرة ولا زوج أو زوجة"
+
+#: 
+msgid "No match"
+msgstr "لا تطابق"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "لا يطابق أحد قاعدة تسجيل الدخول بعد. حدّدوا المزيد من أدوار الأسرة أو التصنيفات، أو خفّضوا الحد الأدنى للعمر."
+
+#: 
+msgid "No passkey was added."
+msgstr "لم يُضف أي مفتاح مرور."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "لم يُستخدم مفتاح مرور. حاولوا مجددًا، أو سجّلوا الدخول بعنوان بريدكم الإلكتروني."
+
+#: 
+msgid "No person has this email"
+msgstr "لا يملك أي شخص هذا البريد"
+
+#: 
+msgid "No personal email"
+msgstr "لا بريد شخصي"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "لا توجد عناوين بريد مشتركة تمنع أحدًا من تسجيل الدخول."
+
+#: 
+msgid "No such person"
+msgstr "لا يوجد هذا الشخص"
+
+#: 
+msgid "No, thanks"
+msgstr "لا، شكرًا"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "لا يمكن لأحد تسجيل الدخول ببريد شخصي يتشاركه شخصان يجوز لهما تسجيل الدخول. وللعنوان المشترك داخل أسرة واحدة يحتفظ به رب الأسرة، وإلا الزوج أو الزوجة (الأكبر سنًا أولًا). ويفقده كل من سواه يشاركه. ألغوا تحديد أي عنوان تريدون إصلاحه بطريقة أخرى."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "لا يمكن لأحد تسجيل الدخول بعد: حدّدوا تصنيفًا واحدًا على الأقل ضمن «من يجوز له تسجيل الدخول»."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "لا يمكن لأحد تسجيل الدخول بعد: حدّدوا دور أسرة واحدًا على الأقل وتصنيفًا واحدًا على الأقل ضمن «من يجوز له تسجيل الدخول»."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "لا يمكن لأحد تسجيل الدخول بعد: حدّدوا دور أسرة واحدًا على الأقل ضمن «من يجوز له تسجيل الدخول»."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "لا يطابق أحد في الدليل هذا الاسم."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "لا أحد مدرج في الدليل بعد."
+
+#: 
+msgid "Not ended"
+msgstr "لم ينتهِ"
+
+#: 
+msgid "Not moved"
+msgstr "لم يُنقَل"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "غير متأكدين من البريد الذي لدينا؟ اتصلوا بمكتب الكنيسة."
+
+#: 
+msgid "Not yet"
+msgstr "ليس بعد"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "مُدوَّن في الخط الزمني للأسرة"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "منهم من سبق أن سجّل الدخول: {{total}}. يُسجَّل خروجهم في كل مكان، ويتلقى العنوان إشعارًا."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "متوقف للجميع: \"%s\" متوقف"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "متوقف للجميع: إدارة المتطوعين ليست مضبوطة على V2"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "متوقف للجميع: ميزته متوقفة"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "متوقف للجميع: إضافته متوقفة"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "متوقف للجميع: لا يُشارَك أي تقويم مع الأعضاء"
+
+#: 
+msgid "Office list"
+msgstr "قائمة المكتب"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "بعد تأكيده يمكن استخدامه لتسجيل الدخول إلى بوابة الأعضاء."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "لا يمكن تحديد إلا العناوين التي يجوز لكم تأكيدها."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "لا يرى السبب إلا المسؤولون."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "لا يغيّر بريد من لديه حساب موظفين أو أذونات بوابة إلا المسؤول."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "لا يؤكّد بريدًا حل محل البريد الذي سجّل به الشخص الدخول إلا المسؤول."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "لا يؤكّد بريد من لديه حساب موظفين أو أذونات بوابة إلا المسؤول."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "لا يصلح هذا العنوان إلا المسؤول: أحد المشاركين فيه لديه حساب موظفين أو أذونات بوابة."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "لا يؤكّد هذه البيانات إلا بالغ من أسرتكم. يُرجى الاتصال بمكتب الكنيسة."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "أكّدوا فقط العناوين التي تعلمون أنها تخص ذلك الشخص. من يطّلع على عنوان يمكنه تسجيل الدخول بصفة صاحبه."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "لا يكون في قائمة المكتب إلا الأحياء الذين لديهم بريدهم الخاص."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "لا يمكن إضافة إلا من لديهم بريدهم الخاص."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "قد يتضمن القياس الاختياري مسارات الصفحات واللغة النشطة وإصدار CRM وإصدار PHP وعائلة نظام التشغيل والبلد من إعدادات معلومات الكنيسة ومعرّف تثبيت عشوائيًا. لا تتضمن تقارير الإخفاق معرّف التثبيت. تُرسل البيانات إلى PostHog في الولايات المتحدة."
+
+#: 
+msgid "Passkey"
+msgstr "مفتاح المرور"
+
+#: 
+msgid "Passkey added"
+msgstr "أُضيف مفتاح المرور"
+
+#: 
+msgid "Passkey removed"
+msgstr "أُزيل مفتاح المرور"
+
+#: 
+msgid "Passkeys"
+msgstr "مفاتيح المرور"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "مفاتيح المرور متوقفة."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "لا يمكن استخدام مفاتيح المرور هنا."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "لا يمكن استخدام مفاتيح المرور على هذا الموقع بعد. يُرجى الاتصال بمكتب الكنيسة."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "تحتاج مفاتيح المرور إلى اسم مضيف لا عنوان IP في عنوان الموقع."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "تحتاج مفاتيح المرور إلى اتصال آمن (HTTPS) بهذا الموقع."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "تحتاج مفاتيح المرور إلى ضبط عنوان الموقع في Config.php."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "تحتاج مفاتيح المرور إلى تقديم الموقع عبر HTTPS. لا تُعرض مفاتيح المرور على الأعضاء إلا بعد ذلك."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "تعمل مفاتيح المرور فقط على %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "مفاتيح المرور: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "الأشخاص الذين تسمح لهم الإعدادات المحفوظة بالدخول: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "الأشخاص الذين يُراسَلون عندما يتعذّر على أحد تسجيل الدخول إلى بوابة الأعضاء"
+
+#: 
+msgid "People who hold it"
+msgstr "من يحتفظون به"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "من يفقدون عنوانًا: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "من فقدوا عنوانًا: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "من يجوز لهم تسجيل الدخول: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "من كانوا يسجّلون الدخول إلى بوابة الأعضاء: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "يظهر ذوو هذه التصنيفات في الدليل. الرقم هو عدد الأشخاص النشطين في كل تصنيف."
+
+#: 
+msgid "People with this email: %s"
+msgstr "الأشخاص بهذا البريد: %s"
+
+#: 
+msgid "Person %d"
+msgstr "الشخص %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "اختاروا التصنيفات من القائمة."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "اختاروا أدوار الأسرة من القائمة."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "اختاروا الأشخاص لقائمة المكتب."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "يُرجى اختيار لغة من القائمة."
+
+#: 
+msgid "Portal permission given"
+msgstr "مُنح إذن البوابة"
+
+#: 
+msgid "Portal permission removed"
+msgstr "أُزيل إذن البوابة"
+
+#: 
+msgid "Portal permissions"
+msgstr "أذونات البوابة"
+
+#: 
+msgid "Portal sign-in"
+msgstr "تسجيل الدخول إلى البوابة"
+
+#: 
+msgid "Problem"
+msgstr "مشكلة"
+
+#: 
+msgid "Reason"
+msgstr "السبب"
+
+#: 
+msgid "Reason: %s"
+msgstr "السبب: %s"
+
+#: 
+msgid "Refused"
+msgstr "مرفوض"
+
+#: 
+msgid "Register your family"
+msgstr "سجّلوا أسرتكم"
+
+#: 
+msgid "Remembered device"
+msgstr "جهاز متذكَّر"
+
+#: 
+msgid "Remembered device removed"
+msgstr "أُزيل الجهاز المتذكَّر"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "الأجهزة المتذكَّرة: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "إزالة عناوين البريد"
+
+#: 
+msgid "Remove this passkey"
+msgstr "إزالة مفتاح المرور هذا"
+
+#: 
+msgid "Remove this permission"
+msgstr "إزالة هذا الإذن"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "أُزيل من: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "استُبدل بعد تسجيل دخول"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "استبدله تسجيل دخول آخر"
+
+#: 
+msgid "Result"
+msgstr "النتيجة"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "إدارة فريق متطوعين: المناصب والمتطوعون والجداول والتغطية والأعداد."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "اذكروا سبب تعطيل تسجيل الدخول."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "اذكروا سبب منح هذا الإذن."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "ابحثوا عن أي شخص في السجلات. يبيّن كل صف هل يجوز له تسجيل الدخول إلى بوابة الأعضاء، وإن لم يجز فلماذا."
+
+#: 
+msgid "Search method"
+msgstr "طريقة البحث"
+
+#: 
+msgid "Search only"
+msgstr "بحث فقط"
+
+#: 
+msgid "See family contact details"
+msgstr "عرض بيانات اتصال الأسرة"
+
+#: 
+msgid "See my family"
+msgstr "عرض أسرتي"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "عرض بوابة الأعضاء كما يراها هذا الشخص؟ تبقى صفحات الموظفين مغلقة إلى أن تضغطوا «إيقاف»، وتُسجَّل الجلسة في هذه الصفحة وفي صفحة المستخدم."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "اطّلعوا على التقاويم التي تشاركها الكنيسة مع الأعضاء، واشتركوا فيها."
+
+#: 
+msgid "See the church calendar"
+msgstr "عرض تقويم الكنيسة"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "اطّلعوا على الأجهزة ومفاتيح المرور التي تسجّل دخولهم، وسجّلوا الخروج منها أو أزيلوا أيًا منها."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "عرض عناوين البريد وأرقام الهاتف للأشخاص في أسرتهم."
+
+#: 
+msgid "See the member directory"
+msgstr "عرض دليل الأعضاء"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "عرض أسماء وصور الأشخاص في أسرتهم."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "اطّلعوا على الأشخاص الذين تدرجهم الكنيسة في دليلها، بالتفاصيل التي تختار الكنيسة مشاركتها."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "اطّلعوا على جدول تطوعهم، وسجّلوا في الأماكن المتاحة، واطلبوا بديلًا."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "أرسلوا التصفح بالقيمة true أو false."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "أرسلوا التصنيفات في قائمة معرّفات."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "أرسلوا إعدادات الدليل ككائن JSON."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "أرسلوا الحقول المراد إظهارها ككائن من قيم true وfalse."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "أرسلوا الإعدادات ككائن JSON."
+
+#: 
+msgid "Session ended"
+msgstr "انتهت الجلسة"
+
+#: 
+msgid "Set up email"
+msgstr "إعداد البريد الإلكتروني"
+
+#: 
+msgid "Set up email first."
+msgstr "أعدّوا البريد الإلكتروني أولًا."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "عناوين مشتركة أُصلحت: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "عناوين مشتركة يلزم إصلاحها: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "مشترك بين"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "عناوين البريد المشتركة التي تمنع الأشخاص من تسجيل الدخول"
+
+#: 
+msgid "Show or hide this member"
+msgstr "إظهار هذا العضو أو إخفاؤه"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "إظهار صفحة الدليل في بوابة الأعضاء للتصنيفات المختارة أدناه."
+
+#: 
+msgid "Show the member directory"
+msgstr "إظهار دليل الأعضاء"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "إظهار دليل الأعضاء في بوابة الأعضاء."
+
+#: 
+msgid "Show with year"
+msgstr "الإظهار مع السنة"
+
+#: 
+msgid "Show without year"
+msgstr "الإظهار دون السنة"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "عرض أول %d تطابقات. اكتبوا المزيد من الاسم للعثور على الشخص المطلوب."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "تسجيل الدخول بصفة %s؟"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "سجّلوا الدخول في المرة القادمة على هذا الجهاز بـ Face ID أو بصمة الإصبع أو رمز PIN للجهاز."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "سجّلوا الدخول لرؤية أسرتكم وتقويم الكنيسة وسبل الخدمة. لا تحتاجون إلى كلمة مرور أو حساب."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "تسجيل الدخول بمفتاح مرور"
+
+#: 
+msgid "Sign out every device"
+msgstr "تسجيل الخروج من كل جهاز"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "تسجيل الخروج من كل جهاز الآن؟"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "تسجيل الخروج من كل مكان"
+
+#: 
+msgid "Sign out this device"
+msgstr "تسجيل الخروج من هذا الجهاز"
+
+#: 
+msgid "Sign-in"
+msgstr "تسجيل الدخول"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "تسجيل الدخول والأجهزة"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "تعذّر تعطيل تسجيل الدخول."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "تعذّر تفعيل تسجيل الدخول."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "تسجيل الدخول معطّل"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "طُلب بريد تسجيل الدخول"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "رسائل تسجيل الدخول لكل عنوان IP في الساعة"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "تسجيل الدخول مفعّل"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "تسجيل الدخول معطّل بالفعل لهذا الشخص."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "تسجيل الدخول معطّل"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "تسجيل الدخول معطّل لهذا الشخص."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "تسجيل الدخول مفعّل لهذا الشخص."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "تسجيل الدخول ليس معطّلًا لهذا الشخص."
+
+#: 
+msgid "Sign-in refused"
+msgstr "رُفض تسجيل الدخول"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "يُحظر تسجيل الدخول والجلسات ومفتاح API إلى أن يُحسم ذلك في سجل الشخص المرتبط."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "سجّلوا الدخول، آخر 30 يومًا"
+
+#: 
+msgid "Signed out"
+msgstr "تم تسجيل الخروج"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "سُجّل خروجه بسبب تغيير في تسجيل دخوله"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "سُجّل خروجه من كل مكان"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "طلب أحدهم بريد تسجيل دخول إلى بوابة الأعضاء، لكن لم يُرسل شيء."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "تعذّر على أحد تسجيل الدخول إلى بوابة الأعضاء"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "تبقى صفحات الموظفين مغلقة أثناء تسجيل الدخول بصفة شخص. اضغطوا «إيقاف» في الشريط للعودة."
+
+#: 
+msgid "Stop"
+msgstr "إيقاف"
+
+#: 
+msgid "Stopped"
+msgstr "متوقف"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "أخبروا مكتب الكنيسة إن كانت بيانات الأسرة ما تزال صحيحة."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "لم يعمل ذلك الرمز. راجعوا أحدث بريد منّا، أو اطلبوا رمزًا جديدًا."
+
+#: 
+msgid "That could not be removed."
+msgstr "تعذّرت إزالته."
+
+#: 
+msgid "That device is signed out."
+msgstr "تم تسجيل خروج ذلك الجهاز."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "هذا ليس عنوان بريد إلكتروني صالحًا."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "بقيت تلك الصفحة مفتوحة مدة أطول من اللازم. يُرجى المحاولة مجددًا."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "أُزيل مفتاح المرور ذلك. لم يعد يمكنه تسجيل دخولكم."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "استغرق ذلك وقتًا أطول من اللازم. يُرجى المحاولة مجددًا."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "منحت الترقية 7.8.3 بريد كل أسرة لشخص. وهذه لم تستطع ذلك، فتركت ملاحظة في الخط الزمني للأسرة بدلًا من ذلك."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "تستخدم بوابة الأعضاء والرسائل التي ترسلها إليكم هذه اللغة."
+
+#: 
+msgid "The change could not be saved."
+msgstr "تعذّر حفظ التغيير."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "يعمل الرمز والزر مرة واحدة حتى %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "ذهب الرمز أو الرابط إلى عنوان لم يعد بريدهم الإلكتروني"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "تعذّر إرسال بريد التأكيد. يُرجى المحاولة لاحقًا."
+
+#: 
+msgid "The device is signed out."
+msgstr "تم تسجيل خروج الجهاز."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "أُزيل عنوان البريد الإلكتروني %2$s من سجلّكم في %1$s. تم تسجيل خروجكم من بوابة الأعضاء على كل جهاز."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "تغيّر عنوان البريد الإلكتروني في سجلّكم في %1$s من %2$s إلى %3$s. تم تسجيل خروجكم من بوابة الأعضاء على كل جهاز."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "تعذّر تأكيد البريد الإلكتروني."
+
+#: 
+msgid "The email could not be sent."
+msgstr "تعذّر إرسال البريد الإلكتروني."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "تم تأكيد البريد الإلكتروني. يمكن استخدامه الآن لتسجيل الدخول."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "تاريخ الانتهاء قبل تاريخ البدء."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "ليس للأسرة رب أسرة أو زوج أو زوجة حي ونشط"
+
+#: 
+msgid "The family is inactive"
+msgstr "الأسرة غير نشطة"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "لرب الأسرة وللزوج أو الزوجة بريد إلكتروني خاص بكل منهما"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "لا يمكن أن يكون آخر يوم في الماضي."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "لا يجوز للشخص المرتبط تسجيل الدخول، لذا لا يمكن لهذا الحساب تسجيل الدخول"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "تعذّر تحميل القائمة."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "تعذّر إضافة مفتاح المرور. يُرجى المحاولة مجددًا."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "تعذّر التحقق من مفتاح المرور"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "مفتاح المرور غير مسجّل، أو أُزيل"
+
+#: 
+msgid "The passkey was removed."
+msgstr "أُزيل مفتاح المرور."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "الأشخاص المشاركون فيه في أسر مختلفة، أو ليسوا في أسرة"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "تغيّر الأشخاص المشاركون في هذا العنوان. افتحوا «إصلاح عناوين البريد المشتركة» مجددًا."
+
+#: 
+msgid "The permission could not be given."
+msgstr "تعذّر منح الإذن."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "ينتهي الإذن بعد هذا اليوم. يمكن منحه مجددًا."
+
+#: 
+msgid "The permission was given."
+msgstr "مُنح الإذن."
+
+#: 
+msgid "The permission was removed."
+msgstr "أُزيل الإذن."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "تعذّر تحميل الأذونات."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "يفقد الشخص هذا الإذن في بوابة الأعضاء فورًا."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "يمكن أن يبلغ السبب %d حرفًا على الأكثر."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "تسمح لهم قواعد تسجيل الدخول بالدخول، ولكل منهم بريده الخاص الذي لا يستخدمه غيره ممن يجوز لهم تسجيل الدخول."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "تسمح لهم قواعد تسجيل الدخول بالدخول، لكن بريدهم لا يسمح: ليس لديهم بريد، أو يشاركونه مع شخص آخر يجوز له تسجيل الدخول، أو لم يُؤكَّد بعد."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "تعذّر حفظ إعدادات تسجيل الدخول."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "تغيّر البريد غير المؤكَّد. أعيدوا تحميل الصفحة وحاولوا مجددًا."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "قد لا يجوز لتصنيفهم تسجيل الدخول"
+
+#: 
+msgid "Their email changed"
+msgstr "تغيّر بريدهم الإلكتروني"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "بريدهم الإلكتروني غير مؤكَّد بعد"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "بريدهم الإلكتروني مشترك مع شخص آخر"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "قد لا يجوز لدورهم الأسري تسجيل الدخول"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "أزالت الترقية تسجيلات دخولهم القديمة. فعّلوا تسجيل دخول الأعضاء ليتمكنوا من تسجيل الدخول ببريدهم الخاص."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "انتهت صلاحية جهازهم المتذكَّر"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "سُجّل خروج جهازهم المتذكَّر"
+
+#: 
+msgid "Theme development"
+msgstr "تطوير السمة"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "لا يوجد تصنيف بالمعرّف %d."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "لا توجد أداة اختيار لهذا النوع من النطاق."
+
+#: 
+msgid "There is no such audit event."
+msgstr "لا يوجد حدث تدقيق كهذا."
+
+#: 
+msgid "There is no such email problem."
+msgstr "لا توجد مشكلة بريد كهذه."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "لا يوجد نوع كهذا من البريد غير المؤكَّد."
+
+#: 
+msgid "There is no such list."
+msgstr "لا توجد قائمة كهذه."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "لا يوجد إذن بوابة كهذا."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "هذه الهواتف والحواسيب التي اخترتم البقاء مسجّلي الدخول عليها. سجّلوا الخروج من أي جهاز لم تعودوا تستخدمونه أو لا تعرفونه."
+
+#: 
+msgid "They have a staff account"
+msgstr "لديهم حساب موظفين"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "يجوز لهم تسجيل الدخول لكنهم لم يفعلوا قط."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "يحتاج هذا الإجراء إلى جلسة متصفح مسجّلة الدخول."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "تعذّر تغيير هذا العنوان. افتحوا «إصلاح عناوين البريد المشتركة» مجددًا لمعرفة وضعه."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "لم يعد هذا العنوان مشتركًا بين أشخاص يجوز لهم تسجيل الدخول."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "لا يستطيع هذا المتصفح إنشاء مفاتيح مرور."
+
+#: 
+msgid "This device"
+msgstr "هذا الجهاز"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "لدى هذا الجهاز مفتاح مرور لكم بالفعل."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "لن يُبقي هذا الجهاز الشخص مسجّل الدخول، وتنتهي أي جلسة مفتوحة عليه. يمكنه تسجيل الدخول مجددًا بالبريد الإلكتروني."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "هذا جهازي الخاص. أبقوني مسجّل الدخول."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "هنا تقررون بشأن الضيوف. الرقم هو عدد الأشخاص النشطين في كل تصنيف."
+
+#: 
+msgid "This link cannot be used"
+msgstr "لا يمكن استخدام هذا الرابط"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "انتهت صلاحية هذا الرابط أو استُخدم بالفعل"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "هذا الجزء من بوابة الأعضاء غير متاح لكم."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "مفتاح المرور هذا مسجّل بالفعل."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "لن يسجّل مفتاح المرور هذا دخول الشخص بعد الآن. يمكنه تسجيل الدخول بالبريد وإضافة مفتاح جديد."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "لا يمكن منح هذا الإذن من صفحة الشخص."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "لدى هذا الشخص بالفعل كل إذن يمكن منحه."
+
+#: 
+msgid "This person already has this permission."
+msgstr "لدى هذا الشخص هذا الإذن بالفعل."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "لم يعد يمكن لهذا الشخص تسجيل الدخول في أي مكان، إلى بوابة الأعضاء أو كموظف. تنتهي كل جلسة، وتُزال أجهزته المتذكَّرة ومفاتيح مروره."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "تعذّر تسجيل خروج هذا الشخص."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "لدى هذا الشخص حساب موظفين. لا يفتح تسجيل الدخول بصفة شخص حساب موظفين أبدًا."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "ليس لدى هذا الشخص مفتاح مرور كهذا."
+
+#: 
+msgid "This person has no such permission."
+msgstr "ليس لدى هذا الشخص إذن كهذا."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "ليس لدى هذا الشخص جهاز متذكَّر كهذا."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "ليس لدى هذا الشخص بريد غير مؤكَّد."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "سجّل هذا الشخص الدخول إلى بوابة الأعضاء. تغيير هذا البريد يسجّل خروجه من كل مكان، ولا يمكن استخدام العنوان الجديد لتسجيل الدخول إلى أن يُؤكَّد."
+
+#: 
+msgid "This person is deceased."
+msgstr "هذا الشخص متوفى"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "تم تسجيل خروج هذا الشخص من بوابة الأعضاء في كل مكان."
+
+#: 
+msgid "This person no longer exists."
+msgstr "لم يعد هذا الشخص موجودًا."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "يسجّل هذا خروجكم من كل مكان، بما في ذلك هنا، وينسى كل جهاز. يمكنكم تسجيل الدخول مجددًا بعنوان بريدكم الإلكتروني."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "يسجّل هذا خروجكم من كل مكان، بما في ذلك هنا، وينسى كل جهاز. تبقى مفاتيح المرور: يمكنكم تسجيل الدخول مجددًا بمفتاح مرور أو بعنوان بريدكم الإلكتروني."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "لا تغيّر هذه الأداة هذه العناوين أبدًا. امنحوا كل شخص بريده الخاص في سجله."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "حدّدوا هذا على هاتفكم أو حاسوبكم الخاص فقط، وليس على جهاز مشترك أو عام."
+
+#: 
+msgid "Time: %s"
+msgstr "الوقت: %s"
+
+#: 
+msgid "Timed out"
+msgstr "انتهت المهلة"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "لتغيير هذا البريد، يُرجى الاتصال بمكتب الكنيسة."
+
+#: 
+msgid "To fix"
+msgstr "للإصلاح"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "للبقاء مسجّلي الدخول على هاتفكم أو حاسوبكم الخاص، حدّدوا \"هذا جهازي الخاص\" في المرة القادمة التي تسجّلون فيها الدخول."
+
+#: 
+msgid "Too many attempts"
+msgstr "محاولات أكثر من اللازم"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "رسائل تسجيل دخول أكثر من اللازم اليوم"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "طلبات تسجيل دخول أكثر من اللازم لعنوان البريد هذا"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "طلبات تسجيل دخول أكثر من اللازم من عنوان IP هذا"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "رموز خاطئة أكثر من اللازم"
+
+#: 
+msgid "Turn off"
+msgstr "إيقاف"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "إيقاف تسجيل دخول الأعضاء؟"
+
+#: 
+msgid "Turn on"
+msgstr "تشغيل"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "تشغيل تسجيل دخول الأعضاء"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "تشغيل تسجيل دخول الأعضاء؟"
+
+#: 
+msgid "Type a name"
+msgstr "اكتبوا اسمًا"
+
+#: 
+msgid "Type a name or email"
+msgstr "اكتبوا اسمًا أو بريدًا إلكترونيًا"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "اكتبوا %d حرفًا على الأقل من الاسم، ثم ابحثوا."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "بريد إلكتروني غير مؤكَّد"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "فهم أماكن استخدام ChurchCRM"
+
+#: 
+msgid "Unknown device"
+msgstr "جهاز غير معروف"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "حقل دليل غير معروف: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "إعداد دليل غير معروف: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "جهاز بلا اسم"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "مفتاح مرور بلا اسم"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "إلى أن يؤكّده مكتب الكنيسة، لا يمكن استخدام العنوان الجديد لتسجيل الدخول."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "استخدام %1$s عنوان بريد إلكتروني لـ %2$s في %3$s؟"
+
+#: 
+msgid "Use a different email address"
+msgstr "استخدام عنوان بريد إلكتروني مختلف"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "استخدام مفتاح مرور على هذا الجهاز؟"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "استخدموا الزر أدناه لتأكيد أن %1$s هو عنوان بريدكم الإلكتروني في %2$s. يعمل الرابط مرة واحدة حتى %3$s."
+
+#: 
+msgid "User %d"
+msgstr "المستخدم %d"
+
+#: 
+msgid "View Permissions"
+msgstr "عرض الأذونات"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "بانتظار تأكيدكم لـ %s. استخدموا الرابط الذي أرسلناه إلى ذلك العنوان."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "بانتظار تأكيدكم لـ {{email}}. استخدموا الرابط الذي أرسلناه إلى ذلك العنوان."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "تعذّر علينا إرسال البريد. يُرجى المحاولة لاحقًا، أو الاتصال بمكتب الكنيسة."
+
+#: 
+msgid "We could not sign you in"
+msgstr "تعذّر علينا تسجيل دخولكم"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "أرسلنا رابطًا بالبريد إلى %s. استخدموه لتأكيد عنوان بريدكم الجديد."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "أرسلنا رابطًا إلى {{email}}. يتغيّر بريدكم عند استخدامه."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "سنرسل إليكم بالبريد رمزًا ورابطًا لتسجيل الدخول بهما."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "يسعدنا وجودكم! يستغرق الأمر نحو ثلاث دقائق."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "يسعدنا انضمام أسرتكم إلينا! استلمنا تسجيلكم. سيتواصل فريقنا قريبًا للترحيب بكم شخصيًا."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "ذكرى الزواج"
+
+#: 
+msgid "Welcome"
+msgstr "مرحبًا"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "لم يعد الغرض الذي مُنح من أجله موجودًا"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "ما يمكن للأعضاء رؤيته وفعله في البوابة، ومن أين يأتي كل إذن. يُحسب الأشخاص ضمن كل من تسمح لهم قواعد تسجيل الدخول بالدخول، والموظفين."
+
+#: 
+msgid "What members can use"
+msgstr "ما يمكن للأعضاء استخدامه"
+
+#: 
+msgid "What to do"
+msgstr "ما العمل"
+
+#: 
+msgid "Who can see it"
+msgstr "من يمكنه رؤيته"
+
+#: 
+msgid "Who is listed"
+msgstr "من هو مدرج"
+
+#: 
+msgid "Who may sign in"
+msgstr "من يجوز له تسجيل الدخول"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "من يجوز له تسجيل الدخول إلى بوابة الأعضاء، ومن فعل، ومن يمنعه بريده. تتبع القوائم القواعد في علامة تبويب تسجيل الدخول."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "من يدرجه دليل بوابة الأعضاء، ومن يمكنه رؤيته وما يعرضه، كما يُختار في المسؤول -> بوابة الأعضاء -> الدليل."
+
+#: 
+msgid "Why"
+msgstr "لماذا"
+
+#: 
+msgid "Why not"
+msgstr "لماذا لا"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "بالرمز الذي استبدله الجهاز قبل لحظات"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "نعم، إضافة مفتاح مرور"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "نعم، إزالة مفتاح المرور هذا"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "نعم، تسجيل الخروج من كل جهاز"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "ليس مسموحًا لكم تأكيد هذا البريد."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "لستم مُبقين مسجّلي الدخول على أي جهاز."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "تم تسجيل خروجكم على كل جهاز."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "تم تسجيل خروجكم على هذا الجهاز."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "يمكنكم أيضًا تسجيل الدخول بعنوان بريدكم الإلكتروني."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "لا يمكنكم تعطيل تسجيل دخولكم."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "لا يمكنكم فتح بوابة الأعضاء. يُرجى الاتصال بمكتب الكنيسة."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "طلبتم تغيير بريدكم مرات أكثر من اللازم. يُرجى المحاولة لاحقًا."
+
+#: 
+msgid "You have no passkeys."
+msgstr "ليس لديكم مفاتيح مرور."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "أنتم مسجّلون الدخول بصفة %s في بوابة الأعضاء (التغييرات مسموحة)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "أنتم مسجّلون الدخول بصفة %s في بوابة الأعضاء (للقراءة فقط)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "أصغر من الحد الأدنى للعمر"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "أصغر عمر يجوز فيه للشخص تسجيل الدخول إلى بوابة الأعضاء. عندما يكون تاريخ الميلاد مجهولًا، لا يتأهل إلا رب الأسرة أو الزوج أو الزوجة."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "رمز تسجيل دخولكم إلى بوابة الأعضاء"
+
+#: 
+msgid "Your code"
+msgstr "رمزكم"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "عنوان بريدكم الإلكتروني %s غير مؤكَّد بعد، لذا لا يمكن استخدامه لتسجيل الدخول. سنرسل رابطًا إليه بالبريد؛ واستخدام الرابط يؤكّده."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "لا يمكن إزالة عنوان بريدكم الإلكتروني هنا. يُرجى الاتصال بمكتب الكنيسة."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "تم تأكيد عنوان بريدكم الإلكتروني"
+
+#: 
+msgid "Your email address was changed"
+msgstr "تغيّر عنوان بريدكم الإلكتروني"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "أُضيف مفتاح مروركم. في المرة القادمة سجّلوا الدخول به على هذا الجهاز."
+
+#: 
+msgid "an administrator"
+msgstr "مسؤول"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "لا يملك رب الأسرة ولا الزوج أو الزوجة عنوان بريد إلكتروني"
+
+#: 
+msgid "or"
+msgstr "أو"
+
+#: 
+msgid "until %s"
+msgstr "حتى %s"
 

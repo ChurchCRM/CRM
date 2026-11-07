@@ -9,12 +9,12 @@
  */
 
 /** Toggle bEnableSelfRegistration via the admin API. value: "1" = on, "0" = off. */
+function setConfigValue(name, value) {
+    cy.makePrivateAdminAPICall("POST", `admin/api/system/config/${name}`, { value });
+}
+
 function setSelfReg(value) {
-    cy.makePrivateAdminAPICall(
-        "POST",
-        "admin/api/system/config/bEnableSelfRegistration",
-        { value },
-    );
+    setConfigValue("bEnableSelfRegistration", value);
 }
 
 describe("Auth Page CSS Regression", () => {
@@ -48,56 +48,44 @@ describe("Auth Page CSS Regression", () => {
         });
     });
 
-    describe("Login Page — Segmented Pill Control (self-registration)", () => {
+    describe("Portal sign-in — optional family registration", () => {
         let savedSelfReg;
+        let savedMemberSignIn;
 
         before(() => {
             cy.getSystemConfig("bEnableSelfRegistration").then((value) => {
                 savedSelfReg = value;
             });
+            cy.getSystemConfig("bMemberSignIn").then((value) => {
+                savedMemberSignIn = value;
+            });
         });
 
         after(() => {
             cy.restoreSystemConfig("bEnableSelfRegistration", savedSelfReg);
+            cy.restoreSystemConfig("bMemberSignIn", savedMemberSignIn);
         });
 
-        it("Pill control is hidden when self-registration is disabled", () => {
+        it("hides registration when self-registration is disabled", () => {
+            setConfigValue("bMemberSignIn", "1");
             setSelfReg("0");
-            cy.visit("/session/begin");
-            cy.get(".login-tab-control").should("not.exist");
-            // Plain form title should appear instead
-            cy.get(".login-form-title").should("be.visible");
+            cy.visit("/portal/login");
+            cy.contains("Register your family").should("not.exist");
+            cy.request({ url: "/portal/register", followRedirect: false, failOnStatusCode: false }).its("status").should("eq", 404);
+            cy.request({ url: "/external/register/", failOnStatusCode: false }).its("status").should("eq", 404);
         });
 
-        it("Pill control is visible when self-registration is enabled", () => {
+        it("offers family registration from the portal sign-in when enabled", () => {
+            setConfigValue("bMemberSignIn", "1");
             setSelfReg("1");
-            cy.visit("/session/begin");
-            cy.get(".login-tab-control").should("be.visible");
-            cy.get(".login-tab-btn").should("have.length", 2);
-        });
-
-        it("Sign In pill is active by default", () => {
-            setSelfReg("1");
-            cy.visit("/session/begin");
-            cy.get("#tab-signin").should("have.class", "active");
-            cy.get("#tab-register").should("not.have.class", "active");
-        });
-
-        it("Register pill links to the registration page in a new tab", () => {
-            setSelfReg("1");
-            cy.visit("/session/begin");
-            cy.get("#tab-register")
-                .should("have.attr", "href")
-                .and("include", "/external/register/");
-            cy.get("#tab-register").should("have.attr", "target", "_blank");
-        });
-
-        it("Login form is always visible regardless of self-reg setting", () => {
-            setSelfReg("1");
-            cy.visit("/session/begin");
-            cy.get("input[name='User']").should("be.visible");
-            cy.get("input[name='Password']").should("be.visible");
-            cy.get(".btn-sign-in").should("be.visible");
+            cy.visit("/portal/login");
+            cy.contains("a", "Register your family").should("have.attr", "href").and("include", "/portal/register");
+            cy.visit("/portal/register");
+            cy.get("#registration-stepper").should("be.visible");
+            cy.request({ url: "/external/register/", followRedirect: false }).then((response) => {
+                expect(response.status).to.eq(302);
+                expect(response.headers.location).to.include("/portal/register");
+            });
         });
     });
 

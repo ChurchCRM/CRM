@@ -210,7 +210,7 @@ reviews:
         pull_request_target must not checkout or execute the PR head.
         Untrusted context (head_ref, titles, bodies, branch names) goes through env:,
         never into a run: script. A changed job graph, ref, or failure path needs an
-        assertion in scripts/*.test.js; scripts/validate-pr-gates.js checks the first
+        assertion in tests/tooling/*.test.js; `npm run lint` checks the first
         locally.
 
   finishing_touches:

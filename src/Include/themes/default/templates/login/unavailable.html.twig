@@ -1,0 +1,24 @@
+{% extends "layout.html.twig" %}
+
+{#
+  Every /portal/login page while member sign-in is off and self-registration is on
+  (member sign-in design §7). With both off, the middleware redirects to the staff sign-in. Leaders get a sign-in link here.
+
+  Variables: `pageTitle`, `guestPage`, `selfRegistrationEnabled`.
+#}
+
+{% block nav %}{% endblock %}
+
+{% block content %}
+<div class="portal-signin">
+    <section class="portal-card portal-signin-register" id="portalSignInUnavailable">
+        <h1 class="portal-signin-title">{{ gettext('Welcome') }}</h1>
+        <p class="portal-signin-lead">{{ gettext('New to our church? Tell us about your family and we will reach out to welcome you.') }}</p>
+        <div class="portal-form-actions">
+            <a class="portal-button portal-button-large" id="portalRegisterFamily" href="{{ url('/portal/register') }}">{{ gettext('Register your family') }}</a>
+        </div>
+        <p class="portal-card-text">{{ gettext("Member sign-in isn't available yet. Please contact the church office.") }}</p>
+        <p class="portal-card-text"><a id="portalStaffSignIn" href="{{ url('/admin/') }}">{{ gettext('Church leader sign-in') }}</a></p>
+    </section>
+</div>
+{% endblock %}

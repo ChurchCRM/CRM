@@ -55,14 +55,14 @@ class ChurchInfoRequiredMiddleware implements MiddlewareInterface
             return $handler->handle($request);
         }
 
-        // Only admins can complete the church-info setup; let non-admins through.
-        try {
-            $user = AuthenticationManager::getCurrentUser();
-        } catch (\Throwable) {
+        // Only a signed-in admin can complete the church-info setup. A provider
+        // left by a timed-out or half-finished sign-in still names its user, and
+        // sending it to church-info from the /admin sign-in page would loop.
+        if (!AuthenticationManager::validateUserSessionIsActive(false)) {
             return $handler->handle($request);
         }
 
-        if (!$user->isAdmin()) {
+        if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
             return $handler->handle($request);
         }
 

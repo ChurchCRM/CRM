@@ -90,7 +90,6 @@ module.exports = {
     'photo-uploader': './webpack/photo-uploader-entry',
     'root-dashboard': './webpack/root-dashboard',
     setup: './webpack/setup',
-    'family-register': './webpack/family-register',
     'family-verify': './webpack/family-verify',
     'upgrade-wizard': './webpack/upgrade-wizard',
     'locale-loader': './webpack/locale-loader',
@@ -119,6 +118,7 @@ module.exports = {
     'people-map-neighbors': './webpack/people/map-neighbors',
     'people-self-register': './webpack/people/self-register',
     'people-labels-modal': './webpack/people/labels-modal',
+    'people-sign-in-email': './webpack/people/sign-in-email.ts',
     'email-history-modal': './webpack/people/email-history-modal',
     'email-delete-queue': './webpack/people/email-delete-queue',
     'email-log-table': './webpack/people/email-log-table',
@@ -157,9 +157,12 @@ module.exports = {
     // Member Portal calendar (#9866): FullCalendar for /portal/calendar. Its own
     // entry so the tiny `portal` bundle every page loads stays tiny.
     'portal-calendar': './webpack/portal/portal-calendar.ts',
+    'portal-directory': './webpack/portal/portal-directory.ts',
     // My Teams (#9868): the team page's four tabs, drawn by the shared ministries
     // components. The occurrence page reuses `ministries-occurrence` unchanged.
     'portal-teams': './webpack/portal/teams.ts',
+    // Passkeys (member sign-in #10463): adding one, and signing in with one.
+    'portal-passkeys': './webpack/portal/portal-passkeys.ts',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',
     'finance-deposit-editor': './webpack/finance-deposit-editor',

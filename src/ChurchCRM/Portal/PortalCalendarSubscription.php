@@ -3,8 +3,13 @@
 namespace ChurchCRM\Portal;
 
 use ChurchCRM\dto\ChurchMetaData;
-use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\PersonSignin;
+use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Portal\Auth\PortalSignInRules;
+use ChurchCRM\Portal\Auth\SignInMethod;
 use DateTimeImmutable;
 
 /**
@@ -14,12 +19,14 @@ use DateTimeImmutable;
  *
  * The shape of the thing
  * ----------------------
- * Two nullable columns on `user_usr` hold it:
+ * Two nullable columns on the person's sign-in row (`person_signin_psi`) hold
+ * it; the release-day cutover moved them there from `user_usr` (member sign-in
+ * design §12, §13):
  *
- *  - `usr_PortalCalendarToken` — 32 random bytes as hex, minted the first time
- *    a member saves a selection and rotated by "Reset link". NULL means this
- *    account has never asked for a feed, and no URL answers for it.
- *  - `usr_PortalCalendarSelection` — a JSON array of the ids
+ *  - `psi_CalendarToken` — 32 random bytes as hex, minted the first time a
+ *    member saves a selection and rotated by "Reset link". NULL means this
+ *    person has never asked for a feed, and no URL answers for it.
+ *  - `psi_CalendarSelection` — a JSON array of the ids
  *    `PortalCalendarService::listChoices()` uses, in the `"<type>:<id>"` form
  *    (`"calendar:3"`, `"system:0"`).
  *
@@ -36,8 +43,8 @@ use DateTimeImmutable;
  *     member's feed on the next fetch, with nobody having to re-save anything.
  *  2. **A token names a feed, not a person.** Nothing but calendar events is
  *     reachable through it — no profile, no family, no name, not even whether
- *     the account still exists (`findByToken()` answers null for an unknown
- *     token and for an account that has no feed alike).
+ *     the person may still sign in (`findByToken()` answers null for an unknown
+ *     token and for a person who may no longer sign in alike).
  *  3. **It is never logged.** No method here writes the token to a log, and
  *     neither does the route: a feed URL in an application log would be the
  *     credential itself, sitting in a file the church's whole staff can read.
@@ -62,9 +69,9 @@ class PortalCalendarSubscription
      *
      * @return array<int, array{id: string, name: string, color: string, selected: bool}>
      */
-    public static function choices(User $user): array
+    public static function choices(PersonSignin $state): array
     {
-        $selected = self::selectionKeys($user);
+        $selected = self::selectionKeys($state);
         $nothingSaved = $selected === [];
 
         $choices = [];
@@ -112,10 +119,10 @@ class PortalCalendarSubscription
      *
      * @throws PortalSelfServiceException when the selection is empty or names a calendar the portal does not share (400)
      */
-    public static function save(User $user, array $ids): void
+    public static function save(PersonSignin $state, array $ids): void
     {
         $allowed = [];
-        foreach (self::choices($user) as $choice) {
+        foreach (self::choices($state) as $choice) {
             $allowed[$choice['id']] = true;
         }
 
@@ -144,41 +151,40 @@ class PortalCalendarSubscription
             );
         }
 
-        if (self::token($user) === null) {
-            $user->setPortalCalendarToken(self::mintToken());
+        if (self::token($state) === null) {
+            $state->setCalendarToken(self::mintToken());
         }
 
-        $user->setPortalCalendarSelection(json_encode(array_keys($accepted)));
-        $user->save();
+        $state->setCalendarSelection(json_encode(array_keys($accepted)));
+        $state->save();
     }
 
     /**
      * Rotate the token, leaving the selection alone. The address a member
      * shared by accident stops answering the moment this returns.
      */
-    public static function reset(User $user): void
+    public static function reset(PersonSignin $state): void
     {
-        $user->setPortalCalendarToken(self::mintToken());
-        $user->save();
+        $state->setCalendarToken(self::mintToken());
+        $state->save();
     }
 
     /** The member's token, or null when they have never saved a selection. */
-    public static function token(User $user): ?string
+    public static function token(PersonSignin $state): ?string
     {
-        $token = trim((string) $user->getPortalCalendarToken());
+        $token = trim((string) $state->getCalendarToken());
 
         return $token === '' ? null : $token;
     }
 
     /**
-     * The account a feed token belongs to, or null.
+     * The sign-in row a feed token belongs to, or null.
      *
-     * One answer for three different situations — no such token, a token that
-     * was rotated away, and an account whose feed was never created — because
-     * the caller turns all three into the same 404 and must not be able to tell
-     * them apart.
+     * One answer for every miss — no such token, a token that was rotated away,
+     * and a person who may no longer sign in — because the caller turns them all
+     * into the same 404 and must not be able to tell them apart.
      */
-    public static function findByToken(string $token): ?User
+    public static function findByToken(string $token): ?PersonSignin
     {
         // A token is 64 hex characters. Refusing anything else before the query
         // keeps a probe with a megabyte of junk from reaching the database.
@@ -186,7 +192,26 @@ class PortalCalendarSubscription
             return null;
         }
 
-        return UserQuery::create()->filterByPortalCalendarToken($token)->findOne();
+        $state = PersonSigninQuery::create()->filterByCalendarToken($token)->findOne();
+
+        return $state instanceof PersonSignin && self::maySignIn($state) ? $state : null;
+    }
+
+    /**
+     * Design §12: a feed stops when its person may no longer sign in (§4): the
+     * blocks for everyone, and the member rule while member sign-in is on,
+     * except for a person with a staff account, who signs in without it. While
+     * member sign-in is off, as it is after the upgrade, the rule (nothing
+     * ticked at first) is not applied, so the feeds the upgrade copied keep
+     * working. The email rule is not applied: here the token is the credential.
+     */
+    private static function maySignIn(PersonSignin $state): bool
+    {
+        $person = $state->getPerson();
+        $memberRuleApplies = SystemConfig::getBooleanValue('bMemberSignIn')
+            && !($person instanceof Person && UserQuery::create()->filterByPersonId($person->getId())->exists());
+
+        return PortalSignInRules::refusalReason($person, $state, $memberRuleApplies ? SignInMethod::EMAIL_CODE : SignInMethod::STAFF) === null;
     }
 
     /**
@@ -198,9 +223,9 @@ class PortalCalendarSubscription
      *
      * @return array<int, array<string, mixed>>
      */
-    public static function events(User $user): array
+    public static function events(PersonSignin $state): array
     {
-        $wanted = self::servedKeys($user);
+        $wanted = self::servedKeys($state);
         if ($wanted === []) {
             return [];
         }
@@ -218,9 +243,9 @@ class PortalCalendarSubscription
      * Null when the member has no token: there is no address to hand out, and
      * inventing one would imply a feed that does not exist.
      */
-    public static function feedPath(User $user): ?string
+    public static function feedPath(PersonSignin $state): ?string
     {
-        $token = self::token($user);
+        $token = self::token($state);
 
         return $token === null ? null : '/api/public/portal-calendar/' . $token . '/calendar.ics';
     }
@@ -243,9 +268,9 @@ class PortalCalendarSubscription
      *
      * @return array<string, bool>
      */
-    private static function selectionKeys(User $user): array
+    private static function selectionKeys(PersonSignin $state): array
     {
-        $raw = $user->getPortalCalendarSelection();
+        $raw = $state->getCalendarSelection();
         $decoded = is_string($raw) && $raw !== '' ? json_decode($raw, true) : null;
         if (!is_array($decoded)) {
             return [];
@@ -272,9 +297,9 @@ class PortalCalendarSubscription
      *
      * @return array<string, bool>
      */
-    private static function servedKeys(User $user): array
+    private static function servedKeys(PersonSignin $state): array
     {
-        $selected = self::selectionKeys($user);
+        $selected = self::selectionKeys($state);
         if ($selected === []) {
             return [];
         }

@@ -437,10 +437,6 @@ msgid "Family Cell Phone"
 msgstr "Családi mobiltelefon"
 
 #: 
-msgid "Family Email"
-msgstr "Családi Email"
-
-#: 
 msgid "Personal Home Phone"
 msgstr "Személyes otthoni telefon"
 
@@ -3935,10 +3931,6 @@ msgid "Oops! Page not found."
 msgstr "Hoppá! Az oldal nem található."
 
 #: 
-msgid "Family Registration"
-msgstr "Családi regisztráció"
-
-#: 
 msgid "Please enter the following to start your family's verification"
 msgstr "Kérjük, adja meg a következőket a család ellenőrzésének megkezdéséhez"
 
@@ -4954,10 +4946,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugál - Portugália"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Adja meg az alkalmazásnév meg kell jeleníteni a hitelesítő alkalmazásban"
-
-#: 
 msgid "Review"
 msgstr "Áttekintés"
 
@@ -5086,10 +5074,6 @@ msgstr "Család oldal megtekintése"
 #: 
 msgid "View Person Page"
 msgstr "Személy oldal megtekintése"
-
-#: 
-msgid "Verify"
-msgstr "Ellenőrzés"
 
 #: 
 msgid "Family has no emails to use"
@@ -5338,24 +5322,8 @@ msgid "Email address"
 msgstr "E-mail cím"
 
 #: 
-msgid "Enter family name"
-msgstr "Adjon meg család nevet"
-
-#: 
 msgid "Family name is required"
 msgstr "A család neve szükséges"
-
-#: 
-msgid "First name"
-msgstr "Keresztnév"
-
-#: 
-msgid "Home phone number"
-msgstr "Saját telefonszám"
-
-#: 
-msgid "Last name"
-msgstr "Vezetéknév"
 
 #: 
 msgid "Next Member"
@@ -9784,10 +9752,6 @@ msgid "We'll use this to keep in touch and send church updates."
 msgstr "Ezt fogjuk használni a kapcsolattartáshoz és a gyülekezeti hírek küldéséhez."
 
 #: 
-msgid "We're so glad you're here! Register your family in just 3 easy steps."
-msgstr "Nagyon örülünk, hogy itt van! Regisztrálja családját mindössze 3 egyszerű lépésben."
-
-#: 
 msgid "Welcome Back!"
 msgstr "Üdvözöljük újra!"
 
@@ -13762,10 +13726,6 @@ msgid "Generate new code"
 msgstr "Új kód generálása"
 
 #: 
-msgid "Go to homepage"
-msgstr "Ugrás a kezdőlapra"
-
-#: 
 msgid "Group added to cart"
 msgstr "Csoport hozzáadva a kosárba"
 
@@ -13788,10 +13748,6 @@ msgstr "Legyen kéznél a hitelesítő alkalmazása (Google Authenticator, Micro
 #: 
 msgid "Hide advanced options"
 msgstr "Speciális beállítások elrejtése"
-
-#: 
-msgid "Home phone is required"
-msgstr "A saját telefon szükséges"
 
 #: 
 msgid "ICS URL"
@@ -14466,10 +14422,6 @@ msgid "Warnings"
 msgstr "Figyelmeztetések"
 
 #: 
-msgid "We're so glad your family has joined us!"
-msgstr "Nagyon örülünk, hogy családja csatlakozott hozzánk!"
-
-#: 
 msgid "Welcome to the Family!"
 msgstr "Isten hozta a családban!"
 
@@ -14524,10 +14476,6 @@ msgstr "A böngésző nyelvi beállítása eltér a ChurchCRM területi beállí
 #: 
 msgid "Your database already contains data"
 msgstr "Az adatbázis már tartalmaz adatokat"
-
-#: 
-msgid "Your registration has been received. Our team will be in touch soon to personally welcome you."
-msgstr "Regisztrációját megkaptuk. Csapatunk hamarosan felveszi Önnel a kapcsolatot, hogy személyesen üdvözölje."
 
 #: 
 msgid "Zip code is required"
@@ -14606,10 +14554,6 @@ msgid "open rate"
 msgstr "megnyitási arány"
 
 #: 
-msgid "our church"
-msgstr "gyülekezetünk"
-
-#: 
 msgid "payment(s)?"
 msgstr "fizetés(ek)?"
 
@@ -14648,14 +14592,6 @@ msgstr "év"
 #: 
 msgid "yrs"
 msgstr "év"
-
-#: 
-msgid "Account options"
-msgstr "Fiók beállításai"
-
-#: 
-msgid "Register"
-msgstr "Regisztráció"
 
 #. Context: locales
 #: 
@@ -14717,10 +14653,6 @@ msgid "Date Picker Format"
 msgstr "Dátumválasztó formátuma"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Dátumválasztó helyőrzője"
-
-#: 
 msgid "Date Without Year"
 msgstr "Dátum év nélkül"
 
@@ -14751,10 +14683,6 @@ msgstr "Dátumformátum fájlnévhez"
 #: 
 msgid "Fully translated."
 msgstr "Teljesen lefordítva."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Dátummezőkben megjelenő súgószöveg. Alapértelmezett: éééé-hh-nn"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -14938,16 +14866,8 @@ msgid "Always granted"
 msgstr "Mindig megadva"
 
 #: 
-msgid "Can only review and verify their own family. No other access."
-msgstr "Csak a saját családját tekintheti meg és ellenőrizheti. Más hozzáférése nincs."
-
-#: 
 msgid "Choose specific permissions below."
 msgstr "Válasszon egyéni jogosultságokat az alábbiakban."
-
-#: 
-msgid "Contact an administrator to change your permissions."
-msgstr "Jogosultságai módosításához forduljon egy rendszergazdához."
 
 #: 
 msgid "Custom permissions"
@@ -14962,20 +14882,8 @@ msgid "People &amp; Families"
 msgstr "Személyek &amp; Családok"
 
 #: 
-msgid "Self-service"
-msgstr "Önkiszolgáló"
-
-#: 
-msgid "Self-service only"
-msgstr "Csak önkiszolgáló"
-
-#: 
 msgid "The note you are trying to edit no longer exists."
 msgstr "A szerkeszteni kívánt megjegyzés már nem létezik."
-
-#: 
-msgid "This user can only review and update their own family profile. Individual permissions do not apply."
-msgstr "Ez a felhasználó csak a saját családi profilját tekintheti meg és frissítheti. Az egyéni jogosultságok nem vonatkoznak rá."
 
 #: 
 msgid "User List"
@@ -18240,16 +18148,8 @@ msgid "Second Home"
 msgstr "Másik otthon"
 
 #: 
-msgid "The linked person is deceased or inactive. Sign-in, sessions and the API key are blocked until the person is made active again."
-msgstr "A csatolt személy elhunyt vagy inaktív. A bejelentkezés, a munkamenetek és az API-kulcs le van tiltva, amíg a személyt ismét aktívvá nem teszik."
-
-#: 
 msgid "This is the mailing address"
 msgstr "Ez a levelezési cím"
-
-#: 
-msgid "This person is deceased or inactive, so this account cannot sign in"
-msgstr "Ez a személy elhunyt vagy inaktív, ezért ez a fiók nem tud bejelentkezni"
 
 #: 
 msgid "Only an administrator can delete a person who has a login."
@@ -18938,10 +18838,6 @@ msgid "Account unlocked"
 msgstr "Fiók feloldva"
 
 #: 
-msgid "Accounts"
-msgstr "Fiókok"
-
-#: 
 msgid "Active must be true or false"
 msgstr "Az aktív értéke igaz vagy hamis lehet"
 
@@ -19134,10 +19030,6 @@ msgid "Author"
 msgstr "Szerző"
 
 #: 
-msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person whose login is self-service only keeps seeing just their own schedule until an administrator widens their account."
-msgstr "A jogosultság a személyhez tartozik, nem a bejelentkezéshez, így megadható, mielőtt lenne neki. Az a személy, akinek a bejelentkezése csak önkiszolgáló, addig csak a saját ütemezését látja, amíg egy rendszergazda ki nem bővíti a fiókját."
-
-#: 
 msgid "Automatic"
 msgstr "Automatikus"
 
@@ -19260,10 +19152,6 @@ msgstr "Válassz osztályt"
 #: 
 msgid "Choose a day of the month from 1 to 31"
 msgstr "Válassz egy hónapnapot 1-től 31-ig"
-
-#: 
-msgid "Choose a new photo"
-msgstr "Új fotó választása"
 
 #: 
 msgid "Choose a person"
@@ -20036,10 +19924,6 @@ msgid "Last attempt"
 msgstr "Utolsó kísérlet"
 
 #: 
-msgid "Last check"
-msgstr "Utolsó ellenőrzés"
-
-#: 
 msgid "Last date"
 msgstr "Utolsó dátum"
 
@@ -20266,10 +20150,6 @@ msgstr "Még egyetlen naptár sincs megosztva a tagokkal."
 #: 
 msgid "No calendar is open to this ministry, so the events will not show on any calendar."
 msgstr "Egyetlen naptár sincs megnyitva ennek a szolgálati területnek, így az események egyik naptáron sem jelennek meg."
-
-#: 
-msgid "No calendar is shared with members."
-msgstr "Egyetlen naptár sincs megosztva a tagokkal."
 
 #: 
 msgid "No class"
@@ -20806,14 +20686,6 @@ msgid "Please tell us what needs changing."
 msgstr "Kérjük, írd meg, mit kell módosítani."
 
 #: 
-msgid "Portal settings"
-msgstr "Portálbeállítások"
-
-#: 
-msgid "Portal theme"
-msgstr "Portál téma"
-
-#: 
 msgid "Position"
 msgstr "Pozíció"
 
@@ -21030,10 +20902,6 @@ msgid "SMTP test"
 msgstr "SMTP-teszt"
 
 #: 
-msgid "Save calendars"
-msgstr "Naptárak mentése"
-
-#: 
 msgid "Save changes"
 msgstr "Változtatások mentése"
 
@@ -21044,10 +20912,6 @@ msgstr "Elmentve – ez a szolgálati terület már nem kér segítséget"
 #: 
 msgid "Saved — this ministry is now asking for help"
 msgstr "Elmentve – ez a szolgálati terület most segítséget kér"
-
-#: 
-msgid "Saved. Members see the calendars switched on above."
-msgstr "Elmentve. A tagok a fent bekapcsolt naptárakat látják."
 
 #: 
 msgid "Schedule \"{{name}}\" created."
@@ -21152,10 +21016,6 @@ msgid "Self-assignable must be true or false"
 msgstr "Az önállóan beosztható értéke igaz vagy hamis lehet"
 
 #: 
-msgid "Self-service accounts"
-msgstr "Önkiszolgáló fiókok"
-
-#: 
 msgid "Send"
 msgstr "Küldés"
 
@@ -21224,18 +21084,6 @@ msgstr "Megjelenítés a Tagi portálon"
 #: 
 msgid "Show past events"
 msgstr "Múltbeli események megjelenítése"
-
-#: 
-msgid "Show the church calendar"
-msgstr "Gyülekezeti naptár megjelenítése"
-
-#: 
-msgid "Show the church calendar in the Member Portal."
-msgstr "A gyülekezeti naptár megjelenítése a Tagi portálon."
-
-#: 
-msgid "Show the church calendar section in the Member Portal."
-msgstr "A gyülekezeti naptár szakasz megjelenítése a Tagi portálon."
 
 #: 
 msgid "Show the next"
@@ -21644,10 +21492,6 @@ msgstr "A(z) %s mezőnek egész számú percnek kell lennie"
 #: 
 msgid "The %s must be within %d minutes of the event"
 msgstr "A(z) %s mezőnek az esemény időpontjától számított %d percen belül kell lennie"
-
-#: 
-msgid "The Member Portal calendars were saved."
-msgstr "A Tagi portál naptárai el lettek mentve."
 
 #: 
 msgid "The Member Portal could not finish what you asked for. Please try again in a few minutes."
@@ -22098,10 +21942,6 @@ msgid "These needs come from the schedule. Saving here changes this occurrence o
 msgstr "Ezek az igények az ütemezésből származnak. Az itteni mentés csak ezt az alkalmat módosítja."
 
 #: 
-msgid "These numbers count self-service accounts only: people whose login can reach the Member Portal and nothing else."
-msgstr "Ezek a számok csak az önkiszolgáló fiókokat számolják: azokat a személyeket, akiknek a bejelentkezésével csak a Tagi portál érhető el."
-
-#: 
 msgid "These people are still assigned, but the position they hold is no longer part of this date's staffing plan."
 msgstr "Ezek a személyek továbbra is be vannak osztva, de a betöltött pozíciójuk már nem része ennek a dátumnak a beosztási tervében."
 
@@ -22186,14 +22026,6 @@ msgid "This is not a valid theme folder name."
 msgstr "Ez nem érvényes témamappa-név."
 
 #: 
-msgid "This is not one of your team's dates."
-msgstr "Ez nem a csapatod egyik dátuma."
-
-#: 
-msgid "This is not one of your teams."
-msgstr "Ez nem a csapataid egyike."
-
-#: 
 msgid "This is where the church sends post and who it calls about your household."
 msgstr "Ide küldi a gyülekezet a postát, és ezen a számon hívják a háztartásodat."
 
@@ -22252,10 +22084,6 @@ msgstr "Ez az oldal nem része a fiókodnak. Ha úgy gondolod, annak kellene len
 #: 
 msgid "This page was not found"
 msgstr "Ez az oldal nem található"
-
-#: 
-msgid "This part of the Member Portal is for volunteer team leaders."
-msgstr "A Tagi portálnak ez a része az önkéntes csapatvezetőknek szól."
 
 #: 
 msgid "This position is assigned by its team leader or coordinator, not by signing up"
@@ -23926,16 +23754,8 @@ msgid "{{name}} assigned and recorded as accepted"
 msgstr "{{name}} beosztva és elfogadottként rögzítve"
 
 #: 
-msgid "Ask an administrator to change your sign-in email."
-msgstr "Kérjen meg egy adminisztrátort, hogy módosítsa a bejelentkezési e-mail-címét."
-
-#: 
 msgid "Email changed by an administrator from %1$s to %2$s"
 msgstr "Egy adminisztrátor módosította az e-mailt erről: %1$s erre: %2$s"
-
-#: 
-msgid "Only an administrator can change the email of a person with a user account."
-msgstr "Csak adminisztrátor módosíthatja egy felhasználói fiókkal rendelkező személy e-mail-címét."
 
 #: 
 msgid "Fund totals appear here once payments are added."
@@ -24420,4 +24240,2960 @@ msgstr "Csak az Ön által küldött e-mail jelenik meg."
 #: 
 msgid "Repeat events could not be created. Check the application log for details."
 msgstr "Az ismétlődő eseményeket nem sikerült létrehozni. Részletekért ellenőrizze az alkalmazás naplóját."
+
+#: 
+msgid "Confirm Password"
+msgstr "Jelszó megerősítése"
+
+#: 
+msgid "Your password has been changed. You can now sign in with your new password."
+msgstr "A jelszava megváltozott. Most már az új jelszavával jelentkezhet be."
+
+#: 
+msgid "1st"
+msgstr "1."
+
+#: 
+msgid "2nd"
+msgstr "2."
+
+#: 
+msgid "3rd"
+msgstr "3."
+
+#: 
+msgid "4th"
+msgstr "4."
+
+#: 
+msgid "5th"
+msgstr "5."
+
+#: 
+msgid "Can't remove administrator access from the only administrator who can sign in"
+msgstr "Nem vonható vissza a rendszergazdai hozzáférés az egyetlen bejelentkezni tudó rendszergazdától."
+
+#: 
+msgid "Choose the week of the month, from 1st to 5th"
+msgstr "Válassza ki a hónap hetét, az 1.-től az 5.-ig."
+
+#: 
+msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
+msgstr "{{total}} eseményt hoz létre, minden hónap {{week}} {{day}} napján, {{first}} és {{last}} között."
+
+#: 
+msgid "Invalid day of the week"
+msgstr "Érvénytelen hét napja"
+
+#: 
+msgid "Monthly, on a weekday"
+msgstr "Havonta, a hét egy napján"
+
+#: 
+msgid "Months without a 5th one are skipped."
+msgstr "Azok a hónapok kimaradnak, amelyekben nincs 5."
+
+#: 
+msgid "RecurWOM must be a whole number from 1 to 5"
+msgstr "A RecurWOM értéke 1 és 5 közötti egész szám legyen."
+
+#: 
+msgid "Week of the month"
+msgstr "A hónap hete"
+
+#: 
+msgid "Week of the month must be from 1 to 5"
+msgstr "A hónap hetének 1 és 5 között kell lennie."
+
+#: 
+msgid "%s through %s"
+msgstr "%s – %s"
+
+#: 
+msgid "Church tax ID (EIN) printed on contribution statements"
+msgstr "A gyülekezet adószáma (EIN), amely az adományigazolásokon szerepel"
+
+#: 
+msgid "Contribution statements are issued to the adults of a household. Please contact the church office if you need one."
+msgstr "Az adományigazolásokat a háztartás felnőttjei kapják. Ha szüksége van rá, forduljon a gyülekezeti irodához."
+
+#: 
+msgid "Download statement"
+msgstr "Igazolás letöltése"
+
+#: 
+msgid "Generated"
+msgstr "Elkészítve"
+
+#: 
+msgid "Goods and services"
+msgstr "Áruk és szolgáltatások"
+
+#: 
+msgid "My Giving"
+msgstr "Adakozásom"
+
+#: 
+msgid "No contributions"
+msgstr "Nincsenek adományok"
+
+#: 
+msgid "No contributions were recorded for this period."
+msgstr "Erre az időszakra nem jegyeztek fel adományt."
+
+#: 
+msgid "No goods or services were provided in exchange for these contributions, other than intangible religious benefits."
+msgstr "Ezekért az adományokért árut vagy szolgáltatást nem nyújtottak, csak nem anyagi jellegű vallási juttatást."
+
+#: 
+msgid "Optional. Printed on contribution statements."
+msgstr "Nem kötelező. Az adományigazolásokon jelenik meg."
+
+#: 
+msgid "Tax ID"
+msgstr "Adószám"
+
+#: 
+msgid "Tax ID (EIN)"
+msgstr "Adószám (EIN)"
+
+#: 
+msgid "Tax-deductible amount"
+msgstr "Adóból levonható összeg"
+
+#: 
+msgid "This is the household statement. It includes gifts for your family."
+msgstr "Ez a háztartás igazolása. A családja adományait tartalmazza."
+
+#: 
+msgid "Total contributions"
+msgstr "Adományok összesen"
+
+#: 
+msgid "Year-end statement"
+msgstr "Év végi igazolás"
+
+#: 
+msgid "%d giving statement emailed to the family successfully."
+msgstr "%d adományigazolást sikeresen elküldtünk e-mailben a családnak."
+
+#: 
+msgid "%s Giving Statement"
+msgstr "%s adományigazolás"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Az adományigazolásokon megjelenő szöveg testreszabása (sTaxReport1, sTaxReport2 stb.)."
+
+#: 
+msgid "Dear %s Family,\n"
+"\n"
+"Please find your %s giving statement from %s attached to this email.\n"
+"\n"
+"If you have any questions, please contact the church office.\n"
+"\n"
+"Thank you for your generosity."
+msgstr "Tisztelt %s család!\n"
+"\n"
+"Mellékeljük a(z) %s adományigazolásukat a(z) %s részéről.\n"
+"\n"
+"Kérdés esetén forduljanak a gyülekezeti irodához.\n"
+"\n"
+"Köszönjük a nagylelkűségüket."
+
+#: 
+msgid "Email %s Giving Statement"
+msgstr "%s adományigazolás küldése e-mailben"
+
+#: 
+msgid "Envelope Numbers"
+msgstr "Borítékszámok"
+
+#: 
+msgid "Generate Giving Statements"
+msgstr "Adományigazolások készítése"
+
+#: 
+msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
+msgstr "Jelentések készítése adományigazolásokhoz, fogadalmak követéséhez és pénzügyi elemzéshez."
+
+#: 
+msgid "Giving Reports"
+msgstr "Adakozási jelentések"
+
+#: 
+msgid "Giving Statement"
+msgstr "Adományigazolás"
+
+#: 
+msgid "Giving Statements"
+msgstr "Adományigazolások"
+
+#: 
+msgid "Giving statement email failed to send. Please check your email server settings."
+msgstr "Az adományigazolás e-mailje nem ment el. Ellenőrizze az e-mail-kiszolgáló beállításait."
+
+#: 
+msgid "Please mail your next gift to %s"
+msgstr "A következő adományát postán ide küldje: %s"
+
+#: 
+msgid "Print %s Giving Statement"
+msgstr "%s adományigazolás nyomtatása"
+
+#: 
+msgid "Unable to email giving statement: no payment data found for that year."
+msgstr "Az adományigazolás nem küldhető e-mailben: arra az évre nincs befizetési adat."
+
+#: 
+msgid "Unable to email giving statement: this family has no email address on file."
+msgstr "Az adományigazolás nem küldhető e-mailben: ennek a családnak nincs rögzített e-mail-címe."
+
+#: 
+msgid "Undesignated"
+msgstr "Meg nem jelölt"
+
+#: 
+msgid "Verify church name, address, and contact info appears on giving statements."
+msgstr "Ellenőrizze, hogy a gyülekezet neve, címe és elérhetősége megjelenik-e az adományigazolásokon."
+
+#: 
+msgid "The position is now assigned to %s, who has accepted it."
+msgstr "A feladatot most %s látja el, aki el is fogadta."
+
+#: 
+msgid "The position is now assigned to %s, who has not yet accepted it."
+msgstr "A feladatot most %s kapta, de még nem fogadta el."
+
+#: 
+msgid "Their reason: %s"
+msgstr "Az indokuk: %s"
+
+#: 
+msgid "View Assignments"
+msgstr "Kiosztások megtekintése"
+
+#: 
+msgid "Volunteers still needed for this occurrence: %d"
+msgstr "Erre az alkalomra még ennyi önkéntes kell: %d"
+
+#: 
+msgid "Volunteers still needed for this position: %d"
+msgstr "Erre a feladatra még ennyi önkéntes kell: %d"
+
+#: 
+msgid "A weekly sign-in grid for each class. Class lists and photo books are on the Sunday School dashboard and each class page."
+msgstr "Heti jelenléti táblázat minden osztályhoz. Az osztálynévsorok és a fotókönyvek a vasárnapi iskola irányítópultján és az egyes osztályok oldalán találhatók."
+
+#: 
+msgid "A weekly sign-in grid for the school year, one column for each Sunday"
+msgstr "Heti jelenléti táblázat a tanévre, minden vasárnaphoz egy oszloppal"
+
+#: 
+msgid "Age %d"
+msgstr "%d éves"
+
+#: 
+msgid "At least one group must be selected to make an attendance sheet."
+msgstr "A jelenléti ívhez legalább egy csoportot ki kell választani."
+
+#: 
+msgid "Attendance Sheet"
+msgstr "Jelenléti ív"
+
+#: 
+msgid "Class List"
+msgstr "Osztálynévsor"
+
+#: 
+msgid "Download PDF"
+msgstr "PDF letöltése"
+
+#: 
+msgid "Lockout period in minutes\n"
+"A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr "Zárolási idő percben\n"
+"A zárolt fiók ennyi perc után magától feloldódik. Egy IP-címről érkező sikertelen bejelentkezéseket ugyanezen az időszakon belül számoljuk."
+
+#: 
+msgid "Maximum number of failed logins from one IP address\n"
+"Failed logins and password reset requests from one IP address count toward this limit within the lockout period. Once it is reached, sign-in from that address is refused until the period ends.\n"
+"Set to zero to disable this feature, for example when everyone reaches ChurchCRM through one proxy address."
+msgstr "Sikertelen bejelentkezések megengedett száma egy IP-címről\n"
+"Egy IP-címről érkező sikertelen bejelentkezések és jelszó-visszaállítási kérések a zárolási időn belül beleszámítanak ebbe a korlátba. Ha elérik, arról a címről a bejelentkezés az időszak végéig elutasításra kerül.\n"
+"Állítsa nullára a funkció kikapcsolásához, például ha mindenki egy proxycímen keresztül éri el a ChurchCRM-et."
+
+#: 
+msgid "Maximum number of failed logins to allow before a user account is locked.\n"
+"A locked account unlocks by itself after the lockout period, or sooner when an administrator resets its failed logins.\n"
+"This feature helps to protect against automated password guessing attacks.\n"
+"Set to zero to disable this feature."
+msgstr "Ennyi sikertelen bejelentkezés után zárolódik a felhasználói fiók.\n"
+"A zárolt fiók a zárolási idő után magától feloldódik, vagy hamarabb, ha egy rendszergazda nullázza a sikertelen bejelentkezéseit.\n"
+"A funkció az automatikus jelszókitaláló támadások ellen véd.\n"
+"Állítsa nullára a funkció kikapcsolásához."
+
+#: 
+msgid "Minutes until it unlocks by itself: %d"
+msgstr "Ennyi perc múlva oldódik fel magától: %d"
+
+#: 
+msgid "Sunday School Attendance Sheet"
+msgstr "Vasárnapi iskola jelenléti íve"
+
+#: 
+msgid "Sundays with no class are left off the sheet."
+msgstr "Azok a vasárnapok, amikor nincs óra, nem kerülnek az ívre."
+
+#: 
+msgid "Database Upgrade"
+msgstr "Adatbázis-frissítés"
+
+#: 
+msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr "Az adatbázis frissül. Hagyja nyitva ezt az oldalt, amíg a frissítés be nem fejeződik."
+
+#: 
+msgid "Family Labels"
+msgstr "Családi címkék"
+
+#: 
+msgid "%s – Total"
+msgstr "%s – összesen"
+
+#: 
+msgid "Bill"
+msgstr "Bankjegy"
+
+#: 
+msgid "Choose a deposit or enter both report dates."
+msgstr "Válasszon egy befizetést, vagy adja meg a jelentés mindkét dátumát."
+
+#: 
+msgid "Choose one deposit to review its payments or print its bank slip. A selected deposit overrides the date range."
+msgstr "Válasszon egy befizetést a tételei átnézéséhez vagy a banki kísérő nyomtatásához. A kiválasztott befizetés felülírja a dátumtartományt."
+
+#: 
+msgid "Coin"
+msgstr "Érme"
+
+#: 
+msgid "Deposit Report"
+msgstr "Befizetési jelentés"
+
+#: 
+msgid "Download Report"
+msgstr "Jelentés letöltése"
+
+#: 
+msgid "Enter valid report dates."
+msgstr "Adjon meg érvényes jelentésdátumokat."
+
+#: 
+msgid "Invalid report filters."
+msgstr "Érvénytelen jelentésszűrők."
+
+#: 
+msgid "Invalid report options."
+msgstr "Érvénytelen jelentésbeállítások."
+
+#: 
+msgid "Leave filters empty to include all payments. These settings apply to the report, not the bank slip."
+msgstr "Hagyja üresen a szűrőket, ha minden befizetést bele szeretne venni. Ezek a beállítások a jelentésre vonatkoznak, nem a banki kísérőre."
+
+#: 
+msgid "No records were returned. Adjust your filters and try again."
+msgstr "Nem érkezett találat. Módosítsa a szűrőket, és próbálja újra."
+
+#: 
+msgid "Prepare for the Bank"
+msgstr "Előkészítés a banknak"
+
+#: 
+msgid "Preview Totals"
+msgstr "Összesítők előnézete"
+
+#: 
+msgid "Print Bank Slip"
+msgstr "Banki kísérő nyomtatása"
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "A kiválasztott befizetés teljes nyomtatása, készpénz- és csekkösszesítőkkel, számlálólapokkal és tanúsorokkal. A jelentésszűrők figyelmen kívül maradnak. Az elektronikus befizetések az összesítőben maradnak, és nem számítanak bele a fizikai banki bizonylat végösszegébe."
+
+#: 
+msgid "Review Payments"
+msgstr "Befizetések átnézése"
+
+#: 
+msgid "Review payments for a period, or prepare one deposit for the bank."
+msgstr "Nézze át egy időszak befizetéseit, vagy készítsen elő egy befizetést a banknak."
+
+#: 
+msgid "Review payments, download PDF or CSV, or print a bank slip for one deposit."
+msgstr "Nézze át a befizetéseket, töltsön le PDF-et vagy CSV-t, vagy nyomtasson banki kísérőt egy befizetéshez."
+
+#: 
+msgid "Select a valid deposit."
+msgstr "Válasszon érvényes befizetést."
+
+#: 
+msgid "Select one deposit to print a bank slip."
+msgstr "A banki kísérő nyomtatásához válasszon egy befizetést."
+
+#: 
+msgid "The report end date must be on or after the start date."
+msgstr "A jelentés záró dátuma nem lehet korábbi a kezdő dátumnál."
+
+#: 
+msgid "Total Cash"
+msgstr "Készpénz összesen"
+
+#: 
+msgid "Total Coin"
+msgstr "Érme összesen"
+
+#: 
+msgid "Witness"
+msgstr "Tanú"
+
+#: 
+msgid "%d gifts have no family. They cannot be on a statement."
+msgstr "%d adománynak nincs családja. Ezek nem kerülhetnek igazolásra."
+
+#: 
+msgid "%d open deposits dated in this year. Close them so every gift is final before statements go out."
+msgstr "Ebben az évben %d nyitott befizetés van. Zárja le őket, hogy minden adomány végleges legyen, mielőtt az igazolások kimennek."
+
+#: 
+msgid "%d payments are not on any deposit yet."
+msgstr "%d befizetés még nincs egyetlen befizetési tételen sem."
+
+#: 
+msgid "Can be emailed"
+msgstr "E-mailben küldhető"
+
+#: 
+msgid "Closing line"
+msgstr "Záró sor"
+
+#: 
+msgid "Every deposit dated in this year is closed."
+msgstr "Az idei dátumú befizetések mindegyike le van zárva."
+
+#: 
+msgid "Every gift belongs to a family."
+msgstr "Minden adomány egy családhoz tartozik."
+
+#: 
+msgid "Every payment in this year is on a deposit."
+msgstr "Az idei befizetések mindegyike szerepel egy befizetési tételen."
+
+#: 
+msgid "Generate Tax Statements"
+msgstr "Adóigazolások készítése"
+
+#: 
+msgid "Giving Report (Tax Statements)"
+msgstr "Adakozási jelentés (adóigazolások)"
+
+#: 
+msgid "Opening line"
+msgstr "Nyitó sor"
+
+#: 
+msgid "Print and mail"
+msgstr "Nyomtatás és postázás"
+
+#: 
+msgid "Qty"
+msgstr "Db"
+
+#: 
+msgid "Review the year, then print or email giving statements."
+msgstr "Nézze át az évet, majd nyomtassa vagy küldje e-mailben az adományigazolásokat."
+
+#: 
+msgid "Signed by"
+msgstr "Aláírta"
+
+#: 
+msgid "Thank-you line"
+msgstr "Köszönő sor"
+
+#: 
+msgid "Verify church name, address, and contact info appears on tax statements."
+msgstr "Ellenőrizze, hogy a gyülekezet neve, címe és elérhetősége megjelenik-e az adóigazolásokon."
+
+#: 
+msgid "Year-End Giving"
+msgstr "Év végi adakozás"
+
+#: 
+msgid "As of: %s"
+msgstr "Ekkor: %s"
+
+#: 
+msgid "At least one positive family payment in the selected %d fiscal years, through the review date: %s"
+msgstr "Legalább egy pozitív családi befizetés a kiválasztott %d pénzügyi évben, a felülvizsgálat napjáig: %s"
+
+#: 
+msgid "Baptism, electoral-roll applications, residence, communicant status, attendance, good standing, and local exceptions must be checked separately where your bylaws require them. Membership duration is not proof of attendance."
+msgstr "A keresztséget, a választói névjegyzékbe vételi kérelmeket, a lakóhelyet, az úrvacsorázói státuszt, a részvételt, a rendezett tagságot és a helyi kivételeket külön kell ellenőrizni, ahol az alapszabály ezt megköveteli. A tagság időtartama nem bizonyítja a részvételt."
+
+#: 
+msgid "Choose an existing classification."
+msgstr "Válasszon meglévő besorolást."
+
+#: 
+msgid "Choose at least one classification to review."
+msgstr "A felülvizsgálathoz válasszon legalább egy besorolást."
+
+#: 
+msgid "Choose the classifications your church uses. No classification is assumed to confer voting rights."
+msgstr "Válassza ki a gyülekezet által használt besorolásokat. Egyik besorolás sem jelent automatikusan szavazati jogot."
+
+#: 
+msgid "Church leadership must confirm eligibility under the church bylaws. This list only shows people matching the selected filters."
+msgstr "A gyülekezet vezetésének az alapszabály szerint kell megerősítenie a jogosultságot. Ez a lista csak a kiválasztott szűrőknek megfelelő személyeket mutatja."
+
+#: 
+msgid "Classifications to review"
+msgstr "Felülvizsgálandó besorolások"
+
+#: 
+msgid "Classifications: %s"
+msgstr "Besorolások: %s"
+
+#: 
+msgid "Deceased people, inactive people and classifications, and inactive or pending-review families and people are excluded."
+msgstr "Az elhunyt személyek, az inaktív személyek és besorolások, valamint az inaktív vagy felülvizsgálatra váró családok és személyek kimaradnak."
+
+#: 
+msgid "Download Review List"
+msgstr "Felülvizsgálati lista letöltése"
+
+#: 
+msgid "Enter a valid review date between 1900 and 2200."
+msgstr "Adjon meg érvényes felülvizsgálati dátumot 1900 és 2200 között."
+
+#: 
+msgid "Enter whole numbers within the displayed limits."
+msgstr "Adjon meg egész számokat a megjelenített határokon belül."
+
+#: 
+msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
+msgstr "Ellenőrizendő pénzügyi évek (0–100; a 0 azt jelenti, hogy nincs adakozási feltétel)"
+
+#: 
+msgid "Giving is recorded by family, not individual. Enable this only when your bylaws allow a family payment to satisfy this criterion. This does not prove that each person donated. The window includes the selected fiscal year and ends no later than the review date."
+msgstr "Az adakozást családonként jegyezzük, nem személyenként. Csak akkor kapcsolja be, ha az alapszabály szerint egy családi befizetés teljesítheti ezt a feltételt. Ez nem bizonyítja, hogy minden személy adakozott. Az időszak a kiválasztott pénzügyi évet foglalja magában, és legkésőbb a felülvizsgálat napján ér véget."
+
+#: 
+msgid "Last fiscal year to include"
+msgstr "Utolsó beszámítandó pénzügyi év"
+
+#: 
+msgid "Minimum age (0–120)"
+msgstr "Alsó életkor (0–120)"
+
+#: 
+msgid "Minimum age: %d"
+msgstr "Alsó életkor: %d"
+
+#: 
+msgid "Minimum membership duration in months (0–1200)"
+msgstr "Tagság legrövidebb időtartama hónapban (0–1200)"
+
+#: 
+msgid "Minimum membership duration: %d months"
+msgstr "Tagság legrövidebb időtartama: %d hónap"
+
+#: 
+msgid "No donation requirement."
+msgstr "Nincs adományfeltétel."
+
+#: 
+msgid "No people match these filters. Check missing birth or membership dates and adjust your criteria."
+msgstr "Senki sem felel meg ezeknek a szűrőknek. Ellenőrizze a hiányzó születési vagy tagsági dátumokat, és módosítsa a feltételeket."
+
+#: 
+msgid "Optional family giving requirement"
+msgstr "Választható családi adakozási feltétel"
+
+#: 
+msgid "People matching filters"
+msgstr "A szűrőknek megfelelő személyek"
+
+#: 
+msgid "People omitted because required dates are missing"
+msgstr "Kihagyott személyek, mert hiányoznak a szükséges dátumok"
+
+#: 
+msgid "Prepare a list for church review using classifications and optional age, membership, and family giving filters."
+msgstr "Készítsen listát a gyülekezeti felülvizsgálathoz besorolások, valamint választható életkori, tagsági és családi adakozási szűrők alapján."
+
+#: 
+msgid "Prepare a list for church review using your bylaws."
+msgstr "Készítsen listát a gyülekezeti felülvizsgálathoz az alapszabály alapján."
+
+#: 
+msgid "Review date"
+msgstr "Felülvizsgálat dátuma"
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Az alapszabály alapján válassza ki a szűrőket, majd a felhatalmazott gyülekezeti vezetés nézze át a listát. A szűrőknek való megfelelés nem állapít meg szavazati jogosultságot. Ez a jelentés nem rögzít jogosultságot, és nem bonyolít le választást."
+
+#: 
+msgid "Voting Members — Review List"
+msgstr "Szavazó tagok — felülvizsgálati lista"
+
+#: 
+msgid "Zero disables an optional requirement. Age requires a complete birth date; membership duration requires a membership date. People missing required dates are omitted and counted separately. Deceased people, inactive people and classifications, and inactive or pending-review families and people are always excluded; current classification and status are used, not historical status."
+msgstr "A nulla kikapcsol egy választható feltételt. Az életkorhoz teljes születési dátum kell; a tagság időtartamához tagsági dátum. A szükséges dátum nélküli személyek kimaradnak, és külön vannak számolva. Az elhunyt személyek, az inaktív személyek és besorolások, valamint az inaktív vagy felülvizsgálatra váró családok és személyek mindig kimaradnak; a jelenlegi besorolás és állapot számít, nem a korábbi."
+
+#: 
+msgid "Amount due for %s: %s"
+msgstr "%s esedékes összege: %s"
+
+#: 
+msgid "Cannot create private PDF temporary storage in the selected directory."
+msgstr "A kiválasztott mappában nem hozható létre privát ideiglenes PDF-tároló."
+
+#: 
+msgid "Leave blank to use the system temporary directory. Otherwise, enter an existing writable directory protected from web access."
+msgstr "Hagyja üresen a rendszer ideiglenes mappájának használatához. Egyébként adjon meg egy létező, írható, webes hozzáféréstől védett mappát."
+
+#: 
+msgid "PDF Temporary Directory"
+msgstr "PDF ideiglenes mappa"
+
+#: 
+msgid "PDF temporary storage must be private and writable."
+msgstr "A PDF ideiglenes tárolójának privátnak és írhatónak kell lennie."
+
+#: 
+msgid "Reporting"
+msgstr "Jelentések"
+
+#: 
+msgid "The PDF temporary directory does not exist or is not accessible."
+msgstr "A PDF ideiglenes mappa nem létezik, vagy nem érhető el."
+
+#: 
+msgid "The PDF temporary directory must be an absolute directory path."
+msgstr "A PDF ideiglenes mappa abszolút elérési út legyen."
+
+#: 
+msgid "Church Tax ID (EIN)"
+msgstr "Gyülekezeti adószám (EIN)"
+
+#: 
+msgid "Closing Line"
+msgstr "Záró sor"
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Az opcionális telemetriát szabályozza. A telepítés és az adatbázis-frissítés hibái akkor is korlátozott diagnosztikát küldenek a PostHog felé, ha a telemetria ki van kapcsolva. Ezek a hibajelentések a szoftver és a környezet verzióit, valamint egy megtisztított adatbázishibát tartalmaznak, de telepítési azonosítót vagy SQL-utasítást nem."
+
+#: 
+msgid "Diagnose failed installs and database upgrades"
+msgstr "Sikertelen telepítések és adatbázis-frissítések diagnosztizálása"
+
+#: 
+msgid "Install and upgrade failure details"
+msgstr "Telepítési és frissítési hibák részletei"
+
+#: 
+msgid "Open in browser window"
+msgstr "Megnyitás böngészőablakban"
+
+#: 
+msgid "Opening Line"
+msgstr "Nyitó sor"
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Az opcionális használati telemetria csak bekapcsolt állapotban megy el. A telepítés és az adatbázis-frissítés hibái akkor is korlátozott diagnosztikát küldenek a közösség segítésére, ha a Nem, köszönöm lehetőséget választja. A hibajelentések a szoftver és a környezet verzióit, valamint egy megtisztított adatbázishibát tartalmaznak, telepítési azonosító és SQL-utasítás nélkül."
+
+#: 
+msgid "PDF Handling"
+msgstr "PDF-kezelés"
+
+#: 
+msgid "PDF Output"
+msgstr "PDF-kimenet"
+
+#: 
+msgid "PDF handling mode"
+msgstr "PDF-kezelési mód"
+
+#: 
+msgid "Questions Line"
+msgstr "Kérdések sora"
+
+#: 
+msgid "Save File dialog"
+msgstr "Fájl mentése párbeszédpanel"
+
+#: 
+msgid "Signer"
+msgstr "Aláíró"
+
+#: 
+msgid "Statement Settings"
+msgstr "Igazolás beállításai"
+
+#: 
+msgid "Statement Wording"
+msgstr "Igazolás szövege"
+
+#: 
+msgid "Tax Information"
+msgstr "Adóadatok"
+
+#: 
+msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
+msgstr "A telemetria az Egyesült Államokban lévő PostHog felé megy. A telepítési és frissítési hibajelentések akkor is elmennek, ha az opcionális telemetria ki van kapcsolva."
+
+#: 
+msgid "This date was cancelled. Nothing more is needed from you."
+msgstr "Ez az időpont törölve lett. Öntől további teendő nem szükséges."
+
+#: 
+msgid "always sent"
+msgstr "mindig elküldve"
+
+#: 
+msgid "Failed to remove letterhead"
+msgstr "A levélfejet nem sikerült eltávolítani"
+
+#: 
+msgid "Failed to store the letterhead"
+msgstr "A levélfejet nem sikerült tárolni"
+
+#: 
+msgid "Failed to upload letterhead"
+msgstr "A levélfejet nem sikerült feltölteni"
+
+#: 
+msgid "Greeting"
+msgstr "Megszólítás"
+
+#: 
+msgid "Letter greeting and signature"
+msgstr "Levél megszólítása és aláírása"
+
+#: 
+msgid "Letterhead"
+msgstr "Levélfej"
+
+#: 
+msgid "PNG, JPG, GIF or WebP. A wide banner works best, for example 2000x300."
+msgstr "PNG, JPG, GIF vagy WebP. A széles fejléc a legjobb, például 2000x300."
+
+#: 
+msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
+msgstr "A grafikus levélfejet használó PDF-levelek tetején jelenik meg, például az adományigazolásokon. Enélkül a leveleken a gyülekezet neve és címe szerepel."
+
+#: 
+msgid "Remove the letterhead? Letters will print the church name and address."
+msgstr "Eltávolítja a levélfejet? A leveleken a gyülekezet neve és címe fog megjelenni."
+
+#: 
+msgid "Set the letterhead that PDF letters print"
+msgstr "A PDF-leveleken megjelenő levélfej beállítása"
+
+#: 
+msgid "Using the church name and address"
+msgstr "A gyülekezet nevének és címének használata"
+
+#: 
+msgid "Using the letterhead path set in System Settings"
+msgstr "A Rendszerbeállításokban megadott levélfej-útvonal használata"
+
+#: 
+msgid "Wording, tax ID and PDF handling for giving statements"
+msgstr "Szöveg, adószám és PDF-kezelés az adományigazolásokhoz"
+
+#: 
+msgid "%1$s as %2$s"
+msgstr "%1$s mint %2$s"
+
+#: 
+msgid "%s is now your email address. You can use it to sign in to the Member Portal."
+msgstr "A(z) %s mostantól az Ön e-mail-címe. Ezzel jelentkezhet be a tagportálra."
+
+#: 
+msgid "+{{total}} more"
+msgstr "+{{total}} további"
+
+#: 
+msgid "A change of your email address was requested"
+msgstr "E-mail-címének módosítását kérték"
+
+#: 
+msgid "A family"
+msgstr "Egy család"
+
+#: 
+msgid "A group"
+msgstr "Egy csoport"
+
+#: 
+msgid "A ministry"
+msgstr "Egy szolgálat"
+
+#: 
+msgid "A new address changes only after you use the link we send to it."
+msgstr "Az új cím csak azután változik meg, hogy Ön a rá küldött hivatkozást használja."
+
+#: 
+msgid "A passkey can be added only within %d minutes of signing in with your email address. Sign out, sign in again with your email, then come back here."
+msgstr "Hozzáférési kulcsot csak az e-mail-címmel történt bejelentkezést követő %d percen belül lehet hozzáadni. Jelentkezzen ki, jelentkezzen be újra az e-mailjével, majd térjen vissza ide."
+
+#: 
+msgid "A passkey signs you in with Face ID, a fingerprint or your device PIN, without an email code."
+msgstr "A hozzáférési kulccsal Face ID, ujjlenyomat vagy az eszköz PIN-kódja segítségével jelentkezhet be, e-mail-kód nélkül."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in"
+msgstr "Hozzáférési kulcs került a tagportálos bejelentkezéséhez"
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s, from %3$s."
+msgstr "Hozzáférési kulcs került a tagportálos bejelentkezéséhez ekkor: %1$s, ezen a napon: %2$s, innen: %3$s."
+
+#: 
+msgid "A passkey was added to your Member Portal sign-in at %1$s on %2$s."
+msgstr "Hozzáférési kulcs került a tagportálos bejelentkezéséhez ekkor: %1$s, ezen a napon: %2$s."
+
+#: 
+msgid "A person who loses it then has no email of their own: mail sent to them alone, such as a group email, is skipped, and the email composer says so."
+msgstr "Aki elveszíti, annak ezután nincs saját e-mail-címe: a csak neki szóló levelek, például a csoportos e-mail, kimaradnak, és a levélíró ezt jelzi."
+
+#: 
+msgid "A person whose record hides their age never shows a birth year."
+msgstr "Annak a személynek, akinek a rekordja elrejti az életkorát, a születési év soha nem jelenik meg."
+
+#: 
+msgid "A row is not in the expected form."
+msgstr "Egy sor nem a várt formában van."
+
+#: 
+msgid "A team"
+msgstr "Egy csapat"
+
+#: 
+msgid "Add a passkey"
+msgstr "Hozzáférési kulcs hozzáadása"
+
+#: 
+msgid "Add a passkey only on your own phone or computer, never on a shared or public one."
+msgstr "Hozzáférési kulcsot csak a saját telefonján vagy számítógépén adjon hozzá, soha nem közös vagy nyilvános eszközön."
+
+#: 
+msgid "Add an email"
+msgstr "E-mail hozzáadása"
+
+#: 
+msgid "Added %s"
+msgstr "Hozzáadva: %s"
+
+#: 
+msgid "Admin overrides"
+msgstr "Rendszergazdai felülírások"
+
+#: 
+msgid "Adult of the %s family"
+msgstr "A(z) %s család felnőtt tagja"
+
+#: 
+msgid "Adult of the family"
+msgstr "A család felnőtt tagja"
+
+#: 
+msgid "All events"
+msgstr "Minden esemény"
+
+#: 
+msgid "Allow Login as Person"
+msgstr "Bejelentkezés személyként engedélyezése"
+
+#: 
+msgid "Allow changes during Login as Person"
+msgstr "Módosítások engedélyezése a személyként való bejelentkezés alatt"
+
+#: 
+msgid "Allow changes while an administrator uses Login as Person. When off, Login as Person is read-only."
+msgstr "Engedélyezi a módosításokat, amíg egy rendszergazda a Bejelentkezés személyként funkciót használja. Kikapcsolva a funkció csak olvasásra szolgál."
+
+#: 
+msgid "Already held by a family member"
+msgstr "Már egy családtagé"
+
+#: 
+msgid "Also used by"
+msgstr "Szintén ezt használja"
+
+#: 
+msgid "An administrator can give any permission to one person on that person's page. \"Admin overrides\" then shows here, with the number of people who were given it."
+msgstr "Egy rendszergazda bármely jogosultságot adhat egy személynek annak oldalán. A „Rendszergazdai felülírások” ezután itt jelenik meg, azok számával, akik megkapták."
+
+#: 
+msgid "Another person already uses this address"
+msgstr "Ezt a címet már egy másik személy használja"
+
+#: 
+msgid "Applies to"
+msgstr "Vonatkozik"
+
+#: 
+msgid "Approve or decline substitute requests for a volunteer team."
+msgstr "Helyettesítési kérések jóváhagyása vagy elutasítása egy önkéntes csapatnál."
+
+#: 
+msgid "Ask for a new email"
+msgstr "Új e-mail kérése"
+
+#: 
+msgid "Authority is given to the person, not to a login, so it can be granted before they have one. A person who signs in only to the Member Portal keeps seeing just their own schedule until an administrator gives them a staff account."
+msgstr "A jogosultság a személyhez kötődik, nem egy bejelentkezéshez, ezért még azelőtt is adható, hogy lenne belépése. Aki csak a tagportálra jelentkezik be, addig csak a saját beosztását látja, amíg egy rendszergazda munkatársi fiókot nem ad neki."
+
+#: 
+msgid "Awaiting review"
+msgstr "Felülvizsgálatra vár"
+
+#: 
+msgid "Back to sign-in"
+msgstr "Vissza a bejelentkezéshez"
+
+#: 
+msgid "Browse the full directory"
+msgstr "A teljes névjegyzék böngészése"
+
+#: 
+msgid "Can sign in to the Member Portal"
+msgstr "Bejelentkezhet a tagportálra"
+
+#: 
+msgid "Can sign in?"
+msgstr "Bejelentkezhet?"
+
+#: 
+msgid "Can't disable sign-in for the only administrator who can sign in."
+msgstr "Nem tiltható le a bejelentkezés az egyetlen bejelentkezni tudó rendszergazdánál."
+
+#: 
+msgid "Cannot sign in"
+msgstr "Nem jelentkezhet be"
+
+#: 
+msgid "Change family details"
+msgstr "Családi adatok módosítása"
+
+#: 
+msgid "Change the family address and contact details, and add a family member for review."
+msgstr "A család címének és elérhetőségeinek módosítása, valamint családtag hozzáadása felülvizsgálatra."
+
+#: 
+msgid "Change their own name, contact details and photo."
+msgstr "A saját név, elérhetőségek és fénykép módosítása."
+
+#: 
+msgid "Changed"
+msgstr "Módosítva"
+
+#: 
+msgid "Changed after the person signed in"
+msgstr "Megváltozott, miután a személy bejelentkezett"
+
+#: 
+msgid "Changed by an import after the person signed in"
+msgstr "Import módosította, miután a személy bejelentkezett"
+
+#: 
+msgid "Changed by staff after the person signed in"
+msgstr "Munkatárs módosította, miután a személy bejelentkezett"
+
+#: 
+msgid "Changed through the API after the person signed in"
+msgstr "Az API módosította, miután a személy bejelentkezett"
+
+#: 
+msgid "Changes are turned off during Login as Person."
+msgstr "A módosítások ki vannak kapcsolva a személyként való bejelentkezés alatt."
+
+#: 
+msgid "Changes needed"
+msgstr "Módosítás szükséges"
+
+#: 
+msgid "Changes save as you make them."
+msgstr "A módosítások azonnal mentésre kerülnek."
+
+#: 
+msgid "Check your email"
+msgstr "Ellenőrizze az e-mailjét"
+
+#: 
+msgid "Choose a permission"
+msgstr "Válasszon jogosultságot"
+
+#: 
+msgid "Choose a permission, what it is for and its last day, and say why."
+msgstr "Válasszon jogosultságot, adja meg, mire vonatkozik és meddig tart, majd írja le, miért."
+
+#: 
+msgid "Choose a photo or take a selfie"
+msgstr "Válasszon fényképet, vagy készítsen szelfit"
+
+#: 
+msgid "Choose a theme"
+msgstr "Válasszon témát"
+
+#: 
+msgid "Choose at least one row."
+msgstr "Válasszon legalább egy sort."
+
+#: 
+msgid "Choose at most %d rows at a time."
+msgstr "Egyszerre legfeljebb %d sort válasszon."
+
+#: 
+msgid "Choose how dates are shown from the list."
+msgstr "A listából válassza ki, hogyan jelenjenek meg a dátumok."
+
+#: 
+msgid "Choose the last day of this permission."
+msgstr "Válassza ki a jogosultság utolsó napját."
+
+#: 
+msgid "Choose what the permission is for."
+msgstr "Válassza ki, mire vonatkozik a jogosultság."
+
+#: 
+msgid "Choose yes or no."
+msgstr "Válasszon igent vagy nemet."
+
+#: 
+msgid "Church Office"
+msgstr "Gyülekezeti iroda"
+
+#: 
+msgid "Church country"
+msgstr "A gyülekezet országa"
+
+#: 
+msgid "Church default: %s"
+msgstr "Gyülekezeti alapértelmezés: %s"
+
+#: 
+msgid "Church leader sign-in"
+msgstr "Gyülekezeti vezető bejelentkezése"
+
+#: 
+msgid "Classifications whose members may sign in to the Member Portal, as a comma-separated list of classification ids."
+msgstr "Azok a besorolások, amelyek tagjai bejelentkezhetnek a tagportálra, besorolásazonosítók vesszővel elválasztott listájaként."
+
+#: 
+msgid "Clear selection"
+msgstr "Kijelölés törlése"
+
+#: 
+msgid "Codes, sessions and devices"
+msgstr "Kódok, munkamenetek és eszközök"
+
+#: 
+msgid "Confirm Email Address"
+msgstr "E-mail-cím megerősítése"
+
+#: 
+msgid "Confirm email address"
+msgstr "E-mail-cím megerősítése"
+
+#: 
+msgid "Confirm family details"
+msgstr "Családi adatok megerősítése"
+
+#: 
+msgid "Confirm selected"
+msgstr "Kijelöltek megerősítése"
+
+#: 
+msgid "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal."
+msgstr "Ezt az e-mailt csak azután erősítse meg, hogy személyesen vagy telefonon ellenőrizte: ez a személy saját címe. Megerősítés után ezzel lehet bejelentkezni a tagportálra."
+
+#: 
+msgid "Confirm your email address"
+msgstr "Erősítse meg az e-mail-címét"
+
+#: 
+msgid "Confirm your new email address"
+msgstr "Erősítse meg az új e-mail-címét"
+
+#: 
+msgid "Confirmed"
+msgstr "Megerősítve"
+
+#: 
+msgid "Dates must be written as YYYY-MM-DD."
+msgstr "A dátumokat ÉÉÉÉ-HH-NN formában kell megadni."
+
+#: 
+msgid "Decide substitute requests"
+msgstr "Helyettesítési kérések elbírálása"
+
+#: 
+msgid "Device"
+msgstr "Eszköz"
+
+#: 
+msgid "Device remembered"
+msgstr "Eszköz megjegyezve"
+
+#: 
+msgid "Devices and passkeys"
+msgstr "Eszközök és hozzáférési kulcsok"
+
+#: 
+msgid "Directory classifications"
+msgstr "Névjegyzék besorolásai"
+
+#: 
+msgid "Directory section"
+msgstr "Névjegyzék szakasza"
+
+#: 
+msgid "Disable sign-in"
+msgstr "Bejelentkezés letiltása"
+
+#: 
+msgid "Do not show"
+msgstr "Ne jelenjen meg"
+
+#: 
+msgid "Each of them also needs their own email that nobody else uses."
+msgstr "Mindegyiküknek saját, más által nem használt e-mail-címre is szüksége van."
+
+#: 
+msgid "Each sign-in email works once, for a limited time, and a newer email replaces it."
+msgstr "Minden bejelentkezési e-mail egyszer, korlátozott ideig használható, és egy újabb e-mail felváltja."
+
+#: 
+msgid "Edit my details"
+msgstr "Adataim szerkesztése"
+
+#: 
+msgid "Email address changed"
+msgstr "Az e-mail-cím megváltozott"
+
+#: 
+msgid "Email address typed: %s"
+msgstr "Beírt e-mail-cím: %s"
+
+#: 
+msgid "Email addresses to confirm: {{total}}"
+msgstr "Megerősítendő e-mail-címek: {{total}}"
+
+#: 
+msgid "Email changed"
+msgstr "E-mail megváltozott"
+
+#: 
+msgid "Email code"
+msgstr "E-mail-kód"
+
+#: 
+msgid "Email confirmed"
+msgstr "E-mail megerősítve"
+
+#: 
+msgid "Email link"
+msgstr "E-mail-hivatkozás"
+
+#: 
+msgid "Email me a code"
+msgstr "Kód küldése e-mailben"
+
+#: 
+msgid "Email me a confirmation link"
+msgstr "Megerősítő hivatkozás küldése e-mailben"
+
+#: 
+msgid "Email needs attention"
+msgstr "Az e-mail figyelmet igényel"
+
+#: 
+msgid "Email problem"
+msgstr "E-mail-probléma"
+
+#: 
+msgid "Emailed sign-in code and link cancelled"
+msgstr "Az e-mailben küldött bejelentkezési kód és hivatkozás érvénytelenítve"
+
+#: 
+msgid "Emailed verification link"
+msgstr "E-mailben küldött ellenőrző hivatkozás"
+
+#: 
+msgid "Emails confirmed: {{total}}"
+msgstr "Megerősített e-mailek: {{total}}"
+
+#: 
+msgid "Enable sign-in"
+msgstr "Bejelentkezés engedélyezése"
+
+#: 
+msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
+msgstr "Megszünteti ennek a személynek minden tagportálos munkamenetét, és elfelejti a megjegyzett eszközeit? A hozzáférési kulcsai megmaradnak, így újra bejelentkezhet."
+
+#: 
+msgid "Ended %s"
+msgstr "Vége: %s"
+
+#: 
+msgid "Ended by a change to their sign-in"
+msgstr "A bejelentkezésük módosítása miatt ért véget"
+
+#: 
+msgid "Ended when member sign-in was turned off"
+msgstr "Akkor ért véget, amikor a tagi bejelentkezést kikapcsolták"
+
+#: 
+msgid "Enter a whole number from %1$d to %2$d."
+msgstr "Adjon meg egy egész számot %1$d és %2$d között."
+
+#: 
+msgid "Enter your email address."
+msgstr "Adja meg az e-mail-címét."
+
+#: 
+msgid "Every kind"
+msgstr "Minden fajta"
+
+#: 
+msgid "Every member sign-in, refusal and change to sign-in, newest first. It never holds a code, link or passkey."
+msgstr "Minden tagi bejelentkezés, elutasítás és bejelentkezési módosítás, a legújabbal elöl. Soha nem tartalmaz kódot, hivatkozást vagy hozzáférési kulcsot."
+
+#: 
+msgid "Everyone listed, A to Z, with a search box."
+msgstr "Mindenki felsorolva, A-tól Z-ig, keresőmezővel."
+
+#: 
+msgid "Everyone the sign-in rules let in can then sign in to the Member Portal with their own email."
+msgstr "Ezután mindenki, akit a bejelentkezési szabályok beengednek, a saját e-mailjével léphet be a tagportálra."
+
+#: 
+msgid "Everyone who signed in to the Member Portal in the last 30 days, newest first."
+msgstr "Mindenki, aki az elmúlt 30 napban belépett a tagportálra, a legújabbal elöl."
+
+#: 
+msgid "Everywhere"
+msgstr "Mindenhol"
+
+#: 
+msgid "Families a member confirmed in the last 30 days, from the Member Portal or the emailed verification link."
+msgstr "Családok, amelyeket egy tag az elmúlt 30 napban megerősített a tagportálról vagy az e-mailben küldött ellenőrző hivatkozásról."
+
+#: 
+msgid "Families confirmed, last 30 days"
+msgstr "Megerősített családok, elmúlt 30 nap"
+
+#: 
+msgid "Family details confirmed"
+msgstr "Családi adatok megerősítve"
+
+#: 
+msgid "Family email"
+msgstr "Családi e-mail"
+
+#: 
+msgid "Family emails not moved"
+msgstr "Át nem helyezett családi e-mailek"
+
+#: 
+msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
+msgstr "Azok a családi szerepek, amelyek tagjai bejelentkezhetnek a tagportálra, szerepazonosítók vesszővel elválasztott listájaként."
+
+#: 
+msgid "Find someone"
+msgstr "Személy keresése"
+
+#: 
+msgid "Fix by hand"
+msgstr "Kézi javítás"
+
+#: 
+msgid "Fix shared emails"
+msgstr "Megosztott e-mailek javítása"
+
+#: 
+msgid "From a staff sign-in"
+msgstr "Munkatársi bejelentkezésből"
+
+#: 
+msgid "Give a permission"
+msgstr "Jogosultság adása"
+
+#: 
+msgid "Give a portal permission"
+msgstr "Portáljogosultság adása"
+
+#: 
+msgid "Give each person their own email"
+msgstr "Adjon mindenkinek saját e-mail-címet"
+
+#: 
+msgid "Give permission"
+msgstr "Jogosultság megadása"
+
+#: 
+msgid "Given by %1$s until %2$s"
+msgstr "%1$s adta, eddig: %2$s"
+
+#: 
+msgid "Given by %s"
+msgstr "Adta: %s"
+
+#: 
+msgid "Given to"
+msgstr "Ennek adva"
+
+#: 
+msgid "Given to Everyone"
+msgstr "Mindenkinek adva"
+
+#: 
+msgid "Given, but not in effect"
+msgstr "Megadva, de nincs hatályban"
+
+#: 
+msgid "Go to sign in"
+msgstr "Tovább a bejelentkezéshez"
+
+#: 
+msgid "Go to the Member Portal"
+msgstr "Ugrás a tagportálra"
+
+#: 
+msgid "Has signed in"
+msgstr "Már bejelentkezett"
+
+#: 
+msgid "Has signed in: their sessions and devices end"
+msgstr "Már bejelentkezett: a munkamenetei és eszközei megszűnnek"
+
+#: 
+msgid "Here is your code to sign in to the Member Portal. Type it on the sign-in page, in the browser where you asked for it. Or press the button to sign in on this device."
+msgstr "Itt a kódja a tagportálra való bejelentkezéshez. Írja be a bejelentkezési oldalon, abban a böngészőben, ahol kérte. Vagy nyomja meg a gombot, és ezen az eszközön jelentkezzen be."
+
+#: 
+msgid "Hide Permissions"
+msgstr "Jogosultságok elrejtése"
+
+#: 
+msgid "How"
+msgstr "Hogyan"
+
+#: 
+msgid "How many Member Portal sign-in emails one IP address can ask for in an hour. Set to 0 for no limit, for example when everyone reaches ChurchCRM through one address."
+msgstr "Hány tagportálos bejelentkezési e-mailt kérhet egy IP-cím egy óra alatt. A korlát nélküli működéshez állítsa 0-ra, például ha mindenki egy címen keresztül éri el a ChurchCRM-et."
+
+#: 
+msgid "How many days a device stays signed in to the Member Portal after the member chooses to stay signed in. Set to 0 to remove the choice."
+msgstr "Hány napig marad bejelentkezve egy eszköz a tagportálra, miután a tag a bejelentkezve maradást választja. A választás eltávolításához állítsa 0-ra."
+
+#: 
+msgid "How many idle minutes end a Member Portal session."
+msgstr "Hány tétlen perc után ér véget egy tagportálos munkamenet."
+
+#: 
+msgid "How many minutes a Member Portal sign-in code and link stay valid."
+msgstr "Hány percig érvényes a tagportál bejelentkezési kódja és hivatkozása."
+
+#: 
+msgid "Idle time (minutes)"
+msgstr "Tétlenségi idő (perc)"
+
+#: 
+msgid "Idle too long"
+msgstr "Túl sokáig tétlen"
+
+#: 
+msgid "If %1$s is your new address, use the button below to confirm it. Until it is confirmed, it cannot be used to sign in. The link works once, until %2$s."
+msgstr "Ha a(z) %1$s az új címe, az alábbi gombbal erősítse meg. Megerősítésig nem használható bejelentkezéshez. A hivatkozás egyszer működik, eddig: %2$s."
+
+#: 
+msgid "If this address can be used to sign in, we've emailed you a code. Nothing after a few minutes? Ask the church office."
+msgstr "Ha ezzel a címmel be lehet jelentkezni, kódot küldtünk e-mailben. Néhány perc után sem érkezett semmi? Forduljon a gyülekezeti irodához."
+
+#: 
+msgid "If you didn't add it, remove it on the Sign-in and devices page and contact the church office."
+msgstr "Ha nem Ön adta hozzá, távolítsa el a Bejelentkezés és eszközök oldalon, és forduljon a gyülekezeti irodához."
+
+#: 
+msgid "If you didn't ask for this change, please contact the church office."
+msgstr "Ha nem Ön kérte ezt a módosítást, forduljon a gyülekezeti irodához."
+
+#: 
+msgid "If you didn't ask for this, please contact the church office."
+msgstr "Ha nem Ön kérte ezt, forduljon a gyülekezeti irodához."
+
+#: 
+msgid "It may have expired or already been used. If you need help, please contact the church office."
+msgstr "Lehet, hogy lejárt, vagy már felhasználták. Ha segítségre van szüksége, forduljon a gyülekezeti irodához."
+
+#: 
+msgid "Its plugin is not installed"
+msgstr "A bővítménye nincs telepítve"
+
+#: 
+msgid "Jump to a letter"
+msgstr "Ugrás egy betűhöz"
+
+#: 
+msgid "Keep me signed in (days)"
+msgstr "Maradjak bejelentkezve (nap)"
+
+#: 
+msgid "Keeps it"
+msgstr "Megtartja"
+
+#: 
+msgid "Kind of unconfirmed email"
+msgstr "A meg nem erősített e-mail fajtája"
+
+#: 
+msgid "Last day"
+msgstr "Utolsó nap"
+
+#: 
+msgid "Last used"
+msgstr "Utolsó használat"
+
+#: 
+msgid "Last used %s"
+msgstr "Utolsó használat: %s"
+
+#: 
+msgid "Leader of %s"
+msgstr "A(z) %s vezetője"
+
+#: 
+msgid "Let administrators open a person's Member Portal as that person, from the person's Actions menu, while member sign-in is on."
+msgstr "A rendszergazdák a személy Műveletek menüjéből úgy nyithatják meg a tagportálját, mintha ő lenne, amíg a tagi bejelentkezés be van kapcsolva."
+
+#: 
+msgid "Let members add passkeys and sign in to the Member Portal with them."
+msgstr "A tagok hozzáférési kulcsot adhatnak hozzá, és azzal jelentkezhetnek be a tagportálra."
+
+#: 
+msgid "Let members sign in to the Member Portal with their own email address. It can only be turned on while email sending works."
+msgstr "A tagok a saját e-mail-címükkel jelentkezhetnek be a tagportálra. Csak akkor kapcsolható be, ha az e-mail-küldés működik."
+
+#: 
+msgid "Let members sign in with their email"
+msgstr "A tagok e-maillel jelentkezhessenek be"
+
+#: 
+msgid "Link and code lifetime (minutes)"
+msgstr "A hivatkozás és a kód érvényessége (perc)"
+
+#: 
+msgid "Login as %s"
+msgstr "Bejelentkezés mint %s"
+
+#: 
+msgid "Login as Person"
+msgstr "Bejelentkezés személyként"
+
+#: 
+msgid "Login as Person could not start."
+msgstr "A személyként való bejelentkezés nem indult el."
+
+#: 
+msgid "Login as Person ended: %s"
+msgstr "A személyként való bejelentkezés véget ért: %s"
+
+#: 
+msgid "Login as Person history"
+msgstr "Személyként való bejelentkezések előzményei"
+
+#: 
+msgid "Login as Person started"
+msgstr "A személyként való bejelentkezés elindult"
+
+#: 
+msgid "Login as Person stopped"
+msgstr "A személyként való bejelentkezés leállt"
+
+#: 
+msgid "Look up anyone"
+msgstr "Bárki keresése"
+
+#: 
+msgid "Loses it"
+msgstr "Elveszíti"
+
+#: 
+msgid "Manage a team"
+msgstr "Csapat kezelése"
+
+#: 
+msgid "Manage my sign-in and devices"
+msgstr "Bejelentkezésem és eszközeim kezelése"
+
+#: 
+msgid "Matches: %s"
+msgstr "Találatok: %s"
+
+#: 
+msgid "May sign in"
+msgstr "Bejelentkezhet"
+
+#: 
+msgid "May sign in now"
+msgstr "Most bejelentkezhet"
+
+#: 
+msgid "Member Portal sign-in code"
+msgstr "Tagportál bejelentkezési kódja"
+
+#: 
+msgid "Member Portal sign-in notice"
+msgstr "Tagportál bejelentkezési értesítés"
+
+#: 
+msgid "Member Portal sign-ins and activity, for members and for staff who open the portal from their staff sign-in."
+msgstr "Tagportálos bejelentkezések és tevékenység a tagoknak, valamint azoknak a munkatársaknak, akik a munkatársi bejelentkezésükből nyitják meg a portált."
+
+#: 
+msgid "Member sign-in"
+msgstr "Tagi bejelentkezés"
+
+#: 
+msgid "Member sign-in emails each person a code, so email (SMTP) must work before you turn it on."
+msgstr "A tagi bejelentkezés mindenkinek kódot küld e-mailben, ezért az e-mailnek (SMTP) működnie kell, mielőtt bekapcsolja."
+
+#: 
+msgid "Member sign-in is off"
+msgstr "A tagi bejelentkezés ki van kapcsolva"
+
+#: 
+msgid "Member sign-in is off for the church."
+msgstr "A tagi bejelentkezés a gyülekezetnél ki van kapcsolva."
+
+#: 
+msgid "Member sign-in is off."
+msgstr "A tagi bejelentkezés ki van kapcsolva."
+
+#: 
+msgid "Member sign-in isn't available yet. Please contact the church office."
+msgstr "A tagi bejelentkezés még nem érhető el. Forduljon a gyülekezeti irodához."
+
+#: 
+msgid "Member sign-in never lets in people who are deceased, inactive, in an inactive family, awaiting review or have Disable sign-in on. These choices decide who else may."
+msgstr "A tagi bejelentkezés soha nem engedi be az elhunyt, inaktív, inaktív családban lévő, felülvizsgálatra váró vagy Bejelentkezés letiltása jelölésű személyeket. Ezek a választások döntik el, ki más léphet be."
+
+#: 
+msgid "Member sign-in sends each member a code by email, so it can only be turned on while ChurchCRM can send email. Turn on email and set up the mail server first."
+msgstr "A tagi bejelentkezés minden tagnak kódot küld e-mailben, ezért csak akkor kapcsolható be, ha a ChurchCRM tud e-mailt küldeni. Először kapcsolja be az e-mailt, és állítsa be a levelezőkiszolgálót."
+
+#: 
+msgid "Members see the Calendar page while at least one calendar is switched on."
+msgstr "A tagok a Naptár oldalt látják, amíg legalább egy naptár be van kapcsolva."
+
+#: 
+msgid "Members type at least %d letters of a name and see up to %d matches. The full list is never shown."
+msgstr "A tagok egy név legalább %d betűjét írják be, és legfeljebb %d találatot látnak. A teljes lista soha nem jelenik meg."
+
+#: 
+msgid "Members who are signed in now are signed out, and nobody can sign in with their email until member sign-in is turned on again."
+msgstr "A most bejelentkezett tagok kijelentkeznek, és senki sem léphet be az e-mailjével, amíg a tagi bejelentkezést újra be nem kapcsolják."
+
+#: 
+msgid "Members with these classifications find Directory in the Member Portal menu."
+msgstr "Az ezekbe a besorolásokba tartozó tagok a tagportál menüjében megtalálják a Névjegyzéket."
+
+#: 
+msgid "Minimum age"
+msgstr "Alsó életkor"
+
+#: 
+msgid "More attempts with this address in the next hour will not send another notice."
+msgstr "Ezzel a címmel a következő órában tett további próbálkozások nem küldenek újabb értesítést."
+
+#: 
+msgid "Moved from the family email"
+msgstr "Áthelyezve a családi e-mailből"
+
+#: 
+msgid "Moved to a head of household"
+msgstr "Áthelyezve egy háztartásfőhöz"
+
+#: 
+msgid "Moved to a spouse"
+msgstr "Áthelyezve egy házastárshoz"
+
+#: 
+msgid "New to our church? Tell us about your family and we will reach out to welcome you."
+msgstr "Új a gyülekezetünkben? Mondja el a családjáról, és jelentkezünk, hogy üdvözöljük."
+
+#: 
+msgid "No Login as Person sessions yet."
+msgstr "Még nincs személyként való bejelentkezési munkamenet."
+
+#: 
+msgid "No birth date, and not a head of household or spouse"
+msgstr "Nincs születési dátum, és nem háztartásfő vagy házastárs"
+
+#: 
+msgid "No calendar is switched on, so members do not see the Calendar page."
+msgstr "Nincs bekapcsolt naptár, ezért a tagok nem látják a Naptár oldalt."
+
+#: 
+msgid "No changes"
+msgstr "Nincs változás"
+
+#: 
+msgid "No changes made."
+msgstr "Nem történt módosítás."
+
+#: 
+msgid "No family role"
+msgstr "Nincs családi szerep"
+
+#: 
+msgid "No head of household or spouse can receive family email."
+msgstr "Egyetlen háztartásfő vagy házastárs sem kaphatja meg a családi e-mailt."
+
+#: 
+msgid "No head of household or spouse shares it"
+msgstr "Egyetlen háztartásfő vagy házastárs sem osztja"
+
+#: 
+msgid "No match"
+msgstr "Nincs találat"
+
+#: 
+msgid "No one matches the sign-in rule yet. Tick more family roles or classifications, or lower the minimum age."
+msgstr "Még senki sem felel meg a bejelentkezési szabálynak. Jelöljön be több családi szerepet vagy besorolást, vagy csökkentse az alsó életkort."
+
+#: 
+msgid "No passkey was added."
+msgstr "Nem került hozzá hozzáférési kulcs."
+
+#: 
+msgid "No passkey was used. Try again, or sign in with your email address."
+msgstr "Nem használtak hozzáférési kulcsot. Próbálja újra, vagy jelentkezzen be az e-mail-címével."
+
+#: 
+msgid "No person has this email"
+msgstr "Egyetlen személynek sincs ez az e-mail-címe"
+
+#: 
+msgid "No personal email"
+msgstr "Nincs személyes e-mail"
+
+#: 
+msgid "No shared emails stop anyone from signing in."
+msgstr "Egyetlen megosztott e-mail sem akadályoz senkit a bejelentkezésben."
+
+#: 
+msgid "No such person"
+msgstr "Nincs ilyen személy"
+
+#: 
+msgid "No, thanks"
+msgstr "Nem, köszönöm"
+
+#: 
+msgid "Nobody can sign in with a personal email that two people who may sign in share. For an address shared within one family, the head of household keeps it, else the spouse (the oldest first). Everyone else sharing it loses it. Untick any you want to fix another way."
+msgstr "Senki sem jelentkezhet be olyan személyes e-maillel, amelyet két bejelentkezésre jogosult személy oszt meg. Egy családon belül megosztott címnél a háztartásfő tartja meg, különben a házastárs (először a legidősebb). Mindenki más, aki osztja, elveszíti. Vegye ki a jelölést annál, amit másképp szeretne javítani."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one classification under Who may sign in."
+msgstr "Még senki sem jelentkezhet be: a Ki jelentkezhet be résznél jelöljön be legalább egy besorolást."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role and at least one classification under Who may sign in."
+msgstr "Még senki sem jelentkezhet be: a Ki jelentkezhet be résznél jelöljön be legalább egy családi szerepet és legalább egy besorolást."
+
+#: 
+msgid "Nobody can sign in yet: tick at least one family role under Who may sign in."
+msgstr "Még senki sem jelentkezhet be: a Ki jelentkezhet be résznél jelöljön be legalább egy családi szerepet."
+
+#: 
+msgid "Nobody in the directory matches that name."
+msgstr "A névjegyzékben senki sem felel meg ennek a névnek."
+
+#: 
+msgid "Nobody is listed in the directory yet."
+msgstr "A névjegyzékben még senki sincs felsorolva."
+
+#: 
+msgid "Not ended"
+msgstr "Nem ért véget"
+
+#: 
+msgid "Not moved"
+msgstr "Nincs áthelyezve"
+
+#: 
+msgid "Not sure which email we have? Contact the church office."
+msgstr "Nem biztos benne, melyik e-mailünk van meg? Forduljon a gyülekezeti irodához."
+
+#: 
+msgid "Not yet"
+msgstr "Még nem"
+
+#: 
+msgid "Noted in the family timeline"
+msgstr "Feljegyezve a család idővonalán"
+
+#: 
+msgid "Of them, people who have signed in: {{total}}. They are signed out everywhere, and the address gets a notice."
+msgstr "Közülük ennyien jelentkeztek már be: {{total}}. Mindenhonnan kijelentkeznek, és a cím értesítést kap."
+
+#: 
+msgid "Off for everyone: \"%s\" is switched off"
+msgstr "Mindenkinél ki: a(z) „%s” ki van kapcsolva"
+
+#: 
+msgid "Off for everyone: Volunteer Management is not set to V2"
+msgstr "Mindenkinél ki: az Önkénteskezelés nincs V2-re állítva"
+
+#: 
+msgid "Off for everyone: its feature is switched off"
+msgstr "Mindenkinél ki: a funkciója ki van kapcsolva"
+
+#: 
+msgid "Off for everyone: its plugin is turned off"
+msgstr "Mindenkinél ki: a bővítménye ki van kapcsolva"
+
+#: 
+msgid "Off for everyone: no calendar is shared with members"
+msgstr "Mindenkinél ki: egyetlen naptár sincs megosztva a tagokkal"
+
+#: 
+msgid "Office list"
+msgstr "Irodai lista"
+
+#: 
+msgid "Once it is confirmed, it can be used to sign in to the Member Portal."
+msgstr "Megerősítés után ezzel lehet bejelentkezni a tagportálra."
+
+#: 
+msgid "Only addresses you may confirm can be selected."
+msgstr "Csak azok a címek jelölhetők ki, amelyeket Ön megerősíthet."
+
+#: 
+msgid "Only administrators see the reason."
+msgstr "Az indokot csak a rendszergazdák látják."
+
+#: 
+msgid "Only an administrator can change the email of a person who has a staff account or portal permissions."
+msgstr "Csak rendszergazda módosíthatja annak az e-mailjét, akinek munkatársi fiókja vagy portáljogosultsága van."
+
+#: 
+msgid "Only an administrator can confirm an email that replaced one the person signed in with."
+msgstr "Csak rendszergazda erősíthet meg olyan e-mailt, amely azt váltotta fel, amellyel a személy bejelentkezett."
+
+#: 
+msgid "Only an administrator can confirm the email of a person who has a staff account or portal permissions."
+msgstr "Csak rendszergazda erősítheti meg annak az e-mailjét, akinek munkatársi fiókja vagy portáljogosultsága van."
+
+#: 
+msgid "Only an administrator can fix this address: someone sharing it has a staff account or portal permissions."
+msgstr "Ezt a címet csak rendszergazda javíthatja: valaki, aki osztja, munkatársi fiókkal vagy portáljogosultsággal rendelkezik."
+
+#: 
+msgid "Only an adult of your family can confirm these details. Please contact the church office."
+msgstr "Ezeket az adatokat csak a családja egy felnőttje erősítheti meg. Forduljon a gyülekezeti irodához."
+
+#: 
+msgid "Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."
+msgstr "Csak olyan címet erősítsen meg, amelyről tudja, hogy az adott személyé. Aki elolvassa a címet, az adott személyként bejelentkezhet."
+
+#: 
+msgid "Only living people with their own email can be on the office list."
+msgstr "Az irodai listán csak élő, saját e-maillel rendelkező személyek szerepelhetnek."
+
+#: 
+msgid "Only people with their own email can be added."
+msgstr "Csak saját e-maillel rendelkező személyek adhatók hozzá."
+
+#: 
+msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
+msgstr "Az opcionális telemetria tartalmazhatja az oldalútvonalakat, az aktív nyelvet, a CRM verzióját, a PHP verzióját, az operációs rendszer családját, a gyülekezeti adatok beállításából származó országot és egy véletlen telepítési azonosítót. A hibajelentések nem tartalmazzák a telepítési azonosítót. Az adatokat az Egyesült Államokban lévő PostHog kapja."
+
+#: 
+msgid "Passkey"
+msgstr "Hozzáférési kulcs"
+
+#: 
+msgid "Passkey added"
+msgstr "Hozzáférési kulcs hozzáadva"
+
+#: 
+msgid "Passkey removed"
+msgstr "Hozzáférési kulcs eltávolítva"
+
+#: 
+msgid "Passkeys"
+msgstr "Hozzáférési kulcsok"
+
+#: 
+msgid "Passkeys are turned off."
+msgstr "A hozzáférési kulcsok ki vannak kapcsolva."
+
+#: 
+msgid "Passkeys cannot be used here."
+msgstr "Itt nem használhatók hozzáférési kulcsok."
+
+#: 
+msgid "Passkeys cannot be used on this site yet. Please contact the church office."
+msgstr "Ezen az oldalon még nem használhatók hozzáférési kulcsok. Forduljon a gyülekezeti irodához."
+
+#: 
+msgid "Passkeys need a host name, not an IP address, in the site address."
+msgstr "A hozzáférési kulcsokhoz a webhely címében gépnév kell, nem IP-cím."
+
+#: 
+msgid "Passkeys need a secure (HTTPS) connection to this site."
+msgstr "A hozzáférési kulcsokhoz biztonságos (HTTPS) kapcsolat kell ehhez az oldalhoz."
+
+#: 
+msgid "Passkeys need the site address to be set in Config.php."
+msgstr "A hozzáférési kulcsokhoz a webhely címét a Config.php fájlban kell megadni."
+
+#: 
+msgid "Passkeys need the site to be served over HTTPS. Members are not offered passkeys until it is."
+msgstr "A hozzáférési kulcsokhoz az oldalt HTTPS-en kell kiszolgálni. A tagok addig nem kapnak hozzáférési kulcsot."
+
+#: 
+msgid "Passkeys work only at %s."
+msgstr "A hozzáférési kulcsok csak itt működnek: %s."
+
+#: 
+msgid "Passkeys: %d"
+msgstr "Hozzáférési kulcsok: %d"
+
+#: 
+msgid "People the saved settings let in: %s"
+msgstr "A mentett beállítások által beengedettek: %s"
+
+#: 
+msgid "People to email when someone could not sign in to the Member Portal"
+msgstr "Akik e-mailt kapnak, ha valaki nem tudott belépni a tagportálra"
+
+#: 
+msgid "People who hold it"
+msgstr "Akiknél megvan"
+
+#: 
+msgid "People who lose an address: {{total}}"
+msgstr "Akik elveszítenek egy címet: {{total}}"
+
+#: 
+msgid "People who lost an address: {{total}}"
+msgstr "Akik elveszítettek egy címet: {{total}}"
+
+#: 
+msgid "People who may sign in: {{total}}"
+msgstr "Akik bejelentkezhetnek: {{total}}"
+
+#: 
+msgid "People who used to sign in to the Member Portal: %d"
+msgstr "Akik korábban beléptek a tagportálra: %d"
+
+#: 
+msgid "People with these classifications appear in the directory. The number is how many active people have each classification."
+msgstr "Az ezekbe a besorolásokba tartozók megjelennek a névjegyzékben. A szám azt mutatja, hány aktív személynek van az adott besorolása."
+
+#: 
+msgid "People with this email: %s"
+msgstr "Személyek ezzel az e-maillel: %s"
+
+#: 
+msgid "Person %d"
+msgstr "Személy %d"
+
+#: 
+msgid "Pick classifications from the list."
+msgstr "Válasszon besorolásokat a listából."
+
+#: 
+msgid "Pick family roles from the list."
+msgstr "Válasszon családi szerepeket a listából."
+
+#: 
+msgid "Pick people for the office list."
+msgstr "Válasszon személyeket az irodai listára."
+
+#: 
+msgid "Please choose a language from the list."
+msgstr "Válasszon nyelvet a listából."
+
+#: 
+msgid "Portal permission given"
+msgstr "Portáljogosultság megadva"
+
+#: 
+msgid "Portal permission removed"
+msgstr "Portáljogosultság eltávolítva"
+
+#: 
+msgid "Portal permissions"
+msgstr "Portáljogosultságok"
+
+#: 
+msgid "Portal sign-in"
+msgstr "Portálbejelentkezés"
+
+#: 
+msgid "Problem"
+msgstr "Probléma"
+
+#: 
+msgid "Reason"
+msgstr "Indok"
+
+#: 
+msgid "Reason: %s"
+msgstr "Indok: %s"
+
+#: 
+msgid "Refused"
+msgstr "Elutasítva"
+
+#: 
+msgid "Register your family"
+msgstr "Regisztrálja a családját"
+
+#: 
+msgid "Remembered device"
+msgstr "Megjegyzett eszköz"
+
+#: 
+msgid "Remembered device removed"
+msgstr "Megjegyzett eszköz eltávolítva"
+
+#: 
+msgid "Remembered devices: %d"
+msgstr "Megjegyzett eszközök: %d"
+
+#: 
+msgid "Remove Emails"
+msgstr "E-mailek eltávolítása"
+
+#: 
+msgid "Remove this passkey"
+msgstr "Hozzáférési kulcs eltávolítása"
+
+#: 
+msgid "Remove this permission"
+msgstr "Jogosultság eltávolítása"
+
+#: 
+msgid "Removed from: {{names}}"
+msgstr "Eltávolítva innen: {{names}}"
+
+#: 
+msgid "Replaced after a sign-in"
+msgstr "Bejelentkezés után lecserélve"
+
+#: 
+msgid "Replaced by another sign-in"
+msgstr "Másik bejelentkezés váltotta fel"
+
+#: 
+msgid "Result"
+msgstr "Eredmény"
+
+#: 
+msgid "Run a volunteer team: positions, volunteers, schedules, staffing and headcounts."
+msgstr "Önkéntes csapat vezetése: feladatok, önkéntesek, beosztások, létszám és jelenlét."
+
+#: 
+msgid "Say why sign-in is being disabled."
+msgstr "Írja le, miért tiltják le a bejelentkezést."
+
+#: 
+msgid "Say why this permission is being given."
+msgstr "Írja le, miért adják meg ezt a jogosultságot."
+
+#: 
+msgid "Search anyone on file. Each row says whether they may sign in to the Member Portal and, if not, why."
+msgstr "Keressen bárkit a nyilvántartásban. Minden sor megmondja, beléphet-e a tagportálra, és ha nem, miért."
+
+#: 
+msgid "Search method"
+msgstr "Keresés módja"
+
+#: 
+msgid "Search only"
+msgstr "Csak keresés"
+
+#: 
+msgid "See family contact details"
+msgstr "Családi elérhetőségek megtekintése"
+
+#: 
+msgid "See my family"
+msgstr "A családom megtekintése"
+
+#: 
+msgid "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page."
+msgstr "Úgy nézi a tagportált, ahogy ez a személy látja? A munkatársi oldalak zárva maradnak, amíg a Leállítás gombra nem nyom, és a munkamenet ezen az oldalon és a felhasználói oldalán is rögzül."
+
+#: 
+msgid "See the calendars the church shares with members, and subscribe to them."
+msgstr "A gyülekezet által a tagokkal megosztott naptárak megtekintése és feliratkozás rájuk."
+
+#: 
+msgid "See the church calendar"
+msgstr "A gyülekezeti naptár megtekintése"
+
+#: 
+msgid "See the devices and passkeys that sign them in, and sign out or remove any of them."
+msgstr "Az őket bejelentkeztető eszközök és hozzáférési kulcsok megtekintése, valamint bármelyik kijelentkeztetése vagy eltávolítása."
+
+#: 
+msgid "See the email addresses and phone numbers of the people in their family."
+msgstr "A családtagok e-mail-címeinek és telefonszámainak megtekintése."
+
+#: 
+msgid "See the member directory"
+msgstr "A tagi névjegyzék megtekintése"
+
+#: 
+msgid "See the names and photos of the people in their family."
+msgstr "A családtagok nevének és fényképének megtekintése."
+
+#: 
+msgid "See the people the church lists in its directory, with the details the church chooses to share."
+msgstr "A gyülekezet névjegyzékében szereplő személyek megtekintése, a gyülekezet által megosztani kívánt adatokkal."
+
+#: 
+msgid "See their volunteer schedule, sign up for open places and ask for a substitute."
+msgstr "Az önkéntes beosztásuk megtekintése, jelentkezés szabad helyekre és helyettes kérése."
+
+#: 
+msgid "Send browse as true or false."
+msgstr "A böngészést true vagy false értékként küldje."
+
+#: 
+msgid "Send the classifications as a list of ids."
+msgstr "A besorolásokat azonosítók listájaként küldje."
+
+#: 
+msgid "Send the directory settings as a JSON object."
+msgstr "A névjegyzék beállításait JSON-objektumként küldje."
+
+#: 
+msgid "Send the fields to show as an object of true and false values."
+msgstr "A megjelenítendő mezőket true és false értékek objektumaként küldje."
+
+#: 
+msgid "Send the settings as a JSON object."
+msgstr "A beállításokat JSON-objektumként küldje."
+
+#: 
+msgid "Session ended"
+msgstr "A munkamenet véget ért"
+
+#: 
+msgid "Set up email"
+msgstr "E-mail beállítása"
+
+#: 
+msgid "Set up email first."
+msgstr "Először állítsa be az e-mailt."
+
+#: 
+msgid "Shared addresses fixed: {{total}}"
+msgstr "Javított megosztott címek: {{total}}"
+
+#: 
+msgid "Shared addresses to fix: {{total}}"
+msgstr "Javítandó megosztott címek: {{total}}"
+
+#: 
+msgid "Shared by"
+msgstr "Megosztja"
+
+#: 
+msgid "Shared emails that stop people from signing in"
+msgstr "Megosztott e-mailek, amelyek miatt nem lehet bejelentkezni"
+
+#: 
+msgid "Show or hide this member"
+msgstr "Tag megjelenítése vagy elrejtése"
+
+#: 
+msgid "Show the Directory page in the Member Portal to the classifications chosen below."
+msgstr "A Névjegyzék oldal megjelenítése a tagportálon az alább kiválasztott besorolásoknak."
+
+#: 
+msgid "Show the member directory"
+msgstr "A tagi névjegyzék megjelenítése"
+
+#: 
+msgid "Show the member directory in the Member Portal."
+msgstr "A tagi névjegyzék megjelenítése a tagportálon."
+
+#: 
+msgid "Show with year"
+msgstr "Megjelenítés az évvel"
+
+#: 
+msgid "Show without year"
+msgstr "Megjelenítés év nélkül"
+
+#: 
+msgid "Showing the first %d matches. Type more of the name to find the person you are looking for."
+msgstr "Az első %d találat látható. Írja be a név további részét, hogy megtalálja a keresett személyt."
+
+#: 
+msgid "Sign in as %s?"
+msgstr "Bejelentkezik mint %s?"
+
+#: 
+msgid "Sign in next time on this device with Face ID, a fingerprint or your device PIN."
+msgstr "Legközelebb ezen az eszközön Face ID-val, ujjlenyomattal vagy az eszköz PIN-kódjával jelentkezzen be."
+
+#: 
+msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr "Jelentkezzen be, hogy lássa a családját, a gyülekezeti naptárt és a szolgálat lehetőségeit. Nincs szüksége jelszóra vagy fiókra."
+
+#: 
+msgid "Sign in with a passkey"
+msgstr "Bejelentkezés hozzáférési kulccsal"
+
+#: 
+msgid "Sign out every device"
+msgstr "Kijelentkezés minden eszközről"
+
+#: 
+msgid "Sign out every device now?"
+msgstr "Most kijelentkezik minden eszközről?"
+
+#: 
+msgid "Sign out everywhere"
+msgstr "Kijelentkezés mindenhonnan"
+
+#: 
+msgid "Sign out this device"
+msgstr "Kijelentkezés erről az eszközről"
+
+#: 
+msgid "Sign-in"
+msgstr "Bejelentkezés"
+
+#: 
+msgid "Sign-in and devices"
+msgstr "Bejelentkezés és eszközök"
+
+#: 
+msgid "Sign-in could not be disabled."
+msgstr "A bejelentkezést nem sikerült letiltani."
+
+#: 
+msgid "Sign-in could not be enabled."
+msgstr "A bejelentkezést nem sikerült engedélyezni."
+
+#: 
+msgid "Sign-in disabled"
+msgstr "Bejelentkezés letiltva"
+
+#: 
+msgid "Sign-in email requested"
+msgstr "Bejelentkezési e-mail kérve"
+
+#: 
+msgid "Sign-in emails per IP address per hour"
+msgstr "Bejelentkezési e-mailek IP-címenként óránként"
+
+#: 
+msgid "Sign-in enabled"
+msgstr "Bejelentkezés engedélyezve"
+
+#: 
+msgid "Sign-in is already disabled for this person."
+msgstr "Ennek a személynek a bejelentkezése már le van tiltva."
+
+#: 
+msgid "Sign-in is disabled"
+msgstr "A bejelentkezés le van tiltva"
+
+#: 
+msgid "Sign-in is disabled for this person."
+msgstr "Ennek a személynek a bejelentkezése le van tiltva."
+
+#: 
+msgid "Sign-in is enabled for this person."
+msgstr "Ennek a személynek a bejelentkezése engedélyezve van."
+
+#: 
+msgid "Sign-in is not disabled for this person."
+msgstr "Ennek a személynek a bejelentkezése nincs letiltva."
+
+#: 
+msgid "Sign-in refused"
+msgstr "Bejelentkezés elutasítva"
+
+#: 
+msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
+msgstr "A bejelentkezés, a munkamenetek és az API-kulcs mindaddig zárolva van, amíg ezt a kapcsolt személy rekordján nem rendezik."
+
+#: 
+msgid "Signed in, last 30 days"
+msgstr "Bejelentkezett, elmúlt 30 nap"
+
+#: 
+msgid "Signed out"
+msgstr "Kijelentkezve"
+
+#: 
+msgid "Signed out by a change to their sign-in"
+msgstr "A bejelentkezésük módosítása miatt kijelentkeztetve"
+
+#: 
+msgid "Signed out everywhere"
+msgstr "Mindenhonnan kijelentkeztetve"
+
+#: 
+msgid "Someone asked for a Member Portal sign-in email, but none was sent."
+msgstr "Valaki tagportálos bejelentkezési e-mailt kért, de nem ment ki egy sem."
+
+#: 
+msgid "Someone could not sign in to the Member Portal"
+msgstr "Valaki nem tudott belépni a tagportálra"
+
+#: 
+msgid "Staff pages stay closed during Login as Person. Press Stop in the banner to go back."
+msgstr "A munkatársi oldalak zárva maradnak a személyként való bejelentkezés alatt. A visszalépéshez nyomja meg a Leállítás gombot a sávban."
+
+#: 
+msgid "Stop"
+msgstr "Leállítás"
+
+#: 
+msgid "Stopped"
+msgstr "Leállítva"
+
+#: 
+msgid "Tell the church office whether the family details are still right."
+msgstr "Mondja meg a gyülekezeti irodának, hogy a családi adatok még helyesek-e."
+
+#: 
+msgid "That code did not work. Check the newest email from us, or ask for a new one."
+msgstr "Ez a kód nem működött. Nézze meg a tőlünk érkezett legújabb e-mailt, vagy kérjen újat."
+
+#: 
+msgid "That could not be removed."
+msgstr "Ezt nem sikerült eltávolítani."
+
+#: 
+msgid "That device is signed out."
+msgstr "Az az eszköz ki van jelentkeztetve."
+
+#: 
+msgid "That is not a valid email address."
+msgstr "Ez nem érvényes e-mail-cím."
+
+#: 
+msgid "That page had been open too long. Please try again."
+msgstr "Az az oldal túl régóta volt nyitva. Próbálja újra."
+
+#: 
+msgid "That passkey is removed. It can no longer sign you in."
+msgstr "Az a hozzáférési kulcs el lett távolítva. Többé nem jelentkeztetheti be."
+
+#: 
+msgid "That took too long. Please try again."
+msgstr "Ez túl sokáig tartott. Próbálja újra."
+
+#: 
+msgid "The 7.8.3 upgrade gave each family email to a person. These it could not, so it left a note in the family's timeline instead."
+msgstr "A 7.8.3-as frissítés minden családi e-mailt egy személynek adott. Ezeket nem tudta, ezért helyette jegyzetet hagyott a család idővonalán."
+
+#: 
+msgid "The Member Portal and the emails it sends you use this language."
+msgstr "A tagportál és az Önnek küldött e-mailjei ezt a nyelvet használják."
+
+#: 
+msgid "The change could not be saved."
+msgstr "A módosítást nem sikerült menteni."
+
+#: 
+msgid "The code and the button work once, until %s."
+msgstr "A kód és a gomb egyszer működik, eddig: %s."
+
+#: 
+msgid "The code or link went to an address that is no longer their email"
+msgstr "A kód vagy a hivatkozás olyan címre ment, amely már nem az e-mailjük"
+
+#: 
+msgid "The confirmation email could not be sent. Please try again later."
+msgstr "A megerősítő e-mailt nem sikerült elküldeni. Próbálja meg később."
+
+#: 
+msgid "The device is signed out."
+msgstr "Az eszköz ki van jelentkeztetve."
+
+#: 
+msgid "The email address %2$s was removed from your record at %1$s. You have been signed out of the Member Portal on every device."
+msgstr "A(z) %2$s e-mail-címet %1$s időpontban eltávolítottuk az Ön rekordjáról. A tagportálról minden eszközön kijelentkeztettük."
+
+#: 
+msgid "The email address on your record at %1$s was changed from %2$s to %3$s. You have been signed out of the Member Portal on every device."
+msgstr "A rekordján lévő e-mail-címet %1$s időpontban %2$s címről %3$s címre módosítottuk. A tagportálról minden eszközön kijelentkeztettük."
+
+#: 
+msgid "The email could not be confirmed."
+msgstr "Az e-mailt nem sikerült megerősíteni."
+
+#: 
+msgid "The email could not be sent."
+msgstr "Az e-mailt nem sikerült elküldeni."
+
+#: 
+msgid "The email is confirmed. It can now be used to sign in."
+msgstr "Az e-mail meg van erősítve. Most már bejelentkezésre használható."
+
+#: 
+msgid "The end date is before the start date."
+msgstr "A záró dátum korábbi a kezdő dátumnál."
+
+#: 
+msgid "The family has no living, active head of household or spouse"
+msgstr "A családnak nincs élő, aktív háztartásfője vagy házastársa"
+
+#: 
+msgid "The family is inactive"
+msgstr "A család inaktív"
+
+#: 
+msgid "The head of household and spouse both have their own email"
+msgstr "A háztartásfőnek és a házastársnak is van saját e-mailje"
+
+#: 
+msgid "The last day cannot be in the past."
+msgstr "Az utolsó nap nem lehet a múltban."
+
+#: 
+msgid "The linked person may not sign in, so this account cannot sign in"
+msgstr "A kapcsolt személy nem jelentkezhet be, ezért ez a fiók sem"
+
+#: 
+msgid "The list could not be loaded."
+msgstr "A listát nem sikerült betölteni."
+
+#: 
+msgid "The passkey could not be added. Please try again."
+msgstr "A hozzáférési kulcsot nem sikerült hozzáadni. Próbálja újra."
+
+#: 
+msgid "The passkey could not be verified"
+msgstr "A hozzáférési kulcsot nem sikerült ellenőrizni"
+
+#: 
+msgid "The passkey is not on record, or was removed"
+msgstr "A hozzáférési kulcs nincs nyilvántartva, vagy eltávolították"
+
+#: 
+msgid "The passkey was removed."
+msgstr "A hozzáférési kulcsot eltávolítottuk."
+
+#: 
+msgid "The people sharing it are in different families, or not in a family"
+msgstr "Akik osztják, különböző családokban vannak, vagy nincsenek családban"
+
+#: 
+msgid "The people sharing this address have changed. Open Fix shared emails again."
+msgstr "Az ezt a címet megosztó személyek megváltoztak. Nyissa meg újra a Megosztott e-mailek javítása funkciót."
+
+#: 
+msgid "The permission could not be given."
+msgstr "A jogosultságot nem sikerült megadni."
+
+#: 
+msgid "The permission ends after this day. It can be given again."
+msgstr "A jogosultság ezen nap után megszűnik. Újra megadható."
+
+#: 
+msgid "The permission was given."
+msgstr "A jogosultságot megadtuk."
+
+#: 
+msgid "The permission was removed."
+msgstr "A jogosultságot eltávolítottuk."
+
+#: 
+msgid "The permissions could not be loaded."
+msgstr "A jogosultságokat nem sikerült betölteni."
+
+#: 
+msgid "The person loses this permission in the Member Portal at once."
+msgstr "A személy azonnal elveszíti ezt a jogosultságot a tagportálon."
+
+#: 
+msgid "The reason can be at most %d characters long."
+msgstr "Az indok legfeljebb %d karakter lehet."
+
+#: 
+msgid "The sign-in rules let them in, and each has their own email that nobody else who may sign in uses."
+msgstr "A bejelentkezési szabályok beengedik őket, és mindegyiküknek van saját e-mailje, amelyet más bejelentkezésre jogosult nem használ."
+
+#: 
+msgid "The sign-in rules let them in, but their email does not: they have none, share it with someone else who may sign in, or it is not confirmed yet."
+msgstr "A bejelentkezési szabályok beengedik őket, de az e-mailjük nem: nincs nekik, megosztják más bejelentkezésre jogosulttal, vagy még nincs megerősítve."
+
+#: 
+msgid "The sign-in settings could not be saved."
+msgstr "A bejelentkezési beállításokat nem sikerült menteni."
+
+#: 
+msgid "The unconfirmed email has changed. Reload the page and try again."
+msgstr "A meg nem erősített e-mail megváltozott. Töltse újra az oldalt, és próbálja újra."
+
+#: 
+msgid "Their classification may not sign in"
+msgstr "A besorolásuk nem jelentkezhet be"
+
+#: 
+msgid "Their email changed"
+msgstr "Az e-mailjük megváltozott"
+
+#: 
+msgid "Their email is not confirmed yet"
+msgstr "Az e-mailjük még nincs megerősítve"
+
+#: 
+msgid "Their email is shared with someone else"
+msgstr "Az e-mailjüket más is használja"
+
+#: 
+msgid "Their family role may not sign in"
+msgstr "A családi szerepük nem jelentkezhet be"
+
+#: 
+msgid "Their old logins were removed by the upgrade. Turn on member sign-in so they can sign in with their own email."
+msgstr "A régi bejelentkezéseiket a frissítés eltávolította. Kapcsolja be a tagi bejelentkezést, hogy a saját e-mailjükkel léphessenek be."
+
+#: 
+msgid "Their remembered device had expired"
+msgstr "A megjegyzett eszközük lejárt"
+
+#: 
+msgid "Their remembered device was signed out"
+msgstr "A megjegyzett eszközüket kijelentkeztették"
+
+#: 
+msgid "Theme development"
+msgstr "Témafejlesztés"
+
+#: 
+msgid "There is no classification with id %d."
+msgstr "Nincs %d azonosítójú besorolás."
+
+#: 
+msgid "There is no picker for this kind of scope."
+msgstr "Ehhez a hatókörhöz nincs választó."
+
+#: 
+msgid "There is no such audit event."
+msgstr "Nincs ilyen ellenőrzési esemény."
+
+#: 
+msgid "There is no such email problem."
+msgstr "Nincs ilyen e-mail-probléma."
+
+#: 
+msgid "There is no such kind of unconfirmed email."
+msgstr "Nincs ilyen típusú meg nem erősített e-mail."
+
+#: 
+msgid "There is no such list."
+msgstr "Nincs ilyen lista."
+
+#: 
+msgid "There is no such portal permission."
+msgstr "Nincs ilyen portáljogosultság."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "Ezek azok a telefonok és számítógépek, amelyeken a bejelentkezve maradást választotta. Jelentkezzen ki azokról, amelyeket már nem használ, vagy nem ismer fel."
+
+#: 
+msgid "They have a staff account"
+msgstr "Munkatársi fiókjuk van"
+
+#: 
+msgid "They may sign in but never have."
+msgstr "Bejelentkezhetnek, de még soha nem tették."
+
+#: 
+msgid "This action needs a signed-in browser session."
+msgstr "Ehhez a művelethez bejelentkezett böngészőmunkamenet kell."
+
+#: 
+msgid "This address could not be changed. Open Fix shared emails again to see where it stands."
+msgstr "Ezt a címet nem sikerült módosítani. Nyissa meg újra a Megosztott e-mailek javítása funkciót, hogy lássa az állapotát."
+
+#: 
+msgid "This address is no longer shared by people who may sign in."
+msgstr "Ezt a címet már nem osztják meg bejelentkezésre jogosult személyek."
+
+#: 
+msgid "This browser cannot make passkeys."
+msgstr "Ez a böngésző nem tud hozzáférési kulcsot létrehozni."
+
+#: 
+msgid "This device"
+msgstr "Ez az eszköz"
+
+#: 
+msgid "This device already has a passkey for you."
+msgstr "Ezen az eszközön már van hozzáférési kulcsa."
+
+#: 
+msgid "This device will no longer keep the person signed in, and a session open on it ends. They can sign in again by email."
+msgstr "Ez az eszköz többé nem tartja bejelentkezve a személyt, és a rajta nyitott munkamenet véget ér. E-mailben újra bejelentkezhetnek."
+
+#: 
+msgid "This is my own device. Keep me signed in."
+msgstr "Ez a saját eszközöm. Maradjak bejelentkezve."
+
+#: 
+msgid "This is where you decide about guests. The number is how many active people have each classification."
+msgstr "Itt dönt a vendégekről. A szám azt mutatja, hány aktív személynek van az adott besorolása."
+
+#: 
+msgid "This link cannot be used"
+msgstr "Ez a hivatkozás nem használható"
+
+#: 
+msgid "This link has expired or was already used"
+msgstr "Ez a hivatkozás lejárt, vagy már felhasználták"
+
+#: 
+msgid "This part of the Member Portal is not available to you."
+msgstr "A tagportálnak ez a része Önnek nem érhető el."
+
+#: 
+msgid "This passkey is already on record."
+msgstr "Ez a hozzáférési kulcs már nyilvántartásban van."
+
+#: 
+msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr "Ez a hozzáférési kulcs többé nem jelentkezteti be a személyt. E-mailben beléphetnek, és újat adhatnak hozzá."
+
+#: 
+msgid "This permission cannot be given on the person page."
+msgstr "Ez a jogosultság a személy oldalán nem adható meg."
+
+#: 
+msgid "This person already has every permission that can be given."
+msgstr "Ennek a személynek már megvan minden megadható jogosultsága."
+
+#: 
+msgid "This person already has this permission."
+msgstr "Ennek a személynek már megvan ez a jogosultság."
+
+#: 
+msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr "Ez a személy sehová sem jelentkezhet be többé, sem a tagportálra, sem munkatársként. Minden munkamenet véget ér, és a megjegyzett eszközei, valamint a hozzáférési kulcsai törlődnek."
+
+#: 
+msgid "This person could not be signed out."
+msgstr "Ezt a személyt nem sikerült kijelentkeztetni."
+
+#: 
+msgid "This person has a staff account. Login as Person never opens a staff account."
+msgstr "Ennek a személynek munkatársi fiókja van. A személyként való bejelentkezés soha nem nyit meg munkatársi fiókot."
+
+#: 
+msgid "This person has no such passkey."
+msgstr "Ennek a személynek nincs ilyen hozzáférési kulcsa."
+
+#: 
+msgid "This person has no such permission."
+msgstr "Ennek a személynek nincs ilyen jogosultsága."
+
+#: 
+msgid "This person has no such remembered device."
+msgstr "Ennek a személynek nincs ilyen megjegyzett eszköze."
+
+#: 
+msgid "This person has no unconfirmed email."
+msgstr "Ennek a személynek nincs meg nem erősített e-mailje."
+
+#: 
+msgid "This person has signed in to the Member Portal. Changing this email signs them out everywhere, and the new address cannot be used to sign in until it is confirmed."
+msgstr "Ez a személy belépett a tagportálra. Az e-mail módosítása mindenhonnan kijelentkezteti, és az új cím megerősítésig nem használható bejelentkezésre."
+
+#: 
+msgid "This person is deceased."
+msgstr "Ez a személy elhunyt"
+
+#: 
+msgid "This person is signed out of the Member Portal everywhere."
+msgstr "Ez a személy a tagportálról mindenhonnan ki van jelentkeztetve."
+
+#: 
+msgid "This person no longer exists."
+msgstr "Ez a személy már nem létezik."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. You can sign in again with your email address."
+msgstr "Ez mindenhonnan kijelentkezteti, itt is, és minden eszközt elfelejt. Az e-mail-címével újra bejelentkezhet."
+
+#: 
+msgid "This signs you out everywhere, including here, and forgets every device. Your passkeys stay: you can sign in again with a passkey or your email address."
+msgstr "Ez mindenhonnan kijelentkezteti, itt is, és minden eszközt elfelejt. A hozzáférési kulcsai megmaradnak: hozzáférési kulccsal vagy az e-mail-címével újra bejelentkezhet."
+
+#: 
+msgid "This tool never changes these. Give each person their own email on their record."
+msgstr "Ez az eszköz ezeket soha nem módosítja. Adjon mindenkinek saját e-mail-címet a rekordján."
+
+#: 
+msgid "Tick this only on your own phone or computer, never on a shared or public one."
+msgstr "Ezt csak a saját telefonján vagy számítógépén jelölje be, soha nem közös vagy nyilvános eszközön."
+
+#: 
+msgid "Time: %s"
+msgstr "Időpont: %s"
+
+#: 
+msgid "Timed out"
+msgstr "Időtúllépés"
+
+#: 
+msgid "To change this email, please contact the church office."
+msgstr "Az e-mail módosításához forduljon a gyülekezeti irodához."
+
+#: 
+msgid "To fix"
+msgstr "Javítandó"
+
+#: 
+msgid "To stay signed in on your own phone or computer, tick \"This is my own device\" the next time you sign in."
+msgstr "Ha a saját telefonján vagy számítógépén bejelentkezve szeretne maradni, a következő bejelentkezéskor jelölje be a „Ez a saját eszközöm” lehetőséget."
+
+#: 
+msgid "Too many attempts"
+msgstr "Túl sok próbálkozás"
+
+#: 
+msgid "Too many sign-in emails today"
+msgstr "Ma túl sok bejelentkezési e-mail"
+
+#: 
+msgid "Too many sign-in requests for this email address"
+msgstr "Túl sok bejelentkezési kérés erre az e-mail-címre"
+
+#: 
+msgid "Too many sign-in requests from this IP address"
+msgstr "Túl sok bejelentkezési kérés erről az IP-címről"
+
+#: 
+msgid "Too many wrong codes"
+msgstr "Túl sok hibás kód"
+
+#: 
+msgid "Turn off"
+msgstr "Kikapcsolás"
+
+#: 
+msgid "Turn off member sign-in?"
+msgstr "Kikapcsolja a tagi bejelentkezést?"
+
+#: 
+msgid "Turn on"
+msgstr "Bekapcsolás"
+
+#: 
+msgid "Turn on member sign-in"
+msgstr "Tagi bejelentkezés bekapcsolása"
+
+#: 
+msgid "Turn on member sign-in?"
+msgstr "Bekapcsolja a tagi bejelentkezést?"
+
+#: 
+msgid "Type a name"
+msgstr "Írjon be egy nevet"
+
+#: 
+msgid "Type a name or email"
+msgstr "Írjon be egy nevet vagy e-mailt"
+
+#: 
+msgid "Type at least %d letters of a name, then search."
+msgstr "Írjon be egy név legalább %d betűjét, majd keressen."
+
+#: 
+msgid "Unconfirmed email"
+msgstr "Meg nem erősített e-mail"
+
+#: 
+msgid "Understand where ChurchCRM is used"
+msgstr "Annak megértése, hol használják a ChurchCRM-et"
+
+#: 
+msgid "Unknown device"
+msgstr "Ismeretlen eszköz"
+
+#: 
+msgid "Unknown directory field: %s"
+msgstr "Ismeretlen névjegyzékmező: %s"
+
+#: 
+msgid "Unknown directory setting: %s"
+msgstr "Ismeretlen névjegyzék-beállítás: %s"
+
+#: 
+msgid "Unnamed device"
+msgstr "Névtelen eszköz"
+
+#: 
+msgid "Unnamed passkey"
+msgstr "Névtelen hozzáférési kulcs"
+
+#: 
+msgid "Until the church office confirms it, the new address cannot be used to sign in."
+msgstr "Amíg a gyülekezeti iroda meg nem erősíti, az új cím nem használható bejelentkezésre."
+
+#: 
+msgid "Use %1$s as the email address for %2$s at %3$s?"
+msgstr "A(z) %1$s legyen a(z) %2$s e-mail-címe itt: %3$s?"
+
+#: 
+msgid "Use a different email address"
+msgstr "Másik e-mail-cím használata"
+
+#: 
+msgid "Use a passkey on this device?"
+msgstr "Hozzáférési kulcsot használ ezen az eszközön?"
+
+#: 
+msgid "Use the button below to confirm that %1$s is your email address at %2$s. The link works once, until %3$s."
+msgstr "Az alábbi gombbal erősítse meg, hogy a(z) %1$s az Ön e-mail-címe itt: %2$s. A hivatkozás egyszer működik, eddig: %3$s."
+
+#: 
+msgid "User %d"
+msgstr "Felhasználó %d"
+
+#: 
+msgid "View Permissions"
+msgstr "Jogosultságok megtekintése"
+
+#: 
+msgid "Waiting for you to confirm %s. Use the link we sent to that address."
+msgstr "Várjuk, hogy megerősítse: %s. Használja a címre küldött hivatkozást."
+
+#: 
+msgid "Waiting for you to confirm {{email}}. Use the link we sent to that address."
+msgstr "Várjuk, hogy megerősítse: {{email}}. Használja a címre küldött hivatkozást."
+
+#: 
+msgid "We could not send the email. Please try again later, or contact the church office."
+msgstr "Az e-mailt nem tudtuk elküldeni. Próbálja meg később, vagy forduljon a gyülekezeti irodához."
+
+#: 
+msgid "We could not sign you in"
+msgstr "Nem tudtuk bejelentkeztetni"
+
+#: 
+msgid "We emailed a link to %s. Use it to confirm your new email address."
+msgstr "Hivatkozást küldtünk ide: %s. Ezzel erősítse meg az új e-mail-címét."
+
+#: 
+msgid "We sent a link to {{email}}. Your email changes when you use it."
+msgstr "Hivatkozást küldtünk ide: {{email}}. Az e-mailje akkor változik meg, amikor használja."
+
+#: 
+msgid "We will email you a code and a link to sign in with."
+msgstr "E-mailben küldünk egy kódot és egy hivatkozást a bejelentkezéshez."
+
+#: 
+msgid "We're so glad you're here! It takes about three minutes."
+msgstr "Örülünk, hogy itt van. Körülbelül három percet vesz igénybe."
+
+#: 
+msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr "Örülünk, hogy a családja csatlakozott hozzánk. A regisztráció megérkezett. Csapatunk hamarosan jelentkezik, hogy személyesen üdvözölje."
+
+#: 
+msgid "Wedding Anniversary"
+msgstr "Házassági évforduló"
+
+#: 
+msgid "Welcome"
+msgstr "Üdvözöljük"
+
+#: 
+msgid "What it was given for no longer exists"
+msgstr "Amire adták, már nem létezik"
+
+#: 
+msgid "What members can see and do in the portal, and where each permission comes from. People are counted among everyone the sign-in rules let in, and staff."
+msgstr "Amit a tagok a portálon láthatnak és tehetnek, és honnan származik az egyes jogosultság. A személyeket a bejelentkezési szabályok által beengedettek és a munkatársak között számoljuk."
+
+#: 
+msgid "What members can use"
+msgstr "Amit a tagok használhatnak"
+
+#: 
+msgid "What to do"
+msgstr "Teendő"
+
+#: 
+msgid "Who can see it"
+msgstr "Ki láthatja"
+
+#: 
+msgid "Who is listed"
+msgstr "Ki van felsorolva"
+
+#: 
+msgid "Who may sign in"
+msgstr "Ki jelentkezhet be"
+
+#: 
+msgid "Who may sign in to the Member Portal, who has, and whose email stops them. The lists follow the rules on the Sign-in tab."
+msgstr "Ki léphet be a tagportálra, ki tette már meg, és kinek az e-mailje akadályozza. A listák a Bejelentkezés lap szabályait követik."
+
+#: 
+msgid "Who the Member Portal directory lists, who can see it and what it shows, chosen on Admin -> Member Portal -> Directory."
+msgstr "Kit sorol fel a tagportál névjegyzéke, ki láthatja, és mit mutat; ez az Adminisztráció -> Tagportál -> Névjegyzék menüben választható."
+
+#: 
+msgid "Why"
+msgstr "Miért"
+
+#: 
+msgid "Why not"
+msgstr "Miért nem"
+
+#: 
+msgid "With the token the device replaced moments ago"
+msgstr "Azzal a tokennel, amelyet az eszköz az imént lecserélt"
+
+#: 
+msgid "Yes, add a passkey"
+msgstr "Igen, hozzáférési kulcs hozzáadása"
+
+#: 
+msgid "Yes, remove this passkey"
+msgstr "Igen, ennek a hozzáférési kulcsnak az eltávolítása"
+
+#: 
+msgid "Yes, sign out every device"
+msgstr "Igen, kijelentkezés minden eszközről"
+
+#: 
+msgid "You are not allowed to confirm this email."
+msgstr "Ön nem erősítheti meg ezt az e-mailt."
+
+#: 
+msgid "You are not kept signed in on any device."
+msgstr "Egyetlen eszközön sem marad bejelentkezve."
+
+#: 
+msgid "You are signed out on every device."
+msgstr "Minden eszközön ki van jelentkezve."
+
+#: 
+msgid "You are signed out on this device."
+msgstr "Ezen az eszközön ki van jelentkezve."
+
+#: 
+msgid "You can also sign in with your email address."
+msgstr "Az e-mail-címével is bejelentkezhet."
+
+#: 
+msgid "You can't disable your own sign-in."
+msgstr "A saját bejelentkezését nem tilthatja le."
+
+#: 
+msgid "You cannot open the Member Portal. Please contact the church office."
+msgstr "Nem nyithatja meg a tagportált. Forduljon a gyülekezeti irodához."
+
+#: 
+msgid "You have asked to change your email too many times. Please try again later."
+msgstr "Túl sokszor kérte az e-mailje módosítását. Próbálja meg később."
+
+#: 
+msgid "You have no passkeys."
+msgstr "Nincsenek hozzáférési kulcsai."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (changes allowed)."
+msgstr "A tagportálon %s néven van bejelentkezve (a módosítás engedélyezett)."
+
+#: 
+msgid "You're logged in as %s in the Member Portal (read-only)."
+msgstr "A tagportálon %s néven van bejelentkezve (csak olvasás)."
+
+#: 
+msgid "Younger than the minimum age"
+msgstr "Fiatalabb az alsó életkornál"
+
+#: 
+msgid "Youngest age at which a person may sign in to the Member Portal. When the birth date is unknown, only a head of household or spouse qualifies."
+msgstr "A legfiatalabb életkor, amelytől egy személy beléphet a tagportálra. Ha a születési dátum ismeretlen, csak a háztartásfő vagy a házastárs felel meg."
+
+#: 
+msgid "Your Member Portal sign-in code"
+msgstr "Az Ön tagportálos bejelentkezési kódja"
+
+#: 
+msgid "Your code"
+msgstr "Az Ön kódja"
+
+#: 
+msgid "Your email address %s is not confirmed yet, so it cannot be used to sign in. We will email a link to it; using the link confirms it."
+msgstr "A(z) %s e-mail-címe még nincs megerősítve, ezért nem használható bejelentkezésre. Hivatkozást küldünk rá; a hivatkozás használata megerősíti."
+
+#: 
+msgid "Your email address cannot be removed here. Please contact the church office."
+msgstr "Az e-mail-címe itt nem távolítható el. Forduljon a gyülekezeti irodához."
+
+#: 
+msgid "Your email address is confirmed"
+msgstr "Az e-mail-címe meg van erősítve"
+
+#: 
+msgid "Your email address was changed"
+msgstr "Az e-mail-címe megváltozott"
+
+#: 
+msgid "Your passkey was added. Next time, sign in with it on this device."
+msgstr "A hozzáférési kulcsát hozzáadtuk. Legközelebb ezen az eszközön ezzel jelentkezzen be."
+
+#: 
+msgid "an administrator"
+msgstr "egy rendszergazda"
+
+#: 
+msgid "name@example.com"
+msgstr "name@example.com"
+
+#: 
+msgid "no head of household or spouse has an email address"
+msgstr "egyetlen háztartásfőnek vagy házastársnak sincs e-mail-címe"
+
+#: 
+msgid "or"
+msgstr "vagy"
+
+#: 
+msgid "until %s"
+msgstr "eddig: %s"
 

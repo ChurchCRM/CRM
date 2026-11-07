@@ -42,14 +42,14 @@ const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const ADMIN_KEY = "admin.api.key";
 const COORDINATOR_KEY = "user.api.key";
 const PLAINAUTH_KEY = "plainauth.api.key";
-const SELFEDIT_KEY = "selfedit.api.key";
+const SELFEDIT_KEY = 99;
 
 const VOLUNTEER_URL = "/api/ministries";
 const CART_URL = "/api/cart/";
 
 const PERSON_COORDINATOR = 3; // tony.wade — every flag but Admin
 const PERSON_PLAIN = 900; // john.plainauth — Notes only, no volunteer rights
-const PERSON_VOLUNTEER = 99; // EditSelf-exclusive — THE volunteer persona (D14)
+const PERSON_VOLUNTEER = 99; // THE volunteer persona (D14), a member session
 
 /**
  * The pool, since D19: the ministry's OWN Group, created with it and empty, so the
@@ -110,14 +110,12 @@ function dbOk(sql, params = []) {
     });
 }
 
+/** A person id is a member, in their portal session; anything else names an API key. */
 function api(key, method, url, body, expectedStatus = 200) {
-    return cy.makePrivateAPICall(
-        Cypress.testEnv(key),
-        method,
-        url,
-        body,
-        expectedStatus,
-    );
+    if (typeof key === "number") {
+        return cy.makeMemberAPICall(key, method, url, body, expectedStatus);
+    }
+    return cy.makePrivateAPICall(Cypress.testEnv(key), method, url, body, expectedStatus);
 }
 
 function setVersion(value) {
@@ -356,7 +354,7 @@ function resetWorkflow() {
 // ── fixture ────────────────────────────────────────────────────────────────
 
 before(() => {
-    cy.rememberTestEnv(["admin.api.key", "user.api.key", "selfedit.api.key", "plainauth.api.key"]);
+    cy.rememberTestEnv(["admin.api.key", "user.api.key", "plainauth.api.key"]);
     cy.useChurchTimeZone();
 });
 
