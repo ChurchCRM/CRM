@@ -64,7 +64,7 @@
     "phpstan/phpstan": "^2.1.6",
     "rector/rector": "^2.0.9",
     "symfony/finder": "^6.4",
-    "zircote/swagger-php": "^6.0"
+    "zircote/swagger-php": "^7.3"
   },
   "replace": {
     "symfony/polyfill-mbstring": "*",

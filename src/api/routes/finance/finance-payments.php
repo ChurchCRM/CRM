@@ -225,7 +225,7 @@ $app->group('/payments', function (RouteCollectorProxy $group): void {
      *             @OA\Property(property="schedule", type="string", nullable=true, description="Payment schedule (for Pledges)", example="Monthly"),
      *             @OA\Property(property="tScanString", type="string", nullable=true, description="Scanned check MICR string", example=""),
      *             @OA\Property(property="FundSplit", type="string", description="JSON-encoded array of fund allocations",
-     *                 example="[{\"FundID\":1,\"Amount\":200.00,\"NonDeductible\":0,\"Comment\":\"General\"},{\"FundID\":2,\"Amount\":50.00,\"NonDeductible\":0,\"Comment\":\"\"}]"
+     *                 example="[{""FundID"":1,""Amount"":200.00,""NonDeductible"":0,""Comment"":""General""},{""FundID"":2,""Amount"":50.00,""NonDeductible"":0,""Comment"":""""}]"
      *             )
      *         )
      *     ),
