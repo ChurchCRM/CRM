@@ -53,7 +53,7 @@ describe("Volunteer v2 rollout — navigation and person view (#9704)", () => {
         setVersion("v1");
     });
 
-    describe("v1 (default, legacy only)", () => {
+    describe("v1 (legacy only)", () => {
         beforeEach(() => {
             setVersion("v1");
             freshAdminLogin();
