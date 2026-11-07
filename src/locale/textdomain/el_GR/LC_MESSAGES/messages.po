@@ -23584,10 +23584,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Επιλέξτε κάποιον που είναι ήδη στον κατάλογο της εκκλησίας. Εντάσσεται στους εθελοντές αυτής της διακονίας και οι συντονιστές ειδοποιούνται. Μόνο συντονιστής μπορεί να αφαιρέσει κάποιον."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "Το ChurchCRM έχει δύο τρόπους διαχείρισης εθελοντών. Κάθε φορά προορίζεται να χρησιμοποιείται μόνο ένας· η ρύθμιση εμπειρίας εθελοντή αποφασίζει ποιον βλέπει αυτή η εκκλησία. Η εναλλαγή κρύβει ή εμφανίζει σελίδες και καταχωρίσεις μενού — δεν διαγράφει ποτέ δεδομένα, οπότε μπορείτε να επιστρέψετε."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Ώρα ημερήσιου μηνύματος για κενές θέσεις"
 

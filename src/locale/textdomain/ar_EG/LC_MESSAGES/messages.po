@@ -23700,10 +23700,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "اختار حد موجود بالفعل في دليل الكنيسة. هينضم لمتطوعي الخدمة دي وهيتبعت بريد للمنسقين. المنسق بس هو اللي يقدر يطلّع حد."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "في ChurchCRM طريقتين لإدارة المتطوعين. المفروض طريقة واحدة بس تكون شغّالة في المرة؛ إعداد تجربة المتطوعين هو اللي يقرر الكنيسة دي بتشوف إيه. التبديل بيخبي أو بيظهر الصفحات وعناصر القائمة — ومش بيمسح البيانات أبدًا، فتقدر ترجع."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "وقت بريد الأماكن الفاضية اليومي"
 
