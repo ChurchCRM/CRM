@@ -5049,10 +5049,6 @@ msgid "View Person Page"
 msgstr "Vaata isikulehte"
 
 #: 
-msgid "Verify"
-msgstr "Kinnitage"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Perel pole kasutada e-kirju"
 
@@ -14630,10 +14626,6 @@ msgid "Date Picker Format"
 msgstr "Kuupäevavalija vorming"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Kuupäevavalija kohahoidja"
-
-#: 
 msgid "Date Without Year"
 msgstr "Kuupäev ilma aastata"
 
@@ -14664,10 +14656,6 @@ msgstr "Kuupäevavorming failinimedes"
 #: 
 msgid "Fully translated."
 msgstr "Täielikult tõlgitud."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Vijetekst kuupäevaväljades. Vaikimisi: aaaa-kk-pp"
 
 #: 
 msgid "Home/Work Phone Format"

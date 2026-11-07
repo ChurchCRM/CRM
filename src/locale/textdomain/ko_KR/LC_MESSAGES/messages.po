@@ -5043,10 +5043,6 @@ msgid "View Person Page"
 msgstr "개인 페이지 보기"
 
 #: 
-msgid "Verify"
-msgstr "확인"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "해당 가족에 사용할 이메일이 없습니다"
 
@@ -14615,10 +14611,6 @@ msgid "Date Picker Format"
 msgstr "날짜 선택기 형식"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "날짜 선택기 자리 표시자"
-
-#: 
 msgid "Date Without Year"
 msgstr "연도 없는 날짜"
 
@@ -14649,10 +14641,6 @@ msgstr "파일명 날짜 형식"
 #: 
 msgid "Fully translated."
 msgstr "완전히 번역됨."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "날짜 입력 필드의 힌트 텍스트. 기본값: yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"

@@ -15,6 +15,7 @@ PHP 8.4+. Versions: `package.json`, `composer.json`. Review: `maintainer-review-
 - IDs: `(int)` or `InputUtils::filterInt()`
 - Output: `InputUtils::escapeHTML()` / `escapeAttribute()`
 - JSON in `<script>`: `InputUtils::jsonEncodeForScript()`
+- Dates: inside the app a date is ISO (`Y-m-d`, church timezone). Only a date-picker text field uses `sDatePickerFormat`. Convert at the edge with `DateTimeUtils`: `normalizeDate()` / `parseAndValidate()` in, `formatForDatePicker()` out, `datePickerJsFormat()` for the widget. `type="date"` inputs and the API send ISO: check with `parseIsoDate()`. Never `strtotime()` / `createFromFormat()` on request input, never print an ISO date into a picker field (`npm run lint` checks)
 - Redirects: `RedirectUtils` — not raw `header('Location')`
 - UI and styling: `frontend-development.md` is the only rule set (Tabler, light and dark, desktop/tablet/phone, `npm run lint`). Wrap `gettext()` / `i18next.t()`
 - JS: page logic goes in a `webpack/` entry, registered in `webpack.config.js` and loaded with one `<script src="<?= SystemURLs::assetVersioned('/skin/v2/NAME.min.js') ?>">`. No inline `<script>` blocks for page logic; a one-line config handoff with `InputUtils::jsonEncodeForScript()` is fine. Read `window.CRM` at run time (inside `onLocalesReady`), never at module load (`webpack-typescript.md`)

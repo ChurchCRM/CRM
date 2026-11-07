@@ -5054,10 +5054,6 @@ msgid "View Person Page"
 msgstr "عرض صفحة الشخص"
 
 #: 
-msgid "Verify"
-msgstr "تحقق"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "العائلة ليس لديها رسائل بريد إلكتروني لاستخدامها"
 
@@ -14671,10 +14667,6 @@ msgid "Date Picker Format"
 msgstr "تنسيق منتقي التاريخ"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "عنصر نائب منتقي التاريخ"
-
-#: 
 msgid "Date Without Year"
 msgstr "تاريخ بدون سنة"
 
@@ -14705,10 +14697,6 @@ msgstr "تنسيق تاريخ اسم الملف"
 #: 
 msgid "Fully translated."
 msgstr "مترجم بالكامل."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "نص التلميح في حقول التاريخ. الافتراضي: سسسس-شش-يي"
 
 #: 
 msgid "Home/Work Phone Format"

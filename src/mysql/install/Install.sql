@@ -306,6 +306,7 @@ CREATE TABLE `family_fam` (
   `fam_DateDeactivated` date default NULL,
   `fam_Latitude` double default NULL,
   `fam_Longitude` double default NULL,
+  `fam_GeocodeTriedAt` timestamp NULL default NULL,
   `fam_Envelope` mediumint(9) NOT NULL default '0',
   `fam_NeedsReview` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`)
@@ -599,6 +600,9 @@ CREATE TABLE `person_per` (
   `per_DateDeactivated` date DEFAULT NULL,
   `per_NeedsReview` tinyint(1) unsigned NOT NULL default '0',
   `per_grd_ID` mediumint(8) unsigned default NULL,
+  `per_Latitude` double default NULL,
+  `per_Longitude` double default NULL,
+  `per_GeocodeTriedAt` timestamp NULL default NULL,
   PRIMARY KEY  (`per_ID`),
   INDEX `idx_per_fam_ID` (`per_fam_ID`),
   INDEX `idx_per_cls_ID` (`per_cls_ID`),

@@ -5048,10 +5048,6 @@ msgid "View Person Page"
 msgstr "צפה בדף אדם"
 
 #: 
-msgid "Verify"
-msgstr "אמת"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "אין כתובת דוא\"ל לשימוש"
 
@@ -14629,10 +14625,6 @@ msgid "Date Picker Format"
 msgstr "פורמט בורר תאריך"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "טקסט מציין מקום לבורר תאריך"
-
-#: 
 msgid "Date Without Year"
 msgstr "תאריך ללא שנה"
 
@@ -14663,10 +14655,6 @@ msgstr "פורמט תאריך לשם קובץ"
 #: 
 msgid "Fully translated."
 msgstr "מתורגם במלואו."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "טקסט עזר בשדות תאריך. ברירת מחדל: שנה-חודש-יום"
 
 #: 
 msgid "Home/Work Phone Format"

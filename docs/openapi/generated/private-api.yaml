@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
-  version: 7.8.3
+  version: 7.8.4
 servers:
   -
     url: '{scheme}://{host}/api'
@@ -5610,7 +5610,7 @@ paths:
     post:
       tags:
         - Map
-      summary: 'Geocode all active families missing coordinates'
+      summary: 'Geocode all active families and people with their own address missing coordinates'
       description: "Iterates active families that have a street address but no usable coordinates, geocoding each via the configured geocoding services (Map Settings) at ~1 request/second. Families are taken in ID order; up to 50 per call. Pass 'skip' = the number of families that failed in earlier calls so those are not re-queried, and repeat while 'remaining' > 'skip'. Requires the Edit Records role."
       requestBody:
         required: false
@@ -5636,6 +5636,7 @@ paths:
                   processed: { description: 'Families examined in this batch (0 when skip >= total)', type: integer }
                   geocoded: { description: 'Families successfully geocoded in this batch', type: integer }
                   failed: { description: 'Families that could not be geocoded', type: integer }
+                  remainingNotFound: { description: 'Of the remaining, how many were tried and found no match; the rest were never tried', type: integer }
                   remaining: { description: 'Families still missing coordinates after this batch, including the ones that failed (run again while remaining > failures so far)', type: integer }
                   failures: { description: 'Per-family failure details (capped at 20 entries). Empty array when all families were geocoded.', type: array, items: { properties: { id: { description: 'Family ID', type: integer }, name: { description: 'Family name', type: string }, address: { description: 'Full street address', type: string }, editUrl: { description: 'URL to the family editor page', type: string }, reason: { description: "Machine code: 'incomplete_address' | 'no_result' | 'unavailable' | 'error'", type: string } }, type: object } }
                   failuresTruncated: { description: 'True when failed > 20 and some failures are omitted from the array', type: boolean }

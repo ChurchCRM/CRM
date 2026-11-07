@@ -46,6 +46,7 @@ const checks = {
     'pr gates': script('lint/validate-pr-gates.js'),
     'cypress split timings': script('ci/split-timings.js', 'check'),
     'custom field access': script('lint/validate-custom-field-access.js'),
+    'date input': script('lint/validate-date-input.js'),
     'cypress db access': script('lint/validate-cypress-db-access.js'),
     'capture used-in': script('lint/validate-capture-used-in.js'),
     'seed data only': script('lint/validate-seed-data-only.js'),

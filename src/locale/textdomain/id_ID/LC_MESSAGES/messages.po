@@ -5047,10 +5047,6 @@ msgid "View Person Page"
 msgstr "Lihat Halaman Individu"
 
 #: 
-msgid "Verify"
-msgstr "Verifikasi"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "Keluarga tidak memiliki email"
 
@@ -14619,10 +14615,6 @@ msgid "Date Picker Format"
 msgstr "Format Pemilih Tanggal"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Teks Petunjuk Pemilih Tanggal"
-
-#: 
 msgid "Date Without Year"
 msgstr "Tanggal Tanpa Tahun"
 
@@ -14653,10 +14645,6 @@ msgstr "Format Tanggal untuk Nama File"
 #: 
 msgid "Fully translated."
 msgstr "Diterjemahkan sepenuhnya."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Teks petunjuk di kolom tanggal. Default: tttt-bb-hh"
 
 #: 
 msgid "Home/Work Phone Format"

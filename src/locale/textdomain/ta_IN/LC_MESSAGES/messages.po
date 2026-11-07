@@ -5049,10 +5049,6 @@ msgid "View Person Page"
 msgstr "நபர் பக்கத்தைப் பார்க்கவும்"
 
 #: 
-msgid "Verify"
-msgstr "சரிபார்க்கவும்"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "குடும்பத்தில் பயன்படுத்த மின்னஞ்சல்கள் இல்லை"
 
@@ -14643,10 +14639,6 @@ msgid "Date Picker Format"
 msgstr "தேதி தேர்வி வடிவம்"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "தேதி தேர்வி இட நிரப்பி"
-
-#: 
 msgid "Date Without Year"
 msgstr "ஆண்டு இல்லாத தேதி"
 
@@ -14677,10 +14669,6 @@ msgstr "கோப்பு பெயர் தேதி வடிவம்"
 #: 
 msgid "Fully translated."
 msgstr "முழுமையாக மொழிபெயர்க்கப்பட்டது."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "தேதி உள்ளீடுகளில் காட்டப்படும் குறிப்பு உரை. இயல்புநிலை: yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"

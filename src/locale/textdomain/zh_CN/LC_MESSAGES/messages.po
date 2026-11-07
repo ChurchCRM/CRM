@@ -5115,10 +5115,6 @@ msgid "View Person Page"
 msgstr "查看人员页面"
 
 #: 
-msgid "Verify"
-msgstr "核实"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "家庭没有电子邮件可以使用"
 
@@ -14687,10 +14683,6 @@ msgid "Date Picker Format"
 msgstr "日期选择器格式"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "日期选择器占位符"
-
-#: 
 msgid "Date Without Year"
 msgstr "不含年份的日期"
 
@@ -14721,10 +14713,6 @@ msgstr "文件名日期格式"
 #: 
 msgid "Fully translated."
 msgstr "已完全翻译。"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "日期输入框中的提示文本。默认：yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"

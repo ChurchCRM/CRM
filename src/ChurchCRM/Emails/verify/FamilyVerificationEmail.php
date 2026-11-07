@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Emails\verify;
 
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\BaseEmail;
 use ChurchCRM\model\ChurchCRM\Token;
@@ -29,7 +28,7 @@ class FamilyVerificationEmail extends BaseEmail
     {
         $myTokens = [
             'toName' => $this->familyName . ' ' . gettext('Family'),
-            'body'   => SystemConfig::getValue('sConfirm1'),
+            'body'   => gettext('Please use the link below to review your family information. On the review page, select "Confirm Family Info" to confirm that everything is correct or send corrections to the church office.'),
         ];
 
         return array_merge($this->getCommonTokens(), $myTokens);
@@ -46,7 +45,7 @@ class FamilyVerificationEmail extends BaseEmail
 
     protected function getButtonText(): string
     {
-        return gettext('Verify');
+        return gettext('Review Family Information');
     }
 
     protected function getPreheader(): string

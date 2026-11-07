@@ -5027,10 +5027,6 @@ msgid "View Person Page"
 msgstr "ดูหน้าบุคคล"
 
 #: 
-msgid "Verify"
-msgstr "ยืนยัน"
-
-#: 
 msgid "Family has no emails to use"
 msgstr "ครอบครัวไม่มีอีเมลให้ใช้"
 
@@ -14599,10 +14595,6 @@ msgid "Date Picker Format"
 msgstr "รูปแบบตัวเลือกวันที่"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "ข้อความตัวอย่างตัวเลือกวันที่"
-
-#: 
 msgid "Date Without Year"
 msgstr "วันที่ไม่มีปี"
 
@@ -14633,10 +14625,6 @@ msgstr "รูปแบบวันที่สำหรับชื่อไฟ
 #: 
 msgid "Fully translated."
 msgstr "แปลครบถ้วนแล้ว"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "ข้อความคำแนะนำในช่องวันที่ ค่าเริ่มต้น: ปปปป-ดด-วว"
 
 #: 
 msgid "Home/Work Phone Format"
