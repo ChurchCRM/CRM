@@ -3,6 +3,7 @@
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\ChurchLogo;
 
