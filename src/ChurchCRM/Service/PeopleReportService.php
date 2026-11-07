@@ -137,6 +137,9 @@ class PeopleReportService
         if (!AuthenticationManager::getCurrentUser()->canViewEvents()) {
             unset($reports['missing-people']);
         }
+        if (!VolunteerV1Service::isInUse()) {
+            unset($reports['volunteers'], $reports['volunteers-two-opportunities']);
+        }
 
         return $reports;
     }

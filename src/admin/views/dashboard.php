@@ -157,6 +157,11 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
     </div>
     <?php endif; ?>
 
+    <?php if (!empty($volunteerV1Notice)): ?>
+        <?php $volunteerV1NoticeCsrf = $csrfToken; ?>
+        <?php require __DIR__ . '/partials/volunteer-v1-notice.php'; ?>
+    <?php endif; ?>
+
     <?php if (!empty($formerPortalAccounts)): ?>
     <div class="alert alert-info" role="alert" id="former-portal-accounts-notice" data-csrf-token="<?= InputUtils::escapeAttribute($csrfToken) ?>">
         <div class="d-flex align-items-start">
