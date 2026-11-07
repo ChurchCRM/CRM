@@ -1,0 +1,12 @@
+// Only change the permanent desktop aside. Under xl (1200px), Tabler's
+// responsive navbar and hamburger retain the original behavior.
+@media (min-width: 1200px) {
+    body.desktop-sidebar-collapsed #sidebar {
+        display: none !important;
+    }
+
+    body.desktop-sidebar-collapsed .page-wrapper {
+        min-width: 0;
+        width: 100%;
+    }
+}
