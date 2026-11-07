@@ -711,9 +711,15 @@ function initializeCalendar() {
         window.CRM.notify(parts.join(" · "), { type: "info", delay: 10000, close: true });
       }
     },
+    eventContent: (info) => pinnedEventContent(info),
     eventDidMount: (info) => {
-      eventForEl.set(info.el, info.event);
-      renderPinnedCalendarMarks(info);
+      const pins = info.event.extendedProps.pinnedCalendars;
+      const names = Array.isArray(pins) ? pins.map((pin) => pin.name).filter(Boolean) : [];
+      if (info.event.title && names.length > 1) {
+        info.el.setAttribute("title", `${info.event.title} (${names.join(", ")})`);
+      } else if (info.event.title) {
+        info.el.setAttribute("title", info.event.title);
+      }
     },
     eventsSet: () => {
       // After this render, so setProp/setExtendedProp are not called mid-render.
@@ -909,80 +915,65 @@ function collapsePinnedCalendarEvents() {
     }
   }
 
-  try {
-    for (const group of groups.values()) {
-      const pins = [];
-      const seen = new Set();
-      for (const event of group) {
-        const pin = calendarPinFromEvent(event);
-        const pinKey = String(pin.id ?? "");
-        if (pinKey === "" || seen.has(pinKey)) {
-          continue;
-        }
-        seen.add(pinKey);
-        pins.push(pin);
+  for (const group of groups.values()) {
+    const pins = [];
+    const seen = new Set();
+    for (const event of group) {
+      const pin = calendarPinFromEvent(event);
+      const pinKey = String(pin.id ?? "");
+      if (pinKey === "" || seen.has(pinKey)) {
+        continue;
       }
+      seen.add(pinKey);
+      pins.push(pin);
+    }
 
-      const keep = group[0];
-      const current = JSON.stringify(keep.extendedProps.pinnedCalendars || []);
-      if (current !== JSON.stringify(pins)) {
-        keep.setExtendedProp("pinnedCalendars", pins);
-      }
-      if (keep.display === "none") {
-        keep.setProp("display", "auto");
-      }
-      for (let i = 1; i < group.length; i++) {
-        if (group[i].display !== "none") {
-          group[i].setProp("display", "none");
-        }
+    const keep = group[0];
+    const current = JSON.stringify(keep.extendedProps.pinnedCalendars || []);
+    if (current !== JSON.stringify(pins)) {
+      keep.setExtendedProp("pinnedCalendars", pins);
+    }
+    if (keep.display === "none") {
+      keep.setProp("display", "auto");
+    }
+    for (let i = 1; i < group.length; i++) {
+      if (group[i].display !== "none") {
+        group[i].setProp("display", "none");
       }
     }
-  } finally {
-    refreshMountedPinMarks();
   }
 }
 
-const eventForEl = new WeakMap();
-
-function renderPinnedCalendarMarks(info) {
-  const harness = info.el.querySelector(".fc-event-main") || info.el;
-  harness.querySelectorAll(":scope > .crm-cal-pin-marks").forEach((node) => node.remove());
-
+function pinnedEventContent(info) {
   const pins = info.event.extendedProps.pinnedCalendars;
-  const names = Array.isArray(pins) ? pins.map((pin) => pin.name).filter(Boolean) : [];
-  if (info.event.title) {
-    const suffix = names.length > 1 ? ` (${names.join(", ")})` : "";
-    info.el.setAttribute("title", `${info.event.title}${suffix}`);
-  }
-  if (names.length < 2) {
+  const named = Array.isArray(pins) ? pins.filter((pin) => pin.name) : [];
+  if (named.length < 2) {
     return;
   }
+
+  const nodes = [];
+  if (info.timeText) {
+    const time = document.createElement("span");
+    time.className = "fc-event-time";
+    time.textContent = info.timeText;
+    nodes.push(time);
+  }
+  const title = document.createElement("span");
+  title.className = "fc-event-title";
+  title.textContent = info.event.title;
+  nodes.push(title);
 
   const marks = document.createElement("span");
   marks.className = "crm-cal-pin-marks";
-  for (const pin of pins) {
+  for (const pin of named) {
     const dot = document.createElement("span");
     dot.className = "crm-cal-pin-mark";
     dot.style.backgroundColor = pin.color;
-    if (pin.name) {
-      dot.title = pin.name;
-    }
+    dot.title = pin.name;
     marks.appendChild(dot);
   }
-  harness.appendChild(marks);
-}
-
-function refreshMountedPinMarks() {
-  const root = document.getElementById("calendar");
-  if (!root) {
-    return;
-  }
-  root.querySelectorAll(".fc-event").forEach((el) => {
-    const event = eventForEl.get(el);
-    if (event) {
-      renderPinnedCalendarMarks({ el, event });
-    }
-  });
+  nodes.push(marks);
+  return { domNodes: nodes };
 }
 
 /**
