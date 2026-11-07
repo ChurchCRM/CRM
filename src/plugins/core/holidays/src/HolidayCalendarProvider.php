@@ -93,6 +93,13 @@ class HolidayCalendarProvider implements SystemCalendar
         return sprintf(gettext('Holidays (%s)'), $display);
     }
 
+    /**
+     * Get holiday calendar events for the specified date range.
+     *
+     * @param string $start Start date string.
+     * @param string $end End date string.
+     * @return ObjectCollection Collection of holiday Event objects.
+     */
     public function getEvents(string $start, string $end): ObjectCollection
     {
         $events = new ObjectCollection();
@@ -104,7 +111,12 @@ class HolidayCalendarProvider implements SystemCalendar
             $endDate   = !empty($end)   ? new \DateTimeImmutable($end)   : null;
 
             for ($year = $startYear; $year <= $endYear; $year++) {
-                $holidays = Yasumi::create($this->yasumiCountry, $year);
+                $customProviderClass = "ChurchCRM\\Plugins\\Holidays\\Provider\\" . $this->yasumiCountry;
+                if (class_exists($customProviderClass)) {
+                    $holidays = new $customProviderClass($year);
+                } else {
+                    $holidays = Yasumi::create($this->yasumiCountry, $year);
+                }
 
                 foreach ($holidays->getHolidays() as $holiday) {
                     if (!$this->matchesCategory($holiday)) {
