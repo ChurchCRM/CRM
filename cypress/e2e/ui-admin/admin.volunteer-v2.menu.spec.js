@@ -410,8 +410,8 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
         it("sees the Ministries heading with Dashboard and their team's ministry, opening the team view (#10530)", () => {
             menuSection("Ministries").within(() => {
                 cy.get(`a[href$="${DASHBOARD_URL}"]`).should("exist");
-                cy.get("a.nav-link").should("have.length", 2);
-                cy.contains("a.nav-link", MINISTRY_A).click();
+                cy.get("a.dropdown-item").should("have.length", 2);
+                cy.contains("a.dropdown-item", MINISTRY_A).click();
             });
             cy.location("pathname").should("match", new RegExp(`/ministries/${ministryA}$`));
             cy.contains("Your teams:").should("exist");
