@@ -6588,6 +6588,9 @@
   "no head of household or spouse has an email address": "户主或配偶都没有电子邮箱",
   "or": "或",
   "until %s": "直到 %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "有人在成员门户中请求将您在 %1$s 的电子邮箱从 %2$s 更改为 %3$s。只有使用发送到新地址的链接后，此更改才会生效。",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "请使用下面的链接核对您的家庭资料。在核对页面上，选择“确认家庭资料”以确认一切无误，或将更正发送给教会办公室。",
+  "Review Family Information": "核对家庭资料",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：创建了 {{count}} 个发生",
     "other": "\"{{name}}\"：创建了 {{count}} 个发生"

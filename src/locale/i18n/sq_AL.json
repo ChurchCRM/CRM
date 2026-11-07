@@ -6618,6 +6618,9 @@
   "no head of household or spouse has an email address": "asnjë kryefamiljar ose bashkëshort nuk ka adresë email",
   "or": "ose",
   "until %s": "deri më %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "Në portalin e anëtarëve u bë një kërkesë për të ndryshuar adresën tuaj të emailit te %1$s nga %2$s në %3$s. Ndryshimi ndodh vetëm kur përdoret lidhja e dërguar te adresa e re.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Përdorni lidhjen më poshtë për të shqyrtuar informacionin e familjes suaj. Në faqen e shqyrtimit, zgjidhni \"Konfirmo informacionin e familjes\" për të konfirmuar që gjithçka është e saktë, ose dërgoni korrigjimet në zyrën e kishës.",
+  "Review Family Information": "Shqyrto informacionin e familjes",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} ngjarje e krijuar",
     "other": "\"{{name}}\": {{count}} ngjarje të krijuara"
