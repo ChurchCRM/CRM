@@ -44,6 +44,7 @@ describe("API Private Admin — CSV export date filters", () => {
 
     before(() => {
         cy.setupAdminSession();
+        cy.useChurchTimeZone();
         cy.getSystemConfig("sDatePickerFormat").then((value) => {
             originalFormat = value;
         });
