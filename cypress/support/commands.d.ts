@@ -387,10 +387,14 @@ declare namespace Cypress {
      */
     createPersonWithBirthday(personData: {
       name: string;
-      month: number;
-      day: number;
+      month?: number;
+      day?: number;
       year?: number | null;
       lastName?: string;
+      email?: string;
+      createFamily?: boolean;
+      familyId?: number;
+      familyRole?: number;
     }): Chainable<number>;
 
     /**
