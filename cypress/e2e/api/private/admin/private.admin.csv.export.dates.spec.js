@@ -53,6 +53,7 @@ describe("API Private Admin — CSV export date filters", () => {
     after(() => {
         cy.setupAdminSession();
         cy.restoreSystemConfig("sDatePickerFormat", originalFormat);
+        cy.useHostTimeZone();
     });
 
     ["m/d/Y", "d/m/Y", "Y-m-d"].forEach((format) => {
