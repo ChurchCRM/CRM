@@ -1,3 +1,4 @@
+import { confirmAction } from "./common/confirm-action";
 /**
  * Two-Factor Authentication Enrollment
  *
@@ -400,13 +401,11 @@ function bindEvents() {
   const disableBtn = document.getElementById("disable2FABtn");
   if (disableBtn) {
     disableBtn.addEventListener("click", () => {
-      if (
-        window.confirm(
-          t("Are you sure you want to disable two-factor authentication? Your account will be less secure."),
-        )
-      ) {
-        disable2FA();
-      }
+      confirmAction(
+        t("Disable Two-Factor Authentication"),
+        t("Are you sure you want to disable two-factor authentication? Your account will be less secure."),
+        disable2FA,
+      );
     });
   }
 }

@@ -278,6 +278,7 @@ interface CRMSettingsPanel {
 }
 
 interface CRMNamespace {
+  confirmAction?: (title: string, message: string, onConfirm: () => void, danger?: boolean) => void;
   root?: string;
   /** ChurchCRM's configured locale, e.g. `en_US` (src/Include/Header.php). */
   locale?: string;

@@ -34,7 +34,7 @@ Name the role and the goal before you lay out a page ("treasurer finds the open 
 ## Must
 
 - Asset URLs: `SystemURLs::getRootPath()` — see any current view under `src/views/` or `src/admin/views/`
-- Notify: `window.CRM.notify()` + `i18next.t()`. Confirm with bootbox or a Bootstrap modal
+- Notify with `window.CRM.notify()` + `i18next.t()`. Confirm through `confirmAction()` in `webpack/common/confirm-action.ts` (available as `window.CRM.confirmAction` to page scripts); proceed inside its callback. Escape interpolated user data in dialog HTML. Bootstrap modals handle richer flows. `npm run lint` guards native browser dialogs.
 - API from webpack: `webpack/api-utils.ts` (`buildAPIUrl`, `buildAdminAPIUrl`, `fetchAPIJSON`). Take the root path from those helpers
 - Admin jQuery pages: `window.CRM.AdminAPIRequest()`; path `'database/reset'` → `/admin/api/database/reset`
 - DataTables page length: merge `window.CRM.plugin.dataTable` last so the user preference wins (`src/Include/Header.php`)

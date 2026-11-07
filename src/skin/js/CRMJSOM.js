@@ -99,8 +99,12 @@ window.CRM.VerifyThenLoadAPIContent = (url) => {
   const showError = (msg) => {
     if (window.CRM && typeof window.CRM.notify === "function") {
       window.CRM.notify(msg, { type: "danger", delay: 6000 });
-    } else if (typeof alert === "function") {
-      alert(msg);
+    } else {
+      const notice = document.createElement("div");
+      notice.className = "alert alert-danger";
+      notice.setAttribute("role", "alert");
+      notice.textContent = msg;
+      (document.getElementById("main-content") || document.body).prepend(notice);
     }
   };
 

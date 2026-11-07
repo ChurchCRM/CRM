@@ -644,15 +644,8 @@
     });
   }
 
-  /**
-   * Show a warning message using notify if available, otherwise fallback to alert
-   */
   function notifyWarning(message) {
-    if (window.CRM && window.CRM.notify) {
-      window.CRM.notify(message, { type: "warning", delay: 4000 });
-    } else {
-      alert(message);
-    }
+    window.CRM.notify(message, { type: "warning", delay: 4000 });
   }
 
   /**

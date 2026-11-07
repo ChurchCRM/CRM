@@ -1,3 +1,4 @@
+import { confirmAction } from "../common/confirm-action";
 /**
  * S4 — the occurrence / staffing view (#9709, design §5.5).
  *
@@ -147,22 +148,6 @@ function modal(id: string): { show(): void; hide(): void } | null {
   }
 
   return window.bootstrap.Modal.getOrCreateInstance(el);
-}
-
-function confirmAction(title: string, message: string, onConfirm: () => void, danger = true): void {
-  window.bootbox?.confirm({
-    title,
-    message,
-    buttons: {
-      confirm: { label: i18next.t("Yes"), className: danger ? "btn-danger" : "btn-primary" },
-      cancel: { label: i18next.t("No"), className: "btn-default" },
-    },
-    callback: (result: boolean) => {
-      if (result) {
-        onConfirm();
-      }
-    },
-  });
 }
 
 /** Row actions through the shared builder (CR2/#9820) — labels and data are passed raw. */

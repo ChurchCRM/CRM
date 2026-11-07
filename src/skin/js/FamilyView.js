@@ -530,23 +530,26 @@ function initializeFamilyView() {
     // Handle pledge/payment deletion via API
     $(document).on("click", ".pledge-delete-btn", function () {
       const groupKey = $(this).data("group-key");
-      if (!confirm(i18next.t("Are you sure you want to permanently delete this pledge record?"))) {
-        return;
-      }
-      fetch(`${window.CRM.root}/api/payments/${encodeURIComponent(groupKey)}`, {
-        method: "DELETE",
-      })
-        .then((res) => {
-          if (res.ok) {
-            window.CRM.notify("Deleted successfully", "success");
-            setTimeout(() => location.reload(), 800);
-          } else {
-            window.CRM.notify("Delete failed", "danger");
-          }
-        })
-        .catch(() => {
-          window.CRM.notify("Network error, please try again", "danger");
-        });
+      window.CRM.confirmAction(
+        i18next.t("Delete"),
+        i18next.t("Are you sure you want to permanently delete this pledge record?"),
+        () => {
+          fetch(`${window.CRM.root}/api/payments/${encodeURIComponent(groupKey)}`, {
+            method: "DELETE",
+          })
+            .then((res) => {
+              if (res.ok) {
+                window.CRM.notify(i18next.t("Deleted successfully"), { type: "success" });
+                setTimeout(() => location.reload(), 800);
+              } else {
+                window.CRM.notify(i18next.t("Delete failed"), { type: "danger" });
+              }
+            })
+            .catch(() => {
+              window.CRM.notify(i18next.t("Network error, please try again"), { type: "danger" });
+            });
+        },
+      );
     });
   }
 }
