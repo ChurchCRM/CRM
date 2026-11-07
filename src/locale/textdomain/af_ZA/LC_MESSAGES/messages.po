@@ -23584,10 +23584,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Kies iemand wat reeds in die kerkgids is. Hulle word vrywilligers van hierdie bediening en die koördineerders kry e-pos. Net ’n koördineerder kan iemand verwyder."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM het twee maniere om vrywilligers te bestuur. Net een is bedoel om op ’n slag in gebruik te wees; die instelling vir die vrywilligerervaring bepaal watter een hierdie kerk sien. Wissel versteek of wys bladsye en kieslysinskrywings — dit vee nooit data uit nie, dus kan u terugskakel."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Tyd van die daaglikse e-pos oor ongevulde posisies"
 

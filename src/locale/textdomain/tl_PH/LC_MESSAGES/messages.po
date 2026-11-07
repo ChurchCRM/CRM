@@ -23551,10 +23551,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Pumili ng taong nasa direktoryo na ng simbahan. Sasali siya sa mga boluntaryo ng ministeryong ito at padalhan ng email ang mga tagapag-ugnay. Tanging tagapag-ugnay ang maaaring mag-alis ng tao."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "May dalawang paraan ang ChurchCRM ng pamamahala ng mga boluntaryo. Isa lang ang dapat gamitin sa isang pagkakataon; ang setting ng karanasan sa Boluntaryo ang nagpapasya kung alin ang makikita ng simbahang ito. Ang paglipat ay nagtatago o nagpapakita ng mga pahina at entry sa menu — hindi ito nagbubura ng datos, kaya maaari kang bumalik."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Oras ng araw-araw na email ng posisyong hindi pa napupunan"
 
