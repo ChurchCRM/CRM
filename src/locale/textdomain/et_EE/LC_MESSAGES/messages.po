@@ -4918,10 +4918,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugali keel - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Määrake autentimisrakenduses kuvatav rakenduse nimi"
-
-#: 
 msgid "Review"
 msgstr "Ülevaade"
 
@@ -5051,10 +5047,6 @@ msgstr "Vaata perelehte"
 #: 
 msgid "View Person Page"
 msgstr "Vaata isikulehte"
-
-#: 
-msgid "Verify"
-msgstr "Kinnitage"
 
 #: 
 msgid "Family has no emails to use"
@@ -14634,10 +14626,6 @@ msgid "Date Picker Format"
 msgstr "Kuupäevavalija vorming"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Kuupäevavalija kohahoidja"
-
-#: 
 msgid "Date Without Year"
 msgstr "Kuupäev ilma aastata"
 
@@ -14668,10 +14656,6 @@ msgstr "Kuupäevavorming failinimedes"
 #: 
 msgid "Fully translated."
 msgstr "Täielikult tõlgitud."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Vijetekst kuupäevaväljades. Vaikimisi: aaaa-kk-pp"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25067,10 +25051,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Inimese kirje, mis peidab vanuse, ei näita kunagi sünniaastat."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Liikmeportaalis taotleti kell %s teie e-posti aadressi muutmist aadressilt %s aadressile %s. Muudatus toimub ainult siis, kui kasutatakse aadressile %s saadetud linki."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Rida ei ole oodatud kujul."
 
@@ -27189,4 +27169,16 @@ msgstr "või"
 #: 
 msgid "until %s"
 msgstr "kuni %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Liikmeportaalis tehti taotlus muuta teie e-posti aadressi saidil %1$s aadressilt %2$s aadressile %3$s. Muudatus jõustub alles siis, kui kasutatakse uuele aadressile saadetud linki."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Kasutage allolevat linki oma pere andmete ülevaatamiseks. Valige ülevaatuslehel „Kinnita pere andmed”, et kinnitada, et kõik on õige, või saatke parandused koguduse kantseleisse."
+
+#: 
+msgid "Review Family Information"
+msgstr "Vaata pere andmed üle"
 

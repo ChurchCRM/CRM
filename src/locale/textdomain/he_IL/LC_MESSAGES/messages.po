@@ -4918,10 +4918,6 @@ msgid "Portuguese - Portugal"
 msgstr "פוטוגזית - פורטוגל"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "ציין את שם האפליקציה שיוצג באפליקציית האימות"
-
-#: 
 msgid "Review"
 msgstr "סקירה"
 
@@ -5050,10 +5046,6 @@ msgstr "צפה בדף משפחה"
 #: 
 msgid "View Person Page"
 msgstr "צפה בדף אדם"
-
-#: 
-msgid "Verify"
-msgstr "אמת"
 
 #: 
 msgid "Family has no emails to use"
@@ -14633,10 +14625,6 @@ msgid "Date Picker Format"
 msgstr "פורמט בורר תאריך"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "טקסט מציין מקום לבורר תאריך"
-
-#: 
 msgid "Date Without Year"
 msgstr "תאריך ללא שנה"
 
@@ -14667,10 +14655,6 @@ msgstr "פורמט תאריך לשם קובץ"
 #: 
 msgid "Fully translated."
 msgstr "מתורגם במלואו."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "טקסט עזר בשדות תאריך. ברירת מחדל: שנה-חודש-יום"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25066,10 +25050,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "אדם שהרשומה שלו מסתירה את גילו לעולם אינו מציג שנת לידה."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "בפורטל החברים התבקש ב-%s לשנות את כתובת הדוא״ל שלך מ-%s ל-%s. השינוי מתבצע רק כשמשתמשים בקישור שנשלח אל %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "שורה אינה בצורה הצפויה."
 
@@ -27188,4 +27168,16 @@ msgstr "או"
 #: 
 msgid "until %s"
 msgstr "עד %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "בפורטל החברים הוגשה בקשה לשנות את כתובת הדוא״ל שלך ב-%1$s מ-%2$s אל %3$s. השינוי מתבצע רק כשמשתמשים בקישור שנשלח לכתובת החדשה."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "השתמשו בקישור שלמטה כדי לבדוק את פרטי המשפחה. בדף הבדיקה בחרו „אישור פרטי המשפחה” כדי לאשר שהכול נכון, או שלחו תיקונים למשרד הקהילה."
+
+#: 
+msgid "Review Family Information"
+msgstr "בדיקת פרטי המשפחה"
 

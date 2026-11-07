@@ -118,7 +118,7 @@ reviews:
     enabled: true
     drafts: false
     auto_incremental_review: true
-    auto_pause_after_reviewed_commits: 5
+    auto_pause_after_reviewed_commits: 0
     base_branches:
       - ".*"
     # Locale sync PRs only. Dependabot bumps are reviewed (#10330 was skipped).

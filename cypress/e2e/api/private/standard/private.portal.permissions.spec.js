@@ -12,6 +12,7 @@
 import { inOwnCookieJar } from "../../../../support/cookie-jar";
 import { endPortalGrant } from "../../../../support/member-sign-in-fixtures";
 import { savePersonEditor } from "../../../../support/person-editor";
+import { stripBasePath } from "../../../../support/urls";
 
 const LEADER = { personId: 100 };
 const NON_ADULT = { personId: 4, familyId: 1 };
@@ -46,7 +47,7 @@ const status = (url) => cy.request({ url, failOnStatusCode: false, followRedirec
 const navIds = () =>
     cy.request("/portal/").then((response) => {
         const doc = new DOMParser().parseFromString(response.body, "text/html");
-        return [...doc.querySelectorAll(".portal-nav-link")].map((link) => link.getAttribute("href"));
+        return [...doc.querySelectorAll(".portal-nav-link")].map((link) => stripBasePath(link.getAttribute("href")));
     });
 
 const csrfToken = () =>

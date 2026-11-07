@@ -4977,10 +4977,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugalski"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Podaj nazwę wyswietlaną przez aplikację uwierzytelniającą"
-
-#: 
 msgid "Review"
 msgstr "Przegląd"
 
@@ -5110,10 +5106,6 @@ msgstr "Zobacz stronę rodziny"
 #: 
 msgid "View Person Page"
 msgstr "Zobacz stronę osoby"
-
-#: 
-msgid "Verify"
-msgstr "Zweryfikuj"
 
 #: 
 msgid "Family has no emails to use"
@@ -14702,10 +14694,6 @@ msgid "Date Picker Format"
 msgstr "Format selektora daty"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Tekst zastępczy selektora daty"
-
-#: 
 msgid "Date Without Year"
 msgstr "Data bez roku"
 
@@ -14736,10 +14724,6 @@ msgstr "Format daty nazwy pliku"
 #: 
 msgid "Fully translated."
 msgstr "W pełni przetłumaczone."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Tekst podpowiedzi w polach daty. Domyślnie: rrrr-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25154,10 +25138,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Osoba, której rekord ukrywa wiek, nigdy nie pokazuje roku urodzenia."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "W Portalu wspólnoty złożono o %s prośbę o zmianę Twojego adresu e-mail z %s na %s. Zmiana nastąpi tylko po użyciu odnośnika wysłanego na %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Wiersz nie ma oczekiwanej postaci."
 
@@ -27276,4 +27256,16 @@ msgstr "lub"
 #: 
 msgid "until %s"
 msgstr "do %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "W portalu członkowskim złożono prośbę o zmianę Twojego adresu e-mail w %1$s z %2$s na %3$s. Zmiana nastąpi tylko po użyciu odnośnika wysłanego na nowy adres."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Użyj poniższego odnośnika, aby sprawdzić dane swojej rodziny. Na stronie sprawdzania wybierz „Potwierdź dane rodziny”, aby potwierdzić, że wszystko się zgadza, albo wyślij poprawki do biura zboru."
+
+#: 
+msgid "Review Family Information"
+msgstr "Sprawdź dane rodziny"
 

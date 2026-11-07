@@ -4938,10 +4938,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portoghese - Portogallo"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Specificare il nome dell'applicazione da visualizzare nell'app di autenticazione"
-
-#: 
 msgid "Review"
 msgstr "Revisione"
 
@@ -5071,10 +5067,6 @@ msgstr "Visualizza la pagina della famiglia"
 #: 
 msgid "View Person Page"
 msgstr "Visualizza la pagina della persona"
-
-#: 
-msgid "Verify"
-msgstr "Verificare"
 
 #: 
 msgid "Family has no emails to use"
@@ -14654,10 +14646,6 @@ msgid "Date Picker Format"
 msgstr "Formato selettore data"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Segnaposto selettore data"
-
-#: 
 msgid "Date Without Year"
 msgstr "Data senza anno"
 
@@ -14688,10 +14676,6 @@ msgstr "Formato data per nome file"
 #: 
 msgid "Fully translated."
 msgstr "Completamente tradotto."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Testo suggerimento nei campi data. Predefinito: aaaa-mm-gg"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25088,10 +25072,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Una persona la cui scheda nasconde l'età non mostra mai l'anno di nascita."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Nel Portale dei fedeli è stata richiesta, alle %s, la modifica del Suo indirizzo email da %s a %s. La modifica avviene solo quando viene usato il link inviato a %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Una riga non ha la forma prevista."
 
@@ -27210,4 +27190,16 @@ msgstr "oppure"
 #: 
 msgid "until %s"
 msgstr "fino al %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Nel portale dei membri è stata richiesta la modifica del tuo indirizzo email su %1$s da %2$s a %3$s. La modifica avviene solo quando si usa il link inviato al nuovo indirizzo."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Usa il link qui sotto per controllare le informazioni della tua famiglia. Nella pagina di controllo scegli «Conferma informazioni famiglia» per confermare che tutto è corretto, oppure invia le correzioni all’ufficio della chiesa."
+
+#: 
+msgid "Review Family Information"
+msgstr "Controlla le informazioni della famiglia"
 

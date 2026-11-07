@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\Service\DonationFundService;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
@@ -190,11 +191,11 @@ if ($sReportType === '') {
       <div class="row g-3 mb-3">
         <div class="col-md-4">
           <label class="form-label" for="DateStart"><?= gettext('Report Start Date') ?></label>
-          <input type="text" class="form-control date-picker" name="DateStart" id="DateStart" maxlength="10" value="<?= InputUtils::escapeHTML($startVal) ?>">
+          <input type="text" class="form-control date-picker" name="DateStart" id="DateStart" maxlength="10" value="<?= InputUtils::escapeHTML(DateTimeUtils::formatForDatePicker($startVal)) ?>">
         </div>
         <div class="col-md-4">
           <label class="form-label" for="DateEnd"><?= gettext('Report End Date') ?></label>
-          <input type="text" class="form-control date-picker" name="DateEnd" id="DateEnd" maxlength="10" value="<?= InputUtils::escapeHTML($endVal) ?>">
+          <input type="text" class="form-control date-picker" name="DateEnd" id="DateEnd" maxlength="10" value="<?= InputUtils::escapeHTML(DateTimeUtils::formatForDatePicker($endVal)) ?>">
         </div>
       </div>
 

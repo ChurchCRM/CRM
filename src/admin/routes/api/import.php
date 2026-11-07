@@ -384,11 +384,7 @@ function formatCustomFieldValue(int $typeId, string $raw)
         case 2: // DATE — SQL DATE column requires a full year. Partial dates
             // (bare "7/4") are dropped rather than silently assigned the
             // current year, which is what strtotime() used to do.
-            $parsed = DateTimeUtils::parsePartialDate($raw);
-            if ($parsed === null || $parsed['month'] === 0 || $parsed['day'] === 0 || $parsed['year'] === null) {
-                return null;
-            }
-            return sprintf('%04d-%02d-%02d', $parsed['year'], $parsed['month'], $parsed['day']);
+            return DateTimeUtils::parseFullDate($raw);
         case 6: // YEAR
             return ctype_digit($raw) && strlen($raw) === 4 ? $raw : null;
         case 7: // ENUM('winter','spring','summer','fall')
@@ -765,14 +761,10 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                         if (!empty($data['HomePhone'])) $family->setHomePhone($data['HomePhone']);
                         if (!empty($data['Envelope'])) $family->setEnvelope((int) $data['Envelope']);
                         if (!empty($data['WeddingDate'])) {
-                            // A bare 4-digit year (e.g. "2020") must not be passed to strtotime()
-                            // because PHP reads it as a time (8:20 PM) and returns today's date.
                             // WeddingDate is a SQL DATE column — partial dates are not storable.
-                            if (!preg_match('/^\d{4}$/', $data['WeddingDate'])) {
-                                $ts = strtotime($data['WeddingDate']);
-                                if ($ts !== false) {
-                                    $family->setWeddingdate(date('Y-m-d', $ts));
-                                }
+                            $wedding = DateTimeUtils::parseFullDate((string) $data['WeddingDate']);
+                            if ($wedding !== null) {
+                                $family->setWeddingdate($wedding);
                             }
                         }
                         $family->setDateEntered(date('YmdHis'));
@@ -878,14 +870,10 @@ $app->group('/api/import', function (RouteCollectorProxy $group): void {
                 }
 
                 if (!empty($data['MembershipDate'])) {
-                    // A bare 4-digit year (e.g. "2020") must not be passed to strtotime()
-                    // because PHP reads it as a time (8:20 PM) and returns today's date.
                     // MembershipDate is a SQL DATE column — partial dates are not storable.
-                    if (!preg_match('/^\d{4}$/', $data['MembershipDate'])) {
-                        $ts = strtotime($data['MembershipDate']);
-                        if ($ts !== false) {
-                            $person->setMembershipDate(date('Y-m-d', $ts));
-                        }
+                    $member = DateTimeUtils::parseFullDate((string) $data['MembershipDate']);
+                    if ($member !== null) {
+                        $person->setMembershipDate($member);
                     }
                 }
 

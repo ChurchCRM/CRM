@@ -4889,10 +4889,6 @@ msgid "Portuguese - Portugal"
 msgstr "पुर्तगाली - पुर्तगाल"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "प्रमाणीकरण ऐप में प्रदर्शित होने वाला एप्लिकेशन नाम निर्दिष्ट करें"
-
-#: 
 msgid "Review"
 msgstr "समीक्षा"
 
@@ -5021,10 +5017,6 @@ msgstr "परिवार पृष्ठ देखें"
 #: 
 msgid "View Person Page"
 msgstr "व्यक्ति पृष्ठ देखें"
-
-#: 
-msgid "Verify"
-msgstr "सत्यापित करें"
 
 #: 
 msgid "Family has no emails to use"
@@ -14604,10 +14596,6 @@ msgid "Date Picker Format"
 msgstr "दिनांक चयनकर्ता प्रारूप"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "दिनांक चयनकर्ता प्लेसहोल्डर"
-
-#: 
 msgid "Date Without Year"
 msgstr "वर्ष के बिना दिनांक"
 
@@ -14638,10 +14626,6 @@ msgstr "फ़ाइल नाम दिनांक प्रारूप"
 #: 
 msgid "Fully translated."
 msgstr "पूरी तरह अनुवादित।"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "दिनांक इनपुट में दिखाई देने वाला संकेत टेक्स्ट। डिफ़ॉल्ट: yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25037,10 +25021,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "जिस व्यक्ति का रिकॉर्ड उसकी आयु छिपाता है, उसका जन्म वर्ष कभी नहीं दिखता।"
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "सदस्य पोर्टल में %s बजे आपका ईमेल पता %s से %s बदलने का अनुरोध किया गया। परिवर्तन तभी होता है जब %s पर भेजा लिंक उपयोग किया जाए।"
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "एक पंक्ति अपेक्षित रूप में नहीं है।"
 
@@ -27159,4 +27139,16 @@ msgstr "या"
 #: 
 msgid "until %s"
 msgstr "%s तक"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "सदस्य पोर्टल में %1$s पर आपका ईमेल पता %2$s से %3$s करने का अनुरोध किया गया है। बदलाव तभी होता है जब नए पते पर भेजा गया लिंक उपयोग किया जाता है।"
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "कृपया नीचे दिए लिंक से अपने परिवार की जानकारी जाँचें। जाँच पृष्ठ पर सब कुछ सही है यह पुष्टि करने के लिए „परिवार की जानकारी की पुष्टि करें” चुनें, या सुधार कलीसिया कार्यालय को भेजें।"
+
+#: 
+msgid "Review Family Information"
+msgstr "परिवार की जानकारी की जाँच"
 

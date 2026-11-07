@@ -32,7 +32,9 @@ $contactWebsite = ChurchMetaData::getChurchWebSite();
       <div class="login-header-logo">
         <?= ChurchLogo::img() ?>
       </div>
+      <?php if (!ChurchLogoService::hasCustomLogo()): ?>
       <h2 class="login-header-church-name"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
+      <?php endif; ?>
       <p class="login-header-tagline"><?= gettext('Community Management Platform') ?></p>
     </div>
 

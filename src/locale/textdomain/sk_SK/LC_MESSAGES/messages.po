@@ -4891,10 +4891,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugalčina – Portugalsko"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Zadajte názov aplikácie pre zobrazenie v autentifikátore"
-
-#: 
 msgid "Review"
 msgstr "Prehľad"
 
@@ -5023,10 +5019,6 @@ msgstr "Zobraziť stránku rodiny"
 #: 
 msgid "View Person Page"
 msgstr "Zobraziť stránku osoby"
-
-#: 
-msgid "Verify"
-msgstr "Overiť"
 
 #: 
 msgid "Family has no emails to use"
@@ -14624,10 +14616,6 @@ msgid "Date Picker Format"
 msgstr "Formát výberu dátumu"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Text nápovedy výberu dátumu"
-
-#: 
 msgid "Date Without Year"
 msgstr "Dátum bez roka"
 
@@ -14658,10 +14646,6 @@ msgstr "Formát dátumu pre názov súboru"
 #: 
 msgid "Fully translated."
 msgstr "Plne preložené."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Text nápovedy v poliach dátumu. Predvolené: rrrr-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -25095,10 +25079,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Osoba, ktorej záznam skrýva vek, nikdy nezobrazuje rok narodenia."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "V členskom portáli bola %s vyžiadaná zmena vašej e-mailovej adresy z %s na %s. Zmena sa vykoná iba vtedy, keď sa použije odkaz odoslaný na %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Riadok nemá očakávaný tvar."
 
@@ -27217,4 +27197,16 @@ msgstr "alebo"
 #: 
 msgid "until %s"
 msgstr "do %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "V portáli pre členov bola podaná žiadosť o zmenu vašej e-mailovej adresy na %1$s z %2$s na %3$s. Zmena sa vykoná až po použití odkazu odoslaného na novú adresu."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Pomocou odkazu nižšie skontrolujte údaje o svojej rodine. Na stránke kontroly vyberte „Potvrdiť údaje o rodine“, aby ste potvrdili, že je všetko správne, alebo pošlite opravy na cirkevný úrad."
+
+#: 
+msgid "Review Family Information"
+msgstr "Skontrolovať údaje o rodine"
 

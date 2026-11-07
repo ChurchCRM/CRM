@@ -337,6 +337,8 @@ class   SystemConfig
             // Volunteer Management v2 (#9704, #9710). Deliberately declared without a
             // category (2026-09-18): their one home is Admin → Ministry Settings.
             'sVolunteerVersion'                    => new ConfigItem('sVolunteerVersion', 'choice', 'v2', gettext('Which Volunteer Management experience is active. V1 is the legacy Volunteer Opportunities feature; V2 is the new scheduling and assignment workflow. "Both" shows each side by side during migration.'), '', json_encode(self::getVolunteerVersionChoices())),
+            'aVolunteerV1Conversion'               => new ConfigItem('aVolunteerV1Conversion', 'json', '{}', gettext('Which legacy Volunteer Opportunities have been converted, and the position each became.')),
+            'sVolunteerV1NoticeDismissed'          => new ConfigItem('sVolunteerV1NoticeDismissed', 'text', '', gettext('The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice.')),
             'iVolunteerReminderLeadHours'          => new ConfigItem('iVolunteerReminderLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence the reminder email is sent. Set to 0 to send no reminders at all. Delivery depends on background jobs running; see the Volunteer documentation for the recommended cron setup.')),
             'iVolunteerGapAlertLeadHours'          => new ConfigItem('iVolunteerGapAlertLeadHours', 'number', '48', gettext('How many hours before a volunteer occurrence its coordinators are told about positions still unfilled. Set to 0 to send no such alerts; reminders are not affected.')),
             'sVolunteerGapAlertBatchTime'          => new ConfigItem('sVolunteerGapAlertBatchTime', 'text', '07:00', gettext('The time of day (HH:MM, in the church\'s time zone) the daily email listing unfilled volunteer positions is sent to coordinators.')),
@@ -369,7 +371,6 @@ class   SystemConfig
             'bSearchIncludeCalendarEventsMax'      => new ConfigItem('bSearchIncludeCalendarEventsMax', 'text', '15', gettext('Maximum number of Calendar Events')),
             'bRequire2FA'                          => new ConfigItem('bRequire2FA', 'boolean', '0', gettext('Require all users to enroll in two-factor authentication')),
             'i2FAGracePeriodDays'                  => new ConfigItem('i2FAGracePeriodDays', 'number', '7', gettext('Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately.')),
-            's2FAApplicationName'                  => new ConfigItem('s2FAApplicationName', 'text', 'ChurchCRM', gettext('Specify the application name to be displayed in authenticator app')),
             'sTwoFASecretKey'                      => new ConfigItem('sTwoFASecretKey', 'password', '', gettext('Encryption key for storing 2FA secret keys in the database')),
             'bSendUserDeletedEmail'                => new ConfigItem('bSendUserDeletedEmail', 'boolean', '0', gettext('Send an email notifying users when their account has been deleted')),
             'sInactiveClassification'              => new ConfigItem('sInactiveClassification', 'text', '', gettext('Comma separated list of classifications that should appear as inactive')),

@@ -1,0 +1,68 @@
+name: "Issues: weekly metrics"
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+    inputs:
+      milestone:
+        description: 'Milestone title (for example, 7.8.3); leave blank for all milestones'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weekly-issue-metrics
+  cancel-in-progress: false
+
+jobs:
+  report:
+    if: github.repository == 'ChurchCRM/CRM'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      issues: read
+      pull-requests: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: ./.github/actions/setup-node
+        with:
+          node-version-file: .nvmrc
+      - name: Prepare date range and milestone scope
+        id: queries
+        env:
+          METRICS_MILESTONE: ${{ inputs.milestone }}
+        run: node scripts/maintainer/weekly-issue-metrics.js dates
+      - name: Measure responsiveness of issues created in the past 30 days
+        uses: github-community-projects/issue-metrics@44173f9e0a3b2144a777a10a340e4c09a25ac9f8 # v4
+        env:
+          SEARCH_QUERY: ${{ steps.queries.outputs.recent_query }}
+          OUTPUT_FILE: recent-issue-metrics.md
+          HIDE_ITEMS_LIST: 'true'
+          NON_MENTIONING_LINKS: 'true'
+      - name: Measure the full open backlog
+        uses: github-community-projects/issue-metrics@44173f9e0a3b2144a777a10a340e4c09a25ac9f8 # v4
+        env:
+          SEARCH_QUERY: ${{ steps.queries.outputs.backlog_query }}
+          OUTPUT_FILE: backlog-issue-metrics.md
+          HIDE_ITEMS_LIST: 'true'
+          NON_MENTIONING_LINKS: 'true'
+      - name: Attach report to the run summary
+        env:
+          METRICS_MILESTONE_NUMBER: ${{ steps.queries.outputs.milestone_number }}
+          METRICS_MILESTONE: ${{ inputs.milestone }}
+        run: node scripts/maintainer/weekly-issue-metrics.js report
+      - name: Upload Markdown report
+        uses: ./.github/actions/upload-artifact
+        with:
+          name: weekly-issue-metrics
+          path: weekly-issue-metrics.md
+          retention-days: 90
+          if-no-files-found: error

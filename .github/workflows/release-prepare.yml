@@ -38,9 +38,6 @@ jobs:
           node-version-file: '.nvmrc'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
-
       - name: Setup PHP 8.4 and install Composer dependencies
         uses: ./.github/actions/composer-install
 
@@ -56,9 +53,6 @@ jobs:
 
       - name: Format web
         run: npm run format:web
-
-      - name: Build project
-        run: npm run build
 
       - name: Create release branch
         run: |

@@ -1,13 +1,13 @@
 import { expect, type Page, test } from '@playwright/test';
 
 import { captureScreen } from '../support/capture';
-import { humanClick, humanPause, humanType, settle } from '../support/human';
+import { humanClick, humanPause, humanSelect, humanType, settle } from '../support/human';
 
 // A geocoded couple from src/admin/demo/people.json that no other capture
 // uses. The form is captured unsaved: saving a demo family through the editor
 // re-geocodes it and rewrites its country (the import stores the country name,
 // the editor posts the code), which would change the shared demo data.
-const FAMILY_EMAIL = 'family.robinson23@demo.churchcrm.io';
+const FAMILY_EMAIL = 'nancy.robinson@demo.churchcrm.io';
 
 // captureScreen() resizes the viewport for each device, so scroll the section
 // between `top` and `bottom` into view again after every resize, below the
@@ -79,5 +79,58 @@ test.describe('Family mailing address', () => {
       purpose: 'Show marking a PO Box as the family mailing address while the home address stays on the map',
       usedIn: ['docs'],
     });
+  });
+
+  test('family-view-mailing-address', async ({ page }, testInfo) => {
+    // A new family, saved and then removed. The Robinson editor capture stays
+    // unsaved so it does not rewrite that shared demo record.
+    await page.goto('/FamilyEditor.php');
+    await expect(page.locator('#FamilyName')).toBeVisible({ timeout: 15000 });
+    await humanType(page.locator('#FamilyName'), 'Ellison');
+    await humanType(page.locator('#Address1'), '18 Oak Street');
+    await humanType(page.locator('#City'), 'Springfield');
+    await humanSelect(page.locator('#State'), 'IL');
+    await humanType(page.locator('#Zip'), '62704');
+    await humanType(page.locator('input[name="FirstName1"]'), 'Lena');
+    await humanType(page.locator('input[name="LastName1"]'), 'Ellison');
+
+    const section = page.locator('#secondAddressSection');
+    if (!(await section.isVisible())) {
+      await humanClick(page.locator('#secondAddressToggle'));
+    }
+    await expect(section).toBeVisible();
+    await humanType(page.locator('#SecondAddress1'), 'PO Box 880');
+    await humanType(page.locator('#SecondCity'), 'Springfield');
+    const state = page.locator('#SecondState + .ts-wrapper');
+    await expect(state).toBeVisible({ timeout: 60000 });
+    await humanClick(state.locator('.ts-control'));
+    await page.keyboard.type('Illinois');
+    await humanClick(page.locator('.ts-dropdown .option:visible', { hasText: /^Illinois$/ }));
+    await humanType(page.locator('#SecondZip'), '62705');
+    await humanClick(page.locator('#SecondIsMailing'));
+    await expect(page.locator('#SecondIsMailing')).toBeChecked();
+    await humanPause(page, 400);
+    await humanClick(page.locator('button[name="FamilySubmit"]'));
+    await page.waitForURL(/\/people\/family\/(\d+)/, { timeout: 15000 });
+    const familyId = Number(page.url().match(/\/people\/family\/(\d+)/)?.[1]);
+
+    try {
+      await expect(page.locator('#second-address-card')).toBeVisible({ timeout: 15000 });
+      await expect(page.locator('#fab-container .fab-button:visible')).toHaveCount(0, { timeout: 15000 });
+      await keepInFrame(page, '.card:has(+ #second-address-card) .card-header', '#second-address-card');
+      await settle(page, 800);
+
+      await captureScreen(page, testInfo, {
+        name: 'family-view-mailing-address',
+        title: 'Family View Mailing Address',
+        category: 'People & Families',
+        purpose: 'Show the family page with the home address on the Primary Address card and a PO Box on the Mailing Address card',
+        usedIn: ['docs'],
+      });
+    } finally {
+      if (familyId) {
+        await page.request.delete(`/api/family/${familyId}?deleteMembers=true`);
+      }
+    }
   });
 });

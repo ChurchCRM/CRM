@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -56,11 +57,11 @@ $base = SystemURLs::getRootPath() . '/finance/reports/giving-statements';
             <div class="row g-3 mb-3">
                 <div class="col-md-4">
                     <label class="form-label" for="DateStart"><?= gettext('Report Start Date') ?></label>
-                    <input type="text" class="form-control date-picker" name="DateStart" id="DateStart" maxlength="10" value="<?= InputUtils::escapeAttribute($criteria['dateStart']) ?>">
+                    <input type="text" class="form-control date-picker" name="DateStart" id="DateStart" maxlength="10" value="<?= InputUtils::escapeAttribute(DateTimeUtils::formatForDatePicker($criteria['dateStart'])) ?>">
                 </div>
                 <div class="col-md-4">
                     <label class="form-label" for="DateEnd"><?= gettext('Report End Date') ?></label>
-                    <input type="text" class="form-control date-picker" name="DateEnd" id="DateEnd" maxlength="10" value="<?= InputUtils::escapeAttribute($criteria['dateEnd']) ?>">
+                    <input type="text" class="form-control date-picker" name="DateEnd" id="DateEnd" maxlength="10" value="<?= InputUtils::escapeAttribute(DateTimeUtils::formatForDatePicker($criteria['dateEnd'])) ?>">
                 </div>
                 <div class="col-md-4">
                     <label class="form-label"><?= gettext('Apply Report Dates To') ?></label>
