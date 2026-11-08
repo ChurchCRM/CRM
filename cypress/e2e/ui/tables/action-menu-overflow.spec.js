@@ -44,7 +44,7 @@ function assertDropdownVisible(triggerSelector, context, containerFinder) {
   cy.get(triggerSelector, { timeout: 10000 })
     .first()
     .as("trigger")
-    .click();
+    .click({ scrollBehavior: "center" });
 
   cy.get(".dropdown-menu.show:not(.navbar-vertical .dropdown-menu)")
     .as("menu")
@@ -64,7 +64,7 @@ function assertDropdownVisible(triggerSelector, context, containerFinder) {
     .should("not.have.class", "disabled");
 
   // Close the menu before next iteration to avoid state leakage.
-  cy.get("@trigger").click();
+  cy.get("@trigger").click({ scrollBehavior: "center" });
 }
 
 /**
