@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Geçerli bir düğün tarihi değil"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-posta geçerli değil"
-
-#: 
 msgid "Family Info"
 msgstr "Aile bilgisi"
 
@@ -1448,10 +1444,6 @@ msgstr "Geçerli bir arkadaş tarihi değil"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Geçerli bir üyelik tarihi değil"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "İş e -postası geçerli değil"
 
 #: 
 msgid "Birth Month"
@@ -22908,10 +22900,6 @@ msgid "Invalid birth date"
 msgstr "Geçersiz doğum tarihi."
 
 #: 
-msgid "Invalid email address"
-msgstr "Geçersiz e-posta adresi"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kiosk Ayarları"
 
@@ -26470,10 +26458,6 @@ msgstr "Bu kaldırılamadı."
 #: 
 msgid "That device is signed out."
 msgstr "O cihazın oturumu kapatıldı."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Bu geçerli bir e-posta adresi değil."
 
 #: 
 msgid "That page had been open too long. Please try again."

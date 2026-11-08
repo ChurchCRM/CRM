@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Nie 'n geldige troudatum nie"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-pos is nie geldig nie"
-
-#: 
 msgid "Family Info"
 msgstr "Gesinsinligting"
 
@@ -1448,10 +1444,6 @@ msgstr "Nie 'n geldige vrienddatum nie"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Nie 'n geldige lidmaatskapdatum nie"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Werk-e-posadres is nie geldig nie"
 
 #: 
 msgid "Birth Month"
@@ -22908,10 +22900,6 @@ msgid "Invalid birth date"
 msgstr "Ongeldige geboortedatum."
 
 #: 
-msgid "Invalid email address"
-msgstr "Ongeldige e-posadres"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kioskstelling"
 
@@ -26470,10 +26458,6 @@ msgstr "Dit kon nie verwyder word nie."
 #: 
 msgid "That device is signed out."
 msgstr "Daardie toestel is afgemeld."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Dit is nie 'n geldige e-posadres nie."
 
 #: 
 msgid "That page had been open too long. Please try again."

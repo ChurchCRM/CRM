@@ -710,10 +710,6 @@ msgid "Not a valid Wedding Date"
 msgstr "చెల్లుబాటు అయ్యే వివాహ తేదీ కాదు"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "ఇమెయిల్ చెల్లదు"
-
-#: 
 msgid "Family Info"
 msgstr "కుటుంబ సమాచారం"
 
@@ -1442,10 +1438,6 @@ msgstr "చెల్లుబాటు అయ్యే స్నేహితు�
 #: 
 msgid "Not a valid Membership Date"
 msgstr "చెల్లుబాటు అయ్యే సభ్యత్వ తేదీ కాదు"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "వర్క్ ఇమెయిల్ చెల్లదు"
 
 #: 
 msgid "Birth Month"
@@ -22886,10 +22878,6 @@ msgid "Invalid birth date"
 msgstr "చెల్లని పుట్టిన తేదీ."
 
 #: 
-msgid "Invalid email address"
-msgstr "చెల్లని ఇమెయిల్ చిరునామా"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "కియోస్క్ సెట్టింగ్‌లు"
 
@@ -26448,10 +26436,6 @@ msgstr "దానిని తీసివేయలేకపోయాము."
 #: 
 msgid "That device is signed out."
 msgstr "ఆ పరికరం సైన్ అవుట్ అయింది."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "అది చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామా కాదు."
 
 #: 
 msgid "That page had been open too long. Please try again."

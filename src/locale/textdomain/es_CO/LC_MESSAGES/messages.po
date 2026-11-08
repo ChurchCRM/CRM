@@ -707,10 +707,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Fecha de Matrimonio Inválida"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Email Inválido"
-
-#: 
 msgid "Family Info"
 msgstr "Información familiar"
 
@@ -1433,10 +1429,6 @@ msgstr "Fecha de amistad no válida"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Fecha de membresía no válida"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Email de Trabajo no es Válido"
 
 #: 
 msgid "Birth Month"
@@ -22908,10 +22900,6 @@ msgid "Invalid birth date"
 msgstr "Fecha de Nacimiento Inválida"
 
 #: 
-msgid "Invalid email address"
-msgstr "Dirección de correo electrónico no válida"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Configuración del Quiosco"
 
@@ -26470,10 +26458,6 @@ msgstr "Eso no se pudo quitar."
 #: 
 msgid "That device is signed out."
 msgstr "Se cerró la sesión de ese dispositivo."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Esa no es una dirección de correo electrónico válida."
 
 #: 
 msgid "That page had been open too long. Please try again."
