@@ -200,3 +200,29 @@ select {
     transform: none;
     z-index: 1055; // above a Tabler card and sticky headers, below a modal backdrop
 }
+
+// Below xl the top bar carries the menu button beside the search, so the sidebar's own brand row is hidden.
+@media (max-width: 1199.98px) {
+  #sidebar > .container-fluid > .navbar-toggler,
+  #sidebar > .container-fluid > .navbar-brand {
+    display: none;
+  }
+
+  #sidebar {
+    min-height: 0;
+    padding: 0;
+  }
+
+  #sidebar > .container-fluid {
+    min-height: 0;
+  }
+}
+
+// Menu counters sit at the end of the row, beside the chevron.
+.navbar-vertical .nav-link-title {
+  flex: 1;
+}
+
+.navbar-vertical .badge {
+  flex: none;
+}

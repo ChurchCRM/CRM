@@ -346,9 +346,8 @@ function initializeFAB() {
   const fabPersonLabel = $("#fab-person-label");
   const fabFamilyLabel = $("#fab-family-label");
 
-  // Scroll to top when menu toggle is clicked so user sees the nav opening
-  // Registered before early return so it works on all pages
-  $("#fab-menu-toggle").on("click", () => {
+  // The menu opens above the sticky top bar, so bring it into view
+  $("#menu-toggle").on("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 

@@ -64,12 +64,6 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
       </div>
     </a>
     <?php endif; ?>
-    <button class="fab-menu-toggle d-xl-none" id="fab-menu-toggle" type="button"
-            data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
-            aria-controls="sidebar-menu" aria-expanded="false"
-            aria-label="<?= gettext('Toggle navigation') ?>">
-      <i class="fa-solid fa-bars"></i>
-    </button>
   </div>
 
 </div><!-- /.page -->
