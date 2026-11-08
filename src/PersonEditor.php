@@ -24,6 +24,7 @@ use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\EmailAddress;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\Propel;
@@ -318,9 +319,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Email
     if (strlen($sEmail) > 0) {
-        if (!MiscUtils::checkEmail($sEmail)) {
+        if (!EmailAddress::isValid($sEmail)) {
             $sEmailError = '<span class="text-danger">'
-                . gettext('Email is Not Valid') . '</span>';
+                . EmailAddress::validationMessage() . '</span>';
             $bErrorFlag = true;
         }
     }
@@ -337,9 +338,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Work Email
     if (strlen($sWorkEmail) > 0) {
-        if (!MiscUtils::checkEmail($sWorkEmail)) {
+        if (!EmailAddress::isValid($sWorkEmail)) {
             $sWorkEmailError = '<span class="text-danger">'
-                . gettext('Work Email is Not Valid') . '</span>';
+                . EmailAddress::validationMessage() . '</span>';
             $bErrorFlag = true;
         }
     }

@@ -717,10 +717,6 @@ msgid "Not a valid Wedding Date"
 msgstr "วันแต่งงานไม่ถูกต้อง"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "อีเมลไม่ถูกต้อง"
-
-#: 
 msgid "Family Info"
 msgstr "ข้อมูลครอบครัว"
 
@@ -1443,10 +1439,6 @@ msgstr "วันที่เพื่อนไม่ถูกต้อง"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "วันที่สมาชิกไม่ถูกต้อง"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "อีเมลที่ทำงานไม่ถูกต้อง"
 
 #: 
 msgid "Birth Month"
@@ -22857,10 +22849,6 @@ msgid "Invalid birth date"
 msgstr "วันเกิดไม่ถูกต้อง"
 
 #: 
-msgid "Invalid email address"
-msgstr "ที่อยู่อีเมลไม่ถูกต้อง"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "การตั้งค่า Kiosk"
 
@@ -26419,10 +26407,6 @@ msgstr "นำรายการนั้นออกไม่ได้"
 #: 
 msgid "That device is signed out."
 msgstr "อุปกรณ์นั้นออกจากระบบแล้ว"
-
-#: 
-msgid "That is not a valid email address."
-msgstr "นั่นไม่ใช่ที่อยู่อีเมลที่ถูกต้อง"
 
 #: 
 msgid "That page had been open too long. Please try again."

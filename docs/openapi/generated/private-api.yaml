@@ -10388,6 +10388,20 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /admin/api/member-portal/email-audit:
+    get:
+      tags:
+        - 'Member Portal'
+      summary: 'List invalid stored emails and personal-email collation collisions'
+      description: "Read-only cleanup report. Collisions use the stored column's case/accent folding; they do not establish a shared sign-in identity."
+      responses:
+        '200':
+          description: 'Invalid personal/work emails and groups of colliding personal emails, with person IDs'
+        '403':
+          description: 'Administrator required'
+      security:
+        -
+          ApiKeyAuth: []
   /admin/api/member-portal/lists:
     get:
       tags:
@@ -10423,7 +10437,7 @@ paths:
       tags:
         - Admin
       summary: 'One page of a Member Portal list (Admin role required)'
-      description: "may-sign-in: the blocks, the member rule and the email rule all let them in. everyone: anyone on file with a maySignIn flag and reasonLabel. signed-in-recently: a portal sign-in in the last 30 days. never-signed-in: may sign in but never has. email-attention: the member rule lets them in but their email does not (no_email, shared_email or email_unconfirmed); an unconfirmed row says whether the caller may confirm it (canConfirmEmail, confirmEmailRefusal) through POST /api/person/{id}/sign-in/confirm-email. families-confirmed: a member confirmed the family's details in the last 30 days. family-emails-not-moved: the 7.8.3 upgrade could not give the family email to a person."
+      description: "may-sign-in: the blocks, the member rule and the email rule all let them in. everyone: anyone on file with a maySignIn flag and reasonLabel. signed-in-recently: a portal sign-in in the last 30 days. never-signed-in: may sign in but never has. email-attention: the member rule lets them in but their email does not (no_email, invalid_email, shared_email or email_unconfirmed); an unconfirmed row says whether the caller may confirm it (canConfirmEmail, confirmEmailRefusal) through POST /api/person/{id}/sign-in/confirm-email. families-confirmed: a member confirmed the family's details in the last 30 days. family-emails-not-moved: the 7.8.3 upgrade could not give the family email to a person."
       operationId: getMemberPortalList
       parameters:
         -
@@ -10467,6 +10481,7 @@ paths:
             type: string
             enum:
               - no_email
+              - invalid_email
               - shared_email
               - email_unconfirmed
         -

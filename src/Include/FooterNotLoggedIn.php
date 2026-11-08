@@ -1,33 +1,15 @@
 <?php
 
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Plugin\PluginManager;
-use ChurchCRM\Service\SystemService;
-use ChurchCRM\Utils\InputUtils;
+
 ?>
 
 <div class="auth-footer">
   <div>
-    <strong><?= gettext('Copyright') ?> &copy; <?= SystemService::getCopyrightDate() ?> 
-    <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://churchcrm.io', 'login_footer')) ?>" target="_blank" rel="noopener noreferrer"><b>Church</b>CRM</a></strong>. 
-    <?= gettext('All rights reserved') ?>.
+    <?php $copyrightAttribution = 'login_footer'; require __DIR__ . '/partials/copyright.php'; ?>
   </div>
   <div class="auth-footer-social">
-    <a href="https://www.facebook.com/getChurchCRM" target="_blank" rel="noopener noreferrer" title="Facebook">
-      <i class="fa-brands fa-facebook"></i>
-    </a>
-    <a href="https://www.instagram.com/getchurchcrm/" target="_blank" rel="noopener noreferrer" title="Instagram">
-      <i class="fa-brands fa-instagram"></i>
-    </a>
-    <a href="https://x.com/getChurchCRM" target="_blank" rel="noopener noreferrer" title="X">
-      <i class="fa-brands fa-x-twitter"></i>
-    </a>
-    <a href="https://www.linkedin.com/company/getchurchcrm/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-      <i class="fa-brands fa-linkedin"></i>
-    </a>
-    <a href="https://www.youtube.com/@getChurchCRM" target="_blank" rel="noopener noreferrer" title="YouTube">
-      <i class="fa-brands fa-youtube"></i>
-    </a>
+    <?php $socialLinkSeparator = ''; require __DIR__ . '/partials/social-links.php'; ?>
   </div>
 </div>
 
