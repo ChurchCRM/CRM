@@ -735,10 +735,6 @@ msgid "Not a valid Wedding Date"
 msgstr "不是一个有效的婚礼日期"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "电子邮件是无效的"
-
-#: 
 msgid "Family Info"
 msgstr "家庭资料"
 
@@ -1485,10 +1481,6 @@ msgstr "不是一个有效的好友日期"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "不是一个有效的会员日期"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "工作电子邮件是无效的"
 
 #: 
 msgid "Birth Month"
@@ -22945,10 +22937,6 @@ msgid "Invalid birth date"
 msgstr "无效的出生日期。"
 
 #: 
-msgid "Invalid email address"
-msgstr "电子邮件地址无效"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "自助终端设置"
 
@@ -26507,10 +26495,6 @@ msgstr "无法移除。"
 #: 
 msgid "That device is signed out."
 msgstr "该设备已退出。"
-
-#: 
-msgid "That is not a valid email address."
-msgstr "这不是有效的电子邮箱。"
 
 #: 
 msgid "That page had been open too long. Please try again."

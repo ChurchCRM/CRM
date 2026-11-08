@@ -49,9 +49,21 @@ describe("Admin - Report Settings page", () => {
             .should("have.text", "Reports");
     });
 
-    it("lists Statement Settings under Reports > Admin as well", () => {
+    it("lists Statement Settings only under Finance > Admin", () => {
         cy.visit("/admin/system/report-settings");
         cy.get('#sidebar a[href$="/finance/statements/settings"]').should("have.length", 1);
+        cy.get('#sidebar a[href$="/finance/statements/settings"]')
+            .parents("li.nav-item")
+            .eq(1)
+            .children(".nav-row")
+            .find(".nav-link-title")
+            .should("have.text", "Admin");
+        cy.get('#sidebar a[href$="/finance/statements/settings"]')
+            .parents("li.nav-item")
+            .last()
+            .children(".nav-row")
+            .find(".nav-link-title")
+            .should("have.text", "Finance");
     });
 
     it("auto-saves the letter closing and no longer lists it on System Settings", () => {
