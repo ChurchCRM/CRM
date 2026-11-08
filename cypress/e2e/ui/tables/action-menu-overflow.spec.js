@@ -100,11 +100,9 @@ function assertContainerOverflow(context) {
 // .btn[data-bs-toggle='dropdown'] ellipsis trigger inside a wrapper fixed with
 // `.table-clip-x` (`overflow-x: clip; overflow-y: visible`).
 //
-// 375px is intentionally excluded: the 5-column table (NAME, ROLE, BIRTHDAY,
-// EMAIL, ACTIONS) is wider than 375px, and overflow-x:clip hides the ACTIONS
-// column off-screen at that width. 768px and 1920px are sufficient to verify
-// the dropdown-clipping fix at the widths where the button is reachable.
-const SCENARIO1_VIEWPORTS = VIEWPORTS.filter(({ width }) => width >= 768);
+// The 5-column table is wider than 375px. Scenario 2 covers table dropdowns at
+// tablet and phone widths; this scenario covers the Key People table at desktop.
+const SCENARIO1_VIEWPORTS = VIEWPORTS.filter(({ width }) => width === 1920);
 
 describe("Scenario 1 — Family View member table dropdown", () => {
   beforeEach(() => cy.setupStandardSession());
