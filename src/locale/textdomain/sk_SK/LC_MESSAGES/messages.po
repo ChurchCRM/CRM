@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Neplatný dátum svadby"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-mail nie je platný"
-
-#: 
 msgid "Family Info"
 msgstr "Informácie o rodine"
 
@@ -1431,10 +1427,6 @@ msgstr "Neplatný dátum priateľstva"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Neplatný dátum členstva"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Pracovný e-mail nie je platný"
 
 #: 
 msgid "Birth Month"
@@ -22935,10 +22927,6 @@ msgid "Invalid birth date"
 msgstr "Neplatný dátum narodenia."
 
 #: 
-msgid "Invalid email address"
-msgstr "Neplatná e-mailová adresa"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Nastavenia kiosku"
 
@@ -23609,10 +23597,6 @@ msgstr "Zvoľte, ako ďaleko dopredu sa rozvrhy obsadzujú a kedy odchádzajú p
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Vyberte niekoho, kto už je v adresári zboru. Pripojí sa k dobrovoľníkom tejto služby a jej koordinátorom sa odošle e-mail. Odobrať niekoho môže len koordinátor."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM má dva spôsoby správy dobrovoľníkov. V jednom čase má byť používaný len jeden; nastavenie prostredia dobrovoľníkov rozhoduje, ktorý tento zbor vidí. Prepnutie skryje alebo zobrazí stránky a položky ponuky — nikdy nevymaže údaje, takže sa môžete vrátiť."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26501,10 +26485,6 @@ msgstr "Toto sa nepodarilo odstrániť."
 #: 
 msgid "That device is signed out."
 msgstr "Toto zariadenie je odhlásené."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Toto nie je platná e-mailová adresa."
 
 #: 
 msgid "That page had been open too long. Please try again."

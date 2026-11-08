@@ -713,10 +713,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Non è una data di matrimonio valida"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-mail non è valido"
-
-#: 
 msgid "Family Info"
 msgstr "Informazioni Famiglia"
 
@@ -1452,10 +1448,6 @@ msgstr "Data non valida per un amico"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Data di iscrizione non valida"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Email Il lavoro non è valido"
 
 #: 
 msgid "Birth Month"
@@ -22928,10 +22920,6 @@ msgid "Invalid birth date"
 msgstr "Data di nascita non valida."
 
 #: 
-msgid "Invalid email address"
-msgstr "Indirizzo email non valido"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Impostazioni del Chiosco"
 
@@ -23602,10 +23590,6 @@ msgstr "Scegli con quanto anticipo si compilano i turni e quando partono i prome
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Scegli qualcuno già nell'elenco della parrocchia. Entra tra i volontari di questo ministero e i coordinatori ricevono un'e-mail. Solo un coordinatore può togliere qualcuno."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM ha due modi di gestire i volontari. Solo uno è pensato per essere in uso alla volta; l'impostazione dell'esperienza Volontari decide quale vede questa parrocchia. Il cambio nasconde o mostra pagine e voci di menu — non cancella mai i dati, quindi puoi tornare indietro."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26494,10 +26478,6 @@ msgstr "Impossibile rimuoverlo."
 #: 
 msgid "That device is signed out."
 msgstr "Quel dispositivo è stato disconnesso."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Non è un indirizzo email valido."
 
 #: 
 msgid "That page had been open too long. Please try again."

@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "결혼기념일이 올바르지 않습니다."
 
 #: 
-msgid "Email is Not Valid"
-msgstr "이메일 형식이 올바르지 않습니다."
-
-#: 
 msgid "Family Info"
 msgstr "가족 정보"
 
@@ -1448,10 +1444,6 @@ msgstr "교제 등록일이 올바르지 않습니다."
 #: 
 msgid "Not a valid Membership Date"
 msgstr "등록일이 올바르지 않습니다."
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "직장 이메일이 올바르지 않습니다."
 
 #: 
 msgid "Birth Month"
@@ -22873,10 +22865,6 @@ msgid "Invalid birth date"
 msgstr "생년월일이 올바르지 않습니다."
 
 #: 
-msgid "Invalid email address"
-msgstr "유효하지 않은 이메일 주소"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "키오스크 설정"
 
@@ -23547,10 +23535,6 @@ msgstr "일정을 얼마나 미리 채울지와 알림을 언제 보낼지 고�
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "이미 교회 명부에 있는 사람을 고르세요. 이 사역의 봉사자에 들어가고 조정자에게 이메일이 갑니다. 조정자만 사람을 뺄 수 있습니다."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM에는 봉사자를 관리하는 두 가지 방식이 있습니다. 한 번에 하나만 쓰도록 되어 있으며, 봉사자 경험 설정이 이 교회에 보이는 방식을 정합니다. 바꾸면 페이지와 메뉴만 숨기거나 보여 주고 데이터는 삭제되지 않으므로, 다시 되돌릴 수 있습니다."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26439,10 +26423,6 @@ msgstr "제거하지 못했습니다."
 #: 
 msgid "That device is signed out."
 msgstr "그 기기는 로그아웃되었습니다."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "올바른 이메일 주소가 아닙니다."
 
 #: 
 msgid "That page had been open too long. Please try again."

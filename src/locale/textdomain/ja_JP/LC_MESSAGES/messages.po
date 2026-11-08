@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "無効な結婚記念日です"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "メールアドレスが無効です"
-
-#: 
 msgid "Family Info"
 msgstr "家族情報"
 
@@ -1431,10 +1427,6 @@ msgstr "無効な友人登録日です"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "無効な会員登録日です"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "職場のメールアドレスが無効です"
 
 #: 
 msgid "Birth Month"
@@ -22845,10 +22837,6 @@ msgid "Invalid birth date"
 msgstr "無効な生年月日です。"
 
 #: 
-msgid "Invalid email address"
-msgstr "無効なメール アドレス"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "キオスク設定"
 
@@ -23519,10 +23507,6 @@ msgstr "予定をどれだけ先まで埋めるか、通知をいつ出すかを
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "すでに教会名簿にいる人を選んでください。このミニストリーのボランティアに加わり、調整者にメールが送られます。外せるのは調整者だけです。"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM にはボランティアの管理方法が二つあります。同時に使うのは一つだけです。「ボランティア体験」の設定で、この教会に表示する方を決めます。切り替えるとページとメニューの表示が変わるだけで、データは削除されないので、元に戻せます。"
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26411,10 +26395,6 @@ msgstr "削除できませんでした。"
 #: 
 msgid "That device is signed out."
 msgstr "その端末はサインアウトしました。"
-
-#: 
-msgid "That is not a valid email address."
-msgstr "有効なメールアドレスではありません。"
 
 #: 
 msgid "That page had been open too long. Please try again."

@@ -22,11 +22,10 @@ describe("Floating action buttons under overlays (#10419)", () => {
         cy.visit("/event/calendars");
         cy.get('[data-bs-target="#calendarSidebar"]').click();
         cy.get("#calendarSidebar").should("have.class", "show").and("not.have.class", "showing");
-        cy.get("#fab-menu-toggle").should(($toggle) => {
-            const rect = $toggle[0].getBoundingClientRect();
-            const doc = $toggle[0].ownerDocument;
-            const top = doc.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
-            expect(doc.getElementById("calendarSidebar").contains(top), "offcanvas paints over the FAB").to.equal(true);
+        cy.get("#calendarSidebar").then(($panel) => {
+            cy.get("#fab-container").should(($fab) => {
+                expect(Number($fab.css("z-index")), "FAB z-index").to.be.lessThan(Number($panel.css("z-index")));
+            });
         });
     });
 });

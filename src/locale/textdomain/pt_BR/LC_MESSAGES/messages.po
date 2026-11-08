@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Não é uma data de casamento válida"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-mail inválido"
-
-#: 
 msgid "Family Info"
 msgstr "Informação da Família"
 
@@ -1431,10 +1427,6 @@ msgstr "Não é uma data de ingresso válida"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Não é uma Data de Membresia válida"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "E-mail não é válido"
 
 #: 
 msgid "Birth Month"
@@ -22876,10 +22868,6 @@ msgid "Invalid birth date"
 msgstr "Data de nascimento inválida."
 
 #: 
-msgid "Invalid email address"
-msgstr "Endereço de email inválido"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Configurações do Quiosque"
 
@@ -23550,10 +23538,6 @@ msgstr "Escolha com quanta antecedência as escalas são preenchidas e quando os
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Escolha alguém que já esteja no diretório da igreja. A pessoa entra nos voluntários deste ministério e os coordenadores recebem um e-mail. Só um coordenador pode retirar alguém."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "O ChurchCRM tem duas formas de gerenciar voluntários. Só uma deve estar em uso por vez; a configuração de experiência de Voluntários decide qual esta igreja vê. Trocar oculta ou mostra páginas e itens de menu — nunca apaga dados, então você pode voltar."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26442,10 +26426,6 @@ msgstr "Não foi possível remover isso."
 #: 
 msgid "That device is signed out."
 msgstr "Esse dispositivo foi desconectado."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Esse não é um endereço de e-mail válido."
 
 #: 
 msgid "That page had been open too long. Please try again."

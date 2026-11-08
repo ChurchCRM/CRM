@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Nevažeći datum vjenčanja"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-pošta nije valjana"
-
-#: 
 msgid "Family Info"
 msgstr "Podaci o obitelji"
 
@@ -1431,10 +1427,6 @@ msgstr "Nevažeći datum prijateljevanja"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Nevažeći datum članstva"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Poslovna e-pošta nije valjana"
 
 #: 
 msgid "Birth Month"
@@ -22903,10 +22895,6 @@ msgid "Invalid birth date"
 msgstr "Nevažeći datum rođenja."
 
 #: 
-msgid "Invalid email address"
-msgstr "Nevaljana email adresa"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Postavke kioska"
 
@@ -23577,10 +23565,6 @@ msgstr "Odaberite koliko unaprijed se rasporedi popunjavaju i kada odlaze podsje
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Odaberite nekoga tko je već u imeniku crkve. Pridružuje se volonterima ove službe, a koordinatorima se šalje e-pošta. Samo koordinator može nekoga izuzeti."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM ima dva načina upravljanja volonterima. Istodobno je namijenjen samo jedan; postavka iskustva volontera odlučuje koji ova crkva vidi. Prebacivanje skriva ili prikazuje stranice i stavke izbornika — nikad ne briše podatke, pa se možete vratiti."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26469,10 +26453,6 @@ msgstr "To nije bilo moguće ukloniti."
 #: 
 msgid "That device is signed out."
 msgstr "Taj uređaj je odjavljen."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "To nije valjana adresa e-pošte."
 
 #: 
 msgid "That page had been open too long. Please try again."

@@ -708,10 +708,6 @@ msgid "Not a valid Wedding Date"
 msgstr "मान्य विवाह तिथि नहीं है"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "ईमेल मान्य नहीं है"
-
-#: 
 msgid "Family Info"
 msgstr "परिवार की जानकारी"
 
@@ -1434,10 +1430,6 @@ msgstr "मान्य मित्र तिथि नहीं है"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "मान्य सदस्यता तिथि नहीं है"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "कार्य ईमेल मान्य नहीं है"
 
 #: 
 msgid "Birth Month"
@@ -22877,10 +22869,6 @@ msgid "Invalid birth date"
 msgstr "अमान्य जन्म तिथि।"
 
 #: 
-msgid "Invalid email address"
-msgstr "अमान्य ईमेल पता"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "कियोस्क सेटिंग्स"
 
@@ -23551,10 +23539,6 @@ msgstr "चुनें कि अनुसूचियाँ कितना �
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "चर्च निर्देशिका में पहले से मौजूद किसी व्यक्ति को चुनें। वे इस सेवकाई के स्वयंसेवकों में जुड़ते हैं और इसके समन्वयकों को ईमेल जाता है। केवल समन्वयक ही किसी को निकाल सकता है।"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM में स्वयंसेवकों के प्रबंधन के दो तरीके हैं। एक समय में केवल एक उपयोग के लिए है; स्वयंसेवक अनुभव सेटिंग तय करती है कि यह कलीसिया कौन सा देखे। बदलने से पृष्ठ और सूची प्रविष्टियाँ छिपती या दिखती हैं — आँकड़ा कभी नहीं मिटता, इसलिए आप वापस बदल सकते हैं।"
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26443,10 +26427,6 @@ msgstr "उसे हटाया नहीं जा सका।"
 #: 
 msgid "That device is signed out."
 msgstr "वह उपकरण साइन आउट हो गया है।"
-
-#: 
-msgid "That is not a valid email address."
-msgstr "वह मान्य ईमेल पता नहीं है।"
 
 #: 
 msgid "That page had been open too long. Please try again."

@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Pole kehtiv pulmakuupäev"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-post pole kehtiv"
-
-#: 
 msgid "Family Info"
 msgstr "Pereinfo"
 
@@ -1448,10 +1444,6 @@ msgstr "Kehtetu sõbra kuupäev"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Liikmelisuse kuupäev on kehtetu"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Töö e-posti aadress pole kehtiv"
 
 #: 
 msgid "Birth Month"
@@ -22907,10 +22899,6 @@ msgid "Invalid birth date"
 msgstr "Vale sünniaeg."
 
 #: 
-msgid "Invalid email address"
-msgstr "Vale e-posti aadress"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kioski seaded"
 
@@ -23581,10 +23569,6 @@ msgstr "Vali, kui kaugele ette ajakavad täidetakse ja millal meeldetuletused sa
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Vali keegi, kes on juba koguduse kataloogis. Ta liitub selle teenistuse vabatahtlikega ja koordinaatoritele saadetakse e-kiri. Ainult koordinaator saab kedagi eemaldada."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM-il on kaks viisi vabatahtlike haldamiseks. Korraga on mõeldud kasutusse ainult üks; vabatahtliku kogemuse säte otsustab, kumba see kogudus näeb. Vahetamine peidab või näitab lehti ja menüükirjeid — see ei kustuta kunagi andmeid, seega saad tagasi vahetada."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26473,10 +26457,6 @@ msgstr "Seda ei saanud eemaldada."
 #: 
 msgid "That device is signed out."
 msgstr "See seade on välja logitud."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "See ei ole kehtiv e-posti aadress."
 
 #: 
 msgid "That page had been open too long. Please try again."

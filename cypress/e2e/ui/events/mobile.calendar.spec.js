@@ -43,6 +43,11 @@ describe("Mobile Calendar", () => {
         // .crm-fc-footer-toolbar is set via footerToolbarClass option in event-calendars.js.
         cy.get(".crm-fc-footer-toolbar").should("be.visible");
         cy.get("#calendar [aria-label='Month view']").should("be.visible");
+
+        // A phone opens on the list view; the month grid is too narrow to read.
+        cy.window().should((win) => {
+            expect(win.CRM.fullcalendar.view.type).to.eq("listMonth");
+        });
     });
 
     it("Should show Calendars offcanvas button on mobile", () => {
@@ -76,6 +81,9 @@ describe("Mobile Calendar", () => {
         // Desktop toolbar should be active (view-switcher in header, no footer toolbar)
         cy.get("#calendar [aria-label='Month view']").should("be.visible");
         cy.get(".crm-fc-footer-toolbar").should("not.exist");
+        cy.window().should((win) => {
+            expect(win.CRM.fullcalendar.view.type).to.eq("dayGridMonth");
+        });
     });
 
     it("Should switch to desktop toolbar after rotating to landscape", () => {

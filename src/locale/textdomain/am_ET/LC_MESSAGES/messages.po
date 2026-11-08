@@ -710,10 +710,6 @@ msgid "Not a valid Wedding Date"
 msgstr "የሚሰራ የሰርግ ቀን አይደለም።"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "ኢሜይሉ ልክ አይደለም"
-
-#: 
 msgid "Family Info"
 msgstr "የቤተሰብ መረጃ"
 
@@ -1447,10 +1443,6 @@ msgstr "የሚሰራ የጓደኛ ቀን አይደለም"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "የሚሰራ የአባልነት ቀን አይደለም"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "ኢሜይሉ አይሰራም"
 
 #: 
 msgid "Birth Month"
@@ -22914,10 +22906,6 @@ msgid "Invalid birth date"
 msgstr "ልክ ያልሆነ የልደት ቀን።"
 
 #: 
-msgid "Invalid email address"
-msgstr "ልክ ያልሆነ የኢሜይል አድራሻ"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "የኪዮስክ ቅንብሮች"
 
@@ -23588,10 +23576,6 @@ msgstr "መርሐግብሮች ምን ያህል ቀድመው እንደሚሞሉ �
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "አስቀድሞ በቤተክርስቲያን ማውጫ ውስጥ ያለን ሰው ይምረጡ። የዚህ አገልግሎት በጎ ፈቃደኞች ይቀላቀላሉ እና አስተባባሪዎቹ ደብዳቤ ይደርሳቸዋል። ሰውን ማውጣት የሚችለው አስተባባሪ ብቻ ነው።"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM በጎ ፈቃደኞችን የሚያስተዳድርባቸው ሁለት መንገዶች አሉት። በአንድ ጊዜ አንዱ ብቻ ጥቅም ላይ ይውላል፤ የበጎ ፈቃደኛ ተሞክሮ ቅንብር ይህች ቤተክርስቲያን የትኛውን እንደምታይ ይወስናል። መቀየር ገጾችን እና የምናሌ ንጥሎችን ይደብቃል ወይም ያሳያል — ውሂብን በጭራሽ አይሰርዝም፣ ስለዚህ መመለስ ይችላሉ።"
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26480,10 +26464,6 @@ msgstr "ያ ሊወገድ አልቻለም።"
 #: 
 msgid "That device is signed out."
 msgstr "ያ መሣሪያ ወጥቷል።"
-
-#: 
-msgid "That is not a valid email address."
-msgstr "ያ ትክክለኛ የኢሜይል አድራሻ አይደለም።"
 
 #: 
 msgid "That page had been open too long. Please try again."

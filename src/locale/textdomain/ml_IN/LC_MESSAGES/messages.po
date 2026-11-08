@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "സാധുവായ വിവാഹ തീയതിയല്ല"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "ഇമെയിൽ സാധുവല്ല"
-
-#: 
 msgid "Family Info"
 msgstr "കുടുംബ വിവരം"
 
@@ -1431,10 +1427,6 @@ msgstr "സാധുവായ സൗഹൃദ തീയതിയല്ല"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "സാധുവായ അംഗത്വ തീയതിയല്ല"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "ജോലി ഇമെയിൽ സാധുവല്ല"
 
 #: 
 msgid "Birth Month"
@@ -22875,10 +22867,6 @@ msgid "Invalid birth date"
 msgstr "ജനന തീയതി അസാധുവാണ്."
 
 #: 
-msgid "Invalid email address"
-msgstr "അസാധുവായ ഇമെയിൽ വിലാസം"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "കിയോസ്ക് ക്രമീകരണങ്ങൾ"
 
@@ -23549,10 +23537,6 @@ msgstr "സമയക്രമങ്ങൾ എത്ര മുന്നോട്�
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "സഭാ നാമാവലിയിൽ ഇതിനകമുള്ള ഒരാളെ തിരഞ്ഞെടുക്കുക. അവർ ഈ ശുശ്രൂഷയുടെ സന്നദ്ധസേവകരിൽ ചേരും; അതിന്റെ ഏകോപകർക്ക് ഇമെയിൽ പോകും. ഒരു ഏകോപകന് മാത്രമേ ഒരാളെ നീക്കാൻ കഴിയൂ."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM-ൽ സന്നദ്ധസേവകരെ നിയന്ത്രിക്കാൻ രണ്ട് വഴികളുണ്ട്. ഒരു സമയം ഒന്ന് മാത്രമേ ഉപയോഗത്തിലാകാവൂ; സന്നദ്ധ അനുഭവ ക്രമീകരണം ഈ സഭ ഏതാണ് കാണുക എന്ന് തീരുമാനിക്കുന്നു. മാറ്റുന്നത് താളുകളും പട്ടിക ഇനങ്ങളും മറയ്ക്കുകയോ കാണിക്കുകയോ ചെയ്യും — ദത്തം ഒരിക്കലും നീക്കില്ല, അതിനാൽ തിരികെ മാറാം."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26441,10 +26425,6 @@ msgstr "അത് നീക്കം ചെയ്യാനായില്ല."
 #: 
 msgid "That device is signed out."
 msgstr "ആ ഉപകരണം സൈൻ ഔട്ട് ആയി."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "അത് സാധുവായ ഇമെയിൽ വിലാസമല്ല."
 
 #: 
 msgid "That page had been open too long. Please try again."

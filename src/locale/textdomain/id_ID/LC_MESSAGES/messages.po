@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Tanggal pernikahan tidak valid"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Alamat surat elektronik tidak valid"
-
-#: 
 msgid "Family Info"
 msgstr "Informasi keluarga"
 
@@ -1449,10 +1445,6 @@ msgstr "Bukan Tanggal Teman yang valid"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Bukan Tanggal Keanggotaan yang valid"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Email Kantor Tidak Valid"
 
 #: 
 msgid "Birth Month"
@@ -22877,10 +22869,6 @@ msgid "Invalid birth date"
 msgstr "Tanggal kelahiran tidak valid"
 
 #: 
-msgid "Invalid email address"
-msgstr "Alamat email tidak valid"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Pengaturan Kiosk"
 
@@ -23551,10 +23539,6 @@ msgstr "Pilih seberapa jauh ke depan jadwal diisi dan kapan pengingat dikirim, s
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Pilih seseorang yang sudah ada di direktori gereja. Orang itu bergabung dengan relawan pelayanan ini dan koordinatornya menerima surel. Hanya koordinator yang dapat mengeluarkan seseorang."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM memiliki dua cara mengelola relawan. Hanya satu yang dimaksudkan untuk dipakai pada satu waktu; pengaturan pengalaman Relawan menentukan mana yang dilihat gereja ini. Beralih menyembunyikan atau menampilkan halaman dan entri menu — tidak pernah menghapus data, jadi Anda dapat kembali."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26443,10 +26427,6 @@ msgstr "Itu tidak dapat dihapus."
 #: 
 msgid "That device is signed out."
 msgstr "Perangkat itu sudah keluar."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Itu bukan alamat surel yang valid."
 
 #: 
 msgid "That page had been open too long. Please try again."

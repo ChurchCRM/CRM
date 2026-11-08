@@ -736,10 +736,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Ikke en gyldig Wedding Date"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-post er ikke gyldig"
-
-#: 
 msgid "Family Info"
 msgstr "Familie informasjon"
 
@@ -1502,10 +1498,6 @@ msgstr "Ikke en gyldig Friend Dato"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Ikke en gyldig medlemskap Dato"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Arbeid post er ikke gyldig"
 
 #: 
 msgid "Birth Month"
@@ -22979,10 +22971,6 @@ msgid "Invalid birth date"
 msgstr "Ugyldig Fødselsdato."
 
 #: 
-msgid "Invalid email address"
-msgstr "Ugyldig e-postadresse"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kioskinnstillinger"
 
@@ -23653,10 +23641,6 @@ msgstr "Velg hvor langt frem planer fylles og når påminnelser sendes, og kontr
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Velg noen som allerede finnes i menighetskatalogen. Personen blir frivillig i denne tjenesten, og koordinatorene får e-post. Bare en koordinator kan ta noen ut."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM har to måter å håndtere frivillige på. Bare én er ment å være i bruk om gangen; innstillingen for frivilligopplevelsen avgjør hvilken denne menigheten ser. Bytte skjuler eller viser sider og menyvalg — data slettes aldri, så du kan bytte tilbake."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26545,10 +26529,6 @@ msgstr "Det kunne ikke fjernes."
 #: 
 msgid "That device is signed out."
 msgstr "Den enheten er logget ut."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Det er ikke en gyldig e-postadresse."
 
 #: 
 msgid "That page had been open too long. Please try again."

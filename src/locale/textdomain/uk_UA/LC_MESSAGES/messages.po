@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Недійсна дата весілля"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Електронна адреса недійсна"
-
-#: 
 msgid "Family Info"
 msgstr "Інформація про сім’ю"
 
@@ -1448,10 +1444,6 @@ msgstr "Недійсна дата друга"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Недійсна дата членства"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Робоча електронна адреса недійсна"
 
 #: 
 msgid "Birth Month"
@@ -22968,10 +22960,6 @@ msgid "Invalid birth date"
 msgstr "Недійсна дата народження."
 
 #: 
-msgid "Invalid email address"
-msgstr "Невірна адреса електронної пошти"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Параметри кіоску"
 
@@ -23642,10 +23630,6 @@ msgstr "Виберіть, наскільки наперед заповнюють
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Виберіть людину, яка вже є в церковному довіднику. Вона приєднається до добровольців цього служіння, а координаторам надійде лист. Виключити людину може лише координатор."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "У ChurchCRM два способи вести добровольців. Одночасно призначений лише один; налаштування досвіду добровольців вирішує, що бачить ця церква. Перемикання ховає або показує сторінки й пункти меню — дані не видаляються, тож можна повернутися."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26534,10 +26518,6 @@ msgstr "Це не вдалося видалити."
 #: 
 msgid "That device is signed out."
 msgstr "На цьому пристрої виконано вихід."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Це не дійсна адреса електронної пошти."
 
 #: 
 msgid "That page had been open too long. Please try again."

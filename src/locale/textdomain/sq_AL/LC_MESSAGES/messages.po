@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Jo një të vlefshme Data Dasma"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Email nuk është i vlefshëm"
-
-#: 
 msgid "Family Info"
 msgstr "Info e familjes"
 
@@ -1448,10 +1444,6 @@ msgstr "Jo Shoqëri vlefshme Data"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Jo një të vlefshme Data Anëtarësimit"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Puna Email nuk është i vlefshëm"
 
 #: 
 msgid "Birth Month"
@@ -22899,10 +22891,6 @@ msgid "Invalid birth date"
 msgstr "Invalid Data e lindjes."
 
 #: 
-msgid "Invalid email address"
-msgstr "Adresë email e pavlefshme"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Cilësimet e kioskut"
 
@@ -23573,10 +23561,6 @@ msgstr "Zgjidh sa përpara mbushen oraret dhe kur dalin kujtesat, dhe kontrollo 
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Zgjidh dikë që është tashmë në direktorinë e kishës. Ai bashkohet me vullnetarët e kësaj shërbesë dhe koordinatorët marrin email. Vetëm një koordinator mund të heqë dikë."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM ka dy mënyra për të menaxhuar vullnetarët. Në një kohë synohet të përdoret vetëm njëra; cilësimi i përvojës së vullnetarit vendos cilën sheh kjo kishë. Ndërrimi fsheh ose shfaq faqe dhe zëra menuje — nuk fshin kurrë të dhëna, prandaj mund të kthehesh."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26465,10 +26449,6 @@ msgstr "Ai nuk mund të hiqej."
 #: 
 msgid "That device is signed out."
 msgstr "Ajo pajisje ka dalë."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Kjo nuk është një adresë e vlefshme email."
 
 #: 
 msgid "That page had been open too long. Please try again."
