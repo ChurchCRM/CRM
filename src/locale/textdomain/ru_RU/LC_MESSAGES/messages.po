@@ -23697,10 +23697,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Выберите человека, который уже есть в церковном справочнике. Он войдёт в добровольцы этого служения, а координаторам будет отправлено письмо. Исключить человека может только координатор."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "В ChurchCRM два способа вести добровольцев. Одновременно предназначен только один; настройка опыта добровольцев решает, что видит эта церковь. Переключение скрывает или показывает страницы и пункты меню — данные не удаляются, можно вернуться."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Время ежедневного письма о незаполненных позициях"
 

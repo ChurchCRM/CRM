@@ -10,12 +10,13 @@
  * )
  *
  * @OA\Server(
- *     url="{scheme}://{host}/api",
- *     description="Self-hosted ChurchCRM instance",
+ *     url="{scheme}://{host}{basePath}",
+ *     description="ChurchCRM install root. Public paths start with /api/public.",
  *     @OA\ServerVariable(serverVariable="scheme", enum={"https","http"}, default="https", description="Protocol (https for production, http for local)"),
- *     @OA\ServerVariable(serverVariable="host", default="your-server.com", description="Your ChurchCRM server hostname")
+ *     @OA\ServerVariable(serverVariable="host", default="your-server.com", description="Your ChurchCRM server hostname"),
+ *     @OA\ServerVariable(serverVariable="basePath", default="", description="Install path. Empty when ChurchCRM is at the domain root, or /churchcrm for a subdirectory install.")
  * )
- * @OA\Server(url="http://localhost/churchcrm/api", description="Local development (localhost)")
+ * @OA\Server(url="http://localhost/churchcrm", description="Local development at /churchcrm")
  *
  * @OA\Tag(name="Utility", description="Health check and CSP reporting")
  * @OA\Tag(name="Auth", description="Login and password reset")

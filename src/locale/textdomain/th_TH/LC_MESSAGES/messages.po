@@ -23533,10 +23533,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "เลือกคนที่มีอยู่ในสารบบคริสตจักรแล้ว คนนั้นจะเข้าร่วมอาสาสมัครของพันธกิจนี้ และผู้ประสานงานจะได้รับอีเมล มีเพียงผู้ประสานงานที่นำคนออกได้"
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM มีสองวิธีจัดการอาสาสมัคร ใช้ได้ครั้งละวิธี การตั้งค่าประสบการณ์อาสาสมัครเป็นตัวกำหนดว่าคริสตจักรนี้จะเห็นวิธีใด การสลับจะซ่อนหรือแสดงหน้าและรายการเมนู โดยไม่ลบข้อมูล จึงสลับกลับได้"
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "เวลาส่งอีเมลประจำวันของตำแหน่งที่ยังว่าง"
 
