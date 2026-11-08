@@ -372,16 +372,20 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
 
     // ---- Family TomSelect ----
     const familyNameEl = document.getElementById('FamilyName');
+    let latestQuery = '';
     if (familyNameEl && !familyNameEl.tomselect) {
         new TomSelect(familyNameEl, {
             valueField: 'id',
             labelField: 'text',
-            searchField: 'text',
+            searchField: [],
             load: function (query, callback) {
+                this.clearOptions();
+                latestQuery = query;
                 if (query.length < 2 && !/^\d+$/.test(query)) return callback();
                 fetch(ROOT + '/api/families/search/' + encodeURIComponent(query))
                     .then(function (res) { return res.json(); })
                     .then(function (data) {
+                        if (query !== latestQuery) return callback();
                         var families = data && data.Families ? data.Families : [];
                         callback(families.map(function (obj) {
                             return { id: String(obj.Id), text: obj.displayName };

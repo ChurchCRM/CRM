@@ -25,10 +25,10 @@ reviews:
   high_level_summary_instructions: |
     If the PR adds or changes user-visible behavior (a new or changed screen,
     setting, menu item, report, or workflow), end the summary with a short,
-    non-blocking "Docs and screenshots after merge" note. It says the docs PR
-    (ChurchCRM/docs.churchcrm.io, held for the release) and the screenshots or
-    video for docs, blog and marketing still need a follow-up PR, and lists which
-    of those this PR already carries and which still need a tracking issue.
+    non-blocking "Docs and capture follow-through" note. Distinguish capture
+    specs and preview evidence already in this PR, generated media publication
+    through ChurchCRM/visuals (no media PR), and any remaining docs/content work
+    held for the release. Do not ask for committed PNGs, videos or manifests.
     Skip the note for bug-fix, security, CI, locale, dependency, and
     refactor-only PRs. Never treat it as a hard block.
   poem: false
