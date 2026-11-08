@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-07 23:11+0000\n"
+"POT-Creation-Date: 2026-11-08 06:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5690,9 +5690,6 @@ msgstr ""
 msgid "Email is Disabled"
 msgstr ""
 
-msgid "Email is Not Valid"
-msgstr ""
-
 msgid "Email is disabled"
 msgstr ""
 
@@ -5995,6 +5992,9 @@ msgid "Enter a second address before marking it as the mailing address"
 msgstr ""
 
 msgid "Enter a street address first."
+msgstr ""
+
+msgid "Enter a valid email address using only ASCII characters before @."
 msgstr ""
 
 msgid "Enter a valid review date between 1900 and 2200."
@@ -8961,9 +8961,6 @@ msgid "Invalid date format for rangeStart or rangeEnd"
 msgstr ""
 
 msgid "Invalid day of the week"
-msgstr ""
-
-msgid "Invalid email address"
 msgstr ""
 
 msgid "Invalid endpoint URL. Must be a full URL starting with https://"
@@ -16366,9 +16363,6 @@ msgstr ""
 msgid "That is not a valid date."
 msgstr ""
 
-msgid "That is not a valid email address."
-msgstr ""
-
 msgid "That list could not be loaded."
 msgstr ""
 
@@ -17084,6 +17078,9 @@ msgid "Their classification may not sign in"
 msgstr ""
 
 msgid "Their coordinators may pin their ministry's events to this calendar without Add Events permission."
+msgstr ""
+
+msgid "Their email address is not valid"
 msgstr ""
 
 msgid "Their email changed"
@@ -19612,9 +19609,6 @@ msgid "Work / Other Email"
 msgstr ""
 
 msgid "Work Email"
-msgstr ""
-
-msgid "Work Email is Not Valid"
 msgstr ""
 
 msgid "Work Phone"

@@ -714,10 +714,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Nem érvényes Wedding Date"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Email nem érvényes"
-
-#: 
 msgid "Family Info"
 msgstr "Családi információk"
 
@@ -1460,10 +1456,6 @@ msgstr "Nem érvényes Ismerős Mikortól"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Nem érvényes tagság Mikortól"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Munkahelyi e-mail nem érvényes"
 
 #: 
 msgid "Birth Month"
@@ -22934,10 +22926,6 @@ msgid "Invalid birth date"
 msgstr "Érvénytelen Születési dátum."
 
 #: 
-msgid "Invalid email address"
-msgstr "Érvénytelen e-mail cím"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kiosk beállítások"
 
@@ -26496,10 +26484,6 @@ msgstr "Ezt nem sikerült eltávolítani."
 #: 
 msgid "That device is signed out."
 msgstr "Az az eszköz ki van jelentkeztetve."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Ez nem érvényes e-mail-cím."
 
 #: 
 msgid "That page had been open too long. Please try again."

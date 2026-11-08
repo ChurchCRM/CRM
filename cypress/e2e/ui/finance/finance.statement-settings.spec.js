@@ -62,6 +62,13 @@ describe("Finance Statement Settings", () => {
             cy.get("#statementOutput input[name='iPDFOutputType']").should("not.exist");
             cy.contains("a", "Preview PDF").should("not.exist");
         });
+
+        it("keeps statement settings out of System Settings", () => {
+            cy.visit("/SystemSettings.php");
+            for (const key of ["sTaxReport1", "sTaxReport2", "sTaxReport3", "sTaxSigner", "sChurchTaxId", "iPDFOutputType"]) {
+                cy.get(`[name='new_value[${key}]']`).should("not.exist");
+            }
+        });
     });
 
     describe("Finance-only user (not admin)", () => {

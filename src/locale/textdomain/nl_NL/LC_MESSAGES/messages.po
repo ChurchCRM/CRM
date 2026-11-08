@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Niet een geldige Trouwdatum"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-mail is niet geldig"
-
-#: 
 msgid "Family Info"
 msgstr "Adresgegevens gezin"
 
@@ -1431,10 +1427,6 @@ msgstr "Geen geldige Bezoekers Datum"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Geen geldige Lidmaatschap Datum"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "E-mail werk is niet geldig"
 
 #: 
 msgid "Birth Month"
@@ -22878,10 +22870,6 @@ msgid "Invalid birth date"
 msgstr "Ongeldige Geboortedatum."
 
 #: 
-msgid "Invalid email address"
-msgstr "Ongeldig e-mailadres"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kiosksinstellingen"
 
@@ -26440,10 +26428,6 @@ msgstr "Dat kon niet worden verwijderd."
 #: 
 msgid "That device is signed out."
 msgstr "Dat apparaat is afgemeld."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Dat is geen geldig e-mailadres."
 
 #: 
 msgid "That page had been open too long. Please try again."
