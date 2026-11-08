@@ -124,17 +124,19 @@ maintainer rather than silently under-covering release after release.
 
 ## Step 3 — Docs PRs held for this release
 
-Product docs live in **`ChurchCRM/docs.churchcrm.io`** on a pull request whose milestone is this tag. They are not drafts, and there is no `docs-pending-release` label. The release gate keeps them off `main` until the release exists. Publishing the release dispatches `crm-released`. The docs workflow then merges a pull request on that milestone only when every CI check succeeded and the latest CodeRabbit review is `APPROVED`.
+Product docs live in **`ChurchCRM/docs.churchcrm.io`**. Read its
+[DOCS_GUIDE.md](https://github.com/ChurchCRM/docs.churchcrm.io/blob/main/.agents/DOCS_GUIDE.md)
+and release workflows for the current staging, milestone and merge checks.
+CRM dispatches `crm-released`; the docs repository owns the publication recipe.
+Do not duplicate that recipe or assume a CodeRabbit approval alone makes a PR ready.
 
 ```bash
 DOCS=ChurchCRM/docs.churchcrm.io
-gh pr list -R "$DOCS" --state open --search "milestone:$TAG" \
-  --json number,title,url,reviewDecision
-gh pr list -R "$DOCS" --state open --json number,title,url,milestone \
-  --jq '.[] | select(.milestone == null) | "#\(.number) \(.title)"'
+gh pr list -R "$DOCS" --state open --json number,title,url,baseRefName,milestone,reviewDecision
 ```
 
-Report the open milestone pull requests. The ones still open after the dispatch were skipped because CI or CodeRabbit did not pass. Also report product pull requests with no milestone: those are never picked up. **Do not merge them yourself.**
+Report relevant release-branch and `main` pull requests, their checks and any missing
+release metadata using the docs guide. **Do not merge them yourself.**
 
 ---
 
