@@ -77,6 +77,7 @@ describe("Pledge Operations", () => {
     it("Payment details cancel with Escape and delete only after acceptance", () => {
         cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then(({ body }) => {
             const groupKey = body.groupKey;
+            created.push(groupKey);
             cy.intercept("DELETE", "**/api/payments/" + encodeURIComponent(groupKey)).as("deletePayment");
             cy.visit("/finance/pledge/" + groupKey);
             cy.get("#deletePledgeBtn").click();

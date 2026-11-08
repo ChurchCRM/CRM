@@ -97,7 +97,7 @@ window.moveEventModal = {
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     confirmAction(
-      `<i class="fa-solid fa-calendar-days me-2 text-primary"></i>${event.title}`,
+      `<i class="fa-solid fa-calendar-days me-2 text-primary"></i>${escapeHtml(event.title)}`,
       window.moveEventModal.buildMessage(event.title, "From", originalStart, "To", newStart),
       window.moveEventModal.applyMove,
       window.moveEventModal.getOptions("Move"),
@@ -116,7 +116,7 @@ window.moveEventModal = {
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
     confirmAction(
-      `<i class="fa-solid fa-clock me-2 text-primary"></i>${event.title}`,
+      `<i class="fa-solid fa-clock me-2 text-primary"></i>${escapeHtml(event.title)}`,
       window.moveEventModal.buildMessage(event.title, "Old End", originalEnd, "New End", newEnd),
       window.moveEventModal.applyMove,
       window.moveEventModal.getOptions("Resize"),
