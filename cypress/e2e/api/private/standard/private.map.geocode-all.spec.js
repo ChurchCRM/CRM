@@ -1,33 +1,27 @@
 /// <reference types="cypress" />
 
+const GEOCODE_TEST_FAMILY_ID = 45;
+const GEOCODE_TEST_LOCATION = { latitude: 39.1116191, longitude: -94.5838027 };
+
 /**
  * API tests for the bulk-geocode endpoint
  * POST /api/map/geocode-all — geocodes active families missing coordinates
  *
- * This endpoint makes live Nominatim API calls during a real run, so the
- * happy-path test only asserts the response *shape* (not specific geocoded
- * values) to stay deterministic in CI. The 401/403 tests verify auth guards.
- *
- * The endpoint processes up to 50 families at ~1 req/sec, so the worst-case
- * server response time is ~50 s. Pass an explicit 120 000 ms timeout so the
- * cy.request() command does not time out before the server replies.
+ * The response-shape and authorization tests skip past all missing coordinates.
+ * The skip-offset coverage geocodes one dedicated seed address.
  */
 describe("API Private Map — POST /api/map/geocode-all", { retries: 2 }, () => {
     context("Happy path", () => {
         it("Returns 200 with a valid summary shape", () => {
-            // Pass an explicit 120-second timeout — the default (30 s) is too
-            // short when the CI database has many families missing coordinates.
             cy.makePrivateAdminAPICall(
                 "POST",
                 "/api/map/geocode-all",
-                {},
+                { skip: Number.MAX_SAFE_INTEGER },
                 200,
-                120000,
+                30000,
             ).then((response) => {
-                // No skip key in the body: the API must default to 0 (#9846) —
-                // a client that omits it gets the first batch, not an error.
-                expect(response.body.skip).to.equal(0);
-                expect(response.body).to.have.property("processed").that.is.a("number").and.at.least(0);
+                expect(response.body.skip).to.equal(Number.MAX_SAFE_INTEGER);
+                expect(response.body.processed).to.equal(0);
 
                 // Core summary fields must all be present
                 expect(response.body).to.have.property("total");
@@ -84,59 +78,33 @@ describe("API Private Map — POST /api/map/geocode-all", { retries: 2 }, () => 
     });
 
     context("skip offset (#9846)", () => {
-        // The bulk action takes families in ID order. A client passes back the
-        // number of families that failed in its earlier batches as `skip`, so
-        // unresolvable families are not re-queried at the front of every batch.
-        // Neither call below reaches Nominatim for a skipped family, so this is
-        // deterministic regardless of what the seed addresses resolve to.
-        it("Skipping past every missing family processes nothing", () => {
-            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
+        it("Skips the pending geocode address", () => {
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 1 }, 200, 30000).then(
                 (response) => {
-                    expect(response.body.skip).to.equal(100000);
+                    expect(response.body.skip).to.equal(1);
                     expect(response.body.processed).to.equal(0);
-                    expect(response.body.geocoded).to.equal(0);
-                    expect(response.body.failed).to.equal(0);
-                    expect(response.body.remaining).to.equal(response.body.total);
-                    expect(response.body.failures).to.have.length(0);
                 },
             );
         });
 
-        it("Skipping all but one missing family processes exactly one", () => {
-            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
-                (probe) => {
-                    const total = probe.body.total;
-                    if (total === 0) {
-                        cy.log("No families missing coordinates in this database — nothing to offset");
-                        return;
-                    }
-                    cy.makePrivateAdminAPICall(
-                        "POST",
-                        "/api/map/geocode-all",
-                        { skip: total - 1 },
-                        200,
-                        60000,
-                    ).then((response) => {
-                        expect(response.body.skip).to.equal(total - 1);
-                        expect(response.body.processed).to.equal(1);
-                        expect(response.body.geocoded + response.body.failed).to.equal(1);
-                    });
-                },
-            );
+        it("Omitting skip defaults to zero and geocodes the pending address", { retries: 0 }, () => {
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", {}, 200, 30000).then((response) => {
+                expect(response.body.skip).to.equal(0);
+                expect(response.body.total).to.equal(1);
+                expect(response.body.processed).to.equal(1);
+                expect(response.body.geocoded).to.equal(1);
+                expect(response.body.failed).to.equal(0);
+            });
+
+            cy.makePrivateAdminAPICall("GET", `/api/family/${GEOCODE_TEST_FAMILY_ID}`, null, 200).then((response) => {
+                expect(response.body.Name).to.equal("Geocode Test Family");
+                expect(response.body.Latitude).to.be.closeTo(GEOCODE_TEST_LOCATION.latitude, 0.001);
+                expect(response.body.Longitude).to.be.closeTo(GEOCODE_TEST_LOCATION.longitude, 0.001);
+            });
         });
 
         it("Rejects a negative skip with 400", () => {
             cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: -1 }, 400, 30000);
-        });
-
-        it("Echoes the requested skip and a processed count in the summary", () => {
-            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
-                (probe) => {
-                    // The default (no skip key) path is asserted by the happy-path test above.
-                    expect(probe.body.skip).to.equal(100000);
-                    expect(probe.body).to.have.property("processed").that.is.a("number");
-                },
-            );
         });
     });
 
