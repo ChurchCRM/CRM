@@ -59,7 +59,7 @@ describe("Standard Groups", () => {
                 cy.get("#membersTable tbody tr:first").within(() => {
                     cy.get('[data-bs-toggle="dropdown"]').first().click();
                 });
-                cy.get(".dropdown-menu.show").within(() => {
+                cy.get(".dropdown-menu.show:not(.navbar-vertical .dropdown-menu)").within(() => {
                     cy.contains("View").should("exist");
                     cy.contains("Change Role").should("exist");
                     cy.get(".AddToCart, .RemoveFromCart").should("exist");
@@ -101,7 +101,7 @@ describe("Standard Groups", () => {
         cy.get("#groupsTable tbody tr:first").within(() => {
             cy.get('[data-bs-toggle="dropdown"], .dropdown-toggle, button[aria-expanded]').first().click();
         });
-        cy.get(".dropdown-menu.show").within(() => {
+        cy.get(".dropdown-menu.show:not(.navbar-vertical .dropdown-menu)").within(() => {
             cy.contains("View").should("exist");
             cy.contains("Edit").should("exist");
             cy.contains("Delete").should("exist");
@@ -114,7 +114,7 @@ describe("Standard Groups", () => {
         cy.get("#groupsTable tbody tr:first").within(() => {
             cy.get('[data-bs-toggle="dropdown"], .dropdown-toggle, button[aria-expanded]').first().click();
         });
-        cy.get(".dropdown-menu.show").within(() => {
+        cy.get(".dropdown-menu.show:not(.navbar-vertical .dropdown-menu)").within(() => {
             cy.contains("View").should("exist");
             cy.contains("Edit").should("exist");
             cy.contains("Delete").should("exist");
