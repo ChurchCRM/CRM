@@ -736,10 +736,6 @@ msgid "Not a valid Wedding Date"
 msgstr "不是一個有效的婚禮日期"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "電子郵件是無效的"
-
-#: 
 msgid "Family Info"
 msgstr "家庭資料"
 
@@ -1488,10 +1484,6 @@ msgstr "不是一個有效的好友日期"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "不是一個有效的會員日期"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "工作電子郵件是無效的"
 
 #: 
 msgid "Birth Month"
@@ -23018,10 +23010,6 @@ msgid "Invalid birth date"
 msgstr "無效的出生日期。"
 
 #: 
-msgid "Invalid email address"
-msgstr "電子郵件地址無效"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "自助終端設定"
 
@@ -26580,10 +26568,6 @@ msgstr "無法移除。"
 #: 
 msgid "That device is signed out."
 msgstr "該裝置已登出。"
-
-#: 
-msgid "That is not a valid email address."
-msgstr "這不是有效的電子郵件地址。"
 
 #: 
 msgid "That page had been open too long. Please try again."

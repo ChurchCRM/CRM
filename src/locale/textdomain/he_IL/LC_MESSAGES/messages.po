@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "תאריך חתונה לא חוקי"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "כתובת אימייל לא חוקית"
-
-#: 
 msgid "Family Info"
 msgstr "פרטי משפחה"
 
@@ -1448,10 +1444,6 @@ msgstr "תאריך חבר לא תקין"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "תאריך חברות לא תקין"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "כתובת דואר אלקטרוני של העבודה אינה תקינה"
 
 #: 
 msgid "Birth Month"
@@ -22906,10 +22898,6 @@ msgid "Invalid birth date"
 msgstr "תאריך לידה לא חוקי."
 
 #: 
-msgid "Invalid email address"
-msgstr "כתובת דוא״ל לא תקינה"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "הגדרות קיוסק"
 
@@ -26468,10 +26456,6 @@ msgstr "לא ניתן היה להסיר זאת."
 #: 
 msgid "That device is signed out."
 msgstr "המכשיר הזה מנותק."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "זו אינה כתובת דוא״ל תקינה."
 
 #: 
 msgid "That page had been open too long. Please try again."

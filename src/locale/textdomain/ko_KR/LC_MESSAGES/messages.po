@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "결혼기념일이 올바르지 않습니다."
 
 #: 
-msgid "Email is Not Valid"
-msgstr "이메일 형식이 올바르지 않습니다."
-
-#: 
 msgid "Family Info"
 msgstr "가족 정보"
 
@@ -1448,10 +1444,6 @@ msgstr "교제 등록일이 올바르지 않습니다."
 #: 
 msgid "Not a valid Membership Date"
 msgstr "등록일이 올바르지 않습니다."
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "직장 이메일이 올바르지 않습니다."
 
 #: 
 msgid "Birth Month"
@@ -22873,10 +22865,6 @@ msgid "Invalid birth date"
 msgstr "생년월일이 올바르지 않습니다."
 
 #: 
-msgid "Invalid email address"
-msgstr "유효하지 않은 이메일 주소"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "키오스크 설정"
 
@@ -26435,10 +26423,6 @@ msgstr "제거하지 못했습니다."
 #: 
 msgid "That device is signed out."
 msgstr "그 기기는 로그아웃되었습니다."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "올바른 이메일 주소가 아닙니다."
 
 #: 
 msgid "That page had been open too long. Please try again."

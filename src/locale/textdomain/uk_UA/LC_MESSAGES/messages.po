@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Недійсна дата весілля"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Електронна адреса недійсна"
-
-#: 
 msgid "Family Info"
 msgstr "Інформація про сім’ю"
 
@@ -1448,10 +1444,6 @@ msgstr "Недійсна дата друга"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Недійсна дата членства"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Робоча електронна адреса недійсна"
 
 #: 
 msgid "Birth Month"
@@ -22968,10 +22960,6 @@ msgid "Invalid birth date"
 msgstr "Недійсна дата народження."
 
 #: 
-msgid "Invalid email address"
-msgstr "Невірна адреса електронної пошти"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Параметри кіоску"
 
@@ -26530,10 +26518,6 @@ msgstr "Це не вдалося видалити."
 #: 
 msgid "That device is signed out."
 msgstr "На цьому пристрої виконано вихід."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Це не дійсна адреса електронної пошти."
 
 #: 
 msgid "That page had been open too long. Please try again."
