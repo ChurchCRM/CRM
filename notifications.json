@@ -1,28 +1,6 @@
 {
     "TTL": 300,
     "messages": [
-        {
-            "id": "7.1.*-feedback",
-            "title": "How do you like the new look?",
-            "message": "ChurchCRM 7.1.x shipped a redesigned UI — we'd love your feedback.",
-            "icon": "message-circle",
-            "type": "info",
-            "link": "https://github.com/ChurchCRM/CRM/discussions/8522",
-            "adminOnly": false,
-            "targetVersionPattern": "7.1.*",
-            "timeout": 8000,
-            "placement": "bottom",
-            "align": "right"
-        },
-        {
-            "id": "php2shell-2026-10",
-            "title": "Urgent: PHP security update needed",
-            "message": "A critical PHP flaw (PHP2Shell) lets attackers run code without logging in. Admins: update your server's PHP or Docker image now — details here. Not the admin? Please contact your church's admin about this right away.",
-            "icon": "shield-alert",
-            "type": "danger",
-            "link": "https://churchcrm.io/blog/2026-10-25-php2shell-security-update.html",
-            "adminOnly": false,
-            "targetVersionPattern": "*"
-        }
+        
     ]
 }
