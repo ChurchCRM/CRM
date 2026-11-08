@@ -68,7 +68,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await page.waitForURL(/\/admin\/$/, { timeout: 30000 });
 
   // First admin login — forced password change.
-  await page.goto('/login');
+  await page.goto('/session/begin');
   await humanType(page.locator('input[name=User]'), ADMIN_USERNAME);
   await humanType(page.locator('input[name=Password]'), ADMIN_INITIAL_PASSWORD);
   await humanPause(page, 300);
@@ -120,7 +120,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
 });
 
 setup('demo-data-import', async ({ page }, testInfo) => {
-  await page.goto('/login');
+  await page.goto('/session/begin');
   await humanType(page.locator('input[name=User]'), ADMIN_USERNAME);
   await humanType(page.locator('input[name=Password]'), ADMIN_WORKING_PASSWORD);
   await humanPause(page, 300);
