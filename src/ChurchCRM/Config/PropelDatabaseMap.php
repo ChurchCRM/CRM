@@ -1,14 +1,7 @@
 <?php
 /**
- * Perpl ORM Database Map Initialization
- * 
- * This file initializes the Propel/Perpl ORM database map with table-to-class mappings.
- * Required for Perpl ORM to resolve table names to TableMap classes.
- * 
- * Generated from orm/schema.xml via: composer run orm-gen
- * 
- * DO NOT EDIT MANUALLY - Regenerate after schema changes with:
- *   cd src && composer run orm-gen
+ * Propel/Perpl ORM database map: table name to TableMap class.
+ * Hand-maintained. Keep it in step with orm/schema.xml.
  */
 
 $serviceContainer = \Propel\Runtime\Propel::getServiceContainer();
