@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Μη έγκυρη ημερομηνία γάμου"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Το email δεν είναι έγκυρο"
-
-#: 
 msgid "Family Info"
 msgstr "Πληροφορίες για την οικογένεια"
 
@@ -1448,10 +1444,6 @@ msgstr "Μη έγκυρη ημερομηνία φιλίας"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Μη έγκυρη Ημερομηνία Συνδρομής"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Το email εργασίας δεν είναι έγκυρο"
 
 #: 
 msgid "Birth Month"
@@ -22908,10 +22900,6 @@ msgid "Invalid birth date"
 msgstr "Μη έγκυρη ημερομηνία γέννησης."
 
 #: 
-msgid "Invalid email address"
-msgstr "Μη έγκυρη διεύθυνση ηλεκτρονικής αλληλογραφίας"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Ρυθμίσεις περιπτέρου"
 
@@ -26470,10 +26458,6 @@ msgstr "Αυτό δεν μπόρεσε να αφαιρεθεί."
 #: 
 msgid "That device is signed out."
 msgstr "Αυτή η συσκευή αποσυνδέθηκε."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Αυτή δεν είναι έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου."
 
 #: 
 msgid "That page had been open too long. Please try again."

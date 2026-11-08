@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Hindi wastong Petsa ng Kasal"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Ang Email ay Hindi Wasto"
-
-#: 
 msgid "Family Info"
 msgstr "Impormasyon ng Pamilya"
 
@@ -1431,10 +1427,6 @@ msgstr "Hindi wastong Petsa ng Pagkakaibigan"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Hindi wastong Petsa ng Pagiging Miyembro"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Ang Email sa Trabaho ay Hindi Wasto"
 
 #: 
 msgid "Birth Month"
@@ -22875,10 +22867,6 @@ msgid "Invalid birth date"
 msgstr "Hindi wastong Petsa ng Kapanganakan."
 
 #: 
-msgid "Invalid email address"
-msgstr "Hindi valid ang email address"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kiosk Settings"
 
@@ -26437,10 +26425,6 @@ msgstr "Hindi iyon maalis."
 #: 
 msgid "That device is signed out."
 msgstr "Naka-sign out ang device na iyon."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Hindi iyon wastong email address."
 
 #: 
 msgid "That page had been open too long. Please try again."

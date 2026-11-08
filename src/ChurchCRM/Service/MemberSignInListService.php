@@ -16,6 +16,7 @@ use ChurchCRM\Portal\Auth\SignInMethod;
 use ChurchCRM\Portal\Auth\SignInReason;
 use ChurchCRM\Portal\PortalSelfService;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\EmailAddress;
 use DateTimeImmutable;
 use DateTimeInterface;
 use InvalidArgumentException;
@@ -53,6 +54,7 @@ final class MemberSignInListService
 
     public const EMAIL_PROBLEMS = [
         SignInReason::NO_EMAIL,
+        SignInReason::INVALID_EMAIL,
         SignInReason::SHARED_EMAIL,
         SignInReason::EMAIL_UNCONFIRMED,
     ];
@@ -66,12 +68,15 @@ final class MemberSignInListService
     public const MAX_PAGE_SIZE = 100;
 
     private const SIGNIN = 'signin';
-    private const NORMALIZED_EMAIL = 'LOWER(TRIM(Person.Email))';
+    private const NORMALIZED_EMAIL = 'CONVERT(LOWER(TRIM(Person.Email)) USING utf8mb4) COLLATE utf8mb4_bin';
 
     private readonly MemberSignInRule $rule;
 
     /** @var string[]|null */
     private ?array $sharedEmails = null;
+
+    /** @var int[]|null */
+    private ?array $invalidEmailIds = null;
 
     /**
      * @param bool $byAdministrator whether the reader is an administrator, for who may confirm an unconfirmed address (§9)
@@ -225,8 +230,9 @@ final class MemberSignInListService
     private function maySignInNowQuery(): PersonQuery
     {
         $query = $this->memberRuleQuery()
+            ->filterById($this->invalidEmailIds(), Criteria::NOT_IN)
             ->where("(Person.Email IS NOT NULL AND TRIM(Person.Email) <> '')")
-            ->where('(signin.UnconfirmedEmail IS NULL OR LOWER(TRIM(signin.UnconfirmedEmail)) <> ' . self::NORMALIZED_EMAIL . ')');
+            ->where('(signin.UnconfirmedEmail IS NULL OR CONVERT(LOWER(TRIM(signin.UnconfirmedEmail)) USING utf8mb4) COLLATE utf8mb4_bin <> ' . self::NORMALIZED_EMAIL . ')');
         $shared = $this->sharedEmails();
         if ($shared !== []) {
             $query->where(self::NORMALIZED_EMAIL . ' NOT IN ?', $shared);
@@ -257,8 +263,14 @@ final class MemberSignInListService
     {
         $query = $this->memberRuleQuery();
         $shared = $this->sharedEmails();
+        if ($problem === SignInReason::INVALID_EMAIL) {
+            return $query->filterById($this->invalidEmailIds(), Criteria::IN);
+        }
+        if ($problem !== null) {
+            $query->filterById($this->invalidEmailIds(), Criteria::NOT_IN);
+        }
         $noEmail = "(Person.Email IS NULL OR TRIM(Person.Email) = '')";
-        $unconfirmed = 'LOWER(TRIM(signin.UnconfirmedEmail)) = ' . self::NORMALIZED_EMAIL;
+        $unconfirmed = 'CONVERT(LOWER(TRIM(signin.UnconfirmedEmail)) USING utf8mb4) COLLATE utf8mb4_bin = ' . self::NORMALIZED_EMAIL;
 
         if ($problem === SignInReason::NO_EMAIL) {
             return $query->where($noEmail);
@@ -279,6 +291,10 @@ final class MemberSignInListService
 
         $query->condition('noEmail', $noEmail)->condition('unconfirmed', $unconfirmed);
         $conditions = ['noEmail', 'unconfirmed'];
+        if ($this->invalidEmailIds() !== []) {
+            $query->condition('invalidEmail', 'Person.Id IN ?', $this->invalidEmailIds());
+            $conditions[] = 'invalidEmail';
+        }
         if ($shared !== []) {
             $query->condition('shared', self::NORMALIZED_EMAIL . ' IN ?', $shared);
             $conditions[] = 'shared';
@@ -306,10 +322,30 @@ final class MemberSignInListService
             ->find();
         foreach ($emails as $email) {
             $normalized = MemberSignInRule::normalizeEmail((string) $email);
+            if (!EmailAddress::isValid($normalized)) {
+                continue;
+            }
             $counts[$normalized] = ($counts[$normalized] ?? 0) + 1;
         }
 
         return $this->sharedEmails = array_keys(array_filter($counts, static fn (int $count): bool => $count > 1));
+    }
+
+    /** @return int[] */
+    private function invalidEmailIds(): array
+    {
+        if ($this->invalidEmailIds !== null) {
+            return $this->invalidEmailIds;
+        }
+        $this->invalidEmailIds = [];
+        foreach (PersonQuery::create()->select(['Id', 'Email'])->find() as $row) {
+            $email = trim((string) $row['Email']);
+            if ($email !== '' && !EmailAddress::isValid($email)) {
+                $this->invalidEmailIds[] = (int) $row['Id'];
+            }
+        }
+
+        return $this->invalidEmailIds;
     }
 
     private function searchPeople(PersonQuery $query, string $search): PersonQuery
@@ -379,6 +415,7 @@ final class MemberSignInListService
             $email = MemberSignInRule::normalizeEmail((string) $row['email']);
             $reason = match (true) {
                 $email === '' => SignInReason::NO_EMAIL,
+                !EmailAddress::isValid($email) => SignInReason::INVALID_EMAIL,
                 isset($shared[$email]) => SignInReason::SHARED_EMAIL,
                 default => SignInReason::EMAIL_UNCONFIRMED,
             };

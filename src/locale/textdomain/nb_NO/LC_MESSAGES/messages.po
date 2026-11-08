@@ -736,10 +736,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Ikke en gyldig Wedding Date"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-post er ikke gyldig"
-
-#: 
 msgid "Family Info"
 msgstr "Familie informasjon"
 
@@ -1502,10 +1498,6 @@ msgstr "Ikke en gyldig Friend Dato"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Ikke en gyldig medlemskap Dato"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Arbeid post er ikke gyldig"
 
 #: 
 msgid "Birth Month"
@@ -22979,10 +22971,6 @@ msgid "Invalid birth date"
 msgstr "Ugyldig Fødselsdato."
 
 #: 
-msgid "Invalid email address"
-msgstr "Ugyldig e-postadresse"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kioskinnstillinger"
 
@@ -26541,10 +26529,6 @@ msgstr "Det kunne ikke fjernes."
 #: 
 msgid "That device is signed out."
 msgstr "Den enheten er logget ut."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Det er ikke en gyldig e-postadresse."
 
 #: 
 msgid "That page had been open too long. Please try again."

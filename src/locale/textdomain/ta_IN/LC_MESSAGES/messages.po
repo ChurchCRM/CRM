@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "சரியான திருமண தேதி இல்லை"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "மின்னஞ்சல் செல்லுபடியாகாது"
-
-#: 
 msgid "Family Info"
 msgstr "குடும்பத் தகவல்"
 
@@ -1448,10 +1444,6 @@ msgstr "தவறான நண்பர் தேதி"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "சரியான உறுப்பினர் தேதி இல்லை"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "பணி மின்னஞ்சல் செல்லுபடியாகாது"
 
 #: 
 msgid "Birth Month"
@@ -22920,10 +22912,6 @@ msgid "Invalid birth date"
 msgstr "தவறான பிறந்த தேதி."
 
 #: 
-msgid "Invalid email address"
-msgstr "தவறான மின்னஞ்சல் முகவரி"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "கியோஸ்க் அமைப்புகள்"
 
@@ -26482,10 +26470,6 @@ msgstr "அதை அகற்ற முடியவில்லை."
 #: 
 msgid "That device is signed out."
 msgstr "அந்தச் சாதனம் வெளியேற்றப்பட்டது."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "அது சரியான மின்னஞ்சல் முகவரி அல்ல."
 
 #: 
 msgid "That page had been open too long. Please try again."

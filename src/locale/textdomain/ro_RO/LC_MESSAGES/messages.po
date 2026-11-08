@@ -735,10 +735,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Nu este o dată validă a nunții"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-mail nu este valid"
-
-#: 
 msgid "Family Info"
 msgstr "Info Familie"
 
@@ -1484,10 +1480,6 @@ msgstr "Nu este un prieten dată validă"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Nu este un membru dată validă"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "De lucru E-mail nu este valid"
 
 #: 
 msgid "Birth Month"
@@ -22997,10 +22989,6 @@ msgid "Invalid birth date"
 msgstr "Data Nasterii invalid."
 
 #: 
-msgid "Invalid email address"
-msgstr "Adresă de email nevalidă"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Setări Chioșc"
 
@@ -26559,10 +26547,6 @@ msgstr "Nu a putut fi eliminat."
 #: 
 msgid "That device is signed out."
 msgstr "Dispozitivul respectiv este deconectat."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Aceasta nu este o adresă de e-mail validă."
 
 #: 
 msgid "That page had been open too long. Please try again."

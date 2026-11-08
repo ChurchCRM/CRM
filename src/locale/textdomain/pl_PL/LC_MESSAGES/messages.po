@@ -734,10 +734,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Nieprawidłowa Data Ślubu"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Nie poprawny Email"
-
-#: 
 msgid "Family Info"
 msgstr "Informacje o rodzinie"
 
@@ -1483,10 +1479,6 @@ msgstr "Nie prawidłowa data w polu Przyjaciel"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Nie prawidłowa data w polu Członkostwo"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Email (Praca) nie jest porawny"
 
 #: 
 msgid "Birth Month"
@@ -22994,10 +22986,6 @@ msgid "Invalid birth date"
 msgstr "Nieprawidłowa Data Urodzenia."
 
 #: 
-msgid "Invalid email address"
-msgstr "Nieprawidłowy adres e-mail"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Ustawienia kiosku"
 
@@ -26556,10 +26544,6 @@ msgstr "Nie udało się tego usunąć."
 #: 
 msgid "That device is signed out."
 msgstr "To urządzenie jest wylogowane."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "To nie jest prawidłowy adres e-mail."
 
 #: 
 msgid "That page had been open too long. Please try again."

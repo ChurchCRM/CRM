@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Jo një të vlefshme Data Dasma"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Email nuk është i vlefshëm"
-
-#: 
 msgid "Family Info"
 msgstr "Info e familjes"
 
@@ -1448,10 +1444,6 @@ msgstr "Jo Shoqëri vlefshme Data"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Jo një të vlefshme Data Anëtarësimit"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Puna Email nuk është i vlefshëm"
 
 #: 
 msgid "Birth Month"
@@ -22899,10 +22891,6 @@ msgid "Invalid birth date"
 msgstr "Invalid Data e lindjes."
 
 #: 
-msgid "Invalid email address"
-msgstr "Adresë email e pavlefshme"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Cilësimet e kioskut"
 
@@ -26461,10 +26449,6 @@ msgstr "Ai nuk mund të hiqej."
 #: 
 msgid "That device is signed out."
 msgstr "Ajo pajisje ka dalë."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Kjo nuk është një adresë e vlefshme email."
 
 #: 
 msgid "That page had been open too long. Please try again."

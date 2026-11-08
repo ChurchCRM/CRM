@@ -257,8 +257,21 @@ function showGlobalMessage(message, callOutClass) {
   });
 }
 
-// Expose to global scope so inline <script> tags in Footer.php can call it
 window.showGlobalMessage = showGlobalMessage;
+
+// Footer.php renders #crm-global-message when a page sets $sGlobalMessage.
+function showServerGlobalMessage() {
+  const el = document.getElementById("crm-global-message");
+  if (el?.dataset.message) {
+    showGlobalMessage(el.dataset.message, el.dataset.type);
+  }
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", showServerGlobalMessage);
+} else {
+  showServerGlobalMessage();
+}
 
 /**
  * Initialize form validation for all forms with data-validate attribute
