@@ -52,6 +52,7 @@ function assertDropdownVisible(triggerSelector, context, containerFinder) {
 
   // If a container assertion is provided, run it while the dropdown is open.
   if (containerFinder) {
+    cy.get("@menu").should("not.have.class", "dropdown-menu-fixed");
     containerFinder(context);
   }
 
