@@ -122,8 +122,8 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
     // produce wrong results, and an unparseable date would later throw inside
     // EventService::createRepeatEvents() (caught as InvalidArgumentException
     // there now, but better to validate up front and give a clear error here).
-    $startParsed = !empty($sRangeStart) ? \DateTimeImmutable::createFromFormat('!Y-m-d', $sRangeStart) : false;
-    $endParsed = !empty($sRangeEnd) ? \DateTimeImmutable::createFromFormat('!Y-m-d', $sRangeEnd) : false;
+    $startIso = DateTimeUtils::parseIsoDate($sRangeStart);
+    $endIso = DateTimeUtils::parseIsoDate($sRangeEnd);
 
     if (empty($iTypeID)) {
         $errorMsg = gettext('You must select an event type.');
@@ -133,11 +133,11 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
         $errorMsg = gettext('You must select a valid recurrence pattern.');
     } elseif (empty($sRangeStart) || empty($sRangeEnd)) {
         $errorMsg = gettext('You must specify a date range.');
-    } elseif ($startParsed === false || $startParsed->format('Y-m-d') !== $sRangeStart) {
+    } elseif ($startIso === '') {
         $errorMsg = gettext('Range start must be a valid YYYY-MM-DD date.');
-    } elseif ($endParsed === false || $endParsed->format('Y-m-d') !== $sRangeEnd) {
+    } elseif ($endIso === '') {
         $errorMsg = gettext('Range end must be a valid YYYY-MM-DD date.');
-    } elseif ($startParsed > $endParsed) {
+    } elseif ($startIso > $endIso) {
         $errorMsg = gettext('Range start must be before range end.');
     }
 

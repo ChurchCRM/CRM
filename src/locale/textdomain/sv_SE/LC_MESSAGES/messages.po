@@ -738,10 +738,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Ogiltig bröllopsdatum"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Epost är inte giltig"
-
-#: 
 msgid "Family Info"
 msgstr "Familjinfo"
 
@@ -1504,10 +1500,6 @@ msgstr "Ogiltig vän datum"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Ogiltig medelmdatum"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Ogiltig arbets-epost"
 
 #: 
 msgid "Birth Month"
@@ -5135,10 +5127,6 @@ msgstr "Visa familjesida"
 #: 
 msgid "View Person Page"
 msgstr "Visa personsida"
-
-#: 
-msgid "Verify"
-msgstr "Verifiera"
 
 #: 
 msgid "Family has no emails to use"
@@ -14718,10 +14706,6 @@ msgid "Date Picker Format"
 msgstr "Format för datumväljare"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Platshållare för datumväljare"
-
-#: 
 msgid "Date Without Year"
 msgstr "Datum utan år"
 
@@ -14752,10 +14736,6 @@ msgstr "Datumformat för filnamn"
 #: 
 msgid "Fully translated."
 msgstr "Helt översatt."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Ledtext i datumfält. Standard: åååå-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -23007,10 +22987,6 @@ msgid "Invalid birth date"
 msgstr "Ogiltig födelsedatum."
 
 #: 
-msgid "Invalid email address"
-msgstr "Ogiltig e-postadress"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kioskeinställningar"
 
@@ -23681,10 +23657,6 @@ msgstr "Välj hur långt fram scheman fylls och när påminnelser skickas, och k
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Välj någon som redan finns i församlingens katalog. Personen blir volontär i det här tjänsteområdet och dess samordnare får e-post. Bara en samordnare kan ta bort någon."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM har två sätt att hantera volontärer. Bara ett är tänkt att användas åt gången; inställningen för volontärupplevelsen avgör vilket den här församlingen ser. Ett byte döljer eller visar sidor och menyval — data tas aldrig bort, så du kan byta tillbaka."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26575,10 +26547,6 @@ msgid "That device is signed out."
 msgstr "Den enheten är utloggad."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Det är inte en giltig e-postadress."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Sidan hade varit öppen för länge. Försök igen."
 
@@ -27269,4 +27237,16 @@ msgstr "eller"
 #: 
 msgid "until %s"
 msgstr "till %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "En begäran har gjorts i medlemsportalen om att ändra din e-postadress på %1$s från %2$s till %3$s. Ändringen sker bara när länken som skickats till den nya adressen används."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Använd länken nedan för att granska din familjs uppgifter. På granskningssidan väljer du ”Bekräfta familjeuppgifter” för att bekräfta att allt stämmer, eller skickar rättelser till församlingsexpeditionen."
+
+#: 
+msgid "Review Family Information"
+msgstr "Granska familjeuppgifter"
 

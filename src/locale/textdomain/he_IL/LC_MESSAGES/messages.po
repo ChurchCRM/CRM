@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "תאריך חתונה לא חוקי"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "כתובת אימייל לא חוקית"
-
-#: 
 msgid "Family Info"
 msgstr "פרטי משפחה"
 
@@ -1448,10 +1444,6 @@ msgstr "תאריך חבר לא תקין"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "תאריך חברות לא תקין"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "כתובת דואר אלקטרוני של העבודה אינה תקינה"
 
 #: 
 msgid "Birth Month"
@@ -5046,10 +5038,6 @@ msgstr "צפה בדף משפחה"
 #: 
 msgid "View Person Page"
 msgstr "צפה בדף אדם"
-
-#: 
-msgid "Verify"
-msgstr "אמת"
 
 #: 
 msgid "Family has no emails to use"
@@ -14629,10 +14617,6 @@ msgid "Date Picker Format"
 msgstr "פורמט בורר תאריך"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "טקסט מציין מקום לבורר תאריך"
-
-#: 
 msgid "Date Without Year"
 msgstr "תאריך ללא שנה"
 
@@ -14663,10 +14647,6 @@ msgstr "פורמט תאריך לשם קובץ"
 #: 
 msgid "Fully translated."
 msgstr "מתורגם במלואו."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "טקסט עזר בשדות תאריך. ברירת מחדל: שנה-חודש-יום"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -22918,10 +22898,6 @@ msgid "Invalid birth date"
 msgstr "תאריך לידה לא חוקי."
 
 #: 
-msgid "Invalid email address"
-msgstr "כתובת דוא״ל לא תקינה"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "הגדרות קיוסק"
 
@@ -23592,10 +23568,6 @@ msgstr "בחר כמה זמן מראש ממלאים לוחות זמנים ומת�
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "בחר מישהו שכבר נמצא במדריך הקהילה. הוא יצטרף למתנדבי השירות הזה והרכזים יקבלו דוא״ל. רק רכז יכול להוציא מישהו."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ב־ChurchCRM יש שתי דרכים לנהל מתנדבים. רק אחת אמורה לפעול בכל פעם; הגדרת חוויית המתנדבים קובעת מה הקהילה הזו רואה. המעבר מסתיר או מציג דפים ופריטי תפריט — הוא לעולם לא מוחק נתונים, כך שאפשר לחזור."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26486,10 +26458,6 @@ msgid "That device is signed out."
 msgstr "המכשיר הזה מנותק."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "זו אינה כתובת דוא״ל תקינה."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "הדף היה פתוח זמן רב מדי. נסו שוב."
 
@@ -27180,4 +27148,16 @@ msgstr "או"
 #: 
 msgid "until %s"
 msgstr "עד %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "בפורטל החברים הוגשה בקשה לשנות את כתובת הדוא״ל שלך ב-%1$s מ-%2$s אל %3$s. השינוי מתבצע רק כשמשתמשים בקישור שנשלח לכתובת החדשה."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "השתמשו בקישור שלמטה כדי לבדוק את פרטי המשפחה. בדף הבדיקה בחרו „אישור פרטי המשפחה” כדי לאשר שהכול נכון, או שלחו תיקונים למשרד הקהילה."
+
+#: 
+msgid "Review Family Information"
+msgstr "בדיקת פרטי המשפחה"
 

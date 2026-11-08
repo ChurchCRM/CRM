@@ -711,15 +711,19 @@ function initializeCalendar() {
         window.CRM.notify(parts.join(" · "), { type: "info", delay: 10000, close: true });
       }
     },
+    eventContent: (info) => pinnedEventContent(info),
     eventDidMount: (info) => {
-      // Long event titles get clipped by FullCalendar's default
-      // `overflow:hidden;text-overflow:ellipsis` styling on month-grid events.
-      // Set the native HTML `title` attribute so hovering reveals the full
-      // text via a browser tooltip — no JS dependency, accessible by default.
-      // Closes #8792.
-      if (info.event.title) {
+      const pins = info.event.extendedProps.pinnedCalendars;
+      const names = Array.isArray(pins) ? pins.map((pin) => pin.name).filter(Boolean) : [];
+      if (info.event.title && names.length > 1) {
+        info.el.setAttribute("title", `${info.event.title} (${names.join(", ")})`);
+      } else if (info.event.title) {
         info.el.setAttribute("title", info.event.title);
       }
+    },
+    eventsSet: () => {
+      // After this render, so setProp/setExtendedProp are not called mid-render.
+      schedulePinCollapse();
     },
     loading: (isLoading) => {
       window.CRM.isCalendarLoading = isLoading;
@@ -847,6 +851,129 @@ function getCalendarFilterElement(calendar, type) {
     "</div>";
 
   return html;
+}
+
+/**
+ * One chip per event on the staff calendar.
+ *
+ * Each visible user calendar is its own event source, and an event pinned to
+ * two of them is the same row twice. System calendars (birthdays, unpinned
+ * events) reuse numeric ids from other tables, so they stay in their own
+ * groups and are never folded into a church event.
+ */
+function pinnedEventGroupKey(event) {
+  const sourceId = event.source && event.source.id ? String(event.source.id) : "";
+  if (sourceId.startsWith("user-")) {
+    return `user-event-${event.id}`;
+  }
+  return `${sourceId}-${event.id}`;
+}
+
+function calendarPinFromEvent(event) {
+  const props = event.extendedProps || {};
+  return {
+    id: props.calendarId,
+    name: getLocalizedCalendarName(props.calendarName || ""),
+    color: props.calendarColor || event.backgroundColor || "#206bc4",
+  };
+}
+
+// One follow-up scan covers every setProp eventsSet fires during a collapse.
+let pinCollapseScheduled = false;
+let pinCollapseAgain = false;
+
+function schedulePinCollapse() {
+  if (pinCollapseScheduled) {
+    pinCollapseAgain = true;
+    return;
+  }
+  pinCollapseScheduled = true;
+  queueMicrotask(() => {
+    pinCollapseAgain = false;
+    collapsePinnedCalendarEvents();
+    pinCollapseScheduled = false;
+    if (pinCollapseAgain) {
+      schedulePinCollapse();
+    }
+  });
+}
+
+function collapsePinnedCalendarEvents() {
+  const calendar = window.CRM.fullcalendar;
+  if (!calendar) {
+    return;
+  }
+
+  const groups = new Map();
+  for (const event of calendar.getEvents()) {
+    const key = pinnedEventGroupKey(event);
+    const group = groups.get(key);
+    if (group) {
+      group.push(event);
+    } else {
+      groups.set(key, [event]);
+    }
+  }
+
+  for (const group of groups.values()) {
+    const pins = [];
+    const seen = new Set();
+    for (const event of group) {
+      const pin = calendarPinFromEvent(event);
+      const pinKey = String(pin.id ?? "");
+      if (pinKey === "" || seen.has(pinKey)) {
+        continue;
+      }
+      seen.add(pinKey);
+      pins.push(pin);
+    }
+
+    const keep = group[0];
+    const current = JSON.stringify(keep.extendedProps.pinnedCalendars || []);
+    if (current !== JSON.stringify(pins)) {
+      keep.setExtendedProp("pinnedCalendars", pins);
+    }
+    if (keep.display === "none") {
+      keep.setProp("display", "auto");
+    }
+    for (let i = 1; i < group.length; i++) {
+      if (group[i].display !== "none") {
+        group[i].setProp("display", "none");
+      }
+    }
+  }
+}
+
+function pinnedEventContent(info) {
+  const pins = info.event.extendedProps.pinnedCalendars;
+  const named = Array.isArray(pins) ? pins.filter((pin) => pin.name) : [];
+  if (named.length < 2) {
+    return;
+  }
+
+  const nodes = [];
+  if (info.timeText) {
+    const time = document.createElement("span");
+    time.className = "fc-event-time";
+    time.textContent = info.timeText;
+    nodes.push(time);
+  }
+  const title = document.createElement("span");
+  title.className = "fc-event-title";
+  title.textContent = info.event.title;
+  nodes.push(title);
+
+  const marks = document.createElement("span");
+  marks.className = "crm-cal-pin-marks";
+  for (const pin of named) {
+    const dot = document.createElement("span");
+    dot.className = "crm-cal-pin-mark";
+    dot.style.backgroundColor = pin.color;
+    dot.title = pin.name;
+    marks.appendChild(dot);
+  }
+  nodes.push(marks);
+  return { domNodes: nodes };
 }
 
 /**

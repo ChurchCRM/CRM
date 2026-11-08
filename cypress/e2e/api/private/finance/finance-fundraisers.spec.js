@@ -178,6 +178,12 @@ describe("API Private Fundraisers", () => {
                     expect(updateResp.body.fundraiser.date).to.equal(
                         "2026-12-31",
                     );
+                    cy.makePrivateAdminAPICall(
+                        "PUT",
+                        `/api/fundraisers/${id}`,
+                        { date: updateResp.body.fundraiser.date },
+                        200,
+                    );
                 });
                 cy.makePrivateAdminAPICall(
                     "DELETE",

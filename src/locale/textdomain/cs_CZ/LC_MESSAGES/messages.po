@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Toto není platné datum svatby"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-mail je neplatný"
-
-#: 
 msgid "Family Info"
 msgstr "Rodinné informace"
 
@@ -1448,10 +1444,6 @@ msgstr "Neplatné datum zpřátelení"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Neplatné datum členství"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Pracovní e-mail není platný"
 
 #: 
 msgid "Birth Month"
@@ -5039,10 +5031,6 @@ msgstr "Zobrazit stránku rodiny"
 #: 
 msgid "View Person Page"
 msgstr "Zobrazit stránku osoby"
-
-#: 
-msgid "Verify"
-msgstr "Ověřit"
 
 #: 
 msgid "Family has no emails to use"
@@ -14631,10 +14619,6 @@ msgid "Date Picker Format"
 msgstr "Formát výběru data"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Text nápovědy výběru data"
-
-#: 
 msgid "Date Without Year"
 msgstr "Datum bez roku"
 
@@ -14665,10 +14649,6 @@ msgstr "Formát data pro název souboru"
 #: 
 msgid "Fully translated."
 msgstr "Plně přeloženo."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Text nápovědy v polích pro datum. Výchozí: rrrr-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -22939,10 +22919,6 @@ msgid "Invalid birth date"
 msgstr "Neplatné datum narození."
 
 #: 
-msgid "Invalid email address"
-msgstr "Neplatná e-mailová adresa"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Nastavení kiosku"
 
@@ -23613,10 +23589,6 @@ msgstr "Zvolte, jak daleko dopředu se rozvrhy obsazují a kdy odcházejí přip
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Vyberte někoho, kdo už je v adresáři sboru. Připojí se k dobrovolníkům této služby a jejím koordinátorům se odešle e-mail. Odebrat někoho může jen koordinátor."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM má dva způsoby správy dobrovolníků. V jednu chvíli má být používán jen jeden; nastavení prostředí dobrovolníků rozhoduje, který tento sbor vidí. Přepnutí skryje nebo zobrazí stránky a položky nabídky — nikdy nesmaže data, takže se můžete vrátit."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26507,10 +26479,6 @@ msgid "That device is signed out."
 msgstr "Toto zařízení je odhlášeno."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "To není platná e-mailová adresa."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Tato stránka byla otevřená příliš dlouho. Zkuste to prosím znovu."
 
@@ -27201,4 +27169,16 @@ msgstr "nebo"
 #: 
 msgid "until %s"
 msgstr "do %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "V portálu pro členy byl podán požadavek na změnu vaší e-mailové adresy na %1$s z %2$s na %3$s. Ke změně dojde až po použití odkazu odeslaného na novou adresu."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Pomocí odkazu níže zkontrolujte údaje o své rodině. Na stránce kontroly vyberte „Potvrdit údaje o rodině“, abyste potvrdili, že je vše správně, nebo pošlete opravy na církevní úřad."
+
+#: 
+msgid "Review Family Information"
+msgstr "Zkontrolovat údaje o rodině"
 

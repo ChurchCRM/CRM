@@ -22,6 +22,7 @@ enum SignInReason: string
     case AGE_UNKNOWN = 'age_unknown';
     case NO_MATCH = 'no_match';
     case NO_EMAIL = 'no_email';
+    case INVALID_EMAIL = 'invalid_email';
     case SHARED_EMAIL = 'shared_email';
     case EMAIL_UNCONFIRMED = 'email_unconfirmed';
     case REQUEST_ADDRESS_CHANGED = 'request_address_changed';
@@ -58,6 +59,7 @@ enum SignInReason: string
             self::AGE_UNKNOWN => gettext('No birth date, and not a head of household or spouse'),
             self::NO_MATCH => gettext('No person has this email'),
             self::NO_EMAIL => gettext('No personal email'),
+            self::INVALID_EMAIL => gettext('Their email address is not valid'),
             self::SHARED_EMAIL => gettext('Their email is shared with someone else'),
             self::EMAIL_UNCONFIRMED => gettext('Their email is not confirmed yet'),
             self::REQUEST_ADDRESS_CHANGED => gettext('The code or link went to an address that is no longer their email'),

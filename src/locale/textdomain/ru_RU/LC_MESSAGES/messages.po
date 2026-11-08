@@ -731,10 +731,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Не действует Дата свадьбы"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Email не действительны"
-
-#: 
 msgid "Family Info"
 msgstr "Информация о семье "
 
@@ -1482,10 +1478,6 @@ msgstr "Не действует другу Дата"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Не аккаунтом Дата"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Работа Email не действительны"
 
 #: 
 msgid "Birth Month"
@@ -5105,10 +5097,6 @@ msgstr "Перейти к странице семьи"
 #: 
 msgid "View Person Page"
 msgstr "Перейти к странице человека"
-
-#: 
-msgid "Verify"
-msgstr "Проверить"
 
 #: 
 msgid "Family has no emails to use"
@@ -14706,10 +14694,6 @@ msgid "Date Picker Format"
 msgstr "Формат выбора даты"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Подсказка выбора даты"
-
-#: 
 msgid "Date Without Year"
 msgstr "Дата без года"
 
@@ -14740,10 +14724,6 @@ msgstr "Формат даты для имени файла"
 #: 
 msgid "Fully translated."
 msgstr "Полностью переведено."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Подсказка в полях ввода даты. По умолчанию: гггг-мм-дд"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -23033,10 +23013,6 @@ msgid "Invalid birth date"
 msgstr "Недопустимая дата рождения."
 
 #: 
-msgid "Invalid email address"
-msgstr "Неверный адрес электронной почты"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Параметры киоска"
 
@@ -23707,10 +23683,6 @@ msgstr "Выберите, на сколько вперёд заполняютс�
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Выберите человека, который уже есть в церковном справочнике. Он войдёт в добровольцы этого служения, а координаторам будет отправлено письмо. Исключить человека может только координатор."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "В ChurchCRM два способа вести добровольцев. Одновременно предназначен только один; настройка опыта добровольцев решает, что видит эта церковь. Переключение скрывает или показывает страницы и пункты меню — данные не удаляются, можно вернуться."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26601,10 +26573,6 @@ msgid "That device is signed out."
 msgstr "На этом устройстве выполнен выход."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Это недопустимый адрес электронной почты."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Эта страница была открыта слишком долго. Повторите попытку."
 
@@ -27295,4 +27263,16 @@ msgstr "или"
 #: 
 msgid "until %s"
 msgstr "до %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "В портале участников запрошено изменение вашего адреса электронной почты на %1$s с %2$s на %3$s. Изменение происходит только после перехода по ссылке, отправленной на новый адрес."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Перейдите по ссылке ниже, чтобы проверить сведения о вашей семье. На странице проверки выберите «Подтвердить сведения о семье», чтобы подтвердить, что всё верно, или отправьте исправления в церковный офис."
+
+#: 
+msgid "Review Family Information"
+msgstr "Проверить сведения о семье"
 

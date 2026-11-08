@@ -18,13 +18,18 @@ use ChurchCRM\Service\CustomFieldService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Utils\CustomFieldUtils;
+use ChurchCRM\Utils\EmailAddress;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 use DateTime;
+use InvalidArgumentException;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Map\TableMap;
+use Symfony\Component\Validator\Constraints\Callback;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * Skeleton subclass for representing a row from the 'person_per' table.
@@ -463,12 +468,43 @@ class Person extends BasePerson implements PhotoInterface
 
     public function preSave(?ConnectionInterface $con = null): bool
     {
+        if ($this->invalidEmailFields() !== []) {
+            throw new InvalidArgumentException(EmailAddress::validationMessage(), 400);
+        }
+
         $this->forgetGeocodeOnAddressChange(
             [PersonTableMap::COL_PER_ADDRESS1, PersonTableMap::COL_PER_ADDRESS2, PersonTableMap::COL_PER_CITY, PersonTableMap::COL_PER_STATE, PersonTableMap::COL_PER_ZIP, PersonTableMap::COL_PER_COUNTRY],
             [PersonTableMap::COL_PER_LATITUDE, PersonTableMap::COL_PER_LONGITUDE, PersonTableMap::COL_PER_GEOCODETRIEDAT],
         );
 
         return parent::preSave($con);
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata): void
+    {
+        $metadata->addConstraint(new Callback('validateEmailAddresses'));
+    }
+
+    public function validateEmailAddresses(ExecutionContextInterface $context): void
+    {
+        foreach ($this->invalidEmailFields() as $field) {
+            $context->buildViolation(EmailAddress::validationMessage())->atPath($field)->addViolation();
+        }
+    }
+
+    /** @return string[] */
+    private function invalidEmailFields(): array
+    {
+        $invalid = [];
+        foreach ([PersonTableMap::COL_PER_EMAIL => 'Email', PersonTableMap::COL_PER_WORKEMAIL => 'WorkEmail'] as $column => $field) {
+            $email = (string) $this->{'get' . $field}();
+            // Unchanged legacy addresses must not prevent staff correcting other details.
+            if ($this->isColumnModified($column) && trim($email) !== '' && !EmailAddress::isValid($email)) {
+                $invalid[] = $field;
+            }
+        }
+
+        return $invalid;
     }
 
     /**

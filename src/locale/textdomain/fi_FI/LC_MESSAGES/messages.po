@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Virheellinen hääpäivä"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Sähköpostiosoite ei ole kelvollinen"
-
-#: 
 msgid "Family Info"
 msgstr "Perheen tiedot"
 
@@ -1437,10 +1433,6 @@ msgstr "Virheellinen ystävyyspäivä"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Virheellinen jäsenyyspäivä"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Työsähköposti ei ole kelvollinen"
 
 #: 
 msgid "Birth Month"
@@ -5019,10 +5011,6 @@ msgstr "Näytä perhesivu"
 #: 
 msgid "View Person Page"
 msgstr "Näytä henkilösivu"
-
-#: 
-msgid "Verify"
-msgstr "Vahvista"
 
 #: 
 msgid "Family has no emails to use"
@@ -14602,10 +14590,6 @@ msgid "Date Picker Format"
 msgstr "Päivämäärävalitsimen muoto"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Päivämäärävalitsimen vihjeteksti"
-
-#: 
 msgid "Date Without Year"
 msgstr "Päivämäärä ilman vuotta"
 
@@ -14636,10 +14620,6 @@ msgstr "Päivämäärämuoto tiedostonimissä"
 #: 
 msgid "Fully translated."
 msgstr "Täysin käännetty."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Vihjeteksti päivämääräkentissä. Oletus: vvvv-kk-pp"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -22891,10 +22871,6 @@ msgid "Invalid birth date"
 msgstr "Virheellinen syntymäaika."
 
 #: 
-msgid "Invalid email address"
-msgstr "Virheellinen sähköpostiosoite"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kioskin asetukset"
 
@@ -23565,10 +23541,6 @@ msgstr "Valitse, kuinka pitkälle aikataulut täytetään ja milloin muistutukse
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Valitse joku, joka on jo seurakunnan hakemistossa. Hän liittyy tämän palveluksen vapaaehtoisiin ja koordinaattoreille lähetetään sähköposti. Vain koordinaattori voi poistaa jonkun."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM:ssä on kaksi tapaa hallita vapaaehtoisia. Kerrallaan on tarkoitus käyttää vain yhtä; vapaaehtoiskokemuksen asetus päättää, kumman tämä seurakunta näkee. Vaihto piilottaa tai näyttää sivuja ja valikkokohtia — se ei koskaan poista tietoja, joten voit vaihtaa takaisin."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26459,10 +26431,6 @@ msgid "That device is signed out."
 msgstr "Tuo laite on kirjattu ulos."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Se ei ole kelvollinen sähköpostiosoite."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Sivu oli ollut auki liian kauan. Yritä uudelleen."
 
@@ -27153,4 +27121,16 @@ msgstr "tai"
 #: 
 msgid "until %s"
 msgstr "%s asti"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Jäsenportaalissa pyydettiin vaihtamaan sähköpostiosoitteesi sivustolla %1$s osoitteesta %2$s osoitteeseen %3$s. Muutos tapahtuu vasta, kun uuteen osoitteeseen lähetettyä linkkiä käytetään."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Tarkista perheesi tiedot alla olevasta linkistä. Valitse tarkistussivulla ”Vahvista perheen tiedot” vahvistaaksesi, että kaikki on oikein, tai lähetä korjaukset seurakunnan toimistoon."
+
+#: 
+msgid "Review Family Information"
+msgstr "Tarkista perheen tiedot"
 

@@ -14,6 +14,7 @@ use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\Service\ReportCatalog;
+use ChurchCRM\Service\VolunteerV1Service;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
 
 class Menu
@@ -39,7 +40,7 @@ class Menu
         $isAdmin = $currentUser->isAdmin();
         $isManageGroups = $currentUser->isManageGroupsEnabled();
         $canViewEvents = $currentUser->canViewEvents();
-        $isVolunteerV1Enabled = User::isVolunteerV1Enabled();
+        $isVolunteerV1InUse = VolunteerV1Service::isInUse();
         // #9706: the Volunteer menu mirrors VolunteerCoordinatorRoleAuthMiddleware exactly.
         // Computed once here like every other visibility boolean; the predicate memoises
         // the scope query on the User instance so the route gate reuses it.
@@ -47,7 +48,7 @@ class Menu
         $menus = [
             'Dashboard'    => new MenuItem(gettext('Dashboard'), 'v2/dashboard', true, 'fa-gauge'),
             'Calendar'     => self::getCalendarMenu($canViewEvents),
-            'People'       => self::getPeopleMenu($isAdmin, $currentUser->isAddRecordsEnabled(), $isVolunteerV1Enabled),
+            'People'       => self::getPeopleMenu($isAdmin, $currentUser->isAddRecordsEnabled(), $isVolunteerV1InUse),
             'Groups'       => self::getGroupMenu($isAdmin, $isManageGroups),
             'SundaySchool' => self::getSundaySchoolMenu($isAdmin, $isManageGroups),
             'Communication' => self::getCommunicationMenu($currentUser->isEmailEnabled(), $isAdmin),
@@ -105,7 +106,7 @@ class Menu
         return $calendarMenu;
     }
 
-    private static function getPeopleMenu(bool $isAdmin, bool $isAddRecordsEnabled, bool $isVolunteerV1Enabled): MenuItem
+    private static function getPeopleMenu(bool $isAdmin, bool $isAddRecordsEnabled, bool $isVolunteerV1InUse): MenuItem
     {
         $peopleMenu = new MenuItem(gettext('People'), '', true, 'fa-people-group');
         $peopleMenu->addSubMenu(new MenuItem(gettext('Dashboard'), 'people/dashboard', true, 'fa-gauge'));
@@ -131,7 +132,7 @@ class Menu
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Properties'), 'PropertyList.php?Type=p', $isAdmin, 'fa-person-half-dress'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Custom Fields'), 'PersonCustomFieldsEditor.php', $isAdmin, 'fa-sliders'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Grades'), 'admin/system/options?mode=grades', $isAdmin, 'fa-graduation-cap'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin && $isVolunteerV1Enabled, 'fa-handshake-angle'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin && $isVolunteerV1InUse, 'fa-handshake-angle'));
     
             $peopleMenu->addSubMenu($adminMenu);
         }
@@ -338,8 +339,8 @@ class Menu
     // Staff who also volunteer reach their own schedule through the Member
     // Portal, which their user menu links to.
     //
-    // The legacy "Volunteer Opportunities" item under People → Admin covers the
-    // 'v1' and 'both' rollout states and is unaffected.
+    // The legacy "Volunteer Opportunities" item under People → Admin shows while
+    // V1 is in use (VolunteerV1Service::isInUse()).
 
     /**
      * Volunteer Management v2 — the ADMINISTRATION surface (epic #9701).
@@ -496,6 +497,7 @@ class Menu
             $adminMenu = new MenuItem(gettext('Admin'), '', $isFinanceEnabled);
             $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', $isFinanceEnabled, 'fa-envelope'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'finance/funds', $isFinanceEnabled, 'fa-piggy-bank'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Statement Settings'), 'finance/statements/settings', $isFinanceEnabled, 'fa-file-invoice'));
 
             $depositsMenu->addSubMenu($adminMenu);
         }
@@ -530,10 +532,9 @@ class Menu
             $reportsMenu->addSubMenu(new MenuItem($report['title'], $report['url'], true, $report['icon']));
         }
 
-        if ($isAdmin || $isFinanceEnabled) {
+        if ($isAdmin) {
             $adminMenu = new MenuItem(gettext('Admin'), '', true);
             $adminMenu->addSubMenu(new MenuItem(gettext('Report Settings'), 'admin/system/report-settings', $isAdmin, 'fa-file-lines'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Statement Settings'), 'finance/statements/settings', $isFinanceEnabled, 'fa-file-invoice'));
             $reportsMenu->addSubMenu($adminMenu);
         }
 

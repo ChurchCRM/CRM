@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Nie 'n geldige troudatum nie"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-pos is nie geldig nie"
-
-#: 
 msgid "Family Info"
 msgstr "Gesinsinligting"
 
@@ -1448,10 +1444,6 @@ msgstr "Nie 'n geldige vrienddatum nie"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Nie 'n geldige lidmaatskapdatum nie"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Werk-e-posadres is nie geldig nie"
 
 #: 
 msgid "Birth Month"
@@ -5048,10 +5040,6 @@ msgstr "Sien familiebladsy"
 #: 
 msgid "View Person Page"
 msgstr "Sien persoonbladsy"
-
-#: 
-msgid "Verify"
-msgstr "Verifieer"
 
 #: 
 msgid "Family has no emails to use"
@@ -14631,10 +14619,6 @@ msgid "Date Picker Format"
 msgstr "Datumkieser-formaat"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Datumkieser-plekhouer"
-
-#: 
 msgid "Date Without Year"
 msgstr "Datum sonder jaar"
 
@@ -14665,10 +14649,6 @@ msgstr "Lêernaam-datumformaat"
 #: 
 msgid "Fully translated."
 msgstr "Volledig vertaal."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Wenkteks in datuminvoervelde. Standaard: jjjj-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -22920,10 +22900,6 @@ msgid "Invalid birth date"
 msgstr "Ongeldige geboortedatum."
 
 #: 
-msgid "Invalid email address"
-msgstr "Ongeldige e-posadres"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kioskstelling"
 
@@ -23594,10 +23570,6 @@ msgstr "Kies hoe ver vooruit skedules gevul word en wanneer herinneringe uitgaan
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Kies iemand wat reeds in die kerkgids is. Hulle word vrywilligers van hierdie bediening en die koördineerders kry e-pos. Net ’n koördineerder kan iemand verwyder."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM het twee maniere om vrywilligers te bestuur. Net een is bedoel om op ’n slag in gebruik te wees; die instelling vir die vrywilligerervaring bepaal watter een hierdie kerk sien. Wissel versteek of wys bladsye en kieslysinskrywings — dit vee nooit data uit nie, dus kan u terugskakel."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26488,10 +26460,6 @@ msgid "That device is signed out."
 msgstr "Daardie toestel is afgemeld."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Dit is nie 'n geldige e-posadres nie."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Daardie bladsy was te lank oop. Probeer asseblief weer."
 
@@ -27182,4 +27150,16 @@ msgstr "of"
 #: 
 msgid "until %s"
 msgstr "tot %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "'n Versoek is in die lidportaal gemaak om u e-posadres by %1$s van %2$s na %3$s te verander. Die verandering gebeur eers wanneer die skakel wat na die nuwe adres gestuur is, gebruik word."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Gebruik asseblief die skakel hieronder om u gesinsinligting na te gaan. Kies op die hersieningsblad \"Bevestig gesinsinligting\" om te bevestig dat alles korrek is, of stuur regstellings na die kerkkantoor."
+
+#: 
+msgid "Review Family Information"
+msgstr "Hersien gesinsinligting"
 

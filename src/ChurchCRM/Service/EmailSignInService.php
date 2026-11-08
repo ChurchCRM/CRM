@@ -21,6 +21,7 @@ use ChurchCRM\Portal\Auth\SignInReason;
 use ChurchCRM\Portal\MemberLanguage;
 use ChurchCRM\Utils\AfterResponse;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\EmailAddress;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use DateTimeImmutable;
@@ -70,7 +71,7 @@ final class EmailSignInService
 
     public static function isWellFormedEmail(string $typedEmail): bool
     {
-        return filter_var(trim($typedEmail), FILTER_VALIDATE_EMAIL) !== false;
+        return EmailAddress::isValid($typedEmail);
     }
 
     /**

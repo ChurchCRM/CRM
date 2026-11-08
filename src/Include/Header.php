@@ -32,14 +32,15 @@ $pluginsPath = SystemURLs::getDocumentRoot() . '/plugins';
 PluginManager::init($pluginsPath);
 
 // Resolve theme attributes from user settings
-$_themeUser = AuthenticationManager::getCurrentUser();
-$_themeMode = $_themeUser->getThemeMode(); // 'auto' | 'default' | 'dark'
+$currentUser = AuthenticationManager::getCurrentUser();
+$pluginsClientConfig = PluginManager::getPluginsClientConfig();
+$_themeMode = $currentUser->getThemeMode(); // 'auto' | 'default' | 'dark'
 $_themeAttrs = ' data-theme-mode="' . InputUtils::escapeAttribute($_themeMode) . '"';
 // Explicit dark: stamp data-bs-theme on <html> so first paint does not wait on theme.min.js.
 if ($_themeMode === 'dark') {
     $_themeAttrs .= ' data-bs-theme="dark"';
 }
-$_themePrimary = $_themeUser->getSettingValue('ui.theme.primary');
+$_themePrimary = $currentUser->getSettingValue('ui.theme.primary');
 if ($_themePrimary !== '') {
     $_themeAttrs .= ' data-bs-theme-primary="' . InputUtils::escapeAttribute($_themePrimary) . '"';
 }
@@ -87,7 +88,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <label for="issueDescription" class="fw-bold"><?= gettext('Describe the issue') ?> <span class="text-body-secondary fw-normal">(<?= gettext('optional') ?>)</span></label>
               <textarea id="issueDescription" class="form-control" rows="4" placeholder="<?= gettext('What went wrong? What did you expect to happen?') ?>"></textarea>
             </div>
-            <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
+            <?php if ($currentUser->isAdmin()) { ?>
             <div class="alert alert-warning mb-0">
               <i class="fa-solid fa-file-lines me-1"></i>
               <?= gettext('As an admin, please also review the') ?>
@@ -110,7 +111,6 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 
   <?php
   // Initialize window.CRM and body scripts
-  $currentUser = AuthenticationManager::getCurrentUser();
   $tableSizeSetting = $currentUser->getSetting("ui.table.size");
   if (empty($tableSizeSetting)) {
       $tableSize = 10;
@@ -149,8 +149,8 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
                   default                        => '',
               },
           ],
-          'plugins' => PluginManager::getPluginsClientConfig() ?: new stdClass(),
-          'bEnableGravatarPhotos' => PluginManager::getPluginsClientConfig()['gravatar']['enabled'] ?? false,
+          'plugins' => $pluginsClientConfig ?: new stdClass(),
+          'bEnableGravatarPhotos' => $pluginsClientConfig['gravatar']['enabled'] ?? false,
           'permissions' => [
               'addRecords' => $currentUser->isAddRecordsEnabled(),
               'editRecords' => $currentUser->isEditRecordsEnabled(),
@@ -172,6 +172,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
   </script>
   <script src="<?= SystemURLs::assetVersioned('/skin/js/CRMJSOM.js') ?>"></script>
   <script src="<?= SystemURLs::assetVersioned('/skin/js/CommunicationUtils.js') ?>"></script>
+  <script src="<?= SystemURLs::assetVersioned('/skin/v2/sidebar-toggle.min.js') ?>" defer></script>
 
   <!-- ============================================================ -->
   <!-- Sidebar (Tabler vertical navbar)                              -->
@@ -225,6 +226,16 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
         <i class="fa-solid fa-search"></i>
       </button>
 
+      <button type="button" id="desktop-sidebar-toggle"
+              class="btn btn-ghost-secondary d-none d-xl-inline-flex align-items-center me-2"
+              aria-controls="sidebar" aria-expanded="true"
+              aria-label="<?= InputUtils::escapeAttribute(gettext('Collapse sidebar')) ?>"
+              title="<?= InputUtils::escapeAttribute(gettext('Collapse sidebar')) ?>"
+              data-collapse-label="<?= InputUtils::escapeAttribute(gettext('Collapse sidebar')) ?>"
+              data-expand-label="<?= InputUtils::escapeAttribute(gettext('Expand sidebar')) ?>">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+
       <!-- Right-side nav items -->
       <div class="navbar-nav flex-row order-md-last ms-auto">
 
@@ -239,13 +250,13 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <i class="fa-solid fa-download"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <?php if (AuthenticationManager::getCurrentUser()->isAdmin()) { ?>
+            <?php if ($currentUser->isAdmin()) { ?>
             <a href="<?= SystemURLs::getRootPath() ?>/admin/system/upgrade" class="dropdown-item"
                title="<?= gettext('New Release') ?>">
               <i class="fa-solid fa-champagne-glasses me-2"></i><?= gettext('New Release') ?>
               <?php if ($updateVersion) { ?>
                 <span id="upgradeToVersion" class="ms-1">
-                  <?= $updateVersion->MAJOR ?>.<?= $updateVersion->MINOR ?>.<?= $updateVersion->PATCH ?>
+                  <?= InputUtils::escapeHTML($updateVersion->MAJOR . '.' . $updateVersion->MINOR . '.' . $updateVersion->PATCH) ?>
                 </span>
               <?php } ?>
             </a>
@@ -263,12 +274,12 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
         $nativeName  = $localeInfo->getNativeName();
         $englishName = $localeInfo->getName();
         $hasNative   = $nativeName !== '' && $nativeName !== $englishName;
-        $localeUrl   = SystemURLs::getRootPath() . '/v2/user/' . AuthenticationManager::getCurrentUser()->getId() . '#tab-localization';
+        $localeUrl   = SystemURLs::getRootPath() . '/v2/user/' . $currentUser->getId() . '#tab-localization';
         ?>
         <div class="nav-item ms-1">
-          <a class="nav-link px-0" href="<?= $localeUrl ?>"
+          <a class="nav-link px-0" href="<?= InputUtils::escapeAttribute($localeUrl) ?>"
              title="<?= InputUtils::escapeAttribute($hasNative ? $nativeName . ' — ' . $englishName : $englishName) ?>">
-            <i class="fi fi-<?= $flagCode ?> fi-squared"></i>
+            <i class="fi fi-<?= InputUtils::escapeAttribute($flagCode) ?> fi-squared"></i>
           </a>
         </div>
 
@@ -317,7 +328,6 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 
         <!-- User -->
         <?php
-        $currentUser     = AuthenticationManager::getCurrentUser();
         $currentUserName = $currentUser->getName();
         $userRole        = $currentUser->isAdmin() ? gettext('Administrator') : gettext('Member');
 
@@ -345,26 +355,26 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <a href="#" class="nav-link d-flex align-items-center gap-2 lh-1 text-reset ps-2"
              data-bs-toggle="dropdown" aria-label="<?= gettext('Open user menu') ?>">
             <?php if ($hasUploadedPhoto) { ?>
-              <img src="<?= $avatarApiUrl ?>" class="avatar photo-small rounded-circle" alt="<?= htmlspecialchars($currentUserName) ?>">
+              <img src="<?= InputUtils::escapeAttribute($avatarApiUrl) ?>" class="avatar photo-small rounded-circle" alt="<?= InputUtils::escapeAttribute($currentUserName) ?>">
             <?php } else { ?>
-              <span class="avatar avatar-sm text-white flex-shrink-0" style="background-color: <?= $avatarColor ?>;">
-                <span class="avatar-title"><?= htmlspecialchars($userInitials) ?></span>
+              <span class="avatar avatar-sm text-white flex-shrink-0" style="background-color: <?= InputUtils::escapeAttribute($avatarColor) ?>;">
+                <span class="avatar-title"><?= InputUtils::escapeHTML($userInitials) ?></span>
               </span>
             <?php } ?>
             <div class="d-none d-xl-block ps-2">
-              <div><?= htmlspecialchars($currentUserName) ?></div>
-              <div class="mt-1 small text-secondary"><?= $userRole ?></div>
+              <div><?= InputUtils::escapeHTML($currentUserName) ?></div>
+              <div class="mt-1 small text-secondary"><?= InputUtils::escapeHTML($userRole) ?></div>
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <a href="<?= Person::getViewURIForId($currentUser->getPersonId()) ?>"
+            <a href="<?= InputUtils::escapeAttribute(Person::getViewURIForId($currentUser->getPersonId())) ?>"
                class="dropdown-item">
               <i class="fa-solid fa-user me-2"></i><?= gettext("Profile") ?>
             </a>
             <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="dropdown-item">
               <i class="fa-solid fa-key me-2"></i><?= gettext('Change Password') ?>
             </a>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $currentUser->getPersonId() ?>"
+            <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= (int) $currentUser->getPersonId() ?>"
                class="dropdown-item">
               <i class="fa-solid fa-cog me-2"></i><?= gettext('Change Settings') ?>
             </a>
@@ -452,7 +462,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
     </div><!-- /.page-header -->
     <?php if (!empty($sSettingsCollapseId)) : ?>
     <div class="container-xl">
-      <div class="collapse mb-3" id="<?= $sSettingsCollapseId ?>"></div>
+      <div class="collapse mb-3" id="<?= InputUtils::escapeAttribute($sSettingsCollapseId) ?>"></div>
     </div>
     <?php endif; ?>
     <div class="page-body" id="main-content" tabindex="-1">
@@ -502,11 +512,10 @@ if (TelemetryService::isEnabled()):
 // is within the mandatory-2FA grace window. Uses Tabler alert colours:
 //   - alert-warning (yellow) while > 1 day remains
 //   - alert-danger  (red)    when <= 1 day remains
-$_twoFAGraceUser = AuthenticationManager::getCurrentUser();
-if ($_twoFAGraceUser !== null):
-    $_twoFAGraceStatus = $_twoFAGraceUser->getTwoFactorGraceStatus();
+if ($currentUser !== null):
+    $_twoFAGraceStatus = $currentUser->getTwoFactorGraceStatus();
     if ($_twoFAGraceStatus === 'within-grace'):
-        $_twoFADaysLeft   = $_twoFAGraceUser->getTwoFactorGraceDaysRemaining();
+        $_twoFADaysLeft   = $currentUser->getTwoFactorGraceDaysRemaining();
         $_twoFAAlertClass = $_twoFADaysLeft <= 1 ? 'alert-danger' : 'alert-warning';
 ?>
 <div class="alert <?= InputUtils::escapeHTML($_twoFAAlertClass) ?> alert-dismissible mb-0" role="alert" id="two-fa-grace-banner">

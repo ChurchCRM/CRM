@@ -708,10 +708,6 @@ msgid "Not a valid Wedding Date"
 msgstr "La date de mariage n'est pas valide"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "L'adresse email n'est pas valide"
-
-#: 
 msgid "Family Info"
 msgstr "Info sur la famille"
 
@@ -1445,10 +1441,6 @@ msgstr "Date d'amitié invalide"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Date d'Adhésion Invalide"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Email professionnel invalide"
 
 #: 
 msgid "Birth Month"
@@ -5045,10 +5037,6 @@ msgstr "Voir page de la Famille"
 #: 
 msgid "View Person Page"
 msgstr "Voir Page de la personne"
-
-#: 
-msgid "Verify"
-msgstr "Vérifier"
 
 #: 
 msgid "Family has no emails to use"
@@ -14628,10 +14616,6 @@ msgid "Date Picker Format"
 msgstr "Format du sélecteur de date"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Texte d'exemple du sélecteur de date"
-
-#: 
 msgid "Date Without Year"
 msgstr "Date sans année"
 
@@ -14662,10 +14646,6 @@ msgstr "Format de date pour les noms de fichiers"
 #: 
 msgid "Fully translated."
 msgstr "Entièrement traduit."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Texte indicatif dans les champs de date. Par défaut : aaaa-mm-jj"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -22917,10 +22897,6 @@ msgid "Invalid birth date"
 msgstr "Date de naissance invalide."
 
 #: 
-msgid "Invalid email address"
-msgstr "Adresse email invalide"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Paramètres de la Borne"
 
@@ -23591,10 +23567,6 @@ msgstr "Choisissez jusqu'où les plannings sont remplis et quand les rappels par
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Choisissez une personne déjà dans l'annuaire de l'église. Elle rejoint les bénévoles de ce ministère et ses coordinateurs reçoivent un e-mail. Seul un coordinateur peut retirer quelqu'un."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM a deux façons de gérer les bénévoles. Une seule est prévue à la fois ; le réglage d'expérience Bénévoles décide laquelle cette église voit. Changer masque ou affiche des pages et des entrées de menu — cela ne supprime jamais de données, vous pouvez donc revenir en arrière."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26485,10 +26457,6 @@ msgid "That device is signed out."
 msgstr "Cet appareil est déconnecté."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Cette adresse e-mail n'est pas valide."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Cette page était ouverte depuis trop longtemps. Veuillez réessayer."
 
@@ -27179,4 +27147,16 @@ msgstr "ou"
 #: 
 msgid "until %s"
 msgstr "jusqu'au %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Une demande a été faite dans le portail des membres pour changer votre adresse e-mail sur %1$s de %2$s à %3$s. Le changement n’a lieu que lorsque le lien envoyé à la nouvelle adresse est utilisé."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Utilisez le lien ci-dessous pour vérifier les informations de votre famille. Sur la page de vérification, choisissez « Confirmer les informations de la famille » pour confirmer que tout est exact, ou envoyez les corrections au bureau de l’église."
+
+#: 
+msgid "Review Family Information"
+msgstr "Vérifier les informations de la famille"
 
