@@ -110,7 +110,9 @@ class NotificationService
     {
         try {
             $url = CentralServices::NOTIFICATIONS_URL;
-            $contents = file_get_contents($url);
+            // Runs inside the sign-in request, so never let a slow remote host hold up the redirect.
+            $context = stream_context_create(['http' => ['timeout' => 5]]);
+            $contents = @file_get_contents($url, false, $context);
             if ($contents === false) {
                 LoggerUtils::getAppLogger()->warning('Failed to fetch remote notifications', ['url' => $url]);
 
