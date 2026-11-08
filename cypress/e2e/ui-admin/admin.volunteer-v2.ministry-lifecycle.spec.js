@@ -131,15 +131,15 @@ function ministryUrl() {
 }
 
 /**
- * The collapse container of a top-level sidebar heading, found by its own label
+ * The dropdown menu of a sidebar heading, found by its own label
  * (the same helper admin.volunteer-v2.menu.spec.js uses).
  */
 function menuSection(title) {
     return cy
-        .get("a[data-bs-toggle='collapse'] .nav-link-title")
+        .get("#sidebar a[data-bs-toggle='dropdown'] .nav-link-title")
         .filter((_i, el) => el.textContent.trim() === title)
         .should("have.length", 1)
-        .parents("a[data-bs-toggle='collapse']")
+        .parents("a[data-bs-toggle='dropdown']")
         .invoke("attr", "href")
         .then((href) => cy.get(href));
 }
@@ -151,7 +151,7 @@ function menuSection(title) {
  */
 function headingHasMinistry(title, expected) {
     menuSection(title)
-        .find(`> ul > li > div > a[href$="${ministryUrl()}"]`)
+        .find(`> a.dropdown-item[href$="${ministryUrl()}"]`)
         .should(expected ? "exist" : "not.exist");
 }
 
@@ -159,7 +159,7 @@ function headingHasMinistry(title, expected) {
 function deactivatedHeadingLacksMinistry() {
     // A jQuery filter inside .then(), not cy.filter(): the Cypress one retries until
     // it finds something, and "no such group at all" is the expected common case.
-    cy.get("a[data-bs-toggle='collapse'] .nav-link-title").then(($titles) => {
+    cy.get("#sidebar a[data-bs-toggle='dropdown'] .nav-link-title").then(($titles) => {
         const heading = $titles.filter((_i, el) => el.textContent.trim() === "Deactivated Ministries");
         if (heading.length === 0) {
             return;
@@ -171,7 +171,7 @@ function deactivatedHeadingLacksMinistry() {
 /** The nested group is a child of the Ministries heading, never a heading of its own. */
 function deactivatedGroupIsNestedUnderMinistries() {
     menuSection("Ministries").within(() => {
-        cy.get("a[data-bs-toggle='collapse'] .nav-link-title")
+        cy.get("a[data-bs-toggle='dropdown'] .nav-link-title")
             .filter((_i, el) => el.textContent.trim() === "Deactivated Ministries")
             .should("have.length", 1);
     });
