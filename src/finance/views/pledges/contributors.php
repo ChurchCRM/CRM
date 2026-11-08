@@ -169,7 +169,7 @@ $statusClasses = [
             <div class="card-header py-2">
                 <h3 class="card-title">
                     <i class="fa-solid fa-users me-1"></i>
-                    <?= gettext('Contributors') ?> &mdash; <?= InputUtils::escapeHTML(FiscalYearUtils::formatFiscalYearLabel($selectedFyid)) ?>
+                    <?= gettext('Contributors') ?>: <?= InputUtils::escapeHTML(FiscalYearUtils::formatFiscalYearLabel($selectedFyid)) ?>
                 </h3>
             </div>
             <div class="overflow-visible">
@@ -177,6 +177,7 @@ $statusClasses = [
                     <thead>
                         <tr>
                             <th><?= gettext('Family Name') ?></th>
+                            <th><?= gettext('Attributed To') ?></th>
                             <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                             <th><?= gettext('Envelope') ?></th>
                             <?php endif; ?>
@@ -203,6 +204,15 @@ $statusClasses = [
                                         <?= InputUtils::escapeHTML($contributor['family_name']) ?>
                                     </a>
                                 </td>
+                                <td>
+                                    <?php if (!empty($contributor['person_id']) && !empty($contributor['person_name'])): ?>
+                                        <a href="<?= $sRootPathEsc ?>/people/person/<?= (int) $contributor['person_id'] ?>">
+                                            <?= InputUtils::escapeHTML($contributor['person_name']) ?>
+                                        </a>
+                                    <?php else: ?>
+                                        <span class="badge bg-secondary-lt text-secondary"><?= gettext('Entire Family') ?></span>
+                                    <?php endif; ?>
+                                </td>
                                 <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                                 <td class="text-body-secondary small">
                                     <?= InputUtils::escapeHTML($contributor['envelope']) ?>
@@ -210,7 +220,7 @@ $statusClasses = [
                                 <?php endif; ?>
                                 <td class="text-end fw-bold"
                                     data-order="<?= InputUtils::escapeAttribute($pledged) ?>">
-                                    <?= $pledged > 0 ? CurrencyFormatter::formatHtml($pledged) : '<span class="text-body-secondary">—</span>' ?>
+                                    <?= $pledged > 0 ? CurrencyFormatter::formatHtml($pledged) : '<span class="text-body-secondary">-</span>' ?>
                                 </td>
                                 <td class="text-end"
                                     data-order="<?= InputUtils::escapeAttribute($paid) ?>">
@@ -218,7 +228,7 @@ $statusClasses = [
                                 </td>
                                 <td class="text-end <?= $statusClass ?>"
                                     data-order="<?= InputUtils::escapeAttribute($remaining ?? 0) ?>">
-                                    <?= $remaining !== null ? CurrencyFormatter::formatHtml($remaining) : '<span class="text-body-secondary">—</span>' ?>
+                                    <?= $remaining !== null ? CurrencyFormatter::formatHtml($remaining) : '<span class="text-body-secondary">-</span>' ?>
                                 </td>
                                 <td class="text-end <?= $statusClass ?>"
                                     data-order="<?= InputUtils::escapeAttribute($percent) ?>">

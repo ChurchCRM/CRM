@@ -63,6 +63,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 <thead class="bg-surface-secondary">
                                     <tr>
                                         <th><?= gettext('Family Name') ?></th>
+                                        <th><?= gettext('Pledged By') ?></th>
                                         <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                                         <th><?= gettext('Envelope') ?></th>
                                         <?php endif; ?>
@@ -72,19 +73,26 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                 </thead>
                                 <tbody>
                                     <?php foreach ($familyPledges as $family): ?>
-                                        <?php $isFirstRow = true; ?>
                                         <?php foreach ($family['pledges'] as $pledge): ?>
                                             <tr>
-                                                <?php if ($isFirstRow): ?>
-                                                    <td rowspan="<?= count($family['pledges']) ?>" class="align-middle fw-bold">
+                                                <td class="align-middle fw-bold">
+                                                    <a href="<?= SystemURLs::getRootPath() ?>/people/family/<?= (int) $family['family_id'] ?>">
                                                         <?= InputUtils::escapeHTML($family['family_name']) ?>
-                                                    </td>
-                                                    <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
-                                                    <td rowspan="<?= count($family['pledges']) ?>" class="align-middle">
-                                                        <?= InputUtils::escapeHTML($family['envelope'] ?? '') ?>
-                                                    </td>
+                                                    </a>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <?php if (!empty($pledge['person_id']) && !empty($pledge['person_name'])): ?>
+                                                        <a href="<?= SystemURLs::getRootPath() ?>/people/person/<?= (int) $pledge['person_id'] ?>">
+                                                            <?= InputUtils::escapeHTML($pledge['person_name']) ?>
+                                                        </a>
+                                                    <?php else: ?>
+                                                        <span class="badge bg-secondary-lt text-secondary"><?= gettext('Entire Family') ?></span>
                                                     <?php endif; ?>
-                                                    <?php $isFirstRow = false; ?>
+                                                </td>
+                                                <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
+                                                <td class="align-middle text-body-secondary small">
+                                                    <?= InputUtils::escapeHTML($family['envelope'] ?? '') ?>
+                                                </td>
                                                 <?php endif; ?>
                                                 <td><?= InputUtils::escapeHTML($pledge['fund_name']) ?></td>
                                                 <td class="text-end">

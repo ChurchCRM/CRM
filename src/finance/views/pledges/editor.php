@@ -87,13 +87,31 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
             <div class="row g-3">
 
                 <!-- Family Selector -->
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <label class="form-label" for="FamilyName"><?= gettext('Family') ?></label>
                     <input type="hidden" id="FamilyID" name="FamilyID" value="<?= (int) $familyId ?>">
                     <select class="form-select" id="FamilyName" name="FamilyName" placeholder="<?= InputUtils::escapeAttribute($familySearchHint) ?>">
                         <?php if ($familyId && $familyName): ?>
                             <option value="<?= (int) $familyId ?>" selected><?= InputUtils::escapeHTML($familyName) ?></option>
                         <?php endif; ?>
+                    </select>
+                </div>
+
+                <!-- Individual Person Selector -->
+                <div class="col-lg-4">
+                    <label class="form-label" for="PersonID"><?= $isPledge ? gettext('Pledged By (Individual)') : gettext('Paid By (Individual)') ?></label>
+                    <select class="form-select" id="PersonID" name="PersonID">
+                        <option value="0"><?= gettext('Entire Family / Unassigned') ?></option>
+                        <?php
+                        if ($familyId) {
+                            $familyMembers = \ChurchCRM\Service\PersonPledgeService::getFamilyMembers((int)$familyId);
+                            $selectedPersonId = $personId ?? 0;
+                            foreach ($familyMembers as $perId => $perName) {
+                                $selected = ($perId == $selectedPersonId) ? 'selected' : '';
+                                echo '<option value="' . (int)$perId . '" ' . $selected . '>' . InputUtils::escapeHTML($perName) . '</option>';
+                            }
+                        }
+                        ?>
                     </select>
                 </div>
 
@@ -372,20 +390,16 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
 
     // ---- Family TomSelect ----
     const familyNameEl = document.getElementById('FamilyName');
-    let latestQuery = '';
     if (familyNameEl && !familyNameEl.tomselect) {
         new TomSelect(familyNameEl, {
             valueField: 'id',
             labelField: 'text',
-            searchField: [],
+            searchField: 'text',
             load: function (query, callback) {
-                this.clearOptions();
-                latestQuery = query;
                 if (query.length < 2 && !/^\d+$/.test(query)) return callback();
                 fetch(ROOT + '/api/families/search/' + encodeURIComponent(query))
                     .then(function (res) { return res.json(); })
                     .then(function (data) {
-                        if (query !== latestQuery) return callback();
                         var families = data && data.Families ? data.Families : [];
                         callback(families.map(function (obj) {
                             return { id: String(obj.Id), text: obj.displayName };
@@ -395,6 +409,33 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
             },
             onChange: function (value) {
                 document.getElementById('FamilyID').value = value;
+                // Refresh the PersonID dropdown with new family members
+                var personSelect = document.getElementById('PersonID');
+                if (personSelect && value) {
+                    fetch(ROOT + '/api/payments/family/' + encodeURIComponent(value) + '/members')
+                        .then(function (res) { return res.json(); })
+                        .then(function (data) {
+                            personSelect.innerHTML = '<option value="0"><?= gettext("Entire Family / Unassigned") ?></option>';
+                            var memberMap = (data && data.members) ? data.members : data;
+                            if (memberMap && typeof memberMap === 'object') {
+                                Object.keys(memberMap).forEach(function (id) {
+                                    if (id === 'members') return;
+                                    var opt = document.createElement('option');
+                                    opt.value = id;
+                                    var val = memberMap[id];
+                                    opt.textContent = (typeof val === 'object' && val !== null)
+                                        ? (val.name || val.text || JSON.stringify(val))
+                                        : val;
+                                    personSelect.appendChild(opt);
+                                });
+                            }
+                        })
+                        .catch(function () {
+                            personSelect.innerHTML = '<option value="0"><?= gettext("Entire Family / Unassigned") ?></option>';
+                        });
+                } else if (personSelect) {
+                    personSelect.innerHTML = '<option value="0"><?= gettext("Entire Family / Unassigned") ?></option>';
+                }
             }
         });
         if (!GROUP_KEY && !familyNameEl.value) {
@@ -544,8 +585,12 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
             return null;
         }
 
+        const personEl = document.getElementById('PersonID');
+        const personId = personEl ? parseInt(personEl.value, 10) || 0 : 0;
+
         return {
             FamilyID:  familyId || null,
+            PersonId:  personId,
             Date:      date,
             FYID:      fyid,
             type:      PLEDGE_TYPE,

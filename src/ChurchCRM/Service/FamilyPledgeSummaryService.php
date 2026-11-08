@@ -44,6 +44,17 @@ class FamilyPledgeSummaryService
         }
         $payments = $paymentsQuery->find();
 
+        // Batch lookup individual person attribution for all pledges and payments
+        $allRecordIds = [];
+        foreach ($pledges as $p) {
+            $allRecordIds[] = (int) $p->getId();
+        }
+        foreach ($payments as $p) {
+            $allRecordIds[] = (int) $p->getId();
+        }
+        $personMap = PersonPledgeService::getPersonsForPledges($allRecordIds);
+        $personNames = PersonPledgeService::getPersonNames(array_values($personMap));
+
         // Per-fund record counters (to match legacy PledgeSummary report)
         $fundPledgeCounts = [];
         $fundPaymentCounts = [];
@@ -52,10 +63,10 @@ class FamilyPledgeSummaryService
         $familyInfo = []; // famId => ['family_id', 'family_name', 'envelope']
         $fundInfo = [];   // fundId => fund_name
 
-        // Organize payments by family and fund for lookup
+        // Organize payments by family, fund, and person for lookup
         $familyPayments = [];
         foreach ($payments as $payment) {
-            $famId = $payment->getFamId();
+            $famId = (int) $payment->getFamId();
             $rawFundId = $payment->getFundId();
             
             $fund = $payment->getDonationFund();
@@ -65,15 +76,24 @@ class FamilyPledgeSummaryService
             
             $fundId = $fund ? (int) $fund->getId() : ($rawFundId ?: -1);
             $fundName = $fund ? $fund->getName() : gettext('Other');
+            $payPersonId = $personMap[(int) $payment->getId()] ?? 0;
+            $payAmount = (float) $payment->getAmount();
             
             if (!isset($familyPayments[$famId])) {
                 $familyPayments[$famId] = [];
             }
             if (!isset($familyPayments[$famId][$fundId])) {
-                $familyPayments[$famId][$fundId] = 0.0;
+                $familyPayments[$famId][$fundId] = [
+                    'total' => 0.0,
+                    'by_person' => [],
+                ];
             }
             
-            $familyPayments[$famId][$fundId] += (float) $payment->getAmount();
+            $familyPayments[$famId][$fundId]['total'] += $payAmount;
+            if (!isset($familyPayments[$famId][$fundId]['by_person'][$payPersonId])) {
+                $familyPayments[$famId][$fundId]['by_person'][$payPersonId] = 0.0;
+            }
+            $familyPayments[$famId][$fundId]['by_person'][$payPersonId] += $payAmount;
 
             // Save family/fund metadata so we can backfill payment-only rows later
             if (!isset($familyInfo[$famId])) {
@@ -97,12 +117,12 @@ class FamilyPledgeSummaryService
             $fundPaymentCounts[$fundId]++;
         }
 
-        // Organize data by family and aggregate by fund
+        // Organize data by family and aggregate by fund and individual person
         $familiesPledges = [];
         
         foreach ($pledges as $pledge) {
             $family = $pledge->getFamily();
-            $famId = $family->getId();
+            $famId = (int) $family->getId();
             $rawFundId = $pledge->getFundId();
             
             // Try to get the fund - use direct query if join didn't work
@@ -120,6 +140,10 @@ class FamilyPledgeSummaryService
                 $fundId = $rawFundId ?: -1;
                 $fundName = gettext('Other');
             }
+
+            $personId = $personMap[(int) $pledge->getId()] ?? 0;
+            $personName = $personId > 0 ? ($personNames[$personId] ?? '') : '';
+            $itemKey = $fundId . ':' . $personId;
             
             // Initialize family array if not exists
             if (!isset($familiesPledges[$famId])) {
@@ -131,16 +155,14 @@ class FamilyPledgeSummaryService
                 ];
             }
             
-            // Aggregate pledges by fund (sum amounts for same family-fund combination)
-            if (!isset($familiesPledges[$famId]['pledges'][$fundId])) {
-                // Get payment amount for this family/fund combination
-                $paymentAmount = isset($familyPayments[$famId][$fundId]) ? $familyPayments[$famId][$fundId] : 0.0;
-                
-                $familiesPledges[$famId]['pledges'][$fundId] = [
+            if (!isset($familiesPledges[$famId]['pledges'][$itemKey])) {
+                $familiesPledges[$famId]['pledges'][$itemKey] = [
                     'fund_id' => $fundId,
                     'fund_name' => $fundName,
+                    'person_id' => $personId,
+                    'person_name' => $personName,
                     'pledge_amount' => 0.0,
-                    'payment_amount' => $paymentAmount,
+                    'payment_amount' => 0.0,
                     'group_key' => $pledge->getGroupKey(),
                     'pledge_type' => $pledge->getPledgeOrPayment(),
                 ];
@@ -152,25 +174,83 @@ class FamilyPledgeSummaryService
             }
             $fundPledgeCounts[$fundId]++;
 
-            // Add this pledge amount to the fund total
+            // Add this pledge amount to the item total
             $pledgeAmount = (float) $pledge->getAmount();
-            $familiesPledges[$famId]['pledges'][$fundId]['pledge_amount'] += $pledgeAmount;
+            $familiesPledges[$famId]['pledges'][$itemKey]['pledge_amount'] += $pledgeAmount;
         }
 
-        // Backfill payment-only entries: payments for a family-fund pair that has
-        // no matching pledge (e.g. ad-hoc / one-time donations). Without this step
-        // those amounts would be excluded from fund totals entirely.
-        foreach ($familyPayments as $famId => $fundPayments) {
-            foreach ($fundPayments as $fundId => $paymentAmount) {
-                // Skip if the pledge loop already created an entry for this pair
-                if (isset($familiesPledges[$famId]['pledges'][$fundId])) {
+        // Reconcile payments with pledges for each family and fund
+        foreach ($familiesPledges as $famId => &$famData) {
+            $fundToPledgeKeys = [];
+            foreach ($famData['pledges'] as $k => $item) {
+                $fundToPledgeKeys[$item['fund_id']][] = $k;
+            }
+
+            foreach ($fundToPledgeKeys as $fundId => $pKeys) {
+                $fundPayData = $familyPayments[$famId][$fundId] ?? null;
+                if (!$fundPayData) {
                     continue;
                 }
 
-                // Ensure the family container exists (payment-only family has no pledge row)
+                if (count($pKeys) === 1) {
+                    // Single pledge for this fund: all payments apply to it
+                    $k = $pKeys[0];
+                    $famData['pledges'][$k]['payment_amount'] = $fundPayData['total'];
+                } else {
+                    // Multiple pledges for the same fund in this family:
+                    // Allocate specifically attributed payments first
+                    $unallocatedPay = $fundPayData['total'];
+                    $unassignedPledgeKey = null;
+
+                    foreach ($pKeys as $k) {
+                        $pid = $famData['pledges'][$k]['person_id'];
+                        if ($pid > 0 && isset($fundPayData['by_person'][$pid])) {
+                            $attributedPay = $fundPayData['by_person'][$pid];
+                            $famData['pledges'][$k]['payment_amount'] = $attributedPay;
+                            $unallocatedPay -= $attributedPay;
+                        } elseif ($pid === 0) {
+                            $unassignedPledgeKey = $k;
+                        }
+                    }
+
+                    if ($unallocatedPay > 0 && $unassignedPledgeKey !== null) {
+                        $famData['pledges'][$unassignedPledgeKey]['payment_amount'] += $unallocatedPay;
+                        $unallocatedPay = 0.0;
+                    } elseif ($unallocatedPay > 0) {
+                        $sumPledged = array_sum(array_map(static fn($key) => $famData['pledges'][$key]['pledge_amount'], $pKeys));
+                        if ($sumPledged > 0) {
+                            foreach ($pKeys as $k) {
+                                $ratio = $famData['pledges'][$k]['pledge_amount'] / $sumPledged;
+                                $famData['pledges'][$k]['payment_amount'] += $unallocatedPay * $ratio;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        unset($famData);
+
+        // Backfill payment-only entries: payments for a family-fund pair that has
+        // no matching pledge (e.g. ad-hoc or one-time donations).
+        foreach ($familyPayments as $famId => $fundPayments) {
+            foreach ($fundPayments as $fundId => $fundPayData) {
+                $hasPledgeForFund = false;
+                if (isset($familiesPledges[$famId])) {
+                    foreach ($familiesPledges[$famId]['pledges'] as $plg) {
+                        if ($plg['fund_id'] === $fundId) {
+                            $hasPledgeForFund = true;
+                            break;
+                        }
+                    }
+                }
+                if ($hasPledgeForFund) {
+                    continue;
+                }
+
+                // Ensure the family container exists
                 if (!isset($familiesPledges[$famId])) {
                     if (!isset($familyInfo[$famId])) {
-                        continue; // No metadata available — cannot reconstruct; skip
+                        continue; // No metadata available, cannot reconstruct; skip
                     }
                     $info = $familyInfo[$famId];
                     $familiesPledges[$famId] = [
@@ -181,22 +261,34 @@ class FamilyPledgeSummaryService
                     ];
                 }
 
-                $familiesPledges[$famId]['pledges'][$fundId] = [
-                    'fund_id' => $fundId,
-                    'fund_name' => $fundInfo[$fundId] ?? gettext('Other'),
-                    'pledge_amount' => 0.0,
-                    'payment_amount' => $paymentAmount,
-                    'group_key' => null,
-                    'pledge_type' => 'Payment',
-                ];
+                foreach ($fundPayData['by_person'] as $perId => $payAmount) {
+                    if ($payAmount <= 0.0) {
+                        continue;
+                    }
+                    $itemKey = $fundId . ':' . $perId;
+                    $familiesPledges[$famId]['pledges'][$itemKey] = [
+                        'fund_id' => $fundId,
+                        'fund_name' => $fundInfo[$fundId] ?? gettext('Other'),
+                        'person_id' => $perId,
+                        'person_name' => $perId > 0 ? ($personNames[$perId] ?? '') : '',
+                        'pledge_amount' => 0.0,
+                        'payment_amount' => $payAmount,
+                        'group_key' => null,
+                        'pledge_type' => 'Payment',
+                    ];
+                }
             }
         }
 
-        // Convert pledges associative array to indexed array and sort by fund name
+        // Convert pledges associative array to indexed array and sort by fund name, then person name
         foreach ($familiesPledges as &$family) {
             $family['pledges'] = array_values($family['pledges']);
             usort($family['pledges'], function ($a, $b) {
-                return strcasecmp($a['fund_name'], $b['fund_name']);
+                $fundCmp = strcasecmp($a['fund_name'], $b['fund_name']);
+                if ($fundCmp !== 0) {
+                    return $fundCmp;
+                }
+                return strcasecmp($a['person_name'] ?? '', $b['person_name'] ?? '');
             });
         }
         unset($family); // Break reference

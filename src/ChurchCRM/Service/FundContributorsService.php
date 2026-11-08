@@ -83,21 +83,42 @@ class FundContributorsService
         }
         $payments = $paymentsQuery->find();
 
-        // Index payments by family ID
-        $paymentsByFamily  = [];  // famId => float
-        $paymentGroupKeys  = [];  // famId => string (first payment group key)
+        // Batch lookup individual person attribution for all pledges and payments
+        $allRecordIds = [];
+        foreach ($pledges as $p) {
+            $allRecordIds[] = (int) $p->getId();
+        }
+        foreach ($payments as $p) {
+            $allRecordIds[] = (int) $p->getId();
+        }
+        $personMap = PersonPledgeService::getPersonsForPledges($allRecordIds);
+        $personNames = PersonPledgeService::getPersonNames(array_values($personMap));
+
+        // Index payments by family ID and person ID
+        $paymentsByFamily  = [];  // famId => ['total' => float, 'by_person' => [personId => float]]
+        $paymentGroupKeys  = [];  // "$famId:$personId" => string
         $paymentFamilyInfo = [];  // famId => ['family_id', 'family_name', 'envelope']
 
         foreach ($payments as $payment) {
             $famId = (int) $payment->getFamId();
+            $payPersonId = $personMap[(int) $payment->getId()] ?? 0;
+            $payAmt = (float) $payment->getAmount();
+            $key = $famId . ':' . $payPersonId;
 
             if (!isset($paymentsByFamily[$famId])) {
-                $paymentsByFamily[$famId] = 0.0;
+                $paymentsByFamily[$famId] = [
+                    'total' => 0.0,
+                    'by_person' => [],
+                ];
             }
-            $paymentsByFamily[$famId] += (float) $payment->getAmount();
+            $paymentsByFamily[$famId]['total'] += $payAmt;
+            if (!isset($paymentsByFamily[$famId]['by_person'][$payPersonId])) {
+                $paymentsByFamily[$famId]['by_person'][$payPersonId] = 0.0;
+            }
+            $paymentsByFamily[$famId]['by_person'][$payPersonId] += $payAmt;
 
-            if (!isset($paymentGroupKeys[$famId])) {
-                $paymentGroupKeys[$famId] = (string) $payment->getGroupKey();
+            if (!isset($paymentGroupKeys[$key])) {
+                $paymentGroupKeys[$key] = (string) $payment->getGroupKey();
             }
 
             if (!isset($paymentFamilyInfo[$famId])) {
@@ -112,8 +133,8 @@ class FundContributorsService
             }
         }
 
-        // Build per-family contributor rows from pledges
-        $contributors = [];  // famId => row
+        // Build contributor rows from pledges
+        $contributors = [];  // "$famId:$personId" => row
 
         foreach ($pledges as $pledge) {
             $family = $pledge->getFamily();
@@ -121,55 +142,105 @@ class FundContributorsService
                 continue;
             }
 
-            $famId       = (int) $family->getId();
+            $famId = (int) $family->getId();
+            $pledgePersonId = $personMap[(int) $pledge->getId()] ?? 0;
+            $pledgePersonName = $pledgePersonId > 0 ? ($personNames[$pledgePersonId] ?? '') : '';
             $pledgeAmount = (float) $pledge->getAmount();
+            $key = $famId . ':' . $pledgePersonId;
 
-            if (!isset($contributors[$famId])) {
-                $contributors[$famId] = [
+            if (!isset($contributors[$key])) {
+                $contributors[$key] = [
                     'family_id'   => $famId,
                     'family_name' => (string) $family->getName(),
+                    'person_id'   => $pledgePersonId,
+                    'person_name' => $pledgePersonName,
                     'envelope'    => (string) ($family->getEnvelope() ?? ''),
                     'pledged'     => 0.0,
-                    'paid'        => $paymentsByFamily[$famId] ?? 0.0,
-                    // Known limitation: only the first pledge record's group_key is
-                    // stored. Families with multiple pledge records for the same
-                    // fund/FY will have their pledged amounts aggregated correctly,
-                    // but the 'View Pledge' action links to the first record only.
+                    'paid'        => 0.0,
                     'group_key'   => (string) $pledge->getGroupKey(),
                 ];
             }
 
-            $contributors[$famId]['pledged'] += $pledgeAmount;
+            $contributors[$key]['pledged'] += $pledgeAmount;
         }
 
-        // Backfill payment-only families (paid but no pledge recorded)
-        foreach ($paymentsByFamily as $famId => $paidAmount) {
-            if (isset($contributors[$famId])) {
-                continue; // already created from pledges above
+        // Reconcile payments with pledges
+        $familyPledgeKeys = [];
+        foreach ($contributors as $k => $c) {
+            $familyPledgeKeys[$c['family_id']][] = $k;
+        }
+
+        foreach ($familyPledgeKeys as $famId => $pKeys) {
+            $fundPayData = $paymentsByFamily[$famId] ?? null;
+            if (!$fundPayData) {
+                continue;
             }
 
+            if (count($pKeys) === 1) {
+                $k = $pKeys[0];
+                $contributors[$k]['paid'] = $fundPayData['total'];
+            } else {
+                $unallocatedPay = $fundPayData['total'];
+                $unassignedKey = null;
+
+                foreach ($pKeys as $k) {
+                    $pid = $contributors[$k]['person_id'];
+                    if ($pid > 0 && isset($fundPayData['by_person'][$pid])) {
+                        $pAmt = $fundPayData['by_person'][$pid];
+                        $contributors[$k]['paid'] = $pAmt;
+                        $unallocatedPay -= $pAmt;
+                    } elseif ($pid === 0) {
+                        $unassignedKey = $k;
+                    }
+                }
+
+                if ($unallocatedPay > 0 && $unassignedKey !== null) {
+                    $contributors[$unassignedKey]['paid'] += $unallocatedPay;
+                    $unallocatedPay = 0.0;
+                } elseif ($unallocatedPay > 0) {
+                    $sumPledged = array_sum(array_map(static fn($key) => $contributors[$key]['pledged'], $pKeys));
+                    if ($sumPledged > 0) {
+                        foreach ($pKeys as $k) {
+                            $ratio = $contributors[$k]['pledged'] / $sumPledged;
+                            $contributors[$k]['paid'] += $unallocatedPay * $ratio;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Backfill payment-only families and persons (paid but no pledge recorded)
+        foreach ($paymentsByFamily as $famId => $fundPayData) {
+            if (isset($familyPledgeKeys[$famId])) {
+                continue;
+            }
             if (!isset($paymentFamilyInfo[$famId])) {
-                continue; // no family metadata available, skip
+                continue;
             }
 
             $info = $paymentFamilyInfo[$famId];
-            $contributors[$famId] = [
-                'family_id'   => $info['family_id'],
-                'family_name' => $info['family_name'],
-                'envelope'    => $info['envelope'],
-                'pledged'     => 0.0,
-                'paid'        => $paidAmount,
-                'group_key'   => $paymentGroupKeys[$famId] ?? null,
-            ];
+            foreach ($fundPayData['by_person'] as $perId => $paidAmount) {
+                if ($paidAmount <= 0.0) {
+                    continue;
+                }
+                $key = $famId . ':' . $perId;
+                $contributors[$key] = [
+                    'family_id'   => $info['family_id'],
+                    'family_name' => $info['family_name'],
+                    'person_id'   => $perId,
+                    'person_name' => $perId > 0 ? ($personNames[$perId] ?? '') : '',
+                    'envelope'    => $info['envelope'],
+                    'pledged'     => 0.0,
+                    'paid'        => $paidAmount,
+                    'group_key'   => $paymentGroupKeys[$key] ?? null,
+                ];
+            }
         }
 
         // Compute derived columns and status, then flatten to an indexed array
         $totalPledged         = 0.0;
         $totalPaid            = 0.0;
         $totalRemaining       = 0.0;
-        // Accumulate each family's contribution capped at their pledge so that
-        // overpayment in one family never masks underpayment in another and
-        // the aggregate % stays internally consistent with $totalRemaining.
         $pledgeDeficitCovered = 0.0;
 
         foreach ($contributors as &$row) {
@@ -177,14 +248,12 @@ class FundContributorsService
             $paid    = $row['paid'];
 
             if ($pledged <= 0.0) {
-                // Payment-only contributor — no pledge to track against
+                // Payment-only contributor: no pledge to track against
                 $remaining = null;
                 $percent   = 100.0;
                 $status    = 'payment-only';
             } else {
-                // Cap remaining at 0; overpayment is communicated by 'complete' status
                 $remaining = max(0.0, $pledged - $paid);
-                // Cap per-row % at 100% so it is consistent with remaining = 0
                 $percent   = min(100.0, ($paid / $pledged) * 100.0);
                 if ($percent >= 100.0) {
                     $status = 'complete';
@@ -195,8 +264,6 @@ class FundContributorsService
                 } else {
                     $status = 'critical';
                 }
-                // Each family contributes at most their pledged amount to the
-                // aggregate coverage so overpayers don't hide underpayers.
                 $pledgeDeficitCovered += min($paid, $pledged);
             }
 
@@ -210,9 +277,13 @@ class FundContributorsService
         }
         unset($row); // break reference
 
-        // Sort by family name
+        // Sort by family name, then person name
         usort($contributors, static function (array $a, array $b): int {
-            return strcasecmp($a['family_name'], $b['family_name']);
+            $famCmp = strcasecmp($a['family_name'], $b['family_name']);
+            if ($famCmp !== 0) {
+                return $famCmp;
+            }
+            return strcasecmp($a['person_name'] ?? '', $b['person_name'] ?? '');
         });
 
         $contributorCount = count($contributors);

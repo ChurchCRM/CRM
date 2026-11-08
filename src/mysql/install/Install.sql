@@ -1665,4 +1665,15 @@ CREATE TABLE `login_as_person_action_lpa` (
       REFERENCES `login_as_person_session_lps` (`lps_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Table structure for table `person_pledge_map`
+--
+
+CREATE TABLE IF NOT EXISTS `person_pledge_map` (
+  `ppm_plg_id` mediumint(9) NOT NULL,
+  `ppm_per_id` mediumint(9) NOT NULL,
+  PRIMARY KEY (`ppm_plg_id`),
+  KEY `idx_person` (`ppm_per_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 update version_ver set ver_update_end = now();
