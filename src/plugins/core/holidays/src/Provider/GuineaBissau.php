@@ -179,4 +179,15 @@ class GuineaBissau extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for GuineaBissau public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://presidencia.gw/',
+        ];
+    }
 }

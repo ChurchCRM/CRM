@@ -106,10 +106,12 @@ class Tunisia extends AbstractProvider
             Holiday::TYPE_OFFICIAL
         ));
 
+        // Revolution Day: observed Jan 14 from 2012-2021; moved to Dec 17 by Presidential Decree 2021-223
+        $revolutionDate = $this->year >= 2022 ? "{$this->year}-12-17" : "{$this->year}-01-14";
         $this->addHoliday(new Holiday(
             'revolutionYouthDay',
             ['en' => "Revolution and Youth Day"],
-            new DateTime("{$this->year}-01-14", $tz),
+            new DateTime($revolutionDate, $tz),
             $this->locale,
             Holiday::TYPE_OFFICIAL
         ));
@@ -254,4 +256,15 @@ class Tunisia extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Tunisia public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.pm.gov.tn/',
+        ];
+    }
 }

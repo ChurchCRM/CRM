@@ -108,7 +108,7 @@ class Zambia extends AbstractProvider
         $this->addHoliday(new Holiday(
             'unityDay',
             ['en' => "Unity Day"],
-            new DateTime("first Tuesday of July {$this->year}", $tz),
+            (new DateTime("first Monday of July {$this->year}", $tz))->modify('+1 day'),
             $this->locale,
             Holiday::TYPE_OFFICIAL
         ));
@@ -123,4 +123,15 @@ class Zambia extends AbstractProvider
 
     }
 
+    /**
+     * Get the sources used for Zambia public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.parliament.gov.zm/',
+        ];
+    }
 }

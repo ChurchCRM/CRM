@@ -211,4 +211,15 @@ class Chad extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Chad public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://presidence.td/',
+        ];
+    }
 }

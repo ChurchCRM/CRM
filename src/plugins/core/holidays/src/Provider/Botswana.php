@@ -109,11 +109,22 @@ class Botswana extends AbstractProvider
         $this->addHoliday(new Holiday(
             'presidentsDayHoliday',
             ['en' => "President's Day Holiday"],
-            new DateTime("third Tuesday of July {$this->year}", $tz),
+            (new DateTime("third Monday of July {$this->year}", $tz))->modify('+1 day'),
             $this->locale,
             Holiday::TYPE_OFFICIAL
         ));
 
     }
 
+    /**
+     * Get the sources used for Botswana public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.gov.bw/',
+        ];
+    }
 }

@@ -219,4 +219,15 @@ class Guinea extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Guinea public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://presidence.gov.gn/',
+        ];
+    }
 }

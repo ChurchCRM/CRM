@@ -108,4 +108,15 @@ class SaoTomeAndPrincipe extends AbstractProvider
 
     }
 
+    /**
+     * Get the sources used for SaoTomeAndPrincipe public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.presidencia.st/',
+        ];
+    }
 }

@@ -148,4 +148,15 @@ class Malawi extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Malawi public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.gov.mw/',
+        ];
+    }
 }

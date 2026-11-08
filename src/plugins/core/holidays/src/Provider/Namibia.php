@@ -68,6 +68,17 @@ class Namibia extends AbstractProvider
             Holiday::TYPE_OFFICIAL
         ));
 
+        // Genocide Remembrance Day: observed annually starting May 28, 2025
+        if ($this->year >= 2025) {
+            $this->addHoliday(new Holiday(
+                'genocideRemembranceDay',
+                ['en' => "Genocide Remembrance Day"],
+                new DateTime("{$this->year}-05-28", $tz),
+                $this->locale,
+                Holiday::TYPE_OFFICIAL
+            ));
+        }
+
         $this->addHoliday(new Holiday(
             'heroesDay',
             ['en' => "Heroes' Day"],
@@ -107,4 +118,15 @@ class Namibia extends AbstractProvider
 
     }
 
+    /**
+     * Get the sources used for Namibia public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://mhaiss.gov.na/',
+        ];
+    }
 }

@@ -204,4 +204,15 @@ class Nigeria extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Nigeria public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://interior.gov.ng/',
+        ];
+    }
 }

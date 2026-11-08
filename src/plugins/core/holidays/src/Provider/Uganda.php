@@ -196,4 +196,15 @@ class Uganda extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Uganda public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.mglsd.go.ug/',
+        ];
+    }
 }

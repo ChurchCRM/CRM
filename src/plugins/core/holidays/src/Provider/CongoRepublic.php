@@ -90,4 +90,15 @@ class CongoRepublic extends AbstractProvider
 
     }
 
+    /**
+     * Get the sources used for CongoRepublic public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://gouvernement.cg/',
+        ];
+    }
 }

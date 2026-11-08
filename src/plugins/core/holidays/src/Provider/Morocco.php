@@ -270,4 +270,15 @@ class Morocco extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Morocco public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.maroc.ma/',
+        ];
+    }
 }

@@ -108,11 +108,22 @@ class Zimbabwe extends AbstractProvider
         $this->addHoliday(new Holiday(
             'defenceForcesDay',
             ['en' => "Defence Forces Day"],
-            new DateTime("second Tuesday of August {$this->year}", $tz),
+            (new DateTime("second Monday of August {$this->year}", $tz))->modify('+1 day'),
             $this->locale,
             Holiday::TYPE_OFFICIAL
         ));
 
     }
 
+    /**
+     * Get the sources used for Zimbabwe public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.parlzim.gov.zw/',
+        ];
+    }
 }

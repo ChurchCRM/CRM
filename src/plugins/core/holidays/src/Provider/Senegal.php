@@ -245,4 +245,15 @@ class Senegal extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Senegal public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.sec.gouv.sn/',
+        ];
+    }
 }

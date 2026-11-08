@@ -251,4 +251,15 @@ class Egypt extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Egypt public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.presidency.eg/',
+        ];
+    }
 }

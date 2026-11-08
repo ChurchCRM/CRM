@@ -99,4 +99,15 @@ class Eswatini extends AbstractProvider
 
     }
 
+    /**
+     * Get the sources used for Eswatini public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.gov.sz/',
+        ];
+    }
 }

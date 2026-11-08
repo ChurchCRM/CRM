@@ -363,7 +363,8 @@ describe("Holiday Calendar Plugin API", () => {
                     expect(fcResp.body).to.be.an("array").and.have.length.greaterThan(0);
                     const event = fcResp.body[0];
                     expect(event).to.have.property("title");
-                    expect(event.extendedProps).to.have.property("country", "Nigeria");
+                    expect(event).to.have.property("start");
+                    expect(event.extendedProps).to.have.property("calendarName").and.include("Nigeria");
                 });
             });
         });

@@ -211,4 +211,15 @@ class Mali extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Mali public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://koulouba.ml/',
+        ];
+    }
 }

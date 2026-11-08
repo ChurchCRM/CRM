@@ -108,9 +108,31 @@ class Angola extends AbstractProvider
             Holiday::TYPE_OFFICIAL
         ));
 
-        // Movable Christian Holidays
+        // Movable Christian & Traditional Holidays
         $this->addHoliday($this->goodFriday($this->year, $this->timezone, $this->locale));
+
+        // Carnival Day: Shrove Tuesday (Mardi Gras), 47 days before Easter Sunday
+        $easter = $this->calculateEaster($this->year, $this->timezone);
+        $carnivalDate = (clone $easter)->sub(new \DateInterval('P47D'));
+        $this->addHoliday(new Holiday(
+            'carnivalDay',
+            ['en' => 'Carnival Day', 'pt' => 'Dia de Carnaval'],
+            $carnivalDate,
+            $this->locale,
+            Holiday::TYPE_OFFICIAL
+        ));
 
     }
 
+    /**
+     * Get the sources used for Angola public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://governo.gov.ao/',
+        ];
+    }
 }

@@ -222,4 +222,15 @@ class Mauritania extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Mauritania public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://ami.mr/',
+        ];
+    }
 }

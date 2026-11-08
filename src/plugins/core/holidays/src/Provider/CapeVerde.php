@@ -105,4 +105,15 @@ class CapeVerde extends AbstractProvider
 
     }
 
+    /**
+     * Get the sources used for CapeVerde public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://governo.cv/',
+        ];
+    }
 }

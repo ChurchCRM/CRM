@@ -106,29 +106,41 @@ class Ghana extends AbstractProvider
             Holiday::TYPE_OFFICIAL
         ));
 
+        // Republic Day: commemorative from 2019-2024; statutory official from 2025 (Act 1142)
         $this->addHoliday(new Holiday(
             'republicDay',
             ['en' => 'Republic Day'],
             new DateTime("{$this->year}-07-01", $tz),
             $this->locale,
-            Holiday::TYPE_OFFICIAL
+            $this->year >= 2025 ? Holiday::TYPE_OFFICIAL : Holiday::TYPE_OTHER
         ));
 
-        $this->addHoliday(new Holiday(
-            'foundersDay',
-            ['en' => "Founders' Day"],
-            new DateTime("{$this->year}-08-04", $tz),
-            $this->locale,
-            Holiday::TYPE_OFFICIAL
-        ));
+        // Founders' Day / Founder's Day: August 4 pre-2025; September 21 post-2025 under Act 1142
+        if ($this->year < 2025) {
+            $this->addHoliday(new Holiday(
+                'foundersDay',
+                ['en' => "Founders' Day"],
+                new DateTime("{$this->year}-08-04", $tz),
+                $this->locale,
+                Holiday::TYPE_OFFICIAL
+            ));
 
-        $this->addHoliday(new Holiday(
-            'kwameNkrumahDay',
-            ['en' => 'Kwame Nkrumah Memorial Day'],
-            new DateTime("{$this->year}-09-21", $tz),
-            $this->locale,
-            Holiday::TYPE_OFFICIAL
-        ));
+            $this->addHoliday(new Holiday(
+                'kwameNkrumahDay',
+                ['en' => 'Kwame Nkrumah Memorial Day'],
+                new DateTime("{$this->year}-09-21", $tz),
+                $this->locale,
+                Holiday::TYPE_OFFICIAL
+            ));
+        } else {
+            $this->addHoliday(new Holiday(
+                'foundersDay',
+                ['en' => "Founder's Day (Kwame Nkrumah Memorial Day)"],
+                new DateTime("{$this->year}-09-21", $tz),
+                $this->locale,
+                Holiday::TYPE_OFFICIAL
+            ));
+        }
 
         $this->addHoliday(new Holiday(
             'farmersDay',

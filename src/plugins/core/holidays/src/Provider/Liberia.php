@@ -117,4 +117,15 @@ class Liberia extends AbstractProvider
 
     }
 
+    /**
+     * Get the sources used for Liberia public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.emansion.gov.lr/',
+        ];
+    }
 }

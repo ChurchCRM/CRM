@@ -212,4 +212,15 @@ class Gambia extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Gambia public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://www.statehouse.gm/',
+        ];
+    }
 }

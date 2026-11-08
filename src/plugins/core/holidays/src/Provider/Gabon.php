@@ -180,4 +180,15 @@ class Gabon extends AbstractProvider
         ));
     }
 
+    /**
+     * Get the sources used for Gabon public holidays.
+     *
+     * @return array<string> List of official source URLs.
+     */
+    public function getSources(): array
+    {
+        return [
+            'https://presidence.ga/',
+        ];
+    }
 }
