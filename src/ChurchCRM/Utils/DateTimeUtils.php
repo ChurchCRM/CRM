@@ -217,6 +217,22 @@ class DateTimeUtils
         return json_encode(strtr(SystemConfig::getValue('sDateTimeFormat'), $phpToMoment));
     }
 
+    /** True when a date format names a day, a month and a year (escaped characters are literals), so a typed date maps to one calendar day. */
+    public static function isCompleteDateFormat(string $format): bool
+    {
+        $format = preg_replace('/\\\\./', '', $format);
+
+        return preg_match('/[dj]/', $format) && preg_match('/[mnMF]/', $format) && preg_match('/[Yy]/', $format);
+    }
+
+    /** The configured picker format, or Y-m-d when the setting cannot represent a full date. */
+    public static function datePickerFormat(): string
+    {
+        $format = (string) SystemConfig::getValue('sDatePickerFormat');
+
+        return self::isCompleteDateFormat($format) ? $format : 'Y-m-d';
+    }
+
     /**
      * Converts a date string to the system-configured date picker format.
      * Migrated from change_date_for_place_holder() in Functions.php.
@@ -227,7 +243,7 @@ class DateTimeUtils
         $timestamp = strtotime($string);
 
         if ($timestamp !== false) {
-            return date(SystemConfig::getValue("sDatePickerFormat"), $timestamp);
+            return date(self::datePickerFormat(), $timestamp);
         }
 
         return '';
@@ -247,7 +263,7 @@ class DateTimeUtils
     /** The system date-picker format in the notation of the JS datepicker widget and input placeholders (Y-m-d becomes yyyy-mm-dd). */
     public static function datePickerJsFormat(): string
     {
-        return strtr(SystemConfig::getValue('sDatePickerFormat'), [
+        return strtr(self::datePickerFormat(), [
             'd' => 'dd', 'j' => 'd', 'm' => 'mm', 'n' => 'm', 'Y' => 'yyyy', 'y' => 'yy', 'M' => 'M', 'F' => 'MM', 'D' => 'D', 'l' => 'DD',
         ]);
     }
@@ -260,7 +276,7 @@ class DateTimeUtils
     public static function parseDatePicker(string $input, bool $strict = false): ?string
     {
         $input = trim($input);
-        $format = SystemConfig::getValue('sDatePickerFormat');
+        $format = self::datePickerFormat();
         $date = \DateTime::createFromFormat('!' . $format, $input, self::getConfiguredTimezone());
         if ($date === false || (\DateTime::getLastErrors() ?: ['warning_count' => 0])['warning_count'] > 0 || (int) $date->format('Y') < 1000 || ($strict && $date->format($format) !== $input)) {
             return null;
@@ -285,7 +301,7 @@ class DateTimeUtils
             return $picked;
         }
 
-        $timestamp = str_contains($input, '/') ? false : strtotime($input);
+        $timestamp = str_contains($input, '/') || preg_match('/^\d{4}-\d{1,2}$/', $input) ? false : strtotime($input);
         if ($timestamp === false) {
             return '';
         }
@@ -404,7 +420,7 @@ class DateTimeUtils
     /** Puts two leading numbers in (month, day) order according to the system date-picker format. */
     private static function orderMonthDay(int $first, int $second): array
     {
-        $format = SystemConfig::getValue('sDatePickerFormat');
+        $format = (string) SystemConfig::getValue('sDatePickerFormat');
         $dayFirst = preg_match('/[dj]/', $format, $d, PREG_OFFSET_CAPTURE) && preg_match('/[mn]/', $format, $mo, PREG_OFFSET_CAPTURE) && $d[0][1] < $mo[0][1];
 
         return $dayFirst ? [$second, $first] : [$first, $second];

@@ -5727,7 +5727,6 @@
   "Added and qualified": "Ameongezwa na amehitimu",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "Chagua ratiba zijazwe mapema kiasi gani na vikumbusho vitumwe lini, na hakikisha kazi za chinichini zinaendelea.",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "Chagua mtu aliyeko tayari kwenye orodha ya kanisa. Anajiunga na wajitoleaji wa huduma hii na waratibu wake wanapewa barua pepe. Mratibu pekee ndiye anayeweza kumtoa mtu.",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "ChurchCRM ina njia mbili za kusimamia wajitoleaji. Moja tu ndiyo inayokusudiwa kutumika kwa wakati mmoja; mpangilio wa uzoefu wa Wajitoleaji huamua ipi kanisa hili linaona. Kubadilisha huficha au kuonyesha kurasa na viingilio vya menyu — kamwe haifuti data, kwa hiyo unaweza kurudi.",
   "Daily unfilled-position email time": "Wakati wa barua pepe ya kila siku ya nafasi zisizojazwa",
   "Donation funds, pledges and giving records": "Mifuko ya michango, ahadi na rekodi za utoaji",
   "Events and calendars, including the Member Portal calendars": "Matukio na kalenda, ikiwa ni pamoja na kalenda za Tovuti ya Washirika",
@@ -6618,6 +6617,9 @@
   "no head of household or spouse has an email address": "hakuna mkuu wa kaya wala mwenzi mwenye anwani ya barua pepe",
   "or": "au",
   "until %s": "hadi %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "Ombi limefanywa kwenye lango la wanachama kubadilisha anwani yako ya barua pepe katika %1$s kutoka %2$s hadi %3$s. Mabadiliko yanafanyika tu kiungo kilichotumwa kwenye anwani mpya kinapotumika.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Tumia kiungo hapa chini kukagua taarifa za familia yako. Kwenye ukurasa wa ukaguzi, chagua \"Thibitisha taarifa za familia\" kuthibitisha kuwa kila kitu ni sahihi, au tuma marekebisho kwa ofisi ya kanisa.",
+  "Review Family Information": "Kagua taarifa za familia",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": tukio {{count}} la tarehe limeundwa",
     "other": "\"{{name}}\": matukio {{count}} ya tarehe yameundwa"

@@ -5727,7 +5727,6 @@
   "Added and qualified": "जोड़ा गया और योग्य ठहराया गया",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "चुनें कि अनुसूचियाँ कितना आगे भरी जाएँ और अनुस्मारक कब जाएँ, और जाँचें कि पृष्ठभूमि कार्य चल रहे हैं।",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "चर्च निर्देशिका में पहले से मौजूद किसी व्यक्ति को चुनें। वे इस सेवकाई के स्वयंसेवकों में जुड़ते हैं और इसके समन्वयकों को ईमेल जाता है। केवल समन्वयक ही किसी को निकाल सकता है।",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "ChurchCRM में स्वयंसेवकों के प्रबंधन के दो तरीके हैं। एक समय में केवल एक उपयोग के लिए है; स्वयंसेवक अनुभव सेटिंग तय करती है कि यह कलीसिया कौन सा देखे। बदलने से पृष्ठ और सूची प्रविष्टियाँ छिपती या दिखती हैं — आँकड़ा कभी नहीं मिटता, इसलिए आप वापस बदल सकते हैं।",
   "Daily unfilled-position email time": "दैनिक खाली-पद ईमेल का समय",
   "Donation funds, pledges and giving records": "दान निधियाँ, प्रतिज्ञाएँ और दान अभिलेख",
   "Events and calendars, including the Member Portal calendars": "कार्यक्रम और कैलेंडर, सदस्य द्वार के कैलेंडर सहित",
@@ -6618,6 +6617,9 @@
   "no head of household or spouse has an email address": "परिवार के मुखिया या जीवनसाथी का कोई ईमेल पता नहीं है",
   "or": "या",
   "until %s": "%s तक",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "सदस्य पोर्टल में %1$s पर आपका ईमेल पता %2$s से %3$s करने का अनुरोध किया गया है। बदलाव तभी होता है जब नए पते पर भेजा गया लिंक उपयोग किया जाता है।",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "कृपया नीचे दिए लिंक से अपने परिवार की जानकारी जाँचें। जाँच पृष्ठ पर सब कुछ सही है यह पुष्टि करने के लिए „परिवार की जानकारी की पुष्टि करें” चुनें, या सुधार कलीसिया कार्यालय को भेजें।",
+  "Review Family Information": "परिवार की जानकारी की जाँच",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} घटना बनाई गई",
     "other": "\"{{name}}\"：{{count}} घटनाएं बनाई गईं"

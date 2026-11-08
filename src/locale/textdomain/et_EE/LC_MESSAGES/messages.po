@@ -23583,10 +23583,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Vali keegi, kes on juba koguduse kataloogis. Ta liitub selle teenistuse vabatahtlikega ja koordinaatoritele saadetakse e-kiri. Ainult koordinaator saab kedagi eemaldada."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM-il on kaks viisi vabatahtlike haldamiseks. Korraga on mõeldud kasutusse ainult üks; vabatahtliku kogemuse säte otsustab, kumba see kogudus näeb. Vahetamine peidab või näitab lehti ja menüükirjeid — see ei kustuta kunagi andmeid, seega saad tagasi vahetada."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Täitmata ülesannete päevase e-kirja kellaaeg"
 
@@ -27169,4 +27165,16 @@ msgstr "või"
 #: 
 msgid "until %s"
 msgstr "kuni %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Liikmeportaalis tehti taotlus muuta teie e-posti aadressi saidil %1$s aadressilt %2$s aadressile %3$s. Muudatus jõustub alles siis, kui kasutatakse uuele aadressile saadetud linki."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Kasutage allolevat linki oma pere andmete ülevaatamiseks. Valige ülevaatuslehel „Kinnita pere andmed”, et kinnitada, et kõik on õige, või saatke parandused koguduse kantseleisse."
+
+#: 
+msgid "Review Family Information"
+msgstr "Vaata pere andmed üle"
 

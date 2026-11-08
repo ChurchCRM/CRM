@@ -5697,7 +5697,6 @@
   "Added and qualified": "추가하고 자격을 부여함",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "일정을 얼마나 미리 채울지와 알림을 언제 보낼지 고르고, 배경 작업이 실행 중인지 확인하세요.",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "이미 교회 명부에 있는 사람을 고르세요. 이 사역의 봉사자에 들어가고 조정자에게 이메일이 갑니다. 조정자만 사람을 뺄 수 있습니다.",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "ChurchCRM에는 봉사자를 관리하는 두 가지 방식이 있습니다. 한 번에 하나만 쓰도록 되어 있으며, 봉사자 경험 설정이 이 교회에 보이는 방식을 정합니다. 바꾸면 페이지와 메뉴만 숨기거나 보여 주고 데이터는 삭제되지 않으므로, 다시 되돌릴 수 있습니다.",
   "Daily unfilled-position email time": "매일 빈 역할 이메일을 보내는 시각",
   "Donation funds, pledges and giving records": "헌금 기금, 서약과 헌금 기록",
   "Events and calendars, including the Member Portal calendars": "일정과 달력(교인 포털의 달력 포함)",
@@ -6588,6 +6587,9 @@
   "no head of household or spouse has an email address": "세대주나 배우자 중 이메일 주소가 있는 사람이 없음",
   "or": "또는",
   "until %s": "%s까지",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "회원 포털에서 %1$s의 이메일 주소를 %2$s에서 %3$s(으)로 변경해 달라는 요청이 있었습니다. 변경은 새 주소로 보낸 링크를 사용할 때만 적용됩니다.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "아래 링크로 가족 정보를 검토해 주세요. 검토 페이지에서 “가족 정보 확인”을 선택하면 모든 내용이 맞다고 확인하거나, 수정 사항을 교회 사무실로 보낼 수 있습니다.",
+  "Review Family Information": "가족 정보 검토",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：생성된 {{count}}개 발생",
     "other": "\"{{name}}\"：생성된 {{count}}개 발생"

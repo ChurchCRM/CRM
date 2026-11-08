@@ -5727,7 +5727,6 @@
   "Added and qualified": "Hozzáadva és alkalmassá téve",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "Válassza ki, milyen előre töltődnek az ütemtervek, mikor mennek ki az emlékeztetők, és ellenőrizze, hogy a háttérfeladatok futnak-e.",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "Válasszon valakit, aki már szerepel a gyülekezeti névjegyzékben. Csatlakozik a szolgálat önkénteseihez, és a koordinátorok e-mailt kapnak. Csak koordinátor vehet ki valakit.",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "A ChurchCRM két módon kezeli az önkénteseket. Egyszerre csak az egyik használata a cél; az Önkéntes élmény beállítás dönti el, melyiket látja ez a gyülekezet. A váltás elrejti vagy megjeleníti az oldalakat és a menüpontokat — soha nem töröl adatot, ezért vissza lehet váltani.",
   "Daily unfilled-position email time": "A napi, be nem töltött feladatok e-mailjének ideje",
   "Donation funds, pledges and giving records": "Adományalapok, fogadalmak és adakozási nyilvántartások",
   "Events and calendars, including the Member Portal calendars": "Események és naptárak, beleértve a tagi portál naptárait",
@@ -6618,6 +6617,9 @@
   "no head of household or spouse has an email address": "egyetlen háztartásfőnek vagy házastársnak sincs e-mail-címe",
   "or": "vagy",
   "until %s": "eddig: %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "A tagportálon kérés érkezett, hogy a(z) %1$s oldalon az e-mail-címed %2$s címről %3$s címre változzon. A módosítás csak akkor történik meg, ha az új címre küldött hivatkozást használják.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Az alábbi hivatkozással ellenőrizd a családod adatait. Az ellenőrző oldalon válaszd a „Családi adatok megerősítése” lehetőséget, ha minden helyes, vagy küldd el a javításokat a gyülekezeti irodának.",
+  "Review Family Information": "Családi adatok ellenőrzése",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} esemény létrehozva",
     "other": "\"{{name}}\": {{count}} esemény létrehozva"

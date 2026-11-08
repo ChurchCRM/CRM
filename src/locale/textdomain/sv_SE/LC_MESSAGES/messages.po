@@ -23671,10 +23671,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Välj någon som redan finns i församlingens katalog. Personen blir volontär i det här tjänsteområdet och dess samordnare får e-post. Bara en samordnare kan ta bort någon."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM har två sätt att hantera volontärer. Bara ett är tänkt att användas åt gången; inställningen för volontärupplevelsen avgör vilket den här församlingen ser. Ett byte döljer eller visar sidor och menyval — data tas aldrig bort, så du kan byta tillbaka."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Tid för det dagliga e-postmeddelandet om otillsatta uppgifter"
 
@@ -27257,4 +27253,16 @@ msgstr "eller"
 #: 
 msgid "until %s"
 msgstr "till %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "En begäran har gjorts i medlemsportalen om att ändra din e-postadress på %1$s från %2$s till %3$s. Ändringen sker bara när länken som skickats till den nya adressen används."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Använd länken nedan för att granska din familjs uppgifter. På granskningssidan väljer du ”Bekräfta familjeuppgifter” för att bekräfta att allt stämmer, eller skickar rättelser till församlingsexpeditionen."
+
+#: 
+msgid "Review Family Information"
+msgstr "Granska familjeuppgifter"
 

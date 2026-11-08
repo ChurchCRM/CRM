@@ -5847,7 +5847,6 @@
   "Added and qualified": "اتضاف واتأهل",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "اختار الجدول يتملى قد إيه مقدّمًا وامتى التذكيرات تطلع، واتأكد إن المهام الخلفية شغّالة.",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "اختار حد موجود بالفعل في دليل الكنيسة. هينضم لمتطوعي الخدمة دي وهيتبعت بريد للمنسقين. المنسق بس هو اللي يقدر يطلّع حد.",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "في ChurchCRM طريقتين لإدارة المتطوعين. المفروض طريقة واحدة بس تكون شغّالة في المرة؛ إعداد تجربة المتطوعين هو اللي يقرر الكنيسة دي بتشوف إيه. التبديل بيخبي أو بيظهر الصفحات وعناصر القائمة — ومش بيمسح البيانات أبدًا، فتقدر ترجع.",
   "Daily unfilled-position email time": "وقت بريد الأماكن الفاضية اليومي",
   "Donation funds, pledges and giving records": "صناديق التبرعات، والعهود، وسجلات العطاء",
   "Events and calendars, including the Member Portal calendars": "الأحداث والتقويمات، بما فيها تقويمات بوابة الأعضاء",
@@ -6738,6 +6737,9 @@
   "no head of household or spouse has an email address": "لا يملك رب الأسرة ولا الزوج أو الزوجة عنوان بريد إلكتروني",
   "or": "أو",
   "until %s": "حتى %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "قُدِّم طلب في بوابة الأعضاء لتغيير عنوان بريدك الإلكتروني في %1$s من %2$s إلى %3$s. لا يتم التغيير إلا عند استخدام الرابط المُرسَل إلى العنوان الجديد.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "يُرجى استخدام الرابط أدناه لمراجعة معلومات عائلتك. في صفحة المراجعة، اختر «تأكيد معلومات العائلة» لتأكيد أن كل شيء صحيح، أو أرسل التصحيحات إلى مكتب الكنيسة.",
+  "Review Family Information": "مراجعة معلومات العائلة",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "تم إنشاء {{count}} موعد لـ \"{{name}}\"",
     "other": "تم إنشاء {{count}} مواعيد لـ \"{{name}}\""

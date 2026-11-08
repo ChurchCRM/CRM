@@ -23552,10 +23552,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Escolha alguém que já esteja no diretório da igreja. A pessoa entra nos voluntários deste ministério e os coordenadores recebem um e-mail. Só um coordenador pode retirar alguém."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "O ChurchCRM tem duas formas de gerenciar voluntários. Só uma deve estar em uso por vez; a configuração de experiência de Voluntários decide qual esta igreja vê. Trocar oculta ou mostra páginas e itens de menu — nunca apaga dados, então você pode voltar."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Horário do e-mail diário das funções não preenchidas"
 
@@ -27138,4 +27134,16 @@ msgstr "ou"
 #: 
 msgid "until %s"
 msgstr "até %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Foi feito um pedido no Portal de Membros para alterar seu endereço de e-mail em %1$s de %2$s para %3$s. A alteração só acontece quando o link enviado ao novo endereço é usado."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Use o link abaixo para revisar as informações da sua família. Na página de revisão, escolha \"Confirmar informações da família\" para confirmar que tudo está correto ou envie correções ao escritório da igreja."
+
+#: 
+msgid "Review Family Information"
+msgstr "Revisar informações da família"
 

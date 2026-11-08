@@ -23673,10 +23673,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Alegeți pe cineva care este deja în anuarul parohiei. Intră între voluntarii acestei slujiri, iar coordonatorii primesc un e-mail. Doar un coordonator poate scoate pe cineva."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM are două moduri de a gestiona voluntarii. Doar unul este menit să fie folosit odată; setarea experienței Voluntari decide pe care o vede această parohie. Schimbarea ascunde sau arată pagini și intrări de meniu — nu șterge niciodată date, deci puteți reveni."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Ora e-mailului zilnic pentru posturile neocupate"
 
@@ -27259,4 +27255,16 @@ msgstr "sau"
 #: 
 msgid "until %s"
 msgstr "până la %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "În portalul membrilor s-a cerut schimbarea adresei tale de e-mail de pe %1$s din %2$s în %3$s. Schimbarea are loc numai când este folosit linkul trimis la adresa nouă."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Folosește linkul de mai jos pentru a verifica informațiile familiei tale. Pe pagina de verificare alege „Confirmă informațiile familiei” ca să confirmi că totul este corect sau trimite corecturile la biroul bisericii."
+
+#: 
+msgid "Review Family Information"
+msgstr "Verifică informațiile familiei"
 

@@ -5727,7 +5727,6 @@
   "Added and qualified": "נוסף והוכשר",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "בחר כמה זמן מראש ממלאים לוחות זמנים ומתי יוצאות תזכורות, ובדוק שמשימות הרקע רצות.",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "בחר מישהו שכבר נמצא במדריך הקהילה. הוא יצטרף למתנדבי השירות הזה והרכזים יקבלו דוא״ל. רק רכז יכול להוציא מישהו.",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "ב־ChurchCRM יש שתי דרכים לנהל מתנדבים. רק אחת אמורה לפעול בכל פעם; הגדרת חוויית המתנדבים קובעת מה הקהילה הזו רואה. המעבר מסתיר או מציג דפים ופריטי תפריט — הוא לעולם לא מוחק נתונים, כך שאפשר לחזור.",
   "Daily unfilled-position email time": "שעת הדוא״ל היומי על תפקידים לא מאוישים",
   "Donation funds, pledges and giving records": "קרנות תרומה, התחייבויות ורישומי נתינה",
   "Events and calendars, including the Member Portal calendars": "אירועים ולוחות שנה, כולל לוחות השנה של פורטל החברים",
@@ -6618,6 +6617,9 @@
   "no head of household or spouse has an email address": "לאף ראש משק בית או בן או בת זוג אין כתובת דוא״ל",
   "or": "או",
   "until %s": "עד %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "בפורטל החברים הוגשה בקשה לשנות את כתובת הדוא״ל שלך ב-%1$s מ-%2$s אל %3$s. השינוי מתבצע רק כשמשתמשים בקישור שנשלח לכתובת החדשה.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "השתמשו בקישור שלמטה כדי לבדוק את פרטי המשפחה. בדף הבדיקה בחרו „אישור פרטי המשפחה” כדי לאשר שהכול נכון, או שלחו תיקונים למשרד הקהילה.",
+  "Review Family Information": "בדיקת פרטי המשפחה",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": נוצר {{count}} מופע",
     "other": "\"{{name}}\": נוצרו {{count}} מופעים"
