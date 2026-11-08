@@ -18,7 +18,7 @@ Cypress.Commands.add('dismissSystemNotifications', () => {
             return;
         }
         cy.intercept('POST', '**/api/user/*/setting/notification.dismissed.*').as('dismissNotification');
-        $buttons.each((_, button) => button.click());
+        cy.wrap($buttons).click({ multiple: true });
         cy.wait(Array($buttons.length).fill('@dismissNotification'));
         cy.get('.crm-system-notification').should('not.exist');
     });
