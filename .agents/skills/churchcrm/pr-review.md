@@ -144,7 +144,7 @@ Rules live in `frontend-development.md`; check the diff against it.
 - [ ] `playwright/` specs, videos and helpers that use anything the change removes, renames or reroutes are updated in the same PR (grep `playwright/` for the ids, routes, settings and labels in the diff); locators carry no English text; captures marked `usedIn` still exist
 - [ ] Asset paths use `SystemURLs::getRootPath()`
 - [ ] UI text wrapped with `gettext()` or `i18next.t()`
-- [ ] Messages and confirmations use `window.CRM.notify()` and bootbox or a Bootstrap modal
+- [ ] Messages use `window.CRM.notify()`, confirmations `confirmAction()`, persistent notices `alertAction()` (no native or direct `bootbox.confirm/alert`); one-value prompts use `promptAction()`; forms and rich flows use `bootbox.dialog` or a Bootstrap modal
 - [ ] Server-side initial state where a JS-only flash would show
 - [ ] Page logic is a `webpack/` entry, not an inline `<script>` block in the view
 

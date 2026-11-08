@@ -192,27 +192,22 @@ $(document).ready(function () {
             var btn = $(this);
             var propertyId = btn.data('property-id');
             var propertyName = btn.data('property-name');
-            bootbox.confirm({
-                title: '<?= gettext("Confirm Property Deletion") ?>',
-                message: '<p class="text-warning"><strong><?= gettext("Warning") ?>:</strong> ' +
+            window.CRM.confirmAction(
+              '<?= gettext("Confirm Property Deletion") ?>',
+              '<p class="text-warning"><strong><?= gettext("Warning") ?>:</strong> ' +
                     '<?= gettext("Deleting this property will also remove all its assignments from any People, Family, or Group records.") ?>' +
                     '</p><p><?= gettext("Delete") ?>: <strong>' + window.CRM.escapeHtml(propertyName) + '</strong></p>',
-                buttons: {
-                    confirm: { label: '<?= gettext("Yes, delete") ?>', className: 'btn-danger' },
-                    cancel:  { label: '<?= gettext("Cancel") ?>',     className: 'btn-secondary' }
-                },
-                callback: function (result) {
-                    if (result) {
-                        window.CRM.AdminAPIRequest({
-                            method: 'DELETE',
-                            path: 'properties/definition/' + propertyId,
-                            headers: { 'X-CSRF-Token': btn.data('csrf-token') },
-                        }).done(function () {
-                            btn.closest('tr').fadeOut(300, function () { $(this).remove(); });
-                        });
-                    }
-                }
-            });
+              () => {
+                window.CRM.AdminAPIRequest({
+                    method: 'DELETE',
+                    path: 'properties/definition/' + propertyId,
+                    headers: { 'X-CSRF-Token': btn.data('csrf-token') },
+                }).done(function () {
+                    btn.closest('tr').fadeOut(300, function () { $(this).remove(); });
+                });
+              },
+              { confirmLabel: '<?= gettext("Yes, delete") ?>', cancelLabel: '<?= gettext("Cancel") ?>' },
+            );
         });
     });
 });

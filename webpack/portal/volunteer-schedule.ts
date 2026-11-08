@@ -46,6 +46,7 @@ import {
   formatWhen,
   notifyError,
   notifySuccess,
+  promptAction,
   renderState,
 } from "./member-ui";
 
@@ -217,20 +218,13 @@ async function respond(assignmentId: number, answer: "accepted" | "declined", co
 
 function decline(assignmentId: number): void {
   // §5.6: an optional reason, in a prompt, never a required form.
-  window.bootbox?.prompt({
-    title: i18next.t("Let them know why (optional)"),
-    inputType: "text",
-    buttons: {
-      confirm: { label: i18next.t("Send"), className: "btn-primary" },
-      cancel: { label: i18next.t("Cancel"), className: "btn-default" },
-    },
-    callback: (value: string | null) => {
-      if (value === null) {
-        return;
-      }
+  promptAction(
+    i18next.t("Let them know why (optional)"),
+    (value) => {
       void respond(assignmentId, "declined", value);
     },
-  });
+    { confirmLabel: i18next.t("Send") },
+  );
 }
 
 function hideSubstituteModal(): void {

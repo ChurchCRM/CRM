@@ -37,6 +37,7 @@ const checks = {
     'use-statement case': script('lint/validate-use-statement-case.js'),
     'orm base classes': script('lint/validate-orm-base-classes.js'),
     'font awesome icons': script('lint/validate-fa-icons-exist.js'),
+    'native dialogs': script('lint/validate-native-dialogs.js'),
     'ui conventions': script('lint/validate-ui-conventions.js'),
     'pinned actions': script('lint/validate-actions-pinned.js'),
     'cypress api keys': script('lint/validate-cypress-api-keys.js'),

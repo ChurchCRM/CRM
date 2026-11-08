@@ -11,6 +11,8 @@
  * x-api-key request replaces the browser's session cookie.
  */
 
+import { basePath } from "../../support/urls";
+
 const SETTING_URL = "/admin/api/system/config/sVolunteerVersion";
 const V1_API = "/admin/api/volunteer-opportunities";
 const CONVERSION_API = "/admin/api/volunteer-conversion";
@@ -133,7 +135,7 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
             cy.get("a[href$='VolunteerOpportunityEditor.php']").should("not.exist");
 
             cy.visit("/VolunteerOpportunityEditor.php");
-            cy.location("pathname").should("eq", "/ministries/dashboard");
+            cy.location("pathname").should("eq", `${basePath()}/ministries/dashboard`);
 
             cy.visit("/admin/people");
             cy.contains("a", "Volunteer Opportunities").should("not.exist");
@@ -172,14 +174,14 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
             cy.get("#volunteer-v1-notice")
                 .should("contain.text", "Convert your 3 opportunities and 5 volunteers")
                 .find("#volunteer-v1-notice-convert")
-                .should("have.attr", "href", "/admin/volunteer-conversion");
+                .should("have.attr", "href", `${basePath()}/admin/volunteer-conversion`);
 
             cy.visit(`/people/view/${people.marion}`);
             cy.get("#nav-item-volunteer").should("contain.text", "Volunteer (Legacy)").click();
             cy.get("#volunteer #volunteer-v1-notice").should("be.visible");
 
             cy.visit("/VolunteerOpportunityEditor.php");
-            cy.location("pathname").should("eq", "/VolunteerOpportunityEditor.php");
+            cy.location("pathname").should("eq", `${basePath()}/VolunteerOpportunityEditor.php`);
             cy.get("#volunteer-v1-notice").should("be.visible");
 
             cy.visit("/admin/system/feature-toggles");
@@ -269,7 +271,7 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
             cy.get("#volunteer-v1-notice")
                 .should("contain.text", "since the conversion: 1")
                 .find("#volunteer-v1-notice-convert")
-                .should("have.attr", "href", "/admin/volunteer-conversion");
+                .should("have.attr", "href", `${basePath()}/admin/volunteer-conversion`);
 
             cy.makePrivateAdminAPICall("GET", `${CONVERSION_API}/preview`, null, 200).then((preview) => {
                 expect(preview.body.totals).to.deep.include({ positions: 0, ministries: 0, pending: 1 });
@@ -304,7 +306,7 @@ describe("Volunteer Opportunities retirement (#10606)", () => {
             cy.visit("/admin/");
             cy.get("#volunteer-v1-notice").should("not.exist");
             cy.visit("/VolunteerOpportunityEditor.php");
-            cy.location("pathname").should("eq", "/ministries/dashboard");
+            cy.location("pathname").should("eq", `${basePath()}/ministries/dashboard`);
         });
 
         it("refuses a new ministry name that is already taken", () => {

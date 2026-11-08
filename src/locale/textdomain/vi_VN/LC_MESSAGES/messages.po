@@ -722,10 +722,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Không phải là ngày cưới hợp lệ"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Không xác định được Email"
-
-#: 
 msgid "Family Info"
 msgstr "Thông tin gia đình"
 
@@ -1459,10 +1455,6 @@ msgstr "Không phải là Ngày kết bạn hợp lệ"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Không phải là ngày thành viên hợp lệ"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Email công việc không hợp lệ"
 
 #: 
 msgid "Birth Month"
@@ -22887,10 +22879,6 @@ msgid "Invalid birth date"
 msgstr "Ngày sinh không hợp lệ."
 
 #: 
-msgid "Invalid email address"
-msgstr "Địa chỉ email không hợp lệ"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Cài đặt Kiosk"
 
@@ -23561,10 +23549,6 @@ msgstr "Chọn lịch được bố trí trước bao lâu và lúc nào gửi l
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Chọn người đã có trong danh bạ hội thánh. Họ gia nhập tình nguyện viên của mục vụ này và điều phối viên được gửi email. Chỉ điều phối viên mới rút được người ra."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM có hai cách quản lý tình nguyện viên. Mỗi lúc chỉ dùng một cách; thiết lập trải nghiệm Tình nguyện viên quyết định hội thánh này thấy cách nào. Việc chuyển ẩn hoặc hiện trang và mục menu — không bao giờ xóa dữ liệu, nên bạn có thể chuyển lại."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26455,10 +26439,6 @@ msgid "That device is signed out."
 msgstr "Thiết bị đó đã được đăng xuất."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Đó không phải địa chỉ email hợp lệ."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Trang đó đã mở quá lâu. Vui lòng thử lại."
 
@@ -27149,4 +27129,16 @@ msgstr "hoặc"
 #: 
 msgid "until %s"
 msgstr "đến %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Có yêu cầu trên Cổng thành viên đổi địa chỉ email của bạn tại %1$s từ %2$s thành %3$s. Thay đổi chỉ xảy ra khi dùng liên kết gửi tới địa chỉ mới."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Hãy dùng liên kết bên dưới để xem lại thông tin gia đình. Trên trang xem lại, chọn \"Xác nhận thông tin gia đình\" để xác nhận mọi thông tin đều đúng, hoặc gửi phần sửa tới văn phòng hội thánh."
+
+#: 
+msgid "Review Family Information"
+msgstr "Xem lại thông tin gia đình"
 

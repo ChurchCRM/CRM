@@ -36,12 +36,24 @@ const RULES = [
     },
 ];
 
+const REQUEST_VARIABLE = /^\s*(\$\w+)\s*=[^=].*(?:\$_(?:POST|GET|REQUEST)\b|getParsedBody\(|getQueryParams\(|\$(?:input|body|post|query|params)\[)/;
+const PARSES_DATE = /\b(strtotime|createFromFormat)\s*\(([^;]*)/;
+
 function findViolations(relativePath, source) {
     if (ALLOWED.has(relativePath) || SKIPPED_PREFIXES.some((prefix) => relativePath.startsWith(prefix))) {
         return [];
     }
     const violations = [];
+    const requestVariables = new Set();
     source.split('\n').forEach((line, index) => {
+        const assigned = REQUEST_VARIABLE.exec(line);
+        if (assigned && /date|start|end|from|to|day|sunday/i.test(assigned[1])) {
+            requestVariables.add(assigned[1]);
+        }
+        const parsed = PARSES_DATE.exec(line);
+        if (parsed && !parsed[2].includes('DateTimeUtils::') && [...requestVariables].some((name) => parsed[2].includes(name))) {
+            violations.push({ file: relativePath, line: index + 1, message: 'parses a request date held in a variable; use DateTimeUtils::normalizeDate() or parseIsoDate()' });
+        }
         for (const rule of RULES) {
             if (rule.test(line)) {
                 violations.push({ file: relativePath, line: index + 1, message: rule.message });

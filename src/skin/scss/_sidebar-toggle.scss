@@ -1,0 +1,9 @@
+@media (min-width: 1200px) {
+  body.desktop-sidebar-collapsed {
+    --tblr-sidebar-width: 0px;
+  }
+
+  body.desktop-sidebar-collapsed #sidebar {
+    display: none;
+  }
+}

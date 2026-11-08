@@ -1,3 +1,4 @@
+import { confirmAction } from "../../common/confirm-action";
 /**
  * The Occurrences tab — the upcoming weeks with their derived gap counts, and a
  * link into the staffing view (#9709, design §5.5 entry point).
@@ -37,7 +38,6 @@ import { readOffsets, renderOffsetFields, writeOffsets } from "./offsets";
 import { rollupStaffing, type StaffingTone, staffingTitle } from "./staffing-label";
 import {
   byId,
-  confirmDelete,
   destroyDataTable,
   escapeAttribute,
   escapeHtml,
@@ -482,7 +482,7 @@ export function createOccurrencesTable(options: OccurrencesTableOptions): Occurr
     if (ids.length === 0) {
       return;
     }
-    confirmDelete(
+    confirmAction(
       i18next.t("Delete occurrences"),
       tText(
         "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.",

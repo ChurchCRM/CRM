@@ -68,7 +68,7 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await page.waitForURL(/\/admin\/$/, { timeout: 30000 });
 
   // First admin login — forced password change.
-  await page.goto('/login');
+  await page.goto('/session/begin');
   await humanType(page.locator('input[name=User]'), ADMIN_USERNAME);
   await humanType(page.locator('input[name=Password]'), ADMIN_INITIAL_PASSWORD);
   await humanPause(page, 300);
@@ -120,13 +120,15 @@ setup('setup-church-info', async ({ page }, testInfo) => {
 });
 
 setup('demo-data-import', async ({ page }, testInfo) => {
-  await page.goto('/login');
+  await page.goto('/session/begin');
   await humanType(page.locator('input[name=User]'), ADMIN_USERNAME);
   await humanType(page.locator('input[name=Password]'), ADMIN_WORKING_PASSWORD);
   await humanPause(page, 300);
-  await page.locator('input[name=Password]').press('Enter');
+  // An administrator's first full sign-in checks GitHub for releases and fetches the remote
+  // notifications before it redirects, which can take well past the 15s action timeout on a runner.
+  await page.locator('input[name=Password]').press('Enter', { timeout: 60000 });
   // An administrator signed in at /admin/ stays there, on the Admin Dashboard.
-  await expect(page.locator('input[name=Password]')).toHaveCount(0, { timeout: 15000 });
+  await expect(page.locator('input[name=Password]')).toHaveCount(0, { timeout: 60000 });
 
   await uploadDemoPhoto(page, 'person', ADMIN_PERSON_ID, ADMIN_PHOTO);
 

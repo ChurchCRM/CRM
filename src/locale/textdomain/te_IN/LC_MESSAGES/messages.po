@@ -710,10 +710,6 @@ msgid "Not a valid Wedding Date"
 msgstr "చెల్లుబాటు అయ్యే వివాహ తేదీ కాదు"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "ఇమెయిల్ చెల్లదు"
-
-#: 
 msgid "Family Info"
 msgstr "కుటుంబ సమాచారం"
 
@@ -1442,10 +1438,6 @@ msgstr "చెల్లుబాటు అయ్యే స్నేహితు�
 #: 
 msgid "Not a valid Membership Date"
 msgstr "చెల్లుబాటు అయ్యే సభ్యత్వ తేదీ కాదు"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "వర్క్ ఇమెయిల్ చెల్లదు"
 
 #: 
 msgid "Birth Month"
@@ -22886,10 +22878,6 @@ msgid "Invalid birth date"
 msgstr "చెల్లని పుట్టిన తేదీ."
 
 #: 
-msgid "Invalid email address"
-msgstr "చెల్లని ఇమెయిల్ చిరునామా"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "కియోస్క్ సెట్టింగ్‌లు"
 
@@ -23560,10 +23548,6 @@ msgstr "సమయపట్టికలు ఎంత ముందు నింప
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "సంఘ నామావళిలో ఇప్పటికే ఉన్న వ్యక్తిని ఎంచుకోండి. వారు ఈ పరిచర్య స్వచ్ఛంద సేవకుల్లో చేరతారు; దాని సమన్వయకులకు ఈమెయిల్ వెళ్తుంది. సమన్వయకుడు మాత్రమే ఎవరినైనా తీసివేయగలరు."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRMలో స్వచ్ఛంద సేవకుల నిర్వహణకు రెండు మార్గాలున్నాయి. ఒక సమయంలో ఒకటి మాత్రమే వాడకంలో ఉండాలి; స్వచ్ఛంద అనుభవ అమరిక ఈ సంఘం ఏది చూస్తుందో నిర్ణయిస్తుంది. మార్చడం పేజీలను మరియు జాబితా అంశాలను దాచుతుంది లేదా చూపుతుంది — దత్తాంశం ఎప్పుడూ తొలగించదు, కాబట్టి తిరిగి మారవచ్చు."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26454,10 +26438,6 @@ msgid "That device is signed out."
 msgstr "ఆ పరికరం సైన్ అవుట్ అయింది."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "అది చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామా కాదు."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "ఆ పేజీ చాలా సేపు తెరిచి ఉంది. దయచేసి మళ్లీ ప్రయత్నించండి."
 
@@ -27148,4 +27128,16 @@ msgstr "లేదా"
 #: 
 msgid "until %s"
 msgstr "%s వరకు"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "సభ్యుల పోర్టల్‌లో %1$s లో మీ ఈమెయిల్ చిరునామాను %2$s నుండి %3$s కు మార్చాలని అభ్యర్థన వచ్చింది. కొత్త చిరునామాకు పంపిన లింక్ వాడితేనే మార్పు జరుగుతుంది."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "మీ కుటుంబ సమాచారాన్ని సమీక్షించడానికి కింది లింక్ వాడండి. సమీక్ష పేజీలో అంతా సరైనదని నిర్ధారించడానికి «కుటుంబ సమాచారాన్ని నిర్ధారించండి» ఎంచుకోండి, లేదా సవరణలను చర్చి కార్యాలయానికి పంపండి."
+
+#: 
+msgid "Review Family Information"
+msgstr "కుటుంబ సమాచారాన్ని సమీక్షించండి"
 

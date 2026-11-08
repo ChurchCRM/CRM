@@ -82,10 +82,17 @@ class FixCssUrlQuotesPlugin {
 module.exports = {
   mode: isProduction ? 'production' : 'development',
   entry: {
+    'fundraiser-paddle-numbers': './webpack/fundraiser-paddle-numbers.js',
+    'finance-pledge-detail': './webpack/finance-pledge-detail.js',
+    'finance-pledge-editor': './webpack/finance-pledge-editor.js',
+    'admin-logs': './webpack/admin-logs.js',
+    'fundraiser-list': './webpack/fundraiser-list.js',
+    'fundraiser-confirm': './webpack/fundraiser-confirm.js',
     'calendar-event-editor': './webpack/calendar-event-editor.js',
     'two-factor-enrollment': './webpack/two-factor-enrollment.js',
     churchcrm: './webpack/skin-main',
     theme: './webpack/theme.js',
+    'sidebar-toggle': './webpack/sidebar-toggle.js',
     'churchcrm-rtl': './webpack/skin-rtl',
     'photo-uploader': './webpack/photo-uploader-entry',
     'root-dashboard': './webpack/root-dashboard',

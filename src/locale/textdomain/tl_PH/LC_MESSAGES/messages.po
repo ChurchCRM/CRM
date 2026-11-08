@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Hindi wastong Petsa ng Kasal"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Ang Email ay Hindi Wasto"
-
-#: 
 msgid "Family Info"
 msgstr "Impormasyon ng Pamilya"
 
@@ -1431,10 +1427,6 @@ msgstr "Hindi wastong Petsa ng Pagkakaibigan"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Hindi wastong Petsa ng Pagiging Miyembro"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Ang Email sa Trabaho ay Hindi Wasto"
 
 #: 
 msgid "Birth Month"
@@ -22875,10 +22867,6 @@ msgid "Invalid birth date"
 msgstr "Hindi wastong Petsa ng Kapanganakan."
 
 #: 
-msgid "Invalid email address"
-msgstr "Hindi valid ang email address"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kiosk Settings"
 
@@ -23549,10 +23537,6 @@ msgstr "Piliin kung gaano kaaga pupunuan ang mga iskedyul at kailan ipapadala an
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Pumili ng taong nasa direktoryo na ng simbahan. Sasali siya sa mga boluntaryo ng ministeryong ito at padalhan ng email ang mga tagapag-ugnay. Tanging tagapag-ugnay ang maaaring mag-alis ng tao."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "May dalawang paraan ang ChurchCRM ng pamamahala ng mga boluntaryo. Isa lang ang dapat gamitin sa isang pagkakataon; ang setting ng karanasan sa Boluntaryo ang nagpapasya kung alin ang makikita ng simbahang ito. Ang paglipat ay nagtatago o nagpapakita ng mga pahina at entry sa menu — hindi ito nagbubura ng datos, kaya maaari kang bumalik."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26443,10 +26427,6 @@ msgid "That device is signed out."
 msgstr "Naka-sign out ang device na iyon."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Hindi iyon wastong email address."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Masyadong matagal nang bukas ang pahinang iyon. Subukan muli."
 
@@ -27137,4 +27117,16 @@ msgstr "o"
 #: 
 msgid "until %s"
 msgstr "hanggang %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "May kahilingan sa Portal ng Miyembro na baguhin ang iyong email address sa %1$s mula %2$s tungo sa %3$s. Magkakabisa ang pagbabago kapag ginamit ang link na ipinadala sa bagong address."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Gamitin ang link sa ibaba upang suriin ang impormasyon ng iyong pamilya. Sa pahina ng pagsusuri, piliin ang \"Kumpirmahin ang Impormasyon ng Pamilya\" upang kumpirmahing tama ang lahat, o ipadala ang mga pagwawasto sa opisina ng simbahan."
+
+#: 
+msgid "Review Family Information"
+msgstr "Suriin ang Impormasyon ng Pamilya"
 

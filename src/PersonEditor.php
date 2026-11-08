@@ -24,6 +24,7 @@ use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\EmailAddress;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\Propel;
@@ -318,9 +319,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Email
     if (strlen($sEmail) > 0) {
-        if (!MiscUtils::checkEmail($sEmail)) {
+        if (!EmailAddress::isValid($sEmail)) {
             $sEmailError = '<span class="text-danger">'
-                . gettext('Email is Not Valid') . '</span>';
+                . EmailAddress::validationMessage() . '</span>';
             $bErrorFlag = true;
         }
     }
@@ -337,9 +338,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Work Email
     if (strlen($sWorkEmail) > 0) {
-        if (!MiscUtils::checkEmail($sWorkEmail)) {
+        if (!EmailAddress::isValid($sWorkEmail)) {
             $sWorkEmailError = '<span class="text-danger">'
-                . gettext('Work Email is Not Valid') . '</span>';
+                . EmailAddress::validationMessage() . '</span>';
             $bErrorFlag = true;
         }
     }
@@ -1078,7 +1079,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
                         <input type="text" name="MembershipDate" id="MembershipDate" class="form-control date-picker"
                                value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dMembershipDate), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
+                               placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
                     </div>
                     <?php if ($sMembershipDateError) { ?>
                         <span class="text-danger small"><?= $sMembershipDateError ?></span>
@@ -1091,7 +1092,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
                         <input type="text" name="FriendDate" id="FriendDate" class="form-control date-picker"
                                value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dFriendDate), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
+                               placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
                     </div>
                     <?php if ($sFriendDateError) { ?>
                         <span class="text-danger small"><?= $sFriendDateError ?></span>
@@ -1109,7 +1110,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-cross"></i></span>
                         <input type="text" name="DateDeceased" id="DateDeceased" class="form-control date-picker"
                                value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dDateDeceased), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValueForAttr('sDatePickerFormat') ?>">
+                               placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
                     </div>
                     <?php if ($sDateDeceasedError) { ?>
                         <span class="text-danger small"><?= $sDateDeceasedError ?></span>

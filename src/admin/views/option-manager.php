@@ -234,28 +234,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             const optionId = row.dataset.optionId;
             const name = row.querySelector('.option-name-input').value;
 
-            bootbox.confirm({
-                title: i18next.t('Delete Confirmation'),
-                message: i18next.t('Are you sure you want to delete') + ' "' + window.CRM.escapeHtml(name) + '"?',
-                buttons: {
-                    cancel: { label: i18next.t('Cancel'), className: 'btn-secondary' },
-                    confirm: { label: i18next.t('Delete'), className: 'btn-danger' }
-                },
-                callback: function(result) {
-                    if (result) {
-                        window.CRM.AdminAPIRequest({
-                            method: 'DELETE',
-                            path: 'options/' + listId + '/' + optionId + '?mode=' + encodeURIComponent(mode)
-                        }).done(function() {
-                            window.CRM.notify(i18next.t('Item deleted successfully'), { type: 'success' });
-                            window.location.reload();
-                        }).fail(function(xhr) {
-                            const msg = xhr.responseJSON?.message || i18next.t('Failed to delete');
-                            window.CRM.notify(msg, { type: 'error' });
-                        });
-                    }
-                }
-            });
+            window.CRM.confirmAction(
+              i18next.t('Delete Confirmation'),
+              i18next.t('Are you sure you want to delete') + ' "' + window.CRM.escapeHtml(name) + '"?',
+              () => {
+                window.CRM.AdminAPIRequest({
+                    method: 'DELETE',
+                    path: 'options/' + listId + '/' + optionId + '?mode=' + encodeURIComponent(mode)
+                }).done(function() {
+                    window.CRM.notify(i18next.t('Item deleted successfully'), { type: 'success' });
+                    window.location.reload();
+                }).fail(function(xhr) {
+                    const msg = xhr.responseJSON?.message || i18next.t('Failed to delete');
+                    window.CRM.notify(msg, { type: 'error' });
+                });
+              },
+              { confirmLabel: i18next.t('Delete'), cancelLabel: i18next.t('Cancel') },
+            );
         });
     });
 

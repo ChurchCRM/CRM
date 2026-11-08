@@ -16,6 +16,7 @@ import {
   type ServerColumn,
   t,
 } from "../admin-member-portal/server-table";
+import { confirmAction } from "../common/confirm-action";
 
 export interface AttentionRow {
   personId: number;
@@ -323,20 +324,18 @@ export function wireEmailAttentionTools(options: AttentionToolsOptions): Attenti
     if (!button) {
       return;
     }
-    window.bootbox?.confirm({
-      title: t("Confirm Email Address"),
-      message: escapeHtml(
+    confirmAction(
+      t("Confirm Email Address"),
+      escapeHtml(
         t(
           "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal.",
         ),
       ),
-      buttons: { confirm: { label: t("Confirm Email Address"), className: "btn-primary" } },
-      callback: (confirmed: boolean) => {
-        if (confirmed) {
-          void confirmOne(button);
-        }
+      () => {
+        void confirmOne(button);
       },
-    });
+      { tone: "primary", confirmLabel: t("Confirm Email Address"), cancelLabel: t("Cancel") },
+    );
   });
 
   selectAll?.addEventListener("click", () => {
@@ -353,18 +352,15 @@ export function wireEmailAttentionTools(options: AttentionToolsOptions): Attenti
     if (rows.length === 0) {
       return;
     }
-    window.bootbox?.confirm({
-      title: t("Confirm selected"),
-      message:
-        `<p>${escapeHtml(t("Email addresses to confirm: {{total}}", { total: rows.length }))}</p>` +
+    confirmAction(
+      t("Confirm selected"),
+      `<p>${escapeHtml(t("Email addresses to confirm: {{total}}", { total: rows.length }))}</p>` +
         `<p class="mb-0">${escapeHtml(t("Only confirm addresses you know belong to that person. Anyone who reads an address can sign in as its person."))}</p>`,
-      buttons: { confirm: { label: t("Confirm selected"), className: "btn-primary" } },
-      callback: (confirmed: boolean) => {
-        if (confirmed) {
-          void confirmChosen(rows);
-        }
+      () => {
+        void confirmChosen(rows);
       },
-    });
+      { tone: "primary", confirmLabel: t("Confirm selected"), cancelLabel: t("Cancel") },
+    );
   });
 
   document.getElementById("unconfirmedKinds")?.addEventListener("click", (event) => {

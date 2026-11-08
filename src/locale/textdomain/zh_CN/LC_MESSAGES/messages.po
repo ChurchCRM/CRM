@@ -735,10 +735,6 @@ msgid "Not a valid Wedding Date"
 msgstr "不是一个有效的婚礼日期"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "电子邮件是无效的"
-
-#: 
 msgid "Family Info"
 msgstr "家庭资料"
 
@@ -1485,10 +1481,6 @@ msgstr "不是一个有效的好友日期"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "不是一个有效的会员日期"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "工作电子邮件是无效的"
 
 #: 
 msgid "Birth Month"
@@ -22945,10 +22937,6 @@ msgid "Invalid birth date"
 msgstr "无效的出生日期。"
 
 #: 
-msgid "Invalid email address"
-msgstr "电子邮件地址无效"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "自助终端设置"
 
@@ -23619,10 +23607,6 @@ msgstr "选择日程提前多久安排人员、提醒何时发出，并确认后
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "请选择已经在教会名册中的人。他们会加入本事工的义工，并会发邮件给协调员。只有协调员可以把人移出。"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM 有两种管理义工的方式。同一时间只应使用一种；「义工体验」设置决定本教会看到哪一种。切换只会隐藏或显示页面和菜单项，绝不会删除数据，因此可以再切回来。"
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26513,10 +26497,6 @@ msgid "That device is signed out."
 msgstr "该设备已退出。"
 
 #: 
-msgid "That is not a valid email address."
-msgstr "这不是有效的电子邮箱。"
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "该页面打开时间过长。请重试。"
 
@@ -27207,4 +27187,16 @@ msgstr "或"
 #: 
 msgid "until %s"
 msgstr "直到 %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "有人在成员门户中请求将您在 %1$s 的电子邮箱从 %2$s 更改为 %3$s。只有使用发送到新地址的链接后，此更改才会生效。"
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "请使用下面的链接核对您的家庭资料。在核对页面上，选择“确认家庭资料”以确认一切无误，或将更正发送给教会办公室。"
+
+#: 
+msgid "Review Family Information"
+msgstr "核对家庭资料"
 

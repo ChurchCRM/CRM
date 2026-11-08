@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
   title: 'ChurchCRM Private API'
-  description: 'Authenticated REST API for ChurchCRM. All endpoints require an API key passed via the x-api-key header. Obtain your API key from Profile → API Key inside the application, or via POST /public/user/login. Many endpoints require specific role permissions beyond basic authentication.'
+  description: 'Authenticated REST API for ChurchCRM. All endpoints require an API key passed via the x-api-key header. Obtain your API key from Profile → API Key inside the application, or via POST /api/public/user/login. Many endpoints require specific role permissions beyond basic authentication. Paths are site paths from the install root.'
   contact:
     name: ChurchCRM
     url: 'https://churchcrm.io'
@@ -12,8 +12,8 @@ info:
   version: 7.8.4
 servers:
   -
-    url: '{scheme}://{host}/api'
-    description: 'Self-hosted ChurchCRM API (/api)'
+    url: '{scheme}://{host}{basePath}'
+    description: 'ChurchCRM install root. Join this URL with a path to get the request URL.'
     variables:
       scheme:
         enum:
@@ -24,43 +24,14 @@ servers:
       host:
         default: your-server.com
         description: 'Your ChurchCRM server hostname'
-  -
-    url: '{scheme}://{host}/admin'
-    description: 'Self-hosted ChurchCRM Admin (/admin)'
-    variables:
-      scheme:
-        enum:
-          - https
-          - http
-        default: https
-        description: 'Protocol (https for production, http for local)'
-      host:
-        default: your-server.com
-        description: 'Your ChurchCRM server hostname'
-  -
-    url: '{scheme}://{host}'
-    description: 'Self-hosted ChurchCRM root (for /kiosk and /plugins)'
-    variables:
-      scheme:
-        enum:
-          - https
-          - http
-        default: https
-        description: 'Protocol (https for production, http for local)'
-      host:
-        default: your-server.com
-        description: 'Your ChurchCRM server hostname'
-  -
-    url: 'http://localhost/churchcrm/api'
-    description: 'Local development — API (/api)'
-  -
-    url: 'http://localhost/churchcrm/admin'
-    description: 'Local development — Admin (/admin)'
+      basePath:
+        default: ''
+        description: 'Install path. Empty when ChurchCRM is at the domain root, or /churchcrm for a subdirectory install.'
   -
     url: 'http://localhost/churchcrm'
-    description: 'Local development — root (for /kiosk and /plugins)'
+    description: 'Local development at /churchcrm'
 paths:
-  /email/log:
+  /api/email/log:
     get:
       tags:
         - Email
@@ -145,7 +116,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/email/log/{id}':
+  '/api/email/log/{id}':
     get:
       tags:
         - Email
@@ -169,7 +140,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /cart/emails:
+  /api/cart/emails:
     get:
       tags:
         - Cart
@@ -191,7 +162,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /cart/:
+  /api/cart/:
     get:
       tags:
         - Cart
@@ -270,7 +241,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /cart/emptyToGroup:
+  /api/cart/emptyToGroup:
     post:
       tags:
         - Cart
@@ -297,7 +268,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /cart/removeGroup:
+  /api/cart/removeGroup:
     post:
       tags:
         - Cart
@@ -322,7 +293,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /issues:
+  /api/issues:
     post:
       tags:
         - System
@@ -361,7 +332,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /systemcalendars:
+  /api/systemcalendars:
     get:
       tags:
         - Calendar
@@ -376,7 +347,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/systemcalendars/{id}/events':
+  '/api/systemcalendars/{id}/events':
     get:
       tags:
         - Calendar
@@ -417,7 +388,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/systemcalendars/{id}/events/{eventid}':
+  '/api/systemcalendars/{id}/events/{eventid}':
     get:
       tags:
         - Calendar
@@ -446,7 +417,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/systemcalendars/{id}/fullcalendar':
+  '/api/systemcalendars/{id}/fullcalendar':
     get:
       tags:
         - Calendar
@@ -483,7 +454,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /calendars:
+  /api/calendars:
     get:
       tags:
         - Calendar
@@ -535,7 +506,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/calendars/{id}':
+  '/api/calendars/{id}':
     get:
       tags:
         - Calendar
@@ -590,7 +561,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/calendars/{id}/fullcalendar':
+  '/api/calendars/{id}/fullcalendar':
     get:
       tags:
         - Calendar
@@ -627,7 +598,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/calendars/{id}/events':
+  '/api/calendars/{id}/events':
     get:
       tags:
         - Calendar
@@ -664,7 +635,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/calendars/{id}/NewAccessToken':
+  '/api/calendars/{id}/NewAccessToken':
     post:
       tags:
         - Calendar
@@ -689,7 +660,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/calendars/{id}/AccessToken':
+  '/api/calendars/{id}/AccessToken':
     delete:
       tags:
         - Calendar
@@ -714,7 +685,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /calendars/pinnable:
+  /api/calendars/pinnable:
     get:
       tags:
         - Calendar
@@ -745,7 +716,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/calendars/{id}/ministries':
+  '/api/calendars/{id}/ministries':
     get:
       tags:
         - Calendar
@@ -820,7 +791,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /calendar/events-counters:
+  /api/calendar/events-counters:
     get:
       tags:
         - Calendar
@@ -843,7 +814,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /events:
+  /api/events:
     get:
       tags:
         - Calendar
@@ -938,7 +909,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /events/types:
+  /api/events/types:
     get:
       tags:
         - Calendar
@@ -961,7 +932,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}':
+  '/api/events/{id}':
     get:
       tags:
         - Calendar
@@ -1093,7 +1064,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/primarycontact':
+  '/api/events/{id}/primarycontact':
     get:
       tags:
         - Calendar
@@ -1117,7 +1088,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/secondarycontact':
+  '/api/events/{id}/secondarycontact':
     get:
       tags:
         - Calendar
@@ -1141,7 +1112,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/location':
+  '/api/events/{id}/location':
     get:
       tags:
         - Calendar
@@ -1165,7 +1136,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/audience':
+  '/api/events/{id}/audience':
     get:
       tags:
         - Calendar
@@ -1189,7 +1160,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /events/repeat:
+  /api/events/repeat:
     post:
       tags:
         - Calendar
@@ -1301,7 +1272,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/time':
+  '/api/events/{id}/time':
     post:
       tags:
         - Calendar
@@ -1351,7 +1322,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/status':
+  '/api/events/{id}/status':
     post:
       tags:
         - Calendar
@@ -1389,7 +1360,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /events/quick-create:
+  /api/events/quick-create:
     post:
       tags:
         - Calendar
@@ -1436,7 +1407,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /events/today:
+  /api/events/today:
     get:
       tags:
         - Calendar
@@ -1456,7 +1427,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/roster':
+  '/api/events/{id}/roster':
     get:
       tags:
         - Calendar
@@ -1480,7 +1451,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/checkin':
+  '/api/events/{id}/checkin':
     post:
       tags:
         - Calendar
@@ -1522,7 +1493,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/checkout':
+  '/api/events/{id}/checkout':
     post:
       tags:
         - Calendar
@@ -1564,7 +1535,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/checkin-all':
+  '/api/events/{id}/checkin-all':
     post:
       tags:
         - Calendar
@@ -1596,7 +1567,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/checkout-all':
+  '/api/events/{id}/checkout-all':
     post:
       tags:
         - Calendar
@@ -1628,7 +1599,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/checkin-people':
+  '/api/events/{id}/checkin-people':
     post:
       tags:
         - Calendar
@@ -1681,7 +1652,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/events/{id}/attendance/{personId}':
+  '/api/events/{id}/attendance/{personId}':
     delete:
       tags:
         - Calendar
@@ -1712,7 +1683,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /events/generate-recurring:
+  /api/events/generate-recurring:
     post:
       tags:
         - Calendar
@@ -1770,7 +1741,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /events/audit/stuck:
+  /api/events/audit/stuck:
     get:
       tags:
         - Calendar
@@ -1783,7 +1754,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /events/audit/close:
+  /api/events/audit/close:
     post:
       tags:
         - Calendar
@@ -1817,7 +1788,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /geocoder/address:
+  /api/geocoder/address:
     post:
       tags:
         - Map
@@ -1848,7 +1819,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/photo':
+  '/api/family/{familyId}/photo':
     get:
       tags:
         - Families
@@ -1933,7 +1904,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/avatar':
+  '/api/family/{familyId}/avatar':
     get:
       tags:
         - Families
@@ -1953,7 +1924,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/nav':
+  '/api/family/{familyId}/nav':
     get:
       tags:
         - Families
@@ -1978,7 +1949,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}':
+  '/api/family/{familyId}':
     get:
       tags:
         - Families
@@ -2034,7 +2005,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/geolocation':
+  '/api/family/{familyId}/geolocation':
     get:
       tags:
         - Families
@@ -2052,7 +2023,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/verify':
+  '/api/family/{familyId}/verify':
     post:
       tags:
         - Families
@@ -2072,7 +2043,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/verify/url':
+  '/api/family/{familyId}/verify/url':
     get:
       tags:
         - Families
@@ -2096,7 +2067,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/verify/now':
+  '/api/family/{familyId}/verify/now':
     post:
       tags:
         - Families
@@ -2114,7 +2085,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/activate/{status}':
+  '/api/family/{familyId}/activate/{status}':
     post:
       tags:
         - Families
@@ -2150,7 +2121,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/approve-review':
+  '/api/family/{familyId}/approve-review':
     post:
       tags:
         - Families
@@ -2174,7 +2145,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/geocode':
+  '/api/family/{familyId}/geocode':
     post:
       tags:
         - Families
@@ -2203,7 +2174,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/donations/move':
+  '/api/family/{familyId}/donations/move':
     post:
       tags:
         - Families
@@ -2237,7 +2208,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /people/properties/person:
+  /api/people/properties/person:
     get:
       tags:
         - Properties
@@ -2250,7 +2221,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/people/properties/person/{personId}/{propertyId}':
+  '/api/people/properties/person/{personId}/{propertyId}':
     post:
       tags:
         - Properties
@@ -2312,7 +2283,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /people/properties/family:
+  /api/people/properties/family:
     get:
       tags:
         - Properties
@@ -2325,7 +2296,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/people/properties/person/{personId}':
+  '/api/people/properties/person/{personId}':
     get:
       tags:
         - Properties
@@ -2352,7 +2323,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/people/properties/family/{familyId}':
+  '/api/people/properties/family/{familyId}':
     get:
       tags:
         - Properties
@@ -2379,7 +2350,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/people/properties/family/{familyId}/{propertyId}':
+  '/api/people/properties/family/{familyId}/{propertyId}':
     post:
       tags:
         - Properties
@@ -2441,7 +2412,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/person/{personId}/photo':
+  '/api/person/{personId}/photo':
     get:
       tags:
         - People
@@ -2552,7 +2523,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/person/{personId}/avatar':
+  '/api/person/{personId}/avatar':
     get:
       tags:
         - People
@@ -2586,7 +2557,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/person/{personId}':
+  '/api/person/{personId}':
     get:
       tags:
         - People
@@ -2647,7 +2618,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/person/{personId}/addToCart':
+  '/api/person/{personId}/addToCart':
     post:
       tags:
         - People
@@ -2678,7 +2649,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/person/{personId}/activate/{status}':
+  '/api/person/{personId}/activate/{status}':
     post:
       tags:
         - People
@@ -2723,7 +2694,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/person/{personId}/approve-review':
+  '/api/person/{personId}/approve-review':
     post:
       tags:
         - People
@@ -2749,7 +2720,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/person/{personId}/sign-in':
+  '/api/person/{personId}/sign-in':
     get:
       tags:
         - People
@@ -2799,7 +2770,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/person/{personId}/sign-in/confirm-email':
+  '/api/person/{personId}/sign-in/confirm-email':
     post:
       tags:
         - People
@@ -2845,7 +2816,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/person/{personId}/role/{roleId}':
+  '/api/person/{personId}/role/{roleId}':
     post:
       tags:
         - People
@@ -2888,7 +2859,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/email/without:
+  /api/persons/email/without:
     get:
       tags:
         - People
@@ -2906,7 +2877,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/persons/search/{query}':
+  '/api/persons/search/{query}':
     get:
       tags:
         - People
@@ -2936,7 +2907,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/self-register:
+  /api/persons/self-register:
     get:
       tags:
         - People
@@ -2957,7 +2928,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/self-register/count:
+  /api/persons/self-register/count:
     get:
       tags:
         - People
@@ -2974,7 +2945,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/self-register/approve:
+  /api/persons/self-register/approve:
     post:
       tags:
         - People
@@ -3008,7 +2979,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/roles:
+  /api/persons/roles:
     get:
       tags:
         - People
@@ -3030,7 +3001,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/duplicate/emails:
+  /api/persons/duplicate/emails:
     get:
       tags:
         - People
@@ -3051,7 +3022,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/latest:
+  /api/persons/latest:
     get:
       tags:
         - People
@@ -3071,7 +3042,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/updated:
+  /api/persons/updated:
     get:
       tags:
         - People
@@ -3091,7 +3062,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/birthday:
+  /api/persons/birthday:
     get:
       tags:
         - People
@@ -3111,7 +3082,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /people/emails:
+  /api/people/emails:
     get:
       tags:
         - People
@@ -3135,7 +3106,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/sign-in-email/attention:
+  /api/persons/sign-in-email/attention:
     get:
       tags:
         - People
@@ -3198,7 +3169,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/sign-in-email/attention/counts:
+  /api/persons/sign-in-email/attention/counts:
     get:
       tags:
         - People
@@ -3220,7 +3191,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/sign-in-email/shared:
+  /api/persons/sign-in-email/shared:
     get:
       tags:
         - People
@@ -3241,7 +3212,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/sign-in-email/shared/fix:
+  /api/persons/sign-in-email/shared/fix:
     post:
       tags:
         - People
@@ -3279,7 +3250,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /persons/sign-in-email/confirm:
+  /api/persons/sign-in-email/confirm:
     post:
       tags:
         - People
@@ -3316,7 +3287,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /families/familiesInCart:
+  /api/families/familiesInCart:
     get:
       tags:
         - Families
@@ -3333,7 +3304,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /families/email/without:
+  /api/families/email/without:
     get:
       tags:
         - Families
@@ -3352,7 +3323,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/families/search/{query}':
+  '/api/families/search/{query}':
     get:
       tags:
         - Families
@@ -3376,7 +3347,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /families/self-register:
+  /api/families/self-register:
     get:
       tags:
         - Families
@@ -3394,7 +3365,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /families/self-verify:
+  /api/families/self-verify:
     get:
       tags:
         - Families
@@ -3412,7 +3383,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /families/pending-self-verify:
+  /api/families/pending-self-verify:
     get:
       tags:
         - Families
@@ -3429,7 +3400,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/families/byCheckNumber/{scanString}':
+  '/api/families/byCheckNumber/{scanString}':
     get:
       tags:
         - Families
@@ -3447,7 +3418,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /families/verify-email-preview:
+  /api/families/verify-email-preview:
     get:
       tags:
         - Families
@@ -3483,7 +3454,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /families/anniversaries:
+  /api/families/anniversaries:
     get:
       tags:
         - Families
@@ -3500,7 +3471,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /families/latest:
+  /api/families/latest:
     get:
       tags:
         - Families
@@ -3517,7 +3488,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /families/updated:
+  /api/families/updated:
     get:
       tags:
         - Families
@@ -3534,7 +3505,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /groups/properties:
+  /api/groups/properties:
     get:
       tags:
         - Groups
@@ -3548,7 +3519,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/properties':
+  '/api/groups/{groupID}/properties':
     get:
       tags:
         - Groups
@@ -3578,7 +3549,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/properties/{propertyId}':
+  '/api/groups/{groupID}/properties/{propertyId}':
     post:
       tags:
         - Groups
@@ -3644,7 +3615,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/timeline/person/{personId}':
+  '/api/timeline/person/{personId}':
     get:
       tags:
         - People
@@ -3675,7 +3646,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/timeline/family/{familyId}':
+  '/api/timeline/family/{familyId}':
     get:
       tags:
         - People
@@ -3708,7 +3679,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupId}/formprops/{propId}/order':
+  '/api/groups/{groupId}/formprops/{propId}/order':
     put:
       tags:
         - Groups
@@ -3750,7 +3721,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupId}/formprops/{propId}':
+  '/api/groups/{groupId}/formprops/{propId}':
     delete:
       tags:
         - Groups
@@ -3793,7 +3764,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /groups/:
+  /api/groups/:
     get:
       tags:
         - Groups
@@ -3833,7 +3804,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /groups/calendars:
+  /api/groups/calendars:
     get:
       tags:
         - Groups
@@ -3851,7 +3822,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /groups/groupsInCart:
+  /api/groups/groupsInCart:
     get:
       tags:
         - Groups
@@ -3868,7 +3839,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}':
+  '/api/groups/{groupID}':
     get:
       tags:
         - Groups
@@ -3944,7 +3915,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/cartStatus':
+  '/api/groups/{groupID}/cartStatus':
     get:
       tags:
         - Groups
@@ -3968,7 +3939,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/members':
+  '/api/groups/{groupID}/members':
     get:
       tags:
         - Groups
@@ -3993,7 +3964,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/events':
+  '/api/groups/{groupID}/events':
     get:
       tags:
         - Groups
@@ -4011,7 +3982,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/roles':
+  '/api/groups/{groupID}/roles':
     get:
       tags:
         - Groups
@@ -4059,7 +4030,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/phones':
+  '/api/groups/{groupID}/phones':
     get:
       tags:
         - Groups
@@ -4084,7 +4055,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/sundayschool/phones':
+  '/api/groups/{groupID}/sundayschool/phones':
     get:
       tags:
         - Groups
@@ -4111,7 +4082,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/emails':
+  '/api/groups/{groupID}/emails':
     get:
       tags:
         - Groups
@@ -4144,7 +4115,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/sundayschool/emails':
+  '/api/groups/{groupID}/sundayschool/emails':
     get:
       tags:
         - Groups
@@ -4180,7 +4151,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /groups/sundayschool/export/email:
+  /api/groups/sundayschool/export/email:
     get:
       tags:
         - Groups
@@ -4193,7 +4164,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /groups/sundayschool/export/classlist:
+  /api/groups/sundayschool/export/classlist:
     get:
       tags:
         - Groups
@@ -4206,7 +4177,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/removeperson/{userID}':
+  '/api/groups/{groupID}/removeperson/{userID}':
     delete:
       tags:
         - Groups
@@ -4234,7 +4205,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/addperson/{userID}':
+  '/api/groups/{groupID}/addperson/{userID}':
     post:
       tags:
         - Groups
@@ -4274,7 +4245,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/userRole/{userID}':
+  '/api/groups/{groupID}/userRole/{userID}':
     post:
       tags:
         - Groups
@@ -4315,7 +4286,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/roles/{roleID}':
+  '/api/groups/{groupID}/roles/{roleID}':
     post:
       tags:
         - Groups
@@ -4393,7 +4364,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/defaultRole':
+  '/api/groups/{groupID}/defaultRole':
     post:
       tags:
         - Groups
@@ -4424,7 +4395,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/setGroupSpecificPropertyStatus':
+  '/api/groups/{groupID}/setGroupSpecificPropertyStatus':
     post:
       tags:
         - Groups
@@ -4461,7 +4432,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/settings/active/{value}':
+  '/api/groups/{groupID}/settings/active/{value}':
     post:
       tags:
         - Groups
@@ -4490,7 +4461,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/groups/{groupID}/settings/email/export/{value}':
+  '/api/groups/{groupID}/settings/email/export/{value}':
     post:
       tags:
         - Groups
@@ -4519,7 +4490,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/attendance/person/{personId}':
+  '/api/attendance/person/{personId}':
     get:
       tags:
         - People
@@ -4554,7 +4525,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/person/{personId}/notes':
+  '/api/person/{personId}/notes':
     get:
       tags:
         - People
@@ -4587,7 +4558,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/person/{personId}/note':
+  '/api/person/{personId}/note':
     post:
       tags:
         - People
@@ -4638,7 +4609,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/notes':
+  '/api/family/{familyId}/notes':
     get:
       tags:
         - Families
@@ -4671,7 +4642,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/family/{familyId}/note':
+  '/api/family/{familyId}/note':
     post:
       tags:
         - Families
@@ -4722,7 +4693,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/note/{noteId}':
+  '/api/note/{noteId}':
     get:
       tags:
         - People
@@ -4837,7 +4808,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/search/{query}':
+  '/api/search/{query}':
     get:
       tags:
         - Search
@@ -4863,7 +4834,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /portal/me:
+  /api/portal/me:
     get:
       tags:
         - 'Member Portal'
@@ -4943,7 +4914,7 @@ paths:
           description: 'Too many email change requests in an hour'
         '503':
           description: 'The confirmation email could not be sent'
-  /portal/me/photo:
+  /api/portal/me/photo:
     get:
       tags:
         - 'Member Portal'
@@ -4996,7 +4967,7 @@ paths:
           description: 'Missing or unusable image data'
         '413':
           description: 'Image larger than the server allows'
-  /portal/family:
+  /api/portal/family:
     get:
       tags:
         - 'Member Portal'
@@ -5071,7 +5042,7 @@ paths:
           description: 'Not an adult of this family, an API-key caller, or an invalid CSRF token'
         '404':
           description: 'The member has no family record'
-  /portal/family/confirm:
+  /api/portal/family/confirm:
     post:
       tags:
         - 'Member Portal'
@@ -5108,7 +5079,7 @@ paths:
           description: 'Not an adult of this family'
         '404':
           description: 'The member has no family record'
-  '/portal/family/members/{personId}/photo':
+  '/api/portal/family/members/{personId}/photo':
     get:
       tags:
         - 'Member Portal'
@@ -5137,7 +5108,7 @@ paths:
           description: 'API-key caller, or an account with no person record'
         '404':
           description: 'Not a member of this family, or that member has no photo'
-  /portal/family/members:
+  /api/portal/family/members:
     post:
       tags:
         - 'Member Portal'
@@ -5180,7 +5151,7 @@ paths:
           description: 'Not an adult of this family'
         '404':
           description: 'The member has no family record'
-  /portal/calendar/subscription:
+  /api/portal/calendar/subscription:
     get:
       tags:
         - 'Member Portal'
@@ -5224,7 +5195,7 @@ paths:
           description: 'Empty selection, or a calendar that is not shared with members'
         '403':
           description: 'Not a signed-in member, an API key was used, or the CSRF token was missing'
-  /portal/calendar/subscription/reset:
+  /api/portal/calendar/subscription/reset:
     post:
       tags:
         - 'Member Portal'
@@ -5240,7 +5211,7 @@ paths:
                 $ref: '#/components/schemas/PortalCalendarSubscription'
         '403':
           description: 'Not a signed-in member, an API key was used, or the CSRF token was missing'
-  /portal/directory:
+  /api/portal/directory:
     get:
       tags:
         - Portal
@@ -5261,7 +5232,7 @@ paths:
           description: "The member's classification may not see the directory"
         '404':
           description: 'The directory is switched off'
-  '/portal/directory/{type}/{id}/photo':
+  '/api/portal/directory/{type}/{id}/photo':
     get:
       tags:
         - Portal
@@ -5288,7 +5259,7 @@ paths:
           description: 'The image'
         '404':
           description: 'Not shown in the directory, or no photo'
-  /portal/me/emails:
+  /api/portal/me/emails:
     get:
       tags:
         - 'Member Portal'
@@ -5326,7 +5297,7 @@ paths:
           description: 'No signed-in session'
         '403':
           description: 'API-key caller, or an account with no person record'
-  '/portal/me/emails/{id}':
+  '/api/portal/me/emails/{id}':
     get:
       tags:
         - 'Member Portal'
@@ -5349,7 +5320,7 @@ paths:
           description: 'API-key caller, or an account with no person record'
         '404':
           description: "No such email in this member's history"
-  /email/send:
+  /api/email/send:
     post:
       tags:
         - Email
@@ -5405,7 +5376,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/email/batches/{batch}':
+  '/api/email/batches/{batch}':
     get:
       tags:
         - Email
@@ -5435,7 +5406,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/email/batches/{batch}/send':
+  '/api/email/batches/{batch}/send':
     post:
       tags:
         - Email
@@ -5467,7 +5438,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /email/preview:
+  /api/email/preview:
     post:
       tags:
         - Email
@@ -5512,7 +5483,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /background/timerjobs:
+  /api/background/timerjobs:
     post:
       tags:
         - System
@@ -5542,7 +5513,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /map/families:
+  /api/map/families:
     get:
       tags:
         - Map
@@ -5568,7 +5539,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/map/neighbors/{familyId}':
+  '/api/map/neighbors/{familyId}':
     get:
       tags:
         - Map
@@ -5606,7 +5577,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /map/geocode-all:
+  /api/map/geocode-all:
     post:
       tags:
         - Map
@@ -5648,7 +5619,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /user/current/refresh2fasecret:
+  /api/user/current/refresh2fasecret:
     post:
       tags:
         - 2FA
@@ -5665,7 +5636,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /user/current/refresh2farecoverycodes:
+  /api/user/current/refresh2farecoverycodes:
     post:
       tags:
         - 2FA
@@ -5682,7 +5653,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /user/current/remove2fasecret:
+  /api/user/current/remove2fasecret:
     post:
       tags:
         - 2FA
@@ -5693,7 +5664,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /user/current/get2faqrcode:
+  /api/user/current/get2faqrcode:
     get:
       tags:
         - 2FA
@@ -5706,7 +5677,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /user/current/test2FAEnrollmentCode:
+  /api/user/current/test2FAEnrollmentCode:
     post:
       tags:
         - 2FA
@@ -5732,7 +5703,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /user/current/2fa-status:
+  /api/user/current/2fa-status:
     get:
       tags:
         - 2FA
@@ -5749,7 +5720,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/user/{userId}/setting/{settingName}':
+  '/api/user/{userId}/setting/{settingName}':
     get:
       tags:
         - Users
@@ -5817,7 +5788,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/user/{userId}/apikey/regen':
+  '/api/user/{userId}/apikey/regen':
     post:
       tags:
         - Users
@@ -5841,7 +5812,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/user/{userId}/config/{key}':
+  '/api/user/{userId}/config/{key}':
     post:
       tags:
         - Users
@@ -5880,7 +5851,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/events':
+  '/api/ministries/ministries/{ministryId}/events':
     get:
       tags:
         - Volunteer
@@ -6069,7 +6040,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/events/staff':
+  '/api/ministries/ministries/{ministryId}/events/staff':
     post:
       tags:
         - Volunteer
@@ -6115,7 +6086,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/positions/{positionId}/eligible':
+  '/api/ministries/positions/{positionId}/eligible':
     get:
       tags:
         - Volunteer
@@ -6153,7 +6124,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/teams/{teamId}/class-events':
+  '/api/ministries/teams/{teamId}/class-events':
     get:
       tags:
         - Volunteer
@@ -6192,7 +6163,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/status:
+  /api/ministries/status:
     get:
       tags:
         - Volunteer
@@ -6213,7 +6184,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/me/assignments:
+  /api/ministries/me/assignments:
     get:
       tags:
         - Volunteer
@@ -6251,7 +6222,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/me/assignments/{assignmentId}/respond':
+  '/api/ministries/me/assignments/{assignmentId}/respond':
     post:
       tags:
         - Volunteer
@@ -6296,7 +6267,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/me/assignments/{assignmentId}/propose-substitute':
+  '/api/ministries/me/assignments/{assignmentId}/propose-substitute':
     post:
       tags:
         - Volunteer
@@ -6341,7 +6312,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/me/swaps/{swapId}/withdraw':
+  '/api/ministries/me/swaps/{swapId}/withdraw':
     post:
       tags:
         - Volunteer
@@ -6379,7 +6350,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/me/opportunities:
+  /api/ministries/me/opportunities:
     get:
       tags:
         - Volunteer
@@ -6413,7 +6384,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/me/signup:
+  /api/ministries/me/signup:
     post:
       tags:
         - Volunteer
@@ -6450,7 +6421,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/me/qualifications:
+  /api/ministries/me/qualifications:
     get:
       tags:
         - Volunteer
@@ -6467,7 +6438,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/me/assignments/{assignmentId}/substitutes':
+  '/api/ministries/me/assignments/{assignmentId}/substitutes':
     get:
       tags:
         - Volunteer
@@ -6499,7 +6470,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/me/help-wanted:
+  /api/ministries/me/help-wanted:
     get:
       tags:
         - Volunteer
@@ -6522,7 +6493,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/me/help-wanted/{ministryId}':
+  '/api/ministries/me/help-wanted/{ministryId}':
     post:
       tags:
         - Volunteer
@@ -6555,7 +6526,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/schedules':
+  '/api/ministries/ministries/{ministryId}/schedules':
     get:
       tags:
         - Volunteer
@@ -6687,7 +6658,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/teams/{teamId}/schedules':
+  '/api/ministries/teams/{teamId}/schedules':
     get:
       tags:
         - Volunteer
@@ -6726,7 +6697,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/schedules/{scheduleId}':
+  '/api/ministries/schedules/{scheduleId}':
     get:
       tags:
         - Volunteer
@@ -6810,7 +6781,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/staffed-events':
+  '/api/ministries/ministries/{ministryId}/staffed-events':
     post:
       tags:
         - Volunteer
@@ -6876,7 +6847,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/schedules/{scheduleId}/eligible':
+  '/api/ministries/schedules/{scheduleId}/eligible':
     get:
       tags:
         - Volunteer
@@ -6923,7 +6894,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/schedules/{scheduleId}/generate':
+  '/api/ministries/schedules/{scheduleId}/generate':
     post:
       tags:
         - Volunteer
@@ -6982,7 +6953,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/schedules/{scheduleId}/requirements':
+  '/api/ministries/schedules/{scheduleId}/requirements':
     get:
       tags:
         - Volunteer
@@ -7064,7 +7035,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/occurrences/{occurrenceId}/requirements':
+  '/api/ministries/occurrences/{occurrenceId}/requirements':
     get:
       tags:
         - Volunteer
@@ -7164,7 +7135,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/occurrences/{occurrenceId}/requirements/replace':
+  '/api/ministries/occurrences/{occurrenceId}/requirements/replace':
     post:
       tags:
         - Volunteer
@@ -7204,7 +7175,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/requirements/{requirementId}':
+  '/api/ministries/requirements/{requirementId}':
     delete:
       tags:
         - Volunteer
@@ -7229,7 +7200,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/occurrences:
+  /api/ministries/occurrences:
     get:
       tags:
         - Volunteer
@@ -7314,7 +7285,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/occurrences/{occurrenceId}':
+  '/api/ministries/occurrences/{occurrenceId}':
     get:
       tags:
         - Volunteer
@@ -7372,7 +7343,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/occurrences/{occurrenceId}/status':
+  '/api/ministries/occurrences/{occurrenceId}/status':
     post:
       tags:
         - Volunteer
@@ -7412,7 +7383,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/event-series:
+  /api/ministries/event-series:
     get:
       tags:
         - Volunteer
@@ -7456,7 +7427,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/event-types:
+  /api/ministries/event-types:
     get:
       tags:
         - Volunteer
@@ -7480,7 +7451,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/classes:
+  /api/ministries/classes:
     get:
       tags:
         - Volunteer
@@ -7510,7 +7481,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/upcoming-events:
+  /api/ministries/upcoming-events:
     get:
       tags:
         - Volunteer
@@ -7563,7 +7534,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/occurrences/{occurrenceId}/staffing':
+  '/api/ministries/occurrences/{occurrenceId}/staffing':
     get:
       tags:
         - Volunteer
@@ -7589,7 +7560,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/occurrences/{occurrenceId}/eligible':
+  '/api/ministries/occurrences/{occurrenceId}/eligible':
     get:
       tags:
         - Volunteer
@@ -7630,7 +7601,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/occurrences/{occurrenceId}/assignments':
+  '/api/ministries/occurrences/{occurrenceId}/assignments':
     post:
       tags:
         - Volunteer
@@ -7686,7 +7657,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/assignments/{assignmentId}':
+  '/api/ministries/assignments/{assignmentId}':
     get:
       tags:
         - Volunteer
@@ -7739,7 +7710,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/assignments/{assignmentId}/status':
+  '/api/ministries/assignments/{assignmentId}/status':
     post:
       tags:
         - Volunteer
@@ -7784,7 +7755,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/assignments/{assignmentId}/notify':
+  '/api/ministries/assignments/{assignmentId}/notify':
     post:
       tags:
         - Volunteer
@@ -7816,7 +7787,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/assignments/{assignmentId}/notifications':
+  '/api/ministries/assignments/{assignmentId}/notifications':
     get:
       tags:
         - Volunteer
@@ -7842,7 +7813,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/gaps:
+  /api/ministries/gaps:
     get:
       tags:
         - Volunteer
@@ -7882,7 +7853,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/swaps:
+  /api/ministries/swaps:
     get:
       tags:
         - Volunteer
@@ -7922,7 +7893,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/swaps/{swapId}/approve':
+  '/api/ministries/swaps/{swapId}/approve':
     post:
       tags:
         - Volunteer
@@ -7960,7 +7931,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/swaps/{swapId}/reject':
+  '/api/ministries/swaps/{swapId}/reject':
     post:
       tags:
         - Volunteer
@@ -7998,7 +7969,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/dashboard:
+  /api/ministries/dashboard:
     get:
       tags:
         - Volunteer
@@ -8042,7 +8013,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/scopes:
+  /api/ministries/scopes:
     get:
       tags:
         - Volunteer
@@ -8126,7 +8097,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/scopes/{scopeId}':
+  '/api/ministries/scopes/{scopeId}':
     delete:
       tags:
         - Volunteer
@@ -8151,7 +8122,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/me/permissions:
+  /api/ministries/me/permissions:
     get:
       tags:
         - Volunteer
@@ -8178,7 +8149,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/ministries:
+  /api/ministries/ministries:
     get:
       tags:
         - Volunteer
@@ -8247,7 +8218,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}':
+  '/api/ministries/ministries/{ministryId}':
     get:
       tags:
         - Volunteer
@@ -8360,7 +8331,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/summary':
+  '/api/ministries/ministries/{ministryId}/summary':
     get:
       tags:
         - Volunteer
@@ -8393,7 +8364,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/teams':
+  '/api/ministries/ministries/{ministryId}/teams':
     get:
       tags:
         - Volunteer
@@ -8485,7 +8456,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/linkable-classes':
+  '/api/ministries/ministries/{ministryId}/linkable-classes':
     get:
       tags:
         - Volunteer
@@ -8523,7 +8494,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/teams/{teamId}':
+  '/api/ministries/teams/{teamId}':
     get:
       tags:
         - Volunteer
@@ -8655,7 +8626,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/positions':
+  '/api/ministries/ministries/{ministryId}/positions':
     get:
       tags:
         - Volunteer
@@ -8699,7 +8670,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/positions/{positionId}':
+  '/api/ministries/positions/{positionId}':
     get:
       tags:
         - Volunteer
@@ -8755,7 +8726,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/pool':
+  '/api/ministries/ministries/{ministryId}/pool':
     get:
       tags:
         - Volunteer
@@ -8789,7 +8760,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/pool/{personId}':
+  '/api/ministries/ministries/{ministryId}/pool/{personId}':
     post:
       tags:
         - Volunteer
@@ -8854,7 +8825,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/teams/{teamId}/pool/{personId}':
+  '/api/ministries/teams/{teamId}/pool/{personId}':
     post:
       tags:
         - Volunteer
@@ -8912,7 +8883,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /ministries/people/search:
+  /api/ministries/people/search:
     get:
       tags:
         - Volunteer
@@ -8945,7 +8916,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/pool/from-cart':
+  '/api/ministries/ministries/{ministryId}/pool/from-cart':
     post:
       tags:
         - Volunteer
@@ -8980,7 +8951,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/volunteers/{personId}':
+  '/api/ministries/ministries/{ministryId}/volunteers/{personId}':
     delete:
       tags:
         - Volunteer
@@ -9022,7 +8993,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/members':
+  '/api/ministries/ministries/{ministryId}/members':
     get:
       tags:
         - Volunteer
@@ -9060,7 +9031,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/teams/{teamId}/members':
+  '/api/ministries/teams/{teamId}/members':
     get:
       tags:
         - Volunteer
@@ -9092,7 +9063,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/ministries/{ministryId}/qualification-matrix':
+  '/api/ministries/ministries/{ministryId}/qualification-matrix':
     get:
       tags:
         - Volunteer
@@ -9134,7 +9105,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/teams/{teamId}/qualification-matrix':
+  '/api/ministries/teams/{teamId}/qualification-matrix':
     get:
       tags:
         - Volunteer
@@ -9169,7 +9140,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/positions/{positionId}/qualifications':
+  '/api/ministries/positions/{positionId}/qualifications':
     get:
       tags:
         - Volunteer
@@ -9252,7 +9223,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/qualifications/{qualificationId}':
+  '/api/ministries/qualifications/{qualificationId}':
     delete:
       tags:
         - Volunteer
@@ -9278,7 +9249,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/ministries/people/{personId}/qualifications':
+  '/api/ministries/people/{personId}/qualifications':
     get:
       tags:
         - Volunteer
@@ -9308,7 +9279,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /deposits:
+  /api/deposits:
     get:
       tags:
         - Finance
@@ -9364,7 +9335,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /deposits/dashboard:
+  /api/deposits/dashboard:
     get:
       tags:
         - Finance
@@ -9379,7 +9350,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/deposits/{id}':
+  '/api/deposits/{id}':
     get:
       tags:
         - Finance
@@ -9460,7 +9431,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/deposits/{id}/ofx':
+  '/api/deposits/{id}/ofx':
     get:
       tags:
         - Finance
@@ -9484,7 +9455,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/deposits/{id}/pdf':
+  '/api/deposits/{id}/pdf':
     get:
       tags:
         - Finance
@@ -9508,7 +9479,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /deposits/csv:
+  /api/deposits/csv:
     get:
       tags:
         - Finance
@@ -9535,7 +9506,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/deposits/{id}/csv':
+  '/api/deposits/{id}/csv':
     get:
       tags:
         - Finance
@@ -9559,7 +9530,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/deposits/{id}/pledges':
+  '/api/deposits/{id}/pledges':
     get:
       tags:
         - Finance
@@ -9581,7 +9552,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/deposits/{id}/payments':
+  '/api/deposits/{id}/payments':
     get:
       tags:
         - Finance
@@ -9603,7 +9574,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /deposits/open-count:
+  /api/deposits/open-count:
     get:
       tags:
         - Finance
@@ -9618,7 +9589,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /donation-funds:
+  /api/donation-funds:
     get:
       tags:
         - Finance
@@ -9647,7 +9618,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/donation-funds/{id}':
+  '/api/donation-funds/{id}':
     get:
       tags:
         - Finance
@@ -9672,7 +9643,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /fundraisers:
+  /api/fundraisers:
     get:
       tags:
         - Finance
@@ -9720,7 +9691,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/fundraisers/{id}':
+  '/api/fundraisers/{id}':
     get:
       tags:
         - Finance
@@ -9809,7 +9780,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /fiscalyear:
+  /api/fiscalyear:
     get:
       tags:
         - Finance
@@ -9842,7 +9813,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /payments/:
+  /api/payments/:
     get:
       tags:
         - Finance
@@ -9889,7 +9860,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/payments/family/{familyId}/list':
+  '/api/payments/family/{familyId}/list':
     get:
       tags:
         - Finance
@@ -9925,7 +9896,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/payments/pledges/{groupKey}':
+  '/api/payments/pledges/{groupKey}':
     get:
       tags:
         - Finance
@@ -9971,7 +9942,93 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/payments/{groupKey}':
+  /api/payments/pledges:
+    post:
+      tags:
+        - Finance
+      summary: 'Create a new pledge or multi-fund payment (Finance role required)'
+      description: "Creates one or more pledge_plg rows sharing a single GroupKey. Supports multi-fund splits where amounts across funds must sum to the desired total. Set `type` to 'Pledge' or 'Payment'."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - Date
+                - FYID
+                - type
+                - FundSplit
+                - iMethod
+              properties:
+                FamilyID:
+                  description: 'Family ID — omit or pass null for anonymous/cash donations with no associated family'
+                  type: integer
+                  example: 42
+                  nullable: true
+                Date:
+                  description: 'Pledge/payment date'
+                  type: string
+                  format: date
+                  example: '2025-01-15'
+                FYID:
+                  description: 'Fiscal year ID'
+                  type: integer
+                  example: 29
+                type:
+                  description: 'Record type'
+                  type: string
+                  example: Payment
+                  enum: [Pledge, Payment]
+                iMethod:
+                  description: 'Payment method'
+                  type: string
+                  example: CHECK
+                  enum: [CHECK, CASH, CREDITCARD, BANKDRAFT]
+                iCheckNo:
+                  description: 'Check number (conditionally required when iMethod=CHECK; see bRequireCheckNumber system setting)'
+                  type: string
+                  example: '1234'
+                  nullable: true
+                DepositID:
+                  description: 'Deposit slip ID (for Payments)'
+                  type: integer
+                  example: 5
+                  nullable: true
+                schedule:
+                  description: 'Payment schedule (for Pledges)'
+                  type: string
+                  example: Monthly
+                  nullable: true
+                tScanString:
+                  description: 'Scanned check MICR string'
+                  type: string
+                  example: ''
+                  nullable: true
+                FundSplit:
+                  description: 'JSON-encoded array of fund allocations'
+                  type: string
+                  example: '[{"FundID":1,"Amount":200.00,"NonDeductible":0,"Comment":"General"},{"FundID":2,"Amount":50.00,"NonDeductible":0,"Comment":""}]'
+              type: object
+      responses:
+        '200':
+          description: 'Created pledge/payment group key and details'
+          content:
+            application/json:
+              schema:
+                properties:
+                  groupKey: { type: string, example: abc123 }
+                  payment: { description: 'Pledge details object', type: object }
+                type: object
+        '400':
+          description: 'Validation error (invalid date, fund, check number, etc.)'
+        '401':
+          description: Unauthorized
+        '403':
+          description: 'Finance role required'
+      security:
+        -
+          ApiKeyAuth: []
+  '/api/payments/{groupKey}':
     put:
       tags:
         - Finance
@@ -10075,7 +10132,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /api/upgrade/preview:
+  /admin/api/upgrade/preview:
     get:
       tags:
         - Admin
@@ -10107,7 +10164,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /api/upgrade/download-latest-release:
+  /admin/api/upgrade/download-latest-release:
     get:
       tags:
         - Admin
@@ -10142,7 +10199,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /api/upgrade/do-upgrade:
+  /admin/api/upgrade/do-upgrade:
     post:
       tags:
         - Admin
@@ -10173,7 +10230,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /api/upgrade/refresh-upgrade-info:
+  /admin/api/upgrade/refresh-upgrade-info:
     post:
       tags:
         - Admin
@@ -10199,7 +10256,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/api/user/{userId}/password/reset':
+  '/admin/api/user/{userId}/password/reset':
     post:
       tags:
         - Admin
@@ -10237,7 +10294,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/api/user/{userId}/disableTwoFactor':
+  '/admin/api/user/{userId}/disableTwoFactor':
     post:
       tags:
         - Admin
@@ -10257,7 +10314,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/api/user/{userId}/login/reset':
+  '/admin/api/user/{userId}/login/reset':
     post:
       tags:
         - Admin
@@ -10277,7 +10334,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/api/user/{userId}/':
+  '/admin/api/user/{userId}/':
     delete:
       tags:
         - Admin
@@ -10303,7 +10360,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  '/api/user/{userId}/permissions':
+  '/admin/api/user/{userId}/permissions':
     get:
       tags:
         - Admin
@@ -10328,6 +10385,20 @@ paths:
                 type: object
         '403':
           description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/member-portal/email-audit:
+    get:
+      tags:
+        - 'Member Portal'
+      summary: 'List invalid stored emails and personal-email collation collisions'
+      description: "Read-only cleanup report. Collisions use the stored column's case/accent folding; they do not establish a shared sign-in identity."
+      responses:
+        '200':
+          description: 'Invalid personal/work emails and groups of colliding personal emails, with person IDs'
+        '403':
+          description: 'Administrator required'
       security:
         -
           ApiKeyAuth: []
@@ -10366,7 +10437,7 @@ paths:
       tags:
         - Admin
       summary: 'One page of a Member Portal list (Admin role required)'
-      description: "may-sign-in: the blocks, the member rule and the email rule all let them in. everyone: anyone on file with a maySignIn flag and reasonLabel. signed-in-recently: a portal sign-in in the last 30 days. never-signed-in: may sign in but never has. email-attention: the member rule lets them in but their email does not (no_email, shared_email or email_unconfirmed); an unconfirmed row says whether the caller may confirm it (canConfirmEmail, confirmEmailRefusal) through POST /api/person/{id}/sign-in/confirm-email. families-confirmed: a member confirmed the family's details in the last 30 days. family-emails-not-moved: the 7.8.3 upgrade could not give the family email to a person."
+      description: "may-sign-in: the blocks, the member rule and the email rule all let them in. everyone: anyone on file with a maySignIn flag and reasonLabel. signed-in-recently: a portal sign-in in the last 30 days. never-signed-in: may sign in but never has. email-attention: the member rule lets them in but their email does not (no_email, invalid_email, shared_email or email_unconfirmed); an unconfirmed row says whether the caller may confirm it (canConfirmEmail, confirmEmailRefusal) through POST /api/person/{id}/sign-in/confirm-email. families-confirmed: a member confirmed the family's details in the last 30 days. family-emails-not-moved: the 7.8.3 upgrade could not give the family email to a person."
       operationId: getMemberPortalList
       parameters:
         -
@@ -10410,6 +10481,7 @@ paths:
             type: string
             enum:
               - no_email
+              - invalid_email
               - shared_email
               - email_unconfirmed
         -
@@ -11520,7 +11592,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /api/admin/birthday-emails/test:
+  /admin/api/admin/birthday-emails/test:
     post:
       tags:
         - Admin
@@ -11616,7 +11688,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /api/demo/load:
+  /admin/api/demo/load:
     post:
       tags:
         - Admin
@@ -11654,7 +11726,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /api/orphaned-files:
+  /admin/api/orphaned-files:
     get:
       tags:
         - Admin
@@ -11678,7 +11750,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /api/orphaned-files/delete-all:
+  /admin/api/orphaned-files/delete-all:
     post:
       tags:
         - Admin
@@ -11988,7 +12060,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /api/database/people/export/chmeetings:
+  /admin/api/database/people/export/chmeetings:
     get:
       tags:
         - Admin
@@ -11999,7 +12071,7 @@ paths:
       security:
         -
           ApiKeyAuth: []
-  /api/database/reset:
+  /admin/api/database/reset:
     delete:
       tags:
         - Admin
@@ -13385,7 +13457,7 @@ components:
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
-      description: 'API key obtained from Profile → API Key in ChurchCRM, or via POST /public/user/login'
+      description: 'API key obtained from Profile → API Key in ChurchCRM, or via POST /api/public/user/login'
       name: x-api-key
       in: header
 tags:
