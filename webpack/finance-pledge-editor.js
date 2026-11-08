@@ -10,16 +10,20 @@ window.CRM.onLocalesReady(() => {
 
   // ---- Family TomSelect ----
   const familyNameEl = document.getElementById("FamilyName");
+  let latestQuery = "";
   if (familyNameEl && !familyNameEl.tomselect) {
     new TomSelect(familyNameEl, {
       valueField: "id",
       labelField: "text",
-      searchField: "text",
-      load: (query, callback) => {
+      searchField: [],
+      load: function (query, callback) {
+        this.clearOptions();
+        latestQuery = query;
         if (query.length < 2 && !/^\d+$/.test(query)) return callback();
         fetch(ROOT + "/api/families/search/" + encodeURIComponent(query))
           .then((res) => res.json())
           .then((data) => {
+            if (query !== latestQuery) return callback();
             var families = data && data.Families ? data.Families : [];
             callback(families.map((obj) => ({ id: String(obj.Id), text: obj.displayName })));
           })

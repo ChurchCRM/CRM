@@ -1,7 +1,7 @@
 .ts-wrapper {
   &.multi .ts-control .item {
     background-color: var(--tblr-primary);
-    color: #fff;
+    color: var(--tblr-primary-fg);
   }
 
   &.single .ts-control {
@@ -14,7 +14,9 @@
 
   &.focus .ts-control {
     border-color: var(--tblr-primary);
-    box-shadow: 0 0 0 0.2rem rgba(32, 107, 196, 0.15);
+    outline: var(--tblr-focus-ring-width) solid var(--tblr-focus-ring-color);
+    outline-offset: -1px;
+    box-shadow: none;
   }
 }
 
