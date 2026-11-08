@@ -1,6 +1,6 @@
-$(document).ready(function () {
+$(document).ready(() => {
   // Print button
-  $("#printPerson").on("click", function () {
+  $("#printPerson").on("click", () => {
     window.print();
   });
 
@@ -19,21 +19,15 @@ $(document).ready(function () {
       ? `${i18next.t("Please confirm deactivation of person")}: ${safeName}`
       : `${i18next.t("Please confirm activation of person")}: ${safeName}`;
 
-    bootbox.confirm({
-      title: popupTitle,
-      message: `<p class="text-danger">${popupMessage}</p>`,
-      callback: (result) => {
-        if (result) {
-          window.CRM.APIRequest({
-            method: "POST",
-            path: `person/${window.CRM.currentPersonID}/activate/${!window.CRM.currentPersonActive}`,
-          }).then((data) => {
-            if (data.success) {
-              window.location.reload();
-            }
-          });
+    window.CRM.confirmAction(popupTitle, `<p class="text-danger">${popupMessage}</p>`, () => {
+      window.CRM.APIRequest({
+        method: "POST",
+        path: `person/${window.CRM.currentPersonID}/activate/${!window.CRM.currentPersonActive}`,
+      }).then((data) => {
+        if (data.success) {
+          window.location.reload();
         }
-      },
+      });
     });
   });
 
@@ -46,7 +40,7 @@ $(document).ready(function () {
     window.CRM.APIRequest({
       path: "payments/family/" + window.CRM.personFamId + "/list",
     })
-      .then(function (resp) {
+      .then((resp) => {
         var data = resp && resp.data ? resp.data : [];
         if (!data.length) {
           $("#giving-history-loading").addClass("d-none");
@@ -58,7 +52,7 @@ $(document).ready(function () {
         var ytdTotal = 0;
         var lastPayment = null;
 
-        data.forEach(function (row) {
+        data.forEach((row) => {
           if (row.PledgeOrPayment === "Payment") {
             if (currentFY && row.FormattedFY === currentFY) {
               ytdTotal += parseFloat(row.Amount) || 0;
@@ -90,13 +84,13 @@ $(document).ready(function () {
         $("#giving-history-loading").addClass("d-none");
         $("#giving-history-content").removeClass("d-none");
       })
-      .catch(function () {
+      .catch(() => {
         $("#giving-history-loading").addClass("d-none");
         $("#giving-history-empty").removeClass("d-none");
       });
   }
 
-  $("#input-person-properties").on("change", function () {
+  $("#input-person-properties").on("change", () => {
     var promptBox = $("#prompt-box");
     promptBox.removeClass("mb-3").html("");
     var selected = $("#input-person-properties :selected");
@@ -110,11 +104,11 @@ $(document).ready(function () {
     }
   });
 
-  $("#assign-property-btn").click(function (event) {
+  $("#assign-property-btn").click((event) => {
     let propertyId = "";
     let value = "";
-    let dataToSend = $("#assign-property-form").serializeArray();
-    $.each(dataToSend, function (key, field) {
+    const dataToSend = $("#assign-property-form").serializeArray();
+    $.each(dataToSend, (key, field) => {
       if (field.name === "PropertyId") {
         propertyId = field.value;
       } else if (field.name === "PropertyValue") {
@@ -125,22 +119,20 @@ $(document).ready(function () {
       method: "POST",
       path: "people/properties/person/" + window.CRM.currentPersonID + "/" + propertyId,
       data: JSON.stringify({ value: value }),
-    }).done(function (data) {
+    }).done((data) => {
       location.reload();
     });
   });
 
   $(".remove-property-btn").click(function (event) {
-    let propertyId = $(this).data("property_id");
-    bootbox.confirm(i18next.t("Are you sure you want to unassign this property?"), function (result) {
-      if (result) {
-        window.CRM.APIRequest({
-          method: "DELETE",
-          path: "people/properties/person/" + window.CRM.currentPersonID + "/" + propertyId,
-        }).done(function (data) {
-          location.reload();
-        });
-      }
+    const propertyId = $(this).data("property_id");
+    window.CRM.confirmAction("", i18next.t("Are you sure you want to unassign this property?"), () => {
+      window.CRM.APIRequest({
+        method: "DELETE",
+        path: "people/properties/person/" + window.CRM.currentPersonID + "/" + propertyId,
+      }).done((data) => {
+        location.reload();
+      });
     });
   });
 
@@ -155,7 +147,7 @@ $(document).ready(function () {
       type: "GET",
       dataType: "json",
       url: window.CRM.root + "/api/persons/roles",
-      success: function (data, status, xmlHttpReq) {
+      success: (data, status, xmlHttpReq) => {
         if (data.length) {
           roles = [{ text: familyRole, value: "" }];
           for (var i = 0; i < data.length; i++) {
@@ -169,17 +161,15 @@ $(document).ready(function () {
             };
           }
 
-          bootbox.prompt({
-            title: i18next.t("Change role"),
-            inputType: "select",
-            inputOptions: roles,
-            callback: function (result) {
+          window.CRM.promptAction(
+            i18next.t("Change role"),
+            (result) => {
               if (result) {
                 $.ajax({
                   type: "POST",
                   dataType: "json",
                   url: window.CRM.root + "/api/person/" + personId + "/role/" + result,
-                  success: function (data, status, xmlHttpReq) {
+                  success: (data, status, xmlHttpReq) => {
                     if (data.success) {
                       location.reload();
                     }
@@ -187,7 +177,8 @@ $(document).ready(function () {
                 });
               }
             },
-          });
+            { inputType: "select", inputOptions: roles },
+          );
         }
       },
     });
@@ -200,7 +191,7 @@ $(document).ready(function () {
       type: "GET",
       dataType: "json",
       url: window.CRM.root + "/plugins/status/mailchimp",
-      success: function (pluginData) {
+      success: (pluginData) => {
         if (pluginData.success && pluginData.isActive && pluginData.isConfigured) {
           // Show the MailChimp tab and content
           $("#nav-item-mailchimp-container").removeClass("d-none");
@@ -211,20 +202,20 @@ $(document).ready(function () {
             type: "GET",
             dataType: "json",
             url: window.CRM.root + "/plugins/mailchimp/api/person/" + window.CRM.currentPersonID,
-            success: function (data) {
+            success: (data) => {
               if (!data || data.length === 0) {
                 // No email data returned - should not happen if tab is shown
                 return;
               }
               for (const emailData of data) {
                 let htmlVal = "";
-                let emailMD5 = emailData["emailMD5"];
-                let lists = emailData["list"] || [];
+                const emailMD5 = emailData["emailMD5"];
+                const lists = emailData["list"] || [];
                 for (const list of lists) {
-                  let listName = list["name"];
-                  let listStatus = list["status"];
+                  const listName = list["name"];
+                  const listStatus = list["status"];
                   if (listStatus != 404) {
-                    let listOpenRate = (list["stats"]?.["avg_open_rate"] || 0) * 100;
+                    const listOpenRate = (list["stats"]?.["avg_open_rate"] || 0) * 100;
                     htmlVal +=
                       "<li>" +
                       listName +
@@ -243,7 +234,7 @@ $(document).ready(function () {
                 $("#" + emailMD5).html(htmlVal);
               }
             },
-            error: function () {
+            error: () => {
               // API error - update all loading cells to show error
               // Use data attribute marker instead of localized text check
               $("#mailchimp td[data-loading='true']").each(function () {

@@ -62,27 +62,5 @@ export function formatWhat(ministryName: string | null, teamName: string | null,
   return [ministryName, teamName, positionName].filter((part) => !!part).join(" — ");
 }
 
-export function notifySuccess(message: string): void {
-  window.CRM?.notify?.(message, { type: "success" });
-}
-
-/** `"danger"`, never `"error"` — `"error"` renders BLUE in Notyf (U5/E-7). */
-export function notifyError(message: string): void {
-  window.CRM?.notify?.(message, { type: "danger" });
-}
-
-export function confirmAction(title: string, message: string, onConfirm: () => void, danger = true): void {
-  window.bootbox?.confirm({
-    title,
-    message,
-    buttons: {
-      confirm: { label: i18next.t("Yes"), className: danger ? "btn-danger" : "btn-primary" },
-      cancel: { label: i18next.t("No"), className: "btn-default" },
-    },
-    callback: (result: boolean) => {
-      if (result) {
-        onConfirm();
-      }
-    },
-  });
-}
+export { confirmAction, promptAction } from "../common/confirm-action";
+export { notifyError, notifySuccess } from "../common/notify";

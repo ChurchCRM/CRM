@@ -100,3 +100,65 @@ describe("Fundraiser delete routes use the shared ManageFundraisers gate", () =>
         });
     });
 });
+
+describe("Fundraiser delete confirmation", () => {
+    let fundraiserId;
+
+    beforeEach(() => {
+        cy.setupAdminSession();
+        cy.request("/fundraiser/editor").then(({ body }) => {
+            const token = Cypress.$(body).find('input[name="csrf_token"]').val();
+            cy.request({
+                method: "POST",
+                url: "/fundraiser/editor",
+                form: true,
+                followRedirect: false,
+                body: {
+                    csrf_token: token,
+                    Date: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10),
+                    Title: "CY Confirm Fundraiser",
+                    Status: "Planning",
+                    Type: "Auction",
+                    FundRaiserSubmit: "Save",
+                },
+            }).then(({ headers }) => {
+                fundraiserId = headers.location.match(/editor\/(\d+)/)[1];
+            });
+        });
+    });
+
+    afterEach(() => {
+        cy.request("/fundraiser/").then(({ body }) => {
+            const form = Cypress.$(body).find(`form[action$="/fundraiser/${fundraiserId}/delete"]`);
+            if (form.length) {
+                cy.request({
+                    method: "POST",
+                    url: `/fundraiser/${fundraiserId}/delete`,
+                    form: true,
+                    body: { csrf_token: form.find('input[name="csrf_token"]').val() },
+                });
+            }
+        });
+    });
+
+    it("keeps the fundraiser on cancel and submits its CSRF-protected form on accept", () => {
+        cy.visit("/fundraiser/");
+        const form = () => cy.get(`form[action$="/fundraiser/${fundraiserId}/delete"]`);
+        cy.intercept("POST", `**/fundraiser/${fundraiserId}/delete`).as("deleteFundraiser");
+        form().closest(".dropdown").find('[data-bs-toggle="dropdown"]').click();
+        form().find('button[type="submit"]').click();
+        cy.get(".bootbox-confirm").should("be.visible").find(".bootbox-cancel").click();
+        cy.get(".bootbox-confirm").should("not.exist");
+        cy.get("@deleteFundraiser.all").should("have.length", 0);
+        form().should("exist");
+
+        form().closest(".dropdown").find('[data-bs-toggle="dropdown"]').click();
+        form().find('button[type="submit"]').click();
+        cy.get(".bootbox-confirm").should("be.visible").find(".bootbox-accept").click();
+        cy.wait("@deleteFundraiser").then(({ request, response }) => {
+            expect(request.body).to.include("csrf_token=");
+            expect(response.statusCode).to.eq(302);
+        });
+        form().should("not.exist");
+    });
+});

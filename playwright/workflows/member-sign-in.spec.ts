@@ -287,7 +287,7 @@ test.describe('in a browser of its own', () => {
     await page.goto(`/people/view/${george.personId}`);
     await humanClick(page.locator('#person-actions-dropdown'));
     await humanClick(page.locator('a#loginAsPerson'));
-    await humanClick(page.locator('.bootbox .btn-warning'));
+    await humanClick(page.locator('.bootbox-accept'));
     await page.waitForURL(/\/portal\/$/, { timeout: 30000 });
     await expect(page.locator('#login-as-person-banner')).toBeVisible();
     await settle(page, 800);

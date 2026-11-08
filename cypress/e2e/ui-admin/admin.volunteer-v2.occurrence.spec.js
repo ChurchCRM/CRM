@@ -739,7 +739,7 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
             cy.get('#occurrence-actions .dropdown-item[data-action="occurrence-cancel"]').click();
             cy.get(".bootbox.modal").should("be.visible").and("contain", "Nobody assigned yet");
             cy.get("#occurrence-cancel-people").should("not.exist");
-            cy.get(".bootbox .btn-default").click();
+            cy.get(".bootbox-cancel").click();
             cy.get("#occurrence-status").should("contain", "Scheduled");
             cy.get("@status.all").should("have.length", 0);
             cy.makePrivateAdminAPICall("GET", `${VOLUNTEER_URL}/occurrences/${occurrenceId}`, null, 200)

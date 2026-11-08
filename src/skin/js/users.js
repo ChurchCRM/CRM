@@ -2,11 +2,7 @@ $(document).ready(() => {
   $("#user-listing-table").DataTable(window.CRM.plugin.dataTable);
 
   $(".setting-tip").click(function () {
-    bootbox.alert({
-      message: $(this).data("tip"),
-      backdrop: true,
-      className: "setting-tip-box",
-    });
+    window.CRM.alertAction("", $(this).data("tip"), { backdrop: true, className: "setting-tip-box" });
   });
 
   var disallowedEl = document.getElementById("aDisallowedPasswords");
@@ -56,91 +52,79 @@ $(document).ready(() => {
 });
 
 function deleteUser(userId, userName) {
-  bootbox.confirm({
-    title: i18next.t("User Delete Confirmation"),
-    message:
-      '<p class="text-danger">' +
+  window.CRM.confirmAction(
+    i18next.t("User Delete Confirmation"),
+    '<p class="text-danger">' +
       i18next.t("Please confirm removal of user status from") +
       ": <b>" +
       window.CRM.escapeHtml(String(userName || "")) +
       "</b></p>",
-    callback: (result) => {
-      if (result) {
-        window.CRM.AdminAPIRequest({
-          path: "user/" + userId + "/",
-          method: "DELETE",
-        }).done(() => {
-          window.location.href = window.CRM.root + "/admin/system/users";
-        });
-      }
+    () => {
+      window.CRM.AdminAPIRequest({
+        path: "user/" + userId + "/",
+        method: "DELETE",
+      }).done(() => {
+        window.location.href = window.CRM.root + "/admin/system/users";
+      });
     },
-  });
+  );
 }
 
 function restUserLoginCount(userId, userName) {
-  bootbox.confirm({
-    title: i18next.t("Action Confirmation"),
-    message:
-      '<p class="text-danger">' +
+  window.CRM.confirmAction(
+    i18next.t("Action Confirmation"),
+    '<p class="text-danger">' +
       i18next.t("Please confirm reset failed login count") +
       ": <b>" +
       window.CRM.escapeHtml(String(userName || "")) +
       "</b></p>",
-    callback: (result) => {
-      if (result) {
-        window.CRM.AdminAPIRequest({
-          path: "user/" + userId + "/login/reset",
-          method: "POST",
-        }).done(() => {
-          window.location.href = window.CRM.root + "/admin/system/users";
-        });
-      }
+    () => {
+      window.CRM.AdminAPIRequest({
+        path: "user/" + userId + "/login/reset",
+        method: "POST",
+      }).done(() => {
+        window.location.href = window.CRM.root + "/admin/system/users";
+      });
     },
-  });
+  );
 }
 
 function resetUserPassword(userId, userName) {
-  bootbox.confirm({
-    title: i18next.t("Action Confirmation"),
-    message:
-      '<p class="text-danger">' +
+  window.CRM.confirmAction(
+    i18next.t("Action Confirmation"),
+    '<p class="text-danger">' +
       i18next.t("Please confirm the password reset of this user") +
       ": <b>" +
       window.CRM.escapeHtml(String(userName || "")) +
       "</b></p>",
-    callback: (result) => {
-      if (result) {
-        window.CRM.AdminAPIRequest({
-          path: "user/" + userId + "/password/reset",
-          method: "POST",
-        }).done((data) => {
-          window.CRM.notify(i18next.t("Password reset for") + " " + window.CRM.escapeHtml(String(userName || "")), {
-            type: "success",
-          });
+    () => {
+      window.CRM.AdminAPIRequest({
+        path: "user/" + userId + "/password/reset",
+        method: "POST",
+      }).done((data) => {
+        window.CRM.notify(i18next.t("Password reset for") + " " + window.CRM.escapeHtml(String(userName || "")), {
+          type: "success",
         });
-      }
+      });
     },
-  });
+  );
 }
 
 function disableUserTwoFactorAuth(userId, userName) {
-  bootbox.confirm({
-    title: i18next.t("Action Confirmation"),
-    message:
-      '<p class="text-danger">' +
+  window.CRM.confirmAction(
+    i18next.t("Action Confirmation"),
+    '<p class="text-danger">' +
       i18next.t("Please confirm disabling 2 Factor Auth for this user") +
       ": <b>" +
       window.CRM.escapeHtml(String(userName || "")) +
       "</b></p>",
-    callback: (result) => {
-      if (result) {
-        window.CRM.AdminAPIRequest({
-          path: "user/" + userId + "/disableTwoFactor",
-          method: "POST",
-        }).done((data) => {
-          window.location.href = window.CRM.root + "/admin/system/users";
-        });
-      }
+    () => {
+      window.CRM.AdminAPIRequest({
+        path: "user/" + userId + "/disableTwoFactor",
+        method: "POST",
+      }).done((data) => {
+        window.location.href = window.CRM.root + "/admin/system/users";
+      });
     },
-  });
+  );
 }

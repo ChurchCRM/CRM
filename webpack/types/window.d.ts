@@ -278,6 +278,37 @@ interface CRMSettingsPanel {
 }
 
 interface CRMNamespace {
+  promptAction?: (
+    title: string,
+    onSubmit: (value: string) => void,
+    options?: {
+      message?: string;
+      value?: string;
+      inputType?: "text" | "select" | "textarea" | "number";
+      inputOptions?: { text: string; value: string }[];
+      confirmLabel?: string;
+      cancelLabel?: string;
+    },
+  ) => void;
+  alertAction?: (
+    title: string,
+    message: string,
+    options?: { className?: string; backdrop?: boolean; onClose?: () => void; onShown?: (modal: Element) => void },
+  ) => void;
+  confirmAction?: (
+    title: string,
+    message: string,
+    onConfirm: () => void,
+    options?:
+      | boolean
+      | {
+          tone?: "danger" | "warning" | "primary";
+          confirmLabel?: string;
+          cancelLabel?: string;
+          onCancel?: () => void;
+          className?: string;
+        },
+  ) => void;
   root?: string;
   /** ChurchCRM's configured locale, e.g. `en_US` (src/Include/Header.php). */
   locale?: string;
@@ -374,6 +405,7 @@ interface BootboxStatic {
     buttons?: Record<string, { label?: string; className?: string }>;
     /** Return false to keep the dialog open. */
     callback: (result: boolean) => unknown;
+    onShown?: (event: { target: EventTarget | null }) => void;
   }): void;
   prompt(options: Record<string, unknown>): void;
 }

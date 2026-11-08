@@ -194,65 +194,50 @@ $(document).ready(function () {
 
         // ── Reset Flow ───────────────────────────────────────────
         $("#resetBtn").on("click", function () {
-            bootbox.confirm({
-                title: '<i class="fa-solid fa-triangle-exclamation text-danger me-2"></i>' + i18next.t("Final Confirmation"),
-                message: '<p>' + i18next.t("Are you absolutely sure? This will erase all data and restore factory defaults.") + '</p>' +
+            window.CRM.confirmAction(
+              '<i class="fa-solid fa-triangle-exclamation text-danger me-2"></i>' + i18next.t("Final Confirmation"),
+              '<p>' + i18next.t("Are you absolutely sure? This will erase all data and restore factory defaults.") + '</p>' +
                          '<p class="text-danger fw-bold mb-0">' + i18next.t("This action cannot be undone.") + '</p>',
-                buttons: {
-                    confirm: {
-                        label: '<i class="fa-solid fa-trash me-1"></i>' + i18next.t('Reset Database'),
-                        className: 'btn-danger'
-                    },
-                    cancel: {
-                        label: i18next.t('Cancel'),
-                        className: 'btn-secondary'
-                    }
-                },
-                callback: function (confirmed) {
-                    if (!confirmed) {
-                        return;
-                    }
+              () => {
+                $("#resetBtn").prop("disabled", true).html(
+                    '<span class="spinner-border spinner-border-sm me-2"></span>' + i18next.t("Resetting...")
+                );
 
-                    $("#resetBtn").prop("disabled", true).html(
-                        '<span class="spinner-border spinner-border-sm me-2"></span>' + i18next.t("Resetting...")
+                window.CRM.AdminAPIRequest({
+                    path: 'database/reset',
+                    method: 'DELETE'
+                })
+                .done(function (data) {
+                    var username = (data && data.defaultUsername) ? data.defaultUsername : 'admin';
+                    var password = (data && data.defaultPassword) ? data.defaultPassword : 'changeme';
+
+                    window.CRM.alertAction(
+                        '<i class="fa-solid fa-check text-success me-2"></i>' + i18next.t('Reset Complete'),
+                        '<p>' + i18next.t('The database has been cleared. The system is ready for a fresh start.') + '</p>' +
+                            '<div class="alert alert-info mb-0">' +
+                            '<strong>' + i18next.t('Default admin credentials') + ':</strong><br>' +
+                            '<code>' + username + '</code> / <code>' + password + '</code>' +
+                            '</div>',
+                        { onClose: function () { window.location.href = window.CRM.root + "/admin/"; } }
                     );
-
-                    window.CRM.AdminAPIRequest({
-                        path: 'database/reset',
-                        method: 'DELETE'
-                    })
-                    .done(function (data) {
-                        var username = (data && data.defaultUsername) ? data.defaultUsername : 'admin';
-                        var password = (data && data.defaultPassword) ? data.defaultPassword : 'changeme';
-
-                        bootbox.alert({
-                            title: '<i class="fa-solid fa-check text-success me-2"></i>' + i18next.t('Reset Complete'),
-                            message: '<p>' + i18next.t('The database has been cleared. The system is ready for a fresh start.') + '</p>' +
-                                     '<div class="alert alert-info mb-0">' +
-                                     '<strong>' + i18next.t('Default admin credentials') + ':</strong><br>' +
-                                     '<code>' + username + '</code> / <code>' + password + '</code>' +
-                                     '</div>',
-                            callback: function () {
-                                window.location.href = window.CRM.root + "/admin/";
-                            }
-                        });
-                    })
-                    .fail(function (xhr) {
-                        var msg = i18next.t('Database reset failed.');
-                        if (xhr.responseJSON && xhr.responseJSON.msg) {
-                            msg = xhr.responseJSON.msg;
-                        }
-                        bootbox.alert({
-                            title: '<i class="fa-solid fa-circle-exclamation text-danger me-2"></i>' + i18next.t('Error'),
-                            message: msg
-                        });
-                        $("#resetBtn").prop("disabled", false).html(
-                            '<i class="fa-solid fa-trash me-2"></i>' + i18next.t('Reset Database')
-                        );
-                        $("#confirmInput").val("");
-                    });
-                }
-            });
+                })
+                .fail(function (xhr) {
+                    var msg = i18next.t('Database reset failed.');
+                    if (xhr.responseJSON && xhr.responseJSON.msg) {
+                        msg = xhr.responseJSON.msg;
+                    }
+                    window.CRM.alertAction(
+                        '<i class="fa-solid fa-circle-exclamation text-danger me-2"></i>' + i18next.t('Error'),
+                        msg
+                    );
+                    $("#resetBtn").prop("disabled", false).html(
+                        '<i class="fa-solid fa-trash me-2"></i>' + i18next.t('Reset Database')
+                    );
+                    $("#confirmInput").val("");
+                });
+              },
+              { confirmLabel: '<i class="fa-solid fa-trash me-1"></i>' + i18next.t('Reset Database'), cancelLabel: i18next.t('Cancel') },
+            );
         });
     });
 });
