@@ -172,7 +172,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="card-title">
                     <i class="fa-solid fa-users me-2 text-body-secondary"></i><?= gettext('People') ?>
                 </div>
-                <div class="card-options ms-auto">
+                <div class="card-options">
                     <ul class="nav nav-tabs card-header-tabs" id="people-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="latest-fam-tab" data-bs-toggle="tab" href="#latest-fam-pane" role="tab" aria-controls="latest-fam-pane" aria-selected="true">

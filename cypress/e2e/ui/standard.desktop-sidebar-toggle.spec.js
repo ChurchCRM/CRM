@@ -117,11 +117,11 @@ describe("Staff desktop sidebar preference", () => {
                 cy.get("#sidebar").should("be.visible");
                 expectLayout();
                 capture(`sidebar-${name}-${width}x820-${theme}-closed`);
-                cy.get("#sidebar .navbar-toggler").should("be.visible").click();
+                cy.get("#menu-toggle").should("be.visible").click();
                 cy.get("#sidebar-menu").should("have.class", "show");
                 expectLayout();
                 capture(`sidebar-${name}-${width}x820-${theme}-open`);
-                cy.get("#sidebar .navbar-toggler").click();
+                cy.get("#menu-toggle").click();
                 cy.get("#sidebar-menu").should("not.be.visible");
                 cy.viewport(1200, 900);
                 cy.get("#sidebar").should("not.be.visible");
