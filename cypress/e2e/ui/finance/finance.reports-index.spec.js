@@ -33,6 +33,7 @@ describe("Finance Reports Index", () => {
         cy.contains("Pledge Reports");
         cy.contains("Pledge Summary");
         cy.contains("Pledge Family Summary");
+        cy.contains('a[href$="/finance/reports/pledge-comparison"]', "Pledge Comparison").should("be.visible");
         cy.contains("Pledge Reminders");
     });
 
