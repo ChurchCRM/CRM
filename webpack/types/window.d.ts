@@ -278,7 +278,31 @@ interface CRMSettingsPanel {
 }
 
 interface CRMNamespace {
-  confirmAction?: (title: string, message: string, onConfirm: () => void, danger?: boolean) => void;
+  promptAction?: (
+    title: string,
+    onSubmit: (value: string) => void,
+    options?: {
+      message?: string;
+      value?: string;
+      inputType?: "text" | "select" | "textarea" | "number";
+      inputOptions?: { text: string; value: string }[];
+      confirmLabel?: string;
+      cancelLabel?: string;
+    },
+  ) => void;
+  alertAction?: (
+    title: string,
+    message: string,
+    options?: { className?: string; backdrop?: boolean; onClose?: () => void },
+  ) => void;
+  confirmAction?: (
+    title: string,
+    message: string,
+    onConfirm: () => void,
+    options?:
+      | boolean
+      | { danger?: boolean; confirmLabel?: string; cancelLabel?: string; onCancel?: () => void; className?: string },
+  ) => void;
   root?: string;
   /** ChurchCRM's configured locale, e.g. `en_US` (src/Include/Header.php). */
   locale?: string;

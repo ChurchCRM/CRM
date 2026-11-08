@@ -301,6 +301,7 @@ window.CRM.onLocalesReady(() => {
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Enter" || !(e.ctrlKey || e.metaKey) || e.isComposing) return;
     e.preventDefault();
+    if (document.querySelector(".bootbox.show")) return;
     savePledge(saveAndAddBtn ? "new" : "view");
   });
 

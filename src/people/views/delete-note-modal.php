@@ -73,15 +73,15 @@ use ChurchCRM\Utils\InputUtils;
                 if (r.ok) {
                     location.reload();
                 } else if (r.status === 403) {
-                    bootbox.alert(<?= InputUtils::jsonEncodeForScript(gettext('You do not have permission to delete this note.')) ?>);
+                    window.CRM.notify(<?= InputUtils::jsonEncodeForScript(gettext('You do not have permission to delete this note.')) ?>, { type: "danger", delay: 6000 });
                 } else if (r.status === 404) {
-                    bootbox.alert(<?= InputUtils::jsonEncodeForScript(gettext('Note not found.')) ?>);
+                    window.CRM.notify(<?= InputUtils::jsonEncodeForScript(gettext('Note not found.')) ?>, { type: "danger", delay: 6000 });
                 } else {
-                    bootbox.alert(<?= InputUtils::jsonEncodeForScript(gettext('Failed to delete note.')) ?>);
+                    window.CRM.notify(<?= InputUtils::jsonEncodeForScript(gettext('Failed to delete note.')) ?>, { type: "danger", delay: 6000 });
                 }
             } catch (e) {
                 console.error("Delete note error:", e);
-                bootbox.alert(<?= InputUtils::jsonEncodeForScript(gettext('Error deleting note.')) ?>);
+                window.CRM.notify(<?= InputUtils::jsonEncodeForScript(gettext('Error deleting note.')) ?>, { type: "danger", delay: 6000 });
             }
         });
     }

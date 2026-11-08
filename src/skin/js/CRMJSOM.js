@@ -466,22 +466,9 @@ window.CRM.groups = {
       path: "groups/" + GroupID + "/removeperson/" + PersonID,
     }),
   addGroup: (callbackM) => {
-    bootbox.prompt({
-      title: i18next.t("Add A Group Name"),
-      value: i18next.t("Default Name Group"),
-      onEscape: true,
-      closeButton: true,
-      buttons: {
-        confirm: {
-          label: i18next.t("Yes"),
-          className: "btn-success",
-        },
-        cancel: {
-          label: i18next.t("No"),
-          className: "btn-danger",
-        },
-      },
-      callback: (result) => {
+    window.CRM.promptAction(
+      i18next.t("Add A Group Name"),
+      (result) => {
         if (!result) {
           return;
         }
@@ -498,7 +485,8 @@ window.CRM.groups = {
           }
         });
       },
-    });
+      { value: i18next.t("Default Name Group") },
+    );
   },
 };
 
@@ -946,25 +934,22 @@ window.CRM.dashboard = {
       // attribute escaping buildActionMenu() applied is undone here. Re-escape
       // before embedding into the bootbox HTML message to prevent XSS.
       const eventTitle = window.CRM.escapeHtml(String($btn.data("event_title") || ""));
-      bootbox.confirm({
-        title: i18next.t("Delete this event?"),
-        message:
-          i18next.t("Deleting an event will also delete all attendance counts. This cannot be undone.") +
+      window.CRM.confirmAction(
+        i18next.t("Delete this event?"),
+        i18next.t("Deleting an event will also delete all attendance counts. This cannot be undone.") +
           " <b>" +
           eventTitle +
           "</b>",
-        buttons: {
-          cancel: { label: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel") },
-          confirm: { label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
+        () => {
+          window.CRM.APIRequest({ method: "DELETE", path: "events/" + eventId }).done(() => {
+            location.reload();
+          });
         },
-        callback: (result) => {
-          if (result) {
-            window.CRM.APIRequest({ method: "DELETE", path: "events/" + eventId }).done(() => {
-              location.reload();
-            });
-          }
+        {
+          confirmLabel: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"),
+          cancelLabel: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel"),
         },
-      });
+      );
     });
 
     function setEventStatus(eventId, active) {
@@ -1006,30 +991,27 @@ window.CRM.dashboard = {
       e.stopPropagation();
       const $btn = window.jQuery(this);
       if ($btn.attr("aria-disabled") === "true") {
-        bootbox.alert(window.CRM.escapeHtml(String($btn.attr("title") || "")));
+        window.CRM.alertAction("", window.CRM.escapeHtml(String($btn.attr("title") || "")));
         return;
       }
       const personId = $btn.data("person_id");
       const personName = $btn.data("person_name");
-      bootbox.confirm({
-        title: i18next.t("Delete this person?"),
-        message:
-          i18next.t("Do you want to delete this person?  This cannot be undone.") +
+      window.CRM.confirmAction(
+        i18next.t("Delete this person?"),
+        i18next.t("Do you want to delete this person?  This cannot be undone.") +
           " <b>" +
           window.CRM.escapeHtml(String(personName || "")) +
           "</b>",
-        buttons: {
-          cancel: { label: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel") },
-          confirm: { label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
+        () => {
+          window.CRM.APIRequest({ method: "DELETE", path: "person/" + personId }).done(() => {
+            window.location.href = window.CRM.root + "/people/list";
+          });
         },
-        callback: (result) => {
-          if (result) {
-            window.CRM.APIRequest({ method: "DELETE", path: "person/" + personId }).done(() => {
-              window.location.href = window.CRM.root + "/people/list";
-            });
-          }
+        {
+          confirmLabel: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"),
+          cancelLabel: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel"),
         },
-      });
+      );
     });
   }
   if (window.CRM && window.CRM.localesLoaded) {
@@ -1049,21 +1031,19 @@ window.CRM.dashboard = {
       e.stopPropagation();
       const $btn = window.jQuery(this);
       const familyId = $btn.data("family_id");
-      bootbox.confirm({
-        title: i18next.t("Delete this family?"),
-        message: i18next.t(
+      window.CRM.confirmAction(
+        i18next.t("Delete this family?"),
+        i18next.t(
           "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone.",
         ),
-        buttons: {
-          cancel: { label: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel") },
-          confirm: { label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
+        () => {
+          window.location.href = window.CRM.root + "/SelectDelete.php?FamilyID=" + familyId;
         },
-        callback: (result) => {
-          if (result) {
-            window.location.href = window.CRM.root + "/SelectDelete.php?FamilyID=" + familyId;
-          }
+        {
+          confirmLabel: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"),
+          cancelLabel: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel"),
         },
-      });
+      );
     });
   }
   if (window.CRM && window.CRM.localesLoaded) {
@@ -1078,6 +1058,13 @@ window.CRM.dashboard = {
  * @param {string} text - The text to copy
  * @param {string} [successMsg] - Optional toast message on success
  */
+const showManualCopy = (text) => {
+  window.CRM.alertAction(
+    "",
+    `<p>${i18next.t("Press CTRL + C to copy")}</p><textarea class="form-control" rows="2" readonly>${window.CRM.escapeHtml(text)}</textarea>`,
+  );
+};
+
 window.CRM.copyToClipboard = (text, successMsg) => {
   const msg = successMsg || i18next.t("Copied to clipboard");
   if (navigator.clipboard) {
@@ -1087,9 +1074,9 @@ window.CRM.copyToClipboard = (text, successMsg) => {
         window.CRM.notify(msg, { type: "success", delay: 3000 });
       })
       .catch(() => {
-        prompt(i18next.t("Press CTRL + C to copy"), text);
+        showManualCopy(text);
       });
   }
-  prompt(i18next.t("Press CTRL + C to copy"), text);
+  showManualCopy(text);
   return Promise.resolve();
 };

@@ -1,3 +1,5 @@
+import { confirmAction } from "./common/confirm-action";
+
 /**
  * Admin → Grades Editor: switch the grade list to another country's names (#10189).
  * The server previews the change first; the admin confirms before anything is saved.
@@ -48,18 +50,10 @@ function apply(key, button) {
         window.CRM.notify(i18next.t("The grades already use these names."), { type: "info" });
         return;
       }
-      window.bootbox.confirm({
-        title: i18next.t("Change Grade Names"),
-        message: changes,
-        buttons: {
-          cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
-          confirm: { label: i18next.t("Apply"), className: "btn-primary" },
-        },
-        callback: (confirmed) => {
-          if (!confirmed) {
-            button.disabled = false;
-            return;
-          }
+      confirmAction(
+        i18next.t("Change Grade Names"),
+        changes,
+        () => {
           window.CRM.AdminAPIRequest({
             method: "POST",
             path: `grades/presets/${encodeURIComponent(key)}`,
@@ -71,7 +65,15 @@ function apply(key, button) {
               button.disabled = false;
             });
         },
-      });
+        {
+          danger: false,
+          confirmLabel: i18next.t("Apply"),
+          cancelLabel: i18next.t("Cancel"),
+          onCancel: () => {
+            button.disabled = false;
+          },
+        },
+      );
     })
     .fail(() => {
       button.disabled = false;

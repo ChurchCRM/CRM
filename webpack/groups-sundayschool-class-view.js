@@ -4,6 +4,7 @@
  */
 
 import ApexCharts from "apexcharts";
+import { confirmAction } from "./common/confirm-action";
 
 document.addEventListener("DOMContentLoaded", () => {
   const dataTable = $(".data-table").DataTable(window.CRM.plugin.dataTable);
@@ -104,15 +105,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const personId = $btn.data("person-id");
     const personName = String($btn.data("person-name") || "");
 
-    bootbox.confirm({
-      message: i18next.t("Remove {{personName}} from this class?", { personName }),
-      buttons: {
-        confirm: { label: i18next.t("Remove"), className: "btn-warning" },
-        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
-      },
-      callback: (result) => {
-        if (!result) return;
-
+    confirmAction(
+      "",
+      i18next.t("Remove {{personName}} from this class?", { personName }),
+      () => {
         $.ajax({
           method: "DELETE",
           url: `${window.CRM.root}/api/groups/${groupId}/removeperson/${personId}`,
@@ -126,7 +122,8 @@ document.addEventListener("DOMContentLoaded", () => {
             window.CRM.notify(msg, { type: "danger", delay: 5000 });
           });
       },
-    });
+      { danger: false, confirmLabel: i18next.t("Remove"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 
   // ─── Quick Create Today's Event button ───────────────────────────────

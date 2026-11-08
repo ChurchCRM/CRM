@@ -80,15 +80,13 @@ function initializeFamilyView() {
 
   $(".remove-family-property-btn").on("click", function () {
     const propertyId = $(this).data("property_id");
-    bootbox.confirm(i18next.t("Are you sure you want to unassign this property?"), (result) => {
-      if (result) {
-        window.CRM.APIRequest({
-          method: "DELETE",
-          path: `people/properties/family/${window.CRM.currentFamily}/${propertyId}`,
-        }).done(() => {
-          location.reload();
-        });
-      }
+    window.CRM.confirmAction("", i18next.t("Are you sure you want to unassign this property?"), () => {
+      window.CRM.APIRequest({
+        method: "DELETE",
+        path: `people/properties/family/${window.CRM.currentFamily}/${propertyId}`,
+      }).done(() => {
+        location.reload();
+      });
     });
   });
 
@@ -449,21 +447,15 @@ function initializeFamilyView() {
       ? `${i18next.t("Please confirm deactivation of family")}: ${safeFamilyName}`
       : `${i18next.t("Please confirm activation of family")}: ${safeFamilyName}`;
 
-    bootbox.confirm({
-      title: popupTitle,
-      message: `<p class="text-danger">${popupMessage}</p>`,
-      callback: (result) => {
-        if (result) {
-          window.CRM.APIRequest({
-            method: "POST",
-            path: `family/${window.CRM.currentFamily}/activate/${!window.CRM.currentActive}`,
-          }).then((data) => {
-            if (data.success) {
-              window.location.href = `${window.CRM.root}/people/family/${window.CRM.currentFamily}`;
-            }
-          });
+    window.CRM.confirmAction(popupTitle, `<p class="text-danger">${popupMessage}</p>`, () => {
+      window.CRM.APIRequest({
+        method: "POST",
+        path: `family/${window.CRM.currentFamily}/activate/${!window.CRM.currentActive}`,
+      }).then((data) => {
+        if (data.success) {
+          window.location.href = `${window.CRM.root}/people/family/${window.CRM.currentFamily}`;
         }
-      },
+      });
     });
   });
 

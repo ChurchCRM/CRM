@@ -3,6 +3,7 @@
  * the administrator chooses where the opportunities go, then run it.
  */
 
+import { confirmAction } from "./common/confirm-action";
 import { escapeAttribute, escapeHtml } from "./utils/escape-html";
 
 interface ConversionConfig {
@@ -284,16 +285,16 @@ function confirmConvert(): void {
         )
       : t("Add {{total}} volunteers to positions converted before?", { total: pending }),
   );
-  window.bootbox.confirm({
-    title: t("Convert Volunteer Opportunities"),
+  confirmAction(
+    t("Convert Volunteer Opportunities"),
     message,
-    buttons: { confirm: { label: t("Convert"), className: "btn-primary" }, cancel: { label: t("Cancel") } },
-    callback: (yes: boolean) => {
-      if (yes && latest === shown && sameChoice(shown.choice, choice())) {
+    () => {
+      if (latest === shown && sameChoice(shown.choice, choice())) {
         void convert(shown.choice, shown.plan.revision);
       }
     },
-  });
+    { danger: false, confirmLabel: t("Convert"), cancelLabel: t("Cancel") },
+  );
 }
 
 function start(): void {

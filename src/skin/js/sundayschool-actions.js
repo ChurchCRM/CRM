@@ -10,7 +10,7 @@
   function createModal(title, bodyHtml) {
     var existing = document.getElementById(SS_MODAL_ID);
     if (existing) {
-      existing.querySelectorAll("select").forEach(function (sel) {
+      existing.querySelectorAll("select").forEach((sel) => {
         try {
           if (sel.tomselect) sel.tomselect.destroy();
         } catch (e) {}
@@ -288,20 +288,14 @@
         e.preventDefault();
         var role = $(this).data("role");
         var label = role === "all" ? i18next.t("all members") : $(this).text().trim();
-        bootbox.confirm({
-          title: i18next.t("Move Members"),
-          message:
-            i18next.t("Are you sure you want to move") +
+        window.CRM.confirmAction(
+          i18next.t("Move Members"),
+          i18next.t("Are you sure you want to move") +
             " <strong>" +
             window.CRM.escapeHtml(label) +
             "</strong> " +
             i18next.t("to another group?"),
-          buttons: {
-            confirm: { label: i18next.t("Move"), className: "btn-warning" },
-            cancel: { label: i18next.t("Cancel") },
-          },
-          callback: (result) => {
-            if (!result) return;
+          () => {
             showGroupAndRoleModal(i18next.t("Move Members to Group"), (data) => {
               var ids = getPersonIdsByRole(role);
               ids.forEach((personId) => {
@@ -315,7 +309,8 @@
               }
             });
           },
-        });
+          { danger: false, confirmLabel: i18next.t("Move"), cancelLabel: i18next.t("Cancel") },
+        );
       });
     });
   });

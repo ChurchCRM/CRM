@@ -6,7 +6,7 @@ const path = require('node:path');
 const { test } = require('node:test');
 const { findNativeDialogs } = require('../../scripts/lint/validate-native-dialogs');
 
-test('rejects native calls, including inline form handlers and window calls', () => {
+test('rejects native dialogs and direct bootbox confirm/alert, including inline handlers', () => {
     for (const source of [
         'confirm("Delete?")',
         'window.confirm ("Delete?")',
@@ -17,18 +17,23 @@ test('rejects native calls, including inline form handlers and window calls', ()
         'self.alert("Failed")',
         '<form onsubmit="return confirm(<?= $message ?>)">',
         'alert\n("Failed")',
+        'prompt("Copy", text)',
+        'bootbox.prompt({ title: \'Name\' })',
+        'bootbox.confirm({ message: \'Delete?\' })',
+        'window.bootbox?.alert("Failed")',
     ]) {
         assert.equal(findNativeDialogs(source).length, 1, source);
     }
 });
 
-test('allows bootbox dialogs, notifications, and comments', () => {
+test('allows the wrappers, bootbox input dialogs, exempt calls and comments', () => {
     assert.deepEqual(findNativeDialogs(`
         // window.confirm('example')
         /* alert('example') */
+        bootbox.dialog({ title: 'Form' });
+        // confirm-action-exempt: reason
         bootbox.confirm({ message: 'Delete?' });
-        bootbox . confirm({ message: 'Delete?' });
-        window.bootbox?.confirm({ message: 'Delete?' });
+        alertAction('Done', 'Saved');
         window.CRM.notify('Saved');
         confirmAction('Delete', 'Delete?', remove);
     `), []);

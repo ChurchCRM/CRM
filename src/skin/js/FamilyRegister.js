@@ -1,10 +1,8 @@
-(function () {
-  "use strict";
-
+(() => {
   const rootPath = window.CRM && window.CRM.root ? window.CRM.root : "";
   let registrationStepper;
-  let validators = {};
-  let state = {
+  const validators = {};
+  const state = {
     validatedNavigation: null,
     currentMemberCount: 0,
   };
@@ -197,7 +195,7 @@
     });
 
     // Add click handler to card header to toggle (accordion style)
-    cardHeader.addEventListener("click", function (e) {
+    cardHeader.addEventListener("click", (e) => {
       if (e.target.classList.contains("remove-member-btn") || e.target.closest(".remove-member-btn")) {
         return;
       }
@@ -239,7 +237,7 @@
     // Set initial display name to "Member N" so header is meaningful before user types
     displayNameSpan.textContent = `${i18next.t("Member")} ${memberIndex}`;
 
-    const updateDisplayName = function () {
+    const updateDisplayName = () => {
       const firstName = firstNameInput.val();
       const lastName = lastNameInput.val() ? ` ${lastNameInput.val()}` : "";
       displayNameSpan.textContent = firstName ? `${firstName}${lastName}` : `${i18next.t("Member")} ${memberIndex}`;
@@ -255,7 +253,7 @@
     birthdayInput.datepicker();
 
     // Handle Hide Age checkbox - only enable when birthday is selected
-    const updateHideAgeState = function () {
+    const updateHideAgeState = () => {
       if (birthdayInput.val().trim() === "") {
         // No birthday selected - disable and uncheck
         hideAgeCheckbox.prop("disabled", true);
@@ -681,13 +679,13 @@
       contentType: "application/json",
       data: JSON.stringify(familyData),
     })
-      .done(function () {
+      .done(() => {
         document.getElementById("registration-stepper").hidden = true;
         const done = document.getElementById("registration-success");
         done.hidden = false;
         done.scrollIntoView({ behavior: "smooth", block: "start" });
       })
-      .fail(function (xhr) {
+      .fail((xhr) => {
         console.error("Registration failed:", xhr);
 
         // Restore submit button
@@ -710,23 +708,20 @@
           errorMessage = xhr.statusText;
         }
 
-        bootbox.alert({
-          title: i18next.t("Registration Error"),
-          message: errorMessage,
-        });
+        window.CRM.alertAction(i18next.t("Registration Error"), errorMessage);
       });
   }
 
   // Expose globally for onclick handlers
   window.registrationStepper = null;
 
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("registration-form");
     const stepperElement = document.getElementById("registration-stepper");
 
     // Prevent form submission (we handle it via AJAX)
     if (form) {
-      form.addEventListener("submit", function (event) {
+      form.addEventListener("submit", (event) => {
         event.preventDefault();
         return false;
       });
@@ -753,13 +748,13 @@
     initializeMemberValidator();
 
     // Add member button event listener
-    document.getElementById("add-member-btn").addEventListener("click", function (e) {
+    document.getElementById("add-member-btn").addEventListener("click", (e) => {
       e.preventDefault();
       addMember();
     });
 
     // Validation on step change - Enhanced event-based validation
-    stepperElement.addEventListener("show.bs-stepper", function (event) {
+    stepperElement.addEventListener("show.bs-stepper", (event) => {
       const currentStep = event.detail.from;
       const nextStep = event.detail.to;
 
@@ -772,7 +767,7 @@
         state.validatedNavigation = null;
         // Continue with navigation - prepare content for new step
         if (nextStep === 2) {
-          setTimeout(function () {
+          setTimeout(() => {
             displayReviewSummary();
           }, 50);
         }
@@ -793,15 +788,15 @@
     });
 
     // Handle form submission
-    document.getElementById("submit-registration").addEventListener("click", function () {
+    document.getElementById("submit-registration").addEventListener("click", () => {
       submitRegistration();
     });
 
     // Navigation button event listeners (CSP compliant - no inline onclick)
-    document.getElementById("family-info-next").addEventListener("click", function (e) {
+    document.getElementById("family-info-next").addEventListener("click", (e) => {
       e.preventDefault();
       if (validators["step-family-info"]) {
-        validators["step-family-info"].revalidate().then(function (isValid) {
+        validators["step-family-info"].revalidate().then((isValid) => {
           if (isValid) {
             state.validatedNavigation = { from: 0, to: 1 };
             registrationStepper.next();
@@ -816,12 +811,12 @@
       }
     });
 
-    document.getElementById("members-previous").addEventListener("click", function () {
+    document.getElementById("members-previous").addEventListener("click", () => {
       registrationStepper.previous();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-    document.getElementById("members-next").addEventListener("click", function (e) {
+    document.getElementById("members-next").addEventListener("click", (e) => {
       e.preventDefault();
 
       // Validate at least 1 member exists
@@ -831,7 +826,7 @@
       }
 
       if (validators["step-members"]) {
-        validators["step-members"].revalidate().then(function (isValid) {
+        validators["step-members"].revalidate().then((isValid) => {
           if (isValid) {
             state.validatedNavigation = { from: 1, to: 2 };
             registrationStepper.next();
@@ -848,7 +843,7 @@
       }
     });
 
-    document.getElementById("review-previous").addEventListener("click", function () {
+    document.getElementById("review-previous").addEventListener("click", () => {
       registrationStepper.previous();
       window.scrollTo({ top: 0, behavior: "smooth" });
     });

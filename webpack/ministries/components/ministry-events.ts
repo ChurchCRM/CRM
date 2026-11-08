@@ -785,6 +785,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     let staffThem = false;
     let shown = false;
     let closeWhenShown = false;
+    // confirm-action-exempt: the dialog must stay open until Bootstrap has finished fading it in.
     window.bootbox?.confirm({
       message,
       className: "ministry-event-staff-prompt",

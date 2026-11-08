@@ -121,33 +121,29 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     }
 
     function closeEvents(eventIds, message) {
-        bootbox.confirm({
-            title: i18next.t('Close stuck events?'),
-            message: message,
-            buttons: {
-                cancel: { label: '<i class="fa-solid fa-xmark"></i> ' + i18next.t('Cancel') },
-                confirm: { label: '<i class="fa-solid fa-circle-check"></i> ' + i18next.t('Close'), className: 'btn-warning' },
-            },
-            callback: function (confirmed) {
-                if (!confirmed) return;
-                window.CRM.APIRequest({
-                    method: 'POST',
-                    path: 'events/audit/close',
-                    data: JSON.stringify({ eventIds: eventIds }),
+        window.CRM.confirmAction(
+          i18next.t('Close stuck events?'),
+          message,
+          () => {
+            window.CRM.APIRequest({
+                method: 'POST',
+                path: 'events/audit/close',
+                data: JSON.stringify({ eventIds: eventIds }),
+            })
+                .done(function (resp) {
+                    window.CRM.notify(
+                        i18next.t('Closed') + ' ' + (resp.eventsClosed || 0) + ' ' + i18next.t('events') +
+                        ' (' + (resp.peopleCheckedOut || 0) + ' ' + i18next.t('check-outs') + ')',
+                        { type: 'success', delay: 4000 },
+                    );
+                    loadAudit();
                 })
-                    .done(function (resp) {
-                        window.CRM.notify(
-                            i18next.t('Closed') + ' ' + (resp.eventsClosed || 0) + ' ' + i18next.t('events') +
-                            ' (' + (resp.peopleCheckedOut || 0) + ' ' + i18next.t('check-outs') + ')',
-                            { type: 'success', delay: 4000 },
-                        );
-                        loadAudit();
-                    })
-                    .fail(function () {
-                        window.CRM.notify(i18next.t('Failed to close events. Please try again.'), { type: 'danger', delay: 5000 });
-                    });
-            },
-        });
+                .fail(function () {
+                    window.CRM.notify(i18next.t('Failed to close events. Please try again.'), { type: 'danger', delay: 5000 });
+                });
+          },
+          { danger: false, confirmLabel: '<i class="fa-solid fa-circle-check"></i> ' + i18next.t('Close'), cancelLabel: '<i class="fa-solid fa-xmark"></i> ' + i18next.t('Cancel') },
+        );
     }
 
     $('#auditRefreshBtn').on('click', loadAudit);

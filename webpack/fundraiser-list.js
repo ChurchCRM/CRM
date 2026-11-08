@@ -1,8 +1,8 @@
 import { initConfirmForms } from "./common/confirm-forms";
 
-window.CRM.onLocalesReady(() => {
-  initConfirmForms();
+initConfirmForms();
 
+window.CRM.onLocalesReady(() => {
   // Auto-submit filter form on select change (CSP-safe, no inline onchange)
   document.querySelectorAll("#fundraiserFilterForm select").forEach((sel) => {
     sel.addEventListener("change", () => {

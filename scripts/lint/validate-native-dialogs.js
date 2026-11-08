@@ -5,20 +5,24 @@ const path = require('path');
 const { ROOT, collectSourceFiles, stripComments } = require('./lib/icon-source-files');
 
 function findNativeDialogs(source) {
-    const pattern = /(?<![\w$]|[.?]\s*)(?:(?:window|globalThis|self)\s*(?:\?\.|\.)\s*)?(?:confirm|alert)\s*(?:\?\.)?\s*\(/g;
-    return Array.from(stripComments(source).matchAll(pattern), (match) => ({
-        line: source.slice(0, match.index).split('\n').length,
-        call: match[0],
-    }));
+    const native = /(?<![\w$]|[.?]\s*)(?:(?:window|globalThis|self)\s*(?:\?\.|\.)\s*)?(?:confirm|alert|prompt)\s*(?:\?\.)?\s*\(/g;
+    const direct = /(?:window\s*\.\s*)?bootbox\s*(?:\?\.|\.)\s*(?:confirm|alert|prompt)\s*\(/g;
+    const stripped = stripComments(source);
+    const lines = source.split('\n');
+    return [...stripped.matchAll(native), ...stripped.matchAll(direct)]
+        .map((match) => ({ line: stripped.slice(0, match.index).split('\n').length, call: match[0] }))
+        .filter(({ line }) => !/confirm-action-exempt/.test(lines[line - 2] || ''))
+        .sort((a, b) => a.line - b.line);
 }
 
 if (require.main === module) {
     const files = process.argv.length > 2 ? process.argv.slice(2) : collectSourceFiles();
+    const wrapper = path.join('webpack', 'common', 'confirm-action.ts');
     let failures = 0;
     for (const file of files) {
-        if (!/\.(?:php|[cm]?js|jsx|tsx?|html|twig)$/.test(file) || file.endsWith('.d.ts')) continue;
+        if (!/\.(?:php|[cm]?js|jsx|tsx?|html|twig)$/.test(file) || file.endsWith('.d.ts') || file.endsWith(wrapper)) continue;
         for (const hit of findNativeDialogs(fs.readFileSync(file, 'utf8'))) {
-            console.error(`${path.relative(ROOT, file)}:${hit.line}: ${hit.call} — use confirmAction() or CRM.notify().`);
+            console.error(`${path.relative(ROOT, file)}:${hit.line}: ${hit.call} — use confirmAction(), alertAction() or CRM.notify().`);
             failures++;
         }
     }

@@ -46,7 +46,7 @@ import { deletePhoto, showPhotoLightbox } from "./photo-utils";
 // Import form utilities (phone mask toggles, etc.)
 import "../src/skin/js/form-utils.js";
 
-import { confirmAction } from "./common/confirm-action";
+import { alertAction, confirmAction, promptAction } from "./common/confirm-action";
 // Shared AJAX person-search TomSelect (#9819)
 import { initAllPersonSelects, initPersonSelect } from "./common/person-select";
 import { installPageConfig } from "./crm-bootstrap";
@@ -68,6 +68,8 @@ if (typeof window !== "undefined") {
   window.CRM = window.CRM || {};
   installPageConfig();
   window.CRM.confirmAction = confirmAction;
+  window.CRM.alertAction = alertAction;
+  window.CRM.promptAction = promptAction;
   window.CRM.showPhotoLightbox = showPhotoLightbox;
   window.CRM.deletePhoto = deletePhoto;
 

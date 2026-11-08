@@ -216,24 +216,16 @@
       var id = btn.data("fund-id");
       var name = btn.data("fund-name");
 
-      bootbox.confirm({
-        title: i18n.deleteTitle,
-        message:
-          "<p>" +
+      window.CRM.confirmAction(
+        i18n.deleteTitle,
+        "<p>" +
           i18n.confirmDelete +
           "</p><p><strong>" +
           $("<span>").text(name).html() +
           '</strong></p><p class="text-danger">' +
           i18n.deleteWarning +
           "</p>",
-        buttons: {
-          cancel: { label: i18n.cancel, className: "btn-secondary" },
-          confirm: { label: i18n.delete, className: "btn-danger" },
-        },
-        callback: (result) => {
-          if (!result) {
-            return;
-          }
+        () => {
           apiFetch("DELETE", `${apiBase}/${id}`)
             .then((res) => {
               if (res.ok) {
@@ -250,7 +242,8 @@
               notify(i18n.errServer, "error");
             });
         },
-      });
+        { confirmLabel: i18n.delete, cancelLabel: i18n.cancel },
+      );
     });
   }
 
@@ -274,39 +267,33 @@
   function bindCategories() {
     $(document).on("click", ".category-rename-btn", function () {
       var name = $(this).data("category");
-      bootbox.prompt({
-        title: i18n.renameCategoryTitle,
-        message: i18n.renameCategoryPrompt,
-        value: name,
-        buttons: {
-          cancel: { label: i18n.cancel, className: "btn-secondary" },
-          confirm: { label: i18n.renameLabel, className: "btn-primary" },
-        },
-        callback: (result) => {
+      window.CRM.promptAction(
+        i18n.renameCategoryTitle,
+        (result) => {
           var newName = $.trim(result || "");
           if (newName && newName !== name) {
             categoryRequest("PUT", `${apiBase}/categories`, { name: name, newName: newName });
           }
         },
-      });
+        {
+          message: i18n.renameCategoryPrompt,
+          value: name,
+          confirmLabel: i18n.renameLabel,
+          cancelLabel: i18n.cancel,
+        },
+      );
     });
 
     $(document).on("click", ".category-delete-btn", function () {
       var name = $(this).data("category");
-      bootbox.confirm({
-        title: i18n.deleteCategoryTitle,
-        message:
-          "<p><strong>" + $("<span>").text(name).html() + "</strong></p><p>" + i18n.deleteCategoryConfirm + "</p>",
-        buttons: {
-          cancel: { label: i18n.cancel, className: "btn-secondary" },
-          confirm: { label: i18n.delete, className: "btn-danger" },
+      window.CRM.confirmAction(
+        i18n.deleteCategoryTitle,
+        "<p><strong>" + $("<span>").text(name).html() + "</strong></p><p>" + i18n.deleteCategoryConfirm + "</p>",
+        () => {
+          categoryRequest("DELETE", `${apiBase}/categories?name=${encodeURIComponent(name)}`);
         },
-        callback: (result) => {
-          if (result) {
-            categoryRequest("DELETE", `${apiBase}/categories?name=${encodeURIComponent(name)}`);
-          }
-        },
-      });
+        { confirmLabel: i18n.delete, cancelLabel: i18n.cancel },
+      );
     });
   }
 

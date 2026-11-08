@@ -41,3 +41,12 @@ test('never performs the action when the modal library is unavailable', () => {
     load(undefined)('Delete', 'Delete?', () => { calls++; });
     assert.equal(calls, 0);
 });
+
+test('runs onCancel when the dialog is declined or dismissed', () => {
+    let options;
+    let cancelled = 0;
+    load({ confirm: (value) => { options = value; } })('Apply', 'Apply?', () => {}, { danger: false, onCancel: () => { cancelled++; } });
+    options.callback(false);
+    assert.equal(cancelled, 1);
+    assert.equal(options.buttons.confirm.className, 'btn-primary');
+});
