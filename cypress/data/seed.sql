@@ -1988,6 +1988,15 @@ ON DUPLICATE KEY UPDATE
     `fam_Longitude` = VALUES(`fam_Longitude`),
     `fam_GeocodeTriedAt` = VALUES(`fam_GeocodeTriedAt`);
 
+INSERT INTO `person_per` (`per_ID`, `per_FirstName`, `per_LastName`, `per_Gender`, `per_fam_ID`, `per_DateEntered`, `per_EnteredBy`, `per_EditedBy`, `per_NeedsReview`) VALUES
+(902, 'Geocode', 'Test Member', 1, 45, '2026-11-08 00:00:00', 1, 1, 0)
+ON DUPLICATE KEY UPDATE
+    `per_FirstName` = VALUES(`per_FirstName`),
+    `per_LastName` = VALUES(`per_LastName`),
+    `per_Gender` = VALUES(`per_Gender`),
+    `per_fam_ID` = VALUES(`per_fam_ID`),
+    `per_DateDeactivated` = NULL;
+
 -- Next ids. family_custom and person_custom keep rows past the last family and person, so a
 -- counter left at max+1 hands a new family an id that table already holds.
 ALTER TABLE `calendars` AUTO_INCREMENT = 95;
