@@ -731,10 +731,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Не действует Дата свадьбы"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Email не действительны"
-
-#: 
 msgid "Family Info"
 msgstr "Информация о семье "
 
@@ -1482,10 +1478,6 @@ msgstr "Не действует другу Дата"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Не аккаунтом Дата"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Работа Email не действительны"
 
 #: 
 msgid "Birth Month"
@@ -23021,10 +23013,6 @@ msgid "Invalid birth date"
 msgstr "Недопустимая дата рождения."
 
 #: 
-msgid "Invalid email address"
-msgstr "Неверный адрес электронной почты"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Параметры киоска"
 
@@ -26583,10 +26571,6 @@ msgstr "Это не удалось удалить."
 #: 
 msgid "That device is signed out."
 msgstr "На этом устройстве выполнен выход."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Это недопустимый адрес электронной почты."
 
 #: 
 msgid "That page had been open too long. Please try again."

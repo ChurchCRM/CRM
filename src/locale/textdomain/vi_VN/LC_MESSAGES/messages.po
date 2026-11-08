@@ -722,10 +722,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Không phải là ngày cưới hợp lệ"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Không xác định được Email"
-
-#: 
 msgid "Family Info"
 msgstr "Thông tin gia đình"
 
@@ -1459,10 +1455,6 @@ msgstr "Không phải là Ngày kết bạn hợp lệ"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Không phải là ngày thành viên hợp lệ"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Email công việc không hợp lệ"
 
 #: 
 msgid "Birth Month"
@@ -22887,10 +22879,6 @@ msgid "Invalid birth date"
 msgstr "Ngày sinh không hợp lệ."
 
 #: 
-msgid "Invalid email address"
-msgstr "Địa chỉ email không hợp lệ"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Cài đặt Kiosk"
 
@@ -26449,10 +26437,6 @@ msgstr "Không gỡ được mục đó."
 #: 
 msgid "That device is signed out."
 msgstr "Thiết bị đó đã được đăng xuất."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Đó không phải địa chỉ email hợp lệ."
 
 #: 
 msgid "That page had been open too long. Please try again."

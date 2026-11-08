@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Hakiki tarehe ya ndoa"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Hakiki barua pepe"
-
-#: 
 msgid "Family Info"
 msgstr "Taarifa za familia"
 
@@ -1448,10 +1444,6 @@ msgstr "Sio Tarehe halali ya Rafiki"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Sio Tarehe halali ya Uanachama"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Barua pepe ya Kazini Si Sahihi"
 
 #: 
 msgid "Birth Month"
@@ -22904,10 +22896,6 @@ msgid "Invalid birth date"
 msgstr "Hakiki tarehe ya kuzaliwa."
 
 #: 
-msgid "Invalid email address"
-msgstr "Anwani ya barua pepe si sahihi"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Mipangilio ya Kioski"
 
@@ -26466,10 +26454,6 @@ msgstr "Hilo halikuweza kuondolewa."
 #: 
 msgid "That device is signed out."
 msgstr "Kifaa hicho kimetoka."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Hiyo si anwani sahihi ya barua pepe."
 
 #: 
 msgid "That page had been open too long. Please try again."

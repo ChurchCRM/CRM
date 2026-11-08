@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "സാധുവായ വിവാഹ തീയതിയല്ല"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "ഇമെയിൽ സാധുവല്ല"
-
-#: 
 msgid "Family Info"
 msgstr "കുടുംബ വിവരം"
 
@@ -1431,10 +1427,6 @@ msgstr "സാധുവായ സൗഹൃദ തീയതിയല്ല"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "സാധുവായ അംഗത്വ തീയതിയല്ല"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "ജോലി ഇമെയിൽ സാധുവല്ല"
 
 #: 
 msgid "Birth Month"
@@ -22875,10 +22867,6 @@ msgid "Invalid birth date"
 msgstr "ജനന തീയതി അസാധുവാണ്."
 
 #: 
-msgid "Invalid email address"
-msgstr "അസാധുവായ ഇമെയിൽ വിലാസം"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "കിയോസ്ക് ക്രമീകരണങ്ങൾ"
 
@@ -26437,10 +26425,6 @@ msgstr "അത് നീക്കം ചെയ്യാനായില്ല."
 #: 
 msgid "That device is signed out."
 msgstr "ആ ഉപകരണം സൈൻ ഔട്ട് ആയി."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "അത് സാധുവായ ഇമെയിൽ വിലാസമല്ല."
 
 #: 
 msgid "That page had been open too long. Please try again."

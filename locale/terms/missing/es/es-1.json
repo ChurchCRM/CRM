@@ -61,5 +61,7 @@
   "into the ministry {{name}}": "",
   "no longer in ChurchCRM": "",
   "Collapse sidebar": "",
-  "Expand sidebar": ""
+  "Expand sidebar": "",
+  "Enter a valid email address using only ASCII characters before @.": "",
+  "Their email address is not valid": ""
 }
