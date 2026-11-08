@@ -18,6 +18,7 @@ test('rejects native dialogs and direct bootbox confirm/alert, including inline 
         '<form onsubmit="return confirm(<?= $message ?>)">',
         'alert\n("Failed")',
         'prompt("Copy", text)',
+        '// confirm-action-exempt: reason\nwindow.confirm("Delete?")',
         'bootbox.prompt({ title: \'Name\' })',
         'bootbox.confirm({ message: \'Delete?\' })',
         'window.bootbox?.alert("Failed")',

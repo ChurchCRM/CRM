@@ -9,10 +9,12 @@ function findNativeDialogs(source) {
     const direct = /(?:window\s*\.\s*)?bootbox\s*(?:\?\.|\.)\s*(?:confirm|alert|prompt)\s*\(/g;
     const stripped = stripComments(source);
     const lines = source.split('\n');
-    return [...stripped.matchAll(native), ...stripped.matchAll(direct)]
-        .map((match) => ({ line: stripped.slice(0, match.index).split('\n').length, call: match[0] }))
-        .filter(({ line }) => !/confirm-action-exempt/.test(lines[line - 2] || ''))
-        .sort((a, b) => a.line - b.line);
+    const hit = (match) => ({ line: stripped.slice(0, match.index).split('\n').length, call: match[0] });
+    const exempt = ({ line }) => /confirm-action-exempt/.test(lines[line - 2] || '');
+    return [
+        ...Array.from(stripped.matchAll(native), hit),
+        ...Array.from(stripped.matchAll(direct), hit).filter((found) => !exempt(found)),
+    ].sort((a, b) => a.line - b.line);
 }
 
 if (require.main === module) {

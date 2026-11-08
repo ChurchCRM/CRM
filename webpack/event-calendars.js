@@ -12,7 +12,7 @@ import { escapeHtml } from "./utils/escape-html";
 
 window.moveEventModal = {
   getOptions: (confirmLabel) => ({
-    danger: false,
+    tone: "primary",
     className: "modal-sm",
     cancelLabel: `<i class="fa-solid fa-xmark me-1"></i>${i18next.t("Cancel")}`,
     confirmLabel: `<i class="fa-solid fa-check me-1"></i>${i18next.t(confirmLabel || "Confirm")}`,

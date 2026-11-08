@@ -17,11 +17,20 @@ describe("Pledge Operations", () => {
         ...overrides,
     });
 
+    const created = [];
+
     beforeEach(() => cy.setupAdminSession());
+
+    after(() => {
+        created.forEach((groupKey) => {
+            cy.request({ method: "DELETE", url: "/api/payments/" + encodeURIComponent(groupKey), failOnStatusCode: false });
+        });
+    });
 
     it("Pledge editor shows a Delete button in edit mode", () => {
         cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
             const groupKey = resp.body.groupKey;
+            created.push(groupKey);
             cy.visit("/finance/pledge/" + groupKey + "/edit");
             cy.get("#deletePledgeBtn").should("be.visible");
         });
@@ -30,9 +39,10 @@ describe("Pledge Operations", () => {
     it("Delete button removes the payment and redirects away", () => {
         cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
             const groupKey = resp.body.groupKey;
+            created.push(groupKey);
             cy.visit("/finance/pledge/" + groupKey + "/edit");
 
-            cy.intercept("DELETE", "**/api/payments/" + groupKey).as("deletePayment");
+            cy.intercept("DELETE", "**/api/payments/" + encodeURIComponent(groupKey)).as("deletePayment");
             cy.get("#deletePledgeBtn").click();
 
             cy.get(".bootbox-confirm").should("be.visible").find(".bootbox-accept").click();
@@ -50,9 +60,10 @@ describe("Pledge Operations", () => {
     it("Cancelling the delete confirmation keeps the payment", () => {
         cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
             const groupKey = resp.body.groupKey;
+            created.push(groupKey);
             cy.visit("/finance/pledge/" + groupKey + "/edit");
 
-            cy.intercept("DELETE", "**/api/payments/" + groupKey).as("deletePayment");
+            cy.intercept("DELETE", "**/api/payments/" + encodeURIComponent(groupKey)).as("deletePayment");
             cy.get("#deletePledgeBtn").click();
 
             cy.get(".bootbox-confirm").should("be.visible").find(".bootbox-cancel").click();
@@ -66,7 +77,7 @@ describe("Pledge Operations", () => {
     it("Payment details cancel with Escape and delete only after acceptance", () => {
         cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then(({ body }) => {
             const groupKey = body.groupKey;
-            cy.intercept("DELETE", "**/api/payments/" + groupKey).as("deletePayment");
+            cy.intercept("DELETE", "**/api/payments/" + encodeURIComponent(groupKey)).as("deletePayment");
             cy.visit("/finance/pledge/" + groupKey);
             cy.get("#deletePledgeBtn").click();
             cy.get(".bootbox-confirm").should("be.visible").type("{esc}");
@@ -86,6 +97,7 @@ describe("Pledge Operations", () => {
         // pledge_denominations_pdem and 500'd when that table was missing.
         cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
             const groupKey = resp.body.groupKey;
+            created.push(groupKey);
             cy.visit("/finance/pledge/" + groupKey + "/edit");
 
             cy.get("#savePledgeBtn").click();

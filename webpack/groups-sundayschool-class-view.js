@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
             window.CRM.notify(msg, { type: "danger", delay: 5000 });
           });
       },
-      { danger: false, confirmLabel: i18next.t("Remove"), cancelLabel: i18next.t("Cancel") },
+      { tone: "warning", confirmLabel: i18next.t("Remove"), cancelLabel: i18next.t("Cancel") },
     );
   });
 

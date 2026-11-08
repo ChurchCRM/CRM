@@ -142,7 +142,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     window.CRM.notify(i18next.t('Failed to close events. Please try again.'), { type: 'danger', delay: 5000 });
                 });
           },
-          { danger: false, confirmLabel: '<i class="fa-solid fa-circle-check"></i> ' + i18next.t('Close'), cancelLabel: '<i class="fa-solid fa-xmark"></i> ' + i18next.t('Cancel') },
+          { tone: "warning", confirmLabel: '<i class="fa-solid fa-circle-check"></i> ' + i18next.t('Close'), cancelLabel: '<i class="fa-solid fa-xmark"></i> ' + i18next.t('Cancel') },
         );
     }
 

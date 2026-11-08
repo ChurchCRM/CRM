@@ -334,7 +334,7 @@ export function wireEmailAttentionTools(options: AttentionToolsOptions): Attenti
       () => {
         void confirmOne(button);
       },
-      { danger: false, confirmLabel: t("Confirm Email Address"), cancelLabel: t("Cancel") },
+      { tone: "primary", confirmLabel: t("Confirm Email Address"), cancelLabel: t("Cancel") },
     );
   });
 
@@ -359,7 +359,7 @@ export function wireEmailAttentionTools(options: AttentionToolsOptions): Attenti
       () => {
         void confirmChosen(rows);
       },
-      { danger: false, confirmLabel: t("Confirm selected"), cancelLabel: t("Cancel") },
+      { tone: "primary", confirmLabel: t("Confirm selected"), cancelLabel: t("Cancel") },
     );
   });
 

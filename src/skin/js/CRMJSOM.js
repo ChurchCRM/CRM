@@ -1062,6 +1062,13 @@ const showManualCopy = (text) => {
   window.CRM.alertAction(
     "",
     `<p>${i18next.t("Press CTRL + C to copy")}</p><textarea class="form-control" rows="2" readonly>${window.CRM.escapeHtml(text)}</textarea>`,
+    {
+      onShown: (modal) => {
+        const field = modal.querySelector("textarea");
+        field.focus();
+        field.select();
+      },
+    },
   );
 };
 

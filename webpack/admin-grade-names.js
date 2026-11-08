@@ -66,7 +66,7 @@ function apply(key, button) {
             });
         },
         {
-          danger: false,
+          tone: "primary",
           confirmLabel: i18next.t("Apply"),
           cancelLabel: i18next.t("Cancel"),
           onCancel: () => {

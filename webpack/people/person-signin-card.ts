@@ -164,7 +164,7 @@ function wireConfirmEmail(card: HTMLElement): void {
       () => {
         void confirmEmail();
       },
-      { danger: false, confirmLabel: t("Confirm Email Address"), cancelLabel: t("Cancel") },
+      { tone: "primary", confirmLabel: t("Confirm Email Address"), cancelLabel: t("Cancel") },
     );
   });
 }

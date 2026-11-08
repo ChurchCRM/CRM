@@ -22,6 +22,7 @@ test('only an accepted confirmation performs the action', () => {
     assert.equal(calls, 0);
     options.callback(false);
     assert.equal(calls, 0);
+    confirmAction('Delete', 'Delete this record?', () => { calls++; });
     options.callback(true);
     assert.equal(calls, 1);
     assert.equal(options.buttons.confirm.className, 'btn-danger');
@@ -45,8 +46,26 @@ test('never performs the action when the modal library is unavailable', () => {
 test('runs onCancel when the dialog is declined or dismissed', () => {
     let options;
     let cancelled = 0;
-    load({ confirm: (value) => { options = value; } })('Apply', 'Apply?', () => {}, { danger: false, onCancel: () => { cancelled++; } });
+    load({ confirm: (value) => { options = value; } })('Apply', 'Apply?', () => {}, { tone: "primary", onCancel: () => { cancelled++; } });
     options.callback(false);
     assert.equal(cancelled, 1);
     assert.equal(options.buttons.confirm.className, 'btn-primary');
+});
+
+test('answers once and closes a dialog answered while it is still fading in', () => {
+    let options;
+    let calls = 0;
+    const hidden = [];
+    const context = {
+        exports: {},
+        window: { bootbox: { confirm: (value) => { options = value; } }, bootstrap: { Modal: { getOrCreateInstance: (el) => ({ hide: () => hidden.push(el) }) } } },
+        i18next: { t: (key) => key },
+    };
+    vm.runInNewContext(compiled, context);
+    context.exports.confirmAction('Delete', 'Delete?', () => { calls++; });
+    assert.equal(options.callback(true), false);
+    assert.equal(options.callback(true), false);
+    assert.equal(calls, 1);
+    options.onShown({ target: 'modal' });
+    assert.deepEqual(hidden, ['modal']);
 });

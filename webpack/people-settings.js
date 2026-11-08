@@ -136,6 +136,6 @@ function promoteGrades(button) {
           button.disabled = false;
         });
     },
-    { danger: false, confirmLabel: t("Promote Now"), cancelLabel: t("Cancel") },
+    { tone: "primary", confirmLabel: t("Promote Now"), cancelLabel: t("Cancel") },
   );
 }

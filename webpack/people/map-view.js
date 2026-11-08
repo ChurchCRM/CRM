@@ -336,7 +336,7 @@ if (geocodeAllBtn) {
             });
           });
       },
-      { danger: false, confirmLabel: t("Update Coordinates"), cancelLabel: t("Cancel") },
+      { tone: "primary", confirmLabel: t("Update Coordinates"), cancelLabel: t("Cancel") },
     );
   });
 }

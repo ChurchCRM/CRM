@@ -115,7 +115,7 @@ describe("Fundraiser delete confirmation", () => {
                 followRedirect: false,
                 body: {
                     csrf_token: token,
-                    Date: "2026-11-07",
+                    Date: new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10),
                     Title: "CY Confirm Fundraiser",
                     Status: "Planning",
                     Type: "Auction",

@@ -763,7 +763,7 @@ function initializeGroupView() {
           }, 1000);
         });
       },
-      { danger: false, confirmLabel: i18next.t("Move"), cancelLabel: i18next.t("Cancel") },
+      { tone: "warning", confirmLabel: i18next.t("Move"), cancelLabel: i18next.t("Cancel") },
     );
   });
 

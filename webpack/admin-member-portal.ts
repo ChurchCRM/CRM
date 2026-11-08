@@ -603,7 +603,7 @@ function confirmMemberSignIn(turningOn: boolean, ruleWarning: string): Promise<b
       message,
       () => resolve(true),
       {
-        danger: !turningOn,
+        tone: turningOn ? "primary" : "danger",
         confirmLabel: turningOn ? t("Turn on") : t("Turn off"),
         cancelLabel: t("Cancel"),
         onCancel: () => resolve(false),

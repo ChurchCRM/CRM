@@ -293,7 +293,7 @@ function confirmConvert(): void {
         void convert(shown.choice, shown.plan.revision);
       }
     },
-    { danger: false, confirmLabel: t("Convert"), cancelLabel: t("Cancel") },
+    { tone: "primary", confirmLabel: t("Convert"), cancelLabel: t("Cancel") },
   );
 }
 

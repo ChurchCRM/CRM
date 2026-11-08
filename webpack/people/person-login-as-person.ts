@@ -58,7 +58,7 @@ export function initLoginAsPerson(): void {
       () => {
         void start(item);
       },
-      { danger: false, confirmLabel: label, cancelLabel: t("Cancel") },
+      { tone: "warning", confirmLabel: label, cancelLabel: t("Cancel") },
     );
   });
 }
