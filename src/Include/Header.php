@@ -219,6 +219,14 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
   <header class="navbar navbar-expand-md d-print-none sticky-top">
     <div class="container-xl">
 
+      <button type="button" id="menu-toggle"
+              class="btn btn-ghost-secondary d-inline-flex d-xl-none align-items-center me-2"
+              data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
+              aria-controls="sidebar-menu" aria-expanded="false"
+              aria-label="<?= InputUtils::escapeAttribute(gettext('Toggle navigation')) ?>">
+        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+      </button>
+
       <button class="navbar-toggler" type="button"
               data-bs-toggle="collapse" data-bs-target="#navbar-menu"
               aria-controls="navbar-menu" aria-expanded="false"

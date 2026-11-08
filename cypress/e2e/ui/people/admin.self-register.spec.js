@@ -68,7 +68,7 @@ describe("Self Registrations review page", () => {
 
         it("lists Self Registrations in the People menu", () => {
             cy.visit("people/dashboard");
-            cy.get('a.nav-link[href$="people/self-register"]').should("exist").and("contain", "Self Registrations");
+            cy.get('a.dropdown-item[href$="people/self-register"]').should("exist").and("contain", "Self Registrations");
         });
 
         it("no longer links to the page from the dashboard quick actions", () => {
