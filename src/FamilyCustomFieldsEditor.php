@@ -4,6 +4,7 @@ require_once __DIR__ . '/Include/Config.php';
 require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMaster;
 use ChurchCRM\model\ChurchCRM\FamilyCustomMasterQuery;
@@ -118,18 +119,18 @@ if (isset($_POST['SaveChanges'])) {
             }
 
             if (!$bDuplicateNameError) {
-                global $cnInfoCentral;
+                $connection = Bootstrapper::getMysqliConnection();
                 // Find the highest existing field number in the table to
                 // determine the next free one.
                 // This is essentially an auto-incrementing system where
                 // deleted numbers are not re-used.
-                $fields = mysqli_query($cnInfoCentral, 'SHOW COLUMNS FROM family_custom');
+                $fields = mysqli_query($connection, 'SHOW COLUMNS FROM family_custom');
                 $last = mysqli_num_rows($fields) - 1;
                 // Set the new field number based on the highest existing.
                 // Chop off the"c" at the beginning of the old one's name.
                 // The"c#" naming scheme is necessary because MySQL 3.23
                 // doesn't allow numeric-only field (table column) names.
-                $fields = mysqli_query($cnInfoCentral, 'SELECT * FROM family_custom');
+                $fields = mysqli_query($connection, 'SELECT * FROM family_custom');
                 $fieldInfo = mysqli_fetch_field_direct($fields, $last);
                 $newFieldNum = (int) mb_substr($fieldInfo->name, 1) + 1;
 
@@ -276,43 +277,38 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
         var msg = <?= InputUtils::jsonEncodeForScript(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
         msg += '<br><br><strong>' + <?= InputUtils::jsonEncodeForScript(gettext('Warning')) ?> + ':</strong> ';
         msg += <?= InputUtils::jsonEncodeForScript(gettext('By deleting this field, you will irrevocably lose all family data assigned for this field!')) ?>;
-        bootbox.confirm({
-            title: <?= InputUtils::jsonEncodeForScript(gettext('Delete Confirmation')) ?>,
-            message: msg,
-            buttons: {
-                cancel: { label: <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?>, className: 'btn-secondary' },
-                confirm: { label: <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>, className: 'btn-danger' }
-            },
-            callback: function(result) {
-                if (result) {
-                    // Submit deletion as a POST request with CSRF protection
-                    var form = document.createElement('form');
-                    form.method = 'POST';
-                    form.action = 'FamilyCustomFieldsRowOps.php';
+        window.CRM.confirmAction(
+          <?= InputUtils::jsonEncodeForScript(gettext('Delete Confirmation')) ?>,
+          msg,
+          () => {
+            // Submit deletion as a POST request with CSRF protection
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'FamilyCustomFieldsRowOps.php';
 
-                    var fieldInput = document.createElement('input');
-                    fieldInput.type = 'hidden';
-                    fieldInput.name = 'Field';
-                    fieldInput.value = fieldId;
-                    form.appendChild(fieldInput);
+            var fieldInput = document.createElement('input');
+            fieldInput.type = 'hidden';
+            fieldInput.name = 'Field';
+            fieldInput.value = fieldId;
+            form.appendChild(fieldInput);
 
-                    var actionInput = document.createElement('input');
-                    actionInput.type = 'hidden';
-                    actionInput.name = 'Action';
-                    actionInput.value = 'delete';
-                    form.appendChild(actionInput);
+            var actionInput = document.createElement('input');
+            actionInput.type = 'hidden';
+            actionInput.name = 'Action';
+            actionInput.value = 'delete';
+            form.appendChild(actionInput);
 
-                    var csrfInput = document.createElement('input');
-                    csrfInput.type = 'hidden';
-                    csrfInput.name = 'csrf_token';
-                    csrfInput.value = <?= InputUtils::jsonEncodeForScript(CSRFUtils::generateToken('familyCustomFieldsAction')) ?>;
-                    form.appendChild(csrfInput);
+            var csrfInput = document.createElement('input');
+            csrfInput.type = 'hidden';
+            csrfInput.name = 'csrf_token';
+            csrfInput.value = <?= InputUtils::jsonEncodeForScript(CSRFUtils::generateToken('familyCustomFieldsAction')) ?>;
+            form.appendChild(csrfInput);
 
-                    document.body.appendChild(form);
-                    form.submit();
-                }
-            }
-        });
+            document.body.appendChild(form);
+            form.submit();
+          },
+          { confirmLabel: <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>, cancelLabel: <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?> },
+        );
         return false;
     }
 

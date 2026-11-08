@@ -1,3 +1,4 @@
+import { confirmAction } from "../common/confirm-action";
 import { escapeHtml } from "../utils/escape-html";
 
 /**
@@ -49,17 +50,15 @@ export function initLoginAsPerson(): void {
   const label = escapeHtml(item.dataset.label || t("Login as Person"));
   item.addEventListener("click", (event) => {
     event.preventDefault();
-    window.bootbox?.confirm({
-      title: label,
-      message: t(
+    confirmAction(
+      label,
+      t(
         "See the Member Portal as this person sees it? Staff pages stay closed until you press Stop, and the session is recorded on this page and on your user page.",
       ),
-      buttons: { confirm: { label, className: "btn-warning" } },
-      callback: (result: boolean) => {
-        if (result) {
-          void start(item);
-        }
+      () => {
+        void start(item);
       },
-    });
+      { tone: "warning", confirmLabel: label, cancelLabel: t("Cancel") },
+    );
   });
 }

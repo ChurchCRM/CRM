@@ -1,3 +1,4 @@
+import { confirmAction } from "../common/confirm-action";
 /**
  * S3 — ministry detail (#9715 and #9707, design §5.4 as amended).
  *
@@ -81,7 +82,6 @@ import {
 import {
   actionMenu,
   byId,
-  confirmDelete,
   destroyDataTable,
   escapeHtml,
   hideModal,
@@ -908,7 +908,7 @@ function wireMinistryLifecycle(): void {
 
   deactivate?.addEventListener("click", () => {
     const name = deactivate.dataset.ministryName ?? "";
-    confirmDelete(
+    confirmAction(
       i18next.t("Deactivate ministry"),
       i18next.t(
         "Deactivate {{name}}? It moves to Deactivated Ministries in the sidebar, where it can be reactivated or deleted. Nothing is removed.",
@@ -926,7 +926,7 @@ function wireMinistryLifecycle(): void {
     const name = remove.dataset.ministryName ?? "";
     const occurrences = detail?.summary?.occurrenceCount ?? 0;
     const assignments = detail?.summary?.assignmentCount ?? 0;
-    confirmDelete(
+    confirmAction(
       i18next.t("Delete ministry"),
       i18next.t(
         "Delete {{name}} and everything in it? Its teams, positions, schedules, {{occurrences}} occurrences and {{assignments}} assignments — past service records included — plus its coordinator and team-leader grants, volunteer pool group and calendar are removed. This cannot be undone.",
@@ -1073,7 +1073,7 @@ function confirmTeamDelete(teamId: number, name: string): void {
   );
   const ask = (counted: TeamClassEvents | null): void => {
     const question = counted === null || counted.total === 0 ? "" : classEventsQuestion(counted);
-    confirmDelete(i18next.t("Delete team"), `<p>${warning}</p>${question}`, () => {
+    confirmAction(i18next.t("Delete team"), `<p>${warning}</p>${question}`, () => {
       const choice = document.querySelector<HTMLInputElement>('input[name="team-delete-class-events"]:checked')?.value;
       deleteTeam(teamId, choice === "remove" || choice === "delete" ? choice : "keep")
         .then(() => {

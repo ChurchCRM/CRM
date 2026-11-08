@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Geçerli bir düğün tarihi değil"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-posta geçerli değil"
-
-#: 
 msgid "Family Info"
 msgstr "Aile bilgisi"
 
@@ -1448,10 +1444,6 @@ msgstr "Geçerli bir arkadaş tarihi değil"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Geçerli bir üyelik tarihi değil"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "İş e -postası geçerli değil"
 
 #: 
 msgid "Birth Month"
@@ -4919,10 +4911,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portekizce - Portekiz"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Authenticator uygulamasında görüntülenecek uygulama adını belirtin"
-
-#: 
 msgid "Review"
 msgstr "Gözden geçirmek"
 
@@ -5052,10 +5040,6 @@ msgstr "Aile Sayfasını Görüntüle"
 #: 
 msgid "View Person Page"
 msgstr "Kişi sayfasını görüntüle"
-
-#: 
-msgid "Verify"
-msgstr "Doğrulayın"
 
 #: 
 msgid "Family has no emails to use"
@@ -14635,10 +14619,6 @@ msgid "Date Picker Format"
 msgstr "Tarih Seçici Biçimi"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Tarih Seçici Yer Tutucu"
-
-#: 
 msgid "Date Without Year"
 msgstr "Yılsız Tarih"
 
@@ -14669,10 +14649,6 @@ msgstr "Dosya Adı Tarih Biçimi"
 #: 
 msgid "Fully translated."
 msgstr "Tamamen çevrildi."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Tarih alanlarında gösterilen ipucu metni. Varsayılan: yyyy-aa-gg"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -22924,10 +22900,6 @@ msgid "Invalid birth date"
 msgstr "Geçersiz doğum tarihi."
 
 #: 
-msgid "Invalid email address"
-msgstr "Geçersiz e-posta adresi"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kiosk Ayarları"
 
@@ -23598,10 +23570,6 @@ msgstr "Programların ne kadar önceden doldurulacağını ve anımsatıcıları
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Kilise rehberinde zaten olan birini seçin. Bu hizmetin gönüllülerine katılır ve koordinatörlerine e-posta gider. Birini yalnızca koordinatör çıkarabilir."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM gönüllüleri yönetmenin iki yoluna sahiptir. Bir anda yalnızca birinin kullanılması amaçlanır; Gönüllü deneyimi ayarı bu kilisenin hangisini göreceğini belirler. Geçiş sayfaları ve menü girdilerini gizler veya gösterir — veriyi asla silmez, bu yüzden geri dönebilirsiniz."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -25068,10 +25036,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Kaydı yaşını gizleyen bir kişinin doğum yılı hiç gösterilmez."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Üye Portalı’nda saat %s’de e-posta adresinizin %s adresinden %s adresine değiştirilmesi istendi. Değişiklik yalnızca %s adresine gönderilen bağlantı kullanıldığında gerçekleşir."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Bir satır beklenen biçimde değil."
 
@@ -26496,10 +26460,6 @@ msgid "That device is signed out."
 msgstr "O cihazın oturumu kapatıldı."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Bu geçerli bir e-posta adresi değil."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "O sayfa çok uzun süre açık kalmıştı. Lütfen yeniden deneyin."
 
@@ -27190,4 +27150,16 @@ msgstr "veya"
 #: 
 msgid "until %s"
 msgstr "%s tarihine kadar"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Üye portalında %1$s adresindeki e-posta adresinizin %2$s adresinden %3$s adresine değiştirilmesi istendi. Değişiklik, yalnızca yeni adrese gönderilen bağlantı kullanıldığında gerçekleşir."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Aile bilgilerinizi gözden geçirmek için aşağıdaki bağlantıyı kullanın. İnceleme sayfasında her şeyin doğru olduğunu onaylamak için «Aile bilgilerini onayla» seçeneğini seçin veya düzeltmeleri kilise ofisine gönderin."
+
+#: 
+msgid "Review Family Information"
+msgstr "Aile bilgilerini gözden geçir"
 

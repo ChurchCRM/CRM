@@ -128,16 +128,20 @@ export const waitForMail = (address, count = 1, waited = 0) =>
         return cy.wait(MAIL_POLL_MS, { log: false }).then(() => waitForMail(address, count, waited + MAIL_POLL_MS));
     });
 
+/** The six-digit code, read from the large code block so the church's language does not matter. */
+export const codeInEmail = (html) => html.match(/font-size: 32px[^>]*>\s*(\d{6})\s*</);
+
 /** The code and link in the newest sign-in email to an address. */
 export const signInEmail = (address) =>
     waitForMail(address).then((messages) => {
         expect(messages, `sign-in email to ${address}`).to.not.be.empty;
         return cy.task("mail:get", { id: messages[0].ID }).then(({ body }) => {
             const text = `${body.Text || ""}`;
-            const code = text.match(/Your code\s+(\d{6})/);
-            const link = `${body.HTML || ""} ${text}`.match(/\/portal\/login\/confirm\/[0-9a-f]{64}/);
+            const html = `${body.HTML || ""}`;
+            const code = codeInEmail(html);
+            const link = `${html} ${text}`.match(/\/portal\/login\/confirm\/[0-9a-f]{64}/);
             expect(code, "code in the email").to.not.eq(null);
             expect(link, "link in the email").to.not.eq(null);
-            return { code: code[1], link: link[0], text, html: body.HTML || "" };
+            return { code: code[1], link: link[0], text, html };
         });
     });

@@ -521,7 +521,7 @@ $fmtBytes = static function ($bytes): string {
                     </div>
 
                     <!-- PHP Active -->
-                    <div class="p-3 border-bottom <?= $serverConfigMismatch ? 'bg-warning-light' : '' ?>">
+                    <div class="p-3 border-bottom <?= $serverConfigMismatch ? 'bg-warning-lt' : '' ?>">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <small class="text-body-secondary d-block"><?= gettext('PHP Active') ?></small>
@@ -713,12 +713,12 @@ $fmtBytes = static function ($bytes): string {
             $badge.removeClass('bg-warning-lt text-warning bg-secondary text-white')
                   .addClass('bg-success-lt text-success')
                   .html('<i class="fa fa-check"></i>');
-            $row.removeClass('bg-warning-light');
+            $row.removeClass('bg-warning-lt');
         } else {
             $badge.removeClass('bg-success-lt text-success bg-secondary text-white')
                   .addClass('bg-warning-lt text-warning')
                   .html('<i class="fa fa-triangle-exclamation me-1"></i>' + t.mismatch);
-            $row.addClass('bg-warning-light');
+            $row.addClass('bg-warning-lt');
             // Show alert icon in card header
             $headerAlert.removeClass('d-none');
             // Update banner: flip the Timezone chip and promote headline if

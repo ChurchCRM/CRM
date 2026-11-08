@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Недійсна дата весілля"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Електронна адреса недійсна"
-
-#: 
 msgid "Family Info"
 msgstr "Інформація про сім’ю"
 
@@ -1448,10 +1444,6 @@ msgstr "Недійсна дата друга"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Недійсна дата членства"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Робоча електронна адреса недійсна"
 
 #: 
 msgid "Birth Month"
@@ -4923,10 +4915,6 @@ msgid "Portuguese - Portugal"
 msgstr "Португальська - Португалія"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Вкажіть назву програми, яка відображатиметься в програмі автентифікації"
-
-#: 
 msgid "Review"
 msgstr "Огляд"
 
@@ -5056,10 +5044,6 @@ msgstr "Переглянути сімейну сторінку"
 #: 
 msgid "View Person Page"
 msgstr "Переглянути сторінку особи"
-
-#: 
-msgid "Verify"
-msgstr "Перевірити"
 
 #: 
 msgid "Family has no emails to use"
@@ -14657,10 +14641,6 @@ msgid "Date Picker Format"
 msgstr "Формат вибору дати"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Підказка вибору дати"
-
-#: 
 msgid "Date Without Year"
 msgstr "Дата без року"
 
@@ -14691,10 +14671,6 @@ msgstr "Формат дати для імені файлу"
 #: 
 msgid "Fully translated."
 msgstr "Повністю перекладено."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Підказка у полях введення дати. За замовчуванням: рррр-мм-дд"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -22984,10 +22960,6 @@ msgid "Invalid birth date"
 msgstr "Недійсна дата народження."
 
 #: 
-msgid "Invalid email address"
-msgstr "Невірна адреса електронної пошти"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Параметри кіоску"
 
@@ -23658,10 +23630,6 @@ msgstr "Виберіть, наскільки наперед заповнюють
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Виберіть людину, яка вже є в церковному довіднику. Вона приєднається до добровольців цього служіння, а координаторам надійде лист. Виключити людину може лише координатор."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "У ChurchCRM два способи вести добровольців. Одночасно призначений лише один; налаштування досвіду добровольців вирішує, що бачить ця церква. Перемикання ховає або показує сторінки й пункти меню — дані не видаляються, тож можна повернутися."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -25128,10 +25096,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "В особи, у записі якої приховано вік, рік народження ніколи не показується."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "У порталі членів о %s запитано зміну вашої адреси електронної пошти з %s на %s. Зміна відбувається лише коли використано посилання, надіслане на %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Рядок має неочікувану форму."
 
@@ -26556,10 +26520,6 @@ msgid "That device is signed out."
 msgstr "На цьому пристрої виконано вихід."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Це не дійсна адреса електронної пошти."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Ця сторінка була відкрита занадто довго. Спробуйте знову."
 
@@ -27250,4 +27210,16 @@ msgstr "або"
 #: 
 msgid "until %s"
 msgstr "до %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "У порталі учасників надіслано запит змінити вашу адресу електронної пошти на %1$s з %2$s на %3$s. Зміна відбувається лише після використання посилання, надісланого на нову адресу."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Скористайтеся посиланням нижче, щоб перевірити відомості про вашу родину. На сторінці перевірки виберіть «Підтвердити відомості про родину», щоб підтвердити, що все правильно, або надішліть виправлення до церковного офісу."
+
+#: 
+msgid "Review Family Information"
+msgstr "Перевірити відомості про родину"
 

@@ -3,7 +3,7 @@
 // does: an emailed code (design §6.1), read from Mailpit. The member rule is
 // opened to everyone for the spec and put back to the seed's settings after it.
 
-import { askForEmail, mailTo, postCode, waitForMail } from "./member-sign-in";
+import { askForEmail, codeInEmail, mailTo, postCode, waitForMail } from "./member-sign-in";
 
 const RULE_KEYS = ["bMemberSignIn", "sMemberSignInFamilyRoles", "sMemberSignInClassifications", "iMemberSignInMinAge"];
 const BUCKETS = ["portal-signin.address", "portal-signin.ip", "portal-signin.person"];
@@ -75,7 +75,7 @@ Cypress.Commands.add("signInAsMember", (who, { rememberDevice = false } = {}) =>
             return cy.task("mail:get", { id: fresh[0].ID });
         })
         .then(({ body }) => {
-            const code = `${body.Text || ""}`.match(/Your code\s+(\d{6})/);
+            const code = codeInEmail(`${body.HTML || ""}`);
             expect(code, "code in the sign-in email").to.not.eq(null);
             return postCode(code[1], rememberDevice ? { rememberDevice: "1" } : {});
         })

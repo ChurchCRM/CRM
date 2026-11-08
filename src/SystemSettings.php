@@ -8,6 +8,7 @@ use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -33,7 +34,7 @@ if (isset($_POST['save'])) {
         } elseif ($current_type == 'number') {
             $value = InputUtils::filterFloat($new_value[$name]);
         } elseif ($current_type == 'date') {
-            $value = InputUtils::filterDate($new_value[$name]);
+            $value = DateTimeUtils::normalizeDate($new_value[$name]);
         } elseif ($current_type == 'json') {
             $raw = $new_value[$name];
             json_decode($raw);

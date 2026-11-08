@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Neplatný dátum svadby"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-mail nie je platný"
-
-#: 
 msgid "Family Info"
 msgstr "Informácie o rodine"
 
@@ -1431,10 +1427,6 @@ msgstr "Neplatný dátum priateľstva"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Neplatný dátum členstva"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Pracovný e-mail nie je platný"
 
 #: 
 msgid "Birth Month"
@@ -4891,10 +4883,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugalčina – Portugalsko"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Zadajte názov aplikácie pre zobrazenie v autentifikátore"
-
-#: 
 msgid "Review"
 msgstr "Prehľad"
 
@@ -5023,10 +5011,6 @@ msgstr "Zobraziť stránku rodiny"
 #: 
 msgid "View Person Page"
 msgstr "Zobraziť stránku osoby"
-
-#: 
-msgid "Verify"
-msgstr "Overiť"
 
 #: 
 msgid "Family has no emails to use"
@@ -14624,10 +14608,6 @@ msgid "Date Picker Format"
 msgstr "Formát výberu dátumu"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Text nápovedy výberu dátumu"
-
-#: 
 msgid "Date Without Year"
 msgstr "Dátum bez roka"
 
@@ -14658,10 +14638,6 @@ msgstr "Formát dátumu pre názov súboru"
 #: 
 msgid "Fully translated."
 msgstr "Plne preložené."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Text nápovedy v poliach dátumu. Predvolené: rrrr-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -22951,10 +22927,6 @@ msgid "Invalid birth date"
 msgstr "Neplatný dátum narodenia."
 
 #: 
-msgid "Invalid email address"
-msgstr "Neplatná e-mailová adresa"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Nastavenia kiosku"
 
@@ -23625,10 +23597,6 @@ msgstr "Zvoľte, ako ďaleko dopredu sa rozvrhy obsadzujú a kedy odchádzajú p
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Vyberte niekoho, kto už je v adresári zboru. Pripojí sa k dobrovoľníkom tejto služby a jej koordinátorom sa odošle e-mail. Odobrať niekoho môže len koordinátor."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM má dva spôsoby správy dobrovoľníkov. V jednom čase má byť používaný len jeden; nastavenie prostredia dobrovoľníkov rozhoduje, ktorý tento zbor vidí. Prepnutie skryje alebo zobrazí stránky a položky ponuky — nikdy nevymaže údaje, takže sa môžete vrátiť."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -25095,10 +25063,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "Osoba, ktorej záznam skrýva vek, nikdy nezobrazuje rok narodenia."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "V členskom portáli bola %s vyžiadaná zmena vašej e-mailovej adresy z %s na %s. Zmena sa vykoná iba vtedy, keď sa použije odkaz odoslaný na %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Riadok nemá očakávaný tvar."
 
@@ -26523,10 +26487,6 @@ msgid "That device is signed out."
 msgstr "Toto zariadenie je odhlásené."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Toto nie je platná e-mailová adresa."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Táto stránka bola otvorená príliš dlho. Skúste to, prosím, znova."
 
@@ -27217,4 +27177,16 @@ msgstr "alebo"
 #: 
 msgid "until %s"
 msgstr "do %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "V portáli pre členov bola podaná žiadosť o zmenu vašej e-mailovej adresy na %1$s z %2$s na %3$s. Zmena sa vykoná až po použití odkazu odoslaného na novú adresu."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Pomocou odkazu nižšie skontrolujte údaje o svojej rodine. Na stránke kontroly vyberte „Potvrdiť údaje o rodine“, aby ste potvrdili, že je všetko správne, alebo pošlite opravy na cirkevný úrad."
+
+#: 
+msgid "Review Family Information"
+msgstr "Skontrolovať údaje o rodine"
 

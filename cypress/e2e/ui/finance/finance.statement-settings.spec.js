@@ -27,6 +27,28 @@ describe("Finance Statement Settings", () => {
             cy.wait("@saveSigner").its("response.statusCode").should("eq", 200);
         });
 
+        it("lists each setting on its own row", () => {
+            cy.visit("/finance/statements/settings");
+            cy.get("#statementWording textarea[name='sTaxReport1']").then(($first) => {
+                cy.get("#statementWording textarea[name='sTaxReport2']").should(($second) => {
+                    expect($second[0].getBoundingClientRect().top).to.be.greaterThan($first[0].getBoundingClientRect().bottom - 1);
+                });
+            });
+        });
+
+        it("offers PDF handling as a dropdown", () => {
+            cy.visit("/finance/statements/settings");
+            cy.get("#statementOutput select[name='iPDFOutputType'] option").should("have.length", 2);
+            cy.get("#statementOutput input[name='iPDFOutputType']").should("not.exist");
+            cy.contains("a", "Preview PDF").should("not.exist");
+        });
+
+        it("keeps statement settings out of System Settings", () => {
+            cy.visit("/SystemSettings.php");
+            for (const key of ["sTaxReport1", "sTaxReport2", "sTaxReport3", "sTaxSigner", "sChurchTaxId", "iPDFOutputType"]) {
+                cy.get(`[name='new_value[${key}]']`).should("not.exist");
+            }
+        });
     });
 
     describe("Finance-only user (not admin)", () => {

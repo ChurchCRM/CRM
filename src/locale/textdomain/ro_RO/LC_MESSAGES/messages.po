@@ -735,10 +735,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Nu este o dată validă a nunții"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-mail nu este valid"
-
-#: 
 msgid "Family Info"
 msgstr "Info Familie"
 
@@ -1484,10 +1480,6 @@ msgstr "Nu este un prieten dată validă"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Nu este un membru dată validă"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "De lucru E-mail nu este valid"
 
 #: 
 msgid "Birth Month"
@@ -4981,10 +4973,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugheză - Portugalia"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Specificați numele aplicației care va fi afișat în aplicația de autentificare"
-
-#: 
 msgid "Review"
 msgstr "Recenzie"
 
@@ -5113,10 +5101,6 @@ msgstr "Vizualizați pagina familiei"
 #: 
 msgid "View Person Page"
 msgstr "Vizualizați pagina persoanei"
-
-#: 
-msgid "Verify"
-msgstr "Verifică"
 
 #: 
 msgid "Family has no emails to use"
@@ -14705,10 +14689,6 @@ msgid "Date Picker Format"
 msgstr "Format selector dată"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Text indicativ selector dată"
-
-#: 
 msgid "Date Without Year"
 msgstr "Dată fără an"
 
@@ -14739,10 +14719,6 @@ msgstr "Format dată pentru numele fișierului"
 #: 
 msgid "Fully translated."
 msgstr "Complet tradus."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Text indicativ afișat în câmpurile de dată. Implicit: aaaa-ll-zz"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -23013,10 +22989,6 @@ msgid "Invalid birth date"
 msgstr "Data Nasterii invalid."
 
 #: 
-msgid "Invalid email address"
-msgstr "Adresă de email nevalidă"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Setări Chioșc"
 
@@ -23687,10 +23659,6 @@ msgstr "Alegeți cu cât timp înainte se completează programele și când plea
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Alegeți pe cineva care este deja în anuarul parohiei. Intră între voluntarii acestei slujiri, iar coordonatorii primesc un e-mail. Doar un coordonator poate scoate pe cineva."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM are două moduri de a gestiona voluntarii. Doar unul este menit să fie folosit odată; setarea experienței Voluntari decide pe care o vede această parohie. Schimbarea ascunde sau arată pagini și intrări de meniu — nu șterge niciodată date, deci puteți reveni."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -25157,10 +25125,6 @@ msgid "A person whose record hides their age never shows a birth year."
 msgstr "O persoană a cărei fișă ascunde vârsta nu arată niciodată anul nașterii."
 
 #: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "S-a făcut o cerere în Portalul membrilor de a schimba adresa dumneavoastră de e-mail la %s, de la %s la %s. Schimbarea are loc numai când este folosit linkul trimis la %s."
-
-#: 
 msgid "A row is not in the expected form."
 msgstr "Un rând nu are forma așteptată."
 
@@ -26585,10 +26549,6 @@ msgid "That device is signed out."
 msgstr "Dispozitivul respectiv este deconectat."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Aceasta nu este o adresă de e-mail validă."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Pagina a fost deschisă prea mult timp. Vă rugăm să încercați din nou."
 
@@ -27279,4 +27239,16 @@ msgstr "sau"
 #: 
 msgid "until %s"
 msgstr "până la %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "În portalul membrilor s-a cerut schimbarea adresei tale de e-mail de pe %1$s din %2$s în %3$s. Schimbarea are loc numai când este folosit linkul trimis la adresa nouă."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Folosește linkul de mai jos pentru a verifica informațiile familiei tale. Pe pagina de verificare alege „Confirmă informațiile familiei” ca să confirmi că totul este corect sau trimite corecturile la biroul bisericii."
+
+#: 
+msgid "Review Family Information"
+msgstr "Verifică informațiile familiei"
 

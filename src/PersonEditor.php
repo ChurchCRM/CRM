@@ -17,12 +17,14 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
 use ChurchCRM\Portal\Auth\EmailChangeChannel;
 use ChurchCRM\Portal\Auth\SignInEmailPolicy;
+use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\EmailAddress;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\Propel;
@@ -218,10 +220,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
     $iBirthDay = InputUtils::legacyFilterInput($_POST['BirthDay'], 'int');
     $iBirthYear = InputUtils::legacyFilterInput($_POST['BirthYear'], 'int');
     $bHideAge = isset($_POST['HideAge']);
-    $dFriendDate = InputUtils::filterDate($_POST['FriendDate']);
-    $dMembershipDate = InputUtils::filterDate($_POST['MembershipDate']);
+    $dFriendDate = trim((string) $_POST['FriendDate']);
+    $dMembershipDate = trim((string) $_POST['MembershipDate']);
     $bIsDeceased = isset($_POST['IsDeceased']);
-    $dDateDeceased = InputUtils::filterDate($_POST['DateDeceased'] ?? '');
+    $dDateDeceased = trim((string) ($_POST['DateDeceased'] ?? ''));
     $iClassification = InputUtils::legacyFilterInput($_POST['Classification'], 'int');
     $iGrade = GradeService::resolve($_POST['Grade'] ?? null);
     $iEnvelope = 0;
@@ -274,7 +276,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Friend Date if one was entered
     if (strlen($dFriendDate) > 0) {
-        $dateString = DateTimeUtils::parseAndValidate($dFriendDate, 'US', 'past');
+        $dateString = DateTimeUtils::parseAndValidate($dFriendDate, 'past');
         if ($dateString === false) {
             $sFriendDateError = '<span class="text-danger">'
                 . gettext('Not a valid Friend Date') . '</span>';
@@ -286,7 +288,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Membership Date if one was entered
     if (strlen($dMembershipDate) > 0) {
-        $dMembershipDate = DateTimeUtils::parseAndValidate($dMembershipDate, 'US', 'past');
+        $dMembershipDate = DateTimeUtils::parseAndValidate($dMembershipDate, 'past');
         if ($dMembershipDate === false) {
             $sMembershipDateError = '<span class="text-danger">'
                 . gettext('Not a valid Membership Date') . '</span>';
@@ -296,7 +298,7 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate deceased date if checkbox is ticked and a date was entered
     if ($bIsDeceased && strlen($dDateDeceased) > 0) {
-        $dDateDeceased = DateTimeUtils::parseAndValidate($dDateDeceased, 'US', 'past');
+        $dDateDeceased = DateTimeUtils::parseAndValidate($dDateDeceased, 'past');
         if ($dDateDeceased === false) {
             $sDateDeceasedError = '<span class="text-danger">'
                 . gettext('Not a valid date of death') . '</span>';
@@ -317,9 +319,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Email
     if (strlen($sEmail) > 0) {
-        if (!MiscUtils::checkEmail($sEmail)) {
+        if (!EmailAddress::isValid($sEmail)) {
             $sEmailError = '<span class="text-danger">'
-                . gettext('Email is Not Valid') . '</span>';
+                . EmailAddress::validationMessage() . '</span>';
             $bErrorFlag = true;
         }
     }
@@ -336,9 +338,9 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
 
     // Validate Work Email
     if (strlen($sWorkEmail) > 0) {
-        if (!MiscUtils::checkEmail($sWorkEmail)) {
+        if (!EmailAddress::isValid($sWorkEmail)) {
             $sWorkEmailError = '<span class="text-danger">'
-                . gettext('Work Email is Not Valid') . '</span>';
+                . EmailAddress::validationMessage() . '</span>';
             $bErrorFlag = true;
         }
     }
@@ -474,6 +476,10 @@ if (isset($_POST['PersonSubmit']) || isset($_POST['PersonSubmitAndAdd'])) {
             $connection->rollBack();
 
             throw $e;
+        }
+
+        if ($person->hasOwnAddress() && $person->getGeocodeStatus() === Person::GEOCODE_UNTRIED) {
+            (new FamilyService())->autoGeocodePerson($person);
         }
 
         if (!$personAlreadyExist) {
@@ -1073,7 +1079,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
                         <input type="text" name="MembershipDate" id="MembershipDate" class="form-control date-picker"
                                value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dMembershipDate), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
+                               placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
                     </div>
                     <?php if ($sMembershipDateError) { ?>
                         <span class="text-danger small"><?= $sMembershipDateError ?></span>
@@ -1086,7 +1092,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-handshake"></i></span>
                         <input type="text" name="FriendDate" id="FriendDate" class="form-control date-picker"
                                value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dFriendDate), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValueForAttr("sDatePickerFormat") ?>">
+                               placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
                     </div>
                     <?php if ($sFriendDateError) { ?>
                         <span class="text-danger small"><?= $sFriendDateError ?></span>
@@ -1104,7 +1110,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <span class="input-group-text"><i class="fa-solid fa-cross"></i></span>
                         <input type="text" name="DateDeceased" id="DateDeceased" class="form-control date-picker"
                                value="<?= htmlspecialchars(DateTimeUtils::formatForDatePicker($dDateDeceased), ENT_QUOTES, 'UTF-8') ?>" maxlength="10"
-                               placeholder="<?= SystemConfig::getValueForAttr('sDatePickerFormat') ?>">
+                               placeholder="<?= InputUtils::escapeAttribute(DateTimeUtils::datePickerFormat()) ?>">
                     </div>
                     <?php if ($sDateDeceasedError) { ?>
                         <span class="text-danger small"><?= $sDateDeceasedError ?></span>
