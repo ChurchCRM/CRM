@@ -1,5 +1,8 @@
 /// <reference types="cypress" />
 
+const GEOCODE_TEST_FAMILY_ID = 45;
+const GEOCODE_TEST_LOCATION = { latitude: 39.1116191, longitude: -94.5838027 };
+
 /**
  * API tests for the bulk-geocode endpoint
  * POST /api/map/geocode-all — geocodes active families missing coordinates
@@ -75,19 +78,27 @@ describe("API Private Map — POST /api/map/geocode-all", { retries: 2 }, () => 
     });
 
     context("skip offset (#9846)", () => {
-        it("Omitting skip defaults to zero when there are no missing coordinates", () => {
-            cy.makePrivateAdminAPICall(
-                "POST",
-                "/api/map/geocode-all",
-                { skip: Number.MAX_SAFE_INTEGER },
-                200,
-                30000,
-            ).then((probe) => {
-                expect(probe.body.total).to.equal(0);
-                cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", {}, 200, 30000).then((response) => {
-                    expect(response.body.skip).to.equal(0);
+        it("Skips the pending geocode address", () => {
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 1 }, 200, 30000).then(
+                (response) => {
+                    expect(response.body.skip).to.equal(1);
                     expect(response.body.processed).to.equal(0);
-                });
+                },
+            );
+        });
+
+        it("Omitting skip defaults to zero and geocodes the pending address", { retries: 0 }, () => {
+            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", {}, 200, 30000).then((response) => {
+                expect(response.body.skip).to.equal(0);
+                expect(response.body.total).to.equal(1);
+                expect(response.body.processed).to.equal(1);
+                expect(response.body.geocoded).to.equal(1);
+                expect(response.body.failed).to.equal(0);
+            });
+
+            cy.makePrivateAdminAPICall("GET", `/api/family/${GEOCODE_TEST_FAMILY_ID}`, null, 200).then((response) => {
+                expect(response.body.Latitude).to.be.closeTo(GEOCODE_TEST_LOCATION.latitude, 0.001);
+                expect(response.body.Longitude).to.be.closeTo(GEOCODE_TEST_LOCATION.longitude, 0.001);
             });
         });
 
@@ -95,15 +106,6 @@ describe("API Private Map — POST /api/map/geocode-all", { retries: 2 }, () => 
             cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: -1 }, 400, 30000);
         });
 
-        it("Echoes the requested skip and a processed count in the summary", () => {
-            cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: 100000 }, 200, 30000).then(
-                (probe) => {
-                    // The default (no skip key) path is asserted by the happy-path test above.
-                    expect(probe.body.skip).to.equal(100000);
-                    expect(probe.body).to.have.property("processed").that.is.a("number");
-                },
-            );
-        });
     });
 
     context("Authentication", () => {
