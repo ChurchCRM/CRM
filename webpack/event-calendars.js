@@ -948,7 +948,7 @@ function pinnedEventContent(info) {
   const pins = info.event.extendedProps.pinnedCalendars;
   const named = Array.isArray(pins) ? pins.filter((pin) => pin.name) : [];
   if (named.length < 2) {
-    return;
+    return true;
   }
 
   const nodes = [];
