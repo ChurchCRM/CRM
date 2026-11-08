@@ -23580,10 +23580,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Chagua mtu aliyeko tayari kwenye orodha ya kanisa. Anajiunga na wajitoleaji wa huduma hii na waratibu wake wanapewa barua pepe. Mratibu pekee ndiye anayeweza kumtoa mtu."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM ina njia mbili za kusimamia wajitoleaji. Moja tu ndiyo inayokusudiwa kutumika kwa wakati mmoja; mpangilio wa uzoefu wa Wajitoleaji huamua ipi kanisa hili linaona. Kubadilisha huficha au kuonyesha kurasa na viingilio vya menyu — kamwe haifuti data, kwa hiyo unaweza kurudi."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Wakati wa barua pepe ya kila siku ya nafasi zisizojazwa"
 

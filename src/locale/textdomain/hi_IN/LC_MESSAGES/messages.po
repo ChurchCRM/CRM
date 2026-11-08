@@ -23553,10 +23553,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "चर्च निर्देशिका में पहले से मौजूद किसी व्यक्ति को चुनें। वे इस सेवकाई के स्वयंसेवकों में जुड़ते हैं और इसके समन्वयकों को ईमेल जाता है। केवल समन्वयक ही किसी को निकाल सकता है।"
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM में स्वयंसेवकों के प्रबंधन के दो तरीके हैं। एक समय में केवल एक उपयोग के लिए है; स्वयंसेवक अनुभव सेटिंग तय करती है कि यह कलीसिया कौन सा देखे। बदलने से पृष्ठ और सूची प्रविष्टियाँ छिपती या दिखती हैं — आँकड़ा कभी नहीं मिटता, इसलिए आप वापस बदल सकते हैं।"
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "दैनिक खाली-पद ईमेल का समय"
 
