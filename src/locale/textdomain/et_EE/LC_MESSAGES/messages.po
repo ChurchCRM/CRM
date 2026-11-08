@@ -23583,10 +23583,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Vali keegi, kes on juba koguduse kataloogis. Ta liitub selle teenistuse vabatahtlikega ja koordinaatoritele saadetakse e-kiri. Ainult koordinaator saab kedagi eemaldada."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM-il on kaks viisi vabatahtlike haldamiseks. Korraga on mõeldud kasutusse ainult üks; vabatahtliku kogemuse säte otsustab, kumba see kogudus näeb. Vahetamine peidab või näitab lehti ja menüükirjeid — see ei kustuta kunagi andmeid, seega saad tagasi vahetada."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Täitmata ülesannete päevase e-kirja kellaaeg"
 

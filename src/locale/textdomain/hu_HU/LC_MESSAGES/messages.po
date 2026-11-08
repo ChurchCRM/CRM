@@ -23610,10 +23610,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Válasszon valakit, aki már szerepel a gyülekezeti névjegyzékben. Csatlakozik a szolgálat önkénteseihez, és a koordinátorok e-mailt kapnak. Csak koordinátor vehet ki valakit."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "A ChurchCRM két módon kezeli az önkénteseket. Egyszerre csak az egyik használata a cél; az Önkéntes élmény beállítás dönti el, melyiket látja ez a gyülekezet. A váltás elrejti vagy megjeleníti az oldalakat és a menüpontokat — soha nem töröl adatot, ezért vissza lehet váltani."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "A napi, be nem töltött feladatok e-mailjének ideje"
 

@@ -23563,10 +23563,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Chọn người đã có trong danh bạ hội thánh. Họ gia nhập tình nguyện viên của mục vụ này và điều phối viên được gửi email. Chỉ điều phối viên mới rút được người ra."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM có hai cách quản lý tình nguyện viên. Mỗi lúc chỉ dùng một cách; thiết lập trải nghiệm Tình nguyện viên quyết định hội thánh này thấy cách nào. Việc chuyển ẩn hoặc hiện trang và mục menu — không bao giờ xóa dữ liệu, nên bạn có thể chuyển lại."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Giờ email hằng ngày về vị trí chưa bố trí"
 

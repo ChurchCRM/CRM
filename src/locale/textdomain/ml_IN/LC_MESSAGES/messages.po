@@ -23551,10 +23551,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "സഭാ നാമാവലിയിൽ ഇതിനകമുള്ള ഒരാളെ തിരഞ്ഞെടുക്കുക. അവർ ഈ ശുശ്രൂഷയുടെ സന്നദ്ധസേവകരിൽ ചേരും; അതിന്റെ ഏകോപകർക്ക് ഇമെയിൽ പോകും. ഒരു ഏകോപകന് മാത്രമേ ഒരാളെ നീക്കാൻ കഴിയൂ."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM-ൽ സന്നദ്ധസേവകരെ നിയന്ത്രിക്കാൻ രണ്ട് വഴികളുണ്ട്. ഒരു സമയം ഒന്ന് മാത്രമേ ഉപയോഗത്തിലാകാവൂ; സന്നദ്ധ അനുഭവ ക്രമീകരണം ഈ സഭ ഏതാണ് കാണുക എന്ന് തീരുമാനിക്കുന്നു. മാറ്റുന്നത് താളുകളും പട്ടിക ഇനങ്ങളും മറയ്ക്കുകയോ കാണിക്കുകയോ ചെയ്യും — ദത്തം ഒരിക്കലും നീക്കില്ല, അതിനാൽ തിരികെ മാറാം."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "ദൈനംദിന ഒഴിവുള്ള സ്ഥാന ഇമെയിൽ സമയം"
 
