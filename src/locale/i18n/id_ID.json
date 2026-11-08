@@ -5697,7 +5697,6 @@
   "Added and qualified": "Ditambahkan dan memenuhi syarat",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "Pilih seberapa jauh ke depan jadwal diisi dan kapan pengingat dikirim, serta pastikan pekerjaan latar belakang sedang berjalan.",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "Pilih seseorang yang sudah ada di direktori gereja. Orang itu bergabung dengan relawan pelayanan ini dan koordinatornya menerima surel. Hanya koordinator yang dapat mengeluarkan seseorang.",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "ChurchCRM memiliki dua cara mengelola relawan. Hanya satu yang dimaksudkan untuk dipakai pada satu waktu; pengaturan pengalaman Relawan menentukan mana yang dilihat gereja ini. Beralih menyembunyikan atau menampilkan halaman dan entri menu — tidak pernah menghapus data, jadi Anda dapat kembali.",
   "Daily unfilled-position email time": "Waktu surel harian posisi yang belum terisi",
   "Donation funds, pledges and giving records": "Dana persembahan, janji iman, dan catatan pemberian",
   "Events and calendars, including the Member Portal calendars": "Acara dan kalender, termasuk kalender Portal Jemaat",
@@ -6588,6 +6587,9 @@
   "no head of household or spouse has an email address": "tidak ada kepala rumah tangga atau pasangan yang memiliki alamat surel",
   "or": "atau",
   "until %s": "hingga %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "Ada permintaan di Portal Anggota untuk mengubah alamat email Anda di %1$s dari %2$s menjadi %3$s. Perubahan terjadi hanya jika tautan yang dikirim ke alamat baru digunakan.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Gunakan tautan di bawah untuk meninjau informasi keluarga Anda. Di halaman tinjauan, pilih \"Konfirmasi Info Keluarga\" untuk menegaskan bahwa semuanya benar, atau kirim koreksi ke kantor gereja.",
+  "Review Family Information": "Tinjau Informasi Keluarga",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：{{count}} kejadian dibuat",
     "other": "\"{{name}}\"：{{count}} kejadian dibuat"

@@ -5757,7 +5757,6 @@
   "Added and qualified": "Dodano i kvalificirano",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "Odaberite koliko unaprijed se rasporedi popunjavaju i kada odlaze podsjetnici te provjerite da pozadinski poslovi rade.",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "Odaberite nekoga tko je već u imeniku crkve. Pridružuje se volonterima ove službe, a koordinatorima se šalje e-pošta. Samo koordinator može nekoga izuzeti.",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "ChurchCRM ima dva načina upravljanja volonterima. Istodobno je namijenjen samo jedan; postavka iskustva volontera odlučuje koji ova crkva vidi. Prebacivanje skriva ili prikazuje stranice i stavke izbornika — nikad ne briše podatke, pa se možete vratiti.",
   "Daily unfilled-position email time": "Vrijeme dnevne e-pošte o nepopunjenim pozicijama",
   "Donation funds, pledges and giving records": "Fondovi donacija, zavjeti i evidencija darivanja",
   "Events and calendars, including the Member Portal calendars": "Događaji i kalendari, uključujući kalendare portala za članove",
@@ -6648,6 +6647,9 @@
   "no head of household or spouse has an email address": "nijedan nositelj kućanstva ni supružnik nema adresu e-pošte",
   "or": "ili",
   "until %s": "do %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "U portalu za članove zatražena je promjena vaše adrese e-pošte na %1$s s %2$s na %3$s. Promjena se izvršava tek kada se upotrebi poveznica poslana na novu adresu.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Upotrijebite poveznicu u nastavku da pregledate podatke o svojoj obitelji. Na stranici za pregled odaberite „Potvrdi podatke o obitelji” da potvrdite da je sve točno ili pošaljite ispravke crkvenom uredu.",
+  "Review Family Information": "Pregled podataka o obitelji",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} dogadaj kreiran",
     "other": "\"{{name}}\": {{count}} dogadaja kreirana"

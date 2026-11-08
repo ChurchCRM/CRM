@@ -23555,10 +23555,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Valitse joku, joka on jo seurakunnan hakemistossa. Hän liittyy tämän palveluksen vapaaehtoisiin ja koordinaattoreille lähetetään sähköposti. Vain koordinaattori voi poistaa jonkun."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM:ssä on kaksi tapaa hallita vapaaehtoisia. Kerrallaan on tarkoitus käyttää vain yhtä; vapaaehtoiskokemuksen asetus päättää, kumman tämä seurakunta näkee. Vaihto piilottaa tai näyttää sivuja ja valikkokohtia — se ei koskaan poista tietoja, joten voit vaihtaa takaisin."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Päivittäisen täyttämättömien tehtävien sähköpostin aika"
 
@@ -27141,4 +27137,16 @@ msgstr "tai"
 #: 
 msgid "until %s"
 msgstr "%s asti"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Jäsenportaalissa pyydettiin vaihtamaan sähköpostiosoitteesi sivustolla %1$s osoitteesta %2$s osoitteeseen %3$s. Muutos tapahtuu vasta, kun uuteen osoitteeseen lähetettyä linkkiä käytetään."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Tarkista perheesi tiedot alla olevasta linkistä. Valitse tarkistussivulla ”Vahvista perheen tiedot” vahvistaaksesi, että kaikki on oikein, tai lähetä korjaukset seurakunnan toimistoon."
+
+#: 
+msgid "Review Family Information"
+msgstr "Tarkista perheen tiedot"
 

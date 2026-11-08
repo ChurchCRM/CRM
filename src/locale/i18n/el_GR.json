@@ -5727,7 +5727,6 @@
   "Added and qualified": "Προστέθηκε και κρίθηκε κατάλληλος",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "Επιλέξτε πόσο νωρίτερα συμπληρώνονται τα προγράμματα και πότε στέλνονται οι υπενθυμίσεις και ελέγξτε ότι οι εργασίες παρασκηνίου εκτελούνται.",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "Επιλέξτε κάποιον που είναι ήδη στον κατάλογο της εκκλησίας. Εντάσσεται στους εθελοντές αυτής της διακονίας και οι συντονιστές ειδοποιούνται. Μόνο συντονιστής μπορεί να αφαιρέσει κάποιον.",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "Το ChurchCRM έχει δύο τρόπους διαχείρισης εθελοντών. Κάθε φορά προορίζεται να χρησιμοποιείται μόνο ένας· η ρύθμιση εμπειρίας εθελοντή αποφασίζει ποιον βλέπει αυτή η εκκλησία. Η εναλλαγή κρύβει ή εμφανίζει σελίδες και καταχωρίσεις μενού — δεν διαγράφει ποτέ δεδομένα, οπότε μπορείτε να επιστρέψετε.",
   "Daily unfilled-position email time": "Ώρα ημερήσιου μηνύματος για κενές θέσεις",
   "Donation funds, pledges and giving records": "Ταμεία δωρεών, υποσχέσεις και αρχεία προσφορών",
   "Events and calendars, including the Member Portal calendars": "Γεγονότα και ημερολόγια, συμπεριλαμβανομένων των ημερολογίων της Πύλης μελών",
@@ -6618,6 +6617,9 @@
   "no head of household or spouse has an email address": "κανένας αρχηγός νοικοκυριού ή σύζυγος δεν έχει διεύθυνση ηλεκτρονικού ταχυδρομείου",
   "or": "ή",
   "until %s": "έως %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "Υποβλήθηκε αίτημα στην πύλη μελών για αλλαγή της διεύθυνσης email σας στο %1$s από %2$s σε %3$s. Η αλλαγή γίνεται μόνο όταν χρησιμοποιηθεί ο σύνδεσμος που στάλθηκε στη νέα διεύθυνση.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Χρησιμοποιήστε τον παρακάτω σύνδεσμο για να ελέγξετε τα στοιχεία της οικογένειάς σας. Στη σελίδα ελέγχου, επιλέξτε «Επιβεβαίωση στοιχείων οικογένειας» για να επιβεβαιώσετε ότι όλα είναι σωστά ή στείλτε διορθώσεις στο γραφείο της εκκλησίας.",
+  "Review Family Information": "Έλεγχος στοιχείων οικογένειας",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} γεγονός δημιουργήθηκε",
     "other": "\"{{name}}\": {{count}} γεγονότα δημιουργήθηκαν"

@@ -5697,7 +5697,6 @@
   "Added and qualified": "Đã thêm và đủ điều kiện",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "Chọn lịch được bố trí trước bao lâu và lúc nào gửi lời nhắc, rồi kiểm tra các tác vụ nền đang chạy.",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "Chọn người đã có trong danh bạ hội thánh. Họ gia nhập tình nguyện viên của mục vụ này và điều phối viên được gửi email. Chỉ điều phối viên mới rút được người ra.",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "ChurchCRM có hai cách quản lý tình nguyện viên. Mỗi lúc chỉ dùng một cách; thiết lập trải nghiệm Tình nguyện viên quyết định hội thánh này thấy cách nào. Việc chuyển ẩn hoặc hiện trang và mục menu — không bao giờ xóa dữ liệu, nên bạn có thể chuyển lại.",
   "Daily unfilled-position email time": "Giờ email hằng ngày về vị trí chưa bố trí",
   "Donation funds, pledges and giving records": "Các quỹ dâng hiến, lời hứa và hồ sơ dâng hiến",
   "Events and calendars, including the Member Portal calendars": "Sự kiện và lịch, gồm lịch Cổng Hội thánh",
@@ -6588,6 +6587,9 @@
   "no head of household or spouse has an email address": "không chủ hộ hay vợ hoặc chồng nào có địa chỉ email",
   "or": "hoặc",
   "until %s": "đến %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "Có yêu cầu trên Cổng thành viên đổi địa chỉ email của bạn tại %1$s từ %2$s thành %3$s. Thay đổi chỉ xảy ra khi dùng liên kết gửi tới địa chỉ mới.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Hãy dùng liên kết bên dưới để xem lại thông tin gia đình. Trên trang xem lại, chọn \"Xác nhận thông tin gia đình\" để xác nhận mọi thông tin đều đúng, hoặc gửi phần sửa tới văn phòng hội thánh.",
+  "Review Family Information": "Xem lại thông tin gia đình",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：tạo {{count}} lần xuất hiện",
     "other": "\"{{name}}\"：tạo {{count}} lần xuất hiện"

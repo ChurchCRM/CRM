@@ -5727,7 +5727,6 @@
   "Added and qualified": "Eklendi ve uygun bulundu",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "Programların ne kadar önceden doldurulacağını ve anımsatıcıların ne zaman gideceğini seçin ve arka plan işlerinin çalıştığını kontrol edin.",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "Kilise rehberinde zaten olan birini seçin. Bu hizmetin gönüllülerine katılır ve koordinatörlerine e-posta gider. Birini yalnızca koordinatör çıkarabilir.",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "ChurchCRM gönüllüleri yönetmenin iki yoluna sahiptir. Bir anda yalnızca birinin kullanılması amaçlanır; Gönüllü deneyimi ayarı bu kilisenin hangisini göreceğini belirler. Geçiş sayfaları ve menü girdilerini gizler veya gösterir — veriyi asla silmez, bu yüzden geri dönebilirsiniz.",
   "Daily unfilled-position email time": "Doldurulmamış görevlerin günlük e-posta saati",
   "Donation funds, pledges and giving records": "Bağış fonları, adaklar ve verme kayıtları",
   "Events and calendars, including the Member Portal calendars": "Üye Portalı takvimleri dahil etkinlikler ve takvimler",
@@ -6618,6 +6617,9 @@
   "no head of household or spouse has an email address": "hane reisinin veya eşin e-posta adresi yok",
   "or": "veya",
   "until %s": "%s tarihine kadar",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "Üye portalında %1$s adresindeki e-posta adresinizin %2$s adresinden %3$s adresine değiştirilmesi istendi. Değişiklik, yalnızca yeni adrese gönderilen bağlantı kullanıldığında gerçekleşir.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Aile bilgilerinizi gözden geçirmek için aşağıdaki bağlantıyı kullanın. İnceleme sayfasında her şeyin doğru olduğunu onaylamak için «Aile bilgilerini onayla» seçeneğini seçin veya düzeltmeleri kilise ofisine gönderin.",
+  "Review Family Information": "Aile bilgilerini gözden geçir",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} olay oluşturuldu",
     "other": "\"{{name}}\": {{count}} olay oluşturuldu"

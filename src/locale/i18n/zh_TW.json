@@ -5697,7 +5697,6 @@
   "Added and qualified": "已新增並具備資格",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "選擇日程提前多久安排人員、提醒何時發出，並確認背景工作正在執行。",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "請選擇已經在教會名冊中的人。他們會加入本事工的志工，並會寄郵件給協調員。只有協調員可以把人移出。",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "ChurchCRM 有兩種管理志工的方式。同一時間只應使用一種；「志工體驗」設定決定本教會看到哪一種。切換只會隱藏或顯示頁面和選單項目，絕不會刪除資料，因此可以再切回來。",
   "Daily unfilled-position email time": "每日未滿崗位郵件的傳送時間",
   "Donation funds, pledges and giving records": "奉獻基金、認獻與奉獻紀錄",
   "Events and calendars, including the Member Portal calendars": "活動與日曆，包括會友入口的日曆",
@@ -6588,6 +6587,9 @@
   "no head of household or spouse has an email address": "沒有戶長或配偶有電子郵件地址",
   "or": "或",
   "until %s": "至 %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "有人在成員入口網站中要求將您在 %1$s 的電子郵件地址從 %2$s 變更為 %3$s。只有使用寄到新地址的連結後，此變更才會生效。",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "請使用下方連結核對您的家庭資料。在核對頁面上，選取「確認家庭資料」以確認一切無誤，或將更正寄給教會辦公室。",
+  "Review Family Information": "核對家庭資料",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：建立了 {{count}} 個發生",
     "other": "\"{{name}}\"：建立了 {{count}} 個發生"

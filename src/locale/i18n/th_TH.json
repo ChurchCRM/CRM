@@ -5697,7 +5697,6 @@
   "Added and qualified": "เพิ่มแล้วและมีคุณสมบัติ",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "เลือกว่าจะจัดคนในกำหนดการล่วงหน้าแค่ไหน และจะส่งการเตือนเมื่อใด แล้วตรวจว่างานเบื้องหลังกำลังทำงาน",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "เลือกคนที่มีอยู่ในสารบบคริสตจักรแล้ว คนนั้นจะเข้าร่วมอาสาสมัครของพันธกิจนี้ และผู้ประสานงานจะได้รับอีเมล มีเพียงผู้ประสานงานที่นำคนออกได้",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "ChurchCRM มีสองวิธีจัดการอาสาสมัคร ใช้ได้ครั้งละวิธี การตั้งค่าประสบการณ์อาสาสมัครเป็นตัวกำหนดว่าคริสตจักรนี้จะเห็นวิธีใด การสลับจะซ่อนหรือแสดงหน้าและรายการเมนู โดยไม่ลบข้อมูล จึงสลับกลับได้",
   "Daily unfilled-position email time": "เวลาส่งอีเมลประจำวันของตำแหน่งที่ยังว่าง",
   "Donation funds, pledges and giving records": "กองทุนถวาย คำมั่นสัญญา และบันทึกการถวาย",
   "Events and calendars, including the Member Portal calendars": "กิจกรรมและปฏิทิน รวมถึงปฏิทินของพอร์ทัลสมาชิก",
@@ -6588,6 +6587,9 @@
   "no head of household or spouse has an email address": "ไม่มีหัวหน้าครัวเรือนหรือคู่สมรสที่มีที่อยู่อีเมล",
   "or": "หรือ",
   "until %s": "จนถึง %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "มีคำขอในพอร์ทัลสมาชิกให้เปลี่ยนที่อยู่อีเมลของคุณที่ %1$s จาก %2$s เป็น %3$s การเปลี่ยนแปลงจะเกิดขึ้นเมื่อใช้ลิงก์ที่ส่งไปยังที่อยู่ใหม่เท่านั้น",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "โปรดใช้ลิงก์ด้านล่างเพื่อตรวจสอบข้อมูลครอบครัวของคุณ ในหน้าตรวจสอบ ให้เลือก \"ยืนยันข้อมูลครอบครัว\" เพื่อยืนยันว่าทุกอย่างถูกต้อง หรือส่งการแก้ไขไปที่สำนักงานคริสตจักร",
+  "Review Family Information": "ตรวจสอบข้อมูลครอบครัว",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"：สร้าง {{count}} การเกิดขึ้น",
     "other": "\"{{name}}\"：สร้าง {{count}} การเกิดขึ้น"

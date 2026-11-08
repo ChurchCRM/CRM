@@ -5727,7 +5727,6 @@
   "Added and qualified": "Hinzugefügt und qualifiziert",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "Legen Sie fest, wie weit im Voraus Pläne gefüllt werden und wann Erinnerungen hinausgehen, und prüfen Sie, ob die Hintergrundaufträge laufen.",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "Wählen Sie jemanden, der bereits im Gemeindeverzeichnis steht. Die Person wird Freiwillige dieses Dienstes, und die Koordinatoren erhalten eine E-Mail. Nur ein Koordinator kann jemanden entfernen.",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "ChurchCRM kennt zwei Arten, Freiwillige zu verwalten. Nur eine soll gleichzeitig in Gebrauch sein; die Einstellung zur Freiwilligenansicht legt fest, welche diese Gemeinde sieht. Der Wechsel blendet Seiten und Menüeinträge aus oder ein — Daten werden nie gelöscht, Sie können also zurückwechseln.",
   "Daily unfilled-position email time": "Uhrzeit der täglichen E-Mail zu unbesetzten Aufgaben",
   "Donation funds, pledges and giving records": "Spendenfonds, Spendenversprechen und Gaben",
   "Events and calendars, including the Member Portal calendars": "Veranstaltungen und Kalender, einschließlich der Kalender im Gemeindeportal",
@@ -6618,6 +6617,9 @@
   "no head of household or spouse has an email address": "weder Haushaltsvorstand noch Ehepartner hat eine E-Mail-Adresse",
   "or": "oder",
   "until %s": "bis %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "Im Mitgliederportal wurde beantragt, Ihre E-Mail-Adresse bei %1$s von %2$s in %3$s zu ändern. Die Änderung erfolgt erst, wenn der an die neue Adresse gesendete Link verwendet wird.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Bitte prüfen Sie über den Link unten die Angaben zu Ihrer Familie. Wählen Sie auf der Prüfen-Seite „Familienangaben bestätigen“, um zu bestätigen, dass alles stimmt, oder senden Sie Korrekturen an das Gemeindebüro.",
+  "Review Family Information": "Familienangaben prüfen",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} Ereignis erstellt",
     "other": "\"{{name}}\": {{count}} Ereignisse erstellt"

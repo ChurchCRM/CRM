@@ -23610,10 +23610,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Válasszon valakit, aki már szerepel a gyülekezeti névjegyzékben. Csatlakozik a szolgálat önkénteseihez, és a koordinátorok e-mailt kapnak. Csak koordinátor vehet ki valakit."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "A ChurchCRM két módon kezeli az önkénteseket. Egyszerre csak az egyik használata a cél; az Önkéntes élmény beállítás dönti el, melyiket látja ez a gyülekezet. A váltás elrejti vagy megjeleníti az oldalakat és a menüpontokat — soha nem töröl adatot, ezért vissza lehet váltani."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "A napi, be nem töltött feladatok e-mailjének ideje"
 
@@ -27196,4 +27192,16 @@ msgstr "vagy"
 #: 
 msgid "until %s"
 msgstr "eddig: %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "A tagportálon kérés érkezett, hogy a(z) %1$s oldalon az e-mail-címed %2$s címről %3$s címre változzon. A módosítás csak akkor történik meg, ha az új címre küldött hivatkozást használják."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Az alábbi hivatkozással ellenőrizd a családod adatait. Az ellenőrző oldalon válaszd a „Családi adatok megerősítése” lehetőséget, ha minden helyes, vagy küldd el a javításokat a gyülekezeti irodának."
+
+#: 
+msgid "Review Family Information"
+msgstr "Családi adatok ellenőrzése"
 

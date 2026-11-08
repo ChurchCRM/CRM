@@ -5787,7 +5787,6 @@
   "Added and qualified": "Добавлен и допущен",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "Выберите, на сколько вперёд заполняются расписания и когда уходят напоминания, и проверьте, что фоновые задания выполняются.",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "Выберите человека, который уже есть в церковном справочнике. Он войдёт в добровольцы этого служения, а координаторам будет отправлено письмо. Исключить человека может только координатор.",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "В ChurchCRM два способа вести добровольцев. Одновременно предназначен только один; настройка опыта добровольцев решает, что видит эта церковь. Переключение скрывает или показывает страницы и пункты меню — данные не удаляются, можно вернуться.",
   "Daily unfilled-position email time": "Время ежедневного письма о незаполненных позициях",
   "Donation funds, pledges and giving records": "Фонды пожертвований, обещания и записи о приношениях",
   "Events and calendars, including the Member Portal calendars": "События и календари, включая календари портала членов",
@@ -6678,6 +6677,9 @@
   "no head of household or spouse has an email address": "ни у главы семьи, ни у супруга(и) нет адреса электронной почты",
   "or": "или",
   "until %s": "до %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "В портале участников запрошено изменение вашего адреса электронной почты на %1$s с %2$s на %3$s. Изменение происходит только после перехода по ссылке, отправленной на новый адрес.",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "Перейдите по ссылке ниже, чтобы проверить сведения о вашей семье. На странице проверки выберите «Подтвердить сведения о семье», чтобы подтвердить, что всё верно, или отправьте исправления в церковный офис.",
+  "Review Family Information": "Проверить сведения о семье",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\": {{count}} событие создано",
     "other": "\"{{name}}\": {{count}} событий создано"

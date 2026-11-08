@@ -5727,7 +5727,6 @@
   "Added and qualified": "ተጨምሯል እና ብቁ ሆኗል",
   "Choose how far ahead schedules are filled and when reminders go out, and check that the background jobs are running.": "መርሐግብሮች ምን ያህል ቀድመው እንደሚሞሉ እና አስታዋሾች መቼ እንደሚሄዱ ይምረጡ፣ የጀርባ ስራዎች እየሄዱ መሆናቸውንም ያረጋግጡ።",
   "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out.": "አስቀድሞ በቤተክርስቲያን ማውጫ ውስጥ ያለን ሰው ይምረጡ። የዚህ አገልግሎት በጎ ፈቃደኞች ይቀላቀላሉ እና አስተባባሪዎቹ ደብዳቤ ይደርሳቸዋል። ሰውን ማውጣት የሚችለው አስተባባሪ ብቻ ነው።",
-  "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.": "ChurchCRM በጎ ፈቃደኞችን የሚያስተዳድርባቸው ሁለት መንገዶች አሉት። በአንድ ጊዜ አንዱ ብቻ ጥቅም ላይ ይውላል፤ የበጎ ፈቃደኛ ተሞክሮ ቅንብር ይህች ቤተክርስቲያን የትኛውን እንደምታይ ይወስናል። መቀየር ገጾችን እና የምናሌ ንጥሎችን ይደብቃል ወይም ያሳያል — ውሂብን በጭራሽ አይሰርዝም፣ ስለዚህ መመለስ ይችላሉ።",
   "Daily unfilled-position email time": "ያልተሞሉ ቦታዎች ዕለታዊ የደብዳቤ ሰዓት",
   "Donation funds, pledges and giving records": "የመባ ፈንዶች፣ የቃል ኪዳኖች እና የመስጠት መዝገቦች",
   "Events and calendars, including the Member Portal calendars": "ዝግጅቶች እና ቀን መቁጠሪያዎች፣ የአባላት መግቢያ ቀን መቁጠሪያዎችን ጨምሮ",
@@ -6618,6 +6617,9 @@
   "no head of household or spouse has an email address": "የቤተሰብ ኃላፊ ወይም የትዳር አጋር ኢሜይል አድራሻ የለውም",
   "or": "ወይም",
   "until %s": "እስከ %s",
+  "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.": "በአባላት መግቢያ ላይ በ %1$s ያለዎትን ኢሜይል ከ %2$s ወደ %3$s ለመቀየር ጥያቄ ቀርቧል። ለውጡ የሚፈጸመው ወደ አዲሱ አድራሻ የተላከው አገናኝ ሲጠቀም ብቻ ነው።",
+  "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office.": "የቤተሰብዎን መረጃ ለመገምገም ከታች ያለውን አገናኝ ይጠቀሙ። በግምገማው ገጽ ላይ ሁሉም ነገር ትክክል መሆኑን ለማረጋገጥ «የቤተሰብ መረጃን አረጋግጥ» የሚለውን ይምረጡ፣ ወይም ማስተካከያዎችን ወደ የቤተ ክርስቲያን ቢሮ ይላኩ።",
+  "Review Family Information": "የቤተሰብ መረጃን ገምግም",
   "\"{{name}}\": {{count}} occurrences created": {
     "one": "\"{{name}}\"፦ {{count}} ቀጠሮ ተፈጥሯል",
     "other": "\"{{name}}\"፦ {{count}} ቀጠሮዎች ተፈጥረዋል"
