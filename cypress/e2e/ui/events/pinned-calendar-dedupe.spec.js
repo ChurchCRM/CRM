@@ -7,6 +7,7 @@
 const PREFIX = "PINDEDUPE";
 const DAY = "2031-04-16";
 const TITLE = `${PREFIX} Combined Service`;
+const SOLO_TITLE = `${PREFIX} Worship Only`;
 
 const visibleCopies = (win) =>
     win.CRM.fullcalendar.getEvents().filter((event) => event.title === TITLE && event.display !== "none");
@@ -14,6 +15,7 @@ const visibleCopies = (win) =>
 describe("Events pinned to more than one calendar", () => {
     const calendarIds = [];
     let eventId = 0;
+    let soloEventId = 0;
 
     before(() => {
         cy.rememberTestEnv(["admin.api.key"]);
@@ -41,13 +43,23 @@ describe("Events pinned to more than one calendar", () => {
             }).then((resp) => {
                 eventId = resp.body.eventId;
             });
+            cy.makePrivateAdminAPICall("POST", "/api/events", {
+                Title: SOLO_TITLE,
+                Type: 1,
+                Start: `${DAY}T12:00:00`,
+                End: `${DAY}T13:00:00`,
+                PinnedCalendars: [calendarIds[0]],
+            }).then((resp) => {
+                soloEventId = resp.body.eventId;
+            });
         });
     });
 
     after(() => {
         cy.then(() => {
-            if (eventId) {
-                cy.cleanupEvents([eventId]);
+            const ids = [eventId, soloEventId].filter(Boolean);
+            if (ids.length) {
+                cy.cleanupEvents(ids);
             }
             calendarIds.forEach((id) => {
                 cy.makePrivateAdminAPICall("DELETE", `/api/calendars/${id}`, null, [200, 404]);
@@ -78,6 +90,13 @@ describe("Events pinned to more than one calendar", () => {
         });
 
         cy.get("#calendar .crm-cal-pin-mark").should("have.length", 2);
+    });
+
+    it("shows the title of every event chip, pinned once or several times", () => {
+        cy.visit("event/calendars");
+        showDay();
+
+        cy.get("#calendar", { timeout: 20000 }).should("contain.text", SOLO_TITLE).and("contain.text", TITLE);
     });
 
     it("keeps the event when one of its calendars is hidden", () => {

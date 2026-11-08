@@ -17,8 +17,9 @@
 
     &:focus {
       border-color: var(--tblr-primary);
-      outline: 0;
-      box-shadow: 0 0 0 0.2rem rgba(32, 107, 196, 0.15);
+      outline: var(--tblr-focus-ring-width) solid var(--tblr-focus-ring-color);
+      outline-offset: -1px;
+      box-shadow: none;
     }
   }
 
@@ -48,59 +49,6 @@ html[data-bs-theme="dark"] {
   .apexcharts-legend-text {
     color: inherit !important;
   }
-}
-
-// Tabler styles the active item as `.nav-item.active > .nav-link`, but each menu row wraps its link, counters and chevron in `.nav-row`. Style the whole row so hover and active cover it all.
-.navbar-vertical .nav-row {
-  border-radius: var(--tblr-border-radius);
-
-  &:hover {
-    background: var(--tblr-hover-bg);
-  }
-
-  > .nav-link {
-    --tblr-nav-link-hover-bg: transparent;
-  }
-}
-
-.navbar-vertical .nav-item.active > .nav-row {
-  background: var(--tblr-navbar-active-bg);
-
-  > .nav-link {
-    --tblr-nav-link-icon-color: currentColor;
-    color: var(--tblr-navbar-active-color);
-    font-weight: var(--tblr-font-weight-medium);
-  }
-}
-
-// Sidebar folder chevron; rotates when the section is open.
-.navbar-vertical .nav-link {
-  .nav-link-title { flex: 1; }
-
-  .nav-link-arrow {
-    display: inline-flex;
-    align-items: center;
-    padding-left: 0.25rem;
-    flex-shrink: 0;
-    opacity: 0.4;
-    font-size: 0.65rem;
-    transition: transform 0.2s ease;
-  }
-
-  &[aria-expanded="true"] .nav-link-arrow {
-    transform: rotate(180deg);
-    opacity: 0.7;
-  }
-}
-
-.navbar-vertical .badge {
-  color: #fff;
-  font-weight: 600;
-}
-.navbar-vertical .badge.bg-warning,
-.navbar-vertical .badge.bg-info,
-.navbar-vertical .badge.bg-light {
-  color: #333; // dark text on light badges in both themes
 }
 
 select {
@@ -142,7 +90,7 @@ select {
     .card-options {
       flex: 0 0 100%;
       width: 100%;
-      margin-left: 0 !important; // beats Tabler's !important .ms-auto on the same element
+      margin-inline-start: 0;
       margin-top: 0;
     }
 
@@ -251,4 +199,30 @@ select {
     margin: 0;
     transform: none;
     z-index: 1055; // above a Tabler card and sticky headers, below a modal backdrop
+}
+
+// Below xl the top bar carries the menu button beside the search, so the sidebar's own brand row is hidden.
+@media (max-width: 1199.98px) {
+  #sidebar > .container-fluid > .navbar-toggler,
+  #sidebar > .container-fluid > .navbar-brand {
+    display: none;
+  }
+
+  #sidebar {
+    min-height: 0;
+    padding: 0;
+  }
+
+  #sidebar > .container-fluid {
+    min-height: 0;
+  }
+}
+
+// Menu counters sit at the end of the row, beside the chevron.
+.navbar-vertical .nav-link-title {
+  flex: 1;
+}
+
+.navbar-vertical .badge {
+  flex: none;
 }
