@@ -4,11 +4,16 @@ declare(strict_types=1);
 
 namespace ChurchCRM\Tests\Unit\Plugins\Holidays;
 
+use Composer\Autoload\ClassLoader;
 use Tester\Assert;
 use Yasumi\Holiday;
 use Yasumi\Yasumi;
 
-require dirname(__DIR__, 4) . '/tests/php/bootstrap.php';
+require dirname(__DIR__, 3) . '/bootstrap.php';
+
+$pluginLoader = new ClassLoader();
+$pluginLoader->addPsr4('ChurchCRM\\Plugins\\Holidays\\', APP_ROOT . '/plugins/core/holidays/src');
+$pluginLoader->register();
 
 // All 54 African countries: 53 custom providers + 1 Yasumi native (SouthAfrica)
 $africanCustomProviders = [

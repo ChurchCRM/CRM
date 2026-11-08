@@ -139,7 +139,7 @@ class CentralAfricanRepublic extends AbstractProvider
         // Movable Christian Holidays
         $this->addHoliday($this->easterMonday($this->year, $this->timezone, $this->locale));
         $this->addHoliday($this->ascensionDay($this->year, $this->timezone, $this->locale));
-        $this->addHoliday($this->whitMonday($this->year, $this->timezone, $this->locale));
+        $this->addHoliday($this->pentecostMonday($this->year, $this->timezone, $this->locale));
 
         // Movable Islamic Holidays (estimated astronomical projections)
         $this->addEidAlFitr($tz);
