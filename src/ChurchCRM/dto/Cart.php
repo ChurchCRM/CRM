@@ -244,6 +244,7 @@ class Cart
     {
         return PersonQuery::create()
             ->filterById($_SESSION['aPeopleCart'])
+            ->leftJoinWithFamily()
             ->find();
     }
 

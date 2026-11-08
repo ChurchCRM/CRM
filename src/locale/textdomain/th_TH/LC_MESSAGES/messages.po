@@ -4897,10 +4897,6 @@ msgid "Portuguese - Portugal"
 msgstr "โปรตุเกส - โปรตุเกส"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "ระบุชื่อแอปพลิเคชันที่จะแสดงในแอปยืนยันตัวตน"
-
-#: 
 msgid "Review"
 msgstr "ตรวจสอบ"
 
@@ -5029,10 +5025,6 @@ msgstr "ดูหน้าครอบครัว"
 #: 
 msgid "View Person Page"
 msgstr "ดูหน้าบุคคล"
-
-#: 
-msgid "Verify"
-msgstr "ยืนยัน"
 
 #: 
 msgid "Family has no emails to use"
@@ -14603,10 +14595,6 @@ msgid "Date Picker Format"
 msgstr "รูปแบบตัวเลือกวันที่"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "ข้อความตัวอย่างตัวเลือกวันที่"
-
-#: 
 msgid "Date Without Year"
 msgstr "วันที่ไม่มีปี"
 
@@ -14637,10 +14625,6 @@ msgstr "รูปแบบวันที่สำหรับชื่อไฟ
 #: 
 msgid "Fully translated."
 msgstr "แปลครบถ้วนแล้ว"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "ข้อความคำแนะนำในช่องวันที่ ค่าเริ่มต้น: ปปปป-ดด-วว"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -23549,10 +23533,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "เลือกคนที่มีอยู่ในสารบบคริสตจักรแล้ว คนนั้นจะเข้าร่วมอาสาสมัครของพันธกิจนี้ และผู้ประสานงานจะได้รับอีเมล มีเพียงผู้ประสานงานที่นำคนออกได้"
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM มีสองวิธีจัดการอาสาสมัคร ใช้ได้ครั้งละวิธี การตั้งค่าประสบการณ์อาสาสมัครเป็นตัวกำหนดว่าคริสตจักรนี้จะเห็นวิธีใด การสลับจะซ่อนหรือแสดงหน้าและรายการเมนู โดยไม่ลบข้อมูล จึงสลับกลับได้"
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "เวลาส่งอีเมลประจำวันของตำแหน่งที่ยังว่าง"
 
@@ -25015,10 +24995,6 @@ msgstr "คนที่เสียที่อยู่นี้จะไม่
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "คนที่ระเบียนซ่อนอายุจะไม่แสดงปีเกิด"
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "มีคำขอในพอร์ทัลสมาชิกให้เปลี่ยนที่อยู่อีเมลของคุณเวลา %s จาก %s เป็น %s การเปลี่ยนจะเกิดขึ้นเมื่อใช้ลิงก์ที่ส่งไปยัง %s"
 
 #: 
 msgid "A row is not in the expected form."
@@ -27139,4 +27115,16 @@ msgstr "หรือ"
 #: 
 msgid "until %s"
 msgstr "จนถึง %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "มีคำขอในพอร์ทัลสมาชิกให้เปลี่ยนที่อยู่อีเมลของคุณที่ %1$s จาก %2$s เป็น %3$s การเปลี่ยนแปลงจะเกิดขึ้นเมื่อใช้ลิงก์ที่ส่งไปยังที่อยู่ใหม่เท่านั้น"
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "โปรดใช้ลิงก์ด้านล่างเพื่อตรวจสอบข้อมูลครอบครัวของคุณ ในหน้าตรวจสอบ ให้เลือก \"ยืนยันข้อมูลครอบครัว\" เพื่อยืนยันว่าทุกอย่างถูกต้อง หรือส่งการแก้ไขไปที่สำนักงานคริสตจักร"
+
+#: 
+msgid "Review Family Information"
+msgstr "ตรวจสอบข้อมูลครอบครัว"
 

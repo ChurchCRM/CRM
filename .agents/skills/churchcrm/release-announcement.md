@@ -83,9 +83,14 @@ a duplicate; a second bot announcement is.
 ```bash
 MARK="<!-- release-announce:$TAG -->"
 gh issue list -R "$REPO" --state closed --milestone "$TAG" --limit 200 \
-  --json number,title,stateReason \
-  --jq '.[] | select(.stateReason == "COMPLETED") | "#\(.number)  \(.title[0:100])"'
+  --json number,title,stateReason,author \
+  --jq '.[] | select(.stateReason == "COMPLETED" and (.author.is_bot | not) and ([.author.login] | inside(["DawoudIO","cwhorton","churchcrm-hazel"]) | not)) | "#\(.number) @\(.author.login)  \(.title[0:100])"'
 ```
+
+Only issues opened by outside reporters get the comment. Skip every issue
+opened by a maintainer or agent account (`DawoudIO`, `cwhorton`,
+`churchcrm-hazel`) and any bot: they know it shipped and the comment is noise.
+Add a login to the list in the query when a new maintainer account appears.
 
 Only `COMPLETED` issues — a `NOT_PLANNED`/duplicate left in the milestone was
 not fixed and its reporter must not be told it was. **Show the maintainer the

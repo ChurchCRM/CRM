@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import { askForEmail, resetEmailSignIn, restoreSettings, signInEmail, useMemberSignIn } from "../../../support/member-sign-in";
-import { absoluteUrl } from "../../../support/urls";
+import { absoluteUrl, basePath } from "../../../support/urls";
 
 /**
  * The grace for a remembered device's replaced token (#10463,
@@ -30,7 +30,7 @@ const signInRemembered = () => {
 /** A request from a browser that holds only this device cookie, as after the session went idle or closed. */
 const resumeWith = (token) => {
     cy.clearCookies();
-    cy.setCookie(DEVICE_COOKIE, token, { path: "/portal", httpOnly: true });
+    cy.setCookie(DEVICE_COOKIE, token, { path: `${basePath()}/portal`, httpOnly: true });
     return cy.request({ url: "/portal/", followRedirect: false });
 };
 
@@ -112,7 +112,7 @@ describe("Member Portal device token grace", () => {
             cy.clearCookies();
             cy.visit("/portal/login");
             cy.clearCookies();
-            cy.setCookie(DEVICE_COOKIE, first, { path: "/portal", httpOnly: true });
+            cy.setCookie(DEVICE_COOKIE, first, { path: `${basePath()}/portal`, httpOnly: true });
             cy.window()
                 .then((win) =>
                     Promise.all(

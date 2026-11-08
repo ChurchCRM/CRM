@@ -4887,10 +4887,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portuges - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Tukuyin ang pangalan ng aplikasyon na ipapakita sa authenticator app"
-
-#: 
 msgid "Review"
 msgstr "Suriin"
 
@@ -5019,10 +5015,6 @@ msgstr "Tingnan ang Pahina ng Pamilya"
 #: 
 msgid "View Person Page"
 msgstr "Tingnan ang Pahina ng Tao"
-
-#: 
-msgid "Verify"
-msgstr "I-verify"
 
 #: 
 msgid "Family has no emails to use"
@@ -14602,10 +14594,6 @@ msgid "Date Picker Format"
 msgstr "Format ng Date Picker"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Placeholder ng Date Picker"
-
-#: 
 msgid "Date Without Year"
 msgstr "Petsa Nang Walang Taon"
 
@@ -14636,10 +14624,6 @@ msgstr "Format ng Petsa para sa Filename"
 #: 
 msgid "Fully translated."
 msgstr "Ganap na isinalin."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Teksto ng pahiwatig na ipinapakita sa mga input ng petsa. Default: taon-buan-araw"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -23567,10 +23551,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Pumili ng taong nasa direktoryo na ng simbahan. Sasali siya sa mga boluntaryo ng ministeryong ito at padalhan ng email ang mga tagapag-ugnay. Tanging tagapag-ugnay ang maaaring mag-alis ng tao."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "May dalawang paraan ang ChurchCRM ng pamamahala ng mga boluntaryo. Isa lang ang dapat gamitin sa isang pagkakataon; ang setting ng karanasan sa Boluntaryo ang nagpapasya kung alin ang makikita ng simbahang ito. Ang paglipat ay nagtatago o nagpapakita ng mga pahina at entry sa menu — hindi ito nagbubura ng datos, kaya maaari kang bumalik."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Oras ng araw-araw na email ng posisyong hindi pa napupunan"
 
@@ -25033,10 +25013,6 @@ msgstr "Ang taong mawawalan nito ay wala nang sariling email: nilalaktawan ang m
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "Ang taong itinatago ng tala ang edad ay hindi kailanman nagpapakita ng taon ng kapanganakan."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "May hiniling sa Member Portal na baguhin ang iyong email address nang %s mula %s tungo sa %s. Nangyayari lamang ang pagbabago kapag ginamit ang link na ipinadala sa %s."
 
 #: 
 msgid "A row is not in the expected form."
@@ -27157,4 +27133,16 @@ msgstr "o"
 #: 
 msgid "until %s"
 msgstr "hanggang %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "May kahilingan sa Portal ng Miyembro na baguhin ang iyong email address sa %1$s mula %2$s tungo sa %3$s. Magkakabisa ang pagbabago kapag ginamit ang link na ipinadala sa bagong address."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Gamitin ang link sa ibaba upang suriin ang impormasyon ng iyong pamilya. Sa pahina ng pagsusuri, piliin ang \"Kumpirmahin ang Impormasyon ng Pamilya\" upang kumpirmahing tama ang lahat, o ipadala ang mga pagwawasto sa opisina ng simbahan."
+
+#: 
+msgid "Review Family Information"
+msgstr "Suriin ang Impormasyon ng Pamilya"
 

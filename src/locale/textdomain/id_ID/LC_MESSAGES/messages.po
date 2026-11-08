@@ -4916,10 +4916,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugis - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Tentukan nama aplikasi yang akan ditampilkan di aplikasi authenticator"
-
-#: 
 msgid "Review"
 msgstr "Ulasan"
 
@@ -5049,10 +5045,6 @@ msgstr "Lihat Halaman Keluarga"
 #: 
 msgid "View Person Page"
 msgstr "Lihat Halaman Individu"
-
-#: 
-msgid "Verify"
-msgstr "Verifikasi"
 
 #: 
 msgid "Family has no emails to use"
@@ -14623,10 +14615,6 @@ msgid "Date Picker Format"
 msgstr "Format Pemilih Tanggal"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Teks Petunjuk Pemilih Tanggal"
-
-#: 
 msgid "Date Without Year"
 msgstr "Tanggal Tanpa Tahun"
 
@@ -14657,10 +14645,6 @@ msgstr "Format Tanggal untuk Nama File"
 #: 
 msgid "Fully translated."
 msgstr "Diterjemahkan sepenuhnya."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Teks petunjuk di kolom tanggal. Default: tttt-bb-hh"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -23569,10 +23553,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Pilih seseorang yang sudah ada di direktori gereja. Orang itu bergabung dengan relawan pelayanan ini dan koordinatornya menerima surel. Hanya koordinator yang dapat mengeluarkan seseorang."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM memiliki dua cara mengelola relawan. Hanya satu yang dimaksudkan untuk dipakai pada satu waktu; pengaturan pengalaman Relawan menentukan mana yang dilihat gereja ini. Beralih menyembunyikan atau menampilkan halaman dan entri menu — tidak pernah menghapus data, jadi Anda dapat kembali."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Waktu surel harian posisi yang belum terisi"
 
@@ -25035,10 +25015,6 @@ msgstr "Orang yang kehilangan alamat tersebut kemudian tidak memiliki surel send
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "Orang yang catatannya menyembunyikan usia tidak pernah menampilkan tahun lahir."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Permintaan dibuat di Portal Anggota untuk mengubah alamat surel Anda pukul %s dari %s menjadi %s. Perubahan terjadi hanya ketika tautan yang dikirim ke %s digunakan."
 
 #: 
 msgid "A row is not in the expected form."
@@ -27159,4 +27135,16 @@ msgstr "atau"
 #: 
 msgid "until %s"
 msgstr "hingga %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Ada permintaan di Portal Anggota untuk mengubah alamat email Anda di %1$s dari %2$s menjadi %3$s. Perubahan terjadi hanya jika tautan yang dikirim ke alamat baru digunakan."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Gunakan tautan di bawah untuk meninjau informasi keluarga Anda. Di halaman tinjauan, pilih \"Konfirmasi Info Keluarga\" untuk menegaskan bahwa semuanya benar, atau kirim koreksi ke kantor gereja."
+
+#: 
+msgid "Review Family Information"
+msgstr "Tinjau Informasi Keluarga"
 

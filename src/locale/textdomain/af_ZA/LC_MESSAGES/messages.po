@@ -4919,10 +4919,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugees - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Spesifiseer die toepassingsnaam wat in die verifikasie-app vertoon moet word"
-
-#: 
 msgid "Review"
 msgstr "Hersien"
 
@@ -5052,10 +5048,6 @@ msgstr "Sien familiebladsy"
 #: 
 msgid "View Person Page"
 msgstr "Sien persoonbladsy"
-
-#: 
-msgid "Verify"
-msgstr "Verifieer"
 
 #: 
 msgid "Family has no emails to use"
@@ -14635,10 +14627,6 @@ msgid "Date Picker Format"
 msgstr "Datumkieser-formaat"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Datumkieser-plekhouer"
-
-#: 
 msgid "Date Without Year"
 msgstr "Datum sonder jaar"
 
@@ -14669,10 +14657,6 @@ msgstr "Lêernaam-datumformaat"
 #: 
 msgid "Fully translated."
 msgstr "Volledig vertaal."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Wenkteks in datuminvoervelde. Standaard: jjjj-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -23600,10 +23584,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Kies iemand wat reeds in die kerkgids is. Hulle word vrywilligers van hierdie bediening en die koördineerders kry e-pos. Net ’n koördineerder kan iemand verwyder."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM het twee maniere om vrywilligers te bestuur. Net een is bedoel om op ’n slag in gebruik te wees; die instelling vir die vrywilligerervaring bepaal watter een hierdie kerk sien. Wissel versteek of wys bladsye en kieslysinskrywings — dit vee nooit data uit nie, dus kan u terugskakel."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Tyd van die daaglikse e-pos oor ongevulde posisies"
 
@@ -25066,10 +25046,6 @@ msgstr "'n Persoon wat dit verloor, het dan geen eie e-pos nie: pos wat slegs aa
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "'n Persoon wie se rekord hul ouderdom versteek, wys nooit 'n geboortejaar nie."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "'n Versoek is in die Lidportaal gemaak om jou e-posadres om %s van %s na %s te verander. Die verandering gebeur slegs wanneer die skakel wat na %s gestuur is, gebruik word."
 
 #: 
 msgid "A row is not in the expected form."
@@ -27190,4 +27166,16 @@ msgstr "of"
 #: 
 msgid "until %s"
 msgstr "tot %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "'n Versoek is in die lidportaal gemaak om u e-posadres by %1$s van %2$s na %3$s te verander. Die verandering gebeur eers wanneer die skakel wat na die nuwe adres gestuur is, gebruik word."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Gebruik asseblief die skakel hieronder om u gesinsinligting na te gaan. Kies op die hersieningsblad \"Bevestig gesinsinligting\" om te bevestig dat alles korrek is, of stuur regstellings na die kerkkantoor."
+
+#: 
+msgid "Review Family Information"
+msgstr "Hersien gesinsinligting"
 

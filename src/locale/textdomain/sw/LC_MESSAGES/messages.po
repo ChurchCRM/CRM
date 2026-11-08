@@ -4916,10 +4916,6 @@ msgid "Portuguese - Portugal"
 msgstr "Kireno - Ureno"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Bainisha jina la programu litakaloonyeshwa katika programu ya uthibitishaji"
-
-#: 
 msgid "Review"
 msgstr "Kagua"
 
@@ -5048,10 +5044,6 @@ msgstr "Tazama Ukurasa wa Familia"
 #: 
 msgid "View Person Page"
 msgstr "Tazama Ukurasa wa Mtu"
-
-#: 
-msgid "Verify"
-msgstr "Thibitisha"
 
 #: 
 msgid "Family has no emails to use"
@@ -14631,10 +14623,6 @@ msgid "Date Picker Format"
 msgstr "Muundo wa Kichaguzi cha Tarehe"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Msimbo wa Kichaguzi cha Tarehe"
-
-#: 
 msgid "Date Without Year"
 msgstr "Tarehe Bila Mwaka"
 
@@ -14665,10 +14653,6 @@ msgstr "Muundo wa Tarehe kwa Jina la Faili"
 #: 
 msgid "Fully translated."
 msgstr "Imetafsiriwa kikamilifu."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Maandishi ya kidokezo katika maeneo ya tarehe. Chaguo-msingi: mmmm-mm-ss"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -23596,10 +23580,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Chagua mtu aliyeko tayari kwenye orodha ya kanisa. Anajiunga na wajitoleaji wa huduma hii na waratibu wake wanapewa barua pepe. Mratibu pekee ndiye anayeweza kumtoa mtu."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM ina njia mbili za kusimamia wajitoleaji. Moja tu ndiyo inayokusudiwa kutumika kwa wakati mmoja; mpangilio wa uzoefu wa Wajitoleaji huamua ipi kanisa hili linaona. Kubadilisha huficha au kuonyesha kurasa na viingilio vya menyu — kamwe haifuti data, kwa hiyo unaweza kurudi."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Wakati wa barua pepe ya kila siku ya nafasi zisizojazwa"
 
@@ -25062,10 +25042,6 @@ msgstr "Mtu anayeipoteza basi hana barua pepe yake mwenyewe: barua zinazotumwa k
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "Mtu ambaye rekodi yake inaficha umri wake haonyeshi kamwe mwaka wa kuzaliwa."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Ombi limefanywa katika Lango la Wanachama kubadilisha anwani yako ya barua pepe saa %s kutoka %s hadi %s. Mabadiliko hufanyika tu kiungo kilichotumwa kwa %s kinapotumiwa."
 
 #: 
 msgid "A row is not in the expected form."
@@ -27186,4 +27162,16 @@ msgstr "au"
 #: 
 msgid "until %s"
 msgstr "hadi %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Ombi limefanywa kwenye lango la wanachama kubadilisha anwani yako ya barua pepe katika %1$s kutoka %2$s hadi %3$s. Mabadiliko yanafanyika tu kiungo kilichotumwa kwenye anwani mpya kinapotumika."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Tumia kiungo hapa chini kukagua taarifa za familia yako. Kwenye ukurasa wa ukaguzi, chagua \"Thibitisha taarifa za familia\" kuthibitisha kuwa kila kitu ni sahihi, au tuma marekebisho kwa ofisi ya kanisa."
+
+#: 
+msgid "Review Family Information"
+msgstr "Kagua taarifa za familia"
 

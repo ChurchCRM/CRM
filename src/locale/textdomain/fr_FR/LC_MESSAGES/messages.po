@@ -4915,10 +4915,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugais - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Spécifiez le nom de l'application à afficher dans l'application d'authentification"
-
-#: 
 msgid "Review"
 msgstr "Résumé"
 
@@ -5049,10 +5045,6 @@ msgstr "Voir page de la Famille"
 #: 
 msgid "View Person Page"
 msgstr "Voir Page de la personne"
-
-#: 
-msgid "Verify"
-msgstr "Vérifier"
 
 #: 
 msgid "Family has no emails to use"
@@ -14632,10 +14624,6 @@ msgid "Date Picker Format"
 msgstr "Format du sélecteur de date"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Texte d'exemple du sélecteur de date"
-
-#: 
 msgid "Date Without Year"
 msgstr "Date sans année"
 
@@ -14666,10 +14654,6 @@ msgstr "Format de date pour les noms de fichiers"
 #: 
 msgid "Fully translated."
 msgstr "Entièrement traduit."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Texte indicatif dans les champs de date. Par défaut : aaaa-mm-jj"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -23597,10 +23581,6 @@ msgid "Choose someone already in the church directory. They join this ministry's
 msgstr "Choisissez une personne déjà dans l'annuaire de l'église. Elle rejoint les bénévoles de ce ministère et ses coordinateurs reçoivent un e-mail. Seul un coordinateur peut retirer quelqu'un."
 
 #: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM a deux façons de gérer les bénévoles. Une seule est prévue à la fois ; le réglage d'expérience Bénévoles décide laquelle cette église voit. Changer masque ou affiche des pages et des entrées de menu — cela ne supprime jamais de données, vous pouvez donc revenir en arrière."
-
-#: 
 msgid "Daily unfilled-position email time"
 msgstr "Heure de l'e-mail quotidien des postes non pourvus"
 
@@ -25063,10 +25043,6 @@ msgstr "Une personne qui la perd n'a alors plus d'e-mail personnel : les message
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "Une personne dont la fiche masque l'âge n'affiche jamais d'année de naissance."
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "Une demande a été faite dans le portail des membres pour changer votre adresse e-mail à %s, de %s vers %s. Le changement n'a lieu que lorsque le lien envoyé à %s est utilisé."
 
 #: 
 msgid "A row is not in the expected form."
@@ -27187,4 +27163,16 @@ msgstr "ou"
 #: 
 msgid "until %s"
 msgstr "jusqu'au %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Une demande a été faite dans le portail des membres pour changer votre adresse e-mail sur %1$s de %2$s à %3$s. Le changement n’a lieu que lorsque le lien envoyé à la nouvelle adresse est utilisé."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Utilisez le lien ci-dessous pour vérifier les informations de votre famille. Sur la page de vérification, choisissez « Confirmer les informations de la famille » pour confirmer que tout est exact, ou envoyez les corrections au bureau de l’église."
+
+#: 
+msgid "Review Family Information"
+msgstr "Vérifier les informations de la famille"
 

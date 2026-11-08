@@ -22,6 +22,7 @@ use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
@@ -85,7 +86,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
         $queryParams = $request->getQueryParams();
         // Mode is a simple string — use sanitizeText (no SQL context needed).
-        // Avoid legacyFilterInput which depends on the $cnInfoCentral global.
+        // legacyFilterInput would open the legacy mysqli connection for nothing.
         $mode = InputUtils::sanitizeText((string) ($queryParams['mode'] ?? ''));
 
         $customListId = (int) ($queryParams['ListID'] ?? 0);
@@ -677,7 +678,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sDateTimeFormat'        => SystemConfig::getValue('sDateTimeFormat')        ?: SystemConfig::getConfigItem('sDateTimeFormat')->getDefault(),
             'sDateFilenameFormat'    => SystemConfig::getValue('sDateFilenameFormat')    ?: SystemConfig::getConfigItem('sDateFilenameFormat')->getDefault(),
             'sDatePickerFormat'      => SystemConfig::getValue('sDatePickerFormat')      ?: SystemConfig::getConfigItem('sDatePickerFormat')->getDefault(),
-            'sDatePickerPlaceHolder' => SystemConfig::getValue('sDatePickerPlaceHolder') ?: SystemConfig::getConfigItem('sDatePickerPlaceHolder')->getDefault(),
             // Currency & Finance Formats
             'sCurrencySymbol'        => SystemConfig::getValue('sCurrencySymbol')        ?: SystemConfig::getConfigItem('sCurrencySymbol')->getDefault(),
             'sCurrencyPosition'      => SystemConfig::getValue('sCurrencyPosition')      ?: SystemConfig::getConfigItem('sCurrencyPosition')->getDefault(),
@@ -777,8 +777,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         // Date & Time Formats — fall back to each key's declared default when
         // empty/whitespace. An empty string passed to PHP's date() produces
         // empty output app-wide.
-        foreach (['sDateFormatLong', 'sDateFormatNoYear', 'sDateTimeFormat', 'sDateFilenameFormat', 'sDatePickerFormat', 'sDatePickerPlaceHolder'] as $key) {
+        foreach (['sDateFormatLong', 'sDateFormatNoYear', 'sDateTimeFormat', 'sDateFilenameFormat', 'sDatePickerFormat'] as $key) {
             $val = trim((string) ($body[$key] ?? ''));
+            if ($key === 'sDatePickerFormat' && !DateTimeUtils::isCompleteDateFormat($val)) {
+                $val = '';
+            }
             SystemConfig::setValue($key, $val !== '' ? $val : SystemConfig::getConfigItem($key)->getDefault());
         }
         // Phone Number Formats — same empty-value guard.
@@ -834,7 +837,6 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         'sDateTimeFormat'      => 'text',
         'sDateFilenameFormat'  => 'text',
         'sDatePickerFormat'    => 'text',
-        'sDatePickerPlaceHolder' => 'text',
         'sPhoneFormat'         => 'text',
         'sPhoneFormatWithExt'  => 'text',
         'sPhoneFormatCell'     => 'text',

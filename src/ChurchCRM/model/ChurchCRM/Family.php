@@ -34,6 +34,8 @@ use Propel\Runtime\Map\TableMap;
  */
 class Family extends BaseFamily implements PhotoInterface
 {
+    use GeocodedAddress;
+
     private ?Photo $photo = null;
     private bool $skipPostUpdateNote = false;
 
@@ -342,6 +344,11 @@ class Family extends BaseFamily implements PhotoInterface
         if ($this->getSecondIsMailing() && !$this->hasSecondAddress()) {
             $this->setSecondIsMailing(false);
         }
+
+        $this->forgetGeocodeOnAddressChange(
+            [FamilyTableMap::COL_FAM_ADDRESS1, FamilyTableMap::COL_FAM_ADDRESS2, FamilyTableMap::COL_FAM_CITY, FamilyTableMap::COL_FAM_STATE, FamilyTableMap::COL_FAM_ZIP, FamilyTableMap::COL_FAM_COUNTRY],
+            [FamilyTableMap::COL_FAM_LATITUDE, FamilyTableMap::COL_FAM_LONGITUDE, FamilyTableMap::COL_FAM_GEOCODETRIEDAT],
+        );
 
         return parent::preSave($con);
     }
@@ -781,11 +788,6 @@ class Family extends BaseFamily implements PhotoInterface
             $s = mb_substr($s, 0, $maxLen) . '...';
         }
         return InputUtils::escapeHTML($s);
-    }
-
-    public function hasLatitudeAndLongitude(): bool
-    {
-        return !empty($this->getLatitude()) && !empty($this->getLongitude());
     }
 
     /**

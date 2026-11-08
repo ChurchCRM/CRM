@@ -59,6 +59,7 @@ require __DIR__ . '/routes/api/system/system-logs.php';
 require __DIR__ . '/routes/api/system/feature-toggles.php';
 require __DIR__ . '/routes/api/system/telemetry-consent.php';
 require __DIR__ . '/routes/api/system/volunteer-opportunities.php';
+require __DIR__ . '/routes/api/volunteer-conversion.php';
 require __DIR__ . '/routes/api/upgrade.php';
 require __DIR__ . '/routes/api/user-admin.php';
 require __DIR__ . '/routes/api/import.php';
@@ -69,5 +70,6 @@ require __DIR__ . '/routes/people.php';
 require __DIR__ . '/routes/email.php';
 require __DIR__ . '/routes/member-portal.php';
 require __DIR__ . '/routes/ministry-settings.php';
+require __DIR__ . '/routes/volunteer-conversion.php';
 
 $app->run();
