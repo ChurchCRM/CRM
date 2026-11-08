@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Neplatný dátum svadby"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-mail nie je platný"
-
-#: 
 msgid "Family Info"
 msgstr "Informácie o rodine"
 
@@ -1431,10 +1427,6 @@ msgstr "Neplatný dátum priateľstva"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Neplatný dátum členstva"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Pracovný e-mail nie je platný"
 
 #: 
 msgid "Birth Month"
@@ -22935,10 +22927,6 @@ msgid "Invalid birth date"
 msgstr "Neplatný dátum narodenia."
 
 #: 
-msgid "Invalid email address"
-msgstr "Neplatná e-mailová adresa"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Nastavenia kiosku"
 
@@ -26497,10 +26485,6 @@ msgstr "Toto sa nepodarilo odstrániť."
 #: 
 msgid "That device is signed out."
 msgstr "Toto zariadenie je odhlásené."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Toto nie je platná e-mailová adresa."
 
 #: 
 msgid "That page had been open too long. Please try again."

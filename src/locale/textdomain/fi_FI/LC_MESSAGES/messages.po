@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Virheellinen hääpäivä"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Sähköpostiosoite ei ole kelvollinen"
-
-#: 
 msgid "Family Info"
 msgstr "Perheen tiedot"
 
@@ -1437,10 +1433,6 @@ msgstr "Virheellinen ystävyyspäivä"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Virheellinen jäsenyyspäivä"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Työsähköposti ei ole kelvollinen"
 
 #: 
 msgid "Birth Month"
@@ -22879,10 +22871,6 @@ msgid "Invalid birth date"
 msgstr "Virheellinen syntymäaika."
 
 #: 
-msgid "Invalid email address"
-msgstr "Virheellinen sähköpostiosoite"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kioskin asetukset"
 
@@ -26441,10 +26429,6 @@ msgstr "Sitä ei voitu poistaa."
 #: 
 msgid "That device is signed out."
 msgstr "Tuo laite on kirjattu ulos."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Se ei ole kelvollinen sähköpostiosoite."
 
 #: 
 msgid "That page had been open too long. Please try again."

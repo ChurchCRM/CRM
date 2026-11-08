@@ -497,6 +497,7 @@ class Menu
             $adminMenu = new MenuItem(gettext('Admin'), '', $isFinanceEnabled);
             $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', $isFinanceEnabled, 'fa-envelope'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'finance/funds', $isFinanceEnabled, 'fa-piggy-bank'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Statement Settings'), 'finance/statements/settings', $isFinanceEnabled, 'fa-file-invoice'));
 
             $depositsMenu->addSubMenu($adminMenu);
         }
@@ -531,10 +532,9 @@ class Menu
             $reportsMenu->addSubMenu(new MenuItem($report['title'], $report['url'], true, $report['icon']));
         }
 
-        if ($isAdmin || $isFinanceEnabled) {
+        if ($isAdmin) {
             $adminMenu = new MenuItem(gettext('Admin'), '', true);
             $adminMenu->addSubMenu(new MenuItem(gettext('Report Settings'), 'admin/system/report-settings', $isAdmin, 'fa-file-lines'));
-            $adminMenu->addSubMenu(new MenuItem(gettext('Statement Settings'), 'finance/statements/settings', $isFinanceEnabled, 'fa-file-invoice'));
             $reportsMenu->addSubMenu($adminMenu);
         }
 
