@@ -43,20 +43,31 @@ class DepositService {
     {
         AuthService::requireUserGroupMembership('bFinance');
         $query = PledgeQuery::create()
-            ->joinWithDonationFund()    // DonationFund is always required — INNER JOIN preserves data-integrity guard
+            ->joinWithDonationFund()    // DonationFund is always required: INNER JOIN preserves data-integrity guard
             ->leftJoinWithFamily();      // Family is optional (anonymous donors have no Family row)
         if ($depID) {
             $query->filterByDepId($depID);
         }
         $pledges = $query->find();
+
+        $pledgeIds = [];
+        foreach ($pledges as $pledge) {
+            $pledgeIds[] = (int) $pledge->getId();
+        }
+        $personMap = PersonPledgeService::getPersonsForPledges($pledgeIds);
+        $personNames = PersonPledgeService::getPersonNames(array_values($personMap));
+
         $payments = [];
         foreach ($pledges as $pledge) {
             $family = $pledge->getFamily();
             $donationFund = $pledge->getDonationFund();
+            $pId = $personMap[(int) $pledge->getId()] ?? 0;
             $values = new \stdClass();
             $values->plg_plgID = $pledge->getId();
             $values->plg_FamID = $pledge->getFamId();
             $values->familyString = $family ? $family->getFamilyString() : '';
+            $values->PersonId = $pId;
+            $values->PersonName = $personNames[$pId] ?? '';
             $values->plg_FYID = $pledge->getFyId();
             $values->FiscalYear = $pledge->getFyId() ? FinancialService::formatFiscalYear((int) $pledge->getFyId()) : '';
             $values->plg_date = $pledge->getDate();
@@ -166,12 +177,22 @@ class DepositService {
             ->orderBy('GroupKey', 'ASC')
             ->find();
 
+        $pledgeIds = [];
+        foreach ($items as $pledge) {
+            $pledgeIds[] = (int) $pledge->getId();
+        }
+        $personMap = PersonPledgeService::getPersonsForPledges($pledgeIds);
+        $personNames = PersonPledgeService::getPersonNames(array_values($personMap));
+
         // Propel's ObjectCollection::toArray() doesn't call individual model's toArray(),
         // so we iterate to ensure each Pledge's custom toArray() executes (which populates FamilyString).
         // sumAmount_formatted is added here so the API contract (raw + formatted sibling) is met.
-        return array_map(function ($pledge) {
+        return array_map(function ($pledge) use ($personMap, $personNames) {
             $row = $pledge->toArray();
             $row['sumAmount_formatted'] = CurrencyFormatter::format($row['sumAmount'] ?? null);
+            $pId = $personMap[(int) $pledge->getId()] ?? 0;
+            $row['PersonId'] = $pId;
+            $row['PersonName'] = $personNames[$pId] ?? '';
             return $row;
         }, iterator_to_array($items));
     }
@@ -277,7 +298,7 @@ class DepositService {
             $arr = $item['arr'];
             $total = (float) ($arr['totalAmount'] ?? 0);
             // PHP-side amount range filter (Propel HAVING clauses on virtual columns
-            // are unreliable with grouped queries — see FinancePaymentSearchResultProvider.php)
+            // are unreliable with grouped queries, see FinancePaymentSearchResultProvider.php)
             if ($amountMin !== null && $total < $amountMin) {
                 continue;
             }
