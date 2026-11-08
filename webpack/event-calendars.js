@@ -6,19 +6,17 @@ import formaTheme from "fullcalendar/themes/forma";
 import "fullcalendar/skeleton.css";
 import "fullcalendar/themes/forma/theme.css";
 import "fullcalendar/themes/forma/palettes/blue.css";
+import { alertAction, confirmAction } from "./common/confirm-action";
 import { applyFcLocale } from "./common/fc-locale";
 import { escapeHtml } from "./utils/escape-html";
 
 window.moveEventModal = {
-  getButtons: (confirmLabel, confirmClass) => ({
-    cancel: {
-      label: `<i class="fa-solid fa-xmark me-1"></i>${i18next.t("Cancel")}`,
-      className: "btn-secondary",
-    },
-    confirm: {
-      label: `<i class="fa-solid fa-check me-1"></i>${i18next.t(confirmLabel || "Confirm")}`,
-      className: confirmClass || "btn-primary",
-    },
+  getOptions: (confirmLabel) => ({
+    tone: "primary",
+    className: "modal-sm",
+    cancelLabel: `<i class="fa-solid fa-xmark me-1"></i>${i18next.t("Cancel")}`,
+    confirmLabel: `<i class="fa-solid fa-check me-1"></i>${i18next.t(confirmLabel || "Confirm")}`,
+    onCancel: () => window.moveEventModal.revertFunc(),
   }),
   buildMessage: (_eventTitle, fromLabel, fromDate, toLabel, toDate) =>
     '<p class="text-muted mb-3">' +
@@ -45,27 +43,23 @@ window.moveEventModal = {
     "</div>" +
     "</div></div>" +
     "</div>",
-  modalCallBack: (result) => {
-    if (result === true) {
-      const evt = window.moveEventModal.event;
-      // Storage convention: wall-clock-in-sTimeZone (matches all existing
-      // events). FullCalendar's `startStr`/`endStr` already carry the time
-      // in the calendar's configured tz (sTimeZone). Strip any trailing Z
-      // or +HH:MM offset so PHP/Propel stores the wall-clock numbers as-is
-      // and hydrates them back in sTimeZone for display. Using `toISOString()`
-      // here would send UTC and double-shift the time on read.
-      const stripTz = (s) => (typeof s === "string" ? s.replace(/(?:Z|[+-]\d{2}:\d{2})$/, "") : s);
-      window.CRM.APIRequest({
-        method: "POST",
-        path: `events/${evt.id}/time`,
-        data: JSON.stringify({
-          startTime: evt.allDay ? evt.startStr : stripTz(evt.startStr),
-          endTime: evt.end ? stripTz(evt.endStr) : null,
-        }),
-      });
-    } else {
-      window.moveEventModal.revertFunc();
-    }
+  applyMove: () => {
+    const evt = window.moveEventModal.event;
+    // Storage convention: wall-clock-in-sTimeZone (matches all existing
+    // events). FullCalendar's `startStr`/`endStr` already carry the time
+    // in the calendar's configured tz (sTimeZone). Strip any trailing Z
+    // or +HH:MM offset so PHP/Propel stores the wall-clock numbers as-is
+    // and hydrates them back in sTimeZone for display. Using `toISOString()`
+    // here would send UTC and double-shift the time on read.
+    const stripTz = (s) => (typeof s === "string" ? s.replace(/(?:Z|[+-]\d{2}:\d{2})$/, "") : s);
+    window.CRM.APIRequest({
+      method: "POST",
+      path: `events/${evt.id}/time`,
+      data: JSON.stringify({
+        startTime: evt.allDay ? evt.startStr : stripTz(evt.startStr),
+        endTime: evt.end ? stripTz(evt.endStr) : null,
+      }),
+    });
   },
   // Format a FullCalendar event Date for display in the church's wall-clock.
   // FullCalendar uses "marker" Dates: a JS Date whose UTC components encode
@@ -102,13 +96,12 @@ window.moveEventModal = {
     const newStart = event.start ? fmt(event.start) : event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
-    bootbox.confirm({
-      title: `<i class="fa-solid fa-calendar-days me-2 text-primary"></i>${event.title}`,
-      message: window.moveEventModal.buildMessage(event.title, "From", originalStart, "To", newStart),
-      buttons: window.moveEventModal.getButtons("Move"),
-      callback: window.moveEventModal.modalCallBack,
-      className: "modal-sm",
-    });
+    confirmAction(
+      `<i class="fa-solid fa-calendar-days me-2 text-primary"></i>${escapeHtml(event.title)}`,
+      window.moveEventModal.buildMessage(event.title, "From", originalStart, "To", newStart),
+      window.moveEventModal.applyMove,
+      window.moveEventModal.getOptions("Move"),
+    );
   },
   handleEventResize: (info) => {
     const event = info.event;
@@ -122,13 +115,12 @@ window.moveEventModal = {
     const newEnd = event.end ? fmt(event.end) : event.endStr || event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
-    bootbox.confirm({
-      title: `<i class="fa-solid fa-clock me-2 text-primary"></i>${event.title}`,
-      message: window.moveEventModal.buildMessage(event.title, "Old End", originalEnd, "New End", newEnd),
-      buttons: window.moveEventModal.getButtons("Resize"),
-      callback: window.moveEventModal.modalCallBack,
-      className: "modal-sm",
-    });
+    confirmAction(
+      `<i class="fa-solid fa-clock me-2 text-primary"></i>${escapeHtml(event.title)}`,
+      window.moveEventModal.buildMessage(event.title, "Old End", originalEnd, "New End", newEnd),
+      window.moveEventModal.applyMove,
+      window.moveEventModal.getOptions("Resize"),
+    );
   },
 };
 
@@ -238,16 +230,18 @@ window.calendarPropertiesModal = {
             document.body.removeChild(fallbackTextarea);
           } catch (_e) {
             document.body.removeChild(fallbackTextarea);
-            if (typeof bootbox !== "undefined") {
-              bootbox.alert(i18next.t("Unable to copy to clipboard. Please copy the URL manually."));
-            }
+            window.CRM.notify(i18next.t("Unable to copy to clipboard. Please copy the URL manually."), {
+              type: "danger",
+              delay: 6000,
+            });
           }
         });
     } else {
       // Fallback for non-secure contexts
-      if (typeof bootbox !== "undefined") {
-        bootbox.alert(i18next.t("Clipboard API not available. Please copy the URL manually."));
-      }
+      window.CRM.notify(i18next.t("Clipboard API not available. Please copy the URL manually."), {
+        type: "warning",
+        delay: 6000,
+      });
     }
   },
   getBootboxContent: (calendar) => {
@@ -473,13 +467,16 @@ window.calendarPropertiesModal = {
         // generated token should show it immediately, without a page refresh.
         const $warning = $("#calendarApiWarning").removeClass("d-none");
         const warningMessage = $warning.find("p").text().trim();
-        bootbox.alert(
-          warningMessage
-            ? `${escapeHtml(createdMessage)}<p class="mt-2 text-warning">${escapeHtml(warningMessage)}</p>`
-            : createdMessage,
-        );
+        if (warningMessage) {
+          alertAction(
+            "",
+            `${escapeHtml(createdMessage)}<p class="mt-2 text-warning">${escapeHtml(warningMessage)}</p>`,
+          );
+        } else {
+          window.CRM.notify(createdMessage, { type: "success", delay: 6000 });
+        }
       } else {
-        bootbox.alert(createdMessage);
+        window.CRM.notify(createdMessage, { type: "success", delay: 6000 });
       }
       window.calendarPropertiesModal.calendar = newcalendar;
     });
@@ -1038,7 +1035,8 @@ function registerCalendarSelectionEvents() {
       if (calendar && typeof calendar.AccessToken !== "undefined") {
         window.calendarPropertiesModal.show(calendar);
       } else {
-        bootbox.alert(
+        alertAction(
+          "",
           i18next.t(
             "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly.",
           ),

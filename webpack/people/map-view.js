@@ -6,6 +6,8 @@
  *
  * Leaflet comes from webpack/leaflet-global.js. No Google Maps API key required.
  */
+
+import { confirmAction } from "../common/confirm-action";
 import L from "../leaflet-global";
 
 // Resolve i18next lazily on every call — this module can load before the
@@ -269,20 +271,14 @@ if (geocodeAllBtn) {
       });
 
   geocodeAllBtn.addEventListener("click", () => {
-    window.bootbox.confirm({
-      title: t("Update All Family Coordinates"),
-      message: t(
+    confirmAction(
+      t("Update All Family Coordinates"),
+      t(
         "This finds map coordinates for every family that is missing them, using the geocoding services chosen in Map Settings. " +
           "It works through the families in batches of 50; a batch takes about a minute with one geocoding service and longer with more. " +
           "You can keep this page open while it runs. Continue?",
       ),
-      buttons: {
-        confirm: { label: t("Update Coordinates"), className: "btn-primary" },
-        cancel: { label: t("Cancel"), className: "btn-secondary" },
-      },
-      callback: (result) => {
-        if (!result) return;
-
+      () => {
         const originalHtml = geocodeAllBtn.innerHTML;
         geocodeAllBtn.disabled = true;
         geocodeAllBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-1"></i>${t("Geocoding…")}`;
@@ -340,7 +336,8 @@ if (geocodeAllBtn) {
             });
           });
       },
-    });
+      { tone: "primary", confirmLabel: t("Update Coordinates"), cancelLabel: t("Cancel") },
+    );
   });
 }
 

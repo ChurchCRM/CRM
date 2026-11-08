@@ -277,43 +277,38 @@ function GetSecurityList($aSecGrp, $fld_name, $currOpt = 'bAll')
         var msg = <?= InputUtils::jsonEncodeForScript(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
         msg += '<br><br><strong>' + <?= InputUtils::jsonEncodeForScript(gettext('Warning')) ?> + ':</strong> ';
         msg += <?= InputUtils::jsonEncodeForScript(gettext('By deleting this field, you will irrevocably lose all family data assigned for this field!')) ?>;
-        bootbox.confirm({
-            title: <?= InputUtils::jsonEncodeForScript(gettext('Delete Confirmation')) ?>,
-            message: msg,
-            buttons: {
-                cancel: { label: <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?>, className: 'btn-secondary' },
-                confirm: { label: <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>, className: 'btn-danger' }
-            },
-            callback: function(result) {
-                if (result) {
-                    // Submit deletion as a POST request with CSRF protection
-                    var form = document.createElement('form');
-                    form.method = 'POST';
-                    form.action = 'FamilyCustomFieldsRowOps.php';
+        window.CRM.confirmAction(
+          <?= InputUtils::jsonEncodeForScript(gettext('Delete Confirmation')) ?>,
+          msg,
+          () => {
+            // Submit deletion as a POST request with CSRF protection
+            var form = document.createElement('form');
+            form.method = 'POST';
+            form.action = 'FamilyCustomFieldsRowOps.php';
 
-                    var fieldInput = document.createElement('input');
-                    fieldInput.type = 'hidden';
-                    fieldInput.name = 'Field';
-                    fieldInput.value = fieldId;
-                    form.appendChild(fieldInput);
+            var fieldInput = document.createElement('input');
+            fieldInput.type = 'hidden';
+            fieldInput.name = 'Field';
+            fieldInput.value = fieldId;
+            form.appendChild(fieldInput);
 
-                    var actionInput = document.createElement('input');
-                    actionInput.type = 'hidden';
-                    actionInput.name = 'Action';
-                    actionInput.value = 'delete';
-                    form.appendChild(actionInput);
+            var actionInput = document.createElement('input');
+            actionInput.type = 'hidden';
+            actionInput.name = 'Action';
+            actionInput.value = 'delete';
+            form.appendChild(actionInput);
 
-                    var csrfInput = document.createElement('input');
-                    csrfInput.type = 'hidden';
-                    csrfInput.name = 'csrf_token';
-                    csrfInput.value = <?= InputUtils::jsonEncodeForScript(CSRFUtils::generateToken('familyCustomFieldsAction')) ?>;
-                    form.appendChild(csrfInput);
+            var csrfInput = document.createElement('input');
+            csrfInput.type = 'hidden';
+            csrfInput.name = 'csrf_token';
+            csrfInput.value = <?= InputUtils::jsonEncodeForScript(CSRFUtils::generateToken('familyCustomFieldsAction')) ?>;
+            form.appendChild(csrfInput);
 
-                    document.body.appendChild(form);
-                    form.submit();
-                }
-            }
-        });
+            document.body.appendChild(form);
+            form.submit();
+          },
+          { confirmLabel: <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>, cancelLabel: <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?> },
+        );
         return false;
     }
 

@@ -172,15 +172,10 @@ function initializeGroupList() {
   $(document).on("click", ".delete-group", function () {
     const groupId = $(this).data("group-id");
     const groupName = $(this).data("group-name");
-    bootbox.confirm({
-      message:
-        i18next.t("Are you sure you want to delete") + " <strong>" + window.CRM.escapeHtml(groupName) + "</strong>?",
-      buttons: {
-        confirm: { label: i18next.t("Delete"), className: "btn-danger" },
-        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
-      },
-      callback: (result) => {
-        if (!result) return;
+    window.CRM.confirmAction(
+      "",
+      i18next.t("Are you sure you want to delete") + " <strong>" + window.CRM.escapeHtml(groupName) + "</strong>?",
+      () => {
         $.ajax({
           method: "DELETE",
           url: `${window.CRM.root}/api/groups/${groupId}`,
@@ -195,7 +190,8 @@ function initializeGroupList() {
             window.CRM.notify(msg, { type: "danger", delay: 5000 });
           });
       },
-    });
+      { confirmLabel: i18next.t("Delete"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 }
 

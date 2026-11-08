@@ -6,6 +6,7 @@
  */
 
 import { buildAdminAPIUrl } from "../api-utils";
+import { confirmAction } from "../common/confirm-action";
 
 async function deleteQueue(button: HTMLButtonElement): Promise<void> {
   button.disabled = true;
@@ -37,19 +38,14 @@ function init(): void {
   if (!(button instanceof HTMLButtonElement)) return;
   button.addEventListener("click", () => {
     const total = Number(button.dataset.queuedCount ?? "0");
-    window.bootbox?.confirm({
-      title: i18next.t("Delete Queue"),
-      message: i18next.t("Delete every queued message? They will not be sent. Queued messages: {{total}}", {
-        total,
-      }),
-      buttons: {
-        confirm: { label: i18next.t("Delete"), className: "btn-danger" },
-        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
+    confirmAction(
+      i18next.t("Delete Queue"),
+      i18next.t("Delete every queued message? They will not be sent. Queued messages: {{total}}", { total }),
+      () => {
+        deleteQueue(button).catch(console.error);
       },
-      callback: (confirmed: boolean) => {
-        if (confirmed) deleteQueue(button).catch(console.error);
-      },
-    });
+      { confirmLabel: i18next.t("Delete"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 }
 
