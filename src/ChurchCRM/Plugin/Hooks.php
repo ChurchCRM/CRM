@@ -31,6 +31,20 @@ final class Hooks
      */
     public const PERSON_DELETED = 'person.deleted';
 
+    /**
+     * Filter: Add content to a person's profile.
+     * Receives: string $content, Person $person, PersonCustomMaster[] $visibleFields, array $visibleData
+     * Returns: string Modified profile content
+     */
+    public const PERSON_VIEW_CONTENT = 'person.view.content';
+
+    /**
+     * Filter: Select fields shown in a person's Additional Information.
+     * Receives: PersonCustomMaster[] $fields
+     * Returns: PersonCustomMaster[] Fields to display
+     */
+    public const PERSON_VIEW_CUSTOM_FIELDS = 'person.view.custom_fields';
+
     // =========================================================================
     // Family Hooks
     // =========================================================================

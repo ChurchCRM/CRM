@@ -117,8 +117,8 @@ describe("People Settings hub", () => {
             ].forEach((key) => {
                 cy.get(`[name='new_value[${key}]']`).should("not.exist");
             });
-            // Not moved yet — still managed here.
-            cy.get("[name='new_value[iPersonConfessionFatherCustomField]']").should("exist");
+            cy.get("[name='new_value[iPersonConfessionFatherCustomField]']").should("not.exist");
+            cy.get("[name='new_value[iPersonConfessionDateCustomField]']").should("not.exist");
         });
 
         it("labels settings with short names and keeps the long sentence as help text", () => {
