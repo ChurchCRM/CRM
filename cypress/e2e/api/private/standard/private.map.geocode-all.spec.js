@@ -7,8 +7,8 @@ const GEOCODE_TEST_LOCATION = { latitude: 39.1116191, longitude: -94.5838027 };
  * API tests for the bulk-geocode endpoint
  * POST /api/map/geocode-all — geocodes active families missing coordinates
  *
- * The response-shape tests skip past all missing coordinates so they never
- * call a geocoding provider. The 401/403 tests verify auth guards.
+ * The response-shape and authorization tests skip past all missing coordinates.
+ * The skip-offset coverage geocodes one dedicated seed address.
  */
 describe("API Private Map — POST /api/map/geocode-all", { retries: 2 }, () => {
     context("Happy path", () => {
@@ -97,6 +97,7 @@ describe("API Private Map — POST /api/map/geocode-all", { retries: 2 }, () => 
             });
 
             cy.makePrivateAdminAPICall("GET", `/api/family/${GEOCODE_TEST_FAMILY_ID}`, null, 200).then((response) => {
+                expect(response.body.Name).to.equal("Geocode Test Family");
                 expect(response.body.Latitude).to.be.closeTo(GEOCODE_TEST_LOCATION.latitude, 0.001);
                 expect(response.body.Longitude).to.be.closeTo(GEOCODE_TEST_LOCATION.longitude, 0.001);
             });
@@ -105,7 +106,6 @@ describe("API Private Map — POST /api/map/geocode-all", { retries: 2 }, () => 
         it("Rejects a negative skip with 400", () => {
             cy.makePrivateAdminAPICall("POST", "/api/map/geocode-all", { skip: -1 }, 400, 30000);
         });
-
     });
 
     context("Authentication", () => {
