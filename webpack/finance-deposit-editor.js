@@ -309,6 +309,13 @@
     });
   }
 
+  $("#fundsBody").on("shown.bs.collapse hidden.bs.collapse", function (e) {
+    $("#fundsToggle i")
+      .toggleClass("fa-chevron-down", e.type === "hidden")
+      .toggleClass("fa-chevron-up", e.type === "shown");
+    window.dispatchEvent(new Event("resize"));
+  });
+
   function initFundChart() {
     const element = document.getElementById("fund-bar");
     if (!element || config.fundLabels.length === 0) {
