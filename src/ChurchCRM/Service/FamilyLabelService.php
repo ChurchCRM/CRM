@@ -21,7 +21,7 @@ class FamilyLabelService
      */
     public static function familyCells(bool $newsletterOnly, bool $familyNames): array
     {
-        $query = FamilyQuery::create();
+        $query = FamilyQuery::create()->filterByActive();
         if ($newsletterOnly) {
             $query->filterBySendNewsletter('TRUE');
         }
@@ -54,7 +54,12 @@ class FamilyLabelService
         }
 
         $cells = [];
-        $people = PersonQuery::create()->filterById($personIds)->orderByLastName()->orderByFirstName()->find();
+        $people = PersonQuery::create()
+            ->filterByActive()
+            ->filterById($personIds)
+            ->orderByLastName()
+            ->orderByFirstName()
+            ->find();
         foreach ($people as $person) {
             $photo = $person->getPhoto();
             $cells[] = LabelSheetService::nameTag(
