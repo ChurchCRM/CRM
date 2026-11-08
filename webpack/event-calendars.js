@@ -679,6 +679,12 @@ function initializeCalendar() {
     locale: window.CRM.lang || "en",
     timeZone: window.CRM.calendarJSArgs.sTimeZone || "local",
     now: churchNow,
+    initialView: window.innerWidth < 768 ? "listMonth" : "dayGridMonth",
+    buttonClass: (button) => {
+      if (button.isIconOnly) return "btn btn-sm btn-icon btn-ghost-secondary";
+      if (button.buttonGroup) return `btn btn-sm ${button.isSelected ? "btn-primary" : "btn-ghost-secondary"}`;
+      return "btn btn-sm btn-outline-secondary";
+    },
     headerToolbar: window.innerWidth < 768 ? mobileHeaderToolbar : desktopHeaderToolbar,
     footerToolbar: window.innerWidth < 768 ? mobileFooterToolbar : false,
     contentHeight: "auto",
