@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-08 06:58+0000\n"
+"POT-Creation-Date: 2026-11-08 23:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1882,6 +1882,9 @@ msgid "Are you sure you want to delete this fundraiser?"
 msgstr ""
 
 msgid "Are you sure you want to delete this note?"
+msgstr ""
+
+msgid "Are you sure you want to delete {{name}}?"
 msgstr ""
 
 msgid "Are you sure you want to disable two-factor authentication? Your account will be less secure."
@@ -4147,6 +4150,9 @@ msgid "Could not delete the queue."
 msgstr ""
 
 msgid "Could not find coordinates for that address. Try entering them manually."
+msgstr ""
+
+msgid "Could not gather system info. Please try again."
 msgstr ""
 
 msgid "Could not grant the scope"
