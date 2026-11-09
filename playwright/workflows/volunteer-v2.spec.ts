@@ -374,5 +374,106 @@ test.describe('Volunteer Management v2', () => {
       await deleteMinistryEventsTitled(page, ministryId, title);
     }
   });
+
+  const volunteerMinistrySchedulesCapture = defineCapture({
+    name: 'volunteer-ministry-schedules',
+    locales: 'all',
+    title: 'Ministry Schedules',
+    category: 'Groups & Events',
+    purpose: 'Show the schedules that say which events a team staffs and how many people each position needs.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-ministry-schedules', volunteerMinistrySchedulesCapture, async ({ page }, testInfo) => {
+    const { ministryId } = await ensureVolunteerSeed(page);
+    await openMinistry(page, ministryId, 'schedules');
+    await settle(page, 1000);
+
+    await captureScreen(page, testInfo, volunteerMinistrySchedulesCapture);
+  });
+
+  const volunteerScheduleAddCapture = defineCapture({
+    name: 'volunteer-schedule-add',
+    locales: 'all',
+    title: 'Add a Schedule',
+    category: 'Groups & Events',
+    purpose: 'Show a coordinator adding a schedule: the events it follows and two default volunteers for a position that takes up to two.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-schedule-add', volunteerScheduleAddCapture, async ({ page }, testInfo) => {
+    const { ministryId, teamIds, positionIds, personIds } = await ensureVolunteerSeed(page);
+    await openMinistry(page, ministryId, 'schedules');
+    await humanClick(page.locator('#schedule-add-btn'));
+    const modal = page.locator('#scheduleModal');
+    await expect(modal).toBeVisible();
+    await expect(page.locator('#schedule-form-needs .volunteer-need-row').first()).toBeVisible({ timeout: 15000 });
+
+    await humanType(page.locator('#schedule-form-name'), 'Coffee Bar: Second Service');
+    await page.locator('#schedule-form-team').selectOption(String(teamIds.coffee));
+    await page.locator('#schedule-form-link-mode').selectOption('ministry');
+    const series = page.locator('#schedule-form-title-filter');
+    await expect(series).toBeEnabled({ timeout: 15000 });
+    await series.selectOption({ index: 1 });
+    await expect(page.locator('#schedule-form-details')).toBeVisible();
+
+    const barista = page.locator(`#schedule-form-needs .volunteer-need-row[data-position-id="${positionIds.barista}"]`);
+    await expect(barista).toBeVisible({ timeout: 15000 });
+    await barista.locator('.volunteer-need-min').fill('2');
+    await barista.locator('.volunteer-need-max').fill('2');
+    await barista.locator('.volunteer-need-max').blur();
+    const defaults = barista.locator('select.volunteer-default-select');
+    await defaults.first().selectOption(String(personIds.sarah));
+    await expect(defaults).toHaveCount(2);
+    await defaults.nth(1).selectOption(String(personIds.paul));
+    await expect(defaults.nth(1)).toHaveValue(String(personIds.paul));
+    await barista.scrollIntoViewIfNeeded();
+    await settle(page, 800);
+
+    await captureScreen(page, testInfo, volunteerScheduleAddCapture);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await humanClick(modal.locator('.btn-close'));
+    await expect(modal).toBeHidden();
+  });
+
+  const volunteerOccurrencesGenerateCapture = defineCapture({
+    name: 'volunteer-occurrences-generate',
+    locales: 'all',
+    title: 'Generate Occurrences',
+    category: 'Groups & Events',
+    purpose: 'Show a coordinator making the dated occurrences of a schedule, with the default volunteers it assigns.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-occurrences-generate', volunteerOccurrencesGenerateCapture, async ({ page }, testInfo) => {
+    const { ministryId } = await ensureVolunteerSeed(page);
+    await openMinistry(page, ministryId, 'schedules');
+    const row = page.locator('#volunteerSchedulesTable tbody tr').filter({ hasText: 'Coffee Bar' }).first();
+    await expect(row).toBeVisible();
+    await pickRowAction(row, '.volunteer-schedule-generate');
+    const modal = page.locator('#generateOccurrencesModal');
+    await expect(modal).toBeVisible();
+    await expect(page.locator('#generate-form-loading')).toBeHidden({ timeout: 15000 });
+    await expect(page.locator('#generate-form-rows .generate-default-row').first()).toBeVisible({ timeout: 15000 });
+    await settle(page, 800);
+
+    await captureScreen(page, testInfo, volunteerOccurrencesGenerateCapture);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await humanClick(modal.locator('.btn-close'));
+    await expect(modal).toBeHidden();
+  });
+
+  const volunteerMinistryOccurrencesCapture = defineCapture({
+    name: 'volunteer-ministry-occurrences',
+    locales: 'all',
+    title: 'Ministry Occurrences',
+    category: 'Groups & Events',
+    purpose: 'Show every dated occurrence of a ministry with who is signed up and what is still open.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-ministry-occurrences', volunteerMinistryOccurrencesCapture, async ({ page }, testInfo) => {
+    const { ministryId } = await ensureVolunteerSeed(page);
+    await openMinistry(page, ministryId, 'occurrences');
+    await settle(page, 1000);
+
+    await captureScreen(page, testInfo, volunteerMinistryOccurrencesCapture);
+  });
   // <<NEW>>
 });
