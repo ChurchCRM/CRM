@@ -205,9 +205,16 @@ describe("Event Detail - Did Not Attend List", () => {
     });
 
     it("Add All to Cart puts the checked-in attendees in the cart", () => {
+        cy.intercept("POST", "**/api/cart/").as("addToCart");
         cy.visit(`event/view/${pastGroupEventId}`);
         cy.get("#event-add-attendees-to-cart").should("be.visible").click();
-        cy.get(".notyf, .toast, [role='alert']").should("exist");
+        cy.wait("@addToCart").then(({ request, response }) => {
+            expect(response.statusCode).to.eq(200);
+            expect(JSON.parse(request.body).Persons).to.have.length.greaterThan(0);
+            expect(response.body.added.length + response.body.duplicate.length).to.eq(
+                JSON.parse(request.body).Persons.length,
+            );
+        });
     });
 
     it("Hides Add All to Cart when nobody has checked in", () => {
