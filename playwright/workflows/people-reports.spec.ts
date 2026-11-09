@@ -38,7 +38,9 @@ async function runBirthdaysAndAnniversaries(page: Page): Promise<void> {
 test.describe('People Reports', () => {
   test('people-reports-list', async ({ page }, testInfo) => {
     await page.goto('/people/reports');
-    await expect(page.locator('#peopleReports a[id^="report-"]')).toHaveCount(10);
+    // Eight reports: the two legacy Volunteer Opportunities reports are hidden
+    // while V1 is not in use (#11187), which is the case in the demo data.
+    await expect(page.locator('#peopleReports a[id^="report-"]')).toHaveCount(8);
     await waitForFloatingButtonsToHide(page);
     await settle(page, 600);
 
@@ -46,7 +48,7 @@ test.describe('People Reports', () => {
       name: 'people-reports-list',
       title: 'People Reports',
       category: 'People & Families',
-      purpose: 'Show the ready-made people reports: birthdays, anniversaries, volunteers and more',
+      purpose: 'Show the ready-made people reports: birthdays, anniversaries, recent friends and more',
     });
   });
 

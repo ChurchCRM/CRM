@@ -24,6 +24,7 @@ const scriptTests = fs
     .readdirSync(path.join(root, 'tests', 'tooling'))
     .filter((name) => /\.test\.m?js$/.test(name))
     .map((name) => path.join('tests', 'tooling', name));
+scriptTests.push('tests/docker/test-release-context.test.js');
 
 const checks = {
     'composer lock': script('lint/validate-composer-lock.js'),
@@ -36,6 +37,7 @@ const checks = {
     'use-statement case': script('lint/validate-use-statement-case.js'),
     'orm base classes': script('lint/validate-orm-base-classes.js'),
     'font awesome icons': script('lint/validate-fa-icons-exist.js'),
+    'native dialogs': script('lint/validate-native-dialogs.js'),
     'ui conventions': script('lint/validate-ui-conventions.js'),
     'pinned actions': script('lint/validate-actions-pinned.js'),
     'cypress api keys': script('lint/validate-cypress-api-keys.js'),

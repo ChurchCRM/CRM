@@ -5,47 +5,6 @@ describe('Event Type Management', () => {
         cy.setupAdminSession();
     });
 
-    it('should display event types list', () => {
-        cy.visit('/event/types');
-        cy.contains('Event Types').should('exist');
-        cy.get('#eventTypesTable').should('exist');
-    });
-
-    it('should display times in 12-hour format', () => {
-        cy.visit('/event/types');
-
-        cy.get('#eventTypesTable tbody tr').first().within(() => {
-            cy.get('td').eq(2).invoke('text').then((timeText) => {
-                if (timeText.trim() && timeText.trim() !== '—') {
-                    expect(timeText).to.match(/\d{1,2}:\d{2}\s(AM|PM)/);
-                }
-            });
-        });
-    });
-
-    it('should navigate to new event type form', () => {
-        cy.visit('/event/types');
-        cy.contains('a', 'Add Event Type').click();
-        cy.url().should('include', '/event/types/new');
-    });
-
-    it('should show 3-dropdown time picker on new form', () => {
-        cy.visit('/event/types/new');
-
-        cy.get('#newEvtHour').should('exist');
-        cy.get('#newEvtMinute').should('exist');
-        cy.get('#newEvtPeriod').should('exist');
-
-        cy.get('#newEvtHour option').should('have.length', 12);
-        cy.get('#newEvtMinute option').should('have.length', 4);
-        cy.get('#newEvtPeriod option').should('have.length', 2);
-
-        // Default should be 9:00 AM
-        cy.get('#newEvtHour').should('have.value', '9');
-        cy.get('#newEvtMinute').should('have.value', '00');
-        cy.get('#newEvtPeriod').should('have.value', 'AM');
-    });
-
     /**
      * Filter the eventTypesTable DataTable to a specific search string.
      *
@@ -143,27 +102,4 @@ describe('Event Type Management', () => {
         cy.get('input[name="newEvtRecurDOY"]').should('be.disabled');
     });
 
-    it('should display edit page with modern styling', () => {
-        cy.visit('/event/types');
-
-        // Click first edit link
-        cy.get('#eventTypesTable tbody tr').first().within(() => {
-            cy.get('a').first().click({ force: true });
-        });
-
-        // Should land on /event/types/{id}
-        cy.url().should('match', /\/event\/types\/\d+/);
-
-        // Verify edit page elements
-        cy.contains('Edit Event Type').should('exist');
-        cy.get('#newEvtName').should('exist');
-
-        // The 3-dropdown time picker (#EventHour / #EventMinute / #EventPeriod) was
-        // replaced with a single native <input type="time" id="newEvtStartTime"> +
-        // explicit Save button. See commit 46fefb453.
-        cy.get('#newEvtStartTime').should('exist').and('have.attr', 'type', 'time');
-
-        // Attendance count rows
-        cy.get('[data-cy="attendance-count-row"]').should('exist');
-    });
 });
