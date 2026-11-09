@@ -82,7 +82,7 @@
         "docker:dev:build": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"source /root/.nvm/nvm.sh && cd /home/ChurchCRM && npm ci && npm run build\"",
         "docker:dev:watch": "docker compose -f docker/docker-compose.dev.yaml exec webserver bash -c \"source /root/.nvm/nvm.sh && cd /home/ChurchCRM && npm run build:webpack:watch\"",
         "marketing:install": "playwright install --with-deps chromium",
-        "marketing": "./scripts/marketing/capture-all-locales.sh",
+        "marketing": "node scripts/marketing/capture-all-locales.js",
         "marketing:screenshots": "playwright test --config=playwright/playwright.config.ts",
         "marketing:videos": "node scripts/marketing/finalize-marketing-videos.js",
         "marketing:check": "node scripts/marketing/check-marketing-visuals.js",
