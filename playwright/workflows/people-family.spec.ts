@@ -69,8 +69,14 @@ test.describe('People & Families', () => {
     await humanSelect(page.locator('select[name="Gender1"]'), '1');
 
     await humanPause(page, 500);
-    await humanClick(page.locator('button[name="FamilySubmit"]'));
-    await page.waitForURL(/\/people\/family\/(\d+)/, { timeout: 15000 });
+    // Saving geocodes the new address, which can take longer than the
+    // default 15s action timeout on CI, so give the submit and redirect room.
+    const familySubmit = page.locator('button[name="FamilySubmit"]');
+    await familySubmit.scrollIntoViewIfNeeded();
+    await familySubmit.hover();
+    await humanPause(page, 400);
+    await familySubmit.click({ timeout: 45000 });
+    await page.waitForURL(/\/people\/family\/(\d+)/, { timeout: 45000 });
     const michaelLink = page.getByText('Michael Whitfield', { exact: false }).first();
     await expect(michaelLink).toBeVisible({ timeout: 10000 });
     await humanPause(page, 500);
