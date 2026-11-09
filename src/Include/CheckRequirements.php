@@ -10,7 +10,7 @@ if ($failedRequirements !== []) {
     http_response_code(503);
     header('Cache-Control: no-store');
     $requestPath = (string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
-    $appPath = $requirementsRootPath !== '' && str_starts_with($requestPath, $requirementsRootPath . '/')
+    $appPath = $requirementsRootPath !== '' && ($requestPath === $requirementsRootPath || str_starts_with($requestPath, $requirementsRootPath . '/'))
         ? substr($requestPath, strlen($requirementsRootPath))
         : $requestPath;
     if (str_contains($appPath, '/api/') || str_contains($_SERVER['HTTP_ACCEPT'] ?? '', 'application/json')) {

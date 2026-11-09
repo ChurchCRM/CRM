@@ -162,7 +162,7 @@ function renderErrorPage($rootPath, $title, $icon, $variant, $content, $issueBod
                 <div class="card-footer">
                     <div class="d-flex gap-2 flex-wrap">
                         <a href="<?= standaloneEscape($rootPath . '/') ?>" class="btn btn-primary flex-grow-1"><?= standaloneEscape(function_exists('gettext') ? gettext('Return Home') : 'Return Home') ?></a>
-                        <a href="<?= standaloneEscape($issueUrl) ?>" target="_blank" rel="noopener" class="btn btn-outline-secondary flex-grow-1"><?= standaloneEscape(function_exists('gettext') ? gettext('Report Issue') : 'Report Issue') ?></a>
+                        <a href="<?= standaloneEscape($issueUrl) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-outline-secondary flex-grow-1"><?= standaloneEscape(function_exists('gettext') ? gettext('Report Issue') : 'Report Issue') ?></a>
                     </div>
                 </div>
             </div>

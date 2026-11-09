@@ -100,6 +100,14 @@ try {
     Assert::contains('ChurchCRM System Check', $prefixed);
     Assert::contains('href="/api/churchcrm/skin/v2/error.min.css"', $prefixed);
 
+    $installRoot = $run('namespace ChurchCRM; class Bootstrapper { public static function init(...$args) { throw new \\Error("Bootstrap failed"); } } '
+        . 'namespace ChurchCRM\\Service; function class_exists($name) { return $name === "ZipArchive" ? false : \\class_exists($name); } '
+        . '$_SERVER["SCRIPT_NAME"] = "/api/churchcrm/index.php"; $_SERVER["REQUEST_URI"] = "/api/churchcrm"; '
+        . 'register_shutdown_function(static function () { if (http_response_code() !== 503) { exit(1); } }); '
+        . 'require ' . var_export($directory . '/Include/LoadConfigs.php', true) . '; '
+        . 'throw new \\RuntimeException("Bootstrap must stop");');
+    Assert::contains('ChurchCRM System Check', $installRoot);
+
     $healthy = $run('namespace ChurchCRM; class Bootstrapper { public static function init(...$args) {} public static function isDBCurrent() { return false; } } '
         . 'namespace ChurchCRM\\Service; function extension_loaded($name) { throw new \\Error("Requirements must not run"); } '
         . 'require ' . var_export($directory . '/Include/LoadConfigs.php', true) . '; echo "continue";');
