@@ -734,10 +734,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Data de casamento inválida"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-mail inválido"
-
-#: 
 msgid "Family Info"
 msgstr "Informação da Família"
 
@@ -1501,10 +1497,6 @@ msgstr "Não é uma data de ingresso válida"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Não é uma Data de Associado válida!"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "E-mail não é válido"
 
 #: 
 #, fuzzy
@@ -5035,10 +5027,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portuguese - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Especifique o nome da aplicação a ser exibido ao autenticar"
-
-#: 
 msgid "Review"
 msgstr "Rever"
 
@@ -5168,10 +5156,6 @@ msgstr "Ver página da família"
 #: 
 msgid "View Person Page"
 msgstr "Ver página da pessoa"
-
-#: 
-msgid "Verify"
-msgstr "Verificar"
 
 #: 
 msgid "Family has no emails to use"
@@ -14751,10 +14735,6 @@ msgid "Date Picker Format"
 msgstr "Formato do selecionador de data"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Marcador do selecionador de data"
-
-#: 
 msgid "Date Without Year"
 msgstr "Data sem ano"
 
@@ -14785,10 +14765,6 @@ msgstr "Formato de data para nome de ficheiro"
 #: 
 msgid "Fully translated."
 msgstr "Totalmente traduzido."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Texto de sugestão nos campos de data. Padrão: aaaa-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -23040,10 +23016,6 @@ msgid "Invalid birth date"
 msgstr "Data de nascimento inválida."
 
 #: 
-msgid "Invalid email address"
-msgstr "Endereço de email inválido"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Configurações do Quiosque"
 
@@ -23714,10 +23686,6 @@ msgstr "Escolha com que antecedência as escalas são preenchidas e quando saem 
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Escolha alguém que já esteja no diretório da igreja. Passa a integrar os voluntários deste ministério e os coordenadores recebem um e-mail. Só um coordenador pode retirar alguém."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "O ChurchCRM tem duas formas de gerir voluntários. Só uma se destina a estar em uso de cada vez; a definição de experiência de Voluntários decide qual esta igreja vê. Mudar oculta ou mostra páginas e entradas de menu — nunca apaga dados, por isso pode voltar atrás."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26608,10 +26576,6 @@ msgid "That device is signed out."
 msgstr "A sessão desse dispositivo foi terminada."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Esse não é um endereço de e-mail válido."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Essa página esteve aberta durante demasiado tempo. Tente de novo."
 
@@ -27302,4 +27266,16 @@ msgstr "ou"
 #: 
 msgid "until %s"
 msgstr "até %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Foi feito um pedido no Portal de Membros para alterar o seu endereço de e-mail em %1$s de %2$s para %3$s. A alteração só acontece quando a ligação enviada para o novo endereço for utilizada."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Utilize a ligação abaixo para rever as informações da sua família. Na página de revisão, escolha \"Confirmar informações da família\" para confirmar que está tudo correto ou envie correções para o escritório da igreja."
+
+#: 
+msgid "Review Family Information"
+msgstr "Rever informações da família"
 

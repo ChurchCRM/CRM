@@ -714,10 +714,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Nem érvényes Wedding Date"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Email nem érvényes"
-
-#: 
 msgid "Family Info"
 msgstr "Családi információk"
 
@@ -1460,10 +1456,6 @@ msgstr "Nem érvényes Ismerős Mikortól"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Nem érvényes tagság Mikortól"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Munkahelyi e-mail nem érvényes"
 
 #: 
 msgid "Birth Month"
@@ -4946,10 +4938,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugál - Portugália"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Adja meg az alkalmazásnév meg kell jeleníteni a hitelesítő alkalmazásban"
-
-#: 
 msgid "Review"
 msgstr "Áttekintés"
 
@@ -5078,10 +5066,6 @@ msgstr "Család oldal megtekintése"
 #: 
 msgid "View Person Page"
 msgstr "Személy oldal megtekintése"
-
-#: 
-msgid "Verify"
-msgstr "Ellenőrzés"
 
 #: 
 msgid "Family has no emails to use"
@@ -14661,10 +14645,6 @@ msgid "Date Picker Format"
 msgstr "Dátumválasztó formátuma"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Dátumválasztó helyőrzője"
-
-#: 
 msgid "Date Without Year"
 msgstr "Dátum év nélkül"
 
@@ -14695,10 +14675,6 @@ msgstr "Dátumformátum fájlnévhez"
 #: 
 msgid "Fully translated."
 msgstr "Teljesen lefordítva."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Dátummezőkben megjelenő súgószöveg. Alapértelmezett: éééé-hh-nn"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -22950,10 +22926,6 @@ msgid "Invalid birth date"
 msgstr "Érvénytelen Születési dátum."
 
 #: 
-msgid "Invalid email address"
-msgstr "Érvénytelen e-mail cím"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kiosk beállítások"
 
@@ -23624,10 +23596,6 @@ msgstr "Válassza ki, milyen előre töltődnek az ütemtervek, mikor mennek ki 
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Válasszon valakit, aki már szerepel a gyülekezeti névjegyzékben. Csatlakozik a szolgálat önkénteseihez, és a koordinátorok e-mailt kapnak. Csak koordinátor vehet ki valakit."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "A ChurchCRM két módon kezeli az önkénteseket. Egyszerre csak az egyik használata a cél; az Önkéntes élmény beállítás dönti el, melyiket látja ez a gyülekezet. A váltás elrejti vagy megjeleníti az oldalakat és a menüpontokat — soha nem töröl adatot, ezért vissza lehet váltani."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26518,10 +26486,6 @@ msgid "That device is signed out."
 msgstr "Az az eszköz ki van jelentkeztetve."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Ez nem érvényes e-mail-cím."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Az az oldal túl régóta volt nyitva. Próbálja újra."
 
@@ -27212,4 +27176,16 @@ msgstr "vagy"
 #: 
 msgid "until %s"
 msgstr "eddig: %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "A tagportálon kérés érkezett, hogy a(z) %1$s oldalon az e-mail-címed %2$s címről %3$s címre változzon. A módosítás csak akkor történik meg, ha az új címre küldött hivatkozást használják."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Az alábbi hivatkozással ellenőrizd a családod adatait. Az ellenőrző oldalon válaszd a „Családi adatok megerősítése” lehetőséget, ha minden helyes, vagy küldd el a javításokat a gyülekezeti irodának."
+
+#: 
+msgid "Review Family Information"
+msgstr "Családi adatok ellenőrzése"
 

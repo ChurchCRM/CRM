@@ -9,6 +9,7 @@ use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Setting\PublicRegistrationAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\EmailAddress;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\ORMUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -112,8 +113,8 @@ function registerFamilyAPI(Request $request, Response $response, array $args): R
     if (empty($familyMetadata['Name'])) {
         return SlimUtils::renderJSON($response, ['error' => gettext('Family name is required')], 400);
     }
-    if (!empty($familyMetadata['Email']) && filter_var($familyMetadata['Email'], FILTER_VALIDATE_EMAIL) === false) {
-        return SlimUtils::renderJSON($response, ['error' => gettext('Invalid email address')], 400);
+    if (!empty($familyMetadata['Email']) && !EmailAddress::isValid($familyMetadata['Email'])) {
+        return SlimUtils::renderJSON($response, ['error' => EmailAddress::validationMessage()], 400);
     }
 
     $family = new Family();

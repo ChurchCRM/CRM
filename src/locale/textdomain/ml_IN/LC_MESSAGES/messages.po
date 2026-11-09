@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "സാധുവായ വിവാഹ തീയതിയല്ല"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "ഇമെയിൽ സാധുവല്ല"
-
-#: 
 msgid "Family Info"
 msgstr "കുടുംബ വിവരം"
 
@@ -1431,10 +1427,6 @@ msgstr "സാധുവായ സൗഹൃദ തീയതിയല്ല"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "സാധുവായ അംഗത്വ തീയതിയല്ല"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "ജോലി ഇമെയിൽ സാധുവല്ല"
 
 #: 
 msgid "Birth Month"
@@ -4887,10 +4879,6 @@ msgid "Portuguese - Portugal"
 msgstr "പോർച്ചുഗീസ് - പോർച്ചുഗൽ"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "ഓതന്റിക്കേറ്റർ ആപ്പിൽ കാണിക്കേണ്ട ആപ്ലിക്കേഷൻ നാമം നൽകുക"
-
-#: 
 msgid "Review"
 msgstr "അവലോകനം"
 
@@ -5019,10 +5007,6 @@ msgstr "കുടുംബ പേജ് കാണുക"
 #: 
 msgid "View Person Page"
 msgstr "വ്യക്തി പേജ് കാണുക"
-
-#: 
-msgid "Verify"
-msgstr "സ്ഥിരീകരിക്കുക"
 
 #: 
 msgid "Family has no emails to use"
@@ -14602,10 +14586,6 @@ msgid "Date Picker Format"
 msgstr "ഡേറ്റ് പിക്കർ ഫോർമാറ്റ്"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "ഡേറ്റ് പിക്കർ പ്ലേസ്ഹോൾഡർ"
-
-#: 
 msgid "Date Without Year"
 msgstr "വർഷം കൂടാതെ തീയതി"
 
@@ -14636,10 +14616,6 @@ msgstr "ഫയൽ നാമ തീയതി ഫോർമാറ്റ്"
 #: 
 msgid "Fully translated."
 msgstr "പൂർണ്ണമായും വിവർത്തനം ചെയ്തു."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "തീയതി ഇൻപുട്ടുകളിൽ കാണിക്കുന്ന സൂചന ടെക്സ്റ്റ്. ഡിഫോൾട്ട്: yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -22891,10 +22867,6 @@ msgid "Invalid birth date"
 msgstr "ജനന തീയതി അസാധുവാണ്."
 
 #: 
-msgid "Invalid email address"
-msgstr "അസാധുവായ ഇമെയിൽ വിലാസം"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "കിയോസ്ക് ക്രമീകരണങ്ങൾ"
 
@@ -23565,10 +23537,6 @@ msgstr "സമയക്രമങ്ങൾ എത്ര മുന്നോട്�
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "സഭാ നാമാവലിയിൽ ഇതിനകമുള്ള ഒരാളെ തിരഞ്ഞെടുക്കുക. അവർ ഈ ശുശ്രൂഷയുടെ സന്നദ്ധസേവകരിൽ ചേരും; അതിന്റെ ഏകോപകർക്ക് ഇമെയിൽ പോകും. ഒരു ഏകോപകന് മാത്രമേ ഒരാളെ നീക്കാൻ കഴിയൂ."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM-ൽ സന്നദ്ധസേവകരെ നിയന്ത്രിക്കാൻ രണ്ട് വഴികളുണ്ട്. ഒരു സമയം ഒന്ന് മാത്രമേ ഉപയോഗത്തിലാകാവൂ; സന്നദ്ധ അനുഭവ ക്രമീകരണം ഈ സഭ ഏതാണ് കാണുക എന്ന് തീരുമാനിക്കുന്നു. മാറ്റുന്നത് താളുകളും പട്ടിക ഇനങ്ങളും മറയ്ക്കുകയോ കാണിക്കുകയോ ചെയ്യും — ദത്തം ഒരിക്കലും നീക്കില്ല, അതിനാൽ തിരികെ മാറാം."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26459,10 +26427,6 @@ msgid "That device is signed out."
 msgstr "ആ ഉപകരണം സൈൻ ഔട്ട് ആയി."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "അത് സാധുവായ ഇമെയിൽ വിലാസമല്ല."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "ആ പേജ് വളരെ നേരം തുറന്നിരുന്നു. വീണ്ടും ശ്രമിക്കുക."
 
@@ -27153,4 +27117,16 @@ msgstr "അല്ലെങ്കിൽ"
 #: 
 msgid "until %s"
 msgstr "%s വരെ"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "അംഗ പോർട്ടലിൽ %1$s-ലെ നിങ്ങളുടെ ഇമെയിൽ വിലാസം %2$s-ൽ നിന്ന് %3$s ആക്കി മാറ്റാൻ ഒരു അഭ്യർത്ഥന ഉണ്ടായി. പുതിയ വിലാസത്തിലേക്ക് അയച്ച ലിങ്ക് ഉപയോഗിച്ചാൽ മാത്രമേ മാറ്റം നടക്കൂ."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "കുടുംബ വിവരങ്ങൾ പരിശോധിക്കാൻ താഴെയുള്ള ലിങ്ക് ഉപയോഗിക്കുക. പരിശോധനാ താളിൽ എല്ലാം ശരിയാണെന്ന് ഉറപ്പാക്കാൻ “കുടുംബ വിവരം സ്ഥിരീകരിക്കുക” തിരഞ്ഞെടുക്കുക, അല്ലെങ്കിൽ തിരുത്തലുകൾ സഭാ ഓഫീസിലേക്ക് അയയ്ക്കുക."
+
+#: 
+msgid "Review Family Information"
+msgstr "കുടുംബ വിവരം പരിശോധിക്കുക"
 

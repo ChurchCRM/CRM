@@ -17,11 +17,20 @@ describe("Pledge Operations", () => {
         ...overrides,
     });
 
+    const created = [];
+
     beforeEach(() => cy.setupAdminSession());
+
+    after(() => {
+        created.forEach((groupKey) => {
+            cy.request({ method: "DELETE", url: "/api/payments/" + encodeURIComponent(groupKey), failOnStatusCode: false });
+        });
+    });
 
     it("Pledge editor shows a Delete button in edit mode", () => {
         cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
             const groupKey = resp.body.groupKey;
+            created.push(groupKey);
             cy.visit("/finance/pledge/" + groupKey + "/edit");
             cy.get("#deletePledgeBtn").should("be.visible");
         });
@@ -30,11 +39,14 @@ describe("Pledge Operations", () => {
     it("Delete button removes the payment and redirects away", () => {
         cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
             const groupKey = resp.body.groupKey;
+            created.push(groupKey);
             cy.visit("/finance/pledge/" + groupKey + "/edit");
 
-            cy.on("window:confirm", () => true);
+            cy.intercept("DELETE", "**/api/payments/" + encodeURIComponent(groupKey)).as("deletePayment");
             cy.get("#deletePledgeBtn").click();
 
+            cy.get(".bootbox-confirm").should("be.visible").find(".bootbox-accept").click();
+            cy.wait("@deletePayment").its("response.statusCode").should("eq", 200);
             cy.url().should("not.contain", "/edit");
 
             cy.request({
@@ -48,13 +60,35 @@ describe("Pledge Operations", () => {
     it("Cancelling the delete confirmation keeps the payment", () => {
         cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
             const groupKey = resp.body.groupKey;
+            created.push(groupKey);
             cy.visit("/finance/pledge/" + groupKey + "/edit");
 
-            cy.on("window:confirm", () => false);
+            cy.intercept("DELETE", "**/api/payments/" + encodeURIComponent(groupKey)).as("deletePayment");
             cy.get("#deletePledgeBtn").click();
 
+            cy.get(".bootbox-confirm").should("be.visible").find(".bootbox-cancel").click();
+            cy.get(".bootbox-confirm").should("not.exist");
+            cy.get("@deletePayment.all").should("have.length", 0);
             cy.request("/api/payments/pledges/" + groupKey)
                 .its("status").should("eq", 200);
+        });
+    });
+
+    it("Payment details cancel with Escape and delete only after acceptance", () => {
+        cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then(({ body }) => {
+            const groupKey = body.groupKey;
+            created.push(groupKey);
+            cy.intercept("DELETE", "**/api/payments/" + encodeURIComponent(groupKey)).as("deletePayment");
+            cy.visit("/finance/pledge/" + groupKey);
+            cy.get("#deletePledgeBtn").click();
+            cy.get(".bootbox-confirm").should("be.visible").type("{esc}");
+            cy.get(".bootbox-confirm").should("not.exist");
+            cy.get("@deletePayment.all").should("have.length", 0);
+            cy.request("/api/payments/pledges/" + groupKey).its("status").should("eq", 200);
+            cy.get("#deletePledgeBtn").click();
+            cy.get(".bootbox-confirm").find(".bootbox-accept").click();
+            cy.wait("@deletePayment").its("response.statusCode").should("eq", 200);
+            cy.url().should("not.contain", "/finance/pledge/");
         });
     });
 
@@ -64,12 +98,12 @@ describe("Pledge Operations", () => {
         // pledge_denominations_pdem and 500'd when that table was missing.
         cy.request("POST", "/api/payments/pledges", getPaymentPayload()).then((resp) => {
             const groupKey = resp.body.groupKey;
+            created.push(groupKey);
             cy.visit("/finance/pledge/" + groupKey + "/edit");
 
             cy.get("#savePledgeBtn").click();
 
-            cy.get("#pledge-toast-body").should("contain.text", "Saved successfully");
-            cy.get("#pledge-toast").should("have.class", "bg-success").and("not.have.class", "bg-danger");
+            cy.get(".notyf__toast--success").should("contain.text", "Saved successfully");
         });
     });
 

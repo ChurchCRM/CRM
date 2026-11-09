@@ -736,10 +736,6 @@ msgid "Not a valid Wedding Date"
 msgstr "不是一個有效的婚禮日期"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "電子郵件是無效的"
-
-#: 
 msgid "Family Info"
 msgstr "家庭資料"
 
@@ -1488,10 +1484,6 @@ msgstr "不是一個有效的好友日期"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "不是一個有效的會員日期"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "工作電子郵件是無效的"
 
 #: 
 msgid "Birth Month"
@@ -5030,11 +5022,6 @@ msgstr "葡萄牙語-葡萄牙"
 
 #: 
 #, fuzzy
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "指定要在驗證器應用程序中顯示的應用程序名稱"
-
-#: 
-#, fuzzy
 msgid "Review"
 msgstr "檢閱"
 
@@ -5180,11 +5167,6 @@ msgstr "查看家庭頁面"
 #, fuzzy
 msgid "View Person Page"
 msgstr "查看人員頁面"
-
-#: 
-#, fuzzy
-msgid "Verify"
-msgstr "確認"
 
 #: 
 #, fuzzy
@@ -14766,10 +14748,6 @@ msgid "Date Picker Format"
 msgstr "日期選擇器格式"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "日期選擇器佔位符"
-
-#: 
 msgid "Date Without Year"
 msgstr "不含年份的日期"
 
@@ -14800,10 +14778,6 @@ msgstr "檔案名稱日期格式"
 #: 
 msgid "Fully translated."
 msgstr "已完全翻譯。"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "日期輸入欄位中的提示文字。預設：yyyy-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -23036,10 +23010,6 @@ msgid "Invalid birth date"
 msgstr "無效的出生日期。"
 
 #: 
-msgid "Invalid email address"
-msgstr "電子郵件地址無效"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "自助終端設定"
 
@@ -23710,10 +23680,6 @@ msgstr "選擇日程提前多久安排人員、提醒何時發出，並確認背
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "請選擇已經在教會名冊中的人。他們會加入本事工的志工，並會寄郵件給協調員。只有協調員可以把人移出。"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM 有兩種管理志工的方式。同一時間只應使用一種；「志工體驗」設定決定本教會看到哪一種。切換只會隱藏或顯示頁面和選單項目，絕不會刪除資料，因此可以再切回來。"
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26604,10 +26570,6 @@ msgid "That device is signed out."
 msgstr "該裝置已登出。"
 
 #: 
-msgid "That is not a valid email address."
-msgstr "這不是有效的電子郵件地址。"
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "該頁面開啟太久。請再試一次。"
 
@@ -27298,4 +27260,16 @@ msgstr "或"
 #: 
 msgid "until %s"
 msgstr "至 %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "有人在成員入口網站中要求將您在 %1$s 的電子郵件地址從 %2$s 變更為 %3$s。只有使用寄到新地址的連結後，此變更才會生效。"
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "請使用下方連結核對您的家庭資料。在核對頁面上，選取「確認家庭資料」以確認一切無誤，或將更正寄給教會辦公室。"
+
+#: 
+msgid "Review Family Information"
+msgstr "核對家庭資料"
 

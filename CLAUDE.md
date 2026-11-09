@@ -2,6 +2,10 @@
 
 Loaded by Claude Code every session. Other agents should follow the same files.
 
+## Task ownership
+
+Read [the AI operating model](docs/contributing/ai-operating-model.md) for task owners, handoffs and approval boundaries.
+
 ## Skills
 
 Index: [`.agents/skills/churchcrm/SKILL.md`](.agents/skills/churchcrm/SKILL.md).

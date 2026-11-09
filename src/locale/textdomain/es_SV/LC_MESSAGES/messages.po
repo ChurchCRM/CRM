@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Fecha de Matrimonio Inválida"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Email Inválido"
-
-#: 
 msgid "Family Info"
 msgstr "Información familiar"
 
@@ -1431,10 +1427,6 @@ msgstr "Fecha de amistad no válida"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Fecha de membresía no válida"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Email de Trabajo no es Válido"
 
 #: 
 msgid "Birth Month"
@@ -4887,10 +4879,6 @@ msgid "Portuguese - Portugal"
 msgstr "Portugués - Portugal"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Especifique el nombre de aplicación que será mostrado en la app de autenticación"
-
-#: 
 msgid "Review"
 msgstr "Revisar"
 
@@ -5019,10 +5007,6 @@ msgstr "Ver página de familia"
 #: 
 msgid "View Person Page"
 msgstr "Ver página de persona"
-
-#: 
-msgid "Verify"
-msgstr "Verificar"
 
 #: 
 msgid "Family has no emails to use"
@@ -14603,10 +14587,6 @@ msgid "Date Picker Format"
 msgstr "Formato del selector de fecha"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Marcador del selector de fecha"
-
-#: 
 msgid "Date Without Year"
 msgstr "Fecha sin año"
 
@@ -14637,10 +14617,6 @@ msgstr "Formato de fecha para nombre de archivo"
 #: 
 msgid "Fully translated."
 msgstr "Completamente traducido."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Texto de sugerencia en campos de fecha. Predeterminado: aaaa-mm-dd"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -22892,10 +22868,6 @@ msgid "Invalid birth date"
 msgstr "Fecha de Nacimiento Inválida"
 
 #: 
-msgid "Invalid email address"
-msgstr "Dirección de correo electrónico no válida"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Configuración del Quiosco"
 
@@ -23566,10 +23538,6 @@ msgstr "Elijan con cuánta anticipación se cubren las programaciones y cuándo 
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Elijan a alguien que ya esté en el directorio de la iglesia. Se une a los voluntarios de este ministerio y se envía un correo a sus coordinadores. Solo un coordinador puede sacarlo."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM tiene dos formas de manejar voluntarios. Solo una debe usarse a la vez; la configuración Experiencia de voluntarios decide cuál ve esta iglesia. Al cambiar se ocultan o se muestran páginas y entradas del menú; nunca se borran datos, así que pueden regresar."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26460,10 +26428,6 @@ msgid "That device is signed out."
 msgstr "Se cerró la sesión de ese dispositivo."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Esa no es una dirección de correo electrónico válida."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Esa página estuvo abierta demasiado tiempo. Inténtelo de nuevo."
 
@@ -27154,4 +27118,16 @@ msgstr "o"
 #: 
 msgid "until %s"
 msgstr "hasta %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "En el portal de miembros se solicitó cambiar su dirección de correo en %1$s de %2$s a %3$s. El cambio se realiza solo cuando se usa el enlace enviado a la nueva dirección."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Use el enlace de abajo para revisar la información de su familia. En la página de revisión, elija «Confirmar información de la familia» para confirmar que todo está correcto o envíe las correcciones a la oficina de la iglesia."
+
+#: 
+msgid "Review Family Information"
+msgstr "Revisar la información de la familia"
 

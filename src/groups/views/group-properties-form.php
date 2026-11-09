@@ -39,35 +39,30 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         var msg = <?= InputUtils::jsonEncodeForScript(gettext('Are you sure you want to delete')) ?> + '"' + window.CRM.escapeHtml(fieldName) + '"?';
         msg += '<br><br><strong>' + <?= InputUtils::jsonEncodeForScript(gettext('Warning')) ?> + ':</strong> ';
         msg += <?= InputUtils::jsonEncodeForScript(gettext('By deleting this field, you will irrevocably lose all group member data assigned for this field!')) ?>;
-        bootbox.confirm({
-            title: <?= InputUtils::jsonEncodeForScript(gettext('Delete Confirmation')) ?>,
-            message: msg,
-            buttons: {
-                cancel:  { label: <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?>, className: 'btn-secondary' },
-                confirm: { label: <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>, className: 'btn-danger' }
-            },
-            callback: function(result) {
-                if (result) {
-                    var fallback = <?= InputUtils::jsonEncodeForScript(gettext('Failed to delete. Please try again.')) ?>;
-                    fetch(window.CRM.root + '/api/groups/' + groupId + '/formprops/' + propId, {
-                        method: 'DELETE',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ field: fieldId })
-                    })
-                    .then(function(r) { return r.json().catch(function() { return {}; }); })
-                    .then(function(data) {
-                        if (data.success) {
-                            window.location.reload();
-                            return;
-                        }
-                        window.CRM.notify(data.message || fallback, { type: 'danger', delay: 5000 });
-                    })
-                    .catch(function() {
-                        window.CRM.notify(fallback, { type: 'danger', delay: 5000 });
-                    });
+        window.CRM.confirmAction(
+          <?= InputUtils::jsonEncodeForScript(gettext('Delete Confirmation')) ?>,
+          msg,
+          () => {
+            var fallback = <?= InputUtils::jsonEncodeForScript(gettext('Failed to delete. Please try again.')) ?>;
+            fetch(window.CRM.root + '/api/groups/' + groupId + '/formprops/' + propId, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ field: fieldId })
+            })
+            .then(function(r) { return r.json().catch(function() { return {}; }); })
+            .then(function(data) {
+                if (data.success) {
+                    window.location.reload();
+                    return;
                 }
-            }
-        });
+                window.CRM.notify(data.message || fallback, { type: 'danger', delay: 5000 });
+            })
+            .catch(function() {
+                window.CRM.notify(fallback, { type: 'danger', delay: 5000 });
+            });
+          },
+          { confirmLabel: <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>, cancelLabel: <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?> },
+        );
         return false;
     }
 

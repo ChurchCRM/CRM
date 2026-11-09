@@ -179,11 +179,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   };
 
   function renameKiosk(id, currentName) {
-    bootbox.prompt({
-      title: i18next.t('Rename Kiosk'),
-      value: currentName,
-      callback: function(result) {
-        if (result === null) return;
+    window.CRM.promptAction(i18next.t('Rename Kiosk'), function(result) {
         var name = result.trim();
         if (!name) {
           window.CRM.notify(i18next.t('Name cannot be empty'), { type: 'error' });
@@ -199,8 +195,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         }).catch(function() {
           window.CRM.notify(i18next.t('Failed to rename kiosk'), { type: 'error' });
         });
-      }
-    });
+    }, { value: currentName });
   }
 
   function renderKioskAssignment(data) {
@@ -306,33 +301,23 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   });
 
   function confirmDeleteKiosk(id, name) {
-    bootbox.confirm({
-      title: i18next.t("Delete Kiosk"),
-      message: i18next.t("Are you sure you want to delete kiosk") + ': <strong>' + window.CRM.escapeHtml(name) + '</strong>?',
-      buttons: {
-        cancel: {
-          label: '<i class="fa-solid fa-xmark"></i> ' + i18next.t("Cancel")
-        },
-        confirm: {
-          label: '<i class="fa-solid fa-trash"></i> ' + i18next.t("Delete"),
-          className: 'btn-danger'
-        }
+    window.CRM.confirmAction(
+      i18next.t("Delete Kiosk"),
+      i18next.t("Are you sure you want to delete kiosk") + ': <strong>' + window.CRM.escapeHtml(name) + '</strong>?',
+      () => {
+        window.CRM.kioskAPI.delete(id).then(function(data) {
+          if (data.success) {
+            window.CRM.notify(i18next.t("Kiosk deleted successfully"), { type: 'success' });
+            window.CRM.kioskDataTable.ajax.reload();
+          } else {
+            window.CRM.notify(data.message || i18next.t("Failed to delete kiosk"), { type: 'error' });
+          }
+        }).catch(function(error) {
+          window.CRM.notify(i18next.t("Failed to delete kiosk"), { type: 'error' });
+        });
       },
-      callback: function(result) {
-        if (result) {
-          window.CRM.kioskAPI.delete(id).then(function(data) {
-            if (data.success) {
-              window.CRM.notify(i18next.t("Kiosk deleted successfully"), { type: 'success' });
-              window.CRM.kioskDataTable.ajax.reload();
-            } else {
-              window.CRM.notify(data.message || i18next.t("Failed to delete kiosk"), { type: 'error' });
-            }
-          }).catch(function(error) {
-            window.CRM.notify(i18next.t("Failed to delete kiosk"), { type: 'error' });
-          });
-        }
-      }
-    });
+      { confirmLabel: '<i class="fa-solid fa-trash"></i> ' + i18next.t("Delete"), cancelLabel: '<i class="fa-solid fa-xmark"></i> ' + i18next.t("Cancel") },
+    );
   }
 
   // Load future events from API

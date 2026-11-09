@@ -4,6 +4,7 @@
  */
 
 import { buildAPIUrl } from "./api-utils";
+import { confirmAction } from "./common/confirm-action";
 
 async function notifyAPIError(res, fallback) {
   const body = await res.json().catch(() => ({}));
@@ -148,15 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const groupId = $(this).data("group-id");
     const groupName = window.CRM.escapeHtml(String($(this).data("group-name") || ""));
 
-    bootbox.confirm({
-      message: `${i18next.t("Are you sure you want to delete")} <strong>${groupName}</strong>?`,
-      buttons: {
-        confirm: { label: i18next.t("Delete"), className: "btn-danger" },
-        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
-      },
-      callback: (result) => {
-        if (!result) return;
-
+    confirmAction(
+      "",
+      `${i18next.t("Are you sure you want to delete")} <strong>${groupName}</strong>?`,
+      () => {
         const fallback = i18next.t("Failed to delete class. Please try again.");
         fetch(buildAPIUrl(`groups/${groupId}`), { method: "DELETE" })
           .then(async (res) => {
@@ -170,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
             window.CRM.notify(fallback, { type: "danger", delay: 5000 });
           });
       },
-    });
+      { confirmLabel: i18next.t("Delete"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 });

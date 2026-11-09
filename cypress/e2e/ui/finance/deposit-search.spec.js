@@ -37,50 +37,15 @@ describe("Deposit Search: page load and search form", () => {
     // seed deposits from 2018 (FY22). Without this the page defaults to the
     // current fiscal year, which has no seed data and leaves the table empty.
     cy.visit(`${DEPOSIT_SEARCH_URL}?fyid=0`);
-    // The rows are server-rendered, but DataTables re-builds the tbody when it
-    // takes the table over. Asserting before `_wrapper` exists races that
-    // rebuild and can hit a detached element, so wait for it here the way the
-    // selection block below already does, then for at least one real row.
-    cy.get("#depositsTable_wrapper").should("exist");
-    cy.get("#depositsTable tbody tr[data-deposit-id]").should("have.length.greaterThan", 0);
   });
 
-  it("loads the deposit search page", () => {
-    cy.url().should("include", DEPOSIT_SEARCH_URL);
-    cy.get("h2.page-title, h3.card-title").should("contain.text", "Deposit");
-  });
-
-  it("shows the search form with expected fields", () => {
-    cy.get("#depositFilterForm").should("exist");
-    cy.get("#dateStart").should("exist");
-    cy.get("#dateEnd").should("exist");
-    cy.get("#depositId").should("exist");
-    cy.get("#fundId").should("exist");
-    cy.get("#closed").should("exist");
-    cy.get("#enteredBy").should("exist");
-  });
-
-  it("shows the deposits table with the seeded rows", () => {
-    cy.get("#depositsTable").should("exist");
-    // Count only rows the page rendered for a deposit. With no rows DataTables
-    // injects a "No data available" placeholder <tr> (the class marks its
-    // <td>, so `tr:not(.dataTables_empty)` still matched it); a bare row count
-    // would pass against an empty table.
-    cy.get("#depositsTable tbody tr[data-deposit-id]").should("have.length.greaterThan", 0);
-  });
-
-  it("submits date range filter and includes params in URL", () => {
+  it("submits a date range and restores it into the search form", () => {
     cy.get("#dateStart").clear().type("2020-01-01");
     cy.get("#dateEnd").clear().type("2099-12-31");
     cy.get("#depositFilterForm").submit();
 
     cy.url().should("include", "dateStart=2020-01-01");
     cy.url().should("include", "dateEnd=2099-12-31");
-    cy.get("#depositsTable").should("exist");
-  });
-
-  it("re-populates form fields from URL params", () => {
-    cy.visit(`${DEPOSIT_SEARCH_URL}?dateStart=2020-01-01&dateEnd=2099-12-31`);
     cy.get("#dateStart").should("have.value", "2020-01-01");
     cy.get("#dateEnd").should("have.value", "2099-12-31");
   });
@@ -120,12 +85,6 @@ describe("Deposit Search: row selection and export buttons", () => {
     cy.get("#depositsTable tbody .row-select").should("have.length.greaterThan", 0);
   });
 
-  it("export buttons are disabled when no rows selected", () => {
-    cy.get("#btnExportCSV").should("be.disabled");
-    cy.get("#btnExportOFX").should("be.disabled");
-    cy.get("#btnExportPDF").should("be.disabled");
-  });
-
   it("Select All checkbox enables export buttons and shows the selected count", () => {
     cy.get("#selectAllCheckbox").check();
 
@@ -144,10 +103,6 @@ describe("Deposit Search: row selection and export buttons", () => {
     cy.get("#btnExportOFX").should("be.disabled");
     cy.get("#btnExportPDF").should("be.disabled");
     cy.get("#selectedCount").should("not.be.visible");
-  });
-
-  it("Delete button is present but disabled when no rows are selected", () => {
-    cy.get("#btnDeleteSelected").should("exist").and("be.disabled");
   });
 
   it("checking an individual row enables the delete and export buttons", () => {

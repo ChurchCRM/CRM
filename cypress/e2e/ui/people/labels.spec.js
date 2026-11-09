@@ -24,6 +24,21 @@ const cart = (method, body = {}) =>
     cy.request({ method, url: "/api/cart/", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
 
 describe("Label sheets", () => {
+    let restoreFamily = false;
+    let restorePerson = false;
+
+    afterEach(() => {
+        if (restoreFamily) {
+            cy.request("POST", "/api/family/1/activate/true");
+            restoreFamily = false;
+        }
+        if (restorePerson) {
+            cy.request("POST", "/api/person/100/activate/true");
+            cart("DELETE");
+            restorePerson = false;
+        }
+    });
+
     it("prints mailing labels on every stock for a staff user", () => {
         cy.setupPersonaSession("zero-permission-staff");
         STOCKS.forEach((labelType) => fetchPdf(mailing(labelType)));
@@ -54,6 +69,21 @@ describe("Label sheets", () => {
         fetchPdf(familyLabels("confirm"));
     });
 
+    it("omits a deactivated family from confirmation labels", () => {
+        cy.setupAdminSession();
+        restoreFamily = true;
+
+        fetchPdf(familyLabels("confirm"))
+            .then((body) => pdfText(body))
+            .then((lines) => {
+                expect(lines).to.include("Campbell");
+                return cy.request("POST", "/api/family/1/activate/false");
+            })
+            .then(() => fetchPdf(familyLabels("confirm")))
+            .then((body) => pdfText(body))
+            .then((lines) => expect(lines).to.not.include("Campbell"));
+    });
+
     it("prints a name badge with the church name and no person ID", () => {
         cy.setupAdminSession();
         cart("DELETE");
@@ -66,6 +96,26 @@ describe("Label sheets", () => {
                 expect(lines).to.not.include("102");
             });
         cart("DELETE");
+    });
+
+    it("omits an inactive person from name badges", () => {
+        cy.setupAdminSession();
+        restorePerson = true;
+        cart("POST", { Persons: [100, 102] });
+
+        fetchPdf(NAME_TAGS)
+            .then((body) => pdfText(body))
+            .then((lines) => {
+                expect(lines).to.include("Lena");
+                expect(lines).to.include("Samantha");
+                return cy.request("POST", "/api/person/100/activate/false");
+            })
+            .then(() => fetchPdf(NAME_TAGS))
+            .then((body) => pdfText(body))
+            .then((lines) => {
+                expect(lines).to.not.include("Lena");
+                expect(lines).to.include("Samantha");
+            });
     });
 
     it("requires staff sign-in before a member can access labels", () => {

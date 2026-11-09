@@ -5,6 +5,7 @@
  * Uses TomSelect AJAX for person search.
  */
 
+import { confirmAction } from "./common/confirm-action";
 import { attachToModal, initAllPersonSelects } from "./common/person-select";
 import { escapeHtml } from "./utils/escape-html";
 
@@ -652,18 +653,17 @@ $(() => {
     const personId = $(this).data("person-id");
     const personName = $(this).data("person-name");
 
-    bootbox.confirm({
-      title: i18next.t("Delete attendance record?"),
-      message: `${i18next.t("Delete check-in record for")} <strong>${window.CRM.escapeHtml(String(personName || ""))}</strong>?`,
-      buttons: {
-        cancel: { label: `<i class="fa-solid fa-xmark"></i> ${i18next.t("Cancel")}` },
-        confirm: { label: `<i class="fa-solid fa-trash"></i> ${i18next.t("Delete")}`, className: "btn-danger" },
-      },
-      callback: (confirmed) => {
-        if (!confirmed) return;
+    confirmAction(
+      i18next.t("Delete attendance record?"),
+      `${i18next.t("Delete check-in record for")} <strong>${window.CRM.escapeHtml(String(personName || ""))}</strong>?`,
+      () => {
         deleteAttendanceRecord(personId);
       },
-    });
+      {
+        confirmLabel: `<i class="fa-solid fa-trash"></i> ${i18next.t("Delete")}`,
+        cancelLabel: `<i class="fa-solid fa-xmark"></i> ${i18next.t("Cancel")}`,
+      },
+    );
   });
 
   function deleteAttendanceRecord(personId) {

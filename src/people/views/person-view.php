@@ -730,13 +730,13 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                     // tabs so the active experience is never ambiguous during the
                     // migration; the legacy tab keeps its id and pane id.
                     $volunteerVersion = $volunteerVersion ?? 'v1';
-                    $showVolunteerV1  = in_array($volunteerVersion, ['v1', 'both'], true);
+                    $showVolunteerV1  = $volunteerV1InUse ?? false;
                     $showVolunteerV2  = in_array($volunteerVersion, ['v2', 'both'], true);
                     ?>
                     <?php if ($showVolunteerV1) : ?>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-bs-toggle="tab">
-                            <i class="fa-solid fa-handshake-angle me-1"></i><?= $volunteerVersion === 'both' ? gettext('Volunteer (Legacy)') : gettext('Volunteer') ?>
+                            <i class="fa-solid fa-handshake-angle me-1"></i><?= $showVolunteerV2 ? gettext('Volunteer (Legacy)') : gettext('Volunteer') ?>
                         </a>
                     </li>
                     <?php endif; ?>
@@ -845,6 +845,9 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                     <?php if ($showVolunteerV1) : ?>
                     <div class="tab-pane" id="volunteer">
                         <?php
+                        if (!empty($volunteerV1Notice) && AuthenticationManager::getCurrentUser()->isAdmin()) {
+                            require SystemURLs::getDocumentRoot() . '/admin/views/partials/volunteer-v1-notice.php';
+                        }
                         $assignedVolIDs = [];
                         if (count($assignedVolunteerOppsData) === 0) {
                         ?>

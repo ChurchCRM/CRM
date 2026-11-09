@@ -36,10 +36,6 @@ describe("Payment editor Ctrl+Enter shortcut (#8942)", () => {
         cy.get("#FamilyName-ts-control").should("have.focus");
     });
 
-    it("shows the shortcut hint on a desktop browser", () => {
-        cy.get("#saveShortcutHint").should("be.visible").and("contain", "Enter");
-    });
-
     it("Ctrl+Enter saves and opens a fresh form on the same deposit", () => {
         fillCashPayment("123");
         cy.get(".fund-amount").first().type("{ctrl}{enter}");

@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Μη έγκυρη ημερομηνία γάμου"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Το email δεν είναι έγκυρο"
-
-#: 
 msgid "Family Info"
 msgstr "Πληροφορίες για την οικογένεια"
 
@@ -1448,10 +1444,6 @@ msgstr "Μη έγκυρη ημερομηνία φιλίας"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "Μη έγκυρη Ημερομηνία Συνδρομής"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "Το email εργασίας δεν είναι έγκυρο"
 
 #: 
 msgid "Birth Month"
@@ -4919,10 +4911,6 @@ msgid "Portuguese - Portugal"
 msgstr "Πορτογαλικά - Πορτογαλία"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "Καθορίστε το όνομα της εφαρμογής που θα εμφανίζεται στην εφαρμογή ελέγχου ταυτότητας"
-
-#: 
 msgid "Review"
 msgstr "Ανασκόπηση"
 
@@ -5052,10 +5040,6 @@ msgstr "Προβολή οικογενειακής σελίδας"
 #: 
 msgid "View Person Page"
 msgstr "Προβολή καρτέλας Μέλους"
-
-#: 
-msgid "Verify"
-msgstr "Επαληθεύω"
 
 #: 
 msgid "Family has no emails to use"
@@ -14635,10 +14619,6 @@ msgid "Date Picker Format"
 msgstr "Μορφή επιλογέα ημερομηνίας"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "Κείμενο βοήθειας επιλογέα ημερομηνίας"
-
-#: 
 msgid "Date Without Year"
 msgstr "Ημερομηνία χωρίς έτος"
 
@@ -14669,10 +14649,6 @@ msgstr "Μορφή ημερομηνίας για ονόματα αρχείων"
 #: 
 msgid "Fully translated."
 msgstr "Πλήρως μεταφρασμένο."
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "Κείμενο υπόδειξης σε πεδία ημερομηνίας. Προεπιλογή: εεεε-μμ-ηη"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -22924,10 +22900,6 @@ msgid "Invalid birth date"
 msgstr "Μη έγκυρη ημερομηνία γέννησης."
 
 #: 
-msgid "Invalid email address"
-msgstr "Μη έγκυρη διεύθυνση ηλεκτρονικής αλληλογραφίας"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Ρυθμίσεις περιπτέρου"
 
@@ -23598,10 +23570,6 @@ msgstr "Επιλέξτε πόσο νωρίτερα συμπληρώνονται 
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Επιλέξτε κάποιον που είναι ήδη στον κατάλογο της εκκλησίας. Εντάσσεται στους εθελοντές αυτής της διακονίας και οι συντονιστές ειδοποιούνται. Μόνο συντονιστής μπορεί να αφαιρέσει κάποιον."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "Το ChurchCRM έχει δύο τρόπους διαχείρισης εθελοντών. Κάθε φορά προορίζεται να χρησιμοποιείται μόνο ένας· η ρύθμιση εμπειρίας εθελοντή αποφασίζει ποιον βλέπει αυτή η εκκλησία. Η εναλλαγή κρύβει ή εμφανίζει σελίδες και καταχωρίσεις μενού — δεν διαγράφει ποτέ δεδομένα, οπότε μπορείτε να επιστρέψετε."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26492,10 +26460,6 @@ msgid "That device is signed out."
 msgstr "Αυτή η συσκευή αποσυνδέθηκε."
 
 #: 
-msgid "That is not a valid email address."
-msgstr "Αυτή δεν είναι έγκυρη διεύθυνση ηλεκτρονικού ταχυδρομείου."
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "Αυτή η σελίδα ήταν ανοιχτή για πολλή ώρα. Δοκιμάστε ξανά."
 
@@ -27186,4 +27150,16 @@ msgstr "ή"
 #: 
 msgid "until %s"
 msgstr "έως %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Υποβλήθηκε αίτημα στην πύλη μελών για αλλαγή της διεύθυνσης email σας στο %1$s από %2$s σε %3$s. Η αλλαγή γίνεται μόνο όταν χρησιμοποιηθεί ο σύνδεσμος που στάλθηκε στη νέα διεύθυνση."
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "Χρησιμοποιήστε τον παρακάτω σύνδεσμο για να ελέγξετε τα στοιχεία της οικογένειάς σας. Στη σελίδα ελέγχου, επιλέξτε «Επιβεβαίωση στοιχείων οικογένειας» για να επιβεβαιώσετε ότι όλα είναι σωστά ή στείλτε διορθώσεις στο γραφείο της εκκλησίας."
+
+#: 
+msgid "Review Family Information"
+msgstr "Έλεγχος στοιχείων οικογένειας"
 

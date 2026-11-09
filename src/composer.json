@@ -3,7 +3,7 @@
   "description": "Free Church CRM Software",
   "license": "MIT",
   "type": "project",
-  "version": "7.8.3",
+  "version": "7.8.4",
   "keywords": ["church", "crm"],
   "authors": [
     {
@@ -62,9 +62,8 @@
     "doctrine/annotations": "^2.0",
     "nikic/php-parser": "^5.0",
     "phpstan/phpstan": "^2.1.6",
-    "rector/rector": "^2.0.9",
     "symfony/finder": "^6.4",
-    "zircote/swagger-php": "^6.0"
+    "zircote/swagger-php": "^7.3"
   },
   "replace": {
     "symfony/polyfill-mbstring": "*",
