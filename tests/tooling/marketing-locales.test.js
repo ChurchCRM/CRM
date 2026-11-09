@@ -12,7 +12,12 @@ volunteer-portal-schedule volunteer-portal-opportunities kiosk-guest-form kiosk-
 people-family-new-family events-attendance-overview finance-deposit-entry finance-deposit-reports finance-payment-editor
 communication-mailing-list volunteer-occurrence-staffing volunteer-assign-picker dashboard-admin
 dashboard-sundayschool dashboard-finance dashboard-people dashboard-hero finance-pledge-report
-people-directory-list people-family-overview settings-user-permissions`.split(/\s+/).sort();
+people-directory-list people-family-overview settings-user-permissions
+volunteer-ministry-overview volunteer-ministry-positions volunteer-ministry-edit volunteer-team-sunday-school-class
+volunteer-ministry-calendar volunteer-recurring-event-new volunteer-event-staff-prompt volunteer-event-staff
+volunteer-ministry-schedules volunteer-schedule-add volunteer-occurrences-generate volunteer-ministry-occurrences
+portal-member-teams portal-member-profile portal-member-family-confirm volunteer-portal-team-positions
+volunteer-portal-team-schedule admin-member-portal-user-menu`.split(/\s+/).sort();
 
 function discover(locale, project = 'screenshots') {
     const output = execFileSync(process.execPath, [
