@@ -103,7 +103,7 @@ export const EMAIL_GATES = [
 ];
 
 const editorAllow = ["church-admin", "staff-all-but-admin", "office-staff"];
-const editorDeny = ["self-service-account", "finance-only", "finance-no-fundraisers", "groups-only", "notes-only-staff", "zero-permission-staff"];
+const editorDeny = ["finance-only", "finance-no-fundraisers", "groups-only", "notes-only-staff", "zero-permission-staff"];
 
 export const PEOPLE_EDITOR_GATES = [
     ...["person", "family"].flatMap((kind) => {
@@ -135,6 +135,6 @@ export const PEOPLE_EDITOR_GATES = [
         classification: "people-records",
         page: `/people/${kind}/editor`,
         allow: [...editorAllow, "records-intake"],
-        deny: [...editorDeny.filter((persona) => persona !== "self-service-account"), "records-editor"],
+        deny: [...editorDeny, "records-editor"],
     })),
 ];
