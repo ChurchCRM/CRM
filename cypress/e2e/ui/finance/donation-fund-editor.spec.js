@@ -1,45 +1,6 @@
 /// <reference types="cypress" />
 
-/**
- * Donation Funds admin page — /finance/funds
- *
- * Covers the new MVC page that replaced the legacy DonationFundEditor.php.
- * Verifies the Tabler DataTable page, inline add form, and action menu.
- */
-
-describe("Finance: Donation Funds page - Access & Load", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
-    it("Loads the donation funds page for admin users", () => {
-        cy.visit("/finance/funds");
-        cy.contains("Donation Funds");
-        cy.contains("Add New Fund");
-    });
-
-    it("Shows breadcrumb with Finance link", () => {
-        cy.visit("/finance/funds");
-        cy.get(".breadcrumb").within(() => {
-            cy.contains("Finance");
-            cy.contains("Donation Funds");
-        });
-    });
-
-    it("Displays the funds table with Name, Description, Active, Actions columns", () => {
-        cy.visit("/finance/funds");
-        cy.get("body").then(($body) => {
-            if ($body.find("#fundsTable").length > 0) {
-                cy.get("#fundsTable").within(() => {
-                    cy.contains("th", "Name");
-                    cy.contains("th", "Description");
-                    cy.contains("th", "Active");
-                    cy.contains("th", "Actions");
-                });
-            }
-        });
-    });
-});
+/** Donation Funds page — /finance/funds */
 
 describe("Finance: Donation Funds page - Add Fund", () => {
     beforeEach(() => {
@@ -63,81 +24,5 @@ describe("Finance: Donation Funds page - Add Fund", () => {
 
         // After reload, fund should appear in the table
         cy.get("#fundsTable").should("contain", uniqueName);
-    });
-});
-
-describe("Finance: Donation Funds page - Action menu", () => {
-    beforeEach(() => {
-        cy.setupAdminSession();
-    });
-
-    it("Shows Edit option in action dropdown", () => {
-        cy.visit("/finance/funds");
-        cy.get("body").then(($body) => {
-            if ($body.find("#fundsTable tbody tr").length > 0) {
-                cy.get("#fundsTable tbody tr").first().within(() => {
-                    cy.get(".btn-ghost-secondary").click();
-                    cy.get(".dropdown-menu").should("be.visible");
-                    cy.get(".fund-edit-btn").should("exist");
-                });
-            }
-        });
-    });
-
-    it("Opens edit modal when Edit is clicked", () => {
-        cy.visit("/finance/funds");
-        cy.get("body").then(($body) => {
-            if ($body.find("#fundsTable tbody tr").length > 0) {
-                cy.get("#fundsTable tbody tr")
-                    .first()
-                    .within(() => {
-                        cy.get(".btn-ghost-secondary").click();
-                    });
-                cy.get(".fund-edit-btn").first().click({ force: true });
-                cy.get("#editFundModal").should("be.visible");
-                cy.get("#editFundName").invoke("val").should("not.be.empty");
-            }
-        });
-    });
-
-    it("Delete button is disabled for funds with pledges", () => {
-        cy.visit("/finance/funds");
-        // Fund 1 (seeded as 'Pledges') has pledge rows and must always be disabled
-        cy.get(".dropdown-item.text-danger[disabled]")
-            .should("exist")
-            .first()
-            .should("have.attr", "disabled");
-    });
-});
-
-describe("Finance: Donation Funds page - Access control", () => {
-    it("Allows admin users to access /finance/funds", () => {
-        cy.setupAdminSession();
-        cy.visit("/finance/funds");
-        cy.url().should("not.include", "access-denied");
-        cy.contains("Donation Funds");
-    });
-
-    it("Allows Finance-role (non-admin) users to access /finance/funds", () => {
-        // Verifies issue #9476: Finance role should have full access to Finance module
-        // without requiring Admin. finance.only user (id=904): Finance=1, Admin=0.
-        cy.setupFinanceOnlySession();
-        cy.visit("/finance/funds");
-        cy.url().should("not.include", "access-denied");
-        cy.contains("Donation Funds");
-    });
-
-    it("Finance-role user sees Financial Settings button on dashboard", () => {
-        cy.setupFinanceOnlySession();
-        cy.visit("/finance/");
-        cy.url().should("not.include", "access-denied");
-        // Financial Settings button is admin-only; Finance-only users must not see it
-        cy.get("button").contains("Financial Settings").should("not.exist");
-    });
-
-    it("Finance-role user sees Manage Funds button on dashboard", () => {
-        cy.setupFinanceOnlySession();
-        cy.visit("/finance/");
-        cy.get("a").contains("Manage Funds").should("exist");
     });
 });

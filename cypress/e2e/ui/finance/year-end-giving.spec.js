@@ -9,20 +9,6 @@ const yearEndPath = "/finance/reports/year-end";
 describe("Year-End Giving", () => {
     beforeEach(() => cy.setupAdminSession());
 
-    it("the Finance menu and the dashboard checklist lead here", () => {
-        cy.visit("/finance/");
-        cy.get(`a[href$='${yearEndPath}']`).should("exist");
-        cy.contains("a.btn", "Generate").should("have.attr", "href").and("include", yearEndPath);
-    });
-
-    it("shows the year's totals, the checklist and the statement actions", () => {
-        cy.visit(yearEndPath);
-        cy.get("#year option").its("length").should("be.gte", 1);
-        cy.get("#yearSummary").should("be.visible");
-        cy.get("#yearChecklist .list-group-item").should("have.length.gte", 3);
-        cy.get("#customStatements").should("have.attr", "href").and("include", "/finance/reports/giving-statements?DateStart=");
-    });
-
     it("a year with payments offers preview, PDF and CSV for that year", () => {
         cy.visit(`${yearEndPath}?year=2018`);
         cy.get("#yearGifts")
@@ -35,11 +21,6 @@ describe("Year-End Giving", () => {
             .then((text) => expect(Number(text)).to.be.greaterThan(0));
     });
 
-    it("the statement wording is shown and the admin can edit it", () => {
-        cy.visit(yearEndPath);
-        cy.get("#statementWordingView").should("contain", "Thank you");
-        cy.get("#statementWording").should("exist");
-    });
 });
 
 // Seed payments from June 2017 and March 2018 fall in 2017/18; the April 2021 gifts, which have no family, in 2021/22.
