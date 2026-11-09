@@ -9,7 +9,26 @@
  * run (#9852). Ministry Settings keeps a Save button: those timing fields apply
  * together and the page reloads. Saving posts the values it just loaded.
  */
+const VERSION_URL = "/admin/api/system/config/sVolunteerVersion";
+let originalVersion = "v1";
+
+before(() => {
+    cy.rememberTestEnv(["admin.username", "admin.password"]);
+});
+
 describe("Settings Panel — load and Save", () => {
+    // Ministry Settings only renders while Volunteer V2 is on.
+    before(() => {
+        cy.makePrivateAdminAPICall("GET", VERSION_URL, null, 200).then((resp) => {
+            originalVersion = String(resp.body.value ?? resp.body.Value ?? "v1");
+        });
+        cy.makePrivateAdminAPICall("POST", VERSION_URL, { value: "v2" }, 200);
+    });
+
+    after(() => {
+        cy.makePrivateAdminAPICall("POST", VERSION_URL, { value: originalVersion }, 200);
+    });
+
     beforeEach(() => cy.setupAdminSession());
 
     const openPanel = () => {
