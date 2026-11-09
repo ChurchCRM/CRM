@@ -8,6 +8,8 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+import { clearPersonHistory } from "./person-deletion-fixtures";
+
 // -- Modern API command patterns --
 
 function privateApiCall(keyName) {
@@ -287,6 +289,7 @@ Cypress.Commands.add("cleanupNotes", (noteIds) => {
  * @param {Array<number|string>} personIds
  */
 Cypress.Commands.add("cleanupPeople", (personIds) => {
+    cy.then(() => clearPersonHistory(numericIds(personIds)));
     numericIds(personIds).forEach((personId) => {
         const label = `person ${personId}`;
         cleanupRequest(label, "DELETE", `/api/person/${personId}`);
@@ -300,6 +303,7 @@ Cypress.Commands.add("cleanupPeople", (personIds) => {
  * @param {Array<number|string>} familyIds
  */
 Cypress.Commands.add("cleanupFamilies", (familyIds) => {
+    cy.then(() => clearPersonHistory([], numericIds(familyIds)));
     numericIds(familyIds).forEach((familyId) => {
         const label = `family ${familyId}`;
         cleanupRequest(label, "DELETE", `/api/family/${familyId}?deleteMembers=true`);

@@ -1,4 +1,6 @@
-const query = (sql, params) => cy.dbQuery(sql, params).then((result) => {
+const FIXTURE = "cypress/support/person-deletion-fixtures.js";
+
+const query = (sql, params) => cy.dbQuery(sql, params, { fixture: FIXTURE }).then((result) => {
     expect(result.error, result.error?.message || sql).to.equal(null);
     return result.rows;
 });
@@ -56,3 +58,28 @@ export const cleanupDeletionFixture = (personId, propertyId) =>
         .then(() => query("DELETE FROM person2volunteeropp_p2vo WHERE p2vo_per_ID = ?", [personId]))
         .then(() => query("DELETE FROM record2property_r2p WHERE r2p_pro_ID = ? AND r2p_record_ID = ?", [propertyId, personId]))
         .then(() => query("DELETE FROM property_pro WHERE pro_ID = ?", [propertyId]));
+
+// Remove the history rows that block deleting test people, so a spec that leaves
+// photos, grades, kiosk check-ins or logins behind can still clean up through HTTP.
+export const clearPersonHistory = (personIds, familyIds = []) => {
+    const people = [...personIds].map(Number).filter(Number.isFinite);
+    const families = [...familyIds].map(Number).filter(Number.isFinite);
+    const marks = (ids) => ids.map(() => "?").join(",");
+    const ofFamilies = families.length === 0
+        ? cy.wrap([], { log: false })
+        : query(`SELECT per_ID FROM person_per WHERE per_fam_ID IN (${marks(families)})`, families).then((rows) => rows.map((row) => Number(row.per_ID)));
+    return ofFamilies.then((members) => {
+        const ids = [...new Set([...people, ...members])];
+        if (ids.length === 0) {
+            return null;
+        }
+        const m = marks(ids);
+        return query(`DELETE FROM event_attend WHERE person_id IN (${m})`, ids)
+            .then(() => query(`DELETE FROM note_nte WHERE nte_per_ID IN (${m}) OR nte_EnteredBy IN (${m}) OR nte_EditedBy IN (${m})`, [...ids, ...ids, ...ids]))
+            .then(() => query(`DELETE FROM email_log_eml WHERE eml_per_ID IN (${m}) OR eml_usr_ID IN (${m})`, [...ids, ...ids]))
+            .then(() => query(`DELETE FROM whycame_why WHERE why_per_ID IN (${m})`, ids))
+            .then(() => query(`DELETE FROM multibuy_mb WHERE mb_per_ID IN (${m})`, ids))
+            .then(() => query(`DELETE FROM paddlenum_pn WHERE pn_per_ID IN (${m})`, ids))
+            .then(() => query(`DELETE FROM volunteer_notification_vntf WHERE vntf_per_ID IN (${m})`, ids));
+    });
+};
