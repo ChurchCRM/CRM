@@ -1,7 +1,7 @@
 import { expect, type Locator, type Page, test } from '@playwright/test';
 
 import { captureScreen, defineCapture } from '../support/capture';
-import { humanClick, settle } from '../support/human';
+import { humanClick, humanType, settle } from '../support/human';
 import {
   createUnstaffedEvent,
   deleteMinistryEventsTitled,
@@ -262,6 +262,117 @@ test.describe('Volunteer Management v2', () => {
     await settle(page, 800);
 
     await captureScreen(page, testInfo, volunteerTeamSundaySchoolClassCapture);
+  });
+
+  const volunteerMinistryCalendarCapture = defineCapture({
+    name: 'volunteer-ministry-calendar',
+    locales: 'all',
+    title: 'Ministry Calendar',
+    category: 'Groups & Events',
+    purpose: 'Show the events a ministry has on its own calendar, each with how well its teams are staffed.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-ministry-calendar', volunteerMinistryCalendarCapture, async ({ page }, testInfo) => {
+    const { ministryId } = await ensureVolunteerSeed(page);
+    await openMinistry(page, ministryId, 'calendar');
+    await settle(page, 1000);
+
+    await captureScreen(page, testInfo, volunteerMinistryCalendarCapture);
+  });
+
+  /** Opens "New recurring event" on the Calendar tab and fills in a short weekly series. */
+  async function fillWeeklySeries(page: Page, ministryId: number, title: string): Promise<void> {
+    await openMinistry(page, ministryId, 'calendar');
+    await humanClick(page.locator('#ministry-event-add-series-btn'));
+    await expect(page.locator('#ministryEventModal')).toBeVisible();
+    await expect(page.locator('#ministry-event-form-series')).toBeChecked();
+    const type = page.locator('#ministry-event-form-type');
+    await expect(type.locator('option')).not.toHaveCount(1, { timeout: 15000 });
+    await humanType(page.locator('#ministry-event-form-title'), title);
+    if ((await type.inputValue()) === '') {
+      await type.selectOption({ index: 1 });
+    }
+    await page.locator('#ministry-event-form-dow').selectOption('Wednesday');
+    await page.locator('#ministry-event-form-range-end').fill(isoDate(35));
+    await page.locator('#ministry-event-form-start-time').fill('19:00');
+    await page.locator('#ministry-event-form-end-time').fill('20:00');
+    await page.locator('#ministry-event-form-end-time').blur();
+    await expect(page.locator('#ministry-event-form-preview')).toBeVisible();
+  }
+
+  const WEEKLY_SERIES_TITLE = 'Wednesday Prayer Circle';
+
+  const volunteerRecurringEventNewCapture = defineCapture({
+    name: 'volunteer-recurring-event-new',
+    locales: 'all',
+    title: 'New Recurring Event',
+    category: 'Groups & Events',
+    purpose: 'Show a coordinator putting a weekly event on the ministry calendar, with the dates it will make.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-recurring-event-new', volunteerRecurringEventNewCapture, async ({ page }, testInfo) => {
+    const { ministryId } = await ensureVolunteerSeed(page);
+    await fillWeeklySeries(page, ministryId, WEEKLY_SERIES_TITLE);
+    await settle(page, 800);
+
+    await captureScreen(page, testInfo, volunteerRecurringEventNewCapture);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await humanClick(page.locator('#ministryEventModal .btn-close'));
+    await expect(page.locator('#ministryEventModal')).toBeHidden();
+  });
+
+  const volunteerEventStaffPromptCapture = defineCapture({
+    name: 'volunteer-event-staff-prompt',
+    locales: 'all',
+    title: 'Staff the New Events Now?',
+    category: 'Groups & Events',
+    purpose: 'Show the question that follows a new recurring event: staff its dates now, or leave that for later.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-event-staff-prompt', volunteerEventStaffPromptCapture, async ({ page }, testInfo) => {
+    const { ministryId } = await ensureVolunteerSeed(page);
+    try {
+      await fillWeeklySeries(page, ministryId, WEEKLY_SERIES_TITLE);
+      await humanClick(page.locator('#ministry-event-form-save'));
+      const prompt = page.locator('.ministry-event-staff-prompt');
+      await expect(prompt).toBeVisible({ timeout: 30000 });
+      await expect(prompt.locator('.bootbox-accept')).toBeVisible();
+      await settle(page, 800);
+
+      await captureScreen(page, testInfo, volunteerEventStaffPromptCapture);
+      await page.setViewportSize({ width: 1440, height: 900 });
+      await humanClick(prompt.locator('.bootbox-cancel'));
+      await expect(prompt).toBeHidden();
+    } finally {
+      await deleteMinistryEventsTitled(page, ministryId, WEEKLY_SERIES_TITLE);
+    }
+  });
+
+  const volunteerEventStaffCapture = defineCapture({
+    name: 'volunteer-event-staff',
+    locales: 'all',
+    title: 'Staff an Event',
+    category: 'Groups & Events',
+    purpose: 'Show a coordinator staffing a calendar event: the team and the positions it needs filled.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-event-staff', volunteerEventStaffCapture, async ({ page }, testInfo) => {
+    const { ministryId } = await ensureVolunteerSeed(page);
+    const title = 'Volunteer Orientation Evening';
+    const eventId = await createUnstaffedEvent(page, ministryId, title, 9);
+    try {
+      await openMinistry(page, ministryId, 'calendar');
+      const row = page.locator('#volunteerMinistryEventsTable tbody tr').filter({ hasText: title });
+      await pickRowAction(row, '.ministry-event-staff');
+      await expect(page.locator('#staffEventModal')).toBeVisible();
+      await expect(page.locator('#staff-event-form-event')).toHaveValue(String(eventId), { timeout: 15000 });
+      await expect(page.locator('#staff-event-form-needs .volunteer-need-row').first()).toBeVisible();
+      await settle(page, 800);
+
+      await captureScreen(page, testInfo, volunteerEventStaffCapture);
+    } finally {
+      await deleteMinistryEventsTitled(page, ministryId, title);
+    }
   });
   // <<NEW>>
 });
