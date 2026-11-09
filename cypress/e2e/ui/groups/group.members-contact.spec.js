@@ -92,7 +92,7 @@ describe("Group member contact details (#1827)", () => {
 
     it("shows addresses and clickable home phones as literal text in the roster", () => {
         cy.viewport(1440, 1000);
-        cy.intercept("GET", `**/api/groups/${groupId}/members`).as("members");
+        cy.intercept("GET", `**/api/groups/${groupId}/members*`).as("members");
         cy.visit(`/groups/view/${groupId}`);
         cy.wait("@members");
         cy.get("#membersTable thead").should("contain.text", "Home Phone").and("contain.text", "Address");
@@ -109,7 +109,7 @@ describe("Group member contact details (#1827)", () => {
 
     it("escapes contact text returned by the server", () => {
         const address = '<main data-contact-injection="true">1827 Main & Oak</main>';
-        cy.intercept("GET", `**/api/groups/${groupId}/members`, (request) => {
+        cy.intercept("GET", `**/api/groups/${groupId}/members*`, (request) => {
             request.continue((response) => {
                 const member = response.body.Person2group2roleP2g2rs.find((m) => m.Person.FirstName === "Personal");
                 member.Person.Address = address;
