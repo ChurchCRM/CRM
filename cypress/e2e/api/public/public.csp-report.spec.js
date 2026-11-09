@@ -1,6 +1,8 @@
 /// <reference types="cypress" />
 
 describe("API Public CSP Report", () => {
+    beforeEach(() => cy.expireSignInThrottle("csp-report.ip"));
+
     it("should accept an oversized or non-array body without error", () => {
         cy.request({
             method: "POST",
@@ -64,5 +66,19 @@ describe("API Public CSP Report", () => {
         }).then((resp) => {
             expect(resp.status).to.eq(204);
         });
+    });
+
+    it("should refuse reports past 60 per address until the window ends", () => {
+        const report = { "csp-report": { "violated-directive": "img-src 'self'" } };
+        const post = () => cy.request({ method: "POST", url: "/api/public/csp-report", body: report, failOnStatusCode: false });
+
+        Cypress._.times(60, () => post().its("status").should("eq", 204));
+        post().then((resp) => {
+            expect(resp.status).to.eq(429);
+            expect(Number(resp.headers["retry-after"])).to.be.within(1, 300);
+        });
+
+        cy.expireSignInThrottle("csp-report.ip");
+        post().its("status").should("eq", 204);
     });
 });

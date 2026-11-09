@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Service\RateLimiter;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -44,11 +45,18 @@ function getEcho(Request $request, Response $response): Response
  *         description="CSP violation report object (browser-generated)",
  *         @OA\JsonContent(type="object", example={"csp-report": {"document-uri": "https://example.com", "violated-directive": "script-src"}})
  *     ),
- *     @OA\Response(response=204, description="Report logged successfully (no content)")
+ *     @OA\Response(response=204, description="Report logged successfully (no content)"),
+ *     @OA\Response(response=429, description="Too many reports from this address; nothing was logged")
  * )
  */
 function logCSPReportAPI(Request $request, Response $response, array $args): Response
 {
+    $limiter = new RateLimiter('csp-report.ip', 60, 300);
+    $client = RateLimiter::clientIpKey();
+    if (!$limiter->attempt($client)) {
+        return $response->withStatus(429)->withHeader('Retry-After', (string) max(1, $limiter->availableIn($client)));
+    }
+
     $body = (string) $request->getBody()->read(8192);
     try {
         $input = json_decode($body, true, 8, JSON_THROW_ON_ERROR);
