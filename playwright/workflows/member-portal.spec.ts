@@ -4,6 +4,7 @@ import { captureScreen, defineCapture } from '../support/capture';
 import { humanClick, humanPause, humanType, settle } from '../support/human';
 import { rememberedMemberContext, useMemberSignIn } from '../support/member-sign-in';
 import { adminRequest, PORTAL_MEMBER, type PortalDemo, setUpPortalDemo, waitForAvatars } from '../support/portal-member';
+import { type DemoTeam, findDemoTeam } from '../support/volunteer';
 
 let api: APIRequestContext;
 let demo: PortalDemo | undefined;
@@ -164,6 +165,43 @@ test.describe('signed in as a member', () => {
     await captureScreen(page, testInfo, portalMemberFamilyCapture);
   });
 
+  const portalMemberProfileCapture = defineCapture({
+    name: 'portal-member-profile',
+    locales: 'all',
+    title: 'Member Portal: My Profile',
+    category: 'People & Families',
+    purpose: 'A member sees what the church has on file for them and can ask to update it.',
+    usedIn: ['docs'],
+  });
+  test('portal-member-profile', portalMemberProfileCapture, async ({}, testInfo) => {
+    const page = await memberPage();
+    await page.goto('/portal/profile');
+    await expect(page.locator('#portal-profile-photo')).toBeVisible();
+    await expect(page.locator('#portal-profile-edit-link')).toBeVisible();
+    await waitForAvatars(page);
+    await settle(page, 600);
+
+    await captureScreen(page, testInfo, portalMemberProfileCapture);
+  });
+
+  const portalMemberFamilyConfirmCapture = defineCapture({
+    name: 'portal-member-family-confirm',
+    locales: 'all',
+    title: 'Member Portal: Confirm Your Family Details',
+    category: 'People & Families',
+    purpose: 'An adult checks the household details the church has on file and says whether they are still right.',
+    usedIn: ['docs'],
+  });
+  test('portal-member-family-confirm', portalMemberFamilyConfirmCapture, async ({}, testInfo) => {
+    const page = await memberPage();
+    await page.goto('/portal/family/confirm');
+    await expect(page.locator('#portal-confirm-form')).toBeVisible();
+    await waitForAvatars(page);
+    await settle(page, 600);
+
+    await captureScreen(page, testInfo, portalMemberFamilyConfirmCapture);
+  });
+
   const portalMemberCalendarCapture = defineCapture({
     name: 'portal-member-calendar',
     locales: 'all',
@@ -206,6 +244,90 @@ test.describe('signed in as a member', () => {
     await settle(page, 600);
 
     await captureScreen(page, testInfo, portalMemberCalendarSubscribeCapture);
+  });
+});
+
+/** The demo's leader of the Worship Team (src/admin/demo/volunteers.json): a member with no other capture signed in as them. */
+const TEAM_LEADER_EMAIL = 'kevin.flores@demo.churchcrm.io';
+
+test.describe('signed in as a team leader', () => {
+  let leader: BrowserContext | undefined;
+  let team: DemoTeam | undefined;
+
+  test.beforeAll(async ({ browser }) => {
+    team = await findDemoTeam(api, 'Worship', 'Worship Team');
+    leader = await rememberedMemberContext(browser, TEAM_LEADER_EMAIL, 'team-leader');
+  });
+
+  test.afterAll(async () => {
+    await leader?.close();
+  });
+
+  async function leaderPage(path: string): Promise<Page> {
+    const page = await (leader as BrowserContext).newPage();
+    await page.goto(path);
+    await expect(page.locator('.portal-shell')).toBeVisible({ timeout: 15000 });
+    return page;
+  }
+
+  const portalMemberTeamsCapture = defineCapture({
+    name: 'portal-member-teams',
+    locales: 'all',
+    title: 'Member Portal: My Teams',
+    category: 'Groups & Events',
+    purpose: 'A team leader sees the volunteer teams they look after, with positions and the next date each meets.',
+    usedIn: ['docs'],
+  });
+  test('portal-member-teams', portalMemberTeamsCapture, async ({}, testInfo) => {
+    const page = await leaderPage('/portal/teams');
+    await expect(page.locator('.portal-team-card').first()).toBeVisible();
+    await waitForAvatars(page);
+    await settle(page, 600);
+
+    await captureScreen(page, testInfo, portalMemberTeamsCapture);
+  });
+
+  const volunteerPortalTeamPositionsCapture = defineCapture({
+    name: 'volunteer-portal-team-positions',
+    locales: 'all',
+    title: 'Member Portal: Team Positions',
+    category: 'Groups & Events',
+    purpose: 'A team leader sets up the positions their team staffs, from the Member Portal.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-portal-team-positions', volunteerPortalTeamPositionsCapture, async ({}, testInfo) => {
+    const page = await leaderPage(`/portal/teams/${team?.teamId}`);
+    await expect(page.locator('#volunteerPositionsTable tbody tr').first()).toBeVisible({ timeout: 30000 });
+    await settle(page, 1000);
+
+    await captureScreen(page, testInfo, volunteerPortalTeamPositionsCapture);
+  });
+
+  const volunteerPortalTeamScheduleCapture = defineCapture({
+    name: 'volunteer-portal-team-schedule',
+    locales: 'all',
+    title: 'Member Portal: Add a Team Schedule',
+    category: 'Groups & Events',
+    purpose: 'A team leader adds a schedule for their team: which events it follows and how many people each position needs.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-portal-team-schedule', volunteerPortalTeamScheduleCapture, async ({}, testInfo) => {
+    const page = await leaderPage(`/portal/teams/${team?.teamId}`);
+    await humanClick(page.locator('#nav-item-schedules'));
+    await expect(page.locator('#volunteerSchedulesTable tbody tr').first()).toBeVisible({ timeout: 30000 });
+    await humanClick(page.locator('#schedule-add-btn'));
+    const modal = page.locator('#scheduleModal');
+    await expect(modal).toBeVisible();
+    await expect(page.locator('#schedule-form-needs .volunteer-need-row').first()).toBeVisible({ timeout: 15000 });
+    await humanType(page.locator('#schedule-form-name'), 'Midweek Rehearsal');
+    await page.locator('#schedule-form-event-type').selectOption({ label: 'Church Service' });
+    const series = page.locator('#schedule-form-title-filter');
+    await expect(series).toBeEnabled({ timeout: 15000 });
+    await series.selectOption({ index: 1 });
+    await expect(page.locator('#schedule-form-details')).toBeVisible();
+    await settle(page, 800);
+
+    await captureScreen(page, testInfo, volunteerPortalTeamScheduleCapture);
   });
 });
 
