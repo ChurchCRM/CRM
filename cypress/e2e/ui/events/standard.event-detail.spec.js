@@ -209,10 +209,14 @@ describe("Event Detail - Did Not Attend List", () => {
         cy.visit(`event/view/${pastGroupEventId}`);
         cy.get("#event-add-attendees-to-cart").should("be.visible").click();
         cy.wait("@addToCart").then(({ request, response }) => {
+            const sent =
+                typeof request.body === "string"
+                    ? JSON.parse(request.body)
+                    : request.body;
             expect(response.statusCode).to.eq(200);
-            expect(JSON.parse(request.body).Persons).to.have.length.greaterThan(0);
+            expect(sent.Persons).to.have.length.greaterThan(0);
             expect(response.body.added.length + response.body.duplicate.length).to.eq(
-                JSON.parse(request.body).Persons.length,
+                sent.Persons.length,
             );
         });
     });
