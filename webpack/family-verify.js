@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
       fetch(`${root}/external/verify/${window.token}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message }),
+        body: JSON.stringify({ message, verifyType: verifyType ? verifyType.value : "" }),
       })
         .then((resp) => {
           if (resp.ok) {

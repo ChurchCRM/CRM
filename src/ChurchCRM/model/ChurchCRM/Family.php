@@ -897,14 +897,11 @@ class Family extends BaseFamily implements PhotoInterface
             throw new \Exception(gettext('Family has no emails to use'));
         }
 
-        // delete old tokens
+        // Retire any outstanding token links: the email now points at the
+        // member portal's My Family page instead (#11145).
         TokenQuery::create()->filterByType('verifyFamily')->filterByReferenceId($this->getId())->delete();
 
-        // create a new token an send to all emails
-        $token = new Token();
-        $token->build('verifyFamily', $this->getId());
-        $token->save();
-        $email = new FamilyVerificationEmail($familyEmails, $this->getName(), $token);
+        $email = new FamilyVerificationEmail($familyEmails, $this->getName());
         if (!$email->send()) {
             LoggerUtils::getAppLogger()->error($email->getError());
 
