@@ -9,8 +9,9 @@ require dirname(__DIR__, 2) . '/bootstrap.php';
 $directory = sys_get_temp_dir() . '/crm-requirements-' . bin2hex(random_bytes(6));
 mkdir($directory . '/Include', 0700, true);
 mkdir($directory . '/setup/templates', 0700, true);
+mkdir($directory . '/errors', 0700, true);
 symlink(APP_ROOT . '/vendor', $directory . '/vendor');
-$files = ['Include/LoadConfigs.php', 'Include/CheckRequirements.php', 'setup/index.php', 'setup/templates/system-requirements.php', 'setup/templates/setup-steps.php', 'setup/templates/header.php', 'composer.json'];
+$files = ['Include/LoadConfigs.php', 'Include/CheckRequirements.php', 'setup/index.php', 'setup/templates/system-requirements.php', 'setup/templates/setup-steps.php', 'setup/templates/header.php', 'errors/template.php', 'composer.json'];
 symlink(APP_ROOT . '/setup/routes', $directory . '/setup/routes');
 foreach ($files as $file) {
     copy(APP_ROOT . '/' . $file, $directory . '/' . $file);
@@ -47,7 +48,8 @@ try {
                 . 'throw new \\RuntimeException("Bootstrap must stop");';
             $html = $run($script, 'gettext,bindtextdomain,imagecreatetruecolor');
             Assert::contains('ChurchCRM System Check', $html);
-            Assert::contains('href="' . $root . '/skin/v2/setup.min.css"', $html);
+            Assert::contains('href="' . $root . '/skin/v2/error.min.css"', $html);
+            Assert::notContains('cdn.jsdelivr.net', $html);
             foreach (['locale gettext', 'GD Library for image manipulation', 'PHP ZipArchive'] as $name) {
                 Assert::match('~' . preg_quote($name, '~') . '</th>\s*<td class="text-danger">Failed</td>~', $html);
             }
@@ -57,6 +59,34 @@ try {
             Assert::true(file_exists($directory . '/Include/Config.php'));
         }
     }
+
+    file_put_contents($directory . '/Include/Config.php', '<?php '
+        . '$sSERVERNAME = "localhost"; $dbPort = 3306; $sUSER = "test"; $sPASSWORD = "secret"; $sDATABASE = "test"; '
+        . '$sRootPath = "/churchcrm"; $URL = ["http://localhost/"];');
+    foreach (['pdo_mysql' => 'PHP PDO MySQL', 'bcmath' => 'PHP BCMath', 'filter' => 'PHP Filter', 'zlib' => 'PHP Zlib'] as $extension => $name) {
+        $missing = 'namespace ChurchCRM; class Bootstrapper { public static function init(...$args) { throw new \\Error("Bootstrap failed"); } } '
+            . 'namespace ChurchCRM\\Service; '
+            . 'function extension_loaded($name) { return $name === ' . var_export($extension, true) . ' ? false : \\extension_loaded($name); } '
+            . '$_SERVER["SCRIPT_NAME"] = "/churchcrm/session/index.php"; '
+            . 'register_shutdown_function(static function () { if (http_response_code() !== 503) { exit(1); } }); '
+            . 'require ' . var_export($directory . '/Include/LoadConfigs.php', true) . '; '
+            . 'throw new \\RuntimeException("Bootstrap must stop");';
+        $html = $run($missing);
+        Assert::match('~' . preg_quote($name, '~') . '</th>\s*<td class="text-danger">Failed</td>~', $html);
+        Assert::match('~PHP Session</th>\s*<td class="text-success">Passed</td>~', $html);
+    }
+
+    $api = $run('namespace ChurchCRM; class Bootstrapper { public static function init(...$args) { throw new \\Error("Bootstrap failed"); } } '
+        . 'namespace ChurchCRM\\Service; function class_exists($name) { return $name === "ZipArchive" ? false : \\class_exists($name); } '
+        . '$_SERVER["SCRIPT_NAME"] = "/api/index.php"; $_SERVER["REQUEST_URI"] = "/api/events/today"; '
+        . 'register_shutdown_function(static function () { if (http_response_code() !== 503) { exit(1); } }); '
+        . 'require ' . var_export($directory . '/Include/LoadConfigs.php', true) . '; '
+        . 'throw new \\RuntimeException("Bootstrap must stop");');
+    $payload = json_decode($api, true, 512, JSON_THROW_ON_ERROR);
+    Assert::false($payload['success']);
+    Assert::same(503, $payload['code']);
+    Assert::contains('PHP ZipArchive', $payload['failedRequirements']);
+    Assert::notContains('PHP Session', $payload['failedRequirements']);
 
     $healthy = $run('namespace ChurchCRM; class Bootstrapper { public static function init(...$args) {} public static function isDBCurrent() { return false; } } '
         . 'namespace ChurchCRM\\Service; function extension_loaded($name) { throw new \\Error("Requirements must not run"); } '
@@ -89,6 +119,7 @@ try {
             unlink($directory . '/' . $file);
         }
     }
+    rmdir($directory . '/errors');
     rmdir($directory . '/setup/templates');
     rmdir($directory . '/setup');
     rmdir($directory . '/Include');

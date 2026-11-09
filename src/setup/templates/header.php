@@ -1,32 +1,13 @@
-    <?php
-    // Standalone header for setup - no Config.php dependencies
-    $rootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
-    $nonce = base64_encode(random_bytes(16));
-    ?>
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta http-equiv="Content-Type" content="text/html">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php
+// Setup wizard document head on the shared standalone layout (no Config.php).
+require_once __DIR__ . '/../../errors/template.php';
 
-        <link rel="shortcut icon" href="<?= $rootPath ?>/favicon.ico">
-        
-        <!-- Setup CSS bundle (includes Bootstrap and Font Awesome) -->
-        <link rel="stylesheet" href="<?= $rootPath ?>/skin/v2/setup.min.css">
-        
-        <!-- Setup JS bundle (includes jQuery, Bootstrap, bs-stepper, and setup.js logic) -->
-        <script src="<?= $rootPath ?>/skin/v2/setup.min.js" defer></script>
+$rootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
+$nonce = base64_encode(random_bytes(16));
 
-        <title>ChurchCRM: <?= $sPageTitle ?? 'Setup' ?></title>
-
-    </head>
-    <body class="hold-transition login-page">
-
+renderStandaloneHeader($rootPath, $sPageTitle ?? 'ChurchCRM – Setup', 'setup');
+?>
     <script nonce="<?= $nonce ?>">
-        // Initialize window.CRM for setup script
-        window.CRM = {
-            root:"<?= $rootPath ?>"
-        };
+        window.CRM = { root: <?= json_encode($rootPath, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES) ?> };
     </script>
+    <script src="<?= standaloneEscape($rootPath . '/skin/v2/setup.min.js') ?>" defer></script>

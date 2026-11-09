@@ -61,6 +61,7 @@ describe("API Private - index.php Routing", () => {
                         expect(finalResponse.status).to.equal(404);
                         expect(finalResponse.body).to.include("Page Not Found");
                         expect(finalResponse.body).to.include("this-page-was-never-real.php");
+                        expect(finalResponse.body).to.include("/skin/v2/error.min.css");
                     });
             });
     });

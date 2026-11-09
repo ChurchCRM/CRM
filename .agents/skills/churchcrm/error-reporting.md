@@ -28,6 +28,12 @@ require __DIR__ . '/common/error-page.php';
 
 Add ARIA roles to any callout passed as `$extraHtml`.
 
+## Pages outside the app
+
+Pages that must render without the app booting (`src/errors/`, the setup wizard and the PHP requirements check) use the standalone Tabler layout in `src/errors/template.php`. It needs no autoloader, `Config.php` or gettext, and parses on old PHP. Pass the install root path: `renderErrorPage($rootPath, $title, $icon, $variant, $contentHtml, $issueBody)`, or `renderStandaloneHeader()` / `renderStandaloneFooter()` for a custom body. Error pages default to `standaloneRootPath()`; an includer sets `$errorRootPath` first. Styles come from `webpack/error.js` (Tabler, light and dark through `theme.min.js`); no CDN.
+
+The unknown-page fallback in `src/index.php` redirects to `errors/not-found.php`, which renders through this layout, so root-level legacy URLs such as `/old-page.php` and subdirectory installs get the same 404 page.
+
 ## Report button
 
 The button writes `window.location.pathname + window.location.search` into `input[name="pageName"]`, so the server-side IssueReporter builds the GitHub issue body from the path and query. It clicks the header `#reportIssue` link (which carries `data-bs-toggle` / `data-bs-target`) so the IssueReporter payload gathering runs. If that link is missing it opens `#IssueReportModal` through `window.bootstrap.Modal`, then falls back to the support URL. `window.bootstrap` is set by `webpack/setup.js`; the partial checks it before use.

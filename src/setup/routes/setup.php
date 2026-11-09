@@ -12,20 +12,24 @@ use Slim\Views\PhpRenderer;
 
 $app->group('/', function (RouteCollectorProxy $group): void {
     $getHandler = function (Request $request, Response $response, array $args): Response {
-        $renderer = new PhpRenderer('templates/');
-        $renderPage = 'setup-steps.php';
-        
         try {
-            if (version_compare(phpversion(), VersionUtils::getRequiredPhpVersion(), '<')) {
-                $renderPage = 'setup-error.php';
-            }
+            $errorPage = version_compare(phpversion(), VersionUtils::getRequiredPhpVersion(), '<') ? 'php-error.php' : null;
         } catch (\RuntimeException $e) {
-            // System cannot determine PHP requirements during setup - show error
-            $renderPage = 'setup-error.php';
+            $errorPage = 'config-error.php';
+            $errorMessage = $e->getMessage();
         }
 
         // Use GLOBALS instead of SystemURLs (Config.php doesn't exist during setup)
-        return $renderer->render($response, $renderPage, ['sRootPath' => $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '']);
+        $errorRootPath = $GLOBALS['CHURCHCRM_SETUP_ROOT_PATH'] ?? '';
+        if ($errorPage !== null) {
+            ob_start();
+            require dirname(__DIR__, 2) . '/errors/' . $errorPage;
+            $response->getBody()->write((string) ob_get_clean());
+
+            return $response->withStatus(503);
+        }
+
+        return (new PhpRenderer('templates/'))->render($response, 'setup-steps.php', ['sRootPath' => $errorRootPath]);
     };
 
     $group->get('', $getHandler);
