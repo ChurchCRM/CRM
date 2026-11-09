@@ -23,7 +23,7 @@ use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\MiscUtils;
+use ChurchCRM\Utils\EmailAddress;
 use Propel\Runtime\Propel;
 use ChurchCRM\Utils\AddressDefaults;
 use ChurchCRM\Service\CustomFieldService;
@@ -266,8 +266,8 @@ class PersonRecordService
             }
 
             if (strlen($sEmail) > 0) {
-                if (!MiscUtils::checkEmail($sEmail)) {
-                    $sEmailError = gettext('Email is Not Valid');
+                if (!EmailAddress::isValid($sEmail)) {
+                    $sEmailError = EmailAddress::validationMessage();
                     $bErrorFlag = true;
                 }
             }
@@ -282,8 +282,8 @@ class PersonRecordService
             }
 
             if (strlen($sWorkEmail) > 0) {
-                if (!MiscUtils::checkEmail($sWorkEmail)) {
-                    $sWorkEmailError = gettext('Work Email is Not Valid');
+                if (!EmailAddress::isValid($sWorkEmail)) {
+                    $sWorkEmailError = EmailAddress::validationMessage();
                     $bErrorFlag = true;
                 }
             }

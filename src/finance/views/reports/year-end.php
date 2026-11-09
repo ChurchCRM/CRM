@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -78,7 +79,7 @@ $icon = ['ok' => 'fa-check', 'warn' => 'fa-exclamation', 'info' => 'fa-info'];
                 <label for="year" class="form-label fw-bold mb-1"><?= gettext('Year') ?></label>
                 <select name="year" id="year" class="form-select">
                     <?php foreach ($years as $option) : ?>
-                        <option value="<?= (int) $option ?>" <?= $option === $year ? 'selected' : '' ?>><?= (int) $option ?></option>
+                        <option value="<?= (int) $option ?>" <?= $option === $year ? 'selected' : '' ?>><?= InputUtils::escapeHTML(FiscalYearUtils::getFiscalYearDatesForCalendarYear($option)['label']) ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

@@ -43,7 +43,7 @@ $newDatabase = static function () use ($dsn, $admin, $user, $password, &$schemas
     $container->setConnectionManager($manager);
     $container->setDefaultDatasource('default');
     Propel::disableInstancePooling();
-    require APP_ROOT . '/Include/LoadDatabaseMap.php';
+    require APP_ROOT . '/ChurchCRM/Config/PropelDatabaseMap.php';
     return $db;
 };
 $manifest = static function (array $steps, string $installed = '7.8.1') use ($tempRoot): void {

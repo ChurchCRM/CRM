@@ -1,3 +1,4 @@
+import { confirmAction } from "../common/confirm-action";
 /**
  * S1 — the coordinator dashboard (#9711, design §5.2).
  *
@@ -106,22 +107,6 @@ function actionMenu(items: Array<CRMActionMenuItem | false>): string {
   const build = window.CRM?.buildActionMenu;
 
   return build ? build(items) : "";
-}
-
-function confirmAction(title: string, message: string, onConfirm: () => void, danger = true): void {
-  window.bootbox?.confirm({
-    title,
-    message,
-    buttons: {
-      confirm: { label: i18next.t("Yes"), className: danger ? "btn-danger" : "btn-primary" },
-      cancel: { label: i18next.t("No"), className: "btn-default" },
-    },
-    callback: (result: boolean) => {
-      if (result) {
-        onConfirm();
-      }
-    },
-  });
 }
 
 /**

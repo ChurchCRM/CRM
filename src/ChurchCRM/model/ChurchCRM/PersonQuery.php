@@ -16,6 +16,11 @@ use Propel\Runtime\ActiveQuery\Criteria;
  */
 class PersonQuery extends BasePersonQuery
 {
+    public function filterByActive(): self
+    {
+        return $this->filterByDateDeactivated(null, Criteria::ISNULL);
+    }
+
     /**
      * Only living persons (per_DateDeceased IS NULL).
      */

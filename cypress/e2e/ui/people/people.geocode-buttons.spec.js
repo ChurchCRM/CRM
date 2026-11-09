@@ -1,11 +1,13 @@
 /// <reference types="cypress" />
 
-// Family 3 (Lewis) has an address and no coordinates; person 14 belongs to it.
+// Geocode Test Family has an address and no coordinates; person 902 belongs to it.
 // "Refresh Coordinates" calls POST /api/family/{id}/geocode, which needs Edit Records.
 describe("Refresh Coordinates button permissions", () => {
+    const GEOCODE_TEST_FAMILY_ID = 45;
+    const GEOCODE_TEST_PERSON_ID = 902;
     const pages = [
-        ["family page", "/people/family/3"],
-        ["person page", "/people/view/14"],
+        ["family page", `/people/family/${GEOCODE_TEST_FAMILY_ID}`],
+        ["person page", `/people/view/${GEOCODE_TEST_PERSON_ID}`],
     ];
 
     pages.forEach(([label, path]) => {
@@ -30,7 +32,7 @@ describe("Refresh Coordinates button permissions", () => {
     });
 
     it("the geocode API refuses a user without Edit Records", () => {
-        cy.personaAPICall("notes-only-staff", "POST", "/api/family/3/geocode", null, 403);
+        cy.personaAPICall("notes-only-staff", "POST", `/api/family/${GEOCODE_TEST_FAMILY_ID}/geocode`, null, 403);
     });
 });
 

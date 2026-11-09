@@ -924,34 +924,24 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             var listPeople = collectFilteredPeople();
             var filteredCount = listPeople.length;
             
-            bootbox.confirm({
-                title: i18next.t("Remove from Cart"),
-                message: i18next.t("Remove") +"" + filteredCount +"" + i18next.t("people from cart?"),
-                buttons: {
-                    cancel: {
-                        label: i18next.t("Cancel")
-                    },
-                    confirm: {
-                        label: i18next.t("Yes, Remove"),
-                        className:"btn-danger"
-                    }
-                },
-                callback: function (result) {
-                    if (result) {
-                        if (listPeople.length > 0) {
-                            // Don't pass confirm: true since we already showed bootbox confirmation above
-                            window.CRM.cartManager.removePerson(listPeople, {
-                                showNotification: true,
-                                reloadPage: false,
-                                confirm: false,
-                                callback: function() {
-                                    updateCartButtonStates();
-                                }
-                            });
+            window.CRM.confirmAction(
+              i18next.t("Remove from Cart"),
+              i18next.t("Remove") +"" + filteredCount +"" + i18next.t("people from cart?"),
+              () => {
+                if (listPeople.length > 0) {
+                    // Don't pass confirm: true since we already showed bootbox confirmation above
+                    window.CRM.cartManager.removePerson(listPeople, {
+                        showNotification: true,
+                        reloadPage: false,
+                        confirm: false,
+                        callback: function() {
+                            updateCartButtonStates();
                         }
-                    }
+                    });
                 }
-            });
+              },
+              { confirmLabel: i18next.t("Yes, Remove"), cancelLabel: i18next.t("Cancel") },
+            );
         });
 
         // Update button cart states after DataTable draws (page change, filter change, etc)

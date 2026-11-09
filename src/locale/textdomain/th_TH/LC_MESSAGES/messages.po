@@ -717,10 +717,6 @@ msgid "Not a valid Wedding Date"
 msgstr "วันแต่งงานไม่ถูกต้อง"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "อีเมลไม่ถูกต้อง"
-
-#: 
 msgid "Family Info"
 msgstr "ข้อมูลครอบครัว"
 
@@ -1443,10 +1439,6 @@ msgstr "วันที่เพื่อนไม่ถูกต้อง"
 #: 
 msgid "Not a valid Membership Date"
 msgstr "วันที่สมาชิกไม่ถูกต้อง"
-
-#: 
-msgid "Work Email is Not Valid"
-msgstr "อีเมลที่ทำงานไม่ถูกต้อง"
 
 #: 
 msgid "Birth Month"
@@ -22857,10 +22849,6 @@ msgid "Invalid birth date"
 msgstr "วันเกิดไม่ถูกต้อง"
 
 #: 
-msgid "Invalid email address"
-msgstr "ที่อยู่อีเมลไม่ถูกต้อง"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "การตั้งค่า Kiosk"
 
@@ -23531,10 +23519,6 @@ msgstr "เลือกว่าจะจัดคนในกำหนดกา
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "เลือกคนที่มีอยู่ในสารบบคริสตจักรแล้ว คนนั้นจะเข้าร่วมอาสาสมัครของพันธกิจนี้ และผู้ประสานงานจะได้รับอีเมล มีเพียงผู้ประสานงานที่นำคนออกได้"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM มีสองวิธีจัดการอาสาสมัคร ใช้ได้ครั้งละวิธี การตั้งค่าประสบการณ์อาสาสมัครเป็นตัวกำหนดว่าคริสตจักรนี้จะเห็นวิธีใด การสลับจะซ่อนหรือแสดงหน้าและรายการเมนู โดยไม่ลบข้อมูล จึงสลับกลับได้"
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -26425,10 +26409,6 @@ msgid "That device is signed out."
 msgstr "อุปกรณ์นั้นออกจากระบบแล้ว"
 
 #: 
-msgid "That is not a valid email address."
-msgstr "นั่นไม่ใช่ที่อยู่อีเมลที่ถูกต้อง"
-
-#: 
 msgid "That page had been open too long. Please try again."
 msgstr "หน้านั้นเปิดไว้นานเกินไป โปรดลองอีกครั้งครับ"
 
@@ -27119,4 +27099,16 @@ msgstr "หรือ"
 #: 
 msgid "until %s"
 msgstr "จนถึง %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "มีคำขอในพอร์ทัลสมาชิกให้เปลี่ยนที่อยู่อีเมลของคุณที่ %1$s จาก %2$s เป็น %3$s การเปลี่ยนแปลงจะเกิดขึ้นเมื่อใช้ลิงก์ที่ส่งไปยังที่อยู่ใหม่เท่านั้น"
+
+#: 
+msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
+msgstr "โปรดใช้ลิงก์ด้านล่างเพื่อตรวจสอบข้อมูลครอบครัวของคุณ ในหน้าตรวจสอบ ให้เลือก \"ยืนยันข้อมูลครอบครัว\" เพื่อยืนยันว่าทุกอย่างถูกต้อง หรือส่งการแก้ไขไปที่สำนักงานคริสตจักร"
+
+#: 
+msgid "Review Family Information"
+msgstr "ตรวจสอบข้อมูลครอบครัว"
 

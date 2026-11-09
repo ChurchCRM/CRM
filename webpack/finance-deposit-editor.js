@@ -1,3 +1,5 @@
+import { confirmAction } from "./common/confirm-action";
+
 /**
  * Deposit editor (/finance/deposit/{id}).
  * Config comes from window.depositEditorConfig (see finance/views/deposits/editor.php).
@@ -163,22 +165,11 @@
   }
 
   function confirmDelete(groupKeys) {
-    bootbox.confirm({
-      title: i18next.t("Confirm Delete"),
-      message:
-        `<p>${i18next.t("Are you sure you want to delete the selected")} ${groupKeys.length} ${i18next.t("payment(s)?")}</p>` +
+    confirmAction(
+      i18next.t("Confirm Delete"),
+      `<p>${i18next.t("Are you sure you want to delete the selected")} ${groupKeys.length} ${i18next.t("payment(s)?")}</p>` +
         `<p class="text-body-secondary mb-0">${i18next.t("This action CANNOT be undone, and may have legal implications!")}</p>`,
-      buttons: {
-        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
-        confirm: {
-          label: `<i class="fa-solid fa-trash-can me-1"></i>${i18next.t("Delete")}`,
-          className: "btn-danger",
-        },
-      },
-      callback: (confirmed) => {
-        if (!confirmed) {
-          return;
-        }
+      () => {
         $("#deleteSelectedRows").prop("disabled", true);
         // Wait for every request to settle so the outcome (and the reload) reflects the server state.
         const results = groupKeys.map((key) =>
@@ -211,7 +202,11 @@
           paymentsTable.ajax.reload(() => updateSelectionState(), false);
         });
       },
-    });
+      {
+        confirmLabel: `<i class="fa-solid fa-trash-can me-1"></i>${i18next.t("Delete")}`,
+        cancelLabel: i18next.t("Cancel"),
+      },
+    );
   }
 
   function initActions() {
@@ -308,6 +303,13 @@
       $(this).addClass("d-none");
     });
   }
+
+  $("#fundsBody").on("shown.bs.collapse hidden.bs.collapse", (e) => {
+    $("#fundsToggle i")
+      .toggleClass("fa-chevron-down", e.type === "hidden")
+      .toggleClass("fa-chevron-up", e.type === "shown");
+    window.dispatchEvent(new Event("resize"));
+  });
 
   function initFundChart() {
     const element = document.getElementById("fund-bar");

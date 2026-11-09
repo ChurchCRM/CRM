@@ -8,6 +8,22 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+// A remote notice (External/notifications.json) can land on the first page after sign-in and push the
+// layout down. Dismiss it the way a user does so it is saved per user and never rendered again.
+Cypress.Commands.add('dismissSystemNotifications', () => {
+    cy.window().its('CRM.userId').should('exist');
+    cy.get('body').then($body => {
+        const $buttons = $body.find('.crm-system-notification .js-dismiss-notification');
+        if ($buttons.length === 0) {
+            return;
+        }
+        cy.intercept('POST', '**/api/user/*/setting/notification.dismissed.*').as('dismissNotification');
+        cy.wrap($buttons).click({ multiple: true });
+        cy.wait(Array($buttons.length).fill('@dismissNotification'));
+        cy.get('.crm-system-notification').should('not.exist');
+    });
+});
+
 // Staff sign-in lives at /session/begin; a successful login is proved by the
 // user menu's Sign out link.
 Cypress.Commands.add('expectStaffSignedIn', (options = {}) => {
@@ -43,6 +59,7 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
             cy.get('input[name=User]').type(username);
             cy.get('input[name=Password]').type(password + '{enter}');
             cy.expectStaffSignedIn();
+            cy.dismissSystemNotifications();
         },
         {
             validate: validate ?? defaultValidate

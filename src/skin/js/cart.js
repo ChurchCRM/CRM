@@ -113,24 +113,14 @@ export class CartManager {
           ? i18next.t("Remove this person from cart?")
           : `${i18next.t("Remove")} ${ids.length} ${i18next.t("people from cart")}?`;
 
-      bootbox.confirm({
-        message: confirmMsg,
-        buttons: {
-          confirm: {
-            label: i18next.t("Yes, Remove"),
-            className: "btn-danger",
-          },
-          cancel: {
-            label: i18next.t("Cancel"),
-            className: "btn-secondary",
-          },
+      window.CRM.confirmAction(
+        "",
+        confirmMsg,
+        () => {
+          this.performRemovePerson(ids, options);
         },
-        callback: (result) => {
-          if (result) {
-            this.performRemovePerson(ids, options);
-          }
-        },
-      });
+        { confirmLabel: i18next.t("Yes, Remove"), cancelLabel: i18next.t("Cancel") },
+      );
     } else {
       this.performRemovePerson(ids, options);
     }
@@ -238,24 +228,14 @@ export class CartManager {
     if (showConfirm) {
       const confirmMsg = i18next.t("Remove this family from cart?");
 
-      bootbox.confirm({
-        message: confirmMsg,
-        buttons: {
-          confirm: {
-            label: i18next.t("Yes, Remove"),
-            className: "btn-danger",
-          },
-          cancel: {
-            label: i18next.t("Cancel"),
-            className: "btn-secondary",
-          },
+      window.CRM.confirmAction(
+        "",
+        confirmMsg,
+        () => {
+          this.performRemoveFamily(familyId, options);
         },
-        callback: (result) => {
-          if (result) {
-            this.performRemoveFamily(familyId, options);
-          }
-        },
-      });
+        { confirmLabel: i18next.t("Yes, Remove"), cancelLabel: i18next.t("Cancel") },
+      );
     } else {
       this.performRemoveFamily(familyId, options);
     }
@@ -325,41 +305,31 @@ export class CartManager {
    * @param {Object} options - Configuration options
    */
   removeGroup(groupId, options = {}) {
-    bootbox.confirm({
-      message: i18next.t("Remove this group from cart?"),
-      buttons: {
-        confirm: {
-          label: i18next.t("Yes, Remove"),
-          className: "btn-danger",
-        },
-        cancel: {
-          label: i18next.t("Cancel"),
-          className: "btn-secondary",
-        },
-      },
-      callback: (result) => {
-        if (result) {
-          window.CRM.APIRequest({
-            method: "POST",
-            path: "cart/removeGroup",
-            data: JSON.stringify({ Group: groupId }),
+    window.CRM.confirmAction(
+      "",
+      i18next.t("Remove this group from cart?"),
+      () => {
+        window.CRM.APIRequest({
+          method: "POST",
+          path: "cart/removeGroup",
+          data: JSON.stringify({ Group: groupId }),
+        })
+          .done((data) => {
+            this.showNotification("success", i18next.t("Group removed from cart"));
+            this.refreshCartCount();
+
+            this.updateButtonState(groupId, false, "group");
+
+            if (options.callback) {
+              options.callback(data);
+            }
           })
-            .done((data) => {
-              this.showNotification("success", i18next.t("Group removed from cart"));
-              this.refreshCartCount();
-
-              this.updateButtonState(groupId, false, "group");
-
-              if (options.callback) {
-                options.callback(data);
-              }
-            })
-            .fail((error) => {
-              this.showNotification("danger", i18next.t("Failed to remove group"));
-            });
-        }
+          .fail((error) => {
+            this.showNotification("danger", i18next.t("Failed to remove group"));
+          });
       },
-    });
+      { confirmLabel: i18next.t("Yes, Remove"), cancelLabel: i18next.t("Cancel") },
+    );
   }
 
   /**
@@ -374,24 +344,14 @@ export class CartManager {
     const showConfirm = options.confirm !== false;
 
     if (showConfirm) {
-      bootbox.confirm({
-        message: i18next.t("Empty your entire cart?"),
-        buttons: {
-          confirm: {
-            label: i18next.t("Yes, Empty Cart"),
-            className: "btn-danger",
-          },
-          cancel: {
-            label: i18next.t("Cancel"),
-            className: "btn-secondary",
-          },
+      window.CRM.confirmAction(
+        "",
+        i18next.t("Empty your entire cart?"),
+        () => {
+          this.performEmptyCart(options);
         },
-        callback: (result) => {
-          if (result) {
-            this.performEmptyCart(options);
-          }
-        },
-      });
+        { confirmLabel: i18next.t("Yes, Empty Cart"), cancelLabel: i18next.t("Cancel") },
+      );
     } else {
       this.performEmptyCart(options);
     }

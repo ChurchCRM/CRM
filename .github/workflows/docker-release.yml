@@ -74,7 +74,7 @@ jobs:
           DIGEST=$(jq -r --arg asset "$ASSET" '.assets[] | select(.name == $asset) | .digest' release-download/metadata.json)
           [[ "$DIGEST" =~ ^sha256:[a-f0-9]{64}$ ]] || { echo "Missing release SHA-256 digest" >&2; exit 1; }
           printf '%s  %s\n' "${DIGEST#sha256:}" "release-download/$ASSET" | sha256sum --check
-          python3 docker/prepare-release-context.py "release-download/$ASSET" build-context
+          node docker/prepare-release-context.js "release-download/$ASSET" build-context
 
       - name: Add Apache config to build context
         if: matrix.needs-apache-config

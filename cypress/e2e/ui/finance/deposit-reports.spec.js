@@ -70,7 +70,7 @@ describe("Treasurer: review a deposit and prepare it for the bank", () => {
                 cy.request({ method: "HEAD", url: `/api/deposits/${depositId}/pdf` }).then((head) => {
                     expect(head.status).to.eq(200);
                     expect(head.body).to.eq("");
-                    const stamp = (header) => header.replace(/\d{8}-\d{6}/g, "");
+                    const stamp = (header) => header.replace(/-\d{8}-\d+(?=\.pdf)/g, "");
                     expect(stamp(head.headers["content-disposition"])).to.eq(stamp(response.headers["content-disposition"]));
                 });
             });

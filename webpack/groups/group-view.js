@@ -5,6 +5,8 @@
  * PHP hands off window.CRM.currentGroup, currentGroupName, groupIsActive,
  * groupEmailExport before this bundle loads.
  */
+
+import { confirmAction, promptAction } from "../common/confirm-action";
 import { initPersonSelect } from "../common/person-select";
 import { setMemberRole } from "./group-api";
 
@@ -508,10 +510,9 @@ function initDataTable() {
 
 function initializeGroupView() {
   $("#deleteGroupButton").on("click", () => {
-    bootbox.confirm({
-      title: i18next.t("Confirm Delete Group"),
-      message:
-        '<p class="text-danger">' +
+    confirmAction(
+      i18next.t("Confirm Delete Group"),
+      '<p class="text-danger">' +
         i18next.t("Please confirm deletion of this group record") +
         ": <strong>" +
         window.CRM.escapeHtml(window.CRM.currentGroupName || "") +
@@ -525,21 +526,16 @@ function initializeGroupView() {
           "All group membership and properties will be destroyed.  The group members themselves will not be altered.",
         ) +
         "</p>",
-      buttons: {
-        confirm: { label: i18next.t("Delete"), className: "btn-danger" },
-        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
+      () => {
+        window.CRM.APIRequest({
+          method: "DELETE",
+          path: `groups/${window.CRM.currentGroup}`,
+        }).done(() => {
+          window.location.href = `${window.CRM.root}/groups/dashboard`;
+        });
       },
-      callback: (result) => {
-        if (result) {
-          window.CRM.APIRequest({
-            method: "DELETE",
-            path: `groups/${window.CRM.currentGroup}`,
-          }).done(() => {
-            window.location.href = `${window.CRM.root}/groups/dashboard`;
-          });
-        }
-      },
-    });
+      { confirmLabel: i18next.t("Delete"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 
   const notifyGroupUpdateFailed = (xhr) => {
@@ -655,12 +651,7 @@ function initializeGroupView() {
     };
 
     if (promptText) {
-      bootbox.prompt({
-        title: window.CRM.escapeHtml(promptText),
-        callback: (val) => {
-          if (val !== null) doAssign(val);
-        },
-      });
+      promptAction(window.CRM.escapeHtml(promptText), doAssign);
     } else {
       doAssign("");
     }
@@ -668,45 +659,37 @@ function initializeGroupView() {
 
   $(document).on("click", ".edit-group-property-btn", function () {
     const btn = $(this);
-    bootbox.prompt({
-      title: window.CRM.escapeHtml(btn.data("pro-prompt")),
-      value: btn.data("pro-value"),
-      callback: (val) => {
-        if (val !== null) {
-          window.CRM.APIRequest({
-            method: "POST",
-            path: `groups/${window.CRM.currentGroup}/properties/${btn.data("pro-id")}`,
-            data: JSON.stringify({ value: val }),
-          }).done(() => {
-            location.reload();
-          });
-        }
+    promptAction(
+      window.CRM.escapeHtml(btn.data("pro-prompt")),
+      (val) => {
+        window.CRM.APIRequest({
+          method: "POST",
+          path: `groups/${window.CRM.currentGroup}/properties/${btn.data("pro-id")}`,
+          data: JSON.stringify({ value: val }),
+        }).done(() => {
+          location.reload();
+        });
       },
-    });
+      { value: btn.data("pro-value") },
+    );
   });
 
   $(document).on("click", ".remove-group-property-btn", function () {
     const btn = $(this);
     const name = btn.data("pro-name");
-    bootbox.confirm({
-      title: i18next.t("Remove Property"),
-      message:
-        i18next.t("Remove") + " <strong>" + window.CRM.escapeHtml(name) + "</strong> " + i18next.t("from this group?"),
-      buttons: {
-        confirm: { label: i18next.t("Remove"), className: "btn-danger" },
-        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
+    confirmAction(
+      i18next.t("Remove Property"),
+      i18next.t("Remove") + " <strong>" + window.CRM.escapeHtml(name) + "</strong> " + i18next.t("from this group?"),
+      () => {
+        window.CRM.APIRequest({
+          method: "DELETE",
+          path: `groups/${window.CRM.currentGroup}/properties/${btn.data("pro-id")}`,
+        }).done(() => {
+          location.reload();
+        });
       },
-      callback: (result) => {
-        if (result) {
-          window.CRM.APIRequest({
-            method: "DELETE",
-            path: `groups/${window.CRM.currentGroup}/properties/${btn.data("pro-id")}`,
-          }).done(() => {
-            location.reload();
-          });
-        }
-      },
-    });
+      { confirmLabel: i18next.t("Remove"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 
   $.ajax({
@@ -762,32 +745,26 @@ function initializeGroupView() {
     e.preventDefault();
     const roleId = $(this).data("role-id");
     const label = roleId === "" ? i18next.t("all members") : $(this).text().trim();
-    bootbox.confirm({
-      title: i18next.t("Move Members"),
-      message:
-        i18next.t("Are you sure you want to move") +
+    confirmAction(
+      i18next.t("Move Members"),
+      i18next.t("Are you sure you want to move") +
         " <strong>" +
         window.CRM.escapeHtml(label) +
         "</strong> " +
         i18next.t("to another group?"),
-      buttons: {
-        confirm: { label: i18next.t("Move"), className: "btn-warning" },
-        cancel: { label: i18next.t("Cancel") },
-      },
-      callback: (result) => {
-        if (result) {
-          showGroupAndRoleModal(i18next.t("Move Members to Group"), (data) => {
-            getMembersByRole(roleId).forEach((row) => {
-              window.CRM.groups.addPerson(data.GroupID, row.PersonId, data.RoleID);
-              window.CRM.groups.removePerson(window.CRM.currentGroup, row.PersonId);
-            });
-            setTimeout(() => {
-              window.CRM.DataTableAPI.ajax.reload();
-            }, 1000);
+      () => {
+        showGroupAndRoleModal(i18next.t("Move Members to Group"), (data) => {
+          getMembersByRole(roleId).forEach((row) => {
+            window.CRM.groups.addPerson(data.GroupID, row.PersonId, data.RoleID);
+            window.CRM.groups.removePerson(window.CRM.currentGroup, row.PersonId);
           });
-        }
+          setTimeout(() => {
+            window.CRM.DataTableAPI.ajax.reload();
+          }, 1000);
+        });
       },
-    });
+      { tone: "warning", confirmLabel: i18next.t("Move"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 
   // .view-person-photo click handler is registered globally in avatar-loader.ts
@@ -813,26 +790,21 @@ function initializeGroupView() {
     e.stopPropagation();
     const personId = $(this).data("personid");
     const personName = $(this).data("name");
-    bootbox.confirm({
-      message:
-        i18next.t("Are you sure you want to remove") +
+    confirmAction(
+      "",
+      i18next.t("Are you sure you want to remove") +
         " <b>" +
         window.CRM.escapeHtml(personName) +
         "</b> " +
         i18next.t("from this group?"),
-      buttons: {
-        confirm: { label: i18next.t("Remove"), className: "btn-danger" },
-        cancel: { label: i18next.t("Cancel") },
+      () => {
+        window.CRM.groups.removePerson(window.CRM.currentGroup, personId).then(() => {
+          window.CRM.DataTableAPI.row((_idx, data) => Number(data.PersonId) === Number(personId)).remove();
+          window.CRM.DataTableAPI.rows().invalidate().draw(true);
+        });
       },
-      callback: (result) => {
-        if (result) {
-          window.CRM.groups.removePerson(window.CRM.currentGroup, personId).then(() => {
-            window.CRM.DataTableAPI.row((_idx, data) => Number(data.PersonId) === Number(personId)).remove();
-            window.CRM.DataTableAPI.rows().invalidate().draw(true);
-          });
-        }
-      },
-    });
+      { confirmLabel: i18next.t("Remove"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 }
 

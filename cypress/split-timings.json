@@ -693,6 +693,10 @@
       "duration": 6500
     },
     {
+      "spec": "cypress/e2e/ui-admin/admin-page-load-health.spec.js",
+      "duration": 11000
+    },
+    {
       "spec": "cypress/e2e/ui-admin/admin.backup.spec.js",
       "duration": 4500
     },
@@ -713,20 +717,12 @@
       "duration": 27500
     },
     {
-      "spec": "cypress/e2e/ui-admin/admin.dashboard.spec.js",
-      "duration": 10000
-    },
-    {
       "spec": "cypress/e2e/ui-admin/admin.debug.spec.js",
       "duration": 5000
     },
     {
       "spec": "cypress/e2e/ui-admin/admin.email-log.spec.js",
       "duration": 8500
-    },
-    {
-      "spec": "cypress/e2e/ui-admin/admin.event.types.spec.js",
-      "duration": 11000
     },
     {
       "spec": "cypress/e2e/ui-admin/admin.events.dashboard.spec.js",
@@ -746,7 +742,7 @@
     },
     {
       "spec": "cypress/e2e/ui-admin/admin.get-started.spec.js",
-      "duration": 7000
+      "duration": 5000
     },
     {
       "spec": "cypress/e2e/ui-admin/admin.group-xss.spec.js",
@@ -773,10 +769,6 @@
       "duration": 38500
     },
     {
-      "spec": "cypress/e2e/ui-admin/admin.orphaned-files.spec.js",
-      "duration": 4000
-    },
-    {
       "spec": "cypress/e2e/ui-admin/admin.people-grades.spec.js",
       "duration": 17000
     },
@@ -795,18 +787,6 @@
     {
       "spec": "cypress/e2e/ui-admin/admin.portal-staff.spec.js",
       "duration": 9000
-    },
-    {
-      "spec": "cypress/e2e/ui-admin/admin.property-list.spec.js",
-      "duration": 4000
-    },
-    {
-      "spec": "cypress/e2e/ui-admin/admin.property-type.spec.js",
-      "duration": 4000
-    },
-    {
-      "spec": "cypress/e2e/ui-admin/admin.reset.spec.js",
-      "duration": 4000
     },
     {
       "spec": "cypress/e2e/ui-admin/admin.restore.spec.js",
@@ -954,7 +934,7 @@
     },
     {
       "spec": "cypress/e2e/ui-admin/event-types.spec.js",
-      "duration": 9500
+      "duration": 8000
     },
     {
       "spec": "cypress/e2e/ui-admin/person-custom-fields.spec.js",
@@ -1118,7 +1098,7 @@
     },
     {
       "spec": "cypress/e2e/ui/finance/deposit-search.spec.js",
-      "duration": 11000
+      "duration": 8000
     },
     {
       "spec": "cypress/e2e/ui/finance/donation-fund-category.spec.js",
@@ -1126,15 +1106,11 @@
     },
     {
       "spec": "cypress/e2e/ui/finance/donation-fund-editor.spec.js",
-      "duration": 10000
-    },
-    {
-      "spec": "cypress/e2e/ui/finance/family-pledge-summary.spec.js",
-      "duration": 4000
+      "duration": 5000
     },
     {
       "spec": "cypress/e2e/ui/finance/finance.dashboard.spec.js",
-      "duration": 13000
+      "duration": 5000
     },
     {
       "spec": "cypress/e2e/ui/finance/finance.deposit-editor.spec.js",
@@ -1142,7 +1118,7 @@
     },
     {
       "spec": "cypress/e2e/ui/finance/finance.deposits.spec.js",
-      "duration": 16000
+      "duration": 13000
     },
     {
       "spec": "cypress/e2e/ui/finance/finance.family.spec.js",
@@ -1150,7 +1126,7 @@
     },
     {
       "spec": "cypress/e2e/ui/finance/finance.payment-keyboard-shortcut.spec.js",
-      "duration": 14000
+      "duration": 12000
     },
     {
       "spec": "cypress/e2e/ui/finance/finance.payment-submission.spec.js",
@@ -1162,19 +1138,23 @@
     },
     {
       "spec": "cypress/e2e/ui/finance/finance.reports-index.spec.js",
-      "duration": 9000
+      "duration": 5000
     },
     {
       "spec": "cypress/e2e/ui/finance/finance.reports.spec.js",
       "duration": 9000
     },
     {
+      "spec": "cypress/e2e/ui/finance/finance.statement-settings.spec.js",
+      "duration": 7000
+    },
+    {
       "spec": "cypress/e2e/ui/finance/fiscal-year-filtering.spec.js",
-      "duration": 13000
+      "duration": 12000
     },
     {
       "spec": "cypress/e2e/ui/finance/fund-contributors.spec.js",
-      "duration": 4000
+      "duration": 5000
     },
     {
       "spec": "cypress/e2e/ui/finance/reminder-report-no-fund.spec.js",
@@ -1185,12 +1165,16 @@
       "duration": 4000
     },
     {
+      "spec": "cypress/e2e/ui/finance/year-end-giving.spec.js",
+      "duration": 4000
+    },
+    {
       "spec": "cypress/e2e/ui/fundraiser/fundraiser.delete-operations.spec.js",
       "duration": 5000
     },
     {
       "spec": "cypress/e2e/ui/fundraiser/standard.fundraiser.spec.js",
-      "duration": 13000
+      "duration": 9000
     },
     {
       "spec": "cypress/e2e/ui/groups/group-action-errors.spec.js",
@@ -1279,6 +1263,14 @@
     {
       "spec": "cypress/e2e/ui/mobile/mobile-ux.spec.js",
       "duration": 8000
+    },
+    {
+      "spec": "cypress/e2e/ui/navigation/install-path-requests.spec.js",
+      "duration": 78000
+    },
+    {
+      "spec": "cypress/e2e/ui/navigation/page-load-health.spec.js",
+      "duration": 7000
     },
     {
       "spec": "cypress/e2e/ui/people/admin.person.birthday.spec.js",
@@ -1446,7 +1438,7 @@
     },
     {
       "spec": "cypress/e2e/ui/personas/portal-only/portal-only.boundary.spec.js",
-      "duration": 18500
+      "duration": 7000
     },
     {
       "spec": "cypress/e2e/ui/personas/staff-all-but-admin/staff-all-but-admin.gates.spec.js",
@@ -1502,7 +1494,7 @@
     },
     {
       "spec": "cypress/e2e/ui/portal/member.portal-landing.spec.js",
-      "duration": 39000
+      "duration": 15000
     },
     {
       "spec": "cypress/e2e/ui/portal/member.portal-locale.spec.js",
