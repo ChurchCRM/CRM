@@ -88,6 +88,18 @@ try {
     Assert::contains('PHP ZipArchive', $payload['failedRequirements']);
     Assert::notContains('PHP Session', $payload['failedRequirements']);
 
+    file_put_contents($directory . '/Include/Config.php', '<?php '
+        . '$sSERVERNAME = "localhost"; $dbPort = 3306; $sUSER = "test"; $sPASSWORD = "secret"; $sDATABASE = "test"; '
+        . '$sRootPath = "/api/churchcrm"; $URL = ["http://localhost/"];');
+    $prefixed = $run('namespace ChurchCRM; class Bootstrapper { public static function init(...$args) { throw new \\Error("Bootstrap failed"); } } '
+        . 'namespace ChurchCRM\\Service; function class_exists($name) { return $name === "ZipArchive" ? false : \\class_exists($name); } '
+        . '$_SERVER["SCRIPT_NAME"] = "/api/churchcrm/session/index.php"; $_SERVER["REQUEST_URI"] = "/api/churchcrm/session/begin"; '
+        . 'register_shutdown_function(static function () { if (http_response_code() !== 503) { exit(1); } }); '
+        . 'require ' . var_export($directory . '/Include/LoadConfigs.php', true) . '; '
+        . 'throw new \\RuntimeException("Bootstrap must stop");');
+    Assert::contains('ChurchCRM System Check', $prefixed);
+    Assert::contains('href="/api/churchcrm/skin/v2/error.min.css"', $prefixed);
+
     $healthy = $run('namespace ChurchCRM; class Bootstrapper { public static function init(...$args) {} public static function isDBCurrent() { return false; } } '
         . 'namespace ChurchCRM\\Service; function extension_loaded($name) { throw new \\Error("Requirements must not run"); } '
         . 'require ' . var_export($directory . '/Include/LoadConfigs.php', true) . '; echo "continue";');

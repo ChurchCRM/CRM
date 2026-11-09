@@ -39,9 +39,20 @@ describe("API Public - Standalone error pages", () => {
         cy.contains("h1", "Page Not Found").should("be.visible");
         cy.contains("code", "old-page.php").should("be.visible");
         cy.contains("a.btn", "Return Home").should("be.visible");
-        cy.get("body").should("have.css", "background-color").and("not.eq", "rgb(255, 255, 255)");
         cy.window().then((win) => {
-            expect(win.document.documentElement.scrollWidth).to.be.at.most(win.innerWidth);
+            const doc = win.document;
+            const sheet = [...doc.styleSheets].find((s) => s.href?.endsWith("/skin/v2/error.min.css"));
+            expect(sheet, "error.min.css").to.exist;
+            expect(sheet.cssRules.length).to.be.greaterThan(0);
+
+            const darkSurface = doc.createElement("div");
+            darkSurface.style.background = "var(--tblr-gray-900)";
+            doc.body.appendChild(darkSurface);
+            expect(win.getComputedStyle(doc.documentElement).colorScheme).to.equal("dark");
+            expect(win.getComputedStyle(doc.body).backgroundColor).to.equal(win.getComputedStyle(darkSurface).backgroundColor);
+            darkSurface.remove();
+
+            expect(doc.documentElement.scrollWidth).to.be.at.most(win.innerWidth);
         });
     });
 });

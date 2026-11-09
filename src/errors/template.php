@@ -56,7 +56,7 @@ function getServerInfo()
         'PHP Version' => phpversion(),
         'PHP SAPI' => php_sapi_name(),
         'Server Software' => isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : 'Unknown',
-        'OS' => php_uname(),
+        'OS' => function_exists('php_uname') ? php_uname() : 'Unknown',
         'Memory Limit' => ini_get('memory_limit'),
         'ChurchCRM Version' => getChurchCRMVersion(),
     ];
@@ -161,8 +161,8 @@ function renderErrorPage($rootPath, $title, $icon, $variant, $content, $issueBod
                 </div>
                 <div class="card-footer">
                     <div class="d-flex gap-2 flex-wrap">
-                        <a href="<?= standaloneEscape($rootPath . '/') ?>" class="btn btn-primary flex-grow-1">Return Home</a>
-                        <a href="<?= standaloneEscape($issueUrl) ?>" target="_blank" rel="noopener" class="btn btn-outline-secondary flex-grow-1">Report Issue</a>
+                        <a href="<?= standaloneEscape($rootPath . '/') ?>" class="btn btn-primary flex-grow-1"><?= standaloneEscape(function_exists('gettext') ? gettext('Return Home') : 'Return Home') ?></a>
+                        <a href="<?= standaloneEscape($issueUrl) ?>" target="_blank" rel="noopener" class="btn btn-outline-secondary flex-grow-1"><?= standaloneEscape(function_exists('gettext') ? gettext('Report Issue') : 'Report Issue') ?></a>
                     </div>
                 </div>
             </div>
