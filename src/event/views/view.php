@@ -108,11 +108,19 @@ $inactive = (int) $event->getInActive() === 1;
           <?= gettext('Attendance') ?>
           <span class="badge bg-primary text-white ms-2"><?= count($attendees) ?></span>
         </h3>
-        <?php if ($eventEnded && !empty($linkedGroups)): ?>
-          <div class="card-options">
-            <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.print()">
-              <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
-            </button>
+        <?php if (!empty($attendees) || ($eventEnded && !empty($linkedGroups))): ?>
+          <div class="card-options gap-1">
+            <?php if (!empty($attendees)): ?>
+              <button type="button" id="event-add-attendees-to-cart" class="btn btn-sm btn-outline-primary"
+                      data-person-ids="<?= InputUtils::escapeAttribute(implode(',', array_unique(array_map('intval', array_column($attendees, 'personId'))))) ?>">
+                <i class="fa-solid fa-cart-plus me-1"></i><?= gettext('Add All to Cart') ?>
+              </button>
+            <?php endif; ?>
+            <?php if ($eventEnded && !empty($linkedGroups)): ?>
+              <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.print()">
+                <i class="fa-solid fa-print me-1"></i><?= gettext('Print') ?>
+              </button>
+            <?php endif; ?>
           </div>
         <?php endif; ?>
       </div>
@@ -330,6 +338,19 @@ $inactive = (int) $event->getInActive() === 1;
     <?php endif; ?>
   </div>
 </div>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+  document.addEventListener("DOMContentLoaded", function () {
+    var btn = document.getElementById("event-add-attendees-to-cart");
+    if (!btn) return;
+    btn.addEventListener("click", function () {
+      var ids = btn.dataset.personIds.split(",").map(Number).filter(Boolean);
+      if (ids.length > 0 && window.CRM && window.CRM.cartManager) {
+        window.CRM.cartManager.addPerson(ids);
+      }
+    });
+  });
+</script>
 
 <?php if (!empty($volunteerOccurrences)): ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-event-staffing.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>

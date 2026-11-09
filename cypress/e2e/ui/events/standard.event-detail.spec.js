@@ -204,6 +204,17 @@ describe("Event Detail - Did Not Attend List", () => {
         cy.contains("a.btn", "Check-in").should("not.exist");
     });
 
+    it("Add All to Cart puts the checked-in attendees in the cart", () => {
+        cy.visit(`event/view/${pastGroupEventId}`);
+        cy.get("#event-add-attendees-to-cart").should("be.visible").click();
+        cy.get(".notyf, .toast, [role='alert']").should("exist");
+    });
+
+    it("Hides Add All to Cart when nobody has checked in", () => {
+        cy.visit(`event/view/${pastNoGroupEventId}`);
+        cy.get("#event-add-attendees-to-cart").should("not.exist");
+    });
+
     it("Print button appears on the Attendance card for past group events", () => {
         cy.visit(`event/view/${pastGroupEventId}`);
 
