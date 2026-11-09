@@ -1,9 +1,13 @@
-import { expect, type Page, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 
 import { captureScreen, defineCapture } from '../support/capture';
 import { humanClick, settle } from '../support/human';
 import {
+  createUnstaffedEvent,
+  deleteMinistryEventsTitled,
   ensureVolunteerSeed,
+  findDemoTeam,
+  isoDate,
   memberPortalPage,
   removeVolunteerSeed,
   setVolunteerVersion,
@@ -13,6 +17,32 @@ import {
 async function openStaffing(page: Page, occurrenceId: number): Promise<void> {
   await page.goto(`/ministries/occurrences/${occurrenceId}`);
   await expect(page.locator('#requirements-content .volunteer-requirement').first()).toBeVisible({ timeout: 30000 });
+}
+
+type MinistryTab = 'overview' | 'positions' | 'schedules' | 'occurrences' | 'calendar';
+
+/** The ministry page on one of its tabs, once that tab has something to show. */
+async function openMinistry(page: Page, ministryId: number, tab: MinistryTab): Promise<void> {
+  await page.goto(`/ministries/${ministryId}`);
+  await expect(page.locator('#overview-content')).toBeVisible({ timeout: 30000 });
+  if (tab !== 'overview') {
+    await humanClick(page.locator(`#nav-item-${tab}`));
+  }
+  const table = {
+    overview: '#volunteerTeamsTable',
+    positions: '#volunteerPositionsTable',
+    schedules: '#volunteerSchedulesTable',
+    occurrences: '#volunteerOccurrencesTable',
+    calendar: '#volunteerMinistryEventsTable',
+  }[tab];
+  await expect(page.locator(`${table} tbody tr`).first()).toBeVisible({ timeout: 30000 });
+  await waitForFloatingButtonsToTuck(page);
+}
+
+/** Opens a row's action menu (the ⋮ button) and picks one of its items. */
+async function pickRowAction(row: Locator, item: string): Promise<void> {
+  await humanClick(row.locator('[data-bs-toggle="dropdown"]'));
+  await humanClick(row.locator(item));
 }
 
 test.describe.configure({ mode: 'serial' });
@@ -159,4 +189,79 @@ test.describe('Volunteer Management v2', () => {
     await captureScreen(member, testInfo, volunteerPortalOpportunitiesCapture);
     await member.context().close();
   });
+
+  const volunteerMinistryOverviewCapture = defineCapture({
+    name: 'volunteer-ministry-overview',
+    locales: 'all',
+    title: 'Ministry Overview',
+    category: 'Groups & Events',
+    purpose: 'Show a ministry at a glance: its teams, the volunteers who serve and the spots still open.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-ministry-overview', volunteerMinistryOverviewCapture, async ({ page }, testInfo) => {
+    const { ministryId } = await ensureVolunteerSeed(page);
+    await openMinistry(page, ministryId, 'overview');
+    await settle(page, 1000);
+
+    await captureScreen(page, testInfo, volunteerMinistryOverviewCapture);
+  });
+
+  const volunteerMinistryPositionsCapture = defineCapture({
+    name: 'volunteer-ministry-positions',
+    locales: 'all',
+    title: 'Ministry Positions',
+    category: 'Groups & Events',
+    purpose: 'Show the positions a ministry staffs, grouped by team, so a coordinator knows the roles volunteers can fill.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-ministry-positions', volunteerMinistryPositionsCapture, async ({ page }, testInfo) => {
+    const { ministryId } = await ensureVolunteerSeed(page);
+    await openMinistry(page, ministryId, 'positions');
+    await settle(page, 1000);
+
+    await captureScreen(page, testInfo, volunteerMinistryPositionsCapture);
+  });
+
+  const volunteerMinistryEditCapture = defineCapture({
+    name: 'volunteer-ministry-edit',
+    locales: 'all',
+    title: 'Edit a Ministry',
+    category: 'Groups & Events',
+    purpose: 'Show a coordinator renaming a ministry and choosing whether its teams may provide Sunday School teachers.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-ministry-edit', volunteerMinistryEditCapture, async ({ page }, testInfo) => {
+    await ensureVolunteerSeed(page);
+    const { ministryId } = await findDemoTeam(page.request, "Children's Ministry", 'Early Elementary');
+    await openMinistry(page, ministryId, 'overview');
+    await humanClick(page.locator('#ministry-edit-btn'));
+    await expect(page.locator('#ministryEditModal')).toBeVisible();
+    await expect(page.locator('#ministry-edit-name')).not.toHaveValue('');
+    await expect(page.locator('#ministry-edit-sunday-school')).toBeChecked();
+    await settle(page, 800);
+
+    await captureScreen(page, testInfo, volunteerMinistryEditCapture);
+  });
+
+  const volunteerTeamSundaySchoolClassCapture = defineCapture({
+    name: 'volunteer-team-sunday-school-class',
+    locales: 'all',
+    title: 'Team Linked to a Sunday School Class',
+    category: 'Groups & Events',
+    purpose: 'Show a team linked to a Sunday School class, so the people qualified on the team become the class teachers.',
+    usedIn: ['docs'],
+  });
+  test('volunteer-team-sunday-school-class', volunteerTeamSundaySchoolClassCapture, async ({ page }, testInfo) => {
+    await ensureVolunteerSeed(page);
+    const { ministryId, teamId, classGroupId } = await findDemoTeam(page.request, "Children's Ministry", 'Early Elementary');
+    expect(classGroupId, 'the demo team is linked to a class').not.toBeNull();
+    await openMinistry(page, ministryId, 'overview');
+    await pickRowAction(page.locator(`#volunteerTeamsTable tbody tr[data-team-id="${teamId}"]`), '.volunteer-team-edit');
+    await expect(page.locator('#teamModal')).toBeVisible();
+    await expect(page.locator('#team-form-class')).toHaveValue(String(classGroupId), { timeout: 15000 });
+    await settle(page, 800);
+
+    await captureScreen(page, testInfo, volunteerTeamSundaySchoolClassCapture);
+  });
+  // <<NEW>>
 });
