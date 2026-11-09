@@ -129,7 +129,7 @@
         "tom-select": "^2.6.2"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.5.15",
+        "@biomejs/biome": "^2.6.5",
         "@playwright/test": "^1.65.0",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",
@@ -151,8 +151,8 @@
         "sass-loader": "^17.1.0",
         "ts-loader": "^9.6.2",
         "typescript": "^6.0.3",
-        "webpack": "^5.112.0",
-        "webpack-cli": "^7.2.3"
+        "webpack": "^5.112.2",
+        "webpack-cli": "^7.3.1"
     },
     "overrides": {
         "archiver": {
