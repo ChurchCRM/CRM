@@ -195,6 +195,14 @@ just as real a collision as one already in the seed data.
 
 ## Shot list coverage
 
+People and family click-through recordings run in English under `playwright/videos/`:
+
+| Workflow | Recording |
+| --- | --- |
+| Search by name and open the person's record | `find-person-by-name` |
+| Register a visitor and save a welcome-team follow-up note | `register-first-time-visitor` |
+| Find nearby families and add their members to the cart for a visit | `find-neighbors-search` |
+
 Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
 430×932 (all @2×) in one page load.
 
