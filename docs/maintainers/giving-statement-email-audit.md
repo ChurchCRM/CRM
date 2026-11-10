@@ -11,7 +11,7 @@ design recommendations, not implemented behaviour.
   `FinanceRoleAuthMiddleware`. Actual middleware wiring and the exact user/role
   eligibility are **not determined** within the permitted read scope.
   `src/finance/routes/reports.php`, `POST /giving-statements/email` handler,
-  validates a positive family ID, year and one-time `tax_email_{year}` CSRF token.
+  validates a positive family ID, year and a `tax_email_{year}` CSRF token.
 - **Recipients:** `src/ChurchCRM/model/ChurchCRM/Family.php`,
   `Family::getEmails()`, iterates `getPeopleSorted()`, collecting each person's
   non-empty `getEmail()` and `getWorkEmail()`; it returns
@@ -41,6 +41,7 @@ design recommendations, not implemented behaviour.
   its persistence/error behaviour is **not determined** without reading that
   service. `getLogKind()` derives `givingstatement`; `logsBody()` is false.
   `setLogContext()` documents address-matching fallback when context is absent.
+  The `send()` docblock promises one `email_log_eml` row per recipient.
   Durable row contents, per-recipient persistence, PDF retention and history UI
   presentation are **not determined** here; no explicit family, sender or year
   context is supplied by the handler cited above.
@@ -68,12 +69,81 @@ design recommendations, not implemented behaviour.
 
 ## 3. Company matching
 
-Pending completion in the next audit push.
+- **Recording a match:** **not determined**. The allowed statement path reads
+  payments; it does not show payment entry, payer attribution or a company-match
+  field. `src/ChurchCRM/Service/GivingStatementService.php`,
+  `paymentsByFamily()`, delegates eligibility to
+  `PledgeQuery::filterForTaxReport()`, whose implementation is outside scope.
+- **Conditional inclusion:** if a match reaches the employee family's returned
+  payment group, its amount contributes to that family's total.
+  `src/ChurchCRM/Service/GivingStatementService.php`,
+  `paymentsByFamily()`, groups returned payments by `getFamId()`;
+  `totals()` sums `getAmount()` and `getNondeductible()`; `families()`
+  exposes deductible as total minus non-deductible. Those methods contain no
+  employer-match exclusion or separate payer/employee attribution.
+- Therefore match money **can contribute arithmetically** when returned under
+  that family with a deductible portion; whether current entry/query rules
+  actually admit such a payment is **not determined**.
+  `src/ChurchCRM/Service/GivingStatementService.php`,
+  `paymentsByFamily()`, `totals()`, `families()`.
+  The email handler adds no match-specific check before rendering
+  (`src/finance/routes/reports.php`, `POST /giving-statements/email`).
+  This is a conditional data-flow finding, not a tax-treatment decision.
 
 ## 4. Misleading copy
 
-Pending completion in the next audit push.
+**Not determined** for dashboard, settings and page copy: their source text is
+outside the permitted read scope. No before/after wording or copy fix is claimed.
+The inspected `src/finance/routes/reports.php`,
+`POST /giving-statements/email` handler, contains redirects rather than that UI
+copy; `src/ChurchCRM/Emails/GivingStatementEmail.php`, `__construct()`, says
+“Please find your %s giving statement from %s attached to this email.”
+That attachment claim matches its `addStringAttachment()` call. No factually
+wrong user-facing wording was established in the scoped code.
+
+A copy follow-up needs permission to inspect the actual dashboard/settings/page
+files before quoting or changing them; the issue description is not source proof.
 
 ## 5. Decisions and follow-ups
 
-Pending completion in the next audit push.
+Proposed issues only; product decisions remain with maintainers.
+### Choose explicit recipients for family giving statements
+
+Decide whether statements go to a designated recipient, selected adults or a
+reviewed address list, including treatment of children, work addresses and
+consent. Require finance to understand recipients before sending. Motivation:
+`src/ChurchCRM/model/ChurchCRM/Family.php`, `Family::getEmails()`, collects
+members' personal/work addresses without its own role/age/consent selection.
+### Decide calendar-year donor acknowledgment versus fiscal reporting
+
+Agree a distinct donor acknowledgment period and label, including non-January
+fiscal configurations, before changing sending. Keep label, payment range and
+filename understandable together. Motivation: `src/ChurchCRM/Utils/FiscalYearUtils.php`,
+`getFiscalYearDatesForCalendarYear()`, and
+`src/ChurchCRM/Service/GivingStatementService.php`, `criteriaFromQuery()`,
+currently use the fiscal end-year; verify US requirements separately.
+### Define employer-match attribution and statement treatment
+
+Inspect payment entry and `filterForTaxReport()` in a separately scoped audit,
+then decide how payer versus employee attribution and deductible treatment should
+be represented. Add acceptance cases for employee gifts and company matches.
+Motivation: `src/ChurchCRM/Service/GivingStatementService.php`, `families()`
+and `totals()`, calculate deductible from returned amounts without a match
+distinction; this audit cannot establish upstream safeguards.
+### Decide bulk statement delivery and audit queue/history support
+
+First decide whether bulk sending is wanted. If approved, investigate queue PDF
+attachment support, recipient selection, families with giving, missing addresses,
+retries, duplicate prevention and family/period/sender history. Queue attachment
+support and actual history persistence are **not determined** here.
+Motivation: `src/finance/routes/reports.php`,
+`POST /giving-statements/email`, sends immediately; `src/ChurchCRM/Emails/BaseEmail.php`,
+`send()`, `logSend()` and `setQueuedLogRow()`, expose logging/queue hooks,
+but do not establish queue storage capabilities.
+### Verify statement action copy against available workflows
+
+Inspect dashboard, report index, family page and settings text under expanded
+read scope; quote exact source and correct any bulk-email promise before a bulk
+feature exists. Motivation: the inspected `src/finance/routes/reports.php`,
+`POST /giving-statements/email`, processes one family. Dashboard/page wording
+and the year choices offered in the UI remain **not determined** in this audit.
