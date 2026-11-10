@@ -53,12 +53,22 @@ class TimelineService
         return $this->sortTimeline($timeline);
     }
 
+    private function mayReadAttendance(int $personID): bool
+    {
+        $person = PersonQuery::create()->findPk($personID);
+
+        return $person !== null && $this->currentUser->canReadAttendance($personID, (int) $person->getFamId());
+    }
+
     /**
      * @return array<string, array<string, mixed>>
      */
     private function eventsForPerson(int $personID): array
     {
         $timeline = [];
+        if (!$this->mayReadAttendance($personID)) {
+            return $timeline;
+        }
         $eventsByPerson = EventAttendQuery::create()->findByPersonId($personID);
         foreach ($eventsByPerson as $personEvent) {
             $event = $personEvent->getEvent();

@@ -16,7 +16,7 @@ $app->group('/timeline', function (RouteCollectorProxy $group): void {
      *     path="/timeline/person/{personId}",
      *     operationId="getPersonTimeline",
      *     summary="Get full timeline for a person",
-     *     description="Returns all timeline items (notes and events) for a person, filtered by the current user's permissions. Requires authentication. Notes are only included for users with Notes=1 or Admin. Plain-auth users see only non-note items (calendar events, system events). Private notes are visible only to the author and admins; Notes=1 non-admin users see their own private notes only.",
+     *     description="Returns all timeline items (notes and events) for a person, filtered by the current user's permissions. Requires authentication. Notes are only included for users with Notes=1 or Admin. Plain-auth users see only non-note items (calendar events, system events). Attended events are included only for the person themselves or a user who may edit the person, matching GET /attendance/person/{personId}. Private notes are visible only to the author and admins; Notes=1 non-admin users see their own private notes only.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=1)),

@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+const SERVER_DETAILS = ["Platform Information", "Web Server", "PHP Version", "SQL Version", "Installation ID", "Prerequisite Status"];
+
 describe("API System Issues", () => {
     it("Issues endpoint requires authentication", () => {
         // Unauthenticated request should be rejected
@@ -35,6 +37,7 @@ describe("API System Issues", () => {
             expect(resp.body).to.have.property("issueBody");
             expect(resp.body.issueBody).to.contain("TestPage");
             expect(resp.body.issueBody).to.contain("ChurchCRM Version");
+            SERVER_DETAILS.forEach((label) => expect(resp.body.issueBody).to.contain(label));
         });
     });
 
@@ -52,6 +55,7 @@ describe("API System Issues", () => {
         ).then((resp) => {
             expect(resp.body).to.have.property("issueBody");
             expect(resp.body.issueBody).to.contain("StandardUserPage");
+            SERVER_DETAILS.forEach((label) => expect(resp.body.issueBody).to.not.contain(label));
         });
     });
 

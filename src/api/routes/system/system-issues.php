@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
@@ -17,6 +18,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  * @OA\Post(
  *     path="/issues",
  *     summary="Generate a GitHub issue body pre-filled with system diagnostics",
+ *     description="Server details (platform, web server, PHP and SQL versions, installation ID, prerequisite status) are included for administrators only.",
  *     tags={"System"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(required=true,
@@ -46,6 +48,16 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->post('/issues', function (Request $request, Response $response, array $args): Response {
     $data = json_decode($request->getBody(), null, 512);
     $localeInfo = Bootstrapper::getCurrentLocale();
+    $serverDetails = '';
+    if (AuthenticationManager::getCurrentUser()->isAdmin()) {
+        $serverDetails =
+            'Platform Information | ' . php_uname('a') . "\r\n" .
+            'Web Server |' . ($_SERVER['SERVER_SOFTWARE'] ?? 'Unknown') . "\r\n" .
+            'PHP Version | ' . phpversion() . "\r\n" .
+            'SQL Version | ' . SystemService::getDBServerVersion() . "\r\n" .
+            'Installation ID |' . SystemConfig::getValue('sSystemID') . "\r\n" .
+            'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n";
+    }
     $issueDescription =
         "Collected Value Title |  Data \r\n" .
         "----------------------|----------------\r\n" .
@@ -53,12 +65,7 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
         'Screen Size |' . $data->screenSize->height . 'x' . $data->screenSize->width . "\r\n" .
         'Window Size |' . $data->windowSize->height . 'x' . $data->windowSize->width . "\r\n" .
         'Page Size |' . $data->pageSize->height . 'x' . $data->pageSize->width . "\r\n" .
-        'Platform Information | ' . php_uname($mode = 'a') . "\r\n" .
-        'Web Server |' . ($_SERVER['SERVER_SOFTWARE'] ?? 'Unknown') . "\r\n" .
-        'PHP Version | ' . phpversion() . "\r\n" .
-        'SQL Version | ' . SystemService::getDBServerVersion() . "\r\n" .
         'ChurchCRM Version |' . VersionUtils::getInstalledVersion() . "\r\n" .
-        'Installation ID |' . SystemConfig::getValue('sSystemID') . "\r\n" .
         'Reporting Browser |' . ($_SERVER['HTTP_USER_AGENT'] ?? 'API') . "\r\n" .
         'System Locale |' . $localeInfo->getSystemLocale() . "\r\n" .
         'User Locale |' . $localeInfo->getLocale() . "\r\n" .
@@ -68,7 +75,7 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
         'Browser Timezone |' . ($data->browserTimezone ?? 'Unknown') . "\r\n" .
         'Person Custom Fields |' . PersonCustomMasterQuery::create()->count() . "\r\n" .
         'Family Custom Fields |' . FamilyCustomMasterQuery::create()->count() . "\r\n" .
-        'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n";
+        $serverDetails;
 
     return SlimUtils::renderJSON($response, ['issueBody' => $issueDescription]);
 });
