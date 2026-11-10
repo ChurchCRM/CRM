@@ -6,6 +6,7 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PropertyType;
 use ChurchCRM\model\ChurchCRM\PropertyTypeQuery;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
@@ -26,6 +27,10 @@ $sNameError = '';
 $bError = false;
 
 if (isset($_POST['Submit'])) {
+    if (!CSRFUtils::verifyRequest($_POST)) {
+        http_response_code(403);
+        die(gettext('Invalid CSRF token'));
+    }
     $sName = InputUtils::sanitizeText($_POST['Name']);
     $sDescription = InputUtils::sanitizeText($_POST['Description']);
     $sClass = InputUtils::legacyFilterInput($_POST['Class'], 'char', 1);
@@ -96,6 +101,7 @@ require_once __DIR__ . '/Include/Header.php';
         <?php endif; ?>
 
         <form method="post" action="PropertyTypeEditor.php?PropertyTypeID=<?= $iPropertyTypeID ?>">
+            <?= CSRFUtils::getTokenInputField() ?>
             <div class="row">
                 <div class="col-md-6">
                     <!-- Class Selection -->

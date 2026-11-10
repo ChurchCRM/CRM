@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\PropertyTypeQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 
@@ -14,12 +15,12 @@ AuthenticationManager::redirectHomeIfNotAdmin();
 
 $sPageTitle = gettext('Property Type Delete Confirmation');
 
-// Get the PersonID from the querystring
-$iPropertyTypeID = InputUtils::legacyFilterInput($_GET['PropertyTypeID'], 'int');
-
-// Do we have deletion confirmation?
-if (isset($_GET['Confirmed'])) {
-    $iPropertyTypeID = (int) $iPropertyTypeID;
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!CSRFUtils::verifyRequest($_POST)) {
+        http_response_code(403);
+        die(gettext('Invalid CSRF token'));
+    }
+    $iPropertyTypeID = InputUtils::filterInt($_POST['PropertyTypeID'] ?? 0);
 
     // Delete record-property mappings for all properties of this type
     $propertyIds = PropertyQuery::create()
@@ -40,9 +41,9 @@ if (isset($_GET['Confirmed'])) {
     RedirectUtils::redirect('PropertyTypeList.php');
 }
 
-$propertyType = PropertyTypeQuery::create()->findPk((int) $iPropertyTypeID);
+$iPropertyTypeID = InputUtils::filterInt($_GET['PropertyTypeID'] ?? 0);
+$propertyType = PropertyTypeQuery::create()->findPk($iPropertyTypeID);
 $prt_Name = $propertyType?->getPrtName() ?? '';
-$sType = '';
 
 require_once __DIR__ . '/Include/Header.php';
 ?>
@@ -65,10 +66,12 @@ require_once __DIR__ . '/Include/Header.php';
 
         <p class="lead"><?= gettext('Please confirm deletion of this Property Type') ?>: <strong><?= InputUtils::escapeHTML($prt_Name) ?></strong></p>
 
-        <div>
-            <a href="PropertyTypeDelete.php?Confirmed=Yes&PropertyTypeID=<?= $iPropertyTypeID ?>" class="btn btn-danger"><?= gettext('Yes, delete') ?></a>
-            <a href="PropertyTypeList.php?Type=<?= $sType ?>" class="btn btn-secondary ms-2"><?= gettext('No, cancel this deletion') ?></a>
-        </div>
+        <form method="post" action="PropertyTypeDelete.php">
+            <input type="hidden" name="PropertyTypeID" value="<?= $iPropertyTypeID ?>">
+            <?= CSRFUtils::getTokenInputField() ?>
+            <button type="submit" class="btn btn-danger"><?= gettext('Yes, delete') ?></button>
+            <a href="PropertyTypeList.php" class="btn btn-secondary ms-2"><?= gettext('No, cancel this deletion') ?></a>
+        </form>
     </div>
 </div>
 <?php

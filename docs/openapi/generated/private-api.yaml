@@ -2044,7 +2044,7 @@ paths:
         -
           ApiKeyAuth: []
   '/api/family/{familyId}/verify/url':
-    get:
+    post:
       tags:
         - Families
       summary: 'Generate a new family self-verify URL token'
@@ -10165,7 +10165,7 @@ paths:
         -
           ApiKeyAuth: []
   /admin/api/upgrade/download-latest-release:
-    get:
+    post:
       tags:
         - Admin
       summary: 'Download the latest release from GitHub (or a specific version)'

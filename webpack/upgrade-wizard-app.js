@@ -13,6 +13,7 @@
 import Stepper from "bs-stepper";
 import "bs-stepper/dist/css/bs-stepper.min.css";
 import { marked } from "marked";
+import { downloadBackupFile } from "./backup-download";
 import { escapeHtml } from "./utils/escape-html";
 
 // Configure marked: strip raw HTML to prevent XSS from release notes
@@ -627,7 +628,7 @@ function performDownload() {
     : "upgrade/download-latest-release";
 
   window.CRM.AdminAPIRequest({
-    method: "GET",
+    method: "POST",
     path,
   })
     .done((data) => {
@@ -769,7 +770,7 @@ function setupApplyStep() {
  * Download backup file.
  */
 function downloadBackup(filename) {
-  window.location = `${window.CRM.root}/admin/api/database/download/${filename}`;
+  downloadBackupFile(filename);
   $("#backupStatus").html(`<div class="alert alert-info">
         <i class="fa-solid fa-info-circle me-2"></i>${i18next.t("Backup Downloaded, Copy on server removed")}
     </div>`);

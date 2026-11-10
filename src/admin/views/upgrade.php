@@ -373,6 +373,7 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
     </div>
 </div>
 
+<?php require __DIR__ . '/partials/backup-download-form.php'; ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/upgrade-wizard.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/upgrade-wizard.min.js') ?>"></script>
 

@@ -337,6 +337,7 @@ function initializeFamilyView() {
 
   $("#verifyURL").on("click", () => {
     window.CRM.APIRequest({
+      method: "POST",
       path: `family/${window.CRM.currentFamily}/verify/url`,
     }).then((data) => {
       $("#confirm-verify").modal("hide");

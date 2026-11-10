@@ -8,7 +8,7 @@ describe("API Private Family Verify", () => {
 
     it("Get family verification URL", () => {
         // Test getting verification URL without sending email
-        cy.makePrivateAdminAPICall("GET", "/api/family/2/verify/url", null, 200).then(
+        cy.makePrivateAdminAPICall("POST", "/api/family/2/verify/url", {}, 200).then(
             (response) => {
                 expect(response.body).to.have.property("url");
                 expect(response.body.url).to.include("/external/verify/");

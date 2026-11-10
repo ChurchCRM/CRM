@@ -6,16 +6,19 @@ require_once __DIR__ . '/Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security
 AuthenticationManager::redirectHomeIfNotAdmin();
 
-$bDoAll = false;
-if (($_GET['all'] ?? '') === 'true') {
-    $bDoAll = true;
+$bConvert = $_SERVER['REQUEST_METHOD'] === 'POST';
+if ($bConvert && !CSRFUtils::verifyRequest($_POST)) {
+    http_response_code(403);
+    die(gettext('Invalid CSRF token'));
 }
+$bDoAll = $bConvert && ($_POST['all'] ?? '') === 'true';
 
 $sPageTitle = gettext('Convert Individuals to Families');
 $sPageSubtitle = gettext('Convert individual records into family units');
@@ -37,7 +40,7 @@ $unassignedPersons = PersonQuery::create()
     ->orderByFirstName()
     ->find();
 
-foreach ($unassignedPersons as $person) {
+foreach ($bConvert ? $unassignedPersons : [] as $person) {
     echo '<br><br><br>';
     echo '*****************************************';
 
@@ -83,10 +86,14 @@ foreach ($unassignedPersons as $person) {
     }
 }
 echo '</pre>';
-echo '<div class="mt-3">';
-echo '<a href="ConvertIndividualToFamily.php" class="btn btn-primary me-2">' . gettext('Convert Next') . '</a>';
-echo '<a href="ConvertIndividualToFamily.php?all=true" class="btn btn-warning">' . gettext('Convert All') . '</a>';
-echo '</div>';
+if (!$bConvert) {
+    echo '<p>' . sprintf(gettext('People without a family: %d'), $unassignedPersons->count()) . '</p>';
+}
+echo '<form method="post" action="ConvertIndividualToFamily.php" class="mt-3">';
+echo CSRFUtils::getTokenInputField();
+echo '<button type="submit" class="btn btn-primary me-2">' . gettext('Convert Next') . '</button>';
+echo '<button type="submit" name="all" value="true" class="btn btn-warning">' . gettext('Convert All') . '</button>';
+echo '</form>';
 echo '</div>';
 
 require_once __DIR__ . '/Include/Footer.php';
