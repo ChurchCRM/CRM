@@ -10,7 +10,7 @@
  * produce," not a separately-maintained expected-file list.
  *
  * Screenshot devices (desktop/tablet/mobile) are checked against
- * artifacts/screenshots/<device>/<name>.png. Video-only projects
+ * artifacts/screenshots/<locale>/<device>/<name>.png. Video-only projects
  * (recordings/setup) are checked against artifacts/videos/<device>/<name>.webm.
  * capture.ts's metadata always includes a `video` filename even for
  * screenshot-only devices (no video is actually recorded there — see
