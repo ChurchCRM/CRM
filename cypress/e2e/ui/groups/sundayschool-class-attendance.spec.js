@@ -70,12 +70,12 @@ describe("Attendance portraits and configured initials", () => {
         cy.setupAdminSession();
         cy.request("POST", "/admin/api/system/config/iPersonNameStyle", { value: "0" });
         ["Xenia", "Perry"].forEach((firstName) => {
-            cy.visit("/PersonEditor.php");
+            cy.visit("/people/person/editor");
             cy.get("#FirstName").type(firstName);
             cy.get("#LastName").type(`Yarrow${marker}`);
             cy.get("#Gender").select("1");
             cy.get("#Classification").select("1");
-            cy.get('button[name="PersonSubmit"]').click();
+            cy.get('button[name="personSubmit"]').click();
             cy.location("pathname").should("match", /\/people\/view\/\d+$/).then((path) => {
                 const id = Number(path.split("/").pop());
                 people.push(id);

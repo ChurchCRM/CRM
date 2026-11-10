@@ -82,6 +82,8 @@ class FixCssUrlQuotesPlugin {
 module.exports = {
   mode: isProduction ? 'production' : 'development',
   entry: {
+    'person-editor': './webpack/person-editor.js',
+    'family-editor': './webpack/family-editor.js',
     'fundraiser-paddle-numbers': './webpack/fundraiser-paddle-numbers.js',
     'finance-pledge-detail': './webpack/finance-pledge-detail.js',
     'finance-pledge-editor': './webpack/finance-pledge-editor.js',

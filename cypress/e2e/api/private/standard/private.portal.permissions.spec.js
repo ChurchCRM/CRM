@@ -22,7 +22,7 @@ const MATHEW_EMAIL = "mathew.campbell@example.com";
 const PREFIX = "PERM10463";
 const VERSION_URL = "/admin/api/system/config/sVolunteerVersion";
 const touchedConfig = ["bPortalShowVolunteer"];
-const NON_ADULT_SEED = { FamilyRole: 4, BirthYear: 1910, BirthMonth: 7, BirthDay: 23 };
+const NON_ADULT_SEED = { familyRole: 4, birthYear: 1910, birthMonth: 7, birthDay: 23 };
 
 let ministryId = 0;
 let teamLed = 0;
@@ -246,9 +246,9 @@ describe("Member Portal permissions (portal permissions model)", () => {
                 const year = new Date().getFullYear();
                 const contactsVisible = () => cy.request("/api/portal/family").its("body.canSeeContacts");
                 const saveBirthYear = (birthYear) =>
-                    inOwnCookieJar(() => savePersonEditor(NON_ADULT.personId, { BirthYear: birthYear }).its("status").should("eq", 302));
+                    inOwnCookieJar(() => savePersonEditor(NON_ADULT.personId, { birthYear: birthYear }).its("status").should("eq", 302));
 
-                savePersonEditor(NON_ADULT.personId, { FamilyRole: 2, BirthYear: year - 16, BirthMonth: 1, BirthDay: 1 })
+                savePersonEditor(NON_ADULT.personId, { familyRole: 2, birthYear: year - 16, birthMonth: 1, birthDay: 1 })
                     .its("status")
                     .should("eq", 302);
                 signIn(NON_ADULT);

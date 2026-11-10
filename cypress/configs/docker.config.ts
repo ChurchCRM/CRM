@@ -18,6 +18,8 @@ export default defineConfig({
   projectId: 'n4qnyb',
   allowCypressEnv: false,
   env: {
+    'records-intake.api.key': 'recordsintakeEditorGateKey1234567890123456789',
+    'records-editor.api.key': 'recordseditorEditorGateKey1234567890123456789',
     'admin.api.key': 'ajGwpy8Pdai22XDUpqjC5Ob04v0eG7EGgb4vz2bD2juT8YDmfM',
     'user.api.key': 'JZJApQ9XOnF7nvupWZlTWBRrqMtHE9eNcWBTUzEWGqL4Sdqp6C',
     'nofinance.api.key': 'judithMatthewsEditRecordsNoNotesApiKey1234',

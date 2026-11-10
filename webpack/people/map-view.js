@@ -75,7 +75,7 @@ if (geocodeAllBtn) {
   // long lists stay scannable.
   const buildFailureRow = (f) => {
     const row = document.createElement("a");
-    // editUrl is fully server-constructed (/FamilyEditor.php?FamilyID=<int>)
+    // editUrl is fully server-constructed (/people/family/editor?familyId=<int>)
     // with no user-injectable components — assign directly as a URL property.
     row.href = f.editUrl;
     // Open in a new tab so the admin keeps the failure list while fixing addresses.

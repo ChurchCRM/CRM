@@ -53,7 +53,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                             return data;
                         }
                         return "<a href='" + window.CRM.root + (window.CRM.permissions && window.CRM.permissions.editRecords
-                               ? "/PersonEditor.php?PersonID=" + row.Id
+                               ? "/people/person/editor?personId=" + row.Id
                                : "/people/view/" + row.Id) + "'>" +
                                window.CRM.escapeHtml(data) + "</a>";
                     },

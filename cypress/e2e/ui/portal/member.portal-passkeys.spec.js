@@ -88,15 +88,15 @@ const staffChangesEmail = (email) => {
     cy.request({ method: "POST", url: "/session/begin", form: true, followRedirect: false, body: { User: JUDITH.username, Password: JUDITH.password } })
         .its("status")
         .should("eq", 302);
-    cy.request(`/PersonEditor.php?PersonID=${member.personId}`).then((page) => {
+    cy.request(`/people/person/editor?personId=${member.personId}`).then((page) => {
         const form = Cypress.$(new DOMParser().parseFromString(page.body, "text/html")).find("#personEditor");
         const body = {};
         form.serializeArray().forEach(({ name, value }) => {
             body[name] = value;
         });
-        body.Email = email;
-        body.PersonSubmit = "";
-        cy.request({ method: "POST", url: `/PersonEditor.php?PersonID=${member.personId}`, form: true, body, followRedirect: false })
+        body.email = email;
+        body.personSubmit = "";
+        cy.request({ method: "POST", url: `/people/person/editor?personId=${member.personId}`, form: true, body, followRedirect: false })
             .its("status")
             .should("eq", 302);
     });

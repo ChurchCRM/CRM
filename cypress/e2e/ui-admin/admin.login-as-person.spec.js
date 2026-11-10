@@ -171,7 +171,7 @@ describe("Login as Person", () => {
         cy.get("#portal-toasts").should("contain", "Staff pages stay closed during Login as Person.");
         cy.get("#login-as-person-banner").should("be.visible");
 
-        cy.visit(`/PersonEditor.php?PersonID=${MEMBER}`);
+        cy.visit(`/people/person/editor?personId=${MEMBER}`);
         cy.location("pathname").should("match", /\/portal\/$/);
         cy.visit("/admin/");
         cy.location("pathname").should("match", /\/portal\/$/);

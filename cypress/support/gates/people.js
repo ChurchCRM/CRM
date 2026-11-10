@@ -101,3 +101,40 @@ export const EMAIL_GATES = [
     emailRow("people-email-page", { page: "/people/email/dashboard" }),
     emailRow("people-text-page", { page: "/people/text/dashboard" }),
 ];
+
+const editorAllow = ["church-admin", "staff-all-but-admin", "office-staff"];
+const editorDeny = ["finance-only", "finance-no-fundraisers", "groups-only", "notes-only-staff", "zero-permission-staff"];
+
+export const PEOPLE_EDITOR_GATES = [
+    ...["person", "family"].flatMap((kind) => {
+        const base = `/people/${kind}/editor`;
+        const existing = `${base}?${kind}Id=${kind === "person" ? 2 : 1}`;
+        return [base, existing].flatMap((url, index) => [
+            {
+                id: `${kind}-editor-${index === 0 ? "add" : "edit"}-read`,
+                audience: "standard",
+                classification: "people-records",
+                api: { method: "GET", url },
+                allow: [...editorAllow, index === 0 ? "records-intake" : "records-editor"],
+                deny: [...editorDeny, index === 0 ? "records-editor" : "records-intake"],
+            },
+            {
+                id: `${kind}-editor-${index === 0 ? "add" : "edit"}-write`,
+                audience: "standard",
+                classification: "people-records",
+                api: { method: "POST", url, body: {} },
+                denyOnly: true,
+                allow: [...editorAllow, index === 0 ? "records-intake" : "records-editor"],
+                deny: [...editorDeny, index === 0 ? "records-editor" : "records-intake"],
+            },
+        ]);
+    }),
+    ...["person", "family"].map((kind) => ({
+        id: `${kind}-editor-page`,
+        audience: "standard",
+        classification: "people-records",
+        page: `/people/${kind}/editor`,
+        allow: [...editorAllow, "records-intake"],
+        deny: [...editorDeny, "records-editor"],
+    })),
+];

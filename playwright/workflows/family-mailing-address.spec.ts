@@ -45,7 +45,7 @@ test.describe('Family mailing address', () => {
     const href = await row.locator('a[href*="/people/family/"]').first().getAttribute('href');
     const familyId = Number(href?.match(/\/people\/family\/(\d+)/)?.[1]);
 
-    await page.goto(`/FamilyEditor.php?FamilyID=${familyId}`);
+    await page.goto(`/people/family/editor?familyId=${familyId}`);
     await expect(page.locator('#FamilyName')).toHaveValue('Robinson', { timeout: 15000 });
     await expect(page.locator('#Latitude')).not.toHaveValue('');
 
@@ -84,15 +84,15 @@ test.describe('Family mailing address', () => {
   test('family-view-mailing-address', async ({ page }, testInfo) => {
     // A new family, saved and then removed. The Robinson editor capture stays
     // unsaved so it does not rewrite that shared demo record.
-    await page.goto('/FamilyEditor.php');
+    await page.goto('/people/family/editor');
     await expect(page.locator('#FamilyName')).toBeVisible({ timeout: 15000 });
     await humanType(page.locator('#FamilyName'), 'Ellison');
     await humanType(page.locator('#Address1'), '18 Oak Street');
     await humanType(page.locator('#City'), 'Springfield');
     await humanSelect(page.locator('#State'), 'IL');
     await humanType(page.locator('#Zip'), '62704');
-    await humanType(page.locator('input[name="FirstName1"]'), 'Lena');
-    await humanType(page.locator('input[name="LastName1"]'), 'Ellison');
+    await humanType(page.locator('input[name="firstName1"]'), 'Lena');
+    await humanType(page.locator('input[name="lastName1"]'), 'Ellison');
 
     const section = page.locator('#secondAddressSection');
     if (!(await section.isVisible())) {
@@ -110,7 +110,7 @@ test.describe('Family mailing address', () => {
     await humanClick(page.locator('#SecondIsMailing'));
     await expect(page.locator('#SecondIsMailing')).toBeChecked();
     await humanPause(page, 400);
-    await humanClick(page.locator('button[name="FamilySubmit"]'));
+    await humanClick(page.locator('button[name="familySubmit"]'));
     await page.waitForURL(/\/people\/family\/(\d+)/, { timeout: 15000 });
     const familyId = Number(page.url().match(/\/people\/family\/(\d+)/)?.[1]);
 

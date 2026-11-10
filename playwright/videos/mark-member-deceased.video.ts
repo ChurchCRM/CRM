@@ -7,7 +7,7 @@ import { humanClick, humanPause, humanType, settle } from '../support/human';
  * Record a member as deceased (date = one week before the run) via the
  * Person Editor, ending on the profile showing the Deceased badge and date.
  * Fields: input#IsDeceased (checkbox) reveals input#DateDeceased
- * (src/PersonEditor.php) — DateTimeUtils::parseAndValidate(..., 'past')
+ * (src/people/person/editor) — DateTimeUtils::parseAndValidate(..., 'past')
  * rejects a future date, so "one week ago" is both a realistic scenario and
  * safely inside the accepted range.
  *
@@ -32,13 +32,13 @@ test('mark-member-deceased', async ({ page }, testInfo) => {
   await humanPause(page, 800);
 
   // person-view.php has several links matching this href: a hidden "Add
-  // New Person" FAB (bare /PersonEditor.php, no PersonID) that renders
+  // New Person" FAB (bare /people/person/editor, no PersonID) that renders
   // earlier in the DOM than this person's own toolbar Edit link, plus
   // hidden dropdown-item Edit links for other family members. Scoping to
   // .btn (the toolbar button's class) excludes all of those — verified
   // live that this resolves to exactly one match, the visible Edit link.
-  await humanClick(page.locator('a.btn[href*="PersonEditor.php"]').first());
-  await page.waitForURL(/PersonEditor\.php/, { timeout: 15000 });
+  await humanClick(page.locator('a.btn[href*="people/person/editor"]').first());
+  await page.waitForURL(/people\/person\/editor/, { timeout: 15000 });
   await expect(page.locator('#IsDeceased')).toBeVisible({ timeout: 10000 });
   await humanPause(page, 800);
 
@@ -55,9 +55,9 @@ test('mark-member-deceased', async ({ page }, testInfo) => {
   await expect(dateField).toHaveValue(dateString);
   await humanPause(page, 800);
 
-  await humanClick(page.locator('button[name="PersonSubmit"]'));
+  await humanClick(page.locator('button[name="personSubmit"]'));
 
-  // PersonEditor.php redirects to Person::getViewURIForId() on success.
+  // people/person/editor redirects to Person::getViewURIForId() on success.
   await page.waitForURL(/\/people\/view\/\d+/, { timeout: 15000 });
   await expect(page.getByText('Deceased', { exact: false }).first()).toBeVisible({ timeout: 10000 });
   await settle(page, 2000);

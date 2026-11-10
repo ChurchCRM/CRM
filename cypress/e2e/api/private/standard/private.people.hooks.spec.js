@@ -13,7 +13,7 @@
  * people writes outright rather than just the hook.
  *
  * This spec drives every path that reaches one of those dispatch points — the
- * legacy MVC editor forms (PersonEditor.php / FamilyEditor.php), the API role
+ * legacy MVC editor forms (people/person/editor / people/family/editor), the API role
  * and activate routes, DELETE /api/person/{id}, and the member cascade in
  * DELETE /api/family/{id}?deleteMembers=true — and asserts the write landed.
  *
@@ -42,12 +42,12 @@ describe("API People Hooks - dispatch path regression", () => {
 
     /** Create a family-less person through the legacy MVC editor form. */
     const createPerson = (firstName, key) => {
-        cy.visit("/PersonEditor.php");
+        cy.visit("/people/person/editor");
         cy.get("#FirstName").type(firstName);
         cy.get("#LastName").type(tag);
         cy.get("#Gender").select("1");
         cy.get("#Classification").select("1");
-        cy.get("button[name='PersonSubmit']").click();
+        cy.get("button[name='personSubmit']").click();
         cy.url().should("match", /people\/view\/\d+/);
         cy.url().then((url) => {
             const personId = Number.parseInt(url.match(/\/people\/view\/(\d+)/)[1], 10);
@@ -59,11 +59,11 @@ describe("API People Hooks - dispatch path regression", () => {
 
     /** Create a family with one member through the legacy MVC editor form. */
     const createFamilyWithMember = (suffix, key) => {
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.get("#FamilyName").type(`Fam${tag}${suffix}`);
-        cy.get('input[name="FirstName1"]').type(`${tag}${suffix}`);
-        cy.get('select[name="Classification1"]').select("1", { force: true });
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('input[name="firstName1"]').type(`${tag}${suffix}`);
+        cy.get('select[name="classification1"]').select("1", { force: true });
+        cy.get('button[name="familySubmit"]').click();
 
         cy.location("pathname").then((pathname) => {
             const familyId = Number.parseInt(pathname.split("/").pop(), 10);
@@ -84,9 +84,9 @@ describe("API People Hooks - dispatch path regression", () => {
         // MVC update path — Person::postUpdate() fires from the legacy editor
         // save, the same callback the hook dispatch now hangs off.
         cy.then(() => {
-            cy.visit(`/PersonEditor.php?PersonID=${ids.personUpd}`);
+            cy.visit(`/people/person/editor?personId=${ids.personUpd}`);
             cy.get("#FirstName").clear().type(renamed);
-            cy.get("button[name='PersonSubmit']").click();
+            cy.get("button[name='personSubmit']").click();
             cy.url().should("match", /people\/view\/\d+/);
         });
 

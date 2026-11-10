@@ -1,7 +1,6 @@
 {
   "inlineStyles": {
     "src/ChurchCRM/Bootstrapper.php": 2,
-    "src/PersonEditor.php": 1,
     "src/admin/views/feature-toggles.php": 1,
     "src/admin/views/localization.php": 1,
     "src/admin/views/user-editor.php": 2,

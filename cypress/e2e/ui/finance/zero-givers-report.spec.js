@@ -21,13 +21,13 @@ describe("Zero Givers report", () => {
     before(() => {
         cy.setupAdminSession();
         [activeName, inactiveName].forEach((name) => {
-            cy.visit("/FamilyEditor.php");
+            cy.visit("/people/family/editor");
             cy.get("#FamilyName").type(name);
             ["Ann", "Ben"].forEach((firstName, index) => {
-                cy.get(`input[name="FirstName${index + 1}"]`).type(firstName);
-                cy.get(`select[name="Classification${index + 1}"]`).select("1", { force: true });
+                cy.get(`input[name="firstName${index + 1}"]`).type(firstName);
+                cy.get(`select[name="classification${index + 1}"]`).select("1", { force: true });
             });
-            cy.get('button[name="FamilySubmit"]').click();
+            cy.get('button[name="familySubmit"]').click();
             cy.location("pathname").should("match", /\/people\/family\/\d+$/).then((pathname) => {
                 familyIds.push(Number(pathname.split("/").pop()));
             });

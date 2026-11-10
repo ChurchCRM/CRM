@@ -13,12 +13,12 @@ describe("Person editor custom field values", () => {
     const selector = `textarea[name="${field}"]`;
 
     const save = (value) => {
-        cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+        cy.visit(`/people/person/editor?personId=${personId}`);
         cy.get(selector).clear();
         if (value !== "") {
             cy.get(selector).type(value, { parseSpecialCharSequences: false });
         }
-        cy.get('button[name="PersonSubmit"]').click();
+        cy.get('button[name="personSubmit"]').click();
         cy.url().should("include", `/people/view/${personId}`);
     };
 

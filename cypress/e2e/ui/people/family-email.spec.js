@@ -38,10 +38,10 @@ describe("Family email belongs to the adults", () => {
     });
 
     it("has no Email field in the family editor", () => {
-        cy.visit(`/FamilyEditor.php?FamilyID=${hartFamilyId}`);
+        cy.visit(`/people/family/editor?familyId=${hartFamilyId}`);
         cy.contains("Family Info");
-        cy.get('input[name="HomePhone"]').should("exist");
-        cy.get('input[name="Email"]').should("not.exist");
+        cy.get('input[name="homePhone"]').should("exist");
+        cy.get('input[name="email"]').should("not.exist");
     });
 
     it("shows the head of household's email in the family list", () => {
@@ -51,7 +51,7 @@ describe("Family email belongs to the adults", () => {
     });
 
     it("no longer marks the person editor's Email label for a family email", () => {
-        cy.visit("/PersonEditor.php?PersonID=6");
+        cy.visit("/people/person/editor?personId=6");
         cy.get('label[for="Email"]').should("be.visible").find(".text-danger").should("not.exist");
     });
 });

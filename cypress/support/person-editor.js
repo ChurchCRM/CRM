@@ -20,7 +20,7 @@ const administrator = () =>
 export const savePersonEditor = (personId, changes, user = null) =>
     (user ? cy.wrap(user, { log: false }) : administrator()).then((who) => {
         signInAs(who);
-        return cy.request(`/PersonEditor.php?PersonID=${personId}`).then((page) => {
+        return cy.request(`/people/person/editor?personId=${personId}`).then((page) => {
             const form = Cypress.$(new DOMParser().parseFromString(page.body, "text/html")).find("#personEditor");
             expect(form.length, "person editor form").to.eq(1);
             const body = {};
@@ -34,7 +34,7 @@ export const savePersonEditor = (personId, changes, user = null) =>
                     body[name] = value === true ? "1" : String(value);
                 }
             });
-            body.PersonSubmit = "";
-            return cy.request({ method: "POST", url: `/PersonEditor.php?PersonID=${personId}`, form: true, body, followRedirect: false });
+            body.personSubmit = "";
+            return cy.request({ method: "POST", url: `/people/person/editor?personId=${personId}`, form: true, body, followRedirect: false });
         });
     });

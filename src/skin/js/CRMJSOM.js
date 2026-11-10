@@ -782,7 +782,7 @@ window.CRM.dashboard = {
       },
       canEditRecords() && {
         type: "link",
-        href: `${root}/PersonEditor.php?PersonID=${personId}`,
+        href: `${root}/people/person/editor?personId=${personId}`,
         icon: "fa-solid fa-pencil",
         label: i18next.t("Edit"),
       },
@@ -838,7 +838,7 @@ window.CRM.dashboard = {
       },
       canEditRecords() && {
         type: "link",
-        href: `${root}/FamilyEditor.php?FamilyID=${familyId}`,
+        href: `${root}/people/family/editor?familyId=${familyId}`,
         icon: "fa-solid fa-pencil",
         label: i18next.t("Edit"),
       },

@@ -89,7 +89,7 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
                       <i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?>
                     </a>
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $Person->getId() ?>">
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/person/editor?personId=<?= $Person->getId() ?>">
                       <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                     </a>
                     <?php endif; ?>

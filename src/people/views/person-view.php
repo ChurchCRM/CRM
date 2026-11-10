@@ -435,7 +435,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
         <!-- Toolbar -->
         <div class="d-flex align-items-center mb-3 gap-2 d-print-none">
             <?php if ($bOkToEdit) { ?>
-            <a class="btn btn-ghost-primary" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $iPersonID ?>" title="<?= gettext("Edit Person") ?>"><i class="fa-solid fa-pen me-1"></i><?= gettext("Edit") ?></a>
+            <a class="btn btn-ghost-primary" href="<?= SystemURLs::getRootPath() ?>/people/person/editor?personId=<?= $iPersonID ?>" title="<?= gettext("Edit Person") ?>"><i class="fa-solid fa-pen me-1"></i><?= gettext("Edit") ?></a>
             <?php } ?>
             <button class="btn btn-ghost-secondary" id="printPerson" title="<?= gettext("Print") ?>"><i class="fa-solid fa-print me-1"></i><?= gettext("Print") ?></button>
             <button class="btn btn-ghost-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person" title="<?= gettext("Add to Cart") ?>"><i class="fa-solid fa-cart-plus me-1"></i><span class="cartActionDescription"><?= gettext("Cart") ?></span></button>
@@ -453,7 +453,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                         <a class="dropdown-item" id="editWhyCame" href="<?= SystemURLs::getRootPath() ?>/WhyCameEditor.php?PersonID=<?= $iPersonID ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></a>
                     <?php } ?>
                     <?php if ($bOkToEdit && $fam_ID !== '') { ?>
-                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Edit Family") ?></a>
+                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/family/editor?familyId=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Edit Family") ?></a>
                         <a class="dropdown-item" id="edit-role-btn" data-person_id="<?= $person->getId() ?>" data-family_role="<?= InputUtils::escapeAttribute($person->getFamilyRoleName()) ?>" data-family_role_id="<?= $person->getFmrId() ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext("Change Family Role") ?></a>
                     <?php } ?>
                     <?php if (AuthenticationManager::getCurrentUser()->isManageGroupsEnabled()) { ?>
@@ -502,7 +502,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                 <h3 class="card-title m-0"><i class="fa-solid fa-people-roof me-1"></i><?= InputUtils::escapeHTML($fam_Name) ?> <?= gettext('Family') ?></h3>
                 <div class="ms-auto d-flex gap-1">
                     <?php if ($bOkToEdit) { ?>
-                    <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Edit Family') ?>"><i class="fa-solid fa-pen"></i></a>
+                    <a href="<?= SystemURLs::getRootPath() ?>/people/family/editor?familyId=<?= $fam_ID ?>" class="btn btn-sm btn-ghost-secondary" title="<?= gettext('Edit Family') ?>"><i class="fa-solid fa-pen"></i></a>
                     <?php } ?>
                     <a href="<?= $person->getFamily()->getViewURI() ?>" class="btn btn-sm btn-ghost-primary"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext('View') ?></a>
                 </div>
@@ -562,7 +562,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                                         <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <?php if ($bOkToEdit) { ?>
-                                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $tmpPersonId ?>"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
+                                            <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/person/editor?personId=<?= $tmpPersonId ?>"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
                                             <?php } ?>
                                             <button class="dropdown-item AddToCart" data-cart-id="<?= $tmpPersonId ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
                                             <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()) { ?>

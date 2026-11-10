@@ -365,7 +365,7 @@ if ($bCanManageGroups) {
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <a class="dropdown-item" href="<?= Person::getViewURIForId($child['kidId']) ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?></a>
                                             <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
-                                            <a class="dropdown-item" href="<?= $sRootPath ?>/PersonEditor.php?PersonID=<?= $child['kidId'] ?>"><i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?></a>
+                                            <a class="dropdown-item" href="<?= $sRootPath ?>/people/person/editor?personId=<?= $child['kidId'] ?>"><i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?></a>
                                             <?php endif; ?>
                                             <?php if ($child['fam_id']): ?>
                                             <a class="dropdown-item" href="<?= $sRootPath ?>/people/family/<?= (int) $child['fam_id'] ?>"><i class="fa-solid fa-users me-2"></i><?= gettext('View Family') ?></a>

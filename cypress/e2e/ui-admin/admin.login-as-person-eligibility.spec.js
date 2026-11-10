@@ -196,13 +196,13 @@ describe("Login as Person eligibility", () => {
 
         describe("deceased", () => {
             afterEach(() => {
-                savePersonEditor(TARGET, { IsDeceased: false }).its("status").should("eq", 302);
+                savePersonEditor(TARGET, { isDeceased: false }).its("status").should("eq", 302);
                 cy.clearCookies();
             });
 
             it("deceased", () => {
                 endsOnNextRequest(
-                    () => inOwnCookieJar(() => savePersonEditor(TARGET, { IsDeceased: true }).its("status").should("eq", 302)),
+                    () => inOwnCookieJar(() => savePersonEditor(TARGET, { isDeceased: true }).its("status").should("eq", 302)),
                     "deceased",
                     "This person is deceased.",
                 );

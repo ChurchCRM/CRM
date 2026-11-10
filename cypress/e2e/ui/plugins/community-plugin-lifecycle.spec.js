@@ -102,11 +102,11 @@ describe('Community Plugin Lifecycle', { retries: 2 }, () => {
         const lastName = `Spec${uniqueSeed}`;
 
         cy.setupAdminSession({ forceLogin: true });
-        cy.visit('PersonEditor.php');
+        cy.visit('/people/person/editor');
 
         cy.get('#FirstName').type(firstName);
         cy.get('#LastName').type(lastName);
-        cy.get('button[name="PersonSubmit"]').click();
+        cy.get('button[name="personSubmit"]').click();
 
         cy.url().should('contain', '/people/view/');
         cy.contains(firstName).should('be.visible');

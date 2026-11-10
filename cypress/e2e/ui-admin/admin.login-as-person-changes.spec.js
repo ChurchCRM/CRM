@@ -135,7 +135,7 @@ describe("Login as Person: changes and endings", () => {
                         expect(response.status).to.eq(403);
                         expect(response.body.message).to.include("Staff pages stay closed");
                     });
-                    cy.request({ method: "POST", url: `/PersonEditor.php?PersonID=${MEMBER}`, form: true, body: {}, followRedirect: false, failOnStatusCode: false })
+                    cy.request({ method: "POST", url: `/people/person/editor?personId=${MEMBER}`, form: true, body: {}, followRedirect: false, failOnStatusCode: false })
                         .its("status")
                         .should("eq", 302);
 
@@ -157,7 +157,7 @@ describe("Login as Person: changes and endings", () => {
                     "POST /portal/devices/sign-out-everywhere 303",
                     "POST /api/ministries/me/swaps/1/withdraw 403",
                     `POST /api/person/${MEMBER}/role/2 403`,
-                    "POST /PersonEditor.php 302",
+                    "POST /people/person/editor 302",
                 ]);
             });
         });

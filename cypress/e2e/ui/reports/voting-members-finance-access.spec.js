@@ -32,7 +32,7 @@ describe("Treasurer prepares a voting review list under church bylaws", () => {
         RequireDonationYears: 0, FYID: 29, ...extra,
     });
     const createPerson = (name, birth, joined, deceased = false) => {
-        cy.visit("/PersonEditor.php");
+        cy.visit("/people/person/editor");
         cy.get("#FirstName").type(name);
         cy.get("#LastName").type(marker);
         cy.get("#Gender").select("1");
@@ -44,7 +44,7 @@ describe("Treasurer prepares a voting review list under church bylaws", () => {
         }
         if (joined) cy.get("#MembershipDate").clear().type(joined);
         if (deceased) cy.get("#IsDeceased").check();
-        cy.get('button[name="PersonSubmit"]').click();
+        cy.get('button[name="personSubmit"]').click();
         cy.location("pathname").should("match", /\/people\/view\/\d+$/).then((path) => {
             people.push(Number(path.split("/").pop()));
         });
@@ -66,13 +66,13 @@ describe("Treasurer prepares a voting review list under church bylaws", () => {
         cy.then(() => createPerson("Deceased", null, null, true));
         cy.then(() => createPerson("Inactive", null, null));
         cy.then(() => cy.request("POST", `/api/person/${people[5]}/activate/false`));
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.get("#FamilyName").type(`${marker}Donors`);
         ["AnnDonor", "BenDonor"].forEach((name, index) => {
-            cy.get(`input[name="FirstName${index + 1}"]`).type(name);
-            cy.then(() => cy.get(`select[name="Classification${index + 1}"]`).select(String(classificationId)));
+            cy.get(`input[name="firstName${index + 1}"]`).type(name);
+            cy.then(() => cy.get(`select[name="classification${index + 1}"]`).select(String(classificationId)));
         });
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('button[name="familySubmit"]').click();
         cy.location("pathname").should("match", /\/people\/family\/\d+$/).then((path) => {
             familyId = Number(path.split("/").pop());
         });

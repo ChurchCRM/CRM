@@ -38,12 +38,12 @@ describe("Deceased Person Flag", () => {
      * Returns a Cypress chain that resolves to the new person's numeric ID.
      */
     function createTestPerson(firstName) {
-        cy.visit("/PersonEditor.php");
+        cy.visit("/people/person/editor");
         cy.get("#FirstName").type(firstName);
         cy.get("#LastName").type("DeceasedE2ETest");
         cy.get("#Gender").select("1");
         cy.get("#Classification").select("1");
-        cy.get("button[name='PersonSubmit']").click();
+        cy.get("button[name='personSubmit']").click();
         cy.url().should("match", /people\/view\/\d+/);
         return cy.url().then((url) => {
             const match = url.match(/\/people\/view\/(\d+)/);
@@ -58,7 +58,7 @@ describe("Deceased Person Flag", () => {
     // -----------------------------------------------------------------------
 
     it("shows deceased checkbox and hidden date picker in Card 5", () => {
-        cy.visit("/PersonEditor.php");
+        cy.visit("/people/person/editor");
 
         // Checkbox should be present and unchecked by default
         cy.get("#IsDeceased")
@@ -70,7 +70,7 @@ describe("Deceased Person Flag", () => {
     });
 
     it("reveals date picker when deceased checkbox is ticked", () => {
-        cy.visit("/PersonEditor.php");
+        cy.visit("/people/person/editor");
 
         cy.get("#IsDeceased").check();
         cy.get("#DeceasedDateGroup").should("be.visible");
@@ -83,7 +83,7 @@ describe("Deceased Person Flag", () => {
         createTestPerson("FutureDeath").then((personId) => {
             if (!personId) return;
 
-            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.visit(`/people/person/editor?personId=${personId}`);
 
             // Tick deceased and enter a future date in yyyy-mm-dd format (bootstrap-datepicker's
             // configured format). Typing MM/DD/YYYY would get silently cleared by the datepicker
@@ -92,10 +92,10 @@ describe("Deceased Person Flag", () => {
             const futureYear = new Date().getFullYear() + 2;
             cy.get("#DateDeceased").type(`${futureYear}-12-01`);
 
-            cy.get("button[name='PersonSubmit']").click();
+            cy.get("button[name='personSubmit']").click();
 
             // Should stay on the editor page with a validation error
-            cy.url().should("include", "PersonEditor");
+            cy.url().should("include", "people/person/editor");
             cy.contains("Not a valid date of death").should("be.visible");
         });
     });
@@ -105,9 +105,9 @@ describe("Deceased Person Flag", () => {
             if (!personId) return;
 
             // Edit the person and mark as deceased without a date
-            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.visit(`/people/person/editor?personId=${personId}`);
             cy.get("#IsDeceased").check();
-            cy.get("button[name='PersonSubmit']").click();
+            cy.get("button[name='personSubmit']").click();
 
             // Should redirect to person view
             cy.url().should("include", `people/view/${personId}`);
@@ -123,15 +123,15 @@ describe("Deceased Person Flag", () => {
 
             const dateStr = "2020-01-15";
 
-            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.visit(`/people/person/editor?personId=${personId}`);
             cy.get("#IsDeceased").check();
             cy.get("#DateDeceased").type(dateStr);
-            cy.get("button[name='PersonSubmit']").click();
+            cy.get("button[name='personSubmit']").click();
 
             cy.url().should("include", `people/view/${personId}`);
             cy.get(".badge").contains("Deceased").should("be.visible");
 
-            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.visit(`/people/person/editor?personId=${personId}`);
             cy.get("#DateDeceased").should("have.value", dateStr);
         });
     });
@@ -141,16 +141,16 @@ describe("Deceased Person Flag", () => {
             if (!personId) return;
 
             // Mark deceased
-            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.visit(`/people/person/editor?personId=${personId}`);
             cy.get("#IsDeceased").check();
-            cy.get("button[name='PersonSubmit']").click();
+            cy.get("button[name='personSubmit']").click();
             cy.url().should("include", `people/view/${personId}`);
             cy.get(".badge").contains("Deceased").should("be.visible");
 
             // Now un-tick and save
-            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.visit(`/people/person/editor?personId=${personId}`);
             cy.get("#IsDeceased").should("be.checked").uncheck();
-            cy.get("button[name='PersonSubmit']").click();
+            cy.get("button[name='personSubmit']").click();
 
             cy.url().should("include", `people/view/${personId}`);
             // Deceased badge should be gone
@@ -167,9 +167,9 @@ describe("Deceased Person Flag", () => {
             if (!personId) return;
 
             // Mark as deceased
-            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.visit(`/people/person/editor?personId=${personId}`);
             cy.get("#IsDeceased").check();
-            cy.get("button[name='PersonSubmit']").click();
+            cy.get("button[name='personSubmit']").click();
             cy.url().should("include", `people/view/${personId}`);
 
             // Person list should hide deceased by default
@@ -214,9 +214,9 @@ describe("Deceased Person Flag", () => {
             if (!personId) return;
 
             // Mark deceased
-            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.visit(`/people/person/editor?personId=${personId}`);
             cy.get("#IsDeceased").check();
-            cy.get("button[name='PersonSubmit']").click();
+            cy.get("button[name='personSubmit']").click();
 
             // Autocomplete endpoint should not return the deceased person
             cy.apiRequest({
@@ -240,13 +240,13 @@ describe("Deceased Person Flag", () => {
     it("family view greys the deceased member, shows a badge, and counts living only", () => {
         const familyName = "DeceasedFam" + Cypress._.random(0, 1e6);
 
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.get("#FamilyName").type(familyName);
-        cy.get('input[name="FirstName1"]').type("LivingOne");
-        cy.get('select[name="Classification1"]').select("1", { force: true });
-        cy.get('input[name="FirstName2"]').type("PassedTwo");
-        cy.get('select[name="Classification2"]').select("1", { force: true });
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('input[name="firstName1"]').type("LivingOne");
+        cy.get('select[name="classification1"]').select("1", { force: true });
+        cy.get('input[name="firstName2"]').type("PassedTwo");
+        cy.get('select[name="classification2"]').select("1", { force: true });
+        cy.get('button[name="familySubmit"]').click();
         cy.location("pathname").should("include", "/people/family/");
 
         cy.location("pathname")
@@ -265,9 +265,9 @@ describe("Deceased Person Flag", () => {
                         .getAttribute("href")
                         .match(/view\/(\d+)/)[1];
 
-                    cy.visit(`/PersonEditor.php?PersonID=${deceasedId}`);
+                    cy.visit(`/people/person/editor?personId=${deceasedId}`);
                     cy.get("#IsDeceased").check();
-                    cy.get("button[name='PersonSubmit']").click();
+                    cy.get("button[name='personSubmit']").click();
                     cy.url().should("include", `people/view/${deceasedId}`);
 
                     cy.visit(`/people/family/${familyId}`);

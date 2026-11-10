@@ -204,14 +204,14 @@ Cypress.Commands.add("getByTestId", (testId) => {
  *    "01".."31" for the day) whose labels are the month abbreviation ("May")
  *    and the un-padded day ("5"). cy.select() matched neither value nor text.
  *  - It clicked #PersonSaveButton, which the editor does not render; the save
- *    control is <button type="submit" name="PersonSubmit">.
+ *    control is <button type="submit" name="personSubmit">.
  *
  * Pairs with cy.deletePersonByName for create/delete round trips.
  */
 Cypress.Commands.add('createPersonWithBirthday', (personData) => {
     const padded = (value) => String(value).padStart(2, '0');
 
-    cy.visit('/PersonEditor.php');
+    cy.visit('/people/person/editor');
 
     cy.get('#FirstName').type(personData.name);
     cy.get('#LastName').type(personData.lastName ?? 'TestUser');
@@ -228,7 +228,7 @@ Cypress.Commands.add('createPersonWithBirthday', (personData) => {
     }
 
     cy.get('#Classification').select('1');
-    cy.get("button[name='PersonSubmit']").click();
+    cy.get("button[name='personSubmit']").click();
 
     // PersonSubmit redirects to Person::getViewURIForId(), /people/view/{id}.
     cy.url().should('match', /people\/view\/\d+/);

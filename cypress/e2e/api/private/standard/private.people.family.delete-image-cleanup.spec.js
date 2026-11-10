@@ -10,7 +10,7 @@
  * requires the record to still exist), so a 200 response after delete
  * means the image file was leaked.
  *
- * Family + member are created through the legacy FamilyEditor.php form
+ * Family + member are created through the legacy people/family/editor form
  * because there is no family-create JSON endpoint; every other step is
  * an API call.
  */
@@ -27,11 +27,11 @@ describe("API Private - Family delete cleans up image files (#1697)", () => {
         cy.setupStandardSession();
 
         // Create a temp family with one member via the legacy editor form.
-        cy.visit("FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.get("#FamilyName").type(`Fam${uniqueTag}`);
-        cy.get('input[name="FirstName1"]').type(uniqueTag);
-        cy.get('select[name="Classification1"]').select("1", { force: true });
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('input[name="firstName1"]').type(uniqueTag);
+        cy.get('select[name="classification1"]').select("1", { force: true });
+        cy.get('button[name="familySubmit"]').click();
 
         cy.location("pathname")
             .should("include", "/people/family/")

@@ -16,24 +16,24 @@ describe("Mailing address on mailed reports", () => {
      * which lists people, not families.
      */
     const createFamilyWithMailingAddress = (familyName, { secondCity = "Othertown", members = [], birthMonth = null } = {}) => {
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.contains("Family Info");
         cy.get("#FamilyName").type(familyName);
         members.forEach((firstName, index) => {
             // Last name left blank: the editor fills in the family name. The
             // directory form pre-selects the member classifications, so each
             // member is a Member (1) rather than Unassigned (0).
-            cy.get(`input[name="FirstName${index + 1}"]`).type(firstName);
-            cy.get(`select[name="Classification${index + 1}"]`).select("1", { force: true });
+            cy.get(`input[name="firstName${index + 1}"]`).type(firstName);
+            cy.get(`select[name="classification${index + 1}"]`).select("1", { force: true });
             if (birthMonth !== null) {
-                cy.get(`select[name="BirthMonth${index + 1}"]`).select(birthMonth, { force: true });
-                cy.get(`select[name="BirthDay${index + 1}"]`).select("15", { force: true });
+                cy.get(`select[name="birthMonth${index + 1}"]`).select(birthMonth, { force: true });
+                cy.get(`select[name="birthDay${index + 1}"]`).select("15", { force: true });
             }
         });
-        cy.get('input[name="Address1"]').type("742 Evergreen Terrace");
-        cy.get('input[name="City"]').clear().type("Springfield");
-        cy.get('select[name="State"]').select("IL", { force: true });
-        cy.get('input[name="Zip"]').clear().type("62704");
+        cy.get('input[name="address1"]').type("742 Evergreen Terrace");
+        cy.get('input[name="city"]').clear().type("Springfield");
+        cy.get('select[name="state"]').select("IL", { force: true });
+        cy.get('input[name="zip"]').clear().type("62704");
 
         cy.get("#secondAddressToggle").click();
         cy.get("#SecondAddress1").type("PO Box 1204");
@@ -44,7 +44,7 @@ describe("Mailing address on mailed reports", () => {
         cy.get("#SecondZip").type("62998");
         cy.get("#SecondIsMailing").should("not.be.disabled").check();
 
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('button[name="familySubmit"]').click();
         cy.location("pathname").should("include", "/people/family/");
 
         return cy.location("pathname").then((pathname) => {

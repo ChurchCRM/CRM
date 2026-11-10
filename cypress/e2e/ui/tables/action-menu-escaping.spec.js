@@ -171,23 +171,23 @@ describe("Row action menus — markup and attribute escaping (#9820)", () => {
         // ── Person and family have no create API; they go through the legacy editors.
         cy.freshAdminFormLogin({ clearAll: true, visible: true, sessionCookie: true });
 
-        cy.visit("/PersonEditor.php");
+        cy.visit("/people/person/editor");
         cy.get("#FirstName").type(HOSTILE, { parseSpecialCharSequences: false });
         cy.get("#LastName").type(PERSON_LAST_NAME);
         cy.get("#Gender").select("1");
         cy.get("#Classification").select("1");
-        cy.get('button[name="PersonSubmit"]').click();
+        cy.get('button[name="personSubmit"]').click();
         cy.location("pathname")
             .should("include", "/people/view/")
             .then((pathname) => {
                 created.personId = Number(pathname.split("/").pop());
             });
 
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.get("#FamilyName").type(FAMILY_NAME, { parseSpecialCharSequences: false });
-        cy.get('input[name="FirstName1"]').type("Cr2MenuEscMember");
-        cy.get('select[name="Classification1"]').select("1", { force: true });
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('input[name="firstName1"]').type("Cr2MenuEscMember");
+        cy.get('select[name="classification1"]').select("1", { force: true });
+        cy.get('button[name="familySubmit"]').click();
         cy.location("pathname")
             .should("include", "/people/family/")
             .then((pathname) => {

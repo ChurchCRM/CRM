@@ -19,12 +19,12 @@ describe("API People - deleting a person with a login is guarded", () => {
     });
 
     const createPerson = (firstName, key) => {
-        cy.visit("/PersonEditor.php");
+        cy.visit("/people/person/editor");
         cy.get("#FirstName").type(firstName);
         cy.get("#LastName").type(tag);
         cy.get("#Gender").select("1");
         cy.get("#Classification").select("1");
-        cy.get("button[name='PersonSubmit']").click();
+        cy.get("button[name='personSubmit']").click();
         cy.url().should("match", /people\/view\/\d+/);
         cy.url().then((url) => {
             const personId = Number.parseInt(url.match(/\/people\/view\/(\d+)/)[1], 10);
@@ -34,11 +34,11 @@ describe("API People - deleting a person with a login is guarded", () => {
     };
 
     const createFamilyWithMember = (memberFirstName) => {
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.get("#FamilyName").type(`Fam${tag}`);
-        cy.get('input[name="FirstName1"]').type(memberFirstName);
-        cy.get('select[name="Classification1"]').select("1", { force: true });
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('input[name="firstName1"]').type(memberFirstName);
+        cy.get('select[name="classification1"]').select("1", { force: true });
+        cy.get('button[name="familySubmit"]').click();
         cy.location("pathname").then((pathname) => {
             const familyId = Number.parseInt(pathname.split("/").pop(), 10);
             expect(familyId, "family created via FamilyEditor").to.be.greaterThan(0);

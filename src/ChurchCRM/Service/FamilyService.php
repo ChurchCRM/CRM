@@ -266,8 +266,8 @@ class FamilyService
                         'name'    => $isPerson ? $family->getFullName() : (string) $family->getName(),
                         'address' => (string) $family->getAddress(),
                         'editUrl' => $isPerson
-                            ? SystemURLs::getRootPath() . '/PersonEditor.php?PersonID=' . (int) $family->getId()
-                            : SystemURLs::getRootPath() . '/FamilyEditor.php?FamilyID=' . (int) $family->getId(),
+                            ? SystemURLs::getRootPath() . '/people/person/editor?personId=' . (int) $family->getId()
+                            : SystemURLs::getRootPath() . '/people/family/editor?familyId=' . (int) $family->getId(),
                         'reason'  => (string) $result['reason'],
                     ];
                 }

@@ -22,7 +22,7 @@ describe("Country/State TomSelect renders the full list (#9677)", () => {
     });
 
     it("Family Editor country dropdown renders all countries, not just the first 50", () => {
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
 
         cy.window().should("have.property", "CRM");
         cy.window().its("CRM.localesLoaded").should("eq", true);
@@ -58,7 +58,7 @@ describe("Country/State TomSelect renders the full list (#9677)", () => {
     });
 
     it("Family Editor state dropdown renders all US states, not just the first 50", () => {
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
 
         cy.window().should("have.property", "CRM");
         cy.window().its("CRM.localesLoaded").should("eq", true);

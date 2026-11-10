@@ -97,10 +97,10 @@ describe("Cart to Family — UI", () => {
         // no endpoint can undo — put it back through the editor form.
         REASSIGNED_PERSON_IDS.forEach((personId) => {
             cy.freshAdminFormLogin();
-            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.visit(`/people/person/editor?personId=${personId}`);
             cy.get("#familyId").select("0", { force: true });
             cy.get("#FamilyRole").select("0", { force: true });
-            cy.get('button[name="PersonSubmit"]').click();
+            cy.get('button[name="personSubmit"]').click();
             cy.url().should("contain", "people/view/");
         });
     });

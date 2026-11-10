@@ -16,12 +16,12 @@ describe("Family Second Address", () => {
     const createdFamilyIds = [];
 
     const startNewFamily = (familyName) => {
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.contains("Family Info");
         cy.get("#FamilyName").type(familyName);
-        cy.get('input[name="Address1"]').type("11 Primary Street");
-        cy.get('input[name="City"]').clear().type("Springfield");
-        cy.get('select[name="State"]').select("IL", { force: true });
+        cy.get('input[name="address1"]').type("11 Primary Street");
+        cy.get('input[name="city"]').clear().type("Springfield");
+        cy.get('select[name="state"]').select("IL", { force: true });
     };
 
     const rememberFamilyIdFromUrl = () =>
@@ -53,7 +53,7 @@ describe("Family Second Address", () => {
         cy.get("#SecondCity").type("Othertown");
         cy.get("#SecondIsMailing").should("not.be.disabled").check();
 
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('button[name="familySubmit"]').click();
 
         cy.location("pathname").should("include", "/people/family/");
         rememberFamilyIdFromUrl().then((familyId) => {
@@ -63,20 +63,20 @@ describe("Family Second Address", () => {
             cy.contains("Primary Address").should("exist");
 
             // Unflag → the card becomes "Second Home".
-            cy.visit(`/FamilyEditor.php?FamilyID=${familyId}`);
+            cy.visit(`/people/family/editor?familyId=${familyId}`);
             cy.get("#secondAddressSection").should("have.class", "show");
             cy.get("#SecondAddress1").should("have.value", "PO Box 4242 Suite B");
             cy.get("#SecondIsMailing").uncheck();
-            cy.get('button[name="FamilySubmit"]').click();
+            cy.get('button[name="familySubmit"]').click();
 
             cy.get("#second-address-card").contains("Second Home");
             cy.get("#second-address-card").should("not.contain", "Mailing Address");
 
             // Clear the second address → the card disappears entirely.
-            cy.visit(`/FamilyEditor.php?FamilyID=${familyId}`);
+            cy.visit(`/people/family/editor?familyId=${familyId}`);
             cy.get("#SecondAddress1").clear();
             cy.get("#SecondCity").clear();
-            cy.get('button[name="FamilySubmit"]').click();
+            cy.get('button[name="familySubmit"]').click();
 
             cy.location("pathname").should("include", "/people/family/");
             cy.get("#second-address-card").should("not.exist");
@@ -92,10 +92,10 @@ describe("Family Second Address", () => {
         // Re-enable it to prove the SERVER rejects the flag on its own.
         cy.get("#SecondIsMailing").invoke("prop", "disabled", false);
         cy.get("#SecondIsMailing").check({ force: true });
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('button[name="familySubmit"]').click();
 
         // Still on the editor, with the validation message shown and the section open.
-        cy.location("pathname").should("include", "FamilyEditor.php");
+        cy.location("pathname").should("include", "people/family/editor");
         cy.get("#SecondAddressError").should(
             "contain",
             "Enter a second address before marking it as the mailing address",
@@ -105,10 +105,10 @@ describe("Family Second Address", () => {
 
     it("shows the mailing address on a member's page when the family has no primary address", () => {
         const familyName = "MailingOnly" + Cypress._.random(0, 1e6);
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.contains("Family Info");
         cy.get("#FamilyName").type(familyName);
-        cy.get('input[name="FirstName1"]').type("Mia");
+        cy.get('input[name="firstName1"]').type("Mia");
         cy.get("#secondAddressToggle").click();
         cy.get("#SecondAddress1").type("PO Box 5150");
         cy.get("#SecondCity").type("Othertown");
@@ -147,7 +147,7 @@ describe("Family Second Address", () => {
         cy.get("#secondAddressToggle").click();
         cy.get("#SecondAddress2").type("Apt 7");
         cy.get("#SecondCity").type("Othertown");
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('button[name="familySubmit"]').click();
 
         cy.location("pathname").should("include", "/people/family/");
         rememberFamilyIdFromUrl();
@@ -162,7 +162,7 @@ describe("Family Second Address", () => {
         cy.get("#SecondAddress1").type("PO Box 99");
         cy.get("#SecondCity").type("Othertown");
         cy.get("#SecondIsMailing").check();
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('button[name="familySubmit"]').click();
 
         cy.location("pathname").should("include", "/people/family/");
         rememberFamilyIdFromUrl().then((familyId) => {

@@ -30,13 +30,13 @@ $rootPath = InputUtils::escapeAttribute(SystemURLs::getRootPath());
   <!-- Floating Action Buttons -->
   <div class="fab-container" id="fab-container">
     <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()): ?>
-    <a href="<?= $rootPath ?>/PersonEditor.php" class="fab-button fab-person">
+    <a href="<?= $rootPath ?>/people/person/editor" class="fab-button fab-person">
       <span class="fab-label" id="fab-person-label"></span>
       <div class="fab-icon">
         <i class="fa-solid fa-person-half-dress"></i>
       </div>
     </a>
-    <a href="<?= $rootPath ?>/FamilyEditor.php" class="fab-button fab-family">
+    <a href="<?= $rootPath ?>/people/family/editor" class="fab-button fab-family">
       <span class="fab-label" id="fab-family-label"></span>
       <div class="fab-icon">
         <i class="fa-solid fa-people-roof"></i>

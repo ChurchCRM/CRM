@@ -114,23 +114,23 @@ describe("CSV Export Page", () => {
         // America/Detroit), so read the dates off the form the way a submit would.
         cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).as("serverToday", { type: "static" });
 
-        cy.visit("/FamilyEditor.php");
+        cy.visit("/people/family/editor");
         cy.contains("Family Info");
         cy.get("#FamilyName").type(familyName);
-        cy.get('input[name="Address1"]').type("11 Primary Street");
-        cy.get('input[name="City"]').clear().type("Springfield");
-        cy.get('select[name="State"]').select("IL", { force: true });
+        cy.get('input[name="address1"]').type("11 Primary Street");
+        cy.get('input[name="city"]').clear().type("Springfield");
+        cy.get('select[name="state"]').select("IL", { force: true });
         cy.get("#secondAddressToggle").click();
         cy.get("#SecondAddress1").type("PO Box 1204");
         cy.get("#SecondCity").type("Othertown");
         cy.get("#SecondState").select("IL", { force: true });
         cy.get("#SecondZip").type("62998");
         cy.get("#SecondIsMailing").should("not.be.disabled").check();
-        cy.get('input[name="FirstName1"]').type(members[0]);
-        cy.get('select[name="Classification1"]').select("1", { force: true });
-        cy.get('input[name="FirstName2"]').type(members[1]);
-        cy.get('select[name="Classification2"]').select("1", { force: true });
-        cy.get('button[name="FamilySubmit"]').click();
+        cy.get('input[name="firstName1"]').type(members[0]);
+        cy.get('select[name="classification1"]').select("1", { force: true });
+        cy.get('input[name="firstName2"]').type(members[1]);
+        cy.get('select[name="classification2"]').select("1", { force: true });
+        cy.get('button[name="familySubmit"]').click();
         cy.location("pathname").should("include", "/people/family/");
 
         cy.location("pathname").then((pathname) => {
@@ -203,11 +203,11 @@ describe("CSV Export Page", () => {
 
     it("exports each person's grade name in the Grade column (#10189)", () => {
         cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).as("serverToday", { type: "static" });
-        cy.visit("/PersonEditor.php");
+        cy.visit("/people/person/editor");
         cy.get("#FirstName").type("Greta");
         cy.get("#LastName").type("CsvGrade");
         cy.get("#Grade").select("8");
-        cy.get("button[name='PersonSubmit']").click();
+        cy.get("button[name='personSubmit']").click();
         cy.url().should("match", /\/people\/view\/\d+/).then((url) => {
             const personId = Number(url.match(/\/people\/view\/(\d+)/)[1]);
             cy.get("@serverToday").then((today) => cy.request({

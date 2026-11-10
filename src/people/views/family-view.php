@@ -142,7 +142,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
         <!-- Family Action Toolbar -->
         <div class="d-flex align-items-center mb-3 gap-2 flex-wrap d-print-none">
             <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-            <a class="btn btn-ghost-primary" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>">
+            <a class="btn btn-ghost-primary" href="<?= SystemURLs::getRootPath() ?>/people/family/editor?familyId=<?= $family->getId() ?>">
                 <i class="fa-solid fa-pen me-1"></i><?= gettext('Edit') ?>
             </a>
             <?php } ?>
@@ -251,7 +251,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                 <div class="dropdown-menu dropdown-menu-end">
                     <a class="dropdown-item" href="<?= $person->getViewURI() ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View') ?></a>
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()): ?>
-                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $person->getID() ?>"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
+                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/people/person/editor?personId=<?= $person->getID() ?>"><i class="fa-solid fa-pen me-2"></i><?= gettext('Edit') ?></a>
                     <?php endif; ?>
                     <button class="dropdown-item AddToCart" data-cart-id="<?= $person->getId() ?>" data-cart-type="person"><i class="fa-solid fa-cart-plus me-2"></i><?= gettext('Add to Cart') ?></button>
                     <?php if (AuthenticationManager::getCurrentUser()->isDeleteRecordsEnabled()): ?>
@@ -441,7 +441,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                 gettext('%s was the Head of this family and has been marked deceased. Please assign a new Head of Household.'),
                 InputUtils::escapeHTML(implode(', ', $deceasedHeadNames))
             ) ?>
-            <a href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $family->getId() ?>" class="btn btn-sm btn-warning ms-2"><?= gettext('Edit Family') ?></a>
+            <a href="<?= SystemURLs::getRootPath() ?>/people/family/editor?familyId=<?= $family->getId() ?>" class="btn btn-sm btn-warning ms-2"><?= gettext('Edit Family') ?></a>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="<?= gettext('Close') ?>"></button>
         </div>
         <?php } ?>
@@ -451,7 +451,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                 <h3 class="card-title m-0"><i class="fa-solid fa-people-roof me-1"></i> <?= gettext("Family Members") ?></h3>
                 <span class="badge bg-primary-lt text-primary ms-2"><?= $livingMemberCount ?></span>
                 <?php if (AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) { ?>
-                <a class="btn btn-sm btn-outline-primary ms-auto" href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?FamilyID=<?= $family->getId() ?>">
+                <a class="btn btn-sm btn-outline-primary ms-auto" href="<?= SystemURLs::getRootPath() ?>/people/person/editor?familyId=<?= $family->getId() ?>">
                     <i class="fa-solid fa-user-plus me-1"></i><?= gettext('Add Member') ?>
                 </a>
                 <?php } ?>

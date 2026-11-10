@@ -7,7 +7,7 @@ describe("Family member actions on a person profile respect DeleteRecords", () =
         cy.setupNoFinanceSession();
         cy.visit("/people/view/2");
         // This family has other members, so this is a real menu-permission test.
-        cy.get('.dropdown-menu a[href*="PersonEditor.php?PersonID="]')
+        cy.get('.dropdown-menu a[href*="people/person/editor?personId="]')
             .should("have.length.at.least", 1);
         cy.get('.dropdown-menu .delete-person[data-view="family"]').should("not.exist");
         cy.get("#deletePersonBtn").should("not.exist");
