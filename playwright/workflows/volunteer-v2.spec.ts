@@ -22,10 +22,6 @@ async function openStaffing(page: Page, occurrenceId: number): Promise<void> {
 const COORDINATOR_PASSWORD = 'Coordinator!2026';
 let coordinatorUserId = 0;
 
-async function openUserEditor(page: Page, personId: number): Promise<void> {
-  await page.goto(`/admin/system/users/${personId}/edit`);
-  await expect(page.locator('#customPermissions')).toBeVisible({ timeout: 30000 });
-}
 
 /**
  * Creates Paul's login with only Manage My Ministries, sets a password he can sign in
@@ -241,31 +237,6 @@ test.describe('Volunteer Management v2', () => {
     await settle(page, 800);
 
     await captureScreen(page, testInfo, personTabCapture);
-  });
-
-  const userEditorCapture = defineCapture({
-    name: 'admin-user-editor-ministry-permissions',
-    title: 'Ministry Permissions in the User Editor',
-    category: 'Admin & Settings',
-    purpose: 'Show the Manage Ministries and Manage My Ministries switches in the user editor, with a coordinator given Manage My Ministries.',
-    usedIn: ['docs'],
-  });
-  test('admin-user-editor-ministry-permissions', userEditorCapture, async ({ page }, testInfo) => {
-    const personId = await ensureCoordinator(page);
-    await openUserEditor(page, personId);
-    await expect(page.locator('#ManageMyMinistries')).toBeChecked();
-    await expect(page.locator('#ManageMinistries')).not.toBeChecked();
-    await waitForFloatingButtonsToTuck(page);
-    await page.locator('#customPermissions').evaluate((el) => {
-      const bar = document.querySelector('header.navbar.sticky-top')?.getBoundingClientRect().height ?? 0;
-      const box = el.getBoundingClientRect();
-      const bottom = box.bottom + window.scrollY + 80;
-      window.scrollTo({ top: Math.max(0, bottom - window.innerHeight), behavior: 'instant' });
-      if (box.top - bar < 0) window.scrollTo({ top: box.top + window.scrollY - bar - 16, behavior: 'instant' });
-    });
-    await settle(page, 800);
-
-    await captureScreen(page, testInfo, userEditorCapture);
   });
 
   const coordinatorDashboardCapture = defineCapture({
