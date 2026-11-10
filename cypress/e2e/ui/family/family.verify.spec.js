@@ -17,14 +17,65 @@ function verifyPathFromApiUrl(absoluteUrl) {
 describe("Family verification — self-verify token link (no account)", () => {
     const familyId = 1;
 
+    // The tests that POST create verify notes. Those notes must not land on the
+    // seeded family: an earlier "Change requested" note would satisfy the
+    // assertion even if the current POST saved nothing, and the note DELETE API
+    // cannot remove verify notes — so a disposable family with members is
+    // registered in before() and deleted in after() instead (#11339).
+    const disposableFamilyIds = [];
+    let disposableFamilyId;
+    let savedSelfReg;
+
+    const registerDisposableFamily = () =>
+        cy
+            .request({
+                method: "POST",
+                url: "/api/public/register/family",
+                body: {
+                    Name: `CypressVerify ${Date.now()}`,
+                    Address1: "1 Verify Way",
+                    City: "Testville",
+                    State: "TS",
+                    Country: "US",
+                    Zip: "00000",
+                    people: [
+                        { firstName: "Vera", lastName: "Verify", gender: 2, role: 1, email: "" },
+                        { firstName: "Victor", lastName: "Verify", gender: 1, role: 2, email: "" },
+                    ],
+                },
+            })
+            .then((response) => {
+                disposableFamilyIds.push(response.body.Id);
+                disposableFamilyId = response.body.Id;
+            });
+
+    before(() => {
+        // Registration is how this suite obtains a disposable family with
+        // members; enable it only for the setup window and restore afterwards.
+        cy.getSystemConfig("bEnableSelfRegistration").then((value) => {
+            savedSelfReg = value;
+        });
+        cy.makePrivateAdminAPICall("POST", "admin/api/system/config/bEnableSelfRegistration", { value: "1" });
+        registerDisposableFamily();
+    });
+
+    after(() => {
+        cy.cleanupFamilies(disposableFamilyIds);
+        cy.restoreSystemConfig("bEnableSelfRegistration", savedSelfReg);
+    });
+
     beforeEach(() => {
         // No browser session needed: API call uses x-api-key header auth,
-        // and the verify page is public (token-based, no login required)
+        // and the verify page is public (token-based, no login required).
+        // A fresh token is minted per test: the exhaustion test spends all five.
         cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200).then((response) => {
             // API url is absolute from SystemURLs::getURL() ($URL[0]). Follow the
             // path relative to cy.baseUrl. Strip baseUrl's own path so subdir CI
             // (baseUrl .../churchcrm/) does not visit /churchcrm/churchcrm/... (#9871).
             cy.wrap(verifyPathFromApiUrl(response.body.url)).as("verifyUrl");
+        });
+        cy.makePrivateAdminAPICall("GET", `/api/family/${disposableFamilyId}/verify/url`, null, 200).then((response) => {
+            cy.wrap(verifyPathFromApiUrl(response.body.url)).as("disposableVerifyUrl");
         });
     });
 
@@ -76,7 +127,7 @@ describe("Family verification — self-verify token link (no account)", () => {
 
         cy.intercept("POST", "**/external/verify/*").as("verifySubmit");
 
-        cy.visit(this.verifyUrl);
+        cy.visit(this.disposableVerifyUrl);
         cy.get("#confirmVerifyBtn").click();
         cy.get("#confirm-Verify").should("be.visible");
 
@@ -93,13 +144,13 @@ describe("Family verification — self-verify token link (no account)", () => {
         cy.makePrivateAdminAPICall("GET", "/api/families/self-verify", null, 200).then((resp) => {
             const notes = resp.body.families;
             const found = notes.find(
-                (n) => Number(n.FamId) === familyId && n.Text === uniqueMessage
+                (n) => Number(n.FamId) === disposableFamilyId && n.Text === uniqueMessage
             );
             expect(found, "self-verify note for the family should exist with the submitted message").to.exist;
         });
 
-        cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}`, null, 200).then((resp) => {
-            expect(resp.body.Id).to.equal(familyId);
+        cy.makePrivateAdminAPICall("GET", `/api/family/${disposableFamilyId}`, null, 200).then((resp) => {
+            expect(resp.body.Id).to.equal(disposableFamilyId);
         });
     });
 
@@ -108,7 +159,7 @@ describe("Family verification — self-verify token link (no account)", () => {
         // email scanners and refreshes must not burn the family's attempts,
         // so more GETs than the token has uses all still render the page.
         Cypress._.times(6, () => {
-            cy.request(this.verifyUrl).its("body").should("include", "confirmVerifyBtn");
+            cy.request(this.disposableVerifyUrl).its("body").should("include", "confirmVerifyBtn");
         });
 
         // A successful submission is what spends a use. Once the five uses
@@ -116,7 +167,7 @@ describe("Family verification — self-verify token link (no account)", () => {
         Cypress._.times(5, () => {
             cy.request({
                 method: "POST",
-                url: this.verifyUrl,
+                url: this.disposableVerifyUrl,
                 form: true,
                 body: { verifyType: "no-change" },
             })
@@ -124,7 +175,7 @@ describe("Family verification — self-verify token link (no account)", () => {
                 .should("eq", 200);
         });
 
-        cy.request(this.verifyUrl)
+        cy.request(this.disposableVerifyUrl)
             .its("body")
             .should("not.include", "confirmVerifyBtn")
             .and("include", "Unable to load verification info");
@@ -132,10 +183,12 @@ describe("Family verification — self-verify token link (no account)", () => {
 
     it("Should save a change request when change-needed is posted with no comment", function() {
         // "change needed" with an empty comment must not be recorded as
-        // "No Changes" (#11145): the note keeps the change request.
+        // "No Changes" (#11145): the note keeps the change request. The
+        // disposable family starts with no notes, so the assertion cannot be
+        // satisfied by an earlier run's leftover.
         cy.request({
             method: "POST",
-            url: this.verifyUrl,
+            url: this.disposableVerifyUrl,
             form: true,
             body: { verifyType: "change-needed" },
         })
@@ -145,7 +198,7 @@ describe("Family verification — self-verify token link (no account)", () => {
         cy.makePrivateAdminAPICall("GET", "/api/families/self-verify", null, 200).then((resp) => {
             const notes = resp.body.families;
             const found = notes.find(
-                (n) => Number(n.FamId) === familyId && n.Text === "Change requested"
+                (n) => Number(n.FamId) === disposableFamilyId && n.Text === "Change requested"
             );
             expect(found, "an empty change-needed POST should save a change request note").to.exist;
         });
