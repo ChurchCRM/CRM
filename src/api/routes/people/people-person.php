@@ -118,7 +118,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
         
         return SlimUtils::renderPhoto($response, $photo);
-    })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
+    })->add(new Cache('private', Photo::CACHE_DURATION_SECONDS));
     
     // Avatar info endpoint - returns JSON with initials, gravatar info for client-side rendering
     // Returns fallback data even for invalid person IDs (no PersonMiddleware needed)
@@ -241,6 +241,10 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $personJSON = $person->exportTo('JSON');
         $personData = json_decode($personJSON, true);
         $personData['singlePersonCustom'] = $person->getVisibleCustomFieldValues();
+        if ($person->hideAge() && !$currentUser->canEditPerson((int) $person->getId(), $personFamilyId)) {
+            $personData['BirthYear'] = null;
+            $personData['Flags'] = null;
+        }
 
         return SlimUtils::renderStringJSON($response, json_encode($personData));
     });

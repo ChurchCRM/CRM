@@ -151,11 +151,24 @@ class TimelineService
     {
         $timeline = array_merge(
             $this->notesForPerson($personID, null),
-            $this->eventsForPerson($personID),
+            $this->canSeeAttendance($personID) ? $this->eventsForPerson($personID) : [],
             $this->emailsForPerson($personID)
         );
 
         return $this->sortTimeline($timeline);
+    }
+
+    /**
+     * Attendance is as private as the attendance API: the person themselves or a user who may edit them.
+     */
+    private function canSeeAttendance(int $personID): bool
+    {
+        if ($personID === (int) $this->currentUser->getId()) {
+            return true;
+        }
+        $person = PersonQuery::create()->findPk($personID);
+
+        return $person !== null && $this->currentUser->canEditPerson($personID, (int) $person->getFamId());
     }
 
     /**

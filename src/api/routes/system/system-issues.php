@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
@@ -17,6 +18,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  * @OA\Post(
  *     path="/issues",
  *     summary="Generate a GitHub issue body pre-filled with system diagnostics",
+ *     description="Server details (OS, web server, PHP and database versions, installation ID, custom field counts, prerequisites) are included only for admins.",
  *     tags={"System"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(required=true,
@@ -46,29 +48,39 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 $app->post('/issues', function (Request $request, Response $response, array $args): Response {
     $data = json_decode($request->getBody(), null, 512);
     $localeInfo = Bootstrapper::getCurrentLocale();
-    $issueDescription =
-        "Collected Value Title |  Data \r\n" .
-        "----------------------|----------------\r\n" .
-        'Page Name |' . $data->pageName . "\r\n" .
-        'Screen Size |' . $data->screenSize->height . 'x' . $data->screenSize->width . "\r\n" .
-        'Window Size |' . $data->windowSize->height . 'x' . $data->windowSize->width . "\r\n" .
-        'Page Size |' . $data->pageSize->height . 'x' . $data->pageSize->width . "\r\n" .
-        'Platform Information | ' . php_uname($mode = 'a') . "\r\n" .
-        'Web Server |' . ($_SERVER['SERVER_SOFTWARE'] ?? 'Unknown') . "\r\n" .
-        'PHP Version | ' . phpversion() . "\r\n" .
-        'SQL Version | ' . SystemService::getDBServerVersion() . "\r\n" .
-        'ChurchCRM Version |' . VersionUtils::getInstalledVersion() . "\r\n" .
-        'Installation ID |' . SystemConfig::getValue('sSystemID') . "\r\n" .
-        'Reporting Browser |' . ($_SERVER['HTTP_USER_AGENT'] ?? 'API') . "\r\n" .
-        'System Locale |' . $localeInfo->getSystemLocale() . "\r\n" .
-        'User Locale |' . $localeInfo->getLocale() . "\r\n" .
-        'Browser Locale |' . ($data->browserLocale ?? 'Unknown') . "\r\n" .
-        'Church Country |' . ChurchMetaData::getChurchCountry() . "\r\n" .
-        'System Timezone |' . ChurchMetaData::getChurchTimeZone() . "\r\n" .
-        'Browser Timezone |' . ($data->browserTimezone ?? 'Unknown') . "\r\n" .
-        'Person Custom Fields |' . PersonCustomMasterQuery::create()->count() . "\r\n" .
-        'Family Custom Fields |' . FamilyCustomMasterQuery::create()->count() . "\r\n" .
-        'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n";
+    $rows = [
+        'Page Name' => $data->pageName,
+        'Screen Size' => $data->screenSize->height . 'x' . $data->screenSize->width,
+        'Window Size' => $data->windowSize->height . 'x' . $data->windowSize->width,
+        'Page Size' => $data->pageSize->height . 'x' . $data->pageSize->width,
+        'ChurchCRM Version' => VersionUtils::getInstalledVersion(),
+        'Reporting Browser' => $_SERVER['HTTP_USER_AGENT'] ?? 'API',
+        'System Locale' => $localeInfo->getSystemLocale(),
+        'User Locale' => $localeInfo->getLocale(),
+        'Browser Locale' => $data->browserLocale ?? 'Unknown',
+        'Church Country' => ChurchMetaData::getChurchCountry(),
+        'System Timezone' => ChurchMetaData::getChurchTimeZone(),
+        'Browser Timezone' => $data->browserTimezone ?? 'Unknown',
+    ];
+
+    if (AuthenticationManager::getCurrentUser()->isAdmin()) {
+        $rows += [
+            'Platform Information' => php_uname('a'),
+            'Web Server' => $_SERVER['SERVER_SOFTWARE'] ?? 'Unknown',
+            'PHP Version' => phpversion(),
+            'SQL Version' => SystemService::getDBServerVersion(),
+            'Installation ID' => SystemConfig::getValue('sSystemID'),
+            'Person Custom Fields' => PersonCustomMasterQuery::create()->count(),
+            'Family Custom Fields' => FamilyCustomMasterQuery::create()->count(),
+            'Prerequisite Status' => SystemService::getPrerequisiteStatus(),
+        ];
+    }
+
+    $issueDescription = "Collected Value Title |  Data \r\n" .
+        "----------------------|----------------\r\n";
+    foreach ($rows as $title => $value) {
+        $issueDescription .= $title . ' |' . $value . "\r\n";
+    }
 
     return SlimUtils::renderJSON($response, ['issueBody' => $issueDescription]);
 });

@@ -67,7 +67,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
 
         return SlimUtils::renderPhoto($response, $photo);
-    })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
+    })->add(new Cache('private', Photo::CACHE_DURATION_SECONDS));
 
     /**
      * @OA\Get(

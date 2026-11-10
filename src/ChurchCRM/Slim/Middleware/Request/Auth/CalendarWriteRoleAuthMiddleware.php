@@ -5,8 +5,7 @@ namespace ChurchCRM\Slim\Middleware\Request\Auth;
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Calendar;
-use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
+use ChurchCRM\Service\CalendarAccessService;
 use ChurchCRM\Slim\Middleware\BrowserRequestTrait;
 use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response;
@@ -60,7 +59,7 @@ class CalendarWriteRoleAuthMiddleware implements MiddlewareInterface
 
         $calendar = $request->getAttribute('calendar');
 
-        if (!$this->mayWrite($user, $calendar instanceof Calendar ? $calendar : null)) {
+        if (!(new CalendarAccessService())->canWriteCalendar($user, $calendar instanceof Calendar ? $calendar : null)) {
             LoggerUtils::getAppLogger()->warning('User lacks write access to this calendar', [
                 'path' => $request->getUri()->getPath(),
                 'method' => $request->getMethod(),
@@ -77,24 +76,6 @@ class CalendarWriteRoleAuthMiddleware implements MiddlewareInterface
         }
 
         return $handler->handle($request);
-    }
-
-    private function mayWrite(User $user, ?Calendar $calendar): bool
-    {
-        if ($user->canManageEvents()) {
-            return true;
-        }
-
-        if ($calendar === null || !User::isVolunteerV2Enabled()) {
-            return false;
-        }
-
-        $ministryId = $calendar->getMinistryId();
-        if ($ministryId === null) {
-            return false;
-        }
-
-        return (new VolunteerAuthorizationService())->canManageMinistry($user, (int) $ministryId);
     }
 
     private function refuse(Request $request, string $message, int $status, string $role): ResponseInterface

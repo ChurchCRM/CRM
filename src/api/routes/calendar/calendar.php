@@ -4,10 +4,12 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Dashboard\EventsMenuItems;
 use ChurchCRM\dto\FullCalendarEvent;
 use ChurchCRM\dto\SystemCalendars;
+use ChurchCRM\SystemCalendars\SystemCalendar;
 use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\User;
+use ChurchCRM\Service\CalendarAccessService;
 use ChurchCRM\Volunteer\Middleware\VolunteerV2EnabledMiddleware;
 use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerCalendarService;
@@ -62,7 +64,7 @@ $app->group('/systemcalendars', function (RouteCollectorProxy $group): void {
  *     path="/systemcalendars",
  *     operationId="getSystemCalendars",
  *     summary="List all system calendars",
- *     description="Returns built-in system calendars (birthdays, anniversaries, events).",
+ *     description="Returns built-in system calendars (birthdays, anniversaries, events). The fundraiser calendar is listed only for users who can manage fundraisers.",
  *     tags={"Calendar"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Array of system calendar objects"),
@@ -71,7 +73,26 @@ $app->group('/systemcalendars', function (RouteCollectorProxy $group): void {
  */
 function getSystemCalendars(Request $request, Response $response, array $args): Response
 {
-    return SlimUtils::renderStringJSON($response, SystemCalendars::getCalendarList()->toJSON());
+    $user = AuthenticationManager::getCurrentUser();
+    $access = new CalendarAccessService();
+    $calendars = [];
+    foreach (SystemCalendars::getCalendars() as $calendar) {
+        if ($access->canViewSystemCalendar($user, $calendar)) {
+            $calendars[] = SystemCalendars::toPropelCalendar($calendar);
+        }
+    }
+
+    return SlimUtils::renderJSON($response, ['Calendars' => $access->toApiArray($calendars, $user)]);
+}
+
+function getViewableSystemCalendar(Request $request, int $id): SystemCalendar
+{
+    $calendar = SystemCalendars::getCalendarById($id);
+    if ($calendar === null || !(new CalendarAccessService())->canViewSystemCalendar(AuthenticationManager::getCurrentUser(), $calendar)) {
+        throw new HttpNotFoundException($request, 'Calendar ID not found!');
+    }
+
+    return $calendar;
 }
 
 /**
@@ -91,10 +112,7 @@ function getSystemCalendars(Request $request, Response $response, array $args): 
  */
 function getSystemCalendarEvents(Request $request, Response $response, array $args): Response
 {
-    $Calendar = SystemCalendars::getCalendarById((int) $args['id']);
-    if (!$Calendar) {
-        throw new HttpNotFoundException($request, 'Calendar ID not found!');
-    }
+    $Calendar = getViewableSystemCalendar($request, (int) $args['id']);
 
     $start = $request->getQueryParams()['start'] ?? '';
     $end = $request->getQueryParams()['end'] ?? '';
@@ -120,10 +138,7 @@ function getSystemCalendarEvents(Request $request, Response $response, array $ar
  */
 function getSystemCalendarEventById(Request $request, Response $response, array $args): Response
 {
-    $Calendar = SystemCalendars::getCalendarById((int) $args['id']);
-    if (!$Calendar) {
-        throw new HttpNotFoundException($request, 'Calendar ID not found!');
-    }
+    $Calendar = getViewableSystemCalendar($request, (int) $args['id']);
 
     $event = $Calendar->getEventById((int) $args['eventid']);
     if ($event === null) {
@@ -154,11 +169,7 @@ function getSystemCalendarFullCalendarEvents(Request $request, Response $respons
         throw new InvalidArgumentException('Calendar ID must be an integer!');
     }
 
-    $calendarId = (int) $args['id'];
-    $Calendar = SystemCalendars::getCalendarById($calendarId);
-    if (!$Calendar) {
-        throw new HttpNotFoundException($request, 'Calendar ID not found!');
-    }
+    $Calendar = getViewableSystemCalendar($request, (int) $args['id']);
 
     $start = $request->getQueryParams()['start'] ?? '';
     $end = $request->getQueryParams()['end'] ?? '';
@@ -175,7 +186,7 @@ function getSystemCalendarFullCalendarEvents(Request $request, Response $respons
  *     path="/calendars",
  *     operationId="getUserCalendars",
  *     summary="List user-created calendars",
- *     description="Returns all user calendars. Optionally filter by ID using GET /calendars/{id}.",
+ *     description="Returns all user calendars. Optionally filter by ID using GET /calendars/{id}. AccessToken is null unless the caller may administer that calendar.",
  *     tags={"Calendar"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Array of calendar objects"),
@@ -201,16 +212,15 @@ function getUserCalendars(Request $request, Response $response, array $args): Re
         $CalendarQuery->filterById($args['id']);
     }
     $Calendars = $CalendarQuery->find();
-    if (!$Calendars) {
-        throw new HttpNotFoundException($request, 'No calendars returned');
-    }
 
     // Prevent caching of calendar API responses
     $response = $response
         ->withHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
         ->withHeader('Pragma', 'no-cache');
 
-    return SlimUtils::renderStringJSON($response, $Calendars->toJSON());
+    $calendars = (new CalendarAccessService())->toApiArray($Calendars, AuthenticationManager::getCurrentUser());
+
+    return SlimUtils::renderJSON($response, ['Calendars' => $calendars]);
 }
 
 /**

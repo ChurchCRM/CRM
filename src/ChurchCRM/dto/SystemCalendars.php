@@ -11,17 +11,11 @@ use ChurchCRM\SystemCalendars\BirthdaysCalendar;
 use ChurchCRM\SystemCalendars\FundraisersCalendar;
 use ChurchCRM\SystemCalendars\SystemCalendar;
 use ChurchCRM\SystemCalendars\UnpinnedEvents;
-use Propel\Runtime\Collection\ObjectCollection;
 
 class SystemCalendars
 {
     /**
      * Every system calendar this installation has, core and plugin-registered.
-     *
-     * Public since #9866: the Member Portal chooses which calendars members
-     * see, and it needs the calendar objects themselves — a name, its colours
-     * and its `getEvents()` — not the Propel stand-ins `getCalendarList()`
-     * returns for the JSON API.
      *
      * @return SystemCalendar[]
      */
@@ -49,17 +43,6 @@ class SystemCalendars
             $calendars = HookManager::applyFilters(Hooks::SYSTEM_CALENDARS_REGISTER, $calendars);
         } catch (\Throwable $e) {
             // Plugin discovery failure must not break core calendars
-        }
-
-        return $calendars;
-    }
-
-    public static function getCalendarList(): ObjectCollection
-    {
-        $calendars = new ObjectCollection();
-        $calendars->setModel(Calendar::class);
-        foreach (self::getCalendars() as $calendar) {
-            $calendars->push(self::toPropelCalendar($calendar));
         }
 
         return $calendars;
