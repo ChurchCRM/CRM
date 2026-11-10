@@ -13,14 +13,14 @@ intent: How agents commit and push on ChurchCRM.
 - Branch every PR from `master`, one per independent change. Base a PR on another unmerged PR only when it needs that PR's code; a PR that removes what the others stopped using waits until they merge, then branches from `master`. The last PR of an epic says `Part of #epic`; a maintainer closes the epic
 - Do not set a milestone by hand. On merge, `.github/workflows/pr-milestone-stamp.yml` stamps the PR and every issue it fixes with the `package.json` `version` (7.8.0 → milestone `7.8.0`) and closes those issues if they are still open. When the PR finishes an issue, the body says `Fixes #N` (not `refs`)
 - A bug uses the GitHub issue type Bug. Do not add a `bug` label. Other issue labels are one of `enhancement`, `question`, `Documentation`, `Epic`, `refactor`, or `cleanup`, plus the area labels that fit (`Feature: ...`, `UI`, `API`, `Security`, `Platform: ...`). `Integration Testing` is Cypress and other automated tests of the app. Playwright work (captures, screenshots, videos, the marketing pipeline) is `Marketing`, never `Integration Testing`. Copy exact names from `gh label list --repo ChurchCRM/CRM`. Never invent a label. Do not use `feature` (use `enhancement`), `volunteer` (use `Feature: Volunteer`), or `translation` (use `Localization`). `Epic` is only for a parent that tracks child issues. Do not add `Stale` by hand. The Monday hygiene workflow asks for a reply after 45 quiet days and closes 14 days later if nobody answers. `Security`, `security-delete-required`, `Epic`, and `good first issue` stay open. `dependencies` is Dependabot only; human dependency work uses `Package Dependencies`
-- `npm run lint` and the matching build before you ask to commit
-- UI change: check the pages in a real browser before you ask to commit, in light and dark themes, at desktop, tablet (about 820px), and phone width (browsers stop near 500px). Look for column widths, wrapping, horizontal scroll, and working menus. Fix what is off, then look again
+- `npm run lint` and the matching build before you commit
+- UI change: check the pages in a real browser before you commit, in light and dark themes, at desktop, tablet (about 820px), and phone width (browsers stop near 500px). Look for column widths, wrapping, horizontal scroll, and working menus. Fix what is off, then look again
 - UI PR: attach screenshots of the important pages (desktop, plus tablet or phone) to the PR description. Take them in that browser pass on seeded data, never real names or emails. State in the PR body that the light/dark and tablet/mobile pass was done
-- Before you ask to push, run every Cypress spec the change touches (new and existing) against the seeded test stack: `npm run docker:test:reset:db`, then `npx cypress run --config-file cypress/configs/docker.config.ts --spec "a.spec.js,b.spec.js"`. Report the pass counts. Push CI is not where a spec first fails
+- Before you push, run every Cypress spec the change touches (new and existing) against the seeded test stack: `npm run docker:test:reset:db`, then `npx cypress run --config-file cypress/configs/docker.config.ts --spec "a.spec.js,b.spec.js"`. Report the pass counts. Push CI is not where a spec first fails
 - Stage files by explicit path, never `git add -A` / `.`. Before commit, `git status --short` and `git diff --cached --name-status` must list only files the task expects; unstage or delete strays (editor/`sed -i` backups like `*-E`, generated files, symlinks) first
-- Show the diff. Wait for yes before commit
+- The diff goes in the PR body, not in a pre-commit approval stop. Report the PR link after the push
 - Title and body match the current diff
-- Never `--force`. `--force-with-lease` only after an approved rebase
+- Never `--force`. `--force-with-lease` only to push a rebase of your own already-pushed task branch
 - Fixing an existing PR: push to that PR's head branch. A push to any other branch can auto-open a duplicate PR
 - Keep unrelated fixes (a CI retry beside a security fix) in their own PR
 - Do not merge `master` into a contributor branch or push to their branch unless asked
@@ -28,23 +28,33 @@ intent: How agents commit and push on ChurchCRM.
 
 ## Docker checkout
 
-Run Docker from the main repository checkout. Before Docker work, ask whether to switch that checkout to the task branch and wait for the user’s answer.
+Do not switch the maintainer's checkout to the task branch for Docker work. Agents run Docker from their own worktree on its own Compose project. Switching the maintainer's checkout still needs a yes.
 
-## Commit freely, push only on approval
+## Task approval covers commit and push
 
-`git commit` and `git push` are separate gates.
+Approval attaches to the task, not to each git operation. When a maintainer assigns a task — hands over an issue or a prompt, or says run it — that approval covers, inside the task's scope:
 
-- Commit after lint + build + shown diff + yes on the diff
-- Push only when the **latest** user message says push ("push", "push it", "go ahead and push"). "lgtm" on a diff is commit-only
-- Exception: no new approval to push a fix for failing CI or for a merge conflict on a branch you already pushed with approval. A conflict fixed by rebase pushes with `--force-with-lease`. Run `npm run lint` first, and push only the fix. New work still waits for "push"
+- Creating the task branch, committing, pushing it, and opening a draft PR
+- Pushing follow-up commits to that same branch: CI fixes, review-comment fixes, and merge-conflict fixes (rebase, then `--force-with-lease`)
+- Pushing each independent PR as soon as its slice is ready, so CI and review start on it while the next slice is built
 
-Every push runs the full GitHub CI matrix (about 15-20 billable minutes).
+Do not stop to show a diff for a yes before committing, and do not wait for a message that says "push". The PR carries the diff; report after the push with the PR link, the validation results, and anything unresolved.
+
+The checks before a push do not change — lint, build, and the touched specs above. They are gates the agent runs, not maintainer taps.
+
+Still needs a specific yes, every time:
+
+- Merge, closing an issue by hand, a release, or publishing
+- A push to `master` or another protected branch, a push to someone else's branch, or a plain `--force`
+- Anything outside the assigned task's scope — a new issue, an unrelated fix, a scope expansion. Stop and ask there; that is where the decision is.
+
+Every push runs the full GitHub CI matrix (about 15-20 billable minutes), so push finished slices, not half-done increments.
 
 ## Mandatory Pre-Push Biome Check
 
 `.githooks/pre-push` runs `npm run lint`. `package.json` `prepare` sets `core.hooksPath=.githooks`. No-op when `$CI` or `$GITHUB_ACTIONS` is set.
 
-Agents run `npm run lint` themselves before asking to push. Never `git push --no-verify` unless the maintainer authorizes a hotfix and the PR names the bypass.
+Agents run `npm run lint` themselves before pushing. Never `git push --no-verify` unless the maintainer authorizes a hotfix and the PR names the bypass.
 
 ### Pre-Push Checkpoint Owns Local Deterministic Validation
 

@@ -32,7 +32,7 @@ Always-on:
 @.agents/skills/churchcrm/git-workflow.md
 
 Keep these heading names (this file links them):
-[Commit freely, push only on approval](.agents/skills/churchcrm/git-workflow.md),
+[Task approval covers commit and push](.agents/skills/churchcrm/git-workflow.md),
 [Mandatory Pre-Push Biome Check](.agents/skills/churchcrm/git-workflow.md),
 [Strict vs Loose Comparisons](.agents/skills/churchcrm/code-standards.md).
 
