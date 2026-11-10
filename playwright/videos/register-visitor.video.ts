@@ -4,7 +4,7 @@ import { captureScreen } from '../support/capture';
 import { humanClick, humanPause, humanSelect, humanType, settle } from '../support/human';
 
 test('register-first-time-visitor', async ({ page }, testInfo) => {
-  await page.goto('/PersonEditor.php');
+  await page.goto('/people/person/editor');
   await humanPause(page, 1000);
   await humanType(page.locator('#FirstName'), 'Avery');
   await humanType(page.locator('#LastName'), 'Morgan');
