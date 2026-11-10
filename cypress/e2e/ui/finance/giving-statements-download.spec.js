@@ -14,6 +14,23 @@ const expectPdf = (response) => {
 describe("Giving statements download", () => {
     beforeEach(() => cy.setupAdminSession());
 
+    it("Statement Settings previews only fictional gifts, ignoring donor filters", () => {
+        cy.visit("/finance/statements/settings");
+        cy.contains("a", "Preview PDF").should("have.attr", "href").then((href) => {
+            expect(href).to.include("/finance/reports/giving-statements/sample");
+            cy.request({ url: `${href}?familyId=1&year=2018&output=csv`, encoding: "binary" }).then((response) => {
+                expectPdf(response);
+                return pdfText(response.body).then((lines) => {
+                    const text = lines.join(" ");
+                    expect(text).to.include("Sample Family (fictional)");
+                    expect(text).to.include("Sample General Fund");
+                    expect(text).to.include("Sample Missions Fund");
+                    expect(text).to.not.include("Campbell");
+                });
+            });
+        });
+    });
+
     it("a family's statement opens from its profile link, and the CSV has the same rows", () => {
         cy.request({ url: `${download}?familyId=1&year=2018`, encoding: "binary" }).then(expectPdf);
         cy.request(`${download}?${range}&output=csv`).then((response) => {
