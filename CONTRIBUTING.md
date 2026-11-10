@@ -42,13 +42,13 @@ Clear, accurate content helps congregations understand what ChurchCRM can do and
 
 ### Improve Documentation
 
-The [official documentation site](https://docs.churchcrm.io) covers every feature but always needs clearer explanations, better examples, and updated screenshots. The docs are Markdown files in the [docs.churchcrm.io repository](https://github.com/ChurchCRM/docs.churchcrm.io).
+The [official documentation site](https://docs.churchcrm.io) covers every feature but always needs clearer explanations and better examples. The docs are Markdown files in the [docs.churchcrm.io repository](https://github.com/ChurchCRM/docs.churchcrm.io).
 
 **What's needed:**
-- Clearer how-to steps for existing guides
+- Clearer guides that lead with the outcome, the decisions, and the gotchas
 - New guides for features that lack documentation
 - Correcting outdated information after releases
-- Adding screenshots showing the current Tabler UI
+- Screenshots where they make a page clearly easier to follow (a workflow story, a result screen, a before/after), not for every form
 
 **No GitHub experience required** — you can [edit pages directly in the browser](https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files) on GitHub.
 
@@ -87,7 +87,6 @@ You don't need to be a developer to test ChurchCRM. Browser testing, accessibili
 ChurchCRM's marketing site, documentation, and social presence all need visual assets — screenshots, promotional graphics, social media images, and UI design feedback.
 
 **What's needed:**
-- Updated screenshots showing the current ChurchCRM interface (Tabler UI)
 - Social media graphics for feature announcements
 - Promotional images for blog posts
 - UI/UX feedback on the application — what feels confusing, what could be clearer

@@ -6,6 +6,7 @@
  * groupEmailExport before this bundle loads.
  */
 
+import { notifyAPIError } from "../api-utils";
 import { confirmAction, promptAction } from "../common/confirm-action";
 import { initPersonSelect } from "../common/person-select";
 import { setMemberRole } from "./group-api";
@@ -539,10 +540,7 @@ function initializeGroupView() {
   });
 
   const notifyGroupUpdateFailed = (xhr) => {
-    window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to update group. Please try again."), {
-      type: "danger",
-      delay: 5000,
-    });
+    notifyAPIError(xhr, i18next.t("Failed to update group. Please try again."));
   };
 
   $("#toggleGroupActive").on("click", (e) => {

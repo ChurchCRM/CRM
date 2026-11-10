@@ -13,6 +13,8 @@ use ChurchCRM\Plugin\PluginManager;
   </div>
 </div>
 
+<?php require __DIR__ . '/partials/toast-container.php'; ?>
+
   <?= PluginManager::getPluginFooterContent() ?>
 </body>
 </html>

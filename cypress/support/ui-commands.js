@@ -559,7 +559,7 @@ Cypress.Commands.add('waitForLocales', (timeout = 10000) => {
 });
 
 /**
- * Wait for a Notyf notification with specific text
+ * Wait for a toast notification with specific text
  * Ensures locales are loaded first (for i18next translations) and verifies notification content
  * @param {string} expectedText - The text to find in the notification
  * @param {object} options - Optional config { timeout: 5000 }
@@ -572,7 +572,7 @@ Cypress.Commands.add('waitForNotification', (expectedText, options = {}) => {
     cy.waitForLocales(timeout);
     
     // Wait for notification toast to appear and contain the expected text
-    cy.get('.notyf__toast', { timeout })
+    cy.get('#crm-toasts .toast', { timeout })
         .should('be.visible')
         .should('contain', expectedText);
 });
