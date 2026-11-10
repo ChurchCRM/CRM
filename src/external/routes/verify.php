@@ -18,7 +18,8 @@ $app->group('/verify', function (RouteCollectorProxy $group): void {
         if ($token !== null && $token->isVerifyFamilyToken() && $token->isValid()) {
             $family = FamilyQuery::create()->findPk($token->getReferenceId());
             $haveFamily = ($family !== null);
-            $token->consume();
+            // Reading the page never consumes a use (#11145): link previews,
+            // email scanners and refreshes must not burn the family's attempts.
         }
 
         if ($haveFamily) {
@@ -41,9 +42,13 @@ $app->group('/verify', function (RouteCollectorProxy $group): void {
                 $note->setText(gettext('No Changes'));
                 if (!empty($body['message'])) {
                     $note->setText(InputUtils::escapeHTML($body['message']));
+                } elseif (($body['verifyType'] ?? '') === 'change-needed') {
+                    // "change needed" with no comment must not be recorded as
+                    // "No Changes" (#11145): keep it a change request.
+                    $note->setText(gettext('Change requested'));
                 }
                 $note->save();
-                
+
                 // Consume the token after successful verification
                 $token->consume();
             }
