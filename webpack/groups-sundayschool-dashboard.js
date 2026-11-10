@@ -3,13 +3,8 @@
  * Handles DataTable initialization and add-new-class AJAX.
  */
 
-import { buildAPIUrl } from "./api-utils";
+import { buildAPIUrl, notifyAPIError } from "./api-utils";
 import { confirmAction } from "./common/confirm-action";
-
-async function notifyAPIError(res, fallback) {
-  const body = await res.json().catch(() => ({}));
-  window.CRM.notify(body.message || fallback, { type: "danger", delay: 5000 });
-}
 
 document.addEventListener("DOMContentLoaded", () => {
   $(".data-table").DataTable(window.CRM.plugin.dataTable);

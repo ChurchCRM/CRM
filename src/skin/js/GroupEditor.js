@@ -38,10 +38,7 @@ function initializeGroupEditor() {
       })
       .fail((xhr, status, error) => {
         console.error("Failed to set group specific property status:", error);
-        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to update properties. Please try again."), {
-          type: "danger",
-          delay: 5000,
-        });
+        window.CRM.notifyAPIError(xhr, i18next.t("Failed to update properties. Please try again."));
       });
   });
 
@@ -80,10 +77,7 @@ function initializeGroupEditor() {
       })
       .fail((xhr, status, error) => {
         console.error("Failed to update group:", error);
-        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to update group. Please try again."), {
-          type: "danger",
-          delay: 5000,
-        });
+        window.CRM.notifyAPIError(xhr, i18next.t("Failed to update group. Please try again."));
       });
   });
 
@@ -139,10 +133,7 @@ function initializeGroupEditor() {
       .fail((xhr, status, error) => {
         console.error("Failed to add new role:", error);
         $("#submitNewRole").prop("disabled", false);
-        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to add role. Please try again."), {
-          type: "danger",
-          delay: 5000,
-        });
+        window.CRM.notifyAPIError(xhr, i18next.t("Failed to add role. Please try again."));
       });
   });
 
@@ -216,10 +207,7 @@ function initializeGroupEditor() {
       .fail((xhr, status, error) => {
         console.error("Failed to delete role:", error);
         $("#confirmDeleteRole").prop("disabled", false);
-        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to delete role. Please try again."), {
-          type: "danger",
-          delay: 5000,
-        });
+        window.CRM.notifyAPIError(xhr, i18next.t("Failed to delete role. Please try again."));
       });
   });
 
@@ -256,10 +244,7 @@ function initializeGroupEditor() {
       .data(newRoleSequence);
 
     $.when(swapRequest, setGroupRoleOrder(groupID, roleID, newRoleSequence)).fail((xhr) => {
-      window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to update role. Please try again."), {
-        type: "danger",
-        delay: 5000,
-      });
+      window.CRM.notifyAPIError(xhr, i18next.t("Failed to update role. Please try again."));
     });
     dataT.rows().invalidate().draw(true);
     dataT.order([[2, "asc"]]).draw();
@@ -284,10 +269,7 @@ function initializeGroupEditor() {
       })
       .fail((xhr, status, error) => {
         console.error("Failed to update role name:", error);
-        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to update role name. Please try again."), {
-          type: "danger",
-          delay: 5000,
-        });
+        window.CRM.notifyAPIError(xhr, i18next.t("Failed to update role name. Please try again."));
       });
   });
 
@@ -310,10 +292,7 @@ function initializeGroupEditor() {
       })
       .fail((xhr, status, error) => {
         console.error("Failed to set default role:", error);
-        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to set default role. Please try again."), {
-          type: "danger",
-          delay: 5000,
-        });
+        window.CRM.notifyAPIError(xhr, i18next.t("Failed to set default role. Please try again."));
       });
   });
 

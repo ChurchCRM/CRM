@@ -302,7 +302,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <?php endif; ?>
           </a>
           <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-            <span id="cart-dropdown-menu"></span>
+            <div id="cart-dropdown-menu"></div>
           </div>
         </div>
 

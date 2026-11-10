@@ -480,7 +480,7 @@ describe("Admin - Church Information Page", () => {
             // When all address fields are empty the handler returns early:
             // the geocoder is never called and the button is never disabled.
             // Using toast-visibility assertions for this case is fragile
-            // (Notyf animation timing), so we verify the observable behavior:
+            // (toast animation timing), so we verify the observable behavior:
             // (a) button stays enabled — it is only disabled during a live request;
             // (b) geocoder endpoint was not contacted.
             cy.get("#generate-coordinates-btn").should("not.be.disabled");
@@ -522,7 +522,7 @@ describe("Admin - Church Information Page", () => {
             cy.get("#generate-coordinates-btn").click();
             cy.wait("@geocode");
 
-            // Notyf success toast
+            // Success toast
             cy.contains("Coordinates Updated", { timeout: 5000 }).should("be.visible");
 
             // Map container should have d-none removed

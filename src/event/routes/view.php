@@ -1,7 +1,6 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\EventCountsQuery;
@@ -87,6 +86,18 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
         usort($nonAttendees, fn ($a, $b) => strcmp($a['fullName'], $b['fullName']));
     }
 
+    $nonAttendeeRecipients = [];
+    foreach ($nonAttendees as $na) {
+        if (!empty($na['email'])) {
+            $nonAttendeeRecipients[] = [
+                'personId' => (int) $na['personId'],
+                'familyId' => null,
+                'name'     => (string) $na['fullName'],
+                'email'    => (string) $na['email'],
+            ];
+        }
+    }
+
     // Volunteer v2 staffing for this event (#9713, design §3.5).
     //
     // Gated twice: on the rollout flag, and on scope — `getEventStaffingSummary()` returns
@@ -158,7 +169,8 @@ $app->get('/view/{id}', function (Request $request, Response $response, array $a
         'canEditEvents'  => AuthenticationManager::getCurrentUser()->isAddEvent(),
         'eventEnded'     => $eventEnded,
         'nonAttendees'   => $nonAttendees,
-        'emailEnabled'   => SystemConfig::isEmailEnabled(),
+        'nonAttendeeRecipients' => $nonAttendeeRecipients,
+        'canEmail'       => AuthenticationManager::getCurrentUser()->isEmailEnabled(),
         'volunteerOccurrences' => $volunteerOccurrences,
     ]);
 });
