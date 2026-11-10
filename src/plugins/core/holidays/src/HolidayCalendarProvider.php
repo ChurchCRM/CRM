@@ -181,12 +181,13 @@ class HolidayCalendarProvider implements SystemCalendar
         if ($start === null && $end === null) {
             return true;
         }
-        $ts = $holiday->getTimestamp();
-        if ($start !== null && $ts < $start->setTime(0, 0, 0)->getTimestamp()) {
+        // Compare calendar dates: the holiday's instant is midnight in the provider's timezone.
+        $date = $holiday->format('Y-m-d');
+        if ($start !== null && $date < $start->format('Y-m-d')) {
             return false;
         }
         // FullCalendar $end is exclusive (the day after the last visible day)
-        if ($end !== null && $ts >= $end->setTime(0, 0, 0)->getTimestamp()) {
+        if ($end !== null && $date >= $end->format('Y-m-d')) {
             return false;
         }
         return true;
@@ -199,7 +200,8 @@ class HolidayCalendarProvider implements SystemCalendar
         $event->setId($id);
         $event->setEditable(false);
         $event->setTitle($holiday->getName());
-        $event->setStart($holiday->getTimestamp());
+        // A timestamp would be midnight in the provider's timezone, the evening before further west.
+        $event->setStart($holiday->format('Y-m-d'));
         $event->setVirtualColumn('holidayCountry', $this->yasumiCountry);
         $event->setVirtualColumn('holidayType', $holiday->getType());
 
