@@ -24,6 +24,14 @@ function startDesktopSidebarToggle() {
     }
   }
 
+  // Below xl the open menu pushes the page down; opening from the top keeps it in view instead of letting scroll anchoring carry it above the header.
+  const stacked = window.matchMedia("(max-width: 1199.98px)");
+  sidebar.addEventListener("show.bs.collapse", (event) => {
+    if (event.target.id === "sidebar-menu" && stacked.matches) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+  });
+
   let folded = sidebar.classList.contains(FOLDED_CLASS);
 
   const render = () => {
