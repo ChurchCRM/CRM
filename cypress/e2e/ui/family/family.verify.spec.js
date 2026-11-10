@@ -103,14 +103,51 @@ describe("Family verification — self-verify token link (no account)", () => {
         });
     });
 
-    it("Should reject the verify URL once all token uses are exhausted", function() {
-        Cypress._.times(5, () => {
+    it("Should keep serving the verify URL on repeated GETs and only spend uses on a real submission", function() {
+        // Reading the page never consumes a use (#11145): link previews,
+        // email scanners and refreshes must not burn the family's attempts,
+        // so more GETs than the token has uses all still render the page.
+        Cypress._.times(6, () => {
             cy.request(this.verifyUrl).its("body").should("include", "confirmVerifyBtn");
+        });
+
+        // A successful submission is what spends a use. Once the five uses
+        // are gone the page is rejected.
+        Cypress._.times(5, () => {
+            cy.request({
+                method: "POST",
+                url: this.verifyUrl,
+                form: true,
+                body: { verifyType: "no-change" },
+            })
+                .its("statusCode")
+                .should("eq", 200);
         });
 
         cy.request(this.verifyUrl)
             .its("body")
             .should("not.include", "confirmVerifyBtn")
             .and("include", "Unable to load verification info");
+    });
+
+    it("Should save a change request when change-needed is posted with no comment", function() {
+        // "change needed" with an empty comment must not be recorded as
+        // "No Changes" (#11145): the note keeps the change request.
+        cy.request({
+            method: "POST",
+            url: this.verifyUrl,
+            form: true,
+            body: { verifyType: "change-needed" },
+        })
+            .its("statusCode")
+            .should("eq", 200);
+
+        cy.makePrivateAdminAPICall("GET", "/api/families/self-verify", null, 200).then((resp) => {
+            const notes = resp.body.families;
+            const found = notes.find(
+                (n) => Number(n.FamId) === familyId && n.Text === "Change requested"
+            );
+            expect(found, "an empty change-needed POST should save a change request note").to.exist;
+        });
     });
 });
