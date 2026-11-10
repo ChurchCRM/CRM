@@ -171,7 +171,7 @@ describe("Family verification — self-verify token link (no account)", () => {
                 form: true,
                 body: { verifyType: "no-change" },
             })
-                .its("statusCode")
+                .its("status")
                 .should("eq", 200);
         });
 
@@ -192,7 +192,7 @@ describe("Family verification — self-verify token link (no account)", () => {
             form: true,
             body: { verifyType: "change-needed" },
         })
-            .its("statusCode")
+            .its("status")
             .should("eq", 200);
 
         cy.makePrivateAdminAPICall("GET", "/api/families/self-verify", null, 200).then((resp) => {
