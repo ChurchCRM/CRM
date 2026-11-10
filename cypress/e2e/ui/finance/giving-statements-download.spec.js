@@ -18,7 +18,7 @@ describe("Giving statements download", () => {
         cy.visit("/finance/statements/settings");
         cy.contains("a", "Preview PDF").should("have.attr", "href").then((href) => {
             expect(href).to.include("/finance/reports/giving-statements/sample");
-            cy.request({ url: `${href}?familyId=1&year=2018&output=csv`, encoding: "binary" }).then((response) => {
+            cy.request({ url: "/finance/reports/giving-statements/sample?familyId=1&year=2018&output=csv", encoding: "binary" }).then((response) => {
                 expectPdf(response);
                 return pdfText(response.body).then((lines) => {
                     const text = lines.join(" ");

@@ -18,7 +18,7 @@ use Tester\Assert;
 require dirname(__DIR__, 3) . '/bootstrap.php';
 
 $_SESSION = [];
-SystemURLs::init('', [], APP_ROOT);
+SystemURLs::init('', ['http://localhost'], APP_ROOT);
 $settings = [];
 foreach ([
     'sTaxReport1' => 'Saved opening', 'sTaxReport2' => 'Saved closing',
