@@ -1,6 +1,15 @@
 /// <reference types="cypress" />
 
-const SERVER_DETAILS = ["Platform Information", "Web Server", "PHP Version", "SQL Version", "Installation ID", "Prerequisite Status"];
+const SERVER_DETAILS = [
+    "Platform Information",
+    "Web Server",
+    "PHP Version",
+    "SQL Version",
+    "Installation ID",
+    "Person Custom Fields",
+    "Family Custom Fields",
+    "Prerequisite Status",
+];
 
 describe("API System Issues", () => {
     it("Issues endpoint requires authentication", () => {

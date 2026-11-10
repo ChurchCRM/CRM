@@ -18,7 +18,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  * @OA\Post(
  *     path="/issues",
  *     summary="Generate a GitHub issue body pre-filled with system diagnostics",
- *     description="Server details (platform, web server, PHP and SQL versions, installation ID, prerequisite status) are included for administrators only.",
+ *     description="Server details (platform, web server, PHP and SQL versions, installation ID, custom field counts, prerequisite status) are included for administrators only.",
  *     tags={"System"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\RequestBody(required=true,
@@ -56,6 +56,8 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
             'PHP Version | ' . phpversion() . "\r\n" .
             'SQL Version | ' . SystemService::getDBServerVersion() . "\r\n" .
             'Installation ID |' . SystemConfig::getValue('sSystemID') . "\r\n" .
+            'Person Custom Fields |' . PersonCustomMasterQuery::create()->count() . "\r\n" .
+            'Family Custom Fields |' . FamilyCustomMasterQuery::create()->count() . "\r\n" .
             'Prerequisite Status |' . SystemService::getPrerequisiteStatus() . "\r\n";
     }
     $issueDescription =
@@ -73,8 +75,6 @@ $app->post('/issues', function (Request $request, Response $response, array $arg
         'Church Country |' . ChurchMetaData::getChurchCountry() . "\r\n" .
         'System Timezone |' . ChurchMetaData::getChurchTimeZone() . "\r\n" .
         'Browser Timezone |' . ($data->browserTimezone ?? 'Unknown') . "\r\n" .
-        'Person Custom Fields |' . PersonCustomMasterQuery::create()->count() . "\r\n" .
-        'Family Custom Fields |' . FamilyCustomMasterQuery::create()->count() . "\r\n" .
         $serverDetails;
 
     return SlimUtils::renderJSON($response, ['issueBody' => $issueDescription]);
