@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\Service\FamilyVerificationStatusService;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\dto\SystemConfig;
@@ -28,6 +29,8 @@ $livingMemberCount = count($family->getLivingPeople());
 
 // Get unique family emails for the verification modal
 $familyEmails = $family->getEmails();
+$verifyEmails = $family->getVerifyEmails();
+$canEmailVerify = !$family->getNeedsReview() && $family->isActive() && $verifyEmails !== [];
 
 // Build active events list for the family check-in modal (#6838)
 $showFamilyCheckin = AuthenticationManager::getCurrentUser()->canManageEvents();
@@ -539,6 +542,32 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
             </div>
         </div>
 
+        <?php if ($canEditRecords) {
+            $verification = (new FamilyVerificationStatusService())->forFamily($family); ?>
+        <!-- Verification Card -->
+        <div class="card mb-3" id="family-verification-card">
+            <div class="card-header"><h3 class="card-title"><?= gettext('Verification') ?></h3></div>
+            <div class="card-body">
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-1"><i class="fa-solid fa-clipboard-check me-2 text-body-secondary icon-fixed-width"></i><?= gettext('Last verified') ?>:
+                        <?php if ($verification['verified'] === null) { ?>
+                        <span class="text-body-secondary"><?= gettext('Never') ?></span>
+                        <?php } else { ?>
+                        <?= InputUtils::escapeHTML($verification['verified']['date']) ?>
+                        <span class="text-body-secondary small">(<?= $verification['verified']['byFamily'] ? gettext('by the family in the portal') : gettext('in person by staff') ?>)</span>
+                        <?php } ?>
+                    </li>
+                    <li class="mb-1"><i class="fa-solid fa-envelope me-2 text-body-secondary icon-fixed-width"></i><?= gettext('Last invited') ?>:
+                        <?= $verification['invited'] === null ? '<span class="text-body-secondary">' . gettext('Never') . '</span>' : InputUtils::escapeHTML($verification['invited']) ?>
+                    </li>
+                    <li class="mb-1"><i class="fa-solid fa-right-to-bracket me-2 text-body-secondary icon-fixed-width"></i><?= gettext('Last portal sign-in') ?>:
+                        <?= $verification['lastSignIn'] === null ? '<span class="text-body-secondary">' . gettext('Never') . '</span>' : InputUtils::escapeHTML($verification['lastSignIn']) ?>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <?php } ?>
+
         <?php if ($family->hasAddress()): ?>
         <!-- Address Card -->
         <div class="card mb-3">
@@ -993,11 +1022,6 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 <!-- Photos end -->
 
 
-<!-- Hidden form for CSRF-protected email PDF POST -->
-<form id="verifyEmailPDFForm" method="post" action="<?= SystemURLs::getRootPath() ?>/people/report/verify/email" class="d-none">
-    <?= CSRFUtils::getTokenInputField('people_report_verify_email') ?>
-    <input type="hidden" name="familyId" value="">
-</form>
 
 <div class="modal fade" id="confirm-verify" tabindex="-1" role="dialog" aria-labelledby="confirm-verify-label"
      aria-hidden="true">
@@ -1009,22 +1033,23 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     id="confirm-verify-label"><?= gettext("Request Family Info Verification") ?></h4>
             </div>
             <div class="modal-body">
-                <b><?= gettext("Select how do you want to request the family information to be verified") ?></b>
-                <p>
-                    <?php if (count($familyEmails) > 0) {
-                        ?>
-                <p><?= gettext("You are about to email copy of the family information to the following emails") ?>
+                <?php if ($family->getNeedsReview()) { ?>
+                <p><?= gettext("This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information.") ?></p>
+                <?php } elseif (!$family->isActive()) { ?>
+                <p><?= gettext("This family is inactive, so it is not sent verification emails.") ?></p>
+                <?php } elseif ($verifyEmails === []) { ?>
+                <p><?= gettext("No active, approved member of this family has an email address. Verify it in person instead.") ?></p>
+                <?php } else { ?>
+                <p><?= gettext("Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person.") ?></p>
                 <ul>
-                        <?php foreach ($familyEmails as $tmpEmail) { ?>
-                        <li><?= $tmpEmail ?></li>
-                        <?php } ?>
+                    <?php foreach ($verifyEmails as $tmpEmail) { ?>
+                    <li><?= InputUtils::escapeHTML($tmpEmail) ?></li>
+                    <?php } ?>
                 </ul>
-                </p>
+                <?php } ?>
             </div>
-                        <?php
-                    } ?>
             <div class="modal-footer text-center">
-                <?php if (count($familyEmails) > 0) {
+                <?php if ($canEmailVerify) {
                     $emailEnabled = SystemConfig::isEmailEnabled();
                     $emailDisabledTitle = $emailEnabled ? '' : InputUtils::escapeAttribute(
                         gettext('Email is not configured. Please configure SMTP settings in System Settings.')
@@ -1032,21 +1057,16 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
                     ?>
                     <button type="button" id="onlineVerify"
                             class="btn btn-warning warning" <?php if (!$emailEnabled) echo 'disabled'; ?> title="<?= $emailDisabledTitle ?>"><i
-                            class="fa-solid fa-envelope"></i><?= gettext("Online Verification") ?>
+                            class="fa-solid fa-envelope"></i><?= gettext("Email Portal Link") ?>
                     </button>
-                    <button type="button" id="verifyEmailPDF"
-                            class="btn btn-warning" <?php if (!$emailEnabled) echo 'disabled'; ?> title="<?= $emailDisabledTitle ?>"><i
-                            class="fa-solid fa-file-pdf"></i><?= gettext("Email PDF") ?>
-                    </button>
-                    <?php
-                } ?>
-                <button type="button" id="verifyURL"
-                        class="btn btn-secondary"><i class="fa-solid fa-link"></i>URL</button>
+                <?php } ?>
                 <button type="button" id="verifyDownloadPDF"
                         class="btn btn-info"><i class="fa-solid fa-download"></i>PDF</button>
+                <?php if (!$family->getNeedsReview()) { ?>
                 <button type="button" id="verifyNow"
                         class="btn btn-success"><i class="fa-solid fa-check"></i><?= gettext("Verified In Person") ?>
                 </button>
+                <?php } ?>
             </div>
         </div>
     </div>

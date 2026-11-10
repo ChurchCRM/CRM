@@ -25,7 +25,7 @@ class FamilyVerificationEmail extends BaseEmail
     {
         $myTokens = [
             'toName' => $this->familyName . ' ' . gettext('Family'),
-            'body'   => gettext('Please use the link below to review your family information. On the review page, select "Confirm Family Info" to confirm that everything is correct or send corrections to the church office.'),
+            'body'   => gettext('Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page.'),
         ];
 
         return array_merge($this->getCommonTokens(), $myTokens);

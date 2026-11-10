@@ -43,7 +43,7 @@ class ConfirmReportService
     public function emailTargets(?int $familyId): array
     {
         $targets = [];
-        foreach ($this->families($familyId) as $family) {
+        foreach ($this->families($familyId, true) as $family) {
             $members = $this->livingMembers($family);
             $emails = self::recipientEmails($family, $members);
             if ($emails !== []) {
@@ -65,6 +65,9 @@ class ConfirmReportService
     {
         $candidates = [];
         foreach ($members as $member) {
+            if (!$family->isEmailable($member)) {
+                continue;
+            }
             $candidates[] = $member->getEmail();
             $candidates[] = $member->getWorkEmail();
         }
@@ -134,6 +137,7 @@ class ConfirmReportService
             $mail->setLogContext(null, (int) $family->getId(), $senderId);
 
             if ($mail->send()) {
+                $family->createTimeLineNote('verify-link');
                 $sentCount++;
             } else {
                 LoggerUtils::getAppLogger()->error(
@@ -216,13 +220,17 @@ class ConfirmReportService
      *
      * @return list<Family>
      */
-    private function families(?int $familyId): array
+    private function families(?int $familyId, bool $forEmail = false): array
     {
         $query = FamilyQuery::create()->orderByName();
         if ($familyId !== null) {
             $query->filterById($familyId);
-        } else {
+        }
+        if ($familyId === null || $forEmail) {
             $query->filterByDateDeactivated(null);
+        }
+        if ($forEmail) {
+            $query->filterByNeedsReview(false);
         }
 
         return iterator_to_array($query->find(), false);

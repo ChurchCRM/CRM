@@ -407,11 +407,8 @@ class PortalSelfService
     /**
      * Record that the member has looked over their family's details.
      *
-     * The note is the one `/external/verify` writes — same type, same author,
-     * same text — so the People → Verify dashboard, which selects on
-     * `EnteredBy = Person::SELF_VERIFY`, lists a portal confirmation exactly as
-     * it lists a token-link one. That is what "appears on the admin side as
-     * today" means, and it is why the confirming member's own id is not used.
+     * The People → Verify dashboard selects on `EnteredBy = Person::SELF_VERIFY`, so the note
+     * carries that author and not the confirming member's own id.
      *
      * @throws PortalSelfServiceException when the member has no family
      */

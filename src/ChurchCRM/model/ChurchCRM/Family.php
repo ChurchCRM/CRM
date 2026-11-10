@@ -608,9 +608,17 @@ class Family extends BaseFamily implements PhotoInterface
 
     private function canReceiveFamilyEmail(Person $person): bool
     {
+        return $this->isEmailable($person) && trim((string) $person->getEmail()) !== '';
+    }
+
+    /**
+     * Living, active and approved: a deceased or inactive member, or someone
+     * proposed for the family who still awaits staff approval, gets no mail.
+     */
+    public function isEmailable(Person $person): bool
+    {
         return !$person->isDeceased()
             && $person->isActive()
-            && trim((string) $person->getEmail()) !== ''
             && ($this->getEnteredBy() === Person::SELF_REGISTER || !$person->getNeedsReview());
     }
 
@@ -889,19 +897,44 @@ class Family extends BaseFamily implements PhotoInterface
             ->find();
     }
 
+    /**
+     * Addresses a verification email may go to: living, active, approved members.
+     *
+     * @return string[]
+     */
+    public function getVerifyEmails(): array
+    {
+        $emails = [];
+        foreach ($this->getPeopleSorted() as $person) {
+            if ($this->isEmailable($person)) {
+                foreach ([$person->getEmail(), $person->getWorkEmail()] as $email) {
+                    if (!empty($email)) {
+                        $emails[] = $email;
+                    }
+                }
+            }
+        }
+
+        return array_values(array_unique($emails));
+    }
+
     public function sendVerifyEmail(): bool
     {
-        $familyEmails = $this->getEmails();
+        if (!$this->isActive()) {
+            throw new \Exception(gettext('Family is inactive'));
+        }
+        if ($this->getNeedsReview()) {
+            throw new \Exception(gettext('Approve this self-registered family before sending it a verification email'));
+        }
+
+        $familyEmails = $this->getVerifyEmails();
 
         if (empty($familyEmails)) {
             throw new \Exception(gettext('Family has no emails to use'));
         }
 
-        // Retire any outstanding token links: the email now points at the
-        // member portal's My Family page instead (#11145).
-        TokenQuery::create()->filterByType('verifyFamily')->filterByReferenceId($this->getId())->delete();
-
         $email = new FamilyVerificationEmail($familyEmails, $this->getName());
+        $email->setLogContext(null, (int) $this->getId(), (int) AuthenticationManager::getCurrentUser()->getId());
         if (!$email->send()) {
             LoggerUtils::getAppLogger()->error($email->getError());
 
