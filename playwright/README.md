@@ -104,8 +104,9 @@ directories outside the publish path; production captures use real demo UI.
   of what's been handled and what to watch for in a new workflow.
 - **Screenshots**: viewport-cropped (not full-page — see `captureScreen()`'s
   doc comment in `playwright/support/capture.ts` for why), one per test per
-  form factor, at `playwright/artifacts/screenshots/<device>/<name>.png`,
-  where `<device>` is `desktop` (1440×900), `tablet` (1024×768), or
+  form factor, at `playwright/artifacts/screenshots/<locale>/<device>/<name>.png`,
+  where `<locale>` is the capture locale (`en`, `es`, …) and `<device>`
+  is `desktop` (1440×900), `tablet` (1024×768), or
   `mobile` (430×932) — see
   `.agents/skills/churchcrm/responsive-design-guidelines.md`.
 - **Videos**: one per test, at
@@ -233,7 +234,9 @@ Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
 ## Known limitations (first milestone)
 
 - One fixed viewport per form factor (no touch/UA emulation).
-- English locale only.
+- Only English captures every screenshot; the other seven locales capture
+  just the captures defined with `locales: 'all'` (tagged `@all-locales`;
+  see `defineCapture()` in `playwright/support/capture.ts`).
 - Root-path install only (no subdirectory variant).
 - No content-hash/change-detection field in the metadata sidecars — see
   #9663 for what was deliberately descoped there (closed not-planned).
