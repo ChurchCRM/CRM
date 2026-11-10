@@ -326,7 +326,9 @@ test.describe('signed in as a team leader', () => {
     await expect(series).toBeEnabled({ timeout: 15000 });
     await series.selectOption({ index: 1 });
     await expect(page.locator('#schedule-form-details')).toBeVisible();
-    await expect(page.locator('#schedule-form-needs .volunteer-need-row').first()).toBeVisible({ timeout: 15000 });
+    const need = page.locator('#schedule-form-needs .volunteer-need-row').first();
+    await expect(need).toBeVisible({ timeout: 15000 });
+    await need.scrollIntoViewIfNeeded();
     await settle(page, 800);
 
     await captureScreen(page, testInfo, volunteerPortalTeamScheduleCapture);

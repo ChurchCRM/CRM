@@ -2,6 +2,7 @@ import { expect, test } from '@playwright/test';
 
 import { captureScreen, defineCapture } from '../support/capture';
 import { humanClick, settle } from '../support/human';
+import { waitForFloatingButtonsToTuck } from '../support/volunteer';
 
 test.describe('Settings', () => {
   // Nice-to-have (shot list): reinforces the self-hosted/control story.
@@ -50,6 +51,7 @@ test.describe('Settings', () => {
   test('admin-member-portal-user-menu', adminMemberPortalUserMenuCapture, async ({ page }, testInfo) => {
     await page.goto('/admin/member-portal');
     await expect(page.locator('#portal-statistics')).toBeVisible({ timeout: 15000 });
+    await waitForFloatingButtonsToTuck(page);
     await humanClick(page.locator('a.nav-link[data-bs-toggle="dropdown"]:has(.avatar)'));
     const entry = page.locator('.dropdown-menu.show a.dropdown-item[href$="/portal/"]');
     await expect(entry).toBeVisible();
