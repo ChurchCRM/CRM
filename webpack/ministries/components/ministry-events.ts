@@ -1,3 +1,4 @@
+import { confirmAction } from "../../common/confirm-action";
 /**
  * The ministry page's Calendar tab (D24, design §5.4): the events the ministry owns, with
  * each one's staffing per team and — for past events — its headcount total (D26), the
@@ -37,7 +38,6 @@ import {
   actionMenu,
   appLocale,
   byId,
-  confirmDelete,
   destroyDataTable,
   escapeAttribute,
   escapeHtml,
@@ -290,7 +290,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       .map((part) => `<p>${part}</p>`)
       .join("");
 
-    confirmDelete(i18next.t("Delete events"), message, () => {
+    confirmAction(i18next.t("Delete events"), message, () => {
       const button = byId<HTMLButtonElement>("ministry-events-delete-btn");
       if (button) {
         button.disabled = true;
@@ -785,6 +785,7 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
     let staffThem = false;
     let shown = false;
     let closeWhenShown = false;
+    // confirm-action-exempt: the dialog must stay open until Bootstrap has finished fading it in.
     window.bootbox?.confirm({
       message,
       className: "ministry-event-staff-prompt",

@@ -35,7 +35,7 @@ Always-on:
 @.agents/skills/churchcrm/git-workflow.md
 
 Keep these heading names (this file links them):
-[Commit freely, push only on approval](.agents/skills/churchcrm/git-workflow.md),
+[Task approval covers commit and push](.agents/skills/churchcrm/git-workflow.md),
 [Mandatory Pre-Push Biome Check](.agents/skills/churchcrm/git-workflow.md),
 [Strict vs Loose Comparisons](.agents/skills/churchcrm/code-standards.md).
 
@@ -75,4 +75,4 @@ Before triaging or implementing an issue, read [`docs/contributing/issue-readine
 
 ## Tests
 
-Run the failing spec in isolation before committing test fixes. Before a push, run the specs the change touches locally and check UI changes in a browser at desktop, tablet, and phone widths; UI PRs carry screenshots (`git-workflow.md`, `cypress-testing.md`). Do not assume Cypress / Yasumi fixture shapes — read the source. `cy.visit()` paths start with `/`.
+Run the failing spec in isolation before committing test fixes, when the session's environment can run it. Before a push, run the specs the change touches locally and check UI changes in a browser at desktop, tablet, and phone widths, when the environment has them; a session without a toolchain declares the checks not run in the PR body instead (`git-workflow.md`, `cypress-testing.md`). Do not assume Cypress / Yasumi fixture shapes — read the source. `cy.visit()` paths start with `/`.

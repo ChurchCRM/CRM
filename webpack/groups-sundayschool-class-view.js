@@ -4,6 +4,8 @@
  */
 
 import ApexCharts from "apexcharts";
+import { notifyAPIError } from "./api-utils";
+import { confirmAction } from "./common/confirm-action";
 
 document.addEventListener("DOMContentLoaded", () => {
   const dataTable = $(".data-table").DataTable(window.CRM.plugin.dataTable);
@@ -104,15 +106,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const personId = $btn.data("person-id");
     const personName = String($btn.data("person-name") || "");
 
-    bootbox.confirm({
-      message: i18next.t("Remove {{personName}} from this class?", { personName }),
-      buttons: {
-        confirm: { label: i18next.t("Remove"), className: "btn-warning" },
-        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
-      },
-      callback: (result) => {
-        if (!result) return;
-
+    confirmAction(
+      "",
+      i18next.t("Remove {{personName}} from this class?", { personName }),
+      () => {
         $.ajax({
           method: "DELETE",
           url: `${window.CRM.root}/api/groups/${groupId}/removeperson/${personId}`,
@@ -122,11 +119,11 @@ document.addEventListener("DOMContentLoaded", () => {
             dataTable.row($btn.closest("tr")).remove().draw();
           })
           .fail((jqXHR) => {
-            const msg = jqXHR.responseJSON?.message || i18next.t("Failed to remove from class. Please try again.");
-            window.CRM.notify(msg, { type: "danger", delay: 5000 });
+            notifyAPIError(jqXHR, i18next.t("Failed to remove from class. Please try again."));
           });
       },
-    });
+      { tone: "warning", confirmLabel: i18next.t("Remove"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 
   // ─── Quick Create Today's Event button ───────────────────────────────
@@ -174,8 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 600);
       })
       .fail((jqXHR) => {
-        const msg = jqXHR.responseJSON?.message || i18next.t("Failed to create event.");
-        window.CRM.notify(msg, { type: "danger", delay: 5000 });
+        notifyAPIError(jqXHR, i18next.t("Failed to create event."));
         $btn.prop("disabled", false).html(`<i class="fa-solid fa-plus me-1"></i>${i18next.t("Create Today's Event")}`);
       });
   });

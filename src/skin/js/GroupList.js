@@ -46,10 +46,7 @@ function initializeGroupList() {
       })
       .fail((xhr, status, error) => {
         console.error("Failed to create group:", error);
-        window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to create group. Please try again."), {
-          type: "danger",
-          delay: 5000,
-        });
+        window.CRM.notifyAPIError(xhr, i18next.t("Failed to create group. Please try again."));
       });
   });
 
@@ -172,15 +169,10 @@ function initializeGroupList() {
   $(document).on("click", ".delete-group", function () {
     const groupId = $(this).data("group-id");
     const groupName = $(this).data("group-name");
-    bootbox.confirm({
-      message:
-        i18next.t("Are you sure you want to delete") + " <strong>" + window.CRM.escapeHtml(groupName) + "</strong>?",
-      buttons: {
-        confirm: { label: i18next.t("Delete"), className: "btn-danger" },
-        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
-      },
-      callback: (result) => {
-        if (!result) return;
+    window.CRM.confirmAction(
+      "",
+      i18next.t("Are you sure you want to delete") + " <strong>" + window.CRM.escapeHtml(groupName) + "</strong>?",
+      () => {
         $.ajax({
           method: "DELETE",
           url: `${window.CRM.root}/api/groups/${groupId}`,
@@ -191,11 +183,11 @@ function initializeGroupList() {
           })
           .fail((xhr) => {
             console.error("Failed to delete group:", xhr);
-            const msg = xhr.responseJSON?.message || i18next.t("Failed to delete group. Please try again.");
-            window.CRM.notify(msg, { type: "danger", delay: 5000 });
+            window.CRM.notifyAPIError(xhr, i18next.t("Failed to delete group. Please try again."));
           });
       },
-    });
+      { confirmLabel: i18next.t("Delete"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 }
 

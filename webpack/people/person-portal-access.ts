@@ -1,3 +1,5 @@
+import { confirmAction } from "../common/confirm-action";
+
 /**
  * The person page's portal devices, passkeys and permissions
  * (src/people/views/partials/portal-signin-access.php), for administrators:
@@ -132,14 +134,10 @@ function wireRemovals(card: HTMLElement): void {
     for (const button of card.querySelectorAll<HTMLButtonElement>(removal.selector)) {
       button.addEventListener("click", () => {
         const id = button.dataset[removal.data] ?? "";
-        window.bootbox?.confirm({
-          title: removal.title,
-          message: removal.message,
-          buttons: { confirm: { label: removal.title, className: "btn-danger" } },
-          callback: async (confirmed: boolean) => {
-            if (!confirmed) {
-              return;
-            }
+        confirmAction(
+          removal.title,
+          removal.message,
+          async () => {
             button.disabled = true;
             const response = await post(card, removal.path(id));
             button.disabled = false;
@@ -150,7 +148,8 @@ function wireRemovals(card: HTMLElement): void {
             window.CRM?.notify?.(removal.done, { type: "success" });
             reloadSignInCard();
           },
-        });
+          { confirmLabel: removal.title, cancelLabel: t("Cancel") },
+        );
       });
     }
   }

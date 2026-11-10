@@ -12,7 +12,7 @@ Legend: 🤖 automated · 🧑‍💻 agent-assisted · ✋ manual
 4. **Notes:** ask an agent to "write the `<version>` release notes". It reads the `release-notes-context-<version>` artifact and applies the approved text with `gh release edit <version> --tag <version> --notes-file …` (3.2).
 5. **Check the tag, then Publish** (3.4): `gh release view <version> -R ChurchCRM/CRM --json tagName,isDraft` shows `"tagName":"<version>"`. Publish does not wait for the marketing capture or the `Start <next> release` PR.
 6. **After Publish:** let the marketing capture finish, then merge the `Start <next> release` PR (3.3).
-7. **After Publish** (Phase 4): bookkeeping `sync`, `manage-milestones` and `docs-release` are green, and the release nightly is green.
+7. **After Publish** (Phase 4): verify `manage-milestones` automatically dates and closes the milestone, then confirm bookkeeping `sync`, `docs-release` and the release nightly are green.
 8. **Marketing** (Phase 6).
 
 To repair a release stuck on a placeholder `untagged-<hash>` tag: create the real tag on the release commit, move the release with `gh release edit untagged-… --tag <version>`, verify with `gh release view <version> --json tagName,isDraft`, then delete the stray tag. Re-run `release-bookkeeping.yml` with `tag=<version>` afterwards.
@@ -116,7 +116,7 @@ Notes:
 | 4.2 | Every admin is told an upgrade is available on their next login | `AuthenticationManager::checkSystemUpdates()` → `ChurchCRMReleaseManager::checkSystemUpdateAvailable()` (admins only, stable releases only, cached per session) | 🤖 |
 | 4.3 | The upgrade wizard ("What you'll gain") shows the release body from GitHub and links `changelog/<version>.md` on `master` | `ChurchCRMReleaseManager::getUpgradePreviewData()` | 🤖 |
 | 4.4 | Changelog: writes `changelog/<version>.md` from the release body and adds a row to `CHANGELOG.md`, committed to `master` as `chore(changelog): sync <version> release notes` | [`release-bookkeeping.yml`](../../.github/workflows/release-bookkeeping.yml) job `sync` → `scripts/release/release-changelog.js` | 🤖 |
-| 4.5 | Milestones, after the marketing capture is green: dispatch `release-bookkeeping.yml` with `tag=<version>`. Its `manage-milestones` job creates the next milestone if missing, sets `<version>`'s due date to the release's publish date, and closes it only when it has 0 open items. A milestone with open items keeps its date and stays open. It never moves items | job `manage-milestones`, `workflow_dispatch` only | ✋ trigger / 🤖 run |
+| 4.5 | On stable Publish, `manage-milestones` runs automatically. It creates the next milestone if missing, sets `<version>`'s due date to the release's publish date, and closes it only when it has 0 open items. A milestone with open items keeps its date and stays open. It never moves items. Manually dispatch `release-bookkeeping.yml` with `tag=<version>` only to retry or backfill | job `manage-milestones`, `release: published` or `workflow_dispatch` | 🤖 (manual retry/backfill) |
 | 4.6 | Docs release: sends `crm-released` to `ChurchCRM/docs.churchcrm.io`, whose workflow merges the release docs and moves the released version's open docs items to `Current` and keeps a milestone per upcoming version. Creating `release-docs/<next>` is manual (step 6.2) | job `docs-release`; needs the `DOCS_RELEASE_TOKEN` secret to send the dispatch | 🤖 |
 | 4.7 | Post-release nightly: the full suite, including the upgrade matrix, runs against the published release | `build-test-nightly.yml` on `release: published` | 🤖 |
 | 4.8 | Advisories: list every draft or triage advisory whose `patched_versions` is the released version or older, and every published advisory with no CVE. For each, request a CVE if it has none (`POST /repos/ChurchCRM/CRM/security-advisories/{ghsa}/cve`), then publish the draft. Report any that stay unpublished, with the reason | https://github.com/ChurchCRM/CRM/security/advisories; [Security Advisory Review](../../.agents/skills/churchcrm/security-advisory-review.md) | ✋ (same day) |
@@ -128,7 +128,7 @@ Notes:
 - The in-app release notes (4.2, 4.3) are the widest-reaching copy in the release; keep them user-facing.
 - `changelog/<version>.md` appears when `release-bookkeeping.yml` finishes; the wizard link resolves after that.
 - Publishing with `prerelease=true` ships a release candidate without notifying admins.
-- Re-run a failed bookkeeping job with `workflow_dispatch` (`tag`). The workflow rejects non-version tags and stops if neither `master` nor a `build/<next>` branch holds a newer version.
+- Re-run a failed bookkeeping job or backfill a release with `workflow_dispatch` (`tag`). The workflow rejects non-version tags and stops if neither `master` nor a `build/<next>` branch holds a newer version.
 - The 4.4 commit touches only `.md` files, which Build/Test/Package ignores, so it starts no build.
 - Merging the `Start <next> release` PR starts a normal `master` build; it creates no draft release.
 
@@ -196,4 +196,3 @@ The capture workflow publishes on its own when it finishes green on `master`. If
 4. Re-run "Validate Docusaurus site" on the `docs: ChurchCRM <version>` pull request. It fails on every `cdn.churchcrm.io` image that returns 404, so the visuals come before the docs merge.
 
 A capture that fails is diagnosed in `.agents/skills/churchcrm/marketing-visuals-pipeline.md` ("Fixing a failed capture").
-

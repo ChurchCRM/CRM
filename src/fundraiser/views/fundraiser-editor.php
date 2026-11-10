@@ -198,7 +198,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </a>
                     <div class="dropdown-divider"></div>
                     <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/donated-items/<?= (int) $item->getId() ?>/delete"
-                          onsubmit="return confirm(<?= InputUtils::escapeAttribute(InputUtils::jsonEncodeForScript(gettext('Delete this item?'))) ?>)">
+                          data-confirm="<?= InputUtils::escapeAttribute(gettext('Delete this item?')) ?>">
                       <?= $csrfItemDeleteField ?>
                       <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
                         <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
@@ -215,4 +215,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 <?php endif; ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/fundraiser-confirm.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

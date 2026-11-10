@@ -1,3 +1,5 @@
+import { alertAction, confirmAction } from "./common/confirm-action";
+import { notifyError } from "./common/notify";
 /**
  * Two-Factor Authentication Enrollment
  *
@@ -16,12 +18,6 @@ function fetchJSON(url, opts = {}) {
     if (r.status === 204) return {};
     return r.json();
   });
-}
-
-function notifyError(message) {
-  if (window.CRM?.notify) {
-    window.CRM.notify(message, { type: "danger" });
-  }
 }
 
 // ---------------------------------------------------------------------------
@@ -367,16 +363,12 @@ function bindEvents() {
               showCopied();
             } catch (_e) {
               document.body.removeChild(ta);
-              if (typeof bootbox !== "undefined") {
-                bootbox.alert(t("Unable to copy to clipboard. Please copy the codes manually."));
-              }
+              alertAction("", t("Unable to copy to clipboard. Please copy the codes manually."));
             }
           });
       } else {
         // Non-secure context — clipboard API unavailable
-        if (typeof bootbox !== "undefined") {
-          bootbox.alert(t("Clipboard not available. Please use the Download button to save your codes."));
-        }
+        alertAction("", t("Clipboard not available. Please use the Download button to save your codes."));
       }
     });
   }
@@ -400,13 +392,11 @@ function bindEvents() {
   const disableBtn = document.getElementById("disable2FABtn");
   if (disableBtn) {
     disableBtn.addEventListener("click", () => {
-      if (
-        window.confirm(
-          t("Are you sure you want to disable two-factor authentication? Your account will be less secure."),
-        )
-      ) {
-        disable2FA();
-      }
+      confirmAction(
+        t("Disable Two-Factor Authentication"),
+        t("Are you sure you want to disable two-factor authentication? Your account will be less secure."),
+        disable2FA,
+      );
     });
   }
 }
