@@ -318,13 +318,15 @@ test.describe('signed in as a team leader', () => {
     await humanClick(page.locator('#schedule-add-btn'));
     const modal = page.locator('#scheduleModal');
     await expect(modal).toBeVisible();
-    await expect(page.locator('#schedule-form-needs .volunteer-need-row').first()).toBeVisible({ timeout: 15000 });
+    // The needs rows sit in #schedule-form-details, which stays hidden until an event series is chosen.
+    await expect(page.locator('#schedule-form-name')).toBeVisible({ timeout: 15000 });
     await humanType(page.locator('#schedule-form-name'), 'Midweek Rehearsal');
     await page.locator('#schedule-form-event-type').selectOption({ label: 'Church Service' });
     const series = page.locator('#schedule-form-title-filter');
     await expect(series).toBeEnabled({ timeout: 15000 });
     await series.selectOption({ index: 1 });
     await expect(page.locator('#schedule-form-details')).toBeVisible();
+    await expect(page.locator('#schedule-form-needs .volunteer-need-row').first()).toBeVisible({ timeout: 15000 });
     await settle(page, 800);
 
     await captureScreen(page, testInfo, volunteerPortalTeamScheduleCapture);

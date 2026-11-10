@@ -405,7 +405,8 @@ test.describe('Volunteer Management v2', () => {
     await humanClick(page.locator('#schedule-add-btn'));
     const modal = page.locator('#scheduleModal');
     await expect(modal).toBeVisible();
-    await expect(page.locator('#schedule-form-needs .volunteer-need-row').first()).toBeVisible({ timeout: 15000 });
+    // The needs rows sit in #schedule-form-details, which stays hidden until an event series is chosen.
+    await expect(page.locator('#schedule-form-name')).toBeVisible({ timeout: 15000 });
 
     await humanType(page.locator('#schedule-form-name'), 'Coffee Bar: Second Service');
     await page.locator('#schedule-form-team').selectOption(String(teamIds.coffee));
