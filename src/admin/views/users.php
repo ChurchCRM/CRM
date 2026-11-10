@@ -139,7 +139,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                     <?php foreach ($rsUsers as $user) { ?>
                         <tr>
                             <td>
-                                <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>"><?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
+                                <a href="<?= SystemURLs::getRootPath() ?>/admin/system/users/<?= (int) $user->getId() ?>"><?= InputUtils::escapeHTML($user->getPerson()->getFullName()) ?></a>
                             </td>
                             <td>
                                 <code><?= InputUtils::escapeHTML($user->getUserName()) ?></code>
@@ -190,7 +190,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/admin/system/users/<?= $user->getId() ?>/edit">
                                             <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit User') ?>
                                         </a>
-                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $user->getId() ?>">
+                                        <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/admin/system/users/<?= (int) $user->getId() ?>">
                                             <i class="fa-solid fa-eye me-2"></i><?= gettext('View Details') ?>
                                         </a>
                                         <?php if ($user->getPerson() !== null) { ?>

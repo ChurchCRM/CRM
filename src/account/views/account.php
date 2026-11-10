@@ -200,10 +200,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <?php if ($isOwnProfile): ?>
             <div class="row mb-3 mt-3">
               <div class="col-sm-9 offset-sm-3">
-                <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="btn btn-outline-primary me-2">
+                <a href="<?= SystemURLs::getRootPath() ?>/account/password" class="btn btn-outline-primary me-2">
                   <i class="fa-solid fa-key me-1"></i><?= gettext("Change Password") ?>
                 </a>
-                <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="btn btn-outline-primary">
+                <a href="<?= SystemURLs::getRootPath() ?>/account/2fa" class="btn btn-outline-primary">
                   <i class="fa-solid fa-shield me-1"></i><?= gettext("Manage 2FA") ?>
                 </a>
               </div>
@@ -397,78 +397,52 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
           </div>
 
           <!-- =============== PERMISSIONS =============== -->
-          <div class="tab-pane" id="tab-permissions">
+          <div class="tab-pane" id="tab-permissions" data-cy="permissions-tab">
             <h3 class="card-title"><?= gettext("Permissions") ?></h3>
-            <p class="text-body-secondary"><?= gettext("Your current access levels (read-only)") ?></p>
+            <p class="text-body-secondary"><?= gettext("What this account can do right now (read-only)") ?></p>
 
             <?php if ($user->isAdmin()): ?>
-            <!-- Case 1: admin — full access, no individual rows -->
-            <div class="text-center py-4">
-              <div class="mb-3">
-                <span class="badge bg-warning-lt text-warning px-3 py-2 fs-3">
-                  <i class="fa-solid fa-circle-check me-2"></i><?= gettext("Administrator") ?>
-                </span>
-              </div>
-              <p class="text-body-secondary mb-0"><?= gettext("Administrators have full access to all features and data. Individual permissions do not apply.") ?></p>
+            <div class="mb-3">
+              <span class="badge bg-warning-lt text-warning px-3 py-2">
+                <i class="fa-solid fa-circle-check me-2"></i><?= gettext("Administrator") ?>
+              </span>
+              <p class="text-body-secondary small mt-2 mb-0"><?= gettext("Administrators have every permission while its feature is turned on.") ?></p>
             </div>
-            <?php else: ?>
-            <!-- Case 2: a non-admin staff account — show full permissions -->
+            <?php endif; ?>
 
-            <!-- People & Families group -->
             <div class="border rounded mb-3">
               <div class="px-3 py-2 border-bottom bg-surface-secondary">
-                <strong><i class="fa-solid fa-users me-2"></i><?= gettext("People &amp; Families") ?></strong>
-                <p class="text-body-secondary small mb-0 mt-1"><?= gettext("All users can view congregation members. This permission cannot be removed.") ?></p>
+                <strong><?= gettext("View people and families") ?></strong>
               </div>
               <div class="row align-items-center px-3 py-2">
-                <div class="col-sm-6 text-body-secondary"><?= gettext("View") ?></div>
+                <div class="col-sm-6"><?= gettext("View") ?></div>
                 <div class="col-sm-6 d-flex flex-wrap gap-1">
-                  <span class="badge bg-success-lt text-success"><i class="fa-solid fa-eye me-1"></i><?= gettext("View") ?></span>
+                  <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i><?= gettext("Yes") ?></span>
                   <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-lock me-1"></i><?= gettext("Always granted") ?></span>
                 </div>
               </div>
-              <?php foreach ([
-                [gettext("Add"), $user->isAddRecords()],
-                [gettext("Edit"), $user->isEditRecords()],
-                [gettext("Delete"), $user->isDeleteRecords()],
-                [gettext("Notes"), $user->isNotes()],
-              ] as [$capLabel, $capGranted]): ?>
-              <div class="row align-items-center border-top px-3 py-2">
-                <div class="col-sm-6"><?= InputUtils::escapeHTML($capLabel) ?></div>
+            </div>
+
+            <?php foreach ($permissionGroups as $permissionGroup): ?>
+            <div class="border rounded mb-3">
+              <div class="px-3 py-2 border-bottom bg-surface-secondary">
+                <strong><?= InputUtils::escapeHTML($permissionGroup['group']) ?></strong>
+              </div>
+              <?php foreach ($permissionGroup['rows'] as $rowIndex => $permission): ?>
+              <div class="row align-items-center px-3 py-2<?= $rowIndex > 0 ? ' border-top' : '' ?>" data-cy="permission-row" data-granted="<?= $permission['granted'] ? 'true' : 'false' ?>">
+                <div class="col-sm-6" data-cy="permission-label"><?= InputUtils::escapeHTML($permission['label']) ?></div>
                 <div class="col-sm-6">
-                  <?php if ($capGranted): ?>
+                  <?php if ($permission['granted']): ?>
                   <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i><?= gettext("Yes") ?></span>
                   <?php else: ?>
                   <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-xmark me-1"></i><?= gettext("No") ?></span>
+                  <span class="small text-body-secondary ms-1" data-cy="permission-reason"><?= InputUtils::escapeHTML($permission['reason']) ?></span>
                   <?php endif; ?>
                 </div>
               </div>
               <?php endforeach; ?>
             </div>
-
-            <hr>
-            <?php
-            $permissions = [
-                ['label' => gettext("Manage Groups and Roles"), 'granted' => $user->isManageGroups()],
-                ['label' => gettext("Manage Donations and Finance"), 'granted' => $user->isFinance()],
-                ['label' => gettext("Manage Fundraisers"), 'granted' => $user->isManageFundraisers()],
-                ['label' => gettext("Manage Ministries"), 'granted' => $user->isManageMinistries()],
-                ['label' => gettext("Manage My Ministries"), 'granted' => $user->isManageMyMinistries()],
-            ];
-            foreach ($permissions as $perm):
-            ?>
-            <div class="row mb-2">
-              <div class="col-sm-6"><?= $perm['label'] ?></div>
-              <div class="col-sm-6">
-                <?php if ($perm['granted']): ?>
-                <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i><?= gettext("Yes") ?></span>
-                <?php else: ?>
-                <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-xmark me-1"></i><?= gettext("No") ?></span>
-                <?php endif; ?>
-              </div>
-            </div>
             <?php endforeach; ?>
-            <?php endif; ?>
           </div>
 
         </div><!-- /.tab-content -->

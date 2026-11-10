@@ -70,8 +70,8 @@ $group->get('/profile/edit', function (Request $request, Response $response) use
 // The account pages: password and two-factor, owned by the portal so that every
 // role — member, staff and administrator — stays
 // inside the portal. The admin console is reached from the staff bar's "Admin
-// Console" control and nowhere else. See PortalAccountPages for why the older
-// /v2/user/current/* URLs still exist alongside these.
+// Console" control and nowhere else. A self-service login's forced password
+// change and 2FA enrollment land here too (LocalAuthentication).
 //
 // These two act on the staff account behind a STAFF portal session, not on a
 // person record. A member session has neither page (member sign-in design §6.4).

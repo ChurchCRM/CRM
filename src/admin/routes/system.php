@@ -18,6 +18,8 @@ use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\DatabaseVersionService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\LocaleService;
+use ChurchCRM\Service\LoginAsPersonHistoryService;
+use ChurchCRM\Service\UserPermissionsService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
@@ -30,6 +32,7 @@ use ChurchCRM\Utils\VersionUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
 
@@ -869,11 +872,38 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
     $group->get('/users/new', 'adminUserEditorNew');
     $group->post('/users/new', 'adminUserEditorNew')->add(new CSRFMiddleware('user_editor'));
 
+    $group->get('/users/{personId:[0-9]+}', 'adminViewUserAccount');
+
     // User editor — edit existing user (GET shows form, POST processes it)
     $group->get('/users/{personId:[0-9]+}/edit', 'adminUserEditorEdit');
     $group->post('/users/{personId:[0-9]+}/edit', 'adminUserEditorEdit')->add(new CSRFMiddleware('user_editor'));
 
 });
+
+function adminViewUserAccount(Request $request, Response $response, array $args): Response
+{
+    $personId = (int) $args['personId'];
+    if ($personId === (int) AuthenticationManager::getCurrentUser()->getId()) {
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/account');
+    }
+
+    $user = UserQuery::create()->findPk($personId);
+    if ($user === null) {
+        throw new HttpNotFoundException($request, gettext('User not found'));
+    }
+
+    return (new PhpRenderer(__DIR__ . '/../../account/views/'))->render($response, 'account.php', [
+        'sRootPath' => SystemURLs::getRootPath(),
+        'user' => $user,
+        'permissionGroups' => (new UserPermissionsService())->getEffectivePermissions($user),
+        'loginAsPersonHistory' => (new LoginAsPersonHistoryService())->cardForUser($personId),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('Admin'), '/admin/'],
+            [gettext('Users'), '/admin/system/users'],
+            [$user->getFullName()],
+        ]),
+    ]);
+}
 
 function adminChangeUserPassword(Request $request, Response $response, array $args): Response
 {
@@ -884,13 +914,12 @@ function adminChangeUserPassword(Request $request, Response $response, array $ar
     $user = UserQuery::create()->findPk($userId);
 
     if (empty($user)) {
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/user/not-found?id=' . $args['id']);
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/admin/system/users');
     }
 
     if ($user->equals($curUser)) {
-        // Don't allow the current user (if admin) to set their new password
-        // make the user go through the "self-service" password change procedure
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/user/current/changepassword');
+        // An administrator changes their own password through the self-service form, which checks the old one.
+        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/account/password');
     }
 
     $pageArgs = [
@@ -1079,7 +1108,7 @@ function adminUserEditorEdit(Request $request, Response $response, array $args):
             [gettext('Edit User')],
         ]),
         'sPageHeaderButtons' => PageHeader::buttons(array_filter([
-            ['label' => gettext('View User'), 'url' => '/v2/user/' . $personId, 'icon' => 'fa-eye'],
+            ['label' => gettext('View User'), 'url' => '/admin/system/users/' . $personId, 'icon' => 'fa-eye'],
             ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
         ])),
         'isNew'            => false,

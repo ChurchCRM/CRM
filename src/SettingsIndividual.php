@@ -152,7 +152,7 @@ $configs = UserConfigQuery::create()
       </div>
       <div class="d-flex gap-2 mt-3">
         <input type="submit" class="btn btn-primary" name="save" value="<?= gettext('Save Settings') ?>">
-        <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= $iPersonID ?>" class="btn btn-secondary"><?= gettext('Cancel') ?></a>
+        <a href="<?= SystemURLs::getRootPath() ?>/account" class="btn btn-secondary"><?= gettext('Cancel') ?></a>
       </div>
     </form>
   </div>

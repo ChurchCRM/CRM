@@ -4,9 +4,8 @@
   Two-factor authentication, in the portal's layout.
 
   The portal's own page, GET /portal/profile/two-factor, for every role — a
-  member, staff and an administrator. The same template
-  also draws the forced enrollment at /v2/user/current/manage2fa for a
-  self-service session (issue #9865).
+  member, staff and an administrator, and the forced enrollment page for a
+  self-service session.
 
   The enrollment UI is the existing `two-factor-enrollment` bundle, mounted on
   the same container id it looks for on the admin page, so there is one

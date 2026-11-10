@@ -3,6 +3,7 @@
 namespace ChurchCRM\Slim\Middleware;
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use Laminas\Diactoros\Response;
@@ -38,9 +39,8 @@ class ChurchInfoRequiredMiddleware implements MiddlewareInterface
      */
     private const EXEMPT_PATHS = [
         self::CHURCH_INFO_PATH,
-        '/v2/user/current/changepassword',
-        '/v2/user/current/manage2fa',
-        '/v2/user/current/enroll2fa',
+        LocalAuthentication::STAFF_PASSWORD_PATH,
+        LocalAuthentication::STAFF_TWO_FACTOR_PATH,
     ];
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface

@@ -159,7 +159,7 @@ describe("Login as Person", () => {
             .and("contain", "Stopped")
             .and("contain", "No changes made.");
 
-        cy.visit(`/v2/user/${ADMIN}`);
+        cy.visit("/account");
         newestSession().should("contain", "Church Admin as Mathew Campbell").and("contain", "Stopped");
     });
 
@@ -311,7 +311,7 @@ describe("Login as Person", () => {
                 .its("status")
                 .should("eq", 403);
         });
-        cy.visit(`/v2/user/3`);
+        cy.visit("/admin/system/users/3");
         cy.get("#login-as-person-history").should("not.exist");
     });
 });

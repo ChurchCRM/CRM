@@ -278,7 +278,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
             cy.expectStaffSignedIn({ timeout: 15000 });
 
-            cy.visit('/v2/user/current/changepassword');
+            cy.visit('/account/password');
             cy.get('#OldPassword').type(newAdminPassword);
             cy.get('#NewPassword1').type(adminCredentials.password);
             cy.get('#NewPassword2').type(adminCredentials.password);

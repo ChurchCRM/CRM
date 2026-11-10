@@ -5,6 +5,7 @@ namespace ChurchCRM\Service;
 use ChurchCRM\model\ChurchCRM\LoginAsPersonActionQuery;
 use ChurchCRM\model\ChurchCRM\LoginAsPersonSessionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Portal\Auth\LoginAsPerson;
 use ChurchCRM\Portal\Auth\LoginAsPersonEndReason;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -34,6 +35,18 @@ final class LoginAsPersonHistoryService
     public function forUser(int $userId): array
     {
         return $this->present(LoginAsPersonSessionQuery::create()->filterByActorUserId($userId)->_or()->filterByPersonId($userId));
+    }
+
+    /**
+     * forUser(), or null when there is nothing to show and Login as Person is off.
+     *
+     * @return list<array<string, mixed>>|null
+     */
+    public function cardForUser(int $userId): ?array
+    {
+        $history = $this->forUser($userId);
+
+        return $history === [] && !LoginAsPerson::isEnabled() ? null : $history;
     }
 
     /** @return list<array<string, mixed>> */

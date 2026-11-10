@@ -91,7 +91,7 @@ describe("Member Portal — staff access", () => {
  *
  * Product finding: an administrator who opened the portal and clicked "Change
  * password" or "Two-factor" was dropped back into the admin console, because
- * /v2/user/current/* only wore the portal layout for an Edit-Self-only session.
+ * the staff account pages only wore the portal layout for an Edit-Self-only session.
  * The portal now owns both pages, so the only way out of the portal is the
  * "Admin Console" control the staff bar offers.
  */

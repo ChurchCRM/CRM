@@ -4,7 +4,7 @@ describe("Standard User Settings Page", () => {
     beforeEach(() => cy.setupStandardSession());
 
     it("Loads settings page with all tabs", () => {
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get("h2.page-title").contains("Settings");
 
         cy.get('#settingsNav a[href="#tab-account"]').should("be.visible");
@@ -17,7 +17,7 @@ describe("Standard User Settings Page", () => {
     });
 
     it("Shows profile and security on My Account tab", () => {
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get("#tab-account").within(() => {
             cy.contains("My Account");
             cy.get("#userAvatar").should("exist");
@@ -33,7 +33,7 @@ describe("Standard User Settings Page", () => {
     });
 
     it("Shows Security section rows on My Account tab", () => {
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get("#tab-account").within(() => {
             // New security detail rows must be present
             cy.contains("Account status").should("exist");
@@ -45,7 +45,7 @@ describe("Standard User Settings Page", () => {
 
     it("Shows Active account-status badge when account is not locked", () => {
         // Seed user (id=3, tony.wade) has no failed logins in test data
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get("#tab-account").within(() => {
             // Should NOT show the locked alert banner
             cy.get(".alert-danger").should("not.exist");
@@ -58,7 +58,7 @@ describe("Standard User Settings Page", () => {
 
     it("Shows OK password-status badge when password change is not required", () => {
         // Seed user (id=3, tony.wade) does not have NeedPasswordChange set
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get("#tab-account").within(() => {
             // Should NOT show the must-change-password alert banner
             cy.get(".alert-warning").should("not.exist");
@@ -70,7 +70,7 @@ describe("Standard User Settings Page", () => {
     });
 
     it("Navigates to Appearance tab and shows all controls", () => {
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
         cy.get("#tab-appearance").should("be.visible");
 
@@ -87,7 +87,7 @@ describe("Standard User Settings Page", () => {
     });
 
     it("Navigates to Localization tab and shows locale controls", () => {
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get('#settingsNav a[href="#tab-localization"]').click();
         cy.get("#tab-localization").should("be.visible");
 
@@ -99,7 +99,7 @@ describe("Standard User Settings Page", () => {
     });
 
     it("Populates locale dropdown grouped by region with native names", () => {
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get('#settingsNav a[href="#tab-localization"]').click();
         cy.get("#tab-localization").should("be.visible");
 
@@ -120,7 +120,7 @@ describe("Standard User Settings Page", () => {
     });
 
     it("Navigates to API Access tab and shows API key", () => {
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get('#settingsNav a[href="#tab-api"]').click();
         cy.get("#tab-api").should("be.visible");
 
@@ -130,7 +130,7 @@ describe("Standard User Settings Page", () => {
     });
 
     it("Navigates to Permissions tab and shows permissions", () => {
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get('#settingsNav a[href="#tab-permissions"]').click();
         cy.get("#tab-permissions").should("be.visible");
         cy.get("#tab-permissions").contains("Permissions");
@@ -138,7 +138,7 @@ describe("Standard User Settings Page", () => {
 
     it("Can toggle dark mode and it applies live", () => {
         cy.intercept("POST", "**/api/user/*/setting/ui.style").as("saveStyle");
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
 
         cy.get("#themeModeDark").check({ force: true });
@@ -152,7 +152,7 @@ describe("Standard User Settings Page", () => {
     });
 
     it("Persists dark mode selection after reload", () => {
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
 
         // Force to light first (no-op if already light, resets if dark).
@@ -166,7 +166,7 @@ describe("Standard User Settings Page", () => {
         cy.wait("@saveDark");
 
         // Reload and verify dark persisted
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
         cy.get("#themeModeDark").should("be.checked");
         cy.get("#themeModeLight").should("not.be.checked");
@@ -179,7 +179,7 @@ describe("Standard User Settings Page", () => {
 
     it("Can select a primary color and it applies live", () => {
         cy.intercept("POST", "**/api/user/*/setting/ui.theme.primary").as("saveColor");
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
 
         cy.get('#primaryColorPicker .btn-color-swatch[data-color="purple"]').click();
@@ -200,7 +200,7 @@ describe("Standard User Settings Page", () => {
     it("Can change table page length", () => {
         // Intercepts before cy.visit() so no request can be missed
         cy.intercept("POST", "**/api/user/*/setting/ui.table.size").as("baselineSize");
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
 
         // Ensure we start from "10" so selecting "50" always fires a change event
@@ -216,7 +216,7 @@ describe("Standard User Settings Page", () => {
         cy.wait("@saveTableSize");
 
         // Verify the select value persists on reload
-        cy.visit("/v2/user/3");
+        cy.visit("/account");
         cy.get('#settingsNav a[href="#tab-appearance"]').click();
         cy.get("#tablePageLength").should("have.value", "50");
 
