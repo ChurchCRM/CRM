@@ -29,7 +29,7 @@ describe("Confirmation Reports - MVC Routes", () => {
 
     beforeEach(() => {
         cy.freshAdminFormLogin();
-        cy.visit("/LettersAndLabels.php");
+        cy.visit("/people/reports/letters-and-labels");
     });
 
     describe("MVC route - PDF Generation (GET /people/report/verify)", () => {

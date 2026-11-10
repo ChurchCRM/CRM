@@ -95,8 +95,8 @@ describe("Zero-Permission User (EditSelf=0, all flags 0)", () => {
         });
 
         // Letters and labels follow ordinary report access, like the directory.
-        it("LettersAndLabels opens like the other reports", () => {
-            cy.visit("LettersAndLabels.php");
+        it("Letters and Labels opens like the other reports", () => {
+            cy.visit("/people/reports/letters-and-labels");
             cy.contains("Letters and Mailing Labels");
         });
 
