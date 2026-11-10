@@ -1370,7 +1370,7 @@ function triggerNotification(personId: number): void {
 }
 
 /**
- * Simple notification for kiosk mode (no Notyf dependency)
+ * Kiosk fallback when window.CRM.notify is not loaded
  */
 function showKioskNotification(message: string, type: string): void {
   const $notification = $("<div>", {

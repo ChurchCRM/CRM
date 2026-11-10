@@ -31,7 +31,7 @@ import "./skin-core-css";
 
 import { initializeQuillEditor } from "./quill-editor.js";
 
-// Import notifier module (Notyf wrapper for notifications)
+// window.CRM.notify() toasts
 import "../src/skin/js/notifier.js";
 
 // Import cart management module

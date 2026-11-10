@@ -339,7 +339,6 @@ interface CRMNamespace {
   notify?: (message: string | object, options?: Record<string, unknown>) => void;
   /** Show the server's `message` from a failed fetch Response or jqXHR, or the fallback. */
   notifyAPIError?: (source: Response | JQuery.jqXHR | null | undefined, fallback: string) => Promise<void>;
-  notyf?: unknown;
   /** Member Portal only: show a toast in the portal's fixed top-right stack.
    * Published by the `portal` bundle, which every portal page loads, so a page
    * bundle, a plugin or a theme's `theme.js` can raise a notice without knowing
