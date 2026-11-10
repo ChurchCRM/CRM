@@ -15,7 +15,7 @@ Thank you for donating time (and often tokens). Reviews mark each item as a hard
 7. Existing installs must keep working. New config defaults safely.
 8. Measure login, people list, and Sunday paths when you change them.
 9. Keep the change free of security holes.
-10. Keep the PR title and description true to the current diff.
+10. Keep the PR title and description true to the current diff. Keep the title under 72 characters: a squash merge makes it the `master` commit subject, and CodeRabbit warns above that.
 11. Build new reports with Slim/Tabler MVC + Propel, or a reports plugin. Query View (`QueryView.php`, `QueryList.php`, predefined `query_qry` rows) is closed to new features.
 12. Let names and tests carry intent; comment only a *why* the code cannot say.
 

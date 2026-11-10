@@ -4,6 +4,7 @@
  */
 
 import ApexCharts from "apexcharts";
+import { notifyAPIError } from "./api-utils";
 import { confirmAction } from "./common/confirm-action";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -118,8 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
             dataTable.row($btn.closest("tr")).remove().draw();
           })
           .fail((jqXHR) => {
-            const msg = jqXHR.responseJSON?.message || i18next.t("Failed to remove from class. Please try again.");
-            window.CRM.notify(msg, { type: "danger", delay: 5000 });
+            notifyAPIError(jqXHR, i18next.t("Failed to remove from class. Please try again."));
           });
       },
       { tone: "warning", confirmLabel: i18next.t("Remove"), cancelLabel: i18next.t("Cancel") },
@@ -171,8 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 600);
       })
       .fail((jqXHR) => {
-        const msg = jqXHR.responseJSON?.message || i18next.t("Failed to create event.");
-        window.CRM.notify(msg, { type: "danger", delay: 5000 });
+        notifyAPIError(jqXHR, i18next.t("Failed to create event."));
         $btn.prop("disabled", false).html(`<i class="fa-solid fa-plus me-1"></i>${i18next.t("Create Today's Event")}`);
       });
   });
