@@ -5,7 +5,7 @@ describe("CSV Export Page", () => {
     });
 
     it("posts the form to the admin export route", () => {
-        cy.get("form").should("have.attr", "action").and("match", /\/admin\/export\/csv$/);
+        cy.get("form[method='post']").should("have.attr", "action").and("match", /\/admin\/export\/csv$/);
     });
 
     it("should reject an invalid date filter with a 400", () => {
