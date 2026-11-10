@@ -170,6 +170,7 @@ describe("Staff folded sidebar preference", () => {
                 });
                 expectLayout(0);
                 capture(`sidebar-${name}-${width}x820-${theme}-closed`);
+                cy.scrollTo(0, 40);
                 cy.get("#menu-toggle").should("be.visible").click();
                 cy.get("#sidebar-menu").should("have.class", "show");
                 cy.get("#sidebar").should(($sidebar) => {
