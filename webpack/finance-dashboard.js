@@ -71,9 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ],
         autoSave: true,
         showAllSettingsLink: false,
-        onSave: () => {
-          setTimeout(() => window.location.reload(), 1500);
-        },
+        reloadOnSave: true,
       });
     }
   });

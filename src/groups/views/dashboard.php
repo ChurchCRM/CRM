@@ -174,9 +174,7 @@ $(document).ready(function () {
         ],
         autoSave: true,
         showAllSettingsLink: false,
-        onSave: function () {
-            setTimeout(function () { window.location.reload(); }, 1500);
-        }
+        reloadOnSave: true
     });
 });
 </script>
