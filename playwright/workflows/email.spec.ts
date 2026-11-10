@@ -289,6 +289,27 @@ async function openEmailHistoryModal(page: Page, row: Locator): Promise<void> {
   await expect(page.locator('#email-history-modal-title')).not.toHaveText('…', { timeout: 15000 });
 }
 
+/** Dismisses the header notices (for example a security notice from churchcrm.io) for this admin, then reloads. */
+async function dismissHeaderNotices(page: Page): Promise<void> {
+  const notices = page.locator('.crm-system-notification[data-dismiss-key]');
+  if ((await notices.count()) === 0) return;
+  const userId = await page.evaluate(() => window.CRM?.userId);
+  const keys = await notices.evaluateAll((els) => els.map((el) => (el as HTMLElement).dataset.dismissKey ?? ''));
+  for (const key of keys.filter(Boolean)) {
+    await page.request.post(`/api/user/${userId}/setting/${encodeURIComponent(key)}`, { data: { value: 'true' } });
+  }
+  await page.reload();
+}
+
+async function openEmailHistoryPage(page: Page): Promise<void> {
+  await openAndrew(page);
+  await humanClick(page.locator('#email-history-show-all'));
+  await page.waitForURL(/\/people\/view\/\d+\/emails/, { timeout: 15000 });
+  await dismissHeaderNotices(page);
+  await expect(page.locator('[data-email-history-table] [data-email-log-row]').first()).toBeVisible({ timeout: 15000 });
+  await hideFloatingButtons(page);
+}
+
 test.describe('Email history', () => {
   let restoreMail: (() => Promise<void>) | undefined;
 
@@ -348,11 +369,7 @@ test.describe('Email history', () => {
   });
 
   test('email-history-show-all', showAll, async ({ page }, testInfo) => {
-    await openAndrew(page);
-    await humanClick(page.locator('#email-history-show-all'));
-    await page.waitForURL(/\/people\/view\/\d+\/emails/, { timeout: 15000 });
-    await expect(page.locator('[data-email-history-table] [data-email-log-row]').first()).toBeVisible({ timeout: 15000 });
-    await hideFloatingButtons(page);
+    await openEmailHistoryPage(page);
     await settle(page, 600);
     await captureScreen(page, testInfo, showAll);
   });
@@ -407,9 +424,7 @@ test.describe('Email history', () => {
   });
 
   test('email-history-modal-not-stored', notStored, async ({ page }, testInfo) => {
-    await openAndrew(page);
-    await humanClick(page.locator('#email-history-show-all'));
-    await page.waitForURL(/\/people\/view\/\d+\/emails/, { timeout: 15000 });
+    await openEmailHistoryPage(page);
     const row = page.locator('[data-email-history-table] [data-email-log-row]').filter({ hasText: 'Family verification' });
     await expect(row.first()).toBeVisible({ timeout: 15000 });
     await openEmailHistoryModal(page, row.first());
