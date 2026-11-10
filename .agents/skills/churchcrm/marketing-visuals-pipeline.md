@@ -31,9 +31,22 @@ The pipeline uses Playwright's bundled Chromium (`npm run marketing:install`). S
 
 Run the workflow on `master` only. A run on another branch captures and checks but does not publish. `Release & Start Next` starts it on `master` after the draft exists and never waits for it. The publish job needs `DOCS_RELEASE_TOKEN` (Actions: write on `ChurchCRM/visuals`) and fails without it.
 
+### When a capture earns its place
+
+Cypress specs cover every behavior change. A Playwright capture (screenshot or video) is optional and has to pass the value test:
+
+- **Marketing:** it makes a church viewer say "we want that", or
+- **Docs:** it makes a docs page clearly easier to follow than text alone: a workflow story, a result screen, or a before/after.
+
+A standard web flow (open a page, click a button, fill a form, save) earns no capture, even when the screen is new. Neither does a settings page or a CRUD screen on its own. When in doubt, ship the PR with no capture. The spec's `purpose` text names the viewer or docs page it serves; review rejects a capture whose purpose is only "shows the new screen".
+
+Docs text follows the same test: write the outcome, the decision, and the gotcha, not click-by-click narration of a standard flow.
+
+No gate, checklist or CI job requires a new capture. Breaking an existing one is a review block (`maintainer-review-gates.md`, item 10).
+
 ### Adding a capture in a feature PR
 
-The capture spec ships in the same PR as the UI change — but only when the change tells or extends a user workflow story. A new screen, settings page, or CRUD operation on its own earns no capture: if there is no church task behind it (something a staff member or volunteer sets out to do, with a reason a church would care — it saves time, protects people or data, or removes a worry), ship the PR with no capture. The spec's purpose text must state the workflow story; a capture whose purpose is only a new screen or a new CRUD operation is rejected in review. Images serve your own check and stay uncommitted.
+When a capture passes the value test, its spec ships in the same PR as the UI change. Images serve your own check and stay uncommitted.
 
 1. Make a `git worktree` at the PR commit, symlink `node_modules`, then run `composer:install`, `build:webpack`, `build:signatures`
 2. Start the pipeline's own stack: `export COMPOSE_PROJECT_NAME=crm-pw-capture MAILSERVER_PORT=1026 MAILSERVER_GUI_PORT=8026`, then `npm run docker:ci:new-system:start`. The web server and database use ports 8081 and 3308; Mailpit binds `MAILSERVER_PORT` / `MAILSERVER_GUI_PORT`, which default to the dev stack's 1025 / 8025, so set them. The captures read Mailpit at `MAILSERVER_GUI_PORT` (or `CHURCHCRM_MAILPIT_URL`), so run them in the same shell. The start removes `src/Include/Config.php`, so it runs in the worktree and never in the main checkout
