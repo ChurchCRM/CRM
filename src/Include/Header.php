@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\UserSetting;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Service\NotificationService;
@@ -53,7 +54,7 @@ $_currencyAttrs     = ' data-currency-position="' . InputUtils::escapeAttribute(
 $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
 ?>
 <!DOCTYPE html>
-<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?><?= $_currencyAttrs ?>>
+<html data-bs-navbar-position="combined"<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?><?= $_currencyAttrs ?>>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -177,7 +178,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
   <!-- ============================================================ -->
   <!-- Sidebar (Tabler vertical navbar)                              -->
   <!-- ============================================================ -->
-  <aside class="navbar navbar-vertical navbar-expand-xl d-print-none" id="sidebar">
+  <aside class="navbar navbar-vertical navbar-expand-xl d-print-none<?= $currentUser->getSettingValue(UserSetting::UI_SIDEBAR_FOLDED) === '1' ? ' navbar-folded-hover' : '' ?>" id="sidebar">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button"
               data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
@@ -209,14 +210,9 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
   </aside>
 
   <!-- ============================================================ -->
-  <!-- Page wrapper                                                  -->
-  <!-- ============================================================ -->
-  <div class="page-wrapper">
-
-  <!-- ============================================================ -->
   <!-- Topbar                                                        -->
   <!-- ============================================================ -->
-  <header class="navbar navbar-expand-md d-print-none sticky-top">
+  <header class="navbar navbar-expand-md d-print-none sticky-top order-first order-xl-0" id="topbar">
     <div class="container-xl">
 
       <button type="button" id="menu-toggle"
@@ -423,6 +419,8 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 
     </div><!-- /.container-xl -->
   </header>
+
+  <div class="page-wrapper">
 
 <?php
     // Unified page header defaults (backward-compatible)
