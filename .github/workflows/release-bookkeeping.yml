@@ -77,9 +77,9 @@ jobs:
             git push origin master
           fi
 
-  # Manual only: dispatch it once the release's marketing capture is green.
+  # Run on stable publication; manual dispatch supports retries and backfills.
   manage-milestones:
-    if: github.event_name == 'workflow_dispatch'
+    if: (github.event_name == 'release' && !github.event.release.prerelease) || github.event_name == 'workflow_dispatch'
     needs: sync
     name: Advance CRM release milestone
     timeout-minutes: 10

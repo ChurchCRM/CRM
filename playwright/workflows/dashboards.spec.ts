@@ -36,7 +36,7 @@ test.describe('Module Dashboards', () => {
       locales: 'all',
       title: 'Finance Dashboard',
       path: '/finance/',
-      purpose: 'Show the Finance dashboard — totals and quick actions',
+      purpose: 'Help a treasurer review giving by fund alongside payment totals and deposit actions',
       usedIn: ['website'],
     },
     {
@@ -60,6 +60,9 @@ test.describe('Module Dashboards', () => {
     test(name, capture, async ({ page }, testInfo) => {
       await page.goto(path);
       await expect(page.locator('h2')).toBeVisible({ timeout: 15000 });
+      if (name === 'dashboard-finance') {
+        await expect(page.locator('#payments-by-fund-chart .apexcharts-svg')).toBeVisible();
+      }
       await settle(page, 700);
 
       await captureScreen(page, testInfo, capture);

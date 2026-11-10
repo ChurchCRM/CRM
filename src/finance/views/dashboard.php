@@ -32,6 +32,8 @@ $activeFunds = $dashboardData['activeFunds'];
 $activeFundCount = $dashboardData['activeFundCount'];
 $totalFunds = $dashboardData['totalFundCount'];
 
+$paymentsByFund = $dashboardData['paymentsByFund'];
+
 $ytdPaymentTotal = $dashboardData['ytdPaymentTotal'];
 $ytdPledgeTotal = $dashboardData['ytdPledgeTotal'];
 $ytdPaymentCount = $dashboardData['ytdPaymentCount'];
@@ -122,12 +124,20 @@ $sRootPath = SystemURLs::getRootPath();
 
     <!-- Quick Actions -->
     <div class="card mb-3">
-        <div class="card-header">
+        <div class="card-header flex-wrap gap-2">
             <h3 class="card-title"><i class="fa-solid fa-bolt me-2"></i><?= gettext('Quick Actions') ?></h3>
-            <div class="ms-auto text-body-secondary small">
-                <i class="fa-solid fa-calendar-days me-1"></i>
-                <?= gettext('Fiscal Year') ?>: <strong><?= $fyLabel ?></strong>
-            </div>
+            <form method="GET" class="ms-auto d-inline-flex align-items-center gap-2">
+                <label for="deposit-fyid" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Fiscal Year') ?>:</label>
+                <select name="fyid" id="deposit-fyid" class="form-select form-select-sm w-auto" onchange="this.form.submit();">
+                    <option value="0" <?= $selectedFyid === 0 ? 'selected' : '' ?>><?= gettext('All Time') ?></option>
+                    <?php foreach ($availableYears as $year): ?>
+                    <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>
+                        <?= InputUtils::escapeHTML($year['label']) ?>
+                        <?php if ((int) $year['id'] === $currentFyid): ?> (<?= gettext('Current') ?>)<?php endif; ?>
+                    </option>
+                    <?php endforeach; ?>
+                </select>
+            </form>
         </div>
         <div class="card-body">
             <div class="d-flex flex-wrap gap-2">
@@ -164,6 +174,47 @@ $sRootPath = SystemURLs::getRootPath();
                 <?php endif; ?>
             </div>
         </div>
+    </div>
+
+    <div class="card mb-3" id="payments-by-fund">
+        <div class="card-header">
+            <h3 class="card-title"><?= gettext('Payments by Fund') ?></h3>
+            <span class="ms-auto text-body-secondary small"><?= InputUtils::escapeHTML($fyLabel) ?></span>
+        </div>
+        <?php if ($paymentsByFund !== []): ?>
+        <div class="row g-0">
+            <div class="col-lg-7 card-body">
+                <div id="payments-by-fund-chart" aria-hidden="true"></div>
+            </div>
+            <div class="col-lg-5">
+                <table class="table table-vcenter mb-0">
+                    <caption class="visually-hidden"><?= gettext('Payments by Fund') ?> — <?= InputUtils::escapeHTML($fyLabel) ?></caption>
+                    <thead>
+                        <tr>
+                            <th scope="col"><?= gettext('Fund') ?></th>
+                            <th scope="col" class="text-end"><?= gettext('Amount') ?></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($paymentsByFund as $fund): ?>
+                        <tr data-fund-id="<?= (int) $fund['fundId'] ?>">
+                            <th scope="row" class="text-break"><?= InputUtils::escapeHTML($fund['name']) ?></th>
+                            <td class="text-end text-nowrap"><?= CurrencyFormatter::formatHtml($fund['amount']) ?></td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row"><?= gettext('Total') ?></th>
+                            <td class="text-end text-nowrap fw-bold"><?= CurrencyFormatter::formatHtml($ytdPaymentTotal ?? 0) ?></td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <?php else: ?>
+        <div class="card-body text-body-secondary"><?= gettext('No payments found for this period.') ?></div>
+        <?php endif; ?>
     </div>
 
     <div class="row">
@@ -288,19 +339,6 @@ $sRootPath = SystemURLs::getRootPath();
             <div class="card mb-3">
                 <div class="card-header d-flex align-items-center">
                     <h3 class="card-title"><i class="fa-solid fa-clock-rotate-left me-2"></i><?= gettext('Recent Deposits') ?></h3>
-                    <!-- Fiscal Year selector -->
-                    <form method="GET" class="ms-3 d-inline-flex align-items-center gap-2">
-                        <label for="deposit-fyid" class="form-label mb-0 small text-body-secondary fw-semibold"><?= gettext('Fiscal Year') ?>:</label>
-                        <select name="fyid" id="deposit-fyid" class="form-select form-select-sm w-auto" onchange="this.form.submit();">
-                            <option value="0" <?= $selectedFyid === $currentFyid ? '' : ($selectedFyid === 0 ? 'selected' : '') ?>><?= gettext('All Time') ?></option>
-                            <?php foreach ($availableYears as $year): ?>
-                            <option value="<?= (int) $year['id'] ?>" <?= (int) $year['id'] === $selectedFyid ? 'selected' : '' ?>>
-                                <?= InputUtils::escapeHTML($year['label']) ?>
-                                <?php if ((int) $year['id'] === $currentFyid): ?> (<?= gettext('Current') ?>)<?php endif; ?>
-                            </option>
-                            <?php endforeach; ?>
-                        </select>
-                    </form>
                     <a href="<?= $sRootPath ?>/finance/deposit/search" class="btn btn-sm btn-outline-secondary ms-auto">
                         <i class="fa-solid fa-list me-1"></i><?= gettext('View All') ?>
                     </a>
@@ -481,33 +519,15 @@ $sRootPath = SystemURLs::getRootPath();
 <?php if ($isAdmin): ?>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-$(document).ready(function() {
-    window.CRM.settingsPanel.init({
-        container: '#financialSettings',
-        title: <?= InputUtils::jsonEncodeForScript(gettext('Financial Settings')) ?>,
-        icon: 'fa-solid fa-sliders',
-        settings: [
-            { name: 'bEnabledFinance',    type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Finance Module')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Enable or disable the Finance module and sidebar menu.')) ?> },
-            { name: 'bEnabledFundraiser', type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Fundraiser Module')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(gettext('Enable or disable the Fundraiser module.')) ?> },
-            { name: 'iFYMonth',          type: 'choice', label: <?= InputUtils::jsonEncodeForScript(gettext('First month of the fiscal year')) ?>, choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('iFYMonth')) ?> },
-            { name: 'iMaxTaxYears',      type: 'number', label: <?= InputUtils::jsonEncodeForScript(gettext('Maximum tax years shown per family')) ?>, min: 0, placeholder: '5' },
-            { name: 'sDepositSlipType',  type: 'choice', label: <?= InputUtils::jsonEncodeForScript(gettext('Deposit ticket type')) ?>, tooltip: <?= InputUtils::jsonEncodeForScript(SystemConfig::getTooltip('sDepositSlipType')) ?>, choices: <?= InputUtils::jsonEncodeForScript(SystemConfig::getChoices('sDepositSlipType')) ?> },
-            { name: 'iChecksPerDepositForm', type: 'number',  label: <?= InputUtils::jsonEncodeForScript(gettext('Number of checks for Deposit Slip Report')) ?>, min: 1, max: 100 },
-            { name: 'bDisplayBillCounts',    type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Display bill counts on deposit slip')) ?> },
-            { name: 'bUseScannedChecks',     type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable use of scanned checks')) ?> },
-            { name: 'bEnableNonDeductible',  type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable non-deductible payments')) ?> },
-            { name: 'bUseDonationEnvelopes', type: 'boolean', label: <?= InputUtils::jsonEncodeForScript(gettext('Enable use of donation envelopes')) ?> },
-        ],
-        onSave: function() {
-            // Reload page after short delay to show updated fiscal year data
-            setTimeout(function() {
-                window.location.reload();
-            }, 1500);
-        }
-    });
-});
-</script>
 <?php endif; ?>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">window.financeDashboardConfig = <?= InputUtils::jsonEncodeForScript([
+    'funds' => $paymentsByFund,
+    'isAdmin' => $isAdmin,
+    'fiscalYearMonths' => $isAdmin ? SystemConfig::getChoices('iFYMonth') : [],
+    'depositSlipTooltip' => $isAdmin ? SystemConfig::getTooltip('sDepositSlipType') : '',
+    'depositSlipTypes' => $isAdmin ? SystemConfig::getChoices('sDepositSlipType') : [],
+]) ?>;</script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/finance-dashboard.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
