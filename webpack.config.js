@@ -176,6 +176,7 @@ module.exports = {
     'portal-passkeys': './webpack/portal/portal-passkeys.ts',
     'telemetry': './webpack/telemetry',
     'debug': './webpack/debug',
+    'finance-dashboard': './webpack/finance-dashboard',
     'finance-deposit-editor': './webpack/finance-deposit-editor',
     'finance-deposit-search': './webpack/finance-deposit-search',
   },
