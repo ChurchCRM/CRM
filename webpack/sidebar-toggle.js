@@ -1,4 +1,5 @@
-const STORAGE_KEY = "churchcrm.desktopSidebarCollapsed";
+const FOLDED_CLASS = "navbar-folded-hover";
+const SETTING = "ui.sidebar.folded";
 
 function startDesktopSidebarToggle() {
   const button = document.getElementById("desktop-sidebar-toggle");
@@ -7,17 +8,36 @@ function startDesktopSidebarToggle() {
     return;
   }
 
-  let collapsed = false;
-  try {
-    collapsed = window.localStorage.getItem(STORAGE_KEY) === "true";
-  } catch {
-    // Storage is optional.
+  for (const link of sidebar.querySelectorAll(".navbar-nav > .nav-item > .nav-link")) {
+    const counters = [...link.querySelectorAll(".menu-counter")];
+    if (!counters.length) continue;
+    const updateIndicator = () => {
+      link.classList.toggle(
+        "sidebar-has-count",
+        counters.some((counter) => Number(counter.textContent) > 0),
+      );
+    };
+    updateIndicator();
+    const observer = new MutationObserver(updateIndicator);
+    for (const counter of counters) {
+      observer.observe(counter, { childList: true, characterData: true, subtree: true });
+    }
   }
 
+  // Below xl the open menu pushes the page down; opening from the top keeps it in view instead of letting scroll anchoring carry it above the header.
+  const stacked = window.matchMedia("(max-width: 1199.98px)");
+  sidebar.addEventListener("show.bs.collapse", (event) => {
+    if (event.target.id === "sidebar-menu" && stacked.matches) {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+  });
+
+  let folded = sidebar.classList.contains(FOLDED_CLASS);
+
   const render = () => {
-    document.body.classList.toggle("desktop-sidebar-collapsed", collapsed);
-    button.setAttribute("aria-expanded", String(!collapsed));
-    const label = collapsed ? button.dataset.expandLabel : button.dataset.collapseLabel;
+    sidebar.classList.toggle(FOLDED_CLASS, folded);
+    button.setAttribute("aria-expanded", String(!folded));
+    const label = folded ? button.dataset.expandLabel : button.dataset.collapseLabel;
     if (label) {
       button.setAttribute("aria-label", label);
       button.setAttribute("title", label);
@@ -26,13 +46,14 @@ function startDesktopSidebarToggle() {
   };
 
   button.addEventListener("click", () => {
-    collapsed = !collapsed;
+    folded = !folded;
     render();
-    try {
-      window.localStorage.setItem(STORAGE_KEY, String(collapsed));
-    } catch {
-      // The control still works for this page.
-    }
+    window.CRM?.APIRequest?.({
+      method: "POST",
+      path: `user/${window.CRM.userId}/setting/${SETTING}`,
+      dataType: "json",
+      data: JSON.stringify({ value: folded ? "1" : "0" }),
+    });
   });
 
   render();

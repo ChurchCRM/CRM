@@ -50,4 +50,4 @@ No reporting app. A report lives in the module that owns its data and permission
 - Specs: hub renders and saves, admin-only, the key absent from `/SystemSettings.php`, any new endpoint has happy and error cases.
 - Tablet and mobile pass stated in the PR body.
 - PR body links the issue, lists new msgids with the reason, and notes follow-ups.
-- Playwright capture issue and docs issue opened after push (`CLAUDE.md` → Session hygiene).
+- Docs issue opened after push (`CLAUDE.md` → Session hygiene). A settings page earns no Playwright capture.
