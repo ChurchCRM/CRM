@@ -13,10 +13,10 @@ intent: How agents commit and push on ChurchCRM.
 - Branch every PR from `master`, one per independent change. Base a PR on another unmerged PR only when it needs that PR's code; a PR that removes what the others stopped using waits until they merge, then branches from `master`. The last PR of an epic says `Part of #epic`; a maintainer closes the epic
 - Do not set a milestone by hand. On merge, `.github/workflows/pr-milestone-stamp.yml` stamps the PR and every issue it fixes with the `package.json` `version` (7.8.0 → milestone `7.8.0`) and closes those issues if they are still open. When the PR finishes an issue, the body says `Fixes #N` (not `refs`)
 - A bug uses the GitHub issue type Bug. Do not add a `bug` label. Other issue labels are one of `enhancement`, `question`, `Documentation`, `Epic`, `refactor`, or `cleanup`, plus the area labels that fit (`Feature: ...`, `UI`, `API`, `Security`, `Platform: ...`). `Integration Testing` is Cypress and other automated tests of the app. Playwright work (captures, screenshots, videos, the marketing pipeline) is `Marketing`, never `Integration Testing`. Copy exact names from `gh label list --repo ChurchCRM/CRM`. Never invent a label. Do not use `feature` (use `enhancement`), `volunteer` (use `Feature: Volunteer`), or `translation` (use `Localization`). `Epic` is only for a parent that tracks child issues. Do not add `Stale` by hand. The Monday hygiene workflow asks for a reply after 45 quiet days and closes 14 days later if nobody answers. `Security`, `security-delete-required`, `Epic`, and `good first issue` stay open. `dependencies` is Dependabot only; human dependency work uses `Package Dependencies`
-- `npm run lint` and the matching build before you commit
-- UI change: check the pages in a real browser before you commit, in light and dark themes, at desktop, tablet (about 820px), and phone width (browsers stop near 500px). Look for column widths, wrapping, horizontal scroll, and working menus. Fix what is off, then look again
-- UI PR: attach screenshots of the important pages (desktop, plus tablet or phone) to the PR description. Take them in that browser pass on seeded data, never real names or emails. State in the PR body that the light/dark and tablet/mobile pass was done
-- Before you push, run every Cypress spec the change touches (new and existing) against the seeded test stack: `npm run docker:test:reset:db`, then `npx cypress run --config-file cypress/configs/docker.config.ts --spec "a.spec.js,b.spec.js"`. Report the pass counts. Push CI is not where a spec first fails
+- `npm run lint` and the matching build before you push, when the session's environment can run them. A check the environment cannot run never blocks a commit (see Sessions without a toolchain)
+- UI change: check the pages in a real browser before you push, in light and dark themes, at desktop, tablet (about 820px), and phone width (browsers stop near 500px), when the session has a browser and the stack. Look for column widths, wrapping, horizontal scroll, and working menus. Fix what is off, then look again
+- UI PR: attach screenshots of the important pages (desktop, plus tablet or phone) to the PR description. Take them in that browser pass on seeded data, never real names or emails. State in the PR body that the light/dark and tablet/mobile pass was done — or, when no browser pass was possible, that it was not done
+- Before you push, run every Cypress spec the change touches (new and existing) against the seeded test stack when the session has one: `npm run docker:test:reset:db`, then `npx cypress run --config-file cypress/configs/docker.config.ts --spec "a.spec.js,b.spec.js"`. Report the pass counts. With a local stack, push CI is not where a spec first fails; without one, CI is the first run and the PR body says so
 - Stage files by explicit path, never `git add -A` / `.`. Before commit, `git status --short` and `git diff --cached --name-status` must list only files the task expects; unstage or delete strays (editor/`sed -i` backups like `*-E`, generated files, symlinks) first
 - The diff goes in the PR body, not in a pre-commit approval stop. Report the PR link after the push
 - Title and body match the current diff
@@ -40,7 +40,9 @@ Approval attaches to the task, not to each git operation. When a maintainer assi
 
 Do not stop to show a diff for a yes before committing, and do not wait for a message that says "push". The PR carries the diff; report after the push with the PR link, the validation results, and anything unresolved.
 
-The checks before a push do not change — lint, build, and the touched specs above. They are gates the agent runs, not maintainer taps.
+The checks before a push do not change — lint, build, and the touched specs above. They are gates the agent runs when its environment can, not maintainer taps, and never commit gates (see Sessions without a toolchain).
+
+Push discipline, because every push runs the full GitHub CI matrix (about 15-20 billable minutes): commits are free and accumulate locally; a push is not a commit. Push once per finished slice, not per increment. After a push, wait for that CI run to finish, collect every CI failure and every open review thread, fix them in one batch, and make one follow-up push — never a push per fix, and never a new push while the previous run is still going.
 
 Still needs a specific yes, every time:
 
@@ -48,13 +50,20 @@ Still needs a specific yes, every time:
 - A push to `master` or another protected branch, a push to someone else's branch, or a plain `--force`
 - Anything outside the assigned task's scope — a new issue, an unrelated fix, a scope expansion. Stop and ask there; that is where the decision is.
 
-Every push runs the full GitHub CI matrix (about 15-20 billable minutes), so push finished slices, not half-done increments.
+## Sessions without a toolchain
+
+Mobile and cloud app sessions have no PHP, Node, Docker, database, or browser stack running. That changes where validation happens, never whether work proceeds:
+
+- Commit freely. The only commit gates are the ones that need no runtime: the right branch, staging by explicit path, and the `git status` / staged-diff file list showing only the files the task expects.
+- A validation step that needs a runtime — lint, a build, the touched Cypress specs, the browser pass — is not a commit block and not a reason to stop or ask. Do the review the environment allows (read the diff, check the syntax you can) and keep going.
+- The PR body names each check that was not run locally and why (no PHP, no Node, no Docker), so CI is the evidence for it. Never report a check as passed when it did not run.
+- For those checks, CI is the first run — the local-first rule in the pre-push checkpoint below applies only where a local run is possible. The browser pass and screenshots are the same: state in the PR body that they were not done, never claim them.
 
 ## Mandatory Pre-Push Biome Check
 
 `.githooks/pre-push` runs `npm run lint`. `package.json` `prepare` sets `core.hooksPath=.githooks`. No-op when `$CI` or `$GITHUB_ACTIONS` is set.
 
-Agents run `npm run lint` themselves before pushing. Never `git push --no-verify` unless the maintainer authorizes a hotfix and the PR names the bypass.
+Agents run `npm run lint` themselves before pushing when the session has Node. In a session without one, the hook cannot run either: name lint as not run in the PR body and let the `code-quality.yml` CI job be that push's lint run. Never `git push --no-verify` unless the maintainer authorizes a hotfix and the PR names the bypass.
 
 ### Pre-Push Checkpoint Owns Local Deterministic Validation
 
