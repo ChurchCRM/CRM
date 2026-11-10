@@ -5,6 +5,7 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -880,9 +881,12 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
 
                                 if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
                                     echo '<td class="text-end">';
-                                    echo '<a class="btn btn-sm btn-danger" href="' . SystemURLs::getRootPath() . '/people/view/' . $iPersonID . '?RemoveVO=' . (int)$vol_ID . '" title="' . gettext('Remove') . '">';
+                                    echo '<form method="post" action="' . SystemURLs::getRootPath() . '/people/view/' . $iPersonID . '" class="d-inline">';
+                                    echo CSRFUtils::getTokenInputField();
+                                    echo '<button type="submit" name="RemoveVO" value="' . (int) $vol_ID . '" class="btn btn-sm btn-danger" title="' . gettext('Remove') . '" aria-label="' . gettext('Remove') . '">';
                                     echo '<i class="fa-solid fa-trash"></i>';
-                                    echo '</a>';
+                                    echo '</button>';
+                                    echo '</form>';
                                     echo '</td>';
                                 }
 
@@ -901,6 +905,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                                 </div>
                                 <div class="card-body">
                                     <form method="post" action="<?= SystemURLs::getRootPath() ?>/people/view/<?= $iPersonID ?>">
+                                        <?= CSRFUtils::getTokenInputField() ?>
                                         <div class="row">
                                             <div class="mb-3 col-md-6">
                                                 <label for="input-volunteer-opportunities"><?= gettext('Select Opportunities') ?></label>

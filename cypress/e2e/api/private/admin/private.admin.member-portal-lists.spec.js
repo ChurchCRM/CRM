@@ -38,7 +38,7 @@ const audit = (params = {}) =>
 
 /** A family confirms its details through the emailed link, with a message. */
 const confirmFamilyByEmailLink = (familyId, message) =>
-    cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200).then(({ body }) => {
+    cy.makePrivateAdminAPICall("POST", `/api/family/${familyId}/verify/url`, {}, 200).then(({ body }) => {
         const path = new URL(body.url).pathname.replace(/^.*\/external\//, "/external/");
         cy.request({ method: "POST", url: path, form: true, body: { message } }).its("status").should("eq", 200);
     });

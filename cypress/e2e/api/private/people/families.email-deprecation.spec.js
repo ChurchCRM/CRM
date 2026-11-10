@@ -91,7 +91,7 @@ describe("Deprecated family Email in the family API (7.8.3)", () => {
 
     it("GET /api/families/self-verify", () => {
         Object.keys(expected()).forEach((key) => {
-            cy.makePrivateAdminAPICall("GET", `/api/family/${families[key].body.Id}/verify/url`, null, 200).then((response) => {
+            cy.makePrivateAdminAPICall("POST", `/api/family/${families[key].body.Id}/verify/url`, {}, 200).then((response) => {
                 const token = response.body.url.split("/external/verify/")[1];
                 cy.request({ method: "POST", url: `/external/verify/${token}`, body: { message: `Cypress ${key}` } });
             });

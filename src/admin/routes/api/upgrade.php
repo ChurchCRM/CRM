@@ -46,7 +46,7 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
     });
 
     /**
-     * @OA\Get(
+     * @OA\Post(
      *     path="/api/upgrade/download-latest-release",
      *     operationId="downloadLatestRelease",
      *     summary="Download the latest release from GitHub (or a specific version)",
@@ -68,7 +68,7 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
      *     @OA\Response(response=403, description="Forbidden — Admin role required")
      * )
      */
-    $group->get('/download-latest-release', function (Request $request, Response $response, array $args): Response {
+    $group->post('/download-latest-release', function (Request $request, Response $response, array $args): Response {
         try {
             $queryParams = $request->getQueryParams();
             $version = isset($queryParams['version']) ? trim((string) $queryParams['version']) : null;

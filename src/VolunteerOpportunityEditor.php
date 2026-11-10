@@ -42,14 +42,20 @@ $bErrorFlag = false;
 $aNameErrors = [];
 $bNewNameError = false;
 
-if (array_key_exists('act', $_GET) || array_key_exists('act', $_POST)) {
-    $sAction = InputUtils::legacyFilterInput($_GET['act'] ?? $_POST['act'] ?? '');
-}
-if (array_key_exists('Opp', $_GET) || array_key_exists('Opp', $_POST)) {
-    $iOpp = InputUtils::filterInt($_GET['Opp'] ?? $_POST['Opp'] ?? -1);
-}
-if (array_key_exists('row_num', $_GET)) {
-    $iRowNum = InputUtils::filterInt($_GET['row_num']);
+// GET only opens the delete confirmation; every change arrives as a POST with a CSRF token.
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!CSRFUtils::verifyRequest($_POST)) {
+        http_response_code(403);
+        die(gettext('Invalid CSRF token'));
+    }
+    $sAction = InputUtils::legacyFilterInput($_POST['act'] ?? '');
+    $iOpp = InputUtils::filterInt($_POST['Opp'] ?? -1);
+    if (array_key_exists('row_num', $_POST)) {
+        $iRowNum = InputUtils::filterInt($_POST['row_num']);
+    }
+} elseif (($_GET['act'] ?? '') === 'delete') {
+    $sAction = 'delete';
+    $iOpp = InputUtils::filterInt($_GET['Opp'] ?? -1);
 }
 
 $sDeleteError = '';
@@ -124,7 +130,7 @@ if ($sAction === 'delete' && $iOpp > 0) {
                             <form method="POST" action="VolunteerOpportunityEditor.php" class="d-inline me-2">
                                 <input type="hidden" name="act" value="ConfDelete">
                                 <input type="hidden" name="Opp" value="<?= $iOpp ?>">
-                                <?= CSRFUtils::getTokenInputField('deleteVolunteerOpportunity') ?>
+                                <?= CSRFUtils::getTokenInputField() ?>
                                 <button type="submit" class="btn btn-danger">
                                     <i class="fa-solid fa-trash"></i>
                                     <?= gettext('Yes, delete') ?>
@@ -147,14 +153,6 @@ if ($sAction === 'delete' && $iOpp > 0) {
 if ($sAction === 'ConfDelete' && $iOpp > 0) {
     // The editor is already Admin-only via redirectHomeIfNotAdmin() above.
     // Deleting a volunteer opportunity is not a person/family DeleteRecords action.
-
-    // Verify CSRF token for POST requests
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (!CSRFUtils::verifyRequest($_POST, 'deleteVolunteerOpportunity')) {
-            http_response_code(403);
-            die(gettext('Invalid CSRF token'));
-        }
-    }
 
     // get the order value for the record being deleted
     $oppToDelete = VolunteerOpportunityQuery::create()->findPk((int) $iOpp);
@@ -320,7 +318,16 @@ if (isset($_POST['SaveChanges'])) {
 
 // Construct the form
     ?>
+    <form method="post" action="VolunteerOpportunityEditor.php" id="oppMoveUp">
+        <input type="hidden" name="act" value="up">
+        <?= CSRFUtils::getTokenInputField() ?>
+    </form>
+    <form method="post" action="VolunteerOpportunityEditor.php" id="oppMoveDown">
+        <input type="hidden" name="act" value="down">
+        <?= CSRFUtils::getTokenInputField() ?>
+    </form>
     <form method="post" action="VolunteerOpportunityEditor.php" name="OppsEditor">
+        <?= CSRFUtils::getTokenInputField() ?>
 
                 <div class="card mb-4">
                     <div class="card-status-top bg-success"></div>
@@ -463,10 +470,10 @@ if (isset($_POST['SaveChanges'])) {
                                 echo '</button>';
                                 echo '<div class="dropdown-menu dropdown-menu-end">';
                                 if ($row !== 1) {
-                                    echo '<a href="VolunteerOpportunityEditor.php?act=up&amp;row_num=' . $row . '" class="dropdown-item"><i class="fa-solid fa-arrow-up me-2"></i>' . gettext('Move up') . '</a>';
+                                    echo '<button type="submit" form="oppMoveUp" name="row_num" value="' . $row . '" class="dropdown-item"><i class="fa-solid fa-arrow-up me-2"></i>' . gettext('Move up') . '</button>';
                                 }
                                 if ($row !== $numRows) {
-                                    echo '<a href="VolunteerOpportunityEditor.php?act=down&amp;row_num=' . $row . '" class="dropdown-item"><i class="fa-solid fa-arrow-down me-2"></i>' . gettext('Move down') . '</a>';
+                                    echo '<button type="submit" form="oppMoveDown" name="row_num" value="' . $row . '" class="dropdown-item"><i class="fa-solid fa-arrow-down me-2"></i>' . gettext('Move down') . '</button>';
                                 }
                                 if ($row !== 1 || $row !== $numRows) {
                                     echo '<div class="dropdown-divider"></div>';

@@ -25,6 +25,7 @@ use ChurchCRM\Volunteer\Service\VolunteerAssignmentService;
 use ChurchCRM\Volunteer\Service\VolunteerScheduleService;
 use ChurchCRM\Volunteer\Service\VolunteerQualificationService;
 use ChurchCRM\Service\TimelineService;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -37,7 +38,7 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
-// ─── POST: assign volunteer opportunities (PRG pattern) ──────────────────────
+// ─── POST: assign or remove volunteer opportunities (PRG pattern) ────────────
 $app->post('/view/{personID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
     $iPersonID = (int) $args['personID'];
     $currentUser = AuthenticationManager::getCurrentUser();
@@ -55,7 +56,10 @@ $app->post('/view/{personID:[0-9]+}', function (Request $request, Response $resp
         $personService = new PersonService();
         $parsedBody    = $request->getParsedBody();
         $volIDs        = is_array($parsedBody) ? ($parsedBody['VolunteerOpportunityIDs'] ?? []) : [];
-        if (!empty($volIDs)) {
+        $iRemoveVO     = is_array($parsedBody) ? (int) ($parsedBody['RemoveVO'] ?? 0) : 0;
+        if ($iRemoveVO > 0) {
+            $personService->removeVolunteerOpportunity($iPersonID, $iRemoveVO);
+        } elseif (!empty($volIDs) && is_array($volIDs)) {
             foreach ($volIDs as $volID) {
                 $personService->addVolunteerOpportunity($iPersonID, (int) $volID);
             }
@@ -63,7 +67,7 @@ $app->post('/view/{personID:[0-9]+}', function (Request $request, Response $resp
     }
 
     return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/view/' . $iPersonID);
-});
+})->add(new CSRFMiddleware());
 
 // ─── GET: main person view ───────────────────────────────────────────────────
 $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $response, array $args): Response {
@@ -78,15 +82,6 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     // GHSA-fcw7-mmfh-7vjm: Prevent IDOR - verify user has permission to view this person
     if (!$currentUser->canReadPerson($iPersonID)) {
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/access-denied?role=PersonView');
-    }
-
-    // Handle volunteer-opportunity removal (RemoveVO query param)
-    $queryParams = $request->getQueryParams();
-    $iRemoveVO   = (int) ($queryParams['RemoveVO'] ?? 0);
-    if ($iRemoveVO > 0 && $currentUser->isEditRecordsEnabled() && VolunteerV1Service::isInUse()) {
-        $personService = new PersonService();
-        $personService->removeVolunteerOpportunity($iPersonID, $iRemoveVO);
-        return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/view/' . $iPersonID);
     }
 
     // ── Page header ─────────────────────────────────────────────────────────

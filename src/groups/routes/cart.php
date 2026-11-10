@@ -4,6 +4,8 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Slim\Middleware\CSRFMiddleware;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\view\PageHeader;
 use ChurchCRM\Volunteer\Service\VolunteerClassLinkService;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -11,49 +13,12 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
 // GET /groups/cart/add — display the cart-to-group assignment page.
-// Also handles the one-action "Create Group + ADD Cart" flow:
-// when ?groupeCreationID=<id> is present and the cart is non-empty the
-// cart is immediately emptied into the newly-created group (role 0 ->
-// default role), a flash message is set, and the user is redirected to
-// the group view.
 //
 // Auth: ManageGroupRoleAuthMiddleware is registered globally for all
 // /groups/* routes in src/groups/index.php via MvcAppFactory::create().
 // It enforces isManageGroupsEnabled() and returns HTTP 403 before any
 // closure runs when the user lacks the permission.
 $app->get('/cart/add', function (Request $request, Response $response) {
-    $params = $request->getQueryParams();
-
-    // One-action create-group-and-add-cart flow (legacy compatibility).
-    if (!empty($params['groupeCreationID']) && !empty($_SESSION['aPeopleCart'])) {
-        $iGroupID = (int) $params['groupeCreationID'];
-
-        // Validate that the group exists before operating on the cart.
-        $group = GroupQuery::create()->findPk($iGroupID);
-        if ($group !== null) {
-            $iCount = count($_SESSION['aPeopleCart']);
-            Cart::emptyToGroup($iGroupID, 0);
-
-            $_SESSION['sGlobalMessage']      = sprintf(
-                ngettext(
-                    '%d Person successfully added to selected Group.',
-                    '%d People successfully added to selected Group.',
-                    $iCount
-                ),
-                $iCount
-            );
-            $_SESSION['sGlobalMessageClass'] = 'success';
-
-            return $response
-                ->withHeader('Location', SystemURLs::getRootPath() . '/groups/view/' . $iGroupID)
-                ->withStatus(302);
-        } else {
-            // Group no longer exists (deleted between creation and redirect).
-            $_SESSION['sGlobalMessage']      = gettext('The group could not be found. Please try again.');
-            $_SESSION['sGlobalMessageClass'] = 'danger';
-        }
-    }
-
     // Collect cart people.
     $aPeopleInCart = [];
     $cartCount     = 0;
@@ -95,6 +60,7 @@ $app->get('/cart/add', function (Request $request, Response $response) {
         'aGroups'            => $aGroups,
         'sGlobalMessage'     => $sGlobalMessage,
         'sGlobalMessageClass' => $sGlobalMessageClass,
+        'csrfToken'          => CSRFUtils::generateToken(),
     ]);
 });
 
@@ -166,4 +132,4 @@ $app->post('/cart/add', function (Request $request, Response $response) {
     return $response
         ->withHeader('Location', SystemURLs::getRootPath() . '/groups/cart/add')
         ->withStatus(302);
-});
+})->add(new CSRFMiddleware());

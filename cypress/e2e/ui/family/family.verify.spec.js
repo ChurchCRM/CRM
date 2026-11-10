@@ -2,7 +2,7 @@
 
 /**
  * Use case B — "self-verify" via a token link, opened by someone with NO account.
- * An admin mints the link (GET /api/family/{id}/verify/url) and shares it; the
+ * An admin mints the link (POST /api/family/{id}/verify/url) and shares it; the
  * recipient visits /external/verify/{token} with no session. Path A, a member
  * signed in to the Member Portal, confirms the family there (MP4) —
  * see cypress/e2e/ui/portal/member.portal-family.spec.js.
@@ -20,7 +20,7 @@ describe("Family verification — self-verify token link (no account)", () => {
     beforeEach(() => {
         // No browser session needed: API call uses x-api-key header auth,
         // and the verify page is public (token-based, no login required)
-        cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200).then((response) => {
+        cy.makePrivateAdminAPICall("POST", `/api/family/${familyId}/verify/url`, {}, 200).then((response) => {
             // API url is absolute from SystemURLs::getURL() ($URL[0]). Follow the
             // path relative to cy.baseUrl. Strip baseUrl's own path so subdir CI
             // (baseUrl .../churchcrm/) does not visit /churchcrm/churchcrm/... (#9871).

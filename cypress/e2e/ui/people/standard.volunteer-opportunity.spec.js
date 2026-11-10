@@ -74,10 +74,15 @@ describe("Volunteer Opportunity Assignment - Issue #7917", () => {
         // Drop any assignment a failed test may have left behind — the API
         // refuses (409) to delete an opportunity that is still assigned.
         cy.setupAdminSession();
-        cy.request({
-            url: `${PERSON_VIEW_URL}?RemoveVO=${opportunityId}`,
-            failOnStatusCode: false,
-        });
+        cy.sessionCsrfToken(PERSON_VIEW_URL).then((csrfToken) =>
+            cy.request({
+                method: "POST",
+                url: PERSON_VIEW_URL,
+                form: true,
+                body: { csrf_token: csrfToken, RemoveVO: opportunityId },
+                failOnStatusCode: false,
+            }),
+        );
         cy.request({
             method: "DELETE",
             url: `/admin/api/volunteer-opportunities/${opportunityId}`,
@@ -129,17 +134,17 @@ describe("Volunteer Opportunity Assignment - Issue #7917", () => {
         cy.get("#nav-item-volunteer").click();
         cy.get("#volunteer").should("be.visible");
         cy.get("#volunteer table tbody").should("contain.text", OPPORTUNITY_NAME);
-        cy.get(`#volunteer a[href*="RemoveVO=${opportunityId}"]`).should("exist");
+        cy.get(`#volunteer button[name="RemoveVO"][value="${opportunityId}"]`).should("exist");
 
         // The opportunity is assigned, so it must no longer be offered for assignment.
         cy.get(VOLUNTEER_SELECT).find(`option[value="${opportunityId}"]`).should("not.exist");
 
         // Remove it again and assert the round-trip actually unwound.
-        cy.get(`#volunteer a[href*="RemoveVO=${opportunityId}"]`).first().click();
+        cy.get(`#volunteer button[name="RemoveVO"][value="${opportunityId}"]`).first().click();
         cy.url().should("contain", `people/view/${PERSON_ID}`);
         cy.get("#nav-item-volunteer").click();
         cy.get("#volunteer").should("be.visible");
-        cy.get(`#volunteer a[href*="RemoveVO=${opportunityId}"]`).should("not.exist");
+        cy.get(`#volunteer button[name="RemoveVO"][value="${opportunityId}"]`).should("not.exist");
         cy.get("#volunteer").should("contain.text", "No volunteer opportunity assignments yet.");
         // ...and it is offered for assignment again.
         cy.get(VOLUNTEER_SELECT).find(`option[value="${opportunityId}"]`).should("exist");

@@ -324,3 +324,7 @@ Cypress.Commands.add("trackPersonFromUrl", (collector) => {
         return personId;
     });
 });
+
+Cypress.Commands.add("sessionCsrfToken", (pageUrl = "/admin/system/backup") =>
+    cy.request(pageUrl).then(({ body }) => body.match(/name="csrf_token" value="([^"]+)"/)[1]),
+);

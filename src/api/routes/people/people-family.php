@@ -298,7 +298,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     })->add(EditRecordsRoleAuthMiddleware::class);
 
     /**
-     * @OA\Get(
+     * @OA\Post(
      *     path="/family/{familyId}/verify/url",
      *     summary="Generate a new family self-verify URL token",
      *     tags={"Families"},
@@ -309,7 +309,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     )
      * )
      */
-    $group->get('/verify/url', function (Request $request, Response $response, array $args): Response {
+    $group->post('/verify/url', function (Request $request, Response $response, array $args): Response {
         /** @var Family $family */
         $family = $request->getAttribute('family');
 
