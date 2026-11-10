@@ -5,7 +5,7 @@ intent: "Create marketing screenshot and video workflows: one spec file, metadat
 
 # Playwright Workflow Development
 
-A workflow is one spec: `playwright/workflows/<feature>.spec.ts`. The `captureScreen()` options carry what is captured (`name`, `purpose`) and how it is shown (`title`, `category`, optional `dark`). Each capture writes them to a sidecar, and `manifest.json` is generated from the sidecars. Pipeline, artifact layout and publishing: `marketing-visuals-pipeline.md`.
+A workflow is one spec: `playwright/workflows/<feature>.spec.ts`. The `captureScreen()` options carry what is captured (`name`, `purpose`) and how it is shown (`title`, `category`, optional `dark`). Each capture writes them to a sidecar, and `manifest.json` is generated from the sidecars. Pipeline, artifact layout and publishing: `marketing-visuals-pipeline.md`. Write a workflow only when it passes the value test there ("When a capture earns its place").
 
 ## Spec pattern
 
