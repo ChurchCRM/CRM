@@ -14,11 +14,7 @@ describe("Family Reg", () => {
         // Ensure church name is "Main St. Cathedral" regardless of what other tests may have set.
         // admin.church-info.spec.js saves "Test Church" and does not restore it.
         cy.setupAdminSession();
-        cy.visit("admin/system/church-info");
-        cy.get("#sChurchCountry", { timeout: 10000 }).siblings(".ts-wrapper").should("exist");
-        cy.get("#sChurchName").clear().type("Main St. Cathedral");
-        cy.get("#church-info-form").submit();
-        cy.url({ timeout: 10000 }).should("include", "church-info");
+        cy.setSystemConfig("sChurchName", "Main St. Cathedral");
     });
 
     it("does not ask for a home phone", () => {
