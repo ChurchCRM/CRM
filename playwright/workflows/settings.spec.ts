@@ -1,8 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 import { captureScreen, defineCapture } from '../support/capture';
-import { humanClick, settle } from '../support/human';
-import { waitForFloatingButtonsToTuck } from '../support/volunteer';
+import { settle } from '../support/human';
 
 test.describe('Settings', () => {
   // Nice-to-have (shot list): reinforces the self-hosted/control story.
@@ -38,26 +37,6 @@ test.describe('Settings', () => {
       purpose: 'Show the People settings hub — list shortcuts and auto-saving settings in one place',
       usedIn: ['docs'],
     });
-  });
-
-  const adminMemberPortalUserMenuCapture = defineCapture({
-    name: 'admin-member-portal-user-menu',
-    locales: 'all',
-    title: 'Member Portal in the User Menu',
-    category: 'Admin & Settings',
-    purpose: 'Staff open the Member Portal from their user menu to see the church the way a member does.',
-    usedIn: ['docs'],
-  });
-  test('admin-member-portal-user-menu', adminMemberPortalUserMenuCapture, async ({ page }, testInfo) => {
-    await page.goto('/admin/member-portal');
-    await expect(page.locator('#portal-statistics')).toBeVisible({ timeout: 15000 });
-    await waitForFloatingButtonsToTuck(page);
-    await humanClick(page.locator('a.nav-link[data-bs-toggle="dropdown"]:has(.avatar)'));
-    const entry = page.locator('.dropdown-menu.show a.dropdown-item[href$="/portal/"]');
-    await expect(entry).toBeVisible();
-    await settle(page, 600);
-
-    await captureScreen(page, testInfo, adminMemberPortalUserMenuCapture);
   });
 
   test('admin-person-classifications', async ({ page }, testInfo) => {

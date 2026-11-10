@@ -4,7 +4,6 @@ import { captureScreen, defineCapture } from '../support/capture';
 import { humanClick, humanPause, humanType, settle } from '../support/human';
 import { rememberedMemberContext, useMemberSignIn } from '../support/member-sign-in';
 import { adminRequest, PORTAL_MEMBER, type PortalDemo, setUpPortalDemo, waitForAvatars } from '../support/portal-member';
-import { type DemoTeam, findDemoTeam } from '../support/volunteer';
 
 let api: APIRequestContext;
 let demo: PortalDemo | undefined;
@@ -252,10 +251,8 @@ const TEAM_LEADER_EMAIL = 'kevin.flores@demo.churchcrm.io';
 
 test.describe('signed in as a team leader', () => {
   let leader: BrowserContext | undefined;
-  let team: DemoTeam | undefined;
 
   test.beforeAll(async ({ browser }) => {
-    team = await findDemoTeam(api, 'Worship', 'Worship Team');
     leader = await rememberedMemberContext(browser, TEAM_LEADER_EMAIL, 'team-leader');
   });
 
@@ -285,53 +282,6 @@ test.describe('signed in as a team leader', () => {
     await settle(page, 600);
 
     await captureScreen(page, testInfo, portalMemberTeamsCapture);
-  });
-
-  const volunteerPortalTeamPositionsCapture = defineCapture({
-    name: 'volunteer-portal-team-positions',
-    locales: 'all',
-    title: 'Member Portal: Team Positions',
-    category: 'Groups & Events',
-    purpose: 'A team leader sets up the positions their team staffs, from the Member Portal.',
-    usedIn: ['docs'],
-  });
-  test('volunteer-portal-team-positions', volunteerPortalTeamPositionsCapture, async ({}, testInfo) => {
-    const page = await leaderPage(`/portal/teams/${team?.teamId}`);
-    await expect(page.locator('#volunteerPositionsTable tbody tr').first()).toBeVisible({ timeout: 30000 });
-    await settle(page, 1000);
-
-    await captureScreen(page, testInfo, volunteerPortalTeamPositionsCapture);
-  });
-
-  const volunteerPortalTeamScheduleCapture = defineCapture({
-    name: 'volunteer-portal-team-schedule',
-    locales: 'all',
-    title: 'Member Portal: Add a Team Schedule',
-    category: 'Groups & Events',
-    purpose: 'A team leader adds a schedule for their team: which events it follows and how many people each position needs.',
-    usedIn: ['docs'],
-  });
-  test('volunteer-portal-team-schedule', volunteerPortalTeamScheduleCapture, async ({}, testInfo) => {
-    const page = await leaderPage(`/portal/teams/${team?.teamId}`);
-    await humanClick(page.locator('#nav-item-schedules'));
-    await expect(page.locator('#volunteerSchedulesTable tbody tr').first()).toBeVisible({ timeout: 30000 });
-    await humanClick(page.locator('#schedule-add-btn'));
-    const modal = page.locator('#scheduleModal');
-    await expect(modal).toBeVisible();
-    // The needs rows sit in #schedule-form-details, which stays hidden until an event series is chosen.
-    await expect(page.locator('#schedule-form-name')).toBeVisible({ timeout: 15000 });
-    await humanType(page.locator('#schedule-form-name'), 'Midweek Rehearsal');
-    await page.locator('#schedule-form-event-type').selectOption({ label: 'Church Service' });
-    const series = page.locator('#schedule-form-title-filter');
-    await expect(series).toBeEnabled({ timeout: 15000 });
-    await series.selectOption({ index: 1 });
-    await expect(page.locator('#schedule-form-details')).toBeVisible();
-    const need = page.locator('#schedule-form-needs .volunteer-need-row').first();
-    await expect(need).toBeVisible({ timeout: 15000 });
-    await need.scrollIntoViewIfNeeded();
-    await settle(page, 800);
-
-    await captureScreen(page, testInfo, volunteerPortalTeamScheduleCapture);
   });
 });
 

@@ -49,7 +49,6 @@ export interface VolunteerSeed {
   ministryId: number;
   personIds: Record<Volunteer, number>;
   positionIds: Record<PositionKey, number>;
-  teamIds: { coffee: number; greeters: number };
   eventIds: number[];
   /** The Coffee Bar on the first Sunday: Full, Covered and Needs 2 more side by side. */
   coffeeOccurrenceId: number;
@@ -285,14 +284,7 @@ export async function ensureVolunteerSeed(page: Page): Promise<VolunteerSeed> {
     await assign(page, occurrenceId, positionIds[position], personIds[volunteer], accepted);
   }
 
-  seed = {
-    ministryId,
-    personIds,
-    positionIds,
-    teamIds: { coffee: coffeeTeamId, greeters: greeters.id },
-    eventIds: events.map((e) => e.id),
-    coffeeOccurrenceId,
-  };
+  seed = { ministryId, personIds, positionIds, eventIds: events.map((e) => e.id), coffeeOccurrenceId };
   return seed;
 }
 

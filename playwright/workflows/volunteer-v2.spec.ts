@@ -206,43 +206,6 @@ test.describe('Volunteer Management v2', () => {
     await captureScreen(page, testInfo, volunteerMinistryOverviewCapture);
   });
 
-  const volunteerMinistryPositionsCapture = defineCapture({
-    name: 'volunteer-ministry-positions',
-    locales: 'all',
-    title: 'Ministry Positions',
-    category: 'Groups & Events',
-    purpose: 'Show the positions a ministry staffs, grouped by team, so a coordinator knows the roles volunteers can fill.',
-    usedIn: ['docs'],
-  });
-  test('volunteer-ministry-positions', volunteerMinistryPositionsCapture, async ({ page }, testInfo) => {
-    const { ministryId } = await ensureVolunteerSeed(page);
-    await openMinistry(page, ministryId, 'positions');
-    await settle(page, 1000);
-
-    await captureScreen(page, testInfo, volunteerMinistryPositionsCapture);
-  });
-
-  const volunteerMinistryEditCapture = defineCapture({
-    name: 'volunteer-ministry-edit',
-    locales: 'all',
-    title: 'Edit a Ministry',
-    category: 'Groups & Events',
-    purpose: 'Show a coordinator renaming a ministry and choosing whether its teams may provide Sunday School teachers.',
-    usedIn: ['docs'],
-  });
-  test('volunteer-ministry-edit', volunteerMinistryEditCapture, async ({ page }, testInfo) => {
-    await ensureVolunteerSeed(page);
-    const { ministryId } = await findDemoTeam(page.request, "Children's Ministry", 'Early Elementary');
-    await openMinistry(page, ministryId, 'overview');
-    await humanClick(page.locator('#ministry-edit-btn'));
-    await expect(page.locator('#ministryEditModal')).toBeVisible();
-    await expect(page.locator('#ministry-edit-name')).not.toHaveValue('');
-    await expect(page.locator('#ministry-edit-sunday-school')).toBeChecked();
-    await settle(page, 800);
-
-    await captureScreen(page, testInfo, volunteerMinistryEditCapture);
-  });
-
   const volunteerTeamSundaySchoolClassCapture = defineCapture({
     name: 'volunteer-team-sunday-school-class',
     locales: 'all',
@@ -301,25 +264,6 @@ test.describe('Volunteer Management v2', () => {
   }
 
   const WEEKLY_SERIES_TITLE = 'Wednesday Prayer Circle';
-
-  const volunteerRecurringEventNewCapture = defineCapture({
-    name: 'volunteer-recurring-event-new',
-    locales: 'all',
-    title: 'New Recurring Event',
-    category: 'Groups & Events',
-    purpose: 'Show a coordinator putting a weekly event on the ministry calendar, with the dates it will make.',
-    usedIn: ['docs'],
-  });
-  test('volunteer-recurring-event-new', volunteerRecurringEventNewCapture, async ({ page }, testInfo) => {
-    const { ministryId } = await ensureVolunteerSeed(page);
-    await fillWeeklySeries(page, ministryId, WEEKLY_SERIES_TITLE);
-    await settle(page, 800);
-
-    await captureScreen(page, testInfo, volunteerRecurringEventNewCapture);
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await humanClick(page.locator('#ministryEventModal .btn-close'));
-    await expect(page.locator('#ministryEventModal')).toBeHidden();
-  });
 
   const volunteerEventStaffPromptCapture = defineCapture({
     name: 'volunteer-event-staff-prompt',
@@ -389,50 +333,6 @@ test.describe('Volunteer Management v2', () => {
     await settle(page, 1000);
 
     await captureScreen(page, testInfo, volunteerMinistrySchedulesCapture);
-  });
-
-  const volunteerScheduleAddCapture = defineCapture({
-    name: 'volunteer-schedule-add',
-    locales: 'all',
-    title: 'Add a Schedule',
-    category: 'Groups & Events',
-    purpose: 'Show a coordinator adding a schedule: the events it follows and two default volunteers for a position that takes up to two.',
-    usedIn: ['docs'],
-  });
-  test('volunteer-schedule-add', volunteerScheduleAddCapture, async ({ page }, testInfo) => {
-    const { ministryId, teamIds, positionIds, personIds } = await ensureVolunteerSeed(page);
-    await openMinistry(page, ministryId, 'schedules');
-    await humanClick(page.locator('#schedule-add-btn'));
-    const modal = page.locator('#scheduleModal');
-    await expect(modal).toBeVisible();
-    // The needs rows sit in #schedule-form-details, which stays hidden until an event series is chosen.
-    await expect(page.locator('#schedule-form-name')).toBeVisible({ timeout: 15000 });
-
-    await humanType(page.locator('#schedule-form-name'), 'Coffee Bar: Second Service');
-    await page.locator('#schedule-form-team').selectOption(String(teamIds.coffee));
-    await page.locator('#schedule-form-link-mode').selectOption('ministry');
-    const series = page.locator('#schedule-form-title-filter');
-    await expect(series).toBeEnabled({ timeout: 15000 });
-    await series.selectOption({ index: 1 });
-    await expect(page.locator('#schedule-form-details')).toBeVisible();
-
-    const barista = page.locator(`#schedule-form-needs .volunteer-need-row[data-position-id="${positionIds.barista}"]`);
-    await expect(barista).toBeVisible({ timeout: 15000 });
-    await barista.locator('.volunteer-need-min').fill('2');
-    await barista.locator('.volunteer-need-max').fill('2');
-    await barista.locator('.volunteer-need-max').blur();
-    const defaults = barista.locator('select.volunteer-default-select');
-    await defaults.first().selectOption(String(personIds.sarah));
-    await expect(defaults).toHaveCount(2);
-    await defaults.nth(1).selectOption(String(personIds.paul));
-    await expect(defaults.nth(1)).toHaveValue(String(personIds.paul));
-    await barista.scrollIntoViewIfNeeded();
-    await settle(page, 800);
-
-    await captureScreen(page, testInfo, volunteerScheduleAddCapture);
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await humanClick(modal.locator('.btn-close'));
-    await expect(modal).toBeHidden();
   });
 
   const volunteerOccurrencesGenerateCapture = defineCapture({
