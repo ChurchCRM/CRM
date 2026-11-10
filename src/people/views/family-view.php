@@ -107,6 +107,9 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
 <div class="alert alert-warning">
     <i class="fa-solid fa-user-clock me-1"></i><strong><?= gettext('This self-registered family is pending review') ?></strong>
     <a href="<?= SystemURLs::getRootPath() ?>/people/self-register" class="ms-2"><?= gettext('Review self registrations') ?></a>
+    <?php if ($canEditRecords) { ?>
+    <button type="button" id="approveFamily" class="btn btn-sm btn-success ms-3"><i class="fa-solid fa-check me-1"></i><?= gettext('Approve') ?></button>
+    <?php } ?>
 </div>
 <?php endif; ?>
 <div id="family-deactivated" class="alert alert-warning d-none">

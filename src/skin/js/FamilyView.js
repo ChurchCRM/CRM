@@ -335,6 +335,15 @@ function initializeFamilyView() {
     });
   });
 
+  $("#approveFamily").on("click", () => {
+    window.CRM.APIRequest({
+      method: "POST",
+      path: `family/${window.CRM.currentFamily}/approve-review`,
+    }).then(() => {
+      window.location.reload();
+    });
+  });
+
   $("#verifyDownloadPDF").on("click", () => {
     window.open(`${window.CRM.root}/people/report/verify?familyId=${window.CRM.currentFamily}`, "_blank");
     $("#confirm-verify").modal("hide");
