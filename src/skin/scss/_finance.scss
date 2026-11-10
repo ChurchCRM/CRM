@@ -1,3 +1,9 @@
 .finance-truncate {
   max-width: 200px;
 }
+
+.pledge-fund-table {
+  .fund-select { min-width: 10rem; }
+  .fund-amount { min-width: 9rem; }
+  .fund-comment { min-width: 10rem; }
+}
