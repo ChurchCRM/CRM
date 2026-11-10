@@ -278,10 +278,16 @@ test.describe('Volunteer Management v2', () => {
   test('volunteer-ministry-dashboard-coordinator', coordinatorDashboardCapture, async ({ page, browser }, testInfo) => {
     await ensureCoordinator(page);
     // A context of its own, so the admin session every later workflow shares stays signed in.
-    const context = await browser.newContext({ baseURL: BASE_URL, viewport: page.viewportSize() ?? undefined });
+    // Empty storage state: a new context would otherwise inherit the admin sign-in from the config.
+    const context = await browser.newContext({
+      baseURL: BASE_URL,
+      viewport: page.viewportSize() ?? undefined,
+      storageState: { cookies: [], origins: [] },
+    });
     try {
       const coordinator = await context.newPage();
       await coordinator.goto('/session/begin');
+      await expect(coordinator.locator('input[name=User]')).toBeVisible({ timeout: 30000 });
       await coordinator.locator('input[name=User]').fill('paul.mitchell@demo.churchcrm.io');
       await coordinator.locator('input[name=Password]').fill(COORDINATOR_PASSWORD);
       await coordinator.locator('input[name=Password]').press('Enter');
@@ -290,6 +296,7 @@ test.describe('Volunteer Management v2', () => {
       await coordinator.goto('/ministries/dashboard');
       await expect(coordinator.locator('#volunteer-gaps-content')).toBeVisible({ timeout: 30000 });
       await expect(coordinator.locator('#volunteer-upcoming-content')).toBeVisible();
+      await expect(coordinator.locator('header').getByText('Paul Mitchell').first()).toBeVisible();
       await expect(coordinator.locator('a, button', { hasText: 'New ministry' })).toHaveCount(0);
       await waitForFloatingButtonsToTuck(coordinator);
       await settle(coordinator, 1000);
