@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\UserSetting;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Service\NotificationService;
@@ -177,7 +178,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
   <!-- ============================================================ -->
   <!-- Sidebar (Tabler vertical navbar)                              -->
   <!-- ============================================================ -->
-  <aside class="navbar navbar-vertical navbar-expand-xl d-print-none" id="sidebar">
+  <aside class="navbar navbar-vertical navbar-expand-xl d-print-none<?= $currentUser->getSettingValue(UserSetting::UI_SIDEBAR_FOLDED) === '1' ? ' navbar-folded-hover' : '' ?>" id="sidebar">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button"
               data-bs-toggle="collapse" data-bs-target="#sidebar-menu"

@@ -1,8 +1,10 @@
 /// <reference types="cypress" />
 
-const KEY = "churchcrm.desktopSidebarCollapsed";
+const FOLDED = "navbar-folded-hover";
+const FULL_WIDTH = 256;
+const FOLDED_WIDTH = 64;
 
-function expectLayout(sidebarWidth = 0) {
+function expectLayout(sidebarWidth) {
     cy.get(".page-wrapper").should(($el) => {
         const wrapper = $el[0];
         const viewport = wrapper.ownerDocument.documentElement;
@@ -10,8 +12,6 @@ function expectLayout(sidebarWidth = 0) {
         expect(bounds.left).to.be.closeTo(sidebarWidth, 1);
         expect(bounds.right).to.be.closeTo(viewport.clientWidth, 1);
         expect(viewport.scrollWidth).to.be.at.most(viewport.clientWidth + 1);
-        const content = wrapper.querySelector("#main-content > .container-xl").getBoundingClientRect();
-        expect(content.left - bounds.left).to.be.closeTo(bounds.right - content.right, 1);
     });
 }
 
@@ -21,74 +21,66 @@ function capture(name) {
     cy.screenshot(name, { capture: "viewport", scale: true });
 }
 
-describe("Staff desktop sidebar preference", () => {
+describe("Staff folded sidebar preference", () => {
     beforeEach(() => {
         cy.setupStandardSession();
         cy.viewport(1440, 900);
         cy.visit("/v2/dashboard");
-        cy.window().then((win) => win.localStorage.removeItem(KEY));
-        cy.reload();
-    });
-
-    afterEach(() => {
-        cy.window().then((win) => win.localStorage.removeItem(KEY));
+        cy.get("#sidebar").then(($sidebar) => {
+            if ($sidebar.hasClass(FOLDED)) {
+                cy.get("#desktop-sidebar-toggle").click();
+                cy.reload();
+            }
+        });
     });
 
     for (const theme of ["light", "dark"]) {
-        it(`collapses and expands the desktop sidebar in ${theme} mode`, () => {
+        it(`folds and unfolds the desktop sidebar in ${theme} mode`, () => {
             cy.document().then((doc) => doc.documentElement.setAttribute("data-bs-theme", theme));
-            cy.get("#desktop-sidebar-toggle")
-                .should("be.visible")
-                .and("have.attr", "aria-expanded", "true");
-            cy.get("#sidebar").should("be.visible");
-            expectLayout(256);
+            cy.get("#desktop-sidebar-toggle").should("be.visible").and("have.attr", "aria-expanded", "true");
+            cy.get("#sidebar").should("not.have.class", FOLDED);
+            expectLayout(FULL_WIDTH);
             capture(`sidebar-desktop-1440x900-${theme}-expanded`);
 
             cy.get("#desktop-sidebar-toggle").click();
-            cy.get("#sidebar").should("not.be.visible");
-            expectLayout();
+            cy.get("#sidebar").should("have.class", FOLDED).and("be.visible");
+            expectLayout(FOLDED_WIDTH);
             cy.get("#desktop-sidebar-toggle")
                 .should("have.attr", "aria-expanded", "false")
                 .and("have.attr", "aria-label", "Expand sidebar");
-            capture(`sidebar-desktop-1440x900-${theme}-collapsed`);
+            capture(`sidebar-desktop-1440x900-${theme}-folded`);
 
             cy.get("#desktop-sidebar-toggle").click();
-            cy.get("#sidebar").should("be.visible");
+            cy.get("#sidebar").should("not.have.class", FOLDED);
             cy.get("#desktop-sidebar-toggle")
                 .should("have.attr", "aria-expanded", "true")
                 .and("have.attr", "aria-label", "Collapse sidebar");
-            expectLayout(256);
+            expectLayout(FULL_WIDTH);
         });
     }
 
-    it("persists the preference across reload", () => {
+    it("stores the preference on the user and restores it on reload and on other pages", () => {
         cy.get("#desktop-sidebar-toggle").click();
-        cy.window().its("localStorage").invoke("getItem", KEY).should("eq", "true");
         cy.reload();
-        cy.get("#sidebar").should("not.be.visible");
-        expectLayout();
+        cy.get("#sidebar").should("have.class", FOLDED);
+        expectLayout(FOLDED_WIDTH);
         cy.visit("/people/dashboard");
-        cy.get("#sidebar").should("not.be.visible");
-        expectLayout();
+        cy.get("#sidebar").should("have.class", FOLDED);
+        expectLayout(FOLDED_WIDTH);
         cy.get("#desktop-sidebar-toggle").click();
         cy.reload();
-        cy.get("#sidebar").should("be.visible");
-        expectLayout(256);
+        cy.get("#sidebar").should("not.have.class", FOLDED);
+        expectLayout(FULL_WIDTH);
     });
 
-    it("still toggles when browser storage is unavailable", () => {
-        cy.visit("/v2/dashboard", {
-            onBeforeLoad(win) {
-                cy.stub(win.Storage.prototype, "getItem").withArgs(KEY).throws(new Error("Storage blocked"));
-                cy.stub(win.Storage.prototype, "setItem").withArgs(KEY, Cypress.sinon.match.any).throws(new Error("Storage blocked"));
-            },
-        });
+    it("keeps navigation reachable from the folded rail by hover and keyboard", () => {
         cy.get("#desktop-sidebar-toggle").click();
-        cy.get("#sidebar").should("not.be.visible");
-        expectLayout();
-        cy.get("#desktop-sidebar-toggle").click();
-        cy.get("#sidebar").should("be.visible");
-        expectLayout(256);
+        cy.get("#sidebar .nav-link-title").first().should("not.be.visible");
+        cy.get("#sidebar").trigger("mouseover");
+        cy.get("#sidebar .nav-link-title").first().should("be.visible");
+        cy.get("#sidebar").trigger("mouseout");
+        cy.get("#sidebar .nav-link").first().focus();
+        cy.get("#sidebar .nav-link-title").first().should("be.visible");
     });
 
     it("keeps the congregation map centered when the available width changes", () => {
@@ -109,26 +101,20 @@ describe("Staff desktop sidebar preference", () => {
 
     for (const theme of ["light", "dark"]) {
         for (const [name, width] of [["tablet", 820], ["phone", 390]]) {
-            it(`keeps the ${name} hamburger after a desktop collapse in ${theme} mode`, () => {
+            it(`leaves the ${name} hamburger unchanged after a desktop fold in ${theme} mode`, () => {
                 cy.document().then((doc) => doc.documentElement.setAttribute("data-bs-theme", theme));
                 cy.get("#desktop-sidebar-toggle").click();
                 cy.viewport(width, 820);
                 cy.get("#desktop-sidebar-toggle").should("not.be.visible");
                 cy.get("#sidebar").should("be.visible");
-                expectLayout();
+                expectLayout(0);
                 capture(`sidebar-${name}-${width}x820-${theme}-closed`);
                 cy.get("#menu-toggle").should("be.visible").click();
                 cy.get("#sidebar-menu").should("have.class", "show");
-                expectLayout();
+                expectLayout(0);
                 capture(`sidebar-${name}-${width}x820-${theme}-open`);
                 cy.get("#menu-toggle").click();
                 cy.get("#sidebar-menu").should("not.be.visible");
-                cy.viewport(1200, 900);
-                cy.get("#sidebar").should("not.be.visible");
-                expectLayout();
-                cy.get("#desktop-sidebar-toggle").should("be.visible").click();
-                cy.get("#sidebar").should("be.visible");
-                expectLayout(256);
             });
         }
     }

@@ -1,4 +1,5 @@
-const STORAGE_KEY = "churchcrm.desktopSidebarCollapsed";
+const FOLDED_CLASS = "navbar-folded-hover";
+const SETTING = "ui.sidebar.folded";
 
 function startDesktopSidebarToggle() {
   const button = document.getElementById("desktop-sidebar-toggle");
@@ -7,17 +8,12 @@ function startDesktopSidebarToggle() {
     return;
   }
 
-  let collapsed = false;
-  try {
-    collapsed = window.localStorage.getItem(STORAGE_KEY) === "true";
-  } catch {
-    // Storage is optional.
-  }
+  let folded = sidebar.classList.contains(FOLDED_CLASS);
 
   const render = () => {
-    document.body.classList.toggle("desktop-sidebar-collapsed", collapsed);
-    button.setAttribute("aria-expanded", String(!collapsed));
-    const label = collapsed ? button.dataset.expandLabel : button.dataset.collapseLabel;
+    sidebar.classList.toggle(FOLDED_CLASS, folded);
+    button.setAttribute("aria-expanded", String(!folded));
+    const label = folded ? button.dataset.expandLabel : button.dataset.collapseLabel;
     if (label) {
       button.setAttribute("aria-label", label);
       button.setAttribute("title", label);
@@ -26,13 +22,14 @@ function startDesktopSidebarToggle() {
   };
 
   button.addEventListener("click", () => {
-    collapsed = !collapsed;
+    folded = !folded;
     render();
-    try {
-      window.localStorage.setItem(STORAGE_KEY, String(collapsed));
-    } catch {
-      // The control still works for this page.
-    }
+    window.CRM?.APIRequest?.({
+      method: "POST",
+      path: `user/${window.CRM.userId}/setting/${SETTING}`,
+      dataType: "json",
+      data: JSON.stringify({ value: folded ? "1" : "0" }),
+    });
   });
 
   render();
