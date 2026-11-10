@@ -100,9 +100,12 @@ describe("Settings Panel — Choice Dropdowns", () => {
                 const next = previous === "16" ? "17" : "16";
                 cy.wrap($input).clear().type(next).blur();
                 cy.wait("@failedSave");
+                // The frozen clock also holds the toast's fade-in, so let it finish first.
+                cy.contains("Failed to save settings").should("exist");
+                cy.tick(500);
                 cy.contains("Failed to save settings").should("be.visible");
                 cy.get("#financialSettings input[name='iChecksPerDepositForm']").should("have.value", previous);
-                cy.tick(2000);
+                cy.tick(1500);
                 cy.get("@originalDocument").then((doc) => cy.document().should("eq", doc));
                 cy.request("/admin/api/system/config/iChecksPerDepositForm").its("body.value").should("eq", previous);
             });
