@@ -288,7 +288,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
         <div class="nav-item ms-1">
           <a class="nav-link px-0" href="<?= InputUtils::escapeAttribute($localeUrl) ?>"
              title="<?= InputUtils::escapeAttribute($hasNative ? $nativeName . ' — ' . $englishName : $englishName) ?>">
-            <i class="fi fi-<?= InputUtils::escapeAttribute($flagCode) ?> fi-squared"></i>
+            <span class="flag flag-xs flag-country-<?= InputUtils::escapeAttribute($flagCode) ?>"></span>
           </a>
         </div>
 

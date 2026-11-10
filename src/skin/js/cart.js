@@ -424,7 +424,7 @@ export class CartManager {
   }
 
   /**
-   * Show notification using Notyf
+   * Show a toast through window.CRM.notify()
    * @param {string} type - Notification type (success, danger, warning, info)
    * @param {string} message - Message to display
    */

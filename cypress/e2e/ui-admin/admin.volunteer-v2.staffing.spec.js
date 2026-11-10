@@ -514,7 +514,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                         cy.get("#occurrences-delete-btn").click();
                         cy.get(".bootbox").should("be.visible").and("contain", "2 occurrences");
                         cy.get(".bootbox .btn-danger").click();
-                        cy.get(".notyf__toast").should("contain", "2 occurrences deleted");
+                        cy.get("#crm-toasts .toast").should("contain", "2 occurrences deleted");
                         cy.get("#occurrences-loading").should("not.be.visible");
                         cy.get("#volunteerOccurrencesTable tbody tr").should("have.length", before - 2);
                         cy.get("#occurrences-delete-btn").should("be.disabled");
@@ -567,7 +567,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
                 expect(call.response.statusCode, JSON.stringify(call.response.body)).to.eq(201);
             });
             cy.get("#staffEventModal").should("not.be.visible");
-            cy.get(".notyf__toast").should("contain", "Event staffed");
+            cy.get("#crm-toasts .toast").should("contain", "Event staffed");
 
             // Listed, flagged, on the right team, date and SHIFT time. The Event box
             // narrows the list server-side, so the row is on the page whatever else is
@@ -608,7 +608,7 @@ describe("Volunteer v2 — staffing needs (§2.10)", () => {
             cy.get("#volunteerOccurrencesTable tbody tr").first().find(".volunteer-occurrence-select").check();
             cy.get("#occurrences-delete-btn").click();
             cy.get(".bootbox .btn-danger").click();
-            cy.get(".notyf__toast").should("contain", "1 occurrences deleted");
+            cy.get("#crm-toasts .toast").should("contain", "1 occurrences deleted");
             cy.get("#occurrences-empty, #volunteerOccurrencesTable tbody").should("not.contain", NAME);
             cy.dbQuery(`SELECT COUNT(*) AS c FROM volunteer_schedule_vsch WHERE vsch_Name = ?`, [NAME]).then((r) => {
                 expect(r.error).to.eq(null);

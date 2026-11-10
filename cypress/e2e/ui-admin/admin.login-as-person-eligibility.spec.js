@@ -183,7 +183,7 @@ describe("Login as Person eligibility", () => {
                     ]);
 
                 cy.visit(`/people/view/${TARGET}`);
-                cy.contains(".notyf__toast", `Login as Person ended: ${message}`).should("be.visible");
+                cy.contains("#crm-toasts .toast", `Login as Person ended: ${message}`).should("be.visible");
                 cy.get("#login-as-person-history [data-cy=login-as-person-session]")
                     .first()
                     .should("contain", ended);
