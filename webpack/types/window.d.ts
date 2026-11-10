@@ -337,7 +337,6 @@ interface CRMNamespace {
   peopleImageLoader?: unknown;
   APIRequest?: (options: CRMAPIRequestOptions) => JQuery.jqXHR;
   notify?: (message: string | object, options?: Record<string, unknown>) => void;
-  notyf?: unknown;
   /** Member Portal only: show a toast in the portal's fixed top-right stack.
    * Published by the `portal` bundle, which every portal page loads, so a page
    * bundle, a plugin or a theme's `theme.js` can raise a notice without knowing

@@ -122,7 +122,6 @@
         "leaflet": "^1.9.4",
         "marked": "^18.1.2",
         "moment": "^2.31.0",
-        "notyf": "^3.10.0",
         "posthog-js": "^1.444.4",
         "quill": "2.0.2",
         "temporal-polyfill": "^1.0.8",

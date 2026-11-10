@@ -167,7 +167,7 @@ describe("Volunteer v2 — a team linked to a Sunday School class, on screen (D2
         cy.get("#NewRole").select(String(TEACHER));
         cy.get("input[name=Submit]").click();
         cy.location("pathname").should("match", new RegExp(`/groups/view/${classId}$`));
-        cy.get(".notyf__toast").should("contain", TEAM_NAME);
+        cy.get("#crm-toasts .toast").should("contain", TEAM_NAME);
         roleOf(PERSON_STUDENT).should("eq", STUDENT);
     });
 });

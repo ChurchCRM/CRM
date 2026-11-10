@@ -298,7 +298,7 @@ describe("Volunteer v2 — ministry lifecycle (Deactivate, Reactivate, Delete)",
             cy.get(".bootbox .btn-danger").click();
             cy.wait("@refusedDelete");
 
-            cy.get(".notyf__toast").should("contain", refusal);
+            cy.get("#crm-toasts .toast").should("contain", refusal);
             cy.url().should("include", ministryUrl());
             cy.get("#ministry-delete-btn").should("be.visible").and("not.be.disabled");
         });
