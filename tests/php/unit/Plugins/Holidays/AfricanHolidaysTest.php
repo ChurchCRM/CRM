@@ -84,3 +84,12 @@ Assert::same('2024-08-04', $gha2024->getHolidays()['foundersDay']->format('Y-m-d
 $gha2025 = new \ChurchCRM\Plugins\Holidays\Provider\Ghana(2025);
 Assert::same(Holiday::TYPE_OFFICIAL, $gha2025->getHolidays()['republicDay']->getType());
 Assert::same('2025-09-21', $gha2025->getHolidays()['foundersDay']->format('Y-m-d'));
+
+// Orthodox/Coptic Easter moveables (2026: Orthodox Easter 12 Apr, Western 5 Apr)
+foreach (['Ethiopia', 'Eritrea', 'Egypt'] as $country) {
+    $class = "ChurchCRM\\Plugins\\Holidays\\Provider\\{$country}";
+    $h = (new $class(2026))->getHolidays();
+    Assert::same('2026-04-13', $h['easterMonday']->format('Y-m-d'), "{$country} Easter Monday follows Orthodox Easter");
+}
+Assert::same('2026-04-10', (new \ChurchCRM\Plugins\Holidays\Provider\Ethiopia(2026))->getHolidays()['goodFriday']->format('Y-m-d'));
+Assert::same('2026-04-10', (new \ChurchCRM\Plugins\Holidays\Provider\Eritrea(2026))->getHolidays()['goodFriday']->format('Y-m-d'));

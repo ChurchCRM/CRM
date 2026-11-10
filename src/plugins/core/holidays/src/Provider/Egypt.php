@@ -262,4 +262,9 @@ class Egypt extends AbstractProvider
             'https://www.presidency.eg/',
         ];
     }
+
+    protected function calculateEaster(int $year, string $timezone): \DateTimeInterface
+    {
+        return $this->calculateOrthodoxEaster($year, $timezone);
+    }
 }

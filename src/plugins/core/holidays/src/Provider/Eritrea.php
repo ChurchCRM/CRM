@@ -255,4 +255,9 @@ class Eritrea extends AbstractProvider
             'https://shabait.com/',
         ];
     }
+
+    protected function calculateEaster(int $year, string $timezone): \DateTimeInterface
+    {
+        return $this->calculateOrthodoxEaster($year, $timezone);
+    }
 }

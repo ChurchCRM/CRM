@@ -231,4 +231,9 @@ class Ethiopia extends AbstractProvider
             'https://www.pmo.gov.et/',
         ];
     }
+
+    protected function calculateEaster(int $year, string $timezone): \DateTimeInterface
+    {
+        return $this->calculateOrthodoxEaster($year, $timezone);
+    }
 }
