@@ -777,6 +777,37 @@ class FinancialService
     }
 
     /**
+     * @return array<int, array{fundId: int, name: string, amount: float}>
+     */
+    public function getYtdByFund(?string $fyStartDate = null, ?string $fyEndDate = null): array
+    {
+        $query = PledgeQuery::create()
+            ->filterByPledgeOrPayment('Payment')
+            ->leftJoinDonationFund()
+            ->addAsColumn('FundName', DonationFundTableMap::COL_FUN_NAME)
+            ->addAsColumn('TotalAmount', 'SUM(' . PledgeTableMap::COL_PLG_AMOUNT . ')')
+            ->groupByFundId()
+            ->groupBy(DonationFundTableMap::COL_FUN_NAME)
+            ->orderBy('TotalAmount', Criteria::DESC)
+            ->orderByFundId()
+            ->select(['FundId', 'FundName', 'TotalAmount']);
+        if ($fyStartDate !== null && $fyEndDate !== null) {
+            $query->filterByDate(['min' => $fyStartDate, 'max' => $fyEndDate]);
+        }
+
+        $funds = [];
+        foreach ($query->find() as $row) {
+            $funds[] = [
+                'fundId' => (int) $row['FundId'],
+                'name'   => $row['FundName'] ?? gettext('Unknown Fund'),
+                'amount' => (float) $row['TotalAmount'],
+            ];
+        }
+
+        return $funds;
+    }
+
+    /**
      * Get Year-to-Date pledge total for a fiscal year (or all time when dates are null).
      *
      * @param string|null $fyStartDate Fiscal year start date; null = all time
@@ -893,6 +924,7 @@ class FinancialService
             'activeFunds'      => $activeFunds,
             'activeFundCount'  => $activeFunds->count(),
             'totalFundCount'   => $donationFundService->getCount(),
+            'paymentsByFund'   => $this->getYtdByFund($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdPaymentTotal'  => $this->getYtdPaymentTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdPledgeTotal'   => $this->getYtdPledgeTotal($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdPaymentCount'  => $this->getYtdPaymentCount($fiscalYear['startDate'], $fiscalYear['endDate']),
