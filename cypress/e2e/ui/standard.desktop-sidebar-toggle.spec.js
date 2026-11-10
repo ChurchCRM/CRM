@@ -159,20 +159,33 @@ describe("Staff folded sidebar preference", () => {
 
     for (const theme of ["light", "dark"]) {
         for (const [name, width] of [["tablet", 820], ["phone", 390]]) {
-            it(`leaves the ${name} hamburger unchanged after a desktop fold in ${theme} mode`, () => {
+            it(`opens the ${name} menu below the header in ${theme} mode`, () => {
                 cy.document().then((doc) => doc.documentElement.setAttribute("data-bs-theme", theme));
                 toggleSidebar();
                 cy.viewport(width, 820);
                 cy.get("#desktop-sidebar-toggle").should("not.be.visible");
                 cy.get("#sidebar").should("be.visible");
+                cy.get("#topbar").should(($header) => {
+                    expect($header[0].getBoundingClientRect().top).to.be.closeTo(0, 1);
+                });
                 expectLayout(0);
                 capture(`sidebar-${name}-${width}x820-${theme}-closed`);
                 cy.get("#menu-toggle").should("be.visible").click();
                 cy.get("#sidebar-menu").should("have.class", "show");
+                cy.get("#sidebar").should(($sidebar) => {
+                    const header = $sidebar[0].ownerDocument.getElementById("topbar").getBoundingClientRect();
+                    expect(header.top).to.be.closeTo(0, 1);
+                    expect($sidebar[0].getBoundingClientRect().top).to.be.closeTo(header.bottom, 1);
+                });
                 expectLayout(0);
                 capture(`sidebar-${name}-${width}x820-${theme}-open`);
                 cy.get("#menu-toggle").click();
                 cy.get("#sidebar-menu").should("not.be.visible");
+                cy.viewport(1440, 900);
+                expectLayout(FOLDED_WIDTH);
+                cy.get("#topbar").should(($header) => {
+                    expect($header[0].getBoundingClientRect().left).to.be.closeTo(FOLDED_WIDTH, 1);
+                });
             });
         }
     }
