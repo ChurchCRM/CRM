@@ -8,6 +8,22 @@ function startDesktopSidebarToggle() {
     return;
   }
 
+  for (const link of sidebar.querySelectorAll(".navbar-nav > .nav-item > .nav-link")) {
+    const counters = [...link.querySelectorAll(".menu-counter")];
+    if (!counters.length) continue;
+    const updateIndicator = () => {
+      link.classList.toggle(
+        "sidebar-has-count",
+        counters.some((counter) => Number(counter.textContent) > 0),
+      );
+    };
+    updateIndicator();
+    const observer = new MutationObserver(updateIndicator);
+    for (const counter of counters) {
+      observer.observe(counter, { childList: true, characterData: true, subtree: true });
+    }
+  }
+
   let folded = sidebar.classList.contains(FOLDED_CLASS);
 
   const render = () => {
