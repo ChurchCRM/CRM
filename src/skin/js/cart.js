@@ -424,7 +424,7 @@ export class CartManager {
   }
 
   /**
-   * Show notification using Notyf
+   * Show a toast through window.CRM.notify()
    * @param {string} type - Notification type (success, danger, warning, info)
    * @param {string} message - Message to display
    */
@@ -568,7 +568,6 @@ export class CartManager {
 
     if (cartPeople.length > 0) {
       menuHtml = `
-                <li>
                     <a class="dropdown-item" href="${window.CRM.root}/people/cart">
                         <i class="fa-solid fa-eye text-primary"></i> ${i18next.t("View Cart")}
                     </a>
@@ -586,8 +585,7 @@ export class CartManager {
                     </a>
                     <a href="${window.CRM.root}/people/map?groupId=0" class="dropdown-item">
                         <i class="fa-solid fa-map-marker text-info"></i> ${i18next.t("Map Cart")}
-                    </a>
-                </li>`;
+                    </a>`;
     } else {
       menuHtml = `<a class="dropdown-item">${i18next.t("Your Cart is Empty")}</a>`;
     }

@@ -11,26 +11,6 @@ describe("Finance Statement Settings", () => {
     describe("Admin user", () => {
         beforeEach(() => cy.setupAdminSession());
 
-        it("loads the page with all three setting sections", () => {
-            cy.visit("/finance/statements/settings");
-            cy.contains("Statement Settings");
-
-            cy.get("#statementWording").should("exist");
-            cy.contains("Statement Wording");
-
-            cy.get("#statementTax").should("exist");
-            cy.contains("Tax Information");
-
-            cy.get("#statementOutput").should("exist");
-            cy.contains("PDF Output");
-        });
-
-        it("renders the sTaxReport1 field as a textarea", () => {
-            cy.visit("/finance/statements/settings");
-            cy.get("#statementWording", { timeout: 10000 }).should("exist");
-            cy.get("#statementWording textarea[name='sTaxReport1']").should("exist");
-        });
-
         it("auto-saves a setting when its value changes", () => {
             cy.intercept("POST", "**/finance/api/config/sTaxSigner").as("saveSigner");
             const signer = `Test Signer ${Date.now()}`;

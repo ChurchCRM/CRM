@@ -1,4 +1,3 @@
-/** `"danger"`, never `"error"`: `"error"` renders blue in Notyf. */
 export function notifyError(message: string): void {
   window.CRM?.notify?.(message, { type: "danger" });
 }

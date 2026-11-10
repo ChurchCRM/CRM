@@ -24,6 +24,7 @@ const scriptTests = fs
     .readdirSync(path.join(root, 'tests', 'tooling'))
     .filter((name) => /\.test\.m?js$/.test(name))
     .map((name) => path.join('tests', 'tooling', name));
+scriptTests.push('tests/docker/test-release-context.test.js');
 
 const checks = {
     'composer lock': script('lint/validate-composer-lock.js'),

@@ -1,5 +1,5 @@
 name: 'Marketing capture for one locale'
-description: 'Install the toolchain, run scripts/marketing/capture-all-locales.sh for one locale and upload its captures. Run actions/checkout first.'
+description: 'Install the toolchain, run scripts/marketing/capture-all-locales.js for one locale and upload its captures. Run actions/checkout first.'
 
 inputs:
   locale:
@@ -47,7 +47,7 @@ runs:
       shell: bash
       env:
         LOCALE: ${{ inputs.locale }}
-      run: ./scripts/marketing/capture-all-locales.sh "$LOCALE"
+      run: node scripts/marketing/capture-all-locales.js "$LOCALE"
 
     - name: Dump container logs on failure
       if: failure()

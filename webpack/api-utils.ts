@@ -122,3 +122,24 @@ export async function fetchAdminAPIJSON<T = unknown>(path: string, options: Requ
   const response = await fetchAdminAPI(path, options);
   return response.json();
 }
+
+/** The part of a jQuery jqXHR that carries the server's JSON error body. */
+interface JQueryErrorLike {
+  responseJSON?: { message?: unknown } | null;
+}
+
+/**
+ * Show the server's reason for a failed API call as a danger notification.
+ *
+ * @param source - A failed fetch Response or jQuery jqXHR
+ * @param fallback - Translated text shown when the server sent no message
+ */
+export async function notifyAPIError(
+  source: Response | JQueryErrorLike | null | undefined,
+  fallback: string,
+): Promise<void> {
+  const body: { message?: unknown } | null | undefined =
+    source instanceof Response ? await source.json().catch(() => null) : source?.responseJSON;
+  const message = typeof body?.message === "string" && body.message !== "" ? body.message : fallback;
+  window.CRM?.notify?.(message, { type: "danger", delay: 5000 });
+}

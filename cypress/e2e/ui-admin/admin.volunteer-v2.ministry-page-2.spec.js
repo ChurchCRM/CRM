@@ -388,7 +388,7 @@ describe("Volunteer v2 ministry page, round two (#9701)", () => {
 
             qualBox(TICKED_PERSON, firstPositionId).should("not.be.checked").check();
 
-            cy.get(".notyf__toast--success").should("be.visible");
+            cy.get("#crm-toasts .toast[data-type='success']").should("be.visible");
         });
 
         it("carries no 'not qualified yet' badge, ticked or not (retired 2026-09-18)", () => {

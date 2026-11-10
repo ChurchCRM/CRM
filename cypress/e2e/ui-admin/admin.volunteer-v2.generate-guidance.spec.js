@@ -284,7 +284,7 @@ describe("Volunteer v2 D30 — why nothing was generated", () => {
             .should("be.visible")
             .and("have.class", "alert-warning")
             .and("contain", `No events on the calendar use ${CLASS_NAME} as their class between`);
-        cy.get(".notyf__toast--success").should("not.exist");
+        cy.get("#crm-toasts .toast[data-type='success']").should("not.exist");
 
         cy.get("#generate-form-add-events").should("be.visible").and("contain", `New recurring event for ${CLASS_NAME}`).click();
         cy.get("#generateOccurrencesModal").should("not.be.visible");
@@ -321,14 +321,14 @@ describe("Volunteer v2 D30 — why nothing was generated", () => {
         cy.get("#generate-form-save").click();
         cy.wait("@generate").its("response.body.created").should("be.greaterThan", 0);
         cy.get("#generateOccurrencesModal").should("not.be.visible");
-        cy.get(".notyf__toast--success").should("contain", "occurrences created");
+        cy.get("#crm-toasts .toast[data-type='success']").should("contain", "occurrences created");
 
         openGenerateDialog(scheduleId);
         cy.get("#generate-form-save").click();
         cy.wait("@generate").its("response.body").should("include", { created: 0, noEvents: false });
         cy.get("#generateOccurrencesModal").should("not.be.visible");
         // An info toast carries no type class of its own; its icon says what it is.
-        cy.contains(".notyf__toast", "No new occurrences").should("not.have.class", "notyf__toast--success").find(".fa-circle-info");
+        cy.contains("#crm-toasts .toast", "No new occurrences").should("not.have.attr", "data-type", "success").find(".fa-circle-info");
     });
 
     it("shows the portal's team leader the warning without the button", () => {
