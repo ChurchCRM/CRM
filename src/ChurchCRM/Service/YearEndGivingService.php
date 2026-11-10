@@ -15,22 +15,25 @@ use Propel\Runtime\ActiveQuery\Criteria;
 class YearEndGivingService
 {
     /**
-     * Calendar years that have payments, newest first. The current year is always offered.
+     * Fiscal years with payments, each named by the calendar year it ends in, newest first.
+     * The current fiscal year is always offered.
      *
      * @return int[]
      */
     public static function years(): array
     {
-        $years = [(int) date('Y')];
+        $years = [FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId())];
         $rows = PledgeQuery::create()
             ->filterByPledgeOrPayment('Payment')
             ->filterByDate(null, Criteria::ISNOTNULL)
             ->withColumn('YEAR(pledge_plg.plg_date)', 'PaymentYear')
+            ->withColumn('MONTH(pledge_plg.plg_date)', 'PaymentMonth')
             ->groupBy('PaymentYear')
-            ->select(['PaymentYear'])
+            ->groupBy('PaymentMonth')
+            ->select(['PaymentYear', 'PaymentMonth'])
             ->find();
-        foreach ($rows as $year) {
-            $years[] = (int) $year;
+        foreach ($rows as $row) {
+            $years[] = FiscalYearUtils::getEndYearForDate(sprintf('%04d-%02d-01', $row['PaymentYear'], $row['PaymentMonth']));
         }
         $years = array_values(array_unique($years));
         rsort($years);

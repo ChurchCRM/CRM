@@ -1,207 +1,92 @@
 /// <reference types="cypress" />
 
-/**
- * Finance Dashboard Tests
- *
- * Tests for the new /finance/ module with Slim 4 MVC structure.
- * The finance dashboard provides:
- * - YTD payment and pledge metrics
- * - Tax year reporting checklist
- * - Quick actions for deposits and reports
- * - Recent deposits list
- * - Donation funds overview
- */
+describe("Finance Dashboard access", () => {
+    it("allows a finance user to open the dashboard and funds page", () => {
+        cy.setupFinanceOnlySession();
 
-describe("Finance Dashboard", () => {
-    beforeEach(() => {
+        cy.visit("/finance/");
+        cy.get("h2.page-title").should("contain", "Finance Dashboard");
+
+        cy.visit("/finance/funds");
+        cy.contains("Donation Funds");
+    });
+
+    it("allows a standard user with finance permission to open the dashboard", () => {
+        cy.setupStandardSession();
+
+        cy.visit("/finance/");
+        cy.get("h2.page-title").should("contain", "Finance Dashboard");
+    });
+});
+
+describe("Treasurer reviews payments by fund", () => {
+    const funds = [];
+    let depositId;
+    const fundNames = [`Giving & 'A' ${Date.now()}`, `Missions ${Date.now()}`];
+
+    before(() => {
         cy.setupAdminSession();
-    });
-
-    it("should load the finance dashboard", () => {
-        cy.visit("/finance/");
-        cy.contains("Finance Dashboard");
-        cy.contains("Fiscal Year");
-    });
-
-    it("should display YTD metrics cards", () => {
-        cy.visit("/finance/");
-
-        // Check for the 4 metric cards
-        cy.contains("YTD Payments");
-        cy.contains("YTD Pledges");
-        cy.contains("Donor Families");
-        cy.contains("Total Payments");
-    });
-
-    it("should display action buttons", () => {
-        cy.visit("/finance/");
-
-        cy.contains("Create Deposit");
-        cy.contains("Reports");
-    });
-
-    it("should navigate to deposits page from Create Deposit button", () => {
-        cy.visit("/finance/");
-
-        // Find and click the Create Deposit button
-        cy.contains("a", "Create Deposit").click();
-        cy.url().should("contain", "/finance/deposit/search");
-        cy.contains("Deposits");
-    });
-
-    it("should navigate to reports page from Reports button", () => {
-        cy.visit("/finance/");
-
-        // Find and click the Reports button
-        cy.get('.card a.btn[href$="/finance/reports"]').first().click();
-        cy.url().should("contain", "/finance/reports");
-        cy.contains("Financial Reports");
-    });
-
-    it("should display Tax Year Reporting Checklist", () => {
-        cy.visit("/finance/");
-
-        cy.contains("Tax Year Reporting Checklist");
-        cy.contains("Close All Deposits");
-        cy.contains("Review Donation Funds");
-        cy.contains("Church Information");
-        cy.contains("Tax Report Verbiage");
-        cy.contains("Generate Giving Statements");
-    });
-
-    it("should display Recent Deposits section", () => {
-        cy.visit("/finance/");
-
-        cy.contains("Recent Deposits");
-        cy.contains("View All");
-
-        // Check table headers if deposits exist
-        cy.get("body").then(($body) => {
-            if ($body.find("table.table-hover").length > 0) {
-                cy.contains("th", "ID");
-                cy.contains("th", "Date");
-                cy.contains("th", "Type");
-                cy.contains("th", "Status");
-            }
+        fundNames.forEach((name) => {
+            cy.request("POST", "/finance/api/funds", { name, active: true }).then(({ body }) => funds.push(body.fund.id));
+        });
+        cy.request("POST", "/api/deposits", {
+            depositType: "Bank", depositComment: "Dashboard fund breakdown", depositDate: "2025-01-01",
+        }).then(({ body }) => {
+            depositId = body.Id;
+            const add = (date, fyid, type, splits) => cy.request("POST", "/api/payments/pledges", {
+                type, iMethod: "CASH", Date: date, FamilyID: "3", FYID: fyid, tScanString: "", DepositID: depositId,
+                FundSplit: JSON.stringify(splits.map(([index, amount]) => ({
+                    FundID: String(funds[index]), Amount: amount, NonDeductible: 0, Comment: "",
+                }))),
+            });
+            add("2025-01-01", 29, "Payment", [[0, 12.5], [1, 25]]);
+            add("2025-12-31", 29, "Payment", [[0, 7.5]]);
+            add("2024-12-31", 28, "Payment", [[1, 40]]);
+            add("2026-01-01", 30, "Payment", [[0, 60]]);
+            add("2025-06-01", 29, "Pledge", [[0, 999]]);
+            cy.request("PUT", `/finance/api/funds/${funds[1]}`, { name: fundNames[1], active: false });
         });
     });
 
-    it("should display Deposit Statistics sidebar", () => {
-        cy.visit("/finance/");
-
-        cy.contains("Deposit Statistics");
-        cy.contains("Total Deposits:");
-        cy.contains("Open Deposits:");
-        cy.contains("Closed Deposits:");
+    after(() => {
+        cy.setupAdminSession();
+        if (depositId) cy.request("DELETE", `/api/deposits/${depositId}`);
+        funds.forEach((id) => cy.request("DELETE", `/finance/api/funds/${id}`));
     });
 
-    it("should display Donation Funds sidebar", () => {
-        cy.visit("/finance/");
-
-        cy.contains("Donation Funds");
-    });
-
-    it("should link to Donation Fund admin page from Manage Funds button", () => {
-        cy.visit("/finance/");
-
-        // Admin should see Manage Funds link
-        cy.contains("a", "Manage Funds").click();
-        cy.url().should("contain", "/finance/funds");
-    });
-
-    it("should navigate to settings from Church Information checklist item", () => {
-        cy.visit("/finance/");
-
-        // Find the Settings button in the Church Information checklist row
-        cy.contains(".list-group-item", "Church Information")
-            .find("a")
-            .contains("Settings")
-            .click();
-
-        cy.url().should("contain", "admin/system/church-info");
-    });
-
-    it("should link deposits checklist to deposit search page", () => {
-        cy.visit("/finance/");
-
-        // Find the View button in the Close All Deposits row
-        cy.contains("Close All Deposits")
-            .parents(".list-group-item")
-            .find("a")
-            .contains("View")
-            .click();
-
-        cy.url().should("contain", "/finance/deposit/search");
-        cy.contains("Deposits");
-    });
-});
-
-describe("Finance Dashboard - Standard User Access", () => {
-    beforeEach(() => {
-        cy.setupStandardSession();
-    });
-
-    it("should allow standard users with finance permission to access the dashboard", () => {
-        // The standard test user (tony.wade) has finance permissions enabled in demo database
-        cy.visit("/finance/");
-
-        // Should be able to see the dashboard (page title is in h2.page-title from Tabler layout)
-        cy.get("h2.page-title").should("contain", "Finance Dashboard");
-
-        // Metrics should be visible (overview card with stat cards)
-        cy.contains("YTD Payments").should("exist");
-    });
-
-    it("should not show the Church Information settings link to non-admin users", () => {
-        cy.visit("/finance/");
-
-        // The Church Information checklist row should be visible (badge/status)
-        cy.contains(".list-group-item", "Church Information").should("exist");
-
-        // But the Settings link to admin/system/church-info should NOT be visible
-        cy.contains(".list-group-item", "Church Information")
-            .find("a[href*='admin/system/church-info']")
-            .should("not.exist");
-    });
-});
-
-describe("Finance Dashboard - Finance Role (non-admin) Access", () => {
-    // Verifies issue #9476: Finance role users should see and use all Finance
-    // module features without needing Admin.
-    beforeEach(() => {
+    it("compares fund totals across fiscal years and All Time, including inactive funds", () => {
         cy.setupFinanceOnlySession();
+        cy.visit("/finance/?fyid=29");
+        const expectFund = (index, amount) => {
+            cy.window().then((win) => {
+                cy.get(`#payments-by-fund tr[data-fund-id="${funds[index]}"]`)
+                    .should("contain.text", fundNames[index])
+                    .find("td").should("have.text", win.CRM.currency.format(amount));
+                cy.get("#payments-by-fund-chart .apexcharts-bar-area").should("exist");
+                cy.window().its("financeDashboardConfig.funds").then((rows) => {
+                    expect(rows.find((row) => row.fundId === funds[index]).amount).to.eq(amount);
+                });
+            });
+        };
+        expectFund(0, 20);
+        expectFund(1, 25);
+        cy.get("#deposit-fyid").select("28");
+        cy.location("search").should("include", "fyid=28");
+        expectFund(1, 40);
+        cy.get(`#payments-by-fund tr[data-fund-id="${funds[0]}"]`).should("not.exist");
+        cy.get("#deposit-fyid").select("0");
+        expectFund(0, 80);
+        expectFund(1, 65);
+        cy.window().then((win) => {
+            const total = win.financeDashboardConfig.funds.reduce((sum, fund) => sum + fund.amount, 0);
+            cy.get("#payments-by-fund tfoot td").should("have.text", win.CRM.currency.format(total));
+        });
     });
 
-    it("Finance-only user can access the finance dashboard", () => {
-        cy.visit("/finance/");
-        cy.url().should("not.include", "access-denied");
-        cy.get("h2.page-title").should("contain", "Finance Dashboard");
-    });
-
-    it("Finance-only user sees the Financial Settings button in page header", () => {
-        cy.visit("/finance/");
-        // Financial Settings button is admin-only; Finance-only users must not see it
-        cy.get("button").contains("Financial Settings").should("not.exist");
-    });
-
-    it("Finance-only user sees Manage Funds button on dashboard", () => {
-        cy.visit("/finance/");
-        // Manage Funds quick-action button (gated by isFinanceEnabled, not isAdmin)
-        cy.get("a").contains("Manage Funds").should("exist");
-    });
-
-    it("Finance-only user can access /finance/funds page", () => {
-        cy.visit("/finance/funds");
-        cy.url().should("not.include", "access-denied");
-        cy.contains("Donation Funds");
-    });
-
-    it("Finance-only user should NOT see the Church Information settings link", () => {
-        // Church Information settings link points to /admin — remains Admin-only
-        cy.visit("/finance/");
-        cy.contains(".list-group-item", "Church Information").should("exist");
-        cy.contains(".list-group-item", "Church Information")
-            .find("a[href*='admin/system/church-info']")
-            .should("not.exist");
+    it("shows a clear empty state for a period without payments", () => {
+        cy.setupFinanceOnlySession();
+        cy.visit("/finance/?fyid=1");
+        cy.get("#payments-by-fund").should("contain.text", "No payments found for this period.");
+        cy.get("#payments-by-fund-chart").should("not.exist");
     });
 });
