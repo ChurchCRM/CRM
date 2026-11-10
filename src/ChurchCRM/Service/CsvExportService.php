@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\FunctionsUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
 
@@ -34,25 +35,25 @@ class CsvExportService
             'familyCustomFields' => [],
         ];
 
-        $rs = RunQuery('SELECT lst_OptionID, lst_OptionName FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence');
+        $rs = FunctionsUtils::runQuery('SELECT lst_OptionID, lst_OptionName FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence');
         while ($row = mysqli_fetch_array($rs)) {
             $options['classifications'][(int) $row['lst_OptionID']] = $row['lst_OptionName'];
         }
-        $rs = RunQuery('SELECT lst_OptionID, lst_OptionName FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence');
+        $rs = FunctionsUtils::runQuery('SELECT lst_OptionID, lst_OptionName FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence');
         while ($row = mysqli_fetch_array($rs)) {
             $options['familyRoles'][(int) $row['lst_OptionID']] = $row['lst_OptionName'];
         }
-        $rs = RunQuery('SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name');
+        $rs = FunctionsUtils::runQuery('SELECT grp_ID, grp_Name FROM group_grp ORDER BY grp_Name');
         while ($row = mysqli_fetch_array($rs)) {
             $options['groups'][(int) $row['grp_ID']] = $row['grp_Name'];
         }
-        $rs = RunQuery('SELECT custom_Field, custom_Name, custom_FieldSec FROM person_custom_master ORDER BY custom_Order');
+        $rs = FunctionsUtils::runQuery('SELECT custom_Field, custom_Name, custom_FieldSec FROM person_custom_master ORDER BY custom_Order');
         while ($row = mysqli_fetch_array($rs)) {
             if ($customFieldService->canView((int) $row['custom_FieldSec'])) {
                 $options['personCustomFields'][] = ['field' => $row['custom_Field'], 'name' => $row['custom_Name']];
             }
         }
-        $rs = RunQuery('SELECT fam_custom_Field, fam_custom_Name, fam_custom_FieldSec FROM family_custom_master ORDER BY fam_custom_Order');
+        $rs = FunctionsUtils::runQuery('SELECT fam_custom_Field, fam_custom_Name, fam_custom_FieldSec FROM family_custom_master ORDER BY fam_custom_Order');
         while ($row = mysqli_fetch_array($rs)) {
             if ($customFieldService->canView((int) $row['fam_custom_FieldSec'])) {
                 $options['familyCustomFields'][] = ['field' => $row['fam_custom_Field'], 'name' => $row['fam_custom_Name']];
@@ -218,7 +219,7 @@ class CsvExportService
             }
         }
 
-        $rsLabelsToWrite = RunPreparedQuery(
+        $rsLabelsToWrite = FunctionsUtils::runPreparedQuery(
             "SELECT per_ID FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName",
             $whereTypes,
             $whereParams
@@ -250,14 +251,14 @@ class CsvExportService
         // Get the custom fields
         if ($sFormat === 'default') {
             $sSQL = 'SELECT * FROM person_custom_master ORDER BY custom_Order';
-            $rsCustomFields = RunQuery($sSQL);
+            $rsCustomFields = FunctionsUtils::runQuery($sSQL);
 
             $sSQL = 'SELECT * FROM family_custom_master ORDER BY fam_custom_Order';
-            $rsFamCustomFields = RunQuery($sSQL);
+            $rsFamCustomFields = FunctionsUtils::runQuery($sSQL);
         }
         if ($sFormat === 'rollup') {
             $sSQL = 'SELECT * FROM family_custom_master ORDER BY fam_custom_Order';
-            $rsFamCustomFields = RunQuery($sSQL);
+            $rsFamCustomFields = FunctionsUtils::runQuery($sSQL);
         }
 
         //Get membership classes
@@ -268,7 +269,7 @@ class CsvExportService
 
         //Get family roles
         $sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
-        $rsFamilyRoles = RunQuery($sSQL);
+        $rsFamilyRoles = FunctionsUtils::runQuery($sSQL);
         while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
             extract($aRow);
             $familyRoles[$lst_OptionID] = $lst_OptionName;
@@ -429,7 +430,7 @@ class CsvExportService
 
             if ($sFormat === 'rollup') {
                 // UNION query uses $sWhereExt three times → bind params three times in sequence
-                $rsLabelsToWrite = RunPreparedQuery(
+                $rsLabelsToWrite = FunctionsUtils::runPreparedQuery(
                     "(SELECT *, 0 AS memberCount, per_LastName AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID = 0 $sWhereExt)
                 UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount = 1)
                 UNION (SELECT *, COUNT(*) AS memberCount, fam_Name AS SortMe FROM $sPerTable $sJoinFamTable WHERE per_fam_ID > 0 $sWhereExt GROUP BY per_fam_ID HAVING memberCount > 1) ORDER BY SortMe",
@@ -437,7 +438,7 @@ class CsvExportService
                     array_merge($whereParams, $whereParams, $whereParams)
                 );
             } else {
-                $rsLabelsToWrite = RunPreparedQuery(
+                $rsLabelsToWrite = FunctionsUtils::runPreparedQuery(
                     "SELECT * FROM $sPerTable $sJoinFamTable WHERE 1 = 1 $sWhereExt $sGroupBy ORDER BY per_LastName",
                     $whereTypes,
                     $whereParams
@@ -788,7 +789,7 @@ class CsvExportService
                         }
 
                         if ($bUsedCustomFields && ($sFormat === 'default')) {
-                            $rsCustomData = RunPreparedQuery('SELECT * FROM person_custom WHERE per_ID = ?', 'i', [(int) $per_ID]);
+                            $rsCustomData = FunctionsUtils::runPreparedQuery('SELECT * FROM person_custom WHERE per_ID = ?', 'i', [(int) $per_ID]);
                             $aCustomData = mysqli_fetch_array($rsCustomData);
 
                             if (mysqli_num_rows($rsCustomData) > 0) {
@@ -811,7 +812,7 @@ class CsvExportService
                                 }
                             }
 
-                            $rsFamCustomData = RunPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [(int) $per_fam_ID]);
+                            $rsFamCustomData = FunctionsUtils::runPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [(int) $per_fam_ID]);
                             $aFamCustomData = mysqli_fetch_array($rsFamCustomData);
 
                             if (@mysqli_num_rows($rsFamCustomData) > 0) {
@@ -834,7 +835,7 @@ class CsvExportService
                         }
 
                         if ($bUsedCustomFields && ($sFormat === 'rollup')) {
-                            $rsFamCustomData = RunPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [(int) $per_fam_ID]);
+                            $rsFamCustomData = FunctionsUtils::runPreparedQuery('SELECT * FROM family_custom WHERE fam_ID = ?', 'i', [(int) $per_fam_ID]);
                             $aFamCustomData = mysqli_fetch_array($rsFamCustomData);
 
                             if (@mysqli_num_rows($rsFamCustomData) > 0) {
