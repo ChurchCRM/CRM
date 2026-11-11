@@ -27158,3 +27158,283 @@ msgstr "Upotrijebite poveznicu u nastavku da pregledate podatke o svojoj obitelj
 msgid "Review Family Information"
 msgstr "Pregled podataka o obitelji"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Služba s nazivom „%s” već postoji. Odaberite je s popisa ili odaberite drugi naziv."
+
+#: 
+msgid "A new ministry"
+msgstr "Nova služba"
+
+#: 
+msgid "A position"
+msgstr "Pozicija"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Dodati volontere ({{total}}) na prethodno pretvorene pozicije?"
+
+#: 
+msgid "Already converted"
+msgstr "Već pretvoreno"
+
+#: 
+msgid "An existing ministry"
+msgstr "Postojeća služba"
+
+#: 
+msgid "Becomes"
+msgstr "Postaje"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM ima dva načina upravljanja volonterima. Istodobno bi se trebao koristiti samo jedan; postavka „Način volontiranja” određuje koji ova crkva vidi. Promjena skriva ili prikazuje stranice i stavke izbornika i nikada ne briše podatke. V1 i Oboje nude se samo dok se koriste Volonterske mogućnosti: kad je svaka mogućnost pretvorena i crkva koristi V2, nestaju s ovog popisa."
+
+#: 
+msgid "Convert"
+msgstr "Pretvori"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Pretvori Volonterske mogućnosti"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Pretvoriti sada mogućnosti ({{total}})? Podaci V1 ostaju nepromijenjeni dok se Volonterske mogućnosti ne ukinu."
+
+#: 
+msgid "Converted"
+msgstr "Pretvoreno"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Pretvoreno: pozicije – {{positions}}, službe – {{ministries}}, osposobljeni volonteri – {{qualifications}}."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Svaka mogućnost postaje pozicija u prvom timu jedne službe, a svi povezani s njom postaju osposobljeni za tu poziciju. Samoprijava je za te pozicije u početku isključena."
+
+#: 
+msgid "Everything is converted."
+msgstr "Sve je pretvoreno."
+
+#: 
+msgid "Existing ministry"
+msgstr "Postojeća služba"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Dajte novoj službi naziv od najviše 100 znakova."
+
+#: 
+msgid "Its own ministry"
+msgstr "Vlastita služba"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Povezani od tada: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Veze koje se ne mogu pretvoriti"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Nove vlastite službe"
+
+#: 
+msgid "New ministry name"
+msgstr "Naziv nove službe"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Ne šalje se e-pošta, a Volonterske mogućnosti ostaju kakve jesu dok se ne ukinu."
+
+#: 
+msgid "No name"
+msgstr "Bez naziva"
+
+#: 
+msgid "Not converted"
+msgstr "Nije pretvoreno"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Otvori Sklopke značajki"
+
+#: 
+msgid "Open Ministries"
+msgstr "Otvori Službe"
+
+#: 
+msgid "Opportunities"
+msgstr "Mogućnosti"
+
+#: 
+msgid "Opportunity"
+msgstr "Mogućnost"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Mogućnost br. %d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Osobe povezane s pretvorenim Volonterskim mogućnostima nakon pretvorbe: %d. Dodajte ih na njihove pozicije prije nego što se Volonterske mogućnosti ukinu početkom 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Najprije pregledajte pretvorbu i pošaljite reviziju koju je vratila."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Preimenovano kako bi nazivi bili jedinstveni"
+
+#: 
+msgid "Review the conversion"
+msgstr "Pregledaj pretvorbu"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Pošaljite odabir pretvorbe kao JSON objekt."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Pošaljite mogućnosti koje postaju službe kao popis ID-ova."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Ta služba ne postoji."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Verzija ChurchCRM-a u kojoj je administrator odbacio obavijest o ukidanju Volonterskih mogućnosti."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Volonterske mogućnosti promijenile su se od pregleda. Ponovno provjerite pregled, a zatim pretvorite."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Potvrda se nije mogla otvoriti. Ponovno učitajte stranicu i pokušajte opet."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Pregled pretvorbe nije bilo moguće prikazati."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Pretvorba nije uspjela. Ništa nije promijenjeno."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Služba „%s” nema tim za pozicije."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Poslužitelj nije dostupan. Ponovno učitajte stranicu da biste vidjeli je li pretvorba izvršena."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Nema Volonterskih mogućnosti za pretvorbu."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Upravljanje volonterima prelazi na Oboje, tako da su nove službe vidljive uz Volonterske mogućnosti."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Volonterske mogućnosti se ukidaju"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Volonterske mogućnosti pretvorene"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Volonterske mogućnosti bit će ukinute početkom 2027. Pretvorite ih u Službe kako biste sačuvali tko gdje volontira."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Volonterske mogućnosti bit će ukinute početkom 2027. Pretvorite sada svoje mogućnosti (%1$d) i volontere (%2$d) u Službe. Rezultat možete pregledati prije nego što se išta promijeni."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Osposobljeni volonteri"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Volonteri koje treba dodati na pretvorene pozicije"
+
+#: 
+msgid "What it becomes"
+msgstr "Što postaje"
+
+#: 
+msgid "What will happen"
+msgstr "Što će se dogoditi"
+
+#: 
+msgid "Where they go"
+msgstr "Kamo idu"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Koje su prijašnje Volonterske mogućnosti pretvorene i koja je pozicija postala od svake."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Koji način volontiranja ova crkva koristi. Volonterske mogućnosti (V1) bit će ukinute početkom 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Vaše Volonterske mogućnosti pretvorene su u Službe. Prebacite Upravljanje volonterima na V2 prije nego što se Volonterske mogućnosti ukinu početkom 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "u novu službu, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "u službu {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "više nije u ChurchCRM-u"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Sažmi bočnu traku"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Proširi bočnu traku"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Unesite valjanu adresu e-pošte sa samo ASCII znakovima prije @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Adresa e-pošte te osobe nije valjana"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Jeste li sigurni da želite obrisati {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Nije moguće prikupiti informacije o sustavu. Pokušajte ponovno."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Za ovo razdoblje nisu pronađene uplate."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Uplate po fondu"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Nepoznati fond"
+

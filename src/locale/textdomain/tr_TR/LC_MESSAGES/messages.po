@@ -27163,3 +27163,283 @@ msgstr "Aile bilgilerinizi gözden geçirmek için aşağıdaki bağlantıyı ku
 msgid "Review Family Information"
 msgstr "Aile bilgilerini gözden geçir"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "\"%s\" adlı bir hizmet zaten var. Listeden seçin veya başka bir ad belirleyin."
+
+#: 
+msgid "A new ministry"
+msgstr "Yeni bir hizmet"
+
+#: 
+msgid "A position"
+msgstr "Bir pozisyon"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Daha önce dönüştürülen pozisyonlara {{total}} gönüllü eklensin mi?"
+
+#: 
+msgid "Already converted"
+msgstr "Zaten dönüştürüldü"
+
+#: 
+msgid "An existing ministry"
+msgstr "Mevcut bir hizmet"
+
+#: 
+msgid "Becomes"
+msgstr "Şuna dönüşür"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM'de gönüllüleri yönetmenin iki yolu vardır. Aynı anda yalnızca biri kullanılmalıdır; bu kilisenin hangisini göreceğine \"Gönüllü deneyimi\" ayarı karar verir. Geçiş yapmak sayfaları ve menü öğelerini gizler veya gösterir, verileri asla silmez. V1 ve Her ikisi yalnızca Gönüllü fırsatlar kullanıldığı sürece sunulur: tüm fırsatlar dönüştürülüp kilise V2'ye geçtiğinde bu listeden kalkarlar."
+
+#: 
+msgid "Convert"
+msgstr "Dönüştür"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Gönüllü Fırsatları Dönüştür"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "{{total}} fırsat şimdi dönüştürülsün mü? V1 verileri, Gönüllü fırsatlar kullanımdan kaldırılana kadar olduğu gibi korunur."
+
+#: 
+msgid "Converted"
+msgstr "Dönüştürüldü"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Dönüştürüldü: {{positions}} pozisyon ve {{ministries}} hizmet, {{qualifications}} gönüllü yetkilendirildi."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Her fırsat bir hizmetin ilk ekibinde bir pozisyon olur ve ona bağlı herkes bu pozisyon için yetkilendirilir. Bu pozisyonlarda kendi kendine kayıt başlangıçta kapalıdır."
+
+#: 
+msgid "Everything is converted."
+msgstr "Her şey dönüştürüldü."
+
+#: 
+msgid "Existing ministry"
+msgstr "Mevcut hizmet"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Yeni hizmete en fazla 100 karakterlik bir ad verin."
+
+#: 
+msgid "Its own ministry"
+msgstr "Kendi hizmeti"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "O zamandan beri bağlananlar: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Dönüştürülemeyen bağlantılar"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Kendilerine ait yeni hizmetler"
+
+#: 
+msgid "New ministry name"
+msgstr "Yeni hizmet adı"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "E-posta gönderilmez ve Gönüllü fırsatlar kullanımdan kaldırılana kadar olduğu gibi kalır."
+
+#: 
+msgid "No name"
+msgstr "Ad yok"
+
+#: 
+msgid "Not converted"
+msgstr "Dönüştürülmedi"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Özellik Değiştirgelerini Aç"
+
+#: 
+msgid "Open Ministries"
+msgstr "Hizmetleri Aç"
+
+#: 
+msgid "Opportunities"
+msgstr "Fırsatlar"
+
+#: 
+msgid "Opportunity"
+msgstr "Fırsat"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Fırsat #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Dönüştürmeden bu yana dönüştürülmüş Gönüllü fırsatlara bağlanan kişiler: %d. Gönüllü fırsatlar 2027'nin başında kullanımdan kaldırılmadan önce onları pozisyonlarına ekleyin."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Önce dönüştürmenin önizlemesini alın ve döndürdüğü revizyonu gönderin."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Adlar benzersiz kalsın diye yeniden adlandırıldı"
+
+#: 
+msgid "Review the conversion"
+msgstr "Dönüştürmeyi gözden geçir"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Dönüştürme seçimini bir JSON nesnesi olarak gönderin."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Hizmete dönüşecek fırsatları bir kimlik listesi olarak gönderin."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Bu hizmet mevcut değil."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Bir yöneticinin Gönüllü fırsatların kaldırılması bildirimini kapattığı ChurchCRM sürümü."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Gönüllü fırsatlar önizlemeden bu yana değişti. Önizlemeyi yeniden kontrol edin, ardından dönüştürün."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Onay açılamadı. Sayfayı yeniden yükleyip tekrar deneyin."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Dönüştürmenin önizlemesi oluşturulamadı."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Dönüştürme başarısız oldu. Hiçbir şey değiştirilmedi."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "\"%s\" hizmetinin pozisyonları barındıracak bir ekibi yok."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Sunucuya ulaşılamadı. Dönüştürmenin çalışıp çalışmadığını görmek için sayfayı yeniden yükleyin."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Dönüştürülecek Gönüllü fırsat yok."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Gönüllü yönetimi Her ikisi moduna geçer, böylece yeni hizmetler Gönüllü fırsatların yanında görünür."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Gönüllü fırsatlar kullanımdan kaldırılıyor"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Gönüllü fırsatlar dönüştürüldü"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Gönüllü fırsatlar 2027'nin başında kullanımdan kaldırılacak. Kimin nerede gönüllü olduğunu korumak için onları Hizmetlere dönüştürün."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Gönüllü fırsatlar 2027'nin başında kullanımdan kaldırılacak. %1$d fırsatınızı ve %2$d gönüllünüzü şimdi Hizmetlere dönüştürün. Herhangi bir değişiklikten önce sonucun önizlemesini görebilirsiniz."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Yetkilendirilen gönüllüler"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Dönüştürülen pozisyonlara eklenecek gönüllüler"
+
+#: 
+msgid "What it becomes"
+msgstr "Neye dönüşür"
+
+#: 
+msgid "What will happen"
+msgstr "Ne olacak"
+
+#: 
+msgid "Where they go"
+msgstr "Nereye gidecekler"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Hangi eski Gönüllü fırsatların dönüştürüldüğü ve her birinin hangi pozisyon olduğu."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Bu kilisenin kullandığı gönüllü deneyimi. Gönüllü fırsatlar (V1) 2027'nin başında kullanımdan kaldırılacak."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Gönüllü fırsatlarınız Hizmetlere dönüştürüldü. Gönüllü fırsatlar 2027'nin başında kullanımdan kaldırılmadan önce Gönüllü yönetimini V2'ye geçirin."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "yeni bir hizmete, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "{{name}} hizmetine"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "artık ChurchCRM'de değil"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Kenar çubuğunu daralt"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Kenar çubuğunu genişlet"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "@ işaretinden önce yalnızca ASCII karakterler içeren geçerli bir e-posta adresi girin."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "E-posta adresi geçerli değil"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "{{name}} öğesini silmek istediğinizden emin misiniz?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Sistem bilgileri toplanamadı. Lütfen tekrar deneyin."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Bu dönem için ödeme bulunamadı."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Fona göre ödemeler"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Bilinmeyen fon"
+

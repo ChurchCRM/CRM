@@ -27163,3 +27163,283 @@ msgstr "Χρησιμοποιήστε τον παρακάτω σύνδεσμο γ
 msgid "Review Family Information"
 msgstr "Έλεγχος στοιχείων οικογένειας"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Υπάρχει ήδη διακονία με το όνομα «%s». Επιλέξτε την από τη λίστα ή διαλέξτε άλλο όνομα."
+
+#: 
+msgid "A new ministry"
+msgstr "Μια νέα διακονία"
+
+#: 
+msgid "A position"
+msgstr "Μια θέση"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Προσθήκη εθελοντών ({{total}}) σε θέσεις που μετατράπηκαν νωρίτερα;"
+
+#: 
+msgid "Already converted"
+msgstr "Ήδη μετατράπηκε"
+
+#: 
+msgid "An existing ministry"
+msgstr "Μια υπάρχουσα διακονία"
+
+#: 
+msgid "Becomes"
+msgstr "Γίνεται"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "Το ChurchCRM έχει δύο τρόπους διαχείρισης εθελοντών. Μόνο ένας προορίζεται να χρησιμοποιείται κάθε φορά· η ρύθμιση «Εμπειρία εθελοντών» καθορίζει ποιον βλέπει αυτή η εκκλησία. Η αλλαγή κρύβει ή εμφανίζει σελίδες και στοιχεία μενού και δεν διαγράφει ποτέ δεδομένα. Οι επιλογές V1 και Και τα δύο προσφέρονται μόνο όσο χρησιμοποιούνται οι Ευκαιρίες Εθελοντισμού: μόλις μετατραπεί κάθε ευκαιρία και η εκκλησία χρησιμοποιεί το V2, αφαιρούνται από αυτή τη λίστα."
+
+#: 
+msgid "Convert"
+msgstr "Μετατροπή"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Μετατροπή Ευκαιριών Εθελοντισμού"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Μετατροπή ευκαιριών ({{total}}) τώρα; Τα δεδομένα του V1 διατηρούνται ως έχουν μέχρι να καταργηθούν οι Ευκαιρίες Εθελοντισμού."
+
+#: 
+msgid "Converted"
+msgstr "Μετατράπηκε"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Μετατράπηκαν: θέσεις {{positions}} και διακονίες {{ministries}}, εθελοντές με δικαίωμα {{qualifications}}."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Κάθε ευκαιρία γίνεται θέση στην πρώτη ομάδα μιας διακονίας και όλοι όσοι συνδέονται με αυτήν αποκτούν δικαίωμα για τη θέση. Η αυτοεγγραφή είναι αρχικά απενεργοποιημένη σε αυτές τις θέσεις."
+
+#: 
+msgid "Everything is converted."
+msgstr "Όλα έχουν μετατραπεί."
+
+#: 
+msgid "Existing ministry"
+msgstr "Υπάρχουσα διακονία"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Δώστε στη νέα διακονία όνομα έως 100 χαρακτήρες."
+
+#: 
+msgid "Its own ministry"
+msgstr "Δική της διακονία"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Συνδέθηκαν από τότε: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Συνδέσεις που δεν μπορούν να μετατραπούν"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Νέες δικές τους διακονίες"
+
+#: 
+msgid "New ministry name"
+msgstr "Όνομα νέας διακονίας"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Δεν αποστέλλεται email, και οι Ευκαιρίες Εθελοντισμού παραμένουν ως έχουν μέχρι να καταργηθούν."
+
+#: 
+msgid "No name"
+msgstr "Χωρίς όνομα"
+
+#: 
+msgid "Not converted"
+msgstr "Δεν μετατράπηκε"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Άνοιγμα Διακοπτών δυνατοτήτων"
+
+#: 
+msgid "Open Ministries"
+msgstr "Άνοιγμα Διακονιών"
+
+#: 
+msgid "Opportunities"
+msgstr "Ευκαιρίες"
+
+#: 
+msgid "Opportunity"
+msgstr "Ευκαιρία"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Ευκαιρία #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Άτομα που συνδέθηκαν με μετατραπείσες Ευκαιρίες Εθελοντισμού μετά τη μετατροπή: %d. Προσθέστε τα στις θέσεις τους πριν καταργηθούν οι Ευκαιρίες Εθελοντισμού στις αρχές του 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Κάντε πρώτα προεπισκόπηση της μετατροπής και στείλτε την αναθεώρηση που επέστρεψε."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Μετονομάστηκε ώστε τα ονόματα να είναι μοναδικά"
+
+#: 
+msgid "Review the conversion"
+msgstr "Έλεγχος της μετατροπής"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Στείλτε την επιλογή μετατροπής ως αντικείμενο JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Στείλτε τις ευκαιρίες που γίνονται διακονίες ως λίστα αναγνωριστικών."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Αυτή η διακονία δεν υπάρχει."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Η έκδοση του ChurchCRM στην οποία ένας διαχειριστής απέρριψε την ειδοποίηση κατάργησης των Ευκαιριών Εθελοντισμού."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Οι Ευκαιρίες Εθελοντισμού άλλαξαν μετά την προεπισκόπηση. Ελέγξτε ξανά την προεπισκόπηση και μετά κάντε τη μετατροπή."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Δεν ήταν δυνατό να ανοίξει η επιβεβαίωση. Φορτώστε ξανά τη σελίδα και δοκιμάστε πάλι."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Δεν ήταν δυνατή η προεπισκόπηση της μετατροπής."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Η μετατροπή απέτυχε. Δεν άλλαξε τίποτα."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Η διακονία «%s» δεν έχει ομάδα για τις θέσεις."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Δεν ήταν δυνατή η σύνδεση με τον διακομιστή. Φορτώστε ξανά τη σελίδα για να δείτε αν έγινε η μετατροπή."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Δεν υπάρχουν Ευκαιρίες Εθελοντισμού για μετατροπή."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Η Διαχείριση εθελοντών αλλάζει σε Και τα δύο, ώστε οι νέες διακονίες να φαίνονται δίπλα στις Ευκαιρίες Εθελοντισμού."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Οι Ευκαιρίες Εθελοντισμού καταργούνται"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Οι Ευκαιρίες Εθελοντισμού μετατράπηκαν"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Οι Ευκαιρίες Εθελοντισμού θα καταργηθούν στις αρχές του 2027. Μετατρέψτε τις σε Διακονίες για να διατηρήσετε ποιος υπηρετεί πού."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Οι Ευκαιρίες Εθελοντισμού θα καταργηθούν στις αρχές του 2027. Μετατρέψτε τώρα σε Διακονίες τις ευκαιρίες (%1$d) και τους εθελοντές σας (%2$d). Μπορείτε να δείτε προεπισκόπηση του αποτελέσματος πριν αλλάξει οτιδήποτε."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Εθελοντές με δικαίωμα"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Εθελοντές προς προσθήκη σε μετατραπείσες θέσεις"
+
+#: 
+msgid "What it becomes"
+msgstr "Τι γίνεται"
+
+#: 
+msgid "What will happen"
+msgstr "Τι θα συμβεί"
+
+#: 
+msgid "Where they go"
+msgstr "Πού πηγαίνουν"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Ποιες παλιές Ευκαιρίες Εθελοντισμού έχουν μετατραπεί και ποια θέση έγινε η καθεμία."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Ποια εμπειρία εθελοντών χρησιμοποιεί αυτή η εκκλησία. Οι Ευκαιρίες Εθελοντισμού (V1) θα καταργηθούν στις αρχές του 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Οι Ευκαιρίες Εθελοντισμού σας μετατράπηκαν σε Διακονίες. Αλλάξτε τη Διαχείριση εθελοντών σε V2 πριν καταργηθούν οι Ευκαιρίες Εθελοντισμού στις αρχές του 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "σε νέα διακονία, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "στη διακονία {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "δεν υπάρχει πλέον στο ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Σύμπτυξη πλευρικής στήλης"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Ανάπτυξη πλευρικής στήλης"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Εισαγάγετε έγκυρη διεύθυνση email με μόνο χαρακτήρες ASCII πριν από το @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Η διεύθυνση email του δεν είναι έγκυρη"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε το {{name}};"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Δεν ήταν δυνατή η συλλογή πληροφοριών συστήματος. Δοκιμάστε ξανά."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Δεν βρέθηκαν πληρωμές για αυτή την περίοδο."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Πληρωμές ανά κεφάλαιο"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Άγνωστο κεφάλαιο"
+
