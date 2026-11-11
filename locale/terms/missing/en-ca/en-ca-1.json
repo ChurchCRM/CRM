@@ -1,0 +1,19 @@
+{
+  "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored.": "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.",
+  "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only.": "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.",
+  "Canceled": "Cancelled",
+  "Assignment canceled": "Assignment cancelled",
+  "The assignment could not be canceled": "The assignment could not be cancelled",
+  "Occurrence canceled": "Occurrence cancelled",
+  "The occurrence could not be canceled": "The occurrence could not be cancelled",
+  "This occurrence has been canceled": "This occurrence has been cancelled",
+  "This date was canceled. Nothing more is needed from you.": "This date was cancelled. Nothing more is needed from you.",
+  "Emailed sign-in code and link canceled": "Emailed sign-in code and link cancelled",
+  "Color": "Colour",
+  "%d default skipped for another reason (the occurrence is over, canceled or full)": {
+    "one": "%d default skipped for another reason (the occurrence is over, cancelled or full)",
+    "other": "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+  },
+  "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates.": "Require a cheque number when recording cheque payments on deposit entries. When off, a cheque can be saved with a blank or 0 cheque number, and those are not checked for duplicates.",
+  "Require check number on check payments": "Require cheque number on cheque payments"
+}
