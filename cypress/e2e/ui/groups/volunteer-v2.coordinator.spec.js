@@ -402,18 +402,29 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
     });
 
     describe("S1 — what needs my attention (§5.2)", () => {
-        it("renders the five panels in the documented order", () => {
+        it("shows the gaps, pending replies and upcoming work in the five panels", () => {
             cy.visit(DASHBOARD_URL);
 
-            cy.get("#volunteer-dashboard").should("exist");
-            cy.get("#volunteer-gaps-card").should("be.visible");
-            cy.get("#volunteer-pending-card").should("be.visible");
-            cy.get("#volunteer-swaps-card").should("be.visible");
-            cy.get("#volunteer-upcoming-card").should("be.visible");
+            cy.get("#volunteer-gaps-card").should("be.visible").and("contain", "Needs filling");
+            cy.get("#volunteer-pending-card").should("be.visible").and("contain", "Waiting for a reply");
+            cy.get("#volunteer-swaps-card").should("be.visible").and("contain", "Substitution requests");
+            cy.get("#volunteer-upcoming-card").should("be.visible").and("contain", "Upcoming");
             // The settings moved to Admin → Ministry Settings (2026-09-18); the
             // dashboard keeps the notification-health card with a link there.
             cy.get("#volunteer-failed-card").should("be.visible");
             cy.get("#volunteer-settings-link").should("have.attr", "href").and("match", /\/admin\/ministry-settings$/);
+
+            cy.get("#volunteer-gaps-list").should("contain", POSITION_MILK);
+            cy.get(
+                `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"]`,
+            ).should("exist");
+            cy.get("#volunteer-pending-list").should("contain", POSITION_ESPRESSO);
+            cy.get("#volunteer-upcoming-table tbody").should("contain", `${PREFIX} Coffee Bar`);
+
+            // "New ministry" replaced the guided-setup link; the sidebar lists the ministries.
+            cy.get("#volunteer-quick-actions #ministry-new-btn").should("exist");
+            cy.get('#volunteer-quick-actions a[href$="/volunteer/setup"]').should("not.exist");
+            cy.get('#volunteer-quick-actions a[href$="/ministries"]').should("not.exist");
         });
 
         it("shows the loading block first and hides it once content arrives (§5.8)", () => {
@@ -440,45 +451,6 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
             cy.wait("@dashboardFail");
             cy.get("#volunteer-gaps-error").should("be.visible");
             cy.get("#volunteer-gaps-error .volunteer-retry").should("be.visible");
-        });
-
-        it("lists the Milk Station gap with a link to the occurrence", () => {
-            cy.visit(DASHBOARD_URL);
-
-            cy.get("#volunteer-gaps-content").should("be.visible");
-            cy.get("#volunteer-gaps-list").should("contain", POSITION_MILK);
-            cy.get(
-                `#volunteer-gaps-list a.volunteer-gap-link[data-occurrence-id="${occurrenceId}"]`,
-            ).should("exist");
-        });
-
-        it("lists the pending Espresso response and the upcoming occurrence", () => {
-            cy.visit(DASHBOARD_URL);
-            cy.get("#volunteer-pending-content").should("be.visible");
-            cy.get("#volunteer-pending-list").should("contain", POSITION_ESPRESSO);
-
-            cy.get("#volunteer-upcoming-content").should("be.visible");
-            cy.get("#volunteer-upcoming-table tbody").should("contain", `${PREFIX} Coffee Bar`);
-        });
-
-        it("offers the quick actions §5.2 requires", () => {
-            cy.visit(DASHBOARD_URL);
-            // The guided-setup link is gone; "New ministry" replaced it, and it is
-            // a button rather than a link because it opens a modal.
-            cy.get('#volunteer-quick-actions a[href$="/volunteer/setup"]').should("not.exist");
-            cy.get("#volunteer-quick-actions #ministry-new-btn").should("exist");
-            // "My ministries and teams" is no longer a quick action: the
-            // sidebar's Ministries heading lists them, and the card in the
-            // right-hand column names the teams.
-            cy.get('#volunteer-quick-actions a[href$="/ministries"]').should("not.exist");
-        });
-
-        it("renders localized strings from the bundle, not raw keys", () => {
-            cy.visit(DASHBOARD_URL);
-            cy.get("#volunteer-gaps-card").should("contain", "Needs filling");
-            cy.get("#volunteer-pending-card").should("contain", "Waiting for a reply");
-            cy.get("#volunteer-swaps-card").should("contain", "Substitution requests");
-            cy.get("#volunteer-upcoming-card").should("contain", "Upcoming");
         });
     });
 
@@ -523,6 +495,7 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
             cy.visit("/admin/ministry-settings");
 
             cy.get("#ministrySettingsPanel").should("be.visible");
+            cy.get("#ministry-cron-hint").should("contain", "timerjobs");
             // The panel renders its inputs first and fills them from
             // `/admin/api/system/config` a moment later, so typing before that
             // second pass lands prepends to a value that is about to be replaced.
@@ -539,11 +512,6 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
                     expect(String(resp.body.value ?? resp.body.Value)).to.eq("12");
                 });
             });
-        });
-
-        it("carries the cron hint §3.6 requires", () => {
-            cy.visit("/admin/ministry-settings");
-            cy.get("#ministry-cron-hint").should("exist").and("contain", "timerjobs");
         });
     });
 
@@ -605,14 +573,10 @@ describe("Volunteer v2 coordinator dashboard (#9711)", () => {
     // names the teams under them — which is the half a pure team leader needs,
     // since they get no ministry entry in the menu at all (§4.6).
     describe("The team-leader entry point (§4.6, design gap 1)", () => {
-        it("the dashboard names the ministries and the teams the viewer runs", () => {
+        it("the dashboard names the viewer's ministries and teams and links at the ministry", () => {
             cy.visit(DASHBOARD_URL);
             cy.get("#volunteer-scope-ministries").should("contain", MINISTRY_NAME);
             cy.get("#volunteer-scope-teams").should("contain", TEAM_NAME);
-        });
-
-        it("the Ministries menu links straight at the ministry", () => {
-            cy.visit(DASHBOARD_URL);
             cy.get(`a[href$="${MINISTRIES_URL}/${ministryId}"]`).should("exist");
             cy.get(`a[href$="${MINISTRIES_URL}"]`).should("not.exist");
         });
