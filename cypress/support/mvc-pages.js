@@ -14,6 +14,7 @@ export const MVC_PAGES = {
         "/people/email",
         "/people/text",
         "/people/reports",
+        "/people/reports/letters-and-labels",
         "/people/map",
         "/people/photos",
         "/people/self-register",
@@ -31,6 +32,7 @@ export const MVC_PAGES = {
         "/admin/",
         "/admin/people",
         "/admin/export",
+        "/admin/export/csv",
         "/admin/system/users",
         "/admin/system/users/new",
         "/admin/system/options",
@@ -46,6 +48,5 @@ export const LEGACY_PAGES = [
     "/PersonEditor.php?PersonID=2",
     "/FamilyEditor.php?FamilyID=1",
     "/SystemSettings.php",
-    "/LettersAndLabels.php",
     "/DirectoryReports.php",
 ];

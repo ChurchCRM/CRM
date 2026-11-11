@@ -1,25 +1,10 @@
 <?php
 
-require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/PageInit.php';
-
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\LabelSheetService;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\view\PageHeader;
 
-$sPageTitle = gettext('Letters and Mailing Labels');
-$sPageSubtitle = gettext('Generate mailing labels and form letters');
-$aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('People Reports'), '/people/reports'],
-    [gettext('Letters and Labels')],
-]);
-require_once __DIR__ . '/Include/Header.php';
-
-$sRootPath = SystemURLs::getRootPath();
-$sLabelType = (string) ($_COOKIE['labeltype'] ?? '');
-$sLabelFont = (string) ($_COOKIE['labelfont'] ?? '');
-$sLabelFontSize = (string) ($_COOKIE['labelfontsize'] ?? '');
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 <div class="card">
   <div class="card-header">
@@ -32,7 +17,7 @@ $sLabelFontSize = (string) ($_COOKIE['labelfontsize'] ?? '');
           <label class="form-label" for="labeltype"><?= gettext('Label Type') ?></label>
           <select class="form-select" name="labeltype" id="labeltype">
             <?php foreach (LabelSheetService::labelTypes() as $type) { ?>
-              <option value="<?= InputUtils::escapeAttribute($type) ?>" <?= $sLabelType === $type ? 'selected' : '' ?>><?= InputUtils::escapeHTML(gettext($type)) ?></option>
+              <option value="<?= InputUtils::escapeAttribute($type) ?>" <?= $labelType === $type ? 'selected' : '' ?>><?= InputUtils::escapeHTML(gettext($type)) ?></option>
             <?php } ?>
           </select>
         </div>
@@ -40,7 +25,7 @@ $sLabelFontSize = (string) ($_COOKIE['labelfontsize'] ?? '');
           <label class="form-label" for="labelfont"><?= gettext('Font') ?></label>
           <select class="form-select" name="labelfont" id="labelfont">
             <?php foreach (LabelSheetService::fontNames() as $font) { ?>
-              <option value="<?= InputUtils::escapeAttribute($font) ?>" <?= $sLabelFont === $font ? 'selected' : '' ?>><?= InputUtils::escapeHTML($font) ?></option>
+              <option value="<?= InputUtils::escapeAttribute($font) ?>" <?= $labelFont === $font ? 'selected' : '' ?>><?= InputUtils::escapeHTML($font) ?></option>
             <?php } ?>
           </select>
         </div>
@@ -48,7 +33,7 @@ $sLabelFontSize = (string) ($_COOKIE['labelfontsize'] ?? '');
           <label class="form-label" for="labelfontsize"><?= gettext('Font Size') ?></label>
           <select class="form-select" name="labelfontsize" id="labelfontsize">
             <?php foreach (LabelSheetService::fontSizes() as $size) { ?>
-              <option value="<?= InputUtils::escapeAttribute((string) $size) ?>" <?= $sLabelFontSize === (string) $size ? 'selected' : '' ?>><?= InputUtils::escapeHTML(gettext((string) $size)) ?></option>
+              <option value="<?= InputUtils::escapeAttribute((string) $size) ?>" <?= $labelFontSize === (string) $size ? 'selected' : '' ?>><?= InputUtils::escapeHTML(gettext((string) $size)) ?></option>
             <?php } ?>
           </select>
         </div>
@@ -68,5 +53,4 @@ $sLabelFontSize = (string) ($_COOKIE['labelfontsize'] ?? '');
     </div>
   </form>
 </div>
-<?php
-require_once __DIR__ . '/Include/Footer.php';
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

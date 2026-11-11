@@ -3,7 +3,13 @@
 describe("Letters and Labels", () => {
     beforeEach(() => {
         cy.freshAdminFormLogin();
-        cy.visit("/LettersAndLabels.php");
+        cy.visit("/people/reports/letters-and-labels");
+    });
+
+    it("loads under People Reports", () => {
+        cy.contains("Letters and Mailing Labels").should("be.visible");
+        cy.contains(".breadcrumb a", "People Reports").should("have.attr", "href").and("include", "/people/reports");
+        cy.get("#labeltype").should("exist");
     });
 
     it("offers the label fonts", () => {

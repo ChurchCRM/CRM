@@ -1,52 +1,12 @@
 <?php
 
-require_once __DIR__ . '/Include/Config.php';
-require_once __DIR__ . '/Include/PageInit.php';
-
-use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
-use ChurchCRM\view\PageHeader;
-use ChurchCRM\Service\CustomFieldService;
 
-if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
-    RedirectUtils::securityRedirect('Admin');
-    exit;
-}
-
-// Get Classifications for the drop-down
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 1 ORDER BY lst_OptionSequence';
-$rsClassifications = RunQuery($sSQL);
-
-// Get Family Roles for the drop-down
-$sSQL = 'SELECT * FROM list_lst WHERE lst_ID = 2 ORDER BY lst_OptionSequence';
-$rsFamilyRoles = RunQuery($sSQL);
-
-// Get all the Groups
-$sSQL = 'SELECT * FROM group_grp ORDER BY grp_Name';
-$rsGroups = RunQuery($sSQL);
-
-$sSQL = 'SELECT person_custom_master.* FROM person_custom_master ORDER BY custom_Order';
-$rsCustomFields = RunQuery($sSQL);
-$numCustomFields = mysqli_num_rows($rsCustomFields);
-
-$sSQL = 'SELECT family_custom_master.* FROM family_custom_master ORDER BY fam_custom_Order';
-$rsFamCustomFields = RunQuery($sSQL);
-$numFamCustomFields = mysqli_num_rows($rsFamCustomFields);
-
-$customFieldService = new CustomFieldService();
-
-$sPageTitle = gettext('CSV Export');
-$sPageSubtitle = gettext('Export data to CSV format for external applications');
-$aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('Admin'), '/admin/'],
-    [gettext('Export'), '/admin/export'],
-    [gettext('CSV Export')],
-]);
-require_once __DIR__ . '/Include/Header.php';
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
-<form method="post" action="CSVCreateFile.php">
+<form method="post" action="<?= InputUtils::escapeAttribute($sRootPath . '/admin/export/csv') ?>">
   <div class="row">
     <div class="col-lg-12">
       <div class="card">
@@ -165,9 +125,7 @@ require_once __DIR__ . '/Include/Header.php';
 
     </div>
   </div>
-  <?php
-    if ($numCustomFields > 0 || $numFamCustomFields > 0) {
-        ?>
+  <?php if ($options['personCustomFields'] || $options['familyCustomFields']) { ?>
     <div class="row">
       <div class="col-lg-12">
         <div class="card">
@@ -175,40 +133,33 @@ require_once __DIR__ . '/Include/Header.php';
             <h3 class="card-title"><?= gettext('Custom Field Selection') ?></h3>
           </div>
           <div class="card-body">
-            <?php if ($numCustomFields > 0): ?>
+            <?php if ($options['personCustomFields']) { ?>
               <label class="form-label fw-medium"><?= gettext('Custom Person Fields') ?></label>
               <div class="form-selectgroup form-selectgroup-pills mb-3">
-                <?php while ($Row = mysqli_fetch_array($rsCustomFields)) {
-                    extract($Row);
-                    if ($customFieldService->canView((int) $custom_FieldSec)) { ?>
+                <?php foreach ($options['personCustomFields'] as $field) { ?>
                     <label class="form-selectgroup-item">
-                      <input type="checkbox" class="form-selectgroup-input" name="<?= InputUtils::escapeAttribute($custom_Field) ?>" value="1">
-                      <span class="form-selectgroup-label"><?= InputUtils::escapeHTML($custom_Name) ?></span>
+                      <input type="checkbox" class="form-selectgroup-input" name="<?= InputUtils::escapeAttribute($field['field']) ?>" value="1">
+                      <span class="form-selectgroup-label"><?= InputUtils::escapeHTML($field['name']) ?></span>
                     </label>
-                <?php }
-                } ?>
+                <?php } ?>
               </div>
-            <?php endif; ?>
-            <?php if ($numFamCustomFields > 0): ?>
+            <?php } ?>
+            <?php if ($options['familyCustomFields']) { ?>
               <label class="form-label fw-medium"><?= gettext('Custom Family Fields') ?></label>
               <div class="form-selectgroup form-selectgroup-pills">
-                <?php while ($Row = mysqli_fetch_array($rsFamCustomFields)) {
-                    extract($Row);
-                    if ($customFieldService->canView((int) $fam_custom_FieldSec)) { ?>
+                <?php foreach ($options['familyCustomFields'] as $field) { ?>
                     <label class="form-selectgroup-item">
-                      <input type="checkbox" class="form-selectgroup-input" name="<?= InputUtils::escapeAttribute($fam_custom_Field) ?>" value="1">
-                      <span class="form-selectgroup-label"><?= InputUtils::escapeHTML($fam_custom_Name) ?></span>
+                      <input type="checkbox" class="form-selectgroup-input" name="<?= InputUtils::escapeAttribute($field['field']) ?>" value="1">
+                      <span class="form-selectgroup-label"><?= InputUtils::escapeHTML($field['name']) ?></span>
                     </label>
-                <?php }
-                } ?>
+                <?php } ?>
               </div>
-            <?php endif; ?>
+            <?php } ?>
           </div>
         </div>
       </div>
     </div>
-        <?php
-    } ?>
+  <?php } ?>
 
   <div class="row">
     <div class="col-lg-12">
@@ -222,19 +173,15 @@ require_once __DIR__ . '/Include/Header.php';
               <label class="form-label"><?= gettext('Records to export') ?></label>
               <select name="Source" class="form-select">
                 <option value="filters"><?= gettext('Based on filters below..') ?></option>
-                <option value="cart" <?php if (array_key_exists('Source', $_GET) && $_GET['Source'] == 'cart') {
-                    echo 'selected';
-                } ?>><?= gettext('People in Cart (filters ignored)') ?></option>
+                <option value="cart" <?= $source === 'cart' ? 'selected' : '' ?>><?= gettext('People in Cart (filters ignored)') ?></option>
               </select>
             </div>
 
             <div class="col-lg-4">
               <label class="form-label"><?= gettext('Classification') ?></label>
               <select name="Classification[]" size="5" multiple class="form-select">
-                <?php
-                while ($aRow = mysqli_fetch_array($rsClassifications)) {
-                    extract($aRow); ?>
-                  <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
+                <?php foreach ($options['classifications'] as $id => $name) { ?>
+                  <option value="<?= (int) $id ?>"><?= InputUtils::escapeHTML($name) ?></option>
                 <?php } ?>
               </select>
               <small class="form-text"><?= gettext('Use Ctrl Key to select multiple') ?></small>
@@ -243,10 +190,8 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="col-lg-4">
               <label class="form-label"><?= gettext('Family Role') ?></label>
               <select name="FamilyRole[]" size="5" multiple class="form-select">
-                <?php
-                while ($aRow = mysqli_fetch_array($rsFamilyRoles)) {
-                    extract($aRow); ?>
-                  <option value="<?= $lst_OptionID ?>"><?= $lst_OptionName ?></option>
+                <?php foreach ($options['familyRoles'] as $id => $name) { ?>
+                  <option value="<?= (int) $id ?>"><?= InputUtils::escapeHTML($name) ?></option>
                 <?php } ?>
               </select>
               <small class="form-text"><?= gettext('Use Ctrl Key to select multiple') ?></small>
@@ -264,11 +209,9 @@ require_once __DIR__ . '/Include/Header.php';
             <div class="col-lg-4">
               <label class="form-label"><?= gettext('Group Membership') ?></label>
               <select name="GroupID[]" size="5" multiple class="form-select">
-                <?php
-                while ($aRow = mysqli_fetch_array($rsGroups)) {
-                    extract($aRow);
-                    echo '<option value="' . $grp_ID . '">' . $grp_Name . '</option>';
-                } ?>
+                <?php foreach ($options['groups'] as $id => $name) { ?>
+                  <option value="<?= (int) $id ?>"><?= InputUtils::escapeHTML($name) ?></option>
+                <?php } ?>
               </select>
               <small class="form-text"><?= gettext('Use Ctrl Key to select multiple') ?></small>
             </div>
@@ -359,6 +302,4 @@ require_once __DIR__ . '/Include/Header.php';
   </div>
 
 </form>
-
-<?php
-require_once __DIR__ . '/Include/Footer.php';
+<?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
