@@ -5656,7 +5656,6 @@
   "Register walk-in guest": "зарегистрировать случайного гостя",
   "Registered as a walk-in guest at the kiosk during event: %s": "Зарегистрирован в качестве случайного гостя на киоске во время события: %s",
   "Registering...": "Регистрация...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Требовать номер чека при записи чеков в записи взносов.\nПримечание: отключение этой опции также отключает обнаружение дубликатов чеков — один физический чек может быть введен несколько раз.",
   "This event has ended": "Это событие завершилось",
   "This event has no group assigned, so guests cannot be registered": "Этому событию не назначена группа, поэтому гостей нельзя зарегистрировать",
   "This event has no start and end time": "У этого события нет времени начала и окончания",

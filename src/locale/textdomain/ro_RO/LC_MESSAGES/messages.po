@@ -23017,12 +23017,6 @@ msgid "Registering..."
 msgstr "Înregistrare în curs..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Solicitați un număr de cec la înregistrarea plăților cu cecul în intrări de depozit.\n"
-"Nota: dezactivarea aceasta dezactivează și detectarea numerelor de cec duplicate — acelaș cec fizic poate fi introdus mai mult de o dată."
-
-#: 
 msgid "This event has ended"
 msgstr "Acest eveniment s-a încheiat"
 

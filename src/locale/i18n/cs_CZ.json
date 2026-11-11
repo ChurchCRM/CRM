@@ -5626,7 +5626,6 @@
   "Register walk-in guest": "zaregistrujte hosta",
   "Registered as a walk-in guest at the kiosk during event: %s": "Zaregistrován jako host u kiosku během akce: %s",
   "Registering...": "Registrace...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Vyžadovat číslo šeku při zaznamenávání plateb šeky v zápisech vkladů.\nPozn.: zakázání také zakáže detekci duplicitních čísel šeků — stejný fyzický šek lze zadat více než jednou.",
   "This event has ended": "Tato akce skončila",
   "This event has no group assigned, so guests cannot be registered": "Tato akce nemá přiřazenou skupinu, takže hosty nelze zaregistrovat",
   "This event has no start and end time": "Tato akce nemá čas začátku a konce",

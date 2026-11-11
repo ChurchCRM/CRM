@@ -5566,7 +5566,6 @@
   "Register walk-in guest": "来客を登録",
   "Registered as a walk-in guest at the kiosk during event: %s": "イベント中にキオスクで来客として登録：%s",
   "Registering...": "登録中...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "預金エントリでチェック支払いを記録する際、チェック番号が必須です。\n注：これを無効にすると、重複チェック番号検出も無効になります — 同じ物理チェックが複数回入力される場合があります。",
   "This event has ended": "このイベントは終了しました",
   "This event has no group assigned, so guests cannot be registered": "このイベントにはグループが割り当てられていないため、来客は登録できません",
   "This event has no start and end time": "このイベントに開始時刻と終了時刻がありません",

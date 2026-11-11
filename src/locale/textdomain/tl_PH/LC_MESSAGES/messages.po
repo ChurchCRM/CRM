@@ -22895,12 +22895,6 @@ msgid "Registering..."
 msgstr "Nagpaparehistro..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Kailangan ng check number sa pagrekord ng check payments sa deposit entries.\n"
-"Paalala: ang pagsasDisable nito ay nagsasDisable rin ng duplicate check-number detection — ang parehong physical check ay maaaring ilagay ng higit sa isang beses."
-
-#: 
 msgid "This event has ended"
 msgstr "Ang event na ito ay nagtapos na"
 

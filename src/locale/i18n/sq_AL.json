@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "regjistroni mysafirin",
   "Registered as a walk-in guest at the kiosk during event: %s": "Regjistruar si mysafir në kiosk gjatë ngjarjes: %s",
   "Registering...": "Po regjistrohet...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Kërkoni një numër kontrolli kur regjistroni pagesat e kontrollit në zërat e depozitit.\nShënim: çaktivizimi i këtij deaktivon gjithashtu zbulimin e numrave të ndryshueshëm - i njëjti kontroll fizik mund të futet më shumë se një herë.",
   "This event has ended": "Kjo ngjarje ka përfunduar",
   "This event has no group assigned, so guests cannot be registered": "Kjo ngjarje nuk ka ndonjë grup të caktuar, kështu që mysafirët nuk mund të regjistrohen",
   "This event has no start and end time": "Kjo ngjarje nuk ka kohën e fillimit dhe mbarimit",

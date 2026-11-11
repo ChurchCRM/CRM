@@ -22906,12 +22906,6 @@ msgid "Registering..."
 msgstr "నమోదు చేస్తోంది..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "డిపాజిట్ ఎంట్రీలలో చెక్ చెల్లింపులను నమోదు చేసేటప్పుడు చెక్ నంబర్ తప్పనిసరి చేయండి.\n"
-"గమనిక: దీన్ని నిలిపివేస్తే నకిలీ చెక్ నంబర్ గుర్తింపు కూడా నిలిచిపోతుంది — అదే చెక్ ఒకటి కంటే ఎక్కువసార్లు నమోదు కావచ్చు."
-
-#: 
 msgid "This event has ended"
 msgstr "ఈ కార్యక్రమం ముగిసింది"
 

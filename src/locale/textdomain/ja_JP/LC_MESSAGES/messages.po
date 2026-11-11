@@ -22865,12 +22865,6 @@ msgid "Registering..."
 msgstr "登録中..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "預金エントリでチェック支払いを記録する際、チェック番号が必須です。\n"
-"注：これを無効にすると、重複チェック番号検出も無効になります — 同じ物理チェックが複数回入力される場合があります。"
-
-#: 
 msgid "This event has ended"
 msgstr "このイベントは終了しました"
 

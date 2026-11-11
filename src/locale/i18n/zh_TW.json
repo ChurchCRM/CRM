@@ -5566,7 +5566,6 @@
   "Register walk-in guest": "註冊來客",
   "Registered as a walk-in guest at the kiosk during event: %s": "在事件期間通過自助終端註冊為來客：%s",
   "Registering...": "正在註冊...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "在記錄存款條目中的支票付款時需要支票號碼。\n注意：停用此功能也會停用重複支票號碼偵測——同一張支票可能被輸入多次。",
   "This event has ended": "此事件已結束",
   "This event has no group assigned, so guests cannot be registered": "此事件未分配群組，因此無法註冊來客",
   "This event has no start and end time": "此事件沒有開始和結束時間",

@@ -22924,12 +22924,6 @@ msgid "Registering..."
 msgstr "Inasajili..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Hitaji nambari ya hundi wakati wa kurekodi malipo ya hundi kwenye rekodi za amana.\n"
-"Kumbuka: kuzima hili pia kunazima ugunduzi wa nambari za hundi zilizorudiwa — hundi ile ile halisi inaweza kuingizwa zaidi ya mara moja."
-
-#: 
 msgid "This event has ended"
 msgstr "Tukio hili limekwisha"
 

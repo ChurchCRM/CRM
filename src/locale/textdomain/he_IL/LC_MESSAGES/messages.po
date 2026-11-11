@@ -22926,12 +22926,6 @@ msgid "Registering..."
 msgstr "נרשם..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "דרישת מספר צ׳ק בעת רישום תשלומי צ׳קים ברשומות הפקדה.\n"
-"שימו לב: ביטול האפשרות מבטל גם את זיהוי מספרי הצ׳קים הכפולים — ייתכן שאותו צ׳ק פיזי יוזן יותר מפעם אחת."
-
-#: 
 msgid "This event has ended"
 msgstr "אירוע זה הסתיים"
 

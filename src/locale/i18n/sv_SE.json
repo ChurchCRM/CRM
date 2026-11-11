@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "Registrera ankomstgäst",
   "Registered as a walk-in guest at the kiosk during event: %s": "Registrerad som ankomstgäst vid kiosken under evenemang: %s",
   "Registering...": "Registrering...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Kräv ett checknummer när du registrerar checkbetalningar på insättningsposterna.\nOm: att inaktivera detta inaktiverar också duplicerad checknummerdetektion — samma fysiska check kan anges mer än en gång.",
   "This event has ended": "Detta evenemang är över",
   "This event has no group assigned, so guests cannot be registered": "Detta evenemang har ingen grupp tilldelad, så gäster kan inte registreras",
   "This event has no start and end time": "Detta evenemang har ingen start- och sluttid",

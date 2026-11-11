@@ -22897,12 +22897,6 @@ msgid "Registering..."
 msgstr "Sedang mendaftar..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Memerlukan nomor cek saat merekam pembayaran cek pada entri penyetoran.\n"
-"Catatan: menonaktifkan ini juga menonaktifkan deteksi nomor cek duplikat — cek fisik yang sama dapat dimasukkan lebih dari sekali."
-
-#: 
 msgid "This event has ended"
 msgstr "Acara ini telah berakhir"
 

@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "ያልተጠበቀ እንግዳ መዝግብ",
   "Registered as a walk-in guest at the kiosk during event: %s": "በክስተቱ ወቅት በኪዮስክ እንደ ያልተጠበቀ እንግዳ ተመዝግቧል፦ %s",
   "Registering...": "በመመዝገብ ላይ...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "በማስቀመጫ መዝገቦች ላይ የቼክ ክፍያዎችን ሲመዘግቡ የቼክ ቁጥር ይጠይቁ።\nማስታወሻ፦ ይህን ማጥፋት የተደገመ የቼክ ቁጥር ማግኘትንም ያጠፋል — ያው ቼክ ከአንድ ጊዜ በላይ ሊገባ ይችላል።",
   "This event has ended": "ይህ ክስተት አብቅቷል",
   "This event has no group assigned, so guests cannot be registered": "ለዚህ ክስተት ቡድን አልተመደበም፣ ስለዚህ እንግዶች ሊመዘገቡ አይችሉም",
   "This event has no start and end time": "ይህ ክስተት የመጀመሪያና የመጨረሻ ሰዓት የለውም",

@@ -22948,12 +22948,6 @@ msgid "Registering..."
 msgstr "Registrazione in corso..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Richiedi un numero di assegno quando registri i pagamenti tramite assegno nei movimenti di deposito.\n"
-"Nota: la disattivazione disabilita anche il rilevamento dei numeri di assegno duplicati — lo stesso assegno fisico può essere inserito più di una volta."
-
-#: 
 msgid "This event has ended"
 msgstr "Questo evento è terminato"
 

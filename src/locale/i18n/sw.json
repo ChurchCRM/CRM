@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "Sajili mgeni asiyetarajiwa",
   "Registered as a walk-in guest at the kiosk during event: %s": "Amesajiliwa kama mgeni asiyetarajiwa kwenye kioski wakati wa tukio: %s",
   "Registering...": "Inasajili...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Hitaji nambari ya hundi wakati wa kurekodi malipo ya hundi kwenye rekodi za amana.\nKumbuka: kuzima hili pia kunazima ugunduzi wa nambari za hundi zilizorudiwa — hundi ile ile halisi inaweza kuingizwa zaidi ya mara moja.",
   "This event has ended": "Tukio hili limekwisha",
   "This event has no group assigned, so guests cannot be registered": "Tukio hili halina kikundi kilichopangiwa, kwa hivyo wageni hawawezi kusajiliwa",
   "This event has no start and end time": "Tukio hili halina muda wa kuanza na kumalizika",

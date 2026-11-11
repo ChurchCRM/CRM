@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "നേരിട്ടെത്തിയ അതിഥിയെ രജിസ്റ്റർ ചെയ്യുക",
   "Registered as a walk-in guest at the kiosk during event: %s": "പരിപാടിക്കിടെ കിയോസ്കിൽ നേരിട്ടെത്തിയ അതിഥിയായി രജിസ്റ്റർ ചെയ്തു: %s",
   "Registering...": "രജിസ്റ്റർ ചെയ്യുന്നു...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "നിക്ഷേപ എൻട്രികളിൽ ചെക്ക് പേയ്മെന്റുകൾ രേഖപ്പെടുത്തുമ്പോൾ ചെക്ക് നമ്പർ ആവശ്യപ്പെടുക.\nശ്രദ്ധിക്കുക: ഇത് പ്രവർത്തനരഹിതമാക്കിയാൽ ആവർത്തിച്ച ചെക്ക് നമ്പർ കണ്ടെത്തലും പ്രവർത്തനരഹിതമാകും — ഒരേ ചെക്ക് ഒന്നിലധികം തവണ നൽകിയേക്കാം.",
   "This event has ended": "ഈ പരിപാടി അവസാനിച്ചു",
   "This event has no group assigned, so guests cannot be registered": "ഈ പരിപാടിക്ക് ഗ്രൂപ്പ് നൽകിയിട്ടില്ല, അതിനാൽ അതിഥികളെ രജിസ്റ്റർ ചെയ്യാനാവില്ല",
   "This event has no start and end time": "ഈ പരിപാടിക്ക് ആരംഭ, അവസാന സമയം ഇല്ല",

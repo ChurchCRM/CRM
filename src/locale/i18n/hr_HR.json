@@ -5626,7 +5626,6 @@
   "Register walk-in guest": "registrirajte gosta",
   "Registered as a walk-in guest at the kiosk during event: %s": "Registriran kao gost na kiosku tijekom dogadaja: %s",
   "Registering...": "Registracija...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Zahtijevajte broj ceka pri zapisivanju cekova u zapise depozita.\nNapomena: onemogucavanjem se ujedno onemogucava otkrivanje duplikata - isti fizicki cek moze biti unesen vise puta.",
   "This event has ended": "Ovaj dogadaj je zavrsio",
   "This event has no group assigned, so guests cannot be registered": "Ovaj događaj nema dodijeljenu grupu pa se gosti ne mogu registrirati",
   "This event has no start and end time": "Ovaj dogadaj nema vremena pocetka i kraja",

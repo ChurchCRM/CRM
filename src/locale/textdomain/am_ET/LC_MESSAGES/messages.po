@@ -22934,12 +22934,6 @@ msgid "Registering..."
 msgstr "በመመዝገብ ላይ..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "በማስቀመጫ መዝገቦች ላይ የቼክ ክፍያዎችን ሲመዘግቡ የቼክ ቁጥር ይጠይቁ።\n"
-"ማስታወሻ፦ ይህን ማጥፋት የተደገመ የቼክ ቁጥር ማግኘትንም ያጠፋል — ያው ቼክ ከአንድ ጊዜ በላይ ሊገባ ይችላል።"
-
-#: 
 msgid "This event has ended"
 msgstr "ይህ ክስተት አብቅቷል"
 

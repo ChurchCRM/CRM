@@ -5626,7 +5626,6 @@
   "Register walk-in guest": "zarejestruj gościa",
   "Registered as a walk-in guest at the kiosk during event: %s": "Zarejestrowany jako gość na kiosku podczas imprezy: %s",
   "Registering...": "Rejestracja...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Wymagaj numeru czeku podczas rejestrowania płatności czekami w zapisach wpłat.\nUwaga: wyłączenie tego również wyłącza wykrywanie zduplikowanych numerów czeku — ten sam czek fizyczny może być wprowadzony więcej niż raz.",
   "This event has ended": "Ta impreza się zakończyła",
   "This event has no group assigned, so guests cannot be registered": "Ta impreza nie ma przypisanej grupy, więc nie można zarejestrować gości",
   "This event has no start and end time": "Ta impreza nie ma czasu rozpoczęcia i zakończenia",

@@ -22893,12 +22893,6 @@ msgid "Registering..."
 msgstr "등록 중..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "예금 항목에 수표 결제를 기록할 때 수표 번호가 필요합니다.\n"
-"참고: 이를 비활성화하면 중복 수표 번호 감지도 비활성화됩니다 — 동일한 물리적 수표가 여러 번 입력될 수 있습니다."
-
-#: 
 msgid "This event has ended"
 msgstr "이 행사가 종료되었습니다"
 

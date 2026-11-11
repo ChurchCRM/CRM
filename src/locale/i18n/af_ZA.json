@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "Registreer inloopgas",
   "Registered as a walk-in guest at the kiosk during event: %s": "Geregistreer as inloopgas by die kiosk tydens gebeurtenis: %s",
   "Registering...": "Registrering tans...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Vereis 'n tjekkie-nommer wanneer tsjekkie-betalings op depôtitems aangeteken word.\nOpmerking: die uitskakeling hiervan skakel ook dubbele tsjekkie-nommerdeteksie uit — dieselfde fisiese tsjek kan meer as een keer ingevoer word.",
   "This event has ended": "Hierdie gebeurtenis het geëindig",
   "This event has no group assigned, so guests cannot be registered": "Hierdie gebeurtenis het geen groep toegewys nie, dus gaste kan nie registreer word nie",
   "This event has no start and end time": "Hierdie gebeurtenis het geen begin- en eindtyd nie",

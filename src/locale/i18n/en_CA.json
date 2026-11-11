@@ -48,6 +48,5 @@
   "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately.": "Number of days users have to enrol in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately.",
   "Uppercase Zip/Postcodes": "Uppercase Postal Codes",
   "Please enter a check number": "Please enter a cheque number",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Require a cheque number when recording cheque payments on deposit entries.\nNote: disabling this also disables duplicate cheque-number detection — the same physical cheque may be entered more than once.",
   "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total.": "Print the selected deposit in full, with cash and cheque totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
 }

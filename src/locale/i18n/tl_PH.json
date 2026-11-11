@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "Magparehistro ng walk-in guest",
   "Registered as a walk-in guest at the kiosk during event: %s": "Nakarehistro bilang walk-in guest sa kiosk sa panahon ng event: %s",
   "Registering...": "Nagpaparehistro...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Kailangan ng check number sa pagrekord ng check payments sa deposit entries.\nPaalala: ang pagsasDisable nito ay nagsasDisable rin ng duplicate check-number detection — ang parehong physical check ay maaaring ilagay ng higit sa isang beses.",
   "This event has ended": "Ang event na ito ay nagtapos na",
   "This event has no group assigned, so guests cannot be registered": "Ang event na ito ay walang group na itinalaga, kaya ang mga bisita ay hindi maaaring magparehistro",
   "This event has no start and end time": "Ang event na ito ay walang start at end time",

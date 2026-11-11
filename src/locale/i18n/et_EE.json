@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "registreerige külalinen",
   "Registered as a walk-in guest at the kiosk during event: %s": "Registreeritud külalisena kioska kaudu ürituse ajal: %s",
   "Registering...": "Registreerimine...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Nõudke kontrollnumbrit deposiidi kirjete kontrolli maksete kajastamisel.\nMärkus: selle keelamine keelustab ka dubleeritud kontrollinumbrite tuvastamise - sama füüsilise kontrolli võib sisestada rohkem kui üks kord.",
   "This event has ended": "See üritus on lõppenud",
   "This event has no group assigned, so guests cannot be registered": "Sellele üritusele ei ole määratud ühtegi rühma, seega külalisi ei saa registreerida",
   "This event has no start and end time": "Sellel ürituse puudub algus- ja lõppaeg",

@@ -405,12 +405,6 @@ msgid "Please enter a check number"
 msgstr "Please enter a cheque number"
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Require a cheque number when recording cheque payments on deposit entries.\n"
-"Note: disabling this also disables duplicate cheque-number detection — the same physical cheque may be entered more than once."
-
-#: 
 msgid "Not authorized to grant this scope"
 msgstr "Not authorised to grant this scope"
 

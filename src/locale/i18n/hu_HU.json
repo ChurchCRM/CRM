@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "vendég regisztrálása",
   "Registered as a walk-in guest at the kiosk during event: %s": "Vendégként regisztrálva a kioskon az esemény során: %s",
   "Registering...": "Regisztráció...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Szükség van ellenőrzési számra a befizetési bejegyzésekbe történő csekk befizetésének rögzítésekor.\nMegjegyzés: ennek letiltása a duplikált csekk szám-detektálást is letiltja - ugyanaz a fizikai csekk több mint egyszer is bevihető.",
   "This event has ended": "Ez az esemény véget ért",
   "This event has no group assigned, so guests cannot be registered": "Ennek az eseménynek nincs csoportja hozzárendelve, ezért nem lehet vendégeket regisztrálni",
   "This event has no start and end time": "Ennek az eseménynek nincs kezdési és befejezési ideje",

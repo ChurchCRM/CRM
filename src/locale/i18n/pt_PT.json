@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "Registar visitante que chega",
   "Registered as a walk-in guest at the kiosk during event: %s": "Registado como visitante que chega no quiosque durante o evento: %s",
   "Registering...": "A registar...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Exigir um número de cheque ao registar pagamentos de cheques em entradas de depósito.\nNota: desabilitar isso também desabilita a detecção de números de cheque duplicados — o mesmo cheque físico pode ser inserido mais de uma vez.",
   "This event has ended": "Este evento terminou",
   "This event has no group assigned, so guests cannot be registered": "Este evento não tem um grupo atribuído, portanto os visitantes não podem ser registados",
   "This event has no start and end time": "Este evento não tem hora de início e término",
@@ -6691,8 +6690,8 @@
     "other": "\"{{name}}\": {{count}} ocorrências criadas"
   },
   "Email sent to {{count}} recipient(s).": {
-    "one": "Email enviado para {{count}} destinatário.",
-    "other": "Email enviado para {{count}} destinatários."
+    "one": "E-mail enviado para {{count}} destinatário.",
+    "other": "E-mail enviado para {{count}} destinatários."
   },
   "No new occurrences. All {{count}} events through {{through}} already have one.": {
     "one": "Nenhuma nova ocorrência. O {{count}} evento até {{through}} já tem uma.",
@@ -6703,8 +6702,8 @@
     "other": "Calendário \"{{name}}\" criado: {{count}} ocorrências"
   },
   "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}": {
-    "one": "Enviando para {{count}} destinatário. Endereços sem registro de pessoa não são incluídos: {{list}}",
-    "other": "Enviando para {{count}} destinatários. Endereços sem registro de pessoa não são incluídos: {{list}}"
+    "one": "A enviar para {{count}} destinatário. Endereços sem registo de pessoa não são incluídos: {{list}}",
+    "other": "A enviar para {{count}} destinatários. Endereços sem registo de pessoa não são incluídos: {{list}}"
   },
   "{{count}} could not be assigned": {
     "one": "{{count}} não pode ser atribuído",
@@ -6719,67 +6718,67 @@
     "other": "{{count}} voluntários atribuídos"
   },
   "{{count}} waiting for your answer": {
-    "one": "{{count}} aguardando sua resposta",
-    "other": "{{count}} aguardando sua resposta"
+    "one": "{{count}} à espera da sua resposta",
+    "other": "{{count}} à espera da sua resposta"
   },
   "{{count}} {{title}} events created. Staff them now?": {
     "one": "{{count}} evento {{title}} criado. Alocar pessoal agora?",
     "other": "{{count}} eventos {{title}} criados. Alocar pessoal agora?"
   },
   "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks.": {
-    "one": "{{names}} alocará pessoal para esses eventos. Suas ocorrências são criadas conforme chegam na próxima {{count}} semana.",
-    "other": "{{names}} alocará pessoal para esses eventos. Suas ocorrências são criadas conforme chegam nas próximas {{count}} semanas."
+    "one": "{{names}} alocará pessoal para esses eventos. As suas ocorrências são criadas conforme chegam na próxima {{count}} semana.",
+    "other": "{{names}} alocará pessoal para esses eventos. As suas ocorrências são criadas conforme chegam nas próximas {{count}} semanas."
   },
   "Delete ({{count}})": {
-    "one": "Eliminar (um)",
+    "one": "Eliminar ({{count}})",
     "other": "Eliminar ({{count}})"
   },
   "Delete events ({{count}})": {
-    "one": "Eliminar um evento",
+    "one": "Eliminar {{count}} evento",
     "other": "Eliminar os eventos ({{count}})"
   },
   "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone.": {
-    "one": "Eliminar uma ocorrência? As designações, as respostas dos voluntários, as substituições e cada lembrete em fila desaparecem com ela. Esta ação não pode ser desfeita.",
+    "one": "Eliminar {{count}} ocorrência? As designações, as respostas dos voluntários, as substituições e cada lembrete em fila desaparecem com ela. Esta ação não pode ser desfeita.",
     "other": "Eliminar {{count}} ocorrências? As designações, as respostas dos voluntários, as substituições e cada lembrete em fila desaparecem com elas. Esta ação não pode ser desfeita."
   },
   "Occurrences are created for events in the next {{count}} weeks (through {{date}}).": {
-    "one": "As ocorrências são criadas para os eventos da próxima semana (até {{date}}).",
+    "one": "As ocorrências são criadas para os eventos de {{count}} semana a partir de agora (até {{date}}).",
     "other": "As ocorrências são criadas para os eventos das próximas {{count}} semanas (até {{date}})."
   },
   "They finish {{count}} minutes after the event ends.": {
-    "one": "Terminam um minuto depois de o evento acabar.",
+    "one": "Terminam {{count}} minuto depois de o evento acabar.",
     "other": "Terminam {{count}} minutos depois de o evento acabar."
   },
   "They finish {{count}} minutes before the event ends.": {
-    "one": "Terminam um minuto antes de o evento acabar.",
+    "one": "Terminam {{count}} minuto antes de o evento acabar.",
     "other": "Terminam {{count}} minutos antes de o evento acabar."
   },
   "Volunteers start {{count}} minutes after the event starts.": {
-    "one": "Os voluntários começam um minuto depois de o evento começar.",
+    "one": "Os voluntários começam {{count}} minuto depois de o evento começar.",
     "other": "Os voluntários começam {{count}} minutos depois de o evento começar."
   },
   "Volunteers start {{count}} minutes before the event starts.": {
-    "one": "Os voluntários começam um minuto antes de o evento começar.",
+    "one": "Os voluntários começam {{count}} minuto antes de o evento começar.",
     "other": "Os voluntários começam {{count}} minutos antes de o evento começar."
   },
   "{{count}} needed": {
-    "one": "Um necessário",
+    "one": "{{count}} necessário",
     "other": "{{count}} necessários"
   },
   "{{count}} occurrences deleted": {
-    "one": "Uma ocorrência eliminada",
+    "one": "{{count}} ocorrência eliminada",
     "other": "{{count}} ocorrências eliminadas"
   },
   "{{failed}} of {{count}} occurrences could not be deleted": {
-    "one": "{{failed}} de uma ocorrência não pôde ser eliminada",
+    "one": "{{failed}} de {{count}} ocorrência não pôde ser eliminada",
     "other": "{{failed}} de {{count}} ocorrências não puderam ser eliminadas"
   },
   "{{name}} ({{count}} upcoming)": {
-    "one": "{{name}} (um futuro)",
+    "one": "{{name}} ({{count}} futuro)",
     "other": "{{name}} ({{count}} futuros)"
   },
   "{{title}} ({{count}} upcoming)": {
-    "one": "{{title}} (um futuro)",
+    "one": "{{title}} ({{count}} futuro)",
     "other": "{{title}} ({{count}} futuros)"
   }
 }

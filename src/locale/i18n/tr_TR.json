@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "misafiri kaydedin",
   "Registered as a walk-in guest at the kiosk during event: %s": "Olay sırasında kioskta yürüme misafiri olarak kaydedildi: %s",
   "Registering...": "Kayıt olunuyor...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Çek ödemelerini mevduat girişlerine kaydederken bir çek numarası gerektirir.\nNot: Bunu devre dışı bırakmak, yinelenen çek numarası algılamayı da devre dışı bırakır - aynı fiziksel çek birden fazla kez girilebilir.",
   "This event has ended": "Bu olay sona erdi",
   "This event has no group assigned, so guests cannot be registered": "Bu olayın atanmış bir grubu yok, bu nedenle misafirler kaydedilemez",
   "This event has no start and end time": "Bu olayın başlangıç ve bitiş zamanı yok",
