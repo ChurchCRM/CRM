@@ -10,8 +10,14 @@ const config = require('../locale-config');
 const files = require('./locale-files');
 
 function readJSON(file, fallback = null) {
-    if (!fs.existsSync(file)) return fallback;
-    return JSON.parse(fs.readFileSync(file, 'utf8'));
+    let text;
+    try {
+        text = fs.readFileSync(file, 'utf8');
+    } catch (err) {
+        if (err.code === 'ENOENT') return fallback;
+        throw err;
+    }
+    return JSON.parse(text);
 }
 
 /** Translation targets from src/locale/locales.json: [{ name, code (batch dir), locale, languageCode, skipAudit, scripts }]. */
@@ -62,9 +68,19 @@ function loadLocale(target, entries) {
         paths: p,
         translations,
         shapes: files.termShapes(entries, forms),
-        poText: fs.existsSync(p.po) ? fs.readFileSync(p.po, 'utf8') : '',
+        poText: readIfPresent(p.po, 'utf8') ?? '',
         forms,
     };
+}
+
+/** File contents, or null when the file does not exist (read once: no exists-then-read race). */
+function readIfPresent(file, encoding) {
+    try {
+        return fs.readFileSync(file, encoding);
+    } catch (err) {
+        if (err.code === 'ENOENT') return null;
+        throw err;
+    }
 }
 
 function jsonText(translations) {
@@ -99,7 +115,7 @@ function writeLocale(ctx, entries, { dryRun = false } = {}) {
     const changes = { json: false, po: false, mo: false, po_added: 0, po_updated: 0, po_removed: 0 };
 
     const nextJson = jsonText(translations);
-    const currentJson = fs.existsSync(p.json) ? fs.readFileSync(p.json, 'utf8') : null;
+    const currentJson = readIfPresent(p.json, 'utf8');
     changes.json = nextJson !== currentJson;
 
     const header = files.poHeader(target.languageCode, ctx.forms.length);
@@ -110,23 +126,30 @@ function writeLocale(ctx, entries, { dryRun = false } = {}) {
     changes.po_removed = po.removed;
 
     const mo = compileMo(po.text);
-    changes.mo = !fs.existsSync(p.mo) || !sameMo(mo, fs.readFileSync(p.mo));
+    const currentMo = readIfPresent(p.mo);
+    changes.mo = currentMo === null || !sameMo(mo, currentMo);
 
     if (!dryRun) {
         if (changes.json) fs.writeFileSync(p.json, nextJson, 'utf8');
-        if (changes.po) {
-            fs.mkdirSync(path.dirname(p.po), { recursive: true });
-            fs.writeFileSync(p.po, po.text, 'utf8');
-        }
+        fs.mkdirSync(path.dirname(p.po), { recursive: true });
+        if (changes.po) fs.writeFileSync(p.po, po.text, 'utf8');
         if (changes.mo) fs.writeFileSync(p.mo, mo);
     }
     return changes;
 }
 
+function readDirIfPresent(dir) {
+    try {
+        return fs.readdirSync(dir);
+    } catch (err) {
+        if (err.code === 'ENOENT') return null;
+        throw err;
+    }
+}
+
 /** Batch files of a locale: [{ file, terms }]. */
 function readBatches(dir) {
-    if (!fs.existsSync(dir)) return [];
-    return fs.readdirSync(dir)
+    return (readDirIfPresent(dir) ?? [])
         .filter((f) => f.endsWith('.json'))
         .sort()
         .map((f) => ({ file: path.join(dir, f), terms: readJSON(path.join(dir, f), {}) }));
@@ -134,9 +157,9 @@ function readBatches(dir) {
 
 function writeBatch(file, terms) {
     if (Object.keys(terms).length === 0) {
-        if (fs.existsSync(file)) fs.unlinkSync(file);
+        fs.rmSync(file, { force: true });
         const dir = path.dirname(file);
-        if (fs.existsSync(dir) && fs.readdirSync(dir).length === 0) fs.rmdirSync(dir);
+        if ((readDirIfPresent(dir) ?? ['keep']).length === 0) fs.rmdirSync(dir);
         return;
     }
     fs.mkdirSync(path.dirname(file), { recursive: true });
