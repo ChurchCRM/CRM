@@ -4125,10 +4125,6 @@ msgid "The property could not be unassigned."
 msgstr "属性无法取消分配。"
 
 #: 
-msgid "Select event"
-msgstr "选择活动"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "电子邮件/报告中姓名前的文字"
 
@@ -4332,10 +4328,6 @@ msgstr "重置你的密码"
 #: 
 msgid "Kiosk Manager"
 msgstr "Kiosk Manager"
-
-#: 
-msgid "Report an issue"
-msgstr "报告问题"
 
 #: 
 msgid "Self Verification"
@@ -4751,16 +4743,8 @@ msgid "User must have Delete Records permission"
 msgstr "用户必须具有删除记录权限"
 
 #: 
-msgid "invalid event type id"
-msgstr "无效的事件类型ID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "无效的日历pinning"
-
-#: 
-msgid "invalid status value"
-msgstr "无效的状态值"
 
 #: 
 msgid "invalid export value"
@@ -5365,10 +5349,6 @@ msgstr "正在应用系统更新..."
 
 #: 
 msgid "Back to Login"
-msgstr "返回登录"
-
-#: 
-msgid "Back to login"
 msgstr "返回登录"
 
 #: 
@@ -8092,10 +8072,6 @@ msgid "City is required."
 msgstr "城市为必填项。"
 
 #: 
-msgid "Clear filter"
-msgstr "清除筛选"
-
-#: 
 msgid "Configuration item not found"
 msgstr "未找到配置项"
 
@@ -8363,10 +8339,6 @@ msgstr "添加人员"
 #: 
 msgid "Add all cart items to a group"
 msgstr "将所有列表项目添加到组"
-
-#: 
-msgid "Add all to Cart"
-msgstr "全部添加到列表"
 
 #: 
 msgid "Add cart items to a family"
@@ -9371,10 +9343,6 @@ msgid "Record why attendees visited your church"
 msgstr "记录来访者来教会的原因"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "从选择列表中移除全部"
-
-#: 
 msgid "Remove from Class"
 msgstr "从班级中移除"
 
@@ -9845,10 +9813,6 @@ msgstr "今年活动"
 #: 
 msgid "Everyone"
 msgstr "所有人"
-
-#: 
-msgid "Failed to delete note"
-msgstr "删除备注失败"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11747,10 +11711,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "范围开始日期必须是有效的 YYYY-MM-DD 格式。"
 
 #: 
-msgid "Range start must be before range end"
-msgstr "范围开始日期必须早于范围结束日期"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "范围开始日期必须早于范围结束日期。"
 
@@ -12699,10 +12659,6 @@ msgid "Failed to install plugin from URL"
 msgstr "从 URL 安装插件失败"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "加载已审核插件列表失败"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "加载已审核插件列表失败。"
 
@@ -12761,10 +12717,6 @@ msgstr "短横线命名格式。必须与 ZIP 文件内的顶层目录名称及 
 #: 
 msgid "Loading approved plugin list…"
 msgstr "正在加载已审核插件列表…"
-
-#: 
-msgid "Loading…"
-msgstr "加载中…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13212,10 +13164,6 @@ msgid "Change Your Locale"
 msgstr "更改您的语言设置"
 
 #: 
-msgid "Change role"
-msgstr "更改角色"
-
-#: 
 msgid "Check Number"
 msgstr "检查号码"
 
@@ -13230,10 +13178,6 @@ msgstr "签到失败，请重试。"
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "签出失败，请重试。"
-
-#: 
-msgid "City is required"
-msgstr "城市是必填项"
 
 #: 
 msgid "Click Save to apply."
@@ -13302,10 +13246,6 @@ msgstr "复制所有数字"
 #: 
 msgid "Copy Members to Group"
 msgstr "将成员复制到组"
-
-#: 
-msgid "Creating Backup..."
-msgstr "正在创建备份..."
 
 #: 
 msgid "Creating..."
@@ -14372,10 +14312,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "您将收到备份码，在失去对应用的访问权限时可以使用"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "您的购物车是空的"
-
-#: 
 msgid "Your account is now protected"
 msgstr "您的账户现已受到保护"
 
@@ -14394,10 +14330,6 @@ msgstr "您的浏览器语言偏好与您的ChurchCRM语言设置不同"
 #: 
 msgid "Your database already contains data"
 msgstr "您的数据库已包含数据"
-
-#: 
-msgid "Zip code is required"
-msgstr "邮政编码是必填项"
 
 #: 
 msgid "added"
@@ -14817,10 +14749,6 @@ msgstr "您没有权限为此家庭添加备注。"
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "您没有权限为此人添加备注。"
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "您没有权限编辑此备注"
 
 #: 
 msgid "Account locked"
@@ -15861,10 +15789,6 @@ msgid "Select a person"
 msgstr "选择一位成员"
 
 #: 
-msgid "Select role"
-msgstr "选择角色"
-
-#: 
 msgid "Select type (optional)"
 msgstr "选择类型（可选）"
 
@@ -16019,10 +15943,6 @@ msgstr "您确定要永久删除此奉献记录吗？"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "至少需要一个基金分配"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "至少一个基金的金额不能为零"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17071,10 +16991,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "正在创建并上传备份，这可能需要几分钟…"
 
 #: 
-msgid "Database reset failed."
-msgstr "数据库重置失败。"
-
-#: 
 msgid "Deceased"
 msgstr "已故"
 
@@ -17271,10 +17187,6 @@ msgid "Log settings saved"
 msgstr "日志设置已保存"
 
 #: 
-msgid "Login Name is Required"
-msgstr "登录名为必填项"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "已将此人标记为启用"
 
@@ -17399,10 +17311,6 @@ msgid "Sending..."
 msgstr "正在发送…"
 
 #: 
-msgid "Sending…"
-msgstr "正在发送…"
-
-#: 
 msgid "Settings reset"
 msgstr "设置已重置"
 
@@ -17473,10 +17381,6 @@ msgstr "即将到来"
 #: 
 msgid "View active only"
 msgstr "仅查看启用"
-
-#: 
-msgid "View all"
-msgstr "查看全部"
 
 #: 
 msgid "View all (including inactive)"
@@ -18253,10 +18157,6 @@ msgstr "小组成员名单和主日学班级报告"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "您的财政年度从 %s 开始。"
-
-#: 
-msgid "An error occurred"
-msgstr "发生错误"
 
 #: 
 msgid "Approve"
@@ -19396,10 +19296,6 @@ msgid "Each staffing need must name a position"
 msgstr "每项人员需求都必须指定一个职位"
 
 #: 
-msgid "Edit event"
-msgstr "编辑活动"
-
-#: 
 msgid "Edit ministry"
 msgstr "编辑事工"
 
@@ -19484,10 +19380,6 @@ msgstr "已向 {{count}} 个收件人发送电子邮件。"
 #: 
 msgid "Emails"
 msgstr "电子邮件"
-
-#: 
-msgid "End time"
-msgstr "结束时间"
 
 #: 
 msgid "Enter counts"
@@ -20766,10 +20658,6 @@ msgid "SMTP test"
 msgstr "SMTP 测试"
 
 #: 
-msgid "Save changes"
-msgstr "保存更改"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "已保存：此事工不再征求帮助"
 
@@ -21052,10 +20940,6 @@ msgstr "人员需求已保存"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "请先创建一个事工，然后添加在其中服事的团队和职位。"
-
-#: 
-msgid "Start time"
-msgstr "开始时间"
 
 #: 
 msgid "Start typing a name"
@@ -22096,16 +21980,8 @@ msgid "Validation"
 msgstr "验证"
 
 #: 
-msgid "View event"
-msgstr "查看活动"
-
-#: 
 msgid "View my schedule"
 msgstr "查看我的排班"
-
-#: 
-msgid "View person"
-msgstr "查看人员"
 
 #: 
 msgid "View the event"

@@ -4035,10 +4035,6 @@ msgid "The property could not be unassigned."
 msgstr "プロパティの割り当てを解除できませんでした。"
 
 #: 
-msgid "Select event"
-msgstr "イベントを選択"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "メール/レポート内の名前の前のテキスト"
 
@@ -4241,10 +4237,6 @@ msgstr "パスワードをリセット"
 #: 
 msgid "Kiosk Manager"
 msgstr "キオスクマネージャー"
-
-#: 
-msgid "Report an issue"
-msgstr "問題を報告"
 
 #: 
 msgid "Self Verification"
@@ -4656,16 +4648,8 @@ msgid "User must have Delete Records permission"
 msgstr "ユーザーにはレコード削除権限が必要です"
 
 #: 
-msgid "invalid event type id"
-msgstr "無効なイベントタイプID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "無効なカレンダーピニング"
-
-#: 
-msgid "invalid status value"
-msgstr "無効なステータス値"
 
 #: 
 msgid "invalid export value"
@@ -5266,10 +5250,6 @@ msgstr "システム更新を適用中..."
 
 #: 
 msgid "Back to Login"
-msgstr "ログインに戻る"
-
-#: 
-msgid "Back to login"
 msgstr "ログインに戻る"
 
 #: 
@@ -7993,10 +7973,6 @@ msgid "City is required."
 msgstr "市区町村は必須です。"
 
 #: 
-msgid "Clear filter"
-msgstr "フィルターをクリア"
-
-#: 
 msgid "Configuration item not found"
 msgstr "設定項目が見つかりません"
 
@@ -8264,10 +8240,6 @@ msgstr "個人を追加"
 #: 
 msgid "Add all cart items to a group"
 msgstr "リストのすべての項目をグループに追加"
-
-#: 
-msgid "Add all to Cart"
-msgstr "すべてをリストに追加"
 
 #: 
 msgid "Add cart items to a family"
@@ -9272,10 +9244,6 @@ msgid "Record why attendees visited your church"
 msgstr "来会者が教会を訪問した理由を記録"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "リストからすべて削除"
-
-#: 
 msgid "Remove from Class"
 msgstr "クラスから削除"
 
@@ -9746,10 +9714,6 @@ msgstr "今年のイベント"
 #: 
 msgid "Everyone"
 msgstr "全員"
-
-#: 
-msgid "Failed to delete note"
-msgstr "メモの削除に失敗しました"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11648,10 +11612,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "開始日は有効な YYYY-MM-DD 形式の日付でなければなりません。"
 
 #: 
-msgid "Range start must be before range end"
-msgstr "開始日は終了日より前でなければなりません"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "開始日は終了日より前でなければなりません。"
 
@@ -12600,10 +12560,6 @@ msgid "Failed to install plugin from URL"
 msgstr "URLからのプラグインインストールに失敗しました"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "承認済みプラグインリストの読み込みに失敗しました"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "承認済みプラグインリストの読み込みに失敗しました。"
 
@@ -12662,10 +12618,6 @@ msgstr "ケバブケース。zip内のトップレベルディレクトリ名お
 #: 
 msgid "Loading approved plugin list…"
 msgstr "承認済みプラグインリストを読み込み中…"
-
-#: 
-msgid "Loading…"
-msgstr "読み込み中…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13113,10 +13065,6 @@ msgid "Change Your Locale"
 msgstr "ロケールを変更する"
 
 #: 
-msgid "Change role"
-msgstr "ロールを変更"
-
-#: 
 msgid "Check Number"
 msgstr "小切手番号"
 
@@ -13131,10 +13079,6 @@ msgstr "チェックインに失敗しました。もう一度お試しくださ
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "チェックアウトに失敗しました。もう一度お試しください。"
-
-#: 
-msgid "City is required"
-msgstr "市区町村が必要です"
 
 #: 
 msgid "Click Save to apply."
@@ -13203,10 +13147,6 @@ msgstr "すべての番号をコピー"
 #: 
 msgid "Copy Members to Group"
 msgstr "メンバーをグループにコピー"
-
-#: 
-msgid "Creating Backup..."
-msgstr "バックアップ作成中..."
 
 #: 
 msgid "Creating..."
@@ -14273,10 +14213,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "アプリにアクセスできなくなった場合に使用できるバックアップコードが発行されます"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "カートは空です"
-
-#: 
 msgid "Your account is now protected"
 msgstr "アカウントが保護されました"
 
@@ -14295,10 +14231,6 @@ msgstr "ブラウザの言語設定が ChurchCRM のロケールと異なりま�
 #: 
 msgid "Your database already contains data"
 msgstr "データベースにはすでにデータが含まれています"
-
-#: 
-msgid "Zip code is required"
-msgstr "郵便番号は必須です"
 
 #: 
 msgid "added"
@@ -14718,10 +14650,6 @@ msgstr "この家族へのメモを追加する権限がありません。"
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "この人物へのメモを追加する権限がありません。"
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "このメモを編集する権限がありません"
 
 #: 
 msgid "Account locked"
@@ -15762,10 +15690,6 @@ msgid "Select a person"
 msgstr "人物を選択"
 
 #: 
-msgid "Select role"
-msgstr "役割を選択"
-
-#: 
 msgid "Select type (optional)"
 msgstr "種類を選択（任意）"
 
@@ -15920,10 +15844,6 @@ msgstr "この献金記録を完全に削除してもよろしいですか？"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "少なくとも1つのファンド割り当てが必要です"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "少なくとも1つのファンドにゼロ以外の金額が必要です"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16972,10 +16892,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "バックアップを作成してアップロードしています。数分かかる場合があります..."
 
 #: 
-msgid "Database reset failed."
-msgstr "データベースのリセットに失敗しました。"
-
-#: 
 msgid "Deceased"
 msgstr "故人"
 
@@ -17172,10 +17088,6 @@ msgid "Log settings saved"
 msgstr "ログ設定が保存されました"
 
 #: 
-msgid "Login Name is Required"
-msgstr "ログイン名は必須です"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "この人物を有効としてマークしました"
 
@@ -17300,10 +17212,6 @@ msgid "Sending..."
 msgstr "送信中..."
 
 #: 
-msgid "Sending…"
-msgstr "送信中…"
-
-#: 
 msgid "Settings reset"
 msgstr "設定をリセットしました"
 
@@ -17374,10 +17282,6 @@ msgstr "今後の予定"
 #: 
 msgid "View active only"
 msgstr "有効のみ表示"
-
-#: 
-msgid "View all"
-msgstr "すべて表示"
 
 #: 
 msgid "View all (including inactive)"
@@ -18154,10 +18058,6 @@ msgstr "グループの会員名簿と教会学校クラスのレポート"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "会計年度は %s に始まります。"
-
-#: 
-msgid "An error occurred"
-msgstr "エラーが発生しました"
 
 #: 
 msgid "Approve"
@@ -19297,10 +19197,6 @@ msgid "Each staffing need must name a position"
 msgstr "各必要人員には役割を指定する必要があります"
 
 #: 
-msgid "Edit event"
-msgstr "イベントを編集"
-
-#: 
 msgid "Edit ministry"
 msgstr "ミニストリーを編集"
 
@@ -19385,10 +19281,6 @@ msgstr "{{count}} 人の受信者にメール送信。"
 #: 
 msgid "Emails"
 msgstr "メール"
-
-#: 
-msgid "End time"
-msgstr "終了時刻"
 
 #: 
 msgid "Enter counts"
@@ -20667,10 +20559,6 @@ msgid "SMTP test"
 msgstr "SMTPテスト"
 
 #: 
-msgid "Save changes"
-msgstr "変更内容を保存"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "保存しました。このミニストリーは奉仕者を募集しなくなりました"
 
@@ -20953,10 +20841,6 @@ msgstr "必要人員を保存しました"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "まずミニストリーを作成し、そこで奉仕するチームと役割を追加してください。"
-
-#: 
-msgid "Start time"
-msgstr "開始時刻"
 
 #: 
 msgid "Start typing a name"
@@ -21997,16 +21881,8 @@ msgid "Validation"
 msgstr "検証"
 
 #: 
-msgid "View event"
-msgstr "イベントを表示"
-
-#: 
 msgid "View my schedule"
 msgstr "自分のスケジュールを見る"
-
-#: 
-msgid "View person"
-msgstr "人物を表示"
 
 #: 
 msgid "View the event"

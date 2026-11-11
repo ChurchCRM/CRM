@@ -4060,10 +4060,6 @@ msgid "The property could not be unassigned."
 msgstr "الخاصية لا يمكن أن يكون غير معين."
 
 #: 
-msgid "Select event"
-msgstr "حدد الحدث"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "النص قبل الاسم في رسائل البريد الإلكتروني / تقارير"
 
@@ -4267,10 +4263,6 @@ msgstr "اعد ضبط كلمه السر"
 #: 
 msgid "Kiosk Manager"
 msgstr "مدير كشك"
-
-#: 
-msgid "Report an issue"
-msgstr "بلغ عن خطأ"
 
 #: 
 msgid "Self Verification"
@@ -4683,16 +4675,8 @@ msgid "User must have Delete Records permission"
 msgstr "يجب أن يكون المستخدم إذن السجلات حذف"
 
 #: 
-msgid "invalid event type id"
-msgstr "نوع الحدث غير صالح معرف"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "التدبيس تقويم غير صالح"
-
-#: 
-msgid "invalid status value"
-msgstr "قيمة حالة غير صالحة"
 
 #: 
 msgid "invalid export value"
@@ -5305,10 +5289,6 @@ msgstr "جاري تطبيق تحديث النظام..."
 
 #: 
 msgid "Back to Login"
-msgstr "العودة إلى تسجيل الدخول"
-
-#: 
-msgid "Back to login"
 msgstr "العودة إلى تسجيل الدخول"
 
 #: 
@@ -8062,10 +8042,6 @@ msgid "City is required."
 msgstr "المدينة مطلوبة."
 
 #: 
-msgid "Clear filter"
-msgstr "مسح الفلتر"
-
-#: 
 msgid "Configuration item not found"
 msgstr "عنصر التكوين غير موجود"
 
@@ -8338,10 +8314,6 @@ msgstr "أضف شخصًا"
 #: 
 msgid "Add all cart items to a group"
 msgstr "أضف جميع العناصر المحددة إلى مجموعة"
-
-#: 
-msgid "Add all to Cart"
-msgstr "أضف الكل"
 
 #: 
 msgid "Add cart items to a family"
@@ -9346,10 +9318,6 @@ msgid "Record why attendees visited your church"
 msgstr "سجل لماذا زار الحاضرون كنيستك"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "إزالة الكل من الاختيار"
-
-#: 
 msgid "Remove from Class"
 msgstr "إزالة من الفئة"
 
@@ -9820,10 +9788,6 @@ msgstr "الأحداث هذا العام"
 #: 
 msgid "Everyone"
 msgstr "الجميع"
-
-#: 
-msgid "Failed to delete note"
-msgstr "فشل حذف الملاحظة"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11727,10 +11691,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "يجب أن يكون بدء النطاق تاريخاً صالحاً بصيغة YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "يجب أن يكون بدء النطاق قبل نهاية النطاق"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "يجب أن يكون بدء النطاق قبل نهاية النطاق."
 
@@ -12679,10 +12639,6 @@ msgid "Failed to install plugin from URL"
 msgstr "فشل تثبيت الإضافة من الرابط"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "فشل تحميل قائمة الإضافات المعتمدة"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "فشل تحميل قائمة الإضافات المعتمدة."
 
@@ -12741,10 +12697,6 @@ msgstr "صيغة kebab-case. يجب أن يتطابق مع اسم المجلد �
 #: 
 msgid "Loading approved plugin list…"
 msgstr "جارٍ تحميل قائمة الإضافات المعتمدة..."
-
-#: 
-msgid "Loading…"
-msgstr "جارٍ التحميل..."
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13192,10 +13144,6 @@ msgid "Change Your Locale"
 msgstr "تغيير اللغة والمنطقة"
 
 #: 
-msgid "Change role"
-msgstr "تغير الدور"
-
-#: 
 msgid "Check Number"
 msgstr "رقم الشيك"
 
@@ -13210,10 +13158,6 @@ msgstr "فشل تسجيل الحضور. يرجى المحاولة مرة أخر�
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "فشل تسجيل الخروج. يرجى المحاولة مرة أخرى."
-
-#: 
-msgid "City is required"
-msgstr "المدينة مطلوبة"
 
 #: 
 msgid "Click Save to apply."
@@ -13282,10 +13226,6 @@ msgstr "انسخ جميع الأرقام"
 #: 
 msgid "Copy Members to Group"
 msgstr "نسخ الأعضاء إلى مجموعة"
-
-#: 
-msgid "Creating Backup..."
-msgstr "جاري إنشاء النسخة الاحتياطية..."
 
 #: 
 msgid "Creating..."
@@ -14352,10 +14292,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "ستتلقى رموز احتياطية يمكن استخدامها إذا فقدت الوصول إلى تطبيقك"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "عربة التسوق فارغة"
-
-#: 
 msgid "Your account is now protected"
 msgstr "حسابك محمي الآن"
 
@@ -14374,10 +14310,6 @@ msgstr "تفضيل لغة متصفحك يختلف عن إعدادات اللغة
 #: 
 msgid "Your database already contains data"
 msgstr "قاعدة بياناتك تحتوي على بيانات بالفعل"
-
-#: 
-msgid "Zip code is required"
-msgstr "الرمز البريدي مطلوب"
 
 #: 
 msgid "added"
@@ -14802,10 +14734,6 @@ msgstr "ليس لديك صلاحية إضافة ملاحظة لهذه العائ
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "ليس لديك صلاحية إضافة ملاحظة لهذا الشخص."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "ليس لديك صلاحية تعديل هذه الملاحظة"
 
 #: 
 msgid "Account locked"
@@ -15856,10 +15784,6 @@ msgid "Select a person"
 msgstr "اختر شخصاً"
 
 #: 
-msgid "Select role"
-msgstr "اختر الدور"
-
-#: 
 msgid "Select type (optional)"
 msgstr "اختر النوع (اختياري)"
 
@@ -16014,10 +15938,6 @@ msgstr "هل أنت متأكد أنك تريد حذف سجل الدفعة هذا
 #: 
 msgid "At least one fund allocation is required"
 msgstr "مطلوب تخصيص صندوق واحد على الأقل"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "يجب أن يكون لصندوق واحد على الأقل مبلغ غير صفري"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17076,10 +16996,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "جارٍ إنشاء ورفع النسخة الاحتياطية. قد يستغرق هذا عدة دقائق..."
 
 #: 
-msgid "Database reset failed."
-msgstr "فشلت إعادة تعيين قاعدة البيانات."
-
-#: 
 msgid "Deceased"
 msgstr "متوفى"
 
@@ -17276,10 +17192,6 @@ msgid "Log settings saved"
 msgstr "تم حفظ إعدادات السجل"
 
 #: 
-msgid "Login Name is Required"
-msgstr "اسم تسجيل الدخول مطلوب"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "تم تحديد الشخص كنشط"
 
@@ -17404,10 +17316,6 @@ msgid "Sending..."
 msgstr "جارٍ الإرسال..."
 
 #: 
-msgid "Sending…"
-msgstr "جارٍ الإرسال…"
-
-#: 
 msgid "Settings reset"
 msgstr "تمت إعادة تعيين الإعدادات"
 
@@ -17478,10 +17386,6 @@ msgstr "القادمة"
 #: 
 msgid "View active only"
 msgstr "عرض النشط فقط"
-
-#: 
-msgid "View all"
-msgstr "عرض الكل"
 
 #: 
 msgid "View all (including inactive)"
@@ -18258,10 +18162,6 @@ msgstr "قوائم عضوية الخدمات وتقارير فصول مدارس 
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "تبدأ سنتك المالية في %s."
-
-#: 
-msgid "An error occurred"
-msgstr "حدث خطأ"
 
 #: 
 msgid "Approve"
@@ -19436,10 +19336,6 @@ msgid "Each staffing need must name a position"
 msgstr "يجب أن تحدد كل حاجة تكليف مهمة"
 
 #: 
-msgid "Edit event"
-msgstr "تعديل الحدث"
-
-#: 
 msgid "Edit ministry"
 msgstr "تعديل الخدمة"
 
@@ -19524,10 +19420,6 @@ msgstr "أُرسل البريد الإلكتروني إلى {{count}} مستلم
 #: 
 msgid "Emails"
 msgstr "رسائل البريد"
-
-#: 
-msgid "End time"
-msgstr "وقت الانتهاء"
 
 #: 
 msgid "Enter counts"
@@ -20816,10 +20708,6 @@ msgid "SMTP test"
 msgstr "اختبار SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "حفظ التغييرات"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "تم الحفظ — لم تعد هذه الخدمة تطلب مساعدة"
 
@@ -21102,10 +20990,6 @@ msgstr "تم حفظ احتياجات التكليف"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "ابدأ بإنشاء خدمة، ثم أضف الفرق والمهام التي تخدم فيها."
-
-#: 
-msgid "Start time"
-msgstr "وقت البدء"
 
 #: 
 msgid "Start typing a name"
@@ -22156,16 +22040,8 @@ msgid "Validation"
 msgstr "التحقق"
 
 #: 
-msgid "View event"
-msgstr "عرض الحدث"
-
-#: 
 msgid "View my schedule"
 msgstr "عرض جدولي"
-
-#: 
-msgid "View person"
-msgstr "عرض الشخص"
 
 #: 
 msgid "View the event"

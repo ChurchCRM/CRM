@@ -4035,10 +4035,6 @@ msgid "The property could not be unassigned."
 msgstr "Hindi maalis ang katangian."
 
 #: 
-msgid "Select event"
-msgstr "Pumili ng kaganapan"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Teksto bago ang pangalan sa mga email/ulat"
 
@@ -4241,10 +4237,6 @@ msgstr "I-reset ang iyong password"
 #: 
 msgid "Kiosk Manager"
 msgstr "Manager ng Kiosk"
-
-#: 
-msgid "Report an issue"
-msgstr "Mag-ulat ng isyu"
 
 #: 
 msgid "Self Verification"
@@ -4656,16 +4648,8 @@ msgid "User must have Delete Records permission"
 msgstr "Ang user ay dapat may pahintulot sa Pag-delete ng mga Rekord"
 
 #: 
-msgid "invalid event type id"
-msgstr "hindi wastong event type id"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "hindi wastong calendar pinning"
-
-#: 
-msgid "invalid status value"
-msgstr "hindi wastong halaga ng katayuan"
 
 #: 
 msgid "invalid export value"
@@ -5269,10 +5253,6 @@ msgstr "Inilalapat ang Update ng Sistema..."
 #: 
 msgid "Back to Login"
 msgstr "Bumalik sa Login"
-
-#: 
-msgid "Back to login"
-msgstr "Bumalik sa login"
 
 #: 
 msgid "Complete"
@@ -8001,10 +7981,6 @@ msgid "City is required."
 msgstr "Ang lungsod ay kinakailangan."
 
 #: 
-msgid "Clear filter"
-msgstr "Linisin ang filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Hindi nahanap ang item ng konfigurasyong"
 
@@ -8273,10 +8249,6 @@ msgstr "Magdagdag ng Tao"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Idagdag ang lahat ng item ng cart sa isang grupo"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Idagdag ang Lahat sa Cart"
 
 #: 
 msgid "Add cart items to a family"
@@ -9281,10 +9253,6 @@ msgid "Record why attendees visited your church"
 msgstr "Itala kung bakit dumalo ang mga kalahok sa iyong simbahan"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Alisin lahat mula sa Cart"
-
-#: 
 msgid "Remove from Class"
 msgstr "Alisin mula sa Klase"
 
@@ -9755,10 +9723,6 @@ msgstr "Mga Kaganapan Ngayong Taon"
 #: 
 msgid "Everyone"
 msgstr "Lahat"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Nabigo ang pagbubura ng tala"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11658,10 +11622,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Ang simula ng saklaw ay dapat na isang wastong petsa na YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Ang simula ng saklaw ay dapat bago ang katapusan ng saklaw"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Ang simula ng saklaw ay dapat bago ang katapusan ng saklaw."
 
@@ -12610,10 +12570,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Nabigo ang pag-install ng plugin mula sa URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Nabigo ang pag-load ng listahan ng naaprubahang plugin"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Nabigo ang pag-load ng listahan ng naaprubahang plugin."
 
@@ -12672,10 +12628,6 @@ msgstr "Kebab-case. Dapat tumugma sa pangalan ng nangungunang direktoryo sa loob
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Nino-load ang listahan ng naaprubahang plugin…"
-
-#: 
-msgid "Loading…"
-msgstr "Nino-load…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13123,10 +13075,6 @@ msgid "Change Your Locale"
 msgstr "Baguhin ang Iyong Locale"
 
 #: 
-msgid "Change role"
-msgstr "Baguhin ang papel"
-
-#: 
 msgid "Check Number"
 msgstr "Numero ng Tseke"
 
@@ -13141,10 +13089,6 @@ msgstr "Nabigo ang check-in. Subukan muli."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Nabigo ang check-out. Subukan muli."
-
-#: 
-msgid "City is required"
-msgstr "Ang lungsod ay kinakailangan"
 
 #: 
 msgid "Click Save to apply."
@@ -13213,10 +13157,6 @@ msgstr "Kopyahin ang Lahat ng Numero"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopyahin ang mga Miyembro sa Grupo"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Lumilikha ng Backup..."
 
 #: 
 msgid "Creating..."
@@ -14283,10 +14223,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Makakatanggap ka ng mga backup code na maaaring gamitin kung mawalan ka ng access sa iyong app"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Ang Iyong Cart ay Walang Laman"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Ang iyong account ay protektado na ngayon"
 
@@ -14305,10 +14241,6 @@ msgstr "Ang kagustuhang wika ng iyong browser ay naiiba mula sa iyong ChurchCRM 
 #: 
 msgid "Your database already contains data"
 msgstr "Ang iyong database ay naglalaman na ng datos"
-
-#: 
-msgid "Zip code is required"
-msgstr "Ang zip code ay kinakailangan"
 
 #: 
 msgid "added"
@@ -14729,10 +14661,6 @@ msgstr "Wala kang pahintulot na magdagdag ng tala para sa pamilyang ito."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Wala kang pahintulot na magdagdag ng tala para sa taong ito."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Wala kang pahintulot na i-edit ang talang ito"
 
 #: 
 msgid "Account locked"
@@ -15775,10 +15703,6 @@ msgid "Select a person"
 msgstr "Pumili ng tao"
 
 #: 
-msgid "Select role"
-msgstr "Pumili ng papel"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Pumili ng uri (opsyonal)"
 
@@ -15933,10 +15857,6 @@ msgstr "Sigurado ka bang gusto mong permanenteng burahin ang rekord ng bayad na 
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Kailangan ng hindi bababa sa isang paglaan ng pondo"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Hindi bababa sa isang pondo ang dapat may halagang hindi zero"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16987,10 +16907,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Gumagawa at nag-a-upload ng backup. Maaaring tumagal ito ng ilang minuto..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Nabigo ang pag-reset ng database."
-
-#: 
 msgid "Deceased"
 msgstr "Yumao"
 
@@ -17187,10 +17103,6 @@ msgid "Log settings saved"
 msgstr "Na-save ang mga setting ng log"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Kailangan ang Login Name"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Minarkahan ang Tao bilang Aktibo"
 
@@ -17315,10 +17227,6 @@ msgid "Sending..."
 msgstr "Ipinapadala..."
 
 #: 
-msgid "Sending…"
-msgstr "Ipinapadala…"
-
-#: 
 msgid "Settings reset"
 msgstr "Na-reset ang mga setting"
 
@@ -17389,10 +17297,6 @@ msgstr "Paparating"
 #: 
 msgid "View active only"
 msgstr "Tingnan lang ang aktibo"
-
-#: 
-msgid "View all"
-msgstr "Tingnan Lahat"
 
 #: 
 msgid "View all (including inactive)"
@@ -18169,10 +18073,6 @@ msgstr "Mga listahan ng miyembro ng grupo at mga ulat ng klase sa Sunday School"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Magsisimula ang fiscal year mo sa %s."
-
-#: 
-msgid "An error occurred"
-msgstr "May naganap na error"
 
 #: 
 msgid "Approve"
@@ -19319,10 +19219,6 @@ msgid "Each staffing need must name a position"
 msgstr "Dapat magpangalan ng posisyon ang bawat kailangang tauhan"
 
 #: 
-msgid "Edit event"
-msgstr "I-edit ang Kaganapan"
-
-#: 
 msgid "Edit ministry"
 msgstr "Baguhin ang ministeryo"
 
@@ -19407,10 +19303,6 @@ msgstr "Ipinadala ang email sa {{count}} recipients."
 #: 
 msgid "Emails"
 msgstr "Mga Email"
-
-#: 
-msgid "End time"
-msgstr "Oras ng Pagtatapos"
 
 #: 
 msgid "Enter counts"
@@ -20691,10 +20583,6 @@ msgid "SMTP test"
 msgstr "SMTP test"
 
 #: 
-msgid "Save changes"
-msgstr "I-save ang mga Pagbabago"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Na-save — hindi na humihingi ng tulong ang ministeryong ito"
 
@@ -20977,10 +20865,6 @@ msgstr "Na-save ang mga kailangang tauhan"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Magsimula sa paggawa ng ministeryo, saka idagdag ang mga pangkat at posisyong naglilingkod dito."
-
-#: 
-msgid "Start time"
-msgstr "Oras ng Simula"
 
 #: 
 msgid "Start typing a name"
@@ -22023,16 +21907,8 @@ msgid "Validation"
 msgstr "Pagpapatunay"
 
 #: 
-msgid "View event"
-msgstr "Tingnan ang Kaganapan"
-
-#: 
 msgid "View my schedule"
 msgstr "Tingnan ang iskedyul ko"
-
-#: 
-msgid "View person"
-msgstr "Tingnan ang Tao"
 
 #: 
 msgid "View the event"

@@ -4094,10 +4094,6 @@ msgid "The property could not be unassigned."
 msgstr "A tulajdonság hozzárendelését nem sikerült törölni."
 
 #: 
-msgid "Select event"
-msgstr "Válasszon eseményt"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Név előtti szöveg e-mailekben/jelentésekben"
 
@@ -4300,10 +4296,6 @@ msgstr "Állítsa vissza jelszavát"
 #: 
 msgid "Kiosk Manager"
 msgstr "Kioszk kezelő"
-
-#: 
-msgid "Report an issue"
-msgstr "Hiba bejelentése"
 
 #: 
 msgid "Self Verification"
@@ -4715,16 +4707,8 @@ msgid "User must have Delete Records permission"
 msgstr "A felhasználónak Rekordok törlése engedéllyel kell rendelkeznie"
 
 #: 
-msgid "invalid event type id"
-msgstr "érvénytelen eseménytípus azonosítója"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "érvénytelen naptár rögzítés"
-
-#: 
-msgid "invalid status value"
-msgstr "érvénytelen státusz értéke"
 
 #: 
 msgid "invalid export value"
@@ -5327,10 +5311,6 @@ msgstr "Rendszerfrissítés alkalmazása..."
 
 #: 
 msgid "Back to Login"
-msgstr "Vissza a bejelentkezéshez"
-
-#: 
-msgid "Back to login"
 msgstr "Vissza a bejelentkezéshez"
 
 #: 
@@ -8060,10 +8040,6 @@ msgid "City is required."
 msgstr "A város megadása kötelező."
 
 #: 
-msgid "Clear filter"
-msgstr "Szűrő törlése"
-
-#: 
 msgid "Configuration item not found"
 msgstr "A konfigurációs elem nem található"
 
@@ -8332,10 +8308,6 @@ msgstr "Személy hozzáadása"
 #: 
 msgid "Add all cart items to a group"
 msgstr "A lista összes elemének hozzáadása egy csoporthoz"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Összes hozzáadása a listához"
 
 #: 
 msgid "Add cart items to a family"
@@ -9340,10 +9312,6 @@ msgid "Record why attendees visited your church"
 msgstr "Rögzítse, miért látogattak el a vendégek a gyülekezetbe"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Összes eltávolítása a listából"
-
-#: 
 msgid "Remove from Class"
 msgstr "Eltávolítás az osztályból"
 
@@ -9814,10 +9782,6 @@ msgstr "Idei események"
 #: 
 msgid "Everyone"
 msgstr "Mindenki"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Nem sikerült a megjegyzés törlése"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11717,10 +11681,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "A tartomány kezdete érvényes ÉÉÉÉ-HH-NN formátumú dátum kell legyen."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "A tartomány kezdete a vége előtt kell legyen"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "A tartomány kezdete a vége előtt kell legyen."
 
@@ -12669,10 +12629,6 @@ msgid "Failed to install plugin from URL"
 msgstr "A beépülő modul URL-ről való telepítése sikertelen"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "A jóváhagyott beépülő modulok listájának betöltése sikertelen"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "A jóváhagyott beépülő modulok listájának betöltése sikertelen."
 
@@ -12731,10 +12687,6 @@ msgstr "Kötőjeles formátum. Egyeznie kell a zip fájlon belüli legfelső szi
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Jóváhagyott beépülő modulok listájának betöltése…"
-
-#: 
-msgid "Loading…"
-msgstr "Betöltés…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13182,10 +13134,6 @@ msgid "Change Your Locale"
 msgstr "Nyelvi beállítás módosítása"
 
 #: 
-msgid "Change role"
-msgstr "Szerep módosítása"
-
-#: 
 msgid "Check Number"
 msgstr "Csekkszám"
 
@@ -13200,10 +13148,6 @@ msgstr "A bejelentkezés sikertelen. Kérjük, próbálja újra."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "A kijelentkezés sikertelen. Kérjük, próbálja újra."
-
-#: 
-msgid "City is required"
-msgstr "A város szükséges"
 
 #: 
 msgid "Click Save to apply."
@@ -13272,10 +13216,6 @@ msgstr "Összes szám másolása"
 #: 
 msgid "Copy Members to Group"
 msgstr "Tagok másolása csoportba"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Biztonsági mentés készítése..."
 
 #: 
 msgid "Creating..."
@@ -14342,10 +14282,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Biztonsági mentési kódokat kap, amelyeket akkor használhat, ha elveszíti hozzáférését az alkalmazáshoz"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "A kosara üres"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Fiókja mostantól védett"
 
@@ -14364,10 +14300,6 @@ msgstr "A böngésző nyelvi beállítása eltér a ChurchCRM területi beállí
 #: 
 msgid "Your database already contains data"
 msgstr "Az adatbázis már tartalmaz adatokat"
-
-#: 
-msgid "Zip code is required"
-msgstr "Az irányítószám szükséges"
 
 #: 
 msgid "added"
@@ -14788,10 +14720,6 @@ msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a családhoz."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a személyhez."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Nincs jogosultsága ennek a megjegyzésnek a szerkesztéséhez"
 
 #: 
 msgid "Account locked"
@@ -15834,10 +15762,6 @@ msgid "Select a person"
 msgstr "Személy kiválasztása"
 
 #: 
-msgid "Select role"
-msgstr "Szerepkör kiválasztása"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Típus kiválasztása (opcionális)"
 
@@ -15992,10 +15916,6 @@ msgstr "Biztosan véglegesen törölni szeretné ezt az adomány-rekordot?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Legalább egy alaphoz való hozzárendelés szükséges"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Legalább egy alapnak nullától eltérő összeggel kell rendelkeznie"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17046,10 +16966,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Biztonsági mentés készítése és feltöltése. Ez néhány percet igénybe vehet..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Az adatbázis visszaállítása sikertelen."
-
-#: 
 msgid "Deceased"
 msgstr "Elhunyt"
 
@@ -17246,10 +17162,6 @@ msgid "Log settings saved"
 msgstr "A naplózási beállítások mentve"
 
 #: 
-msgid "Login Name is Required"
-msgstr "A bejelentkezési név megadása kötelező"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "A személy aktívként megjelölve"
 
@@ -17374,10 +17286,6 @@ msgid "Sending..."
 msgstr "Küldés..."
 
 #: 
-msgid "Sending…"
-msgstr "Küldés…"
-
-#: 
 msgid "Settings reset"
 msgstr "A beállítások visszaállítva"
 
@@ -17448,10 +17356,6 @@ msgstr "Közelgő"
 #: 
 msgid "View active only"
 msgstr "Csak az aktívak megjelenítése"
-
-#: 
-msgid "View all"
-msgstr "Összes megjelenítése"
 
 #: 
 msgid "View all (including inactive)"
@@ -18228,10 +18132,6 @@ msgstr "Csoporttag-listák és vasárnapi iskolai osztályjelentések"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "A pénzügyi éved kezdete: %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Hiba történt"
 
 #: 
 msgid "Approve"
@@ -19378,10 +19278,6 @@ msgid "Each staffing need must name a position"
 msgstr "Minden létszámigénynek meg kell neveznie egy pozíciót"
 
 #: 
-msgid "Edit event"
-msgstr "Esemény Szerkesztése"
-
-#: 
 msgid "Edit ministry"
 msgstr "Szolgálati terület szerkesztése"
 
@@ -19466,10 +19362,6 @@ msgstr "E-mailek küldve {{count}} címzettnek."
 #: 
 msgid "Emails"
 msgstr "E-mailek"
-
-#: 
-msgid "End time"
-msgstr "Befejezési idő"
 
 #: 
 msgid "Enter counts"
@@ -20750,10 +20642,6 @@ msgid "SMTP test"
 msgstr "SMTP-teszt"
 
 #: 
-msgid "Save changes"
-msgstr "Változtatások mentése"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Elmentve – ez a szolgálati terület már nem kér segítséget"
 
@@ -21036,10 +20924,6 @@ msgstr "Létszámigények elmentve"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Kezdd egy szolgálati terület létrehozásával, majd add hozzá a csapatokat és pozíciókat, amelyek benne szolgálnak."
-
-#: 
-msgid "Start time"
-msgstr "Kezdési idő"
 
 #: 
 msgid "Start typing a name"
@@ -22082,16 +21966,8 @@ msgid "Validation"
 msgstr "Érvényesítés"
 
 #: 
-msgid "View event"
-msgstr "Esemény megtekintése"
-
-#: 
 msgid "View my schedule"
 msgstr "Ütemezésem megtekintése"
-
-#: 
-msgid "View person"
-msgstr "Személy megtekintése"
 
 #: 
 msgid "View the event"

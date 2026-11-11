@@ -4062,10 +4062,6 @@ msgid "The property could not be unassigned."
 msgstr "ንብረቱ ያልተመደበ ሊሆን አይችልም።"
 
 #: 
-msgid "Select event"
-msgstr "ክስተት ይምረጡ"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "በኢሜል/ሪፖርቶች ውስጥ ከስም በፊት ይፃፉ"
 
@@ -4269,10 +4265,6 @@ msgstr "የራስዎን የይለፍ ቃል ይቀይሩ"
 #: 
 msgid "Kiosk Manager"
 msgstr "የኪዮስክ አስተዳዳሪ"
-
-#: 
-msgid "Report an issue"
-msgstr "ችግርዎን ያሳውቁ"
 
 #: 
 msgid "Self Verification"
@@ -4685,16 +4677,8 @@ msgid "User must have Delete Records permission"
 msgstr "ተጠቃሚው መዝገቦችን የማጥፋት ፈቃድ ሊኖረው ይገባል"
 
 #: 
-msgid "invalid event type id"
-msgstr "ልክ ያልሆነ የክስተት አይነት መታወቂያ"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "ልክ ያልሆነ የቀን መቁጠሪያ መሰኪያ"
-
-#: 
-msgid "invalid status value"
-msgstr "ልክ ያልሆነ የሁኔታ ዋጋ"
 
 #: 
 msgid "invalid export value"
@@ -5306,10 +5290,6 @@ msgstr "የሥርዓት ማሻሻያ በመተግበር ላይ..."
 
 #: 
 msgid "Back to Login"
-msgstr "ወደ መግቢያ ተመለስ"
-
-#: 
-msgid "Back to login"
 msgstr "ወደ መግቢያ ተመለስ"
 
 #: 
@@ -8039,10 +8019,6 @@ msgid "City is required."
 msgstr "ከተማ ያስፈልጋል።"
 
 #: 
-msgid "Clear filter"
-msgstr "ማጣሪያ አጽዳ"
-
-#: 
 msgid "Configuration item not found"
 msgstr "የማዋቀሪያ ንጥል አልተገኘም"
 
@@ -8311,10 +8287,6 @@ msgstr "ሰው ያክሉ"
 #: 
 msgid "Add all cart items to a group"
 msgstr "ሁሉንም የታከለ ንጥረ ነገሮች ወደ ቡድን ያክሉ"
-
-#: 
-msgid "Add all to Cart"
-msgstr "ሁሉም ያክሉ"
 
 #: 
 msgid "Add cart items to a family"
@@ -9319,10 +9291,6 @@ msgid "Record why attendees visited your church"
 msgstr "ምንድነ ሰብ ተዋጽኦ ዳሰሱ ረ"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "ሙሉ ከገበያ ዝወር"
-
-#: 
 msgid "Remove from Class"
 msgstr "ከክፍሉ ዝወር"
 
@@ -9793,10 +9761,6 @@ msgstr "ሁነታ ይህ ዓመት"
 #: 
 msgid "Everyone"
 msgstr "ሙሉ ሰው"
-
-#: 
-msgid "Failed to delete note"
-msgstr "ማስታወሻ ዝወር ውድቅ ሆነ"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11696,10 +11660,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "የክልሉ ጅምሪ ትክክለኛ YYYY-MM-DD ቀን መሆን አለበት።"
 
 #: 
-msgid "Range start must be before range end"
-msgstr "የክልሉ ጅምሪ ከክልሉ ማብቂያ በፊት መሆን አለበት"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "የክልሉ ጅምሪ ከክልሉ ማብቂያ በፊት መሆን አለበት።"
 
@@ -12648,10 +12608,6 @@ msgid "Failed to install plugin from URL"
 msgstr "ከURL ፕለጊን መጫን አልተሳካም"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "የተፈቀዱ ፕለጊኖች ዝርዝር መጫን አልተሳካም"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "የተፈቀዱ ፕለጊኖች ዝርዝር መጫን አልተሳካም።"
 
@@ -12710,10 +12666,6 @@ msgstr "Kebab-case። ከዚፕ ውስጥ ያለው ከፍተኛ ደረጃ አ�
 #: 
 msgid "Loading approved plugin list…"
 msgstr "የተፈቀዱ ፕለጊኖች ዝርዝር እየጫነ ነው…"
-
-#: 
-msgid "Loading…"
-msgstr "እየጫነ ነው…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13161,10 +13113,6 @@ msgid "Change Your Locale"
 msgstr "አካባቢዎን ይቀይሩ"
 
 #: 
-msgid "Change role"
-msgstr "ሚና ቀይር"
-
-#: 
 msgid "Check Number"
 msgstr "የፍተሻ ቁጥር"
 
@@ -13179,10 +13127,6 @@ msgstr "ምዝገባ አልተሳካም። እባክዎ እንደገና ሞክ�
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "መውጣት አልተሳካም። እባክዎ እንደገና ሞክሩ።"
-
-#: 
-msgid "City is required"
-msgstr "ከተማ ያስፈልጋል"
 
 #: 
 msgid "Click Save to apply."
@@ -13251,10 +13195,6 @@ msgstr "ሁሉንም ቁጥሮች ይቅዱ"
 #: 
 msgid "Copy Members to Group"
 msgstr "አባላት ቡድን ቅጅ"
-
-#: 
-msgid "Creating Backup..."
-msgstr "ተጠቀጥብ ስ..."
 
 #: 
 msgid "Creating..."
@@ -14322,10 +14262,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "ትግበራዎን ካጡ ሊጠቀሙዋቸው የሚችሉ ምትኬ ኮዶችን ይቀበላሉ"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "የእርስዎ ጋሪ ባዶ ነው"
-
-#: 
 msgid "Your account is now protected"
 msgstr "ሂሳብዎ አሁን ተጠብቋል"
 
@@ -14344,10 +14280,6 @@ msgstr "የአሳሽ ቋንቋ ምርጫዎ ከ ChurchCRM አካባቢዎ ይለ
 #: 
 msgid "Your database already contains data"
 msgstr "ዳታቤዝዎ ቀድሞ መረጃ ይዟል"
-
-#: 
-msgid "Zip code is required"
-msgstr "የፖስታ ኮድ ያስፈልጋል"
 
 #: 
 msgid "added"
@@ -14768,10 +14700,6 @@ msgstr "ለዚህ ቤተሰብ ማስታወሻ ለማከል ፈቃድ የለዎ�
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "ለዚህ ሰው ማስታወሻ ለማከል ፈቃድ የለዎትም።"
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "ይህን ማስታወሻ ለማስተካከል ፈቃድ የለዎትም"
 
 #: 
 msgid "Account locked"
@@ -15814,10 +15742,6 @@ msgid "Select a person"
 msgstr "ሰው ይምረጡ"
 
 #: 
-msgid "Select role"
-msgstr "ሚና ይምረጡ"
-
-#: 
 msgid "Select type (optional)"
 msgstr "ዓይነት ይምረጡ (አማራጭ)"
 
@@ -15972,10 +15896,6 @@ msgstr "ይህን የክፍያ መዝገብ እስከመጨረሻ ለመሰረ�
 #: 
 msgid "At least one fund allocation is required"
 msgstr "ቢያንስ አንድ የፈንድ ክፍፍል ያስፈልጋል"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "ቢያንስ አንድ ፈንድ ዜሮ ያልሆነ መጠን ሊኖረው ይገባል"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17026,10 +16946,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "ምትኬ እየፈጠረ እና እየጫነ ነው። ይህ ብዙ ደቂቃዎችን ሊወስድ ይችላል..."
 
 #: 
-msgid "Database reset failed."
-msgstr "የውሂብ ጎታ ዳግም ማስጀመር አልተሳካም።"
-
-#: 
 msgid "Deceased"
 msgstr "ሞተዋል"
 
@@ -17226,10 +17142,6 @@ msgid "Log settings saved"
 msgstr "የመዝገብ ቅንብሮች ተቀምጠዋል"
 
 #: 
-msgid "Login Name is Required"
-msgstr "የመግቢያ ስም ያስፈልጋል"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "ሰውየው እንደ ንቁ ተምልክቷል"
 
@@ -17354,10 +17266,6 @@ msgid "Sending..."
 msgstr "እየላከ ነው..."
 
 #: 
-msgid "Sending…"
-msgstr "እየላከ ነው…"
-
-#: 
 msgid "Settings reset"
 msgstr "ቅንብሮች ዳግም ተጀምረዋል"
 
@@ -17428,10 +17336,6 @@ msgstr "መጪ"
 #: 
 msgid "View active only"
 msgstr "ንቁዎችን ብቻ ይመልከቱ"
-
-#: 
-msgid "View all"
-msgstr "ሁሉንም ይመልከቱ"
 
 #: 
 msgid "View all (including inactive)"
@@ -18208,10 +18112,6 @@ msgstr "የቡድን አባልነት ዝርዝሮች እና የሰንበት ት�
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "የበጀት ዓመትዎ የሚጀምረው በ%s ነው።"
-
-#: 
-msgid "An error occurred"
-msgstr "ስህተት ተከስቷል"
 
 #: 
 msgid "Approve"
@@ -19358,10 +19258,6 @@ msgid "Each staffing need must name a position"
 msgstr "እያንዳንዱ የሰው ኃይል ፍላጎት የአገልግሎት ቦታ መሰየም አለበት"
 
 #: 
-msgid "Edit event"
-msgstr "ክስተት ርድ"
-
-#: 
 msgid "Edit ministry"
 msgstr "አገልግሎትን አርትዕ"
 
@@ -19446,10 +19342,6 @@ msgstr "ኢሜይሉ ለ{{count}} ተቀባዮች ተልኳል።"
 #: 
 msgid "Emails"
 msgstr "ኢሜይሎች"
-
-#: 
-msgid "End time"
-msgstr "ማብቂያ ጊዜ"
 
 #: 
 msgid "Enter counts"
@@ -20730,10 +20622,6 @@ msgid "SMTP test"
 msgstr "የSMTP ሙከራ"
 
 #: 
-msgid "Save changes"
-msgstr "ለውጦችን አስቀምጥ"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "ተቀምጧል — ይህ አገልግሎት ከእንግዲህ እርዳታ እየጠየቀ አይደለም"
 
@@ -21016,10 +20904,6 @@ msgstr "የሰው ኃይል ፍላጎቶች ተቀምጠዋል"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "አገልግሎት በመፍጠር ይጀምሩ፣ ከዚያ በውስጡ የሚያገለግሉ ቡድኖችን እና የአገልግሎት ቦታዎችን ያክሉ።"
-
-#: 
-msgid "Start time"
-msgstr "ጀመር ወቅት"
 
 #: 
 msgid "Start typing a name"
@@ -22062,16 +21946,8 @@ msgid "Validation"
 msgstr "ማረጋገጫ"
 
 #: 
-msgid "View event"
-msgstr "ዝግጅት ይመልከቱ"
-
-#: 
 msgid "View my schedule"
 msgstr "መርሐ ግብሬን ተመልከት"
-
-#: 
-msgid "View person"
-msgstr "ሰው ይመልከቱ"
 
 #: 
 msgid "View the event"

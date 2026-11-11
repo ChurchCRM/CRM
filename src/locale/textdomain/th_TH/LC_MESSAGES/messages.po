@@ -4047,10 +4047,6 @@ msgid "The property could not be unassigned."
 msgstr "ไม่สามารถยกเลิกการกำหนดคุณสมบัติได้"
 
 #: 
-msgid "Select event"
-msgstr "เลือกกิจกรรม"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "ข้อความก่อนชื่อในอีเมล/รายงาน"
 
@@ -4253,10 +4249,6 @@ msgstr "รีเซ็ตรหัสผ่านของคุณ"
 #: 
 msgid "Kiosk Manager"
 msgstr "ตัวจัดการคีออสก์"
-
-#: 
-msgid "Report an issue"
-msgstr "รายงานปัญหา"
 
 #: 
 msgid "Self Verification"
@@ -4668,16 +4660,8 @@ msgid "User must have Delete Records permission"
 msgstr "ผู้ใช้ต้องมีสิทธิ์ลบระเบียน"
 
 #: 
-msgid "invalid event type id"
-msgstr "ID ประเภทกิจกรรมไม่ถูกต้อง"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "การปักหมุดปฏิทินไม่ถูกต้อง"
-
-#: 
-msgid "invalid status value"
-msgstr "ค่าสถานะไม่ถูกต้อง"
 
 #: 
 msgid "invalid export value"
@@ -5278,10 +5262,6 @@ msgstr "กำลังใช้การอัปเดตระบบ..."
 
 #: 
 msgid "Back to Login"
-msgstr "กลับไปที่การเข้าสู่ระบบ"
-
-#: 
-msgid "Back to login"
 msgstr "กลับไปที่การเข้าสู่ระบบ"
 
 #: 
@@ -8005,10 +7985,6 @@ msgid "City is required."
 msgstr "ต้องระบุเมือง"
 
 #: 
-msgid "Clear filter"
-msgstr "ล้างตัวกรอง"
-
-#: 
 msgid "Configuration item not found"
 msgstr "ไม่พบรายการการกำหนดค่า"
 
@@ -8276,10 +8252,6 @@ msgstr "เพิ่มบุคคล"
 #: 
 msgid "Add all cart items to a group"
 msgstr "เพิ่มรายการทั้งหมดไปยังกลุ่ม"
-
-#: 
-msgid "Add all to Cart"
-msgstr "เพิ่มทั้งหมดไปยังรายการ"
 
 #: 
 msgid "Add cart items to a family"
@@ -9284,10 +9256,6 @@ msgid "Record why attendees visited your church"
 msgstr "บันทึกเหตุผลที่ผู้เข้าร่วมมาเยี่ยมคริสตจักร"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "ลบทั้งหมดออกจากรายการ"
-
-#: 
 msgid "Remove from Class"
 msgstr "ลบออกจากชั้นเรียน"
 
@@ -9758,10 +9726,6 @@ msgstr "กิจกรรมปีนี้"
 #: 
 msgid "Everyone"
 msgstr "ทุกคน"
-
-#: 
-msgid "Failed to delete note"
-msgstr "ไม่สามารถลบบันทึกได้"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11660,10 +11624,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "วันที่เริ่มต้นช่วงต้องเป็นวันที่ YYYY-MM-DD ที่ถูกต้อง"
 
 #: 
-msgid "Range start must be before range end"
-msgstr "วันที่เริ่มต้นช่วงต้องอยู่ก่อนวันที่สิ้นสุดช่วง"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "วันที่เริ่มต้นช่วงต้องอยู่ก่อนวันที่สิ้นสุดช่วง"
 
@@ -12612,10 +12572,6 @@ msgid "Failed to install plugin from URL"
 msgstr "ไม่สามารถติดตั้งปลั๊กอินจาก URL ได้"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "ไม่สามารถโหลดรายการปลั๊กอินที่ผ่านการรับรองได้"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "ไม่สามารถโหลดรายการปลั๊กอินที่ผ่านการรับรองได้"
 
@@ -12674,10 +12630,6 @@ msgstr "รูปแบบ kebab-case ต้องตรงกับชื่อ
 #: 
 msgid "Loading approved plugin list…"
 msgstr "กำลังโหลดรายการปลั๊กอินที่ผ่านการรับรอง…"
-
-#: 
-msgid "Loading…"
-msgstr "กำลังโหลด…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13125,10 +13077,6 @@ msgid "Change Your Locale"
 msgstr "เปลี่ยนภาษาของคุณ"
 
 #: 
-msgid "Change role"
-msgstr "เปลี่ยนบทบาท"
-
-#: 
 msgid "Check Number"
 msgstr "หมายเลขเช็ค"
 
@@ -13143,10 +13091,6 @@ msgstr "การลงทะเบียนล้มเหลว กรุณ�
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "การลงทะเบียนออกล้มเหลว กรุณาลองอีกครั้ง"
-
-#: 
-msgid "City is required"
-msgstr "ต้องมีเมือง"
 
 #: 
 msgid "Click Save to apply."
@@ -13215,10 +13159,6 @@ msgstr "คัดลอกหมายเลขทั้งหมด"
 #: 
 msgid "Copy Members to Group"
 msgstr "คัดลอกสมาชิกไปยังกลุ่ม"
-
-#: 
-msgid "Creating Backup..."
-msgstr "กำลังสร้างข้อมูลสำรอง..."
 
 #: 
 msgid "Creating..."
@@ -14285,10 +14225,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "คุณจะได้รับรหัสสำรองที่สามารถใช้ได้หากสูญเสียการเข้าถึงแอป"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "ตะกร้าของคุณว่างเปล่า"
-
-#: 
 msgid "Your account is now protected"
 msgstr "บัญชีของคุณได้รับการปกป้องแล้ว"
 
@@ -14307,10 +14243,6 @@ msgstr "การตั้งค่าภาษาในเบราว์เซ
 #: 
 msgid "Your database already contains data"
 msgstr "ฐานข้อมูลของคุณมีข้อมูลอยู่แล้ว"
-
-#: 
-msgid "Zip code is required"
-msgstr "ต้องมีรหัสไปรษณีย์"
 
 #: 
 msgid "added"
@@ -14730,10 +14662,6 @@ msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึ
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึกสำหรับบุคคลนี้"
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "คุณไม่มีสิทธิ์แก้ไขบันทึกนี้"
 
 #: 
 msgid "Account locked"
@@ -15774,10 +15702,6 @@ msgid "Select a person"
 msgstr "เลือกบุคคล"
 
 #: 
-msgid "Select role"
-msgstr "เลือกบทบาท"
-
-#: 
 msgid "Select type (optional)"
 msgstr "เลือกประเภท (ไม่บังคับ)"
 
@@ -15932,10 +15856,6 @@ msgstr "คุณแน่ใจหรือไม่ว่าต้องกา
 #: 
 msgid "At least one fund allocation is required"
 msgstr "ต้องมีการจัดสรรกองทุนอย่างน้อยหนึ่งรายการ"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "กองทุนอย่างน้อยหนึ่งรายการต้องมีจำนวนเงินที่ไม่ใช่ศูนย์"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16984,10 +16904,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "กำลังสร้างและอัปโหลดไฟล์สำรองข้อมูล อาจใช้เวลาสักครู่..."
 
 #: 
-msgid "Database reset failed."
-msgstr "การรีเซ็ตฐานข้อมูลล้มเหลว"
-
-#: 
 msgid "Deceased"
 msgstr "เสียชีวิตแล้ว"
 
@@ -17184,10 +17100,6 @@ msgid "Log settings saved"
 msgstr "บันทึกการตั้งค่าไฟล์บันทึกแล้ว"
 
 #: 
-msgid "Login Name is Required"
-msgstr "จำเป็นต้องระบุชื่อผู้ใช้สำหรับเข้าสู่ระบบ"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "ทำเครื่องหมายบุคคลนี้ว่าใช้งานอยู่แล้ว"
 
@@ -17312,10 +17224,6 @@ msgid "Sending..."
 msgstr "กำลังส่ง..."
 
 #: 
-msgid "Sending…"
-msgstr "กำลังส่ง…"
-
-#: 
 msgid "Settings reset"
 msgstr "รีเซ็ตการตั้งค่าแล้ว"
 
@@ -17386,10 +17294,6 @@ msgstr "กำลังจะถึง"
 #: 
 msgid "View active only"
 msgstr "ดูเฉพาะที่ใช้งานอยู่"
-
-#: 
-msgid "View all"
-msgstr "ดูทั้งหมด"
 
 #: 
 msgid "View all (including inactive)"
@@ -18166,10 +18070,6 @@ msgstr "รายชื่อสมาชิกกลุ่มและราย
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "ปีงบประมาณของคุณเริ่มต้นในเดือน %s"
-
-#: 
-msgid "An error occurred"
-msgstr "เกิดข้อผิดพลาด"
 
 #: 
 msgid "Approve"
@@ -19309,10 +19209,6 @@ msgid "Each staffing need must name a position"
 msgstr "ความต้องการกำลังคนแต่ละรายการต้องระบุตำแหน่ง"
 
 #: 
-msgid "Edit event"
-msgstr "แก้ไขกิจกรรม"
-
-#: 
 msgid "Edit ministry"
 msgstr "แก้ไขพันธกิจ"
 
@@ -19397,10 +19293,6 @@ msgstr "ส่งอีเมลให้ผู้รับ {{count}} คน"
 #: 
 msgid "Emails"
 msgstr "อีเมล"
-
-#: 
-msgid "End time"
-msgstr "เวลาสิ้นสุด"
 
 #: 
 msgid "Enter counts"
@@ -20679,10 +20571,6 @@ msgid "SMTP test"
 msgstr "ทดสอบ SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "บันทึกการเปลี่ยนแปลง"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "บันทึกแล้ว — พันธกิจนี้ไม่ได้ขอความช่วยเหลืออีกต่อไป"
 
@@ -20965,10 +20853,6 @@ msgstr "บันทึกความต้องการกำลังคน
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "เริ่มต้นด้วยการสร้างพันธกิจ แล้วเพิ่มทีมและตำแหน่งที่รับใช้ในนั้น"
-
-#: 
-msgid "Start time"
-msgstr "เวลาเริ่มต้น"
 
 #: 
 msgid "Start typing a name"
@@ -22009,16 +21893,8 @@ msgid "Validation"
 msgstr "การตรวจสอบความถูกต้อง"
 
 #: 
-msgid "View event"
-msgstr "ดูกิจกรรม"
-
-#: 
 msgid "View my schedule"
 msgstr "ดูตารางของฉัน"
-
-#: 
-msgid "View person"
-msgstr "ดูข้อมูลบุคคล"
 
 #: 
 msgid "View the event"

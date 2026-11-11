@@ -4120,10 +4120,6 @@ msgid "The property could not be unassigned."
 msgstr "Не удалось снять свойство."
 
 #: 
-msgid "Select event"
-msgstr "Выберите мероприятие"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Текст перед именем в письмах/отчетах"
 
@@ -4326,10 +4322,6 @@ msgstr "Сбросьте свой пароль"
 #: 
 msgid "Kiosk Manager"
 msgstr "Менеджер киоска"
-
-#: 
-msgid "Report an issue"
-msgstr "Сообщить о проблеме"
 
 #: 
 msgid "Self Verification"
@@ -4741,16 +4733,8 @@ msgid "User must have Delete Records permission"
 msgstr "У пользователя должно быть право на удаление записей"
 
 #: 
-msgid "invalid event type id"
-msgstr "неверный ID типа события"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "неверное закрепление календаря"
-
-#: 
-msgid "invalid status value"
-msgstr "неверное значение статуса"
 
 #: 
 msgid "invalid export value"
@@ -5358,10 +5342,6 @@ msgstr "Применение системного обновления..."
 
 #: 
 msgid "Back to Login"
-msgstr "Назад к входу"
-
-#: 
-msgid "Back to login"
 msgstr "Назад к входу"
 
 #: 
@@ -8103,10 +8083,6 @@ msgid "City is required."
 msgstr "Город обязателен."
 
 #: 
-msgid "Clear filter"
-msgstr "Очистить фильтр"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Элемент конфигурации не найден"
 
@@ -8377,10 +8353,6 @@ msgstr "Добавить человека"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Добавить все элементы корзины в группу"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Добавить всё в корзину"
 
 #: 
 msgid "Add cart items to a family"
@@ -9385,10 +9357,6 @@ msgid "Record why attendees visited your church"
 msgstr "Записать причину посещения церкви"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Удалить всё из корзины"
-
-#: 
 msgid "Remove from Class"
 msgstr "Удалить из класса"
 
@@ -9859,10 +9827,6 @@ msgstr "Мероприятия за этот год"
 #: 
 msgid "Everyone"
 msgstr "Все"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Не удалось удалить заметку"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11764,10 +11728,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Начало диапазона должно быть корректной датой в формате YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Начало диапазона должно быть раньше конца диапазона"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Начало диапазона должно быть раньше конца диапазона."
 
@@ -12716,10 +12676,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Не удалось установить плагин по URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Не удалось загрузить список одобренных плагинов"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Не удалось загрузить список одобренных плагинов."
 
@@ -12778,10 +12734,6 @@ msgstr "Формат kebab-case. Должен совпадать с именем
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Загрузка списка одобренных плагинов…"
-
-#: 
-msgid "Loading…"
-msgstr "Загрузка…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13229,10 +13181,6 @@ msgid "Change Your Locale"
 msgstr "Изменить языковые настройки"
 
 #: 
-msgid "Change role"
-msgstr "Изменить роль"
-
-#: 
 msgid "Check Number"
 msgstr "Номер чека"
 
@@ -13247,10 +13195,6 @@ msgstr "Ошибка регистрации. Пожалуйста, попроб�
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Ошибка выписки. Пожалуйста, попробуйте снова."
-
-#: 
-msgid "City is required"
-msgstr "Город обязателен"
 
 #: 
 msgid "Click Save to apply."
@@ -13319,10 +13263,6 @@ msgstr "Копировать все номера"
 #: 
 msgid "Copy Members to Group"
 msgstr "Скопировать участников в группу"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Создание резервной копии..."
 
 #: 
 msgid "Creating..."
@@ -14389,10 +14329,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Вы получите резервные коды, которые можно использовать, если потеряете доступ к приложению"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Ваша корзина пуста"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Ваш аккаунт теперь защищён"
 
@@ -14411,10 +14347,6 @@ msgstr "Настройка языка браузера отличается от
 #: 
 msgid "Your database already contains data"
 msgstr "Ваша база данных уже содержит данные"
-
-#: 
-msgid "Zip code is required"
-msgstr "Почтовый индекс обязателен"
 
 #: 
 msgid "added"
@@ -14837,10 +14769,6 @@ msgstr "У вас нет разрешения добавлять заметку 
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "У вас нет разрешения добавлять заметку для этого прихожанина."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "У вас нет разрешения редактировать эту заметку"
 
 #: 
 msgid "Account locked"
@@ -15887,10 +15815,6 @@ msgid "Select a person"
 msgstr "Выберите человека"
 
 #: 
-msgid "Select role"
-msgstr "Выберите роль"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Выберите тип (необязательно)"
 
@@ -16045,10 +15969,6 @@ msgstr "Вы уверены, что хотите безвозвратно уда
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Требуется хотя бы одно распределение по фонду"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Хотя бы один фонд должен иметь ненулевую сумму"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17103,10 +17023,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Создание и загрузка резервной копии. Это может занять несколько минут..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Не удалось сбросить базу данных."
-
-#: 
 msgid "Deceased"
 msgstr "Умерший"
 
@@ -17303,10 +17219,6 @@ msgid "Log settings saved"
 msgstr "Настройки журнала сохранены"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Требуется имя для входа"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Человек отмечен как активный"
 
@@ -17431,10 +17343,6 @@ msgid "Sending..."
 msgstr "Отправка..."
 
 #: 
-msgid "Sending…"
-msgstr "Отправка…"
-
-#: 
 msgid "Settings reset"
 msgstr "Настройки сброшены"
 
@@ -17505,10 +17413,6 @@ msgstr "Предстоящие"
 #: 
 msgid "View active only"
 msgstr "Показать только активных"
-
-#: 
-msgid "View all"
-msgstr "Показать все"
 
 #: 
 msgid "View all (including inactive)"
@@ -18285,10 +18189,6 @@ msgstr "Списки участников служений и отчёты по 
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Ваш финансовый год начинается в %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Произошла ошибка"
 
 #: 
 msgid "Approve"
@@ -19449,10 +19349,6 @@ msgid "Each staffing need must name a position"
 msgstr "Для каждой потребности в людях должна быть указана позиция"
 
 #: 
-msgid "Edit event"
-msgstr "Редактировать событие"
-
-#: 
 msgid "Edit ministry"
 msgstr "Изменить служение"
 
@@ -19537,10 +19433,6 @@ msgstr "Письма отправлены {{count}} получателям."
 #: 
 msgid "Emails"
 msgstr "Письма"
-
-#: 
-msgid "End time"
-msgstr "Время окончания"
 
 #: 
 msgid "Enter counts"
@@ -20825,10 +20717,6 @@ msgid "SMTP test"
 msgstr "Проверка SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Сохранить изменения"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Сохранено — это служение больше не просит о помощи"
 
@@ -21111,10 +20999,6 @@ msgstr "Потребности в людях сохранены"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Начните с создания служения, затем добавьте команды и позиции, которые в нём служат."
-
-#: 
-msgid "Start time"
-msgstr "Время начала"
 
 #: 
 msgid "Start typing a name"
@@ -22161,16 +22045,8 @@ msgid "Validation"
 msgstr "Проверка"
 
 #: 
-msgid "View event"
-msgstr "Просмотр мероприятия"
-
-#: 
 msgid "View my schedule"
 msgstr "Посмотреть моё расписание"
-
-#: 
-msgid "View person"
-msgstr "Просмотр прихожанина"
 
 #: 
 msgid "View the event"

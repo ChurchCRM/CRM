@@ -4037,10 +4037,6 @@ msgid "The property could not be unassigned."
 msgstr "De toewijzing van deze eigenschap kan niet ongedaan worden gemaakt."
 
 #: 
-msgid "Select event"
-msgstr "Selecteer activiteit"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Tekst voor naam in e-mails/rapporten"
 
@@ -4243,10 +4239,6 @@ msgstr "Stel je wachtwoord opnieuw in"
 #: 
 msgid "Kiosk Manager"
 msgstr "Kioskmanager"
-
-#: 
-msgid "Report an issue"
-msgstr "Een probleem melden"
 
 #: 
 msgid "Self Verification"
@@ -4658,16 +4650,8 @@ msgid "User must have Delete Records permission"
 msgstr "De gebruiker heeft de rechten nodig om rijen met gegevens te mogen verwijderen"
 
 #: 
-msgid "invalid event type id"
-msgstr "Ongeldige identificatie code voor een \"event\""
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "Het vastmaken van de kalender is ongeldig"
-
-#: 
-msgid "invalid status value"
-msgstr "Ongeldige waarde van de status"
 
 #: 
 msgid "invalid export value"
@@ -5271,10 +5255,6 @@ msgstr "Systeemupdate toepassen..."
 
 #: 
 msgid "Back to Login"
-msgstr "Terug naar inloggen"
-
-#: 
-msgid "Back to login"
 msgstr "Terug naar inloggen"
 
 #: 
@@ -8004,10 +7984,6 @@ msgid "City is required."
 msgstr "De stad is verplicht."
 
 #: 
-msgid "Clear filter"
-msgstr "Filter wissen"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Configuratie-item niet gevonden"
 
@@ -8276,10 +8252,6 @@ msgstr "Een persoon toevoegen"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Alle winkelwagenartikelen aan een groep toevoegen"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Alles aan winkelwagen toevoegen"
 
 #: 
 msgid "Add cart items to a family"
@@ -9284,10 +9256,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registreer waarom bezoekers uw kerk bezochten"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Alles uit winkelwagen verwijderen"
-
-#: 
 msgid "Remove from Class"
 msgstr "Uit klas verwijderen"
 
@@ -9758,10 +9726,6 @@ msgstr "Evenementen Dit Jaar"
 #: 
 msgid "Everyone"
 msgstr "Iedereen"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Notitie kon niet worden verwijderd"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11661,10 +11625,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Begindatum van het bereik moet een geldige YYYY-MM-DD datum zijn."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Begindatum van het bereik moet voor de einddatum liggen"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Begindatum van het bereik moet voor de einddatum liggen."
 
@@ -12613,10 +12573,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Plugin installeren via URL mislukt"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Kon lijst met goedgekeurde plugins niet laden"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Kon lijst met goedgekeurde plugins niet laden."
 
@@ -12675,10 +12631,6 @@ msgstr "Kebab-case. Moet overeenkomen met de naam van de hoofdmap in het zip-bes
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Lijst met goedgekeurde plugins laden…"
-
-#: 
-msgid "Loading…"
-msgstr "Laden…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13126,10 +13078,6 @@ msgid "Change Your Locale"
 msgstr "Uw regio-instellingen wijzigen"
 
 #: 
-msgid "Change role"
-msgstr "Verander rol"
-
-#: 
 msgid "Check Number"
 msgstr "Controleer het nummer"
 
@@ -13144,10 +13092,6 @@ msgstr "Inchecken mislukt. Probeer opnieuw."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Uitchecken mislukt. Probeer opnieuw."
-
-#: 
-msgid "City is required"
-msgstr "Plaats is verplicht"
 
 #: 
 msgid "Click Save to apply."
@@ -13216,10 +13160,6 @@ msgstr "Alle nummers kopiëren"
 #: 
 msgid "Copy Members to Group"
 msgstr "Leden kopiëren naar groep"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Back-up wordt aangemaakt..."
 
 #: 
 msgid "Creating..."
@@ -14286,10 +14226,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "U ontvangt back-upcodes die kunnen worden gebruikt als u de toegang tot uw app verliest"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Je werkbestand is leeg"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Uw account is nu beveiligd"
 
@@ -14308,10 +14244,6 @@ msgstr "Uw browser-taalvoorkeur wijkt af van uw ChurchCRM-landinstelling"
 #: 
 msgid "Your database already contains data"
 msgstr "Uw database bevat al gegevens"
-
-#: 
-msgid "Zip code is required"
-msgstr "Postcode is verplicht"
 
 #: 
 msgid "added"
@@ -14732,10 +14664,6 @@ msgstr "U heeft geen toestemming om een notitie toe te voegen voor dit gezin."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "U heeft geen toestemming om een notitie toe te voegen voor deze persoon."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "U heeft geen toestemming om deze notitie te bewerken"
 
 #: 
 msgid "Account locked"
@@ -15778,10 +15706,6 @@ msgid "Select a person"
 msgstr "Selecteer een persoon"
 
 #: 
-msgid "Select role"
-msgstr "Selecteer rol"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Selecteer type (optioneel)"
 
@@ -15936,10 +15860,6 @@ msgstr "Weet u zeker dat u dit betalingsrecord permanent wilt verwijderen?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Er is minimaal één fondstoewijzing vereist"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Ten minste één fonds moet een bedrag groter dan nul hebben"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16990,10 +16910,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Back-up wordt gemaakt en geüpload. Dit kan enkele minuten duren..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Resetten van database is mislukt."
-
-#: 
 msgid "Deceased"
 msgstr "Overleden"
 
@@ -17190,10 +17106,6 @@ msgid "Log settings saved"
 msgstr "Loginstellingen opgeslagen"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Inlognaam is verplicht"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Persoon als actief gemarkeerd"
 
@@ -17318,10 +17230,6 @@ msgid "Sending..."
 msgstr "Verzenden..."
 
 #: 
-msgid "Sending…"
-msgstr "Verzenden…"
-
-#: 
 msgid "Settings reset"
 msgstr "Instellingen gereset"
 
@@ -17392,10 +17300,6 @@ msgstr "Aankomend"
 #: 
 msgid "View active only"
 msgstr "Alleen actieve weergeven"
-
-#: 
-msgid "View all"
-msgstr "Alles weergeven"
 
 #: 
 msgid "View all (including inactive)"
@@ -18172,10 +18076,6 @@ msgstr "Ledenlijsten van bedieningen en rapporten van zondagsschoolklassen"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Uw boekjaar begint in %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Er is een fout opgetreden"
 
 #: 
 msgid "Approve"
@@ -19322,10 +19222,6 @@ msgid "Each staffing need must name a position"
 msgstr "Elke bezettingsbehoefte moet een functie noemen"
 
 #: 
-msgid "Edit event"
-msgstr "Evenement Bewerken"
-
-#: 
 msgid "Edit ministry"
 msgstr "Bediening bewerken"
 
@@ -19410,10 +19306,6 @@ msgstr "E-mail verzonden naar {{count}} ontvangers."
 #: 
 msgid "Emails"
 msgstr "E-mails"
-
-#: 
-msgid "End time"
-msgstr "Eindtijd"
 
 #: 
 msgid "Enter counts"
@@ -20694,10 +20586,6 @@ msgid "SMTP test"
 msgstr "SMTP-test"
 
 #: 
-msgid "Save changes"
-msgstr "Wijziging opslaan"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Opgeslagen; deze bediening vraagt niet langer om hulp"
 
@@ -20980,10 +20868,6 @@ msgstr "Bezettingsbehoeften opgeslagen"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Begin met het aanmaken van een bediening en voeg daarna de teams en functies toe die erin dienen."
-
-#: 
-msgid "Start time"
-msgstr "Start datum"
 
 #: 
 msgid "Start typing a name"
@@ -22026,16 +21910,8 @@ msgid "Validation"
 msgstr "Validatie"
 
 #: 
-msgid "View event"
-msgstr "Evenement bekijken"
-
-#: 
 msgid "View my schedule"
 msgstr "Mijn rooster bekijken"
-
-#: 
-msgid "View person"
-msgstr "Persoon bekijken"
 
 #: 
 msgid "View the event"

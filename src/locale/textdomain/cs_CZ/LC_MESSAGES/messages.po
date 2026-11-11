@@ -4057,10 +4057,6 @@ msgid "The property could not be unassigned."
 msgstr "Přiřazení vlastnosti nemůže být zrušeno."
 
 #: 
-msgid "Select event"
-msgstr "Vyberte událost"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Text před jménem v e-mailech/výkazech"
 
@@ -4263,10 +4259,6 @@ msgstr "Obnovte své heslo"
 #: 
 msgid "Kiosk Manager"
 msgstr "Správce kiosku"
-
-#: 
-msgid "Report an issue"
-msgstr "Nahlásit problém"
 
 #: 
 msgid "Self Verification"
@@ -4678,16 +4670,8 @@ msgid "User must have Delete Records permission"
 msgstr "Uživatel musí mít oprávnění Smazat záznamy"
 
 #: 
-msgid "invalid event type id"
-msgstr "neplatné ID typu události"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "neplatné připnutí kalendáře"
-
-#: 
-msgid "invalid status value"
-msgstr "neplatná hodnota stavu"
 
 #: 
 msgid "invalid export value"
@@ -5292,10 +5276,6 @@ msgstr "Provádění aktualizace systému..."
 
 #: 
 msgid "Back to Login"
-msgstr "Zpět k přihlášení"
-
-#: 
-msgid "Back to login"
 msgstr "Zpět k přihlášení"
 
 #: 
@@ -8031,10 +8011,6 @@ msgid "City is required."
 msgstr "Město je povinné."
 
 #: 
-msgid "Clear filter"
-msgstr "Vymazat filtr"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Konfigurační položka nenalezena"
 
@@ -8304,10 +8280,6 @@ msgstr "Přidat osobu"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Přidat všechny položky výběru do skupiny"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Přidat vše do výběru"
 
 #: 
 msgid "Add cart items to a family"
@@ -9312,10 +9284,6 @@ msgid "Record why attendees visited your church"
 msgstr "Zaznamenat důvod návštěvy kostela"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Odebrat vše z výběru"
-
-#: 
 msgid "Remove from Class"
 msgstr "Odebrat z třídy"
 
@@ -9786,10 +9754,6 @@ msgstr "Události tento rok"
 #: 
 msgid "Everyone"
 msgstr "Všichni"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Nepodařilo se smazat poznámku"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11690,10 +11654,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Začátek rozsahu musí být platné datum ve formátu RRRR-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Začátek rozsahu musí být před koncem rozsahu"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Začátek rozsahu musí být před koncem rozsahu."
 
@@ -12642,10 +12602,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Nepodařilo se instalovat plugin z URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Nepodařilo se načíst seznam schválených pluginů"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Nepodařilo se načíst seznam schválených pluginů."
 
@@ -12704,10 +12660,6 @@ msgstr "Kebab-case. Musí odpovídat názvu adresáře nejvyšší úrovně uvni
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Načítám seznam schválených pluginů…"
-
-#: 
-msgid "Loading…"
-msgstr "Načítám…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13155,10 +13107,6 @@ msgid "Change Your Locale"
 msgstr "Změnit jazykové nastavení"
 
 #: 
-msgid "Change role"
-msgstr "Změnit roli"
-
-#: 
 msgid "Check Number"
 msgstr "Kontrolní číslo"
 
@@ -13173,10 +13121,6 @@ msgstr "Přihlášení selhalo. Zkuste to prosím znovu."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Odhlášení selhalo. Zkuste to prosím znovu."
-
-#: 
-msgid "City is required"
-msgstr "Město je vyžadováno"
 
 #: 
 msgid "Click Save to apply."
@@ -13245,10 +13189,6 @@ msgstr "Kopírovat všechna čísla"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopírovat členy do skupiny"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Vytváření zálohy..."
 
 #: 
 msgid "Creating..."
@@ -14315,10 +14255,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Obdržíte záložní kódy, které lze použít, pokud ztratíte přístup k aplikaci"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Košík je prázdný"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Váš účet je nyní chráněn"
 
@@ -14337,10 +14273,6 @@ msgstr "Jazyková předvolba vašeho prohlížeče se liší od nastavení jazyk
 #: 
 msgid "Your database already contains data"
 msgstr "Vaše databáze již obsahuje data"
-
-#: 
-msgid "Zip code is required"
-msgstr "Je vyžadováno PSČ"
 
 #: 
 msgid "added"
@@ -14762,10 +14694,6 @@ msgstr "Nemáte oprávnění přidat poznámku k této rodině."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Nemáte oprávnění přidat poznámku k této osobě."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Nemáte oprávnění upravit tuto poznámku"
 
 #: 
 msgid "Account locked"
@@ -15810,10 +15738,6 @@ msgid "Select a person"
 msgstr "Vyberte osobu"
 
 #: 
-msgid "Select role"
-msgstr "Vyberte roli"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Vyberte typ (volitelné)"
 
@@ -15968,10 +15892,6 @@ msgstr "Opravdu chcete trvale smazat tento záznam o platbě?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Je vyžadováno alespoň jedno přidělení fondu"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Alespoň jeden fond musí mít nenulovou částku"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17024,10 +16944,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Vytváření a nahrávání zálohy. Může to trvat několik minut..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Obnovení databáze se nezdařilo."
-
-#: 
 msgid "Deceased"
 msgstr "Zesnulý"
 
@@ -17224,10 +17140,6 @@ msgid "Log settings saved"
 msgstr "Nastavení protokolu bylo uloženo"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Přihlašovací jméno je povinné"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Osoba byla označena jako aktivní"
 
@@ -17352,10 +17264,6 @@ msgid "Sending..."
 msgstr "Odesílání..."
 
 #: 
-msgid "Sending…"
-msgstr "Odesílání…"
-
-#: 
 msgid "Settings reset"
 msgstr "Nastavení bylo obnoveno"
 
@@ -17426,10 +17334,6 @@ msgstr "Nadcházející"
 #: 
 msgid "View active only"
 msgstr "Zobrazit pouze aktivní"
-
-#: 
-msgid "View all"
-msgstr "Zobrazit vše"
 
 #: 
 msgid "View all (including inactive)"
@@ -18206,10 +18110,6 @@ msgstr "Seznamy členů skupin a přehledy tříd nedělní školy"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Váš fiskální rok začíná v měsíci %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Došlo k chybě"
 
 #: 
 msgid "Approve"
@@ -19363,10 +19263,6 @@ msgid "Each staffing need must name a position"
 msgstr "Každá potřeba obsazení musí uvádět pozici"
 
 #: 
-msgid "Edit event"
-msgstr "Upravit událost"
-
-#: 
 msgid "Edit ministry"
 msgstr "Upravit službu"
 
@@ -19451,10 +19347,6 @@ msgstr "E-maily odeslány {{count}} příjemcům."
 #: 
 msgid "Emails"
 msgstr "E-maily"
-
-#: 
-msgid "End time"
-msgstr "Čas ukončení"
 
 #: 
 msgid "Enter counts"
@@ -20737,10 +20629,6 @@ msgid "SMTP test"
 msgstr "Test SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Uložit změny"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Uloženo — tato služba už nežádá o pomoc"
 
@@ -21023,10 +20911,6 @@ msgstr "Potřeby obsazení byly uloženy"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Začněte vytvořením služby a poté přidejte týmy a pozice, které v ní slouží."
-
-#: 
-msgid "Start time"
-msgstr "Čas začátku"
 
 #: 
 msgid "Start typing a name"
@@ -22071,16 +21955,8 @@ msgid "Validation"
 msgstr "Ověření"
 
 #: 
-msgid "View event"
-msgstr "Zobrazit událost"
-
-#: 
 msgid "View my schedule"
 msgstr "Zobrazit můj rozvrh"
-
-#: 
-msgid "View person"
-msgstr "Zobrazit osobu"
 
 #: 
 msgid "View the event"

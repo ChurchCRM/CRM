@@ -4035,10 +4035,6 @@ msgid "The property could not be unassigned."
 msgstr "Svojstvo nije moguće ukloniti."
 
 #: 
-msgid "Select event"
-msgstr "Odaberi događaj"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Tekst prije imena u e-porukama/izvještajima"
 
@@ -4241,10 +4237,6 @@ msgstr "Resetirajte svoju lozinku"
 #: 
 msgid "Kiosk Manager"
 msgstr "Upravljanje kioscima"
-
-#: 
-msgid "Report an issue"
-msgstr "Prijavi problem"
 
 #: 
 msgid "Self Verification"
@@ -4654,16 +4646,8 @@ msgid "User must have Delete Records permission"
 msgstr "Korisnik mora imati dozvolu za brisanje zapisa"
 
 #: 
-msgid "invalid event type id"
-msgstr "nevažeći ID vrste događaja"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "nevažeće prikvačivanje kalendara"
-
-#: 
-msgid "invalid status value"
-msgstr "nevažeća vrijednost statusa"
 
 #: 
 msgid "invalid export value"
@@ -5268,10 +5252,6 @@ msgstr "Primjenjivanje sistemskog ažuriranja..."
 
 #: 
 msgid "Back to Login"
-msgstr "Povratak na prijavu"
-
-#: 
-msgid "Back to login"
 msgstr "Povratak na prijavu"
 
 #: 
@@ -8007,10 +7987,6 @@ msgid "City is required."
 msgstr "Grad je obavezan."
 
 #: 
-msgid "Clear filter"
-msgstr "Očisti filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Stavka konfiguracije nije pronađena"
 
@@ -8280,10 +8256,6 @@ msgstr "Dodaj osobu"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Dodaj sve stavke košarice u skupinu"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Dodaj sve u košaricu"
 
 #: 
 msgid "Add cart items to a family"
@@ -9288,10 +9260,6 @@ msgid "Record why attendees visited your church"
 msgstr "Bilježite zašto su posjetitelji došli u vašu župu"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Ukloni sve iz košarice"
-
-#: 
 msgid "Remove from Class"
 msgstr "Ukloni iz razreda"
 
@@ -9762,10 +9730,6 @@ msgstr "Događaji ove godine"
 #: 
 msgid "Everyone"
 msgstr "Svi"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Brisanje bilješke nije uspjelo"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11666,10 +11630,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Početak raspona mora biti valjani GGGG-MM-DD datum."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Početak raspona mora biti prije kraja raspona"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Početak raspona mora biti prije kraja raspona."
 
@@ -12618,10 +12578,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Instalacija dodatka iz URL-a nije uspjela"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Učitavanje popisa odobrenih dodataka nije uspjelo"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Učitavanje popisa odobrenih dodataka nije uspjelo."
 
@@ -12680,10 +12636,6 @@ msgstr "Kebab-case. Mora odgovarati nazivu direktorija najviše razine unutar zi
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Učitavanje popisa odobrenih dodataka…"
-
-#: 
-msgid "Loading…"
-msgstr "Učitavanje…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13131,10 +13083,6 @@ msgid "Change Your Locale"
 msgstr "Promijenite vašu regionalnu postavku"
 
 #: 
-msgid "Change role"
-msgstr "Promijeni ulogu"
-
-#: 
 msgid "Check Number"
 msgstr "Broj čeka"
 
@@ -13149,10 +13097,6 @@ msgstr "Prijava nije uspjela. Molim pokušajte ponovo."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Odjava nije uspjela. Molim pokušajte ponovo."
-
-#: 
-msgid "City is required"
-msgstr "Grad je obavezan"
 
 #: 
 msgid "Click Save to apply."
@@ -13221,10 +13165,6 @@ msgstr "Kopiraj sve brojeve"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopiraj članove u skupinu"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Kreiranje sigurnosne kopije..."
 
 #: 
 msgid "Creating..."
@@ -14291,10 +14231,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Primit ćete rezervne kodove koji se mogu koristiti ako izgubite pristup vašoj aplikaciji"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Vaša košarica je prazna"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Vaš račun je sada zaštićen"
 
@@ -14313,10 +14249,6 @@ msgstr "Jezična preferencija vašeg preglednika se razlikuje od vaše regionaln
 #: 
 msgid "Your database already contains data"
 msgstr "Vaša baza podataka već sadrži podatke"
-
-#: 
-msgid "Zip code is required"
-msgstr "Poštanski broj je obavezan"
 
 #: 
 msgid "added"
@@ -14738,10 +14670,6 @@ msgstr "Nemate dozvolu za dodavanje bilješke za ovu obitelj."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Nemate dozvolu za dodavanje bilješke za ovu osobu."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Nemate dozvolu za uređivanje ove bilješke"
 
 #: 
 msgid "Account locked"
@@ -15786,10 +15714,6 @@ msgid "Select a person"
 msgstr "Odaberi osobu"
 
 #: 
-msgid "Select role"
-msgstr "Odaberi ulogu"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Odaberi vrstu (neobavezno)"
 
@@ -15944,10 +15868,6 @@ msgstr "Jeste li sigurni da želite trajno izbrisati ovaj zapis o uplati?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Potrebna je najmanje jedna dodjela fonda"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Najmanje jedan fond mora imati nenulti iznos"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17000,10 +16920,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Izrada i prijenos sigurnosne kopije. Ovo može potrajati nekoliko minuta..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Resetiranje baze podataka nije uspjelo."
-
-#: 
 msgid "Deceased"
 msgstr "Preminuo"
 
@@ -17200,10 +17116,6 @@ msgid "Log settings saved"
 msgstr "Postavke zapisnika spremljene"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Korisničko ime je obavezno"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Osoba je označena kao aktivna"
 
@@ -17328,10 +17240,6 @@ msgid "Sending..."
 msgstr "Slanje..."
 
 #: 
-msgid "Sending…"
-msgstr "Slanje…"
-
-#: 
 msgid "Settings reset"
 msgstr "Postavke resetirane"
 
@@ -17402,10 +17310,6 @@ msgstr "Nadolazeće"
 #: 
 msgid "View active only"
 msgstr "Prikaži samo aktivne"
-
-#: 
-msgid "View all"
-msgstr "Prikaži sve"
 
 #: 
 msgid "View all (including inactive)"
@@ -18182,10 +18086,6 @@ msgstr "Popisi članova službi i izvještaji o razredima nedjeljne škole"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Vaša fiskalna godina počinje u %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Došlo je do pogreške"
 
 #: 
 msgid "Approve"
@@ -19339,10 +19239,6 @@ msgid "Each staffing need must name a position"
 msgstr "Svaka potreba popune mora navesti poziciju"
 
 #: 
-msgid "Edit event"
-msgstr "Uredi događaj"
-
-#: 
 msgid "Edit ministry"
 msgstr "Uredi službu"
 
@@ -19427,10 +19323,6 @@ msgstr "E-pošta poslana je na {{count}} primatelja."
 #: 
 msgid "Emails"
 msgstr "E-pošta"
-
-#: 
-msgid "End time"
-msgstr "Vrijeme završetka"
 
 #: 
 msgid "Enter counts"
@@ -20713,10 +20605,6 @@ msgid "SMTP test"
 msgstr "SMTP test"
 
 #: 
-msgid "Save changes"
-msgstr "Spremi promjene"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Spremljeno – ova služba više ne traži pomoć"
 
@@ -20999,10 +20887,6 @@ msgstr "Potrebe popune spremljene"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Počnite stvaranjem službe, zatim dodajte timove i pozicije koji u njoj služe."
-
-#: 
-msgid "Start time"
-msgstr "Vrijeme početka"
 
 #: 
 msgid "Start typing a name"
@@ -22047,16 +21931,8 @@ msgid "Validation"
 msgstr "Provjera valjanosti"
 
 #: 
-msgid "View event"
-msgstr "Prikaži događaj"
-
-#: 
 msgid "View my schedule"
 msgstr "Prikaži moj raspored"
-
-#: 
-msgid "View person"
-msgstr "Pregled osobe"
 
 #: 
 msgid "View the event"

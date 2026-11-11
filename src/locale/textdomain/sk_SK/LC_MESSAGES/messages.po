@@ -4035,10 +4035,6 @@ msgid "The property could not be unassigned."
 msgstr "Vlastnosť sa nepodarilo odopiradiť."
 
 #: 
-msgid "Select event"
-msgstr "Vybrať udalosť"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Text pred menom v e-mailoch/správach"
 
@@ -4241,10 +4237,6 @@ msgstr "Obnovte si heslo"
 #: 
 msgid "Kiosk Manager"
 msgstr "Správca kiosku"
-
-#: 
-msgid "Report an issue"
-msgstr "Nahlásiť problém"
 
 #: 
 msgid "Self Verification"
@@ -4654,16 +4646,8 @@ msgid "User must have Delete Records permission"
 msgstr "Používateľ musí mať oprávnenie odstraňovať záznamy"
 
 #: 
-msgid "invalid event type id"
-msgstr "neplatné ID typu udalosti"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "neplatné pripnutie kalendára"
-
-#: 
-msgid "invalid status value"
-msgstr "neplatná hodnota stavu"
 
 #: 
 msgid "invalid export value"
@@ -5272,10 +5256,6 @@ msgstr "Používa sa aktualizácia systému..."
 
 #: 
 msgid "Back to Login"
-msgstr "Späť na prihlásenie"
-
-#: 
-msgid "Back to login"
 msgstr "Späť na prihlásenie"
 
 #: 
@@ -8017,10 +7997,6 @@ msgid "City is required."
 msgstr "Mesto je povinné."
 
 #: 
-msgid "Clear filter"
-msgstr "Vymazať filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Položka konfigurácie nenájdená"
 
@@ -8291,10 +8267,6 @@ msgstr "Pridať osobu"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Pridať všetky položky košíka do skupiny"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Pridať všetko do košíka"
 
 #: 
 msgid "Add cart items to a family"
@@ -9299,10 +9271,6 @@ msgid "Record why attendees visited your church"
 msgstr "Zaznamenať, prečo návštevníci navštívili vašu cirkev"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Odstrániť všetko z košíka"
-
-#: 
 msgid "Remove from Class"
 msgstr "Odstrániť z triedy"
 
@@ -9773,10 +9741,6 @@ msgstr "Podujatia tohto roka"
 #: 
 msgid "Everyone"
 msgstr "Všetci"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Odstránenie poznámky zlyhalo"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11678,10 +11642,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Začiatok rozsahu musí byť platný dátum RRRR-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Začiatok rozsahu musí byť pred koncom rozsahu"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Začiatok rozsahu musí byť pred koncom rozsahu."
 
@@ -12630,10 +12590,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Nepodarilo sa nainštalovať plugin z URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Nepodarilo sa načítať zoznam schválených pluginov"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Nepodarilo sa načítať zoznam schválených pluginov."
 
@@ -12692,10 +12648,6 @@ msgstr "Kebab-case. Musí zodpovedať názvu adresára v archíve zip a ID v plu
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Načítava sa zoznam schválených pluginov…"
-
-#: 
-msgid "Loading…"
-msgstr "Načítava sa…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13143,10 +13095,6 @@ msgid "Change Your Locale"
 msgstr "Zmeniť vaše lokálne nastavenie"
 
 #: 
-msgid "Change role"
-msgstr "Zmeniť rolu"
-
-#: 
 msgid "Check Number"
 msgstr "Číslo šeku"
 
@@ -13161,10 +13109,6 @@ msgstr "Prihlásenie zlyhalo. Skúste to znova."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Odhlásenie zlyhalo. Skúste to znova."
-
-#: 
-msgid "City is required"
-msgstr "Mesto je povinné"
 
 #: 
 msgid "Click Save to apply."
@@ -13233,10 +13177,6 @@ msgstr "Kopírovať všetky čísla"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopírovať členov do skupiny"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Vytvára sa záloha..."
 
 #: 
 msgid "Creating..."
@@ -14303,10 +14243,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Dostanete záložné kódy použiteľné pri strate prístupu k aplikácii"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Váš košík je prázdny"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Váš účet je teraz chránený"
 
@@ -14325,10 +14261,6 @@ msgstr "Jazykové nastavenie vášho prehliadača sa líši od nastavenia jazyka
 #: 
 msgid "Your database already contains data"
 msgstr "Vaša databáza už obsahuje dáta"
-
-#: 
-msgid "Zip code is required"
-msgstr "PSČ je povinné"
 
 #: 
 msgid "added"
@@ -14751,10 +14683,6 @@ msgstr "Nemáte oprávnenie pridať poznámku pre túto rodinu."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Nemáte oprávnenie pridať poznámku pre túto osobu."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Nemáte oprávnenie upravovať túto poznámku"
 
 #: 
 msgid "Account locked"
@@ -15801,10 +15729,6 @@ msgid "Select a person"
 msgstr "Vybrať osobu"
 
 #: 
-msgid "Select role"
-msgstr "Vybrať rolu"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Vybrať typ (volitelné)"
 
@@ -15959,10 +15883,6 @@ msgstr "Naozaj chcete natrvalo vymazať tento záznam platby?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Vyžaduje sa aspoň jedno priradenie fondu"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Aspoň jeden fond musí mať nenulovú sumu"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17017,10 +16937,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Vytváranie a nahrávanie zálohy. Môže to trvať niekoľko minút..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Obnovenie databázy zlyhalo."
-
-#: 
 msgid "Deceased"
 msgstr "Zosnulý"
 
@@ -17217,10 +17133,6 @@ msgid "Log settings saved"
 msgstr "Nastavenia denníka boli uložené"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Prihlasovacie meno je povinné"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Osoba bola označená ako aktívna"
 
@@ -17345,10 +17257,6 @@ msgid "Sending..."
 msgstr "Odosielanie..."
 
 #: 
-msgid "Sending…"
-msgstr "Odosielanie…"
-
-#: 
 msgid "Settings reset"
 msgstr "Nastavenia boli obnovené"
 
@@ -17419,10 +17327,6 @@ msgstr "Nadchádzajúce"
 #: 
 msgid "View active only"
 msgstr "Zobraziť len aktívne"
-
-#: 
-msgid "View all"
-msgstr "Zobraziť všetko"
 
 #: 
 msgid "View all (including inactive)"
@@ -18199,10 +18103,6 @@ msgstr "Zoznamy členov služieb a správy o triedach nedeľnej školy"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Váš fiškálny rok začína v mesiaci %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Vyskytla sa chyba"
 
 #: 
 msgid "Approve"
@@ -19363,10 +19263,6 @@ msgid "Each staffing need must name a position"
 msgstr "Každá potreba obsadenia musí uvádzať pozíciu"
 
 #: 
-msgid "Edit event"
-msgstr "Upraviť udalosť"
-
-#: 
 msgid "Edit ministry"
 msgstr "Upraviť službu"
 
@@ -19451,10 +19347,6 @@ msgstr "E-maily odoslané {{count}} príjemcom."
 #: 
 msgid "Emails"
 msgstr "E-maily"
-
-#: 
-msgid "End time"
-msgstr "Čas ukončenia"
 
 #: 
 msgid "Enter counts"
@@ -20739,10 +20631,6 @@ msgid "SMTP test"
 msgstr "Test SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Uložiť zmeny"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Uložené – táto služba už nežiada o pomoc"
 
@@ -21025,10 +20913,6 @@ msgstr "Potreby obsadenia uložené"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Začnite vytvorením služby a potom pridajte tímy a pozície, ktoré v nej slúžia."
-
-#: 
-msgid "Start time"
-msgstr "Čas začiatku"
 
 #: 
 msgid "Start typing a name"
@@ -22075,16 +21959,8 @@ msgid "Validation"
 msgstr "Validácia"
 
 #: 
-msgid "View event"
-msgstr "Zobraziť podujatie"
-
-#: 
 msgid "View my schedule"
 msgstr "Zobraziť môj rozpis"
-
-#: 
-msgid "View person"
-msgstr "Zobraziť osobu"
 
 #: 
 msgid "View the event"

@@ -4041,10 +4041,6 @@ msgid "The property could not be unassigned."
 msgstr "Ominaisuuden poisto epäonnistui."
 
 #: 
-msgid "Select event"
-msgstr "Valitse tapahtuma"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Teksti ennen nimeä sähköposteissa/raporteissa"
 
@@ -4247,10 +4243,6 @@ msgstr "Nollaa salasanasi"
 #: 
 msgid "Kiosk Manager"
 msgstr "Kioskin hallinta"
-
-#: 
-msgid "Report an issue"
-msgstr "Ilmoita ongelmasta"
 
 #: 
 msgid "Self Verification"
@@ -4662,16 +4654,8 @@ msgid "User must have Delete Records permission"
 msgstr "Käyttäjällä on oltava oikeus poistaa tietueita"
 
 #: 
-msgid "invalid event type id"
-msgstr "virheellinen tapahtumatyypin tunniste"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "virheellinen kalenterin kiinnitys"
-
-#: 
-msgid "invalid status value"
-msgstr "virheellinen tilan arvo"
 
 #: 
 msgid "invalid export value"
@@ -5272,10 +5256,6 @@ msgstr "Päivitetään järjestelmää..."
 
 #: 
 msgid "Back to Login"
-msgstr "Takaisin kirjautumiseen"
-
-#: 
-msgid "Back to login"
 msgstr "Takaisin kirjautumiseen"
 
 #: 
@@ -8005,10 +7985,6 @@ msgid "City is required."
 msgstr "Kaupunki on pakollinen."
 
 #: 
-msgid "Clear filter"
-msgstr "Tyhjennä suodatin"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Kokoonpanokohdetta ei löydy"
 
@@ -8277,10 +8253,6 @@ msgstr "Lisää henkilö"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Lisää kaikki valinnan kohteet ryhmään"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Lisää kaikki valintaan"
 
 #: 
 msgid "Add cart items to a family"
@@ -9285,10 +9257,6 @@ msgid "Record why attendees visited your church"
 msgstr "Kirjaa, miksi kävijät vierailivat seurakunnassasi"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Poista kaikki valinnasta"
-
-#: 
 msgid "Remove from Class"
 msgstr "Poista luokasta"
 
@@ -9759,10 +9727,6 @@ msgstr "Tämän vuoden tapahtumat"
 #: 
 msgid "Everyone"
 msgstr "Kaikki"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Muistiinpanon poistaminen epäonnistui"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11662,10 +11626,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Aikavälin alkamispäivän on oltava kelvollinen VVVV-KK-PP-päivämäärä."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Aikavälin alkamispäivän on oltava ennen päättymispäivää"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Aikavälin alkamispäivän on oltava ennen päättymispäivää."
 
@@ -12614,10 +12574,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Laajennuksen asentaminen URL:sta epäonnistui"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Hyväksyttyjen laajennusten luettelon lataaminen epäonnistui"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Hyväksyttyjen laajennusten luettelon lataaminen epäonnistui."
 
@@ -12676,10 +12632,6 @@ msgstr "Kebab-case-muoto. Täytyy vastata zip-tiedoston ylimmän tason hakemisto
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Ladataan hyväksyttyjen laajennusten luetteloa…"
-
-#: 
-msgid "Loading…"
-msgstr "Ladataan…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13127,10 +13079,6 @@ msgid "Change Your Locale"
 msgstr "Muuta alueasetusCasi"
 
 #: 
-msgid "Change role"
-msgstr "Vaihda rooli"
-
-#: 
 msgid "Check Number"
 msgstr "Shekin numero"
 
@@ -13145,10 +13093,6 @@ msgstr "Sisäänkirjaus epäonnistui. Yritä uudelleen."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Uloskirjaus epäonnistui. Yritä uudelleen."
-
-#: 
-msgid "City is required"
-msgstr "Kaupunki on pakollinen"
 
 #: 
 msgid "Click Save to apply."
@@ -13217,10 +13161,6 @@ msgstr "Kopioi kaikki numerot"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopioi jäsenet ryhmään"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Luodaan varmuuskopio..."
 
 #: 
 msgid "Creating..."
@@ -14287,10 +14227,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Saat varakoodeja, joita voit käyttää, jos menetät pääsyn sovellukseesi"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Ostoskorisi on tyhjä"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Tilisi on nyt suojattu"
 
@@ -14309,10 +14245,6 @@ msgstr "Selaimesi kieliasetukset poikkeavat ChurchCRM-aluesuunnatuksestasi"
 #: 
 msgid "Your database already contains data"
 msgstr "Tietokannassasi on jo tietoja"
-
-#: 
-msgid "Zip code is required"
-msgstr "Postinumero on pakollinen"
 
 #: 
 msgid "added"
@@ -14733,10 +14665,6 @@ msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tähän perheeseen."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tälle henkilölle."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Sinulla ei ole oikeutta muokata tätä muistiinpanoa"
 
 #: 
 msgid "Account locked"
@@ -15779,10 +15707,6 @@ msgid "Select a person"
 msgstr "Valitse henkilö"
 
 #: 
-msgid "Select role"
-msgstr "Valitse rooli"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Valitse tyyppi (valinnainen)"
 
@@ -15937,10 +15861,6 @@ msgstr "Haluatko varmasti poistaa tämän maksutietueen pysyvästi?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Vähintään yksi rahaston kohdistus vaaditaan"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Vähintään yhdellä rahastolla on oltava nollasta poikkeava summa"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16991,10 +16911,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Luodaan ja lähetetään varmuuskopiota. Tämä voi kestää useita minuutteja..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Tietokannan nollaus epäonnistui."
-
-#: 
 msgid "Deceased"
 msgstr "Kuollut"
 
@@ -17191,10 +17107,6 @@ msgid "Log settings saved"
 msgstr "Lokiasetukset tallennettu"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Kirjautumistunnus on pakollinen"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Henkilö merkitty aktiiviseksi"
 
@@ -17319,10 +17231,6 @@ msgid "Sending..."
 msgstr "Lähetetään..."
 
 #: 
-msgid "Sending…"
-msgstr "Lähetetään…"
-
-#: 
 msgid "Settings reset"
 msgstr "Asetukset nollattu"
 
@@ -17393,10 +17301,6 @@ msgstr "Tulevat"
 #: 
 msgid "View active only"
 msgstr "Näytä vain aktiiviset"
-
-#: 
-msgid "View all"
-msgstr "Näytä kaikki"
 
 #: 
 msgid "View all (including inactive)"
@@ -18173,10 +18077,6 @@ msgstr "Ryhmien jäsenluettelot ja pyhäkoululuokkien raportit"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Tilikautesi alkaa %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Tapahtui virhe"
 
 #: 
 msgid "Approve"
@@ -19323,10 +19223,6 @@ msgid "Each staffing need must name a position"
 msgstr "Jokaiselle miehitystarpeelle on annettava tehtävä"
 
 #: 
-msgid "Edit event"
-msgstr "Muokkaa tapahtumaa"
-
-#: 
 msgid "Edit ministry"
 msgstr "Muokkaa työalaa"
 
@@ -19411,10 +19307,6 @@ msgstr "Sähköpostit lähetetty {{count}} vastaanottajalle."
 #: 
 msgid "Emails"
 msgstr "Sähköpostit"
-
-#: 
-msgid "End time"
-msgstr "Lopetusaika"
 
 #: 
 msgid "Enter counts"
@@ -20695,10 +20587,6 @@ msgid "SMTP test"
 msgstr "SMTP-testi"
 
 #: 
-msgid "Save changes"
-msgstr "Tallenna muutokset"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Tallennettu – tämä työala ei enää pyydä apua"
 
@@ -20981,10 +20869,6 @@ msgstr "Miehitystarpeet tallennettu"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Aloita luomalla työala ja lisää sitten tiimit ja tehtävät, jotka siinä palvelevat."
-
-#: 
-msgid "Start time"
-msgstr "Aloitusaika"
 
 #: 
 msgid "Start typing a name"
@@ -22027,16 +21911,8 @@ msgid "Validation"
 msgstr "Tarkistus"
 
 #: 
-msgid "View event"
-msgstr "Näytä tapahtuma"
-
-#: 
 msgid "View my schedule"
 msgstr "Näytä aikatauluni"
-
-#: 
-msgid "View person"
-msgstr "Tarkastele henkilöä"
 
 #: 
 msgid "View the event"
