@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-09 20:06+0000\n"
+"POT-Creation-Date: 2026-11-11 01:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1950,6 +1950,12 @@ msgid "Ask someone to cover for you"
 msgstr ""
 
 msgid "Ask them"
+msgstr ""
+
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr ""
+
+msgid "Ask your host to move the database to a supported version."
 msgstr ""
 
 msgid "Asked — your coordinator will confirm it."
@@ -17073,6 +17079,9 @@ msgstr ""
 msgid "The unconfirmed email has changed. Reload the page and try again."
 msgstr ""
 
+msgid "The upgrade was not started, so nothing changed."
+msgstr ""
+
 msgid "The volunteer assignment could not be saved"
 msgstr ""
 
@@ -17654,6 +17663,9 @@ msgid "This title will be used for all generated events."
 msgstr ""
 
 msgid "This tool never changes these. Give each person their own email on their record."
+msgstr ""
+
+msgid "This upgrade cannot run on your database."
 msgstr ""
 
 msgid "This user must set a new password the next time they sign in."
@@ -20009,6 +20021,10 @@ msgid "Your database already contains data"
 msgstr ""
 
 msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr ""
+
+#, php-format
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
 msgstr ""
 
 msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."
