@@ -27134,3 +27134,283 @@ msgstr "Tarkista perheesi tiedot alla olevasta linkistä. Valitse tarkistussivul
 msgid "Review Family Information"
 msgstr "Tarkista perheen tiedot"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Työala nimeltä \"%s\" on jo olemassa. Valitse se luettelosta tai valitse toinen nimi."
+
+#: 
+msgid "A new ministry"
+msgstr "Uusi työala"
+
+#: 
+msgid "A position"
+msgstr "Tehtävä"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Lisätäänkö {{total}} vapaaehtoista aiemmin muunnettuihin tehtäviin?"
+
+#: 
+msgid "Already converted"
+msgstr "Jo muunnettu"
+
+#: 
+msgid "An existing ministry"
+msgstr "Olemassa oleva työala"
+
+#: 
+msgid "Becomes"
+msgstr "Muuttuu"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM:ssä on kaksi tapaa hallita vapaaehtoisia. Vain yhden on tarkoitus olla käytössä kerrallaan; Vapaaehtoiskokemus-asetus ratkaisee, kumman tämä seurakunta näkee. Vaihtaminen piilottaa tai näyttää sivuja ja valikon kohtia eikä koskaan poista tietoja. V1 ja Molemmat ovat tarjolla vain niin kauan kuin vapaaehtoistyömahdollisuudet ovat käytössä: kun jokainen mahdollisuus on muunnettu ja seurakunta käyttää V2:ta, ne poistuvat tästä luettelosta."
+
+#: 
+msgid "Convert"
+msgstr "Muunna"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Muunna vapaaehtoistyömahdollisuudet"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Muunnetaanko {{total}} mahdollisuutta nyt? V1-tiedot säilyvät ennallaan, kunnes vapaaehtoistyömahdollisuudet poistetaan käytöstä."
+
+#: 
+msgid "Converted"
+msgstr "Muunnettu"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Muunnettu: {{positions}} tehtävää ja {{ministries}} työalaa, {{qualifications}} vapaaehtoista pätevöity."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Jokaisesta mahdollisuudesta tulee tehtävä yhden työalan ensimmäiseen tiimiin, ja kaikki siihen liitetyt saavat pätevyyden tähän tehtävään. Itseilmoittautuminen on aluksi pois päältä näissä tehtävissä."
+
+#: 
+msgid "Everything is converted."
+msgstr "Kaikki on muunnettu."
+
+#: 
+msgid "Existing ministry"
+msgstr "Olemassa oleva työala"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Anna uudelle työalalle enintään 100 merkin nimi."
+
+#: 
+msgid "Its own ministry"
+msgstr "Oma työala"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Liitetty sen jälkeen: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Linkit, joita ei voi muuntaa"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Omat uudet työalat"
+
+#: 
+msgid "New ministry name"
+msgstr "Uuden työalan nimi"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Sähköpostia ei lähetetä, ja vapaaehtoistyömahdollisuudet säilyvät ennallaan, kunnes ne poistetaan käytöstä."
+
+#: 
+msgid "No name"
+msgstr "Ei nimeä"
+
+#: 
+msgid "Not converted"
+msgstr "Ei muunnettu"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Avaa ominaisuuksien kytkimet"
+
+#: 
+msgid "Open Ministries"
+msgstr "Avaa työalat"
+
+#: 
+msgid "Opportunities"
+msgstr "Mahdollisuudet"
+
+#: 
+msgid "Opportunity"
+msgstr "Mahdollisuus"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Mahdollisuus #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Muunnettuihin vapaaehtoistyömahdollisuuksiin muunnoksen jälkeen liitetyt henkilöt: %d. Lisää heidät tehtäviinsä ennen kuin vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Esikatsele muunnos ensin ja lähetä sen palauttama versio."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Nimetty uudelleen, jotta nimet pysyvät yksilöllisinä"
+
+#: 
+msgid "Review the conversion"
+msgstr "Tarkista muunnos"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Lähetä muunnosvalinta JSON-objektina."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Lähetä työaloiksi muuttuvat mahdollisuudet tunnisteluettelona."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Työalaa ei ole olemassa."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "ChurchCRM-versio, jossa ylläpitäjä sulki ilmoituksen vapaaehtoistyömahdollisuuksien poistamisesta käytöstä."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Vapaaehtoistyömahdollisuudet ovat muuttuneet esikatselun jälkeen. Tarkista esikatselu uudelleen ja muunna sitten."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Vahvistusta ei voitu avata. Lataa sivu uudelleen ja yritä uudelleen."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Muunnosta ei voitu esikatsella."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Muunnos epäonnistui. Mitään ei muutettu."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Työalalla \"%s\" ei ole tiimiä tehtäviä varten."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Palvelimeen ei saatu yhteyttä. Lataa sivu uudelleen nähdäksesi, suoritettiinko muunnos."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Muunnettavia vapaaehtoistyömahdollisuuksia ei ole."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Vapaaehtoisten hallinta vaihtuu tilaan Molemmat, jotta uudet työalat näkyvät vapaaehtoistyömahdollisuuksien rinnalla."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Vapaaehtoistyömahdollisuudet poistetaan käytöstä"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Vapaaehtoistyömahdollisuudet muunnettu"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027. Muunna ne työaloiksi, jotta tieto siitä, kuka palvelee missäkin, säilyy."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027. Muunna nyt %1$d mahdollisuutta ja %2$d vapaaehtoista työaloiksi. Voit esikatsella tuloksen ennen kuin mitään muutetaan."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Pätevöidyt vapaaehtoiset"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Muunnettuihin tehtäviin lisättävät vapaaehtoiset"
+
+#: 
+msgid "What it becomes"
+msgstr "Miksi se muuttuu"
+
+#: 
+msgid "What will happen"
+msgstr "Mitä tapahtuu"
+
+#: 
+msgid "Where they go"
+msgstr "Minne ne menevät"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Mitkä vanhat vapaaehtoistyömahdollisuudet on muunnettu ja miksi tehtäväksi kukin muuttui."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Mitä vapaaehtoiskokemusta tämä seurakunta käyttää. Vapaaehtoistyömahdollisuudet (V1) poistetaan käytöstä alkuvuodesta 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Vapaaehtoistyömahdollisuutesi on muunnettu työaloiksi. Vaihda vapaaehtoisten hallinta tilaan V2 ennen kuin vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "uudeksi työalaksi, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "työalaan {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "ei enää ChurchCRM:ssä"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Pienennä sivupalkki"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Laajenna sivupalkki"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Anna kelvollinen sähköpostiosoite, jossa on ennen @-merkkiä vain ASCII-merkkejä."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Sähköpostiosoite ei ole kelvollinen"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Haluatko varmasti poistaa kohteen {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Järjestelmätietoja ei voitu kerätä. Yritä uudelleen."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Tältä ajanjaksolta ei löytynyt maksuja."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Maksut rahastoittain"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Tuntematon rahasto"
+

@@ -27252,3 +27252,283 @@ msgstr "Folosește linkul de mai jos pentru a verifica informațiile familiei ta
 msgid "Review Family Information"
 msgstr "Verifică informațiile familiei"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Există deja o slujire numită „%s”. Alegeți-o din listă sau alegeți alt nume."
+
+#: 
+msgid "A new ministry"
+msgstr "O slujire nouă"
+
+#: 
+msgid "A position"
+msgstr "Un post"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Adăugați voluntarii ({{total}}) la posturile convertite anterior?"
+
+#: 
+msgid "Already converted"
+msgstr "Deja convertită"
+
+#: 
+msgid "An existing ministry"
+msgstr "O slujire existentă"
+
+#: 
+msgid "Becomes"
+msgstr "Devine"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM are două moduri de a gestiona voluntarii. Doar unul ar trebui folosit la un moment dat; setarea „Experiența voluntarilor” decide pe care îl vede această biserică. Comutarea ascunde sau afișează pagini și elemente de meniu și nu șterge niciodată date. V1 și Ambele sunt oferite doar cât timp sunt folosite Oportunitățile de voluntariat: după ce fiecare oportunitate este convertită și biserica folosește V2, ele dispar din această listă."
+
+#: 
+msgid "Convert"
+msgstr "Convertește"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Convertește Oportunitățile de voluntariat"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Convertiți acum oportunitățile ({{total}})? Datele V1 rămân neschimbate până la retragerea Oportunităților de voluntariat."
+
+#: 
+msgid "Converted"
+msgstr "Convertită"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Convertit: posturi – {{positions}}, slujiri – {{ministries}}, voluntari calificați – {{qualifications}}."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Fiecare oportunitate devine un post în prima echipă a unei slujiri, iar toți cei legați de ea devin calificați pentru acel post. Autoînscrierea este inițial dezactivată pentru aceste posturi."
+
+#: 
+msgid "Everything is converted."
+msgstr "Totul este convertit."
+
+#: 
+msgid "Existing ministry"
+msgstr "Slujire existentă"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Dați noii slujiri un nume de cel mult 100 de caractere."
+
+#: 
+msgid "Its own ministry"
+msgstr "Propria slujire"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Legați de atunci: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Legături care nu pot fi convertite"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Slujiri noi proprii"
+
+#: 
+msgid "New ministry name"
+msgstr "Numele noii slujiri"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Nu se trimite niciun e-mail, iar Oportunitățile de voluntariat rămân neschimbate până la retragerea lor."
+
+#: 
+msgid "No name"
+msgstr "Fără nume"
+
+#: 
+msgid "Not converted"
+msgstr "Neconvertită"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Deschide Comutatoare de caracteristici"
+
+#: 
+msgid "Open Ministries"
+msgstr "Deschide Slujiri"
+
+#: 
+msgid "Opportunities"
+msgstr "Oportunități"
+
+#: 
+msgid "Opportunity"
+msgstr "Oportunitate"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Oportunitatea nr. %d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Persoane legate de Oportunități de voluntariat convertite de la conversie încoace: %d. Adăugați-le la posturile lor înainte ca Oportunitățile de voluntariat să fie retrase la începutul lui 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Previzualizați mai întâi conversia și trimiteți revizia returnată."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Redenumit pentru ca numele să fie unice"
+
+#: 
+msgid "Review the conversion"
+msgstr "Verifică conversia"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Trimiteți alegerea de conversie ca obiect JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Trimiteți oportunitățile care devin slujiri ca listă de ID-uri."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Slujirea respectivă nu există."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Versiunea ChurchCRM în care un administrator a închis notificarea despre retragerea Oportunităților de voluntariat."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Oportunitățile de voluntariat s-au schimbat de la previzualizare. Verificați din nou previzualizarea, apoi convertiți."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Confirmarea nu a putut fi deschisă. Reîncărcați pagina și încercați din nou."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Conversia nu a putut fi previzualizată."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Conversia a eșuat. Nu s-a modificat nimic."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Slujirea „%s” nu are nicio echipă pentru posturi."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Serverul nu a putut fi contactat. Reîncărcați pagina pentru a vedea dacă s-a efectuat conversia."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Nu există Oportunități de voluntariat de convertit."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Gestionarea voluntarilor trece la Ambele, astfel încât noile slujiri să fie vizibile lângă Oportunitățile de voluntariat."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Oportunitățile de voluntariat sunt retrase"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Oportunități de voluntariat convertite"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Oportunitățile de voluntariat vor fi retrase la începutul lui 2027. Convertiți-le în Slujiri pentru a păstra cine unde slujește."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Oportunitățile de voluntariat vor fi retrase la începutul lui 2027. Convertiți acum în Slujiri oportunitățile (%1$d) și voluntarii (%2$d). Puteți previzualiza rezultatul înainte să se schimbe ceva."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Voluntari calificați"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Voluntari de adăugat la posturile convertite"
+
+#: 
+msgid "What it becomes"
+msgstr "Ce devine"
+
+#: 
+msgid "What will happen"
+msgstr "Ce se va întâmpla"
+
+#: 
+msgid "Where they go"
+msgstr "Unde ajung"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Ce Oportunități de voluntariat vechi au fost convertite și postul în care s-a transformat fiecare."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Ce experiență de voluntariat folosește această biserică. Oportunitățile de voluntariat (V1) vor fi retrase la începutul lui 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Oportunitățile dvs. de voluntariat au fost convertite în Slujiri. Treceți Gestionarea voluntarilor la V2 înainte ca Oportunitățile de voluntariat să fie retrase la începutul lui 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "într-o slujire nouă, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "în slujirea {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "nu mai este în ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Restrânge bara laterală"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Extinde bara laterală"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Introduceți o adresă de e-mail validă care conține doar caractere ASCII înainte de @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Adresa de e-mail a acestei persoane nu este validă"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Sigur doriți să ștergeți {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Nu s-au putut colecta informațiile despre sistem. Încercați din nou."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Nu s-au găsit plăți pentru această perioadă."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Plăți pe fonduri"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Fond necunoscut"
+
