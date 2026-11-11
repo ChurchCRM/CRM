@@ -63,6 +63,7 @@ $configs->setValue(null, [
     'sTelemetryLevel' => $configValue(TelemetryService::LEVEL_ERRORS),
     'sSystemID' => $configValue('install-id'),
     'sTelemetryLifecycleVersion' => $configValue(''),
+    'sTelemetryHeartbeatDate' => $configValue(gmdate('Y-m-d')),
 ]);
 $currentVersion = VersionUtils::getInstalledVersion();
 $sentEvents = [];
@@ -92,3 +93,16 @@ SystemConfig::setValue('sTelemetryLevel', TelemetryService::LEVEL_ERRORS);
 $notAcknowledged = static fn (): bool => false;
 TelemetryService::syncLifecycle($notAcknowledged);
 Assert::same('', SystemConfig::getValue('sTelemetryLifecycleVersion'));
+
+SystemConfig::setValue('sTelemetryLevel', TelemetryService::LEVEL_INSTALL);
+SystemConfig::setValue('sTelemetryLifecycleVersion', $currentVersion);
+SystemConfig::setValue('sTelemetryHeartbeatDate', '2000-01-01');
+$beats = [];
+$beatSender = static function (string $event, array $properties) use (&$beats): bool {
+    $beats[] = $event;
+    return true;
+};
+TelemetryService::syncLifecycle($beatSender);
+TelemetryService::syncLifecycle($beatSender);
+Assert::same(['heartbeat'], $beats);
+Assert::same(gmdate('Y-m-d'), SystemConfig::getValue('sTelemetryHeartbeatDate'));

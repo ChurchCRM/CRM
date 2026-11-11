@@ -104,15 +104,23 @@ class TelemetryService
                 ? (ConfigQuery::create()->findOneByName('sTelemetryLifecycleVersion')?->getValue() ?? '')
                 : SystemConfig::getValue('sTelemetryLifecycleVersion');
             $lifecycleEvent = self::buildLifecycleEvent($level, $systemId, $coveredVersion, $currentVersion);
-            if ($lifecycleEvent === null) {
-                return;
+            if ($lifecycleEvent !== null) {
+                $acknowledged = ($send ?? self::capture(...))($lifecycleEvent['event'], $lifecycleEvent['properties']);
+                if ($acknowledged === false) {
+                    return;
+                }
+                SystemConfig::setValue('sTelemetryLifecycleVersion', $currentVersion);
             }
 
-            $acknowledged = ($send ?? self::capture(...))($lifecycleEvent['event'], $lifecycleEvent['properties']);
-            if ($acknowledged === false) {
-                return;
+            // One heartbeat per UTC day lets PostHog count active installs (seen in the last 28 days).
+            $today = gmdate('Y-m-d');
+            $lastHeartbeat = $send === null
+                ? (ConfigQuery::create()->findOneByName('sTelemetryHeartbeatDate')?->getValue() ?? '')
+                : SystemConfig::getValue('sTelemetryHeartbeatDate');
+            if ($lastHeartbeat !== $today
+                && ($send ?? self::capture(...))('heartbeat', self::lifecycleProperties($currentVersion)) !== false) {
+                SystemConfig::setValue('sTelemetryHeartbeatDate', $today);
             }
-            SystemConfig::setValue('sTelemetryLifecycleVersion', $currentVersion);
         } finally {
             if ($connection !== null) {
                 try {
@@ -361,7 +369,7 @@ class TelemetryService
             return false;
         }
 
-        if (in_array($event, ['install_completed', 'upgrade_completed', 'upgrade_failed'], true)) {
+        if (in_array($event, ['install_completed', 'upgrade_completed', 'upgrade_failed', 'heartbeat'], true)) {
             $properties['$process_person_profile'] = false;
         }
         $payload = json_encode([

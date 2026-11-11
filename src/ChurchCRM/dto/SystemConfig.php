@@ -381,6 +381,7 @@ class   SystemConfig
             'sInstallDataProfile'                  => new ConfigItem('sInstallDataProfile', 'choice', 'production', '', '', json_encode(['production' => 'production', 'demo' => 'demo', 'test' => 'test'])),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
             'sTelemetryLifecycleVersion'            => new ConfigItem('sTelemetryLifecycleVersion', 'text', ''),
+            'sTelemetryHeartbeatDate'               => new ConfigItem('sTelemetryHeartbeatDate', 'text', ''),
         ];
     }
 
