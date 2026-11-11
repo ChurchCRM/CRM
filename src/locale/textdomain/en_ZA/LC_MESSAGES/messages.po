@@ -54,10 +54,6 @@ msgid "Unk"
 msgstr "-"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "You are about to email a copy of the family information to the following emails"
-
-#: 
 msgid "Check"
 msgstr "Cheque"
 
@@ -158,10 +154,6 @@ msgstr "Person ID for Cart must be numeric"
 #: 
 msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Set the encryption system to use - SSL (deprecated) or TLS"
-
-#: 
-msgid "invalid event type id"
-msgstr "invalid event type ID"
 
 #: 
 msgid "Unexpected Person Id"
@@ -313,10 +305,6 @@ msgstr "Foreground Colour"
 #: 
 msgid "Two Factor Enrollment Error"
 msgstr "Two Factor Enrolment Error"
-
-#: 
-msgid "Zip code is required"
-msgstr "Postcode is required"
 
 #: 
 msgid "Cell Phone Format"

@@ -881,10 +881,6 @@ msgid "Do you want to proceed?"
 msgstr "തുടരാൻ ആഗ്രഹിക്കുന്നോ?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "നിങ്ങൾ ഇനിപ്പറയുന്ന ഇമെയിലുകളിലേക്ക് കുടുംബ വിവരം ഇമെയിൽ ചെയ്യാൻ പോകുകയാണ്"
-
-#: 
 msgid "Financial Reports"
 msgstr "സാമ്പത്തിക റിപ്പോർട്ടുകൾ"
 
@@ -1804,10 +1800,6 @@ msgstr "ഫോൺ നമ്പർ"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "ഇഷ്‌ടാനുസൃത ഡ്രോപ്-ഡൗൺ ലിസ്‌റ്റ്"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF കുടുംബാംഗങ്ങൾക്ക് ഇമെയിൽ ചെയ്തു."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3848,10 +3840,6 @@ msgid "Please verify your family's information"
 msgstr "നിങ്ങളുടെ കുടുംബ വിവരം സ്ഥിരീകരിക്കുക"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "സ്ഥിരീകരണ വിവരം ലഭ്യമാക്കാൻ കഴിഞ്ഞില്ല"
-
-#: 
 msgid "No Changes"
 msgstr "മാറ്റങ്ങൾ ഇല്ല"
 
@@ -3864,24 +3852,8 @@ msgid "Oops! Page not found."
 msgstr "ക്ഷമിക്കണം! പേജ് കണ്ടെത്തിയില്ല."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "നിങ്ങളുടെ കുടുംബ സ്ഥിരീകരണം ആരംഭിക്കാൻ ഇനിപ്പറയുന്നത് നൽകുക"
-
-#: 
-msgid "Family Verification"
-msgstr "കുടുംബ സ്ഥിരീകരണം"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "കുടുംബ വിവര സ്ഥിരീകരണം അഭ്യർത്ഥിക്കുക"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "കുടുംബ വിവരം സ്ഥിരീകരിക്കേണ്ടത് എങ്ങനെ ആണ് അഭ്യർത്ഥിക്കണ്ടതെന്ന് തിരഞ്ഞെടുക്കുക"
-
-#: 
-msgid "Online Verification"
-msgstr "ഓൺലൈൻ സ്ഥിരീകരണം"
 
 #: 
 msgid "Verified In Person"
@@ -4061,10 +4033,6 @@ msgstr "സ്വഭാവം വിജയകരമായി നീക്കി.
 #: 
 msgid "The property could not be unassigned."
 msgstr "സ്വഭാവം നീക്കാൻ കഴിഞ്ഞില്ല."
-
-#: 
-msgid "Select event"
-msgstr "ഇവന്റ് തിരഞ്ഞെടുക്കുക"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4271,10 +4239,6 @@ msgid "Kiosk Manager"
 msgstr "കിയോസ്‌ക് മാനേജർ"
 
 #: 
-msgid "Report an issue"
-msgstr "ഒരു പ്രശ്‌നം റിപ്പോർട്ട് ചെയ്യുക"
-
-#: 
 msgid "Self Verification"
 msgstr "സ്വ-സ്ഥിരീകരണം"
 
@@ -4303,10 +4267,6 @@ msgstr "അറബിക് - ഈജിപ്ത്"
 #: 
 msgid "Thai"
 msgstr "തായ്"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "സ്വ-സ്ഥിരീകരണം കാത്തിരിക്കുന്നു"
 
 #: 
 msgid "Self Verify"
@@ -4688,16 +4648,8 @@ msgid "User must have Delete Records permission"
 msgstr "ഉപയോക്താവിന് റെക്കോർഡ് ഇല്ലാതാക്കൽ അനുമതി ഉണ്ടായിരിക്കണം"
 
 #: 
-msgid "invalid event type id"
-msgstr "അസാധുവായ ഇവന്റ് തരം ID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "അസാധുവായ കലണ്ടർ പിന്നിംഗ്"
-
-#: 
-msgid "invalid status value"
-msgstr "അസാധുവായ സ്ഥിതി മൂല്യം"
 
 #: 
 msgid "invalid export value"
@@ -5300,10 +5252,6 @@ msgstr "സിസ്റ്റം അപ്‌ഡേറ്റ് പ്രയോ�
 
 #: 
 msgid "Back to Login"
-msgstr "ലോഗിൻ-ലേക്ക് മടങ്ങുക"
-
-#: 
-msgid "Back to login"
 msgstr "ലോഗിൻ-ലേക്ക് മടങ്ങുക"
 
 #: 
@@ -6540,10 +6488,6 @@ msgid "Additional Information"
 msgstr "അധിക വിവരം"
 
 #: 
-msgid "All information is correct"
-msgstr "എല്ലാ വിവരവും ശരിയാണ്"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "അവസരങ്ങൾ നൽകുക"
 
@@ -6556,20 +6500,12 @@ msgid "Choose opportunities..."
 msgstr "അവസരങ്ങൾ തിരഞ്ഞെടുക്കൂ..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "കുടുംബ വിവരം സ്ഥിരീകരിക്കുക"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "ബന്ധ & വ്യക്തിഗത വിവരം"
 
 #: 
 msgid "Edited"
 msgstr "എഡിറ്റ് ചെയ്തു"
-
-#: 
-msgid "Email PDF"
-msgstr "PDF ഇമെയിൽ ചെയ്യുക"
 
 #: 
 msgid "Newsletter"
@@ -6580,40 +6516,12 @@ msgid "Personal"
 msgstr "വ്യക്തിഗതം"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "ദയവായി ഞങ്ങളുടെ രേഖകൾ ശരിയാക്കൂ"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "ഇവിടെ ഏതെങ്കിലും തിരുത്തൽ അല്ലെങ്കിൽ അധിക വിവരം നൽകൂ..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "അവസരങ്ങൾ തിരഞ്ഞെടുക്കൂ"
 
 #: 
-msgid "Submit Verification"
-msgstr "സ്ഥിരീകരണം സമർപ്പിക്കുക"
-
-#: 
-msgid "Thank You!"
-msgstr "നന്ദി!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "ഞങ്ങളുടെ വെബ്‌സൈറ്റ് സന്ദർശിക്കൂ"
-
-#: 
 msgid "Volunteer"
 msgstr "സ്വമേധയാ"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "നിങ്ങളുടെ സ്ഥിരീകരണം പ്രോസസ് ചെയ്യുന്നതിൽ ഒരു പിശക് ഉണ്ടായി. വീണ്ടും ശ്രമിക്കൂ അല്ലെങ്കിൽ ഞങ്ങളെ ബന്ധപ്പെടൂ."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "നിങ്ങളുടെ സ്ഥിരീകരണ അഭ്യർത്ഥന ലഭിച്ചു. വിവരം അപ്‌ഡേറ്റ് ചെയ്തതിന് നന്ദി."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8073,10 +7981,6 @@ msgid "City is required."
 msgstr "നഗരം ആവശ്യമാണ്."
 
 #: 
-msgid "Clear filter"
-msgstr "ഫിൽട്ടർ ക്ലിയർ ചെയ്യൂ"
-
-#: 
 msgid "Configuration item not found"
 msgstr "കോൺഫിഗറേഷൻ ഇനം കണ്ടെത്തിയില്ല"
 
@@ -8345,10 +8249,6 @@ msgstr "ഒരു വ്യക്തിയെ ചേർക്കൂ"
 #: 
 msgid "Add all cart items to a group"
 msgstr "കാർട്ട് ഇനങ്ങൾ ഒരു ഗ്രൂപ്പിൽ ചേർക്കൂ"
-
-#: 
-msgid "Add all to Cart"
-msgstr "എല്ലാം കാർട്ടിൽ ചേർക്കൂ"
 
 #: 
 msgid "Add cart items to a family"
@@ -8855,10 +8755,6 @@ msgid "Family Profile"
 msgstr "കുടുംബ പ്രൊഫൈൽ"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "കുടുംബ റോളുകൾ (കുടുംബനാഥൻ, ഭാര്യ/ഭർത്താവ്, കുട്ടി, മുതലായവ) നിങ്ങളുടെ രേഖകൾ ക്രമീകരിക്കാൻ സഹായിക്കുന്നു."
-
-#: 
 msgid "Family vs Person"
 msgstr "കുടുംബം vs വ്യക്തി"
 
@@ -9357,10 +9253,6 @@ msgid "Record why attendees visited your church"
 msgstr "സഭ സന്ദർശിച്ചവർ എന്തിനാണ് വന്നതെന്ന് രേഖപ്പെടുത്തുക"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "കാർട്ടിൽ നിന്ന് എല്ലാം നീക്കം ചെയ്യുക"
-
-#: 
 msgid "Remove from Class"
 msgstr "ക്ലാസിൽ നിന്ന് നീക്കം ചെയ്യുക"
 
@@ -9831,10 +9723,6 @@ msgstr "ഈ വർഷം ഇവന്റുകൾ"
 #: 
 msgid "Everyone"
 msgstr "എല്ലാവരും"
-
-#: 
-msgid "Failed to delete note"
-msgstr "കുറിപ്പ് ഇല്ലാതാക്കൽ പരാജയപ്പെട്ടു"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11734,10 +11622,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "ശ്രേണി ആരംഭം ഒരു സാധുവായ YYYY-MM-DD തീയതി ആയിരിക്കണം."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "ശ്രേണി ആരംഭം ശ്രേണി അവസാനത്തിന് മുൻപ് ആയിരിക്കണം"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "ശ്രേണി ആരംഭം ശ്രേണി അവസാനത്തിന് മുൻപ് ആയിരിക്കണം."
 
@@ -11958,10 +11842,6 @@ msgid "Cannot move property in that direction"
 msgstr "ആ ദിശയിൽ പ്രോപ്പർട്ടി നീക്കാൻ കഴിയില്ല"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "കുടുംബ വിവരം സ്ഥിരീകരിക്കുക"
-
-#: 
 msgid "Delete failed"
 msgstr "ഇല്ലാതാക്കൽ പരാജയപ്പെട്ടു"
 
@@ -12002,20 +11882,12 @@ msgid "Invalid target family"
 msgstr "അസാധുവായ ലക്ഷ്യ കുടുംബം"
 
 #: 
-msgid "Log Out"
-msgstr "പുറത്തുകടക്കുക"
-
-#: 
 msgid "Membership not found"
 msgstr "അംഗത്വം കണ്ടെത്തിയില്ല"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "പാസ്‌വേഡ് വിജയകരമായി മാറ്റി"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "ദയവായി താഴെയുള്ള നിങ്ങളുടെ കുടുംബ വിവരം അവലോകനം ചെയ്ത് സ്ഥിരീകരിക്കുക അല്ലെങ്കിൽ മാറ്റങ്ങൾ അഭ്യർത്ഥിക്കുക."
 
 #: 
 msgid "Please select a target family."
@@ -12698,10 +12570,6 @@ msgid "Failed to install plugin from URL"
 msgstr "URL-ൽ നിന്ന് പ്ലഗ്‌ഇൻ ഇൻസ്‌റ്റോൾ ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "അംഗീകൃത പ്ലഗ്‌ഇൻ ലിസ്റ്റ് ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "അംഗീകൃത പ്ലഗ്‌ഇൻ ലിസ്റ്റ് ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു."
 
@@ -12760,10 +12628,6 @@ msgstr "Kebab-case. zip-ന്റെ ഉള്ളിലെ ടോപ്പ്-�
 #: 
 msgid "Loading approved plugin list…"
 msgstr "അംഗീകൃത പ്ലഗ്‌ഇൻ ലിസ്റ്റ് ലോഡ് ചെയ്യുന്നു…"
-
-#: 
-msgid "Loading…"
-msgstr "ലോഡ് ചെയ്യുന്നു…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13211,10 +13075,6 @@ msgid "Change Your Locale"
 msgstr "ലോക്കൽ മാറ്റൂ"
 
 #: 
-msgid "Change role"
-msgstr "പങ്ക് മാറ്റുക"
-
-#: 
 msgid "Check Number"
 msgstr "ചെക്ക് നമ്പർ"
 
@@ -13229,10 +13089,6 @@ msgstr "ചെക്ക്-ഇൻ പരാജയപ്പെട്ടു. ദ�
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "ചെക്ക്-ഔട്ട് പരാജയപ്പെട്ടു. ദയവായി വീണ്ടും ശ്രമിക്കുക."
-
-#: 
-msgid "City is required"
-msgstr "നഗരം ആവശ്യമാണ്"
 
 #: 
 msgid "Click Save to apply."
@@ -13301,10 +13157,6 @@ msgstr "എല്ലാ നമ്പറുകളും പകർത്തുക"
 #: 
 msgid "Copy Members to Group"
 msgstr "അംഗങ്ങളെ ഗ്രൂപ്പിലേക്ക് പകർത്തുക"
-
-#: 
-msgid "Creating Backup..."
-msgstr "ബാക്കപ്പ് ഉണ്ടാക്കുന്നു..."
 
 #: 
 msgid "Creating..."
@@ -13489,10 +13341,6 @@ msgstr "കാർട്ടിൽ ചേർക്കൽ പരാജയപ്പ�
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Enrollment cancel ചെയ്യാൻ കഴിഞ്ഞില്ല. വീണ്ടും ശ്രമിക്കുക."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "URL കോപ്പി ചെയ്യൽ പരാജയപ്പെട്ടു"
 
 #: 
 msgid "Failed to create backup."
@@ -13883,10 +13731,6 @@ msgid "One-Time Code"
 msgstr "ഒറ്റ-ഉപയോഗ കോഡ്"
 
 #: 
-msgid "Open in New Tab"
-msgstr "പുതിയ ടാബിൽ തുറക്കുക"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "ഓതന്റിക്കേറ്റർ ആപ്പ് തുറന്ന് ഈ QR കോഡ് സ്കാൻ ചെയ്യൂ"
 
@@ -14163,10 +14007,6 @@ msgid "Setup Complete"
 msgstr "ക്രമീകരണം പൂർത്തിയായി"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "ഈ URL കുടുംബ അംഗങ്ങൾക്ക് അവരുടെ വിവരം സ്ഥിരീകരിക്കാൻ പങ്കിടൂ"
-
-#: 
 msgid "Show more options"
 msgstr "കൂടുതൽ ഓപ്ഷനുകൾ കാണിക്കുക"
 
@@ -14319,10 +14159,6 @@ msgid "Validation pending"
 msgstr "സ്ഥിരീകരണം കാത്തിരിക്കുന്നു"
 
 #: 
-msgid "Verification URL"
-msgstr "സ്ഥിരീകരണ URL"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "പരിശോധന പരാജയപ്പെട്ടു. ദയവായി വീണ്ടും ശ്രമിക്കുക."
 
@@ -14387,10 +14223,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "ആപ്പ് ആക്സസ് നഷ്ടമായാൽ ഉപയോഗിക്കാൻ backup കോഡ് ലഭിക്കും"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "നിങ്ങളുടെ കാർട്ട് ശൂന്യമാണ്"
-
-#: 
 msgid "Your account is now protected"
 msgstr "നിങ്ങളുടെ അക്കൗണ്ട് ഇനി സുരക്ഷിതമാണ്"
 
@@ -14409,10 +14241,6 @@ msgstr "ബ്രൗസർ ഭാഷ ChurchCRM ലോക്കലിൽ നി�
 #: 
 msgid "Your database already contains data"
 msgstr "നിങ്ങളുടെ ഡാറ്റാബേസിൽ ഇതിനകം ഡേറ്റ ഉണ്ട്"
-
-#: 
-msgid "Zip code is required"
-msgstr "പിൻകോഡ് ആവശ്യമാണ്"
 
 #: 
 msgid "added"
@@ -14833,10 +14661,6 @@ msgstr "ഈ കുടുംബത്തിനായി ഒരു കുറിപ
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "ഈ വ്യക്തിക്കായി ഒരു കുറിപ്പ് ചേർക്കാൻ നിങ്ങൾക്ക് അനുമതിയില്ല."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "ഈ കുറിപ്പ് എഡിറ്റ് ചെയ്യാൻ നിങ്ങൾക്ക് അനുമതിയില്ല"
 
 #: 
 msgid "Account locked"
@@ -15659,10 +15483,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "ഈ കുടുംബ രേഖ ഇല്ലാതാക്കൽ സ്ഥിരീകരിക്കുക"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "നിങ്ങളുടെ കുടുംബ വിവരങ്ങൾ സ്ഥിരീകരിക്കുക"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "ഈ സംഭാവനകൾ ബന്ധിപ്പിക്കാൻ മറ്റൊരു കുടുംബത്തെ തിരഞ്ഞെടുക്കുക"
 
@@ -15883,10 +15703,6 @@ msgid "Select a person"
 msgstr "ഒരു വ്യക്തിയെ തിരഞ്ഞെടുക്കുക"
 
 #: 
-msgid "Select role"
-msgstr "റോൾ തിരഞ്ഞെടുക്കുക"
-
-#: 
 msgid "Select type (optional)"
 msgstr "തരം തിരഞ്ഞെടുക്കുക (ഐച്ഛികം)"
 
@@ -16041,10 +15857,6 @@ msgstr "ഈ പേമെന്റ് രേഖ സ്ഥിരമായി ഇ�
 #: 
 msgid "At least one fund allocation is required"
 msgstr "കുറഞ്ഞത് ഒരു ഫണ്ട് അനുവദനം ആവശ്യമാണ്"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "കുറഞ്ഞത് ഒരു ഫണ്ടിന് പൂജ്യമല്ലാത്ത തുക ഉണ്ടായിരിക്കണം"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16293,10 +16105,6 @@ msgstr "പ്രതിജ്ഞ ഗ്രൂപ്പ് കണ്ടെത്�
 #: 
 msgid "Pledges & Payments"
 msgstr "പ്രതിജ്ഞകളും പേമെന്റുകളും"
-
-#: 
-msgid "Prioritise translations"
-msgstr "വിവർത്തനങ്ങൾക്ക് മുൻഗണന നൽകുക"
 
 #: 
 msgid "Purpose"
@@ -16559,12 +16367,6 @@ msgstr "തിരഞ്ഞെടുത്ത നിക്ഷേപങ്ങൾ�
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "സാധുതയുള്ള നിക്ഷേപ ഐഡികളൊന്നും നൽകിയിട്ടില്ല"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF %d കുടുംബത്തിന് വിജയകരമായി ഇമെയിൽ ചെയ്തു."
-msgstr[1] "PDF %d കുടുംബങ്ങൾക്ക് വിജയകരമായി ഇമെയിൽ ചെയ്തു."
 
 #: 
 msgid "Partial Send"
@@ -17105,10 +16907,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "ബാക്കപ്പ് സൃഷ്ടിച്ച് അപ്‌ലോഡ് ചെയ്യുന്നു. ഇതിന് കുറച്ച് മിനിറ്റുകൾ എടുത്തേക്കാം..."
 
 #: 
-msgid "Database reset failed."
-msgstr "ഡാറ്റാബേസ് റീസെറ്റ് പരാജയപ്പെട്ടു."
-
-#: 
 msgid "Deceased"
 msgstr "മരണപ്പെട്ടവർ"
 
@@ -17305,10 +17103,6 @@ msgid "Log settings saved"
 msgstr "ലോഗ് ക്രമീകരണങ്ങൾ സേവ് ചെയ്തു"
 
 #: 
-msgid "Login Name is Required"
-msgstr "ലോഗിൻ പേര് ആവശ്യമാണ്"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "വ്യക്തിയെ സജീവം എന്ന് അടയാളപ്പെടുത്തി"
 
@@ -17433,10 +17227,6 @@ msgid "Sending..."
 msgstr "അയക്കുന്നു..."
 
 #: 
-msgid "Sending…"
-msgstr "അയക്കുന്നു…"
-
-#: 
 msgid "Settings reset"
 msgstr "ക്രമീകരണങ്ങൾ റീസെറ്റ് ചെയ്തു"
 
@@ -17505,16 +17295,8 @@ msgid "Upcoming"
 msgstr "വരാനിരിക്കുന്നത്"
 
 #: 
-msgid "Valid Until"
-msgstr "സാധുതയുള്ളത് ഇത് വരെ"
-
-#: 
 msgid "View active only"
 msgstr "സജീവമായവ മാത്രം കാണുക"
-
-#: 
-msgid "View all"
-msgstr "എല്ലാം കാണുക"
 
 #: 
 msgid "View all (including inactive)"
@@ -18293,10 +18075,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "നിങ്ങളുടെ സാമ്പത്തിക വർഷം %s ൽ ആരംഭിക്കുന്നു."
 
 #: 
-msgid "An error occurred"
-msgstr "ഒരു പിശക് സംഭവിച്ചു"
-
-#: 
 msgid "Approve"
 msgstr "അംഗീകരിക്കുക"
 
@@ -18467,12 +18245,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d ദിവസം"
 msgstr[1] "%d ദിവസം"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d സ്ഥിര നിയമനം മറ്റൊരു കാരണത്താൽ ഒഴിവാക്കി (തീയതി കഴിഞ്ഞു, റദ്ദാക്കി അല്ലെങ്കിൽ നിറഞ്ഞു)"
-msgstr[1] "%d സ്ഥിര നിയമനം മറ്റൊരു കാരണത്താൽ ഒഴിവാക്കി (തീയതി കഴിഞ്ഞു, റദ്ദാക്കി അല്ലെങ്കിൽ നിറഞ്ഞു)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18735,10 +18507,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "ഒരു തീം എന്നത് നിങ്ങളുടെ ചർച്ച് സെർവറിലെ Include/themes/ ലേക്ക് അപ്‌ലോഡ് ചെയ്യുന്ന ഒരു ഫോൾഡറാണ്. സിസ്റ്റം ഡിഫോൾട്ട് ChurchCRM നൊപ്പം വരുന്നു."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "ഒരു പരിവർത്തന ക്രമീകരണം. പഴയ സന്നദ്ധസേവന അവസരങ്ങളുടെ പേജുകളും പുതിയ ശുശ്രൂഷകളുടെ പേജുകളും ലഭ്യമാണ്, വ്യക്തിയുടെ രേഖയിൽ രണ്ട് സന്നദ്ധസേവന ടാബുകളും വ്യക്തമായി ലേബൽ ചെയ്ത് കാണിക്കുന്നു. ഒരു ചർച്ചിനെ V1 ൽ നിന്ന് V2 ലേക്ക് മാറ്റുമ്പോൾ ഇത് ഉപയോഗിക്കുക, പിന്നീട് V2 മാത്രമാക്കുക."
-
-#: 
 msgid "A volunteer"
 msgstr "ഒരു സന്നദ്ധസേവകൻ"
 
@@ -18943,10 +18711,6 @@ msgid "Assigned outside the current plan"
 msgstr "നിലവിലെ പദ്ധതിക്ക് പുറത്ത് നിയോഗിച്ചത്"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "നിയമനം റദ്ദാക്കി"
-
-#: 
 msgid "Assignment not found"
 msgstr "നിയമനം കണ്ടെത്തിയില്ല"
 
@@ -19053,10 +18817,6 @@ msgstr "നിയമനം റദ്ദാക്കുക"
 #: 
 msgid "Cancel this assignment"
 msgstr "ഈ നിയമനം റദ്ദാക്കുക"
-
-#: 
-msgid "Cancelled"
-msgstr "റദ്ദാക്കി"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19213,10 +18973,6 @@ msgstr "ചർച്ച് വെബ്സൈറ്റ്"
 #: 
 msgid "Close event details"
 msgstr "പരിപാടി വിവരങ്ങൾ അടയ്ക്കുക"
-
-#: 
-msgid "Colour"
-msgstr "നിറം"
 
 #: 
 msgid "Completed"
@@ -19463,10 +19219,6 @@ msgid "Each staffing need must name a position"
 msgstr "ഓരോ ആൾബലാവശ്യവും ഒരു സ്ഥാനം വ്യക്തമാക്കണം"
 
 #: 
-msgid "Edit event"
-msgstr "ഇവന്റ് എഡിറ്റ് ചെയ്യുക"
-
-#: 
 msgid "Edit ministry"
 msgstr "ശുശ്രൂഷ എഡിറ്റ് ചെയ്യുക"
 
@@ -19551,10 +19303,6 @@ msgstr "{{count}} സ്വീകർത്താക്കൾക്ക് ഇമ�
 #: 
 msgid "Emails"
 msgstr "ഇമെയിലുകൾ"
-
-#: 
-msgid "End time"
-msgstr "അവസാന സമയം"
 
 #: 
 msgid "Enter counts"
@@ -20835,10 +20583,6 @@ msgid "SMTP test"
 msgstr "SMTP പരീക്ഷണം"
 
 #: 
-msgid "Save changes"
-msgstr "മാറ്റങ്ങൾ സംരക്ഷിക്കുക"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "സേവ് ചെയ്തു — ഈ ശുശ്രൂഷ ഇനി സഹായം ചോദിക്കുന്നില്ല"
 
@@ -21121,10 +20865,6 @@ msgstr "ആൾബലാവശ്യങ്ങൾ സേവ് ചെയ്തു"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "ഒരു ശുശ്രൂഷ സൃഷ്ടിച്ച് തുടങ്ങുക, തുടർന്ന് അതിൽ സേവനം ചെയ്യുന്ന ടീമുകളും സ്ഥാനങ്ങളും ചേർക്കുക."
-
-#: 
-msgid "Start time"
-msgstr "ആരംഭ സമയം"
 
 #: 
 msgid "Start typing a name"
@@ -21473,10 +21213,6 @@ msgstr "വിലാസം തിരഞ്ഞെടുത്തിരിക്�
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "അസറ്റ് പാത്ത് \"%s\" അനുവദനീയമല്ല."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "നിയമനം റദ്ദാക്കാൻ കഴിഞ്ഞില്ല"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22003,10 +21739,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "ഈ തീയതി ഇതിനകം കഴിഞ്ഞു, അതിന്റെ നിയമനങ്ങൾ ഇനി മാറ്റാൻ കഴിയില്ല"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "ഈ തീയതി റദ്ദാക്കി"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "ഈ തീയതിക്ക് ഷെഡ്യൂളിൽ നിന്ന് വേറിട്ട് സ്വന്തം ആൾബലാവശ്യങ്ങൾ ഉണ്ട്."
 
@@ -22175,16 +21907,8 @@ msgid "Validation"
 msgstr "സാധൂകരണം"
 
 #: 
-msgid "View event"
-msgstr "പരിപാടി കാണുക"
-
-#: 
 msgid "View my schedule"
 msgstr "എന്റെ ഷെഡ്യൂൾ കാണുക"
-
-#: 
-msgid "View person"
-msgstr "വ്യക്തിയെ കാണുക"
 
 #: 
 msgid "View the event"
@@ -22233,10 +21957,6 @@ msgstr "സന്നദ്ധസേവക സമയങ്ങൾ"
 #: 
 msgid "Volunteering"
 msgstr "സന്നദ്ധസേവനം"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "ഒരു ചർച്ച് നടത്തുന്ന രീതിയിൽ ക്രമീകരിച്ച സന്നദ്ധസേവനം. ഓരോ ശുശ്രൂഷയ്ക്കും ടീമുകളും സ്ഥാനങ്ങളും ഉണ്ട്; ആളുകൾ സ്ഥാനങ്ങൾക്ക് യോഗ്യരാകുകയും ശുശ്രൂഷയുടെ പൂൾ ഗ്രൂപ്പിൽ ഉൾപ്പെടുകയും ചെയ്യുന്നു; ഷെഡ്യൂളുകൾ കലണ്ടറിലെ പരിപാടികളെ പിന്തുടർന്ന് ആൾബലാവശ്യങ്ങളോടു കൂടിയ തീയതി അടിസ്ഥാനമാക്കിയ ഇനങ്ങൾ ഉണ്ടാക്കുന്നു; കോർഡിനേറ്റർമാർ ആളുകളെ നിയോഗിക്കുന്നു, അവർ സ്വീകരിക്കുകയോ നിരസിക്കുകയോ പകരക്കാരനെ നിർദ്ദേശിക്കുകയോ ചെയ്യുന്നു; ഓർമ്മപ്പെടുത്തലുകളും മുന്നറിയിപ്പുകളും ഇമെയിൽ വഴി പോകുന്നു. അഡ്മിനിസ്ട്രേറ്റർമാർക്കും ശുശ്രൂഷകൾ നിയന്ത്രിക്കുക അനുമതിയുള്ള ഉപയോക്താക്കൾക്കും എല്ലാ ശുശ്രൂഷകളും കാണാം, അവ സൃഷ്ടിക്കാനും പ്രവർത്തനരഹിതമാക്കാനും ഇല്ലാതാക്കാനും കഴിയും. ഒരു ശുശ്രൂഷാ കോർഡിനേറ്റർക്ക് പകരം എന്റെ ശുശ്രൂഷകൾ നിയന്ത്രിക്കുക അനുമതി നൽകുന്നു: അപ്പോൾ സൈഡ്ബാറിലെ ശുശ്രൂഷകൾ തലക്കെട്ട് അവർ ഏകോപിപ്പിക്കുന്ന ശുശ്രൂഷകൾ മാത്രം കാണിക്കുന്നു. ഒരു ടീം ലീഡർ അംഗ പോർട്ടലിൽ നിന്ന് തന്റെ ടീമിനെ നടത്തുന്നു. അംഗങ്ങൾ അംഗ പോർട്ടൽ ഉപയോഗിച്ച് അവരുടെ ഷെഡ്യൂൾ കാണുകയും പ്രതികരിക്കുകയും സൈൻ അപ്പ് ചെയ്യുകയും സഹായം വാഗ്ദാനം ചെയ്യുകയും ചെയ്യുന്നു."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22775,10 +22495,6 @@ msgid "Cancel this occurrence"
 msgstr "ഈ സംഭവം റദ്ദാക്കുക"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "റദ്ദാക്കുന്നത് ആരെയും അറിയിക്കില്ല: ഇമെയിൽ അയയ്ക്കില്ല. നിയോഗങ്ങൾ നിലനിൽക്കും, റദ്ദാക്കിയിരിക്കുമ്പോൾ ഓർമ്മപ്പെടുത്തലുകൾ ഷെഡ്യൂൾ ചെയ്യില്ല, പുനഃസ്ഥാപിക്കുന്നതുവരെ ആരെയും നിയോഗിക്കാനാവില്ല."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "ഇല്ലാതാക്കിയ പരിപാടികൾ അവയുടെ ചെക്ക്-ഇന്നുകളും ഹാജർ എണ്ണങ്ങളും സഹിതം എല്ലാ കലണ്ടറുകളിൽ നിന്നും നീങ്ങും, ഈ ശുശ്രൂഷയുടെ അവയ്ക്കുള്ള നിയോഗം തീയതി മാത്രം നിലനിർത്തും. ഇത് പഴയപടിയാക്കാനാവില്ല."
 
@@ -22789,10 +22505,6 @@ msgstr "ഇല്ലാതാക്കിയ പരിപാടികൾ: {{tota
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "ഇല്ലാതാക്കേണ്ട പരിപാടികൾ: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "സംഭവം റദ്ദാക്കി"
 
 #: 
 msgid "Occurrence restored"
@@ -22809,10 +22521,6 @@ msgstr "സംഭവം പുനഃസ്ഥാപിക്കുക"
 #: 
 msgid "Restore this occurrence"
 msgstr "ഈ സംഭവം പുനഃസ്ഥാപിക്കുക"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "സംഭവം റദ്ദാക്കാൻ കഴിഞ്ഞില്ല"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24877,10 +24585,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "ടെലിമെട്രി അമേരിക്കൻ ഐക്യനാടുകളിലെ PostHog-ലേക്ക് അയയ്ക്കുന്നു. ഐച്ഛിക ടെലിമെട്രി പ്രവർത്തനരഹിതമാണെങ്കിലും ഇൻസ്റ്റാൾ, അപ്‌ഗ്രേഡ് പരാജയ റിപ്പോർട്ടുകൾ അയയ്ക്കും."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "ഈ തീയതി റദ്ദാക്കി. നിങ്ങളിൽ നിന്ന് കൂടുതലൊന്നും വേണ്ട."
-
-#: 
 msgid "always sent"
 msgstr "എപ്പോഴും അയയ്ക്കും"
 
@@ -25347,10 +25051,6 @@ msgstr "ഇമെയിലിന് ശ്രദ്ധ വേണം"
 #: 
 msgid "Email problem"
 msgstr "ഇമെയിൽ പ്രശ്നം"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "ഇമെയിൽ ചെയ്ത സൈൻ-ഇൻ കോഡും ലിങ്കും റദ്ദാക്കി"
 
 #: 
 msgid "Emailed verification link"
@@ -27115,10 +26815,6 @@ msgstr "%s വരെ"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "അംഗ പോർട്ടലിൽ %1$s-ലെ നിങ്ങളുടെ ഇമെയിൽ വിലാസം %2$s-ൽ നിന്ന് %3$s ആക്കി മാറ്റാൻ ഒരു അഭ്യർത്ഥന ഉണ്ടായി. പുതിയ വിലാസത്തിലേക്ക് അയച്ച ലിങ്ക് ഉപയോഗിച്ചാൽ മാത്രമേ മാറ്റം നടക്കൂ."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "കുടുംബ വിവരങ്ങൾ പരിശോധിക്കാൻ താഴെയുള്ള ലിങ്ക് ഉപയോഗിക്കുക. പരിശോധനാ താളിൽ എല്ലാം ശരിയാണെന്ന് ഉറപ്പാക്കാൻ “കുടുംബ വിവരം സ്ഥിരീകരിക്കുക” തിരഞ്ഞെടുക്കുക, അല്ലെങ്കിൽ തിരുത്തലുകൾ സഭാ ഓഫീസിലേക്ക് അയയ്ക്കുക."
 
 #: 
 msgid "Review Family Information"

@@ -887,10 +887,6 @@ msgid "Do you want to proceed?"
 msgstr "Ви хочете продовжити?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Ви збираєтесь надіслати копію сімейної інформації на такі електронні листи"
-
-#: 
 msgid "Financial Reports"
 msgstr "Фінансові звіти"
 
@@ -1821,10 +1817,6 @@ msgstr "Номер телефону"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Спеціальний випадаючий список"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF успішно надіслано членам сім'ї електронною поштою."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3873,10 +3865,6 @@ msgid "Please verify your family's information"
 msgstr "Будь ласка, перевірте інформацію про свою сім’ю"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Не вдається завантажити інформацію про підтвердження"
-
-#: 
 msgid "No Changes"
 msgstr "Без змін"
 
@@ -3889,24 +3877,8 @@ msgid "Oops! Page not found."
 msgstr "Ой! Сторінку не знайдено."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Введіть наступне, щоб розпочати перевірку вашої родини"
-
-#: 
-msgid "Family Verification"
-msgstr "Перевірка сім’ї"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Подати запит на перевірку інформації про сім’ю"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Виберіть спосіб подання запиту на перевірку інформації про сім’ю"
-
-#: 
-msgid "Online Verification"
-msgstr "Онлайн перевірка"
 
 #: 
 msgid "Verified In Person"
@@ -4088,10 +4060,6 @@ msgstr "Властивість успішно не призначено."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Власність не може бути відмінена."
-
-#: 
-msgid "Select event"
-msgstr "Виберіть подію"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4299,10 +4267,6 @@ msgid "Kiosk Manager"
 msgstr "Менеджер кіоску"
 
 #: 
-msgid "Report an issue"
-msgstr "Повідомте про проблему"
-
-#: 
 msgid "Self Verification"
 msgstr "Самоперевірка"
 
@@ -4331,10 +4295,6 @@ msgstr "Арабська - Єгипет"
 #: 
 msgid "Thai"
 msgstr "Тайська"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Очікує на самостійну перевірку"
 
 #: 
 msgid "Self Verify"
@@ -4717,16 +4677,8 @@ msgid "User must have Delete Records permission"
 msgstr "Користувач повинен мати дозвіл на видалення записів"
 
 #: 
-msgid "invalid event type id"
-msgstr "недійсний ідентифікатор типу події"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "недійсне закріплення календаря"
-
-#: 
-msgid "invalid status value"
-msgstr "недійсне значення статусу"
 
 #: 
 msgid "invalid export value"
@@ -5337,10 +5289,6 @@ msgstr "Застосування оновлення системи..."
 
 #: 
 msgid "Back to Login"
-msgstr "Назад до входу"
-
-#: 
-msgid "Back to login"
 msgstr "Назад до входу"
 
 #: 
@@ -6581,10 +6529,6 @@ msgid "Additional Information"
 msgstr "Додаткова інформація"
 
 #: 
-msgid "All information is correct"
-msgstr "Уся інформація вірна"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Призначити можливості служіння"
 
@@ -6597,20 +6541,12 @@ msgid "Choose opportunities..."
 msgstr "Виберіть можливості..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Підтвердити інформацію про сім'ю"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Контакти та особиста інформація"
 
 #: 
 msgid "Edited"
 msgstr "Відредаговано"
-
-#: 
-msgid "Email PDF"
-msgstr "Надіслати PDF поштою"
 
 #: 
 msgid "Newsletter"
@@ -6621,40 +6557,12 @@ msgid "Personal"
 msgstr "Особисте"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Будь ласка, оновіть наші записи з виправленнями"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Надайте будь-які виправлення або додаткову інформацію..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Вибрати можливості служіння"
 
 #: 
-msgid "Submit Verification"
-msgstr "Надіслати підтвердження"
-
-#: 
-msgid "Thank You!"
-msgstr "Дякуємо!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Відвідайте наш сайт"
-
-#: 
 msgid "Volunteer"
 msgstr "Волонтер/Служитель"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Помилка при обробці підтвердження."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Ваш запит на підтвердження отримано."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8122,10 +8030,6 @@ msgid "City is required."
 msgstr "Місто є обов'язковим."
 
 #: 
-msgid "Clear filter"
-msgstr "Очистити фільтр"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Елемент конфігурації не знайдено"
 
@@ -8396,10 +8300,6 @@ msgstr "Додати особу"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Додати всі вибрані елементи до групи"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Додати все"
 
 #: 
 msgid "Add cart items to a family"
@@ -8906,10 +8806,6 @@ msgid "Family Profile"
 msgstr "Профіль сім'ї"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Сімейні ролі (голова господарства, супруг, дитина тощо) допомагають організувати ваші записи."
-
-#: 
 msgid "Family vs Person"
 msgstr "Сім'я проти Людина"
 
@@ -9408,10 +9304,6 @@ msgid "Record why attendees visited your church"
 msgstr "Запишіть, чому відвідувачі відвідали вашу церкву"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Видалити все з вибору"
-
-#: 
 msgid "Remove from Class"
 msgstr "Видалити з класу"
 
@@ -9882,10 +9774,6 @@ msgstr "Події цього року"
 #: 
 msgid "Everyone"
 msgstr "Всі"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Не вдалося видалити нотатку"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11787,10 +11675,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Початкова дата діапазону має бути дійсною датою у форматі РРРР-ММ-ДД."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Початкова дата діапазону має бути раніше кінцевої"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Початкова дата діапазону має бути раніше кінцевої."
 
@@ -12011,10 +11895,6 @@ msgid "Cannot move property in that direction"
 msgstr "Неможливо перемістити властивість у цьому напрямку"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Підтвердити інформацію про сімʼю"
-
-#: 
 msgid "Delete failed"
 msgstr "Помилка видалення"
 
@@ -12055,20 +11935,12 @@ msgid "Invalid target family"
 msgstr "Недійсна цільова сімʼя"
 
 #: 
-msgid "Log Out"
-msgstr "Вийти"
-
-#: 
 msgid "Membership not found"
 msgstr "Членство не знайдено"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Пароль успішно змінено для"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Будь ласка, перегляньте інформацію про вашу сімʼю нижче та підтвердіть або запросіть зміни."
 
 #: 
 msgid "Please select a target family."
@@ -12751,10 +12623,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Не вдалося встановити плагін з URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Не вдалося завантажити список схвалених плагінів"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Не вдалося завантажити список схвалених плагінів."
 
@@ -12813,10 +12681,6 @@ msgstr "Kebab-case. Має збігатися з назвою каталогу �
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Завантаження списку схвалених плагінів…"
-
-#: 
-msgid "Loading…"
-msgstr "Завантаження…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13264,10 +13128,6 @@ msgid "Change Your Locale"
 msgstr "Змінити мовні налаштування"
 
 #: 
-msgid "Change role"
-msgstr "Змінити роль"
-
-#: 
 msgid "Check Number"
 msgstr "Номер чека"
 
@@ -13282,10 +13142,6 @@ msgstr "Відмітка не вдалася. Спробуйте ще раз."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Зняття відмітки не вдалося. Спробуйте ще раз."
-
-#: 
-msgid "City is required"
-msgstr "Місто обов'язкове"
 
 #: 
 msgid "Click Save to apply."
@@ -13354,10 +13210,6 @@ msgstr "Скопіювати всі номери"
 #: 
 msgid "Copy Members to Group"
 msgstr "Скопіювати учасників до групи"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Створення резервної копії..."
 
 #: 
 msgid "Creating..."
@@ -13542,10 +13394,6 @@ msgstr "Не вдалося додати до кошика"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Не вдалося скасувати реєстрацію. Будь ласка, спробуйте ще раз."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Не вдалося скопіювати URL"
 
 #: 
 msgid "Failed to create backup."
@@ -13936,10 +13784,6 @@ msgid "One-Time Code"
 msgstr "Одноразовий код"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Відкрити в новій вкладці"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Відкрийте програму автентифікації та скануйте цей QR-код"
 
@@ -14216,10 +14060,6 @@ msgid "Setup Complete"
 msgstr "Налаштування завершено"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Поділіться цим URL для перевірки інформації"
-
-#: 
 msgid "Show more options"
 msgstr "Показати більше параметрів"
 
@@ -14372,10 +14212,6 @@ msgid "Validation pending"
 msgstr "Очікується підтвердження"
 
 #: 
-msgid "Verification URL"
-msgstr "URL-адреса для підтвердження"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Перевірку не пройдено. Будь ласка, спробуйте ще раз."
 
@@ -14440,10 +14276,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Ви отримаєте резервні коди, які можна використати у разі втрати доступу до програми"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Кошик порожній"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Ваш обліковий запис тепер захищено"
 
@@ -14462,10 +14294,6 @@ msgstr "Мовні налаштування вашого браузера від
 #: 
 msgid "Your database already contains data"
 msgstr "Ваша база даних вже містить дані"
-
-#: 
-msgid "Zip code is required"
-msgstr "Поштовий індекс обов'язковий"
 
 #: 
 msgid "added"
@@ -14888,10 +14716,6 @@ msgstr "У вас немає дозволу додавати нотатку дл
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "У вас немає дозволу додавати нотатку для цієї особи."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "У вас немає дозволу редагувати цю нотатку"
 
 #: 
 msgid "Account locked"
@@ -15718,10 +15542,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Будь ласка, підтвердьте видалення запису про цю сімʼю"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Будь ласка, підтвердьте інформацію про вашу сімʼю"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Будь ласка, оберіть іншу сімʼю, з якою повʼязати ці пожертви"
 
@@ -15942,10 +15762,6 @@ msgid "Select a person"
 msgstr "Оберіть особу"
 
 #: 
-msgid "Select role"
-msgstr "Оберіть роль"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Оберіть тип (необовʼязково)"
 
@@ -16100,10 +15916,6 @@ msgstr "Ви впевнені, що хочете остаточно видали
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Потрібен розподіл хоча б до одного фонду"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Принаймні один фонд повинен мати ненульову суму"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16352,10 +16164,6 @@ msgstr "Групу обітниць не знайдено"
 #: 
 msgid "Pledges & Payments"
 msgstr "Обітниці та пожертвування"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Пріоритизувати переклади"
 
 #: 
 msgid "Purpose"
@@ -16620,14 +16428,6 @@ msgstr "Platezhiv dlya vybranykh depozytiv ne znaysheno"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Ne vkazano diysnych identyfikatoriv depozytiv"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF успішно надіслано електронною поштою %d сім'ї."
-msgstr[1] "PDF успішно надіслано електронною поштою %d сім'ям."
-msgstr[2] "PDF успішно надіслано електронною поштою %d сім'ям."
-msgstr[3] "PDF успішно надіслано електронною поштою %d сім'ї."
 
 #: 
 msgid "Partial Send"
@@ -17170,10 +16970,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Створення та завантаження резервної копії. Це може зайняти кілька хвилин…"
 
 #: 
-msgid "Database reset failed."
-msgstr "Не вдалося скинути базу даних."
-
-#: 
 msgid "Deceased"
 msgstr "Помер(ла)"
 
@@ -17370,10 +17166,6 @@ msgid "Log settings saved"
 msgstr "Налаштування журналювання збережено"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Необхідно вказати ім'я для входу"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Особу позначено як активну"
 
@@ -17498,10 +17290,6 @@ msgid "Sending..."
 msgstr "Надсилання…"
 
 #: 
-msgid "Sending…"
-msgstr "Надсилання…"
-
-#: 
 msgid "Settings reset"
 msgstr "Налаштування скинуто"
 
@@ -17570,16 +17358,8 @@ msgid "Upcoming"
 msgstr "Найближчі"
 
 #: 
-msgid "Valid Until"
-msgstr "Дійсний до"
-
-#: 
 msgid "View active only"
 msgstr "Показати лише активних"
-
-#: 
-msgid "View all"
-msgstr "Показати всі"
 
 #: 
 msgid "View all (including inactive)"
@@ -18358,10 +18138,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Ваш фінансовий рік починається в %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Сталася помилка"
-
-#: 
 msgid "Approve"
 msgstr "Схвалити"
 
@@ -18534,14 +18310,6 @@ msgstr[0] "%d день"
 msgstr[1] "%d дні"
 msgstr[2] "%d днів"
 msgstr[3] "%d дня"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d призначення за замовчуванням пропущено з іншої причини (проведення завершено, скасовано або заповнено)"
-msgstr[1] "%d призначення за замовчуванням пропущено з іншої причини (проведення завершено, скасовано або заповнено)"
-msgstr[2] "%d призначень за замовчуванням пропущено з іншої причини (проведення завершено, скасовано або заповнено)"
-msgstr[3] "%d призначення за замовчуванням пропущено з іншої причини (проведення завершено, скасовано або заповнено)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18816,10 +18584,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Тема — це тека, яку ваша церква завантажує до Include/themes/ на сервері. Типова тема постачається з ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Перехідне налаштування. Доступні і колишні сторінки «Можливості для волонтерів», і нові сторінки «Служіння», а в картці особи показано обидві вкладки «Волонтер» зі зрозумілими підписами. Використовуйте його на час переходу церкви з V1 на V2, потім перемкніться лише на V2."
-
-#: 
 msgid "A volunteer"
 msgstr "Волонтер"
 
@@ -19024,10 +18788,6 @@ msgid "Assigned outside the current plan"
 msgstr "Призначено поза поточним планом"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Призначення скасовано"
-
-#: 
 msgid "Assignment not found"
 msgstr "Призначення не знайдено"
 
@@ -19134,10 +18894,6 @@ msgstr "Скасувати призначення"
 #: 
 msgid "Cancel this assignment"
 msgstr "Скасувати це призначення"
-
-#: 
-msgid "Cancelled"
-msgstr "Скасовано"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19294,10 +19050,6 @@ msgstr "Сайт церкви"
 #: 
 msgid "Close event details"
 msgstr "Закрити відомості про подію"
-
-#: 
-msgid "Colour"
-msgstr "Колір"
 
 #: 
 msgid "Completed"
@@ -19544,10 +19296,6 @@ msgid "Each staffing need must name a position"
 msgstr "Для кожної потреби в людях має бути вказана позиція"
 
 #: 
-msgid "Edit event"
-msgstr "Редагувати подію"
-
-#: 
 msgid "Edit ministry"
 msgstr "Редагувати служіння"
 
@@ -19632,10 +19380,6 @@ msgstr "Листи надіслано {{count}} одержувачам."
 #: 
 msgid "Emails"
 msgstr "Листи"
-
-#: 
-msgid "End time"
-msgstr "Час завершення"
 
 #: 
 msgid "Enter counts"
@@ -20920,10 +20664,6 @@ msgid "SMTP test"
 msgstr "Перевірка SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Зберегти зміни"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Збережено — це служіння більше не просить про допомогу"
 
@@ -21206,10 +20946,6 @@ msgstr "Потреби в людях збережено"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Почніть зі створення служіння, потім додайте команди та позиції, які в ньому служать."
-
-#: 
-msgid "Start time"
-msgstr "Час початку"
 
 #: 
 msgid "Start typing a name"
@@ -21558,10 +21294,6 @@ msgstr "Адресу виділено — скопіюйте її з клаві�
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Шлях до ресурсу «%s» не дозволено."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "Не вдалося скасувати призначення"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22092,10 +21824,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Це проведення вже відбулося, і його призначення більше не можна змінити"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Це проведення скасовано"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "У цього проведення власні потреби в людях, окремі від його розкладу."
 
@@ -22264,16 +21992,8 @@ msgid "Validation"
 msgstr "Перевірка"
 
 #: 
-msgid "View event"
-msgstr "Переглянути подію"
-
-#: 
 msgid "View my schedule"
 msgstr "Переглянути мій розклад"
-
-#: 
-msgid "View person"
-msgstr "Переглянути особу"
 
 #: 
 msgid "View the event"
@@ -22322,10 +22042,6 @@ msgstr "Час волонтерів"
 #: 
 msgid "Volunteering"
 msgstr "Волонтерство"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Волонтерство, організоване так, як це заведено в церкві. Кожне служіння має команди та позиції; люди отримують кваліфікацію для позицій і входять до групи резерву служіння; розклади слідують за подіями календаря та створюють проведення з датами й потребами в людях; координатори призначають людей, які приймають призначення, відмовляються або пропонують заміну; нагадування та сповіщення надсилаються ел. поштою. Адміністратори та користувачі з правом «Керування служіннями» бачать усі служіння та можуть створювати, деактивувати й видаляти їх. Координатору служіння натомість надається право «Керування моїми служіннями»: тоді розділ «Служіння» на бічній панелі показує лише ті служіння, які він координує. Керівник команди керує своєю командою через портал парафії. Члени парафії користуються порталом парафії, щоб бачити свій розклад, відповідати, записуватися та пропонувати допомогу."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22868,10 +22584,6 @@ msgid "Cancel this occurrence"
 msgstr "Скасувати цю подію"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Скасування нікому не повідомляється: листи не відправляються. Призначення зберігаються, нагадування не планується, поки подія скасована, і ніхто не може бути призначений, поки вона не буде відновлена."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Видалені події видаляються з усіх календарів разом з реєстрацією присутності та підрахунком відвідувачів, але служіння зберігає лише дату. Це неможливо скасувати."
 
@@ -22882,10 +22594,6 @@ msgstr "События удалены: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Області для видалення: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Подія скасована"
 
 #: 
 msgid "Occurrence restored"
@@ -22902,10 +22610,6 @@ msgstr "Відновити подію"
 #: 
 msgid "Restore this occurrence"
 msgstr "Відновити цю подію"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Подію не вдалося скасувати"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24970,10 +24674,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "Телеметрія надсилається до PostHog у Сполучених Штатах. Звіти про помилки встановлення та оновлення надсилаються, навіть коли необов’язкову телеметрію вимкнено."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Цю дату скасовано. Від вас більше нічого не потрібно."
-
-#: 
 msgid "always sent"
 msgstr "завжди надсилається"
 
@@ -25440,10 +25140,6 @@ msgstr "Електронна пошта потребує уваги"
 #: 
 msgid "Email problem"
 msgstr "Проблема з електронною поштою"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Надіслані код і посилання для входу скасовано"
 
 #: 
 msgid "Emailed verification link"
@@ -27208,10 +26904,6 @@ msgstr "до %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "У порталі учасників надіслано запит змінити вашу адресу електронної пошти на %1$s з %2$s на %3$s. Зміна відбувається лише після використання посилання, надісланого на нову адресу."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Скористайтеся посиланням нижче, щоб перевірити відомості про вашу родину. На сторінці перевірки виберіть «Підтвердити відомості про родину», щоб підтвердити, що все правильно, або надішліть виправлення до церковного офісу."
 
 #: 
 msgid "Review Family Information"

@@ -887,11 +887,6 @@ msgid "Do you want to proceed?"
 msgstr "Apakah anda mau melanjutkan?"
 
 #: 
-#, fuzzy
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Anda akan mengirimkan informasi keluarga ini melalui email berikut"
-
-#: 
 msgid "Financial Reports"
 msgstr "Laporan keuangan"
 
@@ -1822,10 +1817,6 @@ msgstr "Nomor telepon"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Daftar Drop-Down Kustom"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF berhasil diemail ke anggota keluarga."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3874,10 +3865,6 @@ msgid "Please verify your family's information"
 msgstr "Harap verifikasi informasi keluarga Anda"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Tidak dapat memuat info verifikasi"
-
-#: 
 msgid "No Changes"
 msgstr "Tidak ada perubahan"
 
@@ -3890,24 +3877,8 @@ msgid "Oops! Page not found."
 msgstr "Ups! Halaman tidak ditemukan."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Silakan masukkan yang berikut untuk memulai verifikasi keluarga Anda"
-
-#: 
-msgid "Family Verification"
-msgstr "Verifikasi Keluarga"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Minta Verifikasi Info Keluarga"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Pilih bagaimana Anda ingin meminta informasi keluarga untuk diverifikasi"
-
-#: 
-msgid "Online Verification"
-msgstr "Verifikasi Daring"
 
 #: 
 msgid "Verified In Person"
@@ -4089,10 +4060,6 @@ msgstr "Properti berhasil dibatalkan penetapannya."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Properti tidak dapat dibatalkan penetapannya."
-
-#: 
-msgid "Select event"
-msgstr "Pilih acara"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4300,10 +4267,6 @@ msgid "Kiosk Manager"
 msgstr "Manajer Kios"
 
 #: 
-msgid "Report an issue"
-msgstr "Laporkan masalah"
-
-#: 
 msgid "Self Verification"
 msgstr "Verifikasi Mandiri"
 
@@ -4332,10 +4295,6 @@ msgstr "Arab - Mesir"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Verifikasi Mandiri Tertunda"
 
 #: 
 msgid "Self Verify"
@@ -4718,16 +4677,8 @@ msgid "User must have Delete Records permission"
 msgstr "Pengguna harus memiliki izin Hapus Catatan"
 
 #: 
-msgid "invalid event type id"
-msgstr "id jenis acara tidak valid"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "Pinning kalender tidak valid"
-
-#: 
-msgid "invalid status value"
-msgstr "nilai status tidak valid"
 
 #: 
 msgid "invalid export value"
@@ -5331,10 +5282,6 @@ msgstr "Menerapkan Pembaruan Sistem..."
 #: 
 msgid "Back to Login"
 msgstr "Kembali ke Login"
-
-#: 
-msgid "Back to login"
-msgstr "Kembali ke login"
 
 #: 
 msgid "Complete"
@@ -6568,10 +6515,6 @@ msgid "Additional Information"
 msgstr "Informasi Tambahan"
 
 #: 
-msgid "All information is correct"
-msgstr "Semua informasi sudah benar"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Tugaskan Pelayanan"
 
@@ -6584,20 +6527,12 @@ msgid "Choose opportunities..."
 msgstr "Pilih bidang pelayanan..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Konfirmasi Informasi Keluarga"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontak & Info Pribadi"
 
 #: 
 msgid "Edited"
 msgstr "Telah Diubah"
-
-#: 
-msgid "Email PDF"
-msgstr "Kirim PDF via Email"
 
 #: 
 msgid "Newsletter"
@@ -6608,40 +6543,12 @@ msgid "Personal"
 msgstr "Pribadi"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Mohon perbarui catatan kami jika ada koreksi"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Berikan koreksi atau info tambahan di sini..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Pilih Bidang Pelayanan"
 
 #: 
-msgid "Submit Verification"
-msgstr "Kirim Verifikasi"
-
-#: 
-msgid "Thank You!"
-msgstr "Terima Kasih!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Kunjungi Website Kami"
-
-#: 
 msgid "Volunteer"
 msgstr "Relawan/Pelayan"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Terjadi kesalahan. Silakan coba lagi atau hubungi kami."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Permintaan verifikasi telah diterima. Terima kasih telah memperbarui data Anda."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8097,10 +8004,6 @@ msgid "City is required."
 msgstr "Kota wajib diisi."
 
 #: 
-msgid "Clear filter"
-msgstr "Hapus filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Item konfigurasi tidak ditemukan"
 
@@ -8368,10 +8271,6 @@ msgstr "Tambah Orang"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Tambah semua item daftar ke grup"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Tambah semua ke Daftar"
 
 #: 
 msgid "Add cart items to a family"
@@ -8878,10 +8777,6 @@ msgid "Family Profile"
 msgstr "Profil Keluarga"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Peran keluarga (Kepala Keluarga, Pasangan, Anak, dll.) membantu mengatur catatan Anda."
-
-#: 
 msgid "Family vs Person"
 msgstr "Keluarga vs Individu"
 
@@ -9380,10 +9275,6 @@ msgid "Record why attendees visited your church"
 msgstr "Catat mengapa peserta mengunjungi gereja Anda"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Hapus semua dari Daftar"
-
-#: 
 msgid "Remove from Class"
 msgstr "Hapus dari Kelas"
 
@@ -9854,10 +9745,6 @@ msgstr "Acara Tahun Ini"
 #: 
 msgid "Everyone"
 msgstr "Semua Orang"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Gagal menghapus catatan"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11756,10 +11643,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Awal rentang harus berupa tanggal YYYY-MM-DD yang valid."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Awal rentang harus sebelum akhir rentang"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Awal rentang harus sebelum akhir rentang."
 
@@ -11980,10 +11863,6 @@ msgid "Cannot move property in that direction"
 msgstr "Tidak dapat memindahkan properti ke arah tersebut"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Konfirmasi Informasi Keluarga"
-
-#: 
 msgid "Delete failed"
 msgstr "Penghapusan gagal"
 
@@ -12024,20 +11903,12 @@ msgid "Invalid target family"
 msgstr "Keluarga target tidak valid"
 
 #: 
-msgid "Log Out"
-msgstr "Keluar"
-
-#: 
 msgid "Membership not found"
 msgstr "Keanggotaan tidak ditemukan"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Kata sandi berhasil diubah untuk"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Silakan tinjau informasi keluarga Anda di bawah ini dan konfirmasi atau minta perubahan."
 
 #: 
 msgid "Please select a target family."
@@ -12720,10 +12591,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Gagal menginstal plugin dari URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Gagal memuat daftar plugin yang disetujui"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Gagal memuat daftar plugin yang disetujui."
 
@@ -12782,10 +12649,6 @@ msgstr "Kebab-case. Harus sesuai dengan nama direktori tingkat atas di dalam zip
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Memuat daftar plugin yang disetujui…"
-
-#: 
-msgid "Loading…"
-msgstr "Memuat…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13233,10 +13096,6 @@ msgid "Change Your Locale"
 msgstr "Ubah Lokal Anda"
 
 #: 
-msgid "Change role"
-msgstr "Ubah peran"
-
-#: 
 msgid "Check Number"
 msgstr "Periksa Nomor"
 
@@ -13251,10 +13110,6 @@ msgstr "Absen masuk gagal. Silakan coba lagi."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Absen keluar gagal. Silakan coba lagi."
-
-#: 
-msgid "City is required"
-msgstr "Kota wajib diisi"
 
 #: 
 msgid "Click Save to apply."
@@ -13323,10 +13178,6 @@ msgstr "Salin Semua Nomor"
 #: 
 msgid "Copy Members to Group"
 msgstr "Salin Anggota ke Grup"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Membuat Cadangan..."
 
 #: 
 msgid "Creating..."
@@ -13511,10 +13362,6 @@ msgstr "Gagal menambahkan ke keranjang"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Gagal membatalkan pendaftaran. Silakan coba lagi."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Gagal menyalin URL"
 
 #: 
 msgid "Failed to create backup."
@@ -13905,10 +13752,6 @@ msgid "One-Time Code"
 msgstr "Kode Sekali Pakai"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Buka di Tab Baru"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Buka aplikasi autentikator Anda dan pindai kode QR ini"
 
@@ -14185,10 +14028,6 @@ msgid "Setup Complete"
 msgstr "Pengaturan Selesai"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Bagikan URL ini agar anggota keluarga bisa memverifikasi data mereka"
-
-#: 
 msgid "Show more options"
 msgstr "Tampilkan lebih banyak opsi"
 
@@ -14341,10 +14180,6 @@ msgid "Validation pending"
 msgstr "Menunggu validasi"
 
 #: 
-msgid "Verification URL"
-msgstr "URL verifikasi"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Verifikasi gagal. Silakan coba lagi."
 
@@ -14409,10 +14244,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Anda akan menerima kode cadangan yang dapat digunakan jika kehilangan akses ke aplikasi Anda"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Keranjang Anda kosong"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Akun Anda kini terlindungi"
 
@@ -14431,10 +14262,6 @@ msgstr "Preferensi bahasa peramban Anda berbeda dari lokal ChurchCRM Anda"
 #: 
 msgid "Your database already contains data"
 msgstr "Basis data Anda sudah berisi data"
-
-#: 
-msgid "Zip code is required"
-msgstr "Kode pos wajib diisi"
 
 #: 
 msgid "added"
@@ -14854,10 +14681,6 @@ msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk keluarga ini."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk anggota ini."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Anda tidak memiliki izin untuk mengedit catatan ini"
 
 #: 
 msgid "Account locked"
@@ -15678,10 +15501,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Harap konfirmasi penghapusan rekaman keluarga ini"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Harap konfirmasi informasi keluarga Anda"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Pilih keluarga lain untuk dikaitkan dengan persembahan ini"
 
@@ -15902,10 +15721,6 @@ msgid "Select a person"
 msgstr "Pilih seseorang"
 
 #: 
-msgid "Select role"
-msgstr "Pilih peran"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Pilih jenis (opsional)"
 
@@ -16060,10 +15875,6 @@ msgstr "Apakah Anda yakin ingin menghapus catatan pembayaran ini secara permanen
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Diperlukan setidaknya satu alokasi dana"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Setidaknya satu dana harus memiliki jumlah yang tidak nol"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16312,10 +16123,6 @@ msgstr "Grup janji persembahan tidak ditemukan"
 #: 
 msgid "Pledges & Payments"
 msgstr "Janji Persembahan & Pembayaran"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Prioritaskan terjemahan"
 
 #: 
 msgid "Purpose"
@@ -16577,11 +16384,6 @@ msgstr "Tidak ditemukan pembayaran untuk setoran yang dipilih"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Tidak ada ID setoran yang valid yang diberikan"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF berhasil dikirim melalui email ke %d keluarga."
 
 #: 
 msgid "Partial Send"
@@ -17121,10 +16923,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Membuat dan mengunggah cadangan. Ini mungkin memerlukan beberapa menit..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Reset database gagal."
-
-#: 
 msgid "Deceased"
 msgstr "Meninggal Dunia"
 
@@ -17321,10 +17119,6 @@ msgid "Log settings saved"
 msgstr "Pengaturan log disimpan"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Nama Login Wajib Diisi"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Menandai Orang ini sebagai Aktif"
 
@@ -17449,10 +17243,6 @@ msgid "Sending..."
 msgstr "Mengirim..."
 
 #: 
-msgid "Sending…"
-msgstr "Mengirim…"
-
-#: 
 msgid "Settings reset"
 msgstr "Pengaturan direset"
 
@@ -17521,16 +17311,8 @@ msgid "Upcoming"
 msgstr "Akan Datang"
 
 #: 
-msgid "Valid Until"
-msgstr "Berlaku Hingga"
-
-#: 
 msgid "View active only"
 msgstr "Lihat yang aktif saja"
-
-#: 
-msgid "View all"
-msgstr "Lihat semua"
 
 #: 
 msgid "View all (including inactive)"
@@ -18309,10 +18091,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Tahun fiskal Anda dimulai pada %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Terjadi kesalahan"
-
-#: 
 msgid "Approve"
 msgstr "Setujui"
 
@@ -18482,11 +18260,6 @@ msgstr "%1$s: Maksimum adalah %2$d tetapi %3$d relawan bawaan dipilih. Hapus sat
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d hari"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d default dilewati karena alasan lain (kejadian berakhir, dibatalkan atau penuh)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18743,10 +18516,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Tema adalah folder yang diunggah gereja Anda ke Include/themes/ di server. Bawaan sistem disertakan dengan ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Pengaturan transisi. Halaman Peluang Relawan lama dan halaman Pelayanan baru sama-sama tersedia, dan data orang menampilkan kedua tab Relawan dengan label yang jelas. Gunakan saat memindahkan gereja dari V1 ke V2, lalu beralih ke V2 saja."
-
-#: 
 msgid "A volunteer"
 msgstr "Seorang relawan"
 
@@ -18951,10 +18720,6 @@ msgid "Assigned outside the current plan"
 msgstr "Ditugaskan di luar rencana saat ini"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Penugasan dibatalkan"
-
-#: 
 msgid "Assignment not found"
 msgstr "Penugasan tidak ditemukan"
 
@@ -19061,10 +18826,6 @@ msgstr "Batalkan penugasan"
 #: 
 msgid "Cancel this assignment"
 msgstr "Batalkan penugasan ini"
-
-#: 
-msgid "Cancelled"
-msgstr "Dibatalkan"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19221,10 +18982,6 @@ msgstr "Situs web gereja"
 #: 
 msgid "Close event details"
 msgstr "Tutup detail acara"
-
-#: 
-msgid "Colour"
-msgstr "Warna"
 
 #: 
 msgid "Completed"
@@ -19471,10 +19228,6 @@ msgid "Each staffing need must name a position"
 msgstr "Setiap kebutuhan staf harus menyebutkan sebuah posisi"
 
 #: 
-msgid "Edit event"
-msgstr "Ubah Kegiatan"
-
-#: 
 msgid "Edit ministry"
 msgstr "Ubah pelayanan"
 
@@ -19559,10 +19312,6 @@ msgstr "Email dikirim ke {{count}} penerima."
 #: 
 msgid "Emails"
 msgstr "Email"
-
-#: 
-msgid "End time"
-msgstr "Waktu Selesai"
 
 #: 
 msgid "Enter counts"
@@ -20841,10 +20590,6 @@ msgid "SMTP test"
 msgstr "Uji SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Simpan perubahan"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Disimpan — pelayanan ini tidak lagi meminta bantuan"
 
@@ -21127,10 +20872,6 @@ msgstr "Kebutuhan petugas disimpan"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Mulailah dengan membuat pelayanan, lalu tambahkan tim dan posisi yang melayani di dalamnya."
-
-#: 
-msgid "Start time"
-msgstr "Waktu mulai"
 
 #: 
 msgid "Start typing a name"
@@ -21479,10 +21220,6 @@ msgstr "Alamat sudah dipilih — salin dengan papan ketik Anda."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Jalur aset \"%s\" tidak diizinkan."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "Penugasan tidak dapat dibatalkan"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22007,10 +21744,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Kejadian ini sudah berlalu dan penugasannya tidak dapat diubah lagi"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Kejadian ini dibatalkan"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Kejadian ini memiliki kebutuhan petugas sendiri, terpisah dari jadwalnya."
 
@@ -22179,16 +21912,8 @@ msgid "Validation"
 msgstr "Validasi"
 
 #: 
-msgid "View event"
-msgstr "Lihat Acara"
-
-#: 
 msgid "View my schedule"
 msgstr "Lihat jadwal saya"
-
-#: 
-msgid "View person"
-msgstr "Lihat Anggota"
 
 #: 
 msgid "View the event"
@@ -22237,10 +21962,6 @@ msgstr "Waktu relawan"
 #: 
 msgid "Volunteering"
 msgstr "Pelayanan relawan"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Pelayanan relawan yang diatur sebagaimana gereja menjalankannya. Setiap pelayanan memiliki tim dan posisi; orang dikualifikasi untuk posisi dan menjadi bagian dari grup kelompok pelayanan; jadwal mengikuti acara di kalender dan menghasilkan kejadian bertanggal dengan kebutuhan petugas; koordinator menugaskan orang, yang menerima, menolak, atau mengusulkan pengganti; pengingat dan peringatan dikirim lewat email. Administrator dan pengguna dengan izin Kelola Pelayanan melihat setiap pelayanan dan dapat membuat, menonaktifkan, dan menghapusnya. Koordinator pelayanan diberi izin Kelola Pelayanan Saya: judul Pelayanan di bilah samping lalu hanya menampilkan pelayanan yang ia koordinasikan. Pemimpin tim menjalankan timnya dari Portal Jemaat. Jemaat menggunakan Portal Jemaat untuk melihat jadwal, menanggapi, mendaftar, dan menawarkan bantuan."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22777,10 +22498,6 @@ msgid "Cancel this occurrence"
 msgstr "Batalkan kejadian ini"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Pembatalan tidak memberitahu siapa pun: tidak ada email yang dikirim. Penugasan disimpan, tidak ada pengingat yang dijadwalkan saat dibatalkan, dan tidak ada yang dapat ditugaskan sampai dipulihkan."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Acara yang dihapus meninggalkan setiap kalender, dengan check-in dan hitungan kepalanya, dan penempatan staf pelayanan ini hanya menyimpan tanggalnya. Ini tidak dapat dibatalkan."
 
@@ -22791,10 +22508,6 @@ msgstr "Acara dihapus: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Acara yang akan dihapus: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Kejadian dibatalkan"
 
 #: 
 msgid "Occurrence restored"
@@ -22811,10 +22524,6 @@ msgstr "Pulihkan kejadian"
 #: 
 msgid "Restore this occurrence"
 msgstr "Pulihkan kejadian ini"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Kejadian tidak dapat dibatalkan"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24879,10 +24588,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "Telemetri dikirim ke PostHog di Amerika Serikat. Laporan kegagalan pemasangan dan peningkatan tetap dikirim meskipun telemetri opsional dinonaktifkan."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Tanggal ini dibatalkan. Tidak ada lagi yang perlu Anda lakukan."
-
-#: 
 msgid "always sent"
 msgstr "selalu dikirim"
 
@@ -25349,10 +25054,6 @@ msgstr "Surel perlu perhatian"
 #: 
 msgid "Email problem"
 msgstr "Masalah surel"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Kode dan tautan masuk yang dikirim surel dibatalkan"
 
 #: 
 msgid "Emailed verification link"
@@ -27117,10 +26818,6 @@ msgstr "hingga %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "Ada permintaan di Portal Anggota untuk mengubah alamat email Anda di %1$s dari %2$s menjadi %3$s. Perubahan terjadi hanya jika tautan yang dikirim ke alamat baru digunakan."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Gunakan tautan di bawah untuk meninjau informasi keluarga Anda. Di halaman tinjauan, pilih \"Konfirmasi Info Keluarga\" untuk menegaskan bahwa semuanya benar, atau kirim koreksi ke kantor gereja."
 
 #: 
 msgid "Review Family Information"

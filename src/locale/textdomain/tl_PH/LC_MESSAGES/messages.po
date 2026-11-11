@@ -881,10 +881,6 @@ msgid "Do you want to proceed?"
 msgstr "Gusto mo bang magpatuloy?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Magpapadala ka ng kopya ng impormasyon ng pamilya sa mga sumusunod na email"
-
-#: 
 msgid "Financial Reports"
 msgstr "Mga Ulat sa Pananalapi"
 
@@ -1804,10 +1800,6 @@ msgstr "Numero ng Telepono"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Pasadyang Drop-Down na Listahan"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF ay matagumpay na na-email sa mga miyembro ng pamilya."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3848,10 +3840,6 @@ msgid "Please verify your family's information"
 msgstr "Pakiberipika ang impormasyon ng iyong pamilya"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Hindi ma-load ang impormasyon ng verification"
-
-#: 
 msgid "No Changes"
 msgstr "Walang mga Pagbabago"
 
@@ -3864,24 +3852,8 @@ msgid "Oops! Page not found."
 msgstr "Oops! Hindi mahanap ang pahina."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Pakipasok ang sumusunod para simulan ang verification ng iyong pamilya"
-
-#: 
-msgid "Family Verification"
-msgstr "Verification ng Pamilya"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Humiling ng Verification ng Impormasyon ng Pamilya"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Piliin kung paano mo gustong humiling na ma-verify ang impormasyon ng pamilya"
-
-#: 
-msgid "Online Verification"
-msgstr "Online na Verification"
 
 #: 
 msgid "Verified In Person"
@@ -4061,10 +4033,6 @@ msgstr "Matagumpay na naalis ang katangian."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Hindi maalis ang katangian."
-
-#: 
-msgid "Select event"
-msgstr "Pumili ng kaganapan"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4271,10 +4239,6 @@ msgid "Kiosk Manager"
 msgstr "Manager ng Kiosk"
 
 #: 
-msgid "Report an issue"
-msgstr "Mag-ulat ng isyu"
-
-#: 
 msgid "Self Verification"
 msgstr "Sariling Verification"
 
@@ -4303,10 +4267,6 @@ msgstr "Arabik - Egypt"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Naghihintay ng Sariling Verification"
 
 #: 
 msgid "Self Verify"
@@ -4688,16 +4648,8 @@ msgid "User must have Delete Records permission"
 msgstr "Ang user ay dapat may pahintulot sa Pag-delete ng mga Rekord"
 
 #: 
-msgid "invalid event type id"
-msgstr "hindi wastong event type id"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "hindi wastong calendar pinning"
-
-#: 
-msgid "invalid status value"
-msgstr "hindi wastong halaga ng katayuan"
 
 #: 
 msgid "invalid export value"
@@ -5301,10 +5253,6 @@ msgstr "Inilalapat ang Update ng Sistema..."
 #: 
 msgid "Back to Login"
 msgstr "Bumalik sa Login"
-
-#: 
-msgid "Back to login"
-msgstr "Bumalik sa login"
 
 #: 
 msgid "Complete"
@@ -6540,10 +6488,6 @@ msgid "Additional Information"
 msgstr "Karagdagang Impormasyon"
 
 #: 
-msgid "All information is correct"
-msgstr "Lahat ng impormasyon ay tama"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Italaga ang mga Pagkakataon"
 
@@ -6556,20 +6500,12 @@ msgid "Choose opportunities..."
 msgstr "Pumili ng mga pagkakataon..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Kumpirmahin ang Impormasyon ng Pamilya"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Impormasyon ng Pakikipag-ugnayan at Personal"
 
 #: 
 msgid "Edited"
 msgstr "Na-edit"
-
-#: 
-msgid "Email PDF"
-msgstr "I-email ang PDF"
 
 #: 
 msgid "Newsletter"
@@ -6580,40 +6516,12 @@ msgid "Personal"
 msgstr "Personal"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Pakiupdate ang aming mga rekord ng mga pagwawasto"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Magbigay ng anumang mga pagwawasto o karagdagang impormasyon dito..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Pumili ng mga Pagkakataon"
 
 #: 
-msgid "Submit Verification"
-msgstr "Isumite ang Verification"
-
-#: 
-msgid "Thank You!"
-msgstr "Salamat!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Bisitahin ang Aming Website"
-
-#: 
 msgid "Volunteer"
 msgstr "Boluntaryo"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Nagkaroon kami ng error sa pagproseso ng iyong verification. Pakisubukan muli o makipag-ugnayan sa amin nang direkta."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Natanggap na ang iyong kahilingan sa verification. Salamat sa pag-update ng iyong impormasyon."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8073,10 +7981,6 @@ msgid "City is required."
 msgstr "Ang lungsod ay kinakailangan."
 
 #: 
-msgid "Clear filter"
-msgstr "Linisin ang filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Hindi nahanap ang item ng konfigurasyong"
 
@@ -8345,10 +8249,6 @@ msgstr "Magdagdag ng Tao"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Idagdag ang lahat ng item ng cart sa isang grupo"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Idagdag ang Lahat sa Cart"
 
 #: 
 msgid "Add cart items to a family"
@@ -8855,10 +8755,6 @@ msgid "Family Profile"
 msgstr "Profile ng Pamilya"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Ang mga papel sa pamilya (Pinuno ng Sambahayan, Asawa, Bata, atbp.) ay tumutulong sa pag-aayos ng iyong mga rekord."
-
-#: 
 msgid "Family vs Person"
 msgstr "Pamilya kumpara sa Tao"
 
@@ -9357,10 +9253,6 @@ msgid "Record why attendees visited your church"
 msgstr "Itala kung bakit dumalo ang mga kalahok sa iyong simbahan"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Alisin lahat mula sa Cart"
-
-#: 
 msgid "Remove from Class"
 msgstr "Alisin mula sa Klase"
 
@@ -9831,10 +9723,6 @@ msgstr "Mga Kaganapan Ngayong Taon"
 #: 
 msgid "Everyone"
 msgstr "Lahat"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Nabigo ang pagbubura ng tala"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11734,10 +11622,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Ang simula ng saklaw ay dapat na isang wastong petsa na YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Ang simula ng saklaw ay dapat bago ang katapusan ng saklaw"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Ang simula ng saklaw ay dapat bago ang katapusan ng saklaw."
 
@@ -11958,10 +11842,6 @@ msgid "Cannot move property in that direction"
 msgstr "Hindi maililipat ang property sa direksyong iyon"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Kumpirmahin ang Impormasyon ng Pamilya"
-
-#: 
 msgid "Delete failed"
 msgstr "Nabigo ang pagtanggal"
 
@@ -12002,20 +11882,12 @@ msgid "Invalid target family"
 msgstr "Maling target na pamilya"
 
 #: 
-msgid "Log Out"
-msgstr "Mag-sign Out"
-
-#: 
 msgid "Membership not found"
 msgstr "Hindi nahanap ang membership"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Matagumpay na nabago ang password para sa"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Mangyaring suriin ang inyong impormasyon ng pamilya sa ibaba at kumpirmahin o humiling ng mga pagbabago."
 
 #: 
 msgid "Please select a target family."
@@ -12698,10 +12570,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Nabigo ang pag-install ng plugin mula sa URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Nabigo ang pag-load ng listahan ng naaprubahang plugin"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Nabigo ang pag-load ng listahan ng naaprubahang plugin."
 
@@ -12760,10 +12628,6 @@ msgstr "Kebab-case. Dapat tumugma sa pangalan ng nangungunang direktoryo sa loob
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Nino-load ang listahan ng naaprubahang plugin…"
-
-#: 
-msgid "Loading…"
-msgstr "Nino-load…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13211,10 +13075,6 @@ msgid "Change Your Locale"
 msgstr "Baguhin ang Iyong Locale"
 
 #: 
-msgid "Change role"
-msgstr "Baguhin ang papel"
-
-#: 
 msgid "Check Number"
 msgstr "Numero ng Tseke"
 
@@ -13229,10 +13089,6 @@ msgstr "Nabigo ang check-in. Subukan muli."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Nabigo ang check-out. Subukan muli."
-
-#: 
-msgid "City is required"
-msgstr "Ang lungsod ay kinakailangan"
 
 #: 
 msgid "Click Save to apply."
@@ -13301,10 +13157,6 @@ msgstr "Kopyahin ang Lahat ng Numero"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopyahin ang mga Miyembro sa Grupo"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Lumilikha ng Backup..."
 
 #: 
 msgid "Creating..."
@@ -13489,10 +13341,6 @@ msgstr "Nabigo ang pagdaragdag sa cart"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Nabigo ang pagkansela ng enrollment. Mangyaring subukan muli."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Nabigo ang pagkopya ng URL"
 
 #: 
 msgid "Failed to create backup."
@@ -13883,10 +13731,6 @@ msgid "One-Time Code"
 msgstr "One-Time na Code"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Buksan sa Bagong Tab"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Buksan ang iyong authenticator app at i-scan ang QR code na ito"
 
@@ -14163,10 +14007,6 @@ msgid "Setup Complete"
 msgstr "Kumpleto na ang Setup"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Ibahagi ang URL na ito sa mga miyembro ng pamilya para ma-verify ang kanilang impormasyon"
-
-#: 
 msgid "Show more options"
 msgstr "Ipakita ang higit pang options"
 
@@ -14319,10 +14159,6 @@ msgid "Validation pending"
 msgstr "Naghihintay ng validation"
 
 #: 
-msgid "Verification URL"
-msgstr "URL ng Pagpapatunay"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Nabigo ang pag-verify. Mangyaring subukan muli."
 
@@ -14387,10 +14223,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Makakatanggap ka ng mga backup code na maaaring gamitin kung mawalan ka ng access sa iyong app"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Ang Iyong Cart ay Walang Laman"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Ang iyong account ay protektado na ngayon"
 
@@ -14409,10 +14241,6 @@ msgstr "Ang kagustuhang wika ng iyong browser ay naiiba mula sa iyong ChurchCRM 
 #: 
 msgid "Your database already contains data"
 msgstr "Ang iyong database ay naglalaman na ng datos"
-
-#: 
-msgid "Zip code is required"
-msgstr "Ang zip code ay kinakailangan"
 
 #: 
 msgid "added"
@@ -14833,10 +14661,6 @@ msgstr "Wala kang pahintulot na magdagdag ng tala para sa pamilyang ito."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Wala kang pahintulot na magdagdag ng tala para sa taong ito."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Wala kang pahintulot na i-edit ang talang ito"
 
 #: 
 msgid "Account locked"
@@ -15659,10 +15483,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Mangyaring kumpirmahin ang pagbubura ng rekord ng pamilyang ito"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Mangyaring kumpirmahin ang impormasyon ng iyong pamilya"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Mangyaring pumili ng ibang pamilya upang iugnay ang mga donasyong ito"
 
@@ -15883,10 +15703,6 @@ msgid "Select a person"
 msgstr "Pumili ng tao"
 
 #: 
-msgid "Select role"
-msgstr "Pumili ng papel"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Pumili ng uri (opsyonal)"
 
@@ -16041,10 +15857,6 @@ msgstr "Sigurado ka bang gusto mong permanenteng burahin ang rekord ng bayad na 
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Kailangan ng hindi bababa sa isang paglaan ng pondo"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Hindi bababa sa isang pondo ang dapat may halagang hindi zero"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16293,10 +16105,6 @@ msgstr "Hindi nahanap ang grupo ng pangako"
 #: 
 msgid "Pledges & Payments"
 msgstr "Mga Pangako at Bayad"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Unahin ang mga pagsasalin"
 
 #: 
 msgid "Purpose"
@@ -16559,12 +16367,6 @@ msgstr "Walang nahanap na mga bayad para sa mga napiling deposito"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Walang ibinigay na mga wastong deposit ID"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "Matagumpay na naipadala ang PDF sa %d pamilya."
-msgstr[1] "Matagumpay na naipadala ang PDF sa %d pamilya."
 
 #: 
 msgid "Partial Send"
@@ -17105,10 +16907,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Gumagawa at nag-a-upload ng backup. Maaaring tumagal ito ng ilang minuto..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Nabigo ang pag-reset ng database."
-
-#: 
 msgid "Deceased"
 msgstr "Yumao"
 
@@ -17305,10 +17103,6 @@ msgid "Log settings saved"
 msgstr "Na-save ang mga setting ng log"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Kailangan ang Login Name"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Minarkahan ang Tao bilang Aktibo"
 
@@ -17433,10 +17227,6 @@ msgid "Sending..."
 msgstr "Ipinapadala..."
 
 #: 
-msgid "Sending…"
-msgstr "Ipinapadala…"
-
-#: 
 msgid "Settings reset"
 msgstr "Na-reset ang mga setting"
 
@@ -17505,16 +17295,8 @@ msgid "Upcoming"
 msgstr "Paparating"
 
 #: 
-msgid "Valid Until"
-msgstr "Wasto Hanggang"
-
-#: 
 msgid "View active only"
 msgstr "Tingnan lang ang aktibo"
-
-#: 
-msgid "View all"
-msgstr "Tingnan Lahat"
 
 #: 
 msgid "View all (including inactive)"
@@ -18293,10 +18075,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Magsisimula ang fiscal year mo sa %s."
 
 #: 
-msgid "An error occurred"
-msgstr "May naganap na error"
-
-#: 
 msgid "Approve"
 msgstr "Aprubahan"
 
@@ -18467,12 +18245,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d araw"
 msgstr[1] "%d araw"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d default ang nilaktawan dahil sa ibang dahilan (tapos na, kinansela o puno na ang pagkakataon)"
-msgstr[1] "%d default ang nilaktawan dahil sa ibang dahilan (tapos na, kinansela o puno na ang pagkakataon)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18735,10 +18507,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Ang tema ay isang folder na ina-upload ng simbahan ninyo sa Include/themes/ sa server. Kasama sa ChurchCRM ang default ng sistema."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Isang setting para sa paglipat. Magagamit ang parehong lumang pahina ng Mga Oportunidad ng Boluntaryo at ang mga bagong pahina ng Mga Ministeryo, at nagpapakita ang talaan ng tao ng dalawang tab na Boluntaryo, na malinaw na may label. Gamitin ito habang inililipat ang simbahan mula V1 patungong V2, pagkatapos ay lumipat sa V2 lamang."
-
-#: 
 msgid "A volunteer"
 msgstr "Isang boluntaryo"
 
@@ -18943,10 +18711,6 @@ msgid "Assigned outside the current plan"
 msgstr "Naitalaga sa labas ng kasalukuyang plano"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Kinansela ang atas"
-
-#: 
 msgid "Assignment not found"
 msgstr "Hindi nahanap ang atas"
 
@@ -19053,10 +18817,6 @@ msgstr "Kanselahin ang atas"
 #: 
 msgid "Cancel this assignment"
 msgstr "Kanselahin ang atas na ito"
-
-#: 
-msgid "Cancelled"
-msgstr "Kinansela"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19213,10 +18973,6 @@ msgstr "Website ng simbahan"
 #: 
 msgid "Close event details"
 msgstr "Isara ang mga detalye ng kaganapan"
-
-#: 
-msgid "Colour"
-msgstr "Kulay"
 
 #: 
 msgid "Completed"
@@ -19463,10 +19219,6 @@ msgid "Each staffing need must name a position"
 msgstr "Dapat magpangalan ng posisyon ang bawat kailangang tauhan"
 
 #: 
-msgid "Edit event"
-msgstr "I-edit ang Kaganapan"
-
-#: 
 msgid "Edit ministry"
 msgstr "Baguhin ang ministeryo"
 
@@ -19551,10 +19303,6 @@ msgstr "Ipinadala ang email sa {{count}} recipients."
 #: 
 msgid "Emails"
 msgstr "Mga Email"
-
-#: 
-msgid "End time"
-msgstr "Oras ng Pagtatapos"
 
 #: 
 msgid "Enter counts"
@@ -20835,10 +20583,6 @@ msgid "SMTP test"
 msgstr "SMTP test"
 
 #: 
-msgid "Save changes"
-msgstr "I-save ang mga Pagbabago"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Na-save — hindi na humihingi ng tulong ang ministeryong ito"
 
@@ -21121,10 +20865,6 @@ msgstr "Na-save ang mga kailangang tauhan"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Magsimula sa paggawa ng ministeryo, saka idagdag ang mga pangkat at posisyong naglilingkod dito."
-
-#: 
-msgid "Start time"
-msgstr "Oras ng Simula"
 
 #: 
 msgid "Start typing a name"
@@ -21473,10 +21213,6 @@ msgstr "Napili na ang address — kopyahin ito gamit ang keyboard mo."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Hindi pinapayagan ang asset path na \"%s\"."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "Hindi makansela ang atas"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22003,10 +21739,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Nangyari na ang pagkakataong ito at hindi na maaaring baguhin ang mga atas nito"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Kinansela ang pagkakataong ito"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "May sariling kailangang tauhan ang pagkakataong ito, hiwalay sa iskedyul nito."
 
@@ -22175,16 +21907,8 @@ msgid "Validation"
 msgstr "Pagpapatunay"
 
 #: 
-msgid "View event"
-msgstr "Tingnan ang Kaganapan"
-
-#: 
 msgid "View my schedule"
 msgstr "Tingnan ang iskedyul ko"
-
-#: 
-msgid "View person"
-msgstr "Tingnan ang Tao"
 
 #: 
 msgid "View the event"
@@ -22233,10 +21957,6 @@ msgstr "Oras ng mga boluntaryo"
 #: 
 msgid "Volunteering"
 msgstr "Pagboboluntaryo"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Pagboboluntaryong isinaayos ayon sa pagpapatakbo ng isang simbahan. May mga pangkat at posisyon ang bawat ministeryo; ang mga tao ay kuwalipikado para sa mga posisyon at kabilang sa grupong pool ng ministeryo; sinusundan ng mga iskedyul ang mga kaganapan sa kalendaryo at gumagawa ng mga pagkakataong may petsa at kailangang tauhan; nagtatalaga ng mga tao ang mga koordineytor, na tumatanggap, tumatanggi o nagmumungkahi ng kapalit; ipinapadala sa email ang mga paalala at alerto. Nakikita ng mga administrator at mga user na may pahintulot na Pamahalaan ang Mga Ministeryo ang bawat ministeryo at maaari silang gumawa, mag-deactivate at magbura ng mga ito. Ang koordineytor ng ministeryo ay binibigyan na lamang ng pahintulot na Pamahalaan ang Aking Mga Ministeryo: ang heading na Mga Ministeryo sa sidebar ay magpapakita na lamang ng mga ministeryong kino-coordinate nila. Pinapatakbo ng pinuno ng pangkat ang kanyang pangkat mula sa Portal ng Miyembro. Ginagamit ng mga miyembro ang Portal ng Miyembro para makita ang iskedyul nila, tumugon, mag-sign up at mag-alok ng tulong."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22775,10 +22495,6 @@ msgid "Cancel this occurrence"
 msgstr "Ikansela ang occurrence na ito"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Ang pagkansela ay hindi nagsasabi sa kahit sino: walang email na ipinapadala. Pinapanatili ang mga assignment, walang reminder na iniskedyul habang ito ay kinansela, at walang maiuugnay hangga ito ay maibalik."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Ang mga inalis na event ay umaalis sa bawat kalendaryo, kasama ang kanilang check-ins at headcounts, at ang staffing ng ministry na ito ay nagsasalita lamang ng petsa nito. Hindi ito maaaring bawiin."
 
@@ -22789,10 +22505,6 @@ msgstr "Mga event na na-delete: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Mga event na ide-delete: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Ang occurrence ay kinansela"
 
 #: 
 msgid "Occurrence restored"
@@ -22809,10 +22521,6 @@ msgstr "Ibalik ang occurrence"
 #: 
 msgid "Restore this occurrence"
 msgstr "Ibalik ang occurrence na ito"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Hindi makakancel ang occurrence"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24877,10 +24585,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "Ipinapadala ang telemetry sa PostHog sa United States. Ipinapadala ang mga ulat ng pagkabigo sa pag-install at pag-upgrade kahit naka-disable ang opsyonal na telemetry."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Kinansela ang petsang ito. Wala nang kailangan mula sa iyo."
-
-#: 
 msgid "always sent"
 msgstr "laging ipinapadala"
 
@@ -25347,10 +25051,6 @@ msgstr "Kailangang asikasuhin ang email"
 #: 
 msgid "Email problem"
 msgstr "Problema sa email"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Kinansela ang na-email na code at link ng pag-sign in"
 
 #: 
 msgid "Emailed verification link"
@@ -27115,10 +26815,6 @@ msgstr "hanggang %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "May kahilingan sa Portal ng Miyembro na baguhin ang iyong email address sa %1$s mula %2$s tungo sa %3$s. Magkakabisa ang pagbabago kapag ginamit ang link na ipinadala sa bagong address."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Gamitin ang link sa ibaba upang suriin ang impormasyon ng iyong pamilya. Sa pahina ng pagsusuri, piliin ang \"Kumpirmahin ang Impormasyon ng Pamilya\" upang kumpirmahing tama ang lahat, o ipadala ang mga pagwawasto sa opisina ng simbahan."
 
 #: 
 msgid "Review Family Information"

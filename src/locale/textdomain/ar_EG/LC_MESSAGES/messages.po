@@ -886,10 +886,6 @@ msgid "Do you want to proceed?"
 msgstr "هل تريد المتابعة؟"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "أنت على وشك إرسال نسخة من معلومات الأسرة بالبريد الإلكتروني إلى رسائل الأسماء التالية"
-
-#: 
 msgid "Financial Reports"
 msgstr "تقارير مالية"
 
@@ -1819,10 +1815,6 @@ msgstr "رقم التليفون"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "العرف القائمة المنسدلة"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF بالبريد الالكتروني بنجاح لأفراد الأسرة."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3871,10 +3863,6 @@ msgid "Please verify your family's information"
 msgstr "يرجى التحقق من المعلومات عائلتك"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "غير قادر على تحميل معلومات التحقق"
-
-#: 
 msgid "No Changes"
 msgstr "لا تغييرات"
 
@@ -3887,24 +3875,8 @@ msgid "Oops! Page not found."
 msgstr "وجه الفتاة! الصفحة غير موجودة."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "الرجاء إدخال التالية لبدء التحقق عائلتك"
-
-#: 
-msgid "Family Verification"
-msgstr "التأكيد الأسرة"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "طلب معلومات الأسرة التأكيد"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "تحديد كيف تريد أن تطلب المعلومات الأسرة ليتم التحقق منها"
-
-#: 
-msgid "Online Verification"
-msgstr "التأكيد على الانترنت"
 
 #: 
 msgid "Verified In Person"
@@ -4086,10 +4058,6 @@ msgstr "الخاصية هي غير المعينة بنجاح."
 #: 
 msgid "The property could not be unassigned."
 msgstr "الخاصية لا يمكن أن يكون غير معين."
-
-#: 
-msgid "Select event"
-msgstr "حدد الحدث"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4297,10 +4265,6 @@ msgid "Kiosk Manager"
 msgstr "مدير كشك"
 
 #: 
-msgid "Report an issue"
-msgstr "بلغ عن خطأ"
-
-#: 
 msgid "Self Verification"
 msgstr "التأكيد الذاتي"
 
@@ -4329,10 +4293,6 @@ msgstr "عربى- مصر"
 #: 
 msgid "Thai"
 msgstr "التايلاندية"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "في انتظار التحقق الذاتي"
 
 #: 
 msgid "Self Verify"
@@ -4715,16 +4675,8 @@ msgid "User must have Delete Records permission"
 msgstr "يجب أن يكون المستخدم إذن السجلات حذف"
 
 #: 
-msgid "invalid event type id"
-msgstr "نوع الحدث غير صالح معرف"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "التدبيس تقويم غير صالح"
-
-#: 
-msgid "invalid status value"
-msgstr "قيمة حالة غير صالحة"
 
 #: 
 msgid "invalid export value"
@@ -5337,10 +5289,6 @@ msgstr "جاري تطبيق تحديث النظام..."
 
 #: 
 msgid "Back to Login"
-msgstr "العودة إلى تسجيل الدخول"
-
-#: 
-msgid "Back to login"
 msgstr "العودة إلى تسجيل الدخول"
 
 #: 
@@ -6585,10 +6533,6 @@ msgid "Additional Information"
 msgstr "معلومات إضافية"
 
 #: 
-msgid "All information is correct"
-msgstr "جميع المعلومات صحيحة"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "تعيين الفرص"
 
@@ -6601,20 +6545,12 @@ msgid "Choose opportunities..."
 msgstr "اختر فرصا..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "تأكيد معلومات العائلة"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "معلومات الاتصال والمعلومات الشخصية"
 
 #: 
 msgid "Edited"
 msgstr "تم التعديل"
-
-#: 
-msgid "Email PDF"
-msgstr "إرسال PDF عبر البريد الإلكتروني"
 
 #: 
 msgid "Newsletter"
@@ -6625,40 +6561,12 @@ msgid "Personal"
 msgstr "شخصي"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "يرجى تحديث سجلاتنا بالتصحيحات"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "قدم أي تصحيحات أو معلومات إضافية هنا..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "حدد الفرص"
 
 #: 
-msgid "Submit Verification"
-msgstr "تقديم التحقق"
-
-#: 
-msgid "Thank You!"
-msgstr "شكرا لك!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "قم بزيارة موقعنا على الويب"
-
-#: 
 msgid "Volunteer"
 msgstr "متطوع"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "واجهنا خطأ عند معالجة التحقق الخاص بك. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "تم استلام طلب التحقق الخاص بك. شكرا لك لإبقاء معلوماتك محدثة."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8134,10 +8042,6 @@ msgid "City is required."
 msgstr "المدينة مطلوبة."
 
 #: 
-msgid "Clear filter"
-msgstr "مسح الفلتر"
-
-#: 
 msgid "Configuration item not found"
 msgstr "عنصر التكوين غير موجود"
 
@@ -8410,10 +8314,6 @@ msgstr "أضف شخصًا"
 #: 
 msgid "Add all cart items to a group"
 msgstr "أضف جميع العناصر المحددة إلى مجموعة"
-
-#: 
-msgid "Add all to Cart"
-msgstr "أضف الكل"
 
 #: 
 msgid "Add cart items to a family"
@@ -8920,10 +8820,6 @@ msgid "Family Profile"
 msgstr "ملف العائلة الشخصي"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "تساعد أدوار العائلة (رب الأسرة والزوج والطفل وما إلى ذلك) في تنظيم السجلات."
-
-#: 
 msgid "Family vs Person"
 msgstr "العائلة مقابل الشخص"
 
@@ -9422,10 +9318,6 @@ msgid "Record why attendees visited your church"
 msgstr "سجل لماذا زار الحاضرون كنيستك"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "إزالة الكل من الاختيار"
-
-#: 
 msgid "Remove from Class"
 msgstr "إزالة من الفئة"
 
@@ -9896,10 +9788,6 @@ msgstr "الأحداث هذا العام"
 #: 
 msgid "Everyone"
 msgstr "الجميع"
-
-#: 
-msgid "Failed to delete note"
-msgstr "فشل حذف الملاحظة"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11803,10 +11691,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "يجب أن يكون بدء النطاق تاريخاً صالحاً بصيغة YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "يجب أن يكون بدء النطاق قبل نهاية النطاق"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "يجب أن يكون بدء النطاق قبل نهاية النطاق."
 
@@ -12027,10 +11911,6 @@ msgid "Cannot move property in that direction"
 msgstr "لا يمكن نقل الخاصية في هذا الاتجاه"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "تأكيد معلومات الأسرة"
-
-#: 
 msgid "Delete failed"
 msgstr "فشل الحذف"
 
@@ -12071,20 +11951,12 @@ msgid "Invalid target family"
 msgstr "الأسرة المستهدفة غير صالحة"
 
 #: 
-msgid "Log Out"
-msgstr "تسجيل الخروج"
-
-#: 
 msgid "Membership not found"
 msgstr "لم يتم العثور على العضوية"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "تم تغيير كلمة المرور بنجاح لـ"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "يرجى مراجعة معلومات أسرتك أدناه وتأكيدها أو طلب التغييرات."
 
 #: 
 msgid "Please select a target family."
@@ -12767,10 +12639,6 @@ msgid "Failed to install plugin from URL"
 msgstr "فشل تثبيت الإضافة من الرابط"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "فشل تحميل قائمة الإضافات المعتمدة"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "فشل تحميل قائمة الإضافات المعتمدة."
 
@@ -12829,10 +12697,6 @@ msgstr "صيغة kebab-case. يجب أن يتطابق مع اسم المجلد �
 #: 
 msgid "Loading approved plugin list…"
 msgstr "جارٍ تحميل قائمة الإضافات المعتمدة..."
-
-#: 
-msgid "Loading…"
-msgstr "جارٍ التحميل..."
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13280,10 +13144,6 @@ msgid "Change Your Locale"
 msgstr "تغيير اللغة والمنطقة"
 
 #: 
-msgid "Change role"
-msgstr "تغير الدور"
-
-#: 
 msgid "Check Number"
 msgstr "رقم الشيك"
 
@@ -13298,10 +13158,6 @@ msgstr "فشل تسجيل الحضور. يرجى المحاولة مرة أخر�
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "فشل تسجيل الخروج. يرجى المحاولة مرة أخرى."
-
-#: 
-msgid "City is required"
-msgstr "المدينة مطلوبة"
 
 #: 
 msgid "Click Save to apply."
@@ -13370,10 +13226,6 @@ msgstr "انسخ جميع الأرقام"
 #: 
 msgid "Copy Members to Group"
 msgstr "نسخ الأعضاء إلى مجموعة"
-
-#: 
-msgid "Creating Backup..."
-msgstr "جاري إنشاء النسخة الاحتياطية..."
 
 #: 
 msgid "Creating..."
@@ -13558,10 +13410,6 @@ msgstr "فشل في الإضافة إلى السلة"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "فشل إلغاء التسجيل. يُرجى المحاولة مرة أخرى."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "فشل نسخ عنوان URL"
 
 #: 
 msgid "Failed to create backup."
@@ -13952,10 +13800,6 @@ msgid "One-Time Code"
 msgstr "رمز لمرة واحدة"
 
 #: 
-msgid "Open in New Tab"
-msgstr "فتح في علامة تبويب جديدة"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "افتح تطبيق المصادقة وامسح رمز QR هذا"
 
@@ -14232,10 +14076,6 @@ msgid "Setup Complete"
 msgstr "اكتمل الإعداد"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "شارك عنوان URL هذا مع أفراد العائلة للتحقق من معلوماتهم"
-
-#: 
 msgid "Show more options"
 msgstr "عرض المزيد من الخيارات"
 
@@ -14388,10 +14228,6 @@ msgid "Validation pending"
 msgstr "التحقق قيد الانتظار"
 
 #: 
-msgid "Verification URL"
-msgstr "URL التحقق"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "فشل التحقق. يُرجى المحاولة مرة أخرى."
 
@@ -14456,10 +14292,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "ستتلقى رموز احتياطية يمكن استخدامها إذا فقدت الوصول إلى تطبيقك"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "عربة التسوق فارغة"
-
-#: 
 msgid "Your account is now protected"
 msgstr "حسابك محمي الآن"
 
@@ -14478,10 +14310,6 @@ msgstr "تفضيل لغة متصفحك يختلف عن إعدادات اللغة
 #: 
 msgid "Your database already contains data"
 msgstr "قاعدة بياناتك تحتوي على بيانات بالفعل"
-
-#: 
-msgid "Zip code is required"
-msgstr "الرمز البريدي مطلوب"
 
 #: 
 msgid "added"
@@ -14906,10 +14734,6 @@ msgstr "ليس لديك صلاحية إضافة ملاحظة لهذه العائ
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "ليس لديك صلاحية إضافة ملاحظة لهذا الشخص."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "ليس لديك صلاحية تعديل هذه الملاحظة"
 
 #: 
 msgid "Account locked"
@@ -15740,10 +15564,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "يرجى تأكيد حذف سجل العائلة هذا"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "يرجى تأكيد معلومات عائلتك"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "يرجى اختيار عائلة أخرى لربط هذه التبرعات بها"
 
@@ -15964,10 +15784,6 @@ msgid "Select a person"
 msgstr "اختر شخصاً"
 
 #: 
-msgid "Select role"
-msgstr "اختر الدور"
-
-#: 
 msgid "Select type (optional)"
 msgstr "اختر النوع (اختياري)"
 
@@ -16122,10 +15938,6 @@ msgstr "هل أنت متأكد أنك تريد حذف سجل الدفعة هذا
 #: 
 msgid "At least one fund allocation is required"
 msgstr "مطلوب تخصيص صندوق واحد على الأقل"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "يجب أن يكون لصندوق واحد على الأقل مبلغ غير صفري"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16374,10 +16186,6 @@ msgstr "مجموعة التعهدات غير موجودة"
 #: 
 msgid "Pledges & Payments"
 msgstr "التعهدات والمدفوعات"
-
-#: 
-msgid "Prioritise translations"
-msgstr "إعطاء الأولوية للترجمات"
 
 #: 
 msgid "Purpose"
@@ -16644,16 +16452,6 @@ msgstr "لم تُوجد مدفوعات للإيداعات المحددة"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "لم يتم تقديم معرّفات إيداع صالحة"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "لم يتم إرسال ملف PDF بنجاح إلى أي عائلة."
-msgstr[1] "تم إرسال ملف PDF بنجاح إلى عائلة واحدة."
-msgstr[2] "تم إرسال ملف PDF بنجاح إلى عائلتين."
-msgstr[3] "تم إرسال ملف PDF بنجاح إلى %d عائلات."
-msgstr[4] "تم إرسال ملف PDF بنجاح إلى %d عائلة."
-msgstr[5] "تم إرسال ملف PDF بنجاح إلى %d عائلة."
 
 #: 
 msgid "Partial Send"
@@ -17198,10 +16996,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "جارٍ إنشاء ورفع النسخة الاحتياطية. قد يستغرق هذا عدة دقائق..."
 
 #: 
-msgid "Database reset failed."
-msgstr "فشلت إعادة تعيين قاعدة البيانات."
-
-#: 
 msgid "Deceased"
 msgstr "متوفى"
 
@@ -17398,10 +17192,6 @@ msgid "Log settings saved"
 msgstr "تم حفظ إعدادات السجل"
 
 #: 
-msgid "Login Name is Required"
-msgstr "اسم تسجيل الدخول مطلوب"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "تم تحديد الشخص كنشط"
 
@@ -17526,10 +17316,6 @@ msgid "Sending..."
 msgstr "جارٍ الإرسال..."
 
 #: 
-msgid "Sending…"
-msgstr "جارٍ الإرسال…"
-
-#: 
 msgid "Settings reset"
 msgstr "تمت إعادة تعيين الإعدادات"
 
@@ -17598,16 +17384,8 @@ msgid "Upcoming"
 msgstr "القادمة"
 
 #: 
-msgid "Valid Until"
-msgstr "صالح حتى"
-
-#: 
 msgid "View active only"
 msgstr "عرض النشط فقط"
-
-#: 
-msgid "View all"
-msgstr "عرض الكل"
 
 #: 
 msgid "View all (including inactive)"
@@ -18386,10 +18164,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "تبدأ سنتك المالية في %s."
 
 #: 
-msgid "An error occurred"
-msgstr "حدث خطأ"
-
-#: 
 msgid "Approve"
 msgstr "اعتماد"
 
@@ -18564,16 +18338,6 @@ msgstr[2] "%d يومان"
 msgstr[3] "%d أيام"
 msgstr[4] "%d يومًا"
 msgstr[5] "%d يوم"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "لا افتراضيين تم تخطيهم لسبب آخر (انتهى الموعد أو أُلغي أو اكتمل)"
-msgstr[1] "تم تخطي %d افتراضي لسبب آخر (انتهى الموعد أو أُلغي أو اكتمل)"
-msgstr[2] "تم تخطي %d افتراضيين لسبب آخر (انتهى الموعد أو أُلغي أو اكتمل)"
-msgstr[3] "تم تخطي %d افتراضيين لسبب آخر (انتهى الموعد أو أُلغي أو اكتمل)"
-msgstr[4] "تم تخطي %d افتراضيًا لسبب آخر (انتهى الموعد أو أُلغي أو اكتمل)"
-msgstr[5] "تم تخطي %d افتراضي لسبب آخر (انتهى الموعد أو أُلغي أو اكتمل)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18860,10 +18624,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "السمة مجلد ترفعه كنيستك إلى Include/themes/ على الخادم. السمة الافتراضية للنظام تأتي مع ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "إعداد انتقالي. تتوفر صفحات فرص التطوع القديمة وصفحات الخدمات الجديدة معًا، ويعرض سجل الشخص كلا تبويبي التطوع بتسمية واضحة. استخدمه أثناء نقل الكنيسة من V1 إلى V2، ثم انتقل إلى V2 فقط."
-
-#: 
 msgid "A volunteer"
 msgstr "متطوع"
 
@@ -19068,10 +18828,6 @@ msgid "Assigned outside the current plan"
 msgstr "مُكلَّف خارج الخطة الحالية"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "أُلغي التكليف"
-
-#: 
 msgid "Assignment not found"
 msgstr "لم يتم العثور على التكليف"
 
@@ -19178,10 +18934,6 @@ msgstr "إلغاء التكليف"
 #: 
 msgid "Cancel this assignment"
 msgstr "إلغاء هذا التكليف"
-
-#: 
-msgid "Cancelled"
-msgstr "مُلغى"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19338,10 +19090,6 @@ msgstr "موقع الكنيسة الإلكتروني"
 #: 
 msgid "Close event details"
 msgstr "إغلاق تفاصيل الفعالية"
-
-#: 
-msgid "Colour"
-msgstr "اللون"
 
 #: 
 msgid "Completed"
@@ -19588,10 +19336,6 @@ msgid "Each staffing need must name a position"
 msgstr "يجب أن تحدد كل حاجة تكليف مهمة"
 
 #: 
-msgid "Edit event"
-msgstr "تعديل الحدث"
-
-#: 
 msgid "Edit ministry"
 msgstr "تعديل الخدمة"
 
@@ -19676,10 +19420,6 @@ msgstr "أُرسل البريد الإلكتروني إلى {{count}} مستلم
 #: 
 msgid "Emails"
 msgstr "رسائل البريد"
-
-#: 
-msgid "End time"
-msgstr "وقت الانتهاء"
 
 #: 
 msgid "Enter counts"
@@ -20968,10 +20708,6 @@ msgid "SMTP test"
 msgstr "اختبار SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "حفظ التغييرات"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "تم الحفظ — لم تعد هذه الخدمة تطلب مساعدة"
 
@@ -21254,10 +20990,6 @@ msgstr "تم حفظ احتياجات التكليف"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "ابدأ بإنشاء خدمة، ثم أضف الفرق والمهام التي تخدم فيها."
-
-#: 
-msgid "Start time"
-msgstr "وقت البدء"
 
 #: 
 msgid "Start typing a name"
@@ -21606,10 +21338,6 @@ msgstr "العنوان محدد — انسخه بلوحة المفاتيح."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "مسار الأصل \"%s\" غير مسموح به."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "تعذّر إلغاء التكليف"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22144,10 +21872,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "حدث هذا الموعد بالفعل ولم يعد بالإمكان تغيير تكليفاته"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "أُلغي هذا الموعد"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "لهذا الموعد احتياجات تكليف خاصة به، منفصلة عن جدوله."
 
@@ -22316,16 +22040,8 @@ msgid "Validation"
 msgstr "التحقق"
 
 #: 
-msgid "View event"
-msgstr "عرض الحدث"
-
-#: 
 msgid "View my schedule"
 msgstr "عرض جدولي"
-
-#: 
-msgid "View person"
-msgstr "عرض الشخص"
 
 #: 
 msgid "View the event"
@@ -22374,10 +22090,6 @@ msgstr "أوقات المتطوعين"
 #: 
 msgid "Volunteering"
 msgstr "التطوع"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "تطوع منظَّم بالطريقة التي تدير بها الكنيسة عملها. لكل خدمة فرق ومهام؛ ويُؤهَّل الأشخاص للمهام وينتمون إلى مجموعة متطوعي الخدمة؛ وتتبع الجداول الفعاليات في التقويم وتنتج مواعيد مؤرخة بمتطلبات تكليف؛ ويكلّف المنسقون الأشخاص الذين يقبلون أو يعتذرون أو يقترحون بديلًا؛ وتُرسل التذكيرات والتنبيهات بالبريد الإلكتروني. يرى المسؤولون والمستخدمون الذين لديهم إذن إدارة الخدمات كل الخدمات ويجوز لهم إنشاؤها وإيقافها وحذفها. أما منسق الخدمة فيُمنح بدلًا من ذلك إذن إدارة خدماتي: فلا يعرض عنوان الخدمات في الشريط الجانبي إلا الخدمات التي ينسّقها. ويدير قائد الفريق فريقه من بوابة الأعضاء. ويستخدم الأعضاء بوابة الأعضاء لرؤية جدولهم والرد والتسجيل وعرض المساعدة."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22924,10 +22636,6 @@ msgid "Cancel this occurrence"
 msgstr "إلغاء هذا الموعد"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "الإلغاء لا يُبلغ أحدًا: لا يُرسَل أي بريد إلكتروني. تبقى التكليفات، ولا تُجدول تذكيرات أثناء الإلغاء، ولا يمكن تكليف أحد حتى تتم الاستعادة."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "تُحذف الأحداث المحذوفة من كل التقاويم مع تسجيلات حضورها وأعداد الحاضرين، ولا يحتفظ تكليف هذه الخدمة بها إلا بتاريخها. لا يمكن التراجع عن ذلك."
 
@@ -22938,10 +22646,6 @@ msgstr "الأحداث المحذوفة: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "الأحداث المراد حذفها: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "تم إلغاء الموعد"
 
 #: 
 msgid "Occurrence restored"
@@ -22958,10 +22662,6 @@ msgstr "استعادة الموعد"
 #: 
 msgid "Restore this occurrence"
 msgstr "استعادة هذا الموعد"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "تعذّر إلغاء الموعد"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -25026,10 +24726,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "يُرسل القياس عن بُعد إلى PostHog في الولايات المتحدة. تُرسل تقارير إخفاق التثبيت والترقية حتى عند تعطيل القياس الاختياري."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "أُلغي هذا الموعد. لا يلزم منكم شيء آخر."
-
-#: 
 msgid "always sent"
 msgstr "يُرسل دائمًا"
 
@@ -25496,10 +25192,6 @@ msgstr "البريد الإلكتروني يحتاج إلى متابعة"
 #: 
 msgid "Email problem"
 msgstr "مشكلة في البريد الإلكتروني"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "أُلغي رمز تسجيل الدخول ورابطه المرسَلان بالبريد"
 
 #: 
 msgid "Emailed verification link"
@@ -27264,10 +26956,6 @@ msgstr "حتى %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "قُدِّم طلب في بوابة الأعضاء لتغيير عنوان بريدك الإلكتروني في %1$s من %2$s إلى %3$s. لا يتم التغيير إلا عند استخدام الرابط المُرسَل إلى العنوان الجديد."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "يُرجى استخدام الرابط أدناه لمراجعة معلومات عائلتك. في صفحة المراجعة، اختر «تأكيد معلومات العائلة» لتأكيد أن كل شيء صحيح، أو أرسل التصحيحات إلى مكتب الكنيسة."
 
 #: 
 msgid "Review Family Information"

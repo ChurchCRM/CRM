@@ -914,10 +914,6 @@ msgid "Do you want to proceed?"
 msgstr "Vill du fortsätta?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Du håller på att skicka kopia av familjeinformation till följande e-postmeddelanden"
-
-#: 
 msgid "Financial Reports"
 msgstr "Financiellarapporter"
 
@@ -1894,10 +1890,6 @@ msgstr "telefonnummer"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Fritt anpassade 'drop down' lista"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF mailades framgångsrikt till familjemedlemmar."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3960,10 +3952,6 @@ msgid "Please verify your family's information"
 msgstr "Kontrollera din familjs information"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Det gick inte att ladda verifieringsinformation"
-
-#: 
 msgid "No Changes"
 msgstr "Inga förändringar"
 
@@ -3976,24 +3964,8 @@ msgid "Oops! Page not found."
 msgstr "hoppsan! Sidan hittas inte."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Ange följande för att starta familjens verifiering"
-
-#: 
-msgid "Family Verification"
-msgstr "Familjekontroll"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Begär familjeinfo-verifiering"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Välj hur du vill begära att familjinformationen ska verifieras"
-
-#: 
-msgid "Online Verification"
-msgstr "Onlineverifiering"
 
 #: 
 msgid "Verified In Person"
@@ -4175,10 +4147,6 @@ msgstr "Fastigheten är inte tilldelad."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Fastigheten kunde inte tilldelas."
-
-#: 
-msgid "Select event"
-msgstr "Välj händelse"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4386,10 +4354,6 @@ msgid "Kiosk Manager"
 msgstr "Kiosk redaktör"
 
 #: 
-msgid "Report an issue"
-msgstr "Rapportera ett problem"
-
-#: 
 msgid "Self Verification"
 msgstr "Självverifiering"
 
@@ -4418,10 +4382,6 @@ msgstr "Arabiska - Egypten"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Väntar på självverifiering"
 
 #: 
 msgid "Self Verify"
@@ -4804,16 +4764,8 @@ msgid "User must have Delete Records permission"
 msgstr "Användaren måste ha tillåtelse att ta bort poster"
 
 #: 
-msgid "invalid event type id"
-msgstr "ogiltig händelsetyp-id"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "ogiltig fästning av kalendern"
-
-#: 
-msgid "invalid status value"
-msgstr "ogiltigt statusvärde"
 
 #: 
 msgid "invalid export value"
@@ -5420,10 +5372,6 @@ msgstr "Tillämpar systemuppdatering..."
 
 #: 
 msgid "Back to Login"
-msgstr "Tillbaka till inloggning"
-
-#: 
-msgid "Back to login"
 msgstr "Tillbaka till inloggning"
 
 #: 
@@ -6660,10 +6608,6 @@ msgid "Additional Information"
 msgstr "Ytterligare information"
 
 #: 
-msgid "All information is correct"
-msgstr "All information är korrekt"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Tilldela möjligheter"
 
@@ -6676,20 +6620,12 @@ msgid "Choose opportunities..."
 msgstr "Välj möjligheter..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Bekräfta familjeinformation"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontakt & Personlig info"
 
 #: 
 msgid "Edited"
 msgstr "Redigerad"
-
-#: 
-msgid "Email PDF"
-msgstr "E-posta PDF"
 
 #: 
 msgid "Newsletter"
@@ -6700,40 +6636,12 @@ msgid "Personal"
 msgstr "Personligt"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Uppdatera våra register med korrigeringar"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Ange eventuella korrigeringar eller ytterligare information här..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Välj möjligheter"
 
 #: 
-msgid "Submit Verification"
-msgstr "Skicka verifiering"
-
-#: 
-msgid "Thank You!"
-msgstr "Tack!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Besök vår webbplats"
-
-#: 
 msgid "Volunteer"
 msgstr "Volontär"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Vi stötte på ett fel vid behandlingen av din verifiering. Försök igen eller kontakta oss direkt."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Din verifieringsbegäran har tagits emot. Tack för att du håller din information uppdaterad."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8193,10 +8101,6 @@ msgid "City is required."
 msgstr "Stad är obligatoriskt."
 
 #: 
-msgid "Clear filter"
-msgstr "Rensa filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Konfigurationsobjekt hittades inte"
 
@@ -8465,10 +8369,6 @@ msgstr "Lägg till en person"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Lägg till alla urvalets poster i en grupp"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Lägg till alla i urvalet"
 
 #: 
 msgid "Add cart items to a family"
@@ -8975,10 +8875,6 @@ msgid "Family Profile"
 msgstr "Familjeprofil"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Familjeroller (familjeöverhuvud, make/maka, barn osv.) hjälper till att organisera dina poster."
-
-#: 
 msgid "Family vs Person"
 msgstr "Familj vs person"
 
@@ -9477,10 +9373,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registrera varför besökare kom till din kyrka"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Ta bort alla från urvalet"
-
-#: 
 msgid "Remove from Class"
 msgstr "Ta bort från klass"
 
@@ -9951,10 +9843,6 @@ msgstr "Evenemang i år"
 #: 
 msgid "Everyone"
 msgstr "Alla"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Det gick inte att ta bort anteckningen"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11854,10 +11742,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Intervallets start måste vara ett giltigt YYYY-MM-DD datum."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Intervallets start måste vara före intervallets slut"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Intervallets start måste vara före intervallets slut."
 
@@ -12078,10 +11962,6 @@ msgid "Cannot move property in that direction"
 msgstr "Det går inte att flytta egenskapen i den riktningen"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Bekräfta familjeinformation"
-
-#: 
 msgid "Delete failed"
 msgstr "Borttagning misslyckades"
 
@@ -12122,20 +12002,12 @@ msgid "Invalid target family"
 msgstr "Ogiltig målfamilj"
 
 #: 
-msgid "Log Out"
-msgstr "Logga ut"
-
-#: 
 msgid "Membership not found"
 msgstr "Medlemskapet hittades inte"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Lösenordet har ändrats för"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Granska din familjeinformation nedan och bekräfta eller begär ändringar."
 
 #: 
 msgid "Please select a target family."
@@ -12818,10 +12690,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Det gick inte att installera insticksprogrammet från URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Det gick inte att läsa in listan över godkända insticksprogram"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Det gick inte att läsa in listan över godkända insticksprogram."
 
@@ -12880,10 +12748,6 @@ msgstr "Kebab-format. Måste matcha katalognamnet på översta nivån i zip-file
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Läser in listan över godkända insticksprogram…"
-
-#: 
-msgid "Loading…"
-msgstr "Läser in…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13331,10 +13195,6 @@ msgid "Change Your Locale"
 msgstr "Ändra din plats"
 
 #: 
-msgid "Change role"
-msgstr "Ändra roll"
-
-#: 
 msgid "Check Number"
 msgstr "Kolla numret"
 
@@ -13349,10 +13209,6 @@ msgstr "Incheckning misslyckades. Försök igen."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Utcheckning misslyckades. Försök igen."
-
-#: 
-msgid "City is required"
-msgstr "Stad krävs"
 
 #: 
 msgid "Click Save to apply."
@@ -13421,10 +13277,6 @@ msgstr "Vahkke olles lohkut"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopiera medlemmar till grupp"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Skapar säkerhetskopia..."
 
 #: 
 msgid "Creating..."
@@ -13609,10 +13461,6 @@ msgstr "Misslyckades med att lägga till i kundvagnen"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Det gick inte att avbryta registreringen. Försök igen."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Misslyckades med att kopiera URL"
 
 #: 
 msgid "Failed to create backup."
@@ -14003,10 +13851,6 @@ msgid "One-Time Code"
 msgstr "Engångskod"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Öppna i ny flik"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Öppna din autentiseringsapp och skanna denna QR-kod"
 
@@ -14283,10 +14127,6 @@ msgid "Setup Complete"
 msgstr "Konfiguration klar"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Dela denna URL med familjemedlemmar för att verifiera deras information"
-
-#: 
 msgid "Show more options"
 msgstr "Visa fler alternativ"
 
@@ -14439,10 +14279,6 @@ msgid "Validation pending"
 msgstr "Validering pågår"
 
 #: 
-msgid "Verification URL"
-msgstr "Verifierings-URL"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Verifieringen misslyckades. Försök igen."
 
@@ -14507,10 +14343,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Du får återställningskoder som kan användas om du förlorar åtkomst till din app"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Din vagn är tom"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Ditt konto är nu skyddat"
 
@@ -14529,10 +14361,6 @@ msgstr "Din webbläsares språkpreferens skiljer sig från din ChurchCRM-lokal"
 #: 
 msgid "Your database already contains data"
 msgstr "Din databas innehåller redan data"
-
-#: 
-msgid "Zip code is required"
-msgstr "Postnummer krävs"
 
 #: 
 msgid "added"
@@ -14953,10 +14781,6 @@ msgstr "Du har inte behörighet att lägga till en anteckning för denna familj.
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Du har inte behörighet att lägga till en anteckning för denna person."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Du har inte behörighet att redigera denna anteckning"
 
 #: 
 msgid "Account locked"
@@ -15779,10 +15603,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Bekräfta borttagning av detta familjeregister"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Bekräfta din familjeinformation"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Välj en annan familj att koppla dessa gåvor till"
 
@@ -16003,10 +15823,6 @@ msgid "Select a person"
 msgstr "Välj en person"
 
 #: 
-msgid "Select role"
-msgstr "Välj roll"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Välj typ (valfritt)"
 
@@ -16161,10 +15977,6 @@ msgstr "Är du säker på att du vill ta bort denna betalningspost permanent?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Minst en fondtilldelning krävs"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Minst en fond måste ha ett belopp som inte är noll"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16413,10 +16225,6 @@ msgstr "Löftesgrupp hittades inte"
 #: 
 msgid "Pledges & Payments"
 msgstr "Löften och betalningar"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Prioritera översättningar"
 
 #: 
 msgid "Purpose"
@@ -16679,12 +16487,6 @@ msgstr "Inga betalningar hittades for de valda insattningarna"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Inga giltiga insattnings-ID angavs"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF skickades via e-post till %d familj."
-msgstr[1] "PDF skickades via e-post till %d familjer."
 
 #: 
 msgid "Partial Send"
@@ -17225,10 +17027,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Skapar och laddar upp säkerhetskopia. Detta kan ta flera minuter..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Återställning av databasen misslyckades."
-
-#: 
 msgid "Deceased"
 msgstr "Avliden"
 
@@ -17425,10 +17223,6 @@ msgid "Log settings saved"
 msgstr "Logginställningarna har sparats"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Inloggningsnamn krävs"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Markerade personen som aktiv"
 
@@ -17553,10 +17347,6 @@ msgid "Sending..."
 msgstr "Skickar..."
 
 #: 
-msgid "Sending…"
-msgstr "Skickar…"
-
-#: 
 msgid "Settings reset"
 msgstr "Inställningarna har återställts"
 
@@ -17625,16 +17415,8 @@ msgid "Upcoming"
 msgstr "Kommande"
 
 #: 
-msgid "Valid Until"
-msgstr "Giltig till"
-
-#: 
 msgid "View active only"
 msgstr "Visa endast aktiva"
-
-#: 
-msgid "View all"
-msgstr "Visa alla"
 
 #: 
 msgid "View all (including inactive)"
@@ -18413,10 +18195,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Ditt räkenskapsår börjar i %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Ett fel uppstod"
-
-#: 
 msgid "Approve"
 msgstr "Godkänn"
 
@@ -18587,12 +18365,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d dag"
 msgstr[1] "%d dagar"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d standardvolontär hoppades över av annan anledning (tillfället är över, inställt eller fullt)"
-msgstr[1] "%d standardvolontärer hoppades över av annan anledning (tillfället är över, inställt eller fullt)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18855,10 +18627,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Ett tema är en mapp som din kyrka laddar upp till Include/themes/ på servern. Systemstandarden levereras med ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "En övergångsinställning. De äldre sidorna för Volontärmöjligheter och de nya sidorna för Tjänsteområden är båda tillgängliga, och en personpost visar båda flikarna Volontär, tydligt märkta. Använd den medan du flyttar en kyrka från V1 till V2, och byt sedan till enbart V2."
-
-#: 
 msgid "A volunteer"
 msgstr "En volontär"
 
@@ -19063,10 +18831,6 @@ msgid "Assigned outside the current plan"
 msgstr "Tilldelad utanför den nuvarande planen"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Tilldelningen avbröts"
-
-#: 
 msgid "Assignment not found"
 msgstr "Tilldelningen hittades inte"
 
@@ -19173,10 +18937,6 @@ msgstr "Avbryt tilldelning"
 #: 
 msgid "Cancel this assignment"
 msgstr "Avbryt den här tilldelningen"
-
-#: 
-msgid "Cancelled"
-msgstr "Avbruten"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19333,10 +19093,6 @@ msgstr "Kyrkans webbplats"
 #: 
 msgid "Close event details"
 msgstr "Stäng aktivitetsdetaljer"
-
-#: 
-msgid "Colour"
-msgstr "Färg"
 
 #: 
 msgid "Completed"
@@ -19583,10 +19339,6 @@ msgid "Each staffing need must name a position"
 msgstr "Varje bemanningsbehov måste ange en uppgift"
 
 #: 
-msgid "Edit event"
-msgstr "Redigera händelse"
-
-#: 
 msgid "Edit ministry"
 msgstr "Redigera tjänsteområde"
 
@@ -19671,10 +19423,6 @@ msgstr "E-post skickad till {{count}} mottagare."
 #: 
 msgid "Emails"
 msgstr "E-postmeddelanden"
-
-#: 
-msgid "End time"
-msgstr "Sluttid"
 
 #: 
 msgid "Enter counts"
@@ -20955,10 +20703,6 @@ msgid "SMTP test"
 msgstr "SMTP-test"
 
 #: 
-msgid "Save changes"
-msgstr "Spara ändringar"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Sparat; det här tjänsteområdet ber inte längre om hjälp"
 
@@ -21241,10 +20985,6 @@ msgstr "Bemanningsbehov sparade"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Börja med att skapa en verksamhet och lägg sedan till de team och funktioner som tjänar i den."
-
-#: 
-msgid "Start time"
-msgstr "Starttid"
 
 #: 
 msgid "Start typing a name"
@@ -21593,10 +21333,6 @@ msgstr "Adressen är markerad — kopiera den med tangentbordet."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Resurssökvägen \"%s\" är inte tillåten."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "Tilldelningen kunde inte avbokas"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22123,10 +21859,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Detta tillfälle har redan ägt rum och dess tilldelningar kan inte längre ändras"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Detta tillfälle har ställts in"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Detta tillfälle har egna bemanningsbehov, skilda från schemat."
 
@@ -22295,16 +22027,8 @@ msgid "Validation"
 msgstr "Validering"
 
 #: 
-msgid "View event"
-msgstr "Visa händelse"
-
-#: 
 msgid "View my schedule"
 msgstr "Visa mitt schema"
-
-#: 
-msgid "View person"
-msgstr "Visa person"
 
 #: 
 msgid "View the event"
@@ -22353,10 +22077,6 @@ msgstr "Volontärtider"
 #: 
 msgid "Volunteering"
 msgstr "Volontärarbete"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Volontärarbete organiserat så som en församling driver det. Varje verksamhet har team och funktioner; människor är kvalificerade för funktioner och tillhör verksamhetens poolgrupp; scheman följer händelserna i kalendern och skapar daterade tillfällen med bemanningskrav; samordnare tilldelar personer, som tackar ja, tackar nej eller föreslår en ersättare; påminnelser och aviseringar skickas via e-post. Administratörer och användare med behörigheten Hantera verksamheter ser alla verksamheter och kan skapa, inaktivera och ta bort dem. En verksamhetssamordnare får i stället behörigheten Hantera mina verksamheter: rubriken Verksamheter i sidomenyn visar då bara de verksamheter som personen samordnar. En teamledare leder sitt team från Medlemsportalen. Medlemmar använder Medlemsportalen för att se sitt schema, svara, anmäla sig och erbjuda hjälp."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22895,10 +22615,6 @@ msgid "Cancel this occurrence"
 msgstr "Avbryt denna förekomsten"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Att avbryta berättar inget för någon: ingen e-post skickas. Uppdrag behålls, inga påminnelser schemaläggs medan det är avbrutet, och ingen kan tilldelas tills det återställs."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Borttagna evenemang lämnar varje kalender, med deras inchecks och antalet, och detta ministeriums bemanning av dem behåller bara datumet. Detta kan inte ångras."
 
@@ -22909,10 +22625,6 @@ msgstr "Evenemang borttagen: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Evenemang att ta bort: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Förekomst avbruten"
 
 #: 
 msgid "Occurrence restored"
@@ -22929,10 +22641,6 @@ msgstr "Återställ förekomst"
 #: 
 msgid "Restore this occurrence"
 msgstr "Återställ denna förekomsten"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Förekomsten kunde inte avbrytas"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24997,10 +24705,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "Telemetri skickas till PostHog i USA. Felrapporter vid installation och uppgradering skickas även när valfri telemetri är avstängd."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Det här tillfället har ställts in. Du behöver inte göra något mer."
-
-#: 
 msgid "always sent"
 msgstr "skickas alltid"
 
@@ -25467,10 +25171,6 @@ msgstr "E-posten behöver ses över"
 #: 
 msgid "Email problem"
 msgstr "E-postproblem"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Skickad inloggningskod och länk har återkallats"
 
 #: 
 msgid "Emailed verification link"
@@ -27235,10 +26935,6 @@ msgstr "till %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "En begäran har gjorts i medlemsportalen om att ändra din e-postadress på %1$s från %2$s till %3$s. Ändringen sker bara när länken som skickats till den nya adressen används."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Använd länken nedan för att granska din familjs uppgifter. På granskningssidan väljer du ”Bekräfta familjeuppgifter” för att bekräfta att allt stämmer, eller skickar rättelser till församlingsexpeditionen."
 
 #: 
 msgid "Review Family Information"

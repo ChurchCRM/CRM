@@ -911,11 +911,6 @@ msgid "Do you want to proceed?"
 msgstr "您想继续吗？"
 
 #: 
-#, fuzzy
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "您将以格式将家庭信息的副本通过电子邮件发送至以下电子邮件"
-
-#: 
 msgid "Financial Reports"
 msgstr "财务报告"
 
@@ -1872,10 +1867,6 @@ msgstr "电话号码"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "自定义下拉列表"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF已成功通过邮件发送给家庭成员。"
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3937,10 +3928,6 @@ msgid "Please verify your family's information"
 msgstr "请验证您的家人的信息"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "无法加载验证信息"
-
-#: 
 msgid "No Changes"
 msgstr "没有变化"
 
@@ -3953,24 +3940,8 @@ msgid "Oops! Page not found."
 msgstr "哎呀！找不到网页。"
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "请输入以下内容以验证您的家人"
-
-#: 
-msgid "Family Verification"
-msgstr "验证家庭"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "申请家庭信息验证"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "选择您想验证家庭信息的方式"
-
-#: 
-msgid "Online Verification"
-msgstr "在线验证"
 
 #: 
 msgid "Verified In Person"
@@ -4152,10 +4123,6 @@ msgstr "属性已成功取消分配。"
 #: 
 msgid "The property could not be unassigned."
 msgstr "属性无法取消分配。"
-
-#: 
-msgid "Select event"
-msgstr "选择活动"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4363,10 +4330,6 @@ msgid "Kiosk Manager"
 msgstr "Kiosk Manager"
 
 #: 
-msgid "Report an issue"
-msgstr "报告问题"
-
-#: 
 msgid "Self Verification"
 msgstr "自助验证"
 
@@ -4395,10 +4358,6 @@ msgstr "阿拉伯语 - 埃及"
 #: 
 msgid "Thai"
 msgstr "泰语"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "待自助验证"
 
 #: 
 msgid "Self Verify"
@@ -4784,16 +4743,8 @@ msgid "User must have Delete Records permission"
 msgstr "用户必须具有删除记录权限"
 
 #: 
-msgid "invalid event type id"
-msgstr "无效的事件类型ID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "无效的日历pinning"
-
-#: 
-msgid "invalid status value"
-msgstr "无效的状态值"
 
 #: 
 msgid "invalid export value"
@@ -5398,10 +5349,6 @@ msgstr "正在应用系统更新..."
 
 #: 
 msgid "Back to Login"
-msgstr "返回登录"
-
-#: 
-msgid "Back to login"
 msgstr "返回登录"
 
 #: 
@@ -6636,10 +6583,6 @@ msgid "Additional Information"
 msgstr "附加信息"
 
 #: 
-msgid "All information is correct"
-msgstr "所有信息均正确"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "分配机会"
 
@@ -6652,20 +6595,12 @@ msgid "Choose opportunities..."
 msgstr "选择机会..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "确认家庭信息"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "联系与个人信息"
 
 #: 
 msgid "Edited"
 msgstr "已编辑"
-
-#: 
-msgid "Email PDF"
-msgstr "发送 PDF 电子邮件"
 
 #: 
 msgid "Newsletter"
@@ -6676,40 +6611,12 @@ msgid "Personal"
 msgstr "个人"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "请用更正后的信息更新我们的记录"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "在此处提供任何更正或附加信息..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "选择机会"
 
 #: 
-msgid "Submit Verification"
-msgstr "提交核实"
-
-#: 
-msgid "Thank You!"
-msgstr "谢谢！"
-
-#: 
-msgid "Visit Our Website"
-msgstr "访问我们的网站"
-
-#: 
 msgid "Volunteer"
 msgstr "志愿者"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "我们在处理您的核实时遇到错误。请再试一次或直接与我们联系。"
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "您的核实请求已收到。感谢您保持信息更新。"
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8165,10 +8072,6 @@ msgid "City is required."
 msgstr "城市为必填项。"
 
 #: 
-msgid "Clear filter"
-msgstr "清除筛选"
-
-#: 
 msgid "Configuration item not found"
 msgstr "未找到配置项"
 
@@ -8436,10 +8339,6 @@ msgstr "添加人员"
 #: 
 msgid "Add all cart items to a group"
 msgstr "将所有列表项目添加到组"
-
-#: 
-msgid "Add all to Cart"
-msgstr "全部添加到列表"
 
 #: 
 msgid "Add cart items to a family"
@@ -8946,10 +8845,6 @@ msgid "Family Profile"
 msgstr "家庭档案"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "家庭角色（户主、配偶、子女等）有助于整理您的记录。"
-
-#: 
 msgid "Family vs Person"
 msgstr "家庭与个人"
 
@@ -9448,10 +9343,6 @@ msgid "Record why attendees visited your church"
 msgstr "记录来访者来教会的原因"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "从选择列表中移除全部"
-
-#: 
 msgid "Remove from Class"
 msgstr "从班级中移除"
 
@@ -9922,10 +9813,6 @@ msgstr "今年活动"
 #: 
 msgid "Everyone"
 msgstr "所有人"
-
-#: 
-msgid "Failed to delete note"
-msgstr "删除备注失败"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11824,10 +11711,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "范围开始日期必须是有效的 YYYY-MM-DD 格式。"
 
 #: 
-msgid "Range start must be before range end"
-msgstr "范围开始日期必须早于范围结束日期"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "范围开始日期必须早于范围结束日期。"
 
@@ -12048,10 +11931,6 @@ msgid "Cannot move property in that direction"
 msgstr "无法向该方向移动属性"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "确认家庭信息"
-
-#: 
 msgid "Delete failed"
 msgstr "删除失败"
 
@@ -12092,20 +11971,12 @@ msgid "Invalid target family"
 msgstr "无效的目标家庭"
 
 #: 
-msgid "Log Out"
-msgstr "退出登录"
-
-#: 
 msgid "Membership not found"
 msgstr "未找到会籍"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "密码已成功更改："
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "请查看以下家庭信息，并确认或申请更改。"
 
 #: 
 msgid "Please select a target family."
@@ -12788,10 +12659,6 @@ msgid "Failed to install plugin from URL"
 msgstr "从 URL 安装插件失败"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "加载已审核插件列表失败"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "加载已审核插件列表失败。"
 
@@ -12850,10 +12717,6 @@ msgstr "短横线命名格式。必须与 ZIP 文件内的顶层目录名称及 
 #: 
 msgid "Loading approved plugin list…"
 msgstr "正在加载已审核插件列表…"
-
-#: 
-msgid "Loading…"
-msgstr "加载中…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13301,10 +13164,6 @@ msgid "Change Your Locale"
 msgstr "更改您的语言设置"
 
 #: 
-msgid "Change role"
-msgstr "更改角色"
-
-#: 
 msgid "Check Number"
 msgstr "检查号码"
 
@@ -13319,10 +13178,6 @@ msgstr "签到失败，请重试。"
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "签出失败，请重试。"
-
-#: 
-msgid "City is required"
-msgstr "城市是必填项"
 
 #: 
 msgid "Click Save to apply."
@@ -13391,10 +13246,6 @@ msgstr "复制所有数字"
 #: 
 msgid "Copy Members to Group"
 msgstr "将成员复制到组"
-
-#: 
-msgid "Creating Backup..."
-msgstr "正在创建备份..."
 
 #: 
 msgid "Creating..."
@@ -13579,10 +13430,6 @@ msgstr "未能添加到购物车"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "取消登记失败。请重试。"
-
-#: 
-msgid "Failed to copy URL"
-msgstr "复制 URL 失败"
 
 #: 
 msgid "Failed to create backup."
@@ -13973,10 +13820,6 @@ msgid "One-Time Code"
 msgstr "一次性验证码"
 
 #: 
-msgid "Open in New Tab"
-msgstr "在新标签页中打开"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "打开您的验证器应用并扫描此QR码"
 
@@ -14253,10 +14096,6 @@ msgid "Setup Complete"
 msgstr "设置完成"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "将此 URL 分享给家庭成员以核实他们的信息"
-
-#: 
 msgid "Show more options"
 msgstr "显示更多选项"
 
@@ -14409,10 +14248,6 @@ msgid "Validation pending"
 msgstr "等待验证"
 
 #: 
-msgid "Verification URL"
-msgstr "验证网址"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "验证失败。请重试。"
 
@@ -14477,10 +14312,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "您将收到备份码，在失去对应用的访问权限时可以使用"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "您的购物车是空的"
-
-#: 
 msgid "Your account is now protected"
 msgstr "您的账户现已受到保护"
 
@@ -14499,10 +14330,6 @@ msgstr "您的浏览器语言偏好与您的ChurchCRM语言设置不同"
 #: 
 msgid "Your database already contains data"
 msgstr "您的数据库已包含数据"
-
-#: 
-msgid "Zip code is required"
-msgstr "邮政编码是必填项"
 
 #: 
 msgid "added"
@@ -14922,10 +14749,6 @@ msgstr "您没有权限为此家庭添加备注。"
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "您没有权限为此人添加备注。"
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "您没有权限编辑此备注"
 
 #: 
 msgid "Account locked"
@@ -15746,10 +15569,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "请确认删除此家庭记录"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "请确认您的家庭信息"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "请选择另一个家庭与这些奉献关联"
 
@@ -15970,10 +15789,6 @@ msgid "Select a person"
 msgstr "选择一位成员"
 
 #: 
-msgid "Select role"
-msgstr "选择角色"
-
-#: 
 msgid "Select type (optional)"
 msgstr "选择类型（可选）"
 
@@ -16128,10 +15943,6 @@ msgstr "您确定要永久删除此奉献记录吗？"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "至少需要一个基金分配"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "至少一个基金的金额不能为零"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16380,10 +16191,6 @@ msgstr "未找到承诺奉献组"
 #: 
 msgid "Pledges & Payments"
 msgstr "承诺奉献与实际奉献"
-
-#: 
-msgid "Prioritise translations"
-msgstr "优先处理翻译"
 
 #: 
 msgid "Purpose"
@@ -16645,11 +16452,6 @@ msgstr "所选收款记录中未找到付款记录"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "未提供有效的收款记录ID"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF 已成功发送至 %d 个家庭。"
 
 #: 
 msgid "Partial Send"
@@ -17189,10 +16991,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "正在创建并上传备份，这可能需要几分钟…"
 
 #: 
-msgid "Database reset failed."
-msgstr "数据库重置失败。"
-
-#: 
 msgid "Deceased"
 msgstr "已故"
 
@@ -17389,10 +17187,6 @@ msgid "Log settings saved"
 msgstr "日志设置已保存"
 
 #: 
-msgid "Login Name is Required"
-msgstr "登录名为必填项"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "已将此人标记为启用"
 
@@ -17517,10 +17311,6 @@ msgid "Sending..."
 msgstr "正在发送…"
 
 #: 
-msgid "Sending…"
-msgstr "正在发送…"
-
-#: 
 msgid "Settings reset"
 msgstr "设置已重置"
 
@@ -17589,16 +17379,8 @@ msgid "Upcoming"
 msgstr "即将到来"
 
 #: 
-msgid "Valid Until"
-msgstr "有效期至"
-
-#: 
 msgid "View active only"
 msgstr "仅查看启用"
-
-#: 
-msgid "View all"
-msgstr "查看全部"
 
 #: 
 msgid "View all (including inactive)"
@@ -18377,10 +18159,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "您的财政年度从 %s 开始。"
 
 #: 
-msgid "An error occurred"
-msgstr "发生错误"
-
-#: 
 msgid "Approve"
 msgstr "批准"
 
@@ -18550,11 +18328,6 @@ msgstr "%1$s：最大人数为 %2$d，但已选择 %3$d 位默认志愿者。请
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d 天"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d 个默认被跳过，原因不同（发生已结束、已取消或已满）"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18811,10 +18584,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "主题是教会上传到服务器 Include/themes/ 的文件夹。系统默认主题随 ChurchCRM 提供。"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "过渡设置。旧版志愿者机会页面与新的事工页面同时可用，人员记录会显示两个志愿者标签页，并有清楚标示。用于教会从 V1 迁移到 V2 期间，之后再切换为仅 V2。"
-
-#: 
 msgid "A volunteer"
 msgstr "一位志愿者"
 
@@ -19019,10 +18788,6 @@ msgid "Assigned outside the current plan"
 msgstr "不在当前计划内的分配"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "分配已取消"
-
-#: 
 msgid "Assignment not found"
 msgstr "找不到该分配"
 
@@ -19129,10 +18894,6 @@ msgstr "取消分配"
 #: 
 msgid "Cancel this assignment"
 msgstr "取消此项分配"
-
-#: 
-msgid "Cancelled"
-msgstr "已取消"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19289,10 +19050,6 @@ msgstr "教会网站"
 #: 
 msgid "Close event details"
 msgstr "关闭活动详情"
-
-#: 
-msgid "Colour"
-msgstr "颜色"
 
 #: 
 msgid "Completed"
@@ -19539,10 +19296,6 @@ msgid "Each staffing need must name a position"
 msgstr "每项人员需求都必须指定一个职位"
 
 #: 
-msgid "Edit event"
-msgstr "编辑活动"
-
-#: 
 msgid "Edit ministry"
 msgstr "编辑事工"
 
@@ -19627,10 +19380,6 @@ msgstr "已向 {{count}} 个收件人发送电子邮件。"
 #: 
 msgid "Emails"
 msgstr "电子邮件"
-
-#: 
-msgid "End time"
-msgstr "结束时间"
 
 #: 
 msgid "Enter counts"
@@ -20909,10 +20658,6 @@ msgid "SMTP test"
 msgstr "SMTP 测试"
 
 #: 
-msgid "Save changes"
-msgstr "保存更改"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "已保存：此事工不再征求帮助"
 
@@ -21195,10 +20940,6 @@ msgstr "人员需求已保存"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "请先创建一个事工，然后添加在其中服事的团队和职位。"
-
-#: 
-msgid "Start time"
-msgstr "开始时间"
 
 #: 
 msgid "Start typing a name"
@@ -21547,10 +21288,6 @@ msgstr "地址已选中，请用键盘复制。"
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "不允许使用资源路径“%s”。"
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "无法取消该分配"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22075,10 +21812,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "此活动场次已经举行，其分配无法再更改"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "此活动场次已取消"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "此活动场次有自己的人员需求，与其排班分开。"
 
@@ -22247,16 +21980,8 @@ msgid "Validation"
 msgstr "验证"
 
 #: 
-msgid "View event"
-msgstr "查看活动"
-
-#: 
 msgid "View my schedule"
 msgstr "查看我的排班"
-
-#: 
-msgid "View person"
-msgstr "查看人员"
 
 #: 
 msgid "View the event"
@@ -22305,10 +22030,6 @@ msgstr "志愿者时间"
 #: 
 msgid "Volunteering"
 msgstr "志愿服事"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "按教会运作方式组织的志愿服事。每个事工有团队和职位；人员取得职位资格，并属于该事工的库小组；排班跟随日历上的活动，生成带有人员需求的、有日期的活动场次；协调员分配人员，他们可以接受、拒绝或提议代替人选；提醒和警报通过电子邮件发出。管理员和拥有“管理事工”权限的用户可以看到所有事工，并可创建、停用和删除。事工协调员则获得“管理我的事工”权限：侧边栏的“事工”标题下只显示其协调的事工。团队负责人通过会众门户管理其团队。会众使用会众门户查看自己的排班、回应、报名和表示愿意帮忙。"
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22845,10 +22566,6 @@ msgid "Cancel this occurrence"
 msgstr "取消此发生"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "取消不通知任何人：不发送电子邮件。分配将被保留，在取消期间不安排提醒，且在恢复之前无法分配任何人。"
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "已删除的事件将从每个日历中移除（包括签到和人数统计），该事工的人员配置仅保留其日期。此操作无法撤消。"
 
@@ -22859,10 +22576,6 @@ msgstr "已删除的事件：{{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "要删除的事件：{{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "发生已取消"
 
 #: 
 msgid "Occurrence restored"
@@ -22879,10 +22592,6 @@ msgstr "恢复发生"
 #: 
 msgid "Restore this occurrence"
 msgstr "恢复此发生"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "无法取消此发生"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24947,10 +24656,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "遥测发送到美国的 PostHog。即使可选遥测已停用，仍会发送安装与升级失败报告。"
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "此日期已取消。您无需再做任何事。"
-
-#: 
 msgid "always sent"
 msgstr "始终发送"
 
@@ -25417,10 +25122,6 @@ msgstr "电子邮箱需要处理"
 #: 
 msgid "Email problem"
 msgstr "电子邮箱问题"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "已取消通过邮件发送的登录验证码和链接"
 
 #: 
 msgid "Emailed verification link"
@@ -27185,10 +26886,6 @@ msgstr "直到 %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "有人在成员门户中请求将您在 %1$s 的电子邮箱从 %2$s 更改为 %3$s。只有使用发送到新地址的链接后，此更改才会生效。"
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "请使用下面的链接核对您的家庭资料。在核对页面上，选择“确认家庭资料”以确认一切无误，或将更正发送给教会办公室。"
 
 #: 
 msgid "Review Family Information"

@@ -887,10 +887,6 @@ msgid "Do you want to proceed?"
 msgstr "Wil u voortgaan?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "U is op die punt om 'n afskrif van die familie-inligting na die volgende e-pos te stuur"
-
-#: 
 msgid "Financial Reports"
 msgstr "Finansiële verslae"
 
@@ -1821,10 +1817,6 @@ msgstr "Telefoon nommer"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Pasgemaakte aftreklys"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF is suksesvol per e-pos aan familielede gestuur."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3873,10 +3865,6 @@ msgid "Please verify your family's information"
 msgstr "Verifieer asseblief u gesin se inligting"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Kan nie verifikasie-inligting laai nie"
-
-#: 
 msgid "No Changes"
 msgstr "Geen veranderinge nie"
 
@@ -3889,24 +3877,8 @@ msgid "Oops! Page not found."
 msgstr "Oeps! Bladsy nie gevind nie."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Voer asseblief die volgende in om u gesin se verifikasie te begin"
-
-#: 
-msgid "Family Verification"
-msgstr "Gesinsverifikasie"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Versoek gesinsinligtingverifikasie"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Kies hoe u die gesinsinligting wil verifieer"
-
-#: 
-msgid "Online Verification"
-msgstr "Aanlyn verifikasie"
 
 #: 
 msgid "Verified In Person"
@@ -4088,10 +4060,6 @@ msgstr "Die eiendom is suksesvol nie toegeken nie."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Die eiendom kon nie onttrek word nie."
-
-#: 
-msgid "Select event"
-msgstr "Kies gebeurtenis"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4299,10 +4267,6 @@ msgid "Kiosk Manager"
 msgstr "Kioskbestuurder"
 
 #: 
-msgid "Report an issue"
-msgstr "Rapporteer 'n probleem"
-
-#: 
 msgid "Self Verification"
 msgstr "Selfverifiëring"
 
@@ -4331,10 +4295,6 @@ msgstr "Arabies - Egipte"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Hangende selfverifiëring"
 
 #: 
 msgid "Self Verify"
@@ -4717,16 +4677,8 @@ msgid "User must have Delete Records permission"
 msgstr "Gebruiker moet toestemming vir Verwyder rekords hê"
 
 #: 
-msgid "invalid event type id"
-msgstr "ongeldige gebeurtenis tipe ID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "ongeldige kalender vas"
-
-#: 
-msgid "invalid status value"
-msgstr "ongeldige statuswaarde"
 
 #: 
 msgid "invalid export value"
@@ -5334,10 +5286,6 @@ msgstr "Pas Stelselsodatering Toe..."
 #: 
 msgid "Back to Login"
 msgstr "Terug na Aanmelding"
-
-#: 
-msgid "Back to login"
-msgstr "Terug na aanmelding"
 
 #: 
 msgid "Complete"
@@ -6573,10 +6521,6 @@ msgid "Additional Information"
 msgstr "Aanvullende Inligting"
 
 #: 
-msgid "All information is correct"
-msgstr "Alle inligting is korrek"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Ken Geleenthede Toe"
 
@@ -6589,20 +6533,12 @@ msgid "Choose opportunities..."
 msgstr "Kies geleenthede..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Bevestig Familie Inligting"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontak & Persoonlike Info"
 
 #: 
 msgid "Edited"
 msgstr "Geredigeer"
-
-#: 
-msgid "Email PDF"
-msgstr "E-pos PDF"
 
 #: 
 msgid "Newsletter"
@@ -6613,40 +6549,12 @@ msgid "Personal"
 msgstr "Persoonlik"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Dateer asseblief ons rekords met verbeteringsverwysings"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Verskaf enige verbeteringsverwysings of bykomende inligting hier..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Kies Geleenthede"
 
 #: 
-msgid "Submit Verification"
-msgstr "Dien Verifikasie In"
-
-#: 
-msgid "Thank You!"
-msgstr "Dank U!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Besoek Ons Webwerf"
-
-#: 
 msgid "Volunteer"
 msgstr "Vrywilliger"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Ons het 'n fout ondervind tydens die verwerking van jou verifikasie. Probeer asseblief weer of neem direk kontak op."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Jou verifikasie-aanvraag is ontvang. Dankie dat jy jou inligting tydsaktueel hou."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8106,10 +8014,6 @@ msgid "City is required."
 msgstr "Stad is verpligtend."
 
 #: 
-msgid "Clear filter"
-msgstr "Vee filter uit"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Konfigurasiepunt nie gevind nie"
 
@@ -8378,10 +8282,6 @@ msgstr "'n Persoon Byvoeg"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Al lys-items by 'n ministerie voeg"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Alles by Lys Voeg"
 
 #: 
 msgid "Add cart items to a family"
@@ -8888,10 +8788,6 @@ msgid "Family Profile"
 msgstr "Familie-Profiel"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Familie-rolle (Huishoudingshoof, Asvrouw/Asman, Kind, ens.) help jou rekords organiseer."
-
-#: 
 msgid "Family vs Person"
 msgstr "Familie vs Persoon"
 
@@ -9390,10 +9286,6 @@ msgid "Record why attendees visited your church"
 msgstr "Teken waarom aanwesiges jou kerk besoek het"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Verwyder Alles van Lys"
-
-#: 
 msgid "Remove from Class"
 msgstr "Verwyder uit Klas"
 
@@ -9864,10 +9756,6 @@ msgstr "Gebeurtenisse Hierdie Jaar"
 #: 
 msgid "Everyone"
 msgstr "Almal"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Kon nie noot verwyder nie"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11767,10 +11655,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Reeks-begin moet ʼn geldige YYYY-MM-DD-datum wees."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Reeks-begin moet voor reeks-einde wees"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Reeks-begin moet voor reeks-einde wees."
 
@@ -11991,10 +11875,6 @@ msgid "Cannot move property in that direction"
 msgstr "Kan nie eienskap in daardie rigting skuif nie"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Bevestig Gesinsinligting"
-
-#: 
 msgid "Delete failed"
 msgstr "Verwydering misluk"
 
@@ -12035,20 +11915,12 @@ msgid "Invalid target family"
 msgstr "Ongeldige teikengesin"
 
 #: 
-msgid "Log Out"
-msgstr "Teken Uit"
-
-#: 
 msgid "Membership not found"
 msgstr "Lidmaatskap nie gevind nie"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Wagwoord suksesvol verander vir"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Hersien asseblief u gesinsinligting hieronder en bevestig of versoek veranderinge."
 
 #: 
 msgid "Please select a target family."
@@ -12731,10 +12603,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Kon nie inprop vanaf URL installeer nie"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Kon nie goedgekeurde inproplys laai nie"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Kon nie goedgekeurde inproplys laai nie."
 
@@ -12793,10 +12661,6 @@ msgstr "Kebab-formaat. Moet ooreenstem met die boonste gidsnaam binne die zip en
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Besig om goedgekeurde inproplys te laai…"
-
-#: 
-msgid "Loading…"
-msgstr "Besig om te laai…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13244,10 +13108,6 @@ msgid "Change Your Locale"
 msgstr "Verander u taalinstelling"
 
 #: 
-msgid "Change role"
-msgstr "Verander rol"
-
-#: 
 msgid "Check Number"
 msgstr "Kontroleer nommer"
 
@@ -13262,10 +13122,6 @@ msgstr "Intekening het misluk. Probeer asseblief weer."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Uittekening het misluk. Probeer asseblief weer."
-
-#: 
-msgid "City is required"
-msgstr "Dorp word vereis"
 
 #: 
 msgid "Click Save to apply."
@@ -13334,10 +13190,6 @@ msgstr "Kopieer Alle Nommers"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopieër Geloofsgenote na Ministerie"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Skep Rugsteun..."
 
 #: 
 msgid "Creating..."
@@ -13522,10 +13374,6 @@ msgstr "Kon nie by mandjie voeg nie"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Kon nie inskrywing kanselleer nie. Probeer asseblief weer."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Misluk to copy URL"
 
 #: 
 msgid "Failed to create backup."
@@ -13916,10 +13764,6 @@ msgid "One-Time Code"
 msgstr "Eenmalige kode"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Oopmaak in Nuwe Oortjie"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Open u verifikasie-app en skandeer hierdie QR-kode"
 
@@ -14196,10 +14040,6 @@ msgid "Setup Complete"
 msgstr "Opstelling voltooi"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Deel hierdie URL met gesinslede om hul inligting te verifieer"
-
-#: 
 msgid "Show more options"
 msgstr "Wys meer opsies"
 
@@ -14352,10 +14192,6 @@ msgid "Validation pending"
 msgstr "Validasie in aantog"
 
 #: 
-msgid "Verification URL"
-msgstr "Verifikasie-URL"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Verifikasie misluk. Probeer asseblief weer."
 
@@ -14420,10 +14256,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "U sal rugsteunkodes ontvang wat gebruik kan word as u toegang tot u app verloor"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "U mandjie is leeg"
-
-#: 
 msgid "Your account is now protected"
 msgstr "U rekening is nou beskerm"
 
@@ -14442,10 +14274,6 @@ msgstr "U blaaier se taalvoorkeur verskil van u ChurchCRM-taalinstelling"
 #: 
 msgid "Your database already contains data"
 msgstr "U databasis bevat reeds data"
-
-#: 
-msgid "Zip code is required"
-msgstr "Poskode is nodig"
 
 #: 
 msgid "added"
@@ -14866,10 +14694,6 @@ msgstr "U het nie toestemming om 'n nota vir hierdie gesin by te voeg nie."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "U het nie toestemming om 'n nota vir hierdie persoon by te voeg nie."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "U het nie toestemming om hierdie nota te wysig nie"
 
 #: 
 msgid "Account locked"
@@ -15692,10 +15516,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Bevestig asseblief die verwydering van hierdie gesinrekord"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Bevestig asseblief jou gesininligting"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Kies asseblief 'n ander gesin waarmee hierdie skenkings geassosieer moet word"
 
@@ -15916,10 +15736,6 @@ msgid "Select a person"
 msgstr "Kies 'n persoon"
 
 #: 
-msgid "Select role"
-msgstr "Kies rol"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Kies tipe (opsioneel)"
 
@@ -16074,10 +15890,6 @@ msgstr "Is u seker u wil hierdie betalingsrekord permanent uitvee?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Ten minste een fondstoewysing is vereis"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Ten minste een fonds moet ʼn nie-nul bedrag hê"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16326,10 +16138,6 @@ msgstr "Beloftegroep nie gevind nie"
 #: 
 msgid "Pledges & Payments"
 msgstr "Beloftes & Betalings"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Prioritiseer vertalings"
 
 #: 
 msgid "Purpose"
@@ -16592,12 +16400,6 @@ msgstr "Geen betalings gevind vir die geselekteerde depositos nie"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Geen geldige deposito-IDs verskaf nie"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF suksesvol per e-pos gestuur aan %d gesin."
-msgstr[1] "PDF suksesvol per e-pos gestuur aan %d gesinne."
 
 #: 
 msgid "Partial Send"
@@ -17138,10 +16940,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Rugsteun word geskep en opgelaai. Dit kan verskeie minute neem..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Databasis-herstel het gefaal."
-
-#: 
 msgid "Deceased"
 msgstr "Oorlede"
 
@@ -17338,10 +17136,6 @@ msgid "Log settings saved"
 msgstr "Loginstellings gestoor"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Aanmeldnaam word Vereis"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Persoon as Aktief aangedui"
 
@@ -17466,10 +17260,6 @@ msgid "Sending..."
 msgstr "Stuur..."
 
 #: 
-msgid "Sending…"
-msgstr "Stuur…"
-
-#: 
 msgid "Settings reset"
 msgstr "Instellings herstel"
 
@@ -17538,16 +17328,8 @@ msgid "Upcoming"
 msgstr "Opkomend"
 
 #: 
-msgid "Valid Until"
-msgstr "Geldig Tot"
-
-#: 
 msgid "View active only"
 msgstr "Wys slegs aktiewe"
-
-#: 
-msgid "View all"
-msgstr "Wys almal"
 
 #: 
 msgid "View all (including inactive)"
@@ -18326,10 +18108,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Jou boekjaar begin in %s."
 
 #: 
-msgid "An error occurred"
-msgstr "'n Fout het voorgekom"
-
-#: 
 msgid "Approve"
 msgstr "Keur goed"
 
@@ -18500,12 +18278,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d dag"
 msgstr[1] "%d dae"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d verstek oorgeslaan om 'n ander rede (die geval is verby, gekanselleer of vol)"
-msgstr[1] "%d verstekke oorgeslaan om 'n ander rede (die geval is verby, gekanselleer of vol)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18768,10 +18540,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "'n Tema is 'n gids wat jou kerk na Include/themes/ op die bediener oplaai. Die stelselverstek word saam met ChurchCRM gelewer."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "'n Oorgangsinstelling. Die ou Vrywilligergeleenthede-bladsye en die nuwe Bedieninge-bladsye is albei beskikbaar, en 'n persoonrekord toon albei Vrywilliger-oortjies, duidelik benoem. Gebruik dit terwyl jy 'n kerk van V1 na V2 skuif, en skakel dan oor na net V2."
-
-#: 
 msgid "A volunteer"
 msgstr "'n Vrywilliger"
 
@@ -18976,10 +18744,6 @@ msgid "Assigned outside the current plan"
 msgstr "Toegewys buite die huidige plan"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Toewysing gekanselleer"
-
-#: 
 msgid "Assignment not found"
 msgstr "Toewysing nie gevind nie"
 
@@ -19086,10 +18850,6 @@ msgstr "Kanselleer toewysing"
 #: 
 msgid "Cancel this assignment"
 msgstr "Kanselleer hierdie toewysing"
-
-#: 
-msgid "Cancelled"
-msgstr "Gekanselleer"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19246,10 +19006,6 @@ msgstr "Kerk se webwerf"
 #: 
 msgid "Close event details"
 msgstr "Maak geleentheidsbesonderhede toe"
-
-#: 
-msgid "Colour"
-msgstr "Kleur"
 
 #: 
 msgid "Completed"
@@ -19496,10 +19252,6 @@ msgid "Each staffing need must name a position"
 msgstr "Elke bemanningsbehoefte moet 'n posisie noem"
 
 #: 
-msgid "Edit event"
-msgstr "Redigeer Gelegentheid"
-
-#: 
 msgid "Edit ministry"
 msgstr "Wysig bediening"
 
@@ -19584,10 +19336,6 @@ msgstr "E-pos gestuur aan {{count}} ontvangers."
 #: 
 msgid "Emails"
 msgstr "E-posse"
-
-#: 
-msgid "End time"
-msgstr "Eindtyd"
 
 #: 
 msgid "Enter counts"
@@ -20868,10 +20616,6 @@ msgid "SMTP test"
 msgstr "SMTP-toets"
 
 #: 
-msgid "Save changes"
-msgstr "Stoor veranderinge"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Gestoor — hierdie bediening vra nie meer om hulp nie"
 
@@ -21154,10 +20898,6 @@ msgstr "Bemanningsbehoeftes gestoor"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Begin deur 'n bediening te skep, voeg dan die spanne en posisies by wat daarin dien."
-
-#: 
-msgid "Start time"
-msgstr "Begin Tyd"
 
 #: 
 msgid "Start typing a name"
@@ -21506,10 +21246,6 @@ msgstr "Die adres is gekies — kopieer dit met jou sleutelbord."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Die bate-pad \"%s\" word nie toegelaat nie."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "Die toewysing kon nie gekanselleer word nie"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22036,10 +21772,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Hierdie geval het reeds plaasgevind en sy toewysings kan nie meer verander word nie"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Hierdie geval is gekanselleer"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Hierdie geval het sy eie bemanningsbehoeftes, apart van sy rooster."
 
@@ -22208,16 +21940,8 @@ msgid "Validation"
 msgstr "Validering"
 
 #: 
-msgid "View event"
-msgstr "Bekyk Geleentheid"
-
-#: 
 msgid "View my schedule"
 msgstr "Bekyk my rooster"
-
-#: 
-msgid "View person"
-msgstr "Bekyk Persoon"
 
 #: 
 msgid "View the event"
@@ -22266,10 +21990,6 @@ msgstr "Vrywilligertye"
 #: 
 msgid "Volunteering"
 msgstr "Vrywilligerswerk"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Vrywilligerswerk soos 'n kerk dit bedryf. Elke bediening het spanne en posisies; mense word vir posisies gekwalifiseer en behoort aan die bediening se poelgroep; roosters volg die geleenthede op die kalender en lewer gedateerde gevalle met bemanningsvereistes; koördineerders wys mense toe, wat aanvaar, van die hand wys of 'n plaasvervanger voorstel; herinneringe en waarskuwings gaan per e-pos uit. Administrateurs en gebruikers met die toestemming Bestuur bedieninge sien elke bediening en mag hulle skep, deaktiveer en uitvee. 'n Bedieningkoördineerder kry eerder die toestemming Bestuur my bedieninge: die opskrif Bedieninge in die kantkolom wys dan net die bedieninge wat hulle koördineer. 'n Spanleier bestuur sy span vanuit die Lidmaatportaal. Lidmate gebruik die Lidmaatportaal om hul rooster te sien, te antwoord, in te skryf en hulp aan te bied."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22808,10 +22528,6 @@ msgid "Cancel this occurrence"
 msgstr "Kanselleer hierdie voorkoms"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Kansellering sê niks vir iemand: geen e-pos word gestuur nie. Toekennings word behou, geen herinneringe word geskeduleer terwyl dit gekanselleer is nie, en niemand kan toegeken word totdat dit herstel word."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Verwyderde gebeurtenisse verlaat elke kalender, met hul incheck en koptellings, en hierdie bediening se beman daarvan hou slegs sy datum. Dit kan nie ongedaan gemaak word nie."
 
@@ -22822,10 +22538,6 @@ msgstr "Gebeurtenisse verwyder: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Gebeurtenisse om te verwyder: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Voorkoms gekanselleer"
 
 #: 
 msgid "Occurrence restored"
@@ -22842,10 +22554,6 @@ msgstr "Herstel voorkoms"
 #: 
 msgid "Restore this occurrence"
 msgstr "Herstel hierdie voorkoms"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Die voorkoms kon nie gekanselleer word nie"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24910,10 +24618,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "Telemetrie word na PostHog in die Verenigde State gestuur. Verslae oor mislukte installasies en opgraderings word gestuur selfs wanneer opsionele telemetrie afgeskakel is."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Hierdie datum is gekanselleer. Niks meer word van jou verwag nie."
-
-#: 
 msgid "always sent"
 msgstr "altyd gestuur"
 
@@ -25380,10 +25084,6 @@ msgstr "E-pos benodig aandag"
 #: 
 msgid "Email problem"
 msgstr "E-posprobleem"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Ge-e-poste aanmeldkode en skakel gekanselleer"
 
 #: 
 msgid "Emailed verification link"
@@ -27148,10 +26848,6 @@ msgstr "tot %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "'n Versoek is in die lidportaal gemaak om u e-posadres by %1$s van %2$s na %3$s te verander. Die verandering gebeur eers wanneer die skakel wat na die nuwe adres gestuur is, gebruik word."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Gebruik asseblief die skakel hieronder om u gesinsinligting na te gaan. Kies op die hersieningsblad \"Bevestig gesinsinligting\" om te bevestig dat alles korrek is, of stuur regstellings na die kerkkantoor."
 
 #: 
 msgid "Review Family Information"

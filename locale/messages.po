@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 05:24+0000\n"
+"POT-Creation-Date: 2026-11-11 06:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,8 +135,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -729,7 +729,7 @@ msgstr ""
 msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
 msgstr ""
 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
 msgstr ""
 
 msgid "A valid person must be selected."
@@ -1088,9 +1088,6 @@ msgid "Add a second step to your sign-in, so your password alone is not enough t
 msgstr ""
 
 msgid "Add all cart items to a group"
-msgstr ""
-
-msgid "Add all to Cart"
 msgstr ""
 
 msgid "Add an email"
@@ -1643,9 +1640,6 @@ msgstr ""
 msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
 msgstr ""
 
-msgid "An error occurred"
-msgstr ""
-
 msgid "An error occurred during demo data import"
 msgstr ""
 
@@ -2024,7 +2018,7 @@ msgstr ""
 msgid "Assignment"
 msgstr ""
 
-msgid "Assignment cancelled"
+msgid "Assignment canceled"
 msgstr ""
 
 msgid "Assignment not found"
@@ -2040,9 +2034,6 @@ msgid "At least one family member is required"
 msgstr ""
 
 msgid "At least one fund allocation is required"
-msgstr ""
-
-msgid "At least one fund must have a non-zero amount"
 msgstr ""
 
 msgid "At least one fund must have a non-zero amount."
@@ -2270,9 +2261,6 @@ msgid "Back to Users"
 msgstr ""
 
 msgid "Back to editing"
-msgstr ""
-
-msgid "Back to login"
 msgstr ""
 
 msgid "Back to my schedule"
@@ -2812,10 +2800,10 @@ msgstr ""
 msgid "Cancel this occurrence"
 msgstr ""
 
-msgid "Cancelled"
+msgid "Canceled"
 msgstr ""
 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
 msgstr ""
 
 msgid "Cannot Delete Event Type"
@@ -3006,9 +2994,6 @@ msgid "Change in People Settings"
 msgstr ""
 
 msgid "Change required"
-msgstr ""
-
-msgid "Change role"
 msgstr ""
 
 msgid "Change the family address and contact details, and add a family member for review."
@@ -3559,9 +3544,6 @@ msgstr ""
 msgid "City"
 msgstr ""
 
-msgid "City is required"
-msgstr ""
-
 msgid "City is required."
 msgstr ""
 
@@ -3636,9 +3618,6 @@ msgid "Clear all data and start fresh. Cannot be undone."
 msgstr ""
 
 msgid "Clear all items from cart"
-msgstr ""
-
-msgid "Clear filter"
 msgstr ""
 
 msgid "Clear selection"
@@ -3749,7 +3728,7 @@ msgstr ""
 msgid "Colombia"
 msgstr ""
 
-msgid "Colour"
+msgid "Color"
 msgstr ""
 
 msgid "Column was automatically matched to a ChurchCRM field."
@@ -4365,9 +4344,6 @@ msgstr ""
 msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
 msgstr ""
 
-msgid "Creating Backup..."
-msgstr ""
-
 msgid "Creating a ministry requires volunteer manager access"
 msgstr ""
 
@@ -4587,9 +4563,6 @@ msgid "Database information confirmation and correction report signer"
 msgstr ""
 
 msgid "Database reset failed"
-msgstr ""
-
-msgid "Database reset failed."
 msgstr ""
 
 msgid "Database restore failed"
@@ -5526,9 +5499,6 @@ msgstr ""
 msgid "Edit custom properties for a group member"
 msgstr ""
 
-msgid "Edit event"
-msgstr ""
-
 msgid "Edit existing pledge or payment"
 msgstr ""
 
@@ -5768,7 +5738,7 @@ msgstr ""
 msgid "Email/Username"
 msgstr ""
 
-msgid "Emailed sign-in code and link cancelled"
+msgid "Emailed sign-in code and link canceled"
 msgstr ""
 
 msgid "Emailed verification link"
@@ -5910,9 +5880,6 @@ msgid "End date must be on or after the start date"
 msgstr ""
 
 msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
-msgstr ""
-
-msgid "End time"
 msgstr ""
 
 msgid "End time must be after start time."
@@ -6638,9 +6605,6 @@ msgstr ""
 msgid "Failed to delete link"
 msgstr ""
 
-msgid "Failed to delete note"
-msgstr ""
-
 msgid "Failed to delete note."
 msgstr ""
 
@@ -6726,9 +6690,6 @@ msgid "Failed to install plugin from URL"
 msgstr ""
 
 msgid "Failed to list plugins"
-msgstr ""
-
-msgid "Failed to load approved plugin list"
 msgstr ""
 
 msgid "Failed to load approved plugin list."
@@ -7092,7 +7053,7 @@ msgstr ""
 msgid "Family removed from cart"
 msgstr ""
 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
 msgstr ""
 
 msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
@@ -9691,9 +9652,6 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-msgid "Loading…"
-msgstr ""
-
 msgid "Local development"
 msgstr ""
 
@@ -9754,9 +9712,6 @@ msgid "Login"
 msgstr ""
 
 msgid "Login Name"
-msgstr ""
-
-msgid "Login Name is Required"
 msgstr ""
 
 msgid "Login Name is required"
@@ -11852,7 +11807,7 @@ msgstr ""
 msgid "OS family"
 msgstr ""
 
-msgid "Occurrence cancelled"
+msgid "Occurrence canceled"
 msgstr ""
 
 msgid "Occurrence not found"
@@ -13426,7 +13381,7 @@ msgstr ""
 msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
 msgstr ""
 
-msgid "Prioritise translations"
+msgid "Prioritize translations"
 msgstr ""
 
 #. plugin:mailchimp:section:4:title
@@ -13639,9 +13594,6 @@ msgid "Range end must be a valid YYYY-MM-DD date."
 msgstr ""
 
 msgid "Range start must be a valid YYYY-MM-DD date."
-msgstr ""
-
-msgid "Range start must be before range end"
 msgstr ""
 
 msgid "Range start must be before range end."
@@ -13934,9 +13886,6 @@ msgstr ""
 msgid "Remove Volunteer"
 msgstr ""
 
-msgid "Remove all from Cart"
-msgstr ""
-
 msgid "Remove coordinator"
 msgstr ""
 
@@ -14040,9 +13989,6 @@ msgid "Report Type"
 msgstr ""
 
 msgid "Report an Issue"
-msgstr ""
-
-msgid "Report an issue"
 msgstr ""
 
 msgid "Report not found"
@@ -14528,9 +14474,6 @@ msgstr ""
 msgid "Save and Add New Family"
 msgstr ""
 
-msgid "Save changes"
-msgstr ""
-
 msgid "Save changes to this category name"
 msgstr ""
 
@@ -14902,9 +14845,6 @@ msgstr ""
 msgid "Select date"
 msgstr ""
 
-msgid "Select event"
-msgstr ""
-
 msgid "Select event type..."
 msgstr ""
 
@@ -14918,9 +14858,6 @@ msgid "Select none"
 msgstr ""
 
 msgid "Select one deposit to print a bank slip."
-msgstr ""
-
-msgid "Select role"
 msgstr ""
 
 msgid "Select the type of record this property applies to"
@@ -15079,9 +15016,6 @@ msgid "Sending was interrupted before the server answered."
 msgstr ""
 
 msgid "Sending..."
-msgstr ""
-
-msgid "Sending…"
 msgstr ""
 
 msgid "Sending… {{done}} of {{total}}"
@@ -15780,9 +15714,6 @@ msgid "Start Time"
 msgstr ""
 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
-msgstr ""
-
-msgid "Start time"
 msgstr ""
 
 msgid "Start typing a name"
@@ -16541,7 +16472,7 @@ msgstr ""
 msgid "The asset path \"%s\" is not allowed."
 msgstr ""
 
-msgid "The assignment could not be cancelled"
+msgid "The assignment could not be canceled"
 msgstr ""
 
 msgid "The assignment message will be sent again"
@@ -16792,7 +16723,7 @@ msgstr ""
 msgid "The note you are trying to edit no longer exists."
 msgstr ""
 
-msgid "The occurrence could not be cancelled"
+msgid "The occurrence could not be canceled"
 msgstr ""
 
 msgid "The occurrence could not be deleted"
@@ -17330,7 +17261,7 @@ msgstr ""
 msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
 msgstr ""
 
-msgid "This date was cancelled. Nothing more is needed from you."
+msgid "This date was canceled. Nothing more is needed from you."
 msgstr ""
 
 msgid "This device"
@@ -17495,7 +17426,7 @@ msgstr ""
 msgid "This occurrence has already happened and its assignments can no longer be changed"
 msgstr ""
 
-msgid "This occurrence has been cancelled"
+msgid "This occurrence has been canceled"
 msgstr ""
 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
@@ -18945,9 +18876,6 @@ msgstr ""
 msgid "View active only"
 msgstr ""
 
-msgid "View all"
-msgstr ""
-
 msgid "View all (including inactive)"
 msgstr ""
 
@@ -18975,9 +18903,6 @@ msgstr ""
 msgid "View class roster, teacher assignments, and contact information"
 msgstr ""
 
-msgid "View event"
-msgstr ""
-
 msgid "View family details, members, and timeline"
 msgstr ""
 
@@ -18994,9 +18919,6 @@ msgid "View inactive only"
 msgstr ""
 
 msgid "View my schedule"
-msgstr ""
-
-msgid "View person"
 msgstr ""
 
 msgid "View pledge or payment details"
@@ -19096,7 +19018,7 @@ msgstr ""
 msgid "Volunteering"
 msgstr ""
 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
 msgstr ""
 
 msgid "Volunteers"
@@ -19817,9 +19739,6 @@ msgstr ""
 msgid "You do not have permission to delete this note."
 msgstr ""
 
-msgid "You do not have permission to edit this note"
-msgstr ""
-
 msgid "You do not have permission to edit this note."
 msgstr ""
 
@@ -19919,9 +19838,6 @@ msgid "Your Account was Deleted"
 msgstr ""
 
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
-msgstr ""
-
-msgid "Your Cart is Empty"
 msgstr ""
 
 msgid "Your ChurchCRM Account was Deleted."
@@ -20123,9 +20039,6 @@ msgid "Zip"
 msgstr ""
 
 msgid "Zip Code"
-msgstr ""
-
-msgid "Zip code is required"
 msgstr ""
 
 msgid "ZipArchive extension required for upgrades"
@@ -20348,16 +20261,10 @@ msgstr ""
 msgid "invalid calendar pinning"
 msgstr ""
 
-msgid "invalid event type id"
-msgstr ""
-
 msgid "invalid export value"
 msgstr ""
 
 msgid "invalid group request"
-msgstr ""
-
-msgid "invalid status value"
 msgstr ""
 
 msgid "is disabled"

@@ -881,10 +881,6 @@ msgid "Do you want to proceed?"
 msgstr "Želite li nastaviti?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Namjeravate e-poštom poslati kopiju obiteljskih podataka na sljedeće adrese"
-
-#: 
 msgid "Financial Reports"
 msgstr "Financijski izvještaji"
 
@@ -1804,10 +1800,6 @@ msgstr "Broj telefona"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Prilagođeni padajući popis"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF je uspješno poslan e-poštom članovima obitelji."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3848,10 +3840,6 @@ msgid "Please verify your family's information"
 msgstr "Molim potvrdite podatke vaše obitelji"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Nije moguće učitati podatke za provjeru"
-
-#: 
 msgid "No Changes"
 msgstr "Nema promjena"
 
@@ -3864,24 +3852,8 @@ msgid "Oops! Page not found."
 msgstr "Ups! Stranica nije pronađena."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Unesite sljedeće za početak provjere vaše obitelji"
-
-#: 
-msgid "Family Verification"
-msgstr "Provjera obitelji"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Zatraži provjeru obiteljskih podataka"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Odaberi kako želite zatražiti provjeru obiteljskih podataka"
-
-#: 
-msgid "Online Verification"
-msgstr "Online provjera"
 
 #: 
 msgid "Verified In Person"
@@ -4061,10 +4033,6 @@ msgstr "Svojstvo je uspješno uklonj."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Svojstvo nije moguće ukloniti."
-
-#: 
-msgid "Select event"
-msgstr "Odaberi događaj"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4271,10 +4239,6 @@ msgid "Kiosk Manager"
 msgstr "Upravljanje kioscima"
 
 #: 
-msgid "Report an issue"
-msgstr "Prijavi problem"
-
-#: 
 msgid "Self Verification"
 msgstr "Samo-provjera"
 
@@ -4303,10 +4267,6 @@ msgstr "Arapski - Egipat"
 #: 
 msgid "Thai"
 msgstr "Tajlandski"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Samo-provjera u tijeku"
 
 #: 
 msgid "Self Verify"
@@ -4686,16 +4646,8 @@ msgid "User must have Delete Records permission"
 msgstr "Korisnik mora imati dozvolu za brisanje zapisa"
 
 #: 
-msgid "invalid event type id"
-msgstr "nevažeći ID vrste događaja"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "nevažeće prikvačivanje kalendara"
-
-#: 
-msgid "invalid status value"
-msgstr "nevažeća vrijednost statusa"
 
 #: 
 msgid "invalid export value"
@@ -5300,10 +5252,6 @@ msgstr "Primjenjivanje sistemskog ažuriranja..."
 
 #: 
 msgid "Back to Login"
-msgstr "Povratak na prijavu"
-
-#: 
-msgid "Back to login"
 msgstr "Povratak na prijavu"
 
 #: 
@@ -6542,10 +6490,6 @@ msgid "Additional Information"
 msgstr "Dodatne informacije"
 
 #: 
-msgid "All information is correct"
-msgstr "Sve informacije su točne"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Dodijeli mogućnosti"
 
@@ -6558,20 +6502,12 @@ msgid "Choose opportunities..."
 msgstr "Odaberi mogućnosti..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Potvrdi obiteljske informacije"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontaktni i osobni podaci"
 
 #: 
 msgid "Edited"
 msgstr "Uređeno"
-
-#: 
-msgid "Email PDF"
-msgstr "Pošalji PDF e-poštom"
 
 #: 
 msgid "Newsletter"
@@ -6582,40 +6518,12 @@ msgid "Personal"
 msgstr "Osobno"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Molim ažurirajte naše zapise ispravkama"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Navedite ovdje ispravke ili dodatne informacije..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Odaberi mogućnosti"
 
 #: 
-msgid "Submit Verification"
-msgstr "Pošalji provjeru"
-
-#: 
-msgid "Thank You!"
-msgstr "Hvala vam!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Posjetite našu web stranicu"
-
-#: 
 msgid "Volunteer"
 msgstr "Volonter"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Naišli smo na grešku pri obradi vaše provjere. Molim pokušajte ponovo ili nas kontaktirajte izravno."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Vaš zahtjev za provjeru je primljen. Hvala vam što ažurirate svoje informacije."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8079,10 +7987,6 @@ msgid "City is required."
 msgstr "Grad je obavezan."
 
 #: 
-msgid "Clear filter"
-msgstr "Očisti filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Stavka konfiguracije nije pronađena"
 
@@ -8352,10 +8256,6 @@ msgstr "Dodaj osobu"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Dodaj sve stavke košarice u skupinu"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Dodaj sve u košaricu"
 
 #: 
 msgid "Add cart items to a family"
@@ -8862,10 +8762,6 @@ msgid "Family Profile"
 msgstr "Profil obitelji"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Obiteljske uloge (Nositelj kućanstva, Bračni partner, Dijete, itd.) pomažu organiziranju zapisa."
-
-#: 
 msgid "Family vs Person"
 msgstr "Obitelj nasuprot osobi"
 
@@ -9364,10 +9260,6 @@ msgid "Record why attendees visited your church"
 msgstr "Bilježite zašto su posjetitelji došli u vašu župu"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Ukloni sve iz košarice"
-
-#: 
 msgid "Remove from Class"
 msgstr "Ukloni iz razreda"
 
@@ -9838,10 +9730,6 @@ msgstr "Događaji ove godine"
 #: 
 msgid "Everyone"
 msgstr "Svi"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Brisanje bilješke nije uspjelo"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11742,10 +11630,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Početak raspona mora biti valjani GGGG-MM-DD datum."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Početak raspona mora biti prije kraja raspona"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Početak raspona mora biti prije kraja raspona."
 
@@ -11966,10 +11850,6 @@ msgid "Cannot move property in that direction"
 msgstr "Nije moguće premjestiti svojstvo u tom smjeru"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Potvrdi obiteljske informacije"
-
-#: 
 msgid "Delete failed"
 msgstr "Brisanje nije uspjelo"
 
@@ -12010,20 +11890,12 @@ msgid "Invalid target family"
 msgstr "Nevažeća ciljna obitelj"
 
 #: 
-msgid "Log Out"
-msgstr "Odjava"
-
-#: 
 msgid "Membership not found"
 msgstr "Članstvo nije pronađeno"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Lozinka je uspješno promijenjena za"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Molim pregledajte obiteljske informacije u nastavku i potvrdite ili zatražite izmjene."
 
 #: 
 msgid "Please select a target family."
@@ -12706,10 +12578,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Instalacija dodatka iz URL-a nije uspjela"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Učitavanje popisa odobrenih dodataka nije uspjelo"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Učitavanje popisa odobrenih dodataka nije uspjelo."
 
@@ -12768,10 +12636,6 @@ msgstr "Kebab-case. Mora odgovarati nazivu direktorija najviše razine unutar zi
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Učitavanje popisa odobrenih dodataka…"
-
-#: 
-msgid "Loading…"
-msgstr "Učitavanje…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13219,10 +13083,6 @@ msgid "Change Your Locale"
 msgstr "Promijenite vašu regionalnu postavku"
 
 #: 
-msgid "Change role"
-msgstr "Promijeni ulogu"
-
-#: 
 msgid "Check Number"
 msgstr "Broj čeka"
 
@@ -13237,10 +13097,6 @@ msgstr "Prijava nije uspjela. Molim pokušajte ponovo."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Odjava nije uspjela. Molim pokušajte ponovo."
-
-#: 
-msgid "City is required"
-msgstr "Grad je obavezan"
 
 #: 
 msgid "Click Save to apply."
@@ -13309,10 +13165,6 @@ msgstr "Kopiraj sve brojeve"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopiraj članove u skupinu"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Kreiranje sigurnosne kopije..."
 
 #: 
 msgid "Creating..."
@@ -13497,10 +13349,6 @@ msgstr "Nije uspjelo dodavanje u košaricu"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Otkazivanje upisa nije uspjelo. Molim pokušajte ponovo."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Kopiranje URL-a nije uspjelo"
 
 #: 
 msgid "Failed to create backup."
@@ -13891,10 +13739,6 @@ msgid "One-Time Code"
 msgstr "Jednokratni kod"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Otvori u novoj kartici"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Otvorite vašu autentifikacijsku aplikaciju i skenirajte ovaj QR kod"
 
@@ -14171,10 +14015,6 @@ msgid "Setup Complete"
 msgstr "Postavljanje završeno"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Podijelite ovaj URL s članovima obitelji za provjeru njihovih informacija"
-
-#: 
 msgid "Show more options"
 msgstr "Prikaži više opcija"
 
@@ -14327,10 +14167,6 @@ msgid "Validation pending"
 msgstr "Provjera u tijeku"
 
 #: 
-msgid "Verification URL"
-msgstr "URL provjere"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Provjera nije uspjela. Molim pokušajte ponovo."
 
@@ -14395,10 +14231,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Primit ćete rezervne kodove koji se mogu koristiti ako izgubite pristup vašoj aplikaciji"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Vaša košarica je prazna"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Vaš račun je sada zaštićen"
 
@@ -14417,10 +14249,6 @@ msgstr "Jezična preferencija vašeg preglednika se razlikuje od vaše regionaln
 #: 
 msgid "Your database already contains data"
 msgstr "Vaša baza podataka već sadrži podatke"
-
-#: 
-msgid "Zip code is required"
-msgstr "Poštanski broj je obavezan"
 
 #: 
 msgid "added"
@@ -14842,10 +14670,6 @@ msgstr "Nemate dozvolu za dodavanje bilješke za ovu obitelj."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Nemate dozvolu za dodavanje bilješke za ovu osobu."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Nemate dozvolu za uređivanje ove bilješke"
 
 #: 
 msgid "Account locked"
@@ -15670,10 +15494,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Molimo potvrdite brisanje ovog zapisa obitelji"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Molimo potvrdite podatke o svojoj obitelji"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Molimo odaberite drugu obitelj s kojom ćete povezati ove donacije"
 
@@ -15894,10 +15714,6 @@ msgid "Select a person"
 msgstr "Odaberi osobu"
 
 #: 
-msgid "Select role"
-msgstr "Odaberi ulogu"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Odaberi vrstu (neobavezno)"
 
@@ -16052,10 +15868,6 @@ msgstr "Jeste li sigurni da želite trajno izbrisati ovaj zapis o uplati?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Potrebna je najmanje jedna dodjela fonda"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Najmanje jedan fond mora imati nenulti iznos"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16304,10 +16116,6 @@ msgstr "Grupa zavjeta nije pronađena"
 #: 
 msgid "Pledges & Payments"
 msgstr "Zavjeti i uplate"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Daj prednost prijevodima"
 
 #: 
 msgid "Purpose"
@@ -16571,13 +16379,6 @@ msgstr "Nisu pronadene uplate za odabrane depozite"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Nisu navedeni valjani ID-ovi depozita"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF uspješno poslan e-poštom %d obitelji."
-msgstr[1] "PDF uspješno poslan e-poštom %d obitelji."
-msgstr[2] "PDF uspješno poslan e-poštom %d obitelji."
 
 #: 
 msgid "Partial Send"
@@ -17119,10 +16920,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Izrada i prijenos sigurnosne kopije. Ovo može potrajati nekoliko minuta..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Resetiranje baze podataka nije uspjelo."
-
-#: 
 msgid "Deceased"
 msgstr "Preminuo"
 
@@ -17319,10 +17116,6 @@ msgid "Log settings saved"
 msgstr "Postavke zapisnika spremljene"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Korisničko ime je obavezno"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Osoba je označena kao aktivna"
 
@@ -17447,10 +17240,6 @@ msgid "Sending..."
 msgstr "Slanje..."
 
 #: 
-msgid "Sending…"
-msgstr "Slanje…"
-
-#: 
 msgid "Settings reset"
 msgstr "Postavke resetirane"
 
@@ -17519,16 +17308,8 @@ msgid "Upcoming"
 msgstr "Nadolazeće"
 
 #: 
-msgid "Valid Until"
-msgstr "Vrijedi do"
-
-#: 
 msgid "View active only"
 msgstr "Prikaži samo aktivne"
-
-#: 
-msgid "View all"
-msgstr "Prikaži sve"
 
 #: 
 msgid "View all (including inactive)"
@@ -18307,10 +18088,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Vaša fiskalna godina počinje u %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Došlo je do pogreške"
-
-#: 
 msgid "Approve"
 msgstr "Odobri"
 
@@ -18482,13 +18259,6 @@ msgid_plural "%d days"
 msgstr[0] "%d dan"
 msgstr[1] "%d dana"
 msgstr[2] "%d dana"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d zadani preskočen iz drugog razloga (termin je završen, otkazan ili pun)"
-msgstr[1] "%d zadana preskočena iz drugog razloga (termin je završen, otkazan ili pun)"
-msgstr[2] "%d zadanih preskočeno iz drugog razloga (termin je završen, otkazan ili pun)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18757,10 +18527,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Tema je mapa koju vaša crkva učitava na poslužitelj u Include/themes/. Zadana tema sustava isporučuje se s ChurchCRM-om."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Prijelazna postavka. Stare stranice Prilika za volontere i nove stranice Službi obje su dostupne, a zapis osobe prikazuje obje kartice Volonter, jasno označene. Koristite je dok crkvu prebacujete s V1 na V2, a zatim prijeđite samo na V2."
-
-#: 
 msgid "A volunteer"
 msgstr "Volonter"
 
@@ -18965,10 +18731,6 @@ msgid "Assigned outside the current plan"
 msgstr "Dodijeljeno izvan trenutačnog plana"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Dodjela je otkazana"
-
-#: 
 msgid "Assignment not found"
 msgstr "Dodjela nije pronađena"
 
@@ -19075,10 +18837,6 @@ msgstr "Otkaži dodjelu"
 #: 
 msgid "Cancel this assignment"
 msgstr "Otkaži ovu dodjelu"
-
-#: 
-msgid "Cancelled"
-msgstr "Otkazano"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19235,10 +18993,6 @@ msgstr "Web-stranica crkve"
 #: 
 msgid "Close event details"
 msgstr "Zatvori pojedinosti događaja"
-
-#: 
-msgid "Colour"
-msgstr "Boja"
 
 #: 
 msgid "Completed"
@@ -19485,10 +19239,6 @@ msgid "Each staffing need must name a position"
 msgstr "Svaka potreba popune mora navesti poziciju"
 
 #: 
-msgid "Edit event"
-msgstr "Uredi događaj"
-
-#: 
 msgid "Edit ministry"
 msgstr "Uredi službu"
 
@@ -19573,10 +19323,6 @@ msgstr "E-pošta poslana je na {{count}} primatelja."
 #: 
 msgid "Emails"
 msgstr "E-pošta"
-
-#: 
-msgid "End time"
-msgstr "Vrijeme završetka"
 
 #: 
 msgid "Enter counts"
@@ -20859,10 +20605,6 @@ msgid "SMTP test"
 msgstr "SMTP test"
 
 #: 
-msgid "Save changes"
-msgstr "Spremi promjene"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Spremljeno – ova služba više ne traži pomoć"
 
@@ -21145,10 +20887,6 @@ msgstr "Potrebe popune spremljene"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Počnite stvaranjem službe, zatim dodajte timove i pozicije koji u njoj služe."
-
-#: 
-msgid "Start time"
-msgstr "Vrijeme početka"
 
 #: 
 msgid "Start typing a name"
@@ -21497,10 +21235,6 @@ msgstr "Adresa je odabrana – kopirajte je tipkovnicom."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Putanja resursa „%s“ nije dopuštena."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "Dodjelu nije moguće otkazati"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22029,10 +21763,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Taj se termin već dogodio i njegove se dodjele više ne mogu mijenjati"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Taj je termin otkazan"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Taj termin ima vlastite potrebe popune, odvojene od svog rasporeda."
 
@@ -22201,16 +21931,8 @@ msgid "Validation"
 msgstr "Provjera valjanosti"
 
 #: 
-msgid "View event"
-msgstr "Prikaži događaj"
-
-#: 
 msgid "View my schedule"
 msgstr "Prikaži moj raspored"
-
-#: 
-msgid "View person"
-msgstr "Pregled osobe"
 
 #: 
 msgid "View the event"
@@ -22259,10 +21981,6 @@ msgstr "Vremena volontera"
 #: 
 msgid "Volunteering"
 msgstr "Volontiranje"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Volontiranje organizirano onako kako ga crkva vodi. Svaka služba ima timove i pozicije; ljudi su kvalificirani za pozicije i pripadaju skupini volontera službe; rasporedi prate događaje u kalendaru i stvaraju datirane termine sa zahtjevima popune; koordinatori dodjeljuju ljude, koji prihvaćaju, odbijaju ili predlažu zamjenu; podsjetnici i obavijesti šalju se e-poštom. Administratori i korisnici s ovlaštenjem Upravljanje službama vide svaku službu i mogu ih stvarati, deaktivirati i brisati. Koordinator službe umjesto toga dobiva ovlaštenje Upravljanje mojim službama: naslov Službe na bočnoj traci tada prikazuje samo službe koje koordinira. Voditelj tima vodi svoj tim iz Portala članova. Članovi koriste Portal članova za pregled svog rasporeda, odgovaranje, prijavu i nuđenje pomoći."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22803,10 +22521,6 @@ msgid "Cancel this occurrence"
 msgstr "Otkazite ovaj dogadaj"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Otkazivanje nikoga ne obavjestava: nema poslanih emaila. Dodjele su sacuvane, nema planiranih podsjeci dok je otkazano, i nitko ne moze biti dodijeljen dok se ne vrati."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Izbrisani dogadaji napustaju svaki kalendar sa svojom pojavom i brojem osoba, a obsada ove sluzbene od njih cuva samo datum. Ovo se ne moze vratiti."
 
@@ -22817,10 +22531,6 @@ msgstr "Dogadaji izbrisani: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Dogadaji za brisanje: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Dogadaj otkaza"
 
 #: 
 msgid "Occurrence restored"
@@ -22837,10 +22547,6 @@ msgstr "Obnoviti dogadaj"
 #: 
 msgid "Restore this occurrence"
 msgstr "Obnoviti ovaj dogadaj"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Dogadaj se nije mogao otkazati"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24905,10 +24611,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "Telemetrija se šalje u PostHog u Sjedinjenim Američkim Državama. Izvješća o neuspjehu instalacije i nadogradnje šalju se i kad je neobavezna telemetrija isključena."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Ovaj termin je otkazan. Od vas više ništa nije potrebno."
-
-#: 
 msgid "always sent"
 msgstr "uvijek se šalje"
 
@@ -25375,10 +25077,6 @@ msgstr "E-pošta zahtijeva pažnju"
 #: 
 msgid "Email problem"
 msgstr "Problem s e-poštom"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Kod i poveznica za prijavu poslani e-poštom su otkazani"
 
 #: 
 msgid "Emailed verification link"
@@ -27143,10 +26841,6 @@ msgstr "do %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "U portalu za članove zatražena je promjena vaše adrese e-pošte na %1$s s %2$s na %3$s. Promjena se izvršava tek kada se upotrebi poveznica poslana na novu adresu."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Upotrijebite poveznicu u nastavku da pregledate podatke o svojoj obitelji. Na stranici za pregled odaberite „Potvrdi podatke o obitelji” da potvrdite da je sve točno ili pošaljite ispravke crkvenom uredu."
 
 #: 
 msgid "Review Family Information"

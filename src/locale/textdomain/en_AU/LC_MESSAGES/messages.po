@@ -290,10 +290,6 @@ msgid "Two Factor Enrollment Error"
 msgstr "Two Factor Enrolment Error"
 
 #: 
-msgid "Zip code is required"
-msgstr "Postcode is required"
-
-#: 
 msgid "Cell Phone Format"
 msgstr "Mobile Phone Format"
 

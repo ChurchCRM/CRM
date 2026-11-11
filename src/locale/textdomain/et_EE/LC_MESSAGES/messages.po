@@ -887,10 +887,6 @@ msgid "Do you want to proceed?"
 msgstr "Kas soovite jätkata?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Olete saatmas infot perekonnast järgmiste meilidele"
-
-#: 
 msgid "Financial Reports"
 msgstr "Finantsaruanded"
 
@@ -1821,10 +1817,6 @@ msgstr "Telefoninumber"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Kohandatud ripploend"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "Perekonna liikmetele saadeti PDF-fail edukalt."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3872,10 +3864,6 @@ msgid "Please verify your family's information"
 msgstr "Palun kontrollige oma pere andmeid"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Kinnitusteavet ei saa laadida"
-
-#: 
 msgid "No Changes"
 msgstr "Muudatused puuduvad"
 
@@ -3888,24 +3876,8 @@ msgid "Oops! Page not found."
 msgstr "Oih! Lehte ei leitud."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Perekonna kinnitamise alustamiseks sisestage järgmine"
-
-#: 
-msgid "Family Verification"
-msgstr "Perekonna kinnitamine"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Taotlege perekonnateabe kinnitamist"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Valige, kuidas soovite taotleda perekonnateabe kinnitamist"
-
-#: 
-msgid "Online Verification"
-msgstr "Veebikinnitus"
 
 #: 
 msgid "Verified In Person"
@@ -4087,10 +4059,6 @@ msgstr "Omaduse määramine on edukalt tühistatud."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Omaduse määramist ei saanud tühistada."
-
-#: 
-msgid "Select event"
-msgstr "Valige sündmus"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4298,10 +4266,6 @@ msgid "Kiosk Manager"
 msgstr "Tööharu haldur"
 
 #: 
-msgid "Report an issue"
-msgstr "Teatage probleemist"
-
-#: 
 msgid "Self Verification"
 msgstr "Automaatne kinitus"
 
@@ -4330,10 +4294,6 @@ msgstr "araabia keel – Egiptus"
 #: 
 msgid "Thai"
 msgstr "tai keel"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Automaatse kinnituse ootel"
 
 #: 
 msgid "Self Verify"
@@ -4716,16 +4676,8 @@ msgid "User must have Delete Records permission"
 msgstr "Kasutajal peab olema Kustutamise kirjete luba"
 
 #: 
-msgid "invalid event type id"
-msgstr "kehtetu sündmuse tüübi ID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "kehtetu kalendri kinnitamine"
-
-#: 
-msgid "invalid status value"
-msgstr "kehtetu oleku väärtus"
 
 #: 
 msgid "invalid export value"
@@ -5332,10 +5284,6 @@ msgstr "Süsteemi värskenduse rakendamine..."
 
 #: 
 msgid "Back to Login"
-msgstr "Tagasi sisselogimisele"
-
-#: 
-msgid "Back to login"
 msgstr "Tagasi sisselogimisele"
 
 #: 
@@ -6572,10 +6520,6 @@ msgid "Additional Information"
 msgstr "Täiendav teave"
 
 #: 
-msgid "All information is correct"
-msgstr "Kogu teave on õige"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Omista võimalused"
 
@@ -6588,20 +6532,12 @@ msgid "Choose opportunities..."
 msgstr "Valige võimalused..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Kinnita perekonna teave"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontakt ja isiklik teave"
 
 #: 
 msgid "Edited"
 msgstr "Muudetud"
-
-#: 
-msgid "Email PDF"
-msgstr "E-posti PDF"
 
 #: 
 msgid "Newsletter"
@@ -6612,40 +6548,12 @@ msgid "Personal"
 msgstr "Isiklik"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Palun värskendage meie kirjeid parandamisega"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Esitage siinkohal kõik parandused või täiendav teave..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Valige võimalused"
 
 #: 
-msgid "Submit Verification"
-msgstr "Esitage kontrollimine"
-
-#: 
-msgid "Thank You!"
-msgstr "Täname!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Külastage meie veebisaiti"
-
-#: 
 msgid "Volunteer"
 msgstr "Vabatahtlik"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Teie kontrollimise töötlemisel tekkis tõrge. Proovige uuesti või võtke meiega otse ühendust."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Teie kontrollimise taotlus on saadud. Täname, et hoiate oma teavet ajakohasena."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8105,10 +8013,6 @@ msgid "City is required."
 msgstr "Linn on kohustuslik."
 
 #: 
-msgid "Clear filter"
-msgstr "Tühjenda filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Konfiguratsiooniobjekti ei leitud"
 
@@ -8377,10 +8281,6 @@ msgstr "Lisa isik"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Lisa kõik valiku üksused gruppi"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Lisa kõik valikusse"
 
 #: 
 msgid "Add cart items to a family"
@@ -8887,10 +8787,6 @@ msgid "Family Profile"
 msgstr "Perekonna profiil"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Perekonna rollid (perekonnapea, abikaasa, laps jne) aitavad teie kirjeid korrastada."
-
-#: 
 msgid "Family vs Person"
 msgstr "Perekond vs isik"
 
@@ -9389,10 +9285,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registreerige, miks külastajad teie kirikut külastasid"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Eemalda kõik valikust"
-
-#: 
 msgid "Remove from Class"
 msgstr "Eemalda klassist"
 
@@ -9863,10 +9755,6 @@ msgstr "Selle aasta sündmused"
 #: 
 msgid "Everyone"
 msgstr "Kõik"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Märkme kustutamine ebaõnnestus"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11766,10 +11654,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Vahemiku algus peab olema kehtiv AAAA-KK-PP kuupäev."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Vahemiku algus peab olema enne vahemiku lõppu"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Vahemiku algus peab olema enne vahemiku lõppu."
 
@@ -11990,10 +11874,6 @@ msgid "Cannot move property in that direction"
 msgstr "Ei saa omadust selles suunas teisaldada"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Kinnita pere andmed"
-
-#: 
 msgid "Delete failed"
 msgstr "Kustutamine ebaõnnestus"
 
@@ -12034,20 +11914,12 @@ msgid "Invalid target family"
 msgstr "Kehtetu sihpere"
 
 #: 
-msgid "Log Out"
-msgstr "Logi välja"
-
-#: 
 msgid "Membership not found"
 msgstr "Liikmesust ei leitud"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Parool edukalt muudetud kasutajale"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Palun vaadake allpool oma pere andmed üle ning kinnitage või taotlege muudatusi."
 
 #: 
 msgid "Please select a target family."
@@ -12730,10 +12602,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Pistikprogrammi URL-ilt installimine ebaõnnestus"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Heakskiidetud pistikprogrammide loendi laadimine ebaõnnestus"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Heakskiidetud pistikprogrammide loendi laadimine ebaõnnestus."
 
@@ -12792,10 +12660,6 @@ msgstr "Kebab-kujul. Peab vastama ZIP-faili sees oleva peakataloogi nimele ja pl
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Heakskiidetud pistikprogrammide loendi laadimine…"
-
-#: 
-msgid "Loading…"
-msgstr "Laadimine…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13243,10 +13107,6 @@ msgid "Change Your Locale"
 msgstr "Muutke Oma Lokaali"
 
 #: 
-msgid "Change role"
-msgstr "Muuda rolli"
-
-#: 
 msgid "Check Number"
 msgstr "Kontrolli numbrit"
 
@@ -13261,10 +13121,6 @@ msgstr "Registreerimine ebaõnnestus. Palun proovige uuesti."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Lahkumine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "City is required"
-msgstr "Linn on nõutav"
 
 #: 
 msgid "Click Save to apply."
@@ -13333,10 +13189,6 @@ msgstr "Kopeerige kõik numbrid"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopeeri liikmed gruppi"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Varukoopia loomine..."
 
 #: 
 msgid "Creating..."
@@ -13521,10 +13373,6 @@ msgstr "Ostukorvi lisamine ebaõnnestus"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Registreerimise tühistamine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "URL-i kopeeramine ebaõnnestus"
 
 #: 
 msgid "Failed to create backup."
@@ -13915,10 +13763,6 @@ msgid "One-Time Code"
 msgstr "Ühekordne Kood"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Ava uuel vahekaardil"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Avage autentimisrakendus ja skannige see QR-kood"
 
@@ -14195,10 +14039,6 @@ msgid "Setup Complete"
 msgstr "Seadistamine Lõpetatud"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Jagage seda URL-i perekonna liikmetega nende teabe kontrollimiseks"
-
-#: 
 msgid "Show more options"
 msgstr "Kuva rohkem suvandeid"
 
@@ -14351,10 +14191,6 @@ msgid "Validation pending"
 msgstr "Valideerimine ootel"
 
 #: 
-msgid "Verification URL"
-msgstr "Kinnituse URL"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Kinnitamine ebaõnnestus. Palun proovige uuesti."
 
@@ -14419,10 +14255,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Saate varukoopiad koodid, mida saab kasutada, kui kaotate juurdepääsu oma rakendusele"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Teie valikukorv on tühi"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Teie konto on nüüd kaitstud"
 
@@ -14441,10 +14273,6 @@ msgstr "Teie brauseri keeleeelistus erineb teie ChurchCRM lokaalist"
 #: 
 msgid "Your database already contains data"
 msgstr "Teie andmebaas sisaldab juba andmeid"
-
-#: 
-msgid "Zip code is required"
-msgstr "Postiindeks on nõutav"
 
 #: 
 msgid "added"
@@ -14865,10 +14693,6 @@ msgstr "Teil ei ole luba lisada märkust sellele perele."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Teil ei ole luba lisada märkust sellele isikule."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Teil ei ole luba seda märkust muuta"
 
 #: 
 msgid "Account locked"
@@ -15691,10 +15515,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Palun kinnita selle pere kirje kustutamine"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Palun kinnita oma pere andmed"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Palun vali teine pere, kellega seostada need annetused"
 
@@ -15915,10 +15735,6 @@ msgid "Select a person"
 msgstr "Vali isik"
 
 #: 
-msgid "Select role"
-msgstr "Vali roll"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Vali tüüp (valikuline)"
 
@@ -16073,10 +15889,6 @@ msgstr "Kas olete kindel, et soovite selle maksekirje jäädavalt kustutada?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Vähemalt üks fondi eraldis on nõutav"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Vähemalt ühe fondi summa peab olema nullist erinev"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16325,10 +16137,6 @@ msgstr "Annetuslubaduse gruppi ei leitud"
 #: 
 msgid "Pledges & Payments"
 msgstr "Annetuslubadused ja maksed"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Prioritiseeri tõlkeid"
 
 #: 
 msgid "Purpose"
@@ -16591,12 +16399,6 @@ msgstr "Valitud deposiitide jaoks ei leitud makseid"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Uhtegi kehtivat deposiidi ID-d ei esitatud"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF saadeti edukalt %d perele."
-msgstr[1] "PDF saadeti edukalt %d perele."
 
 #: 
 msgid "Partial Send"
@@ -17137,10 +16939,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Varukoopia loomine ja üleslaadimine. See võib võtta mõne minuti..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Andmebaasi lähtestamine ebaõnnestus."
-
-#: 
 msgid "Deceased"
 msgstr "Surnud"
 
@@ -17337,10 +17135,6 @@ msgid "Log settings saved"
 msgstr "Logi seaded salvestatud"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Kasutajanimi on kohustuslik"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Isik märgitud aktiivseks"
 
@@ -17465,10 +17259,6 @@ msgid "Sending..."
 msgstr "Saatmine..."
 
 #: 
-msgid "Sending…"
-msgstr "Saatmine…"
-
-#: 
 msgid "Settings reset"
 msgstr "Seaded lähtestatud"
 
@@ -17537,16 +17327,8 @@ msgid "Upcoming"
 msgstr "Tulevased"
 
 #: 
-msgid "Valid Until"
-msgstr "Kehtib kuni"
-
-#: 
 msgid "View active only"
 msgstr "Vaata ainult aktiivseid"
-
-#: 
-msgid "View all"
-msgstr "Vaata kõiki"
 
 #: 
 msgid "View all (including inactive)"
@@ -18325,10 +18107,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Sinu eelarveaasta algab: %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Tekkis viga"
-
-#: 
 msgid "Approve"
 msgstr "Kinnita"
 
@@ -18499,12 +18277,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d päev"
 msgstr[1] "%d päeva"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d vaikeväärtus jäeti muul põhjusel vahele (toimumiskord on läbi, tühistatud või täis)"
-msgstr[1] "%d vaikeväärtust jäeti muul põhjusel vahele (toimumiskord on läbi, tühistatud või täis)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18767,10 +18539,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Teema on kaust, mille sinu kogudus serverisse kataloogi Include/themes/ laeb. Süsteemi vaiketeema tuleb ChurchCRM-iga kaasa."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Üleminekuseade. Vanad Vabatahtlike võimaluste lehed ja uued Valdkondade lehed on mõlemad saadaval ning isiku kirjel on näha mõlemad Vabatahtlik-saki selgelt tähistatuna. Kasuta seda, kui viid kogudust üle V1-lt V2-le, ja lülitu siis ainult V2-le."
-
-#: 
 msgid "A volunteer"
 msgstr "Vabatahtlik"
 
@@ -18975,10 +18743,6 @@ msgid "Assigned outside the current plan"
 msgstr "Määratud väljaspool praegust plaani"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Määramine tühistatud"
-
-#: 
 msgid "Assignment not found"
 msgstr "Määramist ei leitud"
 
@@ -19085,10 +18849,6 @@ msgstr "Tühista määramine"
 #: 
 msgid "Cancel this assignment"
 msgstr "Tühista see määramine"
-
-#: 
-msgid "Cancelled"
-msgstr "Tühistatud"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19245,10 +19005,6 @@ msgstr "Koguduse veebileht"
 #: 
 msgid "Close event details"
 msgstr "Sule sündmuse üksikasjad"
-
-#: 
-msgid "Colour"
-msgstr "Värv"
 
 #: 
 msgid "Completed"
@@ -19495,10 +19251,6 @@ msgid "Each staffing need must name a position"
 msgstr "Iga komplekteerimisvajadus peab nimetama ülesande"
 
 #: 
-msgid "Edit event"
-msgstr "Muuda sündmust"
-
-#: 
 msgid "Edit ministry"
 msgstr "Muuda valdkonda"
 
@@ -19583,10 +19335,6 @@ msgstr "E-kirjad saadetud {{count}} adressaadile."
 #: 
 msgid "Emails"
 msgstr "E-kirjad"
-
-#: 
-msgid "End time"
-msgstr "Lõpuaeg"
 
 #: 
 msgid "Enter counts"
@@ -20867,10 +20615,6 @@ msgid "SMTP test"
 msgstr "SMTP test"
 
 #: 
-msgid "Save changes"
-msgstr "Salvesta muudatused"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Salvestatud – see valdkond enam abi ei küsi"
 
@@ -21153,10 +20897,6 @@ msgstr "Komplekteerimisvajadused salvestatud"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Alusta valdkonna loomisest ja lisa siis meeskonnad ja ülesanded, mis selles teenivad."
-
-#: 
-msgid "Start time"
-msgstr "Algusaeg"
 
 #: 
 msgid "Start typing a name"
@@ -21505,10 +21245,6 @@ msgstr "Aadress on valitud – kopeeri see klaviatuuriga."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Varade tee „%s” pole lubatud."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "Määramist ei õnnestunud tühistada"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22035,10 +21771,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "See toimumiskord on juba toimunud ja selle määramisi ei saa enam muuta"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "See toimumiskord on tühistatud"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Sellel toimumiskorral on oma komplekteerimisvajadused, ajakavast eraldi."
 
@@ -22207,16 +21939,8 @@ msgid "Validation"
 msgstr "Valideerimine"
 
 #: 
-msgid "View event"
-msgstr "Vaata sündmust"
-
-#: 
 msgid "View my schedule"
 msgstr "Vaata minu ajakava"
-
-#: 
-msgid "View person"
-msgstr "Vaata isikut"
 
 #: 
 msgid "View the event"
@@ -22265,10 +21989,6 @@ msgstr "Vabatahtlike ajad"
 #: 
 msgid "Volunteering"
 msgstr "Vabatahtlikutöö"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Vabatahtlikutöö korraldatud nii, nagu kogudus seda peab. Igal valdkonnal on meeskonnad ja ülesanded; inimesed kvalifitseeritakse ülesannetele ja kuuluvad valdkonna kogumirühma; ajakavad järgivad kalendri sündmusi ja loovad kuupäevastatud toimumiskorrad koos komplekteerimisnõuetega; koordinaatorid määravad inimesi, kes nõustuvad, keelduvad või pakuvad asendajat; meeldetuletused ja hoiatused saadetakse e-kirjaga. Administraatorid ja kasutajad, kellel on Halda valdkondi -õigus, näevad kõiki valdkondi ning võivad neid luua, deaktiveerida ja kustutada. Valdkonna koordinaatorile antakse selle asemel õigus Halda minu valdkondi: külgriba pealkirja Valdkonnad all on siis näha ainult valdkonnad, mida ta koordineerib. Meeskonnajuht juhib oma meeskonda Liikmeportaalist. Liikmed kasutavad Liikmeportaali oma ajakava nägemiseks, vastamiseks, registreerumiseks ja abi pakkumiseks."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22807,10 +22527,6 @@ msgid "Cancel this occurrence"
 msgstr "Tühista see sündmus"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Tühistamine ei teatavaks ei keegi: e-kirja ei saadeta. Määrangud säilivad, meeldetuletused ei ole ajastatud selle tühistamise ajal ja keegi ei saa määrata, kuni see taastetakse."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Kustutatud sündmused lahkuvad igast kalendrist koos nende saabumiste ja rahvastikuga, ja selle teenistuse personal säilitab ainult kuupäeva. Seda ei saa võtta tagasi."
 
@@ -22821,10 +22537,6 @@ msgstr "Sündmused kustutatud: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Kustutamiseks mõeldud sündmused: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Sündmus tühistatud"
 
 #: 
 msgid "Occurrence restored"
@@ -22841,10 +22553,6 @@ msgstr "Taasta sündmus"
 #: 
 msgid "Restore this occurrence"
 msgstr "Taasta see sündmus"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Sündmust ei saanud tühistada"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24909,10 +24617,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "Telemeetria saadetakse PostHogile Ameerika Ühendriikides. Paigalduse ja uuenduse tõrketeated saadetakse ka siis, kui valikuline telemeetria on välja lülitatud."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "See kuupäev tühistati. Teilt ei ole rohkem midagi vaja."
-
-#: 
 msgid "always sent"
 msgstr "saadetakse alati"
 
@@ -25379,10 +25083,6 @@ msgstr "E-post vajab tähelepanu"
 #: 
 msgid "Email problem"
 msgstr "E-posti probleem"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "E-postiga saadetud sisselogimiskood ja link tühistati"
 
 #: 
 msgid "Emailed verification link"
@@ -27147,10 +26847,6 @@ msgstr "kuni %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "Liikmeportaalis tehti taotlus muuta teie e-posti aadressi saidil %1$s aadressilt %2$s aadressile %3$s. Muudatus jõustub alles siis, kui kasutatakse uuele aadressile saadetud linki."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Kasutage allolevat linki oma pere andmete ülevaatamiseks. Valige ülevaatuslehel „Kinnita pere andmed”, et kinnitada, et kõik on õige, või saatke parandused koguduse kantseleisse."
 
 #: 
 msgid "Review Family Information"

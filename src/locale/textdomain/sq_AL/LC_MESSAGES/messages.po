@@ -887,10 +887,6 @@ msgid "Do you want to proceed?"
 msgstr "Dëshironi të vazhdoni?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Jeni gati të dërgoni me email kopjen e informacionit familjar në email-et e mëposhtme"
-
-#: 
 msgid "Financial Reports"
 msgstr "Raportet financiare"
 
@@ -1822,10 +1818,6 @@ msgstr "Numri i telefonit"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Custom Drop-Down Lista"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF u dërgua me sukses me email te anëtarët e familjes."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3872,10 +3864,6 @@ msgid "Please verify your family's information"
 msgstr "Ju lutem verifikoni informacionin e familjes suaj"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Nuk mund të ngarkohet informacioni i verifikimit"
-
-#: 
 msgid "No Changes"
 msgstr "Asnjë ndryshim"
 
@@ -3888,24 +3876,8 @@ msgid "Oops! Page not found."
 msgstr "Oops! Faqja nuk u gjend."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Ju lutem vendosni sa më poshtë për të filluar verifikimin e familjes suaj"
-
-#: 
-msgid "Family Verification"
-msgstr "Verifikimi i familjes"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Kërko verifikimin e informacionit familjar"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Zgjidhni se si dëshironi të kërkoni verifikimin e informacionit të familjes"
-
-#: 
-msgid "Online Verification"
-msgstr "Verifikim online"
 
 #: 
 msgid "Verified In Person"
@@ -4085,10 +4057,6 @@ msgstr "Prona u hoq me sukses."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Prona nuk mund të hiqej."
-
-#: 
-msgid "Select event"
-msgstr "Zgjidhni ngjarjen"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4295,10 +4263,6 @@ msgid "Kiosk Manager"
 msgstr "Menaxheri i Kioskut"
 
 #: 
-msgid "Report an issue"
-msgstr "Raportoni një problem"
-
-#: 
 msgid "Self Verification"
 msgstr "Vetë-verifikimi"
 
@@ -4327,10 +4291,6 @@ msgstr "Arabisht - Egjipt"
 #: 
 msgid "Thai"
 msgstr "Tajlandisht"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Vetë-verifikimi në pritje"
 
 #: 
 msgid "Self Verify"
@@ -4712,16 +4672,8 @@ msgid "User must have Delete Records permission"
 msgstr "Përdoruesi duhet të ketë lejen 'Fshij Regjistrimet'"
 
 #: 
-msgid "invalid event type id"
-msgstr "ID-ja e llojit të ngjarjes është e pavlefshme"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "pinning-u i kalendarit është i pavlefshëm"
-
-#: 
-msgid "invalid status value"
-msgstr "vlera e statusit është e pavlefshme"
 
 #: 
 msgid "invalid export value"
@@ -5324,10 +5276,6 @@ msgstr "Duke aplikuar përditësimin e sistemit..."
 
 #: 
 msgid "Back to Login"
-msgstr "Kthehu në hyrje"
-
-#: 
-msgid "Back to login"
 msgstr "Kthehu në hyrje"
 
 #: 
@@ -6564,10 +6512,6 @@ msgid "Additional Information"
 msgstr "Informacion shtesë"
 
 #: 
-msgid "All information is correct"
-msgstr "I gjithë informacioni është i saktë"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Cakto mundësitë"
 
@@ -6580,20 +6524,12 @@ msgid "Choose opportunities..."
 msgstr "Zgjidhni mundësitë..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Konfirmo informacionin e familjes"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Informacioni i kontaktit dhe personal"
 
 #: 
 msgid "Edited"
 msgstr "I ndryshuar"
-
-#: 
-msgid "Email PDF"
-msgstr "Dërgo PDF me email"
 
 #: 
 msgid "Newsletter"
@@ -6604,40 +6540,12 @@ msgid "Personal"
 msgstr "Personal"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Ju lutemi përditësoni të dhënat tona me korrigjime"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Jepni çdo korrigjim ose informacion shtesë këtu..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Zgjidhni mundësitë"
 
 #: 
-msgid "Submit Verification"
-msgstr "Dërgo verifikimin"
-
-#: 
-msgid "Thank You!"
-msgstr "Faleminderit!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Vizitoni faqen tonë të internetit"
-
-#: 
 msgid "Volunteer"
 msgstr "Vullnetar"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Hasëm një gabim gjatë procesimit të verifikimit tuaj. Ju lutemi provoni përsëri."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Kërkesa juaj e verifikimit u pranua. Faleminderit që mbani informacionin tuaj të përditësuar."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8097,10 +8005,6 @@ msgid "City is required."
 msgstr "Qyteti është i detyrueshëm."
 
 #: 
-msgid "Clear filter"
-msgstr "Pastro filtrin"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Elementi i konfigurimit nuk u gjet"
 
@@ -8369,10 +8273,6 @@ msgstr "Shto një Person"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Shto të gjithë artikujt e listës në një grupmesion"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Shto Të Gjithë në Listën Përzgjedhese"
 
 #: 
 msgid "Add cart items to a family"
@@ -8879,10 +8779,6 @@ msgid "Family Profile"
 msgstr "Profili i Familjes"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Rolet e familjes (Kreu i Shtëpisë, Bashkëshorti/ja, Fëmija, etj.) ndihmojnë në organizimin e regjistrave tuaj."
-
-#: 
 msgid "Family vs Person"
 msgstr "Familja vs Personi"
 
@@ -9381,10 +9277,6 @@ msgid "Record why attendees visited your church"
 msgstr "Regjistroj pse vizituesit vizituan kishën tuaj"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Hiq Të Gjithë nga Listja Përzgjedhese"
-
-#: 
 msgid "Remove from Class"
 msgstr "Hiq nga Klasa"
 
@@ -9855,10 +9747,6 @@ msgstr "Ngjarjet Këtë Vit"
 #: 
 msgid "Everyone"
 msgstr "Të Gjithë"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Dështoi të fshinte shënimin"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11758,10 +11646,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Fillimi i intervalit duhet të jetë një datë e vlefshme YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Fillimi i intervalit duhet të jetë para fundit të intervalit"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Fillimi i intervalit duhet të jetë para fundit të intervalit."
 
@@ -11982,10 +11866,6 @@ msgid "Cannot move property in that direction"
 msgstr "Nuk mund të lëvizet prona në atë drejtim"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Konfirmo Informacionin e Familjes"
-
-#: 
 msgid "Delete failed"
 msgstr "Fshirja dështoi"
 
@@ -12026,20 +11906,12 @@ msgid "Invalid target family"
 msgstr "Familje cak e pavlefshme"
 
 #: 
-msgid "Log Out"
-msgstr "Dilni"
-
-#: 
 msgid "Membership not found"
 msgstr "Anëtarësia nuk u gjet"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Fjalëkalimi u ndryshua me sukses për"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Ju lutemi shqyrtoni informacionin e familjes suaj më poshtë dhe konfirmoni ose kërkoni ndryshime."
 
 #: 
 msgid "Please select a target family."
@@ -12722,10 +12594,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Instalimi i shtojcës nga URL-ja dështoi"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Ngarkimi i listës së shtojcave të aprovuara dështoi"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Ngarkimi i listës së shtojcave të aprovuara dështoi."
 
@@ -12784,10 +12652,6 @@ msgstr "Kebab-case. Duhet të përputhet me emrin e drejtorisë së nivelit të 
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Po ngarkohet lista e shtojcave të aprovuara…"
-
-#: 
-msgid "Loading…"
-msgstr "Po ngarkohet…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13235,10 +13099,6 @@ msgid "Change Your Locale"
 msgstr "Ndryshoni Vendndodhjen Tuaj"
 
 #: 
-msgid "Change role"
-msgstr "Ndrysho rolin"
-
-#: 
 msgid "Check Number"
 msgstr "Numri i çekut"
 
@@ -13253,10 +13113,6 @@ msgstr "Regjistrimi dështoi. Ju lutemi provoni përsëri."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Çregjistrimi dështoi. Ju lutemi provoni përsëri."
-
-#: 
-msgid "City is required"
-msgstr "Qyteti kërkohet"
 
 #: 
 msgid "Click Save to apply."
@@ -13325,10 +13181,6 @@ msgstr "Kopjojeni të Gjithë Numrat"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopjo Besimtarët në Grupmesion"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Duke Krijuar Rezervën..."
 
 #: 
 msgid "Creating..."
@@ -13513,10 +13365,6 @@ msgstr "Dështoi shtimi në shportë"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Dështoi anulimi i regjistrimit. Ju lutemi provoni përsëri."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Dështoi kopjimi i URL-së"
 
 #: 
 msgid "Failed to create backup."
@@ -13907,10 +13755,6 @@ msgid "One-Time Code"
 msgstr "Kod Njëpërdorimësh"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Hape në skedë të re"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Hapni aplikacionin tuaj të vërtetimit dhe skanoni këtë kod QR"
 
@@ -14187,10 +14031,6 @@ msgid "Setup Complete"
 msgstr "Konfigurimi u Plotësua"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Ndajeni këtë URL me anëtarët e familjes për të verifikuar informacionin e tyre"
-
-#: 
 msgid "Show more options"
 msgstr "Shfaq më shumë opsione"
 
@@ -14343,10 +14183,6 @@ msgid "Validation pending"
 msgstr "Vërtetimi në pritje"
 
 #: 
-msgid "Verification URL"
-msgstr "URL e verifikimit"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Verifikimi dështoi. Ju lutemi provoni përsëri."
 
@@ -14411,10 +14247,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Do të merrni kode rezervë që mund të përdoren nëse humbni aksesin te aplikacioni juaj"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Shporta juaj është bosh"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Llogaria juaj është tani e mbrojtur"
 
@@ -14433,10 +14265,6 @@ msgstr "Preferenca e gjuhës së shfletuesit tuaj ndryshon nga vendndodhja juaj 
 #: 
 msgid "Your database already contains data"
 msgstr "Baza juaj e të dhënave tashmë përmban të dhëna"
-
-#: 
-msgid "Zip code is required"
-msgstr "Kërkohet kodi postar"
 
 #: 
 msgid "added"
@@ -14857,10 +14685,6 @@ msgstr "Nuk keni leje për të shtuar një shënim për këtë familje."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Nuk keni leje për të shtuar një shënim për këtë person."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Nuk keni leje për të redaktuar këtë shënim"
 
 #: 
 msgid "Account locked"
@@ -15683,10 +15507,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Ju lutem konfirmoni fshirjen e këtij rekordii familjes"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Ju lutem konfirmoni informacionin e familjes tuaj"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Ju lutem zgjidhni një familje tjetër me të cilën të lidhni këto dhurime"
 
@@ -15907,10 +15727,6 @@ msgid "Select a person"
 msgstr "Zgjidh një person"
 
 #: 
-msgid "Select role"
-msgstr "Zgjidh rolin"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Zgjidh llojin (opsionale)"
 
@@ -16065,10 +15881,6 @@ msgstr "Jeni i sigurt që dëshironi të fshini përgjithmonë këtë regjistrim
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Kërkohet të paktën një ndarje fondi"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Të paktën një fond duhet të ketë një shumë jo-zero"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16317,10 +16129,6 @@ msgstr "Grupi i premtimit nuk u gjet"
 #: 
 msgid "Pledges & Payments"
 msgstr "Premtime & Pagesa"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Jepini përparësi përkthimeve"
 
 #: 
 msgid "Purpose"
@@ -16583,12 +16391,6 @@ msgstr "Nuk u gjeten pagesa per depozitat e zgjedhura"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Nuk u dhan ID-te e vlefshme te depozitave"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF-ja u dërgua me sukses te %d familje."
-msgstr[1] "PDF-ja u dërgua me sukses te %d familje."
 
 #: 
 msgid "Partial Send"
@@ -17129,10 +16931,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Duke krijuar dhe ngarkuar kopjen rezervë. Kjo mund të zgjasë disa minuta..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Rivendosja e bazës së të dhënave dështoi."
-
-#: 
 msgid "Deceased"
 msgstr "I/E Ndjerë"
 
@@ -17329,10 +17127,6 @@ msgid "Log settings saved"
 msgstr "Cilësimet e regjistrit u ruajtën"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Emri i Hyrjes është i Detyrueshëm"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Personi u shënua si Aktiv"
 
@@ -17457,10 +17251,6 @@ msgid "Sending..."
 msgstr "Duke dërguar..."
 
 #: 
-msgid "Sending…"
-msgstr "Duke dërguar…"
-
-#: 
 msgid "Settings reset"
 msgstr "Cilësimet u rivendosën"
 
@@ -17529,16 +17319,8 @@ msgid "Upcoming"
 msgstr "Së Shpejti"
 
 #: 
-msgid "Valid Until"
-msgstr "I/E Vlefshme Deri"
-
-#: 
 msgid "View active only"
 msgstr "Shiko vetëm aktivët"
-
-#: 
-msgid "View all"
-msgstr "Shiko të gjithë"
 
 #: 
 msgid "View all (including inactive)"
@@ -18317,10 +18099,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Viti juaj fiskal fillon në %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Ndodhi një gabim"
-
-#: 
 msgid "Approve"
 msgstr "Miratoje"
 
@@ -18491,12 +18269,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d ditë"
 msgstr[1] "%d ditë"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d i parazgjedhur u anashkalua për një arsye tjetër (zhvillimi ka mbaruar, është anuluar ose është plot)"
-msgstr[1] "%d të parazgjedhur u anashkaluan për një arsye tjetër (zhvillimi ka mbaruar, është anuluar ose është plot)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18759,10 +18531,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Tema është një dosje që kisha juaj e ngarkon në server te Include/themes/. Tema e parazgjedhur e sistemit vjen me ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Një cilësim kalimtar. Si faqet e vjetra të Mundësive për vullnetarët, ashtu edhe faqet e reja të Shërbesave janë të disponueshme, dhe regjistrimi i një personi shfaq të dyja skedat Vullnetar, të shënuara qartë. Përdoreni gjatë kalimit të një kishe nga V1 në V2, pastaj kaloni vetëm te V2."
-
-#: 
 msgid "A volunteer"
 msgstr "Një vullnetar"
 
@@ -18967,10 +18735,6 @@ msgid "Assigned outside the current plan"
 msgstr "Caktuar jashtë planit aktual"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Caktimi u anulua"
-
-#: 
 msgid "Assignment not found"
 msgstr "Caktimi nuk u gjet"
 
@@ -19077,10 +18841,6 @@ msgstr "Anulo caktimin"
 #: 
 msgid "Cancel this assignment"
 msgstr "Anuloje këtë caktim"
-
-#: 
-msgid "Cancelled"
-msgstr "Anuluar"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19237,10 +18997,6 @@ msgstr "Faqja e internetit e kishës"
 #: 
 msgid "Close event details"
 msgstr "Mbyll detajet e ngjarjes"
-
-#: 
-msgid "Colour"
-msgstr "Ngjyra"
 
 #: 
 msgid "Completed"
@@ -19487,10 +19243,6 @@ msgid "Each staffing need must name a position"
 msgstr "Çdo nevojë stafimi duhet të caktojë një pozicion"
 
 #: 
-msgid "Edit event"
-msgstr "Redakto ngjarjen"
-
-#: 
 msgid "Edit ministry"
 msgstr "Redakto shërbesën"
 
@@ -19575,10 +19327,6 @@ msgstr "Emailet e dërguara {{count}} marrësve."
 #: 
 msgid "Emails"
 msgstr "Email-et"
-
-#: 
-msgid "End time"
-msgstr "Koha e Mbarimit"
 
 #: 
 msgid "Enter counts"
@@ -20859,10 +20607,6 @@ msgid "SMTP test"
 msgstr "Test SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Ruaj Ndryshimet"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "U ruajt – kjo shërbesë nuk po kërkon më ndihmë"
 
@@ -21145,10 +20889,6 @@ msgstr "Nevojat e stafimit u ruajtën"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Filloni duke krijuar një shërbesë, pastaj shtoni ekipet dhe pozicionet që shërbejnë në të."
-
-#: 
-msgid "Start time"
-msgstr "Koha e Fillimit"
 
 #: 
 msgid "Start typing a name"
@@ -21497,10 +21237,6 @@ msgstr "Adresa është e zgjedhur – kopjojeni me tastierën."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Rruga e burimit \"%s\" nuk lejohet."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "Caktimi nuk u anulua dot"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22027,10 +21763,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Ky zhvillim ka ndodhur tashmë dhe caktimet e tij nuk mund të ndryshohen më"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Ky zhvillim u anulua"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Ky zhvillim ka nevojat e veta të stafimit, të veçuara nga orari i tij."
 
@@ -22199,16 +21931,8 @@ msgid "Validation"
 msgstr "Validimi"
 
 #: 
-msgid "View event"
-msgstr "Shiko Ngjarjen"
-
-#: 
 msgid "View my schedule"
 msgstr "Shiko orarin tim"
-
-#: 
-msgid "View person"
-msgstr "Shiko Personin"
 
 #: 
 msgid "View the event"
@@ -22257,10 +21981,6 @@ msgstr "Orët e vullnetarëve"
 #: 
 msgid "Volunteering"
 msgstr "Vullnetarizmi"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Vullnetarizëm i organizuar siç e drejton një kishë. Çdo shërbesë ka ekipe dhe pozicione; njerëzit kualifikohen për pozicione dhe i përkasin grupit të vullnetarëve të shërbesës; orarët ndjekin ngjarjet në kalendar dhe prodhojnë zhvillime me datë me kërkesa stafimi; koordinatorët caktojnë njerëz, të cilët pranojnë, refuzojnë ose propozojnë një zëvendësues; kujtesat dhe njoftimet dërgohen me email. Administratorët dhe përdoruesit me lejen Menaxho shërbesat shohin çdo shërbesë dhe mund t'i krijojnë, çaktivizojnë dhe fshijnë. Një koordinator i shërbesës merr në vend të kësaj lejen Menaxho shërbesat e mia: titulli Shërbesat në shiritin anësor shfaq atëherë vetëm shërbesat që koordinon. Një udhëheqës ekipi e drejton ekipin e tij nga Portali i anëtarëve. Anëtarët e përdorin Portalin e anëtarëve për të parë orarin e tyre, për t'u përgjigjur, për t'u regjistruar dhe për të ofruar ndihmë."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22799,10 +22519,6 @@ msgid "Cancel this occurrence"
 msgstr "Anuloni këtë ngjarje"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Anulimi nuk i tregon asnjë persone: asnjë email nuk dërgohet. Përdorimet mbehen, asnjë kujtesë nuk planifikohet ndërsa anulohet, dhe asnjë nuk mund të caktohet derisa të rikthehet."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Ngjarjet e fshira largojnë çdo kalender, me arritjet e tyre dhe numërimet, dhe stafi i këtij shërbimi ruan vetëm datën e tij. Kjo nuk mund të zhbëhet."
 
@@ -22813,10 +22529,6 @@ msgstr "Ngjarjet e fshira: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Ngjarjet për të fshirë: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Ngjarja u anulua"
 
 #: 
 msgid "Occurrence restored"
@@ -22833,10 +22545,6 @@ msgstr "Riktheni ngjarjen"
 #: 
 msgid "Restore this occurrence"
 msgstr "Riktheni këtë ngjarje"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Ngjarja nuk mund të anulohet"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24901,10 +24609,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "Telemetria dërgohet te PostHog në Shtetet e Bashkuara. Raportet e dështimit të instalimit dhe të përmirësimit dërgohen edhe kur telemetria opsionale është e çaktivizuar."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Kjo datë u anulua. Nuk nevojitet më asgjë nga ju."
-
-#: 
 msgid "always sent"
 msgstr "dërgohet gjithmonë"
 
@@ -25371,10 +25075,6 @@ msgstr "Emaili ka nevojë për vëmendje"
 #: 
 msgid "Email problem"
 msgstr "Problem me emailin"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Kodi dhe lidhja e hyrjes së dërguar me email u anuluan"
 
 #: 
 msgid "Emailed verification link"
@@ -27139,10 +26839,6 @@ msgstr "deri më %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "Në portalin e anëtarëve u bë një kërkesë për të ndryshuar adresën tuaj të emailit te %1$s nga %2$s në %3$s. Ndryshimi ndodh vetëm kur përdoret lidhja e dërguar te adresa e re."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Përdorni lidhjen më poshtë për të shqyrtuar informacionin e familjes suaj. Në faqen e shqyrtimit, zgjidhni \"Konfirmo informacionin e familjes\" për të konfirmuar që gjithçka është e saktë, ose dërgoni korrigjimet në zyrën e kishës."
 
 #: 
 msgid "Review Family Information"

@@ -890,10 +890,6 @@ msgid "Do you want to proceed?"
 msgstr "Szeretné folytatni?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "A család információinak másolatát készül elküldeni a következő e-mail címekre"
-
-#: 
 msgid "Financial Reports"
 msgstr "Pénzügyi jelentések"
 
@@ -1846,10 +1842,6 @@ msgstr "Telefonszám"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Egyedi Legördülő lista"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "A PDF sikeresen elküldve a családtagoknak."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3907,10 +3899,6 @@ msgid "Please verify your family's information"
 msgstr "Kérjük, ellenőrizze családja adatait"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Nem sikerült betölteni az ellenőrző adatokat"
-
-#: 
 msgid "No Changes"
 msgstr "Nincs változás"
 
@@ -3923,24 +3911,8 @@ msgid "Oops! Page not found."
 msgstr "Hoppá! Az oldal nem található."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Kérjük, adja meg a következőket a család ellenőrzésének megkezdéséhez"
-
-#: 
-msgid "Family Verification"
-msgstr "Családi ellenőrzés"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Családi adatok ellenőrzésének kérése"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Válassza ki, hogyan szeretné kérni a családi adatok ellenőrzését"
-
-#: 
-msgid "Online Verification"
-msgstr "Online ellenőrzés"
 
 #: 
 msgid "Verified In Person"
@@ -4120,10 +4092,6 @@ msgstr "A tulajdonság hozzárendelése sikeresen törölve."
 #: 
 msgid "The property could not be unassigned."
 msgstr "A tulajdonság hozzárendelését nem sikerült törölni."
-
-#: 
-msgid "Select event"
-msgstr "Válasszon eseményt"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4330,10 +4298,6 @@ msgid "Kiosk Manager"
 msgstr "Kioszk kezelő"
 
 #: 
-msgid "Report an issue"
-msgstr "Hiba bejelentése"
-
-#: 
 msgid "Self Verification"
 msgstr "Önellenőrzés"
 
@@ -4362,10 +4326,6 @@ msgstr "Arab - Egyiptom"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Várakozó önigazolás"
 
 #: 
 msgid "Self Verify"
@@ -4747,16 +4707,8 @@ msgid "User must have Delete Records permission"
 msgstr "A felhasználónak Rekordok törlése engedéllyel kell rendelkeznie"
 
 #: 
-msgid "invalid event type id"
-msgstr "érvénytelen eseménytípus azonosítója"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "érvénytelen naptár rögzítés"
-
-#: 
-msgid "invalid status value"
-msgstr "érvénytelen státusz értéke"
 
 #: 
 msgid "invalid export value"
@@ -5359,10 +5311,6 @@ msgstr "Rendszerfrissítés alkalmazása..."
 
 #: 
 msgid "Back to Login"
-msgstr "Vissza a bejelentkezéshez"
-
-#: 
-msgid "Back to login"
 msgstr "Vissza a bejelentkezéshez"
 
 #: 
@@ -6599,10 +6547,6 @@ msgid "Additional Information"
 msgstr "Kiegészítő Információ"
 
 #: 
-msgid "All information is correct"
-msgstr "Az összes információ helyes"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Lehetőségek Hozzárendelése"
 
@@ -6615,20 +6559,12 @@ msgid "Choose opportunities..."
 msgstr "Válasszon lehetőségeket..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Családi információk megerősítése"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kapcsolat és személyes információ"
 
 #: 
 msgid "Edited"
 msgstr "Szerkesztve"
-
-#: 
-msgid "Email PDF"
-msgstr "E-mail PDF"
 
 #: 
 msgid "Newsletter"
@@ -6639,40 +6575,12 @@ msgid "Personal"
 msgstr "Személyes"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Kérjük, frissítse az adatainkat a módosításokkal"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Adjon meg javításokat vagy további információkat itt..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Válasszon lehetőségeket"
 
 #: 
-msgid "Submit Verification"
-msgstr "Ellenőrzés beküldése"
-
-#: 
-msgid "Thank You!"
-msgstr "Köszönjük!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Látogassa meg webhelyünket"
-
-#: 
 msgid "Volunteer"
 msgstr "Önkéntes"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Hiba történt az Ön ellenőrzésének feldolgozása során. Kérjük, próbálkozzon újra vagy lépjen kapcsolatba velünk közvetlenül."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Az Ön ellenőrzési kérelmét megkaptuk. Köszönjük, hogy naprakészen tartja adatait."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8132,10 +8040,6 @@ msgid "City is required."
 msgstr "A város megadása kötelező."
 
 #: 
-msgid "Clear filter"
-msgstr "Szűrő törlése"
-
-#: 
 msgid "Configuration item not found"
 msgstr "A konfigurációs elem nem található"
 
@@ -8404,10 +8308,6 @@ msgstr "Személy hozzáadása"
 #: 
 msgid "Add all cart items to a group"
 msgstr "A lista összes elemének hozzáadása egy csoporthoz"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Összes hozzáadása a listához"
 
 #: 
 msgid "Add cart items to a family"
@@ -8914,10 +8814,6 @@ msgid "Family Profile"
 msgstr "Családi profil"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "A családi szerepek (családfő, házastárs, gyermek stb.) segítik a nyilvántartás rendszerezését."
-
-#: 
 msgid "Family vs Person"
 msgstr "Család és személy"
 
@@ -9416,10 +9312,6 @@ msgid "Record why attendees visited your church"
 msgstr "Rögzítse, miért látogattak el a vendégek a gyülekezetbe"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Összes eltávolítása a listából"
-
-#: 
 msgid "Remove from Class"
 msgstr "Eltávolítás az osztályból"
 
@@ -9890,10 +9782,6 @@ msgstr "Idei események"
 #: 
 msgid "Everyone"
 msgstr "Mindenki"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Nem sikerült a megjegyzés törlése"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11793,10 +11681,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "A tartomány kezdete érvényes ÉÉÉÉ-HH-NN formátumú dátum kell legyen."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "A tartomány kezdete a vége előtt kell legyen"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "A tartomány kezdete a vége előtt kell legyen."
 
@@ -12017,10 +11901,6 @@ msgid "Cannot move property in that direction"
 msgstr "Nem lehet a tulajdonságot abba az irányba mozgatni"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Családi adatok megerősítése"
-
-#: 
 msgid "Delete failed"
 msgstr "Törlés sikertelen"
 
@@ -12061,20 +11941,12 @@ msgid "Invalid target family"
 msgstr "Érvénytelen célcsalád"
 
 #: 
-msgid "Log Out"
-msgstr "Kijelentkezés"
-
-#: 
 msgid "Membership not found"
 msgstr "A tagság nem található"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "A jelszó sikeresen megváltozott a következő felhasználónál:"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Kérjük, tekintse át az alábbi családi adatait, és erősítse meg, vagy kérjen módosítást."
 
 #: 
 msgid "Please select a target family."
@@ -12757,10 +12629,6 @@ msgid "Failed to install plugin from URL"
 msgstr "A beépülő modul URL-ről való telepítése sikertelen"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "A jóváhagyott beépülő modulok listájának betöltése sikertelen"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "A jóváhagyott beépülő modulok listájának betöltése sikertelen."
 
@@ -12819,10 +12687,6 @@ msgstr "Kötőjeles formátum. Egyeznie kell a zip fájlon belüli legfelső szi
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Jóváhagyott beépülő modulok listájának betöltése…"
-
-#: 
-msgid "Loading…"
-msgstr "Betöltés…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13270,10 +13134,6 @@ msgid "Change Your Locale"
 msgstr "Nyelvi beállítás módosítása"
 
 #: 
-msgid "Change role"
-msgstr "Szerep módosítása"
-
-#: 
 msgid "Check Number"
 msgstr "Csekkszám"
 
@@ -13288,10 +13148,6 @@ msgstr "A bejelentkezés sikertelen. Kérjük, próbálja újra."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "A kijelentkezés sikertelen. Kérjük, próbálja újra."
-
-#: 
-msgid "City is required"
-msgstr "A város szükséges"
 
 #: 
 msgid "Click Save to apply."
@@ -13360,10 +13216,6 @@ msgstr "Összes szám másolása"
 #: 
 msgid "Copy Members to Group"
 msgstr "Tagok másolása csoportba"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Biztonsági mentés készítése..."
 
 #: 
 msgid "Creating..."
@@ -13548,10 +13400,6 @@ msgstr "Nem sikerült hozzáadni a kosárhoz"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Az iratkozás lemondása sikertelen. Kérjük, próbálja újra."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Az URL másolása nem sikerült"
 
 #: 
 msgid "Failed to create backup."
@@ -13942,10 +13790,6 @@ msgid "One-Time Code"
 msgstr "Egyszeri kód"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Megnyitás új lapon"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Nyissa meg a hitelesítő alkalmazást, és olvassa be a QR-kódot"
 
@@ -14222,10 +14066,6 @@ msgid "Setup Complete"
 msgstr "A beállítás kész"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Ossza meg ezt az URL-t családtagjaival az adataik ellenőrzéséhez"
-
-#: 
 msgid "Show more options"
 msgstr "További lehetőségek megjelenítése"
 
@@ -14378,10 +14218,6 @@ msgid "Validation pending"
 msgstr "Ellenőrzés folyamatban"
 
 #: 
-msgid "Verification URL"
-msgstr "Ellenőrzés URL"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Az ellenőrzés sikertelen. Kérjük, próbálja újra."
 
@@ -14446,10 +14282,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Biztonsági mentési kódokat kap, amelyeket akkor használhat, ha elveszíti hozzáférését az alkalmazáshoz"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "A kosara üres"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Fiókja mostantól védett"
 
@@ -14468,10 +14300,6 @@ msgstr "A böngésző nyelvi beállítása eltér a ChurchCRM területi beállí
 #: 
 msgid "Your database already contains data"
 msgstr "Az adatbázis már tartalmaz adatokat"
-
-#: 
-msgid "Zip code is required"
-msgstr "Az irányítószám szükséges"
 
 #: 
 msgid "added"
@@ -14892,10 +14720,6 @@ msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a családhoz."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a személyhez."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Nincs jogosultsága ennek a megjegyzésnek a szerkesztéséhez"
 
 #: 
 msgid "Account locked"
@@ -15718,10 +15542,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Kérjük, erősítse meg a családi rekord törlését"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Kérjük, erősítse meg a családi adatokat"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Kérjük, válasszon másik családot, amelyhez ezeket az adományokat társítja"
 
@@ -15942,10 +15762,6 @@ msgid "Select a person"
 msgstr "Személy kiválasztása"
 
 #: 
-msgid "Select role"
-msgstr "Szerepkör kiválasztása"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Típus kiválasztása (opcionális)"
 
@@ -16100,10 +15916,6 @@ msgstr "Biztosan véglegesen törölni szeretné ezt az adomány-rekordot?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Legalább egy alaphoz való hozzárendelés szükséges"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Legalább egy alapnak nullától eltérő összeggel kell rendelkeznie"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16352,10 +16164,6 @@ msgstr "A fogadalom-csoport nem található"
 #: 
 msgid "Pledges & Payments"
 msgstr "Fogadalmak és adományok"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Fordítások priorizálása"
 
 #: 
 msgid "Purpose"
@@ -16618,12 +16426,6 @@ msgstr "Nem talalhatok kifizetesek a kivalasztott befizetesekhez"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Nem adtak meg ervenyes befizetes azonositokat"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "A PDF sikeresen elküldve %d családnak."
-msgstr[1] "A PDF sikeresen elküldve %d családnak."
 
 #: 
 msgid "Partial Send"
@@ -17164,10 +16966,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Biztonsági mentés készítése és feltöltése. Ez néhány percet igénybe vehet..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Az adatbázis visszaállítása sikertelen."
-
-#: 
 msgid "Deceased"
 msgstr "Elhunyt"
 
@@ -17364,10 +17162,6 @@ msgid "Log settings saved"
 msgstr "A naplózási beállítások mentve"
 
 #: 
-msgid "Login Name is Required"
-msgstr "A bejelentkezési név megadása kötelező"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "A személy aktívként megjelölve"
 
@@ -17492,10 +17286,6 @@ msgid "Sending..."
 msgstr "Küldés..."
 
 #: 
-msgid "Sending…"
-msgstr "Küldés…"
-
-#: 
 msgid "Settings reset"
 msgstr "A beállítások visszaállítva"
 
@@ -17564,16 +17354,8 @@ msgid "Upcoming"
 msgstr "Közelgő"
 
 #: 
-msgid "Valid Until"
-msgstr "Érvényes eddig"
-
-#: 
 msgid "View active only"
 msgstr "Csak az aktívak megjelenítése"
-
-#: 
-msgid "View all"
-msgstr "Összes megjelenítése"
 
 #: 
 msgid "View all (including inactive)"
@@ -18352,10 +18134,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "A pénzügyi éved kezdete: %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Hiba történt"
-
-#: 
 msgid "Approve"
 msgstr "Jóváhagyás"
 
@@ -18526,12 +18304,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d nap"
 msgstr[1] "%d nap"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
-msgstr[1] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18794,10 +18566,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "A téma egy mappa, amelyet a gyülekezeted tölt fel a szerver Include/themes/ könyvtárába. A rendszer alapértelmezett témája a ChurchCRM-mel érkezik."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Átmeneti beállítás. A régi Önkéntes lehetőségek oldalak és az új Szolgálati területek oldalak egyaránt elérhetők, és a személyrekord mindkét Önkéntes lapot megjeleníti, egyértelműen megjelölve. Használd, amíg a gyülekezetet V1-ről V2-re viszed át, majd válts csak V2-re."
-
-#: 
 msgid "A volunteer"
 msgstr "Egy önkéntes"
 
@@ -19002,10 +18770,6 @@ msgid "Assigned outside the current plan"
 msgstr "A jelenlegi terven kívül beosztva"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Beosztás visszavonva"
-
-#: 
 msgid "Assignment not found"
 msgstr "A beosztás nem található"
 
@@ -19112,10 +18876,6 @@ msgstr "Beosztás visszavonása"
 #: 
 msgid "Cancel this assignment"
 msgstr "A beosztás visszavonása"
-
-#: 
-msgid "Cancelled"
-msgstr "Visszavonva"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19272,10 +19032,6 @@ msgstr "Gyülekezeti weboldal"
 #: 
 msgid "Close event details"
 msgstr "Eseményadatok bezárása"
-
-#: 
-msgid "Colour"
-msgstr "Szín"
 
 #: 
 msgid "Completed"
@@ -19522,10 +19278,6 @@ msgid "Each staffing need must name a position"
 msgstr "Minden létszámigénynek meg kell neveznie egy pozíciót"
 
 #: 
-msgid "Edit event"
-msgstr "Esemény Szerkesztése"
-
-#: 
 msgid "Edit ministry"
 msgstr "Szolgálati terület szerkesztése"
 
@@ -19610,10 +19362,6 @@ msgstr "E-mailek küldve {{count}} címzettnek."
 #: 
 msgid "Emails"
 msgstr "E-mailek"
-
-#: 
-msgid "End time"
-msgstr "Befejezési idő"
 
 #: 
 msgid "Enter counts"
@@ -20894,10 +20642,6 @@ msgid "SMTP test"
 msgstr "SMTP-teszt"
 
 #: 
-msgid "Save changes"
-msgstr "Változtatások mentése"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Elmentve – ez a szolgálati terület már nem kér segítséget"
 
@@ -21180,10 +20924,6 @@ msgstr "Létszámigények elmentve"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Kezdd egy szolgálati terület létrehozásával, majd add hozzá a csapatokat és pozíciókat, amelyek benne szolgálnak."
-
-#: 
-msgid "Start time"
-msgstr "Kezdési idő"
 
 #: 
 msgid "Start typing a name"
@@ -21532,10 +21272,6 @@ msgstr "A cím ki van jelölve – másold ki a billentyűzettel."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "A(z) „%s” erőforrás-útvonal nem engedélyezett."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "A beosztást nem sikerült visszavonni"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22062,10 +21798,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Ez az alkalom már megtörtént, és a beosztásai többé nem módosíthatók"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Ez az alkalom törölve lett"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Ennek az alkalomnak saját, az ütemezéstől külön álló létszámigényei vannak."
 
@@ -22234,16 +21966,8 @@ msgid "Validation"
 msgstr "Érvényesítés"
 
 #: 
-msgid "View event"
-msgstr "Esemény megtekintése"
-
-#: 
 msgid "View my schedule"
 msgstr "Ütemezésem megtekintése"
-
-#: 
-msgid "View person"
-msgstr "Személy megtekintése"
 
 #: 
 msgid "View the event"
@@ -22292,10 +22016,6 @@ msgstr "Önkéntes időpontok"
 #: 
 msgid "Volunteering"
 msgstr "Önkéntes szolgálat"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Az önkéntes szolgálat úgy szervezve, ahogyan egy gyülekezet működteti. Minden szolgálati területnek vannak csapatai és pozíciói; az emberek pozíciókra kapnak képesítést, és a terület készletcsoportjához tartoznak; az ütemezések a naptár eseményeit követik, és dátumozott alkalmakat hoznak létre létszámkövetelményekkel; a koordinátorok embereket osztanak be, akik elfogadnak, elutasítanak vagy helyettest javasolnak; az emlékeztetők és értesítések e-mailben mennek ki. A rendszergazdák és a Szolgálati területek kezelése jogosultsággal rendelkező felhasználók minden területet látnak, és létrehozhatják, inaktiválhatják és törölhetik őket. A szolgálati terület koordinátora ehelyett a Saját szolgálati területeim kezelése jogosultságot kapja: az oldalsáv Szolgálati területek címe alatt ekkor csak az általa koordinált területek látszanak. A csapatvezető a Tagi portálról vezeti a csapatát. A tagok a Tagi portálon látják az ütemezésüket, válaszolnak, jelentkeznek és ajánlanak fel segítséget."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22834,10 +22554,6 @@ msgid "Cancel this occurrence"
 msgstr "Ennek az eseménynek a lemondása"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "A lemondás senkinek sem jelent bejelentést: nincs e-mail küldve. A hozzárendelések megtartódnak, a lemondás alatt nem ütemez emlékeztetőket, és senki sem rendelhető ki, amíg az nem helyreáll."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "A törölt események elhagyják az egyes naptárakat bejelentkezésükkel és lélekszámával, és ennek a szolgálatnak a személyzete csak a dátumát őrzi meg. Ez nem vonható vissza."
 
@@ -22848,10 +22564,6 @@ msgstr "Események törölve: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Törlendő események: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Az esemény törölve van"
 
 #: 
 msgid "Occurrence restored"
@@ -22868,10 +22580,6 @@ msgstr "Esemény helyreállítása"
 #: 
 msgid "Restore this occurrence"
 msgstr "Ennek az eseménynek a helyreállítása"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Az eseményt nem lehetett lemondani"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24936,10 +24644,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "A telemetria az Egyesült Államokban lévő PostHog felé megy. A telepítési és frissítési hibajelentések akkor is elmennek, ha az opcionális telemetria ki van kapcsolva."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Ez az időpont törölve lett. Öntől további teendő nem szükséges."
-
-#: 
 msgid "always sent"
 msgstr "mindig elküldve"
 
@@ -25406,10 +25110,6 @@ msgstr "Az e-mail figyelmet igényel"
 #: 
 msgid "Email problem"
 msgstr "E-mail-probléma"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Az e-mailben küldött bejelentkezési kód és hivatkozás érvénytelenítve"
 
 #: 
 msgid "Emailed verification link"
@@ -27174,10 +26874,6 @@ msgstr "eddig: %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "A tagportálon kérés érkezett, hogy a(z) %1$s oldalon az e-mail-címed %2$s címről %3$s címre változzon. A módosítás csak akkor történik meg, ha az új címre küldött hivatkozást használják."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Az alábbi hivatkozással ellenőrizd a családod adatait. Az ellenőrző oldalon válaszd a „Családi adatok megerősítése” lehetőséget, ha minden helyes, vagy küldd el a javításokat a gyülekezeti irodának."
 
 #: 
 msgid "Review Family Information"
