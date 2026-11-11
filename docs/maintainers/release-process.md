@@ -40,7 +40,7 @@ A **hard gate** stops the release until it is met or the maintainer overrides it
 
 ## Phase 1: Localization
 
-Goal: every feature added this cycle is localized before release. Translations live in the repo, so the loop is **extract terms → merge the terms PR → translate what is missing → merge the translate PR**. The operator doc is [locale-pipeline.md](locale-pipeline.md).
+Goal: every feature added this cycle is localized before release. Translations live in the repo, so the loop is **extract terms → merge the terms PR → translate what is missing → merge the translate PR**. The operator doc is [locale-pipeline.md](locale-pipeline.md); the design and what changed for releases: [locale-design.md](locale-design.md).
 
 Done when `npm run locale:release` on an up-to-date `master` exits 0: nothing untranslated, no terms PR (`locale: new terms from code …`) open, no extraction running. A locale PR that opens after the maintainer closes this phase waits for the next release. Finish this phase before any build or nightly check: each locale merge moves `master` and voids earlier results. Write and approve the release notes (`changelog/<version>.md`) right after it, and merge any PR that carries them before Phase 2 for the same reason.
 

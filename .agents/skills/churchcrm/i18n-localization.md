@@ -6,7 +6,7 @@ intent: How to add UI strings. Extraction is CI on merge to master.
 # i18n
 
 Locale list: `src/locale/locales.json`.
-Locale loop: [docs/maintainers/locale-pipeline.md](../../../docs/maintainers/locale-pipeline.md).
+Locale loop: [docs/maintainers/locale-pipeline.md](../../../docs/maintainers/locale-pipeline.md). Design: [docs/maintainers/locale-design.md](../../../docs/maintainers/locale-design.md).
 Translation-agent rules: [Locale Translation](./locale-translation-workflow.md).
 Feature localization guidance: `locale/README.md`.
 Translations live in the repo: `src/locale/i18n/<locale>.json` is the source of truth, and each locale `.po`/`.mo` is built from it (`npm run locale:apply`). There is no outside translation service.
