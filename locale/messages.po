@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 04:45+0000\n"
+"POT-Creation-Date: 2026-11-11 05:01+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -437,6 +437,9 @@ msgid ""
 msgstr ""
 
 msgid "1. Sunday School Class"
+msgstr ""
+
+msgid "123 Sample Street"
 msgstr ""
 
 msgid "1st"
@@ -1480,9 +1483,6 @@ msgstr ""
 msgid "All groups, roles, and memberships"
 msgstr ""
 
-msgid "All information is correct"
-msgstr ""
-
 msgid "All members already in cart"
 msgstr ""
 
@@ -1827,6 +1827,9 @@ msgid "Approve selected"
 msgstr ""
 
 msgid "Approve substitution"
+msgstr ""
+
+msgid "Approve this self-registered family before sending it a verification email"
 msgstr ""
 
 msgid "Approve this substitute"
@@ -3892,12 +3895,6 @@ msgstr ""
 msgid "Confirm Enable Group Specific Properties"
 msgstr ""
 
-msgid "Confirm Family Info"
-msgstr ""
-
-msgid "Confirm Family Information"
-msgstr ""
-
 msgid "Confirm New Password"
 msgstr ""
 
@@ -5646,7 +5643,7 @@ msgstr ""
 msgid "Email Log"
 msgstr ""
 
-msgid "Email PDF"
+msgid "Email Portal Link"
 msgstr ""
 
 msgid "Email Settings"
@@ -5763,6 +5760,9 @@ msgid "Email sent to {{count}} recipient(s)."
 msgstr ""
 
 msgid "Email settings saved successfully"
+msgstr ""
+
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
 msgstr ""
 
 msgid "Email/Username"
@@ -6569,9 +6569,6 @@ msgstr ""
 msgid "Failed to connect to OpenLP server."
 msgstr ""
 
-msgid "Failed to copy URL"
-msgstr ""
-
 msgid "Failed to create Upgrade directory. Please check file permissions."
 msgstr ""
 
@@ -7050,9 +7047,6 @@ msgstr ""
 msgid "Family Status"
 msgstr ""
 
-msgid "Family Verification"
-msgstr ""
-
 msgid "Family Work Phone"
 msgstr ""
 
@@ -7075,6 +7069,9 @@ msgid "Family has no emails to use"
 msgstr ""
 
 msgid "Family has no street address to geocode"
+msgstr ""
+
+msgid "Family is inactive"
 msgstr ""
 
 msgid "Family name is required"
@@ -7917,6 +7914,9 @@ msgid "Giving Reports"
 msgstr ""
 
 msgid "Giving Statement"
+msgstr ""
+
+msgid "Giving Statement — Sample Only"
 msgstr ""
 
 msgid "Giving Statements"
@@ -9382,6 +9382,9 @@ msgstr ""
 msgid "Last fiscal year to include"
 msgstr ""
 
+msgid "Last invited"
+msgstr ""
+
 msgid "Last login"
 msgstr ""
 
@@ -9389,6 +9392,9 @@ msgid "Last name is required"
 msgstr ""
 
 msgid "Last name must be at least 2 characters"
+msgstr ""
+
+msgid "Last portal sign-in"
 msgstr ""
 
 msgid "Last promotion"
@@ -9408,6 +9414,9 @@ msgstr ""
 
 #, php-format
 msgid "Last used %s"
+msgstr ""
+
+msgid "Last verified"
 msgstr ""
 
 msgid "LastName FirstName"
@@ -9721,9 +9730,6 @@ msgid "Log Files"
 msgstr ""
 
 msgid "Log Level"
-msgstr ""
-
-msgid "Log Out"
 msgstr ""
 
 msgid "Log Settings"
@@ -11014,6 +11020,9 @@ msgstr ""
 msgid "No active funds configured."
 msgstr ""
 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr ""
+
 msgid "No address on file"
 msgstr ""
 
@@ -11970,9 +11979,6 @@ msgstr ""
 msgid "Online"
 msgstr ""
 
-msgid "Online Verification"
-msgstr ""
-
 msgid "Only .csv files are accepted"
 msgstr ""
 
@@ -12118,9 +12124,6 @@ msgid "Open in Email Client"
 msgstr ""
 
 msgid "Open in Google Maps"
-msgstr ""
-
-msgid "Open in New Tab"
 msgstr ""
 
 msgid "Open in browser window"
@@ -12335,15 +12338,6 @@ msgid "PDF Temporary Directory"
 msgstr ""
 
 msgid "PDF handling mode"
-msgstr ""
-
-#, php-format
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] ""
-msgstr[1] ""
-
-msgid "PDF successfully emailed to family members."
 msgstr ""
 
 msgid "PDF temporary storage must be private and writable."
@@ -12603,9 +12597,6 @@ msgid "Pending"
 msgstr ""
 
 msgid "Pending Registrations"
-msgstr ""
-
-msgid "Pending Self Verify"
 msgstr ""
 
 msgid "Pending review"
@@ -13030,9 +13021,6 @@ msgstr ""
 msgid "Please confirm the password reset of this user"
 msgstr ""
 
-msgid "Please confirm your family information"
-msgstr ""
-
 msgid "Please contact the church office so we may correct our records."
 msgstr ""
 
@@ -13084,9 +13072,6 @@ msgstr ""
 msgid "Please enter at least two characters."
 msgstr ""
 
-msgid "Please enter the following to start your family's verification"
-msgstr ""
-
 msgid "Please fill in all required fields correctly."
 msgstr ""
 
@@ -13104,9 +13089,6 @@ msgid "Please proceed to the classroom as soon as possible."
 msgstr ""
 
 msgid "Please refresh the page or try again later."
-msgstr ""
-
-msgid "Please review your family information below and confirm or request changes."
 msgstr ""
 
 msgid "Please select a CSV file"
@@ -13158,13 +13140,7 @@ msgstr ""
 msgid "Please try requesting a new password reset link or contact support if you continue to experience issues."
 msgstr ""
 
-msgid "Please update our records with corrections"
-msgstr ""
-
 msgid "Please upgrade ChurchCRM to version"
-msgstr ""
-
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
 msgstr ""
 
 msgid "Please verify your family's information"
@@ -13383,6 +13359,9 @@ msgstr ""
 msgid "Preview"
 msgstr ""
 
+msgid "Preview PDF"
+msgstr ""
+
 msgid "Preview Totals"
 msgstr ""
 
@@ -13529,9 +13508,6 @@ msgid "Proposed"
 msgstr ""
 
 msgid "Proposed substitute"
-msgstr ""
-
-msgid "Provide any corrections or additional information here..."
 msgstr ""
 
 msgid "Public Calendar"
@@ -14487,7 +14463,19 @@ msgstr ""
 msgid "Sample Amount"
 msgstr ""
 
+msgid "Sample City"
+msgstr ""
+
 msgid "Sample Data"
+msgstr ""
+
+msgid "Sample Family (fictional)"
+msgstr ""
+
+msgid "Sample General Fund"
+msgstr ""
+
+msgid "Sample Missions Fund"
 msgstr ""
 
 #. Context: countries
@@ -14917,9 +14905,6 @@ msgstr ""
 msgid "Select event type..."
 msgstr ""
 
-msgid "Select how do you want to request the family information to be verified"
-msgstr ""
-
 msgid "Select ministries..."
 msgstr ""
 
@@ -15285,9 +15270,6 @@ msgstr ""
 msgid "Share"
 msgstr ""
 
-msgid "Share this URL with family members to verify their information"
-msgstr ""
-
 msgid "Shared addresses fixed: {{total}}"
 msgstr ""
 
@@ -15433,6 +15415,9 @@ msgid "Sign in next time on this device with Face ID, a fingerprint or your devi
 msgstr ""
 
 msgid "Sign in to see your family, the church calendar and ways to serve. You do not need a password or an account."
+msgstr ""
+
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
 msgstr ""
 
 msgid "Sign in with a passkey"
@@ -15893,9 +15878,6 @@ msgstr ""
 msgid "Submit Registration"
 msgstr ""
 
-msgid "Submit Verification"
-msgstr ""
-
 msgid "Submitting..."
 msgstr ""
 
@@ -16313,9 +16295,6 @@ msgstr ""
 
 #. Context: countries
 msgid "Thailand (ไทย)"
-msgstr ""
-
-msgid "Thank You!"
 msgstr ""
 
 msgid "Thank you"
@@ -17384,6 +17363,9 @@ msgstr ""
 msgid "This event type is used by"
 msgstr ""
 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr ""
+
 msgid "This family is not a pending self-registration"
 msgstr ""
 
@@ -17638,6 +17620,9 @@ msgid "This schedule is inactive. Reactivate it to generate its occurrences."
 msgstr ""
 
 msgid "This self-registered family is pending review"
+msgstr ""
+
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
 msgstr ""
 
 msgid "This setting must be a number"
@@ -18242,9 +18227,6 @@ msgstr ""
 msgid "Unable to load state list. Please check your network connection or try again later."
 msgstr ""
 
-msgid "Unable to load verification info"
-msgstr ""
-
 msgid "Unable to open file"
 msgstr ""
 
@@ -18711,6 +18693,9 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr ""
+
 msgid "Uses your street address above to look up coordinates via OpenStreetMap."
 msgstr ""
 
@@ -18743,9 +18728,6 @@ msgid "Valid"
 msgstr ""
 
 msgid "Valid Examples"
-msgstr ""
-
-msgid "Valid Until"
 msgstr ""
 
 msgid "Valid startDate and endDate are required"
@@ -18809,13 +18791,22 @@ msgstr ""
 msgid "Verbage for top line of tax report. Dates will be appended to the end of this line."
 msgstr ""
 
-msgid "Verification URL"
+msgid "Verification"
 msgstr ""
 
 msgid "Verification URL created"
 msgstr ""
 
 msgid "Verification email sent"
+msgstr ""
+
+#, php-format
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] ""
+msgstr[1] ""
+
+msgid "Verification email sent to family members."
 msgstr ""
 
 msgid "Verification failed. Please try again."
@@ -19018,9 +19009,6 @@ msgid "View this email"
 msgstr ""
 
 msgid "View transaction details for a pledge payment"
-msgstr ""
-
-msgid "Visit Our Website"
 msgstr ""
 
 msgid "Visitors can sign up on your public registration form."
@@ -19293,9 +19281,6 @@ msgstr ""
 
 #, php-format
 msgid "We emailed a link to %s. Use it to confirm your new email address."
-msgstr ""
-
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
 msgstr ""
 
 msgid "We sent a link to {{email}}. Your email changes when you use it."
@@ -19729,9 +19714,6 @@ msgstr ""
 msgid "You are about to delete the profile photo, this procedure is irreversible."
 msgstr ""
 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr ""
-
 msgid "You are already helping that day"
 msgstr ""
 
@@ -20114,9 +20096,6 @@ msgstr ""
 msgid "Your teams: %s"
 msgstr ""
 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr ""
-
 msgid "ZIP code is required."
 msgstr ""
 
@@ -20195,6 +20174,9 @@ msgid "body is required"
 msgstr ""
 
 msgid "by"
+msgstr ""
+
+msgid "by the family in the portal"
 msgstr ""
 
 msgid "calendarIds must be a list of calendar ids"
@@ -20346,6 +20328,9 @@ msgid "in"
 msgstr ""
 
 msgid "in cart"
+msgstr ""
+
+msgid "in person by staff"
 msgstr ""
 
 msgid "inactive family"
