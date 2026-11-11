@@ -226,17 +226,25 @@ class TelemetryService
         ]));
     }
 
-    public static function captureInstallFailure(string $errorClass, ?string $databaseError = null): void
+    /**
+     * A failed first install has no configuration and no installation ID yet. It is reported at the
+     * default Install level with a fixed reason code and an ID hashed from the server name and path,
+     * so repeated attempts on one server count as one installation.
+     */
+    public static function captureInstallFailure(string $reason): void
     {
-        if (self::installProfile() === 'test' || !SystemConfig::isInitialized() || !self::isEnabled()) {
+        if (self::installProfile() === 'test'
+            || (SystemConfig::isInitialized() && self::getLevel() === self::LEVEL_NONE)) {
             return;
         }
-        $properties = array_merge(self::baseProperties(), ['error_class' => $errorClass]);
-        if ($databaseError !== null) {
-            $properties['database_error'] = self::sanitizeDatabaseError($databaseError);
+        try {
+            $installId = 'install-' . substr(sha1(php_uname('n') . '|' . SystemURLs::getDocumentRoot()), 0, 32);
+        } catch (\Throwable) {
+            return;
         }
-        $properties['$process_person_profile'] = false;
-        self::capture('install_failed', $properties);
+        self::capture('install_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+            'failure_reason' => in_array($reason, ['schema_import_failed'], true) ? $reason : 'other',
+        ]), $installId);
     }
 
     /** Fixed codes only: a free-text reason could carry details of a church's installation. */
@@ -404,7 +412,7 @@ class TelemetryService
             return false;
         }
 
-        if (in_array($event, ['install_completed', 'upgrade_completed', 'upgrade_failed', 'heartbeat'], true)) {
+        if (in_array($event, ['install_completed', 'install_failed', 'upgrade_completed', 'upgrade_failed', 'heartbeat'], true)) {
             $properties['$process_person_profile'] = false;
         }
         $payload = json_encode([

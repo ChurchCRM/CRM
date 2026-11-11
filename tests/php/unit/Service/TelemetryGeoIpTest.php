@@ -59,7 +59,7 @@ $configs->setValue(null, [
     'sTelemetryLevel' => $value('none'),
     'sSystemID' => $value('install-id'),
 ]);
-TelemetryService::captureInstallFailure('RuntimeException');
+TelemetryService::captureInstallFailure('schema_import_failed');
 TelemetryService::captureUpgradeFailure('7.8.3', 'RuntimeException');
 TelemetryService::captureUpgradeSqlError('7.8.3', 10, 'Database error');
 TelemetryService::captureUpgradeInterruption('7.8.3', 10);

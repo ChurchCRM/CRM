@@ -137,6 +137,15 @@ TelemetryService::captureUpgradeFailure('7.8.4', 'no_upgrade_path');
 TelemetryService::captureUpgradeFailure('7.8.4', 'Some free text from an exception');
 Assert::same(['no_upgrade_path', 'other'], array_column(array_column($GLOBALS['lifecyclePayloads'], 'properties'), 'failure_reason'));
 
+$GLOBALS['lifecyclePayloads'] = [];
+TelemetryService::captureInstallFailure('schema_import_failed');
+TelemetryService::captureInstallFailure('SQLSTATE[42000] church data');
+Assert::same(['install_failed', 'install_failed'], array_column($GLOBALS['lifecyclePayloads'], 'event'));
+Assert::same(['schema_import_failed', 'other'], array_column(array_column($GLOBALS['lifecyclePayloads'], 'properties'), 'failure_reason'));
+Assert::match('install-%h%', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
+Assert::same($GLOBALS['lifecyclePayloads'][0]['distinct_id'], $GLOBALS['lifecyclePayloads'][1]['distinct_id']);
+Assert::false(array_key_exists('database_error', $GLOBALS['lifecyclePayloads'][0]['properties']));
+
 $configs->setValue(null, [
     'sTelemetryLevel' => $value('install'),
     'sTelemetryAskedVersion' => $value(''),

@@ -61,7 +61,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
     TelemetryService::capturePageView('/people/person');
     TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Error'));
     TelemetryService::captureUpgradeSqlDuration('7.8.3', 10, true);
-    TelemetryService::captureInstallFailure('RuntimeException');
+    TelemetryService::captureInstallFailure('schema_import_failed');
     TelemetryService::captureUpgradeFailure('7.8.3', 'RuntimeException');
     TelemetryService::captureUpgradeSqlError('7.8.3', 10, 'Database error');
     TelemetryService::captureUpgradeInterruption('7.8.3', 10);
@@ -74,7 +74,7 @@ foreach (['CHURCHCRM_DISABLE_POSTHOG_TELEMETRY', 'PHP_TEST_DISPOSABLE_DB'] as $o
     Assert::same('test', TelemetryService::installProfile());
     Assert::same('test', $baseProperties->invoke(null)['install_profile']);
     $before = $GLOBALS['telemetryTransportCalls'];
-    TelemetryService::captureInstallFailure('RuntimeException');
+    TelemetryService::captureInstallFailure('schema_import_failed');
     Assert::same($before, $GLOBALS['telemetryTransportCalls']);
     putenv($override);
 }
