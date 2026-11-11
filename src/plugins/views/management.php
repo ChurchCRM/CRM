@@ -328,7 +328,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                             <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
-                    <div class="btn-group" role="group">
+                    <div class="d-flex flex-wrap gap-2 mt-3">
                         <button type="submit" class="btn btn-primary btn-sm btn-save-settings" data-plugin-id="<?= $pluginId ?>">
                             <i class="fa-solid fa-floppy-disk me-2"></i><?= gettext('Save Settings') ?>
                         </button>
