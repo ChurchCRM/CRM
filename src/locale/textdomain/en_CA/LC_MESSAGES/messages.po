@@ -150,10 +150,6 @@ msgid "Two Factor Enrollment Error"
 msgstr "Two Factor Enrolment Error"
 
 #: 
-msgid "Zip code is required"
-msgstr "Postal code is required"
-
-#: 
 msgid "Catalog"
 msgstr "Catalogue"
 

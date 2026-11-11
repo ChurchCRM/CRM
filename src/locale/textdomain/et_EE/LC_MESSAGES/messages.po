@@ -4061,10 +4061,6 @@ msgid "The property could not be unassigned."
 msgstr "Omaduse määramist ei saanud tühistada."
 
 #: 
-msgid "Select event"
-msgstr "Valige sündmus"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Tekst enne nime e-kirjades/aruannetes"
 
@@ -4268,10 +4264,6 @@ msgstr "Taasta oma salasõna"
 #: 
 msgid "Kiosk Manager"
 msgstr "Tööharu haldur"
-
-#: 
-msgid "Report an issue"
-msgstr "Teatage probleemist"
 
 #: 
 msgid "Self Verification"
@@ -4684,16 +4676,8 @@ msgid "User must have Delete Records permission"
 msgstr "Kasutajal peab olema Kustutamise kirjete luba"
 
 #: 
-msgid "invalid event type id"
-msgstr "kehtetu sündmuse tüübi ID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "kehtetu kalendri kinnitamine"
-
-#: 
-msgid "invalid status value"
-msgstr "kehtetu oleku väärtus"
 
 #: 
 msgid "invalid export value"
@@ -5300,10 +5284,6 @@ msgstr "Süsteemi värskenduse rakendamine..."
 
 #: 
 msgid "Back to Login"
-msgstr "Tagasi sisselogimisele"
-
-#: 
-msgid "Back to login"
 msgstr "Tagasi sisselogimisele"
 
 #: 
@@ -8033,10 +8013,6 @@ msgid "City is required."
 msgstr "Linn on kohustuslik."
 
 #: 
-msgid "Clear filter"
-msgstr "Tühjenda filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Konfiguratsiooniobjekti ei leitud"
 
@@ -8305,10 +8281,6 @@ msgstr "Lisa isik"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Lisa kõik valiku üksused gruppi"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Lisa kõik valikusse"
 
 #: 
 msgid "Add cart items to a family"
@@ -9313,10 +9285,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registreerige, miks külastajad teie kirikut külastasid"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Eemalda kõik valikust"
-
-#: 
 msgid "Remove from Class"
 msgstr "Eemalda klassist"
 
@@ -9787,10 +9755,6 @@ msgstr "Selle aasta sündmused"
 #: 
 msgid "Everyone"
 msgstr "Kõik"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Märkme kustutamine ebaõnnestus"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11690,10 +11654,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Vahemiku algus peab olema kehtiv AAAA-KK-PP kuupäev."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Vahemiku algus peab olema enne vahemiku lõppu"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Vahemiku algus peab olema enne vahemiku lõppu."
 
@@ -12642,10 +12602,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Pistikprogrammi URL-ilt installimine ebaõnnestus"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Heakskiidetud pistikprogrammide loendi laadimine ebaõnnestus"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Heakskiidetud pistikprogrammide loendi laadimine ebaõnnestus."
 
@@ -12704,10 +12660,6 @@ msgstr "Kebab-kujul. Peab vastama ZIP-faili sees oleva peakataloogi nimele ja pl
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Heakskiidetud pistikprogrammide loendi laadimine…"
-
-#: 
-msgid "Loading…"
-msgstr "Laadimine…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13155,10 +13107,6 @@ msgid "Change Your Locale"
 msgstr "Muutke Oma Lokaali"
 
 #: 
-msgid "Change role"
-msgstr "Muuda rolli"
-
-#: 
 msgid "Check Number"
 msgstr "Kontrolli numbrit"
 
@@ -13173,10 +13121,6 @@ msgstr "Registreerimine ebaõnnestus. Palun proovige uuesti."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Lahkumine ebaõnnestus. Palun proovige uuesti."
-
-#: 
-msgid "City is required"
-msgstr "Linn on nõutav"
 
 #: 
 msgid "Click Save to apply."
@@ -13245,10 +13189,6 @@ msgstr "Kopeerige kõik numbrid"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopeeri liikmed gruppi"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Varukoopia loomine..."
 
 #: 
 msgid "Creating..."
@@ -14315,10 +14255,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Saate varukoopiad koodid, mida saab kasutada, kui kaotate juurdepääsu oma rakendusele"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Teie valikukorv on tühi"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Teie konto on nüüd kaitstud"
 
@@ -14337,10 +14273,6 @@ msgstr "Teie brauseri keeleeelistus erineb teie ChurchCRM lokaalist"
 #: 
 msgid "Your database already contains data"
 msgstr "Teie andmebaas sisaldab juba andmeid"
-
-#: 
-msgid "Zip code is required"
-msgstr "Postiindeks on nõutav"
 
 #: 
 msgid "added"
@@ -14761,10 +14693,6 @@ msgstr "Teil ei ole luba lisada märkust sellele perele."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Teil ei ole luba lisada märkust sellele isikule."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Teil ei ole luba seda märkust muuta"
 
 #: 
 msgid "Account locked"
@@ -15807,10 +15735,6 @@ msgid "Select a person"
 msgstr "Vali isik"
 
 #: 
-msgid "Select role"
-msgstr "Vali roll"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Vali tüüp (valikuline)"
 
@@ -15965,10 +15889,6 @@ msgstr "Kas olete kindel, et soovite selle maksekirje jäädavalt kustutada?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Vähemalt üks fondi eraldis on nõutav"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Vähemalt ühe fondi summa peab olema nullist erinev"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17019,10 +16939,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Varukoopia loomine ja üleslaadimine. See võib võtta mõne minuti..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Andmebaasi lähtestamine ebaõnnestus."
-
-#: 
 msgid "Deceased"
 msgstr "Surnud"
 
@@ -17219,10 +17135,6 @@ msgid "Log settings saved"
 msgstr "Logi seaded salvestatud"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Kasutajanimi on kohustuslik"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Isik märgitud aktiivseks"
 
@@ -17347,10 +17259,6 @@ msgid "Sending..."
 msgstr "Saatmine..."
 
 #: 
-msgid "Sending…"
-msgstr "Saatmine…"
-
-#: 
 msgid "Settings reset"
 msgstr "Seaded lähtestatud"
 
@@ -17421,10 +17329,6 @@ msgstr "Tulevased"
 #: 
 msgid "View active only"
 msgstr "Vaata ainult aktiivseid"
-
-#: 
-msgid "View all"
-msgstr "Vaata kõiki"
 
 #: 
 msgid "View all (including inactive)"
@@ -18201,10 +18105,6 @@ msgstr "Rühmade liikmete nimekirjad ja pühapäevakooli klasside aruanded"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Sinu eelarveaasta algab: %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Tekkis viga"
 
 #: 
 msgid "Approve"
@@ -19351,10 +19251,6 @@ msgid "Each staffing need must name a position"
 msgstr "Iga komplekteerimisvajadus peab nimetama ülesande"
 
 #: 
-msgid "Edit event"
-msgstr "Muuda sündmust"
-
-#: 
 msgid "Edit ministry"
 msgstr "Muuda valdkonda"
 
@@ -19439,10 +19335,6 @@ msgstr "E-kirjad saadetud {{count}} adressaadile."
 #: 
 msgid "Emails"
 msgstr "E-kirjad"
-
-#: 
-msgid "End time"
-msgstr "Lõpuaeg"
 
 #: 
 msgid "Enter counts"
@@ -20723,10 +20615,6 @@ msgid "SMTP test"
 msgstr "SMTP test"
 
 #: 
-msgid "Save changes"
-msgstr "Salvesta muudatused"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Salvestatud – see valdkond enam abi ei küsi"
 
@@ -21009,10 +20897,6 @@ msgstr "Komplekteerimisvajadused salvestatud"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Alusta valdkonna loomisest ja lisa siis meeskonnad ja ülesanded, mis selles teenivad."
-
-#: 
-msgid "Start time"
-msgstr "Algusaeg"
 
 #: 
 msgid "Start typing a name"
@@ -22055,16 +21939,8 @@ msgid "Validation"
 msgstr "Valideerimine"
 
 #: 
-msgid "View event"
-msgstr "Vaata sündmust"
-
-#: 
 msgid "View my schedule"
 msgstr "Vaata minu ajakava"
-
-#: 
-msgid "View person"
-msgstr "Vaata isikut"
 
 #: 
 msgid "View the event"

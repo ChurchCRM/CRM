@@ -156,10 +156,6 @@ msgid "Set the encryption system to use - ssl (deprecated) or tls"
 msgstr "Set the encryption system to use - SSL (deprecated) or TLS"
 
 #: 
-msgid "invalid event type id"
-msgstr "invalid event type ID"
-
-#: 
 msgid "Unexpected Person Id"
 msgstr "Unexpected Person ID"
 
@@ -309,10 +305,6 @@ msgstr "Foreground Colour"
 #: 
 msgid "Two Factor Enrollment Error"
 msgstr "Two Factor Enrolment Error"
-
-#: 
-msgid "Zip code is required"
-msgstr "Postcode is required"
 
 #: 
 msgid "Cell Phone Format"

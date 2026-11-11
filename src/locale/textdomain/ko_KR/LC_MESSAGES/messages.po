@@ -4060,10 +4060,6 @@ msgid "The property could not be unassigned."
 msgstr "속성 배정을 해제하지 못했습니다."
 
 #: 
-msgid "Select event"
-msgstr "행사 선택"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "이메일/보고서에서 이름 앞에 붙는 문구"
 
@@ -4266,10 +4262,6 @@ msgstr "비밀번호 재설정"
 #: 
 msgid "Kiosk Manager"
 msgstr "키오스크 관리자"
-
-#: 
-msgid "Report an issue"
-msgstr "문제 보고"
 
 #: 
 msgid "Self Verification"
@@ -4682,16 +4674,8 @@ msgid "User must have Delete Records permission"
 msgstr "레코드 삭제 권한이 필요합니다"
 
 #: 
-msgid "invalid event type id"
-msgstr "잘못된 행사 유형 ID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "잘못된 캘린더 고정"
-
-#: 
-msgid "invalid status value"
-msgstr "잘못된 상태 값"
 
 #: 
 msgid "invalid export value"
@@ -5294,10 +5278,6 @@ msgstr "시스템 업데이트를 적용하는 중..."
 
 #: 
 msgid "Back to Login"
-msgstr "로그인으로 돌아가기"
-
-#: 
-msgid "Back to login"
 msgstr "로그인으로 돌아가기"
 
 #: 
@@ -8021,10 +8001,6 @@ msgid "City is required."
 msgstr "도시는 필수입니다."
 
 #: 
-msgid "Clear filter"
-msgstr "필터 지우기"
-
-#: 
 msgid "Configuration item not found"
 msgstr "구성 항목을 찾을 수 없습니다"
 
@@ -8292,10 +8268,6 @@ msgstr "사람 추가"
 #: 
 msgid "Add all cart items to a group"
 msgstr "목록의 모든 항목을 그룹에 추가"
-
-#: 
-msgid "Add all to Cart"
-msgstr "전체를 목록에 추가"
 
 #: 
 msgid "Add cart items to a family"
@@ -9300,10 +9272,6 @@ msgid "Record why attendees visited your church"
 msgstr "참석자가 교회를 방문한 이유 기록"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "목록에서 전체 제거"
-
-#: 
 msgid "Remove from Class"
 msgstr "반에서 제거"
 
@@ -9774,10 +9742,6 @@ msgstr "올해 행사"
 #: 
 msgid "Everyone"
 msgstr "전체"
-
-#: 
-msgid "Failed to delete note"
-msgstr "메모 삭제 실패"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11676,10 +11640,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "시작 날짜는 유효한 YYYY-MM-DD 형식이어야 합니다."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "시작 날짜는 종료 날짜 이전이어야 합니다"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "시작 날짜는 종료 날짜 이전이어야 합니다."
 
@@ -12628,10 +12588,6 @@ msgid "Failed to install plugin from URL"
 msgstr "URL에서 플러그인 설치 실패"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "승인된 플러그인 목록 불러오기 실패"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "승인된 플러그인 목록을 불러오지 못했습니다."
 
@@ -12690,10 +12646,6 @@ msgstr "케밥 케이스. zip 내부 최상위 디렉토리 이름 및 plugin.js
 #: 
 msgid "Loading approved plugin list…"
 msgstr "승인된 플러그인 목록 불러오는 중…"
-
-#: 
-msgid "Loading…"
-msgstr "불러오는 중…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13141,10 +13093,6 @@ msgid "Change Your Locale"
 msgstr "로케일 변경"
 
 #: 
-msgid "Change role"
-msgstr "역할 변경"
-
-#: 
 msgid "Check Number"
 msgstr "수표 번호"
 
@@ -13159,10 +13107,6 @@ msgstr "체크인에 실패했습니다. 다시 시도해 주세요."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "체크아웃에 실패했습니다. 다시 시도해 주세요."
-
-#: 
-msgid "City is required"
-msgstr "도시는 필수입니다"
 
 #: 
 msgid "Click Save to apply."
@@ -13231,10 +13175,6 @@ msgstr "모든 번호 복사"
 #: 
 msgid "Copy Members to Group"
 msgstr "교인을 그룹에 복사"
-
-#: 
-msgid "Creating Backup..."
-msgstr "백업 생성 중..."
 
 #: 
 msgid "Creating..."
@@ -14301,10 +14241,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "앱에 접근할 수 없게 된 경우 사용할 수 있는 백업 코드가 제공됩니다"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "카트가 비어 있습니다"
-
-#: 
 msgid "Your account is now protected"
 msgstr "계정이 이제 보호됩니다"
 
@@ -14323,10 +14259,6 @@ msgstr "브라우저 언어 기본 설정이 ChurchCRM 로케일과 다릅니다
 #: 
 msgid "Your database already contains data"
 msgstr "데이터베이스에 이미 데이터가 있습니다"
-
-#: 
-msgid "Zip code is required"
-msgstr "우편번호는 필수입니다"
 
 #: 
 msgid "added"
@@ -14746,10 +14678,6 @@ msgstr "이 가족에 대한 메모를 추가할 권한이 없습니다."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "이 교인에 대한 메모를 추가할 권한이 없습니다."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "이 메모를 수정할 권한이 없습니다"
 
 #: 
 msgid "Account locked"
@@ -15790,10 +15718,6 @@ msgid "Select a person"
 msgstr "사람 선택"
 
 #: 
-msgid "Select role"
-msgstr "역할 선택"
-
-#: 
 msgid "Select type (optional)"
 msgstr "유형 선택 (선택 사항)"
 
@@ -15948,10 +15872,6 @@ msgstr "이 헌금 기록을 영구적으로 삭제하시겠습니까?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "최소 하나의 헌금 항목 배분이 필요합니다"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "최소 하나의 헌금 항목에 0이 아닌 금액이 있어야 합니다"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17000,10 +16920,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "백업을 생성하여 업로드하는 중입니다. 몇 분 정도 걸릴 수 있습니다..."
 
 #: 
-msgid "Database reset failed."
-msgstr "데이터베이스 초기화에 실패했습니다."
-
-#: 
 msgid "Deceased"
 msgstr "별세"
 
@@ -17200,10 +17116,6 @@ msgid "Log settings saved"
 msgstr "로그 설정이 저장되었습니다"
 
 #: 
-msgid "Login Name is Required"
-msgstr "로그인 이름은 필수입니다"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "이 사람을 활성 상태로 표시했습니다"
 
@@ -17328,10 +17240,6 @@ msgid "Sending..."
 msgstr "전송 중..."
 
 #: 
-msgid "Sending…"
-msgstr "전송 중…"
-
-#: 
 msgid "Settings reset"
 msgstr "설정이 초기화되었습니다"
 
@@ -17402,10 +17310,6 @@ msgstr "예정"
 #: 
 msgid "View active only"
 msgstr "활성만 보기"
-
-#: 
-msgid "View all"
-msgstr "전체 보기"
 
 #: 
 msgid "View all (including inactive)"
@@ -18182,10 +18086,6 @@ msgstr "그룹 교인 명단과 주일학교 반 보고서"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "회계 연도는 %s에 시작합니다."
-
-#: 
-msgid "An error occurred"
-msgstr "오류가 발생했습니다"
 
 #: 
 msgid "Approve"
@@ -19325,10 +19225,6 @@ msgid "Each staffing need must name a position"
 msgstr "각 필요 인원은 직책을 지정해야 합니다"
 
 #: 
-msgid "Edit event"
-msgstr "행사 편집"
-
-#: 
 msgid "Edit ministry"
 msgstr "사역 편집"
 
@@ -19413,10 +19309,6 @@ msgstr "{{count}}명의 수신자에게 이메일 전송됨."
 #: 
 msgid "Emails"
 msgstr "이메일"
-
-#: 
-msgid "End time"
-msgstr "종료 시간"
 
 #: 
 msgid "Enter counts"
@@ -20695,10 +20587,6 @@ msgid "SMTP test"
 msgstr "SMTP 테스트"
 
 #: 
-msgid "Save changes"
-msgstr "변경 사항 저장"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "저장되었습니다. 이 사역은 더 이상 도움을 요청하지 않습니다"
 
@@ -20981,10 +20869,6 @@ msgstr "필요 인원이 저장되었습니다"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "먼저 사역을 만든 다음 그 안에서 섬길 팀과 직책을 추가하세요."
-
-#: 
-msgid "Start time"
-msgstr "시작 시간"
 
 #: 
 msgid "Start typing a name"
@@ -22025,16 +21909,8 @@ msgid "Validation"
 msgstr "검증"
 
 #: 
-msgid "View event"
-msgstr "이벤트 보기"
-
-#: 
 msgid "View my schedule"
 msgstr "내 일정 보기"
-
-#: 
-msgid "View person"
-msgstr "교인 보기"
 
 #: 
 msgid "View the event"

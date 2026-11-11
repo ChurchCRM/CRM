@@ -4149,10 +4149,6 @@ msgid "The property could not be unassigned."
 msgstr "Fastigheten kunde inte tilldelas."
 
 #: 
-msgid "Select event"
-msgstr "Välj händelse"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Text före namn i e-postmeddelanden / rapporter"
 
@@ -4356,10 +4352,6 @@ msgstr "Återställ ditt lösenord"
 #: 
 msgid "Kiosk Manager"
 msgstr "Kiosk redaktör"
-
-#: 
-msgid "Report an issue"
-msgstr "Rapportera ett problem"
 
 #: 
 msgid "Self Verification"
@@ -4772,16 +4764,8 @@ msgid "User must have Delete Records permission"
 msgstr "Användaren måste ha tillåtelse att ta bort poster"
 
 #: 
-msgid "invalid event type id"
-msgstr "ogiltig händelsetyp-id"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "ogiltig fästning av kalendern"
-
-#: 
-msgid "invalid status value"
-msgstr "ogiltigt statusvärde"
 
 #: 
 msgid "invalid export value"
@@ -5388,10 +5372,6 @@ msgstr "Tillämpar systemuppdatering..."
 
 #: 
 msgid "Back to Login"
-msgstr "Tillbaka till inloggning"
-
-#: 
-msgid "Back to login"
 msgstr "Tillbaka till inloggning"
 
 #: 
@@ -8121,10 +8101,6 @@ msgid "City is required."
 msgstr "Stad är obligatoriskt."
 
 #: 
-msgid "Clear filter"
-msgstr "Rensa filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Konfigurationsobjekt hittades inte"
 
@@ -8393,10 +8369,6 @@ msgstr "Lägg till en person"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Lägg till alla urvalets poster i en grupp"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Lägg till alla i urvalet"
 
 #: 
 msgid "Add cart items to a family"
@@ -9401,10 +9373,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registrera varför besökare kom till din kyrka"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Ta bort alla från urvalet"
-
-#: 
 msgid "Remove from Class"
 msgstr "Ta bort från klass"
 
@@ -9875,10 +9843,6 @@ msgstr "Evenemang i år"
 #: 
 msgid "Everyone"
 msgstr "Alla"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Det gick inte att ta bort anteckningen"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11778,10 +11742,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Intervallets start måste vara ett giltigt YYYY-MM-DD datum."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Intervallets start måste vara före intervallets slut"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Intervallets start måste vara före intervallets slut."
 
@@ -12730,10 +12690,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Det gick inte att installera insticksprogrammet från URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Det gick inte att läsa in listan över godkända insticksprogram"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Det gick inte att läsa in listan över godkända insticksprogram."
 
@@ -12792,10 +12748,6 @@ msgstr "Kebab-format. Måste matcha katalognamnet på översta nivån i zip-file
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Läser in listan över godkända insticksprogram…"
-
-#: 
-msgid "Loading…"
-msgstr "Läser in…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13243,10 +13195,6 @@ msgid "Change Your Locale"
 msgstr "Ändra din plats"
 
 #: 
-msgid "Change role"
-msgstr "Ändra roll"
-
-#: 
 msgid "Check Number"
 msgstr "Kolla numret"
 
@@ -13261,10 +13209,6 @@ msgstr "Incheckning misslyckades. Försök igen."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Utcheckning misslyckades. Försök igen."
-
-#: 
-msgid "City is required"
-msgstr "Stad krävs"
 
 #: 
 msgid "Click Save to apply."
@@ -13333,10 +13277,6 @@ msgstr "Vahkke olles lohkut"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopiera medlemmar till grupp"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Skapar säkerhetskopia..."
 
 #: 
 msgid "Creating..."
@@ -14403,10 +14343,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Du får återställningskoder som kan användas om du förlorar åtkomst till din app"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Din vagn är tom"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Ditt konto är nu skyddat"
 
@@ -14425,10 +14361,6 @@ msgstr "Din webbläsares språkpreferens skiljer sig från din ChurchCRM-lokal"
 #: 
 msgid "Your database already contains data"
 msgstr "Din databas innehåller redan data"
-
-#: 
-msgid "Zip code is required"
-msgstr "Postnummer krävs"
 
 #: 
 msgid "added"
@@ -14849,10 +14781,6 @@ msgstr "Du har inte behörighet att lägga till en anteckning för denna familj.
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Du har inte behörighet att lägga till en anteckning för denna person."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Du har inte behörighet att redigera denna anteckning"
 
 #: 
 msgid "Account locked"
@@ -15895,10 +15823,6 @@ msgid "Select a person"
 msgstr "Välj en person"
 
 #: 
-msgid "Select role"
-msgstr "Välj roll"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Välj typ (valfritt)"
 
@@ -16053,10 +15977,6 @@ msgstr "Är du säker på att du vill ta bort denna betalningspost permanent?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Minst en fondtilldelning krävs"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Minst en fond måste ha ett belopp som inte är noll"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17107,10 +17027,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Skapar och laddar upp säkerhetskopia. Detta kan ta flera minuter..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Återställning av databasen misslyckades."
-
-#: 
 msgid "Deceased"
 msgstr "Avliden"
 
@@ -17307,10 +17223,6 @@ msgid "Log settings saved"
 msgstr "Logginställningarna har sparats"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Inloggningsnamn krävs"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Markerade personen som aktiv"
 
@@ -17435,10 +17347,6 @@ msgid "Sending..."
 msgstr "Skickar..."
 
 #: 
-msgid "Sending…"
-msgstr "Skickar…"
-
-#: 
 msgid "Settings reset"
 msgstr "Inställningarna har återställts"
 
@@ -17509,10 +17417,6 @@ msgstr "Kommande"
 #: 
 msgid "View active only"
 msgstr "Visa endast aktiva"
-
-#: 
-msgid "View all"
-msgstr "Visa alla"
 
 #: 
 msgid "View all (including inactive)"
@@ -18289,10 +18193,6 @@ msgstr "Medlemslistor för verksamheter och rapporter för söndagsskoleklasser"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Ditt räkenskapsår börjar i %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Ett fel uppstod"
 
 #: 
 msgid "Approve"
@@ -19439,10 +19339,6 @@ msgid "Each staffing need must name a position"
 msgstr "Varje bemanningsbehov måste ange en uppgift"
 
 #: 
-msgid "Edit event"
-msgstr "Redigera händelse"
-
-#: 
 msgid "Edit ministry"
 msgstr "Redigera tjänsteområde"
 
@@ -19527,10 +19423,6 @@ msgstr "E-post skickad till {{count}} mottagare."
 #: 
 msgid "Emails"
 msgstr "E-postmeddelanden"
-
-#: 
-msgid "End time"
-msgstr "Sluttid"
 
 #: 
 msgid "Enter counts"
@@ -20811,10 +20703,6 @@ msgid "SMTP test"
 msgstr "SMTP-test"
 
 #: 
-msgid "Save changes"
-msgstr "Spara ändringar"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Sparat; det här tjänsteområdet ber inte längre om hjälp"
 
@@ -21097,10 +20985,6 @@ msgstr "Bemanningsbehov sparade"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Börja med att skapa en verksamhet och lägg sedan till de team och funktioner som tjänar i den."
-
-#: 
-msgid "Start time"
-msgstr "Starttid"
 
 #: 
 msgid "Start typing a name"
@@ -22143,16 +22027,8 @@ msgid "Validation"
 msgstr "Validering"
 
 #: 
-msgid "View event"
-msgstr "Visa händelse"
-
-#: 
 msgid "View my schedule"
 msgstr "Visa mitt schema"
-
-#: 
-msgid "View person"
-msgstr "Visa person"
 
 #: 
 msgid "View the event"

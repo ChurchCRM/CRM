@@ -4046,10 +4046,6 @@ msgid "The property could not be unassigned."
 msgstr "ఆస్తిని తీసివేయడం సాధ్యపడలేదు."
 
 #: 
-msgid "Select event"
-msgstr "సంఘటనను ఎంచుకోండి"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "ఇమెయిల్‌లు/నివేదికలలో పేరుకు ముందు వచనం"
 
@@ -4252,10 +4248,6 @@ msgstr "మీ పాస్‌వర్డ్‌ను రీసెట్ చే
 #: 
 msgid "Kiosk Manager"
 msgstr "కియోస్క్ మేనేజర్"
-
-#: 
-msgid "Report an issue"
-msgstr "సమస్యను నివేదించండి"
 
 #: 
 msgid "Self Verification"
@@ -4667,16 +4659,8 @@ msgid "User must have Delete Records permission"
 msgstr "వినియోగదారుకు రికార్డ్‌లు తొలగించు అనుమతి ఉండాలి"
 
 #: 
-msgid "invalid event type id"
-msgstr "చెల్లని ఈవెంట్ టైప్ ఐడి"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "చెల్లని క్యాలెండర్ పిన్నింగ్"
-
-#: 
-msgid "invalid status value"
-msgstr "చెల్లని స్టేటస్ విలువ"
 
 #: 
 msgid "invalid export value"
@@ -5279,10 +5263,6 @@ msgstr "సిస్టమ్ అప్‌డేట్‌ను వర్తి�
 
 #: 
 msgid "Back to Login"
-msgstr "లాగిన్‌కు తిరిగి వెళ్ళు"
-
-#: 
-msgid "Back to login"
 msgstr "లాగిన్‌కు తిరిగి వెళ్ళు"
 
 #: 
@@ -8012,10 +7992,6 @@ msgid "City is required."
 msgstr "నగరం అవసరం."
 
 #: 
-msgid "Clear filter"
-msgstr "ఫిల్టర్ క్లియర్ చేయి"
-
-#: 
 msgid "Configuration item not found"
 msgstr "కాన్ఫిగరేషన్ అంశం కనుగొనబడలేదు"
 
@@ -8284,10 +8260,6 @@ msgstr "వ్యక్తిని జోడించండి"
 #: 
 msgid "Add all cart items to a group"
 msgstr "అన్ని జోడించిన అంశాలను సమూహానికి జోడించండి"
-
-#: 
-msgid "Add all to Cart"
-msgstr "అన్నీ జోడించండి"
 
 #: 
 msgid "Add cart items to a family"
@@ -9292,10 +9264,6 @@ msgid "Record why attendees visited your church"
 msgstr "హాజరైన వారు మీ చర్చిని ఎందుకు సందర్శించారో రికార్డ్ చేయండి"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "కార్ట్ నుండి అన్నీ తొలగించండి"
-
-#: 
 msgid "Remove from Class"
 msgstr "తరగతి నుండి తొలగించండి"
 
@@ -9766,10 +9734,6 @@ msgstr "ఈ సంవత్సరం ఈవెంట్‌లు"
 #: 
 msgid "Everyone"
 msgstr "అందరూ"
-
-#: 
-msgid "Failed to delete note"
-msgstr "గమనికను తొలగించడం విఫలమైంది"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11669,10 +11633,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "పరిధి ప్రారంభం చెల్లుబాటు అయ్యే YYYY-MM-DD తేదీ అయి ఉండాలి."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "పరిధి ప్రారంభం పరిధి ముగింపు కంటే ముందు ఉండాలి"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "పరిధి ప్రారంభం పరిధి ముగింపు కంటే ముందు ఉండాలి."
 
@@ -12621,10 +12581,6 @@ msgid "Failed to install plugin from URL"
 msgstr "URL నుండి ప్లగిన్ ఇన్‌స్టాల్ చేయడం విఫలమైంది"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "ఆమోదించబడిన ప్లగిన్ జాబితాను లోడ్ చేయడం విఫలమైంది"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "ఆమోదించబడిన ప్లగిన్ జాబితాను లోడ్ చేయడం విఫలమైంది."
 
@@ -12683,10 +12639,6 @@ msgstr "Kebab-case. zip లోపల అగ్రస్థాయి డైరె
 #: 
 msgid "Loading approved plugin list…"
 msgstr "ఆమోదించబడిన ప్లగిన్ జాబితాను లోడ్ చేస్తోంది…"
-
-#: 
-msgid "Loading…"
-msgstr "లోడ్ చేస్తోంది…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13134,10 +13086,6 @@ msgid "Change Your Locale"
 msgstr "మీ లోకేల్‌ను మార్చండి"
 
 #: 
-msgid "Change role"
-msgstr "పాత్రను మార్చండి"
-
-#: 
 msgid "Check Number"
 msgstr "చెక్ నంబర్"
 
@@ -13152,10 +13100,6 @@ msgstr "చెక్-ఇన్ విఫలమైంది. దయచేసి �
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "చెక్-అవుట్ విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
-
-#: 
-msgid "City is required"
-msgstr "నగరం అవసరం"
 
 #: 
 msgid "Click Save to apply."
@@ -13224,10 +13168,6 @@ msgstr "సమస్త సంఖ్యలను కాపీ చేయండి
 #: 
 msgid "Copy Members to Group"
 msgstr "సభ్యులను సమూహానికి కాపీ చేయండి"
-
-#: 
-msgid "Creating Backup..."
-msgstr "బ్యాకప్ సృష్టిస్తున్నారు..."
 
 #: 
 msgid "Creating..."
@@ -14294,10 +14234,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "మీరు మీ యాప్‌కు యాక్సెస్ కోల్పోతే ఉపయోగించగల బ్యాకప్ కోడ్‌లను అందుకుంటారు"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "మీ కార్ట్ ఖాళీగా ఉంది"
-
-#: 
 msgid "Your account is now protected"
 msgstr "మీ ఖాతా ఇప్పుడు రక్షించబడింది"
 
@@ -14316,10 +14252,6 @@ msgstr "మీ బ్రౌజర్ భాషా ప్రాధాన్యత
 #: 
 msgid "Your database already contains data"
 msgstr "మీ డేటాబేస్ ఇప్పటికే డేటాను కలిగి ఉంది"
-
-#: 
-msgid "Zip code is required"
-msgstr "జిప్ కోడ్ అవసరం"
 
 #: 
 msgid "added"
@@ -14740,10 +14672,6 @@ msgstr "ఈ కుటుంబానికి గమనిక జోడించ
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "ఈ వ్యక్తికి గమనిక జోడించడానికి మీకు అనుమతి లేదు."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "ఈ గమనికను సవరించడానికి మీకు అనుమతి లేదు"
 
 #: 
 msgid "Account locked"
@@ -15786,10 +15714,6 @@ msgid "Select a person"
 msgstr "ఒక వ్యక్తిని ఎంచుకొండి"
 
 #: 
-msgid "Select role"
-msgstr "పాత్రను ఎంచుకొండి"
-
-#: 
 msgid "Select type (optional)"
 msgstr "రకాన్ని ఎంచుకొండి (ఐచ్ఛికం)"
 
@@ -15944,10 +15868,6 @@ msgstr "మీరు నిజంగా ఈ చెల్లింపు రి�
 #: 
 msgid "At least one fund allocation is required"
 msgstr "కనీసం ఒక నిధి కేటాయింపు అవసరం"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "కనీసం ఒక నిధికి శూన్యేతర మొత్తం ఉండాలి"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16998,10 +16918,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "బ్యాకప్‌ను సృష్టిస్తూ, అప్‌లోడ్ చేస్తోంది. దీనికి కొన్ని నిమిషాలు పట్టవచ్చు..."
 
 #: 
-msgid "Database reset failed."
-msgstr "డేటాబేస్ రీసెట్ విఫలమైంది."
-
-#: 
 msgid "Deceased"
 msgstr "మరణించారు"
 
@@ -17198,10 +17114,6 @@ msgid "Log settings saved"
 msgstr "లాగ్ సెట్టింగ్‌లు సేవ్ చేయబడ్డాయి"
 
 #: 
-msgid "Login Name is Required"
-msgstr "లాగిన్ పేరు అవసరం"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "వ్యక్తిని యాక్టివ్‌గా గుర్తించారు"
 
@@ -17326,10 +17238,6 @@ msgid "Sending..."
 msgstr "పంపుతోంది..."
 
 #: 
-msgid "Sending…"
-msgstr "పంపుతోంది…"
-
-#: 
 msgid "Settings reset"
 msgstr "సెట్టింగ్‌లు రీసెట్ చేయబడ్డాయి"
 
@@ -17400,10 +17308,6 @@ msgstr "రాబోయే"
 #: 
 msgid "View active only"
 msgstr "యాక్టివ్ మాత్రమే చూడండి"
-
-#: 
-msgid "View all"
-msgstr "అన్నీ చూడండి"
 
 #: 
 msgid "View all (including inactive)"
@@ -18180,10 +18084,6 @@ msgstr "పరిచర్య సభ్యుల జాబితాలు మర
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "మీ ఆర్థిక సంవత్సరం %s లో ప్రారంభమవుతుంది."
-
-#: 
-msgid "An error occurred"
-msgstr "ఒక లోపం సంభవించింది"
 
 #: 
 msgid "Approve"
@@ -19330,10 +19230,6 @@ msgid "Each staffing need must name a position"
 msgstr "ప్రతి సిబ్బంది అవసరం ఒక స్థానాన్ని పేర్కొనాలి"
 
 #: 
-msgid "Edit event"
-msgstr "ఈవెంట్‌ను సవరించండి"
-
-#: 
 msgid "Edit ministry"
 msgstr "పరిచర్యను సవరించండి"
 
@@ -19418,10 +19314,6 @@ msgstr "{{count}} గ్రహీతలకు ఇమెయిల్ పంపబ
 #: 
 msgid "Emails"
 msgstr "ఇమెయిల్‌లు"
-
-#: 
-msgid "End time"
-msgstr "ముగింపు సమయం"
 
 #: 
 msgid "Enter counts"
@@ -20702,10 +20594,6 @@ msgid "SMTP test"
 msgstr "SMTP పరీక్ష"
 
 #: 
-msgid "Save changes"
-msgstr "మార్పులను సేవ్ చేయండి"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "సేవ్ చేయబడింది — ఈ పరిచర్య ఇక సహాయం అడగడం లేదు"
 
@@ -20988,10 +20876,6 @@ msgstr "సిబ్బంది అవసరాలు సేవ్ చేయబ
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "ముందు ఒక పరిచర్యను సృష్టించండి, ఆ తరువాత దానిలో సేవ చేసే బృందాలను మరియు స్థానాలను జోడించండి."
-
-#: 
-msgid "Start time"
-msgstr "ప్రారంభ సమయం"
 
 #: 
 msgid "Start typing a name"
@@ -22034,16 +21918,8 @@ msgid "Validation"
 msgstr "ధృవీకరణ"
 
 #: 
-msgid "View event"
-msgstr "కార్యక్రమం చూడు"
-
-#: 
 msgid "View my schedule"
 msgstr "నా షెడ్యూల్‌ను చూడండి"
-
-#: 
-msgid "View person"
-msgstr "వ్యక్తిని చూడండి"
 
 #: 
 msgid "View the event"

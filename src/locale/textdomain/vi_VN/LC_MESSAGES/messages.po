@@ -4073,10 +4073,6 @@ msgid "The property could not be unassigned."
 msgstr "Thuộc tính không thể được hủy chỉ định."
 
 #: 
-msgid "Select event"
-msgstr "Chọn sự kiện"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Văn bản trước tên trong email / báo cáo"
 
@@ -4280,10 +4276,6 @@ msgstr "Khôi phục mật khẩu của bạn"
 #: 
 msgid "Kiosk Manager"
 msgstr "Người quản lý kiosk"
-
-#: 
-msgid "Report an issue"
-msgstr "Báo cáo một vấn đề"
 
 #: 
 msgid "Self Verification"
@@ -4696,16 +4688,8 @@ msgid "User must have Delete Records permission"
 msgstr "Người dùng phải có quyền Xóa Bản ghi"
 
 #: 
-msgid "invalid event type id"
-msgstr "id loại sự kiện không hợp lệ"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "ghim lịch không hợp lệ"
-
-#: 
-msgid "invalid status value"
-msgstr "giá trị trạng thái không hợp lệ"
 
 #: 
 msgid "invalid export value"
@@ -5308,10 +5292,6 @@ msgstr "Đang áp dụng cập nhật hệ thống..."
 
 #: 
 msgid "Back to Login"
-msgstr "Quay lại đăng nhập"
-
-#: 
-msgid "Back to login"
 msgstr "Quay lại đăng nhập"
 
 #: 
@@ -8035,10 +8015,6 @@ msgid "City is required."
 msgstr "Thành phố là bắt buộc."
 
 #: 
-msgid "Clear filter"
-msgstr "Xóa bộ lọc"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Không tìm thấy mục cấu hình"
 
@@ -8306,10 +8282,6 @@ msgstr "Them mot nguoi"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Them tat ca muc trong danh sach vao mot nhom"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Them tat ca vao danh sach"
 
 #: 
 msgid "Add cart items to a family"
@@ -9314,10 +9286,6 @@ msgid "Record why attendees visited your church"
 msgstr "Ghi nhan ly do nguoi tham du den giao hoi cua ban"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Xoa tat ca khoi danh sach"
-
-#: 
 msgid "Remove from Class"
 msgstr "Xoa khoi lop hoc"
 
@@ -9788,10 +9756,6 @@ msgstr "Su kien nam nay"
 #: 
 msgid "Everyone"
 msgstr "Moi nguoi"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Khong the xoa ghi chu"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11690,10 +11654,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Ngày bắt đầu phạm vi phải là ngày hợp lệ theo định dạng YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Ngày bắt đầu phạm vi phải trước ngày kết thúc"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Ngày bắt đầu phạm vi phải trước ngày kết thúc."
 
@@ -12642,10 +12602,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Không thể cài đặt tiện ích từ URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Không thể tải danh sách tiện ích đã phê duyệt"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Không thể tải danh sách tiện ích đã phê duyệt."
 
@@ -12704,10 +12660,6 @@ msgstr "Dạng kebab-case. Phải khớp với tên thư mục cấp cao nhất 
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Đang tải danh sách tiện ích đã phê duyệt…"
-
-#: 
-msgid "Loading…"
-msgstr "Đang tải…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13155,10 +13107,6 @@ msgid "Change Your Locale"
 msgstr "Thay đổi địa phương"
 
 #: 
-msgid "Change role"
-msgstr "Thay đổi vai trò"
-
-#: 
 msgid "Check Number"
 msgstr "Số kiểm tra"
 
@@ -13173,10 +13121,6 @@ msgstr "Đăng ký thất bại. Vui lòng thử lại."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Đăng xuất thất bại. Vui lòng thử lại."
-
-#: 
-msgid "City is required"
-msgstr "Yêu cầu tên thành phố"
 
 #: 
 msgid "Click Save to apply."
@@ -13245,10 +13189,6 @@ msgstr "Sao chép tất cả số"
 #: 
 msgid "Copy Members to Group"
 msgstr "Sao chep thanh vien sang nhom"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Dang tao sao luu..."
 
 #: 
 msgid "Creating..."
@@ -14315,10 +14255,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Bạn sẽ nhận được mã dự phòng có thể dùng nếu mất quyền truy cập ứng dụng"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Giỏ của bạn đang trống"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Tài khoản của bạn hiện đã được bảo vệ"
 
@@ -14337,10 +14273,6 @@ msgstr "Tùy chọn ngôn ngữ trình duyệt của bạn khác với địa ph
 #: 
 msgid "Your database already contains data"
 msgstr "Cơ sở dữ liệu của bạn đã chứa dữ liệu"
-
-#: 
-msgid "Zip code is required"
-msgstr "Yêu cầu mã bưu điện"
 
 #: 
 msgid "added"
@@ -14760,10 +14692,6 @@ msgstr "Bạn không có quyền thêm ghi chú cho gia đình này."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Bạn không có quyền thêm ghi chú cho người này."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Bạn không có quyền chỉnh sửa ghi chú này"
 
 #: 
 msgid "Account locked"
@@ -15804,10 +15732,6 @@ msgid "Select a person"
 msgstr "Chọn một người"
 
 #: 
-msgid "Select role"
-msgstr "Chọn vai trò"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Chọn loại (tùy chọn)"
 
@@ -15962,10 +15886,6 @@ msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn bản ghi dâng hiến 
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Cần ít nhất một phân bổ quỹ"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Ít nhất một quỹ phải có số tiền khác không"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17014,10 +16934,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Đang tạo và tải lên bản sao lưu. Việc này có thể mất vài phút..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Đặt lại cơ sở dữ liệu thất bại."
-
-#: 
 msgid "Deceased"
 msgstr "Đã qua đời"
 
@@ -17214,10 +17130,6 @@ msgid "Log settings saved"
 msgstr "Đã lưu cài đặt nhật ký"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Tên đăng nhập là bắt buộc"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Đã đánh dấu người này là đang hoạt động"
 
@@ -17342,10 +17254,6 @@ msgid "Sending..."
 msgstr "Đang gửi..."
 
 #: 
-msgid "Sending…"
-msgstr "Đang gửi…"
-
-#: 
 msgid "Settings reset"
 msgstr "Đã đặt lại cài đặt"
 
@@ -17416,10 +17324,6 @@ msgstr "Sắp tới"
 #: 
 msgid "View active only"
 msgstr "Chỉ xem đang hoạt động"
-
-#: 
-msgid "View all"
-msgstr "Xem tất cả"
 
 #: 
 msgid "View all (including inactive)"
@@ -18196,10 +18100,6 @@ msgstr "Danh sách thành viên nhóm và báo cáo lớp Trường Chúa nhật
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Năm tài chính của bạn bắt đầu vào %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Đã xảy ra lỗi"
 
 #: 
 msgid "Approve"
@@ -19339,10 +19239,6 @@ msgid "Each staffing need must name a position"
 msgstr "Mỗi nhu cầu nhân sự phải nêu một vị trí"
 
 #: 
-msgid "Edit event"
-msgstr "Chỉnh sửa sự kiện"
-
-#: 
 msgid "Edit ministry"
 msgstr "Sửa mục vụ"
 
@@ -19427,10 +19323,6 @@ msgstr "Gửi email cho {{count}} người nhận."
 #: 
 msgid "Emails"
 msgstr "Email"
-
-#: 
-msgid "End time"
-msgstr "Thời gian kết thúc"
 
 #: 
 msgid "Enter counts"
@@ -20709,10 +20601,6 @@ msgid "SMTP test"
 msgstr "Kiểm tra SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Lưu thay đổi"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Đã lưu — mục vụ này không còn nhờ giúp đỡ"
 
@@ -20995,10 +20883,6 @@ msgstr "Đã lưu nhu cầu nhân sự"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Hãy bắt đầu bằng việc tạo một mục vụ, rồi thêm các đội và vị trí phục vụ trong đó."
-
-#: 
-msgid "Start time"
-msgstr "Thời gian bắt đầu"
 
 #: 
 msgid "Start typing a name"
@@ -22039,16 +21923,8 @@ msgid "Validation"
 msgstr "Xác thực"
 
 #: 
-msgid "View event"
-msgstr "Xem sự kiện"
-
-#: 
 msgid "View my schedule"
 msgstr "Xem lịch phục vụ của tôi"
-
-#: 
-msgid "View person"
-msgstr "Xem thông tin cá nhân"
 
 #: 
 msgid "View the event"

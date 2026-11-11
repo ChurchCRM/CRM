@@ -4119,10 +4119,6 @@ msgid "The property could not be unassigned."
 msgstr "Nie udało się odpiąć właściwości."
 
 #: 
-msgid "Select event"
-msgstr "Wybierz wydarzenie"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Tekst przed nazwiskiem w e-mailach/raportach"
 
@@ -4325,10 +4321,6 @@ msgstr "Zresetuj swoje hasło"
 #: 
 msgid "Kiosk Manager"
 msgstr "Menedżer kiosku"
-
-#: 
-msgid "Report an issue"
-msgstr "Zgłoś problem"
 
 #: 
 msgid "Self Verification"
@@ -4740,16 +4732,8 @@ msgid "User must have Delete Records permission"
 msgstr "Użytkownik musi mieć dostęp do Usuwania Wpisów"
 
 #: 
-msgid "invalid event type id"
-msgstr "nieprawidłowy typ id wydarzenia"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "nieprawidłowe przypięcie kalendarza"
-
-#: 
-msgid "invalid status value"
-msgstr "błędna wartość stanu"
 
 #: 
 msgid "invalid export value"
@@ -5359,10 +5343,6 @@ msgstr "Trwa aktualizacja systemu..."
 
 #: 
 msgid "Back to Login"
-msgstr "Powrót do logowania"
-
-#: 
-msgid "Back to login"
 msgstr "Powrót do logowania"
 
 #: 
@@ -8098,10 +8078,6 @@ msgid "City is required."
 msgstr "Miasto jest wymagane."
 
 #: 
-msgid "Clear filter"
-msgstr "Wyczyść filtr"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Element konfiguracji nie został znaleziony"
 
@@ -8371,10 +8347,6 @@ msgstr "Dodaj osobę"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Dodaj wszystkich z listy do grupy"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Dodaj wszystkich do listy"
 
 #: 
 msgid "Add cart items to a family"
@@ -9379,10 +9351,6 @@ msgid "Record why attendees visited your church"
 msgstr "Zapisz, dlaczego odwiedzający przyszli do kościoła"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Usuń wszystkich z listy"
-
-#: 
 msgid "Remove from Class"
 msgstr "Usuń z klasy"
 
@@ -9853,10 +9821,6 @@ msgstr "Wydarzenia w tym roku"
 #: 
 msgid "Everyone"
 msgstr "Wszyscy"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Nie udało się usunąć notatki"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11757,10 +11721,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Początek zakresu musi być prawidłową datą w formacie RRRR-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Początek zakresu musi być wcześniejszy niż koniec zakresu"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Początek zakresu musi być wcześniejszy niż koniec zakresu."
 
@@ -12709,10 +12669,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Nie udało się zainstalować wtyczki z URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Nie udało się załadować listy zatwierdzonych wtyczek"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Nie udało się załadować listy zatwierdzonych wtyczek."
 
@@ -12771,10 +12727,6 @@ msgstr "Format kebab-case. Musi być zgodny z nazwą katalogu najwyższego pozio
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Ładowanie listy zatwierdzonych wtyczek…"
-
-#: 
-msgid "Loading…"
-msgstr "Ładowanie…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13222,10 +13174,6 @@ msgid "Change Your Locale"
 msgstr "Zmień ustawienia lokalne"
 
 #: 
-msgid "Change role"
-msgstr "Zmień rolę"
-
-#: 
 msgid "Check Number"
 msgstr "Numer czeku"
 
@@ -13240,10 +13188,6 @@ msgstr "Rejestracja obecności nie powiodła się. Spróbuj ponownie."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Wymeldowanie nie powiodło się. Spróbuj ponownie."
-
-#: 
-msgid "City is required"
-msgstr "Miasto jest wymagane"
 
 #: 
 msgid "Click Save to apply."
@@ -13312,10 +13256,6 @@ msgstr "Skopiuj wszystkie numery"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopiuj członków do grupy"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Tworzenie kopii zapasowej..."
 
 #: 
 msgid "Creating..."
@@ -14382,10 +14322,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Otrzymasz kody zapasowe, których możesz użyć, jeśli utracisz dostęp do aplikacji"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Twój koszyk jest pusty"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Twoje konto jest teraz chronione"
 
@@ -14404,10 +14340,6 @@ msgstr "Preferencja językowa przeglądarki różni się od Twoich ustawień reg
 #: 
 msgid "Your database already contains data"
 msgstr "Twoja baza danych zawiera już dane"
-
-#: 
-msgid "Zip code is required"
-msgstr "Kod pocztowy jest wymagany"
 
 #: 
 msgid "added"
@@ -14829,10 +14761,6 @@ msgstr "Nie masz uprawnień do dodania notatki dla tej rodziny."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Nie masz uprawnień do dodania notatki dla tej osoby."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Nie masz uprawnień do edytowania tej notatki"
 
 #: 
 msgid "Account locked"
@@ -15877,10 +15805,6 @@ msgid "Select a person"
 msgstr "Wybierz osobę"
 
 #: 
-msgid "Select role"
-msgstr "Wybierz rolę"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Wybierz typ (opcjonalnie)"
 
@@ -16035,10 +15959,6 @@ msgstr "Czy na pewno chcesz trwale usunąć ten rekord ofiary?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Wymagane jest co najmniej jedno przypisanie do funduszu"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Co najmniej jeden fundusz musi mieć kwotę różną od zera"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17091,10 +17011,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Tworzenie i przesyłanie kopii zapasowej. Może to potrwać kilka minut..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Resetowanie bazy danych nie powiodło się."
-
-#: 
 msgid "Deceased"
 msgstr "Zmarły"
 
@@ -17291,10 +17207,6 @@ msgid "Log settings saved"
 msgstr "Ustawienia dziennika zostały zapisane"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Nazwa użytkownika jest wymagana"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Oznaczono osobę jako aktywną"
 
@@ -17419,10 +17331,6 @@ msgid "Sending..."
 msgstr "Wysyłanie..."
 
 #: 
-msgid "Sending…"
-msgstr "Wysyłanie…"
-
-#: 
 msgid "Settings reset"
 msgstr "Ustawienia zresetowane"
 
@@ -17493,10 +17401,6 @@ msgstr "Nadchodzące"
 #: 
 msgid "View active only"
 msgstr "Pokaż tylko aktywne"
-
-#: 
-msgid "View all"
-msgstr "Pokaż wszystkie"
 
 #: 
 msgid "View all (including inactive)"
@@ -18273,10 +18177,6 @@ msgstr "Listy członków wspólnot oraz sprawozdania z klas szkółki niedzielne
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Twój rok obrachunkowy zaczyna się w %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Wystąpił błąd"
 
 #: 
 msgid "Approve"
@@ -19430,10 +19330,6 @@ msgid "Each staffing need must name a position"
 msgstr "Każda potrzeba kadrowa musi wskazywać funkcję"
 
 #: 
-msgid "Edit event"
-msgstr "Edytuj wydarzenie"
-
-#: 
 msgid "Edit ministry"
 msgstr "Edytuj posługę"
 
@@ -19518,10 +19414,6 @@ msgstr "Wiadomości wysłane do {{count}} odbiorców."
 #: 
 msgid "Emails"
 msgstr "E-maile"
-
-#: 
-msgid "End time"
-msgstr "Godzina zakończenia"
 
 #: 
 msgid "Enter counts"
@@ -20804,10 +20696,6 @@ msgid "SMTP test"
 msgstr "Test SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Zapisz Zmiany"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Zapisano — ta posługa nie prosi już o pomoc"
 
@@ -21090,10 +20978,6 @@ msgstr "Potrzeby kadrowe zapisane"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Zacznij od utworzenia posługi, a potem dodaj zespoły i funkcje, które w niej służą."
-
-#: 
-msgid "Start time"
-msgstr "Czas rozpoczęcia"
 
 #: 
 msgid "Start typing a name"
@@ -22138,16 +22022,8 @@ msgid "Validation"
 msgstr "Weryfikacja"
 
 #: 
-msgid "View event"
-msgstr "Wyświetl wydarzenie"
-
-#: 
 msgid "View my schedule"
 msgstr "Zobacz mój harmonogram"
-
-#: 
-msgid "View person"
-msgstr "Podgląd osoby"
 
 #: 
 msgid "View the event"

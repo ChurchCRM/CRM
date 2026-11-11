@@ -4038,10 +4038,6 @@ msgid "The property could not be unassigned."
 msgstr "विशेषता हटाई नहीं जा सकी।"
 
 #: 
-msgid "Select event"
-msgstr "कार्यक्रम चुनें"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "ईमेल/रिपोर्ट में नाम से पहले का टेक्स्ट"
 
@@ -4244,10 +4240,6 @@ msgstr "अपना पासवर्ड रीसेट करें"
 #: 
 msgid "Kiosk Manager"
 msgstr "कियोस्क प्रबंधक"
-
-#: 
-msgid "Report an issue"
-msgstr "समस्या की रिपोर्ट करें"
 
 #: 
 msgid "Self Verification"
@@ -4659,16 +4651,8 @@ msgid "User must have Delete Records permission"
 msgstr "उपयोगकर्ता के पास रिकॉर्ड हटाने की अनुमति होनी चाहिए"
 
 #: 
-msgid "invalid event type id"
-msgstr "अमान्य कार्यक्रम प्रकार आईडी"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "अमान्य कैलेंडर पिनिंग"
-
-#: 
-msgid "invalid status value"
-msgstr "अमान्य स्थिति मान"
 
 #: 
 msgid "invalid export value"
@@ -5271,10 +5255,6 @@ msgstr "सिस्टम अपडेट लागू किया जा र�
 #: 
 msgid "Back to Login"
 msgstr "लॉगिन पर वापस जाएं"
-
-#: 
-msgid "Back to login"
-msgstr "लॉगिन पर वापस जाएँ"
 
 #: 
 msgid "Complete"
@@ -8003,10 +7983,6 @@ msgid "City is required."
 msgstr "शहर आवश्यक है।"
 
 #: 
-msgid "Clear filter"
-msgstr "फ़िल्टर साफ़ करें"
-
-#: 
 msgid "Configuration item not found"
 msgstr "कॉन्फ़िगरेशन आइटम नहीं मिला"
 
@@ -8275,10 +8251,6 @@ msgstr "एक व्यक्ति जोड़ें"
 #: 
 msgid "Add all cart items to a group"
 msgstr "सूची की सभी वस्तुओं को समूह में जोड़ें"
-
-#: 
-msgid "Add all to Cart"
-msgstr "सभी को सूची में जोड़ें"
 
 #: 
 msgid "Add cart items to a family"
@@ -9283,10 +9255,6 @@ msgid "Record why attendees visited your church"
 msgstr "रिकॉर्ड करें कि उपस्थित लोग आपकी कलीसिया में क्यों आए"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "सूची से सभी हटाएँ"
-
-#: 
 msgid "Remove from Class"
 msgstr "कक्षा से हटाएँ"
 
@@ -9757,10 +9725,6 @@ msgstr "इस वर्ष के कार्यक्रम"
 #: 
 msgid "Everyone"
 msgstr "सभी"
-
-#: 
-msgid "Failed to delete note"
-msgstr "नोट हटाने में विफल"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11660,10 +11624,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "सीमा प्रारंभ एक वैध YYYY-MM-DD तारीख होनी चाहिए।"
 
 #: 
-msgid "Range start must be before range end"
-msgstr "सीमा प्रारंभ सीमा समाप्ति से पहले होनी चाहिए"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "सीमा प्रारंभ सीमा समाप्ति से पहले होनी चाहिए।"
 
@@ -12612,10 +12572,6 @@ msgid "Failed to install plugin from URL"
 msgstr "URL से प्लगइन स्थापित करने में विफल"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "अनुमोदित प्लगइन सूची लोड करने में विफल"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "अनुमोदित प्लगइन सूची लोड करने में विफल।"
 
@@ -12674,10 +12630,6 @@ msgstr "Kebab-case। ज़िप के अंदर शीर्ष-स्त
 #: 
 msgid "Loading approved plugin list…"
 msgstr "अनुमोदित प्लगइन सूची लोड हो रही है…"
-
-#: 
-msgid "Loading…"
-msgstr "लोड हो रहा है…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13125,10 +13077,6 @@ msgid "Change Your Locale"
 msgstr "अपनी भाषा सेटिंग बदलें"
 
 #: 
-msgid "Change role"
-msgstr "भूमिका बदलें"
-
-#: 
 msgid "Check Number"
 msgstr "चेक नंबर"
 
@@ -13143,10 +13091,6 @@ msgstr "चेक-इन विफल हुआ। कृपया पुनः 
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "चेक-आउट विफल हुआ। कृपया पुनः प्रयास करें।"
-
-#: 
-msgid "City is required"
-msgstr "शहर आवश्यक है"
 
 #: 
 msgid "Click Save to apply."
@@ -13215,10 +13159,6 @@ msgstr "सभी नंबर कॉपी करें"
 #: 
 msgid "Copy Members to Group"
 msgstr "सदस्यों को समूह में कॉपी करें"
-
-#: 
-msgid "Creating Backup..."
-msgstr "बैकअप बनाया जा रहा है..."
 
 #: 
 msgid "Creating..."
@@ -14285,10 +14225,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "आपको बैकअप कोड प्राप्त होंगे जिनका उपयोग तब किया जा सकता है यदि आप अपने ऐप तक पहुँच खो देते हैं"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "आपकी कार्ट खाली है"
-
-#: 
 msgid "Your account is now protected"
 msgstr "आपका खाता अब सुरक्षित है"
 
@@ -14307,10 +14243,6 @@ msgstr "आपकी ब्राउज़र भाषा प्राथमि
 #: 
 msgid "Your database already contains data"
 msgstr "आपके डेटाबेस में पहले से डेटा है"
-
-#: 
-msgid "Zip code is required"
-msgstr "ज़िप कोड आवश्यक है"
 
 #: 
 msgid "added"
@@ -14731,10 +14663,6 @@ msgstr "आपको इस परिवार के लिए नोट जो
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "आपको इस व्यक्ति के लिए नोट जोड़ने की अनुमति नहीं है।"
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "आपको इस नोट को संपादित करने की अनुमति नहीं है"
 
 #: 
 msgid "Account locked"
@@ -15777,10 +15705,6 @@ msgid "Select a person"
 msgstr "एक व्यक्ति चुनें"
 
 #: 
-msgid "Select role"
-msgstr "भूमिका चुनें"
-
-#: 
 msgid "Select type (optional)"
 msgstr "प्रकार चुनें (वैकल्पिक)"
 
@@ -15935,10 +15859,6 @@ msgstr "क्या आप वाकई इस भुगतान रिकॉ�
 #: 
 msgid "At least one fund allocation is required"
 msgstr "कम से कम एक निधि आवंटन आवश्यक है"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "कम से कम एक निधि में शून्य से अधिक राशि होनी चाहिए"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16989,10 +16909,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "बैकअप बनाया और अपलोड किया जा रहा है। इसमें कई मिनट लग सकते हैं..."
 
 #: 
-msgid "Database reset failed."
-msgstr "डेटाबेस रीसेट विफल हुआ।"
-
-#: 
 msgid "Deceased"
 msgstr "दिवंगत"
 
@@ -17189,10 +17105,6 @@ msgid "Log settings saved"
 msgstr "लॉग सेटिंग्स सहेजी गईं"
 
 #: 
-msgid "Login Name is Required"
-msgstr "लॉगिन नाम आवश्यक है"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "व्यक्ति को सक्रिय के रूप में चिह्नित किया गया"
 
@@ -17317,10 +17229,6 @@ msgid "Sending..."
 msgstr "भेजा जा रहा है..."
 
 #: 
-msgid "Sending…"
-msgstr "भेजा जा रहा है…"
-
-#: 
 msgid "Settings reset"
 msgstr "सेटिंग्स रीसेट हुईं"
 
@@ -17391,10 +17299,6 @@ msgstr "आगामी"
 #: 
 msgid "View active only"
 msgstr "केवल सक्रिय देखें"
-
-#: 
-msgid "View all"
-msgstr "सभी देखें"
 
 #: 
 msgid "View all (including inactive)"
@@ -18171,10 +18075,6 @@ msgstr "सेवकाई सदस्यता सूचियाँ और �
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "आपका वित्तीय वर्ष %s में शुरू होता है।"
-
-#: 
-msgid "An error occurred"
-msgstr "एक त्रुटि हुई"
 
 #: 
 msgid "Approve"
@@ -19321,10 +19221,6 @@ msgid "Each staffing need must name a position"
 msgstr "हर नियुक्ति आवश्यकता में एक पद का नाम होना चाहिए"
 
 #: 
-msgid "Edit event"
-msgstr "इवेंट संपादित करें"
-
-#: 
 msgid "Edit ministry"
 msgstr "सेवकाई संपादित करें"
 
@@ -19409,10 +19305,6 @@ msgstr "{{count}} प्राप्तकर्ताओं को ईमेल
 #: 
 msgid "Emails"
 msgstr "ईमेल"
-
-#: 
-msgid "End time"
-msgstr "समाप्ति समय"
 
 #: 
 msgid "Enter counts"
@@ -20693,10 +20585,6 @@ msgid "SMTP test"
 msgstr "SMTP परीक्षण"
 
 #: 
-msgid "Save changes"
-msgstr "परिवर्तन सहेजें"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "सहेजा गया — यह सेवकाई अब सहायता नहीं माँग रही"
 
@@ -20979,10 +20867,6 @@ msgstr "नियुक्ति आवश्यकताएँ सहेजी 
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "पहले एक सेवकाई बनाकर शुरू करें, फिर उसमें सेवा करने वाली टीमें और पद जोड़ें।"
-
-#: 
-msgid "Start time"
-msgstr "प्रारंभ समय"
 
 #: 
 msgid "Start typing a name"
@@ -22025,16 +21909,8 @@ msgid "Validation"
 msgstr "सत्यापन"
 
 #: 
-msgid "View event"
-msgstr "कार्यक्रम देखें"
-
-#: 
 msgid "View my schedule"
 msgstr "मेरी अनुसूची देखें"
-
-#: 
-msgid "View person"
-msgstr "व्यक्ति देखें"
 
 #: 
 msgid "View the event"

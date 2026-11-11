@@ -4060,10 +4060,6 @@ msgid "The property could not be unassigned."
 msgstr "Sifa hii haikuweza kutengwa."
 
 #: 
-msgid "Select event"
-msgstr "Chagua tukio"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Tuma maandishi kabla ya jina katika barua pepe/ripoti"
 
@@ -4267,10 +4263,6 @@ msgstr "Weka upya nenosiri lako"
 #: 
 msgid "Kiosk Manager"
 msgstr "Meneja wa Kiosk"
-
-#: 
-msgid "Report an issue"
-msgstr "Ripoti suala"
 
 #: 
 msgid "Self Verification"
@@ -4683,16 +4675,8 @@ msgid "User must have Delete Records permission"
 msgstr "Mtumiaji lazima awe na ruhusa ya Futa Rekodi"
 
 #: 
-msgid "invalid event type id"
-msgstr "kitambulisho cha aina ya tukio batili"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "kubandika kalenda batili"
-
-#: 
-msgid "invalid status value"
-msgstr "thamani ya hali batili"
 
 #: 
 msgid "invalid export value"
@@ -5298,10 +5282,6 @@ msgstr "Inatumia Sasisho la Mfumo..."
 #: 
 msgid "Back to Login"
 msgstr "Rudi kwenye Kuingia"
-
-#: 
-msgid "Back to login"
-msgstr "Rudi kwenye kuingia"
 
 #: 
 msgid "Complete"
@@ -8030,10 +8010,6 @@ msgid "City is required."
 msgstr "Mji unahitajika."
 
 #: 
-msgid "Clear filter"
-msgstr "Futa kichujio"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Kipengele cha usanidi hakikupatikana"
 
@@ -8302,10 +8278,6 @@ msgstr "Ongeza Mtu"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Ongeza vitu vyote vya orodha kwenye kikundi"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Ongeza Wote kwenye Orodha"
 
 #: 
 msgid "Add cart items to a family"
@@ -9310,10 +9282,6 @@ msgid "Record why attendees visited your church"
 msgstr "Rekodi sababu za wageni kutembelea kanisa lako"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Ondoa wote kutoka Orodha"
-
-#: 
 msgid "Remove from Class"
 msgstr "Ondoa kutoka Darasa"
 
@@ -9784,10 +9752,6 @@ msgstr "Matukio ya Mwaka Huu"
 #: 
 msgid "Everyone"
 msgstr "Kila Mtu"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Imeshindwa kufuta dokezo"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11687,10 +11651,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Mwanzo wa kipindi lazima uwe tarehe halali ya YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Mwanzo wa kipindi lazima uwe kabla ya mwisho wake"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Mwanzo wa kipindi lazima uwe kabla ya mwisho wake."
 
@@ -12639,10 +12599,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Imeshindwa kusakinisha programu jalizi kutoka URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Imeshindwa kupakia orodha ya programu jalizi zilizoidhinishwa"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Imeshindwa kupakia orodha ya programu jalizi zilizoidhinishwa."
 
@@ -12701,10 +12657,6 @@ msgstr "Kibab-case. Lazima ilingane na jina la saraka ya juu ndani ya zip na kit
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Inapakia orodha ya programu jalizi zilizoidhinishwa…"
-
-#: 
-msgid "Loading…"
-msgstr "Inapakia…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13152,10 +13104,6 @@ msgid "Change Your Locale"
 msgstr "Badilisha Lugha yako"
 
 #: 
-msgid "Change role"
-msgstr "Badilisha jukumu"
-
-#: 
 msgid "Check Number"
 msgstr "Nambari ya Cheki"
 
@@ -13170,10 +13118,6 @@ msgstr "Kuingia kumeshindwa. Tafadhali jaribu tena."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Kutoka kumeshindwa. Tafadhali jaribu tena."
-
-#: 
-msgid "City is required"
-msgstr "Mji/Jiji linahitajika"
 
 #: 
 msgid "Click Save to apply."
@@ -13242,10 +13186,6 @@ msgstr "Nakili Namba Zote"
 #: 
 msgid "Copy Members to Group"
 msgstr "Nakili Washiriki kwenye Kikundi"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Inatengeneza Nakala..."
 
 #: 
 msgid "Creating..."
@@ -14312,10 +14252,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Utapokea misimbo ya nakala rudia ambayo inaweza kutumika ukipoteza ufikiaji wa programu yako"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Rukwama yako ni Tupu"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Akaunti yako sasa inalindwa"
 
@@ -14334,10 +14270,6 @@ msgstr "Upendeleo wako wa lugha ya kivinjari ni tofauti na eneo lako la ChurchCR
 #: 
 msgid "Your database already contains data"
 msgstr "Hifadhidata yako tayari ina data"
-
-#: 
-msgid "Zip code is required"
-msgstr "Nambari ya utambulisho wa posta (Zip) inahitajika"
 
 #: 
 msgid "added"
@@ -14758,10 +14690,6 @@ msgstr "Huna ruhusa ya kuongeza kumbukumbu kwa familia hii."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Huna ruhusa ya kuongeza kumbukumbu kwa mtu huyu."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Huna ruhusa ya kuhariri kumbukumbu hii"
 
 #: 
 msgid "Account locked"
@@ -15804,10 +15732,6 @@ msgid "Select a person"
 msgstr "Chagua mtu"
 
 #: 
-msgid "Select role"
-msgstr "Chagua jukumu"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Chagua aina (hiari)"
 
@@ -15962,10 +15886,6 @@ msgstr "Je, una uhakika unataka kufuta kabisa rekodi hii ya malipo?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Mgawanyo wa mfuko mmoja angalau unahitajika"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Mfuko mmoja angalau lazima uwe na kiasi kisichokuwa sifuri"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17016,10 +16936,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Inaunda na kupakia nakala rudufu. Hii inaweza kuchukua dakika kadhaa..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Kuweka upya hifadhidata kumeshindwa."
-
-#: 
 msgid "Deceased"
 msgstr "Marehemu"
 
@@ -17216,10 +17132,6 @@ msgid "Log settings saved"
 msgstr "Mipangilio ya kumbukumbu imehifadhiwa"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Jina la Kuingia Linahitajika"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Amemweka Mtu kuwa Anayetumika"
 
@@ -17344,10 +17256,6 @@ msgid "Sending..."
 msgstr "Inatuma..."
 
 #: 
-msgid "Sending…"
-msgstr "Inatuma…"
-
-#: 
 msgid "Settings reset"
 msgstr "Mipangilio imewekwa upya"
 
@@ -17418,10 +17326,6 @@ msgstr "Zinazokuja"
 #: 
 msgid "View active only"
 msgstr "Onyesha zinazotumika pekee"
-
-#: 
-msgid "View all"
-msgstr "Onyesha zote"
 
 #: 
 msgid "View all (including inactive)"
@@ -18198,10 +18102,6 @@ msgstr "Orodha za washirika wa vikundi na ripoti za madarasa ya Shule ya Jumapil
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Mwaka wako wa fedha unaanza mwezi wa %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Hitilafu imetokea"
 
 #: 
 msgid "Approve"
@@ -19348,10 +19248,6 @@ msgid "Each staffing need must name a position"
 msgstr "Kila hitaji la watumishi lazima litaje nafasi"
 
 #: 
-msgid "Edit event"
-msgstr "Hariri Tukio"
-
-#: 
 msgid "Edit ministry"
 msgstr "Hariri huduma"
 
@@ -19436,10 +19332,6 @@ msgstr "Barua pepe imetumwa kwa wapokeaji {{count}}."
 #: 
 msgid "Emails"
 msgstr "Barua pepe"
-
-#: 
-msgid "End time"
-msgstr "Wakati wa Mwisho"
 
 #: 
 msgid "Enter counts"
@@ -20720,10 +20612,6 @@ msgid "SMTP test"
 msgstr "Jaribio la SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Hifadhi"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Imehifadhiwa — huduma hii haiombi msaada tena"
 
@@ -21006,10 +20894,6 @@ msgstr "Mahitaji ya watumishi yamehifadhiwa"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Anza kwa kuunda huduma, kisha ongeza timu na nafasi zinazohudumu ndani yake."
-
-#: 
-msgid "Start time"
-msgstr "Wakati wa Kuanza"
 
 #: 
 msgid "Start typing a name"
@@ -22052,16 +21936,8 @@ msgid "Validation"
 msgstr "Uthibitishaji"
 
 #: 
-msgid "View event"
-msgstr "Tazama Tukio"
-
-#: 
 msgid "View my schedule"
 msgstr "Tazama ratiba yangu"
-
-#: 
-msgid "View person"
-msgstr "Ona Mtu"
 
 #: 
 msgid "View the event"

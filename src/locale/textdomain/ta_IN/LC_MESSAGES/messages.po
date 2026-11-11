@@ -4060,10 +4060,6 @@ msgid "The property could not be unassigned."
 msgstr "பண்பு ஒதுக்கப்படாமல் இருக்க முடியாது."
 
 #: 
-msgid "Select event"
-msgstr "நிகழ்வைத் தேர்ந்தெடுக்கவும்"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "மின்னஞ்சல்கள்/அறிக்கைகளில் பெயருக்கு முன் உரை"
 
@@ -4266,10 +4262,6 @@ msgstr "உங்கள் கடவுச்சொல்லை மீட்ட�
 #: 
 msgid "Kiosk Manager"
 msgstr "கியோஸ்க் மேலாளர்"
-
-#: 
-msgid "Report an issue"
-msgstr "சிக்கலைப் புகாரளிக்கவும்"
 
 #: 
 msgid "Self Verification"
@@ -4682,16 +4674,8 @@ msgid "User must have Delete Records permission"
 msgstr "பதிவுகளை நீக்க பயனர் அனுமதி பெற்றிருக்க வேண்டும்"
 
 #: 
-msgid "invalid event type id"
-msgstr "தவறான நிகழ்வு வகை ஐடி"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "தவறான காலெண்டர் பின்னிணைக்கிறது"
-
-#: 
-msgid "invalid status value"
-msgstr "தவறான நிலை மதிப்பு"
 
 #: 
 msgid "invalid export value"
@@ -5300,10 +5284,6 @@ msgstr "கணினி புதுப்பிப்பைப் பயன்�
 
 #: 
 msgid "Back to Login"
-msgstr "உள்நுழைவுக்குத் திரும்பவும்"
-
-#: 
-msgid "Back to login"
 msgstr "உள்நுழைவுக்குத் திரும்பவும்"
 
 #: 
@@ -8040,10 +8020,6 @@ msgid "City is required."
 msgstr "நகரம் தேவை."
 
 #: 
-msgid "Clear filter"
-msgstr "வடிகட்டியை அழிக்கவும்"
-
-#: 
 msgid "Configuration item not found"
 msgstr "உள்ளமைவு உருப்படி கிடைக்கவில்லை"
 
@@ -8312,10 +8288,6 @@ msgstr "ஒரு நபரைச் சேர்"
 #: 
 msgid "Add all cart items to a group"
 msgstr "பட்டியலில் உள்ள அனைவரையும் ஒரு குழுவில் சேர்"
-
-#: 
-msgid "Add all to Cart"
-msgstr "அனைவரையும் பட்டியலில் சேர்"
 
 #: 
 msgid "Add cart items to a family"
@@ -9320,10 +9292,6 @@ msgid "Record why attendees visited your church"
 msgstr "வருகையாளர்கள் ஏன் உங்கள் திருச்சபைக்கு வந்தார்கள் என்பதைப் பதிவு செய்யுங்கள்"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "பட்டியலிலிருந்து அனைவரையும் நீக்கு"
-
-#: 
 msgid "Remove from Class"
 msgstr "வகுப்பிலிருந்து நீக்கு"
 
@@ -9794,10 +9762,6 @@ msgstr "இந்த ஆண்டின் நிகழ்வுகள்"
 #: 
 msgid "Everyone"
 msgstr "அனைவரும்"
-
-#: 
-msgid "Failed to delete note"
-msgstr "குறிப்பை நீக்குவதில் தோல்வி"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11701,10 +11665,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "வரம்பு தொடக்கம் ஒரு செல்லுபடியான YYYY-MM-DD தேதியாக இருக்க வேண்டும்."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "வரம்பு தொடக்கம் வரம்பு முடிவிற்கு முன்னர் இருக்க வேண்டும்"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "வரம்பு தொடக்கம் வரம்பு முடிவிற்கு முன்னர் இருக்க வேண்டும்."
 
@@ -12653,10 +12613,6 @@ msgid "Failed to install plugin from URL"
 msgstr "URL இலிருந்து செருகியை நிறுவ முடியவில்லை"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "அங்கீகரிக்கப்பட்ட செருகி பட்டியலை ஏற்ற முடியவில்லை"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "அங்கீகரிக்கப்பட்ட செருகி பட்டியலை ஏற்ற முடியவில்லை."
 
@@ -12715,10 +12671,6 @@ msgstr "கேபாப்-கேஸ். zip க்குள் இருக்�
 #: 
 msgid "Loading approved plugin list…"
 msgstr "அங்கீகரிக்கப்பட்ட செருகி பட்டியலை ஏற்றுகிறது…"
-
-#: 
-msgid "Loading…"
-msgstr "ஏற்றுகிறது…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13166,10 +13118,6 @@ msgid "Change Your Locale"
 msgstr "உங்கள் வட்டாரத்தை மாற்றவும்"
 
 #: 
-msgid "Change role"
-msgstr "பங்கை மாற்றவும்"
-
-#: 
 msgid "Check Number"
 msgstr "எண்ணைச் சரிபார்க்கவும்"
 
@@ -13184,10 +13132,6 @@ msgstr "உள்நுழைவு தோல்வியடைந்தது. 
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "வெளியேறுதல் தோல்வியடைந்தது. தயவுசெய்து மீண்டும் முயற்சிக்கவும்."
-
-#: 
-msgid "City is required"
-msgstr "நகரம் தேவை"
 
 #: 
 msgid "Click Save to apply."
@@ -13256,10 +13200,6 @@ msgstr "அனைத்து எண்களையும் நகலெடு"
 #: 
 msgid "Copy Members to Group"
 msgstr "உறுப்பினர்களைக் குழுவிற்கு நகலெடு"
-
-#: 
-msgid "Creating Backup..."
-msgstr "காப்புப்பிரதி உருவாக்கப்படுகிறது..."
 
 #: 
 msgid "Creating..."
@@ -14328,10 +14268,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "உங்கள் செயலிக்கான அணுகலை நீங்கள் இழந்தால் பயன்படுத்தக்கூடிய காப்புப் பிரதி குறியீடுகளைப் பெறுவீர்கள்"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "உங்கள் கூடை காலியாக உள்ளது"
-
-#: 
 msgid "Your account is now protected"
 msgstr "உங்கள் கணக்கு இப்போது பாதுகாக்கப்பட்டுள்ளது"
 
@@ -14350,10 +14286,6 @@ msgstr "உங்கள் உலாவியின் மொழித் தே
 #: 
 msgid "Your database already contains data"
 msgstr "உங்கள் தரவுத்தளத்தில் ஏற்கனவே தரவுகள் உள்ளன"
-
-#: 
-msgid "Zip code is required"
-msgstr "அஞ்சல் குறியீடு அவசியம்."
 
 #: 
 msgid "added"
@@ -14774,10 +14706,6 @@ msgstr "இந்த குடும்பத்திற்கு குறி�
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "இந்த நபருக்கு குறிப்பு சேர்க்க உங்களுக்கு அனுமதி இல்லை."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "இந்த குறிப்பை திருத்த உங்களுக்கு அனுமதி இல்லை"
 
 #: 
 msgid "Account locked"
@@ -15820,10 +15748,6 @@ msgid "Select a person"
 msgstr "ஒரு நபரைத் தேர்ந்தெடு"
 
 #: 
-msgid "Select role"
-msgstr "பாத்திரத்தைத் தேர்ந்தெடு"
-
-#: 
 msgid "Select type (optional)"
 msgstr "வகையைத் தேர்ந்தெடு (விருப்பமானது)"
 
@@ -15978,10 +15902,6 @@ msgstr "இந்த கொடுப்பனவு பதிவை நிரந
 #: 
 msgid "At least one fund allocation is required"
 msgstr "குறைந்தது ஒரு நிதி ஒதுக்கீடு தேவை"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "குறைந்தது ஒரு நிதியில் பூஜ்யமற்ற தொகை இருக்க வேண்டும்"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17032,10 +16952,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "காப்புப்பிரதி உருவாக்கப்பட்டு பதிவேற்றப்படுகிறது. இதற்கு சில நிமிடங்கள் ஆகலாம்..."
 
 #: 
-msgid "Database reset failed."
-msgstr "தரவுத்தளம் மீட்டமைப்பு தோல்வியடைந்தது."
-
-#: 
 msgid "Deceased"
 msgstr "காலமானவர்"
 
@@ -17232,10 +17148,6 @@ msgid "Log settings saved"
 msgstr "பதிவு அமைப்புகள் சேமிக்கப்பட்டன"
 
 #: 
-msgid "Login Name is Required"
-msgstr "உள்நுழைவு பெயர் தேவை"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "நபரை செயலில் உள்ளவராக குறித்தது"
 
@@ -17360,10 +17272,6 @@ msgid "Sending..."
 msgstr "அனுப்பப்படுகிறது..."
 
 #: 
-msgid "Sending…"
-msgstr "அனுப்பப்படுகிறது…"
-
-#: 
 msgid "Settings reset"
 msgstr "அமைப்புகள் மீட்டமைக்கப்பட்டன"
 
@@ -17434,10 +17342,6 @@ msgstr "வரவிருக்கும்"
 #: 
 msgid "View active only"
 msgstr "செயலில் உள்ளவை மட்டும் காண்"
-
-#: 
-msgid "View all"
-msgstr "அனைத்தையும் காண்"
 
 #: 
 msgid "View all (including inactive)"
@@ -18214,10 +18118,6 @@ msgstr "ஊழிய உறுப்பினர் பட்டியல்க�
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "உங்கள் நிதியாண்டு %s இல் தொடங்குகிறது."
-
-#: 
-msgid "An error occurred"
-msgstr "ஒரு பிழை ஏற்பட்டது"
 
 #: 
 msgid "Approve"
@@ -19364,10 +19264,6 @@ msgid "Each staffing need must name a position"
 msgstr "ஒவ்வொரு ஆட்கள் தேவையும் ஒரு பொறுப்பைக் குறிப்பிட வேண்டும்"
 
 #: 
-msgid "Edit event"
-msgstr "நிகழ்வைத் திருத்து"
-
-#: 
 msgid "Edit ministry"
 msgstr "ஊழியத்தைத் திருத்து"
 
@@ -19452,10 +19348,6 @@ msgstr "{{count}} பெறுநர்களுக்கு மின்னஞ�
 #: 
 msgid "Emails"
 msgstr "மின்னஞ்சல்கள்"
-
-#: 
-msgid "End time"
-msgstr "முடிவு நேரம்"
 
 #: 
 msgid "Enter counts"
@@ -20736,10 +20628,6 @@ msgid "SMTP test"
 msgstr "SMTP சோதனை"
 
 #: 
-msgid "Save changes"
-msgstr "மாற்றங்களை சேமியுங்கள்"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "சேமிக்கப்பட்டது — இந்த ஊழியம் இனி உதவி கேட்கவில்லை"
 
@@ -21022,10 +20910,6 @@ msgstr "ஆட்கள் தேவைகள் சேமிக்கப்ப�
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "முதலில் ஒரு ஊழியத்தை உருவாக்கவும், பிறகு அதில் பணியாற்றும் குழுக்களையும் பொறுப்புகளையும் சேர்க்கவும்."
-
-#: 
-msgid "Start time"
-msgstr "தொடக்க நேரம்"
 
 #: 
 msgid "Start typing a name"
@@ -22068,16 +21952,8 @@ msgid "Validation"
 msgstr "சரிபார்ப்பு"
 
 #: 
-msgid "View event"
-msgstr "நிகழ்வை பார்"
-
-#: 
 msgid "View my schedule"
 msgstr "எனது அட்டவணையைக் காண்க"
-
-#: 
-msgid "View person"
-msgstr "நபரைப் பார்க்கவும்"
 
 #: 
 msgid "View the event"

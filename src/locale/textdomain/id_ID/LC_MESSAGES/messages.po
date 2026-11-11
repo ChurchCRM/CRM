@@ -4062,10 +4062,6 @@ msgid "The property could not be unassigned."
 msgstr "Properti tidak dapat dibatalkan penetapannya."
 
 #: 
-msgid "Select event"
-msgstr "Pilih acara"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Teks sebelum nama di email / laporan"
 
@@ -4269,10 +4265,6 @@ msgstr "Mereset password Anda"
 #: 
 msgid "Kiosk Manager"
 msgstr "Manajer Kios"
-
-#: 
-msgid "Report an issue"
-msgstr "Laporkan masalah"
 
 #: 
 msgid "Self Verification"
@@ -4685,16 +4677,8 @@ msgid "User must have Delete Records permission"
 msgstr "Pengguna harus memiliki izin Hapus Catatan"
 
 #: 
-msgid "invalid event type id"
-msgstr "id jenis acara tidak valid"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "Pinning kalender tidak valid"
-
-#: 
-msgid "invalid status value"
-msgstr "nilai status tidak valid"
 
 #: 
 msgid "invalid export value"
@@ -5298,10 +5282,6 @@ msgstr "Menerapkan Pembaruan Sistem..."
 #: 
 msgid "Back to Login"
 msgstr "Kembali ke Login"
-
-#: 
-msgid "Back to login"
-msgstr "Kembali ke login"
 
 #: 
 msgid "Complete"
@@ -8024,10 +8004,6 @@ msgid "City is required."
 msgstr "Kota wajib diisi."
 
 #: 
-msgid "Clear filter"
-msgstr "Hapus filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Item konfigurasi tidak ditemukan"
 
@@ -8295,10 +8271,6 @@ msgstr "Tambah Orang"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Tambah semua item daftar ke grup"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Tambah semua ke Daftar"
 
 #: 
 msgid "Add cart items to a family"
@@ -9303,10 +9275,6 @@ msgid "Record why attendees visited your church"
 msgstr "Catat mengapa peserta mengunjungi gereja Anda"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Hapus semua dari Daftar"
-
-#: 
 msgid "Remove from Class"
 msgstr "Hapus dari Kelas"
 
@@ -9777,10 +9745,6 @@ msgstr "Acara Tahun Ini"
 #: 
 msgid "Everyone"
 msgstr "Semua Orang"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Gagal menghapus catatan"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11679,10 +11643,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Awal rentang harus berupa tanggal YYYY-MM-DD yang valid."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Awal rentang harus sebelum akhir rentang"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Awal rentang harus sebelum akhir rentang."
 
@@ -12631,10 +12591,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Gagal menginstal plugin dari URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Gagal memuat daftar plugin yang disetujui"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Gagal memuat daftar plugin yang disetujui."
 
@@ -12693,10 +12649,6 @@ msgstr "Kebab-case. Harus sesuai dengan nama direktori tingkat atas di dalam zip
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Memuat daftar plugin yang disetujui…"
-
-#: 
-msgid "Loading…"
-msgstr "Memuat…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13144,10 +13096,6 @@ msgid "Change Your Locale"
 msgstr "Ubah Lokal Anda"
 
 #: 
-msgid "Change role"
-msgstr "Ubah peran"
-
-#: 
 msgid "Check Number"
 msgstr "Periksa Nomor"
 
@@ -13162,10 +13110,6 @@ msgstr "Absen masuk gagal. Silakan coba lagi."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Absen keluar gagal. Silakan coba lagi."
-
-#: 
-msgid "City is required"
-msgstr "Kota wajib diisi"
 
 #: 
 msgid "Click Save to apply."
@@ -13234,10 +13178,6 @@ msgstr "Salin Semua Nomor"
 #: 
 msgid "Copy Members to Group"
 msgstr "Salin Anggota ke Grup"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Membuat Cadangan..."
 
 #: 
 msgid "Creating..."
@@ -14304,10 +14244,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Anda akan menerima kode cadangan yang dapat digunakan jika kehilangan akses ke aplikasi Anda"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Keranjang Anda kosong"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Akun Anda kini terlindungi"
 
@@ -14326,10 +14262,6 @@ msgstr "Preferensi bahasa peramban Anda berbeda dari lokal ChurchCRM Anda"
 #: 
 msgid "Your database already contains data"
 msgstr "Basis data Anda sudah berisi data"
-
-#: 
-msgid "Zip code is required"
-msgstr "Kode pos wajib diisi"
 
 #: 
 msgid "added"
@@ -14749,10 +14681,6 @@ msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk keluarga ini."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk anggota ini."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Anda tidak memiliki izin untuk mengedit catatan ini"
 
 #: 
 msgid "Account locked"
@@ -15793,10 +15721,6 @@ msgid "Select a person"
 msgstr "Pilih seseorang"
 
 #: 
-msgid "Select role"
-msgstr "Pilih peran"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Pilih jenis (opsional)"
 
@@ -15951,10 +15875,6 @@ msgstr "Apakah Anda yakin ingin menghapus catatan pembayaran ini secara permanen
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Diperlukan setidaknya satu alokasi dana"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Setidaknya satu dana harus memiliki jumlah yang tidak nol"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17003,10 +16923,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Membuat dan mengunggah cadangan. Ini mungkin memerlukan beberapa menit..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Reset database gagal."
-
-#: 
 msgid "Deceased"
 msgstr "Meninggal Dunia"
 
@@ -17203,10 +17119,6 @@ msgid "Log settings saved"
 msgstr "Pengaturan log disimpan"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Nama Login Wajib Diisi"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Menandai Orang ini sebagai Aktif"
 
@@ -17331,10 +17243,6 @@ msgid "Sending..."
 msgstr "Mengirim..."
 
 #: 
-msgid "Sending…"
-msgstr "Mengirim…"
-
-#: 
 msgid "Settings reset"
 msgstr "Pengaturan direset"
 
@@ -17405,10 +17313,6 @@ msgstr "Akan Datang"
 #: 
 msgid "View active only"
 msgstr "Lihat yang aktif saja"
-
-#: 
-msgid "View all"
-msgstr "Lihat semua"
 
 #: 
 msgid "View all (including inactive)"
@@ -18185,10 +18089,6 @@ msgstr "Daftar anggota pelayanan dan laporan kelas Sekolah Minggu"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Tahun fiskal Anda dimulai pada %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Terjadi kesalahan"
 
 #: 
 msgid "Approve"
@@ -19328,10 +19228,6 @@ msgid "Each staffing need must name a position"
 msgstr "Setiap kebutuhan staf harus menyebutkan sebuah posisi"
 
 #: 
-msgid "Edit event"
-msgstr "Ubah Kegiatan"
-
-#: 
 msgid "Edit ministry"
 msgstr "Ubah pelayanan"
 
@@ -19416,10 +19312,6 @@ msgstr "Email dikirim ke {{count}} penerima."
 #: 
 msgid "Emails"
 msgstr "Email"
-
-#: 
-msgid "End time"
-msgstr "Waktu Selesai"
 
 #: 
 msgid "Enter counts"
@@ -20698,10 +20590,6 @@ msgid "SMTP test"
 msgstr "Uji SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Simpan perubahan"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Disimpan — pelayanan ini tidak lagi meminta bantuan"
 
@@ -20984,10 +20872,6 @@ msgstr "Kebutuhan petugas disimpan"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Mulailah dengan membuat pelayanan, lalu tambahkan tim dan posisi yang melayani di dalamnya."
-
-#: 
-msgid "Start time"
-msgstr "Waktu mulai"
 
 #: 
 msgid "Start typing a name"
@@ -22028,16 +21912,8 @@ msgid "Validation"
 msgstr "Validasi"
 
 #: 
-msgid "View event"
-msgstr "Lihat Acara"
-
-#: 
 msgid "View my schedule"
 msgstr "Lihat jadwal saya"
-
-#: 
-msgid "View person"
-msgstr "Lihat Anggota"
 
 #: 
 msgid "View the event"

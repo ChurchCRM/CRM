@@ -4144,10 +4144,6 @@ msgid "The property could not be unassigned."
 msgstr "屬性無法取消分配。"
 
 #: 
-msgid "Select event"
-msgstr "選擇活動"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "電子郵件/報告中姓名前的文字"
 
@@ -4352,10 +4348,6 @@ msgstr "重置你的密碼"
 #, fuzzy
 msgid "Kiosk Manager"
 msgstr "Kiosk管理"
-
-#: 
-msgid "Report an issue"
-msgstr "報告問題"
 
 #: 
 msgid "Self Verification"
@@ -4774,16 +4766,8 @@ msgid "User must have Delete Records permission"
 msgstr "用戶必須具有刪除記錄權限"
 
 #: 
-msgid "invalid event type id"
-msgstr "無效的事件類型ID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "無效的日曆pinning"
-
-#: 
-msgid "invalid status value"
-msgstr "無效的狀態值"
 
 #: 
 msgid "invalid export value"
@@ -5438,10 +5422,6 @@ msgstr "正在套用系統更新..."
 
 #: 
 msgid "Back to Login"
-msgstr "返回登入"
-
-#: 
-msgid "Back to login"
 msgstr "返回登入"
 
 #: 
@@ -8165,10 +8145,6 @@ msgid "City is required."
 msgstr "城市為必填欄位。"
 
 #: 
-msgid "Clear filter"
-msgstr "清除篩選"
-
-#: 
 msgid "Configuration item not found"
 msgstr "找不到設定項目"
 
@@ -8436,10 +8412,6 @@ msgstr "新增人員"
 #: 
 msgid "Add all cart items to a group"
 msgstr "將名單中的所有人員加入小組"
-
-#: 
-msgid "Add all to Cart"
-msgstr "全部加入名單"
 
 #: 
 msgid "Add cart items to a family"
@@ -9444,10 +9416,6 @@ msgid "Record why attendees visited your church"
 msgstr "記錄來訪者造訪教會的原因"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "從名單中移除全部"
-
-#: 
 msgid "Remove from Class"
 msgstr "從班級中移除"
 
@@ -9918,10 +9886,6 @@ msgstr "今年活動"
 #: 
 msgid "Everyone"
 msgstr "所有人"
-
-#: 
-msgid "Failed to delete note"
-msgstr "刪除備註失敗"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11820,10 +11784,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "範圍開始日期必須是有效的 YYYY-MM-DD 格式。"
 
 #: 
-msgid "Range start must be before range end"
-msgstr "範圍開始日期必須早於範圍結束日期"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "範圍開始日期必須早於範圍結束日期。"
 
@@ -12772,10 +12732,6 @@ msgid "Failed to install plugin from URL"
 msgstr "從網址安裝外掛失敗"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "載入已核准外掛清單失敗"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "載入已核准外掛清單失敗。"
 
@@ -12834,10 +12790,6 @@ msgstr "使用 kebab-case 格式。必須與 zip 壓縮檔內的頂層目錄名�
 #: 
 msgid "Loading approved plugin list…"
 msgstr "正在載入已核准外掛清單…"
-
-#: 
-msgid "Loading…"
-msgstr "載入中…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13285,10 +13237,6 @@ msgid "Change Your Locale"
 msgstr "變更您的語言設定"
 
 #: 
-msgid "Change role"
-msgstr "更改角色"
-
-#: 
 msgid "Check Number"
 msgstr "檢查號碼"
 
@@ -13303,10 +13251,6 @@ msgstr "簽到失敗，請重試。"
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "簽出失敗，請重試。"
-
-#: 
-msgid "City is required"
-msgstr "城市是必填項"
 
 #: 
 msgid "Click Save to apply."
@@ -13375,10 +13319,6 @@ msgstr "複製所有號碼"
 #: 
 msgid "Copy Members to Group"
 msgstr "複製成員到小組"
-
-#: 
-msgid "Creating Backup..."
-msgstr "正在建立備份..."
 
 #: 
 msgid "Creating..."
@@ -14445,10 +14385,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "您將收到備份碼，在失去對應用程式的存取權限時可以使用"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "您的購物車是空的"
-
-#: 
 msgid "Your account is now protected"
 msgstr "您的帳戶現已受到保護"
 
@@ -14467,10 +14403,6 @@ msgstr "您的瀏覽器語言偏好與您的ChurchCRM語言設定不同"
 #: 
 msgid "Your database already contains data"
 msgstr "您的資料庫已包含資料"
-
-#: 
-msgid "Zip code is required"
-msgstr "郵遞區號是必填項"
 
 #: 
 msgid "added"
@@ -14890,10 +14822,6 @@ msgstr "您沒有為此家庭新增備註的權限。"
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "您沒有為此成員新增備註的權限。"
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "您沒有編輯此備註的權限"
 
 #: 
 msgid "Account locked"
@@ -15934,10 +15862,6 @@ msgid "Select a person"
 msgstr "選擇一位成員"
 
 #: 
-msgid "Select role"
-msgstr "選擇角色"
-
-#: 
 msgid "Select type (optional)"
 msgstr "選擇類型（選填）"
 
@@ -16092,10 +16016,6 @@ msgstr "您確定要永久刪除此奉獻記錄嗎？"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "至少需要一個基金分配"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "至少一個基金必須有非零金額"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17144,10 +17064,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "正在建立並上傳備份，這可能需要幾分鐘的時間..."
 
 #: 
-msgid "Database reset failed."
-msgstr "資料庫重設失敗。"
-
-#: 
 msgid "Deceased"
 msgstr "已故"
 
@@ -17344,10 +17260,6 @@ msgid "Log settings saved"
 msgstr "記錄設定已儲存"
 
 #: 
-msgid "Login Name is Required"
-msgstr "登入帳號為必填"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "已將此人標記為啟用"
 
@@ -17472,10 +17384,6 @@ msgid "Sending..."
 msgstr "傳送中..."
 
 #: 
-msgid "Sending…"
-msgstr "傳送中……"
-
-#: 
 msgid "Settings reset"
 msgstr "設定已重設"
 
@@ -17546,10 +17454,6 @@ msgstr "即將到來"
 #: 
 msgid "View active only"
 msgstr "僅檢視啟用中"
-
-#: 
-msgid "View all"
-msgstr "檢視全部"
 
 #: 
 msgid "View all (including inactive)"
@@ -18326,10 +18230,6 @@ msgstr "小組成員名單和主日學班級報告"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "您的財政年度從 %s 開始。"
-
-#: 
-msgid "An error occurred"
-msgstr "發生錯誤"
 
 #: 
 msgid "Approve"
@@ -19469,10 +19369,6 @@ msgid "Each staffing need must name a position"
 msgstr "每項人員需求都必須指定一個職位"
 
 #: 
-msgid "Edit event"
-msgstr "編輯活動"
-
-#: 
 msgid "Edit ministry"
 msgstr "編輯事工"
 
@@ -19557,10 +19453,6 @@ msgstr "已傳送電子郵件給 {{count}} 個收件人。"
 #: 
 msgid "Emails"
 msgstr "電子郵件"
-
-#: 
-msgid "End time"
-msgstr "結束時間"
 
 #: 
 msgid "Enter counts"
@@ -20839,10 +20731,6 @@ msgid "SMTP test"
 msgstr "SMTP 測試"
 
 #: 
-msgid "Save changes"
-msgstr "保存更改"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "已儲存：此事工不再徵求幫助"
 
@@ -21125,10 +21013,6 @@ msgstr "人員需求已儲存"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "請先建立一個事工，然後新增在其中服事的團隊和職位。"
-
-#: 
-msgid "Start time"
-msgstr "開始時間"
 
 #: 
 msgid "Start typing a name"
@@ -22169,16 +22053,8 @@ msgid "Validation"
 msgstr "驗證"
 
 #: 
-msgid "View event"
-msgstr "查看活動"
-
-#: 
 msgid "View my schedule"
 msgstr "檢視我的排班"
-
-#: 
-msgid "View person"
-msgstr "檢視成員"
 
 #: 
 msgid "View the event"

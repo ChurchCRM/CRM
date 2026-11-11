@@ -4035,10 +4035,6 @@ msgid "The property could not be unassigned."
 msgstr "സ്വഭാവം നീക്കാൻ കഴിഞ്ഞില്ല."
 
 #: 
-msgid "Select event"
-msgstr "ഇവന്റ് തിരഞ്ഞെടുക്കുക"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "ഇമെയിലുകളിൽ/റിപ്പോർട്ടുകളിൽ പേരിന് മുൻപ് ടെക്സ്റ്റ്"
 
@@ -4241,10 +4237,6 @@ msgstr "പാസ്‌വേഡ് റീസെറ്റ് ചെയ്യൂ"
 #: 
 msgid "Kiosk Manager"
 msgstr "കിയോസ്‌ക് മാനേജർ"
-
-#: 
-msgid "Report an issue"
-msgstr "ഒരു പ്രശ്‌നം റിപ്പോർട്ട് ചെയ്യുക"
 
 #: 
 msgid "Self Verification"
@@ -4656,16 +4648,8 @@ msgid "User must have Delete Records permission"
 msgstr "ഉപയോക്താവിന് റെക്കോർഡ് ഇല്ലാതാക്കൽ അനുമതി ഉണ്ടായിരിക്കണം"
 
 #: 
-msgid "invalid event type id"
-msgstr "അസാധുവായ ഇവന്റ് തരം ID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "അസാധുവായ കലണ്ടർ പിന്നിംഗ്"
-
-#: 
-msgid "invalid status value"
-msgstr "അസാധുവായ സ്ഥിതി മൂല്യം"
 
 #: 
 msgid "invalid export value"
@@ -5268,10 +5252,6 @@ msgstr "സിസ്റ്റം അപ്‌ഡേറ്റ് പ്രയോ�
 
 #: 
 msgid "Back to Login"
-msgstr "ലോഗിൻ-ലേക്ക് മടങ്ങുക"
-
-#: 
-msgid "Back to login"
 msgstr "ലോഗിൻ-ലേക്ക് മടങ്ങുക"
 
 #: 
@@ -8001,10 +7981,6 @@ msgid "City is required."
 msgstr "നഗരം ആവശ്യമാണ്."
 
 #: 
-msgid "Clear filter"
-msgstr "ഫിൽട്ടർ ക്ലിയർ ചെയ്യൂ"
-
-#: 
 msgid "Configuration item not found"
 msgstr "കോൺഫിഗറേഷൻ ഇനം കണ്ടെത്തിയില്ല"
 
@@ -8273,10 +8249,6 @@ msgstr "ഒരു വ്യക്തിയെ ചേർക്കൂ"
 #: 
 msgid "Add all cart items to a group"
 msgstr "കാർട്ട് ഇനങ്ങൾ ഒരു ഗ്രൂപ്പിൽ ചേർക്കൂ"
-
-#: 
-msgid "Add all to Cart"
-msgstr "എല്ലാം കാർട്ടിൽ ചേർക്കൂ"
 
 #: 
 msgid "Add cart items to a family"
@@ -9281,10 +9253,6 @@ msgid "Record why attendees visited your church"
 msgstr "സഭ സന്ദർശിച്ചവർ എന്തിനാണ് വന്നതെന്ന് രേഖപ്പെടുത്തുക"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "കാർട്ടിൽ നിന്ന് എല്ലാം നീക്കം ചെയ്യുക"
-
-#: 
 msgid "Remove from Class"
 msgstr "ക്ലാസിൽ നിന്ന് നീക്കം ചെയ്യുക"
 
@@ -9755,10 +9723,6 @@ msgstr "ഈ വർഷം ഇവന്റുകൾ"
 #: 
 msgid "Everyone"
 msgstr "എല്ലാവരും"
-
-#: 
-msgid "Failed to delete note"
-msgstr "കുറിപ്പ് ഇല്ലാതാക്കൽ പരാജയപ്പെട്ടു"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11658,10 +11622,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "ശ്രേണി ആരംഭം ഒരു സാധുവായ YYYY-MM-DD തീയതി ആയിരിക്കണം."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "ശ്രേണി ആരംഭം ശ്രേണി അവസാനത്തിന് മുൻപ് ആയിരിക്കണം"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "ശ്രേണി ആരംഭം ശ്രേണി അവസാനത്തിന് മുൻപ് ആയിരിക്കണം."
 
@@ -12610,10 +12570,6 @@ msgid "Failed to install plugin from URL"
 msgstr "URL-ൽ നിന്ന് പ്ലഗ്‌ഇൻ ഇൻസ്‌റ്റോൾ ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "അംഗീകൃത പ്ലഗ്‌ഇൻ ലിസ്റ്റ് ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "അംഗീകൃത പ്ലഗ്‌ഇൻ ലിസ്റ്റ് ലോഡ് ചെയ്യുന്നതിൽ പരാജയപ്പെട്ടു."
 
@@ -12672,10 +12628,6 @@ msgstr "Kebab-case. zip-ന്റെ ഉള്ളിലെ ടോപ്പ്-�
 #: 
 msgid "Loading approved plugin list…"
 msgstr "അംഗീകൃത പ്ലഗ്‌ഇൻ ലിസ്റ്റ് ലോഡ് ചെയ്യുന്നു…"
-
-#: 
-msgid "Loading…"
-msgstr "ലോഡ് ചെയ്യുന്നു…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13123,10 +13075,6 @@ msgid "Change Your Locale"
 msgstr "ലോക്കൽ മാറ്റൂ"
 
 #: 
-msgid "Change role"
-msgstr "പങ്ക് മാറ്റുക"
-
-#: 
 msgid "Check Number"
 msgstr "ചെക്ക് നമ്പർ"
 
@@ -13141,10 +13089,6 @@ msgstr "ചെക്ക്-ഇൻ പരാജയപ്പെട്ടു. ദ�
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "ചെക്ക്-ഔട്ട് പരാജയപ്പെട്ടു. ദയവായി വീണ്ടും ശ്രമിക്കുക."
-
-#: 
-msgid "City is required"
-msgstr "നഗരം ആവശ്യമാണ്"
 
 #: 
 msgid "Click Save to apply."
@@ -13213,10 +13157,6 @@ msgstr "എല്ലാ നമ്പറുകളും പകർത്തുക"
 #: 
 msgid "Copy Members to Group"
 msgstr "അംഗങ്ങളെ ഗ്രൂപ്പിലേക്ക് പകർത്തുക"
-
-#: 
-msgid "Creating Backup..."
-msgstr "ബാക്കപ്പ് ഉണ്ടാക്കുന്നു..."
 
 #: 
 msgid "Creating..."
@@ -14283,10 +14223,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "ആപ്പ് ആക്സസ് നഷ്ടമായാൽ ഉപയോഗിക്കാൻ backup കോഡ് ലഭിക്കും"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "നിങ്ങളുടെ കാർട്ട് ശൂന്യമാണ്"
-
-#: 
 msgid "Your account is now protected"
 msgstr "നിങ്ങളുടെ അക്കൗണ്ട് ഇനി സുരക്ഷിതമാണ്"
 
@@ -14305,10 +14241,6 @@ msgstr "ബ്രൗസർ ഭാഷ ChurchCRM ലോക്കലിൽ നി�
 #: 
 msgid "Your database already contains data"
 msgstr "നിങ്ങളുടെ ഡാറ്റാബേസിൽ ഇതിനകം ഡേറ്റ ഉണ്ട്"
-
-#: 
-msgid "Zip code is required"
-msgstr "പിൻകോഡ് ആവശ്യമാണ്"
 
 #: 
 msgid "added"
@@ -14729,10 +14661,6 @@ msgstr "ഈ കുടുംബത്തിനായി ഒരു കുറിപ
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "ഈ വ്യക്തിക്കായി ഒരു കുറിപ്പ് ചേർക്കാൻ നിങ്ങൾക്ക് അനുമതിയില്ല."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "ഈ കുറിപ്പ് എഡിറ്റ് ചെയ്യാൻ നിങ്ങൾക്ക് അനുമതിയില്ല"
 
 #: 
 msgid "Account locked"
@@ -15775,10 +15703,6 @@ msgid "Select a person"
 msgstr "ഒരു വ്യക്തിയെ തിരഞ്ഞെടുക്കുക"
 
 #: 
-msgid "Select role"
-msgstr "റോൾ തിരഞ്ഞെടുക്കുക"
-
-#: 
 msgid "Select type (optional)"
 msgstr "തരം തിരഞ്ഞെടുക്കുക (ഐച്ഛികം)"
 
@@ -15933,10 +15857,6 @@ msgstr "ഈ പേമെന്റ് രേഖ സ്ഥിരമായി ഇ�
 #: 
 msgid "At least one fund allocation is required"
 msgstr "കുറഞ്ഞത് ഒരു ഫണ്ട് അനുവദനം ആവശ്യമാണ്"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "കുറഞ്ഞത് ഒരു ഫണ്ടിന് പൂജ്യമല്ലാത്ത തുക ഉണ്ടായിരിക്കണം"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -16987,10 +16907,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "ബാക്കപ്പ് സൃഷ്ടിച്ച് അപ്‌ലോഡ് ചെയ്യുന്നു. ഇതിന് കുറച്ച് മിനിറ്റുകൾ എടുത്തേക്കാം..."
 
 #: 
-msgid "Database reset failed."
-msgstr "ഡാറ്റാബേസ് റീസെറ്റ് പരാജയപ്പെട്ടു."
-
-#: 
 msgid "Deceased"
 msgstr "മരണപ്പെട്ടവർ"
 
@@ -17187,10 +17103,6 @@ msgid "Log settings saved"
 msgstr "ലോഗ് ക്രമീകരണങ്ങൾ സേവ് ചെയ്തു"
 
 #: 
-msgid "Login Name is Required"
-msgstr "ലോഗിൻ പേര് ആവശ്യമാണ്"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "വ്യക്തിയെ സജീവം എന്ന് അടയാളപ്പെടുത്തി"
 
@@ -17315,10 +17227,6 @@ msgid "Sending..."
 msgstr "അയക്കുന്നു..."
 
 #: 
-msgid "Sending…"
-msgstr "അയക്കുന്നു…"
-
-#: 
 msgid "Settings reset"
 msgstr "ക്രമീകരണങ്ങൾ റീസെറ്റ് ചെയ്തു"
 
@@ -17389,10 +17297,6 @@ msgstr "വരാനിരിക്കുന്നത്"
 #: 
 msgid "View active only"
 msgstr "സജീവമായവ മാത്രം കാണുക"
-
-#: 
-msgid "View all"
-msgstr "എല്ലാം കാണുക"
 
 #: 
 msgid "View all (including inactive)"
@@ -18169,10 +18073,6 @@ msgstr "ശുശ്രൂഷാ അംഗത്വ പട്ടികകളു�
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "നിങ്ങളുടെ സാമ്പത്തിക വർഷം %s ൽ ആരംഭിക്കുന്നു."
-
-#: 
-msgid "An error occurred"
-msgstr "ഒരു പിശക് സംഭവിച്ചു"
 
 #: 
 msgid "Approve"
@@ -19319,10 +19219,6 @@ msgid "Each staffing need must name a position"
 msgstr "ഓരോ ആൾബലാവശ്യവും ഒരു സ്ഥാനം വ്യക്തമാക്കണം"
 
 #: 
-msgid "Edit event"
-msgstr "ഇവന്റ് എഡിറ്റ് ചെയ്യുക"
-
-#: 
 msgid "Edit ministry"
 msgstr "ശുശ്രൂഷ എഡിറ്റ് ചെയ്യുക"
 
@@ -19407,10 +19303,6 @@ msgstr "{{count}} സ്വീകർത്താക്കൾക്ക് ഇമ�
 #: 
 msgid "Emails"
 msgstr "ഇമെയിലുകൾ"
-
-#: 
-msgid "End time"
-msgstr "അവസാന സമയം"
 
 #: 
 msgid "Enter counts"
@@ -20691,10 +20583,6 @@ msgid "SMTP test"
 msgstr "SMTP പരീക്ഷണം"
 
 #: 
-msgid "Save changes"
-msgstr "മാറ്റങ്ങൾ സംരക്ഷിക്കുക"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "സേവ് ചെയ്തു — ഈ ശുശ്രൂഷ ഇനി സഹായം ചോദിക്കുന്നില്ല"
 
@@ -20977,10 +20865,6 @@ msgstr "ആൾബലാവശ്യങ്ങൾ സേവ് ചെയ്തു"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "ഒരു ശുശ്രൂഷ സൃഷ്ടിച്ച് തുടങ്ങുക, തുടർന്ന് അതിൽ സേവനം ചെയ്യുന്ന ടീമുകളും സ്ഥാനങ്ങളും ചേർക്കുക."
-
-#: 
-msgid "Start time"
-msgstr "ആരംഭ സമയം"
 
 #: 
 msgid "Start typing a name"
@@ -22023,16 +21907,8 @@ msgid "Validation"
 msgstr "സാധൂകരണം"
 
 #: 
-msgid "View event"
-msgstr "പരിപാടി കാണുക"
-
-#: 
 msgid "View my schedule"
 msgstr "എന്റെ ഷെഡ്യൂൾ കാണുക"
-
-#: 
-msgid "View person"
-msgstr "വ്യക്തിയെ കാണുക"
 
 #: 
 msgid "View the event"

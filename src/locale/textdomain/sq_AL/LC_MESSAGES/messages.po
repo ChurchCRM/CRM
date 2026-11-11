@@ -4059,10 +4059,6 @@ msgid "The property could not be unassigned."
 msgstr "Prona nuk mund të hiqej."
 
 #: 
-msgid "Select event"
-msgstr "Zgjidhni ngjarjen"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Teksti para emrit në email/raporte"
 
@@ -4265,10 +4261,6 @@ msgstr "Rivendosni fjalëkalimin tuaj"
 #: 
 msgid "Kiosk Manager"
 msgstr "Menaxheri i Kioskut"
-
-#: 
-msgid "Report an issue"
-msgstr "Raportoni një problem"
 
 #: 
 msgid "Self Verification"
@@ -4680,16 +4672,8 @@ msgid "User must have Delete Records permission"
 msgstr "Përdoruesi duhet të ketë lejen 'Fshij Regjistrimet'"
 
 #: 
-msgid "invalid event type id"
-msgstr "ID-ja e llojit të ngjarjes është e pavlefshme"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "pinning-u i kalendarit është i pavlefshëm"
-
-#: 
-msgid "invalid status value"
-msgstr "vlera e statusit është e pavlefshme"
 
 #: 
 msgid "invalid export value"
@@ -5292,10 +5276,6 @@ msgstr "Duke aplikuar përditësimin e sistemit..."
 
 #: 
 msgid "Back to Login"
-msgstr "Kthehu në hyrje"
-
-#: 
-msgid "Back to login"
 msgstr "Kthehu në hyrje"
 
 #: 
@@ -8025,10 +8005,6 @@ msgid "City is required."
 msgstr "Qyteti është i detyrueshëm."
 
 #: 
-msgid "Clear filter"
-msgstr "Pastro filtrin"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Elementi i konfigurimit nuk u gjet"
 
@@ -8297,10 +8273,6 @@ msgstr "Shto një Person"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Shto të gjithë artikujt e listës në një grupmesion"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Shto Të Gjithë në Listën Përzgjedhese"
 
 #: 
 msgid "Add cart items to a family"
@@ -9305,10 +9277,6 @@ msgid "Record why attendees visited your church"
 msgstr "Regjistroj pse vizituesit vizituan kishën tuaj"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Hiq Të Gjithë nga Listja Përzgjedhese"
-
-#: 
 msgid "Remove from Class"
 msgstr "Hiq nga Klasa"
 
@@ -9779,10 +9747,6 @@ msgstr "Ngjarjet Këtë Vit"
 #: 
 msgid "Everyone"
 msgstr "Të Gjithë"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Dështoi të fshinte shënimin"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11682,10 +11646,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Fillimi i intervalit duhet të jetë një datë e vlefshme YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Fillimi i intervalit duhet të jetë para fundit të intervalit"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Fillimi i intervalit duhet të jetë para fundit të intervalit."
 
@@ -12634,10 +12594,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Instalimi i shtojcës nga URL-ja dështoi"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Ngarkimi i listës së shtojcave të aprovuara dështoi"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Ngarkimi i listës së shtojcave të aprovuara dështoi."
 
@@ -12696,10 +12652,6 @@ msgstr "Kebab-case. Duhet të përputhet me emrin e drejtorisë së nivelit të 
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Po ngarkohet lista e shtojcave të aprovuara…"
-
-#: 
-msgid "Loading…"
-msgstr "Po ngarkohet…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13147,10 +13099,6 @@ msgid "Change Your Locale"
 msgstr "Ndryshoni Vendndodhjen Tuaj"
 
 #: 
-msgid "Change role"
-msgstr "Ndrysho rolin"
-
-#: 
 msgid "Check Number"
 msgstr "Numri i çekut"
 
@@ -13165,10 +13113,6 @@ msgstr "Regjistrimi dështoi. Ju lutemi provoni përsëri."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Çregjistrimi dështoi. Ju lutemi provoni përsëri."
-
-#: 
-msgid "City is required"
-msgstr "Qyteti kërkohet"
 
 #: 
 msgid "Click Save to apply."
@@ -13237,10 +13181,6 @@ msgstr "Kopjojeni të Gjithë Numrat"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopjo Besimtarët në Grupmesion"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Duke Krijuar Rezervën..."
 
 #: 
 msgid "Creating..."
@@ -14307,10 +14247,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Do të merrni kode rezervë që mund të përdoren nëse humbni aksesin te aplikacioni juaj"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Shporta juaj është bosh"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Llogaria juaj është tani e mbrojtur"
 
@@ -14329,10 +14265,6 @@ msgstr "Preferenca e gjuhës së shfletuesit tuaj ndryshon nga vendndodhja juaj 
 #: 
 msgid "Your database already contains data"
 msgstr "Baza juaj e të dhënave tashmë përmban të dhëna"
-
-#: 
-msgid "Zip code is required"
-msgstr "Kërkohet kodi postar"
 
 #: 
 msgid "added"
@@ -14753,10 +14685,6 @@ msgstr "Nuk keni leje për të shtuar një shënim për këtë familje."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Nuk keni leje për të shtuar një shënim për këtë person."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Nuk keni leje për të redaktuar këtë shënim"
 
 #: 
 msgid "Account locked"
@@ -15799,10 +15727,6 @@ msgid "Select a person"
 msgstr "Zgjidh një person"
 
 #: 
-msgid "Select role"
-msgstr "Zgjidh rolin"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Zgjidh llojin (opsionale)"
 
@@ -15957,10 +15881,6 @@ msgstr "Jeni i sigurt që dëshironi të fshini përgjithmonë këtë regjistrim
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Kërkohet të paktën një ndarje fondi"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Të paktën një fond duhet të ketë një shumë jo-zero"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17011,10 +16931,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Duke krijuar dhe ngarkuar kopjen rezervë. Kjo mund të zgjasë disa minuta..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Rivendosja e bazës së të dhënave dështoi."
-
-#: 
 msgid "Deceased"
 msgstr "I/E Ndjerë"
 
@@ -17211,10 +17127,6 @@ msgid "Log settings saved"
 msgstr "Cilësimet e regjistrit u ruajtën"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Emri i Hyrjes është i Detyrueshëm"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Personi u shënua si Aktiv"
 
@@ -17339,10 +17251,6 @@ msgid "Sending..."
 msgstr "Duke dërguar..."
 
 #: 
-msgid "Sending…"
-msgstr "Duke dërguar…"
-
-#: 
 msgid "Settings reset"
 msgstr "Cilësimet u rivendosën"
 
@@ -17413,10 +17321,6 @@ msgstr "Së Shpejti"
 #: 
 msgid "View active only"
 msgstr "Shiko vetëm aktivët"
-
-#: 
-msgid "View all"
-msgstr "Shiko të gjithë"
 
 #: 
 msgid "View all (including inactive)"
@@ -18193,10 +18097,6 @@ msgstr "Listat e anëtarëve të shërbesave dhe raportet e klasave të Shkollë
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Viti juaj fiskal fillon në %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Ndodhi një gabim"
 
 #: 
 msgid "Approve"
@@ -19343,10 +19243,6 @@ msgid "Each staffing need must name a position"
 msgstr "Çdo nevojë stafimi duhet të caktojë një pozicion"
 
 #: 
-msgid "Edit event"
-msgstr "Redakto ngjarjen"
-
-#: 
 msgid "Edit ministry"
 msgstr "Redakto shërbesën"
 
@@ -19431,10 +19327,6 @@ msgstr "Emailet e dërguara {{count}} marrësve."
 #: 
 msgid "Emails"
 msgstr "Email-et"
-
-#: 
-msgid "End time"
-msgstr "Koha e Mbarimit"
 
 #: 
 msgid "Enter counts"
@@ -20715,10 +20607,6 @@ msgid "SMTP test"
 msgstr "Test SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Ruaj Ndryshimet"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "U ruajt – kjo shërbesë nuk po kërkon më ndihmë"
 
@@ -21001,10 +20889,6 @@ msgstr "Nevojat e stafimit u ruajtën"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Filloni duke krijuar një shërbesë, pastaj shtoni ekipet dhe pozicionet që shërbejnë në të."
-
-#: 
-msgid "Start time"
-msgstr "Koha e Fillimit"
 
 #: 
 msgid "Start typing a name"
@@ -22047,16 +21931,8 @@ msgid "Validation"
 msgstr "Validimi"
 
 #: 
-msgid "View event"
-msgstr "Shiko Ngjarjen"
-
-#: 
 msgid "View my schedule"
 msgstr "Shiko orarin tim"
-
-#: 
-msgid "View person"
-msgstr "Shiko Personin"
 
 #: 
 msgid "View the event"

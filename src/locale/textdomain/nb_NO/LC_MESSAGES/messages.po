@@ -4141,10 +4141,6 @@ msgid "The property could not be unassigned."
 msgstr "Egenskapen kunne ikke fjernes."
 
 #: 
-msgid "Select event"
-msgstr "Velg hendelse"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Tekst før navn i e-poster/rapporter"
 
@@ -4347,10 +4343,6 @@ msgstr "Tilbakestill ditt passord"
 #: 
 msgid "Kiosk Manager"
 msgstr "Kioskadministrator"
-
-#: 
-msgid "Report an issue"
-msgstr "Rapporter et problem"
 
 #: 
 msgid "Self Verification"
@@ -4762,16 +4754,8 @@ msgid "User must have Delete Records permission"
 msgstr "Brukeren må ha tillatelse til å slette oppføringer"
 
 #: 
-msgid "invalid event type id"
-msgstr "ugyldig hendelsestype-ID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "ugyldig kalenderfeste"
-
-#: 
-msgid "invalid status value"
-msgstr "ugyldig statusverdi"
 
 #: 
 msgid "invalid export value"
@@ -5372,10 +5356,6 @@ msgstr "Oppdaterer systemet..."
 
 #: 
 msgid "Back to Login"
-msgstr "Tilbake til innlogging"
-
-#: 
-msgid "Back to login"
 msgstr "Tilbake til innlogging"
 
 #: 
@@ -8105,10 +8085,6 @@ msgid "City is required."
 msgstr "By er påkrevd."
 
 #: 
-msgid "Clear filter"
-msgstr "Fjern filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Konfigurasjonselement ikke funnet"
 
@@ -8377,10 +8353,6 @@ msgstr "Legg til en person"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Legg til alle i utvalget til en gruppe"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Legg alle til i utvalget"
 
 #: 
 msgid "Add cart items to a family"
@@ -9385,10 +9357,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registrer hvorfor besøkende kom til kirken"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Fjern alle fra utvalget"
-
-#: 
 msgid "Remove from Class"
 msgstr "Fjern fra klasse"
 
@@ -9859,10 +9827,6 @@ msgstr "Arrangementer i år"
 #: 
 msgid "Everyone"
 msgstr "Alle"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Kunne ikke slette notat"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11762,10 +11726,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Periodens start må være en gyldig YYYY-MM-DD dato."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Periodens start må være før periodens slutt"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Periodens start må være før periodens slutt."
 
@@ -12714,10 +12674,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Kunne ikke installere programtillegg fra URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Kunne ikke laste godkjent programtilleggliste"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Kunne ikke laste godkjent programtilleggliste."
 
@@ -12776,10 +12732,6 @@ msgstr "Kebab-case. Må samsvare med katalognavnet på øverste nivå i zip-file
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Laster godkjent programtilleggliste…"
-
-#: 
-msgid "Loading…"
-msgstr "Laster…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13227,10 +13179,6 @@ msgid "Change Your Locale"
 msgstr "Endre din locale"
 
 #: 
-msgid "Change role"
-msgstr "Endre rolle"
-
-#: 
 msgid "Check Number"
 msgstr "Sjekknummer"
 
@@ -13245,10 +13193,6 @@ msgstr "Innsjekking mislyktes. Vennligst prøv igjen."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Utsjekking mislyktes. Vennligst prøv igjen."
-
-#: 
-msgid "City is required"
-msgstr "Sted er obligatorisk"
 
 #: 
 msgid "Click Save to apply."
@@ -13317,10 +13261,6 @@ msgstr "Kopier alle numre"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopier medlemmer til gruppe"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Oppretter sikkerhetskopi..."
 
 #: 
 msgid "Creating..."
@@ -14387,10 +14327,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Du vil motta reservekoder som kan brukes hvis du mister tilgang til appen din"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Handlekurven din er tom"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Kontoen din er nå beskyttet"
 
@@ -14409,10 +14345,6 @@ msgstr "Nettleserens språkinnstilling avviker fra ChurchCRM-locale"
 #: 
 msgid "Your database already contains data"
 msgstr "Databasen din inneholder allerede data"
-
-#: 
-msgid "Zip code is required"
-msgstr "Postnummer er obligatorisk"
 
 #: 
 msgid "added"
@@ -14833,10 +14765,6 @@ msgstr "Du har ikke tillatelse til å legge til et notat for denne familien."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Du har ikke tillatelse til å legge til et notat for denne personen."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Du har ikke tillatelse til å redigere dette notatet"
 
 #: 
 msgid "Account locked"
@@ -15879,10 +15807,6 @@ msgid "Select a person"
 msgstr "Velg en person"
 
 #: 
-msgid "Select role"
-msgstr "Velg rolle"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Velg type (valgfritt)"
 
@@ -16037,10 +15961,6 @@ msgstr "Er du sikker på at du vil slette denne betalingsposten permanent?"
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Minst én fondstildeling er påkrevd"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Minst ett fond må ha et beløp som ikke er null"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17091,10 +17011,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Oppretter og laster opp sikkerhetskopi. Dette kan ta flere minutter …"
 
 #: 
-msgid "Database reset failed."
-msgstr "Tilbakestilling av database mislyktes."
-
-#: 
 msgid "Deceased"
 msgstr "Avdød"
 
@@ -17291,10 +17207,6 @@ msgid "Log settings saved"
 msgstr "Logginnstillinger lagret"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Brukernavn er påkrevd"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Personen ble markert som aktiv"
 
@@ -17419,10 +17331,6 @@ msgid "Sending..."
 msgstr "Sender …"
 
 #: 
-msgid "Sending…"
-msgstr "Sender …"
-
-#: 
 msgid "Settings reset"
 msgstr "Innstillinger tilbakestilt"
 
@@ -17493,10 +17401,6 @@ msgstr "Kommende"
 #: 
 msgid "View active only"
 msgstr "Vis kun aktive"
-
-#: 
-msgid "View all"
-msgstr "Vis alle"
 
 #: 
 msgid "View all (including inactive)"
@@ -18273,10 +18177,6 @@ msgstr "Medlemslister for tjenester og rapporter for søndagsskoleklasser"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Regnskapsåret ditt starter i %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Det oppstod en feil"
 
 #: 
 msgid "Approve"
@@ -19423,10 +19323,6 @@ msgid "Each staffing need must name a position"
 msgstr "Hvert bemanningsbehov må angi en oppgave"
 
 #: 
-msgid "Edit event"
-msgstr "Rediger hendelse"
-
-#: 
 msgid "Edit ministry"
 msgstr "Rediger tjeneste"
 
@@ -19511,10 +19407,6 @@ msgstr "E-post sendt til {{count}} mottakere."
 #: 
 msgid "Emails"
 msgstr "E-poster"
-
-#: 
-msgid "End time"
-msgstr "Sluttid"
 
 #: 
 msgid "Enter counts"
@@ -20795,10 +20687,6 @@ msgid "SMTP test"
 msgstr "SMTP-test"
 
 #: 
-msgid "Save changes"
-msgstr "Lagre endringer"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Lagret — denne tjenesten ber ikke lenger om hjelp"
 
@@ -21081,10 +20969,6 @@ msgstr "Bemanningsbehov lagret"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Begynn med å opprette en tjeneste, og legg deretter til teamene og oppgavene som tjenestegjør i den."
-
-#: 
-msgid "Start time"
-msgstr "Starttid"
 
 #: 
 msgid "Start typing a name"
@@ -22127,16 +22011,8 @@ msgid "Validation"
 msgstr "Validering"
 
 #: 
-msgid "View event"
-msgstr "Vis arrangement"
-
-#: 
 msgid "View my schedule"
 msgstr "Se min plan"
-
-#: 
-msgid "View person"
-msgstr "Vis person"
 
 #: 
 msgid "View the event"

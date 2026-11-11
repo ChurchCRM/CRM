@@ -4122,10 +4122,6 @@ msgid "The property could not be unassigned."
 msgstr "Proprietatea nu a putut fi ștearsă"
 
 #: 
-msgid "Select event"
-msgstr "Selectează eveniment"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Text înainte de nume în email-uri/rapoarte"
 
@@ -4329,10 +4325,6 @@ msgstr "Resetează-ți parola"
 #: 
 msgid "Kiosk Manager"
 msgstr "Gestionar chioșc (kiosk)"
-
-#: 
-msgid "Report an issue"
-msgstr "Rapoartează o eroare"
 
 #: 
 msgid "Self Verification"
@@ -4745,16 +4737,8 @@ msgid "User must have Delete Records permission"
 msgstr "Utilizatorul trebuie să aibă permisiuni pentru ștergerea înregistrărilor"
 
 #: 
-msgid "invalid event type id"
-msgstr "ID-ul tipului de eveniment este invalid"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "Pinning-ul calendarului este invalid"
-
-#: 
-msgid "invalid status value"
-msgstr "valoarea stării este invalidă"
 
 #: 
 msgid "invalid export value"
@@ -5362,10 +5346,6 @@ msgstr "Se aplică actualizarea sistemului..."
 
 #: 
 msgid "Back to Login"
-msgstr "Înapoi la autentificare"
-
-#: 
-msgid "Back to login"
 msgstr "Înapoi la autentificare"
 
 #: 
@@ -8101,10 +8081,6 @@ msgid "City is required."
 msgstr "Orașul este obligatoriu."
 
 #: 
-msgid "Clear filter"
-msgstr "Ștergeți filtrul"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Elementul de configurare nu a fost găsit"
 
@@ -8374,10 +8350,6 @@ msgstr "Adaugă o persoană"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Adaugă toți din selecție într-un grup"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Adaugă tot în selecție"
 
 #: 
 msgid "Add cart items to a family"
@@ -9382,10 +9354,6 @@ msgid "Record why attendees visited your church"
 msgstr "Înregistrați de ce vizitatorii au venit la biserică"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Elimină toți din selecție"
-
-#: 
 msgid "Remove from Class"
 msgstr "Elimină din clasă"
 
@@ -9856,10 +9824,6 @@ msgstr "Evenimente anul acesta"
 #: 
 msgid "Everyone"
 msgstr "Toți"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Nu s-a putut șterge nota"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11760,10 +11724,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Începutul intervalului trebuie să fie o dată validă YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Începutul intervalului trebuie să fie înainte de sfârșitul intervalului"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Începutul intervalului trebuie să fie înainte de sfârșitul intervalului."
 
@@ -12712,10 +12672,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Eroare la instalarea pluginului din URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Eroare la încărcarea listei de pluginuri aprobate"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Eroare la încărcarea listei de pluginuri aprobate."
 
@@ -12774,10 +12730,6 @@ msgstr "Kebab-case. Trebuie să corespundă numelui directorului de nivel superi
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Se încarcă lista de pluginuri aprobate…"
-
-#: 
-msgid "Loading…"
-msgstr "Se încarcă…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13225,10 +13177,6 @@ msgid "Change Your Locale"
 msgstr "Schimbați Localizarea"
 
 #: 
-msgid "Change role"
-msgstr "Schimba rolul"
-
-#: 
 msgid "Check Number"
 msgstr "Număr verificare"
 
@@ -13243,10 +13191,6 @@ msgstr "Înregistrarea prezenței a eșuat. Vă rugăm să încercați din nou."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Ieșirea a eșuat. Vă rugăm să încercați din nou."
-
-#: 
-msgid "City is required"
-msgstr "Orașul este obligatoriu"
 
 #: 
 msgid "Click Save to apply."
@@ -13315,10 +13259,6 @@ msgstr "Copiaţi toate numerele"
 #: 
 msgid "Copy Members to Group"
 msgstr "Copiază membrii în grup"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Se creează copia de siguranță..."
 
 #: 
 msgid "Creating..."
@@ -14385,10 +14325,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Veți primi coduri de rezervă care pot fi utilizate dacă pierdeți accesul la aplicație"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Coșul tău este gol"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Contul dvs. este acum protejat"
 
@@ -14407,10 +14343,6 @@ msgstr "Preferința de limbă a browserului dvs. diferă de localizarea ChurchCR
 #: 
 msgid "Your database already contains data"
 msgstr "Baza dvs. de date conține deja date"
-
-#: 
-msgid "Zip code is required"
-msgstr "Codul poștal este obligatoriu"
 
 #: 
 msgid "added"
@@ -14832,10 +14764,6 @@ msgstr "Nu aveți permisiunea de a adăuga o notă pentru această familie."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Nu aveți permisiunea de a adăuga o notă pentru această persoană."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Nu aveți permisiunea de a edita această notă"
 
 #: 
 msgid "Account locked"
@@ -15880,10 +15808,6 @@ msgid "Select a person"
 msgstr "Selectati o persoana"
 
 #: 
-msgid "Select role"
-msgstr "Selectati rolul"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Selectati tipul optional"
 
@@ -16038,10 +15962,6 @@ msgstr "Sigur doriți să ștergeți definitiv această înregistrare de plată?
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Este necesară cel puțin o alocare de fond"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Cel puțin un fond trebuie să aibă o sumă diferită de zero"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17094,10 +17014,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Se creează și se încarcă copia de rezervă. Acest lucru poate dura câteva minute..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Resetarea bazei de date a eșuat."
-
-#: 
 msgid "Deceased"
 msgstr "Decedat"
 
@@ -17294,10 +17210,6 @@ msgid "Log settings saved"
 msgstr "Setările jurnalului au fost salvate"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Numele de utilizator este obligatoriu"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Persoana a fost marcată ca activă"
 
@@ -17422,10 +17334,6 @@ msgid "Sending..."
 msgstr "Se trimite..."
 
 #: 
-msgid "Sending…"
-msgstr "Se trimite…"
-
-#: 
 msgid "Settings reset"
 msgstr "Setările au fost resetate"
 
@@ -17496,10 +17404,6 @@ msgstr "Viitoare"
 #: 
 msgid "View active only"
 msgstr "Vizualizează doar activ"
-
-#: 
-msgid "View all"
-msgstr "Vizualizează tot"
 
 #: 
 msgid "View all (including inactive)"
@@ -18276,10 +18180,6 @@ msgstr "Liste cu credincioșii din slujiri și rapoarte ale claselor Școlii dum
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Anul dumneavoastră fiscal începe în %s."
-
-#: 
-msgid "An error occurred"
-msgstr "A apărut o eroare"
 
 #: 
 msgid "Approve"
@@ -19433,10 +19333,6 @@ msgid "Each staffing need must name a position"
 msgstr "Fiecare necesar de personal trebuie să numească un post"
 
 #: 
-msgid "Edit event"
-msgstr "Editează evenimentul"
-
-#: 
 msgid "Edit ministry"
 msgstr "Editează slujirea"
 
@@ -19521,10 +19417,6 @@ msgstr "Email trimis către {{count}} destinatari."
 #: 
 msgid "Emails"
 msgstr "E-mailuri"
-
-#: 
-msgid "End time"
-msgstr "Ora de sfârșit"
 
 #: 
 msgid "Enter counts"
@@ -20807,10 +20699,6 @@ msgid "SMTP test"
 msgstr "Test SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Salvați modificările"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Salvat — această slujire nu mai cere ajutor"
 
@@ -21093,10 +20981,6 @@ msgstr "Necesar de personal salvat"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Începeți prin a crea o slujire, apoi adăugați echipele și posturile care slujesc în ea."
-
-#: 
-msgid "Start time"
-msgstr "Timp start"
 
 #: 
 msgid "Start typing a name"
@@ -22141,16 +22025,8 @@ msgid "Validation"
 msgstr "Validare"
 
 #: 
-msgid "View event"
-msgstr "Vizualizați evenimentul"
-
-#: 
 msgid "View my schedule"
 msgstr "Vezi programul meu"
-
-#: 
-msgid "View person"
-msgstr "Vizualizare persoană"
 
 #: 
 msgid "View the event"

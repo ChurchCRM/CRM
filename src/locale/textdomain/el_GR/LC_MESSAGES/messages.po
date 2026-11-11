@@ -4062,10 +4062,6 @@ msgid "The property could not be unassigned."
 msgstr "Δεν ήταν δυνατή η κατάργηση της εκχώρησης της ιδιοκτησίας."
 
 #: 
-msgid "Select event"
-msgstr "Επιλέξτε εκδήλωση"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "Κείμενο πριν από το όνομα στα email/αναφορές"
 
@@ -4269,10 +4265,6 @@ msgstr "Επαναφορά του κωδικού πρόσβασής σας"
 #: 
 msgid "Kiosk Manager"
 msgstr "Υπεύθυνος περιπτέρου"
-
-#: 
-msgid "Report an issue"
-msgstr "Αναφέρετε ένα πρόβλημα"
 
 #: 
 msgid "Self Verification"
@@ -4685,16 +4677,8 @@ msgid "User must have Delete Records permission"
 msgstr "Ο χρήστης πρέπει να έχει δικαίωμα Διαγραφής Εγγραφών"
 
 #: 
-msgid "invalid event type id"
-msgstr "μη έγκυρο αναγνωριστικό τύπου συμβάντος"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "μη έγκυρο καρφίτσωμα ημερολογίου"
-
-#: 
-msgid "invalid status value"
-msgstr "μη έγκυρη τιμή κατάστασης"
 
 #: 
 msgid "invalid export value"
@@ -5302,10 +5286,6 @@ msgstr "Εφαρμογή Ενημέρωσης Συστήματος..."
 #: 
 msgid "Back to Login"
 msgstr "Επιστροφή σε Σύνδεση"
-
-#: 
-msgid "Back to login"
-msgstr "Επιστροφή σε σύνδεση"
 
 #: 
 msgid "Complete"
@@ -8034,10 +8014,6 @@ msgid "City is required."
 msgstr "Η πόλη είναι υποχρεωτική."
 
 #: 
-msgid "Clear filter"
-msgstr "Εκκαθάριση φίλτρου"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Το στοιχείο διαμόρφωσης δεν βρέθηκε"
 
@@ -8306,10 +8282,6 @@ msgstr "Προσθήκη ατόμου"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Προσθήκη όλων των στοιχείων της λίστας σε ομάδα"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Προσθήκη όλων στη λίστα"
 
 #: 
 msgid "Add cart items to a family"
@@ -9314,10 +9286,6 @@ msgid "Record why attendees visited your church"
 msgstr "Καταγράψτε γιατί οι επισκέπτες ήρθαν στην ενορία σας"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Αφαίρεση όλων από τη λίστα"
-
-#: 
 msgid "Remove from Class"
 msgstr "Αφαίρεση από την τάξη"
 
@@ -9788,10 +9756,6 @@ msgstr "Εκδηλώσεις φέτος"
 #: 
 msgid "Everyone"
 msgstr "Όλοι"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Αποτυχία διαγραφής σημείωσης"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11691,10 +11655,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Η έναρξη εύρους πρέπει να είναι έγκυρη ημερομηνία YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Η έναρξη εύρους πρέπει να είναι πριν από τη λήξη εύρους"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Η έναρξη εύρους πρέπει να είναι πριν από τη λήξη εύρους."
 
@@ -12643,10 +12603,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Αποτυχία εγκατάστασης προσθήκης από URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Αποτυχία φόρτωσης λίστας εγκεκριμένων προσθηκών"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Αποτυχία φόρτωσης λίστας εγκεκριμένων προσθηκών."
 
@@ -12705,10 +12661,6 @@ msgstr "Kebab-case. Πρέπει να ταιριάζει με το όνομα τ
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Φόρτωση λίστας εγκεκριμένων προσθηκών…"
-
-#: 
-msgid "Loading…"
-msgstr "Φόρτωση…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13156,10 +13108,6 @@ msgid "Change Your Locale"
 msgstr "Αλλαγή τοπικών ρυθμίσεων"
 
 #: 
-msgid "Change role"
-msgstr "Αλλαγή ρόλου"
-
-#: 
 msgid "Check Number"
 msgstr "Ελέγξτε τον αριθμό"
 
@@ -13174,10 +13122,6 @@ msgstr "Το check-in απέτυχε. Παρακαλώ δοκιμάστε ξαν
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Το check-out απέτυχε. Παρακαλώ δοκιμάστε ξανά."
-
-#: 
-msgid "City is required"
-msgstr "Η πόλη είναι απαραίτητη"
 
 #: 
 msgid "Click Save to apply."
@@ -13246,10 +13190,6 @@ msgstr "Αντιγράψτε όλους τους αριθμούς"
 #: 
 msgid "Copy Members to Group"
 msgstr "Αντιγραφή μελών σε ομάδα"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Δημιουργία αντιγράφου ασφαλείας..."
 
 #: 
 msgid "Creating..."
@@ -14316,10 +14256,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Θα λάβετε κωδικούς αντιγράφων ασφαλείας που μπορούν να χρησιμοποιηθούν εάν χάσετε την πρόσβαση στην εφαρμογή σας"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Το καλάθι σας είναι άδειο"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Ο λογαριασμός σας είναι πλέον προστατευμένος"
 
@@ -14338,10 +14274,6 @@ msgstr "Η προτίμηση γλώσσας του προγράμματος π�
 #: 
 msgid "Your database already contains data"
 msgstr "Η βάση δεδομένων σας περιέχει ήδη δεδομένα"
-
-#: 
-msgid "Zip code is required"
-msgstr "Ο ταχυδρομικός κώδικας είναι απαραίτητος"
 
 #: 
 msgid "added"
@@ -14762,10 +14694,6 @@ msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση 
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση για αυτό το μέλος."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Δεν έχετε άδεια να επεξεργαστείτε αυτήν τη σημείωση"
 
 #: 
 msgid "Account locked"
@@ -15808,10 +15736,6 @@ msgid "Select a person"
 msgstr "Επιλογή ατόμου"
 
 #: 
-msgid "Select role"
-msgstr "Επιλογή ρόλου"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Επιλογή τύπου (προαιρετικό)"
 
@@ -15966,10 +15890,6 @@ msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε 
 #: 
 msgid "At least one fund allocation is required"
 msgstr "Απαιτείται τουλάχιστον μία κατανομή ταμείου"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Τουλάχιστον ένα ταμείο πρέπει να έχει μη μηδενικό ποσό"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17020,10 +16940,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Δημιουργία και μεταφόρτωση αντιγράφου ασφαλείας. Αυτό μπορεί να διαρκέσει αρκετά λεπτά..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Η επαναφορά της βάσης δεδομένων απέτυχε."
-
-#: 
 msgid "Deceased"
 msgstr "Αποβιώσας"
 
@@ -17220,10 +17136,6 @@ msgid "Log settings saved"
 msgstr "Οι ρυθμίσεις καταγραφής αποθηκεύτηκαν"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Το Όνομα Σύνδεσης είναι Υποχρεωτικό"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Το άτομο σημειώθηκε ως Ενεργό"
 
@@ -17348,10 +17260,6 @@ msgid "Sending..."
 msgstr "Αποστολή..."
 
 #: 
-msgid "Sending…"
-msgstr "Αποστολή…"
-
-#: 
 msgid "Settings reset"
 msgstr "Οι ρυθμίσεις επαναφέρθηκαν"
 
@@ -17422,10 +17330,6 @@ msgstr "Προσεχώς"
 #: 
 msgid "View active only"
 msgstr "Προβολή μόνο ενεργών"
-
-#: 
-msgid "View all"
-msgstr "Προβολή όλων"
 
 #: 
 msgid "View all (including inactive)"
@@ -18202,10 +18106,6 @@ msgstr "Λίστες μελών διακονιών και αναφορές τά�
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Το οικονομικό σας έτος ξεκινά τον %s."
-
-#: 
-msgid "An error occurred"
-msgstr "Παρουσιάστηκε σφάλμα"
 
 #: 
 msgid "Approve"
@@ -19352,10 +19252,6 @@ msgid "Each staffing need must name a position"
 msgstr "Κάθε ανάγκη στελέχωσης πρέπει να ορίζει μια θέση"
 
 #: 
-msgid "Edit event"
-msgstr "Επεξεργασία Event"
-
-#: 
 msgid "Edit ministry"
 msgstr "Επεξεργασία διακονίας"
 
@@ -19440,10 +19336,6 @@ msgstr "Τα email στάλθηκαν σε {{count}} παραλήπτες."
 #: 
 msgid "Emails"
 msgstr "Email"
-
-#: 
-msgid "End time"
-msgstr "Ώρα Λήξης"
 
 #: 
 msgid "Enter counts"
@@ -20724,10 +20616,6 @@ msgid "SMTP test"
 msgstr "Δοκιμή SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Αποθήκευσε τις αλλαγές"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Αποθηκεύτηκε — αυτή η διακονία δεν ζητά πλέον βοήθεια"
 
@@ -21010,10 +20898,6 @@ msgstr "Οι ανάγκες στελέχωσης αποθηκεύτηκαν"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Ξεκινήστε δημιουργώντας μια διακονία και μετά προσθέστε τις ομάδες και τις θέσεις που υπηρετούν σε αυτήν."
-
-#: 
-msgid "Start time"
-msgstr "Ωρα έναρξης"
 
 #: 
 msgid "Start typing a name"
@@ -22056,16 +21940,8 @@ msgid "Validation"
 msgstr "Επικύρωση"
 
 #: 
-msgid "View event"
-msgstr "Προβολή Εκδήλωσης"
-
-#: 
 msgid "View my schedule"
 msgstr "Προβολή του προγράμματός μου"
-
-#: 
-msgid "View person"
-msgstr "Προβολή Μέλους"
 
 #: 
 msgid "View the event"

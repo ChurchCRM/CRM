@@ -4062,10 +4062,6 @@ msgid "The property could not be unassigned."
 msgstr "Tesis tayinsiz olamazdı."
 
 #: 
-msgid "Select event"
-msgstr "Etkinliği Seçin"
-
-#: 
 msgid "Text before name in emails/reports"
 msgstr "E -postalarda/raporlarda addan önce metin"
 
@@ -4269,10 +4265,6 @@ msgstr "Şifrenizi sıfırlayın"
 #: 
 msgid "Kiosk Manager"
 msgstr "Kiosk yöneticisi"
-
-#: 
-msgid "Report an issue"
-msgstr "Bir Sorun Bildirin"
 
 #: 
 msgid "Self Verification"
@@ -4685,16 +4677,8 @@ msgid "User must have Delete Records permission"
 msgstr "Kullanıcının kayıt iznini silmesi gerekir"
 
 #: 
-msgid "invalid event type id"
-msgstr "Geçersiz olay türü kimliği"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "Geçersiz takvim sabitleme"
-
-#: 
-msgid "invalid status value"
-msgstr "Geçersiz Durum Değeri"
 
 #: 
 msgid "invalid export value"
@@ -5302,10 +5286,6 @@ msgstr "Sistem Güncellemesi Uygulanıyor..."
 #: 
 msgid "Back to Login"
 msgstr "Giriş Sayfasına Dön"
-
-#: 
-msgid "Back to login"
-msgstr "Giriş sayfasına dön"
 
 #: 
 msgid "Complete"
@@ -8034,10 +8014,6 @@ msgid "City is required."
 msgstr "Şehir zorunludur."
 
 #: 
-msgid "Clear filter"
-msgstr "Filtreyi temizle"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Yapılandırma öğesi bulunamadı"
 
@@ -8306,10 +8282,6 @@ msgstr "Kişi Ekle"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Listedeki tüm öğeleri bir gruba ekle"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Tümünü Listeye Ekle"
 
 #: 
 msgid "Add cart items to a family"
@@ -9314,10 +9286,6 @@ msgid "Record why attendees visited your church"
 msgstr "Katılımcıların kilisenizi neden ziyaret ettiğini kaydedin"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Tümünü Listeden Kaldır"
-
-#: 
 msgid "Remove from Class"
 msgstr "Sınıftan Kaldır"
 
@@ -9788,10 +9756,6 @@ msgstr "Bu Yılın Etkinlikleri"
 #: 
 msgid "Everyone"
 msgstr "Herkes"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Not silinemedi"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11691,10 +11655,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Aralık başlangıcı geçerli bir YYYY-AA-GG tarihi olmalıdır."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Aralık başlangıcı aralık bitişinden önce olmalıdır"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Aralık başlangıcı aralık bitişinden önce olmalıdır."
 
@@ -12643,10 +12603,6 @@ msgid "Failed to install plugin from URL"
 msgstr "URL'den eklenti yüklenemedi"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Onaylı eklenti listesi yüklenemedi"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Onaylı eklenti listesi yüklenemedi."
 
@@ -12705,10 +12661,6 @@ msgstr "Kebab-case biçiminde. Zip içindeki üst düzey dizin adıyla ve plugin
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Onaylı eklenti listesi yükleniyor…"
-
-#: 
-msgid "Loading…"
-msgstr "Yükleniyor…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13156,10 +13108,6 @@ msgid "Change Your Locale"
 msgstr "Yerel Ayarınızı Değiştirin"
 
 #: 
-msgid "Change role"
-msgstr "Rolü değiştir"
-
-#: 
 msgid "Check Number"
 msgstr "Numaraya bak"
 
@@ -13174,10 +13122,6 @@ msgstr "Giriş başarısız oldu. Lütfen tekrar deneyin."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Çıkış başarısız oldu. Lütfen tekrar deneyin."
-
-#: 
-msgid "City is required"
-msgstr "Şehir gereklidir"
 
 #: 
 msgid "Click Save to apply."
@@ -13246,10 +13190,6 @@ msgstr "Tüm Numaraları Kopyala"
 #: 
 msgid "Copy Members to Group"
 msgstr "Üyeleri Gruba Kopyala"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Yedek Oluşturuluyor..."
 
 #: 
 msgid "Creating..."
@@ -14316,10 +14256,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Uygulamanıza erişimi kaybetmeniz durumunda kullanılabilecek yedek kodlar alacaksınız"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Sepetiniz boş"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Hesabınız artık korunuyor"
 
@@ -14338,10 +14274,6 @@ msgstr "Tarayıcı dil tercihiniz ChurchCRM yerel ayarınızdan farklı"
 #: 
 msgid "Your database already contains data"
 msgstr "Veritabanınız zaten veri içeriyor"
-
-#: 
-msgid "Zip code is required"
-msgstr "Posta kodu gereklidir"
 
 #: 
 msgid "added"
@@ -14762,10 +14694,6 @@ msgstr "Bu aile için not ekleme izniniz yok."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Bu kişi için not ekleme izniniz yok."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Bu notu düzenleme izniniz yok"
 
 #: 
 msgid "Account locked"
@@ -15808,10 +15736,6 @@ msgid "Select a person"
 msgstr "Bir kişi seçin"
 
 #: 
-msgid "Select role"
-msgstr "Rol seçin"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Tür seçin (isteğe bağlı)"
 
@@ -15966,10 +15890,6 @@ msgstr "Bu ödeme kaydını kalıcı olarak silmek istediğinizden emin misiniz?
 #: 
 msgid "At least one fund allocation is required"
 msgstr "En az bir fon tahsisi gereklidir"
-
-#: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "En az bir fonun sıfır olmayan bir tutarı olmalıdır"
 
 #: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
@@ -17020,10 +16940,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Yedek oluşturuluyor ve yükleniyor. Bu birkaç dakika sürebilir..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Veritabanı sıfırlama başarısız oldu."
-
-#: 
 msgid "Deceased"
 msgstr "Vefat Etmiş"
 
@@ -17220,10 +17136,6 @@ msgid "Log settings saved"
 msgstr "Günlük ayarları kaydedildi"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Giriş Adı Gereklidir"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Kişi Aktif Olarak İşaretlendi"
 
@@ -17348,10 +17260,6 @@ msgid "Sending..."
 msgstr "Gönderiliyor..."
 
 #: 
-msgid "Sending…"
-msgstr "Gönderiliyor…"
-
-#: 
 msgid "Settings reset"
 msgstr "Ayarlar sıfırlandı"
 
@@ -17422,10 +17330,6 @@ msgstr "Yaklaşan"
 #: 
 msgid "View active only"
 msgstr "Yalnızca aktifleri görüntüle"
-
-#: 
-msgid "View all"
-msgstr "Tümünü görüntüle"
 
 #: 
 msgid "View all (including inactive)"
@@ -18202,10 +18106,6 @@ msgstr "Hizmet üyelik listeleri ve Pazar Okulu sınıf raporları"
 #: 
 msgid "Your fiscal year starts in %s."
 msgstr "Mali yılınız %s ayında başlıyor."
-
-#: 
-msgid "An error occurred"
-msgstr "Bir hata oluştu"
 
 #: 
 msgid "Approve"
@@ -19352,10 +19252,6 @@ msgid "Each staffing need must name a position"
 msgstr "Her kadro ihtiyacı bir pozisyonu belirtmelidir"
 
 #: 
-msgid "Edit event"
-msgstr "Etkinliği Düzenle"
-
-#: 
 msgid "Edit ministry"
 msgstr "Hizmeti düzenle"
 
@@ -19440,10 +19336,6 @@ msgstr "E-postalar {{count}} alıcıya gönderildi."
 #: 
 msgid "Emails"
 msgstr "E-postalar"
-
-#: 
-msgid "End time"
-msgstr "Bitiş Saati"
 
 #: 
 msgid "Enter counts"
@@ -20724,10 +20616,6 @@ msgid "SMTP test"
 msgstr "SMTP testi"
 
 #: 
-msgid "Save changes"
-msgstr "Değişiklikleri Kaydet"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Kaydedildi — bu hizmet artık yardım istemiyor"
 
@@ -21010,10 +20898,6 @@ msgstr "Kadro ihtiyaçları kaydedildi"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Önce bir hizmet oluşturarak başlayın, ardından o hizmette görev yapan ekipleri ve pozisyonları ekleyin."
-
-#: 
-msgid "Start time"
-msgstr "Başlangıç ​​saati"
 
 #: 
 msgid "Start typing a name"
@@ -22056,16 +21940,8 @@ msgid "Validation"
 msgstr "Doğrulama"
 
 #: 
-msgid "View event"
-msgstr "Etkinliği Görüntüle"
-
-#: 
 msgid "View my schedule"
 msgstr "Programımı görüntüle"
-
-#: 
-msgid "View person"
-msgstr "Kişiyi Görüntüle"
 
 #: 
 msgid "View the event"
