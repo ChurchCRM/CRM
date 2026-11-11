@@ -24,6 +24,11 @@ for (const profile of ['production', 'demo', 'test']) {
             assert.equal(properties[0].install_profile, profile);
             assert.equal(properties[0].crm_version, '7.8.3');
             assert.equal(calls[0][1].person_profiles, 'never');
+            assert.equal(calls[0][1].ip, false);
+            const event = calls[0][1].before_send({ event: 'x', properties: { $ip: '1.2.3.4', $pathname: '/cms/admin/x?id=5' } });
+            assert.equal(event.properties.$geoip_disable, true);
+            assert.equal(event.properties.$ip, undefined);
+            assert.equal(event.properties.$pathname, '/cms/admin/x');
         }
     });
 }

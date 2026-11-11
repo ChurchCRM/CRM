@@ -59,6 +59,13 @@ function sanitizeEvent(event) {
       delete properties[property];
     }
   }
+  properties.$geoip_disable = true;
+  if (typeof properties.$pathname === "string") {
+    const rootPath = (window.CRM?.root || "").replace(/\/+$/, "");
+    const path = properties.$pathname.split(/[?#]/, 1)[0];
+    properties.$pathname =
+      rootPath && (path === rootPath || path.startsWith(`${rootPath}/`)) ? path.slice(rootPath.length) || "/" : path;
+  }
   for (const property of ["$current_url", "$session_entry_url", "$referrer"]) {
     if (property in properties) {
       properties[property] = stripUrlDetails(properties[property]);
@@ -78,6 +85,7 @@ if (cfg?.key && cfg.level && cfg.level !== "none" && cfg.install_profile !== "te
     disable_session_recording: true,
     capture_exceptions: true, // active at all levels (errors / warnings / full)
     person_profiles: "never",
+    ip: false,
     bootstrap: { distinctID: cfg.distinctID || "" },
     before_send: sanitizeEvent,
   });
