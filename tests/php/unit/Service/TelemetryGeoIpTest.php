@@ -66,12 +66,12 @@ TelemetryService::captureUpgradeSqlError('7.8.3', 10, 'Database error');
 TelemetryService::captureUpgradeInterruption('7.8.3', 10);
 
 $payloads = $GLOBALS['telemetryPayloads'];
-Assert::same(['page_view', 'log_error', 'install_observed', 'upgrade_completed', 'upgrade_sql_completed', 'upgrade_sql_failed'], array_column($payloads, 'event'));
+Assert::same(['page_view', 'log_error', 'install_observed', 'upgrade_completed', 'upgrade_sql_completed', 'upgrade_sql_failed', 'install_failed', 'upgrade_failed', 'upgrade_failed', 'upgrade_failed'], array_column($payloads, 'event'));
 foreach ($payloads as $payload) {
     Assert::true($payload['properties']['$geoip_disable']);
     Assert::false(array_key_exists('$ip', $payload['properties']));
     Assert::same(TelemetryService::POSTHOG_KEY, $payload['api_key']);
 }
 foreach ($payloads as $payload) {
-    Assert::same('install-id', $payload['distinct_id']);
+    Assert::same(str_ends_with($payload['event'], '_failed') && !str_starts_with($payload['event'], 'upgrade_sql') ? 'churchcrm-aggregate-failures' : 'install-id', $payload['distinct_id']);
 }

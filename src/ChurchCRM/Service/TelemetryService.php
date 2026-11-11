@@ -16,6 +16,8 @@ class TelemetryService
     public const POSTHOG_KEY      = 'phc_vhMEHZai3exmp3sqqtJGyVY8Dfjn877bV7zQjV99sJZy';
     public const POSTHOG_ENDPOINT = 'https://us.i.posthog.com';
     public const POSTHOG_CAPTURE_ENDPOINT = self::POSTHOG_ENDPOINT . '/i/v0/e/';
+    /** One ID shared by every installation, for failures reported at level none. */
+    private const FAILURE_DISTINCT_ID = 'churchcrm-aggregate-failures';
 
     // Collection levels stored in sTelemetryLevel.
     public const LEVEL_NONE     = 'none';
@@ -227,38 +229,44 @@ class TelemetryService
     }
 
     /**
-     * A failed first install has no configuration and no installation ID yet. It is reported at the
-     * default Install level with a fixed reason code and an ID hashed from the server name and path,
-     * so repeated attempts on one server count as one installation.
+     * A failed first install has no configuration and no installation ID yet. Its ID is hashed from the
+     * document root's device and inode, which hold no server name or path, so repeated attempts on one
+     * server count as one installation. At level none it uses the shared failure ID instead.
      */
     public static function captureInstallFailure(string $reason): void
     {
-        if (self::installProfile() === 'test'
-            || (SystemConfig::isInitialized() && self::getLevel() === self::LEVEL_NONE)) {
+        if (self::installProfile() === 'test') {
             return;
         }
-        try {
-            $installId = 'install-' . substr(sha1(php_uname('n') . '|' . SystemURLs::getDocumentRoot()), 0, 32);
-        } catch (\Throwable) {
-            return;
+        $distinctId = self::FAILURE_DISTINCT_ID;
+        if (!SystemConfig::isInitialized() || self::getLevel() !== self::LEVEL_NONE) {
+            $stat = @stat(SystemURLs::getDocumentRoot());
+            if ($stat !== false) {
+                $distinctId = 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32);
+            }
         }
         self::capture('install_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
             'failure_reason' => in_array($reason, ['schema_import_failed'], true) ? $reason : 'other',
-        ]), $installId);
+        ]), $distinctId);
     }
 
     /** Fixed codes only: a free-text reason could carry details of a church's installation. */
     public const UPGRADE_FAILURE_REASONS = ['no_upgrade_path', 'script_interrupted'];
 
+    /** Sent at every level so failed upgrades get fixed; at level none it carries the shared failure ID, not this installation's. */
     public static function captureUpgradeFailure(string $version, string $reason): void
     {
-        if (self::getLevel() === self::LEVEL_NONE || self::installProfile() === 'test') {
+        if (self::installProfile() === 'test') {
             return;
         }
         try {
             $fromVersion = VersionUtils::getDBVersion();
         } catch (\Throwable) {
-            $fromVersion = SystemConfig::getValue('sTelemetryLifecycleVersion') ?: null;
+            try {
+                $fromVersion = SystemConfig::getValue('sTelemetryLifecycleVersion') ?: null;
+            } catch (\Throwable) {
+                $fromVersion = null;
+            }
         }
         $reason = in_array($reason, self::UPGRADE_FAILURE_REASONS, true) ? $reason : 'other';
 
@@ -276,7 +284,7 @@ class TelemetryService
         self::capture('upgrade_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
             'from_version' => $fromVersion,
             'failure_reason' => $reason,
-        ]));
+        ]), self::getLevel() === self::LEVEL_NONE ? self::FAILURE_DISTINCT_ID : null);
     }
 
     public static function captureUpgradeInterruption(string $version, int $elapsedMs): void
@@ -303,7 +311,7 @@ class TelemetryService
 
         // Strip query string so no record IDs reach PostHog.
         $rawUrl = $record->extra['url'] ?? '';
-        $route  = $rawUrl !== '' ? explode('?', $rawUrl, 2)[0] : 'unknown';
+        $route  = $rawUrl !== '' ? self::normalizePageRoute($rawUrl, SystemURLs::getRootPath()) : 'unknown';
 
         $message = self::scrubLogMessage($record->message);
         if (!self::firstLogToday($record->level->name . '|' . $message)) {
@@ -347,7 +355,29 @@ class TelemetryService
         $message = preg_replace('/SQLSTATE\[[^\]]*\].*$/s', '[database error]', $message) ?? '';
         $message = preg_replace('/[A-Z0-9.!#$%&\x27*+\/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i', '[email]', $message) ?? '';
 
-        return mb_substr($message, 0, 500);
+        return mb_substr(self::scrubHostDetails($message), 0, 500);
+    }
+
+    /** Remove web addresses, this server's names, its install path and IP addresses, so no event identifies the church. */
+    public static function scrubHostDetails(string $text): string
+    {
+        $text = preg_replace('#\b[a-z][a-z0-9+.-]*://[^\s\'"<>]+#i', '[url]', $text) ?? '';
+        $known = [];
+        foreach ([$_SERVER['HTTP_HOST'] ?? '', $_SERVER['SERVER_NAME'] ?? '', php_uname('n')] as $host) {
+            $host = explode(':', (string) $host, 2)[0];
+            if (strlen($host) > 3) {
+                $known[$host] = '[host]';
+            }
+        }
+        try {
+            $documentRoot = (string) SystemURLs::getDocumentRoot();
+            if (strlen($documentRoot) > 1) {
+                $known = [$documentRoot => '[path]'] + $known;
+            }
+        } catch (\Throwable) {
+        }
+
+        return preg_replace('/\b(?:\d{1,3}\.){3}\d{1,3}\b/', '[ip]', strtr($text, $known)) ?? '';
     }
 
     private static function lifecycleProperties(string $version): array
@@ -416,7 +446,7 @@ class TelemetryService
     {
         $databaseError = preg_replace("/'[^']*'/", "'[redacted]'", $databaseError) ?? '';
         $databaseError = preg_replace('/\b[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}\b/', '[redacted]', $databaseError) ?? '';
-        $databaseError = preg_replace('/\b(?:\d{1,3}\.){3}\d{1,3}\b/', '[redacted]', $databaseError) ?? '';
+        $databaseError = self::scrubHostDetails($databaseError);
 
         return mb_substr(preg_replace('/[\x00-\x1F\x7F]/u', ' ', $databaseError) ?? '', 0, 500);
     }

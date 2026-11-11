@@ -213,8 +213,8 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                         <?php else: ?>
                         <li><?= gettext('Shared in addition: warnings, error details, and which pages are opened.') ?></li>
                         <?php endif; ?>
-                        <li><?= gettext('Never shared: member, giving, or other church records, your church name, or email addresses. Your country is the one in your church settings, not looked up from your network.') ?></li>
-                        <li><?= gettext('Your choice is asked once. You can change it or stop all reporting at any time.') ?></li>
+                        <li><?= gettext('Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.') ?></li>
+                        <li><?= gettext('Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported, with no installation ID.') ?></li>
                     </ul>
                     <div class="d-flex gap-2 flex-wrap">
                         <button type="button" class="btn btn-info js-telemetry-consent" data-level="<?= $offerInstall ? TelemetryService::LEVEL_INSTALL : TelemetryService::LEVEL_FULL ?>">
