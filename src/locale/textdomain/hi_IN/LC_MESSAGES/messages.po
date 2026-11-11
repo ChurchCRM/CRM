@@ -15937,18 +15937,6 @@ msgid "Editing a Pledge"
 msgstr "प्रतिज्ञा संपादित करना"
 
 #: 
-msgid "Enable (full)"
-msgstr "सक्षम करें (पूर्ण)"
-
-#: 
-msgid "Errors only"
-msgstr "केवल त्रुटियाँ"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "त्रुटियाँ — सर्वर त्रुटियाँ और JS अपवाद"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "प्रतिज्ञा बनाने में विफल"
 
@@ -15987,10 +15975,6 @@ msgstr "समूह कुंजी आवश्यक है"
 #: 
 msgid "Happy Birthday"
 msgstr "जन्मदिन मुबारक हो"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ChurchCRM को बेहतर बनाने में सहायता करें"
 
 #: 
 msgid "IP addresses"
@@ -16061,16 +16045,8 @@ msgid "None (disabled)"
 msgstr "कोई नहीं (अक्षम)"
 
 #: 
-msgid "OS family"
-msgstr "OS परिवार"
-
-#: 
 msgid "Overpaid"
 msgstr "अधिक भुगतान"
-
-#: 
-msgid "PHP version"
-msgstr "PHP संस्करण"
 
 #: 
 msgid "Page route"
@@ -16171,10 +16147,6 @@ msgstr "उपयोगकर्ता नाम, ईमेल या भूम�
 #: 
 msgid "View pledge or payment details"
 msgstr "प्रतिज्ञा या भुगतान विवरण देखें"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "चेतावनियाँ — चेतावनियाँ, त्रुटियाँ और JS अपवाद"
 
 #: 
 msgid "What is sent"
@@ -24523,28 +24495,12 @@ msgid "Closing Line"
 msgstr "समापन पंक्ति"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "वैकल्पिक टेलीमेट्री नियंत्रित करता है। टेलीमेट्री बंद होने पर भी स्थापना और डेटाबेस उन्नयन की विफलताएँ PostHog को सीमित निदान भेजती हैं। इन विफलता रिपोर्टों में सॉफ़्टवेयर और वातावरण के संस्करण तथा स्वच्छ किया डेटाबेस त्रुटि संदेश होता है, पर स्थापना आईडी या SQL कथन नहीं।"
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "विफल स्थापनाओं और डेटाबेस उन्नयन का निदान करें"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "स्थापना और उन्नयन की विफलता का विवरण"
-
-#: 
 msgid "Open in browser window"
 msgstr "ब्राउज़र विंडो में खोलें"
 
 #: 
 msgid "Opening Line"
 msgstr "आरंभिक पंक्ति"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "वैकल्पिक उपयोग टेलीमेट्री केवल चालू होने पर भेजी जाती है। स्थापना और डेटाबेस उन्नयन की विफलताएँ हमेशा समुदाय की सहायता के लिए सीमित निदान भेजती हैं, भले ही आप नहीं, धन्यवाद चुनें। विफलता रिपोर्टों में सॉफ़्टवेयर और वातावरण के संस्करण तथा स्वच्छ किया डेटाबेस त्रुटि संदेश होता है, बिना स्थापना आईडी या SQL कथन के।"
 
 #: 
 msgid "PDF Handling"
@@ -24581,14 +24537,6 @@ msgstr "विवरण की शब्दावली"
 #: 
 msgid "Tax Information"
 msgstr "कर जानकारी"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "टेलीमेट्री संयुक्त राज्य अमेरिका में PostHog को भेजी जाती है। वैकल्पिक टेलीमेट्री अक्षम होने पर भी स्थापना और उन्नयन की विफलता रिपोर्ट भेजी जाती हैं।"
-
-#: 
-msgid "always sent"
-msgstr "सदैव भेजा जाता है"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25645,10 +25593,6 @@ msgstr "कार्यालय सूची में केवल जीव�
 #: 
 msgid "Only people with their own email can be added."
 msgstr "केवल अपने ईमेल वाले लोग जोड़े जा सकते हैं।"
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "वैकल्पिक टेलीमेट्री में पृष्ठ मार्ग, सक्रिय लोकेल, CRM संस्करण, PHP संस्करण, OS परिवार, आपकी चर्च जानकारी सेटिंग का देश और एक यादृच्छिक स्थापना आईडी शामिल हो सकते हैं। विफलता रिपोर्टों में स्थापना आईडी नहीं होती। डेटा संयुक्त राज्य अमेरिका में PostHog को भेजा जाता है।"
 
 #: 
 msgid "Passkey"

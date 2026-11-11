@@ -15959,18 +15959,6 @@ msgid "Editing a Pledge"
 msgstr "Po redaktohet një Premtim"
 
 #: 
-msgid "Enable (full)"
-msgstr "Aktivizo (i plotë)"
-
-#: 
-msgid "Errors only"
-msgstr "Vetëm gabime"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Gabime — gabime serveri dhe përjashtime JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Dështoi krijimi i premtimit"
 
@@ -16009,10 +15997,6 @@ msgstr "Çelësi i grupit është i detyrueshëm"
 #: 
 msgid "Happy Birthday"
 msgstr "Gëzuar Ditëlindjen"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Ndihmoni të përmirësohet ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16083,16 +16067,8 @@ msgid "None (disabled)"
 msgstr "Asnjë (çaktivizuar)"
 
 #: 
-msgid "OS family"
-msgstr "Familja OS"
-
-#: 
 msgid "Overpaid"
 msgstr "Paguar tepër"
-
-#: 
-msgid "PHP version"
-msgstr "Versioni PHP"
 
 #: 
 msgid "Page route"
@@ -16193,10 +16169,6 @@ msgstr "Emrat e përdoruesve, emailet ose rolet"
 #: 
 msgid "View pledge or payment details"
 msgstr "Shikoni detajet e premtimit ose pagesës"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Paralajmërime — paralajmërime, gabime dhe përjashtime JS"
 
 #: 
 msgid "What is sent"
@@ -24545,28 +24517,12 @@ msgid "Closing Line"
 msgstr "Rreshti i mbylljes"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Kontrollon telemetrinë opsionale. Dështimet e instalimit dhe të përmirësimit të bazës së të dhënave dërgojnë diagnostikime të kufizuara te PostHog edhe kur telemetria është e fikur. Këto raporte dështimi përfshijnë versionet e softuerit dhe të mjedisit dhe një gabim të pastruar të bazës së të dhënave, por pa ID instalimi apo deklaratë SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Diagnostikoni instalimet dhe përmirësimet e dështuara të bazës së të dhënave"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Hollësitë e dështimit të instalimit dhe përmirësimit"
-
-#: 
 msgid "Open in browser window"
 msgstr "Hapni në dritaren e shfletuesit"
 
 #: 
 msgid "Opening Line"
 msgstr "Rreshti i hapjes"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Telemetria opsionale e përdorimit dërgohet vetëm kur është e aktivizuar. Dështimet e instalimit dhe të përmirësimit të bazës së të dhënave dërgojnë gjithmonë një diagnostikim të kufizuar për të ndihmuar komunitetin, edhe nëse zgjidhni Jo, faleminderit. Raportet e dështimit përfshijnë versionet e softuerit dhe të mjedisit dhe një gabim të pastruar të bazës së të dhënave, pa ID instalimi apo deklaratë SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24603,14 +24559,6 @@ msgstr "Formulimi i deklaratës"
 #: 
 msgid "Tax Information"
 msgstr "Informacioni tatimor"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetria dërgohet te PostHog në Shtetet e Bashkuara. Raportet e dështimit të instalimit dhe të përmirësimit dërgohen edhe kur telemetria opsionale është e çaktivizuar."
-
-#: 
-msgid "always sent"
-msgstr "dërgohet gjithmonë"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25667,10 +25615,6 @@ msgstr "Vetëm personat e gjallë me emailin e tyre mund të jenë në listën e
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Mund të shtohen vetëm personat me emailin e tyre."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Telemetria opsionale mund të përfshijë rrugët e faqeve, gjuhën aktive, versionin e CRM, versionin e PHP, familjen e OS, shtetin nga cilësimet e informacionit të kishës suaj dhe një ID të rastësishme instalimi. Raportet e dështimit nuk përfshijnë ID-në e instalimit. Të dhënat dërgohen te PostHog në Shtetet e Bashkuara."
 
 #: 
 msgid "Passkey"

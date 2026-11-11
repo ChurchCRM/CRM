@@ -15961,18 +15961,6 @@ msgid "Editing a Pledge"
 msgstr "Úprava záväzku"
 
 #: 
-msgid "Enable (full)"
-msgstr "Povoliť (úplné)"
-
-#: 
-msgid "Errors only"
-msgstr "Iba chyby"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Chyby — chyby servera a výnimky JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Nepodarilo sa vytvoriť záväzok"
 
@@ -16011,10 +15999,6 @@ msgstr "Kľúč skupiny je povinný"
 #: 
 msgid "Happy Birthday"
 msgstr "Všetko najlepšie k narodeninám"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Pomôžte zlepšiť ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16085,16 +16069,8 @@ msgid "None (disabled)"
 msgstr "Žiadne (zakázané)"
 
 #: 
-msgid "OS family"
-msgstr "Rodina OS"
-
-#: 
 msgid "Overpaid"
 msgstr "Preplatené"
-
-#: 
-msgid "PHP version"
-msgstr "Verzia PHP"
 
 #: 
 msgid "Page route"
@@ -16195,10 +16171,6 @@ msgstr "Mená používateľov, e-maily alebo roly"
 #: 
 msgid "View pledge or payment details"
 msgstr "Zobraziť podrobnosti záväzku alebo platby"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Upozornenia — upozornenia, chyby a výnimky JS"
 
 #: 
 msgid "What is sent"
@@ -24577,28 +24549,12 @@ msgid "Closing Line"
 msgstr "Záverečný riadok"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Ovláda voliteľnú telemetriu. Zlyhania inštalácie a aktualizácie databázy odosielajú obmedzenú diagnostiku do PostHog aj keď je telemetria vypnutá. Tieto hlásenia o zlyhaní obsahujú verzie softvéru a prostredia a očistenú chybu databázy, ale nie ID inštalácie ani príkaz SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Diagnostikovať zlyhané inštalácie a aktualizácie databázy"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Podrobnosti o zlyhaní inštalácie a aktualizácie"
-
-#: 
 msgid "Open in browser window"
 msgstr "Otvoriť v okne prehliadača"
 
 #: 
 msgid "Opening Line"
 msgstr "Úvodný riadok"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Voliteľná telemetria používania sa odosiela iba vtedy, keď je zapnutá. Zlyhania inštalácie a aktualizácie databázy vždy odosielajú obmedzenú diagnostiku na pomoc komunite, aj keď zvolíte Nie, ďakujem. Hlásenia o zlyhaní obsahujú verzie softvéru a prostredia a očistenú chybu databázy, bez ID inštalácie a príkazu SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24635,14 +24591,6 @@ msgstr "Znenie výpisu"
 #: 
 msgid "Tax Information"
 msgstr "Daňové údaje"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetria sa odosiela do PostHog v Spojených štátoch. Hlásenia o zlyhaní inštalácie a aktualizácie sa odosielajú aj keď je voliteľná telemetria vypnutá."
-
-#: 
-msgid "always sent"
-msgstr "vždy odoslané"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25699,10 +25647,6 @@ msgstr "Na zozname kancelárie môžu byť iba žijúci ľudia s vlastným e-mai
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Pridať možno iba ľudí s vlastným e-mailom."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Voliteľná telemetria môže obsahovať trasy stránok, aktívne miestne nastavenie, verziu CRM, verziu PHP, rodinu operačného systému, krajinu z nastavení údajov o cirkvi a náhodné ID inštalácie. Hlásenia o zlyhaní ID inštalácie neobsahujú. Údaje sa odosielajú do PostHog v Spojených štátoch."
 
 #: 
 msgid "Passkey"

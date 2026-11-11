@@ -15922,18 +15922,6 @@ msgid "Editing a Pledge"
 msgstr "誓約を編集中"
 
 #: 
-msgid "Enable (full)"
-msgstr "有効（フル）"
-
-#: 
-msgid "Errors only"
-msgstr "エラーのみ"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "エラー — サーバーエラーおよびJS例外"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "誓約の作成に失敗しました"
 
@@ -15972,10 +15960,6 @@ msgstr "グループキーは必須です"
 #: 
 msgid "Happy Birthday"
 msgstr "誕生日おめでとうございます"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ChurchCRMの改善にご協力ください"
 
 #: 
 msgid "IP addresses"
@@ -16046,16 +16030,8 @@ msgid "None (disabled)"
 msgstr "なし（無効）"
 
 #: 
-msgid "OS family"
-msgstr "OSファミリー"
-
-#: 
 msgid "Overpaid"
 msgstr "超過支払い"
-
-#: 
-msgid "PHP version"
-msgstr "PHPバージョン"
 
 #: 
 msgid "Page route"
@@ -16156,10 +16132,6 @@ msgstr "ユーザー名、メールアドレス、または役割"
 #: 
 msgid "View pledge or payment details"
 msgstr "誓約または献金の詳細を表示"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "警告 — 警告、エラー、およびJS例外"
 
 #: 
 msgid "What is sent"
@@ -24493,28 +24465,12 @@ msgid "Closing Line"
 msgstr "結びの文"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "任意の利用状況送信を制御します。インストールとデータベースのアップグレードに失敗した場合は、利用状況送信がオフでも、限られた診断情報が PostHog に送られます。これらの失敗報告には、ソフトウェアと環境のバージョン、および不要な情報を除いたデータベースのエラーが含まれますが、インストールIDやSQL文は含まれません。"
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "失敗したインストールとデータベースのアップグレードを診断"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "インストールとアップグレードの失敗の詳細"
-
-#: 
 msgid "Open in browser window"
 msgstr "ブラウザのウィンドウで開く"
 
 #: 
 msgid "Opening Line"
 msgstr "冒頭の文"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "任意の利用状況は、有効なときだけ送られます。インストールとデータベースのアップグレードに失敗した場合は、「いいえ、不要です」を選んでも、コミュニティを助けるための限られた診断情報が常に送られます。失敗報告には、ソフトウェアと環境のバージョンと、不要な情報を除いたデータベースのエラーが含まれ、インストールIDやSQL文は含まれません。"
 
 #: 
 msgid "PDF Handling"
@@ -24551,14 +24507,6 @@ msgstr "明細書の文言"
 #: 
 msgid "Tax Information"
 msgstr "税務情報"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "利用状況は米国の PostHog に送られます。任意の利用状況送信が無効でも、インストールとアップグレードの失敗報告は送られます。"
-
-#: 
-msgid "always sent"
-msgstr "常に送信"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25615,10 +25563,6 @@ msgstr "自分専用のメールを持つ、存命の人だけが、事務所の
 #: 
 msgid "Only people with their own email can be added."
 msgstr "自分専用のメールを持つ人だけを追加できます。"
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "任意の利用状況には、ページの経路、使用中の言語、CRM のバージョン、PHP のバージョン、OS の種類、教会情報の設定にある国、および無作為なインストールIDが含まれることがあります。失敗報告にはインストールIDは含まれません。データは米国の PostHog に送られます。"
 
 #: 
 msgid "Passkey"

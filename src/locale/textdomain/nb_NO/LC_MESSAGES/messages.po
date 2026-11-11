@@ -16039,18 +16039,6 @@ msgid "Editing a Pledge"
 msgstr "Redigerer et løfte"
 
 #: 
-msgid "Enable (full)"
-msgstr "Aktiver (full)"
-
-#: 
-msgid "Errors only"
-msgstr "Kun feil"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Feil — tjenerfeil og JS-unntak"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Kunne ikke opprette løfte"
 
@@ -16089,10 +16077,6 @@ msgstr "Gruppenøkkel er påkrevd"
 #: 
 msgid "Happy Birthday"
 msgstr "Gratulerer med dagen"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Hjelp med å forbedre ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16163,16 +16147,8 @@ msgid "None (disabled)"
 msgstr "Ingen (deaktivert)"
 
 #: 
-msgid "OS family"
-msgstr "OS-familie"
-
-#: 
 msgid "Overpaid"
 msgstr "Overbetalt"
-
-#: 
-msgid "PHP version"
-msgstr "PHP-versjon"
 
 #: 
 msgid "Page route"
@@ -16273,10 +16249,6 @@ msgstr "Brukernavn, e-postadresser eller roller"
 #: 
 msgid "View pledge or payment details"
 msgstr "Vis løfte- eller betalingsdetaljer"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Advarsler — advarsler, feil og JS-unntak"
 
 #: 
 msgid "What is sent"
@@ -24625,28 +24597,12 @@ msgid "Closing Line"
 msgstr "Avslutningslinje"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Styrer valgfri telemetri. Feil ved installasjon og databaseoppgradering sender begrenset diagnostikk til PostHog selv når telemetri er av. Disse feilrapportene inneholder programvare- og miljøversjoner og en renset databasefeil, men ingen installasjons-ID eller SQL-setning."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Diagnostiser mislykkede installasjoner og databaseoppgraderinger"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Detaljer om feil ved installasjon og oppgradering"
-
-#: 
 msgid "Open in browser window"
 msgstr "Åpne i nettleservindu"
 
 #: 
 msgid "Opening Line"
 msgstr "Åpningslinje"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Valgfri brukstelemetri sendes bare når den er slått på. Feil ved installasjon og databaseoppgradering sender alltid begrenset diagnostikk for å hjelpe fellesskapet, selv om du velger Nei takk. Feilrapporter inneholder programvare- og miljøversjoner og en renset databasefeil, uten installasjons-ID eller SQL-setning."
 
 #: 
 msgid "PDF Handling"
@@ -24683,14 +24639,6 @@ msgstr "Oppgavetekst"
 #: 
 msgid "Tax Information"
 msgstr "Skatteopplysninger"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetri sendes til PostHog i USA. Rapporter om feil ved installasjon og oppgradering sendes selv når valgfri telemetri er slått av."
-
-#: 
-msgid "always sent"
-msgstr "sendes alltid"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25747,10 +25695,6 @@ msgstr "Bare levende personer med egen e-post kan stå på kontorlisten."
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Bare personer med egen e-post kan legges til."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Valgfri telemetri kan omfatte sidebaner, aktivt språk, CRM-versjon, PHP-versjon, OS-familie, landet fra kirkens informasjonsinnstillinger og en tilfeldig installasjons-ID. Feilrapporter inneholder ikke installasjons-ID-en. Data sendes til PostHog i USA."
 
 #: 
 msgid "Passkey"

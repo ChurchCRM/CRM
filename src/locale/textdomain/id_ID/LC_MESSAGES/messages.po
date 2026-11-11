@@ -15953,18 +15953,6 @@ msgid "Editing a Pledge"
 msgstr "Mengedit Janji Persembahan"
 
 #: 
-msgid "Enable (full)"
-msgstr "Aktifkan (penuh)"
-
-#: 
-msgid "Errors only"
-msgstr "Hanya kesalahan"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Kesalahan — kesalahan server dan pengecualian JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Gagal membuat janji persembahan"
 
@@ -16003,10 +15991,6 @@ msgstr "Kunci kelompok wajib diisi"
 #: 
 msgid "Happy Birthday"
 msgstr "Selamat Ulang Tahun"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Bantu tingkatkan ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16077,16 +16061,8 @@ msgid "None (disabled)"
 msgstr "Tidak ada (dinonaktifkan)"
 
 #: 
-msgid "OS family"
-msgstr "Keluarga OS"
-
-#: 
 msgid "Overpaid"
 msgstr "Kelebihan Bayar"
-
-#: 
-msgid "PHP version"
-msgstr "Versi PHP"
 
 #: 
 msgid "Page route"
@@ -16187,10 +16163,6 @@ msgstr "Nama pengguna, email, atau peran"
 #: 
 msgid "View pledge or payment details"
 msgstr "Lihat detail janji persembahan atau pembayaran"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Peringatan — peringatan, kesalahan, dan pengecualian JS"
 
 #: 
 msgid "What is sent"
@@ -24524,28 +24496,12 @@ msgid "Closing Line"
 msgstr "Baris Penutup"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Mengatur telemetri opsional. Kegagalan pemasangan dan peningkatan basis data mengirim diagnostik terbatas ke PostHog meskipun telemetri dimatikan. Laporan kegagalan ini mencakup versi perangkat lunak dan lingkungan serta kesalahan basis data yang telah disanitasi, tetapi tidak ada ID pemasangan atau pernyataan SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Diagnosis pemasangan dan peningkatan basis data yang gagal"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Detail kegagalan pemasangan dan peningkatan"
-
-#: 
 msgid "Open in browser window"
 msgstr "Buka di jendela peramban"
 
 #: 
 msgid "Opening Line"
 msgstr "Baris Pembuka"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Telemetri penggunaan opsional hanya dikirim jika diaktifkan. Kegagalan pemasangan dan peningkatan basis data selalu mengirim diagnostik terbatas untuk membantu komunitas, meskipun Anda memilih Tidak, terima kasih. Laporan kegagalan mencakup versi perangkat lunak dan lingkungan serta kesalahan basis data yang telah disanitasi, tanpa ID pemasangan atau pernyataan SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24582,14 +24538,6 @@ msgstr "Redaksi Laporan"
 #: 
 msgid "Tax Information"
 msgstr "Informasi Pajak"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetri dikirim ke PostHog di Amerika Serikat. Laporan kegagalan pemasangan dan peningkatan tetap dikirim meskipun telemetri opsional dinonaktifkan."
-
-#: 
-msgid "always sent"
-msgstr "selalu dikirim"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25646,10 +25594,6 @@ msgstr "Hanya orang yang masih hidup dengan surel sendiri yang dapat masuk dafta
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Hanya orang dengan surel sendiri yang dapat ditambahkan."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Telemetri opsional dapat mencakup rute halaman, lokal yang aktif, versi CRM, versi PHP, keluarga OS, negara dari pengaturan informasi gereja Anda, dan ID pemasangan acak. Laporan kegagalan tidak mencakup ID pemasangan. Data dikirim ke PostHog di Amerika Serikat."
 
 #: 
 msgid "Passkey"

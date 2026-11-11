@@ -15974,18 +15974,6 @@ msgid "Editing a Pledge"
 msgstr "ቃል-ኪዳን በማርትዕ ላይ"
 
 #: 
-msgid "Enable (full)"
-msgstr "አንቃ (ሙሉ)"
-
-#: 
-msgid "Errors only"
-msgstr "ስህተቶች ብቻ"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "ስህተቶች — የሰርቨር ስህተቶች እና የ JS ልዩ ሁኔታዎች"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "ቃል-ኪዳን መፍጠር አልተሳካም"
 
@@ -16024,10 +16012,6 @@ msgstr "የቡድን ቁልፍ ያስፈልጋል"
 #: 
 msgid "Happy Birthday"
 msgstr "መልካም የልደት ቀን"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ChurchCRM ማሻሻል ላይ ይሳተፉ"
 
 #: 
 msgid "IP addresses"
@@ -16098,16 +16082,8 @@ msgid "None (disabled)"
 msgstr "ምንም (ተሰናክሏል)"
 
 #: 
-msgid "OS family"
-msgstr "የOS ቤተሰብ"
-
-#: 
 msgid "Overpaid"
 msgstr "በልጦ የተከፈለ"
-
-#: 
-msgid "PHP version"
-msgstr "PHP ስሪት"
 
 #: 
 msgid "Page route"
@@ -16208,10 +16184,6 @@ msgstr "የተጠቃሚ ስሞች፣ ኢሜይሎች ወይም ሚናዎች"
 #: 
 msgid "View pledge or payment details"
 msgstr "የቃል-ኪዳን ወይም የክፍያ ዝርዝሮች ይመልከቱ"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "ማስጠንቀቂያዎች — ማስጠንቀቂያዎች፣ ስህተቶች እና የ JS ልዩ ሁኔታዎች"
 
 #: 
 msgid "What is sent"
@@ -24560,28 +24532,12 @@ msgid "Closing Line"
 msgstr "የመዝጊያ መስመር"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "አማራጭ ቴሌሜትሪን ይቆጣጠራል። ጭነት እና የመረጃ ቋት ማሻሻያ ውድቀቶች ቴሌሜትሪ ጠፍቶ ቢሆንም የተገደበ ምርመራ ወደ ፖስትሆግ ይልካሉ። እነዚህ የውድቀት ሪፖርቶች የሶፍትዌር እና የአካባቢ ሥሪቶችን እና የተጣራ የመረጃ ቋት ስህተትን ያካትታሉ፣ ነገር ግን የጭነት መታወቂያ ወይም SQL መግለጫ አይደለም።"
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "ያልተሳኩ ጭነቶችን እና የመረጃ ቋት ማሻሻያዎችን ይመርምሩ"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "የጭነት እና የማሻሻያ ውድቀት ዝርዝሮች"
-
-#: 
 msgid "Open in browser window"
 msgstr "በአሳሽ መስኮት ክፈት"
 
 #: 
 msgid "Opening Line"
 msgstr "የመክፈቻ መስመር"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "አማራጭ የአጠቃቀም ቴሌሜትሪ ሲበራ ብቻ ይላካል። ጭነት እና የመረጃ ቋት ማሻሻያ ውድቀቶች አይ አመሰግናሁ ብለው ቢመርጡም ማህበረሰቡን ለመርዳት ሁልጊዜ የተገደበ ምርመራ ይልካሉ። የውድቀት ሪፖርቶች የሶፍትዌር እና የአካባቢ ሥሪቶችን እና የተጣራ የመረጃ ቋት ስህተትን ያካትታሉ፣ ያለ የጭነት መታወቂያ ወይም SQL መግለጫ።"
 
 #: 
 msgid "PDF Handling"
@@ -24618,14 +24574,6 @@ msgstr "የመግለጫ ቃላት"
 #: 
 msgid "Tax Information"
 msgstr "የግብር መረጃ"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "ቴሌሜትሪ በዩናይትድ ስቴትስ ወዳለው ፖስትሆግ ይላካል። የጭነት እና የማሻሻያ ውድቀት ሪፖርቶች አማራጭ ቴሌሜትሪ ጠፍቶ ቢሆንም ይላካሉ።"
-
-#: 
-msgid "always sent"
-msgstr "ሁልጊዜ ይላካል"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25682,10 +25630,6 @@ msgstr "የራሳቸው ኢሜይል ያላቸው በሕይወት ያሉ ሰዎ�
 #: 
 msgid "Only people with their own email can be added."
 msgstr "የራሳቸው ኢሜይል ያላቸው ሰዎች ብቻ ሊጨመሩ ይችላሉ።"
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "አማራጭ ቴሌሜትሪ የገጽ መንገዶችን፣ ንቁ ቋንቋን፣ የCRM ሥሪትን፣ የPHP ሥሪትን፣ የOS ቤተሰብን፣ ከቤተ ክርስቲያን መረጃ ቅንብሮችዎ ያለውን አገር እና የዘፈቀደ የጭነት መታወቂያን ሊያካትት ይችላል። የውድቀት ሪፖርቶች የጭነት መታወቂያን አያካትቱም። መረጃ በዩናይትድ ስቴትስ ወዳለው ፖስትሆግ ይላካል።"
 
 #: 
 msgid "Passkey"

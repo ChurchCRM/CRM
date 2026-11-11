@@ -15970,18 +15970,6 @@ msgid "Editing a Pledge"
 msgstr "Úprava příslibu"
 
 #: 
-msgid "Enable (full)"
-msgstr "Povolit (plné)"
-
-#: 
-msgid "Errors only"
-msgstr "Pouze chyby"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Chyby — serverové chyby a JS výjimky"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Vytvoření příslibu se nezdařilo"
 
@@ -16020,10 +16008,6 @@ msgstr "Klíč skupiny je povinný"
 #: 
 msgid "Happy Birthday"
 msgstr "Šťastné narozeniny"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Pomozte vylepšit ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16094,16 +16078,8 @@ msgid "None (disabled)"
 msgstr "Žádné (vypnuto)"
 
 #: 
-msgid "OS family"
-msgstr "Rodina OS"
-
-#: 
 msgid "Overpaid"
 msgstr "Přeplaceno"
-
-#: 
-msgid "PHP version"
-msgstr "Verze PHP"
 
 #: 
 msgid "Page route"
@@ -16204,10 +16180,6 @@ msgstr "Uživatelská jména, e-maily nebo role"
 #: 
 msgid "View pledge or payment details"
 msgstr "Zobrazit podrobnosti příslibu nebo platby"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Upozornění — upozornění, chyby a JS výjimky"
 
 #: 
 msgid "What is sent"
@@ -24571,28 +24543,12 @@ msgid "Closing Line"
 msgstr "Závěrečná věta"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Řídí volitelnou telemetrii. Selhání instalace a aktualizace databáze odesílají omezené diagnostické údaje do služby PostHog i při vypnuté telemetrii. Tyto zprávy o selhání obsahují verze softwaru a prostředí a očištěnou chybu databáze, ale žádné ID instalace ani příkaz SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Diagnostikovat neúspěšné instalace a aktualizace databáze"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Podrobnosti o selhání instalace a aktualizace"
-
-#: 
 msgid "Open in browser window"
 msgstr "Otevřít v okně prohlížeče"
 
 #: 
 msgid "Opening Line"
 msgstr "Úvodní věta"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Volitelná telemetrie používání se odesílá pouze tehdy, je-li zapnutá. Selhání instalace a aktualizace databáze vždy odešlou omezenou diagnostiku na pomoc komunitě, i když zvolíte Ne, děkuji. Zprávy o selhání obsahují verze softwaru a prostředí a očištěnou chybu databáze, bez ID instalace a příkazu SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24629,14 +24585,6 @@ msgstr "Znění potvrzení"
 #: 
 msgid "Tax Information"
 msgstr "Daňové údaje"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetrie se odesílá do služby PostHog ve Spojených státech. Zprávy o selhání instalace a aktualizace se odesílají i při vypnuté volitelné telemetrii."
-
-#: 
-msgid "always sent"
-msgstr "odesílá se vždy"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25693,10 +25641,6 @@ msgstr "Na seznamu kanceláře mohou být jen žijící osoby s vlastním e-mail
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Přidat lze jen osoby s vlastním e-mailem."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Volitelná telemetrie může zahrnovat trasy stránek, aktivní jazyk, verzi CRM, verzi PHP, rodinu OS, zemi z nastavení údajů o sboru a náhodné ID instalace. Zprávy o selhání ID instalace neobsahují. Data se odesílají do služby PostHog ve Spojených státech."
 
 #: 
 msgid "Passkey"

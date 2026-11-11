@@ -15934,18 +15934,6 @@ msgid "Editing a Pledge"
 msgstr "กำลังแก้ไขคำมั่นสัญญา"
 
 #: 
-msgid "Enable (full)"
-msgstr "เปิดใช้งาน (เต็มรูปแบบ)"
-
-#: 
-msgid "Errors only"
-msgstr "เฉพาะข้อผิดพลาด"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "ข้อผิดพลาด — ข้อผิดพลาดเซิร์ฟเวอร์และข้อยกเว้น JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "ไม่สามารถสร้างคำมั่นสัญญาได้"
 
@@ -15984,10 +15972,6 @@ msgstr "ต้องระบุคีย์กลุ่ม"
 #: 
 msgid "Happy Birthday"
 msgstr "สุขสันต์วันเกิด"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ช่วยพัฒนา ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16058,16 +16042,8 @@ msgid "None (disabled)"
 msgstr "ไม่มี (ปิดใช้งาน)"
 
 #: 
-msgid "OS family"
-msgstr "ตระกูล OS"
-
-#: 
 msgid "Overpaid"
 msgstr "ถวายเกิน"
-
-#: 
-msgid "PHP version"
-msgstr "เวอร์ชัน PHP"
 
 #: 
 msgid "Page route"
@@ -16168,10 +16144,6 @@ msgstr "ชื่อผู้ใช้ อีเมล หรือบทบา�
 #: 
 msgid "View pledge or payment details"
 msgstr "ดูรายละเอียดคำมั่นสัญญาหรือการถวาย"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "คำเตือน — คำเตือน ข้อผิดพลาด และข้อยกเว้น JS"
 
 #: 
 msgid "What is sent"
@@ -24505,28 +24477,12 @@ msgid "Closing Line"
 msgstr "บรรทัดปิด"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "ควบคุมข้อมูลการใช้งานที่ไม่บังคับ ความล้มเหลวของการติดตั้งและการอัปเกรดฐานข้อมูลจะส่งข้อมูลวินิจฉัยอย่างจำกัดไปยัง PostHog แม้ปิดข้อมูลการใช้งาน รายงานความล้มเหลวเหล่านี้รวมเวอร์ชันของซอฟต์แวร์และสภาพแวดล้อม และข้อผิดพลาดของฐานข้อมูลที่ทำให้ปลอดภัยแล้ว แต่ไม่มีรหัสการติดตั้งหรือคำสั่ง SQL"
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "วินิจฉัยการติดตั้งและการอัปเกรดฐานข้อมูลที่ล้มเหลว"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "รายละเอียดความล้มเหลวของการติดตั้งและการอัปเกรด"
-
-#: 
 msgid "Open in browser window"
 msgstr "เปิดในหน้าต่างเบราว์เซอร์"
 
 #: 
 msgid "Opening Line"
 msgstr "บรรทัดเปิด"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "ข้อมูลการใช้งานที่ไม่บังคับจะถูกส่งเฉพาะเมื่อเปิดใช้ ความล้มเหลวของการติดตั้งและการอัปเกรดฐานข้อมูลจะส่งข้อมูลวินิจฉัยอย่างจำกัดเสมอเพื่อช่วยชุมชน แม้คุณเลือกไม่ขอบคุณ รายงานความล้มเหลวรวมเวอร์ชันของซอฟต์แวร์และสภาพแวดล้อม และข้อผิดพลาดของฐานข้อมูลที่ทำให้ปลอดภัยแล้ว โดยไม่มีรหัสการติดตั้งหรือคำสั่ง SQL"
 
 #: 
 msgid "PDF Handling"
@@ -24563,14 +24519,6 @@ msgstr "ถ้อยคำในใบแจ้ง"
 #: 
 msgid "Tax Information"
 msgstr "ข้อมูลภาษี"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "ส่งข้อมูลการใช้งานไปที่ PostHog ในสหรัฐอเมริกา รายงานความล้มเหลวของการติดตั้งและการอัปเกรดจะถูกส่งแม้ปิดข้อมูลการใช้งานที่ไม่บังคับ"
-
-#: 
-msgid "always sent"
-msgstr "ส่งเสมอ"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25627,10 +25575,6 @@ msgstr "มีเพียงคนที่ยังมีชีวิตแล
 #: 
 msgid "Only people with their own email can be added."
 msgstr "เพิ่มได้เฉพาะคนที่มีอีเมลของตนเอง"
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "ข้อมูลการใช้งานที่ไม่บังคับอาจรวมเส้นทางหน้า ภาษาที่ใช้งาน เวอร์ชัน CRM เวอร์ชัน PHP ตระกูล OS ประเทศจากการตั้งค่าข้อมูลคริสตจักร และรหัสการติดตั้งแบบสุ่ม รายงานความล้มเหลวไม่มีรหัสการติดตั้ง ข้อมูลถูกส่งไปที่ PostHog ในสหรัฐอเมริกา"
 
 #: 
 msgid "Passkey"
