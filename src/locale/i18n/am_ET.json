@@ -3120,7 +3120,7 @@
   "Cart emptied successfully": "ጋሪው በተሳካ ሁኔታ ባዶ ሆኗል",
   "Cart emptied to group successfully": "ጋሪው በተሳካ ሁኔታ ወደ ቡድን ተዘዋውሯል",
   "Change Your Locale": "አካባቢዎን ይቀይሩ",
-  "Check Number": "የፍተሻ ቁጥር",
+  "Check Number": "የቼክ ቁጥር",
   "Check out": "ወጣ",
   "Check-in failed. Please try again.": "ምዝገባ አልተሳካም። እባክዎ እንደገና ሞክሩ።",
   "Check-out failed. Please try again.": "መውጣት አልተሳካም። እባክዎ እንደገና ሞክሩ።",
@@ -6620,9 +6620,17 @@
   "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information.": "ራሱን ያስመዘገበው ይህ ቤተሰብ ይሁንታን እየጠበቀ ነው። ሲጸድቅ ቤተሰቡ ወደ የአባላት ፖርታል ገብቶ መረጃውን እንዲገመግም የግብዣ ኢሜይል ይላክለታል።",
   "Uses saved settings and fictional sample gifts only.": "የተቀመጡ ቅንብሮችን እና ምናባዊ የናሙና ስጦታዎችን ብቻ ይጠቀማል።",
   "Verification": "ማረጋገጫ",
+  "Verification email sent to %d family.": {
+    "one": "የማረጋገጫ ኢሜይል ለ%d ቤተሰብ ተልኳል።",
+    "other": "የማረጋገጫ ኢሜይል ለ%d ቤተሰቦች ተልኳል።"
+  },
   "Verification email sent to family members.": "የማረጋገጫ ኢሜይል ለቤተሰብ አባላት ተልኳል።",
   "by the family in the portal": "በቤተሰቡ በፖርታሉ",
   "in person by staff": "በሰራተኞች በአካል",
+  "%d default skipped for another reason (the occurrence is over, canceled or full)": {
+    "one": "%d ነባሪ ለሌላ ምክንያት ተዘሏል (የአገልግሎት ቀኑ አልፏል፣ ተሰርዟል ወይም ሞልቷል)",
+    "other": "%d ነባሪ ለሌላ ምክንያት ተዘሏል (የአገልግሎት ቀኑ አልፏል፣ ተሰርዟል ወይም ሞልቷል)"
+  },
   "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only.": "የሽግግር ቅንብር። የቀደመው የበጎ ፈቃደኛ ዕድሎች ገጾች እና አዲሶቹ የአገልግሎቶች ገጾች ሁለቱም ይገኛሉ፣ እና የሰው መዝገብ ሁለቱንም የበጎ ፈቃደኛ ትሮች በግልጽ ተሰይመው ያሳያል። ቤተ ክርስቲያንን ከV1 ወደ V2 ሲያሸጋግሩ ይጠቀሙበት፣ ከዚያ ወደ V2 ብቻ ይቀይሩ።",
   "Assignment canceled": "ምደባው ተሰርዟል",
   "Canceled": "ተሰርዟል",

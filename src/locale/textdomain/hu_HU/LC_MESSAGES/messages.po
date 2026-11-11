@@ -907,9 +907,8 @@ msgid "Pledge Summary"
 msgstr "Pledge Összefoglaló"
 
 #: 
-#, fuzzy
 msgid "Pledge Family Summary"
-msgstr "Pledge FamilySummary"
+msgstr "Családi vállalások összesítője"
 
 #: 
 msgid "Pledge Reminders"
@@ -1526,11 +1525,11 @@ msgstr "Legalább egy alap kell rendelkeznie nem nulla összeg."
 
 #: 
 msgid "Must specify non-zero check number"
-msgstr "Meg kell adni a nem nulla szám ellenőrzés"
+msgstr "Meg kell adni egy nullától eltérő csekkszámot"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Ellenőrizze szám nem érvényes a \"készpénz\" fizetési"
+msgstr "A csekkszám készpénzes fizetésnél nem érvényes"
 
 #: 
 msgid "Payment Schedule"
@@ -16287,7 +16286,7 @@ msgstr "Az Automatikus az operacios rendszer vagy bongeszo beallitasat koveti; a
 
 #: 
 msgid "Back to Pledge Dashboard"
-msgstr "Vissza a fogadalom-iranyitopulthoz"
+msgstr "Vissza a vállalások irányítópultjához"
 
 #: 
 msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
@@ -16337,11 +16336,11 @@ msgstr "Adja meg a szerepkor nevet"
 
 #: 
 msgid "Failed to create deposit"
-msgstr "Nem sikerult letrehozni a befizetest"
+msgstr "Nem sikerült létrehozni a befizetést"
 
 #: 
 msgid "Failed to load email preview"
-msgstr "Nem sikerult betolteni az e-mail elonezetet"
+msgstr "Nem sikerült betölteni az e-mail előnézetét"
 
 #: 
 msgid "From Date"
@@ -16353,7 +16352,7 @@ msgstr "Alap osszesen"
 
 #: 
 msgid "Fund contributor pledge summary by fiscal year"
-msgstr "Alap adományozói fogadalom-osszesito pénzugyi ev szerint"
+msgstr "Alapba adományozók vállalásainak összesítője pénzügyi év szerint"
 
 #: 
 msgid "Fundraiser is disabled"
@@ -16381,7 +16380,7 @@ msgstr "N/A"
 
 #: 
 msgid "New Deposit"
-msgstr "Uj befizetes"
+msgstr "Új befizetés"
 
 #: 
 msgid "No contributors found for this fund in the selected fiscal year"
@@ -16393,11 +16392,11 @@ msgstr "Nem talalhato e-mail-cimmel rendelkezo csalad. Semmi nem lett elkuldve."
 
 #: 
 msgid "No payments found for the selected deposits"
-msgstr "Nem talalhatok kifizetesek a kivalasztott befizetesekhez"
+msgstr "Nem találhatók kifizetések a kiválasztott befizetésekhez"
 
 #: 
 msgid "No valid deposit IDs provided"
-msgstr "Nem adtak meg ervenyes befizetes azonositokat"
+msgstr "Nem adtak meg érvényes befizetés-azonosítókat"
 
 #: 
 msgid "Partial Send"
@@ -16409,11 +16408,11 @@ msgstr "Csak kifizetesek"
 
 #: 
 msgid "Pledged Amount"
-msgstr "Fogadott osszeg"
+msgstr "Vállalt összeg"
 
 #: 
 msgid "Preview"
-msgstr "Elonezet"
+msgstr "Előnézet"
 
 #: 
 msgid "Retry"
@@ -16425,7 +16424,7 @@ msgstr "Kereses"
 
 #: 
 msgid "Search and manage deposit slip records"
-msgstr "Befizetes bizonylatok keresese es kezelese"
+msgstr "Befizetési bizonylatok keresése és kezelése"
 
 #: 
 msgid "Select All"
@@ -16469,7 +16468,7 @@ msgstr "Datumig"
 
 #: 
 msgid "Total Pledged"
-msgstr "Osszesen fogadott"
+msgstr "Összes vállalás"
 
 #: 
 msgid "Unexpected error while sending emails. Please check logs."
@@ -16485,7 +16484,7 @@ msgstr "Kifizetes megtekintese"
 
 #: 
 msgid "View Pledge"
-msgstr "Fogadalom megtekintese"
+msgstr "Vállalás megtekintése"
 
 #: 
 msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
@@ -22611,7 +22610,7 @@ msgstr "Kiosk beállítások"
 
 #: 
 msgid "Please enter a check number"
-msgstr "Kérjük, adja meg az ellenőrzési számot"
+msgstr "Kérjük, adja meg a csekkszámot"
 
 #: 
 msgid "Register & Check In"
@@ -27102,4 +27101,302 @@ msgstr "Fizetések alaponként"
 #: 
 msgid "Unknown Fund"
 msgstr "Ismeretlen alap"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Kérje meg a tárhelyszolgáltatót, hogy állítsa át az adatbázist egy támogatott verzióra, majd próbálja újra."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Kérje meg a tárhelyszolgáltatót, hogy állítsa át az adatbázist egy támogatott verzióra."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Az ünnepnapok neve minden felhasználó nyelvi beállítását követi. Ha egy ünnepnapnak nincs neve az adott nyelven, angolul jelenik meg."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Ünnepnapok neve az Ön nyelvén"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Csekkszám megkövetelése a csekkes befizetések rögzítésekor a befizetési tételeknél. Kikapcsolva a csekk üres vagy 0 csekkszámmal is menthető, és ezeket nem ellenőrzi a rendszer ismétlődésre."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Csekkszám megkövetelése csekkes fizetésnél"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "A frissítés nem indult el, így semmi sem változott."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Ez a frissítés nem futtatható az Ön adatbázisán."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Az adatbázisszerver (%1$s %2$s) régebbi, mint amit a ChurchCRM támogat (MySQL %3$s vagy MariaDB %4$s és újabb)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Hagyja jóvá ezt az önregisztrált családot, mielőtt ellenőrző e-mailt küldene neki"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "A családok felajánlásainak összevetése két költségvetési évre."
+
+#: 
+msgid "Email Portal Link"
+msgstr "Portálhivatkozás küldése e-mailben"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "Küldjön a családnak e-mailben hivatkozást a tagi portálra, ahol áttekinthetik és frissíthetik adataikat, vagy rögzítse, hogy személyesen ellenőrizte azokat."
+
+#: 
+msgid "Family is inactive"
+msgstr "A család inaktív"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Első költségvetési év"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Költségvetési évek"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Adományigazolás – csak minta"
+
+#: 
+msgid "Last invited"
+msgstr "Utolsó meghívás"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Utolsó portálbejelentkezés"
+
+#: 
+msgid "Last verified"
+msgstr "Utolsó ellenőrzés"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "A család egyik aktív, jóváhagyott tagjának sincs e-mail-címe. Ehelyett ellenőrizze az adatokat személyesen."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Ezekre a költségvetési évekre nem található felajánlás."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "Felajánlások összehasonlítása"
+
+#: 
+msgid "Preview PDF"
+msgstr "PDF előnézet"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Második költségvetési év"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Jelentkezzen be a tagi portálra ezzel az e-mail-címmel, és tekintse át családja adatait. A Családom oldalon erősítse meg, hogy minden helyes, vagy frissítse az adatait."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Ez a család inaktív, ezért nem kap ellenőrző e-maileket."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Ez az önregisztrált család jóváhagyásra vár. Jóváhagyáskor a család e-mailben meghívót kap, hogy jelentkezzen be a tagi portálra és tekintse át adatait."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Csak a mentett beállításokat és kitalált mintaadományokat használ."
+
+#: 
+msgid "Verification"
+msgstr "Ellenőrzés"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "Ellenőrző e-mail elküldve %d családnak."
+msgstr[1] "Ellenőrző e-mail elküldve %d családnak."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "Ellenőrző e-mail elküldve a családtagoknak."
+
+#: 
+msgid "by the family in the portal"
+msgstr "a család által a portálon"
+
+#: 
+msgid "in person by staff"
+msgstr "személyesen a munkatársak által"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
+msgstr[1] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Átmeneti beállítás. A régi Önkéntes lehetőségek oldalak és az új Szolgálati területek oldalak egyaránt elérhetők, és a személyrekord mindkét Önkéntes lapot megjeleníti, egyértelműen megjelölve. Használd, amíg a gyülekezetet V1-ről V2-re viszed át, majd válts csak V2-re."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Beosztás visszavonva"
+
+#: 
+msgid "Canceled"
+msgstr "Visszavonva"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "A lemondás senkinek sem jelent bejelentést: nincs e-mail küldve. A hozzárendelések megtartódnak, a lemondás alatt nem ütemez emlékeztetőket, és senki sem rendelhető ki, amíg az nem helyreáll."
+
+#: 
+msgid "Color"
+msgstr "Szín"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Az e-mailben küldött bejelentkezési kód és hivatkozás érvénytelenítve"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "A családi szerepek (családfő, házastárs, gyermek stb.) segítik a nyilvántartás rendszerezését."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Az esemény törölve van"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Fordítások priorizálása"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "A beosztást nem sikerült visszavonni"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "Az eseményt nem lehetett lemondani"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Ez az időpont törölve lett. Öntől további teendő nem szükséges."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Ez az alkalom törölve lett"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Az önkéntes szolgálat úgy szervezve, ahogyan egy gyülekezet működteti. Minden szolgálati területnek vannak csapatai és pozíciói; az emberek pozíciókra kapnak képesítést, és a terület készletcsoportjához tartoznak; az ütemezések a naptár eseményeit követik, és dátumozott alkalmakat hoznak létre létszámkövetelményekkel; a koordinátorok embereket osztanak be, akik elfogadnak, elutasítanak vagy helyettest javasolnak; az emlékeztetők és értesítések e-mailben mennek ki. A rendszergazdák és a Szolgálati területek kezelése jogosultsággal rendelkező felhasználók minden területet látnak, és létrehozhatják, inaktiválhatják és törölhetik őket. A szolgálati terület koordinátora ehelyett a Saját szolgálati területeim kezelése jogosultságot kapja: az oldalsáv Szolgálati területek címe alatt ekkor csak az általa koordinált területek látszanak. A csapatvezető a Tagi portálról vezeti a csapatát. A tagok a Tagi portálon látják az ütemezésüket, válaszolnak, jelentkeznek és ajánlanak fel segítséget."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Aktív telepítések és frissítési eredmények számlálása"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Adatbázismotor és fő-/alverzió"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Hibák — telepítési statisztikák, figyelmeztetések, hibák és JS-kivételek"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Segít nekünk megtalálni és kijavítani a hibákat?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "A Telepítés minimális telepítési és frissítési statisztikákat oszt meg. A Hibák figyelmeztetéseket és hibajelentéseket is hozzáad. A Teljes oldalmegtekintéseket is hozzáad. A Nincs csak a sikertelen telepítéseket és frissítéseket küldi."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Telepítés — telepítési és frissítési statisztikák (alapértelmezett)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Telepítési és frissítési eredmények, frissítéskor az előző verzió és napi egyszeri jelzés használat közben"
+
+#: 
+msgid "Installation profile"
+msgstr "Telepítési profil"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Területi beállítás (Hibák és Teljes)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Soha nem osztjuk meg: tagok, adományok vagy más gyülekezeti adatok, a gyülekezet neve, a webcíme vagy kiszolgálóneve, illetve e-mail-címek. Az ország a gyülekezeti beállításokban megadott ország, nem a hálózatából állapítjuk meg."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Operációs rendszer családja (Hibák és Teljes)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP-verzió (Hibák és Teljes)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Pontosan megnézheti, mit osztunk meg, vagy módosíthatja választását itt: Adminisztráció → Telemetria."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Éles, bemutató és teszttelepítések elkülönítése"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Megosztja a névtelen telepítési statisztikákat?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Hiba- és használati jelentések megosztása"
+
+#: 
+msgid "Share install statistics"
+msgstr "Telepítési statisztikák megosztása"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Ezen felül megosztva: figyelmeztetések, hibarészletek és a megnyitott oldalak."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Megosztva: hogy a ChurchCRM telepítve vagy frissítve lett-e és sikerült-e, napi egyszeri jelzés használat közben, a verziószám, az ország és az adatbázis típusa. Egy véletlenszerű telepítési azonosító minden telepítést egyszer számol."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Az adatbázis-kompatibilitás megértése"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Csak egyszer kérdezünk rá. Választását bármikor módosíthatja. A Nem, köszönöm választással csak a sikertelen telepítés vagy frissítés kerül jelentésre."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Az adatai az Önéi. A Telepítés csak a telepítési és frissítési eredményeket, a telepítési azonosítót, a szoftververziót, a telepítési profilt, a beállított országot, valamint az adatbázismotort és annak fő-/alverzióját osztja meg. A Hibák figyelmeztetéseket és hibarészleteket is hozzáad. A Teljes oldalmegtekintéseket is hozzáad. A Nincs csak a sikertelen telepítéseket és frissítéseket küldi. Egyik szint sem küldi el a webcímét vagy kiszolgálónevét. A teszttelepítések semmit sem küldenek. A telemetriai adatok a PostHoghoz kerülnek az Egyesült Államokba."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Az adatai az Önéi. Ez a szoftverről szól, soha nem a gyülekezetéről vagy annak tagjairól."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Az adatai az Önéi. A telepítések számlálásához a ChurchCRM jelenti, hogy telepítve vagy frissítve lett-e és sikerült-e, használat közben naponta egyszer jelzést küld, valamint a verziószámot, az országot, az adatbázis típusát és egy véletlenszerű telepítési azonosítót. Soha nem jelenti a tagok, adományok vagy más gyülekezeti adatokat, a gyülekezet nevét, a webcímét vagy kiszolgálónevét, illetve e-mail-címeket. Ezt bármikor kikapcsolhatja itt: Adminisztráció → Telemetria; a sikertelen telepítés vagy frissítés továbbra is jelentésre kerül. A figyelmeztetéseket, hibarészleteket és oldalmegtekintéseket csak akkor osztjuk meg, ha így dönt."
 

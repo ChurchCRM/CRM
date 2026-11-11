@@ -1550,11 +1550,11 @@ msgstr "Cel puțin un fond trebuie să aibă o valoare non-zero."
 
 #: 
 msgid "Must specify non-zero check number"
-msgstr "Trebuie să specificați numărul de verificare de zero"
+msgstr "Trebuie să specificați un număr de cec diferit de zero"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Verifica numărul nu este valabil pentru plata \"numerar\""
+msgstr "Numărul cecului nu este valabil pentru plata în numerar"
 
 #: 
 msgid "Payment Schedule"
@@ -2444,7 +2444,7 @@ msgstr "Setați true pentru a dezactiva introducerea datei nunții în editorul 
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
-msgstr "Numărul de verifică pentru Raportul de depunere a depozitelor"
+msgstr "Numărul de cecuri pentru raportul borderoului de depunere"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -2468,11 +2468,11 @@ msgstr "Semnatar raport fiscal"
 
 #: 
 msgid "Verbage for the pledge reminder report"
-msgstr "Verbalizare pentru raportul de amintire a gajului"
+msgstr "Text pentru raportul de reamintire a angajamentelor"
 
 #: 
 msgid "Pledge Reminder Signer"
-msgstr "Semnatar de amintire a gajului"
+msgstr "Semnatarul reamintirii angajamentelor"
 
 #: 
 msgid "Verbage for the pledge reminder report - No record of a pledge"
@@ -13178,7 +13178,7 @@ msgstr "Schimbați Localizarea"
 
 #: 
 msgid "Check Number"
-msgstr "Număr verificare"
+msgstr "Număr cec"
 
 #: 
 msgid "Check out"
@@ -16333,7 +16333,7 @@ msgstr "Auto urmeaza setarile sistemului de operare sau ale browserului; Luminos
 
 #: 
 msgid "Back to Pledge Dashboard"
-msgstr "Inapoi la tabloul de bord al angajamentelor"
+msgstr "Înapoi la tabloul de bord al angajamentelor"
 
 #: 
 msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
@@ -16384,11 +16384,11 @@ msgstr "Introduceti numele rolului"
 
 #: 
 msgid "Failed to create deposit"
-msgstr "Crearea depozitului a esuat"
+msgstr "Crearea depozitului a eșuat"
 
 #: 
 msgid "Failed to load email preview"
-msgstr "Incarcarea previzualizarii e-mailului a esuat"
+msgstr "Încărcarea previzualizării e-mailului a eșuat"
 
 #: 
 msgid "From Date"
@@ -16440,7 +16440,7 @@ msgstr "Nu s-au gasit familii cu adresa de e-mail. Nimic nu a fost trimis."
 
 #: 
 msgid "No payments found for the selected deposits"
-msgstr "Nu s-au gasit plati pentru depozitele selectate"
+msgstr "Nu s-au găsit plăți pentru depozitele selectate"
 
 #: 
 msgid "No valid deposit IDs provided"
@@ -16456,7 +16456,7 @@ msgstr "Doar plati"
 
 #: 
 msgid "Pledged Amount"
-msgstr "Suma angajata"
+msgstr "Suma angajată"
 
 #: 
 msgid "Preview"
@@ -16472,7 +16472,7 @@ msgstr "Cautare"
 
 #: 
 msgid "Search and manage deposit slip records"
-msgstr "Cauta si gestioneaza inregistrarile chitantelor de depozit"
+msgstr "Caută și gestionează înregistrările chitanțelor de depozit"
 
 #: 
 msgid "Select All"
@@ -16532,7 +16532,7 @@ msgstr "Vizualizeaza plata"
 
 #: 
 msgid "View Pledge"
-msgstr "Vizualizeaza angajamentul"
+msgstr "Vizualizează angajamentul"
 
 #: 
 msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
@@ -27163,4 +27163,304 @@ msgstr "Plăți pe fonduri"
 #: 
 msgid "Unknown Fund"
 msgstr "Fond necunoscut"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Cereți furnizorului de găzduire să mute baza de date pe o versiune acceptată, apoi încercați din nou."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Cereți furnizorului de găzduire să mute baza de date pe o versiune acceptată."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Numele sărbătorilor urmează setarea de limbă a fiecărui utilizator. Când o sărbătoare nu are nume în acea limbă, este afișată în engleză."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Numele sărbătorilor în limba dvs."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Solicitați numărul cecului la înregistrarea plăților cu cec în depuneri. Când opțiunea este dezactivată, un cec poate fi salvat cu numărul gol sau 0, iar acestea nu sunt verificate pentru duplicate."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Solicitați numărul cecului la plățile cu cec"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "Actualizarea nu a fost pornită, deci nu s-a schimbat nimic."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Această actualizare nu poate rula pe baza dvs. de date."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Serverul dvs. de baze de date (%1$s %2$s) este mai vechi decât acceptă ChurchCRM (MySQL %3$s sau MariaDB %4$s și versiunile ulterioare)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Aprobați această familie auto-înregistrată înainte de a-i trimite un e-mail de verificare"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "Comparați totalurile angajamentelor familiilor pentru doi ani fiscali."
+
+#: 
+msgid "Email Portal Link"
+msgstr "Trimite linkul portalului prin e-mail"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "Trimiteți familiei prin e-mail un link către portalul comunității, unde își poate verifica și actualiza informațiile, sau înregistrați că le-ați verificat personal."
+
+#: 
+msgid "Family is inactive"
+msgstr "Familia este inactivă"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Primul an fiscal"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Ani fiscali"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Extras de donații — doar exemplu"
+
+#: 
+msgid "Last invited"
+msgstr "Ultima invitație"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Ultima conectare la portal"
+
+#: 
+msgid "Last verified"
+msgstr "Ultima verificare"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "Niciun membru activ și aprobat al acestei familii nu are adresă de e-mail. Verificați informațiile personal."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Nu s-au găsit angajamente pentru acești ani fiscali."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "Comparația angajamentelor"
+
+#: 
+msgid "Preview PDF"
+msgstr "Previzualizare PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Al doilea an fiscal"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Conectați-vă la portalul comunității cu această adresă de e-mail pentru a verifica informațiile familiei dvs. Din pagina Familia mea, confirmați că totul este corect sau actualizați-vă datele."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Această familie este inactivă, așa că nu i se trimit e-mailuri de verificare."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Această familie auto-înregistrată așteaptă aprobarea. La aprobare, familia primește prin e-mail o invitație de a se conecta la portalul comunității și de a-și verifica informațiile."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Folosește doar setările salvate și donații fictive de exemplu."
+
+#: 
+msgid "Verification"
+msgstr "Verificare"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "E-mail de verificare trimis către %d familie."
+msgstr[1] "E-mail de verificare trimis către %d familii."
+msgstr[2] "E-mail de verificare trimis către %d de familii."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "E-mail de verificare trimis membrilor familiei."
+
+#: 
+msgid "by the family in the portal"
+msgstr "de familie în portal"
+
+#: 
+msgid "in person by staff"
+msgstr "în persoană, de către personal"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d implicit omis dintr-un alt motiv (ocurența s-a încheiat, a fost anulată sau este plină)"
+msgstr[1] "%d implicite omise dintr-un alt motiv (ocurența s-a încheiat, a fost anulată sau este plină)"
+msgstr[2] "%d de implicite omise dintr-un alt motiv (ocurența s-a încheiat, a fost anulată sau este plină)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Un parametru de tranziție. Atât paginile vechi Oportunități de voluntariat, cât și noile pagini Slujiri sunt disponibile, iar fișa unei persoane arată ambele file Voluntar, clar etichetate. Folosiți-l cât mutați o biserică de la V1 la V2, apoi treceți numai la V2."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Repartizare anulată"
+
+#: 
+msgid "Canceled"
+msgstr "Anulat"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "Anularea nu anunță pe nimeni: niciun email nu este trimis. Atribuțiile sunt păstrate, niciun memento nu este programat în timp ce este anulat, și nimeni nu poate fi atribuit până când nu este restaurat."
+
+#: 
+msgid "Color"
+msgstr "Culoare"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Codul și linkul de autentificare trimise prin e-mail au fost anulate"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "Rolurile familiale (capul familiei, soț/soție, copil etc.) ajută la organizarea înregistrărilor."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Apariție anulată"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Prioritizați traducerile"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "Repartizarea nu a putut fi anulată"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "Apariția nu a putut fi anulată"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Această dată a fost anulată. Nu mai este nevoie de nimic din partea dumneavoastră."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Această ocurență a fost anulată"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Voluntariat organizat așa cum funcționează o biserică. Fiecare slujire are echipe și posturi; persoanele sunt calificate pentru posturi și aparțin grupului de voluntari al slujirii; programele urmează evenimentele din calendar și produc ocurențe datate cu cerințe de personal; coordonatorii repartizează persoane, care acceptă, refuză sau propun un înlocuitor; reamintirile și alertele se trimit prin e-mail. Administratorii și utilizatorii cu permisiunea Gestionează slujirile văd toate slujirile și le pot crea, dezactiva și șterge. Unui coordonator de slujire i se dă în schimb permisiunea Gestionează slujirile mele: titlul Slujiri din bara laterală arată atunci doar slujirile pe care le coordonează. Un lider de echipă își conduce echipa din Portalul comunității. Credincioșii folosesc Portalul comunității pentru a-și vedea programul, a răspunde, a se înscrie și a se oferi să ajute."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Numără instalările active și rezultatele actualizărilor"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Motorul bazei de date și versiunea majoră/minoră"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Erori — statistici de instalare, avertismente, erori și excepții JS"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Ne ajutați să găsim și să remediem probleme?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "Instalare partajează statistici minime de instalare și actualizare. Erori adaugă avertismente și rapoarte de erori. Complet adaugă vizualizările de pagini. Niciunul trimite doar instalările și actualizările eșuate."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Instalare — statistici de instalare și actualizare (implicit)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Rezultatele instalării și actualizării, versiunea anterioară la actualizări și un semnal zilnic cât timp este folosit"
+
+#: 
+msgid "Installation profile"
+msgstr "Profil de instalare"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Setări regionale (Erori și Complet)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Nu se partajează niciodată: datele membrilor, donațiile sau alte date ale bisericii, numele bisericii dvs., adresa web sau numele serverului ori adresele de e-mail. Țara dvs. este cea din setările bisericii, nu este dedusă din rețeaua dvs."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Familia sistemului de operare (Erori și Complet)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "Versiunea PHP (Erori și Complet)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Vedeți exact ce se partajează sau schimbați-vă alegerea în Administrare → Telemetrie."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Separați instalările de producție, demonstrație și test"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Partajați statistici anonime de instalare?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Partajați rapoarte de erori și de utilizare"
+
+#: 
+msgid "Share install statistics"
+msgstr "Partajați statistici de instalare"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Se partajează în plus: avertismente, detalii despre erori și ce pagini sunt deschise."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Se partajează: faptul că ChurchCRM a fost instalat sau actualizat și dacă a funcționat, un semnal o dată pe zi cât timp este folosit, numărul versiunii, țara dvs. și tipul bazei de date. Un ID de instalare aleatoriu numără fiecare instalare o singură dată."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Înțelegeți compatibilitatea bazelor de date"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Alegerea vi se cere o singură dată. O puteți schimba oricând. Cu Nu, mulțumesc, se raportează doar o instalare sau o actualizare eșuată."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Datele dvs. vă aparțin. Instalare partajează doar rezultatele instalării și actualizării, ID-ul de instalare, versiunea software, profilul de instalare, țara configurată și motorul bazei de date cu versiunea majoră/minoră. Erori adaugă avertismente și detalii despre erori. Complet adaugă vizualizările de pagini. Niciunul trimite doar instalările și actualizările eșuate. Niciun nivel nu trimite adresa web sau numele serverului. Instalările de test nu trimit nimic. Telemetria este trimisă către PostHog în Statele Unite."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Datele dvs. vă aparțin. Aceste rapoarte privesc software-ul, niciodată biserica dvs. sau oamenii ei."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Datele dvs. vă aparțin. Pentru a număra instalările, ChurchCRM raportează că a fost instalat sau actualizat și dacă a funcționat, un semnal o dată pe zi cât timp este folosit, plus numărul versiunii, țara dvs., tipul bazei de date și un ID de instalare aleatoriu. Nu raportează niciodată datele membrilor, donațiile sau alte date ale bisericii, numele bisericii dvs., adresa web sau numele serverului ori adresele de e-mail. Puteți dezactiva aceasta oricând în Administrare → Telemetrie; o instalare sau o actualizare eșuată este raportată în continuare. Avertismentele, detaliile despre erori și vizualizările de pagini sunt partajate doar dacă alegeți acest lucru."
 

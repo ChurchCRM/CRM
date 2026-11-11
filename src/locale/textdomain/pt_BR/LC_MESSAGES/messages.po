@@ -1494,7 +1494,7 @@ msgstr "Pelo menos um fundo deve ter uma quantidade diferente de zero."
 
 #: 
 msgid "Must specify non-zero check number"
-msgstr "Deve especificar não-zero número de cheque"
+msgstr "É preciso informar um número de cheque diferente de zero"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
@@ -5361,7 +5361,7 @@ msgstr "Adicione notas adicionais sobre este depósito"
 
 #: 
 msgid "Checks"
-msgstr "Verificações"
+msgstr "Cheques"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -8697,7 +8697,7 @@ msgstr "Digite um termo de pesquisa"
 
 #: 
 msgid "Enter the 6-digit code from your authenticator app to complete login"
-msgstr "Digite o código de 6 dígitos da sua aplicação de autenticação para concluir o início de sessão"
+msgstr "Digite o código de 6 dígitos do seu aplicativo autenticador para concluir o login"
 
 #: 
 msgid "Enter your current password"
@@ -8937,7 +8937,7 @@ msgstr "Nível de registro"
 
 #: 
 msgid "Login to your account"
-msgstr "Iniciar sessão na sua conta"
+msgstr "Entre na sua conta"
 
 #: 
 msgid "MailChimp, backups, and more"
@@ -9383,7 +9383,7 @@ msgstr "A mostrar fiéis de: %s"
 
 #: 
 msgid "Sign in"
-msgstr "Iniciar sessão"
+msgstr "Entrar"
 
 #: 
 msgid "Since this is a fresh installation, restoring will simply load your backup data."
@@ -9615,7 +9615,7 @@ msgstr "Pode criar/excluir grupos da Escola Dominical."
 
 #: 
 msgid "Your backup data has been loaded. You will be redirected to log in with your previous credentials."
-msgstr "Os dados da sua cópia de segurança foram carregados. Será redirecionado para iniciar sessão com as suas credenciais anteriores."
+msgstr "Os dados do seu backup foram carregados. Você será redirecionado para entrar com suas credenciais anteriores."
 
 #: 
 msgid "Your backup will be automatically upgraded to the latest database schema if needed."
@@ -9623,7 +9623,7 @@ msgstr "A sua cópia de segurança será automaticamente atualizada para o esque
 
 #: 
 msgid "Your previous session timed out. Please login again."
-msgstr "A sua sessão anterior expirou. Inicie sessão novamente."
+msgstr "Sua sessão anterior expirou. Entre novamente."
 
 #: 
 msgid "complete"
@@ -13077,7 +13077,7 @@ msgstr "Alterar seu idioma"
 
 #: 
 msgid "Check Number"
-msgstr "Verificar número"
+msgstr "Número do cheque"
 
 #: 
 msgid "Check out"
@@ -27044,4 +27044,302 @@ msgstr "Pagamentos por fundo"
 #: 
 msgid "Unknown Fund"
 msgstr "Fundo desconhecido"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Peça ao seu provedor de hospedagem para migrar o banco de dados para uma versão compatível e tente novamente."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Peça ao seu provedor de hospedagem para migrar o banco de dados para uma versão compatível."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Os nomes dos feriados seguem a configuração de idioma de cada usuário. Quando um feriado não tem nome nesse idioma, ele é exibido em inglês."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Nomes dos feriados no seu idioma"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Exigir um número de cheque ao registrar pagamentos em cheque nos depósitos. Quando desativado, um cheque pode ser salvo com o número em branco ou 0, e esses cheques não são verificados quanto a duplicidade."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Exigir número do cheque em pagamentos com cheque"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "A atualização não foi iniciada, então nada foi alterado."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Esta atualização não pode ser executada no seu banco de dados."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Seu servidor de banco de dados (%1$s %2$s) é mais antigo do que o ChurchCRM suporta (MySQL %3$s ou MariaDB %4$s e posteriores)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Aprove esta família autocadastrada antes de enviar a ela um e-mail de verificação"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "Compare os totais de compromissos das famílias em dois anos fiscais."
+
+#: 
+msgid "Email Portal Link"
+msgstr "Enviar link do portal por e-mail"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "Envie à família, por e-mail, um link para o portal do membro, onde ela pode revisar e atualizar suas informações, ou registre que você as verificou pessoalmente."
+
+#: 
+msgid "Family is inactive"
+msgstr "A família está inativa"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Primeiro ano fiscal"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Anos fiscais"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Extrato de ofertas — somente exemplo"
+
+#: 
+msgid "Last invited"
+msgstr "Último convite"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Último acesso ao portal"
+
+#: 
+msgid "Last verified"
+msgstr "Última verificação"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "Nenhum membro ativo e aprovado desta família tem endereço de e-mail. Verifique as informações pessoalmente."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Nenhum compromisso foi encontrado para esses anos fiscais."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "Comparação de compromissos"
+
+#: 
+msgid "Preview PDF"
+msgstr "Visualizar PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Segundo ano fiscal"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Entre no portal do membro com este endereço de e-mail para revisar as informações da sua família. Na página Minha família, confirme que está tudo certo ou atualize seus dados."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Esta família está inativa, por isso não recebe e-mails de verificação."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Esta família autocadastrada está aguardando aprovação. Ao aprová-la, a família recebe por e-mail um convite para entrar no portal do membro e revisar suas informações."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Usa somente as configurações salvas e ofertas de exemplo fictícias."
+
+#: 
+msgid "Verification"
+msgstr "Verificação"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "E-mail de verificação enviado para %d família."
+msgstr[1] "E-mail de verificação enviado para %d famílias."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "E-mail de verificação enviado aos membros da família."
+
+#: 
+msgid "by the family in the portal"
+msgstr "pela família no portal"
+
+#: 
+msgid "in person by staff"
+msgstr "pessoalmente pela equipe"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d voluntário padrão ignorado por outro motivo (a ocorrência terminou, foi cancelada ou está completa)"
+msgstr[1] "%d voluntários padrão ignorados por outro motivo (a ocorrência terminou, foi cancelada ou está completa)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Uma configuração de transição. As páginas antigas de Oportunidades de Voluntariado e as novas páginas de Ministérios ficam disponíveis, e o registro de uma pessoa mostra as duas abas de Voluntariado, claramente identificadas. Use enquanto migra uma igreja da V1 para a V2; depois, passe só para a V2."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Designação cancelada"
+
+#: 
+msgid "Canceled"
+msgstr "Cancelado"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "Cancelar não avisa ninguém: nenhum e-mail é enviado. As atribuições são mantidas, nenhum lembrete é agendado enquanto estiver cancelado, e ninguém pode ser atribuído até que seja restaurado."
+
+#: 
+msgid "Color"
+msgstr "Cor"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Código e link de acesso enviados por e-mail cancelados"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "As funções familiares (Chefe de Família, Cônjuge, Filho, etc.) ajudam a organizar os seus registros."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Ocorrência cancelada"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Priorizar traduções"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "Não foi possível cancelar a designação"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "A ocorrência não pôde ser cancelada"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Esta data foi cancelada. Nada mais é necessário da sua parte."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Esta ocorrência foi cancelada"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "O voluntariado organizado como uma igreja o realiza. Cada ministério tem equipes e funções; as pessoas são qualificadas para funções e pertencem ao grupo de banco de voluntários do ministério; as escalas acompanham os eventos do calendário e produzem ocorrências datadas com necessidades de pessoal; os coordenadores designam pessoas, que aceitam, recusam ou propõem um substituto; lembretes e alertas são enviados por e-mail. Administradores e usuários com a permissão Gerenciar Ministérios veem todos os ministérios e podem criá-los, desativá-los e excluí-los. Um coordenador de ministério recebe, em vez disso, a permissão Gerenciar Meus Ministérios: o título Ministérios na barra lateral mostra então apenas os ministérios que coordena. Um líder de equipe dirige sua equipe pelo Portal do Membro. Os membros usam o Portal do Membro para ver sua escala, responder, se inscrever e oferecer ajuda."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Contar instalações ativas e resultados de atualizações"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Mecanismo de banco de dados e versão principal/secundária"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Erros — estatísticas de instalação, avisos, erros e exceções de JS"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Quer nos ajudar a encontrar e corrigir problemas?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "Instalação compartilha estatísticas mínimas de instalação e atualização. Erros adiciona avisos e relatórios de erros. Completo adiciona visualizações de página. Nenhum envia somente instalações e atualizações com falha."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Instalação — estatísticas de instalação e atualização (padrão)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Resultados de instalação e atualização, versão anterior nas atualizações e uma verificação diária enquanto estiver em uso"
+
+#: 
+msgid "Installation profile"
+msgstr "Perfil de instalação"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Localidade (Erros e Completo)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Nunca compartilhado: registros de membros, de ofertas ou outros registros da igreja, o nome da sua igreja, seu endereço web ou nome do servidor, nem endereços de e-mail. Seu país é o definido nas configurações da igreja, não é obtido a partir da sua rede."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Família do sistema operacional (Erros e Completo)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "Versão do PHP (Erros e Completo)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Veja exatamente o que é compartilhado, ou altere sua escolha, em Admin → Telemetria."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Diferenciar instalações de produção, demonstração e teste"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Compartilhar estatísticas de instalação anônimas?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Compartilhar relatórios de erros e de uso"
+
+#: 
+msgid "Share install statistics"
+msgstr "Compartilhar estatísticas de instalação"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Compartilhado também: avisos, detalhes de erros e quais páginas são abertas."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Compartilhado: que o ChurchCRM foi instalado ou atualizado e se funcionou, uma verificação diária enquanto estiver em uso, o número da versão, seu país e o tipo de banco de dados. Um ID de instalação aleatório conta cada instalação uma única vez."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Entender a compatibilidade de bancos de dados"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Sua escolha é perguntada uma vez. Você pode alterá-la a qualquer momento. Com Não, obrigado, apenas uma instalação ou atualização com falha é informada."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Seus dados são seus. Instalação compartilha somente resultados de instalação e atualização, ID de instalação, versão do software, perfil de instalação, país configurado e mecanismo de banco de dados com versão principal/secundária. Erros adiciona avisos e detalhes de erros. Completo adiciona visualizações de página. Nenhum envia somente instalações e atualizações com falha. Nenhum nível envia seu endereço web ou nome do servidor. Instalações de teste não enviam nada. A telemetria é enviada para a PostHog nos Estados Unidos."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Seus dados são seus. Isto informa sobre o software, nunca sobre sua igreja ou as pessoas dela."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Seus dados são seus. Para contar instalações, o ChurchCRM informa que foi instalado ou atualizado e se funcionou, uma verificação diária enquanto estiver em uso, além do número da versão, seu país, o tipo de banco de dados e um ID de instalação aleatório. Ele nunca informa registros de membros, de ofertas ou outros registros da igreja, o nome da sua igreja, seu endereço web ou nome do servidor, nem endereços de e-mail. Você pode desativar isso a qualquer momento em Admin → Telemetria; uma instalação ou atualização com falha continua sendo informada. Avisos, detalhes de erros e visualizações de página só são compartilhados se você escolher."
 

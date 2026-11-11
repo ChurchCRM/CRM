@@ -1570,11 +1570,11 @@ msgstr "Minst en fond måste ha en icke-noll värde."
 
 #: 
 msgid "Must specify non-zero check number"
-msgstr "Du måste ange noll kontroll nummer"
+msgstr "Du måste ange ett checknummer som inte är noll"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Kontrollera numret inte giltigt för 'kontant' betalning"
+msgstr "Checknumret är inte giltigt för kontant betalning"
 
 #: 
 #, fuzzy
@@ -2472,7 +2472,7 @@ msgstr "Ställ in true för att inaktivera att ange bröllopsdatum i Family Edit
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
-msgstr "Antal kontroller för insättningsrapport"
+msgstr "Antal checkar för insättningskvittorapporten"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -5041,7 +5041,7 @@ msgstr "Löften Sammanfattning efter familj"
 
 #: 
 msgid "Pledge"
-msgstr "Löften"
+msgstr "Löfte"
 
 #: 
 msgid "Paid"
@@ -13196,7 +13196,7 @@ msgstr "Ändra din plats"
 
 #: 
 msgid "Check Number"
-msgstr "Kolla numret"
+msgstr "Checknummer"
 
 #: 
 msgid "Check out"
@@ -16348,7 +16348,7 @@ msgstr "Auto foljer ditt OS eller webblasarinstaallning; Ljus och Mork asidosatt
 
 #: 
 msgid "Back to Pledge Dashboard"
-msgstr "Tillbaka till loftesoversiкten"
+msgstr "Tillbaka till översikten över löften"
 
 #: 
 msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
@@ -16398,11 +16398,11 @@ msgstr "Ange rollnamn"
 
 #: 
 msgid "Failed to create deposit"
-msgstr "Det gick inte att skapa insattning"
+msgstr "Det gick inte att skapa insättning"
 
 #: 
 msgid "Failed to load email preview"
-msgstr "Det gick inte att lasa in forhandsgranskning av e-post"
+msgstr "Det gick inte att läsa in förhandsgranskning av e-post"
 
 #: 
 msgid "From Date"
@@ -16414,7 +16414,7 @@ msgstr "Fondtotal"
 
 #: 
 msgid "Fund contributor pledge summary by fiscal year"
-msgstr "Sammanfattning av fondgivarnas loften per rakenskapsar"
+msgstr "Sammanfattning av fondgivarnas löften per räkenskapsår"
 
 #: 
 msgid "Fundraiser is disabled"
@@ -16442,7 +16442,7 @@ msgstr "Ej tillgänglig"
 
 #: 
 msgid "New Deposit"
-msgstr "Ny insattning"
+msgstr "Ny insättning"
 
 #: 
 msgid "No contributors found for this fund in the selected fiscal year"
@@ -16454,11 +16454,11 @@ msgstr "Inga familjer med e-postadress hittades. Inget skickades."
 
 #: 
 msgid "No payments found for the selected deposits"
-msgstr "Inga betalningar hittades for de valda insattningarna"
+msgstr "Inga betalningar hittades för de valda insättningarna"
 
 #: 
 msgid "No valid deposit IDs provided"
-msgstr "Inga giltiga insattnings-ID angavs"
+msgstr "Inga giltiga insättnings-ID angavs"
 
 #: 
 msgid "Partial Send"
@@ -16474,7 +16474,7 @@ msgstr "Lovat belopp"
 
 #: 
 msgid "Preview"
-msgstr "Forhandsgranskning"
+msgstr "Förhandsgranskning"
 
 #: 
 msgid "Retry"
@@ -16486,7 +16486,7 @@ msgstr "Sok"
 
 #: 
 msgid "Search and manage deposit slip records"
-msgstr "Sok och hantera insattningskvittoposter"
+msgstr "Sök och hantera insättningskvitton"
 
 #: 
 msgid "Select All"
@@ -16546,7 +16546,7 @@ msgstr "Visa betalning"
 
 #: 
 msgid "View Pledge"
-msgstr "Visa lofte"
+msgstr "Visa löfte"
 
 #: 
 msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
@@ -27163,4 +27163,302 @@ msgstr "Betalningar per fond"
 #: 
 msgid "Unknown Fund"
 msgstr "Okänd fond"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Be din webbhotellsleverantör att flytta databasen till en version som stöds och försök sedan igen."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Be din webbhotellsleverantör att flytta databasen till en version som stöds."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Namn på helgdagar följer varje användares språkinställning. När en helgdag saknar namn på det språket visas den på engelska."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Namn på helgdagar på ditt språk"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Kräv ett checknummer när checkbetalningar registreras i insättningar. När inställningen är av kan en check sparas med tomt checknummer eller 0, och sådana kontrolleras inte för dubbletter."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Kräv checknummer vid checkbetalningar"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "Uppgraderingen startades inte, så ingenting ändrades."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Den här uppgraderingen kan inte köras på din databas."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Din databasserver (%1$s %2$s) är äldre än vad ChurchCRM stöder (MySQL %3$s eller MariaDB %4$s och senare)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Godkänn den här självregistrerade familjen innan den får ett verifieringsmejl"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "Jämför familjernas totala givarlöften för två bokföringsår."
+
+#: 
+msgid "Email Portal Link"
+msgstr "Mejla portallänk"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "Mejla familjen en länk till medlemsportalen, där den kan granska och uppdatera sina uppgifter, eller registrera att du har verifierat uppgifterna personligen."
+
+#: 
+msgid "Family is inactive"
+msgstr "Familjen är inaktiv"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Första bokföringsår"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Bokföringsår"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Gåvobesked – endast exempel"
+
+#: 
+msgid "Last invited"
+msgstr "Senast inbjuden"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Senaste inloggning i portalen"
+
+#: 
+msgid "Last verified"
+msgstr "Senast verifierad"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "Ingen aktiv, godkänd medlem i den här familjen har en e-postadress. Verifiera uppgifterna personligen i stället."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Inga givarlöften hittades för dessa bokföringsår."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "Jämförelse av givarlöften"
+
+#: 
+msgid "Preview PDF"
+msgstr "Förhandsgranska PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Andra bokföringsår"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Logga in i medlemsportalen med den här e-postadressen för att granska din familjs uppgifter. Bekräfta på sidan Min familj att allt stämmer, eller uppdatera dina uppgifter."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Den här familjen är inaktiv och får därför inga verifieringsmejl."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Den här självregistrerade familjen väntar på godkännande. När den godkänns får familjen ett mejl med en inbjudan att logga in i medlemsportalen och granska sina uppgifter."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Använder endast sparade inställningar och påhittade exempelgåvor."
+
+#: 
+msgid "Verification"
+msgstr "Verifiering"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "Verifieringsmejl skickat till %d familj."
+msgstr[1] "Verifieringsmejl skickat till %d familjer."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "Verifieringsmejl skickat till familjemedlemmarna."
+
+#: 
+msgid "by the family in the portal"
+msgstr "av familjen i portalen"
+
+#: 
+msgid "in person by staff"
+msgstr "personligen av personal"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d standardvolontär hoppades över av annan anledning (tillfället är över, inställt eller fullt)"
+msgstr[1] "%d standardvolontärer hoppades över av annan anledning (tillfället är över, inställt eller fullt)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "En övergångsinställning. De äldre sidorna för Volontärmöjligheter och de nya sidorna för Tjänsteområden är båda tillgängliga, och en personpost visar båda flikarna Volontär, tydligt märkta. Använd den medan du flyttar en kyrka från V1 till V2, och byt sedan till enbart V2."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Tilldelningen avbröts"
+
+#: 
+msgid "Canceled"
+msgstr "Avbruten"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "Att avbryta berättar inget för någon: ingen e-post skickas. Uppdrag behålls, inga påminnelser schemaläggs medan det är avbrutet, och ingen kan tilldelas tills det återställs."
+
+#: 
+msgid "Color"
+msgstr "Färg"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Skickad inloggningskod och länk har återkallats"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "Familjeroller (familjeöverhuvud, make/maka, barn osv.) hjälper till att organisera dina poster."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Förekomst avbruten"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Prioritera översättningar"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "Tilldelningen kunde inte avbokas"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "Förekomsten kunde inte avbrytas"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Det här tillfället har ställts in. Du behöver inte göra något mer."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Detta tillfälle har ställts in"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Volontärarbete organiserat så som en församling driver det. Varje verksamhet har team och funktioner; människor är kvalificerade för funktioner och tillhör verksamhetens poolgrupp; scheman följer händelserna i kalendern och skapar daterade tillfällen med bemanningskrav; samordnare tilldelar personer, som tackar ja, tackar nej eller föreslår en ersättare; påminnelser och aviseringar skickas via e-post. Administratörer och användare med behörigheten Hantera verksamheter ser alla verksamheter och kan skapa, inaktivera och ta bort dem. En verksamhetssamordnare får i stället behörigheten Hantera mina verksamheter: rubriken Verksamheter i sidomenyn visar då bara de verksamheter som personen samordnar. En teamledare leder sitt team från Medlemsportalen. Medlemmar använder Medlemsportalen för att se sitt schema, svara, anmäla sig och erbjuda hjälp."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Räkna aktiva installationer och uppgraderingsresultat"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Databasmotor och huvud-/delversion"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Fel — installationsstatistik, varningar, fel och JS-undantag"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Hjälpa oss att hitta och åtgärda problem?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "Installation delar minimal installations- och uppgraderingsstatistik. Fel lägger till varningar och felrapporter. Fullständigt lägger till sidvisningar. Ingen skickar bara misslyckade installationer och uppgraderingar."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Installation — installations- och uppgraderingsstatistik (standard)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Installations- och uppgraderingsresultat, tidigare version vid uppgraderingar och en daglig incheckning under användning"
+
+#: 
+msgid "Installation profile"
+msgstr "Installationsprofil"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Språkinställning (Fel och Fullständigt)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Delas aldrig: medlems-, gåvo- eller andra församlingsuppgifter, församlingens namn, din webbadress eller ditt servernamn eller e-postadresser. Ditt land är det som anges i församlingens inställningar och hämtas inte från ditt nätverk."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Operativsystemfamilj (Fel och Fullständigt)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP-version (Fel och Fullständigt)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Se exakt vad som delas, eller ändra ditt val, under Admin → Telemetri."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Skilj på produktions-, demo- och testinstallationer"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Dela anonym installationsstatistik?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Dela fel- och användningsrapporter"
+
+#: 
+msgid "Share install statistics"
+msgstr "Dela installationsstatistik"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Delas dessutom: varningar, felinformation och vilka sidor som öppnas."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Delas: att ChurchCRM har installerats eller uppgraderats och om det fungerade, en incheckning en gång om dagen under användning, versionsnumret, ditt land och typen av databas. Ett slumpmässigt installations-ID räknar varje installation en gång."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Förstå databaskompatibilitet"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Du tillfrågas en gång. Du kan ändra ditt val när som helst. Med Nej tack rapporteras bara en misslyckad installation eller uppgradering."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Dina data är dina. Installation delar bara installations- och uppgraderingsresultat, installations-ID, programversion, installationsprofil, inställt land samt databasmotor och huvud-/delversion. Fel lägger till varningar och felinformation. Fullständigt lägger till sidvisningar. Ingen skickar bara misslyckade installationer och uppgraderingar. Ingen nivå skickar din webbadress eller ditt servernamn. Testinstallationer skickar ingenting. Telemetri skickas till PostHog i USA."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Dina data är dina. Det här rapporterar om programvaran, aldrig om din församling eller dess människor."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Dina data är dina. För att räkna installationer rapporterar ChurchCRM att det har installerats eller uppgraderats och om det fungerade, en incheckning en gång om dagen under användning, samt versionsnumret, ditt land, typen av databas och ett slumpmässigt installations-ID. Det rapporterar aldrig medlems-, gåvo- eller andra församlingsuppgifter, församlingens namn, din webbadress eller ditt servernamn eller e-postadresser. Du kan stänga av detta när som helst under Admin → Telemetri; en misslyckad installation eller uppgradering rapporteras ändå. Varningar, felinformation och sidvisningar delas bara om du väljer det."
 
