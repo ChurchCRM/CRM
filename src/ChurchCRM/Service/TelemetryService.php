@@ -398,7 +398,7 @@ class TelemetryService
         ]);
 
         try {
-            $ch = curl_init(self::POSTHOG_CAPTURE_ENDPOINT);
+            $ch = curl_init(self::POSTHOG_CAPTURE_ENDPOINT . '?ip=0'); // ip=0: PostHog must not store this server's address
             if ($ch === false) {
                 return false;
             }

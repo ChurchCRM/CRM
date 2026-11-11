@@ -15,7 +15,7 @@ require dirname(__DIR__, 2) . '/bootstrap.php';
 // Inspect serialized requests without opening a network connection.
 function curl_init(string $url): object
 {
-    Assert::same(TelemetryService::POSTHOG_CAPTURE_ENDPOINT, $url);
+    Assert::same(TelemetryService::POSTHOG_CAPTURE_ENDPOINT . '?ip=0', $url);
     return new \stdClass();
 }
 
