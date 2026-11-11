@@ -562,7 +562,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
 </div>
 
 <div class="container-fluid mb-3">
-    <div id="reportingSettings" data-settings="<?= InputUtils::escapeAttribute(json_encode($pdfSettings)) ?>"></div>
+    <div id="reportingSettings" data-settings="<?= htmlspecialchars(InputUtils::jsonEncodeForScript($pdfSettings), ENT_QUOTES, 'UTF-8') ?>"></div>
 </div>
 <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.css') ?>">
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/system-settings-panel.min.js') ?>"></script>
