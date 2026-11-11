@@ -54,10 +54,6 @@ msgid "Unk"
 msgstr "-"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "You are about to email a copy of the family information to the following emails"
-
-#: 
 msgid "Check"
 msgstr "Cheque"
 

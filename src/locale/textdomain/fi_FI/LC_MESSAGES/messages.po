@@ -887,10 +887,6 @@ msgid "Do you want to proceed?"
 msgstr "Haluatko jatkaa?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Olet lähettämässä sähköpostitse kopion perheen tiedoista seuraaviin osoitteisiin"
-
-#: 
 msgid "Financial Reports"
 msgstr "Talousraportit"
 
@@ -1810,10 +1806,6 @@ msgstr "Puhelinnumero"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Mukautettu pudotusvalikko"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF lähetetty sähköpostitse perheenjäsenille."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3854,10 +3846,6 @@ msgid "Please verify your family's information"
 msgstr "Vahvista perheesi tiedot"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Vahvistustietojen lataaminen epäonnistui"
-
-#: 
 msgid "No Changes"
 msgstr "Ei muutoksia"
 
@@ -3870,24 +3858,8 @@ msgid "Oops! Page not found."
 msgstr "Hups! Sivua ei löytynyt."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Aloita perheesi tietojen vahvistus syöttämällä seuraavat tiedot"
-
-#: 
-msgid "Family Verification"
-msgstr "Perheen vahvistus"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Pyydä perhetietojen vahvistusta"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Valitse, miten haluat pyytää perhetietojen vahvistusta"
-
-#: 
-msgid "Online Verification"
-msgstr "Verkkovahvistus"
 
 #: 
 msgid "Verified In Person"
@@ -4309,10 +4281,6 @@ msgstr "Arabia - Egypti"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Odottaa itsevahvistusta"
 
 #: 
 msgid "Self Verify"
@@ -6544,10 +6512,6 @@ msgid "Additional Information"
 msgstr "Lisätiedot"
 
 #: 
-msgid "All information is correct"
-msgstr "Kaikki tiedot ovat oikein"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Määritä mahdollisuudet"
 
@@ -6560,20 +6524,12 @@ msgid "Choose opportunities..."
 msgstr "Valitse mahdollisuudet..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Vahvista perheen tiedot"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Yhteystiedot ja henkilötiedot"
 
 #: 
 msgid "Edited"
 msgstr "Muokattu"
-
-#: 
-msgid "Email PDF"
-msgstr "Lähetä sähköpostilla PDF"
 
 #: 
 msgid "Newsletter"
@@ -6584,40 +6540,12 @@ msgid "Personal"
 msgstr "Henkilökohtainen"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Päivitä tietueitamme korjauksilla"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Anna tässä mahdolliset korjaukset tai lisätiedot..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Valitse mahdollisuudet"
 
 #: 
-msgid "Submit Verification"
-msgstr "Lähetä vahvistus"
-
-#: 
-msgid "Thank You!"
-msgstr "Kiitos!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Vieraile verkkosivuiltamme"
-
-#: 
 msgid "Volunteer"
 msgstr "Vapaaehtoinen"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Vahvistuksesi käsittelyssä tapahtui virhe. Yritä uudelleen tai ota meihin yhteyttä suoraan."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Vahvistuspyyntösi on vastaanotettu. Kiitos tietojesi pitämisestä ajan tasalla."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8857,10 +8785,6 @@ msgstr "Perheen lupausyhteenveto"
 #: 
 msgid "Family Profile"
 msgstr "Perheen profiili"
-
-#: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Perheroolit (perheen pää, puoliso, lapsi jne.) auttavat järjestämään tietueita."
 
 #: 
 msgid "Family vs Person"
@@ -11962,10 +11886,6 @@ msgid "Cannot move property in that direction"
 msgstr "Ominaisuutta ei voi siirtää kyseiseen suuntaan"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Vahvista perhetiedot"
-
-#: 
 msgid "Delete failed"
 msgstr "Poisto epäonnistui"
 
@@ -12006,20 +11926,12 @@ msgid "Invalid target family"
 msgstr "Virheellinen kohdeperhe"
 
 #: 
-msgid "Log Out"
-msgstr "Kirjaudu ulos"
-
-#: 
 msgid "Membership not found"
 msgstr "Jäsenyyttä ei löydy"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Salasana vaihdettu onnistuneesti käyttäjälle"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Tarkasta alla olevat perhetietosi ja vahvista tai pyydä muutoksia."
 
 #: 
 msgid "Please select a target family."
@@ -13495,10 +13407,6 @@ msgid "Failed to cancel enrollment. Please try again."
 msgstr "Ilmoittautumisen peruuttaminen epäonnistui. Yritä uudelleen."
 
 #: 
-msgid "Failed to copy URL"
-msgstr "URL-osoitteen kopiointi epäonnistui"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Varmuuskopion luominen epäonnistui."
 
@@ -13887,10 +13795,6 @@ msgid "One-Time Code"
 msgstr "Kertakäyttöinen koodi"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Avaa uudessa välilehdessä"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Avaa todennussovelluksesi ja skannaa tämä QR-koodi"
 
@@ -14167,10 +14071,6 @@ msgid "Setup Complete"
 msgstr "Määritys valmis"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Jaa tämä URL-osoite perheenjäsenille heidän tietojensa vahvistamiseksi"
-
-#: 
 msgid "Show more options"
 msgstr "Näytä lisää vaihtoehtoja"
 
@@ -14321,10 +14221,6 @@ msgstr "Käyttäjän poiston vahvistus"
 #: 
 msgid "Validation pending"
 msgstr "Validointi odottaa"
-
-#: 
-msgid "Verification URL"
-msgstr "Vahvistus-URL"
 
 #: 
 msgid "Verification failed. Please try again."
@@ -15663,10 +15559,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Vahvista tämän perheen tietueen poistaminen"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Vahvista perhetietosi"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Valitse toinen perhe, johon nämä lahjoitukset liitetään"
 
@@ -16299,10 +16191,6 @@ msgid "Pledges & Payments"
 msgstr "Sitoumukset & maksut"
 
 #: 
-msgid "Prioritise translations"
-msgstr "Priorisoi käännökset"
-
-#: 
 msgid "Purpose"
 msgstr "Tarkoitus"
 
@@ -16563,12 +16451,6 @@ msgstr "Valituille talletuksille ei loytynyт maksuja"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Yhtaan kelvollista talletustunnusta ei annettu"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF lähetetty onnistuneesti %d perheelle sähköpostitse."
-msgstr[1] "PDF lähetetty onnistuneesti %d perheelle sähköpostitse."
 
 #: 
 msgid "Partial Send"
@@ -17507,10 +17389,6 @@ msgstr "Poista lisäosa"
 #: 
 msgid "Upcoming"
 msgstr "Tulevat"
-
-#: 
-msgid "Valid Until"
-msgstr "Voimassa asti"
 
 #: 
 msgid "View active only"
@@ -18473,12 +18351,6 @@ msgstr[0] "%d päivä"
 msgstr[1] "%d päivää"
 
 #: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d oletus ohitettu toisesta syystä (tapahtumakerta on ohi, peruttu tai täynnä)"
-msgstr[1] "%d oletusta ohitettu toisesta syystä (tapahtumakerta on ohi, peruttu tai täynnä)"
-
-#: 
 msgid "%d default skipped: qualification revoked"
 msgid_plural "%d defaults skipped: qualification revoked"
 msgstr[0] "%d oletus ohitettu: kelpuutus peruttu"
@@ -18739,10 +18611,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Teema on kansio, jonka seurakuntasi lataa palvelimelle hakemistoon Include/themes/. Järjestelmän oletusteema tulee ChurchCRM:n mukana."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Siirtymäasetus. Vanhat Vapaaehtoistehtävät-sivut ja uudet Työalat-sivut ovat molemmat käytettävissä, ja henkilön tietueessa näkyy molemmat Vapaaehtoinen-välilehdet selkeästi nimettyinä. Käytä tätä, kun siirrät seurakuntaa V1:stä V2:een, ja vaihda sitten pelkkään V2:een."
-
-#: 
 msgid "A volunteer"
 msgstr "Vapaaehtoinen"
 
@@ -18947,10 +18815,6 @@ msgid "Assigned outside the current plan"
 msgstr "Määritetty nykyisen suunnitelman ulkopuolelle"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Tehtävämääritys peruttu"
-
-#: 
 msgid "Assignment not found"
 msgstr "Tehtävämääritystä ei löytynyt"
 
@@ -19057,10 +18921,6 @@ msgstr "Peruuta tehtävämääritys"
 #: 
 msgid "Cancel this assignment"
 msgstr "Peruuta tämä tehtävämääritys"
-
-#: 
-msgid "Cancelled"
-msgstr "Peruttu"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19217,10 +19077,6 @@ msgstr "Seurakunnan verkkosivusto"
 #: 
 msgid "Close event details"
 msgstr "Sulje tapahtuman tiedot"
-
-#: 
-msgid "Colour"
-msgstr "Väri"
 
 #: 
 msgid "Completed"
@@ -21479,10 +21335,6 @@ msgid "The asset path \"%s\" is not allowed."
 msgstr "Resurssipolku ”%s” ei ole sallittu."
 
 #: 
-msgid "The assignment could not be cancelled"
-msgstr "Tehtävämääritystä ei voitu peruuttaa"
-
-#: 
 msgid "The assignment message will be sent again"
 msgstr "Tehtävämääritysviesti lähetetään uudelleen"
 
@@ -22007,10 +21859,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Tämä tapahtumakerta on jo tapahtunut, eikä sen tehtävämäärityksiä voi enää muuttaa"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Tämä tapahtumakerta on peruttu"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Tällä tapahtumakerralla on omat miehitystarpeensa, erillään aikataulusta."
 
@@ -22237,10 +22085,6 @@ msgstr "Vapaaehtoisten ajat"
 #: 
 msgid "Volunteering"
 msgstr "Vapaaehtoistyö"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Vapaaehtoistyö seurakunnan tavalla järjestettynä. Jokaisella työalalla on tiimejä ja tehtäviä; ihmiset kelpuutetaan tehtäviin ja kuuluvat työalan joukkoryhmään; aikataulut seuraavat kalenterin tapahtumia ja tuottavat päivättyjä tapahtumakertoja miehitysvaatimuksineen; koordinaattorit määräävät ihmisiä, jotka hyväksyvät, kieltäytyvät tai ehdottavat sijaista; muistutukset ja hälytykset lähtevät sähköpostitse. Ylläpitäjät ja käyttäjät, joilla on Hallitse työaloja -oikeus, näkevät kaikki työalat ja voivat luoda, poistaa käytöstä ja poistaa niitä. Työalan koordinaattorille annetaan sen sijaan Hallitse omia työalojani -oikeus: sivupalkin Työalat-otsikon alla näkyvät silloin vain työalat, joita hän koordinoi. Tiimin vetäjä johtaa tiimiään Jäsenportaalista. Jäsenet käyttävät Jäsenportaalia nähdäkseen aikataulunsa, vastatakseen, ilmoittautuakseen ja tarjotakseen apua."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22779,10 +22623,6 @@ msgid "Cancel this occurrence"
 msgstr "Peruuta tämä tapahtuma"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Peruuttaminen ei ilmoita kenellekään: sähköpostia ei lähetetä. Tehtävät säilytetään, muistutuksia ei aikatauluteta sen ollessa peruutettu, eikä ketään voi määrittää ennen kuin se palautetaan."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Poistetut tapahtumat poistuvat jokaisesta kalenterista sisään- ja poistumisiensa ja saapuvuuksien kanssa, ja tämän palvelun henkilöstö säilyttää vain sen päivämäärän. Tätä ei voi kumota."
 
@@ -22793,10 +22633,6 @@ msgstr "Tapahtumat poistettu: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Poistettavat tapahtumat: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Tapahtuma peruutettu"
 
 #: 
 msgid "Occurrence restored"
@@ -22813,10 +22649,6 @@ msgstr "Palauta tapahtuma"
 #: 
 msgid "Restore this occurrence"
 msgstr "Palauta tämä tapahtuma"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Tapahtumaa ei voitu peruuttaa"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24881,10 +24713,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "Telemetria lähetetään PostHogiin Yhdysvaltoihin. Asennuksen ja päivityksen virheraportit lähetetään, vaikka valinnainen telemetria olisi pois käytöstä."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Tämä päivä on peruttu. Sinulta ei tarvita enää mitään."
-
-#: 
 msgid "always sent"
 msgstr "lähetetään aina"
 
@@ -25351,10 +25179,6 @@ msgstr "Sähköposti tarvitsee huomiota"
 #: 
 msgid "Email problem"
 msgstr "Sähköpostiongelma"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Sähköpostitse lähetetty kirjautumiskoodi ja linkki peruttiin"
 
 #: 
 msgid "Emailed verification link"
@@ -27119,10 +26943,6 @@ msgstr "%s asti"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "Jäsenportaalissa pyydettiin vaihtamaan sähköpostiosoitteesi sivustolla %1$s osoitteesta %2$s osoitteeseen %3$s. Muutos tapahtuu vasta, kun uuteen osoitteeseen lähetettyä linkkiä käytetään."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Tarkista perheesi tiedot alla olevasta linkistä. Valitse tarkistussivulla ”Vahvista perheen tiedot” vahvistaaksesi, että kaikki on oikein, tai lähetä korjaukset seurakunnan toimistoon."
 
 #: 
 msgid "Review Family Information"

@@ -884,10 +884,6 @@ msgid "Do you want to proceed?"
 msgstr "क्या आप आगे बढ़ना चाहते हैं?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "आप परिवार की जानकारी की प्रति निम्नलिखित ईमेल पर भेजने वाले हैं"
-
-#: 
 msgid "Financial Reports"
 msgstr "वित्तीय रिपोर्ट"
 
@@ -1807,10 +1803,6 @@ msgstr "फ़ोन नंबर"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "कस्टम ड्रॉप-डाउन सूची"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF सफलतापूर्वक परिवार के सदस्यों को ईमेल कर दी गई।"
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3851,10 +3843,6 @@ msgid "Please verify your family's information"
 msgstr "कृपया अपने परिवार की जानकारी सत्यापित करें"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "सत्यापन जानकारी लोड करने में असमर्थ"
-
-#: 
 msgid "No Changes"
 msgstr "कोई बदलाव नहीं"
 
@@ -3867,24 +3855,8 @@ msgid "Oops! Page not found."
 msgstr "ओह! पृष्ठ नहीं मिला।"
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "अपने परिवार का सत्यापन शुरू करने के लिए निम्नलिखित दर्ज करें"
-
-#: 
-msgid "Family Verification"
-msgstr "परिवार सत्यापन"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "परिवार की जानकारी सत्यापन का अनुरोध करें"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "चुनें कि आप परिवार की जानकारी को कैसे सत्यापित करना चाहते हैं"
-
-#: 
-msgid "Online Verification"
-msgstr "ऑनलाइन सत्यापन"
 
 #: 
 msgid "Verified In Person"
@@ -4306,10 +4278,6 @@ msgstr "अरबी - मिस्र"
 #: 
 msgid "Thai"
 msgstr "थाई"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "लंबित स्व-सत्यापन"
 
 #: 
 msgid "Self Verify"
@@ -6542,10 +6510,6 @@ msgid "Additional Information"
 msgstr "अतिरिक्त जानकारी"
 
 #: 
-msgid "All information is correct"
-msgstr "सभी जानकारी सही है"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "अवसर सौंपें"
 
@@ -6558,20 +6522,12 @@ msgid "Choose opportunities..."
 msgstr "अवसर चुनें..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "पारिवारिक जानकारी की पुष्टि करें"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "संपर्क और व्यक्तिगत जानकारी"
 
 #: 
 msgid "Edited"
 msgstr "संपादित"
-
-#: 
-msgid "Email PDF"
-msgstr "PDF ईमेल करें"
 
 #: 
 msgid "Newsletter"
@@ -6582,40 +6538,12 @@ msgid "Personal"
 msgstr "व्यक्तिगत"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "कृपया सुधारों के साथ हमारे रिकॉर्ड अपडेट करें"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "यहाँ कोई सुधार या अतिरिक्त जानकारी प्रदान करें..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "अवसर चुनें"
 
 #: 
-msgid "Submit Verification"
-msgstr "सत्यापन सबमिट करें"
-
-#: 
-msgid "Thank You!"
-msgstr "धन्यवाद!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "हमारी वेबसाइट पर जाएँ"
-
-#: 
 msgid "Volunteer"
 msgstr "स्वयंसेवक"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "आपका सत्यापन संसाधित करने में हमें एक त्रुटि का सामना करना पड़ा। कृपया पुन: प्रयास करें या सीधे हमसे संपर्क करें।"
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "आपका सत्यापन अनुरोध प्राप्त हो गया है। अपनी जानकारी अद्यतित रखने के लिए धन्यवाद।"
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8855,10 +8783,6 @@ msgstr "पारिवारिक प्रतिज्ञा सारां�
 #: 
 msgid "Family Profile"
 msgstr "परिवार प्रोफ़ाइल"
-
-#: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "पारिवारिक भूमिकाएँ (घर का मुखिया, पति/पत्नी, बच्चा, आदि) आपके रिकॉर्ड को व्यवस्थित करने में मदद करती हैं।"
 
 #: 
 msgid "Family vs Person"
@@ -11960,10 +11884,6 @@ msgid "Cannot move property in that direction"
 msgstr "उस दिशा में संपत्ति नहीं ले जाई जा सकती"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "परिवार की जानकारी की पुष्टि करें"
-
-#: 
 msgid "Delete failed"
 msgstr "हटाना विफल रहा"
 
@@ -12004,20 +11924,12 @@ msgid "Invalid target family"
 msgstr "अमान्य लक्षित परिवार"
 
 #: 
-msgid "Log Out"
-msgstr "लॉग आउट"
-
-#: 
 msgid "Membership not found"
 msgstr "सदस्यता नहीं मिली"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "के लिए पासवर्ड सफलतापूर्वक बदल दिया गया"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "कृपया नीचे अपनी पारिवारिक जानकारी की समीक्षा करें और पुष्टि करें या परिवर्तन का अनुरोध करें।"
 
 #: 
 msgid "Please select a target family."
@@ -13493,10 +13405,6 @@ msgid "Failed to cancel enrollment. Please try again."
 msgstr "नामांकन रद्द करने में विफल। कृपया पुनः प्रयास करें।"
 
 #: 
-msgid "Failed to copy URL"
-msgstr "URL कॉपी करने में विफल"
-
-#: 
 msgid "Failed to create backup."
 msgstr "बैकअप बनाने में विफल।"
 
@@ -13885,10 +13793,6 @@ msgid "One-Time Code"
 msgstr "एक बार का कोड"
 
 #: 
-msgid "Open in New Tab"
-msgstr "नए टैब में खोलें"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "अपना प्रमाणीकरण ऐप खोलें और इस QR कोड को स्कैन करें"
 
@@ -14165,10 +14069,6 @@ msgid "Setup Complete"
 msgstr "सेटअप पूर्ण"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "उनकी जानकारी सत्यापित करने के लिए परिवार के सदस्यों के साथ यह URL साझा करें"
-
-#: 
 msgid "Show more options"
 msgstr "अधिक विकल्प दिखाएँ"
 
@@ -14319,10 +14219,6 @@ msgstr "उपयोगकर्ता विलोपन पुष्टि"
 #: 
 msgid "Validation pending"
 msgstr "सत्यापन लंबित है"
-
-#: 
-msgid "Verification URL"
-msgstr "सत्यापन URL"
 
 #: 
 msgid "Verification failed. Please try again."
@@ -15661,10 +15557,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "कृपया इस परिवार रिकॉर्ड के विलोपन की पुष्टि करें"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "कृपया अपनी पारिवारिक जानकारी की पुष्टि करें"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "कृपया कोई अन्य परिवार चुनें जिनसे इन दानों को जोड़ा जाए"
 
@@ -16297,10 +16189,6 @@ msgid "Pledges & Payments"
 msgstr "प्रतिज्ञाएँ और भुगतान"
 
 #: 
-msgid "Prioritise translations"
-msgstr "अनुवादों को प्राथमिकता दें"
-
-#: 
 msgid "Purpose"
 msgstr "उद्देश्य"
 
@@ -16561,12 +16449,6 @@ msgstr "चयनित जमाओं के लिए कोई भुगत�
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "कोई वैध जमा आईडी नहीं दी गई"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF सफलतापूर्वक %d परिवार को ईमेल किया गया।"
-msgstr[1] "PDF सफलतापूर्वक %d परिवारों को ईमेल किया गया।"
 
 #: 
 msgid "Partial Send"
@@ -17505,10 +17387,6 @@ msgstr "प्लगइन अनइंस्टॉल करें"
 #: 
 msgid "Upcoming"
 msgstr "आगामी"
-
-#: 
-msgid "Valid Until"
-msgstr "तक मान्य"
 
 #: 
 msgid "View active only"
@@ -18471,12 +18349,6 @@ msgstr[0] "%d दिन"
 msgstr[1] "%d दिन"
 
 #: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d डिफ़ॉल्ट किसी अन्य कारण से छोड़ा गया (अवसर समाप्त हो गया, रद्द हुआ या भर गया)"
-msgstr[1] "%d डिफ़ॉल्ट किसी अन्य कारण से छोड़े गए (अवसर समाप्त हो गया, रद्द हुआ या भर गया)"
-
-#: 
 msgid "%d default skipped: qualification revoked"
 msgid_plural "%d defaults skipped: qualification revoked"
 msgstr[0] "%d डिफ़ॉल्ट छोड़ा गया: योग्यता रद्द की गई"
@@ -18737,10 +18609,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "थीम एक फ़ोल्डर है जिसे आपकी कलीसिया सर्वर पर Include/themes/ में अपलोड करती है। सिस्टम डिफ़ॉल्ट ChurchCRM के साथ आता है।"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "एक संक्रमण सेटिंग। पुराने स्वयंसेवक अवसर पृष्ठ और नए सेवकाई पृष्ठ दोनों उपलब्ध हैं, और व्यक्ति के रिकॉर्ड में दोनों स्वयंसेवक टैब स्पष्ट लेबल के साथ दिखते हैं। कलीसिया को V1 से V2 पर ले जाते समय इसका उपयोग करें, फिर केवल V2 पर स्विच करें।"
-
-#: 
 msgid "A volunteer"
 msgstr "एक स्वयंसेवक"
 
@@ -18945,10 +18813,6 @@ msgid "Assigned outside the current plan"
 msgstr "वर्तमान योजना से बाहर नियुक्त"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "नियुक्ति रद्द की गई"
-
-#: 
 msgid "Assignment not found"
 msgstr "नियुक्ति नहीं मिली"
 
@@ -19055,10 +18919,6 @@ msgstr "नियुक्ति रद्द करें"
 #: 
 msgid "Cancel this assignment"
 msgstr "यह नियुक्ति रद्द करें"
-
-#: 
-msgid "Cancelled"
-msgstr "रद्द किया गया"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19215,10 +19075,6 @@ msgstr "कलीसिया की वेबसाइट"
 #: 
 msgid "Close event details"
 msgstr "आयोजन विवरण बंद करें"
-
-#: 
-msgid "Colour"
-msgstr "रंग"
 
 #: 
 msgid "Completed"
@@ -21477,10 +21333,6 @@ msgid "The asset path \"%s\" is not allowed."
 msgstr "एसेट पथ \"%s\" की अनुमति नहीं है।"
 
 #: 
-msgid "The assignment could not be cancelled"
-msgstr "नियुक्ति रद्द नहीं की जा सकी"
-
-#: 
 msgid "The assignment message will be sent again"
 msgstr "नियुक्ति संदेश फिर से भेजा जाएगा"
 
@@ -22005,10 +21857,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "यह अवसर हो चुका है और इसकी नियुक्तियाँ अब बदली नहीं जा सकतीं"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "यह अवसर रद्द कर दिया गया है"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "इस अवसर की अपनी नियुक्ति आवश्यकताएँ हैं, जो इसकी अनुसूची से अलग हैं।"
 
@@ -22235,10 +22083,6 @@ msgstr "स्वयंसेवक समय"
 #: 
 msgid "Volunteering"
 msgstr "स्वयंसेवा"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "स्वयंसेवा उसी तरह संगठित जैसे कलीसिया उसे चलाती है। हर सेवकाई की टीमें और पद होते हैं; लोग पदों के लिए योग्य बनाए जाते हैं और सेवकाई के पूल समूह के सदस्य होते हैं; अनुसूचियाँ कैलेंडर के आयोजनों का अनुसरण करती हैं और नियुक्ति आवश्यकताओं के साथ तारीख़ वाले अवसर बनाती हैं; समन्वयक लोगों को नियुक्त करते हैं, जो स्वीकार करते हैं, अस्वीकार करते हैं या विकल्प प्रस्तावित करते हैं; अनुस्मारक और अलर्ट ईमेल से जाते हैं। व्यवस्थापक और सेवकाइयाँ प्रबंधित करें अनुमति वाले उपयोगकर्ता हर सेवकाई देखते हैं और उन्हें बना, निष्क्रिय और हटा सकते हैं। सेवकाई के समन्वयक को इसके बजाय मेरी सेवकाइयाँ प्रबंधित करें अनुमति दी जाती है: तब साइडबार में सेवकाइयाँ शीर्षक केवल वही सेवकाइयाँ दिखाता है जिनका वे समन्वय करते हैं। टीम का अगुआ अपनी टीम सदस्य पोर्टल से चलाता है। सदस्य अपनी अनुसूची देखने, उत्तर देने, पंजीकरण करने और सहायता का प्रस्ताव देने के लिए सदस्य पोर्टल का उपयोग करते हैं।"
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22777,10 +22621,6 @@ msgid "Cancel this occurrence"
 msgstr "इस घटना को रद्द करें"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "रद्द करने से किसी को नहीं बताया जाता: कोई ईमेल नहीं भेजा जाता। असाइनमेंट रखे जाते हैं, इसे रद्द करने के दौरान कोई अनुस्मारक शेड्यूल नहीं किया जाता, और इसे पुनर्स्थापित होने तक किसी को असाइन नहीं किया जा सकता।"
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "हटाए गए इवेंट हर कैलेंडर को छोड़ते हैं, उनकी चेक-इन और सिर की गिनती के साथ, और इस सेवकाई का कर्मचारी केवल इसकी तारीख को रखता है। इसे पूर्ववत नहीं किया जा सकता।"
 
@@ -22791,10 +22631,6 @@ msgstr "इवेंट हटाए गए: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "हटाने के लिए इवेंट: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "घटना रद्द की गई"
 
 #: 
 msgid "Occurrence restored"
@@ -22811,10 +22647,6 @@ msgstr "घटना को पुनर्स्थापित करें"
 #: 
 msgid "Restore this occurrence"
 msgstr "इस घटना को पुनर्स्थापित करें"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "घटना को रद्द नहीं किया जा सकता"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24879,10 +24711,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "टेलीमेट्री संयुक्त राज्य अमेरिका में PostHog को भेजी जाती है। वैकल्पिक टेलीमेट्री अक्षम होने पर भी स्थापना और उन्नयन की विफलता रिपोर्ट भेजी जाती हैं।"
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "यह तिथि रद्द कर दी गई थी। आपसे और कुछ आवश्यक नहीं है।"
-
-#: 
 msgid "always sent"
 msgstr "सदैव भेजा जाता है"
 
@@ -25349,10 +25177,6 @@ msgstr "ईमेल पर ध्यान देना आवश्यक ह�
 #: 
 msgid "Email problem"
 msgstr "ईमेल समस्या"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "ईमेल किया गया साइन-इन कोड और लिंक रद्द कर दिया गया"
 
 #: 
 msgid "Emailed verification link"
@@ -27117,10 +26941,6 @@ msgstr "%s तक"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "सदस्य पोर्टल में %1$s पर आपका ईमेल पता %2$s से %3$s करने का अनुरोध किया गया है। बदलाव तभी होता है जब नए पते पर भेजा गया लिंक उपयोग किया जाता है।"
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "कृपया नीचे दिए लिंक से अपने परिवार की जानकारी जाँचें। जाँच पृष्ठ पर सब कुछ सही है यह पुष्टि करने के लिए „परिवार की जानकारी की पुष्टि करें” चुनें, या सुधार कलीसिया कार्यालय को भेजें।"
 
 #: 
 msgid "Review Family Information"

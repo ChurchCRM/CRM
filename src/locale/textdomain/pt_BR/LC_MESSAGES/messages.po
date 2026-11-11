@@ -881,10 +881,6 @@ msgid "Do you want to proceed?"
 msgstr "Você quer continuar?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Você está prestes a enviar um e-mail com cópia das informações da família em para os seguintes e-mails"
-
-#: 
 msgid "Financial Reports"
 msgstr "Relatórios financeiros"
 
@@ -1804,10 +1800,6 @@ msgstr "Telefone"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Lista suspensa personalizado"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF enviado com sucesso por e-mail aos membros da família."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3848,10 +3840,6 @@ msgid "Please verify your family's information"
 msgstr "Por favor, verifique a informação da sua família"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Não foi possível carregar as informações de verificação"
-
-#: 
 msgid "No Changes"
 msgstr "Nenhuma mudança"
 
@@ -3864,24 +3852,8 @@ msgid "Oops! Page not found."
 msgstr "Opa! Página não encontrada"
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Por favor, digite a informação a seguir para iniciar a verificação da sua família"
-
-#: 
-msgid "Family Verification"
-msgstr "Verificação da família"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Solicitar verificação de informações da família"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Selecione como deseja solicitar que as informações da família sejam verificadas"
-
-#: 
-msgid "Online Verification"
-msgstr "Verificação on-line"
 
 #: 
 msgid "Verified In Person"
@@ -4303,10 +4275,6 @@ msgstr "Árabe - Egito"
 #: 
 msgid "Thai"
 msgstr "Tailandês"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Verificação automática pendente"
 
 #: 
 msgid "Self Verify"
@@ -6541,10 +6509,6 @@ msgid "Additional Information"
 msgstr "Informações adicionais"
 
 #: 
-msgid "All information is correct"
-msgstr "Todas as informações estão corretas"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Atribuir oportunidades"
 
@@ -6557,20 +6521,12 @@ msgid "Choose opportunities..."
 msgstr "Escolha oportunidades..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Confirmar informações da família"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Informações de contato e pessoal"
 
 #: 
 msgid "Edited"
 msgstr "Editado"
-
-#: 
-msgid "Email PDF"
-msgstr "PDF por e-mail"
 
 #: 
 msgid "Newsletter"
@@ -6581,40 +6537,12 @@ msgid "Personal"
 msgstr "Pessoal"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Por favor, atualize nossos registros com correções"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Forneça aqui quaisquer correções ou informações adicionais..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Selecionar oportunidades"
 
 #: 
-msgid "Submit Verification"
-msgstr "Enviar verificação"
-
-#: 
-msgid "Thank You!"
-msgstr "Obrigado!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Visite nosso site"
-
-#: 
 msgid "Volunteer"
 msgstr "Voluntário"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Encontramos um erro ao processar sua verificação. Por favor, tente novamente ou entre em contato conosco diretamente."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Sua solicitação de verificação foi recebida. Obrigado por manter suas informações atualizadas."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8854,10 +8782,6 @@ msgstr "Resumo de promessas de doação da família"
 #: 
 msgid "Family Profile"
 msgstr "Perfil da família"
-
-#: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "As funções familiares (Chefe de Família, Cônjuge, Filho, etc.) ajudam a organizar os seus registros."
 
 #: 
 msgid "Family vs Person"
@@ -11959,10 +11883,6 @@ msgid "Cannot move property in that direction"
 msgstr "Não é possível mover a propriedade nessa direção"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Confirmar informações da família"
-
-#: 
 msgid "Delete failed"
 msgstr "Falha ao excluir"
 
@@ -12003,20 +11923,12 @@ msgid "Invalid target family"
 msgstr "Família de destino inválida"
 
 #: 
-msgid "Log Out"
-msgstr "Sair"
-
-#: 
 msgid "Membership not found"
 msgstr "Associação não encontrada"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Senha alterada com sucesso para"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Por favor, revise as informações da sua família abaixo e confirme ou solicite alterações."
 
 #: 
 msgid "Please select a target family."
@@ -13492,10 +13404,6 @@ msgid "Failed to cancel enrollment. Please try again."
 msgstr "Falha ao cancelar a inscrição. Por favor, tente novamente."
 
 #: 
-msgid "Failed to copy URL"
-msgstr "Falha ao copiar URL"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Falha ao criar backup."
 
@@ -13884,10 +13792,6 @@ msgid "One-Time Code"
 msgstr "Código de uso único"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Abrir em nova aba"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Abra seu aplicativo autenticador e escaneie este código QR"
 
@@ -14164,10 +14068,6 @@ msgid "Setup Complete"
 msgstr "Configuração concluída"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Compartilhe esta URL com membros da família para verificar suas informações"
-
-#: 
 msgid "Show more options"
 msgstr "Mostrar mais opções"
 
@@ -14318,10 +14218,6 @@ msgstr "Confirmação de exclusão de usuário"
 #: 
 msgid "Validation pending"
 msgstr "Validação pendente"
-
-#: 
-msgid "Verification URL"
-msgstr "URL de verificação"
 
 #: 
 msgid "Verification failed. Please try again."
@@ -15660,10 +15556,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Por favor, confirme a exclusão deste registro de família"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Por favor, confirme as informações de sua família"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Por favor, selecione outra família para associar estas doações"
 
@@ -16296,10 +16188,6 @@ msgid "Pledges & Payments"
 msgstr "Promessas e pagamentos"
 
 #: 
-msgid "Prioritise translations"
-msgstr "Priorizar traduções"
-
-#: 
 msgid "Purpose"
 msgstr "Finalidade"
 
@@ -16560,12 +16448,6 @@ msgstr "Nenhum pagamento encontrado para os depósitos selecionados"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Nenhum ID de depósito válido fornecido"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF enviado com sucesso por e-mail para %d família."
-msgstr[1] "PDF enviado com sucesso por e-mail para %d famílias."
 
 #: 
 msgid "Partial Send"
@@ -17504,10 +17386,6 @@ msgstr "Desinstalar Plugin"
 #: 
 msgid "Upcoming"
 msgstr "Próximos"
-
-#: 
-msgid "Valid Until"
-msgstr "Válido até"
 
 #: 
 msgid "View active only"
@@ -18470,12 +18348,6 @@ msgstr[0] "%d dia"
 msgstr[1] "%d dias"
 
 #: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d voluntário padrão ignorado por outro motivo (a ocorrência terminou, foi cancelada ou está completa)"
-msgstr[1] "%d voluntários padrão ignorados por outro motivo (a ocorrência terminou, foi cancelada ou está completa)"
-
-#: 
 msgid "%d default skipped: qualification revoked"
 msgid_plural "%d defaults skipped: qualification revoked"
 msgstr[0] "%d voluntário padrão ignorado: qualificação revogada"
@@ -18736,10 +18608,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Um tema é uma pasta que sua igreja envia para Include/themes/ no servidor. O tema padrão do sistema acompanha o ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Uma configuração de transição. As páginas antigas de Oportunidades de Voluntariado e as novas páginas de Ministérios ficam disponíveis, e o registro de uma pessoa mostra as duas abas de Voluntariado, claramente identificadas. Use enquanto migra uma igreja da V1 para a V2; depois, passe só para a V2."
-
-#: 
 msgid "A volunteer"
 msgstr "Um voluntário"
 
@@ -18944,10 +18812,6 @@ msgid "Assigned outside the current plan"
 msgstr "Designado fora do plano atual"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Designação cancelada"
-
-#: 
 msgid "Assignment not found"
 msgstr "Designação não encontrada"
 
@@ -19054,10 +18918,6 @@ msgstr "Cancelar designação"
 #: 
 msgid "Cancel this assignment"
 msgstr "Cancelar esta designação"
-
-#: 
-msgid "Cancelled"
-msgstr "Cancelado"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19214,10 +19074,6 @@ msgstr "Site da igreja"
 #: 
 msgid "Close event details"
 msgstr "Fechar detalhes do evento"
-
-#: 
-msgid "Colour"
-msgstr "Cor"
 
 #: 
 msgid "Completed"
@@ -21476,10 +21332,6 @@ msgid "The asset path \"%s\" is not allowed."
 msgstr "O caminho de recurso \"%s\" não é permitido."
 
 #: 
-msgid "The assignment could not be cancelled"
-msgstr "Não foi possível cancelar a designação"
-
-#: 
 msgid "The assignment message will be sent again"
 msgstr "A mensagem de designação será enviada novamente"
 
@@ -22004,10 +21856,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Esta ocorrência já aconteceu e suas designações não podem mais ser alteradas"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Esta ocorrência foi cancelada"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Esta ocorrência tem necessidades de pessoal próprias, separadas da escala."
 
@@ -22234,10 +22082,6 @@ msgstr "Horários dos voluntários"
 #: 
 msgid "Volunteering"
 msgstr "Voluntariado"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "O voluntariado organizado como uma igreja o realiza. Cada ministério tem equipes e funções; as pessoas são qualificadas para funções e pertencem ao grupo de banco de voluntários do ministério; as escalas acompanham os eventos do calendário e produzem ocorrências datadas com necessidades de pessoal; os coordenadores designam pessoas, que aceitam, recusam ou propõem um substituto; lembretes e alertas são enviados por e-mail. Administradores e usuários com a permissão Gerenciar Ministérios veem todos os ministérios e podem criá-los, desativá-los e excluí-los. Um coordenador de ministério recebe, em vez disso, a permissão Gerenciar Meus Ministérios: o título Ministérios na barra lateral mostra então apenas os ministérios que coordena. Um líder de equipe dirige sua equipe pelo Portal do Membro. Os membros usam o Portal do Membro para ver sua escala, responder, se inscrever e oferecer ajuda."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22776,10 +22620,6 @@ msgid "Cancel this occurrence"
 msgstr "Cancelar esta ocorrência"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Cancelar não avisa ninguém: nenhum e-mail é enviado. As atribuições são mantidas, nenhum lembrete é agendado enquanto estiver cancelado, e ninguém pode ser atribuído até que seja restaurado."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Eventos excluídos saem de cada calendário, com seus registros e contagens, e a equipe deste ministério mantém apenas sua data. Isso não pode ser desfeito."
 
@@ -22790,10 +22630,6 @@ msgstr "Eventos excluídos: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Eventos a excluir: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Ocorrência cancelada"
 
 #: 
 msgid "Occurrence restored"
@@ -22810,10 +22646,6 @@ msgstr "Restaurar ocorrência"
 #: 
 msgid "Restore this occurrence"
 msgstr "Restaurar esta ocorrência"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "A ocorrência não pôde ser cancelada"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24878,10 +24710,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "A telemetria é enviada ao PostHog nos Estados Unidos. Relatórios de falha de instalação e atualização são enviados mesmo quando a telemetria opcional está desativada."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Esta data foi cancelada. Nada mais é necessário da sua parte."
-
-#: 
 msgid "always sent"
 msgstr "sempre enviado"
 
@@ -25348,10 +25176,6 @@ msgstr "O e-mail precisa de atenção"
 #: 
 msgid "Email problem"
 msgstr "Problema de e-mail"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Código e link de acesso enviados por e-mail cancelados"
 
 #: 
 msgid "Emailed verification link"
@@ -27116,10 +26940,6 @@ msgstr "até %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "Foi feito um pedido no Portal de Membros para alterar seu endereço de e-mail em %1$s de %2$s para %3$s. A alteração só acontece quando o link enviado ao novo endereço é usado."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Use o link abaixo para revisar as informações da sua família. Na página de revisão, escolha \"Confirmar informações da família\" para confirmar que tudo está correto ou envie correções ao escritório da igreja."
 
 #: 
 msgid "Review Family Information"
