@@ -68,11 +68,6 @@ class UpgradeService
             return true;
         }
 
-        $databaseNotice = DatabaseVersionService::getUpgradeWarningMessage();
-        if ($databaseNotice !== null) {
-            $logger->warning('Upgrading a database below the supported minimum: ' . $databaseNotice);
-        }
-
         // An older release manager may still be loaded during deployment. Its
         // no-argument call must leave database work for the next HTTP request.
         if ($oneScriptPerRequest === null && PHP_SAPI !== 'cli') {
