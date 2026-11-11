@@ -20,6 +20,38 @@ class GivingStatementService
 {
     private const FIRST_YEAR = 1990;
 
+    /** Sample data stays independent of the donor/payment query and model paths. */
+    public static function sampleDocument(): array
+    {
+        $family = [
+            'salutation' => gettext('Sample Family (fictional)'),
+            'address' => gettext('123 Sample Street') . "\n" . gettext('Sample City'),
+            'envelope' => '',
+            'total' => CurrencyFormatter::format(150),
+            'goods_services' => CurrencyFormatter::format(0),
+            'deductible' => CurrencyFormatter::format(150),
+            'disclosure' => gettext('No goods or services were provided in exchange for these contributions, other than intangible religious benefits.'),
+            'gifts' => [
+                [
+                    'date' => DateTimeUtils::formatDate('2025-01-12'),
+                    'fund' => gettext('Sample General Fund'),
+                    'method' => gettext('Cash'),
+                    'amount' => CurrencyFormatter::format(100),
+                ],
+                [
+                    'date' => DateTimeUtils::formatDate('2025-06-15'),
+                    'fund' => gettext('Sample Missions Fund'),
+                    'method' => gettext('Check') . ' #1234',
+                    'amount' => CurrencyFormatter::format(50),
+                ],
+            ],
+        ];
+        $document = self::document([$family], '2025-01-01', '2025-12-31');
+        $document['title'] = gettext('Giving Statement — Sample Only');
+
+        return $document;
+    }
+
     /**
      * Turn untrusted query values into the criteria every other method takes.
      *

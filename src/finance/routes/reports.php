@@ -100,6 +100,12 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         ));
     });
 
+    $group->get('/giving-statements/sample', function (Request $request, Response $response): Response {
+        $pdf = (new MpdfRenderer())->renderToString('tax-report', GivingStatementService::sampleDocument());
+
+        return PdfResponse::create($response, $pdf, 'GivingStatement-Sample');
+    });
+
     // Giving Statement: PDF or CSV for the chosen filters, from the report form or a family link.
     $group->map(['GET', 'POST'], '/giving-statements/download', function (Request $request, Response $response): Response {
         $input = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
