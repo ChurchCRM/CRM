@@ -25,10 +25,21 @@ class TelemetryService
 
     private static array $installProfileCache = [];
 
-    public static function resolveInstallProfile(string $storedProfile, bool $testOverride): string
+    /** Public demo hosts (Softaculous) run real installs without our demo data; classify them by host. */
+    public static function isKnownDemoHost(string $host): bool
+    {
+        $host = strtolower(explode(':', $host, 2)[0]);
+
+        return $host === 'softaculous.com' || str_ends_with($host, '.softaculous.com');
+    }
+
+    public static function resolveInstallProfile(string $storedProfile, bool $testOverride, bool $demoHost = false): string
     {
         if ($testOverride) {
             return 'test';
+        }
+        if ($demoHost && $storedProfile !== 'test') {
+            return 'demo';
         }
 
         return in_array($storedProfile, ['production', 'demo', 'test'], true) ? $storedProfile : 'production';
@@ -45,8 +56,9 @@ class TelemetryService
         $storedProfile = is_string($storedProfile) ? $storedProfile : '';
 
         // Config can initialize during setup or change during a demo import in this request.
-        $key = ($testOverride ? 'test:' : 'stored:') . $storedProfile;
-        return self::$installProfileCache[$key] ??= self::resolveInstallProfile($storedProfile, $testOverride);
+        $demoHost = self::isKnownDemoHost((string) ($_SERVER['HTTP_HOST'] ?? ''));
+        $key = ($testOverride ? 'test:' : 'stored:') . $storedProfile . ($demoHost ? ':host' : '');
+        return self::$installProfileCache[$key] ??= self::resolveInstallProfile($storedProfile, $testOverride, $demoHost);
     }
 
     public static function getLevel(): string

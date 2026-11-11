@@ -29,6 +29,12 @@ foreach (['' => 'production', 'invalid' => 'production', 'production' => 'produc
     Assert::same('test', TelemetryService::resolveInstallProfile($stored, true));
 }
 Assert::same('production', TelemetryService::installProfile());
+foreach (['demos6.softaculous.com' => true, 'softaculous.com:8080' => true, 'notsoftaculous.com' => false, 'church.org' => false, '' => false] as $host => $isDemo) {
+    Assert::same($isDemo, TelemetryService::isKnownDemoHost((string) $host));
+}
+Assert::same('demo', TelemetryService::resolveInstallProfile('production', false, true));
+Assert::same('test', TelemetryService::resolveInstallProfile('test', false, true));
+Assert::same('test', TelemetryService::resolveInstallProfile('production', true, true));
 
 $value = static fn (string $value) => new class($value) {
     public function __construct(private string $value) {}
