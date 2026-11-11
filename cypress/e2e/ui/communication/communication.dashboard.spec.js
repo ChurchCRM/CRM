@@ -42,39 +42,6 @@ describe("Communication Menu and Dashboards", () => {
         cy.get("#textSettings").should("be.visible");
         cy.get("#textSettings").contains("Do Not SMS Property");
     });
-
-    describe("Text page", () => {
-        let originalProperty;
-
-        before(() => {
-            cy.getSystemConfig("iDoNotSmsPropertyId").then((value) => { originalProperty = value; });
-        });
-
-        after(() => cy.restoreSystemConfig("iDoNotSmsPropertyId", originalProperty));
-
-        it("an administrator auto-saves the Do Not SMS property", () => {
-            cy.intercept("POST", "**/admin/api/system/config/iDoNotSmsPropertyId").as("saveProperty");
-            cy.visit("/people/text");
-            cy.contains("Text Settings").click();
-            cy.get("#textSettings").should("be.visible");
-            cy.get("#textSettings").contains("Do Not SMS Property");
-            cy.get("#textSettings .settings-panel-save").should("not.exist");
-            cy.get("#textSettings .settings-panel-fields").should("not.be.disabled");
-            cy.get("#textSettings select[name='iDoNotSmsPropertyId'] option").then(($options) => {
-                const next = [...$options].find((option) => option.value !== originalProperty && option.value !== "").value;
-                cy.get("#textSettings select[name='iDoNotSmsPropertyId']").select(next);
-                cy.wait("@saveProperty").then(({ request, response }) => {
-                    expect(request.body.value).to.eq(next);
-                    expect(response.statusCode).to.eq(200);
-                });
-                cy.request("/admin/api/system/config/iDoNotSmsPropertyId").its("body.value").should("eq", next);
-                cy.reload();
-                cy.contains("Text Settings").click();
-                cy.get("#textSettings .settings-panel-fields").should("not.be.disabled");
-                cy.get("#textSettings select[name='iDoNotSmsPropertyId']").should("have.value", next);
-            });
-        });
-    });
 });
 
 describe("Group Contact Dropdowns", () => {
@@ -113,5 +80,40 @@ describe("Photo Gallery Action Icons", () => {
             cy.get(".fa-envelope").should("exist");
         });
         cy.contains("Not Classified").should("exist");
+    });
+});
+
+describe("Text page auto-save", () => {
+    beforeEach(() => cy.setupAdminSession());
+
+    let originalProperty;
+
+    before(() => {
+        cy.getSystemConfig("iDoNotSmsPropertyId").then((value) => { originalProperty = value; });
+    });
+
+    after(() => cy.restoreSystemConfig("iDoNotSmsPropertyId", originalProperty));
+
+    it("an administrator auto-saves the Do Not SMS property", () => {
+        cy.intercept("POST", "**/admin/api/system/config/iDoNotSmsPropertyId").as("saveProperty");
+        cy.visit("/people/text");
+        cy.contains("Text Settings").click();
+        cy.get("#textSettings").should("be.visible");
+        cy.get("#textSettings").contains("Do Not SMS Property");
+        cy.get("#textSettings .settings-panel-save").should("not.exist");
+        cy.get("#textSettings .settings-panel-fields").should("not.be.disabled");
+        cy.get("#textSettings select[name='iDoNotSmsPropertyId'] option").then(($options) => {
+            const next = [...$options].find((option) => option.value !== originalProperty && option.value !== "").value;
+            cy.get("#textSettings select[name='iDoNotSmsPropertyId']").select(next);
+            cy.wait("@saveProperty").then(({ request, response }) => {
+                expect(request.body.value).to.eq(next);
+                expect(response.statusCode).to.eq(200);
+            });
+            cy.request("/admin/api/system/config/iDoNotSmsPropertyId").its("body.value").should("eq", next);
+            cy.reload();
+            cy.contains("Text Settings").click();
+            cy.get("#textSettings .settings-panel-fields").should("not.be.disabled");
+            cy.get("#textSettings select[name='iDoNotSmsPropertyId']").should("have.value", next);
+        });
     });
 });
