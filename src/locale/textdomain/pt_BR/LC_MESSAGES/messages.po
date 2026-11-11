@@ -27131,3 +27131,283 @@ msgstr "Use o link abaixo para revisar as informações da sua família. Na pág
 msgid "Review Family Information"
 msgstr "Revisar informações da família"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Já existe um ministério chamado \"%s\". Escolha-o na lista ou escolha outro nome."
+
+#: 
+msgid "A new ministry"
+msgstr "Um novo ministério"
+
+#: 
+msgid "A position"
+msgstr "Uma função"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Adicionar {{total}} voluntários às funções convertidas anteriormente?"
+
+#: 
+msgid "Already converted"
+msgstr "Já convertida"
+
+#: 
+msgid "An existing ministry"
+msgstr "Um ministério existente"
+
+#: 
+msgid "Becomes"
+msgstr "Torna-se"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "O ChurchCRM tem duas formas de gerenciar voluntários. Apenas uma deve ser usada por vez; a configuração \"Experiência de voluntariado\" decide qual delas esta igreja vê. Alternar oculta ou mostra páginas e itens de menu e nunca exclui dados. V1 e Ambos só são oferecidos enquanto as Oportunidades de voluntariado estiverem em uso: quando todas as oportunidades forem convertidas e a igreja estiver no V2, eles saem desta lista."
+
+#: 
+msgid "Convert"
+msgstr "Converter"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Converter Oportunidades de voluntariado"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Converter {{total}} oportunidades agora? Os dados do V1 são mantidos como estão até que as Oportunidades de voluntariado sejam desativadas."
+
+#: 
+msgid "Converted"
+msgstr "Convertida"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Convertido: {{positions}} funções e {{ministries}} ministérios, {{qualifications}} voluntários habilitados."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Cada oportunidade se torna uma função na primeira equipe de um ministério, e todas as pessoas vinculadas a ela ficam habilitadas para essa função. A autoinscrição começa desativada nessas funções."
+
+#: 
+msgid "Everything is converted."
+msgstr "Tudo foi convertido."
+
+#: 
+msgid "Existing ministry"
+msgstr "Ministério existente"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Dê ao novo ministério um nome com até 100 caracteres."
+
+#: 
+msgid "Its own ministry"
+msgstr "Um ministério próprio"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Vinculados desde então: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Vínculos que não podem ser convertidos"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Novos ministérios próprios"
+
+#: 
+msgid "New ministry name"
+msgstr "Nome do novo ministério"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Nenhum e-mail é enviado, e as Oportunidades de voluntariado permanecem como estão até serem desativadas."
+
+#: 
+msgid "No name"
+msgstr "Sem nome"
+
+#: 
+msgid "Not converted"
+msgstr "Não convertida"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Abrir Alternadores de recursos"
+
+#: 
+msgid "Open Ministries"
+msgstr "Abrir Ministérios"
+
+#: 
+msgid "Opportunities"
+msgstr "Oportunidades"
+
+#: 
+msgid "Opportunity"
+msgstr "Oportunidade"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Oportunidade nº %d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Pessoas vinculadas a Oportunidades de voluntariado convertidas desde a conversão: %d. Adicione-as às suas funções antes que as Oportunidades de voluntariado sejam desativadas no início de 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Visualize a conversão primeiro e envie a revisão que ela retornou."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Renomeado para manter os nomes únicos"
+
+#: 
+msgid "Review the conversion"
+msgstr "Revisar a conversão"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Envie a escolha de conversão como um objeto JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Envie as oportunidades que se tornam ministérios como uma lista de IDs."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Esse ministério não existe."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "A versão do ChurchCRM em que um administrador dispensou o aviso de desativação das Oportunidades de voluntariado."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "As Oportunidades de voluntariado mudaram desde a pré-visualização. Verifique a pré-visualização novamente e depois converta."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Não foi possível abrir a confirmação. Recarregue a página e tente novamente."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Não foi possível pré-visualizar a conversão."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "A conversão falhou. Nada foi alterado."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "O ministério \"%s\" não tem uma equipe para as funções."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Não foi possível acessar o servidor. Recarregue a página para ver se a conversão foi executada."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Não há Oportunidades de voluntariado para converter."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "A Gestão de voluntários muda para Ambos, para que os novos ministérios fiquem visíveis ao lado das Oportunidades de voluntariado."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "As Oportunidades de voluntariado serão desativadas"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Oportunidades de voluntariado convertidas"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "As Oportunidades de voluntariado serão desativadas no início de 2027. Converta-as em Ministérios para manter quem serve em quê."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "As Oportunidades de voluntariado serão desativadas no início de 2027. Converta agora suas %1$d oportunidades e %2$d voluntários em Ministérios. Você pode pré-visualizar o resultado antes que algo mude."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Voluntários habilitados"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Voluntários a adicionar às funções convertidas"
+
+#: 
+msgid "What it becomes"
+msgstr "No que se torna"
+
+#: 
+msgid "What will happen"
+msgstr "O que vai acontecer"
+
+#: 
+msgid "Where they go"
+msgstr "Para onde vão"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Quais Oportunidades de voluntariado antigas foram convertidas e a função em que cada uma se tornou."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Qual experiência de voluntariado esta igreja usa. As Oportunidades de voluntariado (V1) serão desativadas no início de 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Suas Oportunidades de voluntariado foram convertidas em Ministérios. Mude a Gestão de voluntários para V2 antes que as Oportunidades de voluntariado sejam desativadas no início de 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "em um novo ministério, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "no ministério {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "não está mais no ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Recolher barra lateral"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Expandir barra lateral"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Digite um endereço de e-mail válido usando apenas caracteres ASCII antes do @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "O endereço de e-mail não é válido"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Tem certeza de que deseja excluir {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Não foi possível obter as informações do sistema. Tente novamente."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Nenhum pagamento encontrado para este período."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Pagamentos por fundo"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Fundo desconhecido"
+
