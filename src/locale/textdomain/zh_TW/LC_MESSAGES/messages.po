@@ -27273,3 +27273,283 @@ msgstr "請使用下方連結核對您的家庭資料。在核對頁面上，選
 msgid "Review Family Information"
 msgstr "核對家庭資料"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "名為「%s」的事工已存在。請從清單中選擇，或改用其他名稱。"
+
+#: 
+msgid "A new ministry"
+msgstr "新事工"
+
+#: 
+msgid "A position"
+msgstr "一個職位"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "要將 {{total}} 位志工加入先前轉換的職位嗎？"
+
+#: 
+msgid "Already converted"
+msgstr "已轉換"
+
+#: 
+msgid "An existing ministry"
+msgstr "現有事工"
+
+#: 
+msgid "Becomes"
+msgstr "轉換為"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM 有兩種管理志工的方式。同一時間只應使用其中一種；「志工體驗」設定決定本教會看到哪一種。切換只會隱藏或顯示頁面和選單項目，絕不會刪除資料。只有在仍使用志願者機會時才提供 V1 和兩者：一旦所有機會都已轉換且教會使用 V2，這兩項就會從清單中消失。"
+
+#: 
+msgid "Convert"
+msgstr "轉換"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "轉換志願者機會"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "現在轉換 {{total}} 個機會嗎？在志願者機會停用之前，V1 資料會原樣保留。"
+
+#: 
+msgid "Converted"
+msgstr "已轉換"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "已轉換：{{positions}} 個職位和 {{ministries}} 個事工，{{qualifications}} 位志工取得資格。"
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "每個機會都會成為某個事工第一個團隊中的職位，與其連結的每個人都會取得該職位的資格。這些職位的自助報名預設為關閉。"
+
+#: 
+msgid "Everything is converted."
+msgstr "全部已轉換。"
+
+#: 
+msgid "Existing ministry"
+msgstr "現有事工"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "為新事工取一個不超過 100 個字元的名稱。"
+
+#: 
+msgid "Its own ministry"
+msgstr "獨立事工"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "此後連結：{{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "無法轉換的連結"
+
+#: 
+msgid "New ministries of their own"
+msgstr "各自成為新事工"
+
+#: 
+msgid "New ministry name"
+msgstr "新事工名稱"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "不會寄出任何電子郵件，志願者機會在停用前維持不變。"
+
+#: 
+msgid "No name"
+msgstr "無名稱"
+
+#: 
+msgid "Not converted"
+msgstr "未轉換"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "開啟功能開關"
+
+#: 
+msgid "Open Ministries"
+msgstr "開啟事工"
+
+#: 
+msgid "Opportunities"
+msgstr "機會"
+
+#: 
+msgid "Opportunity"
+msgstr "機會"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "機會 #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "轉換後連結到已轉換志願者機會的人員：%d。請在志願者機會於 2027 年初停用之前，將他們加入相應職位。"
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "請先預覽轉換，並送出預覽傳回的修訂版本。"
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "已重新命名以保持名稱唯一"
+
+#: 
+msgid "Review the conversion"
+msgstr "檢查轉換"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "請以 JSON 物件送出轉換選擇。"
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "請以 ID 清單送出要轉換為事工的機會。"
+
+#: 
+msgid "That ministry does not exist."
+msgstr "該事工不存在。"
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "管理員關閉志願者機會停用通知時所使用的 ChurchCRM 版本。"
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "自預覽以來志願者機會已有變更。請重新檢查預覽，然後再轉換。"
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "無法開啟確認視窗。請重新載入頁面後再試一次。"
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "無法預覽轉換。"
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "轉換失敗。未做任何變更。"
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "事工「%s」沒有可容納這些職位的團隊。"
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "無法連線到伺服器。請重新載入頁面，查看轉換是否已執行。"
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "沒有需要轉換的志願者機會。"
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "志工管理將切換為「兩者」，讓新事工與志願者機會並列顯示。"
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "志願者機會即將停用"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "志願者機會已轉換"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "志願者機會將於 2027 年初停用。請將其轉換為事工，以保留每個人的服事分工。"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "志願者機會將於 2027 年初停用。請立即將您的 %1$d 個機會和 %2$d 位志工轉換為事工。在任何變更之前，您都可以預覽結果。"
+
+#: 
+msgid "Volunteers qualified"
+msgstr "已取得資格的志工"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "待加入已轉換職位的志工"
+
+#: 
+msgid "What it becomes"
+msgstr "轉換結果"
+
+#: 
+msgid "What will happen"
+msgstr "將會發生什麼"
+
+#: 
+msgid "Where they go"
+msgstr "去向"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "哪些舊版志願者機會已轉換，以及每個機會轉換成的職位。"
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "本教會使用的志工體驗。志願者機會（V1）將於 2027 年初停用。"
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "您的志願者機會已轉換為事工。請在志願者機會於 2027 年初停用之前，將志工管理切換到 V2。"
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "到新事工 {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "到事工 {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "已不在 ChurchCRM 中"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "收合側邊欄"
+
+#: 
+msgid "Expand sidebar"
+msgstr "展開側邊欄"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "請輸入有效的電子郵件地址，@ 之前只能使用 ASCII 字元。"
+
+#: 
+msgid "Their email address is not valid"
+msgstr "其電子郵件地址無效"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "確定要刪除 {{name}} 嗎？"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "無法收集系統資訊。請再試一次。"
+
+#: 
+msgid "No payments found for this period."
+msgstr "此期間找不到付款。"
+
+#: 
+msgid "Payments by Fund"
+msgstr "依基金分類的付款"
+
+#: 
+msgid "Unknown Fund"
+msgstr "未知基金"
+
