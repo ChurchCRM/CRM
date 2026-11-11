@@ -239,7 +239,10 @@ class TelemetryService
         self::capture('install_failed', $properties);
     }
 
-    public static function captureUpgradeFailure(string $version, string $errorClass): void
+    /** Fixed codes only: a free-text reason could carry details of a church's installation. */
+    public const UPGRADE_FAILURE_REASONS = ['no_upgrade_path', 'script_interrupted'];
+
+    public static function captureUpgradeFailure(string $version, string $reason): void
     {
         if (self::getLevel() === self::LEVEL_NONE || self::installProfile() === 'test') {
             return;
@@ -249,8 +252,22 @@ class TelemetryService
         } catch (\Throwable) {
             $fromVersion = SystemConfig::getValue('sTelemetryLifecycleVersion') ?: null;
         }
+        $reason = in_array($reason, self::UPGRADE_FAILURE_REASONS, true) ? $reason : 'other';
+
+        // A failing install is retried on every request; report each from-version and reason once per UTC day.
+        $dedupeKey = gmdate('Y-m-d') . '|' . $fromVersion . '|' . $reason;
+        try {
+            if (SystemConfig::getValue('sTelemetryUpgradeFailureKey') === $dedupeKey) {
+                return;
+            }
+            SystemConfig::setValue('sTelemetryUpgradeFailureKey', $dedupeKey);
+        } catch (\Throwable) {
+            // The upgrade may be failing because the configuration table is unusable; report anyway.
+        }
+
         self::capture('upgrade_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
             'from_version' => $fromVersion,
+            'failure_reason' => $reason,
         ]));
     }
 

@@ -382,6 +382,7 @@ class   SystemConfig
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
             'sTelemetryLifecycleVersion'            => new ConfigItem('sTelemetryLifecycleVersion', 'text', ''),
             'sTelemetryHeartbeatDate'               => new ConfigItem('sTelemetryHeartbeatDate', 'text', ''),
+            'sTelemetryUpgradeFailureKey'           => new ConfigItem('sTelemetryUpgradeFailureKey', 'text', ''),
         ];
     }
 

@@ -92,6 +92,10 @@ foreach (['production', 'demo', 'test'] as $profile) {
                 $keys[] = 'from_version';
                 Assert::same('7.8.2', $properties['from_version']);
             }
+            if ($payload['event'] === 'upgrade_failed') {
+                $keys[] = 'failure_reason';
+                Assert::same('other', $properties['failure_reason']);
+            }
             $keys = array_merge($keys, ['$process_person_profile', '$geoip_disable']);
             Assert::same($keys, array_keys($properties));
             Assert::true($properties['$geoip_disable']);
@@ -113,6 +117,25 @@ foreach (['production', 'demo', 'test'] as $profile) {
         Assert::same($events, array_column($GLOBALS['lifecyclePayloads'], 'event'));
     }
 }
+
+$mutable = static fn (string $v) => new class($v) {
+    public function __construct(private string $v) {}
+    public function getValue(): string { return $this->v; }
+    public function setValue(string $v): void { $this->v = $v; }
+    public function getType(): string { return 'internal'; }
+};
+$configs->setValue(null, [
+    'sTelemetryLevel' => $mutable('install'),
+    'sInstallDataProfile' => $mutable('production'),
+    'sSystemID' => $mutable('church-guid'),
+    'sTelemetryLifecycleVersion' => $mutable('7.8.2'),
+    'sTelemetryUpgradeFailureKey' => $mutable(''),
+]);
+$GLOBALS['lifecyclePayloads'] = [];
+TelemetryService::captureUpgradeFailure('7.8.4', 'no_upgrade_path');
+TelemetryService::captureUpgradeFailure('7.8.4', 'no_upgrade_path');
+TelemetryService::captureUpgradeFailure('7.8.4', 'Some free text from an exception');
+Assert::same(['no_upgrade_path', 'other'], array_column(array_column($GLOBALS['lifecyclePayloads'], 'properties'), 'failure_reason'));
 
 $configs->setValue(null, [
     'sTelemetryLevel' => $value('install'),
