@@ -36,6 +36,7 @@
         "locale:audit": "node locale/scripts/locale-audit.js",
         "locale:build": "node locale/scripts/locale-build.js",
         "locale:download": "node locale/scripts/poeditor-downloader.js",
+        "locale:release": "node locale/scripts/locale-release.js",
         "locale:translate:list": "node locale/scripts/locale-translate.js --list",
         "locale:test": "node --test locale/scripts/lib/*.test.js",
         "locale:upload:missing": "node locale/scripts/poeditor-upload-missing.js",

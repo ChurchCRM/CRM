@@ -1,24 +1,26 @@
-name: "Locale: sync"
+name: "Locale: sync POEditor"
+run-name: >-
+  ${{ github.event_name == 'push' && 'Locale sync: upload terms + download translations (terms PR merged)'
+  || github.event_name == 'schedule' && 'Locale sync: daily upload terms + download translations'
+  || inputs.operation_mode == 'audit-only' && 'Locale sync: audit only (manual)'
+  || inputs.upload_terms == false && 'Locale sync: download translations only (after a translation upload)'
+  || 'Locale sync: upload terms + download translations (manual)' }}
 
-# Upload terms, then download. No translation happens here:
-#   1. upload terms   locale/messages.po -> POEditor, deleting terms that are no longer in the file
-#   2. download       POEditor -> src/locale + locale/terms/missing, opened as a PR on branch
-#                     locale/download/<version>, then squash-merged when every JSON
-#                     file parses and every path stays in the download trees.
-#                     Invalid JSON or an unexpected path leaves the PR open.
+# Stage 2, in plain words. No translating happens here:
+#   1. upload terms   locale/messages.po -> POEditor (sync_terms: deletes terms no longer in the file,
+#                     with a guard against large deletions)
+#   2. download       POEditor -> src/locale + locale/terms/missing
+#   3. download PR    "locale: download translations from POEditor - <date>" on locale/download/<version>,
+#                     squash-merged by this workflow when every JSON file parses and every path stays in
+#                     the download trees. Invalid JSON or an unexpected path leaves it open for a person.
 #
-# Two flows end here:
-#   terms flow      merged terms PR -> (30 minute settle) -> upload terms -> download
-#   translate flow  translation agent -> Locale: upload translations -> download only
-#                   (dispatched with upload_terms=false)
-#
-# Every step is idempotent, so the trigger only decides when the run happens, not what it does:
-#   - push to master touching locale/messages.po (a merged terms PR, branch locale/terms/*).
-#     It first waits 30 minutes (job `settle`); a newer push cancels the wait and starts it again,
-#     so a burst of terms merges becomes one upload and one download
-#   - locale-upload-missing.yml dispatches it with upload_terms=false after a translate branch uploads (no wait)
-#   - daily schedule and manual run (no wait)
-# The sync PR itself never retriggers this workflow: it does not touch locale/messages.po.
+# What starts it (every step is idempotent, so the trigger only decides when, not what):
+#   - a merged terms PR (push to master touching locale/messages.po): runs at once. The wait for a burst
+#     of merges happens before the terms PR exists (Locale: extract terms), so there is no second wait here
+#   - Locale: upload translations, after a translation branch uploads: download only (upload_terms=false)
+#   - daily at 00:00 UTC, or by hand (release: run it by hand, or npm run locale:release)
+# The download PR never starts this workflow again: it does not touch locale/messages.po, and its
+# GITHUB_TOKEN merge fires no push.
 permissions:
   contents: read
 
@@ -58,25 +60,10 @@ on:
         type: string
         default: ''
 
-# Concurrency is per job, not per workflow: `settle` (first job) restarts its wait on every new push, and `download`
-# queues so a manual, scheduled or dispatched run never overlaps a settled push run.
+# Concurrency is per job: `download` queues so two syncs never overlap, and `pull-request` publishes one at a time.
 
 jobs:
-  settle:
-    # Merge-storm guard, first so a newer push cancels the run before it does any work
-    if: github.event_name == 'push'
-    concurrency:
-      group: locale-sync-settle
-      cancel-in-progress: true
-    timeout-minutes: 40
-    runs-on: ubuntu-24.04
-    steps:
-    - name: Wait 30 minutes for more terms merges
-      run: sleep 1800
-
   setup:
-    needs: settle
-    if: ${{ !cancelled() && (needs.settle.result == 'success' || needs.settle.result == 'skipped') }}
     timeout-minutes: 5
     runs-on: ubuntu-24.04
     outputs:
@@ -118,7 +105,7 @@ jobs:
         EVENT: ${{ github.event_name }}
       run: |
         case "$EVENT" in
-          push) echo "trigger=Merged terms PR (locale/messages.po changed on master, after a 30 minute settle)" >> $GITHUB_OUTPUT ;;
+          push) echo "trigger=Merged terms PR (locale/messages.po changed on master)" >> $GITHUB_OUTPUT ;;
           workflow_dispatch) echo "trigger=Manual or dispatched run" >> $GITHUB_OUTPUT ;;
           *) echo "trigger=Scheduled daily run" >> $GITHUB_OUTPUT ;;
         esac
@@ -297,9 +284,9 @@ jobs:
         labels: |
           localization
         milestone: ${{ needs.setup.outputs.version }}
-        title: "locale: update translations from POEditor - ${{ needs.setup.outputs.date }}"
+        title: "locale: download translations from POEditor - ${{ needs.setup.outputs.date }}"
         commit-message: |
-          🌍 Locale update from POEditor on ${{ needs.setup.outputs.date }}
+          locale: download translations from POEditor - ${{ needs.setup.outputs.date }}
           
           - Updated translations from POEditor
           - Version: ${{ needs.setup.outputs.version }}
@@ -307,9 +294,9 @@ jobs:
 
           Downloaded-at: ${{ needs.download.outputs.downloaded_at }}
         body: |
-          ## 🌍 Automatic Locale Update
-          
-          This PR contains updated translations downloaded from POEditor and missing term reports for all locales.
+          ## 🌍 Translations downloaded from POEditor
+
+          `Locale: sync POEditor` merges this PR itself when every JSON file parses and every path is a download file. If it is still open, one of those checks failed: see the run.
           
           **Details:**
           - 📅 **Date**: ${{ needs.setup.outputs.date }}
@@ -325,7 +312,7 @@ jobs:
           **Missing Terms Reports:**
           For each incomplete locale, batch files under `locale/terms/missing/{locale}/` contain all untranslated terms downloaded directly from POEditor. These can be used with `/locale-translate` or uploaded directly to POEditor.
           
-          This PR was automatically created by the POEditor workflow.
+          Created by `Locale: sync POEditor` (locale-sync-poeditor.yml).
           
           ---
           
@@ -334,7 +321,7 @@ jobs:
 
     # GITHUB_TOKEN on purpose. This merge starts no later workflow: the download
     # touches none of the paths that start Locale: terms, and a token merge
-    # fires no push. The terms PR stays a person's merge so Locale: sync runs.
+    # fires no push. The terms PR stays a person's merge so Locale: sync POEditor runs.
     - name: Merge the download PR
       if: steps.fresh.outputs.stale != 'true' && steps.gate.outputs.merge == 'true' && steps.cpr.outputs.pull-request-operation != 'closed'
       env:

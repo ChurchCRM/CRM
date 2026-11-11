@@ -6,7 +6,7 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '../../..');
 
-// What Locale: sync is allowed to commit. Anything else stays a PR for a person.
+// What Locale: sync POEditor is allowed to commit. Anything else stays a PR for a person.
 const ALLOWED = [
     /^src\/locale\/i18n\/[^/]+\.json$/,
     /^src\/locale\/textdomain\/[^/]+\/LC_MESSAGES\/messages\.(po|mo)$/,

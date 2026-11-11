@@ -1,11 +1,20 @@
-name: "Locale: terms"
+name: "Locale: extract terms"
+run-name: >-
+  ${{ github.event_name == 'workflow_dispatch' && 'Locale terms: extract now (manual, no wait)' || 'Locale terms: wait for more merges, then extract' }}
 
-# Terms stage of the locale pipeline: extract new source strings into
-# locale/messages.po and open a PR on branch locale/terms/<version>-<timestamp>.
-# Merging that PR starts locale-sync-poeditor.yml, which uploads the terms and downloads the result.
+# Stage 1 of the terms flow, in plain words:
+#   1. A code PR merges to master (anything under src/ except the translation files).
+#   2. Wait (default 30 minutes, repo variable LOCALE_TERMS_WAIT_MINUTES). Every newer merge restarts the
+#      wait, so a burst of code merges becomes ONE terms PR. A manual run skips the wait and cancels a
+#      wait that is already running ("run now", e.g. before a release).
+#   3. Extract the strings (npm run locale:build) into locale/messages.po and the JSON keys.
+#   4. Open or update ONE terms PR, "locale: new terms from code (+N / -M) - <date>", on the rolling
+#      branch locale/terms/<version>. Its body lists every new and removed string, where it is in the
+#      code, and a "Needs a look" list of strings that look like bugs or would lose translations.
+#   5. A person reviews and merges it. That merge starts "Locale: sync POEditor" at once (no second wait).
 #
-# The sync stage writes src/locale/i18n and src/locale/textdomain, so those paths are excluded:
-# merging a sync PR (or this PR, which only adds translation keys) must not start another extraction.
+# The sync writes src/locale/i18n and src/locale/textdomain, so those paths are excluded: merging a
+# download PR (or the terms PR, which only adds keys there) never starts another extraction.
 
 on:
   push:
@@ -17,179 +26,127 @@ on:
       - '!src/locale/textdomain/**'
   workflow_dispatch:
 
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
-
 permissions:
-  contents: write
-  pull-requests: write
+  contents: read
+
+# Concurrency is per job: `wait` cancels and restarts on every new run, `extract` queues so two
+# extractions never write the terms branch at once.
 
 jobs:
-  update-locale:
+  wait:
+    concurrency:
+      group: locale-terms-wait
+      cancel-in-progress: true
+    timeout-minutes: 125
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Wait for more code merges (skipped on a manual run)
+        if: github.event_name == 'push'
+        env:
+          MINUTES: ${{ vars.LOCALE_TERMS_WAIT_MINUTES || '30' }}
+        run: |
+          [[ "$MINUTES" =~ ^[0-9]+$ ]] && [ "$MINUTES" -le 120 ] || { echo "::error::LOCALE_TERMS_WAIT_MINUTES must be 0-120"; exit 1; }
+          echo "Waiting $MINUTES minutes; a newer merge to master restarts this wait. Run this workflow by hand to skip it."
+          sleep $((MINUTES * 60))
+
+  extract:
+    needs: wait
+    if: ${{ !cancelled() && needs.wait.result == 'success' }}
+    concurrency:
+      group: locale-terms-extract
+      cancel-in-progress: false
     timeout-minutes: 20
     runs-on: ubuntu-24.04
-    
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
-      - name: Checkout repository
+      - name: Checkout master
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          # the newest master after the wait, not the commit that started the run
+          ref: master
+          # full history: the report greps the source and lists the code merges since the last terms merge
           fetch-depth: 0
-      
+
       - name: Setup Node.js (from .nvmrc)
         uses: ./.github/actions/setup-node
         with:
           node-version-file: '.nvmrc'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Install gettext tools
         run: sudo apt-get update && sudo apt-get install -y gettext
 
       - name: Empty the test data (blank DB from Install.sql)
         run: truncate -s 0 cypress/data/seed.sql
-      
+
       - name: Start CI Docker containers
         run: npm run docker:ci:root:start
 
       - name: Wait for Docker to be ready
         run: sleep 10
-      
-      - name: Run locale build
+
+      - name: Extract terms (npm run locale:build)
         run: npm run locale:build
-      
-      - name: Verify plugin help extraction
-        if: always()
-        run: |
-          echo "=== Checking plugin help extraction ==="
-          if grep -q "plugin:holidays" locale/messages.po; then
-            echo "✅ Plugin help terms found in messages.po"
-            echo "Total plugin term entries:"
-            grep "^#\. plugin:" locale/messages.po | wc -l
-            echo ""
-            echo "Plugins extracted:"
-            grep "^#\. plugin:" locale/messages.po | sed 's/.*plugin:\([^:]*\).*/\1/' | sort -u
-          else
-            echo "❌ WARNING: No plugin help terms found in messages.po"
-            echo "Plugin extraction may have failed"
-            echo ""
-            echo "=== Diagnostic Info ==="
-            echo "messages.po file size:"
-            ls -lh locale/messages.po || echo "File not found"
-            echo ""
-            echo "First 50 lines of messages.po:"
-            head -50 locale/messages.po || echo "Cannot read file"
-            echo ""
-            echo "Searching for any 'plugin:' references:"
-            grep "plugin:" locale/messages.po || echo "No plugin references found"
-          fi
 
       - name: Stop CI Docker containers
         if: always()
         run: npm run docker:ci:root:down
-      
+
+      - name: Check plugin help extraction
+        run: |
+          if grep -q "plugin:holidays" locale/messages.po; then
+            echo "Plugin help terms: $(grep -c '^#\. plugin:' locale/messages.po)"
+          else
+            echo "::warning::No plugin help terms found in locale/messages.po; plugin extraction may have failed"
+          fi
+
       - name: Check for meaningful changes
         id: check_changes
         run: node locale/scripts/lib/locale-po-changes.js
 
-      - name: Upload generated locale files
-        if: always()
+      - name: List new and removed terms
+        id: report
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          mkdir -p locale-terms-report
+          git diff -- locale/messages.po > locale-terms-report/messages.po.diff || true
+          node locale/scripts/lib/locale-terms-diff.js --base HEAD \
+            --body locale-terms-report/pr-body.md --full locale-terms-report/terms.md \
+            --date "$(date -u +%Y-%m-%d)"
+          cat locale-terms-report/terms.md >> "$GITHUB_STEP_SUMMARY"
+          echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+      - name: Upload the terms report
+        if: steps.check_changes.outputs.has_changes == 'true'
         uses: ./.github/actions/upload-artifact
         with:
-          name: locale-generated-files
+          name: locale-terms-report
           path: |
+            locale-terms-report/
             locale/messages.po
-            src/locale/i18n/
           retention-days: 15
-          if-no-files-found: warn
-      
-      - name: Generate detailed diff report
-        if: always()
-        run: |
-          mkdir -p locale-diffs
-          
-          # Full diff for messages.po
-          if [ -f locale/messages.po ]; then
-            git diff locale/messages.po > locale-diffs/messages.po.diff || true
-          fi
-          
-          # Full diff for i18n JSON files
-          if [ -d src/locale/i18n ]; then
-            git diff src/locale/i18n/ > locale-diffs/i18n-files.diff || true
-          fi
-          
-          # Git status for all locale-related files
-          git status locale/ src/locale/ > locale-diffs/git-status.txt 2>&1 || true
-          
-          # List all modified files with sizes
-          find locale src/locale -type f -newer /tmp 2>/dev/null | while read f; do
-            if [ -f "$f" ]; then
-              ls -lh "$f"
-            fi
-          done > locale-diffs/file-list.txt 2>&1 || true
-      
-      - name: Upload diff reports
-        if: always()
-        uses: ./.github/actions/upload-artifact
+
+      # Rolling branch: while the terms PR is open, each later burst updates the same PR, so it always
+      # shows everything master has not merged yet. GITHUB_TOKEN here as before: the PR still needs a
+      # person's merge, which is what starts the sync.
+      - name: Open or update the terms PR
+        if: steps.check_changes.outputs.has_changes == 'true'
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
         with:
-          name: locale-diff-reports
-          path: locale-diffs/
-          retention-days: 15
-          if-no-files-found: warn
-      
-      - name: Configure Git
-        if: steps.check_changes.outputs.has_changes == 'true'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-      
-      - name: Create locale update branch
-        if: steps.check_changes.outputs.has_changes == 'true'
-        run: |
-          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
-          VERSION=$(node -p "require('./package.json').version")
-          BRANCH_NAME="locale/terms/$VERSION-$TIMESTAMP"
-          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
-          git checkout -b "$BRANCH_NAME"
-      
-      - name: Commit locale changes
-        if: steps.check_changes.outputs.has_changes == 'true'
-        run: |
-          git add locale/messages.po src/locale/i18n/
-          git commit -m "Update locale strings from source code"
-      
-      - name: Push branch
-        if: steps.check_changes.outputs.has_changes == 'true'
-        run: |
-          git push origin "$BRANCH_NAME"
-      
-      - name: Create Pull Request
-        if: steps.check_changes.outputs.has_changes == 'true'
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          # Get the commit SHA that triggered this
-          TRIGGER_SHA="${{ github.sha }}"
-          TRIGGER_COMMIT_MSG=$(git log --format=%s -n 1 $TRIGGER_SHA)
-          
-          gh pr create \
-            --title "Update locale strings" \
-            --body "This PR updates the locale translation strings extracted from source code.
-
-          ## Triggered By
-          Commit: \`$TRIGGER_SHA\`
-          Message: $TRIGGER_COMMIT_MSG
-
-          ## Changes
-          - Updated \`locale/messages.po\` with new/modified translatable strings
-          - Updated JSON locale keys
-
-          ## Next Steps
-          - Review the new strings that need translation
-          - Merge this PR to update the base locale file
-          - The merge starts Locale: sync, which uploads the new terms to POEditor and then downloads" \
-            --base ${{ github.ref_name }} \
-            --head "$BRANCH_NAME" \
-            --label "Localization"
+          token: ${{ github.token }}
+          base: master
+          branch: 'locale/terms/${{ steps.report.outputs.version }}'
+          delete-branch: true
+          add-paths: |
+            locale/messages.po
+            src/locale/i18n
+          labels: |
+            Localization
+          title: ${{ steps.report.outputs.title }}
+          commit-message: ${{ steps.report.outputs.title }}
+          body-path: locale-terms-report/pr-body.md
