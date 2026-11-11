@@ -9,7 +9,8 @@ Locale list: `src/locale/locales.json`.
 Locale loop: [docs/maintainers/locale-pipeline.md](../../../docs/maintainers/locale-pipeline.md).
 Translation-agent rules: [Locale Translation](./locale-translation-workflow.md).
 Feature localization guidance: `locale/README.md`.
-Extract job: `.github/workflows/locale-generate-terms.yml` (`npm run locale:build` on merge to `master`).
+Extract job: `.github/workflows/locale-generate-terms.yml` (`Locale: extract terms`: waits 15 minutes after the last merge to `master`, then `npm run locale:build` and one terms PR, `locale: new terms from code (+N / -M) - <date>`, on `locale/terms/<version>`).
+The terms PR body lists each new and removed msgid, where it is in the code, and **Needs a look** flags (code-like, HTML, whitespace, near-duplicate, reworded term that loses translations). Generator: `locale/scripts/lib/locale-terms-diff.js`; run it locally with `node locale/scripts/lib/locale-terms-diff.js --base HEAD` after `npm run locale:build` to see what your PR will add.
 
 ## Feature PR
 
