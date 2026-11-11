@@ -95,7 +95,7 @@ function getAutoVersion() {
  * A HHMMSS suffix is appended to guarantee each invocation produces a
  * fresh, unique branch — never reusing a prior day's or prior run's branch.
  * Example: locale/translate/7.1.0-2026-04-01-174530
- * The `locale/translate/` prefix triggers .github/workflows/locale-upload-missing.yml.
+ * The branch becomes a normal PR once the translations are in (no upload happens on push).
  */
 function buildBranchName(version) {
     const date = getTodayDate();
@@ -177,8 +177,9 @@ function initBranch(version) {
 }
 
 /**
- * Commit and push translations for one locale or a comma-separated family of locales.
- * Stages explicit paths only: each locale's batch folder plus the english-ok allowlist.
+ * Write the filled batches of one locale (or a comma-separated family) into the locale files
+ * (npm run locale:apply), then commit and push them.
+ * Stages explicit paths only: each locale's JSON, .po and .mo plus the english-ok allowlist.
  */
 function commitAndPush(localeCodes, label, termCount) {
     const codes = String(localeCodes).split(',').map(c => c.trim()).filter(Boolean);
@@ -190,8 +191,19 @@ function commitAndPush(localeCodes, label, termCount) {
     const branch = getCurrentBranch();
     const message = `locale: translate ${codes.join(', ')} (${label}, ${termCount} terms)`;
 
+    const repo = require('./lib/locale-repo');
+    const config = require('./locale-config');
+    const targets = repo.selectLocales(repo.targetLocales(), codes.join(','));
+
+    console.log(`\n  🧩 Writing ${codes.join(', ')} into the locale files...`);
+    execFileSync('node', [path.join(__dirname, 'locale-apply.js'), '--locale', codes.join(',')], { stdio: 'inherit' });
+
+    const files = targets.flatMap((t) => {
+        const p = repo.paths(t);
+        return [p.json, p.po, p.mo].filter((f) => fs.existsSync(f)).map((f) => path.relative(config.projectRoot, f));
+    });
     console.log(`\n  📝 Committing to ${branch}...`);
-    run('git', ['add', ...codes.map(c => `locale/terms/missing/${c}/`), 'locale/terms/english-ok.json']);
+    run('git', ['add', '--', ...files, 'locale/terms/english-ok.json'], { cwd: config.projectRoot });
     run('git', ['commit', '-m', message]);
 
     console.log(`  ⬆️  Pushing to origin/${branch}...`);

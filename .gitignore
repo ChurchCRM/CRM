@@ -17,6 +17,8 @@ tests/php/**/output/
 
 # Locale build artifacts (all intermediate build output in one place)
 locale/.work
+# Missing-term batches are working files: npm run locale:missing writes them, npm run locale:apply empties them
+locale/terms/missing/
 
 # Uploaded Images
 src/Images/Family/*
