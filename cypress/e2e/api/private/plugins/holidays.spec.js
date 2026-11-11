@@ -251,6 +251,39 @@ describe("Holiday Calendar Plugin API", () => {
             });
         });
 
+        describe("in German", () => {
+            const decemberUrl = () => `/api/systemcalendars/${usaCalendarId}/fullcalendar?start=2026-12-01&end=2027-01-01`;
+            // The request's language comes from the admin's own ui.locale setting.
+            const localeUrl = "/api/user/1/setting/ui.locale";
+            let savedLocale;
+            let englishChristmas;
+
+            before(() => {
+                cy.makePrivateAdminAPICall("GET", decemberUrl()).then((resp) => {
+                    englishChristmas = resp.body.find((event) => event.title === "Christmas");
+                    expect(englishChristmas, "English Christmas event").to.exist;
+                });
+                cy.makePrivateAdminAPICall("GET", localeUrl).then((resp) => {
+                    savedLocale = resp.body.value;
+                });
+                cy.makePrivateAdminAPICall("POST", localeUrl, { value: "de_DE" });
+            });
+
+            after(() => {
+                cy.makePrivateAdminAPICall("POST", localeUrl, { value: savedLocale || "en_US" });
+            });
+
+            it("titles holidays in German with the same ID and date", () => {
+                cy.makePrivateAdminAPICall("GET", decemberUrl()).then((resp) => {
+                    expect(resp.status).to.eq(200);
+                    const christmas = resp.body.find((event) => event.id === englishChristmas.id);
+                    expect(christmas, "Christmas keeps its ID").to.exist;
+                    expect(christmas.title).to.eq("1. Weihnachtsfeiertag");
+                    expect(christmas.start).to.eq(englishChristmas.start);
+                });
+            });
+        });
+
         it("marks all events as non-editable", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
