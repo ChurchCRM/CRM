@@ -15935,18 +15935,6 @@ msgid "Editing a Pledge"
 msgstr "Ine-edit ang isang Pangako"
 
 #: 
-msgid "Enable (full)"
-msgstr "I-enable (buo)"
-
-#: 
-msgid "Errors only"
-msgstr "Mga error lamang"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Mga Error — mga error sa server at JS exceptions"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Nabigo sa paglikha ng pangako"
 
@@ -15985,10 +15973,6 @@ msgstr "Kailangan ang susi ng grupo"
 #: 
 msgid "Happy Birthday"
 msgstr "Maligayang Kaarawan"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Tumulong sa pagpapabuti ng ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16059,16 +16043,8 @@ msgid "None (disabled)"
 msgstr "Wala (hindi pinagana)"
 
 #: 
-msgid "OS family"
-msgstr "Pamilya ng OS"
-
-#: 
 msgid "Overpaid"
 msgstr "Sobrang Bayad"
-
-#: 
-msgid "PHP version"
-msgstr "Bersyon ng PHP"
 
 #: 
 msgid "Page route"
@@ -16169,10 +16145,6 @@ msgstr "Mga pangalan ng gumagamit, email, o mga papel"
 #: 
 msgid "View pledge or payment details"
 msgstr "Tingnan ang mga detalye ng pangako o bayad"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Mga Babala — mga babala, error, at JS exceptions"
 
 #: 
 msgid "What is sent"
@@ -24521,28 +24493,12 @@ msgid "Closing Line"
 msgstr "Pangwakas na Linya"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Kinokontrol ang opsyonal na telemetry. Ang mga pagkabigo sa pag-install at pag-upgrade ng database ay nagpapadala ng limitadong diagnostics sa PostHog kahit naka-off ang telemetry. Kasama sa mga ulat ng pagkabigong ito ang mga bersyon ng software at kapaligiran at isang nilinis na error ng database, ngunit walang installation ID o SQL statement."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Suriin ang mga nabigong pag-install at pag-upgrade ng database"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Mga detalye ng pagkabigo sa pag-install at pag-upgrade"
-
-#: 
 msgid "Open in browser window"
 msgstr "Buksan sa window ng browser"
 
 #: 
 msgid "Opening Line"
 msgstr "Pambungad na Linya"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Ang opsyonal na telemetry ng paggamit ay ipinapadala lamang kapag naka-enable. Ang mga pagkabigo sa pag-install at pag-upgrade ng database ay laging nagpapadala ng limitadong diagnostic para tumulong sa komunidad, kahit piliin mo ang Hindi, salamat. Kasama sa mga ulat ng pagkabigo ang mga bersyon ng software at kapaligiran at isang nilinis na error ng database, nang walang installation ID o SQL statement."
 
 #: 
 msgid "PDF Handling"
@@ -24579,14 +24535,6 @@ msgstr "Mga Salita ng Pahayag"
 #: 
 msgid "Tax Information"
 msgstr "Impormasyon sa Buwis"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Ipinapadala ang telemetry sa PostHog sa United States. Ipinapadala ang mga ulat ng pagkabigo sa pag-install at pag-upgrade kahit naka-disable ang opsyonal na telemetry."
-
-#: 
-msgid "always sent"
-msgstr "laging ipinapadala"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25643,10 +25591,6 @@ msgstr "Tanging mga buhay na taong may sariling email ang maaaring nasa listahan
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Tanging mga taong may sariling email ang maaaring idagdag."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Maaaring kasama sa opsyonal na telemetry ang mga ruta ng pahina, aktibong locale, bersyon ng CRM, bersyon ng PHP, pamilya ng OS, ang bansang mula sa mga setting ng impormasyon ng simbahan, at isang random na installation ID. Hindi kasama sa mga ulat ng pagkabigo ang installation ID. Ipinapadala ang datos sa PostHog sa United States."
 
 #: 
 msgid "Passkey"

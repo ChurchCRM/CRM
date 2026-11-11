@@ -15994,18 +15994,6 @@ msgid "Editing a Pledge"
 msgstr "Редагування обітниці"
 
 #: 
-msgid "Enable (full)"
-msgstr "Увімкнути (повністю)"
-
-#: 
-msgid "Errors only"
-msgstr "Лише помилки"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Помилки — серверні помилки та виключення JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Не вдалося створити обітницю"
 
@@ -16044,10 +16032,6 @@ msgstr "Ключ групи є обов'язковим"
 #: 
 msgid "Happy Birthday"
 msgstr "З Днем народження"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Допоможіть покращити ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16118,16 +16102,8 @@ msgid "None (disabled)"
 msgstr "Вимкнено"
 
 #: 
-msgid "OS family"
-msgstr "Сімейство ОС"
-
-#: 
 msgid "Overpaid"
 msgstr "Переплачено"
-
-#: 
-msgid "PHP version"
-msgstr "Версія PHP"
 
 #: 
 msgid "Page route"
@@ -16228,10 +16204,6 @@ msgstr "Імена користувачів, електронні адреси �
 #: 
 msgid "View pledge or payment details"
 msgstr "Переглянути деталі обітниці або пожертвування"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Попередження — попередження, помилки та виключення JS"
 
 #: 
 msgid "What is sent"
@@ -24610,28 +24582,12 @@ msgid "Closing Line"
 msgstr "Завершальний рядок"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Керує необов’язковою телеметрією. Помилки встановлення та оновлення бази даних надсилають обмежену діагностику до PostHog, навіть коли телеметрію вимкнено. Ці звіти про помилки містять версії програмного забезпечення та середовища й очищене повідомлення про помилку бази даних, але не ідентифікатор установлення чи оператор SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Діагностувати невдалі встановлення та оновлення бази даних"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Подробиці помилок установлення та оновлення"
-
-#: 
 msgid "Open in browser window"
 msgstr "Відкрити у вікні браузера"
 
 #: 
 msgid "Opening Line"
 msgstr "Вступний рядок"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Необов’язкова телеметрія використання надсилається лише коли її увімкнено. Помилки встановлення та оновлення бази даних завжди надсилають обмежену діагностику на допомогу спільноті, навіть якщо ви обираєте «Ні, дякую». Звіти про помилки містять версії програмного забезпечення та середовища й очищене повідомлення про помилку бази даних, без ідентифікатора установлення чи оператора SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24668,14 +24624,6 @@ msgstr "Формулювання звіту"
 #: 
 msgid "Tax Information"
 msgstr "Податкові відомості"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Телеметрія надсилається до PostHog у Сполучених Штатах. Звіти про помилки встановлення та оновлення надсилаються, навіть коли необов’язкову телеметрію вимкнено."
-
-#: 
-msgid "always sent"
-msgstr "завжди надсилається"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25732,10 +25680,6 @@ msgstr "У списку канцелярії можуть бути лише жи
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Додати можна лише людей із власною електронною поштою."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Необов’язкова телеметрія може містити маршрути сторінок, активну мову, версію CRM, версію PHP, сімейство ОС, країну з параметрів відомостей про церкву та випадковий ідентифікатор установлення. Звіти про помилки не містять ідентифікатора установлення. Дані надсилаються до PostHog у Сполучених Штатах."
 
 #: 
 msgid "Passkey"

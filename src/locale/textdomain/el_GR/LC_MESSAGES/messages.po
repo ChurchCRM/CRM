@@ -15968,18 +15968,6 @@ msgid "Editing a Pledge"
 msgstr "Επεξεργασία Υπόσχεσης"
 
 #: 
-msgid "Enable (full)"
-msgstr "Ενεργοποίηση (πλήρης)"
-
-#: 
-msgid "Errors only"
-msgstr "Μόνο σφάλματα"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Σφάλματα — σφάλματα διακομιστή και εξαιρέσεις JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Αποτυχία δημιουργίας υπόσχεσης"
 
@@ -16018,10 +16006,6 @@ msgstr "Το κλειδί ομάδας είναι υποχρεωτικό"
 #: 
 msgid "Happy Birthday"
 msgstr "Χρόνια Πολλά"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Βοηθήστε στη βελτίωση του ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16092,16 +16076,8 @@ msgid "None (disabled)"
 msgstr "Κανένα (απενεργοποιημένο)"
 
 #: 
-msgid "OS family"
-msgstr "Οικογένεια ΛΣ"
-
-#: 
 msgid "Overpaid"
 msgstr "Υπερπληρωμή"
-
-#: 
-msgid "PHP version"
-msgstr "Έκδοση PHP"
 
 #: 
 msgid "Page route"
@@ -16202,10 +16178,6 @@ msgstr "Ονόματα χρηστών, email ή ρόλοι"
 #: 
 msgid "View pledge or payment details"
 msgstr "Προβολή λεπτομερειών υπόσχεσης ή προσφοράς"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Προειδοποιήσεις — προειδοποιήσεις, σφάλματα και εξαιρέσεις JS"
 
 #: 
 msgid "What is sent"
@@ -24554,28 +24526,12 @@ msgid "Closing Line"
 msgstr "Καταληκτική γραμμή"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Ελέγχει την προαιρετική τηλεμετρία. Οι αποτυχίες εγκατάστασης και αναβάθμισης βάσης δεδομένων στέλνουν περιορισμένα διαγνωστικά στο PostHog ακόμη και όταν η τηλεμετρία είναι απενεργοποιημένη. Αυτές οι αναφορές αποτυχίας περιλαμβάνουν εκδόσεις λογισμικού και περιβάλλοντος και ένα εξυγιασμένο σφάλμα βάσης δεδομένων, αλλά όχι αναγνωριστικό εγκατάστασης ή εντολή SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Διάγνωση αποτυχημένων εγκαταστάσεων και αναβαθμίσεων βάσης δεδομένων"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Λεπτομέρειες αποτυχίας εγκατάστασης και αναβάθμισης"
-
-#: 
 msgid "Open in browser window"
 msgstr "Άνοιγμα σε παράθυρο προγράμματος περιήγησης"
 
 #: 
 msgid "Opening Line"
 msgstr "Εισαγωγική γραμμή"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Η προαιρετική τηλεμετρία χρήσης αποστέλλεται μόνο όταν είναι ενεργοποιημένη. Οι αποτυχίες εγκατάστασης και αναβάθμισης βάσης δεδομένων στέλνουν πάντα περιορισμένα διαγνωστικά για να βοηθήσουν την κοινότητα, ακόμη κι αν επιλέξετε Όχι, ευχαριστώ. Οι αναφορές αποτυχίας περιλαμβάνουν εκδόσεις λογισμικού και περιβάλλοντος και ένα εξυγιασμένο σφάλμα βάσης δεδομένων, χωρίς αναγνωριστικό εγκατάστασης ή εντολή SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24612,14 +24568,6 @@ msgstr "Διατύπωση βεβαίωσης"
 #: 
 msgid "Tax Information"
 msgstr "Φορολογικές πληροφορίες"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Η τηλεμετρία αποστέλλεται στο PostHog στις Ηνωμένες Πολιτείες. Οι αναφορές αποτυχίας εγκατάστασης και αναβάθμισης αποστέλλονται ακόμη και όταν η προαιρετική τηλεμετρία είναι απενεργοποιημένη."
-
-#: 
-msgid "always sent"
-msgstr "αποστέλλεται πάντα"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25676,10 +25624,6 @@ msgstr "Μόνο εν ζωή άτομα με δικό τους ηλεκτρον�
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Μπορούν να προστεθούν μόνο άτομα με δικό τους ηλεκτρονικό ταχυδρομείο."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Η προαιρετική τηλεμετρία μπορεί να περιλαμβάνει διαδρομές σελίδων, ενεργή τοπική ρύθμιση, έκδοση ChurchCRM, έκδοση PHP, οικογένεια OS, τη χώρα από τις ρυθμίσεις στοιχείων της εκκλησίας σας και ένα τυχαίο αναγνωριστικό εγκατάστασης. Οι αναφορές αποτυχίας δεν περιλαμβάνουν το αναγνωριστικό εγκατάστασης. Τα δεδομένα αποστέλλονται στο PostHog στις Ηνωμένες Πολιτείες."
 
 #: 
 msgid "Passkey"

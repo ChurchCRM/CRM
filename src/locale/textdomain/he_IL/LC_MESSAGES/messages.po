@@ -15966,18 +15966,6 @@ msgid "Editing a Pledge"
 msgstr "עריכת התחייבות"
 
 #: 
-msgid "Enable (full)"
-msgstr "הפעל (מלא)"
-
-#: 
-msgid "Errors only"
-msgstr "שגיאות בלבד"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "שגיאות — שגיאות שרת וחריגות JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "יצירת ההתחייבות נכשלה"
 
@@ -16016,10 +16004,6 @@ msgstr "מפתח קבוצה נדרש"
 #: 
 msgid "Happy Birthday"
 msgstr "יום הולדת שמח"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "עזור לשפר את ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16090,16 +16074,8 @@ msgid "None (disabled)"
 msgstr "ללא (מושבת)"
 
 #: 
-msgid "OS family"
-msgstr "משפחת מערכת הפעלה"
-
-#: 
 msgid "Overpaid"
 msgstr "שולם יתר"
-
-#: 
-msgid "PHP version"
-msgstr "גרסת PHP"
 
 #: 
 msgid "Page route"
@@ -16200,10 +16176,6 @@ msgstr "שמות משתמש, כתובות דוא\"ל או תפקידים"
 #: 
 msgid "View pledge or payment details"
 msgstr "הצג פרטי התחייבות או תשלום"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "אזהרות — אזהרות, שגיאות וחריגות JS"
 
 #: 
 msgid "What is sent"
@@ -24552,28 +24524,12 @@ msgid "Closing Line"
 msgstr "שורת סיום"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "שולט בטלמטריה רשות. כשלים בהתקנה ובשדרוג מסד הנתונים שולחים אבחון מוגבל ל-PostHog גם כשהטלמטריה כבויה. דוחות הכשל כוללים גרסאות תוכנה וסביבה ושגיאת מסד נתונים מסוננת, אך ללא מזהה התקנה או משפט SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "אבחון התקנות ושדרוגי מסד נתונים שנכשלו"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "פרטי כשל בהתקנה ובשדרוג"
-
-#: 
 msgid "Open in browser window"
 msgstr "פתיחה בחלון הדפדפן"
 
 #: 
 msgid "Opening Line"
 msgstr "שורת פתיחה"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "טלמטריית שימוש רשות נשלחת רק כשהיא מופעלת. כשלי התקנה ושדרוג מסד נתונים תמיד שולחים אבחון מוגבל כדי לעזור לקהילה, גם אם בחרתם לא תודה. דוחות הכשל כוללים גרסאות תוכנה וסביבה ושגיאת מסד נתונים מסוננת, ללא מזהה התקנה או משפט SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24610,14 +24566,6 @@ msgstr "נוסח הדוח"
 #: 
 msgid "Tax Information"
 msgstr "פרטי מס"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "הטלמטריה נשלחת ל-PostHog בארצות הברית. דוחות כשל בהתקנה ובשדרוג נשלחים גם כשטלמטריה רשות כבויה."
-
-#: 
-msgid "always sent"
-msgstr "נשלח תמיד"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25674,10 +25622,6 @@ msgstr "רק אנשים חיים עם דוא״ל משלהם יכולים להי�
 #: 
 msgid "Only people with their own email can be added."
 msgstr "אפשר להוסיף רק אנשים עם דוא״ל משלהם."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "טלמטריה רשות עשויה לכלול נתיבי דפים, אזור פעיל, גרסת CRM, גרסת PHP, משפחת OS, המדינה מהגדרות פרטי הקהילה, ומזהה התקנה אקראי. דוחות כשל אינם כוללים את מזהה ההתקנה. הנתונים נשלחים ל-PostHog בארצות הברית."
 
 #: 
 msgid "Passkey"

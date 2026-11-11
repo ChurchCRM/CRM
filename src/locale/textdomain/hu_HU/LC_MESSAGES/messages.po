@@ -15994,18 +15994,6 @@ msgid "Editing a Pledge"
 msgstr "Fogadalom szerkesztése"
 
 #: 
-msgid "Enable (full)"
-msgstr "Engedélyezés (teljes)"
-
-#: 
-msgid "Errors only"
-msgstr "Csak hibák"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Hibák – szerverhiba és JS kivételek"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "A fogadalom létrehozása sikertelen"
 
@@ -16044,10 +16032,6 @@ msgstr "A csoportkulcs megadása kötelező"
 #: 
 msgid "Happy Birthday"
 msgstr "Boldog születésnapot"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Segítsen fejleszteni a ChurchCRM-et"
 
 #: 
 msgid "IP addresses"
@@ -16118,16 +16102,8 @@ msgid "None (disabled)"
 msgstr "Nincs (letiltva)"
 
 #: 
-msgid "OS family"
-msgstr "Operációs rendszer família"
-
-#: 
 msgid "Overpaid"
 msgstr "Túlfizetett"
-
-#: 
-msgid "PHP version"
-msgstr "PHP verzió"
 
 #: 
 msgid "Page route"
@@ -16228,10 +16204,6 @@ msgstr "Felhasználónevek, e-mail-címek vagy szerepkörök"
 #: 
 msgid "View pledge or payment details"
 msgstr "Fogadalom vagy adomány részleteinek megtekintése"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Figyelmeztetések – figyelmeztetések, hibák és JS kivételek"
 
 #: 
 msgid "What is sent"
@@ -24580,28 +24552,12 @@ msgid "Closing Line"
 msgstr "Záró sor"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Az opcionális telemetriát szabályozza. A telepítés és az adatbázis-frissítés hibái akkor is korlátozott diagnosztikát küldenek a PostHog felé, ha a telemetria ki van kapcsolva. Ezek a hibajelentések a szoftver és a környezet verzióit, valamint egy megtisztított adatbázishibát tartalmaznak, de telepítési azonosítót vagy SQL-utasítást nem."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Sikertelen telepítések és adatbázis-frissítések diagnosztizálása"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Telepítési és frissítési hibák részletei"
-
-#: 
 msgid "Open in browser window"
 msgstr "Megnyitás böngészőablakban"
 
 #: 
 msgid "Opening Line"
 msgstr "Nyitó sor"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Az opcionális használati telemetria csak bekapcsolt állapotban megy el. A telepítés és az adatbázis-frissítés hibái akkor is korlátozott diagnosztikát küldenek a közösség segítésére, ha a Nem, köszönöm lehetőséget választja. A hibajelentések a szoftver és a környezet verzióit, valamint egy megtisztított adatbázishibát tartalmaznak, telepítési azonosító és SQL-utasítás nélkül."
 
 #: 
 msgid "PDF Handling"
@@ -24638,14 +24594,6 @@ msgstr "Igazolás szövege"
 #: 
 msgid "Tax Information"
 msgstr "Adóadatok"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "A telemetria az Egyesült Államokban lévő PostHog felé megy. A telepítési és frissítési hibajelentések akkor is elmennek, ha az opcionális telemetria ki van kapcsolva."
-
-#: 
-msgid "always sent"
-msgstr "mindig elküldve"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25702,10 +25650,6 @@ msgstr "Az irodai listán csak élő, saját e-maillel rendelkező személyek sz
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Csak saját e-maillel rendelkező személyek adhatók hozzá."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Az opcionális telemetria tartalmazhatja az oldalútvonalakat, az aktív nyelvet, a CRM verzióját, a PHP verzióját, az operációs rendszer családját, a gyülekezeti adatok beállításából származó országot és egy véletlen telepítési azonosítót. A hibajelentések nem tartalmazzák a telepítési azonosítót. Az adatokat az Egyesült Államokban lévő PostHog kapja."
 
 #: 
 msgid "Passkey"

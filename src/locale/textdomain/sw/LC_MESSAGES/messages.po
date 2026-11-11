@@ -15964,18 +15964,6 @@ msgid "Editing a Pledge"
 msgstr "Kuhariri Ahadi ya Mchango"
 
 #: 
-msgid "Enable (full)"
-msgstr "Wezesha (kamili)"
-
-#: 
-msgid "Errors only"
-msgstr "Makosa peke yake"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Makosa — makosa ya seva na vighairi vya JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Imeshindwa kuunda ahadi ya mchango"
 
@@ -16014,10 +16002,6 @@ msgstr "Ufunguo wa kikundi unahitajika"
 #: 
 msgid "Happy Birthday"
 msgstr "Heri ya Siku ya Kuzaliwa"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Saidia kuboresha ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16088,16 +16072,8 @@ msgid "None (disabled)"
 msgstr "Hakuna (imezimwa)"
 
 #: 
-msgid "OS family"
-msgstr "Familia ya OS"
-
-#: 
 msgid "Overpaid"
 msgstr "Umelipwa zaidi"
-
-#: 
-msgid "PHP version"
-msgstr "Toleo la PHP"
 
 #: 
 msgid "Page route"
@@ -16198,10 +16174,6 @@ msgstr "Majina ya watumiaji, barua pepe, au majukumu"
 #: 
 msgid "View pledge or payment details"
 msgstr "Tazama maelezo ya ahadi ya mchango au malipo"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Maonyo — maonyo, makosa, na vighairi vya JS"
 
 #: 
 msgid "What is sent"
@@ -24550,28 +24522,12 @@ msgid "Closing Line"
 msgstr "Mstari wa kufunga"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Inadhibiti telemetri ya hiari. Kushindwa kwa usakinishaji na uboreshaji wa hifadhidata hutuma uchunguzi mdogo kwa PostHog hata telemetri ikiwa imezimwa. Ripoti hizi za kushindwa zinajumuisha matoleo ya programu na mazingira na hitilafu ya hifadhidata iliyosafishwa, lakini si kitambulisho cha usakinishaji wala kauli ya SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Chunguza usakinishaji na uboreshaji wa hifadhidata ulioshindwa"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Maelezo ya kushindwa kwa usakinishaji na uboreshaji"
-
-#: 
 msgid "Open in browser window"
 msgstr "Fungua kwenye dirisha la kivinjari"
 
 #: 
 msgid "Opening Line"
 msgstr "Mstari wa kufungua"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Telemetri ya hiari ya matumizi hutumwa tu inapowashwa. Kushindwa kwa usakinishaji na uboreshaji wa hifadhidata daima hutuma uchunguzi mdogo ili kusaidia jamii, hata ukichagua Hapana asante. Ripoti za kushindwa zinajumuisha matoleo ya programu na mazingira na hitilafu ya hifadhidata iliyosafishwa, bila kitambulisho cha usakinishaji wala kauli ya SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24608,14 +24564,6 @@ msgstr "Maneno ya taarifa"
 #: 
 msgid "Tax Information"
 msgstr "Taarifa za kodi"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetri hutumwa kwa PostHog nchini Marekani. Ripoti za kushindwa kwa usakinishaji na uboreshaji hutumwa hata telemetri ya hiari ikizimwa."
-
-#: 
-msgid "always sent"
-msgstr "hutumwa daima"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25672,10 +25620,6 @@ msgstr "Watu walio hai wenye barua pepe yao tu ndio wanaoweza kuwa kwenye orodha
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Watu wenye barua pepe yao tu ndio wanaweza kuongezwa."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Telemetri ya hiari inaweza kujumuisha njia za kurasa, lugha inayotumika, toleo la CRM, toleo la PHP, familia ya OS, nchi kutoka mipangilio ya taarifa za kanisa lako, na kitambulisho cha nasibu cha usakinishaji. Ripoti za kushindwa hazijumuishi kitambulisho cha usakinishaji. Data hutumwa kwa PostHog nchini Marekani."
 
 #: 
 msgid "Passkey"

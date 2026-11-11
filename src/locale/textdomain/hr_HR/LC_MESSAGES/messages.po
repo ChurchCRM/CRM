@@ -15946,18 +15946,6 @@ msgid "Editing a Pledge"
 msgstr "Uređivanje zavjeta"
 
 #: 
-msgid "Enable (full)"
-msgstr "Omogući (potpuno)"
-
-#: 
-msgid "Errors only"
-msgstr "Samo greške"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Greške — serverske greške i JS iznimke"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Nije uspjelo kreiranje zavjeta"
 
@@ -15996,10 +15984,6 @@ msgstr "Ključ grupe je obavezan"
 #: 
 msgid "Happy Birthday"
 msgstr "Sretan rođendan"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Pomozite poboljšati ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16070,16 +16054,8 @@ msgid "None (disabled)"
 msgstr "Ništa (onemogućeno)"
 
 #: 
-msgid "OS family"
-msgstr "OS obitelj"
-
-#: 
 msgid "Overpaid"
 msgstr "Preplaćeno"
-
-#: 
-msgid "PHP version"
-msgstr "PHP verzija"
 
 #: 
 msgid "Page route"
@@ -16180,10 +16156,6 @@ msgstr "Korisnička imena, e-adrese ili uloge"
 #: 
 msgid "View pledge or payment details"
 msgstr "Prikaži detalje zavjeta ili uplate"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Upozorenja — upozorenja, greške i JS iznimke"
 
 #: 
 msgid "What is sent"
@@ -24547,28 +24519,12 @@ msgid "Closing Line"
 msgstr "Završni redak"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Upravlja neobaveznom telemetrijom. Neuspjeli instalacijski postupci i nadogradnje baze podataka šalju ograničenu dijagnostiku u PostHog čak i kad je telemetrija isključena. Ta izvješća o neuspjehu sadrže verzije softvera i okruženja te očišćenu pogrešku baze, ali ne i identifikator instalacije ni SQL naredbu."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Dijagnosticiraj neuspjele instalacije i nadogradnje baze podataka"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Pojedinosti o neuspjehu instalacije i nadogradnje"
-
-#: 
 msgid "Open in browser window"
 msgstr "Otvori u prozoru preglednika"
 
 #: 
 msgid "Opening Line"
 msgstr "Uvodni redak"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Neobavezna telemetrija uporabe šalje se samo kad je uključena. Neuspjeli instalacijski postupci i nadogradnje baze podataka uvijek šalju ograničenu dijagnostiku kako bi se pomoglo zajednici, čak i ako odaberete Ne, hvala. Izvješća o neuspjehu sadrže verzije softvera i okruženja te očišćenu pogrešku baze, bez identifikatora instalacije i SQL naredbe."
 
 #: 
 msgid "PDF Handling"
@@ -24605,14 +24561,6 @@ msgstr "Tekst potvrde"
 #: 
 msgid "Tax Information"
 msgstr "Porezni podaci"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetrija se šalje u PostHog u Sjedinjenim Američkim Državama. Izvješća o neuspjehu instalacije i nadogradnje šalju se i kad je neobavezna telemetrija isključena."
-
-#: 
-msgid "always sent"
-msgstr "uvijek se šalje"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25669,10 +25617,6 @@ msgstr "Na uredskom popisu mogu biti samo žive osobe s vlastitom adresom e-poš
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Mogu se dodati samo osobe s vlastitom adresom e-pošte."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Neobavezna telemetrija može uključivati putanje stranica, aktivni jezik, verziju CRM-a, verziju PHP-a, obitelj operacijskog sustava, državu iz postavki podataka o crkvi i nasumični identifikator instalacije. Izvješća o neuspjehu ne uključuju identifikator instalacije. Podaci se šalju u PostHog u Sjedinjenim Američkim Državama."
 
 #: 
 msgid "Passkey"

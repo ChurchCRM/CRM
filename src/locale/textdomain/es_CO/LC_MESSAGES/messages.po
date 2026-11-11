@@ -15951,18 +15951,6 @@ msgid "Editing a Pledge"
 msgstr "Editando una promesa"
 
 #: 
-msgid "Enable (full)"
-msgstr "Activar (completo)"
-
-#: 
-msgid "Errors only"
-msgstr "Solo errores"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Errores — errores del servidor y excepciones de JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Error al crear la promesa"
 
@@ -16001,10 +15989,6 @@ msgstr "La clave del grupo es obligatoria"
 #: 
 msgid "Happy Birthday"
 msgstr "Feliz cumpleaños"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Ayudar a mejorar ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16075,16 +16059,8 @@ msgid "None (disabled)"
 msgstr "Ninguno (desactivado)"
 
 #: 
-msgid "OS family"
-msgstr "Familia de SO"
-
-#: 
 msgid "Overpaid"
 msgstr "Pagado en exceso"
-
-#: 
-msgid "PHP version"
-msgstr "Versión de PHP"
 
 #: 
 msgid "Page route"
@@ -16185,10 +16161,6 @@ msgstr "Nombres de usuario, correos o roles"
 #: 
 msgid "View pledge or payment details"
 msgstr "Ver detalles de promesa o pago"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Advertencias — advertencias, errores y excepciones de JS"
 
 #: 
 msgid "What is sent"
@@ -24552,28 +24524,12 @@ msgid "Closing Line"
 msgstr "Línea de cierre"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Controla la telemetría opcional. Los fallos de instalación y de actualización de la base de datos envían diagnósticos limitados a PostHog aunque la telemetría esté desactivada. Esos informes incluyen las versiones del software y del entorno y un error de base de datos sin datos sensibles, pero no el identificador de instalación ni la instrucción SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Diagnosticar instalaciones y actualizaciones de base de datos fallidas"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Detalles de fallos de instalación y actualización"
-
-#: 
 msgid "Open in browser window"
 msgstr "Abrir en la ventana del navegador"
 
 #: 
 msgid "Opening Line"
 msgstr "Línea de apertura"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "La telemetría de uso opcional se envía solo cuando está activada. Los fallos de instalación y de actualización de la base de datos siempre envían un diagnóstico limitado para ayudar a la comunidad, aunque usted elija No, gracias. Los informes de fallo incluyen las versiones del software y del entorno y un error de base de datos sin datos sensibles, sin identificador de instalación ni instrucción SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24610,14 +24566,6 @@ msgstr "Redacción del estado de cuenta"
 #: 
 msgid "Tax Information"
 msgstr "Información tributaria"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "La telemetría se envía a PostHog en Estados Unidos. Los informes de fallos de instalación y actualización se envían aunque la telemetría opcional esté desactivada."
-
-#: 
-msgid "always sent"
-msgstr "siempre se envía"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25674,10 +25622,6 @@ msgstr "Solo las personas vivas con correo propio pueden estar en la lista de la
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Solo se pueden agregar personas que tengan su propio correo."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "La telemetría opcional puede incluir las rutas de las páginas, la configuración regional activa, la versión del CRM, la versión de PHP, la familia del sistema operativo, el país de la información de su iglesia y un identificador de instalación aleatorio. Los informes de fallo no incluyen el identificador de instalación. Los datos se envían a PostHog en Estados Unidos."
 
 #: 
 msgid "Passkey"

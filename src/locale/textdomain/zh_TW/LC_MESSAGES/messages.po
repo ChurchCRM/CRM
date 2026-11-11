@@ -16094,18 +16094,6 @@ msgid "Editing a Pledge"
 msgstr "編輯承諾奉獻"
 
 #: 
-msgid "Enable (full)"
-msgstr "啟用（完整）"
-
-#: 
-msgid "Errors only"
-msgstr "僅錯誤"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "錯誤——伺服器錯誤及 JS 異常"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "建立承諾奉獻失敗"
 
@@ -16144,10 +16132,6 @@ msgstr "小組鍵值為必填項"
 #: 
 msgid "Happy Birthday"
 msgstr "生日快樂"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "協助改善 ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16218,16 +16202,8 @@ msgid "None (disabled)"
 msgstr "無（已停用）"
 
 #: 
-msgid "OS family"
-msgstr "作業系統類型"
-
-#: 
 msgid "Overpaid"
 msgstr "超額奉獻"
-
-#: 
-msgid "PHP version"
-msgstr "PHP 版本"
 
 #: 
 msgid "Page route"
@@ -16328,10 +16304,6 @@ msgstr "使用者名稱、電子郵件或角色"
 #: 
 msgid "View pledge or payment details"
 msgstr "查看承諾奉獻或款項詳情"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "警告——警告、錯誤及 JS 異常"
 
 #: 
 msgid "What is sent"
@@ -24665,28 +24637,12 @@ msgid "Closing Line"
 msgstr "結尾語"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "控制選用的遙測。即使遙測關閉，安裝與資料庫升級失敗仍會向 PostHog 傳送有限的診斷。這些失敗報告包含軟體與環境版本，以及已清理的資料庫錯誤，但不含安裝 ID 或 SQL 陳述式。"
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "診斷安裝與資料庫升級失敗"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "安裝與升級失敗詳情"
-
-#: 
 msgid "Open in browser window"
 msgstr "在瀏覽器視窗中開啟"
 
 #: 
 msgid "Opening Line"
 msgstr "開頭語"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "選用的使用遙測只在啟用時傳送。即使您選擇「不用，謝謝」，安裝與資料庫升級失敗仍一律傳送有限的診斷以協助社群。失敗報告包含軟體與環境版本，以及已清理的資料庫錯誤，不含安裝 ID 或 SQL 陳述式。"
 
 #: 
 msgid "PDF Handling"
@@ -24723,14 +24679,6 @@ msgstr "證明用語"
 #: 
 msgid "Tax Information"
 msgstr "稅務資訊"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "遙測會傳送到位於美國的 PostHog。即使選用遙測已停用，仍會傳送安裝與升級失敗報告。"
-
-#: 
-msgid "always sent"
-msgstr "一律傳送"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25787,10 +25735,6 @@ msgstr "只有在世且擁有自己電子郵件的人可以列入辦公室名單
 #: 
 msgid "Only people with their own email can be added."
 msgstr "只有擁有自己電子郵件的人可以加入。"
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "選用遙測可能包含頁面路徑、使用中的語系、CRM 版本、PHP 版本、OS 系列、教會資訊設定中的國家，以及隨機的安裝 ID。失敗報告不含安裝 ID。資料會傳送到位於美國的 PostHog。"
 
 #: 
 msgid "Passkey"

@@ -15980,18 +15980,6 @@ msgid "Editing a Pledge"
 msgstr "உறுதிமொழியை திருத்துகிறது"
 
 #: 
-msgid "Enable (full)"
-msgstr "இயக்கு (முழுமை)"
-
-#: 
-msgid "Errors only"
-msgstr "பிழைகள் மட்டும்"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "பிழைகள் — சேவையக பிழைகள் மற்றும் JS விதிவிலக்குகள்"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "உறுதிமொழியை உருவாக்க தோல்வியடைந்தது"
 
@@ -16030,10 +16018,6 @@ msgstr "குழு திறவுகோல் தேவை"
 #: 
 msgid "Happy Birthday"
 msgstr "பிறந்தநாள் வாழ்த்துகள்"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ChurchCRM-ஐ மேம்படுத்த உதவுங்கள்"
 
 #: 
 msgid "IP addresses"
@@ -16104,16 +16088,8 @@ msgid "None (disabled)"
 msgstr "எதுவும் இல்லை (முடக்கப்பட்டது)"
 
 #: 
-msgid "OS family"
-msgstr "இயக்க முறைமை வகை"
-
-#: 
 msgid "Overpaid"
 msgstr "அதிகமாக கொடுக்கப்பட்டது"
-
-#: 
-msgid "PHP version"
-msgstr "PHP பதிப்பு"
 
 #: 
 msgid "Page route"
@@ -16214,10 +16190,6 @@ msgstr "பயனர் பெயர்கள், மின்னஞ்சல்
 #: 
 msgid "View pledge or payment details"
 msgstr "உறுதிமொழி அல்லது கொடுப்பனவு விவரங்களை காண்க"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "எச்சரிக்கைகள் — எச்சரிக்கைகள், பிழைகள் மற்றும் JS விதிவிலக்குகள்"
 
 #: 
 msgid "What is sent"
@@ -24566,28 +24538,12 @@ msgid "Closing Line"
 msgstr "நிறைவு வரி"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "விருப்பத் தொலைஅளவீட்டைக் கட்டுப்படுத்துகிறது. தொலைஅளவீடு அணைக்கப்பட்டிருந்தாலும் நிறுவல் மற்றும் தரவுத்தள மேம்படுத்தல் தோல்விகள் PostHog க்கு வரையறுத்த கண்டறிதல்களை அனுப்புகின்றன. இந்தத் தோல்வி அறிக்கைகளில் மென்பொருள் மற்றும் சூழல் பதிப்புகளும் சுத்தப்படுத்திய தரவுத்தளப் பிழையும் உள்ளன, நிறுவல் அடையாளமோ SQL கூற்றோ இல்லை."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "தோல்வியடைந்த நிறுவல்களையும் தரவுத்தள மேம்படுத்தல்களையும் கண்டறியவும்"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "நிறுவல் மற்றும் மேம்படுத்தல் தோல்வி விவரங்கள்"
-
-#: 
 msgid "Open in browser window"
 msgstr "உலாவி சாளரத்தில் திறக்கவும்"
 
 #: 
 msgid "Opening Line"
 msgstr "தொடக்க வரி"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "விருப்பப் பயன்பாட்டுத் தொலைஅளவீடு இயக்கப்பட்டால் மட்டுமே அனுப்பப்படும். நீங்கள் இல்லை, நன்றி என்று தேர்ந்தெடுத்தாலும், சமூகத்திற்கு உதவ நிறுவல் மற்றும் தரவுத்தள மேம்படுத்தல் தோல்விகள் எப்போதும் ஒரு வரையறுத்த கண்டறிதலை அனுப்பும். தோல்வி அறிக்கைகளில் மென்பொருள் மற்றும் சூழல் பதிப்புகளும் சுத்தப்படுத்திய தரவுத்தளப் பிழையும் உள்ளன, நிறுவல் அடையாளமோ SQL கூற்றோ இல்லை."
 
 #: 
 msgid "PDF Handling"
@@ -24624,14 +24580,6 @@ msgstr "அறிக்கை சொற்கள்"
 #: 
 msgid "Tax Information"
 msgstr "வரித் தகவல்"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "தொலைஅளவீடு அமெரிக்காவில் உள்ள PostHog க்கு அனுப்பப்படுகிறது. விருப்பத் தொலைஅளவீடு முடக்கப்பட்டிருந்தாலும் நிறுவல் மற்றும் மேம்படுத்தல் தோல்வி அறிக்கைகள் அனுப்பப்படும்."
-
-#: 
-msgid "always sent"
-msgstr "எப்போதும் அனுப்பப்படும்"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25688,10 +25636,6 @@ msgstr "தங்கள் சொந்த மின்னஞ்சல் உள
 #: 
 msgid "Only people with their own email can be added."
 msgstr "தங்கள் சொந்த மின்னஞ்சல் உள்ளவர்களை மட்டுமே சேர்க்கலாம்."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "விருப்பத் தொலைஅளவீட்டில் பக்க வழிகள், செயலில் உள்ள மொழி, CRM பதிப்பு, PHP பதிப்பு, இயக்க முறைமைக் குடும்பம், உங்கள் திருச்சபைத் தகவல் அமைப்புகளிலிருந்து நாடு, மற்றும் ஒரு சீரற்ற நிறுவல் அடையாளம் இருக்கலாம். தோல்வி அறிக்கைகளில் நிறுவல் அடையாளம் இல்லை. தரவு அமெரிக்காவில் உள்ள PostHog க்கு அனுப்பப்படுகிறது."
 
 #: 
 msgid "Passkey"

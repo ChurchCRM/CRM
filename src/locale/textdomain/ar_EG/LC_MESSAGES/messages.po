@@ -16016,18 +16016,6 @@ msgid "Editing a Pledge"
 msgstr "تعديل تعهد"
 
 #: 
-msgid "Enable (full)"
-msgstr "تفعيل (كامل)"
-
-#: 
-msgid "Errors only"
-msgstr "الأخطاء فقط"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "الأخطاء — أخطاء الخادم واستثناءات JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "فشل في إنشاء التعهد"
 
@@ -16066,10 +16054,6 @@ msgstr "مفتاح المجموعة مطلوب"
 #: 
 msgid "Happy Birthday"
 msgstr "عيد ميلاد سعيد"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ساعد في تحسين ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16140,16 +16124,8 @@ msgid "None (disabled)"
 msgstr "لا شيء (معطّل)"
 
 #: 
-msgid "OS family"
-msgstr "عائلة نظام التشغيل"
-
-#: 
 msgid "Overpaid"
 msgstr "دُفع أكثر من المطلوب"
-
-#: 
-msgid "PHP version"
-msgstr "إصدار PHP"
 
 #: 
 msgid "Page route"
@@ -16250,10 +16226,6 @@ msgstr "أسماء المستخدمين أو البريد الإلكتروني �
 #: 
 msgid "View pledge or payment details"
 msgstr "عرض تفاصيل التعهد أو الدفعة"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "التحذيرات — التحذيرات والأخطاء واستثناءات JS"
 
 #: 
 msgid "What is sent"
@@ -24662,28 +24634,12 @@ msgid "Closing Line"
 msgstr "سطر الختام"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "يتحكم في القياس الاختياري عن بُعد. تُرسل إخفاقات التثبيت وترقية قاعدة البيانات تشخيصًا محدودًا إلى PostHog حتى عند إيقاف القياس. تتضمن تقارير الإخفاق إصدارات البرنامج والبيئة وخطأ قاعدة بيانات منقّحًا، دون معرّف تثبيت أو عبارة SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "تشخيص عمليات التثبيت وترقيات قاعدة البيانات التي أخفقت"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "تفاصيل إخفاق التثبيت والترقية"
-
-#: 
 msgid "Open in browser window"
 msgstr "فتح في نافذة المتصفح"
 
 #: 
 msgid "Opening Line"
 msgstr "سطر الافتتاح"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "يُرسل قياس الاستخدام الاختياري فقط عند تفعيله. تُرسل إخفاقات التثبيت وترقية قاعدة البيانات دائمًا تشخيصًا محدودًا لمساعدة المجتمع، حتى إذا اخترتم «لا، شكرًا». تتضمن تقارير الإخفاق إصدارات البرنامج والبيئة وخطأ قاعدة بيانات منقّحًا، دون معرّف تثبيت أو عبارة SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24720,14 +24676,6 @@ msgstr "صياغة الكشف"
 #: 
 msgid "Tax Information"
 msgstr "البيانات الضريبية"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "يُرسل القياس عن بُعد إلى PostHog في الولايات المتحدة. تُرسل تقارير إخفاق التثبيت والترقية حتى عند تعطيل القياس الاختياري."
-
-#: 
-msgid "always sent"
-msgstr "يُرسل دائمًا"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25784,10 +25732,6 @@ msgstr "لا يكون في قائمة المكتب إلا الأحياء الذ�
 #: 
 msgid "Only people with their own email can be added."
 msgstr "لا يمكن إضافة إلا من لديهم بريدهم الخاص."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "قد يتضمن القياس الاختياري مسارات الصفحات واللغة النشطة وإصدار CRM وإصدار PHP وعائلة نظام التشغيل والبلد من إعدادات معلومات الكنيسة ومعرّف تثبيت عشوائيًا. لا تتضمن تقارير الإخفاق معرّف التثبيت. تُرسل البيانات إلى PostHog في الولايات المتحدة."
 
 #: 
 msgid "Passkey"

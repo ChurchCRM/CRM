@@ -481,14 +481,6 @@ msgid "Use your church bylaws to choose the filters, then have authorized church
 msgstr "Use your church bylaws to choose the filters, then have authorised church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitised database error, but no installation ID or SQL statement."
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitised database error, without an installation ID or SQL statement."
-
-#: 
 msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
 msgstr "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognise."
 

@@ -15950,18 +15950,6 @@ msgid "Editing a Pledge"
 msgstr "서약 편집 중"
 
 #: 
-msgid "Enable (full)"
-msgstr "활성화 (전체)"
-
-#: 
-msgid "Errors only"
-msgstr "오류만"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "오류 — 서버 오류 및 JS 예외"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "서약 생성에 실패했습니다"
 
@@ -16000,10 +15988,6 @@ msgstr "그룹 키는 필수입니다"
 #: 
 msgid "Happy Birthday"
 msgstr "생일을 축하합니다"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ChurchCRM 개선에 도움 주기"
 
 #: 
 msgid "IP addresses"
@@ -16074,16 +16058,8 @@ msgid "None (disabled)"
 msgstr "없음 (비활성화)"
 
 #: 
-msgid "OS family"
-msgstr "OS 계열"
-
-#: 
 msgid "Overpaid"
 msgstr "초과 납부"
-
-#: 
-msgid "PHP version"
-msgstr "PHP 버전"
 
 #: 
 msgid "Page route"
@@ -16184,10 +16160,6 @@ msgstr "사용자 이름, 이메일 또는 역할"
 #: 
 msgid "View pledge or payment details"
 msgstr "서약 또는 헌금 상세 정보 보기"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "경고 — 경고, 오류 및 JS 예외"
 
 #: 
 msgid "What is sent"
@@ -24521,28 +24493,12 @@ msgid "Closing Line"
 msgstr "맺음말"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "선택적 원격 측정을 제어합니다. 원격 측정을 꺼도 설치 및 데이터베이스 업그레이드 실패는 제한된 진단 정보를 PostHog로 보냅니다. 이 실패 보고서에는 소프트웨어와 환경 버전, 그리고 민감 정보가 제거된 데이터베이스 오류가 포함되며, 설치 ID나 SQL 문은 포함되지 않습니다."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "실패한 설치와 데이터베이스 업그레이드 진단"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "설치 및 업그레이드 실패 세부 정보"
-
-#: 
 msgid "Open in browser window"
 msgstr "브라우저 창에서 열기"
 
 #: 
 msgid "Opening Line"
 msgstr "인사말"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "선택적 사용 원격 측정은 사용하도록 설정한 경우에만 전송됩니다. 설치 및 데이터베이스 업그레이드 실패는 사양합니다를 선택해도 커뮤니티를 돕기 위해 제한된 진단을 항상 보냅니다. 실패 보고서에는 소프트웨어와 환경 버전, 민감 정보가 제거된 데이터베이스 오류가 포함되며, 설치 ID나 SQL 문은 포함되지 않습니다."
 
 #: 
 msgid "PDF Handling"
@@ -24579,14 +24535,6 @@ msgstr "명세서 문구"
 #: 
 msgid "Tax Information"
 msgstr "세금 정보"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "원격 측정은 미국의 PostHog로 전송됩니다. 선택적 원격 측정을 꺼도 설치 및 업그레이드 실패 보고서는 전송됩니다."
-
-#: 
-msgid "always sent"
-msgstr "항상 전송됨"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25643,10 +25591,6 @@ msgstr "개인 이메일이 있는 생존한 사람만 사무실 목록에 올�
 #: 
 msgid "Only people with their own email can be added."
 msgstr "개인 이메일이 있는 사람만 추가할 수 있습니다."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "선택적 원격 측정에는 페이지 경로, 사용 중인 로캘, CRM 버전, PHP 버전, OS 종류, 교회 정보 설정의 국가, 임의의 설치 ID가 포함될 수 있습니다. 실패 보고서에는 설치 ID가 포함되지 않습니다. 데이터는 미국의 PostHog로 전송됩니다."
 
 #: 
 msgid "Passkey"

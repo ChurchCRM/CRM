@@ -15935,18 +15935,6 @@ msgid "Editing a Pledge"
 msgstr "ഒരു പ്രതിജ്ഞ എഡിറ്റ് ചെയ്യുന്നു"
 
 #: 
-msgid "Enable (full)"
-msgstr "പ്രവർത്തനക്ഷമമാക്കുക (പൂർണ്ണം)"
-
-#: 
-msgid "Errors only"
-msgstr "പിശകുകൾ മാത്രം"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "പിശകുകൾ — സെർവർ പിശകുകളും JS അപവാദങ്ങളും"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "പ്രതിജ്ഞ സൃഷ്ടിക്കുന്നതിൽ പരാജയപ്പെട്ടു"
 
@@ -15985,10 +15973,6 @@ msgstr "ഗ്രൂപ്പ് കീ ആവശ്യമാണ്"
 #: 
 msgid "Happy Birthday"
 msgstr "ജന്മദിനാശംസകൾ"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ChurchCRM മെച്ചപ്പെടുത്താൻ സഹായിക്കുക"
 
 #: 
 msgid "IP addresses"
@@ -16059,16 +16043,8 @@ msgid "None (disabled)"
 msgstr "ഒന്നുമില്ല (പ്രവർത്തനരഹിതം)"
 
 #: 
-msgid "OS family"
-msgstr "OS കുടുംബം"
-
-#: 
 msgid "Overpaid"
 msgstr "അധിക നൽകിയത്"
-
-#: 
-msgid "PHP version"
-msgstr "PHP പതിപ്പ്"
 
 #: 
 msgid "Page route"
@@ -16169,10 +16145,6 @@ msgstr "ഉപയോക്തൃ നാമങ്ങൾ, ഇമെയിലുക
 #: 
 msgid "View pledge or payment details"
 msgstr "പ്രതിജ്ഞ അല്ലെങ്കിൽ പേമെന്റ് വിശദാംശങ്ങൾ കാണുക"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "മുന്നറിയിപ്പുകൾ — മുന്നറിയിപ്പുകൾ, പിശകുകൾ, JS അപവാദങ്ങൾ"
 
 #: 
 msgid "What is sent"
@@ -24521,28 +24493,12 @@ msgid "Closing Line"
 msgstr "അവസാന വരി"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "ഐച്ഛിക ടെലിമെട്രി നിയന്ത്രിക്കുന്നു. ടെലിമെട്രി ഓഫ് ആണെങ്കിലും ഇൻസ്റ്റാൾ, ഡാറ്റാബേസ് അപ്‌ഗ്രേഡ് പരാജയങ്ങൾ പരിമിതമായ ഡയഗ്നോസ്റ്റിക്സ് PostHog-ലേക്ക് അയയ്ക്കും. ഈ പരാജയ റിപ്പോർട്ടുകളിൽ സോഫ്റ്റ്‌വെയർ, പരിസ്ഥിതി പതിപ്പുകളും ശുദ്ധീകരിച്ച ഡാറ്റാബേസ് പിശകും ഉൾപ്പെടും, ഇൻസ്റ്റാളേഷൻ ഐഡിയോ SQL പ്രസ്താവനയോ ഇല്ല."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "പരാജയപ്പെട്ട ഇൻസ്റ്റാളുകളും ഡാറ്റാബേസ് അപ്‌ഗ്രേഡുകളും നിർണയിക്കുക"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "ഇൻസ്റ്റാൾ, അപ്‌ഗ്രേഡ് പരാജയ വിശദാംശങ്ങൾ"
-
-#: 
 msgid "Open in browser window"
 msgstr "ബ്രൗസർ വിൻഡോയിൽ തുറക്കുക"
 
 #: 
 msgid "Opening Line"
 msgstr "ആരംഭ വരി"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "ഐച്ഛിക ഉപയോഗ ടെലിമെട്രി പ്രവർത്തനക്ഷമമാക്കിയാൽ മാത്രമേ അയയ്ക്കൂ. No thanks തിരഞ്ഞെടുത്താലും ഇൻസ്റ്റാൾ, ഡാറ്റാബേസ് അപ്‌ഗ്രേഡ് പരാജയങ്ങൾ സമൂഹത്തെ സഹായിക്കാൻ എപ്പോഴും പരിമിതമായ ഡയഗ്നോസ്റ്റിക് അയയ്ക്കും. പരാജയ റിപ്പോർട്ടുകളിൽ സോഫ്റ്റ്‌വെയർ, പരിസ്ഥിതി പതിപ്പുകളും ശുദ്ധീകരിച്ച ഡാറ്റാബേസ് പിശകും ഉൾപ്പെടും, ഇൻസ്റ്റാളേഷൻ ഐഡിയോ SQL പ്രസ്താവനയോ ഇല്ല."
 
 #: 
 msgid "PDF Handling"
@@ -24579,14 +24535,6 @@ msgstr "പ്രസ്താവന വാചകം"
 #: 
 msgid "Tax Information"
 msgstr "നികുതി വിവരം"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "ടെലിമെട്രി അമേരിക്കൻ ഐക്യനാടുകളിലെ PostHog-ലേക്ക് അയയ്ക്കുന്നു. ഐച്ഛിക ടെലിമെട്രി പ്രവർത്തനരഹിതമാണെങ്കിലും ഇൻസ്റ്റാൾ, അപ്‌ഗ്രേഡ് പരാജയ റിപ്പോർട്ടുകൾ അയയ്ക്കും."
-
-#: 
-msgid "always sent"
-msgstr "എപ്പോഴും അയയ്ക്കും"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25643,10 +25591,6 @@ msgstr "സ്വന്തം ഇമെയിലുള്ള ജീവിച്�
 #: 
 msgid "Only people with their own email can be added."
 msgstr "സ്വന്തം ഇമെയിലുള്ളവരെ മാത്രമേ ചേർക്കാനാവൂ."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "ഐച്ഛിക ടെലിമെട്രിയിൽ പേജ് റൂട്ടുകൾ, സജീവ ലോക്കേൽ, CRM പതിപ്പ്, PHP പതിപ്പ്, OS കുടുംബം, പള്ളി വിവര ക്രമീകരണങ്ങളിലെ രാജ്യം, ക്രമരഹിത ഇൻസ്റ്റാളേഷൻ ഐഡി എന്നിവ ഉൾപ്പെടാം. പരാജയ റിപ്പോർട്ടുകളിൽ ഇൻസ്റ്റാളേഷൻ ഐഡി ഉൾപ്പെടില്ല. ഡാറ്റ അമേരിക്കൻ ഐക്യനാടുകളിലെ PostHog-ലേക്ക് അയയ്ക്കുന്നു."
 
 #: 
 msgid "Passkey"

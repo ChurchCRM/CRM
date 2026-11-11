@@ -15967,18 +15967,6 @@ msgid "Editing a Pledge"
 msgstr "Annetuslubaduse muutmine"
 
 #: 
-msgid "Enable (full)"
-msgstr "Luba (täielik)"
-
-#: 
-msgid "Errors only"
-msgstr "Ainult vead"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Vead — serveri vead ja JS-erandid"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Annetuslubaduse loomine ebaõnnestus"
 
@@ -16017,10 +16005,6 @@ msgstr "Grupi võti on nõutav"
 #: 
 msgid "Happy Birthday"
 msgstr "Head sünnipäeva"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Aita ChurchCRM-i parandada"
 
 #: 
 msgid "IP addresses"
@@ -16091,16 +16075,8 @@ msgid "None (disabled)"
 msgstr "Puudub (keelatud)"
 
 #: 
-msgid "OS family"
-msgstr "OS-i perekond"
-
-#: 
 msgid "Overpaid"
 msgstr "Ülemakstud"
-
-#: 
-msgid "PHP version"
-msgstr "PHP versioon"
 
 #: 
 msgid "Page route"
@@ -16201,10 +16177,6 @@ msgstr "Kasutajate nimed, e-posti aadressid või rollid"
 #: 
 msgid "View pledge or payment details"
 msgstr "Vaata annetuslubaduse või makse üksikasju"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Hoiatused — hoiatused, vead ja JS-erandid"
 
 #: 
 msgid "What is sent"
@@ -24553,28 +24525,12 @@ msgid "Closing Line"
 msgstr "Lõpurida"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Juhib valikulist telemeetriat. Paigalduse ja andmebaasi uuenduse tõrked saadavad PostHogile piiratud diagnostika ka siis, kui telemeetria on välja lülitatud. Need tõrketeated sisaldavad tarkvara ja keskkonna versioone ning puhastatud andmebaasi viga, kuid mitte paigalduse ID-d ega SQL-lauset."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Diagnoosige ebaõnnestunud paigaldusi ja andmebaasi uuendusi"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Paigalduse ja uuenduse tõrgete üksikasjad"
-
-#: 
 msgid "Open in browser window"
 msgstr "Avage brauseriaknas"
 
 #: 
 msgid "Opening Line"
 msgstr "Avalause"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Valikulist kasutustelemeetriat saadetakse ainult siis, kui see on sisse lülitatud. Paigalduse ja andmebaasi uuenduse tõrked saadavad kogukonna abistamiseks alati piiratud diagnostika, isegi kui valite Ei, aitäh. Tõrketeated sisaldavad tarkvara ja keskkonna versioone ning puhastatud andmebaasi viga, ilma paigalduse ID või SQL-lauseta."
 
 #: 
 msgid "PDF Handling"
@@ -24611,14 +24567,6 @@ msgstr "Tõendi sõnastus"
 #: 
 msgid "Tax Information"
 msgstr "Maksuteave"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemeetria saadetakse PostHogile Ameerika Ühendriikides. Paigalduse ja uuenduse tõrketeated saadetakse ka siis, kui valikuline telemeetria on välja lülitatud."
-
-#: 
-msgid "always sent"
-msgstr "saadetakse alati"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25675,10 +25623,6 @@ msgstr "Kantselei nimekirjas saavad olla ainult elus inimesed, kellel on oma e-p
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Lisada saab ainult inimesi, kellel on oma e-posti aadress."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Valikuline telemeetria võib sisaldada lehtede teid, aktiivset lokaati, CRM-i versiooni, PHP versiooni, operatsioonisüsteemi perekonda, riiki teie koguduse teabe sätetest ja juhuslikku paigalduse ID-d. Tõrketeated ei sisalda paigalduse ID-d. Andmed saadetakse PostHogile Ameerika Ühendriikides."
 
 #: 
 msgid "Passkey"

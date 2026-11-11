@@ -15964,18 +15964,6 @@ msgid "Editing a Pledge"
 msgstr "Chỉnh sửa Cam kết dâng"
 
 #: 
-msgid "Enable (full)"
-msgstr "Bật (đầy đủ)"
-
-#: 
-msgid "Errors only"
-msgstr "Chỉ lỗi"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Lỗi — lỗi máy chủ và ngoại lệ JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Không thể tạo cam kết dâng"
 
@@ -16014,10 +16002,6 @@ msgstr "Khóa nhóm là bắt buộc"
 #: 
 msgid "Happy Birthday"
 msgstr "Chúc mừng Sinh nhật"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Giúp cải thiện ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16088,16 +16072,8 @@ msgid "None (disabled)"
 msgstr "Không có (đã tắt)"
 
 #: 
-msgid "OS family"
-msgstr "Hệ điều hành"
-
-#: 
 msgid "Overpaid"
 msgstr "Dâng dư"
-
-#: 
-msgid "PHP version"
-msgstr "Phiên bản PHP"
 
 #: 
 msgid "Page route"
@@ -16198,10 +16174,6 @@ msgstr "Tên người dùng, email hoặc vai trò"
 #: 
 msgid "View pledge or payment details"
 msgstr "Xem chi tiết cam kết dâng hoặc dâng hiến"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Cảnh báo — cảnh báo, lỗi và ngoại lệ JS"
 
 #: 
 msgid "What is sent"
@@ -24535,28 +24507,12 @@ msgid "Closing Line"
 msgstr "Dòng kết"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Điều khiển đo lường sử dụng không bắt buộc. Lỗi cài đặt và nâng cấp cơ sở dữ liệu vẫn gửi chẩn đoán giới hạn tới PostHog ngay cả khi đo lường tắt. Các báo cáo lỗi này gồm phiên bản phần mềm, phiên bản môi trường và lỗi cơ sở dữ liệu đã được làm sạch, nhưng không có mã cài đặt hay câu lệnh SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Chẩn đoán cài đặt và nâng cấp cơ sở dữ liệu bị lỗi"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Chi tiết lỗi cài đặt và nâng cấp"
-
-#: 
 msgid "Open in browser window"
 msgstr "Mở trong cửa sổ trình duyệt"
 
 #: 
 msgid "Opening Line"
 msgstr "Dòng mở đầu"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Đo lường sử dụng không bắt buộc chỉ được gửi khi được bật. Lỗi cài đặt và nâng cấp cơ sở dữ liệu luôn gửi một bản chẩn đoán giới hạn để hỗ trợ cộng đồng, kể cả khi bạn chọn Không, cảm ơn. Báo cáo lỗi gồm phiên bản phần mềm, phiên bản môi trường và lỗi cơ sở dữ liệu đã được làm sạch, không có mã cài đặt hay câu lệnh SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24593,14 +24549,6 @@ msgstr "Lời văn bản kê"
 #: 
 msgid "Tax Information"
 msgstr "Thông tin thuế"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Dữ liệu đo lường được gửi tới PostHog tại Hoa Kỳ. Báo cáo lỗi cài đặt và nâng cấp vẫn được gửi ngay cả khi đo lường không bắt buộc bị tắt."
-
-#: 
-msgid "always sent"
-msgstr "luôn được gửi"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25657,10 +25605,6 @@ msgstr "Chỉ người còn sống và có email riêng mới được đưa và
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Chỉ thêm được người có email riêng."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Đo lường không bắt buộc có thể gồm đường dẫn trang, ngôn ngữ đang dùng, phiên bản CRM, phiên bản PHP, họ hệ điều hành, quốc gia lấy từ cài đặt thông tin nhà thờ, và một mã cài đặt ngẫu nhiên. Báo cáo lỗi không gồm mã cài đặt. Dữ liệu được gửi tới PostHog tại Hoa Kỳ."
 
 #: 
 msgid "Passkey"

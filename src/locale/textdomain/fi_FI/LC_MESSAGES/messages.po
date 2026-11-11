@@ -15939,18 +15939,6 @@ msgid "Editing a Pledge"
 msgstr "Sitoumuksen muokkaaminen"
 
 #: 
-msgid "Enable (full)"
-msgstr "Ota käyttöön (täysi)"
-
-#: 
-msgid "Errors only"
-msgstr "Vain virheet"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Virheet — palvelinvirheet ja JS-poikkeukset"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Sitoumuksen luominen epäonnistui"
 
@@ -15989,10 +15977,6 @@ msgstr "Ryhmäavain vaaditaan"
 #: 
 msgid "Happy Birthday"
 msgstr "Hyvää syntymäpäivää"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Auta parantamaan ChurchCRM:ää"
 
 #: 
 msgid "IP addresses"
@@ -16063,16 +16047,8 @@ msgid "None (disabled)"
 msgstr "Ei mitään (poistettu käytöstä)"
 
 #: 
-msgid "OS family"
-msgstr "Käyttöjärjestelmäperhe"
-
-#: 
 msgid "Overpaid"
 msgstr "Ylimaksuttu"
-
-#: 
-msgid "PHP version"
-msgstr "PHP-versio"
 
 #: 
 msgid "Page route"
@@ -16173,10 +16149,6 @@ msgstr "Käyttäjänimet, sähköpostit tai roolit"
 #: 
 msgid "View pledge or payment details"
 msgstr "Näytä sitoumuksen tai maksun tiedot"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Varoitukset — varoitukset, virheet ja JS-poikkeukset"
 
 #: 
 msgid "What is sent"
@@ -24525,28 +24497,12 @@ msgid "Closing Line"
 msgstr "Loppurivi"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Ohjaa valinnaista telemetriaa. Asennuksen ja tietokantapäivityksen epäonnistumiset lähettävät rajalliset vianmääritystiedot PostHogiin, vaikka telemetria olisi pois päältä. Näissä virheraporteissa on ohjelmiston ja ympäristön versiot sekä puhdistettu tietokantavirhe, mutta ei asennustunnusta eikä SQL-lausetta."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Selvitä epäonnistuneet asennukset ja tietokantapäivitykset"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Asennuksen ja päivityksen epäonnistumisen tiedot"
-
-#: 
 msgid "Open in browser window"
 msgstr "Avaa selainikkunassa"
 
 #: 
 msgid "Opening Line"
 msgstr "Alkurivi"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Valinnaista käyttötelemetriaa lähetetään vain, kun se on käytössä. Asennuksen ja tietokantapäivityksen epäonnistumiset lähettävät aina rajallisen vianmäärityksen yhteisön avuksi, vaikka valitsisit Ei kiitos. Virheraporteissa on ohjelmiston ja ympäristön versiot sekä puhdistettu tietokantavirhe, ilman asennustunnusta tai SQL-lausetta."
 
 #: 
 msgid "PDF Handling"
@@ -24583,14 +24539,6 @@ msgstr "Todistuksen sanamuoto"
 #: 
 msgid "Tax Information"
 msgstr "Verotiedot"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetria lähetetään PostHogiin Yhdysvaltoihin. Asennuksen ja päivityksen virheraportit lähetetään, vaikka valinnainen telemetria olisi pois käytöstä."
-
-#: 
-msgid "always sent"
-msgstr "lähetetään aina"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25647,10 +25595,6 @@ msgstr "Toimistolistalla voi olla vain elossa olevia henkilöitä, joilla on oma
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Lisätä voi vain henkilöitä, joilla on oma sähköpostiosoite."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Valinnainen telemetria voi sisältää sivureittejä, käytössä olevan kielen, CRM-version, PHP-version, käyttöjärjestelmäperheen, maan seurakunnan tietojen asetuksista ja satunnaisen asennustunnuksen. Virheraportit eivät sisällä asennustunnusta. Tiedot lähetetään PostHogiin Yhdysvaltoihin."
 
 #: 
 msgid "Passkey"
