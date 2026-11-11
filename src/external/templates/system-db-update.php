@@ -32,6 +32,13 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                             <i class="fa-solid fa-triangle-exclamation fa-fw"></i>
                             <?= InputUtils::escapeHTML($errorMessage) ?>
                         </div>
+
+                        <?php if (!empty($databaseNotice)) { ?>
+                            <div class="alert alert-warning" role="alert">
+                                <i class="fa-solid fa-circle-info fa-fw"></i>
+                                <?= InputUtils::escapeHTML($databaseNotice) ?>
+                            </div>
+                        <?php } ?>
                     <?php } else { ?>
                         <h3 class="mb-1"><?= gettext('Software Update Required') ?></h3>
                         <p class="text-body-secondary mb-2"><?= gettext('Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database.') ?></p>

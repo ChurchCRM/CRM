@@ -1093,10 +1093,6 @@
       "duration": 8000
     },
     {
-      "spec": "cypress/e2e/ui/family/family.verify.spec.js",
-      "duration": 6000
-    },
-    {
       "spec": "cypress/e2e/ui/finance/deposit-search.spec.js",
       "duration": 8000
     },

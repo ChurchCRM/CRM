@@ -89,12 +89,28 @@ msgid "Generate Catalog"
 msgstr "Generate Catalogue"
 
 #: 
+msgid "Must specify non-zero check number"
+msgstr "Must specify non-zero cheque number"
+
+#: 
+msgid "Check number not valid for 'CASH' payment"
+msgstr "Cheque number not valid for 'CASH' payment"
+
+#: 
+msgid "Fall"
+msgstr "Autumn"
+
+#: 
 msgid "Cell Phone"
 msgstr "Mobile Phone"
 
 #: 
 msgid "Cell"
 msgstr "Mobile"
+
+#: 
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "Paid by (  ) Cash    (  ) Cheque    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 
 #: 
 msgid "Localization"
@@ -104,18 +120,107 @@ msgstr "Localisation"
 msgid "Internationalization (I18n) support"
 msgstr "Internationalisation (I18n) support"
 
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "Number of cheques for Deposit Slip Report"
+
 #. Context: queryparameteroptions_qpo
 #: 
 msgid "Zip Code"
 msgstr "Postcode"
 
 #: 
+msgid "kilometers"
+msgstr "kilometres"
+
+#: 
 msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
 msgstr "Make user-entered postcodes UPPERCASE when saving to the database."
 
 #: 
+msgid "Church Checking Account Number"
+msgstr "Church Cheque Account Number"
+
+#: 
+msgid "Default Zip"
+msgstr "Default Postcode"
+
+#: 
+msgid "Checks"
+msgstr "Cheques"
+
+#: 
 msgid "Require all users to enroll in two-factor authentication"
 msgstr "Require all users to enrol in two-factor authentication"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Postcode is required."
+
+#: 
+msgid "No cell phone on file"
+msgstr "No mobile phone on file"
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Allow scanned cheque images to be attached to deposit records"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Grey silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organisation sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Enable use of scanned cheques"
+
+#. plugin:custom-links:section:3:content
+#: 
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitised"
 
 #. plugin:google-analytics:section:2:content
 #: 
@@ -126,6 +231,10 @@ msgstr "Google Analytics collects anonymised usage data. No personal information
 #: 
 msgid "Gravatar (Globally Recognized Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
 msgstr "Gravatar (Globally Recognised Avatar) displays profile photos from gravatar.com for members who don't have uploaded photos in ChurchCRM."
+
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "How many cheques to print per deposit slip page"
 
 #. plugin:mailchimp:summary
 #: 
@@ -165,6 +274,10 @@ msgid "Background Color"
 msgstr "Background Colour"
 
 #: 
+msgid "Check Number"
+msgstr "Cheque Number"
+
+#: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Failed to cancel enrolment. Please try again."
 
@@ -175,6 +288,14 @@ msgstr "Foreground Colour"
 #: 
 msgid "Two Factor Enrollment Error"
 msgstr "Two Factor Enrolment Error"
+
+#: 
+msgid "Zip code is required"
+msgstr "Postcode is required"
+
+#: 
+msgid "Cell Phone Format"
+msgstr "Mobile Phone Format"
 
 #: 
 msgid "Localization & Formats"
@@ -191,6 +312,10 @@ msgstr "Save Localisation Settings"
 #: 
 msgid "Catalog"
 msgstr "Catalogue"
+
+#: 
+msgid "Check #"
+msgstr "Cheque #"
 
 #: 
 msgid "Failed to load neighbors."
@@ -217,8 +342,140 @@ msgid "Select a family and click Find Neighbors to see results."
 msgstr "Select a family and click Find Neighbours to see results."
 
 #: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Address is incomplete (missing suburb, state, and postcode)"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "No match found — check the street address, suburb, and postcode"
+
+#: 
 msgid "Two-factor authentication is required. You have %d day to enroll."
 msgid_plural "Two-factor authentication is required. You have %d days to enroll."
 msgstr[0] "Two-factor authentication is required. You have %d day to enrol."
 msgstr[1] "Two-factor authentication is required. You have %d days to enrol."
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Number of days users have to enrol in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Enable or disable features for your organisation"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Funds in this category will become uncategorised. The funds themselves are not deleted."
+
+#: 
+msgid "Uncategorized"
+msgstr "Uncategorised"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Uppercase Postcodes"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Not authorised for this assignment"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Not authorised for this ministry"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Not authorised for this occurrence"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Not authorised for this position"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Not authorised for this qualification"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Not authorised for this requirement"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Not authorised for this schedule"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Not authorised for this substitution request"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Not authorised for this team"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Not authorised to assign events to that volunteer ministry"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Not authorised to change the event %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Not authorised to change the volunteer ministry of this event"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Not authorised to create an event without a volunteer ministry you manage"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Not authorised to modify this event"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Not authorised to pin events to the calendar \"%s\""
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Not authorised to remove events from the calendar \"%s\""
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Not authorised to remove the volunteer ministry from this event"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "Not authorised to change this event's audience group"
+
+#: 
+msgid "Please enter a check number"
+msgstr "Please enter a cheque number"
+
+#: 
+msgid "Not authorized to grant this scope"
+msgstr "Not authorised to grant this scope"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Customise the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Print the selected deposit in full, with cash and cheque totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Use your church bylaws to choose the filters, then have authorised church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+
+#: 
+msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
+msgstr "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitised database error, but no installation ID or SQL statement."
+
+#: 
+msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
+msgstr "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitised database error, without an installation ID or SQL statement."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognise."
 

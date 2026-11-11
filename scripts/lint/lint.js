@@ -52,6 +52,8 @@ const checks = {
     'capture used-in': script('lint/validate-capture-used-in.js'),
     'seed data only': script('lint/validate-seed-data-only.js'),
     'mysql upgrade syntax': script('lint/validate-mysql-upgrade-syntax.js'),
+    'mysql index length': script('lint/validate-mysql-index-length.js'),
+    'upgrade handoff': script('lint/validate-upgrade-handoff.js'),
     'upgrade locale list': script('lint/validate-upgrade-locales.js'),
     'supported databases': script('ci/sync-supported-databases.js', '--check'),
     'locale script tests': [node, ['--test', ...localeTests]],

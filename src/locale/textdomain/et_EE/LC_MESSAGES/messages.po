@@ -22927,12 +22927,6 @@ msgid "Registering..."
 msgstr "Registreerimine..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Nõudke kontrollnumbrit deposiidi kirjete kontrolli maksete kajastamisel.\n"
-"Märkus: selle keelamine keelustab ka dubleeritud kontrollinumbrite tuvastamise - sama füüsilise kontrolli võib sisestada rohkem kui üks kord."
-
-#: 
 msgid "This event has ended"
 msgstr "See üritus on lõppenud"
 
@@ -27161,4 +27155,284 @@ msgstr "Kasutage allolevat linki oma pere andmete ülevaatamiseks. Valige üleva
 #: 
 msgid "Review Family Information"
 msgstr "Vaata pere andmed üle"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Valdkond nimega „%s“ on juba olemas. Vali see loendist või vali muu nimi."
+
+#: 
+msgid "A new ministry"
+msgstr "Uus valdkond"
+
+#: 
+msgid "A position"
+msgstr "Ülesanne"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Kas lisada {{total}} vabatahtlikku varem teisendatud ülesannetele?"
+
+#: 
+msgid "Already converted"
+msgstr "Juba teisendatud"
+
+#: 
+msgid "An existing ministry"
+msgstr "Olemasolev valdkond"
+
+#: 
+msgid "Becomes"
+msgstr "Muutub"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM-il on kaks viisi vabatahtlike haldamiseks. Korraga peaks kasutusel olema ainult üks; säte „Vabatahtlike kogemus“ määrab, kumba see kogudus näeb. Vahetamine peidab või kuvab lehti ja menüükirjeid ega kustuta kunagi andmeid. V1 ja Mõlemad on saadaval ainult seni, kuni vabatahtlike võimalused on kasutusel: kui kõik võimalused on teisendatud ja kogudus kasutab V2-te, kaovad need loendist."
+
+#: 
+msgid "Convert"
+msgstr "Teisenda"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Teisenda vabatahtlike võimalused"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Kas teisendada nüüd {{total}} võimalust? V1 andmed jäävad muutmata, kuni vabatahtlike võimalused kasutuselt eemaldatakse."
+
+#: 
+msgid "Converted"
+msgstr "Teisendatud"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Teisendatud: {{positions}} ülesannet ja {{ministries}} valdkonda, {{qualifications}} vabatahtlikku kvalifitseeritud."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Igast võimalusest saab ülesanne ühe valdkonna esimeses meeskonnas ja kõik sellega seotud inimesed saavad selle ülesande jaoks kvalifikatsiooni. Ise registreerumine on nende ülesannete puhul algul välja lülitatud."
+
+#: 
+msgid "Everything is converted."
+msgstr "Kõik on teisendatud."
+
+#: 
+msgid "Existing ministry"
+msgstr "Olemasolev valdkond"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Anna uuele valdkonnale kuni 100 märgi pikkune nimi."
+
+#: 
+msgid "Its own ministry"
+msgstr "Oma valdkond"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Seotud pärast seda: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Lingid, mida ei saa teisendada"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Uued omaette valdkonnad"
+
+#: 
+msgid "New ministry name"
+msgstr "Uue valdkonna nimi"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "E-kirja ei saadeta ja vabatahtlike võimalused jäävad muutmata, kuni need kasutuselt eemaldatakse."
+
+#: 
+msgid "No name"
+msgstr "Nimi puudub"
+
+#: 
+msgid "Not converted"
+msgstr "Teisendamata"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Ava funktsioonide lülitid"
+
+#: 
+msgid "Open Ministries"
+msgstr "Ava valdkonnad"
+
+#: 
+msgid "Opportunities"
+msgstr "Võimalused"
+
+#: 
+msgid "Opportunity"
+msgstr "Võimalus"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Võimalus nr %d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Teisendatud vabatahtlike võimalustega pärast teisendamist seotud inimesed: %d. Lisa nad nende ülesannetele enne, kui vabatahtlike võimalused 2027. aasta alguses kasutuselt eemaldatakse."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Vaata esmalt teisenduse eelvaadet ja saada selle tagastatud versioon."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Ümber nimetatud, et nimed oleksid unikaalsed"
+
+#: 
+msgid "Review the conversion"
+msgstr "Vaata teisendus üle"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Saada teisenduse valik JSON-objektina."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Saada valdkondadeks muutuvad võimalused ID-de loendina."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Seda valdkonda pole olemas."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "ChurchCRM-i versioon, milles administraator sulges vabatahtlike võimaluste kasutuselt eemaldamise teate."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Vabatahtlike võimalused on pärast eelvaadet muutunud. Kontrolli eelvaadet uuesti ja seejärel teisenda."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Kinnitust ei õnnestunud avada. Laadi leht uuesti ja proovi uuesti."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Teisenduse eelvaadet ei õnnestunud kuvada."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Teisendamine ebaõnnestus. Midagi ei muudetud."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Valdkonnal „%s“ pole meeskonda, kuhu ülesanded paigutada."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Serveriga ei saadud ühendust. Laadi leht uuesti, et näha, kas teisendamine toimus."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Teisendatavaid vabatahtlike võimalusi pole."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Vabatahtlike haldus lülitub režiimile Mõlemad, et uued valdkonnad oleksid nähtavad vabatahtlike võimaluste kõrval."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Vabatahtlike võimalused eemaldatakse kasutuselt"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Vabatahtlike võimalused teisendatud"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Vabatahtlike võimalused eemaldatakse kasutuselt 2027. aasta alguses. Teisenda need valdkondadeks, et säiliks teave, kes mida vabatahtlikult teeb."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Vabatahtlike võimalused eemaldatakse kasutuselt 2027. aasta alguses. Teisenda nüüd oma %1$d võimalust ja %2$d vabatahtlikku valdkondadeks. Saad tulemust enne muudatusi eelvaates vaadata."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Kvalifitseeritud vabatahtlikud"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Teisendatud ülesannetele lisatavad vabatahtlikud"
+
+#: 
+msgid "What it becomes"
+msgstr "Milleks see muutub"
+
+#: 
+msgid "What will happen"
+msgstr "Mis juhtub"
+
+#: 
+msgid "Where they go"
+msgstr "Kuhu nad lähevad"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Millised varasemad vabatahtlike võimalused on teisendatud ja milliseks ülesandeks igaüks muutus."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Millist vabatahtlike kogemust see kogudus kasutab. Vabatahtlike võimalused (V1) eemaldatakse kasutuselt 2027. aasta alguses."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Sinu vabatahtlike võimalused on teisendatud valdkondadeks. Lülita vabatahtlike haldus V2-le enne, kui vabatahtlike võimalused 2027. aasta alguses kasutuselt eemaldatakse."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "uueks valdkonnaks, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "valdkonda {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "pole enam ChurchCRM-is"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Ahenda külgriba"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Laienda külgriba"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Sisesta kehtiv e-posti aadress, milles enne @-märki on ainult ASCII-märgid."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Tema e-posti aadress ei ole kehtiv"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Kas soovid kindlasti kustutada {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Süsteemi teavet ei õnnestunud koguda. Proovi uuesti."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Selle perioodi kohta makseid ei leitud."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Maksed fondide kaupa"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Tundmatu fond"
 

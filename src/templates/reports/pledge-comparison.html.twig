@@ -1,0 +1,34 @@
+{% extends "_letter.html.twig" %}
+{% block letter_body %}
+  <h1>{{ gettext('Pledge Comparison') }}</h1>
+  <div class="muted">{{ gettext('Fiscal Years') }}: {{ first_fiscal_year }} · {{ second_fiscal_year }}</div>
+  {% if rows %}
+    <table class="gifts">
+      <thead>
+        <tr>
+          <th>{{ gettext('Family') }}</th>
+          <th class="right">{{ first_fiscal_year }}</th>
+          <th class="right">{{ second_fiscal_year }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in rows %}
+          <tr>
+            <td>{{ row.family }}</td>
+            <td class="right">{{ row.first }}</td>
+            <td class="right">{{ row.second }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>{{ gettext('Total') }}</th>
+          <th class="right">{{ totals.first }}</th>
+          <th class="right">{{ totals.second }}</th>
+        </tr>
+      </tfoot>
+    </table>
+  {% else %}
+    <p class="empty">{{ gettext('No pledges were found for these fiscal years.') }}</p>
+  {% endif %}
+{% endblock %}

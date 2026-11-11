@@ -22877,12 +22877,6 @@ msgid "Registering..."
 msgstr "กำลังลงทะเบียน..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "ต้องใช้หมายเลขตรวจสอบเมื่อบันทึกการชำระเช็คในรายการเงินฝาก\n"
-"หมายเหตุ: การปิดใช้งานนี้ยังปิดใช้งานการตรวจหาหมายเลขตรวจสอบที่ซ้ำกัน — เช็คเดียวกันอาจถูกป้อนมากกว่าครั้งเดียว"
-
-#: 
 msgid "This event has ended"
 msgstr "กิจกรรมนี้สิ้นสุดลงแล้ว"
 
@@ -27111,4 +27105,284 @@ msgstr "โปรดใช้ลิงก์ด้านล่างเพื่
 #: 
 msgid "Review Family Information"
 msgstr "ตรวจสอบข้อมูลครอบครัว"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "มีพันธกิจชื่อ \"%s\" อยู่แล้ว เลือกจากรายการ หรือเลือกชื่ออื่น"
+
+#: 
+msgid "A new ministry"
+msgstr "พันธกิจใหม่"
+
+#: 
+msgid "A position"
+msgstr "ตำแหน่ง"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "เพิ่มอาสาสมัคร {{total}} คนในตำแหน่งที่แปลงไว้ก่อนหน้านี้หรือไม่"
+
+#: 
+msgid "Already converted"
+msgstr "แปลงแล้ว"
+
+#: 
+msgid "An existing ministry"
+msgstr "พันธกิจที่มีอยู่"
+
+#: 
+msgid "Becomes"
+msgstr "กลายเป็น"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM มีวิธีจัดการอาสาสมัครสองแบบ ควรใช้เพียงแบบเดียวในแต่ละครั้ง โดยการตั้งค่า \"รูปแบบอาสาสมัคร\" จะกำหนดว่าคริสตจักรนี้เห็นแบบใด การสลับจะซ่อนหรือแสดงหน้าและเมนูเท่านั้น และไม่ลบข้อมูลใดๆ ตัวเลือก V1 และทั้งสองจะมีให้เฉพาะเมื่อยังใช้โอกาสอาสาสมัครอยู่ เมื่อแปลงโอกาสทั้งหมดแล้วและคริสตจักรใช้ V2 ตัวเลือกเหล่านี้จะหายไปจากรายการ"
+
+#: 
+msgid "Convert"
+msgstr "แปลง"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "แปลงโอกาสอาสาสมัคร"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "แปลงโอกาส {{total}} รายการตอนนี้หรือไม่ ข้อมูล V1 จะถูกเก็บไว้ตามเดิมจนกว่าโอกาสอาสาสมัครจะถูกยกเลิก"
+
+#: 
+msgid "Converted"
+msgstr "แปลงแล้ว"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "แปลงแล้ว: {{positions}} ตำแหน่งและ {{ministries}} พันธกิจ อาสาสมัครได้รับสิทธิ์ {{qualifications}} คน"
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "แต่ละโอกาสจะกลายเป็นตำแหน่งในทีมแรกของพันธกิจหนึ่ง และทุกคนที่เชื่อมโยงอยู่จะได้รับสิทธิ์ในตำแหน่งนั้น การสมัครด้วยตนเองจะปิดอยู่ในตอนแรกสำหรับตำแหน่งเหล่านี้"
+
+#: 
+msgid "Everything is converted."
+msgstr "แปลงทั้งหมดแล้ว"
+
+#: 
+msgid "Existing ministry"
+msgstr "พันธกิจที่มีอยู่"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "ตั้งชื่อพันธกิจใหม่ไม่เกิน 100 ตัวอักษร"
+
+#: 
+msgid "Its own ministry"
+msgstr "พันธกิจของตัวเอง"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "เชื่อมโยงหลังจากนั้น: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "การเชื่อมโยงที่แปลงไม่ได้"
+
+#: 
+msgid "New ministries of their own"
+msgstr "พันธกิจใหม่ของแต่ละรายการ"
+
+#: 
+msgid "New ministry name"
+msgstr "ชื่อพันธกิจใหม่"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "จะไม่มีการส่งอีเมล และโอกาสอาสาสมัครจะคงอยู่ตามเดิมจนกว่าจะถูกยกเลิก"
+
+#: 
+msgid "No name"
+msgstr "ไม่มีชื่อ"
+
+#: 
+msgid "Not converted"
+msgstr "ยังไม่แปลง"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "เปิดสวิตช์คุณลักษณะ"
+
+#: 
+msgid "Open Ministries"
+msgstr "เปิดพันธกิจ"
+
+#: 
+msgid "Opportunities"
+msgstr "โอกาส"
+
+#: 
+msgid "Opportunity"
+msgstr "โอกาส"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "โอกาส #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "ผู้ที่เชื่อมโยงกับโอกาสอาสาสมัครที่แปลงแล้วหลังการแปลง: %d คน เพิ่มพวกเขาในตำแหน่งของตนก่อนที่โอกาสอาสาสมัครจะถูกยกเลิกในต้นปี 2027"
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "ดูตัวอย่างการแปลงก่อน แล้วส่งรุ่นแก้ไขที่ได้รับกลับมา"
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "เปลี่ยนชื่อเพื่อไม่ให้ชื่อซ้ำกัน"
+
+#: 
+msgid "Review the conversion"
+msgstr "ตรวจสอบการแปลง"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "ส่งตัวเลือกการแปลงเป็นออบเจ็กต์ JSON"
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "ส่งโอกาสที่จะกลายเป็นพันธกิจเป็นรายการ ID"
+
+#: 
+msgid "That ministry does not exist."
+msgstr "ไม่มีพันธกิจนั้น"
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "เวอร์ชัน ChurchCRM ที่ผู้ดูแลระบบปิดประกาศการยกเลิกโอกาสอาสาสมัคร"
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "โอกาสอาสาสมัครมีการเปลี่ยนแปลงตั้งแต่ดูตัวอย่าง ตรวจสอบตัวอย่างอีกครั้ง แล้วจึงแปลง"
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "ไม่สามารถเปิดการยืนยันได้ โหลดหน้าใหม่แล้วลองอีกครั้ง"
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "ไม่สามารถดูตัวอย่างการแปลงได้"
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "การแปลงล้มเหลว ไม่มีการเปลี่ยนแปลงใดๆ"
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "พันธกิจ \"%s\" ไม่มีทีมสำหรับตำแหน่งเหล่านี้"
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "ไม่สามารถติดต่อเซิร์ฟเวอร์ได้ โหลดหน้าใหม่เพื่อดูว่าการแปลงทำงานแล้วหรือไม่"
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "ไม่มีโอกาสอาสาสมัครให้แปลง"
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "การจัดการอาสาสมัครจะสลับเป็นทั้งสอง เพื่อให้พันธกิจใหม่แสดงข้างโอกาสอาสาสมัคร"
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "โอกาสอาสาสมัครกำลังจะถูกยกเลิก"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "แปลงโอกาสอาสาสมัครแล้ว"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "โอกาสอาสาสมัครจะถูกยกเลิกในต้นปี 2027 แปลงเป็นพันธกิจเพื่อเก็บข้อมูลว่าใครรับใช้ในส่วนใด"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "โอกาสอาสาสมัครจะถูกยกเลิกในต้นปี 2027 แปลงโอกาส %1$d รายการและอาสาสมัคร %2$d คนของคุณเป็นพันธกิจตอนนี้ คุณดูตัวอย่างผลลัพธ์ได้ก่อนที่จะมีการเปลี่ยนแปลง"
+
+#: 
+msgid "Volunteers qualified"
+msgstr "อาสาสมัครที่ได้รับสิทธิ์"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "อาสาสมัครที่ต้องเพิ่มในตำแหน่งที่แปลงแล้ว"
+
+#: 
+msgid "What it becomes"
+msgstr "จะกลายเป็นอะไร"
+
+#: 
+msgid "What will happen"
+msgstr "จะเกิดอะไรขึ้น"
+
+#: 
+msgid "Where they go"
+msgstr "จะไปที่ใด"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "โอกาสอาสาสมัครเดิมรายการใดที่แปลงแล้ว และแต่ละรายการกลายเป็นตำแหน่งใด"
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "รูปแบบอาสาสมัครที่คริสตจักรนี้ใช้ โอกาสอาสาสมัคร (V1) จะถูกยกเลิกในต้นปี 2027"
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "โอกาสอาสาสมัครของคุณถูกแปลงเป็นพันธกิจแล้ว สลับการจัดการอาสาสมัครเป็น V2 ก่อนที่โอกาสอาสาสมัครจะถูกยกเลิกในต้นปี 2027"
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "เป็นพันธกิจใหม่ {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "เข้าพันธกิจ {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "ไม่อยู่ใน ChurchCRM แล้ว"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "ยุบแถบด้านข้าง"
+
+#: 
+msgid "Expand sidebar"
+msgstr "ขยายแถบด้านข้าง"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "กรอกที่อยู่อีเมลที่ถูกต้องซึ่งใช้เฉพาะอักขระ ASCII ก่อน @"
+
+#: 
+msgid "Their email address is not valid"
+msgstr "ที่อยู่อีเมลของบุคคลนี้ไม่ถูกต้อง"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "แน่ใจหรือไม่ว่าต้องการลบ {{name}}"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "ไม่สามารถรวบรวมข้อมูลระบบได้ โปรดลองอีกครั้ง"
+
+#: 
+msgid "No payments found for this period."
+msgstr "ไม่พบการชำระเงินในช่วงเวลานี้"
+
+#: 
+msgid "Payments by Fund"
+msgstr "การชำระเงินตามกองทุน"
+
+#: 
+msgid "Unknown Fund"
+msgstr "กองทุนที่ไม่รู้จัก"
 

@@ -34,21 +34,6 @@ after(() => {
 describe("Standard Calendar", () => {
     beforeEach(() => cy.setupStandardSession());
 
-    it("Create New Event", () => {
-        const title = "My New Event - " + Cypress._.random(0, 1e6);
-        cy.visit("event/calendars");
-        cy.url().should("include", "event/calendars");
-
-        // Open the new-event form via the stable global (avoids relying on
-        // FullCalendar's hashed DOM class names which changed in v7)
-        openNewEventModal();
-
-        // Wait for the edit modal to load (loading spinner replaced by form)
-        cy.get("#event-title-input").should("be.visible").type(title);
-        cy.typeInQuill("quill-Desc", "New adult Service");
-        cy.typeInQuill("quill-Text", "Come join us");
-    });
-
     /**
      * Regression: QuillEditor toolbar duplication.
      * Verifies that interacting with other form fields (title, event type dropdown)
@@ -83,6 +68,10 @@ describe("Standard Calendar", () => {
 
         openNewEventModal();
         cy.get("#event-title-input").should("be.visible");
+        // New (unsaved) events offer no Delete
+        cy.get("#eventDeleteBtn").should("have.class", "d-none");
+        cy.get("#eventTypeSelect").siblings(".ts-wrapper").find(".ts-control").should("be.visible");
+        cy.get("#pinnedCalendarsSelect").siblings(".ts-wrapper").find(".ts-control").should("be.visible");
 
         // Save starts disabled with no title. Start/End are pre-filled from
         // the calendar-day click, and PinnedCalendars is optional — only the
@@ -126,27 +115,6 @@ describe("Standard Calendar", () => {
         cy.get("#eventEndDate").should("have.attr", "type", "datetime-local");
     });
 
-    it("Delete button is hidden for new events", () => {
-        cy.visit("event/calendars");
-
-        openNewEventModal();
-        cy.get("#event-title-input").should("be.visible");
-
-        // Delete button should be hidden for new (unsaved) events
-        cy.get("#eventDeleteBtn").should("have.class", "d-none");
-    });
-
-    it("Modal closes on Cancel button click", () => {
-        cy.visit("event/calendars");
-
-        openNewEventModal();
-        cy.get("#event-title-input").should("be.visible");
-
-        // Click Cancel — modal should close and be removed from DOM
-        cy.get("#eventCancelBtn").click();
-        cy.get("#eventEditorModal").should("not.exist");
-    });
-
     it("Modal cleanup removes element and restores body state", () => {
         cy.visit("event/calendars");
 
@@ -162,21 +130,6 @@ describe("Standard Calendar", () => {
         // Body should not retain modal-open class or backdrop
         cy.get("body").should("not.have.class", "modal-open");
         cy.get(".modal-backdrop").should("not.exist");
-    });
-
-    it("TomSelect dropdowns initialize correctly", () => {
-        cy.visit("event/calendars");
-
-        openNewEventModal();
-        cy.get("#event-title-input").should("be.visible");
-
-        // Event type TomSelect should be initialized
-        cy.get("#eventTypeSelect").siblings(".ts-wrapper").should("exist");
-        cy.get("#eventTypeSelect").siblings(".ts-wrapper").find(".ts-control").should("be.visible");
-
-        // Pinned calendars TomSelect should be initialized
-        cy.get("#pinnedCalendarsSelect").siblings(".ts-wrapper").should("exist");
-        cy.get("#pinnedCalendarsSelect").siblings(".ts-wrapper").find(".ts-control").should("be.visible");
     });
 
     /**

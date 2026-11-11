@@ -22919,12 +22919,6 @@ msgid "Registering..."
 msgstr "Po regjistrohet..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Kërkoni një numër kontrolli kur regjistroni pagesat e kontrollit në zërat e depozitit.\n"
-"Shënim: çaktivizimi i këtij deaktivon gjithashtu zbulimin e numrave të ndryshueshëm - i njëjti kontroll fizik mund të futet më shumë se një herë."
-
-#: 
 msgid "This event has ended"
 msgstr "Kjo ngjarje ka përfunduar"
 
@@ -27153,4 +27147,284 @@ msgstr "Përdorni lidhjen më poshtë për të shqyrtuar informacionin e familje
 #: 
 msgid "Review Family Information"
 msgstr "Shqyrto informacionin e familjes"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Ekziston tashmë një shërbesë me emrin \"%s\". Zgjidheni nga lista ose zgjidhni një emër tjetër."
+
+#: 
+msgid "A new ministry"
+msgstr "Një shërbesë e re"
+
+#: 
+msgid "A position"
+msgstr "Një pozicion"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Të shtohen vullnetarët ({{total}}) në pozicionet e konvertuara më parë?"
+
+#: 
+msgid "Already converted"
+msgstr "Konvertuar tashmë"
+
+#: 
+msgid "An existing ministry"
+msgstr "Një shërbesë ekzistuese"
+
+#: 
+msgid "Becomes"
+msgstr "Bëhet"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM ka dy mënyra për të menaxhuar vullnetarët. Vetëm njëra duhet të përdoret në një kohë; cilësimi \"Përvoja e vullnetarëve\" vendos se cilën sheh kjo kishë. Ndërrimi fsheh ose shfaq faqe dhe zëra menuje dhe nuk fshin kurrë të dhëna. V1 dhe Të dyja ofrohen vetëm sa kohë që përdoren Mundësitë vullnetare: sapo çdo mundësi të konvertohet dhe kisha të jetë në V2, ato largohen nga kjo listë."
+
+#: 
+msgid "Convert"
+msgstr "Konverto"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Konverto Mundësitë vullnetare"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Të konvertohen tani mundësitë ({{total}})? Të dhënat e V1 mbeten siç janë derisa Mundësitë vullnetare të tërhiqen."
+
+#: 
+msgid "Converted"
+msgstr "Konvertuar"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "U konvertuan: pozicione {{positions}} dhe shërbesa {{ministries}}, vullnetarë të kualifikuar {{qualifications}}."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Çdo mundësi bëhet pozicion në ekipin e parë të një shërbese dhe të gjithë ata që lidhen me të kualifikohen për atë pozicion. Vetëregjistrimi fillon i çaktivizuar në këto pozicione."
+
+#: 
+msgid "Everything is converted."
+msgstr "Gjithçka është konvertuar."
+
+#: 
+msgid "Existing ministry"
+msgstr "Shërbesë ekzistuese"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Jepini shërbesës së re një emër deri në 100 karaktere."
+
+#: 
+msgid "Its own ministry"
+msgstr "Shërbesa e vet"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Lidhur që atëherë: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Lidhje që nuk mund të konvertohen"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Shërbesa të reja më vete"
+
+#: 
+msgid "New ministry name"
+msgstr "Emri i shërbesës së re"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Nuk dërgohet asnjë email dhe Mundësitë vullnetare mbeten siç janë derisa të tërhiqen."
+
+#: 
+msgid "No name"
+msgstr "Pa emër"
+
+#: 
+msgid "Not converted"
+msgstr "Pa konvertuar"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Hap Çelësat e Funksionit"
+
+#: 
+msgid "Open Ministries"
+msgstr "Hap Shërbesat"
+
+#: 
+msgid "Opportunities"
+msgstr "Mundësi"
+
+#: 
+msgid "Opportunity"
+msgstr "Mundësi"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Mundësia nr. %d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Persona të lidhur me Mundësi vullnetare të konvertuara që nga konvertimi: %d. Shtojini në pozicionet e tyre përpara se Mundësitë vullnetare të tërhiqen në fillim të 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Shikoni fillimisht paraparjen e konvertimit dhe dërgoni rishikimin që ajo ktheu."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "U riemërtua për t'i mbajtur emrat unikë"
+
+#: 
+msgid "Review the conversion"
+msgstr "Rishiko konvertimin"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Dërgoni zgjedhjen e konvertimit si objekt JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Dërgoni mundësitë që bëhen shërbesa si listë ID-sh."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Ajo shërbesë nuk ekziston."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Versioni i ChurchCRM në të cilin një administrues hodhi poshtë njoftimin për tërheqjen e Mundësive vullnetare."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Mundësitë vullnetare kanë ndryshuar që nga paraparja. Kontrolloni sërish paraparjen, pastaj konvertoni."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Konfirmimi nuk u hap dot. Ringarkoni faqen dhe provoni sërish."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Paraparja e konvertimit nuk u krijua dot."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Konvertimi dështoi. Asgjë nuk u ndryshua."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Shërbesa \"%s\" nuk ka ekip për pozicionet."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Serveri nuk u arrit dot. Ringarkoni faqen për të parë nëse konvertimi u krye."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Nuk ka Mundësi vullnetare për t'u konvertuar."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Menaxhimi i vullnetarëve kalon në Të dyja, që shërbesat e reja të shihen pranë Mundësive vullnetare."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Mundësitë vullnetare po tërhiqen"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Mundësitë vullnetare u konvertuan"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Mundësitë vullnetare do të tërhiqen në fillim të 2027. Konvertojini në Shërbesa për të ruajtur se kush shërben ku."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Mundësitë vullnetare do të tërhiqen në fillim të 2027. Konvertoni tani në Shërbesa mundësitë (%1$d) dhe vullnetarët tuaj (%2$d). Mund ta shihni rezultatin paraprakisht para se të ndryshojë diçka."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Vullnetarë të kualifikuar"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Vullnetarë për t'u shtuar në pozicionet e konvertuara"
+
+#: 
+msgid "What it becomes"
+msgstr "Çfarë bëhet"
+
+#: 
+msgid "What will happen"
+msgstr "Çfarë do të ndodhë"
+
+#: 
+msgid "Where they go"
+msgstr "Ku shkojnë"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Cilat Mundësi vullnetare të vjetra janë konvertuar dhe në cilin pozicion u kthye secila."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Cilën përvojë vullnetarësh përdor kjo kishë. Mundësitë vullnetare (V1) do të tërhiqen në fillim të 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Mundësitë tuaja vullnetare u konvertuan në Shërbesa. Kalojeni Menaxhimin e vullnetarëve në V2 përpara se Mundësitë vullnetare të tërhiqen në fillim të 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "në një shërbesë të re, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "në shërbesën {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "nuk është më në ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Palos shiritin anësor"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Zgjero shiritin anësor"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Vendosni një adresë email të vlefshme me vetëm karaktere ASCII para @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Adresa e tyre e email-it nuk është e vlefshme"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Jeni i sigurt që doni të fshini {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Informacioni i sistemit nuk u mblodh dot. Ju lutemi provoni sërish."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Nuk u gjetën pagesa për këtë periudhë."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Pagesat sipas fondit"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Fond i panjohur"
 

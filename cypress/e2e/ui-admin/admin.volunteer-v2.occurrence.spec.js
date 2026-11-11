@@ -613,7 +613,7 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
                 .should("have.text", "Needs 1 more")
                 .and("have.attr", "data-tone", "danger");
             cy.get(`.volunteer-requirement[data-position-id="${posEspresso}"] .volunteer-status-badge`)
-                .should("contain", "Cancelled");
+                .should("contain", "Canceled");
         });
 
         it("records a decline on the volunteer's behalf from the menu", () => {
@@ -700,7 +700,7 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
                 .should("be.visible")
                 .and("contain", "Cancel this occurrence")
                 .and("contain", "Volunteers assigned: 1")
-                .and("contain", "Cancelling tells nobody: no email is sent.");
+                .and("contain", "Canceling tells nobody: no email is sent.");
             cy.get("#occurrence-cancel-people li")
                 .should("have.length", 1)
                 .and("contain", "Herminia")
@@ -710,7 +710,7 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
             outboxRows().then((before) => {
                 cy.get(".bootbox .btn-danger").click();
                 cy.wait("@status").its("request.body").should("deep.eq", { status: "cancelled" });
-                cy.get("#occurrence-status").should("contain", "Cancelled").and("have.class", "bg-red-lt");
+                cy.get("#occurrence-status").should("contain", "Canceled").and("have.class", "bg-red-lt");
                 outboxRows().should("eq", before);
             });
             cy.get(`.volunteer-assign-btn[data-position-id="${posEspresso}"]`).should("be.disabled");
@@ -718,7 +718,7 @@ describe("Volunteer v2 — occurrence / staffing view (#9709)", () => {
                 .should("have.length", 1);
 
             cy.reload();
-            cy.get("#occurrence-status").should("contain", "Cancelled");
+            cy.get("#occurrence-status").should("contain", "Canceled");
             openMenu();
             cy.get('#occurrence-actions .dropdown-item[data-action="occurrence-cancel"]').should("not.exist");
             cy.get('#occurrence-actions .dropdown-item[data-action="occurrence-restore"]').should("be.visible").click();

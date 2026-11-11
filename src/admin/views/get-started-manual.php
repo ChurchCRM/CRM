@@ -74,7 +74,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </li>
                         <li class="mb-2">
                             <i class="fa-solid fa-circle-check text-success me-2"></i>
-                            <?= gettext('Family roles (Head of Household, Spouse, Child, etc.) help organise your records.') ?>
+                            <?= gettext('Family roles (Head of Household, Spouse, Child, etc.) help organize your records.') ?>
                         </li>
                         <li class="mb-2">
                             <i class="fa-solid fa-circle-check text-success me-2"></i>

@@ -256,7 +256,7 @@ function approve(path, payload) {
     })
     .fail((xhr) => {
       approvalInFlight = false;
-      var msg = xhr.responseJSON?.message ? xhr.responseJSON.message : i18next.t("An error occurred");
+      var msg = xhr.responseJSON?.message ? xhr.responseJSON.message : i18next.t("An error occurred.");
       window.CRM.notify(msg, { type: "danger", delay: 5000 });
     });
 }

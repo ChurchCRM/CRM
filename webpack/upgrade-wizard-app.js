@@ -158,7 +158,7 @@ function setupBackupStep() {
 
     $button
       .prop("disabled", true)
-      .html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Creating Backup...")}`);
+      .html(`<span class="spinner-border spinner-border-sm me-1"></span>${i18next.t("Creating backup...")}`);
 
     window.CRM.AdminAPIRequest({
       method: "POST",

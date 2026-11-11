@@ -4,12 +4,9 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
-use ChurchCRM\model\ChurchCRM\Map\TokenTableMap;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\Token;
-use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\ConfirmReportService;
 use ChurchCRM\Service\FinancialService;
 use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
@@ -228,34 +225,14 @@ $app->group('/families', function (RouteCollectorProxy $group): void {
             ->limit(100)
             ->find();
 
-        return SlimUtils::renderJSON($response, ['families' => $verificationNotes->toArray()]);
+        $rows = array_values($verificationNotes->toArray());
+        foreach ($verificationNotes as $i => $note) {
+            $rows[$i]['DateEnteredDisplay'] = DateTimeUtils::formatDate($note->getDateEntered('Y-m-d H:i:s'));
+        }
+
+        return SlimUtils::renderJSON($response, ['families' => $rows]);
     })->add(new FamilyEmailDeprecationMiddleware('private/get-self-verified-families'))
         ->add(new EditRecordsRoleAuthMiddleware());
-
-    /**
-     * @OA\Get(
-     *     path="/families/pending-self-verify",
-     *     summary="Get families with pending (unused, non-expired) self-verify tokens",
-     *     tags={"Families"},
-     *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Response(response=200, description="Pending verification tokens with family names",
-     *         @OA\JsonContent(@OA\Property(property="families", type="array", @OA\Items(type="object")))
-     *     )
-     * )
-     */
-    $group->get('/pending-self-verify', function (Request $request, Response $response, array $args): Response {
-        $pendingTokens = TokenQuery::create()
-            ->filterByType(Token::TYPE_FAMILY_VERIFY)
-            ->filterByRemainingUses(['min' => 1])
-            ->filterByValidUntilDate(['min' => DateTimeUtils::getToday()])
-            ->addJoin(TokenTableMap::COL_REFERENCE_ID, FamilyTableMap::COL_FAM_ID)
-            ->addAsColumn('FamilyName', FamilyTableMap::COL_FAM_NAME)
-            ->addAsColumn('FamilyId', TokenTableMap::COL_REFERENCE_ID)
-            ->limit(100)
-            ->find();
-
-        return SlimUtils::renderJSON($response, ['families' => $pendingTokens->toArray()]);
-    })->add(new EditRecordsRoleAuthMiddleware());
 
     /**
      * @OA\Get(

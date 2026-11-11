@@ -22895,12 +22895,6 @@ msgid "Registering..."
 msgstr "Nagpaparehistro..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Kailangan ng check number sa pagrekord ng check payments sa deposit entries.\n"
-"Paalala: ang pagsasDisable nito ay nagsasDisable rin ng duplicate check-number detection — ang parehong physical check ay maaaring ilagay ng higit sa isang beses."
-
-#: 
 msgid "This event has ended"
 msgstr "Ang event na ito ay nagtapos na"
 
@@ -27129,4 +27123,284 @@ msgstr "Gamitin ang link sa ibaba upang suriin ang impormasyon ng iyong pamilya.
 #: 
 msgid "Review Family Information"
 msgstr "Suriin ang Impormasyon ng Pamilya"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "May ministeryo nang may pangalang \"%s\". Piliin ito sa listahan, o pumili ng ibang pangalan."
+
+#: 
+msgid "A new ministry"
+msgstr "Isang bagong ministeryo"
+
+#: 
+msgid "A position"
+msgstr "Isang posisyon"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Idagdag ang {{total}} boluntaryo sa mga posisyong na-convert dati?"
+
+#: 
+msgid "Already converted"
+msgstr "Na-convert na"
+
+#: 
+msgid "An existing ministry"
+msgstr "Isang kasalukuyang ministeryo"
+
+#: 
+msgid "Becomes"
+msgstr "Magiging"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "May dalawang paraan ang ChurchCRM sa pamamahala ng mga boluntaryo. Isa lang ang dapat gamitin sa isang pagkakataon; ang setting na \"Karanasan ng boluntaryo\" ang nagpapasya kung alin ang makikita ng simbahang ito. Ang paglipat ay nagtatago o nagpapakita lang ng mga pahina at item sa menu at hindi kailanman nagbubura ng data. Iniaalok lang ang V1 at Pareho habang ginagamit pa ang Mga Pagkakataon bilang Boluntaryo: kapag na-convert na ang bawat pagkakataon at nasa V2 na ang simbahan, mawawala na sila sa listahang ito."
+
+#: 
+msgid "Convert"
+msgstr "I-convert"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "I-convert ang Mga Pagkakataon bilang Boluntaryo"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "I-convert na ngayon ang {{total}} pagkakataon? Mananatili ang data ng V1 hanggang sa itigil ang Mga Pagkakataon bilang Boluntaryo."
+
+#: 
+msgid "Converted"
+msgstr "Na-convert"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Na-convert: {{positions}} posisyon at {{ministries}} ministeryo, {{qualifications}} boluntaryong kwalipikado."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Bawat pagkakataon ay nagiging posisyon sa unang pangkat ng isang ministeryo, at nagiging kwalipikado sa posisyong iyon ang lahat ng naka-link dito. Naka-off muna ang sariling pag-sign up sa mga posisyong ito."
+
+#: 
+msgid "Everything is converted."
+msgstr "Na-convert na ang lahat."
+
+#: 
+msgid "Existing ministry"
+msgstr "Kasalukuyang ministeryo"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Bigyan ang bagong ministeryo ng pangalang hanggang 100 character."
+
+#: 
+msgid "Its own ministry"
+msgstr "Sariling ministeryo"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Na-link mula noon: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Mga link na hindi ma-convert"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Mga bagong sariling ministeryo"
+
+#: 
+msgid "New ministry name"
+msgstr "Pangalan ng bagong ministeryo"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Walang email na ipapadala, at mananatili ang Mga Pagkakataon bilang Boluntaryo hanggang sa itigil ang mga ito."
+
+#: 
+msgid "No name"
+msgstr "Walang pangalan"
+
+#: 
+msgid "Not converted"
+msgstr "Hindi na-convert"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Buksan ang Mga Toggle ng Feature"
+
+#: 
+msgid "Open Ministries"
+msgstr "Buksan ang Mga Ministeryo"
+
+#: 
+msgid "Opportunities"
+msgstr "Mga Pagkakataon"
+
+#: 
+msgid "Opportunity"
+msgstr "Pagkakataon"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Pagkakataon #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Mga taong na-link sa na-convert na Mga Pagkakataon bilang Boluntaryo mula nang mag-convert: %d. Idagdag sila sa kanilang mga posisyon bago itigil ang Mga Pagkakataon bilang Boluntaryo sa unang bahagi ng 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "I-preview muna ang conversion, at ipadala ang revision na ibinalik nito."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Pinalitan ang pangalan para manatiling natatangi ang mga pangalan"
+
+#: 
+msgid "Review the conversion"
+msgstr "Suriin ang conversion"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Ipadala ang napiling conversion bilang JSON object."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Ipadala ang mga pagkakataong magiging ministeryo bilang listahan ng mga ID."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Hindi umiiral ang ministeryong iyon."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Ang bersyon ng ChurchCRM kung saan isinara ng isang administrator ang abiso tungkol sa pagtigil ng Mga Pagkakataon bilang Boluntaryo."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Nagbago ang Mga Pagkakataon bilang Boluntaryo mula nang i-preview. Suriin muli ang preview, saka i-convert."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Hindi mabuksan ang kumpirmasyon. I-reload ang pahina at subukang muli."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Hindi ma-preview ang conversion."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Nabigo ang conversion. Walang binago."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Walang pangkat ang ministeryong \"%s\" na paglalagyan ng mga posisyon."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Hindi maabot ang server. I-reload ang pahina para makita kung tumakbo ang conversion."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Walang Mga Pagkakataon bilang Boluntaryo na iko-convert."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Lilipat sa Pareho ang Pamamahala ng Boluntaryo, para makita ang mga bagong ministeryo katabi ng Mga Pagkakataon bilang Boluntaryo."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Ititigil na ang Mga Pagkakataon bilang Boluntaryo"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Na-convert ang Mga Pagkakataon bilang Boluntaryo"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Ititigil ang Mga Pagkakataon bilang Boluntaryo sa unang bahagi ng 2027. I-convert ang mga ito sa Mga Ministeryo para mapanatili kung sino ang naglilingkod saan."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Ititigil ang Mga Pagkakataon bilang Boluntaryo sa unang bahagi ng 2027. I-convert na ngayon ang iyong %1$d pagkakataon at %2$d boluntaryo sa Mga Ministeryo. Maaari mong i-preview ang resulta bago may magbago."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Mga kwalipikadong boluntaryo"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Mga boluntaryong idadagdag sa mga na-convert na posisyon"
+
+#: 
+msgid "What it becomes"
+msgstr "Ano ang magiging ito"
+
+#: 
+msgid "What will happen"
+msgstr "Ano ang mangyayari"
+
+#: 
+msgid "Where they go"
+msgstr "Saan sila mapupunta"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Aling lumang Mga Pagkakataon bilang Boluntaryo ang na-convert na, at ang posisyong naging bawat isa."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Aling karanasan ng boluntaryo ang ginagamit ng simbahang ito. Ititigil ang Mga Pagkakataon bilang Boluntaryo (V1) sa unang bahagi ng 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Na-convert na sa Mga Ministeryo ang iyong Mga Pagkakataon bilang Boluntaryo. Ilipat ang Pamamahala ng Boluntaryo sa V2 bago itigil ang Mga Pagkakataon bilang Boluntaryo sa unang bahagi ng 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "sa isang bagong ministeryo, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "sa ministeryong {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "wala na sa ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "I-collapse ang sidebar"
+
+#: 
+msgid "Expand sidebar"
+msgstr "I-expand ang sidebar"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Maglagay ng wastong email address na gumagamit lang ng mga ASCII character bago ang @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Hindi wasto ang kanilang email address"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Sigurado ka bang gusto mong burahin ang {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Hindi makuha ang impormasyon ng sistema. Pakisubukang muli."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Walang nakitang pagbabayad para sa panahong ito."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Mga Pagbabayad ayon sa Pondo"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Hindi Kilalang Pondo"
 

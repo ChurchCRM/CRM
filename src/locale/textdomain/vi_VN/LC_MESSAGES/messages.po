@@ -22907,12 +22907,6 @@ msgid "Registering..."
 msgstr "Đang đăng ký..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Yêu cầu số séc khi ghi lại khoản thanh toán bằng séc trong các mục gửi tiền.\n"
-"Lưu ý: tắt tính năng này cũng sẽ tắt tính năng phát hiện số séc trùng lặp — cùng một séc vật lý có thể được nhập nhiều lần."
-
-#: 
 msgid "This event has ended"
 msgstr "Sự kiện này đã kết thúc"
 
@@ -27141,4 +27135,284 @@ msgstr "Hãy dùng liên kết bên dưới để xem lại thông tin gia đìn
 #: 
 msgid "Review Family Information"
 msgstr "Xem lại thông tin gia đình"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Đã có mục vụ tên \"%s\". Hãy chọn mục vụ đó trong danh sách hoặc đặt tên khác."
+
+#: 
+msgid "A new ministry"
+msgstr "Một mục vụ mới"
+
+#: 
+msgid "A position"
+msgstr "Một vị trí"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Thêm {{total}} tình nguyện viên vào các vị trí đã chuyển đổi trước đó?"
+
+#: 
+msgid "Already converted"
+msgstr "Đã chuyển đổi"
+
+#: 
+msgid "An existing ministry"
+msgstr "Một mục vụ hiện có"
+
+#: 
+msgid "Becomes"
+msgstr "Trở thành"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM có hai cách quản lý tình nguyện viên. Mỗi lúc chỉ nên dùng một cách; cài đặt \"Trải nghiệm tình nguyện\" quyết định hội thánh này thấy cách nào. Chuyển đổi chỉ ẩn hoặc hiện các trang và mục menu, không bao giờ xóa dữ liệu. V1 và Cả hai chỉ được cung cấp khi Cơ hội Tình nguyện còn được sử dụng: khi mọi cơ hội đã được chuyển đổi và hội thánh dùng V2, chúng sẽ biến mất khỏi danh sách này."
+
+#: 
+msgid "Convert"
+msgstr "Chuyển đổi"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Chuyển đổi Cơ hội Tình nguyện"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Chuyển đổi {{total}} cơ hội ngay bây giờ? Dữ liệu V1 được giữ nguyên cho đến khi Cơ hội Tình nguyện bị ngừng."
+
+#: 
+msgid "Converted"
+msgstr "Đã chuyển đổi"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Đã chuyển đổi: {{positions}} vị trí và {{ministries}} mục vụ, {{qualifications}} tình nguyện viên đủ điều kiện."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Mỗi cơ hội trở thành một vị trí trong đội đầu tiên của một mục vụ, và mọi người được liên kết với cơ hội đó đều đủ điều kiện cho vị trí ấy. Tự đăng ký ban đầu bị tắt ở các vị trí này."
+
+#: 
+msgid "Everything is converted."
+msgstr "Mọi thứ đã được chuyển đổi."
+
+#: 
+msgid "Existing ministry"
+msgstr "Mục vụ hiện có"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Đặt cho mục vụ mới một tên tối đa 100 ký tự."
+
+#: 
+msgid "Its own ministry"
+msgstr "Mục vụ riêng"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Được liên kết từ đó: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Các liên kết không thể chuyển đổi"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Các mục vụ mới riêng"
+
+#: 
+msgid "New ministry name"
+msgstr "Tên mục vụ mới"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Không có email nào được gửi, và Cơ hội Tình nguyện được giữ nguyên cho đến khi bị ngừng."
+
+#: 
+msgid "No name"
+msgstr "Không có tên"
+
+#: 
+msgid "Not converted"
+msgstr "Chưa chuyển đổi"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Mở Các Công tắc Tính năng"
+
+#: 
+msgid "Open Ministries"
+msgstr "Mở Mục vụ"
+
+#: 
+msgid "Opportunities"
+msgstr "Cơ hội"
+
+#: 
+msgid "Opportunity"
+msgstr "Cơ hội"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Cơ hội #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Số người được liên kết với Cơ hội Tình nguyện đã chuyển đổi kể từ khi chuyển đổi: %d. Hãy thêm họ vào vị trí của mình trước khi Cơ hội Tình nguyện bị ngừng vào đầu năm 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Hãy xem trước việc chuyển đổi, rồi gửi bản sửa đổi mà nó trả về."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Đã đổi tên để giữ tên không trùng lặp"
+
+#: 
+msgid "Review the conversion"
+msgstr "Xem lại việc chuyển đổi"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Gửi lựa chọn chuyển đổi dưới dạng đối tượng JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Gửi các cơ hội sẽ trở thành mục vụ dưới dạng danh sách ID."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Mục vụ đó không tồn tại."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Phiên bản ChurchCRM mà tại đó quản trị viên đã đóng thông báo ngừng Cơ hội Tình nguyện."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Cơ hội Tình nguyện đã thay đổi kể từ khi xem trước. Hãy kiểm tra lại bản xem trước, rồi chuyển đổi."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Không thể mở hộp xác nhận. Hãy tải lại trang và thử lại."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Không thể xem trước việc chuyển đổi."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Chuyển đổi thất bại. Không có gì bị thay đổi."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Mục vụ \"%s\" không có đội nào để chứa các vị trí."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Không thể kết nối máy chủ. Hãy tải lại trang để xem việc chuyển đổi đã chạy chưa."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Không có Cơ hội Tình nguyện nào để chuyển đổi."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Quản lý tình nguyện viên chuyển sang Cả hai, để các mục vụ mới hiển thị bên cạnh Cơ hội Tình nguyện."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Cơ hội Tình nguyện sắp bị ngừng"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Đã chuyển đổi Cơ hội Tình nguyện"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Cơ hội Tình nguyện sẽ bị ngừng vào đầu năm 2027. Hãy chuyển chúng thành Mục vụ để giữ thông tin ai phục vụ ở đâu."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Cơ hội Tình nguyện sẽ bị ngừng vào đầu năm 2027. Hãy chuyển ngay %1$d cơ hội và %2$d tình nguyện viên của bạn thành Mục vụ. Bạn có thể xem trước kết quả trước khi có bất kỳ thay đổi nào."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Tình nguyện viên đủ điều kiện"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Tình nguyện viên cần thêm vào các vị trí đã chuyển đổi"
+
+#: 
+msgid "What it becomes"
+msgstr "Trở thành gì"
+
+#: 
+msgid "What will happen"
+msgstr "Điều gì sẽ xảy ra"
+
+#: 
+msgid "Where they go"
+msgstr "Chuyển đến đâu"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Những Cơ hội Tình nguyện cũ nào đã được chuyển đổi, và mỗi cơ hội đã trở thành vị trí nào."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Trải nghiệm tình nguyện mà hội thánh này sử dụng. Cơ hội Tình nguyện (V1) sẽ bị ngừng vào đầu năm 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Cơ hội Tình nguyện của bạn đã được chuyển thành Mục vụ. Hãy chuyển Quản lý tình nguyện viên sang V2 trước khi Cơ hội Tình nguyện bị ngừng vào đầu năm 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "vào một mục vụ mới, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "vào mục vụ {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "không còn trong ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Thu gọn thanh bên"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Mở rộng thanh bên"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Hãy nhập địa chỉ email hợp lệ chỉ dùng ký tự ASCII trước @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Địa chỉ email của họ không hợp lệ"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Bạn có chắc muốn xóa {{name}} không?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Không thể thu thập thông tin hệ thống. Vui lòng thử lại."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Không tìm thấy khoản đóng góp nào trong kỳ này."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Các khoản đóng góp theo Quỹ"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Quỹ không xác định"
 

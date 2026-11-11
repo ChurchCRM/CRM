@@ -22906,12 +22906,6 @@ msgid "Registering..."
 msgstr "నమోదు చేస్తోంది..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "డిపాజిట్ ఎంట్రీలలో చెక్ చెల్లింపులను నమోదు చేసేటప్పుడు చెక్ నంబర్ తప్పనిసరి చేయండి.\n"
-"గమనిక: దీన్ని నిలిపివేస్తే నకిలీ చెక్ నంబర్ గుర్తింపు కూడా నిలిచిపోతుంది — అదే చెక్ ఒకటి కంటే ఎక్కువసార్లు నమోదు కావచ్చు."
-
-#: 
 msgid "This event has ended"
 msgstr "ఈ కార్యక్రమం ముగిసింది"
 
@@ -27140,4 +27134,284 @@ msgstr "మీ కుటుంబ సమాచారాన్ని సమీక
 #: 
 msgid "Review Family Information"
 msgstr "కుటుంబ సమాచారాన్ని సమీక్షించండి"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "\"%s\" అనే పరిచర్య ఇప్పటికే ఉంది. జాబితా నుండి దాన్ని ఎంచుకోండి, లేదా మరొక పేరు ఎంచుకోండి."
+
+#: 
+msgid "A new ministry"
+msgstr "కొత్త పరిచర్య"
+
+#: 
+msgid "A position"
+msgstr "ఒక స్థానం"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "ఇంతకు ముందు మార్చిన స్థానాలకు {{total}} మంది వాలంటీర్లను జోడించాలా?"
+
+#: 
+msgid "Already converted"
+msgstr "ఇప్పటికే మార్చబడింది"
+
+#: 
+msgid "An existing ministry"
+msgstr "ఇప్పటికే ఉన్న పరిచర్య"
+
+#: 
+msgid "Becomes"
+msgstr "ఇలా మారుతుంది"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRMలో వాలంటీర్లను నిర్వహించడానికి రెండు మార్గాలు ఉన్నాయి. ఒకేసారి ఒకటి మాత్రమే వాడుకలో ఉండాలి; ఈ సంఘం ఏది చూస్తుందో \"వాలంటీర్ అనుభవం\" సెట్టింగ్ నిర్ణయిస్తుంది. మార్చడం వల్ల పేజీలు, మెను అంశాలు దాచబడతాయి లేదా చూపబడతాయి; డేటా ఎప్పుడూ తొలగించబడదు. వాలంటీర్ అవకాశాలు వాడుకలో ఉన్నంత వరకు మాత్రమే V1, రెండూ అందుబాటులో ఉంటాయి: ప్రతి అవకాశం మార్చబడి సంఘం V2లో ఉన్నప్పుడు, అవి ఈ జాబితా నుండి తొలగిపోతాయి."
+
+#: 
+msgid "Convert"
+msgstr "మార్చు"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "వాలంటీర్ అవకాశాలను మార్చు"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "ఇప్పుడు {{total}} అవకాశాలను మార్చాలా? వాలంటీర్ అవకాశాలు నిలిపివేయబడే వరకు V1 డేటా అలాగే ఉంచబడుతుంది."
+
+#: 
+msgid "Converted"
+msgstr "మార్చబడింది"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "మార్చబడింది: {{positions}} స్థానాలు, {{ministries}} పరిచర్యలు, {{qualifications}} మంది వాలంటీర్లు అర్హత పొందారు."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "ప్రతి అవకాశం ఒక పరిచర్యలోని మొదటి బృందంలో ఒక స్థానంగా మారుతుంది, దానికి లింక్ అయిన ప్రతి ఒక్కరూ ఆ స్థానానికి అర్హత పొందుతారు. ఈ స్థానాలపై స్వయంగా నమోదు మొదట ఆఫ్‌లో ఉంటుంది."
+
+#: 
+msgid "Everything is converted."
+msgstr "అన్నీ మార్చబడ్డాయి."
+
+#: 
+msgid "Existing ministry"
+msgstr "ఇప్పటికే ఉన్న పరిచర్య"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "కొత్త పరిచర్యకు గరిష్టంగా 100 అక్షరాల పేరు ఇవ్వండి."
+
+#: 
+msgid "Its own ministry"
+msgstr "దాని సొంత పరిచర్య"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "అప్పటి నుండి లింక్ అయినవారు: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "మార్చలేని లింక్‌లు"
+
+#: 
+msgid "New ministries of their own"
+msgstr "వాటి సొంత కొత్త పరిచర్యలు"
+
+#: 
+msgid "New ministry name"
+msgstr "కొత్త పరిచర్య పేరు"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "ఏ ఇమెయిల్ పంపబడదు, వాలంటీర్ అవకాశాలు నిలిపివేయబడే వరకు అలాగే ఉంటాయి."
+
+#: 
+msgid "No name"
+msgstr "పేరు లేదు"
+
+#: 
+msgid "Not converted"
+msgstr "మార్చబడలేదు"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "ఫీచర్ టోగిల్‌లను తెరువు"
+
+#: 
+msgid "Open Ministries"
+msgstr "పరిచర్యలను తెరువు"
+
+#: 
+msgid "Opportunities"
+msgstr "అవకాశాలు"
+
+#: 
+msgid "Opportunity"
+msgstr "అవకాశం"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "అవకాశం #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "మార్పిడి తర్వాత మార్చబడిన వాలంటీర్ అవకాశాలకు లింక్ అయిన వ్యక్తులు: %d. 2027 ప్రారంభంలో వాలంటీర్ అవకాశాలు నిలిపివేయబడే ముందు వారిని వారి స్థానాలకు జోడించండి."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "ముందుగా మార్పిడిని ముందుచూపు చూసి, అది తిరిగి ఇచ్చిన సవరణను పంపండి."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "పేర్లు ప్రత్యేకంగా ఉండేందుకు పేరు మార్చబడింది"
+
+#: 
+msgid "Review the conversion"
+msgstr "మార్పిడిని సమీక్షించు"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "మార్పిడి ఎంపికను JSON ఆబ్జెక్ట్‌గా పంపండి."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "పరిచర్యలుగా మారే అవకాశాలను ID జాబితాగా పంపండి."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "ఆ పరిచర్య లేదు."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "వాలంటీర్ అవకాశాల నిలిపివేత నోటీసును నిర్వాహకుడు తీసివేసిన ChurchCRM వెర్షన్."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "ముందుచూపు తర్వాత వాలంటీర్ అవకాశాలు మారాయి. ముందుచూపును మళ్ళీ తనిఖీ చేసి, ఆపై మార్చండి."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "నిర్ధారణను తెరవడం సాధ్యపడలేదు. పేజీని మళ్ళీ లోడ్ చేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "మార్పిడిని ముందుచూపు చూపడం సాధ్యపడలేదు."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "మార్పిడి విఫలమైంది. ఏదీ మార్చబడలేదు."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "\"%s\" పరిచర్యలో స్థానాలను ఉంచడానికి బృందం లేదు."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "సర్వర్‌ను చేరుకోలేకపోయాము. మార్పిడి జరిగిందో లేదో చూడటానికి పేజీని మళ్ళీ లోడ్ చేయండి."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "మార్చడానికి వాలంటీర్ అవకాశాలు ఏవీ లేవు."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "కొత్త పరిచర్యలు వాలంటీర్ అవకాశాల పక్కనే కనిపించేలా, స్వచ్ఛంద సేవక నిర్వహణ రెండూకి మారుతుంది."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "వాలంటీర్ అవకాశాలు నిలిపివేయబడుతున్నాయి"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "వాలంటీర్ అవకాశాలు మార్చబడ్డాయి"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "వాలంటీర్ అవకాశాలు 2027 ప్రారంభంలో నిలిపివేయబడతాయి. ఎవరు దేనిలో సేవ చేస్తున్నారో నిలుపుకోవడానికి వాటిని పరిచర్యలుగా మార్చండి."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "వాలంటీర్ అవకాశాలు 2027 ప్రారంభంలో నిలిపివేయబడతాయి. మీ %1$d అవకాశాలను, %2$d మంది వాలంటీర్లను ఇప్పుడే పరిచర్యలుగా మార్చండి. ఏదైనా మారే ముందు ఫలితాన్ని ముందుచూపు చూడవచ్చు."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "అర్హత పొందిన వాలంటీర్లు"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "మార్చిన స్థానాలకు జోడించాల్సిన వాలంటీర్లు"
+
+#: 
+msgid "What it becomes"
+msgstr "ఇది ఏమవుతుంది"
+
+#: 
+msgid "What will happen"
+msgstr "ఏమి జరుగుతుంది"
+
+#: 
+msgid "Where they go"
+msgstr "వారు ఎక్కడికి వెళ్తారు"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "ఏ పాత వాలంటీర్ అవకాశాలు మార్చబడ్డాయి, ప్రతి ఒక్కటి ఏ స్థానంగా మారింది."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "ఈ సంఘం ఉపయోగించే వాలంటీర్ అనుభవం. వాలంటీర్ అవకాశాలు (V1) 2027 ప్రారంభంలో నిలిపివేయబడతాయి."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "మీ వాలంటీర్ అవకాశాలు పరిచర్యలుగా మార్చబడ్డాయి. 2027 ప్రారంభంలో వాలంటీర్ అవకాశాలు నిలిపివేయబడే ముందు స్వచ్ఛంద సేవక నిర్వహణను V2కి మార్చండి."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "కొత్త పరిచర్యలోకి, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "{{name}} పరిచర్యలోకి"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "ఇకపై ChurchCRMలో లేదు"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "సైడ్‌బార్‌ను కుదించు"
+
+#: 
+msgid "Expand sidebar"
+msgstr "సైడ్‌బార్‌ను విస్తరించు"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "@ ముందు ASCII అక్షరాలు మాత్రమే ఉన్న చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామాను నమోదు చేయండి."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "వారి ఇమెయిల్ చిరునామా చెల్లదు"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "మీరు నిజంగా {{name}}ని తొలగించాలనుకుంటున్నారా?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "సిస్టమ్ సమాచారాన్ని సేకరించలేకపోయాము. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "No payments found for this period."
+msgstr "ఈ కాలానికి చెల్లింపులు ఏవీ కనుగొనబడలేదు."
+
+#: 
+msgid "Payments by Fund"
+msgstr "నిధి వారీగా చెల్లింపులు"
+
+#: 
+msgid "Unknown Fund"
+msgstr "తెలియని నిధి"
 

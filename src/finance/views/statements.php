@@ -8,6 +8,12 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
 <div class="container-fluid">
+    <div class="mb-3">
+        <a class="btn btn-outline-primary" href="<?= SystemURLs::getRootPath() ?>/finance/reports/giving-statements/sample" target="_blank" rel="noopener">
+            <i class="fa-solid fa-file-pdf me-1" aria-hidden="true"></i><?= gettext('Preview PDF') ?>
+        </a>
+        <span class="text-body-secondary ms-2"><?= gettext('Uses saved settings and fictional sample gifts only.') ?></span>
+    </div>
     <?php foreach ($sections as $section) : ?>
         <div id="<?= InputUtils::escapeAttribute($section['id']) ?>" class="mb-3"></div>
     <?php endforeach; ?>

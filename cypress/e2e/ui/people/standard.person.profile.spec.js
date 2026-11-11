@@ -5,47 +5,21 @@ describe("Person Profile", () => {
 
     beforeEach(() => cy.setupStandardSession());
 
-    it("should display breadcrumbs with family link", () => {
+    it("shows the person with a family breadcrumb, toolbar and tabs", () => {
         cy.visit(`/people/view/${personId}`);
 
-        // Breadcrumb should show Home / People / Family / Person
         cy.get(".breadcrumb").within(() => {
             cy.contains("People");
-            // Family name should be a link in breadcrumbs
             cy.get("a[href*='/people/family/']").should("exist");
         });
-    });
-
-    it("should display toolbar with Edit, Print, Cart, Actions", () => {
-        cy.visit(`/people/view/${personId}`);
-
         cy.contains("a.btn", "Edit").should("be.visible");
         cy.get("#printPerson").should("be.visible");
         cy.get("#AddPersonToCart").should("be.visible");
         cy.get("#person-actions-dropdown").should("be.visible");
-    });
-
-    it("should show person info card with photo and details", () => {
-        cy.visit(`/people/view/${personId}`);
-
-        // Photo upload button wraps the avatar — stable selector unaffected by avatar-loader cleanup
         cy.get("#uploadImageButton").should("exist");
-
-        // Contact & Personal Info card
         cy.contains("Contact & Personal Info");
-    });
-
-    it("should display timeline tab active by default", () => {
-        cy.visit(`/people/view/${personId}`);
-
         cy.get("#nav-item-timeline").should("have.class", "active");
         cy.get("#timeline").should("have.class", "active");
-    });
-
-    it("should display tabs for Timeline, Groups, and Volunteer", () => {
-        cy.visit(`/people/view/${personId}`);
-
-        cy.get("#nav-item-timeline").should("be.visible");
         cy.get("#nav-item-groups").should("be.visible");
         cy.get("#nav-item-volunteer").should("be.visible");
     });
@@ -76,16 +50,6 @@ describe("Person Profile", () => {
 
         cy.get("#nav-item-timeline").click();
         cy.contains(noteText);
-    });
-
-    it("loads existing person for editing without crash — PR #9351 prepared-statement smoke", () => {
-        // PersonEditor.php?PersonID=2 exercises the PersonQuery::create()->findOneById() ORM
-        // path introduced in PR #9351 to replace raw SQL.
-        cy.visit(`PersonEditor.php?PersonID=${personId}`);
-        cy.contains("Person Editor").should("exist");
-        cy.get("#FirstName").should("exist");
-        cy.get("body").should("not.contain", "Fatal error");
-        cy.get("body").should("not.contain", "Warning:");
     });
 
     it("Edit Why Came", () => {

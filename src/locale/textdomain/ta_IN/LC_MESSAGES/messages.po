@@ -22940,12 +22940,6 @@ msgid "Registering..."
 msgstr "பதிவு செய்கிறது..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "வைப்பு உள்ளீடுகளில் காசோலைக் கொடுப்பனவுகளைப் பதிவு செய்யும்போது காசோலை எண்ணைக் கட்டாயமாக்கு.\n"
-"குறிப்பு: இதை முடக்கினால் நகல் காசோலை எண் கண்டறிதலும் முடக்கப்படும் — அதே காசோலை ஒன்றுக்கு மேற்பட்ட முறை உள்ளிடப்படலாம்."
-
-#: 
 msgid "This event has ended"
 msgstr "இந்த நிகழ்ச்சி முடிந்துவிட்டது"
 
@@ -27174,4 +27168,284 @@ msgstr "குடும்பத் தகவலைச் சரிபார்�
 #: 
 msgid "Review Family Information"
 msgstr "குடும்பத் தகவலைச் சரிபார்"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "\"%s\" என்ற பெயரில் ஓர் ஊழியம் ஏற்கெனவே உள்ளது. பட்டியலிலிருந்து அதைத் தேர்ந்தெடுக்கவும், அல்லது வேறு பெயரைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "A new ministry"
+msgstr "புதிய ஊழியம்"
+
+#: 
+msgid "A position"
+msgstr "ஒரு பொறுப்பு"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "முன்பு மாற்றப்பட்ட பொறுப்புகளில் {{total}} தன்னார்வலர்களைச் சேர்க்கவா?"
+
+#: 
+msgid "Already converted"
+msgstr "ஏற்கெனவே மாற்றப்பட்டது"
+
+#: 
+msgid "An existing ministry"
+msgstr "ஏற்கெனவே உள்ள ஊழியம்"
+
+#: 
+msgid "Becomes"
+msgstr "இவ்வாறு மாறும்"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM-இல் தன்னார்வலர்களை நிர்வகிக்க இரண்டு வழிகள் உள்ளன. ஒரே நேரத்தில் ஒன்று மட்டுமே பயன்பாட்டில் இருக்க வேண்டும்; இந்தச் சபை எதைப் பார்க்கும் என்பதை \"தன்னார்வ அனுபவம்\" அமைப்பு தீர்மானிக்கிறது. மாற்றுவது பக்கங்களையும் பட்டி உருப்படிகளையும் மறைக்கும் அல்லது காட்டும்; தரவை ஒருபோதும் நீக்காது. தன்னார்வ வாய்ப்புகள் பயன்பாட்டில் இருக்கும் வரை மட்டுமே V1 மற்றும் இரண்டும் வழங்கப்படும்: எல்லா வாய்ப்புகளும் மாற்றப்பட்டு சபை V2-இல் இருக்கும்போது, அவை இந்தப் பட்டியலிலிருந்து நீங்கும்."
+
+#: 
+msgid "Convert"
+msgstr "மாற்று"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "தன்னார்வ வாய்ப்புகளை மாற்று"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "இப்போது {{total}} வாய்ப்புகளை மாற்றவா? தன்னார்வ வாய்ப்புகள் நிறுத்தப்படும் வரை V1 தரவு அப்படியே வைக்கப்படும்."
+
+#: 
+msgid "Converted"
+msgstr "மாற்றப்பட்டது"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "மாற்றப்பட்டது: {{positions}} பொறுப்புகள், {{ministries}} ஊழியங்கள், {{qualifications}} தன்னார்வலர்கள் தகுதி பெற்றனர்."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "ஒவ்வொரு வாய்ப்பும் ஓர் ஊழியத்தின் முதல் குழுவில் ஒரு பொறுப்பாக மாறும், அதனுடன் இணைக்கப்பட்ட அனைவரும் அந்தப் பொறுப்புக்குத் தகுதி பெறுவர். இந்தப் பொறுப்புகளில் சுயப் பதிவு தொடக்கத்தில் முடக்கப்பட்டிருக்கும்."
+
+#: 
+msgid "Everything is converted."
+msgstr "அனைத்தும் மாற்றப்பட்டுவிட்டன."
+
+#: 
+msgid "Existing ministry"
+msgstr "ஏற்கெனவே உள்ள ஊழியம்"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "புதிய ஊழியத்திற்கு அதிகபட்சம் 100 எழுத்துகளில் ஒரு பெயரைக் கொடுக்கவும்."
+
+#: 
+msgid "Its own ministry"
+msgstr "அதற்கென தனி ஊழியம்"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "அதன் பின் இணைக்கப்பட்டவர்கள்: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "மாற்ற முடியாத இணைப்புகள்"
+
+#: 
+msgid "New ministries of their own"
+msgstr "தனித்தனி புதிய ஊழியங்கள்"
+
+#: 
+msgid "New ministry name"
+msgstr "புதிய ஊழியத்தின் பெயர்"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "மின்னஞ்சல் எதுவும் அனுப்பப்படாது, தன்னார்வ வாய்ப்புகள் நிறுத்தப்படும் வரை அப்படியே இருக்கும்."
+
+#: 
+msgid "No name"
+msgstr "பெயர் இல்லை"
+
+#: 
+msgid "Not converted"
+msgstr "மாற்றப்படவில்லை"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "சிறப்பு வசதி தலைப்புகளைத் திற"
+
+#: 
+msgid "Open Ministries"
+msgstr "ஊழியங்களைத் திற"
+
+#: 
+msgid "Opportunities"
+msgstr "வாய்ப்புகள்"
+
+#: 
+msgid "Opportunity"
+msgstr "வாய்ப்பு"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "வாய்ப்பு #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "மாற்றத்திற்குப் பின் மாற்றப்பட்ட தன்னார்வ வாய்ப்புகளுடன் இணைக்கப்பட்டவர்கள்: %d. 2027 தொடக்கத்தில் தன்னார்வ வாய்ப்புகள் நிறுத்தப்படும் முன் அவர்களை அவர்களின் பொறுப்புகளில் சேர்க்கவும்."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "முதலில் மாற்றத்தை முன்னோட்டமிட்டு, அது திருப்பி அளித்த திருத்தத்தை அனுப்பவும்."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "பெயர்கள் தனித்துவமாக இருக்க மறுபெயரிடப்பட்டது"
+
+#: 
+msgid "Review the conversion"
+msgstr "மாற்றத்தை மதிப்பாய்வு செய்"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "மாற்றத் தேர்வை JSON பொருளாக அனுப்பவும்."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "ஊழியங்களாக மாறும் வாய்ப்புகளை ID பட்டியலாக அனுப்பவும்."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "அந்த ஊழியம் இல்லை."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "தன்னார்வ வாய்ப்புகள் நிறுத்தம் குறித்த அறிவிப்பை நிர்வாகி மூடிய ChurchCRM பதிப்பு."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "முன்னோட்டத்திற்குப் பின் தன்னார்வ வாய்ப்புகள் மாறியுள்ளன. முன்னோட்டத்தை மீண்டும் சரிபார்த்து, பின்னர் மாற்றவும்."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "உறுதிப்படுத்தலைத் திறக்க முடியவில்லை. பக்கத்தை மீண்டும் ஏற்றி மீண்டும் முயலவும்."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "மாற்றத்தை முன்னோட்டமிட முடியவில்லை."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "மாற்றம் தோல்வியடைந்தது. எதுவும் மாற்றப்படவில்லை."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "\"%s\" ஊழியத்தில் பொறுப்புகளை வைக்க எந்தக் குழுவும் இல்லை."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "சேவையகத்தை அடைய முடியவில்லை. மாற்றம் நடந்ததா என்பதைப் பார்க்க பக்கத்தை மீண்டும் ஏற்றவும்."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "மாற்றுவதற்குத் தன்னார்வ வாய்ப்புகள் எதுவும் இல்லை."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "புதிய ஊழியங்கள் தன்னார்வ வாய்ப்புகளுக்கு அருகில் தெரியும்படி, தன்னார்வலர் மேலாண்மை இரண்டும் என்பதற்கு மாறும்."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "தன்னார்வ வாய்ப்புகள் நிறுத்தப்படுகின்றன"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "தன்னார்வ வாய்ப்புகள் மாற்றப்பட்டன"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "தன்னார்வ வாய்ப்புகள் 2027 தொடக்கத்தில் நிறுத்தப்படும். யார் எதில் சேவை செய்கிறார்கள் என்பதைத் தக்கவைக்க அவற்றை ஊழியங்களாக மாற்றவும்."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "தன்னார்வ வாய்ப்புகள் 2027 தொடக்கத்தில் நிறுத்தப்படும். உங்கள் %1$d வாய்ப்புகளையும் %2$d தன்னார்வலர்களையும் இப்போதே ஊழியங்களாக மாற்றவும். எதுவும் மாறும் முன் முடிவை முன்னோட்டமிடலாம்."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "தகுதி பெற்ற தன்னார்வலர்கள்"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "மாற்றப்பட்ட பொறுப்புகளில் சேர்க்க வேண்டிய தன்னார்வலர்கள்"
+
+#: 
+msgid "What it becomes"
+msgstr "இது என்னவாக மாறும்"
+
+#: 
+msgid "What will happen"
+msgstr "என்ன நடக்கும்"
+
+#: 
+msgid "Where they go"
+msgstr "அவர்கள் எங்கு செல்கின்றனர்"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "எந்தப் பழைய தன்னார்வ வாய்ப்புகள் மாற்றப்பட்டன, ஒவ்வொன்றும் எந்தப் பொறுப்பாக மாறியது."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "இந்தச் சபை பயன்படுத்தும் தன்னார்வ அனுபவம். தன்னார்வ வாய்ப்புகள் (V1) 2027 தொடக்கத்தில் நிறுத்தப்படும்."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "உங்கள் தன்னார்வ வாய்ப்புகள் ஊழியங்களாக மாற்றப்பட்டுள்ளன. 2027 தொடக்கத்தில் தன்னார்வ வாய்ப்புகள் நிறுத்தப்படும் முன் தன்னார்வலர் மேலாண்மையை V2-க்கு மாற்றவும்."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "புதிய ஊழியமாக, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "{{name}} ஊழியத்திற்கு"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "இனி ChurchCRM-இல் இல்லை"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "பக்கப்பட்டியைச் சுருக்கு"
+
+#: 
+msgid "Expand sidebar"
+msgstr "பக்கப்பட்டியை விரிவாக்கு"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "@-க்கு முன் ASCII எழுத்துகள் மட்டும் உள்ள சரியான மின்னஞ்சல் முகவரியை உள்ளிடவும்."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "அவர்களின் மின்னஞ்சல் முகவரி சரியானதல்ல"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "{{name}}-ஐ நிச்சயமாக நீக்க வேண்டுமா?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "கணினித் தகவலைச் சேகரிக்க முடியவில்லை. மீண்டும் முயலவும்."
+
+#: 
+msgid "No payments found for this period."
+msgstr "இந்தக் காலத்திற்கு எந்தக் கொடுப்பனவும் கிடைக்கவில்லை."
+
+#: 
+msgid "Payments by Fund"
+msgstr "நிதி வாரியான கொடுப்பனவுகள்"
+
+#: 
+msgid "Unknown Fund"
+msgstr "தெரியாத நிதி"
 

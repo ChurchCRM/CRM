@@ -3,7 +3,7 @@
 /**
  * CSV Export API Tests
  *
- * Pure-API coverage of the CSVCreateFile.php endpoint. These tests issue
+ * Pure-API coverage of the the CSV export endpoint endpoint. These tests issue
  * form-encoded POSTs directly against the export endpoint and assert the
  * response status, content-type, and absence of PHP errors in the body.
  *
@@ -19,7 +19,7 @@ describe("API Private Admin — CSV Export", () => {
     it("should export personal records as CSV", () => {
         cy.request({
             method: "POST",
-            url: "/CSVCreateFile.php",
+            url: "/admin/export/csv",
             form: true,
             body: {
                 output: "csv",
@@ -40,7 +40,7 @@ describe("API Private Admin — CSV Export", () => {
         // Validates that family address fallback logic works in CSV export (issue #7937)
         cy.request({
             method: "POST",
-            url: "/CSVCreateFile.php",
+            url: "/admin/export/csv",
             form: true,
             body: {
                 output: "csv",

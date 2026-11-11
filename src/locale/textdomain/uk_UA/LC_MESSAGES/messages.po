@@ -22988,12 +22988,6 @@ msgid "Registering..."
 msgstr "Реєстрація..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Вимагати номер чека при запису чеків у записи внесків.\n"
-"Примітка: вимкнення цього також вимикає виявлення дублікатів чеків — один фізичний чек можна ввести кілька разів."
-
-#: 
 msgid "This event has ended"
 msgstr "Ця подія завершилася"
 
@@ -27222,4 +27216,284 @@ msgstr "Скористайтеся посиланням нижче, щоб пе�
 #: 
 msgid "Review Family Information"
 msgstr "Перевірити відомості про родину"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Служіння з назвою «%s» уже існує. Виберіть його зі списку або вкажіть іншу назву."
+
+#: 
+msgid "A new ministry"
+msgstr "Нове служіння"
+
+#: 
+msgid "A position"
+msgstr "Позиція"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Додати волонтерів ({{total}}) на раніше перетворені позиції?"
+
+#: 
+msgid "Already converted"
+msgstr "Уже перетворено"
+
+#: 
+msgid "An existing ministry"
+msgstr "Наявне служіння"
+
+#: 
+msgid "Becomes"
+msgstr "Стає"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM має два способи керування волонтерами. Одночасно має використовуватися лише один; налаштування «Режим волонтерів» визначає, який із них бачить ця церква. Перемикання приховує або показує сторінки й пункти меню і ніколи не видаляє даних. V1 та Обидва доступні лише доки використовуються Волонтерські можливості: коли всі можливості перетворено і церква перейшла на V2, вони зникають із цього списку."
+
+#: 
+msgid "Convert"
+msgstr "Перетворити"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Перетворити Волонтерські можливості"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Перетворити можливості ({{total}}) зараз? Дані V1 зберігаються без змін, доки Волонтерські можливості не буде виведено з ужитку."
+
+#: 
+msgid "Converted"
+msgstr "Перетворено"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Перетворено: позицій — {{positions}}, служінь — {{ministries}}, допущено волонтерів — {{qualifications}}."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Кожна можливість стає позицією в першій команді одного служіння, а всі пов’язані з нею люди отримують допуск до цієї позиції. Самозапис на ці позиції спочатку вимкнено."
+
+#: 
+msgid "Everything is converted."
+msgstr "Усе перетворено."
+
+#: 
+msgid "Existing ministry"
+msgstr "Наявне служіння"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Дайте новому служінню назву довжиною до 100 символів."
+
+#: 
+msgid "Its own ministry"
+msgstr "Власне служіння"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Пов’язані відтоді: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Зв’язки, які не можна перетворити"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Нові окремі служіння"
+
+#: 
+msgid "New ministry name"
+msgstr "Назва нового служіння"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Листи не надсилаються, а Волонтерські можливості залишаються без змін, доки їх не буде виведено з ужитку."
+
+#: 
+msgid "No name"
+msgstr "Без назви"
+
+#: 
+msgid "Not converted"
+msgstr "Не перетворено"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Відкрити Перемикачі функцій"
+
+#: 
+msgid "Open Ministries"
+msgstr "Відкрити Служіння"
+
+#: 
+msgid "Opportunities"
+msgstr "Можливості"
+
+#: 
+msgid "Opportunity"
+msgstr "Можливість"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Можливість № %d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Люди, пов’язані з перетвореними Волонтерськими можливостями після перетворення: %d. Додайте їх на їхні позиції, перш ніж Волонтерські можливості буде виведено з ужитку на початку 2027 року."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Спершу перегляньте попередній результат перетворення й надішліть отриману ревізію."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Перейменовано, щоб назви не повторювалися"
+
+#: 
+msgid "Review the conversion"
+msgstr "Перевірити перетворення"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Надішліть вибір перетворення як об’єкт JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Надішліть можливості, які стануть служіннями, як список ідентифікаторів."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Такого служіння не існує."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Версія ChurchCRM, у якій адміністратор приховав сповіщення про виведення Волонтерських можливостей з ужитку."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Волонтерські можливості змінилися після попереднього перегляду. Перевірте попередній перегляд ще раз, потім виконайте перетворення."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Не вдалося відкрити підтвердження. Перезавантажте сторінку й спробуйте ще раз."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Не вдалося виконати попередній перегляд перетворення."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Перетворення не вдалося. Нічого не змінено."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Служіння «%s» не має команди для цих позицій."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Не вдалося зв’язатися із сервером. Перезавантажте сторінку, щоб перевірити, чи виконано перетворення."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Немає Волонтерських можливостей для перетворення."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Керування добровольцями перемикається на «Обидва», щоб нові служіння було видно поруч із Волонтерськими можливостями."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Волонтерські можливості виводяться з ужитку"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Волонтерські можливості перетворено"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Волонтерські можливості буде виведено з ужитку на початку 2027 року. Перетворіть їх на Служіння, щоб зберегти, хто де служить."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Волонтерські можливості буде виведено з ужитку на початку 2027 року. Перетворіть зараз на Служіння ваші можливості (%1$d) і волонтерів (%2$d). Ви можете переглянути результат, перш ніж щось зміниться."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Допущені волонтери"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Волонтери, яких треба додати на перетворені позиції"
+
+#: 
+msgid "What it becomes"
+msgstr "Чим стає"
+
+#: 
+msgid "What will happen"
+msgstr "Що станеться"
+
+#: 
+msgid "Where they go"
+msgstr "Куди вони потраплять"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Які колишні Волонтерські можливості перетворено і якою позицією стала кожна з них."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Який режим волонтерів використовує ця церква. Волонтерські можливості (V1) буде виведено з ужитку на початку 2027 року."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Ваші Волонтерські можливості перетворено на Служіння. Перемкніть Керування добровольцями на V2, перш ніж Волонтерські можливості буде виведено з ужитку на початку 2027 року."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "у нове служіння, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "у служіння {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "більше немає в ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Згорнути бічну панель"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Розгорнути бічну панель"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Введіть дійсну адресу електронної пошти, що містить перед @ лише символи ASCII."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Адреса електронної пошти цієї особи недійсна"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Ви впевнені, що хочете видалити {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Не вдалося зібрати інформацію про систему. Спробуйте ще раз."
+
+#: 
+msgid "No payments found for this period."
+msgstr "За цей період платежів не знайдено."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Платежі за фондами"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Невідомий фонд"
 

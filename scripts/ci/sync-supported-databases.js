@@ -34,6 +34,10 @@ const targets = {
     'docker/docker-compose.dev.yaml': [[/(image: mariadb:)([\d.]+)()/g, 'mariadb']],
     'docker/docker-compose.parallel.yaml': [[/(image: mariadb:)([\d.]+)()/g, 'mariadb']],
     'docker/docker-compose.mysql.yaml': [[/(mysql:)(\d[\d.]*)()/g, 'mysql']],
+    'src/ChurchCRM/Service/DatabaseVersionService.php': [
+        [/(MIN_MYSQL = ')([\d.]+)(')/g, 'mysql'],
+        [/(MIN_MARIADB = ')([\d.]+)(')/g, 'mariadb'],
+    ],
     'src/setup/templates/setup-steps.php': [
         [/(supports MySQL )([\d.]+)(\+)/g, 'mysql'],
         [/(and MariaDB )([\d.]+)(\+ \(the LTS)/g, 'mariadb'],

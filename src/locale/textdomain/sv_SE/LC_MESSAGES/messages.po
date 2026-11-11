@@ -23015,12 +23015,6 @@ msgid "Registering..."
 msgstr "Registrering..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Kräv ett checknummer när du registrerar checkbetalningar på insättningsposterna.\n"
-"Om: att inaktivera detta inaktiverar också duplicerad checknummerdetektion — samma fysiska check kan anges mer än en gång."
-
-#: 
 msgid "This event has ended"
 msgstr "Detta evenemang är över"
 
@@ -27249,4 +27243,284 @@ msgstr "Använd länken nedan för att granska din familjs uppgifter. På gransk
 #: 
 msgid "Review Family Information"
 msgstr "Granska familjeuppgifter"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Ett tjänsteområde som heter \"%s\" finns redan. Välj det i listan eller välj ett annat namn."
+
+#: 
+msgid "A new ministry"
+msgstr "Ett nytt tjänsteområde"
+
+#: 
+msgid "A position"
+msgstr "En uppgift"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Lägga till {{total}} volontärer i uppgifter som konverterats tidigare?"
+
+#: 
+msgid "Already converted"
+msgstr "Redan konverterad"
+
+#: 
+msgid "An existing ministry"
+msgstr "Ett befintligt tjänsteområde"
+
+#: 
+msgid "Becomes"
+msgstr "Blir"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM har två sätt att hantera volontärer. Bara ett är tänkt att användas åt gången; inställningen \"Volontärupplevelse\" avgör vilket den här församlingen ser. Ett byte döljer eller visar sidor och menyval och raderar aldrig data. V1 och Båda erbjuds bara medan Volontärmöjligheter används: när alla möjligheter har konverterats och församlingen använder V2 försvinner de från listan."
+
+#: 
+msgid "Convert"
+msgstr "Konvertera"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Konvertera Volontärmöjligheter"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Konvertera {{total}} möjligheter nu? V1-data behålls som de är tills Volontärmöjligheter fasas ut."
+
+#: 
+msgid "Converted"
+msgstr "Konverterad"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Konverterat: {{positions}} uppgifter och {{ministries}} tjänsteområden, {{qualifications}} volontärer behöriga."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Varje möjlighet blir en uppgift i det första teamet i ett tjänsteområde, och alla som är kopplade till den blir behöriga för uppgiften. Egen anmälan är först avstängd för dessa uppgifter."
+
+#: 
+msgid "Everything is converted."
+msgstr "Allt är konverterat."
+
+#: 
+msgid "Existing ministry"
+msgstr "Befintligt tjänsteområde"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Ge det nya tjänsteområdet ett namn på högst 100 tecken."
+
+#: 
+msgid "Its own ministry"
+msgstr "Ett eget tjänsteområde"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Kopplade sedan dess: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Kopplingar som inte kan konverteras"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Egna nya tjänsteområden"
+
+#: 
+msgid "New ministry name"
+msgstr "Namn på nytt tjänsteområde"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Inget e-postmeddelande skickas, och Volontärmöjligheter förblir som de är tills de fasas ut."
+
+#: 
+msgid "No name"
+msgstr "Inget namn"
+
+#: 
+msgid "Not converted"
+msgstr "Inte konverterad"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Öppna Funktionsväxlar"
+
+#: 
+msgid "Open Ministries"
+msgstr "Öppna Tjänsteområden"
+
+#: 
+msgid "Opportunities"
+msgstr "Möjligheter"
+
+#: 
+msgid "Opportunity"
+msgstr "Möjlighet"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Möjlighet nr %d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Personer som kopplats till konverterade Volontärmöjligheter sedan konverteringen: %d. Lägg till dem i deras uppgifter innan Volontärmöjligheter fasas ut i början av 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Förhandsgranska konverteringen först och skicka den revision som returnerades."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Bytte namn för att hålla namnen unika"
+
+#: 
+msgid "Review the conversion"
+msgstr "Granska konverteringen"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Skicka konverteringsvalet som ett JSON-objekt."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Skicka de möjligheter som blir tjänsteområden som en lista med ID:n."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Det tjänsteområdet finns inte."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "ChurchCRM-versionen där en administratör stängde meddelandet om att Volontärmöjligheter fasas ut."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Volontärmöjligheterna har ändrats sedan förhandsgranskningen. Kontrollera förhandsgranskningen igen och konvertera sedan."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Bekräftelsen kunde inte öppnas. Ladda om sidan och försök igen."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Konverteringen kunde inte förhandsgranskas."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Konverteringen misslyckades. Inget ändrades."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Tjänsteområdet \"%s\" har inget team för uppgifterna."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Servern kunde inte nås. Ladda om sidan för att se om konverteringen kördes."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Det finns inga Volontärmöjligheter att konvertera."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Volontärhantering byter till Båda, så att de nya tjänsteområdena syns bredvid Volontärmöjligheter."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Volontärmöjligheter fasas ut"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Volontärmöjligheter konverterade"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Volontärmöjligheter fasas ut i början av 2027. Konvertera dem till Tjänsteområden för att behålla vem som tjänar var."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Volontärmöjligheter fasas ut i början av 2027. Konvertera dina %1$d möjligheter och %2$d volontärer till Tjänsteområden nu. Du kan förhandsgranska resultatet innan något ändras."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Behöriga volontärer"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Volontärer att lägga till i konverterade uppgifter"
+
+#: 
+msgid "What it becomes"
+msgstr "Vad den blir"
+
+#: 
+msgid "What will happen"
+msgstr "Vad som händer"
+
+#: 
+msgid "Where they go"
+msgstr "Vart de hamnar"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Vilka äldre Volontärmöjligheter som har konverterats och vilken uppgift var och en blev."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Vilken volontärupplevelse den här församlingen använder. Volontärmöjligheter (V1) fasas ut i början av 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Dina Volontärmöjligheter har konverterats till Tjänsteområden. Byt Volontärhantering till V2 innan Volontärmöjligheter fasas ut i början av 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "till ett nytt tjänsteområde, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "till tjänsteområdet {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "finns inte längre i ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Fäll ihop sidofältet"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Fäll ut sidofältet"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Ange en giltig e-postadress med endast ASCII-tecken före @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Deras e-postadress är ogiltig"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Vill du verkligen radera {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Det gick inte att hämta systeminformation. Försök igen."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Inga betalningar hittades för den här perioden."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Betalningar per fond"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Okänd fond"
 

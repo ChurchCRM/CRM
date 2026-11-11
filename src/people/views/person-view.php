@@ -401,7 +401,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
             </div>
             <div class="card-body p-0">
                 <div id="giving-history-loading" class="px-3 py-2 text-muted">
-                    <i class="fa-solid fa-spinner fa-spin me-1"></i> <?= gettext("Loading…") ?>
+                    <i class="fa-solid fa-spinner fa-spin me-1"></i> <?= gettext("Loading...") ?>
                 </div>
                 <div id="giving-history-content" class="d-none">
                     <ul class="list-unstyled mb-0 px-3 py-2">

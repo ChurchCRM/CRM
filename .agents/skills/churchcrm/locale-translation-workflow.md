@@ -18,3 +18,4 @@ the release checklist is in [the release process](../../../docs/maintainers/rele
 - Commit and push after every locale. Stage only that locale's missing-term files and `locale/terms/english-ok.json` when needed.
 - A push with your own credentials triggers the translation upload. An Actions `GITHUB_TOKEN` push does not; report affected locales for a manual upload instead.
 - If a step fails, stop and report before moving to another locale. Committing each locale protects completed work from session loss.
+- English variants (`en` is en-GB, `en-au`, `en-ca`, `en-za`, `en-jm`) are `skip_audit`, so `--list` and `--apply-bulk` skip them. Write their regional spellings by hand to `locale/terms/missing/<code>/<code>-1.json`, only for terms whose spelling differs from the US source; the next download prunes the uploaded terms.

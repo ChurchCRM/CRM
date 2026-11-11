@@ -614,7 +614,7 @@ $fmtBytes = static function ($bytes): string {
                             <tbody>
                                 <tr><td><?= gettext('Installation UUID') ?></td><td><?= gettext('Count unique installs') ?></td></tr>
                                 <tr><td><?= gettext('ChurchCRM version') ?></td><td><?= gettext('Track adoption') ?></td></tr>
-                                <tr><td><?= gettext('Locale') ?></td><td><?= gettext('Prioritise translations') ?></td></tr>
+                                <tr><td><?= gettext('Locale') ?></td><td><?= gettext('Prioritize translations') ?></td></tr>
                                 <tr><td><?= gettext('Page route') ?> <span class="badge bg-info-lt text-info ms-1"><?= gettext('full only') ?></span></td><td><?= gettext('Understand feature usage') ?></td></tr>
                                 <tr><td><?= gettext('Church country') ?></td><td><?= gettext('Understand where ChurchCRM is used') ?></td></tr>
                                 <tr><td><?= gettext('PHP version') ?></td><td><?= gettext('Plan runtime support') ?></td></tr>

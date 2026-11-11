@@ -26,6 +26,13 @@ SOV locales cannot reorder concatenated pieces such as `gettext('Delete') . ' ' 
 Title Case for chrome (labels, buttons, headings). Sentence case for help and toasts.
 Keep acronyms `ID`, `URL`, `API`.
 
+## Terms
+
+- Source strings use US English spelling (color, organize, canceled, behavior, catalog). Regional spelling lives in the English variant locales (`en` is en-GB, `en-au`, `en-ca`, `en-za`, `en-jm`), never in the source.
+- Reuse an existing msgid before adding one. Grep `locale/messages.po` for case, trailing punctuation, colon and ellipsis variants (`Save Changes`, `Loading...`) and use the existing form.
+- Add no near-duplicate terms: one msgid per wording, differing only by case or punctuation.
+- A PR that renames a source term lists each old term → new term under **POEditor mapping**, so the maintainer moves its translations in POEditor.
+
 Family status in UI: Active / Inactive. Actions: Set Active / Set Inactive.
 
 ## Counts

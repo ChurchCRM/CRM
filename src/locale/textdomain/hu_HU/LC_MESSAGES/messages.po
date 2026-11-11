@@ -22954,12 +22954,6 @@ msgid "Registering..."
 msgstr "Regisztráció..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Szükség van ellenőrzési számra a befizetési bejegyzésekbe történő csekk befizetésének rögzítésekor.\n"
-"Megjegyzés: ennek letiltása a duplikált csekk szám-detektálást is letiltja - ugyanaz a fizikai csekk több mint egyszer is bevihető."
-
-#: 
 msgid "This event has ended"
 msgstr "Ez az esemény véget ért"
 
@@ -27188,4 +27182,284 @@ msgstr "Az alábbi hivatkozással ellenőrizd a családod adatait. Az ellenőrz�
 #: 
 msgid "Review Family Information"
 msgstr "Családi adatok ellenőrzése"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Már létezik „%s” nevű szolgálati terület. Válassza ki a listából, vagy adjon meg másik nevet."
+
+#: 
+msgid "A new ministry"
+msgstr "Új szolgálati terület"
+
+#: 
+msgid "A position"
+msgstr "Pozíció"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Hozzáadja az önkénteseket ({{total}}) a korábban átalakított pozíciókhoz?"
+
+#: 
+msgid "Already converted"
+msgstr "Már átalakítva"
+
+#: 
+msgid "An existing ministry"
+msgstr "Meglévő szolgálati terület"
+
+#: 
+msgid "Becomes"
+msgstr "Ebből lesz"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "A ChurchCRM kétféleképpen kezelheti az önkénteseket. Egyszerre csak az egyiket érdemes használni; az „Önkéntes mód” beállítás dönti el, melyiket látja ez a gyülekezet. A váltás oldalakat és menüpontokat rejt el vagy jelenít meg, adatot soha nem töröl. A V1 és a Mindkettő csak addig választható, amíg az Önkéntes lehetőségek használatban vannak: ha minden lehetőség át van alakítva, és a gyülekezet a V2-t használja, eltűnnek a listából."
+
+#: 
+msgid "Convert"
+msgstr "Átalakítás"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Önkéntes lehetőségek átalakítása"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Most átalakítja a lehetőségeket ({{total}})? A V1 adatai változatlanok maradnak, amíg az Önkéntes lehetőségek megszűnnek."
+
+#: 
+msgid "Converted"
+msgstr "Átalakítva"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Átalakítva: pozíciók: {{positions}}, szolgálati területek: {{ministries}}, alkalmassá tett önkéntesek: {{qualifications}}."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Minden lehetőségből pozíció lesz egy szolgálati terület első csapatában, és mindenki, aki hozzá kapcsolódik, alkalmas lesz erre a pozícióra. Az önjelentkezés ezeknél a pozícióknál kezdetben ki van kapcsolva."
+
+#: 
+msgid "Everything is converted."
+msgstr "Minden át van alakítva."
+
+#: 
+msgid "Existing ministry"
+msgstr "Meglévő szolgálati terület"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Adjon az új szolgálati területnek legfeljebb 100 karakteres nevet."
+
+#: 
+msgid "Its own ministry"
+msgstr "Saját szolgálati terület"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Azóta kapcsolva: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Át nem alakítható kapcsolatok"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Saját új szolgálati területek"
+
+#: 
+msgid "New ministry name"
+msgstr "Új szolgálati terület neve"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Nem megy ki e-mail, és az Önkéntes lehetőségek változatlanok maradnak, amíg meg nem szűnnek."
+
+#: 
+msgid "No name"
+msgstr "Nincs név"
+
+#: 
+msgid "Not converted"
+msgstr "Nincs átalakítva"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Funkciók kapcsolóinak megnyitása"
+
+#: 
+msgid "Open Ministries"
+msgstr "Szolgálati területek megnyitása"
+
+#: 
+msgid "Opportunities"
+msgstr "Lehetőségek"
+
+#: 
+msgid "Opportunity"
+msgstr "Lehetőség"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "%d. lehetőség"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Az átalakítás óta átalakított Önkéntes lehetőségekhez kapcsolt személyek: %d. Adja hozzá őket a pozícióikhoz, mielőtt az Önkéntes lehetőségek 2027 elején megszűnnek."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Először tekintse meg az átalakítás előnézetét, és küldje el az általa visszaadott revíziót."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Átnevezve, hogy a nevek egyediek maradjanak"
+
+#: 
+msgid "Review the conversion"
+msgstr "Átalakítás áttekintése"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Küldje el az átalakítási választást JSON-objektumként."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Küldje el a szolgálati területté váló lehetőségeket azonosítók listájaként."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Ez a szolgálati terület nem létezik."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Az a ChurchCRM-verzió, amelyben egy adminisztrátor elvetette az Önkéntes lehetőségek megszűnéséről szóló értesítést."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Az Önkéntes lehetőségek megváltoztak az előnézet óta. Ellenőrizze újra az előnézetet, majd alakítsa át."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "A megerősítést nem sikerült megnyitni. Töltse be újra az oldalt, és próbálja újra."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Az átalakítás előnézete nem készíthető el."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Az átalakítás nem sikerült. Semmi sem változott."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "A(z) „%s” szolgálati területnek nincs csapata a pozíciókhoz."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "A szerver nem érhető el. Töltse be újra az oldalt, hogy lássa, lefutott-e az átalakítás."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Nincsenek átalakítható Önkéntes lehetőségek."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Az Önkéntesek kezelése Mindkettő módra vált, így az új szolgálati területek az Önkéntes lehetőségek mellett láthatók."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Az Önkéntes lehetőségek megszűnnek"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Önkéntes lehetőségek átalakítva"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Az Önkéntes lehetőségek 2027 elején megszűnnek. Alakítsa át őket szolgálati területekké, hogy megmaradjon, ki miben szolgál."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Az Önkéntes lehetőségek 2027 elején megszűnnek. Alakítsa át most szolgálati területekké a lehetőségeit (%1$d) és önkénteseit (%2$d). Az eredményt megtekintheti, mielőtt bármi megváltozna."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Alkalmassá tett önkéntesek"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Átalakított pozíciókhoz hozzáadandó önkéntesek"
+
+#: 
+msgid "What it becomes"
+msgstr "Mivé válik"
+
+#: 
+msgid "What will happen"
+msgstr "Mi fog történni"
+
+#: 
+msgid "Where they go"
+msgstr "Hová kerülnek"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Mely korábbi Önkéntes lehetőségek lettek átalakítva, és melyikből milyen pozíció lett."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Melyik önkéntes módot használja ez a gyülekezet. Az Önkéntes lehetőségek (V1) 2027 elején megszűnnek."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Az Önkéntes lehetőségei át lettek alakítva szolgálati területekké. Állítsa az Önkéntesek kezelését V2-re, mielőtt az Önkéntes lehetőségek 2027 elején megszűnnek."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "új szolgálati területté: {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "ebbe a szolgálati területbe: {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "már nincs a ChurchCRM-ben"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Oldalsáv összecsukása"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Oldalsáv kibontása"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Adjon meg érvényes e-mail-címet, amely a @ előtt csak ASCII-karaktereket tartalmaz."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Az e-mail-címe érvénytelen"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Biztosan törli ezt: {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Nem sikerült összegyűjteni a rendszerinformációkat. Próbálja újra."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Ebben az időszakban nem található fizetés."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Fizetések alaponként"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Ismeretlen alap"
 

@@ -22928,12 +22928,6 @@ msgid "Registering..."
 msgstr "Registrering tans..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Vereis 'n tjekkie-nommer wanneer tsjekkie-betalings op depôtitems aangeteken word.\n"
-"Opmerking: die uitskakeling hiervan skakel ook dubbele tsjekkie-nommerdeteksie uit — dieselfde fisiese tsjek kan meer as een keer ingevoer word."
-
-#: 
 msgid "This event has ended"
 msgstr "Hierdie gebeurtenis het geëindig"
 
@@ -27162,4 +27156,284 @@ msgstr "Gebruik asseblief die skakel hieronder om u gesinsinligting na te gaan. 
 #: 
 msgid "Review Family Information"
 msgstr "Hersien gesinsinligting"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "'n Bediening met die naam \"%s\" bestaan reeds. Kies dit uit die lys, of kies 'n ander naam."
+
+#: 
+msgid "A new ministry"
+msgstr "'n Nuwe bediening"
+
+#: 
+msgid "A position"
+msgstr "'n Posisie"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Voeg {{total}} vrywilligers by posisies wat voorheen omgeskakel is?"
+
+#: 
+msgid "Already converted"
+msgstr "Reeds omgeskakel"
+
+#: 
+msgid "An existing ministry"
+msgstr "'n Bestaande bediening"
+
+#: 
+msgid "Becomes"
+msgstr "Word"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM het twee maniere om vrywilligers te bestuur. Net een is bedoel om op 'n slag gebruik te word; die instelling \"Vrywilligerervaring\" bepaal watter een hierdie kerk sien. Om te wissel, versteek of wys bladsye en kieslysitems en skrap nooit data nie. V1 en Albei word net aangebied terwyl Vrywillige geleenthede gebruik word: sodra elke geleentheid omgeskakel is en die kerk op V2 is, verdwyn hulle uit hierdie lys."
+
+#: 
+msgid "Convert"
+msgstr "Skakel om"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Skakel Vrywillige geleenthede om"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Skakel nou {{total}} geleenthede om? Die V1-data bly soos dit is totdat Vrywillige geleenthede uitgefaseer word."
+
+#: 
+msgid "Converted"
+msgstr "Omgeskakel"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Omgeskakel: {{positions}} posisies en {{ministries}} bedieninge, {{qualifications}} vrywilligers gekwalifiseer."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Elke geleentheid word 'n posisie in die eerste span van een bediening, en almal wat daaraan gekoppel is, word vir daardie posisie gekwalifiseer. Selfinskrywing is aanvanklik af vir hierdie posisies."
+
+#: 
+msgid "Everything is converted."
+msgstr "Alles is omgeskakel."
+
+#: 
+msgid "Existing ministry"
+msgstr "Bestaande bediening"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Gee die nuwe bediening 'n naam van hoogstens 100 karakters."
+
+#: 
+msgid "Its own ministry"
+msgstr "Sy eie bediening"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Sedertdien gekoppel: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Skakels wat nie omgeskakel kan word nie"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Nuwe bedieninge van hul eie"
+
+#: 
+msgid "New ministry name"
+msgstr "Naam van nuwe bediening"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Geen e-pos word gestuur nie, en Vrywillige geleenthede bly soos dit is totdat dit uitgefaseer word."
+
+#: 
+msgid "No name"
+msgstr "Geen naam"
+
+#: 
+msgid "Not converted"
+msgstr "Nie omgeskakel nie"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Open Funksieskakelaars"
+
+#: 
+msgid "Open Ministries"
+msgstr "Open Bedieninge"
+
+#: 
+msgid "Opportunities"
+msgstr "Geleenthede"
+
+#: 
+msgid "Opportunity"
+msgstr "Geleentheid"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Geleentheid #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Mense wat sedert die omskakeling aan omgeskakelde Vrywillige geleenthede gekoppel is: %d. Voeg hulle by hul posisies voordat Vrywillige geleenthede vroeg in 2027 uitgefaseer word."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Kyk eers na die voorskou van die omskakeling, en stuur die hersiening wat dit teruggegee het."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Hernoem om name uniek te hou"
+
+#: 
+msgid "Review the conversion"
+msgstr "Hersien die omskakeling"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Stuur die omskakelingskeuse as 'n JSON-objek."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Stuur die geleenthede wat bedieninge word as 'n lys ID's."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Daardie bediening bestaan nie."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Die ChurchCRM-weergawe waarop 'n beheerder die kennisgewing oor die uitfasering van Vrywillige geleenthede weggewys het."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Die Vrywillige geleenthede het sedert die voorskou verander. Gaan die voorskou weer na en skakel dan om."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Die bevestiging kon nie oopmaak nie. Herlaai die bladsy en probeer weer."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Die omskakeling kon nie voorskou word nie."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Die omskakeling het misluk. Niks is verander nie."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Die bediening \"%s\" het geen span om die posisies te hou nie."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Die bediener kon nie bereik word nie. Herlaai die bladsy om te sien of die omskakeling uitgevoer is."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Daar is geen Vrywillige geleenthede om om te skakel nie."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Vrywilligerbestuur skakel oor na Albei, sodat die nuwe bedieninge langs Vrywillige geleenthede sigbaar is."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Vrywillige geleenthede word uitgefaseer"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Vrywillige geleenthede omgeskakel"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Vrywillige geleenthede word vroeg in 2027 uitgefaseer. Skakel hulle om na Bedieninge om te behou wie waarvoor vrywillig dien."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Vrywillige geleenthede word vroeg in 2027 uitgefaseer. Skakel nou jou %1$d geleenthede en %2$d vrywilligers om na Bedieninge. Jy kan die resultaat voorskou voordat enigiets verander."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Vrywilligers gekwalifiseer"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Vrywilligers om by omgeskakelde posisies te voeg"
+
+#: 
+msgid "What it becomes"
+msgstr "Wat dit word"
+
+#: 
+msgid "What will happen"
+msgstr "Wat gaan gebeur"
+
+#: 
+msgid "Where they go"
+msgstr "Waarheen hulle gaan"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Watter ou Vrywillige geleenthede omgeskakel is, en die posisie wat elkeen geword het."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Watter vrywilligerervaring hierdie kerk gebruik. Vrywillige geleenthede (V1) word vroeg in 2027 uitgefaseer."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Jou Vrywillige geleenthede is na Bedieninge omgeskakel. Skakel Vrywilligerbestuur oor na V2 voordat Vrywillige geleenthede vroeg in 2027 uitgefaseer word."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "na 'n nuwe bediening, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "na die bediening {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "nie meer in ChurchCRM nie"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Vou sybalk in"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Vou sybalk uit"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Voer 'n geldige e-posadres in met slegs ASCII-karakters voor die @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Hul e-posadres is ongeldig"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Is jy seker jy wil {{name}} skrap?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Kon nie stelselinligting insamel nie. Probeer asseblief weer."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Geen betalings vir hierdie tydperk gevind nie."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Betalings per fonds"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Onbekende fonds"
 
