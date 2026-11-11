@@ -24,8 +24,8 @@ class GivingStatementService
     public static function sampleDocument(): array
     {
         $family = [
-            'salutation' => gettext('Sample Family (fictional)'),
-            'address' => gettext('123 Sample Street') . "\n" . gettext('Sample City'),
+            'salutation' => 'Sample Family (fictional)',
+            'address' => '123 Sample Street' . "\n" . 'Sample City',
             'envelope' => '',
             'total' => CurrencyFormatter::format(150),
             'goods_services' => CurrencyFormatter::format(0),
@@ -34,13 +34,13 @@ class GivingStatementService
             'gifts' => [
                 [
                     'date' => DateTimeUtils::formatDate('2025-01-12'),
-                    'fund' => gettext('Sample General Fund'),
+                    'fund' => 'Sample General Fund',
                     'method' => gettext('Cash'),
                     'amount' => CurrencyFormatter::format(100),
                 ],
                 [
                     'date' => DateTimeUtils::formatDate('2025-06-15'),
-                    'fund' => gettext('Sample Missions Fund'),
+                    'fund' => 'Sample Missions Fund',
                     'method' => gettext('Check') . ' #1234',
                     'amount' => CurrencyFormatter::format(50),
                 ],
