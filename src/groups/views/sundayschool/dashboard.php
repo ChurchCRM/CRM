@@ -276,10 +276,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         class="dropdown-item AddToCart"
                                         data-cart-id="<?= $class['id'] ?>"
                                         data-cart-type="group"
-                                        data-label-add="<?= gettext('Add all to Cart') ?>"
-                                        data-label-remove="<?= gettext('Remove all from Cart') ?>">
+                                        data-label-add="<?= gettext('Add All to Cart') ?>"
+                                        data-label-remove="<?= gettext('Remove All from Cart') ?>">
                                         <i class="fa-solid fa-cart-plus me-2"></i>
-                                        <span class="cart-label"><?= gettext('Add all to Cart') ?></span>
+                                        <span class="cart-label"><?= gettext('Add All to Cart') ?></span>
                                     </button>
                                     <?php } ?>
                                     <div class="dropdown-divider"></div>

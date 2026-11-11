@@ -315,8 +315,8 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <div class="dropdown-divider"></div>
             <a href="#" id="reportIssue" class="dropdown-item"
                data-bs-toggle="modal" data-bs-target="#IssueReportModal"
-               title="<?= gettext('Report an issue') ?>">
-              <i class="fa-solid fa-bug me-2"></i><?= gettext('Report an issue') ?>
+               title="<?= gettext('Report an Issue') ?>">
+              <i class="fa-solid fa-bug me-2"></i><?= gettext('Report an Issue') ?>
             </a>
             <a href="https://discord.gg/tuWyFzj3Nj" target="_blank" class="dropdown-item"
                title="<?= gettext('Discord Chat') ?>">

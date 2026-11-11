@@ -1392,7 +1392,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
             $group->save();
             return SlimUtils::renderSuccessJSON($response);
         } else {
-            throw new \Exception(gettext('invalid status value'));
+            throw new \Exception(gettext('Invalid status value'));
         }
     })->add(GroupMiddleware::class);
 

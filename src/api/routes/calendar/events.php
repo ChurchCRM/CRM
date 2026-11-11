@@ -734,7 +734,7 @@ function newEvent(Request $request, Response $response, array $args): Response
     $type = EventTypeQuery::create()
         ->findOneById($input['Type']);
     if (empty($type)) {
-        return SlimUtils::renderErrorJSON($response, gettext('invalid event type id'), [], 400);
+        return SlimUtils::renderErrorJSON($response, gettext('Invalid event type ID'), [], 400);
     }
 
     $calendars = CalendarQuery::create()

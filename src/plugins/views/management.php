@@ -1030,7 +1030,7 @@ $(document).ready(function() {
 
     $('#btn-browse-approved').on('click', function() {
         const $list = $('#approvedPluginsList');
-        $list.html('<div class="text-center text-body-secondary py-4"><i class="fa-solid fa-spinner fa-spin me-2"></i><?= addslashes(gettext('Loading…')) ?></div>');
+        $list.html('<div class="text-center text-body-secondary py-4"><i class="fa-solid fa-spinner fa-spin me-2"></i><?= addslashes(gettext('Loading...')) ?></div>');
         $('#approvedPluginsModal').modal('show');
 
         $.ajax({

@@ -587,7 +587,7 @@ export class CartManager {
                         <i class="fa-solid fa-map-marker text-info"></i> ${i18next.t("Map Cart")}
                     </a>`;
     } else {
-      menuHtml = `<a class="dropdown-item">${i18next.t("Your Cart is Empty")}</a>`;
+      menuHtml = `<a class="dropdown-item">${i18next.t("Your cart is empty")}</a>`;
     }
 
     $("#cart-dropdown-menu").html(menuHtml);

@@ -78,7 +78,7 @@ function modal(): { show(): void; hide(): void } | null {
 /** The badge §5.6 puts on the right of every card, in the volunteer's own words. */
 function statusBadge(assignment: VolunteerMyAssignment): { label: string; className: string } {
   if (assignment.occurrenceStatus === "cancelled") {
-    return { label: i18next.t("Cancelled"), className: "bg-red-lt text-red" };
+    return { label: i18next.t("Canceled"), className: "bg-red-lt text-red" };
   }
 
   if (assignment.pendingSwapId !== null) {
@@ -143,7 +143,7 @@ function cardHtml(assignment: VolunteerMyAssignment): string {
     : "";
   const cancelledNote = cancelled
     ? `<div class="mt-2 small text-body-secondary volunteer-card-cancelled"><i class="fa-solid fa-ban me-1"></i>` +
-      `${escapeHtml(i18next.t("This date was cancelled. Nothing more is needed from you."))}</div>`
+      `${escapeHtml(i18next.t("This date was canceled. Nothing more is needed from you."))}</div>`
     : "";
 
   return `

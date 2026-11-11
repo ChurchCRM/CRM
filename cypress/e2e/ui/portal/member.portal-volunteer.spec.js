@@ -535,7 +535,7 @@ describe("Member Portal (MP6, #9867) — volunteering inside the portal", () => 
                 cy.contains(".volunteer-assignment-card", `${PREFIX} Door`, {
                     timeout: 20000,
                 }).within(() => {
-                    cy.get(".volunteer-card-status").should("have.text", "Cancelled");
+                    cy.get(".volunteer-card-status").should("have.text", "Canceled");
                     cy.get(".volunteer-card-cancelled")
                         .should("be.visible")
                         .and("contain", "Nothing more is needed from you.");
