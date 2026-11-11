@@ -14,7 +14,6 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\Utils\PdfFilename;
 
 /**
  * Family-data confirmation report: one sheet per family showing what is on record, with the
@@ -44,7 +43,7 @@ class ConfirmReportService
     public function emailTargets(?int $familyId): array
     {
         $targets = [];
-        foreach ($this->families($familyId) as $family) {
+        foreach ($this->families($familyId, true) as $family) {
             $members = $this->livingMembers($family);
             $emails = self::recipientEmails($family, $members);
             if ($emails !== []) {
@@ -66,6 +65,9 @@ class ConfirmReportService
     {
         $candidates = [];
         foreach ($members as $member) {
+            if (!$family->isEmailable($member)) {
+                continue;
+            }
             $candidates[] = $member->getEmail();
             $candidates[] = $member->getWorkEmail();
         }
@@ -107,7 +109,10 @@ class ConfirmReportService
     }
 
     /**
-     * Build one PDF per family and email it to that family's own addresses.
+     * Email each family a link to the member portal's My Family page (#11145),
+     * where members review and edit their own details live. The printable PDF
+     * stays available at people/report/verify; it is no longer attached here,
+     * because a snapshot of emails, phones and birthdays is stale on arrival.
      *
      * Returns a structured result object instead of throwing on SMTP failure,
      * so callers can surface a specific error message to the user.
@@ -118,10 +123,7 @@ class ConfirmReportService
      */
     public function sendFamilyEmails(?int $familyId, bool $updated = false): ConfirmReportEmailResult
     {
-        $customFields = (new CustomFieldService())->getVisiblePersonFields();
-        $renderer = new MpdfRenderer();
         $senderId = (int) AuthenticationManager::getCurrentUser()->getId();
-        $dateStamp = date(SystemConfig::getValue('sDateFilenameFormat'));
 
         $targets = $this->emailTargets($familyId);
         $sentCount = 0;
@@ -131,14 +133,11 @@ class ConfirmReportService
             $family = $target['family'];
             $famName = (string) $family->getName();
 
-            $sheet = $this->familySheet($family, $target['members'], $customFields);
-            $pdfBytes = $renderer->renderToString('confirm-report', $this->document([$sheet], 'address'));
-
-            $mail = new FamilyVerificationEmail($target['emails'], $famName, null, $updated);
+            $mail = new FamilyVerificationEmail($target['emails'], $famName, $updated);
             $mail->setLogContext(null, (int) $family->getId(), $senderId);
-            $mail->addStringAttachment($pdfBytes, PdfFilename::create('ConfirmReportEmail-' . $famName . '-' . $dateStamp));
 
             if ($mail->send()) {
+                $family->createTimeLineNote('verify-link');
                 $sentCount++;
             } else {
                 LoggerUtils::getAppLogger()->error(
@@ -221,13 +220,17 @@ class ConfirmReportService
      *
      * @return list<Family>
      */
-    private function families(?int $familyId): array
+    private function families(?int $familyId, bool $forEmail = false): array
     {
         $query = FamilyQuery::create()->orderByName();
         if ($familyId !== null) {
             $query->filterById($familyId);
-        } else {
+        }
+        if ($familyId === null || $forEmail) {
             $query->filterByDateDeactivated(null);
+        }
+        if ($forEmail) {
+            $query->filterByNeedsReview(false);
         }
 
         return iterator_to_array($query->find(), false);

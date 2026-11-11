@@ -19,7 +19,7 @@ describe("Email link", () => {
                     doc.close();
                 });
             });
-        cy.contains("a", "/external/verify/").should("be.visible");
+        cy.contains("a", "/portal/family").should("be.visible");
         cy.document().its("documentElement.scrollWidth").should("be.lte", PHONE_WIDTH);
     });
 });
