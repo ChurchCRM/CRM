@@ -50,9 +50,9 @@ class DatabaseVersionService
     }
 
     /**
-     * The message that stops an upgrade on an unsupported database, or null when it may go on.
+     * What is wrong with the database server, or null when it is supported.
      */
-    public static function getUpgradeBlockMessage(?string $serverVersion = null): ?string
+    public static function getUnsupportedMessage(?string $serverVersion = null): ?string
     {
         $result = self::check($serverVersion ?? SystemService::getDBServerVersion());
         if ($result['supported']) {
@@ -60,11 +60,34 @@ class DatabaseVersionService
         }
 
         return sprintf(
-            gettext('Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later). The upgrade was not started, so nothing changed. Ask your host to move the database to a supported version, then try again.'),
+            gettext('Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later).'),
             $result['engine'],
             $result['version'],
             self::MIN_MYSQL,
             self::MIN_MARIADB
         );
+    }
+
+    /**
+     * The message that stops an upgrade on an unsupported database, or null when it may go on.
+     */
+    public static function getUpgradeBlockMessage(?string $serverVersion = null): ?string
+    {
+        $unsupported = self::getUnsupportedMessage($serverVersion);
+
+        return $unsupported === null ? null : $unsupported . ' '
+            . gettext('The upgrade was not started, so nothing changed.') . ' '
+            . gettext('Ask your host to move the database to a supported version, then try again.');
+    }
+
+    /**
+     * The warning for an upgrade that runs anyway, such as after a manual file upload.
+     */
+    public static function getUpgradeWarningMessage(?string $serverVersion = null): ?string
+    {
+        $unsupported = self::getUnsupportedMessage($serverVersion);
+
+        return $unsupported === null ? null : $unsupported . ' '
+            . gettext('Ask your host to move the database to a supported version.');
     }
 }

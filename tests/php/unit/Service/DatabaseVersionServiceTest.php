@@ -21,3 +21,7 @@ Assert::same('10.11.19', DatabaseVersionService::check('5.5.5-10.11.19-MariaDB-u
 Assert::true(DatabaseVersionService::check('Could not obtain DB Server Version')['supported'], 'an unreadable version does not block');
 Assert::null(DatabaseVersionService::getUpgradeBlockMessage('11.4.2-MariaDB'));
 Assert::contains('MariaDB 10.0.38', DatabaseVersionService::getUpgradeBlockMessage('10.0.38-MariaDB'));
+Assert::null(DatabaseVersionService::getUpgradeWarningMessage('11.4.2-MariaDB'));
+Assert::contains('MariaDB 10.0.38', DatabaseVersionService::getUpgradeWarningMessage('10.0.38-MariaDB'));
+Assert::notContains('not started', DatabaseVersionService::getUpgradeWarningMessage('10.0.38-MariaDB'), 'the warning does not claim the upgrade was stopped');
+Assert::contains('not started', DatabaseVersionService::getUpgradeBlockMessage('10.0.38-MariaDB'));
