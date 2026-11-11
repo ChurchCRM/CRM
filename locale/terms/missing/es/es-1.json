@@ -64,7 +64,7 @@
   "Expand sidebar": "Expandir barra lateral",
   "Enter a valid email address using only ASCII characters before @.": "Introduzca una dirección de correo electrónico válida que use solo caracteres ASCII antes de la @.",
   "Their email address is not valid": "Su dirección de correo electrónico no es válida",
-  "Are you sure you want to delete {{name}}?": "¿Seguro que desea eliminar a {{name}}?",
+  "Are you sure you want to delete {{name}}?": "¿Seguro que desea eliminar {{name}}?",
   "Could not gather system info. Please try again.": "No se pudo obtener la información del sistema. Inténtelo de nuevo.",
   "No payments found for this period.": "No se encontraron pagos para este período.",
   "Payments by Fund": "Pagos por fondo",
