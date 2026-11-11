@@ -46,7 +46,7 @@ if (isset($_SESSION['sGlobalMessage'])) {
 
 if (isset($_GET['PDFEmailed'])) {
     if ($_GET['PDFEmailed'] == 1) {
-        $sGlobalMessage = gettext('PDF successfully emailed to family members.');
+        $sGlobalMessage = gettext('Verification email sent to family members.');
         $sGlobalMessageClass = 'success';
     } else {
         $sGlobalMessage = gettext('Failed to email PDF to family members.');

@@ -27130,3 +27130,283 @@ msgstr "കുടുംബ വിവരങ്ങൾ പരിശോധിക്�
 msgid "Review Family Information"
 msgstr "കുടുംബ വിവരം പരിശോധിക്കുക"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "\"%s\" എന്ന പേരിൽ ഒരു ശുശ്രൂഷ ഇതിനകം ഉണ്ട്. പട്ടികയിൽ നിന്ന് അത് തിരഞ്ഞെടുക്കുക, അല്ലെങ്കിൽ മറ്റൊരു പേര് തിരഞ്ഞെടുക്കുക."
+
+#: 
+msgid "A new ministry"
+msgstr "ഒരു പുതിയ ശുശ്രൂഷ"
+
+#: 
+msgid "A position"
+msgstr "ഒരു സ്ഥാനം"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "മുമ്പ് പരിവർത്തനം ചെയ്ത സ്ഥാനങ്ങളിലേക്ക് {{total}} സ്വയംസേവകരെ ചേർക്കണോ?"
+
+#: 
+msgid "Already converted"
+msgstr "ഇതിനകം പരിവർത്തനം ചെയ്തു"
+
+#: 
+msgid "An existing ministry"
+msgstr "നിലവിലുള്ള ഒരു ശുശ്രൂഷ"
+
+#: 
+msgid "Becomes"
+msgstr "ഇതായി മാറുന്നു"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "സ്വയംസേവകരെ കൈകാര്യം ചെയ്യാൻ ChurchCRM-ൽ രണ്ട് വഴികളുണ്ട്. ഒരേ സമയം ഒന്ന് മാത്രമേ ഉപയോഗിക്കാവൂ; ഈ സഭ ഏതാണ് കാണുന്നതെന്ന് \"സ്വയംസേവക അനുഭവം\" ക്രമീകരണം തീരുമാനിക്കുന്നു. മാറ്റുന്നത് പേജുകളും മെനു ഇനങ്ങളും മറയ്ക്കുകയോ കാണിക്കുകയോ ചെയ്യും, ഡാറ്റ ഒരിക്കലും ഇല്ലാതാക്കില്ല. സ്വമേധയാ അവസരങ്ങൾ ഉപയോഗത്തിലുള്ളിടത്തോളം മാത്രമേ V1, രണ്ടും എന്നിവ ലഭ്യമാകൂ: എല്ലാ അവസരങ്ങളും പരിവർത്തനം ചെയ്യുകയും സഭ V2-ൽ ആകുകയും ചെയ്താൽ, അവ ഈ പട്ടികയിൽ നിന്ന് ഒഴിവാകും."
+
+#: 
+msgid "Convert"
+msgstr "പരിവർത്തനം ചെയ്യുക"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "സ്വമേധയാ അവസരങ്ങൾ പരിവർത്തനം ചെയ്യുക"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "ഇപ്പോൾ {{total}} അവസരങ്ങൾ പരിവർത്തനം ചെയ്യണോ? സ്വമേധയാ അവസരങ്ങൾ നിർത്തലാക്കുന്നതുവരെ V1 ഡാറ്റ അതേപടി സൂക്ഷിക്കും."
+
+#: 
+msgid "Converted"
+msgstr "പരിവർത്തനം ചെയ്തു"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "പരിവർത്തനം ചെയ്തു: {{positions}} സ്ഥാനങ്ങൾ, {{ministries}} ശുശ്രൂഷകൾ, {{qualifications}} സ്വയംസേവകർ യോഗ്യത നേടി."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "ഓരോ അവസരവും ഒരു ശുശ്രൂഷയുടെ ആദ്യ ടീമിലെ ഒരു സ്ഥാനമായി മാറും, അതുമായി ബന്ധിപ്പിച്ച എല്ലാവരും ആ സ്ഥാനത്തിന് യോഗ്യത നേടും. ഈ സ്ഥാനങ്ങളിൽ സ്വയം സൈൻ അപ്പ് തുടക്കത്തിൽ ഓഫായിരിക്കും."
+
+#: 
+msgid "Everything is converted."
+msgstr "എല്ലാം പരിവർത്തനം ചെയ്തു."
+
+#: 
+msgid "Existing ministry"
+msgstr "നിലവിലുള്ള ശുശ്രൂഷ"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "പുതിയ ശുശ്രൂഷയ്ക്ക് പരമാവധി 100 അക്ഷരങ്ങളുള്ള ഒരു പേര് നൽകുക."
+
+#: 
+msgid "Its own ministry"
+msgstr "സ്വന്തം ശുശ്രൂഷ"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "അതിനുശേഷം ബന്ധിപ്പിച്ചവർ: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "പരിവർത്തനം ചെയ്യാൻ കഴിയാത്ത ബന്ധങ്ങൾ"
+
+#: 
+msgid "New ministries of their own"
+msgstr "സ്വന്തമായ പുതിയ ശുശ്രൂഷകൾ"
+
+#: 
+msgid "New ministry name"
+msgstr "പുതിയ ശുശ്രൂഷയുടെ പേര്"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "ഇമെയിൽ ഒന്നും അയയ്ക്കില്ല, സ്വമേധയാ അവസരങ്ങൾ നിർത്തലാക്കുന്നതുവരെ അതേപടി തുടരും."
+
+#: 
+msgid "No name"
+msgstr "പേരില്ല"
+
+#: 
+msgid "Not converted"
+msgstr "പരിവർത്തനം ചെയ്തിട്ടില്ല"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "ഫീച്ചർ ടോഗിൾ തുറക്കുക"
+
+#: 
+msgid "Open Ministries"
+msgstr "ശുശ്രൂഷകൾ തുറക്കുക"
+
+#: 
+msgid "Opportunities"
+msgstr "അവസരങ്ങൾ"
+
+#: 
+msgid "Opportunity"
+msgstr "അവസരം"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "അവസരം #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "പരിവർത്തനത്തിനുശേഷം പരിവർത്തനം ചെയ്ത സ്വമേധയാ അവസരങ്ങളുമായി ബന്ധിപ്പിച്ച ആളുകൾ: %d. 2027-ന്റെ തുടക്കത്തിൽ സ്വമേധയാ അവസരങ്ങൾ നിർത്തലാക്കുന്നതിന് മുമ്പ് അവരെ അവരുടെ സ്ഥാനങ്ങളിലേക്ക് ചേർക്കുക."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "ആദ്യം പരിവർത്തനത്തിന്റെ പ്രിവ്യൂ കാണുക, അത് തിരികെ നൽകിയ പുനരവലോകനം അയയ്ക്കുക."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "പേരുകൾ അദ്വിതീയമായി നിലനിർത്താൻ പേരുമാറ്റി"
+
+#: 
+msgid "Review the conversion"
+msgstr "പരിവർത്തനം അവലോകനം ചെയ്യുക"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "പരിവർത്തന തിരഞ്ഞെടുപ്പ് ഒരു JSON ഒബ്ജക്റ്റായി അയയ്ക്കുക."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "ശുശ്രൂഷകളായി മാറുന്ന അവസരങ്ങൾ ID-കളുടെ പട്ടികയായി അയയ്ക്കുക."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "ആ ശുശ്രൂഷ നിലവിലില്ല."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "സ്വമേധയാ അവസരങ്ങൾ നിർത്തലാക്കുന്നതിനെക്കുറിച്ചുള്ള അറിയിപ്പ് ഒരു അഡ്മിനിസ്‌ട്രേറ്റർ ഒഴിവാക്കിയ ChurchCRM പതിപ്പ്."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "പ്രിവ്യൂവിനുശേഷം സ്വമേധയാ അവസരങ്ങൾ മാറി. പ്രിവ്യൂ വീണ്ടും പരിശോധിച്ച ശേഷം പരിവർത്തനം ചെയ്യുക."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "സ്ഥിരീകരണം തുറക്കാനായില്ല. പേജ് വീണ്ടും ലോഡ് ചെയ്ത് വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "പരിവർത്തനത്തിന്റെ പ്രിവ്യൂ കാണിക്കാനായില്ല."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "പരിവർത്തനം പരാജയപ്പെട്ടു. ഒന്നും മാറ്റിയിട്ടില്ല."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "\"%s\" ശുശ്രൂഷയിൽ സ്ഥാനങ്ങൾ ഉൾക്കൊള്ളാൻ ടീമില്ല."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "സെർവറിൽ എത്താനായില്ല. പരിവർത്തനം നടന്നോ എന്ന് കാണാൻ പേജ് വീണ്ടും ലോഡ് ചെയ്യുക."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "പരിവർത്തനം ചെയ്യാൻ സ്വമേധയാ അവസരങ്ങളൊന്നുമില്ല."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "പുതിയ ശുശ്രൂഷകൾ സ്വമേധയാ അവസരങ്ങൾക്കരികിൽ കാണാൻ, സന്നദ്ധസേവക നിയന്ത്രണം രണ്ടും എന്നതിലേക്ക് മാറുന്നു."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "സ്വമേധയാ അവസരങ്ങൾ നിർത്തലാക്കുന്നു"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "സ്വമേധയാ അവസരങ്ങൾ പരിവർത്തനം ചെയ്തു"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "സ്വമേധയാ അവസരങ്ങൾ 2027-ന്റെ തുടക്കത്തിൽ നിർത്തലാക്കും. ആര് എവിടെ സേവിക്കുന്നു എന്നത് നിലനിർത്താൻ അവയെ ശുശ്രൂഷകളായി പരിവർത്തനം ചെയ്യുക."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "സ്വമേധയാ അവസരങ്ങൾ 2027-ന്റെ തുടക്കത്തിൽ നിർത്തലാക്കും. നിങ്ങളുടെ %1$d അവസരങ്ങളും %2$d സ്വയംസേവകരെയും ഇപ്പോൾ ശുശ്രൂഷകളായി പരിവർത്തനം ചെയ്യുക. എന്തെങ്കിലും മാറുന്നതിന് മുമ്പ് ഫലത്തിന്റെ പ്രിവ്യൂ കാണാം."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "യോഗ്യത നേടിയ സ്വയംസേവകർ"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "പരിവർത്തനം ചെയ്ത സ്ഥാനങ്ങളിലേക്ക് ചേർക്കേണ്ട സ്വയംസേവകർ"
+
+#: 
+msgid "What it becomes"
+msgstr "ഇത് എന്തായി മാറുന്നു"
+
+#: 
+msgid "What will happen"
+msgstr "എന്ത് സംഭവിക്കും"
+
+#: 
+msgid "Where they go"
+msgstr "അവർ എവിടേക്ക് പോകുന്നു"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "ഏതൊക്കെ പഴയ സ്വമേധയാ അവസരങ്ങൾ പരിവർത്തനം ചെയ്തു, ഓരോന്നും ഏത് സ്ഥാനമായി മാറി."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "ഈ സഭ ഉപയോഗിക്കുന്ന സ്വയംസേവക അനുഭവം. സ്വമേധയാ അവസരങ്ങൾ (V1) 2027-ന്റെ തുടക്കത്തിൽ നിർത്തലാക്കും."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "നിങ്ങളുടെ സ്വമേധയാ അവസരങ്ങൾ ശുശ്രൂഷകളായി പരിവർത്തനം ചെയ്തു. 2027-ന്റെ തുടക്കത്തിൽ സ്വമേധയാ അവസരങ്ങൾ നിർത്തലാക്കുന്നതിന് മുമ്പ് സന്നദ്ധസേവക നിയന്ത്രണം V2-ലേക്ക് മാറ്റുക."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "ഒരു പുതിയ ശുശ്രൂഷയിലേക്ക്, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "{{name}} ശുശ്രൂഷയിലേക്ക്"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "ഇനി ChurchCRM-ൽ ഇല്ല"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "സൈഡ്‌ബാർ ചുരുക്കുക"
+
+#: 
+msgid "Expand sidebar"
+msgstr "സൈഡ്‌ബാർ വികസിപ്പിക്കുക"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "@-ന് മുമ്പ് ASCII അക്ഷരങ്ങൾ മാത്രം ഉപയോഗിച്ച് സാധുവായ ഇമെയിൽ വിലാസം നൽകുക."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "അവരുടെ ഇമെയിൽ വിലാസം സാധുവല്ല"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "{{name}} ഇല്ലാതാക്കണമെന്ന് ഉറപ്പാണോ?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "സിസ്റ്റം വിവരം ശേഖരിക്കാനായില്ല. വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "No payments found for this period."
+msgstr "ഈ കാലയളവിൽ പേമെന്റുകളൊന്നും കണ്ടെത്തിയില്ല."
+
+#: 
+msgid "Payments by Fund"
+msgstr "ഫണ്ട് തിരിച്ചുള്ള പേമെന്റുകൾ"
+
+#: 
+msgid "Unknown Fund"
+msgstr "അജ്ഞാത ഫണ്ട്"
+

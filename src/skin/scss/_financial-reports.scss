@@ -46,16 +46,16 @@ input.date-picker {
   }
 }
 
-.card > .card-body input[type="radio"] {
+.financial-reports > .card-body input[type="radio"] {
   margin-right: 8px;
   vertical-align: middle;
 }
 
-.card > .card-body .ts-wrapper.multi .ts-control {
+.financial-reports > .card-body .ts-wrapper.multi .ts-control {
   min-height: 40px;
   padding: 6px 8px;
 }
-.card > .card-body .ts-wrapper.multi .ts-control .item {
+.financial-reports > .card-body .ts-wrapper.multi .ts-control .item {
   margin: 3px 6px 3px 0;
   padding: 0 8px;
   background: var(--tblr-tertiary-bg);
@@ -67,6 +67,6 @@ input.date-picker {
   white-space: normal;
 }
 
-.card > .card-body select[multiple] {
+.financial-reports > .card-body select[multiple] {
   padding: 6px;
 }

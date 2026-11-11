@@ -89,7 +89,7 @@ if ($emailErrorReason !== '') {
     <i class="fa-solid fa-circle-check me-2" aria-hidden="true"></i>
     <?= htmlspecialchars(
         sprintf(
-            ngettext('PDF successfully emailed to %d family.', 'PDFs successfully emailed to %d families.', $emailSuccessCount),
+            ngettext('Verification email sent to %d family.', 'Verification emails sent to %d families.', $emailSuccessCount),
             $emailSuccessCount
         ),
         ENT_QUOTES,
@@ -125,17 +125,6 @@ if ($emailErrorReason !== '') {
     </div>
     <div class="table-responsive">
         <table id="families-complete" class="table table-vcenter table-hover card-table">
-            <tbody></tbody>
-        </table>
-    </div>
-</div>
-
-<div class="card">
-    <div class="card-header d-flex align-items-center">
-        <h3 class="card-title"><?= _("Pending Self Verify") ?></h3>
-    </div>
-    <div class="table-responsive">
-        <table id="families-pending" class="table table-vcenter table-hover card-table">
             <tbody></tbody>
         </table>
     </div>
@@ -438,8 +427,8 @@ if ($emailErrorReason !== '') {
                     title: i18next.t('Date'),
                     data: 'DateEntered',
                     searchable: false,
-                    render: function (data) {
-                        return moment(data).format("MM-DD-YY");
+                    render: function (data, type, row) {
+                        return type === "display" ? row.DateEnteredDisplay : data;
                     }
                 }
             ],
@@ -447,43 +436,6 @@ if ($emailErrorReason !== '') {
         };
         $.extend(dataTableConfig, window.CRM.plugin.dataTable);
         $("#families-complete").DataTable(dataTableConfig);
-
-        dataTableConfig = {
-            ajax: {
-                url: window.CRM.root + '/api/families/pending-self-verify',
-                dataSrc: 'families'
-            },
-            autoWidth: false,
-            columns: [
-                {
-                    width: '20%',
-                    title: i18next.t('Family Id'),
-                    data: 'FamilyId',
-                    searchable: false,
-                    render: function (data) {
-                        return '<a href=' + window.CRM.root + '/people/family/' + data + '>' + data + '</a>';
-                    }
-                },
-                {
-                    width: '50%',
-                    title: i18next.t('Family'),
-                    data: 'FamilyName',
-                    searchable: true
-                },
-                {
-                    width: '30%',
-                    title: i18next.t('Valid Until'),
-                    data: 'ValidUntilDate',
-                    searchable: false,
-                    render: function (data) {
-                        return moment(data).format("MM-DD-YY");
-                    }
-                }
-            ],
-            order: [[0, "asc"]]
-        };
-        $.extend(dataTableConfig, window.CRM.plugin.dataTable);
-        $("#families-pending").DataTable(dataTableConfig);
     }
 
     // Wait for locales to load before initializing

@@ -227,20 +227,6 @@ describe("API Private Family", () => {
         });
     });
 
-    describe("GET /api/families/pending-self-verify - Pending Verification", () => {
-        it("Returns 200 with families array", () => {
-            cy.makePrivateAdminAPICall(
-                "GET",
-                "/api/families/pending-self-verify",
-                null,
-                200,
-            ).then((response) => {
-                expect(response.body).to.have.property("families");
-                expect(response.body.families).to.be.an("array");
-            });
-        });
-    });
-
     describe("POST /api/family/{id}/activate/{status} - Activate/Deactivate Family", () => {
         it("Activate endpoint responds without error", () => {
             cy.makePrivateAdminAPICall(

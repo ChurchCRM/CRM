@@ -1954,7 +1954,7 @@
             <index-column name="psa_Time"/>
         </index>
         <index name="psa_email_time_idx">
-            <index-column name="psa_Email"/>
+            <index-column name="psa_Email" size="190"/>
             <index-column name="psa_Time"/>
         </index>
         <index name="psa_ip_time_idx">

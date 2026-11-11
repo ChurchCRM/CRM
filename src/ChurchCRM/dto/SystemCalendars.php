@@ -3,6 +3,7 @@
 namespace ChurchCRM\dto;
 
 use ChurchCRM\model\ChurchCRM\Calendar;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Plugin\PluginManager;
@@ -54,21 +55,34 @@ class SystemCalendars
         return $calendars;
     }
 
-    public static function getCalendarList(): ObjectCollection
+    /**
+     * The system calendars this staff user may read. Fundraiser dates follow the fundraiser pages.
+     *
+     * @return SystemCalendar[]
+     */
+    public static function getCalendarsFor(User $user): array
+    {
+        return array_values(array_filter(
+            self::getCalendars(),
+            static fn (SystemCalendar $calendar): bool => !$calendar instanceof FundraisersCalendar || $user->isManageFundraisersEnabled()
+        ));
+    }
+
+    public static function getCalendarList(User $user): ObjectCollection
     {
         $calendars = new ObjectCollection();
         $calendars->setModel(Calendar::class);
-        foreach (self::getCalendars() as $calendar) {
+        foreach (self::getCalendarsFor($user) as $calendar) {
             $calendars->push(self::toPropelCalendar($calendar));
         }
 
         return $calendars;
     }
 
-    public static function getCalendarById($id)
+    public static function getCalendarById($id, User $user): ?SystemCalendar
     {
         $requestedCalendar = null;
-        foreach (self::getCalendars() as $calendar) {
+        foreach (self::getCalendarsFor($user) as $calendar) {
             if ($calendar->getId() == $id) {
                 $requestedCalendar = $calendar;
                 break;

@@ -27159,3 +27159,283 @@ msgstr "Tumia kiungo hapa chini kukagua taarifa za familia yako. Kwenye ukurasa 
 msgid "Review Family Information"
 msgstr "Kagua taarifa za familia"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Huduma inayoitwa \"%s\" tayari ipo. Ichague kwenye orodha, au chagua jina jingine."
+
+#: 
+msgid "A new ministry"
+msgstr "Huduma mpya"
+
+#: 
+msgid "A position"
+msgstr "Nafasi"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Uongeze wajitoleaji {{total}} kwenye nafasi zilizobadilishwa awali?"
+
+#: 
+msgid "Already converted"
+msgstr "Tayari imebadilishwa"
+
+#: 
+msgid "An existing ministry"
+msgstr "Huduma iliyopo"
+
+#: 
+msgid "Becomes"
+msgstr "Inakuwa"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM ina njia mbili za kusimamia wajitoleaji. Ni moja tu inayokusudiwa kutumika kwa wakati mmoja; mpangilio wa \"Mfumo wa wajitoleaji\" huamua kanisa hili linaona upi. Kubadilisha huficha au huonyesha kurasa na vipengee vya menyu, na kamwe haifuti data. V1 na Zote mbili hutolewa tu wakati Fursa za Kujitolea bado zinatumika: kila fursa ikishabadilishwa na kanisa likiwa kwenye V2, huondoka kwenye orodha hii."
+
+#: 
+msgid "Convert"
+msgstr "Badilisha"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Badilisha Fursa za Kujitolea"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Ubadilishe fursa {{total}} sasa? Data ya V1 inabaki kama ilivyo hadi Fursa za Kujitolea zitakapositishwa."
+
+#: 
+msgid "Converted"
+msgstr "Imebadilishwa"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Imebadilishwa: nafasi {{positions}} na huduma {{ministries}}, wajitoleaji {{qualifications}} wamethibitishwa."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Kila fursa inakuwa nafasi katika timu ya kwanza ya huduma moja, na kila mtu aliyeunganishwa nayo anathibitishwa kwa nafasi hiyo. Kujisajili mwenyewe huanza kukiwa kumezimwa kwenye nafasi hizi."
+
+#: 
+msgid "Everything is converted."
+msgstr "Kila kitu kimebadilishwa."
+
+#: 
+msgid "Existing ministry"
+msgstr "Huduma iliyopo"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Ipe huduma mpya jina lenye herufi zisizozidi 100."
+
+#: 
+msgid "Its own ministry"
+msgstr "Huduma yake yenyewe"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Waliounganishwa tangu hapo: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Viungo visivyoweza kubadilishwa"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Huduma mpya zao wenyewe"
+
+#: 
+msgid "New ministry name"
+msgstr "Jina la huduma mpya"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Hakuna barua pepe inayotumwa, na Fursa za Kujitolea zinabaki kama zilivyo hadi zitakapositishwa."
+
+#: 
+msgid "No name"
+msgstr "Hakuna jina"
+
+#: 
+msgid "Not converted"
+msgstr "Haijabadilishwa"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Fungua Swichi za Vipengele"
+
+#: 
+msgid "Open Ministries"
+msgstr "Fungua Huduma"
+
+#: 
+msgid "Opportunities"
+msgstr "Fursa"
+
+#: 
+msgid "Opportunity"
+msgstr "Fursa"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Fursa #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Watu waliounganishwa na Fursa za Kujitolea zilizobadilishwa tangu ubadilishaji: %d. Waongeze kwenye nafasi zao kabla Fursa za Kujitolea hazijasitishwa mapema mwaka 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Hakiki ubadilishaji kwanza, kisha tuma toleo lililorudishwa."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Imepewa jina jipya ili majina yasijirudie"
+
+#: 
+msgid "Review the conversion"
+msgstr "Kagua ubadilishaji"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Tuma chaguo la ubadilishaji kama kitu cha JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Tuma fursa zitakazokuwa huduma kama orodha ya vitambulisho."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Huduma hiyo haipo."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Toleo la ChurchCRM ambalo msimamizi aliondoa tangazo la kusitishwa kwa Fursa za Kujitolea."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Fursa za Kujitolea zimebadilika tangu hakikisho. Kagua hakikisho tena, kisha badilisha."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Uthibitisho haukuweza kufunguka. Pakia ukurasa upya kisha ujaribu tena."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Hakikisho la ubadilishaji halikuweza kuonyeshwa."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Ubadilishaji umeshindwa. Hakuna kilichobadilishwa."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Huduma \"%s\" haina timu ya kubeba nafasi hizo."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Seva haikufikiwa. Pakia ukurasa upya ili kuona kama ubadilishaji ulifanyika."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Hakuna Fursa za Kujitolea za kubadilisha."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Usimamizi wa Wajitoleaji unabadilika kuwa Zote mbili, ili huduma mpya zionekane kando ya Fursa za Kujitolea."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Fursa za Kujitolea zinasitishwa"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Fursa za Kujitolea zimebadilishwa"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Fursa za Kujitolea zitasitishwa mapema mwaka 2027. Zibadilishe kuwa Huduma ili kuhifadhi nani anajitolea wapi."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Fursa za Kujitolea zitasitishwa mapema mwaka 2027. Badilisha sasa fursa zako %1$d na wajitoleaji %2$d kuwa Huduma. Unaweza kuhakiki matokeo kabla chochote hakijabadilika."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Wajitoleaji waliothibitishwa"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Wajitoleaji wa kuongezwa kwenye nafasi zilizobadilishwa"
+
+#: 
+msgid "What it becomes"
+msgstr "Inakuwa nini"
+
+#: 
+msgid "What will happen"
+msgstr "Kitakachotokea"
+
+#: 
+msgid "Where they go"
+msgstr "Wanakokwenda"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Fursa za Kujitolea za zamani zilizobadilishwa, na nafasi ambayo kila moja ilikuwa."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Mfumo wa wajitoleaji unaotumiwa na kanisa hili. Fursa za Kujitolea (V1) zitasitishwa mapema mwaka 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Fursa zako za Kujitolea zimebadilishwa kuwa Huduma. Badilisha Usimamizi wa Wajitoleaji kuwa V2 kabla Fursa za Kujitolea hazijasitishwa mapema mwaka 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "kuwa huduma mpya, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "kwenye huduma {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "haipo tena kwenye ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Kunja upau wa pembeni"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Panua upau wa pembeni"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Weka anwani sahihi ya barua pepe inayotumia herufi za ASCII pekee kabla ya @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Anwani yao ya barua pepe si sahihi"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Una uhakika unataka kufuta {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Taarifa za mfumo hazikuweza kukusanywa. Tafadhali jaribu tena."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Hakuna malipo yaliyopatikana kwa kipindi hiki."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Malipo kwa Mfuko"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Mfuko Usiojulikana"
+

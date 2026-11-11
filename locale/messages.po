@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-09 20:06+0000\n"
+"POT-Creation-Date: 2026-11-11 04:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1950,6 +1950,12 @@ msgid "Ask someone to cover for you"
 msgstr ""
 
 msgid "Ask them"
+msgstr ""
+
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr ""
+
+msgid "Ask your host to move the database to a supported version."
 msgstr ""
 
 msgid "Asked — your coordinator will confirm it."
@@ -8361,6 +8367,14 @@ msgstr ""
 msgid "Holiday Settings"
 msgstr ""
 
+#. plugin:holidays:section:3:content
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr ""
+
+#. plugin:holidays:section:3:title
+msgid "Holiday names in your language"
+msgstr ""
+
 #, php-format
 msgid "Holidays (%s)"
 msgstr ""
@@ -14061,12 +14075,13 @@ msgstr ""
 msgid "Request failed ({{status}})"
 msgstr ""
 
-msgid ""
-"Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
 msgstr ""
 
 msgid "Require all users to enroll in two-factor authentication"
+msgstr ""
+
+msgid "Require check number on check payments"
 msgstr ""
 
 msgid "Required"
@@ -17073,6 +17088,9 @@ msgstr ""
 msgid "The unconfirmed email has changed. Reload the page and try again."
 msgstr ""
 
+msgid "The upgrade was not started, so nothing changed."
+msgstr ""
+
 msgid "The volunteer assignment could not be saved"
 msgstr ""
 
@@ -17654,6 +17672,9 @@ msgid "This title will be used for all generated events."
 msgstr ""
 
 msgid "This tool never changes these. Give each person their own email on their record."
+msgstr ""
+
+msgid "This upgrade cannot run on your database."
 msgstr ""
 
 msgid "This user must set a new password the next time they sign in."
@@ -20009,6 +20030,10 @@ msgid "Your database already contains data"
 msgstr ""
 
 msgid "Your database is being updated. Please keep this page open until the upgrade finishes."
+msgstr ""
+
+#, php-format
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
 msgstr ""
 
 msgid "Your database version is newer than the installed software. This usually means the software was rolled back to an older version. Please upgrade ChurchCRM to match your database."

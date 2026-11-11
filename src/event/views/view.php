@@ -317,18 +317,9 @@ $inactive = (int) $event->getInActive() === 1;
   </div>
 </div>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  document.addEventListener("DOMContentLoaded", function () {
-    var btn = document.getElementById("event-add-attendees-to-cart");
-    if (!btn) return;
-    btn.addEventListener("click", function () {
-      var ids = btn.dataset.personIds.split(",").map(Number).filter(Boolean);
-      if (ids.length > 0 && window.CRM && window.CRM.cartManager) {
-        window.CRM.cartManager.addPerson(ids);
-      }
-    });
-  });
-</script>
+<?php if (!empty($attendees)): ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/event-attendees-cart.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+<?php endif; ?>
 
 <?php if (!empty($volunteerOccurrences)): ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/ministries-event-staffing.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>

@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DatabaseVersionService;
 use ChurchCRM\Utils\VersionUtils;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
@@ -57,6 +58,7 @@ $app->get('/limited-access', function (Request $request, Response $response): Re
             'dbVersion' => $dbVersion,
             'softwareVersion' => $softwareVersion,
             'errorMessage' => $errorMessage,
+            'databaseNotice' => $errorMessage ? DatabaseVersionService::getUpgradeWarningMessage() : null,
         ];
         return $renderer->render($response, 'system-db-update.php', $pageArgs);
     });

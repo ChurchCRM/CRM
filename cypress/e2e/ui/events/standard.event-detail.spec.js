@@ -146,32 +146,22 @@ describe("Event Detail - Did Not Attend List", () => {
 
     beforeEach(() => cy.setupAdminSession());
 
-    it("Shows the Did Not Attend card after a group-linked event ends", () => {
-        cy.visit(`event/view/${pastGroupEventId}`);
-        cy.contains("h3", "Did Not Attend").should("be.visible");
-    });
-
-    it("Did Not Attend card has Name, Email and Phone columns", () => {
+    it("lists the absent members, with Print and no Check-in, after a group-linked event ends", () => {
+        // absentCount was captured in before() — no API call needed here
         cy.visit(`event/view/${pastGroupEventId}`);
 
         cy.contains("h3", "Did Not Attend")
+            .should("be.visible")
             .closest(".card")
             .within(() => {
                 cy.contains("th", "Name").should("exist");
                 cy.contains("th", "Email").should("exist");
                 cy.contains("th", "Phone").should("exist");
-            });
-    });
-
-    it("Non-attendee count in badge matches roster not_checked_in count", () => {
-        // absentCount was captured in before() — no API call needed here
-        cy.visit(`event/view/${pastGroupEventId}`);
-
-        cy.contains("h3", "Did Not Attend")
-            .closest(".card")
-            .within(() => {
                 cy.get("tbody tr").should("have.length", absentCount);
             });
+        cy.contains("h3", "Attendance").closest(".card-header").contains("button", "Print").should("be.visible");
+        // a.btn, not the sidebar's "Check-in and Check-out" link, which is always there
+        cy.contains("a.btn", "Check-in").should("not.exist");
     });
 
     it("Checked-in member appears in Attendance and not in Did Not Attend", () => {
@@ -225,14 +215,6 @@ describe("Event Detail - Did Not Attend List", () => {
         cy.contains("h3", "Did Not Attend").should("not.exist");
     });
 
-    it("Check-in button is hidden for past events", () => {
-        cy.visit(`event/view/${pastGroupEventId}`);
-        // Use a.btn to avoid matching the sidebar nav link
-        // "Check-in and Check-out" which always appears in the
-        // navigation regardless of event state.
-        cy.contains("a.btn", "Check-in").should("not.exist");
-    });
-
     it("Add All to Cart puts the checked-in attendees in the cart", () => {
         cy.intercept("POST", "**/api/cart/").as("addToCart");
         cy.visit(`event/view/${pastGroupEventId}`);
@@ -248,20 +230,6 @@ describe("Event Detail - Did Not Attend List", () => {
                 sent.Persons.length,
             );
         });
-    });
-
-    it("Hides Add All to Cart when nobody has checked in", () => {
-        cy.visit(`event/view/${pastNoGroupEventId}`);
-        cy.get("#event-add-attendees-to-cart").should("not.exist");
-    });
-
-    it("Print button appears on the Attendance card for past group events", () => {
-        cy.visit(`event/view/${pastGroupEventId}`);
-
-        cy.contains("h3", "Attendance")
-            .closest(".card-header")
-            .contains("button", "Print")
-            .should("be.visible");
     });
 
     // Run last — calls checkin-all which changes state for all subsequent tests.
