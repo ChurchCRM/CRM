@@ -76,6 +76,6 @@ describe("Treasurer records checks without check numbers", () => {
             expect(response.statusCode).to.eq(400);
             expect(response.body.message).to.contain(`Check number '${checkNumber}' for selected family already exists.`);
         });
-        cy.location("pathname").should("eq", "/finance/pledge/new");
+        cy.location("pathname").should("match", /\/finance\/pledge\/new$/);
     });
 });
