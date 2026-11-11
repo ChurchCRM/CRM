@@ -637,7 +637,7 @@ $fmtBytes = static function ($bytes): string {
                         <li><?= gettext('URLs with query strings (record IDs are stripped)') ?></li>
                     </ul>
                     <p class="small text-secondary mt-2 mb-0">
-                        <?= gettext('Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades, under an ID every installation shares. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States.') ?>
+                        <?= gettext('Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States.') ?>
                     </p>
                 </div>
             </div>

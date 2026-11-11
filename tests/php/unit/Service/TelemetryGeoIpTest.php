@@ -73,5 +73,5 @@ foreach ($payloads as $payload) {
     Assert::same(TelemetryService::POSTHOG_KEY, $payload['api_key']);
 }
 foreach ($payloads as $payload) {
-    Assert::same(str_ends_with($payload['event'], '_failed') && !str_starts_with($payload['event'], 'upgrade_sql') ? 'churchcrm-aggregate-failures' : 'install-id', $payload['distinct_id']);
+    Assert::match($payload['event'] === 'install_failed' ? 'install-%h%' : 'install-id', $payload['distinct_id']);
 }

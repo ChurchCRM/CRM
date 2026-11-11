@@ -85,7 +85,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
         $expected = $profile === 'test' ? 0 : ($level === 'none' ? 1 : 3);
         Assert::count($expected, $GLOBALS['lifecyclePayloads']);
         foreach ($GLOBALS['lifecyclePayloads'] as $payload) {
-            Assert::same($level === 'none' ? 'churchcrm-aggregate-failures' : 'church-guid', $payload['distinct_id']);
+            Assert::same('church-guid', $payload['distinct_id']);
             $properties = $payload['properties'];
             $keys = ['crm_version', 'install_profile', 'church_country', 'database_engine', 'database_version'];
             if ($payload['event'] !== 'install_observed') {
@@ -152,7 +152,7 @@ Assert::false(array_key_exists('database_error', $GLOBALS['lifecyclePayloads'][0
 $configs->setValue(null, ['sTelemetryLevel' => $value('none'), 'sInstallDataProfile' => $value('production')]);
 $GLOBALS['lifecyclePayloads'] = [];
 TelemetryService::captureInstallFailure('schema_import_failed');
-Assert::same('churchcrm-aggregate-failures', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
+Assert::match('install-%h%', $GLOBALS['lifecyclePayloads'][0]['distinct_id']);
 
 $_SERVER['HTTP_HOST'] = 'stmarys.example.org:8080';
 Assert::same(

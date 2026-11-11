@@ -16,8 +16,6 @@ class TelemetryService
     public const POSTHOG_KEY      = 'phc_vhMEHZai3exmp3sqqtJGyVY8Dfjn877bV7zQjV99sJZy';
     public const POSTHOG_ENDPOINT = 'https://us.i.posthog.com';
     public const POSTHOG_CAPTURE_ENDPOINT = self::POSTHOG_ENDPOINT . '/i/v0/e/';
-    /** One ID shared by every installation, for failures reported at level none. */
-    private const FAILURE_DISTINCT_ID = 'churchcrm-aggregate-failures';
 
     // Collection levels stored in sTelemetryLevel.
     public const LEVEL_NONE     = 'none';
@@ -231,29 +229,26 @@ class TelemetryService
     /**
      * A failed first install has no configuration and no installation ID yet. Its ID is hashed from the
      * document root's device and inode, which hold no server name or path, so repeated attempts on one
-     * server count as one installation. At level none it uses the shared failure ID instead.
+     * server count as one installation. Sent at every level.
      */
     public static function captureInstallFailure(string $reason): void
     {
         if (self::installProfile() === 'test') {
             return;
         }
-        $distinctId = self::FAILURE_DISTINCT_ID;
-        if (!SystemConfig::isInitialized() || self::getLevel() !== self::LEVEL_NONE) {
-            $stat = @stat(SystemURLs::getDocumentRoot());
-            if ($stat !== false) {
-                $distinctId = 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32);
-            }
+        $stat = @stat((string) SystemURLs::getDocumentRoot());
+        if ($stat === false) {
+            return;
         }
         self::capture('install_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
             'failure_reason' => in_array($reason, ['schema_import_failed'], true) ? $reason : 'other',
-        ]), $distinctId);
+        ]), 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32));
     }
 
     /** Fixed codes only: a free-text reason could carry details of a church's installation. */
     public const UPGRADE_FAILURE_REASONS = ['no_upgrade_path', 'script_interrupted'];
 
-    /** Sent at every level so failed upgrades get fixed; at level none it carries the shared failure ID, not this installation's. */
+    /** Sent at every level so failed upgrades get fixed. */
     public static function captureUpgradeFailure(string $version, string $reason): void
     {
         if (self::installProfile() === 'test') {
@@ -284,7 +279,7 @@ class TelemetryService
         self::capture('upgrade_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
             'from_version' => $fromVersion,
             'failure_reason' => $reason,
-        ]), self::getLevel() === self::LEVEL_NONE ? self::FAILURE_DISTINCT_ID : null);
+        ]));
     }
 
     public static function captureUpgradeInterruption(string $version, int $elapsedMs): void

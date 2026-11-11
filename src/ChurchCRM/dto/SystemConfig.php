@@ -377,7 +377,7 @@ class   SystemConfig
             'sDefaultZip'                          => new ConfigItem('sDefaultZip', 'text', '', gettext('Default Zip')),
             'sSystemID'                            => new ConfigItem('sSystemID', 'text', ''),
 
-            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'install', gettext('Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades, with no installation ID.'), '', json_encode(self::getTelemetryLevelChoices())),
+            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'install', gettext('Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades.'), '', json_encode(self::getTelemetryLevelChoices())),
             'sInstallDataProfile'                  => new ConfigItem('sInstallDataProfile', 'choice', 'production', '', '', json_encode(['production' => 'production', 'demo' => 'demo', 'test' => 'test'])),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
             'sTelemetryLifecycleVersion'            => new ConfigItem('sTelemetryLifecycleVersion', 'text', ''),
