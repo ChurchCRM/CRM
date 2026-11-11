@@ -27,6 +27,15 @@ class AppIntegrityService
         return dirname(__DIR__, 2);
     }
 
+    /**
+     * A 6.x upgrader that is still running after the new files land calls this.
+     * The integrity check no longer caches, so there is nothing to clear.
+     */
+    public static function clearIntegrityCache(): void
+    {
+        self::$IntegrityCheckDetails = null;
+    }
+
     private static function getIntegrityCheckData()
     {
         // In-memory cache only — avoids re-scanning within the same request
