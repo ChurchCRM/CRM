@@ -16,10 +16,13 @@ Agent rules: `.agents/skills/churchcrm/i18n-localization.md`.
 | Command | Purpose |
 |---------|---------|
 | `npm run locale:build` | Extract terms into `messages.po` (merge-to-master job) |
-| `npm run locale:download` | POEditor download + missing-term batches |
-| `npm run locale:audit` | Completeness report |
-| `npm run locale:translate:list` | Locales with missing terms |
+| `npm run locale:missing` | Missing-term batches from the repo (`locale/terms/missing/`, git-ignored) |
+| `npm run locale:translate:list` | Locales with missing terms in the batches |
+| `npm run locale:apply` | Write filled batches into `src/locale/i18n` and rebuild each `.po`/`.mo` (`--prune` drops removed terms, `--check` verifies) |
+| `npm run locale:audit` | Completeness report from the repo |
 
-Add a language: `node locale/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country "KR"`
+Translations live in the repo; there is no outside translation service. The full loop: `docs/maintainers/locale-pipeline.md`.
+
+Add a language: `node locale/scripts/locale-add.js --name "Korean" --code "ko" --locale "ko_KR" --country "KR"`
 
 Scripts: `locale/scripts/`.
