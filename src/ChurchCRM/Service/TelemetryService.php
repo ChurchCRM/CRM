@@ -82,6 +82,12 @@ class TelemetryService
             return;
         }
 
+        // Skip the lock and queries on the common request: nothing is due.
+        if (SystemConfig::getValue('sTelemetryLifecycleVersion') === VersionUtils::getInstalledVersion()
+            && SystemConfig::getValue('sTelemetryHeartbeatDate') === gmdate('Y-m-d')) {
+            return;
+        }
+
         $connection = null;
         if ($send === null) {
             try {

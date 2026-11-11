@@ -86,7 +86,7 @@ describe('02 - Demo Data Import', () => {
             // The modal closes when the import succeeds and stays open with an error when it fails
             cy.get('#demoImportModal', { timeout: 120000 }).should('not.be.visible');
             cy.getSystemConfig('sInstallDataProfile').should('eq', 'demo');
-            cy.getSystemConfig('sTelemetryLevel').should('eq', 'full');
+            cy.getSystemConfig('sTelemetryLevel').should('not.eq', 'full');
         });
     });
 

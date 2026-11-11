@@ -32,7 +32,6 @@
             <div class="modal-body" id="demoImportConfirm">
               <p class="fw-medium">${i18next.t("This will add sample data to your database")}:</p>
               <ul class="list-unstyled mb-0">${included}</ul>
-              <p class="text-secondary mt-3 mb-0">${i18next.t("Importing demo data marks this installation as Demo and enables Full telemetry, including warnings, error reports, and page views. Change your choice or stop reporting in Admin → Telemetry.")}</p>
               <div id="demoImportInstructions" class="mt-3 pt-3 border-top">
                 <div class="fw-medium">${i18next.t("Need to remove this data later?")}</div>
                 <div class="text-secondary">${i18next.t("After importing, you can use Reset Database on the Admin Dashboard to clear all data and start fresh. Your application configuration will be preserved.")}</div>
