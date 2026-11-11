@@ -22919,12 +22919,6 @@ msgid "Registering..."
 msgstr "Po regjistrohet..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Kërkoni një numër kontrolli kur regjistroni pagesat e kontrollit në zërat e depozitit.\n"
-"Shënim: çaktivizimi i këtij deaktivon gjithashtu zbulimin e numrave të ndryshueshëm - i njëjti kontroll fizik mund të futet më shumë se një herë."
-
-#: 
 msgid "This event has ended"
 msgstr "Kjo ngjarje ka përfunduar"
 

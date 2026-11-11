@@ -80,7 +80,6 @@
   "Not authorized to remove the volunteer ministry from this event": "Not authorised to remove the volunteer ministry from this event",
   "Not authorized to change this event's audience group": "Not authorised to change this event's audience group",
   "Please enter a check number": "Please enter a cheque number",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Require a cheque number when recording cheque payments on deposit entries.\nNote: disabling this also disables duplicate cheque-number detection — the same physical cheque may be entered more than once.",
   "Not authorized to grant this scope": "Not authorised to grant this scope",
   "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc).": "Customise the text that appears on giving statements (sTaxReport1, sTaxReport2, etc).",
   "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total.": "Print the selected deposit in full, with cash and cheque totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total.",

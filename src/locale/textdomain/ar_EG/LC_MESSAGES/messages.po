@@ -23044,12 +23044,6 @@ msgid "Registering..."
 msgstr "جارٍ التسجيل..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "اشتراط رقم الشيك عند تسجيل مدفوعات الشيكات في قيود الإيداع.\n"
-"ملاحظة: تعطيل هذا الخيار يعطّل أيضًا اكتشاف تكرار أرقام الشيكات — فقد يُدخَل الشيك الفعلي نفسه أكثر من مرة."
-
-#: 
 msgid "This event has ended"
 msgstr "انتهى هذا الحدث"
 

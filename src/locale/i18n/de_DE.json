@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "Walk-in-Gast registrieren",
   "Registered as a walk-in guest at the kiosk during event: %s": "Als Walk-in-Gast am Kiosk während des Ereignisses registriert: %s",
   "Registering...": "Wird registriert...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Schecknummer erforderlich, wenn Scheckzahlungen in Einzahlungseinträgen erfasst werden.\nHinweis: Das Deaktivieren deaktiviert auch die Erkennung von doppelten Schecknummern – derselbe physische Scheck kann mehrfach eingegeben werden.",
   "This event has ended": "Dieses Ereignis ist beendet",
   "This event has no group assigned, so guests cannot be registered": "Diesem Ereignis ist keine Gruppe zugewiesen, daher können Gäste nicht registriert werden",
   "This event has no start and end time": "Dieses Ereignis hat keine Start- und Endzeit",

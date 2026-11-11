@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "திடீர் விருந்தினரைப் பதிவு செய்",
   "Registered as a walk-in guest at the kiosk during event: %s": "நிகழ்ச்சியின்போது கியோஸ்கில் திடீர் விருந்தினராகப் பதிவு செய்யப்பட்டது: %s",
   "Registering...": "பதிவு செய்கிறது...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "வைப்பு உள்ளீடுகளில் காசோலைக் கொடுப்பனவுகளைப் பதிவு செய்யும்போது காசோலை எண்ணைக் கட்டாயமாக்கு.\nகுறிப்பு: இதை முடக்கினால் நகல் காசோலை எண் கண்டறிதலும் முடக்கப்படும் — அதே காசோலை ஒன்றுக்கு மேற்பட்ட முறை உள்ளிடப்படலாம்.",
   "This event has ended": "இந்த நிகழ்ச்சி முடிந்துவிட்டது",
   "This event has no group assigned, so guests cannot be registered": "இந்த நிகழ்ச்சிக்கு குழு ஒதுக்கப்படவில்லை, எனவே விருந்தினர்களைப் பதிவு செய்ய முடியாது",
   "This event has no start and end time": "இந்த நிகழ்ச்சிக்கு தொடக்க மற்றும் முடிவு நேரம் இல்லை",

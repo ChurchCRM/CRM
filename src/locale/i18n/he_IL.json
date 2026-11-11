@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "רישום אורח ללא הרשמה מראש",
   "Registered as a walk-in guest at the kiosk during event: %s": "נרשם כאורח ללא הרשמה מראש בקיוסק במהלך האירוע: %s",
   "Registering...": "נרשם...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "דרישת מספר צ׳ק בעת רישום תשלומי צ׳קים ברשומות הפקדה.\nשימו לב: ביטול האפשרות מבטל גם את זיהוי מספרי הצ׳קים הכפולים — ייתכן שאותו צ׳ק פיזי יוזן יותר מפעם אחת.",
   "This event has ended": "אירוע זה הסתיים",
   "This event has no group assigned, so guests cannot be registered": "לאירוע זה לא הוקצתה קבוצה, ולכן אי אפשר לרשום אורחים",
   "This event has no start and end time": "לאירוע זה אין שעת התחלה וסיום",

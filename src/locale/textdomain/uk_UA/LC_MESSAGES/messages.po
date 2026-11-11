@@ -22988,12 +22988,6 @@ msgid "Registering..."
 msgstr "Реєстрація..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Вимагати номер чека при запису чеків у записи внесків.\n"
-"Примітка: вимкнення цього також вимикає виявлення дублікатів чеків — один фізичний чек можна ввести кілька разів."
-
-#: 
 msgid "This event has ended"
 msgstr "Ця подія завершилася"
 

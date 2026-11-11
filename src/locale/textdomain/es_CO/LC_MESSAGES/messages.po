@@ -22928,12 +22928,6 @@ msgid "Registering..."
 msgstr "Registrando..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Requiera un número de cheque al registrar pagos de cheques en entradas de depósito.\n"
-"Nota: deshabilitar esto también deshabilita la detección de números de cheque duplicados — el mismo cheque físico puede ser ingresado más de una vez."
-
-#: 
 msgid "This event has ended"
 msgstr "Este evento ha terminado"
 

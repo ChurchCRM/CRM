@@ -5566,7 +5566,6 @@
   "Register walk-in guest": "Daftarkan tamu yang datang",
   "Registered as a walk-in guest at the kiosk during event: %s": "Terdaftar sebagai tamu yang datang di kiosk selama acara: %s",
   "Registering...": "Sedang mendaftar...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Memerlukan nomor cek saat merekam pembayaran cek pada entri penyetoran.\nCatatan: menonaktifkan ini juga menonaktifkan deteksi nomor cek duplikat — cek fisik yang sama dapat dimasukkan lebih dari sekali.",
   "This event has ended": "Acara ini telah berakhir",
   "This event has no group assigned, so guests cannot be registered": "Acara ini tidak memiliki kelompok yang ditugaskan, jadi tamu tidak dapat didaftarkan",
   "This event has no start and end time": "Acara ini tidak memiliki waktu mulai dan berakhir",

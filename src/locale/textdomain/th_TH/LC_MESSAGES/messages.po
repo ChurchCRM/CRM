@@ -22877,12 +22877,6 @@ msgid "Registering..."
 msgstr "กำลังลงทะเบียน..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "ต้องใช้หมายเลขตรวจสอบเมื่อบันทึกการชำระเช็คในรายการเงินฝาก\n"
-"หมายเหตุ: การปิดใช้งานนี้ยังปิดใช้งานการตรวจหาหมายเลขตรวจสอบที่ซ้ำกัน — เช็คเดียวกันอาจถูกป้อนมากกว่าครั้งเดียว"
-
-#: 
 msgid "This event has ended"
 msgstr "กิจกรรมนี้สิ้นสุดลงแล้ว"
 

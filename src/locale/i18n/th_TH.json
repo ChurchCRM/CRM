@@ -5566,7 +5566,6 @@
   "Register walk-in guest": "ลงทะเบียนผู้เยี่ยมชมเดินเข้า",
   "Registered as a walk-in guest at the kiosk during event: %s": "ลงทะเบียนเป็นผู้เยี่ยมชมเดินเข้าที่ kiosk ระหว่างกิจกรรม: %s",
   "Registering...": "กำลังลงทะเบียน...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "ต้องใช้หมายเลขตรวจสอบเมื่อบันทึกการชำระเช็คในรายการเงินฝาก\nหมายเหตุ: การปิดใช้งานนี้ยังปิดใช้งานการตรวจหาหมายเลขตรวจสอบที่ซ้ำกัน — เช็คเดียวกันอาจถูกป้อนมากกว่าครั้งเดียว",
   "This event has ended": "กิจกรรมนี้สิ้นสุดลงแล้ว",
   "This event has no group assigned, so guests cannot be registered": "กิจกรรมนี้ไม่มีกลุ่มที่กำหนด ดังนั้นจึงไม่สามารถลงทะเบียนผู้เยี่ยมชมได้",
   "This event has no start and end time": "กิจกรรมนี้ไม่มีเวลาเริ่มต้นและสิ้นสุด",

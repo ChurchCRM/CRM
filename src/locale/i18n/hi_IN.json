@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "आने वाले अतिथि को पंजीकृत करें",
   "Registered as a walk-in guest at the kiosk during event: %s": "इवेंट के दौरान कियोस्क पर आने वाले अतिथि के रूप में पंजीकृत: %s",
   "Registering...": "पंजीकरण जारी है...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "जमा प्रविष्टियों में चेक भुगतान रिकॉर्ड करते समय चेक नंबर की आवश्यकता होती है।\nनोट: इसे अक्षम करने से डुप्लिकेट चेक-नंबर का पता लगाना भी अक्षम हो जाता है — एक ही भौतिक चेक को एक से अधिक बार दर्ज किया जा सकता है।",
   "This event has ended": "यह इवेंट समाप्त हो गया है",
   "This event has no group assigned, so guests cannot be registered": "इस इवेंट के लिए कोई समूह नियत नहीं है, इसलिए मेहमान पंजीकृत नहीं हो सकते",
   "This event has no start and end time": "इस इवेंट का कोई शुरुआत और अंत समय नहीं है",

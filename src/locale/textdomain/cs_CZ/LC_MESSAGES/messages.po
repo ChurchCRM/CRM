@@ -22947,12 +22947,6 @@ msgid "Registering..."
 msgstr "Registrace..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Vyžadovat číslo šeku při zaznamenávání plateb šeky v zápisech vkladů.\n"
-"Pozn.: zakázání také zakáže detekci duplicitních čísel šeků — stejný fyzický šek lze zadat více než jednou."
-
-#: 
 msgid "This event has ended"
 msgstr "Tato akce skončila"
 

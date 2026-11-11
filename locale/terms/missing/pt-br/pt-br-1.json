@@ -1,0 +1,11 @@
+{
+  "Ask your host to move the database to a supported version, then try again.": "",
+  "Ask your host to move the database to a supported version.": "",
+  "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English.": "",
+  "Holiday names in your language": "",
+  "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates.": "",
+  "Require check number on check payments": "",
+  "The upgrade was not started, so nothing changed.": "",
+  "This upgrade cannot run on your database.": "",
+  "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later).": ""
+}

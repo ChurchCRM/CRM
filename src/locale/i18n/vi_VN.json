@@ -5566,7 +5566,6 @@
   "Register walk-in guest": "Đăng ký khách đi bộ",
   "Registered as a walk-in guest at the kiosk during event: %s": "Được đăng ký làm khách đi bộ tại máy kiosk trong sự kiện: %s",
   "Registering...": "Đang đăng ký...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Yêu cầu số séc khi ghi lại khoản thanh toán bằng séc trong các mục gửi tiền.\nLưu ý: tắt tính năng này cũng sẽ tắt tính năng phát hiện số séc trùng lặp — cùng một séc vật lý có thể được nhập nhiều lần.",
   "This event has ended": "Sự kiện này đã kết thúc",
   "This event has no group assigned, so guests cannot be registered": "Sự kiện này không có nhóm được gán, vì vậy khách không thể được đăng ký",
   "This event has no start and end time": "Sự kiện này không có thời gian bắt đầu và kết thúc",

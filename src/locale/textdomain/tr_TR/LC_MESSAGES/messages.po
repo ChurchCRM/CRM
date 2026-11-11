@@ -22928,12 +22928,6 @@ msgid "Registering..."
 msgstr "Kayıt olunuyor..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Çek ödemelerini mevduat girişlerine kaydederken bir çek numarası gerektirir.\n"
-"Not: Bunu devre dışı bırakmak, yinelenen çek numarası algılamayı da devre dışı bırakır - aynı fiziksel çek birden fazla kez girilebilir."
-
-#: 
 msgid "This event has ended"
 msgstr "Bu olay sona erdi"
 

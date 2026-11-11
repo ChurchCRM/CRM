@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "rekisteröi vieras",
   "Registered as a walk-in guest at the kiosk during event: %s": "Rekisteröity vieraana kioskin kautta tapahtuman aikana: %s",
   "Registering...": "Rekisteröinnin...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Vaadi sekin numero tallennettaessa sekin maksuja tallennusmerkintöihin.\nHuomio: tämän poistaminen käytöstä poistaa myös kaksoissekinumeron havaitsemisen - sama fyysinen sekki voidaan antaa useammin kuin kerran.",
   "This event has ended": "Tämä tapahtuma on päättynyt",
   "This event has no group assigned, so guests cannot be registered": "Tälle tapahtumalle ei ole määritetty ryhmää, joten vieraita ei voi rekisteröidä",
   "This event has no start and end time": "Tällä tapahtumalla ei ole alkamis- ja päättymisaikaa",

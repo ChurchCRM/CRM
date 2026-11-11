@@ -22955,12 +22955,6 @@ msgid "Registering..."
 msgstr "Registrácia..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Vyžadujte číslo šeku pri záznamu platieb šekmi v záznamoch vkladov.\n"
-"Pozn.: vypnutie tohto tiež zakáže detekciu duplicitných čísel šekov — ten istý fyzický šek je možné zadať viackrát."
-
-#: 
 msgid "This event has ended"
 msgstr "Táto udalosť skončila"
 

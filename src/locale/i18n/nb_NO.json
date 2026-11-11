@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "Registrer walk-in-gjest",
   "Registered as a walk-in guest at the kiosk during event: %s": "Registrert som walk-in-gjest på kiosken under arrangementet: %s",
   "Registering...": "Registrering...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Krev et sjekknummer når du registrerer sjekk-betalinger på innskuddsoppføringer.\nMerknad: deaktivering av dette deaktiverer også duplikat sjekknummeropdagelse — den samme fysiske sjekken kan angis mer enn en gang.",
   "This event has ended": "Dette arrangementet er over",
   "This event has no group assigned, so guests cannot be registered": "Dette arrangementet har ingen gruppe tildelt, så gjester kan ikke registreres",
   "This event has no start and end time": "Dette arrangementet har ingen start- og sluttid",

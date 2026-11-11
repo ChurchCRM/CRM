@@ -22927,12 +22927,6 @@ msgid "Registering..."
 msgstr "Registreerimine..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Nõudke kontrollnumbrit deposiidi kirjete kontrolli maksete kajastamisel.\n"
-"Märkus: selle keelamine keelustab ka dubleeritud kontrollinumbrite tuvastamise - sama füüsilise kontrolli võib sisestada rohkem kui üks kord."
-
-#: 
 msgid "This event has ended"
 msgstr "See üritus on lõppenud"
 

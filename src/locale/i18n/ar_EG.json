@@ -5716,7 +5716,6 @@
   "Register walk-in guest": "تسجيل ضيف وافد",
   "Registered as a walk-in guest at the kiosk during event: %s": "سُجّل كضيف وافد عند الكشك أثناء الحدث: %s",
   "Registering...": "جارٍ التسجيل...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "اشتراط رقم الشيك عند تسجيل مدفوعات الشيكات في قيود الإيداع.\nملاحظة: تعطيل هذا الخيار يعطّل أيضًا اكتشاف تكرار أرقام الشيكات — فقد يُدخَل الشيك الفعلي نفسه أكثر من مرة.",
   "This event has ended": "انتهى هذا الحدث",
   "This event has no group assigned, so guests cannot be registered": "لم تُعيَّن مجموعة لهذا الحدث، لذا لا يمكن تسجيل الضيوف",
   "This event has no start and end time": "ليس لهذا الحدث وقت بدء وانتهاء",

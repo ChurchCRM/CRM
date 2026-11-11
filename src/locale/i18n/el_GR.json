@@ -5596,7 +5596,6 @@
   "Register walk-in guest": "καταχώρηση επισκέπτη",
   "Registered as a walk-in guest at the kiosk during event: %s": "Καταχωρήθηκε ως επισκέπτης στο περίπτερο κατά τη διάρκεια του γεγονότος: %s",
   "Registering...": "Εγγραφή...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Απαιτείται ένας αριθμός επιταγής κατά την καταχώρηση πληρωμών επιταγής σε εγγραφές εναπόθεσης.\nΣημείωση: η απενεργοποίησή του απενεργοποιεί επίσης την ανίχνευση διπλότυπων αριθμών επιταγών - η ίδια φυσική επιταγή μπορεί να εισαχθεί περισσότερες από μία φορές.",
   "This event has ended": "Αυτό το γεγονός έχει τελειώσει",
   "This event has no group assigned, so guests cannot be registered": "Αυτό το γεγονός δεν έχει καμία ομάδα που να είναι ανατεθειμένη, ώστε οι επισκέπτες να μην μπορούν να καταχωρηθούν",
   "This event has no start and end time": "Αυτό το γεγονός δεν έχει ώρα έναρξης και λήξης",

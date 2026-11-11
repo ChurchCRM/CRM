@@ -22928,12 +22928,6 @@ msgid "Registering..."
 msgstr "Εγγραφή..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Απαιτείται ένας αριθμός επιταγής κατά την καταχώρηση πληρωμών επιταγής σε εγγραφές εναπόθεσης.\n"
-"Σημείωση: η απενεργοποίησή του απενεργοποιεί επίσης την ανίχνευση διπλότυπων αριθμών επιταγών - η ίδια φυσική επιταγή μπορεί να εισαχθεί περισσότερες από μία φορές."
-
-#: 
 msgid "This event has ended"
 msgstr "Αυτό το γεγονός έχει τελειώσει"
 

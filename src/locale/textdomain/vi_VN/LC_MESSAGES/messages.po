@@ -22907,12 +22907,6 @@ msgid "Registering..."
 msgstr "Đang đăng ký..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Yêu cầu số séc khi ghi lại khoản thanh toán bằng séc trong các mục gửi tiền.\n"
-"Lưu ý: tắt tính năng này cũng sẽ tắt tính năng phát hiện số séc trùng lặp — cùng một séc vật lý có thể được nhập nhiều lần."
-
-#: 
 msgid "This event has ended"
 msgstr "Sự kiện này đã kết thúc"
 

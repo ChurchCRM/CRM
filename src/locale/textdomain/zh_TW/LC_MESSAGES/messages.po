@@ -23038,12 +23038,6 @@ msgid "Registering..."
 msgstr "正在註冊..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "在記錄存款條目中的支票付款時需要支票號碼。\n"
-"注意：停用此功能也會停用重複支票號碼偵測——同一張支票可能被輸入多次。"
-
-#: 
 msgid "This event has ended"
 msgstr "此事件已結束"
 

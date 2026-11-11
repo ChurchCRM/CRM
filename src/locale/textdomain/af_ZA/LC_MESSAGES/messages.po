@@ -22928,12 +22928,6 @@ msgid "Registering..."
 msgstr "Registrering tans..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Vereis 'n tjekkie-nommer wanneer tsjekkie-betalings op depôtitems aangeteken word.\n"
-"Opmerking: die uitskakeling hiervan skakel ook dubbele tsjekkie-nommerdeteksie uit — dieselfde fisiese tsjek kan meer as een keer ingevoer word."
-
-#: 
 msgid "This event has ended"
 msgstr "Hierdie gebeurtenis het geëindig"
 

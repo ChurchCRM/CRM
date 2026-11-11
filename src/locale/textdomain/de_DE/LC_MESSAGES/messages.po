@@ -23002,12 +23002,6 @@ msgid "Registering..."
 msgstr "Wird registriert..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Schecknummer erforderlich, wenn Scheckzahlungen in Einzahlungseinträgen erfasst werden.\n"
-"Hinweis: Das Deaktivieren deaktiviert auch die Erkennung von doppelten Schecknummern – derselbe physische Scheck kann mehrfach eingegeben werden."
-
-#: 
 msgid "This event has ended"
 msgstr "Dieses Ereignis ist beendet"
 

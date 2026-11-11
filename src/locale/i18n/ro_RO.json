@@ -5626,7 +5626,6 @@
   "Register walk-in guest": "Înregistrați oaspete care sosesc",
   "Registered as a walk-in guest at the kiosk during event: %s": "Înregistrat ca oaspete care sosește la chioșc în timpul evenimentului: %s",
   "Registering...": "Înregistrare în curs...",
-  "Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.": "Solicitați un număr de cec la înregistrarea plăților cu cecul în intrări de depozit.\nNota: dezactivarea aceasta dezactivează și detectarea numerelor de cec duplicate — acelaș cec fizic poate fi introdus mai mult de o dată.",
   "This event has ended": "Acest eveniment s-a încheiat",
   "This event has no group assigned, so guests cannot be registered": "Acest eveniment nu are un grup atribuit, deci oaspeții nu pot fi înregistrați",
   "This event has no start and end time": "Acest eveniment nu are o oră de început și sfărșit",

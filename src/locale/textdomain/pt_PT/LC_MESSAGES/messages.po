@@ -19637,12 +19637,12 @@ msgstr "O envio de e-mails não está ativado. Configure o SMTP e ative o e-mail
 #: 
 msgctxt "one"
 msgid "Email sent to {{count}} recipient(s)."
-msgstr "Email enviado para {{count}} destinatário."
+msgstr "E-mail enviado para {{count}} destinatário."
 
 #: 
 msgctxt "other"
 msgid "Email sent to {{count}} recipient(s)."
-msgstr "Email enviado para {{count}} destinatários."
+msgstr "E-mail enviado para {{count}} destinatários."
 
 #: 
 msgid "Emails"
@@ -21075,12 +21075,12 @@ msgstr "Enviar sua resposta"
 #: 
 msgctxt "one"
 msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
-msgstr "Enviando para {{count}} destinatário. Endereços sem registro de pessoa não são incluídos: {{list}}"
+msgstr "A enviar para {{count}} destinatário. Endereços sem registo de pessoa não são incluídos: {{list}}"
 
 #: 
 msgctxt "other"
 msgid "Sending to {{count}} recipient(s). Addresses without a person record are not included: {{list}}"
-msgstr "Enviando para {{count}} destinatários. Endereços sem registro de pessoa não são incluídos: {{list}}"
+msgstr "A enviar para {{count}} destinatários. Endereços sem registo de pessoa não são incluídos: {{list}}"
 
 #: 
 msgid "Sent"
@@ -22763,12 +22763,12 @@ msgstr "{{count}} voluntários atribuídos"
 #: 
 msgctxt "one"
 msgid "{{count}} waiting for your answer"
-msgstr "{{count}} aguardando sua resposta"
+msgstr "{{count}} à espera da sua resposta"
 
 #: 
 msgctxt "other"
 msgid "{{count}} waiting for your answer"
-msgstr "{{count}} aguardando sua resposta"
+msgstr "{{count}} à espera da sua resposta"
 
 #: 
 msgctxt "one"
@@ -22795,12 +22795,12 @@ msgstr "{{names}} também escalam alguns deles."
 #: 
 msgctxt "one"
 msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
-msgstr "{{names}} alocará pessoal para esses eventos. Suas ocorrências são criadas conforme chegam na próxima {{count}} semana."
+msgstr "{{names}} alocará pessoal para esses eventos. As suas ocorrências são criadas conforme chegam na próxima {{count}} semana."
 
 #: 
 msgctxt "other"
 msgid "{{names}} will staff these events. Their occurrences are made as they come within the next {{count}} weeks."
-msgstr "{{names}} alocará pessoal para esses eventos. Suas ocorrências são criadas conforme chegam nas próximas {{count}} semanas."
+msgstr "{{names}} alocará pessoal para esses eventos. As suas ocorrências são criadas conforme chegam nas próximas {{count}} semanas."
 
 #: 
 msgid "{{name}} already coordinates this ministry"
@@ -22991,12 +22991,6 @@ msgid "Registering..."
 msgstr "A registar..."
 
 #: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Exigir um número de cheque ao registar pagamentos de cheques em entradas de depósito.\n"
-"Nota: desabilitar isso também desabilita a detecção de números de cheque duplicados — o mesmo cheque físico pode ser inserido mais de uma vez."
-
-#: 
 msgid "This event has ended"
 msgstr "Este evento terminou"
 
@@ -23075,7 +23069,7 @@ msgstr "Voluntários predefinidos para {{position}}"
 #: 
 msgctxt "one"
 msgid "Delete ({{count}})"
-msgstr "Eliminar (um)"
+msgstr "Eliminar ({{count}})"
 
 #: 
 msgctxt "other"
@@ -23085,7 +23079,7 @@ msgstr "Eliminar ({{count}})"
 #: 
 msgctxt "one"
 msgid "Delete events ({{count}})"
-msgstr "Eliminar um evento"
+msgstr "Eliminar {{count}} evento"
 
 #: 
 msgctxt "other"
@@ -23095,7 +23089,7 @@ msgstr "Eliminar os eventos ({{count}})"
 #: 
 msgctxt "one"
 msgid "Delete {{count}} occurrences? Their assignments, the volunteers' responses, any substitutions and every queued reminder go with them. This cannot be undone."
-msgstr "Eliminar uma ocorrência? As designações, as respostas dos voluntários, as substituições e cada lembrete em fila desaparecem com ela. Esta ação não pode ser desfeita."
+msgstr "Eliminar {{count}} ocorrência? As designações, as respostas dos voluntários, as substituições e cada lembrete em fila desaparecem com ela. Esta ação não pode ser desfeita."
 
 #: 
 msgctxt "other"
@@ -23185,7 +23179,7 @@ msgstr "As ocorrências são criadas para os eventos da próxima semana (até {{
 #: 
 msgctxt "one"
 msgid "Occurrences are created for events in the next {{count}} weeks (through {{date}})."
-msgstr "As ocorrências são criadas para os eventos da próxima semana (até {{date}})."
+msgstr "As ocorrências são criadas para os eventos de {{count}} semana a partir de agora (até {{date}})."
 
 #: 
 msgctxt "other"
@@ -23239,7 +23233,7 @@ msgstr "São mais de {{max}} eventos. Escolha um intervalo mais curto."
 #: 
 msgctxt "one"
 msgid "They finish {{count}} minutes after the event ends."
-msgstr "Terminam um minuto depois de o evento acabar."
+msgstr "Terminam {{count}} minuto depois de o evento acabar."
 
 #: 
 msgctxt "other"
@@ -23249,7 +23243,7 @@ msgstr "Terminam {{count}} minutos depois de o evento acabar."
 #: 
 msgctxt "one"
 msgid "They finish {{count}} minutes before the event ends."
-msgstr "Terminam um minuto antes de o evento acabar."
+msgstr "Terminam {{count}} minuto antes de o evento acabar."
 
 #: 
 msgctxt "other"
@@ -23271,7 +23265,7 @@ msgstr "Os horários dos voluntários têm de ser minutos inteiros, no máximo {
 #: 
 msgctxt "one"
 msgid "Volunteers start {{count}} minutes after the event starts."
-msgstr "Os voluntários começam um minuto depois de o evento começar."
+msgstr "Os voluntários começam {{count}} minuto depois de o evento começar."
 
 #: 
 msgctxt "other"
@@ -23281,7 +23275,7 @@ msgstr "Os voluntários começam {{count}} minutos depois de o evento começar."
 #: 
 msgctxt "one"
 msgid "Volunteers start {{count}} minutes before the event starts."
-msgstr "Os voluntários começam um minuto antes de o evento começar."
+msgstr "Os voluntários começam {{count}} minuto antes de o evento começar."
 
 #: 
 msgctxt "other"
@@ -23303,7 +23297,7 @@ msgstr "último serviço em {{date}}"
 #: 
 msgctxt "one"
 msgid "{{count}} needed"
-msgstr "Um necessário"
+msgstr "{{count}} necessário"
 
 #: 
 msgctxt "other"
@@ -23313,7 +23307,7 @@ msgstr "{{count}} necessários"
 #: 
 msgctxt "one"
 msgid "{{count}} occurrences deleted"
-msgstr "Uma ocorrência eliminada"
+msgstr "{{count}} ocorrência eliminada"
 
 #: 
 msgctxt "other"
@@ -23323,7 +23317,7 @@ msgstr "{{count}} ocorrências eliminadas"
 #: 
 msgctxt "one"
 msgid "{{failed}} of {{count}} occurrences could not be deleted"
-msgstr "{{failed}} de uma ocorrência não pôde ser eliminada"
+msgstr "{{failed}} de {{count}} ocorrência não pôde ser eliminada"
 
 #: 
 msgctxt "other"
@@ -23377,7 +23371,7 @@ msgstr "{{name}} (sem reuniões futuras)"
 #: 
 msgctxt "one"
 msgid "{{name}} ({{count}} upcoming)"
-msgstr "{{name}} (um futuro)"
+msgstr "{{name}} ({{count}} futuro)"
 
 #: 
 msgctxt "other"
@@ -23423,7 +23417,7 @@ msgstr "{{team}}: {{staffing}}"
 #: 
 msgctxt "one"
 msgid "{{title}} ({{count}} upcoming)"
-msgstr "{{title}} (um futuro)"
+msgstr "{{title}} ({{count}} futuro)"
 
 #: 
 msgctxt "other"
