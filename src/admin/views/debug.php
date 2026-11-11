@@ -623,7 +623,7 @@ $fmtBytes = static function ($bytes): string {
                                 <tr><td><?= gettext('OS family (Errors and Full)') ?></td><td><?= gettext('Understand deployments') ?></td></tr>
                                 <tr><td><?= gettext('Log level + message') ?> <span class="badge bg-warning-lt text-warning ms-1"><?= gettext('errors+') ?></span></td><td><?= gettext('Catch recurring errors') ?></td></tr>
                                 <tr><td><?= gettext('JS exceptions') ?> <span class="badge bg-warning-lt text-warning ms-1"><?= gettext('errors+') ?></span></td><td><?= gettext('Catch JS errors') ?></td></tr>
-                                <tr><td><?= gettext('Installation and upgrade results; previous version on upgrades') ?></td><td><?= gettext('Count installations and upgrade outcomes') ?></td></tr>
+                                <tr><td><?= gettext('Installation and upgrade results, previous version on upgrades, and a daily check-in while in use') ?></td><td><?= gettext('Count active installations and upgrade outcomes') ?></td></tr>
                             </tbody>
                         </table>
                     </div>

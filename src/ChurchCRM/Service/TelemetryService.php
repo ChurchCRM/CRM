@@ -222,7 +222,6 @@ class TelemetryService
             'upgrade_version' => $version,
             'duration_ms' => $durationMs,
             'database_error' => $databaseError,
-            '$process_person_profile' => false,
         ]));
     }
 
@@ -288,7 +287,6 @@ class TelemetryService
         self::capture('upgrade_script_interrupted', array_merge(self::baseProperties(), [
             'upgrade_version' => $version,
             'elapsed_ms' => $elapsedMs,
-            '$process_person_profile' => false,
         ]));
     }
 
@@ -412,9 +410,8 @@ class TelemetryService
             return false;
         }
 
-        if (in_array($event, ['install_completed', 'install_failed', 'upgrade_completed', 'upgrade_failed', 'heartbeat'], true)) {
-            $properties['$process_person_profile'] = false;
-        }
+        // Every event describes an installation, never a person.
+        $properties['$process_person_profile'] = false;
         $payload = json_encode([
             'api_key'     => self::POSTHOG_KEY,
             'event'       => $event,

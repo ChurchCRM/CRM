@@ -209,7 +209,7 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     </p>
                     <ul class="text-secondary mb-3">
                         <?php if ($offerInstall): ?>
-                        <li><?= gettext('Shared: that ChurchCRM was installed or upgraded and whether it worked, the version number, your country, and the type of database. A random installation ID counts each install once.') ?></li>
+                        <li><?= gettext('Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once.') ?></li>
                         <?php else: ?>
                         <li><?= gettext('Shared in addition: warnings, error details, and which pages are opened.') ?></li>
                         <?php endif; ?>
