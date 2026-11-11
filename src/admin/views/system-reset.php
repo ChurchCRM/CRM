@@ -222,7 +222,7 @@ $(document).ready(function () {
                     );
                 })
                 .fail(function (xhr) {
-                    var msg = i18next.t('Database reset failed.');
+                    var msg = i18next.t('Database reset failed');
                     if (xhr.responseJSON && xhr.responseJSON.msg) {
                         msg = xhr.responseJSON.msg;
                     }

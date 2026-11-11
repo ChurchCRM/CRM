@@ -152,7 +152,7 @@ if ($emailErrorReason !== '') {
             <!-- Loading state -->
             <div id="modalLoading" class="modal-body text-center py-4">
                 <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden"><?= gettext('Loading…') ?></span>
+                    <span class="visually-hidden"><?= gettext('Loading...') ?></span>
                 </div>
             </div>
 
@@ -301,7 +301,7 @@ if ($emailErrorReason !== '') {
             sendBtn.disabled = true;
             sendBtn.innerHTML =
                 '<span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>' +
-                i18next.t('Sending…');
+                i18next.t('Sending...');
 
             // Guard against missing CSRF form (partial render, CSP block, etc.)
             var csrfInput = document.querySelector('#verifyEmailAllForm input[name="csrf_token"]');

@@ -1332,11 +1332,11 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         </div>
         <div class="row g-2">
           <div class="col-6 col-md-4 mb-3">
-            <label class="form-label" for="ministry-event-form-start-time"><?= gettext('Start time') ?></label>
+            <label class="form-label" for="ministry-event-form-start-time"><?= gettext('Start Time') ?></label>
             <input type="time" class="form-control" id="ministry-event-form-start-time">
           </div>
           <div class="col-6 col-md-4 mb-3">
-            <label class="form-label" for="ministry-event-form-end-time"><?= gettext('End time') ?></label>
+            <label class="form-label" for="ministry-event-form-end-time"><?= gettext('End Time') ?></label>
             <input type="time" class="form-control" id="ministry-event-form-end-time">
           </div>
         </div>

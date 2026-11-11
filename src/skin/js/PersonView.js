@@ -162,7 +162,7 @@ $(document).ready(() => {
           }
 
           window.CRM.promptAction(
-            i18next.t("Change role"),
+            i18next.t("Change Role"),
             (result) => {
               if (result) {
                 $.ajax({

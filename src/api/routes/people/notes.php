@@ -367,7 +367,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
         $isAuthor = $note->getEnteredBy() === $currentUser->getId();
         $adminMayEdit = $currentUser->isAdmin();
         if (!$isAuthor && !$adminMayEdit) {
-            return SlimUtils::renderErrorJSON($response, gettext('You do not have permission to edit this note'), [], 403);
+            return SlimUtils::renderErrorJSON($response, gettext('You do not have permission to edit this note.'), [], 403);
         }
 
         $input = (array) $request->getParsedBody();
@@ -449,7 +449,7 @@ $app->group('/note/{noteId:[0-9]+}', function (RouteCollectorProxy $group): void
 
             return SlimUtils::renderJSON($response, ['success' => true]);
         } catch (\Throwable $e) {
-            return SlimUtils::renderErrorJSON($response, gettext('Failed to delete note'), [], 500, $e, $request);
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to delete note.'), [], 500, $e, $request);
         }
     });
 })->add(NoteMiddleware::class)->add(NotesRoleAuthMiddleware::class);
