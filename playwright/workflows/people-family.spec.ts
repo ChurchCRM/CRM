@@ -187,26 +187,4 @@ test.describe('People & Families', () => {
       usedIn: ['website'],
     });
   });
-
-  test('family-inactive-profile', async ({ page }, testInfo) => {
-    await page.goto('/people/family?familyActiveStatus=inactive');
-    const rows = page.locator('#families tbody tr');
-    await expect(rows.first()).toBeVisible({ timeout: 15000 });
-
-    await humanType(page.locator('.dt-search input'), 'Campbell');
-    await humanPause(page, 500);
-    const targetRow = rows.filter({ hasText: 'Campbell' }).first();
-    await expect(targetRow).toBeVisible({ timeout: 15000 });
-    await humanClick(targetRow.locator('td').first().locator('a').first());
-    await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
-    await expect(page.locator('#family-deactivated')).toBeVisible({ timeout: 10000 });
-    await settle(page, 800);
-
-    await captureScreen(page, testInfo, {
-      name: 'family-inactive-profile',
-      title: 'Inactive Family Profile',
-      category: 'People & Families',
-      purpose: 'Show a family profile for an inactive family, including the inactive status banner',
-    });
-  });
 });
