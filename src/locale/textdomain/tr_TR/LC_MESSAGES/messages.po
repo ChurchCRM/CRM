@@ -887,10 +887,6 @@ msgid "Do you want to proceed?"
 msgstr "Devam etmek istiyor musunuz?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Aile bilgilerinin kopyasını aşağıdaki e -postalara e -posta ile göndermek üzeresiniz"
-
-#: 
 msgid "Financial Reports"
 msgstr "Finansal raporlar"
 
@@ -1821,10 +1817,6 @@ msgstr "Telefon numarası"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Özel açılır liste"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF, aile üyelerine başarıyla e -posta gönderdi."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3873,10 +3865,6 @@ msgid "Please verify your family's information"
 msgstr "Lütfen ailenizin bilgilerini doğrulayın"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Doğrulama bilgilerini yükleyemiyor"
-
-#: 
 msgid "No Changes"
 msgstr "Değişiklik yok"
 
@@ -3889,24 +3877,8 @@ msgid "Oops! Page not found."
 msgstr "Oops! Sayfa bulunamadı."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Ailenizin doğrulamasını başlatmak için lütfen aşağıdakileri girin"
-
-#: 
-msgid "Family Verification"
-msgstr "Aile doğrulaması"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Aile Bilgisi Doğrulama İsteyin"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Aile bilgilerinin doğrulanmasını nasıl istemek isteyeceğinizi seçin"
-
-#: 
-msgid "Online Verification"
-msgstr "Çevrimiçi Doğrulama"
 
 #: 
 msgid "Verified In Person"
@@ -4331,10 +4303,6 @@ msgstr "Arapça - Mısır"
 #: 
 msgid "Thai"
 msgstr "Tayland"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Beklediğin Kendini Doğrula"
 
 #: 
 msgid "Self Verify"
@@ -6573,10 +6541,6 @@ msgid "Additional Information"
 msgstr "Ek Bilgiler"
 
 #: 
-msgid "All information is correct"
-msgstr "Tüm bilgiler doğru"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Fırsatları Ata"
 
@@ -6589,20 +6553,12 @@ msgid "Choose opportunities..."
 msgstr "Fırsatları seçin..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Aile Bilgilerini Onayla"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "İletişim ve Kişisel Bilgiler"
 
 #: 
 msgid "Edited"
 msgstr "Düzenlendi"
-
-#: 
-msgid "Email PDF"
-msgstr "PDF'yi E-postala"
 
 #: 
 msgid "Newsletter"
@@ -6613,40 +6569,12 @@ msgid "Personal"
 msgstr "Kişisel"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Lütfen kayıtlarımızı düzeltmelerle güncelleyin"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Düzeltmeleri veya ek bilgileri buraya yazın..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Fırsatları Seçin"
 
 #: 
-msgid "Submit Verification"
-msgstr "Doğrulamayı Gönder"
-
-#: 
-msgid "Thank You!"
-msgstr "Teşekkür Ederiz!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Web Sitemizi Ziyaret Edin"
-
-#: 
 msgid "Volunteer"
 msgstr "Gönüllü"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Doğrulamanız işlenirken bir hatayla karşılaştık. Lütfen tekrar deneyin veya doğrudan bizimle iletişime geçin."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Doğrulama talebiniz alındı. Bilgilerinizi güncel tuttuğunuz için teşekkür ederiz."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8886,10 +8814,6 @@ msgstr "Aile Bağış Taahhüdü Özeti"
 #: 
 msgid "Family Profile"
 msgstr "Aile Profili"
-
-#: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Aile rolleri (Hane Reisi, Eş, Çocuk vb.) kayıtlarınızı düzenlemenize yardımcı olur."
 
 #: 
 msgid "Family vs Person"
@@ -11991,10 +11915,6 @@ msgid "Cannot move property in that direction"
 msgstr "Özellik bu yönde taşınamaz"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Aile Bilgilerini Onayla"
-
-#: 
 msgid "Delete failed"
 msgstr "Silme başarısız oldu"
 
@@ -12035,20 +11955,12 @@ msgid "Invalid target family"
 msgstr "Geçersiz hedef aile"
 
 #: 
-msgid "Log Out"
-msgstr "Çıkış Yap"
-
-#: 
 msgid "Membership not found"
 msgstr "Üyelik bulunamadı"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Şifre başarıyla değiştirildi:"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Lütfen aşağıdaki aile bilgilerinizi inceleyin ve onaylayın ya da değişiklik talep edin."
 
 #: 
 msgid "Please select a target family."
@@ -13524,10 +13436,6 @@ msgid "Failed to cancel enrollment. Please try again."
 msgstr "Kayıt iptal edilemedi. Lütfen tekrar deneyin."
 
 #: 
-msgid "Failed to copy URL"
-msgstr "URL kopyalanamadı"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Yedek oluşturulamadı."
 
@@ -13916,10 +13824,6 @@ msgid "One-Time Code"
 msgstr "Tek Kullanımlık Kod"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Yeni Sekmede Aç"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Kimlik doğrulayıcı uygulamanızı açın ve bu QR kodunu tarayın"
 
@@ -14196,10 +14100,6 @@ msgid "Setup Complete"
 msgstr "Kurulum Tamamlandı"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Bilgilerini doğrulamaları için bu URL'yi aile üyeleriyle paylaşın"
-
-#: 
 msgid "Show more options"
 msgstr "Daha fazla seçenek göster"
 
@@ -14350,10 +14250,6 @@ msgstr "Kullanıcı Silme Onayı"
 #: 
 msgid "Validation pending"
 msgstr "Doğrulama bekleniyor"
-
-#: 
-msgid "Verification URL"
-msgstr "Doğrulama URL'si"
 
 #: 
 msgid "Verification failed. Please try again."
@@ -15692,10 +15588,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Bu aile kaydının silinmesini onaylayın"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Aile bilgilerinizi onaylayın"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Bu bağışları ilişilendirmek için başka bir aile seçin"
 
@@ -16328,10 +16220,6 @@ msgid "Pledges & Payments"
 msgstr "Taahhütler ve Ödemeler"
 
 #: 
-msgid "Prioritise translations"
-msgstr "Çevirileri önceliklendir"
-
-#: 
 msgid "Purpose"
 msgstr "Amaç"
 
@@ -16592,12 +16480,6 @@ msgstr "Secilen depozitolar icin odeme bulunamadi"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Gecerli depozito kimligi saglanmadi"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "%d aileye PDF başarıyla e-postayla gönderildi."
-msgstr[1] "%d aileye PDF başarıyla e-postayla gönderildi."
 
 #: 
 msgid "Partial Send"
@@ -17536,10 +17418,6 @@ msgstr "Eklentiyi Kaldır"
 #: 
 msgid "Upcoming"
 msgstr "Yaklaşan"
-
-#: 
-msgid "Valid Until"
-msgstr "Geçerlilik Tarihi"
 
 #: 
 msgid "View active only"
@@ -18502,12 +18380,6 @@ msgstr[0] "%d gün"
 msgstr[1] "%d gün"
 
 #: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d varsayılan başka bir nedenle atlandı (oluşum bitti, iptal edildi veya doldu)"
-msgstr[1] "%d varsayılan başka bir nedenle atlandı (oluşum bitti, iptal edildi veya doldu)"
-
-#: 
 msgid "%d default skipped: qualification revoked"
 msgid_plural "%d defaults skipped: qualification revoked"
 msgstr[0] "%d varsayılan atlandı: yetkilendirme iptal edildi"
@@ -18768,10 +18640,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Tema, kilisenizin sunucudaki Include/themes/ klasörüne yüklediği bir klasördür. Sistem varsayılanı ChurchCRM ile birlikte gelir."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Bir geçiş ayarı. Eski Gönüllü Fırsatları sayfaları ve yeni Hizmetler sayfaları birlikte kullanılabilir ve bir kişi kaydında her iki Gönüllü sekmesi de açıkça etiketlenmiş olarak görünür. Bir kiliseyi V1'den V2'ye taşırken kullanın, ardından yalnızca V2'ye geçin."
-
-#: 
 msgid "A volunteer"
 msgstr "Bir gönüllü"
 
@@ -18976,10 +18844,6 @@ msgid "Assigned outside the current plan"
 msgstr "Mevcut planın dışında atandı"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Görevlendirme iptal edildi"
-
-#: 
 msgid "Assignment not found"
 msgstr "Görevlendirme bulunamadı"
 
@@ -19086,10 +18950,6 @@ msgstr "Görevlendirmeyi iptal et"
 #: 
 msgid "Cancel this assignment"
 msgstr "Bu görevlendirmeyi iptal et"
-
-#: 
-msgid "Cancelled"
-msgstr "İptal edildi"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19246,10 +19106,6 @@ msgstr "Kilise web sitesi"
 #: 
 msgid "Close event details"
 msgstr "Etkinlik ayrıntılarını kapat"
-
-#: 
-msgid "Colour"
-msgstr "Renk"
 
 #: 
 msgid "Completed"
@@ -21508,10 +21364,6 @@ msgid "The asset path \"%s\" is not allowed."
 msgstr "\"%s\" varlık yolu izin verilmiyor."
 
 #: 
-msgid "The assignment could not be cancelled"
-msgstr "Görevlendirme iptal edilemedi"
-
-#: 
 msgid "The assignment message will be sent again"
 msgstr "Görevlendirme mesajı yeniden gönderilecek"
 
@@ -22036,10 +21888,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Bu oluşum zaten gerçekleşti ve görevlendirmeleri artık değiştirilemez"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Bu oluşum iptal edildi"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Bu oluşumun programından ayrı, kendi kadro ihtiyaçları var."
 
@@ -22266,10 +22114,6 @@ msgstr "Gönüllü saatleri"
 #: 
 msgid "Volunteering"
 msgstr "Gönüllülük"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Bir kilisenin işleyişine göre düzenlenmiş gönüllülük. Her hizmetin ekipleri ve pozisyonları vardır; kişiler pozisyonlar için yetkilendirilir ve hizmetin havuz grubuna aittir; programlar takvimdeki etkinlikleri izler ve kadro gereksinimleriyle tarihli oluşumlar üretir; koordinatörler kişileri atar, onlar da kabul eder, reddeder veya yedek önerir; hatırlatmalar ve uyarılar e-postayla gönderilir. Yöneticiler ve Hizmetleri Yönet yetkisine sahip kullanıcılar her hizmeti görür ve oluşturabilir, devre dışı bırakabilir ve silebilir. Bir hizmet koordinatörüne bunun yerine Hizmetlerimi Yönet yetkisi verilir: kenar çubuğundaki Hizmetler başlığı o zaman yalnızca koordine ettiği hizmetleri gösterir. Bir ekip lideri ekibini Üye Portalı'ndan yönetir. Üyeler programlarını görmek, yanıt vermek, kaydolmak ve yardım teklif etmek için Üye Portalı'nı kullanır."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22808,10 +22652,6 @@ msgid "Cancel this occurrence"
 msgstr "Bu olayı iptal et"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "İptal etme kimseye haber vermez: e-posta gönderilmez. Atamalar tutulur, iptal edilirken hatırlatıcı planlanmaz ve geri yüklenene kadar kimse atanmaz."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Silinen etkinlikler her takvimi, giriş ve sayımlarıyla birlikte bırakır ve bu hizmetin personeli yalnızca tarihini tutar. Bu geri alınamaz."
 
@@ -22822,10 +22662,6 @@ msgstr "Etkinlikler silindi: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Silinecek etkinlikler: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Olay iptal edildi"
 
 #: 
 msgid "Occurrence restored"
@@ -22842,10 +22678,6 @@ msgstr "Olayı geri yükle"
 #: 
 msgid "Restore this occurrence"
 msgstr "Bu olayı geri yükle"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Olay iptal edilemedi"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24910,10 +24742,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "Telemetri Amerika Birleşik Devletleri’ndeki PostHog’a gönderilir. İsteğe bağlı telemetri kapalı olsa bile kurulum ve yükseltme hata raporları gönderilir."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Bu tarih iptal edildi. Sizden başka bir şey gerekmiyor."
-
-#: 
 msgid "always sent"
 msgstr "her zaman gönderilir"
 
@@ -25380,10 +25208,6 @@ msgstr "E-posta ilgilenmeyi bekliyor"
 #: 
 msgid "Email problem"
 msgstr "E-posta sorunu"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "E-postayla gönderilen oturum açma kodu ve bağlantısı iptal edildi"
 
 #: 
 msgid "Emailed verification link"
@@ -27148,10 +26972,6 @@ msgstr "%s tarihine kadar"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "Üye portalında %1$s adresindeki e-posta adresinizin %2$s adresinden %3$s adresine değiştirilmesi istendi. Değişiklik, yalnızca yeni adrese gönderilen bağlantı kullanıldığında gerçekleşir."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Aile bilgilerinizi gözden geçirmek için aşağıdaki bağlantıyı kullanın. İnceleme sayfasında her şeyin doğru olduğunu onaylamak için «Aile bilgilerini onayla» seçeneğini seçin veya düzeltmeleri kilise ofisine gönderin."
 
 #: 
 msgid "Review Family Information"

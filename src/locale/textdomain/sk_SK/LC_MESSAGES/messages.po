@@ -881,10 +881,6 @@ msgid "Do you want to proceed?"
 msgstr "Chcete pokračovať?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Chystáte sa odoslať kópiu informácií o rodine na nasledujúce e-mailové adresy"
-
-#: 
 msgid "Financial Reports"
 msgstr "Finančné prehľady"
 
@@ -1804,10 +1800,6 @@ msgstr "Telefónne číslo"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Vlastný rozbaľovací zoznam"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF bolo úspešne odoslané e-mailom členom rodiny."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3848,10 +3840,6 @@ msgid "Please verify your family's information"
 msgstr "Prosím overte informácie o vašej rodine"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Nie je možné načítať informácie na overenie"
-
-#: 
 msgid "No Changes"
 msgstr "Žiadne zmeny"
 
@@ -3864,24 +3852,8 @@ msgid "Oops! Page not found."
 msgstr "Ups! Stránka nenájdená."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Prosím zadajte nasledujúce na začatie overenia vašej rodiny"
-
-#: 
-msgid "Family Verification"
-msgstr "Overenie rodiny"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Požiadať o overenie informácií rodiny"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Vyberte, ako chcete požiadať o overenie informácií rodiny"
-
-#: 
-msgid "Online Verification"
-msgstr "Online overenie"
 
 #: 
 msgid "Verified In Person"
@@ -4303,10 +4275,6 @@ msgstr "Arabčina – Egypt"
 #: 
 msgid "Thai"
 msgstr "Thajčina"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Čakajúce vlastné overenie"
 
 #: 
 msgid "Self Verify"
@@ -6548,10 +6516,6 @@ msgid "Additional Information"
 msgstr "Ďalšie informácie"
 
 #: 
-msgid "All information is correct"
-msgstr "Všetky informácie sú správne"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Priradiť príležitosti"
 
@@ -6564,20 +6528,12 @@ msgid "Choose opportunities..."
 msgstr "Vyberte príležitosti..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Potvrdiť informácie o rodine"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontaktné a osobné informácie"
 
 #: 
 msgid "Edited"
 msgstr "Upravené"
-
-#: 
-msgid "Email PDF"
-msgstr "Zaslať PDF e-mailom"
 
 #: 
 msgid "Newsletter"
@@ -6588,40 +6544,12 @@ msgid "Personal"
 msgstr "Osobné"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Prosím aktualizujte naše záznamy opravami"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Uveďte tu akékoľvek opravy alebo doplňujúce informácie..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Vybrať príležitosti"
 
 #: 
-msgid "Submit Verification"
-msgstr "Odoslať overenie"
-
-#: 
-msgid "Thank You!"
-msgstr "Ďakujeme!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Navštívte našu webstránku"
-
-#: 
 msgid "Volunteer"
 msgstr "Dobrovoľník"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Pri spracovaní vášho overenia sme narazili na chybu. Skúste to znova alebo nás kontaktujte priamo."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Vaša žiadosť o overenie bola prijatá. Ďakujeme za aktualizáciu vašich informácií."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8871,10 +8799,6 @@ msgstr "Súhrn záväzkov rodiny"
 #: 
 msgid "Family Profile"
 msgstr "Profil rodiny"
-
-#: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Rodinné roly (Hlava domácnosti, Manžel/ka, Dieťa, atď.) pomáhajú organizovať záznamy."
 
 #: 
 msgid "Family vs Person"
@@ -11978,10 +11902,6 @@ msgid "Cannot move property in that direction"
 msgstr "Nie je možné presunúť vlastnosť v tomto smere"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Potvrdiť informácie o rodine"
-
-#: 
 msgid "Delete failed"
 msgstr "Odstránenie zlyhalo"
 
@@ -12022,20 +11942,12 @@ msgid "Invalid target family"
 msgstr "Neplatná cieľová rodina"
 
 #: 
-msgid "Log Out"
-msgstr "Odhlásiť sa"
-
-#: 
 msgid "Membership not found"
 msgstr "Členstvo nenájdené"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Heslo úspešne zmenené pre"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Prehliadnite informácie o rodine nižšie a potvrďte alebo požiadajte o zmeny."
 
 #: 
 msgid "Please select a target family."
@@ -13511,10 +13423,6 @@ msgid "Failed to cancel enrollment. Please try again."
 msgstr "Zrušenie záznamu zlyhalo. Skúste to znova."
 
 #: 
-msgid "Failed to copy URL"
-msgstr "Kopírovanie URL zlyhalo"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Vytvorenie zálohy zlyhalo."
 
@@ -13903,10 +13811,6 @@ msgid "One-Time Code"
 msgstr "Jednorazový kód"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Otvoriť v novej karte"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Otvorte autentifikačnú aplikáciu a naskenujte tento QR kód"
 
@@ -14183,10 +14087,6 @@ msgid "Setup Complete"
 msgstr "Nastavenie dokončené"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Zdieľajte túto URL s členmi rodiny na overenie ich informácií"
-
-#: 
 msgid "Show more options"
 msgstr "Zobraziť viac možností"
 
@@ -14337,10 +14237,6 @@ msgstr "Potvrdenie odstránenia používateľa"
 #: 
 msgid "Validation pending"
 msgstr "Overenie čaká"
-
-#: 
-msgid "Verification URL"
-msgstr "URL overenia"
 
 #: 
 msgid "Verification failed. Please try again."
@@ -15685,10 +15581,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Potvrdte prosím vymazanie záznamu tejto rodiny"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Potvrdte prosím informácie o vašej rodine"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Prosím vyberte inú rodinu, s ktorou chcete priradiť tieto dary"
 
@@ -16321,10 +16213,6 @@ msgid "Pledges & Payments"
 msgstr "Záväzky a platby"
 
 #: 
-msgid "Prioritise translations"
-msgstr "Uprednostniť preklady"
-
-#: 
 msgid "Purpose"
 msgstr "Účel"
 
@@ -16587,14 +16475,6 @@ msgstr "Pre vybrane vklady neboli najdene ziadne platby"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Neboli zadane ziadne platne ID vkladov"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF bolo úspešne odoslané e-mailom pre %d rodinu."
-msgstr[1] "PDF bolo úspešne odoslané e-mailom pre %d rodiny."
-msgstr[2] "PDF bolo úspešne odoslané e-mailom pre %d rodiny."
-msgstr[3] "PDF bolo úspešne odoslané e-mailom pre %d rodín."
 
 #: 
 msgid "Partial Send"
@@ -17535,10 +17415,6 @@ msgstr "Odinštalovať plugin"
 #: 
 msgid "Upcoming"
 msgstr "Nadchádzajúce"
-
-#: 
-msgid "Valid Until"
-msgstr "Platné do"
 
 #: 
 msgid "View active only"
@@ -18503,14 +18379,6 @@ msgstr[2] "%d dňa"
 msgstr[3] "%d dní"
 
 #: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d predvolený preskočený z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
-msgstr[1] "%d predvolení preskočení z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
-msgstr[2] "%d predvoleného preskočených z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
-msgstr[3] "%d predvolených preskočených z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
-
-#: 
 msgid "%d default skipped: qualification revoked"
 msgid_plural "%d defaults skipped: qualification revoked"
 msgstr[0] "%d predvolený preskočený: kvalifikácia odobratá"
@@ -18783,10 +18651,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Téma je priečinok, ktorý vaša cirkev nahrá na server do Include/themes/. Predvolená téma systému sa dodáva s ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Prechodné nastavenie. Staré stránky Príležitostí pre dobrovoľníkov aj nové stránky Služieb sú dostupné a záznam osoby zobrazuje obe karty Dobrovoľník, jasne označené. Použite ho počas prechodu cirkvi z V1 na V2 a potom prepnite iba na V2."
-
-#: 
 msgid "A volunteer"
 msgstr "Dobrovoľník"
 
@@ -18991,10 +18855,6 @@ msgid "Assigned outside the current plan"
 msgstr "Pridelené mimo aktuálneho plánu"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Pridelenie zrušené"
-
-#: 
 msgid "Assignment not found"
 msgstr "Pridelenie sa nenašlo"
 
@@ -19101,10 +18961,6 @@ msgstr "Zrušiť pridelenie"
 #: 
 msgid "Cancel this assignment"
 msgstr "Zrušiť toto pridelenie"
-
-#: 
-msgid "Cancelled"
-msgstr "Zrušené"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19261,10 +19117,6 @@ msgstr "Webová stránka cirkvi"
 #: 
 msgid "Close event details"
 msgstr "Zavrieť podrobnosti udalosti"
-
-#: 
-msgid "Colour"
-msgstr "Farba"
 
 #: 
 msgid "Completed"
@@ -21527,10 +21379,6 @@ msgid "The asset path \"%s\" is not allowed."
 msgstr "Cesta k zdroju „%s“ nie je povolená."
 
 #: 
-msgid "The assignment could not be cancelled"
-msgstr "Pridelenie sa nepodarilo zrušiť"
-
-#: 
 msgid "The assignment message will be sent again"
 msgstr "Správa o pridelení sa odošle znova"
 
@@ -22059,10 +21907,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Tento termín sa už uskutočnil a jeho pridelenia už nemožno meniť"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Tento termín bol zrušený"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Tento termín má vlastné potreby obsadenia, oddelené od jeho rozpisu."
 
@@ -22289,10 +22133,6 @@ msgstr "Časy dobrovoľníkov"
 #: 
 msgid "Volunteering"
 msgstr "Dobrovoľníctvo"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Dobrovoľníctvo zorganizované tak, ako ho vedie cirkev. Každá služba má tímy a pozície; ľudia sú kvalifikovaní na pozície a patria do skupiny dobrovoľníkov služby; rozpisy sledujú udalosti v kalendári a vytvárajú datované termíny s požiadavkami na obsadenie; koordinátori prideľujú ľudí, ktorí prijmú, odmietnu alebo navrhnú náhradu; pripomienky a upozornenia chodia e-mailom. Správcovia a používatelia s oprávnením Spravovať služby vidia každú službu a môžu ich vytvárať, deaktivovať a odstraňovať. Koordinátor služby namiesto toho dostane oprávnenie Spravovať moje služby: nadpis Služby v bočnom paneli potom zobrazuje iba služby, ktoré koordinuje. Vedúci tímu riadi svoj tím z Portálu členov. Členovia používajú Portál členov na zobrazenie svojho rozpisu, odpovedanie, prihlasovanie sa a ponúkanie pomoci."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22835,10 +22675,6 @@ msgid "Cancel this occurrence"
 msgstr "Zrušiť túto udalosť"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Zrušenie nikohmu nepovedá: žiadne e-maily nie sú odoslané. Priradenia sú zachované, žiadne pripomenutia nie sú naplánované, pokiaľ je zrušené, a nikto nemôže byť priradený, pokiaľ nie je obnovené."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Odstránené udalosti opúšťajú každý kalendár spolu s ich príchodmi a počtom osôb a obsluhujúci personál tejto služby si zachovávajú len dátum. Toto sa nedá vrátiť späť."
 
@@ -22849,10 +22685,6 @@ msgstr "Udalosti odstránené: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Udalosti na odstránenie: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Udalosť zrušená"
 
 #: 
 msgid "Occurrence restored"
@@ -22869,10 +22701,6 @@ msgstr "Obnovit udalosť"
 #: 
 msgid "Restore this occurrence"
 msgstr "Obnovit túto udalosť"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Udalosť sa nepodarilo zrušiť"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24937,10 +24765,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "Telemetria sa odosiela do PostHog v Spojených štátoch. Hlásenia o zlyhaní inštalácie a aktualizácie sa odosielajú aj keď je voliteľná telemetria vypnutá."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Tento termín bol zrušený. Od vás sa už nič nevyžaduje."
-
-#: 
 msgid "always sent"
 msgstr "vždy odoslané"
 
@@ -25407,10 +25231,6 @@ msgstr "E-mail si vyžaduje pozornosť"
 #: 
 msgid "Email problem"
 msgstr "Problém s e-mailom"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "E-mailom odoslaný prihlasovací kód a odkaz boli zrušené"
 
 #: 
 msgid "Emailed verification link"
@@ -27175,10 +26995,6 @@ msgstr "do %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "V portáli pre členov bola podaná žiadosť o zmenu vašej e-mailovej adresy na %1$s z %2$s na %3$s. Zmena sa vykoná až po použití odkazu odoslaného na novú adresu."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Pomocou odkazu nižšie skontrolujte údaje o svojej rodine. Na stránke kontroly vyberte „Potvrdiť údaje o rodine“, aby ste potvrdili, že je všetko správne, alebo pošlite opravy na cirkevný úrad."
 
 #: 
 msgid "Review Family Information"

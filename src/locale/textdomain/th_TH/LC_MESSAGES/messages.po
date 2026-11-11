@@ -893,10 +893,6 @@ msgid "Do you want to proceed?"
 msgstr "คุณต้องการดำเนินการต่อหรือไม่?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "คุณกำลังจะส่งอีเมลสำเนาข้อมูลครอบครัวไปยังอีเมลต่อไปนี้"
-
-#: 
 msgid "Financial Reports"
 msgstr "รายงานการเงิน"
 
@@ -1816,10 +1812,6 @@ msgstr "หมายเลขโทรศัพท์"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "รายการดรอปดาวน์กำหนดเอง"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "ส่งอีเมล PDF ไปยังสมาชิกครอบครัวสำเร็จ"
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3860,10 +3852,6 @@ msgid "Please verify your family's information"
 msgstr "กรุณาตรวจสอบข้อมูลครอบครัวของคุณ"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "ไม่สามารถโหลดข้อมูลการยืนยันได้"
-
-#: 
 msgid "No Changes"
 msgstr "ไม่มีการเปลี่ยนแปลง"
 
@@ -3876,24 +3864,8 @@ msgid "Oops! Page not found."
 msgstr "อุ๊ปส์! ไม่พบหน้า"
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "กรุณาป้อนข้อมูลต่อไปนี้เพื่อเริ่มการยืนยันครอบครัวของคุณ"
-
-#: 
-msgid "Family Verification"
-msgstr "การยืนยันครอบครัว"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "ขอการยืนยันข้อมูลครอบครัว"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "เลือกวิธีที่คุณต้องการขอให้ตรวจสอบข้อมูลครอบครัว"
-
-#: 
-msgid "Online Verification"
-msgstr "การยืนยันออนไลน์"
 
 #: 
 msgid "Verified In Person"
@@ -4315,10 +4287,6 @@ msgstr "อาหรับ - อียิปต์"
 #: 
 msgid "Thai"
 msgstr "ไทย"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "รอการยืนยันตนเอง"
 
 #: 
 msgid "Self Verify"
@@ -6548,10 +6516,6 @@ msgid "Additional Information"
 msgstr "ข้อมูลเพิ่มเติม"
 
 #: 
-msgid "All information is correct"
-msgstr "ข้อมูลทั้งหมดถูกต้อง"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "มอบหมายโอกาส"
 
@@ -6564,20 +6528,12 @@ msgid "Choose opportunities..."
 msgstr "เลือกโอกาส..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "ยืนยันข้อมูลครอบครัว"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "ติดต่อและข้อมูลส่วนตัว"
 
 #: 
 msgid "Edited"
 msgstr "แก้ไขแล้ว"
-
-#: 
-msgid "Email PDF"
-msgstr "ส่งอีเมล PDF"
 
 #: 
 msgid "Newsletter"
@@ -6588,40 +6544,12 @@ msgid "Personal"
 msgstr "ส่วนตัว"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "กรุณาอัปเดตระเบียนของเราด้วยการแก้ไข"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "ให้การแก้ไขหรือข้อมูลเพิ่มเติมที่นี่..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "เลือกโอกาส"
 
 #: 
-msgid "Submit Verification"
-msgstr "ส่งการยืนยัน"
-
-#: 
-msgid "Thank You!"
-msgstr "ขอบคุณ!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "เยี่ยมชมเว็บไซต์ของเรา"
-
-#: 
 msgid "Volunteer"
 msgstr "อาสาสมัคร"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "เราพบข้อผิดพลาดในการประมวลผลการยืนยันของคุณ กรุณาลองอีกครั้งหรือติดต่อเราโดยตรง"
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "ได้รับคำขอการยืนยันของคุณแล้ว ขอบคุณที่อัปเดตข้อมูลของคุณให้เป็นปัจจุบัน"
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8856,10 +8784,6 @@ msgstr "สรุปคำปฏิญาณถวายของครอบค
 #: 
 msgid "Family Profile"
 msgstr "ข้อมูลครอบครัว"
-
-#: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "บทบาทในครอบครัว (หัวหน้าครัวเรือน คู่สมรส บุตร ฯลฯ) ช่วยจัดระเบียบข้อมูลของคุณ"
 
 #: 
 msgid "Family vs Person"
@@ -11960,10 +11884,6 @@ msgid "Cannot move property in that direction"
 msgstr "ไม่สามารถย้ายคุณสมบัตินั้นในทิศทางนั้นได้"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "ยืนยันข้อมูลครอบครัว"
-
-#: 
 msgid "Delete failed"
 msgstr "การลบล้มเหลว"
 
@@ -12004,20 +11924,12 @@ msgid "Invalid target family"
 msgstr "ครอบครัวเป้าหมายไม่ถูกต้อง"
 
 #: 
-msgid "Log Out"
-msgstr "ออกจากระบบ"
-
-#: 
 msgid "Membership not found"
 msgstr "ไม่พบการเป็นสมาชิก"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "เปลี่ยนรหัสผ่านสำเร็จสำหรับ"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "โปรดตรวจสอบข้อมูลครอบครัวของคุณด้านล่างและยืนยันหรือขอเปลี่ยนแปลง"
 
 #: 
 msgid "Please select a target family."
@@ -13493,10 +13405,6 @@ msgid "Failed to cancel enrollment. Please try again."
 msgstr "ไม่สามารถยกเลิกการลงทะเบียนได้ กรุณาลองอีกครั้ง"
 
 #: 
-msgid "Failed to copy URL"
-msgstr "คัดลอก URL ล้มเหลว"
-
-#: 
 msgid "Failed to create backup."
 msgstr "สร้างการสำรองข้อมูลล้มเหลว"
 
@@ -13885,10 +13793,6 @@ msgid "One-Time Code"
 msgstr "รหัสใช้ครั้งเดียว"
 
 #: 
-msgid "Open in New Tab"
-msgstr "เปิดในแท็บใหม่"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "เปิดแอปตรวจสอบความถูกต้องและสแกนรหัส QR นี้"
 
@@ -14165,10 +14069,6 @@ msgid "Setup Complete"
 msgstr "การตั้งค่าเสร็จสมบูรณ์"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "แบ่งปัน URL นี้กับสมาชิกครอบครัวเพื่อยืนยันข้อมูลของพวกเขา"
-
-#: 
 msgid "Show more options"
 msgstr "แสดงตัวเลือกเพิ่มเติม"
 
@@ -14319,10 +14219,6 @@ msgstr "การยืนยันการลบผู้ใช้"
 #: 
 msgid "Validation pending"
 msgstr "รอการตรวจสอบ"
-
-#: 
-msgid "Verification URL"
-msgstr "URL การยืนยัน"
 
 #: 
 msgid "Verification failed. Please try again."
@@ -15658,10 +15554,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "กรุณายืนยันการลบบันทึกครอบครัวนี้"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "กรุณายืนยันข้อมูลครอบครัวของคุณ"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "กรุณาเลือกครอบครัวอื่นเพื่อเชื่อมโยงการถวายทรัพย์เหล่านี้"
 
@@ -16294,10 +16186,6 @@ msgid "Pledges & Payments"
 msgstr "คำมั่นสัญญาและการถวาย"
 
 #: 
-msgid "Prioritise translations"
-msgstr "ให้ความสำคัญกับการแปล"
-
-#: 
 msgid "Purpose"
 msgstr "วัตถุประสงค์"
 
@@ -16557,11 +16445,6 @@ msgstr "ไม่พบการชำระเงินสำหรับรา
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "ไม่มีรหัสรายการฝากที่ถูกต้อง"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "ส่ง PDF ทางอีเมลถึง %d ครอบครัวเรียบร้อยแล้ว"
 
 #: 
 msgid "Partial Send"
@@ -17499,10 +17382,6 @@ msgstr "ถอนการติดตั้งปลั๊กอิน"
 #: 
 msgid "Upcoming"
 msgstr "กำลังจะถึง"
-
-#: 
-msgid "Valid Until"
-msgstr "ใช้ได้ถึง"
 
 #: 
 msgid "View active only"
@@ -18464,11 +18343,6 @@ msgid_plural "%d days"
 msgstr[0] "%d วัน"
 
 #: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d ค่าเริ่มต้นถูกข้ามไปด้วยเหตุผลอื่น (การเกิดขึ้นหมดสิ้น ถูกยกเลิก หรือเต็ม)"
-
-#: 
 msgid "%d default skipped: qualification revoked"
 msgid_plural "%d defaults skipped: qualification revoked"
 msgstr[0] "%d ค่าเริ่มต้นถูกข้ามไป: การกำหนดคุณสมบัติถูกเพิกถอน"
@@ -18723,10 +18597,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "ธีมคือโฟลเดอร์ที่คริสตจักรของคุณอัปโหลดไปที่ Include/themes/ บนเซิร์ฟเวอร์ ค่าเริ่มต้นของระบบมาพร้อมกับ ChurchCRM"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "การตั้งค่าช่วงเปลี่ยนผ่าน หน้าโอกาสรับใช้แบบเดิมและหน้าพันธกิจแบบใหม่ใช้งานได้ทั้งคู่ และระเบียนบุคคลจะแสดงแท็บอาสาสมัครทั้งสองพร้อมป้ายกำกับชัดเจน ใช้ระหว่างย้ายคริสตจักรจาก V1 ไป V2 แล้วเปลี่ยนเป็น V2 อย่างเดียว"
-
-#: 
 msgid "A volunteer"
 msgstr "อาสาสมัคร"
 
@@ -18931,10 +18801,6 @@ msgid "Assigned outside the current plan"
 msgstr "มอบหมายนอกแผนปัจจุบัน"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "ยกเลิกการมอบหมายแล้ว"
-
-#: 
 msgid "Assignment not found"
 msgstr "ไม่พบการมอบหมาย"
 
@@ -19041,10 +18907,6 @@ msgstr "ยกเลิกการมอบหมาย"
 #: 
 msgid "Cancel this assignment"
 msgstr "ยกเลิกการมอบหมายนี้"
-
-#: 
-msgid "Cancelled"
-msgstr "ยกเลิกแล้ว"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19201,10 +19063,6 @@ msgstr "เว็บไซต์คริสตจักร"
 #: 
 msgid "Close event details"
 msgstr "ปิดรายละเอียดกิจกรรม"
-
-#: 
-msgid "Colour"
-msgstr "สี"
 
 #: 
 msgid "Completed"
@@ -21461,10 +21319,6 @@ msgid "The asset path \"%s\" is not allowed."
 msgstr "ไม่อนุญาตเส้นทางสินทรัพย์ \"%s\""
 
 #: 
-msgid "The assignment could not be cancelled"
-msgstr "ไม่สามารถยกเลิกการมอบหมายได้"
-
-#: 
 msgid "The assignment message will be sent again"
 msgstr "ข้อความการมอบหมายจะถูกส่งอีกครั้ง"
 
@@ -21987,10 +21841,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "รอบนี้เกิดขึ้นไปแล้วและเปลี่ยนการมอบหมายไม่ได้อีก"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "รอบนี้ถูกยกเลิกแล้ว"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "รอบนี้มีความต้องการกำลังคนของตนเอง แยกจากตารางเวลา"
 
@@ -22217,10 +22067,6 @@ msgstr "เวลาของอาสาสมัคร"
 #: 
 msgid "Volunteering"
 msgstr "การอาสา"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "การอาสาที่จัดตามแบบที่คริสตจักรทำงาน แต่ละพันธกิจมีทีมและตำแหน่ง บุคคลมีคุณสมบัติสำหรับตำแหน่งและอยู่ในกลุ่มอาสาสมัครของพันธกิจ ตารางเวลาติดตามกิจกรรมในปฏิทินและสร้างรอบที่มีวันที่พร้อมความต้องการกำลังคน ผู้ประสานงานมอบหมายบุคคล ซึ่งตอบรับ ปฏิเสธ หรือเสนอผู้แทน การเตือนและการแจ้งเตือนส่งทางอีเมล ผู้ดูแลระบบและผู้ใช้ที่มีสิทธิ์จัดการพันธกิจเห็นทุกพันธกิจและสร้าง ปิดใช้งาน และลบได้ ผู้ประสานงานพันธกิจจะได้รับสิทธิ์จัดการพันธกิจของฉันแทน หัวข้อพันธกิจในแถบด้านข้างจึงแสดงเฉพาะพันธกิจที่เขาประสานงาน หัวหน้าทีมดูแลทีมของตนจากพอร์ทัลสมาชิก สมาชิกใช้พอร์ทัลสมาชิกเพื่อดูตารางของตน ตอบกลับ สมัคร และเสนอความช่วยเหลือ"
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22757,10 +22603,6 @@ msgid "Cancel this occurrence"
 msgstr "ยกเลิกการเกิดขึ้นนี้"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "การยกเลิกไม่แจ้งให้ผู้ใดทราบ: ไม่มีการส่งอีเมล งานที่มอบหมายจะถูกเก็บไว้ ไม่มีการกำหนดเวลาการแจ้งเตือนขณะยกเลิก และไม่มีใครสามารถมอบหมายได้จนกว่าจะคืนสถานะ"
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "กิจกรรมที่ถูกลบออกจากปฏิทินทั้งหมด พร้อมด้วยการลงชื่อและจำนวนผู้เข้าร่วม และการจัดเตรียมบุคลากรของหน่วยงานนี้เก็บเฉพาะวันที่เท่านั้น ไม่สามารถเลิกทำได้"
 
@@ -22771,10 +22613,6 @@ msgstr "ลบกิจกรรม: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "กิจกรรมที่จะลบ: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "ยกเลิกการเกิดขึ้น"
 
 #: 
 msgid "Occurrence restored"
@@ -22791,10 +22629,6 @@ msgstr "คืนสถานะการเกิดขึ้น"
 #: 
 msgid "Restore this occurrence"
 msgstr "คืนสถานะการเกิดขึ้นนี้"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "ไม่สามารถยกเลิกการเกิดขึ้นได้"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24859,10 +24693,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "ส่งข้อมูลการใช้งานไปที่ PostHog ในสหรัฐอเมริกา รายงานความล้มเหลวของการติดตั้งและการอัปเกรดจะถูกส่งแม้ปิดข้อมูลการใช้งานที่ไม่บังคับ"
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "วันที่ยกเลิกแล้ว คุณไม่ต้องทำอะไรเพิ่มครับ"
-
-#: 
 msgid "always sent"
 msgstr "ส่งเสมอ"
 
@@ -25329,10 +25159,6 @@ msgstr "อีเมลต้องได้รับการดูแล"
 #: 
 msgid "Email problem"
 msgstr "ปัญหาอีเมล"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "ยกเลิกรหัสและลิงก์ลงชื่อเข้าใช้ที่ส่งทางอีเมลแล้ว"
 
 #: 
 msgid "Emailed verification link"
@@ -27097,10 +26923,6 @@ msgstr "จนถึง %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "มีคำขอในพอร์ทัลสมาชิกให้เปลี่ยนที่อยู่อีเมลของคุณที่ %1$s จาก %2$s เป็น %3$s การเปลี่ยนแปลงจะเกิดขึ้นเมื่อใช้ลิงก์ที่ส่งไปยังที่อยู่ใหม่เท่านั้น"
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "โปรดใช้ลิงก์ด้านล่างเพื่อตรวจสอบข้อมูลครอบครัวของคุณ ในหน้าตรวจสอบ ให้เลือก \"ยืนยันข้อมูลครอบครัว\" เพื่อยืนยันว่าทุกอย่างถูกต้อง หรือส่งการแก้ไขไปที่สำนักงานคริสตจักร"
 
 #: 
 msgid "Review Family Information"

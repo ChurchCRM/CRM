@@ -912,10 +912,6 @@ msgid "Do you want to proceed?"
 msgstr "Vil du fortsette?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Du er i ferd med å sende en kopi av familieinformasjonen til følgende eposter:"
-
-#: 
 msgid "Financial Reports"
 msgstr "Finansielle rapporter"
 
@@ -1892,10 +1888,6 @@ msgstr "Telefonnummer"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Custom Rullegardinliste"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF sending til familie vellykket"
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3954,10 +3946,6 @@ msgid "Please verify your family's information"
 msgstr "Vennligst bekreft familiens informasjon"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Kunne ikke laste inn verifiseringsinformasjon"
-
-#: 
 msgid "No Changes"
 msgstr "Ingen endringer"
 
@@ -3970,24 +3958,8 @@ msgid "Oops! Page not found."
 msgstr "Oops! Siden ble ikke funnet."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Vennligst oppgi følgende for å starte familiens verifisering"
-
-#: 
-msgid "Family Verification"
-msgstr "Familieverifisering"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Be om verifisering av familieinformasjon"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Velg hvordan du vil be om at familieinformasjonen skal verifiseres"
-
-#: 
-msgid "Online Verification"
-msgstr "Nettbasert verifisering"
 
 #: 
 msgid "Verified In Person"
@@ -4409,10 +4381,6 @@ msgstr "Arabisk - Egypt"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Venter på selvverifisering"
 
 #: 
 msgid "Self Verify"
@@ -6644,10 +6612,6 @@ msgid "Additional Information"
 msgstr "Tilleggsinformasjon"
 
 #: 
-msgid "All information is correct"
-msgstr "All informasjon er korrekt"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Tildel muligheter"
 
@@ -6660,20 +6624,12 @@ msgid "Choose opportunities..."
 msgstr "Velg muligheter..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Bekreft familieinformasjon"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontakt- og personinfo"
 
 #: 
 msgid "Edited"
 msgstr "Redigert"
-
-#: 
-msgid "Email PDF"
-msgstr "Send PDF per e-post"
 
 #: 
 msgid "Newsletter"
@@ -6684,40 +6640,12 @@ msgid "Personal"
 msgstr "Personlig"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Vennligst oppdater våre registre med rettelser"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Oppgi eventuelle rettelser eller tilleggsinformasjon her..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Velg muligheter"
 
 #: 
-msgid "Submit Verification"
-msgstr "Send inn verifisering"
-
-#: 
-msgid "Thank You!"
-msgstr "Takk!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Besøk vår nettside"
-
-#: 
 msgid "Volunteer"
 msgstr "Frivillig"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Det oppsto en feil under behandling av verifiseringen din. Vennligst prøv igjen eller kontakt oss direkte."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Din verifiseringsforespørsel er mottatt. Takk for at du holder informasjonen din oppdatert."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8957,10 +8885,6 @@ msgstr "Sammendrag av familiens giverløfter"
 #: 
 msgid "Family Profile"
 msgstr "Familieprofil"
-
-#: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Familieroller (familieoverhode, ektefelle, barn osv.) hjelper med å organisere postene dine."
 
 #: 
 msgid "Family vs Person"
@@ -12062,10 +11986,6 @@ msgid "Cannot move property in that direction"
 msgstr "Kan ikke flytte egenskapen i den retningen"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Bekreft familieinformasjon"
-
-#: 
 msgid "Delete failed"
 msgstr "Sletting mislyktes"
 
@@ -12106,20 +12026,12 @@ msgid "Invalid target family"
 msgstr "Ugyldig målfamilie"
 
 #: 
-msgid "Log Out"
-msgstr "Logg ut"
-
-#: 
 msgid "Membership not found"
 msgstr "Medlemskapet ble ikke funnet"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Passord ble vellykket endret for"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Vennligst gjennomgå familieinformasjonen din nedenfor og bekreft eller be om endringer."
 
 #: 
 msgid "Please select a target family."
@@ -13595,10 +13507,6 @@ msgid "Failed to cancel enrollment. Please try again."
 msgstr "Kunne ikke avbryte påmeldingen. Vennligst prøv igjen."
 
 #: 
-msgid "Failed to copy URL"
-msgstr "Kunne ikke kopiere URL"
-
-#: 
 msgid "Failed to create backup."
 msgstr "Kunne ikke opprette sikkerhetskopi."
 
@@ -13987,10 +13895,6 @@ msgid "One-Time Code"
 msgstr "Enganskode"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Åpne i ny fane"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Åpne autentiseringsappen din og skann denne QR-koden"
 
@@ -14267,10 +14171,6 @@ msgid "Setup Complete"
 msgstr "Oppsett fullført"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Del denne URL-en med familiemedlemmer for å verifisere informasjonen deres"
-
-#: 
 msgid "Show more options"
 msgstr "Vis flere alternativer"
 
@@ -14421,10 +14321,6 @@ msgstr "Bruker Slett Bekreftelse"
 #: 
 msgid "Validation pending"
 msgstr "Venter på validering"
-
-#: 
-msgid "Verification URL"
-msgstr "Verifiserings-URL"
 
 #: 
 msgid "Verification failed. Please try again."
@@ -15763,10 +15659,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Bekreft sletting av denne familieposten"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Bekreft familieinformasjonen din"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Velg en annen familie å knytte disse gavene til"
 
@@ -16399,10 +16291,6 @@ msgid "Pledges & Payments"
 msgstr "Løfter og betalinger"
 
 #: 
-msgid "Prioritise translations"
-msgstr "Prioriter oversettelser"
-
-#: 
 msgid "Purpose"
 msgstr "Formål"
 
@@ -16663,12 +16551,6 @@ msgstr "Ingen betalinger funnet for de valgte innbetalingene"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Ingen gyldige innbetalings-IDer angitt"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF sendt på e-post til %d familie."
-msgstr[1] "PDF sendt på e-post til %d familier."
 
 #: 
 msgid "Partial Send"
@@ -17607,10 +17489,6 @@ msgstr "Avinstaller plugin"
 #: 
 msgid "Upcoming"
 msgstr "Kommende"
-
-#: 
-msgid "Valid Until"
-msgstr "Gyldig til"
 
 #: 
 msgid "View active only"
@@ -18573,12 +18451,6 @@ msgstr[0] "%d dag"
 msgstr[1] "%d dager"
 
 #: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d standardvalg hoppet over av en annen grunn (gjennomføringen er over, avlyst eller full)"
-msgstr[1] "%d standardvalg hoppet over av en annen grunn (gjennomføringen er over, avlyst eller full)"
-
-#: 
 msgid "%d default skipped: qualification revoked"
 msgid_plural "%d defaults skipped: qualification revoked"
 msgstr[0] "%d standardvalg hoppet over: kvalifikasjonen er trukket tilbake"
@@ -18839,10 +18711,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Et tema er en mappe som menigheten laster opp til Include/themes/ på serveren. Systemstandarden følger med ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "En overgangsinnstilling. Både de gamle sidene for frivillige muligheter og de nye sidene for tjenester er tilgjengelige, og en personpost viser begge frivillig-fanene, tydelig merket. Bruk den mens du flytter en menighet fra V1 til V2, og bytt deretter til bare V2."
-
-#: 
 msgid "A volunteer"
 msgstr "En frivillig"
 
@@ -19047,10 +18915,6 @@ msgid "Assigned outside the current plan"
 msgstr "Tildelt utenfor gjeldende plan"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Tildeling avbrutt"
-
-#: 
 msgid "Assignment not found"
 msgstr "Tildelingen ble ikke funnet"
 
@@ -19157,10 +19021,6 @@ msgstr "Avbryt tildeling"
 #: 
 msgid "Cancel this assignment"
 msgstr "Avbryt denne tildelingen"
-
-#: 
-msgid "Cancelled"
-msgstr "Avlyst"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19317,10 +19177,6 @@ msgstr "Menighetens nettsted"
 #: 
 msgid "Close event details"
 msgstr "Lukk arrangementsdetaljer"
-
-#: 
-msgid "Colour"
-msgstr "Farge"
 
 #: 
 msgid "Completed"
@@ -21579,10 +21435,6 @@ msgid "The asset path \"%s\" is not allowed."
 msgstr "Ressursstien \"%s\" er ikke tillatt."
 
 #: 
-msgid "The assignment could not be cancelled"
-msgstr "Tildelingen kunne ikke avbrytes"
-
-#: 
 msgid "The assignment message will be sent again"
 msgstr "Tildelingsmeldingen sendes på nytt"
 
@@ -22107,10 +21959,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Denne gjennomføringen har allerede funnet sted, og tildelingene kan ikke lenger endres"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Denne gjennomføringen er avlyst"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Denne gjennomføringen har egne bemanningsbehov, adskilt fra planen."
 
@@ -22337,10 +22185,6 @@ msgstr "Frivilligtider"
 #: 
 msgid "Volunteering"
 msgstr "Frivillig arbeid"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Frivillig arbeid organisert slik en menighet driver det. Hver tjeneste har team og oppgaver; personer er kvalifisert for oppgaver og tilhører tjenestens poolgruppe; planer følger arrangementene i kalenderen og lager daterte gjennomføringer med bemanningskrav; koordinatorer tildeler personer, som takker ja, takker nei eller foreslår en vikar; påminnelser og varsler sendes på e-post. Administratorer og brukere med tilgangen Administrer tjenester ser alle tjenester og kan opprette, deaktivere og slette dem. En tjenestekoordinator får i stedet tilgangen Administrer mine tjenester: overskriften Tjenester i sidemenyen viser da bare tjenestene vedkommende koordinerer. En teamleder leder teamet sitt fra Medlemsportalen. Medlemmer bruker Medlemsportalen til å se planen sin, svare, melde seg på og tilby hjelp."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22879,10 +22723,6 @@ msgid "Cancel this occurrence"
 msgstr "Avbryt denne forekomsten"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Avbrudd varsler ingen: ingen e-post sendes. Oppgaver beholdes, ingen påminnelser planlegges mens det er avbrutt, og ingen kan tildeles før det gjenopprettes."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Slettede arrangementer forlater hver kalender, med deres innsjekk og antall, og bemanningen av dette ministerium beholder bare datoen. Dette kan ikke angres."
 
@@ -22893,10 +22733,6 @@ msgstr "Arrangementer slettet: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Arrangementer å slette: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Forekomst avbrutt"
 
 #: 
 msgid "Occurrence restored"
@@ -22913,10 +22749,6 @@ msgstr "Gjenopprett forekomst"
 #: 
 msgid "Restore this occurrence"
 msgstr "Gjenopprett denne forekomsten"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Forekomsten kunne ikke avbrytes"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24981,10 +24813,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "Telemetri sendes til PostHog i USA. Rapporter om feil ved installasjon og oppgradering sendes selv når valgfri telemetri er slått av."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Denne datoen ble avlyst. Du trenger ikke gjøre noe mer."
-
-#: 
 msgid "always sent"
 msgstr "sendes alltid"
 
@@ -25451,10 +25279,6 @@ msgstr "E-post trenger oppfølging"
 #: 
 msgid "Email problem"
 msgstr "E-postproblem"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Innloggingskode og lenke på e-post kansellert"
 
 #: 
 msgid "Emailed verification link"
@@ -27219,10 +27043,6 @@ msgstr "til %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "Det er bedt om i medlemsportalen å endre e-postadressen din hos %1$s fra %2$s til %3$s. Endringen skjer bare når lenken som er sendt til den nye adressen, blir brukt."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Bruk lenken nedenfor til å gå gjennom familieopplysningene dine. På gjennomgangssiden velger du «Bekreft familieopplysninger» for å bekrefte at alt stemmer, eller sender rettelser til menighetskontoret."
 
 #: 
 msgid "Review Family Information"

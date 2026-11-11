@@ -887,10 +887,6 @@ msgid "Do you want to proceed?"
 msgstr "האם ברצונך להמשיך?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "אתה עומד לשלוח בדוא\"ל עותק של פרטי המשפחה לכתובות הבאות"
-
-#: 
 msgid "Financial Reports"
 msgstr "דוחות כספיים"
 
@@ -1821,10 +1817,6 @@ msgstr "מספר טלפון"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "רשימה נפתחת מותאמת אישית"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "קובץ PDF נשלח בהצלחה בדואר אלקטרוני לבני המשפחה"
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3874,10 +3866,6 @@ msgid "Please verify your family's information"
 msgstr "אנא אשרו את פרטי משפחתכם"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "לא ניתן לטעון מידע אימות"
-
-#: 
 msgid "No Changes"
 msgstr "אין שינויים"
 
@@ -3890,24 +3878,8 @@ msgid "Oops! Page not found."
 msgstr "אופס! הדף לא נמצא."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "אנא הזן את הפרטים הבאים כדי להתחיל את אימות המשפחה שלך"
-
-#: 
-msgid "Family Verification"
-msgstr "אימות משפחה"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "בקש אימות מידע משפחה"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "בחר כיצד ברצונך לבקש אימות של מידע המשפחה"
-
-#: 
-msgid "Online Verification"
-msgstr "אימות מקוון"
 
 #: 
 msgid "Verified In Person"
@@ -4331,10 +4303,6 @@ msgstr "Arabic - Egypt"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "אימות עצמי בהמתנה"
 
 #: 
 msgid "Self Verify"
@@ -6571,10 +6539,6 @@ msgid "Additional Information"
 msgstr "מידע נוסף"
 
 #: 
-msgid "All information is correct"
-msgstr "כל המידע נכון"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "הקצה הזדמנויות"
 
@@ -6587,20 +6551,12 @@ msgid "Choose opportunities..."
 msgstr "בחר הזדמנויות..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "אשר פרטי משפחה"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "פרטי קשר ומידע אישי"
 
 #: 
 msgid "Edited"
 msgstr "נערך"
-
-#: 
-msgid "Email PDF"
-msgstr "שלח PDF באימייל"
 
 #: 
 msgid "Newsletter"
@@ -6611,40 +6567,12 @@ msgid "Personal"
 msgstr "אישי"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "נא לעדכן את הרישומים שלנו עם תיקונים"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "ספק תיקונים או מידע נוסף כאן..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "בחר הזדמנויות"
 
 #: 
-msgid "Submit Verification"
-msgstr "שלח אימות"
-
-#: 
-msgid "Thank You!"
-msgstr "תודה לך!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "בקר באתר שלנו"
-
-#: 
 msgid "Volunteer"
 msgstr "מתנדב"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "נתקלנו בשגיאה בעיבוד האישור."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "בקשת האישור התקבלה. תודה על עדכון המידע."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8884,10 +8812,6 @@ msgstr "סיכום התחייבויות כספיות של משפחה"
 #: 
 msgid "Family Profile"
 msgstr "פרופיל משפחה"
-
-#: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "תפקידים משפחתיים (ראש משק בית, בן/בת זוג, ילד/ה וכו') עוזרים לארגן את הרשומות שלכם."
 
 #: 
 msgid "Family vs Person"
@@ -11989,10 +11913,6 @@ msgid "Cannot move property in that direction"
 msgstr "לא ניתן להזיז מאפיין בכיוון זה"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "אשר מידע משפחתי"
-
-#: 
 msgid "Delete failed"
 msgstr "המחיקה נכשלה"
 
@@ -12033,20 +11953,12 @@ msgid "Invalid target family"
 msgstr "משפחת יעד לא חוקית"
 
 #: 
-msgid "Log Out"
-msgstr "התנתק"
-
-#: 
 msgid "Membership not found"
 msgstr "חברות לא נמצאה"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "הסיסמה שונתה בהצלחה עבור"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "אנא סקור את פרטי משפחתך למטה ואשר או בקש שינויים."
 
 #: 
 msgid "Please select a target family."
@@ -13522,10 +13434,6 @@ msgid "Failed to cancel enrollment. Please try again."
 msgstr "ביטול ההרשמה נכשל. אנא נסה שוב."
 
 #: 
-msgid "Failed to copy URL"
-msgstr "העתקת ה-URL נכשלה"
-
-#: 
 msgid "Failed to create backup."
 msgstr "יצירת הגיבוי נכשלה."
 
@@ -13914,10 +13822,6 @@ msgid "One-Time Code"
 msgstr "קוד חד-פעמי"
 
 #: 
-msgid "Open in New Tab"
-msgstr "פתח בלשונית חדשה"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "פתח את אפליקציית האימות שלך וסרוק את קוד ה-QR הזה"
 
@@ -14194,10 +14098,6 @@ msgid "Setup Complete"
 msgstr "ההגדרה הושלמה"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "שתף URL זה עם בני המשפחה לאישור המידע שלהם"
-
-#: 
 msgid "Show more options"
 msgstr "הצג אפשרויות נוספות"
 
@@ -14348,10 +14248,6 @@ msgstr "אישור מחיקת משתמש"
 #: 
 msgid "Validation pending"
 msgstr "ממתין לאימות"
-
-#: 
-msgid "Verification URL"
-msgstr "URL לאישור"
 
 #: 
 msgid "Verification failed. Please try again."
@@ -15690,10 +15586,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "אנא אשר מחיקה של רשומת משפחה זו"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "אנא אשר את פרטי המשפחה שלך"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "אנא בחר משפחה אחרת לשיוך תרומות אלו"
 
@@ -16326,10 +16218,6 @@ msgid "Pledges & Payments"
 msgstr "התחייבויות ותשלומים"
 
 #: 
-msgid "Prioritise translations"
-msgstr "תעדף תרגומים"
-
-#: 
 msgid "Purpose"
 msgstr "מטרה"
 
@@ -16590,12 +16478,6 @@ msgstr "לא נמצאו תשלומים עבור ההפקדות שנבחרו"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "לא סופקו מזהי הפקדון תקינים"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "קובץ PDF נשלח בהצלחה במייל למשפחה אחת."
-msgstr[1] "קובץ PDF נשלח בהצלחה במייל ל-%d משפחות."
 
 #: 
 msgid "Partial Send"
@@ -17534,10 +17416,6 @@ msgstr "הסר התקנת תוסף"
 #: 
 msgid "Upcoming"
 msgstr "קרוב"
-
-#: 
-msgid "Valid Until"
-msgstr "תקף עד"
 
 #: 
 msgid "View active only"
@@ -18500,12 +18378,6 @@ msgstr[0] "%d יום"
 msgstr[1] "%d ימים"
 
 #: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d ברירת מחדל דולגה מסיבה אחרת (המופע הסתיים, בוטל או מלא)"
-msgstr[1] "%d ברירות מחדל דולגו מסיבה אחרת (המופע הסתיים, בוטל או מלא)"
-
-#: 
 msgid "%d default skipped: qualification revoked"
 msgid_plural "%d defaults skipped: qualification revoked"
 msgstr[0] "%d ברירת מחדל דולגה: ההסמכה בוטלה"
@@ -18766,10 +18638,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "ערכת נושא היא תיקייה שהקהילה שלכם מעלה אל Include/themes/ בשרת. ברירת המחדל של המערכת מגיעה עם ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "הגדרת מעבר. דפי הזדמנויות ההתנדבות הישנים ודפי השירותים החדשים זמינים שניהם, ורשומת אדם מציגה את שתי לשוניות המתנדבים, מסומנות בבירור. השתמשו בה בזמן שאתם מעבירים קהילה מ-V1 ל-V2, ואז עברו ל-V2 בלבד."
-
-#: 
 msgid "A volunteer"
 msgstr "מתנדב"
 
@@ -18974,10 +18842,6 @@ msgid "Assigned outside the current plan"
 msgstr "שובץ מחוץ לתוכנית הנוכחית"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "השיבוץ בוטל"
-
-#: 
 msgid "Assignment not found"
 msgstr "השיבוץ לא נמצא"
 
@@ -19084,10 +18948,6 @@ msgstr "ביטול שיבוץ"
 #: 
 msgid "Cancel this assignment"
 msgstr "ביטול שיבוץ זה"
-
-#: 
-msgid "Cancelled"
-msgstr "בוטל"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19244,10 +19104,6 @@ msgstr "אתר הקהילה"
 #: 
 msgid "Close event details"
 msgstr "סגירת פרטי האירוע"
-
-#: 
-msgid "Colour"
-msgstr "צבע"
 
 #: 
 msgid "Completed"
@@ -21506,10 +21362,6 @@ msgid "The asset path \"%s\" is not allowed."
 msgstr "נתיב הנכס \"%s\" אינו מותר."
 
 #: 
-msgid "The assignment could not be cancelled"
-msgstr "לא ניתן היה לבטל את השיבוץ"
-
-#: 
 msgid "The assignment message will be sent again"
 msgstr "הודעת השיבוץ תישלח שוב"
 
@@ -22034,10 +21886,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "מופע זה כבר התרחש ואי אפשר עוד לשנות את שיבוציו"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "מופע זה בוטל"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "למופע זה יש צורכי איוש משלו, נפרדים מלוח הזמנים שלו."
 
@@ -22264,10 +22112,6 @@ msgstr "שעות מתנדבים"
 #: 
 msgid "Volunteering"
 msgstr "התנדבות"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "התנדבות מאורגנת כפי שקהילה מנהלת אותה. לכל שירות יש צוותים ותפקידים; אנשים מוסמכים לתפקידים ושייכים לקבוצת המאגר של השירות; לוחות זמנים עוקבים אחר האירועים בלוח השנה ומפיקים מופעים מתוארכים עם דרישות איוש; רכזים משבצים אנשים, שמאשרים, דוחים או מציעים מחליף; תזכורות והתראות יוצאות בדוא\"ל. מנהלי מערכת ומשתמשים עם הרשאת ניהול שירותים רואים כל שירות ויכולים ליצור, להשבית ולמחוק אותם. רכז שירות מקבל במקום זאת את הרשאת ניהול השירותים שלי: הכותרת שירותים בסרגל הצד מציגה אז רק את השירותים שהוא מרכז. מנהל צוות מנהל את הצוות שלו מפורטל החברים. החברים משתמשים בפורטל החברים כדי לראות את לוח הזמנים שלהם, להשיב, להירשם ולהציע עזרה."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22806,10 +22650,6 @@ msgid "Cancel this occurrence"
 msgstr "ביטול מופע זה"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "הביטול לא מודיע לאיש: לא נשלח דוא״ל. השיבוצים נשמרים, לא נקבעות תזכורות כל עוד המופע מבוטל, ואי אפשר לשבץ איש עד שישוחזר."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "אירועים שנמחקו נעלמים מכל לוחות השנה, יחד עם רישומי הכניסה וספירות הנוכחים, ואיוש השירות שלהם שומר רק את התאריך. לא ניתן לבטל פעולה זו."
 
@@ -22820,10 +22660,6 @@ msgstr "אירועים שנמחקו: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "אירועים למחיקה: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "המופע בוטל"
 
 #: 
 msgid "Occurrence restored"
@@ -22840,10 +22676,6 @@ msgstr "שחזור מופע"
 #: 
 msgid "Restore this occurrence"
 msgstr "שחזור מופע זה"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "לא ניתן היה לבטל את המופע"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24908,10 +24740,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "הטלמטריה נשלחת ל-PostHog בארצות הברית. דוחות כשל בהתקנה ובשדרוג נשלחים גם כשטלמטריה רשות כבויה."
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "תאריך זה בוטל. אין צורך בפעולה נוספת מצידכם."
-
-#: 
 msgid "always sent"
 msgstr "נשלח תמיד"
 
@@ -25378,10 +25206,6 @@ msgstr "הדוא״ל דורש טיפול"
 #: 
 msgid "Email problem"
 msgstr "בעיית דוא״ל"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "קוד ההתחברות והקישור שנשלחו בדוא״ל בוטלו"
 
 #: 
 msgid "Emailed verification link"
@@ -27146,10 +26970,6 @@ msgstr "עד %s"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "בפורטל החברים הוגשה בקשה לשנות את כתובת הדוא״ל שלך ב-%1$s מ-%2$s אל %3$s. השינוי מתבצע רק כשמשתמשים בקישור שנשלח לכתובת החדשה."
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "השתמשו בקישור שלמטה כדי לבדוק את פרטי המשפחה. בדף הבדיקה בחרו „אישור פרטי המשפחה” כדי לאשר שהכול נכון, או שלחו תיקונים למשרד הקהילה."
 
 #: 
 msgid "Review Family Information"

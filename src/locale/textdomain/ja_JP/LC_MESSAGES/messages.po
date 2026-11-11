@@ -881,10 +881,6 @@ msgid "Do you want to proceed?"
 msgstr "続行しますか？"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "以下のメールアドレスに世帯情報のコピーを送信しようとしています"
-
-#: 
 msgid "Financial Reports"
 msgstr "財務レポート"
 
@@ -1804,10 +1800,6 @@ msgstr "電話番号"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "カスタム・ドロップダウンリスト"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF が世帯メンバーに正常に送信されました。"
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3848,10 +3840,6 @@ msgid "Please verify your family's information"
 msgstr "ご家族の情報をご確認ください"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "確認情報を読み込むことができません"
-
-#: 
 msgid "No Changes"
 msgstr "変更なし"
 
@@ -3864,24 +3852,8 @@ msgid "Oops! Page not found."
 msgstr "エラー!ページが見つかりません。"
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "ご家族の確認を開始するために以下を入力してください"
-
-#: 
-msgid "Family Verification"
-msgstr "ファミリー確認"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "ファミリー情報確認をリクエスト"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "ファミリー情報をどのように確認してもらいたいかを選択してください"
-
-#: 
-msgid "Online Verification"
-msgstr "オンライン確認"
 
 #: 
 msgid "Verified In Person"
@@ -4303,10 +4275,6 @@ msgstr "アラビア語 - エジプト"
 #: 
 msgid "Thai"
 msgstr "タイ語"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "自己確認保留中"
 
 #: 
 msgid "Self Verify"
@@ -6536,10 +6504,6 @@ msgid "Additional Information"
 msgstr "追加情報"
 
 #: 
-msgid "All information is correct"
-msgstr "すべての情報が正しい"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "機会を割り当て"
 
@@ -6552,20 +6516,12 @@ msgid "Choose opportunities..."
 msgstr "機会を選択..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "家族情報を確認"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "連絡先と個人情報"
 
 #: 
 msgid "Edited"
 msgstr "編集済み"
-
-#: 
-msgid "Email PDF"
-msgstr "PDFをメール"
 
 #: 
 msgid "Newsletter"
@@ -6576,40 +6532,12 @@ msgid "Personal"
 msgstr "個人"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "修正内容でレコードを更新してください"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "ここに修正または追加情報を入力してください..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "機会を選択"
 
 #: 
-msgid "Submit Verification"
-msgstr "確認を送信"
-
-#: 
-msgid "Thank You!"
-msgstr "ありがとうございます！"
-
-#: 
-msgid "Visit Our Website"
-msgstr "ウェブサイトを訪問"
-
-#: 
 msgid "Volunteer"
 msgstr "ボランティア"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "確認の処理中にエラーが発生しました。もう一度お試しいただくか、直接お問い合わせください。"
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "確認リクエストを受け取りました。情報を最新の状態に保っていただきありがとうございます。"
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8844,10 +8772,6 @@ msgstr "家族献金誓約概要"
 #: 
 msgid "Family Profile"
 msgstr "家族プロフィール"
-
-#: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "家族の役割（世帯主、配偶者、子どもなど）は記録の整理に役立ちます。"
 
 #: 
 msgid "Family vs Person"
@@ -11948,10 +11872,6 @@ msgid "Cannot move property in that direction"
 msgstr "その方向にプロパティを移動できません"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "家族情報を確認"
-
-#: 
 msgid "Delete failed"
 msgstr "削除に失敗しました"
 
@@ -11992,20 +11912,12 @@ msgid "Invalid target family"
 msgstr "無効なターゲット家族です"
 
 #: 
-msgid "Log Out"
-msgstr "ログアウト"
-
-#: 
 msgid "Membership not found"
 msgstr "メンバーシップが見つかりません"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "パスワードが正常に変更されました："
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "以下の家族情報を確認し、確定するか変更を申請してください。"
 
 #: 
 msgid "Please select a target family."
@@ -13481,10 +13393,6 @@ msgid "Failed to cancel enrollment. Please try again."
 msgstr "登録のキャンセルに失敗しました。もう一度お試しください。"
 
 #: 
-msgid "Failed to copy URL"
-msgstr "URLのコピーに失敗しました"
-
-#: 
 msgid "Failed to create backup."
 msgstr "バックアップの作成に失敗しました。"
 
@@ -13873,10 +13781,6 @@ msgid "One-Time Code"
 msgstr "ワンタイムコード"
 
 #: 
-msgid "Open in New Tab"
-msgstr "新しいタブで開く"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "認証アプリを開いてこの QR コードをスキャンしてください"
 
@@ -14153,10 +14057,6 @@ msgid "Setup Complete"
 msgstr "設定完了"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "このURLを家族メンバーと共有して情報を確認してもらいます"
-
-#: 
 msgid "Show more options"
 msgstr "さらにオプションを表示"
 
@@ -14307,10 +14207,6 @@ msgstr "ユーザー削除の確認"
 #: 
 msgid "Validation pending"
 msgstr "検証保留中"
-
-#: 
-msgid "Verification URL"
-msgstr "確認URL"
 
 #: 
 msgid "Verification failed. Please try again."
@@ -15646,10 +15542,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "この家族のレコードを削除することを確認してください"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "家族情報を確認してください"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "これらの献金を関連付ける別の家族を選択してください"
 
@@ -16282,10 +16174,6 @@ msgid "Pledges & Payments"
 msgstr "誓約と献金"
 
 #: 
-msgid "Prioritise translations"
-msgstr "翻訳を優先する"
-
-#: 
 msgid "Purpose"
 msgstr "目的"
 
@@ -16545,11 +16433,6 @@ msgstr "選択した入金に対する支払いが見つかりませんでした
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "有効な入金IDが指定されていません"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDFを%d家族にメールで送信しました。"
 
 #: 
 msgid "Partial Send"
@@ -17487,10 +17370,6 @@ msgstr "プラグインをアンインストール"
 #: 
 msgid "Upcoming"
 msgstr "今後の予定"
-
-#: 
-msgid "Valid Until"
-msgstr "有効期限"
 
 #: 
 msgid "View active only"
@@ -18452,11 +18331,6 @@ msgid_plural "%d days"
 msgstr[0] "%d 日"
 
 #: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d デフォルトが別の理由でスキップされました（発生が終了、キャンセル、または満杯）"
-
-#: 
 msgid "%d default skipped: qualification revoked"
 msgid_plural "%d defaults skipped: qualification revoked"
 msgstr[0] "%d デフォルトがスキップされました：資格が取り消されました"
@@ -18711,10 +18585,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "テーマは、教会がサーバー上の Include/themes/ にアップロードするフォルダーです。システム既定のテーマは ChurchCRM に付属しています。"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "移行用の設定です。従来のボランティア機会のページと新しいミニストリーのページの両方が利用でき、個人の記録には2つのボランティアタブが明記されて表示されます。教会を V1 から V2 に移行する間に使用し、その後は V2 のみに切り替えてください。"
-
-#: 
 msgid "A volunteer"
 msgstr "奉仕者"
 
@@ -18919,10 +18789,6 @@ msgid "Assigned outside the current plan"
 msgstr "現在の計画外で割り当て済み"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "割り当てをキャンセルしました"
-
-#: 
 msgid "Assignment not found"
 msgstr "割り当てが見つかりません"
 
@@ -19029,10 +18895,6 @@ msgstr "割り当てをキャンセル"
 #: 
 msgid "Cancel this assignment"
 msgstr "この割り当てをキャンセル"
-
-#: 
-msgid "Cancelled"
-msgstr "キャンセル済み"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19189,10 +19051,6 @@ msgstr "教会のウェブサイト"
 #: 
 msgid "Close event details"
 msgstr "行事の詳細を閉じる"
-
-#: 
-msgid "Colour"
-msgstr "色"
 
 #: 
 msgid "Completed"
@@ -21449,10 +21307,6 @@ msgid "The asset path \"%s\" is not allowed."
 msgstr "アセットのパス「%s」は許可されていません。"
 
 #: 
-msgid "The assignment could not be cancelled"
-msgstr "割り当てをキャンセルできませんでした"
-
-#: 
 msgid "The assignment message will be sent again"
 msgstr "割り当てのメッセージが再送信されます"
 
@@ -21975,10 +21829,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "この開催回はすでに終了しており、割り当てはもう変更できません"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "この開催回はキャンセルされました"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "この開催回には、スケジュールとは別に設定された独自の必要人員があります。"
 
@@ -22205,10 +22055,6 @@ msgstr "奉仕者の時間"
 #: 
 msgid "Volunteering"
 msgstr "奉仕"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "教会の運営の仕方に沿って組み立てた奉仕の管理です。各ミニストリーにはチームと役割があり、人は役割の資格を持ち、ミニストリーの奉仕者プールのグループに所属します。スケジュールはカレンダーの行事に従い、必要人員を伴う日付付きの開催回を生成します。コーディネーターが人を割り当て、割り当てられた人は承諾、辞退、または代理の提案を行います。リマインダーと通知はメールで送られます。管理者とミニストリー管理権限を持つユーザーは、すべてのミニストリーを見ることができ、作成、無効化、削除ができます。ミニストリーのコーディネーターには代わりに「自分のミニストリーの管理」権限が付与され、サイドバーのミニストリー見出しには、担当するミニストリーだけが表示されます。チームリーダーは、メンバーポータルからチームを運営します。会員はメンバーポータルで、自分のスケジュールの確認、応答、申し込み、お手伝いの申し出ができます。"
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22745,10 +22591,6 @@ msgid "Cancel this occurrence"
 msgstr "この発生をキャンセル"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "キャンセルしてもだれにも通知されません。メールは送信されません。割り当ては保持され、キャンセル中はリマインダーがスケジュールされず、復元されるまでだれも割り当てることができません。"
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "削除されたイベントはすべてのカレンダーから削除され、チェックインと人数統計も削除されます。このミニストリーの人員配置はその日付のみを保持します。この操作は元に戻せません。"
 
@@ -22759,10 +22601,6 @@ msgstr "削除されたイベント：{{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "削除するイベント：{{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "発生がキャンセルされました"
 
 #: 
 msgid "Occurrence restored"
@@ -22779,10 +22617,6 @@ msgstr "発生を復元"
 #: 
 msgid "Restore this occurrence"
 msgstr "この発生を復元"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "発生をキャンセルできませんでした"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24847,10 +24681,6 @@ msgid "Telemetry is sent to PostHog in the United States. Install and upgrade fa
 msgstr "利用状況は米国の PostHog に送られます。任意の利用状況送信が無効でも、インストールとアップグレードの失敗報告は送られます。"
 
 #: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "この日付は取り消されました。これ以上ご対応いただく必要はありません。"
-
-#: 
 msgid "always sent"
 msgstr "常に送信"
 
@@ -25317,10 +25147,6 @@ msgstr "メールの確認が必要です"
 #: 
 msgid "Email problem"
 msgstr "メールの問題"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "メールで送ったサインインのコードとリンクを取り消しました"
 
 #: 
 msgid "Emailed verification link"
@@ -27085,10 +26911,6 @@ msgstr "%s まで"
 #: 
 msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
 msgstr "メンバーポータルで、%1$s のメールアドレスを %2$s から %3$s に変更する依頼がありました。変更は、新しいアドレスに送られたリンクが使われたときだけ行われます。"
-
-#: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "下のリンクから家族の情報を確認してください。確認ページで「家族情報を確認」を選ぶと、内容が正しいことを確定できます。訂正は教会事務所に送ってください。"
 
 #: 
 msgid "Review Family Information"
