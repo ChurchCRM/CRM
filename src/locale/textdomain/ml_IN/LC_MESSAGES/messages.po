@@ -10405,7 +10405,7 @@ msgstr "ദാന envelopes ഉപയോഗം പ്രാപ്തമാക്
 
 #: 
 msgid "Enable use of scanned checks"
-msgstr "Scanned checks ഉപയോഗം പ്രാപ്തമാക്കുക"
+msgstr "സ്കാൻ ചെയ്ത ചെക്കുകളുടെ ഉപയോഗം പ്രാപ്തമാക്കുക"
 
 #. plugin:mailchimp:section:1:title
 #: 
@@ -10494,7 +10494,7 @@ msgstr "എങ്ങനെ പ്രവർത്തിക്കുന്നു"
 
 #: 
 msgid "How many checks to print per deposit slip page"
-msgstr "ഓരോ deposit slip page-ലും print ചെയ്യേണ്ട checks-ന്റെ എണ്ണം"
+msgstr "ഓരോ ഡിപ്പോസിറ്റ് സ്ലിപ്പ് പേജിലും പ്രിന്റ് ചെയ്യേണ്ട ചെക്കുകളുടെ എണ്ണം"
 
 #. plugin:vonage:section:3:content
 #: 
@@ -27043,4 +27043,302 @@ msgstr "ഫണ്ട് തിരിച്ചുള്ള പേമെന്റ�
 #: 
 msgid "Unknown Fund"
 msgstr "അജ്ഞാത ഫണ്ട്"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "ഡാറ്റാബേസ് പിന്തുണയുള്ള ഒരു പതിപ്പിലേക്ക് മാറ്റാൻ നിങ്ങളുടെ ഹോസ്റ്റിനോട് ആവശ്യപ്പെടുക, തുടർന്ന് വീണ്ടും ശ്രമിക്കുക."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "ഡാറ്റാബേസ് പിന്തുണയുള്ള ഒരു പതിപ്പിലേക്ക് മാറ്റാൻ നിങ്ങളുടെ ഹോസ്റ്റിനോട് ആവശ്യപ്പെടുക."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "അവധിദിനങ്ങളുടെ പേരുകൾ ഓരോ ഉപയോക്താവിന്റെയും ഭാഷാ ക്രമീകരണം പിന്തുടരുന്നു. ഒരു അവധിദിനത്തിന് ആ ഭാഷയിൽ പേരില്ലെങ്കിൽ, അത് ഇംഗ്ലീഷിൽ കാണിക്കും."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "നിങ്ങളുടെ ഭാഷയിലെ അവധിദിന പേരുകൾ"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "ഡിപ്പോസിറ്റ് എൻട്രികളിൽ ചെക്ക് പേയ്‌മെന്റുകൾ രേഖപ്പെടുത്തുമ്പോൾ ചെക്ക് നമ്പർ നിർബന്ധമാക്കുക. ഓഫ് ആയിരിക്കുമ്പോൾ, ശൂന്യമോ 0 ആയതോ ആയ ചെക്ക് നമ്പറോടെ ചെക്ക് സേവ് ചെയ്യാം, അവ ഡ്യൂപ്ലിക്കേറ്റിനായി പരിശോധിക്കില്ല."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "ചെക്ക് പേയ്‌മെന്റുകളിൽ ചെക്ക് നമ്പർ നിർബന്ധമാക്കുക"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "അപ്‌ഗ്രേഡ് ആരംഭിച്ചില്ല, അതിനാൽ ഒന്നും മാറിയിട്ടില്ല."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "ഈ അപ്‌ഗ്രേഡ് നിങ്ങളുടെ ഡാറ്റാബേസിൽ പ്രവർത്തിപ്പിക്കാൻ കഴിയില്ല."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "നിങ്ങളുടെ ഡാറ്റാബേസ് സെർവർ (%1$s %2$s) ChurchCRM പിന്തുണയ്ക്കുന്നതിനേക്കാൾ പഴയതാണ് (MySQL %3$s അല്ലെങ്കിൽ MariaDB %4$s മുതലുള്ളവ)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "സ്ഥിരീകരണ ഇമെയിൽ അയയ്ക്കുന്നതിന് മുമ്പ് സ്വയം രജിസ്റ്റർ ചെയ്ത ഈ കുടുംബത്തെ അംഗീകരിക്കുക"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "രണ്ട് ധനകാര്യ വർഷങ്ങളിലെ കുടുംബങ്ങളുടെ ആകെ പ്രതിജ്ഞകൾ താരതമ്യം ചെയ്യുക."
+
+#: 
+msgid "Email Portal Link"
+msgstr "പോർട്ടൽ ലിങ്ക് ഇമെയിൽ ചെയ്യുക"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "കുടുംബത്തിന് അവരുടെ വിവരങ്ങൾ പരിശോധിക്കാനും പുതുക്കാനും കഴിയുന്ന അംഗ പോർട്ടലിലേക്കുള്ള ലിങ്ക് ഇമെയിൽ ചെയ്യുക, അല്ലെങ്കിൽ നിങ്ങൾ നേരിട്ട് സ്ഥിരീകരിച്ചതായി രേഖപ്പെടുത്തുക."
+
+#: 
+msgid "Family is inactive"
+msgstr "കുടുംബം നിഷ്‌ക്രിയമാണ്"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "ആദ്യ ധനകാര്യ വർഷം"
+
+#: 
+msgid "Fiscal Years"
+msgstr "ധനകാര്യ വർഷങ്ങൾ"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "ദാന പ്രസ്താവന — മാതൃക മാത്രം"
+
+#: 
+msgid "Last invited"
+msgstr "അവസാനമായി ക്ഷണിച്ചത്"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "അവസാന പോർട്ടൽ സൈൻ-ഇൻ"
+
+#: 
+msgid "Last verified"
+msgstr "അവസാനമായി സ്ഥിരീകരിച്ചത്"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "ഈ കുടുംബത്തിലെ സജീവവും അംഗീകൃതവുമായ ഒരു അംഗത്തിനും ഇമെയിൽ വിലാസമില്ല. പകരം നേരിട്ട് സ്ഥിരീകരിക്കുക."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "ഈ ധനകാര്യ വർഷങ്ങൾക്കായി പ്രതിജ്ഞകളൊന്നും കണ്ടെത്തിയില്ല."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "പ്രതിജ്ഞ താരതമ്യം"
+
+#: 
+msgid "Preview PDF"
+msgstr "PDF പ്രിവ്യൂ"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "രണ്ടാം ധനകാര്യ വർഷം"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "നിങ്ങളുടെ കുടുംബ വിവരങ്ങൾ പരിശോധിക്കാൻ ഈ ഇമെയിൽ വിലാസം ഉപയോഗിച്ച് അംഗ പോർട്ടലിൽ സൈൻ ഇൻ ചെയ്യുക. എന്റെ കുടുംബം പേജിൽ നിന്ന് എല്ലാം ശരിയാണെന്ന് സ്ഥിരീകരിക്കുക, അല്ലെങ്കിൽ നിങ്ങളുടെ വിശദാംശങ്ങൾ പുതുക്കുക."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "ഈ കുടുംബം നിഷ്‌ക്രിയമായതിനാൽ സ്ഥിരീകരണ ഇമെയിലുകൾ അയയ്ക്കുന്നില്ല."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "സ്വയം രജിസ്റ്റർ ചെയ്ത ഈ കുടുംബം അംഗീകാരത്തിനായി കാത്തിരിക്കുന്നു. അംഗീകരിക്കുമ്പോൾ, അംഗ പോർട്ടലിൽ സൈൻ ഇൻ ചെയ്ത് വിവരങ്ങൾ പരിശോധിക്കാനുള്ള ക്ഷണം കുടുംബത്തിന് ഇമെയിൽ ചെയ്യും."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "സേവ് ചെയ്ത ക്രമീകരണങ്ങളും സാങ്കൽപ്പിക മാതൃകാ ദാനങ്ങളും മാത്രം ഉപയോഗിക്കുന്നു."
+
+#: 
+msgid "Verification"
+msgstr "സ്ഥിരീകരണം"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "%d കുടുംബത്തിന് സ്ഥിരീകരണ ഇമെയിൽ അയച്ചു."
+msgstr[1] "%d കുടുംബങ്ങൾക്ക് സ്ഥിരീകരണ ഇമെയിൽ അയച്ചു."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "കുടുംബാംഗങ്ങൾക്ക് സ്ഥിരീകരണ ഇമെയിൽ അയച്ചു."
+
+#: 
+msgid "by the family in the portal"
+msgstr "പോർട്ടലിൽ കുടുംബം"
+
+#: 
+msgid "in person by staff"
+msgstr "സ്റ്റാഫ് നേരിട്ട്"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d സ്ഥിര നിയമനം മറ്റൊരു കാരണത്താൽ ഒഴിവാക്കി (തീയതി കഴിഞ്ഞു, റദ്ദാക്കി അല്ലെങ്കിൽ നിറഞ്ഞു)"
+msgstr[1] "%d സ്ഥിര നിയമനം മറ്റൊരു കാരണത്താൽ ഒഴിവാക്കി (തീയതി കഴിഞ്ഞു, റദ്ദാക്കി അല്ലെങ്കിൽ നിറഞ്ഞു)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "ഒരു പരിവർത്തന ക്രമീകരണം. പഴയ സന്നദ്ധസേവന അവസരങ്ങളുടെ പേജുകളും പുതിയ ശുശ്രൂഷകളുടെ പേജുകളും ലഭ്യമാണ്, വ്യക്തിയുടെ രേഖയിൽ രണ്ട് സന്നദ്ധസേവന ടാബുകളും വ്യക്തമായി ലേബൽ ചെയ്ത് കാണിക്കുന്നു. ഒരു ചർച്ചിനെ V1 ൽ നിന്ന് V2 ലേക്ക് മാറ്റുമ്പോൾ ഇത് ഉപയോഗിക്കുക, പിന്നീട് V2 മാത്രമാക്കുക."
+
+#: 
+msgid "Assignment canceled"
+msgstr "നിയമനം റദ്ദാക്കി"
+
+#: 
+msgid "Canceled"
+msgstr "റദ്ദാക്കി"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "റദ്ദാക്കുന്നത് ആരെയും അറിയിക്കില്ല: ഇമെയിൽ അയയ്ക്കില്ല. നിയോഗങ്ങൾ നിലനിൽക്കും, റദ്ദാക്കിയിരിക്കുമ്പോൾ ഓർമ്മപ്പെടുത്തലുകൾ ഷെഡ്യൂൾ ചെയ്യില്ല, പുനഃസ്ഥാപിക്കുന്നതുവരെ ആരെയും നിയോഗിക്കാനാവില്ല."
+
+#: 
+msgid "Color"
+msgstr "നിറം"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "ഇമെയിൽ ചെയ്ത സൈൻ-ഇൻ കോഡും ലിങ്കും റദ്ദാക്കി"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "കുടുംബ റോളുകൾ (കുടുംബനാഥൻ, ഭാര്യ/ഭർത്താവ്, കുട്ടി, മുതലായവ) നിങ്ങളുടെ രേഖകൾ ക്രമീകരിക്കാൻ സഹായിക്കുന്നു."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "സംഭവം റദ്ദാക്കി"
+
+#: 
+msgid "Prioritize translations"
+msgstr "വിവർത്തനങ്ങൾക്ക് മുൻഗണന നൽകുക"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "നിയമനം റദ്ദാക്കാൻ കഴിഞ്ഞില്ല"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "സംഭവം റദ്ദാക്കാൻ കഴിഞ്ഞില്ല"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "ഈ തീയതി റദ്ദാക്കി. നിങ്ങളിൽ നിന്ന് കൂടുതലൊന്നും വേണ്ട."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "ഈ തീയതി റദ്ദാക്കി"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "ഒരു ചർച്ച് നടത്തുന്ന രീതിയിൽ ക്രമീകരിച്ച സന്നദ്ധസേവനം. ഓരോ ശുശ്രൂഷയ്ക്കും ടീമുകളും സ്ഥാനങ്ങളും ഉണ്ട്; ആളുകൾ സ്ഥാനങ്ങൾക്ക് യോഗ്യരാകുകയും ശുശ്രൂഷയുടെ പൂൾ ഗ്രൂപ്പിൽ ഉൾപ്പെടുകയും ചെയ്യുന്നു; ഷെഡ്യൂളുകൾ കലണ്ടറിലെ പരിപാടികളെ പിന്തുടർന്ന് ആൾബലാവശ്യങ്ങളോടു കൂടിയ തീയതി അടിസ്ഥാനമാക്കിയ ഇനങ്ങൾ ഉണ്ടാക്കുന്നു; കോർഡിനേറ്റർമാർ ആളുകളെ നിയോഗിക്കുന്നു, അവർ സ്വീകരിക്കുകയോ നിരസിക്കുകയോ പകരക്കാരനെ നിർദ്ദേശിക്കുകയോ ചെയ്യുന്നു; ഓർമ്മപ്പെടുത്തലുകളും മുന്നറിയിപ്പുകളും ഇമെയിൽ വഴി പോകുന്നു. അഡ്മിനിസ്ട്രേറ്റർമാർക്കും ശുശ്രൂഷകൾ നിയന്ത്രിക്കുക അനുമതിയുള്ള ഉപയോക്താക്കൾക്കും എല്ലാ ശുശ്രൂഷകളും കാണാം, അവ സൃഷ്ടിക്കാനും പ്രവർത്തനരഹിതമാക്കാനും ഇല്ലാതാക്കാനും കഴിയും. ഒരു ശുശ്രൂഷാ കോർഡിനേറ്റർക്ക് പകരം എന്റെ ശുശ്രൂഷകൾ നിയന്ത്രിക്കുക അനുമതി നൽകുന്നു: അപ്പോൾ സൈഡ്ബാറിലെ ശുശ്രൂഷകൾ തലക്കെട്ട് അവർ ഏകോപിപ്പിക്കുന്ന ശുശ്രൂഷകൾ മാത്രം കാണിക്കുന്നു. ഒരു ടീം ലീഡർ അംഗ പോർട്ടലിൽ നിന്ന് തന്റെ ടീമിനെ നടത്തുന്നു. അംഗങ്ങൾ അംഗ പോർട്ടൽ ഉപയോഗിച്ച് അവരുടെ ഷെഡ്യൂൾ കാണുകയും പ്രതികരിക്കുകയും സൈൻ അപ്പ് ചെയ്യുകയും സഹായം വാഗ്ദാനം ചെയ്യുകയും ചെയ്യുന്നു."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "സജീവ ഇൻസ്റ്റലേഷനുകളും അപ്‌ഗ്രേഡ് ഫലങ്ങളും എണ്ണുക"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "ഡാറ്റാബേസ് എഞ്ചിനും പ്രധാന/ഉപ പതിപ്പും"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "പിശകുകൾ — ഇൻസ്റ്റാൾ സ്ഥിതിവിവരങ്ങൾ, മുന്നറിയിപ്പുകൾ, പിശകുകൾ, JS എക്സെപ്ഷനുകൾ"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "പ്രശ്നങ്ങൾ കണ്ടെത്താനും പരിഹരിക്കാനും ഞങ്ങളെ സഹായിക്കാമോ?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "ഇൻസ്റ്റാൾ ഏറ്റവും കുറഞ്ഞ ഇൻസ്റ്റലേഷൻ, അപ്‌ഗ്രേഡ് സ്ഥിതിവിവരങ്ങൾ പങ്കിടുന്നു. പിശകുകൾ മുന്നറിയിപ്പുകളും പിശക് റിപ്പോർട്ടുകളും ചേർക്കുന്നു. പൂർണ്ണം പേജ് വ്യൂകൾ ചേർക്കുന്നു. ഒന്നുമില്ല പരാജയപ്പെട്ട ഇൻസ്റ്റാളുകളും അപ്‌ഗ്രേഡുകളും മാത്രം അയയ്ക്കുന്നു."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "ഇൻസ്റ്റാൾ — ഇൻസ്റ്റലേഷൻ, അപ്‌ഗ്രേഡ് സ്ഥിതിവിവരങ്ങൾ (സ്ഥിരസ്ഥിതി)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "ഇൻസ്റ്റലേഷൻ, അപ്‌ഗ്രേഡ് ഫലങ്ങൾ, അപ്‌ഗ്രേഡുകളിൽ മുമ്പത്തെ പതിപ്പ്, ഉപയോഗത്തിലിരിക്കുമ്പോൾ ദിവസേനയുള്ള ചെക്ക്-ഇൻ"
+
+#: 
+msgid "Installation profile"
+msgstr "ഇൻസ്റ്റലേഷൻ പ്രൊഫൈൽ"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "ലൊക്കേൽ (പിശകുകളും പൂർണ്ണവും)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "ഒരിക്കലും പങ്കിടില്ല: അംഗങ്ങൾ, ദാനങ്ങൾ, മറ്റ് സഭാ രേഖകൾ, നിങ്ങളുടെ സഭയുടെ പേര്, നിങ്ങളുടെ വെബ് വിലാസം അല്ലെങ്കിൽ സെർവർ പേര്, ഇമെയിൽ വിലാസങ്ങൾ. നിങ്ങളുടെ രാജ്യം സഭാ ക്രമീകരണങ്ങളിലുള്ളതാണ്, നിങ്ങളുടെ നെറ്റ്‌വർക്കിൽ നിന്ന് കണ്ടെത്തുന്നതല്ല."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "OS കുടുംബം (പിശകുകളും പൂർണ്ണവും)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP പതിപ്പ് (പിശകുകളും പൂർണ്ണവും)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "എന്താണ് കൃത്യമായി പങ്കിടുന്നതെന്ന് കാണുക, അല്ലെങ്കിൽ നിങ്ങളുടെ തിരഞ്ഞെടുപ്പ് മാറ്റുക, അഡ്‌മിൻ → ടെലിമെട്രി എന്നതിൽ."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "പ്രൊഡക്ഷൻ, ഡെമോ, ടെസ്റ്റ് ഇൻസ്റ്റാളുകൾ വേർതിരിക്കുക"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "അജ്ഞാത ഇൻസ്റ്റാൾ സ്ഥിതിവിവരങ്ങൾ പങ്കിടണോ?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "പിശക്, ഉപയോഗ റിപ്പോർട്ടുകൾ പങ്കിടുക"
+
+#: 
+msgid "Share install statistics"
+msgstr "ഇൻസ്റ്റാൾ സ്ഥിതിവിവരങ്ങൾ പങ്കിടുക"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "കൂടാതെ പങ്കിടുന്നവ: മുന്നറിയിപ്പുകൾ, പിശക് വിശദാംശങ്ങൾ, ഏതൊക്കെ പേജുകൾ തുറക്കുന്നു എന്നത്."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "പങ്കിടുന്നവ: ChurchCRM ഇൻസ്റ്റാൾ ചെയ്തോ അപ്‌ഗ്രേഡ് ചെയ്തോ എന്നും അത് വിജയിച്ചോ എന്നും, ഉപയോഗത്തിലിരിക്കുമ്പോൾ ദിവസത്തിൽ ഒരിക്കൽ ചെക്ക്-ഇൻ, പതിപ്പ് നമ്പർ, നിങ്ങളുടെ രാജ്യം, ഡാറ്റാബേസിന്റെ തരം. ഒരു റാൻഡം ഇൻസ്റ്റലേഷൻ ഐഡി ഓരോ ഇൻസ്റ്റാളും ഒരിക്കൽ മാത്രം എണ്ണുന്നു."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "ഡാറ്റാബേസ് അനുയോജ്യത മനസ്സിലാക്കുക"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "നിങ്ങളുടെ തിരഞ്ഞെടുപ്പ് ഒരിക്കൽ മാത്രം ചോദിക്കും. ഏത് സമയത്തും നിങ്ങൾക്കത് മാറ്റാം. വേണ്ട, നന്ദി തിരഞ്ഞെടുത്താൽ പരാജയപ്പെട്ട ഇൻസ്റ്റാളോ അപ്‌ഗ്രേഡോ മാത്രം റിപ്പോർട്ട് ചെയ്യും."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "നിങ്ങളുടെ ഡാറ്റ നിങ്ങളുടേതാണ്. ഇൻസ്റ്റാൾ ഇൻസ്റ്റലേഷൻ, അപ്‌ഗ്രേഡ് ഫലങ്ങൾ, ഇൻസ്റ്റലേഷൻ ഐഡി, സോഫ്റ്റ്‌വെയർ പതിപ്പ്, ഇൻസ്റ്റലേഷൻ പ്രൊഫൈൽ, ക്രമീകരിച്ച രാജ്യം, ഡാറ്റാബേസ് എഞ്ചിനും അതിന്റെ പ്രധാന/ഉപ പതിപ്പും മാത്രം പങ്കിടുന്നു. പിശകുകൾ മുന്നറിയിപ്പുകളും പിശക് വിശദാംശങ്ങളും ചേർക്കുന്നു. പൂർണ്ണം പേജ് വ്യൂകൾ ചേർക്കുന്നു. ഒന്നുമില്ല പരാജയപ്പെട്ട ഇൻസ്റ്റാളുകളും അപ്‌ഗ്രേഡുകളും മാത്രം അയയ്ക്കുന്നു. ഒരു തലവും നിങ്ങളുടെ വെബ് വിലാസമോ സെർവർ പേരോ അയയ്ക്കുന്നില്ല. ടെസ്റ്റ് ഇൻസ്റ്റലേഷനുകൾ ഒന്നും അയയ്ക്കുന്നില്ല. ടെലിമെട്രി അമേരിക്കയിലെ PostHog-ലേക്ക് അയയ്ക്കുന്നു."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "നിങ്ങളുടെ ഡാറ്റ നിങ്ങളുടേതാണ്. ഇത് സോഫ്റ്റ്‌വെയറിനെക്കുറിച്ചാണ് റിപ്പോർട്ട് ചെയ്യുന്നത്, നിങ്ങളുടെ സഭയെക്കുറിച്ചോ അതിലെ ആളുകളെക്കുറിച്ചോ ഒരിക്കലും അല്ല."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "നിങ്ങളുടെ ഡാറ്റ നിങ്ങളുടേതാണ്. ഇൻസ്റ്റാളുകൾ എണ്ണുന്നതിന്, ChurchCRM ഇൻസ്റ്റാൾ ചെയ്തോ അപ്‌ഗ്രേഡ് ചെയ്തോ എന്നും അത് വിജയിച്ചോ എന്നും, ഉപയോഗത്തിലിരിക്കുമ്പോൾ ദിവസത്തിൽ ഒരിക്കൽ ചെക്ക്-ഇൻ, കൂടാതെ പതിപ്പ് നമ്പർ, നിങ്ങളുടെ രാജ്യം, ഡാറ്റാബേസിന്റെ തരം, ഒരു റാൻഡം ഇൻസ്റ്റലേഷൻ ഐഡി എന്നിവ റിപ്പോർട്ട് ചെയ്യുന്നു. അംഗങ്ങൾ, ദാനങ്ങൾ, മറ്റ് സഭാ രേഖകൾ, നിങ്ങളുടെ സഭയുടെ പേര്, നിങ്ങളുടെ വെബ് വിലാസം അല്ലെങ്കിൽ സെർവർ പേര്, ഇമെയിൽ വിലാസങ്ങൾ എന്നിവ ഒരിക്കലും റിപ്പോർട്ട് ചെയ്യില്ല. അഡ്‌മിൻ → ടെലിമെട്രി എന്നതിൽ ഏത് സമയത്തും ഇത് ഓഫ് ചെയ്യാം; പരാജയപ്പെട്ട ഇൻസ്റ്റാളോ അപ്‌ഗ്രേഡോ തുടർന്നും റിപ്പോർട്ട് ചെയ്യും. മുന്നറിയിപ്പുകൾ, പിശക് വിശദാംശങ്ങൾ, പേജ് വ്യൂകൾ എന്നിവ നിങ്ങൾ തിരഞ്ഞെടുത്താൽ മാത്രം പങ്കിടും."
 

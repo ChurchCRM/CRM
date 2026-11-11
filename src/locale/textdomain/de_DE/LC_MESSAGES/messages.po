@@ -1559,11 +1559,11 @@ msgstr "Mindestens ein Betrag in einem der Gelder darf nicht Null sein. "
 
 #: 
 msgid "Must specify non-zero check number"
-msgstr "Du  mußt eine von Null verschiedene Schecknummer angeben."
+msgstr "Sie müssen eine Schecknummer ungleich null angeben"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Kontonummer nicht gültig für Barzahlung"
+msgstr "Schecknummer ist bei Barzahlung nicht gültig"
 
 #: 
 msgid "Payment Schedule"
@@ -2480,19 +2480,19 @@ msgstr "Unterzeichner des Steuerberichts"
 
 #: 
 msgid "Verbage for the pledge reminder report"
-msgstr "Formulierung für den Bericht über die Pledge-Erinnerung"
+msgstr "Formulierung für den Bericht zur Spendenversprechen-Erinnerung"
 
 #: 
 msgid "Pledge Reminder Signer"
-msgstr "Unterzeichner der Pledge-Erinnerung"
+msgstr "Unterzeichner der Spendenversprechen-Erinnerung"
 
 #: 
 msgid "Verbage for the pledge reminder report - No record of a pledge"
-msgstr "Formulierung für den Bericht über die Pledge-Erinnerung - Keine Aufzeichnung eines Pledges"
+msgstr "Formulierung für den Bericht zur Spendenversprechen-Erinnerung - Kein Spendenversprechen erfasst"
 
 #: 
 msgid "Verbage for the pledge reminder report - No record of payments"
-msgstr "Wortlaut des Berichts über die Pfanderinnerung - Keine Aufzeichnung der Zahlungen"
+msgstr "Formulierung für den Bericht zur Spendenversprechen-Erinnerung - Keine Zahlungen erfasst"
 
 #: 
 msgid "Verbage for the database information confirmation and correction report"
@@ -5023,11 +5023,11 @@ msgstr "Berechtigungen"
 
 #: 
 msgid "Pledge Summary By Family"
-msgstr "Zusammenfassung des Pfandes nach Familie"
+msgstr "Zusammenfassung der Spendenversprechen nach Familie"
 
 #: 
 msgid "Pledge"
-msgstr "Verpfändung"
+msgstr "Spendenversprechen"
 
 #: 
 msgid "Paid"
@@ -16334,7 +16334,7 @@ msgstr "Automatisch folgt Ihrer Betriebssystem- oder Browsereinstellung; Hell un
 
 #: 
 msgid "Back to Pledge Dashboard"
-msgstr "Zuruck zum Spendenversprechen-Dashboard"
+msgstr "Zurück zum Spendenversprechen-Dashboard"
 
 #: 
 msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
@@ -16400,7 +16400,7 @@ msgstr "Fonds-Gesamtbetrag"
 
 #: 
 msgid "Fund contributor pledge summary by fiscal year"
-msgstr "Zusammenfassung der Spendenversprechen nach Geschaftsjahr"
+msgstr "Spendenversprechen der Fondsspender nach Geschäftsjahr"
 
 #: 
 msgid "Fundraiser is disabled"
@@ -16440,11 +16440,11 @@ msgstr "Es wurden keine Familien mit einer E-Mail-Adresse gefunden. Es wurde nic
 
 #: 
 msgid "No payments found for the selected deposits"
-msgstr "Keine Zahlungen fur die ausgewahlten Einzahlungen gefunden"
+msgstr "Keine Zahlungen für die ausgewählten Einzahlungen gefunden"
 
 #: 
 msgid "No valid deposit IDs provided"
-msgstr "Keine gultigen Einzahlungs-IDs angegeben"
+msgstr "Keine gültigen Einzahlungs-IDs angegeben"
 
 #: 
 msgid "Partial Send"

@@ -5393,7 +5393,7 @@ msgstr "Voeg enige addisionele notas oor hierdie deposito by"
 
 #: 
 msgid "Checks"
-msgstr "Kontroles"
+msgstr "Tjeks"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -13109,7 +13109,7 @@ msgstr "Verander u taalinstelling"
 
 #: 
 msgid "Check Number"
-msgstr "Kontroleer nommer"
+msgstr "Tjeknommer"
 
 #: 
 msgid "Check out"

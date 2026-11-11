@@ -13114,7 +13114,7 @@ msgstr "አካባቢዎን ይቀይሩ"
 
 #: 
 msgid "Check Number"
-msgstr "የፍተሻ ቁጥር"
+msgstr "የቼክ ቁጥር"
 
 #: 
 msgid "Check out"
@@ -27206,6 +27206,12 @@ msgid "Verification"
 msgstr "ማረጋገጫ"
 
 #: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "የማረጋገጫ ኢሜይል ለ%d ቤተሰብ ተልኳል።"
+msgstr[1] "የማረጋገጫ ኢሜይል ለ%d ቤተሰቦች ተልኳል።"
+
+#: 
 msgid "Verification email sent to family members."
 msgstr "የማረጋገጫ ኢሜይል ለቤተሰብ አባላት ተልኳል።"
 
@@ -27216,6 +27222,12 @@ msgstr "በቤተሰቡ በፖርታሉ"
 #: 
 msgid "in person by staff"
 msgstr "በሰራተኞች በአካል"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d ነባሪ ለሌላ ምክንያት ተዘሏል (የአገልግሎት ቀኑ አልፏል፣ ተሰርዟል ወይም ሞልቷል)"
+msgstr[1] "%d ነባሪ ለሌላ ምክንያት ተዘሏል (የአገልግሎት ቀኑ አልፏል፣ ተሰርዟል ወይም ሞልቷል)"
 
 #: 
 msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."

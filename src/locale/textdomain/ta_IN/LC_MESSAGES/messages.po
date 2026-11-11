@@ -1515,7 +1515,7 @@ msgstr "பூஜ்ஜியம் அல்லாத காசோலை எண
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "'CASH'/'பணம்' கட்டணத்திற்குச் சரிபார்ப்பு எண் செல்லாது"
+msgstr "'பணம்' கட்டணத்திற்கு காசோலை எண் செல்லாது"
 
 #: 
 msgid "Payment Schedule"
@@ -13119,7 +13119,7 @@ msgstr "உங்கள் வட்டாரத்தை மாற்றவு�
 
 #: 
 msgid "Check Number"
-msgstr "எண்ணைச் சரிபார்க்கவும்"
+msgstr "காசோலை எண்"
 
 #: 
 msgid "Check out"
@@ -27088,4 +27088,302 @@ msgstr "நிதி வாரியான கொடுப்பனவுகள�
 #: 
 msgid "Unknown Fund"
 msgstr "தெரியாத நிதி"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "தரவுத்தளத்தை ஆதரிக்கப்படும் பதிப்புக்கு மாற்றுமாறு உங்கள் ஹோஸ்டிடம் கேளுங்கள், பின்னர் மீண்டும் முயலுங்கள்."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "தரவுத்தளத்தை ஆதரிக்கப்படும் பதிப்புக்கு மாற்றுமாறு உங்கள் ஹோஸ்டிடம் கேளுங்கள்."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "விடுமுறை நாள் பெயர்கள் ஒவ்வொரு பயனரின் மொழி அமைப்பைப் பின்பற்றும். ஒரு விடுமுறைக்கு அந்த மொழியில் பெயர் இல்லையெனில், அது ஆங்கிலத்தில் காட்டப்படும்."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "உங்கள் மொழியில் விடுமுறை நாள் பெயர்கள்"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "வைப்புப் பதிவுகளில் காசோலைக் கட்டணங்களைப் பதிவுசெய்யும்போது காசோலை எண்ணைக் கட்டாயமாக்கு. முடக்கப்பட்டிருந்தால், காலியான அல்லது 0 காசோலை எண்ணுடன் காசோலையைச் சேமிக்கலாம், அவை நகல்களுக்காகச் சரிபார்க்கப்படாது."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "காசோலைக் கட்டணங்களில் காசோலை எண்ணைக் கட்டாயமாக்கு"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "மேம்படுத்தல் தொடங்கப்படவில்லை, எனவே எதுவும் மாறவில்லை."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "இந்த மேம்படுத்தலை உங்கள் தரவுத்தளத்தில் இயக்க முடியாது."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "உங்கள் தரவுத்தள சேவையகம் (%1$s %2$s) ChurchCRM ஆதரிப்பதை விடப் பழையது (MySQL %3$s அல்லது MariaDB %4$s மற்றும் அதற்குப் பிந்தையவை)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "சரிபார்ப்பு மின்னஞ்சல் அனுப்பும் முன் சுயமாகப் பதிவுசெய்த இந்தக் குடும்பத்தை அங்கீகரிக்கவும்"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "இரண்டு நிதியாண்டுகளுக்கான குடும்பங்களின் மொத்த உறுதிமொழிகளை ஒப்பிடுக."
+
+#: 
+msgid "Email Portal Link"
+msgstr "போர்ட்டல் இணைப்பை மின்னஞ்சல் செய்"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "குடும்பத்தினர் தங்கள் தகவலைப் பார்த்துப் புதுப்பிக்கக்கூடிய உறுப்பினர் போர்ட்டலுக்கான இணைப்பை அவர்களுக்கு மின்னஞ்சல் செய்யவும், அல்லது நீங்கள் நேரில் சரிபார்த்ததாகப் பதிவுசெய்யவும்."
+
+#: 
+msgid "Family is inactive"
+msgstr "குடும்பம் செயலற்ற நிலையில் உள்ளது"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "முதல் நிதியாண்டு"
+
+#: 
+msgid "Fiscal Years"
+msgstr "நிதியாண்டுகள்"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "கொடை அறிக்கை — மாதிரி மட்டும்"
+
+#: 
+msgid "Last invited"
+msgstr "கடைசியாக அழைக்கப்பட்டது"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "கடைசி போர்ட்டல் உள்நுழைவு"
+
+#: 
+msgid "Last verified"
+msgstr "கடைசியாகச் சரிபார்க்கப்பட்டது"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "இந்தக் குடும்பத்தின் செயலில் உள்ள, அங்கீகரிக்கப்பட்ட எந்த உறுப்பினருக்கும் மின்னஞ்சல் முகவரி இல்லை. அதற்குப் பதிலாக நேரில் சரிபார்க்கவும்."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "இந்த நிதியாண்டுகளுக்கு உறுதிமொழிகள் எதுவும் கிடைக்கவில்லை."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "உறுதிமொழி ஒப்பீடு"
+
+#: 
+msgid "Preview PDF"
+msgstr "PDF முன்னோட்டம்"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "இரண்டாம் நிதியாண்டு"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "உங்கள் குடும்பத் தகவலைப் பார்க்க இந்த மின்னஞ்சல் முகவரியுடன் உறுப்பினர் போர்ட்டலில் உள்நுழையவும். எனது குடும்பம் பக்கத்தில், அனைத்தும் சரியாக உள்ளதை உறுதிப்படுத்தவும் அல்லது உங்கள் விவரங்களைப் புதுப்பிக்கவும்."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "இந்தக் குடும்பம் செயலற்ற நிலையில் உள்ளதால், சரிபார்ப்பு மின்னஞ்சல்கள் அனுப்பப்படுவதில்லை."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "சுயமாகப் பதிவுசெய்த இந்தக் குடும்பம் அங்கீகாரத்திற்காகக் காத்திருக்கிறது. அங்கீகரித்தால், உறுப்பினர் போர்ட்டலில் உள்நுழைந்து தகவலைப் பார்க்குமாறு குடும்பத்திற்கு அழைப்பு மின்னஞ்சல் அனுப்பப்படும்."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "சேமித்த அமைப்புகளையும் கற்பனையான மாதிரிக் கொடைகளையும் மட்டுமே பயன்படுத்துகிறது."
+
+#: 
+msgid "Verification"
+msgstr "சரிபார்ப்பு"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "%d குடும்பத்திற்குச் சரிபார்ப்பு மின்னஞ்சல் அனுப்பப்பட்டது."
+msgstr[1] "%d குடும்பங்களுக்குச் சரிபார்ப்பு மின்னஞ்சல் அனுப்பப்பட்டது."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "குடும்ப உறுப்பினர்களுக்குச் சரிபார்ப்பு மின்னஞ்சல் அனுப்பப்பட்டது."
+
+#: 
+msgid "by the family in the portal"
+msgstr "போர்ட்டலில் குடும்பத்தால்"
+
+#: 
+msgid "in person by staff"
+msgstr "பணியாளரால் நேரில்"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d இயல்புநிலை வேறொரு காரணத்தால் தவிர்க்கப்பட்டது (நிகழ்வு முடிந்தது, ரத்தானது அல்லது நிரம்பியது)"
+msgstr[1] "%d இயல்புநிலைகள் வேறொரு காரணத்தால் தவிர்க்கப்பட்டன (நிகழ்வு முடிந்தது, ரத்தானது அல்லது நிரம்பியது)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "ஒரு மாற்றநிலை அமைப்பு. பழைய தன்னார்வ வாய்ப்புகள் பக்கங்களும் புதிய ஊழியங்கள் பக்கங்களும் இரண்டும் கிடைக்கும், மேலும் நபர் பதிவு இரண்டு தன்னார்வப் பணி தாவல்களையும் தெளிவாக லேபிளிட்டுக் காட்டும். ஒரு திருச்சபையை V1 இலிருந்து V2 க்கு மாற்றும்போது இதைப் பயன்படுத்தவும், பிறகு V2 க்கு மட்டும் மாறவும்."
+
+#: 
+msgid "Assignment canceled"
+msgstr "நியமனம் ரத்து செய்யப்பட்டது"
+
+#: 
+msgid "Canceled"
+msgstr "ரத்து செய்யப்பட்டது"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "ரத்து செய்வது யாருக்கும் தெரிவிக்காது: மின்னஞ்சல் அனுப்பப்படாது. நியமனங்கள் அப்படியே இருக்கும், ரத்து செய்யப்பட்டிருக்கும்போது நினைவூட்டல்கள் திட்டமிடப்படாது, மீட்டெடுக்கும் வரை யாரையும் நியமிக்க முடியாது."
+
+#: 
+msgid "Color"
+msgstr "நிறம்"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "மின்னஞ்சல் செய்த உள்நுழைவு குறியீடும் இணைப்பும் ரத்து செய்யப்பட்டன"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "குடும்ப பாத்திரங்கள் (குடும்பத் தலைவர், வாழ்க்கைத் துணைவர், குழந்தை போன்றவை) உங்கள் பதிவுகளை ஒழுங்கமைக்க உதவுகின்றன."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "நிகழ்வு ரத்து செய்யப்பட்டது"
+
+#: 
+msgid "Prioritize translations"
+msgstr "மொழிபெயர்ப்புகளுக்கு முன்னுரிமை கொடுங்கள்"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "நியமனத்தை ரத்து செய்ய முடியவில்லை"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "நிகழ்வை ரத்து செய்ய முடியவில்லை"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "இந்தத் தேதி ரத்து செய்யப்பட்டது. உங்களிடமிருந்து மேலும் எதுவும் தேவையில்லை."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "இந்த நிகழ்வு ரத்து செய்யப்பட்டுள்ளது"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "ஒரு திருச்சபை நடத்தும் விதத்தில் ஒழுங்கமைக்கப்பட்ட தன்னார்வப் பணி. ஒவ்வொரு ஊழியத்துக்கும் குழுக்களும் பொறுப்புகளும் உண்டு; நபர்கள் பொறுப்புகளுக்குத் தகுதி பெற்று ஊழியத்தின் தொகுப்புக் குழுவைச் சேர்கிறார்கள்; அட்டவணைகள் நாட்காட்டியிலுள்ள நிகழ்ச்சிகளைப் பின்தொடர்ந்து ஆட்கள் தேவைகளுடன் தேதியிட்ட நிகழ்வுகளை உருவாக்குகின்றன; ஒருங்கிணைப்பாளர்கள் நபர்களை நியமிக்கிறார்கள், அவர்கள் ஏற்கிறார்கள், நிராகரிக்கிறார்கள் அல்லது மாற்று நபரை முன்மொழிகிறார்கள்; நினைவூட்டல்களும் எச்சரிக்கைகளும் மின்னஞ்சல் மூலம் செல்கின்றன. நிர்வாகிகளும் ஊழியங்களை நிர்வகிக்கும் அனுமதி உள்ள பயனர்களும் ஒவ்வொரு ஊழியத்தையும் பார்த்து அவற்றை உருவாக்கலாம், செயலிழக்கச் செய்யலாம், நீக்கலாம். ஊழிய ஒருங்கிணைப்பாளருக்கு அதற்குப் பதிலாக எனது ஊழியங்களை நிர்வகிக்கும் அனுமதி வழங்கப்படுகிறது: அப்போது பக்கப்பட்டியிலுள்ள ஊழியங்கள் தலைப்பு அவர் ஒருங்கிணைக்கும் ஊழியங்களை மட்டுமே காட்டும். குழுத் தலைவர் உறுப்பினர் போர்ட்டலிலிருந்து தனது குழுவை நடத்துகிறார். உறுப்பினர்கள் தங்கள் அட்டவணையைக் காணவும், பதிலளிக்கவும், பதிவு செய்யவும், உதவ முன்வரவும் உறுப்பினர் போர்ட்டலைப் பயன்படுத்துகிறார்கள்."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "செயலில் உள்ள நிறுவல்களையும் மேம்படுத்தல் முடிவுகளையும் எண்ணுக"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "தரவுத்தள இயந்திரமும் முதன்மை/துணைப் பதிப்பும்"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "பிழைகள் — நிறுவல் புள்ளிவிவரங்கள், எச்சரிக்கைகள், பிழைகள் மற்றும் JS விதிவிலக்குகள்"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "சிக்கல்களைக் கண்டறிந்து சரிசெய்ய எங்களுக்கு உதவுகிறீர்களா?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "நிறுவல் குறைந்தபட்ச நிறுவல் மற்றும் மேம்படுத்தல் புள்ளிவிவரங்களைப் பகிர்கிறது. பிழைகள் எச்சரிக்கைகளையும் பிழை அறிக்கைகளையும் சேர்க்கிறது. முழுமை பக்கப் பார்வைகளைச் சேர்க்கிறது. எதுவும் இல்லை தோல்வியடைந்த நிறுவல்களையும் மேம்படுத்தல்களையும் மட்டுமே அனுப்புகிறது."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "நிறுவல் — நிறுவல் மற்றும் மேம்படுத்தல் புள்ளிவிவரங்கள் (இயல்புநிலை)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "நிறுவல் மற்றும் மேம்படுத்தல் முடிவுகள், மேம்படுத்தலின்போது முந்தைய பதிப்பு, பயன்பாட்டில் இருக்கும்போது தினசரி சரிபார்ப்பு"
+
+#: 
+msgid "Installation profile"
+msgstr "நிறுவல் சுயவிவரம்"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "மொழி அமைப்பு (பிழைகள் மற்றும் முழுமை)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "ஒருபோதும் பகிரப்படாதவை: உறுப்பினர், கொடை அல்லது பிற சபைப் பதிவுகள், உங்கள் சபையின் பெயர், உங்கள் இணைய முகவரி அல்லது சேவையகப் பெயர், மின்னஞ்சல் முகவரிகள். உங்கள் நாடு சபை அமைப்புகளில் உள்ளதே, உங்கள் பிணையத்திலிருந்து கண்டறியப்படுவதில்லை."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "OS குடும்பம் (பிழைகள் மற்றும் முழுமை)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP பதிப்பு (பிழைகள் மற்றும் முழுமை)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "என்ன பகிரப்படுகிறது என்பதைத் துல்லியமாகப் பார்க்க அல்லது உங்கள் தேர்வை மாற்ற, நிர்வாகம் → தொலைமிதி என்பதற்குச் செல்லவும்."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "உற்பத்தி, டெமோ மற்றும் சோதனை நிறுவல்களைப் பிரித்தறிக"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "அநாமதேய நிறுவல் புள்ளிவிவரங்களைப் பகிரவா?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "பிழை மற்றும் பயன்பாட்டு அறிக்கைகளைப் பகிர்"
+
+#: 
+msgid "Share install statistics"
+msgstr "நிறுவல் புள்ளிவிவரங்களைப் பகிர்"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "கூடுதலாகப் பகிரப்படுவை: எச்சரிக்கைகள், பிழை விவரங்கள், எந்தப் பக்கங்கள் திறக்கப்படுகின்றன என்பது."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "பகிரப்படுவை: ChurchCRM நிறுவப்பட்டதா அல்லது மேம்படுத்தப்பட்டதா, அது வெற்றியடைந்ததா என்பது, பயன்பாட்டில் இருக்கும்போது நாளுக்கு ஒருமுறை சரிபார்ப்பு, பதிப்பு எண், உங்கள் நாடு, தரவுத்தள வகை. ஒரு சீரற்ற நிறுவல் ஐடி ஒவ்வொரு நிறுவலையும் ஒருமுறை மட்டுமே எண்ணுகிறது."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "தரவுத்தள இணக்கத்தன்மையைப் புரிந்துகொள்"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "உங்கள் தேர்வு ஒருமுறை மட்டுமே கேட்கப்படும். எப்போது வேண்டுமானாலும் அதை மாற்றலாம். வேண்டாம், நன்றி என்பதைத் தேர்ந்தெடுத்தால், தோல்வியடைந்த நிறுவல் அல்லது மேம்படுத்தல் மட்டுமே தெரிவிக்கப்படும்."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "உங்கள் தரவு உங்களுடையது. நிறுவல் நிறுவல் மற்றும் மேம்படுத்தல் முடிவுகள், நிறுவல் ஐடி, மென்பொருள் பதிப்பு, நிறுவல் சுயவிவரம், அமைக்கப்பட்ட நாடு, தரவுத்தள இயந்திரம் மற்றும் அதன் முதன்மை/துணைப் பதிப்பை மட்டுமே பகிர்கிறது. பிழைகள் எச்சரிக்கைகளையும் பிழை விவரங்களையும் சேர்க்கிறது. முழுமை பக்கப் பார்வைகளைச் சேர்க்கிறது. எதுவும் இல்லை தோல்வியடைந்த நிறுவல்களையும் மேம்படுத்தல்களையும் மட்டுமே அனுப்புகிறது. எந்த நிலையும் உங்கள் இணைய முகவரியையோ சேவையகப் பெயரையோ அனுப்புவதில்லை. சோதனை நிறுவல்கள் எதையும் அனுப்புவதில்லை. தொலைமிதி அமெரிக்காவில் உள்ள PostHog-க்கு அனுப்பப்படுகிறது."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "உங்கள் தரவு உங்களுடையது. இது மென்பொருளைப் பற்றி மட்டுமே தெரிவிக்கிறது, உங்கள் சபையையோ அதன் மக்களையோ பற்றி ஒருபோதும் இல்லை."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "உங்கள் தரவு உங்களுடையது. நிறுவல்களை எண்ண, ChurchCRM நிறுவப்பட்டதா அல்லது மேம்படுத்தப்பட்டதா, அது வெற்றியடைந்ததா என்பதையும், பயன்பாட்டில் இருக்கும்போது நாளுக்கு ஒருமுறை சரிபார்ப்பையும், பதிப்பு எண், உங்கள் நாடு, தரவுத்தள வகை, ஒரு சீரற்ற நிறுவல் ஐடி ஆகியவற்றையும் தெரிவிக்கிறது. உறுப்பினர், கொடை அல்லது பிற சபைப் பதிவுகள், உங்கள் சபையின் பெயர், உங்கள் இணைய முகவரி அல்லது சேவையகப் பெயர், மின்னஞ்சல் முகவரிகள் ஆகியவற்றை ஒருபோதும் தெரிவிப்பதில்லை. நிர்வாகம் → தொலைமிதி என்பதில் எப்போது வேண்டுமானாலும் இதை முடக்கலாம்; தோல்வியடைந்த நிறுவல் அல்லது மேம்படுத்தல் தொடர்ந்து தெரிவிக்கப்படும். எச்சரிக்கைகள், பிழை விவரங்கள், பக்கப் பார்வைகள் நீங்கள் தேர்ந்தெடுத்தால் மட்டுமே பகிரப்படும்."
 
