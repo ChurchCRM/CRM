@@ -4,7 +4,7 @@ run-name: >-
 
 # Stage 1 of the terms flow, in plain words:
 #   1. A code PR merges to master (anything under src/ except the translation files).
-#   2. Wait (default 30 minutes, repo variable LOCALE_TERMS_WAIT_MINUTES). Every newer merge restarts the
+#   2. Wait (default 15 minutes, repo variable LOCALE_TERMS_WAIT_MINUTES). Every newer merge restarts the
 #      wait, so a burst of code merges becomes ONE terms PR. A manual run skips the wait and cancels a
 #      wait that is already running ("run now", e.g. before a release).
 #   3. Extract the strings (npm run locale:build) into locale/messages.po and the JSON keys.
@@ -43,7 +43,7 @@ jobs:
       - name: Wait for more code merges (skipped on a manual run)
         if: github.event_name == 'push'
         env:
-          MINUTES: ${{ vars.LOCALE_TERMS_WAIT_MINUTES || '30' }}
+          MINUTES: ${{ vars.LOCALE_TERMS_WAIT_MINUTES || '15' }}
         run: |
           [[ "$MINUTES" =~ ^[0-9]+$ ]] && [ "$MINUTES" -le 120 ] || { echo "::error::LOCALE_TERMS_WAIT_MINUTES must be 0-120"; exit 1; }
           echo "Waiting $MINUTES minutes; a newer merge to master restarts this wait. Run this workflow by hand to skip it."

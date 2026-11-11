@@ -12,7 +12,7 @@ All workflows, branches and the rules they follow: [github-actions.md](github-ac
 
 ```
 code PRs ─merge─► master ─► Locale: extract terms ─► terms PR ─merge─► master ─► Locale: sync POEditor ─► download PR ─auto-merge─► master
-                            wait 30 min (each merge              (person)        upload terms → download
+                            wait 15 min (each merge              (person)        upload terms → download
                             restarts it), extract
 ```
 
@@ -68,7 +68,7 @@ A PR merged with `GITHUB_TOKEN` starts no workflows. Merge a terms PR as yoursel
 
 | Workflow | Trigger | Does | Needs |
 |---|---|---|---|
-| `locale-generate-terms.yml` | push to `master` touching `src/**` except `src/locale/i18n/**` and `src/locale/textdomain/**` (after the wait), manual (no wait) | runs `npm run locale:build`, writes the terms report (`locale-terms-diff.js`: PR body, run summary, `locale-terms-report` artifact), opens or updates the terms PR | repo variable `LOCALE_TERMS_WAIT_MINUTES` (optional, default 30) |
+| `locale-generate-terms.yml` | push to `master` touching `src/**` except `src/locale/i18n/**` and `src/locale/textdomain/**` (after the wait), manual (no wait) | runs `npm run locale:build`, writes the terms report (`locale-terms-diff.js`: PR body, run summary, `locale-terms-report` artifact), opens or updates the terms PR | repo variable `LOCALE_TERMS_WAIT_MINUTES` (optional, default 15) |
 | `locale-sync-poeditor.yml` | push to `master` touching `locale/messages.po` (at once), daily 00:00 UTC, manual, dispatched by the upload workflow with `upload_terms=false` | 1. `poeditor-upload-terms.js` (skips when POEditor matches; verifies after; refuses a large deletion), 2. downloads JSON/PO/MO + missing batches, opens the download PR, and squash-merges it when `locale-download-gate.js` passes | `POEDITOR_TOKEN` (the one secret for download, upload and terms) |
 | `locale-upload-missing.yml` | push to `locale/translate/**` (`locale/terms/missing/**`), manual (`locales`, `sync` inputs) | runs `poeditor-upload-missing.js --yes --no-download` for the changed locales, then dispatches the sync | `POEDITOR_TOKEN`, `actions: write` |
 
@@ -76,7 +76,7 @@ The upload workflow runs one at a time (`concurrency: locale-upload-missing`) be
 
 ## Merge bursts
 
-The pause sits at the start of the terms flow. `Locale: extract terms` waits 30 minutes (repo variable `LOCALE_TERMS_WAIT_MINUTES`, 0 to 120) before it extracts, and every newer push to `master` touching `src/**` cancels that wait and starts it again. A burst of code merges therefore produces one extraction and one terms PR; a later burst updates the same PR while it is open. The extraction checks out the newest `master` after the wait, not the commit that started it.
+The pause sits at the start of the terms flow. `Locale: extract terms` waits 15 minutes (repo variable `LOCALE_TERMS_WAIT_MINUTES`, 0 to 120) before it extracts, and every newer push to `master` touching `src/**` cancels that wait and starts it again. A burst of code merges therefore produces one extraction and one terms PR; a later burst updates the same PR while it is open. The extraction checks out the newest `master` after the wait, not the commit that started it.
 
 `Locale: sync POEditor` does not wait: the terms PR is a person's merge, so it already comes once per burst. Its download job queues behind any run already syncing, so two syncs never overlap. A run always works from the newest `master` once it holds that lock, and refuses to start from any other branch or tag, because the terms upload deletes POEditor terms that are missing from `locale/messages.po`. The publish step skips when the download branch already holds a newer download, so an older run can never overwrite a newer one.
 
