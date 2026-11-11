@@ -27279,3 +27279,283 @@ msgstr "يُرجى استخدام الرابط أدناه لمراجعة معل�
 msgid "Review Family Information"
 msgstr "مراجعة معلومات العائلة"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "توجد بالفعل خدمة باسم \"%s\". اخترها من القائمة أو اختر اسمًا آخر."
+
+#: 
+msgid "A new ministry"
+msgstr "خدمة جديدة"
+
+#: 
+msgid "A position"
+msgstr "مهمة"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "هل تريد إضافة المتطوعين ({{total}}) إلى المهام التي تم تحويلها من قبل؟"
+
+#: 
+msgid "Already converted"
+msgstr "تم تحويلها بالفعل"
+
+#: 
+msgid "An existing ministry"
+msgstr "خدمة موجودة"
+
+#: 
+msgid "Becomes"
+msgstr "تصبح"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "يوفر ChurchCRM طريقتين لإدارة المتطوعين. يُفترض استخدام طريقة واحدة فقط في كل مرة؛ ويحدد إعداد \"تجربة التطوع\" الطريقة التي تراها هذه الكنيسة. يؤدي التبديل إلى إخفاء الصفحات وعناصر القائمة أو إظهارها ولا يحذف أي بيانات أبدًا. لا يُعرض V1 وكلاهما إلا ما دامت فرص التطوع قيد الاستخدام: بمجرد تحويل كل الفرص وانتقال الكنيسة إلى V2، يختفيان من هذه القائمة."
+
+#: 
+msgid "Convert"
+msgstr "تحويل"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "تحويل فرص التطوع"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "هل تريد تحويل الفرص ({{total}}) الآن؟ تبقى بيانات V1 كما هي حتى يتم إيقاف فرص التطوع."
+
+#: 
+msgid "Converted"
+msgstr "تم التحويل"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "تم التحويل: المهام {{positions}}، والخدمات {{ministries}}، والمتطوعون المؤهلون {{qualifications}}."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "تصبح كل فرصة مهمة في الفريق الأول لخدمة واحدة، ويصبح كل شخص مرتبط بها مؤهلاً لتلك المهمة. يبدأ التسجيل الذاتي معطلاً في هذه المهام."
+
+#: 
+msgid "Everything is converted."
+msgstr "تم تحويل كل شيء."
+
+#: 
+msgid "Existing ministry"
+msgstr "خدمة موجودة"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "أعطِ الخدمة الجديدة اسمًا لا يزيد على 100 حرف."
+
+#: 
+msgid "Its own ministry"
+msgstr "خدمة خاصة بها"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "المرتبطون منذ ذلك الحين: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "روابط لا يمكن تحويلها"
+
+#: 
+msgid "New ministries of their own"
+msgstr "خدمات جديدة خاصة بها"
+
+#: 
+msgid "New ministry name"
+msgstr "اسم الخدمة الجديدة"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "لا يتم إرسال أي بريد إلكتروني، وتبقى فرص التطوع كما هي حتى يتم إيقافها."
+
+#: 
+msgid "No name"
+msgstr "بلا اسم"
+
+#: 
+msgid "Not converted"
+msgstr "لم يتم تحويلها"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "فتح تبديلات الميزات"
+
+#: 
+msgid "Open Ministries"
+msgstr "فتح الخدمات"
+
+#: 
+msgid "Opportunities"
+msgstr "الفرص"
+
+#: 
+msgid "Opportunity"
+msgstr "الفرصة"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "الفرصة رقم %d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "الأشخاص المرتبطون بفرص تطوع محوّلة منذ التحويل: %d. أضفهم إلى مهامهم قبل إيقاف فرص التطوع في أوائل 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "اعرض معاينة التحويل أولاً، ثم أرسل المراجعة التي أعادتها."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "تمت إعادة التسمية للحفاظ على تفرّد الأسماء"
+
+#: 
+msgid "Review the conversion"
+msgstr "مراجعة التحويل"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "أرسل خيار التحويل ككائن JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "أرسل الفرص التي ستصبح خدمات كقائمة من المعرّفات."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "هذه الخدمة غير موجودة."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "إصدار ChurchCRM الذي تجاهل فيه أحد المسؤولين إشعار إيقاف فرص التطوع."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "تغيرت فرص التطوع منذ المعاينة. تحقق من المعاينة مرة أخرى، ثم نفّذ التحويل."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "تعذر فتح التأكيد. أعد تحميل الصفحة وحاول مرة أخرى."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "تعذرت معاينة التحويل."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "فشل التحويل. لم يتم تغيير أي شيء."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "الخدمة \"%s\" ليس لها فريق يضم المهام."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "تعذر الوصول إلى الخادم. أعد تحميل الصفحة لمعرفة ما إذا تم تنفيذ التحويل."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "لا توجد فرص تطوع لتحويلها."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "تنتقل إدارة المتطوعين إلى كلاهما، لتظهر الخدمات الجديدة بجانب فرص التطوع."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "سيتم إيقاف فرص التطوع"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "تم تحويل فرص التطوع"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "سيتم إيقاف فرص التطوع في أوائل 2027. حوّلها إلى خدمات للاحتفاظ بمن يخدم في ماذا."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "سيتم إيقاف فرص التطوع في أوائل 2027. حوّل الآن فرصك (%1$d) ومتطوعيك (%2$d) إلى خدمات. يمكنك معاينة النتيجة قبل أن يتغير أي شيء."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "المتطوعون المؤهلون"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "متطوعون لإضافتهم إلى المهام المحوّلة"
+
+#: 
+msgid "What it becomes"
+msgstr "ماذا تصبح"
+
+#: 
+msgid "What will happen"
+msgstr "ما الذي سيحدث"
+
+#: 
+msgid "Where they go"
+msgstr "إلى أين يذهبون"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "أي فرص التطوع القديمة تم تحويلها، والمهمة التي أصبحتها كل منها."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "تجربة التطوع التي تستخدمها هذه الكنيسة. سيتم إيقاف فرص التطوع (V1) في أوائل 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "تم تحويل فرص التطوع لديك إلى خدمات. حوّل إدارة المتطوعين إلى V2 قبل إيقاف فرص التطوع في أوائل 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "إلى خدمة جديدة، {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "إلى الخدمة {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "لم يعد في ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "طي الشريط الجانبي"
+
+#: 
+msgid "Expand sidebar"
+msgstr "توسيع الشريط الجانبي"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "أدخل عنوان بريد إلكتروني صالحًا يستخدم أحرف ASCII فقط قبل @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "عنوان بريده الإلكتروني غير صالح"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "هل أنت متأكد أنك تريد حذف {{name}}؟"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "تعذر جمع معلومات النظام. يرجى المحاولة مرة أخرى."
+
+#: 
+msgid "No payments found for this period."
+msgstr "لم يتم العثور على مدفوعات لهذه الفترة."
+
+#: 
+msgid "Payments by Fund"
+msgstr "المدفوعات حسب الصندوق"
+
+#: 
+msgid "Unknown Fund"
+msgstr "صندوق غير معروف"
+

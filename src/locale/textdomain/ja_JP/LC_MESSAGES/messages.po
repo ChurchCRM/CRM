@@ -27100,3 +27100,283 @@ msgstr "下のリンクから家族の情報を確認してください。確認
 msgid "Review Family Information"
 msgstr "家族情報を確認"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "「%s」という名前のミニストリーは既に存在します。一覧から選ぶか、別の名前を指定してください。"
+
+#: 
+msgid "A new ministry"
+msgstr "新しいミニストリー"
+
+#: 
+msgid "A position"
+msgstr "役割"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "以前に変換した役割に {{total}} 人のボランティアを追加しますか？"
+
+#: 
+msgid "Already converted"
+msgstr "変換済み"
+
+#: 
+msgid "An existing ministry"
+msgstr "既存のミニストリー"
+
+#: 
+msgid "Becomes"
+msgstr "変換先"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM にはボランティアを管理する方法が 2 つあります。同時に使うのは 1 つだけです。どちらをこの教会に表示するかは「ボランティア方式」の設定で決まります。切り替えるとページやメニュー項目の表示・非表示が変わりますが、データが削除されることはありません。V1 と「両方」は、ボランティアの機会を使用している間だけ選択できます。すべての機会が変換され、教会が V2 を使うようになると、この一覧から消えます。"
+
+#: 
+msgid "Convert"
+msgstr "変換"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "ボランティアの機会を変換"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "今すぐ {{total}} 件の機会を変換しますか？V1 のデータは、ボランティアの機会が廃止されるまでそのまま残ります。"
+
+#: 
+msgid "Converted"
+msgstr "変換済み"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "変換完了：役割 {{positions}} 件、ミニストリー {{ministries}} 件、資格を得たボランティア {{qualifications}} 人。"
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "各機会は 1 つのミニストリーの最初のチームの役割になり、その機会に紐付いていた全員がその役割の資格を得ます。これらの役割の自己申込は最初はオフになっています。"
+
+#: 
+msgid "Everything is converted."
+msgstr "すべて変換済みです。"
+
+#: 
+msgid "Existing ministry"
+msgstr "既存のミニストリー"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "新しいミニストリーに 100 文字以内の名前を付けてください。"
+
+#: 
+msgid "Its own ministry"
+msgstr "独自のミニストリー"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "その後に紐付け：{{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "変換できない紐付け"
+
+#: 
+msgid "New ministries of their own"
+msgstr "それぞれ独自の新しいミニストリー"
+
+#: 
+msgid "New ministry name"
+msgstr "新しいミニストリー名"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "メールは送信されません。ボランティアの機会は廃止されるまでそのまま残ります。"
+
+#: 
+msgid "No name"
+msgstr "名前なし"
+
+#: 
+msgid "Not converted"
+msgstr "未変換"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "機能トグルを開く"
+
+#: 
+msgid "Open Ministries"
+msgstr "ミニストリーを開く"
+
+#: 
+msgid "Opportunities"
+msgstr "機会"
+
+#: 
+msgid "Opportunity"
+msgstr "機会"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "機会 #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "変換後に、変換済みのボランティアの機会に紐付けられた人：%d。2027 年初めにボランティアの機会が廃止される前に、各自の役割に追加してください。"
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "まず変換をプレビューし、返されたリビジョンを送信してください。"
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "名前が重複しないように変更しました"
+
+#: 
+msgid "Review the conversion"
+msgstr "変換を確認"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "変換の選択を JSON オブジェクトで送信してください。"
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "ミニストリーになる機会を ID のリストで送信してください。"
+
+#: 
+msgid "That ministry does not exist."
+msgstr "そのミニストリーは存在しません。"
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "管理者がボランティアの機会の廃止通知を閉じたときの ChurchCRM のバージョン。"
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "プレビュー後にボランティアの機会が変更されました。もう一度プレビューを確認してから変換してください。"
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "確認画面を開けませんでした。ページを再読み込みしてもう一度お試しください。"
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "変換をプレビューできませんでした。"
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "変換に失敗しました。何も変更されていません。"
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "ミニストリー「%s」には役割を置くチームがありません。"
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "サーバーに接続できませんでした。ページを再読み込みして、変換が実行されたか確認してください。"
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "変換するボランティアの機会はありません。"
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "新しいミニストリーがボランティアの機会と並んで表示されるよう、ボランティア管理が「両方」に切り替わります。"
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "ボランティアの機会は廃止予定です"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "ボランティアの機会を変換しました"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "ボランティアの機会は 2027 年初めに廃止されます。誰がどこで奉仕しているかを残すため、ミニストリーに変換してください。"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "ボランティアの機会は 2027 年初めに廃止されます。%1$d 件の機会と %2$d 人のボランティアを今すぐミニストリーに変換してください。変更前に結果をプレビューできます。"
+
+#: 
+msgid "Volunteers qualified"
+msgstr "資格を得たボランティア"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "変換済みの役割に追加するボランティア"
+
+#: 
+msgid "What it becomes"
+msgstr "変換後"
+
+#: 
+msgid "What will happen"
+msgstr "実行される内容"
+
+#: 
+msgid "Where they go"
+msgstr "移動先"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "変換済みの旧ボランティアの機会と、それぞれが変換された役割。"
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "この教会が使うボランティア方式。ボランティアの機会（V1）は 2027 年初めに廃止されます。"
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "ボランティアの機会はミニストリーに変換されました。2027 年初めにボランティアの機会が廃止される前に、ボランティア管理を V2 に切り替えてください。"
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "新しいミニストリー {{name}} へ"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "ミニストリー {{name}} へ"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "ChurchCRM にはもうありません"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "サイドバーを折りたたむ"
+
+#: 
+msgid "Expand sidebar"
+msgstr "サイドバーを展開"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "@ の前に ASCII 文字のみを使った有効なメールアドレスを入力してください。"
+
+#: 
+msgid "Their email address is not valid"
+msgstr "メールアドレスが無効です"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "{{name}} を削除してもよろしいですか？"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "システム情報を取得できませんでした。もう一度お試しください。"
+
+#: 
+msgid "No payments found for this period."
+msgstr "この期間の支払いは見つかりませんでした。"
+
+#: 
+msgid "Payments by Fund"
+msgstr "基金別の支払い"
+
+#: 
+msgid "Unknown Fund"
+msgstr "不明な基金"
+
