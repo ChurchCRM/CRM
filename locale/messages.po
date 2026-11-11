@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 01:17+0000\n"
+"POT-Creation-Date: 2026-11-11 04:36+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -8365,6 +8365,14 @@ msgid "Hit Rate"
 msgstr ""
 
 msgid "Holiday Settings"
+msgstr ""
+
+#. plugin:holidays:section:3:content
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr ""
+
+#. plugin:holidays:section:3:title
+msgid "Holiday names in your language"
 msgstr ""
 
 #, php-format
