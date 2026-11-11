@@ -88,7 +88,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
             Assert::same('church-guid', $payload['distinct_id']);
             $properties = $payload['properties'];
             $keys = ['crm_version', 'install_profile', 'church_country', 'database_engine', 'database_version'];
-            if ($payload['event'] !== 'install_completed') {
+            if ($payload['event'] !== 'install_observed') {
                 $keys[] = 'from_version';
                 Assert::same('7.8.2', $properties['from_version']);
             }
@@ -108,12 +108,15 @@ foreach (['production', 'demo', 'test'] as $profile) {
         }
 
         $GLOBALS['lifecyclePayloads'] = [];
+        (new \ReflectionProperty(\ChurchCRM\Service\TelemetryService::class, 'logDedupeDirectory'))->setValue(null, sys_get_temp_dir() . '/crm-telemetry-test-' . bin2hex(random_bytes(6)));
         TelemetryService::capturePageView('/people/person');
         $handler->handle(new LogRecord(new \DateTimeImmutable(), 'app', Level::Warning, 'Warning'));
         $handler->handle(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Error'));
         TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Direct error'));
         $events = $profile === 'test' || in_array($level, ['none', 'install'], true)
             ? [] : ($level === 'full' ? ['page_view', 'log_error', 'log_error', 'log_error'] : ['log_error', 'log_error', 'log_error']);
+        Assert::same($events, array_column($GLOBALS['lifecyclePayloads'], 'event'));
+        TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Direct error'));
         Assert::same($events, array_column($GLOBALS['lifecyclePayloads'], 'event'));
     }
 }

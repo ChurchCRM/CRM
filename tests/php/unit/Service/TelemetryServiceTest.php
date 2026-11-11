@@ -29,7 +29,7 @@ $configs->setValue(null, [
 ]);
 
 $firstSync = TelemetryService::buildLifecycleEvent(TelemetryService::LEVEL_ERRORS, 'install-id', '', '7.8.3');
-Assert::same('install_completed', $firstSync['event']);
+Assert::same('install_observed', $firstSync['event']);
 Assert::same('production', $firstSync['properties']['install_profile']);
 Assert::same(['crm_version', 'install_profile', 'church_country'], array_keys($firstSync['properties']));
 $normalizeRoute = new ReflectionMethod(TelemetryService::class, 'normalizePageRoute');
@@ -72,7 +72,7 @@ $sender = static function (string $event, array $properties) use (&$sentEvents):
     return true;
 };
 TelemetryService::syncLifecycle($sender);
-Assert::same('install_completed', $sentEvents[0]['event']);
+Assert::same('install_observed', $sentEvents[0]['event']);
 Assert::same($currentVersion, SystemConfig::getValue('sTelemetryLifecycleVersion'));
 TelemetryService::syncLifecycle($sender);
 Assert::same(1, count($sentEvents));

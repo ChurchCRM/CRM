@@ -11,6 +11,7 @@ use Monolog\LogRecord;
 use Tester\Assert;
 
 require dirname(__DIR__, 2) . '/bootstrap.php';
+(new \ReflectionProperty(\ChurchCRM\Service\TelemetryService::class, 'logDedupeDirectory'))->setValue(null, sys_get_temp_dir() . '/crm-telemetry-test-' . bin2hex(random_bytes(6)));
 
 // Inspect serialized requests without opening a network connection.
 function curl_init(string $url): object
@@ -46,7 +47,7 @@ $configs->setValue(null, [
 TelemetryService::capturePageView('/people/person');
 TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Error'));
 $capture = new \ReflectionMethod(TelemetryService::class, 'capture');
-foreach (['' => 'install_completed', '7.8.2' => 'upgrade_completed'] as $coveredVersion => $event) {
+foreach (['' => 'install_observed', '7.8.2' => 'upgrade_completed'] as $coveredVersion => $event) {
     $lifecycle = TelemetryService::buildLifecycleEvent('full', 'install-id', $coveredVersion, '7.8.3');
     Assert::same($event, $lifecycle['event']);
     Assert::true($capture->invoke(null, $event, $lifecycle['properties']));
@@ -65,7 +66,7 @@ TelemetryService::captureUpgradeSqlError('7.8.3', 10, 'Database error');
 TelemetryService::captureUpgradeInterruption('7.8.3', 10);
 
 $payloads = $GLOBALS['telemetryPayloads'];
-Assert::same(['page_view', 'log_error', 'install_completed', 'upgrade_completed', 'upgrade_sql_completed', 'upgrade_sql_failed'], array_column($payloads, 'event'));
+Assert::same(['page_view', 'log_error', 'install_observed', 'upgrade_completed', 'upgrade_sql_completed', 'upgrade_sql_failed'], array_column($payloads, 'event'));
 foreach ($payloads as $payload) {
     Assert::true($payload['properties']['$geoip_disable']);
     Assert::false(array_key_exists('$ip', $payload['properties']));

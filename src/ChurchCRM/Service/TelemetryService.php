@@ -24,6 +24,7 @@ class TelemetryService
     public const LEVEL_FULL     = 'full';      // warnings + page views + JS exceptions
 
     private static array $installProfileCache = [];
+    private static ?string $logDedupeDirectory = null;
 
     /** Public demo hosts (Softaculous) run real installs without our demo data; classify them by host. */
     public static function isKnownDemoHost(string $host): bool
@@ -160,7 +161,7 @@ class TelemetryService
         }
 
         if ($coveredVersion === '') {
-            return ['event' => 'install_completed', 'properties' => self::lifecycleProperties($currentVersion)];
+            return ['event' => 'install_observed', 'properties' => self::lifecycleProperties($currentVersion)];
         }
 
         return [
@@ -304,9 +305,14 @@ class TelemetryService
         $rawUrl = $record->extra['url'] ?? '';
         $route  = $rawUrl !== '' ? explode('?', $rawUrl, 2)[0] : 'unknown';
 
+        $message = self::scrubLogMessage($record->message);
+        if (!self::firstLogToday($record->level->name . '|' . $message)) {
+            return;
+        }
+
         $properties = array_merge(self::baseProperties(), [
             'level'          => $record->level->name,
-            'message'        => self::scrubLogMessage($record->message),
+            'message'        => $message,
             'channel'        => $record->channel,
             'correlation_id' => $record->extra['correlation_id'] ?? null,
             'route'          => $route,
@@ -314,6 +320,26 @@ class TelemetryService
         ]);
 
         self::capture('log_error', $properties);
+    }
+
+    /**
+     * A misconfigured server can log the same warning on every request; send each message once per UTC day.
+     * ponytail: one marker file per message per day in the temp directory; the OS temp cleaner removes old ones.
+     */
+    private static function firstLogToday(string $key): bool
+    {
+        $directory = self::$logDedupeDirectory ??= sys_get_temp_dir() . '/churchcrm-telemetry';
+        if (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory)) {
+            return true;
+        }
+        $marker = $directory . '/' . sha1(gmdate('Y-m-d') . '|' . self::installProfile() . '|' . self::getLevel() . '|' . $key);
+        $handle = @fopen($marker, 'x');
+        if ($handle === false) {
+            return !file_exists($marker);
+        }
+        fclose($handle);
+
+        return true;
     }
 
     public static function scrubLogMessage(string $message): string

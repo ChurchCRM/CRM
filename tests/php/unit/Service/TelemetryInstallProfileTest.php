@@ -11,6 +11,7 @@ use Monolog\LogRecord;
 use Tester\Assert;
 
 require dirname(__DIR__, 2) . '/bootstrap.php';
+(new \ReflectionProperty(\ChurchCRM\Service\TelemetryService::class, 'logDedupeDirectory'))->setValue(null, sys_get_temp_dir() . '/crm-telemetry-test-' . bin2hex(random_bytes(6)));
 
 // Intercept the transport before cURL can open a connection.
 function curl_init(string $url): false
@@ -56,7 +57,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
     Assert::same($profile, $baseProperties->invoke(null)['install_profile']);
     $before = $GLOBALS['telemetryTransportCalls'];
     $suppressed = in_array($profile, ['test'], true);
-    Assert::same($suppressed, $capture->invoke(null, 'install_completed', $baseProperties->invoke(null)));
+    Assert::same($suppressed, $capture->invoke(null, 'install_observed', $baseProperties->invoke(null)));
     Assert::same($suppressed, $capture->invoke(null, 'upgrade_completed', $baseProperties->invoke(null)));
     TelemetryService::capturePageView('/people/person');
     TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Error'));
