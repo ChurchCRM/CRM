@@ -103,7 +103,7 @@ describe("Admin API Telemetry Consent Endpoint", () => {
         cy.setupAdminSession();
         cy.visit("/admin/");
         cy.get("#telemetry-consent-card").should("be.visible");
-        cy.get('.js-telemetry-consent[data-level="install"]').contains("Not now").click();
+        cy.get('.js-telemetry-consent[data-level="install"]').contains("No thanks").click();
         cy.get("#telemetry-consent-card").should("not.exist");
         cy.getSystemConfig("sTelemetryLevel").should("eq", "install");
         cy.restoreSystemConfig("sTelemetryAskedVersion", "7.0.0");

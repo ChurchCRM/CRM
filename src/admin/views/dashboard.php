@@ -202,25 +202,30 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     <i class="fa-solid fa-chart-bar fs-2 text-info"></i>
                 </div>
                 <div class="flex-grow-1">
-                    <h5 class="mb-1"><?= gettext('Help improve ChurchCRM') ?></h5>
+                    <?php $offerInstall = TelemetryService::getLevel() === TelemetryService::LEVEL_NONE; ?>
+                    <h5 class="mb-1"><?= $offerInstall ? gettext('Share anonymous install statistics?') : gettext('Help us find and fix problems?') ?></h5>
                     <p class="text-secondary mb-2">
-                        <?= gettext('Your data is yours. Choose whether to share optional usage and error reports.') ?>
+                        <?= gettext('Your data is yours. This reports on the software, never on your church or its people.') ?>
                     </p>
                     <ul class="text-secondary mb-3">
-                        <li><?= gettext('Install statistics — default: installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version.') ?></li>
-                        <li><?= gettext('Optional reports: also share warnings, error details, and page views.') ?></li>
-                        <li><?= gettext('Church records: member records, giving records, and other church records are excluded.') ?></li>
+                        <?php if ($offerInstall): ?>
+                        <li><?= gettext('Shared: that ChurchCRM was installed or upgraded and whether it worked, the version number, your country, and the type of database. A random installation ID counts each install once.') ?></li>
+                        <?php else: ?>
+                        <li><?= gettext('Shared in addition: warnings, error details, and which pages are opened.') ?></li>
+                        <?php endif; ?>
+                        <li><?= gettext('Never shared: member, giving, or other church records, your church name, or email addresses. Your country is the one in your church settings, not looked up from your network.') ?></li>
+                        <li><?= gettext('Your choice is asked once. You can change it or stop all reporting at any time.') ?></li>
                     </ul>
                     <div class="d-flex gap-2 flex-wrap">
-                        <button type="button" class="btn btn-info js-telemetry-consent" data-level="<?= TelemetryService::getLevel() === TelemetryService::LEVEL_NONE ? TelemetryService::LEVEL_INSTALL : TelemetryService::LEVEL_FULL ?>">
-                            <i class="fa-solid fa-check me-1"></i><?= TelemetryService::getLevel() === TelemetryService::LEVEL_NONE ? gettext('Share install statistics') : gettext('Enable optional reports') ?>
+                        <button type="button" class="btn btn-info js-telemetry-consent" data-level="<?= $offerInstall ? TelemetryService::LEVEL_INSTALL : TelemetryService::LEVEL_FULL ?>">
+                            <i class="fa-solid fa-check me-1"></i><?= $offerInstall ? gettext('Share install statistics') : gettext('Share error and usage reports') ?>
                         </button>
                         <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-level="<?= InputUtils::escapeAttribute(TelemetryService::getLevel()) ?>">
-                            <?= gettext('Not now') ?>
+                            <?= gettext('No thanks') ?>
                         </button>
                     </div>
                     <p class="text-secondary small mt-2 mb-0">
-                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug#telemetry"><?= gettext('Change your choice or stop all reporting in Admin → Telemetry.') ?></a>
+                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug#telemetry"><?= gettext('See exactly what is shared, or change your choice, in Admin → Telemetry.') ?></a>
                     </p>
                 </div>
             </div>
