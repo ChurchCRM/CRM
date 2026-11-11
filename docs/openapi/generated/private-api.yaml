@@ -11122,9 +11122,9 @@ paths:
             schema:
               properties:
                 level:
-                  description: "Telemetry collection level. 'none' declines and suppresses prompt for this version."
+                  description: 'Telemetry collection level. Every choice dismisses the one-time consent prompt.'
                   type: string
-                  enum: [none, errors, warnings, full]
+                  enum: [none, install, errors, full]
               type: object
       responses:
         '403':
