@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\ClassificationService;
+use ChurchCRM\Service\NoteService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -103,6 +104,8 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
     $roleDataCheckCount = $personService->getMissingRoleDataCount();
     $classificationDataCheckCount = $personService->getMissingClassificationDataCount();
 
+    $currentUser = AuthenticationManager::getCurrentUser();
+
     $pageArgs = [
         'sRootPath'                       => SystemURLs::getRootPath(),
         'sPageTitle'                      => gettext('Welcome to') . ' ' . ChurchMetaData::getChurchName(),
@@ -120,6 +123,8 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
         'genderDataCheckCount'            => $genderDataCheckCount,
         'roleDataCheckCount'              => $roleDataCheckCount,
         'classificationDataCheckCount'    => $classificationDataCheckCount,
+        'notesEnabled'                    => $currentUser->canReadNotes(),
+        'latestNotes'                     => (new NoteService())->latestNotesFor($currentUser, 5),
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);

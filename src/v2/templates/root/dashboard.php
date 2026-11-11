@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -240,6 +241,33 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
             </div>
         </div>
+        <?php if ($notesEnabled) : ?>
+        <div class="card mb-3" id="latestNotesCard">
+            <div class="card-header d-flex align-items-center">
+                <h3 class="card-title"><i class="fa-solid fa-note-sticky me-2"></i><?= gettext('Latest Notes') ?></h3>
+            </div>
+            <?php if ($latestNotes === []) : ?>
+                <div class="card-body text-body-secondary small" id="latestNotesEmpty"><?= gettext('No notes have been added yet.') ?></div>
+            <?php else : ?>
+                <div class="list-group list-group-flush" id="latestNotesList">
+                    <?php foreach ($latestNotes as $note) : ?>
+                        <a href="<?= InputUtils::escapeAttribute($note['url']) ?>" class="list-group-item list-group-item-action">
+                            <div class="d-flex align-items-center gap-2">
+                                <strong class="text-truncate"><?= InputUtils::escapeHTML($note['subject']) ?></strong>
+                                <?php if ($note['private']) : ?>
+                                    <span class="badge bg-secondary-lt" title="<?= InputUtils::escapeAttribute(gettext('Private')) ?>"><i class="fa-solid fa-lock" aria-hidden="true"></i><span class="visually-hidden"><?= gettext('Private') ?></span></span>
+                                <?php endif; ?>
+                            </div>
+                            <?php if ($note['excerpt'] !== '') : ?>
+                                <div class="text-body text-break small"><?= InputUtils::escapeHTML($note['excerpt']) ?></div>
+                            <?php endif; ?>
+                            <div class="text-body-secondary small"><?= InputUtils::escapeHTML(sprintf(gettext('%s by %s'), $note['date'], $note['author'])) ?></div>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+        <?php endif; ?>
     </div>
 </div>
 
