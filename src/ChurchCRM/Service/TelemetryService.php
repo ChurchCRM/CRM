@@ -16,12 +16,11 @@ class TelemetryService
     public const POSTHOG_KEY      = 'phc_vhMEHZai3exmp3sqqtJGyVY8Dfjn877bV7zQjV99sJZy';
     public const POSTHOG_ENDPOINT = 'https://us.i.posthog.com';
     public const POSTHOG_CAPTURE_ENDPOINT = self::POSTHOG_ENDPOINT . '/i/v0/e/';
-    private const FAILURE_DISTINCT_ID = 'churchcrm-aggregate-failures';
 
     // Collection levels stored in sTelemetryLevel.
     public const LEVEL_NONE     = 'none';
-    public const LEVEL_ERRORS   = 'errors';    // ERROR/CRITICAL + JS exceptions
-    public const LEVEL_WARNINGS = 'warnings';  // WARNING+ + JS exceptions
+    public const LEVEL_INSTALL  = 'install';
+    public const LEVEL_ERRORS   = 'errors';    // WARNING+ + JS exceptions
     public const LEVEL_FULL     = 'full';      // warnings + page views + JS exceptions
 
     private static array $installProfileCache = [];
@@ -53,14 +52,15 @@ class TelemetryService
     public static function getLevel(): string
     {
         $level = SystemConfig::getValue('sTelemetryLevel');
-        return in_array($level, [self::LEVEL_ERRORS, self::LEVEL_WARNINGS, self::LEVEL_FULL], true)
+        $level = $level === 'warnings' ? self::LEVEL_ERRORS : $level;
+        return in_array($level, [self::LEVEL_INSTALL, self::LEVEL_ERRORS, self::LEVEL_FULL], true)
             ? $level
             : self::LEVEL_NONE;
     }
 
     public static function isEnabled(): bool
     {
-        return self::getLevel() !== self::LEVEL_NONE;
+        return in_array(self::getLevel(), [self::LEVEL_ERRORS, self::LEVEL_FULL], true);
     }
 
     /** True only at 'full' level — page views are high-volume, opt-in extra. */
@@ -73,7 +73,7 @@ class TelemetryService
     public static function syncLifecycle(?callable $send = null): void
     {
         $level = self::getLevel();
-        if ($level === self::LEVEL_NONE) {
+        if ($level === self::LEVEL_NONE || self::installProfile() === 'test') {
             return;
         }
 
@@ -125,22 +125,22 @@ class TelemetryService
         }
     }
 
-    /** Build a lifecycle event only when an opted-in install has uncovered version state. */
+    /** Build a lifecycle event for an installation with uncovered version state. */
     public static function buildLifecycleEvent(string $level, string $systemId, string $coveredVersion, string $currentVersion): ?array
     {
-        if ($level === self::LEVEL_NONE || $systemId === '' || $coveredVersion === $currentVersion) {
+        if (!in_array($level, [self::LEVEL_INSTALL, self::LEVEL_ERRORS, self::LEVEL_FULL], true)
+            || self::installProfile() === 'test' || $systemId === '' || $coveredVersion === $currentVersion) {
             return null;
         }
 
         if ($coveredVersion === '') {
-            return ['event' => 'install_observed', 'properties' => self::baseProperties()];
+            return ['event' => 'install_completed', 'properties' => self::lifecycleProperties($currentVersion)];
         }
 
         return [
             'event' => 'upgrade_completed',
-            'properties' => array_merge(self::baseProperties(), [
+            'properties' => array_merge(self::lifecycleProperties($currentVersion), [
                 'from_version' => $coveredVersion,
-                'to_version' => $currentVersion,
             ]),
         ];
     }
@@ -186,6 +186,10 @@ class TelemetryService
 
     public static function captureUpgradeSqlError(string $version, int $durationMs, string $databaseError): void
     {
+        self::captureUpgradeFailure($version, '');
+        if (!self::isEnabled()) {
+            return;
+        }
         $databaseError = self::sanitizeDatabaseError($databaseError);
 
         self::capture('upgrade_sql_failed', array_merge(self::baseProperties(), [
@@ -193,35 +197,48 @@ class TelemetryService
             'duration_ms' => $durationMs,
             'database_error' => $databaseError,
             '$process_person_profile' => false,
-        ]), self::FAILURE_DISTINCT_ID);
+        ]));
     }
 
     public static function captureInstallFailure(string $errorClass, ?string $databaseError = null): void
     {
+        if (self::installProfile() === 'test' || !SystemConfig::isInitialized() || !self::isEnabled()) {
+            return;
+        }
         $properties = array_merge(self::baseProperties(), ['error_class' => $errorClass]);
         if ($databaseError !== null) {
             $properties['database_error'] = self::sanitizeDatabaseError($databaseError);
         }
         $properties['$process_person_profile'] = false;
-        self::capture('install_failed', $properties, self::FAILURE_DISTINCT_ID);
+        self::capture('install_failed', $properties);
     }
 
     public static function captureUpgradeFailure(string $version, string $errorClass): void
     {
-        self::capture('upgrade_failed', array_merge(self::baseProperties(), [
-            'upgrade_version' => $version,
-            'error_class' => $errorClass,
-            '$process_person_profile' => false,
-        ]), self::FAILURE_DISTINCT_ID);
+        if (self::getLevel() === self::LEVEL_NONE || self::installProfile() === 'test') {
+            return;
+        }
+        try {
+            $fromVersion = VersionUtils::getDBVersion();
+        } catch (\Throwable) {
+            $fromVersion = SystemConfig::getValue('sTelemetryLifecycleVersion') ?: null;
+        }
+        self::capture('upgrade_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+            'from_version' => $fromVersion,
+        ]));
     }
 
     public static function captureUpgradeInterruption(string $version, int $elapsedMs): void
     {
+        self::captureUpgradeFailure($version, '');
+        if (!self::isEnabled()) {
+            return;
+        }
         self::capture('upgrade_script_interrupted', array_merge(self::baseProperties(), [
             'upgrade_version' => $version,
             'elapsed_ms' => $elapsedMs,
             '$process_person_profile' => false,
-        ]), self::FAILURE_DISTINCT_ID);
+        ]));
     }
 
     /**
@@ -256,6 +273,34 @@ class TelemetryService
         $message = preg_replace('/[A-Z0-9.!#$%&\x27*+\/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i', '[email]', $message) ?? '';
 
         return mb_substr($message, 0, 500);
+    }
+
+    private static function lifecycleProperties(string $version): array
+    {
+        $properties = [
+            'crm_version' => $version,
+            'install_profile' => self::installProfile(),
+            'church_country' => self::churchCountry(),
+        ];
+        try {
+            $serverVersion = (string) Propel::getConnection()->getAttribute(\PDO::ATTR_SERVER_VERSION);
+            $properties += self::databaseProperties($serverVersion);
+        } catch (\Throwable) {
+            // Database failure reporting must also work when the connection is unavailable.
+        }
+        return $properties;
+    }
+
+    public static function databaseProperties(string $serverVersion): array
+    {
+        $database = DatabaseVersionService::parse($serverVersion);
+        if ($database === null) {
+            return [];
+        }
+        return [
+            'database_engine' => strtolower($database['engine']),
+            'database_version' => implode('.', array_slice(explode('.', $database['version']), 0, 2)),
+        ];
     }
 
     /** Properties attached to every server-side PostHog event. */
@@ -316,11 +361,14 @@ class TelemetryService
             return false;
         }
 
+        if (in_array($event, ['install_completed', 'upgrade_completed', 'upgrade_failed'], true)) {
+            $properties['$process_person_profile'] = false;
+        }
         $payload = json_encode([
             'api_key'     => self::POSTHOG_KEY,
             'event'       => $event,
             'distinct_id' => $distinctId,
-            'properties'  => $properties,
+            'properties'  => $properties + ['$geoip_disable' => true],
         ]);
 
         try {

@@ -317,6 +317,7 @@ require_once __DIR__ . '/header.php';
                         <i class="fa-solid fa-circle-check text-success" style="font-size: 4rem;"></i>
                     </div>
                     <h3 class="mb-4">Installation Complete!</h3>
+                    <p class="text-body-secondary"><?= gettext('Your data is yours. Install statistics are enabled by default: installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Church records are excluded. Change your choice or stop all reporting in Admin → Telemetry. Optional reports require your consent.') ?></p>
                     <div class="card bg-light mb-4">
                         <div class="card-body">
                             <p class="text-body-secondary mb-2">Sign in with your admin account:</p>

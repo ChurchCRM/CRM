@@ -44,12 +44,13 @@ foreach (['production', 'demo', 'test'] as $profile) {
         'sInstallDataProfile' => $value($profile),
         'sTelemetryLevel' => $value('full'),
         'sSystemID' => $value('install-id'),
+        'sTelemetryLifecycleVersion' => $value('7.8.2'),
     ]);
     Assert::same($profile, TelemetryService::installProfile());
     Assert::same($profile, $baseProperties->invoke(null)['install_profile']);
     $before = $GLOBALS['telemetryTransportCalls'];
     $suppressed = in_array($profile, ['test'], true);
-    Assert::same($suppressed, $capture->invoke(null, 'install_observed', $baseProperties->invoke(null)));
+    Assert::same($suppressed, $capture->invoke(null, 'install_completed', $baseProperties->invoke(null)));
     Assert::same($suppressed, $capture->invoke(null, 'upgrade_completed', $baseProperties->invoke(null)));
     TelemetryService::capturePageView('/people/person');
     TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Error'));
@@ -58,7 +59,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
     TelemetryService::captureUpgradeFailure('7.8.3', 'RuntimeException');
     TelemetryService::captureUpgradeSqlError('7.8.3', 10, 'Database error');
     TelemetryService::captureUpgradeInterruption('7.8.3', 10);
-    Assert::same($suppressed ? 0 : 9, $GLOBALS['telemetryTransportCalls'] - $before);
+    Assert::same($suppressed ? 0 : 11, $GLOBALS['telemetryTransportCalls'] - $before);
 }
 
 $configs->setValue(null, ['sInstallDataProfile' => $value('production'), 'sLanguage' => $value('en_US')]);
@@ -80,5 +81,3 @@ Assert::same('production', TelemetryService::installProfile());
 
 $seed = file_get_contents(dirname(APP_ROOT) . '/cypress/data/seed.sql');
 Assert::contains("('sInstallDataProfile','test')", $seed);
-$demo = file_get_contents(APP_ROOT . '/ChurchCRM/Service/DemoDataService.php');
-Assert::contains("\$this->importSystemConfig(\$force);\n            SystemConfig::setValue('sInstallDataProfile', 'demo');", $demo);

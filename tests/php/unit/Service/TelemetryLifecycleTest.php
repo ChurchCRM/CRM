@@ -1,0 +1,150 @@
+<?php
+
+declare(strict_types=1);
+
+namespace ChurchCRM\Service;
+
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Logging\PostHogLogHandler;
+use ChurchCRM\Utils\VersionUtils;
+use Monolog\Level;
+use Monolog\LogRecord;
+use Propel\Runtime\Connection\PdoConnection;
+use Propel\Runtime\Propel;
+use Tester\Assert;
+
+require dirname(__DIR__, 2) . '/bootstrap.php';
+
+function curl_init(string $url): object { return new \stdClass(); }
+function curl_setopt_array(object $handle, array $options): bool
+{
+    $GLOBALS['lifecyclePayloads'][] = json_decode($options[CURLOPT_POSTFIELDS], true, 512, JSON_THROW_ON_ERROR);
+    return true;
+}
+function curl_exec(object $handle): string { return 'Ok'; }
+function curl_getinfo(object $handle, int $option): int { return 200; }
+
+putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY');
+putenv('PHP_TEST_DISPOSABLE_DB');
+SystemURLs::init('', [], APP_ROOT);
+SystemConfig::init();
+Assert::same('install', TelemetryService::getLevel());
+Assert::same(['none', 'install', 'errors', 'full'], array_map(
+    static fn (string $choice): string => substr($choice, strrpos($choice, ':') + 1),
+    SystemConfig::getTelemetryLevelChoices()['Choices']
+));
+
+$connection = new class extends PdoConnection {
+    public function __construct() {}
+    public function getAttribute(int $attribute): string { return '5.5.5-10.11.12-MariaDB-private-host'; }
+    public function prepare(string $statement, array $driverOptions = [])
+    {
+        throw new \RuntimeException('Database unavailable');
+    }
+};
+$container = Propel::getServiceContainer();
+$container->setDefaultDatasource('telemetry');
+$container->setAdapterClass('telemetry', 'mysql');
+$container->setConnection('telemetry', $connection);
+Assert::same('5.5.5-10.11.12-MariaDB-private-host', Propel::getConnection()->getAttribute(\PDO::ATTR_SERVER_VERSION));
+
+Assert::same(['database_engine' => 'mariadb', 'database_version' => '10.11'], TelemetryService::databaseProperties('5.5.5-10.11.12-MariaDB-private-host'));
+Assert::same(['database_engine' => 'mysql', 'database_version' => '8.4'], TelemetryService::databaseProperties('8.4.5-private-host'));
+Assert::same([], TelemetryService::databaseProperties('private-host'));
+
+$value = static fn (string $value) => new class($value) {
+    public function __construct(private string $value) {}
+    public function getValue(): string { return $this->value; }
+    public function setValue(string $value): void { $this->value = $value; }
+    public function getType(): string { return 'internal'; }
+};
+$configs = new \ReflectionProperty(SystemConfig::class, 'configs');
+$capture = new \ReflectionMethod(TelemetryService::class, 'capture');
+$handler = new PostHogLogHandler();
+foreach (['production', 'demo', 'test'] as $profile) {
+    foreach (['none', 'install', 'errors', 'warnings', 'full'] as $level) {
+        $configs->setValue(null, [
+            'sTelemetryLevel' => $value($level),
+            'sInstallDataProfile' => $value($profile),
+            'sSystemID' => $value('church-guid'),
+            'sTelemetryLifecycleVersion' => $value('7.8.2'),
+            'sChurchCountry' => $value('US'),
+            'sLanguage' => $value('en_US'),
+        ]);
+        $GLOBALS['lifecyclePayloads'] = [];
+        $normalized = $level === 'warnings' ? 'errors' : $level;
+        Assert::same($normalized, TelemetryService::getLevel());
+        foreach (['', '7.8.2'] as $covered) {
+            $event = TelemetryService::buildLifecycleEvent($normalized, 'church-guid', $covered, '7.8.4');
+            if ($event !== null) {
+                $capture->invoke(null, $event['event'], $event['properties']);
+            }
+        }
+        TelemetryService::captureUpgradeFailure('7.8.4', 'PrivateException');
+        $expected = $profile === 'test' || $level === 'none' ? 0 : 3;
+        Assert::count($expected, $GLOBALS['lifecyclePayloads']);
+        foreach ($GLOBALS['lifecyclePayloads'] as $payload) {
+            Assert::same('church-guid', $payload['distinct_id']);
+            $properties = $payload['properties'];
+            $keys = ['crm_version', 'install_profile', 'church_country', 'database_engine', 'database_version'];
+            if ($payload['event'] !== 'install_completed') {
+                $keys[] = 'from_version';
+                Assert::same('7.8.2', $properties['from_version']);
+            }
+            $keys = array_merge($keys, ['$process_person_profile', '$geoip_disable']);
+            Assert::same($keys, array_keys($properties));
+            Assert::true($properties['$geoip_disable']);
+            Assert::false($properties['$process_person_profile']);
+            Assert::same('US', $properties['church_country']);
+            Assert::same($profile, $properties['install_profile']);
+            Assert::same($payload['event'] === 'upgrade_failed' ? VersionUtils::getInstalledVersion() : '7.8.4', $properties['crm_version']);
+            Assert::same('mariadb', $properties['database_engine']);
+            Assert::same('10.11', $properties['database_version']);
+        }
+
+        $GLOBALS['lifecyclePayloads'] = [];
+        TelemetryService::capturePageView('/people/person');
+        $handler->handle(new LogRecord(new \DateTimeImmutable(), 'app', Level::Warning, 'Warning'));
+        $handler->handle(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Error'));
+        TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Direct error'));
+        $events = $profile === 'test' || in_array($level, ['none', 'install'], true)
+            ? [] : ($level === 'full' ? ['page_view', 'log_error', 'log_error', 'log_error'] : ['log_error', 'log_error', 'log_error']);
+        Assert::same($events, array_column($GLOBALS['lifecyclePayloads'], 'event'));
+    }
+}
+
+$configs->setValue(null, [
+    'sTelemetryLevel' => $value('install'),
+    'sTelemetryAskedVersion' => $value(''),
+    'sInstallDataProfile' => $value('test'),
+]);
+$app = \Slim\Factory\AppFactory::create();
+require APP_ROOT . '/admin/routes/api/system/telemetry-consent.php';
+foreach (['install', 'errors', 'full', 'none'] as $choice) {
+    $request = (new \Slim\Psr7\Factory\ServerRequestFactory())->createServerRequest('POST', '/api/system/telemetry-consent');
+    $request->getBody()->write(json_encode(['level' => $choice], JSON_THROW_ON_ERROR));
+    $response = $app->handle($request);
+    Assert::same(200, $response->getStatusCode());
+    Assert::same($choice, SystemConfig::getValue('sTelemetryLevel'));
+    Assert::same(VersionUtils::getInstalledVersion(), SystemConfig::getValue('sTelemetryAskedVersion'));
+}
+$sent = 0;
+TelemetryService::syncLifecycle(static function () use (&$sent): bool { $sent++; return true; });
+Assert::same(0, $sent);
+
+putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY=1');
+$demoConfig = json_decode(file_get_contents(APP_ROOT . '/admin/demo/config.json'), true, 512, JSON_THROW_ON_ERROR);
+$demoSettings = [];
+foreach (array_unique(array_merge(array_keys($demoConfig), ['sInstallDataProfile', 'sTelemetryLevel', 'bEnabledSundaySchool', 'bEnabledFinance', 'bEnabledEvents', 'bPortalShowVolunteer', 'sLogLevel'])) as $key) {
+    $demoSettings[$key] = $value('');
+}
+$configs->setValue(null, $demoSettings);
+$demoImport = new \ReflectionMethod(DemoDataService::class, 'importSystemConfig');
+$demoService = new DemoDataService();
+$demoImport->invoke($demoService);
+Assert::same('demo', SystemConfig::getValue('sInstallDataProfile'));
+Assert::same('full', SystemConfig::getValue('sTelemetryLevel'));
+Assert::same('test', TelemetryService::installProfile());
+putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY');
+Assert::same('demo', TelemetryService::installProfile());

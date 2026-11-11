@@ -46,7 +46,7 @@ $configs->setValue(null, [
 TelemetryService::capturePageView('/people/person');
 TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Error'));
 $capture = new \ReflectionMethod(TelemetryService::class, 'capture');
-foreach (['' => 'install_observed', '7.8.2' => 'upgrade_completed'] as $coveredVersion => $event) {
+foreach (['' => 'install_completed', '7.8.2' => 'upgrade_completed'] as $coveredVersion => $event) {
     $lifecycle = TelemetryService::buildLifecycleEvent('full', 'install-id', $coveredVersion, '7.8.3');
     Assert::same($event, $lifecycle['event']);
     Assert::true($capture->invoke(null, $event, $lifecycle['properties']));
@@ -65,13 +65,12 @@ TelemetryService::captureUpgradeSqlError('7.8.3', 10, 'Database error');
 TelemetryService::captureUpgradeInterruption('7.8.3', 10);
 
 $payloads = $GLOBALS['telemetryPayloads'];
-Assert::same(['page_view', 'log_error', 'install_observed', 'upgrade_completed', 'upgrade_sql_completed', 'upgrade_sql_failed', 'install_failed', 'upgrade_failed', 'upgrade_sql_failed', 'upgrade_script_interrupted'], array_column($payloads, 'event'));
+Assert::same(['page_view', 'log_error', 'install_completed', 'upgrade_completed', 'upgrade_sql_completed', 'upgrade_sql_failed'], array_column($payloads, 'event'));
 foreach ($payloads as $payload) {
     Assert::true($payload['properties']['$geoip_disable']);
     Assert::false(array_key_exists('$ip', $payload['properties']));
     Assert::same(TelemetryService::POSTHOG_KEY, $payload['api_key']);
 }
-foreach (array_slice($payloads, 6) as $payload) {
-    Assert::false($payload['properties']['$process_person_profile']);
-    Assert::same('churchcrm-aggregate-failures', $payload['distinct_id']);
+foreach ($payloads as $payload) {
+    Assert::same('install-id', $payload['distinct_id']);
 }

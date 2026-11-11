@@ -126,8 +126,8 @@ class   SystemConfig
         return [
             'Choices' => [
                 gettext('None (disabled)') . ':none',
-                gettext('Errors — server errors and JS exceptions') . ':errors',
-                gettext('Warnings — warnings, errors, and JS exceptions') . ':warnings',
+                gettext('Install — installation and upgrade statistics (default)') . ':install',
+                gettext('Errors — install statistics, warnings, errors, and JS exceptions') . ':errors',
                 gettext('Full — all of the above plus page views') . ':full',
             ],
         ];
@@ -377,7 +377,7 @@ class   SystemConfig
             'sDefaultZip'                          => new ConfigItem('sDefaultZip', 'text', '', gettext('Default Zip')),
             'sSystemID'                            => new ConfigItem('sSystemID', 'text', ''),
 
-            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'none', gettext('Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement.'), '', json_encode(self::getTelemetryLevelChoices())),
+            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'install', gettext('Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None stops all reporting.'), '', json_encode(self::getTelemetryLevelChoices())),
             'sInstallDataProfile'                  => new ConfigItem('sInstallDataProfile', 'choice', 'production', '', '', json_encode(['production' => 'production', 'demo' => 'demo', 'test' => 'test'])),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
             'sTelemetryLifecycleVersion'            => new ConfigItem('sTelemetryLifecycleVersion', 'text', ''),
@@ -405,6 +405,10 @@ class   SystemConfig
         self::$configs = self::buildConfigs();
         self::$categories = self::buildCategories();
         if (!empty($configs)) {
+            // Older installs stored None by omitting the row. Preserve that choice during upgrades.
+            if (!$pruneUnknown) {
+                self::$configs['sTelemetryLevel'] = new ConfigItem('sTelemetryLevel', 'choice', 'none', self::$configs['sTelemetryLevel']->getTooltip(), '', json_encode(self::getTelemetryLevelChoices()));
+            }
             self::scrapeDBConfigs($configs, $pruneUnknown);
         }
     }
