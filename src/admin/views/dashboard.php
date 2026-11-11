@@ -212,8 +212,8 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                         <li><?= gettext('Church records: member records, giving records, and other church records are excluded.') ?></li>
                     </ul>
                     <div class="d-flex gap-2 flex-wrap">
-                        <button type="button" class="btn btn-info js-telemetry-consent" data-level="full">
-                            <i class="fa-solid fa-check me-1"></i><?= gettext('Enable optional reports') ?>
+                        <button type="button" class="btn btn-info js-telemetry-consent" data-level="<?= TelemetryService::getLevel() === TelemetryService::LEVEL_NONE ? TelemetryService::LEVEL_INSTALL : TelemetryService::LEVEL_FULL ?>">
+                            <i class="fa-solid fa-check me-1"></i><?= TelemetryService::getLevel() === TelemetryService::LEVEL_NONE ? gettext('Share install statistics') : gettext('Enable optional reports') ?>
                         </button>
                         <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-level="<?= InputUtils::escapeAttribute(TelemetryService::getLevel()) ?>">
                             <?= gettext('Not now') ?>
