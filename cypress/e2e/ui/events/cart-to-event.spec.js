@@ -3,16 +3,6 @@
 describe("Cart to Event (MVC)", () => {
     beforeEach(() => cy.setupAdminSession());
 
-    it("should display the cart-to-event page", () => {
-        cy.visit("event/cart-to-event");
-        // Either shows cart contents or empty state
-        cy.get("body").then(($body) => {
-            const hasCart = $body.text().includes("Check In to Event");
-            const hasEmpty = $body.text().includes("Your cart is empty");
-            expect(hasCart || hasEmpty).to.equal(true);
-        });
-    });
-
     it("should show empty state when cart is empty", () => {
         cy.visit("event/cart-to-event");
         cy.contains("Your cart is empty").should("be.visible");
