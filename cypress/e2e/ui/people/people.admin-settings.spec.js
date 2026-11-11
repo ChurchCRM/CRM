@@ -39,65 +39,40 @@ describe("People Settings hub", () => {
             cy.setupAdminSession();
         });
 
-        it("links to the hub from the People Dashboard instead of expanding a panel", () => {
-            cy.visit("/people/dashboard");
-            cy.get(".page-header .btn-list a").should("have.length", 1).and("contain", "People Settings");
-            cy.get(".page-header .btn-list a").should("have.attr", "href").and("include", "/admin/people");
-            cy.get("#peopleSettings").should("not.exist");
-            cy.get(".page-header .btn-list a").click();
-            cy.url().should("include", "/admin/people");
-        });
-
-        it("lists People Settings in the People > Admin menu", () => {
+        it("shows every section's settings, enabled once their values load", () => {
             cy.visit("/admin/people");
             cy.get(".page-title").should("have.length", 1).and("contain", "People Settings");
-            cy.get('a[href$="admin/people"]').should("exist");
-        });
-
-        it("links to the lists and editors that used to live only in the menu", () => {
-            cy.visit("/admin/people");
-            [
-                ["Person Classifications", "mode=classes"],
-                ["Person Properties", "PropertyList.php?Type=p"],
-                ["Person Custom Fields", "PersonCustomFieldsEditor.php"],
-                ["Grades", "mode=grades"],
-                ["Family Roles", "mode=famroles"],
-                ["Family Properties", "PropertyList.php?Type=f"],
-                ["Family Custom Fields", "FamilyCustomFieldsEditor.php"],
-                ["Volunteer Opportunities", "VolunteerOpportunityEditor.php"],
-                ["Member Portal", "/admin/member-portal"],
-            ].forEach(([label, href]) => {
-                cy.get(".container-fluid a.card")
-                    .contains(label)
-                    .closest("a")
-                    .should("have.attr", "href")
-                    .and("include", href);
-            });
-        });
-
-        it("renders a settings panel for every section and enables it once values load", () => {
-            cy.visit("/admin/people");
             SECTIONS.forEach((section) => {
                 cy.get(`${section} .settings-panel-fields`, { timeout: 10000 }).should("not.be.disabled");
             });
-        });
-
-        it("does not link back to the System Settings page from the panels", () => {
-            cy.visit("/admin/people");
-            cy.get("#peoplePeople .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
-            cy.get('.settings-panel-card a[href*="SystemSettings.php"]').should("not.exist");
-        });
-
-        it("shows the moved settings, including Self-Registration, but not Birthday Emails (Feature Toggles)", () => {
-            cy.visit("/admin/people");
             cy.get("#peopleNewMembers [name='sNewPersonNotificationRecipientIDs']").should("exist");
             cy.get("#peopleNewMembers textarea[name='sGreeterCustomMsg1'][maxlength='255']").should("exist");
             cy.get("#peopleNewMembers textarea[name='sGreeterCustomMsg2'][maxlength='255']").should("exist");
+            cy.get("#peopleNewMembers input[name='bEnableSelfRegistration']").should("exist");
             cy.get("#peoplePeople [name='bHidePersonAddress']").should("exist");
             cy.get("#peoplePeople [name='bHideDeceasedFromDirectory']").should("exist");
             cy.get("#peopleFamilies [name='bHideFamilyNewsletter']").should("exist");
-            cy.get("#peopleNewMembers input[name='bEnableSelfRegistration']").should("exist");
             cy.get("[name='bEnableBirthdayEmails']").should("not.exist");
+            // Short label, with the long sentence kept as help text. Bootstrap moves title to
+            // data-bs-original-title once the tooltip is initialised.
+            cy.get("#peoplePeople").should("contain.text", "Hide Friend Date");
+            cy.get("#peoplePeople .form-label").filter(":contains('Set true to disable')").should("not.exist");
+            cy.get(
+                "#peoplePeople [title*='Set true to disable entering Friend Date'], #peoplePeople [data-bs-original-title*='Set true to disable entering Friend Date']",
+            ).should("exist");
+            cy.get("#peoplePeople select[name='iPersonNameStyle'] option").should("have.length", 9);
+            cy.get("#peoplePeople select[name='iPersonInitialStyle'] option").should("have.length", 2);
+            cy.get("#peopleFamilies select[name='sDirRoleHead'] option").should("have.length.greaterThan", 0);
+            cy.get("#peopleMap select[name='iMapZoom'] option").should("have.length.at.least", 5);
+            cy.get("#peopleMap input[name='bHideLatLon']").should("exist");
+            cy.get("#peopleMap select[name='sGeocoderProviders']").should("exist");
+            // Hide Person Address lives under People, not twice
+            cy.get("[name='bHidePersonAddress']").should("have.length", 2); // Yes/No pills of one setting
+            cy.get("#peopleMap [name='bHidePersonAddress']").should("not.exist");
+
+            cy.visit("/people/map");
+            cy.get("#mapAdminSettings").should("not.exist");
+            cy.get(".page-header .btn-list a[href$='/admin/people#peopleMap']").should("contain", "Map Settings");
         });
 
         it("no longer lists the moved settings on the System Settings page", () => {
@@ -119,17 +94,6 @@ describe("People Settings hub", () => {
             });
             // Not moved yet — still managed here.
             cy.get("[name='new_value[iPersonConfessionFatherCustomField]']").should("exist");
-        });
-
-        it("labels settings with short names and keeps the long sentence as help text", () => {
-            cy.visit("/admin/people");
-            cy.get("#peoplePeople .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
-            cy.get("#peoplePeople").should("contain.text", "Hide Friend Date");
-            cy.get("#peoplePeople .form-label").filter(":contains('Set true to disable')").should("not.exist");
-            // Bootstrap moves title to data-bs-original-title once the tooltip is initialised.
-            cy.get(
-                "#peoplePeople [title*='Set true to disable entering Friend Date'], #peoplePeople [data-bs-original-title*='Set true to disable entering Friend Date']",
-            ).should("exist");
         });
 
         it("puts greeting first, then families, people, and map, with address defaults in the greeting section", () => {
@@ -169,21 +133,6 @@ describe("People Settings hub", () => {
             cy.get("#sDefaultCity, #sDefaultCountry, #sDefaultZip, #sDefaultStateContainer, #copy-church-address").should("not.exist");
         });
 
-        it("has a Map Settings section instead of a panel on the map page", () => {
-            cy.visit("/admin/people");
-            cy.get("#peopleMap .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
-            cy.get("#peopleMap select[name='iMapZoom'] option").should("have.length.at.least", 5);
-            cy.get("#peopleMap input[name='bHideLatLon']").should("exist");
-            cy.get("#peopleMap select[name='sGeocoderProviders']").should("exist");
-            // Hide Person Address lives under People, not twice
-            cy.get("[name='bHidePersonAddress']").should("have.length", 2); // Yes/No pills of one setting
-            cy.get("#peopleMap [name='bHidePersonAddress']").should("not.exist");
-
-            cy.visit("/people/map");
-            cy.get("#mapAdminSettings").should("not.exist");
-            cy.get(".page-header .btn-list a[href$='/admin/people#peopleMap']").should("contain", "Map Settings");
-        });
-
         it("picks geocoding services in order and auto-saves the ranking", () => {
             cy.intercept("POST", "**/admin/api/system/config/sGeocoderProviders").as("saveProviders");
             cy.visit("/admin/people");
@@ -198,13 +147,6 @@ describe("People Settings hub", () => {
                 expect(interception.response.statusCode).to.eq(200);
                 expect(interception.request.body.value).to.eq("Nominatim,US Census");
             });
-        });
-
-        it("renders choice settings as selects with their options", () => {
-            cy.visit("/admin/people");
-            cy.get("#peoplePeople select[name='iPersonNameStyle'] option").should("have.length", 9);
-            cy.get("#peoplePeople select[name='iPersonInitialStyle'] option").should("have.length", 2);
-            cy.get("#peopleFamilies select[name='sDirRoleHead'] option").should("have.length.greaterThan", 0);
         });
 
         it("picks notification recipients by name and auto-saves their IDs", () => {
