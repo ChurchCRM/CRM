@@ -66,6 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
           },
           { name: "bDisplayBillCounts", type: "boolean", label: i18next.t("Display bill counts on deposit slip") },
           { name: "bUseScannedChecks", type: "boolean", label: i18next.t("Enable use of scanned checks") },
+          {
+            name: "bRequireCheckNumber",
+            type: "boolean",
+            label: i18next.t("Require check number on check payments"),
+            tooltip: config.requireCheckNumberTooltip,
+          },
           { name: "bEnableNonDeductible", type: "boolean", label: i18next.t("Enable non-deductible payments") },
           { name: "bUseDonationEnvelopes", type: "boolean", label: i18next.t("Enable use of donation envelopes") },
         ],
