@@ -4,10 +4,11 @@ namespace ChurchCRM\Service;
 
 class DatabaseVersionService
 {
-    // First releases whose default table format indexes 3072 bytes. Older servers
-    // stop with SQLSTATE 1071 part-way through an upgrade, so they must not start one.
-    public const MIN_UPGRADE_MYSQL = '5.7.7';
-    public const MIN_UPGRADE_MARIADB = '10.2.2';
+    // The documented minimums, kept in step with supported-databases.json by
+    // scripts/ci/sync-supported-databases.js. An older server can stop an upgrade
+    // part-way through (SQLSTATE 1071), so the wizard does not start one.
+    public const MIN_MYSQL = '8.4';
+    public const MIN_MARIADB = '10.11';
 
     /**
      * @return array{engine: string, version: string}|null null when the server did not report a version
@@ -43,7 +44,7 @@ class DatabaseVersionService
             return ['supported' => true, 'engine' => '', 'version' => ''];
         }
 
-        $minimum = $parsed['engine'] === 'MariaDB' ? self::MIN_UPGRADE_MARIADB : self::MIN_UPGRADE_MYSQL;
+        $minimum = $parsed['engine'] === 'MariaDB' ? self::MIN_MARIADB : self::MIN_MYSQL;
 
         return $parsed + ['supported' => version_compare($parsed['version'], $minimum, '>=')];
     }
@@ -59,9 +60,11 @@ class DatabaseVersionService
         }
 
         return sprintf(
-            gettext('Your database server (%1$s %2$s) is too old to upgrade ChurchCRM. The upgrade was not started, so nothing changed. Ask your host to move the database to a current MySQL or MariaDB release, then try again.'),
+            gettext('Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later). The upgrade was not started, so nothing changed. Ask your host to move the database to a supported version, then try again.'),
             $result['engine'],
-            $result['version']
+            $result['version'],
+            self::MIN_MYSQL,
+            self::MIN_MARIADB
         );
     }
 }
