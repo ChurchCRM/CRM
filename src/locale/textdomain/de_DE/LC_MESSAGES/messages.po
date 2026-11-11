@@ -27237,3 +27237,283 @@ msgstr "Bitte prüfen Sie über den Link unten die Angaben zu Ihrer Familie. Wä
 msgid "Review Family Information"
 msgstr "Familienangaben prüfen"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Ein Dienst namens „%s“ existiert bereits. Wählen Sie ihn aus der Liste oder einen anderen Namen."
+
+#: 
+msgid "A new ministry"
+msgstr "Ein neuer Dienst"
+
+#: 
+msgid "A position"
+msgstr "Eine Aufgabe"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "{{total}} Freiwillige zu früher umgewandelten Aufgaben hinzufügen?"
+
+#: 
+msgid "Already converted"
+msgstr "Bereits umgewandelt"
+
+#: 
+msgid "An existing ministry"
+msgstr "Ein bestehender Dienst"
+
+#: 
+msgid "Becomes"
+msgstr "Wird zu"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM bietet zwei Arten, Freiwillige zu verwalten. Es soll jeweils nur eine genutzt werden; die Einstellung „Freiwilligen-Erfahrung“ legt fest, welche diese Gemeinde sieht. Ein Wechsel blendet Seiten und Menüeinträge ein oder aus und löscht nie Daten. V1 und Beide werden nur angeboten, solange Möglichkeiten zur Freiwilligenarbeit genutzt werden: Sobald jede Möglichkeit umgewandelt ist und die Gemeinde V2 nutzt, verschwinden sie aus dieser Liste."
+
+#: 
+msgid "Convert"
+msgstr "Umwandeln"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Möglichkeiten zur Freiwilligenarbeit umwandeln"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Jetzt {{total}} Möglichkeiten umwandeln? Die V1-Daten bleiben unverändert, bis die Möglichkeiten zur Freiwilligenarbeit eingestellt werden."
+
+#: 
+msgid "Converted"
+msgstr "Umgewandelt"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Umgewandelt: {{positions}} Aufgaben und {{ministries}} Dienste, {{qualifications}} Freiwillige qualifiziert."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Jede Möglichkeit wird zu einer Aufgabe im ersten Team eines Dienstes, und alle damit verknüpften Personen werden für diese Aufgabe qualifiziert. Die Selbsteintragung ist für diese Aufgaben zunächst ausgeschaltet."
+
+#: 
+msgid "Everything is converted."
+msgstr "Alles ist umgewandelt."
+
+#: 
+msgid "Existing ministry"
+msgstr "Bestehender Dienst"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Geben Sie dem neuen Dienst einen Namen mit bis zu 100 Zeichen."
+
+#: 
+msgid "Its own ministry"
+msgstr "Ein eigener Dienst"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Seitdem verknüpft: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Verknüpfungen, die nicht umgewandelt werden können"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Jeweils ein eigener neuer Dienst"
+
+#: 
+msgid "New ministry name"
+msgstr "Name des neuen Dienstes"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Es wird keine E-Mail gesendet, und die Möglichkeiten zur Freiwilligenarbeit bleiben unverändert, bis sie eingestellt werden."
+
+#: 
+msgid "No name"
+msgstr "Kein Name"
+
+#: 
+msgid "Not converted"
+msgstr "Nicht umgewandelt"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Funktionsschalter öffnen"
+
+#: 
+msgid "Open Ministries"
+msgstr "Dienste öffnen"
+
+#: 
+msgid "Opportunities"
+msgstr "Möglichkeiten"
+
+#: 
+msgid "Opportunity"
+msgstr "Möglichkeit"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Möglichkeit Nr. %d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Seit der Umwandlung mit umgewandelten Möglichkeiten zur Freiwilligenarbeit verknüpfte Personen: %d. Fügen Sie sie ihren Aufgaben hinzu, bevor die Möglichkeiten zur Freiwilligenarbeit Anfang 2027 eingestellt werden."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Zeigen Sie zuerst die Vorschau der Umwandlung an und senden Sie die zurückgegebene Revision."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Umbenannt, damit Namen eindeutig bleiben"
+
+#: 
+msgid "Review the conversion"
+msgstr "Umwandlung prüfen"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Senden Sie die Umwandlungsauswahl als JSON-Objekt."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Senden Sie die Möglichkeiten, die zu Diensten werden, als Liste von IDs."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Dieser Dienst existiert nicht."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Die ChurchCRM-Version, in der ein Administrator den Hinweis zur Einstellung der Möglichkeiten zur Freiwilligenarbeit ausgeblendet hat."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Die Möglichkeiten zur Freiwilligenarbeit haben sich seit der Vorschau geändert. Prüfen Sie die Vorschau erneut und wandeln Sie dann um."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Die Bestätigung konnte nicht geöffnet werden. Laden Sie die Seite neu und versuchen Sie es erneut."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Die Vorschau der Umwandlung konnte nicht erstellt werden."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Die Umwandlung ist fehlgeschlagen. Es wurde nichts geändert."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Der Dienst „%s“ hat kein Team für die Aufgaben."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Der Server war nicht erreichbar. Laden Sie die Seite neu, um zu sehen, ob die Umwandlung ausgeführt wurde."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Es gibt keine Möglichkeiten zur Freiwilligenarbeit zum Umwandeln."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Die Freiwilligenverwaltung wechselt zu „Beide“, sodass die neuen Dienste neben den Möglichkeiten zur Freiwilligenarbeit sichtbar sind."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Möglichkeiten zur Freiwilligenarbeit werden eingestellt"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Möglichkeiten zur Freiwilligenarbeit umgewandelt"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Möglichkeiten zur Freiwilligenarbeit werden Anfang 2027 eingestellt. Wandeln Sie sie in Dienste um, damit erhalten bleibt, wer sich wofür engagiert."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Möglichkeiten zur Freiwilligenarbeit werden Anfang 2027 eingestellt. Wandeln Sie jetzt Ihre %1$d Möglichkeiten und %2$d Freiwilligen in Dienste um. Sie können das Ergebnis in einer Vorschau ansehen, bevor sich etwas ändert."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Qualifizierte Freiwillige"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Freiwillige, die umgewandelten Aufgaben hinzugefügt werden sollen"
+
+#: 
+msgid "What it becomes"
+msgstr "Was daraus wird"
+
+#: 
+msgid "What will happen"
+msgstr "Was passiert"
+
+#: 
+msgid "Where they go"
+msgstr "Wohin sie kommen"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Welche bisherigen Möglichkeiten zur Freiwilligenarbeit umgewandelt wurden und zu welcher Aufgabe jede wurde."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Welche Freiwilligen-Erfahrung diese Gemeinde nutzt. Möglichkeiten zur Freiwilligenarbeit (V1) werden Anfang 2027 eingestellt."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Ihre Möglichkeiten zur Freiwilligenarbeit sind in Dienste umgewandelt. Stellen Sie die Freiwilligenverwaltung auf V2 um, bevor die Möglichkeiten zur Freiwilligenarbeit Anfang 2027 eingestellt werden."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "in einen neuen Dienst, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "in den Dienst {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "nicht mehr in ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Seitenleiste einklappen"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Seitenleiste ausklappen"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Geben Sie eine gültige E-Mail-Adresse ein, die vor dem @ nur ASCII-Zeichen enthält."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Die E-Mail-Adresse ist ungültig"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Möchten Sie {{name}} wirklich löschen?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Systeminformationen konnten nicht abgerufen werden. Bitte versuchen Sie es erneut."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Für diesen Zeitraum wurden keine Zahlungen gefunden."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Zahlungen nach Fonds"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Unbekannter Fonds"
+
