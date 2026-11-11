@@ -507,6 +507,14 @@ class User extends BaseUser
     }
 
     /**
+     * Events a person attended: the person themselves, or a user who may edit the record.
+     */
+    public function canReadAttendance(int $personId, int $personFamilyId = 0): bool
+    {
+        return $personId === (int) $this->getId() || $this->canEditPerson($personId, $personFamilyId);
+    }
+
+    /**
      * Check if the user can view/access a specific family's record.
      * All authenticated users can read any family by default (canReadFamily()).
      * EditSelf-only users are further restricted to their own family.
