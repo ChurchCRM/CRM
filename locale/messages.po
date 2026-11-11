@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 05:01+0000\n"
+"POT-Creation-Date: 2026-11-11 05:24+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -437,9 +437,6 @@ msgid ""
 msgstr ""
 
 msgid "1. Sunday School Class"
-msgstr ""
-
-msgid "123 Sample Street"
 msgstr ""
 
 msgid "1st"
@@ -3802,6 +3799,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Comoros (‫جزر القمر‬‎)"
+msgstr ""
+
+msgid "Compare family pledge totals for two fiscal years."
 msgstr ""
 
 msgid "Comparing timezones..."
@@ -7373,6 +7373,9 @@ msgstr ""
 msgid "First"
 msgstr ""
 
+msgid "First Fiscal Year"
+msgstr ""
+
 msgid "First Name"
 msgstr ""
 
@@ -7410,6 +7413,9 @@ msgid "FirstName MiddleName LastName"
 msgstr ""
 
 msgid "Fiscal Year"
+msgstr ""
+
+msgid "Fiscal Years"
 msgstr ""
 
 msgid "Fiscal years to check (0–100; 0 means no giving requirement)"
@@ -11346,6 +11352,9 @@ msgstr ""
 msgid "No pledges found for the selected fiscal year"
 msgstr ""
 
+msgid "No pledges were found for these fiscal years."
+msgstr ""
+
 msgid "No positions yet"
 msgstr ""
 
@@ -13152,6 +13161,9 @@ msgstr ""
 msgid "Pledge Amount"
 msgstr ""
 
+msgid "Pledge Comparison"
+msgstr ""
+
 msgid "Pledge Dashboard"
 msgstr ""
 
@@ -14463,19 +14475,7 @@ msgstr ""
 msgid "Sample Amount"
 msgstr ""
 
-msgid "Sample City"
-msgstr ""
-
 msgid "Sample Data"
-msgstr ""
-
-msgid "Sample Family (fictional)"
-msgstr ""
-
-msgid "Sample General Fund"
-msgstr ""
-
-msgid "Sample Missions Fund"
 msgstr ""
 
 #. Context: countries
@@ -14721,6 +14721,9 @@ msgid "Season"
 msgstr ""
 
 msgid "Second Address"
+msgstr ""
+
+msgid "Second Fiscal Year"
 msgstr ""
 
 msgid "Second Home"
