@@ -10,10 +10,7 @@ use Monolog\LogRecord;
 /**
  * Forwards Monolog entries to PostHog as log_error events.
  *
- * Level mapping:
- *   LEVEL_ERRORS   → ERROR and CRITICAL only
- *   LEVEL_WARNINGS → WARNING, ERROR, CRITICAL
- *   LEVEL_FULL     → same as LEVEL_WARNINGS (page views are handled separately)
+ * Errors and Full forward WARNING and above.
  *
  * Never throws — file logging must be unaffected by PostHog outages.
  */
@@ -30,13 +27,7 @@ class PostHogLogHandler extends AbstractProcessingHandler
         try {
             $telemetryLevel = TelemetryService::getLevel();
 
-            if ($telemetryLevel === TelemetryService::LEVEL_NONE) {
-                return;
-            }
-
-            // 'errors' mode: only forward ERROR and CRITICAL, skip WARNING.
-            if ($telemetryLevel === TelemetryService::LEVEL_ERRORS
-                && $record->level->value < Level::Error->value) {
+            if (!in_array($telemetryLevel, [TelemetryService::LEVEL_ERRORS, TelemetryService::LEVEL_FULL], true)) {
                 return;
             }
 

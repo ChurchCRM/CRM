@@ -125,7 +125,11 @@
   },
   "current": {
     "versions": ["7.8.3"],
-    "scripts": ["/mysql/upgrade/7.8.4-person-coordinates.sql", "/mysql/upgrade/7.8.4-verify-tokens.sql"],
+    "scripts": [
+      "/mysql/upgrade/7.8.4-person-coordinates.sql",
+      "/mysql/upgrade/7.8.4-verify-tokens.sql",
+      "/mysql/upgrade/7.8.4-telemetry-levels.sql"
+    ],
     "dbVersion": "7.8.4"
   }
 }

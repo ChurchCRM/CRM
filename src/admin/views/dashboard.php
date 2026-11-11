@@ -28,9 +28,8 @@ $hasOrphanedFiles = count($orphanedFiles) > 0;
 // Calculate overall health status
 $healthStatus = $integrityPassed && !$hasOrphanedFiles && !$adminService->hasCriticalWarnings() && !$hasURLError;
 
-// Telemetry consent prompt: show when level is 'none' and not yet asked for this version.
 $showTelemetryPrompt = !TelemetryService::isEnabled()
-    && SystemConfig::getValue('sTelemetryAskedVersion') !== VersionUtils::getInstalledVersion();
+    && SystemConfig::getValue('sTelemetryAskedVersion') === '';
 ?>
 
 <!-- Load admin dashboard CSS -->
@@ -203,24 +202,31 @@ $showTelemetryPrompt = !TelemetryService::isEnabled()
                     <i class="fa-solid fa-chart-bar fs-2 text-info"></i>
                 </div>
                 <div class="flex-grow-1">
-                    <h5 class="mb-1"><?= gettext('Help improve ChurchCRM') ?></h5>
+                    <?php $offerInstall = TelemetryService::getLevel() === TelemetryService::LEVEL_NONE; ?>
+                    <h5 class="mb-1"><?= $offerInstall ? gettext('Share anonymous install statistics?') : gettext('Help us find and fix problems?') ?></h5>
                     <p class="text-secondary mb-2">
-                        <?= gettext('Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement.') ?>
+                        <?= gettext('Your data is yours. This reports on the software, never on your church or its people.') ?>
                     </p>
-                    <p class="text-secondary mb-3 small">
-                        <?= gettext('Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States.') ?>
-                    </p>
+                    <ul class="text-secondary mb-3">
+                        <?php if ($offerInstall): ?>
+                        <li><?= gettext('Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once.') ?></li>
+                        <?php else: ?>
+                        <li><?= gettext('Shared in addition: warnings, error details, and which pages are opened.') ?></li>
+                        <?php endif; ?>
+                        <li><?= gettext('Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network.') ?></li>
+                        <li><?= gettext('Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported.') ?></li>
+                    </ul>
                     <div class="d-flex gap-2 flex-wrap">
-                        <button type="button" class="btn btn-info js-telemetry-consent" data-level="full">
-                            <i class="fa-solid fa-check me-1"></i><?= gettext('Enable (full)') ?>
+                        <button type="button" class="btn btn-info js-telemetry-consent" data-level="<?= $offerInstall ? TelemetryService::LEVEL_INSTALL : TelemetryService::LEVEL_FULL ?>">
+                            <i class="fa-solid fa-check me-1"></i><?= $offerInstall ? gettext('Share install statistics') : gettext('Share error and usage reports') ?>
                         </button>
-                        <button type="button" class="btn btn-ghost-info js-telemetry-consent" data-level="errors">
-                            <i class="fa-solid fa-circle-exclamation me-1"></i><?= gettext('Errors only') ?>
-                        </button>
-                        <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-level="none">
+                        <button type="button" class="btn btn-ghost-secondary js-telemetry-consent" data-level="<?= InputUtils::escapeAttribute(TelemetryService::getLevel()) ?>">
                             <?= gettext('No thanks') ?>
                         </button>
                     </div>
+                    <p class="text-secondary small mt-2 mb-0">
+                        <a href="<?= SystemURLs::getRootPath() ?>/admin/system/debug#telemetry"><?= gettext('See exactly what is shared, or change your choice, in Admin → Telemetry.') ?></a>
+                    </p>
                 </div>
             </div>
         </div>
