@@ -7,14 +7,17 @@ run-name: >-
 #   2. Wait (default 15 minutes, repo variable LOCALE_TERMS_WAIT_MINUTES). Every newer merge restarts the
 #      wait, so a burst of code merges becomes ONE terms PR. A manual run skips the wait and cancels a
 #      wait that is already running ("run now", e.g. before a release).
-#   3. Extract the strings (npm run locale:build) into locale/messages.po and the JSON keys.
+#   3. Extract the strings (npm run locale:build) into locale/messages.po and the JSON keys, then bring
+#      every locale in line with it (npm run locale:apply -- --prune): translations of removed strings
+#      are dropped and each locale .po/.mo is rebuilt from its JSON.
 #   4. Open or update ONE terms PR, "locale: new terms from code (+N / -M) - <date>", on the rolling
 #      branch locale/terms/<version>. Its body lists every new and removed string, where it is in the
 #      code, and a "Needs a look" list of strings that look like bugs or would lose translations.
-#   5. A person reviews and merges it. That merge starts "Locale: sync POEditor" at once (no second wait).
+#   5. A person reviews and merges it. New strings are then translated in the repo (/locale-translate,
+#      npm run locale:missing + locale:apply) and land as a normal PR. There is no outside sync.
 #
-# The sync writes src/locale/i18n and src/locale/textdomain, so those paths are excluded: merging a
-# download PR (or the terms PR, which only adds keys there) never starts another extraction.
+# Translation PRs and the terms PR only touch src/locale/i18n and src/locale/textdomain, so those paths
+# are excluded: merging them never starts another extraction.
 
 on:
   push:
@@ -97,6 +100,9 @@ jobs:
         if: always()
         run: npm run docker:ci:root:down
 
+      - name: Bring the locale files in line with the new terms
+        run: npm run locale:apply -- --prune
+
       - name: Check plugin help extraction
         run: |
           if grep -q "plugin:holidays" locale/messages.po; then
@@ -132,8 +138,7 @@ jobs:
           retention-days: 15
 
       # Rolling branch: while the terms PR is open, each later burst updates the same PR, so it always
-      # shows everything master has not merged yet. GITHUB_TOKEN here as before: the PR still needs a
-      # person's merge, which is what starts the sync.
+      # shows everything master has not merged yet. GITHUB_TOKEN: the PR still needs a person's merge.
       - name: Open or update the terms PR
         if: steps.check_changes.outputs.has_changes == 'true'
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
@@ -145,6 +150,7 @@ jobs:
           add-paths: |
             locale/messages.po
             src/locale/i18n
+            src/locale/textdomain
           labels: |
             Localization
           title: ${{ steps.report.outputs.title }}

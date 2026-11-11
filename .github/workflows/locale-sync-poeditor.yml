@@ -6,6 +6,10 @@ run-name: >-
   || inputs.upload_terms == false && 'Locale sync: download translations only (after a translation upload)'
   || 'Locale sync: upload terms + download translations (manual)' }}
 
+# RETIRED (#11416): translations now live in the repo (npm run locale:missing / locale:apply), so this
+# workflow no longer starts by itself. A manual run would overwrite src/locale with POEditor's copy, so
+# only run it for a final download before the repo-only flow takes over. The follow-up PR deletes it.
+#
 # Stage 2, in plain words. No translating happens here:
 #   1. upload terms   locale/messages.po -> POEditor (sync_terms: deletes terms no longer in the file,
 #                     with a guard against large deletions)
@@ -25,14 +29,7 @@ permissions:
   contents: read
 
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - 'locale/messages.po'
-  schedule:
-    # Run daily at midnight UTC
-    - cron: "0 0 * * *"
+  # push (terms PR merged) and the daily schedule were removed with #11416; manual runs only.
   workflow_dispatch:
     # Allow manual triggering from GitHub UI
     inputs:
