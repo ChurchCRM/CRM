@@ -27132,3 +27132,283 @@ msgstr "Gunakan tautan di bawah untuk meninjau informasi keluarga Anda. Di halam
 msgid "Review Family Information"
 msgstr "Tinjau Informasi Keluarga"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Pelayanan bernama \"%s\" sudah ada. Pilih dari daftar, atau gunakan nama lain."
+
+#: 
+msgid "A new ministry"
+msgstr "Pelayanan baru"
+
+#: 
+msgid "A position"
+msgstr "Sebuah posisi"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Tambahkan {{total}} relawan ke posisi yang sebelumnya dikonversi?"
+
+#: 
+msgid "Already converted"
+msgstr "Sudah dikonversi"
+
+#: 
+msgid "An existing ministry"
+msgstr "Pelayanan yang sudah ada"
+
+#: 
+msgid "Becomes"
+msgstr "Menjadi"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM memiliki dua cara mengelola relawan. Hanya satu yang semestinya digunakan pada satu waktu; pengaturan \"Pengalaman relawan\" menentukan mana yang dilihat gereja ini. Beralih hanya menyembunyikan atau menampilkan halaman dan item menu, dan tidak pernah menghapus data. V1 dan Keduanya hanya ditawarkan selama Peluang Relawan masih digunakan: setelah semua peluang dikonversi dan gereja memakai V2, keduanya hilang dari daftar ini."
+
+#: 
+msgid "Convert"
+msgstr "Konversi"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Konversi Peluang Relawan"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Konversi {{total}} peluang sekarang? Data V1 tetap seperti apa adanya hingga Peluang Relawan dihentikan."
+
+#: 
+msgid "Converted"
+msgstr "Dikonversi"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Dikonversi: {{positions}} posisi dan {{ministries}} pelayanan, {{qualifications}} relawan memenuhi syarat."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Setiap peluang menjadi posisi di tim pertama dari satu pelayanan, dan semua orang yang terhubung dengannya memenuhi syarat untuk posisi tersebut. Daftar mandiri awalnya nonaktif pada posisi-posisi ini."
+
+#: 
+msgid "Everything is converted."
+msgstr "Semuanya sudah dikonversi."
+
+#: 
+msgid "Existing ministry"
+msgstr "Pelayanan yang sudah ada"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Beri nama pelayanan baru maksimal 100 karakter."
+
+#: 
+msgid "Its own ministry"
+msgstr "Pelayanan tersendiri"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Terhubung sejak itu: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Tautan yang tidak dapat dikonversi"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Pelayanan baru tersendiri"
+
+#: 
+msgid "New ministry name"
+msgstr "Nama pelayanan baru"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Tidak ada email yang dikirim, dan Peluang Relawan tetap seperti apa adanya hingga dihentikan."
+
+#: 
+msgid "No name"
+msgstr "Tanpa nama"
+
+#: 
+msgid "Not converted"
+msgstr "Belum dikonversi"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Buka Pengalih Fitur"
+
+#: 
+msgid "Open Ministries"
+msgstr "Buka Pelayanan"
+
+#: 
+msgid "Opportunities"
+msgstr "Peluang"
+
+#: 
+msgid "Opportunity"
+msgstr "Peluang"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Peluang #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Orang yang terhubung ke Peluang Relawan yang sudah dikonversi sejak konversi: %d. Tambahkan mereka ke posisinya sebelum Peluang Relawan dihentikan pada awal 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Pratinjau konversi terlebih dahulu, lalu kirim revisi yang dikembalikannya."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Diganti namanya agar nama tetap unik"
+
+#: 
+msgid "Review the conversion"
+msgstr "Tinjau konversi"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Kirim pilihan konversi sebagai objek JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Kirim peluang yang menjadi pelayanan sebagai daftar ID."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Pelayanan itu tidak ada."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Versi ChurchCRM tempat administrator menutup pemberitahuan penghentian Peluang Relawan."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Peluang Relawan telah berubah sejak pratinjau. Periksa pratinjau lagi, lalu konversi."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Konfirmasi tidak dapat dibuka. Muat ulang halaman dan coba lagi."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Konversi tidak dapat dipratinjau."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Konversi gagal. Tidak ada yang diubah."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Pelayanan \"%s\" tidak memiliki tim untuk menampung posisi."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Server tidak dapat dihubungi. Muat ulang halaman untuk melihat apakah konversi sudah berjalan."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Tidak ada Peluang Relawan untuk dikonversi."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Pengelolaan Relawan beralih ke Keduanya, sehingga pelayanan baru terlihat di samping Peluang Relawan."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Peluang Relawan akan dihentikan"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Peluang Relawan dikonversi"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Peluang Relawan akan dihentikan pada awal 2027. Konversikan menjadi Pelayanan agar data siapa melayani di mana tetap tersimpan."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Peluang Relawan akan dihentikan pada awal 2027. Konversikan %1$d peluang dan %2$d relawan Anda menjadi Pelayanan sekarang. Anda dapat melihat pratinjau hasilnya sebelum ada yang berubah."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Relawan memenuhi syarat"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Relawan yang perlu ditambahkan ke posisi hasil konversi"
+
+#: 
+msgid "What it becomes"
+msgstr "Menjadi apa"
+
+#: 
+msgid "What will happen"
+msgstr "Apa yang akan terjadi"
+
+#: 
+msgid "Where they go"
+msgstr "Ke mana mereka pergi"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Peluang Relawan lama mana yang telah dikonversi, dan posisi yang menjadi hasil masing-masing."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Pengalaman relawan yang digunakan gereja ini. Peluang Relawan (V1) akan dihentikan pada awal 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Peluang Relawan Anda telah dikonversi menjadi Pelayanan. Ubah Pengelolaan Relawan ke V2 sebelum Peluang Relawan dihentikan pada awal 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "ke pelayanan baru, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "ke pelayanan {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "sudah tidak ada di ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Ciutkan bilah samping"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Luaskan bilah samping"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Masukkan alamat email yang valid dengan hanya karakter ASCII sebelum @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Alamat email mereka tidak valid"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Yakin ingin menghapus {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Tidak dapat mengumpulkan info sistem. Silakan coba lagi."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Tidak ada pembayaran untuk periode ini."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Pembayaran per Dana"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Dana Tidak Dikenal"
+

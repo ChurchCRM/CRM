@@ -27161,3 +27161,283 @@ msgstr "השתמשו בקישור שלמטה כדי לבדוק את פרטי ה�
 msgid "Review Family Information"
 msgstr "בדיקת פרטי המשפחה"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "כבר קיים שירות בשם \"%s\". בחרו אותו מהרשימה או בחרו שם אחר."
+
+#: 
+msgid "A new ministry"
+msgstr "שירות חדש"
+
+#: 
+msgid "A position"
+msgstr "תפקיד"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "להוסיף מתנדבים ({{total}}) לתפקידים שהומרו קודם?"
+
+#: 
+msgid "Already converted"
+msgstr "כבר הומר"
+
+#: 
+msgid "An existing ministry"
+msgstr "שירות קיים"
+
+#: 
+msgid "Becomes"
+msgstr "הופך ל"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ל-ChurchCRM יש שתי דרכים לנהל מתנדבים. רק אחת מהן אמורה להיות בשימוש בכל פעם; ההגדרה \"חוויית המתנדבים\" קובעת איזו מהן הקהילה הזו רואה. המעבר מסתיר או מציג דפים ופריטי תפריט ולעולם אינו מוחק נתונים. V1 ו\"שניהם\" מוצעים רק כל עוד הזדמנויות התנדבות בשימוש: ברגע שכל ההזדמנויות הומרו והקהילה עובדת עם V2, הם יוסרו מהרשימה."
+
+#: 
+msgid "Convert"
+msgstr "המרה"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "המרת הזדמנויות התנדבות"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "להמיר עכשיו הזדמנויות ({{total}})? נתוני V1 נשמרים כפי שהם עד שהזדמנויות התנדבות יופסקו."
+
+#: 
+msgid "Converted"
+msgstr "הומר"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "הומרו: תפקידים {{positions}}, שירותים {{ministries}}, מתנדבים שהוסמכו {{qualifications}}."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "כל הזדמנות הופכת לתפקיד בצוות הראשון של שירות אחד, וכל מי שמקושר אליה מוסמך לתפקיד זה. הרשמה עצמית כבויה בהתחלה בתפקידים אלה."
+
+#: 
+msgid "Everything is converted."
+msgstr "הכול הומר."
+
+#: 
+msgid "Existing ministry"
+msgstr "שירות קיים"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "תנו לשירות החדש שם של עד 100 תווים."
+
+#: 
+msgid "Its own ministry"
+msgstr "שירות משלה"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "מקושרים מאז: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "קישורים שלא ניתן להמיר"
+
+#: 
+msgid "New ministries of their own"
+msgstr "שירותים חדשים משלהן"
+
+#: 
+msgid "New ministry name"
+msgstr "שם השירות החדש"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "לא נשלח דוא\"ל, והזדמנויות התנדבות נשארות כפי שהן עד שיופסקו."
+
+#: 
+msgid "No name"
+msgstr "ללא שם"
+
+#: 
+msgid "Not converted"
+msgstr "לא הומר"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "פתיחת החלפות תכונות"
+
+#: 
+msgid "Open Ministries"
+msgstr "פתיחת שירותים"
+
+#: 
+msgid "Opportunities"
+msgstr "הזדמנויות"
+
+#: 
+msgid "Opportunity"
+msgstr "הזדמנות"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "הזדמנות מס' %d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "אנשים שקושרו להזדמנויות התנדבות שהומרו מאז ההמרה: %d. הוסיפו אותם לתפקידים שלהם לפני שהזדמנויות התנדבות יופסקו בתחילת 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "הציגו קודם תצוגה מקדימה של ההמרה, ושלחו את הגרסה שהיא החזירה."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "שונה שם כדי לשמור על שמות ייחודיים"
+
+#: 
+msgid "Review the conversion"
+msgstr "סקירת ההמרה"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "שלחו את בחירת ההמרה כאובייקט JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "שלחו את ההזדמנויות שהופכות לשירותים כרשימת מזהים."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "השירות הזה לא קיים."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "גרסת ChurchCRM שבה מנהל סגר את ההודעה על הפסקת הזדמנויות התנדבות."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "הזדמנויות התנדבות השתנו מאז התצוגה המקדימה. בדקו שוב את התצוגה המקדימה ואז המירו."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "לא ניתן לפתוח את האישור. טענו מחדש את הדף ונסו שוב."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "לא ניתן להציג תצוגה מקדימה של ההמרה."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "ההמרה נכשלה. שום דבר לא שונה."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "לשירות \"%s\" אין צוות שיכיל את התפקידים."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "לא ניתן להגיע לשרת. טענו מחדש את הדף כדי לראות אם ההמרה בוצעה."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "אין הזדמנויות התנדבות להמרה."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "ניהול מתנדבים עובר ל\"שניהם\", כך שהשירותים החדשים יוצגו לצד הזדמנויות התנדבות."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "הזדמנויות התנדבות מופסקות"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "הזדמנויות התנדבות הומרו"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "הזדמנויות התנדבות יופסקו בתחילת 2027. המירו אותן לשירותים כדי לשמור מי משרת איפה."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "הזדמנויות התנדבות יופסקו בתחילת 2027. המירו עכשיו לשירותים את ההזדמנויות (%1$d) ואת המתנדבים (%2$d) שלכם. אפשר לראות תצוגה מקדימה של התוצאה לפני שמשהו משתנה."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "מתנדבים מוסמכים"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "מתנדבים להוספה לתפקידים שהומרו"
+
+#: 
+msgid "What it becomes"
+msgstr "למה זה הופך"
+
+#: 
+msgid "What will happen"
+msgstr "מה יקרה"
+
+#: 
+msgid "Where they go"
+msgstr "לאן הם הולכים"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "אילו הזדמנויות התנדבות ישנות הומרו, ולאיזה תפקיד הפכה כל אחת."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "איזו חוויית מתנדבים הקהילה הזו משתמשת. הזדמנויות התנדבות (V1) יופסקו בתחילת 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "הזדמנויות ההתנדבות שלכם הומרו לשירותים. העבירו את ניהול מתנדבים ל-V2 לפני שהזדמנויות התנדבות יופסקו בתחילת 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "לשירות חדש, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "לשירות {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "כבר לא ב-ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "כיווץ סרגל הצד"
+
+#: 
+msgid "Expand sidebar"
+msgstr "הרחבת סרגל הצד"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "הזינו כתובת דוא\"ל תקינה שמשתמשת רק בתווי ASCII לפני ה-@."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "כתובת הדוא\"ל שלהם אינה תקינה"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "למחוק את {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "לא ניתן לאסוף את פרטי המערכת. נסו שוב."
+
+#: 
+msgid "No payments found for this period."
+msgstr "לא נמצאו תשלומים לתקופה זו."
+
+#: 
+msgid "Payments by Fund"
+msgstr "תשלומים לפי קרן"
+
+#: 
+msgid "Unknown Fund"
+msgstr "קרן לא ידועה"
+

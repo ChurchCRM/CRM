@@ -27169,3 +27169,283 @@ msgstr "የቤተሰብዎን መረጃ ለመገምገም ከታች ያለው�
 msgid "Review Family Information"
 msgstr "የቤተሰብ መረጃን ገምግም"
 
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "\"%s\" የሚባል አገልግሎት አስቀድሞ አለ። ከዝርዝሩ ይምረጡት ወይም ሌላ ስም ይምረጡ።"
+
+#: 
+msgid "A new ministry"
+msgstr "አዲስ አገልግሎት"
+
+#: 
+msgid "A position"
+msgstr "የአገልግሎት ቦታ"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "{{total}} በጎ ፈቃደኞችን ቀደም ብለው ወደተቀየሩ የአገልግሎት ቦታዎች ይጨመሩ?"
+
+#: 
+msgid "Already converted"
+msgstr "አስቀድሞ ተቀይሯል"
+
+#: 
+msgid "An existing ministry"
+msgstr "ነባር አገልግሎት"
+
+#: 
+msgid "Becomes"
+msgstr "ወደዚህ ይቀየራል"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM በጎ ፈቃደኞችን ለማስተዳደር ሁለት መንገዶች አሉት። በአንድ ጊዜ አንዱ ብቻ ጥቅም ላይ እንዲውል የታሰበ ነው፤ ይህ ቤተ ክርስቲያን የትኛውን እንደሚያይ \"የበጎ ፈቃደኞች ተሞክሮ\" ቅንብር ይወስናል። መቀየር ገጾችንና የምናሌ ንጥሎችን ይደብቃል ወይም ያሳያል፤ ውሂብ ግን በጭራሽ አይሰርዝም። V1 እና ሁለቱም የሚቀርቡት የበጎ ፈቃደኞች እድሎች ጥቅም ላይ እስካሉ ድረስ ብቻ ነው፤ እያንዳንዱ እድል ሲቀየርና ቤተ ክርስቲያኑ V2 ላይ ሲሆን ከዚህ ዝርዝር ይወጣሉ።"
+
+#: 
+msgid "Convert"
+msgstr "ቀይር"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "የበጎ ፈቃደኞች እድሎችን ቀይር"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "አሁን {{total}} እድሎችን ይቀይሩ? የበጎ ፈቃደኞች እድሎች እስኪቋረጡ ድረስ የV1 ውሂብ እንዳለ ይቆያል።"
+
+#: 
+msgid "Converted"
+msgstr "ተቀይሯል"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "ተቀይሯል፦ {{positions}} የአገልግሎት ቦታዎች እና {{ministries}} አገልግሎቶች፣ {{qualifications}} በጎ ፈቃደኞች ብቁ ሆነዋል።"
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "እያንዳንዱ እድል በአንድ አገልግሎት የመጀመሪያ ቡድን ውስጥ የአገልግሎት ቦታ ይሆናል፤ ከእሱ ጋር የተገናኙ ሁሉም ለዚያ ቦታ ብቁ ይሆናሉ። በእነዚህ ቦታዎች ላይ ራስን ምዝገባ መጀመሪያ ጠፍቶ ይቆያል።"
+
+#: 
+msgid "Everything is converted."
+msgstr "ሁሉም ተቀይሯል።"
+
+#: 
+msgid "Existing ministry"
+msgstr "ነባር አገልግሎት"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "ለአዲሱ አገልግሎት እስከ 100 ቁምፊዎች ያለው ስም ይስጡት።"
+
+#: 
+msgid "Its own ministry"
+msgstr "የራሱ አገልግሎት"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "ከዚያ ወዲህ የተገናኙ፦ {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "ሊቀየሩ የማይችሉ ግንኙነቶች"
+
+#: 
+msgid "New ministries of their own"
+msgstr "የራሳቸው አዲስ አገልግሎቶች"
+
+#: 
+msgid "New ministry name"
+msgstr "የአዲሱ አገልግሎት ስም"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "ምንም ኢሜይል አይላክም፤ የበጎ ፈቃደኞች እድሎችም እስኪቋረጡ ድረስ እንዳሉ ይቆያሉ።"
+
+#: 
+msgid "No name"
+msgstr "ስም የለም"
+
+#: 
+msgid "Not converted"
+msgstr "አልተቀየረም"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "ባህሪ ተቀያይሮችን ክፈት"
+
+#: 
+msgid "Open Ministries"
+msgstr "አገልግሎቶችን ክፈት"
+
+#: 
+msgid "Opportunities"
+msgstr "እድሎች"
+
+#: 
+msgid "Opportunity"
+msgstr "እድል"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "እድል #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "ከቅየራው ወዲህ ከተቀየሩ የበጎ ፈቃደኞች እድሎች ጋር የተገናኙ ሰዎች፦ %d። የበጎ ፈቃደኞች እድሎች በ2027 መጀመሪያ ከመቋረጣቸው በፊት ወደ አገልግሎት ቦታዎቻቸው ይጨምሯቸው።"
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "መጀመሪያ የቅየራውን ቅድመ ዕይታ ይመልከቱ፣ ከዚያ የመለሰውን ክለሳ ይላኩ።"
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "ስሞች ልዩ ሆነው እንዲቆዩ ስሙ ተቀይሯል"
+
+#: 
+msgid "Review the conversion"
+msgstr "ቅየራውን ይገምግሙ"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "የቅየራ ምርጫውን እንደ JSON ነገር ይላኩ።"
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "አገልግሎት የሚሆኑትን እድሎች እንደ የመታወቂያ ዝርዝር ይላኩ።"
+
+#: 
+msgid "That ministry does not exist."
+msgstr "ያ አገልግሎት የለም።"
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "አንድ አስተዳዳሪ የበጎ ፈቃደኞች እድሎች መቋረጥ ማሳወቂያን የዘጋበት የChurchCRM ስሪት።"
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "ከቅድመ ዕይታው ወዲህ የበጎ ፈቃደኞች እድሎች ተለውጠዋል። ቅድመ ዕይታውን እንደገና ያረጋግጡ፣ ከዚያ ይቀይሩ።"
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "ማረጋገጫው ሊከፈት አልቻለም። ገጹን እንደገና ይጫኑና እንደገና ይሞክሩ።"
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "የቅየራው ቅድመ ዕይታ ሊታይ አልቻለም።"
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "ቅየራው አልተሳካም። ምንም አልተለወጠም።"
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "\"%s\" አገልግሎት የአገልግሎት ቦታዎችን የሚይዝ ቡድን የለውም።"
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "አገልጋዩን ማግኘት አልተቻለም። ቅየራው መካሄዱን ለማየት ገጹን እንደገና ይጫኑ።"
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "የሚቀየሩ የበጎ ፈቃደኞች እድሎች የሉም።"
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "አዲሶቹ አገልግሎቶች ከበጎ ፈቃደኞች እድሎች አጠገብ እንዲታዩ የበጎ ፈቃደኞች አስተዳደር ወደ ሁለቱም ይቀየራል።"
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "የበጎ ፈቃደኞች እድሎች እየተቋረጡ ነው"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "የበጎ ፈቃደኞች እድሎች ተቀይረዋል"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "የበጎ ፈቃደኞች እድሎች በ2027 መጀመሪያ ይቋረጣሉ። ማን በምን እንደሚያገለግል ለማቆየት ወደ አገልግሎቶች ይቀይሯቸው።"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "የበጎ ፈቃደኞች እድሎች በ2027 መጀመሪያ ይቋረጣሉ። %1$d እድሎችዎንና %2$d በጎ ፈቃደኞችዎን አሁን ወደ አገልግሎቶች ይቀይሩ። ማንኛውም ነገር ከመለወጡ በፊት ውጤቱን በቅድመ ዕይታ ማየት ይችላሉ።"
+
+#: 
+msgid "Volunteers qualified"
+msgstr "ብቁ የሆኑ በጎ ፈቃደኞች"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "ወደተቀየሩ ቦታዎች የሚጨመሩ በጎ ፈቃደኞች"
+
+#: 
+msgid "What it becomes"
+msgstr "ምን ይሆናል"
+
+#: 
+msgid "What will happen"
+msgstr "ምን ይከሰታል"
+
+#: 
+msgid "Where they go"
+msgstr "ወዴት ይሄዳሉ"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "የትኞቹ የቀድሞ የበጎ ፈቃደኞች እድሎች እንደተቀየሩ እና እያንዳንዱ የሆነው የአገልግሎት ቦታ።"
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "ይህ ቤተ ክርስቲያን የሚጠቀመው የበጎ ፈቃደኞች ተሞክሮ። የበጎ ፈቃደኞች እድሎች (V1) በ2027 መጀመሪያ ይቋረጣሉ።"
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "የበጎ ፈቃደኞች እድሎችዎ ወደ አገልግሎቶች ተቀይረዋል። የበጎ ፈቃደኞች እድሎች በ2027 መጀመሪያ ከመቋረጣቸው በፊት የበጎ ፈቃደኞች አስተዳደርን ወደ V2 ይቀይሩ።"
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "ወደ አዲስ አገልግሎት፣ {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "ወደ {{name}} አገልግሎት"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "ከአሁን በኋላ በChurchCRM ውስጥ የለም"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "የጎን አሞሌን ሰብስብ"
+
+#: 
+msgid "Expand sidebar"
+msgstr "የጎን አሞሌን ዘርጋ"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "ከ@ በፊት የASCII ቁምፊዎችን ብቻ የሚጠቀም ትክክለኛ የኢሜይል አድራሻ ያስገቡ።"
+
+#: 
+msgid "Their email address is not valid"
+msgstr "የኢሜይል አድራሻቸው ትክክል አይደለም"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "{{name}}ን መሰረዝ እንደሚፈልጉ እርግጠኛ ነዎት?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "የሥርዓት መረጃን መሰብሰብ አልተቻለም። እባክዎ እንደገና ይሞክሩ።"
+
+#: 
+msgid "No payments found for this period."
+msgstr "ለዚህ ጊዜ ምንም ክፍያዎች አልተገኙም።"
+
+#: 
+msgid "Payments by Fund"
+msgstr "ክፍያዎች በፈንድ"
+
+#: 
+msgid "Unknown Fund"
+msgstr "ያልታወቀ ፈንድ"
+
