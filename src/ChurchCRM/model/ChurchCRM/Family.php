@@ -14,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
+use ChurchCRM\Service\FamilyPortalInvitationService;
 use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -897,27 +898,6 @@ class Family extends BaseFamily implements PhotoInterface
             ->find();
     }
 
-    /**
-     * Addresses a verification email may go to: living, active, approved members.
-     *
-     * @return string[]
-     */
-    public function getVerifyEmails(): array
-    {
-        $emails = [];
-        foreach ($this->getPeopleSorted() as $person) {
-            if ($this->isEmailable($person)) {
-                foreach ([$person->getEmail(), $person->getWorkEmail()] as $email) {
-                    if (!empty($email)) {
-                        $emails[] = $email;
-                    }
-                }
-            }
-        }
-
-        return array_values(array_unique($emails));
-    }
-
     public function sendVerifyEmail(): bool
     {
         if (!$this->isActive()) {
@@ -927,13 +907,13 @@ class Family extends BaseFamily implements PhotoInterface
             throw new \Exception(gettext('Approve this self-registered family before sending it a verification email'));
         }
 
-        $familyEmails = $this->getVerifyEmails();
-
-        if (empty($familyEmails)) {
-            throw new \Exception(gettext('Family has no emails to use'));
+        $invitations = new FamilyPortalInvitationService();
+        $recipients = $invitations->recipientsFor($this);
+        if ($recipients['emails'] === []) {
+            throw new \Exception($invitations->nobodyCanSignInMessage($this, $recipients));
         }
 
-        $email = new FamilyVerificationEmail($familyEmails, $this->getName());
+        $email = new FamilyVerificationEmail($recipients['emails'], $this->getName());
         $email->setLogContext(null, (int) $this->getId(), (int) AuthenticationManager::getCurrentUser()->getId());
         if (!$email->send()) {
             LoggerUtils::getAppLogger()->error($email->getError());
