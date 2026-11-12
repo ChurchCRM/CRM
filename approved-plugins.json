@@ -16,7 +16,7 @@
     "notes": "optional free-form notes shown to admins on the install screen"
   },
   "schemaVersion": 2,
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-11-12",
   "plugins": [
     {
       "id": "hello-world",
@@ -26,7 +26,9 @@
       "sha256": "ad1bfa1427b778c052f4c816072c8d9bc2f79cfc07fe481d9dd29be4c448082a",
       "risk": "low",
       "riskSummary": "Logs a greeting when a person record is created. No outbound calls, no database writes, no secrets stored.",
-      "permissions": ["hooks.person"],
+      "permissions": [
+        "hooks.person"
+      ],
       "minimumCRMVersion": "7.1.0",
       "author": "ChurchCRM Community",
       "homepage": "https://github.com/ChurchCRM/community-plugin-hello-world",
@@ -41,12 +43,37 @@
       "sha256": "494e6534861ea6a6a74435d0efcbdab7474bca72c54bb9d0d34e994e7f51a81f",
       "risk": "high",
       "riskSummary": "Downloads Bible texts from api.getbible.net and writes them to local JSON files inside the plugin directory; also sends email notifications to meeting participants via CRM SMTP and performs CRUD on plugin-owned database tables.",
-      "permissions": ["network.outbound", "network.inbound", "db.read", "db.write", "email.send", "fs.write"],
+      "permissions": [
+        "network.outbound",
+        "network.inbound",
+        "db.read",
+        "db.write",
+        "email.send",
+        "fs.write"
+      ],
       "minimumCRMVersion": "7.0.0",
       "author": "huckjs-sys",
       "homepage": "https://github.com/huckjs-sys/meeting-outlines",
       "reviewedAt": "2026-05-15",
       "notes": "Outbound HTTPS to api.getbible.net (Bible text downloads, admin-initiated) and cdn.jsdelivr.net (SortableJS CDN asset, SRI-pinned). All file writes confined to data/text/ inside the plugin directory. Two maintainer reviews required before production use (high-risk policy)."
+    },
+    {
+      "id": "whatsapp-gowa",
+      "name": "WhatsApp (GoWA)",
+      "version": "0.1.3",
+      "downloadUrl": "https://github.com/vitormattos/churchcrm-whatsapp-gowa/releases/download/v0.1.3/whatsapp-gowa-0.1.3.zip",
+      "sha256": "1612a80c27fdb3e294a3238e14fb2b78b44da9ce5eb5eaa23eab9a2dc94747db",
+      "risk": "high",
+      "riskSummary": "Sends recipient phone numbers and message text to an administrator-configured GoWA API; stores gateway credentials in ChurchCRM configuration and exposes authenticated admin routes.",
+      "permissions": [
+        "network.outbound",
+        "network.inbound",
+        "secrets.store"
+      ],
+      "minimumCRMVersion": "7.0.0",
+      "author": "Vitor Mattos",
+      "homepage": "https://github.com/vitormattos/churchcrm-whatsapp-gowa",
+      "notes": "Requires a separately installed GoWA service reachable from ChurchCRM. Sending is disabled until an admin connects a WhatsApp account and enables it; individual messages only. Uses an unofficial WhatsApp Web transport. Security review: docs/security-audit.md in plugin repository."
     }
   ]
 }
