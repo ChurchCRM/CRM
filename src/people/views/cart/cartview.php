@@ -119,6 +119,34 @@ $ListTitleText = gettext('Your cart contains') . ' ' . count($cartPeople) . ' ' 
   </div>
 </div>
 
+<div class="modal fade" id="cartCsvExportModal" tabindex="-1" aria-labelledby="cartCsvExportTitle" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <form method="get" action="<?= SystemURLs::getRootPath() ?>/people/cart/csv">
+        <div class="modal-header">
+          <h3 class="modal-title" id="cartCsvExportTitle"><?= gettext('Export CSV') ?></h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="<?= gettext('Close') ?>"></button>
+        </div>
+        <div class="modal-body">
+          <p><?= gettext('Choose the fields to include in the CSV file.') ?></p>
+          <div class="form-selectgroup form-selectgroup-pills">
+            <?php foreach ($cartCsvFields as $field => $options): ?>
+              <label class="form-selectgroup-item">
+                <input type="checkbox" class="form-selectgroup-input" name="fields[]" value="<?= InputUtils::escapeAttribute($field) ?>" <?= $options['default'] ? 'checked' : '' ?>>
+                <span class="form-selectgroup-label"><?= InputUtils::escapeHTML($options['label']) ?></span>
+              </label>
+            <?php endforeach; ?>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-link" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
+          <button type="submit" class="btn btn-primary"><?= gettext('Download CSV') ?></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <?php
 $labelsIntro = gettext('Mailing labels for the people in your cart. A person with no address of their own is addressed at their family address.');
 require __DIR__ . '/../partials/labels-modal.php';
@@ -126,7 +154,11 @@ require __DIR__ . '/../partials/labels-modal.php';
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
   $(document).ready(function () {
-    $("#cart-listing-table").DataTable(window.CRM.plugin.dataTable);
+    const cartTableConfig = $.extend(true, {}, window.CRM.plugin.dataTable);
+    cartTableConfig.buttons[0].action = function () {
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('cartCsvExportModal')).show();
+    };
+    $("#cart-listing-table").DataTable(cartTableConfig);
   });
 </script>
 <?php if (AuthenticationManager::getCurrentUser()->isEmailEnabled()): ?>
