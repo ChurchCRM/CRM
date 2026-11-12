@@ -23,6 +23,17 @@ describe("Congregation Map (/people/map)", () => {
     });
 
     describe("Fullscreen map", () => {
+        const readZoom = () =>
+            cy.get("#map .leaflet-tile-pane img.leaflet-tile")
+                .should("have.length.at.least", 1)
+                .then(($tiles) => {
+                    const zooms = [...$tiles].map((tile) => {
+                        const path = new URL(tile.src).pathname;
+                        return Number(path.split("/")[1]);
+                    });
+                    expect(zooms.every(Number.isInteger)).to.eq(true);
+                    return Math.max(...zooms);
+                });
         it("keeps zoom and legend controls available and closes using Escape", () => {
             cy.visit("/people/map");
             cy.get("#map .people-map-fullscreen-toggle")
@@ -35,7 +46,9 @@ describe("Congregation Map (/people/map)", () => {
                 cy.stub($map[0], "requestFullscreen").rejects(new Error("Fullscreen denied"));
             });
 
-            cy.get("#map .people-map-fullscreen-toggle").click();
+            cy.get("#map .leaflet-control-zoom-in").click();
+            readZoom().as("zoomBeforeFallback");
+            cy.get("#map .people-map-fullscreen-toggle").focus().type("{enter}");
             cy.get("#map").should("have.class", "people-map--fullscreen");
             cy.get("body").should("have.class", "people-map-fullscreen-active");
             cy.get("#map .people-map-fullscreen-toggle")
@@ -45,6 +58,7 @@ describe("Congregation Map (/people/map)", () => {
             cy.get("#map .people-map-fullscreen-toggle .fa-xmark").should("exist");
             cy.get("#map .leaflet-control-zoom-in").should("be.visible");
             cy.get("#map-legend").should("exist");
+            cy.get("@zoomBeforeFallback").then((zoom) => readZoom().should("eq", zoom));
 
             cy.get("body").trigger("keydown", { key: "Escape", bubbles: true });
             cy.get("#map").should("not.have.class", "people-map--fullscreen");
@@ -52,6 +66,7 @@ describe("Congregation Map (/people/map)", () => {
             cy.get("#map .people-map-fullscreen-toggle")
                 .should("have.attr", "aria-pressed", "false");
             cy.get("#map .people-map-fullscreen-toggle .fa-expand").should("exist");
+            cy.get("@zoomBeforeFallback").then((zoom) => readZoom().should("eq", zoom));
         });
 
         it("tracks native fullscreen changes and closes with the button", () => {
@@ -76,13 +91,16 @@ describe("Congregation Map (/people/map)", () => {
                 });
             });
 
+            readZoom().as("zoomBeforeNative");
             cy.get("#map .people-map-fullscreen-toggle").click();
             cy.get("#map .people-map-fullscreen-toggle")
                 .should("have.attr", "aria-label", "Exit fullscreen");
+            cy.get("@zoomBeforeNative").then((zoom) => readZoom().should("eq", zoom));
             cy.get("#map .people-map-fullscreen-toggle").click();
             cy.get("#map .people-map-fullscreen-toggle")
                 .should("have.attr", "aria-label", "Enter fullscreen");
             cy.get("#map .leaflet-control-zoom").should("exist");
+            cy.get("@zoomBeforeNative").then((zoom) => readZoom().should("eq", zoom));
         });
 
         it("shows the fullscreen button across themes and screen widths", () => {

@@ -364,8 +364,7 @@ if (cfg && document.getElementById("map")) {
   let fullscreenIcon;
   const updateControl = () => {
     const active = isFullscreen();
-    const key = active ? "Exit fullscreen" : "Enter fullscreen";
-    const label = t(key) || key;
+    const label = active ? t("Exit fullscreen") || "Exit fullscreen" : t("Enter fullscreen") || "Enter fullscreen";
     fullscreenButton.setAttribute("aria-label", label);
     fullscreenButton.setAttribute("aria-pressed", String(active));
     fullscreenButton.title = label;
