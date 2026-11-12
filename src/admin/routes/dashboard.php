@@ -148,6 +148,7 @@ $app->get('/', function (Request $request, Response $response) {
         ]),
         'pdfSettings' => array_map(static function (array $setting): array {
             $setting['label'] = gettext('PDF Temporary Directory');
+            $setting['tooltip'] = gettext($setting['tooltip']);
             return $setting;
         }, SystemConfig::getSettingsConfig(['sPDFTempDir'])),
         'setupChecklist'   => $setupChecklist,
