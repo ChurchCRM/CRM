@@ -29,10 +29,18 @@ const state = {
   is2FAEnabled: false,
   initialLoadComplete: false,
   TwoFAQRCodeDataUri: "",
+  TwoFASecret: "",
+  showManualKey: false,
   currentTwoFAPin: "",
   currentTwoFAPinStatus: "",
   TwoFARecoveryCodes: [],
 };
+
+function clearEnrollmentCredentials() {
+  state.TwoFAQRCodeDataUri = "";
+  state.TwoFASecret = "";
+  state.showManualKey = false;
+}
 
 function getContainer() {
   return document.getElementById("two-factor-enrollment-app");
@@ -139,7 +147,20 @@ function renderQRCode() {
               </div>
             </div>
             <p class="text-muted small text-center mb-0">
-              ${t("Can't scan?")} <button type="button" class="btn btn-link btn-sm p-0" id="newQRCodeBtn">${t("Generate new code")}</button>
+              ${t("Can't scan?")} <button type="button" class="btn btn-link btn-sm p-0" id="showManual2FAKeyBtn" aria-expanded="${state.showManualKey}" aria-controls="manual2FAKeyPanel">${state.showManualKey ? t("Hide setup key") : t("Enter a setup key manually")}</button>
+            </p>
+            <div id="manual2FAKeyPanel" class="mt-3" ${state.showManualKey && state.TwoFASecret ? "" : "hidden"}>
+              <label class="form-label fw-bold" for="manual2FAKey">${t("Setup key")}</label>
+              <div class="input-group">
+                <input id="manual2FAKey" type="text" class="form-control font-monospace" readonly autocomplete="off" spellcheck="false" aria-describedby="manual2FAKeyHint">
+                <button type="button" id="copyManual2FAKeyBtn" class="btn btn-outline-secondary" ${state.TwoFASecret ? "" : "disabled"}>
+                  <i class="fa-solid fa-copy me-1" aria-hidden="true"></i>${t("Copy")}
+                </button>
+              </div>
+              <p id="manual2FAKeyHint" class="text-muted small mt-2 mb-2">${t("Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private.")}</p>
+            </div>
+            <p class="text-muted small text-center mt-2 mb-0">
+              <button type="button" class="btn btn-link btn-sm p-0" id="newQRCodeBtn">${t("Generate new code")}</button>
             </p>
           </div>
           <hr>
@@ -304,6 +325,35 @@ function bindEvents() {
     });
   }
 
+  // QR screen: manual key stays hidden until explicitly requested.
+  const manualKeyBtn = document.getElementById("showManual2FAKeyBtn");
+  if (manualKeyBtn) {
+    manualKeyBtn.addEventListener("click", () => {
+      state.showManualKey = !state.showManualKey;
+      render();
+    });
+  }
+
+  const manualKey = document.getElementById("manual2FAKey");
+  if (manualKey && state.showManualKey) manualKey.value = state.TwoFASecret;
+
+  const copyManualKeyBtn = document.getElementById("copyManual2FAKeyBtn");
+  if (copyManualKeyBtn) {
+    copyManualKeyBtn.addEventListener("click", async () => {
+      if (!state.TwoFASecret) return;
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+        await navigator.clipboard.writeText(state.TwoFASecret);
+        copyManualKeyBtn.textContent = t("Copied!");
+      } catch (_error) {
+        // The readonly field remains selectable for manual copying on HTTP or denied permissions.
+        manualKey.focus();
+        manualKey.select();
+        notifyError(t("Unable to copy automatically. Select and copy the setup key manually."));
+      }
+    });
+  }
+
   // QR screen: new code button
   const newQRBtn = document.getElementById("newQRCodeBtn");
   if (newQRBtn) {
@@ -420,20 +470,30 @@ function loadInitialStatus() {
     });
 }
 
+let barcodeRequestId = 0;
+
 function requestNewBarcode() {
+  const requestId = ++barcodeRequestId;
+  clearEnrollmentCredentials();
+  render();
   fetchJSON(`${CRMRoot}/api/user/current/refresh2fasecret`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
   })
     .then((data) => {
+      if (requestId !== barcodeRequestId || state.currentView !== "BeginEnroll") return;
       state.TwoFAQRCodeDataUri = data.TwoFAQRCodeDataUri;
-      // Update only the QR image if we're on the right screen
-      const img = document.getElementById("2faQrCodeDataUri");
-      if (img) {
-        img.src = data.TwoFAQRCodeDataUri;
-      }
+      state.TwoFASecret = data.TwoFASecret || "";
+      state.showManualKey = false;
+      // Refresh the QR code while hiding any previously revealed setup key.
+      render();
     })
-    .catch(() => notifyError(t("Failed to generate QR code. Please try again.")));
+    .catch(() => {
+      if (requestId !== barcodeRequestId || state.currentView !== "BeginEnroll") return;
+      clearEnrollmentCredentials();
+      render();
+      notifyError(t("Failed to generate QR code. Please try again."));
+    });
 }
 
 function requestRecoveryCodes() {
@@ -449,12 +509,15 @@ function requestRecoveryCodes() {
 }
 
 function remove2FA() {
+  ++barcodeRequestId;
+  clearEnrollmentCredentials();
+  render();
   fetchJSON(`${CRMRoot}/api/user/current/remove2fasecret`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
   })
     .then(() => {
-      state.TwoFAQRCodeDataUri = "";
+      clearEnrollmentCredentials();
       state.currentView = "intro";
       render();
     })
@@ -462,11 +525,14 @@ function remove2FA() {
 }
 
 function disable2FA() {
+  ++barcodeRequestId;
+  clearEnrollmentCredentials();
   fetchJSON(`${CRMRoot}/api/user/current/remove2fasecret`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
   })
     .then(() => {
+      clearEnrollmentCredentials();
       state.is2FAEnabled = false;
       state.currentView = "intro";
       render();
@@ -496,6 +562,8 @@ function handlePinChange(value) {
         if (data.IsEnrollmentCodeValid) {
           requestRecoveryCodes();
           state.is2FAEnabled = true;
+          ++barcodeRequestId;
+          clearEnrollmentCredentials();
           state.currentView = "success";
           render();
         } else {
