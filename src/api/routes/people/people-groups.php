@@ -1210,20 +1210,20 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $group = $request->getAttribute('group');
         $groupId = (int) $group->getId();
         $body = $request->getParsedBody() ?? [];
-        $roleID = (int) ($body['roleID'] ?? 0);
+        $rawRoleId = $body['roleID'] ?? null;
+        $rawPersonIds = $body['personIds'] ?? null;
+        // Reject anything that is not a plain integer, so (int) never turns an array into 1.
+        $isWholeNumber = fn (mixed $value): bool => is_int($value) || (is_string($value) && ctype_digit($value));
+        if (!is_array($rawPersonIds) || !$isWholeNumber($rawRoleId) || array_filter($rawPersonIds, fn (mixed $id): bool => !$isWholeNumber($id)) !== []) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid request.'), [], 400);
+        }
+        $roleID = (int) $rawRoleId;
         $personIds = array_values(array_unique(array_filter(
-            array_map('intval', (array) ($body['personIds'] ?? [])),
+            array_map('intval', $rawPersonIds),
             fn (int $id): bool => $id > 0
         )));
         if ($personIds === []) {
             return SlimUtils::renderErrorJSON($response, gettext('Select at least one member.'), [], 400);
-        }
-        $isGroupRole = ListOptionQuery::create()
-            ->filterById($group->getRoleListId())
-            ->filterByOptionId($roleID)
-            ->count() > 0;
-        if (!$isGroupRole) {
-            return SlimUtils::renderErrorJSON($response, gettext('That role is not one of this group\'s roles.'), [], 400);
         }
         $locked = _renderTeacherRoleConflict(
             $response,
@@ -1240,6 +1240,17 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $con = Propel::getWriteConnection(PersonTableMap::DATABASE_NAME);
         $con->beginTransaction();
         try {
+            // Same group lock deleteGroupRole takes, so the role cannot be deleted between this check and the updates.
+            GroupQuery::create()->filterById($groupId)->lockForUpdate()->findOne($con);
+            $isGroupRole = ListOptionQuery::create()
+                ->filterById($group->getRoleListId())
+                ->filterByOptionId($roleID)
+                ->count($con) > 0;
+            if (!$isGroupRole) {
+                $con->rollBack();
+
+                return SlimUtils::renderErrorJSON($response, gettext('That role is not one of this group\'s roles.'), [], 400);
+            }
             $memberships = Person2group2roleP2g2rQuery::create()
                 ->filterByGroupId($groupId)
                 ->filterByPersonId($personIds, Criteria::IN)

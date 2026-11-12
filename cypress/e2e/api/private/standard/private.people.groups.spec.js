@@ -722,6 +722,20 @@ describe("API Private Group Operations", () => {
             });
         });
 
+        it("refuses ids that are not plain integers instead of coercing them", () => {
+            rolesById().then((initial) => {
+                [
+                    { personIds: [[memberIds[0]]], roleID: leaderRoleId },
+                    { personIds: memberIds, roleID: [leaderRoleId] },
+                    { personIds: String(memberIds[0]), roleID: leaderRoleId },
+                    { personIds: memberIds, roleID: "abc" },
+                ].forEach((body) => {
+                    cy.makePrivateAdminAPICall("POST", `/api/groups/${bulkGroupId}/members/role`, body, 400);
+                });
+                rolesById().should("deep.equal", initial);
+            });
+        });
+
         it("returns 404 for a group that does not exist", () => {
             cy.makePrivateAdminAPICall(
                 "POST",
