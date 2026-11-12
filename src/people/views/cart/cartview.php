@@ -152,15 +152,7 @@ $labelsIntro = gettext('Mailing labels for the people in your cart. A person wit
 require __DIR__ . '/../partials/labels-modal.php';
 ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-  $(document).ready(function () {
-    const cartTableConfig = $.extend(true, {}, window.CRM.plugin.dataTable);
-    cartTableConfig.buttons[0].action = function () {
-      bootstrap.Modal.getOrCreateInstance(document.getElementById('cartCsvExportModal')).show();
-    };
-    $("#cart-listing-table").DataTable(cartTableConfig);
-  });
-</script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>" src="<?= SystemURLs::assetVersioned('/skin/v2/cart-csv-export.min.js') ?>"></script>
 <?php if (AuthenticationManager::getCurrentUser()->isEmailEnabled()): ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php endif; ?>
