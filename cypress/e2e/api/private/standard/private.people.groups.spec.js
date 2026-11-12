@@ -629,7 +629,119 @@ describe("API Private Group Operations", () => {
         });
     });
 
+    // Uses its own group so no seeded roster or role is touched.
+    describe("Changing several members' roles at once (#3850)", () => {
+        const memberRoleId = 1; // a new group's default role, "Member"
+        const memberIds = [2, 3, 4];
+        const notMemberId = 5;
+        let bulkGroupId;
+        let leaderRoleId;
+
+        const rolesById = () =>
+            cy.makePrivateAdminAPICall("GET", `/api/groups/${bulkGroupId}/members`, null, 200).then((resp) =>
+                Object.fromEntries(resp.body.Person2group2roleP2g2rs.map((m) => [m.PersonId, m.RoleId])),
+            );
+
+        before(() => {
+            cy.makePrivateAdminAPICall("POST", "/api/groups/", { groupName: `Bulk role ${Date.now()}` }, 200).then(
+                (resp) => {
+                    bulkGroupId = resp.body.Id;
+                    cy.makePrivateAdminAPICall("POST", `/api/groups/${bulkGroupId}/roles`, { roleName: "Leader" }, 200).then(
+                        (roleResp) => {
+                            leaderRoleId = roleResp.body.newRole.roleID;
+                        },
+                    );
+                    memberIds.forEach((personId) => {
+                        cy.makePrivateAdminAPICall(
+                            "POST",
+                            `/api/groups/${bulkGroupId}/addperson/${personId}`,
+                            { RoleID: memberRoleId },
+                            200,
+                        );
+                    });
+                },
+            );
+        });
+
+        after(() => {
+            if (bulkGroupId) {
+                cy.makePrivateAdminAPICall("DELETE", `/api/groups/${bulkGroupId}`, null, [200, 404]);
+            }
+        });
+
+        it("moves the listed members and reports who was unchanged or skipped", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${bulkGroupId}/userRole/${memberIds[2]}`,
+                { roleID: leaderRoleId },
+                200,
+            );
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${bulkGroupId}/members/role`,
+                { personIds: [...memberIds, notMemberId], roleID: leaderRoleId },
+                200,
+            ).then((resp) => {
+                expect(resp.body.changed).to.have.members([memberIds[0], memberIds[1]]);
+                expect(resp.body.unchanged).to.deep.equal([memberIds[2]]);
+                expect(resp.body.skipped).to.deep.equal([notMemberId]);
+            });
+            rolesById().then((roles) => {
+                memberIds.forEach((personId) => expect(roles[personId], `person ${personId}`).to.equal(leaderRoleId));
+                expect(roles).to.not.have.property(String(notMemberId));
+            });
+
+            cy.makePrivateAdminAPICall(
+                "POST",
+                `/api/groups/${bulkGroupId}/members/role`,
+                { personIds: [memberIds[0]], roleID: memberRoleId },
+                200,
+            );
+            rolesById().then((roles) => {
+                expect(roles[memberIds[0]]).to.equal(memberRoleId);
+                expect(roles[memberIds[1]]).to.equal(leaderRoleId);
+            });
+        });
+
+        it("refuses an empty list or a role the group does not have", () => {
+            rolesById().then((initial) => {
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/groups/${bulkGroupId}/members/role`,
+                    { personIds: [], roleID: memberRoleId },
+                    400,
+                );
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/groups/${bulkGroupId}/members/role`,
+                    { personIds: memberIds, roleID: 999 },
+                    400,
+                );
+                rolesById().should("deep.equal", initial);
+            });
+        });
+
+        it("returns 404 for a group that does not exist", () => {
+            cy.makePrivateAdminAPICall(
+                "POST",
+                "/api/groups/999999/members/role",
+                { personIds: memberIds, roleID: memberRoleId },
+                404,
+            );
+        });
+    });
+
     describe("Authorization Tests - Non-Admin Users", () => {
+        it("Non-admin should be denied changing several members' roles", () => {
+            cy.makePrivatePlainAuthAPICall(
+                "POST",
+                `/api/groups/${groupID}/members/role`,
+                { personIds: [1], roleID: 1 },
+                [403],
+            );
+        });
+
         it("Non-admin should be denied adding group members", () => {
             // plainauth (john.plainauth, id 900) passes AuthMiddleware and lacks
             // usr_ManageGroups, so the 403 comes from ManageGroupRoleAuthMiddleware
