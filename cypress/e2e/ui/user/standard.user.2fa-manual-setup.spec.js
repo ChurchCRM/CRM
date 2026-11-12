@@ -20,6 +20,24 @@ function visitEnrollment() {
 describe("2FA manual setup key", () => {
     beforeEach(() => cy.setupStandardSession());
 
+    it("renders translated labels after a direct hard reload", () => {
+        cy.intercept("GET", "**/api/user/current/2fa-status", { IsEnabled: false });
+        cy.visit("/v2/user/current/manage2fa");
+        cy.get("#begin2faEnrollment").should("be.visible");
+        cy.reload();
+        cy.get("#begin2faEnrollment", { timeout: 10000 }).should("be.visible");
+        cy.get("#two-factor-enrollment-app").should("not.contain", "undefined");
+        cy.window().its("CRM.localesLoaded").should("eq", true);
+    });
+
+    it("falls back to readable labels when i18next exists but has not initialized", () => {
+        visitEnrollment();
+        cy.window().then((win) => cy.stub(win.i18next, "t").returns(undefined));
+        cy.get("#showManual2FAKeyBtn").click();
+        cy.get("#two-factor-enrollment-app").should("not.contain", "undefined");
+        cy.get("#showManual2FAKeyBtn").should("contain", "Hide setup key");
+    });
+
     it("keeps the Base32 key hidden until requested, then allows it to be hidden again", () => {
         visitEnrollment();
         cy.get("#2faQrCodeDataUri").should("have.attr", "src", qr);

@@ -10,7 +10,12 @@ import { notifyError } from "./common/notify";
 import { escapeHtml } from "./utils/escape-html";
 
 const CRMRoot = window.CRM.root;
-const t = (key) => (window.i18next ? window.i18next.t(key) : key);
+// i18next can exist before its locale resources are initialized on a hard reload.
+// Never render an undefined label while the asynchronous locale loader runs.
+const t = (key) => {
+  const translated = window.i18next?.t?.(key);
+  return typeof translated === "string" && translated.length > 0 ? translated : key;
+};
 
 function fetchJSON(url, opts = {}) {
   return fetch(url, { credentials: "include", ...opts }).then((r) => {
@@ -588,8 +593,23 @@ function handlePinChange(value) {
 // ---------------------------------------------------------------------------
 
 $(document).ready(() => {
-  if (getContainer()) {
+  if (!getContainer()) return;
+
+  // Other V2 pages wait for the locale loader before rendering translated UI.
+  // On a hard reload, DOM ready may fire before i18next.init() completes.
+  const initialize = () => {
+    if (!getContainer()) return;
     render();
     loadInitialStatus();
+  };
+
+  // Keep the loading spinner visible until translations are ready. The helper
+  // runs immediately if the event fired before DOM ready (normal navigation).
+  if (typeof window.CRM?.onLocalesReady === "function") {
+    window.CRM.onLocalesReady(initialize);
+  } else if (window.CRM?.localesLoaded) {
+    initialize();
+  } else {
+    window.addEventListener("CRM.localesReady", initialize, { once: true });
   }
 });
