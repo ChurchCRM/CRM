@@ -347,6 +347,70 @@ if (cfg && document.getElementById("map")) {
   // -- Map init ---------------------------------------------------------------
   const map = L.map("map").setView([cfg.churchLat, cfg.churchLng], cfg.zoom);
 
+  const mapElement = map.getContainer();
+  const fullscreenClass = "people-map--fullscreen";
+  const fullscreenControl = L.control({ position: "topright" });
+
+  const isFullscreen = () =>
+    document.fullscreenElement === mapElement || mapElement.classList.contains(fullscreenClass);
+  const resizeMap = () => requestAnimationFrame(() => map.invalidateSize({ animate: false }));
+  const setFallback = (active) => {
+    mapElement.classList.toggle(fullscreenClass, active);
+    document.body.classList.toggle("people-map-fullscreen-active", active);
+    updateControl();
+  };
+
+  let fullscreenButton;
+  let fullscreenIcon;
+  const updateControl = () => {
+    const active = isFullscreen();
+    const key = active ? "Exit fullscreen" : "Enter fullscreen";
+    const label = t(key) || key;
+    fullscreenButton.setAttribute("aria-label", label);
+    fullscreenButton.setAttribute("aria-pressed", String(active));
+    fullscreenButton.title = label;
+    fullscreenIcon.classList.toggle("fa-expand", !active);
+    fullscreenIcon.classList.toggle("fa-xmark", active);
+    resizeMap();
+  };
+
+  fullscreenControl.onAdd = () => {
+    const container = L.DomUtil.create("div", "leaflet-bar people-map-fullscreen-control");
+    fullscreenButton = L.DomUtil.create("button", "people-map-fullscreen-toggle", container);
+    fullscreenButton.type = "button";
+    fullscreenIcon = L.DomUtil.create("i", "fa-solid fa-expand", fullscreenButton);
+    fullscreenIcon.setAttribute("aria-hidden", "true");
+    L.DomEvent.disableClickPropagation(container);
+    L.DomEvent.disableScrollPropagation(container);
+
+    fullscreenButton.addEventListener("click", async () => {
+      if (document.fullscreenElement === mapElement) {
+        await document.exitFullscreen();
+      } else if (mapElement.classList.contains(fullscreenClass)) {
+        setFallback(false);
+      } else if (mapElement.requestFullscreen) {
+        try {
+          await mapElement.requestFullscreen();
+        } catch {
+          setFallback(true);
+        }
+      } else {
+        setFallback(true);
+      }
+    });
+
+    updateControl();
+    return container;
+  };
+  fullscreenControl.addTo(map);
+
+  document.addEventListener("fullscreenchange", updateControl);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && mapElement.classList.contains(fullscreenClass)) {
+      setFallback(false);
+    }
+  });
+
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution:
