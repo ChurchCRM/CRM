@@ -26,9 +26,7 @@
       "sha256": "ad1bfa1427b778c052f4c816072c8d9bc2f79cfc07fe481d9dd29be4c448082a",
       "risk": "low",
       "riskSummary": "Logs a greeting when a person record is created. No outbound calls, no database writes, no secrets stored.",
-      "permissions": [
-        "hooks.person"
-      ],
+      "permissions": ["hooks.person"],
       "minimumCRMVersion": "7.1.0",
       "author": "ChurchCRM Community",
       "homepage": "https://github.com/ChurchCRM/community-plugin-hello-world",
@@ -43,14 +41,7 @@
       "sha256": "494e6534861ea6a6a74435d0efcbdab7474bca72c54bb9d0d34e994e7f51a81f",
       "risk": "high",
       "riskSummary": "Downloads Bible texts from api.getbible.net and writes them to local JSON files inside the plugin directory; also sends email notifications to meeting participants via CRM SMTP and performs CRUD on plugin-owned database tables.",
-      "permissions": [
-        "network.outbound",
-        "network.inbound",
-        "db.read",
-        "db.write",
-        "email.send",
-        "fs.write"
-      ],
+      "permissions": ["network.outbound", "network.inbound", "db.read", "db.write", "email.send", "fs.write"],
       "minimumCRMVersion": "7.0.0",
       "author": "huckjs-sys",
       "homepage": "https://github.com/huckjs-sys/meeting-outlines",
