@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d9ffd019e69e2b836ac1df68dd4b72d",
+    "content-hash": "1ca64eec547b30d58647a9b5f402aa59",
     "packages": [
         {
             "name": "azuyalabs/yasumi",
@@ -5867,7 +5867,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-03T12:14:22+00:00"
+            "time": "2026-11-03T12:14:22+00:00",
+            "published-time": "2026-11-03T12:14:36+00:00"
         },
         {
             "name": "radebatz/type-info-extras",
@@ -6131,5 +6132,5 @@
     "platform-overrides": {
         "php": "8.4"
     },
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.11.0"
 }
