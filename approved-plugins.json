@@ -16,7 +16,7 @@
     "notes": "optional free-form notes shown to admins on the install screen"
   },
   "schemaVersion": 2,
-  "updatedAt": "2026-09-22",
+  "updatedAt": "2026-11-12",
   "plugins": [
     {
       "id": "hello-world",
@@ -47,6 +47,25 @@
       "homepage": "https://github.com/huckjs-sys/meeting-outlines",
       "reviewedAt": "2026-05-15",
       "notes": "Outbound HTTPS to api.getbible.net (Bible text downloads, admin-initiated) and cdn.jsdelivr.net (SortableJS CDN asset, SRI-pinned). All file writes confined to data/text/ inside the plugin directory. Two maintainer reviews required before production use (high-risk policy)."
+    },
+    {
+      "id": "telegram-client",
+      "name": "Telegram (MTProto)",
+      "version": "0.1.0",
+      "downloadUrl": "https://github.com/vitormattos/churchcrm-telegram-client/releases/download/v0.1.0/telegram-client-0.1.0.zip",
+      "sha256": "537dc9c87c28be52f348de97a861410cd75822d883432a644bba7823a5dfcee8",
+      "risk": "high",
+      "riskSummary": "Transfers Telegram usernames or phone numbers and message text through a private MTProto worker to Telegram; stores Telegram API credentials and a private worker secret in ChurchCRM configuration.",
+      "permissions": [
+        "network.outbound",
+        "network.inbound",
+        "secrets.store",
+        "fs.read"
+      ],
+      "minimumCRMVersion": "7.0.0",
+      "author": "Vitor Mattos",
+      "homepage": "https://github.com/vitormattos/churchcrm-telegram-client",
+      "notes": "Experimental release. Requires a separately deployed, authenticated MadelineProto worker on a private Docker network, plus operator-owned Telegram API credentials and a church-controlled account. Installs only the ChurchCRM plugin; worker/session never ship in the plugin ZIP. Sending is disabled by default; individual, consented messages only. Live Telegram pairing/delivery and URL installer lifecycle remain unverified. See docs/security-audit.md in the plugin repository."
     }
   ]
 }
