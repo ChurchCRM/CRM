@@ -264,6 +264,26 @@ class TelemetryService
         ]), $installId);
     }
 
+    /** Fixed states for version_mismatch: the failed upgrade page and the database-newer-than-software page. */
+    public const VERSION_MISMATCH_STATES = ['upgrade_failed', 'database_newer'];
+
+    /**
+     * Counts installations whose database and application versions are out of sync. Sent at every level, like
+     * upgrade_failed, so the count is complete; each state and version pair is reported once per UTC day.
+     */
+    public static function captureVersionMismatch(string $dbVersion, string $state): void
+    {
+        if (self::installProfile() === 'test' || !in_array($state, self::VERSION_MISMATCH_STATES, true)
+            || !self::firstLogToday('version_mismatch|' . $state . '|' . $dbVersion)) {
+            return;
+        }
+        $systemId = SystemConfig::isInitialized() ? SystemConfig::getValue('sSystemID') : '';
+        self::capture('version_mismatch', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+            'db_version' => $dbVersion,
+            'mismatch_state' => $state,
+        ]), $systemId !== '' ? $systemId : self::unconfiguredInstallId());
+    }
+
     /**
      * An installation ID for events sent before configuration exists: hashed from the document root's device
      * and inode, which hold no server name or path, so repeated attempts on one server count as one installation.
