@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-13 18:35+0000\n"
+"POT-Creation-Date: 2026-11-13 21:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3532,6 +3532,9 @@ msgstr ""
 msgid "Church website"
 msgstr ""
 
+msgid "ChurchCRM System Check"
+msgstr ""
+
 msgid "ChurchCRM Test Email"
 msgstr ""
 
@@ -5847,6 +5850,9 @@ msgid "Enable sign-in"
 msgstr ""
 
 msgid "Enable the MailChimp plugin to sync contacts"
+msgstr ""
+
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
 msgstr ""
 
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
@@ -14044,6 +14050,9 @@ msgstr ""
 msgid "Report Heading"
 msgstr ""
 
+msgid "Report Issue"
+msgstr ""
+
 msgid "Report Settings"
 msgstr ""
 
@@ -14096,6 +14105,9 @@ msgid "Required permission"
 msgstr ""
 
 msgid "Required. Used on all reports and communications."
+msgstr ""
+
+msgid "Requirement"
 msgstr ""
 
 msgid "Requirement not found"
@@ -14195,6 +14207,9 @@ msgid "Retry"
 msgstr ""
 
 msgid "Retry Download"
+msgstr ""
+
+msgid "Return Home"
 msgstr ""
 
 msgid "Return to Dashboard"
@@ -15637,6 +15652,9 @@ msgstr ""
 msgid "Somalia (Soomaaliya)"
 msgstr ""
 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr ""
+
 msgid "Some application prerequisites are not met"
 msgstr ""
 
@@ -16014,6 +16032,9 @@ msgid "Sundays"
 msgstr ""
 
 msgid "Sundays with no class are left off the sheet."
+msgstr ""
+
+msgid "Support"
 msgstr ""
 
 #. plugin:external-backup:section:5:title
@@ -16834,6 +16855,9 @@ msgid "The original volunteer keeps the position. Both are told."
 msgstr ""
 
 msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr ""
+
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
 msgstr ""
 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
