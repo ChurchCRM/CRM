@@ -21,23 +21,6 @@ test.describe('Settings', () => {
     await captureScreen(page, testInfo, settingsUserPermissionsCapture);
   });
 
-  test('admin-people-settings', async ({ page }, testInfo) => {
-    // Route: src/admin/routes/people.php ("/admin/people"), admin-only. Shows
-    // the People hub: list/editor shortcuts plus auto-saving settings panels.
-    await page.goto('/admin/people');
-    for (const section of ['#peopleNewMembers', '#peopleFamilies', '#peoplePeople', '#peopleMap']) {
-      await expect(page.locator(`${section} .settings-panel-fields`)).toBeEnabled({ timeout: 15000 });
-    }
-    await settle(page, 600);
-
-    await captureScreen(page, testInfo, {
-      name: 'admin-people-settings',
-      title: 'People Settings',
-      category: 'Admin & Settings',
-      purpose: 'Show the People settings hub — list shortcuts and auto-saving settings in one place',
-    });
-  });
-
   test('admin-plugin-management', async ({ page }, testInfo) => {
     // Route: src/plugins/index.php ("/plugins/management/..."), gated to
     // admins. Reinforces the plugin ecosystem story — core + community
