@@ -311,8 +311,12 @@ class SlimUtils
             try {
                 // Prepare variables expected by the partial
                 $code = $statusCode;
-                $title = ($statusCode >= 500) ? gettext('Server Error') : gettext('Not Found');
-                $message = $sanitizedMessage;
+                $title = match (true) {
+                    $statusCode === 404 => gettext('Page Not Found'),
+                    $statusCode >= 500 => gettext('Server Error'),
+                    default => gettext('Not Found'),
+                };
+                $message = $statusCode === 404 ? self::notFoundMessage() : $sanitizedMessage;
                 $returnUrl = SystemURLs::getRootPath() . '/v2/dashboard';
                 $returnText = gettext('Return to Dashboard');
                 $extraHtml = '';
@@ -435,7 +439,7 @@ class SlimUtils
                     $statusCode >= 500 => gettext('Server Error'),
                     default => gettext('Error'),
                 };
-                $message = self::sanitizeErrorMessage($exception);
+                $message = $statusCode === 404 ? self::notFoundMessage() : self::sanitizeErrorMessage($exception);
                 $returnUrl = SystemURLs::getRootPath() . $dashboardUrl;
                 $returnText = $dashboardText;
                 $extraHtml = '';
@@ -564,6 +568,12 @@ class SlimUtils
     {
         $params = $request->getQueryParams();
         return $params[$paramName] ?? '';
+    }
+
+    /** The 404 text every in-app page shows, whichever handler renders it. */
+    public static function notFoundMessage(): string
+    {
+        return gettext('The page you requested could not be found. It may have been moved, renamed, or no longer exists.');
     }
 
     /**

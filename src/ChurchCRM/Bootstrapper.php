@@ -258,7 +258,7 @@ class Bootstrapper
         }
         
         // Display error to user
-        self::systemFailure($e->getMessage(), $context);
+        self::systemFailure(InputUtils::escapeHTML($e->getMessage()), $context);
     }
     
     /**
@@ -426,10 +426,10 @@ class Bootstrapper
 
         try {
             if (!mysqli_select_db($connection, self::$databaseName)) {
-                self::systemFailure('Could not select the MySQL database <strong>' . InputUtils::escapeHTML(self::$databaseName) . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . InputUtils::escapeHTML(mysqli_error($connection)));
+                self::systemFailure('Could not select the MySQL database <strong>' . InputUtils::escapeHTML(self::$databaseName) . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . InputUtils::escapeHTML(mysqli_error($connection)), 'Database Access Failed', 'database_access_failed');
             }
         } catch (\mysqli_sql_exception $e) {
-            self::systemFailure('Could not access the MySQL database <strong>' . InputUtils::escapeHTML(self::$databaseName) . '</strong>. Please verify the database name in <strong>Include/Config.php</strong>.<br/>Error: ' . InputUtils::escapeHTML($e->getMessage()));
+            self::systemFailure('Could not access the MySQL database <strong>' . InputUtils::escapeHTML(self::$databaseName) . '</strong>. Please verify the database name in <strong>Include/Config.php</strong>.<br/>Error: ' . InputUtils::escapeHTML($e->getMessage()), 'Database Access Failed', 'database_access_failed');
         }
 
         return self::$mysqli = $connection;
@@ -447,7 +447,7 @@ class Bootstrapper
             SystemConfig::init();
         }
         LoggerUtils::getAppLogger()->error("ERROR connecting to database at '" . self::$databaseServerName . "' on port '" . $portDisplay . "' as user '" . self::$databaseUser . "' -  MySQL Error: '" . $error . "'");
-        self::systemFailure('Could not connect to MySQL on <strong>' . InputUtils::escapeHTML(self::$databaseServerName) . '</strong> on port <strong>' . InputUtils::escapeHTML($portDisplay) . '</strong> as <strong>' . InputUtils::escapeHTML(self::$databaseUser) . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . InputUtils::escapeHTML($error), 'Database Connection Failure');
+        self::systemFailure('Could not connect to MySQL on <strong>' . InputUtils::escapeHTML(self::$databaseServerName) . '</strong> on port <strong>' . InputUtils::escapeHTML($portDisplay) . '</strong> as <strong>' . InputUtils::escapeHTML(self::$databaseUser) . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>MySQL Error: ' . InputUtils::escapeHTML($error), 'Database Connection Failed', 'database_unreachable');
         exit;
     }
     private static function initPropel(): void
@@ -488,7 +488,7 @@ class Bootstrapper
             self::connectionFailure($cause->getMessage());
         } catch (\PDOException $e) {
             self::$bootStrapLogger->error("Database check failed: " . $e->getMessage());
-            self::systemFailure('Could not access the MySQL database <strong>' . InputUtils::escapeHTML(self::$databaseName) . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>Error: ' . InputUtils::escapeHTML($e->getMessage()));
+            self::systemFailure('Could not access the MySQL database <strong>' . InputUtils::escapeHTML(self::$databaseName) . '</strong>. Please check the settings in <strong>Include/Config.php</strong>.<br/>Error: ' . InputUtils::escapeHTML($e->getMessage()), 'Database Access Failed', 'database_access_failed');
             return true; // This line won't be reached due to systemFailure() calling exit()
         }
     }
@@ -622,55 +622,39 @@ class Bootstrapper
         ];
     }
 
-    public static function systemFailure($message, $header = 'Setup failure'): void
+    /**
+     * Blocking failure page on the shared standalone error layout.
+     *
+     * @param string      $message      HTML built by the caller, with every dynamic value already escaped
+     * @param string|null $reportReason fixed reason code for standaloneReportInstallFailure(); never the message
+     */
+    public static function systemFailure(string $message, string $header = 'Setup failure', ?string $reportReason = null): void
     {
-        // Clear any output buffers to ensure error message is displayed
         while (ob_get_level() > 0) {
             ob_end_clean();
         }
-        
-        // Set HTTP status code
+
         http_response_code(500);
-        
-        $sPageTitle = $header;
-        if (!SystemConfig::isInitialized()) {
-            SystemConfig::init();
-        }
-        
+
         try {
-            $headerPath = SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
-            $footerPath = SystemURLs::getDocumentRoot() . '/Include/FooterNotLoggedIn.php';
-            
-            if (file_exists($headerPath)) {
-                require_once $headerPath;
-            } else {
-                // Fallback to basic HTML header
-                echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>ChurchCRM - Error</title></head><body>';
+            require_once __DIR__ . '/../errors/template.php';
+            if ($reportReason !== null) {
+                standaloneReportInstallFailure($reportReason);
             }
-            ?>
-    <div class='container'>
-        <h3>ChurchCRM – <?= _($header) ?></h3>
-        <div class='alert alert-danger text-center'>
-            <?= gettext($message) ?>
-        </div>
-    </div>
-            <?php
-            if (file_exists($footerPath)) {
-                require_once $footerPath;
-            } else {
-                echo '</body></html>';
+            try {
+                $rootPath = SystemURLs::getRootPath();
+            } catch (\Throwable) {
+                $rootPath = standaloneRootPath();
             }
-        } catch (\Exception $e) {
-            // Last resort: plain HTML error if header/footer includes fail
-            echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>ChurchCRM Error</title></head><body>';
-            echo '<div style="max-width: 800px; margin: 50px auto; padding: 20px;">';
-            echo '<h1>ChurchCRM Error</h1>';
-            echo '<div style="padding: 15px; margin: 20px 0; border: 1px solid #f5c6cb; background-color: #f8d7da; color: #721c24; border-radius: 4px;">';
-            echo InputUtils::escapeHTML($message);
-            echo '</div></div></body></html>';
+            $title = gettext($header);
+            $content = '<div class="alert alert-danger mb-0" role="alert">' . $message . '</div>';
+            renderErrorPage($rootPath, $title, '❌', 'danger', $content, buildGitHubIssueBody($header, '### ' . $header . "\n\nThe message is left out because it names this server and database."));
+        } catch (\Throwable) {
+            echo '<!DOCTYPE html><html><head><meta charset="utf-8"><title>ChurchCRM Error</title></head><body><h1>ChurchCRM Error</h1><p>' . $message . '</p></body></html>';
         }
         exit();
     }
+
     public static function isDBCurrent(): bool
     {
         $dbVersion = VersionUtils::getDBVersion();
