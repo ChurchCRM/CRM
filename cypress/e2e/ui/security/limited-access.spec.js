@@ -53,8 +53,17 @@ describe("Safety net — a self-service account the upgrade left behind", () => 
         cy.location("pathname", { timeout: 10000 }).should("match", /\/portal\/$/);
     };
 
+    it("Its API key is refused the internal API, even for its own family and record", () => {
+        ["/api/family/1", "/api/family/20", `/api/person/${PERSON_ID}`, "/api/person/2/notes", "/api/timeline/family/1"].forEach(
+            (url) => cy.makePrivateAPICall(API_KEY, "GET", url, null, 403),
+        );
+        cy.makePrivateAPICall(API_KEY, "POST", "/api/family/1/note", { text: "<p>blocked</p>", private: false }, 403);
+    });
+
     // The fixture account is created with a pending password change; every later test signs in with CHANGED_PASSWORD.
-    it("A forced password change happens in the Member Portal", () => {
+    it("A forced password change stays reachable when 2FA enrollment is also required", () => {
+        setConfig("i2FAGracePeriodDays", "0");
+        setConfig("bRequire2FA", "1");
         signIn(PASSWORD);
         cy.location("pathname", { timeout: 10000 }).should("match", /\/portal\/profile\/password$/);
         cy.get("#OldPassword").type(PASSWORD);
@@ -62,6 +71,8 @@ describe("Safety net — a self-service account the upgrade left behind", () => 
         cy.get("#NewPassword2").type(CHANGED_PASSWORD);
         cy.get("#passwordChangeForm").submit();
         cy.get("#portal-password-changed").should("exist");
+        setConfig("bRequire2FA", "0");
+        setConfig("i2FAGracePeriodDays", "7");
         cy.visit("/portal/");
         cy.location("pathname").should("match", /\/portal\/$/);
     });
@@ -95,12 +106,5 @@ describe("Safety net — a self-service account the upgrade left behind", () => 
     it("Its session is refused the internal API", () => {
         login();
         cy.request({ url: "/api/person/2", failOnStatusCode: false }).its("status").should("eq", 403);
-    });
-
-    it("Its API key is refused the internal API, even for its own family and record", () => {
-        ["/api/family/1", "/api/family/20", `/api/person/${PERSON_ID}`, "/api/person/2/notes", "/api/timeline/family/1"].forEach(
-            (url) => cy.makePrivateAPICall(API_KEY, "GET", url, null, 403),
-        );
-        cy.makePrivateAPICall(API_KEY, "POST", "/api/family/1/note", { text: "<p>blocked</p>", private: false }, 403);
     });
 });
