@@ -305,41 +305,23 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
      * @OA\Get(
      *     path="/groups/{groupID}/members",
      *     operationId="getGroupMembers",
-     *     summary="Get members of a group with family address info",
+     *     summary="Get members of a group with resolved addresses and home phones",
      *     tags={"Groups"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Group members enriched with family address fields",
+     *     @OA\Response(response=200, description="Group members with personal contact details falling back to family values",
      *         @OA\JsonContent(@OA\Property(property="Person2group2roleP2g2rs", type="array", @OA\Items(type="object",
      *             @OA\Property(property="Person", type="object",
-     *                 @OA\Property(property="Family", ref="#/components/schemas/Family", description="Present when the person is in a family")
+     *                 @OA\Property(property="Family", ref="#/components/schemas/Family", description="Present when the person is in a family"),
+     *                 @OA\Property(property="HomePhone", type="string", description="Personal home phone, falling back to the family home phone")
      *             )
      *         )))
      *     )
      * )
      */
     $group->get('/{groupID:[0-9]+}/members', function (Request $request, Response $response, array $args): Response {
-        $groupID = $args['groupID'];
-        $members = Person2group2roleP2g2rQuery::create()
-            ->joinWithPerson()
-            ->findByGroupId($groupID);
-
-        // we loop to find the information in the family to add addresses etc ...
-        foreach ($members as $member) {
-            $p = $member->getPerson();
-            $fam = $p->getFamily();
-
-            if (!empty($fam)) {
-                $p->setAddress1($fam->getAddress1());
-                $p->setAddress2($fam->getAddress2());
-
-                $p->setCity($fam->getCity());
-                $p->setState($fam->getState());
-                $p->setZip($fam->getZip());
-            }
-        }
-
-        return SlimUtils::renderJSON($response, ['Person2group2roleP2g2rs' => $members->toArray()]);
+        $members = (new GroupService())->getGroupMemberDetails((int) $args['groupID']);
+        return SlimUtils::renderJSON($response, ['Person2group2roleP2g2rs' => $members]);
     })->add(new FamilyEmailDeprecationMiddleware('private/get-group-members'));
 
     /**
