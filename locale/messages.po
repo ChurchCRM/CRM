@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 20:40-0800\n"
+"POT-Creation-Date: 2026-11-13 05:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -161,6 +161,12 @@ msgstr[1] ""
 #, php-format
 msgid "%d failed (all time)"
 msgstr ""
+
+#, php-format
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] ""
+msgstr[1] ""
 
 #, php-format
 msgid "%d files have failed integrity validation."
@@ -2806,9 +2812,6 @@ msgstr ""
 msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
 msgstr ""
 
-msgid "Cancelled"
-msgstr ""
-
 msgid "Cannot Delete Event Type"
 msgstr ""
 
@@ -2997,6 +3000,9 @@ msgid "Change in People Settings"
 msgstr ""
 
 msgid "Change required"
+msgstr ""
+
+msgid "Change role of selected members: {{total}}"
 msgstr ""
 
 msgid "Change the family address and contact details, and add a family member for review."
@@ -5970,6 +5976,9 @@ msgstr ""
 msgid "Enter a second address before marking it as the mailing address"
 msgstr ""
 
+msgid "Enter a setup key manually"
+msgstr ""
+
 msgid "Enter a street address first."
 msgstr ""
 
@@ -5993,6 +6002,9 @@ msgid "Enter email subject…"
 msgstr ""
 
 msgid "Enter event description..."
+msgstr ""
+
+msgid "Enter fullscreen"
 msgstr ""
 
 msgid "Enter group name"
@@ -6023,6 +6035,9 @@ msgid "Enter the 6-digit code from your authenticator app"
 msgstr ""
 
 msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr ""
+
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
 msgstr ""
 
 msgid "Enter valid report dates."
@@ -6059,6 +6074,9 @@ msgid "Enter your password"
 msgstr ""
 
 msgid "Enter your username and password as usual"
+msgstr ""
+
+msgid "Enter your username or email"
 msgstr ""
 
 msgid "Entering a Prompt value will allow the association of a free-form value."
@@ -6395,6 +6413,9 @@ msgid "Existing ministry"
 msgstr ""
 
 msgid "Exit"
+msgstr ""
+
+msgid "Exit fullscreen"
 msgstr ""
 
 msgid "Expand"
@@ -6915,6 +6936,10 @@ msgstr ""
 msgid "Families that could not be geocoded: {{total}}"
 msgstr ""
 
+#, php-format
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr ""
+
 msgid "Families to receive confirmation emails: {{total}}"
 msgstr ""
 
@@ -7267,6 +7292,9 @@ msgid "Find an event"
 msgstr ""
 
 msgid "Find duplicate addresses and people with no email"
+msgstr ""
+
+msgid "Find families that pledged in one fiscal year and not in another."
 msgstr ""
 
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
@@ -8318,6 +8346,9 @@ msgstr ""
 msgid "Hide deceased members from the printed directory and CSV exports."
 msgstr ""
 
+msgid "Hide setup key"
+msgstr ""
+
 msgid "Highest Sale"
 msgstr ""
 
@@ -8454,9 +8485,6 @@ msgid "How to Accept This Kiosk"
 msgstr ""
 
 msgid "How to Fix"
-msgstr ""
-
-msgid "How to correct this"
 msgstr ""
 
 #. Context: locales
@@ -8702,6 +8730,9 @@ msgid "Inactive"
 msgstr ""
 
 msgid "Inactive Groups"
+msgstr ""
+
+msgid "Inactive families are left out. Payments do not count as pledges."
 msgstr ""
 
 msgid "Inactive status can only be toggled for the classifications list"
@@ -9002,6 +9033,9 @@ msgid "Invalid report options."
 msgstr ""
 
 msgid "Invalid request data"
+msgstr ""
+
+msgid "Invalid request."
 msgstr ""
 
 msgid "Invalid server URL format."
@@ -10255,6 +10289,12 @@ msgstr ""
 msgid "Members copied: {{total}}"
 msgstr ""
 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr ""
+
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr ""
+
 msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
 msgstr ""
 
@@ -10445,6 +10485,9 @@ msgid "Missing PHP ZipArchive"
 msgstr ""
 
 msgid "Missing People"
+msgstr ""
+
+msgid "Missing Pledges"
 msgstr ""
 
 msgid "Missing calendar access token"
@@ -10990,6 +11033,10 @@ msgstr ""
 msgid "No active events found."
 msgstr ""
 
+#, php-format
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr ""
+
 msgid "No active fundraisers found."
 msgstr ""
 
@@ -11317,6 +11364,9 @@ msgid "No photo was sent."
 msgstr ""
 
 msgid "No pledge"
+msgstr ""
+
+msgid "No pledge for"
 msgstr ""
 
 msgid "No pledges found for the selected fiscal year"
@@ -13164,6 +13214,9 @@ msgstr ""
 msgid "Pledged but not yet paid"
 msgstr ""
 
+msgid "Pledged for"
+msgstr ""
+
 msgid "Pledges"
 msgstr ""
 
@@ -14483,9 +14536,6 @@ msgstr ""
 msgid "Save and Add New Family"
 msgstr ""
 
-msgid "Save changes"
-msgstr ""
-
 msgid "Save changes to this category name"
 msgstr ""
 
@@ -14851,6 +14901,9 @@ msgstr ""
 msgid "Select at least one classification to include in the directory."
 msgstr ""
 
+msgid "Select at least one member."
+msgstr ""
+
 msgid "Select calendars..."
 msgstr ""
 
@@ -15031,9 +15084,6 @@ msgid "Sending was interrupted before the server answered."
 msgstr ""
 
 msgid "Sending..."
-msgstr ""
-
-msgid "Sending…"
 msgstr ""
 
 msgid "Sending… {{done}} of {{total}}"
@@ -15219,6 +15269,9 @@ msgid "Setup Progress"
 msgstr ""
 
 msgid "Setup Required"
+msgstr ""
+
+msgid "Setup key"
 msgstr ""
 
 #. Context: countries
@@ -16955,6 +17008,9 @@ msgstr ""
 msgid "The selected group was not found. Please select a valid group."
 msgstr ""
 
+msgid "The selected members already have that role."
+msgstr ""
+
 msgid "The selected person was not found."
 msgstr ""
 
@@ -18167,6 +18223,9 @@ msgstr ""
 msgid "Ukrainian"
 msgstr ""
 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr ""
+
 msgid "Unable to copy to clipboard. Please copy the URL manually."
 msgstr ""
 
@@ -18658,6 +18717,9 @@ msgid "Username"
 msgstr ""
 
 msgid "Username and password are required."
+msgstr ""
+
+msgid "Username or Email Address"
 msgstr ""
 
 msgid "Users"
