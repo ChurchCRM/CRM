@@ -12,3 +12,15 @@ export function setMemberRole(groupId, personId, roleId) {
     data: JSON.stringify({ roleID: Number(roleId) }),
   });
 }
+
+/**
+ * Move several members to one of the group's roles in one request.
+ * Resolves to { changed, unchanged, skipped } person ids.
+ */
+export function setMembersRole(groupId, personIds, roleId) {
+  return window.CRM.APIRequest({
+    method: "POST",
+    path: `groups/${groupId}/members/role`,
+    data: JSON.stringify({ personIds: personIds.map(Number), roleID: Number(roleId) }),
+  });
+}

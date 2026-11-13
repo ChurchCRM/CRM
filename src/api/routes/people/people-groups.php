@@ -17,6 +17,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use Propel\Runtime\ActiveQuery\Criteria;
+use Propel\Runtime\Propel;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Service\SundaySchoolService;
@@ -1175,6 +1176,112 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         $membership->setRoleId($roleID);
         $membership->save();
         return SlimUtils::renderJSON($response, $membership->toArray());
+    })->add(GroupMiddleware::class);
+
+    /**
+     * @OA\Post(
+     *     path="/groups/{groupID}/members/role",
+     *     summary="Move several group members to one of the group's roles (ManageGroupRole role required)",
+     *     description="Changes every listed member's role in one transaction. Members already in the role are reported as unchanged. Ids that are not members of the group, and teachers whose role a volunteer team manages (Volunteer v2, D23), are skipped.",
+     *     tags={"Groups"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Parameter(name="groupID", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(required=true,
+     *         @OA\JsonContent(
+     *             required={"personIds", "roleID"},
+     *             @OA\Property(property="personIds", type="array", @OA\Items(type="integer")),
+     *             @OA\Property(property="roleID", type="integer")
+     *         )
+     *     ),
+     *     @OA\Response(response=200, description="Person ids by outcome",
+     *         @OA\JsonContent(
+     *             @OA\Property(property="changed", type="array", @OA\Items(type="integer")),
+     *             @OA\Property(property="unchanged", type="array", @OA\Items(type="integer")),
+     *             @OA\Property(property="skipped", type="array", @OA\Items(type="integer"))
+     *         )
+     *     ),
+     *     @OA\Response(response=400, description="No person ids, or roleID is not one of the group's roles"),
+     *     @OA\Response(response=403, description="ManageGroupRole role required"),
+     *     @OA\Response(response=404, description="Group not found"),
+     *     @OA\Response(response=409, description="roleID is the Teacher role of a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)")
+     * )
+     */
+    $group->post('/{groupID:[0-9]+}/members/role', function (Request $request, Response $response, array $args): Response {
+        $group = $request->getAttribute('group');
+        $groupId = (int) $group->getId();
+        $body = $request->getParsedBody() ?? [];
+        $rawRoleId = $body['roleID'] ?? null;
+        $rawPersonIds = $body['personIds'] ?? null;
+        // Reject anything that is not a plain integer, so (int) never turns an array into 1.
+        $isWholeNumber = fn (mixed $value): bool => is_int($value) || (is_string($value) && ctype_digit($value));
+        if (!is_array($rawPersonIds) || !$isWholeNumber($rawRoleId) || array_filter($rawPersonIds, fn (mixed $id): bool => !$isWholeNumber($id)) !== []) {
+            return SlimUtils::renderErrorJSON($response, gettext('Invalid request.'), [], 400);
+        }
+        $roleID = (int) $rawRoleId;
+        $personIds = array_values(array_unique(array_filter(
+            array_map('intval', $rawPersonIds),
+            fn (int $id): bool => $id > 0
+        )));
+        if ($personIds === []) {
+            return SlimUtils::renderErrorJSON($response, gettext('Select at least one member.'), [], 400);
+        }
+        $locked = _renderTeacherRoleConflict(
+            $response,
+            VolunteerClassLinkService::findTeacherWriteConflict($groupId, null, $roleID)
+        );
+        if ($locked !== null) {
+            return $locked;
+        }
+
+        $changed = [];
+        $unchanged = [];
+        // The teacher lock depends only on the role a member leaves, so it is looked up once per role.
+        $lockedFromRole = [];
+        $con = Propel::getWriteConnection(PersonTableMap::DATABASE_NAME);
+        $con->beginTransaction();
+        try {
+            // Same group lock deleteGroupRole takes, so the role cannot be deleted between this check and the updates.
+            GroupQuery::create()->filterById($groupId)->lockForUpdate()->findOne($con);
+            $isGroupRole = ListOptionQuery::create()
+                ->filterById($group->getRoleListId())
+                ->filterByOptionId($roleID)
+                ->count($con) > 0;
+            if (!$isGroupRole) {
+                $con->rollBack();
+
+                return SlimUtils::renderErrorJSON($response, gettext('That role is not one of this group\'s roles.'), [], 400);
+            }
+            $memberships = Person2group2roleP2g2rQuery::create()
+                ->filterByGroupId($groupId)
+                ->filterByPersonId($personIds, Criteria::IN)
+                ->find($con);
+            foreach ($memberships as $membership) {
+                $personId = (int) $membership->getPersonId();
+                $fromRoleId = (int) $membership->getRoleId();
+                if ($fromRoleId === $roleID) {
+                    $unchanged[] = $personId;
+                    continue;
+                }
+                $lockedFromRole[$fromRoleId] ??= VolunteerClassLinkService::findTeacherWriteConflict($groupId, $fromRoleId, $roleID) !== null;
+                if ($lockedFromRole[$fromRoleId]) {
+                    continue;
+                }
+                $membership->setRoleId($roleID);
+                $membership->save($con);
+                $changed[] = $personId;
+            }
+            $con->commit();
+        } catch (\Throwable $e) {
+            $con->rollBack();
+
+            return SlimUtils::renderErrorJSON($response, gettext('Failed to update role. Please try again.'), [], 500, $e, $request);
+        }
+
+        return SlimUtils::renderJSON($response, [
+            'changed'   => $changed,
+            'unchanged' => $unchanged,
+            'skipped'   => array_values(array_diff($personIds, $changed, $unchanged)),
+        ]);
     })->add(GroupMiddleware::class);
 
     /**
