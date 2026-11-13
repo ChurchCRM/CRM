@@ -7,9 +7,10 @@ run-name: >-
 #   2. Wait (default 15 minutes, repo variable LOCALE_TERMS_WAIT_MINUTES). Every newer merge restarts the
 #      wait, so a burst of code merges becomes ONE terms PR. A manual run skips the wait and cancels a
 #      wait that is already running ("run now", e.g. before a release).
-#   3. Extract the strings (npm run locale:build) into locale/messages.po and the JSON keys, then bring
-#      every locale in line with it (npm run locale:apply -- --prune): translations of removed strings
-#      are dropped and each locale .po/.mo is rebuilt from its JSON.
+#   3. Extract the strings (npm run locale:build) into locale/messages.po. The same command then
+#      brings every locale in line with it (locale:apply --prune: translations of removed strings are
+#      dropped, each locale .po/.mo is rebuilt from its JSON) and rewrites locale/terms/missing/<code>/*.json,
+#      the checked-in queue of terms still to translate. The tree is ready to commit.
 #   4. Open or update ONE terms PR, "locale: new terms from code (+N / -M) - <date>", on the rolling
 #      branch locale/terms/<version>. Its body lists every new and removed string, where it is in the
 #      code, and a "Needs a look" list of strings that look like bugs or would lose translations.
@@ -17,7 +18,7 @@ run-name: >-
 #      npm run locale:missing + locale:apply) and land as a normal PR. There is no outside sync.
 #
 # Translation PRs and the terms PR only touch src/locale/i18n and src/locale/textdomain, so those paths
-# are excluded: merging them never starts another extraction.
+# are excluded: merging them never starts another extraction. The terms PR also carries locale/terms/missing.
 
 on:
   push:
@@ -93,15 +94,12 @@ jobs:
       - name: Wait for Docker to be ready
         run: sleep 10
 
-      - name: Extract terms (npm run locale:build)
+      - name: Extract terms, prune the locales, queue the missing terms (npm run locale:build)
         run: npm run locale:build
 
       - name: Stop CI Docker containers
         if: always()
         run: npm run docker:ci:root:down
-
-      - name: Bring the locale files in line with the new terms
-        run: npm run locale:apply -- --prune
 
       - name: Check plugin help extraction
         run: |
@@ -149,6 +147,7 @@ jobs:
           delete-branch: true
           add-paths: |
             locale/messages.po
+            locale/terms/missing
             src/locale/i18n
             src/locale/textdomain
           labels: |

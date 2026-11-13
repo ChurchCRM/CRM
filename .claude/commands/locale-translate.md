@@ -10,8 +10,8 @@ The complete locale loop, branches, and plural handling are in [`docs/maintainer
 ## Mandatory rules
 
 - Start every session on a fresh `locale/translate/**` branch (`node locale/scripts/locale-branch-manager.js --init`). Never reuse a prior branch.
-- Run `npm run locale:missing` first; it writes the batches from the repo.
-- After every locale, `node locale/scripts/locale-branch-manager.js --commit-and-push …` writes it into the repo (`npm run locale:apply`) and commits and pushes it. Open a PR when done.
+- Run `npm run locale:missing` first. The queue `locale/terms/missing/` is checked in (the terms PR writes it); this refreshes it.
+- After every locale, `node locale/scripts/locale-branch-manager.js --commit-and-push …` writes it into the repo (`npm run locale:apply`) and commits and pushes it, including that locale's emptied queue folder. Open a PR when done.
 - If a step fails, stop and report.
 
 ## Related

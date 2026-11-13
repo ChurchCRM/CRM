@@ -44,7 +44,7 @@ The repo is now the only source of truth for translations, and POEditor is retir
 | `src/locale/i18n/<locale>.json` | The **translations**, read by i18next in the browser | Agents and contributors, via `locale:apply` |
 | `src/locale/textdomain/<locale>/LC_MESSAGES/messages.po` | gettext copy for PHP, **generated from the JSON** | `locale:apply` |
 | `…/messages.mo` | Compiled `.po`, read by PHP | `locale:apply` (uses `gettext-parser`, no `msgfmt` needed) |
-| `locale/terms/missing/<code>/*.json` | Working batches of untranslated terms (**git-ignored**) | `locale:missing`, filled by `locale-translate.js` |
+| `locale/terms/missing/<code>/*.json` | Queue of untranslated terms, **checked in** until translated (the terms PR writes it, a translate PR empties it) | `locale:missing`, filled by `locale-translate.js` |
 | `src/locale/poeditor.json` | Completeness % per locale, shown in the app (renamed in PR 2) | `locale:audit` |
 
 ### Data flow
@@ -54,7 +54,7 @@ flowchart LR
     code["Code: gettext() / i18next.t()"] -->|locale:build| src["locale/messages.po<br/>source terms"]
     src --> miss["locale:missing"]
     json["src/locale/i18n/{locale}.json<br/>translations"] --> miss
-    miss --> batch["locale/terms/missing/<br/>(git-ignored)"]
+    miss --> batch["locale/terms/missing/<br/>(checked in)"]
     batch -->|agent or person fills| batch
     batch --> apply["locale:apply<br/>validates"]
     apply --> json
@@ -71,7 +71,7 @@ flowchart LR
 | `npm run locale:missing [-- --locale de] [-- --term "…"]` | Writes the terms each locale is missing: in `messages.po` but with no complete translation in the JSON. Keeps values already filled. `--term` queues a string that isn't extracted yet |
 | `node locale/scripts/locale-translate.js --list / --prefill / --export / --apply-bulk` | Lets agents read and fill batches. Validates every value |
 | `npm run locale:apply` | Moves filled batch values into the JSON, rebuilds the `.po` and `.mo`, and empties the batch. Rejected values stay in the batch with the reason |
-| `npm run locale:apply -- --prune` | Also drops translations of terms no longer in `messages.po`. The terms workflow runs this |
+| `npm run locale:apply -- --prune` | Also drops translations of terms no longer in `messages.po`. `locale:build` runs this |
 | `npm run locale:apply -- --check` | Writes nothing. Exits 1 if any `.po`/`.mo` doesn't match its JSON |
 | `npm run locale:audit` | Completeness from the repo → `poeditor.json` and `poeditor-audit.md` |
 | `npm run locale:release [-- --go]` | Release check: terms PR open? extraction running? anything missing? `--go` extracts now, skipping the wait |
@@ -97,7 +97,7 @@ sequenceDiagram
     Dev->>M: merge code PR (new or changed strings)
     M->>X: push touching src/**
     Note over X: waits 15 min (LOCALE_TERMS_WAIT_MINUTES),<br/>a newer merge restarts the wait
-    X->>X: locale:build → messages.po<br/>locale:apply --prune
+    X->>X: locale:build → messages.po,<br/>prune, missing queue
     X->>T: open or update ONE rolling PR<br/>(+N / -M, file:line, "Needs a look")
     Mt->>T: review the generated terms, merge
     T->>M: messages.po + pruned locale files
@@ -180,7 +180,7 @@ flowchart LR
 | | PR 1: [#11424](https://github.com/ChurchCRM/CRM/pull/11424) | PR 2 (after PR 1 merges) |
 |---|---|---|
 | Scripts | `locale:missing`, `locale:apply`, repo-based audit and release, branch manager, `locale-add` | Delete `poeditor-*` scripts, `poeditor-terms`, `prune-uploaded-batches`, the download gate and check, and their tests. Move plural helpers out of `poeditor-plurals.js` |
-| Workflows | POEditor sync and upload are manual only, with no auto-merge. Extract runs `--prune` | Delete `locale-sync-poeditor.yml` and `locale-upload-missing.yml` |
+| Workflows | POEditor sync and upload are manual only, with no auto-merge. Extract runs `locale:build` (extract, prune, missing queue) | Delete `locale-sync-poeditor.yml` and `locale-upload-missing.yml` |
 | npm / env | `locale:missing`, `locale:apply`, the `gettext-parser` devDependency | Remove `locale:download`, `locale:upload:missing`, `POEDITOR_TOKEN` from `.env.example` |
 | App | none | Rename `poeditor.json` (`LocaleInfo.php`, `system.php`, `biome.json`). Drop the `SystemConfig.php` link. Update the Cypress link check |
 | Docs | Everything describes the repo flow | Leftover mentions |

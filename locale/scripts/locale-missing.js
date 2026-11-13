@@ -4,8 +4,9 @@
 /**
  * Writes the untranslated terms of every locale to locale/terms/missing/<code>/<code>-<n>.json, read
  * straight from the repo: a term is missing when locale/messages.po has it and the locale JSON has no
- * complete translation for it. Batch files are working files (git-ignored); /locale-translate fills
- * them and `npm run locale:apply` writes them into the locale files.
+ * complete translation for it. The batch files are the checked-in queue: the terms workflow runs this after
+ * every extraction, /locale-translate fills them and `npm run locale:apply` writes them into the locale
+ * files and removes the applied terms.
  *
  *   npm run locale:missing                          every locale
  *   npm run locale:missing -- --locale de,fr        some locales
