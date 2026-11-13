@@ -3,7 +3,7 @@
 /**
  * ChurchCRM Term Extraction Script
  * 
- * Extracts all translatable terms from ChurchCRM for POEditor upload:
+ * Extracts all translatable terms from ChurchCRM into locale/messages.po:
  * 1. Database terms extraction
  * 2. Static data (countries/locales) extraction
  * 3. Plugin help (help.json) extraction

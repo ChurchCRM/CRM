@@ -18,7 +18,7 @@ const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-const { parsePoEntries } = require('./poeditor-plurals');
+const { parsePoEntries } = require('./locale-plurals');
 
 const ROOT = path.join(__dirname, '../../..');
 const PO_FILE = 'locale/messages.po';
@@ -184,7 +184,7 @@ function renderReport(d, { sources = new Map(), commits = [], runUrl = '' } = {}
         + `(messages.po: ${d.base.size} → ${d.head.size} terms). ${look ? `**${look} need a look.**` : 'Nothing flagged.'}`);
     lines.push('');
     lines.push('**Next:** read the strings below. Fix odd ones in the code (not here), or merge this PR. '
-        + 'Merging uploads the terms to POEditor right away and downloads translations (`Locale: sync POEditor`). '
+        + 'Merging lands `locale/messages.po` and the missing-terms queue on master; translations then happen in a follow-up translate PR (`/locale-translate`, `npm run locale:apply`). '
         + 'Removed terms lose their translations in every language.');
     lines.push('');
     if (commits.length) {
@@ -197,7 +197,7 @@ function renderReport(d, { sources = new Map(), commits = [], runUrl = '' } = {}
         const rows = ['| Term | Why |', '|---|---|'];
         for (const f of d.flagged) rows.push(`| ${cell(f.term)} | ${f.why.join('; ')} |`);
         for (const r of d.renames) {
-            rows.push(`| ${cell(r.to)} | replaces removed “${cell(r.from, 80)}”: its translations are lost unless the old term is moved to the new one in POEditor, or the code keeps the old wording |`);
+            rows.push(`| ${cell(r.to)} | replaces removed “${cell(r.from, 80)}”: its translations are lost unless the code keeps the old wording, or the new term is re-translated in the same PR (npm run locale:missing -- --term) |`);
         }
         lines.push(section(`Needs a look (${look})`, rows, 30));
     }

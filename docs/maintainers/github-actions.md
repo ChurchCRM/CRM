@@ -48,7 +48,7 @@ The prefix says who made the branch and what it is for.
 
 ### Locale
 
-`Locale: extract terms`: see [locale-pipeline.md](locale-pipeline.md#workflows). `Locale: sync POEditor` and `Locale: upload translations` are retired (manual only, removed by the follow-up to [#11416](https://github.com/ChurchCRM/CRM/issues/11416)); translations live in the repo.
+`Locale: extract terms`: see [locale-pipeline.md](locale-pipeline.md#workflows). The old locale sync/upload workflows are retired (manual only, pending deletion — [#11416](https://github.com/ChurchCRM/CRM/issues/11416)); translations live in the repo.
 
 ### Release
 

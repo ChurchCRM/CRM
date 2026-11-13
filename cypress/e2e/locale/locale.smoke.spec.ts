@@ -23,10 +23,10 @@ import { LOCALE_TEST_PAGES } from '../../fixtures/locale-pages';
 // ---------------------------------------------------------------------------
 
 /**
- * The 15 smoke-tier poEditor codes — locales most likely to expose rendering,
+ * The 15 smoke-tier locale codes — locales most likely to expose rendering,
  * RTL, CJK, complex-script, or Cyrillic bugs.
  */
-const SMOKE_POEDITOR_CODES: readonly string[] = [
+const SMOKE_LOCALE_CODES: readonly string[] = [
   'ar',     // RTL — Arabic
   'he',     // RTL — Hebrew
   'zh-CN',  // CJK — Simplified Chinese
@@ -49,8 +49,8 @@ interface LocaleEntry {
   name: string;
   /** locale field from locales.json (e.g. "ar_EG", "zh_CN") — value for ui.locale setting */
   locale: string;
-  /** poEditor code (e.g. "ar", "zh-CN") — used for smoke-tier filtering */
-  poEditor: string;
+  /** localeCode (e.g. "ar", "zh-CN") — used for smoke-tier filtering */
+  localeCode: string;
   /** Native script name — included in describe label */
   nativeName: string;
 }
@@ -58,11 +58,11 @@ interface LocaleEntry {
 // Build the full list from locales.json at spec-load time so newly added
 // locales are automatically included in the full tier without any code change.
 const allLocales: LocaleEntry[] = Object.entries(
-  localesJson as Record<string, { locale: string; poEditor: string; nativeName?: string }>,
+  localesJson as Record<string, { locale: string; localeCode: string; nativeName?: string }>,
 ).map(([name, v]) => ({
   name,
   locale: v.locale,
-  poEditor: v.poEditor,
+  localeCode: v.localeCode,
   // Fall back to the English key name for locales that omit nativeName (e.g. Slovak).
   nativeName: v.nativeName ?? name,
 }));
@@ -72,7 +72,7 @@ const tier: string = (Cypress.expose('LOCALE_TIER') as string) ?? 'smoke';
 const localesUnderTest: LocaleEntry[] =
   tier === 'full'
     ? allLocales
-    : allLocales.filter((l) => SMOKE_POEDITOR_CODES.includes(l.poEditor));
+    : allLocales.filter((l) => SMOKE_LOCALE_CODES.includes(l.localeCode));
 
 // ---------------------------------------------------------------------------
 // Per-locale describe blocks

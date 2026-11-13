@@ -53,7 +53,7 @@ const BUCKETS = [
 
 // Bot PRs that never carry release-note content of their own.
 const NOISE = [
-  /^locale: (update|download) translations from POEditor/i,
+  /^locale: (update|download) translations/i,
   /^locale: new terms from code/i,
   /^Update locale strings/i,
   /^chore\(marketing\): update marketing visuals/i,

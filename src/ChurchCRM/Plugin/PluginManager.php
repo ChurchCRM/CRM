@@ -145,7 +145,7 @@ class PluginManager
 
         // Bind per-plugin gettext textdomains so plugin PHP code can call
         // dgettext('{pluginId}', '…') to translate without touching the
-        // core POeditor workflow. Only plugins that actually ship a
+        // core translation workflow. Only plugins that actually ship a
         // locale/textdomain directory are bound.
         $activeMetadata = [];
         foreach (self::$loadedPlugins as $pluginId => $_plugin) {

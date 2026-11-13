@@ -55,7 +55,7 @@ Done when `npm run locale:release` on an up-to-date `master` exits 0: nothing un
 Notes:
 
 - A PR merged with `GITHUB_TOKEN` fires no `push`; that no longer matters for locales, since nothing starts after a terms or translate merge.
-- `Locale: sync POEditor` and `Locale: upload translations` are retired ([#11416](https://github.com/ChurchCRM/CRM/issues/11416)) and run by hand only. Do not run them: a POEditor download overwrites translations made in the repo.
+- The retired locale sync/upload workflows ([#11416](https://github.com/ChurchCRM/CRM/issues/11416)) are manual-only and pending deletion. Do not run them: a download would overwrite translations made in the repo.
 - Plural handling: [locale-pipeline.md](locale-pipeline.md#plurals).
 
 ## Phase 2: Built and tested

@@ -54,7 +54,7 @@ function buildLocaleMap() {
     const map = {};
     for (const [name, entry] of Object.entries(localesConfig)) {
         if (entry.skip_audit) continue;
-        map[entry.poEditor] = { name, locale: entry.locale, countryCode: entry.countryCode };
+        map[entry.localeCode] = { name, locale: entry.locale, countryCode: entry.countryCode };
     }
     return map;
 }
@@ -66,8 +66,8 @@ function hasUntranslatedValues(terms) {
     );
 }
 
-function getBatchFiles(poEditorCode) {
-    const localeDir = path.join(config.terms.missing, poEditorCode);
+function getBatchFiles(localeCode) {
+    const localeDir = path.join(config.terms.missing, localeCode);
     if (!fs.existsSync(localeDir)) return [];
     return fs.readdirSync(localeDir)
         .filter(f => f.endsWith('.json'))
@@ -180,7 +180,7 @@ function pluralShapeProblems(existing, value) {
 
 function scriptsFor(code) {
     const locales = loadJSON(config.localesJson) || {};
-    return Object.values(locales).find(entry => String(entry.poEditor).toLowerCase() === code.toLowerCase())?.scripts;
+    return Object.values(locales).find(entry => String(entry.localeCode).toLowerCase() === code.toLowerCase())?.scripts;
 }
 
 function applyToBatch(code, absPath, incoming, { write = true } = {}) {

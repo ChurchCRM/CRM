@@ -26,7 +26,7 @@ function targetLocales() {
         .filter(([, entry]) => entry.super_base !== true)
         .map(([name, entry]) => ({
             name,
-            code: entry.poEditor,
+            code: entry.localeCode,
             locale: entry.locale,
             languageCode: entry.languageCode,
             skipAudit: entry.skip_audit === true,

@@ -60,7 +60,7 @@ test('obsolete terms are the JSON keys messages.po no longer has', () => {
     assert.deepEqual(files.obsoleteTerms(shapes, { Delete: 'x', Gone: 'y' }), ['Gone']);
 });
 
-test('the .po is written from the JSON, in POEditor layout', () => {
+test('the .po is written from the JSON, in the established PO layout', () => {
     const shapes = files.termShapes(entries, ['one', 'other']);
     const json = {
         Delete: 'Удалить',

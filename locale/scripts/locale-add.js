@@ -212,9 +212,9 @@ Examples:
                 return true;
             }
 
-            // Check by language code (the poEditor field)
+            // Check by locale code (the localeCode field)
             for (const [name, locale] of Object.entries(locales)) {
-                if (locale.poEditor === config.code) {
+                if (locale.localeCode === config.code) {
                     console.error(`❌ Code "${config.code}" already used by "${name}"`);
                     return true;
                 }
@@ -236,7 +236,7 @@ Examples:
      */
     createLanguageConfig(config) {
         return {
-            poEditor: config.code,
+            localeCode: config.code,
             locale: config.locale,
             languageCode: config.code,
             countryCode: config.country,

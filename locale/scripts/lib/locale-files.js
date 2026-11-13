@@ -17,7 +17,7 @@
  *             .po slots msgstr[0..n] follow the CLDR order of the locale's forms.
  */
 
-const { parsePoEntries, CLDR_PLURAL_FORMS } = require('./poeditor-plurals');
+const { parsePoEntries, CLDR_PLURAL_FORMS } = require('./locale-plurals');
 
 // Every count interpolated in this codebase is a whole number, so a locale needs only the CLDR
 // categories Intl.PluralRules can select for integers (Czech "many" is decimal-only, for example).
@@ -206,7 +206,7 @@ function poValue(entry, shapes, translations) {
     return shape.kind === 'plain' && filled(value) ? value : null;
 }
 
-// A fuzzy flag left by POEditor is kept on unchanged entries: the .mo includes fuzzy entries either way.
+// A fuzzy flag from the source catalog is kept on unchanged entries: the .mo includes fuzzy entries either way.
 function sameValue(block, entry, value) {
     if (entry.msgidPlural !== undefined) {
         return block.msgidPlural === entry.msgidPlural

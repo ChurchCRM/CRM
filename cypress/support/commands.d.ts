@@ -132,7 +132,7 @@ declare namespace Cypress {
      * an authenticated browser session for that user.
      *
      * localeValue must be the locale field from src/locale/locales.json
-     * (e.g. 'ar_EG', 'zh_CN', 'de_DE' — NOT the poEditor code).
+     * (e.g. 'ar_EG', 'zh_CN', 'de_DE' — NOT the localeCode).
      *
      * Designed for locale smoke tests only; never touches system-wide sLanguage config.
      * @param localeValue - The locale field value from locales.json

@@ -12,11 +12,11 @@ class LocaleInfo
     public $country;
     public $dataTables;
     private $name;
-    private $poLocaleId;
+    private $localeCode;
     private $localeConfig;
     
     /**
-     * Static cache for translation data from poeditor.json
+     * Static cache for translation data from locale-stats.json
      * Loaded once per request/session since file doesn't change
      * @var array<int, array<string, mixed>>|null
      */
@@ -47,7 +47,7 @@ class LocaleInfo
                 $this->language = $value['languageCode'];
                 $this->country = $value['countryCode'];
                 $this->dataTables = $value['dataTables'] ?? null;
-                $this->poLocaleId = $value['poEditor'];
+                $this->localeCode = $value['localeCode'];
                 $this->localeConfig = $value;
             }
         }
@@ -90,9 +90,9 @@ class LocaleInfo
     /**
      * @return string
      */
-    public function getPoLocaleId()
+    public function getLocaleCode()
     {
-        return $this->poLocaleId;
+        return $this->localeCode;
     }
 
     public function getLocale()
@@ -189,7 +189,7 @@ class LocaleInfo
     }
 
     /**
-     * Get the translation completion percentage from POEditor.
+     * Get the translation completion percentage from locale-stats.json.
      * Returns 100 if locale is English or not found.
      */
     public function getTranslationPercentage(): int
@@ -200,9 +200,9 @@ class LocaleInfo
 
         $translationData = self::loadTranslationData();
 
-        foreach ($translationData as $poLocale) {
-            if (strtolower($this->poLocaleId ?? '') === strtolower($poLocale['code'])) {
-                return (int) $poLocale['percentage'];
+        foreach ($translationData as $localeStat) {
+            if (strtolower($this->localeCode ?? '') === strtolower($localeStat['code'])) {
+                return (int) $localeStat['percentage'];
             }
         }
 
@@ -210,7 +210,7 @@ class LocaleInfo
     }
 
     /**
-     * Load translation data from POEditor file with static caching
+     * Load translation data from the locale stats file with static caching
      * File is loaded once per request since it doesn't change during execution
      * Throws exception if file is missing (indicates broken installation)
      * @return array<int, array<string, mixed>>
@@ -222,9 +222,9 @@ class LocaleInfo
             return self::$translationDataCache;
         }
 
-        // Load poeditor.json - throw exception if missing (broken installation)
-        $poeditorPath = SystemURLs::getDocumentRoot() . '/locale/poeditor.json';
-        $poLocalesFile = file_get_contents($poeditorPath);
+        // Load locale-stats.json - throw exception if missing (broken installation)
+        $statsPath = SystemURLs::getDocumentRoot() . '/locale/locale-stats.json';
+        $poLocalesFile = file_get_contents($statsPath);
         $poLocales = json_decode($poLocalesFile, true, 512);
 
         if (!isset($poLocales['result']['languages']) || !is_array($poLocales['result']['languages'])) {

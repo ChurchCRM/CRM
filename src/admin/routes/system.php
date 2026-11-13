@@ -692,7 +692,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         ];
 
         // Per-locale stats for the Display Preview: translation completeness %
-        // (from locale/poeditor.json) + whether the GNU locale is installed on
+        // (from locale/locale-stats.json) + whether the GNU locale is installed on
         // the host OS (so the admin knows date/number formatting will work).
         // The system-locale check shells out via LocaleService; if exec() is
         // disabled we degrade gracefully (systemAvailable = null = "unknown").
@@ -724,7 +724,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                     || in_array(str_replace('_', '-', $code), $availableNormalized, true);
             }
 
-            // Translation % comes from locale/poeditor.json; guard so a missing
+            // Translation % comes from locale/locale-stats.json; guard so a missing
             // file on a given install degrades to "not tracked" instead of 500.
             $showPercentage = false;
             $percentage     = 0;

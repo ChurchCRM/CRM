@@ -7,7 +7,7 @@ use ChurchCRM\Utils\LoggerUtils;
 /**
  * Plugin-local translation loader.
  *
- * Community plugins are **never** run through the main ChurchCRM POeditor
+ * Community plugins are **never** run through the main ChurchCRM translation
  * workflow. Instead, each plugin ships its own translations inside its
  * directory and the PluginManager wires them in at boot. This class holds
  * the two sides of that wiring:
@@ -17,8 +17,8 @@ use ChurchCRM\Utils\LoggerUtils;
  *    dedicated gettext textdomain whose name matches the plugin id. Plugin
  *    PHP code then calls `dgettext('my-plugin', 'Hello')` (or
  *    `_t('my-plugin', 'Hello')` via the helper in the skill) to translate.
- *    The default `messages` textdomain is untouched — POeditor never sees
- *    community strings.
+ *    The default `messages` textdomain is untouched — the core translation
+ *    flow never sees community strings.
  *
  * 2. {@see collectJsResources()} — for every loaded plugin that has a
  *    `locale/i18n/{xx_YY}.json` file, read it and return a

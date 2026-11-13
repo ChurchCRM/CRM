@@ -346,14 +346,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div><i class="fa-solid fa-circle-info me-2 mt-1"></i></div>
                 <div>
                   <h4 class="alert-title"><?= gettext("Missing or incorrect translations?") ?></h4>
-                  <p class="mb-2"><?= gettext("ChurchCRM translations are managed by the community on POEditor. You can help by") ?>:</p>
+                  <p class="mb-2"><?= gettext("ChurchCRM translations are managed by the community in the ChurchCRM GitHub repository. You can help by") ?>:</p>
                   <ul class="mb-2">
                     <li><?= gettext("Fixing incorrect or awkward translations in your language") ?></li>
                     <li><?= gettext("Translating missing strings to improve coverage") ?></li>
                     <li><?= gettext("Suggesting better phrasing for existing translations") ?></li>
                   </ul>
-                  <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm">
-                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext("Join the Translation Project on POEditor") ?>
+                  <a href="https://github.com/ChurchCRM/CRM" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm">
+                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext("Contribute translations on GitHub") ?>
                   </a>
                 </div>
               </div>

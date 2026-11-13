@@ -36,13 +36,13 @@ const LocaleConfig = {
         root: path.join(PROJECT_ROOT, 'locale/terms'),
         missing: path.join(PROJECT_ROOT, 'locale/terms/missing'),
         // Terms where value=key is intentionally correct (proper nouns, brand names, etc.)
-        // Used by poeditor-upload-missing.js to allow uploading English-unchanged terms.
+        // Used by the translate flow (locale-translate.js) for terms that are correct unchanged in English.
         englishOk: path.join(PROJECT_ROOT, 'locale/terms/english-ok.json'),
     },
 
-    poeditor: {
-        outputJson: path.join(PROJECT_ROOT, 'src/locale/poeditor.json'),
-        auditReport: path.join(PROJECT_ROOT, 'locale/poeditor-audit.md'),
+    audit: {
+        outputJson: path.join(PROJECT_ROOT, 'src/locale/locale-stats.json'),
+        auditReport: path.join(PROJECT_ROOT, 'locale/locale-audit.md'),
     },
 
     settings: {

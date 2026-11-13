@@ -8,9 +8,8 @@
  *
  * Output Files:
  * - Console: Formatted table output for immediate review
- * - src/locale/poeditor.json: per-locale counts the app reads for the translation % it shows (the
- *   file keeps its old name and layout until the app code moves off it)
- * - locale/poeditor-audit.md: Comprehensive markdown report
+ * - src/locale/locale-stats.json: per-locale counts the app reads for the translation % it shows
+ * - locale/locale-audit.md: Comprehensive markdown report
  *
  * Note: English locales (en, en-us, en-au, etc.) are excluded from missing locale
  * reports as they represent base locales rather than translation targets.
@@ -26,8 +25,8 @@ const { entryValue } = require('./lib/locale-files');
 class LocaleAuditor {
     constructor() {
         this.localesPath = config.localesJson;
-        this.outputPath = config.poeditor.outputJson;
-        this.reportPath = config.poeditor.auditReport;
+        this.outputPath = config.audit.outputJson;
+        this.reportPath = config.audit.auditReport;
         this.locales = null;
     }
 
@@ -63,8 +62,8 @@ class LocaleAuditor {
     }
 
     /**
-     * Translation counts for every locale, from the repo. Same layout as the old POEditor
-     * languages/list response, which the app reads from src/locale/poeditor.json.
+     * Translation counts for every locale, from the repo, in the layout the app
+     * reads from src/locale/locale-stats.json (a result.languages list).
      */
     computeRepoStats() {
         console.log('🌍 Counting translations in the repo...');
@@ -91,27 +90,27 @@ class LocaleAuditor {
     /**
      * Generate locale audit report
      */
-    generateAuditReport(poEditorData) {
+    generateAuditReport(statsData) {
         try {
             console.log('🔍 Generating locale audit report...\n');
 
-            // Get supported POEditor codes from locales.json
-            const supportedPOEditorCodes = [];
+            // Get supported locale codes from locales.json
+            const supportedLocaleCodes = [];
             for (const key in this.locales) {
-                supportedPOEditorCodes.push(this.locales[key].poEditor.toLowerCase());
+                supportedLocaleCodes.push(this.locales[key].localeCode.toLowerCase());
             }
 
             const localeData = [];
             const wipCandidates = [];
 
-            // Process POEditor languages
-            for (const language of poEditorData.result.languages) {
+            // Process languages
+            for (const language of statsData.result.languages) {
                 const name = language.name;
                 const code = language.code.toLowerCase();
                 const percentage = language.percentage;
                 const translations = language.translations;
 
-                if (supportedPOEditorCodes.indexOf(code) !== -1) {
+                if (supportedLocaleCodes.indexOf(code) !== -1) {
                     // Supported locale
                     localeData.push({
                         code: code,
@@ -178,7 +177,7 @@ class LocaleAuditor {
         markdown += `| Locale | Language | Translations | Percentage | Status | Supported |\n`;
         markdown += `|--------|----------|--------------|------------|--------|----------|\n`;
         
-        // Get all POEditor languages
+        // Get all languages
         const allLanguages = [];
         for (const language of wipCandidates) {
             allLanguages.push(language);

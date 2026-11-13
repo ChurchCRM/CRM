@@ -1,6 +1,6 @@
 {
   "Afrikaans": {
-    "poEditor": "af",
+    "localeCode": "af",
     "locale": "af_ZA",
     "languageCode": "af",
     "countryCode": "ZA",
@@ -15,7 +15,7 @@
     "scripts": ["Latin"]
   },
   "Albanian": {
-    "poEditor": "sq",
+    "localeCode": "sq",
     "locale": "sq_AL",
     "languageCode": "sq",
     "countryCode": "AL",
@@ -30,7 +30,7 @@
     "scripts": ["Latin"]
   },
   "Amharic - Ethiopia": {
-    "poEditor": "am",
+    "localeCode": "am",
     "locale": "am_ET",
     "languageCode": "am",
     "countryCode": "ET",
@@ -43,7 +43,7 @@
     "scripts": ["Ethiopic"]
   },
   "Arabic - Egypt": {
-    "poEditor": "ar",
+    "localeCode": "ar",
     "locale": "ar_EG",
     "languageCode": "ar",
     "countryCode": "EG",
@@ -57,7 +57,7 @@
     "scripts": ["Arabic"]
   },
   "Chinese - China": {
-    "poEditor": "zh-CN",
+    "localeCode": "zh-CN",
     "locale": "zh_CN",
     "languageCode": "zh-CN",
     "countryCode": "CN",
@@ -71,7 +71,7 @@
     "scripts": ["Han"]
   },
   "Chinese - Taiwan": {
-    "poEditor": "zh-TW",
+    "localeCode": "zh-TW",
     "locale": "zh_TW",
     "languageCode": "zh-TW",
     "countryCode": "TW",
@@ -85,7 +85,7 @@
     "scripts": ["Han"]
   },
   "Croatian": {
-    "poEditor": "hr",
+    "localeCode": "hr",
     "locale": "hr_HR",
     "languageCode": "hr",
     "countryCode": "HR",
@@ -100,7 +100,7 @@
     "scripts": ["Latin"]
   },
   "Czech": {
-    "poEditor": "cs",
+    "localeCode": "cs",
     "locale": "cs_CZ",
     "languageCode": "cs",
     "countryCode": "CZ",
@@ -114,7 +114,7 @@
     "scripts": ["Latin"]
   },
   "Dutch - Netherlands": {
-    "poEditor": "nl",
+    "localeCode": "nl",
     "locale": "nl_NL",
     "languageCode": "nl",
     "countryCode": "NL",
@@ -128,7 +128,7 @@
     "scripts": ["Latin"]
   },
   "English - Australia": {
-    "poEditor": "en-au",
+    "localeCode": "en-au",
     "locale": "en_AU",
     "languageCode": "en",
     "countryCode": "AU",
@@ -144,7 +144,7 @@
     "scripts": ["Latin"]
   },
   "English - Canada": {
-    "poEditor": "en-ca",
+    "localeCode": "en-ca",
     "locale": "en_CA",
     "languageCode": "en",
     "countryCode": "CA",
@@ -159,7 +159,7 @@
     "scripts": ["Latin"]
   },
   "English - Great Britain": {
-    "poEditor": "en",
+    "localeCode": "en",
     "locale": "en_GB",
     "languageCode": "en",
     "countryCode": "GB",
@@ -175,7 +175,7 @@
     "scripts": ["Latin"]
   },
   "English - Jamaica": {
-    "poEditor": "en-jm",
+    "localeCode": "en-jm",
     "locale": "en_JM",
     "languageCode": "en",
     "countryCode": "JM",
@@ -190,7 +190,7 @@
     "scripts": ["Latin"]
   },
   "English - South Africa": {
-    "poEditor": "en-za",
+    "localeCode": "en-za",
     "locale": "en_ZA",
     "languageCode": "en",
     "countryCode": "ZA",
@@ -205,7 +205,7 @@
     "scripts": ["Latin"]
   },
   "English - United States": {
-    "poEditor": "en-US",
+    "localeCode": "en-US",
     "locale": "en_US",
     "languageCode": "en",
     "countryCode": "US",
@@ -221,7 +221,7 @@
     "scripts": ["Latin"]
   },
   "Estonian": {
-    "poEditor": "et",
+    "localeCode": "et",
     "locale": "et_EE",
     "languageCode": "et",
     "countryCode": "EE",
@@ -236,7 +236,7 @@
     "scripts": ["Latin"]
   },
   "Filipino - Philippines": {
-    "poEditor": "fil",
+    "localeCode": "fil",
     "locale": "tl_PH",
     "languageCode": "tl",
     "countryCode": "PH",
@@ -251,7 +251,7 @@
     "scripts": ["Latin"]
   },
   "Finnish": {
-    "poEditor": "fi",
+    "localeCode": "fi",
     "locale": "fi_FI",
     "languageCode": "fi",
     "countryCode": "FI",
@@ -265,7 +265,7 @@
     "scripts": ["Latin"]
   },
   "French - France": {
-    "poEditor": "fr",
+    "localeCode": "fr",
     "locale": "fr_FR",
     "languageCode": "fr",
     "countryCode": "FR",
@@ -279,7 +279,7 @@
     "scripts": ["Latin"]
   },
   "German - Germany": {
-    "poEditor": "de",
+    "localeCode": "de",
     "locale": "de_DE",
     "languageCode": "de",
     "countryCode": "DE",
@@ -293,7 +293,7 @@
     "scripts": ["Latin"]
   },
   "Greek": {
-    "poEditor": "el",
+    "localeCode": "el",
     "locale": "el_GR",
     "languageCode": "el",
     "countryCode": "GR",
@@ -307,7 +307,7 @@
     "scripts": ["Greek"]
   },
   "Hebrew": {
-    "poEditor": "he",
+    "localeCode": "he",
     "locale": "he_IL",
     "languageCode": "he",
     "countryCode": "IL",
@@ -321,7 +321,7 @@
     "scripts": ["Hebrew"]
   },
   "Hindi - India": {
-    "poEditor": "hi",
+    "localeCode": "hi",
     "locale": "hi_IN",
     "languageCode": "hi",
     "countryCode": "IN",
@@ -335,7 +335,7 @@
     "scripts": ["Devanagari"]
   },
   "Hungarian": {
-    "poEditor": "hu",
+    "localeCode": "hu",
     "locale": "hu_HU",
     "languageCode": "hu",
     "countryCode": "HU",
@@ -349,7 +349,7 @@
     "scripts": ["Latin"]
   },
   "Indonesian - Indonesia": {
-    "poEditor": "id",
+    "localeCode": "id",
     "locale": "id_ID",
     "languageCode": "id",
     "countryCode": "ID",
@@ -363,7 +363,7 @@
     "scripts": ["Latin"]
   },
   "Italian - Italy": {
-    "poEditor": "it",
+    "localeCode": "it",
     "locale": "it_IT",
     "languageCode": "it",
     "countryCode": "IT",
@@ -377,7 +377,7 @@
     "scripts": ["Latin"]
   },
   "Japanese": {
-    "poEditor": "ja",
+    "localeCode": "ja",
     "locale": "ja_JP",
     "languageCode": "ja",
     "countryCode": "JP",
@@ -391,7 +391,7 @@
     "scripts": ["Han", "Hiragana", "Katakana"]
   },
   "Korean": {
-    "poEditor": "ko",
+    "localeCode": "ko",
     "locale": "ko_KR",
     "languageCode": "ko",
     "countryCode": "KR",
@@ -406,7 +406,7 @@
     "scripts": ["Hangul", "Han"]
   },
   "Malayalam - India": {
-    "poEditor": "ml",
+    "localeCode": "ml",
     "locale": "ml_IN",
     "languageCode": "ml",
     "countryCode": "IN",
@@ -419,7 +419,7 @@
     "scripts": ["Malayalam"]
   },
   "Norwegian": {
-    "poEditor": "nb",
+    "localeCode": "nb",
     "locale": "nb_NO",
     "languageCode": "nb",
     "countryCode": "NO",
@@ -433,7 +433,7 @@
     "scripts": ["Latin"]
   },
   "Polish": {
-    "poEditor": "pl",
+    "localeCode": "pl",
     "locale": "pl_PL",
     "languageCode": "pl",
     "countryCode": "PL",
@@ -447,7 +447,7 @@
     "scripts": ["Latin"]
   },
   "Portuguese - Brazil": {
-    "poEditor": "pt-br",
+    "localeCode": "pt-br",
     "locale": "pt_BR",
     "languageCode": "pt-BR",
     "countryCode": "BR",
@@ -461,7 +461,7 @@
     "scripts": ["Latin"]
   },
   "Portuguese - Portugal": {
-    "poEditor": "pt",
+    "localeCode": "pt",
     "locale": "pt_PT",
     "languageCode": "pt",
     "countryCode": "PT",
@@ -477,7 +477,7 @@
     "scripts": ["Latin"]
   },
   "Romanian - Romania": {
-    "poEditor": "ro",
+    "localeCode": "ro",
     "locale": "ro_RO",
     "languageCode": "ro",
     "countryCode": "RO",
@@ -491,7 +491,7 @@
     "scripts": ["Latin"]
   },
   "Russian": {
-    "poEditor": "ru",
+    "localeCode": "ru",
     "locale": "ru_RU",
     "languageCode": "ru",
     "countryCode": "RU",
@@ -505,7 +505,7 @@
     "scripts": ["Cyrillic"]
   },
   "Slovak": {
-    "poEditor": "sk",
+    "localeCode": "sk",
     "locale": "sk_SK",
     "languageCode": "sk",
     "countryCode": "SK",
@@ -517,7 +517,7 @@
     "scripts": ["Latin"]
   },
   "Spanish - Argentina": {
-    "poEditor": "es-AR",
+    "localeCode": "es-AR",
     "locale": "es_AR",
     "languageCode": "es",
     "countryCode": "AR",
@@ -531,7 +531,7 @@
     "scripts": ["Latin"]
   },
   "Spanish - Colombia": {
-    "poEditor": "es-CO",
+    "localeCode": "es-CO",
     "locale": "es_CO",
     "languageCode": "es",
     "countryCode": "CO",
@@ -545,7 +545,7 @@
     "scripts": ["Latin"]
   },
   "Spanish - El Salvador": {
-    "poEditor": "es-SV",
+    "localeCode": "es-SV",
     "locale": "es_SV",
     "languageCode": "es",
     "countryCode": "SV",
@@ -559,7 +559,7 @@
     "scripts": ["Latin"]
   },
   "Spanish - Mexico": {
-    "poEditor": "es-MX",
+    "localeCode": "es-MX",
     "locale": "es_MX",
     "languageCode": "es",
     "countryCode": "MX",
@@ -573,7 +573,7 @@
     "scripts": ["Latin"]
   },
   "Spanish - Spain": {
-    "poEditor": "es",
+    "localeCode": "es",
     "locale": "es_ES",
     "languageCode": "es",
     "countryCode": "ES",
@@ -588,7 +588,7 @@
     "scripts": ["Latin"]
   },
   "Swahili": {
-    "poEditor": "sw",
+    "localeCode": "sw",
     "locale": "sw",
     "languageCode": "sw",
     "countryCode": "TZ",
@@ -601,7 +601,7 @@
     "scripts": ["Latin"]
   },
   "Swedish": {
-    "poEditor": "sv",
+    "localeCode": "sv",
     "locale": "sv_SE",
     "languageCode": "sv",
     "countryCode": "SE",
@@ -615,7 +615,7 @@
     "scripts": ["Latin"]
   },
   "Tamil - India": {
-    "poEditor": "ta",
+    "localeCode": "ta",
     "locale": "ta_IN",
     "languageCode": "ta",
     "countryCode": "IN",
@@ -630,7 +630,7 @@
     "scripts": ["Tamil"]
   },
   "Telugu - India": {
-    "poEditor": "te",
+    "localeCode": "te",
     "locale": "te_IN",
     "languageCode": "te",
     "countryCode": "IN",
@@ -643,7 +643,7 @@
     "scripts": ["Telugu"]
   },
   "Thai": {
-    "poEditor": "th",
+    "localeCode": "th",
     "locale": "th_TH",
     "languageCode": "th",
     "countryCode": "TH",
@@ -657,7 +657,7 @@
     "scripts": ["Thai"]
   },
   "Turkish": {
-    "poEditor": "tr",
+    "localeCode": "tr",
     "locale": "tr_TR",
     "languageCode": "tr",
     "countryCode": "TR",
@@ -671,7 +671,7 @@
     "scripts": ["Latin"]
   },
   "Ukrainian": {
-    "poEditor": "uk",
+    "localeCode": "uk",
     "locale": "uk_UA",
     "languageCode": "uk",
     "countryCode": "UA",
@@ -685,7 +685,7 @@
     "scripts": ["Cyrillic"]
   },
   "Vietnamese": {
-    "poEditor": "vi",
+    "localeCode": "vi",
     "locale": "vi_VN",
     "languageCode": "vi",
     "countryCode": "VN",
