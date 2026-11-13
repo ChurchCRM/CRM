@@ -7,8 +7,8 @@
  * shims (UserEditor.php / SettingsUser.php, migrated to Admin MVC in #9173),
  * the /index.php -> /v2/dashboard redirect, and the 404 flow for paths that
  * don't resolve to a real .php file under the doc root (bare 404 for
- * js/css-looking paths, the standalone errors/not-found.php page for
- * everything else).
+ * js/css-looking paths, the in-app 404 for a signed-in user; a signed-out
+ * visitor gets the standalone errors/not-found.php page).
  */
 describe("API Private - index.php Routing", () => {
     beforeEach(() => {
@@ -26,44 +26,26 @@ describe("API Private - index.php Routing", () => {
     it("no longer special-cases the deleted UserEditor.php shim", () => {
         cy.request({ url: "/UserEditor.php?PersonID=1", followRedirect: false, failOnStatusCode: false })
             .then((response) => {
-                expect(response.status).to.equal(302);
-                expect(response.headers.location).to.include("/errors/not-found.php");
-                expect(response.headers.location).to.not.include("/admin/system/users");
+                expect(response.status).to.equal(404);
+                expect(response.body).to.include("Page Not Found");
             });
     });
 
     it("no longer special-cases the deleted SettingsUser.php shim", () => {
         cy.request({ url: "/SettingsUser.php", followRedirect: false, failOnStatusCode: false })
             .then((response) => {
-                expect(response.status).to.equal(302);
-                expect(response.headers.location).to.include("/errors/not-found.php");
-                expect(response.headers.location).to.not.include("/admin/system/users");
+                expect(response.status).to.equal(404);
+                expect(response.body).to.include("Page Not Found");
             });
     });
 
-    it("redirects an unresolved page path to the standalone 404 page", () => {
-        cy.request({ url: "/this-page-was-never-real.php", followRedirect: false, failOnStatusCode: false })
-            .then((redirectResponse) => {
-                expect(redirectResponse.status).to.equal(302);
-                expect(redirectResponse.headers.location).to.include("/errors/not-found.php");
-
-                // Use new URL() to resolve the Location header against baseUrl — Cypress
-                // cy.request concatenates baseUrl + url for paths starting with '/', which
-                // in a subdir install doubles the prefix (e.g. /churchcrm/ + /churchcrm/errors/…
-                // → /churchcrm/churchcrm/errors/…). Constructing an absolute URL first
-                // prevents Cypress from prepending baseUrl again.
-                const resolvedUrl = new URL(
-                    redirectResponse.headers.location,
-                    Cypress.config('baseUrl')
-                ).href;
-                cy.request({ url: resolvedUrl, failOnStatusCode: false })
-                    .then((finalResponse) => {
-                        expect(finalResponse.status).to.equal(404);
-                        expect(finalResponse.body).to.include("Page Not Found");
-                        expect(finalResponse.body).to.include("this-page-was-never-real.php");
-                        expect(finalResponse.body).to.include("/skin/v2/error.min.css");
-                    });
-            });
+    it("shows the in-app 404 with the application header to a signed-in user", () => {
+        cy.request({ url: "/this-page-was-never-real.php", failOnStatusCode: false }).then((response) => {
+            expect(response.status).to.equal(404);
+            expect(response.body).to.include("Page Not Found");
+            expect(response.body).to.include("navbar-brand");
+            expect(response.body).to.not.include("standalone-page");
+        });
     });
 
     it("returns a bare 404 for a missing static asset instead of the HTML error page", () => {

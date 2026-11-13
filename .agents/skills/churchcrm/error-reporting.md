@@ -32,7 +32,7 @@ Add ARIA roles to any callout passed as `$extraHtml`.
 
 Pages that must render without the app booting (`src/errors/`, the PHP requirements check) and the in-app version-mismatch page (`src/external/templates/system-db-update.php`) use the standalone Tabler layout in `src/errors/template.php`. It needs no autoloader, `Config.php` or gettext, and parses on old PHP. Pass the install root path: `renderErrorPage($rootPath, $title, $icon, $variant, $contentHtml, $issueBody)`, or `renderStandaloneHeader()` / `renderStandaloneFooter()` for a custom body. Error pages default to `standaloneRootPath()`; an includer sets `$errorRootPath` first. Styles come from `webpack/error.js` (Tabler, light and dark through `theme.min.js`); no CDN.
 
-The unknown-page fallback in `src/index.php` redirects to `errors/not-found.php`, which renders through this layout, so root-level legacy URLs such as `/old-page.php` and subdirectory installs get the same 404 page.
+The unknown-page fallback in `src/index.php` shows the in-app 404 (application header, menu and footer) to a signed-in user. A signed-out visitor is redirected to `errors/not-found.php`, which renders through the standalone layout, so root-level legacy URLs such as `/old-page.php` and subdirectory installs get a 404 page either way.
 
 ## Report button
 
