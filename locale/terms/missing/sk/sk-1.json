@@ -1,6 +1,30 @@
 {
-  "Cancelled": "",
-  "How to correct this": "",
-  "Save changes": "",
-  "Sending…": ""
+  "%d family": {
+    "one": "",
+    "few": "",
+    "many": "",
+    "other": ""
+  },
+  "Change role of selected members: {{total}}": "",
+  "Enter a setup key manually": "",
+  "Enter fullscreen": "",
+  "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private.": "",
+  "Enter your username or email": "",
+  "Exit fullscreen": "",
+  "Families that pledged for %s and have no pledge for %s.": "",
+  "Find families that pledged in one fiscal year and not in another.": "",
+  "Hide setup key": "",
+  "Inactive families are left out. Payments do not count as pledges.": "",
+  "Invalid request.": "",
+  "Members moved to {{role}}: {{total}}": "",
+  "Members not changed because they left the group or a ministry manages their role: {{total}}": "",
+  "Missing Pledges": "",
+  "No active family pledged for %s without a pledge for %s.": "",
+  "No pledge for": "",
+  "Pledged for": "",
+  "Select at least one member.": "",
+  "Setup key": "",
+  "The selected members already have that role.": "",
+  "Unable to copy automatically. Select and copy the setup key manually.": "",
+  "Username or Email Address": ""
 }
