@@ -24,6 +24,7 @@ $tempRoot = sys_get_temp_dir() . '/crm-upgrade-batches-' . bin2hex(random_bytes(
 mkdir($tempRoot . '/mysql', 0700, true);
 mkdir($tempRoot . '/scripts');
 symlink($root . '/locale', $tempRoot . '/locale');
+symlink($root . '/vendor', $tempRoot . '/vendor');
 file_put_contents($tempRoot . '/composer.json', '{"version":"7.8.1"}');
 SystemURLs::init('', [], $root);
 SystemConfig::init();
@@ -109,6 +110,7 @@ try {
         $admin->exec("DROP DATABASE `$schema`");
     }
     unlink($tempRoot . '/locale');
+    unlink($tempRoot . '/vendor');
     foreach (glob($tempRoot . '/scripts/*') as $file) { unlink($file); }
     foreach (glob($tempRoot . '/mysql/*') as $file) { unlink($file); }
     rmdir($tempRoot . '/scripts');

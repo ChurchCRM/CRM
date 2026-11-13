@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 05:24+0000\n"
+"POT-Creation-Date: 2026-11-13 21:05+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,8 +135,8 @@ msgstr[0] ""
 msgstr[1] ""
 
 #, php-format
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -161,6 +161,12 @@ msgstr[1] ""
 #, php-format
 msgid "%d failed (all time)"
 msgstr ""
+
+#, php-format
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] ""
+msgstr[1] ""
 
 #, php-format
 msgid "%d files have failed integrity validation."
@@ -729,7 +735,7 @@ msgstr ""
 msgid "A theme is a folder your church uploads to Include/themes/ on the server. The system default ships with ChurchCRM."
 msgstr ""
 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
 msgstr ""
 
 msgid "A valid person must be selected."
@@ -1088,9 +1094,6 @@ msgid "Add a second step to your sign-in, so your password alone is not enough t
 msgstr ""
 
 msgid "Add all cart items to a group"
-msgstr ""
-
-msgid "Add all to Cart"
 msgstr ""
 
 msgid "Add an email"
@@ -1643,9 +1646,6 @@ msgstr ""
 msgid "An automatic database upgrade was attempted but failed. Please review the error below and contact your system administrator."
 msgstr ""
 
-msgid "An error occurred"
-msgstr ""
-
 msgid "An error occurred during demo data import"
 msgstr ""
 
@@ -2024,7 +2024,7 @@ msgstr ""
 msgid "Assignment"
 msgstr ""
 
-msgid "Assignment cancelled"
+msgid "Assignment canceled"
 msgstr ""
 
 msgid "Assignment not found"
@@ -2040,9 +2040,6 @@ msgid "At least one family member is required"
 msgstr ""
 
 msgid "At least one fund allocation is required"
-msgstr ""
-
-msgid "At least one fund must have a non-zero amount"
 msgstr ""
 
 msgid "At least one fund must have a non-zero amount."
@@ -2270,9 +2267,6 @@ msgid "Back to Users"
 msgstr ""
 
 msgid "Back to editing"
-msgstr ""
-
-msgid "Back to login"
 msgstr ""
 
 msgid "Back to my schedule"
@@ -2513,6 +2507,9 @@ msgid "Birthday coming up!"
 msgstr ""
 
 msgid "Birthday greeting"
+msgstr ""
+
+msgid "Birthday today"
 msgstr ""
 
 msgid "Birthdays"
@@ -2812,10 +2809,10 @@ msgstr ""
 msgid "Cancel this occurrence"
 msgstr ""
 
-msgid "Cancelled"
+msgid "Canceled"
 msgstr ""
 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
 msgstr ""
 
 msgid "Cannot Delete Event Type"
@@ -3008,7 +3005,7 @@ msgstr ""
 msgid "Change required"
 msgstr ""
 
-msgid "Change role"
+msgid "Change role of selected members: {{total}}"
 msgstr ""
 
 msgid "Change the family address and contact details, and add a family member for review."
@@ -3535,6 +3532,9 @@ msgstr ""
 msgid "Church website"
 msgstr ""
 
+msgid "ChurchCRM System Check"
+msgstr ""
+
 msgid "ChurchCRM Test Email"
 msgstr ""
 
@@ -3557,9 +3557,6 @@ msgid "ChurchCRM version"
 msgstr ""
 
 msgid "City"
-msgstr ""
-
-msgid "City is required"
 msgstr ""
 
 msgid "City is required."
@@ -3636,9 +3633,6 @@ msgid "Clear all data and start fresh. Cannot be undone."
 msgstr ""
 
 msgid "Clear all items from cart"
-msgstr ""
-
-msgid "Clear filter"
 msgstr ""
 
 msgid "Clear selection"
@@ -3749,7 +3743,7 @@ msgstr ""
 msgid "Colombia"
 msgstr ""
 
-msgid "Colour"
+msgid "Color"
 msgstr ""
 
 msgid "Column was automatically matched to a ChurchCRM field."
@@ -4032,9 +4026,6 @@ msgstr ""
 msgid "Contributors"
 msgstr ""
 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr ""
-
 msgid "Convert"
 msgstr ""
 
@@ -4221,6 +4212,9 @@ msgstr ""
 msgid "Count"
 msgstr ""
 
+msgid "Count active installations and upgrade outcomes"
+msgstr ""
+
 msgid "Count unique installs"
 msgstr ""
 
@@ -4363,9 +4357,6 @@ msgid "Creates {{total}} events, on day {{day}} of each month from {{first}} to 
 msgstr ""
 
 msgid "Creates {{total}} events, on the {{week}} {{day}} of each month from {{first}} to {{last}}"
-msgstr ""
-
-msgid "Creating Backup..."
 msgstr ""
 
 msgid "Creating a ministry requires volunteer manager access"
@@ -4583,13 +4574,13 @@ msgstr ""
 msgid "Database dump only (.sql)"
 msgstr ""
 
+msgid "Database engine and major/minor version"
+msgstr ""
+
 msgid "Database information confirmation and correction report signer"
 msgstr ""
 
 msgid "Database reset failed"
-msgstr ""
-
-msgid "Database reset failed."
 msgstr ""
 
 msgid "Database restore failed"
@@ -5135,9 +5126,6 @@ msgstr ""
 msgid "Devices and passkeys"
 msgstr ""
 
-msgid "Diagnose failed installs and database upgrades"
-msgstr ""
-
 msgid "Did Not Attend"
 msgstr ""
 
@@ -5526,9 +5514,6 @@ msgstr ""
 msgid "Edit custom properties for a group member"
 msgstr ""
 
-msgid "Edit event"
-msgstr ""
-
 msgid "Edit existing pledge or payment"
 msgstr ""
 
@@ -5768,7 +5753,7 @@ msgstr ""
 msgid "Email/Username"
 msgstr ""
 
-msgid "Emailed sign-in code and link cancelled"
+msgid "Emailed sign-in code and link canceled"
 msgstr ""
 
 msgid "Emailed verification link"
@@ -5799,9 +5784,6 @@ msgid "Empty your entire cart?"
 msgstr ""
 
 msgid "Enable"
-msgstr ""
-
-msgid "Enable (full)"
 msgstr ""
 
 msgid "Enable Email"
@@ -5870,6 +5852,9 @@ msgstr ""
 msgid "Enable the MailChimp plugin to sync contacts"
 msgstr ""
 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr ""
+
 msgid "Enable the use of numbered donation envelopes for tracking contributions"
 msgstr ""
 
@@ -5910,9 +5895,6 @@ msgid "End date must be on or after the start date"
 msgstr ""
 
 msgid "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again."
-msgstr ""
-
-msgid "End time"
 msgstr ""
 
 msgid "End time must be after start time."
@@ -6003,6 +5985,9 @@ msgstr ""
 msgid "Enter a second address before marking it as the mailing address"
 msgstr ""
 
+msgid "Enter a setup key manually"
+msgstr ""
+
 msgid "Enter a street address first."
 msgstr ""
 
@@ -6026,6 +6011,9 @@ msgid "Enter email subject…"
 msgstr ""
 
 msgid "Enter event description..."
+msgstr ""
+
+msgid "Enter fullscreen"
 msgstr ""
 
 msgid "Enter group name"
@@ -6056,6 +6044,9 @@ msgid "Enter the 6-digit code from your authenticator app"
 msgstr ""
 
 msgid "Enter the 6-digit code from your authenticator app to complete login"
+msgstr ""
+
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
 msgstr ""
 
 msgid "Enter valid report dates."
@@ -6092,6 +6083,9 @@ msgid "Enter your password"
 msgstr ""
 
 msgid "Enter your username and password as usual"
+msgstr ""
+
+msgid "Enter your username or email"
 msgstr ""
 
 msgid "Entering a Prompt value will allow the association of a free-form value."
@@ -6177,10 +6171,7 @@ msgstr ""
 msgid "Errors"
 msgstr ""
 
-msgid "Errors only"
-msgstr ""
-
-msgid "Errors — server errors and JS exceptions"
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
 msgstr ""
 
 msgid "Est. Value"
@@ -6433,6 +6424,9 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
+msgid "Exit fullscreen"
+msgstr ""
+
 msgid "Expand"
 msgstr ""
 
@@ -6638,9 +6632,6 @@ msgstr ""
 msgid "Failed to delete link"
 msgstr ""
 
-msgid "Failed to delete note"
-msgstr ""
-
 msgid "Failed to delete note."
 msgstr ""
 
@@ -6726,9 +6717,6 @@ msgid "Failed to install plugin from URL"
 msgstr ""
 
 msgid "Failed to list plugins"
-msgstr ""
-
-msgid "Failed to load approved plugin list"
 msgstr ""
 
 msgid "Failed to load approved plugin list."
@@ -6957,6 +6945,10 @@ msgstr ""
 msgid "Families that could not be geocoded: {{total}}"
 msgstr ""
 
+#, php-format
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr ""
+
 msgid "Families to receive confirmation emails: {{total}}"
 msgstr ""
 
@@ -7092,7 +7084,7 @@ msgstr ""
 msgid "Family removed from cart"
 msgstr ""
 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
 msgstr ""
 
 msgid "Family roles whose members may sign in to the Member Portal, as a comma-separated list of role ids."
@@ -7309,6 +7301,9 @@ msgid "Find an event"
 msgstr ""
 
 msgid "Find duplicate addresses and people with no email"
+msgstr ""
+
+msgid "Find families that pledged in one fiscal year and not in another."
 msgstr ""
 
 msgid "Find in MailChimp: Audience > Settings > Audience name and defaults > Audience ID"
@@ -8312,10 +8307,10 @@ msgstr ""
 msgid "Help Wanted"
 msgstr ""
 
-msgid "Help improve ChurchCRM"
+msgid "Help on types.."
 msgstr ""
 
-msgid "Help on types.."
+msgid "Help us find and fix problems?"
 msgstr ""
 
 msgid "Help wanted could not be saved"
@@ -8358,6 +8353,9 @@ msgid "Hide advanced options"
 msgstr ""
 
 msgid "Hide deceased members from the printed directory and CSV exports."
+msgstr ""
+
+msgid "Hide setup key"
 msgstr ""
 
 msgid "Highest Sale"
@@ -8743,6 +8741,9 @@ msgstr ""
 msgid "Inactive Groups"
 msgstr ""
 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr ""
+
 msgid "Inactive status can only be toggled for the classifications list"
 msgstr ""
 
@@ -8851,22 +8852,31 @@ msgstr ""
 msgid "Install a TLS/SSL certificate for secure connections"
 msgstr ""
 
-msgid "Install and upgrade failure details"
-msgstr ""
-
 msgid "Install failed"
 msgstr ""
 
 msgid "Install from URL"
 msgstr ""
 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr ""
+
 msgid "Install stable {{version}}"
+msgstr ""
+
+msgid "Install — installation and upgrade statistics (default)"
 msgstr ""
 
 msgid "Installation ID"
 msgstr ""
 
 msgid "Installation UUID"
+msgstr ""
+
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr ""
+
+msgid "Installation profile"
 msgstr ""
 
 msgid "Installed"
@@ -9032,6 +9042,9 @@ msgid "Invalid report options."
 msgstr ""
 
 msgid "Invalid request data"
+msgstr ""
+
+msgid "Invalid request."
 msgstr ""
 
 msgid "Invalid server URL format."
@@ -9691,13 +9704,13 @@ msgstr ""
 msgid "Loading..."
 msgstr ""
 
-msgid "Loading…"
-msgstr ""
-
 msgid "Local development"
 msgstr ""
 
 msgid "Locale"
+msgstr ""
+
+msgid "Locale (Errors and Full)"
 msgstr ""
 
 msgid "Localization"
@@ -9754,9 +9767,6 @@ msgid "Login"
 msgstr ""
 
 msgid "Login Name"
-msgstr ""
-
-msgid "Login Name is Required"
 msgstr ""
 
 msgid "Login Name is required"
@@ -10288,6 +10298,12 @@ msgstr ""
 msgid "Members copied: {{total}}"
 msgstr ""
 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr ""
+
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr ""
+
 msgid "Members see only the calendars switched on here. Birthdays and anniversaries show first names and last initials only."
 msgstr ""
 
@@ -10478,6 +10494,9 @@ msgid "Missing PHP ZipArchive"
 msgstr ""
 
 msgid "Missing People"
+msgstr ""
+
+msgid "Missing Pledges"
 msgstr ""
 
 msgid "Missing calendar access token"
@@ -10802,6 +10821,9 @@ msgstr ""
 msgid "Never sent"
 msgstr ""
 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr ""
+
 msgid "Never signed in"
 msgstr ""
 
@@ -11018,6 +11040,10 @@ msgid "No active event assignment"
 msgstr ""
 
 msgid "No active events found."
+msgstr ""
+
+#, php-format
+msgid "No active family pledged for %s without a pledge for %s."
 msgstr ""
 
 msgid "No active fundraisers found."
@@ -11347,6 +11373,9 @@ msgid "No photo was sent."
 msgstr ""
 
 msgid "No pledge"
+msgstr ""
+
+msgid "No pledge for"
 msgstr ""
 
 msgid "No pledges found for the selected fiscal year"
@@ -11849,10 +11878,10 @@ msgstr ""
 msgid "OPcache is not enabled. Enabling it is a low-risk way to speed up PHP page loads."
 msgstr ""
 
-msgid "OS family"
+msgid "OS family (Errors and Full)"
 msgstr ""
 
-msgid "Occurrence cancelled"
+msgid "Occurrence canceled"
 msgstr ""
 
 msgid "Occurrence not found"
@@ -12239,12 +12268,6 @@ msgstr ""
 msgid "Optional short summary shown as inbox preview text beside the subject line. Leave blank to let the email client auto-generate from the body. Per-email types (password reset, new member, verification) set their own preheader; this is a fallback."
 msgstr ""
 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr ""
-
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr ""
-
 msgid "Optional · up to {{max}} welcome"
 msgstr ""
 
@@ -12364,7 +12387,7 @@ msgstr ""
 msgid "PHP format for date picker inputs. Default: Y-m-d"
 msgstr ""
 
-msgid "PHP version"
+msgid "PHP version (Errors and Full)"
 msgstr ""
 
 msgid "PHPMailer SMTP session"
@@ -13200,6 +13223,9 @@ msgstr ""
 msgid "Pledged but not yet paid"
 msgstr ""
 
+msgid "Pledged for"
+msgstr ""
+
 msgid "Pledges"
 msgstr ""
 
@@ -13426,7 +13452,7 @@ msgstr ""
 msgid "Printed at the top of PDF letters that use a graphic letterhead, such as giving statements. Without one, letters print the church name and address."
 msgstr ""
 
-msgid "Prioritise translations"
+msgid "Prioritize translations"
 msgstr ""
 
 #. plugin:mailchimp:section:4:title
@@ -13639,9 +13665,6 @@ msgid "Range end must be a valid YYYY-MM-DD date."
 msgstr ""
 
 msgid "Range start must be a valid YYYY-MM-DD date."
-msgstr ""
-
-msgid "Range start must be before range end"
 msgstr ""
 
 msgid "Range start must be before range end."
@@ -13934,9 +13957,6 @@ msgstr ""
 msgid "Remove Volunteer"
 msgstr ""
 
-msgid "Remove all from Cart"
-msgstr ""
-
 msgid "Remove coordinator"
 msgstr ""
 
@@ -14030,6 +14050,9 @@ msgstr ""
 msgid "Report Heading"
 msgstr ""
 
+msgid "Report Issue"
+msgstr ""
+
 msgid "Report Settings"
 msgstr ""
 
@@ -14040,9 +14063,6 @@ msgid "Report Type"
 msgstr ""
 
 msgid "Report an Issue"
-msgstr ""
-
-msgid "Report an issue"
 msgstr ""
 
 msgid "Report not found"
@@ -14085,6 +14105,9 @@ msgid "Required permission"
 msgstr ""
 
 msgid "Required. Used on all reports and communications."
+msgstr ""
+
+msgid "Requirement"
 msgstr ""
 
 msgid "Requirement not found"
@@ -14184,6 +14207,9 @@ msgid "Retry"
 msgstr ""
 
 msgid "Retry Download"
+msgstr ""
+
+msgid "Return Home"
 msgstr ""
 
 msgid "Return to Dashboard"
@@ -14528,9 +14554,6 @@ msgstr ""
 msgid "Save and Add New Family"
 msgstr ""
 
-msgid "Save changes"
-msgstr ""
-
 msgid "Save changes to this category name"
 msgstr ""
 
@@ -14764,6 +14787,9 @@ msgstr ""
 msgid "Security token missing. Please refresh the page."
 msgstr ""
 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr ""
+
 msgid "See family contact details"
 msgstr ""
 
@@ -14893,6 +14919,9 @@ msgstr ""
 msgid "Select at least one classification to include in the directory."
 msgstr ""
 
+msgid "Select at least one member."
+msgstr ""
+
 msgid "Select calendars..."
 msgstr ""
 
@@ -14900,9 +14929,6 @@ msgid "Select classifications to include"
 msgstr ""
 
 msgid "Select date"
-msgstr ""
-
-msgid "Select event"
 msgstr ""
 
 msgid "Select event type..."
@@ -14918,9 +14944,6 @@ msgid "Select none"
 msgstr ""
 
 msgid "Select one deposit to print a bank slip."
-msgstr ""
-
-msgid "Select role"
 msgstr ""
 
 msgid "Select the type of record this property applies to"
@@ -15081,9 +15104,6 @@ msgstr ""
 msgid "Sending..."
 msgstr ""
 
-msgid "Sending…"
-msgstr ""
-
 msgid "Sending… {{done}} of {{total}}"
 msgstr ""
 
@@ -15102,6 +15122,9 @@ msgid "Sent by"
 msgstr ""
 
 msgid "Sep"
+msgstr ""
+
+msgid "Separate production, demo, and test installs"
 msgstr ""
 
 msgid "September"
@@ -15266,11 +15289,23 @@ msgstr ""
 msgid "Setup Required"
 msgstr ""
 
+msgid "Setup key"
+msgstr ""
+
 #. Context: countries
 msgid "Seychelles"
 msgstr ""
 
 msgid "Share"
+msgstr ""
+
+msgid "Share anonymous install statistics?"
+msgstr ""
+
+msgid "Share error and usage reports"
+msgstr ""
+
+msgid "Share install statistics"
 msgstr ""
 
 msgid "Shared addresses fixed: {{total}}"
@@ -15283,6 +15318,12 @@ msgid "Shared by"
 msgstr ""
 
 msgid "Shared emails that stop people from signing in"
+msgstr ""
+
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr ""
+
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
 msgstr ""
 
 msgid "Shipped with ChurchCRM."
@@ -15611,6 +15652,9 @@ msgstr ""
 msgid "Somalia (Soomaaliya)"
 msgstr ""
 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr ""
+
 msgid "Some application prerequisites are not met"
 msgstr ""
 
@@ -15780,9 +15824,6 @@ msgid "Start Time"
 msgstr ""
 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
-msgstr ""
-
-msgid "Start time"
 msgstr ""
 
 msgid "Start typing a name"
@@ -15991,6 +16032,9 @@ msgid "Sundays"
 msgstr ""
 
 msgid "Sundays with no class are left off the sheet."
+msgstr ""
+
+msgid "Support"
 msgstr ""
 
 #. plugin:external-backup:section:5:title
@@ -16219,9 +16263,6 @@ msgid "Teams, positions and the people who fill them"
 msgstr ""
 
 msgid "Technical Details"
-msgstr ""
-
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
 msgstr ""
 
 msgid "Tell the church office whether the family details are still right."
@@ -16541,7 +16582,7 @@ msgstr ""
 msgid "The asset path \"%s\" is not allowed."
 msgstr ""
 
-msgid "The assignment could not be cancelled"
+msgid "The assignment could not be canceled"
 msgstr ""
 
 msgid "The assignment message will be sent again"
@@ -16792,7 +16833,7 @@ msgstr ""
 msgid "The note you are trying to edit no longer exists."
 msgstr ""
 
-msgid "The occurrence could not be cancelled"
+msgid "The occurrence could not be canceled"
 msgstr ""
 
 msgid "The occurrence could not be deleted"
@@ -16814,6 +16855,9 @@ msgid "The original volunteer keeps the position. Both are told."
 msgstr ""
 
 msgid "The page you asked for does not exist. It may have been moved or removed."
+msgstr ""
+
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
 msgstr ""
 
 msgid "The page you tried to visit requires special permissions that your account does not currently have."
@@ -16989,6 +17033,9 @@ msgid "The selected file exceeds this servers maximum upload size of"
 msgstr ""
 
 msgid "The selected group was not found. Please select a valid group."
+msgstr ""
+
+msgid "The selected members already have that role."
 msgstr ""
 
 msgid "The selected person was not found."
@@ -17330,7 +17377,7 @@ msgstr ""
 msgid "This calendar link is invalid or has been revoked. Ask the church for a current link."
 msgstr ""
 
-msgid "This date was cancelled. Nothing more is needed from you."
+msgid "This date was canceled. Nothing more is needed from you."
 msgstr ""
 
 msgid "This device"
@@ -17495,7 +17542,7 @@ msgstr ""
 msgid "This occurrence has already happened and its assignments can no longer be changed"
 msgstr ""
 
-msgid "This occurrence has been cancelled"
+msgid "This occurrence has been canceled"
 msgstr ""
 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
@@ -18203,6 +18250,9 @@ msgstr ""
 msgid "Ukrainian"
 msgstr ""
 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr ""
+
 msgid "Unable to copy to clipboard. Please copy the URL manually."
 msgstr ""
 
@@ -18252,6 +18302,9 @@ msgid "Unconfirmed email"
 msgstr ""
 
 msgid "Underpaid"
+msgstr ""
+
+msgid "Understand database compatibility"
 msgstr ""
 
 msgid "Understand deployments"
@@ -18693,6 +18746,9 @@ msgstr ""
 msgid "Username and password are required."
 msgstr ""
 
+msgid "Username or Email Address"
+msgstr ""
+
 msgid "Users"
 msgstr ""
 
@@ -18945,9 +19001,6 @@ msgstr ""
 msgid "View active only"
 msgstr ""
 
-msgid "View all"
-msgstr ""
-
 msgid "View all (including inactive)"
 msgstr ""
 
@@ -18975,9 +19028,6 @@ msgstr ""
 msgid "View class roster, teacher assignments, and contact information"
 msgstr ""
 
-msgid "View event"
-msgstr ""
-
 msgid "View family details, members, and timeline"
 msgstr ""
 
@@ -18994,9 +19044,6 @@ msgid "View inactive only"
 msgstr ""
 
 msgid "View my schedule"
-msgstr ""
-
-msgid "View person"
 msgstr ""
 
 msgid "View pledge or payment details"
@@ -19096,7 +19143,7 @@ msgstr ""
 msgid "Volunteering"
 msgstr ""
 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
 msgstr ""
 
 msgid "Volunteers"
@@ -19259,9 +19306,6 @@ msgid "Warning: {{chosen}} is missing security fixes included in {{latest}}. Onl
 msgstr ""
 
 msgid "Warnings"
-msgstr ""
-
-msgid "Warnings — warnings, errors, and JS exceptions"
 msgstr ""
 
 msgid "We could not find the family you were looking for."
@@ -19817,9 +19861,6 @@ msgstr ""
 msgid "You do not have permission to delete this note."
 msgstr ""
 
-msgid "You do not have permission to edit this note"
-msgstr ""
-
 msgid "You do not have permission to edit this note."
 msgstr ""
 
@@ -19921,9 +19962,6 @@ msgstr ""
 msgid "Your CSV has duplicate column names. Rename the duplicate columns (e.g. add \"(2)\" to the second one) and upload again."
 msgstr ""
 
-msgid "Your Cart is Empty"
-msgstr ""
-
 msgid "Your ChurchCRM Account was Deleted."
 msgstr ""
 
@@ -19999,6 +20037,9 @@ msgstr ""
 msgid "Your child"
 msgstr ""
 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr ""
+
 msgid "Your code"
 msgstr ""
 
@@ -20009,6 +20050,15 @@ msgid "Your current access levels (read-only)"
 msgstr ""
 
 msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
+msgstr ""
+
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr ""
+
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr ""
+
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr ""
 
 msgid "Your database already contains data"
@@ -20125,9 +20175,6 @@ msgstr ""
 msgid "Zip Code"
 msgstr ""
 
-msgid "Zip code is required"
-msgstr ""
-
 msgid "ZipArchive extension required for upgrades"
 msgstr ""
 
@@ -20156,9 +20203,6 @@ msgid "already serving as {{position}}"
 msgstr ""
 
 msgid "already staffed by this team"
-msgstr ""
-
-msgid "always sent"
 msgstr ""
 
 msgid "am / pm"
@@ -20348,16 +20392,10 @@ msgstr ""
 msgid "invalid calendar pinning"
 msgstr ""
 
-msgid "invalid event type id"
-msgstr ""
-
 msgid "invalid export value"
 msgstr ""
 
 msgid "invalid group request"
-msgstr ""
-
-msgid "invalid status value"
 msgstr ""
 
 msgid "is disabled"

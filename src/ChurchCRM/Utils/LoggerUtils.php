@@ -37,6 +37,10 @@ class LoggerUtils
 
     public static function getLogLevel(): Level
     {
+        if (!SystemConfig::isInitialized()) {
+            return Level::Info;
+        }
+
         try {
             $level = SystemConfig::getValue('sLogLevel');
             return Level::tryFrom(intval($level)) ?? Level::Info;

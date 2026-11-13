@@ -337,6 +337,14 @@ describe("Volunteer v2 — a team linked to a Sunday School class (D23)", () => 
             admin("DELETE", `${GROUPS_URL}/${classA}/removeperson/${PERSON_TEACHER}`, null, 409);
             admin("POST", `${GROUPS_URL}/${classA}/userRole/${PERSON_TEACHER}`, { roleID: STUDENT }, 409);
             admin("POST", `${GROUPS_URL}/${classA}/userRole/${PERSON_STUDENT}`, { roleID: TEACHER }, 409);
+            admin("POST", `${GROUPS_URL}/${classA}/members/role`, { personIds: [PERSON_STUDENT], roleID: TEACHER }, 409);
+            admin(
+                "POST",
+                `${GROUPS_URL}/${classA}/members/role`,
+                { personIds: [PERSON_TEACHER, PERSON_STUDENT], roleID: STUDENT },
+            ).then((resp) => {
+                expect(resp.body).to.deep.equal({ changed: [], unchanged: [PERSON_STUDENT], skipped: [PERSON_TEACHER] });
+            });
             roleOf(classA, PERSON_TEACHER).should("eq", TEACHER);
             roleOf(classA, PERSON_STUDENT).should("eq", STUDENT);
         });

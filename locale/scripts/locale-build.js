@@ -11,8 +11,10 @@
  * 5. JavaScript/React terms extraction
  * 6. Merging all translation files
  * 7. Cleanup of temporary files (locale/.work/)
+ * 8. Drop translations of terms no longer in messages.po from every locale (locale:apply --prune)
+ * 9. Rewrite the untranslated-term queue, locale/terms/missing/ (locale:missing)
  *
- * Output: locale/messages.po file ready for POEditor upload
+ * Output: locale/messages.po, the locale files and the queue, all ready to commit.
  */
 
 const fs = require('fs');
@@ -446,6 +448,13 @@ class TermExtractor {
 
             // 10. Cleanup — wipe the entire .work/ tree at once
             this.cleanup(config.temp.root);
+
+            // 11. Bring every locale and the missing-term queue in line with the new messages.po
+            for (const script of [['locale-apply.js', '--prune'], ['locale-missing.js']]) {
+                const [file, ...args] = script;
+                const r = spawnSync('node', [path.join(__dirname, file), ...args], { stdio: 'inherit' });
+                if (r.status !== 0) throw new Error(`${file} failed`);
+            }
 
             this.log('✅', 'Term extraction completed!');
 

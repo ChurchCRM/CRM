@@ -21,11 +21,14 @@ $app->group('/user/current', function (RouteCollectorProxy $group): void {
 /**
  * @OA\Post(
  *     path="/user/current/refresh2fasecret",
- *     summary="Begin 2FA enrollment — provision a new TOTP secret and return a QR code data URI",
+ *     summary="Begin 2FA enrollment — provision a TOTP secret and return its QR code and manual setup key",
  *     tags={"2FA"},
  *     security={{"ApiKeyAuth":{}}},
- *     @OA\Response(response=200, description="QR code data URI for TOTP enrollment",
- *         @OA\JsonContent(@OA\Property(property="TwoFAQRCodeDataUri", type="string"))
+ *     @OA\Response(response=200, description="QR code and Base32 setup key for TOTP enrollment",
+ *         @OA\JsonContent(
+ *             @OA\Property(property="TwoFAQRCodeDataUri", type="string"),
+ *             @OA\Property(property="TwoFASecret", type="string")
+ *         )
  *     )
  * )
  */
@@ -43,10 +46,14 @@ function refresh2fasecret(Request $request, Response $response, array $args): Re
     );
     $result = $writer->write($qrCode);
 
+    // Enrollment credentials must never be stored by a browser or intermediary cache.
+    $response = $response->withHeader('Cache-Control', 'no-store, private');
+
     return SlimUtils::renderJSON(
         $response,
         [
-            'TwoFAQRCodeDataUri' => $result->getDataUri()
+            'TwoFAQRCodeDataUri' => $result->getDataUri(),
+            'TwoFASecret' => $secret
         ]
     );
 }

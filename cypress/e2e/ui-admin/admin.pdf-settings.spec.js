@@ -28,3 +28,32 @@ describe("Reporting temporary directory", () => {
         });
     });
 });
+
+describe("Reporting temporary directory localization", () => {
+    beforeEach(() => cy.setupLocaleAdminSession("pt_BR"));
+    after(() => cy.setupLocaleAdminSession("en_US"));
+
+    it("renders the Portuguese label and tooltip in both themes and responsive widths", () => {
+        cy.visit("/admin/");
+
+        cy.get("#reportingSettings").invoke("attr", "data-settings").then((json) => {
+            const [setting] = JSON.parse(json);
+            expect(setting.name).to.eq(key);
+            expect(setting.label).to.eq("Diretório temporário de PDF");
+            expect(setting.tooltip).to.include("Deixe em branco para usar o diretório temporário");
+        });
+
+        for (const theme of ["light", "dark"]) {
+            for (const width of [1440, 820, 390]) {
+                cy.viewport(width, 900);
+                cy.get("html").invoke("attr", "data-bs-theme", theme);
+                cy.get(`#reportingSettings label[for='${key}']`)
+                    .should("contain.text", "Diretório temporário de PDF")
+                    .and("be.visible");
+                cy.get("#reportingSettings small.form-text")
+                    .should("contain.text", "Deixe em branco para usar o diretório temporário")
+                    .and("be.visible");
+            }
+        }
+    });
+});

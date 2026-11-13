@@ -20,6 +20,7 @@
           <td style="width: 45mm;">
             {{ student.name }}
             {% if student.properties %}<div class="flag">!!! {{ student.properties|join(', ') }}</div>{% endif %}
+            {% for line in student.custom %}<div class="muted">{{ line }}</div>{% endfor %}
           </td>
           <td style="width: 24mm; white-space: nowrap;">{{ student.birthday }}</td>
           <td>

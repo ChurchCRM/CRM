@@ -43,7 +43,7 @@ describe("Admin API Telemetry Consent Endpoint", () => {
             expect(resp.body.status).to.eq("ok");
         });
         cy.getSystemConfig("sTelemetryLevel").should("eq", "errors");
-        cy.getSystemConfig("sTelemetryLifecycleVersion").should("not.be.empty");
+        cy.getSystemConfig("sTelemetryLifecycleVersion").should("eq", "");
     });
 
     it("classifies the test stack and suppresses browser telemetry after opt-in", () => {
@@ -90,11 +90,27 @@ describe("Admin API Telemetry Consent Endpoint", () => {
         cy.makePrivateAdminAPICall(
             "POST",
             "/admin/api/system/telemetry-consent",
-            { level: "warnings" },
+            { level: "install" },
             200,
         );
         cy.makePrivateAdminAPICall("POST", "/admin/api/system/telemetry-consent", {}, 200);
         cy.getSystemConfig("sTelemetryLevel").should("eq", "none");
+    });
+
+    it("keeps Install when Not now is chosen and never repeats the prompt", () => {
+        cy.restoreSystemConfig("sTelemetryLevel", "install");
+        cy.restoreSystemConfig("sTelemetryAskedVersion", "");
+        cy.setupAdminSession();
+        cy.visit("/admin/");
+        cy.get("#telemetry-consent-card").should("be.visible");
+        cy.get('.js-telemetry-consent[data-level="install"]').contains("No thanks").click();
+        cy.get("#telemetry-consent-card").should("not.exist");
+        cy.getSystemConfig("sTelemetryLevel").should("eq", "install");
+        cy.restoreSystemConfig("sTelemetryAskedVersion", "7.0.0");
+        cy.setupAdminSession();
+        cy.visit("/admin/");
+        cy.get("#telemetry-consent-card").should("not.exist");
+        cy.get('script[src*="/telemetry.min.js"]').should("not.exist");
     });
 
     it("non-admin cannot change the level", () => {

@@ -881,10 +881,6 @@ msgid "Do you want to proceed?"
 msgstr "Chcete pokračovať?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Chystáte sa odoslať kópiu informácií o rodine na nasledujúce e-mailové adresy"
-
-#: 
 msgid "Financial Reports"
 msgstr "Finančné prehľady"
 
@@ -1804,10 +1800,6 @@ msgstr "Telefónne číslo"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Vlastný rozbaľovací zoznam"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF bolo úspešne odoslané e-mailom členom rodiny."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3848,10 +3840,6 @@ msgid "Please verify your family's information"
 msgstr "Prosím overte informácie o vašej rodine"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Nie je možné načítať informácie na overenie"
-
-#: 
 msgid "No Changes"
 msgstr "Žiadne zmeny"
 
@@ -3864,24 +3852,8 @@ msgid "Oops! Page not found."
 msgstr "Ups! Stránka nenájdená."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Prosím zadajte nasledujúce na začatie overenia vašej rodiny"
-
-#: 
-msgid "Family Verification"
-msgstr "Overenie rodiny"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Požiadať o overenie informácií rodiny"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Vyberte, ako chcete požiadať o overenie informácií rodiny"
-
-#: 
-msgid "Online Verification"
-msgstr "Online overenie"
 
 #: 
 msgid "Verified In Person"
@@ -4061,10 +4033,6 @@ msgstr "Vlastnosť bola úspešne odopriradená."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Vlastnosť sa nepodarilo odopiradiť."
-
-#: 
-msgid "Select event"
-msgstr "Vybrať udalosť"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4271,10 +4239,6 @@ msgid "Kiosk Manager"
 msgstr "Správca kiosku"
 
 #: 
-msgid "Report an issue"
-msgstr "Nahlásiť problém"
-
-#: 
 msgid "Self Verification"
 msgstr "Vlastné overenie"
 
@@ -4303,10 +4267,6 @@ msgstr "Arabčina – Egypt"
 #: 
 msgid "Thai"
 msgstr "Thajčina"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Čakajúce vlastné overenie"
 
 #: 
 msgid "Self Verify"
@@ -4686,16 +4646,8 @@ msgid "User must have Delete Records permission"
 msgstr "Používateľ musí mať oprávnenie odstraňovať záznamy"
 
 #: 
-msgid "invalid event type id"
-msgstr "neplatné ID typu udalosti"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "neplatné pripnutie kalendára"
-
-#: 
-msgid "invalid status value"
-msgstr "neplatná hodnota stavu"
 
 #: 
 msgid "invalid export value"
@@ -5304,10 +5256,6 @@ msgstr "Používa sa aktualizácia systému..."
 
 #: 
 msgid "Back to Login"
-msgstr "Späť na prihlásenie"
-
-#: 
-msgid "Back to login"
 msgstr "Späť na prihlásenie"
 
 #: 
@@ -6548,10 +6496,6 @@ msgid "Additional Information"
 msgstr "Ďalšie informácie"
 
 #: 
-msgid "All information is correct"
-msgstr "Všetky informácie sú správne"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Priradiť príležitosti"
 
@@ -6564,20 +6508,12 @@ msgid "Choose opportunities..."
 msgstr "Vyberte príležitosti..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Potvrdiť informácie o rodine"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontaktné a osobné informácie"
 
 #: 
 msgid "Edited"
 msgstr "Upravené"
-
-#: 
-msgid "Email PDF"
-msgstr "Zaslať PDF e-mailom"
 
 #: 
 msgid "Newsletter"
@@ -6588,40 +6524,12 @@ msgid "Personal"
 msgstr "Osobné"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Prosím aktualizujte naše záznamy opravami"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Uveďte tu akékoľvek opravy alebo doplňujúce informácie..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Vybrať príležitosti"
 
 #: 
-msgid "Submit Verification"
-msgstr "Odoslať overenie"
-
-#: 
-msgid "Thank You!"
-msgstr "Ďakujeme!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Navštívte našu webstránku"
-
-#: 
 msgid "Volunteer"
 msgstr "Dobrovoľník"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Pri spracovaní vášho overenia sme narazili na chybu. Skúste to znova alebo nás kontaktujte priamo."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Vaša žiadosť o overenie bola prijatá. Ďakujeme za aktualizáciu vašich informácií."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8089,10 +7997,6 @@ msgid "City is required."
 msgstr "Mesto je povinné."
 
 #: 
-msgid "Clear filter"
-msgstr "Vymazať filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Položka konfigurácie nenájdená"
 
@@ -8363,10 +8267,6 @@ msgstr "Pridať osobu"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Pridať všetky položky košíka do skupiny"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Pridať všetko do košíka"
 
 #: 
 msgid "Add cart items to a family"
@@ -8873,10 +8773,6 @@ msgid "Family Profile"
 msgstr "Profil rodiny"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Rodinné roly (Hlava domácnosti, Manžel/ka, Dieťa, atď.) pomáhajú organizovať záznamy."
-
-#: 
 msgid "Family vs Person"
 msgstr "Rodina vs. Osoba"
 
@@ -9375,10 +9271,6 @@ msgid "Record why attendees visited your church"
 msgstr "Zaznamenať, prečo návštevníci navštívili vašu cirkev"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Odstrániť všetko z košíka"
-
-#: 
 msgid "Remove from Class"
 msgstr "Odstrániť z triedy"
 
@@ -9849,10 +9741,6 @@ msgstr "Podujatia tohto roka"
 #: 
 msgid "Everyone"
 msgstr "Všetci"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Odstránenie poznámky zlyhalo"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11754,10 +11642,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Začiatok rozsahu musí byť platný dátum RRRR-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Začiatok rozsahu musí byť pred koncom rozsahu"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Začiatok rozsahu musí byť pred koncom rozsahu."
 
@@ -11978,10 +11862,6 @@ msgid "Cannot move property in that direction"
 msgstr "Nie je možné presunúť vlastnosť v tomto smere"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Potvrdiť informácie o rodine"
-
-#: 
 msgid "Delete failed"
 msgstr "Odstránenie zlyhalo"
 
@@ -12022,20 +11902,12 @@ msgid "Invalid target family"
 msgstr "Neplatná cieľová rodina"
 
 #: 
-msgid "Log Out"
-msgstr "Odhlásiť sa"
-
-#: 
 msgid "Membership not found"
 msgstr "Členstvo nenájdené"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Heslo úspešne zmenené pre"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Prehliadnite informácie o rodine nižšie a potvrďte alebo požiadajte o zmeny."
 
 #: 
 msgid "Please select a target family."
@@ -12718,10 +12590,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Nepodarilo sa nainštalovať plugin z URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Nepodarilo sa načítať zoznam schválených pluginov"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Nepodarilo sa načítať zoznam schválených pluginov."
 
@@ -12780,10 +12648,6 @@ msgstr "Kebab-case. Musí zodpovedať názvu adresára v archíve zip a ID v plu
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Načítava sa zoznam schválených pluginov…"
-
-#: 
-msgid "Loading…"
-msgstr "Načítava sa…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13231,10 +13095,6 @@ msgid "Change Your Locale"
 msgstr "Zmeniť vaše lokálne nastavenie"
 
 #: 
-msgid "Change role"
-msgstr "Zmeniť rolu"
-
-#: 
 msgid "Check Number"
 msgstr "Číslo šeku"
 
@@ -13249,10 +13109,6 @@ msgstr "Prihlásenie zlyhalo. Skúste to znova."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Odhlásenie zlyhalo. Skúste to znova."
-
-#: 
-msgid "City is required"
-msgstr "Mesto je povinné"
 
 #: 
 msgid "Click Save to apply."
@@ -13321,10 +13177,6 @@ msgstr "Kopírovať všetky čísla"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopírovať členov do skupiny"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Vytvára sa záloha..."
 
 #: 
 msgid "Creating..."
@@ -13509,10 +13361,6 @@ msgstr "Pridanie do košíka zlyhalo"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Zrušenie záznamu zlyhalo. Skúste to znova."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Kopírovanie URL zlyhalo"
 
 #: 
 msgid "Failed to create backup."
@@ -13903,10 +13751,6 @@ msgid "One-Time Code"
 msgstr "Jednorazový kód"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Otvoriť v novej karte"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Otvorte autentifikačnú aplikáciu a naskenujte tento QR kód"
 
@@ -14183,10 +14027,6 @@ msgid "Setup Complete"
 msgstr "Nastavenie dokončené"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Zdieľajte túto URL s členmi rodiny na overenie ich informácií"
-
-#: 
 msgid "Show more options"
 msgstr "Zobraziť viac možností"
 
@@ -14339,10 +14179,6 @@ msgid "Validation pending"
 msgstr "Overenie čaká"
 
 #: 
-msgid "Verification URL"
-msgstr "URL overenia"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Overenie zlyhalo. Skúste znova."
 
@@ -14407,10 +14243,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Dostanete záložné kódy použiteľné pri strate prístupu k aplikácii"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Váš košík je prázdny"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Váš účet je teraz chránený"
 
@@ -14429,10 +14261,6 @@ msgstr "Jazykové nastavenie vášho prehliadača sa líši od nastavenia jazyka
 #: 
 msgid "Your database already contains data"
 msgstr "Vaša databáza už obsahuje dáta"
-
-#: 
-msgid "Zip code is required"
-msgstr "PSČ je povinné"
 
 #: 
 msgid "added"
@@ -14855,10 +14683,6 @@ msgstr "Nemáte oprávnenie pridať poznámku pre túto rodinu."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Nemáte oprávnenie pridať poznámku pre túto osobu."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Nemáte oprávnenie upravovať túto poznámku"
 
 #: 
 msgid "Account locked"
@@ -15594,7 +15418,7 @@ msgstr "Preklady ChurchCRM spravuje komunita na POEditor. Môžete pomôcť"
 
 #: 
 msgid "Closed Deposits"
-msgstr "Uzatvorene vklady"
+msgstr "Uzatvorené vklady"
 
 #: 
 msgid "Current $URL[0] value"
@@ -15683,10 +15507,6 @@ msgstr "Metóda výstupu"
 #: 
 msgid "Please confirm deletion of this family record"
 msgstr "Potvrdte prosím vymazanie záznamu tejto rodiny"
-
-#: 
-msgid "Please confirm your family information"
-msgstr "Potvrdte prosím informácie o vašej rodine"
 
 #: 
 msgid "Please select another family with whom to associate these donations"
@@ -15909,10 +15729,6 @@ msgid "Select a person"
 msgstr "Vybrať osobu"
 
 #: 
-msgid "Select role"
-msgstr "Vybrať rolu"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Vybrať typ (volitelné)"
 
@@ -16069,10 +15885,6 @@ msgid "At least one fund allocation is required"
 msgstr "Vyžaduje sa aspoň jedno priradenie fondu"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Aspoň jeden fond musí mať nenulovú sumu"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "Automaticky odoslať narodeninový pozdravný e-mail ľuďom v deň ich narodenín"
 
@@ -16149,18 +15961,6 @@ msgid "Editing a Pledge"
 msgstr "Úprava záväzku"
 
 #: 
-msgid "Enable (full)"
-msgstr "Povoliť (úplné)"
-
-#: 
-msgid "Errors only"
-msgstr "Iba chyby"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Chyby — chyby servera a výnimky JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Nepodarilo sa vytvoriť záväzok"
 
@@ -16199,10 +15999,6 @@ msgstr "Kľúč skupiny je povinný"
 #: 
 msgid "Happy Birthday"
 msgstr "Všetko najlepšie k narodeninám"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Pomôžte zlepšiť ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16273,16 +16069,8 @@ msgid "None (disabled)"
 msgstr "Žiadne (zakázané)"
 
 #: 
-msgid "OS family"
-msgstr "Rodina OS"
-
-#: 
 msgid "Overpaid"
 msgstr "Preplatené"
-
-#: 
-msgid "PHP version"
-msgstr "Verzia PHP"
 
 #: 
 msgid "Page route"
@@ -16319,10 +16107,6 @@ msgstr "Skupina záväzkov sa nenašla"
 #: 
 msgid "Pledges & Payments"
 msgstr "Záväzky a platby"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Uprednostniť preklady"
 
 #: 
 msgid "Purpose"
@@ -16387,10 +16171,6 @@ msgstr "Mená používateľov, e-maily alebo roly"
 #: 
 msgid "View pledge or payment details"
 msgstr "Zobraziť podrobnosti záväzku alebo platby"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Upozornenia — upozornenia, chyby a výnimky JS"
 
 #: 
 msgid "What is sent"
@@ -16474,7 +16254,7 @@ msgstr "Automaticky sleduje nastavenie vasho OS alebo prehliadaca; Svetly a Tmav
 
 #: 
 msgid "Back to Pledge Dashboard"
-msgstr "Spat na prehlad zavazkov"
+msgstr "Späť na prehľad záväzkov"
 
 #: 
 msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
@@ -16526,11 +16306,11 @@ msgstr "Zadajte nazov roly"
 
 #: 
 msgid "Failed to create deposit"
-msgstr "Nepodarilo sa vytvorit vklad"
+msgstr "Nepodarilo sa vytvoriť vklad"
 
 #: 
 msgid "Failed to load email preview"
-msgstr "Nepodarilo sa nacitat nahlad e-mailu"
+msgstr "Nepodarilo sa načítať náhľad e-mailu"
 
 #: 
 msgid "From Date"
@@ -16542,7 +16322,7 @@ msgstr "Celkovy fond"
 
 #: 
 msgid "Fund contributor pledge summary by fiscal year"
-msgstr "Prehlad zavazkov prispievatelov do fondu podla fiskalneho roka"
+msgstr "Prehľad záväzkov prispievateľov do fondu podľa fiškálneho roka"
 
 #: 
 msgid "Fundraiser is disabled"
@@ -16570,7 +16350,7 @@ msgstr "Neuplatňuje sa"
 
 #: 
 msgid "New Deposit"
-msgstr "Novy vklad"
+msgstr "Nový vklad"
 
 #: 
 msgid "No contributors found for this fund in the selected fiscal year"
@@ -16582,19 +16362,11 @@ msgstr "Neboli najdene ziadne rodiny s e-mailovou adresou. Nic nebolo odoslane."
 
 #: 
 msgid "No payments found for the selected deposits"
-msgstr "Pre vybrane vklady neboli najdene ziadne platby"
+msgstr "Pre vybrané vklady sa nenašli žiadne platby"
 
 #: 
 msgid "No valid deposit IDs provided"
-msgstr "Neboli zadane ziadne platne ID vkladov"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF bolo úspešne odoslané e-mailom pre %d rodinu."
-msgstr[1] "PDF bolo úspešne odoslané e-mailom pre %d rodiny."
-msgstr[2] "PDF bolo úspešne odoslané e-mailom pre %d rodiny."
-msgstr[3] "PDF bolo úspešne odoslané e-mailom pre %d rodín."
+msgstr "Neboli zadané žiadne platné ID vkladov"
 
 #: 
 msgid "Partial Send"
@@ -16606,11 +16378,11 @@ msgstr "Iba platby"
 
 #: 
 msgid "Pledged Amount"
-msgstr "Suma zavazku"
+msgstr "Suma záväzku"
 
 #: 
 msgid "Preview"
-msgstr "Nahlad"
+msgstr "Náhľad"
 
 #: 
 msgid "Retry"
@@ -16622,7 +16394,7 @@ msgstr "Hladat"
 
 #: 
 msgid "Search and manage deposit slip records"
-msgstr "Vyhladavat a spravovat zaznamy kladovych dokladov"
+msgstr "Vyhľadávať a spravovať záznamy vkladových dokladov"
 
 #: 
 msgid "Select All"
@@ -16666,7 +16438,7 @@ msgstr "Do datumu"
 
 #: 
 msgid "Total Pledged"
-msgstr "Celkovy zavazok"
+msgstr "Celkový záväzok"
 
 #: 
 msgid "Unexpected error while sending emails. Please check logs."
@@ -16682,7 +16454,7 @@ msgstr "Zobrazit platbu"
 
 #: 
 msgid "View Pledge"
-msgstr "Zobrazit zavazok"
+msgstr "Zobraziť záväzok"
 
 #: 
 msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
@@ -17137,10 +16909,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Vytváranie a nahrávanie zálohy. Môže to trvať niekoľko minút..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Obnovenie databázy zlyhalo."
-
-#: 
 msgid "Deceased"
 msgstr "Zosnulý"
 
@@ -17337,10 +17105,6 @@ msgid "Log settings saved"
 msgstr "Nastavenia denníka boli uložené"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Prihlasovacie meno je povinné"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Osoba bola označená ako aktívna"
 
@@ -17465,10 +17229,6 @@ msgid "Sending..."
 msgstr "Odosielanie..."
 
 #: 
-msgid "Sending…"
-msgstr "Odosielanie…"
-
-#: 
 msgid "Settings reset"
 msgstr "Nastavenia boli obnovené"
 
@@ -17537,16 +17297,8 @@ msgid "Upcoming"
 msgstr "Nadchádzajúce"
 
 #: 
-msgid "Valid Until"
-msgstr "Platné do"
-
-#: 
 msgid "View active only"
 msgstr "Zobraziť len aktívne"
-
-#: 
-msgid "View all"
-msgstr "Zobraziť všetko"
 
 #: 
 msgid "View all (including inactive)"
@@ -18325,10 +18077,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Váš fiškálny rok začína v mesiaci %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Vyskytla sa chyba"
-
-#: 
 msgid "Approve"
 msgstr "Schváliť"
 
@@ -18501,14 +18249,6 @@ msgstr[0] "%d deň"
 msgstr[1] "%d dni"
 msgstr[2] "%d dňa"
 msgstr[3] "%d dní"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d predvolený preskočený z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
-msgstr[1] "%d predvolení preskočení z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
-msgstr[2] "%d predvoleného preskočených z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
-msgstr[3] "%d predvolených preskočených z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18783,10 +18523,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Téma je priečinok, ktorý vaša cirkev nahrá na server do Include/themes/. Predvolená téma systému sa dodáva s ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Prechodné nastavenie. Staré stránky Príležitostí pre dobrovoľníkov aj nové stránky Služieb sú dostupné a záznam osoby zobrazuje obe karty Dobrovoľník, jasne označené. Použite ho počas prechodu cirkvi z V1 na V2 a potom prepnite iba na V2."
-
-#: 
 msgid "A volunteer"
 msgstr "Dobrovoľník"
 
@@ -18991,10 +18727,6 @@ msgid "Assigned outside the current plan"
 msgstr "Pridelené mimo aktuálneho plánu"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Pridelenie zrušené"
-
-#: 
 msgid "Assignment not found"
 msgstr "Pridelenie sa nenašlo"
 
@@ -19101,10 +18833,6 @@ msgstr "Zrušiť pridelenie"
 #: 
 msgid "Cancel this assignment"
 msgstr "Zrušiť toto pridelenie"
-
-#: 
-msgid "Cancelled"
-msgstr "Zrušené"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19261,10 +18989,6 @@ msgstr "Webová stránka cirkvi"
 #: 
 msgid "Close event details"
 msgstr "Zavrieť podrobnosti udalosti"
-
-#: 
-msgid "Colour"
-msgstr "Farba"
 
 #: 
 msgid "Completed"
@@ -19511,10 +19235,6 @@ msgid "Each staffing need must name a position"
 msgstr "Každá potreba obsadenia musí uvádzať pozíciu"
 
 #: 
-msgid "Edit event"
-msgstr "Upraviť udalosť"
-
-#: 
 msgid "Edit ministry"
 msgstr "Upraviť službu"
 
@@ -19599,10 +19319,6 @@ msgstr "E-maily odoslané {{count}} príjemcom."
 #: 
 msgid "Emails"
 msgstr "E-maily"
-
-#: 
-msgid "End time"
-msgstr "Čas ukončenia"
 
 #: 
 msgid "Enter counts"
@@ -20887,10 +20603,6 @@ msgid "SMTP test"
 msgstr "Test SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Uložiť zmeny"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Uložené – táto služba už nežiada o pomoc"
 
@@ -21173,10 +20885,6 @@ msgstr "Potreby obsadenia uložené"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Začnite vytvorením služby a potom pridajte tímy a pozície, ktoré v nej slúžia."
-
-#: 
-msgid "Start time"
-msgstr "Čas začiatku"
 
 #: 
 msgid "Start typing a name"
@@ -21525,10 +21233,6 @@ msgstr "Adresa je vybraná – skopírujte ju klávesnicou."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Cesta k zdroju „%s“ nie je povolená."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "Pridelenie sa nepodarilo zrušiť"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22059,10 +21763,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Tento termín sa už uskutočnil a jeho pridelenia už nemožno meniť"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Tento termín bol zrušený"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Tento termín má vlastné potreby obsadenia, oddelené od jeho rozpisu."
 
@@ -22231,16 +21931,8 @@ msgid "Validation"
 msgstr "Validácia"
 
 #: 
-msgid "View event"
-msgstr "Zobraziť podujatie"
-
-#: 
 msgid "View my schedule"
 msgstr "Zobraziť môj rozpis"
-
-#: 
-msgid "View person"
-msgstr "Zobraziť osobu"
 
 #: 
 msgid "View the event"
@@ -22289,10 +21981,6 @@ msgstr "Časy dobrovoľníkov"
 #: 
 msgid "Volunteering"
 msgstr "Dobrovoľníctvo"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Dobrovoľníctvo zorganizované tak, ako ho vedie cirkev. Každá služba má tímy a pozície; ľudia sú kvalifikovaní na pozície a patria do skupiny dobrovoľníkov služby; rozpisy sledujú udalosti v kalendári a vytvárajú datované termíny s požiadavkami na obsadenie; koordinátori prideľujú ľudí, ktorí prijmú, odmietnu alebo navrhnú náhradu; pripomienky a upozornenia chodia e-mailom. Správcovia a používatelia s oprávnením Spravovať služby vidia každú službu a môžu ich vytvárať, deaktivovať a odstraňovať. Koordinátor služby namiesto toho dostane oprávnenie Spravovať moje služby: nadpis Služby v bočnom paneli potom zobrazuje iba služby, ktoré koordinuje. Vedúci tímu riadi svoj tím z Portálu členov. Členovia používajú Portál členov na zobrazenie svojho rozpisu, odpovedanie, prihlasovanie sa a ponúkanie pomoci."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22835,10 +22523,6 @@ msgid "Cancel this occurrence"
 msgstr "Zrušiť túto udalosť"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Zrušenie nikohmu nepovedá: žiadne e-maily nie sú odoslané. Priradenia sú zachované, žiadne pripomenutia nie sú naplánované, pokiaľ je zrušené, a nikto nemôže byť priradený, pokiaľ nie je obnovené."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Odstránené udalosti opúšťajú každý kalendár spolu s ich príchodmi a počtom osôb a obsluhujúci personál tejto služby si zachovávajú len dátum. Toto sa nedá vrátiť späť."
 
@@ -22849,10 +22533,6 @@ msgstr "Udalosti odstránené: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Udalosti na odstránenie: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Udalosť zrušená"
 
 #: 
 msgid "Occurrence restored"
@@ -22869,10 +22549,6 @@ msgstr "Obnovit udalosť"
 #: 
 msgid "Restore this occurrence"
 msgstr "Obnovit túto udalosť"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Udalosť sa nepodarilo zrušiť"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -24873,28 +24549,12 @@ msgid "Closing Line"
 msgstr "Záverečný riadok"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Ovláda voliteľnú telemetriu. Zlyhania inštalácie a aktualizácie databázy odosielajú obmedzenú diagnostiku do PostHog aj keď je telemetria vypnutá. Tieto hlásenia o zlyhaní obsahujú verzie softvéru a prostredia a očistenú chybu databázy, ale nie ID inštalácie ani príkaz SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Diagnostikovať zlyhané inštalácie a aktualizácie databázy"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Podrobnosti o zlyhaní inštalácie a aktualizácie"
-
-#: 
 msgid "Open in browser window"
 msgstr "Otvoriť v okne prehliadača"
 
 #: 
 msgid "Opening Line"
 msgstr "Úvodný riadok"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Voliteľná telemetria používania sa odosiela iba vtedy, keď je zapnutá. Zlyhania inštalácie a aktualizácie databázy vždy odosielajú obmedzenú diagnostiku na pomoc komunite, aj keď zvolíte Nie, ďakujem. Hlásenia o zlyhaní obsahujú verzie softvéru a prostredia a očistenú chybu databázy, bez ID inštalácie a príkazu SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24931,18 +24591,6 @@ msgstr "Znenie výpisu"
 #: 
 msgid "Tax Information"
 msgstr "Daňové údaje"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetria sa odosiela do PostHog v Spojených štátoch. Hlásenia o zlyhaní inštalácie a aktualizácie sa odosielajú aj keď je voliteľná telemetria vypnutá."
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Tento termín bol zrušený. Od vás sa už nič nevyžaduje."
-
-#: 
-msgid "always sent"
-msgstr "vždy odoslané"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25407,10 +25055,6 @@ msgstr "E-mail si vyžaduje pozornosť"
 #: 
 msgid "Email problem"
 msgstr "Problém s e-mailom"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "E-mailom odoslaný prihlasovací kód a odkaz boli zrušené"
 
 #: 
 msgid "Emailed verification link"
@@ -26003,10 +25647,6 @@ msgstr "Na zozname kancelárie môžu byť iba žijúci ľudia s vlastným e-mai
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Pridať možno iba ľudí s vlastným e-mailom."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Voliteľná telemetria môže obsahovať trasy stránok, aktívne miestne nastavenie, verziu CRM, verziu PHP, rodinu operačného systému, krajinu z nastavení údajov o cirkvi a náhodné ID inštalácie. Hlásenia o zlyhaní ID inštalácie neobsahujú. Údaje sa odosielajú do PostHog v Spojených štátoch."
 
 #: 
 msgid "Passkey"
@@ -27177,10 +26817,6 @@ msgid "A request was made in the Member Portal to change your email address at %
 msgstr "V portáli pre členov bola podaná žiadosť o zmenu vašej e-mailovej adresy na %1$s z %2$s na %3$s. Zmena sa vykoná až po použití odkazu odoslaného na novú adresu."
 
 #: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Pomocou odkazu nižšie skontrolujte údaje o svojej rodine. Na stránke kontroly vyberte „Potvrdiť údaje o rodine“, aby ste potvrdili, že je všetko správne, alebo pošlite opravy na cirkevný úrad."
-
-#: 
 msgid "Review Family Information"
 msgstr "Skontrolovať údaje o rodine"
 
@@ -27463,4 +27099,306 @@ msgstr "Platby podľa fondu"
 #: 
 msgid "Unknown Fund"
 msgstr "Neznámy fond"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Požiadajte poskytovateľa hostingu o prechod databázy na podporovanú verziu a potom to skúste znova."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Požiadajte poskytovateľa hostingu o prechod databázy na podporovanú verziu."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Názvy sviatkov sa riadia nastavením jazyka každého používateľa. Ak sviatok v danom jazyku nemá názov, zobrazí sa po anglicky."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Názvy sviatkov vo vašom jazyku"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Vyžadovať číslo šeku pri zaznamenávaní platieb šekom vo vkladoch. Keď je voľba vypnutá, šek možno uložiť s prázdnym číslom alebo číslom 0 a takéto šeky sa nekontrolujú na duplicity."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Vyžadovať číslo šeku pri platbách šekom"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "Aktualizácia sa nespustila, takže sa nič nezmenilo."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Túto aktualizáciu nemožno spustiť vo vašej databáze."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Váš databázový server (%1$s %2$s) je starší, než ChurchCRM podporuje (MySQL %3$s alebo MariaDB %4$s a novšie)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Schváľte túto samostatne zaregistrovanú rodinu pred odoslaním overovacieho e-mailu"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "Porovnajte celkové záväzky rodín za dva fiškálne roky."
+
+#: 
+msgid "Email Portal Link"
+msgstr "Poslať odkaz na portál e-mailom"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "Pošlite rodine e-mailom odkaz na portál členov, kde môže skontrolovať a aktualizovať svoje údaje, alebo zaznamenajte, že ste ich overili osobne."
+
+#: 
+msgid "Family is inactive"
+msgstr "Rodina je neaktívna"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Prvý fiškálny rok"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Fiškálne roky"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Výpis darov – iba ukážka"
+
+#: 
+msgid "Last invited"
+msgstr "Naposledy pozvané"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Posledné prihlásenie do portálu"
+
+#: 
+msgid "Last verified"
+msgstr "Naposledy overené"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "Žiadny aktívny a schválený člen tejto rodiny nemá e-mailovú adresu. Overte údaje radšej osobne."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Pre tieto fiškálne roky sa nenašli žiadne záväzky."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "Porovnanie záväzkov"
+
+#: 
+msgid "Preview PDF"
+msgstr "Náhľad PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Druhý fiškálny rok"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Prihláste sa do portálu členov touto e-mailovou adresou a skontrolujte údaje svojej rodiny. Na stránke Moja rodina potvrďte, že je všetko správne, alebo aktualizujte svoje údaje."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Táto rodina je neaktívna, preto jej nie sú zasielané overovacie e-maily."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Táto samostatne zaregistrovaná rodina čaká na schválenie. Po schválení dostane rodina e-mailom pozvánku na prihlásenie do portálu členov a kontrolu svojich údajov."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Používa iba uložené nastavenia a vymyslené ukážkové dary."
+
+#: 
+msgid "Verification"
+msgstr "Overenie"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "Overovací e-mail odoslaný %d rodine."
+msgstr[1] "Overovací e-mail odoslaný %d rodinám."
+msgstr[2] "Overovací e-mail odoslaný %d rodinám."
+msgstr[3] "Overovací e-mail odoslaný %d rodinám."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "Overovací e-mail odoslaný členom rodiny."
+
+#: 
+msgid "by the family in the portal"
+msgstr "rodinou v portáli"
+
+#: 
+msgid "in person by staff"
+msgstr "osobne pracovníkom"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d predvolený preskočený z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
+msgstr[1] "%d predvolení preskočení z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
+msgstr[2] "%d predvoleného preskočených z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
+msgstr[3] "%d predvolených preskočených z iného dôvodu (termín skončil, bol zrušený alebo je plný)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Prechodné nastavenie. Staré stránky Príležitostí pre dobrovoľníkov aj nové stránky Služieb sú dostupné a záznam osoby zobrazuje obe karty Dobrovoľník, jasne označené. Použite ho počas prechodu cirkvi z V1 na V2 a potom prepnite iba na V2."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Pridelenie zrušené"
+
+#: 
+msgid "Canceled"
+msgstr "Zrušené"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "Zrušenie nikohmu nepovedá: žiadne e-maily nie sú odoslané. Priradenia sú zachované, žiadne pripomenutia nie sú naplánované, pokiaľ je zrušené, a nikto nemôže byť priradený, pokiaľ nie je obnovené."
+
+#: 
+msgid "Color"
+msgstr "Farba"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "E-mailom odoslaný prihlasovací kód a odkaz boli zrušené"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "Rodinné roly (Hlava domácnosti, Manžel/ka, Dieťa, atď.) pomáhajú organizovať záznamy."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Udalosť zrušená"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Uprednostniť preklady"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "Pridelenie sa nepodarilo zrušiť"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "Udalosť sa nepodarilo zrušiť"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Tento termín bol zrušený. Od vás sa už nič nevyžaduje."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Tento termín bol zrušený"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Dobrovoľníctvo zorganizované tak, ako ho vedie cirkev. Každá služba má tímy a pozície; ľudia sú kvalifikovaní na pozície a patria do skupiny dobrovoľníkov služby; rozpisy sledujú udalosti v kalendári a vytvárajú datované termíny s požiadavkami na obsadenie; koordinátori prideľujú ľudí, ktorí prijmú, odmietnu alebo navrhnú náhradu; pripomienky a upozornenia chodia e-mailom. Správcovia a používatelia s oprávnením Spravovať služby vidia každú službu a môžu ich vytvárať, deaktivovať a odstraňovať. Koordinátor služby namiesto toho dostane oprávnenie Spravovať moje služby: nadpis Služby v bočnom paneli potom zobrazuje iba služby, ktoré koordinuje. Vedúci tímu riadi svoj tím z Portálu členov. Členovia používajú Portál členov na zobrazenie svojho rozpisu, odpovedanie, prihlasovanie sa a ponúkanie pomoci."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Počítať aktívne inštalácie a výsledky aktualizácií"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Databázový stroj a hlavná/vedľajšia verzia"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Chyby — štatistiky inštalácie, upozornenia, chyby a výnimky JS"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Pomôžete nám hľadať a opravovať problémy?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "Inštalácia zdieľa minimálne štatistiky inštalácie a aktualizácií. Chyby pridáva upozornenia a hlásenia chýb. Úplné pridáva zobrazenia stránok. Žiadne odosiela len neúspešné inštalácie a aktualizácie."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Inštalácia — štatistiky inštalácie a aktualizácií (predvolené)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Výsledky inštalácie a aktualizácií, predchádzajúca verzia pri aktualizáciách a denné hlásenie počas používania"
+
+#: 
+msgid "Installation profile"
+msgstr "Profil inštalácie"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Miestne nastavenie (Chyby a Úplné)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Nikdy sa nezdieľa: záznamy o členoch, daroch ani iné záznamy cirkvi, názov vašej cirkvi, vaša webová adresa alebo názov servera ani e-mailové adresy. Vaša krajina je tá z nastavení cirkvi, nezisťuje sa z vašej siete."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Rodina operačného systému (Chyby a Úplné)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "Verzia PHP (Chyby a Úplné)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Pozrite si presne, čo sa zdieľa, alebo zmeňte svoju voľbu v Správa → Telemetria."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Rozlíšiť produkčné, demo a testovacie inštalácie"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Zdieľať anonymné štatistiky inštalácie?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Zdieľať hlásenia chýb a používania"
+
+#: 
+msgid "Share install statistics"
+msgstr "Zdieľať štatistiky inštalácie"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Navyše sa zdieľa: upozornenia, podrobnosti o chybách a ktoré stránky sa otvárajú."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Zdieľa sa: že ChurchCRM bol nainštalovaný alebo aktualizovaný a či to prebehlo úspešne, hlásenie raz denne počas používania, číslo verzie, vaša krajina a typ databázy. Náhodné ID inštalácie počíta každú inštaláciu iba raz."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Porozumieť kompatibilite databáz"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Na voľbu sa pýtame iba raz. Môžete ju kedykoľvek zmeniť. Pri voľbe Nie, ďakujem sa hlási iba neúspešná inštalácia alebo aktualizácia."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Vaše údaje patria vám. Inštalácia zdieľa iba výsledky inštalácie a aktualizácií, ID inštalácie, verziu softvéru, profil inštalácie, nastavenú krajinu a databázový stroj s hlavnou/vedľajšou verziou. Chyby pridáva upozornenia a podrobnosti o chybách. Úplné pridáva zobrazenia stránok. Žiadne odosiela len neúspešné inštalácie a aktualizácie. Žiadna úroveň neodosiela vašu webovú adresu ani názov servera. Testovacie inštalácie neodosielajú nič. Telemetria sa odosiela do PostHog v Spojených štátoch."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Vaše údaje patria vám. Hlásia sa informácie o softvéri, nikdy o vašej cirkvi alebo jej ľuďoch."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Vaše údaje patria vám. Na počítanie inštalácií ChurchCRM hlási, že bol nainštalovaný alebo aktualizovaný a či to prebehlo úspešne, raz denne počas používania odošle hlásenie a ďalej číslo verzie, vašu krajinu, typ databázy a náhodné ID inštalácie. Nikdy nehlási záznamy o členoch, daroch ani iné záznamy cirkvi, názov vašej cirkvi, vašu webovú adresu alebo názov servera ani e-mailové adresy. Kedykoľvek to môžete vypnúť v Správa → Telemetria; neúspešná inštalácia alebo aktualizácia sa hlási aj naďalej. Upozornenia, podrobnosti o chybách a zobrazenia stránok sa zdieľajú iba vtedy, ak to zvolíte."
 

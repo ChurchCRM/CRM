@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\model\ChurchCRM;
 
+use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Base\Group as BaseGroup;
 use ChurchCRM\model\ChurchCRM\Map\ListOptionTableMap;
@@ -174,8 +175,15 @@ class Group extends BaseGroup
         return false;
     }
 
+    public static function getViewURIForId(int $id, bool $sundaySchool = false): string
+    {
+        $path = $sundaySchool && SystemConfig::getBooleanValue('bEnabledSundaySchool') ? '/groups/sundayschool/class/' : '/groups/view/';
+
+        return SystemURLs::getRootPath() . $path . $id;
+    }
+
     public function getViewURI(): string
     {
-        return SystemURLs::getRootPath() . '/groups/view/' . $this->getId();
+        return self::getViewURIForId((int) $this->getId(), $this->isSundaySchool());
     }
 }

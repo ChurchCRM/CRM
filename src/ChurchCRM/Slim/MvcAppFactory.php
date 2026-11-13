@@ -7,6 +7,7 @@ use ChurchCRM\Slim\Middleware\AuthMiddleware;
 use ChurchCRM\Slim\Middleware\ChurchInfoRequiredMiddleware;
 use ChurchCRM\Slim\Middleware\CorsMiddleware;
 use ChurchCRM\Slim\Middleware\LoginAsPersonMiddleware;
+use ChurchCRM\Slim\Middleware\VersionMiddleware;
 use Slim\App;
 use Slim\Factory\AppFactory;
 
@@ -68,7 +69,7 @@ class MvcAppFactory
         }
 
         // Standard middleware stack (LIFO — last added runs first)
-        // Execution order: AuthMiddleware → LoginAsPerson → ChurchInfoRequiredMiddleware → [RoleAuth] → CorsMiddleware
+        // Execution order: VersionMiddleware → AuthMiddleware → LoginAsPerson → ChurchInfoRequiredMiddleware → [RoleAuth] → CorsMiddleware
         $app->add(new CorsMiddleware());
         if ($roleMiddleware !== null) {
             $app->add($roleMiddleware);
@@ -76,6 +77,7 @@ class MvcAppFactory
         $app->add(new ChurchInfoRequiredMiddleware());
         $app->add(new LoginAsPersonMiddleware());
         $app->add(AuthMiddleware::class);
+        $app->add(VersionMiddleware::class);
 
         return $app;
     }

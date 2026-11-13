@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
-  version: 7.8.4
+  version: 7.8.5
 servers:
   -
     url: '{scheme}://{host}{basePath}'
@@ -4246,6 +4246,56 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  '/api/groups/{groupID}/members/role':
+    post:
+      tags:
+        - Groups
+      summary: "Move several group members to one of the group's roles (ManageGroupRole role required)"
+      description: "Changes every listed member's role in one transaction. Members already in the role are reported as unchanged. Ids that are not members of the group, and teachers whose role a volunteer team manages (Volunteer v2, D23), are skipped."
+      parameters:
+        -
+          name: groupID
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - personIds
+                - roleID
+              properties:
+                personIds:
+                  type: array
+                  items: { type: integer }
+                roleID:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: 'Person ids by outcome'
+          content:
+            application/json:
+              schema:
+                properties:
+                  changed: { type: array, items: { type: integer } }
+                  unchanged: { type: array, items: { type: integer } }
+                  skipped: { type: array, items: { type: integer } }
+                type: object
+        '400':
+          description: "No person ids, or roleID is not one of the group's roles"
+        '403':
+          description: 'ManageGroupRole role required'
+        '404':
+          description: 'Group not found'
+        '409':
+          description: 'roleID is the Teacher role of a Sunday School class whose teachers are managed by a volunteer team (Volunteer v2, D23)'
+      security:
+        -
+          ApiKeyAuth: []
   '/api/groups/{groupID}/roles/{roleID}':
     post:
       tags:
@@ -5583,15 +5633,16 @@ paths:
     post:
       tags:
         - 2FA
-      summary: 'Begin 2FA enrollment — provision a new TOTP secret and return a QR code data URI'
+      summary: 'Begin 2FA enrollment — provision a TOTP secret and return its QR code and manual setup key'
       responses:
         '200':
-          description: 'QR code data URI for TOTP enrollment'
+          description: 'QR code and Base32 setup key for TOTP enrollment'
           content:
             application/json:
               schema:
                 properties:
                   TwoFAQRCodeDataUri: { type: string }
+                  TwoFASecret: { type: string }
                 type: object
       security:
         -
@@ -11122,9 +11173,9 @@ paths:
             schema:
               properties:
                 level:
-                  description: "Telemetry collection level. 'none' declines and suppresses prompt for this version."
+                  description: 'Telemetry collection level. Every choice dismisses the one-time consent prompt.'
                   type: string
-                  enum: [none, errors, warnings, full]
+                  enum: [none, install, errors, full]
               type: object
       responses:
         '403':

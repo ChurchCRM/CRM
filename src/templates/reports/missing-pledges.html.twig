@@ -1,0 +1,31 @@
+{% extends "_letter.html.twig" %}
+{% block letter_body %}
+  <h1>{{ gettext('Missing Pledges') }}</h1>
+  <div class="muted">{{ summary }} · {{ family_count }}</div>
+  <table class="gifts">
+    <thead>
+      <tr>
+        <th>{{ gettext('Family') }}</th>
+        <th>{{ gettext('Address') }}</th>
+        <th>{{ gettext('Phone') }}</th>
+        <th class="right">{{ pledged_fiscal_year }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in rows %}
+        <tr>
+          <td>{{ row.family }}</td>
+          <td>{{ row.address|nl2br }}</td>
+          <td>{{ row.phone }}</td>
+          <td class="right">{{ row.pledged }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="3">{{ gettext('Total') }}</th>
+        <th class="right">{{ total }}</th>
+      </tr>
+    </tfoot>
+  </table>
+{% endblock %}

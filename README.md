@@ -39,7 +39,7 @@ For core development setup, architecture, builds, and testing, see [DEVELOPING.m
 
 ChurchCRM currently lists **49 supported locales**. Translation coverage varies by locale; see the generated audit report for the current status.
 
-Join our [localization team on poeditor.com](https://poeditor.com/join/project/RABdnDSqAt) to contribute to your language’s support.
+Translations live in this repo (`src/locale/i18n/`). To fix or add translations for your language, open a pull request; see [Translate](CONTRIBUTING.md#translate).
 
 See the latest translation status and audit report: [locale/poeditor-audit.md](locale/poeditor-audit.md).
 

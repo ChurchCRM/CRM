@@ -881,10 +881,6 @@ msgid "Do you want to proceed?"
 msgstr "続行しますか？"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "以下のメールアドレスに世帯情報のコピーを送信しようとしています"
-
-#: 
 msgid "Financial Reports"
 msgstr "財務レポート"
 
@@ -1806,10 +1802,6 @@ msgid "Custom Drop-Down List"
 msgstr "カスタム・ドロップダウンリスト"
 
 #: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF が世帯メンバーに正常に送信されました。"
-
-#: 
 msgid "Failed to email PDF to family members."
 msgstr "世帯メンバーへの PDF 送信に失敗しました。"
 
@@ -2368,7 +2360,7 @@ msgstr "ファミリーエディタで結婚日の入力を無効にするには
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
-msgstr "預金伝票レポートのチェック数"
+msgstr "入金伝票レポートの小切手数"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3848,10 +3840,6 @@ msgid "Please verify your family's information"
 msgstr "ご家族の情報をご確認ください"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "確認情報を読み込むことができません"
-
-#: 
 msgid "No Changes"
 msgstr "変更なし"
 
@@ -3864,24 +3852,8 @@ msgid "Oops! Page not found."
 msgstr "エラー!ページが見つかりません。"
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "ご家族の確認を開始するために以下を入力してください"
-
-#: 
-msgid "Family Verification"
-msgstr "ファミリー確認"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "ファミリー情報確認をリクエスト"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "ファミリー情報をどのように確認してもらいたいかを選択してください"
-
-#: 
-msgid "Online Verification"
-msgstr "オンライン確認"
 
 #: 
 msgid "Verified In Person"
@@ -4061,10 +4033,6 @@ msgstr "プロパティが正常に割り当て解除されました。"
 #: 
 msgid "The property could not be unassigned."
 msgstr "プロパティの割り当てを解除できませんでした。"
-
-#: 
-msgid "Select event"
-msgstr "イベントを選択"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4271,10 +4239,6 @@ msgid "Kiosk Manager"
 msgstr "キオスクマネージャー"
 
 #: 
-msgid "Report an issue"
-msgstr "問題を報告"
-
-#: 
 msgid "Self Verification"
 msgstr "自己確認"
 
@@ -4303,10 +4267,6 @@ msgstr "アラビア語 - エジプト"
 #: 
 msgid "Thai"
 msgstr "タイ語"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "自己確認保留中"
 
 #: 
 msgid "Self Verify"
@@ -4688,16 +4648,8 @@ msgid "User must have Delete Records permission"
 msgstr "ユーザーにはレコード削除権限が必要です"
 
 #: 
-msgid "invalid event type id"
-msgstr "無効なイベントタイプID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "無効なカレンダーピニング"
-
-#: 
-msgid "invalid status value"
-msgstr "無効なステータス値"
 
 #: 
 msgid "invalid export value"
@@ -5301,10 +5253,6 @@ msgid "Back to Login"
 msgstr "ログインに戻る"
 
 #: 
-msgid "Back to login"
-msgstr "ログインに戻る"
-
-#: 
 msgid "Complete"
 msgstr "完了"
 
@@ -5410,7 +5358,7 @@ msgstr "この入金に関する追加メモを追加"
 
 #: 
 msgid "Checks"
-msgstr "チェック"
+msgstr "小切手"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -6536,10 +6484,6 @@ msgid "Additional Information"
 msgstr "追加情報"
 
 #: 
-msgid "All information is correct"
-msgstr "すべての情報が正しい"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "機会を割り当て"
 
@@ -6552,20 +6496,12 @@ msgid "Choose opportunities..."
 msgstr "機会を選択..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "家族情報を確認"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "連絡先と個人情報"
 
 #: 
 msgid "Edited"
 msgstr "編集済み"
-
-#: 
-msgid "Email PDF"
-msgstr "PDFをメール"
 
 #: 
 msgid "Newsletter"
@@ -6576,40 +6512,12 @@ msgid "Personal"
 msgstr "個人"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "修正内容でレコードを更新してください"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "ここに修正または追加情報を入力してください..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "機会を選択"
 
 #: 
-msgid "Submit Verification"
-msgstr "確認を送信"
-
-#: 
-msgid "Thank You!"
-msgstr "ありがとうございます！"
-
-#: 
-msgid "Visit Our Website"
-msgstr "ウェブサイトを訪問"
-
-#: 
 msgid "Volunteer"
 msgstr "ボランティア"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "確認の処理中にエラーが発生しました。もう一度お試しいただくか、直接お問い合わせください。"
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "確認リクエストを受け取りました。情報を最新の状態に保っていただきありがとうございます。"
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8065,10 +7973,6 @@ msgid "City is required."
 msgstr "市区町村は必須です。"
 
 #: 
-msgid "Clear filter"
-msgstr "フィルターをクリア"
-
-#: 
 msgid "Configuration item not found"
 msgstr "設定項目が見つかりません"
 
@@ -8336,10 +8240,6 @@ msgstr "個人を追加"
 #: 
 msgid "Add all cart items to a group"
 msgstr "リストのすべての項目をグループに追加"
-
-#: 
-msgid "Add all to Cart"
-msgstr "すべてをリストに追加"
 
 #: 
 msgid "Add cart items to a family"
@@ -8846,10 +8746,6 @@ msgid "Family Profile"
 msgstr "家族プロフィール"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "家族の役割（世帯主、配偶者、子どもなど）は記録の整理に役立ちます。"
-
-#: 
 msgid "Family vs Person"
 msgstr "家族と個人"
 
@@ -9348,10 +9244,6 @@ msgid "Record why attendees visited your church"
 msgstr "来会者が教会を訪問した理由を記録"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "リストからすべて削除"
-
-#: 
 msgid "Remove from Class"
 msgstr "クラスから削除"
 
@@ -9822,10 +9714,6 @@ msgstr "今年のイベント"
 #: 
 msgid "Everyone"
 msgstr "全員"
-
-#: 
-msgid "Failed to delete note"
-msgstr "メモの削除に失敗しました"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11724,10 +11612,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "開始日は有効な YYYY-MM-DD 形式の日付でなければなりません。"
 
 #: 
-msgid "Range start must be before range end"
-msgstr "開始日は終了日より前でなければなりません"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "開始日は終了日より前でなければなりません。"
 
@@ -11948,10 +11832,6 @@ msgid "Cannot move property in that direction"
 msgstr "その方向にプロパティを移動できません"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "家族情報を確認"
-
-#: 
 msgid "Delete failed"
 msgstr "削除に失敗しました"
 
@@ -11992,20 +11872,12 @@ msgid "Invalid target family"
 msgstr "無効なターゲット家族です"
 
 #: 
-msgid "Log Out"
-msgstr "ログアウト"
-
-#: 
 msgid "Membership not found"
 msgstr "メンバーシップが見つかりません"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "パスワードが正常に変更されました："
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "以下の家族情報を確認し、確定するか変更を申請してください。"
 
 #: 
 msgid "Please select a target family."
@@ -12688,10 +12560,6 @@ msgid "Failed to install plugin from URL"
 msgstr "URLからのプラグインインストールに失敗しました"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "承認済みプラグインリストの読み込みに失敗しました"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "承認済みプラグインリストの読み込みに失敗しました。"
 
@@ -12750,10 +12618,6 @@ msgstr "ケバブケース。zip内のトップレベルディレクトリ名お
 #: 
 msgid "Loading approved plugin list…"
 msgstr "承認済みプラグインリストを読み込み中…"
-
-#: 
-msgid "Loading…"
-msgstr "読み込み中…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13201,10 +13065,6 @@ msgid "Change Your Locale"
 msgstr "ロケールを変更する"
 
 #: 
-msgid "Change role"
-msgstr "ロールを変更"
-
-#: 
 msgid "Check Number"
 msgstr "小切手番号"
 
@@ -13219,10 +13079,6 @@ msgstr "チェックインに失敗しました。もう一度お試しくださ
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "チェックアウトに失敗しました。もう一度お試しください。"
-
-#: 
-msgid "City is required"
-msgstr "市区町村が必要です"
 
 #: 
 msgid "Click Save to apply."
@@ -13291,10 +13147,6 @@ msgstr "すべての番号をコピー"
 #: 
 msgid "Copy Members to Group"
 msgstr "メンバーをグループにコピー"
-
-#: 
-msgid "Creating Backup..."
-msgstr "バックアップ作成中..."
 
 #: 
 msgid "Creating..."
@@ -13479,10 +13331,6 @@ msgstr "カートに追加できませんでした"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "登録のキャンセルに失敗しました。もう一度お試しください。"
-
-#: 
-msgid "Failed to copy URL"
-msgstr "URLのコピーに失敗しました"
 
 #: 
 msgid "Failed to create backup."
@@ -13873,10 +13721,6 @@ msgid "One-Time Code"
 msgstr "ワンタイムコード"
 
 #: 
-msgid "Open in New Tab"
-msgstr "新しいタブで開く"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "認証アプリを開いてこの QR コードをスキャンしてください"
 
@@ -14153,10 +13997,6 @@ msgid "Setup Complete"
 msgstr "設定完了"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "このURLを家族メンバーと共有して情報を確認してもらいます"
-
-#: 
 msgid "Show more options"
 msgstr "さらにオプションを表示"
 
@@ -14309,10 +14149,6 @@ msgid "Validation pending"
 msgstr "検証保留中"
 
 #: 
-msgid "Verification URL"
-msgstr "確認URL"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "確認に失敗しました。もう一度お試しください。"
 
@@ -14377,10 +14213,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "アプリにアクセスできなくなった場合に使用できるバックアップコードが発行されます"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "カートは空です"
-
-#: 
 msgid "Your account is now protected"
 msgstr "アカウントが保護されました"
 
@@ -14399,10 +14231,6 @@ msgstr "ブラウザの言語設定が ChurchCRM のロケールと異なりま�
 #: 
 msgid "Your database already contains data"
 msgstr "データベースにはすでにデータが含まれています"
-
-#: 
-msgid "Zip code is required"
-msgstr "郵便番号は必須です"
 
 #: 
 msgid "added"
@@ -14822,10 +14650,6 @@ msgstr "この家族へのメモを追加する権限がありません。"
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "この人物へのメモを追加する権限がありません。"
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "このメモを編集する権限がありません"
 
 #: 
 msgid "Account locked"
@@ -15646,10 +15470,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "この家族のレコードを削除することを確認してください"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "家族情報を確認してください"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "これらの献金を関連付ける別の家族を選択してください"
 
@@ -15870,10 +15690,6 @@ msgid "Select a person"
 msgstr "人物を選択"
 
 #: 
-msgid "Select role"
-msgstr "役割を選択"
-
-#: 
 msgid "Select type (optional)"
 msgstr "種類を選択（任意）"
 
@@ -16030,10 +15846,6 @@ msgid "At least one fund allocation is required"
 msgstr "少なくとも1つのファンド割り当てが必要です"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "少なくとも1つのファンドにゼロ以外の金額が必要です"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "誕生日に自動的にお祝いメールを送信する"
 
@@ -16110,18 +15922,6 @@ msgid "Editing a Pledge"
 msgstr "誓約を編集中"
 
 #: 
-msgid "Enable (full)"
-msgstr "有効（フル）"
-
-#: 
-msgid "Errors only"
-msgstr "エラーのみ"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "エラー — サーバーエラーおよびJS例外"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "誓約の作成に失敗しました"
 
@@ -16160,10 +15960,6 @@ msgstr "グループキーは必須です"
 #: 
 msgid "Happy Birthday"
 msgstr "誕生日おめでとうございます"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ChurchCRMの改善にご協力ください"
 
 #: 
 msgid "IP addresses"
@@ -16234,16 +16030,8 @@ msgid "None (disabled)"
 msgstr "なし（無効）"
 
 #: 
-msgid "OS family"
-msgstr "OSファミリー"
-
-#: 
 msgid "Overpaid"
 msgstr "超過支払い"
-
-#: 
-msgid "PHP version"
-msgstr "PHPバージョン"
 
 #: 
 msgid "Page route"
@@ -16280,10 +16068,6 @@ msgstr "誓約グループが見つかりません"
 #: 
 msgid "Pledges & Payments"
 msgstr "誓約と献金"
-
-#: 
-msgid "Prioritise translations"
-msgstr "翻訳を優先する"
 
 #: 
 msgid "Purpose"
@@ -16348,10 +16132,6 @@ msgstr "ユーザー名、メールアドレス、または役割"
 #: 
 msgid "View pledge or payment details"
 msgstr "誓約または献金の詳細を表示"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "警告 — 警告、エラー、およびJS例外"
 
 #: 
 msgid "What is sent"
@@ -16545,11 +16325,6 @@ msgstr "選択した入金に対する支払いが見つかりませんでした
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "有効な入金IDが指定されていません"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDFを%d家族にメールで送信しました。"
 
 #: 
 msgid "Partial Send"
@@ -17089,10 +16864,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "バックアップを作成してアップロードしています。数分かかる場合があります..."
 
 #: 
-msgid "Database reset failed."
-msgstr "データベースのリセットに失敗しました。"
-
-#: 
 msgid "Deceased"
 msgstr "故人"
 
@@ -17289,10 +17060,6 @@ msgid "Log settings saved"
 msgstr "ログ設定が保存されました"
 
 #: 
-msgid "Login Name is Required"
-msgstr "ログイン名は必須です"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "この人物を有効としてマークしました"
 
@@ -17417,10 +17184,6 @@ msgid "Sending..."
 msgstr "送信中..."
 
 #: 
-msgid "Sending…"
-msgstr "送信中…"
-
-#: 
 msgid "Settings reset"
 msgstr "設定をリセットしました"
 
@@ -17489,16 +17252,8 @@ msgid "Upcoming"
 msgstr "今後の予定"
 
 #: 
-msgid "Valid Until"
-msgstr "有効期限"
-
-#: 
 msgid "View active only"
 msgstr "有効のみ表示"
-
-#: 
-msgid "View all"
-msgstr "すべて表示"
 
 #: 
 msgid "View all (including inactive)"
@@ -18277,10 +18032,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "会計年度は %s に始まります。"
 
 #: 
-msgid "An error occurred"
-msgstr "エラーが発生しました"
-
-#: 
 msgid "Approve"
 msgstr "承認"
 
@@ -18450,11 +18201,6 @@ msgstr "%1$s：最大は %2$d ですが、既定の奉仕者が %3$d 人選ば�
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d 日"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d デフォルトが別の理由でスキップされました（発生が終了、キャンセル、または満杯）"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18711,10 +18457,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "テーマは、教会がサーバー上の Include/themes/ にアップロードするフォルダーです。システム既定のテーマは ChurchCRM に付属しています。"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "移行用の設定です。従来のボランティア機会のページと新しいミニストリーのページの両方が利用でき、個人の記録には2つのボランティアタブが明記されて表示されます。教会を V1 から V2 に移行する間に使用し、その後は V2 のみに切り替えてください。"
-
-#: 
 msgid "A volunteer"
 msgstr "奉仕者"
 
@@ -18919,10 +18661,6 @@ msgid "Assigned outside the current plan"
 msgstr "現在の計画外で割り当て済み"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "割り当てをキャンセルしました"
-
-#: 
 msgid "Assignment not found"
 msgstr "割り当てが見つかりません"
 
@@ -19029,10 +18767,6 @@ msgstr "割り当てをキャンセル"
 #: 
 msgid "Cancel this assignment"
 msgstr "この割り当てをキャンセル"
-
-#: 
-msgid "Cancelled"
-msgstr "キャンセル済み"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19189,10 +18923,6 @@ msgstr "教会のウェブサイト"
 #: 
 msgid "Close event details"
 msgstr "行事の詳細を閉じる"
-
-#: 
-msgid "Colour"
-msgstr "色"
 
 #: 
 msgid "Completed"
@@ -19439,10 +19169,6 @@ msgid "Each staffing need must name a position"
 msgstr "各必要人員には役割を指定する必要があります"
 
 #: 
-msgid "Edit event"
-msgstr "イベントを編集"
-
-#: 
 msgid "Edit ministry"
 msgstr "ミニストリーを編集"
 
@@ -19527,10 +19253,6 @@ msgstr "{{count}} 人の受信者にメール送信。"
 #: 
 msgid "Emails"
 msgstr "メール"
-
-#: 
-msgid "End time"
-msgstr "終了時刻"
 
 #: 
 msgid "Enter counts"
@@ -20809,10 +20531,6 @@ msgid "SMTP test"
 msgstr "SMTPテスト"
 
 #: 
-msgid "Save changes"
-msgstr "変更内容を保存"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "保存しました。このミニストリーは奉仕者を募集しなくなりました"
 
@@ -21095,10 +20813,6 @@ msgstr "必要人員を保存しました"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "まずミニストリーを作成し、そこで奉仕するチームと役割を追加してください。"
-
-#: 
-msgid "Start time"
-msgstr "開始時刻"
 
 #: 
 msgid "Start typing a name"
@@ -21447,10 +21161,6 @@ msgstr "アドレスが選択されています。キーボードでコピーし
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "アセットのパス「%s」は許可されていません。"
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "割り当てをキャンセルできませんでした"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -21975,10 +21685,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "この開催回はすでに終了しており、割り当てはもう変更できません"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "この開催回はキャンセルされました"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "この開催回には、スケジュールとは別に設定された独自の必要人員があります。"
 
@@ -22147,16 +21853,8 @@ msgid "Validation"
 msgstr "検証"
 
 #: 
-msgid "View event"
-msgstr "イベントを表示"
-
-#: 
 msgid "View my schedule"
 msgstr "自分のスケジュールを見る"
-
-#: 
-msgid "View person"
-msgstr "人物を表示"
 
 #: 
 msgid "View the event"
@@ -22205,10 +21903,6 @@ msgstr "奉仕者の時間"
 #: 
 msgid "Volunteering"
 msgstr "奉仕"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "教会の運営の仕方に沿って組み立てた奉仕の管理です。各ミニストリーにはチームと役割があり、人は役割の資格を持ち、ミニストリーの奉仕者プールのグループに所属します。スケジュールはカレンダーの行事に従い、必要人員を伴う日付付きの開催回を生成します。コーディネーターが人を割り当て、割り当てられた人は承諾、辞退、または代理の提案を行います。リマインダーと通知はメールで送られます。管理者とミニストリー管理権限を持つユーザーは、すべてのミニストリーを見ることができ、作成、無効化、削除ができます。ミニストリーのコーディネーターには代わりに「自分のミニストリーの管理」権限が付与され、サイドバーのミニストリー見出しには、担当するミニストリーだけが表示されます。チームリーダーは、メンバーポータルからチームを運営します。会員はメンバーポータルで、自分のスケジュールの確認、応答、申し込み、お手伝いの申し出ができます。"
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22745,10 +22439,6 @@ msgid "Cancel this occurrence"
 msgstr "この発生をキャンセル"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "キャンセルしてもだれにも通知されません。メールは送信されません。割り当ては保持され、キャンセル中はリマインダーがスケジュールされず、復元されるまでだれも割り当てることができません。"
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "削除されたイベントはすべてのカレンダーから削除され、チェックインと人数統計も削除されます。このミニストリーの人員配置はその日付のみを保持します。この操作は元に戻せません。"
 
@@ -22759,10 +22449,6 @@ msgstr "削除されたイベント：{{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "削除するイベント：{{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "発生がキャンセルされました"
 
 #: 
 msgid "Occurrence restored"
@@ -22779,10 +22465,6 @@ msgstr "発生を復元"
 #: 
 msgid "Restore this occurrence"
 msgstr "この発生を復元"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "発生をキャンセルできませんでした"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -22842,7 +22524,7 @@ msgstr "キオスク設定"
 
 #: 
 msgid "Please enter a check number"
-msgstr "チェック番号を入力してください"
+msgstr "小切手番号を入力してください"
 
 #: 
 msgid "Register & Check In"
@@ -24783,28 +24465,12 @@ msgid "Closing Line"
 msgstr "結びの文"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "任意の利用状況送信を制御します。インストールとデータベースのアップグレードに失敗した場合は、利用状況送信がオフでも、限られた診断情報が PostHog に送られます。これらの失敗報告には、ソフトウェアと環境のバージョン、および不要な情報を除いたデータベースのエラーが含まれますが、インストールIDやSQL文は含まれません。"
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "失敗したインストールとデータベースのアップグレードを診断"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "インストールとアップグレードの失敗の詳細"
-
-#: 
 msgid "Open in browser window"
 msgstr "ブラウザのウィンドウで開く"
 
 #: 
 msgid "Opening Line"
 msgstr "冒頭の文"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "任意の利用状況は、有効なときだけ送られます。インストールとデータベースのアップグレードに失敗した場合は、「いいえ、不要です」を選んでも、コミュニティを助けるための限られた診断情報が常に送られます。失敗報告には、ソフトウェアと環境のバージョンと、不要な情報を除いたデータベースのエラーが含まれ、インストールIDやSQL文は含まれません。"
 
 #: 
 msgid "PDF Handling"
@@ -24841,18 +24507,6 @@ msgstr "明細書の文言"
 #: 
 msgid "Tax Information"
 msgstr "税務情報"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "利用状況は米国の PostHog に送られます。任意の利用状況送信が無効でも、インストールとアップグレードの失敗報告は送られます。"
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "この日付は取り消されました。これ以上ご対応いただく必要はありません。"
-
-#: 
-msgid "always sent"
-msgstr "常に送信"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25317,10 +24971,6 @@ msgstr "メールの確認が必要です"
 #: 
 msgid "Email problem"
 msgstr "メールの問題"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "メールで送ったサインインのコードとリンクを取り消しました"
 
 #: 
 msgid "Emailed verification link"
@@ -25913,10 +25563,6 @@ msgstr "自分専用のメールを持つ、存命の人だけが、事務所の
 #: 
 msgid "Only people with their own email can be added."
 msgstr "自分専用のメールを持つ人だけを追加できます。"
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "任意の利用状況には、ページの経路、使用中の言語、CRM のバージョン、PHP のバージョン、OS の種類、教会情報の設定にある国、および無作為なインストールIDが含まれることがあります。失敗報告にはインストールIDは含まれません。データは米国の PostHog に送られます。"
 
 #: 
 msgid "Passkey"
@@ -27087,10 +26733,6 @@ msgid "A request was made in the Member Portal to change your email address at %
 msgstr "メンバーポータルで、%1$s のメールアドレスを %2$s から %3$s に変更する依頼がありました。変更は、新しいアドレスに送られたリンクが使われたときだけ行われます。"
 
 #: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "下のリンクから家族の情報を確認してください。確認ページで「家族情報を確認」を選ぶと、内容が正しいことを確定できます。訂正は教会事務所に送ってください。"
-
-#: 
 msgid "Review Family Information"
 msgstr "家族情報を確認"
 
@@ -27373,4 +27015,300 @@ msgstr "基金別の支払い"
 #: 
 msgid "Unknown Fund"
 msgstr "不明な基金"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "ホスティング事業者に、データベースをサポートされているバージョンへ移行するよう依頼してから、もう一度お試しください。"
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "ホスティング事業者に、データベースをサポートされているバージョンへ移行するよう依頼してください。"
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "祝日名は各ユーザーの言語設定に従って表示されます。その言語の名前がない祝日は英語で表示されます。"
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "祝日名をあなたの言語で表示"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "入金記録で小切手による支払いを記録するときに小切手番号を必須にします。オフの場合、小切手番号が空欄または 0 のまま小切手を保存でき、それらは重複チェックの対象になりません。"
+
+#: 
+msgid "Require check number on check payments"
+msgstr "小切手による支払いで小切手番号を必須にする"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "アップグレードは開始されなかったため、何も変更されていません。"
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "このアップグレードはお使いのデータベースでは実行できません。"
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "お使いのデータベース サーバー（%1$s %2$s）は、ChurchCRM がサポートするバージョン（MySQL %3$s または MariaDB %4$s 以降）より古いです。"
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "確認メールを送信する前に、この自己登録した家族を承認してください"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "2 つの会計年度について、家族ごとの献金誓約の合計を比較します。"
+
+#: 
+msgid "Email Portal Link"
+msgstr "ポータルのリンクをメールで送信"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "家族にメンバーポータルへのリンクをメールで送り、そこで情報を確認・更新してもらうか、対面で確認したことを記録します。"
+
+#: 
+msgid "Family is inactive"
+msgstr "家族は非アクティブです"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "1 つ目の会計年度"
+
+#: 
+msgid "Fiscal Years"
+msgstr "会計年度"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "献金明細書 — サンプルのみ"
+
+#: 
+msgid "Last invited"
+msgstr "最終招待日"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "最終ポータルサインイン"
+
+#: 
+msgid "Last verified"
+msgstr "最終確認日"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "この家族には、メールアドレスを持つアクティブで承認済みのメンバーがいません。代わりに対面で確認してください。"
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "これらの会計年度の献金誓約は見つかりませんでした。"
+
+#: 
+msgid "Pledge Comparison"
+msgstr "献金誓約の比較"
+
+#: 
+msgid "Preview PDF"
+msgstr "PDF をプレビュー"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "2 つ目の会計年度"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "このメールアドレスでメンバーポータルにサインインし、家族の情報を確認してください。「自分の家族」ページで、すべて正しいことを確認するか、情報を更新してください。"
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "この家族は非アクティブのため、確認メールは送信されません。"
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "この自己登録した家族は承認待ちです。承認すると、メンバーポータルにサインインして情報を確認するよう招待するメールが家族に送信されます。"
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "保存済みの設定と架空のサンプル献金のみを使用します。"
+
+#: 
+msgid "Verification"
+msgstr "確認"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "%d 家族に確認メールを送信しました。"
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "家族のメンバーに確認メールを送信しました。"
+
+#: 
+msgid "by the family in the portal"
+msgstr "家族がポータルで"
+
+#: 
+msgid "in person by staff"
+msgstr "スタッフが対面で"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d デフォルトが別の理由でスキップされました（発生が終了、キャンセル、または満杯）"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "移行用の設定です。従来のボランティア機会のページと新しいミニストリーのページの両方が利用でき、個人の記録には2つのボランティアタブが明記されて表示されます。教会を V1 から V2 に移行する間に使用し、その後は V2 のみに切り替えてください。"
+
+#: 
+msgid "Assignment canceled"
+msgstr "割り当てをキャンセルしました"
+
+#: 
+msgid "Canceled"
+msgstr "キャンセル済み"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "キャンセルしてもだれにも通知されません。メールは送信されません。割り当ては保持され、キャンセル中はリマインダーがスケジュールされず、復元されるまでだれも割り当てることができません。"
+
+#: 
+msgid "Color"
+msgstr "色"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "メールで送ったサインインのコードとリンクを取り消しました"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "家族の役割（世帯主、配偶者、子どもなど）は記録の整理に役立ちます。"
+
+#: 
+msgid "Occurrence canceled"
+msgstr "発生がキャンセルされました"
+
+#: 
+msgid "Prioritize translations"
+msgstr "翻訳を優先する"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "割り当てをキャンセルできませんでした"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "発生をキャンセルできませんでした"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "この日付は取り消されました。これ以上ご対応いただく必要はありません。"
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "この開催回はキャンセルされました"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "教会の運営の仕方に沿って組み立てた奉仕の管理です。各ミニストリーにはチームと役割があり、人は役割の資格を持ち、ミニストリーの奉仕者プールのグループに所属します。スケジュールはカレンダーの行事に従い、必要人員を伴う日付付きの開催回を生成します。コーディネーターが人を割り当て、割り当てられた人は承諾、辞退、または代理の提案を行います。リマインダーと通知はメールで送られます。管理者とミニストリー管理権限を持つユーザーは、すべてのミニストリーを見ることができ、作成、無効化、削除ができます。ミニストリーのコーディネーターには代わりに「自分のミニストリーの管理」権限が付与され、サイドバーのミニストリー見出しには、担当するミニストリーだけが表示されます。チームリーダーは、メンバーポータルからチームを運営します。会員はメンバーポータルで、自分のスケジュールの確認、応答、申し込み、お手伝いの申し出ができます。"
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "有効なインストール数とアップグレード結果を集計する"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "データベース エンジンとメジャー/マイナー バージョン"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "エラー — インストール統計、警告、エラー、JS 例外"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "問題の発見と修正にご協力いただけますか？"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "「インストール」は最小限のインストールとアップグレードの統計を共有します。「エラー」は警告とエラー レポートを追加します。「フル」はページビューを追加します。「なし」は失敗したインストールとアップグレードのみを送信します。"
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "インストール — インストールとアップグレードの統計（既定）"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "インストールとアップグレードの結果、アップグレード時の以前のバージョン、使用中の 1 日 1 回のチェックイン"
+
+#: 
+msgid "Installation profile"
+msgstr "インストール プロファイル"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "ロケール（エラーとフル）"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "共有されないもの：会員、献金、その他の教会の記録、教会名、Web アドレスやサーバー名、メールアドレス。国は教会の設定にあるもので、ネットワークから判別するものではありません。"
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "OS ファミリー（エラーとフル）"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP バージョン（エラーとフル）"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "共有される内容の確認や選択の変更は、管理 → テレメトリーで行えます。"
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "本番、デモ、テストのインストールを区別する"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "匿名のインストール統計を共有しますか？"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "エラーと使用状況のレポートを共有"
+
+#: 
+msgid "Share install statistics"
+msgstr "インストール統計を共有"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "さらに共有されるもの：警告、エラーの詳細、開かれたページ。"
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "共有されるもの：ChurchCRM がインストールまたはアップグレードされたことと成功したかどうか、使用中の 1 日 1 回のチェックイン、バージョン番号、国、データベースの種類。ランダムなインストール ID により、各インストールは 1 回だけ数えられます。"
+
+#: 
+msgid "Understand database compatibility"
+msgstr "データベースの互換性を把握する"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "この選択は一度だけ尋ねられます。いつでも変更できます。「不要です」を選ぶと、失敗したインストールまたはアップグレードのみが報告されます。"
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "データはあなたのものです。「インストール」が共有するのは、インストールとアップグレードの結果、インストール ID、ソフトウェアのバージョン、インストール プロファイル、設定された国、データベース エンジンとそのメジャー/マイナー バージョンのみです。「エラー」は警告とエラーの詳細を追加します。「フル」はページビューを追加します。「なし」は失敗したインストールとアップグレードのみを送信します。どのレベルでも Web アドレスやサーバー名は送信されません。テスト用のインストールは何も送信しません。テレメトリーは米国の PostHog に送信されます。"
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "データはあなたのものです。報告するのはソフトウェアについてであり、教会やその人々については決して報告しません。"
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "データはあなたのものです。インストール数を集計するため、ChurchCRM はインストールまたはアップグレードされたことと成功したかどうか、使用中の 1 日 1 回のチェックイン、さらにバージョン番号、国、データベースの種類、ランダムなインストール ID を報告します。会員、献金、その他の教会の記録、教会名、Web アドレスやサーバー名、メールアドレスは決して報告しません。管理 → テレメトリーでいつでもオフにできます。失敗したインストールやアップグレードは引き続き報告されます。警告、エラーの詳細、ページビューは、あなたが選んだ場合にのみ共有されます。"
 

@@ -37,10 +37,26 @@ function stripUrlDetails(value) {
     if (rootPath && (url.pathname === rootPath || url.pathname.startsWith(`${rootPath}/`))) {
       url.pathname = url.pathname.slice(rootPath.length) || "/";
     }
-    return `${url.origin}${url.pathname}`;
+    return url.pathname;
   } catch {
     return value.split(/[?#]/, 1)[0];
   }
+}
+
+// Stack frames and messages carry this installation's address; replace it wherever it appears.
+function scrubHost(value, replacements) {
+  if (typeof value === "string") {
+    return replacements.reduce((text, [needle, replacement]) => text.split(needle).join(replacement), value);
+  }
+  if (Array.isArray(value)) {
+    return value.map((item) => scrubHost(item, replacements));
+  }
+  if (value && typeof value === "object") {
+    for (const key of Object.keys(value)) {
+      value[key] = scrubHost(value[key], replacements);
+    }
+  }
+  return value;
 }
 
 function sanitizeEvent(event) {
@@ -55,15 +71,30 @@ function sanitizeEvent(event) {
 
   delete properties.$ip;
   for (const property of Object.keys(properties)) {
-    if (property.startsWith("$geoip")) {
+    if (property.startsWith("$geoip") || /(host|referrer|referring_domain)$/.test(property)) {
       delete properties[property];
     }
   }
-  for (const property of ["$current_url", "$session_entry_url", "$referrer"]) {
-    if (property in properties) {
+  properties.$geoip_disable = true;
+  const rootPath = (window.CRM?.root || "").replace(/\/+$/, "");
+  if (typeof properties.$pathname === "string") {
+    const path = properties.$pathname.split(/[?#]/, 1)[0];
+    properties.$pathname =
+      rootPath && (path === rootPath || path.startsWith(`${rootPath}/`)) ? path.slice(rootPath.length) || "/" : path;
+  }
+  for (const property of Object.keys(properties)) {
+    if (/(^|_)url$/.test(property)) {
       properties[property] = stripUrlDetails(properties[property]);
     }
   }
+  const { origin, host, hostname } = window.location;
+  const replacements = [
+    [`${origin}${rootPath}`, ""],
+    [origin, ""],
+    [host, "[host]"],
+    [hostname, "[host]"],
+  ].filter(([needle]) => needle && needle !== "null");
+  event.properties = scrubHost(properties, replacements);
 
   return event;
 }
@@ -78,6 +109,7 @@ if (cfg?.key && cfg.level && cfg.level !== "none" && cfg.install_profile !== "te
     disable_session_recording: true,
     capture_exceptions: true, // active at all levels (errors / warnings / full)
     person_profiles: "never",
+    ip: false,
     bootstrap: { distinctID: cfg.distinctID || "" },
     before_send: sanitizeEvent,
   });

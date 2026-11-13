@@ -5,6 +5,7 @@ require_once __DIR__ . '/../../Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
@@ -149,6 +150,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $rsAssignedGroups     = RunQuery($sSQL);
     $assignedGroupsData   = [];
     while ($row = mysqli_fetch_array($rsAssignedGroups, MYSQLI_ASSOC)) {
+        $row['viewUri'] = Group::getViewURIForId((int) $row['grp_ID'], (int) $row['grp_Type'] === 4);
         $assignedGroupsData[] = $row;
     }
 

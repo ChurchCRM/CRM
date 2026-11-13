@@ -10,6 +10,7 @@ Release notes are stored in the [`changelog/`](./changelog/) folder — one file
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| [7.8.4](./changelog/7.8.4.md) | November 2026 | ⚠️ Important Guidance Before You Upgrade, Finance, Giving & Stewardship Workflows, Navigation, Mobile & Everyday Usability |
 | [7.8.3](./changelog/7.8.3.md) | November 2026 | Member sign-in by email and passkey, giving statements that are easier to run, every PDF report on one engine, safer upgrades |
 | [7.8.2](./changelog/7.8.2.md) | October 2026 | ⚠️ Important Guidance Before You Upgrade, Email History & Communication Workflows, Volunteer, Staff & Administrative Usability |
 | [7.8.1](./changelog/7.8.1.md) | October 2026 | Student & Children’s Ministry Workflows, Volunteer & Team Coordination, Congregational Communication |
