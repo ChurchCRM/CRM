@@ -213,11 +213,11 @@ class TelemetryService
 
     public static function captureUpgradeSqlError(string $version, int $durationMs, string $databaseError): void
     {
-        self::captureUpgradeFailure($version, '');
+        $databaseError = self::sanitizeDatabaseError($databaseError);
+        self::captureUpgradeFailure($version, 'sql_error', $databaseError);
         if (!self::isEnabled()) {
             return;
         }
-        $databaseError = self::sanitizeDatabaseError($databaseError);
 
         self::capture('upgrade_sql_failed', array_merge(self::baseProperties(), [
             'upgrade_version' => $version,
@@ -246,10 +246,10 @@ class TelemetryService
     }
 
     /** Fixed codes only: a free-text reason could carry details of a church's installation. */
-    public const UPGRADE_FAILURE_REASONS = ['no_upgrade_path', 'script_interrupted'];
+    public const UPGRADE_FAILURE_REASONS = ['no_upgrade_path', 'script_interrupted', 'sql_error'];
 
     /** Sent at every level so failed upgrades get fixed. */
-    public static function captureUpgradeFailure(string $version, string $reason): void
+    public static function captureUpgradeFailure(string $version, string $reason, ?string $errorDetail = null, ?string $upgradeScript = null): void
     {
         if (self::installProfile() === 'test') {
             return;
@@ -276,15 +276,44 @@ class TelemetryService
             // The upgrade may be failing because the configuration table is unusable; report anyway.
         }
 
-        self::capture('upgrade_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+        $properties = array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
             'from_version' => $fromVersion,
             'failure_reason' => $reason,
-        ]));
+            'upgrade_version' => $version,
+        ]);
+        if ($errorDetail !== null && $errorDetail !== '') {
+            // Already sanitized by the caller; re-sanitize so a future caller cannot leak raw text.
+            $properties['error_detail'] = self::sanitizeDatabaseError($errorDetail);
+        }
+        $script = self::sanitizeUpgradeScript($upgradeScript);
+        if ($script !== null) {
+            $properties['upgrade_script'] = $script;
+        }
+
+        self::capture('upgrade_failed', $properties);
+    }
+
+    /**
+     * Repo-relative upgrade script paths only (e.g. mysql/upgrade/7.8.4.sql).
+     * Anything else — a server path, a traversal, an empty value — is dropped
+     * so no detail of a church's installation ever leaves it.
+     */
+    private static function sanitizeUpgradeScript(?string $upgradeScript): ?string
+    {
+        if ($upgradeScript === null || $upgradeScript === '') {
+            return null;
+        }
+        $script = ltrim(str_replace('\\', '/', $upgradeScript), '/');
+        if (!str_starts_with($script, 'mysql/upgrade/') || str_contains($script, '..')) {
+            return null;
+        }
+
+        return $script;
     }
 
     public static function captureUpgradeInterruption(string $version, int $elapsedMs): void
     {
-        self::captureUpgradeFailure($version, '');
+        self::captureUpgradeFailure($version, 'script_interrupted');
         if (!self::isEnabled()) {
             return;
         }
@@ -502,3 +531,4 @@ class TelemetryService
         return $response !== false && $httpStatus === 200;
     }
 }
+

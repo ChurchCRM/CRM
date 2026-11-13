@@ -222,7 +222,12 @@ class UpgradeService
             return true;
         } catch (\Throwable $exc) {
             if (!$exc instanceof SQLImportException && $exc->getCode() !== 409) {
-                TelemetryService::captureUpgradeFailure($installed_version, $failureReason);
+                TelemetryService::captureUpgradeFailure(
+                    isset($version) ? $version->getVersion() : $installed_version,
+                    $failureReason,
+                    null,
+                    isset($scriptName) ? self::upgradeScriptPath($scriptName) : null
+                );
             }
             $logger->error(
                 'Database upgrade failed: ' . $exc->getMessage(),
@@ -237,4 +242,23 @@ class UpgradeService
             }
         }
     }
+
+    /**
+     * Repo-relative path of the upgrade script that was running (e.g. mysql/upgrade/7.8.4.sql),
+     * for failure reporting. Null when no script had started. The document root is stripped so
+     * no server path ever leaves the installation.
+     */
+    private static function upgradeScriptPath(?string $scriptName): ?string
+    {
+        if ($scriptName === null || $scriptName === '') {
+            return null;
+        }
+        $documentRoot = (string) SystemURLs::getDocumentRoot();
+        if ($documentRoot === '' || !str_starts_with($scriptName, $documentRoot)) {
+            return null;
+        }
+
+        return ltrim(substr($scriptName, strlen($documentRoot)), '/');
+    }
 }
+
