@@ -8,9 +8,10 @@
  * Styles come from the locally built /skin/v2/error.min.css (or setup.min.css).
  */
 
-// Same project as TelemetryService::POSTHOG_KEY; a test keeps them equal.
-const STANDALONE_POSTHOG_KEY = 'phc_vhMEHZai3exmp3sqqtJGyVY8Dfjn877bV7zQjV99sJZy';
-const STANDALONE_POSTHOG_URL = 'https://us.i.posthog.com/i/v0/e/?ip=0';
+// Optional here: a page that cannot find the shared project file still renders, it just does not report.
+if (is_file(dirname(__FILE__) . '/../Include/PostHogProject.php')) {
+    require_once dirname(__FILE__) . '/../Include/PostHogProject.php';
+}
 
 /**
  * Report that a blocking error page was shown (php_unsupported, config_invalid) as an install_failed event.
@@ -21,7 +22,7 @@ const STANDALONE_POSTHOG_URL = 'https://us.i.posthog.com/i/v0/e/?ip=0';
  */
 function standaloneReportInstallFailure($reason)
 {
-    if (getenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY') === '1' || getenv('PHP_TEST_DISPOSABLE_DB') === '1') {
+    if (!defined('POSTHOG_PROJECT_KEY') || getenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY') === '1' || getenv('PHP_TEST_DISPOSABLE_DB') === '1') {
         return false;
     }
     try {
@@ -37,7 +38,7 @@ function standaloneReportInstallFailure($reason)
         fclose($marker);
 
         $payload = json_encode(array(
-            'api_key' => STANDALONE_POSTHOG_KEY,
+            'api_key' => POSTHOG_PROJECT_KEY,
             'event' => 'install_failed',
             'distinct_id' => 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32),
             'properties' => array(
@@ -50,7 +51,7 @@ function standaloneReportInstallFailure($reason)
             ),
         ));
 
-        return @file_get_contents(STANDALONE_POSTHOG_URL, false, stream_context_create(array('http' => array(
+        return @file_get_contents(POSTHOG_PROJECT_HOST . '/i/v0/e/?ip=0', false, stream_context_create(array('http' => array(
             'method' => 'POST',
             'header' => "Content-Type: application/json\r\n",
             'content' => $payload,

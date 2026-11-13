@@ -10,11 +10,13 @@ use ChurchCRM\Utils\VersionUtils;
 use Monolog\LogRecord;
 use Propel\Runtime\Propel;
 
+require_once __DIR__ . '/../../Include/PostHogProject.php';
+
 class TelemetryService
 {
-    // Hardcoded PostHog project credentials — not user-configurable.
-    public const POSTHOG_KEY      = 'phc_vhMEHZai3exmp3sqqtJGyVY8Dfjn877bV7zQjV99sJZy';
-    public const POSTHOG_ENDPOINT = 'https://us.i.posthog.com';
+    // The shared PostHog project (src/Include/PostHogProject.php) — not user-configurable.
+    public const POSTHOG_KEY      = \POSTHOG_PROJECT_KEY;
+    public const POSTHOG_ENDPOINT = \POSTHOG_PROJECT_HOST;
     public const POSTHOG_CAPTURE_ENDPOINT = self::POSTHOG_ENDPOINT . '/i/v0/e/';
 
     // Collection levels stored in sTelemetryLevel.
