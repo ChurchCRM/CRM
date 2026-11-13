@@ -48,6 +48,14 @@ describe("API Private - index.php Routing", () => {
         });
     });
 
+    it("shows the same 404 text on an unknown MVC route", () => {
+        cy.request({ url: "/v2/this-route-was-never-real", failOnStatusCode: false }).then((response) => {
+            expect(response.status).to.equal(404);
+            expect(response.body).to.include("Page Not Found");
+            expect(response.body).to.include("could not be found. It may have been moved, renamed, or no longer exists.");
+        });
+    });
+
     it("returns a bare 404 for a missing static asset instead of the HTML error page", () => {
         cy.request({ url: "/skin/v2/this-chunk-does-not-exist.js", failOnStatusCode: false })
             .then((response) => {

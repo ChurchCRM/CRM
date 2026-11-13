@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Portal\Auth\PortalSessionStore;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\PathUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\VersionUtils;
@@ -99,7 +100,7 @@ if ($_idx_isWebRoot) {
     require __DIR__ . '/Include/Header.php';
     $code = 404;
     $title = gettext('Page Not Found');
-    $message = gettext('The page you requested could not be found. It may have been moved, renamed, or no longer exists.');
+    $message = SlimUtils::notFoundMessage();
     require __DIR__ . '/v2/templates/common/error-page.php';
     require __DIR__ . '/Include/Footer.php';
 } else {
