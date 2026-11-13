@@ -6,13 +6,16 @@ run-name: >-
   || inputs.upload_terms == false && 'Locale sync: download translations only (after a translation upload)'
   || 'Locale sync: upload terms + download translations (manual)' }}
 
+# RETIRED (#11416): translations now live in the repo (npm run locale:missing / locale:apply), so this
+# workflow no longer starts by itself. A manual run would overwrite src/locale with POEditor's copy, so
+# only run it for a final download before the repo-only flow takes over. The follow-up PR deletes it.
+#
 # Stage 2, in plain words. No translating happens here:
 #   1. upload terms   locale/messages.po -> POEditor (sync_terms: deletes terms no longer in the file,
 #                     with a guard against large deletions)
 #   2. download       POEditor -> src/locale + locale/terms/missing
 #   3. download PR    "locale: download translations from POEditor - <date>" on locale/download/<version>,
-#                     squash-merged by this workflow when every JSON file parses and every path stays in
-#                     the download trees. Invalid JSON or an unexpected path leaves it open for a person.
+#                     left open for a person (it no longer merges itself, #11416).
 #
 # What starts it (every step is idempotent, so the trigger only decides when, not what):
 #   - a merged terms PR (push to master touching locale/messages.po): runs at once. The wait for a burst
@@ -25,14 +28,7 @@ permissions:
   contents: read
 
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - 'locale/messages.po'
-  schedule:
-    # Run daily at midnight UTC
-    - cron: "0 0 * * *"
+  # push (terms PR merged) and the daily schedule were removed with #11416; manual runs only.
   workflow_dispatch:
     # Allow manual triggering from GitHub UI
     inputs:
@@ -296,7 +292,7 @@ jobs:
         body: |
           ## 🌍 Translations downloaded from POEditor
 
-          `Locale: sync POEditor` merges this PR itself when every JSON file parses and every path is a download file. If it is still open, one of those checks failed: see the run.
+          Retired flow (#11416): this PR does not merge itself. The repo holds the translations, so merging it would overwrite translations made there; close it unless you know it only adds work done in POEditor.
           
           **Details:**
           - 📅 **Date**: ${{ needs.setup.outputs.date }}
@@ -319,12 +315,5 @@ jobs:
           **Manual Run Options:**
           ${{ inputs.skip_audit == true && '- ⏩ Audit skipped' || '- 🔍 Full download and audit' }}
 
-    # GITHUB_TOKEN on purpose. This merge starts no later workflow: the download
-    # touches none of the paths that start Locale: terms, and a token merge
-    # fires no push. The terms PR stays a person's merge so Locale: sync POEditor runs.
-    - name: Merge the download PR
-      if: steps.fresh.outputs.stale != 'true' && steps.gate.outputs.merge == 'true' && steps.cpr.outputs.pull-request-operation != 'closed'
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        PR: ${{ steps.cpr.outputs.pull-request-number }}
-      run: gh pr merge "$PR" --squash --delete-branch
+    # The download PR no longer merges itself (#11416): the repo holds the translations now, so a
+    # POEditor download would overwrite translations made since. A person reviews and closes it.

@@ -1,12 +1,12 @@
 # ChurchCRM Release Process
 
-The maintainer runbook from localization sync to the marketing push. Follow the automation: workflows run what they own, and manual steps are approvals and judgment calls.
+The maintainer runbook from localization to the marketing push. Follow the automation: workflows run what they own, and manual steps are approvals and judgment calls.
 
 Legend: 🤖 automated · 🧑‍💻 agent-assisted · ✋ manual
 
 ## Checklist
 
-1. **Locales clean:** `npm run locale:translate:list` on `master` lists no locales (Phase 1). Filled regional English batches (`en` is en-GB, `en-au`, `en-ca`) do not count. New strings follow the count-neutral rule in `i18n-localization.md`.
+1. **Locales clean:** `npm run locale:release` on `master` exits 0: nothing untranslated in the repo and no terms PR open (Phase 1). New strings follow the count-neutral rule in `i18n-localization.md`.
 2. **Built and tested:** Build/Test/Package and the nightly are green on the same `master` HEAD, and the milestone for the `package.json` version is reviewed (Phase 2).
 3. **Release & Start Next** with `next_version`, the only input (3.1). It requires green Build/Test/Package and Nightly on the branch tip, and refuses to replace an existing release. It starts the marketing capture, the notes context, the docs staging and the `Start <next> release` PR as separate jobs that never block the draft.
 4. **Notes:** ask an agent to "write the `<version>` release notes". It reads the `release-notes-context-<version>` artifact and applies the approved text with `gh release edit <version> --tag <version> --notes-file …` (3.2).
@@ -38,30 +38,25 @@ A **hard gate** stops the release until it is met or the maintainer overrides it
 | Changelog sync, milestones, docs release (4.4 to 4.6) | Automation after Publish, re-runnable | `release-bookkeeping.yml` with `tag=<version>` |
 | Post-release nightly, advisory publish, Docker image check, docs PR review, marketing push (4.7 to 4.10, Phase 6) | After release | Verification and follow-up |
 
-## Phase 1: Localization sync
+## Phase 1: Localization
 
-Goal: every feature added this cycle is localized before release. The loop is **have terms → upload → re-download → translate → upload new terms → re-download clean**. The operator doc is [locale-pipeline.md](locale-pipeline.md).
+Goal: every feature added this cycle is localized before release. Translations live in the repo, so the loop is **extract terms → merge the terms PR → translate what is missing → merge the translate PR**. The operator doc is [locale-pipeline.md](locale-pipeline.md); the design and what changed for releases: [locale-design.md](locale-design.md).
 
-Done when `npm run locale:release` on an up-to-date `master` exits 0: nothing untranslated, no terms PR (`locale: new terms from code …`) or download PR (`locale: download translations from POEditor …`) open, no locale workflow running. A locale PR that opens after the maintainer closes this phase waits for the next release. Finish this phase before any build or nightly check: each locale merge moves `master` and voids earlier results. Write and approve the release notes (`changelog/<version>.md`) right after it, and merge any PR that carries them before Phase 2 for the same reason.
+Done when `npm run locale:release` on an up-to-date `master` exits 0: nothing untranslated, no terms PR (`locale: new terms from code …`) open, no extraction running. A locale PR that opens after the maintainer closes this phase waits for the next release. Finish this phase before any build or nightly check: each locale merge moves `master` and voids earlier results. Write and approve the release notes (`changelog/<version>.md`) right after it, and merge any PR that carries them before Phase 2 for the same reason.
 
 | # | Step | How | Status |
 |---|------|-----|--------|
-| 1.0 | Start the phase once every code PR for the release is merged: `npm run locale:release -- --go` runs `Locale: extract terms` now (it skips and cancels the merge pause), then either stops at the terms PR for review or runs `Locale: sync POEditor` and waits for its download PR to merge. Re-run it after each ✋ step until it exits 0 | `npm run locale:release` (status only without `--go`) | ✋ trigger / 🤖 run |
-| 1.1 | `Locale: extract terms` extracts new strings after a burst of merges to `master` touching `src/**`: it waits 15 minutes (repo variable `LOCALE_TERMS_WAIT_MINUTES`), restarting on each newer merge, then opens or updates one terms PR. A manual run skips the wait | [`locale-generate-terms.yml`](../../.github/workflows/locale-generate-terms.yml), wait + about 6 min | 🤖 |
-| 1.2 | Review and merge the terms PR, `locale: new terms from code (+N / -M) - <date>` (branch `locale/terms/<version>`, label `Localization`). Its body lists every new and removed string with where it is in the code, and a **Needs a look** list: strings that look like code or bugs, near-duplicates, and rewordings that lose translations (move those in POEditor). Fix odd strings in the code, not in the PR. No PR means no new strings | Review and merge | ✋ |
-| 1.3 | Upload `locale/messages.po` to POEditor and delete terms that no longer exist | Merging the 1.2 PR changes `locale/messages.po` on `master`, which starts [`locale-sync-poeditor.yml`](../../.github/workflows/locale-sync-poeditor.yml). At once (the pause happened in 1.1), `poeditor-upload-terms.js` imports the terms with `sync_terms=1`, deletes terms missing from the file, verifies POEditor matches it, and refuses a deletion above 2% of the project | 🤖 |
-| 1.4 | Run `Locale: sync POEditor` manually (or `npm run locale:release -- --go`) so the latest translations land before the release. It squash-merges the `locale: download translations from POEditor - <date>` PR when every JSON file parses and every path is a download file | `workflow_dispatch`, about 8 min | ✋ trigger / 🤖 run and merge |
-| 1.5 | Open the POEditor PR only when the workflow left it open | Invalid JSON, or a file outside `src/locale/i18n/*.json`, `src/locale/textdomain/<locale>/LC_MESSAGES/messages.po|mo`, and `locale/terms/missing/<locale>/*.json` | ✋ only if the PR is still open |
-| 1.6 | Translate every missing term in `locale/terms/missing/<locale>/` with Claude, using church vocabulary | [Locale Translation skill](../../.agents/skills/churchcrm/locale-translation-workflow.md) and [`/locale-translate --all`](../../.claude/commands/locale-translate.md) on a fresh `locale/translate/<version>-<date>-<time>` branch, one commit and push per locale. Runtime scales with terms per locale: about 25 min for ~10 terms, about 3 h for ~155 | 🧑‍💻 |
-| 1.7 | Upload the translated terms to POEditor | Every push to `locale/translate/**` runs [`locale-upload-missing.yml`](../../.github/workflows/locale-upload-missing.yml). Fallback: run that workflow manually (`locales` input), or `node locale/scripts/poeditor-upload-missing.js -y` with `POEDITOR_TOKEN` | 🤖 |
-| 1.8 | `Locale: sync POEditor` downloads the new translations and squash-merges its PR (as 1.4 → 1.5) | The upload workflow dispatches the sync itself | 🤖 |
+| 1.0 | Start the phase once every code PR for the release is merged: `npm run locale:release -- --go` runs `Locale: extract terms` now (it skips and cancels the merge pause), then either stops at the terms PR for review or reports what is left to translate. Re-run it after each ✋ step until it exits 0 | `npm run locale:release` (status only without `--go`) | ✋ trigger / 🤖 run |
+| 1.1 | `Locale: extract terms` extracts new strings after a burst of merges to `master` touching `src/**`: it waits 15 minutes (repo variable `LOCALE_TERMS_WAIT_MINUTES`), restarting on each newer merge, then opens or updates one terms PR. The same `npm run locale:build` drops translations of removed strings from the locale files and rewrites the missing-term queue. A manual run skips the wait | [`locale-generate-terms.yml`](../../.github/workflows/locale-generate-terms.yml), wait + about 6 min | 🤖 |
+| 1.2 | Review and merge the terms PR, `locale: new terms from code (+N / -M) - <date>` (branch `locale/terms/<version>`, label `Localization`). Its body lists every new and removed string with where it is in the code, and a **Needs a look** list: strings that look like code or bugs, near-duplicates, and rewordings that lose translations unless their PR re-translated them. Fix odd strings in the code, not in the PR. No PR means no new strings | Review and merge | ✋ |
+| 1.3 | Translate every missing term with an agent, using church vocabulary. The merged terms PR already holds the queue in `locale/terms/missing/`; `npm run locale:missing` refreshes it, then `/locale-translate --all`, which writes each locale into the repo (`npm run locale:apply`) with one commit and push per locale | [Locale Translation skill](../../.agents/skills/churchcrm/locale-translation-workflow.md) and [`/locale-translate --all`](../../.claude/commands/locale-translate.md) on a fresh `locale/translate/<version>-<date>-<time>` branch. Runtime scales with terms per locale: about 25 min for ~10 terms, about 3 h for ~155 | 🧑‍💻 |
+| 1.4 | Review and merge the translate PR (`src/locale/i18n`, `src/locale/textdomain`) | Review and merge, then pull and re-run 1.0 | ✋ |
 
 Notes:
 
-- Translation pushes use the agent's own credentials; pushes made with the Actions `GITHUB_TOKEN` start no workflows. A PR merged with `GITHUB_TOKEN` fires no `push`, so merge the terms PR as yourself or with a GitHub App. The download PR is merged by `Locale: sync POEditor` with `GITHUB_TOKEN`; that stage starts nothing next.
-- `Locale: sync POEditor` runs daily at 00:00 UTC and right after every merged terms PR; the manual run in 1.4 only picks up translations made after the last run.
-- `Locale: sync POEditor` uploads terms, then downloads; translated batches reach POEditor through `Locale: upload translations` (1.7).
-- Plural handling and the terms upload guard: [locale-pipeline.md](locale-pipeline.md).
+- A PR merged with `GITHUB_TOKEN` fires no `push`; that no longer matters for locales, since nothing starts after a terms or translate merge.
+- `Locale: sync POEditor` and `Locale: upload translations` are retired ([#11416](https://github.com/ChurchCRM/CRM/issues/11416)) and run by hand only. Do not run them: a POEditor download overwrites translations made in the repo.
+- Plural handling: [locale-pipeline.md](locale-pipeline.md#plurals).
 
 ## Phase 2: Built and tested
 

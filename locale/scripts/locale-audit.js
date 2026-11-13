@@ -2,63 +2,33 @@
 
 /**
  * ChurchCRM Locale Audit Tool
- * 
- * Replaces the Grunt-based locale audit system with a modern Node.js solution.
- * Downloads language statistics from POEditor API and generates a completeness report.
- * 
- * Features:
- * - Downloads POEditor language statistics via native fetch API
- * - Generates detailed locale completeness report  
- * - Identifies missing locales with translations (excludes English base locales)
- * - Outputs markdown-formatted table for easy reading
- * - Saves comprehensive audit report to locale/poeditor-audit.md
- * - No external dependencies (uses Node.js built-ins)
- * 
- * Requires environment variables:
- * - POEDITOR_TOKEN (from POEditor API Access)
- * 
- * Note: POEditor project ID is hardcoded as 77079 (ChurchCRM official project)
- * 
+ *
+ * Counts how complete every locale is, straight from the repo: a source term (an entry of
+ * locale/messages.po) counts as translated when the locale JSON has a complete translation for it.
+ *
  * Output Files:
  * - Console: Formatted table output for immediate review
- * - src/locale/poeditor.json: Raw API response (for compatibility)
+ * - src/locale/poeditor.json: per-locale counts the app reads for the translation % it shows (the
+ *   file keeps its old name and layout until the app code moves off it)
  * - locale/poeditor-audit.md: Comprehensive markdown report
- * 
- * Note: English locales (en, en-us, en-au, etc.) are excluded from missing locale 
+ *
+ * Note: English locales (en, en-us, en-au, etc.) are excluded from missing locale
  * reports as they represent base locales rather than translation targets.
  */
 
-require('dotenv').config();
-
 const fs = require('fs');
 const path = require('path');
+const { execFileSync } = require('child_process');
 const config = require('./locale-config');
+const repo = require('./lib/locale-repo');
+const { entryValue } = require('./lib/locale-files');
 
 class LocaleAuditor {
     constructor() {
         this.localesPath = config.localesJson;
         this.outputPath = config.poeditor.outputJson;
         this.reportPath = config.poeditor.auditReport;
-        this.projectId = '77079'; // ChurchCRM POEditor project ID
-        this.apiToken = process.env.POEDITOR_TOKEN;
         this.locales = null;
-    }
-
-    /**
-     * Load configuration from environment variables
-     */
-    loadConfig() {
-        try {
-            if (!this.apiToken) {
-                throw new Error('POEDITOR_TOKEN environment variable is required');
-            }
-            
-            console.log('✅ Configuration loaded successfully');
-            return true;
-        } catch (error) {
-            console.error('❌ Failed to load configuration:', error.message);
-            return false;
-        }
     }
 
     /**
@@ -80,43 +50,42 @@ class LocaleAuditor {
     }
 
     /**
-     * Download language statistics from POEditor API
+     * When the locale JSON last changed, from git (falls back to the file time outside a checkout).
      */
-    async downloadPOEditorStats() {
+    lastUpdated(file) {
         try {
-            console.log('🌍 Downloading language statistics from POEditor...');
-            
-            const formData = new URLSearchParams();
-            formData.append('api_token', this.apiToken);
-            formData.append('id', this.projectId);
-
-            const response = await fetch('https://api.poeditor.com/v2/languages/list', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error(`POEditor API request failed: ${response.status} ${response.statusText}`);
-            }
-
-            const data = await response.json();
-            
-            if (data.response.status !== 'success') {
-                throw new Error(`POEditor API error: ${data.response.message}`);
-            }
-
-            // Save the response to file (maintains compatibility)
-            fs.writeFileSync(this.outputPath, JSON.stringify(data, null, 0));
-            
-            console.log(`✅ Downloaded statistics for ${data.result.languages.length} languages`);
-            return data;
-        } catch (error) {
-            console.error('❌ Failed to download POEditor statistics:', error.message);
-            throw error;
+            const iso = execFileSync('git', ['log', '-1', '--format=%cI', '--', file], { cwd: config.projectRoot, encoding: 'utf8' }).trim();
+            if (iso) return new Date(iso).toISOString().replace(/\.\d{3}Z$/, '+0000');
+        } catch {
+            // not a git checkout
         }
+        return fs.existsSync(file) ? fs.statSync(file).mtime.toISOString().replace(/\.\d{3}Z$/, '+0000') : null;
+    }
+
+    /**
+     * Translation counts for every locale, from the repo. Same layout as the old POEditor
+     * languages/list response, which the app reads from src/locale/poeditor.json.
+     */
+    computeRepoStats() {
+        console.log('🌍 Counting translations in the repo...');
+        const entries = repo.loadSource();
+        if (entries.length === 0) throw new Error('locale/messages.po has no terms');
+        const languages = [];
+        for (const target of repo.targetLocales()) {
+            const ctx = repo.loadLocale(target, entries);
+            const translations = entries.filter((e) => entryValue(e, ctx.shapes, ctx.translations) !== null).length;
+            languages.push({
+                name: target.name,
+                code: target.code,
+                translations,
+                percentage: Math.round((translations / entries.length) * 10000) / 100,
+                updated: this.lastUpdated(path.relative(config.projectRoot, ctx.paths.json)),
+            });
+        }
+        const data = { response: { status: 'success', code: '200', message: 'OK' }, result: { terms: entries.length, languages } };
+        fs.writeFileSync(this.outputPath, JSON.stringify(data, null, 0));
+        console.log(`✅ Counted ${languages.length} locales against ${entries.length} source terms`);
+        return data;
     }
 
     /**
@@ -272,10 +241,10 @@ class LocaleAuditor {
         markdown += `- Locales with 📝 **Monitor** (<5% completion) are tracked for future addition when they reach 5%\n`;
 
         markdown += `\n## Technical Notes\n\n`;
-        markdown += `- **Data Source:** POEditor API (Project ID: ${this.projectId})\n`;
-        markdown += `- **Audit Script:** \`locale/locale-audit.js\`\n`;
+        markdown += `- **Data Source:** the locale files in the repo (\`src/locale/i18n/*.json\` against \`locale/messages.po\`)\n`;
+        markdown += `- **Audit Script:** \`locale/scripts/locale-audit.js\`\n`;
         markdown += `- **Configuration:** \`src/locale/locales.json\`\n`;
-        markdown += `- **Command:** \`npm run locale-audit\`\n\n`;
+        markdown += `- **Command:** \`npm run locale:audit\`\n\n`;
         markdown += `---\n`;
         markdown += `*This report was automatically generated by the ChurchCRM locale audit system.*\n`;
 
@@ -345,16 +314,12 @@ class LocaleAuditor {
         try {
             console.log('🚀 Starting ChurchCRM Locale Audit\n');
 
-            // Load configuration and locales
-            if (!this.loadConfig() || !this.loadLocales()) {
+            if (!this.loadLocales()) {
                 process.exit(1);
             }
 
-            // Download POEditor statistics
-            const poEditorData = await this.downloadPOEditorStats();
-
-            // Generate audit report
-            const report = this.generateAuditReport(poEditorData);
+            const stats = this.computeRepoStats();
+            const report = this.generateAuditReport(stats);
 
             console.log('\n🎉 Locale audit completed successfully!');
             

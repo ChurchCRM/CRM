@@ -6,11 +6,12 @@
  *
  *   npm run locale:release            status only: what is running, open, missing, and the next step
  *   npm run locale:release -- --go    run it: extract terms now (skips and cancels the wait), stop for the
- *                                     terms PR review if there is one, otherwise sync POEditor and wait for
- *                                     the download PR to merge, then report what is still untranslated
+ *                                     terms PR review if there is one, otherwise report what is still
+ *                                     untranslated in the repo
  *
- * Run it from an up-to-date master checkout, as yourself (gh auth). It never merges the terms PR:
- * merge that after review and run the command again. Exit code 0 = locales are release-ready.
+ * Translations live in the repo (src/locale/i18n, src/locale/textdomain); there is no outside service
+ * to sync. Run it from an up-to-date master checkout, as yourself (gh auth). It never merges the terms
+ * PR: merge that after review, pull, and run the command again. Exit code 0 = locales are release-ready.
  */
 
 const { execFileSync, spawnSync } = require('child_process');
@@ -18,8 +19,6 @@ const path = require('path');
 
 const ROOT = path.join(__dirname, '../..');
 const TERMS = 'locale-generate-terms.yml';
-const SYNC = 'locale-sync-poeditor.yml';
-const UPLOAD = 'locale-upload-missing.yml';
 
 const sh = (cmd, args) => execFileSync(cmd, args, { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
 const gh = (...args) => sh('gh', args);
@@ -35,11 +34,12 @@ function openPrs() {
     const prs = json('pr', 'list', '--state', 'open', '--limit', '50', '--json', 'number,title,url,headRefName');
     return {
         terms: prs.filter(p => p.headRefName.startsWith('locale/terms/') && !p.headRefName.startsWith('locale/terms/missing')),
-        download: prs.filter(p => p.headRefName.startsWith('locale/download/')),
     };
 }
 
 function missingLocales() {
+    // Fresh batches from the repo first, so the list matches this checkout
+    spawnSync('node', ['locale/scripts/locale-missing.js'], { cwd: ROOT, encoding: 'utf8' });
     const out = spawnSync('node', ['locale/scripts/locale-translate.js', '--list'], { cwd: ROOT, encoding: 'utf8' });
     const text = (out.stdout || '').trim();
     // only the table counts; "All locales are fully translated" means done
@@ -74,12 +74,11 @@ function dispatchAndWatch(workflow, fields = []) {
 
 function status() {
     const prs = openPrs();
-    const running = [TERMS, SYNC, UPLOAD].flatMap(w => activeRuns(w).map(r => ({ ...r, w })));
+    const running = activeRuns(TERMS).map(r => ({ ...r, w: TERMS }));
     const missing = missingLocales();
     console.log('Locale release status');
     for (const r of running) console.log(`  running: ${r.displayTitle}  ${r.url}`);
     for (const p of prs.terms) console.log(`  terms PR open: #${p.number} ${p.title}  ${p.url}`);
-    for (const p of prs.download) console.log(`  download PR open: #${p.number} ${p.title}  ${p.url}`);
     console.log(missing ? `  untranslated (this checkout):\n${missing.replace(/^/gm, '    ')}` : '  untranslated: none (this checkout)');
     return { prs, running, missing };
 }
@@ -87,8 +86,7 @@ function status() {
 function nextStep(s) {
     if (s.prs.terms.length) return `Review and merge ${s.prs.terms[0].url}, then run npm run locale:release -- --go again.`;
     if (s.running.length) return 'Wait for the running locale workflows, then run this again.';
-    if (s.prs.download.length) return `The download PR stayed open (a gate failed): fix or merge ${s.prs.download[0].url}.`;
-    if (s.missing) return 'Translate the missing terms (/locale-translate --all on a locale/translate/* branch); the uploads sync themselves. Then run this again.';
+    if (s.missing) return 'Translate the missing terms (/locale-translate --all on a locale/translate/* branch), run npm run locale:apply, and open a PR. After it merges, pull and run this again.';
     return null;
 }
 
@@ -102,13 +100,7 @@ function main() {
         const terms = dispatchAndWatch(TERMS);
         if (terms !== 'success') return finish(`Locale: extract terms ended ${terms}.`);
         if (openPrs().terms.length) return finish(null);
-        console.log('2. No terms PR: sync POEditor (upload terms + download translations)…');
-        if (activeRuns(SYNC).length) console.log('  (a sync is already running; this one queues behind it)');
-        const sync = dispatchAndWatch(SYNC);
-        if (sync !== 'success') return finish(`Locale: sync POEditor ended ${sync}.`);
-        console.log('3. Pull the merged download before checking what is untranslated:');
-        console.log('   git pull --ff-only\n');
-        try { sh('git', ['pull', '--ff-only', '--quiet']); } catch { console.log('   (git pull failed; pull by hand)'); }
+        console.log('2. No terms PR: checking the repo for untranslated terms…');
     }
     return finish(null);
 }
