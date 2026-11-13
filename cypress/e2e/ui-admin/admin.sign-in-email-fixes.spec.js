@@ -162,6 +162,16 @@ describe("Email needs attention: Fix shared emails and Confirm selected", () => 
         cy.intercept({ method: "GET", pathname: /\/api\/persons\/sign-in-email\/attention$/, query: { kind: "family_email" } }).as("familyEmailAttention");
         cy.get('#unconfirmedKinds [data-kind="family_email"]').click();
         cy.wait("@familyEmailAttention");
+        // The response can land before the table redraws, and the list on screen
+        // until then may already show Sherri Gordon. Wait until every row is an
+        // unconfirmed family email before ticking, or the redraw clears the ticks.
+        cy.get("#memberListTable tbody tr").should((rows) => {
+            expect(rows.length, "rows").to.be.greaterThan(0);
+            rows.each((_, row) => {
+                expect(row.querySelector("[data-cy=attention-fix]")?.dataset.problem, row.innerText).to.eq("email_unconfirmed");
+                expect(row.innerText).to.contain("Moved from the family email");
+            });
+        });
         cy.get("#memberListTable").should("contain.text", "Sherri Gordon").and("not.contain.text", "Paul Smith");
         cy.contains("#memberListTable tbody tr", "Rafael Dixon")
             .find("[data-cy=attention-select-locked]")
