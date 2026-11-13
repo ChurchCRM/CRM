@@ -213,11 +213,11 @@ class TelemetryService
 
     public static function captureUpgradeSqlError(string $version, int $durationMs, string $databaseError): void
     {
-        $databaseError = self::sanitizeDatabaseError($databaseError);
-        self::captureUpgradeFailure($version, 'sql_error', $databaseError);
+        self::captureUpgradeFailure($version, 'sql_error');
         if (!self::isEnabled()) {
             return;
         }
+        $databaseError = self::sanitizeDatabaseError($databaseError);
 
         self::capture('upgrade_sql_failed', array_merge(self::baseProperties(), [
             'upgrade_version' => $version,
@@ -249,7 +249,7 @@ class TelemetryService
     public const UPGRADE_FAILURE_REASONS = ['no_upgrade_path', 'script_interrupted', 'sql_error'];
 
     /** Sent at every level so failed upgrades get fixed. */
-    public static function captureUpgradeFailure(string $version, string $reason, ?string $errorDetail = null, ?string $upgradeScript = null): void
+    public static function captureUpgradeFailure(string $version, string $reason, ?string $upgradeScript = null): void
     {
         if (self::installProfile() === 'test') {
             return;
@@ -281,10 +281,6 @@ class TelemetryService
             'failure_reason' => $reason,
             'upgrade_version' => $version,
         ]);
-        if ($errorDetail !== null && $errorDetail !== '') {
-            // Already sanitized by the caller; re-sanitize so a future caller cannot leak raw text.
-            $properties['error_detail'] = self::sanitizeDatabaseError($errorDetail);
-        }
         $script = self::sanitizeUpgradeScript($upgradeScript);
         if ($script !== null) {
             $properties['upgrade_script'] = $script;
@@ -468,7 +464,8 @@ class TelemetryService
 
     private static function sanitizeDatabaseError(string $databaseError): string
     {
-        $databaseError = preg_replace("/'[^']*'/", "'[redacted]'", $databaseError) ?? '';
+        // MySQL quotes the conflicting value; cut at the first quote so a value containing a quote cannot survive.
+        $databaseError = preg_replace('/[\'"`].*$/s', '[redacted]', $databaseError) ?? '';
         $databaseError = preg_replace('/\b[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}\b/', '[redacted]', $databaseError) ?? '';
         $databaseError = self::scrubHostDetails($databaseError);
 
@@ -531,4 +528,3 @@ class TelemetryService
         return $response !== false && $httpStatus === 200;
     }
 }
-

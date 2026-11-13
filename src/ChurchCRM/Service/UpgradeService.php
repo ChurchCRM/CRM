@@ -225,7 +225,6 @@ class UpgradeService
                 TelemetryService::captureUpgradeFailure(
                     isset($version) ? $version->getVersion() : $installed_version,
                     $failureReason,
-                    null,
                     isset($scriptName) ? self::upgradeScriptPath($scriptName) : null
                 );
             }
@@ -261,4 +260,3 @@ class UpgradeService
         return ltrim(substr($scriptName, strlen($documentRoot)), '/');
     }
 }
-

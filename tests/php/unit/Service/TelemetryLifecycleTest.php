@@ -150,7 +150,7 @@ TelemetryService::captureUpgradeInterruption('7.8.4', 10);
 Assert::same(['upgrade_failed', 'upgrade_failed'], array_column($GLOBALS['lifecyclePayloads'], 'event'));
 Assert::same(['sql_error', 'script_interrupted'], array_column(array_column($GLOBALS['lifecyclePayloads'], 'properties'), 'failure_reason'));
 Assert::same('7.8.4', $GLOBALS['lifecyclePayloads'][0]['properties']['upgrade_version']);
-Assert::same("Duplicate entry '[redacted]' for key '[redacted]'", $GLOBALS['lifecyclePayloads'][0]['properties']['error_detail']);
+Assert::false(array_key_exists('error_detail', $GLOBALS['lifecyclePayloads'][0]['properties']));
 Assert::false(array_key_exists('upgrade_script', $GLOBALS['lifecyclePayloads'][0]['properties']));
 Assert::false(array_key_exists('error_detail', $GLOBALS['lifecyclePayloads'][1]['properties']));
 
@@ -209,4 +209,3 @@ SystemConfig::setValue('sInstallDataProfile', 'demo');
 Assert::same('test', TelemetryService::installProfile());
 putenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY');
 Assert::same('demo', TelemetryService::installProfile());
-
