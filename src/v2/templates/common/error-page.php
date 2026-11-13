@@ -80,7 +80,7 @@ $sGithubIssueUrl = 'https://github.com/ChurchCRM/CRM/issues/new'
                           <?= htmlspecialchars($returnText) ?>
                         </a>
                         <button type="button" class="btn btn-outline-secondary btn-lg" id="errorReportBtn">
-                          <?= gettext('Report an issue') ?>
+                          <?= gettext('Report an Issue') ?>
                         </button>
                       </div>
 

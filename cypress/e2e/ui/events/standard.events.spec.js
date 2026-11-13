@@ -40,21 +40,19 @@ describe("Standard User - Event Check-in", () => {
 
     beforeEach(() => cy.setupStandardSession());
 
-    it("View Event Check-in via URL with event ID", () => {
+    it("Event Check-in by URL shows the event and the walk-in form", () => {
         cy.visit(`event/checkin/${testEventId}`);
         cy.contains("Event Check-in");
-        // Direct event access shows event title in the info bar
         cy.get("body").should("contain.text", "Event:");
-    });
-
-    it("View Check-in page without event ID shows event selector", () => {
-        cy.visit("event/checkin");
-        cy.contains("Event Check-in");
-        cy.contains("Select Event for Check-In");
+        cy.get("#child").should("exist");
+        cy.get("#adult").should("exist");
+        cy.get("#checkinBtn").should("exist");
+        cy.get("#assignMeCheckin").should("have.attr", "title", "Assign to me");
     });
 
     it("Selecting an event shows the check-in form", () => {
         cy.visit("event/checkin");
+        cy.contains("Select Event for Check-In");
 
         // Select the event we created in `before()` explicitly by id —
         // no dependence on placeholder/option order.
@@ -62,11 +60,6 @@ describe("Standard User - Event Check-in", () => {
         cy.get("#EventSelector").select(String(testEventId));
         cy.url().should("include", `/event/checkin/${testEventId}`);
         cy.contains("Check In Person");
-    });
-
-    it("Filter events by type dropdown exists", () => {
-        cy.visit("event/checkin");
-        cy.get("#typeFilter").should("exist");
     });
 
     /**
@@ -85,19 +78,6 @@ describe("Standard User - Event Check-in", () => {
             cy.get("#typeFilter").select(realType.value);
             cy.url().should("include", `typeId=${realType.value}`);
         });
-    });
-
-    it("Walk-in check-in form has child and adult selectors", () => {
-        cy.visit(`event/checkin/${testEventId}`);
-        cy.get("#child").should("exist");
-        cy.get("#adult").should("exist");
-        cy.get("#checkinBtn").should("exist");
-    });
-
-    it("'Assign to me' button exists for check-in supervisor field", () => {
-        cy.visit(`event/checkin/${testEventId}`);
-        cy.get("#assignMeCheckin").should("exist");
-        cy.get("#assignMeCheckin").should("have.attr", "title", "Assign to me");
     });
 
     /**

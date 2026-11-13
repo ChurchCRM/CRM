@@ -94,7 +94,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
               <?php endif; ?>
               <?php if ($aLastTopUp['skipped'] > 0): ?>
                 <li class="text-body-secondary" id="ministry-topup-skipped"><?= InputUtils::escapeHTML(sprintf(
-                    ngettext('%d default skipped for another reason (the occurrence is over, cancelled or full)', '%d defaults skipped for another reason (the occurrence is over, cancelled or full)', $aLastTopUp['skipped']),
+                    ngettext('%d default skipped for another reason (the occurrence is over, canceled or full)', '%d defaults skipped for another reason (the occurrence is over, canceled or full)', $aLastTopUp['skipped']),
                     $aLastTopUp['skipped']
                 )) ?></li>
               <?php endif; ?>

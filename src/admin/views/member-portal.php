@@ -515,7 +515,7 @@ $themesDocUrl = SystemURLs::attributed('https://docs.churchcrm.io/administration
                             <tr>
                                 <th><?= gettext('Calendar') ?></th>
                                 <th><?= gettext('Kind') ?></th>
-                                <th class="w-1"><?= gettext('Colour') ?></th>
+                                <th class="w-1"><?= gettext('Color') ?></th>
                                 <th class="text-wrap"><?= gettext('Show in Member Portal') ?></th>
                             </tr>
                         </thead>

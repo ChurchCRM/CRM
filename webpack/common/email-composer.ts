@@ -586,7 +586,7 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
   const submitIcon = submitBtn.querySelector("i");
   if (submitIcon) submitIcon.className = "spinner-border spinner-border-sm me-1";
   const submitLabel = submitBtn.lastChild;
-  if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Sending…");
+  if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Sending...");
   const resetSubmit = () => {
     submitBtn.disabled = false;
     if (submitIcon) submitIcon.className = "fa-solid fa-paper-plane me-1";

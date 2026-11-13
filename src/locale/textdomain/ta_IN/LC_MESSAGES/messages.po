@@ -887,10 +887,6 @@ msgid "Do you want to proceed?"
 msgstr "தொடர வேண்டுமா?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "குடும்பத் தகவலின் நகலை பின்வரும் மின்னஞ்சல்களுக்கு மின்னஞ்சல் செய்ய உள்ளீர்கள்"
-
-#: 
 msgid "Financial Reports"
 msgstr "நிதி அறிக்கைகள்"
 
@@ -1519,7 +1515,7 @@ msgstr "பூஜ்ஜியம் அல்லாத காசோலை எண
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "'CASH'/'பணம்' கட்டணத்திற்குச் சரிபார்ப்பு எண் செல்லாது"
+msgstr "'பணம்' கட்டணத்திற்கு காசோலை எண் செல்லாது"
 
 #: 
 msgid "Payment Schedule"
@@ -1821,10 +1817,6 @@ msgstr "தொலைபேசி எண்"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "தனிப்பயன் கீழ்தோன்றும் பட்டியல்"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "குடும்ப உறுப்பினர்களுக்கு PDF வெற்றிகரமாக மின்னஞ்சல் அனுப்பப்பட்டது."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3871,10 +3863,6 @@ msgid "Please verify your family's information"
 msgstr "உங்கள் குடும்பத் தகவலைச் சரிபார்க்கவும்"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "சரிபார்ப்புத் தகவலை ஏற்ற முடியவில்லை"
-
-#: 
 msgid "No Changes"
 msgstr "மாற்றங்கள் இல்லை"
 
@@ -3887,24 +3875,8 @@ msgid "Oops! Page not found."
 msgstr "அச்சச்சோ! பக்கம் கிடைக்கவில்லை."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "உங்கள் குடும்பச் சரிபார்ப்பைத் தொடங்க, பின்வருவனவற்றை உள்ளிடவும்"
-
-#: 
-msgid "Family Verification"
-msgstr "குடும்ப சரிபார்ப்பு"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "குடும்பத் தகவல் சரிபார்ப்பைக் கோரவும்"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "குடும்பத் தகவலைச் சரிபார்க்க எப்படிக் கோர விரும்புகிறீர்கள் என்பதைத் தேர்ந்தெடுக்கவும்"
-
-#: 
-msgid "Online Verification"
-msgstr "ஆன்லைன் சரிபார்ப்பு"
 
 #: 
 msgid "Verified In Person"
@@ -4086,10 +4058,6 @@ msgstr "பண்பு வெற்றிகரமாக ஒதுக்கப�
 #: 
 msgid "The property could not be unassigned."
 msgstr "பண்பு ஒதுக்கப்படாமல் இருக்க முடியாது."
-
-#: 
-msgid "Select event"
-msgstr "நிகழ்வைத் தேர்ந்தெடுக்கவும்"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4296,10 +4264,6 @@ msgid "Kiosk Manager"
 msgstr "கியோஸ்க் மேலாளர்"
 
 #: 
-msgid "Report an issue"
-msgstr "சிக்கலைப் புகாரளிக்கவும்"
-
-#: 
 msgid "Self Verification"
 msgstr "சுய சரிபார்ப்பு"
 
@@ -4328,10 +4292,6 @@ msgstr "அரபு - எகிப்து"
 #: 
 msgid "Thai"
 msgstr "தாய்"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "நிலுவையில் உள்ள சுய சரிபார்ப்பு"
 
 #: 
 msgid "Self Verify"
@@ -4714,16 +4674,8 @@ msgid "User must have Delete Records permission"
 msgstr "பதிவுகளை நீக்க பயனர் அனுமதி பெற்றிருக்க வேண்டும்"
 
 #: 
-msgid "invalid event type id"
-msgstr "தவறான நிகழ்வு வகை ஐடி"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "தவறான காலெண்டர் பின்னிணைக்கிறது"
-
-#: 
-msgid "invalid status value"
-msgstr "தவறான நிலை மதிப்பு"
 
 #: 
 msgid "invalid export value"
@@ -5332,10 +5284,6 @@ msgstr "கணினி புதுப்பிப்பைப் பயன்�
 
 #: 
 msgid "Back to Login"
-msgstr "உள்நுழைவுக்குத் திரும்பவும்"
-
-#: 
-msgid "Back to login"
 msgstr "உள்நுழைவுக்குத் திரும்பவும்"
 
 #: 
@@ -6576,10 +6524,6 @@ msgid "Additional Information"
 msgstr "கூடுதல் தகவல்"
 
 #: 
-msgid "All information is correct"
-msgstr "அனைத்து தகவல்களும் சரியானவை"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "வாய்ப்புகளை ஒதுக்குங்கள்"
 
@@ -6592,20 +6536,12 @@ msgid "Choose opportunities..."
 msgstr "வாய்ப்புகளைத் தேர்ந்தெடுக்கவும்..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "குடும்பத் தகவலை உறுதிப்படுத்தவும்"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "தொடர்பு மற்றும் தனிப்பட்ட தகவல்கள்"
 
 #: 
 msgid "Edited"
 msgstr "திருத்தப்பட்டது"
-
-#: 
-msgid "Email PDF"
-msgstr "PDF ஆக மின்னஞ்சல் அனுப்பு"
 
 #: 
 msgid "Newsletter"
@@ -6616,40 +6552,12 @@ msgid "Personal"
 msgstr "தனிப்பட்ட"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "திருத்தங்களுடன் எங்கள் பதிவுகளைப் புதுப்பிக்கவும்"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "ஏதேனும் திருத்தங்கள் அல்லது கூடுதல் தகவல்களை இங்கே வழங்கவும்..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "வாய்ப்புகளைத் தேர்ந்தெடுக்கவும்"
 
 #: 
-msgid "Submit Verification"
-msgstr "சரிபார்ப்பைச் சமர்ப்பிக்கவும்"
-
-#: 
-msgid "Thank You!"
-msgstr "நன்றி!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "எங்கள் வலைத்தளத்தைப் பார்வையிடவும்"
-
-#: 
 msgid "Volunteer"
 msgstr "தன்னார்வலர்"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "உங்கள் சரிபார்ப்பைச் செயலாக்குவதில் ஒரு பிழை ஏற்பட்டது. தயவுசெய்து மீண்டும் முயற்சிக்கவும் அல்லது எங்களை நேரடியாகத் தொடர்பு கொள்ளவும்."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "உங்கள் சரிபார்ப்பு கோரிக்கை பெறப்பட்டது. உங்கள் தகவலைப் புதுப்பித்து வைத்திருப்பதற்கு நன்றி."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8112,10 +8020,6 @@ msgid "City is required."
 msgstr "நகரம் தேவை."
 
 #: 
-msgid "Clear filter"
-msgstr "வடிகட்டியை அழிக்கவும்"
-
-#: 
 msgid "Configuration item not found"
 msgstr "உள்ளமைவு உருப்படி கிடைக்கவில்லை"
 
@@ -8384,10 +8288,6 @@ msgstr "ஒரு நபரைச் சேர்"
 #: 
 msgid "Add all cart items to a group"
 msgstr "பட்டியலில் உள்ள அனைவரையும் ஒரு குழுவில் சேர்"
-
-#: 
-msgid "Add all to Cart"
-msgstr "அனைவரையும் பட்டியலில் சேர்"
 
 #: 
 msgid "Add cart items to a family"
@@ -8894,10 +8794,6 @@ msgid "Family Profile"
 msgstr "குடும்ப சுயவிவரம்"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "குடும்ப பாத்திரங்கள் (குடும்பத் தலைவர், வாழ்க்கைத் துணைவர், குழந்தை போன்றவை) உங்கள் பதிவுகளை ஒழுங்கமைக்க உதவுகின்றன."
-
-#: 
 msgid "Family vs Person"
 msgstr "குடும்பம் எதிர் நபர்"
 
@@ -9396,10 +9292,6 @@ msgid "Record why attendees visited your church"
 msgstr "வருகையாளர்கள் ஏன் உங்கள் திருச்சபைக்கு வந்தார்கள் என்பதைப் பதிவு செய்யுங்கள்"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "பட்டியலிலிருந்து அனைவரையும் நீக்கு"
-
-#: 
 msgid "Remove from Class"
 msgstr "வகுப்பிலிருந்து நீக்கு"
 
@@ -9870,10 +9762,6 @@ msgstr "இந்த ஆண்டின் நிகழ்வுகள்"
 #: 
 msgid "Everyone"
 msgstr "அனைவரும்"
-
-#: 
-msgid "Failed to delete note"
-msgstr "குறிப்பை நீக்குவதில் தோல்வி"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11777,10 +11665,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "வரம்பு தொடக்கம் ஒரு செல்லுபடியான YYYY-MM-DD தேதியாக இருக்க வேண்டும்."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "வரம்பு தொடக்கம் வரம்பு முடிவிற்கு முன்னர் இருக்க வேண்டும்"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "வரம்பு தொடக்கம் வரம்பு முடிவிற்கு முன்னர் இருக்க வேண்டும்."
 
@@ -12001,10 +11885,6 @@ msgid "Cannot move property in that direction"
 msgstr "அந்த திசையில் சொத்தை நகர்த்த முடியாது"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "குடும்ப தகவலை உறுதிப்படுத்து"
-
-#: 
 msgid "Delete failed"
 msgstr "நீக்கம் தோல்வியடைந்தது"
 
@@ -12045,20 +11925,12 @@ msgid "Invalid target family"
 msgstr "தவறான இலக்கு குடும்பம்"
 
 #: 
-msgid "Log Out"
-msgstr "வெளியேறு"
-
-#: 
 msgid "Membership not found"
 msgstr "உறுப்பினர் தகவல் கிடைக்கவில்லை"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "கடவுச்சொல் வெற்றிகரமாக மாற்றப்பட்டது"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "கீழே உள்ள உங்கள் குடும்ப தகவலை மதிப்பாய்வு செய்து உறுதிப்படுத்தவும் அல்லது மாற்றங்கள் கோரவும்."
 
 #: 
 msgid "Please select a target family."
@@ -12741,10 +12613,6 @@ msgid "Failed to install plugin from URL"
 msgstr "URL இலிருந்து செருகியை நிறுவ முடியவில்லை"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "அங்கீகரிக்கப்பட்ட செருகி பட்டியலை ஏற்ற முடியவில்லை"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "அங்கீகரிக்கப்பட்ட செருகி பட்டியலை ஏற்ற முடியவில்லை."
 
@@ -12803,10 +12671,6 @@ msgstr "கேபாப்-கேஸ். zip க்குள் இருக்�
 #: 
 msgid "Loading approved plugin list…"
 msgstr "அங்கீகரிக்கப்பட்ட செருகி பட்டியலை ஏற்றுகிறது…"
-
-#: 
-msgid "Loading…"
-msgstr "ஏற்றுகிறது…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13254,12 +13118,8 @@ msgid "Change Your Locale"
 msgstr "உங்கள் வட்டாரத்தை மாற்றவும்"
 
 #: 
-msgid "Change role"
-msgstr "பங்கை மாற்றவும்"
-
-#: 
 msgid "Check Number"
-msgstr "எண்ணைச் சரிபார்க்கவும்"
+msgstr "காசோலை எண்"
 
 #: 
 msgid "Check out"
@@ -13272,10 +13132,6 @@ msgstr "உள்நுழைவு தோல்வியடைந்தது. 
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "வெளியேறுதல் தோல்வியடைந்தது. தயவுசெய்து மீண்டும் முயற்சிக்கவும்."
-
-#: 
-msgid "City is required"
-msgstr "நகரம் தேவை"
 
 #: 
 msgid "Click Save to apply."
@@ -13344,10 +13200,6 @@ msgstr "அனைத்து எண்களையும் நகலெடு"
 #: 
 msgid "Copy Members to Group"
 msgstr "உறுப்பினர்களைக் குழுவிற்கு நகலெடு"
-
-#: 
-msgid "Creating Backup..."
-msgstr "காப்புப்பிரதி உருவாக்கப்படுகிறது..."
 
 #: 
 msgid "Creating..."
@@ -13532,10 +13384,6 @@ msgstr "கூடையில் சேர்க்க முடியவில�
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "பதிவை ரத்துசெய்ய முடியவில்லை. தயவுசெய்து மீண்டும் முயற்சிக்கவும்."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "URL-ஐ நகலெடுக்க முடியவில்லை"
 
 #: 
 msgid "Failed to create backup."
@@ -13928,10 +13776,6 @@ msgid "One-Time Code"
 msgstr "ஒருமுறை பயன்படுத்தும் குறியீடு"
 
 #: 
-msgid "Open in New Tab"
-msgstr "புதிய தாவலில் திறக்கவும்"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "உங்கள் அங்கீகரிப்பான் செயலியைத் திறந்து இந்த QR குறியீட்டை ஸ்கேன் செய்யவும்"
 
@@ -14208,10 +14052,6 @@ msgid "Setup Complete"
 msgstr "அமைப்பு நிறைவு"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "குடும்ப உறுப்பினர்களின் தகவல்களைச் சரிபார்க்க இந்த URL-ஐ அவர்களுடன் பகிரவும்"
-
-#: 
 msgid "Show more options"
 msgstr "மேலும் விருப்பங்களைக் காட்டு"
 
@@ -14364,10 +14204,6 @@ msgid "Validation pending"
 msgstr "Validation pending"
 
 #: 
-msgid "Verification URL"
-msgstr "Verification URL"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Verification failed. Please try again."
 
@@ -14432,10 +14268,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "உங்கள் செயலிக்கான அணுகலை நீங்கள் இழந்தால் பயன்படுத்தக்கூடிய காப்புப் பிரதி குறியீடுகளைப் பெறுவீர்கள்"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "உங்கள் கூடை காலியாக உள்ளது"
-
-#: 
 msgid "Your account is now protected"
 msgstr "உங்கள் கணக்கு இப்போது பாதுகாக்கப்பட்டுள்ளது"
 
@@ -14454,10 +14286,6 @@ msgstr "உங்கள் உலாவியின் மொழித் தே
 #: 
 msgid "Your database already contains data"
 msgstr "உங்கள் தரவுத்தளத்தில் ஏற்கனவே தரவுகள் உள்ளன"
-
-#: 
-msgid "Zip code is required"
-msgstr "அஞ்சல் குறியீடு அவசியம்."
 
 #: 
 msgid "added"
@@ -14878,10 +14706,6 @@ msgstr "இந்த குடும்பத்திற்கு குறி�
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "இந்த நபருக்கு குறிப்பு சேர்க்க உங்களுக்கு அனுமதி இல்லை."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "இந்த குறிப்பை திருத்த உங்களுக்கு அனுமதி இல்லை"
 
 #: 
 msgid "Account locked"
@@ -15704,10 +15528,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "இந்த குடும்பப் பதிவை நீக்குவதை உறுதிப்படுத்தவும்"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "உங்கள் குடும்ப தகவலை உறுதிப்படுத்தவும்"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "இந்த நன்கொடைகளை இணைக்க வேறு குடும்பத்தைத் தேர்ந்தெடுக்கவும்"
 
@@ -15928,10 +15748,6 @@ msgid "Select a person"
 msgstr "ஒரு நபரைத் தேர்ந்தெடு"
 
 #: 
-msgid "Select role"
-msgstr "பாத்திரத்தைத் தேர்ந்தெடு"
-
-#: 
 msgid "Select type (optional)"
 msgstr "வகையைத் தேர்ந்தெடு (விருப்பமானது)"
 
@@ -16088,10 +15904,6 @@ msgid "At least one fund allocation is required"
 msgstr "குறைந்தது ஒரு நிதி ஒதுக்கீடு தேவை"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "குறைந்தது ஒரு நிதியில் பூஜ்யமற்ற தொகை இருக்க வேண்டும்"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "பிறந்தநாளில் தானாகவே வாழ்த்து மின்னஞ்சல் அனுப்பவும்"
 
@@ -16168,18 +15980,6 @@ msgid "Editing a Pledge"
 msgstr "உறுதிமொழியை திருத்துகிறது"
 
 #: 
-msgid "Enable (full)"
-msgstr "இயக்கு (முழுமை)"
-
-#: 
-msgid "Errors only"
-msgstr "பிழைகள் மட்டும்"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "பிழைகள் — சேவையக பிழைகள் மற்றும் JS விதிவிலக்குகள்"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "உறுதிமொழியை உருவாக்க தோல்வியடைந்தது"
 
@@ -16218,10 +16018,6 @@ msgstr "குழு திறவுகோல் தேவை"
 #: 
 msgid "Happy Birthday"
 msgstr "பிறந்தநாள் வாழ்த்துகள்"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ChurchCRM-ஐ மேம்படுத்த உதவுங்கள்"
 
 #: 
 msgid "IP addresses"
@@ -16292,16 +16088,8 @@ msgid "None (disabled)"
 msgstr "எதுவும் இல்லை (முடக்கப்பட்டது)"
 
 #: 
-msgid "OS family"
-msgstr "இயக்க முறைமை வகை"
-
-#: 
 msgid "Overpaid"
 msgstr "அதிகமாக கொடுக்கப்பட்டது"
-
-#: 
-msgid "PHP version"
-msgstr "PHP பதிப்பு"
 
 #: 
 msgid "Page route"
@@ -16338,10 +16126,6 @@ msgstr "உறுதிமொழி குழு கண்டுபிடிக�
 #: 
 msgid "Pledges & Payments"
 msgstr "உறுதிமொழிகள் & கொடுப்பனவுகள்"
-
-#: 
-msgid "Prioritise translations"
-msgstr "மொழிபெயர்ப்புகளுக்கு முன்னுரிமை கொடுங்கள்"
 
 #: 
 msgid "Purpose"
@@ -16406,10 +16190,6 @@ msgstr "பயனர் பெயர்கள், மின்னஞ்சல்
 #: 
 msgid "View pledge or payment details"
 msgstr "உறுதிமொழி அல்லது கொடுப்பனவு விவரங்களை காண்க"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "எச்சரிக்கைகள் — எச்சரிக்கைகள், பிழைகள் மற்றும் JS விதிவிலக்குகள்"
 
 #: 
 msgid "What is sent"
@@ -16604,12 +16384,6 @@ msgstr "தேர்ந்தெடுக்கப்பட்ட வைப்�
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "செல்லுபடியான வைப்பு அடையாள எண்கள் வழங்கப்படவில்லை"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF வெற்றிகரமாக %d குடும்பத்திற்கு மின்னஞ்சல் செய்யப்பட்டது."
-msgstr[1] "PDF வெற்றிகரமாக %d குடும்பங்களுக்கு மின்னஞ்சல் செய்யப்பட்டது."
 
 #: 
 msgid "Partial Send"
@@ -17150,10 +16924,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "காப்புப்பிரதி உருவாக்கப்பட்டு பதிவேற்றப்படுகிறது. இதற்கு சில நிமிடங்கள் ஆகலாம்..."
 
 #: 
-msgid "Database reset failed."
-msgstr "தரவுத்தளம் மீட்டமைப்பு தோல்வியடைந்தது."
-
-#: 
 msgid "Deceased"
 msgstr "காலமானவர்"
 
@@ -17350,10 +17120,6 @@ msgid "Log settings saved"
 msgstr "பதிவு அமைப்புகள் சேமிக்கப்பட்டன"
 
 #: 
-msgid "Login Name is Required"
-msgstr "உள்நுழைவு பெயர் தேவை"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "நபரை செயலில் உள்ளவராக குறித்தது"
 
@@ -17478,10 +17244,6 @@ msgid "Sending..."
 msgstr "அனுப்பப்படுகிறது..."
 
 #: 
-msgid "Sending…"
-msgstr "அனுப்பப்படுகிறது…"
-
-#: 
 msgid "Settings reset"
 msgstr "அமைப்புகள் மீட்டமைக்கப்பட்டன"
 
@@ -17550,16 +17312,8 @@ msgid "Upcoming"
 msgstr "வரவிருக்கும்"
 
 #: 
-msgid "Valid Until"
-msgstr "செல்லுபடியாகும் காலம்"
-
-#: 
 msgid "View active only"
 msgstr "செயலில் உள்ளவை மட்டும் காண்"
-
-#: 
-msgid "View all"
-msgstr "அனைத்தையும் காண்"
 
 #: 
 msgid "View all (including inactive)"
@@ -18338,10 +18092,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "உங்கள் நிதியாண்டு %s இல் தொடங்குகிறது."
 
 #: 
-msgid "An error occurred"
-msgstr "ஒரு பிழை ஏற்பட்டது"
-
-#: 
 msgid "Approve"
 msgstr "அங்கீகரி"
 
@@ -18512,12 +18262,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d நாள்"
 msgstr[1] "%d நாட்கள்"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d இயல்புநிலை வேறொரு காரணத்தால் தவிர்க்கப்பட்டது (நிகழ்வு முடிந்தது, ரத்தானது அல்லது நிரம்பியது)"
-msgstr[1] "%d இயல்புநிலைகள் வேறொரு காரணத்தால் தவிர்க்கப்பட்டன (நிகழ்வு முடிந்தது, ரத்தானது அல்லது நிரம்பியது)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18780,10 +18524,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "தீம் என்பது உங்கள் திருச்சபை சேவையகத்தில் Include/themes/ க்குப் பதிவேற்றும் ஒரு கோப்புறை. கணினி இயல்புநிலை ChurchCRM உடன் வருகிறது."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "ஒரு மாற்றநிலை அமைப்பு. பழைய தன்னார்வ வாய்ப்புகள் பக்கங்களும் புதிய ஊழியங்கள் பக்கங்களும் இரண்டும் கிடைக்கும், மேலும் நபர் பதிவு இரண்டு தன்னார்வப் பணி தாவல்களையும் தெளிவாக லேபிளிட்டுக் காட்டும். ஒரு திருச்சபையை V1 இலிருந்து V2 க்கு மாற்றும்போது இதைப் பயன்படுத்தவும், பிறகு V2 க்கு மட்டும் மாறவும்."
-
-#: 
 msgid "A volunteer"
 msgstr "ஒரு தன்னார்வலர்"
 
@@ -18988,10 +18728,6 @@ msgid "Assigned outside the current plan"
 msgstr "தற்போதைய திட்டத்திற்கு வெளியே நியமிக்கப்பட்டது"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "நியமனம் ரத்து செய்யப்பட்டது"
-
-#: 
 msgid "Assignment not found"
 msgstr "நியமனம் கிடைக்கவில்லை"
 
@@ -19098,10 +18834,6 @@ msgstr "நியமனத்தை ரத்து செய்"
 #: 
 msgid "Cancel this assignment"
 msgstr "இந்த நியமனத்தை ரத்து செய்"
-
-#: 
-msgid "Cancelled"
-msgstr "ரத்து செய்யப்பட்டது"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19258,10 +18990,6 @@ msgstr "திருச்சபை இணையதளம்"
 #: 
 msgid "Close event details"
 msgstr "நிகழ்ச்சி விவரங்களை மூடு"
-
-#: 
-msgid "Colour"
-msgstr "நிறம்"
 
 #: 
 msgid "Completed"
@@ -19508,10 +19236,6 @@ msgid "Each staffing need must name a position"
 msgstr "ஒவ்வொரு ஆட்கள் தேவையும் ஒரு பொறுப்பைக் குறிப்பிட வேண்டும்"
 
 #: 
-msgid "Edit event"
-msgstr "நிகழ்வைத் திருத்து"
-
-#: 
 msgid "Edit ministry"
 msgstr "ஊழியத்தைத் திருத்து"
 
@@ -19596,10 +19320,6 @@ msgstr "{{count}} பெறுநர்களுக்கு மின்னஞ�
 #: 
 msgid "Emails"
 msgstr "மின்னஞ்சல்கள்"
-
-#: 
-msgid "End time"
-msgstr "முடிவு நேரம்"
 
 #: 
 msgid "Enter counts"
@@ -20880,10 +20600,6 @@ msgid "SMTP test"
 msgstr "SMTP சோதனை"
 
 #: 
-msgid "Save changes"
-msgstr "மாற்றங்களை சேமியுங்கள்"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "சேமிக்கப்பட்டது — இந்த ஊழியம் இனி உதவி கேட்கவில்லை"
 
@@ -21166,10 +20882,6 @@ msgstr "ஆட்கள் தேவைகள் சேமிக்கப்ப�
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "முதலில் ஒரு ஊழியத்தை உருவாக்கவும், பிறகு அதில் பணியாற்றும் குழுக்களையும் பொறுப்புகளையும் சேர்க்கவும்."
-
-#: 
-msgid "Start time"
-msgstr "தொடக்க நேரம்"
 
 #: 
 msgid "Start typing a name"
@@ -21518,10 +21230,6 @@ msgstr "முகவரி தேர்ந்தெடுக்கப்பட�
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "சொத்துப் பாதை \"%s\" அனுமதிக்கப்படவில்லை."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "நியமனத்தை ரத்து செய்ய முடியவில்லை"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22048,10 +21756,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "இந்த நிகழ்வு ஏற்கெனவே நடந்துவிட்டது, அதன் நியமனங்களை இனி மாற்ற முடியாது"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "இந்த நிகழ்வு ரத்து செய்யப்பட்டுள்ளது"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "இந்த நிகழ்வுக்கு அதன் அட்டவணையிலிருந்து தனியாக, சொந்த ஆட்கள் தேவைகள் உள்ளன."
 
@@ -22220,16 +21924,8 @@ msgid "Validation"
 msgstr "சரிபார்ப்பு"
 
 #: 
-msgid "View event"
-msgstr "நிகழ்வை பார்"
-
-#: 
 msgid "View my schedule"
 msgstr "எனது அட்டவணையைக் காண்க"
-
-#: 
-msgid "View person"
-msgstr "நபரைப் பார்க்கவும்"
 
 #: 
 msgid "View the event"
@@ -22278,10 +21974,6 @@ msgstr "தன்னார்வப் பணி நேரங்கள்"
 #: 
 msgid "Volunteering"
 msgstr "தன்னார்வப் பணி"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "ஒரு திருச்சபை நடத்தும் விதத்தில் ஒழுங்கமைக்கப்பட்ட தன்னார்வப் பணி. ஒவ்வொரு ஊழியத்துக்கும் குழுக்களும் பொறுப்புகளும் உண்டு; நபர்கள் பொறுப்புகளுக்குத் தகுதி பெற்று ஊழியத்தின் தொகுப்புக் குழுவைச் சேர்கிறார்கள்; அட்டவணைகள் நாட்காட்டியிலுள்ள நிகழ்ச்சிகளைப் பின்தொடர்ந்து ஆட்கள் தேவைகளுடன் தேதியிட்ட நிகழ்வுகளை உருவாக்குகின்றன; ஒருங்கிணைப்பாளர்கள் நபர்களை நியமிக்கிறார்கள், அவர்கள் ஏற்கிறார்கள், நிராகரிக்கிறார்கள் அல்லது மாற்று நபரை முன்மொழிகிறார்கள்; நினைவூட்டல்களும் எச்சரிக்கைகளும் மின்னஞ்சல் மூலம் செல்கின்றன. நிர்வாகிகளும் ஊழியங்களை நிர்வகிக்கும் அனுமதி உள்ள பயனர்களும் ஒவ்வொரு ஊழியத்தையும் பார்த்து அவற்றை உருவாக்கலாம், செயலிழக்கச் செய்யலாம், நீக்கலாம். ஊழிய ஒருங்கிணைப்பாளருக்கு அதற்குப் பதிலாக எனது ஊழியங்களை நிர்வகிக்கும் அனுமதி வழங்கப்படுகிறது: அப்போது பக்கப்பட்டியிலுள்ள ஊழியங்கள் தலைப்பு அவர் ஒருங்கிணைக்கும் ஊழியங்களை மட்டுமே காட்டும். குழுத் தலைவர் உறுப்பினர் போர்ட்டலிலிருந்து தனது குழுவை நடத்துகிறார். உறுப்பினர்கள் தங்கள் அட்டவணையைக் காணவும், பதிலளிக்கவும், பதிவு செய்யவும், உதவ முன்வரவும் உறுப்பினர் போர்ட்டலைப் பயன்படுத்துகிறார்கள்."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22820,10 +22512,6 @@ msgid "Cancel this occurrence"
 msgstr "இந்த நிகழ்வை ரத்து செய்"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "ரத்து செய்வது யாருக்கும் தெரிவிக்காது: மின்னஞ்சல் அனுப்பப்படாது. நியமனங்கள் அப்படியே இருக்கும், ரத்து செய்யப்பட்டிருக்கும்போது நினைவூட்டல்கள் திட்டமிடப்படாது, மீட்டெடுக்கும் வரை யாரையும் நியமிக்க முடியாது."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "நீக்கப்பட்ட நிகழ்ச்சிகள் அவற்றின் வருகைப் பதிவுகள் மற்றும் எண்ணிக்கைகளுடன் அனைத்து நாட்காட்டிகளிலிருந்தும் நீங்கும்; இந்த ஊழியத்தின் அவற்றுக்கான நியமனம் தேதியை மட்டுமே வைத்திருக்கும். இதைச் செயலிழக்கச் செய்ய முடியாது."
 
@@ -22834,10 +22522,6 @@ msgstr "நீக்கப்பட்ட நிகழ்ச்சிகள்: 
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "நீக்க வேண்டிய நிகழ்ச்சிகள்: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "நிகழ்வு ரத்து செய்யப்பட்டது"
 
 #: 
 msgid "Occurrence restored"
@@ -22854,10 +22538,6 @@ msgstr "நிகழ்வை மீட்டெடு"
 #: 
 msgid "Restore this occurrence"
 msgstr "இந்த நிகழ்வை மீட்டெடு"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "நிகழ்வை ரத்து செய்ய முடியவில்லை"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -22938,12 +22618,6 @@ msgstr "நிகழ்ச்சியின்போது கியோஸ்�
 #: 
 msgid "Registering..."
 msgstr "பதிவு செய்கிறது..."
-
-#: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "வைப்பு உள்ளீடுகளில் காசோலைக் கொடுப்பனவுகளைப் பதிவு செய்யும்போது காசோலை எண்ணைக் கட்டாயமாக்கு.\n"
-"குறிப்பு: இதை முடக்கினால் நகல் காசோலை எண் கண்டறிதலும் முடக்கப்படும் — அதே காசோலை ஒன்றுக்கு மேற்பட்ட முறை உள்ளிடப்படலாம்."
 
 #: 
 msgid "This event has ended"
@@ -24864,28 +24538,12 @@ msgid "Closing Line"
 msgstr "நிறைவு வரி"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "விருப்பத் தொலைஅளவீட்டைக் கட்டுப்படுத்துகிறது. தொலைஅளவீடு அணைக்கப்பட்டிருந்தாலும் நிறுவல் மற்றும் தரவுத்தள மேம்படுத்தல் தோல்விகள் PostHog க்கு வரையறுத்த கண்டறிதல்களை அனுப்புகின்றன. இந்தத் தோல்வி அறிக்கைகளில் மென்பொருள் மற்றும் சூழல் பதிப்புகளும் சுத்தப்படுத்திய தரவுத்தளப் பிழையும் உள்ளன, நிறுவல் அடையாளமோ SQL கூற்றோ இல்லை."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "தோல்வியடைந்த நிறுவல்களையும் தரவுத்தள மேம்படுத்தல்களையும் கண்டறியவும்"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "நிறுவல் மற்றும் மேம்படுத்தல் தோல்வி விவரங்கள்"
-
-#: 
 msgid "Open in browser window"
 msgstr "உலாவி சாளரத்தில் திறக்கவும்"
 
 #: 
 msgid "Opening Line"
 msgstr "தொடக்க வரி"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "விருப்பப் பயன்பாட்டுத் தொலைஅளவீடு இயக்கப்பட்டால் மட்டுமே அனுப்பப்படும். நீங்கள் இல்லை, நன்றி என்று தேர்ந்தெடுத்தாலும், சமூகத்திற்கு உதவ நிறுவல் மற்றும் தரவுத்தள மேம்படுத்தல் தோல்விகள் எப்போதும் ஒரு வரையறுத்த கண்டறிதலை அனுப்பும். தோல்வி அறிக்கைகளில் மென்பொருள் மற்றும் சூழல் பதிப்புகளும் சுத்தப்படுத்திய தரவுத்தளப் பிழையும் உள்ளன, நிறுவல் அடையாளமோ SQL கூற்றோ இல்லை."
 
 #: 
 msgid "PDF Handling"
@@ -24922,18 +24580,6 @@ msgstr "அறிக்கை சொற்கள்"
 #: 
 msgid "Tax Information"
 msgstr "வரித் தகவல்"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "தொலைஅளவீடு அமெரிக்காவில் உள்ள PostHog க்கு அனுப்பப்படுகிறது. விருப்பத் தொலைஅளவீடு முடக்கப்பட்டிருந்தாலும் நிறுவல் மற்றும் மேம்படுத்தல் தோல்வி அறிக்கைகள் அனுப்பப்படும்."
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "இந்தத் தேதி ரத்து செய்யப்பட்டது. உங்களிடமிருந்து மேலும் எதுவும் தேவையில்லை."
-
-#: 
-msgid "always sent"
-msgstr "எப்போதும் அனுப்பப்படும்"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25398,10 +25044,6 @@ msgstr "மின்னஞ்சலுக்கு கவனம் தேவை"
 #: 
 msgid "Email problem"
 msgstr "மின்னஞ்சல் சிக்கல்"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "மின்னஞ்சல் செய்த உள்நுழைவு குறியீடும் இணைப்பும் ரத்து செய்யப்பட்டன"
 
 #: 
 msgid "Emailed verification link"
@@ -25994,10 +25636,6 @@ msgstr "தங்கள் சொந்த மின்னஞ்சல் உள
 #: 
 msgid "Only people with their own email can be added."
 msgstr "தங்கள் சொந்த மின்னஞ்சல் உள்ளவர்களை மட்டுமே சேர்க்கலாம்."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "விருப்பத் தொலைஅளவீட்டில் பக்க வழிகள், செயலில் உள்ள மொழி, CRM பதிப்பு, PHP பதிப்பு, இயக்க முறைமைக் குடும்பம், உங்கள் திருச்சபைத் தகவல் அமைப்புகளிலிருந்து நாடு, மற்றும் ஒரு சீரற்ற நிறுவல் அடையாளம் இருக்கலாம். தோல்வி அறிக்கைகளில் நிறுவல் அடையாளம் இல்லை. தரவு அமெரிக்காவில் உள்ள PostHog க்கு அனுப்பப்படுகிறது."
 
 #: 
 msgid "Passkey"
@@ -27168,10 +26806,584 @@ msgid "A request was made in the Member Portal to change your email address at %
 msgstr "உறுப்பினர் தளத்தில் %1$s இல் உங்கள் மின்னஞ்சல் முகவரியை %2$s இலிருந்து %3$s ஆக மாற்ற கோரிக்கை வந்துள்ளது. புதிய முகவரிக்கு அனுப்பிய இணைப்பைப் பயன்படுத்தினால் மட்டுமே மாற்றம் நடக்கும்."
 
 #: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "குடும்பத் தகவலைச் சரிபார்க்க கீழுள்ள இணைப்பைப் பயன்படுத்துங்கள். சரிபார்ப்புப் பக்கத்தில் எல்லாம் சரி என்பதை உறுதிப்படுத்த «குடும்பத் தகவலை உறுதிப்படுத்து» என்பதைத் தேர்ந்தெடுங்கள், அல்லது திருத்தங்களை சபை அலுவலகத்திற்கு அனுப்புங்கள்."
-
-#: 
 msgid "Review Family Information"
 msgstr "குடும்பத் தகவலைச் சரிபார்"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "\"%s\" என்ற பெயரில் ஓர் ஊழியம் ஏற்கெனவே உள்ளது. பட்டியலிலிருந்து அதைத் தேர்ந்தெடுக்கவும், அல்லது வேறு பெயரைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "A new ministry"
+msgstr "புதிய ஊழியம்"
+
+#: 
+msgid "A position"
+msgstr "ஒரு பொறுப்பு"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "முன்பு மாற்றப்பட்ட பொறுப்புகளில் {{total}} தன்னார்வலர்களைச் சேர்க்கவா?"
+
+#: 
+msgid "Already converted"
+msgstr "ஏற்கெனவே மாற்றப்பட்டது"
+
+#: 
+msgid "An existing ministry"
+msgstr "ஏற்கெனவே உள்ள ஊழியம்"
+
+#: 
+msgid "Becomes"
+msgstr "இவ்வாறு மாறும்"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM-இல் தன்னார்வலர்களை நிர்வகிக்க இரண்டு வழிகள் உள்ளன. ஒரே நேரத்தில் ஒன்று மட்டுமே பயன்பாட்டில் இருக்க வேண்டும்; இந்தச் சபை எதைப் பார்க்கும் என்பதை \"தன்னார்வ அனுபவம்\" அமைப்பு தீர்மானிக்கிறது. மாற்றுவது பக்கங்களையும் பட்டி உருப்படிகளையும் மறைக்கும் அல்லது காட்டும்; தரவை ஒருபோதும் நீக்காது. தன்னார்வ வாய்ப்புகள் பயன்பாட்டில் இருக்கும் வரை மட்டுமே V1 மற்றும் இரண்டும் வழங்கப்படும்: எல்லா வாய்ப்புகளும் மாற்றப்பட்டு சபை V2-இல் இருக்கும்போது, அவை இந்தப் பட்டியலிலிருந்து நீங்கும்."
+
+#: 
+msgid "Convert"
+msgstr "மாற்று"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "தன்னார்வ வாய்ப்புகளை மாற்று"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "இப்போது {{total}} வாய்ப்புகளை மாற்றவா? தன்னார்வ வாய்ப்புகள் நிறுத்தப்படும் வரை V1 தரவு அப்படியே வைக்கப்படும்."
+
+#: 
+msgid "Converted"
+msgstr "மாற்றப்பட்டது"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "மாற்றப்பட்டது: {{positions}} பொறுப்புகள், {{ministries}} ஊழியங்கள், {{qualifications}} தன்னார்வலர்கள் தகுதி பெற்றனர்."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "ஒவ்வொரு வாய்ப்பும் ஓர் ஊழியத்தின் முதல் குழுவில் ஒரு பொறுப்பாக மாறும், அதனுடன் இணைக்கப்பட்ட அனைவரும் அந்தப் பொறுப்புக்குத் தகுதி பெறுவர். இந்தப் பொறுப்புகளில் சுயப் பதிவு தொடக்கத்தில் முடக்கப்பட்டிருக்கும்."
+
+#: 
+msgid "Everything is converted."
+msgstr "அனைத்தும் மாற்றப்பட்டுவிட்டன."
+
+#: 
+msgid "Existing ministry"
+msgstr "ஏற்கெனவே உள்ள ஊழியம்"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "புதிய ஊழியத்திற்கு அதிகபட்சம் 100 எழுத்துகளில் ஒரு பெயரைக் கொடுக்கவும்."
+
+#: 
+msgid "Its own ministry"
+msgstr "அதற்கென தனி ஊழியம்"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "அதன் பின் இணைக்கப்பட்டவர்கள்: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "மாற்ற முடியாத இணைப்புகள்"
+
+#: 
+msgid "New ministries of their own"
+msgstr "தனித்தனி புதிய ஊழியங்கள்"
+
+#: 
+msgid "New ministry name"
+msgstr "புதிய ஊழியத்தின் பெயர்"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "மின்னஞ்சல் எதுவும் அனுப்பப்படாது, தன்னார்வ வாய்ப்புகள் நிறுத்தப்படும் வரை அப்படியே இருக்கும்."
+
+#: 
+msgid "No name"
+msgstr "பெயர் இல்லை"
+
+#: 
+msgid "Not converted"
+msgstr "மாற்றப்படவில்லை"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "சிறப்பு வசதி தலைப்புகளைத் திற"
+
+#: 
+msgid "Open Ministries"
+msgstr "ஊழியங்களைத் திற"
+
+#: 
+msgid "Opportunities"
+msgstr "வாய்ப்புகள்"
+
+#: 
+msgid "Opportunity"
+msgstr "வாய்ப்பு"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "வாய்ப்பு #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "மாற்றத்திற்குப் பின் மாற்றப்பட்ட தன்னார்வ வாய்ப்புகளுடன் இணைக்கப்பட்டவர்கள்: %d. 2027 தொடக்கத்தில் தன்னார்வ வாய்ப்புகள் நிறுத்தப்படும் முன் அவர்களை அவர்களின் பொறுப்புகளில் சேர்க்கவும்."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "முதலில் மாற்றத்தை முன்னோட்டமிட்டு, அது திருப்பி அளித்த திருத்தத்தை அனுப்பவும்."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "பெயர்கள் தனித்துவமாக இருக்க மறுபெயரிடப்பட்டது"
+
+#: 
+msgid "Review the conversion"
+msgstr "மாற்றத்தை மதிப்பாய்வு செய்"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "மாற்றத் தேர்வை JSON பொருளாக அனுப்பவும்."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "ஊழியங்களாக மாறும் வாய்ப்புகளை ID பட்டியலாக அனுப்பவும்."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "அந்த ஊழியம் இல்லை."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "தன்னார்வ வாய்ப்புகள் நிறுத்தம் குறித்த அறிவிப்பை நிர்வாகி மூடிய ChurchCRM பதிப்பு."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "முன்னோட்டத்திற்குப் பின் தன்னார்வ வாய்ப்புகள் மாறியுள்ளன. முன்னோட்டத்தை மீண்டும் சரிபார்த்து, பின்னர் மாற்றவும்."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "உறுதிப்படுத்தலைத் திறக்க முடியவில்லை. பக்கத்தை மீண்டும் ஏற்றி மீண்டும் முயலவும்."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "மாற்றத்தை முன்னோட்டமிட முடியவில்லை."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "மாற்றம் தோல்வியடைந்தது. எதுவும் மாற்றப்படவில்லை."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "\"%s\" ஊழியத்தில் பொறுப்புகளை வைக்க எந்தக் குழுவும் இல்லை."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "சேவையகத்தை அடைய முடியவில்லை. மாற்றம் நடந்ததா என்பதைப் பார்க்க பக்கத்தை மீண்டும் ஏற்றவும்."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "மாற்றுவதற்குத் தன்னார்வ வாய்ப்புகள் எதுவும் இல்லை."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "புதிய ஊழியங்கள் தன்னார்வ வாய்ப்புகளுக்கு அருகில் தெரியும்படி, தன்னார்வலர் மேலாண்மை இரண்டும் என்பதற்கு மாறும்."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "தன்னார்வ வாய்ப்புகள் நிறுத்தப்படுகின்றன"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "தன்னார்வ வாய்ப்புகள் மாற்றப்பட்டன"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "தன்னார்வ வாய்ப்புகள் 2027 தொடக்கத்தில் நிறுத்தப்படும். யார் எதில் சேவை செய்கிறார்கள் என்பதைத் தக்கவைக்க அவற்றை ஊழியங்களாக மாற்றவும்."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "தன்னார்வ வாய்ப்புகள் 2027 தொடக்கத்தில் நிறுத்தப்படும். உங்கள் %1$d வாய்ப்புகளையும் %2$d தன்னார்வலர்களையும் இப்போதே ஊழியங்களாக மாற்றவும். எதுவும் மாறும் முன் முடிவை முன்னோட்டமிடலாம்."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "தகுதி பெற்ற தன்னார்வலர்கள்"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "மாற்றப்பட்ட பொறுப்புகளில் சேர்க்க வேண்டிய தன்னார்வலர்கள்"
+
+#: 
+msgid "What it becomes"
+msgstr "இது என்னவாக மாறும்"
+
+#: 
+msgid "What will happen"
+msgstr "என்ன நடக்கும்"
+
+#: 
+msgid "Where they go"
+msgstr "அவர்கள் எங்கு செல்கின்றனர்"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "எந்தப் பழைய தன்னார்வ வாய்ப்புகள் மாற்றப்பட்டன, ஒவ்வொன்றும் எந்தப் பொறுப்பாக மாறியது."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "இந்தச் சபை பயன்படுத்தும் தன்னார்வ அனுபவம். தன்னார்வ வாய்ப்புகள் (V1) 2027 தொடக்கத்தில் நிறுத்தப்படும்."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "உங்கள் தன்னார்வ வாய்ப்புகள் ஊழியங்களாக மாற்றப்பட்டுள்ளன. 2027 தொடக்கத்தில் தன்னார்வ வாய்ப்புகள் நிறுத்தப்படும் முன் தன்னார்வலர் மேலாண்மையை V2-க்கு மாற்றவும்."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "புதிய ஊழியமாக, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "{{name}} ஊழியத்திற்கு"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "இனி ChurchCRM-இல் இல்லை"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "பக்கப்பட்டியைச் சுருக்கு"
+
+#: 
+msgid "Expand sidebar"
+msgstr "பக்கப்பட்டியை விரிவாக்கு"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "@-க்கு முன் ASCII எழுத்துகள் மட்டும் உள்ள சரியான மின்னஞ்சல் முகவரியை உள்ளிடவும்."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "அவர்களின் மின்னஞ்சல் முகவரி சரியானதல்ல"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "{{name}}-ஐ நிச்சயமாக நீக்க வேண்டுமா?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "கணினித் தகவலைச் சேகரிக்க முடியவில்லை. மீண்டும் முயலவும்."
+
+#: 
+msgid "No payments found for this period."
+msgstr "இந்தக் காலத்திற்கு எந்தக் கொடுப்பனவும் கிடைக்கவில்லை."
+
+#: 
+msgid "Payments by Fund"
+msgstr "நிதி வாரியான கொடுப்பனவுகள்"
+
+#: 
+msgid "Unknown Fund"
+msgstr "தெரியாத நிதி"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "தரவுத்தளத்தை ஆதரிக்கப்படும் பதிப்புக்கு மாற்றுமாறு உங்கள் ஹோஸ்டிடம் கேளுங்கள், பின்னர் மீண்டும் முயலுங்கள்."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "தரவுத்தளத்தை ஆதரிக்கப்படும் பதிப்புக்கு மாற்றுமாறு உங்கள் ஹோஸ்டிடம் கேளுங்கள்."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "விடுமுறை நாள் பெயர்கள் ஒவ்வொரு பயனரின் மொழி அமைப்பைப் பின்பற்றும். ஒரு விடுமுறைக்கு அந்த மொழியில் பெயர் இல்லையெனில், அது ஆங்கிலத்தில் காட்டப்படும்."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "உங்கள் மொழியில் விடுமுறை நாள் பெயர்கள்"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "வைப்புப் பதிவுகளில் காசோலைக் கட்டணங்களைப் பதிவுசெய்யும்போது காசோலை எண்ணைக் கட்டாயமாக்கு. முடக்கப்பட்டிருந்தால், காலியான அல்லது 0 காசோலை எண்ணுடன் காசோலையைச் சேமிக்கலாம், அவை நகல்களுக்காகச் சரிபார்க்கப்படாது."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "காசோலைக் கட்டணங்களில் காசோலை எண்ணைக் கட்டாயமாக்கு"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "மேம்படுத்தல் தொடங்கப்படவில்லை, எனவே எதுவும் மாறவில்லை."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "இந்த மேம்படுத்தலை உங்கள் தரவுத்தளத்தில் இயக்க முடியாது."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "உங்கள் தரவுத்தள சேவையகம் (%1$s %2$s) ChurchCRM ஆதரிப்பதை விடப் பழையது (MySQL %3$s அல்லது MariaDB %4$s மற்றும் அதற்குப் பிந்தையவை)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "சரிபார்ப்பு மின்னஞ்சல் அனுப்பும் முன் சுயமாகப் பதிவுசெய்த இந்தக் குடும்பத்தை அங்கீகரிக்கவும்"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "இரண்டு நிதியாண்டுகளுக்கான குடும்பங்களின் மொத்த உறுதிமொழிகளை ஒப்பிடுக."
+
+#: 
+msgid "Email Portal Link"
+msgstr "போர்ட்டல் இணைப்பை மின்னஞ்சல் செய்"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "குடும்பத்தினர் தங்கள் தகவலைப் பார்த்துப் புதுப்பிக்கக்கூடிய உறுப்பினர் போர்ட்டலுக்கான இணைப்பை அவர்களுக்கு மின்னஞ்சல் செய்யவும், அல்லது நீங்கள் நேரில் சரிபார்த்ததாகப் பதிவுசெய்யவும்."
+
+#: 
+msgid "Family is inactive"
+msgstr "குடும்பம் செயலற்ற நிலையில் உள்ளது"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "முதல் நிதியாண்டு"
+
+#: 
+msgid "Fiscal Years"
+msgstr "நிதியாண்டுகள்"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "கொடை அறிக்கை — மாதிரி மட்டும்"
+
+#: 
+msgid "Last invited"
+msgstr "கடைசியாக அழைக்கப்பட்டது"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "கடைசி போர்ட்டல் உள்நுழைவு"
+
+#: 
+msgid "Last verified"
+msgstr "கடைசியாகச் சரிபார்க்கப்பட்டது"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "இந்தக் குடும்பத்தின் செயலில் உள்ள, அங்கீகரிக்கப்பட்ட எந்த உறுப்பினருக்கும் மின்னஞ்சல் முகவரி இல்லை. அதற்குப் பதிலாக நேரில் சரிபார்க்கவும்."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "இந்த நிதியாண்டுகளுக்கு உறுதிமொழிகள் எதுவும் கிடைக்கவில்லை."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "உறுதிமொழி ஒப்பீடு"
+
+#: 
+msgid "Preview PDF"
+msgstr "PDF முன்னோட்டம்"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "இரண்டாம் நிதியாண்டு"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "உங்கள் குடும்பத் தகவலைப் பார்க்க இந்த மின்னஞ்சல் முகவரியுடன் உறுப்பினர் போர்ட்டலில் உள்நுழையவும். எனது குடும்பம் பக்கத்தில், அனைத்தும் சரியாக உள்ளதை உறுதிப்படுத்தவும் அல்லது உங்கள் விவரங்களைப் புதுப்பிக்கவும்."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "இந்தக் குடும்பம் செயலற்ற நிலையில் உள்ளதால், சரிபார்ப்பு மின்னஞ்சல்கள் அனுப்பப்படுவதில்லை."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "சுயமாகப் பதிவுசெய்த இந்தக் குடும்பம் அங்கீகாரத்திற்காகக் காத்திருக்கிறது. அங்கீகரித்தால், உறுப்பினர் போர்ட்டலில் உள்நுழைந்து தகவலைப் பார்க்குமாறு குடும்பத்திற்கு அழைப்பு மின்னஞ்சல் அனுப்பப்படும்."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "சேமித்த அமைப்புகளையும் கற்பனையான மாதிரிக் கொடைகளையும் மட்டுமே பயன்படுத்துகிறது."
+
+#: 
+msgid "Verification"
+msgstr "சரிபார்ப்பு"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "%d குடும்பத்திற்குச் சரிபார்ப்பு மின்னஞ்சல் அனுப்பப்பட்டது."
+msgstr[1] "%d குடும்பங்களுக்குச் சரிபார்ப்பு மின்னஞ்சல் அனுப்பப்பட்டது."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "குடும்ப உறுப்பினர்களுக்குச் சரிபார்ப்பு மின்னஞ்சல் அனுப்பப்பட்டது."
+
+#: 
+msgid "by the family in the portal"
+msgstr "போர்ட்டலில் குடும்பத்தால்"
+
+#: 
+msgid "in person by staff"
+msgstr "பணியாளரால் நேரில்"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d இயல்புநிலை வேறொரு காரணத்தால் தவிர்க்கப்பட்டது (நிகழ்வு முடிந்தது, ரத்தானது அல்லது நிரம்பியது)"
+msgstr[1] "%d இயல்புநிலைகள் வேறொரு காரணத்தால் தவிர்க்கப்பட்டன (நிகழ்வு முடிந்தது, ரத்தானது அல்லது நிரம்பியது)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "ஒரு மாற்றநிலை அமைப்பு. பழைய தன்னார்வ வாய்ப்புகள் பக்கங்களும் புதிய ஊழியங்கள் பக்கங்களும் இரண்டும் கிடைக்கும், மேலும் நபர் பதிவு இரண்டு தன்னார்வப் பணி தாவல்களையும் தெளிவாக லேபிளிட்டுக் காட்டும். ஒரு திருச்சபையை V1 இலிருந்து V2 க்கு மாற்றும்போது இதைப் பயன்படுத்தவும், பிறகு V2 க்கு மட்டும் மாறவும்."
+
+#: 
+msgid "Assignment canceled"
+msgstr "நியமனம் ரத்து செய்யப்பட்டது"
+
+#: 
+msgid "Canceled"
+msgstr "ரத்து செய்யப்பட்டது"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "ரத்து செய்வது யாருக்கும் தெரிவிக்காது: மின்னஞ்சல் அனுப்பப்படாது. நியமனங்கள் அப்படியே இருக்கும், ரத்து செய்யப்பட்டிருக்கும்போது நினைவூட்டல்கள் திட்டமிடப்படாது, மீட்டெடுக்கும் வரை யாரையும் நியமிக்க முடியாது."
+
+#: 
+msgid "Color"
+msgstr "நிறம்"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "மின்னஞ்சல் செய்த உள்நுழைவு குறியீடும் இணைப்பும் ரத்து செய்யப்பட்டன"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "குடும்ப பாத்திரங்கள் (குடும்பத் தலைவர், வாழ்க்கைத் துணைவர், குழந்தை போன்றவை) உங்கள் பதிவுகளை ஒழுங்கமைக்க உதவுகின்றன."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "நிகழ்வு ரத்து செய்யப்பட்டது"
+
+#: 
+msgid "Prioritize translations"
+msgstr "மொழிபெயர்ப்புகளுக்கு முன்னுரிமை கொடுங்கள்"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "நியமனத்தை ரத்து செய்ய முடியவில்லை"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "நிகழ்வை ரத்து செய்ய முடியவில்லை"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "இந்தத் தேதி ரத்து செய்யப்பட்டது. உங்களிடமிருந்து மேலும் எதுவும் தேவையில்லை."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "இந்த நிகழ்வு ரத்து செய்யப்பட்டுள்ளது"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "ஒரு திருச்சபை நடத்தும் விதத்தில் ஒழுங்கமைக்கப்பட்ட தன்னார்வப் பணி. ஒவ்வொரு ஊழியத்துக்கும் குழுக்களும் பொறுப்புகளும் உண்டு; நபர்கள் பொறுப்புகளுக்குத் தகுதி பெற்று ஊழியத்தின் தொகுப்புக் குழுவைச் சேர்கிறார்கள்; அட்டவணைகள் நாட்காட்டியிலுள்ள நிகழ்ச்சிகளைப் பின்தொடர்ந்து ஆட்கள் தேவைகளுடன் தேதியிட்ட நிகழ்வுகளை உருவாக்குகின்றன; ஒருங்கிணைப்பாளர்கள் நபர்களை நியமிக்கிறார்கள், அவர்கள் ஏற்கிறார்கள், நிராகரிக்கிறார்கள் அல்லது மாற்று நபரை முன்மொழிகிறார்கள்; நினைவூட்டல்களும் எச்சரிக்கைகளும் மின்னஞ்சல் மூலம் செல்கின்றன. நிர்வாகிகளும் ஊழியங்களை நிர்வகிக்கும் அனுமதி உள்ள பயனர்களும் ஒவ்வொரு ஊழியத்தையும் பார்த்து அவற்றை உருவாக்கலாம், செயலிழக்கச் செய்யலாம், நீக்கலாம். ஊழிய ஒருங்கிணைப்பாளருக்கு அதற்குப் பதிலாக எனது ஊழியங்களை நிர்வகிக்கும் அனுமதி வழங்கப்படுகிறது: அப்போது பக்கப்பட்டியிலுள்ள ஊழியங்கள் தலைப்பு அவர் ஒருங்கிணைக்கும் ஊழியங்களை மட்டுமே காட்டும். குழுத் தலைவர் உறுப்பினர் போர்ட்டலிலிருந்து தனது குழுவை நடத்துகிறார். உறுப்பினர்கள் தங்கள் அட்டவணையைக் காணவும், பதிலளிக்கவும், பதிவு செய்யவும், உதவ முன்வரவும் உறுப்பினர் போர்ட்டலைப் பயன்படுத்துகிறார்கள்."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "செயலில் உள்ள நிறுவல்களையும் மேம்படுத்தல் முடிவுகளையும் எண்ணுக"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "தரவுத்தள இயந்திரமும் முதன்மை/துணைப் பதிப்பும்"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "பிழைகள் — நிறுவல் புள்ளிவிவரங்கள், எச்சரிக்கைகள், பிழைகள் மற்றும் JS விதிவிலக்குகள்"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "சிக்கல்களைக் கண்டறிந்து சரிசெய்ய எங்களுக்கு உதவுகிறீர்களா?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "நிறுவல் குறைந்தபட்ச நிறுவல் மற்றும் மேம்படுத்தல் புள்ளிவிவரங்களைப் பகிர்கிறது. பிழைகள் எச்சரிக்கைகளையும் பிழை அறிக்கைகளையும் சேர்க்கிறது. முழுமை பக்கப் பார்வைகளைச் சேர்க்கிறது. எதுவும் இல்லை தோல்வியடைந்த நிறுவல்களையும் மேம்படுத்தல்களையும் மட்டுமே அனுப்புகிறது."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "நிறுவல் — நிறுவல் மற்றும் மேம்படுத்தல் புள்ளிவிவரங்கள் (இயல்புநிலை)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "நிறுவல் மற்றும் மேம்படுத்தல் முடிவுகள், மேம்படுத்தலின்போது முந்தைய பதிப்பு, பயன்பாட்டில் இருக்கும்போது தினசரி சரிபார்ப்பு"
+
+#: 
+msgid "Installation profile"
+msgstr "நிறுவல் சுயவிவரம்"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "மொழி அமைப்பு (பிழைகள் மற்றும் முழுமை)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "ஒருபோதும் பகிரப்படாதவை: உறுப்பினர், கொடை அல்லது பிற சபைப் பதிவுகள், உங்கள் சபையின் பெயர், உங்கள் இணைய முகவரி அல்லது சேவையகப் பெயர், மின்னஞ்சல் முகவரிகள். உங்கள் நாடு சபை அமைப்புகளில் உள்ளதே, உங்கள் பிணையத்திலிருந்து கண்டறியப்படுவதில்லை."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "OS குடும்பம் (பிழைகள் மற்றும் முழுமை)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP பதிப்பு (பிழைகள் மற்றும் முழுமை)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "என்ன பகிரப்படுகிறது என்பதைத் துல்லியமாகப் பார்க்க அல்லது உங்கள் தேர்வை மாற்ற, நிர்வாகம் → தொலைமிதி என்பதற்குச் செல்லவும்."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "உற்பத்தி, டெமோ மற்றும் சோதனை நிறுவல்களைப் பிரித்தறிக"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "அநாமதேய நிறுவல் புள்ளிவிவரங்களைப் பகிரவா?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "பிழை மற்றும் பயன்பாட்டு அறிக்கைகளைப் பகிர்"
+
+#: 
+msgid "Share install statistics"
+msgstr "நிறுவல் புள்ளிவிவரங்களைப் பகிர்"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "கூடுதலாகப் பகிரப்படுவை: எச்சரிக்கைகள், பிழை விவரங்கள், எந்தப் பக்கங்கள் திறக்கப்படுகின்றன என்பது."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "பகிரப்படுவை: ChurchCRM நிறுவப்பட்டதா அல்லது மேம்படுத்தப்பட்டதா, அது வெற்றியடைந்ததா என்பது, பயன்பாட்டில் இருக்கும்போது நாளுக்கு ஒருமுறை சரிபார்ப்பு, பதிப்பு எண், உங்கள் நாடு, தரவுத்தள வகை. ஒரு சீரற்ற நிறுவல் ஐடி ஒவ்வொரு நிறுவலையும் ஒருமுறை மட்டுமே எண்ணுகிறது."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "தரவுத்தள இணக்கத்தன்மையைப் புரிந்துகொள்"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "உங்கள் தேர்வு ஒருமுறை மட்டுமே கேட்கப்படும். எப்போது வேண்டுமானாலும் அதை மாற்றலாம். வேண்டாம், நன்றி என்பதைத் தேர்ந்தெடுத்தால், தோல்வியடைந்த நிறுவல் அல்லது மேம்படுத்தல் மட்டுமே தெரிவிக்கப்படும்."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "உங்கள் தரவு உங்களுடையது. நிறுவல் நிறுவல் மற்றும் மேம்படுத்தல் முடிவுகள், நிறுவல் ஐடி, மென்பொருள் பதிப்பு, நிறுவல் சுயவிவரம், அமைக்கப்பட்ட நாடு, தரவுத்தள இயந்திரம் மற்றும் அதன் முதன்மை/துணைப் பதிப்பை மட்டுமே பகிர்கிறது. பிழைகள் எச்சரிக்கைகளையும் பிழை விவரங்களையும் சேர்க்கிறது. முழுமை பக்கப் பார்வைகளைச் சேர்க்கிறது. எதுவும் இல்லை தோல்வியடைந்த நிறுவல்களையும் மேம்படுத்தல்களையும் மட்டுமே அனுப்புகிறது. எந்த நிலையும் உங்கள் இணைய முகவரியையோ சேவையகப் பெயரையோ அனுப்புவதில்லை. சோதனை நிறுவல்கள் எதையும் அனுப்புவதில்லை. தொலைமிதி அமெரிக்காவில் உள்ள PostHog-க்கு அனுப்பப்படுகிறது."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "உங்கள் தரவு உங்களுடையது. இது மென்பொருளைப் பற்றி மட்டுமே தெரிவிக்கிறது, உங்கள் சபையையோ அதன் மக்களையோ பற்றி ஒருபோதும் இல்லை."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "உங்கள் தரவு உங்களுடையது. நிறுவல்களை எண்ண, ChurchCRM நிறுவப்பட்டதா அல்லது மேம்படுத்தப்பட்டதா, அது வெற்றியடைந்ததா என்பதையும், பயன்பாட்டில் இருக்கும்போது நாளுக்கு ஒருமுறை சரிபார்ப்பையும், பதிப்பு எண், உங்கள் நாடு, தரவுத்தள வகை, ஒரு சீரற்ற நிறுவல் ஐடி ஆகியவற்றையும் தெரிவிக்கிறது. உறுப்பினர், கொடை அல்லது பிற சபைப் பதிவுகள், உங்கள் சபையின் பெயர், உங்கள் இணைய முகவரி அல்லது சேவையகப் பெயர், மின்னஞ்சல் முகவரிகள் ஆகியவற்றை ஒருபோதும் தெரிவிப்பதில்லை. நிர்வாகம் → தொலைமிதி என்பதில் எப்போது வேண்டுமானாலும் இதை முடக்கலாம்; தோல்வியடைந்த நிறுவல் அல்லது மேம்படுத்தல் தொடர்ந்து தெரிவிக்கப்படும். எச்சரிக்கைகள், பிழை விவரங்கள், பக்கப் பார்வைகள் நீங்கள் தேர்ந்தெடுத்தால் மட்டுமே பகிரப்படும்."
 

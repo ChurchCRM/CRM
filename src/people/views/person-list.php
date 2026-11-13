@@ -196,7 +196,7 @@ $hasDataQualityIssues = $genderDataCheckCount > 0 || $roleDataCheckCount > 0 ||
             <?= gettext('Showing inactive persons only.') ?>
             <a href="<?= SystemURLs::getRootPath() ?>/people/list" class="alert-link ms-1"><?= gettext('View active only') ?></a>
             &middot;
-            <a href="<?= SystemURLs::getRootPath() ?>/people/list?personActiveStatus=all" class="alert-link"><?= gettext('View all') ?></a>
+            <a href="<?= SystemURLs::getRootPath() ?>/people/list?personActiveStatus=all" class="alert-link"><?= gettext('View All') ?></a>
         <?php endif; ?>
     </div>
 </div>

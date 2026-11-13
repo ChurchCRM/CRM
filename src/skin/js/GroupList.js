@@ -125,8 +125,8 @@ function initializeGroupList() {
           const hasMembers = full.memberCount > 0;
           const cartBtn = hasMembers
             ? inCart
-              ? `<button class="dropdown-item text-danger RemoveFromCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="fa-solid fa-cart-arrow-down me-2"></i><span class="cart-label">${i18next.t("Remove all from Cart")}</span></button>`
-              : `<button class="dropdown-item AddToCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="fa-solid fa-cart-plus me-2"></i><span class="cart-label">${i18next.t("Add all to Cart")}</span></button>`
+              ? `<button class="dropdown-item text-danger RemoveFromCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add All to Cart")}" data-label-remove="${i18next.t("Remove All from Cart")}"><i class="fa-solid fa-cart-arrow-down me-2"></i><span class="cart-label">${i18next.t("Remove All from Cart")}</span></button>`
+              : `<button class="dropdown-item AddToCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add All to Cart")}" data-label-remove="${i18next.t("Remove All from Cart")}"><i class="fa-solid fa-cart-plus me-2"></i><span class="cart-label">${i18next.t("Add All to Cart")}</span></button>`
             : "";
           const escapedName = window.CRM.escapeAttribute(full.Name || "");
           // Volunteer v2 (D19): a group owned by a ministry is renamed and deleted from

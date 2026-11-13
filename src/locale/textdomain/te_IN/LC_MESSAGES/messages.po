@@ -380,7 +380,7 @@ msgstr "అన్నింటినీ మార్చండి"
 
 #: 
 msgid "Deposit Slip Number"
-msgstr "కాబోదా స్లిప్ సంఖ్య"
+msgstr "డిపాజిట్ స్లిప్ సంఖ్య"
 
 #: 
 #, fuzzy
@@ -886,10 +886,6 @@ msgid "Do you want to proceed?"
 msgstr "మీరు కొనసాగించాలనుకుంటున్నారా?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "మీరు కుటుంబ సమాచారం యొక్క కాపీని క్రింది ఇమెయిల్‌లకు ఇమెయిల్ చేయబోతున్నారు"
-
-#: 
 msgid "Financial Reports"
 msgstr "ఆర్థిక నివేదికలు"
 
@@ -1013,7 +1009,7 @@ msgstr "ఖాళీ"
 
 #: 
 msgid "Deposit"
-msgstr "కాబోదా"
+msgstr "డిపాజిట్"
 
 #: 
 msgid "All Data"
@@ -1037,7 +1033,7 @@ msgstr "నివేదికను సృష్టించండి"
 
 #: 
 msgid "Deposits"
-msgstr "కాబోదాలు"
+msgstr "డిపాజిట్లు"
 
 #: 
 msgid "Fundraiser Listing"
@@ -1815,10 +1811,6 @@ msgstr "ఫోన్ సంఖ్య"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "కస్టమ్ డ్రాప్-డౌన్ జాబితా"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "కుటుంబ సభ్యులకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3859,10 +3851,6 @@ msgid "Please verify your family's information"
 msgstr "దయచేసి మీ కుటుంబ సమాచారాన్ని ధృవీకరించండి"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "ధృవీకరణ సమాచారాన్ని లోడ్ చేయడం సాధ్యపడలేదు"
-
-#: 
 msgid "No Changes"
 msgstr "మార్పులేమీ లేవు"
 
@@ -3875,24 +3863,8 @@ msgid "Oops! Page not found."
 msgstr "అయ్యో! పేజీ కనుగొనబడలేదు."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "మీ కుటుంబ ధృవీకరణను ప్రారంభించడానికి దయచేసి కింది వివరాలు నమోదు చేయండి"
-
-#: 
-msgid "Family Verification"
-msgstr "కుటుంబ ధృవీకరణ"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "కుటుంబ సమాచార ధృవీకరణను అభ్యర్థించండి"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "కుటుంబ సమాచారాన్ని ఎలా ధృవీకరించాలని అభ్యర్థించాలో ఎంచుకోండి"
-
-#: 
-msgid "Online Verification"
-msgstr "ఆన్‌లైన్ ధృవీకరణ"
 
 #: 
 msgid "Verified In Person"
@@ -4072,10 +4044,6 @@ msgstr "ఆస్తి విజయవంతంగా తీసివేయబ�
 #: 
 msgid "The property could not be unassigned."
 msgstr "ఆస్తిని తీసివేయడం సాధ్యపడలేదు."
-
-#: 
-msgid "Select event"
-msgstr "సంఘటనను ఎంచుకోండి"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4282,10 +4250,6 @@ msgid "Kiosk Manager"
 msgstr "కియోస్క్ మేనేజర్"
 
 #: 
-msgid "Report an issue"
-msgstr "సమస్యను నివేదించండి"
-
-#: 
 msgid "Self Verification"
 msgstr "స్వయం ధృవీకరణ"
 
@@ -4314,10 +4278,6 @@ msgstr "అరబిక్ - ఈజిప్ట్"
 #: 
 msgid "Thai"
 msgstr "థాయ్"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "స్వయం ధృవీకరణ పెండింగ్‌లో ఉంది"
 
 #: 
 msgid "Self Verify"
@@ -4699,16 +4659,8 @@ msgid "User must have Delete Records permission"
 msgstr "వినియోగదారుకు రికార్డ్‌లు తొలగించు అనుమతి ఉండాలి"
 
 #: 
-msgid "invalid event type id"
-msgstr "చెల్లని ఈవెంట్ టైప్ ఐడి"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "చెల్లని క్యాలెండర్ పిన్నింగ్"
-
-#: 
-msgid "invalid status value"
-msgstr "చెల్లని స్టేటస్ విలువ"
 
 #: 
 msgid "invalid export value"
@@ -4980,7 +4932,7 @@ msgstr "కుటుంబం వారీగా విరాళ సారాం
 
 #: 
 msgid "Pledge"
-msgstr "విరాళం"
+msgstr "ప్రతిజ్ఞ"
 
 #: 
 msgid "Paid"
@@ -5311,10 +5263,6 @@ msgstr "సిస్టమ్ అప్‌డేట్‌ను వర్తి�
 
 #: 
 msgid "Back to Login"
-msgstr "లాగిన్‌కు తిరిగి వెళ్ళు"
-
-#: 
-msgid "Back to login"
 msgstr "లాగిన్‌కు తిరిగి వెళ్ళు"
 
 #: 
@@ -6551,10 +6499,6 @@ msgid "Additional Information"
 msgstr "అదనపు సమాచారం"
 
 #: 
-msgid "All information is correct"
-msgstr "అన్ని సమాచారం సరైనది"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "అవకాశాలను కేటాయించండి"
 
@@ -6567,20 +6511,12 @@ msgid "Choose opportunities..."
 msgstr "అవకాశాలను ఎంచుకోండి..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "కుటుంబ సమాచారాన్ని నిర్ధారించండి"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "సంప్రదింపు & వ్యక్తిగత సమాచారం"
 
 #: 
 msgid "Edited"
 msgstr "సవరించబడిన"
-
-#: 
-msgid "Email PDF"
-msgstr "PDFని ఇమెయిల్ చేయండి"
 
 #: 
 msgid "Newsletter"
@@ -6591,40 +6527,12 @@ msgid "Personal"
 msgstr "వ్యక్తిగత"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "దయచేసి దిద్దుబాట్లతో మా రికార్డులను అప్డేట్ చేయండి"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "ఏవైనా దిద్దుబాట్లు లేదా అదనపు సమాచారాన్ని ఇక్కడ అందించండి..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "అవకాశాలను ఎంచుకోండి"
 
 #: 
-msgid "Submit Verification"
-msgstr "ధృవీకరణను సమర్పించండి"
-
-#: 
-msgid "Thank You!"
-msgstr "ధన్యవాదాలు!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "మా వెబ్సైట్ను సందర్శించండి"
-
-#: 
 msgid "Volunteer"
 msgstr "స్వచ్ఛంద సేవ"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "మీ ధృవీకరణను ప్రాసెస్ చేయడంలో మేము లోపాన్ని ఎదుర్కొన్నాము. దయచేసి మళ్ళీ ప్రయత్నించండి లేదా మమ్మల్ని నేరుగా సంప్రదించండి."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "మీ ధృవీకరణ అభ్యర్థన అందింది. మీ సమాచారాన్ని తాజాగా ఉంచినందుకు ధన్యవాదాలు."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8084,10 +7992,6 @@ msgid "City is required."
 msgstr "నగరం అవసరం."
 
 #: 
-msgid "Clear filter"
-msgstr "ఫిల్టర్ క్లియర్ చేయి"
-
-#: 
 msgid "Configuration item not found"
 msgstr "కాన్ఫిగరేషన్ అంశం కనుగొనబడలేదు"
 
@@ -8356,10 +8260,6 @@ msgstr "వ్యక్తిని జోడించండి"
 #: 
 msgid "Add all cart items to a group"
 msgstr "అన్ని జోడించిన అంశాలను సమూహానికి జోడించండి"
-
-#: 
-msgid "Add all to Cart"
-msgstr "అన్నీ జోడించండి"
 
 #: 
 msgid "Add cart items to a family"
@@ -8866,10 +8766,6 @@ msgid "Family Profile"
 msgstr "కుటుంబ ప్రొఫైల్"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "కుటుంబ పాత్రలు (ఇంటి యజమాని, జీవిత భాగస్వామి, పిల్లలు, మొ.) మీ రికార్డులను వ్యవస్థీకరించడంలో సహాయపడతాయి."
-
-#: 
 msgid "Family vs Person"
 msgstr "కుటుంబం vs వ్యక్తి"
 
@@ -9368,10 +9264,6 @@ msgid "Record why attendees visited your church"
 msgstr "హాజరైన వారు మీ చర్చిని ఎందుకు సందర్శించారో రికార్డ్ చేయండి"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "కార్ట్ నుండి అన్నీ తొలగించండి"
-
-#: 
 msgid "Remove from Class"
 msgstr "తరగతి నుండి తొలగించండి"
 
@@ -9842,10 +9734,6 @@ msgstr "ఈ సంవత్సరం ఈవెంట్‌లు"
 #: 
 msgid "Everyone"
 msgstr "అందరూ"
-
-#: 
-msgid "Failed to delete note"
-msgstr "గమనికను తొలగించడం విఫలమైంది"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11745,10 +11633,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "పరిధి ప్రారంభం చెల్లుబాటు అయ్యే YYYY-MM-DD తేదీ అయి ఉండాలి."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "పరిధి ప్రారంభం పరిధి ముగింపు కంటే ముందు ఉండాలి"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "పరిధి ప్రారంభం పరిధి ముగింపు కంటే ముందు ఉండాలి."
 
@@ -11969,10 +11853,6 @@ msgid "Cannot move property in that direction"
 msgstr "ఆ దిశలో ఆస్తిని తరలించలేరు"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "కుటుంబ సమాచారాన్ని నిర్ధారించండి"
-
-#: 
 msgid "Delete failed"
 msgstr "తొలగింపు విఫలమైంది"
 
@@ -12013,20 +11893,12 @@ msgid "Invalid target family"
 msgstr "చెల్లని లక్ష్య కుటుంబం"
 
 #: 
-msgid "Log Out"
-msgstr "లాగ్ అవుట్"
-
-#: 
 msgid "Membership not found"
 msgstr "సభ్యత్వం కనుగొనబడలేదు"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "కోసం పాస్‌వర్డ్ విజయవంతంగా మార్చబడింది"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "దయచేసి క్రింద మీ కుటుంబ సమాచారాన్ని సమీక్షించి నిర్ధారించండి లేదా మార్పులు అభ్యర్థించండి."
 
 #: 
 msgid "Please select a target family."
@@ -12709,10 +12581,6 @@ msgid "Failed to install plugin from URL"
 msgstr "URL నుండి ప్లగిన్ ఇన్‌స్టాల్ చేయడం విఫలమైంది"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "ఆమోదించబడిన ప్లగిన్ జాబితాను లోడ్ చేయడం విఫలమైంది"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "ఆమోదించబడిన ప్లగిన్ జాబితాను లోడ్ చేయడం విఫలమైంది."
 
@@ -12771,10 +12639,6 @@ msgstr "Kebab-case. zip లోపల అగ్రస్థాయి డైరె
 #: 
 msgid "Loading approved plugin list…"
 msgstr "ఆమోదించబడిన ప్లగిన్ జాబితాను లోడ్ చేస్తోంది…"
-
-#: 
-msgid "Loading…"
-msgstr "లోడ్ చేస్తోంది…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13222,10 +13086,6 @@ msgid "Change Your Locale"
 msgstr "మీ లోకేల్‌ను మార్చండి"
 
 #: 
-msgid "Change role"
-msgstr "పాత్రను మార్చండి"
-
-#: 
 msgid "Check Number"
 msgstr "చెక్ నంబర్"
 
@@ -13240,10 +13100,6 @@ msgstr "చెక్-ఇన్ విఫలమైంది. దయచేసి �
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "చెక్-అవుట్ విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
-
-#: 
-msgid "City is required"
-msgstr "నగరం అవసరం"
 
 #: 
 msgid "Click Save to apply."
@@ -13312,10 +13168,6 @@ msgstr "సమస్త సంఖ్యలను కాపీ చేయండి
 #: 
 msgid "Copy Members to Group"
 msgstr "సభ్యులను సమూహానికి కాపీ చేయండి"
-
-#: 
-msgid "Creating Backup..."
-msgstr "బ్యాకప్ సృష్టిస్తున్నారు..."
 
 #: 
 msgid "Creating..."
@@ -13500,10 +13352,6 @@ msgstr "కార్ట్‌కు జోడించడంలో విఫల�
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "నమోదు రద్దు విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "URLను కాపీ చేయడంలో విఫలమైంది"
 
 #: 
 msgid "Failed to create backup."
@@ -13894,10 +13742,6 @@ msgid "One-Time Code"
 msgstr "ఒకసారి ఉపయోగించే కోడ్"
 
 #: 
-msgid "Open in New Tab"
-msgstr "కొత్త ట్యాబ్లో తెరవండి"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "మీ ప్రామాణీకరణ యాప్‌ను తెరిచి, ఈ QR కోడ్‌ను స్కాన్ చేయండి"
 
@@ -14174,10 +14018,6 @@ msgid "Setup Complete"
 msgstr "సెటప్ పూర్తయింది"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "వారి సమాచారాన్ని ధృవీకరించడానికి మీ కుటుంబ సభ్యులతో ఈ URLను భాగస్వామ్యం చేయండి"
-
-#: 
 msgid "Show more options"
 msgstr "మరిన్ని ఎంపికలను చూపించండి"
 
@@ -14330,10 +14170,6 @@ msgid "Validation pending"
 msgstr "ధ్రువీకరణ పెండింగ్‌లో ఉంది"
 
 #: 
-msgid "Verification URL"
-msgstr "ధృవీకరణ URL"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "ధృవీకరణ విఫలమైంది. దయచేసి మళ్ళీ ప్రయత్నించండి."
 
@@ -14398,10 +14234,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "మీరు మీ యాప్‌కు యాక్సెస్ కోల్పోతే ఉపయోగించగల బ్యాకప్ కోడ్‌లను అందుకుంటారు"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "మీ కార్ట్ ఖాళీగా ఉంది"
-
-#: 
 msgid "Your account is now protected"
 msgstr "మీ ఖాతా ఇప్పుడు రక్షించబడింది"
 
@@ -14420,10 +14252,6 @@ msgstr "మీ బ్రౌజర్ భాషా ప్రాధాన్యత
 #: 
 msgid "Your database already contains data"
 msgstr "మీ డేటాబేస్ ఇప్పటికే డేటాను కలిగి ఉంది"
-
-#: 
-msgid "Zip code is required"
-msgstr "జిప్ కోడ్ అవసరం"
 
 #: 
 msgid "added"
@@ -14844,10 +14672,6 @@ msgstr "ఈ కుటుంబానికి గమనిక జోడించ
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "ఈ వ్యక్తికి గమనిక జోడించడానికి మీకు అనుమతి లేదు."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "ఈ గమనికను సవరించడానికి మీకు అనుమతి లేదు"
 
 #: 
 msgid "Account locked"
@@ -15670,10 +15494,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "దయచేసి ఈ కుటుంబ రికార్డును తొలగించడానికి నిర్ధారించండి"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "దయచేసి మీ కుటుంబ సమాచారాన్ని నిర్ధారించండి"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "దయచేసి ఈ విరాళాలను అనుసంధానించడానికి మరొక కుటుంబాన్ని ఎంచుకొండి"
 
@@ -15894,10 +15714,6 @@ msgid "Select a person"
 msgstr "ఒక వ్యక్తిని ఎంచుకొండి"
 
 #: 
-msgid "Select role"
-msgstr "పాత్రను ఎంచుకొండి"
-
-#: 
 msgid "Select type (optional)"
 msgstr "రకాన్ని ఎంచుకొండి (ఐచ్ఛికం)"
 
@@ -16054,10 +15870,6 @@ msgid "At least one fund allocation is required"
 msgstr "కనీసం ఒక నిధి కేటాయింపు అవసరం"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "కనీసం ఒక నిధికి శూన్యేతర మొత్తం ఉండాలి"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "వ్యక్తుల పుట్టినరోజున వారికి స్వయంచాలకంగా శుభాకాంక్షల ఇమెయిల్ పంపండి"
 
@@ -16134,18 +15946,6 @@ msgid "Editing a Pledge"
 msgstr "ప్రతిజ్ఞను సవరిస్తున్నారు"
 
 #: 
-msgid "Enable (full)"
-msgstr "ప్రారంభించు (పూర్తి)"
-
-#: 
-msgid "Errors only"
-msgstr "లోపాలు మాత్రమే"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "లోపాలు — సర్వర్ లోపాలు మరియు JS మినహాయింపులు"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "ప్రతిజ్ఞను సృష్టించడం విఫలమైంది"
 
@@ -16184,10 +15984,6 @@ msgstr "గుంపు కీ అవసరం"
 #: 
 msgid "Happy Birthday"
 msgstr "పుట్టినరోజు శుభాకాంక్షలు"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ChurchCRM మెరుగుపరచడంలో సహాయపడండి"
 
 #: 
 msgid "IP addresses"
@@ -16258,16 +16054,8 @@ msgid "None (disabled)"
 msgstr "ఏదీ లేదు (నిష్క్రియం)"
 
 #: 
-msgid "OS family"
-msgstr "OS కుటుంబం"
-
-#: 
 msgid "Overpaid"
 msgstr "అదనంగా చెల్లించబడింది"
-
-#: 
-msgid "PHP version"
-msgstr "PHP వెర్షన్"
 
 #: 
 msgid "Page route"
@@ -16304,10 +16092,6 @@ msgstr "ప్రతిజ్ఞ గుంపు కనుగొనబడలే�
 #: 
 msgid "Pledges & Payments"
 msgstr "ప్రతిజ్ఞలు & చెల్లింపులు"
-
-#: 
-msgid "Prioritise translations"
-msgstr "అనువాదాలకు ప్రాధాన్యత ఇవ్వండి"
 
 #: 
 msgid "Purpose"
@@ -16372,10 +16156,6 @@ msgstr "వినియోగదారు పేర్లు, ఇమెయిల
 #: 
 msgid "View pledge or payment details"
 msgstr "ప్రతిజ్ఞ లేదా చెల్లింపు వివరాలను చూడండి"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "హెచ్చరికలు — హెచ్చరికలు, లోపాలు మరియు JS మినహాయింపులు"
 
 #: 
 msgid "What is sent"
@@ -16570,12 +16350,6 @@ msgstr "ఎంచుకున్న డిపాజిట్‌లకు చె�
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "చెల్లుబాటు అయ్యే డిపాజిట్ IDలు ఏవీ అందించబడలేదు"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "%d కుటుంబానికి PDF విజయవంతంగా ఇమెయిల్ చేయబడింది."
-msgstr[1] "%d కుటుంబాలకు PDF విజయవంతంగా ఇమెయిల్ చేయబడింది."
 
 #: 
 msgid "Partial Send"
@@ -17116,10 +16890,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "బ్యాకప్‌ను సృష్టిస్తూ, అప్‌లోడ్ చేస్తోంది. దీనికి కొన్ని నిమిషాలు పట్టవచ్చు..."
 
 #: 
-msgid "Database reset failed."
-msgstr "డేటాబేస్ రీసెట్ విఫలమైంది."
-
-#: 
 msgid "Deceased"
 msgstr "మరణించారు"
 
@@ -17316,10 +17086,6 @@ msgid "Log settings saved"
 msgstr "లాగ్ సెట్టింగ్‌లు సేవ్ చేయబడ్డాయి"
 
 #: 
-msgid "Login Name is Required"
-msgstr "లాగిన్ పేరు అవసరం"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "వ్యక్తిని యాక్టివ్‌గా గుర్తించారు"
 
@@ -17444,10 +17210,6 @@ msgid "Sending..."
 msgstr "పంపుతోంది..."
 
 #: 
-msgid "Sending…"
-msgstr "పంపుతోంది…"
-
-#: 
 msgid "Settings reset"
 msgstr "సెట్టింగ్‌లు రీసెట్ చేయబడ్డాయి"
 
@@ -17516,16 +17278,8 @@ msgid "Upcoming"
 msgstr "రాబోయే"
 
 #: 
-msgid "Valid Until"
-msgstr "వరకు చెల్లుబాటు అవుతుంది"
-
-#: 
 msgid "View active only"
 msgstr "యాక్టివ్ మాత్రమే చూడండి"
-
-#: 
-msgid "View all"
-msgstr "అన్నీ చూడండి"
 
 #: 
 msgid "View all (including inactive)"
@@ -18304,10 +18058,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "మీ ఆర్థిక సంవత్సరం %s లో ప్రారంభమవుతుంది."
 
 #: 
-msgid "An error occurred"
-msgstr "ఒక లోపం సంభవించింది"
-
-#: 
 msgid "Approve"
 msgstr "ఆమోదించండి"
 
@@ -18478,12 +18228,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d రోజు"
 msgstr[1] "%d రోజులు"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d డిఫాల్ట్ మరొక కారణంతో దాటవేయబడింది (సందర్భం ముగిసింది, రద్దయింది లేదా నిండింది)"
-msgstr[1] "%d డిఫాల్ట్‌లు మరొక కారణంతో దాటవేయబడ్డాయి (సందర్భం ముగిసింది, రద్దయింది లేదా నిండింది)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18746,10 +18490,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "థీమ్ అంటే మీ చర్చి సర్వర్‌లోని Include/themes/ కు అప్‌లోడ్ చేసే ఫోల్డర్. సిస్టమ్ డిఫాల్ట్ ChurchCRM తో వస్తుంది."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "ఒక పరివర్తన సెట్టింగ్. పాత స్వచ్ఛంద అవకాశాల పేజీలు మరియు కొత్త పరిచర్యల పేజీలు రెండూ అందుబాటులో ఉంటాయి, మరియు వ్యక్తి రికార్డు రెండు స్వచ్ఛంద సేవ ట్యాబ్‌లను స్పష్టంగా లేబుల్ చేసి చూపుతుంది. చర్చిని V1 నుండి V2 కు మార్చేటప్పుడు దీన్ని ఉపయోగించండి, ఆ తరువాత V2 కు మాత్రమే మారండి."
-
-#: 
 msgid "A volunteer"
 msgstr "ఒక స్వచ్ఛంద సేవకుడు"
 
@@ -18954,10 +18694,6 @@ msgid "Assigned outside the current plan"
 msgstr "ప్రస్తుత ప్రణాళికకు వెలుపల నియమించబడింది"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "నియామకం రద్దు చేయబడింది"
-
-#: 
 msgid "Assignment not found"
 msgstr "నియామకం కనుగొనబడలేదు"
 
@@ -19064,10 +18800,6 @@ msgstr "నియామకాన్ని రద్దు చేయండి"
 #: 
 msgid "Cancel this assignment"
 msgstr "ఈ నియామకాన్ని రద్దు చేయండి"
-
-#: 
-msgid "Cancelled"
-msgstr "రద్దు చేయబడింది"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19224,10 +18956,6 @@ msgstr "చర్చి వెబ్‌సైట్"
 #: 
 msgid "Close event details"
 msgstr "కార్యక్రమ వివరాలను మూసివేయండి"
-
-#: 
-msgid "Colour"
-msgstr "రంగు"
 
 #: 
 msgid "Completed"
@@ -19474,10 +19202,6 @@ msgid "Each staffing need must name a position"
 msgstr "ప్రతి సిబ్బంది అవసరం ఒక స్థానాన్ని పేర్కొనాలి"
 
 #: 
-msgid "Edit event"
-msgstr "ఈవెంట్‌ను సవరించండి"
-
-#: 
 msgid "Edit ministry"
 msgstr "పరిచర్యను సవరించండి"
 
@@ -19562,10 +19286,6 @@ msgstr "{{count}} గ్రహీతలకు ఇమెయిల్ పంపబ
 #: 
 msgid "Emails"
 msgstr "ఇమెయిల్‌లు"
-
-#: 
-msgid "End time"
-msgstr "ముగింపు సమయం"
 
 #: 
 msgid "Enter counts"
@@ -20846,10 +20566,6 @@ msgid "SMTP test"
 msgstr "SMTP పరీక్ష"
 
 #: 
-msgid "Save changes"
-msgstr "మార్పులను సేవ్ చేయండి"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "సేవ్ చేయబడింది — ఈ పరిచర్య ఇక సహాయం అడగడం లేదు"
 
@@ -21132,10 +20848,6 @@ msgstr "సిబ్బంది అవసరాలు సేవ్ చేయబ
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "ముందు ఒక పరిచర్యను సృష్టించండి, ఆ తరువాత దానిలో సేవ చేసే బృందాలను మరియు స్థానాలను జోడించండి."
-
-#: 
-msgid "Start time"
-msgstr "ప్రారంభ సమయం"
 
 #: 
 msgid "Start typing a name"
@@ -21484,10 +21196,6 @@ msgstr "చిరునామా ఎంచుకోబడింది — మీ
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "అసెట్ మార్గం \"%s\" అనుమతించబడదు."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "నియామకాన్ని రద్దు చేయలేకపోయింది"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22014,10 +21722,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "ఈ సందర్భం ఇప్పటికే జరిగింది మరియు దాని నియామకాలను ఇక మార్చలేరు"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "ఈ సందర్భం రద్దు చేయబడింది"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "ఈ సందర్భానికి దాని షెడ్యూల్ నుండి వేరుగా సొంత సిబ్బంది అవసరాలు ఉన్నాయి."
 
@@ -22186,16 +21890,8 @@ msgid "Validation"
 msgstr "ధృవీకరణ"
 
 #: 
-msgid "View event"
-msgstr "కార్యక్రమం చూడు"
-
-#: 
 msgid "View my schedule"
 msgstr "నా షెడ్యూల్‌ను చూడండి"
-
-#: 
-msgid "View person"
-msgstr "వ్యక్తిని చూడండి"
 
 #: 
 msgid "View the event"
@@ -22244,10 +21940,6 @@ msgstr "స్వచ్ఛంద సేవా సమయాలు"
 #: 
 msgid "Volunteering"
 msgstr "స్వచ్ఛంద సేవ"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "చర్చి నడిచే విధానంలో ఏర్పాటు చేసిన స్వచ్ఛంద సేవ. ప్రతి పరిచర్యకు బృందాలు మరియు స్థానాలు ఉంటాయి; ప్రజలు స్థానాలకు అర్హులవుతారు మరియు పరిచర్య యొక్క సమూహానికి చెందుతారు; షెడ్యూల్‌లు క్యాలెండర్‌లోని కార్యక్రమాలను అనుసరించి, సిబ్బంది అవసరాలతో తేదీలతో కూడిన సందర్భాలను తయారు చేస్తాయి; సమన్వయకర్తలు వ్యక్తులను నియమిస్తారు, వారు అంగీకరిస్తారు, తిరస్కరిస్తారు లేదా ప్రత్యామ్నాయాన్ని ప్రతిపాదిస్తారు; రిమైండర్‌లు మరియు హెచ్చరికలు ఇమెయిల్ ద్వారా వెళ్తాయి. నిర్వాహకులు మరియు పరిచర్యలను నిర్వహించే అనుమతి ఉన్న వినియోగదారులు ప్రతి పరిచర్యను చూసి, వాటిని సృష్టించవచ్చు, నిష్క్రియం చేయవచ్చు మరియు తొలగించవచ్చు. పరిచర్య సమన్వయకర్తకు బదులుగా నా పరిచర్యలను నిర్వహించే అనుమతి ఇవ్వబడుతుంది: అప్పుడు సైడ్‌బార్‌లోని పరిచర్యలు శీర్షిక వారు సమన్వయం చేసే పరిచర్యలను మాత్రమే చూపుతుంది. బృంద నాయకుడు సభ్య పోర్టల్ నుండి తన బృందాన్ని నడుపుతారు. సభ్యులు తమ షెడ్యూల్‌ను చూడటానికి, స్పందించడానికి, నమోదు చేసుకోవడానికి మరియు సహాయం అందించడానికి సభ్య పోర్టల్‌ను ఉపయోగిస్తారు."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22786,10 +22478,6 @@ msgid "Cancel this occurrence"
 msgstr "ఈ సందర్భాన్ని రద్దు చేయి"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "రద్దు చేయడం ఎవరికీ తెలియజేయదు: ఇమెయిల్ పంపబడదు. నియామకాలు అలాగే ఉంటాయి, రద్దయి ఉన్నప్పుడు రిమైండర్లు షెడ్యూల్ కావు, పునరుద్ధరించే వరకు ఎవరినీ నియమించలేరు."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "తొలగించిన కార్యక్రమాలు వాటి చెక్-ఇన్‌లు మరియు హాజరు లెక్కలతో సహా అన్ని క్యాలెండర్ల నుండి తొలగిపోతాయి, వాటికి ఈ పరిచర్య నియామకం తేదీని మాత్రమే ఉంచుకుంటుంది. దీన్ని రద్దు చేయలేరు."
 
@@ -22800,10 +22488,6 @@ msgstr "తొలగించిన కార్యక్రమాలు: {{tota
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "తొలగించవలసిన కార్యక్రమాలు: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "సందర్భం రద్దు చేయబడింది"
 
 #: 
 msgid "Occurrence restored"
@@ -22820,10 +22504,6 @@ msgstr "సందర్భాన్ని పునరుద్ధరించ�
 #: 
 msgid "Restore this occurrence"
 msgstr "ఈ సందర్భాన్ని పునరుద్ధరించు"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "సందర్భాన్ని రద్దు చేయలేకపోయాము"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -22904,12 +22584,6 @@ msgstr "కార్యక్రమం సమయంలో కియోస్క�
 #: 
 msgid "Registering..."
 msgstr "నమోదు చేస్తోంది..."
-
-#: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "డిపాజిట్ ఎంట్రీలలో చెక్ చెల్లింపులను నమోదు చేసేటప్పుడు చెక్ నంబర్ తప్పనిసరి చేయండి.\n"
-"గమనిక: దీన్ని నిలిపివేస్తే నకిలీ చెక్ నంబర్ గుర్తింపు కూడా నిలిచిపోతుంది — అదే చెక్ ఒకటి కంటే ఎక్కువసార్లు నమోదు కావచ్చు."
 
 #: 
 msgid "This event has ended"
@@ -24830,28 +24504,12 @@ msgid "Closing Line"
 msgstr "ముగింపు వాక్యం"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "ఐచ్ఛిక టెలిమెట్రీని నియంత్రిస్తుంది. టెలిమెట్రీ ఆఫ్‌లో ఉన్నా సంస్థాపన మరియు డేటాబేస్ నవీకరణ వైఫల్యాలు PostHog కు పరిమిత నిర్ధారణలను పంపుతాయి. ఈ వైఫల్య నివేదికలలో సాఫ్ట్‌వేర్ మరియు వాతావరణ సంస్కరణలు మరియు శుభ్రం చేసిన డేటాబేస్ లోపం ఉంటాయి, కానీ సంస్థాపన ID లేదా SQL ప్రకటన ఉండదు."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "విఫలమైన సంస్థాపనలు మరియు డేటాబేస్ నవీకరణలను నిర్ధారించండి"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "సంస్థాపన మరియు నవీకరణ వైఫల్య వివరాలు"
-
-#: 
 msgid "Open in browser window"
 msgstr "బ్రౌజర్ విండోలో తెరవండి"
 
 #: 
 msgid "Opening Line"
 msgstr "ప్రారంభ వాక్యం"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "ఐచ్ఛిక వినియోగ టెలిమెట్రీ ప్రారంభించినప్పుడు మాత్రమే పంపబడుతుంది. మీరు వద్దు, ధన్యవాదాలు ఎంచుకున్నా సంస్థాపన మరియు డేటాబేస్ నవీకరణ వైఫల్యాలు సముదాయానికి సహాయం చేయడానికి ఎల్లప్పుడూ పరిమిత నిర్ధారణను పంపుతాయి. వైఫల్య నివేదికలలో సాఫ్ట్‌వేర్ మరియు వాతావరణ సంస్కరణలు మరియు శుభ్రం చేసిన డేటాబేస్ లోపం ఉంటాయి, సంస్థాపన ID లేదా SQL ప్రకటన లేకుండా."
 
 #: 
 msgid "PDF Handling"
@@ -24888,18 +24546,6 @@ msgstr "ప్రకటన పదాలు"
 #: 
 msgid "Tax Information"
 msgstr "పన్ను సమాచారం"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "టెలిమెట్రీ యునైటెడ్ స్టేట్స్‌లోని PostHog కు పంపబడుతుంది. ఐచ్ఛిక టెలిమెట్రీ నిలిపివేయబడినా సంస్థాపన మరియు నవీకరణ వైఫల్య నివేదికలు పంపబడతాయి."
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "ఈ తేదీ రద్దు చేయబడింది. మీ నుండి ఇంకేమీ అవసరం లేదు."
-
-#: 
-msgid "always sent"
-msgstr "ఎల్లప్పుడూ పంపబడుతుంది"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25364,10 +25010,6 @@ msgstr "ఇమెయిల్‌కు శ్రద్ధ అవసరం"
 #: 
 msgid "Email problem"
 msgstr "ఇమెయిల్ సమస్య"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "ఇమెయిల్ చేసిన సైన్-ఇన్ కోడ్ మరియు లింక్ రద్దు చేయబడ్డాయి"
 
 #: 
 msgid "Emailed verification link"
@@ -25960,10 +25602,6 @@ msgstr "సొంత ఇమెయిల్ ఉన్న సజీవులు �
 #: 
 msgid "Only people with their own email can be added."
 msgstr "సొంత ఇమెయిల్ ఉన్న వ్యక్తులను మాత్రమే జోడించవచ్చు."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "ఐచ్ఛిక టెలిమెట్రీలో పేజీ మార్గాలు, క్రియాశీల లొకేల్, CRM సంస్కరణ, PHP సంస్కరణ, OS కుటుంబం, మీ చర్చి సమాచార సెట్టింగ్‌ల నుండి దేశం మరియు యాదృచ్ఛిక సంస్థాపన ID ఉండవచ్చు. వైఫల్య నివేదికలలో సంస్థాపన ID ఉండదు. డేటా యునైటెడ్ స్టేట్స్‌లోని PostHog కు పంపబడుతుంది."
 
 #: 
 msgid "Passkey"
@@ -27134,10 +26772,584 @@ msgid "A request was made in the Member Portal to change your email address at %
 msgstr "సభ్యుల పోర్టల్‌లో %1$s లో మీ ఈమెయిల్ చిరునామాను %2$s నుండి %3$s కు మార్చాలని అభ్యర్థన వచ్చింది. కొత్త చిరునామాకు పంపిన లింక్ వాడితేనే మార్పు జరుగుతుంది."
 
 #: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "మీ కుటుంబ సమాచారాన్ని సమీక్షించడానికి కింది లింక్ వాడండి. సమీక్ష పేజీలో అంతా సరైనదని నిర్ధారించడానికి «కుటుంబ సమాచారాన్ని నిర్ధారించండి» ఎంచుకోండి, లేదా సవరణలను చర్చి కార్యాలయానికి పంపండి."
-
-#: 
 msgid "Review Family Information"
 msgstr "కుటుంబ సమాచారాన్ని సమీక్షించండి"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "\"%s\" అనే పరిచర్య ఇప్పటికే ఉంది. జాబితా నుండి దాన్ని ఎంచుకోండి, లేదా మరొక పేరు ఎంచుకోండి."
+
+#: 
+msgid "A new ministry"
+msgstr "కొత్త పరిచర్య"
+
+#: 
+msgid "A position"
+msgstr "ఒక స్థానం"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "ఇంతకు ముందు మార్చిన స్థానాలకు {{total}} మంది వాలంటీర్లను జోడించాలా?"
+
+#: 
+msgid "Already converted"
+msgstr "ఇప్పటికే మార్చబడింది"
+
+#: 
+msgid "An existing ministry"
+msgstr "ఇప్పటికే ఉన్న పరిచర్య"
+
+#: 
+msgid "Becomes"
+msgstr "ఇలా మారుతుంది"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRMలో వాలంటీర్లను నిర్వహించడానికి రెండు మార్గాలు ఉన్నాయి. ఒకేసారి ఒకటి మాత్రమే వాడుకలో ఉండాలి; ఈ సంఘం ఏది చూస్తుందో \"వాలంటీర్ అనుభవం\" సెట్టింగ్ నిర్ణయిస్తుంది. మార్చడం వల్ల పేజీలు, మెను అంశాలు దాచబడతాయి లేదా చూపబడతాయి; డేటా ఎప్పుడూ తొలగించబడదు. వాలంటీర్ అవకాశాలు వాడుకలో ఉన్నంత వరకు మాత్రమే V1, రెండూ అందుబాటులో ఉంటాయి: ప్రతి అవకాశం మార్చబడి సంఘం V2లో ఉన్నప్పుడు, అవి ఈ జాబితా నుండి తొలగిపోతాయి."
+
+#: 
+msgid "Convert"
+msgstr "మార్చు"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "వాలంటీర్ అవకాశాలను మార్చు"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "ఇప్పుడు {{total}} అవకాశాలను మార్చాలా? వాలంటీర్ అవకాశాలు నిలిపివేయబడే వరకు V1 డేటా అలాగే ఉంచబడుతుంది."
+
+#: 
+msgid "Converted"
+msgstr "మార్చబడింది"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "మార్చబడింది: {{positions}} స్థానాలు, {{ministries}} పరిచర్యలు, {{qualifications}} మంది వాలంటీర్లు అర్హత పొందారు."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "ప్రతి అవకాశం ఒక పరిచర్యలోని మొదటి బృందంలో ఒక స్థానంగా మారుతుంది, దానికి లింక్ అయిన ప్రతి ఒక్కరూ ఆ స్థానానికి అర్హత పొందుతారు. ఈ స్థానాలపై స్వయంగా నమోదు మొదట ఆఫ్‌లో ఉంటుంది."
+
+#: 
+msgid "Everything is converted."
+msgstr "అన్నీ మార్చబడ్డాయి."
+
+#: 
+msgid "Existing ministry"
+msgstr "ఇప్పటికే ఉన్న పరిచర్య"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "కొత్త పరిచర్యకు గరిష్టంగా 100 అక్షరాల పేరు ఇవ్వండి."
+
+#: 
+msgid "Its own ministry"
+msgstr "దాని సొంత పరిచర్య"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "అప్పటి నుండి లింక్ అయినవారు: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "మార్చలేని లింక్‌లు"
+
+#: 
+msgid "New ministries of their own"
+msgstr "వాటి సొంత కొత్త పరిచర్యలు"
+
+#: 
+msgid "New ministry name"
+msgstr "కొత్త పరిచర్య పేరు"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "ఏ ఇమెయిల్ పంపబడదు, వాలంటీర్ అవకాశాలు నిలిపివేయబడే వరకు అలాగే ఉంటాయి."
+
+#: 
+msgid "No name"
+msgstr "పేరు లేదు"
+
+#: 
+msgid "Not converted"
+msgstr "మార్చబడలేదు"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "ఫీచర్ టోగిల్‌లను తెరువు"
+
+#: 
+msgid "Open Ministries"
+msgstr "పరిచర్యలను తెరువు"
+
+#: 
+msgid "Opportunities"
+msgstr "అవకాశాలు"
+
+#: 
+msgid "Opportunity"
+msgstr "అవకాశం"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "అవకాశం #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "మార్పిడి తర్వాత మార్చబడిన వాలంటీర్ అవకాశాలకు లింక్ అయిన వ్యక్తులు: %d. 2027 ప్రారంభంలో వాలంటీర్ అవకాశాలు నిలిపివేయబడే ముందు వారిని వారి స్థానాలకు జోడించండి."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "ముందుగా మార్పిడిని ముందుచూపు చూసి, అది తిరిగి ఇచ్చిన సవరణను పంపండి."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "పేర్లు ప్రత్యేకంగా ఉండేందుకు పేరు మార్చబడింది"
+
+#: 
+msgid "Review the conversion"
+msgstr "మార్పిడిని సమీక్షించు"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "మార్పిడి ఎంపికను JSON ఆబ్జెక్ట్‌గా పంపండి."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "పరిచర్యలుగా మారే అవకాశాలను ID జాబితాగా పంపండి."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "ఆ పరిచర్య లేదు."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "వాలంటీర్ అవకాశాల నిలిపివేత నోటీసును నిర్వాహకుడు తీసివేసిన ChurchCRM వెర్షన్."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "ముందుచూపు తర్వాత వాలంటీర్ అవకాశాలు మారాయి. ముందుచూపును మళ్ళీ తనిఖీ చేసి, ఆపై మార్చండి."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "నిర్ధారణను తెరవడం సాధ్యపడలేదు. పేజీని మళ్ళీ లోడ్ చేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "మార్పిడిని ముందుచూపు చూపడం సాధ్యపడలేదు."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "మార్పిడి విఫలమైంది. ఏదీ మార్చబడలేదు."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "\"%s\" పరిచర్యలో స్థానాలను ఉంచడానికి బృందం లేదు."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "సర్వర్‌ను చేరుకోలేకపోయాము. మార్పిడి జరిగిందో లేదో చూడటానికి పేజీని మళ్ళీ లోడ్ చేయండి."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "మార్చడానికి వాలంటీర్ అవకాశాలు ఏవీ లేవు."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "కొత్త పరిచర్యలు వాలంటీర్ అవకాశాల పక్కనే కనిపించేలా, స్వచ్ఛంద సేవక నిర్వహణ రెండూకి మారుతుంది."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "వాలంటీర్ అవకాశాలు నిలిపివేయబడుతున్నాయి"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "వాలంటీర్ అవకాశాలు మార్చబడ్డాయి"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "వాలంటీర్ అవకాశాలు 2027 ప్రారంభంలో నిలిపివేయబడతాయి. ఎవరు దేనిలో సేవ చేస్తున్నారో నిలుపుకోవడానికి వాటిని పరిచర్యలుగా మార్చండి."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "వాలంటీర్ అవకాశాలు 2027 ప్రారంభంలో నిలిపివేయబడతాయి. మీ %1$d అవకాశాలను, %2$d మంది వాలంటీర్లను ఇప్పుడే పరిచర్యలుగా మార్చండి. ఏదైనా మారే ముందు ఫలితాన్ని ముందుచూపు చూడవచ్చు."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "అర్హత పొందిన వాలంటీర్లు"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "మార్చిన స్థానాలకు జోడించాల్సిన వాలంటీర్లు"
+
+#: 
+msgid "What it becomes"
+msgstr "ఇది ఏమవుతుంది"
+
+#: 
+msgid "What will happen"
+msgstr "ఏమి జరుగుతుంది"
+
+#: 
+msgid "Where they go"
+msgstr "వారు ఎక్కడికి వెళ్తారు"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "ఏ పాత వాలంటీర్ అవకాశాలు మార్చబడ్డాయి, ప్రతి ఒక్కటి ఏ స్థానంగా మారింది."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "ఈ సంఘం ఉపయోగించే వాలంటీర్ అనుభవం. వాలంటీర్ అవకాశాలు (V1) 2027 ప్రారంభంలో నిలిపివేయబడతాయి."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "మీ వాలంటీర్ అవకాశాలు పరిచర్యలుగా మార్చబడ్డాయి. 2027 ప్రారంభంలో వాలంటీర్ అవకాశాలు నిలిపివేయబడే ముందు స్వచ్ఛంద సేవక నిర్వహణను V2కి మార్చండి."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "కొత్త పరిచర్యలోకి, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "{{name}} పరిచర్యలోకి"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "ఇకపై ChurchCRMలో లేదు"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "సైడ్‌బార్‌ను కుదించు"
+
+#: 
+msgid "Expand sidebar"
+msgstr "సైడ్‌బార్‌ను విస్తరించు"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "@ ముందు ASCII అక్షరాలు మాత్రమే ఉన్న చెల్లుబాటు అయ్యే ఇమెయిల్ చిరునామాను నమోదు చేయండి."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "వారి ఇమెయిల్ చిరునామా చెల్లదు"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "మీరు నిజంగా {{name}}ని తొలగించాలనుకుంటున్నారా?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "సిస్టమ్ సమాచారాన్ని సేకరించలేకపోయాము. దయచేసి మళ్ళీ ప్రయత్నించండి."
+
+#: 
+msgid "No payments found for this period."
+msgstr "ఈ కాలానికి చెల్లింపులు ఏవీ కనుగొనబడలేదు."
+
+#: 
+msgid "Payments by Fund"
+msgstr "నిధి వారీగా చెల్లింపులు"
+
+#: 
+msgid "Unknown Fund"
+msgstr "తెలియని నిధి"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "డేటాబేస్‌ను మద్దతు ఉన్న వెర్షన్‌కు మార్చమని మీ హోస్ట్‌ను అడగండి, ఆపై మళ్లీ ప్రయత్నించండి."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "డేటాబేస్‌ను మద్దతు ఉన్న వెర్షన్‌కు మార్చమని మీ హోస్ట్‌ను అడగండి."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "సెలవు దినాల పేర్లు ప్రతి వినియోగదారుని భాషా సెట్టింగ్‌ను అనుసరిస్తాయి. ఒక సెలవు దినానికి ఆ భాషలో పేరు లేకపోతే, అది ఆంగ్లంలో చూపబడుతుంది."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "మీ భాషలో సెలవు దినాల పేర్లు"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "డిపాజిట్ ఎంట్రీలలో చెక్ చెల్లింపులను నమోదు చేసేటప్పుడు చెక్ నంబర్ తప్పనిసరి చేయండి. ఆఫ్‌లో ఉన్నప్పుడు, ఖాళీ లేదా 0 చెక్ నంబర్‌తో చెక్‌ను సేవ్ చేయవచ్చు, వాటిని నకిలీల కోసం తనిఖీ చేయరు."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "చెక్ చెల్లింపులకు చెక్ నంబర్ తప్పనిసరి"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "అప్‌గ్రేడ్ ప్రారంభం కాలేదు, కాబట్టి ఏదీ మారలేదు."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "ఈ అప్‌గ్రేడ్ మీ డేటాబేస్‌లో రన్ కాదు."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "మీ డేటాబేస్ సర్వర్ (%1$s %2$s) ChurchCRM మద్దతు ఇచ్చే దానికంటే పాతది (MySQL %3$s లేదా MariaDB %4$s మరియు తరువాతివి)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "ధృవీకరణ ఇమెయిల్ పంపే ముందు స్వయంగా నమోదు చేసుకున్న ఈ కుటుంబాన్ని ఆమోదించండి"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "రెండు ఆర్థిక సంవత్సరాలకు కుటుంబాల మొత్తం ప్రతిజ్ఞలను పోల్చండి."
+
+#: 
+msgid "Email Portal Link"
+msgstr "పోర్టల్ లింక్‌ను ఇమెయిల్ చేయండి"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "కుటుంబం తమ సమాచారాన్ని సమీక్షించి నవీకరించుకోగల సభ్య పోర్టల్ లింక్‌ను వారికి ఇమెయిల్ చేయండి, లేదా మీరు వ్యక్తిగతంగా ధృవీకరించారని నమోదు చేయండి."
+
+#: 
+msgid "Family is inactive"
+msgstr "కుటుంబం నిష్క్రియంగా ఉంది"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "మొదటి ఆర్థిక సంవత్సరం"
+
+#: 
+msgid "Fiscal Years"
+msgstr "ఆర్థిక సంవత్సరాలు"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "దాన ప్రకటన — నమూనా మాత్రమే"
+
+#: 
+msgid "Last invited"
+msgstr "చివరిగా ఆహ్వానించినది"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "చివరి పోర్టల్ సైన్-ఇన్"
+
+#: 
+msgid "Last verified"
+msgstr "చివరిగా ధృవీకరించినది"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "ఈ కుటుంబంలోని క్రియాశీల, ఆమోదిత సభ్యులెవరికీ ఇమెయిల్ చిరునామా లేదు. బదులుగా వ్యక్తిగతంగా ధృవీకరించండి."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "ఈ ఆర్థిక సంవత్సరాలకు ప్రతిజ్ఞలు ఏవీ కనుగొనబడలేదు."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "ప్రతిజ్ఞల పోలిక"
+
+#: 
+msgid "Preview PDF"
+msgstr "PDF ముందుచూపు"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "రెండవ ఆర్థిక సంవత్సరం"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "మీ కుటుంబ సమాచారాన్ని సమీక్షించడానికి ఈ ఇమెయిల్ చిరునామాతో సభ్య పోర్టల్‌కు సైన్ ఇన్ చేయండి. నా కుటుంబం పేజీలో అంతా సరిగ్గా ఉందని నిర్ధారించండి, లేదా మీ వివరాలను నవీకరించండి."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "ఈ కుటుంబం నిష్క్రియంగా ఉంది, కాబట్టి దీనికి ధృవీకరణ ఇమెయిల్‌లు పంపబడవు."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "స్వయంగా నమోదు చేసుకున్న ఈ కుటుంబం ఆమోదం కోసం వేచి ఉంది. ఆమోదించినప్పుడు, సభ్య పోర్టల్‌కు సైన్ ఇన్ చేసి సమాచారాన్ని సమీక్షించమని కుటుంబానికి ఆహ్వానం ఇమెయిల్ చేయబడుతుంది."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "సేవ్ చేసిన సెట్టింగ్‌లు మరియు కల్పిత నమూనా దానాలను మాత్రమే ఉపయోగిస్తుంది."
+
+#: 
+msgid "Verification"
+msgstr "ధృవీకరణ"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "%d కుటుంబానికి ధృవీకరణ ఇమెయిల్ పంపబడింది."
+msgstr[1] "%d కుటుంబాలకు ధృవీకరణ ఇమెయిల్ పంపబడింది."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "కుటుంబ సభ్యులకు ధృవీకరణ ఇమెయిల్ పంపబడింది."
+
+#: 
+msgid "by the family in the portal"
+msgstr "పోర్టల్‌లో కుటుంబం ద్వారా"
+
+#: 
+msgid "in person by staff"
+msgstr "సిబ్బంది ద్వారా వ్యక్తిగతంగా"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d డిఫాల్ట్ మరొక కారణంతో దాటవేయబడింది (సందర్భం ముగిసింది, రద్దయింది లేదా నిండింది)"
+msgstr[1] "%d డిఫాల్ట్‌లు మరొక కారణంతో దాటవేయబడ్డాయి (సందర్భం ముగిసింది, రద్దయింది లేదా నిండింది)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "ఒక పరివర్తన సెట్టింగ్. పాత స్వచ్ఛంద అవకాశాల పేజీలు మరియు కొత్త పరిచర్యల పేజీలు రెండూ అందుబాటులో ఉంటాయి, మరియు వ్యక్తి రికార్డు రెండు స్వచ్ఛంద సేవ ట్యాబ్‌లను స్పష్టంగా లేబుల్ చేసి చూపుతుంది. చర్చిని V1 నుండి V2 కు మార్చేటప్పుడు దీన్ని ఉపయోగించండి, ఆ తరువాత V2 కు మాత్రమే మారండి."
+
+#: 
+msgid "Assignment canceled"
+msgstr "నియామకం రద్దు చేయబడింది"
+
+#: 
+msgid "Canceled"
+msgstr "రద్దు చేయబడింది"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "రద్దు చేయడం ఎవరికీ తెలియజేయదు: ఇమెయిల్ పంపబడదు. నియామకాలు అలాగే ఉంటాయి, రద్దయి ఉన్నప్పుడు రిమైండర్లు షెడ్యూల్ కావు, పునరుద్ధరించే వరకు ఎవరినీ నియమించలేరు."
+
+#: 
+msgid "Color"
+msgstr "రంగు"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "ఇమెయిల్ చేసిన సైన్-ఇన్ కోడ్ మరియు లింక్ రద్దు చేయబడ్డాయి"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "కుటుంబ పాత్రలు (ఇంటి యజమాని, జీవిత భాగస్వామి, పిల్లలు, మొ.) మీ రికార్డులను వ్యవస్థీకరించడంలో సహాయపడతాయి."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "సందర్భం రద్దు చేయబడింది"
+
+#: 
+msgid "Prioritize translations"
+msgstr "అనువాదాలకు ప్రాధాన్యత ఇవ్వండి"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "నియామకాన్ని రద్దు చేయలేకపోయింది"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "సందర్భాన్ని రద్దు చేయలేకపోయాము"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "ఈ తేదీ రద్దు చేయబడింది. మీ నుండి ఇంకేమీ అవసరం లేదు."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "ఈ సందర్భం రద్దు చేయబడింది"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "చర్చి నడిచే విధానంలో ఏర్పాటు చేసిన స్వచ్ఛంద సేవ. ప్రతి పరిచర్యకు బృందాలు మరియు స్థానాలు ఉంటాయి; ప్రజలు స్థానాలకు అర్హులవుతారు మరియు పరిచర్య యొక్క సమూహానికి చెందుతారు; షెడ్యూల్‌లు క్యాలెండర్‌లోని కార్యక్రమాలను అనుసరించి, సిబ్బంది అవసరాలతో తేదీలతో కూడిన సందర్భాలను తయారు చేస్తాయి; సమన్వయకర్తలు వ్యక్తులను నియమిస్తారు, వారు అంగీకరిస్తారు, తిరస్కరిస్తారు లేదా ప్రత్యామ్నాయాన్ని ప్రతిపాదిస్తారు; రిమైండర్‌లు మరియు హెచ్చరికలు ఇమెయిల్ ద్వారా వెళ్తాయి. నిర్వాహకులు మరియు పరిచర్యలను నిర్వహించే అనుమతి ఉన్న వినియోగదారులు ప్రతి పరిచర్యను చూసి, వాటిని సృష్టించవచ్చు, నిష్క్రియం చేయవచ్చు మరియు తొలగించవచ్చు. పరిచర్య సమన్వయకర్తకు బదులుగా నా పరిచర్యలను నిర్వహించే అనుమతి ఇవ్వబడుతుంది: అప్పుడు సైడ్‌బార్‌లోని పరిచర్యలు శీర్షిక వారు సమన్వయం చేసే పరిచర్యలను మాత్రమే చూపుతుంది. బృంద నాయకుడు సభ్య పోర్టల్ నుండి తన బృందాన్ని నడుపుతారు. సభ్యులు తమ షెడ్యూల్‌ను చూడటానికి, స్పందించడానికి, నమోదు చేసుకోవడానికి మరియు సహాయం అందించడానికి సభ్య పోర్టల్‌ను ఉపయోగిస్తారు."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "క్రియాశీల ఇన్‌స్టాలేషన్‌లు మరియు అప్‌గ్రేడ్ ఫలితాలను లెక్కించండి"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "డేటాబేస్ ఇంజిన్ మరియు ప్రధాన/ఉప వెర్షన్"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "లోపాలు — ఇన్‌స్టాల్ గణాంకాలు, హెచ్చరికలు, లోపాలు మరియు JS మినహాయింపులు"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "సమస్యలను కనుగొని పరిష్కరించడంలో మాకు సహాయం చేస్తారా?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "ఇన్‌స్టాల్ కనీస ఇన్‌స్టాలేషన్ మరియు అప్‌గ్రేడ్ గణాంకాలను పంచుకుంటుంది. లోపాలు హెచ్చరికలు మరియు లోప నివేదికలను జోడిస్తుంది. పూర్తి పేజీ వీక్షణలను జోడిస్తుంది. ఏదీ లేదు విఫలమైన ఇన్‌స్టాల్‌లు మరియు అప్‌గ్రేడ్‌లను మాత్రమే పంపుతుంది."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "ఇన్‌స్టాల్ — ఇన్‌స్టాలేషన్ మరియు అప్‌గ్రేడ్ గణాంకాలు (డిఫాల్ట్)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "ఇన్‌స్టాలేషన్ మరియు అప్‌గ్రేడ్ ఫలితాలు, అప్‌గ్రేడ్‌లలో మునుపటి వెర్షన్, వాడుకలో ఉన్నప్పుడు రోజువారీ చెక్-ఇన్"
+
+#: 
+msgid "Installation profile"
+msgstr "ఇన్‌స్టాలేషన్ ప్రొఫైల్"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "లొకేల్ (లోపాలు మరియు పూర్తి)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "ఎప్పటికీ పంచుకోబడవు: సభ్యులు, దానాలు లేదా ఇతర సంఘ రికార్డులు, మీ సంఘం పేరు, మీ వెబ్ చిరునామా లేదా సర్వర్ పేరు, ఇమెయిల్ చిరునామాలు. మీ దేశం మీ సంఘ సెట్టింగ్‌లలో ఉన్నదే, మీ నెట్‌వర్క్ నుండి కనుగొనబడదు."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "OS కుటుంబం (లోపాలు మరియు పూర్తి)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP వెర్షన్ (లోపాలు మరియు పూర్తి)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "ఏమి పంచుకోబడుతుందో ఖచ్చితంగా చూడండి, లేదా మీ ఎంపికను మార్చండి, అడ్మిన్ → టెలిమెట్రీలో."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "ప్రొడక్షన్, డెమో మరియు టెస్ట్ ఇన్‌స్టాల్‌లను వేరు చేయండి"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "అనామక ఇన్‌స్టాల్ గణాంకాలను పంచుకోవాలా?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "లోప మరియు వినియోగ నివేదికలను పంచుకోండి"
+
+#: 
+msgid "Share install statistics"
+msgstr "ఇన్‌స్టాల్ గణాంకాలను పంచుకోండి"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "అదనంగా పంచుకోబడేవి: హెచ్చరికలు, లోప వివరాలు, ఏ పేజీలు తెరవబడతాయి."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "పంచుకోబడేవి: ChurchCRM ఇన్‌స్టాల్ లేదా అప్‌గ్రేడ్ అయిందని మరియు అది పనిచేసిందా అని, వాడుకలో ఉన్నప్పుడు రోజుకు ఒకసారి చెక్-ఇన్, వెర్షన్ సంఖ్య, మీ దేశం మరియు డేటాబేస్ రకం. ఒక యాదృచ్ఛిక ఇన్‌స్టాలేషన్ ID ప్రతి ఇన్‌స్టాల్‌ను ఒకసారి లెక్కిస్తుంది."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "డేటాబేస్ అనుకూలతను అర్థం చేసుకోండి"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "మీ ఎంపిక ఒకసారి మాత్రమే అడగబడుతుంది. మీరు దాన్ని ఎప్పుడైనా మార్చవచ్చు. వద్దు, ధన్యవాదాలు ఎంచుకుంటే, విఫలమైన ఇన్‌స్టాల్ లేదా అప్‌గ్రేడ్ మాత్రమే నివేదించబడుతుంది."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "మీ డేటా మీదే. ఇన్‌స్టాల్ ఇన్‌స్టాలేషన్ మరియు అప్‌గ్రేడ్ ఫలితాలు, ఇన్‌స్టాలేషన్ ID, సాఫ్ట్‌వేర్ వెర్షన్, ఇన్‌స్టాలేషన్ ప్రొఫైల్, కాన్ఫిగర్ చేసిన దేశం, డేటాబేస్ ఇంజిన్ మరియు దాని ప్రధాన/ఉప వెర్షన్‌ను మాత్రమే పంచుకుంటుంది. లోపాలు హెచ్చరికలు మరియు లోప వివరాలను జోడిస్తుంది. పూర్తి పేజీ వీక్షణలను జోడిస్తుంది. ఏదీ లేదు విఫలమైన ఇన్‌స్టాల్‌లు మరియు అప్‌గ్రేడ్‌లను మాత్రమే పంపుతుంది. ఏ స్థాయి కూడా మీ వెబ్ చిరునామా లేదా సర్వర్ పేరును పంపదు. టెస్ట్ ఇన్‌స్టాలేషన్‌లు ఏమీ పంపవు. టెలిమెట్రీ యునైటెడ్ స్టేట్స్‌లోని PostHog‌కు పంపబడుతుంది."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "మీ డేటా మీదే. ఇది సాఫ్ట్‌వేర్ గురించి మాత్రమే నివేదిస్తుంది, మీ సంఘం లేదా దాని ప్రజల గురించి ఎప్పుడూ కాదు."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "మీ డేటా మీదే. ఇన్‌స్టాల్‌లను లెక్కించడానికి, ChurchCRM ఇన్‌స్టాల్ లేదా అప్‌గ్రేడ్ అయిందని మరియు అది పనిచేసిందా అని, వాడుకలో ఉన్నప్పుడు రోజుకు ఒకసారి చెక్-ఇన్, అలాగే వెర్షన్ సంఖ్య, మీ దేశం, డేటాబేస్ రకం మరియు యాదృచ్ఛిక ఇన్‌స్టాలేషన్ IDని నివేదిస్తుంది. సభ్యులు, దానాలు లేదా ఇతర సంఘ రికార్డులు, మీ సంఘం పేరు, మీ వెబ్ చిరునామా లేదా సర్వర్ పేరు, ఇమెయిల్ చిరునామాలను ఎప్పుడూ నివేదించదు. మీరు దీన్ని అడ్మిన్ → టెలిమెట్రీలో ఎప్పుడైనా ఆఫ్ చేయవచ్చు; విఫలమైన ఇన్‌స్టాల్ లేదా అప్‌గ్రేడ్ ఇప్పటికీ నివేదించబడుతుంది. హెచ్చరికలు, లోప వివరాలు మరియు పేజీ వీక్షణలు మీరు ఎంచుకుంటేనే పంచుకోబడతాయి."
 

@@ -51,22 +51,6 @@ describe("Person Attendance History Tab", () => {
         );
     });
 
-    context("Tab navigation", () => {
-        beforeEach(() => {
-            cy.setupAdminSession();
-        });
-
-        it("shows the Attendance tab nav item on the person view", () => {
-            cy.visit(`/people/view/${PERSON_WITH_ATTENDANCE}`);
-            cy.get("#nav-item-attendance").should("exist").and("be.visible");
-        });
-
-        it("Attendance tab pane is present in the DOM", () => {
-            cy.visit(`/people/view/${PERSON_WITH_ATTENDANCE}`);
-            cy.get("#attendance").should("exist");
-        });
-    });
-
     context("Lazy load on tab activation — person with attendance", () => {
         beforeEach(() => {
             // API setup FIRST, then cy.freshAdminFormLogin() — NOT cy.setupAdminSession(),
@@ -86,44 +70,16 @@ describe("Person Attendance History Tab", () => {
             cy.get("#nav-item-attendance").click();
         });
 
-        it("fires an API request when tab is first activated", () => {
+        it("loads the person's attendance the first time the tab opens", () => {
             cy.wait("@attendanceApi").its("response.statusCode").should("eq", 200);
-        });
-
-        it("hides the loading spinner after data loads", () => {
-            cy.wait("@attendanceApi");
             cy.get("#attendance-tab .attendance-loading").should("have.class", "d-none");
-        });
-
-        it("shows the summary stats section", () => {
-            cy.wait("@attendanceApi");
             cy.get("#attendance-tab .attendance-summary").should("be.visible");
-        });
-
-        it("shows a non-zero total events stat", () => {
-            cy.wait("@attendanceApi");
-            // cy.wait() only confirms the network response arrived — it does not wait
-            // for the fetch().then() callback in attendance-history.ts to run and update
-            // the DOM. Use a retrying .should() (not .invoke().then()) so Cypress keeps
-            // re-reading the text until the async render lands instead of reading the
-            // initial "—" placeholder once and failing with NaN.
+            cy.get("#attendance-tab .attendance-filters").should("be.visible");
+            // cy.wait() covers the network only, not the render in attendance-history.ts; retry the read.
             cy.get("#attendance-tab .attendance-stat-total").should(($el) => {
                 expect(parseInt($el.text().trim(), 10)).to.be.at.least(1);
             });
-        });
-
-        it("shows the filter controls", () => {
-            cy.wait("@attendanceApi");
-            cy.get("#attendance-tab .attendance-filters").should("be.visible");
-        });
-
-        it("shows the attendance table with at least one row", () => {
-            cy.wait("@attendanceApi");
             cy.get("#attendance-tab .attendance-tbody tr").should("have.length.at.least", 1);
-        });
-
-        it("event link uses the correct /event/view/:id path", () => {
-            cy.wait("@attendanceApi");
             cy.get("#attendance-tab .attendance-tbody tr:first-child a")
                 .should("have.attr", "href")
                 .and("match", /\/event\/view\/\d+/);
@@ -158,17 +114,11 @@ describe("Person Attendance History Tab", () => {
             cy.get("#nav-item-attendance").click();
         });
 
-        it("shows zero total events", () => {
+        it("shows zero events and an empty table", () => {
             cy.wait("@emptyAttendance");
-            // See the comment on "shows a non-zero total events stat" above — same
-            // race between cy.wait() (network only) and the async DOM render.
             cy.get("#attendance-tab .attendance-stat-total").should(($el) => {
                 expect(parseInt($el.text().trim(), 10)).to.equal(0);
             });
-        });
-
-        it("shows an empty table with no rows", () => {
-            cy.wait("@emptyAttendance");
             cy.get("#attendance-tab .attendance-tbody tr").should("have.length", 0);
         });
     });
@@ -190,11 +140,8 @@ describe("Person Attendance History Tab", () => {
             cy.wait("@attendanceApi");
         });
 
-        it("type filter select is populated with at least one option beyond All", () => {
-            cy.get("#attendance-tab .attendance-filter-type option").should("have.length.at.least", 2);
-        });
-
         it("clear button resets filters and shows all records", () => {
+            cy.get("#attendance-tab .attendance-filter-type option").should("have.length.at.least", 2);
             // Set a future date that excludes all records. attendance-history.ts
             // applies the filter on the "change" event, which native date inputs
             // only fire on blur — .type() alone doesn't blur the field, and the

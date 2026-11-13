@@ -887,10 +887,6 @@ msgid "Do you want to proceed?"
 msgstr "계속 진행하시겠습니까?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "가족 정보를 다음 이메일 주소로 발송하려고 합니다"
-
-#: 
 msgid "Financial Reports"
 msgstr "재정 보고"
 
@@ -1821,10 +1817,6 @@ msgstr "전화번호"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "사용자 정의 드롭다운"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "가족 구성원에게 PDF가 정상 발송되었습니다."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3871,10 +3863,6 @@ msgid "Please verify your family's information"
 msgstr "가족 정보를 확인해 주세요"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "확인 정보를 불러올 수 없습니다"
-
-#: 
 msgid "No Changes"
 msgstr "변경 사항 없음"
 
@@ -3887,24 +3875,8 @@ msgid "Oops! Page not found."
 msgstr "페이지를 찾을 수 없습니다."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "가족 정보 확인을 시작하려면 아래 내용을 입력하세요"
-
-#: 
-msgid "Family Verification"
-msgstr "가족 정보 확인"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "가족 정보 확인 요청"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "가족 정보 확인을 요청할 방식을 선택하세요"
-
-#: 
-msgid "Online Verification"
-msgstr "온라인 확인"
 
 #: 
 msgid "Verified In Person"
@@ -4086,10 +4058,6 @@ msgstr "속성 배정이 해제되었습니다."
 #: 
 msgid "The property could not be unassigned."
 msgstr "속성 배정을 해제하지 못했습니다."
-
-#: 
-msgid "Select event"
-msgstr "행사 선택"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4296,10 +4264,6 @@ msgid "Kiosk Manager"
 msgstr "키오스크 관리자"
 
 #: 
-msgid "Report an issue"
-msgstr "문제 보고"
-
-#: 
 msgid "Self Verification"
 msgstr "자가 확인"
 
@@ -4328,10 +4292,6 @@ msgstr "아랍어 - 이집트"
 #: 
 msgid "Thai"
 msgstr "태국어"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "자가 확인 대기"
 
 #: 
 msgid "Self Verify"
@@ -4714,16 +4674,8 @@ msgid "User must have Delete Records permission"
 msgstr "레코드 삭제 권한이 필요합니다"
 
 #: 
-msgid "invalid event type id"
-msgstr "잘못된 행사 유형 ID"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "잘못된 캘린더 고정"
-
-#: 
-msgid "invalid status value"
-msgstr "잘못된 상태 값"
 
 #: 
 msgid "invalid export value"
@@ -5326,10 +5278,6 @@ msgstr "시스템 업데이트를 적용하는 중..."
 
 #: 
 msgid "Back to Login"
-msgstr "로그인으로 돌아가기"
-
-#: 
-msgid "Back to login"
 msgstr "로그인으로 돌아가기"
 
 #: 
@@ -6564,10 +6512,6 @@ msgid "Additional Information"
 msgstr "추가 정보"
 
 #: 
-msgid "All information is correct"
-msgstr "모든 정보가 정확합니다"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "기회 할당"
 
@@ -6580,20 +6524,12 @@ msgid "Choose opportunities..."
 msgstr "기회를 선택하세요..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "가족 정보 확인"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "연락처 및 개인 정보"
 
 #: 
 msgid "Edited"
 msgstr "편집됨"
-
-#: 
-msgid "Email PDF"
-msgstr "PDF 이메일 보내기"
 
 #: 
 msgid "Newsletter"
@@ -6604,40 +6540,12 @@ msgid "Personal"
 msgstr "개인"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "수정 사항으로 기록을 업데이트해 주세요"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "여기에 수정 사항이나 추가 정보를 제공하세요..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "기회 선택"
 
 #: 
-msgid "Submit Verification"
-msgstr "확인 제출"
-
-#: 
-msgid "Thank You!"
-msgstr "감사합니다!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "웹사이트 방문"
-
-#: 
 msgid "Volunteer"
 msgstr "자원봉사자"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "확인 처리 중 오류가 발생했습니다. 다시 시도하거나 직접 문의해 주세요."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "확인 요청이 접수되었습니다. 정보를 최신 상태로 유지해 주셔서 감사합니다."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8093,10 +8001,6 @@ msgid "City is required."
 msgstr "도시는 필수입니다."
 
 #: 
-msgid "Clear filter"
-msgstr "필터 지우기"
-
-#: 
 msgid "Configuration item not found"
 msgstr "구성 항목을 찾을 수 없습니다"
 
@@ -8364,10 +8268,6 @@ msgstr "사람 추가"
 #: 
 msgid "Add all cart items to a group"
 msgstr "목록의 모든 항목을 그룹에 추가"
-
-#: 
-msgid "Add all to Cart"
-msgstr "전체를 목록에 추가"
 
 #: 
 msgid "Add cart items to a family"
@@ -8874,10 +8774,6 @@ msgid "Family Profile"
 msgstr "가족 프로필"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "가족 역할(세대주, 배우자, 자녀 등)은 기록 정리에 도움이 됩니다."
-
-#: 
 msgid "Family vs Person"
 msgstr "가족 대 개인"
 
@@ -9376,10 +9272,6 @@ msgid "Record why attendees visited your church"
 msgstr "참석자가 교회를 방문한 이유 기록"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "목록에서 전체 제거"
-
-#: 
 msgid "Remove from Class"
 msgstr "반에서 제거"
 
@@ -9850,10 +9742,6 @@ msgstr "올해 행사"
 #: 
 msgid "Everyone"
 msgstr "전체"
-
-#: 
-msgid "Failed to delete note"
-msgstr "메모 삭제 실패"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11752,10 +11640,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "시작 날짜는 유효한 YYYY-MM-DD 형식이어야 합니다."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "시작 날짜는 종료 날짜 이전이어야 합니다"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "시작 날짜는 종료 날짜 이전이어야 합니다."
 
@@ -11976,10 +11860,6 @@ msgid "Cannot move property in that direction"
 msgstr "해당 방향으로 속성을 이동할 수 없습니다"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "가족 정보 확인"
-
-#: 
 msgid "Delete failed"
 msgstr "삭제 실패"
 
@@ -12020,20 +11900,12 @@ msgid "Invalid target family"
 msgstr "잘못된 대상 가족"
 
 #: 
-msgid "Log Out"
-msgstr "로그아웃"
-
-#: 
 msgid "Membership not found"
 msgstr "회원 정보를 찾을 수 없습니다"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "비밀번호가 성공적으로 변경되었습니다:"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "아래 가족 정보를 검토하고 확인하거나 변경을 요청하세요."
 
 #: 
 msgid "Please select a target family."
@@ -12716,10 +12588,6 @@ msgid "Failed to install plugin from URL"
 msgstr "URL에서 플러그인 설치 실패"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "승인된 플러그인 목록 불러오기 실패"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "승인된 플러그인 목록을 불러오지 못했습니다."
 
@@ -12778,10 +12646,6 @@ msgstr "케밥 케이스. zip 내부 최상위 디렉토리 이름 및 plugin.js
 #: 
 msgid "Loading approved plugin list…"
 msgstr "승인된 플러그인 목록 불러오는 중…"
-
-#: 
-msgid "Loading…"
-msgstr "불러오는 중…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13229,10 +13093,6 @@ msgid "Change Your Locale"
 msgstr "로케일 변경"
 
 #: 
-msgid "Change role"
-msgstr "역할 변경"
-
-#: 
 msgid "Check Number"
 msgstr "수표 번호"
 
@@ -13247,10 +13107,6 @@ msgstr "체크인에 실패했습니다. 다시 시도해 주세요."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "체크아웃에 실패했습니다. 다시 시도해 주세요."
-
-#: 
-msgid "City is required"
-msgstr "도시는 필수입니다"
 
 #: 
 msgid "Click Save to apply."
@@ -13319,10 +13175,6 @@ msgstr "모든 번호 복사"
 #: 
 msgid "Copy Members to Group"
 msgstr "교인을 그룹에 복사"
-
-#: 
-msgid "Creating Backup..."
-msgstr "백업 생성 중..."
 
 #: 
 msgid "Creating..."
@@ -13507,10 +13359,6 @@ msgstr "장바구니에 추가하지 못했습니다"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "등록 취소에 실패했습니다. 다시 시도해 주세요."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "URL 복사 실패"
 
 #: 
 msgid "Failed to create backup."
@@ -13901,10 +13749,6 @@ msgid "One-Time Code"
 msgstr "일회용 코드"
 
 #: 
-msgid "Open in New Tab"
-msgstr "새 탭에서 열기"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "인증 앱을 열고 이 QR 코드를 스캔하세요"
 
@@ -14181,10 +14025,6 @@ msgid "Setup Complete"
 msgstr "설정 완료"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "가족 구성원과 이 URL을 공유하여 정보를 확인하세요"
-
-#: 
 msgid "Show more options"
 msgstr "더 많은 옵션 표시"
 
@@ -14337,10 +14177,6 @@ msgid "Validation pending"
 msgstr "검증 대기 중"
 
 #: 
-msgid "Verification URL"
-msgstr "확인 URL"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "인증에 실패했습니다. 다시 시도해 주세요."
 
@@ -14405,10 +14241,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "앱에 접근할 수 없게 된 경우 사용할 수 있는 백업 코드가 제공됩니다"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "카트가 비어 있습니다"
-
-#: 
 msgid "Your account is now protected"
 msgstr "계정이 이제 보호됩니다"
 
@@ -14427,10 +14259,6 @@ msgstr "브라우저 언어 기본 설정이 ChurchCRM 로케일과 다릅니다
 #: 
 msgid "Your database already contains data"
 msgstr "데이터베이스에 이미 데이터가 있습니다"
-
-#: 
-msgid "Zip code is required"
-msgstr "우편번호는 필수입니다"
 
 #: 
 msgid "added"
@@ -14850,10 +14678,6 @@ msgstr "이 가족에 대한 메모를 추가할 권한이 없습니다."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "이 교인에 대한 메모를 추가할 권한이 없습니다."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "이 메모를 수정할 권한이 없습니다"
 
 #: 
 msgid "Account locked"
@@ -15674,10 +15498,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "이 가족 기록 삭제를 확인해 주세요"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "가족 정보를 확인해 주세요"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "이 헌금을 연결할 다른 가정을 선택해 주세요"
 
@@ -15898,10 +15718,6 @@ msgid "Select a person"
 msgstr "사람 선택"
 
 #: 
-msgid "Select role"
-msgstr "역할 선택"
-
-#: 
 msgid "Select type (optional)"
 msgstr "유형 선택 (선택 사항)"
 
@@ -16058,10 +15874,6 @@ msgid "At least one fund allocation is required"
 msgstr "최소 하나의 헌금 항목 배분이 필요합니다"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "최소 하나의 헌금 항목에 0이 아닌 금액이 있어야 합니다"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "생일에 교인들에게 생일 축하 이메일을 자동으로 발송합니다"
 
@@ -16138,18 +15950,6 @@ msgid "Editing a Pledge"
 msgstr "서약 편집 중"
 
 #: 
-msgid "Enable (full)"
-msgstr "활성화 (전체)"
-
-#: 
-msgid "Errors only"
-msgstr "오류만"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "오류 — 서버 오류 및 JS 예외"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "서약 생성에 실패했습니다"
 
@@ -16188,10 +15988,6 @@ msgstr "그룹 키는 필수입니다"
 #: 
 msgid "Happy Birthday"
 msgstr "생일을 축하합니다"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ChurchCRM 개선에 도움 주기"
 
 #: 
 msgid "IP addresses"
@@ -16262,16 +16058,8 @@ msgid "None (disabled)"
 msgstr "없음 (비활성화)"
 
 #: 
-msgid "OS family"
-msgstr "OS 계열"
-
-#: 
 msgid "Overpaid"
 msgstr "초과 납부"
-
-#: 
-msgid "PHP version"
-msgstr "PHP 버전"
 
 #: 
 msgid "Page route"
@@ -16308,10 +16096,6 @@ msgstr "서약 그룹을 찾을 수 없습니다"
 #: 
 msgid "Pledges & Payments"
 msgstr "서약 및 헌금"
-
-#: 
-msgid "Prioritise translations"
-msgstr "번역 우선 순위 지정"
 
 #: 
 msgid "Purpose"
@@ -16376,10 +16160,6 @@ msgstr "사용자 이름, 이메일 또는 역할"
 #: 
 msgid "View pledge or payment details"
 msgstr "서약 또는 헌금 상세 정보 보기"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "경고 — 경고, 오류 및 JS 예외"
 
 #: 
 msgid "What is sent"
@@ -16573,11 +16353,6 @@ msgstr "선택한 입금에 대한 납부 내역이 없습니다"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "유효한 입금 ID가 제공되지 않았습니다"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF가 %d 가정에 성공적으로 이메일로 발송되었습니다."
 
 #: 
 msgid "Partial Send"
@@ -17117,10 +16892,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "백업을 생성하여 업로드하는 중입니다. 몇 분 정도 걸릴 수 있습니다..."
 
 #: 
-msgid "Database reset failed."
-msgstr "데이터베이스 초기화에 실패했습니다."
-
-#: 
 msgid "Deceased"
 msgstr "별세"
 
@@ -17317,10 +17088,6 @@ msgid "Log settings saved"
 msgstr "로그 설정이 저장되었습니다"
 
 #: 
-msgid "Login Name is Required"
-msgstr "로그인 이름은 필수입니다"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "이 사람을 활성 상태로 표시했습니다"
 
@@ -17445,10 +17212,6 @@ msgid "Sending..."
 msgstr "전송 중..."
 
 #: 
-msgid "Sending…"
-msgstr "전송 중…"
-
-#: 
 msgid "Settings reset"
 msgstr "설정이 초기화되었습니다"
 
@@ -17517,16 +17280,8 @@ msgid "Upcoming"
 msgstr "예정"
 
 #: 
-msgid "Valid Until"
-msgstr "유효 기한"
-
-#: 
 msgid "View active only"
 msgstr "활성만 보기"
-
-#: 
-msgid "View all"
-msgstr "전체 보기"
 
 #: 
 msgid "View all (including inactive)"
@@ -18305,10 +18060,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "회계 연도는 %s에 시작합니다."
 
 #: 
-msgid "An error occurred"
-msgstr "오류가 발생했습니다"
-
-#: 
 msgid "Approve"
 msgstr "승인"
 
@@ -18478,11 +18229,6 @@ msgstr "%1$s: 최대 인원은 %2$d명인데 기본 봉사자가 %3$d명 선택�
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d 일"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d 기본값이 다른 이유로 건너뛰어졌습니다(발생이 종료, 취소 또는 가득 찬 경우)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18739,10 +18485,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "테마는 교회가 서버의 Include/themes/에 업로드하는 폴더입니다. 시스템 기본 테마는 ChurchCRM에 포함되어 있습니다."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "전환용 설정입니다. 기존 봉사 기회 페이지와 새 사역 페이지를 모두 사용할 수 있으며, 인물 기록에 두 봉사 탭이 구분되어 표시됩니다. 교회를 V1에서 V2로 옮기는 동안 사용한 다음 V2만 사용하도록 전환하세요."
-
-#: 
 msgid "A volunteer"
 msgstr "봉사자"
 
@@ -18947,10 +18689,6 @@ msgid "Assigned outside the current plan"
 msgstr "현재 계획 밖에 배정됨"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "배정이 취소되었습니다"
-
-#: 
 msgid "Assignment not found"
 msgstr "배정을 찾을 수 없습니다"
 
@@ -19057,10 +18795,6 @@ msgstr "배정 취소"
 #: 
 msgid "Cancel this assignment"
 msgstr "이 배정 취소"
-
-#: 
-msgid "Cancelled"
-msgstr "취소됨"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19217,10 +18951,6 @@ msgstr "교회 웹사이트"
 #: 
 msgid "Close event details"
 msgstr "행사 상세 닫기"
-
-#: 
-msgid "Colour"
-msgstr "색상"
 
 #: 
 msgid "Completed"
@@ -19467,10 +19197,6 @@ msgid "Each staffing need must name a position"
 msgstr "각 필요 인원은 직책을 지정해야 합니다"
 
 #: 
-msgid "Edit event"
-msgstr "행사 편집"
-
-#: 
 msgid "Edit ministry"
 msgstr "사역 편집"
 
@@ -19555,10 +19281,6 @@ msgstr "{{count}}명의 수신자에게 이메일 전송됨."
 #: 
 msgid "Emails"
 msgstr "이메일"
-
-#: 
-msgid "End time"
-msgstr "종료 시간"
 
 #: 
 msgid "Enter counts"
@@ -20837,10 +20559,6 @@ msgid "SMTP test"
 msgstr "SMTP 테스트"
 
 #: 
-msgid "Save changes"
-msgstr "변경 사항 저장"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "저장되었습니다. 이 사역은 더 이상 도움을 요청하지 않습니다"
 
@@ -21123,10 +20841,6 @@ msgstr "필요 인원이 저장되었습니다"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "먼저 사역을 만든 다음 그 안에서 섬길 팀과 직책을 추가하세요."
-
-#: 
-msgid "Start time"
-msgstr "시작 시간"
 
 #: 
 msgid "Start typing a name"
@@ -21475,10 +21189,6 @@ msgstr "주소가 선택되었습니다. 키보드로 복사하세요."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "에셋 경로 \"%s\"은(는) 허용되지 않습니다."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "배정을 취소하지 못했습니다"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22003,10 +21713,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "이 회차는 이미 끝났으며 배정을 더 이상 변경할 수 없습니다"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "이 회차는 취소되었습니다"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "이 회차에는 일정과 별개로 설정된 고유한 필요 인원이 있습니다."
 
@@ -22175,16 +21881,8 @@ msgid "Validation"
 msgstr "검증"
 
 #: 
-msgid "View event"
-msgstr "이벤트 보기"
-
-#: 
 msgid "View my schedule"
 msgstr "내 일정 보기"
-
-#: 
-msgid "View person"
-msgstr "교인 보기"
 
 #: 
 msgid "View the event"
@@ -22233,10 +21931,6 @@ msgstr "봉사 시간"
 #: 
 msgid "Volunteering"
 msgstr "봉사"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "교회가 운영하는 방식대로 구성한 봉사 관리입니다. 각 사역에는 팀과 직책이 있고, 사람은 직책의 자격을 갖추고 사역의 풀 그룹에 속합니다. 일정은 캘린더의 행사를 따르며 필요 인원이 있는 날짜별 회차를 만듭니다. 코디네이터가 사람을 배정하면 그 사람이 수락, 거절하거나 대체자를 제안하고, 알림은 이메일로 발송됩니다. 관리자와 사역 관리 권한이 있는 사용자는 모든 사역을 보고 만들고 비활성화하고 삭제할 수 있습니다. 사역 코디네이터에게는 대신 '내 사역 관리' 권한이 부여되며, 사이드바의 사역 제목 아래에는 자신이 코디네이트하는 사역만 표시됩니다. 팀 리더는 교인 포털에서 자기 팀을 운영합니다. 교인은 교인 포털에서 자신의 일정을 보고, 응답하고, 신청하고, 도움을 제안합니다."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22773,10 +22467,6 @@ msgid "Cancel this occurrence"
 msgstr "이 발생 취소"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "취소해도 아무도 통지되지 않습니다: 이메일이 전송되지 않습니다. 과제는 유지되며, 취소된 동안 알림이 예약되지 않으며, 복원될 때까지 아무도 할당될 수 없습니다."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "삭제된 행사는 모든 일정에서 제거되며 체크인 및 참석 인원도 함께 제거됩니다. 이 사역의 인력 배치는 날짜만 유지합니다. 이 작업은 취소할 수 없습니다."
 
@@ -22787,10 +22477,6 @@ msgstr "삭제된 행사: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "삭제할 행사: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "발생이 취소되었습니다"
 
 #: 
 msgid "Occurrence restored"
@@ -22807,10 +22493,6 @@ msgstr "발생 복원"
 #: 
 msgid "Restore this occurrence"
 msgstr "이 발생 복원"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "발생을 취소할 수 없었습니다"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -22891,12 +22573,6 @@ msgstr "행사 중 키오스크에서 방문객으로 등록됨: %s"
 #: 
 msgid "Registering..."
 msgstr "등록 중..."
-
-#: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "예금 항목에 수표 결제를 기록할 때 수표 번호가 필요합니다.\n"
-"참고: 이를 비활성화하면 중복 수표 번호 감지도 비활성화됩니다 — 동일한 물리적 수표가 여러 번 입력될 수 있습니다."
 
 #: 
 msgid "This event has ended"
@@ -24817,28 +24493,12 @@ msgid "Closing Line"
 msgstr "맺음말"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "선택적 원격 측정을 제어합니다. 원격 측정을 꺼도 설치 및 데이터베이스 업그레이드 실패는 제한된 진단 정보를 PostHog로 보냅니다. 이 실패 보고서에는 소프트웨어와 환경 버전, 그리고 민감 정보가 제거된 데이터베이스 오류가 포함되며, 설치 ID나 SQL 문은 포함되지 않습니다."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "실패한 설치와 데이터베이스 업그레이드 진단"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "설치 및 업그레이드 실패 세부 정보"
-
-#: 
 msgid "Open in browser window"
 msgstr "브라우저 창에서 열기"
 
 #: 
 msgid "Opening Line"
 msgstr "인사말"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "선택적 사용 원격 측정은 사용하도록 설정한 경우에만 전송됩니다. 설치 및 데이터베이스 업그레이드 실패는 사양합니다를 선택해도 커뮤니티를 돕기 위해 제한된 진단을 항상 보냅니다. 실패 보고서에는 소프트웨어와 환경 버전, 민감 정보가 제거된 데이터베이스 오류가 포함되며, 설치 ID나 SQL 문은 포함되지 않습니다."
 
 #: 
 msgid "PDF Handling"
@@ -24875,18 +24535,6 @@ msgstr "명세서 문구"
 #: 
 msgid "Tax Information"
 msgstr "세금 정보"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "원격 측정은 미국의 PostHog로 전송됩니다. 선택적 원격 측정을 꺼도 설치 및 업그레이드 실패 보고서는 전송됩니다."
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "이 날짜는 취소되었습니다. 더 하실 일은 없습니다."
-
-#: 
-msgid "always sent"
-msgstr "항상 전송됨"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25351,10 +24999,6 @@ msgstr "이메일을 확인해야 함"
 #: 
 msgid "Email problem"
 msgstr "이메일 문제"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "이메일로 보낸 로그인 코드와 링크가 취소됨"
 
 #: 
 msgid "Emailed verification link"
@@ -25947,10 +25591,6 @@ msgstr "개인 이메일이 있는 생존한 사람만 사무실 목록에 올�
 #: 
 msgid "Only people with their own email can be added."
 msgstr "개인 이메일이 있는 사람만 추가할 수 있습니다."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "선택적 원격 측정에는 페이지 경로, 사용 중인 로캘, CRM 버전, PHP 버전, OS 종류, 교회 정보 설정의 국가, 임의의 설치 ID가 포함될 수 있습니다. 실패 보고서에는 설치 ID가 포함되지 않습니다. 데이터는 미국의 PostHog로 전송됩니다."
 
 #: 
 msgid "Passkey"
@@ -27121,10 +26761,582 @@ msgid "A request was made in the Member Portal to change your email address at %
 msgstr "회원 포털에서 %1$s의 이메일 주소를 %2$s에서 %3$s(으)로 변경해 달라는 요청이 있었습니다. 변경은 새 주소로 보낸 링크를 사용할 때만 적용됩니다."
 
 #: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "아래 링크로 가족 정보를 검토해 주세요. 검토 페이지에서 “가족 정보 확인”을 선택하면 모든 내용이 맞다고 확인하거나, 수정 사항을 교회 사무실로 보낼 수 있습니다."
-
-#: 
 msgid "Review Family Information"
 msgstr "가족 정보 검토"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "\"%s\"(이)라는 사역이 이미 있습니다. 목록에서 선택하거나 다른 이름을 지정하세요."
+
+#: 
+msgid "A new ministry"
+msgstr "새 사역"
+
+#: 
+msgid "A position"
+msgstr "직책"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "이전에 변환된 직책에 자원봉사자 {{total}}명을 추가할까요?"
+
+#: 
+msgid "Already converted"
+msgstr "이미 변환됨"
+
+#: 
+msgid "An existing ministry"
+msgstr "기존 사역"
+
+#: 
+msgid "Becomes"
+msgstr "변환 결과"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM에는 자원봉사자를 관리하는 방식이 두 가지 있습니다. 한 번에 하나만 사용하도록 되어 있으며, 이 교회에 어느 쪽을 표시할지는 \"봉사 방식\" 설정이 정합니다. 전환하면 페이지와 메뉴 항목이 숨겨지거나 표시될 뿐 데이터는 삭제되지 않습니다. V1과 둘 다는 자원봉사 기회를 사용하는 동안에만 제공됩니다. 모든 기회가 변환되고 교회가 V2를 사용하면 이 목록에서 사라집니다."
+
+#: 
+msgid "Convert"
+msgstr "변환"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "자원봉사 기회 변환"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "지금 기회 {{total}}개를 변환할까요? V1 데이터는 자원봉사 기회가 폐지될 때까지 그대로 유지됩니다."
+
+#: 
+msgid "Converted"
+msgstr "변환됨"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "변환 완료: 직책 {{positions}}개, 사역 {{ministries}}개, 자격을 얻은 자원봉사자 {{qualifications}}명."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "각 기회는 한 사역의 첫 번째 팀에 속한 직책이 되며, 연결된 모든 사람이 그 직책의 자격을 얻습니다. 이 직책들의 직접 신청은 처음에는 꺼져 있습니다."
+
+#: 
+msgid "Everything is converted."
+msgstr "모두 변환되었습니다."
+
+#: 
+msgid "Existing ministry"
+msgstr "기존 사역"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "새 사역의 이름을 100자 이내로 지정하세요."
+
+#: 
+msgid "Its own ministry"
+msgstr "독립 사역"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "이후 연결됨: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "변환할 수 없는 연결"
+
+#: 
+msgid "New ministries of their own"
+msgstr "각각 새 사역으로"
+
+#: 
+msgid "New ministry name"
+msgstr "새 사역 이름"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "이메일은 발송되지 않으며, 자원봉사 기회는 폐지될 때까지 그대로 유지됩니다."
+
+#: 
+msgid "No name"
+msgstr "이름 없음"
+
+#: 
+msgid "Not converted"
+msgstr "변환 안 됨"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "기능 토글 열기"
+
+#: 
+msgid "Open Ministries"
+msgstr "사역 열기"
+
+#: 
+msgid "Opportunities"
+msgstr "기회"
+
+#: 
+msgid "Opportunity"
+msgstr "기회"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "기회 #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "변환 이후 변환된 자원봉사 기회에 연결된 사람: %d명. 2027년 초 자원봉사 기회가 폐지되기 전에 해당 직책에 추가하세요."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "먼저 변환을 미리 보고, 반환된 리비전을 보내세요."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "이름이 중복되지 않도록 변경됨"
+
+#: 
+msgid "Review the conversion"
+msgstr "변환 검토"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "변환 선택을 JSON 객체로 보내세요."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "사역이 될 기회를 ID 목록으로 보내세요."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "해당 사역이 없습니다."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "관리자가 자원봉사 기회 폐지 알림을 닫은 ChurchCRM 버전입니다."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "미리 보기 이후 자원봉사 기회가 변경되었습니다. 미리 보기를 다시 확인한 다음 변환하세요."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "확인 창을 열 수 없습니다. 페이지를 새로 고친 후 다시 시도하세요."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "변환을 미리 볼 수 없습니다."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "변환에 실패했습니다. 아무것도 변경되지 않았습니다."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "\"%s\" 사역에는 직책을 둘 팀이 없습니다."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "서버에 연결할 수 없습니다. 페이지를 새로 고쳐 변환이 실행되었는지 확인하세요."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "변환할 자원봉사 기회가 없습니다."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "새 사역이 자원봉사 기회 옆에 표시되도록 봉사자 관리가 둘 다로 전환됩니다."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "자원봉사 기회가 폐지됩니다"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "자원봉사 기회 변환됨"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "자원봉사 기회는 2027년 초에 폐지됩니다. 누가 어디서 봉사하는지 유지하려면 사역으로 변환하세요."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "자원봉사 기회는 2027년 초에 폐지됩니다. 지금 기회 %1$d개와 자원봉사자 %2$d명을 사역으로 변환하세요. 변경하기 전에 결과를 미리 볼 수 있습니다."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "자격을 얻은 자원봉사자"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "변환된 직책에 추가할 자원봉사자"
+
+#: 
+msgid "What it becomes"
+msgstr "변환 결과"
+
+#: 
+msgid "What will happen"
+msgstr "진행 내용"
+
+#: 
+msgid "Where they go"
+msgstr "이동 위치"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "변환된 기존 자원봉사 기회와 각각이 변환된 직책입니다."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "이 교회가 사용하는 봉사 방식입니다. 자원봉사 기회(V1)는 2027년 초에 폐지됩니다."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "자원봉사 기회가 사역으로 변환되었습니다. 2027년 초 자원봉사 기회가 폐지되기 전에 봉사자 관리를 V2로 전환하세요."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "새 사역 {{name}}(으)로"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "사역 {{name}}(으)로"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "더 이상 ChurchCRM에 없음"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "사이드바 접기"
+
+#: 
+msgid "Expand sidebar"
+msgstr "사이드바 펼치기"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "@ 앞에는 ASCII 문자만 사용한 올바른 이메일 주소를 입력하세요."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "이메일 주소가 올바르지 않습니다"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "{{name}}을(를) 삭제하시겠습니까?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "시스템 정보를 수집할 수 없습니다. 다시 시도하세요."
+
+#: 
+msgid "No payments found for this period."
+msgstr "이 기간에 대한 결제가 없습니다."
+
+#: 
+msgid "Payments by Fund"
+msgstr "헌금 항목별 결제"
+
+#: 
+msgid "Unknown Fund"
+msgstr "알 수 없는 헌금 항목"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "호스팅 업체에 데이터베이스를 지원되는 버전으로 옮겨 달라고 요청한 후 다시 시도하세요."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "호스팅 업체에 데이터베이스를 지원되는 버전으로 옮겨 달라고 요청하세요."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "공휴일 이름은 각 사용자의 언어 설정에 따라 표시됩니다. 해당 언어로 된 이름이 없는 공휴일은 영어로 표시됩니다."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "사용자 언어로 된 공휴일 이름"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "입금 항목에 수표 결제를 기록할 때 수표 번호를 필수로 합니다. 끄면 수표 번호가 비어 있거나 0인 상태로 수표를 저장할 수 있으며, 이러한 수표는 중복 검사를 하지 않습니다."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "수표 결제 시 수표 번호 필수"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "업그레이드가 시작되지 않아 아무것도 변경되지 않았습니다."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "이 업그레이드는 사용 중인 데이터베이스에서 실행할 수 없습니다."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "데이터베이스 서버(%1$s %2$s)가 ChurchCRM이 지원하는 버전(MySQL %3$s 또는 MariaDB %4$s 이상)보다 오래되었습니다."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "확인 이메일을 보내기 전에 이 자가 등록 가족을 승인하세요"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "두 회계 연도의 가족별 서약 합계를 비교합니다."
+
+#: 
+msgid "Email Portal Link"
+msgstr "포털 링크 이메일 보내기"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "가족에게 교인 포털 링크를 이메일로 보내 정보를 검토하고 업데이트하게 하거나, 직접 만나 확인했다고 기록하세요."
+
+#: 
+msgid "Family is inactive"
+msgstr "비활성 가족입니다"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "첫 번째 회계 연도"
+
+#: 
+msgid "Fiscal Years"
+msgstr "회계 연도"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "헌금 명세서 — 견본"
+
+#: 
+msgid "Last invited"
+msgstr "마지막 초대"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "마지막 포털 로그인"
+
+#: 
+msgid "Last verified"
+msgstr "마지막 확인"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "이 가족의 활성 승인 교인 중 이메일 주소가 있는 사람이 없습니다. 대신 직접 만나 확인하세요."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "이 회계 연도들에 대한 서약을 찾을 수 없습니다."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "서약 비교"
+
+#: 
+msgid "Preview PDF"
+msgstr "PDF 미리보기"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "두 번째 회계 연도"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "이 이메일 주소로 교인 포털에 로그인하여 가족 정보를 검토하세요. 우리 가정 페이지에서 모든 내용이 맞는지 확인하거나 정보를 업데이트하세요."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "이 가족은 비활성 상태이므로 확인 이메일이 발송되지 않습니다."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "이 자가 등록 가족은 승인을 기다리고 있습니다. 승인하면 교인 포털에 로그인하여 정보를 검토하라는 초대 이메일이 가족에게 발송됩니다."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "저장된 설정과 가상의 견본 헌금만 사용합니다."
+
+#: 
+msgid "Verification"
+msgstr "확인"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "%d 가족에게 확인 이메일을 보냈습니다."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "가족 구성원에게 확인 이메일을 보냈습니다."
+
+#: 
+msgid "by the family in the portal"
+msgstr "가족이 포털에서"
+
+#: 
+msgid "in person by staff"
+msgstr "직원이 직접"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d 기본값이 다른 이유로 건너뛰어졌습니다(발생이 종료, 취소 또는 가득 찬 경우)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "전환용 설정입니다. 기존 봉사 기회 페이지와 새 사역 페이지를 모두 사용할 수 있으며, 인물 기록에 두 봉사 탭이 구분되어 표시됩니다. 교회를 V1에서 V2로 옮기는 동안 사용한 다음 V2만 사용하도록 전환하세요."
+
+#: 
+msgid "Assignment canceled"
+msgstr "배정이 취소되었습니다"
+
+#: 
+msgid "Canceled"
+msgstr "취소됨"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "취소해도 아무도 통지되지 않습니다: 이메일이 전송되지 않습니다. 과제는 유지되며, 취소된 동안 알림이 예약되지 않으며, 복원될 때까지 아무도 할당될 수 없습니다."
+
+#: 
+msgid "Color"
+msgstr "색상"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "이메일로 보낸 로그인 코드와 링크가 취소됨"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "가족 역할(세대주, 배우자, 자녀 등)은 기록 정리에 도움이 됩니다."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "발생이 취소되었습니다"
+
+#: 
+msgid "Prioritize translations"
+msgstr "번역 우선 순위 지정"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "배정을 취소하지 못했습니다"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "발생을 취소할 수 없었습니다"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "이 날짜는 취소되었습니다. 더 하실 일은 없습니다."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "이 회차는 취소되었습니다"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "교회가 운영하는 방식대로 구성한 봉사 관리입니다. 각 사역에는 팀과 직책이 있고, 사람은 직책의 자격을 갖추고 사역의 풀 그룹에 속합니다. 일정은 캘린더의 행사를 따르며 필요 인원이 있는 날짜별 회차를 만듭니다. 코디네이터가 사람을 배정하면 그 사람이 수락, 거절하거나 대체자를 제안하고, 알림은 이메일로 발송됩니다. 관리자와 사역 관리 권한이 있는 사용자는 모든 사역을 보고 만들고 비활성화하고 삭제할 수 있습니다. 사역 코디네이터에게는 대신 '내 사역 관리' 권한이 부여되며, 사이드바의 사역 제목 아래에는 자신이 코디네이트하는 사역만 표시됩니다. 팀 리더는 교인 포털에서 자기 팀을 운영합니다. 교인은 교인 포털에서 자신의 일정을 보고, 응답하고, 신청하고, 도움을 제안합니다."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "활성 설치 수와 업그레이드 결과 집계"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "데이터베이스 엔진 및 주/부 버전"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "오류 — 설치 통계, 경고, 오류 및 JS 예외"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "문제를 찾아 해결하도록 도와주시겠습니까?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "설치는 최소한의 설치 및 업그레이드 통계를 공유합니다. 오류는 경고와 오류 보고서를 추가합니다. 전체는 페이지 조회를 추가합니다. 없음은 실패한 설치와 업그레이드만 보냅니다."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "설치 — 설치 및 업그레이드 통계(기본값)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "설치 및 업그레이드 결과, 업그레이드 시 이전 버전, 사용 중 하루 한 번의 상태 확인"
+
+#: 
+msgid "Installation profile"
+msgstr "설치 프로필"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "로캘(오류 및 전체)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "절대 공유되지 않는 정보: 교인, 헌금 또는 기타 교회 기록, 교회 이름, 웹 주소나 서버 이름, 이메일 주소. 국가는 교회 설정에 있는 국가이며 네트워크에서 조회하지 않습니다."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "OS 계열(오류 및 전체)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP 버전(오류 및 전체)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "관리 → 원격 측정에서 공유되는 내용을 정확히 확인하거나 선택을 변경하세요."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "운영, 데모, 테스트 설치 구분"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "익명 설치 통계를 공유하시겠습니까?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "오류 및 사용 보고서 공유"
+
+#: 
+msgid "Share install statistics"
+msgstr "설치 통계 공유"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "추가로 공유되는 정보: 경고, 오류 세부 정보, 열린 페이지."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "공유되는 정보: ChurchCRM이 설치 또는 업그레이드되었는지와 성공 여부, 사용 중 하루 한 번의 상태 확인, 버전 번호, 국가, 데이터베이스 종류. 임의의 설치 ID로 각 설치를 한 번만 집계합니다."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "데이터베이스 호환성 파악"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "이 선택은 한 번만 묻습니다. 언제든지 변경할 수 있습니다. 괜찮습니다를 선택하면 실패한 설치나 업그레이드만 보고됩니다."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "데이터는 귀하의 것입니다. 설치는 설치 및 업그레이드 결과, 설치 ID, 소프트웨어 버전, 설치 프로필, 설정된 국가, 데이터베이스 엔진 및 주/부 버전만 공유합니다. 오류는 경고와 오류 세부 정보를 추가합니다. 전체는 페이지 조회를 추가합니다. 없음은 실패한 설치와 업그레이드만 보냅니다. 어떤 수준도 웹 주소나 서버 이름을 보내지 않습니다. 테스트 설치는 아무것도 보내지 않습니다. 원격 측정 데이터는 미국에 있는 PostHog로 전송됩니다."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "데이터는 귀하의 것입니다. 보고 내용은 소프트웨어에 관한 것이며 교회나 교인에 관한 것은 절대 아닙니다."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "데이터는 귀하의 것입니다. 설치 수를 집계하기 위해 ChurchCRM은 설치 또는 업그레이드되었는지와 성공 여부, 사용 중 하루 한 번의 상태 확인, 그리고 버전 번호, 국가, 데이터베이스 종류, 임의의 설치 ID를 보고합니다. 교인, 헌금 또는 기타 교회 기록, 교회 이름, 웹 주소나 서버 이름, 이메일 주소는 절대 보고하지 않습니다. 관리 → 원격 측정에서 언제든지 끌 수 있으며, 실패한 설치나 업그레이드는 계속 보고됩니다. 경고, 오류 세부 정보, 페이지 조회는 선택한 경우에만 공유됩니다."
 

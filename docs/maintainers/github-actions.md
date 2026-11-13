@@ -5,13 +5,13 @@ What each workflow in `.github/workflows/` does, what starts it, and what it sta
 ## Rules every workflow follows
 
 - **Deterministic work only.** Actions logs on a public repo are world-readable, and a model API key handed to a job is reachable from its steps, forked-PR runs and leaked logs. AI agents (translation, reviews, release notes) run outside Actions with their own credentials.
-- **Name the stage.** A workflow's display name is `<Area>: <what>` (`Locale: sync`). Its file name is `<area>-<what>.yml`.
+- **Name the stage.** A workflow's display name is `<Area>: <what>` (`Locale: extract terms`). Its file name is `<area>-<what>.yml`.
 - **Least privilege.** Every workflow sets a top-level `permissions:` (default `contents: read`) and raises it per job only where needed.
 - **One chain, no loops.** A workflow may start the next stage; nothing may start an earlier one. Triggers are scoped by `paths:` to what only the previous stage produces (see [Chains](#chains-and-why-they-do-not-loop)).
-- **Settle bursts.** A run started by a merge waits 30 minutes and restarts the wait on each newer merge, so several merges become one run (`Locale: sync`).
+- **Settle bursts once, at the start of a chain.** A run started by a merge waits (15 minutes by default) and restarts the wait on each newer merge, so several merges become one run (`Locale: extract terms`). Later stages in the same chain do not wait again. A manual run skips the wait. Give each workflow a `run-name:` that says what the run does, so the Actions list does not show the triggering commit's title.
 - **Idempotent steps.** A re-run, a manual run and a scheduled run must be safe. A trigger decides *when* a workflow runs, not *what* it does.
 - **Events from `GITHUB_TOKEN` do not chain.** A push, PR or merge made with `GITHUB_TOKEN` starts no other workflow (only `workflow_dispatch` / `repository_dispatch` do). One exception: `pull_request` events (`opened`, `synchronize`, `reopened`) on a PR that `GITHUB_TOKEN` opened or updated create runs that wait for approval instead of starting. Stages that must chain are started by a person's merge, a GitHub App, or an explicit `gh workflow run`.
-- **Queue what publishes, cancel what is superseded.** Builds and checks cancel an older run when a newer one starts. `Locale: sync` cancels only its settle wait and queues the work itself. Release, bookkeeping, Docker publish and `Locale: upload translations` queue instead (`cancel-in-progress: false`).
+- **Queue what publishes, cancel what is superseded.** Builds and checks cancel an older run when a newer one starts. `Locale: extract terms` cancels only its wait and queues the extraction. Release, bookkeeping and Docker publish queue instead (`cancel-in-progress: false`).
 
 ## Branches
 
@@ -48,7 +48,7 @@ The prefix says who made the branch and what it is for.
 
 ### Locale
 
-`Locale: terms`, `Locale: sync` and `Locale: upload translations`: see [locale-pipeline.md](locale-pipeline.md#workflows).
+`Locale: extract terms`: see [locale-pipeline.md](locale-pipeline.md#workflows). `Locale: sync POEditor` and `Locale: upload translations` are retired (manual only, removed by the follow-up to [#11416](https://github.com/ChurchCRM/CRM/issues/11416)); translations live in the repo.
 
 ### Release
 

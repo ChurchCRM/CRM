@@ -150,7 +150,7 @@ class EventService
         }
 
         if ($rangeStart > $rangeEnd) {
-            throw new \InvalidArgumentException(gettext('Range start must be before range end'));
+            throw new \InvalidArgumentException(gettext('Range start must be before range end.'));
         }
 
         [$recurType, $dow, $dom, $doy, $wom] = $this->resolveRecurrence($data, $type);

@@ -20,7 +20,7 @@ describe("Confirm Report PDF Generation - Null Value Fix", () => {
         cy.setupAdminSession();
         // Visit any authenticated HTML page to load session cookies into browser
         // context before we intercept and navigate to the PDF endpoint.
-        cy.visit("LettersAndLabels.php");
+        cy.visit("/people/reports/letters-and-labels");
     });
 
     it("should generate Confirm Report PDF for all families without null conversion error", () => {

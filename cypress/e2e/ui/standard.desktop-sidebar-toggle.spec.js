@@ -44,6 +44,19 @@ function capture(name) {
     cy.screenshot(name, { capture: "viewport", scale: true });
 }
 
+function expectOpenMenuBelowHeader() {
+    cy.get("#sidebar-menu")
+        .should("have.class", "show")
+        .and("not.have.class", "collapsing");
+    cy.scrollTo("top");
+    cy.get("#sidebar").should(($sidebar) => {
+        const header = $sidebar[0].ownerDocument.getElementById("topbar").getBoundingClientRect();
+        expect(header.top).to.be.closeTo(0, 1);
+        expect($sidebar[0].getBoundingClientRect().top).to.be.closeTo(header.bottom, 1);
+    });
+}
+
+
 describe("Staff folded sidebar preference", () => {
     beforeEach(() => {
         cy.setupStandardSession();
@@ -170,13 +183,9 @@ describe("Staff folded sidebar preference", () => {
                 });
                 expectLayout(0);
                 capture(`sidebar-${name}-${width}x820-${theme}-closed`);
+                cy.scrollTo(0, 40);
                 cy.get("#menu-toggle").should("be.visible").click();
-                cy.get("#sidebar-menu").should("have.class", "show");
-                cy.get("#sidebar").should(($sidebar) => {
-                    const header = $sidebar[0].ownerDocument.getElementById("topbar").getBoundingClientRect();
-                    expect(header.top).to.be.closeTo(0, 1);
-                    expect($sidebar[0].getBoundingClientRect().top).to.be.closeTo(header.bottom, 1);
-                });
+                expectOpenMenuBelowHeader();
                 expectLayout(0);
                 capture(`sidebar-${name}-${width}x820-${theme}-open`);
                 cy.get("#menu-toggle").click();

@@ -887,10 +887,6 @@ msgid "Do you want to proceed?"
 msgstr "Haluatko jatkaa?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Olet lähettämässä sähköpostitse kopion perheen tiedoista seuraaviin osoitteisiin"
-
-#: 
 msgid "Financial Reports"
 msgstr "Talousraportit"
 
@@ -1504,7 +1500,7 @@ msgstr "Vähintään yhdellä rahastolla on oltava nollaa suurempi summa."
 
 #: 
 msgid "Must specify non-zero check number"
-msgstr "On annettava shekin numero"
+msgstr "Shekin numeron on oltava muu kuin nolla"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
@@ -1810,10 +1806,6 @@ msgstr "Puhelinnumero"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Mukautettu pudotusvalikko"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF lähetetty sähköpostitse perheenjäsenille."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3854,10 +3846,6 @@ msgid "Please verify your family's information"
 msgstr "Vahvista perheesi tiedot"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Vahvistustietojen lataaminen epäonnistui"
-
-#: 
 msgid "No Changes"
 msgstr "Ei muutoksia"
 
@@ -3870,24 +3858,8 @@ msgid "Oops! Page not found."
 msgstr "Hups! Sivua ei löytynyt."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Aloita perheesi tietojen vahvistus syöttämällä seuraavat tiedot"
-
-#: 
-msgid "Family Verification"
-msgstr "Perheen vahvistus"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Pyydä perhetietojen vahvistusta"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Valitse, miten haluat pyytää perhetietojen vahvistusta"
-
-#: 
-msgid "Online Verification"
-msgstr "Verkkovahvistus"
 
 #: 
 msgid "Verified In Person"
@@ -4067,10 +4039,6 @@ msgstr "Ominaisuuden poisto onnistui."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Ominaisuuden poisto epäonnistui."
-
-#: 
-msgid "Select event"
-msgstr "Valitse tapahtuma"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4277,10 +4245,6 @@ msgid "Kiosk Manager"
 msgstr "Kioskin hallinta"
 
 #: 
-msgid "Report an issue"
-msgstr "Ilmoita ongelmasta"
-
-#: 
 msgid "Self Verification"
 msgstr "Itsevahvistus"
 
@@ -4309,10 +4273,6 @@ msgstr "Arabia - Egypti"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Odottaa itsevahvistusta"
 
 #: 
 msgid "Self Verify"
@@ -4694,16 +4654,8 @@ msgid "User must have Delete Records permission"
 msgstr "Käyttäjällä on oltava oikeus poistaa tietueita"
 
 #: 
-msgid "invalid event type id"
-msgstr "virheellinen tapahtumatyypin tunniste"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "virheellinen kalenterin kiinnitys"
-
-#: 
-msgid "invalid status value"
-msgstr "virheellinen tilan arvo"
 
 #: 
 msgid "invalid export value"
@@ -5304,10 +5256,6 @@ msgstr "Päivitetään järjestelmää..."
 
 #: 
 msgid "Back to Login"
-msgstr "Takaisin kirjautumiseen"
-
-#: 
-msgid "Back to login"
 msgstr "Takaisin kirjautumiseen"
 
 #: 
@@ -6544,10 +6492,6 @@ msgid "Additional Information"
 msgstr "Lisätiedot"
 
 #: 
-msgid "All information is correct"
-msgstr "Kaikki tiedot ovat oikein"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Määritä mahdollisuudet"
 
@@ -6560,20 +6504,12 @@ msgid "Choose opportunities..."
 msgstr "Valitse mahdollisuudet..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Vahvista perheen tiedot"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Yhteystiedot ja henkilötiedot"
 
 #: 
 msgid "Edited"
 msgstr "Muokattu"
-
-#: 
-msgid "Email PDF"
-msgstr "Lähetä sähköpostilla PDF"
 
 #: 
 msgid "Newsletter"
@@ -6584,40 +6520,12 @@ msgid "Personal"
 msgstr "Henkilökohtainen"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Päivitä tietueitamme korjauksilla"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Anna tässä mahdolliset korjaukset tai lisätiedot..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Valitse mahdollisuudet"
 
 #: 
-msgid "Submit Verification"
-msgstr "Lähetä vahvistus"
-
-#: 
-msgid "Thank You!"
-msgstr "Kiitos!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Vieraile verkkosivuiltamme"
-
-#: 
 msgid "Volunteer"
 msgstr "Vapaaehtoinen"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Vahvistuksesi käsittelyssä tapahtui virhe. Yritä uudelleen tai ota meihin yhteyttä suoraan."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Vahvistuspyyntösi on vastaanotettu. Kiitos tietojesi pitämisestä ajan tasalla."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8077,10 +7985,6 @@ msgid "City is required."
 msgstr "Kaupunki on pakollinen."
 
 #: 
-msgid "Clear filter"
-msgstr "Tyhjennä suodatin"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Kokoonpanokohdetta ei löydy"
 
@@ -8349,10 +8253,6 @@ msgstr "Lisää henkilö"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Lisää kaikki valinnan kohteet ryhmään"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Lisää kaikki valintaan"
 
 #: 
 msgid "Add cart items to a family"
@@ -8859,10 +8759,6 @@ msgid "Family Profile"
 msgstr "Perheen profiili"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Perheroolit (perheen pää, puoliso, lapsi jne.) auttavat järjestämään tietueita."
-
-#: 
 msgid "Family vs Person"
 msgstr "Perhe vs. henkilö"
 
@@ -9361,10 +9257,6 @@ msgid "Record why attendees visited your church"
 msgstr "Kirjaa, miksi kävijät vierailivat seurakunnassasi"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Poista kaikki valinnasta"
-
-#: 
 msgid "Remove from Class"
 msgstr "Poista luokasta"
 
@@ -9835,10 +9727,6 @@ msgstr "Tämän vuoden tapahtumat"
 #: 
 msgid "Everyone"
 msgstr "Kaikki"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Muistiinpanon poistaminen epäonnistui"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11738,10 +11626,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Aikavälin alkamispäivän on oltava kelvollinen VVVV-KK-PP-päivämäärä."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Aikavälin alkamispäivän on oltava ennen päättymispäivää"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Aikavälin alkamispäivän on oltava ennen päättymispäivää."
 
@@ -11962,10 +11846,6 @@ msgid "Cannot move property in that direction"
 msgstr "Ominaisuutta ei voi siirtää kyseiseen suuntaan"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Vahvista perhetiedot"
-
-#: 
 msgid "Delete failed"
 msgstr "Poisto epäonnistui"
 
@@ -12006,20 +11886,12 @@ msgid "Invalid target family"
 msgstr "Virheellinen kohdeperhe"
 
 #: 
-msgid "Log Out"
-msgstr "Kirjaudu ulos"
-
-#: 
 msgid "Membership not found"
 msgstr "Jäsenyyttä ei löydy"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Salasana vaihdettu onnistuneesti käyttäjälle"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Tarkasta alla olevat perhetietosi ja vahvista tai pyydä muutoksia."
 
 #: 
 msgid "Please select a target family."
@@ -12702,10 +12574,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Laajennuksen asentaminen URL:sta epäonnistui"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Hyväksyttyjen laajennusten luettelon lataaminen epäonnistui"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Hyväksyttyjen laajennusten luettelon lataaminen epäonnistui."
 
@@ -12764,10 +12632,6 @@ msgstr "Kebab-case-muoto. Täytyy vastata zip-tiedoston ylimmän tason hakemisto
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Ladataan hyväksyttyjen laajennusten luetteloa…"
-
-#: 
-msgid "Loading…"
-msgstr "Ladataan…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13215,10 +13079,6 @@ msgid "Change Your Locale"
 msgstr "Muuta alueasetusCasi"
 
 #: 
-msgid "Change role"
-msgstr "Vaihda rooli"
-
-#: 
 msgid "Check Number"
 msgstr "Shekin numero"
 
@@ -13233,10 +13093,6 @@ msgstr "Sisäänkirjaus epäonnistui. Yritä uudelleen."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Uloskirjaus epäonnistui. Yritä uudelleen."
-
-#: 
-msgid "City is required"
-msgstr "Kaupunki on pakollinen"
 
 #: 
 msgid "Click Save to apply."
@@ -13305,10 +13161,6 @@ msgstr "Kopioi kaikki numerot"
 #: 
 msgid "Copy Members to Group"
 msgstr "Kopioi jäsenet ryhmään"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Luodaan varmuuskopio..."
 
 #: 
 msgid "Creating..."
@@ -13493,10 +13345,6 @@ msgstr "Lisääminen ostoskoriin epäonnistui"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Ilmoittautumisen peruuttaminen epäonnistui. Yritä uudelleen."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "URL-osoitteen kopiointi epäonnistui"
 
 #: 
 msgid "Failed to create backup."
@@ -13887,10 +13735,6 @@ msgid "One-Time Code"
 msgstr "Kertakäyttöinen koodi"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Avaa uudessa välilehdessä"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Avaa todennussovelluksesi ja skannaa tämä QR-koodi"
 
@@ -14167,10 +14011,6 @@ msgid "Setup Complete"
 msgstr "Määritys valmis"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Jaa tämä URL-osoite perheenjäsenille heidän tietojensa vahvistamiseksi"
-
-#: 
 msgid "Show more options"
 msgstr "Näytä lisää vaihtoehtoja"
 
@@ -14323,10 +14163,6 @@ msgid "Validation pending"
 msgstr "Validointi odottaa"
 
 #: 
-msgid "Verification URL"
-msgstr "Vahvistus-URL"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Vahvistus epäonnistui. Yritä uudelleen."
 
@@ -14391,10 +14227,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Saat varakoodeja, joita voit käyttää, jos menetät pääsyn sovellukseesi"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Ostoskorisi on tyhjä"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Tilisi on nyt suojattu"
 
@@ -14413,10 +14245,6 @@ msgstr "Selaimesi kieliasetukset poikkeavat ChurchCRM-aluesuunnatuksestasi"
 #: 
 msgid "Your database already contains data"
 msgstr "Tietokannassasi on jo tietoja"
-
-#: 
-msgid "Zip code is required"
-msgstr "Postinumero on pakollinen"
 
 #: 
 msgid "added"
@@ -14837,10 +14665,6 @@ msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tähän perheeseen."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Sinulla ei ole oikeutta lisätä muistiinpanoa tälle henkilölle."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Sinulla ei ole oikeutta muokata tätä muistiinpanoa"
 
 #: 
 msgid "Account locked"
@@ -15663,10 +15487,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Vahvista tämän perheen tietueen poistaminen"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Vahvista perhetietosi"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Valitse toinen perhe, johon nämä lahjoitukset liitetään"
 
@@ -15887,10 +15707,6 @@ msgid "Select a person"
 msgstr "Valitse henkilö"
 
 #: 
-msgid "Select role"
-msgstr "Valitse rooli"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Valitse tyyppi (valinnainen)"
 
@@ -16047,10 +15863,6 @@ msgid "At least one fund allocation is required"
 msgstr "Vähintään yksi rahaston kohdistus vaaditaan"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Vähintään yhdellä rahastolla on oltava nollasta poikkeava summa"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "Lähetä syntymäpäiväonnittelusähköposti automaattisesti henkilöille heidän syntymäpäivänään"
 
@@ -16127,18 +15939,6 @@ msgid "Editing a Pledge"
 msgstr "Sitoumuksen muokkaaminen"
 
 #: 
-msgid "Enable (full)"
-msgstr "Ota käyttöön (täysi)"
-
-#: 
-msgid "Errors only"
-msgstr "Vain virheet"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Virheet — palvelinvirheet ja JS-poikkeukset"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Sitoumuksen luominen epäonnistui"
 
@@ -16177,10 +15977,6 @@ msgstr "Ryhmäavain vaaditaan"
 #: 
 msgid "Happy Birthday"
 msgstr "Hyvää syntymäpäivää"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Auta parantamaan ChurchCRM:ää"
 
 #: 
 msgid "IP addresses"
@@ -16251,16 +16047,8 @@ msgid "None (disabled)"
 msgstr "Ei mitään (poistettu käytöstä)"
 
 #: 
-msgid "OS family"
-msgstr "Käyttöjärjestelmäperhe"
-
-#: 
 msgid "Overpaid"
 msgstr "Ylimaksuttu"
-
-#: 
-msgid "PHP version"
-msgstr "PHP-versio"
 
 #: 
 msgid "Page route"
@@ -16297,10 +16085,6 @@ msgstr "Sitoumuksen ryhmää ei löydy"
 #: 
 msgid "Pledges & Payments"
 msgstr "Sitoumukset & maksut"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Priorisoi käännökset"
 
 #: 
 msgid "Purpose"
@@ -16365,10 +16149,6 @@ msgstr "Käyttäjänimet, sähköpostit tai roolit"
 #: 
 msgid "View pledge or payment details"
 msgstr "Näytä sitoumuksen tai maksun tiedot"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Varoitukset — varoitukset, virheet ja JS-poikkeukset"
 
 #: 
 msgid "What is sent"
@@ -16502,11 +16282,11 @@ msgstr "Syota roolin nimi"
 
 #: 
 msgid "Failed to create deposit"
-msgstr "Talletuksen luonti epaonnistui"
+msgstr "Talletuksen luonti epäonnistui"
 
 #: 
 msgid "Failed to load email preview"
-msgstr "Sahkopostin esikatselun lataus epaonnistui"
+msgstr "Sähköpostin esikatselun lataus epäonnistui"
 
 #: 
 msgid "From Date"
@@ -16558,17 +16338,11 @@ msgstr "Yhtaan perhetta sahkopostiosoitteella ei loytynyт. Mitaan ei lahetetty.
 
 #: 
 msgid "No payments found for the selected deposits"
-msgstr "Valituille talletuksille ei loytynyт maksuja"
+msgstr "Valituille talletuksille ei löytynyt maksuja"
 
 #: 
 msgid "No valid deposit IDs provided"
-msgstr "Yhtaan kelvollista talletustunnusta ei annettu"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF lähetetty onnistuneesti %d perheelle sähköpostitse."
-msgstr[1] "PDF lähetetty onnistuneesti %d perheelle sähköpostitse."
+msgstr "Yhtään kelvollista talletustunnusta ei annettu"
 
 #: 
 msgid "Partial Send"
@@ -16640,7 +16414,7 @@ msgstr "Loppupaivamaara"
 
 #: 
 msgid "Total Pledged"
-msgstr "Yhteensa luvattu"
+msgstr "Yhteensä luvattu"
 
 #: 
 msgid "Unexpected error while sending emails. Please check logs."
@@ -16656,7 +16430,7 @@ msgstr "Nayta maksu"
 
 #: 
 msgid "View Pledge"
-msgstr "Nayta lupaus"
+msgstr "Näytä lupaus"
 
 #: 
 msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
@@ -17109,10 +16883,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Luodaan ja lähetetään varmuuskopiota. Tämä voi kestää useita minuutteja..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Tietokannan nollaus epäonnistui."
-
-#: 
 msgid "Deceased"
 msgstr "Kuollut"
 
@@ -17309,10 +17079,6 @@ msgid "Log settings saved"
 msgstr "Lokiasetukset tallennettu"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Kirjautumistunnus on pakollinen"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Henkilö merkitty aktiiviseksi"
 
@@ -17437,10 +17203,6 @@ msgid "Sending..."
 msgstr "Lähetetään..."
 
 #: 
-msgid "Sending…"
-msgstr "Lähetetään…"
-
-#: 
 msgid "Settings reset"
 msgstr "Asetukset nollattu"
 
@@ -17509,16 +17271,8 @@ msgid "Upcoming"
 msgstr "Tulevat"
 
 #: 
-msgid "Valid Until"
-msgstr "Voimassa asti"
-
-#: 
 msgid "View active only"
 msgstr "Näytä vain aktiiviset"
-
-#: 
-msgid "View all"
-msgstr "Näytä kaikki"
 
 #: 
 msgid "View all (including inactive)"
@@ -18297,10 +18051,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Tilikautesi alkaa %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Tapahtui virhe"
-
-#: 
 msgid "Approve"
 msgstr "Hyväksy"
 
@@ -18471,12 +18221,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d päivä"
 msgstr[1] "%d päivää"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d oletus ohitettu toisesta syystä (tapahtumakerta on ohi, peruttu tai täynnä)"
-msgstr[1] "%d oletusta ohitettu toisesta syystä (tapahtumakerta on ohi, peruttu tai täynnä)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18739,10 +18483,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Teema on kansio, jonka seurakuntasi lataa palvelimelle hakemistoon Include/themes/. Järjestelmän oletusteema tulee ChurchCRM:n mukana."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Siirtymäasetus. Vanhat Vapaaehtoistehtävät-sivut ja uudet Työalat-sivut ovat molemmat käytettävissä, ja henkilön tietueessa näkyy molemmat Vapaaehtoinen-välilehdet selkeästi nimettyinä. Käytä tätä, kun siirrät seurakuntaa V1:stä V2:een, ja vaihda sitten pelkkään V2:een."
-
-#: 
 msgid "A volunteer"
 msgstr "Vapaaehtoinen"
 
@@ -18947,10 +18687,6 @@ msgid "Assigned outside the current plan"
 msgstr "Määritetty nykyisen suunnitelman ulkopuolelle"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Tehtävämääritys peruttu"
-
-#: 
 msgid "Assignment not found"
 msgstr "Tehtävämääritystä ei löytynyt"
 
@@ -19057,10 +18793,6 @@ msgstr "Peruuta tehtävämääritys"
 #: 
 msgid "Cancel this assignment"
 msgstr "Peruuta tämä tehtävämääritys"
-
-#: 
-msgid "Cancelled"
-msgstr "Peruttu"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19217,10 +18949,6 @@ msgstr "Seurakunnan verkkosivusto"
 #: 
 msgid "Close event details"
 msgstr "Sulje tapahtuman tiedot"
-
-#: 
-msgid "Colour"
-msgstr "Väri"
 
 #: 
 msgid "Completed"
@@ -19467,10 +19195,6 @@ msgid "Each staffing need must name a position"
 msgstr "Jokaiselle miehitystarpeelle on annettava tehtävä"
 
 #: 
-msgid "Edit event"
-msgstr "Muokkaa tapahtumaa"
-
-#: 
 msgid "Edit ministry"
 msgstr "Muokkaa työalaa"
 
@@ -19555,10 +19279,6 @@ msgstr "Sähköpostit lähetetty {{count}} vastaanottajalle."
 #: 
 msgid "Emails"
 msgstr "Sähköpostit"
-
-#: 
-msgid "End time"
-msgstr "Lopetusaika"
 
 #: 
 msgid "Enter counts"
@@ -20839,10 +20559,6 @@ msgid "SMTP test"
 msgstr "SMTP-testi"
 
 #: 
-msgid "Save changes"
-msgstr "Tallenna muutokset"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Tallennettu – tämä työala ei enää pyydä apua"
 
@@ -21125,10 +20841,6 @@ msgstr "Miehitystarpeet tallennettu"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Aloita luomalla työala ja lisää sitten tiimit ja tehtävät, jotka siinä palvelevat."
-
-#: 
-msgid "Start time"
-msgstr "Aloitusaika"
 
 #: 
 msgid "Start typing a name"
@@ -21477,10 +21189,6 @@ msgstr "Osoite on valittuna – kopioi se näppäimistöllä."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Resurssipolku ”%s” ei ole sallittu."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "Tehtävämääritystä ei voitu peruuttaa"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22007,10 +21715,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Tämä tapahtumakerta on jo tapahtunut, eikä sen tehtävämäärityksiä voi enää muuttaa"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Tämä tapahtumakerta on peruttu"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Tällä tapahtumakerralla on omat miehitystarpeensa, erillään aikataulusta."
 
@@ -22179,16 +21883,8 @@ msgid "Validation"
 msgstr "Tarkistus"
 
 #: 
-msgid "View event"
-msgstr "Näytä tapahtuma"
-
-#: 
 msgid "View my schedule"
 msgstr "Näytä aikatauluni"
-
-#: 
-msgid "View person"
-msgstr "Tarkastele henkilöä"
 
 #: 
 msgid "View the event"
@@ -22237,10 +21933,6 @@ msgstr "Vapaaehtoisten ajat"
 #: 
 msgid "Volunteering"
 msgstr "Vapaaehtoistyö"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Vapaaehtoistyö seurakunnan tavalla järjestettynä. Jokaisella työalalla on tiimejä ja tehtäviä; ihmiset kelpuutetaan tehtäviin ja kuuluvat työalan joukkoryhmään; aikataulut seuraavat kalenterin tapahtumia ja tuottavat päivättyjä tapahtumakertoja miehitysvaatimuksineen; koordinaattorit määräävät ihmisiä, jotka hyväksyvät, kieltäytyvät tai ehdottavat sijaista; muistutukset ja hälytykset lähtevät sähköpostitse. Ylläpitäjät ja käyttäjät, joilla on Hallitse työaloja -oikeus, näkevät kaikki työalat ja voivat luoda, poistaa käytöstä ja poistaa niitä. Työalan koordinaattorille annetaan sen sijaan Hallitse omia työalojani -oikeus: sivupalkin Työalat-otsikon alla näkyvät silloin vain työalat, joita hän koordinoi. Tiimin vetäjä johtaa tiimiään Jäsenportaalista. Jäsenet käyttävät Jäsenportaalia nähdäkseen aikataulunsa, vastatakseen, ilmoittautuakseen ja tarjotakseen apua."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22779,10 +22471,6 @@ msgid "Cancel this occurrence"
 msgstr "Peruuta tämä tapahtuma"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Peruuttaminen ei ilmoita kenellekään: sähköpostia ei lähetetä. Tehtävät säilytetään, muistutuksia ei aikatauluteta sen ollessa peruutettu, eikä ketään voi määrittää ennen kuin se palautetaan."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Poistetut tapahtumat poistuvat jokaisesta kalenterista sisään- ja poistumisiensa ja saapuvuuksien kanssa, ja tämän palvelun henkilöstö säilyttää vain sen päivämäärän. Tätä ei voi kumota."
 
@@ -22793,10 +22481,6 @@ msgstr "Tapahtumat poistettu: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Poistettavat tapahtumat: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Tapahtuma peruutettu"
 
 #: 
 msgid "Occurrence restored"
@@ -22813,10 +22497,6 @@ msgstr "Palauta tapahtuma"
 #: 
 msgid "Restore this occurrence"
 msgstr "Palauta tämä tapahtuma"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Tapahtumaa ei voitu peruuttaa"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -22876,7 +22556,7 @@ msgstr "Kioskin asetukset"
 
 #: 
 msgid "Please enter a check number"
-msgstr "Kirjoita sekin numero"
+msgstr "Kirjoita shekin numero"
 
 #: 
 msgid "Register & Check In"
@@ -22897,12 +22577,6 @@ msgstr "Rekisteröity vieraana kioskin kautta tapahtuman aikana: %s"
 #: 
 msgid "Registering..."
 msgstr "Rekisteröinnin..."
-
-#: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Vaadi sekin numero tallennettaessa sekin maksuja tallennusmerkintöihin.\n"
-"Huomio: tämän poistaminen käytöstä poistaa myös kaksoissekinumeron havaitsemisen - sama fyysinen sekki voidaan antaa useammin kuin kerran."
 
 #: 
 msgid "This event has ended"
@@ -24823,28 +24497,12 @@ msgid "Closing Line"
 msgstr "Loppurivi"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Ohjaa valinnaista telemetriaa. Asennuksen ja tietokantapäivityksen epäonnistumiset lähettävät rajalliset vianmääritystiedot PostHogiin, vaikka telemetria olisi pois päältä. Näissä virheraporteissa on ohjelmiston ja ympäristön versiot sekä puhdistettu tietokantavirhe, mutta ei asennustunnusta eikä SQL-lausetta."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Selvitä epäonnistuneet asennukset ja tietokantapäivitykset"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Asennuksen ja päivityksen epäonnistumisen tiedot"
-
-#: 
 msgid "Open in browser window"
 msgstr "Avaa selainikkunassa"
 
 #: 
 msgid "Opening Line"
 msgstr "Alkurivi"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Valinnaista käyttötelemetriaa lähetetään vain, kun se on käytössä. Asennuksen ja tietokantapäivityksen epäonnistumiset lähettävät aina rajallisen vianmäärityksen yhteisön avuksi, vaikka valitsisit Ei kiitos. Virheraporteissa on ohjelmiston ja ympäristön versiot sekä puhdistettu tietokantavirhe, ilman asennustunnusta tai SQL-lausetta."
 
 #: 
 msgid "PDF Handling"
@@ -24881,18 +24539,6 @@ msgstr "Todistuksen sanamuoto"
 #: 
 msgid "Tax Information"
 msgstr "Verotiedot"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetria lähetetään PostHogiin Yhdysvaltoihin. Asennuksen ja päivityksen virheraportit lähetetään, vaikka valinnainen telemetria olisi pois käytöstä."
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Tämä päivä on peruttu. Sinulta ei tarvita enää mitään."
-
-#: 
-msgid "always sent"
-msgstr "lähetetään aina"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25357,10 +25003,6 @@ msgstr "Sähköposti tarvitsee huomiota"
 #: 
 msgid "Email problem"
 msgstr "Sähköpostiongelma"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Sähköpostitse lähetetty kirjautumiskoodi ja linkki peruttiin"
 
 #: 
 msgid "Emailed verification link"
@@ -25953,10 +25595,6 @@ msgstr "Toimistolistalla voi olla vain elossa olevia henkilöitä, joilla on oma
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Lisätä voi vain henkilöitä, joilla on oma sähköpostiosoite."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Valinnainen telemetria voi sisältää sivureittejä, käytössä olevan kielen, CRM-version, PHP-version, käyttöjärjestelmäperheen, maan seurakunnan tietojen asetuksista ja satunnaisen asennustunnuksen. Virheraportit eivät sisällä asennustunnusta. Tiedot lähetetään PostHogiin Yhdysvaltoihin."
 
 #: 
 msgid "Passkey"
@@ -27127,10 +26765,584 @@ msgid "A request was made in the Member Portal to change your email address at %
 msgstr "Jäsenportaalissa pyydettiin vaihtamaan sähköpostiosoitteesi sivustolla %1$s osoitteesta %2$s osoitteeseen %3$s. Muutos tapahtuu vasta, kun uuteen osoitteeseen lähetettyä linkkiä käytetään."
 
 #: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Tarkista perheesi tiedot alla olevasta linkistä. Valitse tarkistussivulla ”Vahvista perheen tiedot” vahvistaaksesi, että kaikki on oikein, tai lähetä korjaukset seurakunnan toimistoon."
-
-#: 
 msgid "Review Family Information"
 msgstr "Tarkista perheen tiedot"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Työala nimeltä \"%s\" on jo olemassa. Valitse se luettelosta tai valitse toinen nimi."
+
+#: 
+msgid "A new ministry"
+msgstr "Uusi työala"
+
+#: 
+msgid "A position"
+msgstr "Tehtävä"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Lisätäänkö {{total}} vapaaehtoista aiemmin muunnettuihin tehtäviin?"
+
+#: 
+msgid "Already converted"
+msgstr "Jo muunnettu"
+
+#: 
+msgid "An existing ministry"
+msgstr "Olemassa oleva työala"
+
+#: 
+msgid "Becomes"
+msgstr "Muuttuu"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM:ssä on kaksi tapaa hallita vapaaehtoisia. Vain yhden on tarkoitus olla käytössä kerrallaan; Vapaaehtoiskokemus-asetus ratkaisee, kumman tämä seurakunta näkee. Vaihtaminen piilottaa tai näyttää sivuja ja valikon kohtia eikä koskaan poista tietoja. V1 ja Molemmat ovat tarjolla vain niin kauan kuin vapaaehtoistyömahdollisuudet ovat käytössä: kun jokainen mahdollisuus on muunnettu ja seurakunta käyttää V2:ta, ne poistuvat tästä luettelosta."
+
+#: 
+msgid "Convert"
+msgstr "Muunna"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Muunna vapaaehtoistyömahdollisuudet"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Muunnetaanko {{total}} mahdollisuutta nyt? V1-tiedot säilyvät ennallaan, kunnes vapaaehtoistyömahdollisuudet poistetaan käytöstä."
+
+#: 
+msgid "Converted"
+msgstr "Muunnettu"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Muunnettu: {{positions}} tehtävää ja {{ministries}} työalaa, {{qualifications}} vapaaehtoista pätevöity."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Jokaisesta mahdollisuudesta tulee tehtävä yhden työalan ensimmäiseen tiimiin, ja kaikki siihen liitetyt saavat pätevyyden tähän tehtävään. Itseilmoittautuminen on aluksi pois päältä näissä tehtävissä."
+
+#: 
+msgid "Everything is converted."
+msgstr "Kaikki on muunnettu."
+
+#: 
+msgid "Existing ministry"
+msgstr "Olemassa oleva työala"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Anna uudelle työalalle enintään 100 merkin nimi."
+
+#: 
+msgid "Its own ministry"
+msgstr "Oma työala"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Liitetty sen jälkeen: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Linkit, joita ei voi muuntaa"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Omat uudet työalat"
+
+#: 
+msgid "New ministry name"
+msgstr "Uuden työalan nimi"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Sähköpostia ei lähetetä, ja vapaaehtoistyömahdollisuudet säilyvät ennallaan, kunnes ne poistetaan käytöstä."
+
+#: 
+msgid "No name"
+msgstr "Ei nimeä"
+
+#: 
+msgid "Not converted"
+msgstr "Ei muunnettu"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Avaa ominaisuuksien kytkimet"
+
+#: 
+msgid "Open Ministries"
+msgstr "Avaa työalat"
+
+#: 
+msgid "Opportunities"
+msgstr "Mahdollisuudet"
+
+#: 
+msgid "Opportunity"
+msgstr "Mahdollisuus"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Mahdollisuus #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Muunnettuihin vapaaehtoistyömahdollisuuksiin muunnoksen jälkeen liitetyt henkilöt: %d. Lisää heidät tehtäviinsä ennen kuin vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Esikatsele muunnos ensin ja lähetä sen palauttama versio."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Nimetty uudelleen, jotta nimet pysyvät yksilöllisinä"
+
+#: 
+msgid "Review the conversion"
+msgstr "Tarkista muunnos"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Lähetä muunnosvalinta JSON-objektina."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Lähetä työaloiksi muuttuvat mahdollisuudet tunnisteluettelona."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Työalaa ei ole olemassa."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "ChurchCRM-versio, jossa ylläpitäjä sulki ilmoituksen vapaaehtoistyömahdollisuuksien poistamisesta käytöstä."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Vapaaehtoistyömahdollisuudet ovat muuttuneet esikatselun jälkeen. Tarkista esikatselu uudelleen ja muunna sitten."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Vahvistusta ei voitu avata. Lataa sivu uudelleen ja yritä uudelleen."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Muunnosta ei voitu esikatsella."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Muunnos epäonnistui. Mitään ei muutettu."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Työalalla \"%s\" ei ole tiimiä tehtäviä varten."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Palvelimeen ei saatu yhteyttä. Lataa sivu uudelleen nähdäksesi, suoritettiinko muunnos."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Muunnettavia vapaaehtoistyömahdollisuuksia ei ole."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Vapaaehtoisten hallinta vaihtuu tilaan Molemmat, jotta uudet työalat näkyvät vapaaehtoistyömahdollisuuksien rinnalla."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Vapaaehtoistyömahdollisuudet poistetaan käytöstä"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Vapaaehtoistyömahdollisuudet muunnettu"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027. Muunna ne työaloiksi, jotta tieto siitä, kuka palvelee missäkin, säilyy."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027. Muunna nyt %1$d mahdollisuutta ja %2$d vapaaehtoista työaloiksi. Voit esikatsella tuloksen ennen kuin mitään muutetaan."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Pätevöidyt vapaaehtoiset"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Muunnettuihin tehtäviin lisättävät vapaaehtoiset"
+
+#: 
+msgid "What it becomes"
+msgstr "Miksi se muuttuu"
+
+#: 
+msgid "What will happen"
+msgstr "Mitä tapahtuu"
+
+#: 
+msgid "Where they go"
+msgstr "Minne ne menevät"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Mitkä vanhat vapaaehtoistyömahdollisuudet on muunnettu ja miksi tehtäväksi kukin muuttui."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Mitä vapaaehtoiskokemusta tämä seurakunta käyttää. Vapaaehtoistyömahdollisuudet (V1) poistetaan käytöstä alkuvuodesta 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Vapaaehtoistyömahdollisuutesi on muunnettu työaloiksi. Vaihda vapaaehtoisten hallinta tilaan V2 ennen kuin vapaaehtoistyömahdollisuudet poistetaan käytöstä alkuvuodesta 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "uudeksi työalaksi, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "työalaan {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "ei enää ChurchCRM:ssä"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Pienennä sivupalkki"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Laajenna sivupalkki"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Anna kelvollinen sähköpostiosoite, jossa on ennen @-merkkiä vain ASCII-merkkejä."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Sähköpostiosoite ei ole kelvollinen"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Haluatko varmasti poistaa kohteen {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Järjestelmätietoja ei voitu kerätä. Yritä uudelleen."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Tältä ajanjaksolta ei löytynyt maksuja."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Maksut rahastoittain"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Tuntematon rahasto"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Pyydä palveluntarjoajaasi siirtämään tietokanta tuettuun versioon ja yritä sitten uudelleen."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Pyydä palveluntarjoajaasi siirtämään tietokanta tuettuun versioon."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Pyhäpäivien nimet näytetään kunkin käyttäjän kieliasetuksen mukaan. Jos pyhäpäivällä ei ole nimeä kyseisellä kielellä, se näytetään englanniksi."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Pyhäpäivien nimet omalla kielelläsi"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Vaadi shekin numero, kun shekkimaksuja kirjataan talletuksiin. Kun asetus on pois päältä, shekin voi tallentaa tyhjällä tai 0-numerolla, eikä niitä tarkisteta kaksoiskappaleiden varalta."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Vaadi shekin numero shekkimaksuissa"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "Päivitystä ei aloitettu, joten mitään ei muutettu."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Tätä päivitystä ei voi suorittaa tietokannassasi."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Tietokantapalvelimesi (%1$s %2$s) on vanhempi kuin ChurchCRM tukee (MySQL %3$s tai MariaDB %4$s ja uudemmat)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Hyväksy tämä itse rekisteröitynyt perhe ennen kuin sille lähetetään vahvistussähköposti"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "Vertaa perheiden lupausten kokonaismääriä kahden tilivuoden välillä."
+
+#: 
+msgid "Email Portal Link"
+msgstr "Lähetä portaalin linkki sähköpostilla"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "Lähetä perheelle sähköpostilla linkki jäsenportaaliin, jossa se voi tarkistaa ja päivittää tietonsa, tai kirjaa, että vahvistit tiedot henkilökohtaisesti."
+
+#: 
+msgid "Family is inactive"
+msgstr "Perhe on epäaktiivinen"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Ensimmäinen tilivuosi"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Tilivuodet"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Lahjoitustiedote – vain malli"
+
+#: 
+msgid "Last invited"
+msgstr "Viimeksi kutsuttu"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Viimeisin portaaliin kirjautuminen"
+
+#: 
+msgid "Last verified"
+msgstr "Viimeksi vahvistettu"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "Kenelläkään tämän perheen aktiivisella, hyväksytyllä jäsenellä ei ole sähköpostiosoitetta. Vahvista tiedot sen sijaan henkilökohtaisesti."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Näille tilivuosille ei löytynyt lupauksia."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "Lupausten vertailu"
+
+#: 
+msgid "Preview PDF"
+msgstr "Esikatsele PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Toinen tilivuosi"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Kirjaudu jäsenportaaliin tällä sähköpostiosoitteella tarkistaaksesi perheesi tiedot. Vahvista Oma perheeni -sivulla, että kaikki on oikein, tai päivitä tietosi."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Tämä perhe on epäaktiivinen, joten sille ei lähetetä vahvistussähköposteja."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Tämä itse rekisteröitynyt perhe odottaa hyväksyntää. Hyväksyminen lähettää perheelle sähköpostikutsun kirjautua jäsenportaaliin ja tarkistaa tietonsa."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Käyttää vain tallennettuja asetuksia ja kuvitteellisia esimerkkilahjoituksia."
+
+#: 
+msgid "Verification"
+msgstr "Vahvistus"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "Vahvistussähköposti lähetetty %d perheelle."
+msgstr[1] "Vahvistussähköposti lähetetty %d perheelle."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "Vahvistussähköposti lähetetty perheenjäsenille."
+
+#: 
+msgid "by the family in the portal"
+msgstr "perheen toimesta portaalissa"
+
+#: 
+msgid "in person by staff"
+msgstr "henkilökohtaisesti henkilökunnan toimesta"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d oletus ohitettu toisesta syystä (tapahtumakerta on ohi, peruttu tai täynnä)"
+msgstr[1] "%d oletusta ohitettu toisesta syystä (tapahtumakerta on ohi, peruttu tai täynnä)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Siirtymäasetus. Vanhat Vapaaehtoistehtävät-sivut ja uudet Työalat-sivut ovat molemmat käytettävissä, ja henkilön tietueessa näkyy molemmat Vapaaehtoinen-välilehdet selkeästi nimettyinä. Käytä tätä, kun siirrät seurakuntaa V1:stä V2:een, ja vaihda sitten pelkkään V2:een."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Tehtävämääritys peruttu"
+
+#: 
+msgid "Canceled"
+msgstr "Peruttu"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "Peruuttaminen ei ilmoita kenellekään: sähköpostia ei lähetetä. Tehtävät säilytetään, muistutuksia ei aikatauluteta sen ollessa peruutettu, eikä ketään voi määrittää ennen kuin se palautetaan."
+
+#: 
+msgid "Color"
+msgstr "Väri"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Sähköpostitse lähetetty kirjautumiskoodi ja linkki peruttiin"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "Perheroolit (perheen pää, puoliso, lapsi jne.) auttavat järjestämään tietueita."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Tapahtuma peruutettu"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Priorisoi käännökset"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "Tehtävämääritystä ei voitu peruuttaa"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "Tapahtumaa ei voitu peruuttaa"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Tämä päivä on peruttu. Sinulta ei tarvita enää mitään."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Tämä tapahtumakerta on peruttu"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Vapaaehtoistyö seurakunnan tavalla järjestettynä. Jokaisella työalalla on tiimejä ja tehtäviä; ihmiset kelpuutetaan tehtäviin ja kuuluvat työalan joukkoryhmään; aikataulut seuraavat kalenterin tapahtumia ja tuottavat päivättyjä tapahtumakertoja miehitysvaatimuksineen; koordinaattorit määräävät ihmisiä, jotka hyväksyvät, kieltäytyvät tai ehdottavat sijaista; muistutukset ja hälytykset lähtevät sähköpostitse. Ylläpitäjät ja käyttäjät, joilla on Hallitse työaloja -oikeus, näkevät kaikki työalat ja voivat luoda, poistaa käytöstä ja poistaa niitä. Työalan koordinaattorille annetaan sen sijaan Hallitse omia työalojani -oikeus: sivupalkin Työalat-otsikon alla näkyvät silloin vain työalat, joita hän koordinoi. Tiimin vetäjä johtaa tiimiään Jäsenportaalista. Jäsenet käyttävät Jäsenportaalia nähdäkseen aikataulunsa, vastatakseen, ilmoittautuakseen ja tarjotakseen apua."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Laske aktiiviset asennukset ja päivitysten tulokset"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Tietokantamoottori ja pää-/alaversio"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Virheet — asennustilastot, varoitukset, virheet ja JS-poikkeukset"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Autatko meitä löytämään ja korjaamaan ongelmia?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "Asennus jakaa vähimmäismäärän asennus- ja päivitystilastoja. Virheet lisää varoitukset ja virheraportit. Täysi lisää sivunäkymät. Ei mitään lähettää vain epäonnistuneet asennukset ja päivitykset."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Asennus — asennus- ja päivitystilastot (oletus)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Asennusten ja päivitysten tulokset, aiempi versio päivityksissä ja päivittäinen tilailmoitus käytön aikana"
+
+#: 
+msgid "Installation profile"
+msgstr "Asennusprofiili"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Kieli- ja alueasetus (Virheet ja Täysi)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Ei koskaan jaeta: jäsen-, lahjoitus- tai muita seurakunnan tietoja, seurakuntasi nimeä, verkko-osoitettasi tai palvelimesi nimeä tai sähköpostiosoitteita. Maasi on seurakunnan asetuksissa määritetty maa, eikä sitä päätellä verkostasi."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Käyttöjärjestelmäperhe (Virheet ja Täysi)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP-versio (Virheet ja Täysi)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Katso tarkalleen, mitä jaetaan, tai muuta valintaasi kohdassa Ylläpito → Telemetria."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Erottele tuotanto-, demo- ja testiasennukset"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Jaetaanko nimettömiä asennustilastoja?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Jaa virhe- ja käyttöraportteja"
+
+#: 
+msgid "Share install statistics"
+msgstr "Jaa asennustilastoja"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Lisäksi jaetaan: varoitukset, virheiden tiedot ja avatut sivut."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Jaetaan: tieto siitä, että ChurchCRM on asennettu tai päivitetty ja onnistuiko se, kerran päivässä lähetettävä tilailmoitus käytön aikana, versionumero, maasi ja tietokannan tyyppi. Satunnainen asennustunnus laskee jokaisen asennuksen kerran."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Ymmärrä tietokantojen yhteensopivuus"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Valintaa kysytään kerran. Voit muuttaa sitä milloin tahansa. Valinnalla Ei kiitos raportoidaan vain epäonnistunut asennus tai päivitys."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Tietosi ovat sinun. Asennus jakaa vain asennusten ja päivitysten tulokset, asennustunnuksen, ohjelmistoversion, asennusprofiilin, määritetyn maan sekä tietokantamoottorin ja sen pää-/alaversion. Virheet lisää varoitukset ja virheiden tiedot. Täysi lisää sivunäkymät. Ei mitään lähettää vain epäonnistuneet asennukset ja päivitykset. Mikään taso ei lähetä verkko-osoitettasi tai palvelimesi nimeä. Testiasennukset eivät lähetä mitään. Telemetria lähetetään PostHogille Yhdysvaltoihin."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Tietosi ovat sinun. Tämä raportoi ohjelmistosta, ei koskaan seurakunnastasi tai sen ihmisistä."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Tietosi ovat sinun. Asennusten laskemiseksi ChurchCRM ilmoittaa, että se on asennettu tai päivitetty ja onnistuiko se, kerran päivässä tilailmoituksen käytön aikana sekä versionumeron, maasi, tietokannan tyypin ja satunnaisen asennustunnuksen. Se ei koskaan ilmoita jäsen-, lahjoitus- tai muita seurakunnan tietoja, seurakuntasi nimeä, verkko-osoitettasi tai palvelimesi nimeä tai sähköpostiosoitteita. Voit poistaa tämän käytöstä milloin tahansa kohdassa Ylläpito → Telemetria; epäonnistunut asennus tai päivitys ilmoitetaan silti. Varoitukset, virheiden tiedot ja sivunäkymät jaetaan vain, jos valitset niin."
 

@@ -887,10 +887,6 @@ msgid "Do you want to proceed?"
 msgstr "Θέλετε να συνεχίσετε?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Πρόκειται να στείλετε ένα αντίγραφο των οικογενειακών στοιχείων στα ακόλουθα μηνύματα ηλεκτρονικού ταχυδρομείου"
-
-#: 
 msgid "Financial Reports"
 msgstr "Οικονομικές Εκθέσεις"
 
@@ -986,7 +982,7 @@ msgstr "Αλλες ρυθμίσεις"
 
 #: 
 msgid "Only Payments with Pledges"
-msgstr "Μόνο πληρωμές με ενέχυρα"
+msgstr "Μόνο πληρωμές με υποσχέσεις"
 
 #: 
 msgid "All Payments"
@@ -994,7 +990,7 @@ msgstr "Όλες οι πληρωμές"
 
 #: 
 msgid "Only Families with unpaid pledges"
-msgstr "Μόνο Οικογένειες με απλήρωτα ενέχυρα"
+msgstr "Μόνο οικογένειες με απλήρωτες υποσχέσεις"
 
 #: 
 msgid "All Families"
@@ -1515,7 +1511,7 @@ msgstr "Τουλάχιστον ένα ταμείο πρέπει να έχει μ
 
 #: 
 msgid "Must specify non-zero check number"
-msgstr "Πρέπει να καθορίσετε τον μη μηδενικό αριθμό ελέγχου"
+msgstr "Πρέπει να καθορίσετε μη μηδενικό αριθμό επιταγής"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
@@ -1821,10 +1817,6 @@ msgstr "Τηλεφωνικό νούμερο"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Προσαρμοσμένη αναπτυσσόμενη λίστα"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "Το PDF εστάλη επιτυχώς με email στα μέλη της οικογένειας."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3873,10 +3865,6 @@ msgid "Please verify your family's information"
 msgstr "Επαληθεύστε τα στοιχεία της οικογένειάς σας"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Δεν είναι δυνατή η φόρτωση των πληροφοριών επαλήθευσης"
-
-#: 
 msgid "No Changes"
 msgstr "Χωρίς αλλαγές"
 
@@ -3889,24 +3877,8 @@ msgid "Oops! Page not found."
 msgstr "Ωχ! Η σελίδα δεν βρέθηκε."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Εισαγάγετε τα ακόλουθα για να ξεκινήσετε την επαλήθευση της οικογένειάς σας"
-
-#: 
-msgid "Family Verification"
-msgstr "Οικογενειακή επαλήθευση"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Ζητήστε επαλήθευση οικογενειακών στοιχείων"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Επιλέξτε πώς θέλετε να ζητήσετε την επαλήθευση των οικογενειακών στοιχείων"
-
-#: 
-msgid "Online Verification"
-msgstr "Διαδικτυακή επαλήθευση"
 
 #: 
 msgid "Verified In Person"
@@ -4088,10 +4060,6 @@ msgstr "Το ακίνητο καταργήθηκε με επιτυχία."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Δεν ήταν δυνατή η κατάργηση της εκχώρησης της ιδιοκτησίας."
-
-#: 
-msgid "Select event"
-msgstr "Επιλέξτε εκδήλωση"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4299,10 +4267,6 @@ msgid "Kiosk Manager"
 msgstr "Υπεύθυνος περιπτέρου"
 
 #: 
-msgid "Report an issue"
-msgstr "Αναφέρετε ένα πρόβλημα"
-
-#: 
 msgid "Self Verification"
 msgstr "Αυτοεπαλήθευση"
 
@@ -4331,10 +4295,6 @@ msgstr "Αραβικά - Αίγυπτος"
 #: 
 msgid "Thai"
 msgstr "Ταϊλανδός"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Εκκρεμεί η αυτοεπαλήθευση"
 
 #: 
 msgid "Self Verify"
@@ -4717,16 +4677,8 @@ msgid "User must have Delete Records permission"
 msgstr "Ο χρήστης πρέπει να έχει δικαίωμα Διαγραφής Εγγραφών"
 
 #: 
-msgid "invalid event type id"
-msgstr "μη έγκυρο αναγνωριστικό τύπου συμβάντος"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "μη έγκυρο καρφίτσωμα ημερολογίου"
-
-#: 
-msgid "invalid status value"
-msgstr "μη έγκυρη τιμή κατάστασης"
 
 #: 
 msgid "invalid export value"
@@ -5002,7 +4954,7 @@ msgstr "Περίληψη δεσμεύσεων από την οικογένεια
 
 #: 
 msgid "Pledge"
-msgstr "Ενέχυρο"
+msgstr "Υπόσχεση"
 
 #: 
 msgid "Paid"
@@ -5336,10 +5288,6 @@ msgid "Back to Login"
 msgstr "Επιστροφή σε Σύνδεση"
 
 #: 
-msgid "Back to login"
-msgstr "Επιστροφή σε σύνδεση"
-
-#: 
 msgid "Complete"
 msgstr "Ολοκληρωμένο"
 
@@ -5445,7 +5393,7 @@ msgstr "Προσθέστε οποιαδήποτε πρόσθετη σημείω�
 
 #: 
 msgid "Checks"
-msgstr "Έλεγχοι"
+msgstr "Επιταγές"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -6573,10 +6521,6 @@ msgid "Additional Information"
 msgstr "Πρόσθετες Πληροφορίες"
 
 #: 
-msgid "All information is correct"
-msgstr "Όλες οι πληροφορίες είναι σωστές"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Εκχώρηση Ευκαιριών"
 
@@ -6589,20 +6533,12 @@ msgid "Choose opportunities..."
 msgstr "Επιλέξτε ευκαιρίες..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Επιβεβαίωση στοιχείων οικογένειας"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Στοιχεία επικοινωνίας & προσωπικά στοιχεία"
 
 #: 
 msgid "Edited"
 msgstr "Επεξεργασμένο"
-
-#: 
-msgid "Email PDF"
-msgstr "Αποστολή PDF με Email"
 
 #: 
 msgid "Newsletter"
@@ -6613,40 +6549,12 @@ msgid "Personal"
 msgstr "Προσωπικός"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Παρακαλούμε ενημερώστε τα αρχεία μας με διορθώσεις"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Παρέχετε τυχόν διορθώσεις ή επιπλέον πληροφορίες εδώ..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Επιλέξτε Ευκαιρίες"
 
 #: 
-msgid "Submit Verification"
-msgstr "Υποβολή Επαλήθευσης"
-
-#: 
-msgid "Thank You!"
-msgstr "Ευχαριστούμε!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Επισκεφθείτε τον Ιστότοπό μας"
-
-#: 
 msgid "Volunteer"
 msgstr "Εθελοντής"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Προέκυψε σφάλμα κατά την επεξεργασία της επαλήθευσης."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Η αίτημά σας για επαλήθευση έχει λάβει. Ευχαριστούμε που διατηρείτε τις πληροφορίες σας ενημερωμένες."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8106,10 +8014,6 @@ msgid "City is required."
 msgstr "Η πόλη είναι υποχρεωτική."
 
 #: 
-msgid "Clear filter"
-msgstr "Εκκαθάριση φίλτρου"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Το στοιχείο διαμόρφωσης δεν βρέθηκε"
 
@@ -8378,10 +8282,6 @@ msgstr "Προσθήκη ατόμου"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Προσθήκη όλων των στοιχείων της λίστας σε ομάδα"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Προσθήκη όλων στη λίστα"
 
 #: 
 msgid "Add cart items to a family"
@@ -8888,10 +8788,6 @@ msgid "Family Profile"
 msgstr "Προφίλ οικογένειας"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Οι οικογενειακοί ρόλοι (Αρχηγός νοικοκυριού, Σύζυγος, Παιδί κ.λπ.) βοηθούν στην οργάνωση των εγγραφών σας."
-
-#: 
 msgid "Family vs Person"
 msgstr "Οικογένεια έναντι ατόμου"
 
@@ -9390,10 +9286,6 @@ msgid "Record why attendees visited your church"
 msgstr "Καταγράψτε γιατί οι επισκέπτες ήρθαν στην ενορία σας"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Αφαίρεση όλων από τη λίστα"
-
-#: 
 msgid "Remove from Class"
 msgstr "Αφαίρεση από την τάξη"
 
@@ -9864,10 +9756,6 @@ msgstr "Εκδηλώσεις φέτος"
 #: 
 msgid "Everyone"
 msgstr "Όλοι"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Αποτυχία διαγραφής σημείωσης"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11767,10 +11655,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Η έναρξη εύρους πρέπει να είναι έγκυρη ημερομηνία YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Η έναρξη εύρους πρέπει να είναι πριν από τη λήξη εύρους"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Η έναρξη εύρους πρέπει να είναι πριν από τη λήξη εύρους."
 
@@ -11991,10 +11875,6 @@ msgid "Cannot move property in that direction"
 msgstr "Δεν είναι δυνατή η μετακίνηση της ιδιότητας σε αυτή την κατεύθυνση"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Επιβεβαίωση Στοιχείων Οικογένειας"
-
-#: 
 msgid "Delete failed"
 msgstr "Η διαγραφή απέτυχε"
 
@@ -12035,20 +11915,12 @@ msgid "Invalid target family"
 msgstr "Μη έγκυρη οικογένεια στόχος"
 
 #: 
-msgid "Log Out"
-msgstr "Αποσύνδεση"
-
-#: 
 msgid "Membership not found"
 msgstr "Η συνδρομή δεν βρέθηκε"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Ο κωδικός πρόσβασης άλλαξε επιτυχώς για"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Παρακαλώ ελέγξτε τις πληροφορίες οικογένειάς σας παρακάτω και επιβεβαιώστε ή ζητήστε αλλαγές."
 
 #: 
 msgid "Please select a target family."
@@ -12731,10 +12603,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Αποτυχία εγκατάστασης προσθήκης από URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Αποτυχία φόρτωσης λίστας εγκεκριμένων προσθηκών"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Αποτυχία φόρτωσης λίστας εγκεκριμένων προσθηκών."
 
@@ -12793,10 +12661,6 @@ msgstr "Kebab-case. Πρέπει να ταιριάζει με το όνομα τ
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Φόρτωση λίστας εγκεκριμένων προσθηκών…"
-
-#: 
-msgid "Loading…"
-msgstr "Φόρτωση…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13244,12 +13108,8 @@ msgid "Change Your Locale"
 msgstr "Αλλαγή τοπικών ρυθμίσεων"
 
 #: 
-msgid "Change role"
-msgstr "Αλλαγή ρόλου"
-
-#: 
 msgid "Check Number"
-msgstr "Ελέγξτε τον αριθμό"
+msgstr "Αριθμός επιταγής"
 
 #: 
 msgid "Check out"
@@ -13262,10 +13122,6 @@ msgstr "Το check-in απέτυχε. Παρακαλώ δοκιμάστε ξαν
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Το check-out απέτυχε. Παρακαλώ δοκιμάστε ξανά."
-
-#: 
-msgid "City is required"
-msgstr "Η πόλη είναι απαραίτητη"
 
 #: 
 msgid "Click Save to apply."
@@ -13334,10 +13190,6 @@ msgstr "Αντιγράψτε όλους τους αριθμούς"
 #: 
 msgid "Copy Members to Group"
 msgstr "Αντιγραφή μελών σε ομάδα"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Δημιουργία αντιγράφου ασφαλείας..."
 
 #: 
 msgid "Creating..."
@@ -13522,10 +13374,6 @@ msgstr "Αποτυχία προσθήκης στο καλάθι"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Η ακύρωση εγγραφής απέτυχε. Παρακαλώ προσπαθήστε ξανά."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Αποτυχία αντιγραφής URL"
 
 #: 
 msgid "Failed to create backup."
@@ -13916,10 +13764,6 @@ msgid "One-Time Code"
 msgstr "Κωδικός μίας χρήσης"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Άνοιγμα σε νέα καρτέλα"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Ανοίξτε την εφαρμογή ελέγχου ταυτότητας και σαρώστε αυτόν τον κωδικό QR"
 
@@ -14196,10 +14040,6 @@ msgid "Setup Complete"
 msgstr "Η εγκατάσταση ολοκληρώθηκε"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Μοιραστείτε αυτό το URL με μέλη της οικογένειας για επαλήθευση των στοιχείων τους"
-
-#: 
 msgid "Show more options"
 msgstr "Εμφάνιση περισσότερων επιλογών"
 
@@ -14352,10 +14192,6 @@ msgid "Validation pending"
 msgstr "Επαλήθευση σε Αναμονή"
 
 #: 
-msgid "Verification URL"
-msgstr "URL επαλήθευσης"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Η επαλήθευση απέτυχε. Παρακαλώ προσπαθήστε ξανά."
 
@@ -14420,10 +14256,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Θα λάβετε κωδικούς αντιγράφων ασφαλείας που μπορούν να χρησιμοποιηθούν εάν χάσετε την πρόσβαση στην εφαρμογή σας"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Το καλάθι σας είναι άδειο"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Ο λογαριασμός σας είναι πλέον προστατευμένος"
 
@@ -14442,10 +14274,6 @@ msgstr "Η προτίμηση γλώσσας του προγράμματος π�
 #: 
 msgid "Your database already contains data"
 msgstr "Η βάση δεδομένων σας περιέχει ήδη δεδομένα"
-
-#: 
-msgid "Zip code is required"
-msgstr "Ο ταχυδρομικός κώδικας είναι απαραίτητος"
 
 #: 
 msgid "added"
@@ -14866,10 +14694,6 @@ msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση 
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Δεν έχετε άδεια να προσθέσετε σημείωση για αυτό το μέλος."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Δεν έχετε άδεια να επεξεργαστείτε αυτήν τη σημείωση"
 
 #: 
 msgid "Account locked"
@@ -15692,10 +15516,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Παρακαλώ επιβεβαιώστε τη διαγραφή αυτής της οικογενειακής εγγραφής"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Παρακαλώ επιβεβαιώστε τα στοιχεία της οικογένειάς σας"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Παρακαλώ επιλέξτε άλλη οικογένεια με την οποία θα συσχετιστούν αυτές οι προσφορές"
 
@@ -15916,10 +15736,6 @@ msgid "Select a person"
 msgstr "Επιλογή ατόμου"
 
 #: 
-msgid "Select role"
-msgstr "Επιλογή ρόλου"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Επιλογή τύπου (προαιρετικό)"
 
@@ -16076,10 +15892,6 @@ msgid "At least one fund allocation is required"
 msgstr "Απαιτείται τουλάχιστον μία κατανομή ταμείου"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Τουλάχιστον ένα ταμείο πρέπει να έχει μη μηδενικό ποσό"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "Αυτόματη αποστολή μηνύματος γενεθλίων στα άτομα κατά την ημέρα των γενεθλίων τους"
 
@@ -16156,18 +15968,6 @@ msgid "Editing a Pledge"
 msgstr "Επεξεργασία Υπόσχεσης"
 
 #: 
-msgid "Enable (full)"
-msgstr "Ενεργοποίηση (πλήρης)"
-
-#: 
-msgid "Errors only"
-msgstr "Μόνο σφάλματα"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Σφάλματα — σφάλματα διακομιστή και εξαιρέσεις JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Αποτυχία δημιουργίας υπόσχεσης"
 
@@ -16206,10 +16006,6 @@ msgstr "Το κλειδί ομάδας είναι υποχρεωτικό"
 #: 
 msgid "Happy Birthday"
 msgstr "Χρόνια Πολλά"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Βοηθήστε στη βελτίωση του ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16280,16 +16076,8 @@ msgid "None (disabled)"
 msgstr "Κανένα (απενεργοποιημένο)"
 
 #: 
-msgid "OS family"
-msgstr "Οικογένεια ΛΣ"
-
-#: 
 msgid "Overpaid"
 msgstr "Υπερπληρωμή"
-
-#: 
-msgid "PHP version"
-msgstr "Έκδοση PHP"
 
 #: 
 msgid "Page route"
@@ -16326,10 +16114,6 @@ msgstr "Η ομάδα υποσχέσεων δεν βρέθηκε"
 #: 
 msgid "Pledges & Payments"
 msgstr "Υποσχέσεις & Προσφορές"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Προτεραιότητα μεταφράσεων"
 
 #: 
 msgid "Purpose"
@@ -16394,10 +16178,6 @@ msgstr "Ονόματα χρηστών, email ή ρόλοι"
 #: 
 msgid "View pledge or payment details"
 msgstr "Προβολή λεπτομερειών υπόσχεσης ή προσφοράς"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Προειδοποιήσεις — προειδοποιήσεις, σφάλματα και εξαιρέσεις JS"
 
 #: 
 msgid "What is sent"
@@ -16592,12 +16372,6 @@ msgstr "Δεν βρέθηκαν πληρωμές για τις επιλεγμέ�
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Δεν παρασχέθηκαν έγκυρα αναγνωριστικά κατάθεσης"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "Το PDF στάλθηκε επιτυχώς μέσω email σε %d οικογένεια."
-msgstr[1] "Το PDF στάλθηκε επιτυχώς μέσω email σε %d οικογένειες."
 
 #: 
 msgid "Partial Send"
@@ -17138,10 +16912,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Δημιουργία και μεταφόρτωση αντιγράφου ασφαλείας. Αυτό μπορεί να διαρκέσει αρκετά λεπτά..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Η επαναφορά της βάσης δεδομένων απέτυχε."
-
-#: 
 msgid "Deceased"
 msgstr "Αποβιώσας"
 
@@ -17338,10 +17108,6 @@ msgid "Log settings saved"
 msgstr "Οι ρυθμίσεις καταγραφής αποθηκεύτηκαν"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Το Όνομα Σύνδεσης είναι Υποχρεωτικό"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Το άτομο σημειώθηκε ως Ενεργό"
 
@@ -17466,10 +17232,6 @@ msgid "Sending..."
 msgstr "Αποστολή..."
 
 #: 
-msgid "Sending…"
-msgstr "Αποστολή…"
-
-#: 
 msgid "Settings reset"
 msgstr "Οι ρυθμίσεις επαναφέρθηκαν"
 
@@ -17538,16 +17300,8 @@ msgid "Upcoming"
 msgstr "Προσεχώς"
 
 #: 
-msgid "Valid Until"
-msgstr "Ισχύει Έως"
-
-#: 
 msgid "View active only"
 msgstr "Προβολή μόνο ενεργών"
-
-#: 
-msgid "View all"
-msgstr "Προβολή όλων"
 
 #: 
 msgid "View all (including inactive)"
@@ -18326,10 +18080,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Το οικονομικό σας έτος ξεκινά τον %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Παρουσιάστηκε σφάλμα"
-
-#: 
 msgid "Approve"
 msgstr "Έγκριση"
 
@@ -18500,12 +18250,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d ημέρα"
 msgstr[1] "%d ημέρες"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d προεπιλογή παραλείφθηκε για άλλο λόγο (η πραγματοποίηση έχει τελειώσει, ακυρωθεί ή γεμίσει)"
-msgstr[1] "%d προεπιλογές παραλείφθηκαν για άλλο λόγο (η πραγματοποίηση έχει τελειώσει, ακυρωθεί ή γεμίσει)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18768,10 +18512,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Ένα θέμα είναι ένας φάκελος που η εκκλησία σας ανεβάζει στο Include/themes/ στον διακομιστή. Το προεπιλεγμένο θέμα συστήματος συνοδεύει το ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Μια ρύθμιση μετάβασης. Οι παλιές σελίδες Ευκαιριών εθελοντών και οι νέες σελίδες Διακονιών είναι και οι δύο διαθέσιμες, και η εγγραφή ατόμου εμφανίζει και τις δύο καρτέλες Εθελοντής, με σαφή επισήμανση. Χρησιμοποιήστε την ενώ μεταφέρετε μια εκκλησία από το V1 στο V2 και μετά αλλάξτε μόνο σε V2."
-
-#: 
 msgid "A volunteer"
 msgstr "Ένας εθελοντής"
 
@@ -18976,10 +18716,6 @@ msgid "Assigned outside the current plan"
 msgstr "Ανατέθηκε εκτός του τρέχοντος σχεδίου"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Η ανάθεση ακυρώθηκε"
-
-#: 
 msgid "Assignment not found"
 msgstr "Η ανάθεση δεν βρέθηκε"
 
@@ -19086,10 +18822,6 @@ msgstr "Ακύρωση ανάθεσης"
 #: 
 msgid "Cancel this assignment"
 msgstr "Ακύρωση αυτής της ανάθεσης"
-
-#: 
-msgid "Cancelled"
-msgstr "Ακυρώθηκε"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19246,10 +18978,6 @@ msgstr "Ιστότοπος εκκλησίας"
 #: 
 msgid "Close event details"
 msgstr "Κλείσιμο λεπτομερειών εκδήλωσης"
-
-#: 
-msgid "Colour"
-msgstr "Χρώμα"
 
 #: 
 msgid "Completed"
@@ -19496,10 +19224,6 @@ msgid "Each staffing need must name a position"
 msgstr "Κάθε ανάγκη στελέχωσης πρέπει να ορίζει μια θέση"
 
 #: 
-msgid "Edit event"
-msgstr "Επεξεργασία Event"
-
-#: 
 msgid "Edit ministry"
 msgstr "Επεξεργασία διακονίας"
 
@@ -19584,10 +19308,6 @@ msgstr "Τα email στάλθηκαν σε {{count}} παραλήπτες."
 #: 
 msgid "Emails"
 msgstr "Email"
-
-#: 
-msgid "End time"
-msgstr "Ώρα Λήξης"
 
 #: 
 msgid "Enter counts"
@@ -20868,10 +20588,6 @@ msgid "SMTP test"
 msgstr "Δοκιμή SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Αποθήκευσε τις αλλαγές"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Αποθηκεύτηκε — αυτή η διακονία δεν ζητά πλέον βοήθεια"
 
@@ -21154,10 +20870,6 @@ msgstr "Οι ανάγκες στελέχωσης αποθηκεύτηκαν"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Ξεκινήστε δημιουργώντας μια διακονία και μετά προσθέστε τις ομάδες και τις θέσεις που υπηρετούν σε αυτήν."
-
-#: 
-msgid "Start time"
-msgstr "Ωρα έναρξης"
 
 #: 
 msgid "Start typing a name"
@@ -21506,10 +21218,6 @@ msgstr "Η διεύθυνση είναι επιλεγμένη — αντιγρά
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Η διαδρομή πόρου «%s» δεν επιτρέπεται."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "Δεν ήταν δυνατή η ακύρωση της ανάθεσης"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22036,10 +21744,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Αυτή η πραγματοποίηση έχει ήδη γίνει και οι αναθέσεις της δεν μπορούν πλέον να αλλάξουν"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Αυτή η πραγματοποίηση ακυρώθηκε"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Αυτή η πραγματοποίηση έχει δικές της ανάγκες στελέχωσης, ξεχωριστές από το πρόγραμμά της."
 
@@ -22208,16 +21912,8 @@ msgid "Validation"
 msgstr "Επικύρωση"
 
 #: 
-msgid "View event"
-msgstr "Προβολή Εκδήλωσης"
-
-#: 
 msgid "View my schedule"
 msgstr "Προβολή του προγράμματός μου"
-
-#: 
-msgid "View person"
-msgstr "Προβολή Μέλους"
 
 #: 
 msgid "View the event"
@@ -22266,10 +21962,6 @@ msgstr "Ώρες εθελοντών"
 #: 
 msgid "Volunteering"
 msgstr "Εθελοντισμός"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Εθελοντισμός οργανωμένος όπως τον τρέχει μια εκκλησία. Κάθε διακονία έχει ομάδες και θέσεις· τα άτομα είναι κατάλληλα για θέσεις και ανήκουν στην ομάδα δεξαμενής της διακονίας· τα προγράμματα ακολουθούν τις εκδηλώσεις του ημερολογίου και παράγουν πραγματοποιήσεις με ημερομηνία και απαιτήσεις στελέχωσης· οι συντονιστές αναθέτουν άτομα, τα οποία αποδέχονται, αρνούνται ή προτείνουν αντικαταστάτη· υπενθυμίσεις και ειδοποιήσεις αποστέλλονται με email. Οι διαχειριστές και οι χρήστες με το δικαίωμα Διαχείριση διακονιών βλέπουν κάθε διακονία και μπορούν να τις δημιουργούν, να τις απενεργοποιούν και να τις διαγράφουν. Ο συντονιστής μιας διακονίας λαμβάνει αντί γι' αυτό το δικαίωμα Διαχείριση των διακονιών μου: η επικεφαλίδα Διακονίες στην πλαϊνή στήλη δείχνει τότε μόνο τις διακονίες που συντονίζει. Ένας υπεύθυνος ομάδας διευθύνει την ομάδα του από την Πύλη μελών. Τα μέλη χρησιμοποιούν την Πύλη μελών για να βλέπουν το πρόγραμμά τους, να απαντούν, να γράφονται και να προσφέρουν βοήθεια."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22808,10 +22500,6 @@ msgid "Cancel this occurrence"
 msgstr "Ακύρωση αυτού του γεγονότος"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Η ακύρωση δεν ενημερώνει κανέναν: δεν αποστέλλεται ηλεκτρονική αλληλογραφία. Οι εκχωρήσεις διατηρούνται, δεν έχουν προγραμματιστεί υπενθυμίσεις ενώ είναι ακυρωμένα, και κανείς δεν μπορεί να εκχωρηθεί έως ότου αποκατασταθεί."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Τα διαγραμμένα γεγονότα φεύγουν από κάθε ημερολόγιο, με τις παραστάσεις τους και τις απογραφές, και το προσωπικό αυτής της ποίμνιας κρατά μόνο την ημερομηνία. Αυτό δεν μπορεί να αναιρεθεί."
 
@@ -22822,10 +22510,6 @@ msgstr "Γεγονότα διαγραμμένα: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Γεγονότα για διαγραφή: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Το γεγονός ακυρώθηκε"
 
 #: 
 msgid "Occurrence restored"
@@ -22842,10 +22526,6 @@ msgstr "Αποκατάσταση γεγονότος"
 #: 
 msgid "Restore this occurrence"
 msgstr "Αποκατάσταση αυτού του γεγονότος"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Το γεγονός δεν ήταν δυνατό να ακυρωθεί"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -22926,12 +22606,6 @@ msgstr "Καταχωρήθηκε ως επισκέπτης στο περίπτε
 #: 
 msgid "Registering..."
 msgstr "Εγγραφή..."
-
-#: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Απαιτείται ένας αριθμός επιταγής κατά την καταχώρηση πληρωμών επιταγής σε εγγραφές εναπόθεσης.\n"
-"Σημείωση: η απενεργοποίησή του απενεργοποιεί επίσης την ανίχνευση διπλότυπων αριθμών επιταγών - η ίδια φυσική επιταγή μπορεί να εισαχθεί περισσότερες από μία φορές."
 
 #: 
 msgid "This event has ended"
@@ -24852,28 +24526,12 @@ msgid "Closing Line"
 msgstr "Καταληκτική γραμμή"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Ελέγχει την προαιρετική τηλεμετρία. Οι αποτυχίες εγκατάστασης και αναβάθμισης βάσης δεδομένων στέλνουν περιορισμένα διαγνωστικά στο PostHog ακόμη και όταν η τηλεμετρία είναι απενεργοποιημένη. Αυτές οι αναφορές αποτυχίας περιλαμβάνουν εκδόσεις λογισμικού και περιβάλλοντος και ένα εξυγιασμένο σφάλμα βάσης δεδομένων, αλλά όχι αναγνωριστικό εγκατάστασης ή εντολή SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Διάγνωση αποτυχημένων εγκαταστάσεων και αναβαθμίσεων βάσης δεδομένων"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Λεπτομέρειες αποτυχίας εγκατάστασης και αναβάθμισης"
-
-#: 
 msgid "Open in browser window"
 msgstr "Άνοιγμα σε παράθυρο προγράμματος περιήγησης"
 
 #: 
 msgid "Opening Line"
 msgstr "Εισαγωγική γραμμή"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Η προαιρετική τηλεμετρία χρήσης αποστέλλεται μόνο όταν είναι ενεργοποιημένη. Οι αποτυχίες εγκατάστασης και αναβάθμισης βάσης δεδομένων στέλνουν πάντα περιορισμένα διαγνωστικά για να βοηθήσουν την κοινότητα, ακόμη κι αν επιλέξετε Όχι, ευχαριστώ. Οι αναφορές αποτυχίας περιλαμβάνουν εκδόσεις λογισμικού και περιβάλλοντος και ένα εξυγιασμένο σφάλμα βάσης δεδομένων, χωρίς αναγνωριστικό εγκατάστασης ή εντολή SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24910,18 +24568,6 @@ msgstr "Διατύπωση βεβαίωσης"
 #: 
 msgid "Tax Information"
 msgstr "Φορολογικές πληροφορίες"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Η τηλεμετρία αποστέλλεται στο PostHog στις Ηνωμένες Πολιτείες. Οι αναφορές αποτυχίας εγκατάστασης και αναβάθμισης αποστέλλονται ακόμη και όταν η προαιρετική τηλεμετρία είναι απενεργοποιημένη."
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Αυτή η ημερομηνία ακυρώθηκε. Δεν χρειάζεται τίποτε άλλο από εσάς."
-
-#: 
-msgid "always sent"
-msgstr "αποστέλλεται πάντα"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25386,10 +25032,6 @@ msgstr "Το ηλεκτρονικό ταχυδρομείο χρειάζεται 
 #: 
 msgid "Email problem"
 msgstr "Πρόβλημα ηλεκτρονικού ταχυδρομείου"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Ο κωδικός και ο σύνδεσμος σύνδεσης που στάλθηκαν ακυρώθηκαν"
 
 #: 
 msgid "Emailed verification link"
@@ -25982,10 +25624,6 @@ msgstr "Μόνο εν ζωή άτομα με δικό τους ηλεκτρον�
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Μπορούν να προστεθούν μόνο άτομα με δικό τους ηλεκτρονικό ταχυδρομείο."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Η προαιρετική τηλεμετρία μπορεί να περιλαμβάνει διαδρομές σελίδων, ενεργή τοπική ρύθμιση, έκδοση ChurchCRM, έκδοση PHP, οικογένεια OS, τη χώρα από τις ρυθμίσεις στοιχείων της εκκλησίας σας και ένα τυχαίο αναγνωριστικό εγκατάστασης. Οι αναφορές αποτυχίας δεν περιλαμβάνουν το αναγνωριστικό εγκατάστασης. Τα δεδομένα αποστέλλονται στο PostHog στις Ηνωμένες Πολιτείες."
 
 #: 
 msgid "Passkey"
@@ -27156,10 +26794,584 @@ msgid "A request was made in the Member Portal to change your email address at %
 msgstr "Υποβλήθηκε αίτημα στην πύλη μελών για αλλαγή της διεύθυνσης email σας στο %1$s από %2$s σε %3$s. Η αλλαγή γίνεται μόνο όταν χρησιμοποιηθεί ο σύνδεσμος που στάλθηκε στη νέα διεύθυνση."
 
 #: 
-msgid "Please use the link below to review your family information. On the review page, select \"Confirm Family Info\" to confirm that everything is correct or send corrections to the church office."
-msgstr "Χρησιμοποιήστε τον παρακάτω σύνδεσμο για να ελέγξετε τα στοιχεία της οικογένειάς σας. Στη σελίδα ελέγχου, επιλέξτε «Επιβεβαίωση στοιχείων οικογένειας» για να επιβεβαιώσετε ότι όλα είναι σωστά ή στείλτε διορθώσεις στο γραφείο της εκκλησίας."
-
-#: 
 msgid "Review Family Information"
 msgstr "Έλεγχος στοιχείων οικογένειας"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Υπάρχει ήδη διακονία με το όνομα «%s». Επιλέξτε την από τη λίστα ή διαλέξτε άλλο όνομα."
+
+#: 
+msgid "A new ministry"
+msgstr "Μια νέα διακονία"
+
+#: 
+msgid "A position"
+msgstr "Μια θέση"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Προσθήκη εθελοντών ({{total}}) σε θέσεις που μετατράπηκαν νωρίτερα;"
+
+#: 
+msgid "Already converted"
+msgstr "Ήδη μετατράπηκε"
+
+#: 
+msgid "An existing ministry"
+msgstr "Μια υπάρχουσα διακονία"
+
+#: 
+msgid "Becomes"
+msgstr "Γίνεται"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "Το ChurchCRM έχει δύο τρόπους διαχείρισης εθελοντών. Μόνο ένας προορίζεται να χρησιμοποιείται κάθε φορά· η ρύθμιση «Εμπειρία εθελοντών» καθορίζει ποιον βλέπει αυτή η εκκλησία. Η αλλαγή κρύβει ή εμφανίζει σελίδες και στοιχεία μενού και δεν διαγράφει ποτέ δεδομένα. Οι επιλογές V1 και Και τα δύο προσφέρονται μόνο όσο χρησιμοποιούνται οι Ευκαιρίες Εθελοντισμού: μόλις μετατραπεί κάθε ευκαιρία και η εκκλησία χρησιμοποιεί το V2, αφαιρούνται από αυτή τη λίστα."
+
+#: 
+msgid "Convert"
+msgstr "Μετατροπή"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Μετατροπή Ευκαιριών Εθελοντισμού"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Μετατροπή ευκαιριών ({{total}}) τώρα; Τα δεδομένα του V1 διατηρούνται ως έχουν μέχρι να καταργηθούν οι Ευκαιρίες Εθελοντισμού."
+
+#: 
+msgid "Converted"
+msgstr "Μετατράπηκε"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Μετατράπηκαν: θέσεις {{positions}} και διακονίες {{ministries}}, εθελοντές με δικαίωμα {{qualifications}}."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Κάθε ευκαιρία γίνεται θέση στην πρώτη ομάδα μιας διακονίας και όλοι όσοι συνδέονται με αυτήν αποκτούν δικαίωμα για τη θέση. Η αυτοεγγραφή είναι αρχικά απενεργοποιημένη σε αυτές τις θέσεις."
+
+#: 
+msgid "Everything is converted."
+msgstr "Όλα έχουν μετατραπεί."
+
+#: 
+msgid "Existing ministry"
+msgstr "Υπάρχουσα διακονία"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Δώστε στη νέα διακονία όνομα έως 100 χαρακτήρες."
+
+#: 
+msgid "Its own ministry"
+msgstr "Δική της διακονία"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Συνδέθηκαν από τότε: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Συνδέσεις που δεν μπορούν να μετατραπούν"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Νέες δικές τους διακονίες"
+
+#: 
+msgid "New ministry name"
+msgstr "Όνομα νέας διακονίας"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Δεν αποστέλλεται email, και οι Ευκαιρίες Εθελοντισμού παραμένουν ως έχουν μέχρι να καταργηθούν."
+
+#: 
+msgid "No name"
+msgstr "Χωρίς όνομα"
+
+#: 
+msgid "Not converted"
+msgstr "Δεν μετατράπηκε"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Άνοιγμα Διακοπτών δυνατοτήτων"
+
+#: 
+msgid "Open Ministries"
+msgstr "Άνοιγμα Διακονιών"
+
+#: 
+msgid "Opportunities"
+msgstr "Ευκαιρίες"
+
+#: 
+msgid "Opportunity"
+msgstr "Ευκαιρία"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Ευκαιρία #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Άτομα που συνδέθηκαν με μετατραπείσες Ευκαιρίες Εθελοντισμού μετά τη μετατροπή: %d. Προσθέστε τα στις θέσεις τους πριν καταργηθούν οι Ευκαιρίες Εθελοντισμού στις αρχές του 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Κάντε πρώτα προεπισκόπηση της μετατροπής και στείλτε την αναθεώρηση που επέστρεψε."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Μετονομάστηκε ώστε τα ονόματα να είναι μοναδικά"
+
+#: 
+msgid "Review the conversion"
+msgstr "Έλεγχος της μετατροπής"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Στείλτε την επιλογή μετατροπής ως αντικείμενο JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Στείλτε τις ευκαιρίες που γίνονται διακονίες ως λίστα αναγνωριστικών."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Αυτή η διακονία δεν υπάρχει."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Η έκδοση του ChurchCRM στην οποία ένας διαχειριστής απέρριψε την ειδοποίηση κατάργησης των Ευκαιριών Εθελοντισμού."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Οι Ευκαιρίες Εθελοντισμού άλλαξαν μετά την προεπισκόπηση. Ελέγξτε ξανά την προεπισκόπηση και μετά κάντε τη μετατροπή."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Δεν ήταν δυνατό να ανοίξει η επιβεβαίωση. Φορτώστε ξανά τη σελίδα και δοκιμάστε πάλι."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Δεν ήταν δυνατή η προεπισκόπηση της μετατροπής."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Η μετατροπή απέτυχε. Δεν άλλαξε τίποτα."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Η διακονία «%s» δεν έχει ομάδα για τις θέσεις."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Δεν ήταν δυνατή η σύνδεση με τον διακομιστή. Φορτώστε ξανά τη σελίδα για να δείτε αν έγινε η μετατροπή."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Δεν υπάρχουν Ευκαιρίες Εθελοντισμού για μετατροπή."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Η Διαχείριση εθελοντών αλλάζει σε Και τα δύο, ώστε οι νέες διακονίες να φαίνονται δίπλα στις Ευκαιρίες Εθελοντισμού."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Οι Ευκαιρίες Εθελοντισμού καταργούνται"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Οι Ευκαιρίες Εθελοντισμού μετατράπηκαν"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Οι Ευκαιρίες Εθελοντισμού θα καταργηθούν στις αρχές του 2027. Μετατρέψτε τις σε Διακονίες για να διατηρήσετε ποιος υπηρετεί πού."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Οι Ευκαιρίες Εθελοντισμού θα καταργηθούν στις αρχές του 2027. Μετατρέψτε τώρα σε Διακονίες τις ευκαιρίες (%1$d) και τους εθελοντές σας (%2$d). Μπορείτε να δείτε προεπισκόπηση του αποτελέσματος πριν αλλάξει οτιδήποτε."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Εθελοντές με δικαίωμα"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Εθελοντές προς προσθήκη σε μετατραπείσες θέσεις"
+
+#: 
+msgid "What it becomes"
+msgstr "Τι γίνεται"
+
+#: 
+msgid "What will happen"
+msgstr "Τι θα συμβεί"
+
+#: 
+msgid "Where they go"
+msgstr "Πού πηγαίνουν"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Ποιες παλιές Ευκαιρίες Εθελοντισμού έχουν μετατραπεί και ποια θέση έγινε η καθεμία."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Ποια εμπειρία εθελοντών χρησιμοποιεί αυτή η εκκλησία. Οι Ευκαιρίες Εθελοντισμού (V1) θα καταργηθούν στις αρχές του 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Οι Ευκαιρίες Εθελοντισμού σας μετατράπηκαν σε Διακονίες. Αλλάξτε τη Διαχείριση εθελοντών σε V2 πριν καταργηθούν οι Ευκαιρίες Εθελοντισμού στις αρχές του 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "σε νέα διακονία, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "στη διακονία {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "δεν υπάρχει πλέον στο ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Σύμπτυξη πλευρικής στήλης"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Ανάπτυξη πλευρικής στήλης"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Εισαγάγετε έγκυρη διεύθυνση email με μόνο χαρακτήρες ASCII πριν από το @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Η διεύθυνση email του δεν είναι έγκυρη"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Είστε βέβαιοι ότι θέλετε να διαγράψετε το {{name}};"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Δεν ήταν δυνατή η συλλογή πληροφοριών συστήματος. Δοκιμάστε ξανά."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Δεν βρέθηκαν πληρωμές για αυτή την περίοδο."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Πληρωμές ανά κεφάλαιο"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Άγνωστο κεφάλαιο"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Ζητήστε από τον πάροχο φιλοξενίας να μεταφέρει τη βάση δεδομένων σε υποστηριζόμενη έκδοση και, στη συνέχεια, δοκιμάστε ξανά."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Ζητήστε από τον πάροχο φιλοξενίας να μεταφέρει τη βάση δεδομένων σε υποστηριζόμενη έκδοση."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Τα ονόματα των αργιών ακολουθούν τη ρύθμιση γλώσσας κάθε χρήστη. Όταν μια αργία δεν έχει όνομα σε αυτή τη γλώσσα, εμφανίζεται στα αγγλικά."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Ονόματα αργιών στη γλώσσα σας"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Απαίτηση αριθμού επιταγής κατά την καταχώριση πληρωμών με επιταγή στις καταθέσεις. Όταν είναι απενεργοποιημένη, μια επιταγή μπορεί να αποθηκευτεί με κενό ή μηδενικό αριθμό, και αυτές δεν ελέγχονται για διπλότυπα."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Απαίτηση αριθμού επιταγής στις πληρωμές με επιταγή"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "Η αναβάθμιση δεν ξεκίνησε, οπότε δεν άλλαξε τίποτα."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Αυτή η αναβάθμιση δεν μπορεί να εκτελεστεί στη βάση δεδομένων σας."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Ο διακομιστής βάσης δεδομένων σας (%1$s %2$s) είναι παλαιότερος από όσο υποστηρίζει το ChurchCRM (MySQL %3$s ή MariaDB %4$s και νεότερες)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Εγκρίνετε αυτή την αυτοεγγεγραμμένη οικογένεια πριν της στείλετε email επαλήθευσης"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "Σύγκριση των συνόλων οικονομικών δεσμεύσεων των οικογενειών για δύο οικονομικά έτη."
+
+#: 
+msgid "Email Portal Link"
+msgstr "Αποστολή συνδέσμου πύλης με email"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "Στείλτε στην οικογένεια με email έναν σύνδεσμο προς την πύλη μελών, όπου μπορεί να ελέγξει και να ενημερώσει τα στοιχεία της, ή καταγράψτε ότι τα επαληθεύσατε αυτοπροσώπως."
+
+#: 
+msgid "Family is inactive"
+msgstr "Η οικογένεια είναι ανενεργή"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Πρώτο οικονομικό έτος"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Οικονομικά έτη"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Βεβαίωση προσφορών — μόνο δείγμα"
+
+#: 
+msgid "Last invited"
+msgstr "Τελευταία πρόσκληση"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Τελευταία σύνδεση στην πύλη"
+
+#: 
+msgid "Last verified"
+msgstr "Τελευταία επαλήθευση"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "Κανένα ενεργό, εγκεκριμένο μέλος αυτής της οικογένειας δεν έχει διεύθυνση email. Επαληθεύστε τα στοιχεία αυτοπροσώπως."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Δεν βρέθηκαν οικονομικές δεσμεύσεις για αυτά τα οικονομικά έτη."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "Σύγκριση οικονομικών δεσμεύσεων"
+
+#: 
+msgid "Preview PDF"
+msgstr "Προεπισκόπηση PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Δεύτερο οικονομικό έτος"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Συνδεθείτε στην πύλη μελών με αυτή τη διεύθυνση email για να ελέγξετε τα στοιχεία της οικογένειάς σας. Από τη σελίδα Η οικογένειά μου, επιβεβαιώστε ότι όλα είναι σωστά ή ενημερώστε τα στοιχεία σας."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Αυτή η οικογένεια είναι ανενεργή, επομένως δεν της αποστέλλονται email επαλήθευσης."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Αυτή η αυτοεγγεγραμμένη οικογένεια περιμένει έγκριση. Με την έγκριση, η οικογένεια λαμβάνει με email πρόσκληση να συνδεθεί στην πύλη μελών και να ελέγξει τα στοιχεία της."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Χρησιμοποιεί μόνο τις αποθηκευμένες ρυθμίσεις και φανταστικές προσφορές δείγματος."
+
+#: 
+msgid "Verification"
+msgstr "Επαλήθευση"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "Το email επαλήθευσης στάλθηκε σε %d οικογένεια."
+msgstr[1] "Το email επαλήθευσης στάλθηκε σε %d οικογένειες."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "Το email επαλήθευσης στάλθηκε στα μέλη της οικογένειας."
+
+#: 
+msgid "by the family in the portal"
+msgstr "από την οικογένεια στην πύλη"
+
+#: 
+msgid "in person by staff"
+msgstr "αυτοπροσώπως από το προσωπικό"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d προεπιλογή παραλείφθηκε για άλλο λόγο (η πραγματοποίηση έχει τελειώσει, ακυρωθεί ή γεμίσει)"
+msgstr[1] "%d προεπιλογές παραλείφθηκαν για άλλο λόγο (η πραγματοποίηση έχει τελειώσει, ακυρωθεί ή γεμίσει)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Μια ρύθμιση μετάβασης. Οι παλιές σελίδες Ευκαιριών εθελοντών και οι νέες σελίδες Διακονιών είναι και οι δύο διαθέσιμες, και η εγγραφή ατόμου εμφανίζει και τις δύο καρτέλες Εθελοντής, με σαφή επισήμανση. Χρησιμοποιήστε την ενώ μεταφέρετε μια εκκλησία από το V1 στο V2 και μετά αλλάξτε μόνο σε V2."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Η ανάθεση ακυρώθηκε"
+
+#: 
+msgid "Canceled"
+msgstr "Ακυρώθηκε"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "Η ακύρωση δεν ενημερώνει κανέναν: δεν αποστέλλεται ηλεκτρονική αλληλογραφία. Οι εκχωρήσεις διατηρούνται, δεν έχουν προγραμματιστεί υπενθυμίσεις ενώ είναι ακυρωμένα, και κανείς δεν μπορεί να εκχωρηθεί έως ότου αποκατασταθεί."
+
+#: 
+msgid "Color"
+msgstr "Χρώμα"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Ο κωδικός και ο σύνδεσμος σύνδεσης που στάλθηκαν ακυρώθηκαν"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "Οι οικογενειακοί ρόλοι (Αρχηγός νοικοκυριού, Σύζυγος, Παιδί κ.λπ.) βοηθούν στην οργάνωση των εγγραφών σας."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Το γεγονός ακυρώθηκε"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Προτεραιότητα μεταφράσεων"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "Δεν ήταν δυνατή η ακύρωση της ανάθεσης"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "Το γεγονός δεν ήταν δυνατό να ακυρωθεί"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Αυτή η ημερομηνία ακυρώθηκε. Δεν χρειάζεται τίποτε άλλο από εσάς."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Αυτή η πραγματοποίηση ακυρώθηκε"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Εθελοντισμός οργανωμένος όπως τον τρέχει μια εκκλησία. Κάθε διακονία έχει ομάδες και θέσεις· τα άτομα είναι κατάλληλα για θέσεις και ανήκουν στην ομάδα δεξαμενής της διακονίας· τα προγράμματα ακολουθούν τις εκδηλώσεις του ημερολογίου και παράγουν πραγματοποιήσεις με ημερομηνία και απαιτήσεις στελέχωσης· οι συντονιστές αναθέτουν άτομα, τα οποία αποδέχονται, αρνούνται ή προτείνουν αντικαταστάτη· υπενθυμίσεις και ειδοποιήσεις αποστέλλονται με email. Οι διαχειριστές και οι χρήστες με το δικαίωμα Διαχείριση διακονιών βλέπουν κάθε διακονία και μπορούν να τις δημιουργούν, να τις απενεργοποιούν και να τις διαγράφουν. Ο συντονιστής μιας διακονίας λαμβάνει αντί γι' αυτό το δικαίωμα Διαχείριση των διακονιών μου: η επικεφαλίδα Διακονίες στην πλαϊνή στήλη δείχνει τότε μόνο τις διακονίες που συντονίζει. Ένας υπεύθυνος ομάδας διευθύνει την ομάδα του από την Πύλη μελών. Τα μέλη χρησιμοποιούν την Πύλη μελών για να βλέπουν το πρόγραμμά τους, να απαντούν, να γράφονται και να προσφέρουν βοήθεια."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Καταμέτρηση ενεργών εγκαταστάσεων και αποτελεσμάτων αναβάθμισης"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Μηχανή βάσης δεδομένων και κύρια/δευτερεύουσα έκδοση"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Σφάλματα — στατιστικά εγκατάστασης, προειδοποιήσεις, σφάλματα και εξαιρέσεις JS"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Θέλετε να μας βοηθήσετε να βρίσκουμε και να διορθώνουμε προβλήματα;"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "Η Εγκατάσταση κοινοποιεί ελάχιστα στατιστικά εγκατάστασης και αναβάθμισης. Τα Σφάλματα προσθέτουν προειδοποιήσεις και αναφορές σφαλμάτων. Το Πλήρες προσθέτει προβολές σελίδων. Το Κανένα στέλνει μόνο αποτυχημένες εγκαταστάσεις και αναβαθμίσεις."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Εγκατάσταση — στατιστικά εγκατάστασης και αναβάθμισης (προεπιλογή)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Αποτελέσματα εγκατάστασης και αναβάθμισης, προηγούμενη έκδοση στις αναβαθμίσεις και ένα ημερήσιο σήμα κατά τη χρήση"
+
+#: 
+msgid "Installation profile"
+msgstr "Προφίλ εγκατάστασης"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Τοπικές ρυθμίσεις (Σφάλματα και Πλήρες)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Δεν κοινοποιούνται ποτέ: αρχεία μελών, προσφορών ή άλλα αρχεία της εκκλησίας, το όνομα της εκκλησίας σας, η διεύθυνση ιστού ή το όνομα του διακομιστή σας ή διευθύνσεις email. Η χώρα σας είναι αυτή των ρυθμίσεων της εκκλησίας σας και δεν προκύπτει από το δίκτυό σας."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Οικογένεια λειτουργικού συστήματος (Σφάλματα και Πλήρες)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "Έκδοση PHP (Σφάλματα και Πλήρες)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Δείτε ακριβώς τι κοινοποιείται ή αλλάξτε την επιλογή σας στο Διαχείριση → Τηλεμετρία."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Διάκριση εγκαταστάσεων παραγωγής, επίδειξης και δοκιμών"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Κοινοποίηση ανώνυμων στατιστικών εγκατάστασης;"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Κοινοποίηση αναφορών σφαλμάτων και χρήσης"
+
+#: 
+msgid "Share install statistics"
+msgstr "Κοινοποίηση στατιστικών εγκατάστασης"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Κοινοποιούνται επιπλέον: προειδοποιήσεις, λεπτομέρειες σφαλμάτων και ποιες σελίδες ανοίγουν."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Κοινοποιούνται: ότι το ChurchCRM εγκαταστάθηκε ή αναβαθμίστηκε και αν λειτούργησε, ένα σήμα μία φορά την ημέρα κατά τη χρήση, ο αριθμός έκδοσης, η χώρα σας και ο τύπος της βάσης δεδομένων. Ένα τυχαίο αναγνωριστικό εγκατάστασης μετρά κάθε εγκατάσταση μία φορά."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Κατανόηση της συμβατότητας βάσεων δεδομένων"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Η επιλογή σας ζητείται μία φορά. Μπορείτε να την αλλάξετε ανά πάσα στιγμή. Με το Όχι, ευχαριστώ αναφέρεται μόνο μια αποτυχημένη εγκατάσταση ή αναβάθμιση."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Τα δεδομένα σας είναι δικά σας. Η Εγκατάσταση κοινοποιεί μόνο αποτελέσματα εγκατάστασης και αναβάθμισης, αναγνωριστικό εγκατάστασης, έκδοση λογισμικού, προφίλ εγκατάστασης, ρυθμισμένη χώρα και μηχανή βάσης δεδομένων με κύρια/δευτερεύουσα έκδοση. Τα Σφάλματα προσθέτουν προειδοποιήσεις και λεπτομέρειες σφαλμάτων. Το Πλήρες προσθέτει προβολές σελίδων. Το Κανένα στέλνει μόνο αποτυχημένες εγκαταστάσεις και αναβαθμίσεις. Κανένα επίπεδο δεν στέλνει τη διεύθυνση ιστού ή το όνομα του διακομιστή σας. Οι δοκιμαστικές εγκαταστάσεις δεν στέλνουν τίποτα. Η τηλεμετρία αποστέλλεται στην PostHog στις Ηνωμένες Πολιτείες."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Τα δεδομένα σας είναι δικά σας. Οι αναφορές αφορούν το λογισμικό, ποτέ την εκκλησία σας ή τους ανθρώπους της."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Τα δεδομένα σας είναι δικά σας. Για να μετρά τις εγκαταστάσεις, το ChurchCRM αναφέρει ότι εγκαταστάθηκε ή αναβαθμίστηκε και αν λειτούργησε, ένα σήμα μία φορά την ημέρα κατά τη χρήση, καθώς και τον αριθμό έκδοσης, τη χώρα σας, τον τύπο της βάσης δεδομένων και ένα τυχαίο αναγνωριστικό εγκατάστασης. Δεν αναφέρει ποτέ αρχεία μελών, προσφορών ή άλλα αρχεία της εκκλησίας, το όνομα της εκκλησίας σας, τη διεύθυνση ιστού ή το όνομα του διακομιστή σας ή διευθύνσεις email. Μπορείτε να το απενεργοποιήσετε ανά πάσα στιγμή στο Διαχείριση → Τηλεμετρία· μια αποτυχημένη εγκατάσταση ή αναβάθμιση εξακολουθεί να αναφέρεται. Προειδοποιήσεις, λεπτομέρειες σφαλμάτων και προβολές σελίδων κοινοποιούνται μόνο αν το επιλέξετε."
 

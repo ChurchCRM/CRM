@@ -328,7 +328,7 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                             <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
-                    <div class="btn-group" role="group">
+                    <div class="d-flex flex-wrap gap-2 mt-3">
                         <button type="submit" class="btn btn-primary btn-sm btn-save-settings" data-plugin-id="<?= $pluginId ?>">
                             <i class="fa-solid fa-floppy-disk me-2"></i><?= gettext('Save Settings') ?>
                         </button>
@@ -1030,7 +1030,7 @@ $(document).ready(function() {
 
     $('#btn-browse-approved').on('click', function() {
         const $list = $('#approvedPluginsList');
-        $list.html('<div class="text-center text-body-secondary py-4"><i class="fa-solid fa-spinner fa-spin me-2"></i><?= addslashes(gettext('Loading…')) ?></div>');
+        $list.html('<div class="text-center text-body-secondary py-4"><i class="fa-solid fa-spinner fa-spin me-2"></i><?= addslashes(gettext('Loading...')) ?></div>');
         $('#approvedPluginsModal').modal('show');
 
         $.ajax({
