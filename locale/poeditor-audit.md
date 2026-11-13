@@ -1,68 +1,63 @@
 # ChurchCRM Locale Audit Report
 
-**Total Supported Locales:** 49
+**Total Supported Locales:** 48
 **Complete Locales (≥90%):** 43
 **Good Locales (75-89%):** 0
-**Needs Work (<75%):** 6
-**WIP Candidates (>5%, not yet added):** 4
+**Needs Work (<75%):** 5
+**WIP Candidates (>5%, not yet added):** 0
 
 ## Locale Completeness Overview
 
 | Locale | Language | Translations | Percentage | Status | Supported |
 |--------|----------|--------------|------------|--------|----------|
-| `af` | Afrikaans | 4495 | 100% | 🟢 Complete | ✅ Yes |
-| `ar` | Arabic | 4495 | 100% | 🟢 Complete | ✅ Yes |
-| `zh-cn` | Chinese | 4495 | 100% | 🟢 Complete | ✅ Yes |
-| `zh-tw` | Chinese (TW) | 4495 | 100% | 🟢 Complete | ✅ Yes |
-| `fi` | Finnish | 4495 | 100% | 🟢 Complete | ✅ Yes |
-| `ja` | Japanese | 4495 | 100% | 🟢 Complete | ✅ Yes |
-| `ta` | Tamil | 4495 | 100% | 🟢 Complete | ✅ Yes |
-| `am` | Amharic | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `hr` | Croatian | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `et` | Estonian | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `el` | Greek | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `he` | Hebrew | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `hi` | Hindi | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `it` | Italian | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `ko` | Korean | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `ml` | Malayalam | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `ru` | Russian | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `es-ar` | Spanish (AR) | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `te` | Telugu | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `th` | Thai | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `tr` | Turkish | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `vi` | Vietnamese | 4494 | 99.98% | 🟢 Complete | ✅ Yes |
-| `sq` | Albanian | 4493 | 99.96% | 🟢 Complete | ✅ Yes |
-| `de` | German | 4493 | 99.96% | 🟢 Complete | ✅ Yes |
-| `hu` | Hungarian | 4493 | 99.96% | 🟢 Complete | ✅ Yes |
-| `id` | Indonesian | 4493 | 99.96% | 🟢 Complete | ✅ Yes |
-| `nb` | Norwegian Bokmål | 4493 | 99.96% | 🟢 Complete | ✅ Yes |
-| `es` | Spanish | 4493 | 99.96% | 🟢 Complete | ✅ Yes |
-| `es-co` | Spanish (CO) | 4493 | 99.96% | 🟢 Complete | ✅ Yes |
-| `es-mx` | Spanish (MX) | 4493 | 99.96% | 🟢 Complete | ✅ Yes |
-| `es-sv` | Spanish (SV) | 4493 | 99.96% | 🟢 Complete | ✅ Yes |
-| `pt` | Portuguese | 4492 | 99.93% | 🟢 Complete | ✅ Yes |
-| `sv` | Swedish | 4492 | 99.93% | 🟢 Complete | ✅ Yes |
-| `pt-br` | Portuguese (BR) | 4491 | 99.91% | 🟢 Complete | ✅ Yes |
-| `fr` | French | 4490 | 99.89% | 🟢 Complete | ✅ Yes |
-| `ro` | Romanian | 4490 | 99.89% | 🟢 Complete | ✅ Yes |
-| `nl` | Dutch | 4488 | 99.84% | 🟢 Complete | ✅ Yes |
-| `fil` | Filipino | 4483 | 99.73% | 🟢 Complete | ✅ Yes |
-| `uk` | Ukrainian | 4478 | 99.62% | 🟢 Complete | ✅ Yes |
-| `sk` | Slovak | 4477 | 99.6% | 🟢 Complete | ✅ Yes |
-| `pl` | Polish | 4476 | 99.58% | 🟢 Complete | ✅ Yes |
-| `cs` | Czech | 4475 | 99.56% | 🟢 Complete | ✅ Yes |
-| `sw` | Swahili | 4430 | 98.55% | 🟢 Complete | ✅ Yes |
-| `sl` | Slovenian | 64 | 1.42% | 🟠 Needs Work | ❌ No |
-| `my` | Burmese | 60 | 1.33% | 🟠 Needs Work | ❌ No |
-| `en-za` | English (ZA) | 59 | 1.31% | N/A | ✅ Yes |
-| `sr-cyrl` | Serbian (Cyrillic) | 57 | 1.27% | 🟠 Needs Work | ❌ No |
-| `en-au` | English (AU) | 57 | 1.27% | N/A | ✅ Yes |
-| `en` | English | 46 | 1.02% | N/A | ✅ Yes |
-| `lv` | Latvian | 42 | 0.93% | 🟠 Needs Work | ❌ No |
-| `en-ca` | English (CA) | 26 | 0.58% | N/A | ✅ Yes |
-| `en-jm` | English (JM) | 22 | 0.49% | N/A | ✅ Yes |
-| `en-us` | English (US) | 0 | 0% | N/A | ✅ Yes |
+| `af` | Afrikaans | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `sq` | Albanian | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `am` | Amharic - Ethiopia | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `ar` | Arabic - Egypt | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-cn` | Chinese - China | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `zh-tw` | Chinese - Taiwan | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `hr` | Croatian | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `cs` | Czech | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `nl` | Dutch - Netherlands | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `et` | Estonian | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `fil` | Filipino - Philippines | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `fi` | Finnish | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `fr` | French - France | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `de` | German - Germany | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `el` | Greek | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `he` | Hebrew | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `hi` | Hindi - India | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `hu` | Hungarian | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `id` | Indonesian - Indonesia | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `it` | Italian - Italy | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `ja` | Japanese | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `ko` | Korean | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `ml` | Malayalam - India | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `nb` | Norwegian | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `pl` | Polish | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `pt-br` | Portuguese - Brazil | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `pt` | Portuguese - Portugal | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `ro` | Romanian - Romania | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `ru` | Russian | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `sk` | Slovak | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `es-ar` | Spanish - Argentina | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `es-co` | Spanish - Colombia | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `es-sv` | Spanish - El Salvador | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `es-mx` | Spanish - Mexico | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `es` | Spanish - Spain | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `sw` | Swahili | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `sv` | Swedish | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `ta` | Tamil - India | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `te` | Telugu - India | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `th` | Thai | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `tr` | Turkish | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `uk` | Ukrainian | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `vi` | Vietnamese | 6628 | 100% | 🟢 Complete | ✅ Yes |
+| `en-za` | English - South Africa | 124 | 1.87% | N/A | ✅ Yes |
+| `en-au` | English - Australia | 119 | 1.8% | N/A | ✅ Yes |
+| `en` | English - Great Britain | 108 | 1.63% | N/A | ✅ Yes |
+| `en-jm` | English - Jamaica | 99 | 1.49% | N/A | ✅ Yes |
+| `en-ca` | English - Canada | 60 | 0.91% | N/A | ✅ Yes |
 
 ## Status Summary
 
@@ -70,18 +65,11 @@
 - **🟡 Good (75-89%):** 0 locales with solid translation coverage
 - **🟠 Needs Work (<75%):** 0 locales requiring translator attention
 - **🔴 Incomplete:** 0 locales (requiring translator attention)
-- **N/A:** 6 locales (English variants - English is the default language)
+- **N/A:** 5 locales (English variants - English is the default language)
 
 ## WIP Candidates (not yet in system)
 
-These locales have translations but are not yet in locales.json:
-
-| Language | Code | Translations | Percentage | Status |
-|----------|------|--------------|------------|--------|
-| Slovenian | `sl` | 64 | 1.42% | 📝 Monitor |
-| Burmese | `my` | 60 | 1.33% | 📝 Monitor |
-| Serbian (Cyrillic) | `sr-cyrl` | 57 | 1.27% | 📝 Monitor |
-| Latvian | `lv` | 42 | 0.93% | 📝 Monitor |
+No locale candidates available.
 
 **Note:** 
 - English variants (en-*) are marked as N/A since English is the default language
@@ -90,10 +78,10 @@ These locales have translations but are not yet in locales.json:
 
 ## Technical Notes
 
-- **Data Source:** POEditor API (Project ID: 77079)
-- **Audit Script:** `locale/locale-audit.js`
+- **Data Source:** the locale files in the repo (`src/locale/i18n/*.json` against `locale/messages.po`)
+- **Audit Script:** `locale/scripts/locale-audit.js`
 - **Configuration:** `src/locale/locales.json`
-- **Command:** `npm run locale-audit`
+- **Command:** `npm run locale:audit`
 
 ---
 *This report was automatically generated by the ChurchCRM locale audit system.*

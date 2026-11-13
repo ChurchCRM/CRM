@@ -122,10 +122,7 @@ class Bootstrapper
             try {
                 self::installChurchCRMSchema();
             } catch (\Throwable $e) {
-                TelemetryService::captureInstallFailure(
-                    $e::class,
-                    $e instanceof SQLImportException ? $e->getDatabaseError() : null
-                );
+                TelemetryService::captureInstallFailure($e instanceof SQLImportException ? 'schema_import_failed' : 'other');
                 throw $e;
             }
         }

@@ -16,8 +16,8 @@ use Psr\Http\Message\ServerRequestInterface as Request;
  *     @OA\RequestBody(required=true,
  *         @OA\JsonContent(
  *             @OA\Property(property="level", type="string",
- *                 enum={"none","errors","warnings","full"},
- *                 description="Telemetry collection level. 'none' declines and suppresses prompt for this version.")
+ *                 enum={"none","install","errors","full"},
+ *                 description="Telemetry collection level. Every choice dismisses the one-time consent prompt.")
  *         )
  *     ),
  *     @OA\Response(response=403, description="Admin role required"),
@@ -33,7 +33,7 @@ $app->post('/api/system/telemetry-consent', function (Request $request, Response
     $validLevels = [
         TelemetryService::LEVEL_NONE,
         TelemetryService::LEVEL_ERRORS,
-        TelemetryService::LEVEL_WARNINGS,
+        TelemetryService::LEVEL_INSTALL,
         TelemetryService::LEVEL_FULL,
     ];
     if (!in_array($level, $validLevels, true)) {
@@ -42,11 +42,8 @@ $app->post('/api/system/telemetry-consent', function (Request $request, Response
 
     SystemConfig::setValue('sTelemetryLevel', $level);
 
-    if ($level === TelemetryService::LEVEL_NONE) {
-        // Record the version the admin declined so the prompt is suppressed
-        // for the remainder of this release and re-shown after the next upgrade.
-        SystemConfig::setValue('sTelemetryAskedVersion', VersionUtils::getInstalledVersion());
-    } else {
+    SystemConfig::setValue('sTelemetryAskedVersion', VersionUtils::getInstalledVersion());
+    if ($level !== TelemetryService::LEVEL_NONE) {
         TelemetryService::syncLifecycle();
     }
 

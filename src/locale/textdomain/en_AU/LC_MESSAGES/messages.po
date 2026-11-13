@@ -464,14 +464,76 @@ msgid "Use your church bylaws to choose the filters, then have authorized church
 msgstr "Use your church bylaws to choose the filters, then have authorised church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitised database error, but no installation ID or SQL statement."
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitised database error, without an installation ID or SQL statement."
-
-#: 
 msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
 msgstr "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognise."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Require a cheque number when recording cheque payments on deposit entries. When off, a cheque can be saved with a blank or 0 cheque number, and those are not checked for duplicates."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Require cheque number on cheque payments"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[1] "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Assignment cancelled"
+
+#: 
+msgid "Canceled"
+msgstr "Cancelled"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+
+#: 
+msgid "Color"
+msgstr "Colour"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Emailed sign-in code and link cancelled"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Occurrence cancelled"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Prioritise translations"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "The assignment could not be cancelled"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "The occurrence could not be cancelled"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "This date was cancelled. Nothing more is needed from you."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "This occurrence has been cancelled"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
 

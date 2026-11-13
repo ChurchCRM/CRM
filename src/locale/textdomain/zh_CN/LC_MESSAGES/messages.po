@@ -1554,7 +1554,7 @@ msgstr "必须指定非零的支票号码"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "检查数量不适用于“现金”支付"
+msgstr "支票号码不适用于“现金”支付"
 
 #: 
 msgid "Payment Schedule"
@@ -5018,7 +5018,7 @@ msgstr "家庭认捐总结"
 
 #: 
 msgid "Pledge"
-msgstr "保证"
+msgstr "奉献承诺"
 
 #: 
 msgid "Paid"
@@ -13165,7 +13165,7 @@ msgstr "更改您的语言设置"
 
 #: 
 msgid "Check Number"
-msgstr "检查号码"
+msgstr "支票号码"
 
 #: 
 msgid "Check out"
@@ -16021,18 +16021,6 @@ msgid "Editing a Pledge"
 msgstr "编辑承诺奉献"
 
 #: 
-msgid "Enable (full)"
-msgstr "启用（完整）"
-
-#: 
-msgid "Errors only"
-msgstr "仅错误"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "错误——服务器错误和 JS 异常"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "创建承诺奉献失败"
 
@@ -16071,10 +16059,6 @@ msgstr "小组键为必填项"
 #: 
 msgid "Happy Birthday"
 msgstr "生日快乐"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "帮助改进 ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16145,16 +16129,8 @@ msgid "None (disabled)"
 msgstr "无（已禁用）"
 
 #: 
-msgid "OS family"
-msgstr "操作系统类型"
-
-#: 
 msgid "Overpaid"
 msgstr "超额奉献"
-
-#: 
-msgid "PHP version"
-msgstr "PHP 版本"
 
 #: 
 msgid "Page route"
@@ -16255,10 +16231,6 @@ msgstr "用户名、电子邮件或角色"
 #: 
 msgid "View pledge or payment details"
 msgstr "查看承诺奉献或奉献详情"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "警告——警告、错误和 JS 异常"
 
 #: 
 msgid "What is sent"
@@ -24592,28 +24564,12 @@ msgid "Closing Line"
 msgstr "结束语"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "控制可选遥测。即使遥测关闭，安装和数据库升级失败仍会向 PostHog 发送有限的诊断信息。这些失败报告包含软件与环境版本以及经过清理的数据库错误，但不包含安装 ID 或 SQL 语句。"
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "诊断失败的安装和数据库升级"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "安装与升级失败详情"
-
-#: 
 msgid "Open in browser window"
 msgstr "在浏览器窗口中打开"
 
 #: 
 msgid "Opening Line"
 msgstr "开场语"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "可选的使用遥测仅在启用时发送。即使您选择“不用，谢谢”，安装和数据库升级失败仍始终发送有限的诊断信息以帮助社区。失败报告包含软件与环境版本以及经过清理的数据库错误，不含安装 ID 或 SQL 语句。"
 
 #: 
 msgid "PDF Handling"
@@ -24650,14 +24606,6 @@ msgstr "报表用语"
 #: 
 msgid "Tax Information"
 msgstr "税务信息"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "遥测发送到美国的 PostHog。即使可选遥测已停用，仍会发送安装与升级失败报告。"
-
-#: 
-msgid "always sent"
-msgstr "始终发送"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25714,10 +25662,6 @@ msgstr "只有在世且拥有自己电子邮箱的人可以列入办公室名单
 #: 
 msgid "Only people with their own email can be added."
 msgstr "只能添加拥有自己电子邮箱的人。"
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "可选遥测可能包括页面路径、当前语言区域、CRM 版本、PHP 版本、操作系统系列、教会信息设置中的国家，以及随机安装 ID。失败报告不含安装 ID。数据发送到美国的 PostHog。"
 
 #: 
 msgid "Passkey"
@@ -27170,4 +27114,300 @@ msgstr "按基金分类的付款"
 #: 
 msgid "Unknown Fund"
 msgstr "未知基金"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "请联系您的主机服务商将数据库迁移到受支持的版本，然后重试。"
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "请联系您的主机服务商将数据库迁移到受支持的版本。"
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "节假日名称会按照每位用户的语言设置显示。如果某个节假日在该语言中没有名称，则以英文显示。"
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "以您的语言显示节假日名称"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "在存款记录中登记支票付款时要求填写支票号码。关闭后，支票可以在支票号码为空或为 0 的情况下保存，且这些支票不会进行重复检查。"
+
+#: 
+msgid "Require check number on check payments"
+msgstr "支票付款须填写支票号码"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "升级未开始，因此未做任何更改。"
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "此升级无法在您的数据库上运行。"
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "您的数据库服务器（%1$s %2$s）版本低于 ChurchCRM 支持的版本（MySQL %3$s 或 MariaDB %4$s 及更高版本）。"
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "在向此自助登记的家庭发送验证邮件之前，请先批准该家庭"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "比较两个财政年度的家庭奉献承诺总额。"
+
+#: 
+msgid "Email Portal Link"
+msgstr "通过电子邮件发送门户链接"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "通过电子邮件向该家庭发送会众门户链接，家庭可在门户中查看并更新其信息；或者记录您已当面核实。"
+
+#: 
+msgid "Family is inactive"
+msgstr "家庭处于待用状态"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "第一个财政年度"
+
+#: 
+msgid "Fiscal Years"
+msgstr "财政年度"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "奉献报表 — 仅为示例"
+
+#: 
+msgid "Last invited"
+msgstr "上次邀请"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "上次登录门户"
+
+#: 
+msgid "Last verified"
+msgstr "上次核实"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "此家庭中没有任何已批准的活跃成员拥有电子邮件地址。请改为当面核实。"
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "未找到这些财政年度的奉献承诺。"
+
+#: 
+msgid "Pledge Comparison"
+msgstr "奉献承诺对比"
+
+#: 
+msgid "Preview PDF"
+msgstr "预览 PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "第二个财政年度"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "请使用此电子邮件地址登录会众门户，查看您的家庭信息。在“我的家庭”页面上确认信息无误，或更新您的资料。"
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "此家庭处于待用状态，因此不会向其发送验证邮件。"
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "此自助登记的家庭正在等待批准。批准后，系统会通过电子邮件邀请该家庭登录会众门户并查看其信息。"
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "仅使用已保存的设置和虚构的示例奉献。"
+
+#: 
+msgid "Verification"
+msgstr "核实"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "已向 %d 个家庭发送验证邮件。"
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "已向家庭成员发送验证邮件。"
+
+#: 
+msgid "by the family in the portal"
+msgstr "由家庭在门户中"
+
+#: 
+msgid "in person by staff"
+msgstr "由同工当面"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d 个默认被跳过，原因不同（发生已结束、已取消或已满）"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "过渡设置。旧版志愿者机会页面与新的事工页面同时可用，人员记录会显示两个志愿者标签页，并有清楚标示。用于教会从 V1 迁移到 V2 期间，之后再切换为仅 V2。"
+
+#: 
+msgid "Assignment canceled"
+msgstr "分配已取消"
+
+#: 
+msgid "Canceled"
+msgstr "已取消"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "取消不通知任何人：不发送电子邮件。分配将被保留，在取消期间不安排提醒，且在恢复之前无法分配任何人。"
+
+#: 
+msgid "Color"
+msgstr "颜色"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "已取消通过邮件发送的登录验证码和链接"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "家庭角色（户主、配偶、子女等）有助于整理您的记录。"
+
+#: 
+msgid "Occurrence canceled"
+msgstr "发生已取消"
+
+#: 
+msgid "Prioritize translations"
+msgstr "优先处理翻译"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "无法取消该分配"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "无法取消此发生"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "此日期已取消。您无需再做任何事。"
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "此活动场次已取消"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "按教会运作方式组织的志愿服事。每个事工有团队和职位；人员取得职位资格，并属于该事工的库小组；排班跟随日历上的活动，生成带有人员需求的、有日期的活动场次；协调员分配人员，他们可以接受、拒绝或提议代替人选；提醒和警报通过电子邮件发出。管理员和拥有“管理事工”权限的用户可以看到所有事工，并可创建、停用和删除。事工协调员则获得“管理我的事工”权限：侧边栏的“事工”标题下只显示其协调的事工。团队负责人通过会众门户管理其团队。会众使用会众门户查看自己的排班、回应、报名和表示愿意帮忙。"
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "统计活跃安装数和升级结果"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "数据库引擎及主/次版本"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "错误 — 安装统计、警告、错误和 JS 异常"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "帮助我们发现并修复问题？"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "“安装”级别仅共享最少的安装和升级统计。“错误”级别另外共享警告和错误报告。“完整”级别另外共享页面访问。“无”仅发送失败的安装和升级。"
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "安装 — 安装和升级统计（默认）"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "安装和升级结果、升级时的先前版本，以及使用期间每天一次的签到"
+
+#: 
+msgid "Installation profile"
+msgstr "安装配置"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "区域设置（错误和完整级别）"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "绝不共享：会友、奉献或其他教会记录、您的教会名称、您的网址或服务器名称、电子邮件地址。您的国家取自教会设置，而不是根据您的网络推断。"
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "操作系统类型（错误和完整级别）"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP 版本（错误和完整级别）"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "在 管理 → 遥测 中查看具体共享了哪些内容，或更改您的选择。"
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "区分生产、演示和测试安装"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "共享匿名安装统计？"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "共享错误和使用报告"
+
+#: 
+msgid "Share install statistics"
+msgstr "共享安装统计"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "另外共享：警告、错误详情以及打开了哪些页面。"
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "共享内容：ChurchCRM 已安装或升级以及是否成功、使用期间每天一次的签到、版本号、您的国家和数据库类型。随机安装 ID 确保每个安装只计数一次。"
+
+#: 
+msgid "Understand database compatibility"
+msgstr "了解数据库兼容性"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "此选择只询问一次，您可以随时更改。选择“不，谢谢”时，仅报告失败的安装或升级。"
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "您的数据属于您。“安装”级别仅共享安装和升级结果、安装 ID、软件版本、安装配置、设置的国家以及数据库引擎及其主/次版本。“错误”级别另外共享警告和错误详情。“完整”级别另外共享页面访问。“无”仅发送失败的安装和升级。任何级别都不会发送您的网址或服务器名称。测试安装不发送任何内容。遥测数据发送至位于美国的 PostHog。"
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "您的数据属于您。报告内容仅涉及软件，绝不涉及您的教会或会众。"
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "您的数据属于您。为统计安装数，ChurchCRM 会报告它已安装或升级以及是否成功、使用期间每天一次的签到，以及版本号、您的国家、数据库类型和随机安装 ID。它绝不会报告会友、奉献或其他教会记录、您的教会名称、您的网址或服务器名称、电子邮件地址。您可以随时在 管理 → 遥测 中关闭此功能；失败的安装或升级仍会被报告。警告、错误详情和页面访问只有在您选择后才会共享。"
 

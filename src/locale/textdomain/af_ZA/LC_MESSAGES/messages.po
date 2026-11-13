@@ -5393,7 +5393,7 @@ msgstr "Voeg enige addisionele notas oor hierdie deposito by"
 
 #: 
 msgid "Checks"
-msgstr "Kontroles"
+msgstr "Tjeks"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -13109,7 +13109,7 @@ msgstr "Verander u taalinstelling"
 
 #: 
 msgid "Check Number"
-msgstr "Kontroleer nommer"
+msgstr "Tjeknommer"
 
 #: 
 msgid "Check out"
@@ -15968,18 +15968,6 @@ msgid "Editing a Pledge"
 msgstr "Wysig ʼn Belofte"
 
 #: 
-msgid "Enable (full)"
-msgstr "Aktiveer (volledig)"
-
-#: 
-msgid "Errors only"
-msgstr "Slegs foute"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Foute — bedienerfoute en JS-uitsonderings"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Kon nie belofte skep nie"
 
@@ -16018,10 +16006,6 @@ msgstr "Groepsleutel is vereis"
 #: 
 msgid "Happy Birthday"
 msgstr "Gelukkige Verjaardag"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Help om ChurchCRM te verbeter"
 
 #: 
 msgid "IP addresses"
@@ -16092,16 +16076,8 @@ msgid "None (disabled)"
 msgstr "Geen (gedeaktiveer)"
 
 #: 
-msgid "OS family"
-msgstr "OS-familie"
-
-#: 
 msgid "Overpaid"
 msgstr "Oorbetaal"
-
-#: 
-msgid "PHP version"
-msgstr "PHP-weergawe"
 
 #: 
 msgid "Page route"
@@ -16202,10 +16178,6 @@ msgstr "Gebruikersname, e-posse of rolle"
 #: 
 msgid "View pledge or payment details"
 msgstr "Bekyk belofte- of betalingsbesonderhede"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Waarskuwings — waarskuwings, foute en JS-uitsonderings"
 
 #: 
 msgid "What is sent"
@@ -24554,28 +24526,12 @@ msgid "Closing Line"
 msgstr "Slotreël"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Beheer opsionele telemetrie. Mislukte installasies en databasisopgraderings stuur beperkte diagnostiek na PostHog selfs wanneer telemetrie af is. Hierdie mislukkingsverslae sluit sagteware- en omgewingsweergawes en 'n gesuiwerde databasisfout in, maar geen installasie-ID of SQL-stelling nie."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Diagnoseer mislukte installasies en databasisopgraderings"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Besonderhede van installasie- en opgraderingsmislukkings"
-
-#: 
 msgid "Open in browser window"
 msgstr "Maak in blaaiervenster oop"
 
 #: 
 msgid "Opening Line"
 msgstr "Openingsreël"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Opsionele gebruikstelemetrie word slegs gestuur wanneer dit geaktiveer is. Mislukte installasies en databasisopgraderings stuur altyd 'n beperkte diagnostiek om die gemeenskap te help, selfs as jy Nee dankie kies. Mislukkingsverslae sluit sagteware- en omgewingsweergawes en 'n gesuiwerde databasisfout in, sonder 'n installasie-ID of SQL-stelling."
 
 #: 
 msgid "PDF Handling"
@@ -24612,14 +24568,6 @@ msgstr "Staatbewoording"
 #: 
 msgid "Tax Information"
 msgstr "Belastinginligting"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetrie word na PostHog in die Verenigde State gestuur. Verslae oor mislukte installasies en opgraderings word gestuur selfs wanneer opsionele telemetrie afgeskakel is."
-
-#: 
-msgid "always sent"
-msgstr "altyd gestuur"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25676,10 +25624,6 @@ msgstr "Slegs lewende mense met hul eie e-pos kan op die kantoorlys wees."
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Slegs mense met hul eie e-pos kan bygevoeg word."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Opsionele telemetrie kan bladsyroetes, aktiewe locale, CRM-weergawe, PHP-weergawe, bedryfstelselfamilie, die land uit jou kerkinligtinginstellings en 'n ewekansige installasie-ID insluit. Mislukkingsverslae sluit nie die installasie-ID in nie. Data word na PostHog in die Verenigde State gestuur."
 
 #: 
 msgid "Passkey"
@@ -27132,4 +27076,302 @@ msgstr "Betalings per fonds"
 #: 
 msgid "Unknown Fund"
 msgstr "Onbekende fonds"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Vra jou gasheer om die databasis na 'n ondersteunde weergawe te skuif, en probeer dan weer."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Vra jou gasheer om die databasis na 'n ondersteunde weergawe te skuif."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Vakansiedagname volg elke gebruiker se taalinstelling. Wanneer 'n vakansiedag geen naam in daardie taal het nie, word dit in Engels gewys."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Vakansiedagname in jou taal"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Vereis 'n tjeknommer wanneer tjekbetalings op depositoinskrywings aangeteken word. Wanneer dit af is, kan 'n tjek met 'n leë of 0-tjeknommer gestoor word, en dié word nie vir duplikate nagegaan nie."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Vereis tjeknommer by tjekbetalings"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "Die opgradering is nie begin nie, dus het niks verander nie."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Hierdie opgradering kan nie op jou databasis loop nie."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Jou databasisbediener (%1$s %2$s) is ouer as wat ChurchCRM ondersteun (MySQL %3$s of MariaDB %4$s en later)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Keur hierdie selfgeregistreerde gesin goed voordat 'n verifikasie-e-pos aan hulle gestuur word"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "Vergelyk gesinne se totale verbintenisse vir twee fiskale jare."
+
+#: 
+msgid "Email Portal Link"
+msgstr "E-pos portaalskakel"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "E-pos die gesin 'n skakel na die lidmaatportaal, waar hulle hul inligting kan nagaan en bywerk, of teken aan dat jy dit persoonlik geverifieer het."
+
+#: 
+msgid "Family is inactive"
+msgstr "Gesin is onaktief"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Eerste fiskale jaar"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Fiskale jare"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Bydraestaat — slegs voorbeeld"
+
+#: 
+msgid "Last invited"
+msgstr "Laas genooi"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Laaste portaalaanmelding"
+
+#: 
+msgid "Last verified"
+msgstr "Laas geverifieer"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "Geen aktiewe, goedgekeurde lid van hierdie gesin het 'n e-posadres nie. Verifieer dit eerder persoonlik."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Geen verbintenisse is vir hierdie fiskale jare gevind nie."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "Vergelyking van verbintenisse"
+
+#: 
+msgid "Preview PDF"
+msgstr "Voorskou PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Tweede fiskale jaar"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Meld met hierdie e-posadres by die lidmaatportaal aan om jou gesin se inligting na te gaan. Bevestig op die My gesin-bladsy dat alles korrek is, of werk jou besonderhede by."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Hierdie gesin is onaktief, dus word geen verifikasie-e-posse aan hulle gestuur nie."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Hierdie selfgeregistreerde gesin wag op goedkeuring. Met goedkeuring word 'n uitnodiging aan die gesin ge-e-pos om by die lidmaatportaal aan te meld en hul inligting na te gaan."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Gebruik slegs gestoorde instellings en fiktiewe voorbeeldbydraes."
+
+#: 
+msgid "Verification"
+msgstr "Verifikasie"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "Verifikasie-e-pos aan %d gesin gestuur."
+msgstr[1] "Verifikasie-e-pos aan %d gesinne gestuur."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "Verifikasie-e-pos aan gesinslede gestuur."
+
+#: 
+msgid "by the family in the portal"
+msgstr "deur die gesin in die portaal"
+
+#: 
+msgid "in person by staff"
+msgstr "persoonlik deur personeel"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d verstek oorgeslaan om 'n ander rede (die geval is verby, gekanselleer of vol)"
+msgstr[1] "%d verstekke oorgeslaan om 'n ander rede (die geval is verby, gekanselleer of vol)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "'n Oorgangsinstelling. Die ou Vrywilligergeleenthede-bladsye en die nuwe Bedieninge-bladsye is albei beskikbaar, en 'n persoonrekord toon albei Vrywilliger-oortjies, duidelik benoem. Gebruik dit terwyl jy 'n kerk van V1 na V2 skuif, en skakel dan oor na net V2."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Toewysing gekanselleer"
+
+#: 
+msgid "Canceled"
+msgstr "Gekanselleer"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "Kansellering sê niks vir iemand: geen e-pos word gestuur nie. Toekennings word behou, geen herinneringe word geskeduleer terwyl dit gekanselleer is nie, en niemand kan toegeken word totdat dit herstel word."
+
+#: 
+msgid "Color"
+msgstr "Kleur"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Ge-e-poste aanmeldkode en skakel gekanselleer"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "Familie-rolle (Huishoudingshoof, Asvrouw/Asman, Kind, ens.) help jou rekords organiseer."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Voorkoms gekanselleer"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Prioritiseer vertalings"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "Die toewysing kon nie gekanselleer word nie"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "Die voorkoms kon nie gekanselleer word nie"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Hierdie datum is gekanselleer. Niks meer word van jou verwag nie."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Hierdie geval is gekanselleer"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Vrywilligerswerk soos 'n kerk dit bedryf. Elke bediening het spanne en posisies; mense word vir posisies gekwalifiseer en behoort aan die bediening se poelgroep; roosters volg die geleenthede op die kalender en lewer gedateerde gevalle met bemanningsvereistes; koördineerders wys mense toe, wat aanvaar, van die hand wys of 'n plaasvervanger voorstel; herinneringe en waarskuwings gaan per e-pos uit. Administrateurs en gebruikers met die toestemming Bestuur bedieninge sien elke bediening en mag hulle skep, deaktiveer en uitvee. 'n Bedieningkoördineerder kry eerder die toestemming Bestuur my bedieninge: die opskrif Bedieninge in die kantkolom wys dan net die bedieninge wat hulle koördineer. 'n Spanleier bestuur sy span vanuit die Lidmaatportaal. Lidmate gebruik die Lidmaatportaal om hul rooster te sien, te antwoord, in te skryf en hulp aan te bied."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Tel aktiewe installasies en opgraderingsuitslae"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Databasisenjin en hoof-/subweergawe"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Foute — installasiestatistiek, waarskuwings, foute en JS-uitsonderings"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Help ons om probleme te vind en reg te stel?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "Installasie deel minimale installasie- en opgraderingstatistiek. Foute voeg waarskuwings en foutverslae by. Volledig voeg bladsybesoeke by. Geen stuur slegs mislukte installasies en opgraderings."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Installasie — installasie- en opgraderingstatistiek (verstek)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Installasie- en opgraderingsuitslae, vorige weergawe by opgraderings en 'n daaglikse aanmelding terwyl dit gebruik word"
+
+#: 
+msgid "Installation profile"
+msgstr "Installasieprofiel"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Lokaal (Foute en Volledig)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Word nooit gedeel nie: lidmaat-, bydrae- of ander kerkrekords, jou kerk se naam, jou webadres of bedienernaam, of e-posadresse. Jou land is dié in jou kerkinstellings en word nie uit jou netwerk afgelei nie."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Bedryfstelselfamilie (Foute en Volledig)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP-weergawe (Foute en Volledig)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Sien presies wat gedeel word, of verander jou keuse, by Admin → Telemetrie."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Onderskei produksie-, demo- en toetsinstallasies"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Deel anonieme installasiestatistiek?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Deel fout- en gebruiksverslae"
+
+#: 
+msgid "Share install statistics"
+msgstr "Deel installasiestatistiek"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Word bykomend gedeel: waarskuwings, foutbesonderhede en watter bladsye oopgemaak word."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Gedeel: dat ChurchCRM geïnstalleer of opgegradeer is en of dit gewerk het, 'n aanmelding een keer per dag terwyl dit gebruik word, die weergawenommer, jou land en die tipe databasis. 'n Ewekansige installasie-ID tel elke installasie een keer."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Verstaan databasisversoenbaarheid"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Jou keuse word een keer gevra. Jy kan dit enige tyd verander. Met Nee dankie word slegs 'n mislukte installasie of opgradering gerapporteer."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Jou data is joune. Installasie deel slegs installasie- en opgraderingsuitslae, installasie-ID, sagteware-weergawe, installasieprofiel, ingestelde land en databasisenjin met hoof-/subweergawe. Foute voeg waarskuwings en foutbesonderhede by. Volledig voeg bladsybesoeke by. Geen stuur slegs mislukte installasies en opgraderings. Geen vlak stuur jou webadres of bedienernaam nie. Toetsinstallasies stuur niks nie. Telemetrie word na PostHog in die Verenigde State gestuur."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Jou data is joune. Dit rapporteer oor die sagteware, nooit oor jou kerk of sy mense nie."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Jou data is joune. Om installasies te tel, rapporteer ChurchCRM dat dit geïnstalleer of opgegradeer is en of dit gewerk het, 'n aanmelding een keer per dag terwyl dit gebruik word, asook die weergawenommer, jou land, die tipe databasis en 'n ewekansige installasie-ID. Dit rapporteer nooit lidmaat-, bydrae- of ander kerkrekords, jou kerk se naam, jou webadres of bedienernaam, of e-posadresse nie. Jy kan dit enige tyd by Admin → Telemetrie afskakel; 'n mislukte installasie of opgradering word steeds gerapporteer. Waarskuwings, foutbesonderhede en bladsybesoeke word slegs gedeel as jy dit kies."
 

@@ -83,6 +83,7 @@ class UpgradeService
 
         //the database isn't at the current version.  Start the upgrade
         $lockName = null;
+        $failureReason = 'other';
         try {
             $connection = Propel::getConnection();
             $lockName = 'churchcrm-upgrade-' . sha1((string) $connection->query('SELECT DATABASE()')->fetchColumn());
@@ -129,6 +130,7 @@ class UpgradeService
                                         TelemetryService::captureUpgradeInterruption($dbUpdate['dbVersion'], $elapsedMs);
                                     }
                                 }
+                                $failureReason = 'script_interrupted';
                                 throw new \RuntimeException("Upgrade file $dbScript failed or was interrupted. Check the server logs and repair or restore the database before retrying.");
                             }
                             if ($oneScriptPerRequest && $scriptsThisRequest === 1) {
@@ -192,6 +194,7 @@ class UpgradeService
             }
 
             if ($upgradeScriptsExecuted === 0) {
+                $failureReason = 'no_upgrade_path';
                 throw new \RuntimeException('No upgrade path for ' . VersionUtils::getDBVersion() . ' to ' . $installed_version);
             }
 
@@ -219,7 +222,7 @@ class UpgradeService
             return true;
         } catch (\Throwable $exc) {
             if (!$exc instanceof SQLImportException && $exc->getCode() !== 409) {
-                TelemetryService::captureUpgradeFailure($installed_version, $exc::class);
+                TelemetryService::captureUpgradeFailure($installed_version, $failureReason);
             }
             $logger->error(
                 'Database upgrade failed: ' . $exc->getMessage(),

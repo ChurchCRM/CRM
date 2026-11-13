@@ -1522,7 +1522,7 @@ msgstr "Ít nhất một quỹ phải có số tiền khác không."
 
 #: 
 msgid "Must specify non-zero check number"
-msgstr "Phải chỉ định số kiểm tra khác 0"
+msgstr "Phải nhập số séc khác 0"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
@@ -8781,7 +8781,7 @@ msgstr "Cac gia dinh dung chung dia chi va so dien thoai."
 
 #: 
 msgid "Family Pledge Summary"
-msgstr "Tom tat cam ket dang hien gia dinh"
+msgstr "Tóm tắt cam kết dâng hiến của gia đình"
 
 #: 
 msgid "Family Profile"
@@ -8993,7 +8993,7 @@ msgstr "Quan ly quy dang hien de theo doi tai chinh"
 
 #: 
 msgid "Manage donations, pledges, and financial records"
-msgstr "Quan ly dang hien, cam ket va ho so tai chinh"
+msgstr "Quản lý dâng hiến, cam kết và hồ sơ tài chính"
 
 #: 
 msgid "Manage families, people, and demographic information"
@@ -9223,7 +9223,7 @@ msgstr "Vui long thu yeu cau lien ket dat lai mat khau moi hoac lien he ho tro n
 
 #: 
 msgid "Pledges"
-msgstr "Cam ket dang hien"
+msgstr "Cam kết dâng hiến"
 
 #: 
 msgid "Plugin enabled but not configured. Once set up, backups run automatically to WebDAV on your configured interval."
@@ -9279,7 +9279,7 @@ msgstr "Ghi nhan nhieu nguoi trung thuong gay quy cung luc"
 
 #: 
 msgid "Record new pledges and payments"
-msgstr "Ghi nhan cam ket dang hien va cac khoan dang hien moi"
+msgstr "Ghi nhận cam kết dâng hiến và các khoản dâng hiến mới"
 
 #: 
 msgid "Record why attendees visited your church"
@@ -9415,7 +9415,7 @@ msgstr "Hien thi thanh vien cua: %s"
 
 #: 
 msgid "Sign in"
-msgstr "Dang nhap"
+msgstr "Đăng nhập"
 
 #: 
 msgid "Since this is a fresh installation, restoring will simply load your backup data."
@@ -9491,7 +9491,7 @@ msgstr "Tong dung luong"
 
 #: 
 msgid "Track family pledges and fund contributions by fiscal year"
-msgstr "Theo doi cam ket dang hien gia dinh va dong gop quy theo nam tai chinh"
+msgstr "Theo dõi cam kết dâng hiến của gia đình và đóng góp quỹ theo năm tài chính"
 
 #: 
 msgid "Transaction Details"
@@ -9555,7 +9555,7 @@ msgstr "Xem va quan ly tat ca cac nhom trong giao xu"
 
 #: 
 msgid "View and manage deposit slip payments"
-msgstr "Xem va quan ly cac khoan thanh toan phieu thu hien"
+msgstr "Xem và quản lý các khoản thanh toán trong phiếu nộp tiền"
 
 #: 
 msgid "View and manage system log files for debugging"
@@ -9575,7 +9575,7 @@ msgstr "Xem chi tiet gia dinh, thanh vien va dong thoi gian"
 
 #: 
 msgid "View family pledge summaries and fund allocations"
-msgstr "Xem tom tat cam ket dang hien gia dinh va phan bo quy"
+msgstr "Xem tóm tắt cam kết dâng hiến của gia đình và phân bổ quỹ"
 
 #: 
 msgid "View group members, roles, and properties"
@@ -9583,7 +9583,7 @@ msgstr "Xem thanh vien nhom, vai tro va thuoc tinh"
 
 #: 
 msgid "View transaction details for a pledge payment"
-msgstr "Xem chi tiet giao dich cho khoan thanh toan cam ket dang hien"
+msgstr "Xem chi tiết giao dịch cho khoản thanh toán cam kết dâng hiến"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -13108,7 +13108,7 @@ msgstr "Thay đổi địa phương"
 
 #: 
 msgid "Check Number"
-msgstr "Số kiểm tra"
+msgstr "Số séc"
 
 #: 
 msgid "Check out"
@@ -13256,7 +13256,7 @@ msgstr "ID tiền gửi"
 
 #: 
 msgid "Deposit Value"
-msgstr "Gia tri dot thu hien"
+msgstr "Giá trị đợt thu hiến"
 
 #: 
 msgid "Deposit saved successfully"
@@ -13708,7 +13708,7 @@ msgstr "Khong co ngay sinh nhat"
 
 #: 
 msgid "No Deposits"
-msgstr "Khong co dot thu hien"
+msgstr "Không có đợt thu hiến"
 
 #: 
 msgid "No Events Today"
@@ -13728,7 +13728,7 @@ msgstr "Chưa chọn lịch — sự kiện này sẽ xuất hiện trong lịch
 
 #: 
 msgid "No deposit data available yet"
-msgstr "Chua co du lieu dot thu hien"
+msgstr "Chưa có dữ liệu đợt thu hiến"
 
 #: 
 msgid "No email addresses available"
@@ -15964,18 +15964,6 @@ msgid "Editing a Pledge"
 msgstr "Chỉnh sửa Cam kết dâng"
 
 #: 
-msgid "Enable (full)"
-msgstr "Bật (đầy đủ)"
-
-#: 
-msgid "Errors only"
-msgstr "Chỉ lỗi"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Lỗi — lỗi máy chủ và ngoại lệ JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Không thể tạo cam kết dâng"
 
@@ -16014,10 +16002,6 @@ msgstr "Khóa nhóm là bắt buộc"
 #: 
 msgid "Happy Birthday"
 msgstr "Chúc mừng Sinh nhật"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Giúp cải thiện ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16088,16 +16072,8 @@ msgid "None (disabled)"
 msgstr "Không có (đã tắt)"
 
 #: 
-msgid "OS family"
-msgstr "Hệ điều hành"
-
-#: 
 msgid "Overpaid"
 msgstr "Dâng dư"
-
-#: 
-msgid "PHP version"
-msgstr "Phiên bản PHP"
 
 #: 
 msgid "Page route"
@@ -16198,10 +16174,6 @@ msgstr "Tên người dùng, email hoặc vai trò"
 #: 
 msgid "View pledge or payment details"
 msgstr "Xem chi tiết cam kết dâng hoặc dâng hiến"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Cảnh báo — cảnh báo, lỗi và ngoại lệ JS"
 
 #: 
 msgid "What is sent"
@@ -24535,28 +24507,12 @@ msgid "Closing Line"
 msgstr "Dòng kết"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Điều khiển đo lường sử dụng không bắt buộc. Lỗi cài đặt và nâng cấp cơ sở dữ liệu vẫn gửi chẩn đoán giới hạn tới PostHog ngay cả khi đo lường tắt. Các báo cáo lỗi này gồm phiên bản phần mềm, phiên bản môi trường và lỗi cơ sở dữ liệu đã được làm sạch, nhưng không có mã cài đặt hay câu lệnh SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Chẩn đoán cài đặt và nâng cấp cơ sở dữ liệu bị lỗi"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Chi tiết lỗi cài đặt và nâng cấp"
-
-#: 
 msgid "Open in browser window"
 msgstr "Mở trong cửa sổ trình duyệt"
 
 #: 
 msgid "Opening Line"
 msgstr "Dòng mở đầu"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Đo lường sử dụng không bắt buộc chỉ được gửi khi được bật. Lỗi cài đặt và nâng cấp cơ sở dữ liệu luôn gửi một bản chẩn đoán giới hạn để hỗ trợ cộng đồng, kể cả khi bạn chọn Không, cảm ơn. Báo cáo lỗi gồm phiên bản phần mềm, phiên bản môi trường và lỗi cơ sở dữ liệu đã được làm sạch, không có mã cài đặt hay câu lệnh SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24593,14 +24549,6 @@ msgstr "Lời văn bản kê"
 #: 
 msgid "Tax Information"
 msgstr "Thông tin thuế"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Dữ liệu đo lường được gửi tới PostHog tại Hoa Kỳ. Báo cáo lỗi cài đặt và nâng cấp vẫn được gửi ngay cả khi đo lường không bắt buộc bị tắt."
-
-#: 
-msgid "always sent"
-msgstr "luôn được gửi"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25657,10 +25605,6 @@ msgstr "Chỉ người còn sống và có email riêng mới được đưa và
 #: 
 msgid "Only people with their own email can be added."
 msgstr "Chỉ thêm được người có email riêng."
-
-#: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Đo lường không bắt buộc có thể gồm đường dẫn trang, ngôn ngữ đang dùng, phiên bản CRM, phiên bản PHP, họ hệ điều hành, quốc gia lấy từ cài đặt thông tin nhà thờ, và một mã cài đặt ngẫu nhiên. Báo cáo lỗi không gồm mã cài đặt. Dữ liệu được gửi tới PostHog tại Hoa Kỳ."
 
 #: 
 msgid "Passkey"
@@ -27113,4 +27057,300 @@ msgstr "Các khoản đóng góp theo Quỹ"
 #: 
 msgid "Unknown Fund"
 msgstr "Quỹ không xác định"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Hãy yêu cầu nhà cung cấp hosting chuyển cơ sở dữ liệu sang phiên bản được hỗ trợ, rồi thử lại."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Hãy yêu cầu nhà cung cấp hosting chuyển cơ sở dữ liệu sang phiên bản được hỗ trợ."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Tên ngày lễ hiển thị theo thiết lập ngôn ngữ của từng người dùng. Khi ngày lễ không có tên bằng ngôn ngữ đó, tên sẽ hiển thị bằng tiếng Anh."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Tên ngày lễ bằng ngôn ngữ của bạn"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Bắt buộc nhập số séc khi ghi nhận khoản thanh toán bằng séc trong các mục nộp tiền. Khi tắt, séc có thể được lưu với số séc để trống hoặc bằng 0, và những séc đó không được kiểm tra trùng lặp."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Bắt buộc số séc khi thanh toán bằng séc"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "Quá trình nâng cấp chưa được bắt đầu nên không có gì thay đổi."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Không thể chạy bản nâng cấp này trên cơ sở dữ liệu của bạn."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Máy chủ cơ sở dữ liệu của bạn (%1$s %2$s) cũ hơn phiên bản ChurchCRM hỗ trợ (MySQL %3$s hoặc MariaDB %4$s trở lên)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Phê duyệt gia đình tự đăng ký này trước khi gửi email xác minh"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "So sánh tổng cam kết dâng hiến của các gia đình trong hai năm tài chính."
+
+#: 
+msgid "Email Portal Link"
+msgstr "Gửi email liên kết cổng"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "Gửi email cho gia đình liên kết đến cổng Hội thánh, nơi họ có thể xem lại và cập nhật thông tin, hoặc ghi nhận rằng bạn đã xác minh trực tiếp."
+
+#: 
+msgid "Family is inactive"
+msgstr "Gia đình không hoạt động"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Năm tài chính thứ nhất"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Các năm tài chính"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Bản kê dâng hiến — chỉ là mẫu"
+
+#: 
+msgid "Last invited"
+msgstr "Mời lần cuối"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Đăng nhập cổng lần cuối"
+
+#: 
+msgid "Last verified"
+msgstr "Xác minh lần cuối"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "Không có thành viên nào đang hoạt động và đã được phê duyệt của gia đình này có địa chỉ email. Hãy xác minh trực tiếp thay thế."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Không tìm thấy cam kết dâng hiến nào cho các năm tài chính này."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "So sánh cam kết dâng hiến"
+
+#: 
+msgid "Preview PDF"
+msgstr "Xem trước PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Năm tài chính thứ hai"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Đăng nhập vào cổng Hội thánh bằng địa chỉ email này để xem lại thông tin gia đình bạn. Tại trang Gia đình tôi, hãy xác nhận mọi thông tin đều đúng hoặc cập nhật thông tin của bạn."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Gia đình này không hoạt động nên không được gửi email xác minh."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Gia đình tự đăng ký này đang chờ phê duyệt. Khi được phê duyệt, gia đình sẽ nhận email mời đăng nhập vào cổng Hội thánh và xem lại thông tin của mình."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Chỉ dùng các thiết lập đã lưu và các khoản dâng mẫu hư cấu."
+
+#: 
+msgid "Verification"
+msgstr "Xác minh"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "Đã gửi email xác minh đến %d gia đình."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "Đã gửi email xác minh đến các thành viên gia đình."
+
+#: 
+msgid "by the family in the portal"
+msgstr "bởi gia đình trên cổng"
+
+#: 
+msgid "in person by staff"
+msgstr "trực tiếp bởi nhân viên"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d mặc định bị bỏ qua vì lý do khác (sự kiện đã kết thúc, bị hủy hoặc đã đầy)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Một cài đặt chuyển tiếp. Cả các trang Cơ hội Tình nguyện cũ và các trang Mục vụ mới đều có sẵn, và hồ sơ cá nhân hiển thị cả hai thẻ Tình nguyện viên, được ghi nhãn rõ ràng. Dùng khi chuyển Hội thánh từ V1 sang V2, rồi chỉ chuyển sang V2."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Đã hủy phân công"
+
+#: 
+msgid "Canceled"
+msgstr "Đã hủy"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "Hủy không thông báo cho ai: không gửi email. Các giao việc được giữ nguyên, không có lời nhắc nào được lên lịch trong khi bị hủy, và không ai có thể được giao việc cho đến khi nó được khôi phục."
+
+#: 
+msgid "Color"
+msgstr "Màu sắc"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Đã hủy mã và liên kết đăng nhập gửi qua email"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "Cac vai tro gia dinh (Chu ho, Vo/Chong, Con cai, v.v.) giup sap xep ho so cua ban."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Sự kiện bị hủy"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Ưu tiên bản dịch"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "Không thể hủy phân công"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "Không thể hủy sự kiện"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Ngày này đã được hủy. Bạn không cần làm gì thêm."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Lần diễn ra này đã bị hủy"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Phục vụ tình nguyện được tổ chức theo cách một Hội thánh vận hành. Mỗi mục vụ có các đội và vị trí; mọi người được cấp điều kiện cho các vị trí và thuộc nhóm của mục vụ; lịch phục vụ theo các sự kiện trên lịch và tạo ra các lần diễn ra có ngày với yêu cầu nhân sự; điều phối viên phân công người, họ chấp nhận, từ chối hoặc đề xuất người thay thế; nhắc nhở và cảnh báo được gửi qua email. Quản trị viên và người dùng có quyền Quản lý Mục vụ thấy mọi mục vụ và có thể tạo, ngừng hoạt động và xóa chúng. Điều phối viên mục vụ được cấp quyền Quản lý Mục vụ của tôi: khi đó tiêu đề Mục vụ ở thanh bên chỉ hiện các mục vụ họ điều phối. Trưởng đội điều hành đội của mình từ Cổng Hội thánh. Thành viên dùng Cổng Hội thánh để xem lịch phục vụ, phản hồi, đăng ký và đề nghị giúp đỡ."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Đếm số bản cài đặt đang hoạt động và kết quả nâng cấp"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Công cụ cơ sở dữ liệu và phiên bản chính/phụ"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Lỗi — thống kê cài đặt, cảnh báo, lỗi và ngoại lệ JS"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Giúp chúng tôi tìm và khắc phục sự cố?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "Cài đặt chia sẻ thống kê cài đặt và nâng cấp tối thiểu. Lỗi bổ sung cảnh báo và báo cáo lỗi. Đầy đủ bổ sung lượt xem trang. Không có chỉ gửi các lần cài đặt và nâng cấp thất bại."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Cài đặt — thống kê cài đặt và nâng cấp (mặc định)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Kết quả cài đặt và nâng cấp, phiên bản trước khi nâng cấp và một tín hiệu hằng ngày khi đang sử dụng"
+
+#: 
+msgid "Installation profile"
+msgstr "Hồ sơ cài đặt"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Ngôn ngữ vùng (Lỗi và Đầy đủ)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Không bao giờ chia sẻ: hồ sơ thành viên, dâng hiến hoặc hồ sơ khác của Hội thánh, tên Hội thánh, địa chỉ web hoặc tên máy chủ của bạn, hay địa chỉ email. Quốc gia của bạn là quốc gia trong thiết lập Hội thánh, không được xác định từ mạng của bạn."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Họ hệ điều hành (Lỗi và Đầy đủ)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "Phiên bản PHP (Lỗi và Đầy đủ)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Xem chính xác những gì được chia sẻ, hoặc thay đổi lựa chọn, tại Quản trị → Đo lường từ xa."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Phân biệt bản cài đặt chính thức, demo và thử nghiệm"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Chia sẻ thống kê cài đặt ẩn danh?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Chia sẻ báo cáo lỗi và sử dụng"
+
+#: 
+msgid "Share install statistics"
+msgstr "Chia sẻ thống kê cài đặt"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Chia sẻ thêm: cảnh báo, chi tiết lỗi và những trang được mở."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Được chia sẻ: việc ChurchCRM đã được cài đặt hoặc nâng cấp và có thành công hay không, một tín hiệu mỗi ngày khi đang sử dụng, số phiên bản, quốc gia của bạn và loại cơ sở dữ liệu. Một ID cài đặt ngẫu nhiên giúp đếm mỗi bản cài đặt một lần."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Hiểu khả năng tương thích cơ sở dữ liệu"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Lựa chọn này chỉ được hỏi một lần. Bạn có thể thay đổi bất cứ lúc nào. Với Không, cảm ơn, chỉ lần cài đặt hoặc nâng cấp thất bại được báo cáo."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Dữ liệu của bạn thuộc về bạn. Cài đặt chỉ chia sẻ kết quả cài đặt và nâng cấp, ID cài đặt, phiên bản phần mềm, hồ sơ cài đặt, quốc gia đã cấu hình và công cụ cơ sở dữ liệu cùng phiên bản chính/phụ. Lỗi bổ sung cảnh báo và chi tiết lỗi. Đầy đủ bổ sung lượt xem trang. Không có chỉ gửi các lần cài đặt và nâng cấp thất bại. Không cấp độ nào gửi địa chỉ web hoặc tên máy chủ của bạn. Bản cài đặt thử nghiệm không gửi gì cả. Dữ liệu đo lường được gửi đến PostHog tại Hoa Kỳ."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Dữ liệu của bạn thuộc về bạn. Báo cáo này chỉ nói về phần mềm, không bao giờ về Hội thánh hay con người của Hội thánh."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Dữ liệu của bạn thuộc về bạn. Để đếm số bản cài đặt, ChurchCRM báo cáo việc đã được cài đặt hoặc nâng cấp và có thành công hay không, một tín hiệu mỗi ngày khi đang sử dụng, cùng với số phiên bản, quốc gia của bạn, loại cơ sở dữ liệu và một ID cài đặt ngẫu nhiên. Nó không bao giờ báo cáo hồ sơ thành viên, dâng hiến hoặc hồ sơ khác của Hội thánh, tên Hội thánh, địa chỉ web hoặc tên máy chủ của bạn, hay địa chỉ email. Bạn có thể tắt tính năng này bất cứ lúc nào tại Quản trị → Đo lường từ xa; lần cài đặt hoặc nâng cấp thất bại vẫn được báo cáo. Cảnh báo, chi tiết lỗi và lượt xem trang chỉ được chia sẻ nếu bạn chọn."
 
