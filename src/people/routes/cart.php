@@ -14,17 +14,54 @@ use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
+use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\CsvExporter;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\Propel;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Exception\HttpBadRequestException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
+
+/**
+ * The fields available in a Cart CSV export.
+ *
+ * @return array<string, array{label: string, default: bool}>
+ */
+function cartCsvExportFields(): array
+{
+    return [
+        'name' => ['label' => gettext('Name'), 'default' => true],
+        'address' => ['label' => gettext('Address'), 'default' => true],
+        'email' => ['label' => gettext('Email'), 'default' => true],
+        'classification' => ['label' => gettext('Classification'), 'default' => true],
+        'familyRole' => ['label' => gettext('Family Role'), 'default' => true],
+        'firstName' => ['label' => gettext('First Name'), 'default' => false],
+        'birthDate' => ['label' => gettext('Birth Date'), 'default' => false],
+        'mobilePhone' => ['label' => gettext('Mobile Phone'), 'default' => false],
+    ];
+}
+
+function cartCsvExportValue(Person $person, string $field): string
+{
+    return match ($field) {
+        'name' => $person->getFullName(),
+        'address' => $person->getAddress(),
+        'email' => (string) $person->getEmail(),
+        'classification' => (string) $person->getClassificationName(),
+        'familyRole' => $person->getFamilyRoleName(),
+        'firstName' => (string) $person->getFirstName(),
+        'birthDate' => (string) ($person->getFormattedBirthDate() ?: ''),
+        'mobilePhone' => (string) $person->getCellPhone(),
+        default => throw new \InvalidArgumentException('Unsupported Cart CSV field'),
+    };
+}
 
 $app->group('/cart', function (RouteCollectorProxy $group): void {
 
@@ -48,11 +85,53 @@ $app->group('/cart', function (RouteCollectorProxy $group): void {
 
         $pageArgs['iNumFamilies'] = Cart::countFamilies();
         $pageArgs['cartPeople'] = Cart::getCartPeople();
+        $pageArgs['cartCsvFields'] = cartCsvExportFields();
 
         return $renderer->render($response, 'cart/cartview.php', $pageArgs);
     };
     $group->get('/', $getCartView);
     $group->get('', $getCartView);
+
+    $group->get('/csv', function (Request $request, Response $response): Response {
+        $availableFields = cartCsvExportFields();
+        $query = $request->getQueryParams();
+        $requestedFields = $query['fields'] ?? null;
+        if (!is_array($requestedFields) || $requestedFields === []) {
+            throw new HttpBadRequestException($request, gettext('Select at least one field to export.'));
+        }
+
+        foreach ($requestedFields as $field) {
+            if (!is_string($field) || !array_key_exists($field, $availableFields)) {
+                throw new HttpBadRequestException($request, gettext('Invalid CSV export field.'));
+            }
+        }
+
+        $selectedFields = array_values(array_intersect(array_keys($availableFields), $requestedFields));
+        if ($selectedFields === []) {
+            throw new HttpBadRequestException($request, gettext('Select at least one field to export.'));
+        }
+
+        $exporter = new CsvExporter();
+        $exporter->insertHeaders(array_map(
+            static fn (string $field): string => $availableFields[$field]['label'],
+            $selectedFields
+        ));
+        if (Cart::hasPeople()) {
+            foreach (Cart::getCartPeople() as $person) {
+                $exporter->insertRow(array_map(
+                    static fn (string $field): string => cartCsvExportValue($person, $field),
+                    $selectedFields
+                ));
+            }
+        }
+
+        $response->getBody()->write($exporter->getContent());
+
+        return $response
+            ->withHeader('Content-Type', 'text/csv; charset=UTF-8')
+            ->withHeader('Content-Disposition', 'attachment; filename="Cart.csv"')
+            ->withHeader('Cache-Control', 'no-store');
+    });
 
     // -----------------------------------------------------------------------
     // GET /people/cart/to-family — render form (or empty state)
