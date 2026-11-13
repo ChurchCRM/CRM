@@ -195,6 +195,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
         foreach ($groups as $g) {
             $data = $g->toArray();
             $data['groupType'] = $typeNames[(int) $g->getType()] ?? '';
+            $data['viewUri'] = $g->getViewURI();
             $data['memberCount'] = $memberCounts[(int) $g->getId()] ?? 0;
             $data['roles'] = $rolesByListId[(int) $g->getRoleListId()] ?? [];
             $ministryId = $g->getMinistryId() === null ? null : (int) $g->getMinistryId();
