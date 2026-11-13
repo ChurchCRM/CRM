@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
-  version: 7.8.4
+  version: 7.8.5
 servers:
   -
     url: '{scheme}://{host}{basePath}'
@@ -5583,15 +5583,16 @@ paths:
     post:
       tags:
         - 2FA
-      summary: 'Begin 2FA enrollment — provision a new TOTP secret and return a QR code data URI'
+      summary: 'Begin 2FA enrollment — provision a TOTP secret and return its QR code and manual setup key'
       responses:
         '200':
-          description: 'QR code data URI for TOTP enrollment'
+          description: 'QR code and Base32 setup key for TOTP enrollment'
           content:
             application/json:
               schema:
                 properties:
                   TwoFAQRCodeDataUri: { type: string }
+                  TwoFASecret: { type: string }
                 type: object
       security:
         -
