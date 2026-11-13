@@ -55,4 +55,4 @@ cy.get('#IssueReportModal').should('be.visible');
 cy.get('input[name="pageName"]').should('have.value').and('include', '/v2/person/not-found?id=9999');
 ```
 
-`php-error.php` and `config-error.php` report an `install_failed` event through `standaloneReportInstallFailure()`: fixed reason codes, once per UTC day, no autoloader, never blocking the page. The requirements check sends `requirements_failed`. The failed-upgrade page sends nothing itself; `UpgradeService` already reports `upgrade_failed`. All senders share the PostHog project in `src/Include/PostHogProject.php`.
+`php-error.php`, `config-error.php` and `Bootstrapper::systemFailure()` (database connection and access failures) report an `install_failed` event through `standaloneReportInstallFailure()`: fixed reason codes, once per UTC day, no autoloader, never blocking the page. The requirements check sends `requirements_failed`. The failed-upgrade page sends nothing itself; `UpgradeService` already reports `upgrade_failed`. All senders share the PostHog project in `src/Include/PostHogProject.php`.
