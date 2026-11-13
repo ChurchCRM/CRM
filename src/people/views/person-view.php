@@ -81,6 +81,13 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                         </a>
                     </li>
                     <?php endif; ?>
+                    <?php if (!$person->isDeceased() && $person->isBirthdayToday()) : ?>
+                    <li class="mb-1">
+                        <span id="person-birthday-today" class="badge bg-success-lt text-success">
+                            <i class="fa-solid fa-cake-candles me-1"></i><?= gettext('Birthday today') ?>
+                        </span>
+                    </li>
+                    <?php endif; ?>
                     <?php if ($person->isDeceased()) : ?>
                     <li class="mb-1">
                         <span class="badge bg-secondary text-white">
