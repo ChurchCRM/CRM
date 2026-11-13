@@ -92,8 +92,8 @@ describe("People Settings hub", () => {
             ].forEach((key) => {
                 cy.get(`[name='new_value[${key}]']`).should("not.exist");
             });
-            // Not moved yet — still managed here.
-            cy.get("[name='new_value[iPersonConfessionFatherCustomField]']").should("exist");
+            cy.get("[name='new_value[iPersonConfessionFatherCustomField]']").should("not.exist");
+            cy.get("[name='new_value[iPersonConfessionDateCustomField]']").should("not.exist");
         });
 
         it("puts greeting first, then families, people, and map, with address defaults in the greeting section", () => {

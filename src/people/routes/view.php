@@ -14,6 +14,8 @@ use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerPositionQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerQualification;
 use ChurchCRM\Portal\Auth\LoginAsPerson;
+use ChurchCRM\Plugin\Hook\HookManager;
+use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Service\LoginAsPersonHistoryService;
 use ChurchCRM\Service\PersonPortalAccessService;
@@ -136,6 +138,24 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $sSQL       = 'SELECT * FROM person_custom WHERE per_ID = ' . $iPersonID;
     $rsCustomData = RunQuery($sSQL);
     $aCustomData  = mysqli_fetch_array($rsCustomData, MYSQLI_BOTH) ?: [];
+    $visibleCustomData = [];
+    foreach ($visibleCustomFields as $field) {
+        $fieldId = $field->getId();
+        if (array_key_exists($fieldId, $aCustomData)) {
+            $visibleCustomData[$fieldId] = $aCustomData[$fieldId];
+        }
+    }
+    $personViewPluginContent = HookManager::applyFilters(
+        Hooks::PERSON_VIEW_CONTENT,
+        '',
+        $person,
+        $visibleCustomFields,
+        $visibleCustomData
+    );
+    $personViewCustomFields = HookManager::applyFilters(
+        Hooks::PERSON_VIEW_CUSTOM_FIELDS,
+        $visibleCustomFields
+    );
 
     // ── Groups this person is assigned to ───────────────────────────────────
     $sSQL = 'SELECT grp_ID, grp_Name, grp_Type, grp_hasSpecialProps, p2g2r_rle_ID AS roleId,
@@ -420,8 +440,9 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'formattedMailingAddress' => $formattedMailingAddress,
         'bOkToEdit'              => $bOkToEdit,
         // Custom fields (filtered by user's field-level permissions)
-        'customFieldsMaster'     => $visibleCustomFields,
+        'customFieldsMaster'     => $personViewCustomFields,
         'aCustomData'            => $aCustomData,
+        'personViewPluginContent' => $personViewPluginContent,
         // Groups
         'assignedGroupsData'     => $assignedGroupsData,
         'allGroupsData'          => $allGroupsData,

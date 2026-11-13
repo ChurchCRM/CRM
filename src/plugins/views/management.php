@@ -254,15 +254,27 @@ function renderPluginCard(array $plugin, string $rootPath, string $nonce): void 
                                         </span>
                                     <?php endif; ?>
                                 </div>
+                            <?php elseif ($settingType === 'select' && !empty($setting['optionsSource'])): ?>
+                                <select class="form-select plugin-setting"
+                                        id="<?= $pluginId ?>-<?= $settingKey ?>"
+                                        data-setting-key="<?= $settingKey ?>"
+                                        data-config-key="<?= $configKey ?>"
+                                        data-options-source="<?= htmlspecialchars($setting['optionsSource'] ?? '') ?>"
+                                        data-options-type-id="<?= htmlspecialchars((string) ($setting['optionsTypeId'] ?? '')) ?>"
+                                        data-selected-value="<?= $settingValue ?>">
+                                    <option value="<?= $settingValue ?>" selected>
+                                        <?= $settingValue === '' ? gettext('Select…') : '#' . $settingValue ?>
+                                    </option>
+                                </select>
                             <?php elseif ($settingType === 'select' && !empty($setting['options'])): ?>
                                 <select class="form-select plugin-setting"
                                         id="<?= $pluginId ?>-<?= $settingKey ?>"
                                         data-setting-key="<?= $settingKey ?>"
                                         data-config-key="<?= $configKey ?>">
-                                    <?php foreach ($setting['options'] as $index => $option): 
+                                    <?php foreach ($setting['options'] as $index => $option):
                                         $optionLabel = $setting['optionLabels'][$index] ?? $option;
                                     ?>
-                                        <option value="<?= htmlspecialchars($option) ?>" 
+                                        <option value="<?= htmlspecialchars($option) ?>"
                                                 <?= $settingValue === $option ? 'selected' : '' ?>>
                                             <?= htmlspecialchars($optionLabel) ?>
                                         </option>
@@ -587,6 +599,29 @@ $(document).ready(function() {
         e.stopPropagation();
         const card = $(this).closest('.card');
         togglePluginCard(card);
+    });
+
+    $('.plugin-setting[data-options-source="person-custom-fields"]').each(function() {
+        const select = this;
+        const typeId = select.dataset.optionsTypeId;
+        if (!['2', '9'].includes(typeId)) {
+            return;
+        }
+        $.getJSON(window.CRM.root + '/admin/api/system/custom-fields/person/?typeId=' + encodeURIComponent(typeId))
+            .done(function(options) {
+                if (!Array.isArray(options)) {
+                    return;
+                }
+                options.forEach(function(option) {
+                    const item = new Option(
+                        option.value,
+                        option.id,
+                        false,
+                        String(option.id) === select.dataset.selectedValue
+                    );
+                    select.add(item);
+                });
+            });
     });
 
     // Initialize TomSelect on multiselect plugin settings
