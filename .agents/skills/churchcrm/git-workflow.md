@@ -24,7 +24,7 @@ intent: How agents commit and push on ChurchCRM.
 - Fixing an existing PR: push to that PR's head branch. A push to any other branch can auto-open a duplicate PR
 - Keep unrelated fixes (a CI retry beside a security fix) in their own PR
 - Do not merge `master` into a contributor branch or push to their branch unless asked
-- Do not run `locale:build` or commit `messages.po` on a feature branch
+- Do not run `locale:build` or commit `messages.po` on a feature branch. Any locale command rewrites the `POT-Creation-Date` line of `locale/messages.po`: when that is the only change, `git checkout -- locale/messages.po` and never commit it
 
 ## Docker checkout
 
