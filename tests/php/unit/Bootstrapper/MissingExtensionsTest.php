@@ -61,7 +61,7 @@ try {
     file_put_contents($directory . '/Include/Config.php', '<?php '
         . '$sSERVERNAME = "localhost"; $dbPort = 3306; $sUSER = "test"; $sPASSWORD = "secret"; $sDATABASE = "test"; '
         . '$sRootPath = "/churchcrm"; $URL = ["http://localhost/"];');
-    foreach (['pdo_mysql' => 'PHP PDO MySQL', 'bcmath' => 'PHP BCMath', 'filter' => 'PHP Filter', 'zlib' => 'PHP Zlib'] as $extension => $name) {
+    foreach (['pdo_mysql' => 'PHP PDO MySQL', 'filter' => 'PHP Filter', 'zlib' => 'PHP Zlib'] as $extension => $name) {
         $missing = 'namespace ChurchCRM; class Bootstrapper { public static function init(...$args) { throw new \\Error("Bootstrap failed"); } } '
             . 'namespace ChurchCRM\\Service; '
             . 'function extension_loaded($name) { return $name === ' . var_export($extension, true) . ' ? false : \\extension_loaded($name); } '

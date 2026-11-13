@@ -15,8 +15,7 @@ $customSections .= "```\n" . str_replace(["\r", "\n", '`'], [' ', ' ', "'"], $er
 
 $issueBody = buildGitHubIssueBody('Configuration Error', $customSections);
 
-$content = '<p class="text-warning fw-bold mb-2">⚙️ Configuration Error</p>'
-    . '<p class="text-secondary">ChurchCRM encountered an error during startup while reading your local configuration files.</p>'
+$content = '<p class="text-secondary">ChurchCRM encountered an error during startup while reading your local configuration files.</p>'
     . '<div class="alert alert-warning border-2 mt-3">'
     . '<strong>Error Details:</strong><br>'
     . '<code class="small d-block mt-2 text-break">' . nl2br(htmlspecialchars($errorMessage)) . '</code>'

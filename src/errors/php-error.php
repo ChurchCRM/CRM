@@ -26,14 +26,11 @@ $customSections .= "Contact your hosting provider and request an immediate upgra
 
 $issueBody = buildGitHubIssueBody('PHP Version Not Supported (Hard Error)', $customSections);
 
-$content = '<p class="text-danger fw-bold mb-3">🚫 APPLICATION BLOCKED</p>'
-    . '<p class="text-danger fw-bold">PHP Version Not Supported</p>'
-    . '<p class="text-secondary mt-2">Your web server is running an unsupported PHP version. ChurchCRM <strong>cannot run</strong> on the installed PHP version. <strong>This is a hard blocking error.</strong></p>'
+$content = '<p class="text-secondary">Your web server is running an unsupported PHP version. ChurchCRM <strong>cannot run</strong> on the installed PHP version. <strong>This is a hard blocking error.</strong></p>'
     . '<div class="alert alert-danger border-2 mt-3">'
     . '<strong>Current PHP Version:</strong> <code>' . htmlspecialchars($currentVersion) . '</code><br>'
     . '<strong>Minimum Required:</strong> <code>PHP ' . htmlspecialchars($requiredPhpVersion) . ' or later</code>'
     . '</div>'
-    . '<p class="text-danger fw-bold mt-3">⚠️ Action Required (URGENT)</p>'
-    . '<p class="text-secondary small"><strong>Contact your hosting provider immediately</strong> and request an upgrade to PHP ' . htmlspecialchars($requiredPhpVersion) . ' or later. ChurchCRM will not function until this requirement is met. If you manage your own server, upgrade PHP directly.</p>';
+    . '<p class="text-secondary small mt-3"><strong>Contact your hosting provider immediately</strong> and request an upgrade to PHP ' . htmlspecialchars($requiredPhpVersion) . ' or later. ChurchCRM will not function until this requirement is met. If you manage your own server, upgrade PHP directly.</p>';
 
 renderErrorPage($errorRootPath, 'PHP Version Not Supported', '❌', 'danger', $content, $issueBody);
