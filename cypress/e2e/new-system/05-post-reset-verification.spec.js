@@ -41,7 +41,7 @@ describe('05 - Post-Reset Verification', () => {
         cy.get('#UserBox, #PasswordBox').should('not.exist');
 
         cy.url().then((url) => {
-            if (url.includes('/changepassword')) {
+            if (url.includes('/account/password')) {
                 cy.get('#OldPassword').type(password);
                 cy.get('#NewPassword1').type('Cypress@01!');
                 cy.get('#NewPassword2').type('Cypress@01!');
@@ -84,7 +84,7 @@ describe('05 - Post-Reset Verification', () => {
         });
 
         it('should login with default credentials after reset', () => {
-            // manualLogin() uses 'changeme', detects forced /changepassword redirect,
+            // manualLogin() uses 'changeme', detects forced /account/password redirect,
             // and completes it — leaving password as 'Cypress@01!' with NeedPasswordChange=false.
             manualLogin();
 

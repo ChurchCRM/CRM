@@ -26,7 +26,7 @@ describe('04 - System Reset', () => {
         cy.clearCookies();
         cy.clearLocalStorage();
         // Admin password is 'changeme'. After a DB reset NeedPasswordChange=true,
-        // which forces a redirect to /changepassword on first login.
+        // which forces a redirect to /account/password on first login.
         const password = adminCredentials.password;
         cy.visit('/login');
         cy.get('input[name=User]', { timeout: 15000 }).type(adminCredentials.username);
@@ -40,7 +40,7 @@ describe('04 - System Reset', () => {
         // After a DB reset the admin has NeedPasswordChange=true; complete the forced form if needed.
         // The forced form uses button[type=submit] (login-box layout, not card layout).
         cy.url().then((url) => {
-            if (url.includes('/changepassword')) {
+            if (url.includes('/account/password')) {
                 cy.get('#OldPassword').type(password);
                 cy.get('#NewPassword1').type('Cypress@01!');
                 cy.get('#NewPassword2').type('Cypress@01!');

@@ -130,7 +130,7 @@ describe('Upgrade via Restore', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(setupAdmin.username);
             cy.get('input[name=Password]').type(setupAdmin.password + '{enter}');
-            cy.url({ timeout: 15000 }).should('include', '/changepassword');
+            cy.url({ timeout: 15000 }).should('include', '/account/password');
 
             cy.get('#OldPassword').type(setupAdmin.password);
             cy.get('#NewPassword1').type(newAdminPassword);
@@ -239,14 +239,14 @@ describe('Upgrade via Restore', () => {
             cy.visit('/login');
             cy.get('input[name=User]').type(upgradeAdminUser);
             cy.get('input[name=Password]').type(upgradeAdminPass + '{enter}');
-            cy.url({ timeout: 30000 }).should('include', '/changepassword');
+            cy.url({ timeout: 30000 }).should('include', '/account/password');
 
             cy.get('#OldPassword').type(upgradeAdminPass);
             cy.get('#NewPassword1').type(postUpgradePassword);
             cy.get('#NewPassword2').type(postUpgradePassword);
             cy.get('button[type=submit]').click();
 
-            cy.url({ timeout: 15000 }).should('not.include', '/changepassword');
+            cy.url({ timeout: 15000 }).should('not.include', '/account/password');
         });
     });
 
