@@ -22,6 +22,99 @@ describe("Congregation Map (/people/map)", () => {
         });
     });
 
+    describe("Fullscreen map", () => {
+        const readZoom = () =>
+            cy.get("#map .leaflet-tile-pane img.leaflet-tile")
+                .should("have.length.at.least", 1)
+                .then(($tiles) => {
+                    const zooms = [...$tiles].map((tile) => {
+                        const path = new URL(tile.src).pathname;
+                        return Number(path.split("/")[1]);
+                    });
+                    expect(zooms.every(Number.isInteger)).to.eq(true);
+                    return Math.max(...zooms);
+                });
+        it("keeps zoom and legend controls available and closes using Escape", () => {
+            cy.visit("/people/map");
+            cy.get("#map .people-map-fullscreen-toggle")
+                .should("be.visible")
+                .and("have.attr", "aria-pressed", "false");
+            cy.get("#map .people-map-fullscreen-toggle")
+                .invoke("attr", "aria-label").should("be.a", "string").and("not.be.empty");
+
+            cy.get("#map").then(($map) => {
+                cy.stub($map[0], "requestFullscreen").rejects(new Error("Fullscreen denied"));
+            });
+
+            cy.get("#map .leaflet-control-zoom-in").click();
+            readZoom().as("zoomBeforeFallback");
+            cy.get("#map .people-map-fullscreen-toggle").focus().type("{enter}");
+            cy.get("#map").should("have.class", "people-map--fullscreen");
+            cy.get("body").should("have.class", "people-map-fullscreen-active");
+            cy.get("#map .people-map-fullscreen-toggle")
+                .should("have.attr", "aria-pressed", "true");
+            cy.get("#map .people-map-fullscreen-toggle")
+                .invoke("attr", "aria-label").should("be.a", "string").and("not.be.empty");
+            cy.get("#map .people-map-fullscreen-toggle .fa-xmark").should("exist");
+            cy.get("#map .leaflet-control-zoom-in").should("be.visible");
+            cy.get("#map-legend").should("exist");
+            cy.get("@zoomBeforeFallback").then((zoom) => readZoom().should("eq", zoom));
+
+            cy.get("body").trigger("keydown", { key: "Escape", bubbles: true });
+            cy.get("#map").should("not.have.class", "people-map--fullscreen");
+            cy.get("body").should("not.have.class", "people-map-fullscreen-active");
+            cy.get("#map .people-map-fullscreen-toggle")
+                .should("have.attr", "aria-pressed", "false");
+            cy.get("#map .people-map-fullscreen-toggle .fa-expand").should("exist");
+            cy.get("@zoomBeforeFallback").then((zoom) => readZoom().should("eq", zoom));
+        });
+
+        it("tracks native fullscreen changes and closes with the button", () => {
+            cy.visit("/people/map");
+            cy.get("#map").then(($map) => {
+                cy.window().then((win) => {
+                    let expanded = false;
+                    Object.defineProperty(win.document, "fullscreenElement", {
+                        configurable: true,
+                        get: () => expanded ? $map[0] : null,
+                    });
+                    cy.stub($map[0], "requestFullscreen").callsFake(() => {
+                        expanded = true;
+                        win.document.dispatchEvent(new win.Event("fullscreenchange"));
+                        return Promise.resolve();
+                    });
+                    cy.stub(win.document, "exitFullscreen").callsFake(() => {
+                        expanded = false;
+                        win.document.dispatchEvent(new win.Event("fullscreenchange"));
+                        return Promise.resolve();
+                    });
+                });
+            });
+
+            readZoom().as("zoomBeforeNative");
+            cy.get("#map .people-map-fullscreen-toggle").click();
+            cy.get("#map .people-map-fullscreen-toggle")
+                .should("have.attr", "aria-label", "Exit fullscreen");
+            cy.get("@zoomBeforeNative").then((zoom) => readZoom().should("eq", zoom));
+            cy.get("#map .people-map-fullscreen-toggle").click();
+            cy.get("#map .people-map-fullscreen-toggle")
+                .should("have.attr", "aria-label", "Enter fullscreen");
+            cy.get("#map .leaflet-control-zoom").should("exist");
+            cy.get("@zoomBeforeNative").then((zoom) => readZoom().should("eq", zoom));
+        });
+
+        it("shows the fullscreen button across themes and screen widths", () => {
+            cy.visit("/people/map?groupId=0");
+            for (const theme of ["light", "dark"]) {
+                for (const width of [1440, 820, 430]) {
+                    cy.viewport(width, 900);
+                    cy.document().then((doc) => doc.documentElement.setAttribute("data-bs-theme", theme));
+                    cy.get("#map .people-map-fullscreen-toggle").should("be.visible");
+                }
+            }
+        });
+    });
+
     describe("Legend", () => {
         it("Clicking a legend row toggles its markers", () => {
             cy.visit("people/map");
