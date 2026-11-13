@@ -109,6 +109,27 @@ function renderStandaloneHeader($rootPath, $title, $bundle = 'error', $bodyClass
     <?php
 }
 
+/**
+ * Help links under the card. Fixed addresses, so they work with no configuration.
+ */
+function renderStandaloneLinks()
+{
+    $hasGettext = function_exists('gettext');
+    $links = array(
+        array('https://docs.churchcrm.io/', $hasGettext ? gettext('Documentation') : 'Documentation'),
+        array('https://github.com/ChurchCRM/CRM/issues', $hasGettext ? gettext('Support') : 'Support'),
+        array('https://github.com/ChurchCRM/CRM', 'GitHub'),
+        array('https://discord.gg/tuWyFzj3Nj', 'Discord'),
+    );
+    ?>
+    <nav class="standalone-links d-flex justify-content-center gap-3 flex-wrap mt-3 pb-4 small" aria-label="ChurchCRM help">
+        <?php foreach ($links as $link) { ?>
+            <a href="<?= standaloneEscape($link[0]) ?>" class="link-secondary" target="_blank" rel="noopener noreferrer"><?= standaloneEscape($link[1]) ?></a>
+        <?php } ?>
+    </nav>
+    <?php
+}
+
 function renderStandaloneFooter()
 {
     ?>
@@ -166,6 +187,7 @@ function renderErrorPage($rootPath, $title, $icon, $variant, $content, $issueBod
                     </div>
                 </div>
             </div>
+            <?php renderStandaloneLinks(); ?>
         </div>
     </main>
     <?php

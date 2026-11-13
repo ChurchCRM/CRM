@@ -386,5 +386,6 @@ require_once __DIR__ . '/header.php';
     </div>
 </div>
 
+<?php renderStandaloneLinks(); ?>
 </body>
 </html>
