@@ -95,6 +95,9 @@ if ($_idx_isWebRoot) {
     exit;
 } elseif (AuthenticationManager::validateUserSessionIsActive(false)) {
     // A signed-in user keeps the application header and menu on an unknown page.
+    if (AuthenticationManager::getCurrentUser()->isEditSelfExclusive()) {
+        RedirectUtils::redirect(SystemURLs::getRootPath() . '/portal/');
+    }
     http_response_code(404);
     $sPageTitle = gettext('Page Not Found');
     require __DIR__ . '/Include/Header.php';

@@ -388,7 +388,7 @@ class TelemetryService
         if (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory)) {
             return true;
         }
-        $marker = $directory . '/' . sha1(gmdate('Y-m-d') . '|' . self::installProfile() . '|' . self::getLevel() . '|' . $key);
+        $marker = $directory . '/' . sha1(gmdate('Y-m-d') . '|' . self::installProfile() . '|' . (SystemConfig::isInitialized() ? self::getLevel() : '') . '|' . $key);
         $handle = @fopen($marker, 'x');
         if ($handle === false) {
             return !file_exists($marker);
