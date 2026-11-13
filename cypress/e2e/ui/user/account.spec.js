@@ -44,8 +44,10 @@ describe("My Account (/account)", () => {
             cy.visit("/account");
             cy.get('#settingsNav a[href="#tab-permissions"]').click();
             cy.get('[data-cy="permission-row"]').should("have.length.greaterThan", 10);
-            cy.get('[data-cy="permission-row"][data-granted="false"]').each((row) => {
-                cy.wrap(row).find('[data-cy="permission-reason"]').invoke("text").should("not.be.empty");
+            cy.get('[data-cy="permission-row"]').each((row) => {
+                if (row.attr("data-granted") === "false") {
+                    cy.wrap(row).find('[data-cy="permission-reason"]').invoke("text").should("not.be.empty");
+                }
             });
             Object.entries(PROBES).forEach(([label, url]) => {
                 cy.contains('[data-cy="permission-label"]', new RegExp(`^${label}$`))

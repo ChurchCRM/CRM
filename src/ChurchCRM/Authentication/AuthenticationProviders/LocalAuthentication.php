@@ -347,7 +347,7 @@ class LocalAuthentication implements IAuthenticationProvider
         $enrollmentPath = self::twoFactorEnrollmentPath($user);
         $enrollmentURL = SystemURLs::getRootPath() . $enrollmentPath;
         $isOnEnrollmentPage = str_contains($requestUri, $enrollmentPath);
-        if ($authenticationResult->nextStepURL === null && SystemConfig::getBooleanValue('bRequire2FA') && !$user->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
+        if (!$user->getNeedPasswordChange() && SystemConfig::getBooleanValue('bRequire2FA') && !$user->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
             $graceStatus = $user->getTwoFactorGraceStatus();
             if ($graceStatus === 'expired' || $graceStatus === 'immediate') {
                 LoggerUtils::getAuthLogger()->info('2FA grace period expired or immediate; redirecting to enrollment', $logCtx);

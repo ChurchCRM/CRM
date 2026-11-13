@@ -311,7 +311,8 @@ describe("Login as Person", () => {
                 .its("status")
                 .should("eq", 403);
         });
-        cy.visit("/admin/system/users/3");
+        cy.visit("/account");
+        cy.get("#settingsNav").should("exist");
         cy.get("#login-as-person-history").should("not.exist");
     });
 });
