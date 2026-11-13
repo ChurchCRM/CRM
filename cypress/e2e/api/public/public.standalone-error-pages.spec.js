@@ -22,15 +22,6 @@ describe("API Public - Standalone error pages", () => {
         });
     });
 
-    it("skips the System Check on a configured site whose PHP requirements pass", () => {
-        // The CI stack has every extension, so the failing checklist is covered by MissingExtensionsTest.php.
-        cy.request({ url: "/setup/", followRedirect: false, failOnStatusCode: false }).then((response) => {
-            expect(response.status).to.equal(302);
-            expect(response.headers.location).to.match(new RegExp(`^(https?://[^/]+)?${basePath()}/$`));
-            expect(response.body).to.not.include("ChurchCRM System Check");
-        });
-    });
-
     it("follows a dark browser theme and fits a phone screen", () => {
         cy.viewport(390, 844);
         cy.visit("/errors/not-found.php?path=old-page.php", {

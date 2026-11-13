@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../../errors/template.php';
+require_once __DIR__ . '/template.php';
 
 // English remains available when gettext itself is missing.
 $hasGettext = function_exists('gettext');

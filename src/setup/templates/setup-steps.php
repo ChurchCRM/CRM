@@ -26,11 +26,7 @@ require_once __DIR__ . '/header.php';
 <div class="setup-container">
     <!-- Hero Section -->
     <div class="setup-hero">
-        <img src="<?= standaloneEscape($rootPath . '/Images/churchcrm-logo-ink-blue.svg') ?>" alt="ChurchCRM" class="setup-logo hide-theme-dark">
-        <div class="hide-theme-light mb-3">
-            <img src="<?= standaloneEscape($rootPath . '/Images/churchcrm-symbol-paper-blue.svg') ?>" alt="" class="standalone-brand">
-            <div class="h1 mt-2 mb-0">ChurchCRM</div>
-        </div>
+        <img src="<?= $rootPath ?>/Images/churchcrm-logo-ink-blue.svg" alt="ChurchCRM" class="setup-logo">
         <div class="setup-version">Version <?= htmlspecialchars($softwareVersion, ENT_QUOTES, 'UTF-8') ?></div>
         <p class="setup-tagline">Let's get your church management system up and running.</p>
     </div>
@@ -79,8 +75,8 @@ require_once __DIR__ . '/header.php';
                             </div>
                             <div class="check-badges">
                                 <span class="badge bg-blue-lt text-blue">PHP <?= $phpVersion ?></span>
-                                <span class="badge bg-secondary-lt text-secondary"><?= $memoryLimit ?> RAM</span>
-                                <span class="badge bg-secondary-lt text-secondary"><?= $uploadMax ?> Upload</span>
+                                <span class="badge bg-light text-dark"><?= $memoryLimit ?> RAM</span>
+                                <span class="badge bg-light text-dark"><?= $uploadMax ?> Upload</span>
                             </div>
                         </div>
                         <div id="server-env-details" class="collapse check-details">
@@ -264,7 +260,7 @@ require_once __DIR__ . '/header.php';
                                 <div class="mb-3">
                                     <label for="ROOT_PATH">Root Path</label>
                                     <input type="text" name="ROOT_PATH" id="ROOT_PATH"
-                                           value="<?= standaloneEscape($rootPath) ?>" class="form-control"
+                                           value="<?= $rootPath ?>" class="form-control"
                                            aria-describedby="ROOT_PATH_HELP"
                                            pattern="^(|\/[a-zA-Z0-9_\-\.\/]*)$"
                                            placeholder="Leave empty for root installation"
@@ -321,8 +317,8 @@ require_once __DIR__ . '/header.php';
                         <i class="fa-solid fa-circle-check text-success" style="font-size: 4rem;"></i>
                     </div>
                     <h3 class="mb-4">Installation Complete!</h3>
-                    <p class="text-body-secondary"><?= standaloneEscape(function_exists('gettext') ? gettext('Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose.') : 'Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose.') ?></p>
-                    <div class="card bg-surface-secondary mb-4">
+                    <p class="text-body-secondary"><?= gettext('Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose.') ?></p>
+                    <div class="card bg-light mb-4">
                         <div class="card-body">
                             <p class="text-body-secondary mb-2">Sign in with your admin account:</p>
                             <div class="d-flex justify-content-center align-items-center mb-2">
@@ -386,6 +382,5 @@ require_once __DIR__ . '/header.php';
     </div>
 </div>
 
-<?php renderStandaloneLinks(); ?>
 </body>
 </html>

@@ -30,6 +30,6 @@ if ($failedRequirements !== []) {
         ));
         exit;
     }
-    require __DIR__ . '/../setup/templates/system-requirements.php';
+    require __DIR__ . '/../errors/system-requirements.php';
     exit;
 }

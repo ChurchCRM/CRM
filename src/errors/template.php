@@ -1,11 +1,11 @@
 <?php
 /**
  * Standalone Tabler layout for pages that render without the application:
- * the setup wizard, the PHP requirements check and the public error pages.
+ * the PHP requirements check and the public error pages.
  *
  * Plain PHP with no autoloader, Config.php or gettext dependency, written in
  * syntax that still parses on the unsupported PHP versions php-error.php reports.
- * Styles come from the locally built /skin/v2/error.min.css (or setup.min.css).
+ * Styles come from the locally built /skin/v2/error.min.css.
  */
 
 // Optional here: a page that cannot find the shared project file still renders, it just does not report.
@@ -113,10 +113,31 @@ function getServerInfo()
         'PHP Version' => phpversion(),
         'PHP SAPI' => php_sapi_name(),
         'Server Software' => isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : 'Unknown',
-        'OS' => function_exists('php_uname') ? php_uname() : 'Unknown',
+        'OS' => function_exists('php_uname') ? php_uname('s') . ' ' . php_uname('r') : 'Unknown',
         'Memory Limit' => ini_get('memory_limit'),
         'ChurchCRM Version' => getChurchCRMVersion(),
     ];
+}
+
+/**
+ * The issue is public: remove this installation's address, host names, install path and IP addresses.
+ */
+function standaloneScrubForIssue($text)
+{
+    $known = array();
+    foreach (array(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '', isset($_SERVER['SERVER_NAME']) ? $_SERVER['SERVER_NAME'] : '', function_exists('php_uname') ? php_uname('n') : '') as $host) {
+        $parts = explode(':', (string) $host, 2);
+        if (strlen($parts[0]) > 3) {
+            $known[$parts[0]] = '[host]';
+        }
+    }
+    $root = realpath(dirname(__FILE__) . '/..');
+    if ($root !== false && strlen($root) > 1) {
+        $known = array($root => '[path]') + $known;
+    }
+    $text = preg_replace('#\b[a-z][a-z0-9+.-]*://[^\s\'"<>]+#i', '[url]', (string) $text);
+
+    return preg_replace('/\b(?:\d{1,3}\.){3}\d{1,3}\b/', '[ip]', strtr($text, $known));
 }
 
 /**
@@ -136,7 +157,7 @@ function buildGitHubIssueBody($title, $customSections = '')
         $body .= "- **$key:** `" . str_replace('`', '\\`', (string) $value) . "`\n";
     }
 
-    return $body;
+    return standaloneScrubForIssue($body);
 }
 
 /**
@@ -145,10 +166,9 @@ function buildGitHubIssueBody($title, $customSections = '')
  *
  * @param string $rootPath  install root path ('' or '/churchcrm')
  * @param string $title     document title (plain text)
- * @param string $bundle    skin/v2 stylesheet: 'error' or 'setup'
  * @param string $bodyClass extra classes for <body>
  */
-function renderStandaloneHeader($rootPath, $title, $bundle = 'error', $bodyClass = '')
+function renderStandaloneHeader($rootPath, $title, $bodyClass = '')
 {
     $skin = $rootPath . '/skin/v2/';
     ?>
@@ -160,7 +180,7 @@ function renderStandaloneHeader($rootPath, $title, $bundle = 'error', $bodyClass
     <title><?= standaloneEscape($title) ?></title>
     <link rel="icon" href="<?= standaloneEscape($rootPath . '/favicon.ico') ?>" type="image/x-icon">
     <script src="<?= standaloneEscape($skin . 'theme.min.js') ?>"></script>
-    <link rel="stylesheet" href="<?= standaloneEscape($skin . $bundle . '.min.css') ?>">
+    <link rel="stylesheet" href="<?= standaloneEscape($skin . 'error.min.css') ?>">
 </head>
 <body class="<?= standaloneEscape(trim('standalone-page ' . $bodyClass)) ?>">
     <?php
