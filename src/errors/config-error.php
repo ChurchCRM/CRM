@@ -3,6 +3,7 @@
 http_response_code(503);
 
 require_once __DIR__ . '/template.php';
+standaloneReportInstallFailure('config_invalid');
 
 $errorRootPath = isset($errorRootPath) ? $errorRootPath : standaloneRootPath();
 

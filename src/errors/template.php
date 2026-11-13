@@ -8,6 +8,62 @@
  * Styles come from the locally built /skin/v2/error.min.css (or setup.min.css).
  */
 
+// Same project as TelemetryService::POSTHOG_KEY; a test keeps them equal.
+const STANDALONE_POSTHOG_KEY = 'phc_vhMEHZai3exmp3sqqtJGyVY8Dfjn877bV7zQjV99sJZy';
+const STANDALONE_POSTHOG_URL = 'https://us.i.posthog.com/i/v0/e/?ip=0';
+
+/**
+ * Report that a blocking error page was shown (php_unsupported, config_invalid) as an install_failed event.
+ *
+ * The page cannot load the autoloader, configuration or telemetry settings, so like install_failed in
+ * TelemetryService this is sent at every level. Fixed reason codes only, once per UTC day, one second at
+ * most, and every failure is swallowed: reporting must never change what the page shows.
+ */
+function standaloneReportInstallFailure($reason)
+{
+    if (getenv('CHURCHCRM_DISABLE_POSTHOG_TELEMETRY') === '1' || getenv('PHP_TEST_DISPOSABLE_DB') === '1') {
+        return false;
+    }
+    try {
+        $stat = @stat(dirname(dirname(__FILE__)));
+        $directory = sys_get_temp_dir() . '/churchcrm-telemetry';
+        if ($stat === false || (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory))) {
+            return false;
+        }
+        $marker = @fopen($directory . '/' . sha1(gmdate('Y-m-d') . '|standalone|' . $reason), 'x');
+        if ($marker === false) {
+            return false;
+        }
+        fclose($marker);
+
+        $payload = json_encode(array(
+            'api_key' => STANDALONE_POSTHOG_KEY,
+            'event' => 'install_failed',
+            'distinct_id' => 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32),
+            'properties' => array(
+                'failure_reason' => $reason,
+                'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
+                'install_profile' => 'production',
+                '$lib' => 'churchcrm-php',
+                '$geoip_disable' => true,
+                '$process_person_profile' => false,
+            ),
+        ));
+
+        return @file_get_contents(STANDALONE_POSTHOG_URL, false, stream_context_create(array('http' => array(
+            'method' => 'POST',
+            'header' => "Content-Type: application/json\r\n",
+            'content' => $payload,
+            'timeout' => 1,
+            'ignore_errors' => true,
+        )))) !== false;
+    } catch (Exception $e) {
+        return false;
+    } catch (Throwable $e) {
+        return false;
+    }
+}
+
 function standaloneEscape($text)
 {
     return htmlspecialchars((string) $text, ENT_QUOTES, 'UTF-8');
