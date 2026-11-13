@@ -2,11 +2,17 @@
 
 use ChurchCRM\dto\Prerequisite;
 use ChurchCRM\Service\AppIntegrityService;
+use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Slim\SlimUtils;
 
 $phpPrerequisites = AppIntegrityService::getPhpPrerequisites();
 $failedRequirements = array_values(array_filter($phpPrerequisites, fn (Prerequisite $check): bool => !$check->isPrerequisiteMet()));
 if ($failedRequirements !== []) {
+    try {
+        TelemetryService::captureRequirementsFailure(array_map(fn (Prerequisite $check): string => $check->getName(), $failedRequirements));
+    } catch (\Throwable) {
+        // Reporting must never hide the checklist.
+    }
     http_response_code(503);
     header('Cache-Control: no-store');
     $requestPath = (string) parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);

@@ -233,16 +233,47 @@ class TelemetryService
      */
     public static function captureInstallFailure(string $reason): void
     {
-        if (self::installProfile() === 'test') {
-            return;
-        }
-        $stat = @stat((string) SystemURLs::getDocumentRoot());
-        if ($stat === false) {
+        $installId = self::unconfiguredInstallId();
+        if ($installId === null) {
             return;
         }
         self::capture('install_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
             'failure_reason' => in_array($reason, ['schema_import_failed'], true) ? $reason : 'other',
-        ]), 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32));
+        ]), $installId);
+    }
+
+    /**
+     * The requirements check runs before configuration loads, so it cannot read the telemetry level: like
+     * install failures it is sent at every level. Names are the fixed English labels from AppIntegrityService.
+     * Each set of failures is reported once per UTC day.
+     *
+     * @param string[] $failedRequirements
+     */
+    public static function captureRequirementsFailure(array $failedRequirements): void
+    {
+        $installId = self::unconfiguredInstallId();
+        sort($failedRequirements);
+        if ($installId === null || !self::firstLogToday('requirements|' . implode('|', $failedRequirements))) {
+            return;
+        }
+        self::capture('requirements_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+            'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
+            'failed_requirements' => $failedRequirements,
+        ]), $installId);
+    }
+
+    /**
+     * An installation ID for events sent before configuration exists: hashed from the document root's device
+     * and inode, which hold no server name or path, so repeated attempts on one server count as one installation.
+     */
+    private static function unconfiguredInstallId(): ?string
+    {
+        if (self::installProfile() === 'test') {
+            return null;
+        }
+        $stat = @stat((string) SystemURLs::getDocumentRoot());
+
+        return $stat === false ? null : 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32);
     }
 
     /** Fixed codes only: a free-text reason could carry details of a church's installation. */
