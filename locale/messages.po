@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 18:20+0000\n"
+"POT-Creation-Date: 2026-11-12 20:40-0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2804,6 +2804,9 @@ msgid "Canceled"
 msgstr ""
 
 msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr ""
+
+msgid "Cancelled"
 msgstr ""
 
 msgid "Cannot Delete Event Type"
@@ -8451,6 +8454,9 @@ msgid "How to Accept This Kiosk"
 msgstr ""
 
 msgid "How to Fix"
+msgstr ""
+
+msgid "How to correct this"
 msgstr ""
 
 #. Context: locales
@@ -14477,6 +14483,9 @@ msgstr ""
 msgid "Save and Add New Family"
 msgstr ""
 
+msgid "Save changes"
+msgstr ""
+
 msgid "Save changes to this category name"
 msgstr ""
 
@@ -15022,6 +15031,9 @@ msgid "Sending was interrupted before the server answered."
 msgstr ""
 
 msgid "Sending..."
+msgstr ""
+
+msgid "Sending…"
 msgstr ""
 
 msgid "Sending… {{done}} of {{total}}"
