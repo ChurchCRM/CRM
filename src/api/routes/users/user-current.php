@@ -70,8 +70,9 @@ function rememberTwoFactorChangeConfirmed(): void
 function twoFactorConfirmationRequired(Response $response): Response
 {
     return SlimUtils::renderJSON(
-        $response->withStatus(403),
-        ['success' => false, 'confirmationRequired' => true, 'message' => gettext('Enter your password or a code from your authenticator app to change two-factor authentication.')]
+        $response,
+        ['success' => false, 'confirmationRequired' => true, 'message' => gettext('Enter your password or a code from your authenticator app to change two-factor authentication.')],
+        403
     );
 }
 
