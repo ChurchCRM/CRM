@@ -20,13 +20,14 @@ export function captureAccountLayout(name, mode) {
     });
     cy.get("#main-content").should("be.visible");
     cy.window().then((win) => {
-        cy.get("#topbar").then(($header) => {
-            const position = $header[0].style.position;
-            // A sticky header repeats at every stitch in Cypress full-page captures.
-            $header.css("position", "relative");
-            cy.screenshot(`account-layout/${name}-${win.innerWidth}-${mode}`, { capture: "fullPage", overwrite: true }).then(() => {
-                $header[0].style.position = position;
-            });
-        });
+        const screenshot = `account-layout/${name}-${win.innerWidth}-${mode}`;
+        const scrollY = win.scrollY;
+        cy.scrollTo("top", { ensureScrollable: false });
+        cy.screenshot(screenshot, { capture: "viewport", overwrite: true });
+        if (win.document.documentElement.scrollHeight > win.innerHeight) {
+            cy.scrollTo("bottom", { ensureScrollable: false });
+            cy.screenshot(`${screenshot}-bottom`, { capture: "viewport", overwrite: true });
+        }
+        cy.scrollTo(0, scrollY, { ensureScrollable: false });
     });
 }

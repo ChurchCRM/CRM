@@ -15,9 +15,11 @@ describe("Admin view of another user's account (/admin/system/users/{personId})"
                 captureAccountLayout("admin-user-list", mode);
                 cy.readEnv("standard.username").then((username) => {
                     cy.get("#user-listing-table_wrapper .dt-search input").type(username);
-                });
-                cy.get(`#user-listing-table td:first-child a[href$="/admin/system/users/${STANDARD}"]`).should("be.visible").click();
-                cy.readEnv("standard.username").then((username) => {
+                    cy.contains("#user-listing-table tbody code", username)
+                        .closest("tr")
+                        .find('td:first-child a[href*="/admin/system/users/"]')
+                        .should("be.visible")
+                        .click();
                     cy.get("#tab-account").should("contain", username);
                 });
                 cy.get('#tab-account a[href$="/account/password"]').should("not.exist");
