@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import { STAFF } from "../../../support/gates/personas";
+import { ACCOUNT_VIEWPORTS, captureAccountLayout } from "../../../support/account-layout";
 
 // Each row is checked against an endpoint behind the same gate.
 const PROBES = {
@@ -12,15 +13,35 @@ const PROBES = {
 };
 
 describe("My Account (/account)", () => {
-    it("shows the signed-in user's own account, with no id in the URL", () => {
-        cy.setupStandardSession();
-        cy.visit("/account");
-        cy.location("pathname").should("match", /\/account\/?$/);
-        cy.readEnv("standard.username").then((username) => {
-            cy.get("#tab-account").should("contain", username);
+    ACCOUNT_VIEWPORTS.forEach(({ width, height }) => {
+        ["default", "dark"].forEach((mode) => {
+            it(`opens the signed-in account and security pages at ${width}px in ${mode} mode`, () => {
+                cy.viewport(width, height);
+                cy.setupStandardSession();
+                cy.visit("/account");
+                cy.location("pathname").should("match", /\/account\/?$/);
+                cy.readEnv("standard.username").then((username) => {
+                    cy.get("#tab-account").should("contain", username);
+                });
+                cy.get('#tab-account a[href$="/account/password"]').should("exist");
+                cy.get('#tab-account a[href$="/account/2fa"]').should("exist");
+                captureAccountLayout("own-account", mode);
+                cy.get('#settingsNav a[href="#tab-permissions"]').click();
+                cy.get('[data-cy="permissions-tab"]').should("be.visible");
+                captureAccountLayout("own-permissions", mode);
+                cy.get('#settingsNav a[href="#tab-localization"]').click();
+                cy.get("#tab-localization").should("be.visible");
+                captureAccountLayout("own-localization", mode);
+                cy.get('[aria-label="Open user menu"]').click();
+                captureAccountLayout("user-menu", mode);
+                cy.get('header a[href$="/account/password"]').click();
+                cy.get("#passwordChangeForm").should("have.attr", "action").and("match", /\/account\/password$/);
+                captureAccountLayout("password", mode);
+                cy.visit("/account/2fa");
+                cy.get("#begin2faEnrollment").should("be.visible");
+                captureAccountLayout("two-factor", mode);
+            });
         });
-        cy.get('#tab-account a[href$="/account/password"]').should("exist");
-        cy.get('#tab-account a[href$="/account/2fa"]').should("exist");
     });
 
     it("serves the password and two-factor pages", () => {

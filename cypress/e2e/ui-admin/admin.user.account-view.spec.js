@@ -1,17 +1,31 @@
 /// <reference types="cypress" />
 
+import { ACCOUNT_VIEWPORTS, captureAccountLayout } from "../../support/account-layout";
+
 const ADMIN = 1;
 const STANDARD = 3;
 
 describe("Admin view of another user's account (/admin/system/users/{personId})", () => {
-    it("shows that user's account to an administrator", () => {
-        cy.setupAdminSession();
-        cy.visit(`/admin/system/users/${STANDARD}`);
-        cy.readEnv("standard.username").then((username) => {
-            cy.get("#tab-account").should("contain", username);
+    ACCOUNT_VIEWPORTS.forEach(({ width, height }) => {
+        ["default", "dark"].forEach((mode) => {
+            it(`opens another user's account from the list at ${width}px in ${mode} mode`, () => {
+                cy.viewport(width, height);
+                cy.setupAdminSession();
+                cy.visit("/admin/system/users");
+                cy.get(`a[href$="/admin/system/users/${STANDARD}"]`).should("be.visible");
+                captureAccountLayout("admin-user-list", mode);
+                cy.get(`a[href$="/admin/system/users/${STANDARD}"]`).click();
+                cy.readEnv("standard.username").then((username) => {
+                    cy.get("#tab-account").should("contain", username);
+                });
+                cy.get('#tab-account a[href$="/account/password"]').should("not.exist");
+                cy.get('[data-cy="permission-row"]').should("have.length.greaterThan", 10);
+                captureAccountLayout("admin-account", mode);
+                cy.get('#settingsNav a[href="#tab-permissions"]').click();
+                cy.get('[data-cy="permissions-tab"]').should("be.visible");
+                captureAccountLayout("admin-permissions", mode);
+            });
         });
-        cy.get('#tab-account a[href$="/account/password"]').should("not.exist");
-        cy.get('[data-cy="permission-row"]').should("have.length.greaterThan", 10);
     });
 
     it("sends an administrator who opens their own id to /account", () => {

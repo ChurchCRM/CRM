@@ -1,5 +1,7 @@
     /// <reference types="cypress" />
 
+import { ACCOUNT_VIEWPORTS, captureAccountLayout } from "../../../support/account-layout";
+
 describe("User 2FA", () => {
     beforeEach(() => cy.setupStandardSession());
     
@@ -208,5 +210,9 @@ describe("Standard User Password - successful change", () => {
         cy.get("#passwordChangeForm").submit();
         cy.url().should("contain", "/account/password");
         cy.contains("Password Change Successful");
+        ACCOUNT_VIEWPORTS.forEach(({ width, height }) => {
+            cy.viewport(width, height);
+            ["default", "dark"].forEach((mode) => captureAccountLayout("password-changed", mode));
+        });
     });
 });
