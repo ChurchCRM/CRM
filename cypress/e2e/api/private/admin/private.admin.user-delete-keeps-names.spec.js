@@ -66,7 +66,8 @@ describe("Deleting a user keeps the person's name on what they did (#8672)", () 
             );
         });
 
-        cy.then(() => admin("DELETE", `/admin/api/user/${STAFF}/`)).its("body.user").should("eq", tag);
+        // The response names the deleted user by their person name.
+        cy.then(() => admin("DELETE", `/admin/api/user/${STAFF}/`)).its("body.user").should("eq", staffName);
     });
 
     after(() => {
