@@ -240,6 +240,18 @@ function reloadSelfRegister() {
   });
 }
 
+function notifyNoInvitation(cannotSignIn) {
+  const escapeHtml = window.CRM.escapeHtml;
+  const members = cannotSignIn.members
+    .map((member) => `<li>${escapeHtml(member.name)}: ${escapeHtml(member.reason)}</li>`)
+    .join("");
+  const title = `<strong>${escapeHtml(i18next.t("No invitation was sent"))}</strong>`;
+  window.CRM.notify(
+    `${title}<br>${escapeHtml(cannotSignIn.message)}${members ? `<ul class="mb-0">${members}</ul>` : ""}`,
+    { type: "warning", delay: 0 },
+  );
+}
+
 function approve(path, payload) {
   if (approvalInFlight) {
     return;
@@ -250,8 +262,11 @@ function approve(path, payload) {
     path: path,
     data: payload ? JSON.stringify(payload) : undefined,
   })
-    .done(() => {
+    .done((data) => {
       window.CRM.notify(i18next.t("Approved"), { type: "success", delay: 3000 });
+      if (data?.cannotSignIn) {
+        notifyNoInvitation(data.cannotSignIn);
+      }
       reloadSelfRegister();
     })
     .fail((xhr) => {

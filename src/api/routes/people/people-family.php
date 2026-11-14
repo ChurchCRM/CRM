@@ -12,6 +12,7 @@ use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\FamilyPortalInvitationService;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
@@ -382,7 +383,18 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Family and its members approved",
-     *         @OA\JsonContent(@OA\Property(property="success", type="boolean"))
+     *         @OA\JsonContent(
+     *             @OA\Property(property="success", type="boolean"),
+     *             @OA\Property(property="invited", type="boolean", description="Whether the member portal invitation was emailed"),
+     *             @OA\Property(property="cannotSignIn", type="object",
+     *                 description="Present when no member of the family may sign in to the member portal, so nobody was invited",
+     *                 @OA\Property(property="message", type="string"),
+     *                 @OA\Property(property="members", type="array", @OA\Items(type="object",
+     *                     @OA\Property(property="name", type="string"),
+     *                     @OA\Property(property="reason", type="string")
+     *                 ))
+     *             )
+     *         )
      *     )
      * )
      */
@@ -421,17 +433,30 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
             );
         }
 
-        // An approved family can now sign in: invite it to the member portal to review its details.
+        $invitations = new FamilyPortalInvitationService();
+        $recipients = $invitations->recipientsFor($family);
+        if ($recipients['emails'] === []) {
+            return SlimUtils::renderJSON($response, [
+                'success' => true,
+                'invited' => false,
+                'cannotSignIn' => [
+                    'message' => $invitations->nobodyCanSignInMessage($family, $recipients),
+                    'members' => $recipients['cannotSignIn'],
+                ],
+            ]);
+        }
+
         // A failed email never undoes the approval.
+        $invited = false;
         if (SystemConfig::isEmailEnabled()) {
             try {
-                $family->sendVerifyEmail();
+                $invited = $family->sendVerifyEmail();
             } catch (\Throwable $e) {
                 LoggerUtils::getAppLogger()->warning('Approved family ' . $family->getId() . ' but the portal invitation was not sent: ' . $e->getMessage());
             }
         }
 
-        return SlimUtils::renderJSON($response, ['success' => true]);
+        return SlimUtils::renderJSON($response, ['success' => true, 'invited' => $invited]);
     })->add(EditRecordsRoleAuthMiddleware::class);
 
     /**

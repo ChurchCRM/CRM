@@ -2,6 +2,7 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Photo;
+use ChurchCRM\Service\FamilyPortalInvitationService;
 use ChurchCRM\Service\FamilyVerificationStatusService;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
@@ -26,11 +27,6 @@ $familyAddress = $family->getAddress();
 
 $memberCount = count($family->getPeople());
 $livingMemberCount = count($family->getLivingPeople());
-
-// Get unique family emails for the verification modal
-$familyEmails = $family->getEmails();
-$verifyEmails = $family->getVerifyEmails();
-$canEmailVerify = !$family->getNeedsReview() && $family->isActive() && $verifyEmails !== [];
 
 // Build active events list for the family check-in modal (#6838)
 $showFamilyCheckin = AuthenticationManager::getCurrentUser()->canManageEvents();
@@ -1024,8 +1020,11 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
 </script>
 <!-- Photos end -->
 
-
-
+<?php if ($canEditRecords) {
+    $portalInvitations = new FamilyPortalInvitationService();
+    $invitationRecipients = $portalInvitations->recipientsFor($family);
+    $canEmailVerify = !$family->getNeedsReview() && $family->isActive() && $invitationRecipients['emails'] !== [];
+    ?>
 <div class="modal fade" id="confirm-verify" tabindex="-1" role="dialog" aria-labelledby="confirm-verify-label"
      aria-hidden="true">
     <div class="modal-dialog">
@@ -1037,15 +1036,25 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
             </div>
             <div class="modal-body">
                 <?php if ($family->getNeedsReview()) { ?>
-                <p><?= gettext("This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information.") ?></p>
+                <p><?= gettext("This self-registered family is waiting for approval. Approving it emails each member who can sign in to the member portal an invitation to review the family's information.") ?></p>
                 <?php } elseif (!$family->isActive()) { ?>
                 <p><?= gettext("This family is inactive, so it is not sent verification emails.") ?></p>
-                <?php } elseif ($verifyEmails === []) { ?>
-                <p><?= gettext("No active, approved member of this family has an email address. Verify it in person instead.") ?></p>
+                <?php } elseif ($invitationRecipients['emails'] === []) { ?>
+                <div class="alert alert-warning" id="verify-nobody-can-sign-in">
+                    <p class="mb-1"><?= InputUtils::escapeHTML($portalInvitations->nobodyCanSignInMessage($family, $invitationRecipients)) ?></p>
+                    <?php if ($invitationRecipients['cannotSignIn'] !== []) { ?>
+                    <ul class="mb-1">
+                        <?php foreach ($invitationRecipients['cannotSignIn'] as $member) { ?>
+                        <li><?= InputUtils::escapeHTML($member['name']) ?>: <?= InputUtils::escapeHTML($member['reason']) ?></li>
+                        <?php } ?>
+                    </ul>
+                    <?php } ?>
+                    <p class="mb-0"><?= gettext("Verify the family in person instead.") ?></p>
+                </div>
                 <?php } else { ?>
                 <p><?= gettext("Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person.") ?></p>
                 <ul>
-                    <?php foreach ($verifyEmails as $tmpEmail) { ?>
+                    <?php foreach ($invitationRecipients['emails'] as $tmpEmail) { ?>
                     <li><?= InputUtils::escapeHTML($tmpEmail) ?></li>
                     <?php } ?>
                 </ul>
@@ -1074,6 +1083,7 @@ if (AuthenticationManager::getCurrentUser()->isFinanceEnabled()) { ?>
         </div>
     </div>
 </div>
+<?php } ?>
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">
 (function () {

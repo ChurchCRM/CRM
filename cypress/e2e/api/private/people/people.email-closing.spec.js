@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { restoreSettings, useMemberSignIn } from "../../../../support/member-sign-in";
+
 /**
  * The closing of every ChurchCRM email ("<sConfirmSincerely>,<br> <sConfirmSigner>")
  * prints only the parts that are set, and nothing when both are blank. Read from the
@@ -10,6 +12,7 @@ const FAMILY_ID = 1;
 const SUBJECT = 'subject:"Campbell: Please verify"';
 const search = () => `${Cypress.mailpitUrl()}/api/v1/search?query=${encodeURIComponent(SUBJECT)}`;
 const saved = {};
+const savedSignIn = {};
 
 const setConfig = (name, value) =>
     cy.makePrivateAdminAPICall("POST", `admin/api/system/config/${name}`, { value }, 200);
@@ -38,11 +41,13 @@ const closingFor = (sincerely, signer) => {
 before(() => {
     cy.getSystemConfig("sConfirmSincerely").then((value) => (saved.sincerely = value));
     cy.getSystemConfig("sConfirmSigner").then((value) => (saved.signer = value));
+    useMemberSignIn(savedSignIn);
 });
 
 after(() => {
     cy.restoreSystemConfig("sConfirmSincerely", saved.sincerely);
     cy.restoreSystemConfig("sConfirmSigner", saved.signer);
+    restoreSettings(savedSignIn);
 });
 
 describe("Email closing", () => {

@@ -184,6 +184,26 @@ describe("Self Registrations review page", () => {
                 });
             });
         });
+
+        it("warns when nobody in an approved family can sign in to the member portal", () => {
+            let savedMemberSignIn;
+            cy.getSystemConfig("bMemberSignIn").then((value) => {
+                savedMemberSignIn = value;
+            });
+            cy.setSystemConfig("bMemberSignIn", "0");
+            registerFamily().then(({ name }) => {
+                cy.intercept("POST", "**/approve-review").as("approveFamily");
+                cy.visit("people/self-register");
+                row(name).find('[data-bs-toggle="dropdown"]').click();
+                cy.get(".dropdown-menu.show .approve-review").click();
+                cy.wait("@approveFamily").its("response.body.invited").should("eq", false);
+                cy.get('#crm-toasts .toast[data-type="warning"]')
+                    .should("contain", "No invitation was sent")
+                    .and("contain", "Member sign-in is off");
+                cy.get("#selfRegistrations tbody").should("not.contain", name);
+            });
+            cy.then(() => cy.restoreSystemConfig("bMemberSignIn", savedMemberSignIn));
+        });
     });
 
     describe("Pending badges elsewhere", () => {

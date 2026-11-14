@@ -1,6 +1,18 @@
 /// <reference types="cypress" />
 
+import { restoreSettings, useMemberSignIn } from "../../../../support/member-sign-in";
+
 describe("API Private Family Verify", () => {
+    const saved = {};
+
+    before(() => {
+        useMemberSignIn(saved);
+    });
+
+    after(() => {
+        restoreSettings(saved);
+    });
+
     it("Verify family immediately without email", () => {
         // Test the /verify/now endpoint which doesn't send emails
         cy.makePrivateAdminAPICall("POST", "/api/family/2/verify/now", null, 200);
