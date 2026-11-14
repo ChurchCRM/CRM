@@ -17,6 +17,7 @@ use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\CustomFieldService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\EmailAddress;
 use ChurchCRM\Utils\GeoUtils;
@@ -24,7 +25,6 @@ use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 use DateTime;
 use InvalidArgumentException;
-use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Map\TableMap;
 use Symfony\Component\Validator\Constraints\Callback;
@@ -810,14 +810,8 @@ class Person extends BasePerson implements PhotoInterface
             return gettext('Only an administrator can delete a person who has a login.');
         }
 
-        if ($targetUser->isAdmin()) {
-            $otherAdmins = UserQuery::create()
-                ->filterByAdmin(true)
-                ->filterByPersonId($this->getId(), Criteria::NOT_EQUAL)
-                ->count();
-            if ($otherAdmins === 0) {
-                return gettext('The last administrator cannot be deleted.');
-            }
+        if ((new UserService())->isLastAdmin((int) $this->getId())) {
+            return gettext('The last administrator cannot be deleted.');
         }
 
         return null;

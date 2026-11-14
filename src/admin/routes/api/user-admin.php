@@ -7,6 +7,8 @@ use ChurchCRM\Emails\users\AccountDeletedEmail;
 use ChurchCRM\Emails\users\ResetPasswordEmail;
 use ChurchCRM\Emails\users\UnlockedEmail;
 use ChurchCRM\model\ChurchCRM\UserConfigQuery;
+use ChurchCRM\Service\PersonSignInService;
+use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Api\UserMiddleware;
 use ChurchCRM\Slim\SlimUtils;
@@ -117,22 +119,41 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
      * @OA\Delete(
      *     path="/api/user/{userId}/",
      *     summary="Delete a user account (Admin role required)",
+     *     description="Removes the login only; the person and everything they entered stay. With disableSignIn true, also turns on Disable sign-in for the person so they cannot use the Member Portal.",
      *     tags={"Admin"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="userId", in="path", required=true, @OA\Schema(type="integer")),
+     *     @OA\RequestBody(required=false, @OA\JsonContent(@OA\Property(property="disableSignIn", type="boolean", default=false))),
      *     @OA\Response(response=200, description="User deleted",
      *         @OA\JsonContent(@OA\Property(property="user", type="string", description="Deleted username"))
      *     ),
-     *     @OA\Response(response=403, description="Admin role required")
+     *     @OA\Response(response=403, description="Admin role required, your own account, or the last administrator")
      * )
      */
     $group->delete('/', function (Request $request, Response $response, array $args): Response {
         $user = $request->getAttribute('user');
         $currentUser = AuthenticationManager::getCurrentUser();
 
-        // Never allow a user to delete themselves
-        if ($currentUser !== null && $currentUser->getId() === $user->getId()) {
-            return SlimUtils::renderErrorJSON($response, gettext('You cannot delete your own account.'), [], 403);
+        // Never delete yourself or the last administrator (#8672).
+        $blockedReason = (new UserService())->getUserDeletionBlockedReason($user, $currentUser);
+        if ($blockedReason !== null) {
+            return SlimUtils::renderErrorJSON($response, $blockedReason, [], 403);
+        }
+
+        // Deleting the login removes staff access only. With disableSignIn,
+        // also turn on Disable sign-in so the person can't keep using the
+        // Member Portal with an email link, device or passkey (#8672).
+        $input = $request->getParsedBody();
+        $disableSignIn = is_array($input) && ($input['disableSignIn'] ?? false) === true;
+        $person = $user->getPerson();
+        if ($disableSignIn && $person !== null && $currentUser !== null) {
+            try {
+                (new PersonSignInService())->disable($person, $currentUser, gettext('Login deleted'));
+            } catch (DomainException $e) {
+                if ($e->getCode() !== 409) {
+                    return SlimUtils::renderErrorJSON($response, $e->getMessage(), [], 403);
+                }
+            }
         }
 
         $userName = $user->getName();
