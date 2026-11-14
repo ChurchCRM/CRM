@@ -6,9 +6,9 @@ import { ACCOUNT_VIEWPORTS, captureAccountLayout } from "../../../support/accoun
 // Each row is checked against an endpoint behind the same gate.
 const PROBES = {
     Notes: "/api/person/2/notes",
-    "Manage groups and roles": "/kiosk/api/devices",
-    "Manage donations and finance": "/api/donation-funds",
-    "Manage fundraisers": "/api/fundraisers",
+    "Manage Groups and Roles": "/kiosk/api/devices",
+    "Manage Donations and Finance": "/api/donation-funds",
+    "Manage Fundraisers": "/api/fundraisers",
     "Email people and groups": "/api/cart/emails",
 };
 
