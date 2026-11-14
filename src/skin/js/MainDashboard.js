@@ -750,6 +750,7 @@ export function initializeMainDashboard() {
   if ($("#deposit-lineGraph").length > 0) {
     const allowedDepositDays = [30, 90, 365];
     const defaultDepositDays = 90;
+    let depositChartRequestId = 0;
 
     const resolveDepositDays = (rawDays) => {
       const days = parseInt(rawDays, 10);
@@ -758,6 +759,7 @@ export function initializeMainDashboard() {
 
     const loadDepositChart = (rawDays) => {
       const days = resolveDepositDays(rawDays);
+      const requestId = ++depositChartRequestId;
 
       if (window.depositChart) {
         window.depositChart.destroy();
@@ -772,6 +774,11 @@ export function initializeMainDashboard() {
         method: "GET",
         path: "deposits/dashboard?days=" + days,
       }).done((data) => {
+        // Ignore stale responses when the user changed the range mid-flight.
+        if (requestId !== depositChartRequestId) {
+          return;
+        }
+
         const lineDataRaw = data;
 
         if (!lineDataRaw || lineDataRaw.length === 0) {
