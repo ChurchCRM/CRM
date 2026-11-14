@@ -134,7 +134,7 @@
   },
   "current": {
     "versions": ["7.8.4"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.8.5-user-settings-cascade.sql"],
     "dbVersion": "7.8.5"
   }
 }
