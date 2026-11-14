@@ -46,9 +46,11 @@ jobs:
         path: .
 
     - name: Load Docker image
+      env:
+        PHP_VERSION: ${{ inputs.php-version }}
       run: |
-        docker load < temp/docker-image-${{ inputs.php-version }}.tar.gz
-        docker tag churchcrm/crm:php${{ inputs.php-version }}-test churchcrm/crm:php8-debian
+        docker load < "temp/docker-image-${PHP_VERSION}.tar.gz"
+        docker tag "churchcrm/crm:php${PHP_VERSION}-test" churchcrm/crm:php8-debian
 
     - name: Start Docker (root path)
       run: |

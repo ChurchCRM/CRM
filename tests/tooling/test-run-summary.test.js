@@ -99,3 +99,23 @@ test('root jobs retain separate spec discovery, all shards, and required summary
     assert.match(shared, /ROW_GUARD_REQUIRED=1/);
     assert.match(shared, /shard-index: \$\{\{ inputs.shard-index }}/);
 });
+
+test('Docker image commands treat the reusable PHP version input as data', t => {
+    const workflow = fs.readFileSync(path.join(__dirname, '../../.github/workflows/test-root-suite.yml'), 'utf8');
+    const step = workflow.split('    - name: Load Docker image\n')[1].split('\n    - name:')[0];
+    assert.match(step, /PHP_VERSION: \$\{\{ inputs.php-version }}/);
+    const script = step.split('      run: |\n')[1].split('\n').map(line => line.replace(/^ {8}/, '')).join('\n');
+    assert.doesNotMatch(script, /\$\{\{/);
+    const directory = fs.mkdtempSync(path.join(os.tmpdir(), 'crm-docker-input-'));
+    t.after(() => fs.rmSync(directory, { recursive: true, force: true }));
+    fs.mkdirSync(path.join(directory, 'temp'));
+    const version = '8.4-$(touch injected)';
+    fs.writeFileSync(path.join(directory, 'temp', `docker-image-${version}.tar.gz`), '');
+    const log = path.join(directory, 'docker.log');
+    const result = spawnSync('bash', ['-e', '-c', `docker() { printf '%s\\n' "$@" >> "$DOCKER_LOG"; }\n${script}`], {
+        encoding: 'utf8', cwd: directory, env: { ...process.env, PHP_VERSION: version, DOCKER_LOG: log },
+    });
+    assert.equal(result.status, 0, result.stderr);
+    assert.equal(fs.existsSync(path.join(directory, 'injected')), false);
+    assert.equal(fs.readFileSync(log, 'utf8'), `load\ntag\nchurchcrm/crm:php${version}-test\nchurchcrm/crm:php8-debian\n`);
+});
