@@ -187,7 +187,7 @@ class LocalAuthentication implements IAuthenticationProvider
                 $this->bPendingTwoFactorAuth = true;
                 $this->tPendingTwoFactorStarted = time();
                 LoggerUtils::getAuthLogger()->info('User partially authenticated, pending 2FA', $logCtx);
-            } elseif (SystemConfig::getBooleanValue('bRequire2FA') && !$user->is2FactorAuthEnabled()) {
+            } elseif ($user->isTwoFactorAuthMandated() && !$user->is2FactorAuthEnabled()) {
                 // Mandate is active but user has not enrolled. Stamp the grace period start (if not already
                 // set) as a side-effect of getTwoFactorGraceStatus(), then let the user log in.
                 // validateUserSessionIsActive() handles blocking once the window has expired.
@@ -341,7 +341,7 @@ class LocalAuthentication implements IAuthenticationProvider
         $requestUri = $_SERVER['REQUEST_URI'] ?? '';
         $isOnEnrollmentPage = str_contains($requestUri, '/v2/user/current/manage2fa')
             || str_contains($requestUri, '/v2/user/current/enroll2fa');
-        if (SystemConfig::getBooleanValue('bRequire2FA') && !$user->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
+        if ($user->isTwoFactorAuthMandated() && !$user->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
             $graceStatus = $user->getTwoFactorGraceStatus();
             if ($graceStatus === 'expired' || $graceStatus === 'immediate') {
                 LoggerUtils::getAuthLogger()->info('2FA grace period expired or immediate; redirecting to enrollment', $logCtx);

@@ -827,6 +827,7 @@ CREATE TABLE `user_usr` (
   `usr_TwoFactorAuthLastKeyTimestamp` INT NULL,
   `usr_TwoFactorAuthRecoveryCodes` TEXT NULL,
   `usr_TwoFactorAuthGracePeriodStart` TIMESTAMP NULL DEFAULT NULL,
+  `usr_TwoFactorAuthRequired` tinyint(1) unsigned NOT NULL default '0',
   `usr_LastPortalActivity` datetime default NULL,
   `usr_PortalCalendarToken` VARCHAR(64) default NULL,
   `usr_PortalCalendarSelection` TEXT default NULL,
