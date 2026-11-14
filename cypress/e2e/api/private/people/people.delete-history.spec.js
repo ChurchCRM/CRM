@@ -2,10 +2,12 @@
 
 import {
     cleanupDeletionFixture,
+    countPersonMail,
     createDeletionProperty,
     prepareDeletionRelationships,
     readDeletionRelationships,
     recordOnboardingParticipation,
+    recordUnsentActivity,
     recordVolunteerNotification,
 } from "../../../../support/person-deletion-fixtures";
 
@@ -163,6 +165,27 @@ describe("Person deletion preserves recorded history", () => {
                 expect(response.body.message).to.include("volunteer service history");
             })
             .then(() => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200));
+    });
+
+    it("allows deletion when the only mail and alerts were never sent, and cancels the queued mail", () => {
+        return recordUnsentActivity(personId)
+            .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 200))
+            .then(() => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 404))
+            .then(() => countPersonMail(personId))
+            .then((count) => expect(count).to.equal(0));
+    });
+
+    it("blocks a family cascade when the only history is a family note written by someone outside it", () => {
+        return cy.makePrivateAdminAPICall("POST", `/api/family/${familyId}/note`, { text: "Outside family note" }, 201)
+            .then((response) => {
+                familyNoteIds.push(Number(response.body.note.id));
+                return cy.makePrivateAdminAPICall("DELETE", `/api/family/${familyId}?deleteMembers=true`, null, 403);
+            })
+            .then((response) => expect(response.body.message).to.include("Deactivate the family instead"))
+            .then(() => cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}`, null, 200))
+            .then(() => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200))
+            .then(() => cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/notes`, null, 200))
+            .then((response) => expect(response.body.notes.map((note) => note.text)).to.include("Outside family note"));
     });
 
     it("blocks recorded onboarding and fundraiser participation", () => {

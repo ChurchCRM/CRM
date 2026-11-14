@@ -4,6 +4,10 @@
 
 Family finance checks, member preflight, and all family/member database cleanup share one transaction and connection. A deletion exception rolls back the database changes before the API returns its error. File deletion and external plugin effects are not transactional; the history preflight remains before those effects.
 
+The history check locks the person row (`SELECT … FOR UPDATE`) inside the deletion transaction, and every note save locks the people it points at (subject, author, editor) in `Note::preSave()`, in id order. A note saved while a deletion is checking history therefore waits for that deletion instead of being missed and then deleted with the person.
+
+Family deletion with members also refuses a family that has a substantive family note (anything but automatic `create` and `edit` entries), because a note written by someone outside the family is not seen by the member checks.
+
 Concurrent family-membership writers do not share a locking contract with deletion. Issue #11112 tracks that existing race separately; the transaction does not prevent a late membership assignment from referencing a deleted family.
 
 ## Protected history
@@ -15,11 +19,11 @@ Concurrent family-membership writers do not share a locking contract with deleti
 | `pledge_plg.plg_EditedBy` | Protected financial audit reference | This schema relation records the person who edited a financial row. The guard blocks deletion when the person is a recorded editor. |
 | `note_nte.nte_per_ID`, `nte_EnteredBy`, `nte_EditedBy` | Protected unless `nte_Type` is exactly `create` or `edit` | `Person::createTimeLineNote()` writes those two types for automatic profile lifecycle entries. User notes and other timeline types (including event, group, photo and note-deletion audit entries) are substantive. Author/editor references on other people's substantive notes are protected too, so deletion cannot erase their attribution. The guard tests only the discriminator and never reads note text. |
 | `whycame_why.why_per_ID` | Protected recorded activity | The row stores the person's recorded answers to why they joined, came, recommended, or heard of the church. Those answers are durable history, not profile fields. |
-| `email_log_eml.eml_per_ID`, `eml_usr_ID` | Protected communication history | The schema describes one row per email recipient and retains subject, body when applicable, send status and timestamp. Install SQL has no FK, so deletion could leave recipient or sender attribution dangling. |
+| `email_log_eml.eml_per_ID`, `eml_usr_ID` | Protected communication history | The schema describes one row per email recipient and retains subject, body when applicable, send status and timestamp. Install SQL has no FK, so deletion could leave recipient or sender attribution dangling. A recipient row still `queued` with no delivery attempt is not history yet: it does not block, and deletion removes it with a status-and-attempts condition so it skips a row the queue worker has just claimed. Sender rows, retries, in-flight and delivered rows stay protected. |
 | `volunteer_assignment_vasg.vasg_per_ID` | Protected service history | Assignments have lifecycle statuses including completed, cancelled, declined and substituted. The person FK cascades in `Install.sql`, so deleting a person erases these records. Any status blocks. |
 | `volunteer_response_vrsp.vrsp_per_ID` | Protected service history | Schema calls this append-only response history; it identifies both the responder and the assignment. The person FK cascades. |
 | `volunteer_swap_vswp` participant columns | Protected service history | Proposed-by and proposed-person are audit participants in a preserved handover record; both FKs cascade. The decision-maker FK is set null and does not make that person the volunteer whose service record is being removed. |
-| `volunteer_notification_vntf.vntf_per_ID` | Protected service communication | Persisted person notifications are retained with status/type/timestamp; the person FK cascades. |
+| `volunteer_notification_vntf.vntf_per_ID` | Protected service communication once attempted or sent | Persisted person notifications are retained with status/type/timestamp; the person FK cascades. A notification never attempted and never sent (pending, or skipped without a try, such as an unsent gap alert) is not history and cascades away. |
 | `multibuy_mb.mb_per_ID`, `paddlenum_pn.pn_per_ID` | Protected recorded fundraiser participation | These person-linked rows record item counts and paddle assignments. They are not part of the person profile and can represent past event participation. |
 
 ## Current relationship or profile data

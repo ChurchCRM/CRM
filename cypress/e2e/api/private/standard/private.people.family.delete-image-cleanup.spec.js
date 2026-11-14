@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import { resetDeletionFixtureAudit } from "../../../../support/person-deletion-fixtures";
+import { resetDeletionFixtureAudit, resetFamilyDeletionFixtureAudit } from "../../../../support/person-deletion-fixtures";
 
 /**
  * API regression test for GH #1697 — deleting a family with its members
@@ -58,6 +58,14 @@ describe("API Private - Family delete cleans up image files (#1697)", () => {
         });
     });
 
+    // The test deletes the family itself; this only runs the cleanup when a
+    // step before that delete failed, so nothing is left in the test database.
+    after(() => {
+        if (familyId) {
+            cy.cleanupFamilies([familyId]);
+        }
+    });
+
     it("preserves photos with audit history and cleans up photos for a no-history fixture", () => {
         // 1. Upload photos for family and member.
         cy.makePrivateAdminAPICall(
@@ -95,6 +103,7 @@ describe("API Private - Family delete cleans up image files (#1697)", () => {
 
         // Preserve the original cleanup regression for legacy photos without audit entries.
         cy.then(() => resetDeletionFixtureAudit(personId, "photo"));
+        cy.then(() => resetFamilyDeletionFixtureAudit(familyId, "photo"));
         cy.makePrivateAdminAPICall(
             "DELETE",
             `/api/family/${familyId}?deleteMembers=true`,

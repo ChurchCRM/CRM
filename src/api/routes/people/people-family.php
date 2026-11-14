@@ -516,10 +516,14 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                 if ($deleteMembers) {
                     $membersToDelete = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
                         ->filterByFamId($familyId)
+                        ->orderById()
                         ->find($con);
                     foreach ($membersToDelete as $member) {
                         PersonDeletionService::assertCanDelete($member, $con);
                     }
+                    // A note on the family written by someone outside it is
+                    // history the member checks above don't see.
+                    PersonDeletionService::assertFamilyNotesCanBeDeleted((int) $familyId, $con);
                 }
 
                 // Delete associated notes

@@ -37,8 +37,35 @@ export const prepareDeletionRelationships = (personId, propertyId) =>
         .then(() => query("INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID, r2p_Value) VALUES (?, ?, 'preserve')", [propertyId, personId]))
         .then(() => readDeletionRelationships(personId));
 
+// A notification that was sent: protected history.
 export const recordVolunteerNotification = (personId) =>
-    query("INSERT INTO volunteer_notification_vntf (vntf_Type, vntf_per_ID, vntf_DedupeKey, vntf_ScheduledFor) VALUES ('assignment', ?, ?, NOW())", [personId, `delete-history-${personId}`]);
+    query(
+        "INSERT INTO volunteer_notification_vntf (vntf_Type, vntf_per_ID, vntf_DedupeKey, vntf_ScheduledFor, vntf_Status, vntf_Attempts, vntf_LastAttemptDate, vntf_SentDate) VALUES ('assignment', ?, ?, NOW(), 'sent', 1, NOW(), NOW())",
+        [personId, `delete-history-${personId}`],
+    );
+
+// What deletion may clear because nothing was ever delivered: a gap alert that
+// was never attempted, and a queued email no worker has touched. The far-off
+// next attempt keeps the queue worker away from the row during the spec.
+export const recordUnsentActivity = (personId) =>
+    query(
+        "INSERT INTO volunteer_notification_vntf (vntf_Type, vntf_per_ID, vntf_DedupeKey, vntf_ScheduledFor, vntf_Status) VALUES ('gap_alert', ?, ?, NOW(), 'skipped')",
+        [personId, `delete-history-unsent-${personId}`],
+    ).then(() =>
+        query(
+            "INSERT INTO email_log_eml (eml_per_ID, eml_Address, eml_Kind, eml_Subject, eml_Status, eml_DateSent, eml_Attempts, eml_NextAttempt) VALUES (?, ?, 'composer', 'Unsent', 'queued', NOW(), 0, '2099-01-01 00:00:00')",
+            [personId, `unsent-${personId}@example.test`],
+        ),
+    );
+
+export const countPersonMail = (personId) =>
+    query("SELECT COUNT(*) AS n FROM email_log_eml WHERE eml_per_ID = ?", [personId]).then((rows) => Number(rows[0].n));
+
+// Model a legacy family photo without its audit note.
+export const resetFamilyDeletionFixtureAudit = (familyId, type) => {
+    expect(type).to.be.oneOf(["photo"]);
+    return query("DELETE FROM note_nte WHERE nte_fam_ID = ? AND nte_Type = ?", [familyId, type]);
+};
 
 export const recordOnboardingParticipation = (personId) =>
     query("INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs) VALUES (?, 'joined', 'visited', 'recommended', 'friend')", [personId])
@@ -68,7 +95,10 @@ export const clearPersonHistory = (personIds, familyIds = []) => {
     const ofFamilies = families.length === 0
         ? cy.wrap([], { log: false })
         : query(`SELECT per_ID FROM person_per WHERE per_fam_ID IN (${marks(families)})`, families).then((rows) => rows.map((row) => Number(row.per_ID)));
-    return ofFamilies.then((members) => {
+    const familyNotes = families.length === 0
+        ? cy.wrap(null, { log: false })
+        : query(`DELETE FROM note_nte WHERE nte_fam_ID IN (${marks(families)})`, families);
+    return familyNotes.then(() => ofFamilies).then((members) => {
         const ids = [...new Set([...people, ...members])];
         if (ids.length === 0) {
             return null;
