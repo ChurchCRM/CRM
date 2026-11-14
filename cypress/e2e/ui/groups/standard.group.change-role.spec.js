@@ -90,3 +90,48 @@ describe("Change a group member's role (#10337)", () => {
         );
     });
 });
+
+describe("Hide Change Role when a group has one role (#11442)", () => {
+    const personId = 2;
+    const memberRoleId = 1; // a new group's default role, "Member"
+    let groupId;
+
+    before(() => {
+        cy.makePrivateAdminAPICall("POST", "/api/groups/", { groupName: `Single Role ${Date.now()}` }, 200).then(
+            (resp) => {
+                groupId = resp.body.Id;
+                cy.makePrivateAdminAPICall(
+                    "POST",
+                    `/api/groups/${groupId}/addperson/${personId}`,
+                    { RoleID: memberRoleId },
+                    200,
+                );
+            },
+        );
+    });
+
+    beforeEach(() => {
+        cy.setupStandardSession();
+    });
+
+    after(() => {
+        if (groupId) {
+            cy.makePrivateAdminAPICall("DELETE", `/api/groups/${groupId}`, null, [200, 404]);
+        }
+    });
+
+    it("hides Change Role in the member menu", () => {
+        cy.makePrivateAdminAPICall("GET", `/api/groups/${groupId}/roles`, null, 200)
+            .its("body")
+            .should("have.length", 1);
+        cy.visit(`/groups/view/${groupId}`);
+        cy.get("#membersTable tbody a[href*='/people/view/']", { timeout: 10000 }).should("exist");
+        cy.get("#membersTable tbody tr").first().find('[data-bs-toggle="dropdown"]').click();
+        cy.get("#membersTable .dropdown-menu.show").should("be.visible");
+        cy.get("#membersTable .dropdown-menu.show .changeMembership").should("not.exist");
+        cy.get("#membersTable .dropdown-menu.show")
+            .should("contain", "View")
+            .and("contain", "Add to Cart")
+            .and("contain", "Remove");
+    });
+});
