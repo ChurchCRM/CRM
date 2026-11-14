@@ -92,13 +92,20 @@ export const clearPersonHistory = (personIds, familyIds = []) => {
     const people = [...personIds].map(Number).filter(Number.isFinite);
     const families = [...familyIds].map(Number).filter(Number.isFinite);
     const marks = (ids) => ids.map(() => "?").join(",");
-    const ofFamilies = families.length === 0
-        ? cy.wrap([], { log: false })
-        : query(`SELECT per_ID FROM person_per WHERE per_fam_ID IN (${marks(families)})`, families).then((rows) => rows.map((row) => Number(row.per_ID)));
+    // Build each query inside the callback that runs it: a chain created up
+    // front is queued at once, so returning it later yields no rows.
     const familyNotes = families.length === 0
         ? cy.wrap(null, { log: false })
         : query(`DELETE FROM note_nte WHERE nte_fam_ID IN (${marks(families)})`, families);
-    return familyNotes.then(() => ofFamilies).then((members) => {
+    return familyNotes
+        .then(() =>
+            families.length === 0
+                ? []
+                : query(`SELECT per_ID FROM person_per WHERE per_fam_ID IN (${marks(families)})`, families).then((rows) =>
+                      rows.map((row) => Number(row.per_ID)),
+                  ),
+        )
+        .then((members) => {
         const ids = [...new Set([...people, ...members])];
         if (ids.length === 0) {
             return null;
