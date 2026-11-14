@@ -1,4 +1,4 @@
-import { alertAction, confirmAction } from "./common/confirm-action";
+import { alertAction, promptAction } from "./common/confirm-action";
 import { notifyError } from "./common/notify";
 /**
  * Two-Factor Authentication Enrollment
@@ -447,11 +447,11 @@ function bindEvents() {
   const disableBtn = document.getElementById("disable2FABtn");
   if (disableBtn) {
     disableBtn.addEventListener("click", () => {
-      confirmAction(
-        t("Disable Two-Factor Authentication"),
-        t("Are you sure you want to disable two-factor authentication? Your account will be less secure."),
-        disable2FA,
-      );
+      promptAction(t("Disable Two-Factor Authentication"), confirmThenDisable2FA, {
+        message: `<p>${escapeHtml(t("Are you sure you want to disable two-factor authentication? Your account will be less secure."))}</p><p>${escapeHtml(t("Enter your password or a code from your authenticator app to change two-factor authentication."))}</p>`,
+        inputType: "password",
+        confirmLabel: t("Disable Two-Factor Authentication"),
+      });
     });
   }
 }
@@ -527,6 +527,18 @@ function remove2FA() {
       render();
     })
     .catch(() => notifyError(t("Failed to cancel enrollment. Please try again.")));
+}
+
+// Changing existing 2FA needs the password or a current code (#10200). The
+// server remembers the confirmation for a few minutes of this session.
+function confirmThenDisable2FA(confirmation) {
+  fetchJSON(`${CRMRoot}/api/user/current/2fa/confirm`, {
+    method: "POST",
+    headers: { Accept: "application/json", "Content-Type": "application/json" },
+    body: JSON.stringify({ confirmation }),
+  })
+    .then(disable2FA)
+    .catch(() => notifyError(t("That password or code is not right. Two-factor authentication is still on.")));
 }
 
 function disable2FA() {

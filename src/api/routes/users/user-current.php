@@ -2,6 +2,8 @@
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\AuthenticationProviders\LocalAuthentication;
+use ChurchCRM\Authentication\SignInThrottle;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Endroid\QrCode\Writer\PngWriter;
@@ -16,7 +18,83 @@ $app->group('/user/current', function (RouteCollectorProxy $group): void {
     $group->post('/test2FAEnrollmentCode', 'test2FAEnrollmentCode');
     $group->get('/get2faqrcode', 'get2faqrcode');
     $group->get('/2fa-status', 'get2FAStatus');
+    $group->post('/2fa/confirm', 'confirmTwoFactorChange');
 });
+
+/**
+ * Changes to a user's existing 2FA need proof that the person at the keyboard
+ * owns the account, not just a live session or API key (#10200): the body's
+ * `confirmation` must be their current password or a current authenticator
+ * code. A successful confirmation, or finishing enrollment, is remembered in
+ * the session for TWO_FACTOR_CONFIRMATION_TTL seconds so the next step of the
+ * same flow doesn't ask again. A user with no 2FA yet can enroll without it.
+ * Wrong answers count as failed sign-ins, so they lock the account like
+ * wrong passwords do.
+ */
+const TWO_FACTOR_CONFIRMATION_TTL = 300;
+
+function twoFactorChangeConfirmed(Request $request, User $user): bool
+{
+    if (!$user->is2FactorAuthEnabled()) {
+        return true;
+    }
+    if (session_status() === PHP_SESSION_ACTIVE && ($_SESSION['twoFactorChangeConfirmedUntil'] ?? 0) >= time()) {
+        return true;
+    }
+
+    $body = $request->getParsedBody();
+    $confirmation = is_array($body) && is_string($body['confirmation'] ?? null) ? trim($body['confirmation']) : '';
+    if ($confirmation === '' || SignInThrottle::isAccountLocked($user)) {
+        return false;
+    }
+    $valid = (preg_match('/^\d{6}$/', $confirmation) === 1 && $user->isTwoFACodeValid($confirmation))
+        || $user->isPasswordValid($confirmation);
+    if (!$valid) {
+        SignInThrottle::recordFailure($user);
+        LoggerUtils::getAuthLogger()->warning('2FA change refused: wrong confirmation for user: ' . $user->getUserName());
+
+        return false;
+    }
+    rememberTwoFactorChangeConfirmed();
+
+    return true;
+}
+
+function rememberTwoFactorChangeConfirmed(): void
+{
+    if (session_status() === PHP_SESSION_ACTIVE) {
+        $_SESSION['twoFactorChangeConfirmedUntil'] = time() + TWO_FACTOR_CONFIRMATION_TTL;
+    }
+}
+
+function twoFactorConfirmationRequired(Response $response): Response
+{
+    return SlimUtils::renderJSON(
+        $response->withStatus(403),
+        ['success' => false, 'confirmationRequired' => true, 'message' => gettext('Enter your password or a code from your authenticator app to change two-factor authentication.')]
+    );
+}
+
+/**
+ * @OA\Post(
+ *     path="/user/current/2fa/confirm",
+ *     summary="Confirm the current password or an authenticator code before changing existing 2FA",
+ *     tags={"2FA"},
+ *     security={{"ApiKeyAuth":{}}},
+ *     @OA\RequestBody(required=true, @OA\JsonContent(required={"confirmation"}, @OA\Property(property="confirmation", type="string", description="Current password or 6-digit authenticator code"))),
+ *     @OA\Response(response=200, description="Confirmed for the next few minutes of this session"),
+ *     @OA\Response(response=403, description="Wrong or missing confirmation")
+ * )
+ */
+function confirmTwoFactorChange(Request $request, Response $response, array $args): Response
+{
+    $user = AuthenticationManager::getCurrentUser();
+    if (!twoFactorChangeConfirmed($request, $user)) {
+        return twoFactorConfirmationRequired($response);
+    }
+
+    return SlimUtils::renderSuccessJSON($response);
+}
 
 /**
  * @OA\Post(
@@ -29,12 +107,16 @@ $app->group('/user/current', function (RouteCollectorProxy $group): void {
  *             @OA\Property(property="TwoFAQRCodeDataUri", type="string"),
  *             @OA\Property(property="TwoFASecret", type="string")
  *         )
- *     )
+ *     ),
+ *     @OA\Response(response=403, description="2FA is set up and the confirmation (password or authenticator code) is missing or wrong")
  * )
  */
 function refresh2fasecret(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
+    if (!twoFactorChangeConfirmed($request, $user)) {
+        return twoFactorConfirmationRequired($response);
+    }
     $secret = $user->provisionNew2FAKey();
 
     LoggerUtils::getAuthLogger()->info('Began 2FA enrollment for user: ' . $user->getUserName());
@@ -66,12 +148,16 @@ function refresh2fasecret(Request $request, Response $response, array $args): Re
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Array of new recovery codes",
  *         @OA\JsonContent(@OA\Property(property="TwoFARecoveryCodes", type="array", @OA\Items(type="string")))
- *     )
+ *     ),
+ *     @OA\Response(response=403, description="2FA is set up and the confirmation (password or authenticator code) is missing or wrong")
  * )
  */
 function refresh2farecoverycodes(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
+    if (!twoFactorChangeConfirmed($request, $user)) {
+        return twoFactorConfirmationRequired($response);
+    }
 
     return SlimUtils::renderJSON($response, ['TwoFARecoveryCodes' => $user->getNewTwoFARecoveryCodes()]);
 }
@@ -82,12 +168,16 @@ function refresh2farecoverycodes(Request $request, Response $response, array $ar
  *     summary="Remove the 2FA secret from the current user (disables 2FA)",
  *     tags={"2FA"},
  *     security={{"ApiKeyAuth":{}}},
- *     @OA\Response(response=200, description="2FA secret removed")
+ *     @OA\Response(response=200, description="2FA secret removed"),
+ *     @OA\Response(response=403, description="2FA is set up and the confirmation (password or authenticator code) is missing or wrong")
  * )
  */
 function remove2fasecret(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
+    if (!twoFactorChangeConfirmed($request, $user)) {
+        return twoFactorConfirmationRequired($response);
+    }
     $user->remove2FAKey();
 
     return SlimUtils::renderJSON($response, []);
@@ -96,29 +186,23 @@ function remove2fasecret(Request $request, Response $response, array $args): Res
 /**
  * @OA\Get(
  *     path="/user/current/get2faqrcode",
- *     summary="Get the current user's 2FA QR code as a PNG image",
+ *     summary="Retired: the 2FA QR code is returned only by refresh2fasecret during enrollment",
  *     tags={"2FA"},
  *     security={{"ApiKeyAuth":{}}},
- *     @OA\Response(response=200, description="PNG image of the 2FA QR code",
- *         @OA\MediaType(mediaType="image/png")
- *     )
+ *     @OA\Response(response=404, description="Not enrolled: start enrollment with refresh2fasecret"),
+ *     @OA\Response(response=409, description="Already enrolled: the live secret is never shown again")
  * )
  */
 function get2faqrcode(Request $request, Response $response, array $args): Response
 {
     $user = AuthenticationManager::getCurrentUser();
-    $qrCode = LocalAuthentication::getTwoFactorQRCode(
-        $user->getUserName(),
-        $user->getDecryptedTwoFactorAuthSecret()
-    );
+    // The live secret is shown only while enrolling (refresh2fasecret), never
+    // again for a user who has already set up 2FA (#10200).
+    if ($user->is2FactorAuthEnabled()) {
+        return SlimUtils::renderErrorJSON($response, gettext('Two-factor authentication is already set up. Its secret is shown only during enrollment.'), [], 409);
+    }
 
-    $writer = new PngWriter();
-    $result = $writer->write($qrCode);
-
-    $response = $response->withHeader('Content-Type', 'image/png');
-    $response->getBody()->write($result->getString());
-
-    return $response;
+    return SlimUtils::renderErrorJSON($response, gettext('Start enrollment to get a QR code.'), [], 404);
 }
 
 /**
@@ -132,15 +216,22 @@ function get2faqrcode(Request $request, Response $response, array $args): Respon
  *     ),
  *     @OA\Response(response=200, description="Whether the enrollment code is valid",
  *         @OA\JsonContent(@OA\Property(property="IsEnrollmentCodeValid", type="boolean"))
- *     )
+ *     ),
+ *     @OA\Response(response=403, description="2FA is set up and the confirmation (password or authenticator code) is missing or wrong")
  * )
  */
 function test2FAEnrollmentCode(Request $request, Response $response, array $args): Response
 {
     $requestParsedBody = $request->getParsedBody();
     $user = AuthenticationManager::getCurrentUser();
-    $result = $user->confirmProvisional2FACode($requestParsedBody['enrollmentCode']);
+    // Replacing a live secret is a change to existing 2FA.
+    if (!twoFactorChangeConfirmed($request, $user)) {
+        return twoFactorConfirmationRequired($response);
+    }
+    $result = $user->confirmProvisional2FACode((string) ($requestParsedBody['enrollmentCode'] ?? ''));
     if ($result) {
+        // The wizard asks for recovery codes right after this.
+        rememberTwoFactorChangeConfirmed();
         LoggerUtils::getAuthLogger()->info('Completed 2FA enrollment for user: ' . $user->getUserName());
     } else {
         LoggerUtils::getAuthLogger()->warning('Unsuccessful 2FA enrollment for user: ' . $user->getUserName());

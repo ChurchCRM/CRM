@@ -83,7 +83,7 @@ export function alertAction(title: string, message: string, options: AlertOption
 export interface PromptOptions {
   message?: string;
   value?: string;
-  inputType?: "text" | "select" | "textarea" | "number";
+  inputType?: "text" | "select" | "textarea" | "number" | "password";
   inputOptions?: { text: string; value: string }[];
   confirmLabel?: string;
   cancelLabel?: string;

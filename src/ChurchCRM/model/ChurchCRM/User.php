@@ -998,8 +998,9 @@ class User extends BaseUser
 
     public function remove2FAKey(): void
     {
-        $this->setTwoFactorAuthSecret(null);
-        $this->save();
+        // Same as an administrator's Disable 2FA: clears the recovery codes
+        // too and keeps the bRequire2FA grace handling (#10200).
+        $this->disableTwoFactorAuthentication();
     }
 
     public function getDecryptedTwoFactorAuthSecret(): string
