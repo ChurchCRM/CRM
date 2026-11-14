@@ -177,6 +177,8 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                             <td class="text-center">
                                 <?php if ($user->is2FactorAuthEnabled()) { ?>
                                     <span class="badge rounded-pill bg-success text-white"><i class="fa-solid fa-circle-check me-1"></i><?= gettext('Enabled') ?></span>
+                                <?php } elseif ($user->getTwoFactorAuthRequired()) { ?>
+                                    <span class="badge rounded-pill bg-warning text-white" data-cy="two-factor-required-badge" title="<?= InputUtils::escapeAttribute(gettext('This user must set up 2FA')) ?>"><i class="fa-solid fa-triangle-exclamation me-1"></i><?= gettext('Required') ?></span>
                                 <?php } else { ?>
                                     <span class="badge rounded-pill bg-danger text-white"><i class="fa-solid fa-circle-xmark me-1"></i><?= gettext('Disabled') ?></span>
                                 <?php } ?>
@@ -215,6 +217,15 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                         <?php if ($user->getFailedLogins() > 0) { ?>
                                             <a class="dropdown-item js-reset-login-count" href="#" data-user_id="<?= (int) $user->getId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
                                                 <i class="fa-solid fa-eraser me-2"></i><?= gettext('Reset Failed Logins') ?>
+                                            </a>
+                                        <?php } ?>
+                                        <?php if ($user->getTwoFactorAuthRequired()) { ?>
+                                            <a class="dropdown-item js-set-2fa-required" href="#" data-user_id="<?= (int) $user->getId() ?>" data-required="false">
+                                                <i class="fa-solid fa-shield me-2"></i><?= gettext('Remove 2FA requirement') ?>
+                                            </a>
+                                        <?php } else { ?>
+                                            <a class="dropdown-item js-set-2fa-required" href="#" data-user_id="<?= (int) $user->getId() ?>" data-required="true">
+                                                <i class="fa-solid fa-shield-halved me-2"></i><?= gettext('Require 2FA') ?>
                                             </a>
                                         <?php } ?>
                                         <?php if ($user->is2FactorAuthEnabled()) { ?>
