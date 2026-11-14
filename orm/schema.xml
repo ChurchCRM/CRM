@@ -632,8 +632,8 @@
 
     <table name="email_log_eml" idMethod="native" phpName="EmailLog" description="One row per recipient for every email ChurchCRM sent through BaseEmail::send(): composer messages, birthday greetings, verification links, account emails, notifications. Links to the person/family the address belonged to at send time and to the user who sent a composer message. The rendered body is stored only for email classes that allow it (composer); account emails never store a body. Composer messages are queued here first (status queued) and sent by the email queue timer job.">
         <column name="eml_ID" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
-        <column name="eml_per_ID" phpName="PerId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
-        <column name="eml_fam_ID" phpName="FamId" type="SMALLINT" size="8" sqlType="mediumint(8) unsigned"/>
+        <column name="eml_per_ID" phpName="PerId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="eml_fam_ID" phpName="FamId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
         <column name="eml_usr_ID" phpName="UsrId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
         <column name="eml_Address" phpName="Address" type="VARCHAR" size="255" required="true"/>
         <column name="eml_Kind" phpName="Kind" type="VARCHAR" size="50" required="true"/>
@@ -661,10 +661,10 @@
         <index name="idx_eml_Batch">
             <index-column name="eml_Batch"/>
         </index>
-        <foreign-key foreignTable="person_per" phpName="Person">
+        <foreign-key foreignTable="person_per" phpName="Person" name="fk_eml_person" onDelete="cascade">
             <reference local="eml_per_ID" foreign="per_ID"/>
         </foreign-key>
-        <foreign-key foreignTable="family_fam" phpName="Family">
+        <foreign-key foreignTable="family_fam" phpName="Family" name="fk_eml_family" onDelete="cascade">
             <reference local="eml_fam_ID" foreign="fam_ID"/>
         </foreign-key>
         <foreign-key foreignTable="user_usr" phpName="SentByUser">

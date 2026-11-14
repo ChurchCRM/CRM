@@ -826,7 +826,6 @@ class Person extends BasePerson implements PhotoInterface
     public function preDelete(?ConnectionInterface $con = null): bool
     {
         PersonDeletionService::assertCanDelete($this, $con);
-        PersonDeletionService::cancelUnsentMail((int) $this->getId(), $con);
 
         EventQuery::create()
             ->filterByPrimaryContactPersonId($this->getId())

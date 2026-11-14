@@ -3,7 +3,6 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Exceptions\PersonDeletionBlockedException;
-use ChurchCRM\model\ChurchCRM\EmailLogQuery;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
 use ChurchCRM\model\ChurchCRM\MultibuyQuery;
@@ -16,7 +15,6 @@ use ChurchCRM\model\ChurchCRM\VolunteerNotificationQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerResponseQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSwapQuery;
 use ChurchCRM\model\ChurchCRM\WhyCameQuery;
-use ChurchCRM\Service\EmailLogService;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 
@@ -64,15 +62,6 @@ final class PersonDeletionService
             $categories[] = gettext('recorded activities');
         }
 
-        // A recipient row still queued with no delivery attempt is not
-        // history yet; deletion cancels it (cancelUnsentMail).
-        if (EmailLogQuery::create()->filterByUsrId($personId)->exists($connection)
-            || EmailLogQuery::create()->filterByPerId($personId)->filterByStatus(EmailLogService::STATUS_QUEUED, Criteria::NOT_EQUAL)->exists($connection)
-            || EmailLogQuery::create()->filterByPerId($personId)->filterByAttempts(0, Criteria::GREATER_THAN)->exists($connection)
-        ) {
-            $categories[] = gettext('communication history');
-        }
-
         if (VolunteerAssignmentQuery::create()->filterByPersonId($personId)->exists($connection)
             || VolunteerResponseQuery::create()->filterByPersonId($personId)->exists($connection)
             || VolunteerSwapQuery::create()
@@ -103,20 +92,6 @@ final class PersonDeletionService
         if (self::hasSubstantiveNotes(NoteQuery::create()->filterByFamId($familyId), $connection)) {
             throw new PersonDeletionBlockedException(gettext("This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."));
         }
-    }
-
-    /**
-     * Cancels the person's queued mail that no delivery attempt has touched.
-     * The status and attempt conditions make it skip a row the queue worker
-     * has just claimed.
-     */
-    public static function cancelUnsentMail(int $personId, ?ConnectionInterface $connection = null): void
-    {
-        EmailLogQuery::create()
-            ->filterByPerId($personId)
-            ->filterByStatus(EmailLogService::STATUS_QUEUED)
-            ->filterByAttempts(0)
-            ->delete($connection);
     }
 
     /**

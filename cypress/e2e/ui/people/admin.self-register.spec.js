@@ -54,8 +54,8 @@ describe("Self Registrations review page", () => {
 
     const row = (text) => cy.get("#selfRegistrations tbody tr", { timeout: 10000 }).contains("tr", text);
 
-    // Email log rows on these people count as communication history and block
-    // a plain DELETE (#10485); the cleanup helpers clear that history first.
+    // The cleanup helpers clear any history the guard would refuse (#10485)
+    // and check each record is gone.
     after(() => {
         cy.cleanupPeople(created.persons);
         cy.cleanupFamilies(created.families);
