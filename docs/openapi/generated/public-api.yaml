@@ -256,6 +256,8 @@ paths:
       responses:
         '204':
           description: 'Report logged successfully (no content)'
+        '429':
+          description: 'Too many reports from this address; nothing was logged'
   /api/public/data/countries:
     get:
       tags:
