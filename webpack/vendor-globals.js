@@ -16,7 +16,6 @@ import "./inputmask-global";
 import "inputmask/dist/jquery.inputmask";
 import "inputmask/dist/bindings/inputmask.binding.js";
 import "bootstrap-datepicker/dist/js/bootstrap-datepicker";
-import "daterangepicker";
 import "datatables.net-buttons-bs5";
 import "datatables.net-buttons/js/buttons.html5.mjs";
 import "datatables.net-buttons/js/buttons.print.mjs";
