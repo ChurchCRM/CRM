@@ -20,9 +20,9 @@ $isAdmin = AuthenticationManager::getCurrentUser()->isAdmin();
 $hasStatements = $overview['statements']['gifts'] > 0;
 
 $wording = [
-    'sTaxReport1' => gettext('Opening line'),
-    'sTaxReport2' => gettext('Thank-you line'),
-    'sTaxReport3' => gettext('Closing line'),
+    'sGivingStatementOpening' => gettext('Opening line'),
+    'sGivingStatementClosing' => gettext('Thank-you line'),
+    'sGivingStatementQuestions' => gettext('Closing line'),
     'sTaxSigner' => gettext('Signed by'),
 ];
 $panelSettings = array_map(

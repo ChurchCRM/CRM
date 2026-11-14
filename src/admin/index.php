@@ -51,6 +51,7 @@ require __DIR__ . '/routes/api/person-portal-access.php';
 require __DIR__ . '/routes/api/person-login-as-person.php';
 require __DIR__ . '/routes/api/system/church-logo.php';
 require __DIR__ . '/routes/api/system/letterhead.php';
+require __DIR__ . '/routes/api/system/tax-signature.php';
 require __DIR__ . '/routes/api/system/property-definitions.php';
 require __DIR__ . '/routes/api/system/property-types.php';
 require __DIR__ . '/routes/api/system/system-config.php';

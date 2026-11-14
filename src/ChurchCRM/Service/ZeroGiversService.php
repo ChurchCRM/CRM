@@ -116,7 +116,7 @@ class ZeroGiversService
         return [
             'letterhead' => $graphic !== null ? 'graphic' : ($letterhead === 'none' ? 'none' : 'address'),
             'letterhead_image' => $graphic,
-            'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . ($dateStart === $dateEnd ? $start : $start . ' – ' . $end) . ' ' . SystemConfig::getValue('sZeroGivers')),
+            'opening' => trim(SystemConfig::getValue('sGivingStatementOpening') . ' ' . ($dateStart === $dateEnd ? $start : $start . ' – ' . $end) . ' ' . SystemConfig::getValue('sZeroGivers')),
             'thanks' => SystemConfig::getValue('sZeroGivers2'),
             'questions' => SystemConfig::getValue('sZeroGivers3'),
             'sincerely' => SystemConfig::getValue('sConfirmSincerely'),

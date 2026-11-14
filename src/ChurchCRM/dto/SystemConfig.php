@@ -222,9 +222,10 @@ class   SystemConfig
             'sChurchPhone'                         => new ConfigItem('sChurchPhone', 'text', '', ''),
             'sChurchEmail'                         => new ConfigItem('sChurchEmail', 'text', '', ''),
             
-            'sTaxReport1'                          => new ConfigItem('sTaxReport1', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.'), '', '', false),
-            'sTaxReport2'                          => new ConfigItem('sTaxReport2', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.'), '', '', false),
-            'sTaxReport3'                          => new ConfigItem('sTaxReport3', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.'), '', '', false),
+            'sGivingStatementOpening'               => new ConfigItem('sGivingStatementOpening', 'text', 'This letter shows our record of your payments for', gettext('Verbage for top line of tax report. Dates will be appended to the end of this line.'), '', '', false),
+            'sGivingStatementClosing'               => new ConfigItem('sGivingStatementClosing', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.'), '', '', false),
+            'sGivingStatementQuestions'             => new ConfigItem('sGivingStatementQuestions', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.'), '', '', false),
+            'sCanadianTaxSignatureAsset'           => new ConfigItem('sCanadianTaxSignatureAsset', 'text', '', gettext('Private Canadian giving-statement signature asset identifier. Managed by signature upload.')),
             'sTaxSigner'                           => new ConfigItem('sTaxSigner', 'text', '', gettext('Tax Report signer')),
             'sReminder1'                           => new ConfigItem('sReminder1', 'text', 'This letter shows our record of your pledge and payments for fiscal year', gettext('Verbage for the pledge reminder report'), '', '', false),
             'sReminderSigner'                      => new ConfigItem('sReminderSigner', 'text', '', gettext('Pledge Reminder Signer')),
@@ -440,7 +441,9 @@ class   SystemConfig
             } elseif ($pruneUnknown) {
                 //there's a config item in the DB that doesn't exist in the current code.
                 //don't delete dynamic keys like plugin.* configs - they're managed by plugins
-                if (strpos($config->getName(), 'plugin.') !== 0) {
+                // Preserve the pre-rename wording snapshot for downgrades.
+                $downgradeKeys = ['sTaxReport1', 'sTaxReport2', 'sTaxReport3'];
+                if (strpos($config->getName(), 'plugin.') !== 0 && !in_array($config->getName(), $downgradeKeys, true)) {
                     $config->delete();
                 }
             }
@@ -606,8 +609,12 @@ class   SystemConfig
         return (int) self::$configs[$name]->getValue();
     }
 
-    public static function setValue(string $name, $value): void
+    public static function setValue(string $name, $value, bool $serverManaged = false): void
     {
+        if ($name === 'sCanadianTaxSignatureAsset' && !$serverManaged) {
+            throw new \InvalidArgumentException(gettext('Use signature upload or removal to change this setting.'));
+        }
+
         if (!isset(self::$configs[$name])) {
             // For dynamic config keys (like plugin.*), handle directly via database
             if (strpos($name, 'plugin.') === 0) {
