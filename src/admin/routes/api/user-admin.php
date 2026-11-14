@@ -86,6 +86,7 @@ $app->group('/api/user/{userId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->post('/disableTwoFactor', function (Request $request, Response $response, array $args): Response {
         $user = $request->getAttribute('user');
         $user->disableTwoFactorAuthentication();
+        $user->createTimeLineNote('2fa-disabled');
 
         return SlimUtils::renderSuccessJSON($response);
     });

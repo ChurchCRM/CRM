@@ -296,7 +296,6 @@ class UserService
             // Always write an explicit TRUE/FALSE bAddEvent row for the new user
             // so they never silently inherit the shared default (peronId=0) value.
             $this->saveAddEventPermission($personId, (bool) ($perms['addEvent'] ?? false));
-            $newUser->createTimeLineNote('created');
             $con->commit();
         } catch (\Throwable $e) {
             $con->rollBack();

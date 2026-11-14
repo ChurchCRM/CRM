@@ -283,6 +283,8 @@ class TimelineService
      * Timeline categories used by the view-level filter chips. Notes are
      * the high-signal user content; calendar events and automatic system
      * activity are noisier and hidden by default on long timelines.
+     * "account" is the login's lifecycle (created, deleted, password, 2FA,
+     * sign-in disabled or enabled) and its staff sign-ins.
      *
      * @var array<string, string>
      */
@@ -296,7 +298,8 @@ class TimelineService
         'verify'      => 'system',
         'verify-link' => 'system',
         'verify-URL'  => 'system',
-        'user'        => 'system',
+        'user'        => 'account',
+        'login'       => 'account',
         'delete-note' => 'system',
         'grade'       => 'system',
         'email'       => 'email',
@@ -353,7 +356,11 @@ class TimelineService
                 $item['color'] = 'info';
                 break;
             case 'user':
-                $item['style'] = 'fa-user-secret';
+                $item['style'] = 'fa-user-shield';
+                $item['color'] = 'secondary';
+                break;
+            case 'login':
+                $item['style'] = 'fa-right-to-bracket';
                 $item['color'] = 'secondary';
                 break;
             case 'delete-note':

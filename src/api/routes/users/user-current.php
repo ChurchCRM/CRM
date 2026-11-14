@@ -89,6 +89,7 @@ function remove2fasecret(Request $request, Response $response, array $args): Res
 {
     $user = AuthenticationManager::getCurrentUser();
     $user->remove2FAKey();
+    $user->createTimeLineNote('2fa-removed');
 
     return SlimUtils::renderJSON($response, []);
 }
@@ -142,6 +143,7 @@ function test2FAEnrollmentCode(Request $request, Response $response, array $args
     $result = $user->confirmProvisional2FACode($requestParsedBody['enrollmentCode']);
     if ($result) {
         LoggerUtils::getAuthLogger()->info('Completed 2FA enrollment for user: ' . $user->getUserName());
+        $user->createTimeLineNote('2fa-enrolled');
     } else {
         LoggerUtils::getAuthLogger()->warning('Unsuccessful 2FA enrollment for user: ' . $user->getUserName());
     }
