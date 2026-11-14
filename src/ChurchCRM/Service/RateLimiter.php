@@ -4,6 +4,7 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\model\ChurchCRM\RateLimit;
 use ChurchCRM\model\ChurchCRM\RateLimitQuery;
+use ChurchCRM\Utils\RequestUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Exception\PropelException;
 
@@ -91,14 +92,16 @@ final class RateLimiter
     }
 
     /**
-     * The address a throttle should count for the current request. IPv6 clients
-     * are counted by their /64, which one subscriber usually holds whole; an
-     * IPv4-mapped address (::ffff:a.b.c.d) counts as its IPv4 address, or every
-     * mapped client would share one /64.
+     * The address a throttle should count for the current request: the client
+     * address `RequestUtils::clientAddress()` resolves, so visitors behind a
+     * trusted reverse proxy are counted apart. IPv6 clients are counted by
+     * their /64, which one subscriber usually holds whole; an IPv4-mapped
+     * address (::ffff:a.b.c.d) counts as its IPv4 address, or every mapped
+     * client would share one /64.
      */
     public static function clientIpKey(): string
     {
-        $address = (string) ($_SERVER['REMOTE_ADDR'] ?? '');
+        $address = RequestUtils::clientAddress();
         if (filter_var($address, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6) === false) {
             return $address;
         }
