@@ -62,6 +62,8 @@ Before triaging or implementing an issue, read [`docs/contributing/issue-readine
 
 ## Session hygiene
 
+- PR reviews follow the token discipline in `.agents/skills/churchcrm/pr-review.md`: one fresh session per PR, explicit model routing for subagents, delta re-reviews keyed to the recorded head SHA — never a full re-read by default, and never poll CI with an agent loop
+
 - Confirm `git branch --show-current` before committing docs
 - Do not land cross-cutting skill edits on an unrelated feature branch
 - After a push that fixes review comments, resolve every thread it fixed before you report done: check each against the pushed code, reply with the SHA when unclear, leave unfixed threads open (`git-workflow.md`)

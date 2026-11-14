@@ -11,10 +11,8 @@ use Throwable;
  * The one way portal code asks who it is serving: the principal, its person,
  * and the staff account behind it when there is one.
  *
- * `PortalSessionMiddleware` fills this in on every portal request. The pages
- * outside `/portal` that wear the portal layout (the forced password change and
- * two-factor enrolment under `/v2/user/current/`) are reached only with a staff
- * session, so there the staff account's own person is used.
+ * `PortalSessionMiddleware` fills this in on every portal request. Outside
+ * `/portal` it falls back to the signed-in staff account and its own person.
  */
 final class PortalContext
 {

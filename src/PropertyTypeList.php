@@ -72,7 +72,7 @@ require_once __DIR__ . '/Include/Header.php';
                         </a>
                     </div>
                 </div>
-                <a href="PropertyTypeEditor.php" class="btn btn-primary btn-sm">
+                <a href="<?= SystemURLs::getRootPath() ?>/admin/property-types/new" class="btn btn-primary btn-sm">
                     <i class="fa-solid fa-plus me-1"></i><?= gettext('Add New') ?>
                 </a>
             </div>
@@ -133,7 +133,7 @@ require_once __DIR__ . '/Include/Header.php';
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="PropertyTypeEditor.php?PropertyTypeID=<?= $prt_ID ?>">
+                                <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/admin/property-types/<?= (int) $prt_ID ?>/edit">
                                     <i class="fa-solid fa-pencil me-2"></i><?= gettext('Edit') ?>
                                 </a>
                                 <div class="dropdown-divider"></div>
@@ -153,7 +153,7 @@ require_once __DIR__ . '/Include/Header.php';
                         <i class="fa-solid fa-inbox fa-3x mb-3 d-block"></i>
                         <?= gettext('No property types found') ?>
                         <br>
-                        <a href="PropertyTypeEditor.php" class="btn btn-primary btn-sm mt-2">
+                        <a href="<?= SystemURLs::getRootPath() ?>/admin/property-types/new" class="btn btn-primary btn-sm mt-2">
                             <i class="fa-solid fa-plus me-1"></i><?= gettext('Add Your First Property Type') ?>
                         </a>
                     </td>
