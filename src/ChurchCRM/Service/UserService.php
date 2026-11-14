@@ -110,6 +110,41 @@ class UserService
     }
 
     /**
+     * True when deleting this administrator's login would leave no
+     * administrator, or none who can sign in. Shared by Delete User and by
+     * deleting a person who has a login.
+     */
+    public function isLastAdmin(int $personId): bool
+    {
+        $target = UserQuery::create()->findPk($personId);
+        if ($target === null || !$target->isAdmin()) {
+            return false;
+        }
+
+        $otherAdmins = UserQuery::create()
+            ->filterByAdmin(true)
+            ->filterByPersonId($personId, Criteria::NOT_EQUAL)
+            ->count();
+
+        return $otherAdmins === 0 || $this->isLastSignInCapableAdmin($personId);
+    }
+
+    /**
+     * Why an administrator may not delete this login, or null when allowed.
+     */
+    public function getUserDeletionBlockedReason(User $target, ?User $actor): ?string
+    {
+        if ($actor !== null && (int) $actor->getId() === (int) $target->getId()) {
+            return gettext('You cannot delete your own account.');
+        }
+        if ($this->isLastAdmin((int) $target->getPersonId())) {
+            return gettext('The last administrator cannot be deleted.');
+        }
+
+        return null;
+    }
+
+    /**
      * Users whose account is locked right now
      * @return User[]
      */
