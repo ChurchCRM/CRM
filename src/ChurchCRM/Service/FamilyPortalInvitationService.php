@@ -44,15 +44,18 @@ final class FamilyPortalInvitationService
     /**
      * What staff are told when `recipientsFor()` found nobody to invite.
      *
-     * @param array{signInOff: bool} $recipients
+     * @param array{signInOff: bool, cannotSignIn: list<array{name: string, reason: string}>} $recipients
      */
     public function nobodyCanSignInMessage(Family $family, array $recipients): string
     {
-        return sprintf(
-            $recipients['signInOff']
-                ? gettext('Member sign-in is off, so nobody in the %s family can sign in to the member portal.')
-                : gettext('Nobody in the %s family can sign in to the member portal under the current sign-in rule.'),
-            $family->getName(),
-        );
+        if ($recipients['signInOff']) {
+            $message = gettext('Member sign-in is off, so nobody in the %s family can sign in to the member portal. An administrator can turn it on under Admin → Member Portal.');
+        } elseif ($recipients['cannotSignIn'] === []) {
+            $message = gettext('The %s family has no living members to invite to the member portal.');
+        } else {
+            $message = gettext('Nobody in the %s family can sign in to the member portal under the current sign-in rule.');
+        }
+
+        return sprintf($message, $family->getName());
     }
 }

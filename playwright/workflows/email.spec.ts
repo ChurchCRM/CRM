@@ -3,7 +3,7 @@ import { type APIRequestContext, expect, type Locator, type Page, request, test 
 import { captureScreen, defineCapture } from '../support/capture';
 import { BASE_URL } from '../support/env';
 import { humanClick, humanPause, settle } from '../support/human';
-import { findDemoPerson } from '../support/member-sign-in';
+import { findDemoPerson, useMemberSignIn } from '../support/member-sign-in';
 
 const ANDREW_EMAIL = 'andrew.baker@demo.churchcrm.io';
 
@@ -308,11 +308,13 @@ async function openEmailHistoryPage(page: Page): Promise<void> {
 
 test.describe('Email history', () => {
   let restoreMail: (() => Promise<void>) | undefined;
+  let restoreSignIn: (() => Promise<void>) | undefined;
 
   // Andrew gets three composer messages and a family verification email. The
   // verification email is one ChurchCRM writes itself, so its content is not stored.
   test.beforeAll(async ({ request }) => {
     restoreMail = await enableOutgoingMail(request);
+    restoreSignIn = await useMemberSignIn(request);
     const andrew = await findDemoPerson(request, ANDREW_EMAIL);
     expect((await request.post(`/api/family/${andrew.familyId}/verify`)).ok(), 'family verification email').toBeTruthy();
     await sendComposerEmail(
@@ -336,6 +338,7 @@ test.describe('Email history', () => {
   });
 
   test.afterAll(async () => {
+    await restoreSignIn?.();
     await restoreMail?.();
   });
 

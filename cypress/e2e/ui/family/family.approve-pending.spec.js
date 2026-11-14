@@ -123,7 +123,7 @@ describe("Approving a pending self-registration from the family page", () => {
                 expect(body.cannotSignIn.members).to.have.length(0);
                 expect(body.cannotSignIn.message).to.include("Member sign-in is off");
             });
-            cy.get(".bootbox").should("contain", "Member sign-in is off");
+            cy.get(".bootbox").should("contain", "Member sign-in is off").and("contain", "Admin → Member Portal");
             expectNoMailTo(address);
         });
         setConfig("bMemberSignIn", "1");

@@ -344,15 +344,7 @@ function initializeFamilyView() {
         window.location.reload();
         return;
       }
-      const escapeHtml = window.CRM.escapeHtml;
-      const members = data.cannotSignIn.members
-        .map((member) => `<li>${escapeHtml(member.name)}: ${escapeHtml(member.reason)}</li>`)
-        .join("");
-      window.CRM.alertAction(
-        i18next.t("Family approved, but no invitation was sent"),
-        `<p>${escapeHtml(data.cannotSignIn.message)}</p>${members ? `<ul class="mb-0">${members}</ul>` : ""}`,
-        { onClose: () => window.location.reload() },
-      );
+      window.CRM.showNoInvitationNotice(data.cannotSignIn, () => window.location.reload());
     });
   });
 

@@ -197,9 +197,10 @@ describe("Self Registrations review page", () => {
                 row(name).find('[data-bs-toggle="dropdown"]').click();
                 cy.get(".dropdown-menu.show .approve-review").click();
                 cy.wait("@approveFamily").its("response.body.invited").should("eq", false);
-                cy.get('#crm-toasts .toast[data-type="warning"]')
-                    .should("contain", "No invitation was sent")
-                    .and("contain", "Member sign-in is off");
+                cy.get(".bootbox")
+                    .should("contain", "no invitation was sent")
+                    .and("contain", "Member sign-in is off")
+                    .and("contain", "Admin → Member Portal");
                 cy.get("#selfRegistrations tbody").should("not.contain", name);
             });
             cy.then(() => cy.restoreSystemConfig("bMemberSignIn", savedMemberSignIn));

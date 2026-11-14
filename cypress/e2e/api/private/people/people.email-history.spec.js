@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { restoreSettings, useMemberSignIn } from "../../../../support/member-sign-in";
+
 /**
  * Email history (#9877): every email BaseEmail::send() hands to PHPMailer is logged
  * per recipient in email_log_eml and readable through GET /api/email/log.
@@ -11,6 +13,16 @@
 const adminGet = (url, status = 200) => cy.makePrivateAdminAPICall("GET", url, null, status);
 
 describe("API GET /api/email/log", () => {
+    const savedSignIn = {};
+
+    before(() => {
+        useMemberSignIn(savedSignIn);
+    });
+
+    after(() => {
+        restoreSettings(savedSignIn);
+    });
+
     it("pages a person's history newest first with the API row shape", () => {
         adminGet("/api/email/log?personId=2&limit=5").then((resp) => {
             const { rows, total, page, limit, pages } = resp.body;
