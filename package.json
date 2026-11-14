@@ -113,7 +113,6 @@
         "datatables.net-responsive-bs5": "^4.1.1",
         "datatables.net-select": "^4.1.1",
         "datatables.net-select-bs5": "^4.1.1",
-        "daterangepicker": "^3.1.0",
         "dompurify": "^3.4.17",
         "fullcalendar": "^7.1.4",
         "heic2any": "^0.0.4",
