@@ -803,7 +803,7 @@
         <column name="setting_name" phpName="Name" type="VARCHAR" size="50" primaryKey="true" required="true"/>
         <column name="setting_value" phpName="Value" type="VARCHAR" size="50" />
 
-        <foreign-key foreignTable="user_usr">
+        <foreign-key foreignTable="user_usr" name="fk_user_settings_user" onDelete="cascade">
             <reference local="user_id" foreign="usr_per_ID"/>
         </foreign-key>
 
