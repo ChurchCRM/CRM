@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Tanggal pernikahan tidak valid"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Alamat surat elektronik tidak valid"
-
-#: 
 msgid "Family Info"
 msgstr "Informasi keluarga"
 
@@ -889,11 +885,6 @@ msgstr "Anda akan menghapus foto profil, prosedur ini tidak dapat dibatalkan"
 #: 
 msgid "Do you want to proceed?"
 msgstr "Apakah anda mau melanjutkan?"
-
-#: 
-#, fuzzy
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Anda akan mengirimkan informasi keluarga ini melalui email berikut"
 
 #: 
 msgid "Financial Reports"
@@ -1451,10 +1442,6 @@ msgid "Not a valid Membership Date"
 msgstr "Bukan Tanggal Keanggotaan yang valid"
 
 #: 
-msgid "Work Email is Not Valid"
-msgstr "Email Kantor Tidak Valid"
-
-#: 
 msgid "Birth Month"
 msgstr "Bulan kelahiran"
 
@@ -1830,10 +1817,6 @@ msgstr "Nomor telepon"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Daftar Drop-Down Kustom"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF berhasil diemail ke anggota keluarga."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3882,10 +3865,6 @@ msgid "Please verify your family's information"
 msgstr "Harap verifikasi informasi keluarga Anda"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Tidak dapat memuat info verifikasi"
-
-#: 
 msgid "No Changes"
 msgstr "Tidak ada perubahan"
 
@@ -3898,24 +3877,8 @@ msgid "Oops! Page not found."
 msgstr "Ups! Halaman tidak ditemukan."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Silakan masukkan yang berikut untuk memulai verifikasi keluarga Anda"
-
-#: 
-msgid "Family Verification"
-msgstr "Verifikasi Keluarga"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Minta Verifikasi Info Keluarga"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Pilih bagaimana Anda ingin meminta informasi keluarga untuk diverifikasi"
-
-#: 
-msgid "Online Verification"
-msgstr "Verifikasi Daring"
 
 #: 
 msgid "Verified In Person"
@@ -4097,10 +4060,6 @@ msgstr "Properti berhasil dibatalkan penetapannya."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Properti tidak dapat dibatalkan penetapannya."
-
-#: 
-msgid "Select event"
-msgstr "Pilih acara"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4308,10 +4267,6 @@ msgid "Kiosk Manager"
 msgstr "Manajer Kios"
 
 #: 
-msgid "Report an issue"
-msgstr "Laporkan masalah"
-
-#: 
 msgid "Self Verification"
 msgstr "Verifikasi Mandiri"
 
@@ -4340,10 +4295,6 @@ msgstr "Arab - Mesir"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Verifikasi Mandiri Tertunda"
 
 #: 
 msgid "Self Verify"
@@ -4726,16 +4677,8 @@ msgid "User must have Delete Records permission"
 msgstr "Pengguna harus memiliki izin Hapus Catatan"
 
 #: 
-msgid "invalid event type id"
-msgstr "id jenis acara tidak valid"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "Pinning kalender tidak valid"
-
-#: 
-msgid "invalid status value"
-msgstr "nilai status tidak valid"
 
 #: 
 msgid "invalid export value"
@@ -5339,10 +5282,6 @@ msgstr "Menerapkan Pembaruan Sistem..."
 #: 
 msgid "Back to Login"
 msgstr "Kembali ke Login"
-
-#: 
-msgid "Back to login"
-msgstr "Kembali ke login"
 
 #: 
 msgid "Complete"
@@ -6576,10 +6515,6 @@ msgid "Additional Information"
 msgstr "Informasi Tambahan"
 
 #: 
-msgid "All information is correct"
-msgstr "Semua informasi sudah benar"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Tugaskan Pelayanan"
 
@@ -6592,20 +6527,12 @@ msgid "Choose opportunities..."
 msgstr "Pilih bidang pelayanan..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Konfirmasi Informasi Keluarga"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kontak & Info Pribadi"
 
 #: 
 msgid "Edited"
 msgstr "Telah Diubah"
-
-#: 
-msgid "Email PDF"
-msgstr "Kirim PDF via Email"
 
 #: 
 msgid "Newsletter"
@@ -6616,40 +6543,12 @@ msgid "Personal"
 msgstr "Pribadi"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Mohon perbarui catatan kami jika ada koreksi"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Berikan koreksi atau info tambahan di sini..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Pilih Bidang Pelayanan"
 
 #: 
-msgid "Submit Verification"
-msgstr "Kirim Verifikasi"
-
-#: 
-msgid "Thank You!"
-msgstr "Terima Kasih!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Kunjungi Website Kami"
-
-#: 
 msgid "Volunteer"
 msgstr "Relawan/Pelayan"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Terjadi kesalahan. Silakan coba lagi atau hubungi kami."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Permintaan verifikasi telah diterima. Terima kasih telah memperbarui data Anda."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8105,10 +8004,6 @@ msgid "City is required."
 msgstr "Kota wajib diisi."
 
 #: 
-msgid "Clear filter"
-msgstr "Hapus filter"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Item konfigurasi tidak ditemukan"
 
@@ -8376,10 +8271,6 @@ msgstr "Tambah Orang"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Tambah semua item daftar ke grup"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Tambah semua ke Daftar"
 
 #: 
 msgid "Add cart items to a family"
@@ -8886,10 +8777,6 @@ msgid "Family Profile"
 msgstr "Profil Keluarga"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Peran keluarga (Kepala Keluarga, Pasangan, Anak, dll.) membantu mengatur catatan Anda."
-
-#: 
 msgid "Family vs Person"
 msgstr "Keluarga vs Individu"
 
@@ -9388,10 +9275,6 @@ msgid "Record why attendees visited your church"
 msgstr "Catat mengapa peserta mengunjungi gereja Anda"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Hapus semua dari Daftar"
-
-#: 
 msgid "Remove from Class"
 msgstr "Hapus dari Kelas"
 
@@ -9862,10 +9745,6 @@ msgstr "Acara Tahun Ini"
 #: 
 msgid "Everyone"
 msgstr "Semua Orang"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Gagal menghapus catatan"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11764,10 +11643,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Awal rentang harus berupa tanggal YYYY-MM-DD yang valid."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Awal rentang harus sebelum akhir rentang"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Awal rentang harus sebelum akhir rentang."
 
@@ -11988,10 +11863,6 @@ msgid "Cannot move property in that direction"
 msgstr "Tidak dapat memindahkan properti ke arah tersebut"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Konfirmasi Informasi Keluarga"
-
-#: 
 msgid "Delete failed"
 msgstr "Penghapusan gagal"
 
@@ -12032,20 +11903,12 @@ msgid "Invalid target family"
 msgstr "Keluarga target tidak valid"
 
 #: 
-msgid "Log Out"
-msgstr "Keluar"
-
-#: 
 msgid "Membership not found"
 msgstr "Keanggotaan tidak ditemukan"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Kata sandi berhasil diubah untuk"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Silakan tinjau informasi keluarga Anda di bawah ini dan konfirmasi atau minta perubahan."
 
 #: 
 msgid "Please select a target family."
@@ -12728,10 +12591,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Gagal menginstal plugin dari URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Gagal memuat daftar plugin yang disetujui"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Gagal memuat daftar plugin yang disetujui."
 
@@ -12790,10 +12649,6 @@ msgstr "Kebab-case. Harus sesuai dengan nama direktori tingkat atas di dalam zip
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Memuat daftar plugin yang disetujui…"
-
-#: 
-msgid "Loading…"
-msgstr "Memuat…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13241,12 +13096,8 @@ msgid "Change Your Locale"
 msgstr "Ubah Lokal Anda"
 
 #: 
-msgid "Change role"
-msgstr "Ubah peran"
-
-#: 
 msgid "Check Number"
-msgstr "Periksa Nomor"
+msgstr "Nomor Cek"
 
 #: 
 msgid "Check out"
@@ -13259,10 +13110,6 @@ msgstr "Absen masuk gagal. Silakan coba lagi."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Absen keluar gagal. Silakan coba lagi."
-
-#: 
-msgid "City is required"
-msgstr "Kota wajib diisi"
 
 #: 
 msgid "Click Save to apply."
@@ -13331,10 +13178,6 @@ msgstr "Salin Semua Nomor"
 #: 
 msgid "Copy Members to Group"
 msgstr "Salin Anggota ke Grup"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Membuat Cadangan..."
 
 #: 
 msgid "Creating..."
@@ -13519,10 +13362,6 @@ msgstr "Gagal menambahkan ke keranjang"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Gagal membatalkan pendaftaran. Silakan coba lagi."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Gagal menyalin URL"
 
 #: 
 msgid "Failed to create backup."
@@ -13913,10 +13752,6 @@ msgid "One-Time Code"
 msgstr "Kode Sekali Pakai"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Buka di Tab Baru"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Buka aplikasi autentikator Anda dan pindai kode QR ini"
 
@@ -14193,10 +14028,6 @@ msgid "Setup Complete"
 msgstr "Pengaturan Selesai"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Bagikan URL ini agar anggota keluarga bisa memverifikasi data mereka"
-
-#: 
 msgid "Show more options"
 msgstr "Tampilkan lebih banyak opsi"
 
@@ -14349,10 +14180,6 @@ msgid "Validation pending"
 msgstr "Menunggu validasi"
 
 #: 
-msgid "Verification URL"
-msgstr "URL verifikasi"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Verifikasi gagal. Silakan coba lagi."
 
@@ -14417,10 +14244,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Anda akan menerima kode cadangan yang dapat digunakan jika kehilangan akses ke aplikasi Anda"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Keranjang Anda kosong"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Akun Anda kini terlindungi"
 
@@ -14439,10 +14262,6 @@ msgstr "Preferensi bahasa peramban Anda berbeda dari lokal ChurchCRM Anda"
 #: 
 msgid "Your database already contains data"
 msgstr "Basis data Anda sudah berisi data"
-
-#: 
-msgid "Zip code is required"
-msgstr "Kode pos wajib diisi"
 
 #: 
 msgid "added"
@@ -14862,10 +14681,6 @@ msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk keluarga ini."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Anda tidak memiliki izin untuk menambahkan catatan untuk anggota ini."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Anda tidak memiliki izin untuk mengedit catatan ini"
 
 #: 
 msgid "Account locked"
@@ -15686,10 +15501,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Harap konfirmasi penghapusan rekaman keluarga ini"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Harap konfirmasi informasi keluarga Anda"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Pilih keluarga lain untuk dikaitkan dengan persembahan ini"
 
@@ -15910,10 +15721,6 @@ msgid "Select a person"
 msgstr "Pilih seseorang"
 
 #: 
-msgid "Select role"
-msgstr "Pilih peran"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Pilih jenis (opsional)"
 
@@ -16070,10 +15877,6 @@ msgid "At least one fund allocation is required"
 msgstr "Diperlukan setidaknya satu alokasi dana"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Setidaknya satu dana harus memiliki jumlah yang tidak nol"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "Secara otomatis kirim email ucapan ulang tahun kepada jemaat pada hari ulang tahun mereka"
 
@@ -16150,18 +15953,6 @@ msgid "Editing a Pledge"
 msgstr "Mengedit Janji Persembahan"
 
 #: 
-msgid "Enable (full)"
-msgstr "Aktifkan (penuh)"
-
-#: 
-msgid "Errors only"
-msgstr "Hanya kesalahan"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Kesalahan — kesalahan server dan pengecualian JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Gagal membuat janji persembahan"
 
@@ -16200,10 +15991,6 @@ msgstr "Kunci kelompok wajib diisi"
 #: 
 msgid "Happy Birthday"
 msgstr "Selamat Ulang Tahun"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Bantu tingkatkan ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16274,16 +16061,8 @@ msgid "None (disabled)"
 msgstr "Tidak ada (dinonaktifkan)"
 
 #: 
-msgid "OS family"
-msgstr "Keluarga OS"
-
-#: 
 msgid "Overpaid"
 msgstr "Kelebihan Bayar"
-
-#: 
-msgid "PHP version"
-msgstr "Versi PHP"
 
 #: 
 msgid "Page route"
@@ -16320,10 +16099,6 @@ msgstr "Grup janji persembahan tidak ditemukan"
 #: 
 msgid "Pledges & Payments"
 msgstr "Janji Persembahan & Pembayaran"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Prioritaskan terjemahan"
 
 #: 
 msgid "Purpose"
@@ -16388,10 +16163,6 @@ msgstr "Nama pengguna, email, atau peran"
 #: 
 msgid "View pledge or payment details"
 msgstr "Lihat detail janji persembahan atau pembayaran"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Peringatan — peringatan, kesalahan, dan pengecualian JS"
 
 #: 
 msgid "What is sent"
@@ -16585,11 +16356,6 @@ msgstr "Tidak ditemukan pembayaran untuk setoran yang dipilih"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Tidak ada ID setoran yang valid yang diberikan"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF berhasil dikirim melalui email ke %d keluarga."
 
 #: 
 msgid "Partial Send"
@@ -17129,10 +16895,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Membuat dan mengunggah cadangan. Ini mungkin memerlukan beberapa menit..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Reset database gagal."
-
-#: 
 msgid "Deceased"
 msgstr "Meninggal Dunia"
 
@@ -17329,10 +17091,6 @@ msgid "Log settings saved"
 msgstr "Pengaturan log disimpan"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Nama Login Wajib Diisi"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Menandai Orang ini sebagai Aktif"
 
@@ -17457,10 +17215,6 @@ msgid "Sending..."
 msgstr "Mengirim..."
 
 #: 
-msgid "Sending…"
-msgstr "Mengirim…"
-
-#: 
 msgid "Settings reset"
 msgstr "Pengaturan direset"
 
@@ -17529,16 +17283,8 @@ msgid "Upcoming"
 msgstr "Akan Datang"
 
 #: 
-msgid "Valid Until"
-msgstr "Berlaku Hingga"
-
-#: 
 msgid "View active only"
 msgstr "Lihat yang aktif saja"
-
-#: 
-msgid "View all"
-msgstr "Lihat semua"
 
 #: 
 msgid "View all (including inactive)"
@@ -18317,10 +18063,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Tahun fiskal Anda dimulai pada %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Terjadi kesalahan"
-
-#: 
 msgid "Approve"
 msgstr "Setujui"
 
@@ -18490,11 +18232,6 @@ msgstr "%1$s: Maksimum adalah %2$d tetapi %3$d relawan bawaan dipilih. Hapus sat
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d hari"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d default dilewati karena alasan lain (kejadian berakhir, dibatalkan atau penuh)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18751,10 +18488,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Tema adalah folder yang diunggah gereja Anda ke Include/themes/ di server. Bawaan sistem disertakan dengan ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Pengaturan transisi. Halaman Peluang Relawan lama dan halaman Pelayanan baru sama-sama tersedia, dan data orang menampilkan kedua tab Relawan dengan label yang jelas. Gunakan saat memindahkan gereja dari V1 ke V2, lalu beralih ke V2 saja."
-
-#: 
 msgid "A volunteer"
 msgstr "Seorang relawan"
 
@@ -18959,10 +18692,6 @@ msgid "Assigned outside the current plan"
 msgstr "Ditugaskan di luar rencana saat ini"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Penugasan dibatalkan"
-
-#: 
 msgid "Assignment not found"
 msgstr "Penugasan tidak ditemukan"
 
@@ -19069,10 +18798,6 @@ msgstr "Batalkan penugasan"
 #: 
 msgid "Cancel this assignment"
 msgstr "Batalkan penugasan ini"
-
-#: 
-msgid "Cancelled"
-msgstr "Dibatalkan"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19229,10 +18954,6 @@ msgstr "Situs web gereja"
 #: 
 msgid "Close event details"
 msgstr "Tutup detail acara"
-
-#: 
-msgid "Colour"
-msgstr "Warna"
 
 #: 
 msgid "Completed"
@@ -19479,10 +19200,6 @@ msgid "Each staffing need must name a position"
 msgstr "Setiap kebutuhan staf harus menyebutkan sebuah posisi"
 
 #: 
-msgid "Edit event"
-msgstr "Ubah Kegiatan"
-
-#: 
 msgid "Edit ministry"
 msgstr "Ubah pelayanan"
 
@@ -19567,10 +19284,6 @@ msgstr "Email dikirim ke {{count}} penerima."
 #: 
 msgid "Emails"
 msgstr "Email"
-
-#: 
-msgid "End time"
-msgstr "Waktu Selesai"
 
 #: 
 msgid "Enter counts"
@@ -20849,10 +20562,6 @@ msgid "SMTP test"
 msgstr "Uji SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Simpan perubahan"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Disimpan — pelayanan ini tidak lagi meminta bantuan"
 
@@ -21135,10 +20844,6 @@ msgstr "Kebutuhan petugas disimpan"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Mulailah dengan membuat pelayanan, lalu tambahkan tim dan posisi yang melayani di dalamnya."
-
-#: 
-msgid "Start time"
-msgstr "Waktu mulai"
 
 #: 
 msgid "Start typing a name"
@@ -21487,10 +21192,6 @@ msgstr "Alamat sudah dipilih — salin dengan papan ketik Anda."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Jalur aset \"%s\" tidak diizinkan."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "Penugasan tidak dapat dibatalkan"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22015,10 +21716,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Kejadian ini sudah berlalu dan penugasannya tidak dapat diubah lagi"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Kejadian ini dibatalkan"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Kejadian ini memiliki kebutuhan petugas sendiri, terpisah dari jadwalnya."
 
@@ -22187,16 +21884,8 @@ msgid "Validation"
 msgstr "Validasi"
 
 #: 
-msgid "View event"
-msgstr "Lihat Acara"
-
-#: 
 msgid "View my schedule"
 msgstr "Lihat jadwal saya"
-
-#: 
-msgid "View person"
-msgstr "Lihat Anggota"
 
 #: 
 msgid "View the event"
@@ -22245,10 +21934,6 @@ msgstr "Waktu relawan"
 #: 
 msgid "Volunteering"
 msgstr "Pelayanan relawan"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Pelayanan relawan yang diatur sebagaimana gereja menjalankannya. Setiap pelayanan memiliki tim dan posisi; orang dikualifikasi untuk posisi dan menjadi bagian dari grup kelompok pelayanan; jadwal mengikuti acara di kalender dan menghasilkan kejadian bertanggal dengan kebutuhan petugas; koordinator menugaskan orang, yang menerima, menolak, atau mengusulkan pengganti; pengingat dan peringatan dikirim lewat email. Administrator dan pengguna dengan izin Kelola Pelayanan melihat setiap pelayanan dan dapat membuat, menonaktifkan, dan menghapusnya. Koordinator pelayanan diberi izin Kelola Pelayanan Saya: judul Pelayanan di bilah samping lalu hanya menampilkan pelayanan yang ia koordinasikan. Pemimpin tim menjalankan timnya dari Portal Jemaat. Jemaat menggunakan Portal Jemaat untuk melihat jadwal, menanggapi, mendaftar, dan menawarkan bantuan."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22785,10 +22470,6 @@ msgid "Cancel this occurrence"
 msgstr "Batalkan kejadian ini"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Pembatalan tidak memberitahu siapa pun: tidak ada email yang dikirim. Penugasan disimpan, tidak ada pengingat yang dijadwalkan saat dibatalkan, dan tidak ada yang dapat ditugaskan sampai dipulihkan."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Acara yang dihapus meninggalkan setiap kalender, dengan check-in dan hitungan kepalanya, dan penempatan staf pelayanan ini hanya menyimpan tanggalnya. Ini tidak dapat dibatalkan."
 
@@ -22799,10 +22480,6 @@ msgstr "Acara dihapus: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Acara yang akan dihapus: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Kejadian dibatalkan"
 
 #: 
 msgid "Occurrence restored"
@@ -22819,10 +22496,6 @@ msgstr "Pulihkan kejadian"
 #: 
 msgid "Restore this occurrence"
 msgstr "Pulihkan kejadian ini"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Kejadian tidak dapat dibatalkan"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -22877,10 +22550,6 @@ msgid "Invalid birth date"
 msgstr "Tanggal kelahiran tidak valid"
 
 #: 
-msgid "Invalid email address"
-msgstr "Alamat email tidak valid"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Pengaturan Kiosk"
 
@@ -22907,12 +22576,6 @@ msgstr "Terdaftar sebagai tamu yang datang di kiosk selama acara: %s"
 #: 
 msgid "Registering..."
 msgstr "Sedang mendaftar..."
-
-#: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Memerlukan nomor cek saat merekam pembayaran cek pada entri penyetoran.\n"
-"Catatan: menonaktifkan ini juga menonaktifkan deteksi nomor cek duplikat — cek fisik yang sama dapat dimasukkan lebih dari sekali."
 
 #: 
 msgid "This event has ended"
@@ -23551,10 +23214,6 @@ msgstr "Pilih seberapa jauh ke depan jadwal diisi dan kapan pengingat dikirim, s
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Pilih seseorang yang sudah ada di direktori gereja. Orang itu bergabung dengan relawan pelayanan ini dan koordinatornya menerima surel. Hanya koordinator yang dapat mengeluarkan seseorang."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM memiliki dua cara mengelola relawan. Hanya satu yang dimaksudkan untuk dipakai pada satu waktu; pengaturan pengalaman Relawan menentukan mana yang dilihat gereja ini. Beralih menyembunyikan atau menampilkan halaman dan entri menu — tidak pernah menghapus data, jadi Anda dapat kembali."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -24837,28 +24496,12 @@ msgid "Closing Line"
 msgstr "Baris Penutup"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Mengatur telemetri opsional. Kegagalan pemasangan dan peningkatan basis data mengirim diagnostik terbatas ke PostHog meskipun telemetri dimatikan. Laporan kegagalan ini mencakup versi perangkat lunak dan lingkungan serta kesalahan basis data yang telah disanitasi, tetapi tidak ada ID pemasangan atau pernyataan SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Diagnosis pemasangan dan peningkatan basis data yang gagal"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Detail kegagalan pemasangan dan peningkatan"
-
-#: 
 msgid "Open in browser window"
 msgstr "Buka di jendela peramban"
 
 #: 
 msgid "Opening Line"
 msgstr "Baris Pembuka"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Telemetri penggunaan opsional hanya dikirim jika diaktifkan. Kegagalan pemasangan dan peningkatan basis data selalu mengirim diagnostik terbatas untuk membantu komunitas, meskipun Anda memilih Tidak, terima kasih. Laporan kegagalan mencakup versi perangkat lunak dan lingkungan serta kesalahan basis data yang telah disanitasi, tanpa ID pemasangan atau pernyataan SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24895,18 +24538,6 @@ msgstr "Redaksi Laporan"
 #: 
 msgid "Tax Information"
 msgstr "Informasi Pajak"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetri dikirim ke PostHog di Amerika Serikat. Laporan kegagalan pemasangan dan peningkatan tetap dikirim meskipun telemetri opsional dinonaktifkan."
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Tanggal ini dibatalkan. Tidak ada lagi yang perlu Anda lakukan."
-
-#: 
-msgid "always sent"
-msgstr "selalu dikirim"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25371,10 +25002,6 @@ msgstr "Surel perlu perhatian"
 #: 
 msgid "Email problem"
 msgstr "Masalah surel"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Kode dan tautan masuk yang dikirim surel dibatalkan"
 
 #: 
 msgid "Emailed verification link"
@@ -25969,10 +25596,6 @@ msgid "Only people with their own email can be added."
 msgstr "Hanya orang dengan surel sendiri yang dapat ditambahkan."
 
 #: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Telemetri opsional dapat mencakup rute halaman, lokal yang aktif, versi CRM, versi PHP, keluarga OS, negara dari pengaturan informasi gereja Anda, dan ID pemasangan acak. Laporan kegagalan tidak mencakup ID pemasangan. Data dikirim ke PostHog di Amerika Serikat."
-
-#: 
 msgid "Passkey"
 msgstr "Kunci sandi"
 
@@ -26443,10 +26066,6 @@ msgstr "Itu tidak dapat dihapus."
 #: 
 msgid "That device is signed out."
 msgstr "Perangkat itu sudah keluar."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Itu bukan alamat surel yang valid."
 
 #: 
 msgid "That page had been open too long. Please try again."
@@ -27139,4 +26758,588 @@ msgstr "atau"
 #: 
 msgid "until %s"
 msgstr "hingga %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Ada permintaan di Portal Anggota untuk mengubah alamat email Anda di %1$s dari %2$s menjadi %3$s. Perubahan terjadi hanya jika tautan yang dikirim ke alamat baru digunakan."
+
+#: 
+msgid "Review Family Information"
+msgstr "Tinjau Informasi Keluarga"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Pelayanan bernama \"%s\" sudah ada. Pilih dari daftar, atau gunakan nama lain."
+
+#: 
+msgid "A new ministry"
+msgstr "Pelayanan baru"
+
+#: 
+msgid "A position"
+msgstr "Sebuah posisi"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Tambahkan {{total}} relawan ke posisi yang sebelumnya dikonversi?"
+
+#: 
+msgid "Already converted"
+msgstr "Sudah dikonversi"
+
+#: 
+msgid "An existing ministry"
+msgstr "Pelayanan yang sudah ada"
+
+#: 
+msgid "Becomes"
+msgstr "Menjadi"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM memiliki dua cara mengelola relawan. Hanya satu yang semestinya digunakan pada satu waktu; pengaturan \"Pengalaman relawan\" menentukan mana yang dilihat gereja ini. Beralih hanya menyembunyikan atau menampilkan halaman dan item menu, dan tidak pernah menghapus data. V1 dan Keduanya hanya ditawarkan selama Peluang Relawan masih digunakan: setelah semua peluang dikonversi dan gereja memakai V2, keduanya hilang dari daftar ini."
+
+#: 
+msgid "Convert"
+msgstr "Konversi"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Konversi Peluang Relawan"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Konversi {{total}} peluang sekarang? Data V1 tetap seperti apa adanya hingga Peluang Relawan dihentikan."
+
+#: 
+msgid "Converted"
+msgstr "Dikonversi"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Dikonversi: {{positions}} posisi dan {{ministries}} pelayanan, {{qualifications}} relawan memenuhi syarat."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Setiap peluang menjadi posisi di tim pertama dari satu pelayanan, dan semua orang yang terhubung dengannya memenuhi syarat untuk posisi tersebut. Daftar mandiri awalnya nonaktif pada posisi-posisi ini."
+
+#: 
+msgid "Everything is converted."
+msgstr "Semuanya sudah dikonversi."
+
+#: 
+msgid "Existing ministry"
+msgstr "Pelayanan yang sudah ada"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Beri nama pelayanan baru maksimal 100 karakter."
+
+#: 
+msgid "Its own ministry"
+msgstr "Pelayanan tersendiri"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Terhubung sejak itu: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Tautan yang tidak dapat dikonversi"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Pelayanan baru tersendiri"
+
+#: 
+msgid "New ministry name"
+msgstr "Nama pelayanan baru"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Tidak ada email yang dikirim, dan Peluang Relawan tetap seperti apa adanya hingga dihentikan."
+
+#: 
+msgid "No name"
+msgstr "Tanpa nama"
+
+#: 
+msgid "Not converted"
+msgstr "Belum dikonversi"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Buka Pengalih Fitur"
+
+#: 
+msgid "Open Ministries"
+msgstr "Buka Pelayanan"
+
+#: 
+msgid "Opportunities"
+msgstr "Peluang"
+
+#: 
+msgid "Opportunity"
+msgstr "Peluang"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Peluang #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Orang yang terhubung ke Peluang Relawan yang sudah dikonversi sejak konversi: %d. Tambahkan mereka ke posisinya sebelum Peluang Relawan dihentikan pada awal 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Pratinjau konversi terlebih dahulu, lalu kirim revisi yang dikembalikannya."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Diganti namanya agar nama tetap unik"
+
+#: 
+msgid "Review the conversion"
+msgstr "Tinjau konversi"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Kirim pilihan konversi sebagai objek JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Kirim peluang yang menjadi pelayanan sebagai daftar ID."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Pelayanan itu tidak ada."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Versi ChurchCRM tempat administrator menutup pemberitahuan penghentian Peluang Relawan."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Peluang Relawan telah berubah sejak pratinjau. Periksa pratinjau lagi, lalu konversi."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "Konfirmasi tidak dapat dibuka. Muat ulang halaman dan coba lagi."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Konversi tidak dapat dipratinjau."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Konversi gagal. Tidak ada yang diubah."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Pelayanan \"%s\" tidak memiliki tim untuk menampung posisi."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Server tidak dapat dihubungi. Muat ulang halaman untuk melihat apakah konversi sudah berjalan."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Tidak ada Peluang Relawan untuk dikonversi."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Pengelolaan Relawan beralih ke Keduanya, sehingga pelayanan baru terlihat di samping Peluang Relawan."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Peluang Relawan akan dihentikan"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Peluang Relawan dikonversi"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Peluang Relawan akan dihentikan pada awal 2027. Konversikan menjadi Pelayanan agar data siapa melayani di mana tetap tersimpan."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Peluang Relawan akan dihentikan pada awal 2027. Konversikan %1$d peluang dan %2$d relawan Anda menjadi Pelayanan sekarang. Anda dapat melihat pratinjau hasilnya sebelum ada yang berubah."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Relawan memenuhi syarat"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Relawan yang perlu ditambahkan ke posisi hasil konversi"
+
+#: 
+msgid "What it becomes"
+msgstr "Menjadi apa"
+
+#: 
+msgid "What will happen"
+msgstr "Apa yang akan terjadi"
+
+#: 
+msgid "Where they go"
+msgstr "Ke mana mereka pergi"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Peluang Relawan lama mana yang telah dikonversi, dan posisi yang menjadi hasil masing-masing."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Pengalaman relawan yang digunakan gereja ini. Peluang Relawan (V1) akan dihentikan pada awal 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Peluang Relawan Anda telah dikonversi menjadi Pelayanan. Ubah Pengelolaan Relawan ke V2 sebelum Peluang Relawan dihentikan pada awal 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "ke pelayanan baru, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "ke pelayanan {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "sudah tidak ada di ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Ciutkan bilah samping"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Luaskan bilah samping"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Masukkan alamat email yang valid dengan hanya karakter ASCII sebelum @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Alamat email mereka tidak valid"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Yakin ingin menghapus {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Tidak dapat mengumpulkan info sistem. Silakan coba lagi."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Tidak ada pembayaran untuk periode ini."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Pembayaran per Dana"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Dana Tidak Dikenal"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Minta penyedia hosting Anda untuk memindahkan basis data ke versi yang didukung, lalu coba lagi."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Minta penyedia hosting Anda untuk memindahkan basis data ke versi yang didukung."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Nama hari libur mengikuti pengaturan bahasa setiap pengguna. Jika hari libur tidak memiliki nama dalam bahasa tersebut, nama ditampilkan dalam bahasa Inggris."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Nama hari libur dalam bahasa Anda"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Wajibkan nomor cek saat mencatat pembayaran dengan cek pada entri setoran. Jika nonaktif, cek dapat disimpan dengan nomor cek kosong atau 0, dan cek tersebut tidak diperiksa duplikasinya."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Wajibkan nomor cek pada pembayaran dengan cek"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "Pembaruan tidak dimulai, jadi tidak ada yang berubah."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Pembaruan ini tidak dapat dijalankan pada basis data Anda."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Server basis data Anda (%1$s %2$s) lebih lama daripada yang didukung ChurchCRM (MySQL %3$s atau MariaDB %4$s ke atas)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Setujui keluarga yang mendaftar mandiri ini sebelum mengirimkan email verifikasi"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "Bandingkan total janji persembahan keluarga untuk dua tahun fiskal."
+
+#: 
+msgid "Email Portal Link"
+msgstr "Kirim Tautan Portal via Email"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "Kirimkan email berisi tautan ke portal jemaat kepada keluarga, tempat mereka dapat meninjau dan memperbarui informasinya, atau catat bahwa Anda telah memverifikasinya secara langsung."
+
+#: 
+msgid "Family is inactive"
+msgstr "Keluarga tidak aktif"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Tahun Fiskal Pertama"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Tahun Fiskal"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Laporan Pemberian — Hanya Contoh"
+
+#: 
+msgid "Last invited"
+msgstr "Terakhir diundang"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Terakhir masuk portal"
+
+#: 
+msgid "Last verified"
+msgstr "Terakhir diverifikasi"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "Tidak ada anggota keluarga ini yang aktif dan disetujui yang memiliki alamat email. Verifikasi secara langsung saja."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Tidak ditemukan janji persembahan untuk tahun fiskal ini."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "Perbandingan Janji Persembahan"
+
+#: 
+msgid "Preview PDF"
+msgstr "Pratinjau PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Tahun Fiskal Kedua"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Masuk ke portal jemaat dengan alamat email ini untuk meninjau informasi keluarga Anda. Dari halaman Keluarga Saya, pastikan semuanya benar, atau perbarui data Anda."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Keluarga ini tidak aktif, sehingga tidak dikirimi email verifikasi."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Keluarga yang mendaftar mandiri ini sedang menunggu persetujuan. Jika disetujui, keluarga akan menerima email undangan untuk masuk ke portal jemaat dan meninjau informasinya."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Hanya menggunakan pengaturan tersimpan dan contoh persembahan fiktif."
+
+#: 
+msgid "Verification"
+msgstr "Verifikasi"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "Email verifikasi dikirim ke %d keluarga."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "Email verifikasi dikirim ke anggota keluarga."
+
+#: 
+msgid "by the family in the portal"
+msgstr "oleh keluarga di portal"
+
+#: 
+msgid "in person by staff"
+msgstr "secara langsung oleh staf"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d default dilewati karena alasan lain (kejadian berakhir, dibatalkan atau penuh)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Pengaturan transisi. Halaman Peluang Relawan lama dan halaman Pelayanan baru sama-sama tersedia, dan data orang menampilkan kedua tab Relawan dengan label yang jelas. Gunakan saat memindahkan gereja dari V1 ke V2, lalu beralih ke V2 saja."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Penugasan dibatalkan"
+
+#: 
+msgid "Canceled"
+msgstr "Dibatalkan"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "Pembatalan tidak memberitahu siapa pun: tidak ada email yang dikirim. Penugasan disimpan, tidak ada pengingat yang dijadwalkan saat dibatalkan, dan tidak ada yang dapat ditugaskan sampai dipulihkan."
+
+#: 
+msgid "Color"
+msgstr "Warna"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Kode dan tautan masuk yang dikirim surel dibatalkan"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "Peran keluarga (Kepala Keluarga, Pasangan, Anak, dll.) membantu mengatur catatan Anda."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Kejadian dibatalkan"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Prioritaskan terjemahan"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "Penugasan tidak dapat dibatalkan"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "Kejadian tidak dapat dibatalkan"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Tanggal ini dibatalkan. Tidak ada lagi yang perlu Anda lakukan."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Kejadian ini dibatalkan"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Pelayanan relawan yang diatur sebagaimana gereja menjalankannya. Setiap pelayanan memiliki tim dan posisi; orang dikualifikasi untuk posisi dan menjadi bagian dari grup kelompok pelayanan; jadwal mengikuti acara di kalender dan menghasilkan kejadian bertanggal dengan kebutuhan petugas; koordinator menugaskan orang, yang menerima, menolak, atau mengusulkan pengganti; pengingat dan peringatan dikirim lewat email. Administrator dan pengguna dengan izin Kelola Pelayanan melihat setiap pelayanan dan dapat membuat, menonaktifkan, dan menghapusnya. Koordinator pelayanan diberi izin Kelola Pelayanan Saya: judul Pelayanan di bilah samping lalu hanya menampilkan pelayanan yang ia koordinasikan. Pemimpin tim menjalankan timnya dari Portal Jemaat. Jemaat menggunakan Portal Jemaat untuk melihat jadwal, menanggapi, mendaftar, dan menawarkan bantuan."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Hitung instalasi aktif dan hasil pembaruan"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Mesin basis data dan versi mayor/minor"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Kesalahan — statistik instalasi, peringatan, kesalahan, dan pengecualian JS"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Bantu kami menemukan dan memperbaiki masalah?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "Instalasi membagikan statistik instalasi dan pembaruan minimal. Kesalahan menambahkan peringatan dan laporan kesalahan. Penuh menambahkan tampilan halaman. Tidak ada hanya mengirim instalasi dan pembaruan yang gagal."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Instalasi — statistik instalasi dan pembaruan (bawaan)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Hasil instalasi dan pembaruan, versi sebelumnya saat pembaruan, dan laporan harian selama digunakan"
+
+#: 
+msgid "Installation profile"
+msgstr "Profil instalasi"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Lokal (Kesalahan dan Penuh)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Tidak pernah dibagikan: data jemaat, persembahan, atau catatan gereja lainnya, nama gereja Anda, alamat web atau nama server Anda, maupun alamat email. Negara Anda adalah negara di pengaturan gereja, bukan dideteksi dari jaringan Anda."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Keluarga sistem operasi (Kesalahan dan Penuh)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "Versi PHP (Kesalahan dan Penuh)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Lihat persis apa yang dibagikan, atau ubah pilihan Anda, di Admin → Telemetri."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Bedakan instalasi produksi, demo, dan uji coba"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Bagikan statistik instalasi anonim?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Bagikan laporan kesalahan dan penggunaan"
+
+#: 
+msgid "Share install statistics"
+msgstr "Bagikan statistik instalasi"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Dibagikan tambahan: peringatan, detail kesalahan, dan halaman yang dibuka."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Dibagikan: bahwa ChurchCRM telah diinstal atau diperbarui dan apakah berhasil, laporan sekali sehari selama digunakan, nomor versi, negara Anda, dan jenis basis data. ID instalasi acak menghitung setiap instalasi satu kali."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Memahami kompatibilitas basis data"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Pilihan ini ditanyakan sekali. Anda dapat mengubahnya kapan saja. Dengan Tidak, terima kasih, hanya instalasi atau pembaruan yang gagal yang dilaporkan."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Data Anda milik Anda. Instalasi hanya membagikan hasil instalasi dan pembaruan, ID instalasi, versi perangkat lunak, profil instalasi, negara yang dikonfigurasi, serta mesin basis data dengan versi mayor/minor. Kesalahan menambahkan peringatan dan detail kesalahan. Penuh menambahkan tampilan halaman. Tidak ada hanya mengirim instalasi dan pembaruan yang gagal. Tidak ada tingkat yang mengirim alamat web atau nama server Anda. Instalasi uji coba tidak mengirim apa pun. Telemetri dikirim ke PostHog di Amerika Serikat."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Data Anda milik Anda. Laporan ini tentang perangkat lunak, tidak pernah tentang gereja Anda atau jemaatnya."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Data Anda milik Anda. Untuk menghitung instalasi, ChurchCRM melaporkan bahwa ia telah diinstal atau diperbarui dan apakah berhasil, laporan sekali sehari selama digunakan, ditambah nomor versi, negara Anda, jenis basis data, dan ID instalasi acak. ChurchCRM tidak pernah melaporkan data jemaat, persembahan, atau catatan gereja lainnya, nama gereja Anda, alamat web atau nama server Anda, maupun alamat email. Anda dapat menonaktifkannya kapan saja di Admin → Telemetri; instalasi atau pembaruan yang gagal tetap dilaporkan. Peringatan, detail kesalahan, dan tampilan halaman hanya dibagikan jika Anda memilihnya."
 

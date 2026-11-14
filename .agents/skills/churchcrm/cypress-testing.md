@@ -27,6 +27,7 @@ Every new test is a Cypress E2E spec. Server logic is tested through its route w
 - Before push, run the specs the change touches locally: `npm run docker:test:reset:db`, then `cypress run` with a comma-separated `--spec` list (new specs plus the existing ones for pages you changed). The reset replaces the test database with the seed, so aim runs only at the test stack. Seed rows that specs approve or delete are gone until the next reset. Specs that need a record should create their own, not consume a seed row
 - Test the workflow a church person does, not CRUD. Name each UI spec for a role and a goal ("treasurer closes a deposit", "secretary merges two families") and walk the steps they take on the page: set up their data through the API, act in the UI, then assert what they see after a reload and what the API now holds. A feature or migration PR covers every flow the page offers: save, delete with its confirm, filter, report or export, the next page in the flow, and the user the role check turns away. An API spec proves the endpoint contract; it does not stand in for the page flow
 - Test behavior, not presence. A test asserts what a user gets, saves, or is denied. Do not add tests that only check a page renders, a link navigates, a button fills inputs, or an element `not.exist` on a page that never had it. Negative tests are for permission and validation rules that the server enforces; one per rule. A role wrapper applied once to a route group gets one denial test; a wrapper added route by route gets one per route. Denial tests use the zero-permission user (`makePrivateNoPermAPICall`). Fold several checks of one page into one test
+- Page coverage: use the detailed workflow spec that already visits a page. Add a health-only entry in `cypress/support/page-health-pages.js` only when detailed coverage is missing. Remove that entry when a detailed workflow covers it. Informational pages may retain health-only coverage
 - A test never branches on missing data and passes by logging "skipping". Create the record in a `before` hook through the API, or drop the test
 - Stable selectors: `id`, `data-cy`, `name`, href/text — not visual utility classes
 - Optional demo values go in `src/admin/demo/config.json`, which keeps the Cypress seed stable
@@ -37,6 +38,12 @@ Every new test is a Cypress E2E spec. Server logic is tested through its route w
 - Mailpit lives at `Cypress.mailpitUrl()` for `cy.request()`; use the `mail:*` tasks where the stack may have none. The config resolves it from `MAILPIT_URL` or `MAILSERVER_GUI_PORT`, so a run on an isolated stack reaches that stack's Mailpit, not the developer's on 8025
 - The server counts days in `sTimeZone`; CI's browser is on UTC, a day ahead every evening. A spec that builds dates from the browser clock calls `cy.useChurchTimeZone()` in a root `before()` and `cy.useHostTimeZone()` in a root `after()` (`cypress/support/church-time-zone.js`). Check it locally with `TZ=UTC npx cypress run ...` between 8 pm and midnight Eastern
 - Comment only a CI or Cypress trap, in one line.
+
+## Page load coverage
+
+The staff and admin health specs visit only URLs in `cypress/support/page-health-pages.js`. They check document status, same-origin 5xx responses, missing scripts/styles, and uncaught JavaScript exceptions. They contain no page-specific content assertions.
+
+Track missing actionable workflows in focused issues. Replace their health entries as detailed tests land. Do not add a second visit merely to assert HTTP 200 on a page already exercised by a workflow. `mvc-pages.js` is a separate inventory for authentication boundaries and install-path checks; it does not describe missing workflow coverage.
 
 ## Install path
 

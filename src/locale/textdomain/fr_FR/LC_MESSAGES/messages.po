@@ -708,10 +708,6 @@ msgid "Not a valid Wedding Date"
 msgstr "La date de mariage n'est pas valide"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "L'adresse email n'est pas valide"
-
-#: 
 msgid "Family Info"
 msgstr "Info sur la famille"
 
@@ -886,10 +882,6 @@ msgstr "Vous êtes sur le point de supprimer la photo de profil, cette opératio
 #: 
 msgid "Do you want to proceed?"
 msgstr "Voulez-vous continuer ?"
-
-#: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Vous êtes sur le point d'envoyer une copie des informations de la famille aux adresses e-mail suivantes"
 
 #: 
 msgid "Financial Reports"
@@ -1447,10 +1439,6 @@ msgid "Not a valid Membership Date"
 msgstr "Date d'Adhésion Invalide"
 
 #: 
-msgid "Work Email is Not Valid"
-msgstr "Email professionnel invalide"
-
-#: 
 msgid "Birth Month"
 msgstr "Mois de Naissance"
 
@@ -1520,7 +1508,7 @@ msgstr "Au moins un des fonds doit avoir une valeur non nulle."
 
 #: 
 msgid "Must specify non-zero check number"
-msgstr "Vous devez écrire un nombre différent de 0."
+msgstr "Vous devez indiquer un numéro de chèque différent de zéro"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
@@ -1826,10 +1814,6 @@ msgstr "Numéro de téléphone"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Liste déroulante personnalisée"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF envoyé avec succès aux membres de la famille."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3878,10 +3862,6 @@ msgid "Please verify your family's information"
 msgstr "Veuillez vérifier vos informations familiales"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Impossible de charger les infos de vérification"
-
-#: 
 msgid "No Changes"
 msgstr "Pas de changements"
 
@@ -3894,24 +3874,8 @@ msgid "Oops! Page not found."
 msgstr "Oups ! Page non trouvée"
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Veuillez compléter les champs suivants pour vérification de la famille"
-
-#: 
-msgid "Family Verification"
-msgstr "Vérification de la Famille"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Demande de vérification des infos familliale"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Sélectionner la manière dont vous voulez faire la demande de vérification des informations familiale"
-
-#: 
-msgid "Online Verification"
-msgstr "Vérification en ligne"
 
 #: 
 msgid "Verified In Person"
@@ -4093,10 +4057,6 @@ msgstr "Cette propriété a été retiré avec succès."
 #: 
 msgid "The property could not be unassigned."
 msgstr "Cette propriété ne peut pas être retirée."
-
-#: 
-msgid "Select event"
-msgstr "Sélectionner un événement"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4304,10 +4264,6 @@ msgid "Kiosk Manager"
 msgstr "Manager de kiosque."
 
 #: 
-msgid "Report an issue"
-msgstr "Signaler un problème"
-
-#: 
 msgid "Self Verification"
 msgstr "Autovérification"
 
@@ -4336,10 +4292,6 @@ msgstr "Arabe - Egypte"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "En attente de vérification automatique"
 
 #: 
 msgid "Self Verify"
@@ -4722,16 +4674,8 @@ msgid "User must have Delete Records permission"
 msgstr "L'utilisateur doit avoir l'autorisation d'effacer des enregistrements"
 
 #: 
-msgid "invalid event type id"
-msgstr "ID de type d'événement invalide"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "épinglage de calendrier non valide"
-
-#: 
-msgid "invalid status value"
-msgstr "Valeur de statut incorrecte"
 
 #: 
 msgid "invalid export value"
@@ -5006,7 +4950,7 @@ msgstr "Résumé de l'engagement par famille"
 
 #: 
 msgid "Pledge"
-msgstr "Promesses de dons"
+msgstr "Promesse de don"
 
 #: 
 msgid "Paid"
@@ -5338,10 +5282,6 @@ msgstr "Application de la mise à jour système..."
 
 #: 
 msgid "Back to Login"
-msgstr "Retour à la connexion"
-
-#: 
-msgid "Back to login"
 msgstr "Retour à la connexion"
 
 #: 
@@ -6578,10 +6518,6 @@ msgid "Additional Information"
 msgstr "Information supplémentaire"
 
 #: 
-msgid "All information is correct"
-msgstr "Toutes les informations sont correctes"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Assigner des opportunités"
 
@@ -6594,20 +6530,12 @@ msgid "Choose opportunities..."
 msgstr "Choisissez des opportunités..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Confirmer les informations de famille"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Contact & Informations personnelles"
 
 #: 
 msgid "Edited"
 msgstr "Modifié"
-
-#: 
-msgid "Email PDF"
-msgstr "Email PDF"
 
 #: 
 msgid "Newsletter"
@@ -6618,40 +6546,12 @@ msgid "Personal"
 msgstr "Personnel"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Veuillez mettre à jour nos enregistrements avec les corrections"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Fournissez les corrections ou informations supplémentaires ici..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Sélectionner les opportunités"
 
 #: 
-msgid "Submit Verification"
-msgstr "Soumettre la vérification"
-
-#: 
-msgid "Thank You!"
-msgstr "Merci !"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Visitez notre site Web"
-
-#: 
 msgid "Volunteer"
 msgstr "Bénévole"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Une erreur s'est produite lors du traitement de votre vérification. Veuillez réessayer ou nous contacter directement."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Votre demande de vérification a été reçue. Merci de maintenir vos informations à jour."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8111,10 +8011,6 @@ msgid "City is required."
 msgstr "La ville est obligatoire."
 
 #: 
-msgid "Clear filter"
-msgstr "Effacer le filtre"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Élément de configuration introuvable"
 
@@ -8383,10 +8279,6 @@ msgstr "Ajouter une personne"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Ajouter tous les éléments du panier à un groupe"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Tout ajouter au panier"
 
 #: 
 msgid "Add cart items to a family"
@@ -8893,10 +8785,6 @@ msgid "Family Profile"
 msgstr "Profil de la famille"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Les rôles familiaux (Chef de famille, Conjoint, Enfant, etc.) aident à organiser vos fiches."
-
-#: 
 msgid "Family vs Person"
 msgstr "Famille vs Personne"
 
@@ -9395,10 +9283,6 @@ msgid "Record why attendees visited your church"
 msgstr "Enregistrer la raison de la visite des participants à l'église"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Tout retirer du panier"
-
-#: 
 msgid "Remove from Class"
 msgstr "Retirer de la classe"
 
@@ -9869,10 +9753,6 @@ msgstr "Événements Cette Année"
 #: 
 msgid "Everyone"
 msgstr "Tout le monde"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Impossible de supprimer la note"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11772,10 +11652,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Le début de la plage doit être une date YYYY-MM-DD valide."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Le début de la plage doit être antérieur à la fin"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Le début de la plage doit être antérieur à la fin."
 
@@ -11996,10 +11872,6 @@ msgid "Cannot move property in that direction"
 msgstr "Impossible de déplacer la propriété dans cette direction"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Confirmer les informations de la famille"
-
-#: 
 msgid "Delete failed"
 msgstr "Échec de la suppression"
 
@@ -12040,20 +11912,12 @@ msgid "Invalid target family"
 msgstr "Famille cible invalide"
 
 #: 
-msgid "Log Out"
-msgstr "Se déconnecter"
-
-#: 
 msgid "Membership not found"
 msgstr "Adhésion introuvable"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Mot de passe modifié avec succès pour"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Veuillez vérifier les informations de votre famille ci-dessous et confirmer ou demander des modifications."
 
 #: 
 msgid "Please select a target family."
@@ -12736,10 +12600,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Échec de l'installation de l'extension depuis l'URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Échec du chargement de la liste des extensions approuvées"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Échec du chargement de la liste des extensions approuvées."
 
@@ -12798,10 +12658,6 @@ msgstr "Format kebab-case. Doit correspondre au nom du répertoire racine dans l
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Chargement de la liste des extensions approuvées…"
-
-#: 
-msgid "Loading…"
-msgstr "Chargement…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13249,12 +13105,8 @@ msgid "Change Your Locale"
 msgstr "Changer votre langue"
 
 #: 
-msgid "Change role"
-msgstr "Changer le rôle"
-
-#: 
 msgid "Check Number"
-msgstr "Vérifier le nombre"
+msgstr "Numéro de chèque"
 
 #: 
 msgid "Check out"
@@ -13267,10 +13119,6 @@ msgstr "L'enregistrement a échoué. Veuillez réessayer."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "La sortie a échoué. Veuillez réessayer."
-
-#: 
-msgid "City is required"
-msgstr "La ville est obligatoire"
 
 #: 
 msgid "Click Save to apply."
@@ -13339,10 +13187,6 @@ msgstr "Copier tous les numéros"
 #: 
 msgid "Copy Members to Group"
 msgstr "Copier des fidèles vers un groupe"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Création de la sauvegarde..."
 
 #: 
 msgid "Creating..."
@@ -13527,10 +13371,6 @@ msgstr "Impossible d'ajouter au panier"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Échec de l'annulation de l'inscription. Veuillez réessayer."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Impossible de copier l'URL"
 
 #: 
 msgid "Failed to create backup."
@@ -13921,10 +13761,6 @@ msgid "One-Time Code"
 msgstr "Code à usage unique"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Ouvrir dans un nouvel onglet"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Ouvrez votre application d'authentification et scannez ce code QR"
 
@@ -14201,10 +14037,6 @@ msgid "Setup Complete"
 msgstr "Configuration terminée"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Partagez cette URL avec les membres de la famille pour vérifier leurs informations"
-
-#: 
 msgid "Show more options"
 msgstr "Afficher plus d'options"
 
@@ -14357,10 +14189,6 @@ msgid "Validation pending"
 msgstr "Validation en attente"
 
 #: 
-msgid "Verification URL"
-msgstr "URL de vérification"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "La vérification a échoué. Veuillez réessayer."
 
@@ -14425,10 +14253,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Vous recevrez des codes de sauvegarde utilisables si vous perdez l'accès à votre application"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Votre panier est vide"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Votre compte est maintenant protégé"
 
@@ -14447,10 +14271,6 @@ msgstr "La préférence de langue de votre navigateur diffère de votre langue C
 #: 
 msgid "Your database already contains data"
 msgstr "Votre base de données contient déjà des données"
-
-#: 
-msgid "Zip code is required"
-msgstr "Le code postal est obligatoire"
 
 #: 
 msgid "added"
@@ -14871,10 +14691,6 @@ msgstr "Vous n'avez pas la permission d'ajouter une note pour cette famille."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Vous n'avez pas la permission d'ajouter une note pour cette personne."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Vous n'avez pas la permission de modifier cette note"
 
 #: 
 msgid "Account locked"
@@ -15697,10 +15513,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Veuillez confirmer la suppression de cette fiche familiale"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Veuillez confirmer vos informations familiales"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Veuillez sélectionner une autre famille à laquelle associer ces dons"
 
@@ -15921,10 +15733,6 @@ msgid "Select a person"
 msgstr "Sélectionner une personne"
 
 #: 
-msgid "Select role"
-msgstr "Sélectionner un rôle"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Sélectionner un type (optionnel)"
 
@@ -16081,10 +15889,6 @@ msgid "At least one fund allocation is required"
 msgstr "Au moins une affectation de fonds est requise"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Au moins un fonds doit avoir un montant non nul"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "Envoyer automatiquement un e-mail de vœux d'anniversaire aux personnes le jour de leur anniversaire"
 
@@ -16161,18 +15965,6 @@ msgid "Editing a Pledge"
 msgstr "Modification d'une promesse de don"
 
 #: 
-msgid "Enable (full)"
-msgstr "Activer (complet)"
-
-#: 
-msgid "Errors only"
-msgstr "Erreurs uniquement"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Erreurs — erreurs serveur et exceptions JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Échec de la création de la promesse de don"
 
@@ -16211,10 +16003,6 @@ msgstr "La clé de groupe est requise"
 #: 
 msgid "Happy Birthday"
 msgstr "Joyeux anniversaire"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Aider à améliorer ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16285,16 +16073,8 @@ msgid "None (disabled)"
 msgstr "Aucun (désactivé)"
 
 #: 
-msgid "OS family"
-msgstr "Famille de système d'exploitation"
-
-#: 
 msgid "Overpaid"
 msgstr "Surpayé"
-
-#: 
-msgid "PHP version"
-msgstr "Version PHP"
 
 #: 
 msgid "Page route"
@@ -16331,10 +16111,6 @@ msgstr "Groupe de promesses de don introuvable"
 #: 
 msgid "Pledges & Payments"
 msgstr "Promesses de don et paiements"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Prioriser les traductions"
 
 #: 
 msgid "Purpose"
@@ -16399,10 +16175,6 @@ msgstr "Noms d'utilisateur, e-mails ou rôles"
 #: 
 msgid "View pledge or payment details"
 msgstr "Voir les détails de la promesse de don ou du paiement"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Avertissements — avertissements, erreurs et exceptions JS"
 
 #: 
 msgid "What is sent"
@@ -16597,12 +16369,6 @@ msgstr "Aucun paiement trouvé pour les dépôts sélectionnés"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Aucun identifiant de dépôt valide fourni"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF envoyé par e-mail avec succès à %d famille."
-msgstr[1] "PDF envoyé par e-mail avec succès à %d familles."
 
 #: 
 msgid "Partial Send"
@@ -17143,10 +16909,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Création et envoi de la sauvegarde en cours. Cela peut prendre plusieurs minutes..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Échec de la réinitialisation de la base de données."
-
-#: 
 msgid "Deceased"
 msgstr "Décédé"
 
@@ -17343,10 +17105,6 @@ msgid "Log settings saved"
 msgstr "Paramètres des journaux enregistrés"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Le nom de connexion est requis"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "La personne a été marquée comme active"
 
@@ -17471,10 +17229,6 @@ msgid "Sending..."
 msgstr "Envoi en cours..."
 
 #: 
-msgid "Sending…"
-msgstr "Envoi en cours…"
-
-#: 
 msgid "Settings reset"
 msgstr "Paramètres réinitialisés"
 
@@ -17543,16 +17297,8 @@ msgid "Upcoming"
 msgstr "À venir"
 
 #: 
-msgid "Valid Until"
-msgstr "Valide jusqu'au"
-
-#: 
 msgid "View active only"
 msgstr "Afficher uniquement les actifs"
-
-#: 
-msgid "View all"
-msgstr "Afficher tout"
 
 #: 
 msgid "View all (including inactive)"
@@ -18331,10 +18077,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Votre année fiscale commence en %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Une erreur s'est produite"
-
-#: 
 msgid "Approve"
 msgstr "Approuver"
 
@@ -18505,12 +18247,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d jour"
 msgstr[1] "%d jours"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d valeur par défaut ignorée pour une autre raison (l'occurrence est terminée, annulée ou complète)"
-msgstr[1] "%d valeurs par défaut ignorées pour une autre raison (l'occurrence est terminée, annulée ou complète)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18773,10 +18509,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Un thème est un dossier que votre église télécharge vers Include/themes/ sur le serveur. Le système par défaut est livré avec ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Un paramètre de transition. Les pages d'opportunités de bénévoles héritées et les nouvelles pages de ministères sont disponibles, et un dossier de personne montre les deux onglets de bénévole, clairement étiquetés. Utilisez-le pendant que vous déplacez une église de V1 à V2, puis basculez à V2 uniquement."
-
-#: 
 msgid "A volunteer"
 msgstr "Un bénévole"
 
@@ -18981,10 +18713,6 @@ msgid "Assigned outside the current plan"
 msgstr "Affecté en dehors du plan actuel"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Affectation annulée"
-
-#: 
 msgid "Assignment not found"
 msgstr "Affectation non trouvée"
 
@@ -19091,10 +18819,6 @@ msgstr "Annuler l'affectation"
 #: 
 msgid "Cancel this assignment"
 msgstr "Annuler cette affectation"
-
-#: 
-msgid "Cancelled"
-msgstr "Annulé"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19251,10 +18975,6 @@ msgstr "Site web de l'église"
 #: 
 msgid "Close event details"
 msgstr "Fermer les détails de l'événement"
-
-#: 
-msgid "Colour"
-msgstr "Couleur"
 
 #: 
 msgid "Completed"
@@ -19501,10 +19221,6 @@ msgid "Each staffing need must name a position"
 msgstr "Chaque besoin en effectifs doit désigner un poste"
 
 #: 
-msgid "Edit event"
-msgstr "Modifier l'événement"
-
-#: 
 msgid "Edit ministry"
 msgstr "Modifier le ministère"
 
@@ -19589,10 +19305,6 @@ msgstr "Email envoyé à {{count}} destinataires."
 #: 
 msgid "Emails"
 msgstr "Courriels"
-
-#: 
-msgid "End time"
-msgstr "Heure de fin"
 
 #: 
 msgid "Enter counts"
@@ -20873,10 +20585,6 @@ msgid "SMTP test"
 msgstr "Test SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "Enregistrer les modifications"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Enregistré — ce ministère ne demande plus d'aide"
 
@@ -21159,10 +20867,6 @@ msgstr "Besoins en effectifs enregistrés"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Commencez par créer un ministère, puis ajoutez les équipes et les postes qui y servent."
-
-#: 
-msgid "Start time"
-msgstr "Heure de début"
 
 #: 
 msgid "Start typing a name"
@@ -21511,10 +21215,6 @@ msgstr "L'adresse est sélectionnée : copiez-la avec votre clavier."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Le chemin de ressource « %s » n'est pas autorisé."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "L'affectation n'a pas pu être annulée"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22041,10 +21741,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Cette occurrence a déjà eu lieu et ses affectations ne peuvent plus être modifiées"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Cette occurrence a été annulée"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Cette occurrence a ses propres besoins en effectifs, distincts de son planning."
 
@@ -22213,16 +21909,8 @@ msgid "Validation"
 msgstr "Validation"
 
 #: 
-msgid "View event"
-msgstr "Voir l'événement"
-
-#: 
 msgid "View my schedule"
 msgstr "Voir mon planning"
-
-#: 
-msgid "View person"
-msgstr "Voir la personne"
 
 #: 
 msgid "View the event"
@@ -22271,10 +21959,6 @@ msgstr "Horaires des bénévoles"
 #: 
 msgid "Volunteering"
 msgstr "Bénévolat"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Un bénévolat organisé comme une église le vit. Chaque ministère a des équipes et des postes ; les personnes sont qualifiées pour des postes et appartiennent au groupe de bénévoles du ministère ; les plannings suivent les événements du calendrier et produisent des occurrences datées avec leurs besoins en effectifs ; les coordinateurs affectent des personnes, qui acceptent, refusent ou proposent un remplaçant ; les rappels et alertes sont envoyés par courriel. Les administrateurs et les utilisateurs ayant la permission Gérer les ministères voient tous les ministères et peuvent les créer, les désactiver et les supprimer. Un coordinateur de ministère reçoit à la place la permission Gérer mes ministères : la rubrique Ministères de la barre latérale n'affiche alors que les ministères qu'il coordonne. Un responsable d'équipe dirige son équipe depuis le Portail des fidèles. Les fidèles utilisent le Portail des fidèles pour voir leur planning, répondre, s'inscrire et proposer leur aide."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22813,10 +22497,6 @@ msgid "Cancel this occurrence"
 msgstr "Annuler cette occurrence"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "L'annulation n'avertit personne: aucun email n'est envoyé. Les affectations sont conservées, aucun rappel n'est planifié pendant qu'elle est annulée, et personne ne peut être assigné jusqu'à ce qu'elle soit restaurée."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Les événements supprimés quittent chaque calendrier, avec leurs enregistrements et dénombrements, et le personnel de ce ministère ne conserve que sa date. Ceci ne peut pas être annulé."
 
@@ -22827,10 +22507,6 @@ msgstr "Événements supprimés: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Événements à supprimer: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Occurrence annulée"
 
 #: 
 msgid "Occurrence restored"
@@ -22847,10 +22523,6 @@ msgstr "Restaurer l'occurrence"
 #: 
 msgid "Restore this occurrence"
 msgstr "Restaurer cette occurrence"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "L'occurrence n'a pas pu être annulée"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -22905,10 +22577,6 @@ msgid "Invalid birth date"
 msgstr "Date de naissance invalide."
 
 #: 
-msgid "Invalid email address"
-msgstr "Adresse email invalide"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Paramètres de la Borne"
 
@@ -22935,12 +22603,6 @@ msgstr "Enregistré en tant que visiteur à la borne lors de l'événement: %s"
 #: 
 msgid "Registering..."
 msgstr "Enregistrement en cours..."
-
-#: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Exiger un numéro de chèque lors de l'enregistrement des paiements par chèque sur les entrées de dépôt.\n"
-"Remarque: la désactivation désactive également la détection des doublons de numéro de chèque — le même chèque physique peut être saisi plus d'une fois."
 
 #: 
 msgid "This event has ended"
@@ -23579,10 +23241,6 @@ msgstr "Choisissez jusqu'où les plannings sont remplis et quand les rappels par
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Choisissez une personne déjà dans l'annuaire de l'église. Elle rejoint les bénévoles de ce ministère et ses coordinateurs reçoivent un e-mail. Seul un coordinateur peut retirer quelqu'un."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM a deux façons de gérer les bénévoles. Une seule est prévue à la fois ; le réglage d'expérience Bénévoles décide laquelle cette église voit. Changer masque ou affiche des pages et des entrées de menu — cela ne supprime jamais de données, vous pouvez donc revenir en arrière."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -24865,28 +24523,12 @@ msgid "Closing Line"
 msgstr "Formule de clôture"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Contrôle la télémétrie facultative. Les échecs d'installation et de mise à niveau de la base de données envoient des diagnostics limités à PostHog même lorsque la télémétrie est désactivée. Ces rapports d'échec comprennent les versions du logiciel et de l'environnement ainsi qu'une erreur de base de données expurgée, mais ni identifiant d'installation ni instruction SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Diagnostiquer les échecs d'installation et de mise à niveau de la base de données"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Détails des échecs d'installation et de mise à niveau"
-
-#: 
 msgid "Open in browser window"
 msgstr "Ouvrir dans une fenêtre du navigateur"
 
 #: 
 msgid "Opening Line"
 msgstr "Formule d'introduction"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "La télémétrie d'utilisation facultative n'est envoyée que lorsqu'elle est activée. Les échecs d'installation et de mise à niveau de la base de données envoient toujours un diagnostic limité pour aider la communauté, même si vous choisissez Non merci. Les rapports d'échec comprennent les versions du logiciel et de l'environnement ainsi qu'une erreur de base de données expurgée, sans identifiant d'installation ni instruction SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24923,18 +24565,6 @@ msgstr "Libellé des attestations"
 #: 
 msgid "Tax Information"
 msgstr "Informations fiscales"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "La télémétrie est envoyée à PostHog aux États-Unis. Les rapports d'échec d'installation et de mise à niveau sont envoyés même lorsque la télémétrie facultative est désactivée."
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Cette date a été annulée. Rien de plus n'est demandé de votre part."
-
-#: 
-msgid "always sent"
-msgstr "toujours envoyé"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25399,10 +25029,6 @@ msgstr "E-mail à vérifier"
 #: 
 msgid "Email problem"
 msgstr "Problème d'e-mail"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Code et lien de connexion envoyés par e-mail annulés"
 
 #: 
 msgid "Emailed verification link"
@@ -25997,10 +25623,6 @@ msgid "Only people with their own email can be added."
 msgstr "Seules les personnes qui ont leur propre e-mail peuvent être ajoutées."
 
 #: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "La télémétrie facultative peut comprendre les chemins de pages, la langue active, la version du CRM, la version de PHP, la famille du système d'exploitation, le pays indiqué dans les informations de l'église et un identifiant d'installation aléatoire. Les rapports d'échec ne comprennent pas l'identifiant d'installation. Les données sont envoyées à PostHog aux États-Unis."
-
-#: 
 msgid "Passkey"
 msgstr "Clé d'accès"
 
@@ -26471,10 +26093,6 @@ msgstr "Cela n'a pas pu être retiré."
 #: 
 msgid "That device is signed out."
 msgstr "Cet appareil est déconnecté."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Cette adresse e-mail n'est pas valide."
 
 #: 
 msgid "That page had been open too long. Please try again."
@@ -27167,4 +26785,590 @@ msgstr "ou"
 #: 
 msgid "until %s"
 msgstr "jusqu'au %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "Une demande a été faite dans le portail des membres pour changer votre adresse e-mail sur %1$s de %2$s à %3$s. Le changement n’a lieu que lorsque le lien envoyé à la nouvelle adresse est utilisé."
+
+#: 
+msgid "Review Family Information"
+msgstr "Vérifier les informations de la famille"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Un ministère nommé « %s » existe déjà. Choisissez-le dans la liste ou choisissez un autre nom."
+
+#: 
+msgid "A new ministry"
+msgstr "Un nouveau ministère"
+
+#: 
+msgid "A position"
+msgstr "Une position"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Ajouter {{total}} bénévoles aux positions converties précédemment ?"
+
+#: 
+msgid "Already converted"
+msgstr "Déjà convertie"
+
+#: 
+msgid "An existing ministry"
+msgstr "Un ministère existant"
+
+#: 
+msgid "Becomes"
+msgstr "Devient"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM propose deux façons de gérer les bénévoles. Une seule doit être utilisée à la fois ; le paramètre « Expérience bénévoles » détermine celle que voit cette église. Changer de mode masque ou affiche des pages et des entrées de menu, sans jamais supprimer de données. V1 et Les deux ne sont proposés que tant que les opportunités de bénévolat sont utilisées : une fois toutes les opportunités converties et l’église passée en V2, ils disparaissent de cette liste."
+
+#: 
+msgid "Convert"
+msgstr "Convertir"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Convertir les opportunités de bénévolat"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Convertir {{total}} opportunités maintenant ? Les données V1 sont conservées telles quelles jusqu’au retrait des opportunités de bénévolat."
+
+#: 
+msgid "Converted"
+msgstr "Convertie"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Converti : {{positions}} positions et {{ministries}} ministères, {{qualifications}} bénévoles qualifiés."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Chaque opportunité devient une position dans la première équipe d’un ministère, et toutes les personnes qui y sont liées deviennent qualifiées pour cette position. L’auto-inscription est d’abord désactivée sur ces positions."
+
+#: 
+msgid "Everything is converted."
+msgstr "Tout est converti."
+
+#: 
+msgid "Existing ministry"
+msgstr "Ministère existant"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Donnez au nouveau ministère un nom de 100 caractères maximum."
+
+#: 
+msgid "Its own ministry"
+msgstr "Son propre ministère"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Liés depuis : {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Liens impossibles à convertir"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Chacune son nouveau ministère"
+
+#: 
+msgid "New ministry name"
+msgstr "Nom du nouveau ministère"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Aucun e-mail n’est envoyé, et les opportunités de bénévolat restent telles quelles jusqu’à leur retrait."
+
+#: 
+msgid "No name"
+msgstr "Sans nom"
+
+#: 
+msgid "Not converted"
+msgstr "Non convertie"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Ouvrir les commutateurs de fonctionnalités"
+
+#: 
+msgid "Open Ministries"
+msgstr "Ouvrir les ministères"
+
+#: 
+msgid "Opportunities"
+msgstr "Opportunités"
+
+#: 
+msgid "Opportunity"
+msgstr "Opportunité"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Opportunité n° %d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Personnes liées à des opportunités de bénévolat converties depuis la conversion : %d. Ajoutez-les à leurs positions avant le retrait des opportunités de bénévolat début 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Prévisualisez d’abord la conversion, puis envoyez la révision qu’elle a renvoyée."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Renommé pour garder des noms uniques"
+
+#: 
+msgid "Review the conversion"
+msgstr "Vérifier la conversion"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Envoyez le choix de conversion sous forme d’objet JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Envoyez les opportunités qui deviennent des ministères sous forme de liste d’identifiants."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Ce ministère n’existe pas."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "La version de ChurchCRM dans laquelle un administrateur a masqué l’avis de retrait des opportunités de bénévolat."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Les opportunités de bénévolat ont changé depuis l’aperçu. Vérifiez à nouveau l’aperçu, puis convertissez."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "La confirmation n’a pas pu s’ouvrir. Rechargez la page et réessayez."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "L’aperçu de la conversion n’a pas pu être généré."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "La conversion a échoué. Rien n’a été modifié."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "Le ministère « %s » n’a aucune équipe pour accueillir les positions."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "Le serveur est injoignable. Rechargez la page pour voir si la conversion a eu lieu."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Il n’y a aucune opportunité de bénévolat à convertir."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "La gestion des bénévoles passe à Les deux, afin que les nouveaux ministères soient visibles à côté des opportunités de bénévolat."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Les opportunités de bénévolat vont être retirées"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Opportunités de bénévolat converties"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Les opportunités de bénévolat seront retirées début 2027. Convertissez-les en ministères pour conserver qui sert où."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Les opportunités de bénévolat seront retirées début 2027. Convertissez dès maintenant vos %1$d opportunités et %2$d bénévoles en ministères. Vous pouvez prévisualiser le résultat avant toute modification."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Bénévoles qualifiés"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Bénévoles à ajouter aux positions converties"
+
+#: 
+msgid "What it becomes"
+msgstr "Ce qu’elle devient"
+
+#: 
+msgid "What will happen"
+msgstr "Ce qui va se passer"
+
+#: 
+msgid "Where they go"
+msgstr "Où elles vont"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Quelles anciennes opportunités de bénévolat ont été converties, et la position que chacune est devenue."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "L’expérience bénévoles utilisée par cette église. Les opportunités de bénévolat (V1) seront retirées début 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Vos opportunités de bénévolat sont converties en ministères. Passez la gestion des bénévoles en V2 avant le retrait des opportunités de bénévolat début 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "dans un nouveau ministère, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "dans le ministère {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "n’est plus dans ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Réduire la barre latérale"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Développer la barre latérale"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Saisissez une adresse e-mail valide n’utilisant que des caractères ASCII avant le @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Son adresse e-mail n’est pas valide"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Voulez-vous vraiment supprimer {{name}} ?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Impossible de récupérer les informations système. Veuillez réessayer."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Aucun paiement trouvé pour cette période."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Paiements par fonds"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Fonds inconnu"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Demandez à votre hébergeur de passer la base de données à une version prise en charge, puis réessayez."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Demandez à votre hébergeur de passer la base de données à une version prise en charge."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Les noms des jours fériés suivent la langue choisie par chaque utilisateur. Lorsqu'un jour férié n'a pas de nom dans cette langue, il s'affiche en anglais."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Noms des jours fériés dans votre langue"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Exiger un numéro de chèque lors de l'enregistrement des paiements par chèque dans les dépôts. Si cette option est désactivée, un chèque peut être enregistré avec un numéro vide ou 0, et ces chèques ne sont pas vérifiés pour les doublons."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Exiger le numéro de chèque pour les paiements par chèque"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "La mise à niveau n'a pas démarré, rien n'a donc été modifié."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Cette mise à niveau ne peut pas s'exécuter sur votre base de données."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Votre serveur de base de données (%1$s %2$s) est plus ancien que les versions prises en charge par ChurchCRM (MySQL %3$s ou MariaDB %4$s et ultérieures)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Approuvez cette famille auto-inscrite avant de lui envoyer un e-mail de vérification"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "Comparer les totaux des promesses de dons des familles sur deux années fiscales."
+
+#: 
+msgid "Email Portal Link"
+msgstr "Envoyer le lien du portail par e-mail"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "Envoyez à la famille par e-mail un lien vers le portail des fidèles, où elle peut vérifier et mettre à jour ses informations, ou indiquez que vous les avez vérifiées en personne."
+
+#: 
+msgid "Family is inactive"
+msgstr "La famille est inactive"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Première année fiscale"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Années fiscales"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Relevé de dons — exemple uniquement"
+
+#: 
+msgid "Last invited"
+msgstr "Dernière invitation"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Dernière connexion au portail"
+
+#: 
+msgid "Last verified"
+msgstr "Dernière vérification"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "Aucun membre actif et approuvé de cette famille n'a d'adresse e-mail. Vérifiez plutôt les informations en personne."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Aucune promesse de don n'a été trouvée pour ces années fiscales."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "Comparaison des promesses de dons"
+
+#: 
+msgid "Preview PDF"
+msgstr "Aperçu PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Deuxième année fiscale"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Connectez-vous au portail des fidèles avec cette adresse e-mail pour vérifier les informations de votre famille. Depuis la page Ma famille, confirmez que tout est correct ou mettez à jour vos coordonnées."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Cette famille est inactive, elle ne reçoit donc pas d'e-mails de vérification."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Cette famille auto-inscrite attend d'être approuvée. L'approbation envoie à la famille une invitation par e-mail à se connecter au portail des fidèles et à vérifier ses informations."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Utilise uniquement les paramètres enregistrés et des dons d'exemple fictifs."
+
+#: 
+msgid "Verification"
+msgstr "Vérification"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "E-mail de vérification envoyé à %d famille."
+msgstr[1] "E-mail de vérification envoyé à %d familles."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "E-mail de vérification envoyé aux membres de la famille."
+
+#: 
+msgid "by the family in the portal"
+msgstr "par la famille dans le portail"
+
+#: 
+msgid "in person by staff"
+msgstr "en personne par l'équipe"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d valeur par défaut ignorée pour une autre raison (l'occurrence est terminée, annulée ou complète)"
+msgstr[1] "%d valeurs par défaut ignorées pour une autre raison (l'occurrence est terminée, annulée ou complète)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Un paramètre de transition. Les pages d'opportunités de bénévoles héritées et les nouvelles pages de ministères sont disponibles, et un dossier de personne montre les deux onglets de bénévole, clairement étiquetés. Utilisez-le pendant que vous déplacez une église de V1 à V2, puis basculez à V2 uniquement."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Affectation annulée"
+
+#: 
+msgid "Canceled"
+msgstr "Annulé"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "L'annulation n'avertit personne: aucun email n'est envoyé. Les affectations sont conservées, aucun rappel n'est planifié pendant qu'elle est annulée, et personne ne peut être assigné jusqu'à ce qu'elle soit restaurée."
+
+#: 
+msgid "Color"
+msgstr "Couleur"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Code et lien de connexion envoyés par e-mail annulés"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "Les rôles familiaux (Chef de famille, Conjoint, Enfant, etc.) aident à organiser vos fiches."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Occurrence annulée"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Prioriser les traductions"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "L'affectation n'a pas pu être annulée"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "L'occurrence n'a pas pu être annulée"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Cette date a été annulée. Rien de plus n'est demandé de votre part."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Cette occurrence a été annulée"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Un bénévolat organisé comme une église le vit. Chaque ministère a des équipes et des postes ; les personnes sont qualifiées pour des postes et appartiennent au groupe de bénévoles du ministère ; les plannings suivent les événements du calendrier et produisent des occurrences datées avec leurs besoins en effectifs ; les coordinateurs affectent des personnes, qui acceptent, refusent ou proposent un remplaçant ; les rappels et alertes sont envoyés par courriel. Les administrateurs et les utilisateurs ayant la permission Gérer les ministères voient tous les ministères et peuvent les créer, les désactiver et les supprimer. Un coordinateur de ministère reçoit à la place la permission Gérer mes ministères : la rubrique Ministères de la barre latérale n'affiche alors que les ministères qu'il coordonne. Un responsable d'équipe dirige son équipe depuis le Portail des fidèles. Les fidèles utilisent le Portail des fidèles pour voir leur planning, répondre, s'inscrire et proposer leur aide."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Compter les installations actives et les résultats des mises à niveau"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Moteur de base de données et version majeure/mineure"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Erreurs — statistiques d'installation, avertissements, erreurs et exceptions JS"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Nous aider à trouver et corriger les problèmes ?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "Installation partage des statistiques minimales d'installation et de mise à niveau. Erreurs ajoute les avertissements et les rapports d'erreur. Complet ajoute les pages vues. Aucun n'envoie que les installations et mises à niveau échouées."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Installation — statistiques d'installation et de mise à niveau (par défaut)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Résultats d'installation et de mise à niveau, version précédente lors des mises à niveau et un signal quotidien pendant l'utilisation"
+
+#: 
+msgid "Installation profile"
+msgstr "Profil d'installation"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Paramètres régionaux (Erreurs et Complet)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Jamais partagé : les fiches des membres, des dons ou d'autres données de l'église, le nom de votre église, votre adresse web ou nom de serveur, ni les adresses e-mail. Votre pays est celui défini dans les paramètres de votre église, et non déduit de votre réseau."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Famille de système d'exploitation (Erreurs et Complet)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "Version de PHP (Erreurs et Complet)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Voyez exactement ce qui est partagé, ou modifiez votre choix, dans Admin → Télémétrie."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Distinguer les installations de production, de démonstration et de test"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Partager des statistiques d'installation anonymes ?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Partager les rapports d'erreur et d'utilisation"
+
+#: 
+msgid "Share install statistics"
+msgstr "Partager les statistiques d'installation"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Partagés en plus : les avertissements, les détails des erreurs et les pages ouvertes."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Partagé : le fait que ChurchCRM a été installé ou mis à niveau et si cela a fonctionné, un signal par jour pendant l'utilisation, le numéro de version, votre pays et le type de base de données. Un identifiant d'installation aléatoire compte chaque installation une seule fois."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Comprendre la compatibilité des bases de données"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Ce choix n'est demandé qu'une fois. Vous pouvez le modifier à tout moment. Avec Non merci, seule une installation ou mise à niveau échouée est signalée."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Vos données vous appartiennent. Installation partage uniquement les résultats d'installation et de mise à niveau, l'identifiant d'installation, la version du logiciel, le profil d'installation, le pays configuré ainsi que le moteur de base de données et sa version majeure/mineure. Erreurs ajoute les avertissements et les détails des erreurs. Complet ajoute les pages vues. Aucun n'envoie que les installations et mises à niveau échouées. Aucun niveau n'envoie votre adresse web ou votre nom de serveur. Les installations de test n'envoient rien. La télémétrie est envoyée à PostHog aux États-Unis."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Vos données vous appartiennent. Ces rapports portent sur le logiciel, jamais sur votre église ou ses membres."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Vos données vous appartiennent. Pour compter les installations, ChurchCRM signale qu'il a été installé ou mis à niveau et si cela a fonctionné, un signal par jour pendant l'utilisation, ainsi que le numéro de version, votre pays, le type de base de données et un identifiant d'installation aléatoire. Il ne signale jamais les fiches des membres, des dons ou d'autres données de l'église, le nom de votre église, votre adresse web ou nom de serveur, ni les adresses e-mail. Vous pouvez désactiver cela à tout moment dans Admin → Télémétrie ; une installation ou mise à niveau échouée reste signalée. Les avertissements, les détails des erreurs et les pages vues ne sont partagés que si vous le choisissez."
 

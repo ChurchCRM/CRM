@@ -705,10 +705,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Niet een geldige Trouwdatum"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "E-mail is niet geldig"
-
-#: 
 msgid "Family Info"
 msgstr "Adresgegevens gezin"
 
@@ -883,10 +879,6 @@ msgstr "U gaat uw profielfoto verwijderen, hetgeen niet ongedaan kan worden gema
 #: 
 msgid "Do you want to proceed?"
 msgstr "Wilt u doorgaan ?"
-
-#: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "Je staat op het punt gezinsgegevens te versturen naar de volgende e-mailadressen"
 
 #: 
 msgid "Financial Reports"
@@ -1433,10 +1425,6 @@ msgid "Not a valid Membership Date"
 msgstr "Geen geldige Lidmaatschap Datum"
 
 #: 
-msgid "Work Email is Not Valid"
-msgstr "E-mail werk is niet geldig"
-
-#: 
 msgid "Birth Month"
 msgstr "Geboorte maand"
 
@@ -1506,11 +1494,11 @@ msgstr "Ten minste een fonds moet een niet-nul waarde."
 
 #: 
 msgid "Must specify non-zero check number"
-msgstr "Dient aan te geven niet-nul controlenummer"
+msgstr "Er moet een chequenummer anders dan nul worden opgegeven"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Controleer nummer niet geldig voor \"CASH\" betaling"
+msgstr "Chequenummer is niet geldig voor contante betaling"
 
 #: 
 msgid "Payment Schedule"
@@ -1812,10 +1800,6 @@ msgstr "Telefoon Nummer"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Aangepaste Selectie Lijst"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "PDF succesvol verstuurd naar familieleden."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -2378,7 +2362,7 @@ msgstr "Zet aan om het invoeren van de huwelijksdatum in de Family Editor uit te
 
 #: 
 msgid "Number of checks for Deposit Slip Report"
-msgstr "Aantal controles voor Borg Slip Report"
+msgstr "Aantal cheques voor het stortingsbewijsrapport"
 
 #: 
 msgid "Unit used to measure distance, miles or km."
@@ -3858,10 +3842,6 @@ msgid "Please verify your family's information"
 msgstr "Controleer de gegevens van uw gezin"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Kan verificatiegegevens niet laden"
-
-#: 
 msgid "No Changes"
 msgstr "Geen veranderingen"
 
@@ -3874,24 +3854,8 @@ msgid "Oops! Page not found."
 msgstr "Excuus! De pagina is niet gevonden. "
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Voer het volgende in om de verificatie van uw gezin te starten:"
-
-#: 
-msgid "Family Verification"
-msgstr "Controleer het gezin"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Verificatie van gezinsgegevens aanvragen"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Selecteer hoe u de gezinsgegevens wilt laten verifiëren"
-
-#: 
-msgid "Online Verification"
-msgstr "Online verificatie"
 
 #: 
 msgid "Verified In Person"
@@ -4071,10 +4035,6 @@ msgstr "De toewijzing van de eigenschap is ongedaan gemaakt."
 #: 
 msgid "The property could not be unassigned."
 msgstr "De toewijzing van deze eigenschap kan niet ongedaan worden gemaakt."
-
-#: 
-msgid "Select event"
-msgstr "Selecteer activiteit"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4281,10 +4241,6 @@ msgid "Kiosk Manager"
 msgstr "Kioskmanager"
 
 #: 
-msgid "Report an issue"
-msgstr "Een probleem melden"
-
-#: 
 msgid "Self Verification"
 msgstr "Zelfverificatie"
 
@@ -4313,10 +4269,6 @@ msgstr "Arabisch - Egypte"
 #: 
 msgid "Thai"
 msgstr "Thais"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "In afwachting van zelfverificatie"
 
 #: 
 msgid "Self Verify"
@@ -4698,16 +4650,8 @@ msgid "User must have Delete Records permission"
 msgstr "De gebruiker heeft de rechten nodig om rijen met gegevens te mogen verwijderen"
 
 #: 
-msgid "invalid event type id"
-msgstr "Ongeldige identificatie code voor een \"event\""
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "Het vastmaken van de kalender is ongeldig"
-
-#: 
-msgid "invalid status value"
-msgstr "Ongeldige waarde van de status"
 
 #: 
 msgid "invalid export value"
@@ -4979,7 +4923,7 @@ msgstr "Gift per gezin"
 
 #: 
 msgid "Pledge"
-msgstr "Gift"
+msgstr "Toezegging"
 
 #: 
 msgid "Paid"
@@ -5314,10 +5258,6 @@ msgid "Back to Login"
 msgstr "Terug naar inloggen"
 
 #: 
-msgid "Back to login"
-msgstr "Terug naar inloggen"
-
-#: 
 msgid "Complete"
 msgstr "Voltooid"
 
@@ -5423,7 +5363,7 @@ msgstr "Voeg aanvullende opmerkingen over deze storting toe"
 
 #: 
 msgid "Checks"
-msgstr "Controles"
+msgstr "Cheques"
 
 #: 
 msgid "Click a bar to filter payments"
@@ -6551,10 +6491,6 @@ msgid "Additional Information"
 msgstr "Aanvullende Informatie"
 
 #: 
-msgid "All information is correct"
-msgstr "Alle informatie is correct"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Mogelijkheden Toewijzen"
 
@@ -6567,20 +6503,12 @@ msgid "Choose opportunities..."
 msgstr "Kies mogelijkheden..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Bevestig Familiegegevens"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Contact en Persoonlijke Gegevens"
 
 #: 
 msgid "Edited"
 msgstr "Bewerkt"
-
-#: 
-msgid "Email PDF"
-msgstr "E-mail PDF"
 
 #: 
 msgid "Newsletter"
@@ -6591,40 +6519,12 @@ msgid "Personal"
 msgstr "Persoonlijk"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Werk alstublieft onze records bij met correcties"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Geef hier aanvullende informatie..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Selecteer Mogelijkheden"
 
 #: 
-msgid "Submit Verification"
-msgstr "Verificatie Verzenden"
-
-#: 
-msgid "Thank You!"
-msgstr "Dank u!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Bezoek Onze Website"
-
-#: 
 msgid "Volunteer"
 msgstr "Vrijwilliger"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Er is een fout opgetreden bij het verwerken van uw verificatie. Probeer opnieuw of neem rechtstreeks contact met ons op."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Uw verificatieverzoek is ontvangen. Dank u dat u uw informatie actueel houdt."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8084,10 +7984,6 @@ msgid "City is required."
 msgstr "De stad is verplicht."
 
 #: 
-msgid "Clear filter"
-msgstr "Filter wissen"
-
-#: 
 msgid "Configuration item not found"
 msgstr "Configuratie-item niet gevonden"
 
@@ -8356,10 +8252,6 @@ msgstr "Een persoon toevoegen"
 #: 
 msgid "Add all cart items to a group"
 msgstr "Alle winkelwagenartikelen aan een groep toevoegen"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Alles aan winkelwagen toevoegen"
 
 #: 
 msgid "Add cart items to a family"
@@ -8866,10 +8758,6 @@ msgid "Family Profile"
 msgstr "Gezinsprofiel"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "Gezinsrollen (hoofd van het huishouden, echtgeno(o)t, kind, enz.) helpen uw dossiers te organiseren."
-
-#: 
 msgid "Family vs Person"
 msgstr "Gezin vs. persoon"
 
@@ -9368,10 +9256,6 @@ msgid "Record why attendees visited your church"
 msgstr "Registreer waarom bezoekers uw kerk bezochten"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Alles uit winkelwagen verwijderen"
-
-#: 
 msgid "Remove from Class"
 msgstr "Uit klas verwijderen"
 
@@ -9842,10 +9726,6 @@ msgstr "Evenementen Dit Jaar"
 #: 
 msgid "Everyone"
 msgstr "Iedereen"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Notitie kon niet worden verwijderd"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11745,10 +11625,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "Begindatum van het bereik moet een geldige YYYY-MM-DD datum zijn."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "Begindatum van het bereik moet voor de einddatum liggen"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "Begindatum van het bereik moet voor de einddatum liggen."
 
@@ -11969,10 +11845,6 @@ msgid "Cannot move property in that direction"
 msgstr "Eigenschap kan niet in die richting worden verplaatst"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Familiegegevens bevestigen"
-
-#: 
 msgid "Delete failed"
 msgstr "Verwijderen mislukt"
 
@@ -12013,20 +11885,12 @@ msgid "Invalid target family"
 msgstr "Ongeldige doelfamilie"
 
 #: 
-msgid "Log Out"
-msgstr "Uitloggen"
-
-#: 
 msgid "Membership not found"
 msgstr "Lidmaatschap niet gevonden"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "Wachtwoord succesvol gewijzigd voor"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Controleer uw familiegegevens hieronder en bevestig of vraag wijzigingen aan."
 
 #: 
 msgid "Please select a target family."
@@ -12709,10 +12573,6 @@ msgid "Failed to install plugin from URL"
 msgstr "Plugin installeren via URL mislukt"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "Kon lijst met goedgekeurde plugins niet laden"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "Kon lijst met goedgekeurde plugins niet laden."
 
@@ -12771,10 +12631,6 @@ msgstr "Kebab-case. Moet overeenkomen met de naam van de hoofdmap in het zip-bes
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Lijst met goedgekeurde plugins laden…"
-
-#: 
-msgid "Loading…"
-msgstr "Laden…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13222,12 +13078,8 @@ msgid "Change Your Locale"
 msgstr "Uw regio-instellingen wijzigen"
 
 #: 
-msgid "Change role"
-msgstr "Verander rol"
-
-#: 
 msgid "Check Number"
-msgstr "Controleer het nummer"
+msgstr "Chequenummer"
 
 #: 
 msgid "Check out"
@@ -13240,10 +13092,6 @@ msgstr "Inchecken mislukt. Probeer opnieuw."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "Uitchecken mislukt. Probeer opnieuw."
-
-#: 
-msgid "City is required"
-msgstr "Plaats is verplicht"
 
 #: 
 msgid "Click Save to apply."
@@ -13312,10 +13160,6 @@ msgstr "Alle nummers kopiëren"
 #: 
 msgid "Copy Members to Group"
 msgstr "Leden kopiëren naar groep"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Back-up wordt aangemaakt..."
 
 #: 
 msgid "Creating..."
@@ -13500,10 +13344,6 @@ msgstr "Toevoegen aan de verzamelmap is mislukt"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Annuleren van inschrijving mislukt. Probeer het opnieuw."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Fout bij het kopiëren van URL"
 
 #: 
 msgid "Failed to create backup."
@@ -13894,10 +13734,6 @@ msgid "One-Time Code"
 msgstr "Eenmalige code"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Open in Nieuw Tabblad"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Open uw authenticator-app en scan deze QR-code"
 
@@ -14174,10 +14010,6 @@ msgid "Setup Complete"
 msgstr "Instelling voltooid"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Deel deze URL met familieleden om hun informatie te verifiëren"
-
-#: 
 msgid "Show more options"
 msgstr "Meer opties weergeven"
 
@@ -14330,10 +14162,6 @@ msgid "Validation pending"
 msgstr "Validatie in behandeling"
 
 #: 
-msgid "Verification URL"
-msgstr "Verificatie-URL"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Verificatie mislukt. Probeer het opnieuw."
 
@@ -14398,10 +14226,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "U ontvangt back-upcodes die kunnen worden gebruikt als u de toegang tot uw app verliest"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "Je werkbestand is leeg"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Uw account is nu beveiligd"
 
@@ -14420,10 +14244,6 @@ msgstr "Uw browser-taalvoorkeur wijkt af van uw ChurchCRM-landinstelling"
 #: 
 msgid "Your database already contains data"
 msgstr "Uw database bevat al gegevens"
-
-#: 
-msgid "Zip code is required"
-msgstr "Postcode is verplicht"
 
 #: 
 msgid "added"
@@ -14844,10 +14664,6 @@ msgstr "U heeft geen toestemming om een notitie toe te voegen voor dit gezin."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "U heeft geen toestemming om een notitie toe te voegen voor deze persoon."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "U heeft geen toestemming om deze notitie te bewerken"
 
 #: 
 msgid "Account locked"
@@ -15670,10 +15486,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Bevestig het verwijderen van dit gezinsrecord"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Bevestig uw gezinsinformatie"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Selecteer een ander gezin om deze giften aan te koppelen"
 
@@ -15894,10 +15706,6 @@ msgid "Select a person"
 msgstr "Selecteer een persoon"
 
 #: 
-msgid "Select role"
-msgstr "Selecteer rol"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Selecteer type (optioneel)"
 
@@ -16054,10 +15862,6 @@ msgid "At least one fund allocation is required"
 msgstr "Er is minimaal één fondstoewijzing vereist"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Ten minste één fonds moet een bedrag groter dan nul hebben"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "Automatisch een verjaardagsgroet per e-mail sturen op iemands verjaardag"
 
@@ -16134,18 +15938,6 @@ msgid "Editing a Pledge"
 msgstr "Toezegging bewerken"
 
 #: 
-msgid "Enable (full)"
-msgstr "Inschakelen (volledig)"
-
-#: 
-msgid "Errors only"
-msgstr "Alleen fouten"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Fouten — serverfouten en JS-uitzonderingen"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "Toezegging maken mislukt"
 
@@ -16184,10 +15976,6 @@ msgstr "Groepssleutel is vereist"
 #: 
 msgid "Happy Birthday"
 msgstr "Gefeliciteerd met uw verjaardag"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Help ChurchCRM te verbeteren"
 
 #: 
 msgid "IP addresses"
@@ -16258,16 +16046,8 @@ msgid "None (disabled)"
 msgstr "Geen (uitgeschakeld)"
 
 #: 
-msgid "OS family"
-msgstr "OS-familie"
-
-#: 
 msgid "Overpaid"
 msgstr "Te veel betaald"
-
-#: 
-msgid "PHP version"
-msgstr "PHP-versie"
 
 #: 
 msgid "Page route"
@@ -16304,10 +16084,6 @@ msgstr "Toezeggingsgroep niet gevonden"
 #: 
 msgid "Pledges & Payments"
 msgstr "Toezeggingen & Betalingen"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Vertalingen prioriteren"
 
 #: 
 msgid "Purpose"
@@ -16372,10 +16148,6 @@ msgstr "Gebruikersnamen, e-mailadressen of rollen"
 #: 
 msgid "View pledge or payment details"
 msgstr "Toezeggings- of betalingsgegevens bekijken"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Waarschuwingen — waarschuwingen, fouten en JS-uitzonderingen"
 
 #: 
 msgid "What is sent"
@@ -16570,12 +16342,6 @@ msgstr "Geen betalingen gevonden voor de geselecteerde stortingen"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "Geen geldige stortings-ID's opgegeven"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "PDF succesvol gemaild naar %d gezin."
-msgstr[1] "PDF succesvol gemaild naar %d gezinnen."
 
 #: 
 msgid "Partial Send"
@@ -17116,10 +16882,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Back-up wordt gemaakt en geüpload. Dit kan enkele minuten duren..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Resetten van database is mislukt."
-
-#: 
 msgid "Deceased"
 msgstr "Overleden"
 
@@ -17316,10 +17078,6 @@ msgid "Log settings saved"
 msgstr "Loginstellingen opgeslagen"
 
 #: 
-msgid "Login Name is Required"
-msgstr "Inlognaam is verplicht"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "Persoon als actief gemarkeerd"
 
@@ -17444,10 +17202,6 @@ msgid "Sending..."
 msgstr "Verzenden..."
 
 #: 
-msgid "Sending…"
-msgstr "Verzenden…"
-
-#: 
 msgid "Settings reset"
 msgstr "Instellingen gereset"
 
@@ -17516,16 +17270,8 @@ msgid "Upcoming"
 msgstr "Aankomend"
 
 #: 
-msgid "Valid Until"
-msgstr "Geldig tot"
-
-#: 
 msgid "View active only"
 msgstr "Alleen actieve weergeven"
-
-#: 
-msgid "View all"
-msgstr "Alles weergeven"
 
 #: 
 msgid "View all (including inactive)"
@@ -18304,10 +18050,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "Uw boekjaar begint in %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Er is een fout opgetreden"
-
-#: 
 msgid "Approve"
 msgstr "Goedkeuren"
 
@@ -18478,12 +18220,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d dag"
 msgstr[1] "%d dagen"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d standaard overgeslagen om een andere reden (het moment is voorbij, geannuleerd of vol)"
-msgstr[1] "%d standaardinroosteringen overgeslagen om een andere reden (het moment is voorbij, geannuleerd of vol)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18746,10 +18482,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "Een thema is een map die uw kerk uploadt naar Include/themes/ op de server. Het standaardsysteemthema wordt met ChurchCRM meegeleverd."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Een overgangsinstelling. De oude pagina's voor Vrijwilligersmogelijkheden en de nieuwe pagina's voor Bedieningen zijn beide beschikbaar, en een persoonsrecord toont beide tabbladen Vrijwilliger, duidelijk gelabeld. Gebruik dit terwijl u een kerk van V1 naar V2 overzet, en schakel daarna alleen over op V2."
-
-#: 
 msgid "A volunteer"
 msgstr "Een vrijwilliger"
 
@@ -18954,10 +18686,6 @@ msgid "Assigned outside the current plan"
 msgstr "Buiten het huidige plan ingeroosterd"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Inroostering geannuleerd"
-
-#: 
 msgid "Assignment not found"
 msgstr "Inroostering niet gevonden"
 
@@ -19064,10 +18792,6 @@ msgstr "Inroostering annuleren"
 #: 
 msgid "Cancel this assignment"
 msgstr "Deze inroostering annuleren"
-
-#: 
-msgid "Cancelled"
-msgstr "Geannuleerd"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19224,10 +18948,6 @@ msgstr "Website van de kerk"
 #: 
 msgid "Close event details"
 msgstr "Activiteitendetails sluiten"
-
-#: 
-msgid "Colour"
-msgstr "Kleur"
 
 #: 
 msgid "Completed"
@@ -19474,10 +19194,6 @@ msgid "Each staffing need must name a position"
 msgstr "Elke bezettingsbehoefte moet een functie noemen"
 
 #: 
-msgid "Edit event"
-msgstr "Evenement Bewerken"
-
-#: 
 msgid "Edit ministry"
 msgstr "Bediening bewerken"
 
@@ -19562,10 +19278,6 @@ msgstr "E-mail verzonden naar {{count}} ontvangers."
 #: 
 msgid "Emails"
 msgstr "E-mails"
-
-#: 
-msgid "End time"
-msgstr "Eindtijd"
 
 #: 
 msgid "Enter counts"
@@ -20846,10 +20558,6 @@ msgid "SMTP test"
 msgstr "SMTP-test"
 
 #: 
-msgid "Save changes"
-msgstr "Wijziging opslaan"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Opgeslagen; deze bediening vraagt niet langer om hulp"
 
@@ -21132,10 +20840,6 @@ msgstr "Bezettingsbehoeften opgeslagen"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Begin met het aanmaken van een bediening en voeg daarna de teams en functies toe die erin dienen."
-
-#: 
-msgid "Start time"
-msgstr "Start datum"
 
 #: 
 msgid "Start typing a name"
@@ -21484,10 +21188,6 @@ msgstr "Het adres is geselecteerd; kopieer het met uw toetsenbord."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "Het assetpad \"%s\" is niet toegestaan."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "De inroostering kon niet worden geannuleerd"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22014,10 +21714,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Dit moment heeft al plaatsgevonden en de inroosteringen ervan kunnen niet meer worden gewijzigd"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Dit moment is geannuleerd"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Dit moment heeft eigen bezettingsbehoeften, los van het rooster."
 
@@ -22186,16 +21882,8 @@ msgid "Validation"
 msgstr "Validatie"
 
 #: 
-msgid "View event"
-msgstr "Evenement bekijken"
-
-#: 
 msgid "View my schedule"
 msgstr "Mijn rooster bekijken"
-
-#: 
-msgid "View person"
-msgstr "Persoon bekijken"
 
 #: 
 msgid "View the event"
@@ -22244,10 +21932,6 @@ msgstr "Vrijwilligerstijden"
 #: 
 msgid "Volunteering"
 msgstr "Vrijwilligerswerk"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Vrijwilligerswerk georganiseerd zoals een kerk het doet. Elke bediening heeft teams en functies; mensen zijn gekwalificeerd voor functies en horen bij de poolgroep van de bediening; roosters volgen de activiteiten in de agenda en leveren gedateerde momenten met bezettingsvereisten op; coördinatoren roosteren mensen in, die aanvaarden, afwijzen of een vervanger voorstellen; herinneringen en meldingen gaan per e-mail. Beheerders en gebruikers met het recht Bedieningen beheren zien elke bediening en mogen ze aanmaken, deactiveren en verwijderen. Een bedieningscoördinator krijgt in plaats daarvan het recht Mijn bedieningen beheren: de kop Bedieningen in de zijbalk toont dan alleen de bedieningen die hij of zij coördineert. Een teamleider leidt zijn of haar team vanuit het Ledenportaal. Gemeenteleden gebruiken het Ledenportaal om hun rooster te zien, te antwoorden, zich aan te melden en hulp aan te bieden."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22786,10 +22470,6 @@ msgid "Cancel this occurrence"
 msgstr "Dit voorkomen annuleren"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "Annuleren stelt niemand in kennis: er wordt geen e-mail verzonden. Toewijzingen worden behouden, er worden geen herinneringen ingepland terwijl deze is geannuleerd, en niemand kan worden toegewezen totdat deze is hersteld."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "Verwijderde gebeurtenissen verlaten elke kalender, met hun inchecks en aantallen, en de bezetting van dit ministerie behoudt alleen de datum. Dit kan niet ongedaan worden gemaakt."
 
@@ -22800,10 +22480,6 @@ msgstr "Evenementen verwijderd: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Evenementen om te verwijderen: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Voorkomen geannuleerd"
 
 #: 
 msgid "Occurrence restored"
@@ -22820,10 +22496,6 @@ msgstr "Voorkomen herstellen"
 #: 
 msgid "Restore this occurrence"
 msgstr "Dit voorkomen herstellen"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Het voorkomen kon niet worden geannuleerd"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -22878,10 +22550,6 @@ msgid "Invalid birth date"
 msgstr "Ongeldige Geboortedatum."
 
 #: 
-msgid "Invalid email address"
-msgstr "Ongeldig e-mailadres"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kiosksinstellingen"
 
@@ -22908,12 +22576,6 @@ msgstr "Geregistreerd als walk-in-gast bij de kiosk tijdens evenement: %s"
 #: 
 msgid "Registering..."
 msgstr "Registreren..."
-
-#: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Chequenummer vereist bij het registreren van chequebetalingen in stortingsinvoer.\n"
-"Opmerking: het uitschakelen hiervan schakelt ook de detectie van dubbele chequenummers uit — dezelfde fysieke cheque kan meer dan eens worden ingevoerd."
 
 #: 
 msgid "This event has ended"
@@ -23552,10 +23214,6 @@ msgstr "Kies hoe ver vooruit roosters worden gevuld en wanneer herinneringen uit
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Kies iemand die al in het adresboek van de gemeente staat. Die persoon wordt vrijwilliger van deze bediening en de coördinatoren krijgen een e-mail. Alleen een coördinator kan iemand verwijderen."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM heeft twee manieren om vrijwilligers te beheren. Er is er maar één tegelijk bedoeld; de instelling voor de vrijwilligerservaring bepaalt welke deze gemeente ziet. Wisselen verbergt of toont pagina’s en menu-items — gegevens worden nooit verwijderd, dus u kunt terugschakelen."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -24838,28 +24496,12 @@ msgid "Closing Line"
 msgstr "Afsluitende regel"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Regelt optionele telemetrie. Mislukte installaties en database-upgrades sturen beperkte diagnostiek naar PostHog, ook als telemetrie uit staat. Deze foutmeldingen bevatten software- en omgevingsversies en een opgeschoonde databasefout, maar geen installatie-id of SQL-instructie."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Mislukte installaties en database-upgrades diagnosticeren"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Details van installatie- en upgradefouten"
-
-#: 
 msgid "Open in browser window"
 msgstr "Openen in browservenster"
 
 #: 
 msgid "Opening Line"
 msgstr "Openingsregel"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Optionele gebruikstelemetrie wordt alleen verstuurd als die is ingeschakeld. Mislukte installaties en database-upgrades sturen altijd een beperkte diagnose om de gemeenschap te helpen, ook als u Nee, bedankt kiest. Foutmeldingen bevatten software- en omgevingsversies en een opgeschoonde databasefout, zonder installatie-id of SQL-instructie."
 
 #: 
 msgid "PDF Handling"
@@ -24896,18 +24538,6 @@ msgstr "Tekst van de verklaring"
 #: 
 msgid "Tax Information"
 msgstr "Fiscale gegevens"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "Telemetrie wordt naar PostHog in de Verenigde Staten gestuurd. Meldingen van installatie- en upgradefouten worden ook verstuurd als optionele telemetrie is uitgeschakeld."
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Deze datum is geannuleerd. Er is verder niets van u nodig."
-
-#: 
-msgid "always sent"
-msgstr "altijd verstuurd"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25372,10 +25002,6 @@ msgstr "E-mail vraagt aandacht"
 #: 
 msgid "Email problem"
 msgstr "E-mailprobleem"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Verzonden aanmeldcode en link geannuleerd"
 
 #: 
 msgid "Emailed verification link"
@@ -25970,10 +25596,6 @@ msgid "Only people with their own email can be added."
 msgstr "Alleen personen met een eigen e-mailadres kunnen worden toegevoegd."
 
 #: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Optionele telemetrie kan paginaroutes, actieve taal, CRM-versie, PHP-versie, besturingssysteemfamilie, het land uit de kerkgegevens en een willekeurige installatie-id bevatten. Foutmeldingen bevatten de installatie-id niet. Gegevens worden naar PostHog in de Verenigde Staten gestuurd."
-
-#: 
 msgid "Passkey"
 msgstr "Passkey"
 
@@ -26444,10 +26066,6 @@ msgstr "Dat kon niet worden verwijderd."
 #: 
 msgid "That device is signed out."
 msgstr "Dat apparaat is afgemeld."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Dat is geen geldig e-mailadres."
 
 #: 
 msgid "That page had been open too long. Please try again."
@@ -27140,4 +26758,590 @@ msgstr "of"
 #: 
 msgid "until %s"
 msgstr "tot %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "In het ledenportaal is een verzoek gedaan om uw e-mailadres bij %1$s te wijzigen van %2$s naar %3$s. De wijziging gaat pas door wanneer de link naar het nieuwe adres wordt gebruikt."
+
+#: 
+msgid "Review Family Information"
+msgstr "Gezinsgegevens controleren"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Er bestaat al een bediening met de naam \"%s\". Kies deze uit de lijst of kies een andere naam."
+
+#: 
+msgid "A new ministry"
+msgstr "Een nieuwe bediening"
+
+#: 
+msgid "A position"
+msgstr "Een functie"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "{{total}} vrijwilligers toevoegen aan eerder omgezette functies?"
+
+#: 
+msgid "Already converted"
+msgstr "Al omgezet"
+
+#: 
+msgid "An existing ministry"
+msgstr "Een bestaande bediening"
+
+#: 
+msgid "Becomes"
+msgstr "Wordt"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM kent twee manieren om vrijwilligers te beheren. Er hoort er maar één tegelijk in gebruik te zijn; de instelling \"Vrijwilligerservaring\" bepaalt welke deze kerk ziet. Wisselen verbergt of toont pagina's en menu-items en verwijdert nooit gegevens. V1 en Beide worden alleen aangeboden zolang vrijwilligersmogelijkheden in gebruik zijn: zodra elke mogelijkheid is omgezet en de kerk V2 gebruikt, verdwijnen ze uit deze lijst."
+
+#: 
+msgid "Convert"
+msgstr "Omzetten"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Vrijwilligersmogelijkheden omzetten"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Nu {{total}} mogelijkheden omzetten? De V1-gegevens blijven ongewijzigd tot de vrijwilligersmogelijkheden worden uitgefaseerd."
+
+#: 
+msgid "Converted"
+msgstr "Omgezet"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Omgezet: {{positions}} functies en {{ministries}} bedieningen, {{qualifications}} vrijwilligers gekwalificeerd."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Elke mogelijkheid wordt een functie in het eerste team van één bediening, en iedereen die eraan gekoppeld is, wordt gekwalificeerd voor die functie. Zelf aanmelden staat voor deze functies eerst uit."
+
+#: 
+msgid "Everything is converted."
+msgstr "Alles is omgezet."
+
+#: 
+msgid "Existing ministry"
+msgstr "Bestaande bediening"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Geef de nieuwe bediening een naam van maximaal 100 tekens."
+
+#: 
+msgid "Its own ministry"
+msgstr "Een eigen bediening"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Sindsdien gekoppeld: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Koppelingen die niet kunnen worden omgezet"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Elk een eigen nieuwe bediening"
+
+#: 
+msgid "New ministry name"
+msgstr "Naam nieuwe bediening"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Er wordt geen e-mail verstuurd, en de vrijwilligersmogelijkheden blijven ongewijzigd tot ze worden uitgefaseerd."
+
+#: 
+msgid "No name"
+msgstr "Geen naam"
+
+#: 
+msgid "Not converted"
+msgstr "Niet omgezet"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Functie-schakelaars openen"
+
+#: 
+msgid "Open Ministries"
+msgstr "Bedieningen openen"
+
+#: 
+msgid "Opportunities"
+msgstr "Mogelijkheden"
+
+#: 
+msgid "Opportunity"
+msgstr "Mogelijkheid"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "Mogelijkheid #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Personen die sinds de omzetting aan omgezette vrijwilligersmogelijkheden zijn gekoppeld: %d. Voeg ze toe aan hun functies voordat de vrijwilligersmogelijkheden begin 2027 worden uitgefaseerd."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Bekijk eerst een voorvertoning van de omzetting en stuur de revisie mee die deze teruggaf."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Hernoemd om namen uniek te houden"
+
+#: 
+msgid "Review the conversion"
+msgstr "Omzetting controleren"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Stuur de omzettingskeuze als JSON-object."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Stuur de mogelijkheden die bedieningen worden als lijst van ID's."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Die bediening bestaat niet."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "De ChurchCRM-versie waarin een beheerder de melding over het uitfaseren van vrijwilligersmogelijkheden heeft gesloten."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "De vrijwilligersmogelijkheden zijn sinds de voorvertoning gewijzigd. Controleer de voorvertoning opnieuw en zet daarna om."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "De bevestiging kon niet worden geopend. Laad de pagina opnieuw en probeer het nogmaals."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Er kon geen voorvertoning van de omzetting worden gemaakt."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "De omzetting is mislukt. Er is niets gewijzigd."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "De bediening \"%s\" heeft geen team voor de functies."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "De server was niet bereikbaar. Laad de pagina opnieuw om te zien of de omzetting is uitgevoerd."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Er zijn geen vrijwilligersmogelijkheden om om te zetten."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Vrijwilligersbeheer schakelt over naar Beide, zodat de nieuwe bedieningen naast de vrijwilligersmogelijkheden zichtbaar zijn."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Vrijwilligersmogelijkheden worden uitgefaseerd"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Vrijwilligersmogelijkheden omgezet"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Vrijwilligersmogelijkheden worden begin 2027 uitgefaseerd. Zet ze om naar bedieningen om te bewaren wie waarvoor vrijwilliger is."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Vrijwilligersmogelijkheden worden begin 2027 uitgefaseerd. Zet nu uw %1$d mogelijkheden en %2$d vrijwilligers om naar bedieningen. U kunt het resultaat eerst bekijken voordat er iets verandert."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Gekwalificeerde vrijwilligers"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Vrijwilligers om toe te voegen aan omgezette functies"
+
+#: 
+msgid "What it becomes"
+msgstr "Wat het wordt"
+
+#: 
+msgid "What will happen"
+msgstr "Wat er gebeurt"
+
+#: 
+msgid "Where they go"
+msgstr "Waar ze heen gaan"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Welke oude vrijwilligersmogelijkheden zijn omgezet, en welke functie elk ervan is geworden."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Welke vrijwilligerservaring deze kerk gebruikt. Vrijwilligersmogelijkheden (V1) worden begin 2027 uitgefaseerd."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Uw vrijwilligersmogelijkheden zijn omgezet naar bedieningen. Zet Vrijwilligersbeheer op V2 voordat de vrijwilligersmogelijkheden begin 2027 worden uitgefaseerd."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "naar een nieuwe bediening, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "naar de bediening {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "niet meer in ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Zijbalk inklappen"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Zijbalk uitklappen"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Voer een geldig e-mailadres in met alleen ASCII-tekens vóór de @."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Het e-mailadres is ongeldig"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Weet u zeker dat u {{name}} wilt verwijderen?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Systeeminformatie kon niet worden opgehaald. Probeer het opnieuw."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Geen betalingen gevonden voor deze periode."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Betalingen per fonds"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Onbekend fonds"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Vraag uw hostingprovider de database naar een ondersteunde versie te brengen en probeer het daarna opnieuw."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Vraag uw hostingprovider de database naar een ondersteunde versie te brengen."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Namen van feestdagen volgen de taalinstelling van elke gebruiker. Als een feestdag geen naam heeft in die taal, wordt deze in het Engels getoond."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Namen van feestdagen in uw taal"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Een chequenummer vereisen bij het vastleggen van chequebetalingen in stortingen. Indien uitgeschakeld kan een cheque worden opgeslagen met een leeg chequenummer of 0, en die worden niet op dubbele invoer gecontroleerd."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Chequenummer vereisen bij chequebetalingen"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "De upgrade is niet gestart, dus er is niets gewijzigd."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Deze upgrade kan niet op uw database worden uitgevoerd."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Uw databaseserver (%1$s %2$s) is ouder dan ChurchCRM ondersteunt (MySQL %3$s of MariaDB %4$s en hoger)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Keur dit zelf geregistreerde gezin goed voordat het een verificatie-e-mail ontvangt"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "Vergelijk de totalen van de toezeggingen van gezinnen voor twee fiscale jaren."
+
+#: 
+msgid "Email Portal Link"
+msgstr "Portaallink e-mailen"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "E-mail het gezin een link naar het ledenportaal, waar het zijn gegevens kan controleren en bijwerken, of leg vast dat u de gegevens persoonlijk hebt geverifieerd."
+
+#: 
+msgid "Family is inactive"
+msgstr "Gezin is niet actief"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Eerste fiscale jaar"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Fiscale jaren"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Giftenoverzicht — alleen voorbeeld"
+
+#: 
+msgid "Last invited"
+msgstr "Laatst uitgenodigd"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Laatste aanmelding bij portaal"
+
+#: 
+msgid "Last verified"
+msgstr "Laatst geverifieerd"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "Geen enkel actief, goedgekeurd lid van dit gezin heeft een e-mailadres. Verifieer de gegevens in plaats daarvan persoonlijk."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Er zijn geen toezeggingen gevonden voor deze fiscale jaren."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "Vergelijking van toezeggingen"
+
+#: 
+msgid "Preview PDF"
+msgstr "PDF-voorbeeld"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Tweede fiscale jaar"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Meld u met dit e-mailadres aan bij het ledenportaal om de gegevens van uw gezin te controleren. Bevestig op de pagina Mijn familie dat alles klopt, of werk uw gegevens bij."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Dit gezin is niet actief en ontvangt daarom geen verificatie-e-mails."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Dit zelf geregistreerde gezin wacht op goedkeuring. Bij goedkeuring ontvangt het gezin per e-mail een uitnodiging om zich aan te melden bij het ledenportaal en zijn gegevens te controleren."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Gebruikt alleen opgeslagen instellingen en fictieve voorbeeldgiften."
+
+#: 
+msgid "Verification"
+msgstr "Verificatie"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "Verificatie-e-mail verzonden naar %d gezin."
+msgstr[1] "Verificatie-e-mail verzonden naar %d gezinnen."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "Verificatie-e-mail verzonden naar de gezinsleden."
+
+#: 
+msgid "by the family in the portal"
+msgstr "door het gezin in het portaal"
+
+#: 
+msgid "in person by staff"
+msgstr "persoonlijk door medewerkers"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d standaard overgeslagen om een andere reden (het moment is voorbij, geannuleerd of vol)"
+msgstr[1] "%d standaardinroosteringen overgeslagen om een andere reden (het moment is voorbij, geannuleerd of vol)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Een overgangsinstelling. De oude pagina's voor Vrijwilligersmogelijkheden en de nieuwe pagina's voor Bedieningen zijn beide beschikbaar, en een persoonsrecord toont beide tabbladen Vrijwilliger, duidelijk gelabeld. Gebruik dit terwijl u een kerk van V1 naar V2 overzet, en schakel daarna alleen over op V2."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Inroostering geannuleerd"
+
+#: 
+msgid "Canceled"
+msgstr "Geannuleerd"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "Annuleren stelt niemand in kennis: er wordt geen e-mail verzonden. Toewijzingen worden behouden, er worden geen herinneringen ingepland terwijl deze is geannuleerd, en niemand kan worden toegewezen totdat deze is hersteld."
+
+#: 
+msgid "Color"
+msgstr "Kleur"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Verzonden aanmeldcode en link geannuleerd"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "Gezinsrollen (hoofd van het huishouden, echtgeno(o)t, kind, enz.) helpen uw dossiers te organiseren."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Voorkomen geannuleerd"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Vertalingen prioriteren"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "De inroostering kon niet worden geannuleerd"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "Het voorkomen kon niet worden geannuleerd"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Deze datum is geannuleerd. Er is verder niets van u nodig."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Dit moment is geannuleerd"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Vrijwilligerswerk georganiseerd zoals een kerk het doet. Elke bediening heeft teams en functies; mensen zijn gekwalificeerd voor functies en horen bij de poolgroep van de bediening; roosters volgen de activiteiten in de agenda en leveren gedateerde momenten met bezettingsvereisten op; coördinatoren roosteren mensen in, die aanvaarden, afwijzen of een vervanger voorstellen; herinneringen en meldingen gaan per e-mail. Beheerders en gebruikers met het recht Bedieningen beheren zien elke bediening en mogen ze aanmaken, deactiveren en verwijderen. Een bedieningscoördinator krijgt in plaats daarvan het recht Mijn bedieningen beheren: de kop Bedieningen in de zijbalk toont dan alleen de bedieningen die hij of zij coördineert. Een teamleider leidt zijn of haar team vanuit het Ledenportaal. Gemeenteleden gebruiken het Ledenportaal om hun rooster te zien, te antwoorden, zich aan te melden en hulp aan te bieden."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Actieve installaties en upgraderesultaten tellen"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Database-engine en hoofd-/subversie"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Fouten — installatiestatistieken, waarschuwingen, fouten en JS-uitzonderingen"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Helpt u ons problemen te vinden en op te lossen?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "Installatie deelt minimale installatie- en upgradestatistieken. Fouten voegt waarschuwingen en foutrapporten toe. Volledig voegt paginaweergaven toe. Geen verstuurt alleen mislukte installaties en upgrades."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Installatie — installatie- en upgradestatistieken (standaard)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Installatie- en upgraderesultaten, vorige versie bij upgrades en een dagelijkse check-in tijdens gebruik"
+
+#: 
+msgid "Installation profile"
+msgstr "Installatieprofiel"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Landinstelling (Fouten en Volledig)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Nooit gedeeld: leden-, giften- of andere kerkgegevens, de naam van uw kerk, uw webadres of servernaam, of e-mailadressen. Uw land is het land uit de instellingen van uw kerk en wordt niet uit uw netwerk afgeleid."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Besturingssysteemfamilie (Fouten en Volledig)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP-versie (Fouten en Volledig)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Bekijk precies wat er wordt gedeeld, of wijzig uw keuze, via Admin → Telemetrie."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Productie-, demo- en testinstallaties onderscheiden"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Anonieme installatiestatistieken delen?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Fout- en gebruiksrapporten delen"
+
+#: 
+msgid "Share install statistics"
+msgstr "Installatiestatistieken delen"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Aanvullend gedeeld: waarschuwingen, foutdetails en welke pagina's worden geopend."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Gedeeld: dat ChurchCRM is geïnstalleerd of geüpgraded en of dat is gelukt, een dagelijkse check-in tijdens gebruik, het versienummer, uw land en het type database. Een willekeurige installatie-ID telt elke installatie één keer."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Databasecompatibiliteit begrijpen"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Deze keuze wordt één keer gevraagd. U kunt deze op elk moment wijzigen. Met Nee, bedankt wordt alleen een mislukte installatie of upgrade gemeld."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Uw gegevens zijn van u. Installatie deelt alleen installatie- en upgraderesultaten, installatie-ID, softwareversie, installatieprofiel, ingesteld land en database-engine met hoofd-/subversie. Fouten voegt waarschuwingen en foutdetails toe. Volledig voegt paginaweergaven toe. Geen verstuurt alleen mislukte installaties en upgrades. Geen enkel niveau verstuurt uw webadres of servernaam. Testinstallaties versturen niets. Telemetrie wordt verzonden naar PostHog in de Verenigde Staten."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Uw gegevens zijn van u. Dit rapporteert over de software, nooit over uw kerk of haar mensen."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Uw gegevens zijn van u. Om installaties te tellen, meldt ChurchCRM dat het is geïnstalleerd of geüpgraded en of dat is gelukt, een dagelijkse check-in tijdens gebruik, plus het versienummer, uw land, het type database en een willekeurige installatie-ID. Het meldt nooit leden-, giften- of andere kerkgegevens, de naam van uw kerk, uw webadres of servernaam, of e-mailadressen. U kunt dit op elk moment uitschakelen via Admin → Telemetrie; een mislukte installatie of upgrade wordt dan nog steeds gemeld. Waarschuwingen, foutdetails en paginaweergaven worden alleen gedeeld als u daarvoor kiest."
 

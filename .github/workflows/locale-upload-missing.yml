@@ -1,8 +1,17 @@
 name: "Locale: upload translations"
+run-name: >-
+  ${{ github.event_name == 'workflow_dispatch' && 'Locale upload translations: manual' || format('Locale upload translations: {0}', github.ref_name) }}
 
-# Uploads translated missing-term batches (locale/terms/missing/<locale>/) to
-# POEditor, then starts "Locale: sync" in download-only mode so the translations come back
-# to master as a PR. Replaces running poeditor-upload-missing.js by hand.
+# RETIRED (#11416): translations are written straight into the repo (npm run locale:apply) and reviewed
+# as a normal PR, so nothing is uploaded to POEditor any more and this workflow no longer starts by
+# itself. The follow-up PR deletes it.
+#
+# Translate flow, in plain words:
+#   1. A translation agent fills locale/terms/missing/<locale>/ batches on a locale/translate/* branch
+#      and pushes after every locale. That branch is never merged: the push is the upload.
+#   2. This workflow uploads the changed locales to POEditor.
+#   3. It then starts "Locale: sync POEditor" download-only (upload_terms=false), which brings the
+#      translations back to master as the download PR and merges it.
 #
 # Triggers:
 #   - push to a translation branch (locale/translate/**, cut by
@@ -14,12 +23,7 @@ name: "Locale: upload translations"
 # must push with its own credentials for the push trigger to fire.
 
 on:
-  push:
-    branches:
-      - 'locale/translate/**'
-      - master
-    paths:
-      - 'locale/terms/missing/**'
+  # The push trigger (translation branches, master) was removed with #11416; manual runs only.
   workflow_dispatch:
     inputs:
       locales:

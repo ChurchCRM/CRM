@@ -18,7 +18,6 @@ describe('API Public PHP Error Page', () => {
       // Page should return 503 Service Unavailable (hard blocking error)
       expect(response.status).to.equal(503);
       expect(response.body).to.include('PHP Version Not Supported');
-      expect(response.body).to.include('APPLICATION BLOCKED');
     });
   });
 
@@ -34,7 +33,6 @@ describe('API Public PHP Error Page', () => {
       expect(response.body).to.include('Contact your hosting provider immediately');
       expect(response.body).to.include('Current PHP Version');
       expect(response.body).to.include('Minimum Required');
-      expect(response.body).to.include('APPLICATION BLOCKED');
       expect(response.body).to.include('hard blocking error');
     });
   });

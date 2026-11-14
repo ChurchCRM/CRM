@@ -187,10 +187,14 @@ describe("Admin → Member Portal members, audit, permissions and the person car
         cy.get("#portalAuditFilters").find("button[type=reset]").click();
         cy.get("#portalAuditPerson").parent().find(".ts-control input").type("Bruce");
         cy.get(".ts-dropdown .option").contains("Bruce Kennedy").click();
-        cy.get("#portalAuditTable tbody tr").first().should("contain.text", "Sign-in enabled");
-        cy.get("#portalAuditTable tbody tr").each(($row) => {
-            expect($row.text()).to.contain("Bruce Kennedy");
+        // The table first redraws unfiltered after Clear; retry until every row is Bruce's.
+        cy.get("#portalAuditTable tbody tr").should(($rows) => {
+            expect($rows.length).to.be.greaterThan(0);
+            $rows.each((_, row) => {
+                expect(row.textContent).to.contain("Bruce Kennedy");
+            });
         });
+        cy.get("#portalAuditTable tbody tr").first().should("contain.text", "Sign-in enabled");
         cy.get("#portalAuditTable").should("not.contain.text", "UI audit spec");
     });
 

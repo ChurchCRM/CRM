@@ -57,7 +57,7 @@ test.describe('signed out', () => {
   test.use({ storageState: { cookies: [], origins: [] } });
 
   test('church-logo-sign-in', async ({ page }, testInfo) => {
-    await page.goto('/login');
+    await page.goto('/session/begin');
     await expect(page.locator('input[name=User]')).toBeVisible({ timeout: 15000 });
     await expect(page.locator('img[src*="church-logo.png"]').first()).toBeVisible();
     await waitForImages(page);

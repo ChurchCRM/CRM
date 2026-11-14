@@ -714,10 +714,6 @@ msgid "Not a valid Wedding Date"
 msgstr "Nem érvényes Wedding Date"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "Email nem érvényes"
-
-#: 
 msgid "Family Info"
 msgstr "Családi információk"
 
@@ -894,10 +890,6 @@ msgid "Do you want to proceed?"
 msgstr "Szeretné folytatni?"
 
 #: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "A család információinak másolatát készül elküldeni a következő e-mail címekre"
-
-#: 
 msgid "Financial Reports"
 msgstr "Pénzügyi jelentések"
 
@@ -915,9 +907,8 @@ msgid "Pledge Summary"
 msgstr "Pledge Összefoglaló"
 
 #: 
-#, fuzzy
 msgid "Pledge Family Summary"
-msgstr "Pledge FamilySummary"
+msgstr "Családi vállalások összesítője"
 
 #: 
 msgid "Pledge Reminders"
@@ -1462,10 +1453,6 @@ msgid "Not a valid Membership Date"
 msgstr "Nem érvényes tagság Mikortól"
 
 #: 
-msgid "Work Email is Not Valid"
-msgstr "Munkahelyi e-mail nem érvényes"
-
-#: 
 msgid "Birth Month"
 msgstr "Születési hónap"
 
@@ -1538,11 +1525,11 @@ msgstr "Legalább egy alap kell rendelkeznie nem nulla összeg."
 
 #: 
 msgid "Must specify non-zero check number"
-msgstr "Meg kell adni a nem nulla szám ellenőrzés"
+msgstr "Meg kell adni egy nullától eltérő csekkszámot"
 
 #: 
 msgid "Check number not valid for 'CASH' payment"
-msgstr "Ellenőrizze szám nem érvényes a \"készpénz\" fizetési"
+msgstr "A csekkszám készpénzes fizetésnél nem érvényes"
 
 #: 
 msgid "Payment Schedule"
@@ -1854,10 +1841,6 @@ msgstr "Telefonszám"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "Egyedi Legördülő lista"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "A PDF sikeresen elküldve a családtagoknak."
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3915,10 +3898,6 @@ msgid "Please verify your family's information"
 msgstr "Kérjük, ellenőrizze családja adatait"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "Nem sikerült betölteni az ellenőrző adatokat"
-
-#: 
 msgid "No Changes"
 msgstr "Nincs változás"
 
@@ -3931,24 +3910,8 @@ msgid "Oops! Page not found."
 msgstr "Hoppá! Az oldal nem található."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "Kérjük, adja meg a következőket a család ellenőrzésének megkezdéséhez"
-
-#: 
-msgid "Family Verification"
-msgstr "Családi ellenőrzés"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "Családi adatok ellenőrzésének kérése"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "Válassza ki, hogyan szeretné kérni a családi adatok ellenőrzését"
-
-#: 
-msgid "Online Verification"
-msgstr "Online ellenőrzés"
 
 #: 
 msgid "Verified In Person"
@@ -4128,10 +4091,6 @@ msgstr "A tulajdonság hozzárendelése sikeresen törölve."
 #: 
 msgid "The property could not be unassigned."
 msgstr "A tulajdonság hozzárendelését nem sikerült törölni."
-
-#: 
-msgid "Select event"
-msgstr "Válasszon eseményt"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4338,10 +4297,6 @@ msgid "Kiosk Manager"
 msgstr "Kioszk kezelő"
 
 #: 
-msgid "Report an issue"
-msgstr "Hiba bejelentése"
-
-#: 
 msgid "Self Verification"
 msgstr "Önellenőrzés"
 
@@ -4370,10 +4325,6 @@ msgstr "Arab - Egyiptom"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "Várakozó önigazolás"
 
 #: 
 msgid "Self Verify"
@@ -4755,16 +4706,8 @@ msgid "User must have Delete Records permission"
 msgstr "A felhasználónak Rekordok törlése engedéllyel kell rendelkeznie"
 
 #: 
-msgid "invalid event type id"
-msgstr "érvénytelen eseménytípus azonosítója"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "érvénytelen naptár rögzítés"
-
-#: 
-msgid "invalid status value"
-msgstr "érvénytelen státusz értéke"
 
 #: 
 msgid "invalid export value"
@@ -5367,10 +5310,6 @@ msgstr "Rendszerfrissítés alkalmazása..."
 
 #: 
 msgid "Back to Login"
-msgstr "Vissza a bejelentkezéshez"
-
-#: 
-msgid "Back to login"
 msgstr "Vissza a bejelentkezéshez"
 
 #: 
@@ -6607,10 +6546,6 @@ msgid "Additional Information"
 msgstr "Kiegészítő Információ"
 
 #: 
-msgid "All information is correct"
-msgstr "Az összes információ helyes"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "Lehetőségek Hozzárendelése"
 
@@ -6623,20 +6558,12 @@ msgid "Choose opportunities..."
 msgstr "Válasszon lehetőségeket..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "Családi információk megerősítése"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "Kapcsolat és személyes információ"
 
 #: 
 msgid "Edited"
 msgstr "Szerkesztve"
-
-#: 
-msgid "Email PDF"
-msgstr "E-mail PDF"
 
 #: 
 msgid "Newsletter"
@@ -6647,40 +6574,12 @@ msgid "Personal"
 msgstr "Személyes"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "Kérjük, frissítse az adatainkat a módosításokkal"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "Adjon meg javításokat vagy további információkat itt..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "Válasszon lehetőségeket"
 
 #: 
-msgid "Submit Verification"
-msgstr "Ellenőrzés beküldése"
-
-#: 
-msgid "Thank You!"
-msgstr "Köszönjük!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "Látogassa meg webhelyünket"
-
-#: 
 msgid "Volunteer"
 msgstr "Önkéntes"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "Hiba történt az Ön ellenőrzésének feldolgozása során. Kérjük, próbálkozzon újra vagy lépjen kapcsolatba velünk közvetlenül."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "Az Ön ellenőrzési kérelmét megkaptuk. Köszönjük, hogy naprakészen tartja adatait."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8140,10 +8039,6 @@ msgid "City is required."
 msgstr "A város megadása kötelező."
 
 #: 
-msgid "Clear filter"
-msgstr "Szűrő törlése"
-
-#: 
 msgid "Configuration item not found"
 msgstr "A konfigurációs elem nem található"
 
@@ -8412,10 +8307,6 @@ msgstr "Személy hozzáadása"
 #: 
 msgid "Add all cart items to a group"
 msgstr "A lista összes elemének hozzáadása egy csoporthoz"
-
-#: 
-msgid "Add all to Cart"
-msgstr "Összes hozzáadása a listához"
 
 #: 
 msgid "Add cart items to a family"
@@ -8922,10 +8813,6 @@ msgid "Family Profile"
 msgstr "Családi profil"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "A családi szerepek (családfő, házastárs, gyermek stb.) segítik a nyilvántartás rendszerezését."
-
-#: 
 msgid "Family vs Person"
 msgstr "Család és személy"
 
@@ -9424,10 +9311,6 @@ msgid "Record why attendees visited your church"
 msgstr "Rögzítse, miért látogattak el a vendégek a gyülekezetbe"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "Összes eltávolítása a listából"
-
-#: 
 msgid "Remove from Class"
 msgstr "Eltávolítás az osztályból"
 
@@ -9898,10 +9781,6 @@ msgstr "Idei események"
 #: 
 msgid "Everyone"
 msgstr "Mindenki"
-
-#: 
-msgid "Failed to delete note"
-msgstr "Nem sikerült a megjegyzés törlése"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11801,10 +11680,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "A tartomány kezdete érvényes ÉÉÉÉ-HH-NN formátumú dátum kell legyen."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "A tartomány kezdete a vége előtt kell legyen"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "A tartomány kezdete a vége előtt kell legyen."
 
@@ -12025,10 +11900,6 @@ msgid "Cannot move property in that direction"
 msgstr "Nem lehet a tulajdonságot abba az irányba mozgatni"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "Családi adatok megerősítése"
-
-#: 
 msgid "Delete failed"
 msgstr "Törlés sikertelen"
 
@@ -12069,20 +11940,12 @@ msgid "Invalid target family"
 msgstr "Érvénytelen célcsalád"
 
 #: 
-msgid "Log Out"
-msgstr "Kijelentkezés"
-
-#: 
 msgid "Membership not found"
 msgstr "A tagság nem található"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "A jelszó sikeresen megváltozott a következő felhasználónál:"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "Kérjük, tekintse át az alábbi családi adatait, és erősítse meg, vagy kérjen módosítást."
 
 #: 
 msgid "Please select a target family."
@@ -12765,10 +12628,6 @@ msgid "Failed to install plugin from URL"
 msgstr "A beépülő modul URL-ről való telepítése sikertelen"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "A jóváhagyott beépülő modulok listájának betöltése sikertelen"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "A jóváhagyott beépülő modulok listájának betöltése sikertelen."
 
@@ -12827,10 +12686,6 @@ msgstr "Kötőjeles formátum. Egyeznie kell a zip fájlon belüli legfelső szi
 #: 
 msgid "Loading approved plugin list…"
 msgstr "Jóváhagyott beépülő modulok listájának betöltése…"
-
-#: 
-msgid "Loading…"
-msgstr "Betöltés…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13278,10 +13133,6 @@ msgid "Change Your Locale"
 msgstr "Nyelvi beállítás módosítása"
 
 #: 
-msgid "Change role"
-msgstr "Szerep módosítása"
-
-#: 
 msgid "Check Number"
 msgstr "Csekkszám"
 
@@ -13296,10 +13147,6 @@ msgstr "A bejelentkezés sikertelen. Kérjük, próbálja újra."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "A kijelentkezés sikertelen. Kérjük, próbálja újra."
-
-#: 
-msgid "City is required"
-msgstr "A város szükséges"
 
 #: 
 msgid "Click Save to apply."
@@ -13368,10 +13215,6 @@ msgstr "Összes szám másolása"
 #: 
 msgid "Copy Members to Group"
 msgstr "Tagok másolása csoportba"
-
-#: 
-msgid "Creating Backup..."
-msgstr "Biztonsági mentés készítése..."
 
 #: 
 msgid "Creating..."
@@ -13556,10 +13399,6 @@ msgstr "Nem sikerült hozzáadni a kosárhoz"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "Az iratkozás lemondása sikertelen. Kérjük, próbálja újra."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "Az URL másolása nem sikerült"
 
 #: 
 msgid "Failed to create backup."
@@ -13950,10 +13789,6 @@ msgid "One-Time Code"
 msgstr "Egyszeri kód"
 
 #: 
-msgid "Open in New Tab"
-msgstr "Megnyitás új lapon"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "Nyissa meg a hitelesítő alkalmazást, és olvassa be a QR-kódot"
 
@@ -14230,10 +14065,6 @@ msgid "Setup Complete"
 msgstr "A beállítás kész"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "Ossza meg ezt az URL-t családtagjaival az adataik ellenőrzéséhez"
-
-#: 
 msgid "Show more options"
 msgstr "További lehetőségek megjelenítése"
 
@@ -14386,10 +14217,6 @@ msgid "Validation pending"
 msgstr "Ellenőrzés folyamatban"
 
 #: 
-msgid "Verification URL"
-msgstr "Ellenőrzés URL"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "Az ellenőrzés sikertelen. Kérjük, próbálja újra."
 
@@ -14454,10 +14281,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "Biztonsági mentési kódokat kap, amelyeket akkor használhat, ha elveszíti hozzáférését az alkalmazáshoz"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "A kosara üres"
-
-#: 
 msgid "Your account is now protected"
 msgstr "Fiókja mostantól védett"
 
@@ -14476,10 +14299,6 @@ msgstr "A böngésző nyelvi beállítása eltér a ChurchCRM területi beállí
 #: 
 msgid "Your database already contains data"
 msgstr "Az adatbázis már tartalmaz adatokat"
-
-#: 
-msgid "Zip code is required"
-msgstr "Az irányítószám szükséges"
 
 #: 
 msgid "added"
@@ -14900,10 +14719,6 @@ msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a családhoz."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "Nincs jogosultsága megjegyzés hozzáadásához ehhez a személyhez."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "Nincs jogosultsága ennek a megjegyzésnek a szerkesztéséhez"
 
 #: 
 msgid "Account locked"
@@ -15726,10 +15541,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "Kérjük, erősítse meg a családi rekord törlését"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "Kérjük, erősítse meg a családi adatokat"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "Kérjük, válasszon másik családot, amelyhez ezeket az adományokat társítja"
 
@@ -15950,10 +15761,6 @@ msgid "Select a person"
 msgstr "Személy kiválasztása"
 
 #: 
-msgid "Select role"
-msgstr "Szerepkör kiválasztása"
-
-#: 
 msgid "Select type (optional)"
 msgstr "Típus kiválasztása (opcionális)"
 
@@ -16110,10 +15917,6 @@ msgid "At least one fund allocation is required"
 msgstr "Legalább egy alaphoz való hozzárendelés szükséges"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "Legalább egy alapnak nullától eltérő összeggel kell rendelkeznie"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "Születésnapi köszöntő e-mail automatikus küldése a tagoknak születésnapjukon"
 
@@ -16190,18 +15993,6 @@ msgid "Editing a Pledge"
 msgstr "Fogadalom szerkesztése"
 
 #: 
-msgid "Enable (full)"
-msgstr "Engedélyezés (teljes)"
-
-#: 
-msgid "Errors only"
-msgstr "Csak hibák"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "Hibák – szerverhiba és JS kivételek"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "A fogadalom létrehozása sikertelen"
 
@@ -16240,10 +16031,6 @@ msgstr "A csoportkulcs megadása kötelező"
 #: 
 msgid "Happy Birthday"
 msgstr "Boldog születésnapot"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "Segítsen fejleszteni a ChurchCRM-et"
 
 #: 
 msgid "IP addresses"
@@ -16314,16 +16101,8 @@ msgid "None (disabled)"
 msgstr "Nincs (letiltva)"
 
 #: 
-msgid "OS family"
-msgstr "Operációs rendszer família"
-
-#: 
 msgid "Overpaid"
 msgstr "Túlfizetett"
-
-#: 
-msgid "PHP version"
-msgstr "PHP verzió"
 
 #: 
 msgid "Page route"
@@ -16360,10 +16139,6 @@ msgstr "A fogadalom-csoport nem található"
 #: 
 msgid "Pledges & Payments"
 msgstr "Fogadalmak és adományok"
-
-#: 
-msgid "Prioritise translations"
-msgstr "Fordítások priorizálása"
 
 #: 
 msgid "Purpose"
@@ -16428,10 +16203,6 @@ msgstr "Felhasználónevek, e-mail-címek vagy szerepkörök"
 #: 
 msgid "View pledge or payment details"
 msgstr "Fogadalom vagy adomány részleteinek megtekintése"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "Figyelmeztetések – figyelmeztetések, hibák és JS kivételek"
 
 #: 
 msgid "What is sent"
@@ -16515,7 +16286,7 @@ msgstr "Az Automatikus az operacios rendszer vagy bongeszo beallitasat koveti; a
 
 #: 
 msgid "Back to Pledge Dashboard"
-msgstr "Vissza a fogadalom-iranyitopulthoz"
+msgstr "Vissza a vállalások irányítópultjához"
 
 #: 
 msgid "Click \"Generate Coordinates\" to look up the map location for the address above, or enter latitude/longitude manually. If left blank, coordinates are also auto-detected when you save the form."
@@ -16565,11 +16336,11 @@ msgstr "Adja meg a szerepkor nevet"
 
 #: 
 msgid "Failed to create deposit"
-msgstr "Nem sikerult letrehozni a befizetest"
+msgstr "Nem sikerült létrehozni a befizetést"
 
 #: 
 msgid "Failed to load email preview"
-msgstr "Nem sikerult betolteni az e-mail elonezetet"
+msgstr "Nem sikerült betölteni az e-mail előnézetét"
 
 #: 
 msgid "From Date"
@@ -16581,7 +16352,7 @@ msgstr "Alap osszesen"
 
 #: 
 msgid "Fund contributor pledge summary by fiscal year"
-msgstr "Alap adományozói fogadalom-osszesito pénzugyi ev szerint"
+msgstr "Alapba adományozók vállalásainak összesítője pénzügyi év szerint"
 
 #: 
 msgid "Fundraiser is disabled"
@@ -16609,7 +16380,7 @@ msgstr "N/A"
 
 #: 
 msgid "New Deposit"
-msgstr "Uj befizetes"
+msgstr "Új befizetés"
 
 #: 
 msgid "No contributors found for this fund in the selected fiscal year"
@@ -16621,17 +16392,11 @@ msgstr "Nem talalhato e-mail-cimmel rendelkezo csalad. Semmi nem lett elkuldve."
 
 #: 
 msgid "No payments found for the selected deposits"
-msgstr "Nem talalhatok kifizetesek a kivalasztott befizetesekhez"
+msgstr "Nem találhatók kifizetések a kiválasztott befizetésekhez"
 
 #: 
 msgid "No valid deposit IDs provided"
-msgstr "Nem adtak meg ervenyes befizetes azonositokat"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "A PDF sikeresen elküldve %d családnak."
-msgstr[1] "A PDF sikeresen elküldve %d családnak."
+msgstr "Nem adtak meg érvényes befizetés-azonosítókat"
 
 #: 
 msgid "Partial Send"
@@ -16643,11 +16408,11 @@ msgstr "Csak kifizetesek"
 
 #: 
 msgid "Pledged Amount"
-msgstr "Fogadott osszeg"
+msgstr "Vállalt összeg"
 
 #: 
 msgid "Preview"
-msgstr "Elonezet"
+msgstr "Előnézet"
 
 #: 
 msgid "Retry"
@@ -16659,7 +16424,7 @@ msgstr "Kereses"
 
 #: 
 msgid "Search and manage deposit slip records"
-msgstr "Befizetes bizonylatok keresese es kezelese"
+msgstr "Befizetési bizonylatok keresése és kezelése"
 
 #: 
 msgid "Select All"
@@ -16703,7 +16468,7 @@ msgstr "Datumig"
 
 #: 
 msgid "Total Pledged"
-msgstr "Osszesen fogadott"
+msgstr "Összes vállalás"
 
 #: 
 msgid "Unexpected error while sending emails. Please check logs."
@@ -16719,7 +16484,7 @@ msgstr "Kifizetes megtekintese"
 
 #: 
 msgid "View Pledge"
-msgstr "Fogadalom megtekintese"
+msgstr "Vállalás megtekintése"
 
 #: 
 msgid "When checked, this property will be displayed alongside the group in the person's group list on their profile page."
@@ -17172,10 +16937,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "Biztonsági mentés készítése és feltöltése. Ez néhány percet igénybe vehet..."
 
 #: 
-msgid "Database reset failed."
-msgstr "Az adatbázis visszaállítása sikertelen."
-
-#: 
 msgid "Deceased"
 msgstr "Elhunyt"
 
@@ -17372,10 +17133,6 @@ msgid "Log settings saved"
 msgstr "A naplózási beállítások mentve"
 
 #: 
-msgid "Login Name is Required"
-msgstr "A bejelentkezési név megadása kötelező"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "A személy aktívként megjelölve"
 
@@ -17500,10 +17257,6 @@ msgid "Sending..."
 msgstr "Küldés..."
 
 #: 
-msgid "Sending…"
-msgstr "Küldés…"
-
-#: 
 msgid "Settings reset"
 msgstr "A beállítások visszaállítva"
 
@@ -17572,16 +17325,8 @@ msgid "Upcoming"
 msgstr "Közelgő"
 
 #: 
-msgid "Valid Until"
-msgstr "Érvényes eddig"
-
-#: 
 msgid "View active only"
 msgstr "Csak az aktívak megjelenítése"
-
-#: 
-msgid "View all"
-msgstr "Összes megjelenítése"
 
 #: 
 msgid "View all (including inactive)"
@@ -18360,10 +18105,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "A pénzügyi éved kezdete: %s."
 
 #: 
-msgid "An error occurred"
-msgstr "Hiba történt"
-
-#: 
 msgid "Approve"
 msgstr "Jóváhagyás"
 
@@ -18534,12 +18275,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d nap"
 msgstr[1] "%d nap"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
-msgstr[1] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18802,10 +18537,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "A téma egy mappa, amelyet a gyülekezeted tölt fel a szerver Include/themes/ könyvtárába. A rendszer alapértelmezett témája a ChurchCRM-mel érkezik."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "Átmeneti beállítás. A régi Önkéntes lehetőségek oldalak és az új Szolgálati területek oldalak egyaránt elérhetők, és a személyrekord mindkét Önkéntes lapot megjeleníti, egyértelműen megjelölve. Használd, amíg a gyülekezetet V1-ről V2-re viszed át, majd válts csak V2-re."
-
-#: 
 msgid "A volunteer"
 msgstr "Egy önkéntes"
 
@@ -19010,10 +18741,6 @@ msgid "Assigned outside the current plan"
 msgstr "A jelenlegi terven kívül beosztva"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "Beosztás visszavonva"
-
-#: 
 msgid "Assignment not found"
 msgstr "A beosztás nem található"
 
@@ -19120,10 +18847,6 @@ msgstr "Beosztás visszavonása"
 #: 
 msgid "Cancel this assignment"
 msgstr "A beosztás visszavonása"
-
-#: 
-msgid "Cancelled"
-msgstr "Visszavonva"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19280,10 +19003,6 @@ msgstr "Gyülekezeti weboldal"
 #: 
 msgid "Close event details"
 msgstr "Eseményadatok bezárása"
-
-#: 
-msgid "Colour"
-msgstr "Szín"
 
 #: 
 msgid "Completed"
@@ -19530,10 +19249,6 @@ msgid "Each staffing need must name a position"
 msgstr "Minden létszámigénynek meg kell neveznie egy pozíciót"
 
 #: 
-msgid "Edit event"
-msgstr "Esemény Szerkesztése"
-
-#: 
 msgid "Edit ministry"
 msgstr "Szolgálati terület szerkesztése"
 
@@ -19618,10 +19333,6 @@ msgstr "E-mailek küldve {{count}} címzettnek."
 #: 
 msgid "Emails"
 msgstr "E-mailek"
-
-#: 
-msgid "End time"
-msgstr "Befejezési idő"
 
 #: 
 msgid "Enter counts"
@@ -20902,10 +20613,6 @@ msgid "SMTP test"
 msgstr "SMTP-teszt"
 
 #: 
-msgid "Save changes"
-msgstr "Változtatások mentése"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "Elmentve – ez a szolgálati terület már nem kér segítséget"
 
@@ -21188,10 +20895,6 @@ msgstr "Létszámigények elmentve"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "Kezdd egy szolgálati terület létrehozásával, majd add hozzá a csapatokat és pozíciókat, amelyek benne szolgálnak."
-
-#: 
-msgid "Start time"
-msgstr "Kezdési idő"
 
 #: 
 msgid "Start typing a name"
@@ -21540,10 +21243,6 @@ msgstr "A cím ki van jelölve – másold ki a billentyűzettel."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "A(z) „%s” erőforrás-útvonal nem engedélyezett."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "A beosztást nem sikerült visszavonni"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22070,10 +21769,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "Ez az alkalom már megtörtént, és a beosztásai többé nem módosíthatók"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "Ez az alkalom törölve lett"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "Ennek az alkalomnak saját, az ütemezéstől külön álló létszámigényei vannak."
 
@@ -22242,16 +21937,8 @@ msgid "Validation"
 msgstr "Érvényesítés"
 
 #: 
-msgid "View event"
-msgstr "Esemény megtekintése"
-
-#: 
 msgid "View my schedule"
 msgstr "Ütemezésem megtekintése"
-
-#: 
-msgid "View person"
-msgstr "Személy megtekintése"
 
 #: 
 msgid "View the event"
@@ -22300,10 +21987,6 @@ msgstr "Önkéntes időpontok"
 #: 
 msgid "Volunteering"
 msgstr "Önkéntes szolgálat"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "Az önkéntes szolgálat úgy szervezve, ahogyan egy gyülekezet működteti. Minden szolgálati területnek vannak csapatai és pozíciói; az emberek pozíciókra kapnak képesítést, és a terület készletcsoportjához tartoznak; az ütemezések a naptár eseményeit követik, és dátumozott alkalmakat hoznak létre létszámkövetelményekkel; a koordinátorok embereket osztanak be, akik elfogadnak, elutasítanak vagy helyettest javasolnak; az emlékeztetők és értesítések e-mailben mennek ki. A rendszergazdák és a Szolgálati területek kezelése jogosultsággal rendelkező felhasználók minden területet látnak, és létrehozhatják, inaktiválhatják és törölhetik őket. A szolgálati terület koordinátora ehelyett a Saját szolgálati területeim kezelése jogosultságot kapja: az oldalsáv Szolgálati területek címe alatt ekkor csak az általa koordinált területek látszanak. A csapatvezető a Tagi portálról vezeti a csapatát. A tagok a Tagi portálon látják az ütemezésüket, válaszolnak, jelentkeznek és ajánlanak fel segítséget."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22842,10 +22525,6 @@ msgid "Cancel this occurrence"
 msgstr "Ennek az eseménynek a lemondása"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "A lemondás senkinek sem jelent bejelentést: nincs e-mail küldve. A hozzárendelések megtartódnak, a lemondás alatt nem ütemez emlékeztetőket, és senki sem rendelhető ki, amíg az nem helyreáll."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "A törölt események elhagyják az egyes naptárakat bejelentkezésükkel és lélekszámával, és ennek a szolgálatnak a személyzete csak a dátumát őrzi meg. Ez nem vonható vissza."
 
@@ -22856,10 +22535,6 @@ msgstr "Események törölve: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "Törlendő események: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "Az esemény törölve van"
 
 #: 
 msgid "Occurrence restored"
@@ -22876,10 +22551,6 @@ msgstr "Esemény helyreállítása"
 #: 
 msgid "Restore this occurrence"
 msgstr "Ennek az eseménynek a helyreállítása"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "Az eseményt nem lehetett lemondani"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -22934,16 +22605,12 @@ msgid "Invalid birth date"
 msgstr "Érvénytelen Születési dátum."
 
 #: 
-msgid "Invalid email address"
-msgstr "Érvénytelen e-mail cím"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "Kiosk beállítások"
 
 #: 
 msgid "Please enter a check number"
-msgstr "Kérjük, adja meg az ellenőrzési számot"
+msgstr "Kérjük, adja meg a csekkszámot"
 
 #: 
 msgid "Register & Check In"
@@ -22964,12 +22631,6 @@ msgstr "Vendégként regisztrálva a kioskon az esemény során: %s"
 #: 
 msgid "Registering..."
 msgstr "Regisztráció..."
-
-#: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "Szükség van ellenőrzési számra a befizetési bejegyzésekbe történő csekk befizetésének rögzítésekor.\n"
-"Megjegyzés: ennek letiltása a duplikált csekk szám-detektálást is letiltja - ugyanaz a fizikai csekk több mint egyszer is bevihető."
 
 #: 
 msgid "This event has ended"
@@ -23608,10 +23269,6 @@ msgstr "Válassza ki, milyen előre töltődnek az ütemtervek, mikor mennek ki 
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "Válasszon valakit, aki már szerepel a gyülekezeti névjegyzékben. Csatlakozik a szolgálat önkénteseihez, és a koordinátorok e-mailt kapnak. Csak koordinátor vehet ki valakit."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "A ChurchCRM két módon kezeli az önkénteseket. Egyszerre csak az egyik használata a cél; az Önkéntes élmény beállítás dönti el, melyiket látja ez a gyülekezet. A váltás elrejti vagy megjeleníti az oldalakat és a menüpontokat — soha nem töröl adatot, ezért vissza lehet váltani."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -24894,28 +24551,12 @@ msgid "Closing Line"
 msgstr "Záró sor"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "Az opcionális telemetriát szabályozza. A telepítés és az adatbázis-frissítés hibái akkor is korlátozott diagnosztikát küldenek a PostHog felé, ha a telemetria ki van kapcsolva. Ezek a hibajelentések a szoftver és a környezet verzióit, valamint egy megtisztított adatbázishibát tartalmaznak, de telepítési azonosítót vagy SQL-utasítást nem."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "Sikertelen telepítések és adatbázis-frissítések diagnosztizálása"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "Telepítési és frissítési hibák részletei"
-
-#: 
 msgid "Open in browser window"
 msgstr "Megnyitás böngészőablakban"
 
 #: 
 msgid "Opening Line"
 msgstr "Nyitó sor"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "Az opcionális használati telemetria csak bekapcsolt állapotban megy el. A telepítés és az adatbázis-frissítés hibái akkor is korlátozott diagnosztikát küldenek a közösség segítésére, ha a Nem, köszönöm lehetőséget választja. A hibajelentések a szoftver és a környezet verzióit, valamint egy megtisztított adatbázishibát tartalmaznak, telepítési azonosító és SQL-utasítás nélkül."
 
 #: 
 msgid "PDF Handling"
@@ -24952,18 +24593,6 @@ msgstr "Igazolás szövege"
 #: 
 msgid "Tax Information"
 msgstr "Adóadatok"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "A telemetria az Egyesült Államokban lévő PostHog felé megy. A telepítési és frissítési hibajelentések akkor is elmennek, ha az opcionális telemetria ki van kapcsolva."
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "Ez az időpont törölve lett. Öntől további teendő nem szükséges."
-
-#: 
-msgid "always sent"
-msgstr "mindig elküldve"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25428,10 +25057,6 @@ msgstr "Az e-mail figyelmet igényel"
 #: 
 msgid "Email problem"
 msgstr "E-mail-probléma"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "Az e-mailben küldött bejelentkezési kód és hivatkozás érvénytelenítve"
 
 #: 
 msgid "Emailed verification link"
@@ -26026,10 +25651,6 @@ msgid "Only people with their own email can be added."
 msgstr "Csak saját e-maillel rendelkező személyek adhatók hozzá."
 
 #: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "Az opcionális telemetria tartalmazhatja az oldalútvonalakat, az aktív nyelvet, a CRM verzióját, a PHP verzióját, az operációs rendszer családját, a gyülekezeti adatok beállításából származó országot és egy véletlen telepítési azonosítót. A hibajelentések nem tartalmazzák a telepítési azonosítót. Az adatokat az Egyesült Államokban lévő PostHog kapja."
-
-#: 
 msgid "Passkey"
 msgstr "Hozzáférési kulcs"
 
@@ -26500,10 +26121,6 @@ msgstr "Ezt nem sikerült eltávolítani."
 #: 
 msgid "That device is signed out."
 msgstr "Az az eszköz ki van jelentkeztetve."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "Ez nem érvényes e-mail-cím."
 
 #: 
 msgid "That page had been open too long. Please try again."
@@ -27196,4 +26813,590 @@ msgstr "vagy"
 #: 
 msgid "until %s"
 msgstr "eddig: %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "A tagportálon kérés érkezett, hogy a(z) %1$s oldalon az e-mail-címed %2$s címről %3$s címre változzon. A módosítás csak akkor történik meg, ha az új címre küldött hivatkozást használják."
+
+#: 
+msgid "Review Family Information"
+msgstr "Családi adatok ellenőrzése"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "Már létezik „%s” nevű szolgálati terület. Válassza ki a listából, vagy adjon meg másik nevet."
+
+#: 
+msgid "A new ministry"
+msgstr "Új szolgálati terület"
+
+#: 
+msgid "A position"
+msgstr "Pozíció"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "Hozzáadja az önkénteseket ({{total}}) a korábban átalakított pozíciókhoz?"
+
+#: 
+msgid "Already converted"
+msgstr "Már átalakítva"
+
+#: 
+msgid "An existing ministry"
+msgstr "Meglévő szolgálati terület"
+
+#: 
+msgid "Becomes"
+msgstr "Ebből lesz"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "A ChurchCRM kétféleképpen kezelheti az önkénteseket. Egyszerre csak az egyiket érdemes használni; az „Önkéntes mód” beállítás dönti el, melyiket látja ez a gyülekezet. A váltás oldalakat és menüpontokat rejt el vagy jelenít meg, adatot soha nem töröl. A V1 és a Mindkettő csak addig választható, amíg az Önkéntes lehetőségek használatban vannak: ha minden lehetőség át van alakítva, és a gyülekezet a V2-t használja, eltűnnek a listából."
+
+#: 
+msgid "Convert"
+msgstr "Átalakítás"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "Önkéntes lehetőségek átalakítása"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "Most átalakítja a lehetőségeket ({{total}})? A V1 adatai változatlanok maradnak, amíg az Önkéntes lehetőségek megszűnnek."
+
+#: 
+msgid "Converted"
+msgstr "Átalakítva"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "Átalakítva: pozíciók: {{positions}}, szolgálati területek: {{ministries}}, alkalmassá tett önkéntesek: {{qualifications}}."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "Minden lehetőségből pozíció lesz egy szolgálati terület első csapatában, és mindenki, aki hozzá kapcsolódik, alkalmas lesz erre a pozícióra. Az önjelentkezés ezeknél a pozícióknál kezdetben ki van kapcsolva."
+
+#: 
+msgid "Everything is converted."
+msgstr "Minden át van alakítva."
+
+#: 
+msgid "Existing ministry"
+msgstr "Meglévő szolgálati terület"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "Adjon az új szolgálati területnek legfeljebb 100 karakteres nevet."
+
+#: 
+msgid "Its own ministry"
+msgstr "Saját szolgálati terület"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "Azóta kapcsolva: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "Át nem alakítható kapcsolatok"
+
+#: 
+msgid "New ministries of their own"
+msgstr "Saját új szolgálati területek"
+
+#: 
+msgid "New ministry name"
+msgstr "Új szolgálati terület neve"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "Nem megy ki e-mail, és az Önkéntes lehetőségek változatlanok maradnak, amíg meg nem szűnnek."
+
+#: 
+msgid "No name"
+msgstr "Nincs név"
+
+#: 
+msgid "Not converted"
+msgstr "Nincs átalakítva"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "Funkciók kapcsolóinak megnyitása"
+
+#: 
+msgid "Open Ministries"
+msgstr "Szolgálati területek megnyitása"
+
+#: 
+msgid "Opportunities"
+msgstr "Lehetőségek"
+
+#: 
+msgid "Opportunity"
+msgstr "Lehetőség"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "%d. lehetőség"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "Az átalakítás óta átalakított Önkéntes lehetőségekhez kapcsolt személyek: %d. Adja hozzá őket a pozícióikhoz, mielőtt az Önkéntes lehetőségek 2027 elején megszűnnek."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "Először tekintse meg az átalakítás előnézetét, és küldje el az általa visszaadott revíziót."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "Átnevezve, hogy a nevek egyediek maradjanak"
+
+#: 
+msgid "Review the conversion"
+msgstr "Átalakítás áttekintése"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "Küldje el az átalakítási választást JSON-objektumként."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "Küldje el a szolgálati területté váló lehetőségeket azonosítók listájaként."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "Ez a szolgálati terület nem létezik."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "Az a ChurchCRM-verzió, amelyben egy adminisztrátor elvetette az Önkéntes lehetőségek megszűnéséről szóló értesítést."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "Az Önkéntes lehetőségek megváltoztak az előnézet óta. Ellenőrizze újra az előnézetet, majd alakítsa át."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "A megerősítést nem sikerült megnyitni. Töltse be újra az oldalt, és próbálja újra."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "Az átalakítás előnézete nem készíthető el."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "Az átalakítás nem sikerült. Semmi sem változott."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "A(z) „%s” szolgálati területnek nincs csapata a pozíciókhoz."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "A szerver nem érhető el. Töltse be újra az oldalt, hogy lássa, lefutott-e az átalakítás."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "Nincsenek átalakítható Önkéntes lehetőségek."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "Az Önkéntesek kezelése Mindkettő módra vált, így az új szolgálati területek az Önkéntes lehetőségek mellett láthatók."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "Az Önkéntes lehetőségek megszűnnek"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "Önkéntes lehetőségek átalakítva"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "Az Önkéntes lehetőségek 2027 elején megszűnnek. Alakítsa át őket szolgálati területekké, hogy megmaradjon, ki miben szolgál."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "Az Önkéntes lehetőségek 2027 elején megszűnnek. Alakítsa át most szolgálati területekké a lehetőségeit (%1$d) és önkénteseit (%2$d). Az eredményt megtekintheti, mielőtt bármi megváltozna."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "Alkalmassá tett önkéntesek"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "Átalakított pozíciókhoz hozzáadandó önkéntesek"
+
+#: 
+msgid "What it becomes"
+msgstr "Mivé válik"
+
+#: 
+msgid "What will happen"
+msgstr "Mi fog történni"
+
+#: 
+msgid "Where they go"
+msgstr "Hová kerülnek"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "Mely korábbi Önkéntes lehetőségek lettek átalakítva, és melyikből milyen pozíció lett."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "Melyik önkéntes módot használja ez a gyülekezet. Az Önkéntes lehetőségek (V1) 2027 elején megszűnnek."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "Az Önkéntes lehetőségei át lettek alakítva szolgálati területekké. Állítsa az Önkéntesek kezelését V2-re, mielőtt az Önkéntes lehetőségek 2027 elején megszűnnek."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "új szolgálati területté: {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "ebbe a szolgálati területbe: {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "már nincs a ChurchCRM-ben"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "Oldalsáv összecsukása"
+
+#: 
+msgid "Expand sidebar"
+msgstr "Oldalsáv kibontása"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "Adjon meg érvényes e-mail-címet, amely a @ előtt csak ASCII-karaktereket tartalmaz."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "Az e-mail-címe érvénytelen"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "Biztosan törli ezt: {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "Nem sikerült összegyűjteni a rendszerinformációkat. Próbálja újra."
+
+#: 
+msgid "No payments found for this period."
+msgstr "Ebben az időszakban nem található fizetés."
+
+#: 
+msgid "Payments by Fund"
+msgstr "Fizetések alaponként"
+
+#: 
+msgid "Unknown Fund"
+msgstr "Ismeretlen alap"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "Kérje meg a tárhelyszolgáltatót, hogy állítsa át az adatbázist egy támogatott verzióra, majd próbálja újra."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "Kérje meg a tárhelyszolgáltatót, hogy állítsa át az adatbázist egy támogatott verzióra."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "Az ünnepnapok neve minden felhasználó nyelvi beállítását követi. Ha egy ünnepnapnak nincs neve az adott nyelven, angolul jelenik meg."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "Ünnepnapok neve az Ön nyelvén"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Csekkszám megkövetelése a csekkes befizetések rögzítésekor a befizetési tételeknél. Kikapcsolva a csekk üres vagy 0 csekkszámmal is menthető, és ezeket nem ellenőrzi a rendszer ismétlődésre."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Csekkszám megkövetelése csekkes fizetésnél"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "A frissítés nem indult el, így semmi sem változott."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "Ez a frissítés nem futtatható az Ön adatbázisán."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "Az adatbázisszerver (%1$s %2$s) régebbi, mint amit a ChurchCRM támogat (MySQL %3$s vagy MariaDB %4$s és újabb)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "Hagyja jóvá ezt az önregisztrált családot, mielőtt ellenőrző e-mailt küldene neki"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "A családok felajánlásainak összevetése két költségvetési évre."
+
+#: 
+msgid "Email Portal Link"
+msgstr "Portálhivatkozás küldése e-mailben"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "Küldjön a családnak e-mailben hivatkozást a tagi portálra, ahol áttekinthetik és frissíthetik adataikat, vagy rögzítse, hogy személyesen ellenőrizte azokat."
+
+#: 
+msgid "Family is inactive"
+msgstr "A család inaktív"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "Első költségvetési év"
+
+#: 
+msgid "Fiscal Years"
+msgstr "Költségvetési évek"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "Adományigazolás – csak minta"
+
+#: 
+msgid "Last invited"
+msgstr "Utolsó meghívás"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "Utolsó portálbejelentkezés"
+
+#: 
+msgid "Last verified"
+msgstr "Utolsó ellenőrzés"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "A család egyik aktív, jóváhagyott tagjának sincs e-mail-címe. Ehelyett ellenőrizze az adatokat személyesen."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "Ezekre a költségvetési évekre nem található felajánlás."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "Felajánlások összehasonlítása"
+
+#: 
+msgid "Preview PDF"
+msgstr "PDF előnézet"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "Második költségvetési év"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "Jelentkezzen be a tagi portálra ezzel az e-mail-címmel, és tekintse át családja adatait. A Családom oldalon erősítse meg, hogy minden helyes, vagy frissítse az adatait."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "Ez a család inaktív, ezért nem kap ellenőrző e-maileket."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "Ez az önregisztrált család jóváhagyásra vár. Jóváhagyáskor a család e-mailben meghívót kap, hogy jelentkezzen be a tagi portálra és tekintse át adatait."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "Csak a mentett beállításokat és kitalált mintaadományokat használ."
+
+#: 
+msgid "Verification"
+msgstr "Ellenőrzés"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "Ellenőrző e-mail elküldve %d családnak."
+msgstr[1] "Ellenőrző e-mail elküldve %d családnak."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "Ellenőrző e-mail elküldve a családtagoknak."
+
+#: 
+msgid "by the family in the portal"
+msgstr "a család által a portálon"
+
+#: 
+msgid "in person by staff"
+msgstr "személyesen a munkatársak által"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
+msgstr[1] "%d alapértelmezés kihagyva más okból (az alkalom véget ért, törölve lett vagy betelt)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "Átmeneti beállítás. A régi Önkéntes lehetőségek oldalak és az új Szolgálati területek oldalak egyaránt elérhetők, és a személyrekord mindkét Önkéntes lapot megjeleníti, egyértelműen megjelölve. Használd, amíg a gyülekezetet V1-ről V2-re viszed át, majd válts csak V2-re."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Beosztás visszavonva"
+
+#: 
+msgid "Canceled"
+msgstr "Visszavonva"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "A lemondás senkinek sem jelent bejelentést: nincs e-mail küldve. A hozzárendelések megtartódnak, a lemondás alatt nem ütemez emlékeztetőket, és senki sem rendelhető ki, amíg az nem helyreáll."
+
+#: 
+msgid "Color"
+msgstr "Szín"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Az e-mailben küldött bejelentkezési kód és hivatkozás érvénytelenítve"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "A családi szerepek (családfő, házastárs, gyermek stb.) segítik a nyilvántartás rendszerezését."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Az esemény törölve van"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Fordítások priorizálása"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "A beosztást nem sikerült visszavonni"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "Az eseményt nem lehetett lemondani"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "Ez az időpont törölve lett. Öntől további teendő nem szükséges."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "Ez az alkalom törölve lett"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Az önkéntes szolgálat úgy szervezve, ahogyan egy gyülekezet működteti. Minden szolgálati területnek vannak csapatai és pozíciói; az emberek pozíciókra kapnak képesítést, és a terület készletcsoportjához tartoznak; az ütemezések a naptár eseményeit követik, és dátumozott alkalmakat hoznak létre létszámkövetelményekkel; a koordinátorok embereket osztanak be, akik elfogadnak, elutasítanak vagy helyettest javasolnak; az emlékeztetők és értesítések e-mailben mennek ki. A rendszergazdák és a Szolgálati területek kezelése jogosultsággal rendelkező felhasználók minden területet látnak, és létrehozhatják, inaktiválhatják és törölhetik őket. A szolgálati terület koordinátora ehelyett a Saját szolgálati területeim kezelése jogosultságot kapja: az oldalsáv Szolgálati területek címe alatt ekkor csak az általa koordinált területek látszanak. A csapatvezető a Tagi portálról vezeti a csapatát. A tagok a Tagi portálon látják az ütemezésüket, válaszolnak, jelentkeznek és ajánlanak fel segítséget."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "Aktív telepítések és frissítési eredmények számlálása"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "Adatbázismotor és fő-/alverzió"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "Hibák — telepítési statisztikák, figyelmeztetések, hibák és JS-kivételek"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "Segít nekünk megtalálni és kijavítani a hibákat?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "A Telepítés minimális telepítési és frissítési statisztikákat oszt meg. A Hibák figyelmeztetéseket és hibajelentéseket is hozzáad. A Teljes oldalmegtekintéseket is hozzáad. A Nincs csak a sikertelen telepítéseket és frissítéseket küldi."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "Telepítés — telepítési és frissítési statisztikák (alapértelmezett)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "Telepítési és frissítési eredmények, frissítéskor az előző verzió és napi egyszeri jelzés használat közben"
+
+#: 
+msgid "Installation profile"
+msgstr "Telepítési profil"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "Területi beállítás (Hibák és Teljes)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "Soha nem osztjuk meg: tagok, adományok vagy más gyülekezeti adatok, a gyülekezet neve, a webcíme vagy kiszolgálóneve, illetve e-mail-címek. Az ország a gyülekezeti beállításokban megadott ország, nem a hálózatából állapítjuk meg."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "Operációs rendszer családja (Hibák és Teljes)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "PHP-verzió (Hibák és Teljes)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "Pontosan megnézheti, mit osztunk meg, vagy módosíthatja választását itt: Adminisztráció → Telemetria."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "Éles, bemutató és teszttelepítések elkülönítése"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "Megosztja a névtelen telepítési statisztikákat?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "Hiba- és használati jelentések megosztása"
+
+#: 
+msgid "Share install statistics"
+msgstr "Telepítési statisztikák megosztása"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "Ezen felül megosztva: figyelmeztetések, hibarészletek és a megnyitott oldalak."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "Megosztva: hogy a ChurchCRM telepítve vagy frissítve lett-e és sikerült-e, napi egyszeri jelzés használat közben, a verziószám, az ország és az adatbázis típusa. Egy véletlenszerű telepítési azonosító minden telepítést egyszer számol."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "Az adatbázis-kompatibilitás megértése"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "Csak egyszer kérdezünk rá. Választását bármikor módosíthatja. A Nem, köszönöm választással csak a sikertelen telepítés vagy frissítés kerül jelentésre."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "Az adatai az Önéi. A Telepítés csak a telepítési és frissítési eredményeket, a telepítési azonosítót, a szoftververziót, a telepítési profilt, a beállított országot, valamint az adatbázismotort és annak fő-/alverzióját osztja meg. A Hibák figyelmeztetéseket és hibarészleteket is hozzáad. A Teljes oldalmegtekintéseket is hozzáad. A Nincs csak a sikertelen telepítéseket és frissítéseket küldi. Egyik szint sem küldi el a webcímét vagy kiszolgálónevét. A teszttelepítések semmit sem küldenek. A telemetriai adatok a PostHoghoz kerülnek az Egyesült Államokba."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "Az adatai az Önéi. Ez a szoftverről szól, soha nem a gyülekezetéről vagy annak tagjairól."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "Az adatai az Önéi. A telepítések számlálásához a ChurchCRM jelenti, hogy telepítve vagy frissítve lett-e és sikerült-e, használat közben naponta egyszer jelzést küld, valamint a verziószámot, az országot, az adatbázis típusát és egy véletlenszerű telepítési azonosítót. Soha nem jelenti a tagok, adományok vagy más gyülekezeti adatokat, a gyülekezet nevét, a webcímét vagy kiszolgálónevét, illetve e-mail-címeket. Ezt bármikor kikapcsolhatja itt: Adminisztráció → Telemetria; a sikertelen telepítés vagy frissítés továbbra is jelentésre kerül. A figyelmeztetéseket, hibarészleteket és oldalmegtekintéseket csak akkor osztjuk meg, ha így dönt."
 

@@ -1,8 +1,9 @@
-import { type APIRequestContext, expect, type Page, request, test } from '@playwright/test';
+import { type APIRequestContext, expect, type Locator, type Page, request, test } from '@playwright/test';
 
 import { captureScreen, defineCapture } from '../support/capture';
 import { BASE_URL } from '../support/env';
 import { humanClick, humanPause, settle } from '../support/human';
+import { findDemoPerson } from '../support/member-sign-in';
 
 const ANDREW_EMAIL = 'andrew.baker@demo.churchcrm.io';
 
@@ -130,7 +131,6 @@ test.describe('Email composer', () => {
     title: 'Email a Person',
     category: 'Communication',
     purpose: 'Show the paper-plane button next to the email address on the Person View',
-    usedIn: ['docs'],
   });
 
   test('email-person-view-send-button', personButton, async ({ page }, testInfo) => {
@@ -146,7 +146,6 @@ test.describe('Email composer', () => {
     title: 'Email a Family Member',
     category: 'Communication',
     purpose: 'Show the paper-plane buttons on the other family members who have an email address',
-    usedIn: ['docs'],
   });
 
   test('email-person-view-family-send-buttons', familyButtons, async ({ page }, testInfo) => {
@@ -164,7 +163,6 @@ test.describe('Email composer', () => {
     title: 'Write an Email',
     category: 'Communication',
     purpose: 'Show the composer with a subject, the message, and the pre-filled closing',
-    usedIn: ['docs'],
   });
 
   test('email-composer-form', composerForm, async ({ page }, testInfo) => {
@@ -249,7 +247,6 @@ test.describe('Email composer', () => {
     title: 'Recent Email',
     category: 'Communication',
     purpose: 'Show the email history on the Email page after a message has been sent',
-    usedIn: ['docs'],
   });
 
   test('email-dashboard-recent-sends', recentSends, async ({ page }, testInfo) => {
@@ -264,5 +261,168 @@ test.describe('Email composer', () => {
     await keepInFrame(page, '#email-log-card .card-header', '#email-log-table');
     await settle(page, 800);
     await captureScreen(page, testInfo, recentSends);
+  });
+});
+
+/** Queues a composer message to one person and sends it now, as the composer does. */
+async function sendComposerEmail(api: APIRequestContext, personId: number, subject: string, body: string): Promise<void> {
+  const res = await api.post('/api/email/send', { data: { personIds: [personId], familyIds: [], subject, body } });
+  expect(res.ok(), `queue "${subject}"`).toBeTruthy();
+  const { batch } = await res.json();
+  expect(batch).toBeTruthy();
+  for (let step = 0; step < 5; step++) {
+    const progress = await api.post(`/api/email/batches/${batch}/send`);
+    if (!progress.ok()) return;
+    const { done, due } = await progress.json();
+    if (done || due === 0) return;
+  }
+}
+
+async function openEmailHistoryModal(page: Page, row: Locator): Promise<void> {
+  await humanClick(row.locator('.email-history-open'));
+  const modal = page.locator('#email-history-modal');
+  await expect(modal).toHaveClass(/show/, { timeout: 15000 });
+  await expect(page.locator('#email-history-modal-title')).not.toHaveText('…', { timeout: 15000 });
+}
+
+/** Dismisses the header notices (for example a security notice from churchcrm.io) for this admin, then reloads. */
+async function dismissHeaderNotices(page: Page): Promise<void> {
+  const notices = page.locator('.crm-system-notification[data-dismiss-key]');
+  if ((await notices.count()) === 0) return;
+  const userId = await page.evaluate(() => window.CRM?.userId);
+  const keys = await notices.evaluateAll((els) => els.map((el) => (el as HTMLElement).dataset.dismissKey ?? ''));
+  for (const key of keys.filter(Boolean)) {
+    await page.request.post(`/api/user/${userId}/setting/${encodeURIComponent(key)}`, { data: { value: 'true' } });
+  }
+  await page.reload();
+}
+
+async function openEmailHistoryPage(page: Page): Promise<void> {
+  await openAndrew(page);
+  await humanClick(page.locator('#email-history-show-all'));
+  await page.waitForURL(/\/people\/view\/\d+\/emails/, { timeout: 15000 });
+  await dismissHeaderNotices(page);
+  await expect(page.locator('[data-email-history-table] [data-email-log-row]').first()).toBeVisible({ timeout: 15000 });
+  await hideFloatingButtons(page);
+}
+
+test.describe('Email history', () => {
+  let restoreMail: (() => Promise<void>) | undefined;
+
+  // Andrew gets three composer messages and a family verification email. The
+  // verification email is one ChurchCRM writes itself, so its content is not stored.
+  test.beforeAll(async ({ request }) => {
+    restoreMail = await enableOutgoingMail(request);
+    const andrew = await findDemoPerson(request, ANDREW_EMAIL);
+    expect((await request.post(`/api/family/${andrew.familyId}/verify`)).ok(), 'family verification email').toBeTruthy();
+    await sendComposerEmail(
+      request,
+      andrew.personId,
+      'Volunteers needed for the fall festival',
+      'We are looking for a few more hands at the fall festival on Saturday. Reply to this email if you can help set up or serve.',
+    );
+    await sendComposerEmail(
+      request,
+      andrew.personId,
+      'Small group starts Tuesday',
+      'Your small group meets Tuesday at 7 pm in the fellowship hall. Bring a friend.',
+    );
+    await sendComposerEmail(
+      request,
+      andrew.personId,
+      'Thank you for serving',
+      'Thank you for helping with the welcome team this month. It made a real difference to our visitors.',
+    );
+  });
+
+  test.afterAll(async () => {
+    await restoreMail?.();
+  });
+
+  const recentCard = defineCapture({
+    name: 'email-history-recent-emails-card',
+    title: 'Recent Emails',
+    category: 'Communication',
+    purpose: 'Show the Recent Emails card on the Person View with the latest messages sent to this person',
+  });
+
+  test('email-history-recent-emails-card', recentCard, async ({ page }, testInfo) => {
+    await openAndrew(page);
+    await expect(page.locator('#email-history-card [data-email-log-row]').first()).toBeVisible({ timeout: 15000 });
+    await hideFloatingButtons(page);
+    await keepInFrame(page, '#email-history-card', '#email-history-card');
+    await settle(page, 600);
+    await captureScreen(page, testInfo, recentCard);
+  });
+
+  const showAll = defineCapture({
+    name: 'email-history-show-all',
+    title: 'Email History',
+    category: 'Communication',
+    purpose: 'Show the full Email History page for a person, newest first',
+  });
+
+  test('email-history-show-all', showAll, async ({ page }, testInfo) => {
+    await openEmailHistoryPage(page);
+    await settle(page, 600);
+    await captureScreen(page, testInfo, showAll);
+  });
+
+  const timelineFilter = defineCapture({
+    name: 'email-history-timeline-filter',
+    title: 'Timeline Filters',
+    category: 'Communication',
+    purpose: 'Show the Notes, Events, Emails and System filter chips on the person timeline, with Emails selected',
+  });
+
+  test('email-history-timeline-filter', timelineFilter, async ({ page }, testInfo) => {
+    await openAndrew(page);
+    const chips = page.locator('#timeline .timeline-filters');
+    await expect(chips.locator('[data-filter="email"]')).toBeVisible({ timeout: 15000 });
+    await humanClick(chips.locator('[data-filter="email"]'));
+    await humanClick(chips.locator('[data-filter="notes"]'));
+    await expect(chips.locator('[data-filter="email"]')).toHaveClass(/active/);
+    await expect(page.locator('#timeline .timeline-event[data-timeline-category="email"]').first()).toBeVisible();
+    await hideFloatingButtons(page);
+    await keepInFrame(page, '#nav-item-timeline', '#timeline .timeline-filters');
+    await settle(page, 600);
+    await captureScreen(page, testInfo, timelineFilter);
+  });
+
+  const modal = defineCapture({
+    name: 'email-history-modal',
+    title: 'View a Sent Email',
+    category: 'Communication',
+    purpose: 'Show an email opened from the history, as it was sent',
+    usedIn: ['docs'],
+  });
+
+  test('email-history-modal', modal, async ({ page }, testInfo) => {
+    await openAndrew(page);
+    const row = page.locator('#email-history-card [data-email-log-row]').filter({ hasText: 'Volunteers needed for the fall festival' });
+    await expect(row.first()).toBeVisible({ timeout: 15000 });
+    await openEmailHistoryModal(page, row.first());
+    await expect(page.locator('#email-history-modal-body')).toHaveAttribute('srcdoc', /.+/, { timeout: 15000 });
+    await expect(page.locator('#email-history-modal-body')).toBeVisible();
+    await settle(page, 800);
+    await captureScreen(page, testInfo, modal);
+  });
+
+  const notStored = defineCapture({
+    name: 'email-history-modal-not-stored',
+    title: 'Content Not Stored',
+    category: 'Communication',
+    purpose: 'Show an email ChurchCRM sent on its own, whose content the history does not keep',
+    usedIn: ['docs'],
+  });
+
+  test('email-history-modal-not-stored', notStored, async ({ page }, testInfo) => {
+    await openEmailHistoryPage(page);
+    const row = page.locator('[data-email-history-table] [data-email-log-row]').filter({ hasText: 'Family verification' });
+    await expect(row.first()).toBeVisible({ timeout: 15000 });
+    await openEmailHistoryModal(page, row.first());
+    await expect(page.locator('#email-history-modal-nobody')).toBeVisible({ timeout: 15000 });
+    await settle(page, 800);
+    await captureScreen(page, testInfo, notStored);
   });
 });

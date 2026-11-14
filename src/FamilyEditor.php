@@ -420,7 +420,7 @@ if (isset($_POST['FamilySubmit']) || isset($_POST['FamilySubmitAndAdd'])) {
         $bSecondIsMailing = (bool) $family->getSecondIsMailing();
         $sHomePhone = $family->getHomePhone();
         $bSendNewsLetter = $family->getSendNewsletter() === 'TRUE';
-        $dWeddingDate = $family->getWeddingdate(SystemConfig::getValue("sDatePickerFormat"));
+        $dWeddingDate = $family->getWeddingdate(DateTimeUtils::datePickerFormat());
         $nLatitude = $family->getLatitude();
         $nLongitude = $family->getLongitude();
 

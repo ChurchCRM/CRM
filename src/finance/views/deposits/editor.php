@@ -170,9 +170,13 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
             <button type="button" class="btn btn-sm btn-outline-secondary d-none" id="clearFundFilter">
               <i class="fa-solid fa-xmark me-1"></i><?= gettext('Clear Filter') ?>
             </button>
+            <button type="button" class="btn btn-sm btn-outline-secondary d-lg-none" id="fundsToggle"
+                    data-bs-toggle="collapse" data-bs-target="#fundsBody" aria-expanded="false" aria-controls="fundsBody" aria-label="<?= InputUtils::escapeAttribute(gettext('Funds')) ?>">
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
           </div>
         </div>
-        <div class="card-body">
+        <div class="card-body collapse d-lg-block" id="fundsBody">
           <?php if ($fundLabels === []) : ?>
           <div class="empty">
             <p class="empty-title"><?= gettext('No payments yet') ?></p>

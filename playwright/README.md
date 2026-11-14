@@ -104,8 +104,9 @@ directories outside the publish path; production captures use real demo UI.
   of what's been handled and what to watch for in a new workflow.
 - **Screenshots**: viewport-cropped (not full-page — see `captureScreen()`'s
   doc comment in `playwright/support/capture.ts` for why), one per test per
-  form factor, at `playwright/artifacts/screenshots/<device>/<name>.png`,
-  where `<device>` is `desktop` (1440×900), `tablet` (1024×768), or
+  form factor, at `playwright/artifacts/screenshots/<locale>/<device>/<name>.png`,
+  where `<locale>` is the capture locale (`en`, `es`, …) and `<device>`
+  is `desktop` (1440×900), `tablet` (1024×768), or
   `mobile` (430×932) — see
   `.agents/skills/churchcrm/responsive-design-guidelines.md`.
 - **Videos**: one per test, at
@@ -195,6 +196,14 @@ just as real a collision as one already in the seed data.
 
 ## Shot list coverage
 
+People and family click-through recordings run in English under `playwright/videos/`:
+
+| Workflow | Recording |
+| --- | --- |
+| Search by name and open the person's record | `find-person-by-name` |
+| Register a visitor and save a welcome-team follow-up note | `register-first-time-visitor` |
+| Find nearby families and add their members to the cart for a visit | `find-neighbors-search` |
+
 Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
 430×932 (all @2×) in one page load.
 
@@ -211,7 +220,6 @@ Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
 | Giving — fund/pledge report | `finance-pledge-report` |
 | Settings — user permissions (nice-to-have) | `settings-user-permissions` |
 | Settings — People hub (release notes) | `admin-people-settings` |
-| Settings — classification flags (release notes) | `admin-person-classifications` |
 | Mobile — one panel cropped | any of the above from the `mobile` project |
 
 **Not automated** — pick these from the generated artifacts by hand:
@@ -225,7 +233,9 @@ Each screenshot test captures desktop 1440×900, tablet 1024×768 and mobile
 ## Known limitations (first milestone)
 
 - One fixed viewport per form factor (no touch/UA emulation).
-- English locale only.
+- Only English captures every screenshot; the other seven locales capture
+  just the captures defined with `locales: 'all'` (tagged `@all-locales`;
+  see `defineCapture()` in `playwright/support/capture.ts`).
 - Root-path install only (no subdirectory variant).
 - No content-hash/change-detection field in the metadata sidecars — see
   #9663 for what was deliberately descoped there (closed not-planned).

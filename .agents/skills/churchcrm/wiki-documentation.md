@@ -38,17 +38,16 @@ Issues about the documentation itself — a missing, wrong, or unclear page, or 
 
 The public site documents a released ChurchCRM version. A merged CRM pull request is not a release.
 
-| Change | Milestone on the docs pull request | Label |
-|---|---|---|
-| Product behavior for a version that is not out yet | That version, for example `7.8.0` | none |
-| A correction for a version that is already published | That version, for example `7.7.1` | none |
-| CI, dependencies, or the docs site itself | none | `ci`, `repo-maintenance`, `infrastructure`, or `dependencies` |
+The docs repository's [DOCS_GUIDE.md](https://github.com/ChurchCRM/docs.churchcrm.io/blob/main/.agents/DOCS_GUIDE.md)
+and its release workflows own staging branches, milestones, checks and publication.
+Read them before preparing a docs pull request instead of duplicating their recipe here.
+Write the outcome, the decision, and the gotcha; skip click-by-click narration of a standard flow. Add a screenshot only when it passes the value test in `marketing-visuals-pipeline.md`.
+Unreleased behavior is staged on `release-docs/<version>`; `Current` represents
+published behavior eligible for `main`, subject to that repository's checks.
 
-Every product pull request carries a milestone. Site and CI work carries the label instead. The release gate fails until that version is a published stable GitHub Release, and the open pull request is the hold, so product docs are not marked as drafts.
-
-`main` requires the docs build, the release gate, and a CodeRabbit approval; merge only on green checks.
-
-When the CRM release is published, `release-publish.yml` and `release-bookkeeping.yml` dispatch `crm-released`. The docs workflow opens the API pin pull request and merges it, plus the product pull requests on that milestone, when their CI is green and CodeRabbit has approved; the rest stay open. Readers get help through Discord, then a GitHub issue on `ChurchCRM/CRM`. The agent guide in the docs repo is `.agents/DOCS_GUIDE.md`.
+CRM's `release-publish.yml` and `release-bookkeeping.yml` send `crm-released`.
+Confirm dispatch and docs readiness; do not infer approval or merge a held docs PR.
+Readers get help through Discord, then a GitHub issue on `ChurchCRM/CRM`.
 
 ## MDX: Escape `{variable}` in Headings and Prose
 

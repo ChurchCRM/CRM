@@ -6,15 +6,13 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
 use ChurchCRM\Exceptions\PersonDeletionBlockedException;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Map\FamilyTableMap;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
-use ChurchCRM\model\ChurchCRM\Token;
-use ChurchCRM\model\ChurchCRM\TokenQuery;
 use ChurchCRM\Service\FamilyService;
 use ChurchCRM\Service\PersonDeletionService;
 use ChurchCRM\Service\SystemService;
@@ -69,7 +67,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         }
 
         return SlimUtils::renderPhoto($response, $photo);
-    })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
+    })->add(new Cache('private', Photo::CACHE_DURATION_SECONDS));
 
     /**
      * @OA\Get(
@@ -300,34 +298,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     })->add(EditRecordsRoleAuthMiddleware::class);
 
     /**
-     * @OA\Get(
-     *     path="/family/{familyId}/verify/url",
-     *     summary="Generate a new family self-verify URL token",
-     *     tags={"Families"},
-     *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Parameter(name="familyId", in="path", required=true, @OA\Schema(type="integer")),
-     *     @OA\Response(response=200, description="Verification URL",
-     *         @OA\JsonContent(@OA\Property(property="url", type="string", format="uri"))
-     *     )
-     * )
-     */
-    $group->get('/verify/url', function (Request $request, Response $response, array $args): Response {
-        /** @var Family $family */
-        $family = $request->getAttribute('family');
-
-        TokenQuery::create()
-            ->filterByType('verifyFamily')
-            ->filterByReferenceId($family->getId())
-            ->delete();
-        $token = new Token();
-        $token->build('verifyFamily', $family->getId());
-        $token->save();
-        $family->createTimeLineNote('verify-URL');
-
-        return SlimUtils::renderJSON($response, ['url' => SystemURLs::getURL() . '/external/verify/' . $token->getToken()]);
-    })->add(EditRecordsRoleAuthMiddleware::class);
-
-    /**
      * @OA\Post(
      *     path="/family/{familyId}/verify/now",
      *     summary="Mark a family as verified immediately",
@@ -451,6 +421,16 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                 $e,
                 $request
             );
+        }
+
+        // An approved family can now sign in: invite it to the member portal to review its details.
+        // A failed email never undoes the approval.
+        if (SystemConfig::isEmailEnabled()) {
+            try {
+                $family->sendVerifyEmail();
+            } catch (\Throwable $e) {
+                LoggerUtils::getAppLogger()->warning('Approved family ' . $family->getId() . ' but the portal invitation was not sent: ' . $e->getMessage());
+            }
         }
 
         return SlimUtils::renderJSON($response, ['success' => true]);

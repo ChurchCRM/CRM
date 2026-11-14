@@ -65,6 +65,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     $group->get('/dashboard', function (Request $request, Response $response, array $args): Response {
         $list = DepositQuery::create()
             ->filterByDate(['min' => DateTimeUtils::getRelativeDate('-90 days')])
+            ->orderByDate()
             ->find();
 
         return SlimUtils::renderJSON($response, $list->toArray());

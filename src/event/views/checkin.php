@@ -70,7 +70,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 <div class="mb-3">
                     <label for="EventSelector" class="form-label"><?= gettext('Select Event') ?></label>
                     <select id="EventSelector" class="form-select">
-                        <option value="" disabled <?= ($eventId === 0) ? 'selected' : '' ?>><?= gettext('Select event') ?></option>
+                        <option value="" disabled <?= ($eventId === 0) ? 'selected' : '' ?>><?= gettext('Select Event') ?></option>
                         <?php foreach ($activeEvents as $evt): ?>
                             <option value="<?= $evt->getId() ?>" <?= ($eventId === $evt->getId()) ? 'selected' : '' ?>>
                                 <?= InputUtils::escapeHTML($evt->getTitle()) ?> (<?= $evt->getStart('M j, Y') ?>)

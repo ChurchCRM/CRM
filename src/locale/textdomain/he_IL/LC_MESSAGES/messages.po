@@ -711,10 +711,6 @@ msgid "Not a valid Wedding Date"
 msgstr "תאריך חתונה לא חוקי"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "כתובת אימייל לא חוקית"
-
-#: 
 msgid "Family Info"
 msgstr "פרטי משפחה"
 
@@ -889,10 +885,6 @@ msgstr "אתה עומד למחוק את תמונת הפרופיל, פעולה ז
 #: 
 msgid "Do you want to proceed?"
 msgstr "האם ברצונך להמשיך?"
-
-#: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "אתה עומד לשלוח בדוא\"ל עותק של פרטי המשפחה לכתובות הבאות"
 
 #: 
 msgid "Financial Reports"
@@ -1450,10 +1442,6 @@ msgid "Not a valid Membership Date"
 msgstr "תאריך חברות לא תקין"
 
 #: 
-msgid "Work Email is Not Valid"
-msgstr "כתובת דואר אלקטרוני של העבודה אינה תקינה"
-
-#: 
 msgid "Birth Month"
 msgstr "חודש לידה"
 
@@ -1829,10 +1817,6 @@ msgstr "מספר טלפון"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "רשימה נפתחת מותאמת אישית"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "קובץ PDF נשלח בהצלחה בדואר אלקטרוני לבני המשפחה"
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -3882,10 +3866,6 @@ msgid "Please verify your family's information"
 msgstr "אנא אשרו את פרטי משפחתכם"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "לא ניתן לטעון מידע אימות"
-
-#: 
 msgid "No Changes"
 msgstr "אין שינויים"
 
@@ -3898,24 +3878,8 @@ msgid "Oops! Page not found."
 msgstr "אופס! הדף לא נמצא."
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "אנא הזן את הפרטים הבאים כדי להתחיל את אימות המשפחה שלך"
-
-#: 
-msgid "Family Verification"
-msgstr "אימות משפחה"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "בקש אימות מידע משפחה"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "בחר כיצד ברצונך לבקש אימות של מידע המשפחה"
-
-#: 
-msgid "Online Verification"
-msgstr "אימות מקוון"
 
 #: 
 msgid "Verified In Person"
@@ -4097,10 +4061,6 @@ msgstr "המאפיין בוטל בהצלחה."
 #: 
 msgid "The property could not be unassigned."
 msgstr "לא ניתן היה לבטל את שיוך המאפיין."
-
-#: 
-msgid "Select event"
-msgstr "בחר אירוע"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4307,10 +4267,6 @@ msgid "Kiosk Manager"
 msgstr "מנהל קיוסק"
 
 #: 
-msgid "Report an issue"
-msgstr "דווח על בעיה"
-
-#: 
 msgid "Self Verification"
 msgstr "אימות עצמי"
 
@@ -4339,10 +4295,6 @@ msgstr "Arabic - Egypt"
 #: 
 msgid "Thai"
 msgstr "Thai"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "אימות עצמי בהמתנה"
 
 #: 
 msgid "Self Verify"
@@ -4725,16 +4677,8 @@ msgid "User must have Delete Records permission"
 msgstr "המשתמש חייב להיות בעל הרשאת מחיקת רשומות"
 
 #: 
-msgid "invalid event type id"
-msgstr "מזהה סוג אירוע לא חוקי"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "נעיצת לוח שנה לא חוקית"
-
-#: 
-msgid "invalid status value"
-msgstr "ערך סטטוס לא חוקי"
 
 #: 
 msgid "invalid export value"
@@ -5339,10 +5283,6 @@ msgstr "מחיל עדכון מערכת..."
 
 #: 
 msgid "Back to Login"
-msgstr "חזרה להתחברות"
-
-#: 
-msgid "Back to login"
 msgstr "חזרה להתחברות"
 
 #: 
@@ -6579,10 +6519,6 @@ msgid "Additional Information"
 msgstr "מידע נוסף"
 
 #: 
-msgid "All information is correct"
-msgstr "כל המידע נכון"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "הקצה הזדמנויות"
 
@@ -6595,20 +6531,12 @@ msgid "Choose opportunities..."
 msgstr "בחר הזדמנויות..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "אשר פרטי משפחה"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "פרטי קשר ומידע אישי"
 
 #: 
 msgid "Edited"
 msgstr "נערך"
-
-#: 
-msgid "Email PDF"
-msgstr "שלח PDF באימייל"
 
 #: 
 msgid "Newsletter"
@@ -6619,40 +6547,12 @@ msgid "Personal"
 msgstr "אישי"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "נא לעדכן את הרישומים שלנו עם תיקונים"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "ספק תיקונים או מידע נוסף כאן..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "בחר הזדמנויות"
 
 #: 
-msgid "Submit Verification"
-msgstr "שלח אימות"
-
-#: 
-msgid "Thank You!"
-msgstr "תודה לך!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "בקר באתר שלנו"
-
-#: 
 msgid "Volunteer"
 msgstr "מתנדב"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "נתקלנו בשגיאה בעיבוד האישור."
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "בקשת האישור התקבלה. תודה על עדכון המידע."
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8112,10 +8012,6 @@ msgid "City is required."
 msgstr "עיר נדרשת."
 
 #: 
-msgid "Clear filter"
-msgstr "נקה מסנן"
-
-#: 
 msgid "Configuration item not found"
 msgstr "פריט תצורה לא נמצא"
 
@@ -8384,10 +8280,6 @@ msgstr "הוספת אדם"
 #: 
 msgid "Add all cart items to a group"
 msgstr "הוספת כל פריטי הרשימה לקבוצה"
-
-#: 
-msgid "Add all to Cart"
-msgstr "הוספת הכל לרשימה"
 
 #: 
 msgid "Add cart items to a family"
@@ -8894,10 +8786,6 @@ msgid "Family Profile"
 msgstr "פרופיל משפחה"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "תפקידים משפחתיים (ראש משק בית, בן/בת זוג, ילד/ה וכו') עוזרים לארגן את הרשומות שלכם."
-
-#: 
 msgid "Family vs Person"
 msgstr "משפחה מול אדם"
 
@@ -9396,10 +9284,6 @@ msgid "Record why attendees visited your church"
 msgstr "תעדו מדוע משתתפים ביקרו בקהילה שלכם"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "הסרת הכל מהרשימה"
-
-#: 
 msgid "Remove from Class"
 msgstr "הסרה מהכיתה"
 
@@ -9870,10 +9754,6 @@ msgstr "אירועים השנה"
 #: 
 msgid "Everyone"
 msgstr "כולם"
-
-#: 
-msgid "Failed to delete note"
-msgstr "מחיקת הערה נכשלה"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11773,10 +11653,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "תחילת הטווח חייבת להיות תאריך תקין בפורמט YYYY-MM-DD."
 
 #: 
-msgid "Range start must be before range end"
-msgstr "תחילת הטווח חייבת להיות לפני סיומו"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "תחילת הטווח חייבת להיות לפני סיומו."
 
@@ -11997,10 +11873,6 @@ msgid "Cannot move property in that direction"
 msgstr "לא ניתן להזיז מאפיין בכיוון זה"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "אשר מידע משפחתי"
-
-#: 
 msgid "Delete failed"
 msgstr "המחיקה נכשלה"
 
@@ -12041,20 +11913,12 @@ msgid "Invalid target family"
 msgstr "משפחת יעד לא חוקית"
 
 #: 
-msgid "Log Out"
-msgstr "התנתק"
-
-#: 
 msgid "Membership not found"
 msgstr "חברות לא נמצאה"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "הסיסמה שונתה בהצלחה עבור"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "אנא סקור את פרטי משפחתך למטה ואשר או בקש שינויים."
 
 #: 
 msgid "Please select a target family."
@@ -12737,10 +12601,6 @@ msgid "Failed to install plugin from URL"
 msgstr "נכשלה התקנת התוסף מ-URL"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "נכשלה טעינת רשימת התוספים המאושרים"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "נכשלה טעינת רשימת התוספים המאושרים."
 
@@ -12799,10 +12659,6 @@ msgstr "Kebab-case. חייב להתאים לשם הספרייה ברמה העל�
 #: 
 msgid "Loading approved plugin list…"
 msgstr "טוען רשימת תוספים מאושרים…"
-
-#: 
-msgid "Loading…"
-msgstr "טוען…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13250,12 +13106,8 @@ msgid "Change Your Locale"
 msgstr "שנה את ההגדרות האזוריות"
 
 #: 
-msgid "Change role"
-msgstr "שנה תפקיד"
-
-#: 
 msgid "Check Number"
-msgstr "בדוק מספר"
+msgstr "מספר צ'ק"
 
 #: 
 msgid "Check out"
@@ -13268,10 +13120,6 @@ msgstr "הצ׳ק-אין נכשל. אנא נסה שוב."
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "הצ׳ק-אאוט נכשל. אנא נסה שוב."
-
-#: 
-msgid "City is required"
-msgstr "עיר היא שדה חובה"
 
 #: 
 msgid "Click Save to apply."
@@ -13340,10 +13188,6 @@ msgstr "העתק את כל המספרים"
 #: 
 msgid "Copy Members to Group"
 msgstr "העתקת חברים לקבוצה"
-
-#: 
-msgid "Creating Backup..."
-msgstr "יוצר גיבוי..."
 
 #: 
 msgid "Creating..."
@@ -13528,10 +13372,6 @@ msgstr "הוספת הפריט לסל נכשלה"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "ביטול ההרשמה נכשל. אנא נסה שוב."
-
-#: 
-msgid "Failed to copy URL"
-msgstr "העתקת ה-URL נכשלה"
 
 #: 
 msgid "Failed to create backup."
@@ -13922,10 +13762,6 @@ msgid "One-Time Code"
 msgstr "קוד חד-פעמי"
 
 #: 
-msgid "Open in New Tab"
-msgstr "פתח בלשונית חדשה"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "פתח את אפליקציית האימות שלך וסרוק את קוד ה-QR הזה"
 
@@ -14202,10 +14038,6 @@ msgid "Setup Complete"
 msgstr "ההגדרה הושלמה"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "שתף URL זה עם בני המשפחה לאישור המידע שלהם"
-
-#: 
 msgid "Show more options"
 msgstr "הצג אפשרויות נוספות"
 
@@ -14358,10 +14190,6 @@ msgid "Validation pending"
 msgstr "ממתין לאימות"
 
 #: 
-msgid "Verification URL"
-msgstr "URL לאישור"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "האימות נכשל. אנא נסה שוב."
 
@@ -14426,10 +14254,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "תקבל קודי גיבוי שניתן להשתמש בהם אם תאבד גישה לאפליקציה שלך"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "העגלה שלך ריקה"
-
-#: 
 msgid "Your account is now protected"
 msgstr "חשבונך מוגן כעת"
 
@@ -14448,10 +14272,6 @@ msgstr "העדפת השפה של הדפדפן שלך שונה מהלוקאל ש�
 #: 
 msgid "Your database already contains data"
 msgstr "מסד הנתונים שלך כבר מכיל נתונים"
-
-#: 
-msgid "Zip code is required"
-msgstr "מיקוד הוא שדה חובה"
 
 #: 
 msgid "added"
@@ -14872,10 +14692,6 @@ msgstr "אין לך הרשאה להוסיף הערה עבור משפחה זו."
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "אין לך הרשאה להוסיף הערה עבור אדם זה."
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "אין לך הרשאה לערוך הערה זו"
 
 #: 
 msgid "Account locked"
@@ -15698,10 +15514,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "אנא אשר מחיקה של רשומת משפחה זו"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "אנא אשר את פרטי המשפחה שלך"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "אנא בחר משפחה אחרת לשיוך תרומות אלו"
 
@@ -15922,10 +15734,6 @@ msgid "Select a person"
 msgstr "בחר אדם"
 
 #: 
-msgid "Select role"
-msgstr "בחר תפקיד"
-
-#: 
 msgid "Select type (optional)"
 msgstr "בחר סוג (אופציונלי)"
 
@@ -16082,10 +15890,6 @@ msgid "At least one fund allocation is required"
 msgstr "נדרשת הקצאה לקרן אחת לפחות"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "לפחות קרן אחת חייבת לכלול סכום שאינו אפס"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "שלח אוטומטית הודעת ברכת יום הולדת לאנשים ביום הולדתם"
 
@@ -16162,18 +15966,6 @@ msgid "Editing a Pledge"
 msgstr "עריכת התחייבות"
 
 #: 
-msgid "Enable (full)"
-msgstr "הפעל (מלא)"
-
-#: 
-msgid "Errors only"
-msgstr "שגיאות בלבד"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "שגיאות — שגיאות שרת וחריגות JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "יצירת ההתחייבות נכשלה"
 
@@ -16212,10 +16004,6 @@ msgstr "מפתח קבוצה נדרש"
 #: 
 msgid "Happy Birthday"
 msgstr "יום הולדת שמח"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "עזור לשפר את ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16286,16 +16074,8 @@ msgid "None (disabled)"
 msgstr "ללא (מושבת)"
 
 #: 
-msgid "OS family"
-msgstr "משפחת מערכת הפעלה"
-
-#: 
 msgid "Overpaid"
 msgstr "שולם יתר"
-
-#: 
-msgid "PHP version"
-msgstr "גרסת PHP"
 
 #: 
 msgid "Page route"
@@ -16332,10 +16112,6 @@ msgstr "קבוצת התחייבות לא נמצאה"
 #: 
 msgid "Pledges & Payments"
 msgstr "התחייבויות ותשלומים"
-
-#: 
-msgid "Prioritise translations"
-msgstr "תעדף תרגומים"
 
 #: 
 msgid "Purpose"
@@ -16400,10 +16176,6 @@ msgstr "שמות משתמש, כתובות דוא\"ל או תפקידים"
 #: 
 msgid "View pledge or payment details"
 msgstr "הצג פרטי התחייבות או תשלום"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "אזהרות — אזהרות, שגיאות וחריגות JS"
 
 #: 
 msgid "What is sent"
@@ -16598,12 +16370,6 @@ msgstr "לא נמצאו תשלומים עבור ההפקדות שנבחרו"
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "לא סופקו מזהי הפקדון תקינים"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "קובץ PDF נשלח בהצלחה במייל למשפחה אחת."
-msgstr[1] "קובץ PDF נשלח בהצלחה במייל ל-%d משפחות."
 
 #: 
 msgid "Partial Send"
@@ -17144,10 +16910,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "יוצר ומעלה גיבוי. פעולה זו עשויה להימשך מספר דקות..."
 
 #: 
-msgid "Database reset failed."
-msgstr "איפוס מסד הנתונים נכשל."
-
-#: 
 msgid "Deceased"
 msgstr "נפטר"
 
@@ -17344,10 +17106,6 @@ msgid "Log settings saved"
 msgstr "הגדרות היומן נשמרו"
 
 #: 
-msgid "Login Name is Required"
-msgstr "שם המשתמש הוא שדה חובה"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "האדם סומן כפעיל"
 
@@ -17472,10 +17230,6 @@ msgid "Sending..."
 msgstr "שולח..."
 
 #: 
-msgid "Sending…"
-msgstr "שולח…"
-
-#: 
 msgid "Settings reset"
 msgstr "ההגדרות אופסו"
 
@@ -17544,16 +17298,8 @@ msgid "Upcoming"
 msgstr "קרוב"
 
 #: 
-msgid "Valid Until"
-msgstr "תקף עד"
-
-#: 
 msgid "View active only"
 msgstr "הצג פעילים בלבד"
-
-#: 
-msgid "View all"
-msgstr "הצג הכל"
 
 #: 
 msgid "View all (including inactive)"
@@ -18332,10 +18078,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "שנת הכספים שלכם מתחילה ב-%s."
 
 #: 
-msgid "An error occurred"
-msgstr "אירעה שגיאה"
-
-#: 
 msgid "Approve"
 msgstr "אישור"
 
@@ -18506,12 +18248,6 @@ msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d יום"
 msgstr[1] "%d ימים"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d ברירת מחדל דולגה מסיבה אחרת (המופע הסתיים, בוטל או מלא)"
-msgstr[1] "%d ברירות מחדל דולגו מסיבה אחרת (המופע הסתיים, בוטל או מלא)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18774,10 +18510,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "ערכת נושא היא תיקייה שהקהילה שלכם מעלה אל Include/themes/ בשרת. ברירת המחדל של המערכת מגיעה עם ChurchCRM."
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "הגדרת מעבר. דפי הזדמנויות ההתנדבות הישנים ודפי השירותים החדשים זמינים שניהם, ורשומת אדם מציגה את שתי לשוניות המתנדבים, מסומנות בבירור. השתמשו בה בזמן שאתם מעבירים קהילה מ-V1 ל-V2, ואז עברו ל-V2 בלבד."
-
-#: 
 msgid "A volunteer"
 msgstr "מתנדב"
 
@@ -18982,10 +18714,6 @@ msgid "Assigned outside the current plan"
 msgstr "שובץ מחוץ לתוכנית הנוכחית"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "השיבוץ בוטל"
-
-#: 
 msgid "Assignment not found"
 msgstr "השיבוץ לא נמצא"
 
@@ -19092,10 +18820,6 @@ msgstr "ביטול שיבוץ"
 #: 
 msgid "Cancel this assignment"
 msgstr "ביטול שיבוץ זה"
-
-#: 
-msgid "Cancelled"
-msgstr "בוטל"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19252,10 +18976,6 @@ msgstr "אתר הקהילה"
 #: 
 msgid "Close event details"
 msgstr "סגירת פרטי האירוע"
-
-#: 
-msgid "Colour"
-msgstr "צבע"
 
 #: 
 msgid "Completed"
@@ -19502,10 +19222,6 @@ msgid "Each staffing need must name a position"
 msgstr "כל צורך איוש חייב לציין תפקיד"
 
 #: 
-msgid "Edit event"
-msgstr "ערוך אירוע"
-
-#: 
 msgid "Edit ministry"
 msgstr "עריכת שירות"
 
@@ -19590,10 +19306,6 @@ msgstr "הדוא״ל נשלח ל-{{count}} נמענים."
 #: 
 msgid "Emails"
 msgstr "הודעות דוא\"ל"
-
-#: 
-msgid "End time"
-msgstr "שעת סיום"
 
 #: 
 msgid "Enter counts"
@@ -20874,10 +20586,6 @@ msgid "SMTP test"
 msgstr "בדיקת SMTP"
 
 #: 
-msgid "Save changes"
-msgstr "שמור שינויים"
-
-#: 
 msgid "Saved — this ministry is no longer asking for help"
 msgstr "נשמר — שירות זה אינו מבקש עוד עזרה"
 
@@ -21160,10 +20868,6 @@ msgstr "צורכי האיוש נשמרו"
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "התחילו ביצירת שירות, ואז הוסיפו את הצוותים והתפקידים המשרתים בו."
-
-#: 
-msgid "Start time"
-msgstr "שעת כניסה"
 
 #: 
 msgid "Start typing a name"
@@ -21512,10 +21216,6 @@ msgstr "הכתובת נבחרה — העתיקו אותה במקלדת."
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "נתיב הנכס \"%s\" אינו מותר."
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "לא ניתן היה לבטל את השיבוץ"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22042,10 +21742,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "מופע זה כבר התרחש ואי אפשר עוד לשנות את שיבוציו"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "מופע זה בוטל"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "למופע זה יש צורכי איוש משלו, נפרדים מלוח הזמנים שלו."
 
@@ -22214,16 +21910,8 @@ msgid "Validation"
 msgstr "אימות"
 
 #: 
-msgid "View event"
-msgstr "הצג אירוע"
-
-#: 
 msgid "View my schedule"
 msgstr "צפייה בלוח הזמנים שלי"
-
-#: 
-msgid "View person"
-msgstr "הצג אדם"
 
 #: 
 msgid "View the event"
@@ -22272,10 +21960,6 @@ msgstr "שעות מתנדבים"
 #: 
 msgid "Volunteering"
 msgstr "התנדבות"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "התנדבות מאורגנת כפי שקהילה מנהלת אותה. לכל שירות יש צוותים ותפקידים; אנשים מוסמכים לתפקידים ושייכים לקבוצת המאגר של השירות; לוחות זמנים עוקבים אחר האירועים בלוח השנה ומפיקים מופעים מתוארכים עם דרישות איוש; רכזים משבצים אנשים, שמאשרים, דוחים או מציעים מחליף; תזכורות והתראות יוצאות בדוא\"ל. מנהלי מערכת ומשתמשים עם הרשאת ניהול שירותים רואים כל שירות ויכולים ליצור, להשבית ולמחוק אותם. רכז שירות מקבל במקום זאת את הרשאת ניהול השירותים שלי: הכותרת שירותים בסרגל הצד מציגה אז רק את השירותים שהוא מרכז. מנהל צוות מנהל את הצוות שלו מפורטל החברים. החברים משתמשים בפורטל החברים כדי לראות את לוח הזמנים שלהם, להשיב, להירשם ולהציע עזרה."
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22814,10 +22498,6 @@ msgid "Cancel this occurrence"
 msgstr "ביטול מופע זה"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "הביטול לא מודיע לאיש: לא נשלח דוא״ל. השיבוצים נשמרים, לא נקבעות תזכורות כל עוד המופע מבוטל, ואי אפשר לשבץ איש עד שישוחזר."
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "אירועים שנמחקו נעלמים מכל לוחות השנה, יחד עם רישומי הכניסה וספירות הנוכחים, ואיוש השירות שלהם שומר רק את התאריך. לא ניתן לבטל פעולה זו."
 
@@ -22828,10 +22508,6 @@ msgstr "אירועים שנמחקו: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "אירועים למחיקה: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "המופע בוטל"
 
 #: 
 msgid "Occurrence restored"
@@ -22848,10 +22524,6 @@ msgstr "שחזור מופע"
 #: 
 msgid "Restore this occurrence"
 msgstr "שחזור מופע זה"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "לא ניתן היה לבטל את המופע"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -22906,10 +22578,6 @@ msgid "Invalid birth date"
 msgstr "תאריך לידה לא חוקי."
 
 #: 
-msgid "Invalid email address"
-msgstr "כתובת דוא״ל לא תקינה"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "הגדרות קיוסק"
 
@@ -22936,12 +22604,6 @@ msgstr "נרשם כאורח ללא הרשמה מראש בקיוסק במהלך �
 #: 
 msgid "Registering..."
 msgstr "נרשם..."
-
-#: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "דרישת מספר צ׳ק בעת רישום תשלומי צ׳קים ברשומות הפקדה.\n"
-"שימו לב: ביטול האפשרות מבטל גם את זיהוי מספרי הצ׳קים הכפולים — ייתכן שאותו צ׳ק פיזי יוזן יותר מפעם אחת."
 
 #: 
 msgid "This event has ended"
@@ -23580,10 +23242,6 @@ msgstr "בחר כמה זמן מראש ממלאים לוחות זמנים ומת�
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "בחר מישהו שכבר נמצא במדריך הקהילה. הוא יצטרף למתנדבי השירות הזה והרכזים יקבלו דוא״ל. רק רכז יכול להוציא מישהו."
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ב־ChurchCRM יש שתי דרכים לנהל מתנדבים. רק אחת אמורה לפעול בכל פעם; הגדרת חוויית המתנדבים קובעת מה הקהילה הזו רואה. המעבר מסתיר או מציג דפים ופריטי תפריט — הוא לעולם לא מוחק נתונים, כך שאפשר לחזור."
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -24866,28 +24524,12 @@ msgid "Closing Line"
 msgstr "שורת סיום"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "שולט בטלמטריה רשות. כשלים בהתקנה ובשדרוג מסד הנתונים שולחים אבחון מוגבל ל-PostHog גם כשהטלמטריה כבויה. דוחות הכשל כוללים גרסאות תוכנה וסביבה ושגיאת מסד נתונים מסוננת, אך ללא מזהה התקנה או משפט SQL."
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "אבחון התקנות ושדרוגי מסד נתונים שנכשלו"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "פרטי כשל בהתקנה ובשדרוג"
-
-#: 
 msgid "Open in browser window"
 msgstr "פתיחה בחלון הדפדפן"
 
 #: 
 msgid "Opening Line"
 msgstr "שורת פתיחה"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "טלמטריית שימוש רשות נשלחת רק כשהיא מופעלת. כשלי התקנה ושדרוג מסד נתונים תמיד שולחים אבחון מוגבל כדי לעזור לקהילה, גם אם בחרתם לא תודה. דוחות הכשל כוללים גרסאות תוכנה וסביבה ושגיאת מסד נתונים מסוננת, ללא מזהה התקנה או משפט SQL."
 
 #: 
 msgid "PDF Handling"
@@ -24924,18 +24566,6 @@ msgstr "נוסח הדוח"
 #: 
 msgid "Tax Information"
 msgstr "פרטי מס"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "הטלמטריה נשלחת ל-PostHog בארצות הברית. דוחות כשל בהתקנה ובשדרוג נשלחים גם כשטלמטריה רשות כבויה."
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "תאריך זה בוטל. אין צורך בפעולה נוספת מצידכם."
-
-#: 
-msgid "always sent"
-msgstr "נשלח תמיד"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25400,10 +25030,6 @@ msgstr "הדוא״ל דורש טיפול"
 #: 
 msgid "Email problem"
 msgstr "בעיית דוא״ל"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "קוד ההתחברות והקישור שנשלחו בדוא״ל בוטלו"
 
 #: 
 msgid "Emailed verification link"
@@ -25998,10 +25624,6 @@ msgid "Only people with their own email can be added."
 msgstr "אפשר להוסיף רק אנשים עם דוא״ל משלהם."
 
 #: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "טלמטריה רשות עשויה לכלול נתיבי דפים, אזור פעיל, גרסת CRM, גרסת PHP, משפחת OS, המדינה מהגדרות פרטי הקהילה, ומזהה התקנה אקראי. דוחות כשל אינם כוללים את מזהה ההתקנה. הנתונים נשלחים ל-PostHog בארצות הברית."
-
-#: 
 msgid "Passkey"
 msgstr "מפתח גישה"
 
@@ -26472,10 +26094,6 @@ msgstr "לא ניתן היה להסיר זאת."
 #: 
 msgid "That device is signed out."
 msgstr "המכשיר הזה מנותק."
-
-#: 
-msgid "That is not a valid email address."
-msgstr "זו אינה כתובת דוא״ל תקינה."
 
 #: 
 msgid "That page had been open too long. Please try again."
@@ -27168,4 +26786,590 @@ msgstr "או"
 #: 
 msgid "until %s"
 msgstr "עד %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "בפורטל החברים הוגשה בקשה לשנות את כתובת הדוא״ל שלך ב-%1$s מ-%2$s אל %3$s. השינוי מתבצע רק כשמשתמשים בקישור שנשלח לכתובת החדשה."
+
+#: 
+msgid "Review Family Information"
+msgstr "בדיקת פרטי המשפחה"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "כבר קיים שירות בשם \"%s\". בחרו אותו מהרשימה או בחרו שם אחר."
+
+#: 
+msgid "A new ministry"
+msgstr "שירות חדש"
+
+#: 
+msgid "A position"
+msgstr "תפקיד"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "להוסיף מתנדבים ({{total}}) לתפקידים שהומרו קודם?"
+
+#: 
+msgid "Already converted"
+msgstr "כבר הומר"
+
+#: 
+msgid "An existing ministry"
+msgstr "שירות קיים"
+
+#: 
+msgid "Becomes"
+msgstr "הופך ל"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ל-ChurchCRM יש שתי דרכים לנהל מתנדבים. רק אחת מהן אמורה להיות בשימוש בכל פעם; ההגדרה \"חוויית המתנדבים\" קובעת איזו מהן הקהילה הזו רואה. המעבר מסתיר או מציג דפים ופריטי תפריט ולעולם אינו מוחק נתונים. V1 ו\"שניהם\" מוצעים רק כל עוד הזדמנויות התנדבות בשימוש: ברגע שכל ההזדמנויות הומרו והקהילה עובדת עם V2, הם יוסרו מהרשימה."
+
+#: 
+msgid "Convert"
+msgstr "המרה"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "המרת הזדמנויות התנדבות"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "להמיר עכשיו הזדמנויות ({{total}})? נתוני V1 נשמרים כפי שהם עד שהזדמנויות התנדבות יופסקו."
+
+#: 
+msgid "Converted"
+msgstr "הומר"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "הומרו: תפקידים {{positions}}, שירותים {{ministries}}, מתנדבים שהוסמכו {{qualifications}}."
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "כל הזדמנות הופכת לתפקיד בצוות הראשון של שירות אחד, וכל מי שמקושר אליה מוסמך לתפקיד זה. הרשמה עצמית כבויה בהתחלה בתפקידים אלה."
+
+#: 
+msgid "Everything is converted."
+msgstr "הכול הומר."
+
+#: 
+msgid "Existing ministry"
+msgstr "שירות קיים"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "תנו לשירות החדש שם של עד 100 תווים."
+
+#: 
+msgid "Its own ministry"
+msgstr "שירות משלה"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "מקושרים מאז: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "קישורים שלא ניתן להמיר"
+
+#: 
+msgid "New ministries of their own"
+msgstr "שירותים חדשים משלהן"
+
+#: 
+msgid "New ministry name"
+msgstr "שם השירות החדש"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "לא נשלח דוא\"ל, והזדמנויות התנדבות נשארות כפי שהן עד שיופסקו."
+
+#: 
+msgid "No name"
+msgstr "ללא שם"
+
+#: 
+msgid "Not converted"
+msgstr "לא הומר"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "פתיחת החלפות תכונות"
+
+#: 
+msgid "Open Ministries"
+msgstr "פתיחת שירותים"
+
+#: 
+msgid "Opportunities"
+msgstr "הזדמנויות"
+
+#: 
+msgid "Opportunity"
+msgstr "הזדמנות"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "הזדמנות מס' %d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "אנשים שקושרו להזדמנויות התנדבות שהומרו מאז ההמרה: %d. הוסיפו אותם לתפקידים שלהם לפני שהזדמנויות התנדבות יופסקו בתחילת 2027."
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "הציגו קודם תצוגה מקדימה של ההמרה, ושלחו את הגרסה שהיא החזירה."
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "שונה שם כדי לשמור על שמות ייחודיים"
+
+#: 
+msgid "Review the conversion"
+msgstr "סקירת ההמרה"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "שלחו את בחירת ההמרה כאובייקט JSON."
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "שלחו את ההזדמנויות שהופכות לשירותים כרשימת מזהים."
+
+#: 
+msgid "That ministry does not exist."
+msgstr "השירות הזה לא קיים."
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "גרסת ChurchCRM שבה מנהל סגר את ההודעה על הפסקת הזדמנויות התנדבות."
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "הזדמנויות התנדבות השתנו מאז התצוגה המקדימה. בדקו שוב את התצוגה המקדימה ואז המירו."
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "לא ניתן לפתוח את האישור. טענו מחדש את הדף ונסו שוב."
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "לא ניתן להציג תצוגה מקדימה של ההמרה."
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "ההמרה נכשלה. שום דבר לא שונה."
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "לשירות \"%s\" אין צוות שיכיל את התפקידים."
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "לא ניתן להגיע לשרת. טענו מחדש את הדף כדי לראות אם ההמרה בוצעה."
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "אין הזדמנויות התנדבות להמרה."
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "ניהול מתנדבים עובר ל\"שניהם\", כך שהשירותים החדשים יוצגו לצד הזדמנויות התנדבות."
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "הזדמנויות התנדבות מופסקות"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "הזדמנויות התנדבות הומרו"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "הזדמנויות התנדבות יופסקו בתחילת 2027. המירו אותן לשירותים כדי לשמור מי משרת איפה."
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "הזדמנויות התנדבות יופסקו בתחילת 2027. המירו עכשיו לשירותים את ההזדמנויות (%1$d) ואת המתנדבים (%2$d) שלכם. אפשר לראות תצוגה מקדימה של התוצאה לפני שמשהו משתנה."
+
+#: 
+msgid "Volunteers qualified"
+msgstr "מתנדבים מוסמכים"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "מתנדבים להוספה לתפקידים שהומרו"
+
+#: 
+msgid "What it becomes"
+msgstr "למה זה הופך"
+
+#: 
+msgid "What will happen"
+msgstr "מה יקרה"
+
+#: 
+msgid "Where they go"
+msgstr "לאן הם הולכים"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "אילו הזדמנויות התנדבות ישנות הומרו, ולאיזה תפקיד הפכה כל אחת."
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "איזו חוויית מתנדבים הקהילה הזו משתמשת. הזדמנויות התנדבות (V1) יופסקו בתחילת 2027."
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "הזדמנויות ההתנדבות שלכם הומרו לשירותים. העבירו את ניהול מתנדבים ל-V2 לפני שהזדמנויות התנדבות יופסקו בתחילת 2027."
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "לשירות חדש, {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "לשירות {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "כבר לא ב-ChurchCRM"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "כיווץ סרגל הצד"
+
+#: 
+msgid "Expand sidebar"
+msgstr "הרחבת סרגל הצד"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "הזינו כתובת דוא\"ל תקינה שמשתמשת רק בתווי ASCII לפני ה-@."
+
+#: 
+msgid "Their email address is not valid"
+msgstr "כתובת הדוא\"ל שלהם אינה תקינה"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "למחוק את {{name}}?"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "לא ניתן לאסוף את פרטי המערכת. נסו שוב."
+
+#: 
+msgid "No payments found for this period."
+msgstr "לא נמצאו תשלומים לתקופה זו."
+
+#: 
+msgid "Payments by Fund"
+msgstr "תשלומים לפי קרן"
+
+#: 
+msgid "Unknown Fund"
+msgstr "קרן לא ידועה"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "בקשו מספק האחסון להעביר את מסד הנתונים לגרסה נתמכת, ולאחר מכן נסו שוב."
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "בקשו מספק האחסון להעביר את מסד הנתונים לגרסה נתמכת."
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "שמות החגים מוצגים לפי הגדרת השפה של כל משתמש. כשלחג אין שם בשפה זו, הוא מוצג באנגלית."
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "שמות חגים בשפה שלך"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "דרישת מספר צ'ק בעת רישום תשלומים בצ'ק ברשומות הפקדה. כשההגדרה כבויה, ניתן לשמור צ'ק עם מספר ריק או 0, וצ'קים אלה אינם נבדקים לכפילויות."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "דרישת מספר צ'ק בתשלומים בצ'ק"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "השדרוג לא התחיל, ולכן דבר לא השתנה."
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "לא ניתן להריץ שדרוג זה על מסד הנתונים שלך."
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "שרת מסד הנתונים שלך (%1$s %2$s) ישן יותר ממה ש-ChurchCRM תומך בו (MySQL %3$s או MariaDB %4$s ואילך)."
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "אשרו משפחה זו שנרשמה בעצמה לפני שליחת דוא\"ל אימות"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "השוואת סכומי ההתחייבויות של המשפחות בשתי שנות כספים."
+
+#: 
+msgid "Email Portal Link"
+msgstr "שליחת קישור לפורטל בדוא\"ל"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "שלחו למשפחה בדוא\"ל קישור לפורטל החברים, שבו היא יכולה לעיין בפרטיה ולעדכן אותם, או רשמו שאימתתם אותם באופן אישי."
+
+#: 
+msgid "Family is inactive"
+msgstr "המשפחה אינה פעילה"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "שנת כספים ראשונה"
+
+#: 
+msgid "Fiscal Years"
+msgstr "שנות כספים"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "דוח תרומות — דוגמה בלבד"
+
+#: 
+msgid "Last invited"
+msgstr "הוזמנה לאחרונה"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "כניסה אחרונה לפורטל"
+
+#: 
+msgid "Last verified"
+msgstr "אומתה לאחרונה"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "לאף חבר פעיל ומאושר במשפחה זו אין כתובת דוא\"ל. אמתו את הפרטים באופן אישי במקום זאת."
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "לא נמצאו התחייבויות לשנות כספים אלה."
+
+#: 
+msgid "Pledge Comparison"
+msgstr "השוואת התחייבויות"
+
+#: 
+msgid "Preview PDF"
+msgstr "תצוגה מקדימה של PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "שנת כספים שנייה"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "היכנסו לפורטל החברים עם כתובת דוא\"ל זו כדי לעיין בפרטי המשפחה שלכם. בדף המשפחה שלי, אשרו שהכול נכון או עדכנו את הפרטים שלכם."
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "משפחה זו אינה פעילה, ולכן לא נשלחות אליה הודעות אימות בדוא\"ל."
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "משפחה זו שנרשמה בעצמה ממתינה לאישור. לאחר האישור תישלח למשפחה בדוא\"ל הזמנה להיכנס לפורטל החברים ולעיין בפרטיה."
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "משתמש רק בהגדרות השמורות ובתרומות דוגמה בדיוניות."
+
+#: 
+msgid "Verification"
+msgstr "אימות"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "דוא\"ל אימות נשלח למשפחה %d."
+msgstr[1] "דוא\"ל אימות נשלח ל-%d משפחות."
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "דוא\"ל אימות נשלח לבני המשפחה."
+
+#: 
+msgid "by the family in the portal"
+msgstr "על ידי המשפחה בפורטל"
+
+#: 
+msgid "in person by staff"
+msgstr "באופן אישי על ידי הצוות"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d ברירת מחדל דולגה מסיבה אחרת (המופע הסתיים, בוטל או מלא)"
+msgstr[1] "%d ברירות מחדל דולגו מסיבה אחרת (המופע הסתיים, בוטל או מלא)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "הגדרת מעבר. דפי הזדמנויות ההתנדבות הישנים ודפי השירותים החדשים זמינים שניהם, ורשומת אדם מציגה את שתי לשוניות המתנדבים, מסומנות בבירור. השתמשו בה בזמן שאתם מעבירים קהילה מ-V1 ל-V2, ואז עברו ל-V2 בלבד."
+
+#: 
+msgid "Assignment canceled"
+msgstr "השיבוץ בוטל"
+
+#: 
+msgid "Canceled"
+msgstr "בוטל"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "הביטול לא מודיע לאיש: לא נשלח דוא״ל. השיבוצים נשמרים, לא נקבעות תזכורות כל עוד המופע מבוטל, ואי אפשר לשבץ איש עד שישוחזר."
+
+#: 
+msgid "Color"
+msgstr "צבע"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "קוד ההתחברות והקישור שנשלחו בדוא״ל בוטלו"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "תפקידים משפחתיים (ראש משק בית, בן/בת זוג, ילד/ה וכו') עוזרים לארגן את הרשומות שלכם."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "המופע בוטל"
+
+#: 
+msgid "Prioritize translations"
+msgstr "תעדף תרגומים"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "לא ניתן היה לבטל את השיבוץ"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "לא ניתן היה לבטל את המופע"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "תאריך זה בוטל. אין צורך בפעולה נוספת מצידכם."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "מופע זה בוטל"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "התנדבות מאורגנת כפי שקהילה מנהלת אותה. לכל שירות יש צוותים ותפקידים; אנשים מוסמכים לתפקידים ושייכים לקבוצת המאגר של השירות; לוחות זמנים עוקבים אחר האירועים בלוח השנה ומפיקים מופעים מתוארכים עם דרישות איוש; רכזים משבצים אנשים, שמאשרים, דוחים או מציעים מחליף; תזכורות והתראות יוצאות בדוא\"ל. מנהלי מערכת ומשתמשים עם הרשאת ניהול שירותים רואים כל שירות ויכולים ליצור, להשבית ולמחוק אותם. רכז שירות מקבל במקום זאת את הרשאת ניהול השירותים שלי: הכותרת שירותים בסרגל הצד מציגה אז רק את השירותים שהוא מרכז. מנהל צוות מנהל את הצוות שלו מפורטל החברים. החברים משתמשים בפורטל החברים כדי לראות את לוח הזמנים שלהם, להשיב, להירשם ולהציע עזרה."
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "ספירת התקנות פעילות ותוצאות שדרוג"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "מנוע מסד הנתונים וגרסה ראשית/משנית"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "שגיאות — סטטיסטיקות התקנה, אזהרות, שגיאות וחריגות JS"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "לעזור לנו למצוא ולתקן בעיות?"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "התקנה משתפת סטטיסטיקות מינימליות של התקנה ושדרוג. שגיאות מוסיפה אזהרות ודוחות שגיאה. מלא מוסיפה צפיות בדפים. ללא שולחת רק התקנות ושדרוגים שנכשלו."
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "התקנה — סטטיסטיקות התקנה ושדרוג (ברירת מחדל)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "תוצאות התקנה ושדרוג, הגרסה הקודמת בשדרוגים ודיווח יומי בזמן השימוש"
+
+#: 
+msgid "Installation profile"
+msgstr "פרופיל התקנה"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "אזור ושפה (שגיאות ומלא)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "לעולם לא משותפים: רשומות חברים, תרומות או רשומות אחרות של הקהילה, שם הקהילה שלך, כתובת האתר או שם השרת שלך, או כתובות דוא\"ל. המדינה שלך היא זו שבהגדרות הקהילה, ולא נקבעת לפי הרשת שלך."
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "משפחת מערכת ההפעלה (שגיאות ומלא)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "גרסת PHP (שגיאות ומלא)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "ראו בדיוק מה משותף, או שנו את בחירתכם, בניהול → טלמטריה."
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "הפרדה בין התקנות ייצור, הדגמה ובדיקה"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "לשתף סטטיסטיקות התקנה אנונימיות?"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "שיתוף דוחות שגיאות ושימוש"
+
+#: 
+msgid "Share install statistics"
+msgstr "שיתוף סטטיסטיקות התקנה"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "משותפים בנוסף: אזהרות, פרטי שגיאות ואילו דפים נפתחים."
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "משותף: ש-ChurchCRM הותקנה או שודרגה והאם זה הצליח, דיווח פעם ביום בזמן השימוש, מספר הגרסה, המדינה שלך וסוג מסד הנתונים. מזהה התקנה אקראי סופר כל התקנה פעם אחת."
+
+#: 
+msgid "Understand database compatibility"
+msgstr "הבנת תאימות מסדי נתונים"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "הבחירה נשאלת פעם אחת. אפשר לשנות אותה בכל עת. עם לא תודה, מדווחת רק התקנה או שדרוג שנכשלו."
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "הנתונים שלך שייכים לך. התקנה משתפת רק תוצאות התקנה ושדרוג, מזהה התקנה, גרסת תוכנה, פרופיל התקנה, המדינה שהוגדרה ומנוע מסד הנתונים עם גרסה ראשית/משנית. שגיאות מוסיפה אזהרות ופרטי שגיאות. מלא מוסיפה צפיות בדפים. ללא שולחת רק התקנות ושדרוגים שנכשלו. אף רמה לא שולחת את כתובת האתר או שם השרת שלך. התקנות בדיקה לא שולחות דבר. הטלמטריה נשלחת ל-PostHog בארצות הברית."
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "הנתונים שלך שייכים לך. הדיווח עוסק בתוכנה, ולעולם לא בקהילה שלך או באנשיה."
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "הנתונים שלך שייכים לך. כדי לספור התקנות, ChurchCRM מדווחת שהיא הותקנה או שודרגה והאם זה הצליח, שולחת דיווח פעם ביום בזמן השימוש, וכן את מספר הגרסה, המדינה שלך, סוג מסד הנתונים ומזהה התקנה אקראי. היא לעולם לא מדווחת על רשומות חברים, תרומות או רשומות אחרות של הקהילה, שם הקהילה שלך, כתובת האתר או שם השרת שלך, או כתובות דוא\"ל. אפשר לכבות זאת בכל עת בניהול → טלמטריה; התקנה או שדרוג שנכשלו עדיין מדווחים. אזהרות, פרטי שגיאות וצפיות בדפים משותפים רק אם תבחרו בכך."
 

@@ -1,3 +1,5 @@
+import { alertAction, confirmAction } from "./common/confirm-action";
+import { notifyError } from "./common/notify";
 /**
  * Two-Factor Authentication Enrollment
  *
@@ -8,7 +10,12 @@
 import { escapeHtml } from "./utils/escape-html";
 
 const CRMRoot = window.CRM.root;
-const t = (key) => (window.i18next ? window.i18next.t(key) : key);
+// i18next can exist before its locale resources are initialized on a hard reload.
+// Never render an undefined label while the asynchronous locale loader runs.
+const t = (key) => {
+  const translated = window.i18next?.t?.(key);
+  return typeof translated === "string" && translated.length > 0 ? translated : key;
+};
 
 function fetchJSON(url, opts = {}) {
   return fetch(url, { credentials: "include", ...opts }).then((r) => {
@@ -16,12 +23,6 @@ function fetchJSON(url, opts = {}) {
     if (r.status === 204) return {};
     return r.json();
   });
-}
-
-function notifyError(message) {
-  if (window.CRM?.notify) {
-    window.CRM.notify(message, { type: "danger" });
-  }
 }
 
 // ---------------------------------------------------------------------------
@@ -33,10 +34,18 @@ const state = {
   is2FAEnabled: false,
   initialLoadComplete: false,
   TwoFAQRCodeDataUri: "",
+  TwoFASecret: "",
+  showManualKey: false,
   currentTwoFAPin: "",
   currentTwoFAPinStatus: "",
   TwoFARecoveryCodes: [],
 };
+
+function clearEnrollmentCredentials() {
+  state.TwoFAQRCodeDataUri = "";
+  state.TwoFASecret = "";
+  state.showManualKey = false;
+}
 
 function getContainer() {
   return document.getElementById("two-factor-enrollment-app");
@@ -143,7 +152,20 @@ function renderQRCode() {
               </div>
             </div>
             <p class="text-muted small text-center mb-0">
-              ${t("Can't scan?")} <button type="button" class="btn btn-link btn-sm p-0" id="newQRCodeBtn">${t("Generate new code")}</button>
+              ${t("Can't scan?")} <button type="button" class="btn btn-link btn-sm p-0" id="showManual2FAKeyBtn" aria-expanded="${state.showManualKey}" aria-controls="manual2FAKeyPanel">${state.showManualKey ? t("Hide setup key") : t("Enter a setup key manually")}</button>
+            </p>
+            <div id="manual2FAKeyPanel" class="mt-3" ${state.showManualKey && state.TwoFASecret ? "" : "hidden"}>
+              <label class="form-label fw-bold" for="manual2FAKey">${t("Setup key")}</label>
+              <div class="input-group">
+                <input id="manual2FAKey" type="text" class="form-control font-monospace" readonly autocomplete="off" spellcheck="false" aria-describedby="manual2FAKeyHint">
+                <button type="button" id="copyManual2FAKeyBtn" class="btn btn-outline-secondary" ${state.TwoFASecret ? "" : "disabled"}>
+                  <i class="fa-solid fa-copy me-1" aria-hidden="true"></i>${t("Copy")}
+                </button>
+              </div>
+              <p id="manual2FAKeyHint" class="text-muted small mt-2 mb-2">${t("Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private.")}</p>
+            </div>
+            <p class="text-muted small text-center mt-2 mb-0">
+              <button type="button" class="btn btn-link btn-sm p-0" id="newQRCodeBtn">${t("Generate new code")}</button>
             </p>
           </div>
           <hr>
@@ -308,6 +330,35 @@ function bindEvents() {
     });
   }
 
+  // QR screen: manual key stays hidden until explicitly requested.
+  const manualKeyBtn = document.getElementById("showManual2FAKeyBtn");
+  if (manualKeyBtn) {
+    manualKeyBtn.addEventListener("click", () => {
+      state.showManualKey = !state.showManualKey;
+      render();
+    });
+  }
+
+  const manualKey = document.getElementById("manual2FAKey");
+  if (manualKey && state.showManualKey) manualKey.value = state.TwoFASecret;
+
+  const copyManualKeyBtn = document.getElementById("copyManual2FAKeyBtn");
+  if (copyManualKeyBtn) {
+    copyManualKeyBtn.addEventListener("click", async () => {
+      if (!state.TwoFASecret) return;
+      try {
+        if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+        await navigator.clipboard.writeText(state.TwoFASecret);
+        copyManualKeyBtn.textContent = t("Copied!");
+      } catch (_error) {
+        // The readonly field remains selectable for manual copying on HTTP or denied permissions.
+        manualKey.focus();
+        manualKey.select();
+        notifyError(t("Unable to copy automatically. Select and copy the setup key manually."));
+      }
+    });
+  }
+
   // QR screen: new code button
   const newQRBtn = document.getElementById("newQRCodeBtn");
   if (newQRBtn) {
@@ -367,16 +418,12 @@ function bindEvents() {
               showCopied();
             } catch (_e) {
               document.body.removeChild(ta);
-              if (typeof bootbox !== "undefined") {
-                bootbox.alert(t("Unable to copy to clipboard. Please copy the codes manually."));
-              }
+              alertAction("", t("Unable to copy to clipboard. Please copy the codes manually."));
             }
           });
       } else {
         // Non-secure context — clipboard API unavailable
-        if (typeof bootbox !== "undefined") {
-          bootbox.alert(t("Clipboard not available. Please use the Download button to save your codes."));
-        }
+        alertAction("", t("Clipboard not available. Please use the Download button to save your codes."));
       }
     });
   }
@@ -400,13 +447,11 @@ function bindEvents() {
   const disableBtn = document.getElementById("disable2FABtn");
   if (disableBtn) {
     disableBtn.addEventListener("click", () => {
-      if (
-        window.confirm(
-          t("Are you sure you want to disable two-factor authentication? Your account will be less secure."),
-        )
-      ) {
-        disable2FA();
-      }
+      confirmAction(
+        t("Disable Two-Factor Authentication"),
+        t("Are you sure you want to disable two-factor authentication? Your account will be less secure."),
+        disable2FA,
+      );
     });
   }
 }
@@ -430,20 +475,30 @@ function loadInitialStatus() {
     });
 }
 
+let barcodeRequestId = 0;
+
 function requestNewBarcode() {
+  const requestId = ++barcodeRequestId;
+  clearEnrollmentCredentials();
+  render();
   fetchJSON(`${CRMRoot}/api/user/current/refresh2fasecret`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
   })
     .then((data) => {
+      if (requestId !== barcodeRequestId || state.currentView !== "BeginEnroll") return;
       state.TwoFAQRCodeDataUri = data.TwoFAQRCodeDataUri;
-      // Update only the QR image if we're on the right screen
-      const img = document.getElementById("2faQrCodeDataUri");
-      if (img) {
-        img.src = data.TwoFAQRCodeDataUri;
-      }
+      state.TwoFASecret = data.TwoFASecret || "";
+      state.showManualKey = false;
+      // Refresh the QR code while hiding any previously revealed setup key.
+      render();
     })
-    .catch(() => notifyError(t("Failed to generate QR code. Please try again.")));
+    .catch(() => {
+      if (requestId !== barcodeRequestId || state.currentView !== "BeginEnroll") return;
+      clearEnrollmentCredentials();
+      render();
+      notifyError(t("Failed to generate QR code. Please try again."));
+    });
 }
 
 function requestRecoveryCodes() {
@@ -459,12 +514,15 @@ function requestRecoveryCodes() {
 }
 
 function remove2FA() {
+  ++barcodeRequestId;
+  clearEnrollmentCredentials();
+  render();
   fetchJSON(`${CRMRoot}/api/user/current/remove2fasecret`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
   })
     .then(() => {
-      state.TwoFAQRCodeDataUri = "";
+      clearEnrollmentCredentials();
       state.currentView = "intro";
       render();
     })
@@ -472,11 +530,14 @@ function remove2FA() {
 }
 
 function disable2FA() {
+  ++barcodeRequestId;
+  clearEnrollmentCredentials();
   fetchJSON(`${CRMRoot}/api/user/current/remove2fasecret`, {
     method: "POST",
     headers: { Accept: "application/json", "Content-Type": "application/json" },
   })
     .then(() => {
+      clearEnrollmentCredentials();
       state.is2FAEnabled = false;
       state.currentView = "intro";
       render();
@@ -506,6 +567,8 @@ function handlePinChange(value) {
         if (data.IsEnrollmentCodeValid) {
           requestRecoveryCodes();
           state.is2FAEnabled = true;
+          ++barcodeRequestId;
+          clearEnrollmentCredentials();
           state.currentView = "success";
           render();
         } else {
@@ -530,8 +593,23 @@ function handlePinChange(value) {
 // ---------------------------------------------------------------------------
 
 $(document).ready(() => {
-  if (getContainer()) {
+  if (!getContainer()) return;
+
+  // Other V2 pages wait for the locale loader before rendering translated UI.
+  // On a hard reload, DOM ready may fire before i18next.init() completes.
+  const initialize = () => {
+    if (!getContainer()) return;
     render();
     loadInitialStatus();
+  };
+
+  // Keep the loading spinner visible until translations are ready. The helper
+  // runs immediately if the event fired before DOM ready (normal navigation).
+  if (typeof window.CRM?.onLocalesReady === "function") {
+    window.CRM.onLocalesReady(initialize);
+  } else if (window.CRM?.localesLoaded) {
+    initialize();
+  } else {
+    window.addEventListener("CRM.localesReady", initialize, { once: true });
   }
 });

@@ -13,8 +13,8 @@
 // Import FontAwesome CSS - webfonts are automatically bundled by webpack
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-// Import flag-icons CSS - flags are automatically bundled by webpack
-import "flag-icons/css/flag-icons.min.css";
+// Tabler flags CSS - flag SVGs are bundled by webpack
+import "@tabler/core/dist/css/tabler-flags.min.css";
 
 // DataTables Bootstrap 5 integration CSS
 import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";

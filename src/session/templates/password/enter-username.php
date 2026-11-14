@@ -41,7 +41,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
       <button type="button" id="resetPassword" class="btn-reset"><?= gettext('Send Reset Email') ?></button>
 
       <div class="form-footer">
-        <a href="<?= AuthenticationManager::getStaffSignInURL() ?>"><?= gettext('Back to login') ?></a>
+        <a href="<?= AuthenticationManager::getStaffSignInURL() ?>"><?= gettext('Back to Login') ?></a>
       </div>
     </form>
   </div>
@@ -55,7 +55,7 @@ require(SystemURLs::getDocumentRoot() ."/Include/HeaderNotLoggedIn.php");
                 function reset() {
                     var user = $user.val().trim();
                     if (!user) {
-                        window.CRM.notify(i18next.t('Login Name is Required'), { type: 'warning', delay: 3000 });
+                        window.CRM.notify(i18next.t('Login Name is required'), { type: 'warning', delay: 3000 });
                         return;
                     }
 

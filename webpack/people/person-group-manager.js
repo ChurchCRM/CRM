@@ -10,6 +10,7 @@
  * Replaces the legacy jQuery handlers in skin/js/PersonView.js.
  */
 
+import { confirmAction } from "../common/confirm-action";
 import { setMemberRole } from "../groups/group-api";
 
 const MODAL_ID = "personGroupModal";
@@ -316,21 +317,16 @@ function handleChangeRole(personId, groupId, currentRoleId) {
  */
 function handleRemoveFromGroup(personId, groupId, groupName) {
   const safeGroupName = window.CRM.escapeHtml(String(groupName || ""));
-  bootbox.confirm({
-    title: i18next.t("Remove from Group"),
-    message: `${i18next.t("Are you sure you want to remove this person from")} <strong>${safeGroupName}</strong>?`,
-    buttons: {
-      cancel: { label: i18next.t("Cancel"), className: "btn-ghost-secondary" },
-      confirm: { label: i18next.t("Remove"), className: "btn-danger" },
+  confirmAction(
+    i18next.t("Remove from Group"),
+    `${i18next.t("Are you sure you want to remove this person from")} <strong>${safeGroupName}</strong>?`,
+    () => {
+      window.CRM.groups.removePerson(groupId, personId).done(() => {
+        location.reload();
+      });
     },
-    callback: (result) => {
-      if (result) {
-        window.CRM.groups.removePerson(groupId, personId).done(() => {
-          location.reload();
-        });
-      }
-    },
-  });
+    { confirmLabel: i18next.t("Remove"), cancelLabel: i18next.t("Cancel") },
+  );
 }
 
 /**

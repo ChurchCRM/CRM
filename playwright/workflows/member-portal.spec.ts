@@ -78,7 +78,6 @@ test('admin-member-portal-calendars', async ({ page }, testInfo) => {
     title: 'Member Portal Calendars',
     category: 'Admin & Settings',
     purpose: 'Choose which church and holiday calendars members see in the Member Portal.',
-    usedIn: ['docs'],
   });
 });
 
@@ -164,6 +163,43 @@ test.describe('signed in as a member', () => {
     await captureScreen(page, testInfo, portalMemberFamilyCapture);
   });
 
+  const portalMemberProfileCapture = defineCapture({
+    name: 'portal-member-profile',
+    locales: 'all',
+    title: 'Member Portal: My Profile',
+    category: 'People & Families',
+    purpose: 'A member sees what the church has on file for them and can ask to update it.',
+    usedIn: ['docs'],
+  });
+  test('portal-member-profile', portalMemberProfileCapture, async ({}, testInfo) => {
+    const page = await memberPage();
+    await page.goto('/portal/profile');
+    await expect(page.locator('#portal-profile-photo')).toBeVisible();
+    await expect(page.locator('#portal-profile-edit-link')).toBeVisible();
+    await waitForAvatars(page);
+    await settle(page, 600);
+
+    await captureScreen(page, testInfo, portalMemberProfileCapture);
+  });
+
+  const portalMemberFamilyConfirmCapture = defineCapture({
+    name: 'portal-member-family-confirm',
+    locales: 'all',
+    title: 'Member Portal: Confirm Your Family Details',
+    category: 'People & Families',
+    purpose: 'An adult checks the household details the church has on file and says whether they are still right.',
+    usedIn: ['docs'],
+  });
+  test('portal-member-family-confirm', portalMemberFamilyConfirmCapture, async ({}, testInfo) => {
+    const page = await memberPage();
+    await page.goto('/portal/family/confirm');
+    await expect(page.locator('#portal-confirm-form')).toBeVisible();
+    await waitForAvatars(page);
+    await settle(page, 600);
+
+    await captureScreen(page, testInfo, portalMemberFamilyConfirmCapture);
+  });
+
   const portalMemberCalendarCapture = defineCapture({
     name: 'portal-member-calendar',
     locales: 'all',
@@ -206,6 +242,45 @@ test.describe('signed in as a member', () => {
     await settle(page, 600);
 
     await captureScreen(page, testInfo, portalMemberCalendarSubscribeCapture);
+  });
+});
+
+/** The demo's leader of the Worship Team (src/admin/demo/volunteers.json): a member with no other capture signed in as them. */
+const TEAM_LEADER_EMAIL = 'kevin.flores@demo.churchcrm.io';
+
+test.describe('signed in as a team leader', () => {
+  let leader: BrowserContext | undefined;
+
+  test.beforeAll(async ({ browser }) => {
+    leader = await rememberedMemberContext(browser, TEAM_LEADER_EMAIL, 'team-leader');
+  });
+
+  test.afterAll(async () => {
+    await leader?.close();
+  });
+
+  async function leaderPage(path: string): Promise<Page> {
+    const page = await (leader as BrowserContext).newPage();
+    await page.goto(path);
+    await expect(page.locator('.portal-shell')).toBeVisible({ timeout: 15000 });
+    return page;
+  }
+
+  const portalMemberTeamsCapture = defineCapture({
+    name: 'portal-member-teams',
+    locales: 'all',
+    title: 'Member Portal: My Teams',
+    category: 'Groups & Events',
+    purpose: 'A team leader sees the volunteer teams they look after, with positions and the next date each meets.',
+    usedIn: ['docs'],
+  });
+  test('portal-member-teams', portalMemberTeamsCapture, async ({}, testInfo) => {
+    const page = await leaderPage('/portal/teams');
+    await expect(page.locator('.portal-team-card').first()).toBeVisible();
+    await waitForAvatars(page);
+    await settle(page, 600);
+
+    await captureScreen(page, testInfo, portalMemberTeamsCapture);
   });
 });
 

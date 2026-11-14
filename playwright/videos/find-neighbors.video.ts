@@ -3,22 +3,6 @@ import { expect, test } from '@playwright/test';
 import { captureScreen } from '../support/capture';
 import { humanClick, humanPause, humanType, settle } from '../support/human';
 
-/**
- * A church user looking up who lives near one family: open the Scott
- * family's profile (real member photos + geocoded address, see
- * src/admin/demo/people.json — same family as people-family-overview; the
- * family itself has no uploaded portrait, so its own profile card briefly
- * shows the initials-avatar placeholder before "Find Neighbors" navigates
- * on), click "Find Neighbors", and watch the distance-banded results
- * populate on the map. webpack/people/map-neighbors.js auto-runs the
- * search when the page loads with ?familyId=N (see its "Auto-run"
- * comment), so this is a real navigation + async render, not a scripted
- * form fill — the #familySelect field is TomSelect-enhanced (new
- * TomSelect(this) in that same file), which is unreliable to drive by
- * simulated typing/click in an automated recording, so this video shows
- * the deep-link entry point instead: the same "Find Neighbors" button a
- * user clicks from a family's own profile.
- */
 test('find-neighbors-search', async ({ page }, testInfo) => {
   await page.goto('/people/family');
   const rows = page.locator('#families tbody tr');
@@ -34,23 +18,39 @@ test('find-neighbors-search', async ({ page }, testInfo) => {
   await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
   await humanPause(page, 1000);
 
-  // family-view.php has two links to this URL: a hidden dropdown-item
-  // (inside the closed "Actions" menu) and this visible .btn — .first()
-  // would grab the hidden one, which scrollIntoViewIfNeeded can never
-  // make visible since it's display:none, not just off-screen.
   await humanClick(page.locator('a.btn[href*="map/neighbors"]').first());
   await page.waitForURL(/\/people\/map\/neighbors/, { timeout: 15000 });
   await expect(page.locator('#neighborsMap')).toBeVisible({ timeout: 15000 });
 
-  // Auto-run search populates the table and unhides it from its initial
-  // d-none state.
   await expect(page.locator('#neighborsTable')).toBeVisible({ timeout: 15000 });
+  await expect(page.locator('#neighborsMap .leaflet-tile').first()).toBeVisible();
+  await expect(page.locator('#neighborsMap .leaflet-tile:not(.leaflet-tile-loaded)')).toHaveCount(0, {
+    timeout: 20000,
+  });
   await settle(page, 2500);
+
+  await expect(page.locator('#neighborsTableBody tr').first()).toBeVisible();
+  const addToCart = page.waitForResponse(
+    (response) => response.url().endsWith('/api/cart/') && response.request().method() === 'POST'
+  );
+  await humanClick(page.locator('#addAllToCart'));
+  const response = await addToCart;
+  expect(response.ok()).toBeTruthy();
+  const result = await response.json();
+  const people = response.request().postDataJSON().Persons;
+  expect(people.length).toBeGreaterThan(0);
+  expect([...result.added, ...result.duplicate].sort()).toEqual([...people].sort());
+  await humanPause(page, 1500);
+  await humanClick(page.locator('a[data-bs-toggle="dropdown"]').filter({ has: page.locator('.fa-cart-shopping') }));
+  await humanClick(page.locator('#cart-dropdown-menu a[href$="/people/cart"]'));
+  await page.waitForURL(/\/people\/cart$/);
+  await expect(page.locator('#cart-listing-table tbody tr').first()).toBeVisible();
+  await settle(page, 2000);
 
   await captureScreen(page, testInfo, {
     name: 'find-neighbors-search',
-    title: 'Find Neighbors Search',
+    title: 'Plan a Visit to Nearby Families',
     category: 'Recordings',
-    purpose: 'Show finding nearby families from a family profile, with results plotted by distance on the map',
+    purpose: 'Plan a visit by finding nearby families from a member’s family profile and adding the neighbors to the cart',
   });
 });

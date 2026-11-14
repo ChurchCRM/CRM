@@ -3,6 +3,7 @@
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\ChurchLogo;
 
@@ -32,7 +33,9 @@ $contactWebsite = ChurchMetaData::getChurchWebSite();
       <div class="login-header-logo">
         <?= ChurchLogo::img() ?>
       </div>
+      <?php if (!ChurchLogoService::hasCustomLogo()): ?>
       <h2 class="login-header-church-name"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></h2>
+      <?php endif; ?>
       <p class="login-header-tagline"><?= gettext('Community Management Platform') ?></p>
     </div>
 
@@ -57,13 +60,13 @@ $contactWebsite = ChurchMetaData::getChurchWebSite();
 
       <form method="post" name="LoginForm" action="<?= $localAuthNextStepURL ?>">
         <div class="mb-3">
-          <label for="UserBox" class="form-label"><?= gettext('Email address') ?></label>
+          <label for="UserBox" class="form-label"><?= gettext('Username or Email Address') ?></label>
           <input
             type="text"
             id="UserBox"
             name="User"
             class="form-control"
-            placeholder="name@example.com"
+            placeholder="<?= htmlspecialchars(gettext('Enter your username or email'), ENT_QUOTES, 'UTF-8') ?>"
             value="<?= htmlspecialchars($prefilledUserName) ?>"
             required
             autofocus

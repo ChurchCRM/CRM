@@ -1958,7 +1958,44 @@ INSERT INTO `version_ver` (`ver_ID`, `ver_version`, `ver_update_start`, `ver_upd
 (91,'7.7.1','2026-09-19 05:49:02','2026-09-19 05:49:02'),
 (92,'7.8.0','2026-09-26 19:44:44','2026-09-26 19:44:44'),
 (93,'7.8.1','2026-10-10 20:13:31','2026-10-10 20:13:31'),
-(94,'7.8.2','2026-10-18 23:31:54','2026-10-18 23:31:54'),(95,'7.8.3','2026-10-25 17:26:57','2026-10-25 17:26:57'),(96,'7.8.4','2026-11-05 23:50:03','2026-11-05 23:50:03');
+(94,'7.8.2','2026-10-18 23:31:54','2026-10-18 23:31:54'),(95,'7.8.3','2026-10-25 17:26:57','2026-10-25 17:26:57'),(96,'7.8.4','2026-11-05 23:50:03','2026-11-05 23:50:03'),(97,'7.8.5','2026-11-12 20:16:14','2026-11-12 20:16:14');
+
+-- Keep bulk geocoding fast. All ordinary seed addresses have coordinates so the
+-- dedicated Main Street family below is the only address the batch geocodes.
+UPDATE `family_fam`
+SET `fam_Latitude` = 39.8283, `fam_Longitude` = -98.5795
+WHERE `fam_DateDeactivated` IS NULL
+  AND `fam_Address1` IS NOT NULL
+  AND TRIM(`fam_Address1`) != ''
+  AND (`fam_Latitude` IS NULL OR `fam_Latitude` = 0);
+
+UPDATE `person_per`
+SET `per_Latitude` = 39.8283, `per_Longitude` = -98.5795
+WHERE `per_DateDeactivated` IS NULL
+  AND `per_Address1` IS NOT NULL
+  AND TRIM(`per_Address1`) != ''
+  AND (`per_Latitude` IS NULL OR `per_Latitude` = 0);
+
+INSERT INTO `family_fam` (`fam_ID`, `fam_Name`, `fam_Address1`, `fam_City`, `fam_State`, `fam_Zip`, `fam_Country`, `fam_DateEntered`, `fam_EnteredBy`, `fam_EditedBy`, `fam_SendNewsLetter`, `fam_Latitude`, `fam_Longitude`, `fam_GeocodeTriedAt`) VALUES
+(45, 'Geocode Test Family', '123 Main St', 'Kansas City', 'MO', '64106', 'United States', '2026-11-08 00:00:00', 1, 1, 'FALSE', NULL, NULL, NULL)
+ON DUPLICATE KEY UPDATE
+    `fam_Address1` = VALUES(`fam_Address1`),
+    `fam_City` = VALUES(`fam_City`),
+    `fam_State` = VALUES(`fam_State`),
+    `fam_Zip` = VALUES(`fam_Zip`),
+    `fam_Country` = VALUES(`fam_Country`),
+    `fam_Latitude` = VALUES(`fam_Latitude`),
+    `fam_Longitude` = VALUES(`fam_Longitude`),
+    `fam_GeocodeTriedAt` = VALUES(`fam_GeocodeTriedAt`);
+
+INSERT INTO `person_per` (`per_ID`, `per_FirstName`, `per_LastName`, `per_Gender`, `per_fam_ID`, `per_DateEntered`, `per_EnteredBy`, `per_EditedBy`, `per_NeedsReview`) VALUES
+(902, 'Geocode', 'Test Member', 1, 45, '2026-11-08 00:00:00', 1, 1, 0)
+ON DUPLICATE KEY UPDATE
+    `per_FirstName` = VALUES(`per_FirstName`),
+    `per_LastName` = VALUES(`per_LastName`),
+    `per_Gender` = VALUES(`per_Gender`),
+    `per_fam_ID` = VALUES(`per_fam_ID`),
+    `per_DateDeactivated` = NULL;
 
 -- Next ids. family_custom and person_custom keep rows past the last family and person, so a
 -- counter left at max+1 hands a new family an id that table already holds.

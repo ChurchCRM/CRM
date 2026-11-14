@@ -81,6 +81,13 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                         </a>
                     </li>
                     <?php endif; ?>
+                    <?php if (!$person->isDeceased() && $person->isBirthdayToday()) : ?>
+                    <li class="mb-1">
+                        <span id="person-birthday-today" class="badge bg-success-lt text-success">
+                            <i class="fa-solid fa-cake-candles me-1"></i><?= gettext('Birthday today') ?>
+                        </span>
+                    </li>
+                    <?php endif; ?>
                     <?php if ($person->isDeceased()) : ?>
                     <li class="mb-1">
                         <span class="badge bg-secondary text-white">
@@ -401,7 +408,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
             </div>
             <div class="card-body p-0">
                 <div id="giving-history-loading" class="px-3 py-2 text-muted">
-                    <i class="fa-solid fa-spinner fa-spin me-1"></i> <?= gettext("Loading…") ?>
+                    <i class="fa-solid fa-spinner fa-spin me-1"></i> <?= gettext("Loading...") ?>
                 </div>
                 <div id="giving-history-content" class="d-none">
                     <ul class="list-unstyled mb-0 px-3 py-2">
@@ -730,13 +737,13 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                     // tabs so the active experience is never ambiguous during the
                     // migration; the legacy tab keeps its id and pane id.
                     $volunteerVersion = $volunteerVersion ?? 'v1';
-                    $showVolunteerV1  = in_array($volunteerVersion, ['v1', 'both'], true);
+                    $showVolunteerV1  = $volunteerV1InUse ?? false;
                     $showVolunteerV2  = in_array($volunteerVersion, ['v2', 'both'], true);
                     ?>
                     <?php if ($showVolunteerV1) : ?>
                     <li class="nav-item">
                         <a class="nav-link" id="nav-item-volunteer" href="#volunteer" data-bs-toggle="tab">
-                            <i class="fa-solid fa-handshake-angle me-1"></i><?= $volunteerVersion === 'both' ? gettext('Volunteer (Legacy)') : gettext('Volunteer') ?>
+                            <i class="fa-solid fa-handshake-angle me-1"></i><?= $showVolunteerV2 ? gettext('Volunteer (Legacy)') : gettext('Volunteer') ?>
                         </a>
                     </li>
                     <?php endif; ?>
@@ -794,7 +801,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                                     <div class="list-group-item">
                                         <div class="d-flex align-items-center">
                                             <div class="me-auto">
-                                                <a href="<?= SystemURLs::getRootPath() ?>/groups/view/<?= $grp_ID ?>" class="fw-bold"><?= InputUtils::escapeHTML($grp_Name) ?></a>
+                                                <a href="<?= InputUtils::escapeAttribute($aRow['viewUri']) ?>" class="fw-bold"><?= InputUtils::escapeHTML($grp_Name) ?></a>
                                                 <?php if ((int)$grp_Type !== 0) { ?>
                                                 <span class="badge bg-info-lt text-info ms-2"><?= InputUtils::escapeHTML($groupTypeName) ?></span>
                                                 <?php } ?>
@@ -826,7 +833,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                                             <div class="dropdown">
                                                 <button class="btn btn-sm btn-ghost-secondary" data-bs-toggle="dropdown" data-bs-display="static"><i class="fa-solid fa-ellipsis-vertical"></i></button>
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/groups/view/<?= $grp_ID ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View Group') ?></a>
+                                                    <a class="dropdown-item" href="<?= InputUtils::escapeAttribute($aRow['viewUri']) ?>"><i class="fa-solid fa-eye me-2"></i><?= gettext('View Group') ?></a>
                                                     <a class="dropdown-item changeRole" data-groupid="<?= $grp_ID ?>" data-current-role-id="<?= (int)$roleId ?>"><i class="fa-solid fa-user-tag me-2"></i><?= gettext('Change Role') ?></a>
                                                     <?php if ($grp_hasSpecialProps) { ?>
                                                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/groups/<?= $grp_ID ?>/members/<?= $iPersonID ?>/properties"><i class="fa-solid fa-sliders me-2"></i><?= gettext('Update Properties') ?></a>
@@ -845,6 +852,9 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                     <?php if ($showVolunteerV1) : ?>
                     <div class="tab-pane" id="volunteer">
                         <?php
+                        if (!empty($volunteerV1Notice) && AuthenticationManager::getCurrentUser()->isAdmin()) {
+                            require SystemURLs::getDocumentRoot() . '/admin/views/partials/volunteer-v1-notice.php';
+                        }
                         $assignedVolIDs = [];
                         if (count($assignedVolunteerOppsData) === 0) {
                         ?>

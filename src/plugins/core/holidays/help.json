@@ -12,6 +12,10 @@
     {
       "title": "Showing and hiding individual countries",
       "content": "Each country produces its own calendar row in the sidebar. Use the per-calendar toggle to temporarily hide a country without changing your plugin settings."
+    },
+    {
+      "title": "Holiday names in your language",
+      "content": "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
     }
   ]
 }

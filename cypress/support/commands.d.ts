@@ -48,6 +48,7 @@ declare namespace Cypress {
      * Assert a staff page is signed in: the user menu is there and the sign-in form is not.
      */
     expectStaffSignedIn(options?: { timeout?: number }): Chainable<void>;
+    dismissSystemNotifications(): Chainable<void>;
 
     setupLoginSession(
       sessionName: string,
@@ -632,7 +633,7 @@ declare namespace Cypress {
     endDeviceTokenGrace(personId: number): Chainable<void>;
 
     /**
-     * Wait for a Notyf notification with specific text
+     * Wait for a toast notification with specific text
      * Ensures locales are loaded first (for i18next translations) and verifies notification content
      * @param expectedText - The text to find in the notification
      * @param options - Optional config { timeout: 5000 }

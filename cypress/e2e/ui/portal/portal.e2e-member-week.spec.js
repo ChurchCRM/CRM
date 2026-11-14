@@ -593,7 +593,7 @@ describe("Member Portal — #9869 scenario 1, \"a member's week\", as ONE end-to
                 .find(".volunteer-offer-help")
                 .click();
 
-            cy.get(".notyf__toast", { timeout: 10000 }).should(
+            cy.get("#crm-toasts .toast", { timeout: 10000 }).should(
                 "contain",
                 "you'd like to help",
             );

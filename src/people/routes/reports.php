@@ -22,6 +22,7 @@ use Slim\Views\PhpRenderer;
 $app->group('/reports', function (RouteCollectorProxy $group): void {
     $group->get('', 'getPeopleReportsIndex');
     $group->get('/', 'getPeopleReportsIndex');
+    $group->get('/letters-and-labels', 'getLettersAndLabels');
     $group->get('/{slug:[a-z-]+}', 'getPeopleReport');
     $group->get('/{slug:[a-z-]+}/csv', 'getPeopleReportCsv');
     $group->post('/directory', 'postPeopleDirectory');
@@ -39,7 +40,7 @@ function peopleReportLinks(): array
             'description' => gettext('Printable directory of all people, grouped by family'),
         ],
         [
-            'href' => '/LettersAndLabels.php',
+            'href' => '/people/reports/letters-and-labels',
             'title' => gettext('Letters & Mailing Labels'),
             'description' => gettext('Generate letters and mailing labels'),
         ],
@@ -59,6 +60,24 @@ function getPeopleReportsIndex(Request $request, Response $response, array $args
         ]),
         'reports' => (new PeopleReportService())->getReports(),
         'links' => peopleReportLinks(),
+    ]);
+}
+
+function getLettersAndLabels(Request $request, Response $response): Response
+{
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+    return $renderer->render($response, 'letters-and-labels.php', [
+        'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('Letters and Mailing Labels'),
+        'sPageSubtitle' => gettext('Generate mailing labels and form letters'),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([
+            [gettext('People Reports'), '/people/reports'],
+            [gettext('Letters and Labels')],
+        ]),
+        'labelType' => (string) ($_COOKIE['labeltype'] ?? ''),
+        'labelFont' => (string) ($_COOKIE['labelfont'] ?? ''),
+        'labelFontSize' => (string) ($_COOKIE['labelfontsize'] ?? ''),
     ]);
 }
 

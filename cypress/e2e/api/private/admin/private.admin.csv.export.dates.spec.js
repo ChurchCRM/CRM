@@ -20,7 +20,7 @@ describe("API Private Admin — CSV export date filters", () => {
         cy
             .request({
                 method: "POST",
-                url: "/CSVCreateFile.php",
+                url: "/admin/export/csv",
                 form: true,
                 body: {
                     FirstName: 1,
@@ -44,6 +44,7 @@ describe("API Private Admin — CSV export date filters", () => {
 
     before(() => {
         cy.setupAdminSession();
+        cy.useChurchTimeZone();
         cy.getSystemConfig("sDatePickerFormat").then((value) => {
             originalFormat = value;
         });
@@ -52,6 +53,7 @@ describe("API Private Admin — CSV export date filters", () => {
     after(() => {
         cy.setupAdminSession();
         cy.restoreSystemConfig("sDatePickerFormat", originalFormat);
+        cy.useHostTimeZone();
     });
 
     ["m/d/Y", "d/m/Y", "Y-m-d"].forEach((format) => {

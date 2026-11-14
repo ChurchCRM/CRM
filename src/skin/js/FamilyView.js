@@ -80,15 +80,13 @@ function initializeFamilyView() {
 
   $(".remove-family-property-btn").on("click", function () {
     const propertyId = $(this).data("property_id");
-    bootbox.confirm(i18next.t("Are you sure you want to unassign this property?"), (result) => {
-      if (result) {
-        window.CRM.APIRequest({
-          method: "DELETE",
-          path: `people/properties/family/${window.CRM.currentFamily}/${propertyId}`,
-        }).done(() => {
-          location.reload();
-        });
-      }
+    window.CRM.confirmAction("", i18next.t("Are you sure you want to unassign this property?"), () => {
+      window.CRM.APIRequest({
+        method: "DELETE",
+        path: `people/properties/family/${window.CRM.currentFamily}/${propertyId}`,
+      }).done(() => {
+        location.reload();
+      });
     });
   });
 
@@ -337,96 +335,18 @@ function initializeFamilyView() {
     });
   });
 
-  $("#verifyURL").on("click", () => {
+  $("#approveFamily").on("click", () => {
     window.CRM.APIRequest({
-      path: `family/${window.CRM.currentFamily}/verify/url`,
-    }).then((data) => {
-      $("#confirm-verify").modal("hide");
-
-      // Create custom modal for verification URL
-      const modalHtml = `
-                <div class="modal fade" id="verifyUrlModal" tabindex="-1" role="dialog" aria-labelledby="verifyUrlLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header bg-info text-white">
-                                <h5 class="modal-title" id="verifyUrlLabel">
-                                    <i class="fa-solid fa-link me-2"></i>${i18next.t("Verification URL")}
-                                </h5>
-                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" id="verifyUrlInput" value="${window.CRM.escapeHtml(data.url)}" readonly>
-                                    <button class="btn btn-info" type="button" id="copyVerifyUrlBtn">
-                                        <i class="fa-solid fa-copy me-2"></i>${i18next.t("Copy")}
-                                    </button>
-                                </div>
-                                <p class="text-muted small">
-                                    <i class="fa-solid fa-circle-info me-2"></i>${i18next.t("Share this URL with family members to verify their information")}
-                                </p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">${i18next.t("Close")}</button>
-                                <a href="${window.CRM.escapeHtml(data.url)}" target="_blank" class="btn btn-primary">
-                                    <i class="fa-solid fa-arrow-up-right-from-square me-2"></i>${i18next.t("Open in New Tab")}
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-      // Remove old modal if exists
-      $("#verifyUrlModal").remove();
-
-      // Add new modal to page
-      $("body").append(modalHtml);
-
-      // Show modal
-      $("#verifyUrlModal").modal("show");
-
-      // Handle copy button
-      $("#copyVerifyUrlBtn").on("click", () => {
-        const urlInput = document.getElementById("verifyUrlInput");
-        navigator.clipboard
-          .writeText(urlInput.value)
-          .then(() => {
-            const btn = document.getElementById("copyVerifyUrlBtn");
-            const originalHtml = btn.innerHTML;
-
-            btn.innerHTML = `<i class="fa-solid fa-check me-2"></i>${i18next.t("Copied!")}`;
-            btn.classList.add("btn-success");
-            btn.classList.remove("btn-info");
-
-            setTimeout(() => {
-              btn.innerHTML = originalHtml;
-              btn.classList.remove("btn-success");
-              btn.classList.add("btn-info");
-            }, 2000);
-          })
-          .catch((err) => {
-            console.error("Failed to copy:", err);
-            window.CRM.notify(i18next.t("Failed to copy URL"), { type: "error" });
-          });
-      });
-
-      // Cleanup when modal is closed
-      $("#verifyUrlModal").on("hidden.bs.modal", () => {
-        $("#verifyUrlModal").remove();
-      });
+      method: "POST",
+      path: `family/${window.CRM.currentFamily}/approve-review`,
+    }).then(() => {
+      window.location.reload();
     });
   });
 
   $("#verifyDownloadPDF").on("click", () => {
     window.open(`${window.CRM.root}/people/report/verify?familyId=${window.CRM.currentFamily}`, "_blank");
     $("#confirm-verify").modal("hide");
-  });
-
-  $("#verifyEmailPDF").on("click", () => {
-    $("#confirm-verify").modal("hide");
-    const form = document.getElementById("verifyEmailPDFForm");
-    form.querySelector('input[name="familyId"]').value = window.CRM.currentFamily;
-    form.submit();
   });
 
   // Photos
@@ -449,21 +369,15 @@ function initializeFamilyView() {
       ? `${i18next.t("Please confirm deactivation of family")}: ${safeFamilyName}`
       : `${i18next.t("Please confirm activation of family")}: ${safeFamilyName}`;
 
-    bootbox.confirm({
-      title: popupTitle,
-      message: `<p class="text-danger">${popupMessage}</p>`,
-      callback: (result) => {
-        if (result) {
-          window.CRM.APIRequest({
-            method: "POST",
-            path: `family/${window.CRM.currentFamily}/activate/${!window.CRM.currentActive}`,
-          }).then((data) => {
-            if (data.success) {
-              window.location.href = `${window.CRM.root}/people/family/${window.CRM.currentFamily}`;
-            }
-          });
+    window.CRM.confirmAction(popupTitle, `<p class="text-danger">${popupMessage}</p>`, () => {
+      window.CRM.APIRequest({
+        method: "POST",
+        path: `family/${window.CRM.currentFamily}/activate/${!window.CRM.currentActive}`,
+      }).then((data) => {
+        if (data.success) {
+          window.location.href = `${window.CRM.root}/people/family/${window.CRM.currentFamily}`;
         }
-      },
+      });
     });
   });
 
@@ -530,23 +444,26 @@ function initializeFamilyView() {
     // Handle pledge/payment deletion via API
     $(document).on("click", ".pledge-delete-btn", function () {
       const groupKey = $(this).data("group-key");
-      if (!confirm(i18next.t("Are you sure you want to permanently delete this pledge record?"))) {
-        return;
-      }
-      fetch(`${window.CRM.root}/api/payments/${encodeURIComponent(groupKey)}`, {
-        method: "DELETE",
-      })
-        .then((res) => {
-          if (res.ok) {
-            window.CRM.notify("Deleted successfully", "success");
-            setTimeout(() => location.reload(), 800);
-          } else {
-            window.CRM.notify("Delete failed", "danger");
-          }
-        })
-        .catch(() => {
-          window.CRM.notify("Network error, please try again", "danger");
-        });
+      window.CRM.confirmAction(
+        i18next.t("Delete"),
+        i18next.t("Are you sure you want to permanently delete this pledge record?"),
+        () => {
+          fetch(`${window.CRM.root}/api/payments/${encodeURIComponent(groupKey)}`, {
+            method: "DELETE",
+          })
+            .then((res) => {
+              if (res.ok) {
+                window.CRM.notify(i18next.t("Deleted successfully"), { type: "success" });
+                setTimeout(() => location.reload(), 800);
+              } else {
+                window.CRM.notify(i18next.t("Delete failed"), { type: "danger" });
+              }
+            })
+            .catch(() => {
+              window.CRM.notify(i18next.t("Network error, please try again"), { type: "danger" });
+            });
+        },
+      );
     });
   }
 }

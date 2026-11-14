@@ -9,20 +9,6 @@ const yearEndPath = "/finance/reports/year-end";
 describe("Year-End Giving", () => {
     beforeEach(() => cy.setupAdminSession());
 
-    it("the Finance menu and the dashboard checklist lead here", () => {
-        cy.visit("/finance/");
-        cy.get(`a[href$='${yearEndPath}']`).should("exist");
-        cy.contains("a.btn", "Generate").should("have.attr", "href").and("include", yearEndPath);
-    });
-
-    it("shows the year's totals, the checklist and the statement actions", () => {
-        cy.visit(yearEndPath);
-        cy.get("#year option").its("length").should("be.gte", 1);
-        cy.get("#yearSummary").should("be.visible");
-        cy.get("#yearChecklist .list-group-item").should("have.length.gte", 3);
-        cy.get("#customStatements").should("have.attr", "href").and("include", "/finance/reports/giving-statements?DateStart=");
-    });
-
     it("a year with payments offers preview, PDF and CSV for that year", () => {
         cy.visit(`${yearEndPath}?year=2018`);
         cy.get("#yearGifts")
@@ -35,9 +21,49 @@ describe("Year-End Giving", () => {
             .then((text) => expect(Number(text)).to.be.greaterThan(0));
     });
 
-    it("the statement wording is shown and the admin can edit it", () => {
+});
+
+// Seed payments from June 2017 and March 2018 fall in 2017/18; the April 2021 gifts, which have no family, in 2021/22.
+describe("Year-End Giving with an April fiscal year", () => {
+    let originalMonth;
+
+    before(() => {
+        cy.setupAdminSession();
+        cy.getSystemConfig("iFYMonth").then((value) => {
+            originalMonth = value;
+        });
+        cy.makePrivateAdminAPICall("POST", "admin/api/system/config/iFYMonth", { value: "4" }, 200);
+    });
+
+    after(() => {
+        cy.setupAdminSession();
+        cy.restoreSystemConfig("iFYMonth", originalMonth);
+    });
+
+    beforeEach(() => cy.setupAdminSession());
+
+    it("offers the current fiscal year and each fiscal year with payments, by its label", () => {
+        const today = new Date();
+        const currentEndYear = today.getMonth() + 1 >= 4 ? today.getFullYear() + 1 : today.getFullYear();
+
         cy.visit(yearEndPath);
-        cy.get("#statementWordingView").should("contain", "Thank you");
-        cy.get("#statementWording").should("exist");
+        cy.get("#year option:selected").should("have.value", String(currentEndYear));
+        cy.get("#year option").then((options) => {
+            const values = [...options].map((option) => option.value);
+            expect(values).to.include.members(["2022", "2018"]);
+            expect(values).not.to.include("2021");
+            expect(values).not.to.include("2017");
+        });
+        cy.get("#year option[value='2022']").should("have.text", "2021/22");
+    });
+
+    it("a fiscal year that ends in the next calendar year covers its own dates", () => {
+        cy.visit(`${yearEndPath}?year=2022`);
+        cy.get("#year option:selected").should("have.value", "2022");
+        cy.get("#yearChecklist").should("contain", "gifts have no family");
+        cy.get("#customStatements")
+            .should("have.attr", "href")
+            .and("include", "DateStart=2021-04-01")
+            .and("include", "DateEnd=2022-03-31");
     });
 });

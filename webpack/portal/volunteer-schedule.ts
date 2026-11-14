@@ -46,6 +46,7 @@ import {
   formatWhen,
   notifyError,
   notifySuccess,
+  promptAction,
   renderState,
 } from "./member-ui";
 
@@ -77,7 +78,7 @@ function modal(): { show(): void; hide(): void } | null {
 /** The badge §5.6 puts on the right of every card, in the volunteer's own words. */
 function statusBadge(assignment: VolunteerMyAssignment): { label: string; className: string } {
   if (assignment.occurrenceStatus === "cancelled") {
-    return { label: i18next.t("Cancelled"), className: "bg-red-lt text-red" };
+    return { label: i18next.t("Canceled"), className: "bg-red-lt text-red" };
   }
 
   if (assignment.pendingSwapId !== null) {
@@ -142,7 +143,7 @@ function cardHtml(assignment: VolunteerMyAssignment): string {
     : "";
   const cancelledNote = cancelled
     ? `<div class="mt-2 small text-body-secondary volunteer-card-cancelled"><i class="fa-solid fa-ban me-1"></i>` +
-      `${escapeHtml(i18next.t("This date was cancelled. Nothing more is needed from you."))}</div>`
+      `${escapeHtml(i18next.t("This date was canceled. Nothing more is needed from you."))}</div>`
     : "";
 
   return `
@@ -217,20 +218,13 @@ async function respond(assignmentId: number, answer: "accepted" | "declined", co
 
 function decline(assignmentId: number): void {
   // §5.6: an optional reason, in a prompt, never a required form.
-  window.bootbox?.prompt({
-    title: i18next.t("Let them know why (optional)"),
-    inputType: "text",
-    buttons: {
-      confirm: { label: i18next.t("Send"), className: "btn-primary" },
-      cancel: { label: i18next.t("Cancel"), className: "btn-default" },
-    },
-    callback: (value: string | null) => {
-      if (value === null) {
-        return;
-      }
+  promptAction(
+    i18next.t("Let them know why (optional)"),
+    (value) => {
       void respond(assignmentId, "declined", value);
     },
-  });
+    { confirmLabel: i18next.t("Send") },
+  );
 }
 
 function hideSubstituteModal(): void {

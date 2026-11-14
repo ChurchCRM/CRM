@@ -6,82 +6,7 @@ use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 ?>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-    var groupId = <?= (int) $iGroupID ?>;
-
-    function reorderFormProp(propId, direction) {
-        var fallback = <?= InputUtils::jsonEncodeForScript(gettext('An error occurred. Please try again.')) ?>;
-        fetch(window.CRM.root + '/api/groups/' + groupId + '/formprops/' + propId + '/order', {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ direction: direction })
-        })
-        .then(function(r) { return r.json().catch(function() { return {}; }); })
-        .then(function(data) {
-            if (data.success) {
-                window.location.reload();
-                return;
-            }
-            window.CRM.notify(data.message || fallback, { type: 'danger', delay: 5000 });
-        })
-        .catch(function() {
-            window.CRM.notify(fallback, { type: 'danger', delay: 5000 });
-        });
-    }
-
-    $(document).on('click', '.js-reorder-field', function (e) {
-        e.preventDefault();
-        var btn = $(this);
-        reorderFormProp(btn.data('prop-id'), btn.data('direction'));
-    });
-
-    function confirmDeleteField(fieldName, propId, fieldId) {
-        var msg = <?= InputUtils::jsonEncodeForScript(gettext('Are you sure you want to delete')) ?> + '"' + window.CRM.escapeHtml(fieldName) + '"?';
-        msg += '<br><br><strong>' + <?= InputUtils::jsonEncodeForScript(gettext('Warning')) ?> + ':</strong> ';
-        msg += <?= InputUtils::jsonEncodeForScript(gettext('By deleting this field, you will irrevocably lose all group member data assigned for this field!')) ?>;
-        bootbox.confirm({
-            title: <?= InputUtils::jsonEncodeForScript(gettext('Delete Confirmation')) ?>,
-            message: msg,
-            buttons: {
-                cancel:  { label: <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?>, className: 'btn-secondary' },
-                confirm: { label: <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>, className: 'btn-danger' }
-            },
-            callback: function(result) {
-                if (result) {
-                    var fallback = <?= InputUtils::jsonEncodeForScript(gettext('Failed to delete. Please try again.')) ?>;
-                    fetch(window.CRM.root + '/api/groups/' + groupId + '/formprops/' + propId, {
-                        method: 'DELETE',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ field: fieldId })
-                    })
-                    .then(function(r) { return r.json().catch(function() { return {}; }); })
-                    .then(function(data) {
-                        if (data.success) {
-                            window.location.reload();
-                            return;
-                        }
-                        window.CRM.notify(data.message || fallback, { type: 'danger', delay: 5000 });
-                    })
-                    .catch(function() {
-                        window.CRM.notify(fallback, { type: 'danger', delay: 5000 });
-                    });
-                }
-            }
-        });
-        return false;
-    }
-
-    $(document).on('click', '.js-delete-field', function () {
-        var btn = $(this);
-        confirmDeleteField(btn.data('field-name'), btn.data('prop-id'), btn.data('field-id'));
-    });
-
-    $(function () {
-        $('[data-bs-toggle="tooltip"]').tooltip();
-    });
-</script>
-
-<form method="post" action="<?= $sRootPath ?>/groups/<?= $iGroupID ?>/properties/form" name="GroupPropFormEditor">
+<form method="post" action="<?= $sRootPath ?>/groups/<?= $iGroupID ?>/properties/form" name="GroupPropFormEditor" data-group-id="<?= (int) $iGroupID ?>">
     <div class="card mb-4">
         <div class="card-status-top bg-success"></div>
         <div class="card-header">
@@ -249,5 +174,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <?php endif; ?>
     </div>
 </form>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/groups-group-properties-form.min.js') ?>"></script>
 <?php
 require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

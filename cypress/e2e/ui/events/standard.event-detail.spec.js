@@ -146,32 +146,22 @@ describe("Event Detail - Did Not Attend List", () => {
 
     beforeEach(() => cy.setupAdminSession());
 
-    it("Shows the Did Not Attend card after a group-linked event ends", () => {
-        cy.visit(`event/view/${pastGroupEventId}`);
-        cy.contains("h3", "Did Not Attend").should("be.visible");
-    });
-
-    it("Did Not Attend card has Name, Email and Phone columns", () => {
+    it("lists the absent members, with Print and no Check-in, after a group-linked event ends", () => {
+        // absentCount was captured in before() — no API call needed here
         cy.visit(`event/view/${pastGroupEventId}`);
 
         cy.contains("h3", "Did Not Attend")
+            .should("be.visible")
             .closest(".card")
             .within(() => {
                 cy.contains("th", "Name").should("exist");
                 cy.contains("th", "Email").should("exist");
                 cy.contains("th", "Phone").should("exist");
-            });
-    });
-
-    it("Non-attendee count in badge matches roster not_checked_in count", () => {
-        // absentCount was captured in before() — no API call needed here
-        cy.visit(`event/view/${pastGroupEventId}`);
-
-        cy.contains("h3", "Did Not Attend")
-            .closest(".card")
-            .within(() => {
                 cy.get("tbody tr").should("have.length", absentCount);
             });
+        cy.contains("h3", "Attendance").closest(".card-header").contains("button", "Print").should("be.visible");
+        // a.btn, not the sidebar's "Check-in and Check-out" link, which is always there
+        cy.contains("a.btn", "Check-in").should("not.exist");
     });
 
     it("Checked-in member appears in Attendance and not in Did Not Attend", () => {
@@ -191,26 +181,38 @@ describe("Event Detail - Did Not Attend List", () => {
             .should("not.contain.text", checkedInName);
     });
 
+    it("Email All opens the shared composer with every non-attendee address", () => {
+        cy.visit(`event/view/${pastGroupEventId}`);
+
+        cy.get("#event-non-attendees-card a[href^='mailto:?']").should("not.exist");
+        cy.get("#event-non-attendees-card tbody a[href^='mailto:']").then(($links) => {
+            const addresses = new Set([...$links].map((a) => a.getAttribute("href").slice(7)));
+
+            cy.get("#event-email-non-attendees[data-email-composer]").should("be.visible").click();
+            cy.get("#crm-email-composer-modal").should("be.visible");
+            cy.get("#crm-email-composer-modal .modal-title")
+                .should("contain.text", "Email non-attendees")
+                .find(".badge")
+                .invoke("text")
+                .then((text) => expect(parseInt(text.trim(), 10)).to.be.at.least(addresses.size));
+            cy.get("#crm-email-copy-btn").should("be.visible");
+        });
+    });
+
+    it("Hides Email All from a user without the Email permission", () => {
+        cy.setupFinanceOnlySession();
+        cy.visit(`event/view/${pastGroupEventId}`);
+
+        cy.contains("h3", "Did Not Attend").should("be.visible");
+        cy.get("#event-non-attendees-card tbody a[href^='mailto:']").should("exist");
+        cy.get("#event-email-non-attendees").should("not.exist");
+        cy.get("#event-non-attendees-card [data-email-composer]").should("not.exist");
+        cy.get("#event-non-attendees-card a[href^='mailto:?']").should("not.exist");
+    });
+
     it("Does NOT show Did Not Attend when the event has no linked groups", () => {
         cy.visit(`event/view/${pastNoGroupEventId}`);
         cy.contains("h3", "Did Not Attend").should("not.exist");
-    });
-
-    it("Check-in button is hidden for past events", () => {
-        cy.visit(`event/view/${pastGroupEventId}`);
-        // Use a.btn to avoid matching the sidebar nav link
-        // "Check-in and Check-out" which always appears in the
-        // navigation regardless of event state.
-        cy.contains("a.btn", "Check-in").should("not.exist");
-    });
-
-    it("Print button appears on the Attendance card for past group events", () => {
-        cy.visit(`event/view/${pastGroupEventId}`);
-
-        cy.contains("h3", "Attendance")
-            .closest(".card-header")
-            .contains("button", "Print")
-            .should("be.visible");
     });
 
     // Run last — calls checkin-all which changes state for all subsequent tests.

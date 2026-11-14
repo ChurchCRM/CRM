@@ -15,6 +15,7 @@ use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Service\AppIntegrityService;
 use ChurchCRM\Service\ClassificationService;
+use ChurchCRM\Service\DatabaseVersionService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\LocaleService;
 use ChurchCRM\Service\UserService;
@@ -22,6 +23,7 @@ use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\VersionUtils;
@@ -356,6 +358,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'latestGitHubVersion'   => $latestGitHubVersion,
             'isUpdateAvailable'     => $isUpdateAvailable,
             'isAheadOfStable'       => $isAheadOfStable,
+            'databaseBlockMessage'  => DatabaseVersionService::getUpgradeBlockMessage(),
         ];
 
         return $renderer->render($response, 'upgrade.php', $pageArgs);
@@ -778,6 +781,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         // empty output app-wide.
         foreach (['sDateFormatLong', 'sDateFormatNoYear', 'sDateTimeFormat', 'sDateFilenameFormat', 'sDatePickerFormat'] as $key) {
             $val = trim((string) ($body[$key] ?? ''));
+            if ($key === 'sDatePickerFormat' && !DateTimeUtils::isCompleteDateFormat($val)) {
+                $val = '';
+            }
             SystemConfig::setValue($key, $val !== '' ? $val : SystemConfig::getConfigItem($key)->getDefault());
         }
         // Phone Number Formats — same empty-value guard.

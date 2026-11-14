@@ -12,7 +12,8 @@
  * fixtures; the people's emails and sign-in rows are set up and put back in SQL.
  */
 
-import { addOldAuditRows, ageFamilyConfirmations, recordFamilyEmailMoves, recordPastSignIn } from "../../../../support/member-sign-in-fixtures";
+import { addOldAuditRows, ageFamilyConfirmations, recordFamilyEmailMoves, recordLinkConfirmation, recordPastSignIn } from "../../../../support/member-sign-in-fixtures";
+import { setPersonEmails } from "../../../../support/sign-in-email-fixtures";
 
 const SETTINGS_URL = "/admin/api/member-portal/sign-in";
 const RULE = { sMemberSignInFamilyRoles: [1, 2, 3], sMemberSignInClassifications: [1, 2], iMemberSignInMinAge: 13 };
@@ -34,13 +35,6 @@ const summary = () => cy.makePrivateAdminAPICall("GET", "/admin/api/member-porta
 const stats = () => cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/stats", null, 200).its("body");
 const audit = (params = {}) =>
     cy.makePrivateAdminAPICall("GET", `/admin/api/member-portal/audit?${new URLSearchParams(params).toString()}`, null, 200).its("body");
-
-/** A family confirms its details through the emailed link, with a message. */
-const confirmFamilyByEmailLink = (familyId, message) =>
-    cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200).then(({ body }) => {
-        const path = new URL(body.url).pathname.replace(/^.*\/external\//, "/external/");
-        cy.request({ method: "POST", url: path, form: true, body: { message } }).its("status").should("eq", 200);
-    });
 
 const resetFixtures = () => {
     db("UPDATE person_per SET per_Email = 'mathew.campbell@example.com' WHERE per_ID = 2");
@@ -90,7 +84,7 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
         list("may-sign-in").then((body) => {
             expect(body.total).to.eq(body.rows.length);
             expect(ids(body)).to.include.members([34, 57, 92]);
-            expect(ids(body)).to.not.include.members([2, 6, 7, 14]);
+            [2, 6, 7, 14].forEach((personId) => expect(ids(body)).to.not.include(personId));
             expect(ids(body)).to.not.include(4);
             const jon = body.rows.find((row) => row.personId === 57);
             expect(jon.familyName).to.eq("Olson");
@@ -137,7 +131,7 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
             expect(body.emailProblems.no_email).to.be.at.least(1);
             expect(body.emailProblems.shared_email).to.be.at.least(2);
             expect(body["email-attention"]).to.eq(
-                body.emailProblems.no_email + body.emailProblems.shared_email + body.emailProblems.email_unconfirmed,
+                Object.values(body.emailProblems).reduce((total, count) => total + count, 0),
             );
         });
     });
@@ -207,9 +201,9 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
         });
     });
 
-    it("lists the families confirmed in the last 30 days by the emailed link", () => {
-        confirmFamilyByEmailLink(12, MARK);
-        confirmFamilyByEmailLink(19, MARK);
+    it("lists the families confirmed in the last 30 days by an emailed link", () => {
+        recordLinkConfirmation(12, MARK);
+        recordLinkConfirmation(19, MARK);
         ageFamilyConfirmations(19, MARK, 45);
         list("families-confirmed").then((body) => {
             const families = body.rows.map((row) => row.familyId);
@@ -327,10 +321,35 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
         });
     });
 
+    it("keeps legacy accented addresses separate from ASCII sign-in identities", () => {
+        setPersonEmails({ 6: "josé.pair@example.com", 7: "JOSE.PAIR@example.com" });
+        list("everyone").then((body) => {
+            const byId = Object.fromEntries(body.rows.map((row) => [row.personId, row]));
+            expect(byId[6]).to.include({ maySignIn: false, reasonLabel: "Their email address is not valid" });
+            expect(byId[7]).to.include({ maySignIn: true, reasonLabel: null });
+        });
+        list("may-sign-in").then((body) => {
+            expect(ids(body)).to.include(7);
+            expect(ids(body)).to.not.include(6);
+        });
+        list("email-attention", { problem: "invalid_email" }).then((body) => {
+            expect(ids(body)).to.include(6);
+            expect(ids(body)).to.not.include(7);
+        });
+        [[6, "invalid_email"], [7, null]].forEach(([personId, reason]) => {
+            cy.makePrivateAdminAPICall("GET", `/api/person/${personId}/sign-in`, null, 200).its("body.reason").should("eq", reason);
+        });
+        cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/email-audit", null, 200).then(({ body }) => {
+            expect(body.invalid).to.deep.include({ personId: 6, field: "Email", email: "josé.pair@example.com" });
+            expect(body.collisions.some((group) => group.some((row) => row.personId === 6) && group.some((row) => row.personId === 7))).to.eq(true);
+        });
+    });
+
     it("is for administrators only", () => {
         cy.makePrivateUserAPICall("GET", "/admin/api/member-portal/lists", null, 403);
         cy.makePrivateEditRecordsAPICall("GET", "/admin/api/member-portal/lists/may-sign-in", null, 403);
         cy.makePrivateEditRecordsAPICall("GET", "/admin/api/member-portal/lists/everyone", null, 403);
         cy.makePrivateEditRecordsAPICall("GET", "/admin/api/member-portal/audit", null, 403);
+        cy.makePrivateEditRecordsAPICall("GET", "/admin/api/member-portal/email-audit", null, 403);
     });
 });

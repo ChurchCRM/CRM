@@ -5,10 +5,20 @@
  * PHP hands off window.CRM.currentGroup, currentGroupName, groupIsActive,
  * groupEmailExport before this bundle loads.
  */
+
+import { notifyAPIError } from "../api-utils";
+import { confirmAction, promptAction } from "../common/confirm-action";
+import { notifySuccess, notifyWarning } from "../common/notify";
 import { initPersonSelect } from "../common/person-select";
-import { setMemberRole } from "./group-api";
+import { setMemberRole, setMembersRole } from "./group-api";
 
 const MODAL_ID = "groupViewModal";
+
+/** Person ids ticked in the members table; kept across pages, sorting and role filters. */
+const selectedMemberIds = new Set();
+
+/** Role id of the active role pill, or "" for All. */
+let activeRoleFilter = "";
 
 function createModal(title, bodyHtml) {
   const existing = document.getElementById(MODAL_ID);
@@ -264,6 +274,41 @@ function getMembersByRole(roleId) {
     .filter((d) => roleId === "" || roleId === undefined || String(d.RoleId) === String(roleId));
 }
 
+/** Ticking members is offered when there is another role to move them to. */
+function canSelectMembers() {
+  const roles = (window.CRM.groupRoles || []).filter((r) => !isLockedRole(r.OptionId));
+  return document.getElementById("bulkRoleBar") !== null && roles.length > 1;
+}
+
+/** Ids of the members the current search and role filter show whose role may be changed here. */
+function selectableIdsInView(api) {
+  return api
+    .rows({ search: "applied" })
+    .data()
+    .toArray()
+    .filter((d) => !isLockedRole(d.RoleId))
+    .map((d) => Number(d.PersonId));
+}
+
+function updateMemberSelection(api = window.CRM.DataTableAPI) {
+  const bar = document.getElementById("bulkRoleBar");
+  if (!bar) return;
+  bar.classList.toggle("d-none", selectedMemberIds.size === 0);
+  $("#bulkSelectedCount").text(selectedMemberIds.size);
+
+  const inView = selectableIdsInView(api);
+  const ticked = inView.filter((id) => selectedMemberIds.has(id)).length;
+  $("#selectAllMembers")
+    .prop("disabled", inView.length === 0)
+    .prop("checked", inView.length > 0 && ticked === inView.length)
+    .prop("indeterminate", ticked > 0 && ticked < inView.length);
+}
+
+/** Re-render the checkboxes from selectedMemberIds, keeping the current page. */
+function redrawMemberSelection() {
+  window.CRM.DataTableAPI.rows().invalidate().draw(false);
+}
+
 function buildRolePills() {
   const $pills = $("#role-pills");
   if (!$pills.length || !window.CRM.groupRoles) return;
@@ -279,7 +324,9 @@ function buildRolePills() {
 
   let html =
     '<li class="nav-item">' +
-    '<a class="nav-link active role-filter-pill" data-role-id="" href="#">' +
+    '<a class="nav-link role-filter-pill' +
+    (activeRoleFilter === "" ? " active" : "") +
+    '" data-role-id="" href="#">' +
     i18next.t("All") +
     ' <span class="badge bg-primary-lt text-primary ms-1">' +
     totalCount +
@@ -287,10 +334,13 @@ function buildRolePills() {
 
   window.CRM.groupRoles.forEach((role) => {
     const count = roleCounts[role.OptionId] || 0;
-    if (count === 0) return;
+    const isActive = String(role.OptionId) === activeRoleFilter;
+    if (count === 0 && !isActive) return;
     html +=
       '<li class="nav-item">' +
-      '<a class="nav-link role-filter-pill" data-role-id="' +
+      '<a class="nav-link role-filter-pill' +
+      (isActive ? " active" : "") +
+      '" data-role-id="' +
       role.OptionId +
       '" href="#">' +
       window.CRM.escapeHtml(i18next.t(role.OptionName)) +
@@ -352,12 +402,14 @@ function buildRolePills() {
 
     const roleId = $(this).data("role-id");
     if (roleId === "" || roleId === undefined) {
-      window.CRM.DataTableAPI.column(1).search("").draw();
+      activeRoleFilter = "";
+      window.CRM.DataTableAPI.column("role:name").search("").draw();
     } else {
       const role = window.CRM.groupRoles.find((r) => String(r.OptionId) === String(roleId));
       if (role) {
+        activeRoleFilter = String(role.OptionId);
         const escapedName = i18next.t(role.OptionName).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-        window.CRM.DataTableAPI.column(1).search(`^${escapedName}$`, true, false).draw();
+        window.CRM.DataTableAPI.column("role:name").search(`^${escapedName}$`, true, false).draw();
       }
     }
   });
@@ -370,6 +422,33 @@ function initDataTable() {
       dataSrc: "Person2group2roleP2g2rs",
     },
     columns: [
+      {
+        name: "select",
+        title: canSelectMembers()
+          ? '<input type="checkbox" class="form-check-input" id="selectAllMembers" aria-label="' +
+            window.CRM.escapeAttribute(i18next.t("Select all")) +
+            '">'
+          : "",
+        data: null,
+        orderable: false,
+        searchable: false,
+        visible: canSelectMembers(),
+        className: "w-1 no-export",
+        responsivePriority: 1,
+        render: (_data, type, full) => {
+          if (type !== "display" || isLockedRole(full.RoleId)) return "";
+          const name = window.CRM.escapeAttribute(full.Person.FullName || "");
+          return (
+            '<input type="checkbox" class="form-check-input member-select" data-personid="' +
+            full.PersonId +
+            '" aria-label="' +
+            name +
+            '"' +
+            (selectedMemberIds.has(Number(full.PersonId)) ? " checked" : "") +
+            ">"
+          );
+        },
+      },
       {
         width: "auto",
         title: i18next.t("Name"),
@@ -396,6 +475,7 @@ function initDataTable() {
         },
       },
       {
+        name: "role",
         width: "15%",
         title: i18next.t("Role"),
         data: "RoleId",
@@ -491,6 +571,7 @@ function initDataTable() {
         },
       },
     ],
+    order: [[1, "asc"]],
     responsive: true,
     autoWidth: false,
     drawCallback: (settings) => {
@@ -499,6 +580,18 @@ function initDataTable() {
       $("#iTotalMembers").text(totalMembers);
       $("#memberCountBadge").text(totalMembers);
       buildRolePills();
+      const selectable = new Set(
+        api
+          .rows({ search: "none" })
+          .data()
+          .toArray()
+          .filter((d) => !isLockedRole(d.RoleId))
+          .map((d) => Number(d.PersonId)),
+      );
+      for (const id of selectedMemberIds) {
+        if (!selectable.has(id)) selectedMemberIds.delete(id);
+      }
+      updateMemberSelection(api);
       if (window.CRM.avatarLoader) window.CRM.avatarLoader.refresh();
     },
   };
@@ -508,10 +601,9 @@ function initDataTable() {
 
 function initializeGroupView() {
   $("#deleteGroupButton").on("click", () => {
-    bootbox.confirm({
-      title: i18next.t("Confirm Delete Group"),
-      message:
-        '<p class="text-danger">' +
+    confirmAction(
+      i18next.t("Confirm Delete Group"),
+      '<p class="text-danger">' +
         i18next.t("Please confirm deletion of this group record") +
         ": <strong>" +
         window.CRM.escapeHtml(window.CRM.currentGroupName || "") +
@@ -525,28 +617,20 @@ function initializeGroupView() {
           "All group membership and properties will be destroyed.  The group members themselves will not be altered.",
         ) +
         "</p>",
-      buttons: {
-        confirm: { label: i18next.t("Delete"), className: "btn-danger" },
-        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
+      () => {
+        window.CRM.APIRequest({
+          method: "DELETE",
+          path: `groups/${window.CRM.currentGroup}`,
+        }).done(() => {
+          window.location.href = `${window.CRM.root}/groups/dashboard`;
+        });
       },
-      callback: (result) => {
-        if (result) {
-          window.CRM.APIRequest({
-            method: "DELETE",
-            path: `groups/${window.CRM.currentGroup}`,
-          }).done(() => {
-            window.location.href = `${window.CRM.root}/groups/dashboard`;
-          });
-        }
-      },
-    });
+      { confirmLabel: i18next.t("Delete"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 
   const notifyGroupUpdateFailed = (xhr) => {
-    window.CRM.notify(xhr.responseJSON?.message || i18next.t("Failed to update group. Please try again."), {
-      type: "danger",
-      delay: 5000,
-    });
+    notifyAPIError(xhr, i18next.t("Failed to update group. Please try again."));
   };
 
   $("#toggleGroupActive").on("click", (e) => {
@@ -655,12 +739,7 @@ function initializeGroupView() {
     };
 
     if (promptText) {
-      bootbox.prompt({
-        title: window.CRM.escapeHtml(promptText),
-        callback: (val) => {
-          if (val !== null) doAssign(val);
-        },
-      });
+      promptAction(window.CRM.escapeHtml(promptText), doAssign);
     } else {
       doAssign("");
     }
@@ -668,45 +747,37 @@ function initializeGroupView() {
 
   $(document).on("click", ".edit-group-property-btn", function () {
     const btn = $(this);
-    bootbox.prompt({
-      title: window.CRM.escapeHtml(btn.data("pro-prompt")),
-      value: btn.data("pro-value"),
-      callback: (val) => {
-        if (val !== null) {
-          window.CRM.APIRequest({
-            method: "POST",
-            path: `groups/${window.CRM.currentGroup}/properties/${btn.data("pro-id")}`,
-            data: JSON.stringify({ value: val }),
-          }).done(() => {
-            location.reload();
-          });
-        }
+    promptAction(
+      window.CRM.escapeHtml(btn.data("pro-prompt")),
+      (val) => {
+        window.CRM.APIRequest({
+          method: "POST",
+          path: `groups/${window.CRM.currentGroup}/properties/${btn.data("pro-id")}`,
+          data: JSON.stringify({ value: val }),
+        }).done(() => {
+          location.reload();
+        });
       },
-    });
+      { value: btn.data("pro-value") },
+    );
   });
 
   $(document).on("click", ".remove-group-property-btn", function () {
     const btn = $(this);
     const name = btn.data("pro-name");
-    bootbox.confirm({
-      title: i18next.t("Remove Property"),
-      message:
-        i18next.t("Remove") + " <strong>" + window.CRM.escapeHtml(name) + "</strong> " + i18next.t("from this group?"),
-      buttons: {
-        confirm: { label: i18next.t("Remove"), className: "btn-danger" },
-        cancel: { label: i18next.t("Cancel"), className: "btn-secondary" },
+    confirmAction(
+      i18next.t("Remove Property"),
+      i18next.t("Remove") + " <strong>" + window.CRM.escapeHtml(name) + "</strong> " + i18next.t("from this group?"),
+      () => {
+        window.CRM.APIRequest({
+          method: "DELETE",
+          path: `groups/${window.CRM.currentGroup}/properties/${btn.data("pro-id")}`,
+        }).done(() => {
+          location.reload();
+        });
       },
-      callback: (result) => {
-        if (result) {
-          window.CRM.APIRequest({
-            method: "DELETE",
-            path: `groups/${window.CRM.currentGroup}/properties/${btn.data("pro-id")}`,
-          }).done(() => {
-            location.reload();
-          });
-        }
-      },
-    });
+      { confirmLabel: i18next.t("Remove"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 
   $.ajax({
@@ -762,32 +833,26 @@ function initializeGroupView() {
     e.preventDefault();
     const roleId = $(this).data("role-id");
     const label = roleId === "" ? i18next.t("all members") : $(this).text().trim();
-    bootbox.confirm({
-      title: i18next.t("Move Members"),
-      message:
-        i18next.t("Are you sure you want to move") +
+    confirmAction(
+      i18next.t("Move Members"),
+      i18next.t("Are you sure you want to move") +
         " <strong>" +
         window.CRM.escapeHtml(label) +
         "</strong> " +
         i18next.t("to another group?"),
-      buttons: {
-        confirm: { label: i18next.t("Move"), className: "btn-warning" },
-        cancel: { label: i18next.t("Cancel") },
-      },
-      callback: (result) => {
-        if (result) {
-          showGroupAndRoleModal(i18next.t("Move Members to Group"), (data) => {
-            getMembersByRole(roleId).forEach((row) => {
-              window.CRM.groups.addPerson(data.GroupID, row.PersonId, data.RoleID);
-              window.CRM.groups.removePerson(window.CRM.currentGroup, row.PersonId);
-            });
-            setTimeout(() => {
-              window.CRM.DataTableAPI.ajax.reload();
-            }, 1000);
+      () => {
+        showGroupAndRoleModal(i18next.t("Move Members to Group"), (data) => {
+          getMembersByRole(roleId).forEach((row) => {
+            window.CRM.groups.addPerson(data.GroupID, row.PersonId, data.RoleID);
+            window.CRM.groups.removePerson(window.CRM.currentGroup, row.PersonId);
           });
-        }
+          setTimeout(() => {
+            window.CRM.DataTableAPI.ajax.reload();
+          }, 1000);
+        });
       },
-    });
+      { tone: "warning", confirmLabel: i18next.t("Move"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 
   // .view-person-photo click handler is registered globally in avatar-loader.ts
@@ -803,36 +868,104 @@ function initializeGroupView() {
             return true;
           }
         });
-        window.CRM.DataTableAPI.rows().invalidate().draw(true);
+        window.CRM.DataTableAPI.rows().invalidate().draw(false);
       });
     });
     e.stopPropagation();
+  });
+
+  // On a narrow screen the first cell also opens the row's hidden columns; a tick should only tick.
+  document.getElementById("membersTable").addEventListener(
+    "click",
+    (event) => {
+      if (event.target.classList.contains("member-select")) {
+        event.stopPropagation();
+      }
+    },
+    true,
+  );
+
+  $("#membersTable").on("change", ".member-select", function () {
+    const personId = Number($(this).data("personid"));
+    if (this.checked) {
+      selectedMemberIds.add(personId);
+    } else {
+      selectedMemberIds.delete(personId);
+    }
+    updateMemberSelection();
+  });
+
+  $("#membersTable").on("change", "#selectAllMembers", function () {
+    for (const id of selectableIdsInView(window.CRM.DataTableAPI)) {
+      if (this.checked) {
+        selectedMemberIds.add(id);
+      } else {
+        selectedMemberIds.delete(id);
+      }
+    }
+    redrawMemberSelection();
+  });
+
+  $("#bulkClearSelection").on("click", () => {
+    selectedMemberIds.clear();
+    redrawMemberSelection();
+  });
+
+  $("#bulkChangeRole").on("click", () => {
+    const personIds = [...selectedMemberIds];
+    if (personIds.length === 0) return;
+    showRoleModal(i18next.t("Change role of selected members: {{total}}", { total: personIds.length }), (roleId) => {
+      if (!roleId) return;
+      setMembersRole(window.CRM.currentGroup, personIds, roleId).done((result) => {
+        const changed = new Set(result.changed.map(Number));
+        window.CRM.DataTableAPI.rows().every(function () {
+          const data = this.data();
+          if (changed.has(Number(data.PersonId))) data.RoleId = Number(roleId);
+        });
+        selectedMemberIds.clear();
+        redrawMemberSelection();
+
+        const role = window.CRM.groupRoles.find((r) => String(r.OptionId) === String(roleId));
+        if (changed.size > 0) {
+          notifySuccess(
+            i18next.t("Members moved to {{role}}: {{total}}", {
+              role: role ? i18next.t(role.OptionName) : "",
+              total: changed.size,
+            }),
+          );
+        } else if (result.unchanged.length > 0) {
+          notifyWarning(i18next.t("The selected members already have that role."));
+        }
+        if (result.skipped.length > 0) {
+          notifyWarning(
+            i18next.t("Members not changed because they left the group or a ministry manages their role: {{total}}", {
+              total: result.skipped.length,
+            }),
+          );
+        }
+      });
+    });
   });
 
   $(document).on("click", ".remove-member-btn", function (e) {
     e.stopPropagation();
     const personId = $(this).data("personid");
     const personName = $(this).data("name");
-    bootbox.confirm({
-      message:
-        i18next.t("Are you sure you want to remove") +
+    confirmAction(
+      "",
+      i18next.t("Are you sure you want to remove") +
         " <b>" +
         window.CRM.escapeHtml(personName) +
         "</b> " +
         i18next.t("from this group?"),
-      buttons: {
-        confirm: { label: i18next.t("Remove"), className: "btn-danger" },
-        cancel: { label: i18next.t("Cancel") },
+      () => {
+        window.CRM.groups.removePerson(window.CRM.currentGroup, personId).then(() => {
+          window.CRM.DataTableAPI.row((_idx, data) => Number(data.PersonId) === Number(personId)).remove();
+          window.CRM.DataTableAPI.rows().invalidate().draw(true);
+        });
       },
-      callback: (result) => {
-        if (result) {
-          window.CRM.groups.removePerson(window.CRM.currentGroup, personId).then(() => {
-            window.CRM.DataTableAPI.row((_idx, data) => Number(data.PersonId) === Number(personId)).remove();
-            window.CRM.DataTableAPI.rows().invalidate().draw(true);
-          });
-        }
-      },
-    });
+      { confirmLabel: i18next.t("Remove"), cancelLabel: i18next.t("Cancel") },
+    );
   });
 }
 

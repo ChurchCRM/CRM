@@ -1,0 +1,6 @@
+FamilyID,LastName,FirstName,Address1,City,State,Zip,Email,BirthDate,HomePhone
+9001,GroupTest,Alice,12 Group St,Downtown,TX,77777,alice.group@example.com,1990-01-01,888-555-0001
+9001,GroupTest,Bob,12 Group St,Downtown,TX,77777,bob.group@example.com,1992-02-02,888-555-0001
+9002,GroupTest,Carol,34 Group Ave,Downtown,TX,77777,carol.group@example.com,1988-03-03,888-555-0002
+9002,GroupTest,Dave,34 Group Ave,Downtown,TX,77777,dave.group@example.com,1986-04-04,888-555-0002
+,GroupTest,Eve,56 Group Rd,Downtown,TX,77777,eve.group@example.com,1995-05-05,888-555-0003
