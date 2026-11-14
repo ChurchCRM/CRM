@@ -12,6 +12,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
+use ChurchCRM\Portal\PortalAccountPages;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Endroid\QrCode\QrCode;
@@ -53,8 +54,23 @@ class LocalAuthentication implements IAuthenticationProvider
 
     public function getPasswordChangeURL(): string
     {
-        // this shouldn't really be called, but it's necessary to implement the IAuthenticationProvider interface
-        return SystemURLs::getRootPath() . '/v2/user/current/changepassword';
+        $user = $this->getCurrentUser();
+
+        return SystemURLs::getRootPath() . ($user instanceof User ? self::passwordChangePath($user) : self::STAFF_PASSWORD_PATH);
+    }
+
+    public const STAFF_PASSWORD_PATH = '/account/password';
+    public const STAFF_TWO_FACTOR_PATH = '/account/2fa';
+
+    /** A self-service login changes its password in the Member Portal; staff on their account page. */
+    public static function passwordChangePath(User $user): string
+    {
+        return $user->isEditSelfExclusive() ? PortalAccountPages::PASSWORD_PATH : self::STAFF_PASSWORD_PATH;
+    }
+
+    public static function twoFactorEnrollmentPath(User $user): string
+    {
+        return $user->isEditSelfExclusive() ? PortalAccountPages::TWO_FACTOR_PATH : self::STAFF_TWO_FACTOR_PATH;
     }
 
 
@@ -315,33 +331,23 @@ class LocalAuthentication implements IAuthenticationProvider
             }
         }
 
-        // Next, if this user needs to change password, send to that page
-        // but don't redirect them if they're already on the password change page.
-        //
-        // NOTE: previously this used strict === against getPasswordChangeURL(),
-        // which is fragile — a trailing slash, a query string, or path
-        // normalization differences between web servers (FrankenPHP in
-        // particular reports REQUEST_URI slightly differently from Apache)
-        // cause the comparison to fail, the user gets redirected to the
-        // password change page, the check fails again, and the browser hits
-        // "too many redirects". See #8405.
-        //
-        // Use str_contains for a tolerant check, matching the pattern used by
-        // the 2FA enrollment branch a few lines below.
-        $IsUserOnPasswordChangePageNow = str_contains($_SERVER['REQUEST_URI'] ?? '', '/v2/user/current/changepassword');
-        if ($user->getNeedPasswordChange() && !$IsUserOnPasswordChangePageNow) {
+        // The forced pages themselves must pass, or the redirect loops. REQUEST_URI is
+        // matched with str_contains because web servers differ on trailing slashes and
+        // query strings (#8405).
+        $requestUri = $_SERVER['REQUEST_URI'] ?? '';
+        $passwordChangePath = self::passwordChangePath($user);
+        if ($user->getNeedPasswordChange() && !str_contains($requestUri, $passwordChangePath)) {
             LoggerUtils::getAuthLogger()->info('User needs password change; redirecting to password change', $logCtx);
             $authenticationResult->isAuthenticated = false;
-            $authenticationResult->nextStepURL = $this->getPasswordChangeURL();
+            $authenticationResult->nextStepURL = SystemURLs::getRootPath() . $passwordChangePath;
         }
 
         // If 2FA is required and user hasn't enrolled, check grace period status.
         // block only when the grace window has expired or no grace period is configured.
-        $enrollmentURL = SystemURLs::getRootPath() . '/v2/user/current/manage2fa';
-        $requestUri = $_SERVER['REQUEST_URI'] ?? '';
-        $isOnEnrollmentPage = str_contains($requestUri, '/v2/user/current/manage2fa')
-            || str_contains($requestUri, '/v2/user/current/enroll2fa');
-        if (SystemConfig::getBooleanValue('bRequire2FA') && !$user->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
+        $enrollmentPath = self::twoFactorEnrollmentPath($user);
+        $enrollmentURL = SystemURLs::getRootPath() . $enrollmentPath;
+        $isOnEnrollmentPage = str_contains($requestUri, $enrollmentPath);
+        if (!$user->getNeedPasswordChange() && SystemConfig::getBooleanValue('bRequire2FA') && !$user->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {
             $graceStatus = $user->getTwoFactorGraceStatus();
             if ($graceStatus === 'expired' || $graceStatus === 'immediate') {
                 LoggerUtils::getAuthLogger()->info('2FA grace period expired or immediate; redirecting to enrollment', $logCtx);
