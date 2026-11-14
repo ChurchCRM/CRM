@@ -40,26 +40,6 @@ async function enableOutgoingMail(api: APIRequestContext): Promise<() => Promise
   };
 }
 
-async function keepInFrame(page: Page, top: string, bottom: string): Promise<void> {
-  await page.evaluate(
-    ([topSelector, bottomSelector]) => {
-      const frame = () => {
-        const first = document.querySelector(topSelector);
-        const last = document.querySelector(bottomSelector);
-        if (!first || !last) return;
-        const bar = document.querySelector('header.navbar.sticky-top')?.getBoundingClientRect().height ?? 0;
-        const start = first.getBoundingClientRect().top + window.scrollY - bar - 16;
-        const end = last.getBoundingClientRect().bottom + window.scrollY + 16;
-        const target = end - start <= window.innerHeight - bar ? start : end - window.innerHeight;
-        window.scrollTo({ top: target, behavior: 'instant' });
-      };
-      frame();
-      window.addEventListener('resize', frame);
-    },
-    [top, bottom],
-  );
-}
-
 async function hideFloatingButtons(page: Page): Promise<void> {
   await expect(page.locator('#fab-container .fab-button:visible')).toHaveCount(0, { timeout: 15000 });
 }
@@ -124,53 +104,6 @@ test.describe('Email composer', () => {
 
   test.afterAll(async () => {
     await restoreMail?.();
-  });
-
-  const personButton = defineCapture({
-    name: 'email-person-view-send-button',
-    title: 'Email a Person',
-    category: 'Communication',
-    purpose: 'Show the paper-plane button next to the email address on the Person View',
-  });
-
-  test('email-person-view-send-button', personButton, async ({ page }, testInfo) => {
-    await openAndrew(page);
-    await hideFloatingButtons(page);
-    await keepInFrame(page, '.card:has(h6 .fa-envelope)', '.card:has(h6 .fa-envelope) [data-email-composer]');
-    await settle(page, 600);
-    await captureScreen(page, testInfo, personButton);
-  });
-
-  const familyButtons = defineCapture({
-    name: 'email-person-view-family-send-buttons',
-    title: 'Email a Family Member',
-    category: 'Communication',
-    purpose: 'Show the paper-plane buttons on the other family members who have an email address',
-  });
-
-  test('email-person-view-family-send-buttons', familyButtons, async ({ page }, testInfo) => {
-    await openAndrew(page);
-    const tableButton = page.locator('.card:has(.fa-people-roof) [data-email-composer]');
-    await expect(tableButton.first()).toBeVisible();
-    await hideFloatingButtons(page);
-    await keepInFrame(page, '.card:has(.fa-people-roof) .card-header', '.card:has(.fa-people-roof) table');
-    await settle(page, 600);
-    await captureScreen(page, testInfo, familyButtons);
-  });
-
-  const composerForm = defineCapture({
-    name: 'email-composer-form',
-    title: 'Write an Email',
-    category: 'Communication',
-    purpose: 'Show the composer with a subject, the message, and the pre-filled closing',
-  });
-
-  test('email-composer-form', composerForm, async ({ page }, testInfo) => {
-    await openAndrew(page);
-    await openComposerForm(page);
-    await hideFloatingButtons(page);
-    await settle(page, 600);
-    await captureScreen(page, testInfo, composerForm);
   });
 
   const preview = defineCapture({
@@ -242,26 +175,6 @@ test.describe('Email composer', () => {
     }
   });
 
-  const recentSends = defineCapture({
-    name: 'email-dashboard-recent-sends',
-    title: 'Recent Email',
-    category: 'Communication',
-    purpose: 'Show the email history on the Email page after a message has been sent',
-  });
-
-  test('email-dashboard-recent-sends', recentSends, async ({ page }, testInfo) => {
-    await openAndrew(page);
-    await openComposerForm(page);
-    await humanClick(page.locator('#crm-email-send-submit'));
-    await expect(page.locator('#crm-email-send-submit')).toHaveText(/Sent|Queued/, { timeout: 20000 });
-
-    await page.goto('/people/email');
-    await expect(page.locator('#email-log-table tbody tr').first()).toBeVisible({ timeout: 15000 });
-    await hideFloatingButtons(page);
-    await keepInFrame(page, '#email-log-card .card-header', '#email-log-table');
-    await settle(page, 800);
-    await captureScreen(page, testInfo, recentSends);
-  });
 });
 
 /** Queues a composer message to one person and sends it now, as the composer does. */
@@ -337,56 +250,6 @@ test.describe('Email history', () => {
 
   test.afterAll(async () => {
     await restoreMail?.();
-  });
-
-  const recentCard = defineCapture({
-    name: 'email-history-recent-emails-card',
-    title: 'Recent Emails',
-    category: 'Communication',
-    purpose: 'Show the Recent Emails card on the Person View with the latest messages sent to this person',
-  });
-
-  test('email-history-recent-emails-card', recentCard, async ({ page }, testInfo) => {
-    await openAndrew(page);
-    await expect(page.locator('#email-history-card [data-email-log-row]').first()).toBeVisible({ timeout: 15000 });
-    await hideFloatingButtons(page);
-    await keepInFrame(page, '#email-history-card', '#email-history-card');
-    await settle(page, 600);
-    await captureScreen(page, testInfo, recentCard);
-  });
-
-  const showAll = defineCapture({
-    name: 'email-history-show-all',
-    title: 'Email History',
-    category: 'Communication',
-    purpose: 'Show the full Email History page for a person, newest first',
-  });
-
-  test('email-history-show-all', showAll, async ({ page }, testInfo) => {
-    await openEmailHistoryPage(page);
-    await settle(page, 600);
-    await captureScreen(page, testInfo, showAll);
-  });
-
-  const timelineFilter = defineCapture({
-    name: 'email-history-timeline-filter',
-    title: 'Timeline Filters',
-    category: 'Communication',
-    purpose: 'Show the Notes, Events, Emails and System filter chips on the person timeline, with Emails selected',
-  });
-
-  test('email-history-timeline-filter', timelineFilter, async ({ page }, testInfo) => {
-    await openAndrew(page);
-    const chips = page.locator('#timeline .timeline-filters');
-    await expect(chips.locator('[data-filter="email"]')).toBeVisible({ timeout: 15000 });
-    await humanClick(chips.locator('[data-filter="email"]'));
-    await humanClick(chips.locator('[data-filter="notes"]'));
-    await expect(chips.locator('[data-filter="email"]')).toHaveClass(/active/);
-    await expect(page.locator('#timeline .timeline-event[data-timeline-category="email"]').first()).toBeVisible();
-    await hideFloatingButtons(page);
-    await keepInFrame(page, '#nav-item-timeline', '#timeline .timeline-filters');
-    await settle(page, 600);
-    await captureScreen(page, testInfo, timelineFilter);
   });
 
   const modal = defineCapture({

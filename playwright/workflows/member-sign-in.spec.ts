@@ -9,7 +9,6 @@ import {
   findDemoPerson,
   forgetDevicesAndPasskeys,
   freshContext,
-  GRANT_SUBJECT,
   LOGIN_AS_PERSON_SUBJECT,
   SIGN_IN_MEMBERS,
   signInAsStaffAdmin,
@@ -130,19 +129,6 @@ test('portal-sign-in-devices', async ({}, testInfo) => {
   });
 });
 
-test('admin-member-portal-sign-in', async ({ page }, testInfo) => {
-  await openMemberPortalTab(page, 'signin');
-  await expect(page.locator('#bMemberSignIn')).toBeChecked();
-  await settle(page, 600);
-
-  await captureScreen(page, testInfo, {
-    name: 'admin-member-portal-sign-in',
-    title: 'Member Portal Sign-In Settings',
-    category: 'Admin & Settings',
-    purpose: 'Turn member sign-in on and choose who may sign in by family role, classification and age.',
-  });
-});
-
 test('admin-member-portal-members', async ({ page }, testInfo) => {
   await openMemberPortalTab(page, 'members');
   await expect(page.locator('#memberListTable tbody tr').first()).toBeVisible({ timeout: 15000 });
@@ -208,51 +194,6 @@ test('person-portal-sign-in-card', async ({ page }, testInfo) => {
     title: 'Portal Sign-In on the Person Page',
     category: 'People & Families',
     purpose: "A person's sign-in status, devices, passkeys and portal permissions, for administrators.",
-  });
-});
-
-test('person-portal-give-permission', async ({ page }, testInfo) => {
-  const son = await findDemoPerson(api, GRANT_SUBJECT);
-  await page.goto(`/people/view/${son.personId}`);
-  await waitForFloatingButtonsToTuck(page);
-  await humanClick(page.locator('#portal-signin-permissions-toggle'));
-  await expect(page.locator('#portal-signin-permissions-section')).toBeVisible();
-  await humanClick(page.locator('#portal-grant-add'));
-  const dialog = page.locator('#portal-grant-modal');
-  await expect(dialog).toBeVisible();
-  await humanSelect(page.locator('#portal-grant-capability'), 'portal.family.contacts.view');
-  await expect(page.locator('#portal-grant-scope-group')).toBeVisible();
-  const scope = dialog.locator('#portal-grant-scope-group .ts-control input');
-  await humanType(scope, 'Scott');
-  await humanClick(page.locator('.ts-dropdown .option:visible').filter({ hasText: 'Scott' }).first());
-  await humanType(page.locator('#portal-grant-reason'), 'Away at college and helps his parents keep in touch.');
-  await settle(page, 600);
-
-  await captureScreen(page, testInfo, {
-    name: 'person-portal-give-permission',
-    title: 'Give a Portal Permission',
-    category: 'People & Families',
-    purpose: 'An administrator gives one person a portal permission, with a scope, end date and reason.',
-  });
-
-  await page.setViewportSize({ width: 1440, height: 900 });
-  await humanClick(dialog.locator('[data-bs-dismiss="modal"]').last());
-  await expect(dialog).toBeHidden();
-});
-
-test('people-family-email-card', async ({ page }, testInfo) => {
-  const carter = await findDemoPerson(api, LOGIN_AS_PERSON_SUBJECT);
-  await page.goto(`/people/family/${carter.familyId}`);
-  await expect(page.locator('#family-email-card [data-family-adult-email]')).toHaveCount(2);
-  await keepInView(page, '#family-email-card');
-  await waitForFloatingButtonsToTuck(page);
-  await settle(page, 800);
-
-  await captureScreen(page, testInfo, {
-    name: 'people-family-email-card',
-    title: 'Family Email: Each Adult',
-    category: 'People & Families',
-    purpose: "A family page lists each adult's own email; family mail goes to the head of household.",
   });
 });
 

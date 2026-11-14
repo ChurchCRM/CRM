@@ -34,20 +34,6 @@ async function openCartWithBakerFamily(page: Page): Promise<void> {
   await expect(page.locator('#cartLabels')).toBeVisible();
 }
 
-const cartFunctionsBar = defineCapture({
-  name: 'cart-functions-bar',
-  title: 'Cart Functions',
-  category: 'People & Families',
-  purpose: 'Show the Cart Functions bar: Empty, To Group, To Family, Check In, Map, Tags, Labels, Email and Directory',
-});
-
-test('cart-functions-bar', cartFunctionsBar, async ({ page }, testInfo) => {
-  await openCartWithBakerFamily(page);
-  await waitForFloatingButtonsToHide(page);
-  await settle(page, 800);
-  await captureScreen(page, testInfo, cartFunctionsBar);
-});
-
 const cartGenerateLabels = defineCapture({
   name: 'cart-generate-labels',
   title: 'Generate Labels from the Cart',
