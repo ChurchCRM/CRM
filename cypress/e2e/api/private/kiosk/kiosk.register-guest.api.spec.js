@@ -120,9 +120,7 @@ describe("Kiosk device - walk-in guest registration", () => {
                 .forEach((k) => api("DELETE", `/kiosk/api/devices/${k.Id}`));
         });
         cy.cleanupEvents(createdEventIds);
-        createdPersonIds.forEach((personId) => {
-            api("DELETE", `/api/person/${personId}`, null, [200, 404]);
-        });
+        cy.cleanupPeople(createdPersonIds);
         if (groupId !== null) {
             api("DELETE", `/api/groups/${groupId}`);
         }

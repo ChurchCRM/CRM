@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { resetDeletionFixtureAudit } from "../../../../support/person-deletion-fixtures";
+
 /**
  * Deleting a person also deletes their login, so DELETE /api/person/{id} and
  * DELETE /api/family/{id}?deleteMembers=true must refuse when the signed-in
@@ -131,7 +133,18 @@ describe("API People - deleting a person with a login is guarded", () => {
         cy.makePrivateAdminAPICall("GET", `/api/person/${ids.plain}`, null, 404);
     });
 
-    it("lets an administrator delete a family whose member has a login when another administrator exists", () => {
+    it("protects account audit history even when another administrator exists", () => {
+        cy.makePrivateAdminAPICall(
+            "DELETE",
+            `/api/family/${ids.family}?deleteMembers=true`,
+            null,
+            403,
+        ).its("body.message").should("include", "Deactivate the person instead");
+        cy.makePrivateAdminAPICall("GET", `/api/person/${ids.adminMember}`, null, 200);
+    });
+
+    it("lets an administrator delete a family with a legacy no-history login when another administrator exists", () => {
+        cy.then(() => resetDeletionFixtureAudit(ids.adminMember, "user"));
         cy.makePrivateAdminAPICall(
             "DELETE",
             `/api/family/${ids.family}?deleteMembers=true`,

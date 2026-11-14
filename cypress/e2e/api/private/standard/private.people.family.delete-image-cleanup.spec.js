@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { resetDeletionFixtureAudit, resetFamilyDeletionFixtureAudit } from "../../../../support/person-deletion-fixtures";
+
 /**
  * API regression test for GH #1697 — deleting a family with its members
  * must remove the uploaded image files from disk for BOTH the family
@@ -11,8 +13,8 @@
  * means the image file was leaked.
  *
  * Family + member are created through the legacy FamilyEditor.php form
- * because there is no family-create JSON endpoint; every other step is
- * an API call.
+ * because there is no family-create JSON endpoint. The fixture utility models
+ * legacy photos without audit notes; deletion and photo checks use the API.
  */
 describe("API Private - Family delete cleans up image files (#1697)", () => {
     // Minimal valid 1×1 transparent PNG
@@ -27,7 +29,7 @@ describe("API Private - Family delete cleans up image files (#1697)", () => {
         cy.setupStandardSession();
 
         // Create a temp family with one member via the legacy editor form.
-        cy.visit("FamilyEditor.php");
+        cy.visit("/FamilyEditor.php");
         cy.get("#FamilyName").type(`Fam${uniqueTag}`);
         cy.get('input[name="FirstName1"]').type(uniqueTag);
         cy.get('select[name="Classification1"]').select("1", { force: true });
@@ -56,7 +58,15 @@ describe("API Private - Family delete cleans up image files (#1697)", () => {
         });
     });
 
-    it("removes family AND member image files on delete", () => {
+    // The test deletes the family itself; this only runs the cleanup when a
+    // step before that delete failed, so nothing is left in the test database.
+    after(() => {
+        if (familyId) {
+            cy.cleanupFamilies([familyId]);
+        }
+    });
+
+    it("preserves photos with audit history and cleans up photos for a no-history fixture", () => {
         // 1. Upload photos for family and member.
         cy.makePrivateAdminAPICall(
             "POST",
@@ -80,7 +90,20 @@ describe("API Private - Family delete cleans up image files (#1697)", () => {
         cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/photo`, null, 200);
         cy.makePrivateAdminAPICall("GET", `/api/person/${personId}/photo`, null, 200);
 
-        // 3. Delete family including members.
+        cy.makePrivateAdminAPICall(
+            "DELETE",
+            `/api/family/${familyId}?deleteMembers=true`,
+            null,
+            403,
+        ).its("body.message").should("include", "Deactivate the person instead");
+        cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}`, null, 200);
+        cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200);
+        cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/photo`, null, 200);
+        cy.makePrivateAdminAPICall("GET", `/api/person/${personId}/photo`, null, 200);
+
+        // Preserve the original cleanup regression for legacy photos without audit entries.
+        cy.then(() => resetDeletionFixtureAudit(personId, "photo"));
+        cy.then(() => resetFamilyDeletionFixtureAudit(familyId, "photo"));
         cy.makePrivateAdminAPICall(
             "DELETE",
             `/api/family/${familyId}?deleteMembers=true`,

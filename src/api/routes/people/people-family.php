@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
+use ChurchCRM\Exceptions\PersonDeletionBlockedException;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\model\ChurchCRM\Family;
@@ -13,6 +14,7 @@ use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\FamilyService;
+use ChurchCRM\Service\PersonDeletionService;
 use ChurchCRM\Service\SystemService;
 use ChurchCRM\Slim\Middleware\Request\Auth\DeleteRecordRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\EditRecordsRoleAuthMiddleware;
@@ -487,7 +489,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Parameter(name="deleteMembers", in="query", required=false, @OA\Schema(type="boolean", default=false),
      *         description="If true, also delete all family members. If false, members are unlinked from the family."),
      *     @OA\Response(response=200, description="Family deleted"),
-     *     @OA\Response(response=403, description="DeleteRecord role required, family has donations, or a member has a login the current user may not delete"),
+     *     @OA\Response(response=403, description="DeleteRecord role required, family has donations, or a member has protected history or a login the current user may not delete"),
      *     @OA\Response(response=404, description="Family not found")
      * )
      */
@@ -497,73 +499,76 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $familyId = $family->getId();
         $deleteMembers = filter_var($request->getQueryParams()['deleteMembers'] ?? 'false', FILTER_VALIDATE_BOOLEAN);
 
-        // Never delete a family that has pledges or payments — it would orphan or distort church finance records.
-        $financeCount = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
-            ->filterByFamId($familyId)
-            ->count();
-        if ($financeCount > 0) {
-            return SlimUtils::renderErrorJSON(
-                $response,
-                gettext('Cannot delete a family that has pledges or payments. Move or remove the finance records first.'),
-                [],
-                403
-            );
-        }
-
-        if ($deleteMembers) {
-            $members = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
-                ->filterByFamId($familyId)
-                ->find();
-            foreach ($members as $member) {
-                $blockedReason = $member->getLoginDeletionBlockedReason();
-                if ($blockedReason !== null) {
-                    return SlimUtils::renderErrorJSON($response, $blockedReason, [], 403);
+        $con = Propel::getWriteConnection(FamilyTableMap::DATABASE_NAME);
+        try {
+            $con->transaction(function () use ($family, $familyId, $deleteMembers, $con): void {
+                // Never delete a family that has pledges or payments — it would orphan or distort church finance records.
+                $financeCount = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
+                    ->filterByFamId($familyId)
+                    ->count($con);
+                if ($financeCount > 0) {
+                    throw new PersonDeletionBlockedException(
+                        gettext('Cannot delete a family that has pledges or payments. Move or remove the finance records first.')
+                    );
                 }
-            }
+
+                $membersToDelete = [];
+                if ($deleteMembers) {
+                    $membersToDelete = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
+                        ->filterByFamId($familyId)
+                        ->orderById()
+                        ->find($con);
+                    foreach ($membersToDelete as $member) {
+                        PersonDeletionService::assertCanDelete($member, $con);
+                    }
+                    // A note on the family written by someone outside it is
+                    // history the member checks above don't see.
+                    PersonDeletionService::assertFamilyNotesCanBeDeleted((int) $familyId, $con);
+                }
+
+                // Delete associated notes
+                \ChurchCRM\model\ChurchCRM\NoteQuery::create()
+                    ->filterByFamId($familyId)
+                    ->delete($con);
+
+                // Remove family property assignments
+                $familyProps = \ChurchCRM\model\ChurchCRM\PropertyQuery::create()
+                    ->filterByProClass('f')
+                    ->find($con);
+                foreach ($familyProps as $prop) {
+                    \ChurchCRM\model\ChurchCRM\RecordPropertyQuery::create()
+                        ->filterByPropertyId($prop->getProId())
+                        ->filterByRecordId($familyId)
+                        ->delete($con);
+                }
+
+                if ($deleteMembers) {
+                    $membersToDelete->delete($con);
+                } else {
+                    // Unlink members from the family
+                    $members = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
+                        ->filterByFamId($familyId)
+                        ->find($con);
+                    foreach ($members as $member) {
+                        $member->setFamId(0);
+                        $member->save($con);
+                    }
+                }
+
+                // Remove custom field data via ORM
+                \ChurchCRM\model\ChurchCRM\FamilyCustomQuery::create()
+                    ->filterByFamId($familyId)
+                    ->delete($con);
+
+                // Delete the family record itself. Family::preDelete() removes the
+                // photo file from disk; member deletion above triggers Person::preDelete
+                // for each member, which cleans up their photos too (#1697).
+                // FAMILY_DELETED is dispatched from Family::postDelete(). See #9768.
+                $family->delete($con);
+            });
+        } catch (PersonDeletionBlockedException $exception) {
+            return SlimUtils::renderErrorJSON($response, $exception->getMessage(), [], 403, $exception, $request);
         }
-
-        // Delete associated notes
-        \ChurchCRM\model\ChurchCRM\NoteQuery::create()
-            ->filterByFamId($familyId)
-            ->delete();
-
-        // Remove family property assignments
-        $familyProps = \ChurchCRM\model\ChurchCRM\PropertyQuery::create()
-            ->filterByProClass('f')
-            ->find();
-        foreach ($familyProps as $prop) {
-            \ChurchCRM\model\ChurchCRM\RecordPropertyQuery::create()
-                ->filterByPropertyId($prop->getProId())
-                ->filterByRecordId($familyId)
-                ->delete();
-        }
-
-        if ($deleteMembers) {
-            \ChurchCRM\model\ChurchCRM\PersonQuery::create()
-                ->filterByFamId($familyId)
-                ->find()
-                ->delete();
-        } else {
-            // Unlink members from the family
-            $members = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
-                ->filterByFamId($familyId)
-                ->find();
-            foreach ($members as $member) {
-                $member->setFamId(0);
-                $member->save();
-            }
-        }
-
-        // Remove custom field data via ORM
-        \ChurchCRM\model\ChurchCRM\FamilyCustomQuery::create()
-            ->filterByFamId($familyId)
-            ->delete();
-
-        // Delete the family record itself. Family::preDelete() removes the
-        // photo file from disk; member deletion above triggers Person::preDelete
-        // for each member, which cleans up their photos too (#1697).
-        // FAMILY_DELETED is dispatched from Family::postDelete(). See #9768.
-        $family->delete();
 
         return SlimUtils::renderJSON($response, ['success' => true]);
     })->add(DeleteRecordRoleAuthMiddleware::class);
