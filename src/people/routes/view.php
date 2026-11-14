@@ -107,10 +107,10 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
             $headerButtons[] = ['label' => gettext('Make User'), 'url' => '/admin/system/users/new?personId=' . $iPersonID, 'icon' => 'fa-person-chalkboard'];
         } else {
             $headerButtons[] = ['label' => gettext('Edit User'), 'url' => '/admin/system/users/' . $iPersonID . '/edit', 'icon' => 'fa-user-secret'];
-            $headerButtons[] = ['label' => gettext('View User'), 'url' => '/v2/user/' . $iPersonID, 'icon' => 'fa-eye'];
+            $headerButtons[] = ['label' => gettext('View User'), 'url' => '/admin/system/users/' . $iPersonID, 'icon' => 'fa-eye'];
         }
     } elseif ($person->isUser() && $person->getId() === $currentUser->getId()) {
-        $headerButtons[] = ['label' => gettext('View User'), 'url' => '/v2/user/' . $iPersonID, 'icon' => 'fa-eye', 'adminOnly' => false];
+        $headerButtons[] = ['label' => gettext('View User'), 'url' => '/account', 'icon' => 'fa-eye', 'adminOnly' => false];
     }
     $sPageHeaderButtons = PageHeader::buttons($headerButtons);
 

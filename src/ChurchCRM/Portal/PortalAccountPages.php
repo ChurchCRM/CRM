@@ -12,29 +12,16 @@ use Psr\Http\Message\ResponseInterface;
  * The Member Portal's account pages — "Change your password" and "Two-factor
  * authentication" — and the one place they are turned into a response.
  *
- * Why this class exists: the portal's product principle is that a member-facing
- * page never wears the admin shell, and the product owner extended that to
- * *every* role. Until now the two account pages lived only at
- * `/v2/user/current/changepassword` and `/v2/user/current/manage2fa`, which
- * render the portal layout for an Edit-Self-only session and the admin shell
- * for anybody else — so an administrator who opened the portal and clicked
- * "Change password" was dropped back into the admin console. The portal now
+ * A member-facing page never wears the admin shell, for any role: the portal
  * owns both pages at `/portal/profile/password` and `/portal/profile/two-factor`
  * (see `src/portal/routes/profile.php`), and they render the same way for a
- * member, for staff and for an administrator.
+ * member, for staff and for an administrator. They are also where
+ * `LocalAuthentication` sends a self-service login for a forced password change
+ * or a forced 2FA enrollment; staff are sent to `/account/password` and
+ * `/account/2fa`.
  *
- * The old `/v2/user/current/*` URLs keep their behaviour exactly: they are what
- * `LocalAuthentication` hands back as `nextStepURL` for a forced password change
- * or a forced 2FA enrollment, and what `AuthMiddleware::isLimitedAccessAllowedPath()`
- * exempts by name, so a member cannot be locked out. They are *not* redirected
- * to the portal URLs: the forced flows break out of their redirect loop by
- * matching `/v2/user/current/changepassword` against `REQUEST_URI`, so a
- * redirect there would bounce the browser between the two paths forever. What
- * they do instead is render through this class, so there is one portal
- * rendering path and not two.
- *
- * The password change itself has one implementation either way —
- * `User::userChangePassword()` — and both routes reach it through
+ * The password change itself has one implementation —
+ * `User::userChangePassword()` — and both the portal and `/account` reach it through
  * `applyPasswordChange()` below, so the form's field names live in one place.
  */
 class PortalAccountPages
@@ -91,11 +78,8 @@ class PortalAccountPages
     /**
      * The password form, in the portal layout.
      *
-     * `$formAction` is the URL the form posts back to, so the page returns to
-     * wherever it was opened from: the portal route posts to the portal, and
-     * the forced-change page at `/v2/user/current/changepassword` posts to
-     * itself. It is never taken from the request — a caller passes one of the
-     * two known routes — so there is no redirect for an attacker to steer.
+     * `$formAction` is the URL the form posts back to. It is never taken from
+     * the request, so there is no redirect for an attacker to steer.
      */
     public static function renderPasswordForm(
         ResponseInterface $response,

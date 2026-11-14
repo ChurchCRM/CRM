@@ -61,7 +61,7 @@ function checkBrowserLocale() {
     const alert = document.createElement("div");
     alert.className = "alert alert-info alert-dismissible mb-3";
 
-    const userSettingsUrl = `${window.CRM.root}/v2/user/${window.CRM.userId}#tab-localization`;
+    const userSettingsUrl = `${window.CRM.root}/account#tab-localization`;
 
     alert.innerHTML = `
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>

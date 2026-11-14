@@ -16,7 +16,7 @@
  *
  * TODO (require Docker environment with direct DB access):
  *   - Verify that an unenrolled user whose grace start is >N days in the
- *     past is blocked and redirected to manage2fa (expired status).
+ *     past is blocked and redirected to /account/2fa (expired status).
  *   - Verify that the banner disappears after the user successfully enrolls.
  *   - Verify that disabling 2FA while the mandate is active re-stamps a
  *     fresh grace start (new window, not immediate lock-out).
@@ -142,8 +142,7 @@ describe("2FA Grace Period — enforcement", () => {
         cy.get("input[name=Password]").type(Cypress.testEnv("standard.password") + "{enter}");
 
         // Should land on dashboard, NOT on the enrollment page
-        cy.url({ timeout: 15000 }).should("not.include", "manage2fa");
-        cy.url({ timeout: 15000 }).should("not.include", "enroll2fa");
+        cy.url({ timeout: 15000 }).should("not.include", "/account/2fa");
 
         // Grace banner must be visible
         cy.get("#two-fa-grace-banner", { timeout: 10000 }).should("exist");
@@ -160,8 +159,8 @@ describe("2FA Grace Period — enforcement", () => {
         cy.get("input[name=User]").type(Cypress.testEnv("standard.username"));
         cy.get("input[name=Password]").type(Cypress.testEnv("standard.password") + "{enter}");
 
-        // Immediate mode: no grace window, must redirect to manage2fa
-        cy.url({ timeout: 15000 }).should("include", "manage2fa");
+        // Immediate mode: no grace window, must redirect to /account/2fa
+        cy.url({ timeout: 15000 }).should("include", "/account/2fa");
     });
 
     // TODO: add a test for the expired-grace block path once a supported API
@@ -183,7 +182,7 @@ describe("2FA Grace Period — enforcement", () => {
         cy.get("input[name=User]").type(Cypress.testEnv("standard.username"));
         cy.get("input[name=Password]").type(Cypress.testEnv("standard.password") + "{enter}");
 
-        cy.url({ timeout: 15000 }).should("not.include", "manage2fa");
+        cy.url({ timeout: 15000 }).should("not.include", "/account/2fa");
         // Banner must NOT be present when mandate is off
         cy.get("#two-fa-grace-banner").should("not.exist");
     });

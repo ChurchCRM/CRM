@@ -237,7 +237,7 @@ function renderSuccess() {
                   <i class="fa-solid fa-download me-1"></i>${t("Download")}
                 </button>
               </div>
-              <a href="${CRMRoot}/v2/user/current/manage2fa" class="btn btn-primary">
+              <a href="${window.location.pathname}" class="btn btn-primary">
                 <i class="fa-solid fa-check me-1"></i>${t("Done")}
               </a>
             </div>

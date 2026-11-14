@@ -145,7 +145,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
 
             // NeedPasswordChange=true on fresh install → forced change page
-            cy.url({ timeout: 15000 }).should('include', '/changepassword');
+            cy.url({ timeout: 15000 }).should('include', '/account/password');
             cy.get('.login-card').should('be.visible');
             cy.contains('Password Change Required').should('be.visible');
         });
@@ -155,7 +155,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('input[name=User]').type(adminCredentials.username);
             cy.get('input[name=Password]').type(adminCredentials.password + '{enter}');
 
-            cy.url({ timeout: 15000 }).should('include', '/changepassword');
+            cy.url({ timeout: 15000 }).should('include', '/account/password');
 
             cy.get('#OldPassword').type(adminCredentials.password);
             cy.get('#NewPassword1').type(newAdminPassword);
@@ -278,7 +278,7 @@ describe('01 - Setup Wizard', () => {
             cy.get('input[name=Password]').type(newAdminPassword + '{enter}');
             cy.expectStaffSignedIn({ timeout: 15000 });
 
-            cy.visit('/v2/user/current/changepassword');
+            cy.visit('/account/password');
             cy.get('#OldPassword').type(newAdminPassword);
             cy.get('#NewPassword1').type(adminCredentials.password);
             cy.get('#NewPassword2').type(adminCredentials.password);

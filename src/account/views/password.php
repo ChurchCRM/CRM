@@ -31,7 +31,7 @@ if ($isForced) {
                 <p><?= gettext('You must set a new password before continuing.') ?></p>
             </div>
 
-            <form method="post" action="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" id="passwordChangeForm">
+            <form method="post" action="<?= SystemURLs::getRootPath() ?>/account/password" id="passwordChangeForm">
                 <?= CSRFUtils::getTokenInputField('user_change_password') ?>
 
                 <div class="mb-3">
@@ -72,7 +72,7 @@ if ($isForced) {
                 <?= gettext('Enter your current password, then your new password twice.  Passwords must be at least') . ' ' . SystemConfig::getValue('iMinPasswordLength') . ' ' . gettext('characters in length.') ?>
             </div>
             <!-- form start -->
-            <form method="post" action="<?= SystemURLs::getRootPath()?>/v2/user/current/changepassword" id="passwordChangeForm">
+            <form method="post" action="<?= SystemURLs::getRootPath() ?>/account/password" id="passwordChangeForm">
                 <?= CSRFUtils::getTokenInputField('user_change_password') ?>
                 <div class="card-body">
                     <div class="mb-3">

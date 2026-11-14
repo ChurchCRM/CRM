@@ -194,12 +194,11 @@ class AuthMiddleware implements MiddlewareInterface
      * and the Volunteer v2 member and team-leader APIs, are prefix rules in
      * isLimitedAccessAllowedPath(), not entries here.
      *
-     * Pages:
-     *  - /v2/user/current/changepassword — forced password change on first login
-     *  - /v2/user/current/manage2fa      — forced 2FA enrollment when bRequire2FA is on
-     *  - /v2/user/current/enroll2fa      — backward-compat alias for manage2fa
+     * A self-service login does its forced password change and 2FA enrollment on
+     * the Member Portal pages (/portal/profile/password, /portal/profile/two-factor),
+     * which the /portal prefix already allows.
      *
-     * APIs called by the manage2fa page bundle (webpack/two-factor-enrollment.js):
+     * APIs called by the two-factor page bundle (webpack/two-factor-enrollment.js):
      *  - /api/user/current/2fa-status
      *  - /api/user/current/get2faqrcode
      *  - /api/user/current/refresh2fasecret
@@ -208,9 +207,6 @@ class AuthMiddleware implements MiddlewareInterface
      *  - /api/user/current/test2FAEnrollmentCode
      */
     private const AUTH_FLOW_EXEMPT_PATHS = [
-        '/v2/user/current/changepassword',
-        '/v2/user/current/manage2fa',
-        '/v2/user/current/enroll2fa',
         '/api/user/current/2fa-status',
         '/api/user/current/get2faqrcode',
         '/api/user/current/refresh2fasecret',
@@ -253,7 +249,7 @@ class AuthMiddleware implements MiddlewareInterface
      * `/api/ministries/` — is anchored at SystemURLs::getRootPath() and matches
      * whole path segments, and the exempt paths are compared whole against
      * SystemURLs::getRootPath() . $exemptPath, so a subdirectory installation
-     * (/crm/v2/user/current/manage2fa) still matches, while a path that merely
+     * (/crm/api/user/current/2fa-status) still matches, while a path that merely
      * contains or ends with an allowed path — /evil/api/user/current/2fa-status,
      * /api/person/1/api/ministries/me/permissions — does not, so the gate cannot
      * be widened by a future catch-all route.
