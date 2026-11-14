@@ -66,7 +66,12 @@ foreach (['production', 'demo', 'test'] as $profile) {
     TelemetryService::captureUpgradeFailure('7.8.3', 'RuntimeException');
     TelemetryService::captureUpgradeSqlError('7.8.3', 10, 'Database error');
     TelemetryService::captureUpgradeInterruption('7.8.3', 10);
-    Assert::same($suppressed ? 0 : 11, $GLOBALS['telemetryTransportCalls'] - $before);
+    TelemetryService::captureRequirementsFailure(['PHP Filter', 'cURL']);
+    TelemetryService::captureRequirementsFailure(['cURL', 'PHP Filter']);
+    TelemetryService::captureVersionMismatch('7.9.0', 'database_newer');
+    TelemetryService::captureVersionMismatch('7.9.0', 'database_newer');
+    TelemetryService::captureVersionMismatch('7.9.0', 'invalid');
+    Assert::same($suppressed ? 0 : 13, $GLOBALS['telemetryTransportCalls'] - $before);
 }
 
 $configs->setValue(null, ['sInstallDataProfile' => $value('production'), 'sLanguage' => $value('en_US')]);
@@ -76,6 +81,8 @@ foreach (['CHURCHCRM_DISABLE_POSTHOG_TELEMETRY', 'PHP_TEST_DISPOSABLE_DB'] as $o
     Assert::same('test', $baseProperties->invoke(null)['install_profile']);
     $before = $GLOBALS['telemetryTransportCalls'];
     TelemetryService::captureInstallFailure('schema_import_failed');
+    TelemetryService::captureRequirementsFailure(['cURL']);
+    TelemetryService::captureVersionMismatch('7.9.0', 'upgrade_failed');
     Assert::same($before, $GLOBALS['telemetryTransportCalls']);
     putenv($override);
 }

@@ -8,10 +8,17 @@
 
 import { notifyAPIError } from "../api-utils";
 import { confirmAction, promptAction } from "../common/confirm-action";
+import { notifySuccess, notifyWarning } from "../common/notify";
 import { initPersonSelect } from "../common/person-select";
-import { setMemberRole } from "./group-api";
+import { setMemberRole, setMembersRole } from "./group-api";
 
 const MODAL_ID = "groupViewModal";
+
+/** Person ids ticked in the members table; kept across pages, sorting and role filters. */
+const selectedMemberIds = new Set();
+
+/** Role id of the active role pill, or "" for All. */
+let activeRoleFilter = "";
 
 function createModal(title, bodyHtml) {
   const existing = document.getElementById(MODAL_ID);
@@ -267,6 +274,41 @@ function getMembersByRole(roleId) {
     .filter((d) => roleId === "" || roleId === undefined || String(d.RoleId) === String(roleId));
 }
 
+/** Ticking members is offered when there is another role to move them to. */
+function canSelectMembers() {
+  const roles = (window.CRM.groupRoles || []).filter((r) => !isLockedRole(r.OptionId));
+  return document.getElementById("bulkRoleBar") !== null && roles.length > 1;
+}
+
+/** Ids of the members the current search and role filter show whose role may be changed here. */
+function selectableIdsInView(api) {
+  return api
+    .rows({ search: "applied" })
+    .data()
+    .toArray()
+    .filter((d) => !isLockedRole(d.RoleId))
+    .map((d) => Number(d.PersonId));
+}
+
+function updateMemberSelection(api = window.CRM.DataTableAPI) {
+  const bar = document.getElementById("bulkRoleBar");
+  if (!bar) return;
+  bar.classList.toggle("d-none", selectedMemberIds.size === 0);
+  $("#bulkSelectedCount").text(selectedMemberIds.size);
+
+  const inView = selectableIdsInView(api);
+  const ticked = inView.filter((id) => selectedMemberIds.has(id)).length;
+  $("#selectAllMembers")
+    .prop("disabled", inView.length === 0)
+    .prop("checked", inView.length > 0 && ticked === inView.length)
+    .prop("indeterminate", ticked > 0 && ticked < inView.length);
+}
+
+/** Re-render the checkboxes from selectedMemberIds, keeping the current page. */
+function redrawMemberSelection() {
+  window.CRM.DataTableAPI.rows().invalidate().draw(false);
+}
+
 function buildRolePills() {
   const $pills = $("#role-pills");
   if (!$pills.length || !window.CRM.groupRoles) return;
@@ -282,7 +324,9 @@ function buildRolePills() {
 
   let html =
     '<li class="nav-item">' +
-    '<a class="nav-link active role-filter-pill" data-role-id="" href="#">' +
+    '<a class="nav-link role-filter-pill' +
+    (activeRoleFilter === "" ? " active" : "") +
+    '" data-role-id="" href="#">' +
     i18next.t("All") +
     ' <span class="badge bg-primary-lt text-primary ms-1">' +
     totalCount +
@@ -290,10 +334,13 @@ function buildRolePills() {
 
   window.CRM.groupRoles.forEach((role) => {
     const count = roleCounts[role.OptionId] || 0;
-    if (count === 0) return;
+    const isActive = String(role.OptionId) === activeRoleFilter;
+    if (count === 0 && !isActive) return;
     html +=
       '<li class="nav-item">' +
-      '<a class="nav-link role-filter-pill" data-role-id="' +
+      '<a class="nav-link role-filter-pill' +
+      (isActive ? " active" : "") +
+      '" data-role-id="' +
       role.OptionId +
       '" href="#">' +
       window.CRM.escapeHtml(i18next.t(role.OptionName)) +
@@ -355,12 +402,14 @@ function buildRolePills() {
 
     const roleId = $(this).data("role-id");
     if (roleId === "" || roleId === undefined) {
-      window.CRM.DataTableAPI.column(1).search("").draw();
+      activeRoleFilter = "";
+      window.CRM.DataTableAPI.column("role:name").search("").draw();
     } else {
       const role = window.CRM.groupRoles.find((r) => String(r.OptionId) === String(roleId));
       if (role) {
+        activeRoleFilter = String(role.OptionId);
         const escapedName = i18next.t(role.OptionName).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-        window.CRM.DataTableAPI.column(1).search(`^${escapedName}$`, true, false).draw();
+        window.CRM.DataTableAPI.column("role:name").search(`^${escapedName}$`, true, false).draw();
       }
     }
   });
@@ -373,6 +422,33 @@ function initDataTable() {
       dataSrc: "Person2group2roleP2g2rs",
     },
     columns: [
+      {
+        name: "select",
+        title: canSelectMembers()
+          ? '<input type="checkbox" class="form-check-input" id="selectAllMembers" aria-label="' +
+            window.CRM.escapeAttribute(i18next.t("Select all")) +
+            '">'
+          : "",
+        data: null,
+        orderable: false,
+        searchable: false,
+        visible: canSelectMembers(),
+        className: "w-1 no-export",
+        responsivePriority: 1,
+        render: (_data, type, full) => {
+          if (type !== "display" || isLockedRole(full.RoleId)) return "";
+          const name = window.CRM.escapeAttribute(full.Person.FullName || "");
+          return (
+            '<input type="checkbox" class="form-check-input member-select" data-personid="' +
+            full.PersonId +
+            '" aria-label="' +
+            name +
+            '"' +
+            (selectedMemberIds.has(Number(full.PersonId)) ? " checked" : "") +
+            ">"
+          );
+        },
+      },
       {
         width: "auto",
         title: i18next.t("Name"),
@@ -399,6 +475,7 @@ function initDataTable() {
         },
       },
       {
+        name: "role",
         width: "15%",
         title: i18next.t("Role"),
         data: "RoleId",
@@ -494,6 +571,7 @@ function initDataTable() {
         },
       },
     ],
+    order: [[1, "asc"]],
     responsive: true,
     autoWidth: false,
     drawCallback: (settings) => {
@@ -502,6 +580,18 @@ function initDataTable() {
       $("#iTotalMembers").text(totalMembers);
       $("#memberCountBadge").text(totalMembers);
       buildRolePills();
+      const selectable = new Set(
+        api
+          .rows({ search: "none" })
+          .data()
+          .toArray()
+          .filter((d) => !isLockedRole(d.RoleId))
+          .map((d) => Number(d.PersonId)),
+      );
+      for (const id of selectedMemberIds) {
+        if (!selectable.has(id)) selectedMemberIds.delete(id);
+      }
+      updateMemberSelection(api);
       if (window.CRM.avatarLoader) window.CRM.avatarLoader.refresh();
     },
   };
@@ -778,10 +868,83 @@ function initializeGroupView() {
             return true;
           }
         });
-        window.CRM.DataTableAPI.rows().invalidate().draw(true);
+        window.CRM.DataTableAPI.rows().invalidate().draw(false);
       });
     });
     e.stopPropagation();
+  });
+
+  // On a narrow screen the first cell also opens the row's hidden columns; a tick should only tick.
+  document.getElementById("membersTable").addEventListener(
+    "click",
+    (event) => {
+      if (event.target.classList.contains("member-select")) {
+        event.stopPropagation();
+      }
+    },
+    true,
+  );
+
+  $("#membersTable").on("change", ".member-select", function () {
+    const personId = Number($(this).data("personid"));
+    if (this.checked) {
+      selectedMemberIds.add(personId);
+    } else {
+      selectedMemberIds.delete(personId);
+    }
+    updateMemberSelection();
+  });
+
+  $("#membersTable").on("change", "#selectAllMembers", function () {
+    for (const id of selectableIdsInView(window.CRM.DataTableAPI)) {
+      if (this.checked) {
+        selectedMemberIds.add(id);
+      } else {
+        selectedMemberIds.delete(id);
+      }
+    }
+    redrawMemberSelection();
+  });
+
+  $("#bulkClearSelection").on("click", () => {
+    selectedMemberIds.clear();
+    redrawMemberSelection();
+  });
+
+  $("#bulkChangeRole").on("click", () => {
+    const personIds = [...selectedMemberIds];
+    if (personIds.length === 0) return;
+    showRoleModal(i18next.t("Change role of selected members: {{total}}", { total: personIds.length }), (roleId) => {
+      if (!roleId) return;
+      setMembersRole(window.CRM.currentGroup, personIds, roleId).done((result) => {
+        const changed = new Set(result.changed.map(Number));
+        window.CRM.DataTableAPI.rows().every(function () {
+          const data = this.data();
+          if (changed.has(Number(data.PersonId))) data.RoleId = Number(roleId);
+        });
+        selectedMemberIds.clear();
+        redrawMemberSelection();
+
+        const role = window.CRM.groupRoles.find((r) => String(r.OptionId) === String(roleId));
+        if (changed.size > 0) {
+          notifySuccess(
+            i18next.t("Members moved to {{role}}: {{total}}", {
+              role: role ? i18next.t(role.OptionName) : "",
+              total: changed.size,
+            }),
+          );
+        } else if (result.unchanged.length > 0) {
+          notifyWarning(i18next.t("The selected members already have that role."));
+        }
+        if (result.skipped.length > 0) {
+          notifyWarning(
+            i18next.t("Members not changed because they left the group or a ministry manages their role: {{total}}", {
+              total: result.skipped.length,
+            }),
+          );
+        }
+      });
+    });
   });
 
   $(document).on("click", ".remove-member-btn", function (e) {

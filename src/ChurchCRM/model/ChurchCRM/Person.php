@@ -151,6 +151,21 @@ class Person extends BasePerson implements PhotoInterface
         return null;
     }
 
+    /**
+     * Same month and day rule as the Today's Birthdays counter: a 29 February
+     * birthday only matches in a leap year.
+     */
+    public function isBirthdayToday(?\DateTimeInterface $today = null): bool
+    {
+        if (empty($this->getBirthMonth()) || empty($this->getBirthDay())) {
+            return false;
+        }
+        $today ??= new \DateTimeImmutable('today');
+
+        return (int) $this->getBirthMonth() === (int) $today->format('n')
+            && (int) $this->getBirthDay() === (int) $today->format('j');
+    }
+
     public function getFormattedBirthDate()
     {
         $birthDate = $this->getBirthDate();

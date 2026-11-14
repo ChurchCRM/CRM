@@ -64,7 +64,7 @@ $inactive = (int) $event->getInActive() === 1;
             <dt class="col-sm-3"><?= gettext('Linked Groups') ?></dt>
             <dd class="col-sm-9">
               <?php foreach ($linkedGroups as $g): ?>
-                <a href="<?= $sRootPath ?>/groups/view/<?= (int) $g['id'] ?>" class="badge bg-blue-lt text-blue me-1">
+                <a href="<?= InputUtils::escapeAttribute($g['url']) ?>" class="badge bg-blue-lt text-blue me-1">
                   <?= InputUtils::escapeHTML($g['name']) ?>
                 </a>
               <?php endforeach; ?>
