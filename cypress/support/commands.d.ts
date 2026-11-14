@@ -213,6 +213,13 @@ declare namespace Cypress {
      */
     shareMemberPortalCalendars(visible: Array<{ type: string; id: number }>): Chainable<any>;
 
+    /**
+     * Clear the directory report "saved" user setting so DirectoryReports.php form defaults
+     * are not overridden by a prior people/reports/directory POST (#11465).
+     * @param userId - Person/user id (admin is 1)
+     */
+    clearDirectoryReportPrefs(userId?: number): Chainable<any>;
+
     /** Run the browser in the church's time zone (sTimeZone), the zone the server counts days in. */
     useChurchTimeZone(): Chainable<void>;
 

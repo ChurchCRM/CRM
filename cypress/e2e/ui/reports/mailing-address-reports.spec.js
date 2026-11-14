@@ -268,6 +268,7 @@ describe("Mailing address on mailed reports", () => {
             );
 
         beforeEach(() => {
+            cy.clearDirectoryReportPrefs();
             cy.visit("/DirectoryReports.php");
         });
 
