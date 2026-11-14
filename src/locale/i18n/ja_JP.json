@@ -1900,7 +1900,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "このタイプを削除すると、それを使用するすべての属性も削除され、対応するすべての属性割り当てが失われます。",
   "Move Donations to Selected Family": "献金を選択した家族に移動",
   "Calendar not found": "カレンダーが見つかりません",
-  "Continue to Dashboard": "ダッシュボードへ進む",
   "Current Password": "現在のパスワード",
   "Deposit not found": "献金記録が見つかりません",
   "Group not found": "グループが見つかりません",
@@ -2658,7 +2657,6 @@
   "Version %s is available. Please upgrade your installation.": "バージョン%sが利用可能です。インストールをアップグレードしてください。",
   "View All": "すべて表示",
   "Yellow": "黄",
-  "Your current access levels (read-only)": "現在のアクセスレベル（読み取り専用）",
   "%d repeat event created successfully.": {
     "other": "%d 件の繰り返しイベントが正常に作成されました。"
   },
@@ -3291,7 +3289,6 @@
   "Please confirm deactivation of family": "ファミリーの非アクティブ化を確認してください",
   "Please confirm deletion of this group record": "このグループ・レコードの削除を確認してください",
   "Please confirm disabling 2 Factor Auth for this user": "このユーザーの2要素認証を無効にすることを確認してください",
-  "Please confirm removal of user status from": "ユーザー・ステータスの解除を確認してください:",
   "Please confirm reset failed login count": "ログイン失敗回数のリセットを確認してください",
   "Please confirm the password reset of this user": "このユーザーのパスワードリセットを確認してください",
   "Please enter a valid URL": "有効なURLを入力してください",
@@ -3496,7 +3493,6 @@
   "%s's Account": "%sのアカウント",
   "Access": "アクセス",
   "Access level": "アクセスレベル",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "管理者はすべての機能とデータにフルアクセスできます。個別の権限は適用されません。",
   "All users can view congregation members. This permission cannot be removed.": "すべてのユーザーが会衆のメンバーを閲覧できます。この権限は削除できません。",
   "Always granted": "常に付与",
   "Choose specific permissions below.": "以下から特定の権限を選択してください。",

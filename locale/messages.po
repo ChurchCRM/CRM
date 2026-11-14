@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-13 21:05+0000\n"
+"POT-Creation-Date: 2026-11-14 21:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -445,6 +445,9 @@ msgstr ""
 msgid "1. Sunday School Class"
 msgstr ""
 
+msgid "12 months"
+msgstr ""
+
 msgid "1st"
 msgstr ""
 
@@ -469,6 +472,9 @@ msgstr ""
 msgid "3. Upload and map"
 msgstr ""
 
+msgid "30 days"
+msgstr ""
+
 msgid "3rd"
 msgstr ""
 
@@ -479,6 +485,9 @@ msgid "4th"
 msgstr ""
 
 msgid "5th"
+msgstr ""
+
+msgid "90 days"
 msgstr ""
 
 msgid "A"
@@ -1027,6 +1036,9 @@ msgstr ""
 msgid "Add Pledge"
 msgstr ""
 
+msgid "Add Property"
+msgstr ""
+
 msgid "Add Property Type"
 msgstr ""
 
@@ -1102,6 +1114,9 @@ msgstr ""
 msgid "Add an extra layer of security to your account"
 msgstr ""
 
+msgid "Add and edit events"
+msgstr ""
+
 msgid "Add any additional notes about this deposit"
 msgstr ""
 
@@ -1148,6 +1163,9 @@ msgid "Add or edit items donated for fundraising events"
 msgstr ""
 
 msgid "Add or edit notes for people and families"
+msgstr ""
+
+msgid "Add people and families"
 msgstr ""
 
 msgid "Add people to the cart before adding them as volunteers"
@@ -1298,7 +1316,7 @@ msgstr ""
 msgid "Administrator privileges"
 msgstr ""
 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
+msgid "Administrators have every permission while its feature is turned on."
 msgstr ""
 
 #, php-format
@@ -1584,6 +1602,9 @@ msgid "Already in"
 msgstr ""
 
 msgid "Already in a family"
+msgstr ""
+
+msgid "Also disable sign-in, so they can't use the Member Portal"
 msgstr ""
 
 msgid "Also pinned to {{calendars}}, which only someone with Add Events permission can change."
@@ -4011,9 +4032,6 @@ msgstr ""
 msgid "Continue Anyway"
 msgstr ""
 
-msgid "Continue to Dashboard"
-msgstr ""
-
 msgid "Contributing"
 msgstr ""
 
@@ -4920,6 +4938,9 @@ msgstr ""
 msgid "Delete occurrences"
 msgstr ""
 
+msgid "Delete people and families"
+msgstr ""
+
 msgid "Delete position"
 msgstr ""
 
@@ -4933,6 +4954,9 @@ msgid "Delete schedule"
 msgstr ""
 
 msgid "Delete team"
+msgstr ""
+
+msgid "Delete the login for"
 msgstr ""
 
 msgid "Delete this event?"
@@ -5076,6 +5100,9 @@ msgid "Deposit Type"
 msgstr ""
 
 msgid "Deposit Value"
+msgstr ""
+
+msgid "Deposit chart time range"
 msgstr ""
 
 msgid "Deposit not found"
@@ -5523,6 +5550,9 @@ msgstr ""
 msgid "Edit my details"
 msgstr ""
 
+msgid "Edit people and families"
+msgstr ""
+
 msgid "Edit position"
 msgstr ""
 
@@ -5719,6 +5749,9 @@ msgid "Email non-attendees: %s"
 msgstr ""
 
 msgid "Email not found"
+msgstr ""
+
+msgid "Email people and groups"
 msgstr ""
 
 msgid "Email preview"
@@ -6302,6 +6335,9 @@ msgid "Events Today"
 msgstr ""
 
 msgid "Events and calendars, including the Member Portal calendars"
+msgstr ""
+
+msgid "Events are turned off for this church"
 msgstr ""
 
 msgid "Events deleted: {{total}}"
@@ -7273,6 +7309,9 @@ msgstr ""
 msgid "Finance access"
 msgstr ""
 
+msgid "Finance is turned off for this church"
+msgstr ""
+
 msgid "Finance permission required"
 msgstr ""
 
@@ -7657,6 +7696,9 @@ msgid "Fundraiser not found"
 msgstr ""
 
 msgid "Fundraisers"
+msgstr ""
+
+msgid "Fundraisers are turned off for this church"
 msgstr ""
 
 msgid "Fundraising"
@@ -9798,6 +9840,9 @@ msgstr ""
 msgid "Login as Person stopped"
 msgstr ""
 
+msgid "Login deleted"
+msgstr ""
+
 #, php-format
 msgid "Login must be %d characters or fewer!"
 msgstr ""
@@ -10006,7 +10051,13 @@ msgstr ""
 msgid "Manage additional preferences like email delimiters and display options"
 msgstr ""
 
+msgid "Manage all ministries"
+msgstr ""
+
 msgid "Manage donation funds for financial tracking"
+msgstr ""
+
+msgid "Manage donations and finance"
 msgstr ""
 
 msgid "Manage donations, pledges, and financial records"
@@ -10019,6 +10070,15 @@ msgid "Manage events, birthdays, and anniversaries"
 msgstr ""
 
 msgid "Manage families, people, and demographic information"
+msgstr ""
+
+msgid "Manage fundraisers"
+msgstr ""
+
+msgid "Manage groups and roles"
+msgstr ""
+
+msgid "Manage my ministries"
 msgstr ""
 
 msgid "Manage my sign-in and devices"
@@ -10460,6 +10520,9 @@ msgid "Ministry Settings"
 msgstr ""
 
 msgid "Ministry calendar"
+msgstr ""
+
+msgid "Ministry coordinator"
 msgstr ""
 
 msgid "Ministry created"
@@ -11289,6 +11352,9 @@ msgstr ""
 msgid "No ministry"
 msgstr ""
 
+msgid "No ministry assigned"
+msgstr ""
+
 msgid "No name"
 msgstr ""
 
@@ -11705,6 +11771,9 @@ msgstr ""
 msgid "Not found"
 msgstr ""
 
+msgid "Not granted to this account"
+msgstr ""
+
 msgid "Not in CRM"
 msgstr ""
 
@@ -11715,6 +11784,9 @@ msgid "Not included"
 msgstr ""
 
 msgid "Not installed on the server — dates and numbers may not format correctly for this locale. Ask your host to install it (e.g. locale-gen)."
+msgstr ""
+
+msgid "Not leading a volunteer team"
 msgstr ""
 
 msgid "Not listed here: {{total}} more"
@@ -12637,6 +12709,9 @@ msgstr ""
 msgid "People"
 msgstr ""
 
+msgid "People & Families"
+msgstr ""
+
 msgid "People &amp; Families"
 msgstr ""
 
@@ -13042,9 +13117,6 @@ msgid "Please confirm deletion of this group record"
 msgstr ""
 
 msgid "Please confirm disabling 2 Factor Auth for this user"
-msgstr ""
-
-msgid "Please confirm removal of user status from"
 msgstr ""
 
 msgid "Please confirm reset failed login count"
@@ -13519,6 +13591,9 @@ msgid "Property Editor"
 msgstr ""
 
 msgid "Property List"
+msgstr ""
+
+msgid "Property Type"
 msgstr ""
 
 msgid "Property Type Delete Confirmation"
@@ -16830,6 +16905,10 @@ msgstr ""
 msgid "The month that starts your organization's fiscal year"
 msgstr ""
 
+#, php-format
+msgid "The name can be at most %d characters"
+msgstr ""
+
 msgid "The note you are trying to edit no longer exists."
 msgstr ""
 
@@ -16931,6 +17010,10 @@ msgid "The position is still covered, so no action is needed unless you want to 
 msgstr ""
 
 msgid "The previous integrity check passed. All system file hashes match the expected values."
+msgstr ""
+
+#, php-format
+msgid "The prompt can be at most %d characters"
 msgstr ""
 
 msgid "The property could not be assigned."
@@ -17285,6 +17368,9 @@ msgstr ""
 msgid "They already said yes. They get a short confirmation instead of a request to respond."
 msgstr ""
 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr ""
+
 msgid "They could not be added"
 msgstr ""
 
@@ -17341,6 +17427,9 @@ msgid "This Person is Inactive"
 msgstr ""
 
 msgid "This account is locked because of too many failed login attempts."
+msgstr ""
+
+msgid "This account uses the Member Portal only"
 msgstr ""
 
 msgid "This action CANNOT be undone, and may have legal implications!"
@@ -17653,6 +17742,9 @@ msgstr ""
 msgid "This property type is still being used by at least one property."
 msgstr ""
 
+msgid "This removes the login only. The person and their notes stay."
+msgstr ""
+
 msgid "This report lists every event whose end date has passed but which is still marked Active. Common causes: a volunteer forgot to tap 'Check Out', a kiosk lost connectivity, or the event was created and abandoned. Old events (years past) that were never deactivated also show up here. The 'Still Checked In' column shows whether anyone was left mid-check-in. Closing an event from this report checks everyone out (using the current time) and marks the event Inactive."
 msgstr ""
 
@@ -17770,6 +17862,9 @@ msgid "Ties this event to a class or ministry roster — used by the Kiosk check
 msgstr ""
 
 msgid "Time"
+msgstr ""
+
+msgid "Time Range"
 msgstr ""
 
 msgid "Time Zone"
@@ -19028,6 +19123,9 @@ msgstr ""
 msgid "View class roster, teacher assignments, and contact information"
 msgstr ""
 
+msgid "View events"
+msgstr ""
+
 msgid "View family details, members, and timeline"
 msgstr ""
 
@@ -19044,6 +19142,9 @@ msgid "View inactive only"
 msgstr ""
 
 msgid "View my schedule"
+msgstr ""
+
+msgid "View people and families"
 msgstr ""
 
 msgid "View pledge or payment details"
@@ -19074,6 +19175,9 @@ msgid "Volunteer Management"
 msgstr ""
 
 msgid "Volunteer Management V2 is not enabled"
+msgstr ""
+
+msgid "Volunteer Management is turned off for this church"
 msgstr ""
 
 msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
@@ -19481,6 +19585,9 @@ msgid "What the check found"
 msgstr ""
 
 msgid "What the volunteer experiences are"
+msgstr ""
+
+msgid "What this account can do right now (read-only)"
 msgstr ""
 
 msgid "What this plugin does"
@@ -19909,6 +20016,9 @@ msgstr ""
 msgid "You must enter the same password in both boxes"
 msgstr ""
 
+msgid "You must select a class"
+msgstr ""
+
 msgid "You must select a group."
 msgstr ""
 
@@ -20044,9 +20154,6 @@ msgid "Your code"
 msgstr ""
 
 msgid "Your coordinator"
-msgstr ""
-
-msgid "Your current access levels (read-only)"
 msgstr ""
 
 msgid "Your current address will stop working straight away. Anyone you gave it to will need the new one."
@@ -20650,6 +20757,9 @@ msgstr ""
 msgid "system logs"
 msgstr ""
 
+msgid "system user API key regenerated"
+msgstr ""
+
 msgid "system user changed password"
 msgstr ""
 
@@ -20666,6 +20776,18 @@ msgid "system user password changed by admin"
 msgstr ""
 
 msgid "system user password reset"
+msgstr ""
+
+msgid "system user reset their password from an emailed link"
+msgstr ""
+
+msgid "system user turned off two-factor authentication"
+msgstr ""
+
+msgid "system user turned on two-factor authentication"
+msgstr ""
+
+msgid "system user two-factor authentication disabled by admin"
 msgstr ""
 
 msgid "system user updated"

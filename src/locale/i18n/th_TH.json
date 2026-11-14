@@ -1900,7 +1900,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "ถ้าคุณลบประเภทนี้ คุณจะลบคุณสมบัติทั้งหมดที่ใช้มันและสูญเสียการกำหนดคุณสมบัติที่เกี่ยวข้อง",
   "Move Donations to Selected Family": "ย้ายเงินถวายไปยังครอบครัวที่เลือก",
   "Calendar not found": "ไม่พบปฏิทิน",
-  "Continue to Dashboard": "ดำเนินการต่อไปยังแดชบอร์ด",
   "Current Password": "รหัสผ่านปัจจุบัน",
   "Deposit not found": "ไม่พบรายการฝากเงินถวาย",
   "Group not found": "ไม่พบกลุ่ม",
@@ -2658,7 +2657,6 @@
   "Version %s is available. Please upgrade your installation.": "เวอร์ชัน %s พร้อมใช้งาน กรุณาอัปเกรดการติดตั้งของคุณ",
   "View All": "ดูทั้งหมด",
   "Yellow": "สีเหลือง",
-  "Your current access levels (read-only)": "ระดับการเข้าถึงปัจจุบันของคุณ (อ่านอย่างเดียว)",
   "%d repeat event created successfully.": {
     "other": "สร้างกิจกรรมซ้ำ %d รายการสำเร็จแล้ว"
   },
@@ -3291,7 +3289,6 @@
   "Please confirm deactivation of family": "กรุณายืนยันการปิดใช้งานครอบครัว",
   "Please confirm deletion of this group record": "กรุณายืนยันการลบระเบียนกลุ่มนี้",
   "Please confirm disabling 2 Factor Auth for this user": "กรุณายืนยันการปิดใช้งานการยืนยันตัวตนแบบ 2 ปัจจัยสำหรับผู้ใช้นี้",
-  "Please confirm removal of user status from": "กรุณายืนยันการลบสถานะผู้ใช้จาก",
   "Please confirm reset failed login count": "กรุณายืนยันการรีเซ็ตจำนวนการเข้าสู่ระบบที่ล้มเหลว",
   "Please confirm the password reset of this user": "กรุณายืนยันการรีเซ็ตรหัสผ่านของผู้ใช้นี้",
   "Please enter a valid URL": "กรุณาป้อน URL ที่ถูกต้อง",
@@ -3496,7 +3493,6 @@
   "%s's Account": "บัญชีของ %s",
   "Access": "การเข้าถึง",
   "Access level": "ระดับการเข้าถึง",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "ผู้ดูแลระบบมีสิทธิ์เข้าถึงฟีเจอร์และข้อมูลทั้งหมดอย่างสมบูรณ์ สิทธิ์รายบุคคลไม่มีผลบังคับใช้",
   "All users can view congregation members. This permission cannot be removed.": "ผู้ใช้ทุกคนสามารถดูรายชื่อสมาชิกคริสตจักรได้ สิทธิ์นี้ไม่สามารถถอดถอนได้",
   "Always granted": "ได้รับสิทธิ์เสมอ",
   "Choose specific permissions below.": "เลือกสิทธิ์เฉพาะด้านล่าง",

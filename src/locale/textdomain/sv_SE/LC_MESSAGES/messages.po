@@ -8009,10 +8009,6 @@ msgid "Calendar not found"
 msgstr "Kalender hittades inte"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Fortsätt till instrumentpanelen"
-
-#: 
 msgid "Current Password"
 msgstr "Nuvarande lösenord"
 
@@ -11384,10 +11380,6 @@ msgid "Yellow"
 msgstr "Gul"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Dina nuvarande åtkomstnivåer (skrivskyddad)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d återkommande händelse skapades."
@@ -13919,10 +13911,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bekräfta att du avaktiverar 2 Factor Auth för denna användare"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Bekräfta att du vill radera användare status från"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Bekräfta återställningen av inloggningsantalet"
 
@@ -14733,10 +14721,6 @@ msgstr "Åtkomst"
 #: 
 msgid "Access level"
 msgstr "Åtkomstnivå"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Administratörer har full åtkomst till alla funktioner och all data. Individuella behörigheter gäller inte."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."
