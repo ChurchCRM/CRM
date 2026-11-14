@@ -116,6 +116,7 @@
         "dompurify": "^3.4.17",
         "fullcalendar": "^7.1.4",
         "heic2any": "^0.0.4",
+        "i18next": "^26.5.11",
         "inputmask": "^5.0.9",
         "jquery": "^3.7.1",
         "just-validate": "^4.3.0",
