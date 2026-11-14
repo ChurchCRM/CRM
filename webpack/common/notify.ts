@@ -11,3 +11,5 @@ export function notifySuccess(message: string): void {
 export function notifyWarning(message: string): void {
   window.CRM?.notify?.(message, { type: "warning" });
 }
+
+export { clearInlineError, renderInlineError, type InlineErrorOptions } from "./inline-error";
