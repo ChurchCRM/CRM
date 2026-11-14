@@ -52,7 +52,6 @@ describe("Treasurer records checks without check numbers", () => {
         cy.contains("Financial Settings").click();
         cy.get("#financialSettings .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
         cy.get("#financialSettings input[name='bRequireCheckNumber'][value='0']").check({ force: true });
-        cy.get("#financialSettings .settings-panel-save").click();
         cy.wait("@saveRequireCheckNumber").its("response.statusCode").should("eq", 200);
         cy.getSystemConfig("bRequireCheckNumber").should("eq", "0");
 
