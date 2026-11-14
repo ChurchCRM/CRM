@@ -57,13 +57,7 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
      *     summary="Get deposits for a time range (Finance role required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Parameter(
-     *         name="days",
-     *         in="query",
-     *         required=false,
-     *         description="Number of days to include; allowed values 30, 90, or 365. Defaults to 90.",
-     *         @OA\Schema(type="integer", enum={30, 90, 365}, default=90)
-     *     ),
+     *     @OA\Parameter(name="days", in="query", required=false, description="Days window: 30|90|365 (default 90)", @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Array of deposits within the requested time range"),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Finance role required")

@@ -766,9 +766,7 @@ export function initializeMainDashboard() {
         window.depositChart = null;
       }
 
-      $("#depositChartRow .card-body").html(
-        '<div id="deposit-lineGraph" class="deposit-line-graph"></div>',
-      );
+      $("#depositChartRow .card-body").html('<div id="deposit-lineGraph" class="deposit-line-graph"></div>');
 
       window.CRM.APIRequest({
         method: "GET",
@@ -848,10 +846,7 @@ export function initializeMainDashboard() {
 
         const depositChartElement = document.getElementById("deposit-lineGraph");
         if (depositChartElement) {
-          const depositChart = new window.ApexCharts(
-            depositChartElement,
-            depositChartOptions,
-          );
+          const depositChart = new window.ApexCharts(depositChartElement, depositChartOptions);
           depositChart.render();
           window.depositChart = depositChart;
         }
