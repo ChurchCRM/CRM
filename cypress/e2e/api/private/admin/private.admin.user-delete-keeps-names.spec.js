@@ -67,7 +67,12 @@ describe("Deleting a user keeps the person's name on what they did (#8672)", () 
         });
 
         // The response names the deleted user by their person name.
-        cy.then(() => admin("DELETE", `/admin/api/user/${STAFF}/`)).its("body.user").should("eq", staffName);
+        // staffName is set by an earlier command, so read it inside the callback.
+        cy.then(() =>
+            admin("DELETE", `/admin/api/user/${STAFF}/`).then(({ body }) => {
+                expect(body.user, "deleted user's name").to.eq(staffName);
+            }),
+        );
     });
 
     after(() => {
