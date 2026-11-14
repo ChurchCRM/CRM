@@ -21,8 +21,8 @@ $_SESSION = [];
 SystemURLs::init('', ['http://localhost'], APP_ROOT);
 $settings = [];
 foreach ([
-    'sTaxReport1' => 'Saved opening', 'sTaxReport2' => 'Saved closing',
-    'sTaxReport3' => 'Saved questions', 'sTaxSigner' => 'Saved signer',
+    'sGivingStatementOpening' => 'Saved opening', 'sGivingStatementClosing' => 'Saved closing',
+    'sGivingStatementQuestions' => 'Saved questions', 'sTaxSigner' => 'Saved signer',
     'sChurchName' => 'Sample Test Church', 'sChurchTaxId' => 'TEST-TAX-ID',
 ] as $name => $value) {
     $settings[] = new class($name, $value) {
