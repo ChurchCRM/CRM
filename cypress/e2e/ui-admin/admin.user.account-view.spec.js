@@ -12,9 +12,11 @@ describe("Admin view of another user's account (/admin/system/users/{personId})"
                 cy.viewport(width, height);
                 cy.setupAdminSession();
                 cy.visit("/admin/system/users");
-                cy.get(`a[href$="/admin/system/users/${STANDARD}"]`).should("be.visible");
                 captureAccountLayout("admin-user-list", mode);
-                cy.get(`a[href$="/admin/system/users/${STANDARD}"]`).click();
+                cy.readEnv("standard.username").then((username) => {
+                    cy.get("#user-listing-table_wrapper .dt-search input").type(username);
+                });
+                cy.get(`#user-listing-table td:first-child a[href$="/admin/system/users/${STANDARD}"]`).should("be.visible").click();
                 cy.readEnv("standard.username").then((username) => {
                     cy.get("#tab-account").should("contain", username);
                 });
