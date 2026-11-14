@@ -204,6 +204,9 @@ describe("Private Canadian giving-statement signature", () => {
                     expect(Cypress.Buffer.from(image.body, "base64").subarray(1, 4).toString()).to.eq("PNG");
                 });
             });
+            // The stored file sits in the deny-all Images/TaxSignatures folder; only the route serves it.
+            cy.request({ url: absoluteUrl(`/Images/TaxSignatures/${firstIdentifier}`), failOnStatusCode: false }).its("status").should("be.oneOf", [403, 404]);
+            cy.request({ url: absoluteUrl("/Images/TaxSignatures/"), failOnStatusCode: false }).its("status").should("be.oneOf", [403, 404]);
             cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${LETTERHEAD_PNG_BASE64}` }, 200);
             cy.getSystemConfig("sCanadianTaxSignatureAsset").should("not.eq", firstIdentifier);
             cy.request({ url: absoluteUrl(`/Images/${firstIdentifier}`), failOnStatusCode: false }).its("status").should("eq", 404);
@@ -241,6 +244,30 @@ describe("Private Canadian giving-statement signature", () => {
         cy.then(() => buildBlankPng(2000, 1000)).then((imgBase64) => {
             cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64 }, 200);
         });
+    });
+
+    it("stores signatures in a configured folder and explains an unusable one", () => {
+        const setting = "sTaxSignatureStoragePath";
+        const upload = (status) =>
+            cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${LETTERHEAD_PNG_BASE64}` }, status);
+        cy.getSystemConfig(setting).then((original) => {
+            cy.setSystemConfig(setting, `/tmp/churchcrm-tax-signatures-${Date.now()}`);
+            upload(200);
+            cy.makePrivateAdminAPICall("GET", endpoint, null, 200).its("body.hasSignature").should("eq", true);
+            cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200);
+
+            for (const [value, message] of [
+                ["relative/signatures", "absolute folder path"],
+                ["/tmp/../etc/signatures", "absolute folder path"],
+                ["/proc/churchcrm-tax-signatures", "Cannot create the tax signature storage folder"],
+            ]) {
+                cy.setSystemConfig(setting, value);
+                upload(500).its("body.message").should("include", message);
+            }
+            cy.restoreSystemConfig(setting, original);
+        });
+        upload(200);
+        cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200);
     });
 
     it("blocks direct asset-setting writes", () => {

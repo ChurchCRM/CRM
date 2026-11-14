@@ -226,6 +226,7 @@ class   SystemConfig
             'sGivingStatementClosing'               => new ConfigItem('sGivingStatementClosing', 'text', 'Thank you for your help in making a difference. We greatly appreciate your gift!', gettext('Verbage for bottom line of tax report.'), '', '', false),
             'sGivingStatementQuestions'             => new ConfigItem('sGivingStatementQuestions', 'text', 'If you have any questions or corrections to make to this report, please contact the church at the above number during business hours, 9am to 4pm, M-F.', gettext('Verbage for bottom line of tax report.'), '', '', false),
             'sCanadianTaxSignatureAsset'           => new ConfigItem('sCanadianTaxSignatureAsset', 'text', '', gettext('Private Canadian giving-statement signature asset identifier. Managed by signature upload.')),
+            'sTaxSignatureStoragePath'             => new ConfigItem('sTaxSignatureStoragePath', 'text', '', gettext('Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to.')),
             'sTaxSigner'                           => new ConfigItem('sTaxSigner', 'text', '', gettext('Tax Report signer')),
             'sReminder1'                           => new ConfigItem('sReminder1', 'text', 'This letter shows our record of your pledge and payments for fiscal year', gettext('Verbage for the pledge reminder report'), '', '', false),
             'sReminderSigner'                      => new ConfigItem('sReminderSigner', 'text', '', gettext('Pledge Reminder Signer')),
@@ -393,7 +394,7 @@ class   SystemConfig
             gettext('Quick Search')       => ['bSearchIncludePersons', 'bSearchIncludePersonsMax', 'bSearchIncludeAddresses', 'bSearchIncludeAddressesMax', 'bSearchIncludeFamilies', 'bSearchIncludeFamiliesMax', 'bSearchIncludeFamilyHOH', 'bSearchIncludeFamilyHOHMax', 'bSearchIncludeGroups', 'bSearchIncludeGroupsMax', 'bSearchIncludeDeposits', 'bSearchIncludeDepositsMax', 'bSearchIncludePayments', 'bSearchIncludePaymentsMax', 'bSearchIncludeFamilyCustomProperties', 'bSearchIncludeCalendarEvents', 'bSearchIncludeCalendarEventsMax'],
             gettext('Confession')         => ['iPersonConfessionFatherCustomField', 'iPersonConfessionDateCustomField'],
             gettext('Scheduled Tasks')    => ['iTimerJobsStaleHours', 'iTimerJobsMinIntervalMinutes'],
-            gettext('Report Settings')    => ['sQBDTSettings', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3'],
+            gettext('Report Settings')    => ['sQBDTSettings', 'sReminder1', 'sReminderSigner', 'sReminderNoPledge', 'sReminderNoPayments', 'sConfirm1', 'sConfirm2', 'sConfirm3', 'sConfirm4', 'sConfirm5', 'sConfirm6', 'sDirectoryDisclaimer1', 'sDirectoryDisclaimer2', 'sZeroGivers', 'sZeroGivers2', 'sZeroGivers3', 'sTaxSignatureStoragePath'],
         ];
     }
 

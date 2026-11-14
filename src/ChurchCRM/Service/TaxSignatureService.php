@@ -14,35 +14,73 @@ class TaxSignatureService
     private const MAX_WIDTH = 2000;
     private const MAX_HEIGHT = 1000;
 
+    /** Default folder, inside the app, relative to the document root. */
+    public const DEFAULT_DIRECTORY = 'Images/TaxSignatures';
+
+    /** Written into the storage folder on demand so it is never served directly. */
+    private const GUARD_HTACCESS = <<<'HTACCESS'
+# Deny direct HTTP access to the private giving-statement signature.
+# It is served only through the authenticated admin route:
+#   GET /admin/api/system/tax-signature/image
+Require all denied
+
+HTACCESS;
+
     private static function directory(): string
     {
         $root = realpath(SystemURLs::getDocumentRoot());
         if ($root === false) {
-            throw new ImageStorageException('Cannot resolve application storage');
+            throw new ImageStorageException(gettext('Cannot resolve the application folder for tax signature storage.'));
         }
 
-        $webRoot = realpath($_SERVER['DOCUMENT_ROOT'] ?? $root);
-        if ($webRoot === false || !is_dir($webRoot)) {
-            throw new ImageStorageException('Cannot resolve the web document root');
+        $configured = trim((string) SystemConfig::getValue('sTaxSignatureStoragePath'));
+        if ($configured === '') {
+            $directory = $root . '/' . self::DEFAULT_DIRECTORY;
+        } else {
+            $isAbsolute = str_starts_with($configured, '/') || preg_match('#^[A-Za-z]:[\\\\/]#', $configured) === 1;
+            if (!$isAbsolute || str_contains($configured, "\0") || preg_match('#(^|[\\\\/])\.\.([\\\\/]|$)#', $configured) === 1) {
+                throw new ImageStorageException(gettext('The tax signature storage path setting must be an absolute folder path.'));
+            }
+            $directory = rtrim($configured, '/\\');
+            if ($directory === '') {
+                throw new ImageStorageException(gettext('The tax signature storage path setting must be an absolute folder path.'));
+            }
+            $resolved = realpath($directory);
+            $checked = $resolved === false ? $directory : $resolved;
+            if (str_starts_with($checked . DIRECTORY_SEPARATOR, $root . DIRECTORY_SEPARATOR)
+                && $checked !== $root . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, self::DEFAULT_DIRECTORY)) {
+                throw new ImageStorageException(gettext('The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder.'));
+            }
         }
 
-        // A subdirectory installation must also stay outside its containing web root.
-        $directory = dirname($webRoot) . '/.churchcrm-tax-signatures-' . substr(hash('sha256', $root), 0, 24);
-        if (str_starts_with($directory . DIRECTORY_SEPARATOR, rtrim($webRoot, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR)) {
-            throw new ImageStorageException('Private signature storage cannot be inside the web document root');
+        if (is_link($directory)) {
+            throw new ImageStorageException(gettext('The tax signature storage folder cannot be a symbolic link.'));
         }
-        if (is_link($directory)
-            || (!is_dir($directory) && !@mkdir($directory, 0700) && !is_dir($directory))) {
-            throw new ImageStorageException('Cannot create private tax signature storage outside the application document root');
+        if (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory)) {
+            throw new ImageStorageException(sprintf(gettext('Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting.'), $directory));
         }
         clearstatcache(true, $directory);
-        if (!is_writable($directory)
-            || (DIRECTORY_SEPARATOR === '/' && (fileperms($directory) & 0077) !== 0)
-            || (function_exists('posix_geteuid') && fileowner($directory) !== posix_geteuid())) {
-            throw new ImageStorageException('Tax signature storage must be private and writable');
+        if (!is_writable($directory)) {
+            throw new ImageStorageException(sprintf(gettext('The tax signature storage folder %s is not writable by the web server.'), $directory));
         }
+        self::writeGuards($directory);
 
         return $directory;
+    }
+
+    /** Deny-all guards: Apache honours .htaccess; index.html stops directory listings. */
+    private static function writeGuards(string $directory): void
+    {
+        $guards = ['.htaccess' => self::GUARD_HTACCESS, 'index.html' => ''];
+        foreach ($guards as $name => $contents) {
+            $path = $directory . '/' . $name;
+            if (is_link($path)) {
+                throw new ImageStorageException(gettext('Invalid tax signature storage.'));
+            }
+            if (!is_file($path) && @file_put_contents($path, $contents) === false) {
+                throw new ImageStorageException(sprintf(gettext('Cannot write the access guard %s in the tax signature storage folder.'), $name));
+            }
+        }
     }
 
     private static function storedPath(): ?string
@@ -52,11 +90,11 @@ class TaxSignatureService
             return null;
         }
         if (!preg_match('/^[a-f0-9]{64}\.png$/D', $identifier)) {
-            throw new ImageStorageException('Invalid stored tax signature identifier');
+            throw new ImageStorageException(gettext('Invalid stored tax signature identifier.'));
         }
         $path = self::directory() . '/' . $identifier;
         if (is_link($path)) {
-            throw new ImageStorageException('Invalid tax signature storage');
+            throw new ImageStorageException(gettext('Invalid tax signature storage.'));
         }
 
         return $path;
@@ -77,7 +115,7 @@ class TaxSignatureService
         }
         $contents = @file_get_contents($path);
         if ($contents === false) {
-            throw new ImageStorageException('Cannot read the private tax signature');
+            throw new ImageStorageException(gettext('Cannot read the private tax signature.'));
         }
 
         return $contents;
@@ -120,19 +158,19 @@ class TaxSignatureService
             $path = self::directory() . '/' . $identifier;
             $stream = @fopen($path, 'xb');
             if ($stream === false || !@chmod($path, 0600)) {
-                throw new ImageStorageException('Cannot create the private tax signature');
+                throw new ImageStorageException(gettext('Cannot create the private tax signature file. Check that the storage folder is writable.'));
             }
             imagealphablending($image, false);
             imagesavealpha($image, true);
             if (!imagepng($image, $stream) || !fflush($stream) || fstat($stream)['size'] === 0) {
-                throw new ImageStorageException('Cannot encode the private tax signature');
+                throw new ImageStorageException(gettext('Cannot encode the private tax signature.'));
             }
             fclose($stream);
             $stream = null;
             SystemConfig::setValue('sCanadianTaxSignatureAsset', $identifier, true);
             $saved = true;
             if ($oldPath !== null && is_file($oldPath) && !@unlink($oldPath)) {
-                throw new ImageStorageException('Signature updated but the previous private asset could not be removed');
+                throw new ImageStorageException(gettext('Signature updated but the previous private signature file could not be removed.'));
             }
         } finally {
             imagedestroy($image);
@@ -149,7 +187,7 @@ class TaxSignatureService
     {
         $path = self::storedPath();
         if ($path !== null && is_file($path) && !@unlink($path)) {
-            throw new ImageStorageException('Cannot remove the private tax signature');
+            throw new ImageStorageException(gettext('Cannot remove the private tax signature file.'));
         }
         SystemConfig::setValue('sCanadianTaxSignatureAsset', '', true);
     }

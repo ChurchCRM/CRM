@@ -27,10 +27,10 @@ use Slim\Routing\RouteCollectorProxy;
  * @OA\Post(
  *     path="/admin/api/system/tax-signature", operationId="uploadTaxSignature",
  *     summary="Upload a private PNG or JPEG tax signature", tags={"Admin"}, security={{"ApiKeyAuth":{}}},
- *     description="Maximum 2 MiB and 2000 by 1000 pixels. Re-encoded as PNG in private storage outside the web root. Session requests require a CSRF token.",
+ *     description="Maximum 2 MiB and 2000 by 1000 pixels. Re-encoded as PNG in a private deny-all folder (Images/TaxSignatures by default, or the sTaxSignatureStoragePath setting). Session requests require a CSRF token.",
  *     @OA\RequestBody(required=true, @OA\JsonContent(required={"imgBase64"}, @OA\Property(property="imgBase64", type="string"))),
  *     @OA\Response(response=200, description="Signature stored"), @OA\Response(response=400, description="Invalid image"),
- *     @OA\Response(response=413, description="Image exceeds limits"), @OA\Response(response=500, description="Private storage unavailable"),
+ *     @OA\Response(response=413, description="Image exceeds limits"), @OA\Response(response=500, description="Private storage unavailable; the message explains why"),
  *     @OA\Response(response=401, description="Authentication required"), @OA\Response(response=403, description="Admin or CSRF check failed")
  * )
  * @OA\Delete(
@@ -70,7 +70,7 @@ $app->group('/api/system/tax-signature', function (RouteCollectorProxy $group): 
         } catch (PhotoSizeException $error) {
             return SlimUtils::renderErrorJSON($response, $error->getMessage(), [], 413, $error, $request);
         } catch (ImageStorageException $error) {
-            return SlimUtils::renderErrorJSON($response, gettext('Cannot store the private signature. Check private storage permissions outside the application document root.'), [], 500, $error, $request);
+            return SlimUtils::renderErrorJSON($response, gettext('Cannot store the private signature.') . ' ' . $error->getMessage(), [], 500, $error, $request);
         } catch (InvalidArgumentException $error) {
             return SlimUtils::renderErrorJSON($response, $error->getMessage(), [], 400, $error, $request);
         }
@@ -82,7 +82,7 @@ $app->group('/api/system/tax-signature', function (RouteCollectorProxy $group): 
 
             return SlimUtils::renderJSON($response, ['success' => true, 'hasSignature' => false]);
         } catch (ImageStorageException $error) {
-            return SlimUtils::renderErrorJSON($response, gettext('Cannot remove the private signature.'), [], 500, $error, $request);
+            return SlimUtils::renderErrorJSON($response, gettext('Cannot remove the private signature.') . ' ' . $error->getMessage(), [], 500, $error, $request);
         }
     });
 })->add(new CSRFMiddleware())->add(AdminRoleAuthMiddleware::class);
