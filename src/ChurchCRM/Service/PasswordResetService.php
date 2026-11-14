@@ -27,6 +27,7 @@ class PasswordResetService
             $user->setFailedLogins(0);
             $user->save($connection);
             $connection->commit();
+            $user->createTimeLineNote('password-reset-self');
 
             return true;
         } catch (\Throwable $error) {
