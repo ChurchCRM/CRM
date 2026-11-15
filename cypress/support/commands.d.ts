@@ -401,6 +401,13 @@ declare namespace Cypress {
     deletePersonByName(name: string): Chainable<void>;
 
     /**
+     * Store a family's envelope number through the Envelope Manager as the admin, then sign out
+     * @param familyId - The family to number
+     * @param envelope - The envelope number; 0 clears it
+     */
+    setFamilyEnvelope(familyId: number, envelope: number): Chainable<void>;
+
+    /**
      * Create multiple people via CSV import to bypass UI validation
      * @param peopleData - Object containing person data with birth date info
      */
