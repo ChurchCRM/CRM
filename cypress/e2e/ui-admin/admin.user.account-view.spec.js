@@ -20,14 +20,12 @@ describe("Admin view of another user's account (/admin/system/users/{personId})"
                         .find('td:first-child a[href*="/admin/system/users/"]')
                         .should("be.visible")
                         .click();
-                    cy.get("#tab-account").should("contain", username);
+                    cy.get('[data-cy="user-identity"]').should("contain", username);
                 });
-                cy.get('#tab-account a[href$="/account/password"]').should("not.exist");
+                cy.get('[data-cy="user-status"]').should("be.visible");
                 cy.get('[data-cy="permission-row"]').should("have.length.greaterThan", 10);
-                captureAccountLayout("admin-account", mode);
-                cy.get('#settingsNav a[href="#tab-permissions"]').click();
-                cy.get('[data-cy="permissions-tab"]').should("be.visible");
-                captureAccountLayout("admin-permissions", mode);
+                cy.get('[data-cy="user-permissions"]').should("be.visible");
+                captureAccountLayout("admin-user-detail", mode);
             });
         });
     });

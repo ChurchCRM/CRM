@@ -2138,10 +2138,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "यह डेटाबेस में परिवार के लिफाफा नंबरों को इस पृष्ठ पर चयनित नंबरों से बदल देगा। जारी रखें?"
 
 #: 
-msgid "Family Select"
-msgstr "परिवार चयन"
-
-#: 
 msgid "Welcome to"
 msgstr "स्वागत है"
 
@@ -2436,10 +2432,6 @@ msgstr "सभी जमा देखें"
 #: 
 msgid "Deposit Reports"
 msgstr "जमा रिपोर्ट"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "जमा पर्ची संपादित करें"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6034,14 +6026,6 @@ msgid "Close All Deposits"
 msgstr "सभी जमा बंद करें"
 
 #: 
-msgid "Closed vs Total"
-msgstr "बंद बनाम कुल"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "अपने दाताओं के लिए सटीक वर्ष के अंत कर रिपोर्टिंग सुनिश्चित करने के लिए इन कार्यों को पूरा करें।"
-
-#: 
 msgid "Configure Email"
 msgstr "ईमेल कॉन्फ़िगर करें"
 
@@ -6058,28 +6042,12 @@ msgid "Create First Deposit"
 msgstr "पहली जमा बनाएं"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "पहले जमा बनाएं या खोलें"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "शुरू करने के लिए जमा बनाएं या चुनें।"
-
-#: 
-msgid "Current Deposit"
-msgstr "वर्तमान जमा"
-
-#: 
 msgid "Day"
 msgstr "दिन"
 
 #: 
 msgid "Dec"
 msgstr "दिसंबर"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "जमा सांख्यिकी"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6108,10 +6076,6 @@ msgstr "भुगतान संपादित करें"
 #: 
 msgid "Edit Person"
 msgstr "व्यक्ति संपादित करें"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "विवरण जनरेट करने से पहले सुनिश्चित करें कि कर वर्ष के लिए सभी जमा बंद हैं।"
 
 #: 
 msgid "F"
@@ -6218,10 +6182,6 @@ msgid "New Pledge"
 msgstr "नई प्रतिज्ञा"
 
 #: 
-msgid "No Active Deposit"
-msgstr "कोई सक्रिय जमा नहीं"
-
-#: 
 msgid "No active funds configured."
 msgstr "कोई सक्रिय फंड कॉन्फ़िगर नहीं है।"
 
@@ -6254,10 +6214,6 @@ msgid "Pledge Reports"
 msgstr "प्रतिज्ञा रिपोर्ट"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "सभी दाताओं को वार्षिक दान विवरण प्रिंट या ईमेल करें।"
-
-#: 
 msgid "Quick Actions"
 msgstr "त्वरित कार्रवाइयाँ"
 
@@ -6288,10 +6244,6 @@ msgstr "पुनर्स्थापित करें"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "बैकअप फ़ाइल से रिस्टोर करें। मौजूदा डेटा मिटा देता है।"
-
-#: 
-msgid "Review Donation Funds"
-msgstr "दान निधि की समीक्षा करें"
 
 #: 
 msgid "Save and Add New Family"
@@ -6330,14 +6282,6 @@ msgid "System Info"
 msgstr "सिस्टम जानकारी"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "कर रिपोर्ट शब्दावली"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "कर वर्ष रिपोर्टिंग चेकलिस्ट"
-
-#: 
 msgid "Total"
 msgstr "कुल"
 
@@ -6358,10 +6302,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "उपयोगकर्ता को व्यवस्थापक होना चाहिए या वित्त अनुमति होनी चाहिए"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "सत्यापित करें कि फंड नाम और विवरण विवरणों के लिए सटीक हैं।"
-
-#: 
 msgid "YTD Payments"
 msgstr "वर्ष-दर-वर्ष भुगतान"
 
@@ -6378,20 +6318,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "अपग्रेड के लिए ZipArchive एक्सटेंशन आवश्यक है"
 
 #: 
-msgid "active"
-msgstr "सक्रिय"
-
-#: 
 msgid "found"
 msgstr "मिला"
 
 #: 
 msgid "issues"
 msgstr "समस्याएं"
-
-#: 
-msgid "open"
-msgstr "खुला"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15377,10 +15309,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM के अनुवाद POEditor पर समुदाय द्वारा प्रबंधित किए जाते हैं। आप इस प्रकार सहायता कर सकते हैं"
 
 #: 
-msgid "Closed Deposits"
-msgstr "बंद जमाएँ"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "वर्तमान $URL[0] मान"
 
@@ -15521,10 +15449,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "इस स्वयंसेवी अवसर पर लोग नियुक्त हैं। हटाने पर उनकी नियुक्ति रद्द हो जाएगी"
 
 #: 
-msgid "Total Deposits"
-msgstr "कुल जमाएँ"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "इसे एक वैध URL में अपडेट करें जो"
 
@@ -15551,10 +15475,6 @@ msgstr "निधियों के लिए"
 #: 
 msgid "user"
 msgstr "उपयोगकर्ता"
-
-#: 
-msgid "with at least one"
-msgstr "कम से कम एक के साथ"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17327,10 +17247,6 @@ msgstr "इस वित्तीय वर्ष में जुटाई ग�
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s एक पूर्ण https:// वेब पता होना चाहिए, उदाहरण के लिए https://example.org/yourchurch।"
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "खाते की अनुमतियाँ सीमित हैं। किसी एडमिनिस्ट्रेटर से संपर्क करें।"
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -23967,10 +23883,6 @@ msgid "%s Giving Statement"
 msgstr "%s दान विवरण"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "दान विवरणों पर दिखने वाले पाठ को अनुकूलित करें (sTaxReport1, sTaxReport2, आदि)।"
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -23993,10 +23905,6 @@ msgstr "%s दान विवरण ईमेल करें"
 #: 
 msgid "Envelope Numbers"
 msgstr "लिफाफा संख्याएँ"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "दान विवरण बनाएँ"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24037,10 +23945,6 @@ msgstr "दान विवरण ईमेल नहीं किया जा 
 #: 
 msgid "Undesignated"
 msgstr "अनिर्दिष्ट"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "जाँचें कि चर्च का नाम, पता और संपर्क जानकारी दान विवरणों पर दिखाई दे।"
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24255,10 +24159,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d भुगतान अभी किसी जमा पर नहीं हैं।"
 
 #: 
-msgid "Can be emailed"
-msgstr "ईमेल किया जा सकता है"
-
-#: 
 msgid "Closing line"
 msgstr "समापन पंक्ति"
 
@@ -24287,16 +24187,8 @@ msgid "Opening line"
 msgstr "आरंभिक पंक्ति"
 
 #: 
-msgid "Print and mail"
-msgstr "प्रिंट करें और डाक से भेजें"
-
-#: 
 msgid "Qty"
 msgstr "मात्रा"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "वर्ष की समीक्षा करें, फिर दान विवरण प्रिंट करें या ईमेल करें।"
 
 #: 
 msgid "Signed by"
@@ -24305,10 +24197,6 @@ msgstr "हस्ताक्षरकर्ता"
 #: 
 msgid "Thank-you line"
 msgstr "धन्यवाद पंक्ति"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "जाँचें कि चर्च का नाम, पता और संपर्क जानकारी कर विवरणों पर दिखाई दे।"
 
 #: 
 msgid "Year-End Giving"

@@ -85,6 +85,19 @@ class FiscalYearUtils
         return $fyid + 1996;
     }
 
+    /** Fiscal year, named by the calendar year it ends in, that the user last picked on a finance page. */
+    public static function rememberedEndYear(): ?int
+    {
+        $year = (int) ($_SESSION['iFinanceEndYear'] ?? 0);
+
+        return $year > 0 && $year <= self::endYearForId(self::getCurrentFiscalYearId()) ? $year : null;
+    }
+
+    public static function rememberEndYear(int $year): void
+    {
+        $_SESSION['iFinanceEndYear'] = $year;
+    }
+
     /** Calendar year in which the fiscal year of $date ends. */
     public static function getEndYearForDate(string $date): int
     {
