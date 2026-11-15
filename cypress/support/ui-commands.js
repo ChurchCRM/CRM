@@ -248,6 +248,28 @@ Cypress.Commands.add('createPersonWithBirthday', (personData) => {
 });
 
 /**
+ * Stores a family's envelope number through the Envelope Manager as the admin, then signs out.
+ */
+Cypress.Commands.add('setFamilyEnvelope', (familyId, envelope) => {
+    cy.clearCookies();
+    cy.readEnv('admin.username').then((username) =>
+        cy.readEnv('admin.password').then((password) =>
+            cy.request({ method: 'POST', url: '/session/begin', form: true, body: { User: username, Password: password } }),
+        ),
+    );
+    cy.request('/finance/envelopes').then(({ body }) => {
+        const csrfToken = body.match(/name="csrf_token" value="([^"]+)"/)[1];
+        cy.request({
+            method: 'POST',
+            url: '/finance/envelopes',
+            form: true,
+            body: { csrf_token: csrfToken, action: 'save', [`envelopes[${familyId}]`]: String(envelope) },
+        });
+    });
+    cy.clearCookies();
+});
+
+/**
  * Deletes the first person matching a global search on `name`.
  *
  * Two things this used to get wrong (#9780):

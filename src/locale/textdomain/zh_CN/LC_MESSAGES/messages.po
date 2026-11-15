@@ -2219,10 +2219,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "这将用此页面上选择的系列信封覆盖数据库中的系列信封号码。继续吗？"
 
 #: 
-msgid "Family Select"
-msgstr "家庭选择"
-
-#: 
 msgid "Welcome to"
 msgstr "欢迎来到"
 
@@ -2521,10 +2517,6 @@ msgstr "查看所有存款"
 #: 
 msgid "Deposit Reports"
 msgstr "存款报告"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "编辑存款单"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6127,14 +6119,6 @@ msgid "Close All Deposits"
 msgstr "关闭所有存款"
 
 #: 
-msgid "Closed vs Total"
-msgstr "已关闭对比总计"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "完成这些任务，以确保为您的捐助者提供准确的年终税务报告。"
-
-#: 
 msgid "Configure Email"
 msgstr "配置电子邮件"
 
@@ -6151,28 +6135,12 @@ msgid "Create First Deposit"
 msgstr "创建第一笔存款"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "请先创建或打开一笔存款"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "创建或选择一笔存款以开始。"
-
-#: 
-msgid "Current Deposit"
-msgstr "当前存款"
-
-#: 
 msgid "Day"
 msgstr "日"
 
 #: 
 msgid "Dec"
 msgstr "十二月"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "存款统计"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6201,10 +6169,6 @@ msgstr "编辑付款"
 #: 
 msgid "Edit Person"
 msgstr "编辑个人"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "在生成声明之前，确保税务年度的所有存款都已关闭。"
 
 #: 
 msgid "F"
@@ -6311,10 +6275,6 @@ msgid "New Pledge"
 msgstr "新认献"
 
 #: 
-msgid "No Active Deposit"
-msgstr "无活动存款"
-
-#: 
 msgid "No active funds configured."
 msgstr "未配置活动基金。"
 
@@ -6347,10 +6307,6 @@ msgid "Pledge Reports"
 msgstr "认献报告"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "为所有捐助者打印或发送年度奉献声明。"
-
-#: 
 msgid "Quick Actions"
 msgstr "快速操作"
 
@@ -6381,10 +6337,6 @@ msgstr "还原"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "从备份文件还原。将擦除现有数据。"
-
-#: 
-msgid "Review Donation Funds"
-msgstr "审查捐款基金"
 
 #: 
 msgid "Save and Add New Family"
@@ -6423,14 +6375,6 @@ msgid "System Info"
 msgstr "系统信息"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "税务报告措辞"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "税务年度报告检查清单"
-
-#: 
 msgid "Total"
 msgstr "总计"
 
@@ -6451,10 +6395,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "用户必须是管理员或具有财务权限"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "核实声明中的基金名称和描述是否准确。"
-
-#: 
 msgid "YTD Payments"
 msgstr "今年以来付款"
 
@@ -6471,20 +6411,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "升级需要 ZipArchive 扩展"
 
 #: 
-msgid "active"
-msgstr "活动"
-
-#: 
 msgid "found"
 msgstr "找到"
 
 #: 
 msgid "issues"
 msgstr "问题"
-
-#: 
-msgid "open"
-msgstr "开启"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15461,10 +15393,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM 的翻译由社区在 POEditor 上管理，您可以通过以下方式参与贡献"
 
 #: 
-msgid "Closed Deposits"
-msgstr "已关闭的存款"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "当前 $URL[0] 值"
 
@@ -15605,10 +15533,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "此义工机会已有人员分配，删除将取消分配"
 
 #: 
-msgid "Total Deposits"
-msgstr "存款总计"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "将其更新为有效的 URL，该 URL"
 
@@ -15635,10 +15559,6 @@ msgstr "适用于奉献基金"
 #: 
 msgid "user"
 msgstr "用户"
-
-#: 
-msgid "with at least one"
-msgstr "至少含有一个"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17409,10 +17329,6 @@ msgstr "本财政年度已筹集金额"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s 必须是完整的 https:// 网址，例如 https://example.org/yourchurch。"
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "账户权限受限，请联系管理员。"
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -24036,10 +23952,6 @@ msgid "%s Giving Statement"
 msgstr "%s 奉献报表"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "自定义奉献报表上显示的文本（sTaxReport1、sTaxReport2 等）。"
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24062,10 +23974,6 @@ msgstr "通过电子邮件发送 %s 奉献报表"
 #: 
 msgid "Envelope Numbers"
 msgstr "信封编号"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "生成奉献报表"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24106,10 +24014,6 @@ msgstr "无法通过电子邮件发送奉献报表：此家庭没有记录的电
 #: 
 msgid "Undesignated"
 msgstr "未指定"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "验证教会名称、地址和联系信息是否出现在奉献报表上。"
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24324,10 +24228,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "有 %d 笔付款尚未记入任何存款。"
 
 #: 
-msgid "Can be emailed"
-msgstr "可以电邮"
-
-#: 
 msgid "Closing line"
 msgstr "结束语"
 
@@ -24356,16 +24256,8 @@ msgid "Opening line"
 msgstr "开场语"
 
 #: 
-msgid "Print and mail"
-msgstr "打印并邮寄"
-
-#: 
 msgid "Qty"
 msgstr "数量"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "核对年度后，打印或电邮奉献报表。"
 
 #: 
 msgid "Signed by"
@@ -24374,10 +24266,6 @@ msgstr "签署人"
 #: 
 msgid "Thank-you line"
 msgstr "致谢语"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "请确认教会名称、地址和联系信息显示在税务报表上。"
 
 #: 
 msgid "Year-End Giving"

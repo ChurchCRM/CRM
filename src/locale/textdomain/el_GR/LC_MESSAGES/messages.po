@@ -2156,10 +2156,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Αυτό θα αντικαταστήσει τους αριθμούς των οικογενειακών φακέλων στη βάση δεδομένων με αυτούς που έχουν επιλεγεί σε αυτήν τη σελίδα. Να συνεχίσει?"
 
 #: 
-msgid "Family Select"
-msgstr "Family Select"
-
-#: 
 msgid "Welcome to"
 msgstr "Καλωσόρισες στο"
 
@@ -2458,10 +2454,6 @@ msgstr "Προβολή όλων των καταθέσεων"
 #: 
 msgid "Deposit Reports"
 msgstr "Αναφορές κατάθεσης"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Επεξεργασία δελτίου κατάθεσης"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6065,14 +6057,6 @@ msgid "Close All Deposits"
 msgstr "Κλείσιμο όλων των καταθέσεων"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Κλειστές έναντι Συνόλου"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Ολοκληρώστε αυτές τις εργασίες για ακριβή ετήσια φορολογική αναφορά των δωρητών."
-
-#: 
 msgid "Configure Email"
 msgstr "Ρύθμιση Email"
 
@@ -6089,28 +6073,12 @@ msgid "Create First Deposit"
 msgstr "Δημιουργία πρώτης κατάθεσης"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Δημιουργήστε ή ανοίξτε πρώτα μια κατάθεση"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Δημιουργήστε ή επιλέξτε μια κατάθεση για να ξεκινήσετε."
-
-#: 
-msgid "Current Deposit"
-msgstr "Τρέχουσα κατάθεση"
-
-#: 
 msgid "Day"
 msgstr "Ημέρα"
 
 #: 
 msgid "Dec"
 msgstr "Δεκ"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Στατιστικά Κατάθεσης"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6139,10 +6107,6 @@ msgstr "Επεξεργασία Payment"
 #: 
 msgid "Edit Person"
 msgstr "Επεξεργασία Person"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Βεβαιωθείτε ότι όλες οι καταθέσεις του έτους έχουν κλείσει πριν τη δημιουργία βεβαιώσεων."
 
 #: 
 msgid "F"
@@ -6249,10 +6213,6 @@ msgid "New Pledge"
 msgstr "Νέα υπόσχεση προσφοράς"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Κανένα Ενεργό Ημερολόγιο"
-
-#: 
 msgid "No active funds configured."
 msgstr "Δεν έχει ρυθμιστεί ενεργό κεφάλαιο."
 
@@ -6285,10 +6245,6 @@ msgid "Pledge Reports"
 msgstr "Αναφορές Υπόσχεσης"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Τυπώστε ή στείλε ετήσιες δηλώσεις δωρεάς σε όλους τους δότες."
-
-#: 
 msgid "Quick Actions"
 msgstr "Γρήγορες ενέργειες"
 
@@ -6319,10 +6275,6 @@ msgstr "Επαναφορά"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Επαναφορά από αρχείο αντιγράφου ασφαλείας. Διαγράφει τα υπάρχοντα δεδομένα."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Ανασκόπηση Κεφαλαίων Δωρεάς"
 
 #: 
 msgid "Save and Add New Family"
@@ -6361,14 +6313,6 @@ msgid "System Info"
 msgstr "Πληροφορίες Συστήματος"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Κείμενο φορολογικής αναφοράς"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Λίστα ελέγχου αναφορών φορολογικού έτους"
-
-#: 
 msgid "Total"
 msgstr "Σύνολο"
 
@@ -6389,10 +6333,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Ο χρήστης πρέπει να είναι Admin ή να έχει άδεια Finance"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Επαληθεύστε ότι τα ονόματα των ταμείων είναι ακριβή για τις βεβαιώσεις."
-
-#: 
 msgid "YTD Payments"
 msgstr "Πληρωμές έτους έως σήμερα (YTD)"
 
@@ -6409,20 +6349,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Απαιτείται η επέκταση ZipArchive για αναβαθμίσεις"
 
 #: 
-msgid "active"
-msgstr "ενεργός"
-
-#: 
 msgid "found"
 msgstr "βρέθηκαν"
 
 #: 
 msgid "issues"
 msgstr "προβλήματα"
-
-#: 
-msgid "open"
-msgstr "ανοιχτό"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15408,10 +15340,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Οι μεταφράσεις του ChurchCRM διαχειρίζονται από την κοινότητα στο POEditor. Μπορείτε να βοηθήσετε"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Κλειστές Καταθέσεις"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Τρέχουσα τιμή $URL[0]"
 
@@ -15552,10 +15480,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Υπάρχουν άτομα ανατεθειμένα σε αυτή τη Θέση Εθελοντισμού. Η διαγραφή θα τα αποδεσμεύσει"
 
 #: 
-msgid "Total Deposits"
-msgstr "Σύνολο Καταθέσεων"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Ενημερώστε το σε έγκυρο URL που"
 
@@ -15582,10 +15506,6 @@ msgstr "για κονδύλια"
 #: 
 msgid "user"
 msgstr "χρήστης"
-
-#: 
-msgid "with at least one"
-msgstr "με τουλάχιστον ένα"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17358,10 +17278,6 @@ msgstr "Συγκεντρωθέντα Αυτού του Οικονομικού Έ
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "Το %s πρέπει να είναι πλήρης διεύθυνση ιστού https://, για παράδειγμα https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Ο λογαριασμός έχει περιορισμένα δικαιώματα. Επικοινωνήστε με έναν διαχειριστή."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -23998,10 +23914,6 @@ msgid "%s Giving Statement"
 msgstr "Βεβαίωση προσφορών %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Προσαρμόστε το κείμενο που εμφανίζεται στις βεβαιώσεις προσφορών (sTaxReport1, sTaxReport2 κ.λπ.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24024,10 +23936,6 @@ msgstr "Αποστολή με ηλεκτρονικό ταχυδρομείο τη
 #: 
 msgid "Envelope Numbers"
 msgstr "Αριθμοί φακέλων"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Δημιουργία βεβαιώσεων προσφορών"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24068,10 +23976,6 @@ msgstr "Δεν είναι δυνατή η αποστολή της βεβαίωσ
 #: 
 msgid "Undesignated"
 msgstr "Χωρίς προορισμό"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Επαληθεύστε ότι το όνομα, η διεύθυνση και τα στοιχεία επικοινωνίας της εκκλησίας εμφανίζονται στις βεβαιώσεις προσφορών."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24286,10 +24190,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d πληρωμές δεν ανήκουν ακόμη σε καμία κατάθεση."
 
 #: 
-msgid "Can be emailed"
-msgstr "Μπορεί να σταλεί με ηλεκτρονικό ταχυδρομείο"
-
-#: 
 msgid "Closing line"
 msgstr "Καταληκτική γραμμή"
 
@@ -24318,16 +24218,8 @@ msgid "Opening line"
 msgstr "Εισαγωγική γραμμή"
 
 #: 
-msgid "Print and mail"
-msgstr "Εκτύπωση και ταχυδρόμηση"
-
-#: 
 msgid "Qty"
 msgstr "Ποσ."
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Ελέγξτε το έτος και έπειτα εκτυπώστε ή στείλτε με ηλεκτρονικό ταχυδρομείο τις βεβαιώσεις προσφορών."
 
 #: 
 msgid "Signed by"
@@ -24336,10 +24228,6 @@ msgstr "Υπογραφή από"
 #: 
 msgid "Thank-you line"
 msgstr "Γραμμή ευχαριστίας"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Επαληθεύστε ότι το όνομα, η διεύθυνση και τα στοιχεία επικοινωνίας της εκκλησίας εμφανίζονται στις φορολογικές βεβαιώσεις."
 
 #: 
 msgid "Year-End Giving"

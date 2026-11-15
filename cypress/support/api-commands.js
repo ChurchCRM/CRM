@@ -97,7 +97,7 @@ Cypress.Commands.add("makePrivatePlainAuthAPICall", privateApiCall("plainauth.ap
 // return 200 to authenticated users but strip note items (e.g. timeline).
 Cypress.Commands.add("makePrivateEditRecordsAPICall", privateApiCall("editrecords.api.key"));
 
-// noperm.user (id=901): every permission flag 0, usr_EditSelf=0,
+// noperm.user (id=901): every permission flag 0,
 // non-admin. The genuinely zero-permission user — it passes
 // AuthMiddleware under the read-default policy (#9003) and gets
 // read-only access, so every write route must answer 403 for it.

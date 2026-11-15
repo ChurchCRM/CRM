@@ -2135,10 +2135,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Ito ay mag-o-overwrite ng mga numero ng sobre ng pamilya sa database na may mga napili sa pahinang ito. Magpatuloy?"
 
 #: 
-msgid "Family Select"
-msgstr "Pagpili ng Pamilya"
-
-#: 
 msgid "Welcome to"
 msgstr "Maligayang pagdating sa"
 
@@ -2433,10 +2429,6 @@ msgstr "Tingnan ang Lahat ng Deposito"
 #: 
 msgid "Deposit Reports"
 msgstr "Mga Ulat ng Deposito"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "I-edit ang Deposit Slip"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6032,14 +6024,6 @@ msgid "Close All Deposits"
 msgstr "Isara ang Lahat ng Deposito"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Sarado kumpara sa Kabuuan"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Kumpletuhin ang mga gawaing ito para matiyak ang tumpak na pag-uulat ng buwis sa katapusan ng taon para sa iyong mga nagbibigay."
-
-#: 
 msgid "Configure Email"
 msgstr "I-configure ang Email"
 
@@ -6056,28 +6040,12 @@ msgid "Create First Deposit"
 msgstr "Lumikha ng Unang Deposito"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Lumikha o magbukas ng deposito muna"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Lumikha o pumili ng deposito para magsimula."
-
-#: 
-msgid "Current Deposit"
-msgstr "Kasalukuyang Deposito"
-
-#: 
 msgid "Day"
 msgstr "Araw"
 
 #: 
 msgid "Dec"
 msgstr "Dis"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Mga Istatistika ng Deposito"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6106,10 +6074,6 @@ msgstr "I-edit ang Pagbabayad"
 #: 
 msgid "Edit Person"
 msgstr "I-edit ang Tao"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Tiyakin na ang lahat ng deposito para sa taong buwis ay sarado na bago gumawa ng mga pahayag."
 
 #: 
 msgid "F"
@@ -6216,10 +6180,6 @@ msgid "New Pledge"
 msgstr "Bagong Pangako"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Walang Aktibong Deposito"
-
-#: 
 msgid "No active funds configured."
 msgstr "Walang mga aktibong pondong na-configure."
 
@@ -6252,10 +6212,6 @@ msgid "Pledge Reports"
 msgstr "Mga Ulat ng Pangako"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Mag-print o mag-email ng mga taunang pahayag ng pagbibigay sa lahat ng mga nagbibigay."
-
-#: 
 msgid "Quick Actions"
 msgstr "Mga Mabilis na Aksyon"
 
@@ -6286,10 +6242,6 @@ msgstr "I-restore"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "I-restore mula sa isang backup file. Binubura ang kasalukuyang datos."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Suriin ang mga Pondong Donasyon"
 
 #: 
 msgid "Save and Add New Family"
@@ -6328,14 +6280,6 @@ msgid "System Info"
 msgstr "Impormasyon ng Sistema"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Teksto ng Ulat sa Buwis"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Checklist ng Pag-uulat ng Taon ng Buwis"
-
-#: 
 msgid "Total"
 msgstr "Kabuuan"
 
@@ -6356,10 +6300,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Ang user ay dapat Admin o may pahintulot sa Pananalapi"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "I-verify na ang mga pangalan at paglalarawan ng pondo ay tumpak para sa mga pahayag."
-
-#: 
 msgid "YTD Payments"
 msgstr "Mga Pagbabayad YTD"
 
@@ -6376,20 +6316,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Kinakailangan ang ZipArchive extension para sa mga upgrade"
 
 #: 
-msgid "active"
-msgstr "aktibo"
-
-#: 
 msgid "found"
 msgstr "nahanap"
 
 #: 
 msgid "issues"
 msgstr "mga isyu"
-
-#: 
-msgid "open"
-msgstr "bukas"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15375,10 +15307,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Ang mga pagsasalin ng ChurchCRM ay pinamamahalaan ng komunidad sa POEditor. Maaari kang tumulong sa pamamagitan ng"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Mga Saradong Deposito"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Kasalukuyang halaga ng $URL[0]"
 
@@ -15519,10 +15447,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "May mga taong nakatalagang sa Pagkakataong ito para sa mga Boluntaryo. Ang pagbubura ay mag-aalis ng takdang-aralin"
 
 #: 
-msgid "Total Deposits"
-msgstr "Kabuuang mga Deposito"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "I-update ito sa isang wastong URL na"
 
@@ -15549,10 +15473,6 @@ msgstr "para sa mga pondo"
 #: 
 msgid "user"
 msgstr "gumagamit"
-
-#: 
-msgid "with at least one"
-msgstr "na may hindi bababa sa isa"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17325,10 +17245,6 @@ msgstr "Naipong Halaga Ngayong Fiscal Year"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "Ang %s ay dapat kumpletong https:// web address, halimbawa https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "May limitadong pahintulot ang account. Makipag-ugnayan sa isang administrator."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -23965,10 +23881,6 @@ msgid "%s Giving Statement"
 msgstr "Pahayag ng Pagbibigay para sa %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "I-customize ang tekstong lumalabas sa mga pahayag ng pagbibigay (sTaxReport1, sTaxReport2, atbp.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -23991,10 +23903,6 @@ msgstr "I-email ang Pahayag ng Pagbibigay para sa %s"
 #: 
 msgid "Envelope Numbers"
 msgstr "Mga Numero ng Sobre"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Gumawa ng mga Pahayag ng Pagbibigay"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24035,10 +23943,6 @@ msgstr "Hindi ma-email ang pahayag ng pagbibigay: walang email address sa file a
 #: 
 msgid "Undesignated"
 msgstr "Hindi nakatalaga"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Tiyaking lumalabas sa mga pahayag ng pagbibigay ang pangalan, address, at impormasyon sa pakikipag-ugnayan ng simbahan."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24253,10 +24157,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "May %d bayad na wala pa sa anumang deposito."
 
 #: 
-msgid "Can be emailed"
-msgstr "Maaaring i-email"
-
-#: 
 msgid "Closing line"
 msgstr "Pangwakas na linya"
 
@@ -24285,16 +24185,8 @@ msgid "Opening line"
 msgstr "Pambungad na linya"
 
 #: 
-msgid "Print and mail"
-msgstr "I-print at ipadala sa koreo"
-
-#: 
 msgid "Qty"
 msgstr "Dami"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Suriin ang taon, pagkatapos i-print o i-email ang mga pahayag ng pagbibigay."
 
 #: 
 msgid "Signed by"
@@ -24303,10 +24195,6 @@ msgstr "Nilagdaan ni"
 #: 
 msgid "Thank-you line"
 msgstr "Linya ng pasasalamat"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Tiyaking lumalabas sa mga pahayag ng buwis ang pangalan, address, at impormasyon sa pakikipag-ugnayan ng simbahan."
 
 #: 
 msgid "Year-End Giving"

@@ -31,18 +31,6 @@ use Slim\Exception\HttpNotFoundException;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\HttpCache\Cache;
 
-// ── Low-sensitivity family read endpoints ────────────────────────────────────
-// Photo, avatar, and nav are considered non-sensitive metadata. They use
-// FamilyReadMiddleware which enforces entity existence (404 if family not
-// found) but applies the read-default baseline (canReadFamily) instead of the
-// family-scope restriction. This makes them accessible to any authenticated
-// user who has passed the isEditSelfExclusive() check in AuthMiddleware —
-// including zero-permission users, who retain read-only access to people and
-// family records under the read-default policy (#9003).
-//
-// Sensitive endpoints (full profile, geolocation, write ops, notes, timeline)
-// remain in the FamilyMiddleware group below which enforces canViewFamily()
-// per GHSA-jjcj-h3cm-p7x7.
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
@@ -132,11 +120,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
     });
 })->add(FamilyReadMiddleware::class);
 
-// ── Sensitive / write family endpoints ───────────────────────────────────────
-// All routes here use FamilyMiddleware (the scope-enforcing version),
-// which applies canViewFamily() and restricts EditSelf-scoped users to their own
-// family per GHSA-jjcj-h3cm-p7x7. Write routes additionally carry per-route
-// EditRecords / DeleteRecord middleware.
 $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Post(
@@ -357,7 +340,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                 // Activating: clear DateDeactivated
                 $family->setDateDeactivated(null);
             }
-
 
             // Create a note to record the status change
             $note = new Note();

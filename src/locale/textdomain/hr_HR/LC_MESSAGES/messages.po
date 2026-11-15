@@ -2135,10 +2135,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Ovo će prepisati obiteljske brojeve kuverta u bazi podataka s onima odabranim na ovoj stranici. Nastaviti?"
 
 #: 
-msgid "Family Select"
-msgstr "Odabir obitelji"
-
-#: 
 msgid "Welcome to"
 msgstr "Dobrodošli u"
 
@@ -2433,10 +2429,6 @@ msgstr "Pregledaj sve uplate"
 #: 
 msgid "Deposit Reports"
 msgstr "Izvještaji o uplatama"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Uredi uplatnicu"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6034,14 +6026,6 @@ msgid "Close All Deposits"
 msgstr "Zatvori sve uplate"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Zatvoreno vs Ukupno"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Dovršite ove zadatke kako biste osigurali točno porezno izvješćivanje na kraju godine za vaše darivatelje."
-
-#: 
 msgid "Configure Email"
 msgstr "Konfiguriraj e-poštu"
 
@@ -6058,28 +6042,12 @@ msgid "Create First Deposit"
 msgstr "Kreiraj prvu uplatu"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Prvo kreirajte ili otvorite uplatu"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Kreirajte ili odaberite uplatu za početak."
-
-#: 
-msgid "Current Deposit"
-msgstr "Trenutna uplata"
-
-#: 
 msgid "Day"
 msgstr "Dan"
 
 #: 
 msgid "Dec"
 msgstr "Pro"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Statistika uplata"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6108,10 +6076,6 @@ msgstr "Uredi plaćanje"
 #: 
 msgid "Edit Person"
 msgstr "Uredi osobu"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Provjerite da su sve uplate za poreznu godinu zatvorene prije generiranja izjava."
 
 #: 
 msgid "F"
@@ -6218,10 +6182,6 @@ msgid "New Pledge"
 msgstr "Novi zavjet"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Nema aktivne uplate"
-
-#: 
 msgid "No active funds configured."
 msgstr "Nisu konfigurirani aktivni fondovi."
 
@@ -6254,10 +6214,6 @@ msgid "Pledge Reports"
 msgstr "Izvještaji o zavjetima"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Ispiši ili pošalji e-poštom godišnje izjave o darivanju svim darivateljima."
-
-#: 
 msgid "Quick Actions"
 msgstr "Brze radnje"
 
@@ -6288,10 +6244,6 @@ msgstr "Obnovi"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Obnovi iz datoteke sigurnosne kopije. Briše postojeće podatke."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Pregledaj fondove darivanja"
 
 #: 
 msgid "Save and Add New Family"
@@ -6330,14 +6282,6 @@ msgid "System Info"
 msgstr "Informacije o sustavu"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Tekst poreznog izvještaja"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Kontrolna lista izvještavanja za poreznu godinu"
-
-#: 
 msgid "Total"
 msgstr "Ukupno"
 
@@ -6358,10 +6302,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Korisnik mora biti administrator ili imati dozvolu za financije"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Provjerite da su nazivi i opisi fondova točni za izjave."
-
-#: 
 msgid "YTD Payments"
 msgstr "Plaćanja od početka godine"
 
@@ -6378,20 +6318,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ZipArchive proširenje je potrebno za nadogradnje"
 
 #: 
-msgid "active"
-msgstr "aktivan"
-
-#: 
 msgid "found"
 msgstr "pronađeno"
 
 #: 
 msgid "issues"
 msgstr "problemi"
-
-#: 
-msgid "open"
-msgstr "otvoreno"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15386,10 +15318,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Prijevodi ChurchCRM-a njima upravlja zajednica na POEditoru. Možete pomoći na"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Zatvoreni depoziti"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Trenutna vrijednost $URL[0]"
 
@@ -15530,10 +15458,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Postoje osobe dodijeljene ovoj volonterskoj prilici. Brisanjem će se ukloniti dodjela"
 
 #: 
-msgid "Total Deposits"
-msgstr "Ukupni depoziti"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Ažurirajte ga na valjani URL koji"
 
@@ -15560,10 +15484,6 @@ msgstr "za fondove"
 #: 
 msgid "user"
 msgstr "korisnik"
-
-#: 
-msgid "with at least one"
-msgstr "s najmanje jednim"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17338,10 +17258,6 @@ msgstr "Prikupljeno ove fiskalne godine"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s mora biti potpuna https:// web adresa, na primjer https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Račun ima ograničena dopuštenja. Obratite se administratoru."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -23991,10 +23907,6 @@ msgid "%s Giving Statement"
 msgstr "Izjava o darovima %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Prilagodite tekst koji se pojavljuje na izjavama o darovima (sTaxReport1, sTaxReport2 itd.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24017,10 +23929,6 @@ msgstr "Pošalji izjavu o darovima %s e-poštom"
 #: 
 msgid "Envelope Numbers"
 msgstr "Brojevi omotnica"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Generiraj izjave o darovima"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24061,10 +23969,6 @@ msgstr "Nije moguće poslati izjavu o darovima e-poštom: ova obitelj nema regis
 #: 
 msgid "Undesignated"
 msgstr "Neoznačeno"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Provjerite da se naziv crkve, adresa i kontakt podaci pojavljuju na izjavama o darovima."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24279,10 +24183,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d uplata još nije ni na jednom pologu."
 
 #: 
-msgid "Can be emailed"
-msgstr "Može se poslati e-poštom"
-
-#: 
 msgid "Closing line"
 msgstr "Završni redak"
 
@@ -24311,16 +24211,8 @@ msgid "Opening line"
 msgstr "Uvodni redak"
 
 #: 
-msgid "Print and mail"
-msgstr "Ispiši i pošalji poštom"
-
-#: 
 msgid "Qty"
 msgstr "Kol."
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Pregledajte godinu, zatim ispišite ili e-poštom pošaljite potvrde o darovima."
 
 #: 
 msgid "Signed by"
@@ -24329,10 +24221,6 @@ msgstr "Potpisao"
 #: 
 msgid "Thank-you line"
 msgstr "Redak zahvale"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Provjerite pojavljuju li se naziv crkve, adresa i podaci za kontakt na poreznim potvrdama."
 
 #: 
 msgid "Year-End Giving"

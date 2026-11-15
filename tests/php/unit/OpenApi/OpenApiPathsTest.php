@@ -31,3 +31,17 @@ Assert::true(isset($routes['POST /admin/api/user/{}/password/reset']));
 Assert::true(isset($routes['DELETE /admin/api/user/{}/']));
 Assert::true(isset($routes['GET /admin/cart/emails']));
 Assert::false(isset($routes['GET /admin/api/user/{}/password/reset']));
+
+$interpolated = <<<'PHP'
+<?php
+$app->group('/deposits', function ($group): void {
+    $group->get('/dashboard', function () {
+        $x = "-{$days} days";
+    });
+    $group->get('/csv', function (): void {
+    });
+});
+PHP;
+
+$routes = OpenApiPaths::routesFromSource($interpolated, '/api');
+Assert::true(isset($routes['GET /api/deposits/csv']));

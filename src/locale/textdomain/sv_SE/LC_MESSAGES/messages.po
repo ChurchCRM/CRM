@@ -2243,10 +2243,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Detta kommer att skriva över familjens kuvertnummer i databasen med de valda på denna sida. Fortsätta?"
 
 #: 
-msgid "Family Select"
-msgstr "Familj Välj"
-
-#: 
 msgid "Welcome to"
 msgstr "Välkommen till"
 
@@ -2545,10 +2541,6 @@ msgstr "Visa alla insättningar"
 #: 
 msgid "Deposit Reports"
 msgstr "Insättningsrapporter"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Redigera insättningsslip"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6152,14 +6144,6 @@ msgid "Close All Deposits"
 msgstr "Stäng alla insättningar"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Stängda mot totalt"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Slutför dessa uppgifter för att säkerställa korrekt skatterapportering vid årsskiftet för dina donatorer."
-
-#: 
 msgid "Configure Email"
 msgstr "Konfigurera e-post"
 
@@ -6176,28 +6160,12 @@ msgid "Create First Deposit"
 msgstr "Skapa första insättningen"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Skapa eller öppna en insättning först"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Skapa eller välj en insättning för att komma igång."
-
-#: 
-msgid "Current Deposit"
-msgstr "Aktuell insättning"
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
 #: 
 msgid "Dec"
 msgstr "Dec"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Statistik för insättningar"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6226,10 +6194,6 @@ msgstr "Redigera betalning"
 #: 
 msgid "Edit Person"
 msgstr "Redigera person"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Se till att alla insättningar för skatteåret är stängda innan besked genereras."
 
 #: 
 msgid "F"
@@ -6336,10 +6300,6 @@ msgid "New Pledge"
 msgstr "Nytt löfte"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Ingen aktiv insättning"
-
-#: 
 msgid "No active funds configured."
 msgstr "Inga aktiva fonder konfigurerade."
 
@@ -6372,10 +6332,6 @@ msgid "Pledge Reports"
 msgstr "Löftesrapporter"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Skriv ut eller skicka årliga gåvobesked via e-post till alla donatorer."
-
-#: 
 msgid "Quick Actions"
 msgstr "Snabbåtgärder"
 
@@ -6406,10 +6362,6 @@ msgstr "Återställ"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Återställ från en säkerhetskopia. Raderar befintlig data."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Granska donationsfonder"
 
 #: 
 msgid "Save and Add New Family"
@@ -6448,14 +6400,6 @@ msgid "System Info"
 msgstr "Systeminfo"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Text för skatterapport"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Checklista för rapportering av skatteår"
-
-#: 
 msgid "Total"
 msgstr "Totalt"
 
@@ -6476,10 +6420,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Användaren måste vara administratör eller ha ekonomibehörighet"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Verifiera att fondnamn och beskrivningar är korrekta för besked."
-
-#: 
 msgid "YTD Payments"
 msgstr "Betalningar sedan årets början"
 
@@ -6496,20 +6436,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ZipArchive-tillägget krävs för uppgraderingar"
 
 #: 
-msgid "active"
-msgstr "aktiv"
-
-#: 
 msgid "found"
 msgstr "hittades"
 
 #: 
 msgid "issues"
 msgstr "problem"
-
-#: 
-msgid "open"
-msgstr "öppen"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15495,10 +15427,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM-översättningar hanteras av gemenskapen på POEditor. Du kan hjälpa till genom att"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Stängda insättningar"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Aktuellt $URL[0]-värde"
 
@@ -15639,10 +15567,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Det finns personer tilldelade till detta frivilligtillfälle. Borttagning kommer att ta bort tilldelningen"
 
 #: 
-msgid "Total Deposits"
-msgstr "Totala insättningar"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Uppdatera det till en giltig URL som"
 
@@ -15669,10 +15593,6 @@ msgstr "för fonder"
 #: 
 msgid "user"
 msgstr "användare"
-
-#: 
-msgid "with at least one"
-msgstr "med minst en"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17445,10 +17365,6 @@ msgstr "Insamlat detta räkenskapsår"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s måste vara en fullständig https://-webbadress, till exempel https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Kontot har begränsade behörigheter. Kontakta en administratör."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -24085,10 +24001,6 @@ msgid "%s Giving Statement"
 msgstr "%s Gåvobesked"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Anpassa texten som visas på gåvobesked (sTaxReport1, sTaxReport2 osv.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24111,10 +24023,6 @@ msgstr "E-posta %s Gåvobesked"
 #: 
 msgid "Envelope Numbers"
 msgstr "Kuvertnummer"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Generera gåvobesked"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24155,10 +24063,6 @@ msgstr "Kan inte e-posta gåvobesked: denna familj har ingen e-postadress regist
 #: 
 msgid "Undesignated"
 msgstr "Ej betecknad"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Verifiera att kyrkans namn, adress och kontaktinformation visas på gåvobesked."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24373,10 +24277,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d betalningar ligger ännu inte på någon insättning."
 
 #: 
-msgid "Can be emailed"
-msgstr "Kan skickas med e-post"
-
-#: 
 msgid "Closing line"
 msgstr "Avslutningsrad"
 
@@ -24405,16 +24305,8 @@ msgid "Opening line"
 msgstr "Inledningsrad"
 
 #: 
-msgid "Print and mail"
-msgstr "Skriv ut och posta"
-
-#: 
 msgid "Qty"
 msgstr "Antal"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Granska året, och skriv sedan ut eller skicka gåvointygen med e-post."
 
 #: 
 msgid "Signed by"
@@ -24423,10 +24315,6 @@ msgstr "Undertecknat av"
 #: 
 msgid "Thank-you line"
 msgstr "Tackrad"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Kontrollera att församlingens namn, adress och kontaktuppgifter visas på skatteintygen."
 
 #: 
 msgid "Year-End Giving"

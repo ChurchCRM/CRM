@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Service;
 
+use ChurchCRM\Portal\Auth\PortalMemberUser;
+
 use ChurchCRM\model\ChurchCRM\User;
 
 /**
@@ -31,7 +33,7 @@ class ReportCatalog
     private static function all(User $user): array
     {
         return [
-            [!$user->isEditSelfExclusive(), [
+            [!($user instanceof PortalMemberUser), [
                 'module'      => gettext('People'),
                 'title'       => gettext('People Reports'),
                 'description' => gettext('Birthdays, anniversaries, volunteers and other people lists with a classification filter'),

@@ -5461,10 +5461,18 @@ paths:
     get:
       tags:
         - Finance
-      summary: 'Get deposits from the last 90 days (Finance role required)'
+      summary: 'Get deposits for a time range (Finance role required)'
+      parameters:
+        -
+          name: days
+          in: query
+          description: 'Days window: 30|90|365 (default 90)'
+          required: false
+          schema:
+            type: integer
       responses:
         '200':
-          description: 'Array of deposits within the last 90 days'
+          description: 'Array of deposits within the requested time range'
         '401':
           description: Unauthorized
         '403':
@@ -8783,7 +8791,7 @@ paths:
       tags:
         - People
       summary: 'Create a note for a person'
-      description: "Creates a note on a person's record. Requires Notes=1 or Admin (via NotesRoleAuthMiddleware) plus canEditPerson() to scope writes: EditRecords/Admin may write on any person; EditSelf users only on their own family members; Notes=1-only users (no EditRecords/EditSelf) are blocked."
+      description: "Creates a note on a person's record. Requires Notes permission and Edit Records, or Admin."
       operationId: createPersonNote
       parameters:
         -
@@ -8823,7 +8831,7 @@ paths:
         '401':
           description: Unauthorized
         '403':
-          description: 'Notes permission required or canEditPerson() denied'
+          description: 'Notes and Edit Records permissions required'
         '404':
           description: 'Person not found'
       security:
@@ -11172,6 +11180,102 @@ paths:
           description: Unauthorized
         '403':
           description: 'Admin role required'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/system/tax-signature:
+    get:
+      tags:
+        - Admin
+      summary: 'Get private tax-signature status'
+      operationId: getTaxSignatureStatus
+      responses:
+        '200':
+          description: 'Signature status'
+          content:
+            application/json:
+              schema:
+                properties:
+                  hasSignature: { type: boolean }
+                type: object
+        '401':
+          description: 'Authentication required'
+        '403':
+          description: 'Admin required'
+      security:
+        -
+          ApiKeyAuth: []
+    post:
+      tags:
+        - Admin
+      summary: 'Upload a private PNG or JPEG tax signature'
+      description: 'Maximum 2 MiB and 2000 by 1000 pixels. Re-encoded as PNG in a private deny-all folder (Images/TaxSignatures by default, or the sTaxSignatureStoragePath setting). Session requests require a CSRF token.'
+      operationId: uploadTaxSignature
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - imgBase64
+              properties:
+                imgBase64:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Signature stored'
+        '400':
+          description: 'Invalid image'
+        '413':
+          description: 'Image exceeds limits'
+        '500':
+          description: 'Private storage unavailable; the message explains why'
+        '401':
+          description: 'Authentication required'
+        '403':
+          description: 'Admin or CSRF check failed'
+      security:
+        -
+          ApiKeyAuth: []
+    delete:
+      tags:
+        - Admin
+      summary: 'Remove the private tax signature'
+      description: 'Session requests require a CSRF token.'
+      operationId: deleteTaxSignature
+      responses:
+        '200':
+          description: 'Signature removed'
+        '500':
+          description: 'Removal failed'
+        '401':
+          description: 'Authentication required'
+        '403':
+          description: 'Admin or CSRF check failed'
+      security:
+        -
+          ApiKeyAuth: []
+  /admin/api/system/tax-signature/image:
+    get:
+      tags:
+        - Admin
+      summary: 'Read the private tax-signature PNG'
+      operationId: getTaxSignatureImage
+      responses:
+        '200':
+          description: 'Private PNG; never cached'
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: 'No signature stored'
+        '401':
+          description: 'Authentication required'
+        '403':
+          description: 'Admin required'
       security:
         -
           ApiKeyAuth: []
