@@ -2459,10 +2459,6 @@ msgid "Deposit Reports"
 msgstr "Sissemakse aruanded"
 
 #: 
-msgid "Edit Deposit Slip"
-msgstr "Redigeerige sissemakse sedeleid"
-
-#: 
 msgid "Create New Fundraiser"
 msgstr "Looge uus korjandus"
 
@@ -6064,14 +6060,6 @@ msgid "Close All Deposits"
 msgstr "Sulge kõik deposiidid"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Suletud vs kokku"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Täitke need ülesanded, et tagada annetajate jaoks täpne aasta lõpu maksuraporteerimine."
-
-#: 
 msgid "Configure Email"
 msgstr "Konfigureeri e-post"
 
@@ -6088,28 +6076,12 @@ msgid "Create First Deposit"
 msgstr "Loo esimene deposiit"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Looge või avage esmalt deposiit"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Alustamiseks looge või valige deposiit."
-
-#: 
-msgid "Current Deposit"
-msgstr "Praegune deposiit"
-
-#: 
 msgid "Day"
 msgstr "Päev"
 
 #: 
 msgid "Dec"
 msgstr "Det"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Deposiidi statistika"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6138,10 +6110,6 @@ msgstr "Muuda makset"
 #: 
 msgid "Edit Person"
 msgstr "Muuda inimest"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Veenduge, et kõik maksuaasta deposiidid on suletud enne aruannete loomist."
 
 #: 
 msgid "F"
@@ -6248,10 +6216,6 @@ msgid "New Pledge"
 msgstr "Uus lubadus"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Aktiivset deposiiti pole"
-
-#: 
 msgid "No active funds configured."
 msgstr "Aktiivseid vahendeid pole konfigureeritud."
 
@@ -6284,10 +6248,6 @@ msgid "Pledge Reports"
 msgstr "Lubaduse aruanded"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Prindi või saada e-postiga aastased andmise aruanded kõigile annetajatele."
-
-#: 
 msgid "Quick Actions"
 msgstr "Kiired tegevused"
 
@@ -6318,10 +6278,6 @@ msgstr "Taasta"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Taasta varukoopia failist. Kustutab olemasolevad andmed."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Vaadake annetamise vahendeid üle"
 
 #: 
 msgid "Save and Add New Family"
@@ -6360,14 +6316,6 @@ msgid "System Info"
 msgstr "Süsteemi teave"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Maksuaruande tekst"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Maksuaasta aruandluslehekülg"
-
-#: 
 msgid "Total"
 msgstr "Kokku"
 
@@ -6388,10 +6336,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Kasutaja peab olema administraator või omama finantsi õigust"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Veenduge, et rahastuse nimed ja kirjeldused on aruannete jaoks õiged."
-
-#: 
 msgid "YTD Payments"
 msgstr "YTD maksed"
 
@@ -6408,20 +6352,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ZipArchive'i laiendus on täiendamiste jaoks nõutav"
 
 #: 
-msgid "active"
-msgstr "aktiivne"
-
-#: 
 msgid "found"
 msgstr "leitud"
 
 #: 
 msgid "issues"
 msgstr "probleemid"
-
-#: 
-msgid "open"
-msgstr "ava"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15407,10 +15343,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM tõlkeid haldab kogukond POEditoris. Saad aidata"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Suletud sissemaksed"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Praegune $URL[0] väärtus"
 
@@ -15549,10 +15481,6 @@ msgstr "Süsteemi konfiguratsioon"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Sellele vabatahtliku võimalusele on määratud inimesi. Kustutamine tühistab määramise"
-
-#: 
-msgid "Total Deposits"
-msgstr "Sissemaksete kogusumma"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -23997,10 +23925,6 @@ msgid "%s Giving Statement"
 msgstr "%s annetuste tõend"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Kohandage annetuste tõenditel kuvatavat teksti (sTaxReport1, sTaxReport2 jne)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24023,10 +23947,6 @@ msgstr "Saatke %s annetuste tõend e-postiga"
 #: 
 msgid "Envelope Numbers"
 msgstr "Ümbriku numbrid"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Koostage annetuste tõendid"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24067,10 +23987,6 @@ msgstr "Annetuste tõendit ei saa e-postiga saata: sellel perel ei ole e-posti a
 #: 
 msgid "Undesignated"
 msgstr "Sihtotstarbeta"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Kontrollige, et koguduse nimi, aadress ja kontaktandmed oleksid annetuste tõenditel."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24285,10 +24201,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d makset ei ole veel ühelgi deposiidil."
 
 #: 
-msgid "Can be emailed"
-msgstr "Saab saata e-postiga"
-
-#: 
 msgid "Closing line"
 msgstr "Lõpurida"
 
@@ -24317,16 +24229,8 @@ msgid "Opening line"
 msgstr "Avalause"
 
 #: 
-msgid "Print and mail"
-msgstr "Printige ja saatke postiga"
-
-#: 
 msgid "Qty"
 msgstr "Kogus"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Vaadake aasta üle, seejärel printige või saatke annetuste tõendid e-postiga."
 
 #: 
 msgid "Signed by"
@@ -24335,10 +24239,6 @@ msgstr "Allkirjastaja"
 #: 
 msgid "Thank-you line"
 msgstr "Tänurida"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Kontrollige, et koguduse nimi, aadress ja kontaktandmed oleksid maksutõenditel."
 
 #: 
 msgid "Year-End Giving"

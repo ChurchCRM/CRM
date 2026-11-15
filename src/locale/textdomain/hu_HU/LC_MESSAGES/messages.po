@@ -2493,10 +2493,6 @@ msgid "Deposit Reports"
 msgstr "Befizetési jelentések"
 
 #: 
-msgid "Edit Deposit Slip"
-msgstr "Befizetési bizonylat szerkesztése"
-
-#: 
 msgid "Create New Fundraiser"
 msgstr "Új adománygyűjtés létrehozása"
 
@@ -6090,14 +6086,6 @@ msgid "Close All Deposits"
 msgstr "Összes befizetés lezárása"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Lezárt vs Összesen"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Végezze el ezeket a feladatokat, hogy pontos év végi adóigazolást biztosíthasson adományozói számára."
-
-#: 
 msgid "Configure Email"
 msgstr "E-mail konfigurálása"
 
@@ -6114,28 +6102,12 @@ msgid "Create First Deposit"
 msgstr "Első befizetés létrehozása"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Előbb hozzon létre vagy nyisson meg egy befizetést"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Hozzon létre vagy válasszon ki egy befizetést a kezdéshez."
-
-#: 
-msgid "Current Deposit"
-msgstr "Jelenlegi befizetés"
-
-#: 
 msgid "Day"
 msgstr "Nap"
 
 #: 
 msgid "Dec"
 msgstr "Dec"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Befizetési statisztikák"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6164,10 +6136,6 @@ msgstr "Fizetés szerkesztése"
 #: 
 msgid "Edit Person"
 msgstr "Személy szerkesztése"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Az igazolások generálása előtt győződjön meg arról, hogy az adott adóév minden befizetése le van zárva."
 
 #: 
 msgid "F"
@@ -6274,10 +6242,6 @@ msgid "New Pledge"
 msgstr "Új vállalás"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Nincs aktív befizetés"
-
-#: 
 msgid "No active funds configured."
 msgstr "Nincsenek aktív alapok konfigurálva."
 
@@ -6310,10 +6274,6 @@ msgid "Pledge Reports"
 msgstr "Vállalási jelentések"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Éves adományozási igazolások nyomtatása vagy e-mailben küldése minden adományozónak."
-
-#: 
 msgid "Quick Actions"
 msgstr "Gyorsműveletek"
 
@@ -6344,10 +6304,6 @@ msgstr "Helyreállítás"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Visszaállítás biztonsági mentési fájlból. Törli a meglévő adatokat."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Adományozási alapok áttekintése"
 
 #: 
 msgid "Save and Add New Family"
@@ -6386,14 +6342,6 @@ msgid "System Info"
 msgstr "Rendszerinformáció"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Adójelentés szövegezése"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Adóévi jelentési ellenőrzőlista"
-
-#: 
 msgid "Total"
 msgstr "Összesen"
 
@@ -6414,10 +6362,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "A felhasználónak adminisztrátornak kell lennie, vagy pénzügyi jogosultsággal kell rendelkeznie"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Ellenőrizze, hogy az alapok nevei és leírásai pontosak-e az igazolásokhoz."
-
-#: 
 msgid "YTD Payments"
 msgstr "Kifizetések az év elejétől (YTD)"
 
@@ -6434,20 +6378,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ZipArchive bővítmény szükséges a frissítésekhez"
 
 #: 
-msgid "active"
-msgstr "aktív"
-
-#: 
 msgid "found"
 msgstr "talált"
 
 #: 
 msgid "issues"
 msgstr "problémák"
-
-#: 
-msgid "open"
-msgstr "nyitott"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15433,10 +15369,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "A ChurchCRM fordításait a közösség kezeli a POEditor oldalon. Segíthet azzal, hogy"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Lezárt befizetések"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Jelenlegi $URL[0] érték"
 
@@ -15575,10 +15507,6 @@ msgstr "Rendszerkonfiguráció"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Ehhez az önkéntes lehetőséghez személyek vannak hozzárendelve. A törlés megszünteti a hozzárendelést"
-
-#: 
-msgid "Total Deposits"
-msgstr "Összes befizetés"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -24023,10 +23951,6 @@ msgid "%s Giving Statement"
 msgstr "%s adományigazolás"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Az adományigazolásokon megjelenő szöveg testreszabása (sTaxReport1, sTaxReport2 stb.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24049,10 +23973,6 @@ msgstr "%s adományigazolás küldése e-mailben"
 #: 
 msgid "Envelope Numbers"
 msgstr "Borítékszámok"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Adományigazolások készítése"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24093,10 +24013,6 @@ msgstr "Az adományigazolás nem küldhető e-mailben: ennek a családnak nincs 
 #: 
 msgid "Undesignated"
 msgstr "Meg nem jelölt"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Ellenőrizze, hogy a gyülekezet neve, címe és elérhetősége megjelenik-e az adományigazolásokon."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24311,10 +24227,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d befizetés még nincs egyetlen befizetési tételen sem."
 
 #: 
-msgid "Can be emailed"
-msgstr "E-mailben küldhető"
-
-#: 
 msgid "Closing line"
 msgstr "Záró sor"
 
@@ -24343,16 +24255,8 @@ msgid "Opening line"
 msgstr "Nyitó sor"
 
 #: 
-msgid "Print and mail"
-msgstr "Nyomtatás és postázás"
-
-#: 
 msgid "Qty"
 msgstr "Db"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Nézze át az évet, majd nyomtassa vagy küldje e-mailben az adományigazolásokat."
 
 #: 
 msgid "Signed by"
@@ -24361,10 +24265,6 @@ msgstr "Aláírta"
 #: 
 msgid "Thank-you line"
 msgstr "Köszönő sor"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Ellenőrizze, hogy a gyülekezet neve, címe és elérhetősége megjelenik-e az adóigazolásokon."
 
 #: 
 msgid "Year-End Giving"
