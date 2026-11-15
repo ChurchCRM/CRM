@@ -306,7 +306,7 @@ final class PortalDirectoryService
             'sortName' => trim($person->getLastName() . ', ' . $person->getFirstName(), ', '),
             'photoUrl' => $fields['photo'] ? self::photoUrl('Person', (int) $person->getId()) : '',
             'initials' => self::initials($person),
-            'address' => $fields['address'] ? self::lines($person->getResolvedAddress()) : [],
+            'address' => $fields['address'] ? self::lines($person->getResolvedAddress("\n")) : [],
             'mailingAddress' => self::mailingAddress($family, $fields),
             'homePhone' => $homePhone,
             'anniversary' => '',
