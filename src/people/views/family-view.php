@@ -790,6 +790,8 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
             </div>
         </div>
 
+        <?php $importantDatesOwner = 'family'; $importantDatesOwnerId = (int) $family->getId(); include __DIR__ . '/partials/important-dates-card.php'; ?>
+
         <!-- Tabbed Content -->
         <?php $noteCount = count(array_filter($familyTimeline, static fn (array $item): bool => ($item['category'] ?? 'notes') === 'notes')); ?>
         <div class="card mb-3">

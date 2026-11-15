@@ -10,6 +10,7 @@ use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\SystemCalendars\AnniversariesCalendar;
 use ChurchCRM\SystemCalendars\BirthdaysCalendar;
 use ChurchCRM\SystemCalendars\FundraisersCalendar;
+use ChurchCRM\SystemCalendars\ImportantDatesCalendar;
 use ChurchCRM\SystemCalendars\SystemCalendar;
 use ChurchCRM\SystemCalendars\UnpinnedEvents;
 use Propel\Runtime\Collection\ObjectCollection;
@@ -32,6 +33,7 @@ class SystemCalendars
             BirthdaysCalendar::class,
             AnniversariesCalendar::class,
             FundraisersCalendar::class,
+            ImportantDatesCalendar::class,
             UnpinnedEvents::class,
         ];
 

@@ -486,6 +486,8 @@ if ($person->isMale()) {
         <script src="<?= SystemURLs::assetVersioned('/skin/v2/email-composer.min.js') ?>" defer nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
         <?php endif; ?>
 
+        <?php $importantDatesOwner = 'person'; $importantDatesOwnerId = (int) $person->getId(); include __DIR__ . '/partials/important-dates-card.php'; ?>
+
         <!-- Tabbed Content -->
         <div class="card">
             <div class="card-header d-flex align-items-center">

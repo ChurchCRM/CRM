@@ -168,7 +168,7 @@
   },
   "current": {
     "versions": ["7.8.8"],
-    "scripts": [],
+    "scripts": ["/mysql/upgrade/7.8.5-important-dates.sql"],
     "dbVersion": "7.9.0"
   }
 }
