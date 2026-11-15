@@ -484,6 +484,12 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $con = Propel::getWriteConnection(FamilyTableMap::DATABASE_NAME);
         try {
             $con->transaction(function () use ($family, $familyId, $deleteMembers, $con): void {
+                // Acquire the same lock as family-note writers before the first
+                // consistent read in this transaction.
+                PersonDeletionService::lockFamily((int) $familyId, $con);
+                PersonDeletionService::assertFamilyNotesCanBeDeleted((int) $familyId, $con);
+                PersonDeletionService::assertFamilyCommunicationCanBeDeleted((int) $familyId, $con);
+
                 // Never delete a family that has pledges or payments — it would orphan or distort church finance records.
                 $financeCount = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
                     ->filterByFamId($familyId)
@@ -503,9 +509,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                     foreach ($membersToDelete as $member) {
                         PersonDeletionService::assertCanDelete($member, $con);
                     }
-                    // A note on the family written by someone outside it is
-                    // history the member checks above don't see.
-                    PersonDeletionService::assertFamilyNotesCanBeDeleted((int) $familyId, $con);
                 }
 
                 // Delete associated notes
