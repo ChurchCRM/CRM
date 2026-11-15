@@ -32,7 +32,7 @@ $discussionsUrl = $sDiscussionsUrl ?? 'https://github.com/ChurchCRM/CRM/discussi
         </div>
         <div class="card mt-3">
             <div class="card-body">
-                <h3 class="card-title"><?= gettext('Register your church') ?></h3>
+                <h3 class="card-title"><?= gettext('Register Your Church') ?></h3>
                 <p class="text-body-secondary"><?= gettext('One minute. We do not share what you send.') ?></p>
                 <a href="https://forms.gle/F1xgoBaWUD1Fy7Bn9" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">
                     <?= gettext('Register Now') ?>
