@@ -123,7 +123,10 @@ class GroupReportService
      */
     private static function addressLines(Person $person): array
     {
-        $address = $person->getResolvedAddress();
-        return $address === '' ? [] : [['label' => '', 'value' => $address]];
+        $address = $person->getResolvedAddress("\n");
+        if ($address === '') {
+            return [];
+        }
+        return array_map(static fn (string $line): array => ['label' => '', 'value' => $line], explode("\n", $address));
     }
 }
