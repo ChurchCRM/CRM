@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\FinancialService;
+use ChurchCRM\Service\YearEndGivingService;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -15,10 +16,23 @@ $app->get('/', function (Request $request, Response $response) {
     $queryParams  = $request->getQueryParams();
     $currentFyid  = FiscalYearUtils::getCurrentFiscalYearId();
     // 0 = All Time sentinel; positive int = specific FY; default = current FY
-    $selectedFyid = isset($queryParams['fyid']) ? (int) $queryParams['fyid'] : $currentFyid;
+    $remembered   = FiscalYearUtils::rememberedEndYear();
+    $selectedFyid = isset($queryParams['fyid'])
+        ? (int) $queryParams['fyid']
+        : ($remembered !== null ? FiscalYearUtils::getFiscalYearIdForCalendarYear($remembered) : $currentFyid);
+    if (isset($queryParams['fyid']) && $selectedFyid > 0) {
+        FiscalYearUtils::rememberEndYear(FiscalYearUtils::endYearForId($selectedFyid));
+    }
 
     $financialService = new FinancialService();
     $dashboardData    = $financialService->getDashboardData($selectedFyid);
+
+    $statementYear = YearEndGivingService::selectedYear();
+    $dashboardData['yearEnd'] = [
+        'year' => $statementYear,
+        'label' => FiscalYearUtils::getFiscalYearDatesForCalendarYear($statementYear)['label'],
+        'openDeposits' => YearEndGivingService::openDeposits($statementYear),
+    ];
 
     $pageArgs = [
         'sRootPath'  => SystemURLs::getRootPath(),

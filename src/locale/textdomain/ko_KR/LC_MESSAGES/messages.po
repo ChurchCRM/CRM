@@ -2458,10 +2458,6 @@ msgid "Deposit Reports"
 msgstr "입금 보고서"
 
 #: 
-msgid "Edit Deposit Slip"
-msgstr "입금 내역서 편집"
-
-#: 
 msgid "Create New Fundraiser"
 msgstr "새 모금 캠페인 만들기"
 
@@ -6056,14 +6052,6 @@ msgid "Close All Deposits"
 msgstr "모든 입금 닫기"
 
 #: 
-msgid "Closed vs Total"
-msgstr "닫힌 것 대 전체"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "기부자를 위한 정확한 연말 세금 보고를 위해 다음 작업을 완료하세요."
-
-#: 
 msgid "Configure Email"
 msgstr "이메일 구성"
 
@@ -6080,28 +6068,12 @@ msgid "Create First Deposit"
 msgstr "첫 입금 생성"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "먼저 입금을 생성하거나 열기"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "시작하려면 입금을 생성하거나 선택하세요."
-
-#: 
-msgid "Current Deposit"
-msgstr "현재 입금"
-
-#: 
 msgid "Day"
 msgstr "일"
 
 #: 
 msgid "Dec"
 msgstr "12월"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "입금 통계"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6130,10 +6102,6 @@ msgstr "결제 편집"
 #: 
 msgid "Edit Person"
 msgstr "사람 편집"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "명세서를 생성하기 전에 해당 세금 연도의 모든 입금이 닫혀 있는지 확인하세요."
 
 #: 
 msgid "F"
@@ -6240,10 +6208,6 @@ msgid "New Pledge"
 msgstr "새 서약"
 
 #: 
-msgid "No Active Deposit"
-msgstr "활성 입금 없음"
-
-#: 
 msgid "No active funds configured."
 msgstr "구성된 활성 기금이 없습니다."
 
@@ -6276,10 +6240,6 @@ msgid "Pledge Reports"
 msgstr "서약 보고서"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "모든 기부자에게 연간 헌금 명세서를 인쇄하거나 이메일로 보냅니다."
-
-#: 
 msgid "Quick Actions"
 msgstr "빠른 작업"
 
@@ -6310,10 +6270,6 @@ msgstr "복원"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "백업 파일에서 복원합니다. 기존 데이터가 지워집니다."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "헌금 기금 검토"
 
 #: 
 msgid "Save and Add New Family"
@@ -6352,14 +6308,6 @@ msgid "System Info"
 msgstr "시스템 정보"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "세금 보고서 문구"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "세금 연도 보고 체크리스트"
-
-#: 
 msgid "Total"
 msgstr "전체"
 
@@ -6380,10 +6328,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "사용자는 관리자이거나 재정 권한이 있어야 합니다"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "명세서에 대한 기금 이름 및 설명이 정확한지 확인하세요."
-
-#: 
 msgid "YTD Payments"
 msgstr "연초 이후 결제"
 
@@ -6400,20 +6344,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "업그레이드에 ZipArchive 확장이 필요합니다"
 
 #: 
-msgid "active"
-msgstr "활성"
-
-#: 
 msgid "found"
 msgstr "발견됨"
 
 #: 
 msgid "issues"
 msgstr "문제"
-
-#: 
-msgid "open"
-msgstr "열림"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15390,10 +15326,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM 번역은 POEditor의 커뮤니티에서 관리됩니다."
 
 #: 
-msgid "Closed Deposits"
-msgstr "마감된 헌금"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "현재 $URL[0] 값"
 
@@ -15532,10 +15464,6 @@ msgstr "시스템 구성"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "이 봉사 기회에 배정된 사람들이 있습니다. 삭제하면 배정이 취소됩니다"
-
-#: 
-msgid "Total Deposits"
-msgstr "총 헌금"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -23965,10 +23893,6 @@ msgid "%s Giving Statement"
 msgstr "%s 헌금 명세서"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "헌금 명세서에 표시되는 텍스트를 사용자 지정합니다 (sTaxReport1, sTaxReport2 등)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -23991,10 +23915,6 @@ msgstr "%s 헌금 명세서 이메일 전송"
 #: 
 msgid "Envelope Numbers"
 msgstr "봉투 번호"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "헌금 명세서 생성"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24035,10 +23955,6 @@ msgstr "헌금 명세서를 이메일로 보낼 수 없습니다: 이 가족에�
 #: 
 msgid "Undesignated"
 msgstr "지정되지 않음"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "교회 이름, 주소 및 연락처 정보가 헌금 명세서에 표시되는지 확인하세요."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24253,10 +24169,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "아직 어떤 입금에도 포함되지 않은 납부가 %d건 있습니다."
 
 #: 
-msgid "Can be emailed"
-msgstr "이메일로 보낼 수 있음"
-
-#: 
 msgid "Closing line"
 msgstr "맺음말"
 
@@ -24285,16 +24197,8 @@ msgid "Opening line"
 msgstr "인사말"
 
 #: 
-msgid "Print and mail"
-msgstr "인쇄 후 우편 발송"
-
-#: 
 msgid "Qty"
 msgstr "수량"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "해당 연도를 검토한 다음 헌금 명세서를 인쇄하거나 이메일로 보내십시오."
 
 #: 
 msgid "Signed by"
@@ -24303,10 +24207,6 @@ msgstr "서명한 사람"
 #: 
 msgid "Thank-you line"
 msgstr "감사 문구"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "교회 이름, 주소, 연락처가 세금 명세서에 표시되는지 확인하십시오."
 
 #: 
 msgid "Year-End Giving"

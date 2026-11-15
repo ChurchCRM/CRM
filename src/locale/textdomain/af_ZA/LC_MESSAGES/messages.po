@@ -2460,10 +2460,6 @@ msgid "Deposit Reports"
 msgstr "Depositoverslae"
 
 #: 
-msgid "Edit Deposit Slip"
-msgstr "Wysig depositostrokie"
-
-#: 
 msgid "Create New Fundraiser"
 msgstr "Skep nuwe fondsinsameling"
 
@@ -6065,14 +6061,6 @@ msgid "Close All Deposits"
 msgstr "Sluit Alle Deposito's"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Geslote vs Totaal"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Voltooi hierdie take om akkurate jaareindrappore vir jou donore te verseker."
-
-#: 
 msgid "Configure Email"
 msgstr "Konfigureer E-pos"
 
@@ -6089,28 +6077,12 @@ msgid "Create First Deposit"
 msgstr "Skep Eerste Deposito"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Skep of open eers 'n deposito"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Skep of kies 'n deposito om te begin."
-
-#: 
-msgid "Current Deposit"
-msgstr "Huidigas Deposito"
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
 #: 
 msgid "Dec"
 msgstr "Des"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Deposito Statistieke"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6139,10 +6111,6 @@ msgstr "Redigeer Betaling"
 #: 
 msgid "Edit Person"
 msgstr "Redigeer Persoon"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Verseker dat alle deposito's vir die belastingjaar gesloten is voor verklaringe gegenereer word."
 
 #: 
 msgid "F"
@@ -6249,10 +6217,6 @@ msgid "New Pledge"
 msgstr "Nuwe Belofte"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Geen Aktiewe Deposito"
-
-#: 
 msgid "No active funds configured."
 msgstr "Geen aktiewe fondse opgestel."
 
@@ -6285,10 +6249,6 @@ msgid "Pledge Reports"
 msgstr "Belofte Verslae"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Druk of stuur jaarlikse gawingsstate per e-pos na alle skenkers."
-
-#: 
 msgid "Quick Actions"
 msgstr "Vinnige Aksies"
 
@@ -6319,10 +6279,6 @@ msgstr "Herstel"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Herstel uit 'n rugsteunlêer. Wis bestaande gegewens."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Oorsien Skenking Fondse"
 
 #: 
 msgid "Save and Add New Family"
@@ -6361,14 +6317,6 @@ msgid "System Info"
 msgstr "Stelselinligting"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Belasting Verslag Taal"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Belastingjaar Verslagontwerp Kontrolelys"
-
-#: 
 msgid "Total"
 msgstr "Totaal"
 
@@ -6389,10 +6337,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Gebruiker moet 'n Admin wees of Finansietoestemming hê"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Verifieer dat fondsnaam en beskrywings akkuraat is vir state."
-
-#: 
 msgid "YTD Payments"
 msgstr "YTD Betalings"
 
@@ -6409,20 +6353,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ZipArchive-uitbreiding vereis vir opgradering"
 
 #: 
-msgid "active"
-msgstr "aktief"
-
-#: 
 msgid "found"
 msgstr "gevind"
 
 #: 
 msgid "issues"
 msgstr "kwessies"
-
-#: 
-msgid "open"
-msgstr "oopmaak"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15408,10 +15344,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM-vertalings word deur die gemeenskap op POEditor bestuur. Jy kan help deur"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Geslote Deposito's"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Huidige $URL[0]-waarde"
 
@@ -15550,10 +15482,6 @@ msgstr "Stelselkonfigurasie"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Daar is mense aan hierdie Vrywilligersgeleentheid toegewys. Verwydering sal hulle onttoes"
-
-#: 
-msgid "Total Deposits"
-msgstr "Totale Deposito's"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -23998,10 +23926,6 @@ msgid "%s Giving Statement"
 msgstr "%s Bydraestaat"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Pas die teks aan wat op bydraestate verskyn (sTaxReport1, sTaxReport2, ens.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24024,10 +23948,6 @@ msgstr "E-pos %s-bydraestaat"
 #: 
 msgid "Envelope Numbers"
 msgstr "Koevertnommers"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Genereer bydraestate"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24068,10 +23988,6 @@ msgstr "Kan nie bydraestaat e-pos nie: hierdie gesin het geen e-posadres op lêe
 #: 
 msgid "Undesignated"
 msgstr "Onaangewys"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Bevestig dat die kerknaam, adres en kontakbesonderhede op bydraestate verskyn."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24286,10 +24202,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d betalings is nog nie op enige deposito nie."
 
 #: 
-msgid "Can be emailed"
-msgstr "Kan ge-e-pos word"
-
-#: 
 msgid "Closing line"
 msgstr "Slotreël"
 
@@ -24318,16 +24230,8 @@ msgid "Opening line"
 msgstr "Openingsreël"
 
 #: 
-msgid "Print and mail"
-msgstr "Druk en pos"
-
-#: 
 msgid "Qty"
 msgstr "Aantal"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Hersien die jaar, druk dan of e-pos bydraestate."
 
 #: 
 msgid "Signed by"
@@ -24336,10 +24240,6 @@ msgstr "Geteken deur"
 #: 
 msgid "Thank-you line"
 msgstr "Dankie-reël"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Bevestig dat die kerknaam, adres en kontakbesonderhede op belastingstate verskyn."
 
 #: 
 msgid "Year-End Giving"

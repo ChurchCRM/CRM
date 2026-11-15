@@ -26,6 +26,6 @@ describe("Envelope Numbers report", () => {
     it("the Envelope Manager print button opens the report", () => {
         cy.setupAdminSession();
         cy.visit("/ManageEnvelopes.php");
-        cy.get("[name='PrintReport']").should("exist");
+        cy.get("#PrintReport").should("have.attr", "href").and("include", envelopeReport);
     });
 });

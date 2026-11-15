@@ -2460,10 +2460,6 @@ msgid "Deposit Reports"
 msgstr "Depozito Raporları"
 
 #: 
-msgid "Edit Deposit Slip"
-msgstr "Depozito Slip'i Düzenle"
-
-#: 
 msgid "Create New Fundraiser"
 msgstr "Yeni bağış toplama oluştur"
 
@@ -6065,14 +6061,6 @@ msgid "Close All Deposits"
 msgstr "Tüm Para Yatırmaları Kapat"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Kapatılan ve Toplam Karşılaştırması"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Bağışçılarınız için doğru yıl sonu vergi raporlaması sağlamak üzere bu görevleri tamamlayın."
-
-#: 
 msgid "Configure Email"
 msgstr "E-postayı Yapılandır"
 
@@ -6089,28 +6077,12 @@ msgid "Create First Deposit"
 msgstr "İlk Para Yatırmayı Oluştur"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Önce bir para yatırma işlemi oluşturun veya açın"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Başlamak için bir para yatırma işlemi oluşturun veya seçin."
-
-#: 
-msgid "Current Deposit"
-msgstr "Mevcut Para Yatırma"
-
-#: 
 msgid "Day"
 msgstr "Gün"
 
 #: 
 msgid "Dec"
 msgstr "Ara"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Para Yatırma İstatistikleri"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6139,10 +6111,6 @@ msgstr "Ödemeyi Düzenle"
 #: 
 msgid "Edit Person"
 msgstr "Kişiyi Düzenle"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Beyanname oluşturmadan önce vergi yılına ait tüm para yatırma işlemlerinin kapatıldığından emin olun."
 
 #: 
 msgid "F"
@@ -6249,10 +6217,6 @@ msgid "New Pledge"
 msgstr "Yeni Taahhüt"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Aktif Para Yatırma Yok"
-
-#: 
 msgid "No active funds configured."
 msgstr "Yapılandırılmış aktif fon yok."
 
@@ -6285,10 +6249,6 @@ msgid "Pledge Reports"
 msgstr "Taahhüt Raporları"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Tüm bağışçılara yıllık bağış beyannamelerini yazdırın veya e-postalayın."
-
-#: 
 msgid "Quick Actions"
 msgstr "Hızlı İşlemler"
 
@@ -6319,10 +6279,6 @@ msgstr "Geri Yükle"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Bir yedekleme dosyasından geri yükle. Mevcut verileri siler."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Bağış Fonlarını İncele"
 
 #: 
 msgid "Save and Add New Family"
@@ -6361,14 +6317,6 @@ msgid "System Info"
 msgstr "Sistem Bilgisi"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Vergi Raporu Metni"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Vergi Yılı Raporlama Kontrol Listesi"
-
-#: 
 msgid "Total"
 msgstr "Toplam"
 
@@ -6389,10 +6337,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Kullanıcı Yönetici olmalı veya Finans iznine sahip olmalıdır"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Beyannameler için fon adlarının ve açıklamalarının doğru olduğunu doğrulayın."
-
-#: 
 msgid "YTD Payments"
 msgstr "Yılbaşından Bugüne Ödemeler"
 
@@ -6409,20 +6353,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Yükseltmeler için ZipArchive eklentisi gereklidir"
 
 #: 
-msgid "active"
-msgstr "aktif"
-
-#: 
 msgid "found"
 msgstr "bulundu"
 
 #: 
 msgid "issues"
 msgstr "sorunlar"
-
-#: 
-msgid "open"
-msgstr "açık"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15408,10 +15344,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM çevirileri topluluk tarafından POEditor üzerinde yönetilmektedir. Katkıda bulunabilirsiniz:"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Kapatılmış Yatırmalar"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Mevcut $URL[0] değeri"
 
@@ -15550,10 +15482,6 @@ msgstr "Sistem Yapılandırması"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Bu Gönüllü Fırsatına atanmış kişiler var. Silme işlemi atamaları kaldıracak"
-
-#: 
-msgid "Total Deposits"
-msgstr "Toplam Yatırmalar"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -23998,10 +23926,6 @@ msgid "%s Giving Statement"
 msgstr "%s bağış bildirimi"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Bağış bildirimlerinde görünen metni özelleştirin (sTaxReport1, sTaxReport2 vb.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24024,10 +23948,6 @@ msgstr "%s bağış bildirimini e-posta ile gönder"
 #: 
 msgid "Envelope Numbers"
 msgstr "Zarf numaraları"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Bağış bildirimleri oluştur"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24068,10 +23988,6 @@ msgstr "Bağış bildirimi e-posta ile gönderilemedi: bu ailenin kayıtlı e-po
 #: 
 msgid "Undesignated"
 msgstr "Belirtilmemiş"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Kilise adı, adresi ve iletişim bilgilerinin bağış bildirimlerinde göründüğünü doğrulayın."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24286,10 +24202,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d ödeme henüz hiçbir depozitoda değil."
 
 #: 
-msgid "Can be emailed"
-msgstr "E-posta ile gönderilebilir"
-
-#: 
 msgid "Closing line"
 msgstr "Kapanış satırı"
 
@@ -24318,16 +24230,8 @@ msgid "Opening line"
 msgstr "Açılış satırı"
 
 #: 
-msgid "Print and mail"
-msgstr "Yazdır ve postala"
-
-#: 
 msgid "Qty"
 msgstr "Adet"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Yılı inceleyin, ardından bağış bildirimlerini yazdırın veya e-posta ile gönderin."
 
 #: 
 msgid "Signed by"
@@ -24336,10 +24240,6 @@ msgstr "İmzalayan"
 #: 
 msgid "Thank-you line"
 msgstr "Teşekkür satırı"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Kilise adı, adresi ve iletişim bilgilerinin vergi bildirimlerinde göründüğünü doğrulayın."
 
 #: 
 msgid "Year-End Giving"

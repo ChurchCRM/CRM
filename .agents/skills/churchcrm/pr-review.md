@@ -51,7 +51,7 @@ Answer before reading code:
 - Does it add a subsystem, table family, auth model, plugin API or cross-cutting middleware, or change a documented design? Find the linked RFC or design (`docs/decisions/`, `docs/design/`, epic, issue) and the maintainer's approval. Report both; missing is a hard block (gates item 12).
 - Does it extend Query View / predefined `query_qry` reports? If yes, Request changes. New reports are MVC + Propel or a plugin.
 
-Run [church-review.md](./church-review.md) on the PR's linked issue and on the change as delivered. A PR can pass every code gate and still miss the user's job through the wrong surface, a duplicated path, or a review-first action made one click. Report the church-review verdict (user, job, ROI) in the draft. A user-facing change with no identifiable user job is a follow-up; a destructive action or member-data exposure flagged by the workflow review is a hard block under Security and RBAC.
+Run [church-review.md](./church-review.md) on the PR's linked issue and on the change as delivered. A PR can pass every code gate and still miss the user's job through the wrong surface, a duplicated path, or a review-first action made one click. Report the church-review verdict (user, job, ROI) in the draft. For any change that lists or acts on people or families, also work the status-and-scale checks in the gates file (deactivated families, deceased people, 200+ row lists) and state the treatment in the draft. A user-facing change with no identifiable user job is a follow-up; a destructive action or member-data exposure flagged by the workflow review is a hard block under Security and RBAC.
 
 Leave the contributor branch as it is: merge `master`, resolve conflicts, or push only when the maintainer asks.
 

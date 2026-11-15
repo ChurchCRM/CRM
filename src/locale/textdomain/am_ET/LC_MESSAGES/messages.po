@@ -2459,10 +2459,6 @@ msgid "Deposit Reports"
 msgstr "የተቀማጭ ሪፖርቶች"
 
 #: 
-msgid "Edit Deposit Slip"
-msgstr "የተቀማጭ ገንዘብ ደረሰኝ"
-
-#: 
 msgid "Create New Fundraiser"
 msgstr "አዲስ የገንዘብ ማሰባሰቢያ ይፍጠሩ"
 
@@ -6070,14 +6066,6 @@ msgid "Close All Deposits"
 msgstr "ሁሉንም ተቀማጮች ዝጋ"
 
 #: 
-msgid "Closed vs Total"
-msgstr "የተዘጉ እና አጠቃላይ"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "ለለጋሾችዎ ትክክለኛ የዓመት መጨረሻ የቀረጥ ሪፖርት ለማቅረብ እነዚህን ተግባራት ያጠናቅቁ።"
-
-#: 
 msgid "Configure Email"
 msgstr "ኢሜይል አዋቅር"
 
@@ -6094,28 +6082,12 @@ msgid "Create First Deposit"
 msgstr "የመጀመሪያ ተቀማጭ ፍጠር"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "መጀመሪያ ተቀማጭ ይፍጠሩ ወይም ይክፈቱ"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "ለመጀመር ተቀማጭ ይፍጠሩ ወይም ይምረጡ።"
-
-#: 
-msgid "Current Deposit"
-msgstr "የአሁኑ ተቀማጭ"
-
-#: 
 msgid "Day"
 msgstr "ቀን"
 
 #: 
 msgid "Dec"
 msgstr "ዲሴምበር"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "የተቀማጭ ስታቲስቲክስ"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6144,10 +6116,6 @@ msgstr "ክፍያ አርም"
 #: 
 msgid "Edit Person"
 msgstr "ሰው ርድ"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "መግለጫዎችን ከማውጣትዎ በፊት ለቀረጥ ዓመቱ ያሉ ሁሉም ተቀማጮች መዘጋታቸውን ያረጋግጡ።"
 
 #: 
 msgid "F"
@@ -6254,10 +6222,6 @@ msgid "New Pledge"
 msgstr "አዲስ ቃል ኪዳን"
 
 #: 
-msgid "No Active Deposit"
-msgstr "ምንም ንቁ ተቀማጭ የለም"
-
-#: 
 msgid "No active funds configured."
 msgstr "ምንም ንቁ ፈንዶች አልተዋቀሩም።"
 
@@ -6290,10 +6254,6 @@ msgid "Pledge Reports"
 msgstr "የቃል ኪዳን ሪፖርቶች"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "የዓመት የልገሳ መግለጫዎችን ለሁሉም ለጋሾች ያትሙ ወይም በኢሜይል ይላኩ።"
-
-#: 
 msgid "Quick Actions"
 msgstr "ፈጣን ተግባራት"
 
@@ -6324,10 +6284,6 @@ msgstr "መልሰህ አግኝ"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "ከመጠባበቂያ ፋይል መልሰህ አግኝ። ነባሩን መረጃ ያጠፋል።"
-
-#: 
-msgid "Review Donation Funds"
-msgstr "የልገሳ ፈንዶችን ገምግም"
 
 #: 
 msgid "Save and Add New Family"
@@ -6366,14 +6322,6 @@ msgid "System Info"
 msgstr "የሥርዓት መረጃ"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "የቀረጥ ሪፖርት አገላለጽ"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "የቀረጥ ዓመት ሪፖርት ዝርዝር"
-
-#: 
 msgid "Total"
 msgstr "አጠቃላይ"
 
@@ -6394,10 +6342,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "ተጠቃሚው አስተዳዳሪ መሆን አለበት ወይም የፋይናንስ ፈቃድ ሊኖረው ይገባል"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "የፈንድ ስሞች እና መግለጫዎች ለመግለጫዎቹ ትክክለኛ መሆናቸውን ያረጋግጡ።"
-
-#: 
 msgid "YTD Payments"
 msgstr "ከዓመቱ መጀመሪያ ጀምሮ ያሉ ክፍያዎች"
 
@@ -6414,20 +6358,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ለማሻሻያዎች የ ZipArchive ኤክስቴንሽን ያስፈልጋል"
 
 #: 
-msgid "active"
-msgstr "ንቁ"
-
-#: 
 msgid "found"
 msgstr "ተገኝቷል"
 
 #: 
 msgid "issues"
 msgstr "ችግሮች"
-
-#: 
-msgid "open"
-msgstr "ክፍት"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15414,10 +15350,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM ትርጉሞች በማህበረሰቡ በ POEditor ላይ ይተዳደራሉ። እርስዎ ሊረዱ ይችላሉ"
 
 #: 
-msgid "Closed Deposits"
-msgstr "የተዘጉ ተቀማጭ ገንዘቦች"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "የአሁን $URL[0] ዋጋ"
 
@@ -15556,10 +15488,6 @@ msgstr "የሥርዓት ማዋቀሪያ"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "ለዚህ የበጎ ፈቃደኝነት እድል የተመደቡ ሰዎች አሉ። ሰርዛ ምደባ ይሰርዛል"
-
-#: 
-msgid "Total Deposits"
-msgstr "ጠቅላላ ተቀማጭ ገንዘቦች"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -24004,10 +23932,6 @@ msgid "%s Giving Statement"
 msgstr "የ%s የስጦታ መግለጫ"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "በስጦታ መግለጫዎች ላይ የሚታየውን ጽሑፍ ያብጁ (sTaxReport1፣ sTaxReport2፣ ወዘተ)።"
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24030,10 +23954,6 @@ msgstr "የ%s የስጦታ መግለጫን በኢሜይል ላክ"
 #: 
 msgid "Envelope Numbers"
 msgstr "የኤንቨሎፕ ቁጥሮች"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "የስጦታ መግለጫዎችን ፍጠር"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24074,10 +23994,6 @@ msgstr "የስጦታ መግለጫን በኢሜይል መላክ አልተቻለ�
 #: 
 msgid "Undesignated"
 msgstr "ያልተመደበ"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "የቤተ ክርስቲያኑ ስም፣ አድራሻ እና የመገናኛ መረጃ በስጦታ መግለጫዎች ላይ እንደሚታይ ያረጋግጡ።"
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24292,10 +24208,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d ክፍያዎች እስካሁን በምንም ተቀማጭ ላይ አይደሉም።"
 
 #: 
-msgid "Can be emailed"
-msgstr "በኢሜይል ሊላክ ይችላል"
-
-#: 
 msgid "Closing line"
 msgstr "የመዝጊያ መስመር"
 
@@ -24324,16 +24236,8 @@ msgid "Opening line"
 msgstr "የመክፈቻ መስመር"
 
 #: 
-msgid "Print and mail"
-msgstr "አትም እና በፖስታ ላክ"
-
-#: 
 msgid "Qty"
 msgstr "ብዛት"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "ዓመቱን ይገምግሙ፣ ከዚያ የስጦታ መግለጫዎችን ያትሙ ወይም በኢሜይል ይላኩ።"
 
 #: 
 msgid "Signed by"
@@ -24342,10 +24246,6 @@ msgstr "የፈረመው"
 #: 
 msgid "Thank-you line"
 msgstr "የምስጋና መስመር"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "የቤተ ክርስቲያኑ ስም፣ አድራሻ እና የመገናኛ መረጃ በግብር መግለጫዎች ላይ እንደሚታይ ያረጋግጡ።"
 
 #: 
 msgid "Year-End Giving"

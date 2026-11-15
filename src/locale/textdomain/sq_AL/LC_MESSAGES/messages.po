@@ -2459,10 +2459,6 @@ msgid "Deposit Reports"
 msgstr "Raportet e depozitave"
 
 #: 
-msgid "Edit Deposit Slip"
-msgstr "Ndrysho fletë-depozitën"
-
-#: 
 msgid "Create New Fundraiser"
 msgstr "Krijo mbledhje të re fondesh"
 
@@ -6056,14 +6052,6 @@ msgid "Close All Deposits"
 msgstr "Mbyll të gjitha depozitat"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Të mbyllura vs Totali"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Përfundoni këto detyra për të siguruar raportimin e saktë të taksave në fund të vitit për dhuruesit tuaj."
-
-#: 
 msgid "Configure Email"
 msgstr "Konfiguro email-in"
 
@@ -6080,28 +6068,12 @@ msgid "Create First Deposit"
 msgstr "Krijo depozitën e parë"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Krijoni ose hapni një depozitë fillimisht"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Krijoni ose zgjidhni një depozitë për të filluar."
-
-#: 
-msgid "Current Deposit"
-msgstr "Depozita aktuale"
-
-#: 
 msgid "Day"
 msgstr "Ditë"
 
 #: 
 msgid "Dec"
 msgstr "Dhj"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Statistikat e depozitave"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6130,10 +6102,6 @@ msgstr "Redakto pagesën"
 #: 
 msgid "Edit Person"
 msgstr "Redakto personin"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Sigurohuni që të gjitha depozitat për vitin tatimor janë mbyllur para se të gjeneroni deklaratat."
 
 #: 
 msgid "F"
@@ -6240,10 +6208,6 @@ msgid "New Pledge"
 msgstr "Zotim i ri"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Pa depozitë aktive"
-
-#: 
 msgid "No active funds configured."
 msgstr "Asnjë fond aktiv nuk është konfiguruar."
 
@@ -6276,10 +6240,6 @@ msgid "Pledge Reports"
 msgstr "Raportet e zotimeve"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Printoni ose dërgoni me email deklaratat vjetore të dhurimit për të gjithë dhuruesit."
-
-#: 
 msgid "Quick Actions"
 msgstr "Veprime të shpejta"
 
@@ -6310,10 +6270,6 @@ msgstr "Rikthe"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Rikthe nga një skedar kopjeje rezervë. Fshin të dhënat ekzistuese."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Rishiko fondet e dhurimit"
 
 #: 
 msgid "Save and Add New Family"
@@ -6352,14 +6308,6 @@ msgid "System Info"
 msgstr "Informacioni i sistemit"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Gjuha e raportit të taksave"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Lista kontrolli e raportimit të vitit tatimor"
-
-#: 
 msgid "Total"
 msgstr "Totali"
 
@@ -6380,10 +6328,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Përdoruesi duhet të jetë administrator ose të ketë lejen e financës"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Verifikoni që emrat dhe përshkrimet e fondeve janë të sakta për deklaratat."
-
-#: 
 msgid "YTD Payments"
 msgstr "Pagesat që nga fillimi i vitit"
 
@@ -6400,20 +6344,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Zgjerimi ZipArchive kërkohet për përmirësimet"
 
 #: 
-msgid "active"
-msgstr "aktiv"
-
-#: 
 msgid "found"
 msgstr "u gjet"
 
 #: 
 msgid "issues"
 msgstr "probleme"
-
-#: 
-msgid "open"
-msgstr "hap"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15399,10 +15335,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Përkthimet e ChurchCRM menaxhohen nga komuniteti në POEditor. Mund të ndihmoni duke"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Depozita të mbyllura"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Vlera aktuale e $URL[0]"
 
@@ -15541,10 +15473,6 @@ msgstr "Konfigurimi i sistemit"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Ka njerëz të caktuar për këtë Mundësi Vullnetare. Fshirja do t'i heqë caktimet"
-
-#: 
-msgid "Total Deposits"
-msgstr "Depozita totale"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -23989,10 +23917,6 @@ msgid "%s Giving Statement"
 msgstr "Deklarata e dhurimeve %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Përshtatni tekstin që shfaqet në deklaratat e dhurimeve (sTaxReport1, sTaxReport2, etj.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24015,10 +23939,6 @@ msgstr "Dërgoni me email deklaratën e dhurimeve %s"
 #: 
 msgid "Envelope Numbers"
 msgstr "Numrat e zarfeve"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Gjeneroni deklaratat e dhurimeve"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24059,10 +23979,6 @@ msgstr "Nuk mund të dërgohet me email deklarata e dhurimeve: kjo familje nuk k
 #: 
 msgid "Undesignated"
 msgstr "E pacaktuar"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Verifikoni që emri, adresa dhe të dhënat e kontaktit të kishës shfaqen në deklaratat e dhurimeve."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24277,10 +24193,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d pagesa nuk janë ende në asnjë depozitë."
 
 #: 
-msgid "Can be emailed"
-msgstr "Mund të dërgohet me email"
-
-#: 
 msgid "Closing line"
 msgstr "Rreshti i mbylljes"
 
@@ -24309,16 +24221,8 @@ msgid "Opening line"
 msgstr "Rreshti i hapjes"
 
 #: 
-msgid "Print and mail"
-msgstr "Shtypni dhe dërgoni me postë"
-
-#: 
 msgid "Qty"
 msgstr "Sasia"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Shqyrtoni vitin, pastaj shtypni ose dërgoni me email deklaratat e dhurimeve."
 
 #: 
 msgid "Signed by"
@@ -24327,10 +24231,6 @@ msgstr "Nënshkruar nga"
 #: 
 msgid "Thank-you line"
 msgstr "Rreshti i falënderimit"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verifikoni që emri, adresa dhe të dhënat e kontaktit të kishës shfaqen në deklaratat tatimore."
 
 #: 
 msgid "Year-End Giving"

@@ -2531,10 +2531,6 @@ msgid "Deposit Reports"
 msgstr "Einzahlungsberichte"
 
 #: 
-msgid "Edit Deposit Slip"
-msgstr "Einzahlungsbeleg bearbeiten"
-
-#: 
 msgid "Create New Fundraiser"
 msgstr "Neuen Spendensammlung anlegen"
 
@@ -6138,14 +6134,6 @@ msgid "Close All Deposits"
 msgstr "Alle Einzahlungen schließen"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Geschlossen vs. Summe"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Führen Sie diese Aufgaben aus, um genaue Jahresendsteuerberichte für Ihre Spender sicherzustellen."
-
-#: 
 msgid "Configure Email"
 msgstr "E-Mail konfigurieren"
 
@@ -6162,28 +6150,12 @@ msgid "Create First Deposit"
 msgstr "Erste Einzahlung erstellen"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Erstellen oder öffnen Sie zuerst eine Einzahlung"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Erstellen oder wählen Sie eine Einzahlung zum Starten."
-
-#: 
-msgid "Current Deposit"
-msgstr "Aktuelle Einzahlung"
-
-#: 
 msgid "Day"
 msgstr "Tag"
 
 #: 
 msgid "Dec"
 msgstr "Dezember"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Einzahlungsstatistiken"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6212,10 +6184,6 @@ msgstr "Zahlung bearbeiten"
 #: 
 msgid "Edit Person"
 msgstr "Person bearbeiten"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Stellen Sie sicher, dass alle Einzahlungen für das Steuerjahr geschlossen sind, bevor Sie Kontoauszüge generieren."
 
 #: 
 msgid "F"
@@ -6322,10 +6290,6 @@ msgid "New Pledge"
 msgstr "Neue Zusage"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Keine aktive Einzahlung"
-
-#: 
 msgid "No active funds configured."
 msgstr "Keine aktiven Geldmittel konfiguriert."
 
@@ -6358,10 +6322,6 @@ msgid "Pledge Reports"
 msgstr "Zusage-Berichte"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Drucken Sie jährliche Spendenerklärungen oder mailen Sie diese an alle Spender."
-
-#: 
 msgid "Quick Actions"
 msgstr "Schnelle Aktionen"
 
@@ -6392,10 +6352,6 @@ msgstr "Wiederherstellen"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Aus einer Sicherungsdatei wiederherstellen. Löscht vorhandene Daten."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Überprüfen Sie Spendenfonds"
 
 #: 
 msgid "Save and Add New Family"
@@ -6434,14 +6390,6 @@ msgid "System Info"
 msgstr "Systeminfo"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Steuerberichtstext"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Jahressteuerbericht-Checkliste"
-
-#: 
 msgid "Total"
 msgstr "Summe"
 
@@ -6462,10 +6410,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Benutzer muss ein Administrator sein oder Finanzberechtigung haben"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Überprüfen Sie, ob Fondnamen und Beschreibungen für Kontoauszüge korrekt sind."
-
-#: 
 msgid "YTD Payments"
 msgstr "YTD-Zahlungen"
 
@@ -6482,20 +6426,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ZipArchive-Erweiterung erforderlich für Upgrades"
 
 #: 
-msgid "active"
-msgstr "aktiv"
-
-#: 
 msgid "found"
 msgstr "gefunden"
 
 #: 
 msgid "issues"
 msgstr "Themen"
-
-#: 
-msgid "open"
-msgstr "offen"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15481,10 +15417,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM-Übersetzungen werden von der Gemeinschaft auf POEditor gepflegt. Sie können helfen durch"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Abgeschlossene Einzahlungen"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Aktueller $URL[0]-Wert"
 
@@ -15623,10 +15555,6 @@ msgstr "Systemkonfiguration"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Dieser Freiwilligenaufgabe sind Personen zugewiesen. Das Löschen hebt die Zuweisung auf"
-
-#: 
-msgid "Total Deposits"
-msgstr "Einzahlungen gesamt"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -24071,10 +23999,6 @@ msgid "%s Giving Statement"
 msgstr "%s Spendenbescheinigung"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Passen Sie den Text an, der auf den Spendenbescheinigungen erscheint (sTaxReport1, sTaxReport2 usw.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24097,10 +24021,6 @@ msgstr "%s Spendenbescheinigung per E-Mail senden"
 #: 
 msgid "Envelope Numbers"
 msgstr "Umschlagnummern"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Spendenbescheinigungen generieren"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24141,10 +24061,6 @@ msgstr "Spendenbescheinigung kann nicht per E-Mail gesendet werden: diese Famili
 #: 
 msgid "Undesignated"
 msgstr "Nicht zugewiesen"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Überprüfen Sie, dass Kirchenname, Adresse und Kontaktinformationen auf den Spendenbescheinigungen erscheinen."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24359,10 +24275,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d Zahlungen sind noch keiner Einzahlung zugeordnet."
 
 #: 
-msgid "Can be emailed"
-msgstr "Kann per E-Mail gesendet werden"
-
-#: 
 msgid "Closing line"
 msgstr "Schlusstext"
 
@@ -24391,16 +24303,8 @@ msgid "Opening line"
 msgstr "Einleitungstext"
 
 #: 
-msgid "Print and mail"
-msgstr "Drucken und versenden"
-
-#: 
 msgid "Qty"
 msgstr "Anz."
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Prüfen Sie das Jahr und drucken oder versenden Sie dann die Spendenbescheinigungen."
 
 #: 
 msgid "Signed by"
@@ -24409,10 +24313,6 @@ msgstr "Unterzeichnet von"
 #: 
 msgid "Thank-you line"
 msgstr "Dankeszeile"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Prüfen Sie, ob Name, Anschrift und Kontaktdaten der Gemeinde auf den Steuerbescheinigungen erscheinen."
 
 #: 
 msgid "Year-End Giving"

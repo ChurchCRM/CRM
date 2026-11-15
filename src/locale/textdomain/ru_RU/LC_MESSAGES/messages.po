@@ -2519,10 +2519,6 @@ msgid "Deposit Reports"
 msgstr "Отчеты о депозитах"
 
 #: 
-msgid "Edit Deposit Slip"
-msgstr "Редактировать квитанцию ​​о депозите"
-
-#: 
 msgid "Create New Fundraiser"
 msgstr "Создать нового фандрайзера (сборщика денег)"
 
@@ -6126,14 +6122,6 @@ msgid "Close All Deposits"
 msgstr "Закрыть все депозиты"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Закрытые против всех"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Выполните это для правильной налоговой отчетности."
-
-#: 
 msgid "Configure Email"
 msgstr "Настроить почту"
 
@@ -6150,28 +6138,12 @@ msgid "Create First Deposit"
 msgstr "Создать первый депозит"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Сначала создайте или откройте депозит"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Создайте или выберите депозит для начала."
-
-#: 
-msgid "Current Deposit"
-msgstr "Текущий депозит"
-
-#: 
 msgid "Day"
 msgstr "День"
 
 #: 
 msgid "Dec"
 msgstr "Дек"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Статистика депозитов"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6200,10 +6172,6 @@ msgstr "Редактировать платеж"
 #: 
 msgid "Edit Person"
 msgstr "Редактировать человека"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Закройте все депозиты за год перед созданием отчетов."
 
 #: 
 msgid "F"
@@ -6310,10 +6278,6 @@ msgid "New Pledge"
 msgstr "Новое обещание"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Нет активного депозита"
-
-#: 
 msgid "No active funds configured."
 msgstr "Активные фонды не настроены."
 
@@ -6346,10 +6310,6 @@ msgid "Pledge Reports"
 msgstr "Отчеты по обещаниям"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Распечатать или разослать отчеты всем донорам."
-
-#: 
 msgid "Quick Actions"
 msgstr "Быстрые действия"
 
@@ -6380,10 +6340,6 @@ msgstr "Восстановить"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Восстановить из бэкапа. Стирает данные."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Проверить фонды пожертвований"
 
 #: 
 msgid "Save and Add New Family"
@@ -6422,14 +6378,6 @@ msgid "System Info"
 msgstr "Информация о системе"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Текст налогового отчета"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Чек-лист отчетности за год"
-
-#: 
 msgid "Total"
 msgstr "Всего"
 
@@ -6450,10 +6398,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Нужны права админа или финансиста"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Проверьте названия фондов."
-
-#: 
 msgid "YTD Payments"
 msgstr "Платежи с нач. года"
 
@@ -6470,20 +6414,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Для обновлений нужно расширение ZipArchive"
 
 #: 
-msgid "active"
-msgstr "активен"
-
-#: 
 msgid "found"
 msgstr "найдено"
 
 #: 
 msgid "issues"
 msgstr "проблемы"
-
-#: 
-msgid "open"
-msgstr "открыт"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15487,10 +15423,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Переводы ChurchCRM управляются сообществом на POEditor. Вы можете помочь, если"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Закрытые депозиты"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Текущее значение $URL[0]"
 
@@ -15629,10 +15561,6 @@ msgstr "Конфигурация системы"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "К этому волонтёрскому служению прикреплены люди. Удаление отменит назначение"
-
-#: 
-msgid "Total Deposits"
-msgstr "Общая сумма депозитов"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -24107,10 +24035,6 @@ msgid "%s Giving Statement"
 msgstr "Выписка о пожертвованиях %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Настройте текст, который появляется на выписках о пожертвованиях (sTaxReport1, sTaxReport2 и т. д.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24133,10 +24057,6 @@ msgstr "Отправить выписку о пожертвованиях %s п�
 #: 
 msgid "Envelope Numbers"
 msgstr "Номера конвертов"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Сгенерировать выписки о пожертвованиях"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24177,10 +24097,6 @@ msgstr "Невозможно отправить выписку о пожертв
 #: 
 msgid "Undesignated"
 msgstr "Не назначено"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Проверьте, что название церкви, адрес и контактная информация отображаются на выписках о пожертвованиях."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24395,10 +24311,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d платежей ещё не включены ни в один депозит."
 
 #: 
-msgid "Can be emailed"
-msgstr "Можно отправить по электронной почте"
-
-#: 
 msgid "Closing line"
 msgstr "Заключительная строка"
 
@@ -24427,16 +24339,8 @@ msgid "Opening line"
 msgstr "Вступительная строка"
 
 #: 
-msgid "Print and mail"
-msgstr "Печать и почтовая отправка"
-
-#: 
 msgid "Qty"
 msgstr "Кол-во"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Проверьте год, затем распечатайте выписки о пожертвованиях или отправьте их по электронной почте."
 
 #: 
 msgid "Signed by"
@@ -24445,10 +24349,6 @@ msgstr "Подписал"
 #: 
 msgid "Thank-you line"
 msgstr "Строка благодарности"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Проверьте, что в налоговых выписках указаны название церкви, адрес и контактные сведения."
 
 #: 
 msgid "Year-End Giving"
