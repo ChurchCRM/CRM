@@ -64,8 +64,8 @@ export const countPersonMail = (personId) =>
 export const countFamilyMail = (familyId) =>
     query("SELECT COUNT(*) AS n FROM email_log_eml WHERE eml_fam_ID = ?", [familyId]).then((rows) => Number(rows[0].n));
 
-// A delivered email to a family and one of its members: history the database
-// removes with the family and person (fk_eml_family, fk_eml_person).
+// A delivered email to a family and one of its members: both recipient
+// references must survive rejected deletion attempts.
 export const recordSentFamilyMail = (familyId, personId) =>
     query(
         "INSERT INTO email_log_eml (eml_per_ID, eml_fam_ID, eml_Address, eml_Kind, eml_Subject, eml_Status, eml_DateSent, eml_Attempts) VALUES (?, ?, ?, 'composer', 'Sent to the family', 'sent', NOW(), 1)",
