@@ -1200,7 +1200,7 @@ class Person extends BasePerson implements PhotoInterface
      * family primary-address fallback. The family's secondary/mailing address
      * is intentionally kept separate from this physical address.
      */
-    public function getResolvedAddress(): string
+    public function getResolvedAddress(string $separator = ' '): string
     {
         return Family::formatAddressBlock([
             'Address1' => $this->getResolvedAddress1(),
@@ -1209,7 +1209,7 @@ class Person extends BasePerson implements PhotoInterface
             'State' => $this->getResolvedState(),
             'Zip' => $this->getResolvedZip(),
             'Country' => $this->getResolvedCountry(),
-        ], ' ');
+        ], $separator);
     }
 
     public function getResolvedHomePhone(): string
