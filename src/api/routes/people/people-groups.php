@@ -795,8 +795,7 @@ $app->group('/groups', function (RouteCollectorProxy $group): void {
                 $momName = $momCell = $momEmail = '';
 
                 if ($family !== null) {
-                    $address = trim($family->getAddress1() . ' ' . $family->getAddress2()
-                        . ' ' . $family->getCity() . ' ' . $family->getState() . ' ' . $family->getZip());
+                    $address = $family->getAddress();
 
                     if ($roleName === 'Student') {
                         foreach ($family->getAdults() as $adult) {
