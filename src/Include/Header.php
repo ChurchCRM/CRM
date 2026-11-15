@@ -304,7 +304,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 
         <!-- Community Feedback -->
         <div class="nav-item ms-1">
-          <a class="nav-link px-0" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/community-feedback') ?>"
+          <a class="nav-link px-0" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/community/feedback') ?>"
              title="<?= gettext('We need your help') ?>">
             <i class="fa-solid fa-comments"></i>
             <span class="badge bg-primary d-none d-xl-inline ms-1"><?= gettext('Help shape ChurchCRM') ?></span>
@@ -331,7 +331,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
                title="<?= gettext('Discord Chat') ?>">
               <i class="fa-brands fa-discord me-2"></i><?= gettext('Discord Chat') ?>
             </a>
-            <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/community-feedback') ?>" class="dropdown-item"
+            <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/community/feedback') ?>" class="dropdown-item"
                title="<?= gettext('We Need Your Help') ?>">
               <i class="fa-solid fa-comments me-2"></i><?= gettext('We Need Your Help') ?>
             </a>
