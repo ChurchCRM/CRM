@@ -7881,10 +7881,6 @@ msgid "Calendar not found"
 msgstr "カレンダーが見つかりません"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "ダッシュボードへ進む"
-
-#: 
 msgid "Current Password"
 msgstr "現在のパスワード"
 
@@ -11255,10 +11251,6 @@ msgid "Yellow"
 msgstr "黄"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "現在のアクセスレベル（読み取り専用）"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d 件の繰り返しイベントが正常に作成されました。"
@@ -13789,10 +13781,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "このユーザーの2要素認証を無効にすることを確認してください"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "ユーザー・ステータスの解除を確認してください:"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "ログイン失敗回数のリセットを確認してください"
 
@@ -14602,10 +14590,6 @@ msgstr "アクセス"
 #: 
 msgid "Access level"
 msgstr "アクセスレベル"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "管理者はすべての機能とデータにフルアクセスできます。個別の権限は適用されません。"
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

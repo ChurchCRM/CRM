@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Nëse e fshini këtë lloj, do të hiqni gjithashtu të gjitha vetitë që e përdorin dhe do të humbni të gjitha caktimet përkatëse të vetive.",
   "Move Donations to Selected Family": "Zhvendos Ofertat te Familja e Zgjedhur",
   "Calendar not found": "Kalendari nuk u gjet",
-  "Continue to Dashboard": "Vazhdo në Panelin e Kontrollit",
   "Current Password": "Fjalëkalimi Aktual",
   "Deposit not found": "Depozita nuk u gjet",
   "Group not found": "Grupi nuk u gjet",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "Versioni %s është i disponueshëm. Ju lutemi përditësoni instalimin tuaj.",
   "View All": "Shiko Të Gjitha",
   "Yellow": "Verdhë",
-  "Your current access levels (read-only)": "Nivelet tuaja aktuale të aksesit (vetëm lexim)",
   "%d repeat event created successfully.": {
     "one": "%d ngjarje e përsëritur u krijua me sukses.",
     "other": "%d ngjarje të përsëritura u krijuan me sukses."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Ju lutemi konfirmoni çaktivizimin e familjes",
   "Please confirm deletion of this group record": "Ju lutem konfirmoni fshirjen e këtij rekord grupit",
   "Please confirm disabling 2 Factor Auth for this user": "Ju lutem konfirmoni çaktivizimin e vërtetimit 2-faktorësh për këtë përdorues",
-  "Please confirm removal of user status from": "Ju lutem konfirmoni heqjen e statusit të përdoruesit nga",
   "Please confirm reset failed login count": "Ju lutemi konfirmoni rivendosjen e numërimit të dështimeve të hyrjes",
   "Please confirm the password reset of this user": "Ju lutem konfirmoni ricaktim fjalëkalimi për këtë përdorues",
   "Please enter a valid URL": "Ju lutemi shkruani një URL të vlefshme",
@@ -3507,7 +3504,6 @@
   "%s's Account": "Llogaria e %s",
   "Access": "Qasje",
   "Access level": "Niveli i qasjes",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Administratorët kanë qasje të plotë në të gjitha funksionet dhe të dhënat. Lejet individuale nuk zbatohen.",
   "All users can view congregation members. This permission cannot be removed.": "Të gjithë përdoruesit mund të shohin anëtarët e kongregacionit. Kjo leje nuk mund të hiqet.",
   "Always granted": "Gjithmonë e dhënë",
   "Choose specific permissions below.": "Zgjidhni lejet specifike më poshtë.",

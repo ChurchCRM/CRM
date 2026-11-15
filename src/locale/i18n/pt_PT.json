@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Se eliminar este tipo, também removerá todas as propriedades que o utilizam e perderá as atribuições de propriedade correspondentes.",
   "Move Donations to Selected Family": "Mover ofertas para a família selecionada",
   "Calendar not found": "Calendário não encontrado",
-  "Continue to Dashboard": "Continuar para o painel",
   "Current Password": "Palavra-passe atual",
   "Deposit not found": "Depósito não encontrado",
   "Group not found": "Grupo não encontrado",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "A versão %s está disponível. Por favor, atualize a sua instalação.",
   "View All": "Ver todos",
   "Yellow": "Amarelo",
-  "Your current access levels (read-only)": "Os seus níveis de acesso atuais (só de leitura)",
   "%d repeat event created successfully.": {
     "one": "%d evento repetido criado com sucesso.",
     "other": "%d eventos repetidos criados com sucesso."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Por favor, confirme a desativação da família",
   "Please confirm deletion of this group record": "Por favor confirme a eliminação do registo deste grupo",
   "Please confirm disabling 2 Factor Auth for this user": "Confirme a desactivação da autenticação de 2 factores para este utilizador",
-  "Please confirm removal of user status from": "Por favor, confirme a remoção do status de utilizador de",
   "Please confirm reset failed login count": "Confirme a reposição da contagem de inícios de sessão falhados",
   "Please confirm the password reset of this user": "Confirme a reposição da palavra-passe deste utilizador",
   "Please enter a valid URL": "Por favor, introduza uma URL válida",
@@ -3507,7 +3504,6 @@
   "%s's Account": "Conta de %s",
   "Access": "Acesso",
   "Access level": "Nível de acesso",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Os administradores têm acesso total a todas as funcionalidades e dados. As permissões individuais não se aplicam.",
   "All users can view congregation members. This permission cannot be removed.": "Todos os utilizadores podem ver os membros da congregação. Esta permissão não pode ser removida.",
   "Always granted": "Sempre concedida",
   "Choose specific permissions below.": "Escolha permissões específicas abaixo.",

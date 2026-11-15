@@ -7922,10 +7922,6 @@ msgid "Calendar not found"
 msgstr "Kalender nie gevind nie"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Gaan voort na Kontroleskerm"
-
-#: 
 msgid "Current Password"
 msgstr "Huidige Wagwoord"
 
@@ -11297,10 +11293,6 @@ msgid "Yellow"
 msgstr "Geel"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "U huidige toegangsvlakke (leesalleen)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d herhalingsgeleentheid suksesvol geskep."
@@ -13832,10 +13824,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bevestig dat 2 Factor Auth vir hierdie gebruiker gedeaktiveer is"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Bevestig die verwydering van gebruikerstatus uit"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Bevestig asseblief die herstel van die mislukking van die aanmelding"
 
@@ -14646,10 +14634,6 @@ msgstr "Toegang"
 #: 
 msgid "Access level"
 msgstr "Toegangsvlak"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Administrateurs het volle toegang tot alle funksies en data. Individuele toestemmings is nie van toepassing nie."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "ይህን ዓይነት ከሰረዙ ሁሉንም ባሕሪዎቹን ያስወግዳሉ እና ሁሉም ተዛማጅ ባሕሪ ምደቦች ይጠፋሉ።",
   "Move Donations to Selected Family": "ቁርባን ወደ ተመረጠው ቤተሰብ ቀይር",
   "Calendar not found": "ቀን መቁጠሪያ አልተገኘም",
-  "Continue to Dashboard": "ወደ ዳሽቦርድ ቀጥል",
   "Current Password": "የአሁኑ ይለፍ ቃል",
   "Deposit not found": "ተቀማጭ ገንዘብ አልተገኘም",
   "Group not found": "ቡድን አልተገኘም",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "ስሪት %s አለ። እባክዎ ጭነቱን ያዘምኑ።",
   "View All": "ሁሉንም ይመልከቱ",
   "Yellow": "ቢጫ",
-  "Your current access levels (read-only)": "የአሁን የመዳረሻ ደረጃዎችዎ (ለማንበብ ብቻ)",
   "%d repeat event created successfully.": {
     "one": "%d ተደጋጋሚ ዝግጅት በተሳካ ሁኔታ ተፈጥሯል።",
     "other": "%d ተደጋጋሚ ዝግጅቶች በተሳካ ሁኔታ ተፈጥረዋል።"
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "እባኮትን ቤተሰብ ማቋረጥ መፈለጎትን ያረጋግጡ",
   "Please confirm deletion of this group record": "እባክዎ የዚህ ቡድን መዝገብ መሰረዙን ያረጋግጡ",
   "Please confirm disabling 2 Factor Auth for this user": "እባክዎን ለዚህ ተጠቃሚ 2 Factor Auth ማሰናከልዎን ያረጋግጡ",
-  "Please confirm removal of user status from": "እባክዎ ተጠቃሚው ከሚከተለው መወገዱን ያረጋግጡ",
   "Please confirm reset failed login count": "እባክዎ ያልተሳካውን የመግቢያ ብዛት ዳግም ማስጀመሩን ያረጋግጡ",
   "Please confirm the password reset of this user": "እባክዎ የዚህን ተጠቃሚ የይለፍ ቃል ዳግም ማስጀመር ያረጋግጡ ",
   "Please enter a valid URL": "እባክዎን ትክክለኛ URL ያስገቡ",
@@ -3507,7 +3504,6 @@
   "%s's Account": "የ%s መለያ",
   "Access": "መዳረሻ",
   "Access level": "የመዳረሻ ደረጃ",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "አስተዳዳሪዎች ሁሉንም ባህሪያት እና ውሂብ ሙሉ ተደራሽነት አላቸው። የግለሰብ ፈቃዶች አይተገበሩም።",
   "All users can view congregation members. This permission cannot be removed.": "ሁሉም ተጠቃሚዎች የጉባኤ አባላትን ማየት ይችላሉ። ይህ ፈቃድ ሊወገድ አይችልም።",
   "Always granted": "ሁልጊዜ የተፈቀደ",
   "Choose specific permissions below.": "ከዚህ በታች ልዩ ፈቃዶችን ይምረጡ።",

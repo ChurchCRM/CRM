@@ -7891,10 +7891,6 @@ msgid "Calendar not found"
 msgstr "कैलेंडर नहीं मिला"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "डैशबोर्ड पर जारी रखें"
-
-#: 
 msgid "Current Password"
 msgstr "वर्तमान पासवर्ड"
 
@@ -11266,10 +11262,6 @@ msgid "Yellow"
 msgstr "पीला"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "आपके वर्तमान पहुँच स्तर (केवल-पठन)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d आवर्ती कार्यक्रम सफलतापूर्वक बनाया गया।"
@@ -13801,10 +13793,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "कृपया इस उपयोगकर्ता के लिए 2 फैक्टर ऑथेंटिकेशन अक्षम करने की पुष्टि करें"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "कृपया इससे उपयोगकर्ता स्थिति हटाने की पुष्टि करें"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "कृपया विफल लॉगिन गणना को रीसेट करने की पुष्टि करें"
 
@@ -14615,10 +14603,6 @@ msgstr "पहुँच"
 #: 
 msgid "Access level"
 msgstr "पहुँच स्तर"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "प्रशासकों को सभी सुविधाओं और डेटा तक पूर्ण पहुँच है। व्यक्तिगत अनुमतियाँ लागू नहीं होती हैं।"
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."
