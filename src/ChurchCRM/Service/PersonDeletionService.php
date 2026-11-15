@@ -25,7 +25,7 @@ final class PersonDeletionService
     {
         $blockedReason = $person->getLoginDeletionBlockedReason();
         if ($blockedReason !== null) {
-            throw new PersonDeletionBlockedException($blockedReason);
+            throw new PersonDeletionBlockedException($blockedReason . ' ' . gettext('Deactivate the person instead of deleting them.'));
         }
 
         $personId = (int) $person->getId();
