@@ -497,7 +497,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                     ->count($con);
                 if ($financeCount > 0) {
                     throw new PersonDeletionBlockedException(
-                        gettext('Cannot delete a family that has pledges or payments. Move or remove the finance records first.')
+                        gettext('Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate.')
                     );
                 }
 
@@ -556,7 +556,13 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                 $family->delete($con);
             });
         } catch (PersonDeletionBlockedException $exception) {
-            return SlimUtils::renderErrorJSON($response, $exception->getMessage(), [], 403, $exception, $request);
+            // A family cascade may be blocked by an individual member.
+            // Recommend the family-level alternative as well as that member's reason.
+            $message = $exception->getMessage();
+            if (!str_contains($message, gettext('Deactivate the family instead'))) {
+                $message .= ' ' . gettext('Deactivate the family instead of deleting it.');
+            }
+            return SlimUtils::renderErrorJSON($response, $message, [], 403, $exception, $request);
         }
 
         // No filesystem effects until every database operation commits.
