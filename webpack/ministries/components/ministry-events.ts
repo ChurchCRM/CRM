@@ -157,13 +157,13 @@ export function createMinistryEventsTab(options: MinistryEventsOptions): Ministr
       {
         type: "link",
         icon: "fa-solid fa-pen",
-        label: i18next.t("Edit event"),
+        label: i18next.t("Edit Event"),
         href: `${root()}/event/editor/${event.id}`,
       },
       {
         type: "link",
         icon: "fa-solid fa-eye",
-        label: i18next.t("View event"),
+        label: i18next.t("View Event"),
         href: `${root()}/event/view/${event.id}`,
       },
     ]);

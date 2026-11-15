@@ -1,4 +1,4 @@
-name: Build, Test and Package
+name: 'CI: build, test and package'
 
 concurrency:
   # PRs: de-dup by PR number (cancel superseded runs).
@@ -53,9 +53,10 @@ on:
       - '!.github/workflows/**'
       - '!src/locale/i18n/**'
       - '!src/locale/textdomain/**'
-      # Re-include: only these two workflow files run this pipeline.
+      # Re-include the test workflows and their shared root suite.
       - '.github/workflows/build-test-package.yml'
       - '.github/workflows/build-test-nightly.yml'
+      - '.github/workflows/test-root-suite.yml'
   push:
     branches:
       - master
@@ -92,9 +93,10 @@ on:
       - '!.github/ISSUE_TEMPLATE/**'
       - '!.github/issue-comments/**'
       - '!.github/workflows/**'
-      # Re-include: only these two workflow files run this pipeline.
+      # Re-include the test workflows and their shared root suite.
       - '.github/workflows/build-test-package.yml'
       - '.github/workflows/build-test-nightly.yml'
+      - '.github/workflows/test-root-suite.yml'
   workflow_dispatch:
 
 jobs:
@@ -226,109 +228,56 @@ jobs:
           done
         } >> "$GITHUB_STEP_SUMMARY"
 
-  test-root:
+  test-api-root:
+    name: API / root / PHP ${{ matrix.php-version }} / shard ${{ matrix.shard }}
     needs: [configure, build, lint]
-    timeout-minutes: 40
-    permissions:
-      contents: read
-      checks: write
-    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
         php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
-        test-type:
-          - name: api-shard-0
-            spec: "cypress/e2e/api/**/*.spec.js"
-            config: "cypress/configs/docker-api.config.ts"
-            split-index: "0"
-            shard-total: 2
-        include:
-          # api, admin-ui and ui specs sharded by recorded duration (cypress/split-timings.json)
-          # (PHP 8.4 only; 8.5 ui covered by build-test-nightly.yml)
-          # split-index values are strings to avoid JS falsy coercion of 0
-          - php-version: "8.4"
-            test-type: { name: api-shard-1, config: "cypress/configs/docker-api.config.ts", spec: "cypress/e2e/api/**/*.spec.js" }
-            split-index: "1"
-            shard-total: 2
-          - php-version: "8.4"
-            test-type: { name: admin-ui-shard-0, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
-            split-index: "0"
-            shard-total: 3
-          - php-version: "8.4"
-            test-type: { name: admin-ui-shard-1, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
-            split-index: "1"
-            shard-total: 3
-          - php-version: "8.4"
-            test-type: { name: admin-ui-shard-2, config: "cypress/configs/docker-admin.config.ts", spec: "cypress/e2e/ui-admin/**/*.spec.js" }
-            split-index: "2"
-            shard-total: 3
-          - php-version: "8.4"
-            test-type: { name: ui-shard-0, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: "0"
-            shard-total: 4
-          - php-version: "8.4"
-            test-type: { name: ui-shard-1, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: "1"
-            shard-total: 4
-          - php-version: "8.4"
-            test-type: { name: ui-shard-2, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: "2"
-            shard-total: 4
-          - php-version: "8.4"
-            test-type: { name: ui-shard-3, config: "cypress/configs/docker-ui.config.ts", spec: "cypress/e2e/ui/**/*.spec.js" }
-            split-index: "3"
-            shard-total: 4
-    steps:
-    - name: Checkout
-      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        shard: ['0', '1']
+    uses: ./.github/workflows/test-root-suite.yml
+    with:
+      php-version: ${{ matrix.php-version }}
+      test-name: api-shard-${{ matrix.shard }}
+      config-file: cypress/configs/docker-api.config.ts
+      spec: cypress/e2e/api/**/*.spec.js
+      shard-total: 2
+      shard-index: ${{ matrix.shard }}
 
-    - uses: ./.github/actions/checkout-node-npm
-      with:
-        cache-cypress: 'true'
+  test-admin-ui-root:
+    name: Admin UI / root / PHP ${{ matrix.php-version }} / shard ${{ matrix.shard }}
+    needs: [configure, build, lint]
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
+        shard: ['0', '1', '2']
+    uses: ./.github/workflows/test-root-suite.yml
+    with:
+      php-version: ${{ matrix.php-version }}
+      test-name: admin-ui-shard-${{ matrix.shard }}
+      config-file: cypress/configs/docker-admin.config.ts
+      spec: cypress/e2e/ui-admin/**/*.spec.js
+      shard-total: 3
+      shard-index: ${{ matrix.shard }}
 
-    - name: Download build artifact
-      uses: ./.github/actions/download-artifact
-      with:
-        name: build-${{ github.run_id }}
-        path: .
-
-    - name: Load Docker image
-      run: |
-        docker load < temp/docker-image-${{ matrix.php-version }}.tar.gz
-        docker tag churchcrm/crm:php${{ matrix.php-version }}-test churchcrm/crm:php8-debian
-
-    - name: Start Docker (root path)
-      run: |
-        cp docker/Config.root.php src/Include/Config.php
-        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
-
-    - name: Wait for server (root path)
-      uses: ./.github/actions/wait-for-server
-      with:
-        url: 'http://127.0.0.1/api/public/echo'
-        docker-compose-profile: 'ci-root'
-        docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml'
-
-    - name: Run Cypress ${{ matrix.test-type.name }} tests (root, PHP ${{ matrix.php-version }})
-      uses: ./.github/actions/run-cypress-tests
-      with:
-        config-file: ${{ matrix.test-type.config }}
-        spec: ${{ matrix.test-type.spec }}
-        test-name: ${{ matrix.test-type.name }}
-        php-version: ${{ matrix.php-version }}
-        deployment: root
-        shard-total: ${{ matrix.test-type.shard-total || matrix.shard-total || '' }}
-        shard-index: ${{ matrix.test-type.split-index || matrix.split-index || '0' }}
-        docker-compose-profile: ci-root
-        # ci-root publishes MySQL on 3306. The guard reads this inside the action.
-        extra-env: |
-          ROW_GUARD_DB_PORT=3306
-          ROW_GUARD_REQUIRED=1
-
-    - name: Stop Docker
-      if: always()
-      run: npm run docker:ci:root:down
+  test-staff-ui-root:
+    name: Staff UI / root / PHP ${{ matrix.php-version }} / shard ${{ matrix.shard }}
+    needs: [configure, build, lint]
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ${{ fromJSON(needs.configure.outputs.php-versions) }}
+        shard: ['0', '1', '2', '3']
+    uses: ./.github/workflows/test-root-suite.yml
+    with:
+      php-version: ${{ matrix.php-version }}
+      test-name: ui-shard-${{ matrix.shard }}
+      config-file: cypress/configs/docker-ui.config.ts
+      spec: cypress/e2e/ui/**/*.spec.js
+      shard-total: 4
+      shard-index: ${{ matrix.shard }}
 
   test-new-system:
     needs: [configure, build, lint]
@@ -392,7 +341,7 @@ jobs:
       run: npm run docker:ci:new-system:down
 
   test-summary:
-    needs: [build, test-root, test-new-system]
+    needs: [configure, lint, build, test-api-root, test-admin-ui-root, test-staff-ui-root, test-new-system]
     if: always()
     runs-on: ubuntu-24.04
     steps:
@@ -401,3 +350,10 @@ jobs:
 
     - name: Test overview
       uses: ./.github/actions/test-run-summary
+
+    - name: Check required test groups
+      if: always()
+      env:
+        NEEDS_JSON: ${{ toJSON(needs) }}
+        LOCALE_PR: ${{ startsWith(github.head_ref, 'locale/') }}
+      run: node scripts/ci/test-run-summary.js check

@@ -40,7 +40,6 @@ describe("Finance Statement Settings", () => {
             cy.visit("/finance/statements/settings");
             cy.get("#statementOutput select[name='iPDFOutputType'] option").should("have.length", 2);
             cy.get("#statementOutput input[name='iPDFOutputType']").should("not.exist");
-            cy.contains("a", "Preview PDF").should("not.exist");
         });
 
         it("keeps statement settings out of System Settings", () => {

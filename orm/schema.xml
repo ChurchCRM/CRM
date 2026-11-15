@@ -806,7 +806,7 @@
         <column name="setting_name" phpName="Name" type="VARCHAR" size="50" primaryKey="true" required="true"/>
         <column name="setting_value" phpName="Value" type="VARCHAR" size="50" />
 
-        <foreign-key foreignTable="user_usr">
+        <foreign-key foreignTable="user_usr" name="fk_user_settings_user" onDelete="cascade">
             <reference local="user_id" foreign="usr_per_ID"/>
         </foreign-key>
 
@@ -1957,7 +1957,7 @@
             <index-column name="psa_Time"/>
         </index>
         <index name="psa_email_time_idx">
-            <index-column name="psa_Email"/>
+            <index-column name="psa_Email" size="190"/>
             <index-column name="psa_Time"/>
         </index>
         <index name="psa_ip_time_idx">

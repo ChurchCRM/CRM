@@ -51,7 +51,13 @@ $bLockURL = false;
 // Enable this line to debug the bootstrapper process (database connections, etc).
 // this makes a lot of log noise, so don't leave it on for normal production use.
 //$debugBootstrapper = true;
-Bootstrapper::init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, $URL);
+try {
+    Bootstrapper::init($sSERVERNAME, $dbPort, $sUSER, $sPASSWORD, $sDATABASE, $sRootPath, $bLockURL, $URL);
+} catch (Error $error) {
+    $requirementsRootPath = $sRootPath;
+    require __DIR__ . '/CheckRequirements.php';
+    throw $error;
+}
 
 // Upgrade continuation pages must not write settings into an older schema.
 if (!Bootstrapper::isDBCurrent()) {

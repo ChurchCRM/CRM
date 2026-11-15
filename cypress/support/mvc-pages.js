@@ -5,6 +5,7 @@
 
 export const MVC_PAGES = {
     v2: ["/v2/dashboard", "/v2/search"],
+    account: ["/account", "/account/password", "/account/2fa"],
     people: [
         "/people/",
         "/people/dashboard",
@@ -14,6 +15,7 @@ export const MVC_PAGES = {
         "/people/email",
         "/people/text",
         "/people/reports",
+        "/people/reports/letters-and-labels",
         "/people/map",
         "/people/photos",
         "/people/self-register",
@@ -30,7 +32,9 @@ export const MVC_PAGES = {
     admin: [
         "/admin/",
         "/admin/people",
+        "/admin/properties/person/new",
         "/admin/export",
+        "/admin/export/csv",
         "/admin/system/users",
         "/admin/system/users/new",
         "/admin/system/options",
@@ -39,6 +43,7 @@ export const MVC_PAGES = {
         "/admin/system/debug",
         "/admin/system/upgrade",
         "/admin/system/church-info",
+        "/admin/property-types/new",
     ],
 };
 
@@ -46,6 +51,5 @@ export const LEGACY_PAGES = [
     "/PersonEditor.php?PersonID=2",
     "/FamilyEditor.php?FamilyID=1",
     "/SystemSettings.php",
-    "/LettersAndLabels.php",
     "/DirectoryReports.php",
 ];

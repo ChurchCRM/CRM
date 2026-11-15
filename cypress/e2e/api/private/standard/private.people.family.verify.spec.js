@@ -6,13 +6,13 @@ describe("API Private Family Verify", () => {
         cy.makePrivateAdminAPICall("POST", "/api/family/2/verify/now", null, 200);
     });
 
-    it("Get family verification URL", () => {
-        // Test getting verification URL without sending email
-        cy.makePrivateAdminAPICall("GET", "/api/family/2/verify/url", null, 200).then(
-            (response) => {
-                expect(response.body).to.have.property("url");
-                expect(response.body.url).to.include("/external/verify/");
-            },
-        );
+
+    it("Emails an approved family the portal link", () => {
+        cy.makePrivateAdminAPICall("POST", "/api/family/2/verify", null, 200);
+    });
+
+    it("Rejects a user without EditRecords", () => {
+        cy.makePrivateNoPermAPICall("POST", "/api/family/2/verify", null, 403);
+        cy.makePrivateNoPermAPICall("POST", "/api/family/2/verify/now", null, 403);
     });
 });

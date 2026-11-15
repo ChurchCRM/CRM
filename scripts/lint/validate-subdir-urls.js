@@ -30,7 +30,7 @@ const SCAN_DIRS = [
 ];
 const SKIP = /(^|\/)(vendor|external|node_modules|locale|logs|Images|videos|screenshots|reports)(\/|$)|\/skin\/v2\/|\.min\.js$/;
 const EXTENSIONS = /\.(php|twig|js|ts|tsx|scss|css)$/;
-const ROUTES = 'api|admin|people|finance|groups|v2|event|kiosk|plugins|ministries|fundraiser|session|setup|portal|skin';
+const ROUTES = 'account|api|admin|people|finance|groups|v2|event|kiosk|plugins|ministries|fundraiser|session|setup|portal|skin';
 
 const SINK =
     '(?:\\bfetch\\s*\\(|\\$\\.(?:ajax|get|post|getJSON)\\s*\\(|\\burl\\s*:|window\\.location(?:\\.href)?\\s*=(?!=)|' +

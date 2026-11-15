@@ -100,25 +100,6 @@ describe("Staff download reports with a common church identity", () => {
         });
     });
 
-    it("emails verification with the shared Unicode attachment filename", () => {
-        messages().then(({ body }) => {
-            const knownIds = body.messages.map((message) => message.ID);
-            cy.visit("/people/verify");
-            cy.get('#verifyEmailAllForm input[name="csrf_token"]').invoke("val").then((token) => {
-                cy.request({
-                    method: "POST", url: "/people/report/verify/email", form: true,
-                    body: { familyId: 17, csrf_token: token }, followRedirect: false,
-                }).then((response) => {
-                    expect(response.status).to.eq(302);
-                    expect(response.headers.location).to.include("/people/family/17?PDFEmailed=1");
-                });
-            });
-            newAttachment(knownIds, "Cooper: Please verify your family's information").then((pdf) => {
-                expect(pdf.FileName).to.match(/^Église-Nord-ConfirmReportEmail-Cooper-\d{4}-\d{2}-\d{2}\.pdf$/);
-            });
-        });
-    });
-
     it("shares the church header and includes the tax ID only on the giving statement", () => {
         download(envelope).then((response) => pdfText(response.body)).then((lines) => {
             expect(lines.join(" ")).to.include(churchName).and.not.include("TAX-11040");

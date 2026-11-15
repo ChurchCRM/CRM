@@ -186,4 +186,23 @@ describe("API Private Calendar Authorization", () => {
             });
         });
     });
+
+    describe("GET /api/calendars public feed token", () => {
+        it("Returns the token only to a caller who may administer the calendar", () => {
+            const id = calendarId;
+            cy.makePrivateAdminAPICall("POST", `/api/calendars/${id}/NewAccessToken`, null, 200).then((minted) => {
+                const token = minted.body.AccessToken;
+                cy.makePrivateAdminAPICall("GET", `/api/calendars/${id}`, null, 200).then((response) => {
+                    expect(response.body.Calendars[0].AccessToken).to.eq(token);
+                });
+                cy.makePrivateNoPermAPICall("GET", `/api/calendars/${id}`, null, 200).then((response) => {
+                    expect(response.body.Calendars[0].Name).to.be.a("string").and.not.be.empty;
+                    expect(response.body.Calendars[0].AccessToken).to.be.null;
+                });
+                cy.makePrivateNoPermAPICall("GET", "/api/calendars", null, 200).then((response) => {
+                    expect(response.body.Calendars.map((c) => c.AccessToken)).to.not.include(token);
+                });
+            });
+        });
+    });
 });

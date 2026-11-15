@@ -858,7 +858,7 @@ VALUES
 --
 
 CREATE TABLE `user_settings` (
-  `user_id` int(11) NOT NULL,
+  `user_id` mediumint(9) unsigned NOT NULL,
   `setting_name` varchar(50) NOT NULL,
   `setting_value` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -878,7 +878,8 @@ INSERT INTO `user_settings` (`user_id`, `setting_name`, `setting_value`) VALUES
 -- Indexes for table `user_settings`
 --
 ALTER TABLE `user_settings`
-  ADD PRIMARY KEY (`user_id`,`setting_name`);
+  ADD PRIMARY KEY (`user_id`,`setting_name`),
+  ADD CONSTRAINT `fk_user_settings_user` FOREIGN KEY (`user_id`) REFERENCES `user_usr` (`usr_per_ID`) ON DELETE CASCADE;
 
 -- --------------------------------------------------------
 
@@ -1635,7 +1636,7 @@ CREATE TABLE `portal_signin_audit_psa` (
   PRIMARY KEY (`psa_ID`),
   KEY `psa_person_time_idx` (`psa_per_ID`, `psa_Time`),
   KEY `psa_time_idx`        (`psa_Time`),
-  KEY `psa_email_time_idx`  (`psa_Email`, `psa_Time`),
+  KEY `psa_email_time_idx`  (`psa_Email`(190), `psa_Time`),
   KEY `psa_ip_time_idx`     (`psa_IP`, `psa_Time`),
   CONSTRAINT `fk_psa_person` FOREIGN KEY (`psa_per_ID`)
       REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE

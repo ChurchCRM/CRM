@@ -563,16 +563,16 @@ $fmtBytes = static function ($bytes): string {
     <!-- Anonymous Telemetry configuration card -->
     <?php
     $telemetryLevel   = TelemetryService::getLevel();
-    $telemetryEnabled = TelemetryService::isEnabled();
+    $telemetryEnabled = $telemetryLevel !== TelemetryService::LEVEL_NONE;
     $levelLabels = [
         TelemetryService::LEVEL_NONE     => gettext('Disabled'),
-        TelemetryService::LEVEL_ERRORS   => gettext('Errors — server errors and JS exceptions'),
-        TelemetryService::LEVEL_WARNINGS => gettext('Warnings — warnings, errors, and JS exceptions'),
+        TelemetryService::LEVEL_INSTALL  => gettext('Install — installation and upgrade statistics (default)'),
+        TelemetryService::LEVEL_ERRORS   => gettext('Errors — install statistics, warnings, errors, and JS exceptions'),
         TelemetryService::LEVEL_FULL     => gettext('Full — page views, warnings, errors, and JS exceptions'),
     ];
     ?>
     <div class="col-12">
-    <div class="card <?= $telemetryEnabled ? '' : 'border-secondary' ?>">
+    <div class="card <?= $telemetryEnabled ? '' : 'border-secondary' ?>" id="telemetry">
         <div class="card-status-top <?= $telemetryEnabled ? 'bg-success' : 'bg-secondary' ?>"></div>
         <div class="card-header">
             <h4 class="mb-0">
@@ -614,14 +614,16 @@ $fmtBytes = static function ($bytes): string {
                             <tbody>
                                 <tr><td><?= gettext('Installation UUID') ?></td><td><?= gettext('Count unique installs') ?></td></tr>
                                 <tr><td><?= gettext('ChurchCRM version') ?></td><td><?= gettext('Track adoption') ?></td></tr>
-                                <tr><td><?= gettext('Locale') ?></td><td><?= gettext('Prioritise translations') ?></td></tr>
+                                <tr><td><?= gettext('Installation profile') ?></td><td><?= gettext('Separate production, demo, and test installs') ?></td></tr>
+                                <tr><td><?= gettext('Database engine and major/minor version') ?></td><td><?= gettext('Understand database compatibility') ?></td></tr>
+                                <tr><td><?= gettext('Locale (Errors and Full)') ?></td><td><?= gettext('Prioritize translations') ?></td></tr>
                                 <tr><td><?= gettext('Page route') ?> <span class="badge bg-info-lt text-info ms-1"><?= gettext('full only') ?></span></td><td><?= gettext('Understand feature usage') ?></td></tr>
                                 <tr><td><?= gettext('Church country') ?></td><td><?= gettext('Understand where ChurchCRM is used') ?></td></tr>
-                                <tr><td><?= gettext('PHP version') ?></td><td><?= gettext('Plan runtime support') ?></td></tr>
-                                <tr><td><?= gettext('OS family') ?></td><td><?= gettext('Understand deployments') ?></td></tr>
+                                <tr><td><?= gettext('PHP version (Errors and Full)') ?></td><td><?= gettext('Plan runtime support') ?></td></tr>
+                                <tr><td><?= gettext('OS family (Errors and Full)') ?></td><td><?= gettext('Understand deployments') ?></td></tr>
                                 <tr><td><?= gettext('Log level + message') ?> <span class="badge bg-warning-lt text-warning ms-1"><?= gettext('errors+') ?></span></td><td><?= gettext('Catch recurring errors') ?></td></tr>
                                 <tr><td><?= gettext('JS exceptions') ?> <span class="badge bg-warning-lt text-warning ms-1"><?= gettext('errors+') ?></span></td><td><?= gettext('Catch JS errors') ?></td></tr>
-                                <tr><td><?= gettext('Install and upgrade failure details') ?> <span class="badge bg-danger-lt text-danger ms-1"><?= gettext('always sent') ?></span></td><td><?= gettext('Diagnose failed installs and database upgrades') ?></td></tr>
+                                <tr><td><?= gettext('Installation and upgrade results, previous version on upgrades, and a daily check-in while in use') ?></td><td><?= gettext('Count active installations and upgrade outcomes') ?></td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -635,7 +637,7 @@ $fmtBytes = static function ($bytes): string {
                         <li><?= gettext('URLs with query strings (record IDs are stripped)') ?></li>
                     </ul>
                     <p class="small text-secondary mt-2 mb-0">
-                        <?= gettext('Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled.') ?>
+                        <?= gettext('Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States.') ?>
                     </p>
                 </div>
             </div>

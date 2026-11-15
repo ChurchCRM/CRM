@@ -48,12 +48,13 @@ $sGithubIssueUrl = 'https://github.com/ChurchCRM/CRM/issues/new'
 ?>
 <?php if ($bStandalone) { ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme-mode="auto">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title><?= htmlspecialchars($title) ?></title>
   <link rel="icon" href="<?= SystemURLs::getRootPath() ?>/favicon.ico" type="image/x-icon">
+  <script src="<?= SystemURLs::assetVersioned('/skin/v2/theme.min.js') ?>"></script>
   <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.css') ?>">
 </head>
 <body>
@@ -80,7 +81,7 @@ $sGithubIssueUrl = 'https://github.com/ChurchCRM/CRM/issues/new'
                           <?= htmlspecialchars($returnText) ?>
                         </a>
                         <button type="button" class="btn btn-outline-secondary btn-lg" id="errorReportBtn">
-                          <?= gettext('Report an issue') ?>
+                          <?= gettext('Report an Issue') ?>
                         </button>
                       </div>
 

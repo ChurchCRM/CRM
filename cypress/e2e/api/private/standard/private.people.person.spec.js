@@ -17,6 +17,19 @@ describe("API Private Person", () => {
             );
         });
 
+        // Person 105 (Mary Smith) is born in 1985 with her age hidden.
+        it("Returns the birth year of a person whose age is hidden only to a caller who may edit her", () => {
+            cy.makePrivateAdminAPICall("GET", "/api/person/105", null, 200).then((response) => {
+                expect(response.body.BirthYear).to.eq(1985);
+                expect(response.body.Flags).to.eq(1);
+            });
+            cy.makePrivateNoPermAPICall("GET", "/api/person/105", null, 200).then((response) => {
+                expect(response.body.BirthMonth).to.be.a("number").and.be.greaterThan(0);
+                expect(response.body.BirthYear).to.be.null;
+                expect(response.body).to.not.have.property("Flags");
+            });
+        });
+
         it("Returns error for non-existent person", () => {
             // AbstractEntityMiddleware returns 404 Not Found for missing entity
             cy.makePrivateAdminAPICall("GET", "/api/person/99999", null, 404);

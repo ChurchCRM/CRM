@@ -1,6 +1,8 @@
 <?php
 
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\DatabaseVersionService;
+use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\VersionUtils;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
@@ -51,12 +53,19 @@ $app->get('/limited-access', function (Request $request, Response $response): Re
             return $response->withHeader('Location', SystemURLs::getRootPath() . '/')->withStatus(302);
         }
 
+        try {
+            TelemetryService::captureVersionMismatch($dbVersion, empty($errorMessage) ? 'database_newer' : 'upgrade_failed');
+        } catch (\Throwable) {
+            // Reporting must never hide this page.
+        }
+
         $pageArgs = [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Version Mismatch'),
             'dbVersion' => $dbVersion,
             'softwareVersion' => $softwareVersion,
             'errorMessage' => $errorMessage,
+            'databaseNotice' => $errorMessage ? DatabaseVersionService::getUpgradeWarningMessage() : null,
         ];
         return $renderer->render($response, 'system-db-update.php', $pageArgs);
     });

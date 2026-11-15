@@ -11,6 +11,7 @@ use Monolog\LogRecord;
 use Tester\Assert;
 
 require dirname(__DIR__, 2) . '/bootstrap.php';
+(new \ReflectionProperty(\ChurchCRM\Service\TelemetryService::class, 'logDedupeDirectory'))->setValue(null, sys_get_temp_dir() . '/crm-telemetry-test-' . bin2hex(random_bytes(6)));
 
 // Intercept the transport before cURL can open a connection.
 function curl_init(string $url): false
@@ -29,6 +30,12 @@ foreach (['' => 'production', 'invalid' => 'production', 'production' => 'produc
     Assert::same('test', TelemetryService::resolveInstallProfile($stored, true));
 }
 Assert::same('production', TelemetryService::installProfile());
+foreach (['demos6.softaculous.com' => true, 'softaculous.com:8080' => true, 'notsoftaculous.com' => false, 'church.org' => false, '' => false] as $host => $isDemo) {
+    Assert::same($isDemo, TelemetryService::isKnownDemoHost((string) $host));
+}
+Assert::same('demo', TelemetryService::resolveInstallProfile('production', false, true));
+Assert::same('test', TelemetryService::resolveInstallProfile('test', false, true));
+Assert::same('test', TelemetryService::resolveInstallProfile('production', true, true));
 
 $value = static fn (string $value) => new class($value) {
     public function __construct(private string $value) {}
@@ -44,6 +51,7 @@ foreach (['production', 'demo', 'test'] as $profile) {
         'sInstallDataProfile' => $value($profile),
         'sTelemetryLevel' => $value('full'),
         'sSystemID' => $value('install-id'),
+        'sTelemetryLifecycleVersion' => $value('7.8.2'),
     ]);
     Assert::same($profile, TelemetryService::installProfile());
     Assert::same($profile, $baseProperties->invoke(null)['install_profile']);
@@ -54,11 +62,16 @@ foreach (['production', 'demo', 'test'] as $profile) {
     TelemetryService::capturePageView('/people/person');
     TelemetryService::captureLogEvent(new LogRecord(new \DateTimeImmutable(), 'app', Level::Error, 'Error'));
     TelemetryService::captureUpgradeSqlDuration('7.8.3', 10, true);
-    TelemetryService::captureInstallFailure('RuntimeException');
+    TelemetryService::captureInstallFailure('schema_import_failed');
     TelemetryService::captureUpgradeFailure('7.8.3', 'RuntimeException');
     TelemetryService::captureUpgradeSqlError('7.8.3', 10, 'Database error');
     TelemetryService::captureUpgradeInterruption('7.8.3', 10);
-    Assert::same($suppressed ? 0 : 9, $GLOBALS['telemetryTransportCalls'] - $before);
+    TelemetryService::captureRequirementsFailure(['PHP Filter', 'cURL']);
+    TelemetryService::captureRequirementsFailure(['cURL', 'PHP Filter']);
+    TelemetryService::captureVersionMismatch('7.9.0', 'database_newer');
+    TelemetryService::captureVersionMismatch('7.9.0', 'database_newer');
+    TelemetryService::captureVersionMismatch('7.9.0', 'invalid');
+    Assert::same($suppressed ? 0 : 13, $GLOBALS['telemetryTransportCalls'] - $before);
 }
 
 $configs->setValue(null, ['sInstallDataProfile' => $value('production'), 'sLanguage' => $value('en_US')]);
@@ -67,7 +80,9 @@ foreach (['CHURCHCRM_DISABLE_POSTHOG_TELEMETRY', 'PHP_TEST_DISPOSABLE_DB'] as $o
     Assert::same('test', TelemetryService::installProfile());
     Assert::same('test', $baseProperties->invoke(null)['install_profile']);
     $before = $GLOBALS['telemetryTransportCalls'];
-    TelemetryService::captureInstallFailure('RuntimeException');
+    TelemetryService::captureInstallFailure('schema_import_failed');
+    TelemetryService::captureRequirementsFailure(['cURL']);
+    TelemetryService::captureVersionMismatch('7.9.0', 'upgrade_failed');
     Assert::same($before, $GLOBALS['telemetryTransportCalls']);
     putenv($override);
 }
@@ -80,5 +95,3 @@ Assert::same('production', TelemetryService::installProfile());
 
 $seed = file_get_contents(dirname(APP_ROOT) . '/cypress/data/seed.sql');
 Assert::contains("('sInstallDataProfile','test')", $seed);
-$demo = file_get_contents(APP_ROOT . '/ChurchCRM/Service/DemoDataService.php');
-Assert::contains("\$this->importSystemConfig(\$force);\n            SystemConfig::setValue('sInstallDataProfile', 'demo');", $demo);

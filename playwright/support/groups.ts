@@ -15,14 +15,15 @@ export async function gotoFirstActiveGroup(page: Page): Promise<void> {
 
   // Only rows with a link are real data: while DataTables loads its locale
   // file and the group list, tbody holds a single placeholder row.
-  const rows = page.locator('#groupsTable tbody tr').filter({ has: page.locator('a') });
+  const groupLink = 'a[href*="/groups/view/"]';
+  const rows = page.locator('#groupsTable tbody tr').filter({ has: page.locator(groupLink) });
   await expect(rows.first()).toBeVisible({ timeout: 15000 });
   await humanPause(page, 500);
 
   const rowCount = await rows.count();
 
   for (let i = 0; i < rowCount; i++) {
-    await humanClick(rows.nth(i).locator('a').first());
+    await humanClick(rows.nth(i).locator(groupLink).first());
     await page.waitForURL(/\/groups\/view\/\d+/, { timeout: 15000 });
     await expect(page.locator('h2')).toBeVisible({ timeout: 10000 });
 
