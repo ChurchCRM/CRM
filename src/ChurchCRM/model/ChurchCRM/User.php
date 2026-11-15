@@ -6,6 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\Authentication\Exceptions\PasswordChangeException;
 use ChurchCRM\Authentication\SignInThrottle;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\Portal\Auth\PortalMemberUser;
 use ChurchCRM\Utils\KeyManagerUtils;
 use ChurchCRM\model\ChurchCRM\Base\User as BaseUser;
 use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
@@ -152,7 +153,7 @@ class User extends BaseUser
      */
     public function isEditSelfExclusive(): bool
     {
-        return !$this->isAdmin() && $this->isEditSelf();
+        return $this instanceof PortalMemberUser || (!$this->isAdmin() && $this->isEditSelf());
     }
 
     public function isAddRecordsEnabled(): bool
