@@ -41,9 +41,6 @@ export function renderInlineError(
   }
 }
 
-/**
- * Clears an inline error banner from a container element.
- */
 export function clearInlineError(container: HTMLElement | null | undefined): void {
   if (!container) return;
   container.textContent = "";
