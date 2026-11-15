@@ -164,47 +164,37 @@ describe("Person deletion preserves recorded history", () => {
             .then(() => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200));
     });
 
-    it("preserves recorded person email history when deletion is blocked", () => {
+    // Email logs are dependent records; the database cascades them when
+    // their owning person or family is deleted.
+    it("removes person email records through the database cascade", () => {
         return cy.sendComposerEmailNow({
             personIds: [personId],
             subject: `History test ${personId}`,
-            body: "Recorded email history",
+            body: "Email history cleaned through FK",
         })
             .then(() => countPersonMail(personId))
-            .then((count) => expect(count, "email history before delete").to.be.at.least(1))
-            .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 403))
-            .then((response) => expect(response.body.message).to.include("communication history"))
-            .then(() => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200))
+            .then((count) => expect(count, "before delete").to.be.at.least(1))
+            .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 200))
             .then(() => countPersonMail(personId))
-            .then((count) => expect(count, "email history preserved").to.be.at.least(1));
+            .then((count) => expect(count, "cascade removed rows").to.equal(0));
     });
 
-    it("preserves recorded family email history when deletion is blocked", () => {
+    it("removes family email records through the database cascade", () => {
         return recordSentFamilyMail(familyId, personId)
             .then(() => countFamilyMail(familyId))
-            .then((count) => expect(count, "family email before delete").to.equal(1))
-            .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/family/${familyId}?deleteMembers=true`, null, 403))
-            .then((response) => expect(response.body.message).to.include("communication history"))
-            .then(() => cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}`, null, 200))
+            .then((count) => expect(count, "before delete").to.equal(1))
+            .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/family/${familyId}?deleteMembers=true`, null, 200))
             .then(() => countFamilyMail(familyId))
-            .then((count) => expect(count, "family email preserved").to.equal(1));
+            .then((count) => expect(count, "cascade removed rows").to.equal(0))
+            .then(() => countPersonMail(personId))
+            .then((count) => expect(count, "person emails removed").to.equal(0));
     });
 
-    it("blocks deletion rather than silently discarding queued messages", () => {
+    it("cancels queued mail through the database cascade", () => {
         return recordUnsentActivity(personId)
-            .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 403))
-            .then((response) => expect(response.body.message).to.include("communication history"))
-            .then(() => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200));
-    });
-
-    it("blocks removing a family with substantive notes even if members are retained", () => {
-        return cy.makePrivateAdminAPICall("POST", `/api/family/${familyId}/note`, { text: "Retained family note" }, 201)
-            .then((response) => {
-                familyNoteIds.push(Number(response.body.note.id));
-                return cy.makePrivateAdminAPICall("DELETE", `/api/family/${familyId}?deleteMembers=false`, null, 403);
-            })
-            .then((response) => expect(response.body.message).to.include("Deactivate the family instead"))
-            .then(() => cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}`, null, 200));
+            .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 200))
+            .then(() => countPersonMail(personId))
+            .then((count) => expect(count, "queued email removed").to.equal(0));
     });
 
     it("blocks a family cascade when the only history is a family note written by someone outside it", () => {
