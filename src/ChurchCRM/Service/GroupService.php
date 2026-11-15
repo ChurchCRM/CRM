@@ -2,7 +2,6 @@
 
 namespace ChurchCRM\Service;
 
-use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -377,23 +376,11 @@ class GroupService
             $member['Person']['State'] = $person->getResolvedState();
             $member['Person']['Zip'] = $person->getResolvedZip();
             $member['Person']['Country'] = $person->getResolvedCountry();
-            // Keep the displayed physical address consistent with the resolved
-            // personal-over-family fields, including both street-address lines.
-            $resolvedAddress = [
-                'Address1' => $member['Person']['Address1'],
-                'Address2' => $member['Person']['Address2'],
-                'City' => $member['Person']['City'],
-                'State' => $member['Person']['State'],
-                'Zip' => $member['Person']['Zip'],
-                'Country' => $member['Person']['Country'],
-            ];
-            $member['Person']['Address'] = Family::formatAddressBlock($resolvedAddress, ' ');
-
-            // Secondary family address is a separate address group, not Address2.
-            // Expose it separately so it cannot silently replace the visit address.
+            $member['Person']['Address'] = $person->getResolvedAddress();
+            // A second family address is independent of its Address2 street line.
             $family = $person->getFamily();
             $member['Person']['SecondaryAddress'] = $family?->hasSecondAddress()
-                ? Family::formatAddressBlock($family->getSecondaryAddressParts(), ' ')
+                ? $family->getSecondaryAddress()
                 : '';
             $member['Person']['SecondaryIsMailing'] = $family?->isSecondAddressMailing() ?? false;
             $member['Person']['HomePhone'] = $person->getResolvedHomePhone();
