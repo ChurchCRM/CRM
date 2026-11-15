@@ -48,6 +48,7 @@ export default defineConfig({
     'teamleader.api.key': 'teamLeaderApiKeyForTesting1234567890123456',
     'deceased.api.key': 'deceasedUserApiKeyForTesting1234567890123',
     'inactive.api.key': 'inactiveUserApiKeyForTesting1234567890123',
+    'noperm.api.key': 'noPermUserApiKeyForTesting123456789012345678',
     'admin.username': 'admin',
     'admin.password': 'changeme',
     'standard.username': 'tony.wade@example.com',

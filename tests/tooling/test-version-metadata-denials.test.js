@@ -190,7 +190,7 @@ test("nginx protects metadata inside every ^~ application prefix", () => {
   assert.deepEqual(rootPrefixes, [
     "/session", "/api", "/v2", "/admin", "/finance", "/kiosk", "/plugins",
     "/external", "/setup", "/people", "/groups", "/event", "/fundraiser",
-    "/ministries", "/portal", "/Images/",
+    "/ministries", "/account", "/portal", "/Images/",
   ]);
   for (const prefix of rootPrefixes) {
     const entry = "    location ^~ " + prefix + " {\n";

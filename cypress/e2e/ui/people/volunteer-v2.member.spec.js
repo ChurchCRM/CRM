@@ -710,7 +710,7 @@ describe("Volunteer v2 â€” S5 / S6, the volunteer self-service screens (#9712, Â
             freshMemberLogin();
             cy.visit(OPPORTUNITIES_URL);
             cy.get(".volunteer-offer-help").click();
-            cy.get(".notyf__toast").should("contain", "you'd like to help");
+            cy.get("#crm-toasts .toast").should("contain", "you'd like to help");
 
             cy.makePrivateAdminAPICall(
                 "GET",
@@ -726,7 +726,7 @@ describe("Volunteer v2 â€” S5 / S6, the volunteer self-service screens (#9712, Â
             freshMemberLogin();
             cy.visit(OPPORTUNITIES_URL);
             cy.get(".volunteer-offer-help").should("be.visible").click();
-            cy.get(".notyf__toast").should("contain", "again");
+            cy.get("#crm-toasts .toast").should("contain", "again");
         });
 
         it("renders the section through i18next, never a raw key", () => {
@@ -891,7 +891,7 @@ describe("Volunteer v2 â€” S5 / S6, the volunteer self-service screens (#9712, Â
             freshMemberLogin();
             cy.visit(OPPORTUNITIES_URL);
             cy.get(".volunteer-offer-help").click();
-            cy.get(".notyf__toast").should("contain", "you'd like to help");
+            cy.get("#crm-toasts .toast").should("contain", "you'd like to help");
 
             cy.makePrivateAdminAPICall(
                 "GET",

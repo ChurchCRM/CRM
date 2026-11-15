@@ -30,5 +30,6 @@ Read in order:
 - UI changes: require a tablet/mobile manual pass. Ask for screenshots if they exist. Do not block only because shots are missing.
 - Dates, times, numbers, currency, timezone: follow `timezone-handling.md`. API/storage is ISO or naive `sTimeZone` wall-clock. Display settings are not parse formats. Wrong contract is Request changes.
 - Posted reviews include a checkbox list of what is still open.
+- Token discipline: follow the Token discipline section in `pr-review.md` — cheapest-model exploration subagents, mid-model review pass, delta re-reviews keyed to the recorded head SHA, one fresh session per PR, and never poll CI with an agent loop.
 - Do not ask for `locale:build`.
 - Be thankful. Do not nitpick.

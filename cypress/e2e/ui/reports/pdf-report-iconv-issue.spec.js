@@ -23,7 +23,7 @@ describe("PDF Reports - iconv fallback fix", () => {
     });
 
     it("Name Tags / Labels page loads without fatal error", () => {
-        cy.visit("LettersAndLabels.php");
+        cy.visit("/people/reports/letters-and-labels");
         cy.contains("Letters and Mailing Labels");
         cy.get("body").should("not.contain", "Fatal error");
         cy.get("body").should("not.contain", "Call to undefined function");

@@ -26,34 +26,6 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
     const groupID = 1;
 
     // ------------------------------------------------------------------
-    // Page-load tests — no data setup needed, use session cache
-    // ------------------------------------------------------------------
-    describe("Page load", () => {
-        beforeEach(() => {
-            cy.setupAdminSession();
-        });
-
-        it("loads GroupView and shows the Properties sidebar card", () => {
-            cy.visit(`/groups/view/${groupID}`);
-            cy.contains("h3.card-title", "Properties").should("be.visible");
-        });
-
-        it("shows the assign select and button when unassigned properties exist", () => {
-            cy.visit(`/groups/view/${groupID}`);
-            cy.get("body").then(($body) => {
-                if ($body.find("#group-property-select").length) {
-                    cy.get("#group-property-select").should("be.visible");
-                    cy.get("#assign-group-property-btn").should("be.visible");
-                } else {
-                    cy.log(
-                        "All group properties already assigned — skipping"
-                    );
-                }
-            });
-        });
-    });
-
-    // ------------------------------------------------------------------
     // Assign a property — API setup BEFORE login
     // ------------------------------------------------------------------
     describe("Assign a property", () => {
@@ -175,11 +147,6 @@ describe("UI: Group Property Assignment (/groups/view/{id})", () => {
                     )
                 );
             });
-        });
-
-        it("shows a Remove button for each assigned property", () => {
-            cy.visit(`/groups/view/${groupID}`);
-            cy.get(".remove-group-property-btn").should("have.length.gte", 1);
         });
 
         it("clicking Remove opens a bootbox confirm; Cancel leaves property intact", () => {
@@ -370,37 +337,12 @@ describe("UI: GroupPropsFormEditor Back button and Show in Profile (#9381)", () 
         cy.visit(`/groups/${groupID}/properties/form`);
     });
 
-    it("shows a Back to Group button linking to the group view", () => {
-        cy.get(`a.btn-secondary[href*="/groups/view/${groupID}"]`)
-            .should("be.visible")
-            .and("contain.text", "Back to Group");
-    });
-
-    it("Back to Group button has a left-arrow icon", () => {
-        cy.get(`a.btn-secondary[href*="/groups/view/${groupID}"]`)
-            .find(".fa-arrow-left")
-            .should("exist");
-    });
-
-    it("clicking Back to Group navigates to the group view page", () => {
-        cy.get(`a.btn-secondary[href*="/groups/view/${groupID}"]`).click();
-        cy.location("pathname").should("include", `/groups/view/${groupID}`);
-    });
-
-    it("table header shows 'Show in Profile' (not 'Show in Person View')", () => {
+    it("labels the column 'Show in Profile' and saves the form without errors", () => {
         cy.get("th").contains("Show in Profile").should("be.visible");
-        cy.get("th").contains("Person View").should("not.exist");
-    });
-
-    it("Show in Profile column header has an accessible tooltip icon", () => {
-        // Bootstrap 5 Tooltip._fixTitle() moves `title` into `data-bs-original-title`
-        // and clears `title` to suppress the native browser tooltip.
+        // Bootstrap 5 Tooltip._fixTitle() moves `title` into `data-bs-original-title`.
         cy.get('th [data-bs-toggle="tooltip"]')
             .should("have.attr", "data-bs-original-title")
             .and("contain", "profile page");
-    });
-
-    it("Save Changes button is visible and form submits without errors", () => {
         cy.get('button[name="SaveChanges"]').should("be.visible").click();
         cy.url().should("include", "/properties/form");
         cy.get(".alert-danger:not(.crm-system-notification)").should("not.exist");

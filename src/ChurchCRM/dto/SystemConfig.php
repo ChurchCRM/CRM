@@ -126,8 +126,8 @@ class   SystemConfig
         return [
             'Choices' => [
                 gettext('None (disabled)') . ':none',
-                gettext('Errors — server errors and JS exceptions') . ':errors',
-                gettext('Warnings — warnings, errors, and JS exceptions') . ':warnings',
+                gettext('Install — installation and upgrade statistics (default)') . ':install',
+                gettext('Errors — install statistics, warnings, errors, and JS exceptions') . ':errors',
                 gettext('Full — all of the above plus page views') . ':full',
             ],
         ];
@@ -192,7 +192,7 @@ class   SystemConfig
             'bUseDonationEnvelopes'                => new ConfigItem('bUseDonationEnvelopes', 'boolean', '0', gettext('Enable the use of numbered donation envelopes for tracking contributions')),
             'iChecksPerDepositForm'                => new ConfigItem('iChecksPerDepositForm', 'number', '14', gettext('How many checks to print per deposit slip page')),
             'bUseScannedChecks'                    => new ConfigItem('bUseScannedChecks', 'boolean', '0', gettext('Allow scanned check images to be attached to deposit records')),
-            'bRequireCheckNumber'                  => new ConfigItem('bRequireCheckNumber', 'boolean', '1', gettext("Require a check number when recording check payments on deposit entries.\nNote: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once.")),
+            'bRequireCheckNumber'                  => new ConfigItem('bRequireCheckNumber', 'boolean', '1', gettext('Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates.')),
 
             'sDistanceUnit'                        => new ConfigItem('sDistanceUnit', 'choice', 'miles', gettext('Unit used to measure distance, miles or km.'), '', '{"Choices":["' . gettext('miles') . '","' . gettext('kilometers') . '"]}'),
             'sTimeZone'                            => new ConfigItem('sTimeZone', 'choice', 'America/New_York', gettext('Time zone'), 'https://www.php.net/manual/en/timezones.php', json_encode(['Choices' => timezone_identifiers_list()])),
@@ -377,10 +377,12 @@ class   SystemConfig
             'sDefaultZip'                          => new ConfigItem('sDefaultZip', 'text', '', gettext('Default Zip')),
             'sSystemID'                            => new ConfigItem('sSystemID', 'text', ''),
 
-            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'none', gettext('Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement.'), '', json_encode(self::getTelemetryLevelChoices())),
+            'sTelemetryLevel'                      => new ConfigItem('sTelemetryLevel', 'choice', 'install', gettext('Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades.'), '', json_encode(self::getTelemetryLevelChoices())),
             'sInstallDataProfile'                  => new ConfigItem('sInstallDataProfile', 'choice', 'production', '', '', json_encode(['production' => 'production', 'demo' => 'demo', 'test' => 'test'])),
             'sTelemetryAskedVersion'               => new ConfigItem('sTelemetryAskedVersion', 'text', ''),
             'sTelemetryLifecycleVersion'            => new ConfigItem('sTelemetryLifecycleVersion', 'text', ''),
+            'sTelemetryHeartbeatDate'               => new ConfigItem('sTelemetryHeartbeatDate', 'text', ''),
+            'sTelemetryUpgradeFailureKey'           => new ConfigItem('sTelemetryUpgradeFailureKey', 'text', ''),
         ];
     }
 
@@ -405,6 +407,10 @@ class   SystemConfig
         self::$configs = self::buildConfigs();
         self::$categories = self::buildCategories();
         if (!empty($configs)) {
+            // Older installs stored None by omitting the row. Preserve that choice during upgrades.
+            if (!$pruneUnknown) {
+                self::$configs['sTelemetryLevel'] = new ConfigItem('sTelemetryLevel', 'choice', 'none', self::$configs['sTelemetryLevel']->getTooltip(), '', json_encode(self::getTelemetryLevelChoices()));
+            }
             self::scrapeDBConfigs($configs, $pruneUnknown);
         }
     }

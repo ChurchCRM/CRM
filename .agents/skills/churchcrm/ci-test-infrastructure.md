@@ -20,9 +20,9 @@ Commands, setup and package layout: [`tests/php/README.md`](../../../tests/php/R
 
 ## Pipeline
 
-`lint` (`npm run lint`) and `build` run first. Every test job needs both, so a red lint stops the Docker jobs. `build` uploads `ChurchCRM-<version>.zip`; `release-publish.yml` takes that zip from the green run on the release commit. `test-summary` gathers the results.
+`lint` (`npm run lint`) and `build` run first. Every test job needs both, so a red lint stops the Docker jobs. `build` uploads `ChurchCRM-<version>.zip`; `release-publish.yml` takes that zip from the green run on the release commit. The root API, Admin UI and Staff UI jobs call `test-root-suite.yml`. `test-summary` links results and timings and fails when a required group does not pass; locale-only skips follow the workflow's branch policy.
 
-Only files the suite runs or ships start the pipeline: `paths:` in `build-test-package.yml` excludes docs, agent files, Playwright artifacts, tooling config and every workflow file except the two test workflows. A pull request also skips generated translations; a push to `master` builds them because the release ZIP ships them. A new path that is neither tested nor shipped goes in both `paths:` lists.
+Only files the suite runs or ships start the pipeline: `paths:` in `build-test-package.yml` excludes docs, agent files, Playwright artifacts, tooling config and workflow files outside the test pipeline. A pull request also skips generated translations; a push to `master` builds them because the release ZIP ships them. A new path that is neither tested nor shipped goes in both `paths:` lists.
 
 Pull requests run the suite at the site root. The nightly workflow runs it at the root and under `/churchcrm`, plus the setup wizard, the locale sweep and the upgrade matrix, three times a day. A scheduled run ends green without testing when every file changed since the last successful run is one `build-test-package.yml` ignores on push; a failed run is never the baseline, and manual and release runs always test. Shard counts and matrix cells live in `.github/workflows/build-test-package.yml` and `build-test-nightly.yml`; read them there.
 
@@ -84,7 +84,7 @@ The test database is built from two files, mounted in order by `docker/docker-co
 
 ## Triage a red run
 
-1. Open the run summary. `test-summary` always passes; its table lists every job's result and the Cypress artifacts. Each Cypress job's own summary lists its failed tests, and the job log prints `❌ <suite> <test>` with the assertion. `cypress-junit-*` holds the XML. A task or raw-fetch failure should include the URL, status and a short body snippet; if it does not, that is the first thing to add.
+1. Open the run summary for job links, results, durations, failed steps and Cypress artifacts. Each Cypress job's own summary lists its failed tests; `cypress-junit-*` holds the XML and assertions. A task or raw-fetch failure should include the URL, status and a short body snippet; if it does not, that is the first thing to add.
 2. A cloud agent reading logs through an API gets one very long line. Save it to a file, split on `\n`, strip ANSI codes, and grep `❌`, `AssertionError` and `CypressError`.
 3. `Expected '/FamilyEditor.php' to include '/people/family/'` means the save failed, not the navigation. The PHP log is in the `cypress-artifacts-…` artifact (kept one day, with screenshots, videos and Docker logs) under `cypress/logs/php/`.
 4. A red `test-new-system` that restores a database has a restore file problem: the restore page needs a full backup, so the spec restores one the app made.

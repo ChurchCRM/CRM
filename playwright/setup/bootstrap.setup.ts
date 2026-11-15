@@ -74,9 +74,9 @@ setup('setup-church-info', async ({ page }, testInfo) => {
   await humanPause(page, 300);
   await page.locator('input[name=Password]').press('Enter');
   // waitForURL (not waitForNavigation, which only fires on the first
-  // navigation event) correctly handles the /login -> /changepassword
+  // navigation event) correctly handles the /login -> /account/password
   // redirect regardless of how many hops it takes.
-  await page.waitForURL(/\/changepassword/, { timeout: 30000 });
+  await page.waitForURL(/\/account\/password/, { timeout: 30000 });
 
   await humanType(page.locator('#OldPassword'), ADMIN_INITIAL_PASSWORD);
   await humanType(page.locator('#NewPassword1'), ADMIN_WORKING_PASSWORD);

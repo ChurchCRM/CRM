@@ -74,7 +74,7 @@ if (array_key_exists('datetype', $_POST)) {
     $datetype = InputUtils::legacyFilterInput($_GET['datetype']);
 }
 ?>
-<div class="card">
+<div class="card financial-reports">
   <div class="card-body">
 <!-- Styles for this page moved into the project's SCSS: `src/skin/scss/_financial-reports.scss` -->
 <?php

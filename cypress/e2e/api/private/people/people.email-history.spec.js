@@ -129,6 +129,17 @@ describe("Every send writes history rows", () => {
         });
     });
 
+    it("a family verification email logs the family and each member it went to", () => {
+        cy.makePrivateAdminAPICall("POST", "/api/family/1/verify", null, 200);
+
+        adminGet("/api/email/log?personId=2&limit=100").then((resp) => {
+            // Seed row 3 is an older verify row with another subject.
+            const row = resp.body.rows.find((r) => r.kind === "verify" && r.subject.startsWith("Campbell: Please verify"));
+            expect(row, "verification row in Mathew's history").to.exist;
+            expect(row).to.include({ personId: 2, familyId: 1, address: "mathew.campbell@example.com", status: "sent" });
+        });
+    });
+
     it("a password-reset request logs an account email for the user's person without a body", () => {
         cy.request({
             method: "POST",

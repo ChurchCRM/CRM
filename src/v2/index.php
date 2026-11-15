@@ -12,8 +12,6 @@ $app = MvcAppFactory::create('/v2', [
 // Register routes
 require __DIR__ . '/routes/common/mvc-helper.php';
 require __DIR__ . '/routes/search.php';
-require __DIR__ . '/routes/user.php';
-require __DIR__ . '/routes/user-current.php';
 require __DIR__ . '/routes/root.php';
 
 $app->run();

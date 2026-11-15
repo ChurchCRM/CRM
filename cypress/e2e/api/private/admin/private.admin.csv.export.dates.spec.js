@@ -20,7 +20,7 @@ describe("API Private Admin — CSV export date filters", () => {
         cy
             .request({
                 method: "POST",
-                url: "/CSVCreateFile.php",
+                url: "/admin/export/csv",
                 form: true,
                 body: {
                     FirstName: 1,

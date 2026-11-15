@@ -1821,14 +1821,6 @@ INSERT INTO `user_settings` (`user_id`, `setting_name`, `setting_value`) VALUES 
 (3,'ui.search.calendar.start',NULL),
 (3,'ui.style','skin-yellow-light'),
 (3,'ui.table.size','10'),
-(76,'finance.FY','20'),
-(76,'finance.show.payments','0'),
-(76,'finance.show.pledges','0'),
-(76,'finance.show.since','2016-01-01'),
-(76,'ui.search.calendar.end',NULL),
-(76,'ui.search.calendar.start',NULL),
-(76,'ui.style','skin-blue'),
-(76,'ui.table.size','10'),
 (95,'finance.FY','20'),
 (95,'finance.show.payments','0'),
 (95,'finance.show.pledges','0'),
@@ -1958,7 +1950,7 @@ INSERT INTO `version_ver` (`ver_ID`, `ver_version`, `ver_update_start`, `ver_upd
 (91,'7.7.1','2026-09-19 05:49:02','2026-09-19 05:49:02'),
 (92,'7.8.0','2026-09-26 19:44:44','2026-09-26 19:44:44'),
 (93,'7.8.1','2026-10-10 20:13:31','2026-10-10 20:13:31'),
-(94,'7.8.2','2026-10-18 23:31:54','2026-10-18 23:31:54'),(95,'7.8.3','2026-10-25 17:26:57','2026-10-25 17:26:57'),(96,'7.8.4','2026-11-05 23:50:03','2026-11-05 23:50:03');
+(94,'7.8.2','2026-10-18 23:31:54','2026-10-18 23:31:54'),(95,'7.8.3','2026-10-25 17:26:57','2026-10-25 17:26:57'),(96,'7.8.4','2026-11-05 23:50:03','2026-11-05 23:50:03'),(97,'7.8.5','2026-11-12 20:16:14','2026-11-12 20:16:14');
 
 -- Keep bulk geocoding fast. All ordinary seed addresses have coordinates so the
 -- dedicated Main Street family below is the only address the batch geocodes.

@@ -12,6 +12,7 @@ const FILES = {
     'docker/docker-compose.dev.yaml': '    image: mariadb:2.0\n',
     'docker/docker-compose.parallel.yaml': '    image: mariadb:2.0\n    image: mariadb:2.0\n',
     'docker/docker-compose.mysql.yaml': '# default mysql:1.0)\n    image: ${MYSQL_IMAGE:-mysql:1.0}\n',
+    'src/ChurchCRM/Service/DatabaseVersionService.php': "    public const MIN_MYSQL = '1.0';\n    public const MIN_MARIADB = '2.0';\n",
     'src/setup/templates/setup-steps.php': 'supports MySQL 1.0+ and MariaDB 2.0+ (the LTS releases)\n',
 };
 const trees = [];
@@ -57,6 +58,7 @@ describe('sync-supported-databases.js', () => {
         assert.equal(read(root, 'docker/docker-compose.mysql.yaml'), '# default mysql:8.4)\n    image: ${MYSQL_IMAGE:-mysql:8.4}\n');
         assert.equal(read(root, 'src/setup/templates/setup-steps.php'), 'supports MySQL 8.4+ and MariaDB 10.11+ (the LTS releases)\n');
         assert.equal(read(root, '.github/workflows/build-test-nightly.yml'), '# MySQL 8.4 LTS a\n# MariaDB 10.11 LTS b\n  db_image: ["mysql:8.4"]\n');
+        assert.equal(read(root, 'src/ChurchCRM/Service/DatabaseVersionService.php'), "    public const MIN_MYSQL = '8.4';\n    public const MIN_MARIADB = '10.11';\n");
         assert.equal(run(root, '--check').status, 0);
     });
 
