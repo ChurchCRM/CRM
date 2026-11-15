@@ -2135,10 +2135,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "これにより、データベース内の家族エンベロープ番号がこのページで選択したものに上書きされます。続行しますか?"
 
 #: 
-msgid "Family Select"
-msgstr "世帯選択"
-
-#: 
 msgid "Welcome to"
 msgstr "ようこそ"
 
@@ -15464,10 +15460,6 @@ msgstr "献金基金"
 #: 
 msgid "user"
 msgstr "ユーザー"
-
-#: 
-msgid "with at least one"
-msgstr "少なくとも1つ"
 
 #: 
 msgid "Also send to church address ({{email}})"

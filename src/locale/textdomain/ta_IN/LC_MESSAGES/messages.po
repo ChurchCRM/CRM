@@ -2156,10 +2156,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "இது இந்தப் பக்கத்தில் தேர்ந்தெடுக்கப்பட்டவற்றுடன் தரவுத்தளத்தில் உள்ள குடும்ப உறை எண்களை மேலெழுதும். தொடரவா?"
 
 #: 
-msgid "Family Select"
-msgstr "குடும்பத் தேர்வு"
-
-#: 
 msgid "Welcome to"
 msgstr "வரவேற்கிறோம்"
 
@@ -15522,10 +15518,6 @@ msgstr "நிதிகளுக்கு"
 #: 
 msgid "user"
 msgstr "பயனர்"
-
-#: 
-msgid "with at least one"
-msgstr "குறைந்தபட்சம் ஒன்றுடன்"
 
 #: 
 msgid "Also send to church address ({{email}})"

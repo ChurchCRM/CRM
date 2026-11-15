@@ -2156,10 +2156,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "데이터베이스의 헌금봉투 번호가 이 페이지에서 선택한 값으로 덮어쓰여집니다. 계속할까요?"
 
 #: 
-msgid "Family Select"
-msgstr "가족 선택"
-
-#: 
 msgid "Welcome to"
 msgstr "환영합니다:"
 
@@ -15492,10 +15488,6 @@ msgstr "기금들에 대해"
 #: 
 msgid "user"
 msgstr "사용자"
-
-#: 
-msgid "with at least one"
-msgstr "최소 하나 이상의"
 
 #: 
 msgid "Also send to church address ({{email}})"

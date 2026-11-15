@@ -2135,10 +2135,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "ഈ പേജിൽ തിരഞ്ഞെടുത്ത കുടുംബ കവർ നമ്പറുകൾ ഡേറ്റാബേസിൽ നിലവിലുള്ളതിന്റെ സ്ഥാനത്ത് വരും. തുടരണോ?"
 
 #: 
-msgid "Family Select"
-msgstr "കുടുംബം തിരഞ്ഞെടുക്കുക"
-
-#: 
 msgid "Welcome to"
 msgstr "സ്വാഗതം"
 
@@ -15477,10 +15473,6 @@ msgstr "ഫണ്ടുകൾക്കായി"
 #: 
 msgid "user"
 msgstr "ഉപയോക്താവ്"
-
-#: 
-msgid "with at least one"
-msgstr "കുറഞ്ഞത് ഒന്നെങ്കിലും"
 
 #: 
 msgid "Also send to church address ({{email}})"

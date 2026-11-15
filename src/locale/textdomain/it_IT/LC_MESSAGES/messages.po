@@ -2163,10 +2163,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Questo sovrascriverà i numeri di busta della famiglia nel database con quelli selezionati in questa pagina. Continua?"
 
 #: 
-msgid "Family Select"
-msgstr "Famiglia Seleziona"
-
-#: 
 msgid "Welcome to"
 msgstr "Benvenuto a"
 
@@ -15529,10 +15525,6 @@ msgstr "per i fondi"
 #: 
 msgid "user"
 msgstr "utente"
-
-#: 
-msgid "with at least one"
-msgstr "con almeno uno"
 
 #: 
 msgid "Also send to church address ({{email}})"

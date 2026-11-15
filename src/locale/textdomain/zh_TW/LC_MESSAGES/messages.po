@@ -2225,10 +2225,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "這將用此頁面上選擇的系列信封覆蓋資料庫中的系列信封號碼。繼續嗎？"
 
 #: 
-msgid "Family Select"
-msgstr "家庭選擇"
-
-#: 
 msgid "Welcome to"
 msgstr "歡迎來到"
 
@@ -15636,10 +15632,6 @@ msgstr "適用於基金"
 #: 
 msgid "user"
 msgstr "使用者"
-
-#: 
-msgid "with at least one"
-msgstr "至少包含一個"
 
 #: 
 msgid "Also send to church address ({{email}})"
