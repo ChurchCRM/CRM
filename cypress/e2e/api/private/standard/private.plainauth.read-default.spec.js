@@ -19,9 +19,6 @@
  * users, and NotesRoleAuthMiddleware checks only the Notes flag. This is correct
  * behavior — Notes permission has always implied "can write notes"; the read-default
  * policy simply removes the accidental read-block for non-EditSelf users.
- *
- * The confinement of an EditSelf-only account is covered by the safety-net spec
- * cypress/e2e/ui/security/limited-access.spec.js.
  */
 describe("Read-default policy — plain authenticated user can read any family/person", () => {
     // -----------------------------------------------------------------------
