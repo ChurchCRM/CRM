@@ -12,17 +12,18 @@ import { restoreSettings, useMemberSignIn } from "../../../../support/member-sig
  */
 const adminGet = (url, status = 200) => cy.makePrivateAdminAPICall("GET", url, null, status);
 
+const savedSignIn = {};
+
+// File-level, so member sign-in stays on for the verification-email test in the second describe.
+before(() => {
+    useMemberSignIn(savedSignIn);
+});
+
+after(() => {
+    restoreSettings(savedSignIn);
+});
+
 describe("API GET /api/email/log", () => {
-    const savedSignIn = {};
-
-    before(() => {
-        useMemberSignIn(savedSignIn);
-    });
-
-    after(() => {
-        restoreSettings(savedSignIn);
-    });
-
     it("pages a person's history newest first with the API row shape", () => {
         adminGet("/api/email/log?personId=2&limit=5").then((resp) => {
             const { rows, total, page, limit, pages } = resp.body;
