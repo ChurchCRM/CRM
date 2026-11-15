@@ -2167,10 +2167,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Thao tác này sẽ ghi đè số phong bì gia đình trong cơ sở dữ liệu với những số được chọn trên trang này. Tiếp tục?"
 
 #: 
-msgid "Family Select"
-msgstr "Lựa chọn gia đình"
-
-#: 
 msgid "Welcome to"
 msgstr "Chào mừng bạn đến với"
 
@@ -2469,10 +2465,6 @@ msgstr "Xem tất cả khoản thu"
 #: 
 msgid "Deposit Reports"
 msgstr "Báo cáo tiền gửi"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Chỉnh sửa phiếu gửi tiền"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6070,14 +6062,6 @@ msgid "Close All Deposits"
 msgstr "Đóng tất cả các lần gửi tiền"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Đã đóng so với Tổng số"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Hoàn thành các tác vụ này để đảm bảo báo cáo thuế cuối năm chính xác."
-
-#: 
 msgid "Configure Email"
 msgstr "Cấu hình Email"
 
@@ -6094,28 +6078,12 @@ msgid "Create First Deposit"
 msgstr "Tạo lần gửi tiền đầu tiên"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Tạo hoặc mở một khoản gửi tiền trước"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Tạo hoặc chọn một khoản gửi tiền để bắt đầu."
-
-#: 
-msgid "Current Deposit"
-msgstr "Đợt đóng góp hiện tại"
-
-#: 
 msgid "Day"
 msgstr "Ngày"
 
 #: 
 msgid "Dec"
 msgstr "Th12"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Thống kê gửi tiền"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6144,10 +6112,6 @@ msgstr "Sửa khoản thanh toán"
 #: 
 msgid "Edit Person"
 msgstr "Sửa thông tin cá nhân"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Đảm bảo tất cả các khoản gửi tiền trong năm thuế đều đã được đóng."
 
 #: 
 msgid "F"
@@ -6254,10 +6218,6 @@ msgid "New Pledge"
 msgstr "Lời hứa dâng hiến mới"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Không có khoản gửi tiền nào đang hoạt động"
-
-#: 
 msgid "No active funds configured."
 msgstr "Chưa có quỹ hoạt động nào được cấu hình."
 
@@ -6290,10 +6250,6 @@ msgid "Pledge Reports"
 msgstr "Báo cáo lời hứa dâng hiến"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "In hoặc gửi email báo cáo dâng hiến hàng năm cho tất cả người dâng."
-
-#: 
 msgid "Quick Actions"
 msgstr "Thao tác nhanh"
 
@@ -6324,10 +6280,6 @@ msgstr "Khôi phục"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Khôi phục từ tệp sao lưu. Sẽ xóa dữ liệu hiện có."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Xem lại các quỹ quyên góp"
 
 #: 
 msgid "Save and Add New Family"
@@ -6366,14 +6318,6 @@ msgid "System Info"
 msgstr "Thông tin hệ thống"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Ngôn từ báo cáo thuế"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Danh mục kiểm tra báo cáo năm thuế"
-
-#: 
 msgid "Total"
 msgstr "Tổng cộng"
 
@@ -6394,10 +6338,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Người dùng phải là Quản trị viên hoặc có quyền Tài chính"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Xác minh tên quỹ và mô tả là chính xác."
-
-#: 
 msgid "YTD Payments"
 msgstr "Thanh toán từ đầu năm đến nay"
 
@@ -6414,20 +6354,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Yêu cầu phần mở rộng ZipArchive để nâng cấp"
 
 #: 
-msgid "active"
-msgstr "đang hoạt động"
-
-#: 
 msgid "found"
 msgstr "tìm thấy"
 
 #: 
 msgid "issues"
 msgstr "vấn đề"
-
-#: 
-msgid "open"
-msgstr "đang mở"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -7921,10 +7853,6 @@ msgstr "Di Chuyển Đóng Góp đến gia đình đã chọn"
 #: 
 msgid "Calendar not found"
 msgstr "Không tìm thấy lịch"
-
-#: 
-msgid "Continue to Dashboard"
-msgstr "Tiếp tục đến bảng điều khiển"
 
 #: 
 msgid "Current Password"
@@ -11297,10 +11225,6 @@ msgid "Yellow"
 msgstr "Vàng"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Các cấp độ truy cập hiện tại của bạn (chỉ đọc)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d sự kiện lặp lại đã được tạo thành công."
@@ -13831,10 +13755,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vui lòng xác nhận việc tắt 2 Factor Auth cho người dùng này"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Vui lòng xác nhận việc xóa trạng thái người dùng khỏi"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Vui lòng xác nhận đặt lại số lần đăng nhập không thành công"
 
@@ -14646,10 +14566,6 @@ msgid "Access level"
 msgstr "Cấp độ truy cập"
 
 #: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Quản trị viên có toàn quyền truy cập vào tất cả các tính năng và dữ liệu. Quyền riêng lẻ không áp dụng."
-
-#: 
 msgid "All users can view congregation members. This permission cannot be removed."
 msgstr "Tất cả người dùng có thể xem danh sách hội viên. Quyền này không thể xóa bỏ."
 
@@ -15420,10 +15336,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Bản dịch ChurchCRM được cộng đồng quản lý trên POEditor. Bạn có thể đóng góp bằng cách"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Khoản nộp đã đóng"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Giá trị $URL[0] hiện tại"
 
@@ -15564,10 +15476,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Có người được phân công cho Cơ hội Tình nguyện này. Xóa sẽ hủy phân công"
 
 #: 
-msgid "Total Deposits"
-msgstr "Tổng khoản nộp"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Cập nhật thành URL hợp lệ"
 
@@ -15594,10 +15502,6 @@ msgstr "cho các quỹ"
 #: 
 msgid "user"
 msgstr "người dùng"
-
-#: 
-msgid "with at least one"
-msgstr "với ít nhất một"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17368,10 +17272,6 @@ msgstr "Số tiền quyên góp được trong năm tài chính này"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s phải là một địa chỉ web https:// đầy đủ, ví dụ: https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Tài khoản có quyền hạn chế. Vui lòng liên hệ quản trị viên."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -23995,10 +23895,6 @@ msgid "%s Giving Statement"
 msgstr "Bản kê dâng hiến %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Tùy chỉnh đoạn chữ hiện trên bản kê dâng hiến (sTaxReport1, sTaxReport2, v.v.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24021,10 +23917,6 @@ msgstr "Gửi email bản kê dâng hiến %s"
 #: 
 msgid "Envelope Numbers"
 msgstr "Số phong bì"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Tạo bản kê dâng hiến"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24065,10 +23957,6 @@ msgstr "Không thể gửi email bản kê dâng hiến: gia đình này chưa c
 #: 
 msgid "Undesignated"
 msgstr "Không chỉ định"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Kiểm tra tên, địa chỉ và thông tin liên hệ của nhà thờ có hiện trên bản kê dâng hiến."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24283,10 +24171,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d khoản thanh toán chưa thuộc đợt nộp nào."
 
 #: 
-msgid "Can be emailed"
-msgstr "Gửi được qua email"
-
-#: 
 msgid "Closing line"
 msgstr "Dòng kết"
 
@@ -24315,16 +24199,8 @@ msgid "Opening line"
 msgstr "Dòng mở đầu"
 
 #: 
-msgid "Print and mail"
-msgstr "In và gửi bưu điện"
-
-#: 
 msgid "Qty"
 msgstr "SL"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Xem lại năm, rồi in hoặc gửi email bản kê dâng hiến."
 
 #: 
 msgid "Signed by"
@@ -24333,10 +24209,6 @@ msgstr "Ký bởi"
 #: 
 msgid "Thank-you line"
 msgstr "Dòng cảm ơn"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Kiểm tra tên, địa chỉ và thông tin liên hệ của nhà thờ có hiện trên bản kê thuế."
 
 #: 
 msgid "Year-End Giving"

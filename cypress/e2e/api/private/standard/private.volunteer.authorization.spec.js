@@ -327,11 +327,11 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
                 Notes: "1",
             });
             cy.dbQuery(
-                "SELECT usr_EditSelf AS editSelf, usr_Notes AS notes FROM user_usr WHERE usr_per_ID = ?",
+                "SELECT usr_Admin AS admin, usr_Notes AS notes FROM user_usr WHERE usr_per_ID = ?",
                 [PERSON_MANAGER],
             ).then((result) => {
                 expect(result.error).to.eq(null);
-                expect(Number(result.rows[0].editSelf)).to.eq(0);
+                expect(Number(result.rows[0].admin)).to.eq(0);
                 expect(Number(result.rows[0].notes)).to.eq(1);
             });
             restoreManagerUser();
@@ -932,20 +932,6 @@ describe("Volunteer v2 scoped authorization (#9706)", () => {
             });
         });
 
-        /**
-         * The D14 revision (#9867, Member Portal P17).
-         *
-         * Before it, `loadScopes()` threw away every grant an EditSelf-exclusive
-         * account held, so this test's `isTeamLeader` and `managedTeamIds` came
-         * back false and empty — the grant existed in the table and did nothing.
-         * Now the grant counts: the member IS a team leader, and will run that
-         * team from the Member Portal (MP7).
-         *
-         * What must NOT change is the tier above it: `isCoordinator` stays false,
-         * because `User::isVolunteerCoordinatorEnabled()` keeps its own EditSelf
-         * short-circuit — that is what holds the coordinator dashboard and the
-         * sidebar's Ministries heading shut for this account (asserted below).
-         */
         it("counts a team scope granted to a member (D14 revision)", () => {
             cy.makePrivateAdminAPICall(
                 "POST",

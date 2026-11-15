@@ -2141,10 +2141,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Tämä korvaa tietokannassa olevat perheiden kirjekuorinumerot tällä sivulla valituilla numeroilla. Jatketaanko?"
 
 #: 
-msgid "Family Select"
-msgstr "Perheen valinta"
-
-#: 
 msgid "Welcome to"
 msgstr "Tervetuloa kohteeseen"
 
@@ -2439,10 +2435,6 @@ msgstr "Näytä kaikki talletukset"
 #: 
 msgid "Deposit Reports"
 msgstr "Talletusraportit"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Muokkaa talletuslipuketta"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6036,14 +6028,6 @@ msgid "Close All Deposits"
 msgstr "Sulje kaikki talletusliuskat"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Suljettu vs yhteensä"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Täydennä nämä tehtävät varmistaaksesi tarkan vuoden lopun veroraportoinnin lahjoittajillesi."
-
-#: 
 msgid "Configure Email"
 msgstr "Määritä sähköposti"
 
@@ -6060,28 +6044,12 @@ msgid "Create First Deposit"
 msgstr "Luo ensimmäinen talletusliuska"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Luo tai avaa talletusliuskan ensin"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Luo tai valitse talletusliuska aloittaaksesi."
-
-#: 
-msgid "Current Deposit"
-msgstr "Nykyinen talletusliuska"
-
-#: 
 msgid "Day"
 msgstr "Päivä"
 
 #: 
 msgid "Dec"
 msgstr "Joulu"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Talletusliuskan tilastot"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6110,10 +6078,6 @@ msgstr "Muokkaa maksua"
 #: 
 msgid "Edit Person"
 msgstr "Muokkaa henkilöä"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Varmista, että kaikki tilivuoden talletusliuskat on suljettu ennen kuin luot lausuntoja."
 
 #: 
 msgid "F"
@@ -6220,10 +6184,6 @@ msgid "New Pledge"
 msgstr "Uusi maksuasitoumus"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Ei aktiivista talletusta"
-
-#: 
 msgid "No active funds configured."
 msgstr "Aktiivisia rahastoja ei ole määritetty."
 
@@ -6256,10 +6216,6 @@ msgid "Pledge Reports"
 msgstr "Sitoumusraportit"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Tulosta tai lähetä sähköpostitse vuosittaiset lahjoitusotteet kaikille lahjoittajille."
-
-#: 
 msgid "Quick Actions"
 msgstr "Pikatoiminnot"
 
@@ -6290,10 +6246,6 @@ msgstr "Palauta"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Palauta varmuuskopiosta. Tyhjentää olemassa olevat tiedot."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Tarkista lahjoitusrahastot"
 
 #: 
 msgid "Save and Add New Family"
@@ -6332,14 +6284,6 @@ msgid "System Info"
 msgstr "Järjestelmätiedot"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Veroraportin tekstit"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Verovuoden raportoinnin tarkistuslista"
-
-#: 
 msgid "Total"
 msgstr "Yhteensä"
 
@@ -6360,10 +6304,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Käyttäjän on oltava ylläpitäjä tai hänellä on oltava taloushallinnon oikeudet"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Varmista, että rahastojen nimet ja kuvaukset ovat oikein ilmoituksissa."
-
-#: 
 msgid "YTD Payments"
 msgstr "Maksut vuoden alusta (YTD)"
 
@@ -6380,20 +6320,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Zip-arkistolaajennos vaaditaan päivityksille"
 
 #: 
-msgid "active"
-msgstr "aktiivinen"
-
-#: 
 msgid "found"
 msgstr "löytyi"
 
 #: 
 msgid "issues"
 msgstr "ongelmat"
-
-#: 
-msgid "open"
-msgstr "avoin"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -7891,10 +7823,6 @@ msgstr "Siirrä lahjoitukset valitulle perheelle"
 #: 
 msgid "Calendar not found"
 msgstr "Kalenteria ei löydy"
-
-#: 
-msgid "Continue to Dashboard"
-msgstr "Jatka koontinäyttöön"
 
 #: 
 msgid "Current Password"
@@ -11268,10 +11196,6 @@ msgid "Yellow"
 msgstr "Keltainen"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Nykyiset käyttöoikeutesi (vain luku)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d toistuva tapahtuma luotu onnistuneesti."
@@ -13803,10 +13727,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vahvista kaksivaiheisen tunnistautumisen poistaminen tältä käyttäjältä"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Vahvista käyttäjäoikeuksien poistaminen kohteelta"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Vahvista epäonnistuneiden kirjautumisyritysten nollaus"
 
@@ -14619,10 +14539,6 @@ msgid "Access level"
 msgstr "Käyttöoikeustaso"
 
 #: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Järjestelmänvalvojilla on täysi pääsy kaikkiin ominaisuuksiin ja tietoihin. Yksilölliset käyttöoikeudet eivät ole voimassa."
-
-#: 
 msgid "All users can view congregation members. This permission cannot be removed."
 msgstr "Kaikki käyttäjät voivat tarkastella seurakunnan jäseniä. Tätä käyttöoikeutta ei voi poistaa."
 
@@ -15395,10 +15311,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM-käännöksiä hallinnoi yhteisö POEditorissa. Voit auttaa"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Suljetut talletukset"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Nykyinen $URL[0]-arvo"
 
@@ -15539,10 +15451,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Tähän vapaaehtoistehtävään on määritetty henkilöitä. Poistaminen poistaa heidän määrityksensä"
 
 #: 
-msgid "Total Deposits"
-msgstr "Talletukset yhteensä"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Päivitä se kelvolliseksi URL-osoitteeksi, joka"
 
@@ -15569,10 +15477,6 @@ msgstr "rahastoille"
 #: 
 msgid "user"
 msgstr "käyttäjä"
-
-#: 
-msgid "with at least one"
-msgstr "vähintään yhdellä"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17345,10 +17249,6 @@ msgstr "Kerätty kuluvana tilivuonna"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s:n on oltava täydellinen https://-verkko-osoite, esimerkiksi https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Tilillä on rajoitetut käyttöoikeudet. Ota yhteyttä ylläpitäjään."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -23985,10 +23885,6 @@ msgid "%s Giving Statement"
 msgstr "%s Lahjoitustiedote"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Mukauta lahjoitustiedoissa näkyvää tekstiä (sTaxReport1, sTaxReport2 jne.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24011,10 +23907,6 @@ msgstr "Lähetä %s Lahjoitustiedote sähköpostitse"
 #: 
 msgid "Envelope Numbers"
 msgstr "Kirjekuorien numerot"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Luo lahjoitustiedotteet"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24055,10 +23947,6 @@ msgstr "Lahjoitustiedotetta ei voida lähettää sähköpostitse: tällä perhee
 #: 
 msgid "Undesignated"
 msgstr "Määrittelemätön"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Varmista, että kirkon nimi, osoite ja yhteystiedot näkyvät lahjoitustiedoissa."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24273,10 +24161,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d maksua ei ole vielä millään talletuksella."
 
 #: 
-msgid "Can be emailed"
-msgstr "Voidaan lähettää sähköpostitse"
-
-#: 
 msgid "Closing line"
 msgstr "Loppulause"
 
@@ -24305,16 +24189,8 @@ msgid "Opening line"
 msgstr "Alkulause"
 
 #: 
-msgid "Print and mail"
-msgstr "Tulosta ja postita"
-
-#: 
 msgid "Qty"
 msgstr "Kpl"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Tarkista vuosi ja tulosta tai lähetä lahjoitustodistukset sähköpostitse."
 
 #: 
 msgid "Signed by"
@@ -24323,10 +24199,6 @@ msgstr "Allekirjoittaja"
 #: 
 msgid "Thank-you line"
 msgstr "Kiitoslause"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Tarkista, että seurakunnan nimi, osoite ja yhteystiedot näkyvät verotodistuksissa."
 
 #: 
 msgid "Year-End Giving"

@@ -2136,10 +2136,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Dit zal de familie envelop nummers overschrijven in de database met die gekozen op deze pagina. Doorgaan met?"
 
 #: 
-msgid "Family Select"
-msgstr "Selecteer gezin"
-
-#: 
 msgid "Welcome to"
 msgstr "Welkom bij"
 
@@ -2435,10 +2431,6 @@ msgstr "Bekijk alle stortingen"
 #: 
 msgid "Deposit Reports"
 msgstr "Stortingsrapporten"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Aanbetalingsbewijs bewerken"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6035,14 +6027,6 @@ msgid "Close All Deposits"
 msgstr "Sluit Alle Stortingen"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Gesloten vs Totaal"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Voltooi deze taken om nauwkeurige belastingrapportage aan het einde van het jaar voor uw donateurs te garanderen."
-
-#: 
 msgid "Configure Email"
 msgstr "E-mail Configureren"
 
@@ -6059,28 +6043,12 @@ msgid "Create First Deposit"
 msgstr "Eerste Storting Maken"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Maak of open eerst een storting"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Maak of selecteer een storting om te beginnen."
-
-#: 
-msgid "Current Deposit"
-msgstr "Huidge Storting"
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
 #: 
 msgid "Dec"
 msgstr "Dec"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Stortingsstatistieken"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6109,10 +6077,6 @@ msgstr "Betaling Bewerken"
 #: 
 msgid "Edit Person"
 msgstr "Persoon Bewerken"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Zorg ervoor dat alle stortingen voor het belastingjaar zijn gesloten voordat u afschriften genereert."
 
 #: 
 msgid "F"
@@ -6219,10 +6183,6 @@ msgid "New Pledge"
 msgstr "Nieuwe Belofte"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Geen Actieve Storting"
-
-#: 
 msgid "No active funds configured."
 msgstr "Geen actieve fondsen geconfigureerd."
 
@@ -6255,10 +6215,6 @@ msgid "Pledge Reports"
 msgstr "Toezeggingsrapporten"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Druk of e-mail jaarlijkse giftafschriften naar alle donateurs."
-
-#: 
 msgid "Quick Actions"
 msgstr "Snelle Acties"
 
@@ -6289,10 +6245,6 @@ msgstr "Herstellen"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Herstellen uit een back-upbestand. Wist bestaande gegevens."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Controleer Donatiefondsen"
 
 #: 
 msgid "Save and Add New Family"
@@ -6331,14 +6283,6 @@ msgid "System Info"
 msgstr "Systeeminformatie"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Belastingrapportformulering"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Controlelijst voor belastingjaarrapportage"
-
-#: 
 msgid "Total"
 msgstr "Totaal"
 
@@ -6359,10 +6303,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Gebruiker moet een beheerder zijn of financiële toestemming hebben"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Controleer of fondsnamen en beschrijvingen nauwkeurig zijn voor afschriften."
-
-#: 
 msgid "YTD Payments"
 msgstr "JTD-betalingen"
 
@@ -6379,20 +6319,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ZipArchive-uitbreiding vereist voor upgrades"
 
 #: 
-msgid "active"
-msgstr "actief"
-
-#: 
 msgid "found"
 msgstr "gevonden"
 
 #: 
 msgid "issues"
 msgstr "problemen"
-
-#: 
-msgid "open"
-msgstr "open"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -7890,10 +7822,6 @@ msgstr "Gaven verplaatsen naar geselecteerd gezin"
 #: 
 msgid "Calendar not found"
 msgstr "Kalender niet gevonden"
-
-#: 
-msgid "Continue to Dashboard"
-msgstr "Doorgaan naar Dashboard"
 
 #: 
 msgid "Current Password"
@@ -11267,10 +11195,6 @@ msgid "Yellow"
 msgstr "Geel"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Uw huidige toegangsniveaus (alleen-lezen)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d terugkerend evenement succesvol aangemaakt."
@@ -13802,10 +13726,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bevestig a.u.b. het uitschakelen van 2 Factor Auth voor deze gebruiker"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Bevestig aub verwijdering van gebruikers status van"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Bevestig het aantal mislukte inlogpogingen opnieuw instellen"
 
@@ -14618,10 +14538,6 @@ msgid "Access level"
 msgstr "Toegangsniveau"
 
 #: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Beheerders hebben volledige toegang tot alle functies en gegevens. Individuele machtigingen zijn niet van toepassing."
-
-#: 
 msgid "All users can view congregation members. This permission cannot be removed."
 msgstr "Alle gebruikers kunnen gemeenteleden bekijken. Deze machtiging kan niet worden verwijderd."
 
@@ -15394,10 +15310,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM-vertalingen worden door de gemeenschap beheerd op POEditor. U kunt helpen door"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Gesloten stortingen"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Huidige $URL[0] waarde"
 
@@ -15538,10 +15450,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Er zijn mensen toegewezen aan deze vrijwilligersmogelijkheid. Verwijderen zal de toewijzing ongedaan maken"
 
 #: 
-msgid "Total Deposits"
-msgstr "Totale stortingen"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Werk het bij naar een geldige URL die"
 
@@ -15568,10 +15476,6 @@ msgstr "voor fondsen"
 #: 
 msgid "user"
 msgstr "gebruiker"
-
-#: 
-msgid "with at least one"
-msgstr "met ten minste één"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17344,10 +17248,6 @@ msgstr "Opgehaald dit boekjaar"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s moet een volledig https://-webadres zijn, bijvoorbeeld https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Account heeft beperkte rechten. Neem contact op met een beheerder."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -23984,10 +23884,6 @@ msgid "%s Giving Statement"
 msgstr "%s Giftenoverzicht"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Pas de tekst aan die op giftenoverzichten verschijnt (sTaxReport1, sTaxReport2, enz.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24010,10 +23906,6 @@ msgstr "%s Giftenoverzicht per e-mail verzenden"
 #: 
 msgid "Envelope Numbers"
 msgstr "Envelopnummers"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Giftenoverzichten genereren"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24054,10 +23946,6 @@ msgstr "Kan giftenoverzicht niet per e-mail verzenden: deze familie heeft geen e
 #: 
 msgid "Undesignated"
 msgstr "Niet aangewezen"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Controleer of de naam van de kerk, het adres en contactgegevens op de giftenoverzichten verschijnen."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24272,10 +24160,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d betalingen staan nog op geen enkele storting."
 
 #: 
-msgid "Can be emailed"
-msgstr "Kan per e-mail worden verstuurd"
-
-#: 
 msgid "Closing line"
 msgstr "Afsluitende regel"
 
@@ -24304,16 +24188,8 @@ msgid "Opening line"
 msgstr "Openingsregel"
 
 #: 
-msgid "Print and mail"
-msgstr "Afdrukken en posten"
-
-#: 
 msgid "Qty"
 msgstr "Aantal"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Controleer het jaar en druk daarna de giftenverklaringen af of verstuur ze per e-mail."
 
 #: 
 msgid "Signed by"
@@ -24322,10 +24198,6 @@ msgstr "Ondertekend door"
 #: 
 msgid "Thank-you line"
 msgstr "Dankregel"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Controleer of de naam, het adres en de contactgegevens van de kerk op de belastingverklaringen staan."
 
 #: 
 msgid "Year-End Giving"

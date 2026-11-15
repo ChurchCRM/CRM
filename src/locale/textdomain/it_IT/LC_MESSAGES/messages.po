@@ -2163,10 +2163,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Questo sovrascriverà i numeri di busta della famiglia nel database con quelli selezionati in questa pagina. Continua?"
 
 #: 
-msgid "Family Select"
-msgstr "Famiglia Seleziona"
-
-#: 
 msgid "Welcome to"
 msgstr "Benvenuto a"
 
@@ -2468,10 +2464,6 @@ msgstr "Visualizza tutti i depositi"
 #: 
 msgid "Deposit Reports"
 msgstr "Rapporti sul deposito"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Modifica Slip di deposito"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6084,14 +6076,6 @@ msgid "Close All Deposits"
 msgstr "Chiudi Tutti i Depositi"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Chiuso vs Totale"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Completa questi compiti per garantire una rendicontazione fiscale accurata di fine anno per i tuoi donatori."
-
-#: 
 msgid "Configure Email"
 msgstr "Configura Email"
 
@@ -6108,28 +6092,12 @@ msgid "Create First Deposit"
 msgstr "Crea Primo Deposito"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Crea o apri prima un deposito"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Crea o seleziona un deposito per iniziare."
-
-#: 
-msgid "Current Deposit"
-msgstr "Deposito Attuale"
-
-#: 
 msgid "Day"
 msgstr "Giorno"
 
 #: 
 msgid "Dec"
 msgstr "Dic"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Statistiche Deposito"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6158,10 +6126,6 @@ msgstr "Modifica Pagamento"
 #: 
 msgid "Edit Person"
 msgstr "Modifica Persona"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Assicurati che tutti i depositi per l'anno fiscale siano chiusi prima di generare dichiarazioni."
 
 #: 
 msgid "F"
@@ -6268,10 +6232,6 @@ msgid "New Pledge"
 msgstr "Nuova Promessa"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Nessun Deposito Attivo"
-
-#: 
 msgid "No active funds configured."
 msgstr "Nessun fondo attivo configurato."
 
@@ -6304,10 +6264,6 @@ msgid "Pledge Reports"
 msgstr "Rapporti Promessa"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Stampa o invia via email dichiarazioni di donazione annuali a tutti i donatori."
-
-#: 
 msgid "Quick Actions"
 msgstr "Azioni Rapide"
 
@@ -6338,10 +6294,6 @@ msgstr "Ripristina"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Ripristina da un file di backup. Cancella i dati esistenti."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Rivedi Fondi di Donazione"
 
 #: 
 msgid "Save and Add New Family"
@@ -6380,14 +6332,6 @@ msgid "System Info"
 msgstr "Informazioni di Sistema"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Linguaggio Rapporto Fiscale"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Elenco di Controllo Rapporto Anno Fiscale"
-
-#: 
 msgid "Total"
 msgstr "Totale"
 
@@ -6408,10 +6352,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "L'utente deve essere un Amministratore o avere l'autorizzazione Finanza"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Verifica che i nomi dei fondi e le descrizioni siano accurate per le dichiarazioni."
-
-#: 
 msgid "YTD Payments"
 msgstr "Pagamenti da Inizio Anno"
 
@@ -6428,20 +6368,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Estensione ZipArchive richiesta per gli aggiornamenti"
 
 #: 
-msgid "active"
-msgstr "attivo"
-
-#: 
 msgid "found"
 msgstr "trovato"
 
 #: 
 msgid "issues"
 msgstr "problemi"
-
-#: 
-msgid "open"
-msgstr "aperto"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -7939,10 +7871,6 @@ msgstr "Sposta Donazioni nella Famiglia Selezionata"
 #: 
 msgid "Calendar not found"
 msgstr "Calendario non trovato"
-
-#: 
-msgid "Continue to Dashboard"
-msgstr "Continua alla Dashboard"
 
 #: 
 msgid "Current Password"
@@ -11316,10 +11244,6 @@ msgid "Yellow"
 msgstr "Giallo"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "I tuoi livelli di accesso correnti (sola lettura)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d evento ricorrente creato con successo."
@@ -13851,10 +13775,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Conferma la disattivazione Autenticazione a 2 Fattori per questo utente"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Per favore, conferma l'eliminazione dell'utente da"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Conferma il reset del conteggio degli accessi fallito"
 
@@ -14667,10 +14587,6 @@ msgid "Access level"
 msgstr "Livello di accesso"
 
 #: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Gli amministratori hanno accesso completo a tutte le funzionalità e ai dati. I permessi individuali non si applicano."
-
-#: 
 msgid "All users can view congregation members. This permission cannot be removed."
 msgstr "Tutti gli utenti possono visualizzare i membri della comunità parrocchiale. Questo permesso non può essere rimosso."
 
@@ -15443,10 +15359,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Le traduzioni di ChurchCRM sono gestite dalla comunità su POEditor. Puoi contribuire"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Depositi chiusi"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Valore attuale di $URL[0]"
 
@@ -15587,10 +15499,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Ci sono persone assegnate a questa opportunità di volontariato. L'eliminazione le rimuoverà dall'incarico"
 
 #: 
-msgid "Total Deposits"
-msgstr "Totale depositi"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Aggiornarlo con un URL valido che"
 
@@ -15617,10 +15525,6 @@ msgstr "per i fondi"
 #: 
 msgid "user"
 msgstr "utente"
-
-#: 
-msgid "with at least one"
-msgstr "con almeno uno"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17393,10 +17297,6 @@ msgstr "Raccolto in questo anno fiscale"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s deve essere un indirizzo web completo che inizi con https://, ad esempio https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "L'account ha permessi limitati. Contatta un amministratore."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -24034,10 +23934,6 @@ msgid "%s Giving Statement"
 msgstr "Prospetto delle offerte di %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Personalizza il testo che appare sui prospetti delle offerte (sTaxReport1, sTaxReport2, ecc.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24060,10 +23956,6 @@ msgstr "Invia via email il prospetto delle offerte di %s"
 #: 
 msgid "Envelope Numbers"
 msgstr "Numeri di busta"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Genera prospetti delle offerte"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24104,10 +23996,6 @@ msgstr "Impossibile inviare il prospetto delle offerte via email: questa famigli
 #: 
 msgid "Undesignated"
 msgstr "Non designato"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Verifica che il nome della chiesa, l'indirizzo e le informazioni di contatto appaiano sui prospetti delle offerte."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24322,10 +24210,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d pagamenti non sono ancora in alcun deposito."
 
 #: 
-msgid "Can be emailed"
-msgstr "Può essere inviata via email"
-
-#: 
 msgid "Closing line"
 msgstr "Riga di chiusura"
 
@@ -24354,16 +24238,8 @@ msgid "Opening line"
 msgstr "Riga di apertura"
 
 #: 
-msgid "Print and mail"
-msgstr "Stampa e posta"
-
-#: 
 msgid "Qty"
 msgstr "Qtà"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Verifichi l'anno, quindi stampi o invii via email le attestazioni delle offerte."
 
 #: 
 msgid "Signed by"
@@ -24372,10 +24248,6 @@ msgstr "Firmato da"
 #: 
 msgid "Thank-you line"
 msgstr "Riga di ringraziamento"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verifichi che il nome, l'indirizzo e i recapiti della chiesa compaiano sulle attestazioni fiscali."
 
 #: 
 msgid "Year-End Giving"

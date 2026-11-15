@@ -2135,10 +2135,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "これにより、データベース内の家族エンベロープ番号がこのページで選択したものに上書きされます。続行しますか?"
 
 #: 
-msgid "Family Select"
-msgstr "世帯選択"
-
-#: 
 msgid "Welcome to"
 msgstr "ようこそ"
 
@@ -2433,10 +2429,6 @@ msgstr "すべての預金を表示"
 #: 
 msgid "Deposit Reports"
 msgstr "預金レポート"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "預金伝票を編集"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6028,14 +6020,6 @@ msgid "Close All Deposits"
 msgstr "すべての預金を締める"
 
 #: 
-msgid "Closed vs Total"
-msgstr "締め切り済み対合計"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "寄付者の正確な年末税務報告を確保するために、これらのタスクを完了してください。"
-
-#: 
 msgid "Configure Email"
 msgstr "メールを設定"
 
@@ -6052,28 +6036,12 @@ msgid "Create First Deposit"
 msgstr "最初の預金を作成"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "最初に預金を作成または開く"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "開始するには預金を作成または選択してください。"
-
-#: 
-msgid "Current Deposit"
-msgstr "現在の預金"
-
-#: 
 msgid "Day"
 msgstr "日"
 
 #: 
 msgid "Dec"
 msgstr "12月"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "預金統計"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6102,10 +6070,6 @@ msgstr "支払いを編集"
 #: 
 msgid "Edit Person"
 msgstr "人物を編集"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "明細書を生成する前に、税年度のすべての預金が締め切られていることを確認してください。"
 
 #: 
 msgid "F"
@@ -6212,10 +6176,6 @@ msgid "New Pledge"
 msgstr "新規献金約束（プレッジ）"
 
 #: 
-msgid "No Active Deposit"
-msgstr "アクティブな預金がありません"
-
-#: 
 msgid "No active funds configured."
 msgstr "アクティブな基金が設定されていません。"
 
@@ -6248,10 +6208,6 @@ msgid "Pledge Reports"
 msgstr "誓約レポート"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "すべての寄付者に年間寄付明細書を印刷またはメールで送信します。"
-
-#: 
 msgid "Quick Actions"
 msgstr "クイックアクション"
 
@@ -6282,10 +6238,6 @@ msgstr "復元"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "バックアップファイルから復元します。既存のデータは消去されます。"
-
-#: 
-msgid "Review Donation Funds"
-msgstr "寄付基金を確認"
 
 #: 
 msgid "Save and Add New Family"
@@ -6324,14 +6276,6 @@ msgid "System Info"
 msgstr "システム情報"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "税務レポートの文言"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "税年度報告チェックリスト"
-
-#: 
 msgid "Total"
 msgstr "合計"
 
@@ -6352,10 +6296,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "ユーザーは管理者であるか、財務権限を持っている必要があります"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "基金名と説明が明細書に正確であることを確認します。"
-
-#: 
 msgid "YTD Payments"
 msgstr "本年累計支払額"
 
@@ -6372,20 +6312,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "アップグレードにはZipArchive拡張が必要です"
 
 #: 
-msgid "active"
-msgstr "アクティブ"
-
-#: 
 msgid "found"
 msgstr "見つかりました"
 
 #: 
 msgid "issues"
 msgstr "問題"
-
-#: 
-msgid "open"
-msgstr "開く"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -7879,10 +7811,6 @@ msgstr "献金を選択した家族に移動"
 #: 
 msgid "Calendar not found"
 msgstr "カレンダーが見つかりません"
-
-#: 
-msgid "Continue to Dashboard"
-msgstr "ダッシュボードへ進む"
 
 #: 
 msgid "Current Password"
@@ -11255,10 +11183,6 @@ msgid "Yellow"
 msgstr "黄"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "現在のアクセスレベル（読み取り専用）"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d 件の繰り返しイベントが正常に作成されました。"
@@ -13789,10 +13713,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "このユーザーの2要素認証を無効にすることを確認してください"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "ユーザー・ステータスの解除を確認してください:"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "ログイン失敗回数のリセットを確認してください"
 
@@ -14604,10 +14524,6 @@ msgid "Access level"
 msgstr "アクセスレベル"
 
 #: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "管理者はすべての機能とデータにフルアクセスできます。個別の権限は適用されません。"
-
-#: 
 msgid "All users can view congregation members. This permission cannot be removed."
 msgstr "すべてのユーザーが会衆のメンバーを閲覧できます。この権限は削除できません。"
 
@@ -15378,10 +15294,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM の翻訳は POEditor のコミュニティによって管理されています。次の方法でご協力いただけます："
 
 #: 
-msgid "Closed Deposits"
-msgstr "締め済み献金"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "現在の $URL[0] の値"
 
@@ -15522,10 +15434,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "このボランティア機会に割り当てられている人がいます。削除すると割り当てが解除されます"
 
 #: 
-msgid "Total Deposits"
-msgstr "合計献金"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "有効な URL に更新してください："
 
@@ -15552,10 +15460,6 @@ msgstr "献金基金"
 #: 
 msgid "user"
 msgstr "ユーザー"
-
-#: 
-msgid "with at least one"
-msgstr "少なくとも1つ"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17326,10 +17230,6 @@ msgstr "今会計年度の集計額"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%sは完全なhttps://のウェブアドレスである必要があります。例: https://example.org/yourchurch"
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "アカウントの権限が制限されています。管理者にお問い合わせください。"
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -23953,10 +23853,6 @@ msgid "%s Giving Statement"
 msgstr "%s献金明細書"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "献金明細書に表示されるテキストをカスタマイズします（sTaxReport1、sTaxReport2など）。"
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -23979,10 +23875,6 @@ msgstr "%s献金明細書をメール送信"
 #: 
 msgid "Envelope Numbers"
 msgstr "封筒番号"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "献金明細書を生成"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24023,10 +23915,6 @@ msgstr "献金明細書をメール送信できません：この家族には登
 #: 
 msgid "Undesignated"
 msgstr "未指定"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "教会名、住所、連絡先情報が献金明細書に表示されていることを確認してください。"
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24241,10 +24129,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d 件の支払いは、まだどの入金にも含まれていません。"
 
 #: 
-msgid "Can be emailed"
-msgstr "メールで送れます"
-
-#: 
 msgid "Closing line"
 msgstr "結びの文"
 
@@ -24273,16 +24157,8 @@ msgid "Opening line"
 msgstr "冒頭の文"
 
 #: 
-msgid "Print and mail"
-msgstr "印刷して郵送"
-
-#: 
 msgid "Qty"
 msgstr "数量"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "年度を確認してから、献金明細書を印刷するか、メールで送ってください。"
 
 #: 
 msgid "Signed by"
@@ -24291,10 +24167,6 @@ msgstr "署名者"
 #: 
 msgid "Thank-you line"
 msgstr "感謝の文"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "教会名、住所、連絡先が税務明細書に表示されることを確認してください。"
 
 #: 
 msgid "Year-End Giving"

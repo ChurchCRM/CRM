@@ -15,6 +15,7 @@
   "sChurchPhone": "555 123 4234",
   "sChurchEmail": "demo@churchcrm.io",
   "sTaxSigner": "Elder Joe Smith",
+  "sChurchTaxId": "00-0000000",
   "sReminderSigner": "Elder Joe Smith",
   "sConfirmSigner": "Elder Joe Smith",
   "plugin.google-analytics.trackingId": "G-JD5J0825V8",

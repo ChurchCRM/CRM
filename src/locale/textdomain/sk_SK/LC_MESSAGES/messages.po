@@ -2135,10 +2135,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Toto prepíše čísla obálok rodiny v databáze tými, ktoré sú vybrané na tejto stránke. Pokračovať?"
 
 #: 
-msgid "Family Select"
-msgstr "Výber rodiny"
-
-#: 
 msgid "Welcome to"
 msgstr "Vitajte v"
 
@@ -2433,10 +2429,6 @@ msgstr "Zobraziť všetky vklady"
 #: 
 msgid "Deposit Reports"
 msgstr "Správy o vkladoch"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Upraviť vkladový doklad"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6040,14 +6032,6 @@ msgid "Close All Deposits"
 msgstr "Zatvoriť všetky vklady"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Zatvorené vs. celkové"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Dokončite tieto úlohy, aby ste zabezpečili presné daňové výkazníctvo na konci roka pre vašich darcov."
-
-#: 
 msgid "Configure Email"
 msgstr "Konfigurovať e-mail"
 
@@ -6064,28 +6048,12 @@ msgid "Create First Deposit"
 msgstr "Vytvoriť prvý vklad"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Najprv vytvorte alebo otvorte vklad"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Vytvorte alebo vyberte vklad pre začatie."
-
-#: 
-msgid "Current Deposit"
-msgstr "Aktuálny vklad"
-
-#: 
 msgid "Day"
 msgstr "Deň"
 
 #: 
 msgid "Dec"
 msgstr "Dec"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Štatistiky vkladov"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6114,10 +6082,6 @@ msgstr "Upraviť platbu"
 #: 
 msgid "Edit Person"
 msgstr "Upraviť osobu"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Uistite sa, že všetky vklady za daňový rok sú zatvorené pred generovaním výkazov."
 
 #: 
 msgid "F"
@@ -6224,10 +6188,6 @@ msgid "New Pledge"
 msgstr "Nový záväzok"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Žiadny aktívny vklad"
-
-#: 
 msgid "No active funds configured."
 msgstr "Žiadne aktívne fondy nie sú nakonfigurované."
 
@@ -6260,10 +6220,6 @@ msgid "Pledge Reports"
 msgstr "Správy o záväzkoch"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Vytlačte alebo pošlite e-mailom ročné výkazy darovania všetkým darcom."
-
-#: 
 msgid "Quick Actions"
 msgstr "Rýchle akcie"
 
@@ -6294,10 +6250,6 @@ msgstr "Obnoviť"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Obnoviť zo záložného súboru. Vymaže existujúce dáta."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Skontrolovať darovacie fondy"
 
 #: 
 msgid "Save and Add New Family"
@@ -6336,14 +6288,6 @@ msgid "System Info"
 msgstr "Informácie o systéme"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Text daňovej správy"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Kontrolný zoznam daňového výkazníctva za rok"
-
-#: 
 msgid "Total"
 msgstr "Celkom"
 
@@ -6364,10 +6308,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Používateľ musí byť správca alebo mať oprávnenie na financie"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Overte, či sú názvy a popisy fondov presné pre výkazy."
-
-#: 
 msgid "YTD Payments"
 msgstr "Platby od začiatku roka"
 
@@ -6384,20 +6324,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Pre aktualizácie je potrebná rozšírenie ZipArchive"
 
 #: 
-msgid "active"
-msgstr "aktívny"
-
-#: 
 msgid "found"
 msgstr "nájdené"
 
 #: 
 msgid "issues"
 msgstr "problémy"
-
-#: 
-msgid "open"
-msgstr "otvoriť"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -7903,10 +7835,6 @@ msgstr "Presunúť dary do vybranej rodiny"
 #: 
 msgid "Calendar not found"
 msgstr "Kalendár nenájdený"
-
-#: 
-msgid "Continue to Dashboard"
-msgstr "Pokračovať na dashboard"
 
 #: 
 msgid "Current Password"
@@ -11282,10 +11210,6 @@ msgid "Yellow"
 msgstr "Žltá"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Vaše aktuálne úrovne prístupu (iba na čítanie)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d opakovaná udalosť bola úspešne vytvorená."
@@ -13819,10 +13743,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Potvrďte deaktiváciu dvojfaktorovej autentifikácie pre tohto používateľa"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Potvrďte odobratie statusu používateľa od"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Potvrďte obnovenie počtu neúspešných prihlásení"
 
@@ -14637,10 +14557,6 @@ msgid "Access level"
 msgstr "Úroveň prístupu"
 
 #: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Správcovia majú úplný prístup ku všetkým funkciám a údajom. Individuálne oprávnenia sa neuplatňujú."
-
-#: 
 msgid "All users can view congregation members. This permission cannot be removed."
 msgstr "Všetci používatelia môžu zobrazovať členov zboru. Toto oprávnenie nemožno odstrániť."
 
@@ -15417,10 +15333,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Preklady ChurchCRM spravuje komunita na POEditor. Môžete pomôcť"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Uzatvorené vklady"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Aktuálna hodnota $URL[0]"
 
@@ -15561,10 +15473,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "K tejto dobrovoľníckej príležitosti sú priradení ľudia. Vymazaním sa zrušia priradenia"
 
 #: 
-msgid "Total Deposits"
-msgstr "Celkové vklady"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Aktualizujte ho na platnú URL adresu, ktorá"
 
@@ -15591,10 +15499,6 @@ msgstr "pre fondy"
 #: 
 msgid "user"
 msgstr "používateľ"
-
-#: 
-msgid "with at least one"
-msgstr "s aspoň jedným"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17371,10 +17275,6 @@ msgstr "Vyzbierané v tomto fiškálnom roku"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s musí byť úplná webová adresa https://, napríklad https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Účet má obmedzené oprávnenia. Kontaktujte administrátora."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -24037,10 +23937,6 @@ msgid "%s Giving Statement"
 msgstr "Výpis darov za %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Upravte text, ktorý sa zobrazuje na výpisoch darov (sTaxReport1, sTaxReport2 atď.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24063,10 +23959,6 @@ msgstr "Odoslať e-mailom výpis darov za %s"
 #: 
 msgid "Envelope Numbers"
 msgstr "Čísla obálok"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Generovať výpisy darov"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24107,10 +23999,6 @@ msgstr "Výpis darov nemožno odoslať e-mailom: táto rodina nemá v evidencii 
 #: 
 msgid "Undesignated"
 msgstr "Bez určenia"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Overte, že na výpisoch darov je uvedený názov, adresa a kontaktné údaje cirkvi."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24325,10 +24213,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d platieb zatiaľ nie je na žiadnom vklade."
 
 #: 
-msgid "Can be emailed"
-msgstr "Možno odoslať e-mailom"
-
-#: 
 msgid "Closing line"
 msgstr "Záverečný riadok"
 
@@ -24357,16 +24241,8 @@ msgid "Opening line"
 msgstr "Úvodný riadok"
 
 #: 
-msgid "Print and mail"
-msgstr "Vytlačiť a poslať poštou"
-
-#: 
 msgid "Qty"
 msgstr "Počet"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Skontrolujte rok a potom vytlačte výpisy darov alebo ich odošlite e-mailom."
 
 #: 
 msgid "Signed by"
@@ -24375,10 +24251,6 @@ msgstr "Podpísal"
 #: 
 msgid "Thank-you line"
 msgstr "Riadok s poďakovaním"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Overte, že na daňových výpisoch je uvedený názov, adresa a kontaktné údaje cirkvi."
 
 #: 
 msgid "Year-End Giving"

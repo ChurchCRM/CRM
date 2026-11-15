@@ -2156,10 +2156,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Це призведе до заміни номерів сімейних конвертів у базі даних на вибрані на цій сторінці. Продовжити?"
 
 #: 
-msgid "Family Select"
-msgstr "Сімейний вибір"
-
-#: 
 msgid "Welcome to"
 msgstr "Ласкаво просимо до"
 
@@ -2458,10 +2454,6 @@ msgstr "Переглянути всі депозити"
 #: 
 msgid "Deposit Reports"
 msgstr "Звіти про депозити"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Редагувати депозит"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6073,14 +6065,6 @@ msgid "Close All Deposits"
 msgstr "Закрити всі депозити"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Закриті порівняно з загальною кількістю"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Виконайте ці завдання для точної податкової звітності в кінці року."
-
-#: 
 msgid "Configure Email"
 msgstr "Налаштувати Email"
 
@@ -6097,28 +6081,12 @@ msgid "Create First Deposit"
 msgstr "Створити перший депозит"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Спочатку створіть або відкрийте депозит"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Створіть або виберіть депозит, щоб почати."
-
-#: 
-msgid "Current Deposit"
-msgstr "Поточний депозит"
-
-#: 
 msgid "Day"
 msgstr "День"
 
 #: 
 msgid "Dec"
 msgstr "Груд"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Статистика депозитів"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6147,10 +6115,6 @@ msgstr "Редагувати платіж"
 #: 
 msgid "Edit Person"
 msgstr "Редагувати особу"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Переконайтеся, що всі депозити за податковий рік закриті."
 
 #: 
 msgid "F"
@@ -6257,10 +6221,6 @@ msgid "New Pledge"
 msgstr "Новий обіцяний внесок"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Немає активного депозиту"
-
-#: 
 msgid "No active funds configured."
 msgstr "Не налаштовано жодного активного фонду."
 
@@ -6293,10 +6253,6 @@ msgid "Pledge Reports"
 msgstr "Звіти за обіцянками"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Друк або надсилання річних виписок усім донорам."
-
-#: 
 msgid "Quick Actions"
 msgstr "Швидкі дії"
 
@@ -6327,10 +6283,6 @@ msgstr "Відновлення"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Відновити з файлу. Стире існуючі дані."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Перевірити фонди пожертв"
 
 #: 
 msgid "Save and Add New Family"
@@ -6369,14 +6321,6 @@ msgid "System Info"
 msgstr "Інформація про систему"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Текст податкового звіту"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Контрольний список податкової звітності"
-
-#: 
 msgid "Total"
 msgstr "Усього"
 
@@ -6397,10 +6341,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Користувач має бути адміном або мати доступ до фінансів"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Перевірте назви фондів для виписок."
-
-#: 
 msgid "YTD Payments"
 msgstr "Платежі з поч. року"
 
@@ -6417,20 +6357,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Розширення ZipArchive необхідне для оновлень"
 
 #: 
-msgid "active"
-msgstr "активний"
-
-#: 
 msgid "found"
 msgstr "знайдено"
 
 #: 
 msgid "issues"
 msgstr "проблеми"
-
-#: 
-msgid "open"
-msgstr "відкрито"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -7936,10 +7868,6 @@ msgstr "Перемістити пожертви до вибраної сім'ї"
 #: 
 msgid "Calendar not found"
 msgstr "Календар не знайдено"
-
-#: 
-msgid "Continue to Dashboard"
-msgstr "Продовжити до панелі"
 
 #: 
 msgid "Current Password"
@@ -11315,10 +11243,6 @@ msgid "Yellow"
 msgstr "Жовтий"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Ваші поточні рівні доступу (лише для читання)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d повторювана подія успішно створена."
@@ -13852,10 +13776,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Будь ласка, підтвердьте вимкнення 2-факторної авторизації для цього користувача"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Підтвердьте видалення статусу користувача з"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Будь ласка, підтвердьте скидання кількості помилок входу"
 
@@ -14670,10 +14590,6 @@ msgid "Access level"
 msgstr "Рівень доступу"
 
 #: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Адміністратори мають повний доступ до всіх функцій і даних. Індивідуальні дозволи не застосовуються."
-
-#: 
 msgid "All users can view congregation members. This permission cannot be removed."
 msgstr "Усі користувачі можуть переглядати членів парафії. Цей дозвіл не можна скасувати."
 
@@ -15450,10 +15366,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Переклади ChurchCRM керуються спільнотою на POEditor. Ви можете допомогти,"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Закриті депозити"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Поточне значення $URL[0]"
 
@@ -15594,10 +15506,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "До цієї волонтерської можливості призначені люди. Видалення скасує призначення"
 
 #: 
-msgid "Total Deposits"
-msgstr "Загальна сума депозитів"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Оновіть до дійсної URL-адреси, яка"
 
@@ -15624,10 +15532,6 @@ msgstr "для фондів"
 #: 
 msgid "user"
 msgstr "користувач"
-
-#: 
-msgid "with at least one"
-msgstr "принаймні з одним"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17404,10 +17308,6 @@ msgstr "Зібрано за цей фінансовий рік"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s має бути повною веб-адресою https://, наприклад https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Обліковий запис має обмежені права доступу. Зверніться до адміністратора."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -24070,10 +23970,6 @@ msgid "%s Giving Statement"
 msgstr "Звіт про пожертви за %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Налаштуйте текст, що з’являється у звітах про пожертви (sTaxReport1, sTaxReport2 тощо)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24096,10 +23992,6 @@ msgstr "Надіслати звіт про пожертви за %s"
 #: 
 msgid "Envelope Numbers"
 msgstr "Номери конвертів"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Створити звіти про пожертви"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24140,10 +24032,6 @@ msgstr "Неможливо надіслати звіт про пожертви: 
 #: 
 msgid "Undesignated"
 msgstr "Без призначення"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Перевірте, чи на звітах про пожертви зазначено назву церкви, адресу та контактні дані."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24358,10 +24246,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "Платежів, які ще не входять до жодного депозиту: %d."
 
 #: 
-msgid "Can be emailed"
-msgstr "Можна надіслати електронною поштою"
-
-#: 
 msgid "Closing line"
 msgstr "Завершальний рядок"
 
@@ -24390,16 +24274,8 @@ msgid "Opening line"
 msgstr "Вступний рядок"
 
 #: 
-msgid "Print and mail"
-msgstr "Надрукувати й надіслати поштою"
-
-#: 
 msgid "Qty"
 msgstr "К-сть"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Перегляньте рік, а потім надрукуйте або надішліть звіти про пожертви."
 
 #: 
 msgid "Signed by"
@@ -24408,10 +24284,6 @@ msgstr "Підписав"
 #: 
 msgid "Thank-you line"
 msgstr "Рядок подяки"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Перевірте, чи на податкових звітах зазначено назву церкви, адресу та контактні дані."
 
 #: 
 msgid "Year-End Giving"

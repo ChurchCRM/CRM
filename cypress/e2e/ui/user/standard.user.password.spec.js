@@ -1,10 +1,12 @@
     /// <reference types="cypress" />
 
+import { ACCOUNT_VIEWPORTS, captureAccountLayout } from "../../../support/account-layout";
+
 describe("User 2FA", () => {
     beforeEach(() => cy.setupStandardSession());
     
     it("Ensure QR code displays", () => {
-        cy.visit("v2/user/current/manage2fa");
+        cy.visit("/account/2fa");
         cy.get("#begin2faEnrollment")
             .should("exist")
             .should("be.visible")
@@ -22,49 +24,49 @@ describe("Standard User Password", () => {
     beforeEach(() => cy.setupStandardSession());
     
     it("Change with invalid password", () => {
-        cy.visit("v2/user/current/changepassword");
+        cy.visit("/account/password");
         cy.get("#OldPassword").type("ILikePancakes");
         cy.get("#NewPassword1").type("changeyou");
         cy.get("#NewPassword2").type("changeyou");
         cy.get("#passwordChangeForm").submit();
-        cy.url().should("contain", "/v2/user/current/changepassword");
+        cy.url().should("contain", "/account/password");
         cy.contains("Incorrect password supplied for current user");
     });
 
     it("Change with simple password", () => {
-        cy.visit("v2/user/current/changepassword");
+        cy.visit("/account/password");
         cy.get("#OldPassword").type("basicjoe");
         cy.get("#NewPassword1").type("password");
         cy.get("#NewPassword2").type("password");
         cy.get("#passwordChangeForm").submit();
-        cy.url().should("contain", "/v2/user/current/changepassword");
+        cy.url().should("contain", "/account/password");
         cy.contains(
             "Your password choice is too obvious. Please choose something else.",
         );
     });
 
     it("Change with old password", () => {
-        cy.visit("v2/user/current/changepassword");
+        cy.visit("/account/password");
         cy.get("#OldPassword").type("basicjoe");
         cy.get("#NewPassword1").type("basicjoe");
         cy.get("#NewPassword2").type("basicjoe");
         cy.get("#passwordChangeForm").submit();
-        cy.url().should("contain", "/v2/user/current/changepassword");
+        cy.url().should("contain", "/account/password");
         cy.contains("Your new password must not match your old one");
     });
 
     it("Change with like old password", () => {
-        cy.visit("v2/user/current/changepassword");
+        cy.visit("/account/password");
         cy.get("#OldPassword").type("basicjoe");
         cy.get("#NewPassword1").type("basicjoe2");
         cy.get("#NewPassword2").type("basicjoe2");
         cy.get("#passwordChangeForm").submit();
-        cy.url().should("contain", "/v2/user/current/changepassword");
+        cy.url().should("contain", "/account/password");
         cy.contains("Your new password is too similar to your old one");
     });
 
     it("Change with a confirmation that does not match", () => {
-        cy.visit("/v2/user/current/changepassword");
+        cy.visit("/account/password");
         cy.get("#OldPassword").type("ILikePancakes");
         cy.get("#NewPassword1").type("changeyou");
         cy.get("#NewPassword2").type("changeyou2");
@@ -73,14 +75,32 @@ describe("Standard User Password", () => {
         cy.get("#NewPassword1").should("have.value", "changeyou");
     });
 
+    it("Shows a password strength meter while typing", () => {
+        cy.visit("/account/password");
+        cy.get("#PasswordStrengthContainer").should("not.be.visible");
+        cy.get("#NewPassword1").type("abc");
+        cy.get("#PasswordStrengthContainer").should("be.visible");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
+        cy.get("#PasswordStrengthHint").should("not.be.empty");
+        cy.get("#NewPassword1").clear().type("P@ssw0rd!2026");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Strong");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "100");
+        cy.get("#NewPassword2").type("P@ssw0rd!2027");
+        cy.get("#passwordChangeForm").submit();
+        cy.get("#NewPasswordError").should("have.text", "You must enter the same password in both boxes");
+        cy.get("#NewPassword1").clear();
+        cy.get("#PasswordStrengthContainer").should("not.be.visible");
+    });
+
     it("Server refuses a confirmation that does not match", () => {
-        cy.visit("/v2/user/current/changepassword");
+        cy.visit("/account/password");
         cy.get("input[name=csrf_token]")
             .invoke("val")
             .then((csrfToken) =>
                 cy.request({
                     method: "POST",
-                    url: "/v2/user/current/changepassword",
+                    url: "/account/password",
                     form: true,
                     body: {
                         csrf_token: csrfToken,
@@ -96,13 +116,13 @@ describe("Standard User Password", () => {
     });
 
     it("Server refuses a blank new password", () => {
-        cy.visit("/v2/user/current/changepassword");
+        cy.visit("/account/password");
         cy.get("input[name=csrf_token]")
             .invoke("val")
             .then((csrfToken) =>
                 cy.request({
                     method: "POST",
-                    url: "/v2/user/current/changepassword",
+                    url: "/account/password",
                     form: true,
                     body: { csrf_token: csrfToken, OldPassword: "ILikePancakes", NewPassword1: " ", NewPassword2: " " },
                 }),
@@ -191,22 +211,26 @@ describe("Standard User Password - successful change", () => {
     it("Change then back", () => {
         cy.visit("/session/end");
         cy.loginWithCredentials(loginName, FIRST_PASSWORD, "pw-round-trip-1");
-        cy.visit("v2/user/current/changepassword");
+        cy.visit("/account/password");
         cy.get("#OldPassword").type(FIRST_PASSWORD);
         cy.get("#NewPassword1").type(SECOND_PASSWORD);
         cy.get("#NewPassword2").type(SECOND_PASSWORD);
         cy.get("#passwordChangeForm").submit();
-        cy.url().should("contain", "/v2/user/current/changepassword");
+        cy.url().should("contain", "/account/password");
         cy.contains("Password Change Successful");
 
         cy.visit("/session/end");
         cy.loginWithCredentials(loginName, SECOND_PASSWORD, "pw-round-trip-2");
-        cy.visit("v2/user/current/changepassword");
+        cy.visit("/account/password");
         cy.get("#OldPassword").type(SECOND_PASSWORD);
         cy.get("#NewPassword1").type(FIRST_PASSWORD);
         cy.get("#NewPassword2").type(FIRST_PASSWORD);
         cy.get("#passwordChangeForm").submit();
-        cy.url().should("contain", "/v2/user/current/changepassword");
+        cy.url().should("contain", "/account/password");
         cy.contains("Password Change Successful");
+        ACCOUNT_VIEWPORTS.forEach(({ width, height }) => {
+            cy.viewport(width, height);
+            ["default", "dark"].forEach((mode) => captureAccountLayout("password-changed", mode));
+        });
     });
 });

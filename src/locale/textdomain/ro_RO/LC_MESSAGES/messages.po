@@ -2215,10 +2215,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Aceasta va suprascrie numerele plicului familiei din baza de date cu cele selectate pe această pagină. Continua?"
 
 #: 
-msgid "Family Select"
-msgstr "Selectează familie"
-
-#: 
 msgid "Welcome to"
 msgstr "Bun venit la:"
 
@@ -2517,10 +2513,6 @@ msgstr "Vezi toate depozitele"
 #: 
 msgid "Deposit Reports"
 msgstr "Rapoarte depozit"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Editați foaia de depozit"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6128,14 +6120,6 @@ msgid "Close All Deposits"
 msgstr "Închide toate depozitele"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Închise vs Total"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Finalizați aceste sarcini pentru a asigura raportarea fiscală corectă la sfârșitul anului pentru donatori."
-
-#: 
 msgid "Configure Email"
 msgstr "Configurare e-mail"
 
@@ -6152,28 +6136,12 @@ msgid "Create First Deposit"
 msgstr "Creați primul depozit"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Creați sau deschideți mai întâi un depozit"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Creați sau selectați un depozit pentru a începe."
-
-#: 
-msgid "Current Deposit"
-msgstr "Depozit curent"
-
-#: 
 msgid "Day"
 msgstr "Zi"
 
 #: 
 msgid "Dec"
 msgstr "Dec"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Statistici depozit"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6202,10 +6170,6 @@ msgstr "Editează plată"
 #: 
 msgid "Edit Person"
 msgstr "Editează persoană"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Asigurați-vă că toate depozitele pentru anul fiscal sunt închise înainte de a genera declarațiile."
 
 #: 
 msgid "F"
@@ -6312,10 +6276,6 @@ msgid "New Pledge"
 msgstr "Angajament nou"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Niciun depozit activ"
-
-#: 
 msgid "No active funds configured."
 msgstr "Niciun fond activ configurat."
 
@@ -6348,10 +6308,6 @@ msgid "Pledge Reports"
 msgstr "Rapoarte angajamente"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Tipăriți sau trimiteți prin e-mail declarațiile anuale de donații către toți donatorii."
-
-#: 
 msgid "Quick Actions"
 msgstr "Acțiuni rapide"
 
@@ -6382,10 +6338,6 @@ msgstr "Restaurare"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Restaurare dintr-un fișier backup. Șterge datele existente."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Revizuire fonduri donații"
 
 #: 
 msgid "Save and Add New Family"
@@ -6424,14 +6376,6 @@ msgid "System Info"
 msgstr "Informații sistem"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Limbajul raportului fiscal"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Listă de verificare pentru raportarea anului fiscal"
-
-#: 
 msgid "Total"
 msgstr "Total"
 
@@ -6452,10 +6396,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Utilizatorul trebuie să fie administrator sau să aibă permisiuni de finanțe"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Verificați dacă numele și descrierile fondurilor sunt corecte pentru declarații."
-
-#: 
 msgid "YTD Payments"
 msgstr "Plăți de la începutul anului"
 
@@ -6472,20 +6412,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Extensia ZipArchive este necesară pentru actualizări"
 
 #: 
-msgid "active"
-msgstr "activ"
-
-#: 
 msgid "found"
 msgstr "găsit"
 
 #: 
 msgid "issues"
 msgstr "probleme"
-
-#: 
-msgid "open"
-msgstr "deschis"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -7987,10 +7919,6 @@ msgstr "Mută Donațiile la Familia Selectată"
 #: 
 msgid "Calendar not found"
 msgstr "Calendar negăsit"
-
-#: 
-msgid "Continue to Dashboard"
-msgstr "Continuați la Tabloul de Bord"
 
 #: 
 msgid "Current Password"
@@ -11365,10 +11293,6 @@ msgid "Yellow"
 msgstr "Galben"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Nivelurile dvs. actuale de acces (doar citire)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d eveniment repetat a fost creat cu succes."
@@ -13901,10 +13825,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vă rugăm să confirmați autentificare în 2 factori pentru acest utilizator"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Vă rugăm să confirmați eliminarea stării de utilizator de la"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Vă rugăm să confirmați resetarea numărului de conectări eșuat"
 
@@ -14718,10 +14638,6 @@ msgid "Access level"
 msgstr "Nivel de acces"
 
 #: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Administratorii au acces complet la toate funcțiile și datele. Permisiunile individuale nu se aplică."
-
-#: 
 msgid "All users can view congregation members. This permission cannot be removed."
 msgstr "Toți utilizatorii pot vizualiza membrii congregației. Această permisiune nu poate fi eliminată."
 
@@ -15496,10 +15412,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Traducerile ChurchCRM sunt gestionate de comunitate pe POEditor. Puteti ajuta"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Depozite inchise"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Valoarea curenta $URL[0]"
 
@@ -15640,10 +15552,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Exista persoane atribuite acestei oportunitati de voluntariat. Stergerea va deatribui"
 
 #: 
-msgid "Total Deposits"
-msgstr "Total depozite"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Actualizati-l la un URL valid care"
 
@@ -15670,10 +15578,6 @@ msgstr "pentru fonduri"
 #: 
 msgid "user"
 msgstr "utilizator"
-
-#: 
-msgid "with at least one"
-msgstr "cu cel putin unul"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17448,10 +17352,6 @@ msgstr "Sumă strânsă în acest an fiscal"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s trebuie să fie o adresă web completă https://, de exemplu https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Contul are permisiuni limitate. Contactați un administrator."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -24101,10 +24001,6 @@ msgid "%s Giving Statement"
 msgstr "Extras de donații %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Personalizați textul care apare pe extrasele de donații (sTaxReport1, sTaxReport2 etc.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24127,10 +24023,6 @@ msgstr "Trimiteți prin e-mail extrasul de donații %s"
 #: 
 msgid "Envelope Numbers"
 msgstr "Numere de plic"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Generați extrasele de donații"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24171,10 +24063,6 @@ msgstr "Extrasul de donații nu poate fi trimis prin e-mail: această familie nu
 #: 
 msgid "Undesignated"
 msgstr "Fără destinație"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Verificați că numele, adresa și datele de contact ale bisericii apar pe extrasele de donații."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24389,10 +24277,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d plăți nu sunt încă pe niciun depozit."
 
 #: 
-msgid "Can be emailed"
-msgstr "Poate fi trimis prin e-mail"
-
-#: 
 msgid "Closing line"
 msgstr "Rând de încheiere"
 
@@ -24421,16 +24305,8 @@ msgid "Opening line"
 msgstr "Rând de deschidere"
 
 #: 
-msgid "Print and mail"
-msgstr "Tipăriți și trimiteți prin poștă"
-
-#: 
 msgid "Qty"
 msgstr "Cant."
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Revizuiți anul, apoi tipăriți sau trimiteți prin e-mail extrasele de donații."
 
 #: 
 msgid "Signed by"
@@ -24439,10 +24315,6 @@ msgstr "Semnat de"
 #: 
 msgid "Thank-you line"
 msgstr "Rând de mulțumire"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verificați că numele, adresa și datele de contact ale bisericii apar pe extrasele fiscale."
 
 #: 
 msgid "Year-End Giving"
