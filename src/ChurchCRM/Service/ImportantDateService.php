@@ -299,23 +299,81 @@ class ImportantDateService
      */
     public function calendarOccurrences(\DateTimeInterface $from, \DateTimeInterface $to): array
     {
-        $personRecords = PersonImportantDateQuery::create()
-            ->useTypeQuery()->filterByActive(true)->filterByShowOnCalendar(true)->endUse()
+        return $this->occurrencesBetween($from, $to, true, []);
+    }
+
+    /**
+     * Dates of active types observed from today through $days ahead, for living,
+     * active people and active families, soonest first. $typeIds narrows to those
+     * types; empty means every active type.
+     *
+     * @param list<int> $typeIds
+     *
+     * @return list<array{ownerKind: string, ownerName: string, ownerUrl: string, type: string, typeId: int, observed: string, observedLabel: string, recorded: string, daysUntil: int, relative: string, yearsLabel: string|null, note: string|null}>
+     */
+    public function upcoming(int $days, array $typeIds = [], ?\DateTimeInterface $today = null): array
+    {
+        $from = \DateTimeImmutable::createFromInterface($today ?? DateTimeUtils::getStartOfToday())->setTime(0, 0);
+        $to = $from->modify('+' . max(0, $days) . ' days');
+
+        $rows = [];
+        foreach ($this->occurrencesBetween($from, $to, false, $typeIds) as $occurrence) {
+            $record = $occurrence['record'];
+            $owner = $occurrence['owner'];
+            $daysUntil = (int) round(($occurrence['date']->setTime(12, 0)->getTimestamp() - $from->setTime(12, 0)->getTimestamp()) / 86400);
+            $rows[] = [
+                'ownerKind'  => $owner instanceof Person ? ImportantDateType::APPLIES_TO_PERSON : ImportantDateType::APPLIES_TO_FAMILY,
+                'ownerName'  => $owner instanceof Person ? (string) $owner->getFullName() : (string) $owner->getSalutation(),
+                'ownerUrl'   => (string) $owner->getViewURI(),
+                'type'       => (string) $occurrence['type']->getName(),
+                'typeId'     => (int) $occurrence['type']->getId(),
+                'observed'   => $occurrence['date']->format('Y-m-d'),
+                'observedLabel' => $occurrence['date']->format(SystemConfig::getValue('sDateFormatNoYear')),
+                'recorded'   => $this->formatRecorded($record->getAnnualDate()),
+                'daysUntil'  => $daysUntil,
+                'relative'   => self::relativeLabel($daysUntil),
+                'yearsLabel' => $this->yearsLabel($occurrence['years'], 'years'),
+                'note'       => $record->getNote(),
+            ];
+        }
+
+        usort($rows, static fn (array $a, array $b): int => [$a['daysUntil'], $a['type'], $a['ownerName']] <=> [$b['daysUntil'], $b['type'], $b['ownerName']]);
+
+        return $rows;
+    }
+
+    /**
+     * @param list<int> $typeIds empty means every active type
+     *
+     * @return list<array{record: PersonImportantDate|FamilyImportantDate, type: ImportantDateType, owner: Person|Family, date: \DateTimeImmutable, years: int|null}>
+     */
+    private function occurrencesBetween(\DateTimeInterface $from, \DateTimeInterface $to, bool $calendarOnly, array $typeIds): array
+    {
+        $typeFilter = static function (ImportantDateTypeQuery $types) use ($calendarOnly): ImportantDateTypeQuery {
+            $types->filterByActive(true);
+            if ($calendarOnly) {
+                $types->filterByShowOnCalendar(true);
+            }
+
+            return $types;
+        };
+        $personQuery = $typeFilter(PersonImportantDateQuery::create()->useTypeQuery())->endUse()
             ->usePersonQuery()->filterByLiving()->filterByActive()->endUse()
             ->with('Type')
-            ->with('Person')
-            ->find();
-        $familyRecords = FamilyImportantDateQuery::create()
-            ->useTypeQuery()->filterByActive(true)->filterByShowOnCalendar(true)->endUse()
+            ->with('Person');
+        $familyQuery = $typeFilter(FamilyImportantDateQuery::create()->useTypeQuery())->endUse()
             ->useFamilyQuery()->filterByActive()->endUse()
             ->with('Type')
-            ->with('Family')
-            ->find();
+            ->with('Family');
+        if ($typeIds !== []) {
+            $personQuery->filterByTypeId(array_map('intval', $typeIds));
+            $familyQuery->filterByTypeId(array_map('intval', $typeIds));
+        }
 
         $fromDay = $from->format('Y-m-d');
         $toDay = $to->format('Y-m-d');
         $out = [];
-        foreach ([$personRecords, $familyRecords] as $records) {
+        foreach ([$personQuery->find(), $familyQuery->find()] as $records) {
             foreach ($records as $record) {
                 $annual = $record->getAnnualDate();
                 $owner = $record instanceof PersonImportantDate ? $record->getPerson() : $record->getFamily();

@@ -226,6 +226,14 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                         </div>
                         <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
                     </a>
+                    <a href="<?= $sRootPath ?>/people/important-dates" class="list-group-item list-group-item-action d-flex align-items-center" id="important-dates-dashboard-link">
+                        <i class="fa-solid fa-calendar-day fa-fw text-body-secondary me-3"></i>
+                        <div>
+                            <div class="fw-medium"><?= gettext('Important Dates') ?></div>
+                            <div class="text-body-secondary small"><?= gettext('Baptisms, dedications and other yearly dates coming up') ?></div>
+                        </div>
+                        <i class="fa-solid fa-chevron-right ms-auto text-body-secondary"></i>
+                    </a>
                     <a href="<?= $sRootPath ?>/people/reports/letters-and-labels" class="list-group-item list-group-item-action d-flex align-items-center">
                         <i class="fa-solid fa-envelope-open-text fa-fw text-body-secondary me-3"></i>
                         <div>
