@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-15 00:05+0000\n"
+"POT-Creation-Date: 2026-11-15 04:50+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -5211,6 +5211,12 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
+msgid "Disabled at"
+msgstr ""
+
+msgid "Disabled by"
+msgstr ""
+
 msgid "Disabled in settings"
 msgstr ""
 
@@ -9470,6 +9476,9 @@ msgstr ""
 msgid "Last sign-in"
 msgstr ""
 
+msgid "Last successful login"
+msgstr ""
+
 msgid "Last used"
 msgstr ""
 
@@ -9779,6 +9788,9 @@ msgstr ""
 msgid ""
 "Lockout period in minutes\n"
 "A locked account unlocks by itself after this many minutes. Failed logins from one IP address are counted over the same period."
+msgstr ""
+
+msgid "Lockout state"
 msgstr ""
 
 msgid "Log File"
@@ -10529,6 +10541,9 @@ msgid "Ministry not found"
 msgstr ""
 
 msgid "Minutes"
+msgstr ""
+
+msgid "Minutes until automatic unlock"
 msgstr ""
 
 #, php-format
@@ -11780,6 +11795,9 @@ msgstr ""
 msgid "Not listed here: {{total}} more"
 msgstr ""
 
+msgid "Not locked"
+msgstr ""
+
 msgid "Not moved"
 msgstr ""
 
@@ -12611,6 +12629,9 @@ msgid "Password Reset Successful"
 msgstr ""
 
 msgid "Password change required"
+msgstr ""
+
+msgid "Password change required at next login"
 msgstr ""
 
 msgid "Password reset"
@@ -14386,6 +14407,9 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
+msgid "Roles & permissions"
+msgstr ""
+
 msgid "Roles to include"
 msgstr ""
 
@@ -15591,6 +15615,9 @@ msgid "Sign-in is not disabled for this person."
 msgstr ""
 
 msgid "Sign-in refused"
+msgstr ""
+
+msgid "Sign-in status"
 msgstr ""
 
 msgid "Sign-in, sessions and the API key are blocked until this is resolved on the linked person's record."
@@ -18252,6 +18279,9 @@ msgstr ""
 msgid "Two-factor authentication"
 msgstr ""
 
+msgid "Two-factor authentication enrolled"
+msgstr ""
+
 msgid "Two-factor authentication has been disabled"
 msgstr ""
 
@@ -18756,6 +18786,9 @@ msgid "User Config"
 msgstr ""
 
 msgid "User Delete Confirmation"
+msgstr ""
+
+msgid "User Details"
 msgstr ""
 
 msgid "User Editor"
