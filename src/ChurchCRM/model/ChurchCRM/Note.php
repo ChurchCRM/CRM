@@ -26,6 +26,7 @@ class Note extends BaseNote
      */
     public function preSave(?ConnectionInterface $con = null): bool
     {
+        PersonDeletionService::lockFamily((int) $this->getFamId(), $con);
         PersonDeletionService::lockPeople([(int) $this->getPerId(), (int) $this->getEnteredBy(), (int) $this->getEditedBy()], $con);
 
         return parent::preSave($con);
