@@ -8,6 +8,7 @@ use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\LocaleInfo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
@@ -24,6 +25,7 @@ use ChurchCRM\Service\UserService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\SlimUtils;
+use ChurchCRM\Utils\AnnualDate;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\GeoUtils;
@@ -678,6 +680,10 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sLanguage'              => SystemConfig::getValue('sLanguage'),
             'sTimeZone'              => SystemConfig::getValue('sTimeZone'),
             'sDistanceUnit'          => SystemConfig::getValue('sDistanceUnit') ?: 'miles',
+            // Dates
+            'sFeb29Observance'         => AnnualDate::observance(),
+            'iKioskAnnualDateWindowDays'     => SystemConfig::getValue('iKioskAnnualDateWindowDays'),
+            'iDashboardAnnualDateWindowDays' => SystemConfig::getValue('iDashboardAnnualDateWindowDays'),
             // Date & Time Formats — fall back to declared defaults when unset.
             'sDateFormatLong'        => SystemConfig::getValue('sDateFormatLong')        ?: SystemConfig::getConfigItem('sDateFormatLong')->getDefault(),
             'sDateFormatNoYear'      => SystemConfig::getValue('sDateFormatNoYear')      ?: SystemConfig::getConfigItem('sDateFormatNoYear')->getDefault(),
@@ -749,6 +755,11 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             ];
         }
 
+        $feb29Counts = [
+            'people'   => PersonQuery::create()->filterByLiving()->filterByBirthMonth(2)->filterByBirthDay(29)->count(),
+            'families' => FamilyQuery::create()->filterByActive()->filterByWeddingMonthDay(2, 29)->count(),
+        ];
+
         $pageArgs = [
             'sRootPath'          => SystemURLs::getRootPath(),
             'sPageTitle'         => gettext('Localization & Formats'),
@@ -758,6 +769,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
                 [gettext('Localization & Formats')],
             ]),
             'localeSettings'     => $localeSettings,
+            'feb29Counts'        => $feb29Counts,
             'localeStats'        => $localeStats,
             'systemCheckEnabled' => $systemCheckEnabled,
             'timezones'          => timezone_identifiers_list(),
@@ -779,6 +791,14 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         SystemConfig::setValue('sTimeZone', in_array($tz, timezone_identifiers_list(), true) ? $tz : date_default_timezone_get());
         $distanceUnit = $body['sDistanceUnit'] ?? 'miles';
         SystemConfig::setValue('sDistanceUnit', in_array($distanceUnit, ['miles', 'kilometers'], true) ? $distanceUnit : 'miles');
+
+        // Dates — an unknown observance falls back to the default; windows are whole days from 0 to 90.
+        $feb29 = (string) ($body['sFeb29Observance'] ?? '');
+        SystemConfig::setValue('sFeb29Observance', in_array($feb29, [AnnualDate::FEB28, AnnualDate::MAR1, AnnualDate::LEAP], true) ? $feb29 : SystemConfig::getConfigItem('sFeb29Observance')->getDefault());
+        foreach (['iKioskAnnualDateWindowDays', 'iDashboardAnnualDateWindowDays'] as $key) {
+            $days = filter_var($body[$key] ?? null, FILTER_VALIDATE_INT);
+            SystemConfig::setValue($key, ($days === false || $days < 0 || $days > 90) ? SystemConfig::getConfigItem($key)->getDefault() : (string) $days);
+        }
 
         // Date & Time Formats — fall back to each key's declared default when
         // empty/whitespace. An empty string passed to PHP's date() produces
@@ -838,6 +858,9 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
         'sLanguage'       => 'text',
         'sTimeZone'       => 'text',
         'sDistanceUnit'   => 'text',
+        'sFeb29Observance' => 'text',
+        'iKioskAnnualDateWindowDays' => 'text',
+        'iDashboardAnnualDateWindowDays' => 'text',
         'sDateFormatLong'      => 'text',
         'sDateFormatNoYear'    => 'text',
         'sDateTimeFormat'      => 'text',

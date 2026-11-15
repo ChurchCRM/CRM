@@ -18,7 +18,9 @@ use ChurchCRM\Service\CustomFieldService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\GroupService;
 use ChurchCRM\Service\UserService;
+use ChurchCRM\Utils\AnnualDate;
 use ChurchCRM\Utils\CustomFieldUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\EmailAddress;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -145,25 +147,114 @@ class Person extends BasePerson implements PhotoInterface
 
             // '!' keeps the current time of day out, so an age measured from
             // midnight 'today' counts the birthday itself.
-            return \DateTimeImmutable::createFromFormat('!Y-m-d', $birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay());
+            return \DateTimeImmutable::createFromFormat('!Y-m-d', $birthYear . '-' . $this->getBirthMonth() . '-' . $this->getBirthDay(), DateTimeUtils::getConfiguredTimezone());
         }
 
         return null;
     }
 
-    /**
-     * Same month and day rule as the Today's Birthdays counter: a 29 February
-     * birthday only matches in a leap year.
-     */
+    private function birthdayAnnualDate(): AnnualDate
+    {
+        return new AnnualDate((int) $this->getBirthMonth(), (int) $this->getBirthDay(), (int) $this->getBirthYear());
+    }
+
+    private static function startOfToday(): \DateTimeImmutable
+    {
+        return \DateTimeImmutable::createFromMutable(DateTimeUtils::getStartOfToday());
+    }
+
+    /** True on the day the birthday is observed (see AnnualDate for February 29). */
     public function isBirthdayToday(?\DateTimeInterface $today = null): bool
     {
-        if (empty($this->getBirthMonth()) || empty($this->getBirthDay())) {
-            return false;
-        }
-        $today ??= new \DateTimeImmutable('today');
+        return $this->birthdayAnnualDate()->isToday($today);
+    }
 
-        return (int) $this->getBirthMonth() === (int) $today->format('n')
-            && (int) $this->getBirthDay() === (int) $today->format('j');
+    public function getBirthdayOccurrence(int $year): ?\DateTimeImmutable
+    {
+        return $this->birthdayAnnualDate()->occurrenceInYear($year);
+    }
+
+    /** Signed days to the observed birthday: 0 today, positive upcoming, negative recent; null without a birth month/day. */
+    public function getDaysUntilBirthday(?\DateTimeInterface $today = null): ?int
+    {
+        return $this->birthdayAnnualDate()->daysUntil($today);
+    }
+
+    /** The "turning N" label for the birthday observed in $year: occurrence year minus birth year. Not getAge(). */
+    public function getAgeTurningOnOccurrence(int $year): ?int
+    {
+        return $this->hideAge() ? null : $this->birthdayAnnualDate()->yearsOnOccurrence($year);
+    }
+
+    private function deathAnniversaryAnnualDate(): AnnualDate
+    {
+        return AnnualDate::fromDate($this->getDateDeceased());
+    }
+
+    /** The observed death anniversary in $year; null before the death year, and in years it is not observed. */
+    public function getDeathAnniversaryOccurrence(int $year): ?\DateTimeImmutable
+    {
+        $annual = $this->deathAnniversaryAnnualDate();
+        if ($annual->getYear() === null || $year < $annual->getYear()) {
+            return null;
+        }
+
+        return $annual->occurrenceInYear($year);
+    }
+
+    public function isDeathAnniversaryToday(?\DateTimeInterface $today = null): bool
+    {
+        return $this->deathAnniversaryAnnualDate()->isToday($today);
+    }
+
+    public function getDaysUntilDeathAnniversary(?\DateTimeInterface $today = null): ?int
+    {
+        return $this->deathAnniversaryAnnualDate()->daysUntil($today);
+    }
+
+    private function membershipAnniversaryAnnualDate(): AnnualDate
+    {
+        return AnnualDate::fromDate($this->getMembershipDate());
+    }
+
+    public function getMembershipAnniversaryOccurrence(int $year): ?\DateTimeImmutable
+    {
+        return $this->membershipAnniversaryAnnualDate()->occurrenceInYear($year);
+    }
+
+    public function isMembershipAnniversaryToday(?\DateTimeInterface $today = null): bool
+    {
+        return $this->membershipAnniversaryAnnualDate()->isToday($today);
+    }
+
+    public function getDaysUntilMembershipAnniversary(?\DateTimeInterface $today = null): ?int
+    {
+        return $this->membershipAnniversaryAnnualDate()->daysUntil($today);
+    }
+
+    /** Days since the friend date; null without one or when it is in the future. */
+    public function getDaysSinceFriendDate(?\DateTimeInterface $today = null): ?int
+    {
+        $friendDate = $this->getFriendDate();
+        if (empty($friendDate)) {
+            return null;
+        }
+        $friend = \DateTimeImmutable::createFromFormat('!Y-n-j', $friendDate->format('Y-n-j'), DateTimeUtils::getConfiguredTimezone());
+        $interval = MiscUtils::ageOn($friend, $today ?? self::startOfToday());
+
+        return $interval?->days;
+    }
+
+    /** Completed years as a friend; null without a friend date or when it is in the future. */
+    public function getFriendYears(?\DateTimeInterface $today = null): ?int
+    {
+        $friendDate = $this->getFriendDate();
+        if (empty($friendDate)) {
+            return null;
+        }
+        $friend = \DateTimeImmutable::createFromFormat('!Y-n-j', $friendDate->format('Y-n-j'), DateTimeUtils::getConfiguredTimezone());
+
+        return MiscUtils::ageOn($friend, $today ?? self::startOfToday())?->y;
     }
 
     public function getFormattedBirthDate()
@@ -1038,7 +1129,7 @@ class Person extends BasePerson implements PhotoInterface
         if (!$birthDate instanceof \DateTimeImmutable || $this->hideAge()) {
             return false;
         }
-        $now = $date === null ? new \DateTimeImmutable('today') : \DateTimeImmutable::createFromFormat('!Y-m-d', $date);
+        $now = $date === null ? self::startOfToday() : \DateTimeImmutable::createFromFormat('!Y-m-d', $date, DateTimeUtils::getConfiguredTimezone());
 
         if (!$now instanceof \DateTimeImmutable) {
             return false;
@@ -1076,7 +1167,7 @@ class Person extends BasePerson implements PhotoInterface
             return null;
         }
 
-        return MiscUtils::ageOn($birthDate, new \DateTimeImmutable('today'))?->y;
+        return MiscUtils::ageOn($birthDate, self::startOfToday())?->y;
     }
 
     public function getFullNameWithAge(): string

@@ -15,6 +15,7 @@ use ChurchCRM\PhotoInterface;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Slim\Middleware\Api\FamilyEmailDeprecationMiddleware;
+use ChurchCRM\Utils\AnnualDate;
 use ChurchCRM\Utils\GeoUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -330,6 +331,28 @@ class Family extends BaseFamily implements PhotoInterface
         }
 
         return '';
+    }
+
+    private function weddingAnnualDate(): AnnualDate
+    {
+        return AnnualDate::fromDate($this->getWeddingdate());
+    }
+
+    /** True on the day the wedding anniversary is observed (see AnnualDate for February 29). */
+    public function isWeddingAnniversaryToday(?\DateTimeInterface $today = null): bool
+    {
+        return $this->weddingAnnualDate()->isToday($today);
+    }
+
+    public function getWeddingAnniversaryOccurrence(int $year): ?\DateTimeImmutable
+    {
+        return $this->weddingAnnualDate()->occurrenceInYear($year);
+    }
+
+    /** Signed days to the observed anniversary: 0 today, positive upcoming, negative recent; null without a wedding date. */
+    public function getDaysUntilWeddingAnniversary(?\DateTimeInterface $today = null): ?int
+    {
+        return $this->weddingAnnualDate()->daysUntil($today);
     }
 
     /**

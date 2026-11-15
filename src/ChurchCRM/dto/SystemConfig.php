@@ -196,6 +196,9 @@ class   SystemConfig
 
             'sDistanceUnit'                        => new ConfigItem('sDistanceUnit', 'choice', 'miles', gettext('Unit used to measure distance, miles or km.'), '', '{"Choices":["' . gettext('miles') . '","' . gettext('kilometers') . '"]}'),
             'sTimeZone'                            => new ConfigItem('sTimeZone', 'choice', 'America/New_York', gettext('Time zone'), 'https://www.php.net/manual/en/timezones.php', json_encode(['Choices' => timezone_identifiers_list()])),
+            'sFeb29Observance'                     => new ConfigItem('sFeb29Observance', 'choice', 'mar1', gettext('In years without February 29, observe February 29 birthdays and anniversaries on February 28, March 1, or not at all (leap years only). The recorded date never changes.'), '', json_encode(['Choices' => ['feb28', 'mar1', 'leap']])),
+            'iKioskAnnualDateWindowDays'             => new ConfigItem('iKioskAnnualDateWindowDays', 'number', '14', gettext('Days before and after today that the kiosk calls out birthdays and anniversaries.')),
+            'iDashboardAnnualDateWindowDays'         => new ConfigItem('iDashboardAnnualDateWindowDays', 'number', '7', gettext('Days before and after today that the dashboard lists birthdays and anniversaries.')),
             'bForceUppercaseZip'                   => new ConfigItem('bForceUppercaseZip', 'boolean', '0', gettext('Make user-entered zip/postcodes UPPERCASE when saving to the database.')),
             'bEnableNonDeductible'                 => new ConfigItem('bEnableNonDeductible', 'boolean', '0', gettext('Allow recording of non-tax-deductible payments in the finance module')),
             'bEnableSelfRegistration'              => new ConfigItem('bEnableSelfRegistration', 'boolean', '0', gettext('Allow visitors to create their own family record via the self-registration page')),

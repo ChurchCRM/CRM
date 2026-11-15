@@ -27,8 +27,8 @@ Assert::false($born(1990, 5, null)->isBirthdayToday($may1), 'a birthday without 
 
 $leapDay = $born(2000, 2, 29);
 Assert::true($leapDay->isBirthdayToday(new DateTimeImmutable('2028-02-29')), 'a leap day birthday matches in a leap year');
-Assert::false($leapDay->isBirthdayToday(new DateTimeImmutable('2027-02-28')), 'a leap day birthday does not move to 28 February');
-Assert::false($leapDay->isBirthdayToday(new DateTimeImmutable('2027-03-01')), 'a leap day birthday does not move to 1 March');
+Assert::false($leapDay->isBirthdayToday(new DateTimeImmutable('2027-02-28')), 'by default a leap day birthday is not observed on 28 February');
+Assert::true($leapDay->isBirthdayToday(new DateTimeImmutable('2027-03-01')), 'by default a leap day birthday is observed on 1 March in a non-leap year');
 
 $today = new DateTimeImmutable('today');
 Assert::true($born(1980, (int) $today->format('n'), (int) $today->format('j'))->isBirthdayToday(), 'without a date it checks today');
