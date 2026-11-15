@@ -1,0 +1,45 @@
+{
+  "TTL": 300,
+  "items": [
+    {
+      "id": "online-giving-rfc-0005",
+      "title": "Giving online through ChurchCRM",
+      "summary": "Let members give online by card or bank transfer and have the gift recorded in ChurchCRM automatically. Vote if online giving should be the next feature built; the technical design is RFC 0005.",
+      "category": "Feature Proposal",
+      "discussionUrl": "https://github.com/ChurchCRM/CRM/discussions/10641",
+      "expiresAt": null
+    },
+    {
+      "id": "member-sign-in",
+      "title": "Members sign in to the Member Portal with their email",
+      "summary": "Let members sign in with their email address or a passkey instead of a username and password, so more of your congregation can actually use the portal. Vote if this should be built next.",
+      "category": "Feature Proposal",
+      "discussionUrl": "https://github.com/ChurchCRM/CRM/discussions/10639",
+      "expiresAt": null
+    },
+    {
+      "id": "texting-rfc-0009",
+      "title": "Send a text from ChurchCRM to people and groups",
+      "summary": "Send a text message to a person, a group, or your whole congregation right from ChurchCRM. Vote if texting should be the next feature built; the design is RFC 0009.",
+      "category": "Feature Proposal",
+      "discussionUrl": "https://github.com/ChurchCRM/CRM/discussions/10716",
+      "expiresAt": null
+    },
+    {
+      "id": "private-records",
+      "title": "Keep some family or note records private",
+      "summary": "Some notes and family records are sensitive. Tell us what your church needs to keep private and who should be able to see it; your answers shape the access-control work in RFC 0002.",
+      "category": "Feature Proposal",
+      "discussionUrl": "https://github.com/ChurchCRM/CRM/discussions/10657",
+      "expiresAt": null
+    },
+    {
+      "id": "rbac-rfc-0002",
+      "title": "Module-based access control (RFC 0002)",
+      "summary": "Decide who can see and change what, module by module, instead of a few broad roles. This is the technical review thread for RFC 0002; comments here go straight into the design.",
+      "category": "RFC Review",
+      "discussionUrl": "https://github.com/ChurchCRM/CRM/discussions/10643",
+      "expiresAt": null
+    }
+  ]
+}
