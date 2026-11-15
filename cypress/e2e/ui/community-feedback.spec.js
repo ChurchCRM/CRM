@@ -4,7 +4,7 @@ describe("Community Feedback", () => {
     beforeEach(() => cy.setupAdminSession());
 
     it("renders the why and how sections", () => {
-        cy.visit("v2/community-feedback");
+        cy.visit("community/feedback");
         cy.contains("We Need Your Help");
         cy.contains("Why your feedback matters");
         cy.contains("ChurchCRM is built by a small team");
@@ -12,17 +12,17 @@ describe("Community Feedback", () => {
     });
 
     it("shows the top-nav help link pointing at the feedback page", () => {
-        cy.visit("v2/community-feedback");
-        cy.get('a[href*="/v2/community-feedback"]')
+        cy.visit("community/feedback");
+        cy.get('a[href*="/community/feedback"]')
             .first()
             .should("have.attr", "href")
-            .and("include", "/v2/community-feedback");
+            .and("include", "/community/feedback");
     });
 
     it("links to all topics on GitHub Discussions in the fallback state", () => {
         // The remote feedback.json does not exist yet, so the page renders
         // its fallback state with a link to every open Discussion.
-        cy.visit("v2/community-feedback");
+        cy.visit("community/feedback");
         cy.get('a[href="https://github.com/ChurchCRM/CRM/discussions"]').should(
             "exist",
         );
