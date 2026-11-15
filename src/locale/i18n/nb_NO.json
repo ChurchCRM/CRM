@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Hvis du sletter denne typen, fjerner du også alle egenskaper som bruker den, og mister eventuelle tilsvarende egenskapstildelinger.",
   "Move Donations to Selected Family": "Flytt donasjoner til valgt familie",
   "Calendar not found": "Kalender ikke funnet",
-  "Continue to Dashboard": "Fortsett til dashbord",
   "Current Password": "Gjeldende passord",
   "Deposit not found": "Innskudd ikke funnet",
   "Group not found": "Gruppe ikke funnet",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "Versjon %s er tilgjengelig. Vennligst oppgrader installasjonen din.",
   "View All": "Vis alle",
   "Yellow": "Gul",
-  "Your current access levels (read-only)": "Dine nåværende tilgangsnivåer (skrivebeskyttet)",
   "%d repeat event created successfully.": {
     "one": "%d gjentakende arrangement ble opprettet.",
     "other": "%d gjentakende arrangementer ble opprettet."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Vennligst bekreft deaktivering av familie",
   "Please confirm deletion of this group record": "Vennligst bekrefte sletting av denne gruppen posten",
   "Please confirm disabling 2 Factor Auth for this user": "Vennligst bekreft deaktivering av totrinnsverifisering for denne brukeren",
-  "Please confirm removal of user status from": "Vennligst bekreft fjerning av brukeren status fra",
   "Please confirm reset failed login count": "Vennligst bekreft nullstilling av antall mislykkede pålogginger",
   "Please confirm the password reset of this user": "Vennligst bekreft passordet reset av denne brukeren",
   "Please enter a valid URL": "Vennligst oppgi en gyldig URL",
@@ -3507,7 +3504,6 @@
   "%s's Account": "%s sin konto",
   "Access": "Tilgang",
   "Access level": "Tilgangsnivå",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Administratorer har full tilgang til alle funksjoner og data. Individuelle tillatelser gjelder ikke.",
   "All users can view congregation members. This permission cannot be removed.": "Alle brukere kan se menighetsmedlemmer. Denne tillatelsen kan ikke fjernes.",
   "Always granted": "Alltid innvilget",
   "Choose specific permissions below.": "Velg spesifikke tillatelser nedenfor.",

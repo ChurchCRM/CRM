@@ -1900,7 +1900,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Jika Anda menghapus tipe ini, Anda juga akan menghapus semua properti yang menggunakannya dan kehilangan semua penugasan properti yang sesuai.",
   "Move Donations to Selected Family": "Pindahkan Persembahan ke Keluarga yang Dipilih",
   "Calendar not found": "Kalender tidak ditemukan",
-  "Continue to Dashboard": "Lanjutkan ke Dasbor",
   "Current Password": "Kata Sandi Saat Ini",
   "Deposit not found": "Persembahan tidak ditemukan",
   "Group not found": "Kelompok tidak ditemukan",
@@ -2658,7 +2657,6 @@
   "Version %s is available. Please upgrade your installation.": "Versi %s tersedia. Silakan perbarui instalasi Anda.",
   "View All": "Lihat Semua",
   "Yellow": "Kuning",
-  "Your current access levels (read-only)": "Tingkat akses Anda saat ini (hanya baca)",
   "%d repeat event created successfully.": {
     "other": "%d acara berulang berhasil dibuat."
   },
@@ -3291,7 +3289,6 @@
   "Please confirm deactivation of family": "Harap konfirmasi penonaktifan keluarga",
   "Please confirm deletion of this group record": "Harap konfirmasi penghapusan catatan grup ini",
   "Please confirm disabling 2 Factor Auth for this user": "Harap konfirmasi menonaktifkan 2 Faktor Auth untuk pengguna ini",
-  "Please confirm removal of user status from": "Harap konfirmasi penghapusan status pengguna dari",
   "Please confirm reset failed login count": "Harap konfirmasi atur ulang jumlah login gagal",
   "Please confirm the password reset of this user": "Harap konfirmasi pengaturan ulang kata sandi pengguna ini",
   "Please enter a valid URL": "Harap masukkan URL yang valid",
@@ -3496,7 +3493,6 @@
   "%s's Account": "Akun %s",
   "Access": "Akses",
   "Access level": "Tingkat akses",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Administrator memiliki akses penuh ke semua fitur dan data. Izin individu tidak berlaku.",
   "All users can view congregation members. This permission cannot be removed.": "Semua pengguna dapat melihat anggota jemaat. Izin ini tidak dapat dihapus.",
   "Always granted": "Selalu diberikan",
   "Choose specific permissions below.": "Pilih izin tertentu di bawah ini.",

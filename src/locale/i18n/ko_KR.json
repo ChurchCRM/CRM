@@ -1900,7 +1900,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "이 유형을 삭제하면 해당 유형을 사용하는 모든 속성도 제거되고 해당 속성 배정도 모두 삭제됩니다.",
   "Move Donations to Selected Family": "헌금을 선택한 가족으로 이동",
   "Calendar not found": "캘린더를 찾을 수 없습니다",
-  "Continue to Dashboard": "대시보드로 계속",
   "Current Password": "현재 비밀번호",
   "Deposit not found": "헌금 내역을 찾을 수 없습니다",
   "Group not found": "그룹을 찾을 수 없습니다",
@@ -2658,7 +2657,6 @@
   "Version %s is available. Please upgrade your installation.": "버전 %s을(를) 사용할 수 있습니다. 설치를 업그레이드해 주세요.",
   "View All": "모두 보기",
   "Yellow": "노랑",
-  "Your current access levels (read-only)": "현재 접근 수준 (읽기 전용)",
   "%d repeat event created successfully.": {
     "other": "%d개의 반복 이벤트가 성공적으로 생성되었습니다."
   },
@@ -3291,7 +3289,6 @@
   "Please confirm deactivation of family": "이 가족을 비활성화할지 확인하세요",
   "Please confirm deletion of this group record": "이 그룹 기록을 삭제할지 확인하세요.",
   "Please confirm disabling 2 Factor Auth for this user": "이 사용자의 2단계 인증을 해제할지 확인하세요",
-  "Please confirm removal of user status from": "다음 사용자 권한을 제거할지 확인하세요:",
   "Please confirm reset failed login count": "실패한 로그인 횟수를 초기화할지 확인하세요",
   "Please confirm the password reset of this user": "이 사용자의 비밀번호를 초기화할지 확인하세요.",
   "Please enter a valid URL": "유효한 URL을 입력해 주세요",
@@ -3496,7 +3493,6 @@
   "%s's Account": "%s의 계정",
   "Access": "접근",
   "Access level": "접근 수준",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "관리자는 모든 기능과 데이터에 대한 전체 접근 권한을 가집니다. 개별 권한은 적용되지 않습니다.",
   "All users can view congregation members. This permission cannot be removed.": "모든 사용자는 교인 목록을 볼 수 있습니다. 이 권한은 제거할 수 없습니다.",
   "Always granted": "항상 허용됨",
   "Choose specific permissions below.": "아래에서 특정 권한을 선택하세요.",

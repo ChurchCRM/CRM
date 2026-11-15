@@ -72,7 +72,7 @@ describe("Signed-in pages stay readable in dark mode (#10593)", () => {
         cy.intercept("POST", "**/api/user/current/test2FAEnrollmentCode", { IsEnrollmentCodeValid: true });
         cy.intercept("POST", "**/api/user/current/refresh2farecoverycodes", { TwoFARecoveryCodes: [RECOVERY_CODE] });
 
-        cy.visit("/v2/user/current/manage2fa");
+        cy.visit("/account/2fa");
         cy.get("html").should("have.attr", "data-bs-theme", "dark");
         cy.get("#begin2faEnrollment").click();
         cy.get("#totp-input").type("123456");

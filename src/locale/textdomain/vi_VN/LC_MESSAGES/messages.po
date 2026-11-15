@@ -7923,10 +7923,6 @@ msgid "Calendar not found"
 msgstr "Không tìm thấy lịch"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Tiếp tục đến bảng điều khiển"
-
-#: 
 msgid "Current Password"
 msgstr "Mật khẩu hiện tại"
 
@@ -11297,10 +11293,6 @@ msgid "Yellow"
 msgstr "Vàng"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Các cấp độ truy cập hiện tại của bạn (chỉ đọc)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d sự kiện lặp lại đã được tạo thành công."
@@ -13831,10 +13823,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vui lòng xác nhận việc tắt 2 Factor Auth cho người dùng này"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Vui lòng xác nhận việc xóa trạng thái người dùng khỏi"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Vui lòng xác nhận đặt lại số lần đăng nhập không thành công"
 
@@ -14644,10 +14632,6 @@ msgstr "Quyền truy cập"
 #: 
 msgid "Access level"
 msgstr "Cấp độ truy cập"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Quản trị viên có toàn quyền truy cập vào tất cả các tính năng và dữ liệu. Quyền riêng lẻ không áp dụng."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

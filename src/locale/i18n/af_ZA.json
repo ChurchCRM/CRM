@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "As u hierdie tipe verwyder, sal u ook alle eienskappe wat dit gebruik verwyder en alle ooreenstemmende eienskap-toekennings verloor.",
   "Move Donations to Selected Family": "Skuif Offergawes na Gekose Gesin",
   "Calendar not found": "Kalender nie gevind nie",
-  "Continue to Dashboard": "Gaan voort na Kontroleskerm",
   "Current Password": "Huidige Wagwoord",
   "Deposit not found": "Deposito nie gevind nie",
   "Group not found": "Groep nie gevind nie",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "Weergawe %s is beskikbaar. Gradeer asseblief u installasie op.",
   "View All": "Sien Alles",
   "Yellow": "Geel",
-  "Your current access levels (read-only)": "U huidige toegangsvlakke (leesalleen)",
   "%d repeat event created successfully.": {
     "one": "%d herhalingsgeleentheid suksesvol geskep.",
     "other": "%d herhalingsgeleenthede suksesvol geskep."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Bevestig die deaktivering van die gesin",
   "Please confirm deletion of this group record": "Bevestig die verwydering van hierdie groeprekord",
   "Please confirm disabling 2 Factor Auth for this user": "Bevestig dat 2 Factor Auth vir hierdie gebruiker gedeaktiveer is",
-  "Please confirm removal of user status from": "Bevestig die verwydering van gebruikerstatus uit",
   "Please confirm reset failed login count": "Bevestig asseblief die herstel van die mislukking van die aanmelding",
   "Please confirm the password reset of this user": "Bevestig asseblief die wagwoordterugstelling van hierdie gebruiker",
   "Please enter a valid URL": "Voer asseblief 'n geldige URL in",
@@ -3507,7 +3504,6 @@
   "%s's Account": "%s se Rekening",
   "Access": "Toegang",
   "Access level": "Toegangsvlak",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Administrateurs het volle toegang tot alle funksies en data. Individuele toestemmings is nie van toepassing nie.",
   "All users can view congregation members. This permission cannot be removed.": "Alle gebruikers kan gemeentelede besigtig. Hierdie toestemming kan nie verwyder word nie.",
   "Always granted": "Altyd toegestaan",
   "Choose specific permissions below.": "Kies spesifieke toestemmings hieronder.",

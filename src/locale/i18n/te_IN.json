@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "మీరు ఈ రకాన్ని తొలగిస్తే, దాన్ని ఉపయోగించే అన్ని ప్రాపర్టీలను కూడా తీసివేస్తారు మరియు ఏదైనా సంబంధిత ప్రాపర్టీ కేటాయింపులను కోల్పోతారు.",
   "Move Donations to Selected Family": "విరాళాలను ఎంచుకున్న కుటుంబానికి తరలించండి",
   "Calendar not found": "క్యాలెండర్ కనుగొనబడలేదు",
-  "Continue to Dashboard": "డాష్‌బోర్డ్‌కు కొనసాగండి",
   "Current Password": "ప్రస్తుత పాస్‌వర్డ్",
   "Deposit not found": "డిపాజిట్ కనుగొనబడలేదు",
   "Group not found": "సమూహం కనుగొనబడలేదు",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "వెర్షన్ %s అందుబాటులో ఉంది. దయచేసి మీ ఇన్‌స్టాలేషన్‌ను అప్‌గ్రేడ్ చేయండి.",
   "View All": "అన్నీ చూడండి",
   "Yellow": "పసుపు రంగు",
-  "Your current access levels (read-only)": "మీ ప్రస్తుత యాక్సెస్ స్థాయిలు (చదవడం మాత్రమే)",
   "%d repeat event created successfully.": {
     "one": "%d పునరావృత కార్యక్రమం విజయవంతంగా సృష్టించబడింది.",
     "other": "%d పునరావృత కార్యక్రమాలు విజయవంతంగా సృష్టించబడ్డాయి."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "కుటుంబాన్ని నిష్క్రియం చేయడాన్ని దయచేసి నిర్ధారించండి",
   "Please confirm deletion of this group record": "దయచేసి ఈ గ్రూప్ రికార్డ్ తొలగింపును నిర్ధారించండి",
   "Please confirm disabling 2 Factor Auth for this user": "ఈ వినియోగదారు కోసం 2 కారకాల ప్రామాణీకరణను నిలిపివేయడాన్ని దయచేసి నిర్ధారించండి",
-  "Please confirm removal of user status from": "దయచేసి వినియోగదారు స్థితిని తొలగించడాన్ని నిర్ధారించండి",
   "Please confirm reset failed login count": "విఫలమైన లాగిన్ లెక్కను రీసెట్ చేయడాన్ని దయచేసి నిర్ధారించండి",
   "Please confirm the password reset of this user": "దయచేసి ఈ వినియోగదారు యొక్క పాస్‌వర్డ్ రీసెట్‌ను నిర్ధారించండి",
   "Please enter a valid URL": "దయచేసి చెల్లుబాటు అయ్యే URL ను నమోదు చేయండి",
@@ -3507,7 +3504,6 @@
   "%s's Account": "%s యొక్క ఖాతా",
   "Access": "యాక్సెస్",
   "Access level": "యాక్సెస్ స్థాయి",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "నిర్వాహకులకు అన్ని ఫీచర్లు మరియు డేటాకు పూర్తి యాక్సెస్ ఉంటుంది. వ్యక్తిగత అనుమతులు వర్తించవు.",
   "All users can view congregation members. This permission cannot be removed.": "అందరు వినియోగదారులూ సంఘ సభ్యులను చూడగలరు. ఈ అనుమతిని తొలగించడం సాధ్యం కాదు.",
   "Always granted": "ఎల్లప్పుడూ మంజూరు చేయబడింది",
   "Choose specific permissions below.": "దిగువన నిర్దిష్ట అనుమతులను ఎంచుకోండి.",

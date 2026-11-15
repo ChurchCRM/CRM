@@ -7895,10 +7895,6 @@ msgid "Calendar not found"
 msgstr "Kalendar nije pronađen"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Nastavi na nadzornu ploču"
-
-#: 
 msgid "Current Password"
 msgstr "Trenutna lozinka"
 
@@ -11271,10 +11267,6 @@ msgid "Yellow"
 msgstr "Žuta"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Vaše trenutne razine pristupa (samo za čitanje)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d ponavljajući događaj uspješno kreiran."
@@ -13807,10 +13799,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Molim potvrdite onemogućavanje 2FA za ovog korisnika"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Molim potvrdite uklanjanje korisničkog statusa od"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Molim potvrdite resetiranje broja neuspjelih prijava"
 
@@ -14622,10 +14610,6 @@ msgstr "Pristup"
 #: 
 msgid "Access level"
 msgstr "Razina pristupa"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Administratori imaju potpun pristup svim funkcijama i podacima. Pojedinačne dozvole se ne primjenjuju."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

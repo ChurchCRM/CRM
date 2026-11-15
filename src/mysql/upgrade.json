@@ -134,7 +134,10 @@
   },
   "current": {
     "versions": ["7.8.4"],
-    "scripts": ["/mysql/upgrade/7.8.5-giving-statement-wording.sql"],
+    "scripts": [
+      "/mysql/upgrade/7.8.5-user-settings-cascade.sql",
+      "/mysql/upgrade/7.8.5-giving-statement-wording.sql"
+    ],
     "dbVersion": "7.8.5"
   }
 }
