@@ -76,7 +76,7 @@ describe("Standard User Password", () => {
     });
 
     it("Shows a password strength meter while typing", () => {
-        cy.visit("/v2/user/current/changepassword");
+        cy.visit("/account/password");
         cy.get("#PasswordStrengthContainer").should("not.be.visible");
         cy.get("#NewPassword1").type("abc");
         cy.get("#PasswordStrengthContainer").should("be.visible");
