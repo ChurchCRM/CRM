@@ -184,7 +184,7 @@ describe("Group Role Management", () => {
       cy.get("#addRoleModal").should("not.be.visible");
       // Verify via DataTables data model — immune to responsive/rendering issues
       dtHasRole(roleName);
-      cy.get(".notyf__toast--success", { timeout: 5000 }).should("be.visible");
+      cy.get("#crm-toasts .toast[data-type='success']", { timeout: 5000 }).should("be.visible");
     });
   });
 
@@ -279,7 +279,7 @@ describe("Group Role Management", () => {
       cy.get("#deleteRoleModal").should("not.be.visible");
       // Verify via DataTables data model
       dtLacksRole(roleName);
-      cy.get(".notyf__toast--success", { timeout: 5000 }).should("be.visible");
+      cy.get("#crm-toasts .toast[data-type='success']", { timeout: 5000 }).should("be.visible");
     });
   });
 

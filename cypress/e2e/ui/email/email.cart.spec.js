@@ -50,15 +50,10 @@ describe("Cart view — email composer button", () => {
         emptyCart();
     });
 
-    it("shows a single 'Email' composer button (not a mailto: link)", () => {
-        cy.visit("/people/cart");
-        cy.get("[data-email-composer][data-email-endpoint='cart/emails']").should("be.visible");
-        // No old-style mailto To/BCC btn-group
-        cy.get("a[href^='mailto:']").should("not.exist");
-    });
-
     it("clicking Email opens the composer modal with recipients", () => {
         cy.visit("/people/cart");
+        // One composer button, not the old mailto To/BCC buttons
+        cy.get("a[href^='mailto:']").should("not.exist");
 
         cy.intercept("GET", "**/api/cart/emails").as("cartEmailsApi");
 

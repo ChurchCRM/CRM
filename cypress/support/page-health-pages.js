@@ -10,6 +10,5 @@ export const ADMIN_HEALTH_PAGES = [
     // Replace with the cleanup workflow in #11167.
     "/admin/system/orphaned-files",
     // Property workflow coverage belongs with the MVC migration in #9475.
-    "/PropertyTypeList.php",
     "/PropertyList.php?Type=g",
 ];

@@ -4,7 +4,6 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\Prerequisite;
 use ChurchCRM\dto\SystemConfig;
-use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Config;
 use ChurchCRM\model\ChurchCRM\ConfigQuery;
 use ChurchCRM\model\ChurchCRM\User;
@@ -20,8 +19,6 @@ use PDO;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Propel;
-
-require SystemURLs::getDocumentRoot() . '/vendor/ifsnop/mysqldump-php/src/Ifsnop/Mysqldump/Mysqldump.php';
 
 class SystemService
 {

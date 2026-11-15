@@ -28,7 +28,6 @@ $app->add(new CorsMiddleware());
 
 // routes
 require __DIR__ . '/routes/register.php';
-require __DIR__ . '/routes/verify.php';
 require __DIR__ . '/routes/calendar.php';
 require __DIR__ . '/routes/system.php';
 

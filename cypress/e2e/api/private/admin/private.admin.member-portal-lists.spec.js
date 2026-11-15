@@ -12,7 +12,7 @@
  * fixtures; the people's emails and sign-in rows are set up and put back in SQL.
  */
 
-import { addOldAuditRows, ageFamilyConfirmations, recordFamilyEmailMoves, recordPastSignIn } from "../../../../support/member-sign-in-fixtures";
+import { addOldAuditRows, ageFamilyConfirmations, recordFamilyEmailMoves, recordLinkConfirmation, recordPastSignIn } from "../../../../support/member-sign-in-fixtures";
 import { setPersonEmails } from "../../../../support/sign-in-email-fixtures";
 
 const SETTINGS_URL = "/admin/api/member-portal/sign-in";
@@ -35,13 +35,6 @@ const summary = () => cy.makePrivateAdminAPICall("GET", "/admin/api/member-porta
 const stats = () => cy.makePrivateAdminAPICall("GET", "/admin/api/member-portal/stats", null, 200).its("body");
 const audit = (params = {}) =>
     cy.makePrivateAdminAPICall("GET", `/admin/api/member-portal/audit?${new URLSearchParams(params).toString()}`, null, 200).its("body");
-
-/** A family confirms its details through the emailed link, with a message. */
-const confirmFamilyByEmailLink = (familyId, message) =>
-    cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/verify/url`, null, 200).then(({ body }) => {
-        const path = new URL(body.url).pathname.replace(/^.*\/external\//, "/external/");
-        cy.request({ method: "POST", url: path, form: true, body: { message } }).its("status").should("eq", 200);
-    });
 
 const resetFixtures = () => {
     db("UPDATE person_per SET per_Email = 'mathew.campbell@example.com' WHERE per_ID = 2");
@@ -208,9 +201,9 @@ describe("Admin → Member Portal lists, audit and statistics", () => {
         });
     });
 
-    it("lists the families confirmed in the last 30 days by the emailed link", () => {
-        confirmFamilyByEmailLink(12, MARK);
-        confirmFamilyByEmailLink(19, MARK);
+    it("lists the families confirmed in the last 30 days by an emailed link", () => {
+        recordLinkConfirmation(12, MARK);
+        recordLinkConfirmation(19, MARK);
         ageFamilyConfirmations(19, MARK, 45);
         list("families-confirmed").then((body) => {
             const families = body.rows.map((row) => row.familyId);

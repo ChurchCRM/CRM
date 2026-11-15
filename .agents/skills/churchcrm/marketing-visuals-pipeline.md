@@ -9,7 +9,7 @@ intent: "Capture trustworthy screenshots and videos of real ChurchCRM workflows 
 
 A Playwright pipeline in `playwright/` captures screenshots and videos of real ChurchCRM workflows for marketing use. It is the repo's one Playwright suite (multi-viewport projects and built-in video recording); Cypress in `cypress/` covers E2E regression. Issues and PRs for the Playwright pipeline carry the `Marketing` label; `Integration Testing` is Cypress only. Details, directory layout and troubleshooting: `playwright/README.md`.
 
-This is a media-generation pipeline. A passing run is necessary, and the captured screenshots and videos must also look like something shown to a church deciding whether to adopt ChurchCRM: no error banners, no half-loaded AJAX content, no unintended "Inactive" or placeholder state. Some captures show inactive or deceased status on purpose (`person-inactive-profile`, `person-deceased-profile`, `family-inactive-profile`); see "Demo subjects, status and photos". Open the generated PNGs under `playwright/artifacts/screenshots/` before calling a workflow done.
+This is a media-generation pipeline. A passing run is necessary, and the captured screenshots and videos must also look like something shown to a church deciding whether to adopt ChurchCRM: no error banners, no half-loaded AJAX content, no unintended "Inactive" or placeholder state. Some captures show inactive or deceased status on purpose (`person-inactive-profile`, `person-deceased-profile`); see "Demo subjects, status and photos". Open the generated PNGs under `playwright/artifacts/screenshots/` before calling a workflow done.
 
 ## Running it
 
@@ -31,9 +31,22 @@ The pipeline uses Playwright's bundled Chromium (`npm run marketing:install`). S
 
 Run the workflow on `master` only. A run on another branch captures and checks but does not publish. `Release & Start Next` starts it on `master` after the draft exists and never waits for it. The publish job needs `DOCS_RELEASE_TOKEN` (Actions: write on `ChurchCRM/visuals`) and fails without it.
 
+### When a capture earns its place
+
+Cypress specs cover every behavior change. A Playwright capture (screenshot or video) is optional and has to pass the value test:
+
+- **Marketing:** it makes a church viewer say "we want that", or
+- **Docs:** it makes a docs page clearly easier to follow than text alone: a workflow story, a result screen, or a before/after.
+
+A standard web flow (open a page, click a button, fill a form, save) earns no capture, even when the screen is new. Neither does a settings page or a CRUD screen on its own. When in doubt, ship the PR with no capture. The spec's `purpose` text names the viewer or docs page it serves; review rejects a capture whose purpose is only "shows the new screen".
+
+Docs text follows the same test: write the outcome, the decision, and the gotcha, not click-by-click narration of a standard flow.
+
+No gate, checklist or CI job requires a new capture. Breaking an existing one is a review block (`maintainer-review-gates.md`, item 10).
+
 ### Adding a capture in a feature PR
 
-The capture spec ships in the same PR as the UI change — but only when the change tells or extends a user workflow story. A new screen, settings page, or CRUD operation on its own earns no capture: if there is no church task behind it (something a staff member or volunteer sets out to do, with a reason a church would care — it saves time, protects people or data, or removes a worry), ship the PR with no capture. The spec's purpose text must state the workflow story; a capture whose purpose is only a new screen or a new CRUD operation is rejected in review. Images serve your own check and stay uncommitted.
+When a capture passes the value test, its spec ships in the same PR as the UI change. Images serve your own check and stay uncommitted.
 
 1. Make a `git worktree` at the PR commit, symlink `node_modules`, then run `composer:install`, `build:webpack`, `build:signatures`
 2. Start the pipeline's own stack: `export COMPOSE_PROJECT_NAME=crm-pw-capture MAILSERVER_PORT=1026 MAILSERVER_GUI_PORT=8026`, then `npm run docker:ci:new-system:start`. The web server and database use ports 8081 and 3308; Mailpit binds `MAILSERVER_PORT` / `MAILSERVER_GUI_PORT`, which default to the dev stack's 1025 / 8025, so set them. The captures read Mailpit at `MAILSERVER_GUI_PORT` (or `CHURCHCRM_MAILPIT_URL`), so run them in the same shell. The start removes `src/Include/Config.php`, so it runs in the worktree and never in the main checkout
@@ -125,7 +138,7 @@ The screenshot shot list maps to `playwright/workflows/*.spec.ts` (`playwright/R
 - **Default lists hide status.** `/people/list` shows active people in active families and forces "Living". Use `?personActiveStatus=inactive`, `/people/family?familyActiveStatus=inactive`, or read the profile link from the server-rendered rows for a deceased person
 - **Pick subjects whose whole family has photos**, with a unique full name. Person profiles show the family table; family profiles show the family photo (`images/families/`)
 - **Photos match name, gender and rough age and suit a church.** Check by rendering a labelled contact sheet of `images/people/*` with Playwright
-- **Family portrait photos are scarce.** Only 2 of 62 demo families have an uploaded group photo (`family.hernandez60.jpg`, `family.campbell.jpg`); other families show the app's initials avatar. Hernandez members lack individual photos and Campbell is the `family-inactive-profile` subject, so `people-family-overview` and its dark variant keep Scott (real member photos, no portrait) with accurate purpose text
+- **Family portrait photos are scarce.** Only 2 of 62 demo families have an uploaded group photo (`family.hernandez60.jpg`, `family.campbell.jpg`); other families show the app's initials avatar. Hernandez members lack individual photos and the Campbell family is inactive in the demo data, so `people-family-overview` and its dark variant keep Scott (real member photos, no portrait) with accurate purpose text
 - **Date pickers use `sDatePickerFormat` (`Y-m-d`).** Type `YYYY-MM-DD` and assert `toHaveValue` before submit
 - **Maps.** `captureScreen()` waits for every visible Leaflet tile to get `.leaflet-tile-loaded` and throws when tiles fail
 - **Map position depends on layout.** At 1440x900, `person-view.php` puts the photo in a narrow left column and the map in the wide right column, within the fold. `family-view.php` stacks photo above the Address/map card in one narrow right column, below the fold. `people-family-overview` and its dark variant therefore show the "Geocoded" badge and say "geocoded address" in the purpose text. A shot that needs the family map in frame is a UI/copy decision (taller capture or scroll-and-crop); ask first

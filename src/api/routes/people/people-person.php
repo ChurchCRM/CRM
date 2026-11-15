@@ -58,7 +58,7 @@ use Slim\HttpCache\Cache;
  *             @OA\Property(property="gravatarUrl", type="string", nullable=true),
  *             @OA\Property(property="photoUrl", type="string", nullable=true),
  *             @OA\Property(property="email", type="string", nullable=true),
- *             @OA\Property(property="photoVersion", type="integer", example=1718000000, description="Unix mtime of the uploaded photo file; 0 when hasPhoto is false. Append as ?v=<photoVersion> to the /photo URL to bust the 2-hour public Cache-Control header after an upload.")
+ *             @OA\Property(property="photoVersion", type="integer", example=1718000000, description="Unix mtime of the uploaded photo file; 0 when hasPhoto is false. Append as ?v=<photoVersion> to the /photo URL to bust the 2-hour private Cache-Control header after an upload.")
  *         )
  *     ),
  *     @OA\Response(response=401, description="Unauthorized")
@@ -112,14 +112,14 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
         $personId = (int)$args['personId'];
         $photo = new Photo('Person', $personId);
-        
+
         if (!$photo->hasUploadedPhoto()) {
             return SlimUtils::renderErrorJSON($response, 'No uploaded photo exists for this person', [], 404);
         }
-        
+
         return SlimUtils::renderPhoto($response, $photo);
-    })->add(new Cache('public', Photo::CACHE_DURATION_SECONDS));
-    
+    })->add(new Cache('private', Photo::CACHE_DURATION_SECONDS));
+
     // Avatar info endpoint - returns JSON with initials, gravatar info for client-side rendering
     // Returns fallback data even for invalid person IDs (no PersonMiddleware needed)
     $group->get('/avatar', function (Request $request, Response $response, array $args): Response {
@@ -164,20 +164,20 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
             return SlimUtils::renderErrorJSON($response, gettext('Failed to upload person photo'), [], 400, $e, $request);
         }
     })->add(EditRecordsRoleAuthMiddleware::class);
-    
+
     // Delete photo endpoint
     $group->delete('/photo', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $deleted = $person->deletePhoto();
         return SlimUtils::renderJSON($response, ['success' => $deleted]);
     })->add(DeleteRecordRoleAuthMiddleware::class);
-    
+
     /**
      * @OA\Get(
      *     path="/person/{personId}",
      *     operationId="getPerson",
      *     summary="Get a person's full record by ID",
-     *     description="Returns the complete person object including family info, addresses, and other related details.",
+     *     description="Returns the complete person object including family info, addresses, and other related details. For a caller who may not edit the person, Flags is omitted and BirthYear is null when the person's age is hidden.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=42)),
@@ -225,10 +225,6 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $currentUser = AuthenticationManager::getCurrentUser();
-        $personFamilyId = (int) $person->getFamId();
-        if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {
-            throw new HttpForbiddenException($request, gettext('You do not have permission to view this person'));
-        }
 
         // Filter custom fields by field-level permissions (GHSA-p6xx-xx98-f323)
         //
@@ -241,6 +237,12 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $personJSON = $person->exportTo('JSON');
         $personData = json_decode($personJSON, true);
         $personData['singlePersonCustom'] = $person->getVisibleCustomFieldValues();
+        if (!$currentUser->isEditRecordsEnabled()) {
+            unset($personData['Flags']);
+            if ($person->hideAge()) {
+                $personData['BirthYear'] = null;
+            }
+        }
 
         return SlimUtils::renderStringJSON($response, json_encode($personData));
     });
@@ -259,7 +261,6 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderSuccessJSON($response);
     })->add(DeleteRecordRoleAuthMiddleware::class);
-
 
     /**
      * @OA\Post(

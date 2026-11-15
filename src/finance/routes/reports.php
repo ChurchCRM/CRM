@@ -45,16 +45,24 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     $group->get('/year-end', function (Request $request, Response $response): Response {
         $years = YearEndGivingService::years();
         $requested = InputUtils::filterInt($request->getQueryParams()['year'] ?? '');
-        $year = in_array($requested, $years, true) ? $requested : $years[0];
+        $year = YearEndGivingService::chooseYear(
+            $years,
+            $requested,
+            FiscalYearUtils::rememberedEndYear(),
+            FiscalYearUtils::endYearForId(FiscalYearUtils::getCurrentFiscalYearId()) - 1
+        );
+        if (in_array($requested, $years, true)) {
+            FiscalYearUtils::rememberEndYear($requested);
+        }
 
         $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
         return $renderer->render($response, 'reports/year-end.php', [
             'sRootPath' => SystemURLs::getRootPath(),
             'sPageTitle' => gettext('Year-End Giving'),
-            'sPageSubtitle' => gettext('Review the year, then print or email giving statements.'),
+            'sPageSubtitle' => gettext('Review the year, then download giving statements.'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('Financial Reports'), '/finance/reports'],
+                [gettext('Finance'), '/finance/'],
                 [gettext('Year-End Giving')],
             ]),
             'years' => $years,
@@ -65,6 +73,10 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     // Giving Statements: choose filters, preview the result, then download.
     $group->get('/giving-statements', function (Request $request, Response $response): Response {
         $query = $request->getQueryParams();
+        $remembered = FiscalYearUtils::rememberedEndYear();
+        if ($remembered !== null && ($query['year'] ?? '') === '' && ($query['DateStart'] ?? '') === '' && ($query['DateEnd'] ?? '') === '') {
+            $query['year'] = $remembered;
+        }
         $criteria = GivingStatementService::criteriaFromQuery($query);
         $summary = ($query['preview'] ?? '') === '1'
             ? GivingStatementService::summary(GivingStatementService::paymentsByFamily($criteria))
@@ -77,7 +89,7 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
             'sPageTitle' => gettext('Giving Statements'),
             'sPageSubtitle' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.'),
             'aBreadcrumbs' => PageHeader::breadcrumbs([
-                [gettext('Financial Reports'), '/finance/reports'],
+                [gettext('Year-End Giving'), '/finance/reports/year-end'],
                 [gettext('Giving Statements')],
             ]),
             'query' => $query,
@@ -98,6 +110,12 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
         return SlimUtils::renderJSON($response, GivingStatementService::summary(
             GivingStatementService::paymentsByFamily(GivingStatementService::criteriaFromQuery($input))
         ));
+    });
+
+    $group->get('/giving-statements/sample', function (Request $request, Response $response): Response {
+        $pdf = (new MpdfRenderer())->renderToString('tax-report', GivingStatementService::sampleDocument());
+
+        return PdfResponse::create($response, $pdf, 'GivingStatement-Sample');
     });
 
     // Giving Statement: PDF or CSV for the chosen filters, from the report form or a family link.

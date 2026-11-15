@@ -23,12 +23,16 @@ src/Images/Family/*
 src/Images/Person/*
 # Uploaded church logo (Admin -> Church Information)
 src/Images/church-logo.png
+# Private giving-statement signature (Admin -> Report Settings)
+src/Images/TaxSignatures/*
 # Keep the directories for CI/fresh installs
 !src/Images/Family/.gitkeep
 !src/Images/Person/.gitkeep
 # Keep the access-control deny files (GHSA-r286-h493-ppwj)
 !src/Images/Family/.htaccess
 !src/Images/Person/.htaccess
+!src/Images/TaxSignatures/.htaccess
+!src/Images/TaxSignatures/index.html
 
 #skins
 src/skin/v2/

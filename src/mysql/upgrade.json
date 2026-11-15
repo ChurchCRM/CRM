@@ -123,9 +123,22 @@
     "scripts": ["/mysql/upgrade/7.8.3.sql", "/mysql/upgrade/7.8.3-member-sign-in.sql"],
     "dbVersion": "7.8.3"
   },
-  "current": {
+  "pre-7.8.4": {
     "versions": ["7.8.3"],
-    "scripts": ["/mysql/upgrade/7.8.4-person-coordinates.sql"],
+    "scripts": [
+      "/mysql/upgrade/7.8.4-person-coordinates.sql",
+      "/mysql/upgrade/7.8.4-verify-tokens.sql",
+      "/mysql/upgrade/7.8.4-telemetry-levels.sql"
+    ],
     "dbVersion": "7.8.4"
+  },
+  "current": {
+    "versions": ["7.8.4"],
+    "scripts": [
+      "/mysql/upgrade/7.8.5-user-settings-cascade.sql",
+      "/mysql/upgrade/7.8.5-giving-statement-wording.sql",
+      "/mysql/upgrade/7.8.5-drop-editself.sql"
+    ],
+    "dbVersion": "7.8.5"
   }
 }

@@ -13,12 +13,20 @@ on:
     # After the 03:17 UTC nightly, so a broken master is already under test.
     - cron: "17 5 * * *"
   workflow_dispatch:
+  # Any pull request, from any branch, that changes the capture specs or the
+  # shared capture action.
+  pull_request:
+    paths:
+      - "playwright/**"
+      - ".github/actions/marketing-capture/**"
+      - ".github/workflows/marketing-capture-check.yml"
 
 permissions:
   contents: read
 
 concurrency:
-  group: marketing-capture-check
+  # One run per pull request or branch, so branches don't cancel each other.
+  group: marketing-capture-check-${{ github.event.pull_request.number || github.ref }}
   cancel-in-progress: true
 
 jobs:

@@ -46,7 +46,7 @@ describe("People Reports (#9914, #9915)", () => {
         cy.get("body").should("not.contain", "Fatal error");
         cy.get("#peopleReports a[id^='report-']").should("have.length", REPORTS.length);
         cy.get('#peopleReports a[href$="/DirectoryReports.php"]').should("exist");
-        cy.get('#peopleReports a[href$="/LettersAndLabels.php"]').should("exist");
+        cy.get('#peopleReports a[href$="/people/reports/letters-and-labels"]').should("exist");
         REPORTS.forEach((slug) => {
             cy.get(`#report-${slug}`).should("have.attr", "href").and("include", `/people/reports/${slug}`);
         });

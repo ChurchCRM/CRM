@@ -36,22 +36,6 @@ async function runBirthdaysAndAnniversaries(page: Page): Promise<void> {
 }
 
 test.describe('People Reports', () => {
-  test('people-reports-list', async ({ page }, testInfo) => {
-    await page.goto('/people/reports');
-    // Eight reports: the two legacy Volunteer Opportunities reports are hidden
-    // while V1 is not in use (#11187), which is the case in the demo data.
-    await expect(page.locator('#peopleReports a[id^="report-"]')).toHaveCount(8);
-    await waitForFloatingButtonsToHide(page);
-    await settle(page, 600);
-
-    await captureScreen(page, testInfo, {
-      name: 'people-reports-list',
-      title: 'People Reports',
-      category: 'People & Families',
-      purpose: 'Show the ready-made people reports: birthdays, anniversaries, recent friends and more',
-    });
-  });
-
   test('people-reports-birthdays-anniversaries', async ({ page }, testInfo) => {
     await runBirthdaysAndAnniversaries(page);
     await waitForFloatingButtonsToHide(page);
@@ -62,24 +46,6 @@ test.describe('People Reports', () => {
       title: 'Birthdays & Anniversaries Report',
       category: 'People & Families',
       purpose: 'Show a month of member birthdays and anniversaries, ready to add to the cart, download or print as labels',
-    });
-  });
-
-  test('people-reports-print-labels', async ({ page }, testInfo) => {
-    await runBirthdaysAndAnniversaries(page);
-    await waitForFloatingButtonsToHide(page);
-    await humanClick(page.locator('#printLabels'));
-    const dialog = page.locator('#labelsModal');
-    await expect(dialog).toHaveClass(/show/, { timeout: 10000 });
-    await expect(dialog.locator('#labelsGrouping')).not.toBeEmpty();
-    await humanSelect(dialog.locator('#labeltype'), '5160');
-    await settle(page, 800);
-
-    await captureScreen(page, testInfo, {
-      name: 'people-reports-print-labels',
-      title: 'Print Labels from a Report',
-      category: 'People & Families',
-      purpose: 'Show printing mailing labels from a report: birthdays to the person, anniversaries to the couple',
     });
   });
 });

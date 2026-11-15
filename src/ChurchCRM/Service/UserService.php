@@ -110,6 +110,41 @@ class UserService
     }
 
     /**
+     * True when deleting this administrator's login would leave no
+     * administrator, or none who can sign in. Shared by Delete User and by
+     * deleting a person who has a login.
+     */
+    public function isLastAdmin(int $personId): bool
+    {
+        $target = UserQuery::create()->findPk($personId);
+        if ($target === null || !$target->isAdmin()) {
+            return false;
+        }
+
+        $otherAdmins = UserQuery::create()
+            ->filterByAdmin(true)
+            ->filterByPersonId($personId, Criteria::NOT_EQUAL)
+            ->count();
+
+        return $otherAdmins === 0 || $this->isLastSignInCapableAdmin($personId);
+    }
+
+    /**
+     * Why an administrator may not delete this login, or null when allowed.
+     */
+    public function getUserDeletionBlockedReason(User $target, ?User $actor): ?string
+    {
+        if ($actor !== null && (int) $actor->getId() === (int) $target->getId()) {
+            return gettext('You cannot delete your own account.');
+        }
+        if ($this->isLastAdmin((int) $target->getPersonId())) {
+            return gettext('The last administrator cannot be deleted.');
+        }
+
+        return null;
+    }
+
+    /**
      * Users whose account is locked right now
      * @return User[]
      */
@@ -188,18 +223,10 @@ class UserService
         return $query->find();
     }
 
-    /**
-     * Resolves the access mode and every permission from the submitted form body.
-     *
-     * Two modes: admin (Admin=1) and custom (Admin=0, the module permissions as
-     * submitted, each 0 when absent). Every account made or saved here is a staff
-     * account: the self-service mode went with the release-day cutover (member
-     * sign-in design §12), so EditSelf is always 0.
-     */
     public function normalizeAccessMode(array $body): array
     {
         return array_merge(
-            ['admin' => ($body['accessMode'] ?? 'custom') === 'admin' ? 1 : 0, 'editSelf' => 0],
+            ['admin' => ($body['accessMode'] ?? 'custom') === 'admin' ? 1 : 0],
             $this->extractModulePerms($body)
         );
     }
@@ -289,14 +316,12 @@ class UserService
                 ->setNotes($perms['notes'])
                 ->setAdmin($perms['admin'])
                 ->setDefaultFY($defaultFY)
-                ->setUserName($userName)
-                ->setEditSelf($perms['editSelf']);
+                ->setUserName($userName);
             $newUser->updatePassword($rawPassword);
             $newUser->save();
             // Always write an explicit TRUE/FALSE bAddEvent row for the new user
             // so they never silently inherit the shared default (peronId=0) value.
             $this->saveAddEventPermission($personId, (bool) ($perms['addEvent'] ?? false));
-            $newUser->createTimeLineNote('created');
             $con->commit();
         } catch (\Throwable $e) {
             $con->rollBack();
@@ -405,8 +430,7 @@ class UserService
             ->setManageMyMinistries($perms['manageMyMinistries'])
             ->setNotes($perms['notes'])
             ->setAdmin($perms['admin'])
-            ->setUserName($userName)
-            ->setEditSelf($perms['editSelf']);
+            ->setUserName($userName);
         $user->save();
         $user->reload();
         $user->createTimeLineNote('updated');
