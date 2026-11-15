@@ -10,6 +10,7 @@ use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\ClassificationService;
 use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\UpgradeAPIService;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -18,6 +19,8 @@ use Slim\Views\PhpRenderer;
 
 $app->get('/dashboard', 'viewDashboard');
 $app->get('/access-denied', 'viewAccessDenied');
+$app->get('/releases', 'viewReleases');
+$app->post('/releases/dismiss-update-notice', 'dismissUpdateNotice');
 
 function viewAccessDenied(Request $request, Response $response, array $args): Response
 {
@@ -123,4 +126,27 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
+}
+
+/**
+ * Read-only release history for any authenticated staff member.
+ * Uses the same preview data as the admin upgrade wizard.
+ */
+function viewReleases(Request $request, Response $response, array $args): Response
+{
+    $renderer = new PhpRenderer('templates/root/');
+    $preview = UpgradeAPIService::getUpgradePreview();
+    return $renderer->render($response, 'releases.php', [
+        'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('What\'s New'),
+        'aBreadcrumbs' => PageHeader::breadcrumbs([[gettext('Releases')]]),
+        'preview' => $preview,
+    ]);
+}
+
+/** Dismiss only the system-update notice until this staff session ends. */
+function dismissUpdateNotice(Request $request, Response $response, array $args): Response
+{
+    $_SESSION['systemUpdateNoticeDismissed'] = true;
+    return $response->withStatus(204);
 }
