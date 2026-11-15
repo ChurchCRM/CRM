@@ -37,6 +37,9 @@ Use the approved writing/brand guidance for that surface; do not invent product
 claims, testimonials, metrics, logos or product UI. A shared voice consolidation
 is separate work, not implemented by this role contract.
 
-External replies, issue creation, pushes, releases and publication need the
-maintainer's specific authorization or existing explicitly granted scope.
+A maintainer-assigned task authorizes the agent to branch, commit, push and
+open a draft PR inside that task's scope (`git-workflow.md` → Task approval
+covers commit and push). External replies, issue creation, releases and
+publication need the maintainer's specific authorization or existing
+explicitly granted scope.
 A role assignment is not permission to merge, close issues or send a message.

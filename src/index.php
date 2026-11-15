@@ -7,6 +7,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Portal\Auth\PortalSessionStore;
+use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\PathUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\Utils\VersionUtils;
@@ -92,8 +93,20 @@ if ($_idx_isWebRoot) {
     // bare 404, no need for a full error page.
     http_response_code(404);
     exit;
+} elseif (AuthenticationManager::validateUserSessionIsActive(false)) {
+    // A signed-in user keeps the application header and menu on an unknown page.
+    if (AuthenticationManager::getCurrentUser()->isEditSelfExclusive()) {
+        RedirectUtils::redirect(SystemURLs::getRootPath() . '/portal/');
+    }
+    http_response_code(404);
+    $sPageTitle = gettext('Page Not Found');
+    require __DIR__ . '/Include/Header.php';
+    $code = 404;
+    $title = gettext('Page Not Found');
+    $message = SlimUtils::notFoundMessage();
+    require __DIR__ . '/v2/templates/common/error-page.php';
+    require __DIR__ . '/Include/Footer.php';
 } else {
-    // Self-contained error page (see src/errors/.htaccess) — no Header/Footer
-    // or session/DB state required, same pattern as php-error.php and setup.
+    // Signed out: the self-contained page needs no Header/Footer or session/DB state.
     RedirectUtils::redirect('errors/not-found.php?path=' . rawurlencode($shortName));
 }

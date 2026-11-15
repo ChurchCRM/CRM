@@ -166,7 +166,7 @@ function statusBadge(status: VolunteerAssignment["status"]): string {
     accepted: { cls: "bg-green-lt text-green", label: i18next.t("Accepted") },
     declined: { cls: "bg-red-lt text-red", label: i18next.t("Declined") },
     substituted: { cls: "bg-azure-lt text-azure", label: i18next.t("Substituted") },
-    cancelled: { cls: "bg-secondary-lt text-secondary", label: i18next.t("Cancelled") },
+    cancelled: { cls: "bg-secondary-lt text-secondary", label: i18next.t("Canceled") },
     completed: { cls: "bg-secondary-lt text-secondary", label: i18next.t("Completed") },
   };
   const badge = map[status];
@@ -209,7 +209,7 @@ function assignmentMenu(assignment: VolunteerAssignment): string {
       type: "link",
       href: `${root}/people/view/${assignment.personId}`,
       icon: "fa-solid fa-user",
-      label: i18next.t("View person"),
+      label: i18next.t("View Person"),
     },
     live && {
       type: "button",
@@ -402,7 +402,7 @@ function renderOccurrenceStatus(): void {
   const badge = byId("occurrence-status");
   if (badge) {
     badge.className = `badge ${cancelled ? "bg-red-lt text-red" : "bg-green-lt text-green"}`;
-    badge.textContent = cancelled ? i18next.t("Cancelled") : i18next.t("Scheduled");
+    badge.textContent = cancelled ? i18next.t("Canceled") : i18next.t("Scheduled");
   }
 
   const holder = byId("occurrence-actions");
@@ -680,12 +680,12 @@ function handleAssignmentAction(action: string, assignmentId: number, personName
       () => {
         deleteAssignment(assignmentId)
           .then(() => {
-            notifySuccess(i18next.t("Assignment cancelled"));
+            notifySuccess(i18next.t("Assignment canceled"));
 
             return loadStaffing();
           })
           .catch((error: unknown) => {
-            notifyError(errorMessage(error, i18next.t("The assignment could not be cancelled")));
+            notifyError(errorMessage(error, i18next.t("The assignment could not be canceled")));
           });
       },
     );
@@ -790,7 +790,7 @@ function changeOccurrenceStatus(status: VolunteerOccurrenceSummary["status"]): v
     .then((data) => {
       occurrenceStatus = data.occurrence.status;
       renderOccurrenceStatus();
-      notifySuccess(cancelling ? i18next.t("Occurrence cancelled") : i18next.t("Occurrence restored"));
+      notifySuccess(cancelling ? i18next.t("Occurrence canceled") : i18next.t("Occurrence restored"));
 
       return loadStaffing();
     })
@@ -799,7 +799,7 @@ function changeOccurrenceStatus(status: VolunteerOccurrenceSummary["status"]): v
         errorMessage(
           error,
           cancelling
-            ? i18next.t("The occurrence could not be cancelled")
+            ? i18next.t("The occurrence could not be canceled")
             : i18next.t("The occurrence could not be restored"),
         ),
       );
@@ -830,7 +830,7 @@ function confirmCancelOccurrence(): void {
         i18next.t("Cancel this occurrence"),
         `${who}<p class="mb-0">${escapeHtml(
           i18next.t(
-            "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored.",
+            "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored.",
           ),
         )}</p>`,
         () => changeOccurrenceStatus("cancelled"),

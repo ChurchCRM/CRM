@@ -20,6 +20,9 @@
  * valid ones, lists the rejected ones with the reason, and records identical-to-English
  * values in locale/terms/english-ok.json. An empty value leaves the term untranslated.
  *
+ * Batch files come from the repo (npm run locale:missing); after translating, npm run locale:apply
+ * writes them into the locale files.
+ *
  * See .claude/commands/locale-translate.md for the workflow.
  */
 
@@ -89,7 +92,7 @@ function countUntranslated(terms) {
 function cmdList(localeMap) {
     const missingDir = config.terms.missing;
     if (!fs.existsSync(missingDir)) {
-        console.log('No missing terms directory found. Run: npm run locale:download (the downloader now generates missing-term batches)');
+        console.log('No missing-term batches. Run: npm run locale:missing');
         return;
     }
 
@@ -117,7 +120,8 @@ function cmdList(localeMap) {
     }
     console.log(`\n  Total: ${results.length} locales, ${results.reduce((n, r) => n + r.total, 0)} terms\n`);
     console.log('  To translate, run in Claude Code: /locale-translate --locale <code>');
-    console.log('  Or translate all at once:         /locale-translate --all\n');
+    console.log('  Or translate all at once:         /locale-translate --all');
+    console.log('  Then write them into the locale files: npm run locale:apply\n');
 }
 
 function cmdReadFile(filePath) {

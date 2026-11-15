@@ -89,19 +89,4 @@ test.describe('Kiosk walk-in guests', () => {
       purpose: 'Show the walk-in guest registered at the kiosk waiting on People > Self Registrations for staff to review and approve',
     });
   });
-
-  test('kiosk-guest-settings', async ({ page }, testInfo) => {
-    await page.goto('/kiosk/admin');
-    const card = page.locator('#kioskSettings');
-    await expect(card.locator('select[name="iKioskGuestClassification"]')).toBeVisible({ timeout: 15000 });
-    await card.scrollIntoViewIfNeeded();
-    await settle(page, 1200);
-
-    await captureScreen(page, testInfo, {
-      name: 'kiosk-guest-settings',
-      title: 'Kiosk Guest Classification Setting',
-      category: 'Events & Attendance',
-      purpose: 'Show the Kiosk Settings card on Kiosk Manager where an administrator chooses the classification given to walk-in guests',
-    });
-  });
 });

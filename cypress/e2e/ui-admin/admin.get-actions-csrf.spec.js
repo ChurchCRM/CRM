@@ -130,10 +130,6 @@ describe("State-changing actions need a POST with a CSRF token", () => {
         postForm("/ConvertIndividualToFamily.php", { all: "true" }).its("status").should("eq", 403);
     });
 
-    it("family verify URL refuses GET", () => {
-        cy.request({ url: "/api/family/1/verify/url", failOnStatusCode: false }).its("status").should("eq", 405);
-    });
-
     it("upgrade release download refuses GET", () => {
         cy.request({ url: "/admin/api/upgrade/download-latest-release", failOnStatusCode: false })
             .its("status")

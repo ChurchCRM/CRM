@@ -370,8 +370,8 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
 
             qualBox(TICKED_PERSON, firstPositionId).should("not.be.checked").check();
 
-            cy.get(".notyf__toast--success").should("be.visible").and("contain", `${POSITION_ONE}:`);
-            cy.get(".notyf__toast--success").should("contain", "qualified");
+            cy.get("#crm-toasts .toast[data-type='success']").should("be.visible").and("contain", `${POSITION_ONE}:`);
+            cy.get("#crm-toasts .toast[data-type='success']").should("contain", "qualified");
         });
 
         it("says so in the toast when a tick is taken away again", () => {
@@ -388,7 +388,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
 
             qualBox(TICKED_PERSON, firstPositionId).should("be.checked").uncheck();
 
-            cy.get(".notyf__toast--success").should("be.visible").and("contain", "no longer qualified");
+            cy.get("#crm-toasts .toast[data-type='success']").should("be.visible").and("contain", "no longer qualified");
         });
 
         it("has no inline status cell left, and the checkbox does not move when it saves", () => {
@@ -420,7 +420,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
 
                 qualBox(TICKED_PERSON, secondPositionId).check();
                 cy.wait("@grantQual");
-                cy.get(".notyf__toast--success").should("be.visible");
+                cy.get("#crm-toasts .toast[data-type='success']").should("be.visible");
 
                 qualBox(TICKED_PERSON, secondPositionId).then(($after) => {
                     const after = $after[0].getBoundingClientRect();
@@ -442,7 +442,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
             qualBox(TICKED_PERSON, firstPositionId).should("not.be.checked").check();
             cy.wait("@denied");
 
-            cy.get(".notyf__toast--error").should("be.visible").and("contain", "Not authorized");
+            cy.get("#crm-toasts .toast[data-type='danger']").should("be.visible").and("contain", "Not authorized");
             qualBox(TICKED_PERSON, firstPositionId).should("not.be.checked");
         });
     });
@@ -504,7 +504,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
 
             cy.wait("@addPool").its("response.statusCode").should("be.oneOf", [200, 201]);
             cy.get("#addVolunteerModal").should("not.be.visible");
-            cy.get(".notyf__toast--success").should("contain", "now tick the positions they can serve");
+            cy.get("#crm-toasts .toast[data-type='success']").should("contain", "now tick the positions they can serve");
 
             // Force-refreshed, so the new person is a ROW — with no ticks on it.
             cy.get(
@@ -530,7 +530,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
             cy.get("#add-volunteer-save").click();
 
             cy.wait("@addPool").its("response.statusCode").should("eq", 200);
-            cy.get(".notyf__toast").should("contain", "They were already a volunteer here");
+            cy.get("#crm-toasts .toast").should("contain", "They were already a volunteer here");
             cy.get(
                 `#volunteerQualificationsTable input.volunteer-qual-toggle[data-person-id="${TICKED_PERSON}"]`,
             ).should("have.length.at.least", 1);
@@ -585,7 +585,7 @@ describe("Volunteer v2 ministry page, round three (#9701)", () => {
             });
 
             cy.get("#addFromCartModal").should("not.be.visible");
-            cy.get(".notyf__toast--success").should("be.visible");
+            cy.get("#crm-toasts .toast[data-type='success']").should("be.visible");
 
             for (const personId of CART_PEOPLE) {
                 cy.get(

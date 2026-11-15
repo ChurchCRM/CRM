@@ -13,6 +13,15 @@ $orphanedCount = count($integrityCheckData['orphanedFiles'] ?? []);
 
 <div class="row">
     <div class="col-12">
+        <?php if (!empty($databaseBlockMessage)): ?>
+            <div class="alert alert-danger d-flex align-items-start gap-2 mb-3" role="alert">
+                <i class="fa-solid fa-circle-xmark fa-lg mt-1"></i>
+                <div>
+                    <strong><?= gettext('This upgrade cannot run on your database.') ?></strong>
+                    <?= InputUtils::escapeHTML($databaseBlockMessage) ?>
+                </div>
+            </div>
+        <?php endif; ?>
         <!-- Version Information -->
         <div class="card mb-3">
             <div class="card-body py-3">

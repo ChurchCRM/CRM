@@ -8,6 +8,7 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\UserSetting;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Service\NotificationService;
@@ -53,7 +54,7 @@ $_currencyAttrs     = ' data-currency-position="' . InputUtils::escapeAttribute(
 $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR);
 ?>
 <!DOCTYPE html>
-<html<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?><?= $_currencyAttrs ?>>
+<html data-bs-navbar-position="combined"<?= $localeInfo->isRTL() ? ' dir="rtl"' : '' ?><?= $_themeAttrs ?><?= $_currencyAttrs ?>>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -177,7 +178,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
   <!-- ============================================================ -->
   <!-- Sidebar (Tabler vertical navbar)                              -->
   <!-- ============================================================ -->
-  <aside class="navbar navbar-vertical navbar-expand-xl d-print-none" id="sidebar">
+  <aside class="navbar navbar-vertical navbar-expand-xl d-print-none<?= $currentUser->getSettingValue(UserSetting::UI_SIDEBAR_FOLDED) === '1' ? ' navbar-folded-hover' : '' ?>" id="sidebar">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button"
               data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
@@ -209,14 +210,9 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
   </aside>
 
   <!-- ============================================================ -->
-  <!-- Page wrapper                                                  -->
-  <!-- ============================================================ -->
-  <div class="page-wrapper">
-
-  <!-- ============================================================ -->
   <!-- Topbar                                                        -->
   <!-- ============================================================ -->
-  <header class="navbar navbar-expand-md d-print-none sticky-top">
+  <header class="navbar navbar-expand-md d-print-none sticky-top order-first order-xl-0" id="topbar">
     <div class="container-xl">
 
       <button type="button" id="menu-toggle"
@@ -282,12 +278,12 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
         $nativeName  = $localeInfo->getNativeName();
         $englishName = $localeInfo->getName();
         $hasNative   = $nativeName !== '' && $nativeName !== $englishName;
-        $localeUrl   = SystemURLs::getRootPath() . '/v2/user/' . $currentUser->getId() . '#tab-localization';
+        $localeUrl   = SystemURLs::getRootPath() . '/account#tab-localization';
         ?>
         <div class="nav-item ms-1">
           <a class="nav-link px-0" href="<?= InputUtils::escapeAttribute($localeUrl) ?>"
              title="<?= InputUtils::escapeAttribute($hasNative ? $nativeName . ' — ' . $englishName : $englishName) ?>">
-            <i class="fi fi-<?= InputUtils::escapeAttribute($flagCode) ?> fi-squared"></i>
+            <span class="flag flag-xs flag-country-<?= InputUtils::escapeAttribute($flagCode) ?>"></span>
           </a>
         </div>
 
@@ -319,8 +315,8 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <div class="dropdown-divider"></div>
             <a href="#" id="reportIssue" class="dropdown-item"
                data-bs-toggle="modal" data-bs-target="#IssueReportModal"
-               title="<?= gettext('Report an issue') ?>">
-              <i class="fa-solid fa-bug me-2"></i><?= gettext('Report an issue') ?>
+               title="<?= gettext('Report an Issue') ?>">
+              <i class="fa-solid fa-bug me-2"></i><?= gettext('Report an Issue') ?>
             </a>
             <a href="https://discord.gg/tuWyFzj3Nj" target="_blank" class="dropdown-item"
                title="<?= gettext('Discord Chat') ?>">
@@ -379,10 +375,10 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
                class="dropdown-item">
               <i class="fa-solid fa-user me-2"></i><?= gettext("Profile") ?>
             </a>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="dropdown-item">
+            <a href="<?= SystemURLs::getRootPath() ?>/account/password" class="dropdown-item">
               <i class="fa-solid fa-key me-2"></i><?= gettext('Change Password') ?>
             </a>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= (int) $currentUser->getPersonId() ?>"
+            <a href="<?= SystemURLs::getRootPath() ?>/account"
                class="dropdown-item">
               <i class="fa-solid fa-cog me-2"></i><?= gettext('Change Settings') ?>
             </a>
@@ -391,7 +387,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <i class="fa-solid fa-church me-2"></i><?= gettext('Member Portal') ?>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="dropdown-item">
+            <a href="<?= SystemURLs::getRootPath() ?>/account/2fa" class="dropdown-item">
               <i class="fa-solid fa-shield me-2"></i><?= gettext("Manage Two-Factor Authentication") ?>
             </a>
             <div class="dropdown-divider"></div>
@@ -423,6 +419,8 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
 
     </div><!-- /.container-xl -->
   </header>
+
+  <div class="page-wrapper">
 
 <?php
     // Unified page header defaults (backward-compatible)
@@ -538,7 +536,7 @@ if ($currentUser !== null):
           ),
           $_twoFADaysLeft
       )) ?>
-      <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/v2/user/current/manage2fa" class="alert-link ms-1">
+      <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/account/2fa" class="alert-link ms-1">
         <?= gettext('Set up now') ?>
       </a>
     </div>

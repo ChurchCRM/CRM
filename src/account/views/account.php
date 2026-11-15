@@ -1,0 +1,471 @@
+<?php
+
+use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Authentication\SignInThrottle;
+use ChurchCRM\dto\LocaleInfo;
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\view\PageHeader;
+
+$sPageTitle = gettext("Settings");
+$sPageSubtitle = $user->getFullName();
+$isOwnProfile = (AuthenticationManager::getCurrentUser()->getId() === $user->getId());
+// Use distinct variable names so Header.php's reassignment of $personId,
+// $avatarApiUrl, $hasUploadedPhoto, and $photo (always reads the logged-in
+// user's values) cannot clobber the viewed user's values. Same pattern as
+// $viewedUserLocaleInfo used for the locale identity-leak fix.
+$viewedPersonId = $user->getPersonId();
+$firstName = $user->getPerson() ? $user->getPerson()->getFirstName() : '';
+$accountLabel = $isOwnProfile
+    ? gettext('My Account')
+    : ($firstName !== '' ? sprintf(gettext("%s's Account"), $firstName) : gettext('Account'));
+if (AuthenticationManager::getCurrentUser()->isAdmin()) {
+    $sPageHeaderButtons = PageHeader::buttons([
+        ['label' => gettext('User List'), 'url' => '/admin/system/users', 'icon' => 'fa-users'],
+        ['label' => gettext('Edit'), 'url' => '/admin/system/users/' . $viewedPersonId . '/edit', 'icon' => 'fa-pencil'],
+    ]);
+}
+// Use a distinct variable so Header.php's reassignment of $localeInfo
+// (which always reads the logged-in user's locale) cannot clobber this.
+$viewedUserLocaleInfo = new LocaleInfo(SystemConfig::getValue('sLanguage'), $user->getSetting('ui.locale'));
+
+// Read user settings server-side so controls are pre-populated without JS API calls
+$_userThemeMode = $user->getThemeMode(); // 'auto' | 'default' | 'dark'
+$_userPrimary = $user->getSettingValue('ui.theme.primary');
+$_userTableSize = $user->getSettingValue('ui.table.size');
+
+require SystemURLs::getDocumentRoot() . '/Include/Header.php';
+?>
+
+<div class="card">
+  <div class="row g-0">
+    <!-- Left nav tabs -->
+    <div class="col-12 col-md-3 d-md-block border-end">
+      <div class="card-body">
+        <div class="list-group list-group-transparent" id="settingsNav">
+          <a href="#tab-account" class="list-group-item list-group-item-action d-flex align-items-center active" data-bs-toggle="list">
+            <i class="fa-solid fa-user me-2"></i><?= InputUtils::escapeHTML($accountLabel) ?>
+          </a>
+          <a href="#tab-appearance" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
+            <i class="fa-solid fa-palette me-2"></i><?= gettext("Appearance") ?>
+          </a>
+          <a href="#tab-localization" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
+            <i class="fa-solid fa-language me-2"></i><?= gettext("Localization") ?>
+          </a>
+          <a href="#tab-api" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
+            <i class="fa-solid fa-cube me-2"></i><?= gettext("API Access") ?>
+          </a>
+          <a href="#tab-permissions" class="list-group-item list-group-item-action d-flex align-items-center" data-bs-toggle="list">
+            <i class="fa-solid fa-shield-halved me-2"></i><?= gettext("Permissions") ?>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right content panes -->
+    <div class="col-12 col-md-9">
+      <div class="card-body">
+        <div class="tab-content">
+
+          <!-- =============== MY ACCOUNT =============== -->
+          <div class="tab-pane active show" id="tab-account">
+            <h3 class="card-title"><?= InputUtils::escapeHTML($accountLabel) ?></h3>
+            <p class="text-body-secondary"><?= gettext("Profile and security") ?></p>
+
+            <?php
+            $isLocked       = $user->isLocked();
+            $mustChange     = $user->getNeedPasswordChange();
+            $failedLogins   = $user->getFailedLogins();
+            $maxFailedLogins = SignInThrottle::maxFailedLogins();
+            ?>
+            <?php $signInBlockedLabel = $user->getSignInBlockedLabel(); ?>
+            <?php if ($signInBlockedLabel !== null): ?>
+            <div class="alert alert-secondary d-flex align-items-center mb-3" role="alert" data-cy="sign-in-blocked-alert">
+              <i class="fa-solid fa-user-slash me-2 flex-shrink-0 fs-3"></i>
+              <div>
+                <strong><?= InputUtils::escapeHTML($signInBlockedLabel) ?></strong>
+                <div class="small"><?= gettext('Sign-in, sessions and the API key are blocked until this is resolved on the linked person\'s record.') ?></div>
+              </div>
+            </div>
+            <?php endif; ?>
+            <?php if ($isLocked): ?>
+            <div class="alert alert-danger d-flex align-items-center mb-3" role="alert">
+              <i class="fa-solid fa-lock me-2 flex-shrink-0 fs-3"></i>
+              <div>
+                <strong><?= gettext('Account locked') ?></strong>
+                <div class="small"><?= gettext('This account is locked because of too many failed login attempts.') ?></div>
+                <div class="small" data-cy="lockout-minutes-left"><?= sprintf(gettext('Minutes until it unlocks by itself: %d'), SignInThrottle::minutesUntilUnlock($user)) ?></div>
+              </div>
+            </div>
+            <?php endif; ?>
+            <?php if ($mustChange): ?>
+            <div class="alert alert-warning d-flex align-items-center mb-3" role="alert">
+              <i class="fa-solid fa-key me-2 flex-shrink-0 fs-3"></i>
+              <div>
+                <strong><?= gettext('Password change required') ?></strong>
+                <div class="small"><?= gettext('This user must set a new password the next time they sign in.') ?></div>
+              </div>
+            </div>
+            <?php endif; ?>
+
+            <!-- Profile -->
+            <div class="row mb-4">
+              <div class="col-sm-3 text-center">
+                <img id="userAvatar"
+                     data-image-entity-type="person"
+                     data-image-entity-id="<?= $viewedPersonId ?>"
+                     class="avatar avatar-xl rounded-circle mb-2"
+                     alt="<?= InputUtils::escapeAttribute($user->getFullName()) ?>">
+                <div>
+                  <button id="uploadPhotoBtn" class="btn btn-sm btn-outline-primary">
+                    <i class="fa-solid fa-camera me-1"></i><?= gettext("Change Photo") ?>
+                  </button>
+                </div>
+              </div>
+              <div class="col-sm-9">
+                <?php $canEditUserPerson = AuthenticationManager::getCurrentUser()->canEditPerson($viewedPersonId, $user->getPerson()?->getFamId() ?? 0); ?>
+                <div class="row mb-2">
+                  <div class="col-sm-4 text-body-secondary"><?= gettext("Username") ?></div>
+                  <div class="col-sm-8"><?= InputUtils::escapeHTML($user->getUserName()) ?></div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-sm-4 text-body-secondary"><?= gettext("Name") ?></div>
+                  <div class="col-sm-8">
+                    <?= InputUtils::escapeHTML($user->getFullName()) ?>
+                    <?php if ($canEditUserPerson): ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="fa-solid fa-pencil"></i></a>
+                    <?php endif; ?>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-sm-4 text-body-secondary"><?= gettext("Email") ?></div>
+                  <div class="col-sm-8">
+                    <?= InputUtils::escapeHTML($user->getEmail() ?? '') ?: '<span class="text-body-secondary">' . gettext("Not set") . '</span>' ?>
+                    <?php if ($canEditUserPerson): ?>
+                    <a href="<?= SystemURLs::getRootPath() ?>/PersonEditor.php?PersonID=<?= $viewedPersonId ?>" class="ms-2 text-body-secondary small" title="<?= gettext("Edit") ?>"><i class="fa-solid fa-pencil"></i></a>
+                    <?php endif; ?>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <hr>
+
+            <h4 class="mb-3"><?= gettext("Security") ?></h4>
+            <div class="row mb-2">
+              <div class="col-sm-3 text-body-secondary"><?= gettext("Two-Factor Authentication") ?></div>
+              <div class="col-sm-9">
+                <?php if ($user->is2FactorAuthEnabled()): ?>
+                <span class="badge bg-success-lt text-success"><i class="fa-solid fa-circle-check me-1"></i><?= gettext("Active") ?></span>
+                <?php else: ?>
+                <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-shield-halved me-1"></i><?= gettext("Inactive") ?></span>
+                <?php endif; ?>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-3 text-body-secondary"><?= gettext('Account status') ?></div>
+              <div class="col-sm-9">
+                <?php if ($isLocked): ?>
+                <span class="badge bg-danger-lt text-danger"><i class="fa-solid fa-lock me-1"></i><?= gettext('Locked') ?></span>
+                <?php else: ?>
+                <span class="badge bg-success-lt text-success"><i class="fa-solid fa-lock-open me-1"></i><?= gettext('Active') ?></span>
+                <?php endif; ?>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-3 text-body-secondary"><?= gettext('Password status') ?></div>
+              <div class="col-sm-9">
+                <?php if ($mustChange): ?>
+                <span class="badge bg-warning-lt text-warning"><i class="fa-solid fa-key me-1"></i><?= gettext('Change required') ?></span>
+                <?php else: ?>
+                <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i><?= gettext('OK') ?></span>
+                <?php endif; ?>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-3 text-body-secondary"><?= gettext('Failed login attempts') ?></div>
+              <div class="col-sm-9">
+                <?php if ($failedLogins > 0): ?>
+                <span class="badge <?= $isLocked ? 'bg-danger-lt text-danger' : 'bg-warning-lt text-warning' ?>"><?= InputUtils::escapeHTML($failedLogins) ?><?php if ($maxFailedLogins > 0): ?>&nbsp;/&nbsp;<?= InputUtils::escapeHTML($maxFailedLogins) ?><?php endif; ?></span>
+                <?php else: ?>
+                <span class="text-body-secondary"><?= gettext('None') ?></span>
+                <?php endif; ?>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <div class="col-sm-3 text-body-secondary"><?= gettext('Last login') ?></div>
+              <div class="col-sm-9"><?= InputUtils::escapeHTML($user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?: gettext('Never')) ?></div>
+            </div>
+            <?php if ($isOwnProfile): ?>
+            <div class="row mb-3 mt-3">
+              <div class="col-sm-9 offset-sm-3">
+                <a href="<?= SystemURLs::getRootPath() ?>/account/password" class="btn btn-outline-primary me-2">
+                  <i class="fa-solid fa-key me-1"></i><?= gettext("Change Password") ?>
+                </a>
+                <a href="<?= SystemURLs::getRootPath() ?>/account/2fa" class="btn btn-outline-primary">
+                  <i class="fa-solid fa-shield me-1"></i><?= gettext("Manage 2FA") ?>
+                </a>
+              </div>
+            </div>
+            <?php endif; ?>
+
+            <hr>
+
+            <div class="row mb-3">
+              <div class="col-sm-9 offset-sm-3">
+                <a id="editSettings" href="<?= SystemURLs::getRootPath() ?>/SettingsIndividual.php" class="btn btn-outline-secondary">
+                  <i class="fa-solid fa-cog me-1"></i><?= gettext("Advanced Settings") ?>
+                </a>
+                <small class="form-text mt-1"><?= gettext("Manage additional preferences like email delimiters and display options") ?></small>
+              </div>
+            </div>
+          </div>
+
+          <!-- =============== APPEARANCE =============== -->
+          <div class="tab-pane" id="tab-appearance">
+            <h3 class="card-title"><?= gettext("Appearance") ?></h3>
+            <p class="text-body-secondary"><?= gettext("Customize the look and feel of the application") ?></p>
+
+            <!-- Theme Mode -->
+            <div class="row mb-4">
+              <label class="col-sm-3 col-form-label"><?= gettext("Theme Mode") ?></label>
+              <div class="col-sm-9">
+                <div class="form-selectgroup">
+                  <label class="form-selectgroup-item">
+                    <input type="radio" name="themeMode" value="auto" class="form-selectgroup-input" id="themeModeAuto"<?= $_userThemeMode === 'auto' ? ' checked' : '' ?>>
+                    <span class="form-selectgroup-label">
+                      <i class="fa-solid fa-desktop me-1"></i><?= gettext("Auto") ?>
+                    </span>
+                  </label>
+                  <label class="form-selectgroup-item">
+                    <input type="radio" name="themeMode" value="default" class="form-selectgroup-input" id="themeModeLight"<?= $_userThemeMode === 'default' ? ' checked' : '' ?>>
+                    <span class="form-selectgroup-label">
+                      <i class="fa-solid fa-sun me-1"></i><?= gettext("Light") ?>
+                    </span>
+                  </label>
+                  <label class="form-selectgroup-item">
+                    <input type="radio" name="themeMode" value="dark" class="form-selectgroup-input" id="themeModeDark"<?= $_userThemeMode === 'dark' ? ' checked' : '' ?>>
+                    <span class="form-selectgroup-label">
+                      <i class="fa-solid fa-moon me-1"></i><?= gettext("Dark") ?>
+                    </span>
+                  </label>
+                </div>
+                <small class="form-text"><?= gettext("Auto follows your OS or browser setting; Light and Dark override it") ?></small>
+              </div>
+            </div>
+
+            <!-- Primary Color -->
+            <div class="row mb-4">
+              <label class="col-sm-3 col-form-label"><?= gettext("Primary Color") ?></label>
+              <div class="col-sm-9">
+                <div class="d-flex flex-wrap gap-2" id="primaryColorPicker">
+                  <?php
+                  $colors = [
+                      '' => ['label' => gettext('Default'), 'hex' => '#066fd1'],
+                      'blue' => ['label' => gettext('Blue'), 'hex' => '#066fd1'],
+                      'azure' => ['label' => gettext('Azure'), 'hex' => '#4299e1'],
+                      'indigo' => ['label' => gettext('Indigo'), 'hex' => '#4263eb'],
+                      'purple' => ['label' => gettext('Purple'), 'hex' => '#ae3ec9'],
+                      'pink' => ['label' => gettext('Pink'), 'hex' => '#d6336c'],
+                      'red' => ['label' => gettext('Red'), 'hex' => '#d63939'],
+                      'orange' => ['label' => gettext('Orange'), 'hex' => '#f76707'],
+                      'yellow' => ['label' => gettext('Yellow'), 'hex' => '#f59f00'],
+                      'lime' => ['label' => gettext('Lime'), 'hex' => '#74b816'],
+                      'green' => ['label' => gettext('Green'), 'hex' => '#2fb344'],
+                      'teal' => ['label' => gettext('Teal'), 'hex' => '#0ca678'],
+                      'cyan' => ['label' => gettext('Cyan'), 'hex' => '#17a2b8'],
+                  ];
+                  foreach ($colors as $value => $info):
+                  ?>
+                  <button type="button" class="btn-color-swatch rounded-circle<?= $value === $_userPrimary ? ' active' : '' ?>" data-color="<?= $value ?>" style="background-color: <?= $info['hex'] ?>;" title="<?= $info['label'] ?>" aria-label="<?= $info['label'] ?>"></button>
+                  <?php endforeach; ?>
+                </div>
+                <small class="form-text"><?= gettext("Set the accent color used for buttons, links, and active elements") ?></small>
+              </div>
+            </div>
+
+            <hr>
+
+            <!-- Tables -->
+            <h4 class="mb-3"><?= gettext("Tables") ?></h4>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="tablePageLength"><?= gettext("Rows per page") ?></label>
+              <div class="col-sm-9">
+                <?php $tableVal = $_userTableSize !== '' ? $_userTableSize : '10'; ?>
+                <select id="tablePageLength" class="form-select">
+                  <option value="10"<?= $tableVal === '10' ? ' selected' : '' ?>>10</option>
+                  <option value="25"<?= $tableVal === '25' ? ' selected' : '' ?>>25</option>
+                  <option value="50"<?= $tableVal === '50' ? ' selected' : '' ?>>50</option>
+                  <option value="100"<?= $tableVal === '100' ? ' selected' : '' ?>>100</option>
+                  <option value="-1"<?= $tableVal === '-1' ? ' selected' : '' ?>><?= gettext("All") ?></option>
+                </select>
+                <small class="form-text"><?= gettext("Default number of rows shown in data tables. Takes effect on next page load.") ?></small>
+              </div>
+            </div>
+          </div>
+
+          <!-- =============== LOCALIZATION =============== -->
+          <div class="tab-pane" id="tab-localization">
+            <h3 class="card-title"><?= gettext("Localization") ?></h3>
+            <p class="text-body-secondary"><?= gettext("Language and regional settings") ?></p>
+
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label" for="user-locale-setting"><?= gettext("Language") ?></label>
+              <div class="col-sm-9">
+                <select id="user-locale-setting" class="form-select">
+                </select>
+                <small class="form-text"><?= gettext("Override the system default locale") ?>: <strong><?= $viewedUserLocaleInfo->getSystemLocale() ?></strong></small>
+              </div>
+            </div>
+
+            <?php if ($viewedUserLocaleInfo->shouldShowTranslationPercentage()): ?>
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label"><?= gettext("Translation Progress") ?></label>
+              <div class="col-sm-9">
+                <div class="progress mb-2 user-translation-progress">
+                  <div class="progress-bar bg-<?= $viewedUserLocaleInfo->getTranslationPercentage() >= 90 ? 'success' : ($viewedUserLocaleInfo->getTranslationPercentage() >= 50 ? 'warning' : 'danger') ?>"
+                       role="progressbar"
+                       style="width: <?= $viewedUserLocaleInfo->getTranslationPercentage() ?>%"
+                       aria-valuenow="<?= $viewedUserLocaleInfo->getTranslationPercentage() ?>"
+                       aria-valuemin="0"
+                       aria-valuemax="100">
+                    <?= $viewedUserLocaleInfo->getTranslationPercentage() ?>%
+                  </div>
+                </div>
+                <small class="form-text"><?= gettext("Percentage of strings translated for your current language") ?></small>
+              </div>
+            </div>
+            <?php endif; ?>
+
+            <hr>
+
+            <h4 class="mb-3"><?= gettext("Help Improve Translations") ?></h4>
+            <div class="alert alert-info">
+              <div class="d-flex">
+                <div><i class="fa-solid fa-circle-info me-2 mt-1"></i></div>
+                <div>
+                  <h4 class="alert-title"><?= gettext("Missing or incorrect translations?") ?></h4>
+                  <p class="mb-2"><?= gettext("ChurchCRM translations are managed by the community on POEditor. You can help by") ?>:</p>
+                  <ul class="mb-2">
+                    <li><?= gettext("Fixing incorrect or awkward translations in your language") ?></li>
+                    <li><?= gettext("Translating missing strings to improve coverage") ?></li>
+                    <li><?= gettext("Suggesting better phrasing for existing translations") ?></li>
+                  </ul>
+                  <a href="https://poeditor.com/join/project?hash=RABdnDSqAt" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm">
+                    <i class="fa-solid fa-arrow-up-right-from-square me-1"></i><?= gettext("Join the Translation Project on POEditor") ?>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="alert alert-warning">
+              <div class="d-flex">
+                <div><i class="fa-solid fa-triangle-exclamation me-2 mt-1"></i></div>
+                <div>
+                  <h4 class="alert-title"><?= gettext("Found a bug with translations?") ?></h4>
+                  <p class="mb-0"><?= gettext("If you notice garbled characters, HTML entities appearing as text, or translations that break page layout, please report the issue on GitHub so it can be fixed for everyone.") ?></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- =============== API ACCESS =============== -->
+          <div class="tab-pane" id="tab-api">
+            <h3 class="card-title"><?= gettext("API Access") ?></h3>
+            <p class="text-body-secondary"><?= gettext("Manage your API key for external integrations") ?></p>
+
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label"><?= gettext("API Key") ?></label>
+              <div class="col-sm-9">
+                <div class="input-group">
+                  <input id="apiKey" type="text" class="form-control font-monospace" value="<?= InputUtils::escapeAttribute($user->getApiKey()) ?>" readonly>
+                  <button id="regenApiKey" class="btn btn-warning" type="button" title="<?= gettext("Regenerate") ?>">
+                    <i class="fa-solid fa-arrows-rotate me-1"></i><?= gettext("Regenerate") ?>
+                  </button>
+                </div>
+                <small class="form-text"><?= gettext("Use this key to authenticate API requests. Regenerating will invalidate the current key.") ?></small>
+              </div>
+            </div>
+
+            <hr>
+
+            <h4 class="mb-3"><?= gettext("Usage") ?></h4>
+            <p class="text-body-secondary"><?= gettext("Include your API key in requests using the x-api-key header") ?>:</p>
+            <pre class="p-3 rounded"><code>curl -H "x-api-key: <?= InputUtils::escapeHTML(substr($user->getApiKey(), 0, 8)) ?>..." \
+     <?= SystemURLs::getURL() ?>/api/person/1</code></pre>
+          </div>
+
+          <!-- =============== PERMISSIONS =============== -->
+          <div class="tab-pane" id="tab-permissions" data-cy="permissions-tab">
+            <h3 class="card-title"><?= gettext("Permissions") ?></h3>
+            <p class="text-body-secondary"><?= gettext("What this account can do right now (read-only)") ?></p>
+
+            <?php if ($user->isAdmin()): ?>
+            <div class="mb-3">
+              <span class="badge bg-warning-lt text-warning px-3 py-2">
+                <i class="fa-solid fa-circle-check me-2"></i><?= gettext("Administrator") ?>
+              </span>
+              <p class="text-body-secondary small mt-2 mb-0"><?= gettext("Administrators have every permission while its feature is turned on.") ?></p>
+            </div>
+            <?php endif; ?>
+
+            <div class="border rounded mb-3">
+              <div class="px-3 py-2 border-bottom bg-surface-secondary">
+                <strong><?= gettext("View people and families") ?></strong>
+              </div>
+              <div class="row align-items-center px-3 py-2">
+                <div class="col-sm-6"><?= gettext("View") ?></div>
+                <div class="col-sm-6 d-flex flex-wrap gap-1">
+                  <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i><?= gettext("Yes") ?></span>
+                  <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-lock me-1"></i><?= gettext("Always granted") ?></span>
+                </div>
+              </div>
+            </div>
+
+            <?php foreach ($permissionGroups as $permissionGroup): ?>
+            <div class="border rounded mb-3">
+              <div class="px-3 py-2 border-bottom bg-surface-secondary">
+                <strong><?= InputUtils::escapeHTML($permissionGroup['group']) ?></strong>
+              </div>
+              <?php foreach ($permissionGroup['rows'] as $rowIndex => $permission): ?>
+              <div class="row align-items-center px-3 py-2<?= $rowIndex > 0 ? ' border-top' : '' ?>" data-cy="permission-row" data-granted="<?= $permission['granted'] ? 'true' : 'false' ?>">
+                <div class="col-sm-6" data-cy="permission-label"><?= InputUtils::escapeHTML($permission['label']) ?></div>
+                <div class="col-sm-6">
+                  <?php if ($permission['granted']): ?>
+                  <span class="badge bg-success-lt text-success"><i class="fa-solid fa-check me-1"></i><?= gettext("Yes") ?></span>
+                  <?php else: ?>
+                  <span class="badge bg-secondary-lt text-secondary"><i class="fa-solid fa-xmark me-1"></i><?= gettext("No") ?></span>
+                  <span class="small text-body-secondary ms-1" data-cy="permission-reason"><?= InputUtils::escapeHTML($permission['reason']) ?></span>
+                  <?php endif; ?>
+                </div>
+              </div>
+              <?php endforeach; ?>
+            </div>
+            <?php endforeach; ?>
+          </div>
+
+        </div><!-- /.tab-content -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<?php if ($loginAsPersonHistory !== null) : ?>
+<div class="mt-3">
+  <?php include SystemURLs::getDocumentRoot() . '/people/views/partials/login-as-person-history.php'; ?>
+</div>
+<?php endif; ?>
+
+<!-- Photo Uploader -->
+<link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.css') ?>">
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/photo-uploader.min.js') ?>"></script>
+
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">
+    window.CRM.viewUserId = <?= $user->getId() ?>;
+    window.CRM.viewPersonId = <?= $viewedPersonId ?>;
+    window.CRM.viewIsOwnProfile = <?= $isOwnProfile ? 'true' : 'false' ?>;
+</script>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/user.js') ?>"></script>
+<?php
+require SystemURLs::getDocumentRoot() . '/Include/Footer.php';

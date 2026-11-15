@@ -150,6 +150,23 @@ describe("Person Attendance History API", () => {
         });
     });
 
+    context("GET /api/timeline/person/:id — attended events follow the attendance rule", () => {
+        const attendedEventItems = (response) =>
+            Object.values(response.body.timeline).filter((item) => item.type === "cal");
+
+        it("lists attended events for a caller who may edit the person", () => {
+            cy.makePrivateAdminAPICall("GET", `/api/timeline/person/${PERSON_WITH_ATTENDANCE}`, null, 200).then((response) => {
+                expect(attendedEventItems(response)).to.not.be.empty;
+            });
+        });
+
+        it("omits attended events for a caller who may not edit the person", () => {
+            cy.makePrivateNoPermAPICall("GET", `/api/timeline/person/${PERSON_WITH_ATTENDANCE}`, null, 200).then((response) => {
+                expect(attendedEventItems(response)).to.be.empty;
+            });
+        });
+    });
+
     context("GET /api/attendance/person/:id — error cases", () => {
         it("returns 404 for nonexistent person", () => {
             cy.makePrivateAdminAPICall(

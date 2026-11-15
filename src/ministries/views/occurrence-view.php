@@ -81,7 +81,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
       <div class="text-end">
         <div class="d-flex align-items-center justify-content-end gap-1">
           <span class="badge <?= $sOccurrenceStatus === 'cancelled' ? 'bg-red-lt text-red' : 'bg-green-lt text-green' ?>" id="occurrence-status">
-            <?= $sOccurrenceStatus === 'cancelled' ? gettext('Cancelled') : gettext('Scheduled') ?>
+            <?= $sOccurrenceStatus === 'cancelled' ? gettext('Canceled') : gettext('Scheduled') ?>
           </span>
           <div id="occurrence-actions"></div>
         </div>

@@ -390,6 +390,18 @@ describe("API Private Fundraisers", () => {
             });
         });
 
+        it("Is hidden from a user who may not manage fundraisers", () => {
+            cy.makePrivateNoManageFundraisersAPICall("GET", "/api/systemcalendars", null, 200).then((response) => {
+                expect(response.body.Calendars.map((c) => c.Name)).to.not.include("Fundraisers");
+            });
+            cy.makePrivateAdminAPICall("GET", "/api/systemcalendars", null, 200).then((response) => {
+                const calendar = response.body.Calendars.find((c) => c.Name === "Fundraisers");
+                ["events", "events/1", "fullcalendar"].forEach((path) => {
+                    cy.makePrivateNoManageFundraisersAPICall("GET", `/api/systemcalendars/${calendar.Id}/${path}`, null, 404);
+                });
+            });
+        });
+
         it("Returns a fundraiser as a calendar event within its date range", () => {
             cy.makePrivateAdminAPICall(
                 "POST",

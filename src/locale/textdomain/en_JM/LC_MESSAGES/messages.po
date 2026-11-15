@@ -14,8 +14,28 @@ msgid "State"
 msgstr "Parish"
 
 #: 
+msgid "Zip"
+msgstr "Postal Code"
+
+#: 
+msgid "Check"
+msgstr "Cheque"
+
+#: 
 msgid "Generate Catalog"
 msgstr "Generate Catalogue"
+
+#: 
+msgid "Must specify non-zero check number"
+msgstr "Must specify non-zero cheque number"
+
+#: 
+msgid "Check number not valid for 'CASH' payment"
+msgstr "Cheque number not valid for 'CASH' payment"
+
+#: 
+msgid "Paid by (  ) Cash    (  ) Check    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
+msgstr "Paid by (  ) Cash    (  ) Cheque    (  ) Credit card __ __ __ __    __ __ __ __    __ __ __ __    __ __ __ __  Exp __ / __"
 
 #: 
 msgid "Localization"
@@ -29,15 +49,121 @@ msgstr "Default Parish - Must be 2-letter abbreviation!"
 msgid "Internationalization (I18n) support"
 msgstr "Internationalisation (I18n) support"
 
+#: 
+msgid "Number of checks for Deposit Slip Report"
+msgstr "Number of cheques for Deposit Slip Report"
+
+#. Context: queryparameteroptions_qpo
+#: 
+msgid "Zip Code"
+msgstr "Postal Code"
+
+#: 
+msgid "kilometers"
+msgstr "kilometres"
+
+#: 
+msgid "Make user-entered zip/postcodes UPPERCASE when saving to the database."
+msgstr "Make user-entered postal codes UPPERCASE when saving to the database."
+
+#: 
+msgid "Church Checking Account Number"
+msgstr "Church Chequing Account Number"
+
+#: 
+msgid "Default Zip"
+msgstr "Default Postal Code"
+
+#: 
+msgid "Checks"
+msgstr "Cheques"
+
+#: 
+msgid "Require all users to enroll in two-factor authentication"
+msgstr "Require all users to enrol in two-factor authentication"
+
+#: 
+msgid "ZIP code is required."
+msgstr "Postal code is required."
+
+#: 
+msgid "Allow scanned check images to be attached to deposit records"
+msgstr "Allow scanned cheque images to be attached to deposit records"
+
+#. plugin:gravatar:section:1:content
+#: 
+msgid "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Gray silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+msgstr "Choose what appears when no Gravatar exists:\n"
+"• Mystery Person - Grey silhouette outline\n"
+"• Identicon - Geometric pattern based on email\n"
+"• MonsterID - Unique generated monster face\n"
+"• Wavatar - Abstract generated face\n"
+"• Retro - 8-bit arcade-style pixel art\n"
+"• RoboHash - Unique generated robot\n"
+"• Blank - Transparent (falls back to initials)"
+
+#. plugin:custom-links:section:4:content
+#: 
+msgid "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organization sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+msgstr "Common uses for custom links:\n"
+"- Church website\n"
+"- Online giving portal\n"
+"- Volunteer signup forms\n"
+"- Denomination resources\n"
+"- Partner organisation sites\n"
+"- Cloud storage folders\n"
+"- Event registration pages"
+
+#: 
+msgid "Enable use of scanned checks"
+msgstr "Enable use of scanned cheques"
+
+#. plugin:custom-links:section:3:content
+#: 
+msgid "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitized"
+msgstr "For security:\n"
+"- Only administrators can add or remove links\n"
+"- The 'Manage Links' option only appears for administrators\n"
+"- Links must use http:// or https:// protocols\n"
+"- HTML tags are not allowed in names or URLs\n"
+"- All input is validated and sanitised"
+
 #. plugin:google-analytics:section:2:content
 #: 
 msgid "Google Analytics collects anonymized usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
 msgstr "Google Analytics collects anonymised usage data. No personal information from ChurchCRM records is sent to Google. Consider adding a privacy notice to your church's data policy."
 
+#: 
+msgid "How many checks to print per deposit slip page"
+msgstr "How many cheques to print per deposit slip page"
+
 #. plugin:mailchimp:summary
 #: 
 msgid "MailChimp Integration enables synchronization between ChurchCRM contacts and your MailChimp email marketing lists."
 msgstr "MailChimp Integration enables synchronisation between ChurchCRM contacts and your MailChimp email marketing lists."
+
+#: 
+msgid "Neighborhood"
+msgstr "Neighbourhood"
 
 #: 
 msgid "The month that starts your organization's fiscal year"
@@ -60,12 +186,28 @@ msgid "Invalid color format. Use hex colors like #FF0000."
 msgstr "Invalid colour format. Use hex colours like #FF0000."
 
 #: 
+msgid "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behavior of anything you install here. Prefer the Browse Approved flow whenever possible."
+msgstr "The ChurchCRM maintainers have not reviewed it. You are responsible for the security and behaviour of anything you install here. Prefer the Browse Approved flow whenever possible."
+
+#: 
 msgid "Background Color"
 msgstr "Background Colour"
 
 #: 
+msgid "Check Number"
+msgstr "Cheque Number"
+
+#: 
+msgid "Failed to cancel enrollment. Please try again."
+msgstr "Failed to cancel enrolment. Please try again."
+
+#: 
 msgid "Foreground Color"
 msgstr "Foreground Colour"
+
+#: 
+msgid "Two Factor Enrollment Error"
+msgstr "Two Factor Enrolment Error"
 
 #: 
 msgid "Localization & Formats"
@@ -82,4 +224,232 @@ msgstr "Save Localisation Settings"
 #: 
 msgid "Catalog"
 msgstr "Catalogue"
+
+#: 
+msgid "Check #"
+msgstr "Cheque #"
+
+#: 
+msgid "Failed to load neighbors."
+msgstr "Failed to load neighbours."
+
+#: 
+msgid "Find Neighbors"
+msgstr "Find Neighbours"
+
+#: 
+msgid "Map centered on"
+msgstr "Map centred on"
+
+#: 
+msgid "Max neighbors"
+msgstr "Max neighbours"
+
+#: 
+msgid "Search Neighbors"
+msgstr "Search Neighbours"
+
+#: 
+msgid "Select a family and click Find Neighbors to see results."
+msgstr "Select a family and click Find Neighbours to see results."
+
+#: 
+msgid "Address is incomplete (missing city, state, and ZIP)"
+msgstr "Address is incomplete (missing city, parish, and postal code)"
+
+#: 
+msgid "No match found — check the street address, city, and ZIP"
+msgstr "No match found — check the street address, city, and postal code"
+
+#: 
+msgid "Two-factor authentication is required. You have %d day to enroll."
+msgid_plural "Two-factor authentication is required. You have %d days to enroll."
+msgstr[0] "Two-factor authentication is required. You have %d day to enrol."
+msgstr[1] "Two-factor authentication is required. You have %d days to enrol."
+
+#: 
+msgid "Number of days users have to enroll in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+msgstr "Number of days users have to enrol in 2FA after it is mandated. Set to 0 to enforce immediately. Shortening an active grace period may lock users out immediately."
+
+#: 
+msgid "Enable or disable features for your organization"
+msgstr "Enable or disable features for your organisation"
+
+#: 
+msgid "Funds in this category will become uncategorized. The funds themselves are not deleted."
+msgstr "Funds in this category will become uncategorised. The funds themselves are not deleted."
+
+#: 
+msgid "Uncategorized"
+msgstr "Uncategorised"
+
+#: 
+msgid "Uppercase Zip/Postcodes"
+msgstr "Uppercase Postal Codes"
+
+#: 
+msgid "Not authorized for this assignment"
+msgstr "Not authorised for this assignment"
+
+#: 
+msgid "Not authorized for this ministry"
+msgstr "Not authorised for this ministry"
+
+#: 
+msgid "Not authorized for this occurrence"
+msgstr "Not authorised for this occurrence"
+
+#: 
+msgid "Not authorized for this position"
+msgstr "Not authorised for this position"
+
+#: 
+msgid "Not authorized for this qualification"
+msgstr "Not authorised for this qualification"
+
+#: 
+msgid "Not authorized for this requirement"
+msgstr "Not authorised for this requirement"
+
+#: 
+msgid "Not authorized for this schedule"
+msgstr "Not authorised for this schedule"
+
+#: 
+msgid "Not authorized for this substitution request"
+msgstr "Not authorised for this substitution request"
+
+#: 
+msgid "Not authorized for this team"
+msgstr "Not authorised for this team"
+
+#: 
+msgid "Not authorized to assign events to that volunteer ministry"
+msgstr "Not authorised to assign events to that volunteer ministry"
+
+#: 
+msgid "Not authorized to change the event %s"
+msgstr "Not authorised to change the event %s"
+
+#: 
+msgid "Not authorized to change the volunteer ministry of this event"
+msgstr "Not authorised to change the volunteer ministry of this event"
+
+#: 
+msgid "Not authorized to create an event without a volunteer ministry you manage"
+msgstr "Not authorised to create an event without a volunteer ministry you manage"
+
+#: 
+msgid "Not authorized to modify this event"
+msgstr "Not authorised to modify this event"
+
+#: 
+msgid "Not authorized to pin events to the calendar \"%s\""
+msgstr "Not authorised to pin events to the calendar \"%s\""
+
+#: 
+msgid "Not authorized to remove events from the calendar \"%s\""
+msgstr "Not authorised to remove events from the calendar \"%s\""
+
+#: 
+msgid "Not authorized to remove the volunteer ministry from this event"
+msgstr "Not authorised to remove the volunteer ministry from this event"
+
+#: 
+msgid "Not authorized to change this event's audience group"
+msgstr "Not authorised to change this event's audience group"
+
+#: 
+msgid "Please enter a check number"
+msgstr "Please enter a cheque number"
+
+#: 
+msgid "Not authorized to grant this scope"
+msgstr "Not authorised to grant this scope"
+
+#: 
+msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+msgstr "Customise the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
+
+#: 
+msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+msgstr "Print the selected deposit in full, with cash and cheque totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
+
+#: 
+msgid "Use your church bylaws to choose the filters, then have authorized church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+msgstr "Use your church bylaws to choose the filters, then have authorised church leadership review the list. Matching these filters does not establish voting eligibility. This report does not record eligibility or conduct an election."
+
+#: 
+msgid "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognize."
+msgstr "These are the phones and computers where you chose to stay signed in. Sign out any you no longer use or don't recognise."
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "Require a cheque number when recording cheque payments on deposit entries. When off, a cheque can be saved with a blank or 0 cheque number, and those are not checked for duplicates."
+
+#: 
+msgid "Require check number on check payments"
+msgstr "Require cheque number on cheque payments"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d default skipped for another reason (the occurrence is over, cancelled or full)"
+msgstr[1] "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
+
+#: 
+msgid "Assignment canceled"
+msgstr "Assignment cancelled"
+
+#: 
+msgid "Canceled"
+msgstr "Cancelled"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
+
+#: 
+msgid "Color"
+msgstr "Colour"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "Emailed sign-in code and link cancelled"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
+
+#: 
+msgid "Occurrence canceled"
+msgstr "Occurrence cancelled"
+
+#: 
+msgid "Prioritize translations"
+msgstr "Prioritise translations"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "The assignment could not be cancelled"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "The occurrence could not be cancelled"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "This date was cancelled. Nothing more is needed from you."
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "This occurrence has been cancelled"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
 

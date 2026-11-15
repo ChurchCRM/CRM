@@ -92,18 +92,18 @@ Enable after reviewing.
 
 Every entry in `approved-plugins.json` declares:
 
-| Field | Required | What it means |
-|-------|:--------:|---------------|
-| `id` | ✓ | Kebab-case id, must match `plugin.json` |
-| `name` | ✓ | Display name |
-| `version` | ✓ | Semver, must match `plugin.json` |
-| `downloadUrl` | ✓ | HTTPS URL to an immutable release zip |
-| `sha256` | ✓ | 64-hex SHA-256 of the zip bytes |
-| `risk` | ✓ | `low` \| `medium` \| `high` |
-| `riskSummary` | ✓ | One plain-language sentence admins see before Install |
-| `permissions` | optional | Capability tags from `ApprovedPluginRegistry::KNOWN_PERMISSIONS` |
-| `minimumCRMVersion` | optional | Enforced by the installer |
-| `author`, `homepage`, `reviewedAt`, `notes` | optional | Metadata |
+| Field                                       | Required | What it means                                                    |
+| ------------------------------------------- | :------: | ---------------------------------------------------------------- |
+| `id`                                        |    ✓     | Kebab-case id, must match `plugin.json`                          |
+| `name`                                      |    ✓     | Display name                                                     |
+| `version`                                   |    ✓     | Semver, must match `plugin.json`                                 |
+| `downloadUrl`                               |    ✓     | HTTPS URL to an immutable release zip                            |
+| `sha256`                                    |    ✓     | 64-hex SHA-256 of the zip bytes                                  |
+| `risk`                                      |    ✓     | `low` \| `medium` \| `high`                                      |
+| `riskSummary`                               |    ✓     | One plain-language sentence admins see before Install            |
+| `permissions`                               | optional | Capability tags from `ApprovedPluginRegistry::KNOWN_PERMISSIONS` |
+| `minimumCRMVersion`                         | optional | Enforced by the installer                                        |
+| `author`, `homepage`, `reviewedAt`, `notes` | optional | Metadata                                                         |
 
 ---
 
@@ -225,15 +225,15 @@ contract.
 
 ## Core plugins
 
-| Plugin | Purpose |
-|--------|---------|
-| `mailchimp` | MailChimp email list integration |
-| `vonage` | Vonage SMS notifications |
-| `google-analytics` | Google Analytics tracking |
-| `openlp` | OpenLP presentation software integration |
-| `gravatar` | Gravatar profile photos |
-| `external-backup` | Off-site backup uploads |
-| `custom-links` | User-defined menu links |
+| Plugin             | Purpose                                  |
+| ------------------ | ---------------------------------------- |
+| `mailchimp`        | MailChimp email list integration         |
+| `vonage`           | Vonage SMS notifications                 |
+| `google-analytics` | Google Analytics tracking                |
+| `openlp`           | OpenLP presentation software integration |
+| `gravatar`         | Gravatar profile photos                  |
+| `external-backup`  | Off-site backup uploads                  |
+| `custom-links`     | User-defined menu links                  |
 
 ---
 

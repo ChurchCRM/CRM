@@ -437,7 +437,7 @@ describe("Member Portal — #9869 scenario 2, \"a team leader on a member login\
 
             // ── its dates: Save generated them and lands on them (D33) ──────────
             cy.get("#nav-item-occurrences", { timeout: 15000 }).should("have.class", "active");
-            cy.get(".notyf__toast--success").should("contain", `Schedule "${SCHEDULE_NAME}" created`);
+            cy.get("#crm-toasts .toast[data-type='success']").should("contain", `Schedule "${SCHEDULE_NAME}" created`);
             cy.get("#occurrence-event-filter").should("have.value", SCHEDULE_NAME);
             cy.get("#volunteerOccurrencesTable tbody tr", { timeout: 15000 }).should(
                 "have.length.at.least",

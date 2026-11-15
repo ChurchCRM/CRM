@@ -56,6 +56,7 @@ $app->group('/user/{userId:[0-9]+}/setting', function (RouteCollectorProxy $grou
         $formats = [
             'ui.locale' => '/^([a-z]{2,3}(_[A-Za-z0-9]{2,8})*)?$/',
             'ui.table.size' => '/^-?\d{1,4}$/',
+            'ui.sidebar.folded' => '/^[01]$/',
         ];
         if (
             !preg_match('/^[A-Za-z0-9_.-]{1,50}$/', $settingName)

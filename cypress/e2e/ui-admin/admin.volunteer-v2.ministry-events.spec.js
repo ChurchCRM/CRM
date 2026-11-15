@@ -337,7 +337,7 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
         cy.get("#schedule-form-save").click();
         cy.wait("@schedule").its("response.body.generated").should("include", { created: expected, noEvents: false });
         cy.get("#scheduleModal").should("not.be.visible");
-        cy.get(".notyf__toast--success").should("contain", `Schedule "${SERIES}" created: ${expected} occurrences`);
+        cy.get("#crm-toasts .toast[data-type='success']").should("contain", `Schedule "${SERIES}" created: ${expected} occurrences`);
 
         cy.get("#nav-item-occurrences").should("have.class", "active");
         cy.get("#occurrence-event-filter").should("have.value", SERIES);
@@ -360,7 +360,7 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
         cy.wait("@staff").then(({ response }) => {
             expect(response.body.schedules.map((run) => [run.schedule.name, run.created])).to.deep.eq([[SERIES, expected]]);
         });
-        cy.get(".notyf__toast--success").should("contain", `"${SERIES}": ${expected} occurrences created`);
+        cy.get("#crm-toasts .toast[data-type='success']").should("contain", `"${SERIES}": ${expected} occurrences created`);
         cy.get("#nav-item-occurrences").should("have.class", "active");
         cy.get("#occurrence-event-filter").should("have.value", LATE_SERIES);
         cy.get("#volunteerOccurrencesTable tbody tr").should("have.length", expected);
@@ -488,7 +488,7 @@ describe("Volunteer v2 — the ministry Calendar tab (D24) and the headcount car
         cy.get("#ministry-events-delete-btn").should("contain", "Delete events (1)").click();
         cy.get(".bootbox").should("be.visible").and("contain", "Events to delete: 1").and("not.contain", "1 events");
         cy.get(".bootbox .btn-danger").click();
-        cy.get(".notyf__toast").should("contain", "Events deleted: 1").and("not.contain", "1 events");
+        cy.get("#crm-toasts .toast").should("contain", "Events deleted: 1").and("not.contain", "1 events");
         cy.get("#volunteerMinistryEventsTable tbody").should("not.contain", RAKING);
     });
 

@@ -153,6 +153,7 @@ describe("Volunteer v2 — a team linked to a Sunday School class, on screen (D2
         cy.get(`#membersTable .remove-member-btn[data-personid="${PERSON_STUDENT}"]`).should("exist");
         cy.get(`#membersTable .remove-member-btn[data-personid="${PERSON_TEACHER}"]`).should("not.exist");
         cy.get(`#membersTable .changeMembership[data-personid="${PERSON_TEACHER}"]`).should("not.exist");
+        cy.get("#membersTable .member-select").should("not.exist");
     });
 
     it("the portal team page names the class, read-only", () => {
@@ -167,7 +168,7 @@ describe("Volunteer v2 — a team linked to a Sunday School class, on screen (D2
         cy.get("#NewRole").select(String(TEACHER));
         cy.get("input[name=Submit]").click();
         cy.location("pathname").should("match", new RegExp(`/groups/view/${classId}$`));
-        cy.get(".notyf__toast").should("contain", TEAM_NAME);
+        cy.get("#crm-toasts .toast").should("contain", TEAM_NAME);
         roleOf(PERSON_STUDENT).should("eq", STUDENT);
     });
 });
