@@ -95,7 +95,7 @@ describe("API Private - Family delete cleans up image files (#1697)", () => {
             `/api/family/${familyId}?deleteMembers=true`,
             null,
             403,
-        ).its("body.message").should("include", "Deactivate the person instead");
+        ).its("body.message").should("include", "Deactivate the family instead");
         cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}`, null, 200);
         cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200);
         cy.makePrivateAdminAPICall("GET", `/api/family/${familyId}/photo`, null, 200);
