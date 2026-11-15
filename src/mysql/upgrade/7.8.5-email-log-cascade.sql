@@ -36,6 +36,29 @@ PREPARE _s FROM @_sql;
 EXECUTE _s;
 DEALLOCATE PREPARE _s;
 
+-- Replace an existing CASCADE key from an earlier attempt with RESTRICT.
+SET @_sql = IF(
+    (SELECT COUNT(*) FROM information_schema.REFERENTIAL_CONSTRAINTS
+     WHERE CONSTRAINT_SCHEMA = DATABASE() AND TABLE_NAME = 'email_log_eml'
+       AND CONSTRAINT_NAME = 'fk_eml_person' AND DELETE_RULE = 'CASCADE') > 0,
+    'ALTER TABLE `email_log_eml` DROP FOREIGN KEY `fk_eml_person`',
+    'DO 0'
+);
+PREPARE _s FROM @_sql;
+EXECUTE _s;
+DEALLOCATE PREPARE _s;
+
+SET @_sql = IF(
+    (SELECT COUNT(*) FROM information_schema.REFERENTIAL_CONSTRAINTS
+     WHERE CONSTRAINT_SCHEMA = DATABASE() AND TABLE_NAME = 'email_log_eml'
+       AND CONSTRAINT_NAME = 'fk_eml_family' AND DELETE_RULE = 'CASCADE') > 0,
+    'ALTER TABLE `email_log_eml` DROP FOREIGN KEY `fk_eml_family`',
+    'DO 0'
+);
+PREPARE _s FROM @_sql;
+EXECUTE _s;
+DEALLOCATE PREPARE _s;
+
 SET @_sql = IF(
     (SELECT COUNT(*) FROM information_schema.TABLE_CONSTRAINTS
      WHERE CONSTRAINT_SCHEMA = DATABASE() AND TABLE_NAME = 'email_log_eml'
