@@ -1195,6 +1195,23 @@ class Person extends BasePerson implements PhotoInterface
         return $family?->getCountry() ?? '';
     }
 
+    /**
+     * Format the person's physical address with personal-field overrides and
+     * family primary-address fallback. The family's secondary/mailing address
+     * is intentionally kept separate from this physical address.
+     */
+    public function getResolvedAddress(): string
+    {
+        return Family::formatAddressBlock([
+            'Address1' => $this->getResolvedAddress1(),
+            'Address2' => $this->getResolvedAddress2(),
+            'City' => $this->getResolvedCity(),
+            'State' => $this->getResolvedState(),
+            'Zip' => $this->getResolvedZip(),
+            'Country' => $this->getResolvedCountry(),
+        ], ' ');
+    }
+
     public function getResolvedHomePhone(): string
     {
         if (!empty(parent::getHomePhone())) {
