@@ -531,16 +531,9 @@ function initDataTable() {
         title: i18next.t("Address"),
         data: "Person.Address",
         defaultContent: "",
-        render: (data, type, full) => {
-          const secondary = full.Person.SecondaryAddress || "";
-          if (type !== "display") return [data, secondary].filter(Boolean).join(" ");
-          if (!data && !secondary) return '<span class="text-muted">—</span>';
-          const primary = data ? window.CRM.escapeHtml(data) : "";
-          if (!secondary) return primary;
-          const label = i18next.t(full.Person.SecondaryIsMailing ? "Mailing Address" : "Secondary Address");
-          return primary + (primary ? '<div class="mt-1">' : "<div>") +
-            '<span class="text-muted">' + window.CRM.escapeHtml(label) + ":</span> " +
-            window.CRM.escapeHtml(secondary) + "</div>";
+        render: (data, type) => {
+          if (type !== "display") return data || "";
+          return data ? window.CRM.escapeHtml(data) : '<span class="text-muted">—</span>';
         },
       },
       {
