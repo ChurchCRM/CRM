@@ -19,6 +19,7 @@ use ChurchCRM\Portal\Auth\PortalSessionStore;
 use ChurchCRM\Portal\Auth\SignInAudit;
 use ChurchCRM\Portal\Auth\SignInAuditEvent;
 use ChurchCRM\Portal\Auth\SignInReason;
+use ChurchCRM\Service\CommunityFeedbackService;
 use ChurchCRM\Service\NotificationService;
 use ChurchCRM\Service\RememberedDeviceService;
 use ChurchCRM\Utils\ChurchCRMReleaseManager;
@@ -290,6 +291,7 @@ class AuthenticationManager
             // One-time login tasks: check for system updates and fetch remote notifications
             self::checkSystemUpdates();
             NotificationService::fetchRemoteNotifications();
+            CommunityFeedbackService::fetchRemoteFeedback();
 
             $logger->debug(
                 'Authentication Successful; redirecting to: ' . $redirectLocation
