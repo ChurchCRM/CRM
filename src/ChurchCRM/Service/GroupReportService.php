@@ -86,7 +86,7 @@ class GroupReportService
                 $lines = array_merge($lines, self::addressLines($person));
             }
             foreach ([
-                'HomePhone' => [gettext('Phone'), $person->getHomePhone()],
+                'HomePhone' => [gettext('Phone'), $person->getResolvedHomePhone()],
                 'WorkPhone' => [gettext('Work'), $person->getWorkPhone()],
                 'CellPhone' => [gettext('Cell'), $person->getCellPhone()],
                 'Email' => [gettext('Email'), $person->getEmail()],
@@ -117,23 +117,13 @@ class GroupReportService
     }
 
     /**
-     * The person's own address only: each person enters their own information, so a family
-     * address is never filled in for them.
+     * Use the same person-over-family physical address resolution as group rosters.
      *
      * @return array<int, array{label: string, value: string}>
      */
     private static function addressLines(Person $person): array
     {
-        $lines = [];
-        foreach ([$person->getAddress1(), $person->getAddress2()] as $line) {
-            if ((string) $line !== '') {
-                $lines[] = ['label' => '', 'value' => (string) $line];
-            }
-        }
-        if ((string) $person->getCity() !== '') {
-            $lines[] = ['label' => '', 'value' => $person->getCity() . ', ' . $person->getState() . ' ' . $person->getZip()];
-        }
-
-        return $lines;
+        $address = $person->getResolvedAddress();
+        return $address === '' ? [] : [['label' => '', 'value' => $address]];
     }
 }
