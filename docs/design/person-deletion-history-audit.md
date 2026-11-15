@@ -18,18 +18,26 @@ Concurrent family-membership writers do not share a locking contract with deleti
 | `pledge_plg.plg_FamID` | Protected financial history when deleting a family or its sole member | Pledges and payments are family-owned. Removing one member while the family remains does not change the pledge owner; removing the only member makes the family's attribution no longer identify a person. Family deletion already blocks if any pledge/payment exists, for both cascade and unlink modes. |
 | `pledge_plg.plg_EditedBy` | Protected financial audit reference | This schema relation records the person who edited a financial row. The guard blocks deletion when the person is a recorded editor. |
 | `note_nte.nte_per_ID`, `nte_EnteredBy`, `nte_EditedBy` | Protected unless `nte_Type` is exactly `create` or `edit` | `Person::createTimeLineNote()` writes those two types for automatic profile lifecycle entries. User notes and other timeline types (including event, group, photo and note-deletion audit entries) are substantive. Author/editor references on other people's substantive notes are protected too, so deletion cannot erase their attribution. The guard tests only the discriminator and never reads note text. |
-| `whycame_why.why_per_ID` | Protected recorded activity | The row stores the person's recorded answers to why they joined, came, recommended, or heard of the church. Those answers are durable history, not profile fields. |
 | `email_log_eml.eml_per_ID`, `eml_fam_ID` | Dependent communication record, database cascade | One row per recipient, including queued and delivered email. Recipient email rows are removed by database foreign keys (`ON DELETE CASCADE`) when the owning person or family is deleted. No application-level recursive deletion or email-only blocking guard is used. Existing orphaned log rows are cleaned during the upgrade before keys are installed. |
-| `volunteer_assignment_vasg.vasg_per_ID` | Protected service history | Assignments have lifecycle statuses including completed, cancelled, declined and substituted. The person FK cascades in `Install.sql`, so deleting a person erases these records. Any status blocks. |
+| `volunteer_assignment_vasg.vasg_per_ID` | Protected only for accepted, substituted, or completed status | Pending, declined, and cancelled assignments without separate response/swap history represent unserved scheduling state and do not block deletion. Accepted commitments, substitutions, and completed service preserve volunteer history. Person FK cascades once deletion is allowed. |
 | `volunteer_response_vrsp.vrsp_per_ID` | Protected service history | Schema calls this append-only response history; it identifies both the responder and the assignment. The person FK cascades. |
 | `volunteer_swap_vswp` participant columns | Protected service history | Proposed-by and proposed-person are audit participants in a preserved handover record; both FKs cascade. The decision-maker FK is set null and does not make that person the volunteer whose service record is being removed. |
-| `volunteer_notification_vntf.vntf_per_ID` | Protected service communication once attempted or sent | Persisted person notifications are retained with status/type/timestamp; the person FK cascades. A notification never attempted and never sent (pending, or skipped without a try, such as an unsent gap alert) is not history and cascades away. |
 | `multibuy_mb.mb_per_ID`, `paddlenum_pn.pn_per_ID` | Protected recorded fundraiser participation | These person-linked rows record item counts and paddle assignments. They are not part of the person profile and can represent past event participation. |
+
+### Agreed deletion policy
+
+- Preserve actual service/commitment and append-only volunteer response history; a pending, cancelled, or declined assignment alone does not block deletion.
+- Volunteer email/notification delivery is transactional (including attempted and sent outbox records). It never blocks deletion and its dependent rows are removed by database cascade, like email transaction logs.
+- "Why Came" onboarding answers are current profile/onboarding data, not protected activity. Person deletion cleans them up.
+- Substantive personal, family, pastoral, private, and authored/edited notes always block deletion, regardless of whether they relate to attendance. Only automatic `create`/`edit` timeline notes are excluded.
+- Any blocked person or family deletion recommends the existing deactivation workflow. Family cascade errors also recommend deactivating the family.
 
 ## Current relationship or profile data
 
 | Relation | Classification | Schema and workflow evidence |
 |---|---|---|
+| `whycame_why.why_per_ID` | Onboarding/profile data | Answers about why a person came or joined are removed by `Person::preDelete()`; the legacy installed table has no physical person foreign key. |
+| `volunteer_notification_vntf.vntf_per_ID` | Transactional notification outbox | Sent, failed, pending, and attempted delivery rows never block deletion; the person relationship uses database `ON DELETE CASCADE`. |
 | `person2group2role_p2g2r` | Current relationship and role | The table description says it records which group a person belongs to and their current role. `GroupService::removeUserFromGroup()` removes the row and that member's group-specific values. It has no dated role history. |
 | `person2volunteeropp_p2vo` | Current relationship | The table description says it indicates which people are tied to volunteer opportunities; it has no status or date history. Existing cleanup remains. |
 | `groupprop_[groupID]` | Current group profile | `GroupService::removeUserFromGroup()` removes the member's group-specific values along with the membership. These generated tables store current member fields, not dated history. |
@@ -49,7 +57,7 @@ Concurrent family-membership writers do not share a locking contract with deleti
 |---|---|---|
 | `user_usr.usr_per_ID` | Existing linked-login cleanup, subject to existing safeguards | User row is keyed by person ID. `Person::getLoginDeletionBlockedReason()` protects self, non-admin deletion of a login, and the last administrator. This behavior remains before cleanup. |
 | `userconfig_ucfg.ucfg_per_id`, `user_settings.user_id` | Current user preferences / permissions | Both point to the linked login in `schema.xml`; neither table stores person activity. `Install.sql` declares no FK and `User::preDelete()` has no cleanup, so current deletion behavior may leave these preference rows behind. They are not protected history and do not block deletion. |
-| Person photo | Safe file cleanup | `Person::preDelete()` unlinks the uploaded photo only after all guards pass. |
+| Person photo | Safe file cleanup | The deleting API removes photos only after successful database commit to avoid rollback restoring a record without its photo. |
 | `property_prt` / `record2property_r2p` with class `p` | Safe current profile cleanup | No dated history is stored. |
 | `volunteer_ministry_vmin.vmin_CreatedBy_per_ID` | Actor reference, safe nulling | This is a creator attribution on a ministry, not a volunteer's service history; the schema sets it null on deletion. |
 | `volunteer_qualification_vqal.vqal_GrantedBy_per_ID` | Actor reference, safe nulling | The qualifier remains current; the grantor reference is set null. |
