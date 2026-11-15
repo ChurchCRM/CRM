@@ -62,13 +62,7 @@ if (!$isNewPerson) {
 
     $per_fam_ID = $person->getFamId();
 
-    if (
-        !(
-            AuthenticationManager::getCurrentUser()->isEditRecordsEnabled() ||
-            (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $iPersonID === AuthenticationManager::getCurrentUser()->getId()) ||
-            (AuthenticationManager::getCurrentUser()->isEditSelfEnabled() && $per_fam_ID > 0 && $per_fam_ID === AuthenticationManager::getCurrentUser()->getPerson()->getFamId())
-        )
-    ) {
+    if (!AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) {
         RedirectUtils::redirect('v2/dashboard');
     }
 } elseif (!AuthenticationManager::getCurrentUser()->isAddRecordsEnabled()) {
@@ -1196,7 +1190,7 @@ require_once __DIR__ . '/Include/Header.php';
 
         // Apply inputmask to non-phone fields (fields with data-mask but no"No format" checkbox)
         $("[data-mask]").inputmask();
-        
+
         var famEl = document.getElementById("familyId");
         if (famEl && !famEl.tomselect) new TomSelect(famEl);
     });
