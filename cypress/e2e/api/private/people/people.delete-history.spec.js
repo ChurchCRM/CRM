@@ -2,6 +2,8 @@
 
 import {
     cleanupDeletionFixture,
+    countVolunteerNotifications,
+    countWhyCame,
     countFamilyMail,
     countPersonMail,
     createDeletionProperty,
@@ -11,6 +13,9 @@ import {
     recordSentFamilyMail,
     recordUnsentActivity,
     recordVolunteerNotification,
+    recordVolunteerAssignment,
+    recordVolunteerResponse,
+    recordWhyCame,
 } from "../../../../support/person-deletion-fixtures";
 
 const createPaymentForFamily = (familyId, amount, groupKeys) =>
@@ -155,14 +160,47 @@ describe("Person deletion preserves recorded history", () => {
             .then((response) => expect(response.body.data).to.have.length(1));
     });
 
-    it("blocks persisted volunteer activity", () => {
+    it("allows deletion after a sent volunteer notification with no service history", () => {
         return recordVolunteerNotification(personId)
+            .then(() => countVolunteerNotifications(personId))
+            .then((count) => expect(count).to.equal(1))
+            .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 200))
+            .then(() => countVolunteerNotifications(personId))
+            .then((count) => expect(count, "notification removed by DB cascade").to.equal(0));
+    });
+
+    ["pending", "cancelled", "declined"].forEach((status) => {
+        it(`allows deletion with an unserved volunteer assignment in status ${status}`, () => {
+            return recordVolunteerAssignment(personId, status)
+                .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 200))
+                .then(() => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 404));
+        });
+    });
+
+    ["accepted", "substituted", "completed"].forEach((status) => {
+        it(`blocks deletion when volunteer assignment records ${status} service`, () => {
+            return recordVolunteerAssignment(personId, status)
+                .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 403))
+                .then((response) => {
+                    expect(response.body.message).to.include("volunteer service history");
+                    expect(response.body.message).to.include("Deactivate the person instead");
+                });
+        });
+    });
+
+    it("blocks deletion on an append-only declined volunteer response despite its assignment status", () => {
+        return recordVolunteerResponse(personId)
             .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 403))
-            .then((response) => {
-                expect(response.body.message).to.include("volunteer service history");
-                expect(response.body.message).not.to.include("communication history");
-            })
-            .then(() => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200));
+            .then((response) => expect(response.body.message).to.include("volunteer service history"));
+    });
+
+    it("allows deletion when Why Came onboarding answers are the only related data", () => {
+        return recordWhyCame(personId)
+            .then(() => countWhyCame(personId))
+            .then((count) => expect(count).to.equal(1))
+            .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 200))
+            .then(() => countWhyCame(personId))
+            .then((count) => expect(count, "onboarding answers removed").to.equal(0));
     });
 
     // Email logs are dependent records; the database cascades them when
@@ -211,7 +249,7 @@ describe("Person deletion preserves recorded history", () => {
             .then((response) => expect(response.body.notes.map((note) => note.text)).to.include("Outside family note"));
     });
 
-    it("blocks recorded onboarding and fundraiser participation", () => {
+    it("blocks recorded fundraiser participation", () => {
         return recordOnboardingParticipation(personId)
             .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 403))
             .then((response) => expect(response.body.message).to.include("recorded activities"))
