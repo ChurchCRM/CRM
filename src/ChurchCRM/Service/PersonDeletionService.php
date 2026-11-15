@@ -3,7 +3,6 @@
 namespace ChurchCRM\Service;
 
 use ChurchCRM\Exceptions\PersonDeletionBlockedException;
-use ChurchCRM\model\ChurchCRM\EmailLogQuery;
 use ChurchCRM\model\ChurchCRM\EventAttendQuery;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\NoteQuery;
@@ -36,12 +35,6 @@ final class PersonDeletionService
         // saved while this deletion runs waits for it instead of being read
         // as absent here and then deleted with the person.
         self::lockPeople([$personId], $connection);
-
-        // Email delivery and queue records are durable communication history.
-        // Reject before FK cascades can remove their recipient attribution.
-        if (EmailLogQuery::create()->filterByPerId($personId)->exists($connection)) {
-            $categories[] = gettext('communication history');
-        }
 
         if (EventAttendQuery::create()->filterByPersonId($personId)->exists($connection)) {
             $categories[] = gettext('attendance');
@@ -112,13 +105,6 @@ final class PersonDeletionService
             return;
         }
         FamilyQuery::create()->filterById($familyId)->lockForUpdate()->select(['Id'])->find($connection);
-    }
-
-    public static function assertFamilyCommunicationCanBeDeleted(int $familyId, ?ConnectionInterface $connection = null): void
-    {
-        if (EmailLogQuery::create()->filterByFamId($familyId)->exists($connection)) {
-            throw new PersonDeletionBlockedException(gettext("This family can't be deleted because it has communication history. Deactivate the family instead to preserve its history."));
-        }
     }
 
     /**
