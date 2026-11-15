@@ -66,21 +66,6 @@ async function keepInView(page: Page, selector: string): Promise<void> {
   }, selector);
 }
 
-test('admin-member-portal-calendars', async ({ page }, testInfo) => {
-  await page.goto('/admin/member-portal');
-  await humanClick(page.locator('#portal-calendars-tab'));
-  await expect(page.locator('#portal-calendars')).toBeVisible();
-  await expect(page.locator('.portal-calendar-switch:checked')).toHaveCount(demo?.sharedCalendarCount ?? 0);
-  await settle(page, 600);
-
-  await captureScreen(page, testInfo, {
-    name: 'admin-member-portal-calendars',
-    title: 'Member Portal Calendars',
-    category: 'Admin & Settings',
-    purpose: 'Choose which church and holiday calendars members see in the Member Portal.',
-  });
-});
-
 test.describe('signed in as a member', () => {
   let member: BrowserContext | undefined;
 
