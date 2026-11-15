@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Se elimini questo tipo, rimuoverai anche tutte le proprietà che lo utilizzano e perderai le relative assegnazioni.",
   "Move Donations to Selected Family": "Sposta Donazioni nella Famiglia Selezionata",
   "Calendar not found": "Calendario non trovato",
-  "Continue to Dashboard": "Continua alla Dashboard",
   "Current Password": "Password Attuale",
   "Deposit not found": "Deposito offerte non trovato",
   "Group not found": "Gruppo non trovato",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "La versione %s è disponibile. Aggiornare l'installazione.",
   "View All": "Visualizza tutto",
   "Yellow": "Giallo",
-  "Your current access levels (read-only)": "I tuoi livelli di accesso correnti (sola lettura)",
   "%d repeat event created successfully.": {
     "one": "%d evento ricorrente creato con successo.",
     "other": "%d eventi ricorrenti creati con successo."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Si prega di confermare la disattivazione della famiglia",
   "Please confirm deletion of this group record": "Per favore, conferma l'eliminazione di questa scheda di gruppo",
   "Please confirm disabling 2 Factor Auth for this user": "Conferma la disattivazione Autenticazione a 2 Fattori per questo utente",
-  "Please confirm removal of user status from": "Per favore, conferma l'eliminazione dell'utente da",
   "Please confirm reset failed login count": "Conferma il reset del conteggio degli accessi fallito",
   "Please confirm the password reset of this user": "Per favore, conferma l'azzeramento della password per questo utente",
   "Please enter a valid URL": "Inserisci un URL valido",
@@ -3507,7 +3504,6 @@
   "%s's Account": "Account di %s",
   "Access": "Accesso",
   "Access level": "Livello di accesso",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Gli amministratori hanno accesso completo a tutte le funzionalità e ai dati. I permessi individuali non si applicano.",
   "All users can view congregation members. This permission cannot be removed.": "Tutti gli utenti possono visualizzare i membri della comunità parrocchiale. Questo permesso non può essere rimosso.",
   "Always granted": "Sempre concesso",
   "Choose specific permissions below.": "Scegli i permessi specifici di seguito.",

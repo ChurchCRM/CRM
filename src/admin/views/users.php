@@ -5,7 +5,9 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\Person;
+use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Service\UserService;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
@@ -122,7 +124,7 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
         <span><i class="fa-solid fa-cog text-azure me-1"></i><?= gettext('Custom') ?></span>
     </div>
     <div class="card-body overflow-visible">
-        <table class="table table-hover w-100" id="user-listing-table">
+        <table class="table table-hover w-100" id="user-listing-table" data-csrf-token="<?= InputUtils::escapeAttribute(CSRFUtils::generateToken()) ?>">
                 <thead>
                     <tr>
                         <th><?= gettext('Name') ?></th>
@@ -223,6 +225,15 @@ $bEmailEnabled = SystemConfig::isEmailEnabled();
                                             </a>
                                         <?php } ?>
                                         <?php if ($user->getId() != AuthenticationManager::getCurrentUser()->getId()) { ?>
+                                            <?php if ($user->getSignInBlockedReason() === User::SIGN_IN_BLOCKED_DISABLED) { ?>
+                                            <a class="dropdown-item js-enable-sign-in" href="#" data-person_id="<?= (int) $user->getPersonId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
+                                                <i class="fa-solid fa-user-check me-2"></i><?= gettext('Enable sign-in') ?>
+                                            </a>
+                                            <?php } else { ?>
+                                            <a class="dropdown-item js-disable-sign-in" href="#" data-person_id="<?= (int) $user->getPersonId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
+                                                <i class="fa-solid fa-user-slash me-2"></i><?= gettext('Disable sign-in') ?>
+                                            </a>
+                                            <?php } ?>
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item text-danger js-delete-user" href="#" data-user_id="<?= (int) $user->getId() ?>" data-user_name="<?= InputUtils::escapeAttribute($user->getPerson()->getFullName()) ?>">
                                                 <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete User') ?>

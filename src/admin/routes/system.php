@@ -892,9 +892,38 @@ function adminViewUserAccount(Request $request, Response $response, array $args)
         throw new HttpNotFoundException($request, gettext('User not found'));
     }
 
-    return (new PhpRenderer(__DIR__ . '/../../account/views/'))->render($response, 'account.php', [
+    $isLocked = $user->isLocked();
+    $canAdminister = AuthenticationManager::getCurrentUser()->isAdmin();
+    $statusRows = [
+        ['label' => gettext('Sign-in status'), 'value' => $user->getSignInBlockedLabel() ?? gettext('Enabled')],
+        ['label' => gettext('Last successful login'), 'value' => $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?: gettext('Never')],
+        ['label' => gettext('Failed login attempts'), 'value' => (string) $user->getFailedLogins()],
+        ['label' => gettext('Lockout state'), 'value' => $isLocked ? gettext('Locked') : gettext('Not locked')],
+        ['label' => gettext('Password change required at next login'), 'value' => $user->getNeedPasswordChange() ? gettext('Yes') : gettext('No')],
+        ['label' => gettext('Two-factor authentication enrolled'), 'value' => $user->is2FactorAuthEnabled() ? gettext('Yes') : gettext('No')],
+    ];
+    if ($isLocked) {
+        $statusRows[] = ['label' => gettext('Minutes until automatic unlock'), 'value' => (string) \ChurchCRM\Authentication\SignInThrottle::minutesUntilUnlock($user)];
+    }
+    if ($user->getPerson() !== null) {
+        $portalStatus = (new \ChurchCRM\Service\PersonSignInService())->statusFor($user->getPerson(), $canAdminister);
+        $statusRows[] = ['label' => gettext('Portal sign-in'), 'value' => $portalStatus['reasonLabel'] ?? gettext('Enabled')];
+        if ($portalStatus['signInDisabled']) {
+            $statusRows[] = ['label' => gettext('Reason'), 'value' => $portalStatus['disabledReason'] ?? gettext('Not set')];
+            $statusRows[] = ['label' => gettext('Disabled by'), 'value' => $portalStatus['disabledBy']['name'] ?? gettext('Not set')];
+            $statusRows[] = ['label' => gettext('Disabled at'), 'value' => $portalStatus['disabledAt'] ?? gettext('Not set')];
+        }
+    }
+
+    return (new PhpRenderer(__DIR__ . '/../views/'))->render($response, 'user-view.php', [
         'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('User Details'),
+        'sPageSubtitle' => $user->getFullName(),
         'user' => $user,
+        'statusRows' => $statusRows,
+        'canAdminister' => $canAdminister,
+        'canDelete' => $canAdminister && (new UserService())->getUserDeletionBlockedReason($user, AuthenticationManager::getCurrentUser()) === null,
+        'canResetPassword' => $canAdminister && SystemConfig::isEmailEnabled() && !empty($user->getEmail()),
         'permissionGroups' => (new UserPermissionsService())->getEffectivePermissions($user),
         'loginAsPersonHistory' => (new LoginAsPersonHistoryService())->cardForUser($personId),
         'aBreadcrumbs' => PageHeader::breadcrumbs([

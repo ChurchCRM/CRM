@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Ukifuta aina hii, utaondoa pia mali zote zinazotumia na kupoteza mgawanyo wowote wa mali unaohusiana.",
   "Move Donations to Selected Family": "Hamisha Matoleo kwa Familia Iliyochaguliwa",
   "Calendar not found": "Kalenda haikupatikana",
-  "Continue to Dashboard": "Endelea kwa Dashibodi",
   "Current Password": "Nywila ya Sasa",
   "Deposit not found": "Matoleo hayakupatikana",
   "Group not found": "Kikundi hakikupatikana",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "Toleo %s linapatikana. Tafadhali sasisha usakinishaji wako.",
   "View All": "Ona Yote",
   "Yellow": "Njano",
-  "Your current access levels (read-only)": "Viwango vyako vya ufikiaji vya sasa (kusoma tu)",
   "%d repeat event created successfully.": {
     "one": "Tukio %d la kurudia limeundwa kwa mafanikio.",
     "other": "Matukio %d ya kurudia yameundwa kwa mafanikio."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Tafadhali thibitisha kuzima kwa familia",
   "Please confirm deletion of this group record": "Tafadhali thibitisha kufutwa kwa rekodi hii ya kikundi",
   "Please confirm disabling 2 Factor Auth for this user": "Tafadhali thibitisha kulemaza 2 Factor Auth kwa mtumiaji huyu",
-  "Please confirm removal of user status from": "Tafadhali thibitisha kuondolewa kwa hali ya mtumiaji kutoka",
   "Please confirm reset failed login count": "Tafadhali thibitisha kuweka upya idadi ya kuingia iliyoshindwa",
   "Please confirm the password reset of this user": "Tafadhali thibitisha uwekaji upya nenosiri la mtumiaji huyu",
   "Please enter a valid URL": "Tafadhali ingiza URL sahihi",
@@ -3507,7 +3504,6 @@
   "%s's Account": "Akaunti ya %s",
   "Access": "Ufikiaji",
   "Access level": "Kiwango cha ufikiaji",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Wasimamizi wana ufikiaji kamili wa vipengele na data vyote. Ruhusa za mtu binafsi hazitumiki.",
   "All users can view congregation members. This permission cannot be removed.": "Watumiaji wote wanaweza kuona wanakongregesheni. Ruhusa hii haiwezi kuondolewa.",
   "Always granted": "Daima imetolewa",
   "Choose specific permissions below.": "Chagua ruhusa maalum hapa chini.",

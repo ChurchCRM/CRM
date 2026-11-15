@@ -7938,10 +7938,6 @@ msgid "Calendar not found"
 msgstr "Календар не знайдено"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Продовжити до панелі"
-
-#: 
 msgid "Current Password"
 msgstr "Поточний пароль"
 
@@ -11315,10 +11311,6 @@ msgid "Yellow"
 msgstr "Жовтий"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Ваші поточні рівні доступу (лише для читання)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d повторювана подія успішно створена."
@@ -13852,10 +13844,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Будь ласка, підтвердьте вимкнення 2-факторної авторизації для цього користувача"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Підтвердьте видалення статусу користувача з"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Будь ласка, підтвердьте скидання кількості помилок входу"
 
@@ -14668,10 +14656,6 @@ msgstr "Доступ"
 #: 
 msgid "Access level"
 msgstr "Рівень доступу"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Адміністратори мають повний доступ до всіх функцій і даних. Індивідуальні дозволи не застосовуються."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

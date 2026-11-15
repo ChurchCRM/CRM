@@ -7909,10 +7909,6 @@ msgid "Calendar not found"
 msgstr "캘린더를 찾을 수 없습니다"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "대시보드로 계속"
-
-#: 
 msgid "Current Password"
 msgstr "현재 비밀번호"
 
@@ -11283,10 +11279,6 @@ msgid "Yellow"
 msgstr "노랑"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "현재 접근 수준 (읽기 전용)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d개의 반복 이벤트가 성공적으로 생성되었습니다."
@@ -13817,10 +13809,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "이 사용자의 2단계 인증을 해제할지 확인하세요"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "다음 사용자 권한을 제거할지 확인하세요:"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "실패한 로그인 횟수를 초기화할지 확인하세요"
 
@@ -14630,10 +14618,6 @@ msgstr "접근"
 #: 
 msgid "Access level"
 msgstr "접근 수준"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "관리자는 모든 기능과 데이터에 대한 전체 접근 권한을 가집니다. 개별 권한은 적용되지 않습니다."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

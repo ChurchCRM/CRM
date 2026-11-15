@@ -43,19 +43,19 @@ class UserPermissionsService
             [
                 'group' => gettext('Groups'),
                 'rows' => [
-                    $row(gettext('Manage groups and roles'), $user->isManageGroupsEnabled()),
+                    $row(gettext('Manage Groups and Roles'), $user->isManageGroupsEnabled()),
                 ],
             ],
             [
                 'group' => gettext('Finance'),
                 'rows' => [
                     $row(
-                        gettext('Manage donations and finance'),
+                        gettext('Manage Donations and Finance'),
                         $user->isFinanceEnabled(),
                         $this->isOff('bEnabledFinance') ? gettext('Finance is turned off for this church') : null
                     ),
                     $row(
-                        gettext('Manage fundraisers'),
+                        gettext('Manage Fundraisers'),
                         $user->isManageFundraisersEnabled(),
                         $this->isOff('bEnabledFundraiser') ? gettext('Fundraisers are turned off for this church') : null
                     ),
@@ -86,7 +86,7 @@ class UserPermissionsService
                 'group' => gettext('Volunteers'),
                 'rows' => [
                     $row(gettext('Manage all ministries'), $user->isManageMinistriesEnabled(), $volunteerOffReason),
-                    $row(gettext('Manage my ministries'), $user->isManageMyMinistriesEnabled(), $volunteerOffReason),
+                    $row(gettext('Manage My Ministries'), $user->isManageMyMinistriesEnabled(), $volunteerOffReason),
                     $row(
                         gettext('Ministry coordinator'),
                         $user->isVolunteerCoordinatorEnabled(),

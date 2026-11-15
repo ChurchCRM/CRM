@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "ഈ തരം ഇല്ലാതാക്കിയാൽ, ഇത് ഉപയോഗിക്കുന്ന സ്വഭാവങ്ങളും നഷ്ടമാകും.",
   "Move Donations to Selected Family": "തിരഞ്ഞെടുത്ത കുടുംബത്തിലേക്ക് സംഭാവനകൾ മാറ്റൂ",
   "Calendar not found": "കലണ്ടർ കണ്ടെത്തിയില്ല",
-  "Continue to Dashboard": "ഡാഷ്‌ബോർഡിലേക്ക് തുടരൂ",
   "Current Password": "നിലവിലെ പാസ്‌വേഡ്",
   "Deposit not found": "ഡിപ്പോസിറ്റ് കണ്ടെത്തിയില്ല",
   "Group not found": "ഗ്രൂപ്പ് കണ്ടെത്തിയില്ല",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "പതിപ്പ് %s ലഭ്യമാണ്. നിങ്ങളുടെ ഇൻസ്റ്റലേഷൻ നവീകരിക്കുക.",
   "View All": "എല്ലാം കാണുക",
   "Yellow": "മഞ്ഞ",
-  "Your current access levels (read-only)": "നിങ്ങളുടെ നിലവിലെ ആക്സസ് ലെവലുകൾ (വായിക്കാൻ മാത്രം)",
   "%d repeat event created successfully.": {
     "one": "%d ആവർത്തന പരിപാടി വിജയകരമായി സൃഷ്ടിച്ചു.",
     "other": "%d ആവർത്തന പരിപാടികൾ വിജയകരമായി സൃഷ്ടിച്ചു."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "കുടുംബം നിഷ്‌ക്രിയമാക്കൽ സ്ഥിരീകരിക്കുക",
   "Please confirm deletion of this group record": "ഈ ഗ്രൂപ്പ് റെക്കോർഡ് ഇല്ലാതാക്കൽ സ്ഥിരീകരിക്കുക",
   "Please confirm disabling 2 Factor Auth for this user": "ഈ ഉപയോക്താവിന്റെ 2 ഘടക ആധികാരികത പ്രവർത്തനരഹിതമാക്കൽ സ്ഥിരീകരിക്കുക",
-  "Please confirm removal of user status from": "ഉപയോക്തൃ നില നീക്കൽ സ്ഥിരീകരിക്കുക",
   "Please confirm reset failed login count": "പരാജയപ്പെട്ട ലോഗിൻ എണ്ണം റീസെറ്റ് ചെയ്യൽ സ്ഥിരീകരിക്കുക",
   "Please confirm the password reset of this user": "ഈ ഉപയോക്താവിന്റെ പാസ്‌വേഡ് റീസെറ്റ് സ്ഥിരീകരിക്കുക",
   "Please enter a valid URL": "സാധുവായ URL നൽകുക",
@@ -3507,7 +3504,6 @@
   "%s's Account": "%s-ന്റെ അക്കൗണ്ട്",
   "Access": "പ്രവേശനം",
   "Access level": "പ്രവേശന നില",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "അഡ്മിനിസ്ട്രേറ്റർമാർക്ക് എല്ലാ സവിശേഷതകളിലേക്കും ഡേറ്റയിലേക്കും പൂർണ്ണ പ്രവേശനമുണ്ട്. വ്യക്തിഗത അനുമതികൾ ബാധകമല്ല.",
   "All users can view congregation members. This permission cannot be removed.": "എല്ലാ ഉപയോക്താക്കൾക്കും സഭാംഗങ്ങളെ കാണാൻ കഴിയും. ഈ അനുമതി നീക്കം ചെയ്യാൻ കഴിയില്ല.",
   "Always granted": "എല്ലായ്പ്പോഴും അനുവദിച്ചിരിക്കുന്നു",
   "Choose specific permissions below.": "താഴെ നിർദ്ദിഷ്ട അനുമതികൾ തിരഞ്ഞെടുക്കുക.",

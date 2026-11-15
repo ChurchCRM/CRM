@@ -137,6 +137,7 @@ class LocalAuthentication implements IAuthenticationProvider
         $this->currentUser->setLoginCount($this->currentUser->getLoginCount() + 1);
         $this->currentUser->setFailedLogins(0);
         $this->currentUser->save();
+        $this->currentUser->createTimeLineNote('login');
 
         // Create the Cart
         $_SESSION['aPeopleCart'] = [];

@@ -7920,10 +7920,6 @@ msgid "Calendar not found"
 msgstr "לוח השנה לא נמצא"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "המשך ללוח הבקרה"
-
-#: 
 msgid "Current Password"
 msgstr "סיסמה נוכחית"
 
@@ -11295,10 +11291,6 @@ msgid "Yellow"
 msgstr "צהוב"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "רמות הגישה הנוכחיות שלך (לקריאה בלבד)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "אירוע חוזר אחד נוצר בהצלחה."
@@ -13830,10 +13822,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "אנא אשר ביטול אימות דו-שלבי למשתמש זה"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "אנא אשר הסרת סטטוס משתמש מ-"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "אנא אשר איפוס ספירת התחברויות שנכשלו"
 
@@ -14644,10 +14632,6 @@ msgstr "גישה"
 #: 
 msgid "Access level"
 msgstr "רמת גישה"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "למנהלים יש גישה מלאה לכל הפונקציות והנתונים. הרשאות אישיות אינן חלות."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."
