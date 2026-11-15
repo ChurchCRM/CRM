@@ -17,11 +17,13 @@ use Slim\Routing\RouteCollectorProxy;
 
 /**
  * The dates list plus what the caller may add: active types, each marked when
- * it allows one date and one is already recorded.
+ * it allows one date and one is already recorded. Any staff user reads dates;
+ * recording, correcting and removing them is Edit Records, as for the record itself;
+ * defining types is admin setup.
  *
  * @param list<array<string, mixed>> $dates
  */
-function importantDatesPayload(ImportantDateService $service, string $appliesTo, array $dates, bool $canEdit): array
+function importantDatesPayload(ImportantDateService $service, string $appliesTo, array $dates): array
 {
     $recordedTypeIds = array_column(array_filter($dates, static fn (array $d): bool => $d['typeId'] !== null), 'typeId');
     $types = [];
@@ -37,7 +39,7 @@ function importantDatesPayload(ImportantDateService $service, string $appliesTo,
     return [
         'dates'          => $dates,
         'types'          => $types,
-        'canEdit'        => $canEdit,
+        'canEdit'        => AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(),
         'canManageTypes' => AuthenticationManager::getCurrentUser()->isAdmin(),
     ];
 }
@@ -66,7 +68,7 @@ $importantDateInput = new InputSanitizationMiddleware(['note' => 'text']);
  *     path="/person/{personId}/important-dates",
  *     operationId="addPersonImportantDate",
  *     summary="Record an important date on a person",
- *     description="Requires permission to edit the person (EditRecords, or EditSelf for the user's own family).",
+ *     description="Requires Edit Records.",
  *     tags={"People"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -79,7 +81,7 @@ $importantDateInput = new InputSanitizationMiddleware(['note' => 'text']);
  *     )),
  *     @OA\Response(response=201, description="The person's dates after the change"),
  *     @OA\Response(response=400, description="Invalid date or type"),
- *     @OA\Response(response=403, description="Cannot edit this person"),
+ *     @OA\Response(response=403, description="Edit Records required"),
  *     @OA\Response(response=409, description="The type allows one date and one is already recorded")
  * )
  * @OA\Put(
@@ -92,7 +94,7 @@ $importantDateInput = new InputSanitizationMiddleware(['note' => 'text']);
  *     @OA\Parameter(name="dateId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=200, description="The person's dates after the change"),
  *     @OA\Response(response=400, description="Invalid date"),
- *     @OA\Response(response=403, description="Cannot edit this person"),
+ *     @OA\Response(response=403, description="Edit Records required"),
  *     @OA\Response(response=404, description="Date not found on this person")
  * )
  * @OA\Delete(
@@ -104,30 +106,24 @@ $importantDateInput = new InputSanitizationMiddleware(['note' => 'text']);
  *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Parameter(name="dateId", in="path", required=true, @OA\Schema(type="integer")),
  *     @OA\Response(response=200, description="The person's dates after the change"),
- *     @OA\Response(response=403, description="Cannot edit this person"),
+ *     @OA\Response(response=403, description="Edit Records required"),
  *     @OA\Response(response=404, description="Date not found on this person")
  * )
  */
 $app->group('/person/{personId:[0-9]+}/important-dates', function (RouteCollectorProxy $group) use ($importantDateInput): void {
-    $canEdit = static function (Person $person): bool {
-        return AuthenticationManager::getCurrentUser()->canEditPerson((int) $person->getId(), (int) $person->getFamId());
-    };
-    $payload = static function (Person $person) use ($canEdit): array {
+    $payload = static function (Person $person): array {
         $service = new ImportantDateService();
 
-        return importantDatesPayload($service, ImportantDateType::APPLIES_TO_PERSON, $service->datesForPerson($person), $canEdit($person));
+        return importantDatesPayload($service, ImportantDateType::APPLIES_TO_PERSON, $service->datesForPerson($person));
     };
 
     $group->get('', function (Request $request, Response $response) use ($payload): Response {
         return SlimUtils::renderJSON($response, $payload($request->getAttribute('person')));
     });
 
-    $group->post('', function (Request $request, Response $response) use ($canEdit, $payload): Response {
+    $group->post('', function (Request $request, Response $response) use ($payload): Response {
         /** @var Person $person */
         $person = $request->getAttribute('person');
-        if (!$canEdit($person)) {
-            return SlimUtils::renderErrorJSON($response, gettext('You do not have permission to edit this person'), [], 403);
-        }
         try {
             (new ImportantDateService())->addPersonDate($person, (array) $request->getParsedBody(), AuthenticationManager::getCurrentUser());
         } catch (ImportantDateRefusedException $e) {
@@ -135,14 +131,11 @@ $app->group('/person/{personId:[0-9]+}/important-dates', function (RouteCollecto
         }
 
         return SlimUtils::renderJSON($response, $payload($person), 201);
-    })->add($importantDateInput);
+    })->add($importantDateInput)->add(new EditRecordsRoleAuthMiddleware());
 
-    $group->put('/{dateId:[0-9]+}', function (Request $request, Response $response, array $args) use ($canEdit, $payload): Response {
+    $group->put('/{dateId:[0-9]+}', function (Request $request, Response $response, array $args) use ($payload): Response {
         /** @var Person $person */
         $person = $request->getAttribute('person');
-        if (!$canEdit($person)) {
-            return SlimUtils::renderErrorJSON($response, gettext('You do not have permission to edit this person'), [], 403);
-        }
         $service = new ImportantDateService();
         $record = $service->findPersonDate($person, (int) $args['dateId']);
         if ($record === null) {
@@ -155,14 +148,11 @@ $app->group('/person/{personId:[0-9]+}/important-dates', function (RouteCollecto
         }
 
         return SlimUtils::renderJSON($response, $payload($person));
-    })->add($importantDateInput);
+    })->add($importantDateInput)->add(new EditRecordsRoleAuthMiddleware());
 
-    $group->delete('/{dateId:[0-9]+}', function (Request $request, Response $response, array $args) use ($canEdit, $payload): Response {
+    $group->delete('/{dateId:[0-9]+}', function (Request $request, Response $response, array $args) use ($payload): Response {
         /** @var Person $person */
         $person = $request->getAttribute('person');
-        if (!$canEdit($person)) {
-            return SlimUtils::renderErrorJSON($response, gettext('You do not have permission to edit this person'), [], 403);
-        }
         $service = new ImportantDateService();
         $record = $service->findPersonDate($person, (int) $args['dateId']);
         if ($record === null) {
@@ -171,7 +161,7 @@ $app->group('/person/{personId:[0-9]+}/important-dates', function (RouteCollecto
         $service->removeDate($record);
 
         return SlimUtils::renderJSON($response, $payload($person));
-    });
+    })->add(new EditRecordsRoleAuthMiddleware());
 })->add(new PersonMiddleware());
 
 /**
@@ -229,7 +219,7 @@ $app->group('/family/{familyId:[0-9]+}/important-dates', function (RouteCollecto
     $payload = static function (Family $family): array {
         $service = new ImportantDateService();
 
-        return importantDatesPayload($service, ImportantDateType::APPLIES_TO_FAMILY, $service->datesForFamily($family), AuthenticationManager::getCurrentUser()->isEditRecordsEnabled());
+        return importantDatesPayload($service, ImportantDateType::APPLIES_TO_FAMILY, $service->datesForFamily($family));
     };
 
     $group->get('', function (Request $request, Response $response) use ($payload): Response {

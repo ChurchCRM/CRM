@@ -117,7 +117,8 @@ describe("API - important dates on people and families", () => {
         });
     });
 
-    it("refuses a person date from a user who may not edit that person", () => {
+    it("refuses a date from a staff user without Edit Records, who can still read them", () => {
         cy.makePrivateNoPermAPICall("POST", "/api/person/2/important-dates", { typeId: personType.id, month: 1, day: 1 }, 403);
+        cy.makePrivateNoPermAPICall("GET", "/api/person/2/important-dates", null, 200).its("body.canEdit").should("eq", false);
     });
 });
