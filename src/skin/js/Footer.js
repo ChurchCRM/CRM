@@ -209,6 +209,14 @@ function initializeApp() {
       if (!dismissKey) {
         return;
       }
+      if (alert?.dataset.notificationId === "system-update-available") {
+        // This notice is session-only; do not persist its user setting.
+        fetch(`${window.CRM.root}/v2/releases/dismiss-update-notice`, {
+          method: "POST",
+          credentials: "same-origin",
+        });
+        return;
+      }
       window.CRM.APIRequest({
         path: `user/${window.CRM.userId}/setting/${encodeURIComponent(dismissKey)}`,
         method: "POST",
