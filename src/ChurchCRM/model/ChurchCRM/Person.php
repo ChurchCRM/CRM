@@ -835,11 +835,8 @@ class Person extends BasePerson implements PhotoInterface
             ? $this->toArray()
             : null;
 
-        // Remove the uploaded image from disk. Call Photo::delete() directly
-        // rather than $this->deletePhoto(), which gates on the current user's
-        // delete-records permission and writes a Note that NoteQuery below
-        // would immediately delete. See GH issue #1697.
-        $this->getPhoto()->delete();
+        // Photo cleanup runs after the deleting API transaction commits.
+        // Unlinking here would not roll back with a failed family cascade.
 
         $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($this)->find($con);
         if ($obj->count() > 0) {
