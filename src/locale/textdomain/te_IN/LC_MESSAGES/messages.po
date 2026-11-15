@@ -2146,10 +2146,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "ఇది డేటాబేస్‌లోని కుటుంబ ఎన్వలప్ నంబర్‌లను ఈ పేజీలో ఎంచుకున్నవాటితో ఓవర్‌రైట్ చేస్తుంది. కొనసాగించాలా?"
 
 #: 
-msgid "Family Select"
-msgstr "కుటుంబ ఎంపిక"
-
-#: 
 msgid "Welcome to"
 msgstr "స్వాగతం"
 
@@ -15488,10 +15484,6 @@ msgstr "నిధుల కోసం"
 #: 
 msgid "user"
 msgstr "వినియోగదారు"
-
-#: 
-msgid "with at least one"
-msgstr "కనీసం ఒకదానితో"
 
 #: 
 msgid "Also send to church address ({{email}})"

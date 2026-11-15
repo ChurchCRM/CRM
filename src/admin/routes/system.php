@@ -1043,7 +1043,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
             $pageArgs['showPersonSelect'] = true;
             $pageArgs['people']           = $userService->getAssignablePeople();
             $pageArgs['sUserName']        = '';
-            $pageArgs['perms']            = ['admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
+            $pageArgs['perms']            = ['admin' => 0, 'addRecords' => 0,
                                              'editRecords' => 0, 'deleteRecords' => 0,
                                              'manageGroups' => 0,
                                              'finance' => 0, 'manageFundraisers' => 0,
@@ -1095,7 +1095,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
     }
 
     $pageArgs['perms'] = [
-        'admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
+        'admin' => 0, 'addRecords' => 0,
         'editRecords' => 0, 'deleteRecords' => 0,
         'manageGroups' => 0,
         'finance' => 0, 'manageFundraisers' => 0, 'manageMinistries' => 0, 'manageMyMinistries' => 0, 'notes' => 0,
@@ -1181,7 +1181,6 @@ function adminUserEditorEdit(Request $request, Response $response, array $args):
     $pageArgs['sUserName']  = $user->getUserName();
     $pageArgs['perms']      = [
         'admin'        => $user->getAdmin(),
-        'editSelf'     => $user->getEditSelf(),
         'addRecords'   => $user->getAddRecords(),
         'editRecords'  => $user->getEditRecords(),
         'deleteRecords' => $user->getDeleteRecords(),

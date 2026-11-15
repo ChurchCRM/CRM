@@ -2156,10 +2156,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Hii itafuta nambari za bahasha za familia kwenye hifadhidata na zile zilizochaguliwa kwenye ukurasa huu. Ungependa kuendelea?"
 
 #: 
-msgid "Family Select"
-msgstr "Chagua Familia"
-
-#: 
 msgid "Welcome to"
 msgstr "Karibu"
 
@@ -15506,10 +15502,6 @@ msgstr "kwa mifuko"
 #: 
 msgid "user"
 msgstr "mtumiaji"
-
-#: 
-msgid "with at least one"
-msgstr "na angalau moja"
 
 #: 
 msgid "Also send to church address ({{email}})"

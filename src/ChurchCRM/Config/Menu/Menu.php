@@ -61,7 +61,7 @@ class Menu
             'Fundraiser'   => self::getFundraisersMenu($currentUser->isManageFundraisersEnabled()),
             'Reports'      => self::getReportsMenu($isAdmin, $currentUser->isFinanceEnabled()),
         ];
-        
+
         // Backward compatibility: plugins that declare parent 'Email' still attach to Communication
         if (isset($menus['Communication'])) {
             $menus['Email'] = $menus['Communication'];
@@ -78,7 +78,7 @@ class Menu
 
         // Remove the backward-compat alias so it doesn't appear as a duplicate menu
         unset($menus['Email']);
-        
+
         // Allow plugins to add top-level menus via the MENU_BUILDING hook
         $menus = HookManager::applyFilters(Hooks::MENU_BUILDING, $menus);
 
@@ -133,7 +133,7 @@ class Menu
             $adminMenu->addSubMenu(new MenuItem(gettext('Person Custom Fields'), 'PersonCustomFieldsEditor.php', $isAdmin, 'fa-sliders'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Grades'), 'admin/system/options?mode=grades', $isAdmin, 'fa-graduation-cap'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Volunteer Opportunities'), 'VolunteerOpportunityEditor.php', $isAdmin && $isVolunteerV1InUse, 'fa-handshake-angle'));
-    
+
             $peopleMenu->addSubMenu($adminMenu);
         }
 
@@ -274,12 +274,12 @@ class Menu
                         break;
                     }
                 }
-                
+
                 if ($parentMenu === null) {
                     // Parent menu not found, skip these items
                     continue;
                 }
-                
+
                 // Add each plugin menu item as a submenu
                 foreach ($items as $item) {
                     $permission = $item['permission'] ?? '';
@@ -290,7 +290,7 @@ class Menu
                     $label = $item['label'] ?? '';
                     $url = $item['url'] ?? '';
                     $icon = $item['icon'] ?? 'fa-plug';
-                    
+
                     if (!empty($label) && !empty($url)) {
                         $parentMenu->addSubMenu(new MenuItem($label, $url, true, $icon));
                     }
@@ -342,34 +342,6 @@ class Menu
     // The legacy "Volunteer Opportunities" item under People → Admin shows while
     // V1 is in use (VolunteerV1Service::isInUse()).
 
-    /**
-     * Volunteer Management v2 — the ADMINISTRATION surface (epic #9701).
-     *
-     * A heading of its own, built the way the Groups block builds its per-group
-     * entries: a Dashboard entry and then one entry per ministry, by name, each
-     * linking straight to `/ministries/{id}`. It replaces the retired
-     * "My ministries and teams" list page — a list of the same links, one click
-     * further away.
-     *
-     * $isCoordinator is User::isVolunteerCoordinatorEnabled() — the SAME predicate
-     * VolunteerCoordinatorRoleAuthMiddleware calls — so nothing here advertises a
-     * page that 302s away and nothing openable is hidden (§3.5, A11). It already
-     * carries the rollout state, the administrator bypass, the global-manager flag,
-     * the EditSelf-exclusive short-circuit and the ministry/team scope lookup.
-     *
-     * A pure **team leader** passes that predicate. `getManageableMinistries()`
-     * returns nothing for them, because leading a team is not administering the
-     * ministry above it (§4.6), so their entries come from `getTeamLedMinistries()`
-     * and open the ministry page's team-only view. A manager who
-     * has not created a ministry yet sees the same Dashboard-only heading, and the
-     * dashboard's "New ministry" action is right there. Only ACTIVE ministries are
-     * listed here; deactivated ones move to the Deactivated Ministries heading.
-     *
-     * One query per request, ids and names only — see
-     * `VolunteerAuthorizationService::getManageableMinistries()` for the memo and
-     * the reason it is static. The early return keeps even that query off every
-     * page load for the overwhelming majority of users, who coordinate nothing.
-     */
     private static function getMinistriesMenu(User $currentUser, bool $isCoordinator): MenuItem
     {
         $ministriesMenu = new MenuItem(gettext('Ministries'), '', $isCoordinator, 'fa-sitemap');
@@ -493,7 +465,7 @@ class Menu
 
         if ($isFinanceEnabled) {
             $adminMenu = new MenuItem(gettext('Admin'), '', $isFinanceEnabled);
-            $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'ManageEnvelopes.php', $isFinanceEnabled, 'fa-envelope'));
+            $adminMenu->addSubMenu(new MenuItem(gettext('Envelope Manager'), 'finance/envelopes', $isFinanceEnabled, 'fa-envelope'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Donation Funds'), 'finance/funds', $isFinanceEnabled, 'fa-piggy-bank'));
             $adminMenu->addSubMenu(new MenuItem(gettext('Statement Settings'), 'finance/statements/settings', $isFinanceEnabled, 'fa-file-invoice'));
 

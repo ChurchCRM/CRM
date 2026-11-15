@@ -778,11 +778,8 @@ describe("API Private Group Operations", () => {
             // person-1 membership (issue #9828) sent the route into its audit
             // Note write, which has no current user under API-key auth. With
             // the leak gone the call is an authorized no-op returning 200.
-            // plainauth (john.plainauth, id 900) passes AuthMiddleware (it is
-            // not EditSelf-exclusive) and lacks usr_ManageGroups, so the 403
-            // below comes from ManageGroupRoleAuthMiddleware — the gate this
-            // test's name promises to cover. (limited.user would be stopped by
-            // AuthMiddleware first and prove nothing about the group gate.)
+            // plainauth (john.plainauth, id 900) is staff without Manage Groups,
+            // so ManageGroupRoleAuthMiddleware returns 403.
             cy.makePrivatePlainAuthAPICall(
                 "DELETE",
                 `/api/groups/${groupID}/removeperson/1`,

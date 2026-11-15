@@ -2135,10 +2135,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Ito ay mag-o-overwrite ng mga numero ng sobre ng pamilya sa database na may mga napili sa pahinang ito. Magpatuloy?"
 
 #: 
-msgid "Family Select"
-msgstr "Pagpili ng Pamilya"
-
-#: 
 msgid "Welcome to"
 msgstr "Maligayang pagdating sa"
 
@@ -15477,10 +15473,6 @@ msgstr "para sa mga pondo"
 #: 
 msgid "user"
 msgstr "gumagamit"
-
-#: 
-msgid "with at least one"
-msgstr "na may hindi bababa sa isa"
 
 #: 
 msgid "Also send to church address ({{email}})"

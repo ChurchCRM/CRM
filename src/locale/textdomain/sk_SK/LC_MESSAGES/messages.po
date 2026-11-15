@@ -2135,10 +2135,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Toto prepíše čísla obálok rodiny v databáze tými, ktoré sú vybrané na tejto stránke. Pokračovať?"
 
 #: 
-msgid "Family Select"
-msgstr "Výber rodiny"
-
-#: 
 msgid "Welcome to"
 msgstr "Vitajte v"
 
@@ -15503,10 +15499,6 @@ msgstr "pre fondy"
 #: 
 msgid "user"
 msgstr "používateľ"
-
-#: 
-msgid "with at least one"
-msgstr "s aspoň jedným"
 
 #: 
 msgid "Also send to church address ({{email}})"

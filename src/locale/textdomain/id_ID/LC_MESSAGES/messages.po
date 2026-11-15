@@ -2156,10 +2156,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Ini akan menimpa nomor amplop keluarga dalam database dengan yang dipilih pada halaman ini. Terus?"
 
 #: 
-msgid "Family Select"
-msgstr "Keluarga Pilih"
-
-#: 
 msgid "Welcome to"
 msgstr "Selamat Datang di"
 
@@ -15495,10 +15491,6 @@ msgstr "untuk dana-dana"
 #: 
 msgid "user"
 msgstr "pengguna"
-
-#: 
-msgid "with at least one"
-msgstr "dengan setidaknya satu"
 
 #: 
 msgid "Also send to church address ({{email}})"

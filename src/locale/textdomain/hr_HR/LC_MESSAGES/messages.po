@@ -2135,10 +2135,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Ovo će prepisati obiteljske brojeve kuverta u bazi podataka s onima odabranim na ovoj stranici. Nastaviti?"
 
 #: 
-msgid "Family Select"
-msgstr "Odabir obitelji"
-
-#: 
 msgid "Welcome to"
 msgstr "Dobrodošli u"
 
@@ -15488,10 +15484,6 @@ msgstr "za fondove"
 #: 
 msgid "user"
 msgstr "korisnik"
-
-#: 
-msgid "with at least one"
-msgstr "s najmanje jednim"
 
 #: 
 msgid "Also send to church address ({{email}})"

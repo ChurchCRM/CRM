@@ -2141,10 +2141,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Tämä korvaa tietokannassa olevat perheiden kirjekuorinumerot tällä sivulla valituilla numeroilla. Jatketaanko?"
 
 #: 
-msgid "Family Select"
-msgstr "Perheen valinta"
-
-#: 
 msgid "Welcome to"
 msgstr "Tervetuloa kohteeseen"
 
@@ -15481,10 +15477,6 @@ msgstr "rahastoille"
 #: 
 msgid "user"
 msgstr "käyttäjä"
-
-#: 
-msgid "with at least one"
-msgstr "vähintään yhdellä"
 
 #: 
 msgid "Also send to church address ({{email}})"

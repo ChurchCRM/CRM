@@ -2156,10 +2156,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Bu, veritabanındaki aile zarf numaralarının bu sayfada seçilenlerle üzerine yazacaktır. Devam et?"
 
 #: 
-msgid "Family Select"
-msgstr "Aile Seçimi"
-
-#: 
 msgid "Welcome to"
 msgstr "Hoşgeldiniz"
 
@@ -15510,10 +15506,6 @@ msgstr "fonlar için"
 #: 
 msgid "user"
 msgstr "kullanıcı"
-
-#: 
-msgid "with at least one"
-msgstr "en az bir ile"
 
 #: 
 msgid "Also send to church address ({{email}})"

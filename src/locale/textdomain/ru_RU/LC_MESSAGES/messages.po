@@ -2216,10 +2216,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Это перезапишет номера семейных конвертов в базе данных на те, которые выбраны на этой странице. Продолжить?"
 
 #: 
-msgid "Family Select"
-msgstr "Семейный выбор"
-
-#: 
 msgid "Welcome to"
 msgstr "Добро пожаловать в"
 
@@ -15589,10 +15585,6 @@ msgstr "для фондов"
 #: 
 msgid "user"
 msgstr "пользователь"
-
-#: 
-msgid "with at least one"
-msgstr "хотя бы с одним"
 
 #: 
 msgid "Also send to church address ({{email}})"
