@@ -54,6 +54,7 @@ require __DIR__ . '/routes/api/system/letterhead.php';
 require __DIR__ . '/routes/api/system/tax-signature.php';
 require __DIR__ . '/routes/api/system/property-definitions.php';
 require __DIR__ . '/routes/api/system/property-types.php';
+require __DIR__ . '/routes/api/important-date-types.php';
 require __DIR__ . '/routes/api/system/system-config.php';
 require __DIR__ . '/routes/api/system/system-custom-fields.php';
 require __DIR__ . '/routes/api/system/system-logs.php';

@@ -765,6 +765,8 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
         </div>
         <?php } ?>
 
+        <?php $importantDatesOwner = 'family'; $importantDatesOwnerId = (int) $family->getId(); include __DIR__ . '/partials/important-dates-card.php'; ?>
+
         <!-- Properties Card (inline, matching Person page style) -->
         <div class="card mb-3">
             <div class="card-header d-flex align-items-center">

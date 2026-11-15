@@ -118,6 +118,8 @@ module.exports = {
     'kiosk-settings': './webpack/kiosk-settings',
     'people-settings': './webpack/people-settings',
     'admin-grade-names': './webpack/admin-grade-names',
+    'admin-important-dates': './webpack/admin-important-dates',
+    'important-dates': './webpack/important-dates',
     'people-list': './webpack/people/person-list',
     'people-family-list': './webpack/people/family-list',
     'people-family-view': './webpack/people/family-view',

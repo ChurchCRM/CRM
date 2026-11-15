@@ -385,7 +385,7 @@
         <column name="dep_Date" phpName="Date" type="DATE"/>
         <column name="dep_Comment" phpName="Comment" type="LONGVARCHAR"/>
         <column name="dep_EnteredBy" phpName="Enteredby" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
-        <column name="dep_Closed" phpName="Closed" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="dep_Closed" phpName="Closed" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="dep_Type" phpName="Type" type="CHAR" sqlType="enum('Bank','CreditCard','BankDraft')"
                 required="true" defaultValue="Bank"/>
         <vendor type="mysql">
@@ -594,7 +594,7 @@
         <column name="plg_Problem" phpName="Problem" type="BOOLEAN" size="1"/>
         <column name="plg_scanString" phpName="ScanString" type="LONGVARCHAR"/>
         <column name="plg_aut_ID" phpName="AutId" type="SMALLINT" size="9" sqlType="mediumint(9)" required="true" defaultValue="0"/>
-        <column name="plg_aut_Cleared" phpName="AutCleared" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+        <column name="plg_aut_Cleared" phpName="AutCleared" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
         <column name="plg_aut_ResultID" phpName="AutResultId" type="SMALLINT" size="9" sqlType="mediumint(9)" required="true" defaultValue="0"/>
         <column name="plg_NonDeductible" phpName="Nondeductible" type="DECIMAL" size="8" scale="2" required="true"/>
         <column name="plg_GroupKey" phpName="GroupKey" type="VARCHAR" size="64" required="true"/>
@@ -2006,6 +2006,95 @@
         <index name="lpa_session_time_idx">
             <index-column name="lpa_lps_ID"/>
             <index-column name="lpa_Time"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="important_date_type_idt" idMethod="native" phpName="ImportantDateType"
+           description="A church-defined kind of yearly date (baptism, confirmation, dedication...) recorded on people or families. Deactivate a type in use; only an unused type can be deleted">
+        <column name="idt_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="idt_Key" phpName="Key" type="VARCHAR" size="50" required="true" description="Stable slug, unique"/>
+        <column name="idt_Name" phpName="Name" type="VARCHAR" size="100" required="true"/>
+        <column name="idt_AppliesTo" phpName="AppliesTo" type="VARCHAR" size="10" required="true" description="person or family"/>
+        <column name="idt_AllowMultiple" phpName="AllowMultiple" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="0"/>
+        <column name="idt_ShowOnCalendar" phpName="ShowOnCalendar" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="1"
+                description="Shown on the staff Important Dates calendar; never on the Member Portal"/>
+        <column name="idt_Active" phpName="Active" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="1"/>
+        <column name="idt_Order" phpName="SortOrder" type="SMALLINT" size="5" required="true" defaultValue="0"/>
+        <unique name="idt_key_uidx">
+            <unique-column name="idt_Key"/>
+        </unique>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="person_important_date_pid" idMethod="native" phpName="PersonImportantDate"
+           description="One important date recorded for a person under a church-defined type: month, day and optional year. Observed every year under the church February 29 rule; the recorded date is never changed by observance">
+        <column name="pid_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="pid_per_ID" phpName="PersonId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="pid_idt_ID" phpName="TypeId" type="INTEGER" required="true"/>
+        <column name="pid_Month" phpName="Month" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"/>
+        <column name="pid_Day" phpName="Day" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"/>
+        <column name="pid_Year" phpName="Year" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" description="NULL when the year is not known"/>
+        <column name="pid_Note" phpName="Note" type="VARCHAR" size="255"/>
+        <column name="pid_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true"/>
+        <column name="pid_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="pid_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
+        <column name="pid_EditedBy" phpName="EditedBy" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <foreign-key foreignTable="person_per" name="PersonImportantDatePerson" phpName="Person"
+                     refPhpName="ImportantDate" onDelete="cascade">
+            <reference local="pid_per_ID" foreign="per_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="important_date_type_idt" name="PersonImportantDateType" phpName="Type"
+                     refPhpName="PersonImportantDate" onDelete="restrict">
+            <reference local="pid_idt_ID" foreign="idt_ID"/>
+        </foreign-key>
+        <index name="pid_owner_type_idx">
+            <index-column name="pid_per_ID"/>
+            <index-column name="pid_idt_ID"/>
+        </index>
+        <index name="pid_type_month_day_idx">
+            <index-column name="pid_idt_ID"/>
+            <index-column name="pid_Month"/>
+            <index-column name="pid_Day"/>
+        </index>
+        <vendor type="mysql">
+            <parameter name="Engine" value="InnoDB"/>
+        </vendor>
+    </table>
+
+    <table name="family_important_date_fid" idMethod="native" phpName="FamilyImportantDate"
+           description="One important date recorded for a family under a church-defined type: month, day and optional year. Observed every year under the church February 29 rule; the recorded date is never changed by observance">
+        <column name="fid_ID" phpName="Id" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+        <column name="fid_fam_ID" phpName="FamilyId" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned" required="true"/>
+        <column name="fid_idt_ID" phpName="TypeId" type="INTEGER" required="true"/>
+        <column name="fid_Month" phpName="Month" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"/>
+        <column name="fid_Day" phpName="Day" type="TINYINT" size="3" sqlType="tinyint(3) unsigned" required="true"/>
+        <column name="fid_Year" phpName="Year" type="SMALLINT" size="5" sqlType="smallint(5) unsigned" description="NULL when the year is not known"/>
+        <column name="fid_Note" phpName="Note" type="VARCHAR" size="255"/>
+        <column name="fid_DateEntered" phpName="DateEntered" type="TIMESTAMP" required="true"/>
+        <column name="fid_EnteredBy" phpName="EnteredBy" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <column name="fid_DateLastEdited" phpName="DateLastEdited" type="TIMESTAMP"/>
+        <column name="fid_EditedBy" phpName="EditedBy" type="SMALLINT" size="9" sqlType="mediumint(9) unsigned"/>
+        <foreign-key foreignTable="family_fam" name="FamilyImportantDateFamily" phpName="Family"
+                     refPhpName="ImportantDate" onDelete="cascade">
+            <reference local="fid_fam_ID" foreign="fam_ID"/>
+        </foreign-key>
+        <foreign-key foreignTable="important_date_type_idt" name="FamilyImportantDateType" phpName="Type"
+                     refPhpName="FamilyImportantDate" onDelete="restrict">
+            <reference local="fid_idt_ID" foreign="idt_ID"/>
+        </foreign-key>
+        <index name="fid_owner_type_idx">
+            <index-column name="fid_fam_ID"/>
+            <index-column name="fid_idt_ID"/>
+        </index>
+        <index name="fid_type_month_day_idx">
+            <index-column name="fid_idt_ID"/>
+            <index-column name="fid_Month"/>
+            <index-column name="fid_Day"/>
         </index>
         <vendor type="mysql">
             <parameter name="Engine" value="InnoDB"/>

@@ -137,6 +137,7 @@ $app->get('/people', function (Request $request, Response $response): Response {
             [gettext('Person Classifications'), '/admin/system/options?mode=classes', 'fa-tags'],
             [gettext('Person Properties'), '/PropertyList.php?Type=p', 'fa-person-half-dress'],
             [gettext('Person Custom Fields'), '/PersonCustomFieldsEditor.php', 'fa-sliders'],
+            [gettext('Important Date Types'), '/admin/people/important-dates', 'fa-calendar-day'],
             [gettext('Grades'), '/admin/system/options?mode=grades', 'fa-graduation-cap'],
             [gettext('Family Roles'), '/admin/system/options?mode=famroles', 'fa-people-roof'],
             [gettext('Family Properties'), '/PropertyList.php?Type=f', 'fa-people-roof'],
@@ -147,6 +148,21 @@ $app->get('/people', function (Request $request, Response $response): Response {
     ];
 
     return $renderer->render($response, 'people.php', $pageArgs);
+});
+
+$app->get('/people/important-dates', function (Request $request, Response $response): Response {
+    $renderer = new PhpRenderer(__DIR__ . '/../views/');
+
+    return $renderer->render($response, 'important-date-types.php', [
+        'sRootPath'     => SystemURLs::getRootPath(),
+        'sPageTitle'    => gettext('Important Date Types'),
+        'sPageSubtitle' => gettext('Yearly dates your church records on people and families, such as baptisms and dedications'),
+        'aBreadcrumbs'  => PageHeader::breadcrumbs([
+            [gettext('People'), '/people/dashboard'],
+            [gettext('People Settings'), '/admin/people'],
+            [gettext('Important Date Types')],
+        ]),
+    ]);
 });
 
 /**
