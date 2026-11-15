@@ -136,6 +136,7 @@ describe("Person deletion preserves recorded history", () => {
                 expect(response.body.message).to.not.include("25");
             })
             .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/family/${familyId}?deleteMembers=true`, null, 403))
+            .then((response) => expect(response.body.message).to.include("Deactivate the family instead"))
             .then(() => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 200))
             .then(() => cy.makePrivateAdminAPICall("GET", `/api/payments/family/${familyId}/list?fyid=0`, null, 200))
             .then((response) => expect(response.body.data).to.have.length(1));
