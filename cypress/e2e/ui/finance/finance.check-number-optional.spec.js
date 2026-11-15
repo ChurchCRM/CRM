@@ -52,7 +52,6 @@ describe("Treasurer records checks without check numbers", () => {
         cy.contains("Financial Settings").click();
         cy.get("#financialSettings .settings-panel-fields", { timeout: 10000 }).should("not.be.disabled");
         cy.get("#financialSettings input[name='bRequireCheckNumber'][value='0']").check({ force: true });
-        cy.get("#financialSettings .settings-panel-save").click();
         cy.wait("@saveRequireCheckNumber").its("response.statusCode").should("eq", 200);
         cy.getSystemConfig("bRequireCheckNumber").should("eq", "0");
 
@@ -76,6 +75,6 @@ describe("Treasurer records checks without check numbers", () => {
             expect(response.statusCode).to.eq(400);
             expect(response.body.message).to.contain(`Check number '${checkNumber}' for selected family already exists.`);
         });
-        cy.location("pathname").should("eq", "/finance/pledge/new");
+        cy.location("pathname").should("match", /\/finance\/pledge\/new$/);
     });
 });

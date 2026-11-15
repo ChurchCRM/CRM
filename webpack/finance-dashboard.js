@@ -75,9 +75,9 @@ document.addEventListener("DOMContentLoaded", () => {
           { name: "bEnableNonDeductible", type: "boolean", label: i18next.t("Enable non-deductible payments") },
           { name: "bUseDonationEnvelopes", type: "boolean", label: i18next.t("Enable use of donation envelopes") },
         ],
-        onSave: () => {
-          setTimeout(() => window.location.reload(), 1500);
-        },
+        autoSave: true,
+        showAllSettingsLink: false,
+        reloadOnSave: true,
       });
     }
   });

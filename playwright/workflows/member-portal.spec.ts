@@ -78,7 +78,6 @@ test('admin-member-portal-calendars', async ({ page }, testInfo) => {
     title: 'Member Portal Calendars',
     category: 'Admin & Settings',
     purpose: 'Choose which church and holiday calendars members see in the Member Portal.',
-    usedIn: ['docs'],
   });
 });
 

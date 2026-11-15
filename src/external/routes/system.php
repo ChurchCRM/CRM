@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\DatabaseVersionService;
+use ChurchCRM\Service\TelemetryService;
 use ChurchCRM\Utils\VersionUtils;
 use Slim\Routing\RouteCollectorProxy;
 use Slim\Views\PhpRenderer;
@@ -50,6 +51,12 @@ $app->get('/limited-access', function (Request $request, Response $response): Re
         // Redirect to root so a direct visit to this URL is not misleading.
         if (empty($errorMessage) && version_compare($softwareVersion, $dbVersion, '>=')) {
             return $response->withHeader('Location', SystemURLs::getRootPath() . '/')->withStatus(302);
+        }
+
+        try {
+            TelemetryService::captureVersionMismatch($dbVersion, empty($errorMessage) ? 'database_newer' : 'upgrade_failed');
+        } catch (\Throwable) {
+            // Reporting must never hide this page.
         }
 
         $pageArgs = [

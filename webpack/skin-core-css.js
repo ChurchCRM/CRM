@@ -25,9 +25,8 @@ import "datatables.net-select-bs5/css/select.bootstrap5.min.css";
 // Tom Select CSS — Bootstrap 5 themed
 import "tom-select/dist/css/tom-select.bootstrap5.css";
 
-// Bootstrap DatePicker and DateRangePicker CSS
+// Bootstrap DatePicker CSS
 import "bootstrap-datepicker/dist/css/bootstrap-datepicker.standalone.min.css";
-import "daterangepicker/daterangepicker.css";
 
 // bs-stepper CSS
 import "bs-stepper/dist/css/bs-stepper.min.css";

@@ -131,7 +131,6 @@ test.describe('Email composer', () => {
     title: 'Email a Person',
     category: 'Communication',
     purpose: 'Show the paper-plane button next to the email address on the Person View',
-    usedIn: ['docs'],
   });
 
   test('email-person-view-send-button', personButton, async ({ page }, testInfo) => {
@@ -147,7 +146,6 @@ test.describe('Email composer', () => {
     title: 'Email a Family Member',
     category: 'Communication',
     purpose: 'Show the paper-plane buttons on the other family members who have an email address',
-    usedIn: ['docs'],
   });
 
   test('email-person-view-family-send-buttons', familyButtons, async ({ page }, testInfo) => {
@@ -165,7 +163,6 @@ test.describe('Email composer', () => {
     title: 'Write an Email',
     category: 'Communication',
     purpose: 'Show the composer with a subject, the message, and the pre-filled closing',
-    usedIn: ['docs'],
   });
 
   test('email-composer-form', composerForm, async ({ page }, testInfo) => {
@@ -250,7 +247,6 @@ test.describe('Email composer', () => {
     title: 'Recent Email',
     category: 'Communication',
     purpose: 'Show the email history on the Email page after a message has been sent',
-    usedIn: ['docs'],
   });
 
   test('email-dashboard-recent-sends', recentSends, async ({ page }, testInfo) => {
@@ -348,7 +344,6 @@ test.describe('Email history', () => {
     title: 'Recent Emails',
     category: 'Communication',
     purpose: 'Show the Recent Emails card on the Person View with the latest messages sent to this person',
-    usedIn: ['docs'],
   });
 
   test('email-history-recent-emails-card', recentCard, async ({ page }, testInfo) => {
@@ -365,7 +360,6 @@ test.describe('Email history', () => {
     title: 'Email History',
     category: 'Communication',
     purpose: 'Show the full Email History page for a person, newest first',
-    usedIn: ['docs'],
   });
 
   test('email-history-show-all', showAll, async ({ page }, testInfo) => {
@@ -379,7 +373,6 @@ test.describe('Email history', () => {
     title: 'Timeline Filters',
     category: 'Communication',
     purpose: 'Show the Notes, Events, Emails and System filter chips on the person timeline, with Emails selected',
-    usedIn: ['docs'],
   });
 
   test('email-history-timeline-filter', timelineFilter, async ({ page }, testInfo) => {

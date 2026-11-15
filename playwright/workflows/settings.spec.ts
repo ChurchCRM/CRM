@@ -35,7 +35,6 @@ test.describe('Settings', () => {
       title: 'People Settings',
       category: 'Admin & Settings',
       purpose: 'Show the People settings hub — list shortcuts and auto-saving settings in one place',
-      usedIn: ['docs'],
     });
   });
 

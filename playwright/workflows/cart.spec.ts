@@ -39,7 +39,6 @@ const cartFunctionsBar = defineCapture({
   title: 'Cart Functions',
   category: 'People & Families',
   purpose: 'Show the Cart Functions bar: Empty, To Group, To Family, Check In, Map, Tags, Labels, Email and Directory',
-  usedIn: ['docs'],
 });
 
 test('cart-functions-bar', cartFunctionsBar, async ({ page }, testInfo) => {

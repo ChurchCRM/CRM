@@ -71,7 +71,7 @@ function initializeGroupList() {
         data: "Name",
         render: (data, type, full, meta) => {
           const nameLink = document.createElement("a");
-          nameLink.href = `${window.CRM.root}/groups/view/${full.Id}`;
+          nameLink.href = full.viewUri;
           nameLink.textContent = data;
           return nameLink.outerHTML;
         },
@@ -125,8 +125,8 @@ function initializeGroupList() {
           const hasMembers = full.memberCount > 0;
           const cartBtn = hasMembers
             ? inCart
-              ? `<button class="dropdown-item text-danger RemoveFromCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="fa-solid fa-cart-arrow-down me-2"></i><span class="cart-label">${i18next.t("Remove all from Cart")}</span></button>`
-              : `<button class="dropdown-item AddToCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add all to Cart")}" data-label-remove="${i18next.t("Remove all from Cart")}"><i class="fa-solid fa-cart-plus me-2"></i><span class="cart-label">${i18next.t("Add all to Cart")}</span></button>`
+              ? `<button class="dropdown-item text-danger RemoveFromCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add All to Cart")}" data-label-remove="${i18next.t("Remove All from Cart")}"><i class="fa-solid fa-cart-arrow-down me-2"></i><span class="cart-label">${i18next.t("Remove All from Cart")}</span></button>`
+              : `<button class="dropdown-item AddToCart" data-cart-id="${full.Id}" data-cart-type="group" data-label-add="${i18next.t("Add All to Cart")}" data-label-remove="${i18next.t("Remove All from Cart")}"><i class="fa-solid fa-cart-plus me-2"></i><span class="cart-label">${i18next.t("Add All to Cart")}</span></button>`
             : "";
           const escapedName = window.CRM.escapeAttribute(full.Name || "");
           // Volunteer v2 (D19): a group owned by a ministry is renamed and deleted from
@@ -150,7 +150,7 @@ function initializeGroupList() {
             '<i class="fa-solid fa-ellipsis-vertical"></i>' +
             "</button>" +
             '<div class="dropdown-menu dropdown-menu-end">' +
-            `<a class="dropdown-item" href="${window.CRM.root}/groups/view/${full.Id}"><i class="fa-solid fa-eye me-2"></i>${i18next.t("View")}</a>` +
+            `<a class="dropdown-item" href="${full.viewUri}"><i class="fa-solid fa-eye me-2"></i>${i18next.t("View")}</a>` +
             editItem +
             (hasMembers ? '<div class="dropdown-divider"></div>' + cartBtn : "") +
             '<div class="dropdown-divider"></div>' +

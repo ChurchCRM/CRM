@@ -122,7 +122,6 @@ test.describe('Volunteer Management v2', () => {
       title: 'Volunteer Management Settings',
       category: 'Admin & Settings',
       purpose: 'Show the Ministry Settings page: reminder and alert timing, the scheduling horizon and the background-job and delivery status.',
-      usedIn: ['docs'],
     });
   });
 

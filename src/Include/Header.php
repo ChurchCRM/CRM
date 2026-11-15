@@ -278,7 +278,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
         $nativeName  = $localeInfo->getNativeName();
         $englishName = $localeInfo->getName();
         $hasNative   = $nativeName !== '' && $nativeName !== $englishName;
-        $localeUrl   = SystemURLs::getRootPath() . '/v2/user/' . $currentUser->getId() . '#tab-localization';
+        $localeUrl   = SystemURLs::getRootPath() . '/account#tab-localization';
         ?>
         <div class="nav-item ms-1">
           <a class="nav-link px-0" href="<?= InputUtils::escapeAttribute($localeUrl) ?>"
@@ -315,8 +315,8 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <div class="dropdown-divider"></div>
             <a href="#" id="reportIssue" class="dropdown-item"
                data-bs-toggle="modal" data-bs-target="#IssueReportModal"
-               title="<?= gettext('Report an issue') ?>">
-              <i class="fa-solid fa-bug me-2"></i><?= gettext('Report an issue') ?>
+               title="<?= gettext('Report an Issue') ?>">
+              <i class="fa-solid fa-bug me-2"></i><?= gettext('Report an Issue') ?>
             </a>
             <a href="https://discord.gg/tuWyFzj3Nj" target="_blank" class="dropdown-item"
                title="<?= gettext('Discord Chat') ?>">
@@ -375,10 +375,10 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
                class="dropdown-item">
               <i class="fa-solid fa-user me-2"></i><?= gettext("Profile") ?>
             </a>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/changepassword" class="dropdown-item">
+            <a href="<?= SystemURLs::getRootPath() ?>/account/password" class="dropdown-item">
               <i class="fa-solid fa-key me-2"></i><?= gettext('Change Password') ?>
             </a>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/user/<?= (int) $currentUser->getPersonId() ?>"
+            <a href="<?= SystemURLs::getRootPath() ?>/account"
                class="dropdown-item">
               <i class="fa-solid fa-cog me-2"></i><?= gettext('Change Settings') ?>
             </a>
@@ -387,7 +387,7 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
               <i class="fa-solid fa-church me-2"></i><?= gettext('Member Portal') ?>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="<?= SystemURLs::getRootPath() ?>/v2/user/current/manage2fa" class="dropdown-item">
+            <a href="<?= SystemURLs::getRootPath() ?>/account/2fa" class="dropdown-item">
               <i class="fa-solid fa-shield me-2"></i><?= gettext("Manage Two-Factor Authentication") ?>
             </a>
             <div class="dropdown-divider"></div>
@@ -536,7 +536,7 @@ if ($currentUser !== null):
           ),
           $_twoFADaysLeft
       )) ?>
-      <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/v2/user/current/manage2fa" class="alert-link ms-1">
+      <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath()) ?>/account/2fa" class="alert-link ms-1">
         <?= gettext('Set up now') ?>
       </a>
     </div>

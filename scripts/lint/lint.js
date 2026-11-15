@@ -57,6 +57,7 @@ const checks = {
     'upgrade locale list': script('lint/validate-upgrade-locales.js'),
     'supported databases': script('ci/sync-supported-databases.js', '--check'),
     'locale script tests': [node, ['--test', ...localeTests]],
+    'locale files in sync': [node, [path.join(root, 'locale', 'scripts', 'locale-apply.js'), '--check']],
     'tooling script tests': [node, ['--test', ...scriptTests]],
 };
 
