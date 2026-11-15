@@ -73,11 +73,11 @@ export const recordVolunteerAssignment = (personId, status) => {
         });
 };
 
-export const recordVolunteerResponse = (personId, status = "declined") =>
+export const recordVolunteerResponse = (personId, status = "declined", responderId = personId) =>
     recordVolunteerAssignment(personId, status).then(() =>
         query("SELECT vasg_ID FROM volunteer_assignment_vasg WHERE vasg_per_ID = ? ORDER BY vasg_ID DESC LIMIT 1", [personId]),
     ).then((rows) =>
-        query("INSERT INTO volunteer_response_vrsp (vrsp_vasg_ID, vrsp_per_ID, vrsp_Response, vrsp_ResponseDate) VALUES (?, ?, 'declined', NOW())", [rows[0].vasg_ID, personId]),
+        query("INSERT INTO volunteer_response_vrsp (vrsp_vasg_ID, vrsp_per_ID, vrsp_Response, vrsp_ResponseDate) VALUES (?, ?, 'declined', NOW())", [rows[0].vasg_ID, responderId]),
     );
 
 // What deletion may clear because nothing was ever delivered: a gap alert that
