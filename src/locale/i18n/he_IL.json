@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "שם המשתמש חייב להכיל %d תווים או פחות!",
   "Raised This Fiscal Year": "נאסף בשנת הכספים הנוכחית",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s חייב להיות כתובת אינטרנט מלאה בפורמט https://, לדוגמה https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "לחשבון יש הרשאות מוגבלות. יש לפנות למנהל המערכת.",
   "An error occurred while rendering the error page.": "אירעה שגיאה בעת הצגת דף השגיאה.",
   "Each address must start with https://": "כל כתובת חייבת להתחיל ב-https://",
   "Generate Labels": "צור מדבקות",

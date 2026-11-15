@@ -17258,10 +17258,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s తప్పనిసరిగా పూర్తి https:// వెబ్ చిరునామా అయి ఉండాలి, ఉదాహరణకు https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "ఖాతాకు పరిమిత అనుమతులు ఉన్నాయి. నిర్వాహకుడిని సంప్రదించండి."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "లోపం పేజీని రెండర్ చేస్తున్నప్పుడు ఒక లోపం సంభవించింది."
 

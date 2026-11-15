@@ -4189,7 +4189,6 @@
   "Login must be %d characters or fewer!": "Prijava mora imati %d znakova ili manje!",
   "Raised This Fiscal Year": "Prikupljeno ove fiskalne godine",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s mora biti potpuna https:// web adresa, na primjer https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "Račun ima ograničena dopuštenja. Obratite se administratoru.",
   "An error occurred while rendering the error page.": "Došlo je do greške prilikom prikazivanja stranice s greškom.",
   "Each address must start with https://": "Svaka adresa mora počinjati s https://",
   "Generate Labels": "Generiraj naljepnice",

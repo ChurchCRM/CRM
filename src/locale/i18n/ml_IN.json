@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "ലോഗിൻ %d അക്ഷരങ്ങളോ അതിൽ കുറവോ ആയിരിക്കണം!",
   "Raised This Fiscal Year": "ഈ സാമ്പത്തിക വർഷത്തിൽ സമാഹരിച്ചത്",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s ഒരു പൂർണ്ണമായ https:// വെബ് വിലാസം ആയിരിക്കണം, ഉദാഹരണത്തിന് https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "അക്കൗണ്ടിന് പരിമിതമായ അനുമതികൾ മാത്രമേയുള്ളൂ. ഒരു അഡ്മിനിസ്ട്രേറ്ററെ ബന്ധപ്പെടുക.",
   "An error occurred while rendering the error page.": "പിശക് പേജ് റെൻഡർ ചെയ്യുന്നതിനിടെ ഒരു പിശക് സംഭവിച്ചു.",
   "Each address must start with https://": "ഓരോ വിലാസവും https:// എന്ന് തുടങ്ങണം",
   "Generate Labels": "ലേബലുകൾ ജനറേറ്റ് ചെയ്യുക",

@@ -17331,10 +17331,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s 必须是完整的 https:// 网址，例如 https://example.org/yourchurch。"
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "账户权限受限，请联系管理员。"
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "渲染错误页面时发生错误。"
 

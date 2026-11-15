@@ -17299,10 +17299,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s deve essere un indirizzo web completo che inizi con https://, ad esempio https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "L'account ha permessi limitati. Contatta un amministratore."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "Si è verificato un errore durante il rendering della pagina di errore."
 

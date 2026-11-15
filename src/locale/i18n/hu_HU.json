@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "A bejelentkezési névnek legfeljebb %d karakterből kell állnia!",
   "Raised This Fiscal Year": "Gyűjtött összeg ebben a pénzügyi évben",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "A(z) %s teljes https:// webcímnek kell lennie, például: https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "A fiók korlátozott jogosultságokkal rendelkezik. Vegye fel a kapcsolatot egy rendszergazdával.",
   "An error occurred while rendering the error page.": "Hiba történt a hibaoldal megjelenítése közben.",
   "Each address must start with https://": "Minden címnek https://-vel kell kezdődnie",
   "Generate Labels": "Címkék generálása",

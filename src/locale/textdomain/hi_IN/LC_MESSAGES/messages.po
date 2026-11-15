@@ -17249,10 +17249,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s एक पूर्ण https:// वेब पता होना चाहिए, उदाहरण के लिए https://example.org/yourchurch।"
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "खाते की अनुमतियाँ सीमित हैं। किसी एडमिनिस्ट्रेटर से संपर्क करें।"
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "त्रुटि पेज प्रस्तुत करते समय एक त्रुटि हुई।"
 

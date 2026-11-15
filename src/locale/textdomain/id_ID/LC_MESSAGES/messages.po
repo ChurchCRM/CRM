@@ -17263,10 +17263,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s harus berupa alamat web https:// yang lengkap, misalnya https://example.org/gerejaanda."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Akun memiliki izin terbatas. Hubungi administrator."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "Terjadi kesalahan saat menampilkan halaman kesalahan."
 

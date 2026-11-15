@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "Ang Login ay dapat %d character o mas kaunti!",
   "Raised This Fiscal Year": "Naipong Halaga Ngayong Fiscal Year",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "Ang %s ay dapat kumpletong https:// web address, halimbawa https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "May limitadong pahintulot ang account. Makipag-ugnayan sa isang administrator.",
   "An error occurred while rendering the error page.": "May naganap na error habang ini-render ang error page.",
   "Each address must start with https://": "Ang bawat address ay dapat magsimula sa https://",
   "Generate Labels": "Bumuo ng mga Label",

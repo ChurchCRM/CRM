@@ -17232,10 +17232,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%sは完全なhttps://のウェブアドレスである必要があります。例: https://example.org/yourchurch"
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "アカウントの権限が制限されています。管理者にお問い合わせください。"
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "エラーページの表示中にエラーが発生しました。"
 

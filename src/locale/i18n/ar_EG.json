@@ -4234,7 +4234,6 @@
   "Login must be %d characters or fewer!": "يجب ألا يزيد اسم الدخول عن %d حرفًا!",
   "Raised This Fiscal Year": "المبلغ المجمّع في هذه السنة المالية",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "يجب أن يكون %s عنوان ويب كاملاً بصيغة https://‎، على سبيل المثال https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "الحساب لديه صلاحيات محدودة. يرجى التواصل مع أحد المسؤولين.",
   "An error occurred while rendering the error page.": "حدث خطأ أثناء عرض صفحة الخطأ.",
   "Each address must start with https://": "يجب أن يبدأ كل عنوان بـ https://",
   "Generate Labels": "إنشاء ملصقات",

@@ -17244,10 +17244,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s ต้องเป็นที่อยู่เว็บแบบเต็มรูปแบบ https:// เช่น https://example.org/yourchurch"
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "บัญชีมีสิทธิ์การใช้งานจำกัด กรุณาติดต่อผู้ดูแลระบบ"
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "เกิดข้อผิดพลาดขณะแสดงหน้าข้อผิดพลาด"
 

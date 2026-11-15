@@ -4159,7 +4159,6 @@
   "Login must be %d characters or fewer!": "Login harus %d karakter atau kurang!",
   "Raised This Fiscal Year": "Dana Terkumpul Tahun Fiskal Ini",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s harus berupa alamat web https:// yang lengkap, misalnya https://example.org/gerejaanda.",
-  "Account has limited permissions. Contact an administrator.": "Akun memiliki izin terbatas. Hubungi administrator.",
   "An error occurred while rendering the error page.": "Terjadi kesalahan saat menampilkan halaman kesalahan.",
   "Each address must start with https://": "Setiap alamat harus dimulai dengan https://",
   "Generate Labels": "Buat Label",

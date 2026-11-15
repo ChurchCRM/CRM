@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "Käyttäjätunnuksessa saa olla enintään %d merkkiä!",
   "Raised This Fiscal Year": "Kerätty kuluvana tilivuonna",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s:n on oltava täydellinen https://-verkko-osoite, esimerkiksi https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "Tilillä on rajoitetut käyttöoikeudet. Ota yhteyttä ylläpitäjään.",
   "An error occurred while rendering the error page.": "Virhesivun näyttämisessä tapahtui virhe.",
   "Each address must start with https://": "Jokaisen osoitteen on alettava https://",
   "Generate Labels": "Luo tarrat",

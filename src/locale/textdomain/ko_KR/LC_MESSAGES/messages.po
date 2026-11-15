@@ -17260,10 +17260,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s은(는) https://example.org/yourchurch 와 같은 전체 https:// 웹 주소여야 합니다."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "계정 권한이 제한되어 있습니다. 관리자에게 문의하세요."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "오류 페이지를 표시하는 중 오류가 발생했습니다."
 

@@ -17284,10 +17284,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s musí být úplná webová adresa https://, například https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Účet má omezená oprávnění. Kontaktujte administrátora."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "Při vykreslování chybové stránky došlo k chybě."
 

@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "உள்நுழைவு %d எழுத்துகளுக்கு மேல் இருக்கக்கூடாது!",
   "Raised This Fiscal Year": "இந்த நிதியாண்டில் திரட்டப்பட்ட தொகை",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s முழுமையான https:// இணைய முகவரியாக இருக்க வேண்டும், எடுத்துக்காட்டாக https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "கணக்கிற்கு வரையறுக்கப்பட்ட அனுமதிகள் உள்ளன. நிர்வாகியைத் தொடர்பு கொள்ளவும்.",
   "An error occurred while rendering the error page.": "பிழைப் பக்கத்தை காட்டும்போது பிழை ஏற்பட்டது.",
   "Each address must start with https://": "ஒவ்வொரு முகவரியும் https:// இல் தொடங்க வேண்டும்",
   "Generate Labels": "லேபிள்களை உருவாக்கு",

@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "መግቢያ ስም %d ወይም ከዚያ ያነሱ ፊደላት ሊኖረው ይገባል!",
   "Raised This Fiscal Year": "በዚህ በጀት ዓመት የተሰበሰበ መጠን",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s ሙሉ የ https:// ድረ-ገጽ አድራሻ መሆን አለበት፣ ለምሳሌ https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "መለያው የተገደበ ፈቃድ አለው። አስተዳዳሪን ያነጋግሩ።",
   "An error occurred while rendering the error page.": "የስህተት ገጹን በማሳየት ላይ ሳለ ስህተት ተከስቷል።",
   "Each address must start with https://": "እያንዳንዱ አድራሻ በ https:// መጀመር አለበት",
   "Generate Labels": "ስያሜዎችን ፍጠር",
