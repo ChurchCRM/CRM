@@ -4,12 +4,12 @@
  * #8672: a user's settings go away with the user.
  *
  * user_settings has a foreign key to user_usr with ON DELETE CASCADE, and the
- * 7.8.5 upgrade removes the rows earlier deletes left behind before it adds the
+ * 7.9.0 upgrade removes the rows earlier deletes left behind before it adds the
  * key. Foreign keys and the upgrade block have no HTTP surface, so this is a
  * schema spec (cypress/db-access.json): it reads the schema in SQL and runs the
- * shipped block of src/mysql/upgrade/7.8.5-user-settings-cascade.sql.
+ * shipped block of src/mysql/upgrade/7.9.0-user-settings-cascade.sql.
  */
-const BLOCK = { script: "7.8.5-user-settings-cascade.sql", block: "user settings follow their user" };
+const BLOCK = { script: "7.9.0-user-settings-cascade.sql", block: "user settings follow their user" };
 const PERSON = 83; // Terry Cooper: no seeded login, used by no other spec
 const NO_SUCH_USER = 999999;
 
@@ -59,7 +59,7 @@ describe("user_settings follow their user (#8672)", () => {
         settingsOf(PERSON).should("eq", 0);
     });
 
-    describe("the 7.8.5 upgrade", () => {
+    describe("the 7.9.0 upgrade", () => {
         let adminSettings;
 
         beforeEach(() => {

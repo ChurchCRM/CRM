@@ -23,7 +23,7 @@
         },
         "cypress/e2e/api/private/admin/private.admin.user-settings-cascade.spec.js": {
             "kind": "schema",
-            "reason": "Schema spec for #8672: the user_settings foreign key, its ON DELETE CASCADE and the 7.8.5 upgrade block that removes orphaned settings have no HTTP surface."
+            "reason": "Schema spec for #8672: the user_settings foreign key, its ON DELETE CASCADE and the 7.9.0 upgrade block that removes orphaned settings have no HTTP surface."
         },
         "cypress/e2e/api/private/standard/private.portal.signin-schema.spec.js": {
             "kind": "schema",

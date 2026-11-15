@@ -39,7 +39,7 @@ const db = (sql, params = []) =>
 // These upgrade fixtures recreate the pre-7.8.3 schema only for this spec.
 const restoreLegacyColumn = () => db("ALTER TABLE user_usr ADD COLUMN usr_EditSelf tinyint(1) unsigned NOT NULL DEFAULT 0");
 const dropLegacyColumn = () =>
-    cy.task("db:upgradeBlock", { script: "7.8.5-drop-editself.sql", block: "drop retired Edit Self column" }).its("error").should("be.null");
+    cy.task("db:upgradeBlock", { script: "7.9.0-drop-editself.sql", block: "drop retired Edit Self column" }).its("error").should("be.null");
 const runCutover = () => cy.task("db:upgradeBlock", CUTOVER).its("error").should("be.null");
 const config = (name) => cy.makePrivateAdminAPICall("GET", `${CONFIG_URL}/${name}`, null, 200).its("body.value");
 const setConfig = (name, value) => cy.makePrivateAdminAPICall("POST", `${CONFIG_URL}/${name}`, { value }, 200);
