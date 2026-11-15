@@ -137,7 +137,7 @@
     "scripts": [
       "/mysql/upgrade/7.8.5-user-settings-cascade.sql",
       "/mysql/upgrade/7.8.5-giving-statement-wording.sql",
-      "/mysql/upgrade/7.8.5-important-dates.sql"
+      "/mysql/upgrade/7.9.0-important-dates.sql"
     ],
     "dbVersion": "7.8.5"
   }
