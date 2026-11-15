@@ -61,6 +61,7 @@ describe("Group member contact details (#1827)", () => {
             CellPhone: "18275550456",
             NoFormat_CellPhone: "1",
         });
+        createMember("Partial", { City: "Personal City" });
         createMember("Empty", { Family: "0" });
     });
 
@@ -77,11 +78,23 @@ describe("Group member contact details (#1827)", () => {
             const person = (name) => body.Person2group2roleP2g2rs.find((m) => m.Person.FirstName === name).Person;
             expect(person("Inherited").Address1).to.equal(family.Address1);
             expect(person("Inherited").Address).to.include(family.Address1);
+            if (family.Address2) expect(person("Inherited").Address).to.include(family.Address2);
             expect(person("Inherited").HomePhone).to.equal(family.HomePhone);
             expect(person("Personal").Address1).to.equal("1827 Main & Oak");
             expect(person("Personal").Address).to.include("1827 Main & Oak");
             expect(person("Personal").HomePhone).to.equal("18275550123");
+            expect(person("Partial").Address1).to.equal(family.Address1);
+            expect(person("Partial").City).to.equal("Personal City");
+            expect(person("Partial").Address).to.include("Personal City");
+            if (family.City && family.City !== "Personal City") {
+                expect(person("Partial").Address).not.to.include(family.City);
+            }
+            if (family.SecondAddress1 || family.SecondCity) {
+                expect(person("Inherited").SecondaryAddress).not.to.equal("");
+            }
+            expect(person("Inherited").SecondaryIsMailing).to.be.a("boolean");
             expect(person("Empty").Address).to.equal("");
+            expect(person("Empty").SecondaryAddress).to.equal("");
             expect(person("Empty").HomePhone).to.equal("");
         });
         cy.request(`/api/person/${people[0]}`).its("body").then((person) => {
