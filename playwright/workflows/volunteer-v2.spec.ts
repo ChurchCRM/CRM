@@ -108,23 +108,6 @@ test.describe('Volunteer Management v2', () => {
     await removeVolunteerSeed(browser);
   });
 
-  test('volunteer-ministry-settings', async ({ page }, testInfo) => {
-    // Captured before the seed, so the delivery card has no queued messages to report.
-    await setVolunteerVersion(page, 'v2');
-    await page.goto('/admin/ministry-settings');
-    await expect(page.locator('#ministrySettingsPanel')).toBeVisible({ timeout: 30000 });
-    await expect(page.locator('#ministry-delivery-card')).toBeVisible();
-    await waitForFloatingButtonsToTuck(page);
-    await settle(page, 800);
-
-    await captureScreen(page, testInfo, {
-      name: 'volunteer-ministry-settings',
-      title: 'Volunteer Management Settings',
-      category: 'Admin & Settings',
-      purpose: 'Show the Ministry Settings page: reminder and alert timing, the scheduling horizon and the background-job and delivery status.',
-    });
-  });
-
   test('volunteer-ministry-dashboard', async ({ page }, testInfo) => {
     await ensureVolunteerSeed(page);
     await page.goto('/ministries/dashboard');

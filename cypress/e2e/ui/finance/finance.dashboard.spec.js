@@ -90,3 +90,44 @@ describe("Treasurer reviews payments by fund", () => {
         cy.get("#payments-by-fund-chart").should("not.exist");
     });
 });
+
+describe("Treasurer continues the open deposit from the dashboard", () => {
+    let depositId;
+
+    before(() => {
+        cy.setupAdminSession();
+        cy.request("POST", "/api/deposits", {
+            depositType: "Bank", depositComment: "Dashboard work card", depositDate: new Date().toISOString().slice(0, 10),
+        }).then(({ body }) => {
+            depositId = body.Id;
+        });
+    });
+
+    after(() => {
+        cy.setupAdminSession();
+        if (depositId) cy.request("DELETE", `/api/deposits/${depositId}`);
+    });
+
+    it("shows the open deposit with the next steps and the year-end status", () => {
+        cy.setupAdminSession();
+        cy.visit(`/finance/deposit/${depositId}`);
+        cy.visit("/finance/");
+        cy.get("#current-work").within(() => {
+            cy.contains(`#${depositId}`);
+            cy.contains("a", "Add Payment").should("have.attr", "href").and("include", `depositId=${depositId}`);
+            cy.contains("a", "Review and Close Deposit").should("have.attr", "href").and("include", `/finance/deposit/${depositId}`);
+            cy.contains("a", "Create Deposit");
+            cy.contains("a", "Add Pledge");
+        });
+        cy.get("#year-end-entry").within(() => {
+            cy.contains("a", "Prepare Giving Statements").should("have.attr", "href").and("include", "/finance/reports/year-end?year=");
+            cy.contains("a", "Statement Settings").should("have.attr", "href").and("include", "/finance/statements/settings");
+        });
+    });
+
+    it("lists the latest deposits whatever fiscal year is selected", () => {
+        cy.setupAdminSession();
+        cy.visit("/finance/?fyid=22");
+        cy.contains(".card-title", "Recent Deposits").parents(".card").find(`a[href$='/finance/deposit/${depositId}']`).should("exist");
+    });
+});

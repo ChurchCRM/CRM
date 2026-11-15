@@ -2447,10 +2447,6 @@ msgid "Deposit Reports"
 msgstr "รายงานการฝาก"
 
 #: 
-msgid "Edit Deposit Slip"
-msgstr "แก้ไขใบนำฝาก"
-
-#: 
 msgid "Create New Fundraiser"
 msgstr "สร้างการระดมทุนใหม่"
 
@@ -6040,14 +6036,6 @@ msgid "Close All Deposits"
 msgstr "ปิดการฝากทั้งหมด"
 
 #: 
-msgid "Closed vs Total"
-msgstr "ปิดเทียบกับทั้งหมด"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "ทำงานเหล่านี้เพื่อให้แน่ใจว่าการรายงานภาษีสิ้นปีสำหรับผู้บริจาคของคุณถูกต้อง"
-
-#: 
 msgid "Configure Email"
 msgstr "กำหนดค่าอีเมล"
 
@@ -6064,28 +6052,12 @@ msgid "Create First Deposit"
 msgstr "สร้างการฝากแรก"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "สร้างหรือเปิดการฝากก่อน"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "สร้างหรือเลือกการฝากเพื่อเริ่มต้น"
-
-#: 
-msgid "Current Deposit"
-msgstr "การฝากปัจจุบัน"
-
-#: 
 msgid "Day"
 msgstr "วัน"
 
 #: 
 msgid "Dec"
 msgstr "ธ.ค."
-
-#: 
-msgid "Deposit Statistics"
-msgstr "สถิติการฝาก"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6114,10 +6086,6 @@ msgstr "แก้ไขการชำระเงิน"
 #: 
 msgid "Edit Person"
 msgstr "แก้ไขบุคคล"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "ตรวจสอบให้แน่ใจว่าการฝากทั้งหมดสำหรับปีภาษีปิดแล้วก่อนสร้างใบแจ้ง"
 
 #: 
 msgid "F"
@@ -6224,10 +6192,6 @@ msgid "New Pledge"
 msgstr "คำมั่นสัญญาใหม่"
 
 #: 
-msgid "No Active Deposit"
-msgstr "ไม่มีการฝากที่ใช้งานอยู่"
-
-#: 
 msgid "No active funds configured."
 msgstr "ไม่มีกองทุนที่ใช้งานอยู่ที่กำหนดค่า"
 
@@ -6260,10 +6224,6 @@ msgid "Pledge Reports"
 msgstr "รายงานคำมั่นสัญญา"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "พิมพ์หรือส่งอีเมลใบแจ้งการให้ประจำปีถึงผู้บริจาคทั้งหมด"
-
-#: 
 msgid "Quick Actions"
 msgstr "การดำเนินการด่วน"
 
@@ -6294,10 +6254,6 @@ msgstr "กู้คืน"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "กู้คืนจากไฟล์สำรองข้อมูล ลบข้อมูลที่มีอยู่"
-
-#: 
-msgid "Review Donation Funds"
-msgstr "ตรวจสอบกองทุนบริจาค"
 
 #: 
 msgid "Save and Add New Family"
@@ -6336,14 +6292,6 @@ msgid "System Info"
 msgstr "ข้อมูลระบบ"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "ถ้อยคำรายงานภาษี"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "รายการตรวจสอบการรายงานปีภาษี"
-
-#: 
 msgid "Total"
 msgstr "ทั้งหมด"
 
@@ -6364,10 +6312,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "ผู้ใช้ต้องเป็นผู้ดูแลระบบหรือมีสิทธิ์การเงิน"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "ยืนยันว่าชื่อและคำอธิบายกองทุนถูกต้องสำหรับใบแจ้ง"
-
-#: 
 msgid "YTD Payments"
 msgstr "การชำระเงิน YTD"
 
@@ -6384,20 +6328,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ต้องมีส่วนขยาย ZipArchive สำหรับการอัปเกรด"
 
 #: 
-msgid "active"
-msgstr "ใช้งานอยู่"
-
-#: 
 msgid "found"
 msgstr "พบ"
 
 #: 
 msgid "issues"
 msgstr "ปัญหา"
-
-#: 
-msgid "open"
-msgstr "เปิด"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15374,10 +15310,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "การแปล ChurchCRM ดูแลโดยชุมชนบน POEditor คุณสามารถช่วยได้โดย"
 
 #: 
-msgid "Closed Deposits"
-msgstr "เงินฝากที่ปิดแล้ว"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "ค่า $URL[0] ปัจจุบัน"
 
@@ -15516,10 +15448,6 @@ msgstr "การตั้งค่าระบบ"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "มีคนถูกกำหนดให้กับโอกาสอาสาสมัครนี้ การลบจะยกเลิกการกำหนด"
-
-#: 
-msgid "Total Deposits"
-msgstr "เงินฝากทั้งหมด"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -23949,10 +23877,6 @@ msgid "%s Giving Statement"
 msgstr "ใบแจ้งการถวาย %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "ปรับแต่งข้อความที่ปรากฏบนใบแจ้งการถวาย (sTaxReport1, sTaxReport2 ฯลฯ)"
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -23975,10 +23899,6 @@ msgstr "ส่งใบแจ้งการถวาย %s ทางอีเ�
 #: 
 msgid "Envelope Numbers"
 msgstr "หมายเลขซอง"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "สร้างใบแจ้งการถวาย"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24019,10 +23939,6 @@ msgstr "ส่งใบแจ้งการถวายทางอีเมล
 #: 
 msgid "Undesignated"
 msgstr "ไม่ได้ระบุกองทุน"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "ตรวจว่าชื่อ ที่อยู่ และข้อมูลติดต่อของคริสตจักรปรากฏบนใบแจ้งการถวาย"
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24237,10 +24153,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "การชำระเงิน %d รายการยังไม่อยู่ในรายการนำฝากใด"
 
 #: 
-msgid "Can be emailed"
-msgstr "ส่งอีเมลได้"
-
-#: 
 msgid "Closing line"
 msgstr "บรรทัดปิด"
 
@@ -24269,16 +24181,8 @@ msgid "Opening line"
 msgstr "บรรทัดเปิด"
 
 #: 
-msgid "Print and mail"
-msgstr "พิมพ์และส่งไปรษณีย์"
-
-#: 
 msgid "Qty"
 msgstr "จำนวน"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "ตรวจทานปีนั้น แล้วพิมพ์หรือส่งใบแจ้งการถวายทางอีเมล"
 
 #: 
 msgid "Signed by"
@@ -24287,10 +24191,6 @@ msgstr "ลงนามโดย"
 #: 
 msgid "Thank-you line"
 msgstr "บรรทัดขอบคุณ"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "ตรวจว่าชื่อ ที่อยู่ และข้อมูลติดต่อของคริสตจักรปรากฏบนใบแจ้งภาษี"
 
 #: 
 msgid "Year-End Giving"

@@ -88,7 +88,8 @@
 
     # Uploaded photos are served only through the authenticated API
     # (/api/person/{id}/photo, /api/family/{id}/photo). See GHSA-r286-h493-ppwj.
-    @photos path /Images/Person /Images/Person/* /Images/Family /Images/Family/*
+    # The private tax signature is served only by /admin/api/system/tax-signature/image.
+    @photos path /Images/Person /Images/Person/* /Images/Family /Images/Family/* /Images/TaxSignatures /Images/TaxSignatures/*
     respond @photos 404
 
     # Images/ serves only safe image types plus the bundled brand SVGs. Caddy does
@@ -245,7 +246,7 @@
 #     respond @portalRoutes 404
 #     @pluginPhp path_regexp pluginphp (?i)^/churchcrm/plugins/(community|core)/.+\.(php|phar|phtml|pht|php[3-9])$
 #     respond @pluginPhp 404
-#     @photos path /churchcrm/Images/Person /churchcrm/Images/Person/* /churchcrm/Images/Family /churchcrm/Images/Family/*
+#     @photos path /churchcrm/Images/Person /churchcrm/Images/Person/* /churchcrm/Images/Family /churchcrm/Images/Family/* /churchcrm/Images/TaxSignatures /churchcrm/Images/TaxSignatures/*
 #     respond @photos 404
 #     @imagesUnsafe {
 #         path /churchcrm/Images/*
