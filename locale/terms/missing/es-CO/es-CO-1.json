@@ -31,6 +31,7 @@
   "Cannot create the private tax signature file. Check that the storage folder is writable.": "",
   "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting.": "",
   "Cannot encode the private tax signature.": "",
+  "Cannot move field in that direction": "",
   "Cannot read the private tax signature.": "",
   "Cannot remove the private signature.": "",
   "Cannot remove the private tax signature file.": "",
@@ -40,6 +41,7 @@
   "Change role of selected members: {{total}}": "",
   "Church Fiscal Year": "",
   "ChurchCRM System Check": "",
+  "Custom field not found": "",
   "Delete people and families": "",
   "Delete the login for": "",
   "Deposit chart time range": "",
@@ -58,6 +60,8 @@
   "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved.": "",
   "Events are turned off for this church": "",
   "Exit fullscreen": "",
+  "Failed to delete custom field": "",
+  "Failed to move custom field": "",
   "Fair": "",
   "Families that pledged for %s and have no pledge for %s.": "",
   "Families with at least one member in": "",
@@ -107,7 +111,6 @@
   "Private Canadian giving-statement signature asset identifier. Managed by signature upload.": "",
   "Property Type": "",
   "Provide only PNG or JPEG signature image data.": "",
-  "Register your church": "",
   "Report Issue": "",
   "Requirement": "",
   "Return Home": "",
@@ -157,8 +160,5 @@
   "View people and families": "",
   "Volunteer Management is turned off for this church": "",
   "Weak": "",
-  "What this account can do right now (read-only)": "",
-  "You must select a class": "",
-  "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31.": "",
-  "system user API key regenerated": ""
+  "What this account can do right now (read-only)": ""
 }

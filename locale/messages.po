@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-15 23:07+0000\n"
+"POT-Creation-Date: 2026-11-15 23:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2926,6 +2926,9 @@ msgstr ""
 msgid "Cannot execute query."
 msgstr ""
 
+msgid "Cannot move field in that direction"
+msgstr ""
+
 msgid "Cannot move property in that direction"
 msgstr ""
 
@@ -4537,6 +4540,9 @@ msgid "Custom Person Fields Editor"
 msgstr ""
 
 msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr ""
+
+msgid "Custom field not found"
 msgstr ""
 
 msgid "Custom fields and properties are supported"
@@ -6694,6 +6700,9 @@ msgstr ""
 msgid "Failed to delete class. Please try again."
 msgstr ""
 
+msgid "Failed to delete custom field"
+msgstr ""
+
 msgid "Failed to delete donation fund"
 msgstr ""
 
@@ -6839,6 +6848,9 @@ msgid "Failed to load recipients. Please try again."
 msgstr ""
 
 msgid "Failed to load recovery codes. Please refresh the page."
+msgstr ""
+
+msgid "Failed to move custom field"
 msgstr ""
 
 msgid "Failed to move donations."
@@ -14045,9 +14057,6 @@ msgid "Register another family"
 msgstr ""
 
 msgid "Register walk-in guest"
-msgstr ""
-
-msgid "Register your church"
 msgstr ""
 
 msgid "Register your family"
