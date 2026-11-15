@@ -169,8 +169,12 @@ describe("Admin - Report Settings page", () => {
 describe("Private Canadian giving-statement signature", () => {
     const endpoint = "/admin/api/system/tax-signature";
     let originalImage = null;
+    let originalStoragePath;
 
     before(() => {
+        cy.getSystemConfig("sTaxSignatureStoragePath").then((value) => {
+            originalStoragePath = value;
+        });
         cy.makePrivateAdminAPICall("GET", endpoint, null, 200).then(({ body }) => {
             if (body.hasSignature) {
                 cy.readEnv("admin.api.key").then((key) => {
@@ -185,6 +189,7 @@ describe("Private Canadian giving-statement signature", () => {
     beforeEach(() => cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200));
 
     after(() => {
+        cy.restoreSystemConfig("sTaxSignatureStoragePath", originalStoragePath);
         if (originalImage !== null) {
             cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${originalImage}` }, 200);
         } else {
@@ -250,7 +255,7 @@ describe("Private Canadian giving-statement signature", () => {
         const setting = "sTaxSignatureStoragePath";
         const upload = (status) =>
             cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${LETTERHEAD_PNG_BASE64}` }, status);
-        cy.getSystemConfig(setting).then((original) => {
+        cy.then(() => {
             cy.setSystemConfig(setting, `/tmp/churchcrm-tax-signatures-${Date.now()}`);
             upload(200);
             cy.makePrivateAdminAPICall("GET", endpoint, null, 200).its("body.hasSignature").should("eq", true);
@@ -264,7 +269,7 @@ describe("Private Canadian giving-statement signature", () => {
                 cy.setSystemConfig(setting, value);
                 upload(500).its("body.message").should("include", message);
             }
-            cy.restoreSystemConfig(setting, original);
+            cy.restoreSystemConfig(setting, originalStoragePath);
         });
         upload(200);
         cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200);

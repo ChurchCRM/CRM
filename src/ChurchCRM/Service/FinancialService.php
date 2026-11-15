@@ -936,7 +936,7 @@ class FinancialService
             'ytdPaymentCount'  => $this->getYtdPaymentCount($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdDonorFamilies' => $this->getYtdDonorFamilyCount($fiscalYear['startDate'], $fiscalYear['endDate']),
             'currentDeposit'   => $currentDeposit,
-            'currentDepositId' => $this->getCurrentDepositId(),
+            'currentDepositId' => $currentDeposit?->getId(),
         ];
     }
 

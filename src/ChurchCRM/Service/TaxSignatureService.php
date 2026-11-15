@@ -59,6 +59,13 @@ HTACCESS;
         if (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory)) {
             throw new ImageStorageException(sprintf(gettext('Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting.'), $directory));
         }
+        if ($configured !== '') {
+            $created = realpath($directory);
+            if ($created === false || str_starts_with($created . DIRECTORY_SEPARATOR, $root . DIRECTORY_SEPARATOR)) {
+                throw new ImageStorageException(gettext('The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder.'));
+            }
+            $directory = $created;
+        }
         clearstatcache(true, $directory);
         if (!is_writable($directory)) {
             throw new ImageStorageException(sprintf(gettext('The tax signature storage folder %s is not writable by the web server.'), $directory));

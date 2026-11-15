@@ -182,7 +182,7 @@ $sRootPath = SystemURLs::getRootPath();
                         <?php foreach ($paymentsByFund as $fund): ?>
                         <tr data-fund-id="<?= (int) $fund['fundId'] ?>">
                             <th scope="row" class="text-break">
-                                <a href="<?= $sRootPath ?>/finance/fund/<?= (int) $fund['fundId'] ?>/contributors"><?= InputUtils::escapeHTML($fund['name']) ?></a>
+                                <a href="<?= $sRootPath ?>/finance/fund/<?= (int) $fund['fundId'] ?>/contributors?fyid=<?= (int) $selectedFyid ?>"><?= InputUtils::escapeHTML($fund['name']) ?></a>
                             </th>
                             <td class="text-end text-nowrap"><?= CurrencyFormatter::formatHtml($fund['amount']) ?></td>
                         </tr>

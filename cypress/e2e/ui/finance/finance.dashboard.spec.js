@@ -103,6 +103,11 @@ describe("Treasurer continues the open deposit from the dashboard", () => {
         });
     });
 
+    after(() => {
+        cy.setupAdminSession();
+        if (depositId) cy.request("DELETE", `/api/deposits/${depositId}`);
+    });
+
     it("shows the open deposit with the next steps and the year-end status", () => {
         cy.setupAdminSession();
         cy.visit(`/finance/deposit/${depositId}`);
