@@ -7991,10 +7991,6 @@ msgid "Calendar not found"
 msgstr "Kalender ikke funnet"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Fortsett til dashbord"
-
-#: 
 msgid "Current Password"
 msgstr "Gjeldende passord"
 
@@ -11366,10 +11362,6 @@ msgid "Yellow"
 msgstr "Gul"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Dine nåværende tilgangsnivåer (skrivebeskyttet)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d gjentakende arrangement ble opprettet."
@@ -13901,10 +13893,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vennligst bekreft deaktivering av totrinnsverifisering for denne brukeren"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Vennligst bekreft fjerning av brukeren status fra"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Vennligst bekreft nullstilling av antall mislykkede pålogginger"
 
@@ -14715,10 +14703,6 @@ msgstr "Tilgang"
 #: 
 msgid "Access level"
 msgstr "Tilgangsnivå"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Administratorer har full tilgang til alle funksjoner og data. Individuelle tillatelser gjelder ikke."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

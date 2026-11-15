@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Kung burahin mo ang uri na ito, aalisin mo rin ang lahat ng mga katangian na gumagamit nito at mawawala ang anumang kaukulang mga takda ng katangian.",
   "Move Donations to Selected Family": "Ilipat ang mga Donasyon sa Napiling Pamilya",
   "Calendar not found": "Hindi nahanap ang kalendaryo",
-  "Continue to Dashboard": "Magpatuloy sa Dashboard",
   "Current Password": "Kasalukuyang Password",
   "Deposit not found": "Hindi nahanap ang deposito",
   "Group not found": "Hindi nahanap ang grupo",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "Ang bersyon %s ay available na. Mangyaring i-upgrade ang inyong installation.",
   "View All": "Tingnan Lahat",
   "Yellow": "Dilaw",
-  "Your current access levels (read-only)": "Inyong kasalukuyang antas ng access (read-only)",
   "%d repeat event created successfully.": {
     "one": "%d paulit-ulit na kaganapan ay matagumpay na nalilikha.",
     "other": "%d paulit-ulit na kaganapan ay matagumpay na nalilikha."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Pakikumpirma ang pag-deactivate ng pamilya",
   "Please confirm deletion of this group record": "Pakikumpirma ang pagbubura ng rekord ng grupong ito",
   "Please confirm disabling 2 Factor Auth for this user": "Pakikumpirma ang pag-disable ng 2 Factor Auth para sa user na ito",
-  "Please confirm removal of user status from": "Pakikumpirma ang pag-alis ng katayuan ng user mula sa",
   "Please confirm reset failed login count": "Pakikumpirma ang pag-reset ng bilang ng bagsak na login",
   "Please confirm the password reset of this user": "Pakikumpirma ang pag-reset ng password ng user na ito",
   "Please enter a valid URL": "Pakipasok ng wastong URL",
@@ -3507,7 +3504,6 @@
   "%s's Account": "Account ni %s",
   "Access": "Access",
   "Access level": "Antas ng access",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Ang mga administrador ay may buong access sa lahat ng tampok at datos. Hindi naaangkop ang mga indibidwal na pahintulot.",
   "All users can view congregation members. This permission cannot be removed.": "Ang lahat ng mga gumagamit ay makakatingin ng mga miyembro ng kongregasyon. Hindi maaaring alisin ang pahintulot na ito.",
   "Always granted": "Palaging ibinibigay",
   "Choose specific permissions below.": "Pumili ng mga tiyak na pahintulot sa ibaba.",

@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Kui kustutate selle tüübi, eemaldate ka kõik sellega seotud omadused ja kaotate vastavad omaduste määramised.",
   "Move Donations to Selected Family": "Liiguta Annetused Valitud Perekonnale",
   "Calendar not found": "Kalendrit ei leitud",
-  "Continue to Dashboard": "Jätka Töölauaga",
   "Current Password": "Praegune Parool",
   "Deposit not found": "Deposiiti ei leitud",
   "Group not found": "Rühma ei leitud",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "Versioon %s on saadaval. Palun uuendage oma paigaldust.",
   "View All": "Vaata kõiki",
   "Yellow": "Kollane",
-  "Your current access levels (read-only)": "Teie praegused juurdepääsutasemed (ainult lugemine)",
   "%d repeat event created successfully.": {
     "one": "%d korduv sündmus loodi edukalt.",
     "other": "%d korduvat sündmust loodi edukalt."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Kinnitage pere deaktiveerimine",
   "Please confirm deletion of this group record": "Kinnitage selle grupi kirje kustutamine",
   "Please confirm disabling 2 Factor Auth for this user": "Palun kinnitage, et keelataa selle kasutaja 2 Faktori Autoriseerimine",
-  "Please confirm removal of user status from": "Kinnitage kasutaja oleku eemaldamine saidist",
   "Please confirm reset failed login count": "Palun kinnitage nurjunud sisselogimiste arvu lähtestamine",
   "Please confirm the password reset of this user": "Kinnitage selle kasutaja parooli lähtestamine",
   "Please enter a valid URL": "Palun sisestage kehtiv URL",
@@ -3507,7 +3504,6 @@
   "%s's Account": "%s konto",
   "Access": "Juurdepääs",
   "Access level": "Juurdepääsu tase",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Administraatoritel on täielik juurdepääs kõikidele funktsioonidele ja andmetele. Individuaalsed load ei kehti.",
   "All users can view congregation members. This permission cannot be removed.": "Kõik kasutajad saavad vaadata koguduse liikmeid. Seda luba ei saa eemaldada.",
   "Always granted": "Alati antud",
   "Choose specific permissions below.": "Valige allpool konkreetsed load.",

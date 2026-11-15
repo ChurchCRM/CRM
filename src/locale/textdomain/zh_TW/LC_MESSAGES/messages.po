@@ -8053,10 +8053,6 @@ msgid "Calendar not found"
 msgstr "找不到行事曆"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "繼續前往儀表板"
-
-#: 
 msgid "Current Password"
 msgstr "目前密碼"
 
@@ -11427,10 +11423,6 @@ msgid "Yellow"
 msgstr "黃色"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "您目前的存取權限（唯讀）"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d 個重複事件建立成功。"
@@ -13961,10 +13953,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "請確認為此用戶禁用雙重認證"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "請確認刪除的用戶狀態"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "請確認重置登入失敗次數"
 
@@ -14774,10 +14762,6 @@ msgstr "存取權限"
 #: 
 msgid "Access level"
 msgstr "存取層級"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "管理員擁有所有功能和資料的完整存取權限，個別權限設定不適用。"
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."
