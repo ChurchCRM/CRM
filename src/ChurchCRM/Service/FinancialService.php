@@ -689,6 +689,7 @@ class FinancialService
     {
         $query = DepositQuery::create()
             ->orderByDate(Criteria::DESC)
+            ->orderById(Criteria::DESC)
             ->limit($limit);
 
         if ($fyid !== null && $fyid > 0) {
