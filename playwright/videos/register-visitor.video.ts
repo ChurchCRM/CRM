@@ -10,7 +10,7 @@ test('register-first-time-visitor', async ({ page }, testInfo) => {
   await humanType(page.locator('#LastName'), 'Morgan');
   await humanType(page.locator('#Email'), 'avery.morgan@demo.churchcrm.io');
   await humanSelect(page.locator('#Classification'), { label: 'Guest' });
-  await humanClick(page.locator('button[name="PersonSubmit"]'));
+  await humanClick(page.locator('button[name="personSubmit"]'));
   await page.waitForURL(/\/people\/view\/\d+/);
   await expect(page.locator('h2')).toContainText('Avery Morgan');
   await expect(page.getByText('Guest', { exact: true }).first()).toBeVisible();

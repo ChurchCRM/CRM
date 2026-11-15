@@ -80,8 +80,8 @@ async function setPersonEmail(page: Page, personId: number, email: string): Prom
       const form = doc.querySelector<HTMLFormElement>('form:has([name="email"])');
       if (!form) return 0;
       const data = new FormData(form);
-      data.set('Email', email);
-      data.set('PersonSubmit', 'Save');
+      data.set('email', email);
+      data.set('personSubmit', 'Save');
       const res = await fetch(`/people/person/editor?personId=${personId}`, {
         method: 'POST',
         body: data,

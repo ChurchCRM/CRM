@@ -45,9 +45,9 @@ describe("Person view birthday today", () => {
     it("shows no callout for a deceased person", () => {
         createPerson(birthdayOn(new Date(), "Dorothy")).then((personId) => {
             cy.get("#person-birthday-today").should("be.visible");
-            cy.visit(`/PersonEditor.php?PersonID=${personId}`);
+            cy.visit(`/people/person/editor?personId=${personId}`);
             cy.get("#IsDeceased").check();
-            cy.get("button[name='PersonSubmit']").click();
+            cy.get("button[name='personSubmit']").click();
             cy.url().should("include", `/people/view/${personId}`);
             cy.contains(".badge", "Deceased").should("be.visible");
             cy.get("#person-birthday-today").should("not.exist");
