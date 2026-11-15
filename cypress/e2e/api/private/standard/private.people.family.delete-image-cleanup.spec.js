@@ -61,7 +61,14 @@ describe("API Private - Family delete cleans up image files (#1697)", () => {
     // The test deletes the family itself; this only runs the cleanup when a
     // step before that delete failed, so nothing is left in the test database.
     after(() => {
+        // Clean up only the family/person created by this spec. A failed
+        // assertion may leave upload audit notes behind, which otherwise
+        // block the cleanup helper's deletion request.
+        if (personId) {
+            cy.then(() => resetDeletionFixtureAudit(personId, "photo"));
+        }
         if (familyId) {
+            cy.then(() => resetFamilyDeletionFixtureAudit(familyId, "photo"));
             cy.cleanupFamilies([familyId]);
         }
     });
