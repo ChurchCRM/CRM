@@ -54,6 +54,7 @@ class GroupReportService
             $query->filterByRoleId($roleId);
         }
         $personQuery = $query->joinWithPerson()->usePersonQuery()
+            ->leftJoinWithFamily()
             ->filterByNeedsReview(false)
             ->orderByLastName()
             ->orderByFirstName();
