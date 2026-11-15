@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 /**
- * Tests for a zero-permission user (all flags = 0, including usr_EditSelf=0).
+ * Tests for a zero-permission user (all flags = 0).
  *
  * Seed data: user "noperm.user" (person ID 901, family 1 — Campbell) has every
  * permission flag set to 0: AddRecords=0, EditRecords=0, DeleteRecords=0,

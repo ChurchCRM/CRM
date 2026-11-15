@@ -8,17 +8,8 @@
  * that was present before PR #8964 introduced object-level authorization.
  *
  * Test user: john.plainauth (user ID 900, `plainauth.api.key`)
- *   - Permissions: Notes=1 only (Admin=0, EditRecords=0, EditSelf=0, AddRecords=0)
- *   - Not being EditSelf-exclusive, this user passes the AuthMiddleware entry gate
- *     (User::isEditSelfExclusive() is false for non-EditSelf users).
- *   - No EditSelf flag, so canViewFamily() / canReadPerson() must grant access via the
- *     read-default baseline (canReadFamily() / canReadPerson() both return true).
- *
- * Side-effect (intentional): Notes=1 users can also POST notes to any family/person
- * because canReadFamily() (and canViewFamily()) now returns true for all authenticated
- * users, and NotesRoleAuthMiddleware checks only the Notes flag. This is correct
- * behavior — Notes permission has always implied "can write notes"; the read-default
- * policy simply removes the accidental read-block for non-EditSelf users.
+ *   - Permissions: Notes=1 only (Admin=0, EditRecords=0, AddRecords=0).
+ *   - Staff can read people and families; person note writes also require Edit Records.
  */
 describe("Read-default policy — plain authenticated user can read any family/person", () => {
     // -----------------------------------------------------------------------
@@ -68,11 +59,11 @@ describe("Read-default policy — plain authenticated user can read any family/p
 
     // -----------------------------------------------------------------------
     // POST /api/person/{personId}/note — write still requires edit permission
-    // Plain-auth user has Notes=1 but no EditSelf/EditRecords, so canEditPerson()
+    // Plain-auth user has Notes=1 but no EditRecords, so canEditPerson()
     // returns false → POST /person/{id}/note must be blocked (403).
     // -----------------------------------------------------------------------
     describe("POST /api/person/{personId}/note - write requires edit permission", () => {
-        it("plain-auth user (no EditSelf/EditRecords) CANNOT create note on person 2 → 403", () => {
+        it("plain-auth user (no EditRecords) CANNOT create note on person 2 → 403", () => {
             cy.makePrivatePlainAuthAPICall(
                 "POST",
                 "/api/person/2/note",
@@ -176,7 +167,7 @@ describe("Read-default policy — plain authenticated user can read any family/p
     // returns true for all authenticated users (read-default policy). This is
     // correct behavior: the Notes flag has always meant "can write notes";
     // the read-default policy only removes the accidental block for users without
-    // EditSelf/EditRecords. FamilyMiddleware passes, NotesRoleAuthMiddleware
+    // EditRecords. FamilyMiddleware passes, NotesRoleAuthMiddleware
     // passes (Notes=1), so POST succeeds.
     // -----------------------------------------------------------------------
     describe("POST /api/family/{familyId}/note - Notes=1 user can write notes (intentional side-effect)", () => {

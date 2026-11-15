@@ -226,7 +226,7 @@ class UserService
     public function normalizeAccessMode(array $body): array
     {
         return array_merge(
-            ['admin' => ($body['accessMode'] ?? 'custom') === 'admin' ? 1 : 0, 'editSelf' => 0],
+            ['admin' => ($body['accessMode'] ?? 'custom') === 'admin' ? 1 : 0],
             $this->extractModulePerms($body)
         );
     }
@@ -316,8 +316,7 @@ class UserService
                 ->setNotes($perms['notes'])
                 ->setAdmin($perms['admin'])
                 ->setDefaultFY($defaultFY)
-                ->setUserName($userName)
-                ->setEditSelf($perms['editSelf']);
+                ->setUserName($userName);
             $newUser->updatePassword($rawPassword);
             $newUser->save();
             // Always write an explicit TRUE/FALSE bAddEvent row for the new user
@@ -431,8 +430,7 @@ class UserService
             ->setManageMyMinistries($perms['manageMyMinistries'])
             ->setNotes($perms['notes'])
             ->setAdmin($perms['admin'])
-            ->setUserName($userName)
-            ->setEditSelf($perms['editSelf']);
+            ->setUserName($userName);
         $user->save();
         $user->reload();
         $user->createTimeLineNote('updated');
