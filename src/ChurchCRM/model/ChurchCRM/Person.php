@@ -856,6 +856,10 @@ class Person extends BasePerson implements PhotoInterface
             $user->delete($con);
         }
 
+        // Onboarding answers are profile data rather than protected history.
+        // The legacy whycame_why table has no physical FK on person_per.
+        \ChurchCRM\model\ChurchCRM\WhyCameQuery::create()->filterByPerId($this->getId())->delete($con);
+
         PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->delete($con);
 
         PropertyQuery::create()
