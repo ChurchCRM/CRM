@@ -45,6 +45,16 @@ final class AnnualDate
         return $this->month !== null;
     }
 
+    public function getMonth(): ?int
+    {
+        return $this->month;
+    }
+
+    public function getDay(): ?int
+    {
+        return $this->day;
+    }
+
     public function getYear(): ?int
     {
         return $this->year;
@@ -108,14 +118,7 @@ final class AnnualDate
         $todayNumber = self::dayNumber($today);
         $currentYear = (int) $today->format('Y');
 
-        $upcoming = null;
-        for ($year = $currentYear; $year <= $currentYear + self::SEARCH_YEARS; $year++) {
-            $occurrence = $this->occurrenceInYear($year);
-            if ($occurrence !== null && self::dayNumber($occurrence) >= $todayNumber) {
-                $upcoming = self::dayNumber($occurrence) - $todayNumber;
-                break;
-            }
-        }
+        $upcoming = $this->daysUntilNext($today);
 
         $recent = null;
         for ($year = $currentYear; $year >= $currentYear - self::SEARCH_YEARS; $year--) {
@@ -134,6 +137,26 @@ final class AnnualDate
         }
 
         return $upcoming <= -$recent ? $upcoming : $recent;
+    }
+
+    /** Days to the next observed occurrence, today included (0); null when there is no month/day. */
+    public function daysUntilNext(?\DateTimeInterface $today = null): ?int
+    {
+        if (!$this->hasMonthDay()) {
+            return null;
+        }
+
+        $today ??= DateTimeUtils::getStartOfToday();
+        $todayNumber = self::dayNumber($today);
+        $currentYear = (int) $today->format('Y');
+        for ($year = $currentYear; $year <= $currentYear + self::SEARCH_YEARS; $year++) {
+            $occurrence = $this->occurrenceInYear($year);
+            if ($occurrence !== null && self::dayNumber($occurrence) >= $todayNumber) {
+                return self::dayNumber($occurrence) - $todayNumber;
+            }
+        }
+
+        return null;
     }
 
     /** Within $days before or after today, inclusive. */
