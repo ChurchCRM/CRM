@@ -2215,10 +2215,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Aceasta va suprascrie numerele plicului familiei din baza de date cu cele selectate pe această pagină. Continua?"
 
 #: 
-msgid "Family Select"
-msgstr "Selectează familie"
-
-#: 
 msgid "Welcome to"
 msgstr "Bun venit la:"
 
@@ -15582,10 +15578,6 @@ msgstr "pentru fonduri"
 #: 
 msgid "user"
 msgstr "utilizator"
-
-#: 
-msgid "with at least one"
-msgstr "cu cel putin unul"
 
 #: 
 msgid "Also send to church address ({{email}})"

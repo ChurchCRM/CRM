@@ -2155,10 +2155,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "ይህ በመረጃ ቋቱ ውስጥ ያሉትን የቤተሰብ ኤንቨሎፕ ቁጥሮች በዚህ ገጽ ላይ ከተመረጡት ጋር ይተካል. ይቀጥል?"
 
 #: 
-msgid "Family Select"
-msgstr "የቤተሰብ ምርጫ"
-
-#: 
 msgid "Welcome to"
 msgstr "እንኳን ደህናመጡ"
 
@@ -15516,10 +15512,6 @@ msgstr "ለፈንዶች"
 #: 
 msgid "user"
 msgstr "ተጠቃሚ"
-
-#: 
-msgid "with at least one"
-msgstr "ቢያንስ አንድ ጋር"
 
 #: 
 msgid "Also send to church address ({{email}})"

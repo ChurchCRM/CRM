@@ -2156,10 +2156,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "See kirjutab andmebaasi pereümbrike numbrid üle sellel lehel valitud numbritega. Kas jätkata?"
 
 #: 
-msgid "Family Select"
-msgstr "Perekonna valik"
-
-#: 
 msgid "Welcome to"
 msgstr "Teretulemast"
 
@@ -15509,10 +15505,6 @@ msgstr "fondide jaoks"
 #: 
 msgid "user"
 msgstr "kasutaja"
-
-#: 
-msgid "with at least one"
-msgstr "vähemalt ühega"
 
 #: 
 msgid "Also send to church address ({{email}})"

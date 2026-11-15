@@ -2156,10 +2156,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Αυτό θα αντικαταστήσει τους αριθμούς των οικογενειακών φακέλων στη βάση δεδομένων με αυτούς που έχουν επιλεγεί σε αυτήν τη σελίδα. Να συνεχίσει?"
 
 #: 
-msgid "Family Select"
-msgstr "Family Select"
-
-#: 
 msgid "Welcome to"
 msgstr "Καλωσόρισες στο"
 
@@ -15510,10 +15506,6 @@ msgstr "για κονδύλια"
 #: 
 msgid "user"
 msgstr "χρήστης"
-
-#: 
-msgid "with at least one"
-msgstr "με τουλάχιστον ένα"
 
 #: 
 msgid "Also send to church address ({{email}})"

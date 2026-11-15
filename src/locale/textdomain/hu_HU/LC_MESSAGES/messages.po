@@ -2193,10 +2193,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Ez felülírja az adatbázisban lévő családi borítékszámokat az ezen az oldalon kiválasztottakkal. Folytatja?"
 
 #: 
-msgid "Family Select"
-msgstr "Család kiválasztása"
-
-#: 
 msgid "Welcome to"
 msgstr "Üdvözöljük a"
 
@@ -15535,10 +15531,6 @@ msgstr "alapokhoz"
 #: 
 msgid "user"
 msgstr "felhasználó"
-
-#: 
-msgid "with at least one"
-msgstr "legalább eggyel"
 
 #: 
 msgid "Also send to church address ({{email}})"

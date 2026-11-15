@@ -2167,10 +2167,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Thao tác này sẽ ghi đè số phong bì gia đình trong cơ sở dữ liệu với những số được chọn trên trang này. Tiếp tục?"
 
 #: 
-msgid "Family Select"
-msgstr "Lựa chọn gia đình"
-
-#: 
 msgid "Welcome to"
 msgstr "Chào mừng bạn đến với"
 
@@ -15506,10 +15502,6 @@ msgstr "cho các quỹ"
 #: 
 msgid "user"
 msgstr "người dùng"
-
-#: 
-msgid "with at least one"
-msgstr "với ít nhất một"
 
 #: 
 msgid "Also send to church address ({{email}})"

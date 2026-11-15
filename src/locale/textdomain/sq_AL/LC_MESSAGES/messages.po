@@ -2159,10 +2159,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Kjo do të mbishkruajë numrat e zarfeve të familjes në bazën e të dhënave me ato të përzgjedhura në këtë faqe. Vazhdoni?"
 
 #: 
-msgid "Family Select"
-msgstr "Zgjidh familjen"
-
-#: 
 msgid "Welcome to"
 msgstr "Mirë se vini në"
 
@@ -15501,10 +15497,6 @@ msgstr "për fondet"
 #: 
 msgid "user"
 msgstr "përdorues"
-
-#: 
-msgid "with at least one"
-msgstr "me të paktën një"
 
 #: 
 msgid "Also send to church address ({{email}})"

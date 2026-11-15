@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-15 17:03+0000\n"
+"POT-Creation-Date: 2026-11-15 18:46+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -155,6 +155,12 @@ msgstr[1] ""
 #, php-format
 msgid "%d default volunteer assigned"
 msgid_plural "%d default volunteers assigned"
+msgstr[0] ""
+msgstr[1] ""
+
+#, php-format
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -5426,6 +5432,9 @@ msgstr ""
 msgid "Duplicate Emails"
 msgstr ""
 
+msgid "Duplicate envelope number"
+msgstr ""
+
 msgid "Duplicates"
 msgstr ""
 
@@ -6042,6 +6051,10 @@ msgstr ""
 msgid "Enter a setup key manually"
 msgstr ""
 
+#, php-format
+msgid "Enter a starting number from 0 to %d."
+msgstr ""
+
 msgid "Enter a street address first."
 msgstr ""
 
@@ -6158,6 +6171,10 @@ msgid "Envelope Number"
 msgstr ""
 
 msgid "Envelope Numbers"
+msgstr ""
+
+#, php-format
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
 msgstr ""
 
 msgid "Environment"
@@ -7009,6 +7026,9 @@ msgstr ""
 msgid "Families to receive confirmation emails: {{total}}"
 msgstr ""
 
+msgid "Families with at least one member in"
+msgstr ""
+
 msgid "Families, people and groups"
 msgstr ""
 
@@ -7088,9 +7108,6 @@ msgid "Family Roles"
 msgstr ""
 
 msgid "Family Roles Editor"
-msgstr ""
-
-msgid "Family Select"
 msgstr ""
 
 msgid "Family Status"
@@ -11297,6 +11314,9 @@ msgstr ""
 msgid "No events on the calendar use {{name}} as their class between {{from}} and {{to}}."
 msgstr ""
 
+msgid "No families found."
+msgstr ""
+
 msgid "No families with an email address were found. Nothing was sent."
 msgstr ""
 
@@ -13552,9 +13572,6 @@ msgid "Print %s Giving Statement"
 msgstr ""
 
 msgid "Print Bank Slip"
-msgstr ""
-
-msgid "Print Envelope Numbers"
 msgstr ""
 
 msgid "Print Labels"
@@ -15979,6 +15996,9 @@ msgstr ""
 msgid "Start typing a name"
 msgstr ""
 
+msgid "Starting envelope number"
+msgstr ""
+
 msgid "Starts"
 msgstr ""
 
@@ -17414,6 +17434,9 @@ msgid "These are the phones and computers where you chose to stay signed in. Sig
 msgstr ""
 
 msgid "These are the volunteer teams you look after. Open one to set up its positions, say who can serve where, and fill the weeks ahead."
+msgstr ""
+
+msgid "These envelope numbers are not saved until you select Update Family Records."
 msgstr ""
 
 msgid "These events are not one series: they differ in title, type or class"
@@ -20917,9 +20940,6 @@ msgid "window end"
 msgstr ""
 
 msgid "window start"
-msgstr ""
-
-msgid "with at least one"
 msgstr ""
 
 msgid "with this property..."
