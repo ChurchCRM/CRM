@@ -9076,6 +9076,27 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /api/community-feedback:
+    get:
+      tags:
+        - System
+      summary: 'Curated community-feedback topics and how many are open'
+      description: 'Any signed-in staff user. No role middleware: the Support menu is on every staff page.'
+      responses:
+        '200':
+          description: 'Open topic count and the topic cards'
+          content:
+            application/json:
+              schema:
+                properties:
+                  count: { type: integer }
+                  items: { type: array, items: { type: object } }
+                type: object
+        '401':
+          description: 'Not signed in'
+      security:
+        -
+          ApiKeyAuth: []
   /api/user/current/refresh2fasecret:
     post:
       tags:
