@@ -192,6 +192,14 @@ describe("Person deletion preserves recorded history", () => {
         });
     });
 
+    it("preserves coordinator-authored responses attached to declined volunteer assignments", () => {
+        // Admin person 1 is the responder; the fixture person owns the
+        // assignment. Deletion must not cascade away another person's audit.
+        return recordVolunteerResponse(personId, "declined", 1)
+            .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 403))
+            .then((response) => expect(response.body.message).to.include("volunteer service history"));
+    });
+
     it("blocks deletion on an append-only declined volunteer response despite its assignment status", () => {
         return recordVolunteerResponse(personId)
             .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 403))
