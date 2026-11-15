@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "यदि आप इस प्रकार को हटाते हैं, तो इसका उपयोग करने वाली सभी विशेषताएं भी हट जाएंगी और सभी संबंधित विशेषता नियुक्तियां खो जाएंगी।",
   "Move Donations to Selected Family": "चुने गए परिवार में चंदा स्थानांतरित करें",
   "Calendar not found": "कैलेंडर नहीं मिला",
-  "Continue to Dashboard": "डैशबोर्ड पर जारी रखें",
   "Current Password": "वर्तमान पासवर्ड",
   "Deposit not found": "जमा राशि नहीं मिली",
   "Group not found": "समूह नहीं मिला",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "संस्करण %s उपलब्ध है। कृपया अपनी स्थापना को अपग्रेड करें।",
   "View All": "सभी देखें",
   "Yellow": "पीला",
-  "Your current access levels (read-only)": "आपके वर्तमान पहुँच स्तर (केवल-पठन)",
   "%d repeat event created successfully.": {
     "one": "%d आवर्ती कार्यक्रम सफलतापूर्वक बनाया गया।",
     "other": "%d आवर्ती कार्यक्रम सफलतापूर्वक बनाए गए।"
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "कृपया परिवार को निष्क्रिय करने की पुष्टि करें",
   "Please confirm deletion of this group record": "कृपया इस समूह रिकॉर्ड को हटाने की पुष्टि करें",
   "Please confirm disabling 2 Factor Auth for this user": "कृपया इस उपयोगकर्ता के लिए 2 फैक्टर ऑथेंटिकेशन अक्षम करने की पुष्टि करें",
-  "Please confirm removal of user status from": "कृपया इससे उपयोगकर्ता स्थिति हटाने की पुष्टि करें",
   "Please confirm reset failed login count": "कृपया विफल लॉगिन गणना को रीसेट करने की पुष्टि करें",
   "Please confirm the password reset of this user": "कृपया इस उपयोगकर्ता के पासवर्ड रीसेट की पुष्टि करें",
   "Please enter a valid URL": "कृपया एक मान्य URL दर्ज करें",
@@ -3507,7 +3504,6 @@
   "%s's Account": "%s का खाता",
   "Access": "पहुँच",
   "Access level": "पहुँच स्तर",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "प्रशासकों को सभी सुविधाओं और डेटा तक पूर्ण पहुँच है। व्यक्तिगत अनुमतियाँ लागू नहीं होती हैं।",
   "All users can view congregation members. This permission cannot be removed.": "सभी उपयोगकर्ता मण्डली के सदस्यों को देख सकते हैं। यह अनुमति हटाई नहीं जा सकती।",
   "Always granted": "हमेशा दी गई",
   "Choose specific permissions below.": "नीचे विशिष्ट अनुमतियाँ चुनें।",

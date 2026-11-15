@@ -1900,7 +1900,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Nếu bạn xóa loại này, bạn cũng sẽ xóa tất cả thuộc tính sử dụng nó và mất mọi phân công thuộc tính tương ứng.",
   "Move Donations to Selected Family": "Di Chuyển Đóng Góp đến gia đình đã chọn",
   "Calendar not found": "Không tìm thấy lịch",
-  "Continue to Dashboard": "Tiếp tục đến bảng điều khiển",
   "Current Password": "Mật khẩu hiện tại",
   "Deposit not found": "Không tìm thấy tiền dâng hiến",
   "Group not found": "Không tìm thấy nhóm",
@@ -2658,7 +2657,6 @@
   "Version %s is available. Please upgrade your installation.": "Phiên bản %s đã có sẵn. Vui lòng nâng cấp cài đặt của bạn.",
   "View All": "Xem tất cả",
   "Yellow": "Vàng",
-  "Your current access levels (read-only)": "Các cấp độ truy cập hiện tại của bạn (chỉ đọc)",
   "%d repeat event created successfully.": {
     "other": "%d sự kiện lặp lại đã được tạo thành công."
   },
@@ -3291,7 +3289,6 @@
   "Please confirm deactivation of family": "Vui lòng xác nhận việc hủy kích hoạt gia đình",
   "Please confirm deletion of this group record": "Vui lòng xác nhận việc xóa bản ghi nhóm này",
   "Please confirm disabling 2 Factor Auth for this user": "Vui lòng xác nhận việc tắt 2 Factor Auth cho người dùng này",
-  "Please confirm removal of user status from": "Vui lòng xác nhận việc xóa trạng thái người dùng khỏi",
   "Please confirm reset failed login count": "Vui lòng xác nhận đặt lại số lần đăng nhập không thành công",
   "Please confirm the password reset of this user": "Vui lòng xác nhận việc đặt lại mật khẩu của người dùng này",
   "Please enter a valid URL": "Vui lòng nhập URL hợp lệ",
@@ -3496,7 +3493,6 @@
   "%s's Account": "Tài khoản của %s",
   "Access": "Quyền truy cập",
   "Access level": "Cấp độ truy cập",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Quản trị viên có toàn quyền truy cập vào tất cả các tính năng và dữ liệu. Quyền riêng lẻ không áp dụng.",
   "All users can view congregation members. This permission cannot be removed.": "Tất cả người dùng có thể xem danh sách hội viên. Quyền này không thể xóa bỏ.",
   "Always granted": "Luôn được cấp",
   "Choose specific permissions below.": "Chọn các quyền cụ thể bên dưới.",

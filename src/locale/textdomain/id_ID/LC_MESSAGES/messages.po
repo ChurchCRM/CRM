@@ -7912,10 +7912,6 @@ msgid "Calendar not found"
 msgstr "Kalender tidak ditemukan"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Lanjutkan ke Dasbor"
-
-#: 
 msgid "Current Password"
 msgstr "Kata Sandi Saat Ini"
 
@@ -11286,10 +11282,6 @@ msgid "Yellow"
 msgstr "Kuning"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Tingkat akses Anda saat ini (hanya baca)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d acara berulang berhasil dibuat."
@@ -13820,10 +13812,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Harap konfirmasi menonaktifkan 2 Faktor Auth untuk pengguna ini"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Harap konfirmasi penghapusan status pengguna dari"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Harap konfirmasi atur ulang jumlah login gagal"
 
@@ -14633,10 +14621,6 @@ msgstr "Akses"
 #: 
 msgid "Access level"
 msgstr "Tingkat akses"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Administrator memiliki akses penuh ke semua fitur dan data. Izin individu tidak berlaku."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."
