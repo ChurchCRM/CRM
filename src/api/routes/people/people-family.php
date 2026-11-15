@@ -482,8 +482,10 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         $deleteMembers = filter_var($request->getQueryParams()['deleteMembers'] ?? 'false', FILTER_VALIDATE_BOOLEAN);
 
         $con = Propel::getWriteConnection(FamilyTableMap::DATABASE_NAME);
+        $familyPhoto = $family->getPhoto();
+        $memberPhotos = [];
         try {
-            $con->transaction(function () use ($family, $familyId, $deleteMembers, $con): void {
+            $con->transaction(function () use ($family, $familyId, $deleteMembers, $con, &$memberPhotos): void {
                 // Acquire the same lock as family-note writers before the first
                 // consistent read in this transaction.
                 PersonDeletionService::lockFamily((int) $familyId, $con);
@@ -528,6 +530,9 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                 }
 
                 if ($deleteMembers) {
+                    foreach ($membersToDelete as $member) {
+                        $memberPhotos[] = $member->getPhoto();
+                    }
                     $membersToDelete->delete($con);
                 } else {
                     // Unlink members from the family
@@ -554,6 +559,12 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         } catch (PersonDeletionBlockedException $exception) {
             return SlimUtils::renderErrorJSON($response, $exception->getMessage(), [], 403, $exception, $request);
         }
+
+        // No filesystem effects until every database operation commits.
+        foreach ($memberPhotos as $memberPhoto) {
+            $memberPhoto->delete();
+        }
+        $familyPhoto->delete();
 
         return SlimUtils::renderJSON($response, ['success' => true]);
     })->add(DeleteRecordRoleAuthMiddleware::class);
