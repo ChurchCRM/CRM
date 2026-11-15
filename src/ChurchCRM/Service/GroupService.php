@@ -377,12 +377,6 @@ class GroupService
             $member['Person']['Zip'] = $person->getResolvedZip();
             $member['Person']['Country'] = $person->getResolvedCountry();
             $member['Person']['Address'] = $person->getResolvedAddress();
-            // A second family address is independent of its Address2 street line.
-            $family = $person->getFamily();
-            $member['Person']['SecondaryAddress'] = $family?->hasSecondAddress()
-                ? $family->getSecondaryAddress()
-                : '';
-            $member['Person']['SecondaryIsMailing'] = $family?->isSecondAddressMailing() ?? false;
             $member['Person']['HomePhone'] = $person->getResolvedHomePhone();
             $members[] = $member;
         }
