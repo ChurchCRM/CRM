@@ -300,16 +300,16 @@ class ImportantDateService
     public function calendarOccurrences(\DateTimeInterface $from, \DateTimeInterface $to): array
     {
         $personRecords = PersonImportantDateQuery::create()
-            ->joinWithType()
             ->useTypeQuery()->filterByActive(true)->filterByShowOnCalendar(true)->endUse()
-            ->joinWithPerson()
             ->usePersonQuery()->filterByLiving()->filterByActive()->endUse()
+            ->with('Type')
+            ->with('Person')
             ->find();
         $familyRecords = FamilyImportantDateQuery::create()
-            ->joinWithType()
             ->useTypeQuery()->filterByActive(true)->filterByShowOnCalendar(true)->endUse()
-            ->joinWithFamily()
             ->useFamilyQuery()->filterByActive()->endUse()
+            ->with('Type')
+            ->with('Family')
             ->find();
 
         $fromDay = $from->format('Y-m-d');
