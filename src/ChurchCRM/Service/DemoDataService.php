@@ -16,6 +16,10 @@ use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\Family;
 use ChurchCRM\model\ChurchCRM\FundRaiser;
 use ChurchCRM\model\ChurchCRM\Group;
+use ChurchCRM\Exceptions\ImportantDateRefusedException;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
+use ChurchCRM\model\ChurchCRM\ImportantDateTypeQuery;
+use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
@@ -94,6 +98,7 @@ class DemoDataService
             'schedules' => 0,
             'occurrences' => 0,
             'assignments' => 0,
+            'important_dates' => 0,
         ],
         'warnings' => [],
         'errors' => [],
@@ -135,6 +140,7 @@ class DemoDataService
             $emailMap = $this->importCongregation();
             $this->personEmailToId = $emailMap;
 
+            $this->importImportantDates();
             $this->importGroups($emailMap);
             $this->importEvents($this->importCalendars());
             $this->importVolunteers($emailMap);
@@ -1487,6 +1493,71 @@ class DemoDataService
             ->filterById($lastNotificationId, Criteria::GREATER_THAN)
             ->filterByStatus(VolunteerNotification::STATUS_PENDING)
             ->update(['Status' => VolunteerNotification::STATUS_SKIPPED, 'LastError' => self::DEMO_NOTIFICATION_REASON]);
+    }
+
+    /**
+     * Baptisms, dedications, confirmations and house blessings from important-dates.json.
+     * People are found by their family's contact email and first name; a missing
+     * suggested type is added first.
+     */
+    private function importImportantDates(): void
+    {
+        $data = $this->loadJsonFile('important-dates.json');
+        $user = AuthenticationManager::getCurrentUser();
+        if ($data === null || $user === null) {
+            return;
+        }
+
+        $service = new ImportantDateService();
+        $typeIds = [];
+        $typeId = function (string $key) use ($service, &$typeIds): ?int {
+            if (!array_key_exists($key, $typeIds)) {
+                $type = ImportantDateTypeQuery::create()->findOneByKey($key);
+                if ($type === null && isset(ImportantDateService::presets()[$key])) {
+                    $type = $service->createType('', '', false, true, $key);
+                }
+                $typeIds[$key] = $type?->getId();
+            }
+
+            return $typeIds[$key];
+        };
+        $date = static fn (array $entry, ?int $id): array => [
+            'typeId' => $id,
+            'month'  => $entry['month'] ?? null,
+            'day'    => $entry['day'] ?? null,
+            'year'   => $entry['year'] ?? null,
+            'note'   => $entry['note'] ?? null,
+        ];
+
+        foreach ($data['people'] ?? [] as $entry) {
+            $familyId = $this->familyEmailToId[strtolower(trim($entry['family'] ?? ''))] ?? null;
+            $people = $familyId === null ? [] : PersonQuery::create()->filterByFamId($familyId)->filterByFirstName($entry['firstName'] ?? '')->find();
+            if (count($people) !== 1) {
+                $this->addWarning("Important date skipped: {$entry['firstName']} in '{$entry['family']}' not found once");
+                continue;
+            }
+            try {
+                $service->addPersonDate($people[0], $date($entry, $typeId((string) $entry['type'])), $user);
+                $this->importResult['imported']['important_dates']++;
+            } catch (ImportantDateRefusedException $e) {
+                $this->addWarning("Important date skipped for {$entry['firstName']}: {$e->getMessage()}");
+            }
+        }
+
+        foreach ($data['families'] ?? [] as $entry) {
+            $familyId = $this->familyEmailToId[strtolower(trim($entry['family'] ?? ''))] ?? null;
+            $family = $familyId === null ? null : FamilyQuery::create()->findPk($familyId);
+            if ($family === null) {
+                $this->addWarning("Important date skipped: family '{$entry['family']}' not found");
+                continue;
+            }
+            try {
+                $service->addFamilyDate($family, $date($entry, $typeId((string) $entry['type'])), $user);
+                $this->importResult['imported']['important_dates']++;
+            } catch (ImportantDateRefusedException $e) {
+                $this->addWarning("Important date skipped for family '{$entry['family']}': {$e->getMessage()}");
+            }
+        }
     }
 
     private function loadJsonFile(string $filename): ?array

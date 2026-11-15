@@ -23,7 +23,8 @@ describe("API - important dates on people and families", () => {
     after(() => {
         for (const path of ["/api/person/2/important-dates", "/api/family/1/important-dates"]) {
             cy.makePrivateAdminAPICall("GET", path, null, 200).then(({ body }) => {
-                for (const date of body.dates.filter((d) => d.source === "custom")) {
+                const ours = [personType, repeatType, familyType].filter(Boolean).map((t) => t.id);
+                for (const date of body.dates.filter((d) => ours.includes(d.typeId))) {
                     cy.makePrivateAdminAPICall("DELETE", `${path}/${date.id}`, null, 200);
                 }
             });

@@ -14,16 +14,22 @@ describe("Admin API - important date types", () => {
         }
     });
 
-    it("adds a suggested type in one step and stops suggesting it", () => {
+    it("offers an unused installed type again as a suggestion once deleted, and restores it in one step", () => {
         cy.makePrivateAdminAPICall("GET", "/admin/api/important-date-types", null, 200).then(({ body }) => {
-            expect(body.presets.map((p) => p.key)).to.include("dedication");
-        });
+            const installed = body.types.find((t) => t.key === "ordination");
+            expect(installed).to.include({ name: "Ordination", appliesTo: "person", usage: 0 });
+            expect(body.presets.map((p) => p.key)).not.to.include("ordination");
 
-        create({ preset: "dedication" }).then(({ body }) => {
-            const type = body.types.find((t) => t.key === "dedication");
-            created.push(type.id);
-            expect(type).to.include({ name: "Dedication", appliesTo: "person", allowMultiple: false, showOnCalendar: true, active: true, usage: 0 });
-            expect(body.presets.map((p) => p.key)).not.to.include("dedication");
+            cy.makePrivateAdminAPICall("DELETE", `/admin/api/important-date-types/${installed.id}`, null, 200).then(({ body: afterDelete }) => {
+                expect(afterDelete.presets.map((p) => p.key)).to.include("ordination");
+            });
+
+            create({ preset: "ordination" }).then(({ body: afterAdd }) => {
+                const type = afterAdd.types.find((t) => t.key === "ordination");
+                expect(type).to.include({ name: "Ordination", appliesTo: "person", allowMultiple: false, showOnCalendar: true, active: true, usage: 0 });
+                expect(afterAdd.presets.map((p) => p.key)).not.to.include("ordination");
+                cy.makePrivateAdminAPICall("PATCH", `/admin/api/important-date-types/${type.id}`, { sortOrder: installed.sortOrder }, 200);
+            });
         });
     });
 

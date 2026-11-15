@@ -1679,6 +1679,15 @@ CREATE TABLE `important_date_type_idt` (
   UNIQUE KEY `idt_key_uidx` (`idt_Key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `important_date_type_idt` (`idt_ID`, `idt_Key`, `idt_Name`, `idt_AppliesTo`, `idt_AllowMultiple`, `idt_ShowOnCalendar`, `idt_Active`, `idt_Order`) VALUES
+  (1, 'baptism', 'Baptism', 'person', 0, 1, 1, 0),
+  (2, 'dedication', 'Dedication', 'person', 0, 1, 1, 1),
+  (3, 'confirmation', 'Confirmation', 'person', 0, 1, 1, 2),
+  (4, 'first-communion', 'First Communion', 'person', 0, 1, 1, 3),
+  (5, 'spiritual-birthday', 'Spiritual Birthday', 'person', 0, 1, 1, 4),
+  (6, 'ordination', 'Ordination', 'person', 0, 1, 1, 5),
+  (7, 'house-blessing', 'House Blessing', 'family', 0, 1, 1, 6);
+
 CREATE TABLE `person_important_date_pid` (
   `pid_ID`             int(11)               NOT NULL AUTO_INCREMENT,
   `pid_per_ID`         mediumint(9) unsigned NOT NULL,
