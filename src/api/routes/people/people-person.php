@@ -254,11 +254,16 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         // PERSON_DELETED is dispatched from Person::postDelete() so that the
         // family-member cascade in DELETE /family/{id}?deleteMembers=true
         // fires it too. See #9768.
+        $photo = $person->getPhoto();
         try {
             $person->delete();
         } catch (PersonDeletionBlockedException $exception) {
             return SlimUtils::renderErrorJSON($response, $exception->getMessage(), [], 403, $exception, $request);
         }
+
+        // Filesystem deletions cannot be rolled back; remove photos only
+        // after the ORM deletion has committed successfully.
+        $photo->delete();
 
         return SlimUtils::renderSuccessJSON($response);
     })->add(DeleteRecordRoleAuthMiddleware::class);
