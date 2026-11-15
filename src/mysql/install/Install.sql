@@ -1492,9 +1492,9 @@ CREATE TABLE `email_log_eml` (
   KEY `idx_eml_Status`   (`eml_Status`),
   KEY `idx_eml_Batch`    (`eml_Batch`),
   CONSTRAINT `fk_eml_person` FOREIGN KEY (`eml_per_ID`)
-      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+      REFERENCES `person_per` (`per_ID`) ON DELETE RESTRICT,
   CONSTRAINT `fk_eml_family` FOREIGN KEY (`eml_fam_ID`)
-      REFERENCES `family_fam` (`fam_ID`) ON DELETE CASCADE
+      REFERENCES `family_fam` (`fam_ID`) ON DELETE RESTRICT
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
