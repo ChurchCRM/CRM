@@ -12,10 +12,8 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerAssignmentQuery;
-use ChurchCRM\model\ChurchCRM\VolunteerNotificationQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerResponseQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSwapQuery;
-use ChurchCRM\model\ChurchCRM\WhyCameQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\Connection\ConnectionInterface;
 
@@ -56,23 +54,19 @@ final class PersonDeletionService
             $categories[] = gettext('notes');
         }
 
-        if (WhyCameQuery::create()->filterByPerId($personId)->exists($connection)
-            || MultibuyQuery::create()->filterByMbPerId($personId)->exists($connection)
+        if (MultibuyQuery::create()->filterByMbPerId($personId)->exists($connection)
             || PaddleNumQuery::create()->filterByPnPerId($personId)->exists($connection)
         ) {
             $categories[] = gettext('recorded activities');
         }
 
-        if (VolunteerAssignmentQuery::create()->filterByPersonId($personId)->exists($connection)
+        if (VolunteerAssignmentQuery::create()->filterByPersonId($personId)
+            ->filterByStatus(['accepted', 'substituted', 'completed'], Criteria::IN)->exists($connection)
             || VolunteerResponseQuery::create()->filterByPersonId($personId)->exists($connection)
             || VolunteerSwapQuery::create()
                 ->filterByProposedByPersonId($personId)
                 ->_or()->filterByProposedPersonId($personId)
                 ->exists($connection)
-            // A notification never attempted and never sent (pending, or
-            // skipped without a try) is not history; it cascades away.
-            || VolunteerNotificationQuery::create()->filterByPersonId($personId)->filterByAttempts(0, Criteria::GREATER_THAN)->exists($connection)
-            || VolunteerNotificationQuery::create()->filterByPersonId($personId)->filterBySentDate(null, Criteria::ISNOTNULL)->exists($connection)
         ) {
             $categories[] = gettext('volunteer service history');
         }
