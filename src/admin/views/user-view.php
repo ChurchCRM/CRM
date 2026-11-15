@@ -34,6 +34,36 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
     </div>
 </div>
 
+<?php $signInBlockedLabel = $user->getSignInBlockedLabel(); ?>
+<?php if ($signInBlockedLabel !== null): ?>
+<div class="alert alert-secondary d-flex align-items-center mb-3" role="alert" data-cy="sign-in-blocked-alert">
+    <i class="fa-solid fa-user-slash me-2 flex-shrink-0 fs-3"></i>
+    <div>
+        <strong><?= InputUtils::escapeHTML($signInBlockedLabel) ?></strong>
+        <div class="small"><?= gettext('Sign-in, sessions and the API key are blocked until this is resolved on the linked person\'s record.') ?></div>
+    </div>
+</div>
+<?php endif; ?>
+<?php if ($user->isLocked()): ?>
+<div class="alert alert-danger d-flex align-items-center mb-3" role="alert">
+    <i class="fa-solid fa-lock me-2 flex-shrink-0 fs-3"></i>
+    <div>
+        <strong><?= gettext('Account locked') ?></strong>
+        <div class="small"><?= gettext('This account is locked because of too many failed login attempts.') ?></div>
+        <div class="small" data-cy="lockout-minutes-left"><?= sprintf(gettext('Minutes until it unlocks by itself: %d'), \ChurchCRM\Authentication\SignInThrottle::minutesUntilUnlock($user)) ?></div>
+    </div>
+</div>
+<?php endif; ?>
+<?php if ($user->getNeedPasswordChange()): ?>
+<div class="alert alert-warning d-flex align-items-center mb-3" role="alert">
+    <i class="fa-solid fa-key me-2 flex-shrink-0 fs-3"></i>
+    <div>
+        <strong><?= gettext('Password change required') ?></strong>
+        <div class="small"><?= gettext('This user must set a new password the next time they sign in.') ?></div>
+    </div>
+</div>
+<?php endif; ?>
+
 <?php if ($canAdminister): ?>
 <div class="d-flex flex-wrap gap-2 mb-3" data-cy="user-admin-actions">
     <a class="btn btn-primary" href="<?= SystemURLs::getRootPath() ?>/admin/system/users/<?= $viewedUserId ?>/edit">
