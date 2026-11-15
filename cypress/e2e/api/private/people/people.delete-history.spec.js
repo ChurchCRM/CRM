@@ -2,6 +2,7 @@
 
 import {
     cleanupDeletionFixture,
+    clearPersonHistory,
     countVolunteerNotifications,
     countWhyCame,
     countFamilyMail,
@@ -77,6 +78,9 @@ describe("Person deletion preserves recorded history", () => {
             cleanup = cleanup.then(() => cy.makePrivateAdminAPICall("DELETE", `/api/payments/${groupKey}`, null, [200, 404]));
         });
         return cleanup
+            // A failed deletion must not leave attendance or authored notes
+            // behind for afterEach to fail with an unrelated 403.
+            .then(() => clearPersonHistory([personId, additionalPersonId].filter(Boolean), [familyId].filter(Boolean)))
             .then(() => cleanupDeletionFixture(personId, propertyId))
             .then(() => additionalPersonId ? cy.makePrivateAdminAPICall("DELETE", `/api/person/${additionalPersonId}`, null, [200, 404]) : undefined)
             .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, [200, 404]))
