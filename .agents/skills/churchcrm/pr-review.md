@@ -16,12 +16,26 @@ Use this skill when asked to review a PR or branch, check standards, or triage m
 
 ---
 
+## Token discipline
+
+Reviews are a top token cost (measured Nov 2026: `/pr-review` was ~20% of the maintainer's weekly Claude usage). These rules change how a review runs, never what it checks.
+
+1. **Model routing.** Exploration and context-gathering subagents run on the cheapest model (Haiku-class). The review pass runs on the mid model (Sonnet-class). Escalate to the top model (Opus-class) only for security-sensitive changes, architectural changes, or findings disputed between reviewers. A subagent never silently inherits the session's most expensive model — set its model explicitly.
+2. **Delta reviews.** A review records the head SHA it covered (Phase 1 fetches `headRefOid`; state the SHA in the draft). A re-review covers only the commits and diff since that SHA, never the whole branch again. After a rebase or force-push, say so and fall back to a full review.
+3. **Diff-scoped context.** Start from the changed-file list. Read changed hunks plus their immediate callers and callees. No open-ended exploration of unrelated code. Skip noise files — lock files, locale JSON, generated or vendored files — unless the PR is about them.
+4. **Deterministic pre-pass first.** CI, linters and CodeRabbit run before the model review; CodeRabbit already reviews every PR. The model review adjudicates CodeRabbit's unresolved findings plus the diff — it does not re-discover what the deterministic pass already reported. A full model review is for security-sensitive or architectural PRs and disputed findings, not a default pass over every PR.
+5. **Session hygiene.** One fresh session per PR review. Do not carry a long-lived session's unrelated history into a review.
+6. **Never poll with an agent loop.** Do not loop an agent on CI or check status — one such loop cost ~6.1M tokens per run (Nov 2026). Read CI status with a single `gh pr checks` or API call, or leave it to branch protection (gates: CI status stays out of the review anyway).
+7. **Output.** Verdict and findings only, in the gates format. Do not narrate the exploration.
+
+---
+
 ## Phase 1 — Understand the PR
 
 ```bash
 gh pr view <NUMBER>
 gh pr view <NUMBER> --comments
-gh pr view <NUMBER> --json title,body,headRefName,baseRefName,state,latestReviews,reviews,comments
+gh pr view <NUMBER> --json title,body,headRefName,headRefOid,baseRefName,state,latestReviews,reviews,comments
 gh api graphql -f query='{repository(owner:"ChurchCRM",name:"CRM"){pullRequest(number:<NUMBER>){reviewThreads(first:100){nodes{id isResolved isOutdated path line comments(first:20){nodes{author{login} body}}}} reviews(first:50){nodes{author{login} state submittedAt commit{abbreviatedOid}}}}}}'
 ```
 
@@ -58,13 +72,15 @@ git log origin/master...origin/<branch-name> --oneline
 git diff --name-status origin/master...origin/<branch-name>
 ```
 
-A diff is not a review. For every changed function, route, or query:
+On a re-review, scope everything in this phase to the delta since the head SHA the previous review recorded (Token discipline, rule 2). Within that scope, a diff is not a review. For every changed function, route, or query:
 
 - Read the whole function and the middleware/model it relies on, not only the hunk
 - Grep every caller and every producer of the values the change branches on (types, flags, nullable columns); list what the new condition now rejects or accepts
 - Check existing installs: legacy rows, NULL/empty values, demo and seed data, UI that still offers the action
 - Verify each assertion in a new spec against the code (status codes, seed IDs, helper names)
 - State in the draft what you read and what you did not; never mark an item verified from the diff alone
+
+Scope this depth to the touched functions and their immediate callers and producers. Widen only when a finding depends on code outside that scope, and say so in the draft.
 
 Look for:
 
@@ -122,7 +138,7 @@ Applies to any change to a route, API, middleware, permission check, session, ad
 - [ ] Cypress covers the denied user, not only the allowed one
 - [ ] The draft names who can reach each entry point and what changed versus `master`
 
-For a PR that changes an entry point or data access, run a security-focused sub agent over the diff and verify its findings against the code before you report them.
+For a PR that changes an entry point or data access, run a security-focused sub agent over the diff (model routing per Token discipline, rule 1) and verify its findings against the code before you report them.
 
 ### PDF / mPDF reports
 

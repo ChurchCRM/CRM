@@ -94,7 +94,11 @@ foreach (['production', 'demo', 'test'] as $profile) {
             }
             if ($payload['event'] === 'upgrade_failed') {
                 $keys[] = 'failure_reason';
+                $keys[] = 'upgrade_version';
                 Assert::same('other', $properties['failure_reason']);
+                Assert::same('7.8.4', $properties['upgrade_version']);
+                Assert::false(array_key_exists('error_detail', $properties));
+                Assert::false(array_key_exists('upgrade_script', $properties));
             }
             $keys = array_merge($keys, ['$process_person_profile', '$geoip_disable']);
             Assert::same($keys, array_keys($properties));
@@ -139,6 +143,16 @@ TelemetryService::captureUpgradeFailure('7.8.4', 'no_upgrade_path');
 TelemetryService::captureUpgradeFailure('7.8.4', 'no_upgrade_path');
 TelemetryService::captureUpgradeFailure('7.8.4', 'Some free text from an exception');
 Assert::same(['no_upgrade_path', 'other'], array_column(array_column($GLOBALS['lifecyclePayloads'], 'properties'), 'failure_reason'));
+
+$GLOBALS['lifecyclePayloads'] = [];
+TelemetryService::captureUpgradeSqlError('7.8.4', 10, "Duplicate entry 'secret@example.org' for key 'person.email'");
+TelemetryService::captureUpgradeInterruption('7.8.4', 10);
+Assert::same(['upgrade_failed', 'upgrade_failed'], array_column($GLOBALS['lifecyclePayloads'], 'event'));
+Assert::same(['sql_error', 'script_interrupted'], array_column(array_column($GLOBALS['lifecyclePayloads'], 'properties'), 'failure_reason'));
+Assert::same('7.8.4', $GLOBALS['lifecyclePayloads'][0]['properties']['upgrade_version']);
+Assert::false(array_key_exists('error_detail', $GLOBALS['lifecyclePayloads'][0]['properties']));
+Assert::false(array_key_exists('upgrade_script', $GLOBALS['lifecyclePayloads'][0]['properties']));
+Assert::false(array_key_exists('error_detail', $GLOBALS['lifecyclePayloads'][1]['properties']));
 
 $GLOBALS['lifecyclePayloads'] = [];
 TelemetryService::captureInstallFailure('schema_import_failed');

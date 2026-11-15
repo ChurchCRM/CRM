@@ -7921,10 +7921,6 @@ msgid "Calendar not found"
 msgstr "Kalendrit ei leitud"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Jätka Töölauaga"
-
-#: 
 msgid "Current Password"
 msgstr "Praegune Parool"
 
@@ -11296,10 +11292,6 @@ msgid "Yellow"
 msgstr "Kollane"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Teie praegused juurdepääsutasemed (ainult lugemine)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d korduv sündmus loodi edukalt."
@@ -13831,10 +13823,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Palun kinnitage, et keelataa selle kasutaja 2 Faktori Autoriseerimine"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Kinnitage kasutaja oleku eemaldamine saidist"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Palun kinnitage nurjunud sisselogimiste arvu lähtestamine"
 
@@ -14645,10 +14633,6 @@ msgstr "Juurdepääs"
 #: 
 msgid "Access level"
 msgstr "Juurdepääsu tase"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Administraatoritel on täielik juurdepääs kõikidele funktsioonidele ja andmetele. Individuaalsed load ei kehti."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

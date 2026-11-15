@@ -28,6 +28,11 @@ Use an epic when work has multiple meaningful outcomes, crosses subsystems, or n
 
 Apply the existing label when design is settled, scope is bounded and low-risk, relevant paths and validation guidance are clear, acceptance criteria are observable, and a human reviewer is available.
 
+Two checks make "bounded" concrete:
+
+- **One task.** The issue is a single outcome that lands in one PR. If the body needs three or more distinct tasks, it is not one issue — split it first (native sub-issues when the parts are independent) and apply the label to the split issues, not the bundle.
+- **Spec'd enough to start cold.** The body states the current behavior, the wanted behavior, and a starting path (where the work lives). A one-line feature wish is not a good first issue until a maintainer writes it up.
+
 ## Review for church value and simple UX
 
 - Start with the real job a church staff member or volunteer is trying to do. Prefer outcomes and complete workflows over feature lists or implementation-led explanations.

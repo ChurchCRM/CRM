@@ -7989,10 +7989,6 @@ msgid "Calendar not found"
 msgstr "Calendar negăsit"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Continuați la Tabloul de Bord"
-
-#: 
 msgid "Current Password"
 msgstr "Parola Curentă"
 
@@ -11365,10 +11361,6 @@ msgid "Yellow"
 msgstr "Galben"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Nivelurile dvs. actuale de acces (doar citire)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d eveniment repetat a fost creat cu succes."
@@ -13901,10 +13893,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vă rugăm să confirmați autentificare în 2 factori pentru acest utilizator"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Vă rugăm să confirmați eliminarea stării de utilizator de la"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Vă rugăm să confirmați resetarea numărului de conectări eșuat"
 
@@ -14716,10 +14704,6 @@ msgstr "Acces"
 #: 
 msgid "Access level"
 msgstr "Nivel de acces"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Administratorii au acces complet la toate funcțiile și datele. Permisiunile individuale nu se aplică."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

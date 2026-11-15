@@ -7922,10 +7922,6 @@ msgid "Calendar not found"
 msgstr "Το ημερολόγιο δεν βρέθηκε"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Συνέχεια στον Πίνακα Ελέγχου"
-
-#: 
 msgid "Current Password"
 msgstr "Τρέχων Κωδικός Πρόσβασης"
 
@@ -11297,10 +11293,6 @@ msgid "Yellow"
 msgstr "Κίτρινο"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Τα τρέχοντα επίπεδα πρόσβασής σας (μόνο ανάγνωση)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "Δημιουργήθηκε επιτυχώς %d επαναλαμβανόμενη εκδήλωση."
@@ -13832,10 +13824,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Επιβεβαιώστε την απενεργοποίηση του 2 Factor Auth για αυτόν τον χρήστη"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Επιβεβαιώστε την κατάργηση της κατάστασης χρήστη από"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Επιβεβαιώστε την επαναφορά του αριθμού εισόδου που απέτυχε"
 
@@ -14646,10 +14634,6 @@ msgstr "Πρόσβαση"
 #: 
 msgid "Access level"
 msgstr "Επίπεδο πρόσβασης"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Οι διαχειριστές έχουν πλήρη πρόσβαση σε όλες τις λειτουργίες και τα δεδομένα. Οι επιμέρους άδειες δεν ισχύουν."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

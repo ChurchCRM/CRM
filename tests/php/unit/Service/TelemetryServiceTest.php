@@ -17,7 +17,8 @@ Assert::true($acknowledgement->invoke(null, 'Ok', 200));
 Assert::false($acknowledgement->invoke(null, 'Invalid', 400));
 Assert::false($acknowledgement->invoke(null, false, 0));
 $errorSanitizer = new ReflectionMethod(TelemetryService::class, 'sanitizeDatabaseError');
-Assert::same("Duplicate entry '[redacted]' for key '[redacted]'", $errorSanitizer->invoke(null, "Duplicate entry 'private-value' for key 'member_email'"));
+Assert::same('Duplicate entry [redacted]', $errorSanitizer->invoke(null, "Duplicate entry 'private-value' for key 'member_email'"));
+Assert::same('Duplicate entry [redacted]', $errorSanitizer->invoke(null, "Duplicate entry 'O'Connor-212-555-0199' for key 'person.contact'"));
 $sqlFailure = new SQLImportException('INSERT INTO private_table VALUES (1)', 'Duplicate entry \'private-value\' for key \'member_email\'');
 Assert::same("Duplicate entry 'private-value' for key 'member_email'", $sqlFailure->getDatabaseError());
 

@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Om du tar bort den här typen tar du också bort alla egenskaper som använder den och förlorar motsvarande egenskapstilldelningar.",
   "Move Donations to Selected Family": "Flytta Gåvor till vald familj",
   "Calendar not found": "Kalender hittades inte",
-  "Continue to Dashboard": "Fortsätt till instrumentpanelen",
   "Current Password": "Nuvarande lösenord",
   "Deposit not found": "Offergåva hittades inte",
   "Group not found": "Grupp hittades inte",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "Version %s är tillgänglig. Vänligen uppgradera din installation.",
   "View All": "Visa alla",
   "Yellow": "Gul",
-  "Your current access levels (read-only)": "Dina nuvarande åtkomstnivåer (skrivskyddad)",
   "%d repeat event created successfully.": {
     "one": "%d återkommande händelse skapades.",
     "other": "%d återkommande händelser skapades."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Bekräfta avaktivering av familjen",
   "Please confirm deletion of this group record": "Godkänna att radera denna grupp post",
   "Please confirm disabling 2 Factor Auth for this user": "Bekräfta att du avaktiverar 2 Factor Auth för denna användare",
-  "Please confirm removal of user status from": "Bekräfta att du vill radera användare status från",
   "Please confirm reset failed login count": "Bekräfta återställningen av inloggningsantalet",
   "Please confirm the password reset of this user": "Bekräfta omställningen av lösenordet för denna användare",
   "Please enter a valid URL": "Ange en giltig URL",
@@ -3507,7 +3504,6 @@
   "%s's Account": "%s:s konto",
   "Access": "Åtkomst",
   "Access level": "Åtkomstnivå",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Administratörer har full åtkomst till alla funktioner och all data. Individuella behörigheter gäller inte.",
   "All users can view congregation members. This permission cannot be removed.": "Alla användare kan visa församlingsmedlemmar. Denna behörighet kan inte tas bort.",
   "Always granted": "Alltid beviljad",
   "Choose specific permissions below.": "Välj specifika behörigheter nedan.",

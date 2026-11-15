@@ -1900,7 +1900,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "如果刪除此類型，您還將刪除所有使用它的屬性，並失去所有相應的屬性分配。",
   "Move Donations to Selected Family": "將奉獻移至所選家庭",
   "Calendar not found": "找不到行事曆",
-  "Continue to Dashboard": "繼續前往儀表板",
   "Current Password": "目前密碼",
   "Deposit not found": "找不到奉獻記錄",
   "Group not found": "找不到小組",
@@ -2658,7 +2657,6 @@
   "Version %s is available. Please upgrade your installation.": "版本 %s 已可用，請升級您的安裝。",
   "View All": "檢視全部",
   "Yellow": "黃色",
-  "Your current access levels (read-only)": "您目前的存取權限（唯讀）",
   "%d repeat event created successfully.": {
     "other": "%d 個重複事件建立成功。"
   },
@@ -3291,7 +3289,6 @@
   "Please confirm deactivation of family": "請確認停用家庭",
   "Please confirm deletion of this group record": "請確認刪除該組的記錄",
   "Please confirm disabling 2 Factor Auth for this user": "請確認為此用戶禁用雙重認證",
-  "Please confirm removal of user status from": "請確認刪除的用戶狀態",
   "Please confirm reset failed login count": "請確認重置登入失敗次數",
   "Please confirm the password reset of this user": "請確認該用戶的密碼重置",
   "Please enter a valid URL": "請輸入有效的 URL",
@@ -3496,7 +3493,6 @@
   "%s's Account": "%s 的帳戶",
   "Access": "存取權限",
   "Access level": "存取層級",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "管理員擁有所有功能和資料的完整存取權限，個別權限設定不適用。",
   "All users can view congregation members. This permission cannot be removed.": "所有使用者皆可檢視會眾成員，此權限無法移除。",
   "Always granted": "永久授予",
   "Choose specific permissions below.": "請於下方選擇特定權限。",

@@ -75,7 +75,7 @@
     @cli path /cli /cli/*
     respond @cli 404
 
-    @internalPhp path_regexp internalphp (?i)^/(v2/templates|admin/views|finance/views|people/views|groups/views|event/views|fundraiser/views|ministries/views)/.*\.php(/|$)
+    @internalPhp path_regexp internalphp (?i)^/(v2/templates|admin/views|finance/views|people/views|groups/views|event/views|fundraiser/views|ministries/views|account/views)/.*\.php(/|$)
     respond @internalPhp 404
 
     @portalRoutes path_regexp portalroutes (?i)^/portal/routes/.*\.php$
@@ -167,6 +167,12 @@
         php_server
     }
 
+    @account path /account /account/*
+    handle @account {
+        try_files {path} /account/index.php
+        php_server
+    }
+
     handle /fundraiser/* {
         try_files {path} /fundraiser/index.php
         php_server
@@ -233,7 +239,7 @@
 #     }
 #     @cli path /churchcrm/cli /churchcrm/cli/*
 #     respond @cli 404
-#     @internalPhp path_regexp internalphp (?i)^/churchcrm/(v2/templates|admin/views|finance/views|people/views|groups/views|event/views|fundraiser/views|ministries/views)/.*\.php(/|$)
+#     @internalPhp path_regexp internalphp (?i)^/churchcrm/(v2/templates|admin/views|finance/views|people/views|groups/views|event/views|fundraiser/views|ministries/views|account/views)/.*\.php(/|$)
 #     respond @internalPhp 404
 #     @portalRoutes path_regexp portalroutes (?i)^/churchcrm/portal/routes/.*\.php$
 #     respond @portalRoutes 404
@@ -286,6 +292,11 @@
 #     }
 #     handle /churchcrm/ministries/* {
 #         try_files {path} /churchcrm/ministries/index.php
+#         php_server
+#     }
+#     @account path /churchcrm/account /churchcrm/account/*
+#     handle @account {
+#         try_files {path} /churchcrm/account/index.php
 #         php_server
 #     }
 #     handle /churchcrm/fundraiser/* {
