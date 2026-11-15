@@ -23,7 +23,7 @@ describe("2FA changes need the password or a code (#10200)", () => {
         cy.request({ method, url, body, failOnStatusCode: false, headers: { "content-type": "application/json" } });
 
     before(() => {
-        cy.rememberTestEnv(["standard.password"]);
+        cy.rememberTestEnv(["standard.password", "admin.password"]);
         cy.makePrivateAdminAPICall("POST", `/admin/api/user/${USER_ID}/disableTwoFactor`, null, 200);
 
         // First enrollment needs no confirmation.
@@ -39,6 +39,10 @@ describe("2FA changes need the password or a code (#10200)", () => {
             .should("eq", true);
         // The wizard's next step, in the same session, is remembered.
         session("POST", "/api/user/current/refresh2farecoverycodes").its("status").should("eq", 200);
+        // The same session still counts when the request also carries this user's API key.
+        cy.readEnv("user.api.key").then((key) =>
+            withSessionAndKey(key, "/api/user/current/refresh2farecoverycodes").its("status").should("eq", 200),
+        );
     });
 
     after(() => {
@@ -60,6 +64,39 @@ describe("2FA changes need the password or a code (#10200)", () => {
     it("refuses a wrong password", () => {
         asUser("POST", "/api/user/current/refresh2farecoverycodes", { confirmation: "not-the-password" }, 403);
         cy.makePrivateAdminAPICall("POST", `/admin/api/user/${USER_ID}/login/reset`, null, 200);
+    });
+
+    const withSessionAndKey = (key, url) =>
+        cy.request({
+            method: "POST",
+            url,
+            body: {},
+            failOnStatusCode: false,
+            headers: { "content-type": "application/json", "x-api-key": key },
+        });
+
+    it("does not let that confirmation change another user's 2FA", () => {
+        let adminSecret;
+        cy.setupAdminSession({ forceLogin: true });
+        session("POST", "/api/user/current/refresh2fasecret").then((resp) => {
+            expect(resp.status).to.eq(200);
+            adminSecret = resp.body.TwoFASecret;
+        });
+        cy.then(() => totp(adminSecret))
+            .then((code) => session("POST", "/api/user/current/test2FAEnrollmentCode", { enrollmentCode: code }))
+            .its("body.IsEnrollmentCodeValid")
+            .should("eq", true);
+        session("POST", "/api/user/current/2fa/confirm", { confirmation: Cypress.testEnv("admin.password") })
+            .its("status")
+            .should("eq", 200);
+        cy.readEnv("user.api.key")
+            .then((key) => withSessionAndKey(key, "/api/user/current/remove2fasecret"))
+            .then((resp) => {
+                expect(resp.status).to.eq(403);
+                expect(resp.body.confirmationRequired).to.eq(true);
+            });
+        asUser("GET", "/api/user/current/2fa-status").its("body.IsEnabled").should("eq", true);
+        cy.makePrivateAdminAPICall("POST", "/admin/api/user/1/disableTwoFactor", null, 200);
     });
 
     it("accepts a current authenticator code", () => {

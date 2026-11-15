@@ -26,8 +26,9 @@ $app->group('/user/current', function (RouteCollectorProxy $group): void {
  * owns the account, not just a live session or API key (#10200): the body's
  * `confirmation` must be their current password or a current authenticator
  * code. A successful confirmation, or finishing enrollment, is remembered in
- * the session for TWO_FACTOR_CONFIRMATION_TTL seconds so the next step of the
- * same flow doesn't ask again. A user with no 2FA yet can enroll without it.
+ * the session for TWO_FACTOR_CONFIRMATION_TTL seconds, for that user only, so
+ * the next step of the same flow doesn't ask again. A user with no 2FA yet
+ * can enroll without it.
  * Wrong answers count as failed sign-ins, so they lock the account like
  * wrong passwords do.
  */
@@ -38,7 +39,7 @@ function twoFactorChangeConfirmed(Request $request, User $user): bool
     if (!$user->is2FactorAuthEnabled()) {
         return true;
     }
-    if (session_status() === PHP_SESSION_ACTIVE && ($_SESSION['twoFactorChangeConfirmedUntil'] ?? 0) >= time()) {
+    if (twoFactorChangeAlreadyConfirmed($user)) {
         return true;
     }
 
@@ -55,15 +56,27 @@ function twoFactorChangeConfirmed(Request $request, User $user): bool
 
         return false;
     }
-    rememberTwoFactorChangeConfirmed();
+    rememberTwoFactorChangeConfirmed($user);
 
     return true;
 }
 
-function rememberTwoFactorChangeConfirmed(): void
+function twoFactorChangeAlreadyConfirmed(User $user): bool
+{
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        return false;
+    }
+    $until = $_SESSION['twoFactorChangeConfirmedUntil'] ?? 0;
+    $confirmedUserId = $_SESSION['twoFactorChangeConfirmedUserId'] ?? null;
+
+    return $until >= time() && (int) $confirmedUserId === (int) $user->getId();
+}
+
+function rememberTwoFactorChangeConfirmed(User $user): void
 {
     if (session_status() === PHP_SESSION_ACTIVE) {
         $_SESSION['twoFactorChangeConfirmedUntil'] = time() + TWO_FACTOR_CONFIRMATION_TTL;
+        $_SESSION['twoFactorChangeConfirmedUserId'] = (int) $user->getId();
     }
 }
 
@@ -232,7 +245,7 @@ function test2FAEnrollmentCode(Request $request, Response $response, array $args
     $result = $user->confirmProvisional2FACode((string) ($requestParsedBody['enrollmentCode'] ?? ''));
     if ($result) {
         // The wizard asks for recovery codes right after this.
-        rememberTwoFactorChangeConfirmed();
+        rememberTwoFactorChangeConfirmed($user);
         LoggerUtils::getAuthLogger()->info('Completed 2FA enrollment for user: ' . $user->getUserName());
     } else {
         LoggerUtils::getAuthLogger()->warning('Unsuccessful 2FA enrollment for user: ' . $user->getUserName());
