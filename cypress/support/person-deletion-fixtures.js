@@ -37,11 +37,47 @@ export const prepareDeletionRelationships = (personId, propertyId) =>
         .then(() => query("INSERT INTO record2property_r2p (r2p_pro_ID, r2p_record_ID, r2p_Value) VALUES (?, ?, 'preserve')", [propertyId, personId]))
         .then(() => readDeletionRelationships(personId));
 
-// A notification that was sent: protected history.
+// Volunteer delivery attempts are transactional outbox records, not service history.
 export const recordVolunteerNotification = (personId) =>
     query(
         "INSERT INTO volunteer_notification_vntf (vntf_Type, vntf_per_ID, vntf_DedupeKey, vntf_ScheduledFor, vntf_Status, vntf_Attempts, vntf_LastAttemptDate, vntf_SentDate) VALUES ('assignment', ?, ?, NOW(), 'sent', 1, NOW(), NOW())",
         [personId, `delete-history-${personId}`],
+    );
+
+export const countVolunteerNotifications = (personId) =>
+    query("SELECT COUNT(*) AS n FROM volunteer_notification_vntf WHERE vntf_per_ID = ?", [personId])
+        .then((rows) => Number(rows[0].n));
+
+export const recordWhyCame = (personId) =>
+    query("INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs) VALUES (?, 'joined', 'visited', 'recommended', 'friend')", [personId]);
+
+export const countWhyCame = (personId) =>
+    query("SELECT COUNT(*) AS n FROM whycame_why WHERE why_per_ID = ?", [personId])
+        .then((rows) => Number(rows[0].n));
+
+// Select a seeded volunteer occurrence/position. The API test stack seeds
+// volunteer v2 rows; these fixture-only inserts exercise the legacy statuses.
+export const recordVolunteerAssignment = (personId, status) => {
+    expect(status).to.be.oneOf(["pending", "accepted", "declined", "cancelled", "substituted", "completed"]);
+    return query("SELECT vocc_ID FROM volunteer_occurrence_vocc ORDER BY vocc_ID LIMIT 1")
+        .then((occurrences) => {
+            expect(occurrences, "seeded volunteer occurrence").to.have.length.greaterThan(0);
+            return query("SELECT vpos_ID FROM volunteer_position_vpos ORDER BY vpos_ID LIMIT 1")
+                .then((positions) => {
+                    expect(positions, "seeded volunteer position").to.have.length.greaterThan(0);
+                    return query(
+                        "INSERT INTO volunteer_assignment_vasg (vasg_vocc_ID, vasg_vpos_ID, vasg_per_ID, vasg_Status, vasg_AssignedDate) VALUES (?, ?, ?, ?, NOW())",
+                        [occurrences[0].vocc_ID, positions[0].vpos_ID, personId, status],
+                    );
+                });
+        });
+};
+
+export const recordVolunteerResponse = (personId, status = "declined") =>
+    recordVolunteerAssignment(personId, status).then(() =>
+        query("SELECT vasg_ID FROM volunteer_assignment_vasg WHERE vasg_per_ID = ? ORDER BY vasg_ID DESC LIMIT 1", [personId]),
+    ).then((rows) =>
+        query("INSERT INTO volunteer_response_vrsp (vrsp_vasg_ID, vrsp_per_ID, vrsp_Response, vrsp_ResponseDate) VALUES (?, ?, 'declined', NOW())", [rows[0].vasg_ID, personId]),
     );
 
 // What deletion may clear because nothing was ever delivered: a gap alert that
@@ -79,8 +115,7 @@ export const resetFamilyDeletionFixtureAudit = (familyId, type) => {
 };
 
 export const recordOnboardingParticipation = (personId) =>
-    query("INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs) VALUES (?, 'joined', 'visited', 'recommended', 'friend')", [personId])
-        .then(() => query("INSERT INTO multibuy_mb (mb_per_ID, mb_item_ID, mb_count) VALUES (?, 1, 2)", [personId]))
+    query("INSERT INTO multibuy_mb (mb_per_ID, mb_item_ID, mb_count) VALUES (?, 1, 2)", [personId])
         .then(() => query("INSERT INTO paddlenum_pn (pn_Num, pn_per_ID) VALUES (12345, ?)", [personId]));
 
 // Clear only history owned by this new fixture, then the spec deletes people/families through HTTP.
@@ -91,6 +126,8 @@ export const cleanupDeletionFixture = (personId, propertyId) =>
         .then(() => query("DELETE FROM whycame_why WHERE why_per_ID = ?", [personId]))
         .then(() => query("DELETE FROM multibuy_mb WHERE mb_per_ID = ?", [personId]))
         .then(() => query("DELETE FROM paddlenum_pn WHERE pn_per_ID = ?", [personId]))
+         .then(() => query("DELETE FROM volunteer_response_vrsp WHERE vrsp_per_ID = ?", [personId]))
+        .then(() => query("DELETE FROM volunteer_assignment_vasg WHERE vasg_per_ID = ?", [personId]))
         .then(() => query("DELETE FROM volunteer_notification_vntf WHERE vntf_per_ID = ?", [personId]))
         .then(() => query("DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ?", [personId]))
         .then(() => query("DELETE FROM person2volunteeropp_p2vo WHERE p2vo_per_ID = ?", [personId]))
