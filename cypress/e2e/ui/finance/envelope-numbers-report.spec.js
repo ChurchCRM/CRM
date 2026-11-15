@@ -23,9 +23,9 @@ describe("Envelope Numbers report", () => {
         });
     });
 
-    it("the Envelope Manager print button opens the report", () => {
-        cy.setupAdminSession();
-        cy.visit("/ManageEnvelopes.php");
-        cy.get("#PrintReport").should("have.attr", "href").and("include", envelopeReport);
+    it("the Envelope Manager links to the report", () => {
+        cy.setupFinanceOnlySession();
+        cy.visit("/finance/envelopes");
+        cy.get(`a[href$="/${envelopeReport}"]`).should("exist");
     });
 });
