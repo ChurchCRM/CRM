@@ -285,8 +285,8 @@ class AuthenticationManager
         if ($result->isAuthenticated && !$result->preventRedirect) {
             $redirectLocation = self::validateRedirectPath($_SESSION['location'] ?? null);
             unset($_SESSION['location']); // clear post-login redirect (one-time use)
-            $redirectLocation ??= self::getDefaultLandingPath();
-            
+            $redirectLocation ??= 'v2/dashboard';
+
             // One-time login tasks: check for system updates and fetch remote notifications
             self::checkSystemUpdates();
             NotificationService::fetchRemoteNotifications();
@@ -445,23 +445,6 @@ class AuthenticationManager
         if (!AuthenticationManager::getCurrentUser()->isAdmin()) {
             RedirectUtils::securityRedirect('Admin');
         }
-    }
-
-    /**
-     * Where a login lands when nothing else asked for a specific page.
-     *
-     * One rule (Member Portal design P10, #9863): a self-service account —
-     * EditSelf and nothing else — lands in the Member Portal and cannot reach
-     * the admin shell; every other login lands on the admin dashboard as before.
-     */
-    private static function getDefaultLandingPath(): string
-    {
-        $currentUser = self::getCurrentUser();
-        if ($currentUser !== null && $currentUser->isEditSelfExclusive()) {
-            return 'portal/';
-        }
-
-        return 'v2/dashboard';
     }
 
     /**

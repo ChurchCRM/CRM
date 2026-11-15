@@ -223,14 +223,6 @@ class UserService
         return $query->find();
     }
 
-    /**
-     * Resolves the access mode and every permission from the submitted form body.
-     *
-     * Two modes: admin (Admin=1) and custom (Admin=0, the module permissions as
-     * submitted, each 0 when absent). Every account made or saved here is a staff
-     * account: the self-service mode went with the release-day cutover (member
-     * sign-in design §12), so EditSelf is always 0.
-     */
     public function normalizeAccessMode(array $body): array
     {
         return array_merge(

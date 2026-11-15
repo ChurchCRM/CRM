@@ -97,12 +97,12 @@ class User extends BaseUser
     // Permissions are stored in two places:
     //
     //   TIER 1 — user_usr boolean columns (fast, indexed, ORM-generated getters):
-    //     usr_Admin, usr_EditSelf, usr_AddRecords, usr_EditRecords,
+    //     usr_Admin, usr_AddRecords, usr_EditRecords,
     //     usr_DeleteRecords, usr_ManageGroups,
     //     usr_Finance, usr_ManageFundraisers, usr_Notes.
     //     These are the "core" record permissions accessible via isXxx() getters
     //     (e.g. isAddRecords(), isFinance()) or the corresponding isXxxEnabled()
-    //     helper that applies the admin bypass and the EditSelf-exclusive guard.
+    //     helper that applies the administrator bypass.
     //
     //   TIER 2 — userconfig_ucfg rows (per-user config table, name/value pairs):
     //     bAddEvent    → isAddEventEnabled() / canManageEvents()
@@ -111,54 +111,9 @@ class User extends BaseUser
     //     UserConfig collection. They appear in the UserEditor under the
     //     Permissions card (AddEvent) or the User Config table (bEmailMailto).
     //
-    // ── EditSelf-exclusive invariant ────────────────────────────────
-    //
-    // EditSelf is an exclusive mode. When isEditSelfExclusive() is true
-    // (non-admin + EditSelf=1), ALL module permissions — both Tier 1 and
-    // Tier 2 — evaluate to false, regardless of stored flags. This invariant
-    // is enforced at three layers:
-    //   1. DB write-time: UserService::normalizeAccessMode() (server) and
-    //      user-editor.js (client) zero all module perms before saving.
-    //   2. Read-time: every isXxxEnabled() method short-circuits on
-    //      isEditSelfExclusive() before checking the stored flag.
-    //   3. Entry gate: AuthMiddleware and PageInit redirect EditSelf-exclusive
-    //      users to /portal before any route runs.
-    //
-    // Zero-permission users (all flags 0, EditSelf=0) are NOT blocked at the
-    // entry gate — they retain read-only access under the read-default policy
-    // (#9003). Writes are denied by per-page/per-route role middleware.
-    //
-    // See #8667, #8458 for the consolidation rationale; #9003 for read-default;
-    // #9079 for the EditSelf-exclusive enforcement.
-    // ─────────────────────────────────────────────────────────────────
-
-    // -- Per-user permissions (backed by user_usr columns) --
-    //
-    // EditSelf is an exclusive mode: when a non-admin user has EditSelf=1,
-    // all module permissions (AddRecords, EditRecords, …, Notes, Finance) are
-    // treated as false regardless of what is stored in the database, so every
-    // consumer sees a consistent view.
-
-    /**
-     * True when the user is confined to the self-service flow.
-     *
-     * A non-admin user with EditSelf=1 has no module permissions and cannot use
-     * the CRM interface — PageInit and AuthMiddleware redirect them to
-     * the Member Portal at /portal.
-     *
-     * Deliberately NOT true for a zero-permission user (all flags 0). Those users
-     * retain read-only access to people and family records under the read-default
-     * policy (#9003); writes are denied by the per-page and per-route permission
-     * checks.
-     */
-    public function isEditSelfExclusive(): bool
-    {
-        return $this instanceof PortalMemberUser || (!$this->isAdmin() && $this->isEditSelf());
-    }
-
     public function isAddRecordsEnabled(): bool
     {
-        if ($this->isEditSelfExclusive()) {
+        if ($this instanceof PortalMemberUser) {
             return false;
         }
         return $this->isAdmin() || $this->isAddRecords();
@@ -166,7 +121,7 @@ class User extends BaseUser
 
     public function isEditRecordsEnabled(): bool
     {
-        if ($this->isEditSelfExclusive()) {
+        if ($this instanceof PortalMemberUser) {
             return false;
         }
         return $this->isAdmin() || $this->isEditRecords();
@@ -174,7 +129,7 @@ class User extends BaseUser
 
     public function isDeleteRecordsEnabled(): bool
     {
-        if ($this->isEditSelfExclusive()) {
+        if ($this instanceof PortalMemberUser) {
             return false;
         }
         return $this->isAdmin() || $this->isDeleteRecords();
@@ -182,7 +137,7 @@ class User extends BaseUser
 
     public function isManageGroupsEnabled(): bool
     {
-        if ($this->isEditSelfExclusive()) {
+        if ($this instanceof PortalMemberUser) {
             return false;
         }
         return $this->isAdmin() || $this->isManageGroups();
@@ -190,15 +145,10 @@ class User extends BaseUser
 
     public function isNotesEnabled(): bool
     {
-        if ($this->isEditSelfExclusive()) {
+        if ($this instanceof PortalMemberUser) {
             return false;
         }
         return $this->isAdmin() || $this->isNotes();
-    }
-
-    public function isEditSelfEnabled(): bool
-    {
-        return $this->isAdmin() || $this->isEditSelf();
     }
 
     // -- Module-gated permissions (backed by userconfig_ucfg) --
@@ -207,7 +157,7 @@ class User extends BaseUser
 
     public function isFinanceEnabled(): bool
     {
-        if ($this->isEditSelfExclusive()) {
+        if ($this instanceof PortalMemberUser) {
             return false;
         }
         return SystemConfig::getBooleanValue('bEnabledFinance') && ($this->isAdmin() || $this->isFinance());
@@ -215,7 +165,7 @@ class User extends BaseUser
 
     public function isManageFundraisersEnabled(): bool
     {
-        if ($this->isEditSelfExclusive()) {
+        if ($this instanceof PortalMemberUser) {
             return false;
         }
         return SystemConfig::getBooleanValue('bEnabledFundraiser') && ($this->isAdmin() || $this->isManageFundraisers());
@@ -223,7 +173,7 @@ class User extends BaseUser
 
     public function isAddEventEnabled(): bool
     {
-        if ($this->isEditSelfExclusive()) {
+        if ($this instanceof PortalMemberUser) {
             return false;
         }
         return $this->isAdmin() || $this->isEnabledSecurity('bAddEvent');
@@ -231,7 +181,7 @@ class User extends BaseUser
 
     public function isEmailEnabled(): bool
     {
-        if ($this->isEditSelfExclusive()) {
+        if ($this instanceof PortalMemberUser) {
             return false;
         }
         return $this->isAdmin() || $this->isEnabledSecurity('bEmailMailto');
@@ -312,21 +262,9 @@ class User extends BaseUser
         return in_array(self::getVolunteerVersion(), ['v1', 'both'], true);
     }
 
-    /**
-     * Global Volunteer Manager (#9706) — authority over every ministry and every team.
-     *
-     * Same three-line shape as isManageFundraisersEnabled(): the EditSelf-exclusive
-     * short-circuit first (a volunteer is never a manager), then the module feature
-     * flag, then admin-or-flag. `sVolunteerVersion` takes the place bEnabledFundraiser
-     * holds for fundraisers — the manager tier only exists while V2 is rolled out.
-     *
-     * This is the ONE place the administrator bypass for volunteer management is
-     * decided; VolunteerAuthorizationService::isGlobalManager() delegates here and
-     * every other volunteer predicate flows through that (design §4.1).
-     */
     public function isManageMinistriesEnabled(): bool
     {
-        if ($this->isEditSelfExclusive()) {
+        if ($this instanceof PortalMemberUser) {
             return false;
         }
         return self::isVolunteerV2Enabled() && ($this->isAdmin() || $this->isManageMinistries());
@@ -349,37 +287,13 @@ class User extends BaseUser
      */
     public function isManageMyMinistriesEnabled(): bool
     {
-        if ($this->isEditSelfExclusive()) {
+        if ($this instanceof PortalMemberUser) {
             return false;
         }
         return self::isVolunteerV2Enabled()
             && ($this->isAdmin() || $this->isManageMinistries() || $this->isManageMyMinistries());
     }
 
-    /**
-     * May this user open the Volunteer coordinator area at all (#9706)?
-     *
-     * True for an administrator, a global volunteer manager, and — since 2026-09-18 —
-     * a **Manage My Ministries** login holding at least one volunteer_scope_vscp row
-     * (ministry coordinator or team leader). A scope row alone no longer opens the
-     * admin shell: the flag says the login may use the coordinator area, the scopes
-     * say which ministries it sees there. A team leader without the flag runs their
-     * team from the Member Portal's My Teams page instead.
-     *
-     * Memoised per request because the scope half is a database query and both
-     * VolunteerCoordinatorRoleAuthMiddleware and Menu::buildMenuItems() ask for it —
-     * menu visibility must mirror the route gate exactly (design §3.5, A11), so both
-     * must call this single predicate rather than re-deriving the rule.
-     *
-     * **Still false for a self-service (EditSelf-exclusive) account**, and that is
-     * load-bearing. The Member Portal's revision of D14 (#9867) made scopes count
-     * for those accounts, so `VolunteerAuthorizationService::loadScopes()` now
-     * returns their grants — but the coordinator tier stays a staff tier: the
-     * short-circuit below is what keeps the admin dashboard and the sidebar's
-     * Ministries heading closed to a member login. A self-service account that
-     * leads a team is answered by isVolunteerTeamLeaderEnabled() instead, and
-     * exercises it in the portal.
-     */
     public function isVolunteerCoordinatorEnabled(): bool
     {
         $key = (int) $this->getId();
@@ -388,43 +302,16 @@ class User extends BaseUser
         }
 
         if ($this->isManageMinistriesEnabled()) {
-            // Covers the administrator bypass, the manager flag, the rollout flag
-            // and the EditSelf-exclusive short-circuit in one call.
             return self::$volunteerCoordinatorMemo[$key] = true;
         }
 
         if (!$this->isManageMyMinistriesEnabled()) {
-            // Carries the EditSelf-exclusive short-circuit and the rollout gate too.
             return self::$volunteerCoordinatorMemo[$key] = false;
         }
 
         return self::$volunteerCoordinatorMemo[$key] = (new VolunteerAuthorizationService())->hasAnyScope($this);
     }
 
-    /**
-     * Does this person lead at least one volunteer team (#9867, Member Portal P17)?
-     *
-     * The Member Portal's revision of Volunteer v2 decision D14: a team leader may
-     * hold an ordinary member login. Tony Smith leads the Wednesday Evening team of
-     * Children's Ministry with a self-service account, and must be able to run his
-     * team — from the Member Portal (MP7), never from the admin shell.
-     *
-     * So this predicate deliberately does NOT short-circuit on
-     * `isEditSelfExclusive()`, unlike every module permission getter above it. It
-     * is not a module permission: it opens no admin page and grants no authority
-     * by itself. It answers one question — "is there a `team` grant for this
-     * person" — and `VolunteerAuthorizationService::canManageTeam()` is still what
-     * decides any individual action.
-     *
-     * A ministry coordinator, a global manager and an administrator are all
-     * `false` here even though they may manage every team under them: leading a
-     * team is an explicit `team` scope row, not something inherited downwards
-     * (volunteer design §4.4). Callers wanting "may this user manage team T" want
-     * `canManageTeam()`.
-     *
-     * Memoised per request in a static, for the same reason
-     * isVolunteerCoordinatorEnabled() is.
-     */
     public function isVolunteerTeamLeaderEnabled(): bool
     {
         $key = (int) $this->getId();
@@ -473,66 +360,11 @@ class User extends BaseUser
     }
 
     /**
-     * Check if the user can edit a specific person's record.
-     * Combines role-based (EditRecords) and object-level (EditSelf + family/own) authorization.
-     *
-     * @param int $personId The ID of the person to potentially edit
-     * @param int $personFamilyId The family ID of the person (0 if no family)
-     * @return bool True if user can edit this person's record
-     */
-    public function canEditPerson(int $personId, int $personFamilyId = 0): bool
-    {
-        // Users with EditRecords permission can edit anyone
-        if ($this->isEditRecordsEnabled()) {
-            return true;
-        }
-
-        // Users with EditSelf permission can edit their own record or family members
-        if ($this->isEditSelfEnabled()) {
-            // Can edit own record
-            if ($personId === $this->getId()) {
-                return true;
-            }
-
-            // Can edit family members (if person has a family)
-            $person = $this->getPerson();
-            if ($person === null) {
-                return false; // orphaned user — deny access
-            }
-            if ($personFamilyId > 0 && $personFamilyId === (int) $person->getFamId()) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    /**
      * Events a person attended: the person themselves, or a user who may edit the record.
      */
     public function canReadAttendance(int $personId, int $personFamilyId = 0): bool
     {
-        return $personId === (int) $this->getId() || $this->canEditPerson($personId, $personFamilyId);
-    }
-
-    /**
-     * Check if the user can view/access a specific family's record.
-     * All authenticated users can read any family by default (canReadFamily()).
-     * EditSelf-only users are further restricted to their own family.
-     *
-     * @param int $familyId The ID of the family to potentially view
-     * @return bool True if user can view this family's record
-     */
-    public function canViewFamily(int $familyId): bool
-    {
-        if ($this->isEditSelfEnabled() && !$this->isAdmin() && !$this->isEditRecordsEnabled()) {
-            $person = $this->getPerson();
-            if ($person === null) {
-                return false;
-            }
-            return $familyId > 0 && $familyId === (int) $person->getFamId();
-        }
-        return true;
+        return $personId === (int) $this->getId() || $this->isEditRecordsEnabled();
     }
 
     /**
