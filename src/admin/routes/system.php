@@ -372,6 +372,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sDear'             => gettext('Greeting'),
             'sConfirmSincerely' => gettext('Closing'),
             'sConfirmSigner'    => gettext('Signer'),
+            'sTaxSignatureStoragePath' => gettext('Signature storage folder'),
         ];
         $letterSettings = array_map(function (array $setting) use ($labels): array {
             $setting['label'] = $labels[$setting['name']];

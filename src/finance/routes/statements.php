@@ -54,7 +54,7 @@ $app->get('/statements/settings', function (Request $request, Response $response
         'sPageTitle'   => gettext('Statement Settings'),
         'sPageSubtitle' => gettext('Wording, tax ID and PDF handling for giving statements'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
-            [gettext('Finance'), '/finance/'],
+            [gettext('Year-End Giving'), '/finance/reports/year-end'],
             [gettext('Statement Settings')],
         ]),
         'sections'     => $sections,
