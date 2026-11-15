@@ -10,14 +10,6 @@
       "expiresAt": null
     },
     {
-      "id": "member-sign-in",
-      "title": "Members sign in to the Member Portal with their email",
-      "summary": "Let members sign in with their email address or a passkey instead of a username and password, so more of your congregation can actually use the portal. Vote if this should be built next.",
-      "category": "Feature Proposal",
-      "discussionUrl": "https://github.com/ChurchCRM/CRM/discussions/10639",
-      "expiresAt": null
-    },
-    {
       "id": "texting-rfc-0009",
       "title": "Send a text from ChurchCRM to people and groups",
       "summary": "Send a text message to a person, a group, or your whole congregation right from ChurchCRM. Vote if texting should be the next feature built; the design is RFC 0009.",
