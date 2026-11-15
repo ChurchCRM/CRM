@@ -2519,10 +2519,6 @@ msgid "Deposit Reports"
 msgstr "Rapoarte depozit"
 
 #: 
-msgid "Edit Deposit Slip"
-msgstr "Editați foaia de depozit"
-
-#: 
 msgid "Create New Fundraiser"
 msgstr "Crează colector nou"
 
@@ -6128,14 +6124,6 @@ msgid "Close All Deposits"
 msgstr "Închide toate depozitele"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Închise vs Total"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Finalizați aceste sarcini pentru a asigura raportarea fiscală corectă la sfârșitul anului pentru donatori."
-
-#: 
 msgid "Configure Email"
 msgstr "Configurare e-mail"
 
@@ -6152,28 +6140,12 @@ msgid "Create First Deposit"
 msgstr "Creați primul depozit"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Creați sau deschideți mai întâi un depozit"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Creați sau selectați un depozit pentru a începe."
-
-#: 
-msgid "Current Deposit"
-msgstr "Depozit curent"
-
-#: 
 msgid "Day"
 msgstr "Zi"
 
 #: 
 msgid "Dec"
 msgstr "Dec"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Statistici depozit"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6202,10 +6174,6 @@ msgstr "Editează plată"
 #: 
 msgid "Edit Person"
 msgstr "Editează persoană"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Asigurați-vă că toate depozitele pentru anul fiscal sunt închise înainte de a genera declarațiile."
 
 #: 
 msgid "F"
@@ -6312,10 +6280,6 @@ msgid "New Pledge"
 msgstr "Angajament nou"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Niciun depozit activ"
-
-#: 
 msgid "No active funds configured."
 msgstr "Niciun fond activ configurat."
 
@@ -6348,10 +6312,6 @@ msgid "Pledge Reports"
 msgstr "Rapoarte angajamente"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Tipăriți sau trimiteți prin e-mail declarațiile anuale de donații către toți donatorii."
-
-#: 
 msgid "Quick Actions"
 msgstr "Acțiuni rapide"
 
@@ -6382,10 +6342,6 @@ msgstr "Restaurare"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Restaurare dintr-un fișier backup. Șterge datele existente."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Revizuire fonduri donații"
 
 #: 
 msgid "Save and Add New Family"
@@ -6424,14 +6380,6 @@ msgid "System Info"
 msgstr "Informații sistem"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Limbajul raportului fiscal"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Listă de verificare pentru raportarea anului fiscal"
-
-#: 
 msgid "Total"
 msgstr "Total"
 
@@ -6452,10 +6400,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Utilizatorul trebuie să fie administrator sau să aibă permisiuni de finanțe"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Verificați dacă numele și descrierile fondurilor sunt corecte pentru declarații."
-
-#: 
 msgid "YTD Payments"
 msgstr "Plăți de la începutul anului"
 
@@ -6472,20 +6416,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Extensia ZipArchive este necesară pentru actualizări"
 
 #: 
-msgid "active"
-msgstr "activ"
-
-#: 
 msgid "found"
 msgstr "găsit"
 
 #: 
 msgid "issues"
 msgstr "probleme"
-
-#: 
-msgid "open"
-msgstr "deschis"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15480,10 +15416,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Traducerile ChurchCRM sunt gestionate de comunitate pe POEditor. Puteti ajuta"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Depozite inchise"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Valoarea curenta $URL[0]"
 
@@ -15622,10 +15554,6 @@ msgstr "Configurare sistem"
 #: 
 msgid "There are people assigned to this Volunteer Opportunity. Deletion will unassign"
 msgstr "Exista persoane atribuite acestei oportunitati de voluntariat. Stergerea va deatribui"
-
-#: 
-msgid "Total Deposits"
-msgstr "Total depozite"
 
 #: 
 msgid "Update it to a valid URL that"
@@ -24085,10 +24013,6 @@ msgid "%s Giving Statement"
 msgstr "Extras de donații %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Personalizați textul care apare pe extrasele de donații (sTaxReport1, sTaxReport2 etc.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24111,10 +24035,6 @@ msgstr "Trimiteți prin e-mail extrasul de donații %s"
 #: 
 msgid "Envelope Numbers"
 msgstr "Numere de plic"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Generați extrasele de donații"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24155,10 +24075,6 @@ msgstr "Extrasul de donații nu poate fi trimis prin e-mail: această familie nu
 #: 
 msgid "Undesignated"
 msgstr "Fără destinație"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Verificați că numele, adresa și datele de contact ale bisericii apar pe extrasele de donații."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24373,10 +24289,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d plăți nu sunt încă pe niciun depozit."
 
 #: 
-msgid "Can be emailed"
-msgstr "Poate fi trimis prin e-mail"
-
-#: 
 msgid "Closing line"
 msgstr "Rând de încheiere"
 
@@ -24405,16 +24317,8 @@ msgid "Opening line"
 msgstr "Rând de deschidere"
 
 #: 
-msgid "Print and mail"
-msgstr "Tipăriți și trimiteți prin poștă"
-
-#: 
 msgid "Qty"
 msgstr "Cant."
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Revizuiți anul, apoi tipăriți sau trimiteți prin e-mail extrasele de donații."
 
 #: 
 msgid "Signed by"
@@ -24423,10 +24327,6 @@ msgstr "Semnat de"
 #: 
 msgid "Thank-you line"
 msgstr "Rând de mulțumire"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Verificați că numele, adresa și datele de contact ale bisericii apar pe extrasele fiscale."
 
 #: 
 msgid "Year-End Giving"
