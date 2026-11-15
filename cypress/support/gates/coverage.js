@@ -15,6 +15,7 @@ export const COVERAGE = {
     "src/admin/index.php": { rows: ["admin-app"] },
     "src/admin/routes/api/import.php": APP_GATE,
     "src/admin/routes/api/system/system-config.php": APP_GATE,
+    "src/admin/routes/api/system/tax-signature.php": APP_GATE,
     "src/admin/routes/api/user-admin.php": APP_GATE,
     "src/admin/routes/import.php": APP_GATE,
 

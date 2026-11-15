@@ -36,7 +36,7 @@ test.describe('Module Dashboards', () => {
       locales: 'all',
       title: 'Finance Dashboard',
       path: '/finance/',
-      purpose: 'Help a treasurer review giving by fund alongside payment totals and deposit actions',
+      purpose: 'Show a treasurer the open deposit to continue, payment totals and giving by fund in one view',
       usedIn: ['website'],
     },
     {

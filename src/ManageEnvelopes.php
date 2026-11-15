@@ -5,10 +5,10 @@ require_once __DIR__ . '/Include/PageInit.php';
 
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Utils\InputUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
 $sPageTitle = gettext('Envelope Manager');
@@ -97,9 +97,7 @@ $duplicateEnvelopeHash = [];
 $updateEnvelopes = 0;
 
 // Service the action buttons
-if (isset($_POST['PrintReport'])) {
-    RedirectUtils::redirect('finance/reports/envelope-numbers');
-} elseif (isset($_POST['AssignAllFamilies'])) {
+if (isset($_POST['AssignAllFamilies'])) {
     $newEnvNum = $iAssignStartNum;
     $envelopesToWrite = []; // zero it out
     foreach ($familyArray as $fam_ID => $fam_Data) {
@@ -117,7 +115,7 @@ if (isset($_POST['PrintReport'])) {
 ?>
 
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#updateEnvelopesModal"><?= gettext('Update Family Records') ?></button>
-<button type="submit" class="btn btn-secondary" name="PrintReport"><i class="fa-solid fa-print"></i></button>
+<a class="btn btn-secondary" id="PrintReport" href="<?= SystemURLs::getRootPath() ?>/finance/reports/envelope-numbers" aria-label="<?= InputUtils::escapeAttribute(gettext('Print Envelope Numbers')) ?>"><i class="fa-solid fa-print"></i></a>
 
 <br><br>
 
