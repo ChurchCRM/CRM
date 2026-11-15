@@ -661,10 +661,10 @@
         <index name="idx_eml_Batch">
             <index-column name="eml_Batch"/>
         </index>
-        <foreign-key foreignTable="person_per" phpName="Person" name="fk_eml_person" onDelete="restrict">
+        <foreign-key foreignTable="person_per" phpName="Person" name="fk_eml_person" onDelete="cascade">
             <reference local="eml_per_ID" foreign="per_ID"/>
         </foreign-key>
-        <foreign-key foreignTable="family_fam" phpName="Family" name="fk_eml_family" onDelete="restrict">
+        <foreign-key foreignTable="family_fam" phpName="Family" name="fk_eml_family" onDelete="cascade">
             <reference local="eml_fam_ID" foreign="fam_ID"/>
         </foreign-key>
         <foreign-key foreignTable="user_usr" phpName="SentByUser">
