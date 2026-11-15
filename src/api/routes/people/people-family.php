@@ -490,7 +490,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                 // consistent read in this transaction.
                 PersonDeletionService::lockFamily((int) $familyId, $con);
                 PersonDeletionService::assertFamilyNotesCanBeDeleted((int) $familyId, $con);
-                PersonDeletionService::assertFamilyCommunicationCanBeDeleted((int) $familyId, $con);
 
                 // Never delete a family that has pledges or payments — it would orphan or distort church finance records.
                 $financeCount = \ChurchCRM\model\ChurchCRM\PledgeQuery::create()
