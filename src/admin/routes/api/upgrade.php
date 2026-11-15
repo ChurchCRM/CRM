@@ -1,5 +1,6 @@
 <?php
 
+use ChurchCRM\Service\DatabaseVersionService;
 use ChurchCRM\Service\UpgradeAPIService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -70,6 +71,10 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
      */
     $group->get('/download-latest-release', function (Request $request, Response $response, array $args): Response {
         try {
+            $databaseBlock = DatabaseVersionService::getUpgradeBlockMessage();
+            if ($databaseBlock !== null) {
+                return SlimUtils::renderErrorJSON($response, $databaseBlock, [], 400, null, $request);
+            }
             $queryParams = $request->getQueryParams();
             $version = isset($queryParams['version']) ? trim((string) $queryParams['version']) : null;
             // Basic version format validation to prevent path traversal / injection
@@ -105,6 +110,10 @@ $app->group('/api/upgrade', function (RouteCollectorProxy $group): void {
      */
     $group->post('/do-upgrade', function (Request $request, Response $response, array $args): Response {
         try {
+            $databaseBlock = DatabaseVersionService::getUpgradeBlockMessage();
+            if ($databaseBlock !== null) {
+                return SlimUtils::renderErrorJSON($response, $databaseBlock, [], 400, null, $request);
+            }
             $input = $request->getParsedBody();
             $fullPath = $input['fullPath'] ?? null;
             $sha1 = $input['sha1'] ?? null;

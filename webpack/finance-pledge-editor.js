@@ -190,7 +190,7 @@ window.CRM.onLocalesReady(() => {
       return null;
     }
     if (!hasAmount) {
-      window.CRM.notify(window.CRM.escapeHtml(i18next.t("At least one fund must have a non-zero amount")), {
+      window.CRM.notify(window.CRM.escapeHtml(i18next.t("At least one fund must have a non-zero amount.")), {
         type: "danger",
         delay: 4000,
       });

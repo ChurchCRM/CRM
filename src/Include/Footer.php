@@ -53,6 +53,8 @@ $rootPath = InputUtils::escapeAttribute(SystemURLs::getRootPath());
      data-type="<?= InputUtils::escapeAttribute((string) ($sGlobalMessageClass ?? 'info')) ?>"></div>
 <?php } ?>
 
+<?php require __DIR__ . '/partials/toast-container.php'; ?>
+
 <?= PluginManager::getPluginFooterContent() ?>
 </body>
 </html>

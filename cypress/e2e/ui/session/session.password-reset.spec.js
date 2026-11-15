@@ -14,12 +14,12 @@ describe("Session Password Reset", () => {
             cy.contains("Enter your login name and we will email you a link to reset your password.").should("be.visible");
             cy.get("input[name='username']").should("exist").should("be.visible");
             cy.get("#resetPassword").should("exist").should("be.visible").should("be.enabled").should("contain", "Send Reset Email");
-            cy.contains("Back to login").should("exist").should("be.visible");
+            cy.contains("Back to Login").should("exist").should("be.visible");
         });
 
         it("Should show validation error when username is empty", () => {
             cy.get("#resetPassword").click();
-            cy.contains("Login Name is Required").should("be.visible");
+            cy.contains("Login Name is required").should("be.visible");
             cy.get("#resetPassword").should("not.be.disabled");
         });
 

@@ -61,7 +61,7 @@ describe("Main Dashboard - Deposits widget authorization", () => {
                 },
             });
 
-            cy.intercept("GET", "**/api/deposits/dashboard").as("depositsApi");
+            cy.intercept("GET", "**/api/deposits/dashboard*").as("depositsApi");
 
             cy.visit("v2/dashboard");
 
@@ -72,6 +72,7 @@ describe("Main Dashboard - Deposits widget authorization", () => {
 
             // The JS guard should trigger the deposits API call.
             cy.wait("@depositsApi").its("response.statusCode").should("eq", 200);
+            cy.get("@depositsApi").its("request.url").should("include", "days=90");
 
             // ApexCharts must actually render into the container, not just
             // leave an empty div — catches chart-library regressions
@@ -110,7 +111,7 @@ describe("Main Dashboard - Deposits widget authorization", () => {
         it("does not call /api/deposits/dashboard and shows no permission popup", () => {
             // Register the intercept BEFORE cy.visit so every matching
             // request gets captured against the alias.
-            cy.intercept("GET", "**/api/deposits/dashboard").as("depositsApi");
+            cy.intercept("GET", "**/api/deposits/dashboard*").as("depositsApi");
 
             cy.visit("v2/dashboard");
 

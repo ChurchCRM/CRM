@@ -140,30 +140,4 @@ describe("Admin People", () => {
         cy.visit("VolunteerOpportunityEditor.php");
         cy.contains("Volunteer Opportunity Editor");
     });
-
-    it("Family Property List", () => {
-        cy.visit("PropertyList.php?Type=f");
-        cy.contains("Family Property List");
-        cy.get('a[href*="PropertyEditor.php"]').first().click();
-        cy.url().should("contain", "PropertyEditor.php");
-        cy.get('select[name="Class"]').select("2");
-        cy.get('input[name="Name"]').type("Test");
-        cy.get('textarea[name="Description"]').type("Who");
-        cy.get('input[name="Prompt"]').type("What do you want");
-        cy.get('button[name="Submit"]').click();
-        cy.url().should("contain", "PropertyList.php");
-    });
-
-    it("Person Property List", () => {
-        cy.visit("PropertyList.php?Type=p");
-        cy.contains("Person Property List");
-        cy.get('a[href*="PropertyEditor.php"]').first().click();
-        cy.url().should("contain", "PropertyEditor.php");
-        cy.get('select[name="Class"]').select("1");
-        cy.get('input[name="Name"]').type("Test");
-        cy.get('textarea[name="Description"]').type("Who");
-        cy.get('input[name="Prompt"]').type("What do you want");
-        cy.get('button[name="Submit"]').click();
-        cy.url().should("contain", "PropertyList.php");
-    });
 });

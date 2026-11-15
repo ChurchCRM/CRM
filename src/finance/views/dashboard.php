@@ -527,6 +527,7 @@ $sRootPath = SystemURLs::getRootPath();
     'fiscalYearMonths' => $isAdmin ? SystemConfig::getChoices('iFYMonth') : [],
     'depositSlipTooltip' => $isAdmin ? SystemConfig::getTooltip('sDepositSlipType') : '',
     'depositSlipTypes' => $isAdmin ? SystemConfig::getChoices('sDepositSlipType') : [],
+    'requireCheckNumberTooltip' => $isAdmin ? SystemConfig::getTooltip('bRequireCheckNumber') : '',
 ]) ?>;</script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/finance-dashboard.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 

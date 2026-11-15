@@ -151,6 +151,54 @@ describe("API Private Deposit Operations", () => {
                 expect(resp.body).to.be.an("array");
             });
         });
+
+        it("Get deposit dashboard data with days=30", () => {
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/deposits/dashboard?days=30`,
+                null,
+                200
+            ).then((resp) => {
+                expect(resp.body).to.be.an("array");
+            });
+        });
+
+        it("Get deposit dashboard data with days=365", () => {
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/deposits/dashboard?days=365`,
+                null,
+                200
+            ).then((resp) => {
+                expect(resp.body).to.be.an("array");
+            });
+        });
+
+        it("Get deposit dashboard data with invalid days defaults to 90", () => {
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/deposits/dashboard?days=7`,
+                null,
+                200
+            ).then((resp) => {
+                expect(resp.body).to.be.an("array");
+            });
+            cy.makePrivateAdminAPICall(
+                "GET",
+                `/api/deposits/dashboard?days=90`,
+                null,
+                200
+            ).then((defaultResp) => {
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    `/api/deposits/dashboard?days=7`,
+                    null,
+                    200
+                ).then((invalidResp) => {
+                    expect(invalidResp.body).to.deep.equal(defaultResp.body);
+                });
+            });
+        });
     });
 
     describe("Deposit Operations", () => {

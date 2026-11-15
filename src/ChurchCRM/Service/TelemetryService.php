@@ -10,26 +10,39 @@ use ChurchCRM\Utils\VersionUtils;
 use Monolog\LogRecord;
 use Propel\Runtime\Propel;
 
+require_once __DIR__ . '/../../Include/PostHogProject.php';
+
 class TelemetryService
 {
-    // Hardcoded PostHog project credentials — not user-configurable.
-    public const POSTHOG_KEY      = 'phc_vhMEHZai3exmp3sqqtJGyVY8Dfjn877bV7zQjV99sJZy';
-    public const POSTHOG_ENDPOINT = 'https://us.i.posthog.com';
+    // The shared PostHog project (src/Include/PostHogProject.php) — not user-configurable.
+    public const POSTHOG_KEY      = \POSTHOG_PROJECT_KEY;
+    public const POSTHOG_ENDPOINT = \POSTHOG_PROJECT_HOST;
     public const POSTHOG_CAPTURE_ENDPOINT = self::POSTHOG_ENDPOINT . '/i/v0/e/';
-    private const FAILURE_DISTINCT_ID = 'churchcrm-aggregate-failures';
 
     // Collection levels stored in sTelemetryLevel.
     public const LEVEL_NONE     = 'none';
-    public const LEVEL_ERRORS   = 'errors';    // ERROR/CRITICAL + JS exceptions
-    public const LEVEL_WARNINGS = 'warnings';  // WARNING+ + JS exceptions
+    public const LEVEL_INSTALL  = 'install';
+    public const LEVEL_ERRORS   = 'errors';    // WARNING+ + JS exceptions
     public const LEVEL_FULL     = 'full';      // warnings + page views + JS exceptions
 
     private static array $installProfileCache = [];
+    private static ?string $logDedupeDirectory = null;
 
-    public static function resolveInstallProfile(string $storedProfile, bool $testOverride): string
+    /** Public demo hosts (Softaculous) run real installs without our demo data; classify them by host. */
+    public static function isKnownDemoHost(string $host): bool
+    {
+        $host = strtolower(explode(':', $host, 2)[0]);
+
+        return $host === 'softaculous.com' || str_ends_with($host, '.softaculous.com');
+    }
+
+    public static function resolveInstallProfile(string $storedProfile, bool $testOverride, bool $demoHost = false): string
     {
         if ($testOverride) {
             return 'test';
+        }
+        if ($demoHost && $storedProfile !== 'test') {
+            return 'demo';
         }
 
         return in_array($storedProfile, ['production', 'demo', 'test'], true) ? $storedProfile : 'production';
@@ -46,21 +59,23 @@ class TelemetryService
         $storedProfile = is_string($storedProfile) ? $storedProfile : '';
 
         // Config can initialize during setup or change during a demo import in this request.
-        $key = ($testOverride ? 'test:' : 'stored:') . $storedProfile;
-        return self::$installProfileCache[$key] ??= self::resolveInstallProfile($storedProfile, $testOverride);
+        $demoHost = self::isKnownDemoHost((string) ($_SERVER['HTTP_HOST'] ?? ''));
+        $key = ($testOverride ? 'test:' : 'stored:') . $storedProfile . ($demoHost ? ':host' : '');
+        return self::$installProfileCache[$key] ??= self::resolveInstallProfile($storedProfile, $testOverride, $demoHost);
     }
 
     public static function getLevel(): string
     {
         $level = SystemConfig::getValue('sTelemetryLevel');
-        return in_array($level, [self::LEVEL_ERRORS, self::LEVEL_WARNINGS, self::LEVEL_FULL], true)
+        $level = $level === 'warnings' ? self::LEVEL_ERRORS : $level;
+        return in_array($level, [self::LEVEL_INSTALL, self::LEVEL_ERRORS, self::LEVEL_FULL], true)
             ? $level
             : self::LEVEL_NONE;
     }
 
     public static function isEnabled(): bool
     {
-        return self::getLevel() !== self::LEVEL_NONE;
+        return in_array(self::getLevel(), [self::LEVEL_ERRORS, self::LEVEL_FULL], true);
     }
 
     /** True only at 'full' level — page views are high-volume, opt-in extra. */
@@ -73,12 +88,18 @@ class TelemetryService
     public static function syncLifecycle(?callable $send = null): void
     {
         $level = self::getLevel();
-        if ($level === self::LEVEL_NONE) {
+        if ($level === self::LEVEL_NONE || self::installProfile() === 'test') {
             return;
         }
 
         $systemId = SystemConfig::getValue('sSystemID');
         if ($systemId === '') {
+            return;
+        }
+
+        // Skip the lock and queries on the common request: nothing is due.
+        if (SystemConfig::getValue('sTelemetryLifecycleVersion') === VersionUtils::getInstalledVersion()
+            && SystemConfig::getValue('sTelemetryHeartbeatDate') === gmdate('Y-m-d')) {
             return;
         }
 
@@ -104,15 +125,23 @@ class TelemetryService
                 ? (ConfigQuery::create()->findOneByName('sTelemetryLifecycleVersion')?->getValue() ?? '')
                 : SystemConfig::getValue('sTelemetryLifecycleVersion');
             $lifecycleEvent = self::buildLifecycleEvent($level, $systemId, $coveredVersion, $currentVersion);
-            if ($lifecycleEvent === null) {
-                return;
+            if ($lifecycleEvent !== null) {
+                $acknowledged = ($send ?? self::capture(...))($lifecycleEvent['event'], $lifecycleEvent['properties']);
+                if ($acknowledged === false) {
+                    return;
+                }
+                SystemConfig::setValue('sTelemetryLifecycleVersion', $currentVersion);
             }
 
-            $acknowledged = ($send ?? self::capture(...))($lifecycleEvent['event'], $lifecycleEvent['properties']);
-            if ($acknowledged === false) {
-                return;
+            // One heartbeat per UTC day lets PostHog count active installs (seen in the last 28 days).
+            $today = gmdate('Y-m-d');
+            $lastHeartbeat = $send === null
+                ? (ConfigQuery::create()->findOneByName('sTelemetryHeartbeatDate')?->getValue() ?? '')
+                : SystemConfig::getValue('sTelemetryHeartbeatDate');
+            if ($lastHeartbeat !== $today
+                && ($send ?? self::capture(...))('heartbeat', self::lifecycleProperties($currentVersion)) !== false) {
+                SystemConfig::setValue('sTelemetryHeartbeatDate', $today);
             }
-            SystemConfig::setValue('sTelemetryLifecycleVersion', $currentVersion);
         } finally {
             if ($connection !== null) {
                 try {
@@ -125,22 +154,22 @@ class TelemetryService
         }
     }
 
-    /** Build a lifecycle event only when an opted-in install has uncovered version state. */
+    /** Build a lifecycle event for an installation with uncovered version state. */
     public static function buildLifecycleEvent(string $level, string $systemId, string $coveredVersion, string $currentVersion): ?array
     {
-        if ($level === self::LEVEL_NONE || $systemId === '' || $coveredVersion === $currentVersion) {
+        if (!in_array($level, [self::LEVEL_INSTALL, self::LEVEL_ERRORS, self::LEVEL_FULL], true)
+            || self::installProfile() === 'test' || $systemId === '' || $coveredVersion === $currentVersion) {
             return null;
         }
 
         if ($coveredVersion === '') {
-            return ['event' => 'install_observed', 'properties' => self::baseProperties()];
+            return ['event' => 'install_observed', 'properties' => self::lifecycleProperties($currentVersion)];
         }
 
         return [
             'event' => 'upgrade_completed',
-            'properties' => array_merge(self::baseProperties(), [
+            'properties' => array_merge(self::lifecycleProperties($currentVersion), [
                 'from_version' => $coveredVersion,
-                'to_version' => $currentVersion,
             ]),
         ];
     }
@@ -186,42 +215,161 @@ class TelemetryService
 
     public static function captureUpgradeSqlError(string $version, int $durationMs, string $databaseError): void
     {
+        self::captureUpgradeFailure($version, 'sql_error');
+        if (!self::isEnabled()) {
+            return;
+        }
         $databaseError = self::sanitizeDatabaseError($databaseError);
 
         self::capture('upgrade_sql_failed', array_merge(self::baseProperties(), [
             'upgrade_version' => $version,
             'duration_ms' => $durationMs,
             'database_error' => $databaseError,
-            '$process_person_profile' => false,
-        ]), self::FAILURE_DISTINCT_ID);
+        ]));
     }
 
-    public static function captureInstallFailure(string $errorClass, ?string $databaseError = null): void
+    /**
+     * A failed first install has no configuration and no installation ID yet. Its ID is hashed from the
+     * document root's device and inode, which hold no server name or path, so repeated attempts on one
+     * server count as one installation. Sent at every level.
+     */
+    public static function captureInstallFailure(string $reason): void
     {
-        $properties = array_merge(self::baseProperties(), ['error_class' => $errorClass]);
-        if ($databaseError !== null) {
-            $properties['database_error'] = self::sanitizeDatabaseError($databaseError);
+        $installId = self::unconfiguredInstallId();
+        if ($installId === null) {
+            return;
         }
-        $properties['$process_person_profile'] = false;
-        self::capture('install_failed', $properties, self::FAILURE_DISTINCT_ID);
+        self::capture('install_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+            'failure_reason' => in_array($reason, ['schema_import_failed'], true) ? $reason : 'other',
+        ]), $installId);
     }
 
-    public static function captureUpgradeFailure(string $version, string $errorClass): void
+    /**
+     * The requirements check runs before configuration loads, so it cannot read the telemetry level: like
+     * install failures it is sent at every level. Names are the fixed English labels from AppIntegrityService.
+     * Each set of failures is reported once per UTC day.
+     *
+     * @param string[] $failedRequirements
+     */
+    public static function captureRequirementsFailure(array $failedRequirements): void
     {
-        self::capture('upgrade_failed', array_merge(self::baseProperties(), [
+        $installId = self::unconfiguredInstallId();
+        sort($failedRequirements);
+        if ($installId === null || !self::firstLogToday('requirements|' . implode('|', $failedRequirements))) {
+            return;
+        }
+        self::capture('requirements_failed', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+            'php_version' => PHP_MAJOR_VERSION . '.' . PHP_MINOR_VERSION,
+            'failed_requirements' => $failedRequirements,
+        ]), $installId);
+    }
+
+    /** Fixed states for version_mismatch: the failed upgrade page and the database-newer-than-software page. */
+    public const VERSION_MISMATCH_STATES = ['upgrade_failed', 'database_newer'];
+
+    /**
+     * Counts installations whose database and application versions are out of sync. Sent at every level, like
+     * upgrade_failed, so the count is complete; each state and version pair is reported once per UTC day.
+     */
+    public static function captureVersionMismatch(string $dbVersion, string $state): void
+    {
+        if (self::installProfile() === 'test' || !in_array($state, self::VERSION_MISMATCH_STATES, true)
+            || !self::firstLogToday('version_mismatch|' . $state . '|' . $dbVersion)) {
+            return;
+        }
+        $systemId = SystemConfig::isInitialized() ? SystemConfig::getValue('sSystemID') : '';
+        self::capture('version_mismatch', array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+            'db_version' => $dbVersion,
+            'mismatch_state' => $state,
+        ]), $systemId !== '' ? $systemId : self::unconfiguredInstallId());
+    }
+
+    /**
+     * An installation ID for events sent before configuration exists: hashed from the document root's device
+     * and inode, which hold no server name or path, so repeated attempts on one server count as one installation.
+     */
+    private static function unconfiguredInstallId(): ?string
+    {
+        if (self::installProfile() === 'test') {
+            return null;
+        }
+        $stat = @stat((string) SystemURLs::getDocumentRoot());
+
+        return $stat === false ? null : 'install-' . substr(sha1($stat['dev'] . '|' . $stat['ino']), 0, 32);
+    }
+
+    /** Fixed codes only: a free-text reason could carry details of a church's installation. */
+    public const UPGRADE_FAILURE_REASONS = ['no_upgrade_path', 'script_interrupted', 'sql_error'];
+
+    /** Sent at every level so failed upgrades get fixed. */
+    public static function captureUpgradeFailure(string $version, string $reason, ?string $upgradeScript = null): void
+    {
+        if (self::installProfile() === 'test') {
+            return;
+        }
+        try {
+            $fromVersion = VersionUtils::getDBVersion();
+        } catch (\Throwable) {
+            try {
+                $fromVersion = SystemConfig::getValue('sTelemetryLifecycleVersion') ?: null;
+            } catch (\Throwable) {
+                $fromVersion = null;
+            }
+        }
+        $reason = in_array($reason, self::UPGRADE_FAILURE_REASONS, true) ? $reason : 'other';
+
+        // A failing install is retried on every request; report each from-version and reason once per UTC day.
+        $dedupeKey = gmdate('Y-m-d') . '|' . $fromVersion . '|' . $reason;
+        try {
+            if (SystemConfig::getValue('sTelemetryUpgradeFailureKey') === $dedupeKey) {
+                return;
+            }
+            SystemConfig::setValue('sTelemetryUpgradeFailureKey', $dedupeKey);
+        } catch (\Throwable) {
+            // The upgrade may be failing because the configuration table is unusable; report anyway.
+        }
+
+        $properties = array_merge(self::lifecycleProperties(VersionUtils::getInstalledVersion()), [
+            'from_version' => $fromVersion,
+            'failure_reason' => $reason,
             'upgrade_version' => $version,
-            'error_class' => $errorClass,
-            '$process_person_profile' => false,
-        ]), self::FAILURE_DISTINCT_ID);
+        ]);
+        $script = self::sanitizeUpgradeScript($upgradeScript);
+        if ($script !== null) {
+            $properties['upgrade_script'] = $script;
+        }
+
+        self::capture('upgrade_failed', $properties);
+    }
+
+    /**
+     * Repo-relative upgrade script paths only (e.g. mysql/upgrade/7.8.4.sql).
+     * Anything else — a server path, a traversal, an empty value — is dropped
+     * so no detail of a church's installation ever leaves it.
+     */
+    private static function sanitizeUpgradeScript(?string $upgradeScript): ?string
+    {
+        if ($upgradeScript === null || $upgradeScript === '') {
+            return null;
+        }
+        $script = ltrim(str_replace('\\', '/', $upgradeScript), '/');
+        if (!str_starts_with($script, 'mysql/upgrade/') || str_contains($script, '..')) {
+            return null;
+        }
+
+        return $script;
     }
 
     public static function captureUpgradeInterruption(string $version, int $elapsedMs): void
     {
+        self::captureUpgradeFailure($version, 'script_interrupted');
+        if (!self::isEnabled()) {
+            return;
+        }
         self::capture('upgrade_script_interrupted', array_merge(self::baseProperties(), [
             'upgrade_version' => $version,
             'elapsed_ms' => $elapsedMs,
-            '$process_person_profile' => false,
-        ]), self::FAILURE_DISTINCT_ID);
+        ]));
     }
 
     /**
@@ -236,11 +384,16 @@ class TelemetryService
 
         // Strip query string so no record IDs reach PostHog.
         $rawUrl = $record->extra['url'] ?? '';
-        $route  = $rawUrl !== '' ? explode('?', $rawUrl, 2)[0] : 'unknown';
+        $route  = $rawUrl !== '' ? self::normalizePageRoute($rawUrl, SystemURLs::getRootPath()) : 'unknown';
+
+        $message = self::scrubLogMessage($record->message);
+        if (!self::firstLogToday($record->level->name . '|' . $message)) {
+            return;
+        }
 
         $properties = array_merge(self::baseProperties(), [
             'level'          => $record->level->name,
-            'message'        => self::scrubLogMessage($record->message),
+            'message'        => $message,
             'channel'        => $record->channel,
             'correlation_id' => $record->extra['correlation_id'] ?? null,
             'route'          => $route,
@@ -250,12 +403,82 @@ class TelemetryService
         self::capture('log_error', $properties);
     }
 
+    /**
+     * A misconfigured server can log the same warning on every request; send each message once per UTC day.
+     * ponytail: one marker file per message per day in the temp directory; the OS temp cleaner removes old ones.
+     */
+    private static function firstLogToday(string $key): bool
+    {
+        $directory = self::$logDedupeDirectory ??= sys_get_temp_dir() . '/churchcrm-telemetry';
+        if (!is_dir($directory) && !@mkdir($directory, 0700, true) && !is_dir($directory)) {
+            return true;
+        }
+        $marker = $directory . '/' . sha1(gmdate('Y-m-d') . '|' . self::installProfile() . '|' . (SystemConfig::isInitialized() ? self::getLevel() : '') . '|' . $key);
+        $handle = @fopen($marker, 'x');
+        if ($handle === false) {
+            return !file_exists($marker);
+        }
+        fclose($handle);
+
+        return true;
+    }
+
     public static function scrubLogMessage(string $message): string
     {
         $message = preg_replace('/SQLSTATE\[[^\]]*\].*$/s', '[database error]', $message) ?? '';
         $message = preg_replace('/[A-Z0-9.!#$%&\x27*+\/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i', '[email]', $message) ?? '';
 
-        return mb_substr($message, 0, 500);
+        return mb_substr(self::scrubHostDetails($message), 0, 500);
+    }
+
+    /** Remove web addresses, this server's names, its install path and IP addresses, so no event identifies the church. */
+    public static function scrubHostDetails(string $text): string
+    {
+        $text = preg_replace('#\b[a-z][a-z0-9+.-]*://[^\s\'"<>]+#i', '[url]', $text) ?? '';
+        $known = [];
+        foreach ([$_SERVER['HTTP_HOST'] ?? '', $_SERVER['SERVER_NAME'] ?? '', php_uname('n')] as $host) {
+            $host = explode(':', (string) $host, 2)[0];
+            if (strlen($host) > 3) {
+                $known[$host] = '[host]';
+            }
+        }
+        try {
+            $documentRoot = (string) SystemURLs::getDocumentRoot();
+            if (strlen($documentRoot) > 1) {
+                $known = [$documentRoot => '[path]'] + $known;
+            }
+        } catch (\Throwable) {
+        }
+
+        return preg_replace('/\b(?:\d{1,3}\.){3}\d{1,3}\b/', '[ip]', strtr($text, $known)) ?? '';
+    }
+
+    private static function lifecycleProperties(string $version): array
+    {
+        $properties = [
+            'crm_version' => $version,
+            'install_profile' => self::installProfile(),
+            'church_country' => self::churchCountry(),
+        ];
+        try {
+            $serverVersion = (string) Propel::getConnection()->getAttribute(\PDO::ATTR_SERVER_VERSION);
+            $properties += self::databaseProperties($serverVersion);
+        } catch (\Throwable) {
+            // Database failure reporting must also work when the connection is unavailable.
+        }
+        return $properties;
+    }
+
+    public static function databaseProperties(string $serverVersion): array
+    {
+        $database = DatabaseVersionService::parse($serverVersion);
+        if ($database === null) {
+            return [];
+        }
+        return [
+            'database_engine' => strtolower($database['engine']),
+            'database_version' => implode('.', array_slice(explode('.', $database['version']), 0, 2)),
+        ];
     }
 
     /** Properties attached to every server-side PostHog event. */
@@ -294,9 +517,10 @@ class TelemetryService
 
     private static function sanitizeDatabaseError(string $databaseError): string
     {
-        $databaseError = preg_replace("/'[^']*'/", "'[redacted]'", $databaseError) ?? '';
+        // MySQL quotes the conflicting value; cut at the first quote so a value containing a quote cannot survive.
+        $databaseError = preg_replace('/[\'"`].*$/s', '[redacted]', $databaseError) ?? '';
         $databaseError = preg_replace('/\b[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}\b/', '[redacted]', $databaseError) ?? '';
-        $databaseError = preg_replace('/\b(?:\d{1,3}\.){3}\d{1,3}\b/', '[redacted]', $databaseError) ?? '';
+        $databaseError = self::scrubHostDetails($databaseError);
 
         return mb_substr(preg_replace('/[\x00-\x1F\x7F]/u', ' ', $databaseError) ?? '', 0, 500);
     }
@@ -316,15 +540,17 @@ class TelemetryService
             return false;
         }
 
+        // Every event describes an installation, never a person.
+        $properties['$process_person_profile'] = false;
         $payload = json_encode([
             'api_key'     => self::POSTHOG_KEY,
             'event'       => $event,
             'distinct_id' => $distinctId,
-            'properties'  => $properties,
+            'properties'  => $properties + ['$geoip_disable' => true],
         ]);
 
         try {
-            $ch = curl_init(self::POSTHOG_CAPTURE_ENDPOINT);
+            $ch = curl_init(self::POSTHOG_CAPTURE_ENDPOINT . '?ip=0'); // ip=0: PostHog must not store this server's address
             if ($ch === false) {
                 return false;
             }

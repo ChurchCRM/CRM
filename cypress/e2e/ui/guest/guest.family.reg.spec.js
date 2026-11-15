@@ -11,10 +11,10 @@ describe("Family Reg", () => {
     });
 
     before(() => {
-        // Ensure church name is "Main St. Cathedral" regardless of what other tests may have set.
-        // admin.church-info.spec.js saves "Test Church" and does not restore it.
+        // Set the name through the config API: the church-info form also posts the country
+        // as its ISO code, which rewrites sChurchCountry for every later spec in the shard.
         cy.setupAdminSession();
-        cy.setSystemConfig("sChurchName", "Main St. Cathedral");
+        cy.makePrivateAdminAPICall("POST", "admin/api/system/config/sChurchName", { value: "Main St. Cathedral" }, 200);
     });
 
     it("does not ask for a home phone", () => {

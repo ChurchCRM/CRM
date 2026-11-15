@@ -147,7 +147,7 @@ $rootPath       = SystemURLs::getRootPath();
                                     id="role<?= $cartPerson->getId() ?>"
                                     name="role<?= $cartPerson->getId() ?>"
                                     class="form-select form-select-sm role-select">
-                                    <option value="">— <?= gettext('Select role') ?> —</option>
+                                    <option value="">— <?= gettext('Select Role') ?> —</option>
                                     <?php foreach ($familyRoles as $role): ?>
                                     <option
                                         value="<?= $role->getOptionId() ?>"

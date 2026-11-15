@@ -41,6 +41,7 @@ The public site documents a released ChurchCRM version. A merged CRM pull reques
 The docs repository's [DOCS_GUIDE.md](https://github.com/ChurchCRM/docs.churchcrm.io/blob/main/.agents/DOCS_GUIDE.md)
 and its release workflows own staging branches, milestones, checks and publication.
 Read them before preparing a docs pull request instead of duplicating their recipe here.
+Write the outcome, the decision, and the gotcha; skip click-by-click narration of a standard flow. Add a screenshot only when it passes the value test in `marketing-visuals-pipeline.md`.
 Unreleased behavior is staged on `release-docs/<version>`; `Current` represents
 published behavior eligible for `main`, subject to that repository's checks.
 

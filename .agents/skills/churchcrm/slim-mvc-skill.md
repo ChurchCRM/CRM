@@ -14,7 +14,7 @@ Inventory of the Slim apps under `src/`, what each serves, and the security rule
 
 | Kind | Bootstrap | Prefixes |
 |------|-----------|----------|
-| MVC (HTML) modules | `MvcAppFactory::create('/<prefix>', [...])` | `/admin`, `/event`, `/finance`, `/fundraiser`, `/groups`, `/ministries`, `/people`, `/portal`, `/v2` |
+| MVC (HTML) modules | `MvcAppFactory::create('/<prefix>', [...])` | `/account`, `/admin`, `/event`, `/finance`, `/fundraiser`, `/groups`, `/ministries`, `/people`, `/portal`, `/v2` |
 | Bespoke apps | `AppFactory::create()` + `SlimUtils::getBasePath('/<prefix>')` in their own `index.php` | `/api`, `/external`, `/kiosk`, `/plugins`, `/session`, `/setup` |
 
 `/setup` computes its base path from `$_SERVER['SCRIPT_NAME']` because `SlimUtils::getBasePath()` needs `Config.php`, which does not exist while the installer runs.
@@ -46,6 +46,7 @@ Each module's entry point is `src/<module>/index.php` and its routes live in `sr
 
 | Prefix | Module role gate | Notes |
 |--------|------------------|-------|
+| `/account` | none at module level | The signed-in staff user's own account: settings, `/account/password`, `/account/2fa`. No id in any URL. A self-service login is sent to `/portal/` by `AuthMiddleware`. Another user's account is `/admin/system/users/{personId}`. |
 | `/admin` | `AdminRoleAuthMiddleware` | Staff sign-in at `/admin/` (`StaffSignInPage`), system pages and `/admin/api/*`. Admin role required. |
 | `/event` | `ViewEventsRoleAuthMiddleware` | Write routes add `new AddEventsRoleAuthMiddleware()`. |
 | `/finance` | `FinanceRoleAuthMiddleware` | Audit-sensitive. `routes/api/` holds the finance JSON endpoints. |

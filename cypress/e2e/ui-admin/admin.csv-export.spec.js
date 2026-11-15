@@ -1,7 +1,21 @@
 describe("CSV Export Page", () => {
     beforeEach(() => {
         cy.setupAdminSession();
-        cy.visit("/CSVExport.php");
+        cy.visit("/admin/export/csv");
+    });
+
+    it("posts the form to the admin export route", () => {
+        cy.get("form[method='post']").should("have.attr", "action").and("match", /\/admin\/export\/csv$/);
+    });
+
+    it("should reject an invalid date filter with a 400", () => {
+        cy.request({
+            method: "POST",
+            url: "/admin/export/csv",
+            form: true,
+            body: { Source: "filters", Format: "Default", MembershipDate1: "not-a-date" },
+            failOnStatusCode: false
+        }).its("status").should("eq", 400);
     });
 
     it("should load the page with correct title", () => {
@@ -47,7 +61,7 @@ describe("CSV Export Page", () => {
     it("should append the second-address columns only when SecondAddress is requested", () => {
         cy.request({
             method: "POST",
-            url: "/CSVCreateFile.php",
+            url: "/admin/export/csv",
             form: true,
             body: {
                 FirstName: 1,
@@ -78,7 +92,7 @@ describe("CSV Export Page", () => {
         // Without the opt-in the header row is unchanged.
         cy.request({
             method: "POST",
-            url: "/CSVCreateFile.php",
+            url: "/admin/export/csv",
             form: true,
             body: {
                 FirstName: 1,
@@ -107,7 +121,7 @@ describe("CSV Export Page", () => {
         const members = ["Exporta" + stamp, "Exportb" + stamp];
 
         // The export form always posts the four "to" dates as the server's
-        // date('Y-m-d'); CSVCreateFile.php adds a "<= that date" filter for any
+        // date('Y-m-d'); the CSV export endpoint adds a "<= that date" filter for any
         // that differ from it (and "<= NULL" for a missing one), which drops every
         // member with no membership date. The browser's UTC calendar day can be
         // ahead of the server's time zone (CI at 03:00 UTC is still yesterday in
@@ -138,7 +152,7 @@ describe("CSV Export Page", () => {
 
             cy.get("@serverToday").then((today) => cy.request({
                 method: "POST",
-                url: "/CSVCreateFile.php",
+                url: "/admin/export/csv",
                 form: true,
                 body: {
                     FirstName: 1,
@@ -176,7 +190,7 @@ describe("CSV Export Page", () => {
         cy.get("#EnterDate2").invoke("val").should("match", /^\d{4}-\d{2}-\d{2}$/).then((today) =>
             cy.request({
                 method: "POST",
-                url: "/CSVCreateFile.php",
+                url: "/admin/export/csv",
                 form: true,
                 body: {
                     FirstName: 1,
@@ -212,7 +226,7 @@ describe("CSV Export Page", () => {
             const personId = Number(url.match(/\/people\/view\/(\d+)/)[1]);
             cy.get("@serverToday").then((today) => cy.request({
                 method: "POST",
-                url: "/CSVCreateFile.php",
+                url: "/admin/export/csv",
                 form: true,
                 body: {
                     FirstName: 1,
@@ -300,13 +314,13 @@ describe("CSV Export Authorization (GHSA-4vj2-gm78-3q63)", () => {
         cy.setupAdminSession();
 
         // Should be able to visit the form
-        cy.visit("/CSVExport.php");
+        cy.visit("/admin/export/csv");
         cy.contains("CSV Export").should("be.visible");
 
-        // Should be able to submit the form (POST to CSVCreateFile.php)
+        // Should be able to submit the form (POST to the CSV export endpoint)
         cy.request({
             method: "POST",
-            url: "/CSVCreateFile.php",
+            url: "/admin/export/csv",
             body: {
                 Title: 1,
                 FirstName: 1,
@@ -328,19 +342,19 @@ describe("CSV Export Authorization (GHSA-4vj2-gm78-3q63)", () => {
         });
     });
 
-    it("should deny unauthenticated access to CSVExport.php", () => {
-        // Attempt to access CSVExport.php without authentication
-        cy.visit("/CSVExport.php", { failOnStatusCode: false });
+    it("should deny unauthenticated access to /admin/export/csv", () => {
+        // Attempt to access /admin/export/csv without authentication
+        cy.visit("/admin/export/csv", { failOnStatusCode: false });
 
         // Should be redirected to login (or show auth error)
         cy.location("pathname").should("match", /\/admin\/$/);
     });
 
-    it("should deny unauthenticated POST to CSVCreateFile.php", () => {
-        // Attempt to POST to CSVCreateFile.php without authentication
+    it("should deny unauthenticated POST to the CSV export endpoint", () => {
+        // Attempt to POST to the CSV export endpoint without authentication
         cy.request({
             method: "POST",
-            url: "/CSVCreateFile.php",
+            url: "/admin/export/csv",
             body: {
                 Title: 1,
                 FirstName: 1,
@@ -369,19 +383,19 @@ describe("CSV Export Authorization — Standard Users", () => {
         cy.setupStandardSession();
     });
 
-    it("should deny non-admin users access to CSVExport.php", () => {
+    it("should deny non-admin users access to /admin/export/csv", () => {
         // Should not be able to visit the form
-        cy.visit("/CSVExport.php", { failOnStatusCode: false });
+        cy.visit("/admin/export/csv", { failOnStatusCode: false });
 
         // Should be redirected to access-denied page
         cy.url().should("include", "/v2/access-denied");
     });
 
-    it("should deny non-admin users POST to CSVCreateFile.php", () => {
-        // Attempt to POST to CSVCreateFile.php as non-admin
+    it("should deny non-admin users POST to the CSV export endpoint", () => {
+        // Attempt to POST to the CSV export endpoint as non-admin
         cy.request({
             method: "POST",
-            url: "/CSVCreateFile.php",
+            url: "/admin/export/csv",
             form: true,
             body: {
                 Title: 1,
