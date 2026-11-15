@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Bu türü silerseniz, onu kullanan tüm özellikleri de kaldırır ve ilgili özellik atamalarını kaybedersiniz.",
   "Move Donations to Selected Family": "Bağışları Seçilen Aileye Taşı",
   "Calendar not found": "Takvim bulunamadı",
-  "Continue to Dashboard": "Kontrol Paneline Devam Et",
   "Current Password": "Mevcut Şifre",
   "Deposit not found": "Bağış bulunamadı",
   "Group not found": "Grup bulunamadı",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "%s sürümü mevcut. Lütfen kurulumunuzu güncelleyin.",
   "View All": "Tümünü Görüntüle",
   "Yellow": "Sarı",
-  "Your current access levels (read-only)": "Mevcut erişim seviyeleriniz (salt okunur)",
   "%d repeat event created successfully.": {
     "one": "%d tekrar eden etkinlik başarıyla oluşturuldu.",
     "other": "%d tekrar eden etkinlik başarıyla oluşturuldu."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Lütfen ailenin devre dışı bırakılmasını onaylayın",
   "Please confirm deletion of this group record": "Lütfen bu grup kaydının silinmesini onaylayın",
   "Please confirm disabling 2 Factor Auth for this user": "Lütfen bu kullanıcı için 2 faktörlü kimliği devre dışı bırakmayı onaylayın",
-  "Please confirm removal of user status from": "Lütfen kullanıcı durumunun kaldırılmasını onaylayın",
   "Please confirm reset failed login count": "Lütfen başarısız giriş sayısını sıfırla onaylayın",
   "Please confirm the password reset of this user": "Lütfen bu kullanıcının şifre sıfırlamasını onaylayın",
   "Please enter a valid URL": "Lütfen geçerli bir URL girin",
@@ -3507,7 +3504,6 @@
   "%s's Account": "%s Hesabı",
   "Access": "Erişim",
   "Access level": "Erişim düzeyi",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Yöneticiler tüm özelliklere ve verilere tam erişime sahiptir. Bireysel izinler geçerli değildir.",
   "All users can view congregation members. This permission cannot be removed.": "Tüm kullanıcılar cemaat üyelerini görüntüleyebilir. Bu izin kaldırılamaz.",
   "Always granted": "Her zaman verilir",
   "Choose specific permissions below.": "Aşağıdan belirli izinleri seçin.",

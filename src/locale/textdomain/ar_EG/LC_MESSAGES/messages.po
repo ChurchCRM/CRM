@@ -7950,10 +7950,6 @@ msgid "Calendar not found"
 msgstr "التقويم غير موجود"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "المتابعة إلى لوحة التحكم"
-
-#: 
 msgid "Current Password"
 msgstr "كلمة المرور الحالية"
 
@@ -11329,10 +11325,6 @@ msgid "Yellow"
 msgstr "أصفر"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "مستويات الوصول الحالية (للقراءة فقط)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "لم يتم إنشاء أي حدث متكرر."
@@ -13868,10 +13860,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "الرجاء التأكد من تعطيل 2 عامل أصيل لهذا المستخدم"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "إزالة تأكيد يرجى من حالة المستخدم من"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "يرجى فشلت إعادة تأكيد تسجيل الدخول العد"
 
@@ -14686,10 +14674,6 @@ msgstr "الوصول"
 #: 
 msgid "Access level"
 msgstr "مستوى الوصول"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "يتمتع المسؤولون بصلاحية وصول كاملة إلى جميع الميزات والبيانات. لا تُطبَّق الأذونات الفردية."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

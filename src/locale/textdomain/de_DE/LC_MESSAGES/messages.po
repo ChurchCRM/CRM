@@ -7995,10 +7995,6 @@ msgid "Calendar not found"
 msgstr "Kalender nicht gefunden"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Weiter zum Dashboard"
-
-#: 
 msgid "Current Password"
 msgstr "Aktuelles Passwort"
 
@@ -11370,10 +11366,6 @@ msgid "Yellow"
 msgstr "Gelb"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Ihre aktuellen Zugriffsebenen (nur lesen)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d Wiederholungsveranstaltung erfolgreich erstellt."
@@ -13905,10 +13897,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Bitte bestätigen Sie die Deaktivierung der Zwei-Faktor-Authentifizierung für diesen Benutzer"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Bitte bestätige die Entfernung des Benutzerstatus von"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Bitte bestätigen Sie die Anzahl der zurückgesetzten fehlgeschlagenen Anmeldungen"
 
@@ -14719,10 +14707,6 @@ msgstr "Zugriff"
 #: 
 msgid "Access level"
 msgstr "Zugriffsebene"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Administratoren haben vollen Zugriff auf alle Funktionen und Daten. Einzelne Berechtigungen gelten nicht."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

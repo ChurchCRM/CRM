@@ -7905,10 +7905,6 @@ msgid "Calendar not found"
 msgstr "Kalendár nenájdený"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Pokračovať na dashboard"
-
-#: 
 msgid "Current Password"
 msgstr "Aktuálne heslo"
 
@@ -11282,10 +11278,6 @@ msgid "Yellow"
 msgstr "Žltá"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Vaše aktuálne úrovne prístupu (iba na čítanie)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d opakovaná udalosť bola úspešne vytvorená."
@@ -13819,10 +13811,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Potvrďte deaktiváciu dvojfaktorovej autentifikácie pre tohto používateľa"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Potvrďte odobratie statusu používateľa od"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Potvrďte obnovenie počtu neúspešných prihlásení"
 
@@ -14635,10 +14623,6 @@ msgstr "Prístup"
 #: 
 msgid "Access level"
 msgstr "Úroveň prístupu"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Správcovia majú úplný prístup ku všetkým funkciám a údajom. Individuálne oprávnenia sa neuplatňujú."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

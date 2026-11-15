@@ -1900,7 +1900,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "如果删除此类型，您还将删除所有使用它的属性，并失去所有相应的属性分配。",
   "Move Donations to Selected Family": "将奉献移至所选家庭",
   "Calendar not found": "日历未找到",
-  "Continue to Dashboard": "继续到仪表板",
   "Current Password": "当前密码",
   "Deposit not found": "奉献记录未找到",
   "Group not found": "小组未找到",
@@ -2658,7 +2657,6 @@
   "Version %s is available. Please upgrade your installation.": "版本 %s 已可用。请升级您的安装。",
   "View All": "查看全部",
   "Yellow": "黄色",
-  "Your current access levels (read-only)": "您当前的访问级别（只读）",
   "%d repeat event created successfully.": {
     "other": "%d 个重复事件创建成功。"
   },
@@ -3291,7 +3289,6 @@
   "Please confirm deactivation of family": "请确认停用家庭",
   "Please confirm deletion of this group record": "请确认删除该组的记录",
   "Please confirm disabling 2 Factor Auth for this user": "请确认为此用户禁用2因子验证",
-  "Please confirm removal of user status from": "请确认删除的用户状态",
   "Please confirm reset failed login count": "请确认重置登录失败次数",
   "Please confirm the password reset of this user": "请确认该用户的密码重置",
   "Please enter a valid URL": "请输入有效的 URL",
@@ -3496,7 +3493,6 @@
   "%s's Account": "%s的账户",
   "Access": "访问权限",
   "Access level": "访问级别",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "管理员可完全访问所有功能和数据，个人权限设置不适用。",
   "All users can view congregation members. This permission cannot be removed.": "所有用户均可查看会众成员，此权限不可移除。",
   "Always granted": "始终授予",
   "Choose specific permissions below.": "请在下方选择具体权限。",

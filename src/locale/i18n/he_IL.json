@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "אם תמחק סוג זה, תסיר גם את כל המאפיינים המשתמשים בו ותאבד את כל הקצאות המאפיינים המתאימות.",
   "Move Donations to Selected Family": "העבר תרומות למשפחה הנבחרת",
   "Calendar not found": "לוח השנה לא נמצא",
-  "Continue to Dashboard": "המשך ללוח הבקרה",
   "Current Password": "סיסמה נוכחית",
   "Deposit not found": "הפקדה לא נמצאה",
   "Group not found": "הקבוצה לא נמצאה",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "גרסה %s זמינה. אנא שדרג את ההתקנה שלך.",
   "View All": "הצג הכל",
   "Yellow": "צהוב",
-  "Your current access levels (read-only)": "רמות הגישה הנוכחיות שלך (לקריאה בלבד)",
   "%d repeat event created successfully.": {
     "one": "אירוע חוזר אחד נוצר בהצלחה.",
     "other": "%d אירועים חוזרים נוצרו בהצלחה."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "אנא אשר השבתת משפחה",
   "Please confirm deletion of this group record": "אנא אשר את מחיקת רשומת הקבוצה הזו",
   "Please confirm disabling 2 Factor Auth for this user": "אנא אשר ביטול אימות דו-שלבי למשתמש זה",
-  "Please confirm removal of user status from": "אנא אשר הסרת סטטוס משתמש מ-",
   "Please confirm reset failed login count": "אנא אשר איפוס ספירת התחברויות שנכשלו",
   "Please confirm the password reset of this user": "אנא אשר את איפוס הסיסמה של משתמש זה",
   "Please enter a valid URL": "אנא הזן כתובת URL תקינה",
@@ -3507,7 +3504,6 @@
   "%s's Account": "החשבון של %s",
   "Access": "גישה",
   "Access level": "רמת גישה",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "למנהלים יש גישה מלאה לכל הפונקציות והנתונים. הרשאות אישיות אינן חלות.",
   "All users can view congregation members. This permission cannot be removed.": "כל המשתמשים יכולים לצפות בחברי הקהילה. הרשאה זו אינה ניתנת להסרה.",
   "Always granted": "מוענק תמיד",
   "Choose specific permissions below.": "בחר הרשאות ספציפיות למטה.",

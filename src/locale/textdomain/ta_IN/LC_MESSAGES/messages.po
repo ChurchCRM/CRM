@@ -7928,10 +7928,6 @@ msgid "Calendar not found"
 msgstr "நாட்காட்டி கிடைக்கவில்லை"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "டாஷ்போர்டுக்கு தொடரவும்"
-
-#: 
 msgid "Current Password"
 msgstr "தற்போதைய கடவுச்சொல்"
 
@@ -11307,10 +11303,6 @@ msgid "Yellow"
 msgstr "மஞ்சள்"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "உங்கள் தற்போதைய அணுகல் நிலைகள் (படிக்க மட்டும்)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d மீண்டும் நிகழும் நிகழ்வு வெற்றிகரமாக உருவாக்கப்பட்டது."
@@ -13844,10 +13836,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "இந்தப் பயனருக்கான 2 காரணி அங்கீகாரத்தை முடக்குவதை உறுதிப்படுத்தவும்"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "பயனர் நிலையை நீக்குவதை உறுதிப்படுத்தவும்"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "தோல்வியடைந்த உள்நுழைவு எண்ணிக்கையை மீட்டமைப்பதை உறுதிப்படுத்தவும்"
 
@@ -14658,10 +14646,6 @@ msgstr "அணுகல்"
 #: 
 msgid "Access level"
 msgstr "அணுகல் நிலை"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "நிர்வாகிகளுக்கு அனைத்து அம்சங்கள் மற்றும் தரவுகளுக்கும் முழு அணுகல் உள்ளது. தனிப்பட்ட அனுமதிகள் பொருந்தாது."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

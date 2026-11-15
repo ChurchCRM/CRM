@@ -4,6 +4,7 @@ namespace ChurchCRM\Service;
 
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\Map\PersonSigninTableMap;
+use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\PersonDeviceQuery;
 use ChurchCRM\model\ChurchCRM\PersonPasskeyQuery;
@@ -91,6 +92,7 @@ final class PersonSignInService
             actorUserId: (int) $actor->getPersonId(),
             detail: sprintf('devices=%d passkeys=%d', $devicesRemoved, $passkeysRemoved),
         );
+        self::addTimelineNote($personId, $actor, gettext('Sign-in disabled'));
 
         return ['devicesRemoved' => $devicesRemoved, 'passkeysRemoved' => $passkeysRemoved];
     }
@@ -113,6 +115,22 @@ final class PersonSignInService
             ->save();
 
         SignInAudit::record(SignInAuditEvent::SIGN_IN_ENABLED, $personId, actorUserId: (int) $actor->getPersonId());
+        self::addTimelineNote($personId, $actor, gettext('Sign-in enabled'));
+    }
+
+    /**
+     * An account entry on the person's timeline, credited to the administrator, so
+     * the Account filter shows sign-in changes next to the rest of the account's history.
+     * The reason stays on the sign-in record only.
+     */
+    private static function addTimelineNote(int $personId, User $actor, string $text): void
+    {
+        $note = new Note();
+        $note->setPerId($personId);
+        $note->setEntered((int) $actor->getPersonId());
+        $note->setType(User::NOTE_TYPE_ACCOUNT);
+        $note->setText($text);
+        $note->save();
     }
 
     /**

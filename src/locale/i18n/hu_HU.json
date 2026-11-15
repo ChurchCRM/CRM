@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Ha törli ezt a típust, az összes azt használó tulajdonságot is eltávolítja, és elveszíti a kapcsolódó tulajdonság-hozzárendeléseket.",
   "Move Donations to Selected Family": "Adományok áthelyezése a kiválasztott családhoz",
   "Calendar not found": "A naptár nem található",
-  "Continue to Dashboard": "Tovább az irányítópultra",
   "Current Password": "Jelenlegi jelszó",
   "Deposit not found": "A felajánlás nem található",
   "Group not found": "A csoport nem található",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "A(z) %s verzió elérhető. Kérjük, frissítse a telepítést.",
   "View All": "Összes megtekintése",
   "Yellow": "Sárga",
-  "Your current access levels (read-only)": "Jelenlegi hozzáférési szintjei (csak olvasható)",
   "%d repeat event created successfully.": {
     "one": "%d ismétlődő esemény sikeresen létrehozva.",
     "other": "%d ismétlődő esemény sikeresen létrehozva."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Kérjük, erősítse meg a család deaktiválását",
   "Please confirm deletion of this group record": "Kérjük, erősítse meg törlés a csoport eredménye",
   "Please confirm disabling 2 Factor Auth for this user": "Kérjük, erősítse meg a kétlépcsős azonosítás letiltását ehhez a felhasználóhoz",
-  "Please confirm removal of user status from": "Kérjük, erősítse eltávolítása felhasználói státuszát",
   "Please confirm reset failed login count": "Kérjük, erősítse meg a sikertelen bejelentkezések számának visszaállítását",
   "Please confirm the password reset of this user": "Kérjük, erősítse meg a jelszó-visszaállítási ennek a felhasználónak",
   "Please enter a valid URL": "Kérjük, adjon meg egy érvényes URL-t",
@@ -3507,7 +3504,6 @@
   "%s's Account": "%s fiókja",
   "Access": "Hozzáférés",
   "Access level": "Hozzáférési szint",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "A rendszergazdák teljes hozzáféréssel rendelkeznek az összes funkcióhoz és adathoz. Az egyéni jogosultságok nem vonatkoznak rájuk.",
   "All users can view congregation members. This permission cannot be removed.": "Minden felhasználó megtekintheti a gyülekezet tagjait. Ez a jogosultság nem vonható vissza.",
   "Always granted": "Mindig megadva",
   "Choose specific permissions below.": "Válasszon egyéni jogosultságokat az alábbiakban.",

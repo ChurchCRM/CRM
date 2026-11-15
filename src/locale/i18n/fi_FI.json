@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Jos poistat tämän tyypin, poistat myös kaikki ominaisuudet, jotka käyttävät sitä, ja menetät vastaavat ominaisuusmääritykset.",
   "Move Donations to Selected Family": "Siirrä lahjoitukset valitulle perheelle",
   "Calendar not found": "Kalenteria ei löydy",
-  "Continue to Dashboard": "Jatka koontinäyttöön",
   "Current Password": "Nykyinen salasana",
   "Deposit not found": "Talletusta ei löydy",
   "Group not found": "Ryhmää ei löydy",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "Versio %s on saatavilla. Päivitä asennuksesi.",
   "View All": "Näytä kaikki",
   "Yellow": "Keltainen",
-  "Your current access levels (read-only)": "Nykyiset käyttöoikeutesi (vain luku)",
   "%d repeat event created successfully.": {
     "one": "%d toistuva tapahtuma luotu onnistuneesti.",
     "other": "%d toistuvaa tapahtumaa luotu onnistuneesti."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Vahvista perheen merkitseminen epäaktiiviseksi",
   "Please confirm deletion of this group record": "Vahvista tämän ryhmän tietojen poistaminen",
   "Please confirm disabling 2 Factor Auth for this user": "Vahvista kaksivaiheisen tunnistautumisen poistaminen tältä käyttäjältä",
-  "Please confirm removal of user status from": "Vahvista käyttäjäoikeuksien poistaminen kohteelta",
   "Please confirm reset failed login count": "Vahvista epäonnistuneiden kirjautumisyritysten nollaus",
   "Please confirm the password reset of this user": "Vahvista tämän käyttäjän salasanan nollaus",
   "Please enter a valid URL": "Syötä kelvollinen URL-osoite",
@@ -3507,7 +3504,6 @@
   "%s's Account": "%s:n tili",
   "Access": "Käyttöoikeus",
   "Access level": "Käyttöoikeustaso",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Järjestelmänvalvojilla on täysi pääsy kaikkiin ominaisuuksiin ja tietoihin. Yksilölliset käyttöoikeudet eivät ole voimassa.",
   "All users can view congregation members. This permission cannot be removed.": "Kaikki käyttäjät voivat tarkastella seurakunnan jäseniä. Tätä käyttöoikeutta ei voi poistaa.",
   "Always granted": "Aina myönnetty",
   "Choose specific permissions below.": "Valitse tarkemmat käyttöoikeudet alta.",

@@ -7980,10 +7980,6 @@ msgid "Calendar not found"
 msgstr "日历未找到"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "继续到仪表板"
-
-#: 
 msgid "Current Password"
 msgstr "当前密码"
 
@@ -11354,10 +11350,6 @@ msgid "Yellow"
 msgstr "黄色"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "您当前的访问级别（只读）"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d 个重复事件创建成功。"
@@ -13888,10 +13880,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "请确认为此用户禁用2因子验证"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "请确认删除的用户状态"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "请确认重置登录失败次数"
 
@@ -14701,10 +14689,6 @@ msgstr "访问权限"
 #: 
 msgid "Access level"
 msgstr "访问级别"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "管理员可完全访问所有功能和数据，个人权限设置不适用。"
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

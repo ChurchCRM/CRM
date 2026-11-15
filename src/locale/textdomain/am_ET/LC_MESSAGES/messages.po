@@ -7927,10 +7927,6 @@ msgid "Calendar not found"
 msgstr "ቀን መቁጠሪያ አልተገኘም"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "ወደ ዳሽቦርድ ቀጥል"
-
-#: 
 msgid "Current Password"
 msgstr "የአሁኑ ይለፍ ቃል"
 
@@ -11302,10 +11298,6 @@ msgid "Yellow"
 msgstr "ቢጫ"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "የአሁን የመዳረሻ ደረጃዎችዎ (ለማንበብ ብቻ)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d ተደጋጋሚ ዝግጅት በተሳካ ሁኔታ ተፈጥሯል።"
@@ -13838,10 +13830,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "እባክዎን ለዚህ ተጠቃሚ 2 Factor Auth ማሰናከልዎን ያረጋግጡ"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "እባክዎ ተጠቃሚው ከሚከተለው መወገዱን ያረጋግጡ"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "እባክዎ ያልተሳካውን የመግቢያ ብዛት ዳግም ማስጀመሩን ያረጋግጡ"
 
@@ -14652,10 +14640,6 @@ msgstr "መዳረሻ"
 #: 
 msgid "Access level"
 msgstr "የመዳረሻ ደረጃ"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "አስተዳዳሪዎች ሁሉንም ባህሪያት እና ውሂብ ሙሉ ተደራሽነት አላቸው። የግለሰብ ፈቃዶች አይተገበሩም።"
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."
