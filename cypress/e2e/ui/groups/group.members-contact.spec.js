@@ -113,6 +113,12 @@ describe("Group member contact details (#1827)", () => {
             cy.contains("a", family.HomePhone).should("have.attr", "href", `tel:${family.HomePhone}`);
             cy.root().should("contain.text", family.Address1);
         });
+        if (family.SecondAddress1 || family.SecondCity) {
+            cy.contains("#membersTable tbody tr", "Inherited Contact1827").within(() => {
+                cy.root().should("contain.text", family.SecondAddress1 || family.SecondCity);
+                cy.root().should("contain.text", "Address");
+            });
+        }
         cy.contains("#membersTable tbody tr", "Personal Contact1827").within(() => {
             cy.get('a[href="tel:18275550123"]').should("be.visible");
             cy.get('a[href="tel:18275550456"]').should("be.visible");
