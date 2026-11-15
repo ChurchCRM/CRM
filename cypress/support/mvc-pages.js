@@ -5,6 +5,7 @@
 
 export const MVC_PAGES = {
     v2: ["/v2/dashboard", "/v2/search"],
+    account: ["/account", "/account/password", "/account/2fa"],
     people: [
         "/people/",
         "/people/dashboard",
@@ -31,6 +32,7 @@ export const MVC_PAGES = {
     admin: [
         "/admin/",
         "/admin/people",
+        "/admin/properties/person/new",
         "/admin/export",
         "/admin/export/csv",
         "/admin/system/users",
@@ -41,6 +43,7 @@ export const MVC_PAGES = {
         "/admin/system/debug",
         "/admin/system/upgrade",
         "/admin/system/church-info",
+        "/admin/property-types/new",
     ],
 };
 

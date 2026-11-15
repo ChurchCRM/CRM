@@ -50,9 +50,9 @@ describe("Admin Users list - accounts that cannot sign in (#10193)", () => {
     });
 
     it("shows the reason on the single-user page", () => {
-        cy.visit("v2/user/910");
+        cy.visit("/admin/system/users/910");
         cy.get('[data-cy="sign-in-blocked-alert"]').should("contain.text", "Deceased — cannot sign in");
-        cy.visit("v2/user/912");
+        cy.visit("/admin/system/users/912");
         cy.get('[data-cy="sign-in-blocked-alert"]').should("not.exist");
     });
 });

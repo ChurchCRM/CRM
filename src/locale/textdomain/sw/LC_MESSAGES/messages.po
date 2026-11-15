@@ -7918,10 +7918,6 @@ msgid "Calendar not found"
 msgstr "Kalenda haikupatikana"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Endelea kwa Dashibodi"
-
-#: 
 msgid "Current Password"
 msgstr "Nywila ya Sasa"
 
@@ -11293,10 +11289,6 @@ msgid "Yellow"
 msgstr "Njano"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Viwango vyako vya ufikiaji vya sasa (kusoma tu)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "Tukio %d la kurudia limeundwa kwa mafanikio."
@@ -13828,10 +13820,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Tafadhali thibitisha kulemaza 2 Factor Auth kwa mtumiaji huyu"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Tafadhali thibitisha kuondolewa kwa hali ya mtumiaji kutoka"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Tafadhali thibitisha kuweka upya idadi ya kuingia iliyoshindwa"
 
@@ -14642,10 +14630,6 @@ msgstr "Ufikiaji"
 #: 
 msgid "Access level"
 msgstr "Kiwango cha ufikiaji"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Wasimamizi wana ufikiaji kamili wa vipengele na data vyote. Ruhusa za mtu binafsi hazitumiki."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

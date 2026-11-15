@@ -7893,10 +7893,6 @@ msgid "Calendar not found"
 msgstr "Kalenteria ei löydy"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Jatka koontinäyttöön"
-
-#: 
 msgid "Current Password"
 msgstr "Nykyinen salasana"
 
@@ -11268,10 +11264,6 @@ msgid "Yellow"
 msgstr "Keltainen"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Nykyiset käyttöoikeutesi (vain luku)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d toistuva tapahtuma luotu onnistuneesti."
@@ -13803,10 +13795,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Vahvista kaksivaiheisen tunnistautumisen poistaminen tältä käyttäjältä"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Vahvista käyttäjäoikeuksien poistaminen kohteelta"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Vahvista epäonnistuneiden kirjautumisyritysten nollaus"
 
@@ -14617,10 +14605,6 @@ msgstr "Käyttöoikeus"
 #: 
 msgid "Access level"
 msgstr "Käyttöoikeustaso"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Järjestelmänvalvojilla on täysi pääsy kaikkiin ominaisuuksiin ja tietoihin. Yksilölliset käyttöoikeudet eivät ole voimassa."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

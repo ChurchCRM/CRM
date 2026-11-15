@@ -7889,10 +7889,6 @@ msgid "Calendar not found"
 msgstr "Hindi nahanap ang kalendaryo"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Magpatuloy sa Dashboard"
-
-#: 
 msgid "Current Password"
 msgstr "Kasalukuyang Password"
 
@@ -11264,10 +11260,6 @@ msgid "Yellow"
 msgstr "Dilaw"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Inyong kasalukuyang antas ng access (read-only)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d paulit-ulit na kaganapan ay matagumpay na nalilikha."
@@ -13799,10 +13791,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Pakikumpirma ang pag-disable ng 2 Factor Auth para sa user na ito"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Pakikumpirma ang pag-alis ng katayuan ng user mula sa"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Pakikumpirma ang pag-reset ng bilang ng bagsak na login"
 
@@ -14613,10 +14601,6 @@ msgstr "Access"
 #: 
 msgid "Access level"
 msgstr "Antas ng access"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Ang mga administrador ay may buong access sa lahat ng tampok at datos. Hindi naaangkop ang mga indibidwal na pahintulot."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."
