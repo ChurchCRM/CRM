@@ -54,17 +54,24 @@ $app->group('/deposits', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
      *     path="/deposits/dashboard",
-     *     summary="Get deposits from the last 90 days (Finance role required)",
+     *     summary="Get deposits for a time range (Finance role required)",
      *     tags={"Finance"},
      *     security={{"ApiKeyAuth":{}}},
-     *     @OA\Response(response=200, description="Array of deposits within the last 90 days"),
+     *     @OA\Parameter(name="days", in="query", required=false, description="Days window: 30|90|365 (default 90)", @OA\Schema(type="integer")),
+     *     @OA\Response(response=200, description="Array of deposits within the requested time range"),
      *     @OA\Response(response=401, description="Unauthorized"),
      *     @OA\Response(response=403, description="Finance role required")
      * )
      */
     $group->get('/dashboard', function (Request $request, Response $response, array $args): Response {
+        $queryParams = $request->getQueryParams();
+        $days = isset($queryParams['days']) ? (int) $queryParams['days'] : 90;
+        if (!in_array($days, [30, 90, 365], true)) {
+            $days = 90;
+        }
+
         $list = DepositQuery::create()
-            ->filterByDate(['min' => DateTimeUtils::getRelativeDate('-90 days')])
+            ->filterByDate(['min' => DateTimeUtils::getRelativeDate("-{$days} days")])
             ->orderByDate()
             ->find();
 

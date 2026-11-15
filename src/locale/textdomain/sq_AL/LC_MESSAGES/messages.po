@@ -7913,10 +7913,6 @@ msgid "Calendar not found"
 msgstr "Kalendari nuk u gjet"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Vazhdo në Panelin e Kontrollit"
-
-#: 
 msgid "Current Password"
 msgstr "Fjalëkalimi Aktual"
 
@@ -11288,10 +11284,6 @@ msgid "Yellow"
 msgstr "Verdhë"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Nivelet tuaja aktuale të aksesit (vetëm lexim)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d ngjarje e përsëritur u krijua me sukses."
@@ -13823,10 +13815,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Ju lutem konfirmoni çaktivizimin e vërtetimit 2-faktorësh për këtë përdorues"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Ju lutem konfirmoni heqjen e statusit të përdoruesit nga"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Ju lutemi konfirmoni rivendosjen e numërimit të dështimeve të hyrjes"
 
@@ -14637,10 +14625,6 @@ msgstr "Qasje"
 #: 
 msgid "Access level"
 msgstr "Niveli i qasjes"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "Administratorët kanë qasje të plotë në të gjitha funksionet dhe të dhënat. Lejet individuale nuk zbatohen."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

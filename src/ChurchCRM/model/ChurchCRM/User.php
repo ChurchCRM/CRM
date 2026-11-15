@@ -772,38 +772,57 @@ class User extends BaseUser
         $this->createTimeLineNote('deleted');
     }
 
+    /** Note type for account lifecycle entries on the person's timeline (filterable as "Account"). */
+    public const NOTE_TYPE_ACCOUNT = 'user';
+
+    /** Note type for a staff sign-in on the person's own timeline (filterable as "Account"). */
+    public const NOTE_TYPE_LOGIN = 'login';
+
+    /**
+     * Writes an account entry on the person's timeline.
+     *
+     * The author is the signed-in user who made the change. A sign-in, or a change
+     * with no signed-in user (a password reset from an emailed link), is credited to
+     * the account's own person.
+     */
     public function createTimeLineNote($type): void
     {
-        $note = new Note();
-        $note->setPerId($this->getPersonId());
-        $note->setEntered(AuthenticationManager::getCurrentUser()->getId());
-        $note->setType('user');
-
-        switch ($type) {
-            case 'created':
-                $note->setText(gettext('system user created'));
-                break;
-            case 'updated':
-                $note->setText(gettext('system user updated'));
-                break;
-            case 'deleted':
-                $note->setText(gettext('system user deleted'));
-                break;
-            case 'password-reset':
-                $note->setText(gettext('system user password reset'));
-                break;
-            case 'password-changed':
-                $note->setText(gettext('system user changed password'));
-                break;
-            case 'password-changed-admin':
-                $note->setText(gettext('system user password changed by admin'));
-                break;
-            case 'login-reset':
-                $note->setText(gettext('system user login reset'));
-                break;
+        $text = match ($type) {
+            'created' => gettext('system user created'),
+            'updated' => gettext('system user updated'),
+            'deleted' => gettext('system user deleted'),
+            'password-reset' => gettext('system user password reset'),
+            'password-reset-self' => gettext('system user reset their password from an emailed link'),
+            'password-changed' => gettext('system user changed password'),
+            'password-changed-admin' => gettext('system user password changed by admin'),
+            'login-reset' => gettext('system user login reset'),
+            'api-key-regen' => gettext('system user API key regenerated'),
+            '2fa-enrolled' => gettext('system user turned on two-factor authentication'),
+            '2fa-removed' => gettext('system user turned off two-factor authentication'),
+            '2fa-disabled' => gettext('system user two-factor authentication disabled by admin'),
+            'login' => gettext('Signed in'),
+            default => null,
+        };
+        if ($text === null) {
+            return;
         }
 
+        $note = new Note();
+        $note->setPerId($this->getPersonId());
+        $note->setEntered($type === 'login' ? (int) $this->getId() : self::timelineAuthorId((int) $this->getId()));
+        $note->setType($type === 'login' ? self::NOTE_TYPE_LOGIN : self::NOTE_TYPE_ACCOUNT);
+        $note->setText($text);
         $note->save();
+    }
+
+    /** The signed-in user's id, or $fallbackId when nobody is signed in. */
+    public static function timelineAuthorId(int $fallbackId): int
+    {
+        try {
+            return (int) AuthenticationManager::getCurrentUser()->getId();
+        } catch (\Throwable) {
+            return $fallbackId;
+        }
     }
 
     public function isEnabledSecurity($securityConfigName): bool

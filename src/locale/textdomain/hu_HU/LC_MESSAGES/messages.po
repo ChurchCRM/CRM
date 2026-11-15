@@ -7947,10 +7947,6 @@ msgid "Calendar not found"
 msgstr "A naptár nem található"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "Tovább az irányítópultra"
-
-#: 
 msgid "Current Password"
 msgstr "Jelenlegi jelszó"
 
@@ -11322,10 +11318,6 @@ msgid "Yellow"
 msgstr "Sárga"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "Jelenlegi hozzáférési szintjei (csak olvasható)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d ismétlődő esemény sikeresen létrehozva."
@@ -13857,10 +13849,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "Kérjük, erősítse meg a kétlépcsős azonosítás letiltását ehhez a felhasználóhoz"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "Kérjük, erősítse eltávolítása felhasználói státuszát"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "Kérjük, erősítse meg a sikertelen bejelentkezések számának visszaállítását"
 
@@ -14671,10 +14659,6 @@ msgstr "Hozzáférés"
 #: 
 msgid "Access level"
 msgstr "Hozzáférési szint"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "A rendszergazdák teljes hozzáféréssel rendelkeznek az összes funkcióhoz és adathoz. Az egyéni jogosultságok nem vonatkoznak rájuk."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

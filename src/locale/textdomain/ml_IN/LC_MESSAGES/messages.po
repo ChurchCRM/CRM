@@ -7889,10 +7889,6 @@ msgid "Calendar not found"
 msgstr "കലണ്ടർ കണ്ടെത്തിയില്ല"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "ഡാഷ്‌ബോർഡിലേക്ക് തുടരൂ"
-
-#: 
 msgid "Current Password"
 msgstr "നിലവിലെ പാസ്‌വേഡ്"
 
@@ -11264,10 +11260,6 @@ msgid "Yellow"
 msgstr "മഞ്ഞ"
 
 #: 
-msgid "Your current access levels (read-only)"
-msgstr "നിങ്ങളുടെ നിലവിലെ ആക്സസ് ലെവലുകൾ (വായിക്കാൻ മാത്രം)"
-
-#: 
 msgid "%d repeat event created successfully."
 msgid_plural "%d repeat events created successfully."
 msgstr[0] "%d ആവർത്തന പരിപാടി വിജയകരമായി സൃഷ്ടിച്ചു."
@@ -13799,10 +13791,6 @@ msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "ഈ ഉപയോക്താവിന്റെ 2 ഘടക ആധികാരികത പ്രവർത്തനരഹിതമാക്കൽ സ്ഥിരീകരിക്കുക"
 
 #: 
-msgid "Please confirm removal of user status from"
-msgstr "ഉപയോക്തൃ നില നീക്കൽ സ്ഥിരീകരിക്കുക"
-
-#: 
 msgid "Please confirm reset failed login count"
 msgstr "പരാജയപ്പെട്ട ലോഗിൻ എണ്ണം റീസെറ്റ് ചെയ്യൽ സ്ഥിരീകരിക്കുക"
 
@@ -14613,10 +14601,6 @@ msgstr "പ്രവേശനം"
 #: 
 msgid "Access level"
 msgstr "പ്രവേശന നില"
-
-#: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "അഡ്മിനിസ്ട്രേറ്റർമാർക്ക് എല്ലാ സവിശേഷതകളിലേക്കും ഡേറ്റയിലേക്കും പൂർണ്ണ പ്രവേശനമുണ്ട്. വ്യക്തിഗത അനുമതികൾ ബാധകമല്ല."
 
 #: 
 msgid "All users can view congregation members. This permission cannot be removed."

@@ -1908,7 +1908,6 @@
   "If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.": "Si vous supprimez ce type, vous supprimerez également toutes les propriétés qui l'utilisent et perdrez toutes les attributions de propriétés correspondantes.",
   "Move Donations to Selected Family": "Déplacer les offrandes vers la famille sélectionnée",
   "Calendar not found": "Calendrier introuvable",
-  "Continue to Dashboard": "Continuer vers le Tableau de bord",
   "Current Password": "Mot de passe actuel",
   "Deposit not found": "Offrande introuvable",
   "Group not found": "Groupe introuvable",
@@ -2667,7 +2666,6 @@
   "Version %s is available. Please upgrade your installation.": "La version %s est disponible. Veuillez mettre à jour votre installation.",
   "View All": "Tout afficher",
   "Yellow": "Jaune",
-  "Your current access levels (read-only)": "Vos niveaux d'accès actuels (lecture seule)",
   "%d repeat event created successfully.": {
     "one": "%d événement récurrent créé avec succès.",
     "other": "%d événements récurrents créés avec succès."
@@ -3301,7 +3299,6 @@
   "Please confirm deactivation of family": "Veuillez confirmer la désactivation de la famille",
   "Please confirm deletion of this group record": "Merci de confirmer la suppression de ce groupe",
   "Please confirm disabling 2 Factor Auth for this user": "Veuillez confirmer la désactivation de l'authentification à 2 facteurs pour cet utilisateur",
-  "Please confirm removal of user status from": "Veuillez confirmer la suppression du statut utilisateur de ",
   "Please confirm reset failed login count": "Veuillez confirmer l'échec de la réinitialisation de l'identifiant",
   "Please confirm the password reset of this user": "Veuillez confirmer la réinitialisation du mot de passe de cet utilisateur",
   "Please enter a valid URL": "Veuillez saisir une URL valide",
@@ -3507,7 +3504,6 @@
   "%s's Account": "Compte de %s",
   "Access": "Accès",
   "Access level": "Niveau d'accès",
-  "Administrators have full access to all features and data. Individual permissions do not apply.": "Les administrateurs ont un accès complet à toutes les fonctionnalités et données. Les permissions individuelles ne s'appliquent pas.",
   "All users can view congregation members. This permission cannot be removed.": "Tous les utilisateurs peuvent consulter les membres de la paroisse. Cette permission ne peut pas être supprimée.",
   "Always granted": "Toujours accordé",
   "Choose specific permissions below.": "Choisissez des permissions spécifiques ci-dessous.",

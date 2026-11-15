@@ -12,7 +12,7 @@ function visitEnrollment() {
         headers: { "cache-control": "no-store, private" },
         body: { TwoFAQRCodeDataUri: qr, TwoFASecret: FIRST_KEY },
     }).as("newSecret");
-    cy.visit("/v2/user/current/manage2fa");
+    cy.visit("/account/2fa");
     cy.get("#begin2faEnrollment").click();
     cy.wait("@newSecret");
 }
@@ -22,7 +22,7 @@ describe("2FA manual setup key", () => {
 
     it("renders translated labels after a direct hard reload", () => {
         cy.intercept("GET", "**/api/user/current/2fa-status", { IsEnabled: false });
-        cy.visit("/v2/user/current/manage2fa");
+        cy.visit("/account/2fa");
         cy.get("#begin2faEnrollment").should("be.visible");
         cy.reload();
         cy.get("#begin2faEnrollment", { timeout: 10000 }).should("be.visible");
