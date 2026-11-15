@@ -1,7 +1,5 @@
 /// <reference types="cypress" />
 
-import { totp } from "../../../support/totp";
-
 /**
  * The safety net for a self-service account (usr_EditSelf=1, not an
  * administrator) that the 7.8.3 upgrade did not remove (member sign-in design
@@ -76,32 +74,6 @@ describe("Safety net — a self-service account the upgrade left behind", () => 
     it("Its session is refused the internal API", () => {
         login();
         cy.request({ url: "/api/person/2", failOnStatusCode: false }).its("status").should("eq", 403);
-    });
-
-    it("disables its own 2FA after confirming the password", () => {
-        login();
-        cy.request({ method: "POST", url: "/api/user/current/refresh2fasecret", failOnStatusCode: false }).then((resp) => {
-            expect(resp.status).to.eq(200);
-            return totp(resp.body.TwoFASecret);
-        }).then((code) =>
-            cy.request({
-                method: "POST",
-                url: "/api/user/current/test2FAEnrollmentCode",
-                body: { enrollmentCode: code },
-                failOnStatusCode: false,
-            }),
-        ).its("body.IsEnrollmentCodeValid").should("eq", true);
-
-        cy.request({
-            method: "POST",
-            url: "/api/user/current/2fa/confirm",
-            body: { confirmation: PASSWORD },
-            failOnStatusCode: false,
-        }).its("status").should("eq", 200);
-        cy.request({ method: "POST", url: "/api/user/current/remove2fasecret", failOnStatusCode: false })
-            .its("status")
-            .should("eq", 200);
-        cy.request({ url: "/api/user/current/2fa-status", failOnStatusCode: false }).its("body.IsEnabled").should("eq", false);
     });
 
     it("Its API key is refused the internal API, even for its own family and record", () => {

@@ -206,7 +206,6 @@ class AuthMiddleware implements MiddlewareInterface
      *  - /api/user/current/refresh2farecoverycodes
      *  - /api/user/current/remove2fasecret
      *  - /api/user/current/test2FAEnrollmentCode
-     *  - /api/user/current/2fa/confirm
      */
     private const AUTH_FLOW_EXEMPT_PATHS = [
         '/v2/user/current/changepassword',
@@ -218,7 +217,6 @@ class AuthMiddleware implements MiddlewareInterface
         '/api/user/current/refresh2farecoverycodes',
         '/api/user/current/remove2fasecret',
         '/api/user/current/test2FAEnrollmentCode',
-        '/api/user/current/2fa/confirm',
     ];
 
     /**
