@@ -9,7 +9,6 @@ use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\Service\ClassificationService;
-use ChurchCRM\Service\CommunityFeedbackService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\view\PageHeader;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -133,11 +132,10 @@ function viewCommunityFeedback(Request $request, Response $response, array $args
 
     $pageArgs = [
         'sRootPath'       => SystemURLs::getRootPath(),
-        'sPageTitle'      => gettext('We Need Your Help'),
+        'sPageTitle'      => gettext('Review what we are considering'),
         'aBreadcrumbs'    => PageHeader::breadcrumbs([
-            [gettext('We Need Your Help')],
+            [gettext('Review what we are considering')],
         ]),
-        'feedbackItems'   => CommunityFeedbackService::getItems(),
         'sDiscussionsUrl' => 'https://github.com/ChurchCRM/CRM/discussions',
     ];
 

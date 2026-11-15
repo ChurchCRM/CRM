@@ -6,78 +6,39 @@ use ChurchCRM\Utils\InputUtils;
 require SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
 $discussionsUrl = $sDiscussionsUrl ?? 'https://github.com/ChurchCRM/CRM/discussions';
-$feedbackItems = $feedbackItems ?? [];
 
 ?>
 
-<div class="row row-cards mb-3 g-2">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><i class="fa-solid fa-comments me-2"></i><?= gettext('Why your feedback matters') ?></h3>
-            </div>
-            <div class="card-body">
-                <p><?= gettext('ChurchCRM is built by a small team, and the churches using it every day know better than anyone what should be built next.') ?></p>
-                <p><?= gettext('Every vote and comment on the topics below is read by the maintainers. The topics with the most support become the next work we take on.') ?></p>
-                <p class="mb-0"><?= gettext('Votes are advisory: they show what churches need most, and the maintainers set the final schedule.') ?></p>
-            </div>
+<div class="row g-3">
+    <div class="col-lg-8">
+        <div class="row row-cards g-3" id="communityFeedbackList"
+             data-discussions-url="<?= InputUtils::escapeAttribute($discussionsUrl) ?>"
+             data-count-label="<?= InputUtils::escapeAttribute(gettext('Ideas waiting for your review')) ?>"
+             data-vote-label="<?= InputUtils::escapeAttribute(gettext('Review and vote')) ?>"
+             data-empty="<?= InputUtils::escapeAttribute(gettext('The list could not be loaded. You can still open the ideas on GitHub.')) ?>"
+             data-view-all="<?= InputUtils::escapeAttribute(gettext('View all ideas')) ?>"
+             data-still="">
         </div>
     </div>
-</div>
-
-<div class="row row-cards mb-3 g-2">
-    <div class="col-12">
+    <div class="col-lg-4">
         <div class="card">
-            <div class="card-header d-flex align-items-center">
-                <h3 class="card-title"><i class="fa-solid fa-hand-point-up me-2"></i><?= gettext('How to take part') ?></h3>
-            </div>
             <div class="card-body">
-                <ol class="mb-3">
-                    <li><?= gettext('Open a topic below that matters to your church.') ?></li>
-                    <li><?= gettext('React with 👍 on the Discussion to vote for it.') ?></li>
-                    <li><?= gettext('Add a comment explaining how your church does this work today — that real-world detail shapes the design.') ?></li>
-                </ol>
+                <h3 class="card-title"><?= gettext('How to respond') ?></h3>
+                <p><?= gettext('Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today.') ?></p>
                 <p class="mb-0">
-                    <?= gettext('No GitHub account?') ?>
-                    <a href="https://discord.gg/tuWyFzj3Nj" target="_blank" rel="noopener noreferrer"><?= gettext('Join us on Discord') ?></a>
-                    <?= gettext('and share your feedback there — it is carried back to the maintainers.') ?>
+                    <a href="https://discord.gg/tuWyFzj3Nj" target="_blank" rel="noopener noreferrer"><?= gettext('No GitHub account? Tell us on Discord') ?></a>
                 </p>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="row row-cards g-2">
-    <div class="col-12">
-        <?php if (!empty($feedbackItems)) { ?>
-        <h3 class="mb-3"><?= sprintf(gettext('%d open topics need your feedback'), count($feedbackItems)) ?></h3>
-        <?php foreach ($feedbackItems as $feedbackItem) { ?>
-        <div class="card mb-3">
+        <div class="card mt-3">
             <div class="card-body">
-                <?php if (!empty($feedbackItem['category'])) { ?>
-                <span class="badge bg-primary mb-2"><?= InputUtils::escapeHTML($feedbackItem['category']) ?></span>
-                <?php } ?>
-                <h4 class="card-title"><?= InputUtils::escapeHTML($feedbackItem['title']) ?></h4>
-                <p class="text-body-secondary"><?= InputUtils::escapeHTML($feedbackItem['summary']) ?></p>
-                <a href="<?= InputUtils::escapeAttribute($feedbackItem['discussionUrl']) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                    <i class="fa-solid fa-comments me-2"></i><?= gettext('Vote & discuss') ?>
+                <h3 class="card-title"><?= gettext('Register your church') ?></h3>
+                <p class="text-body-secondary"><?= gettext('One minute. We do not share what you send.') ?></p>
+                <a href="https://forms.gle/F1xgoBaWUD1Fy7Bn9" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary">
+                    <?= gettext('Register Now') ?>
                 </a>
             </div>
         </div>
-        <?php } ?>
-        <?php } else { ?>
-        <div class="card">
-            <div class="card-body">
-                <p><?= gettext('The current list of topics could not be loaded — this install may be offline, or a new list is still being published.') ?></p>
-                <p class="mb-0"><?= gettext('You can still see and join every open topic on GitHub:') ?></p>
-                <p class="mt-3 mb-0">
-                    <a href="<?= InputUtils::escapeAttribute($discussionsUrl) ?>" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                        <i class="fa-brands fa-github me-2"></i><?= gettext('View all topics') ?>
-                    </a>
-                </p>
-            </div>
-        </div>
-        <?php } ?>
     </div>
 </div>
 

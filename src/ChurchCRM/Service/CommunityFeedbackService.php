@@ -8,64 +8,72 @@ use ChurchCRM\Utils\LoggerUtils;
 /**
  * Curated community-feedback topics for the "We Need Your Help" page.
  *
- * On login, AuthenticationManager calls fetchRemoteFeedback() ONCE, which
- * fetches the maintainer-curated JSON from CentralServices::FEEDBACK_URL
- * and stores the validated items in $_SESSION['CommunityFeedbackItems'].
- *
- * No external HTTP calls happen in the render path, and installs never
- * call the GitHub API — the list is curated in External/feedback.json,
- * the same pattern NotificationService uses for notifications.json.
- * Updating the ballot therefore needs no release.
+ * The header badge and the page load this through GET /api/community-feedback.
+ * The first call in a session fetches External/feedback.json; later calls
+ * reuse that result for CACHE_SECONDS. Sign-in does not call this.
+ * Installs never call the GitHub API. A failed fetch returns an empty list.
  */
 class CommunityFeedbackService
 {
     private const MAX_ITEMS = 20;
 
+    private const CACHE_SECONDS = 300;
+
     private const DISCUSSION_URL_PATTERN = '/^https:\/\/github\.com\/ChurchCRM\/CRM\/discussions\/\d+$/';
 
     /**
-     * Fetch feedback topics from the remote GitHub-hosted JSON file.
-     * Called ONCE on login by AuthenticationManager — never in the render path.
-     * Results are stored in $_SESSION['CommunityFeedbackItems'].
-     * Never throws: an offline install or a malformed file simply leaves
-     * the page in its fallback state.
+     * @return array{count: int, items: array<int, array{id: string, title: string, summary: string, category: string, discussionUrl: string, expiresAt: ?string}>}
      */
-    public static function fetchRemoteFeedback(): void
+    public static function getPayload(): array
+    {
+        $cached = $_SESSION['CommunityFeedbackCache'] ?? null;
+        if (
+            is_array($cached)
+            && isset($cached['fetchedAt'], $cached['items'])
+            && is_array($cached['items'])
+            && (time() - (int) $cached['fetchedAt']) < self::CACHE_SECONDS
+        ) {
+            $items = self::validateItems($cached['items']);
+
+            return ['count' => count($items), 'items' => $items];
+        }
+
+        $items = self::fetchRemoteItems();
+        $_SESSION['CommunityFeedbackCache'] = [
+            'fetchedAt' => time(),
+            'items' => $items,
+        ];
+
+        return ['count' => count($items), 'items' => $items];
+    }
+
+    /**
+     * @return array<int, array{id: string, title: string, summary: string, category: string, discussionUrl: string, expiresAt: ?string}>
+     */
+    private static function fetchRemoteItems(): array
     {
         try {
             $url = CentralServices::FEEDBACK_URL;
-            // Runs inside the sign-in request, so never let a slow remote host hold up the redirect.
             $context = stream_context_create(['http' => ['timeout' => 5]]);
             $contents = @file_get_contents($url, false, $context);
             if ($contents === false) {
                 LoggerUtils::getAppLogger()->warning('Failed to fetch remote community feedback', ['url' => $url]);
 
-                return;
+                return [];
             }
             $data = json_decode($contents, true);
             if (!is_array($data) || !isset($data['items']) || !is_array($data['items'])) {
                 LoggerUtils::getAppLogger()->warning('Malformed remote community feedback', ['url' => $url]);
 
-                return;
+                return [];
             }
-            $_SESSION['CommunityFeedbackItems'] = self::validateItems($data['items']);
+
+            return self::validateItems($data['items']);
         } catch (\Exception $e) {
             LoggerUtils::getAppLogger()->warning('Error processing remote community feedback', ['error' => $e->getMessage()]);
-        }
-    }
 
-    /**
-     * Return the validated feedback topics cached in the session at login.
-     *
-     * @return array<int, array{id: string, title: string, summary: string, category: string, discussionUrl: string, expiresAt: ?string}>
-     */
-    public static function getItems(): array
-    {
-        if (!isset($_SESSION['CommunityFeedbackItems']) || !is_array($_SESSION['CommunityFeedbackItems'])) {
             return [];
         }
-
-        return self::validateItems($_SESSION['CommunityFeedbackItems']);
     }
 
     /**
