@@ -60,8 +60,19 @@ final class PersonDeletionService
             $categories[] = gettext('recorded activities');
         }
 
+        // A coordinator may have recorded the append-only response for a
+        // volunteer's declined assignment. Deleting the volunteer would
+        // cascade that response even though the responder is someone else.
+        $assignmentIds = VolunteerAssignmentQuery::create()
+            ->filterByPersonId($personId)
+            ->select(['Id'])
+            ->find($connection)
+            ->toArray();
+
         if (VolunteerAssignmentQuery::create()->filterByPersonId($personId)
             ->filterByStatus(['accepted', 'substituted', 'completed'], Criteria::IN)->exists($connection)
+            || ($assignmentIds !== [] && VolunteerResponseQuery::create()
+                ->filterByAssignmentId($assignmentIds, Criteria::IN)->exists($connection))
             || VolunteerResponseQuery::create()->filterByPersonId($personId)->exists($connection)
             || VolunteerSwapQuery::create()
                 ->filterByProposedByPersonId($personId)
