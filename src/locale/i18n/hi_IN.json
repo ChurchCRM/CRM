@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "लॉगिन %d वर्णों या उससे कम का होना चाहिए!",
   "Raised This Fiscal Year": "इस वित्तीय वर्ष में जुटाई गई राशि",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s एक पूर्ण https:// वेब पता होना चाहिए, उदाहरण के लिए https://example.org/yourchurch।",
-  "Account has limited permissions. Contact an administrator.": "खाते की अनुमतियाँ सीमित हैं। किसी एडमिनिस्ट्रेटर से संपर्क करें।",
   "An error occurred while rendering the error page.": "त्रुटि पेज प्रस्तुत करते समय एक त्रुटि हुई।",
   "Each address must start with https://": "प्रत्येक पता https:// से शुरू होना चाहिए",
   "Generate Labels": "लेबल जनरेट करें",

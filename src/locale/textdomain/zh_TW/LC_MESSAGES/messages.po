@@ -17404,10 +17404,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s 必須是完整的 https:// 網址，例如 https://example.org/yourchurch。"
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "此帳號權限受限，請聯絡管理員。"
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "轉譯錯誤頁面時發生錯誤。"
 

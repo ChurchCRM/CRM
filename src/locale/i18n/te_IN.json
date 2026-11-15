@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "లాగిన్ %d అక్షరాలు లేదా అంతకంటే తక్కువ ఉండాలి!",
   "Raised This Fiscal Year": "ఈ ఆర్థిక సంవత్సరంలో సేకరించినది",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s తప్పనిసరిగా పూర్తి https:// వెబ్ చిరునామా అయి ఉండాలి, ఉదాహరణకు https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "ఖాతాకు పరిమిత అనుమతులు ఉన్నాయి. నిర్వాహకుడిని సంప్రదించండి.",
   "An error occurred while rendering the error page.": "లోపం పేజీని రెండర్ చేస్తున్నప్పుడు ఒక లోపం సంభవించింది.",
   "Each address must start with https://": "ప్రతి చిరునామా తప్పనిసరిగా https://తో ప్రారంభం కావాలి",
   "Generate Labels": "లేబుల్‌లను రూపొందించు",

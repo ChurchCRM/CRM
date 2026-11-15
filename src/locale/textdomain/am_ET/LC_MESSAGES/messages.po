@@ -17286,10 +17286,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s ሙሉ የ https:// ድረ-ገጽ አድራሻ መሆን አለበት፣ ለምሳሌ https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "መለያው የተገደበ ፈቃድ አለው። አስተዳዳሪን ያነጋግሩ።"
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "የስህተት ገጹን በማሳየት ላይ ሳለ ስህተት ተከስቷል።"
 

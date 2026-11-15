@@ -17367,10 +17367,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s måste vara en fullständig https://-webbadress, till exempel https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Kontot har begränsade behörigheter. Kontakta en administratör."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "Ett fel uppstod vid visning av felsidan."
 

@@ -17363,10 +17363,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s должен быть полным веб-адресом https://, например https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Учётная запись имеет ограниченные права. Обратитесь к администратору."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "Произошла ошибка при отображении страницы ошибки."
 

@@ -4159,7 +4159,6 @@
   "Login must be %d characters or fewer!": "登入帳號長度不可超過 %d 個字元！",
   "Raised This Fiscal Year": "本會計年度募得金額",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s 必須是完整的 https:// 網址，例如 https://example.org/yourchurch。",
-  "Account has limited permissions. Contact an administrator.": "此帳號權限受限，請聯絡管理員。",
   "An error occurred while rendering the error page.": "轉譯錯誤頁面時發生錯誤。",
   "Each address must start with https://": "每個網址都必須以 https:// 開頭",
   "Generate Labels": "產生標籤",

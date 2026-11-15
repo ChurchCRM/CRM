@@ -17271,10 +17271,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s duhet të jetë një adresë e plotë web https://, për shembull https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Llogaria ka leje të kufizuara. Kontaktoni një administrator."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "Ndodhi një gabim gjatë shfaqjes së faqes së gabimit."
 

@@ -4159,7 +4159,6 @@
   "Login must be %d characters or fewer!": "ログイン名は%d文字以下でなければなりません!",
   "Raised This Fiscal Year": "今会計年度の集計額",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%sは完全なhttps://のウェブアドレスである必要があります。例: https://example.org/yourchurch",
-  "Account has limited permissions. Contact an administrator.": "アカウントの権限が制限されています。管理者にお問い合わせください。",
   "An error occurred while rendering the error page.": "エラーページの表示中にエラーが発生しました。",
   "Each address must start with https://": "各アドレスはhttps://で始まる必要があります",
   "Generate Labels": "ラベルを生成",

@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "Inloggningsnamnet får vara högst %d tecken!",
   "Raised This Fiscal Year": "Insamlat detta räkenskapsår",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s måste vara en fullständig https://-webbadress, till exempel https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "Kontot har begränsade behörigheter. Kontakta en administratör.",
   "An error occurred while rendering the error page.": "Ett fel uppstod vid visning av felsidan.",
   "Each address must start with https://": "Varje adress måste börja med https://",
   "Generate Labels": "Generera etiketter",

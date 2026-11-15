@@ -17292,10 +17292,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s முழுமையான https:// இணைய முகவரியாக இருக்க வேண்டும், எடுத்துக்காட்டாக https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "கணக்கிற்கு வரையறுக்கப்பட்ட அனுமதிகள் உள்ளன. நிர்வாகியைத் தொடர்பு கொள்ளவும்."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "பிழைப் பக்கத்தை காட்டும்போது பிழை ஏற்பட்டது."
 

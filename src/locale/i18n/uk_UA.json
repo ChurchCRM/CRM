@@ -4204,7 +4204,6 @@
   "Login must be %d characters or fewer!": "Логін має містити не більше %d символів!",
   "Raised This Fiscal Year": "Зібрано за цей фінансовий рік",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s має бути повною веб-адресою https://, наприклад https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "Обліковий запис має обмежені права доступу. Зверніться до адміністратора.",
   "An error occurred while rendering the error page.": "Під час відображення сторінки помилки сталася помилка.",
   "Each address must start with https://": "Кожна адреса має починатися з https://",
   "Generate Labels": "Створити наклейки",

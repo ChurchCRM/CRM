@@ -4204,7 +4204,6 @@
   "Login must be %d characters or fewer!": "Prihlasovacie meno musí mať %d znakov alebo menej!",
   "Raised This Fiscal Year": "Vyzbierané v tomto fiškálnom roku",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s musí byť úplná webová adresa https://, napríklad https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "Účet má obmedzené oprávnenia. Kontaktujte administrátora.",
   "An error occurred while rendering the error page.": "Pri vykresľovaní chybovej stránky nastala chyba.",
   "Each address must start with https://": "Každá adresa musí začínať na https://",
   "Generate Labels": "Generovať štítky",

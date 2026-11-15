@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "Giriş adı en fazla %d karakter olmalıdır!",
   "Raised This Fiscal Year": "Bu Mali Yılda Toplanan",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s, https://example.org/yourchurch gibi tam bir https:// web adresi olmalıdır.",
-  "Account has limited permissions. Contact an administrator.": "Hesabın izinleri sınırlıdır. Bir yöneticiyle iletişime geçin.",
   "An error occurred while rendering the error page.": "Hata sayfası oluşturulurken bir hata meydana geldi.",
   "Each address must start with https://": "Her adres https:// ile başlamalıdır",
   "Generate Labels": "Etiket Oluştur",

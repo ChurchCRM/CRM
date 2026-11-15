@@ -17276,10 +17276,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s lazima iwe anwani kamili ya wavuti ya https://, kwa mfano https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Akaunti ina ruhusa chache. Wasiliana na msimamizi."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "Hitilafu imetokea wakati wa kuonyesha ukurasa wa hitilafu."
 

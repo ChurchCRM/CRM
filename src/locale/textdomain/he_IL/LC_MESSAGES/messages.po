@@ -17278,10 +17278,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s חייב להיות כתובת אינטרנט מלאה בפורמט https://, לדוגמה https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "לחשבון יש הרשאות מוגבלות. יש לפנות למנהל המערכת."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "אירעה שגיאה בעת הצגת דף השגיאה."
 

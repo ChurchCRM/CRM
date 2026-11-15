@@ -17279,10 +17279,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s peab olema täielik https:// veebiaadress, näiteks https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Kontol on piiratud õigused. Võtke ühendust administraatoriga."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "Vealehe kuvamisel tekkis viga."
 

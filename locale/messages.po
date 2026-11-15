@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-15 18:46+0000\n"
+"POT-Creation-Date: 2026-11-15 19:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -858,9 +858,6 @@ msgid "Account Unlocked"
 msgstr ""
 
 msgid "Account deleted"
-msgstr ""
-
-msgid "Account has limited permissions. Contact an administrator."
 msgstr ""
 
 msgid "Account locked"
@@ -17544,9 +17541,6 @@ msgid "This Person is Inactive"
 msgstr ""
 
 msgid "This account is locked because of too many failed login attempts."
-msgstr ""
-
-msgid "This account uses the Member Portal only"
 msgstr ""
 
 msgid "This action CANNOT be undone, and may have legal implications!"

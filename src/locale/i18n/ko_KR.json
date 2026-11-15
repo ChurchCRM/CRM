@@ -4159,7 +4159,6 @@
   "Login must be %d characters or fewer!": "로그인 이름은 %d자 이하이어야 합니다!",
   "Raised This Fiscal Year": "이번 회계연도 모금액",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s은(는) https://example.org/yourchurch 와 같은 전체 https:// 웹 주소여야 합니다.",
-  "Account has limited permissions. Contact an administrator.": "계정 권한이 제한되어 있습니다. 관리자에게 문의하세요.",
   "An error occurred while rendering the error page.": "오류 페이지를 표시하는 중 오류가 발생했습니다.",
   "Each address must start with https://": "각 주소는 https://로 시작해야 합니다",
   "Generate Labels": "라벨 생성",

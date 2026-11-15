@@ -4159,7 +4159,6 @@
   "Login must be %d characters or fewer!": "Tên đăng nhập phải có tối đa %d ký tự!",
   "Raised This Fiscal Year": "Số tiền quyên góp được trong năm tài chính này",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s phải là một địa chỉ web https:// đầy đủ, ví dụ: https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "Tài khoản có quyền hạn chế. Vui lòng liên hệ quản trị viên.",
   "An error occurred while rendering the error page.": "Đã xảy ra lỗi khi hiển thị trang lỗi.",
   "Each address must start with https://": "Mỗi địa chỉ phải bắt đầu bằng https://",
   "Generate Labels": "Tạo nhãn",

@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "Emri i hyrjes duhet të jetë %d karaktere ose më pak!",
   "Raised This Fiscal Year": "Mbledhur Këtë Vit Fiskal",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s duhet të jetë një adresë e plotë web https://, për shembull https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "Llogaria ka leje të kufizuara. Kontaktoni një administrator.",
   "An error occurred while rendering the error page.": "Ndodhi një gabim gjatë shfaqjes së faqes së gabimit.",
   "Each address must start with https://": "Çdo adresë duhet të fillojë me https://",
   "Generate Labels": "Gjenero Etiketa",

@@ -17354,10 +17354,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "%s trebuie să fie o adresă web completă https://, de exemplu https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Contul are permisiuni limitate. Contactați un administrator."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "A apărut o eroare la randarea paginii de eroare."
 

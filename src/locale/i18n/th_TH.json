@@ -4159,7 +4159,6 @@
   "Login must be %d characters or fewer!": "ชื่อผู้ใช้ต้องมีความยาวไม่เกิน %d ตัวอักษร!",
   "Raised This Fiscal Year": "ยอดระดมทุนในปีงบประมาณนี้",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s ต้องเป็นที่อยู่เว็บแบบเต็มรูปแบบ https:// เช่น https://example.org/yourchurch",
-  "Account has limited permissions. Contact an administrator.": "บัญชีมีสิทธิ์การใช้งานจำกัด กรุณาติดต่อผู้ดูแลระบบ",
   "An error occurred while rendering the error page.": "เกิดข้อผิดพลาดขณะแสดงหน้าข้อผิดพลาด",
   "Each address must start with https://": "แต่ละที่อยู่ต้องขึ้นต้นด้วย https://",
   "Generate Labels": "สร้างป้ายจ่าหน้า",

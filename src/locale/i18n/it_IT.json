@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "Il nome utente deve essere di massimo %d caratteri!",
   "Raised This Fiscal Year": "Raccolto in questo anno fiscale",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s deve essere un indirizzo web completo che inizi con https://, ad esempio https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "L'account ha permessi limitati. Contatta un amministratore.",
   "An error occurred while rendering the error page.": "Si è verificato un errore durante il rendering della pagina di errore.",
   "Each address must start with https://": "Ogni indirizzo deve iniziare con https://",
   "Generate Labels": "Genera Etichette",

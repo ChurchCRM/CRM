@@ -17247,10 +17247,6 @@ msgid "%s must be a full https:// web address, for example https://example.org/y
 msgstr "Ang %s ay dapat kumpletong https:// web address, halimbawa https://example.org/yourchurch."
 
 #: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "May limitadong pahintulot ang account. Makipag-ugnayan sa isang administrator."
-
-#: 
 msgid "An error occurred while rendering the error page."
 msgstr "May naganap na error habang ini-render ang error page."
 

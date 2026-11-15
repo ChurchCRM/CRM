@@ -4159,7 +4159,6 @@
   "Login must be %d characters or fewer!": "登录名不能超过 %d 个字符！",
   "Raised This Fiscal Year": "本财政年度已筹集金额",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s 必须是完整的 https:// 网址，例如 https://example.org/yourchurch。",
-  "Account has limited permissions. Contact an administrator.": "账户权限受限，请联系管理员。",
   "An error occurred while rendering the error page.": "渲染错误页面时发生错误。",
   "Each address must start with https://": "每个地址必须以 https:// 开头",
   "Generate Labels": "生成标签",

@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "Το όνομα χρήστη πρέπει να έχει %d χαρακτήρες ή λιγότερους!",
   "Raised This Fiscal Year": "Συγκεντρωθέντα Αυτού του Οικονομικού Έτους",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "Το %s πρέπει να είναι πλήρης διεύθυνση ιστού https://, για παράδειγμα https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "Ο λογαριασμός έχει περιορισμένα δικαιώματα. Επικοινωνήστε με έναν διαχειριστή.",
   "An error occurred while rendering the error page.": "Παρουσιάστηκε σφάλμα κατά την εμφάνιση της σελίδας σφάλματος.",
   "Each address must start with https://": "Κάθε διεύθυνση πρέπει να ξεκινά με https://",
   "Generate Labels": "Δημιουργία Ετικετών",

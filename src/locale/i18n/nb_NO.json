@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "Brukernavnet må være %d tegn eller færre!",
   "Raised This Fiscal Year": "Innsamlet dette regnskapsåret",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s må være en fullstendig https://-nettadresse, for eksempel https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "Kontoen har begrensede rettigheter. Kontakt en administrator.",
   "An error occurred while rendering the error page.": "Det oppstod en feil under visning av feilsiden.",
   "Each address must start with https://": "Hver adresse må starte med https://",
   "Generate Labels": "Generer etiketter",

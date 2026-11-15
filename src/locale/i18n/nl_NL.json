@@ -4174,7 +4174,6 @@
   "Login must be %d characters or fewer!": "Inlognaam mag maximaal %d tekens bevatten!",
   "Raised This Fiscal Year": "Opgehaald dit boekjaar",
   "%s must be a full https:// web address, for example https://example.org/yourchurch.": "%s moet een volledig https://-webadres zijn, bijvoorbeeld https://example.org/yourchurch.",
-  "Account has limited permissions. Contact an administrator.": "Account heeft beperkte rechten. Neem contact op met een beheerder.",
   "An error occurred while rendering the error page.": "Er is een fout opgetreden bij het weergeven van de foutpagina.",
   "Each address must start with https://": "Elk adres moet beginnen met https://",
   "Generate Labels": "Labels genereren",
