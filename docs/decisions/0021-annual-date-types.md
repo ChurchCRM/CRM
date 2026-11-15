@@ -30,7 +30,7 @@
 - Leadership terms ([RFC 0019](0019-leadership-history.md)): a period, not an observance.
 - Register detail (officiant, witnesses, place): RFC 0017.
 - Expiring dates (background-check renewals): a different rule than a yearly observance.
-- New permissions. Person dates follow `canEditPerson()`; family dates follow Edit Records; types are admin-only.
+- New permissions (see Access below).
 
 ## Proposal
 
@@ -64,6 +64,22 @@ person_important_date_pid          family_important_date_fid (same shape, fid_fa
 - **Built-in dates** appear in the same list, read-only, with a link to the person or family editor that owns them.
 - **Admins** set up types from People Settings → Important Date Types: suggested types (Baptism, Dedication, Confirmation, First Communion, Spiritual Birthday, Ordination, House Blessing) in one click, or their own by name. Options switch in place. Turning a type off keeps every recorded date and stops new ones; only an unused type can be deleted.
 
+### Access
+
+No new permission. Each surface uses the permission of the data it touches, on the API and the page alike:
+
+| Action | Who | Enforced by |
+|---|---|---|
+| See a record's important dates, the Upcoming Important Dates page, the staff calendar | Any staff user. Edit Self-only users never reach staff pages | The People app and API entry gates |
+| Record, correct or remove a date on a person or family | Edit Records, as for editing the record | `EditRecordsRoleAuthMiddleware` on each write route. The card shows Add, Edit and Remove only to Edit Records |
+| Define, rename, switch or delete date types | Administrator (setup) | The admin app and its API |
+
+The Member Portal sees none of it.
+
+### Upcoming Important Dates page
+
+People → Important Dates (`/people/important-dates`) lists church-defined dates observed in the next 7, 30 or 90 days, filterable by type, each linked to its person or family. It answers "whose baptism anniversaries are this month?" without opening each record.
+
 ### Calendar
 
 One system calendar, **Important Dates**, places each date of an active, calendar-enabled type on its observed day for living, active people and active families. It implements `StaffOnlySystemCalendar`, which `PortalCalendarService` excludes, so it is never offered to the Member Portal or its feeds.
@@ -81,7 +97,7 @@ If a date should recur or appear on a calendar, it is a date type. Otherwise it 
 
 ## Rollout
 
-1. **v1 (draft PR):** the tables, the admin page, the person and family card, the staff calendar. Upgrade script adds three tables and changes no existing column.
+1. **v1, target 7.9.0:** the tables, the admin setup page, the person and family card, the Upcoming Important Dates page and the staff calendar. A new install ships the suggested types. An upgrade adds the three tables, changes no existing column, and offers the same types as one-click suggestions. Demo data records sample dates.
 2. **Later, each on demand:** portal visibility per type (with the directory privacy modes), dashboard and kiosk inclusion (after #11449 slices 2–3), birthday-style greeting emails per type, a "convert this custom date field" action.
 
 ## Open questions (maintainer decisions)
