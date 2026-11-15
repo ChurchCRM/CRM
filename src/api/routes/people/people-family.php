@@ -489,6 +489,17 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                 // Acquire the same lock as family-note writers before the first
                 // consistent read in this transaction.
                 PersonDeletionService::lockFamily((int) $familyId, $con);
+                // Lock target members before the first nonlocking history read.
+                // This serializes concurrent person-note writers even when
+                // their notes carry FamId=0 and take no family-row lock.
+                $membersToDelete = [];
+                if ($deleteMembers) {
+                    $membersToDelete = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
+                        ->filterByFamId($familyId)
+                        ->orderById()
+                        ->lockForUpdate()
+                        ->find($con);
+                }
                 PersonDeletionService::assertFamilyNotesCanBeDeleted((int) $familyId, $con);
 
                 // Never delete a family that has pledges or payments — it would orphan or distort church finance records.
@@ -501,12 +512,7 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
                     );
                 }
 
-                $membersToDelete = [];
                 if ($deleteMembers) {
-                    $membersToDelete = \ChurchCRM\model\ChurchCRM\PersonQuery::create()
-                        ->filterByFamId($familyId)
-                        ->orderById()
-                        ->find($con);
                     foreach ($membersToDelete as $member) {
                         PersonDeletionService::assertCanDelete($member, $con);
                     }
