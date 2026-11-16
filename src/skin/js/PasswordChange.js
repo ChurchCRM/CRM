@@ -9,6 +9,14 @@ $(document).ready(() => {
         $("#NewPassword2").trigger("focus");
       }
     });
+
+    const resetPasswordInput = $("#setPasswordForm #password");
+
+    if (resetPasswordInput.length) {
+      resetPasswordInput.on("input", function () {
+        UpdatePasswordStrength(this.value);
+      });
+    }
 });
 
 function PasswordMismatchText() {

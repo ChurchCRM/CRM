@@ -182,6 +182,45 @@ describe("Session Password Reset", () => {
             return seedResetToken(storageKey, user.usr_per_ID, type, expired, remaining);
         }
 
+        it("Should update the password strength meter on the reset page", () => {
+            cy.then(() => seedToken());
+            cy.visit(url());
+
+            // Hidden when no password is entered
+            cy.get("#PasswordStrengthContainer")
+            .should("not.be.visible");
+
+            // Weak password
+            cy.get("#password").type("abc", { log: false });
+
+            cy.get("#PasswordStrengthContainer")
+            .should("be.visible");
+
+            cy.get("#PasswordStrengthLabel")
+            .should("contain", "Weak");
+
+            cy.get("#PasswordStrengthBar")
+            .should("have.attr", "aria-valuenow", "25");
+
+            // Strong password
+            cy.get("#password")
+            .clear()
+            .type("HelloWorld123!", { log: false });
+
+            cy.get("#PasswordStrengthLabel")
+            .should("contain", "Strong");
+
+            cy.get("#PasswordStrengthBar")
+            .should("have.attr", "aria-valuenow", "100");
+
+            // Meter hides when cleared
+            cy.get("#password").clear();
+
+            cy.get("#PasswordStrengthContainer")
+            .should("not.be.visible");
+        });
+
+
         for (const format of ["legacy plaintext", "SHA-256"]) {
             it(`GET preserves password and token; POST works once and rejects reuse (${format})`, () => {
                 cy.then(async () => {
