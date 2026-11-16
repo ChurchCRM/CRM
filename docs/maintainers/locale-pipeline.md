@@ -6,7 +6,7 @@ All workflows, branches and the rules they follow: [github-actions.md](github-ac
 
 **Goal:** every locale in `src/locale/locales.json` is fully translated for every release. The marketing site's languages do not rank or exclude CRM locales.
 
-**Source of truth:** the repo. Translations live in `src/locale/i18n/<locale>.json`; each locale's `src/locale/textdomain/<locale>/LC_MESSAGES/messages.po` and `.mo` are generated from that JSON. There is no outside translation service ([#11416](https://github.com/ChurchCRM/CRM/issues/11416) retired POEditor).
+**Source of truth:** the repo. Translations live in `src/locale/i18n/<locale>.json`; each locale's `src/locale/textdomain/<locale>/LC_MESSAGES/messages.po` and `.mo` are generated from that JSON. Translations are reviewed through GitHub PRs.
 
 ## Two flows
 
@@ -42,7 +42,7 @@ Done for a release when `npm run locale:missing` reports nothing to translate on
 | `npm run locale:apply -- --json-only` | Writes only the locale JSON, no `.po`/`.mo`. The translate flow uses this; the generated files are rebuilt on `master` after merge (below) |
 | `npm run locale:apply -- --prune` | Also drops translations of terms no longer in `messages.po` (`locale:build` runs this) |
 | `npm run locale:apply -- --check` | Writes nothing; fails when a locale `.po`/`.mo` does not match its JSON |
-| `npm run locale:audit` | Completeness per locale from the repo: `src/locale/poeditor.json` (read by the app for the translation %) and `locale/poeditor-audit.md` |
+| `npm run locale:audit` | Completeness per locale from the repo: `src/locale/locale-stats.json` (read by the app for the translation %) and `locale/locale-audit.md` |
 | `npm run locale:release [-- --go]` | Release check, below |
 | `npm run locale:test` | Unit tests for the locale scripts |
 
@@ -54,7 +54,6 @@ Done for a release when `npm run locale:missing` reports nothing to translate on
 | `locale/translate/<version>-<YYYY-MM-DD>-<HHMMSS>` | Translations: `src/locale/i18n/<locale>.json` and the queue (`locale/terms/`) only — no generated `.po`/`.mo` | the translation agent (`/locale-translate`) | Yes, as a normal PR after review |
 | `locale/rebuild/<version>` | The generated `.po`/`.mo` rebuilt from the JSON on `master`. One rolling branch, updated while its PR is open | `Locale: rebuild generated files` (`locale-rebuild.yml`) | Yes, after review |
 
-`locale/download/<version>` branches came from the retired POEditor download and are no longer made.
 
 ### Why it does not loop
 

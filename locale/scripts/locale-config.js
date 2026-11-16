@@ -39,13 +39,13 @@ const LocaleConfig = {
         // locale:missing for the translator; see lib/locale-context.js.
         context: path.join(PROJECT_ROOT, 'locale/terms/context.json'),
         // Terms where value=key is intentionally correct (proper nouns, brand names, etc.)
-        // Used by poeditor-upload-missing.js to allow uploading English-unchanged terms.
+        // Shared allowlist for intentionally English translations.
         englishOk: path.join(PROJECT_ROOT, 'locale/terms/english-ok.json'),
     },
 
-    poeditor: {
-        outputJson: path.join(PROJECT_ROOT, 'src/locale/poeditor.json'),
-        auditReport: path.join(PROJECT_ROOT, 'locale/poeditor-audit.md'),
+    audit: {
+        outputJson: path.join(PROJECT_ROOT, 'src/locale/locale-stats.json'),
+        auditReport: path.join(PROJECT_ROOT, 'locale/locale-audit.md'),
     },
 
     settings: {

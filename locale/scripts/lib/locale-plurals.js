@@ -1,21 +1,7 @@
 /**
- * Plural handling for uploads to POEditor's key_value_json import.
- *
- * ChurchCRM has two kinds of plural term, and POEditor stores them differently:
- *
- *   gettext plurals (PHP ngettext, `msgid_plural` in locale/messages.po)
- *     One POEditor term with one slot per plural form of the target language.
- *     key_value_json: { "term": { "one": "...", "few": "...", "other": "..." } }
- *
- *   context plurals (i18next `{{count}}` keys, `msgctxt "one"` / `msgctxt "other"`)
- *     Separate POEditor terms, one per context. projects/upload's key_value_json
- *     import ignores them (parsed count excludes them), so they go through
- *     a PO import (msgctxt) -- translations/update also returns success
- *     without applying them.
- *
- * The missing-terms batch files show both kinds with the same shape
- * ({ term: { form: text } }), so messages.po decides which payload shape each
- * term gets.
+ * Plural helpers for the in-repo translation flow.
+ * Source terms distinguish gettext msgid_plural entries from i18next context forms.
+ * Missing-term batches use { term: { form: text } } for both kinds.
  */
 
 const CLDR_PLURAL_FORMS = ['zero', 'one', 'two', 'few', 'many', 'other'];
@@ -97,8 +83,7 @@ function isPluralObject(value) {
 }
 
 /**
- * Undo the old uploader's pipe-joining, which POEditor stored whole in the
- * first plural slot: { one: "A|B|C", few: "", other: "" }.
+ * Repair pipe-joined values stored in the first plural slot: { one: "A|B|C", few: "", other: "" }.
  *
  * - Parts match the slot count → re-slot in CLDR order (the order they were joined in).
  * - Parts don't match → blank every slot, so the term is translated again
@@ -125,14 +110,14 @@ function repairJoinedPlural(value) {
 }
 
 /**
- * Builds the key_value_json object for projects/upload.
+ * Separates plain translations and plural entries using the source catalog.
  * Only pass terms whose plural objects are complete (see hasIncompleteForms).
  *
  * Returns { payload, pluralEntries, skipped }: payload is the plain-string
- * key_value_json, pluralEntries are every plural for buildPluralPo, and skipped lists plural terms that could not
+ * translation map, pluralEntries are every plural for buildPluralPo, and skipped lists plural terms that could not
  * be matched to messages.po, or that carried a form messages.po does not define.
  */
-function buildPoeditorPayload(terms, { gettextPlurals, contextForms }) {
+function buildPluralPayload(terms, { gettextPlurals, contextForms }) {
     const payload = {};
     const pluralEntries = [];
     const skipped = [];
@@ -171,10 +156,8 @@ function buildPoeditorPayload(terms, { gettextPlurals, contextForms }) {
 }
 
 /**
- * PO file for pluralEntries. POEditor's key_value_json import and
- * translations/update report success without applying plurals (parsed counts
- * leave them out); PO import is the one that stores them, with msgctxt for
- * {{count}} pairs and msgid_plural/msgstr[n] for gettext plurals. Forms are in
+ * PO file for pluralEntries, using msgctxt for context forms and
+ * msgid_plural/msgstr[n] for gettext plurals. Forms are in
  * CLDR order, which is the msgstr index order.
  */
 function buildPluralPo(language, entries) {
@@ -200,6 +183,6 @@ module.exports = {
     parsePoEntries,
     loadSourceTermKinds,
     repairJoinedPlural,
-    buildPoeditorPayload,
+    buildPluralPayload,
     buildPluralPo,
 };
