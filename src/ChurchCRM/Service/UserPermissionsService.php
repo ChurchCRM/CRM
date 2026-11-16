@@ -20,11 +20,11 @@ class UserPermissionsService
         $volunteerOff = !User::isVolunteerV2Enabled();
         $notGranted = gettext('Not granted to this account');
 
-        $row = function (string $label, bool $granted, ?string $moduleOff = null, ?string $denied = null) use ($user, $notGranted): array {
+        $row = function (string $label, bool $granted, ?string $moduleOff = null, ?string $denied = null) use ($notGranted): array {
             return [
                 'label' => $label,
                 'granted' => $granted,
-                'reason' => $granted ? null : $this->denialReason($user, $moduleOff, $denied ?? $notGranted),
+                'reason' => $granted ? null : $moduleOff ?? $denied ?? $notGranted,
             ];
         };
 
@@ -102,19 +102,6 @@ class UserPermissionsService
                 ],
             ],
         ];
-    }
-
-    private function denialReason(User $user, ?string $moduleOff, string $denied): string
-    {
-        if ($moduleOff !== null) {
-            return $moduleOff;
-        }
-
-        if ($user->isEditSelfExclusive()) {
-            return gettext('This account uses the Member Portal only');
-        }
-
-        return $denied;
     }
 
     private function isOff(string $flag): bool

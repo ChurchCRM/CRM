@@ -710,6 +710,7 @@ class FinancialService
     {
         $query = DepositQuery::create()
             ->orderByDate(Criteria::DESC)
+            ->orderById(Criteria::DESC)
             ->limit($limit);
 
         if ($fyid !== null && $fyid > 0) {
@@ -887,17 +888,21 @@ class FinancialService
     }
 
     /**
-     * Get current deposit from session.
+     * The deposit in hand: the session's open deposit, else the newest open deposit.
+     * A closed session deposit is returned only when no deposit is open.
      *
      * @return Deposit|null
      */
     public function getCurrentDeposit(): ?Deposit
     {
         $currentDepositId = $_SESSION['iCurrentDeposit'] ?? null;
-        if ($currentDepositId) {
-            return DepositQuery::create()->findOneById((int) $currentDepositId);
+        $deposit = $currentDepositId ? DepositQuery::create()->findOneById((int) $currentDepositId) : null;
+        if ($deposit !== null && !$deposit->getClosed()) {
+            return $deposit;
         }
-        return null;
+
+        // A treasurer with no deposit in hand continues the newest open one.
+        return DepositQuery::create()->filterByClosed(false)->orderByDate(Criteria::DESC)->orderById(Criteria::DESC)->findOne() ?? $deposit;
     }
 
     /**
@@ -907,7 +912,7 @@ class FinancialService
      */
     public function getCurrentDepositId(): ?int
     {
-        return $_SESSION['iCurrentDeposit'] ?? null;
+        return $this->getCurrentDeposit()?->getId();
     }
 
     /**
@@ -942,7 +947,7 @@ class FinancialService
             'availableYears'   => $this->getAvailablePledgeFiscalYears(),
             'currentFyid'      => FiscalYearUtils::getCurrentFiscalYearId(),
             'depositStats'     => $depositStats,
-            'recentDeposits'   => $this->getRecentDeposits(5, $allTime ? null : $actualFyid),
+            'recentDeposits'   => $this->getRecentDeposits(5),
             'activeFunds'      => $activeFunds,
             'activeFundCount'  => $activeFunds->count(),
             'totalFundCount'   => $donationFundService->getCount(),
@@ -952,7 +957,7 @@ class FinancialService
             'ytdPaymentCount'  => $this->getYtdPaymentCount($fiscalYear['startDate'], $fiscalYear['endDate']),
             'ytdDonorFamilies' => $this->getYtdDonorFamilyCount($fiscalYear['startDate'], $fiscalYear['endDate']),
             'currentDeposit'   => $currentDeposit,
-            'currentDepositId' => $this->getCurrentDepositId(),
+            'currentDepositId' => $currentDeposit?->getId(),
         ];
     }
 
