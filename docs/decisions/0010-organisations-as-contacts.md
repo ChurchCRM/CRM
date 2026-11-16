@@ -4,6 +4,7 @@
 > Churches relate to organisations — businesses that sponsor or supply them, partner churches, mission agencies, denominations — as contacts in their own right, but ChurchCRM's only contact entities are persons and families, so organisations are shoehorned into family records and inherit household semantics everywhere (head/spouse roles, directory presentation, one-family-per-person). The existing workaround, tagging with classifications, does not hold: classification is a single-value membership axis on persons, not an entity type. This RFC proposes deciding how organisations become first-class contacts. The candidate direction from the #2478 discussion is a **typed family** — a type flag (Household / Organisation) on the family record that reuses the family machinery for address, directory and giving while presenting as an organisation — weighed against a fully separate organisation entity. Giving attribution, including soft credits for people connected to an organisation's gifts, is part of the question.
 
 **Status:** Draft for maintainer review (no decision yet); no release commitment
+**Audience:** Workflow feature — community feedback via its Feature Proposal discussion.
 **Date:** 2026-11-05
 **Owner:** @dawoudio
 **Proposal issue:** [#2478](https://github.com/ChurchCRM/CRM/issues/2478) · **Related:** [#11164](https://github.com/ChurchCRM/CRM/issues/11164) (messaging audiences), [RFC 0004](0004-portal-giving-pledges.md) (portal giving)

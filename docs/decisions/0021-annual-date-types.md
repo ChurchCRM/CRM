@@ -4,6 +4,7 @@
 > Adding a recurring date to ChurchCRM today means a schema change plus new code on every surface that shows it. This RFC proposes a **registry of church-defined date types and per-person / per-family date rows** (month, day, optional year). An admin adds a type such as Baptism or Dedication as data. Staff then record those dates inline on the person and family pages, next to the dates the record already holds (birthday, membership, friend, death, wedding), and see them soonest first. The shared annual-date rules from #11449 (configured-timezone today, February 29 observance) apply to every type. Existing date columns stay where they are. Lifecycle register records ([RFC 0017](0017-lifecycle-tracking.md)) point at a date row instead of storing a second copy of the date.
 
 **Status:** Draft for maintainer review; a v1 implementation is in a draft PR for review alongside it
+**Audience:** Technical — maintainer only; no community discussion.
 **Date:** 2026-11-15
 **Owner:** @dawoudio
 **Related:** [Epic #11449](https://github.com/ChurchCRM/CRM/issues/11449) (annual-date centralization) · [RFC 0017](0017-lifecycle-tracking.md) (lifecycle tracking)

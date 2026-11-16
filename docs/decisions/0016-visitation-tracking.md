@@ -4,6 +4,7 @@
 > Pastoral care in ChurchCRM today leaves no structured trace: a hospital visit, a shut-in call and a bereavement follow-up all live, if anywhere, as free-text notes on a person or family — indistinguishable from any other note, impossible to report on, and with no way to see which follow-ups are still owed. Issue #8980 already specifies the fix in detail: a structured visit record (visitor, person/family visited, date, visit type, notes, follow-up flag), a log-a-visit UI on the person and family views, visits in the person/family history, and a filterable visitation report with export. This RFC is the proposal-level companion to #8980: **structured pastoral visit records with a visibility model designed for sensitive data, follow-up surfacing, and visitation reporting** — settling the product questions around the module so #8980's design-doc/ADR step can settle the data design afterwards.
 
 **Status:** Draft for maintainer review (no decision yet); no release commitment
+**Audience:** Workflow feature — community feedback via its Feature Proposal discussion.
 **Date:** 2026-11-06
 **Owner:** @dawoudio
 **Proposal issue:** [#8980](https://github.com/ChurchCRM/CRM/issues/8980) (Visitation tracking and reporting) · **Related:** [#8690](https://github.com/ChurchCRM/CRM/issues/8690) (original seed ask, folded into #8980) · [#5054](https://github.com/ChurchCRM/CRM/issues/5054) (earlier visitation-reporting ask, superseded by #8980)
