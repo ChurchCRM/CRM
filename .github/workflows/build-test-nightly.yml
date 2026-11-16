@@ -1,4 +1,4 @@
-name: 'CI: build, test and package (nightly)'
+name: 'CI: build, test and package (full suite)'
 
 # Consolidated nightly workflow covering all test types that are too heavy or
 # slow to run on every push/PR. This workflow supersedes upgrade-tests.yml
