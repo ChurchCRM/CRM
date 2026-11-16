@@ -216,6 +216,17 @@ Cypress.Commands.add('createPersonWithBirthday', (personData) => {
     cy.get('#FirstName').type(personData.name);
     cy.get('#LastName').type(personData.lastName ?? 'TestUser');
     cy.get('#Gender').select('1');
+    if (personData.email) {
+        cy.get('#Email').type(personData.email);
+    }
+
+    if (personData.createFamily) {
+        cy.get('#familyId').select('-1', { force: true });
+        cy.get('#FamilyRole').select('1', { force: true });
+    } else if (personData.familyId) {
+        cy.get('#familyId').select(String(personData.familyId), { force: true });
+        cy.get('#FamilyRole').select(String(personData.familyRole ?? 2), { force: true });
+    }
 
     if (personData.month > 0) {
         cy.get('#BirthMonth').select(padded(personData.month));

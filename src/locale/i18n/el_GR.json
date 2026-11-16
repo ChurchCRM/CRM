@@ -5492,7 +5492,6 @@
   "{{name}} registered and checked in!": "Ο/η {{name}} καταχωρήθηκε και ελέγχθηκε!",
   "Search by family name": "Αναζήτηση με όνομα οικογένειας",
   "Search by family name or envelope #": "Αναζήτηση με όνομα οικογένειας ή αρ. φακέλου",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Δεν είναι δυνατή η διαγραφή οικογένειας που έχει δεσμεύσεις ή πληρωμές. Μετακινήστε ή αφαιρέστε πρώτα τις οικονομικές εγγραφές.",
   "You cannot delete your own account.": "Δεν μπορείτε να διαγράψετε τον δικό σας λογαριασμό.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Ένα επαναλαμβανόμενο γεγονός χρειάζεται ημερομηνία λήξης, οπότε επιστρέφει στην {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Προσθήκη όλων από το καλάθι στη διακονία {{ministry}}",

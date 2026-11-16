@@ -4,6 +4,7 @@
 > A core gateway contract with Stripe, PayPal and BTCPay Server as core plugins. Members give once or on a schedule from the Member Portal, and visitors give from a public page, through hosted checkout, so no card data reaches ChurchCRM. Every gift lands once in the existing `pledge_plg` / `deposit_dep` tables. This RFC depends on [RFC 0004](0004-portal-giving-pledges.md) for per-person credit, the shared finance fixes and the portal Giving page; a payment can optionally fulfil a pledge from it. Five decisions are open for maintainers (below). No release is committed and no implementation issues are filed until the direction is accepted.
 
 **Status:** Proposed, open for review; no release commitment  
+**Audience:** Workflow feature — community feedback via its Feature Proposal discussion.
 **Date:** 2026-10-17  
 **Owner:** @cwhorton  
 **Proposal issue:** [#10033](https://github.com/ChurchCRM/CRM/issues/10033) · **Depends on:** [RFC 0004](0004-portal-giving-pledges.md) · **Related:** [#9313](https://github.com/ChurchCRM/CRM/issues/9313), [#10550](https://github.com/ChurchCRM/CRM/issues/10550)  

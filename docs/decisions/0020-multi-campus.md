@@ -4,6 +4,7 @@
 > ChurchCRM assumes one congregation in one place. A growing number of churches are one church in several places — multiple campuses under one leadership, one membership and one set of books — and today their only option is a separate ChurchCRM install per campus, which duplicates people, blocks cross-campus reporting and multiplies upgrades. Issue [#8694](https://github.com/ChurchCRM/CRM/issues/8694) carries this ask; the maintainer moved it to an RFC on 2026-11-14. This RFC proposes **a Campus entity with campus scoping on the records churches actually segment — people and families (home campus), groups, events and deposits — inside the existing single database, with church-wide roll-ups as the default reporting posture** — and leaves the scope boundaries (which records get a campus dimension, how campus interacts with permissions, and whether denominational hierarchies are in scope) as explicit maintainer decisions. Demand today is honestly thin; this RFC exists so that if the project builds it, it builds the right shape.
 
 **Status:** Draft for maintainer review (no decision yet); no release commitment
+**Audience:** Workflow feature — community feedback via its Feature Proposal discussion.
 **Date:** 2026-11-14
 **Owner:** @dawoudio
 **Proposal issue:** [#8694](https://github.com/ChurchCRM/CRM/issues/8694) (Multi-campus / multi-branch support, migrated from Discussion #6681)

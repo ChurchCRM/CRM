@@ -5492,7 +5492,6 @@
   "{{name}} registered and checked in!": "{{name}} rekisteröity ja merkitty läsnäolevaksi!",
   "Search by family name": "Hae perheen nimellä",
   "Search by family name or envelope #": "Hae perheen nimellä tai kuoren numerolla",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Perhettä, jolla on lupauksia tai maksuja, ei voi poistaa. Siirrä tai poista ensin talouskirjaukset.",
   "You cannot delete your own account.": "Et voi poistaa omaa tiliäsi.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Toistuva tapahtuma tarvitsee päättymispäivän, joten se palautuu päivään {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Lisää kaikki korissa olevat palvelukseen {{ministry}}",

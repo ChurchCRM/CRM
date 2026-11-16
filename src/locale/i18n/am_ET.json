@@ -5492,7 +5492,6 @@
   "{{name}} registered and checked in!": "{{name}} ተመዝግቧል እና ገብቷል!",
   "Search by family name": "በቤተሰብ ስም ፈልግ",
   "Search by family name or envelope #": "በቤተሰብ ስም ወይም በፖስታ ቁጥር ፈልግ",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "ቃል ኪዳኖች ወይም ክፍያዎች ያሉት ቤተሰብ መሰረዝ አይቻልም። መጀመሪያ የፋይናንስ መዝገቦችን ያንቀሳቅሱ ወይም ያስወግዱ።",
   "You cannot delete your own account.": "የራስዎን መለያ መሰረዝ አይችሉም።",
   "A recurring event needs a last date, so it is back to {{date}}.": "ተደጋጋሚ ዝግጅት የመጨረሻ ቀን ይፈልጋል፣ ስለዚህ ወደ {{date}} ተመልሷል።",
   "Add Everyone in Cart to {{ministry}}": "በጋሪው ውስጥ ያሉትን ሁሉ ወደ {{ministry}} ጨምር",

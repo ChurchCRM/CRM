@@ -4,6 +4,7 @@
 > Church contact data lives in ChurchCRM, but people's phones and mail clients are where they actually look each other up. Members want the church directory in their phone's contacts; staff want ChurchCRM people in Google Contacts or Outlook without re-typing. ChurchCRM once shipped an iCard (vCard) capability for exactly this; it is gone — current master has no vCard export at all, let alone live sync. This RFC proposes deciding the sync model for ChurchCRM contacts: which targets (Google Contacts, Microsoft/Outlook, CardDAV, plain vCard for mobile phones), which direction (the #2569 discussion converged on one-way push with ChurchCRM as the single source of truth), whose contacts sync (a member syncing the directory they can see vs staff syncing the full database), and how field mapping stays 1:1 and honest when the target cannot hold ChurchCRM-specific fields.
 
 **Status:** Draft for maintainer review (no decision yet); no release commitment
+**Audience:** Technical — maintainer only; no community discussion.
 **Date:** 2026-11-05
 **Owner:** @dawoudio
 **Proposal issue:** [#2569](https://github.com/ChurchCRM/CRM/issues/2569) (Google Contacts API integration, 2017; demand revived June 2024) · **Related:** [RFC 0004](0004-portal-giving-pledges.md) (member portal / self-service accounts), [RFC 0010](0010-organisations-as-contacts.md) (organisations as contacts)

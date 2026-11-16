@@ -7,6 +7,7 @@ use ChurchCRM\model\ChurchCRM\EventQuery;
 use ChurchCRM\model\ChurchCRM\EventType;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
+use ChurchCRM\Service\FlashService;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
@@ -313,11 +314,10 @@ $app->post('/types/{id}/delete', function (Request $request, Response $response,
     // Prevent deletion if events reference this type
     $eventCount = EventQuery::create()->filterByType($tyid)->count();
     if ($eventCount > 0) {
-        $_SESSION['sGlobalMessage'] = sprintf(
+        FlashService::set(sprintf(
             gettext('Cannot delete this event type — %d event(s) are using it. Deactivate the type instead, or reassign the events first.'),
             $eventCount
-        );
-        $_SESSION['sGlobalMessageClass'] = 'danger';
+        ), 'danger');
 
         return $response->withHeader('Location', SystemURLs::getRootPath() . '/event/types/' . $tyid)->withStatus(302);
     }

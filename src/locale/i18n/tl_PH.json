@@ -5492,7 +5492,6 @@
   "{{name}} registered and checked in!": "Ang {{name}} ay nakarehistro at nag-check in!",
   "Search by family name": "Maghanap ayon sa pangalan ng pamilya",
   "Search by family name or envelope #": "Maghanap ayon sa pangalan ng pamilya o envelope #",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Hindi mabubura ang pamilyang may mga pangako o bayad. Ilipat o alisin muna ang mga talaan ng pananalapi.",
   "You cannot delete your own account.": "Hindi mo mabubura ang sarili mong account.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Ang paulit-ulit na kaganapan ay nangangailangan ng huling petsa, kaya ibinalik ito sa {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Idagdag ang lahat sa Listahan sa {{ministry}}",
