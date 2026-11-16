@@ -5520,7 +5520,6 @@
   "{{name}} registered and checked in!": "{{name}} s-a înregistrat și a făcut check-in!",
   "Search by family name": "Caută după numele familiei",
   "Search by family name or envelope #": "Caută după numele familiei sau nr. plicului",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Nu se poate șterge o familie care are angajamente sau plăți. Mutați sau eliminați mai întâi înregistrările financiare.",
   "You cannot delete your own account.": "Nu vă puteți șterge propriul cont.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Un eveniment recurent are nevoie de o dată de sfârșit, așa că revine la {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Adaugă pe toți din Selecție la {{ministry}}",

@@ -24,7 +24,7 @@ const path = require('path');
 function run(program, args = [], options = {}) {
     try {
         const out = execFileSync(program, args, { encoding: 'utf8', ...options });
-        return out.trim();
+        return (out ?? '').trim();
     } catch (err) {
         if (options.allowFail) return null;
         throw err;
@@ -190,34 +190,53 @@ function commitAndPush(localeCodes, label, termCount) {
     }
 
     const branch = getCurrentBranch();
+    if (!isLocaleBranch(branch)) throw new Error('Use a locale/translate branch before committing translations.');
+    if (!/^\d+$/.test(String(termCount))) throw new Error('Term count must be a non-negative integer.');
     const message = `locale: translate ${codes.join(', ')} (${label}, ${termCount} terms)`;
 
     const repo = require('./lib/locale-repo');
     const config = require('./locale-config');
     const targets = repo.selectLocales(repo.targetLocales(), codes.join(','));
+    const allowed = targets.flatMap((t) => {
+        const p = repo.paths(t);
+        return [p.json, p.po, p.mo].map((f) => path.relative(config.projectRoot, f));
+    });
+    allowed.push('locale/terms/english-ok.json');
+    const queues = targets.map((t) => path.relative(config.projectRoot, repo.paths(t).batches));
+    const staged = run('git', ['diff', '--cached', '--name-only', '-z']).split('\0').filter(Boolean);
+    if (staged.some((f) => !allowed.includes(f) && !queues.some((q) => f.startsWith(q + '/')))) {
+        throw new Error('Commit or unstage unrelated staged files before checkpointing a locale.');
+    }
 
     console.log(`\n  🧩 Writing ${codes.join(', ')} into the locale files...`);
-    execFileSync('node', [path.join(__dirname, 'locale-apply.js'), '--locale', codes.join(',')], { stdio: 'inherit' });
+    execFileSync(process.execPath, [path.join(__dirname, 'locale-apply.js'), '--locale', codes.join(',')], { stdio: 'inherit' });
 
     const files = targets.flatMap((t) => {
         const p = repo.paths(t);
         return [p.json, p.po, p.mo].filter((f) => fs.existsSync(f)).map((f) => path.relative(config.projectRoot, f));
     });
     console.log(`\n  📝 Committing to ${branch}...`);
-    const queues = targets.map((t) => path.relative(config.projectRoot, repo.paths(t).batches));
     run('git', ['add', '--', ...files, 'locale/terms/english-ok.json'], { cwd: config.projectRoot });
-    run('git', ['add', '-A', '--', ...queues], { cwd: config.projectRoot });
-    run('git', ['commit', '-m', message]);
+    const queueFiles = run('git', ['ls-files', '--cached', '--others', '--exclude-standard', '-z', '--', ...queues], { cwd: config.projectRoot })
+        .split('\0').filter(Boolean);
+    if (queueFiles.length) run('git', ['add', '--', ...queueFiles], { cwd: config.projectRoot });
+    if (run('git', ['diff', '--cached', '--name-only'])) {
+        run('git', ['status', '--short'], { stdio: 'inherit' });
+        run('git', ['diff', '--cached', '--name-status'], { stdio: 'inherit' });
+        run('git', ['commit', '-m', message]);
+    } else {
+        console.log('  ✅ Locale already committed; retrying the push.');
+    }
 
     console.log(`  ⬆️  Pushing to origin/${branch}...`);
-    run('git', ['push', 'origin', branch]);
+    run('git', ['push', '-u', 'origin', branch]);
 
     console.log(`  ✅ Committed and pushed\n`);
 }
 
 /**
  * Get list of already-translated locales on current branch
- * by checking what has been pushed
+ * from local checkpoints, including commits waiting for a push
  */
 function getTranslatedLocales() {
     const branch = getCurrentBranch();
@@ -225,7 +244,7 @@ function getTranslatedLocales() {
 
     // Get commits unique to this branch vs master
     const commits = run(
-        'git', ['log', `origin/master..origin/${branch}`, '--pretty=format:%B'],
+        'git', ['log', 'master..HEAD', '--pretty=format:%B'],
         { allowFail: true }
     );
     if (!commits) return [];

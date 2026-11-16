@@ -5548,7 +5548,6 @@
   "{{name}} registered and checked in!": "{{name}} зареєстрований та відмітив присутність!",
   "Search by family name": "Пошук за назвою родини",
   "Search by family name or envelope #": "Пошук за назвою родини або номером конверта",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Не можна видалити родину, яка має зобов’язання або платежі. Спочатку перемістіть або видаліть фінансові записи.",
   "You cannot delete your own account.": "Ви не можете видалити власний обліковий запис.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Повторюваній події потрібна кінцева дата, тому її повернено до {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Додати всіх із кошика до {{ministry}}",

@@ -1212,7 +1212,7 @@ paths:
         '200':
           description: 'Family deleted'
         '403':
-          description: 'DeleteRecord role required, family has donations, or a member has a login the current user may not delete'
+          description: 'DeleteRecord role required, family has donations, or a member has protected history or a login the current user may not delete'
         '404':
           description: 'Family not found'
       security:
@@ -2303,7 +2303,7 @@ paths:
     get:
       tags:
         - Groups
-      summary: 'Get members of a group with family address info'
+      summary: 'Get members of a group with resolved addresses and home phones'
       operationId: getGroupMembers
       parameters:
         -
@@ -2314,12 +2314,12 @@ paths:
             type: integer
       responses:
         '200':
-          description: 'Group members enriched with family address fields'
+          description: 'Group members with personal contact details falling back to family values'
           content:
             application/json:
               schema:
                 properties:
-                  Person2group2roleP2g2rs: { type: array, items: { properties: { Person: { properties: { Family: { $ref: '#/components/schemas/Family' } }, type: object } }, type: object } }
+                  Person2group2roleP2g2rs: { type: array, items: { properties: { Person: { properties: { Family: { $ref: '#/components/schemas/Family' }, HomePhone: { description: 'Personal home phone, falling back to the family home phone', type: string } }, type: object } }, type: object } }
                 type: object
       security:
         -

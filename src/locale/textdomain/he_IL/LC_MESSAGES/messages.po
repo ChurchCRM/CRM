@@ -22530,10 +22530,6 @@ msgid "Search by family name or envelope #"
 msgstr "חיפוש לפי שם משפחה או מס' מעטפה"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "לא ניתן למחוק משפחה שיש לה התחייבויות או תשלומים. העבירו או הסירו תחילה את הרשומות הכספיות."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "אי אפשר למחוק את החשבון שלך."
 

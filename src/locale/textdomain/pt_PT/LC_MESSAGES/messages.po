@@ -22595,10 +22595,6 @@ msgid "Search by family name or envelope #"
 msgstr "Pesquisar por nome da família ou n.º do envelope"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Não é possível eliminar uma família que tem promessas ou pagamentos. Mova ou remova primeiro os registos financeiros."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Não pode eliminar a sua própria conta."
 
@@ -27309,4 +27305,638 @@ msgstr "Os seus dados são seus. Isto informa sobre o software, nunca sobre a su
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Os seus dados são seus. Para contar instalações, o ChurchCRM comunica que foi instalado ou atualizado e se funcionou, uma verificação diária enquanto está em uso, bem como o número da versão, o seu país, o tipo de base de dados e um ID de instalação aleatório. Nunca comunica registos de membros, de ofertas ou outros registos da igreja, o nome da sua igreja, o seu endereço web ou nome do servidor, nem endereços de e-mail. Pode desativar isto a qualquer momento em Admin → Telemetria; uma instalação ou atualização falhada continua a ser comunicada. Avisos, detalhes de erros e visualizações de página só são partilhados se o escolher."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: ainda há %2$d depósito aberto. Feche-o para confirmar todas as doações antes de enviar os comprovantes."
+msgstr[1] "%1$s: ainda há %2$d depósitos abertos. Feche-os para confirmar todas as doações antes de enviar os comprovantes."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "%d número de envelope guardado."
+msgstr[1] "%d números de envelope guardados."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d família"
+msgstr[1] "%d famílias"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: todos os depósitos estão fechados. Os comprovantes podem ser preparados."
+
+#: 
+msgid "12 months"
+msgstr "12 meses"
+
+#: 
+msgid "30 days"
+msgstr "30 dias"
+
+#: 
+msgid "90 days"
+msgstr "90 dias"
+
+#: 
+msgid "Add Property"
+msgstr "Adicionar propriedade"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Adicione mais alguns caracteres ou um símbolo."
+
+#: 
+msgid "Add and edit events"
+msgstr "Adicionar e editar eventos"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Adicione mais caracteres ou combine números e símbolos."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Adicione mais caracteres e combine letras maiúsculas e minúsculas, números e símbolos."
+
+#: 
+msgid "Add people and families"
+msgstr "Adicionar pessoas e famílias"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Os administradores têm todas as permissões enquanto a funcionalidade correspondente estiver ativada."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Desativar também o acesso para impedir o uso do portal de membros"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Antes de enviar os comprovantes"
+
+#: 
+msgid "Birthday today"
+msgstr "Aniversário hoje"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Não foi possível criar o ficheiro privado de assinatura fiscal. Verifique se a pasta de armazenamento permite gravação."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Não foi possível criar a pasta de armazenamento de assinaturas fiscais %s. Verifique se o servidor web pode gravar nela ou defina uma pasta gravável na configuração do caminho de armazenamento de assinaturas fiscais."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Não foi possível codificar a assinatura fiscal privada."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Não é possível mover o campo nessa direção"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Não foi possível ler a assinatura fiscal privada."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Não foi possível remover a assinatura privada."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Não foi possível remover o ficheiro privado de assinatura fiscal."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Não foi possível determinar a pasta da aplicação para armazenar assinaturas fiscais."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Não foi possível armazenar a assinatura privada."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Não foi possível gravar o ficheiro de proteção de acesso %s na pasta de armazenamento de assinaturas fiscais."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Alterar a função dos membros selecionados: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Ano fiscal da igreja"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "Verificação do sistema ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "Campo personalizado não encontrado"
+
+#: 
+msgid "Delete people and families"
+msgstr "Excluir pessoas e famílias"
+
+#: 
+msgid "Delete the login for"
+msgstr "Excluir o acesso de"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Período do gráfico de depósitos"
+
+#: 
+msgid "Disabled at"
+msgstr "Desativado em"
+
+#: 
+msgid "Disabled by"
+msgstr "Desativado por"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "A transferência inclui todos os doadores do ano. «Rever e filtrar» mostra primeiro os totais e permite filtrar por família, fundo, categoria ou data."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Número de envelope duplicado"
+
+#: 
+msgid "Edit people and families"
+msgstr "Editar pessoas e famílias"
+
+#: 
+msgid "Email people and groups"
+msgstr "Enviar correio eletrónicos para pessoas e grupos"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Ative as extensões PHP ausentes na configuração do servidor web, reinicie o servidor e recarregue esta página. Se usar um serviço de alojamento, peça que ative as extensões listadas."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Inserir uma chave de configuração manualmente"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Insira um número inicial entre 0 e %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Entrar em ecrã inteiro"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Insira esta chave na sua aplicação de autenticação ou gestor de palavra-passes com códigos temporais (TOTP) de 6 dígitos e intervalo de 30 segundos. Mantenha esta chave em sigilo."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Insira seu nome de utilizador ou correio eletrónico"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Os números de envelope devem ser inteiros entre 0 e %d. Nada foi guardado."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Os eventos estão desativados para esta igreja"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Sair do ecrã inteiro"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Não foi possível excluir o campo personalizado"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Não foi possível mover o campo personalizado"
+
+#: 
+msgid "Fair"
+msgstr "Razoável"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Famílias que fizeram promessas de doação para %s e não têm promessas para %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Famílias com pelo menos um membro em"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "As finanças estão desativadas para esta igreja"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Encontre famílias que fizeram promessas de doação em um ano fiscal, mas não em outro."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Pasta onde é armazenada a assinatura privada dos comprovantes de doações. Deixe em branco para usar a pasta privada integrada Images/TaxSignatures, que bloqueia o acesso direto pela web. Para usar outra pasta, insira um caminho absoluto fora da pasta do ChurchCRM no qual o servidor web possa gravar."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "As campanhas de arrecadação estão desativadas para esta igreja"
+
+#: 
+msgid "Good"
+msgstr "Boa"
+
+#: 
+msgid "Have an email"
+msgstr "Têm correio eletrónico"
+
+#: 
+msgid "Hide setup key"
+msgstr "Ocultar chave de configuração"
+
+#: 
+msgid "How to respond"
+msgstr "Como responder"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Ideias aguardando sua avaliação"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "As famílias inativas são excluídas. Os pagamentos não contam como promessas de doação."
+
+#: 
+msgid "Invalid request."
+msgstr "Solicitação inválida."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Dados de imagem de assinatura inválidos."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Identificador de assinatura fiscal armazenado inválido."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Armazenamento de assinatura fiscal inválido."
+
+#: 
+msgid "Last successful login"
+msgstr "Último acesso bem-sucedido"
+
+#: 
+msgid "Lockout state"
+msgstr "Estado do bloqueio"
+
+#: 
+msgid "Login deleted"
+msgstr "Acesso excluído"
+
+#: 
+msgid "Mail only"
+msgstr "Somente correio postal"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Gerir todos os ministérios"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Membros com a função {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Membros não alterados porque saíram do grupo ou um ministério gere sua função: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Coordenador de ministério"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Minutos até o desbloqueio automático"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Promessas de doação ausentes"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Não tem conta no GitHub? Conte-nos no Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Nenhuma família ativa fez uma promessa de doação para %s sem ter uma promessa para %s."
+
+#: 
+msgid "No families found."
+msgstr "Nenhuma família encontrada."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Nenhum ministério atribuído"
+
+#: 
+msgid "No open deposit"
+msgstr "Nenhum depósito aberto"
+
+#: 
+msgid "No pledge for"
+msgstr "Nenhuma promessa para"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Não concedido a esta conta"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Não lidera uma equipa de voluntários"
+
+#: 
+msgid "Not locked"
+msgstr "Sem bloqueio"
+
+#: 
+msgid "Number of Payments"
+msgstr "Número de pagamentos"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Um minuto. Não compartilhamos o que envia."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Abra uma ideia. Vote com 👍 se sua igreja precisar dela e adicione um comentário breve sobre como vocês trabalham hoje."
+
+#: 
+msgid "Open deposit"
+msgstr "Depósito aberto"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Alteração de palavra-passe obrigatória no próximo acesso"
+
+#: 
+msgid "Password strength"
+msgstr "Força da palavra-passe"
+
+#: 
+msgid "People & Families"
+msgstr "Pessoas e famílias"
+
+#: 
+msgid "Pledged for"
+msgstr "Promessa para"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Preparar comprovantes de doações"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Visualizar modelo de carta"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Identificador do ficheiro privado de assinatura dos comprovantes de doações canadenses. Gerido pelo envio de assinaturas."
+
+#: 
+msgid "Property Type"
+msgstr "Tipo de propriedade"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Forneça apenas dados de imagem de assinatura em PNG ou JPEG."
+
+#: 
+msgid "Report Issue"
+msgstr "Relatar problema"
+
+#: 
+msgid "Requirement"
+msgstr "Requisito"
+
+#: 
+msgid "Return Home"
+msgstr "Voltar ao início"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Reveja um ano fiscal e depois descarregue os comprovantes de doações."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Rever e fechar depósito"
+
+#: 
+msgid "Review and Filter"
+msgstr "Rever e filtrar"
+
+#: 
+msgid "Review and vote"
+msgstr "Rever e votar"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Reveja o ano e depois descarregue os comprovantes de doações."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Veja o que estamos considerando"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Funções e permissões"
+
+#: 
+msgid "Select at least one member."
+msgstr "Selecione pelo menos um membro."
+
+#: 
+msgid "Setup key"
+msgstr "Chave de configuração"
+
+#: 
+msgid "Sign-in status"
+msgstr "Estado do acesso"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Pasta de armazenamento de assinaturas"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "A assinatura foi atualizada, mas não foi possível remover o ficheiro privado da assinatura anterior."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Alguns requisitos do PHP estão ausentes. O ChurchCRM precisa deles para continuar."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Crie um depósito e adicione cada pagamento a ele."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Número inicial de envelope"
+
+#: 
+msgid "Strong"
+msgstr "Forte"
+
+#: 
+msgid "Support"
+msgstr "Suporte"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Identificação fiscal e configurações de PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Não foi possível carregar a lista. Ainda pode abrir as ideias no GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "O nome pode ter no máximo %d caracteres"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "A página solicitada não foi encontrada. Ela pode ter sido movida, renomeada ou excluída."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "O texto do campo pode ter no máximo %d caracteres"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Os membros selecionados já têm essa função."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Não foi possível decodificar a imagem da assinatura."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "A imagem da assinatura não pode exceder 2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "A imagem da assinatura deve caber em 2000 × 1000 píxeis."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "O servidor web não pode gravar na pasta de armazenamento de assinaturas fiscais %s."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "A pasta de armazenamento de assinaturas fiscais não pode ser uma ligação simbólica."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "O caminho de armazenamento de assinaturas fiscais deve estar fora da pasta do ChurchCRM. Deixe a configuração em branco para usar a pasta privada integrada."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "A configuração do caminho de armazenamento de assinaturas fiscais deve ser um caminho absoluto de pasta."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Estes números de envelope só serão guardados quando selecionar «Atualizar registos de famílias»."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Essa pessoa não pode acessar como funcionário nem entrar no portal de membros. Suas sessões, dispositivos e chaves de acesso são removidos."
+
+#: 
+msgid "This password looks strong."
+msgstr "Esta palavra-passe parece forte."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Isso remove apenas o acesso. A pessoa e suas notas são mantidas."
+
+#: 
+msgid "Time Range"
+msgstr "Período"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Autenticação de dois fatores configurada"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Não foi possível copiar automaticamente. Selecione e copie a chave de configuração manualmente."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Envie uma imagem de assinatura em PNG ou JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Use o envio ou a remoção de assinaturas para alterar esta configuração."
+
+#: 
+msgid "User Details"
+msgstr "Detalhes do utilizador"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Nome de utilizador ou endereço de correio eletrónico"
+
+#: 
+msgid "View all ideas"
+msgstr "Ver todas as ideias"
+
+#: 
+msgid "View events"
+msgstr "Ver eventos"
+
+#: 
+msgid "View people and families"
+msgstr "Ver pessoas e famílias"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "A gestão de voluntários está desativada para esta igreja"
+
+#: 
+msgid "Weak"
+msgstr "Fraca"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "O que esta conta pode fazer agora (somente leitura)"
+
+#: 
+msgid "You must select a class"
+msgstr "Deve selecionar uma categoria"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "O ano fiscal da sua igreja não começa em 1 de janeiro. As autoridades fiscais costumam exigir recibos referentes ao ano civil: escolha «Rever e filtrar» e defina as datas de 1 de janeiro a 31 de dezembro."
+
+#: 
+msgid "system user API key regenerated"
+msgstr "chave API do utilizador do sistema regenerada"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "o utilizador do sistema redefiniu sua palavra-passe por uma ligação enviado por correio eletrónico"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "o utilizador do sistema desativou a autenticação de dois fatores"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "o utilizador do sistema ativou a autenticação de dois fatores"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "autenticação de dois fatores do utilizador do sistema desativada pelo administrador"
 

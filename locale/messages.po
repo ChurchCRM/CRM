@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-15 23:07+0000\n"
+"POT-Creation-Date: 2026-11-16 02:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2874,7 +2874,7 @@ msgstr ""
 msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
 msgstr ""
 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
 msgstr ""
 
 #, php-format
@@ -2924,6 +2924,9 @@ msgid "Cannot encode the private tax signature."
 msgstr ""
 
 msgid "Cannot execute query."
+msgstr ""
+
+msgid "Cannot move field in that direction"
 msgstr ""
 
 msgid "Cannot move property in that direction"
@@ -4539,6 +4542,9 @@ msgstr ""
 msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
 msgstr ""
 
+msgid "Custom field not found"
+msgstr ""
+
 msgid "Custom fields and properties are supported"
 msgstr ""
 
@@ -4719,6 +4725,15 @@ msgid "Deactivate ministry"
 msgstr ""
 
 msgid "Deactivate schedule"
+msgstr ""
+
+msgid "Deactivate the family instead"
+msgstr ""
+
+msgid "Deactivate the family instead of deleting it."
+msgstr ""
+
+msgid "Deactivate the person instead of deleting them."
 msgstr ""
 
 msgid "Deactivate this ministry before deleting it."
@@ -6694,6 +6709,9 @@ msgstr ""
 msgid "Failed to delete class. Please try again."
 msgstr ""
 
+msgid "Failed to delete custom field"
+msgstr ""
+
 msgid "Failed to delete donation fund"
 msgstr ""
 
@@ -6839,6 +6857,9 @@ msgid "Failed to load recipients. Please try again."
 msgstr ""
 
 msgid "Failed to load recovery codes. Please refresh the page."
+msgstr ""
+
+msgid "Failed to move custom field"
 msgstr ""
 
 msgid "Failed to move donations."
@@ -13953,6 +13974,10 @@ msgstr ""
 msgid "Record: they declined"
 msgstr ""
 
+#, php-format
+msgid "Recorded history: %s."
+msgstr ""
+
 msgid "Recording a Payment"
 msgstr ""
 
@@ -14045,9 +14070,6 @@ msgid "Register another family"
 msgstr ""
 
 msgid "Register walk-in guest"
-msgstr ""
-
-msgid "Register your church"
 msgstr ""
 
 msgid "Register your family"
@@ -17661,6 +17683,9 @@ msgstr ""
 msgid "This event type is used by"
 msgstr ""
 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr ""
+
 msgid "This family is inactive, so it is not sent verification emails."
 msgstr ""
 
@@ -17839,6 +17864,9 @@ msgid "This person belongs to a family — approve the family instead"
 msgstr ""
 
 msgid "This person can no longer sign in anywhere, to the Member Portal or as staff. Every session ends, and their remembered devices and passkeys are removed."
+msgstr ""
+
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
 msgstr ""
 
 msgid "This person could not be signed out."
@@ -20492,6 +20520,9 @@ msgstr ""
 msgid "assigned"
 msgstr ""
 
+msgid "attendance"
+msgstr ""
+
 msgid "body is required"
 msgstr ""
 
@@ -20608,6 +20639,9 @@ msgid "fields"
 msgstr ""
 
 msgid "files"
+msgstr ""
+
+msgid "financial history"
 msgstr ""
 
 msgid "for errors around the time this happened, and download and attach the relevant log file to your GitHub issue — it helps us fix the problem without asking follow-up questions."
@@ -20776,6 +20810,9 @@ msgstr ""
 msgid "not found"
 msgstr ""
 
+msgid "notes"
+msgstr ""
+
 msgid "of"
 msgstr ""
 
@@ -20866,6 +20903,9 @@ msgid "record(s) successfully added to selected Group."
 msgstr ""
 
 msgid "record(s) successfully deleted from the selected Group."
+msgstr ""
+
+msgid "recorded activities"
 msgstr ""
 
 msgid "records"
@@ -20985,6 +21025,9 @@ msgid "user"
 msgstr ""
 
 msgid "view families missing an email"
+msgstr ""
+
+msgid "volunteer service history"
 msgstr ""
 
 msgid "window end"

@@ -5464,7 +5464,6 @@
   "{{name}} registered and checked in!": "{{name}}이(가) 등록되었고 체크인되었습니다!",
   "Search by family name": "가족 이름으로 검색",
   "Search by family name or envelope #": "가족 이름 또는 봉투 번호로 검색",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "서약이나 결제 내역이 있는 가족은 삭제할 수 없습니다. 먼저 재정 기록을 이동하거나 삭제하세요.",
   "You cannot delete your own account.": "본인 계정은 삭제할 수 없습니다.",
   "A recurring event needs a last date, so it is back to {{date}}.": "반복 일정에는 종료일이 필요하여 {{date}}(으)로 되돌렸습니다.",
   "Add Everyone in Cart to {{ministry}}": "장바구니의 모든 사람을 {{ministry}}에 추가",

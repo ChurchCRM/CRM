@@ -4,6 +4,7 @@
 > ChurchCRM has no first-class lifecycle records today. Baptisms, marriages, funerals and similar milestones live in free-text notes or generic person custom fields — places that cannot act as a church's register and cannot be reported across people or time. Two long-standing asks carry this: #3175 (track member lifecycle events — baptisms, marriages, funerals — with reporting, filed 2017, with a maintainer co-designed schema in its thread) and #5324 (sacramental register fields on a person, whose thread concluded that custom fields are insufficient context). This RFC proposes lifecycle tracking as a designed capability: **typed lifecycle event records on the person, with register views and reporting** — and leaves its home, core feature or core plugin, as an explicit maintainer decision.
 
 **Status:** Draft for maintainer review (no decision yet); no release commitment
+**Audience:** Workflow feature — community feedback via its Feature Proposal discussion.
 **Date:** 2026-11-06 (updated 2026-11-13: date interplay with #11449)
 **Owner:** @dawoudio
 **Proposal issues:** [#3175](https://github.com/ChurchCRM/CRM/issues/3175) (Tracking Church Member Lifecycle Events) · [#5324](https://github.com/ChurchCRM/CRM/issues/5324) (Sacramental register)
