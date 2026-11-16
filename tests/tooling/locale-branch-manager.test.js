@@ -24,7 +24,7 @@ function fixture(t) {
     write('package.json', '{"version":"1.0.0"}');
     write('locale/messages.po', 'msgid "Hello"\nmsgstr ""\n\nmsgid "Total: %d"\nmsgstr ""\n');
     write('locale/terms/english-ok.json', '{}\n');
-    write('src/locale/locales.json', JSON.stringify({ French: { poEditor: 'fr', locale: 'fr_FR', languageCode: 'fr', scripts: ['Latin'] } }));
+    write('src/locale/locales.json', JSON.stringify({ French: { localeCode: 'fr', locale: 'fr_FR', languageCode: 'fr', scripts: ['Latin'] } }));
     write('src/locale/i18n/fr_FR.json', '{}\n');
     write('locale/terms/missing/fr/fr-1.json', '{"Hello":"Bonjour"}\n');
     const git = (...args) => execFileSync('git', args, { cwd, env: fixtureEnv, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
