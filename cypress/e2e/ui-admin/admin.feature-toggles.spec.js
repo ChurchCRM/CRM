@@ -22,14 +22,17 @@ describe("Admin Feature Toggles page", () => {
     });
 
     it("saves a toggle from the dashboard card", () => {
+        cy.intercept("POST", "**/admin/api/system/feature-toggles").as("toggleSave");
         cy.visit("admin/");
         cy.get('.dashboard-feature-toggle[data-setting="bEnabledEvents"]').then(($cb) => {
             const wasChecked = $cb.prop("checked");
             cy.wrap($cb).click();
+            cy.wait("@toggleSave");
             cy.get('.dashboard-feature-toggle[data-setting="bEnabledEvents"]').should(
                 wasChecked ? "not.be.checked" : "be.checked",
             );
             cy.get('.dashboard-feature-toggle[data-setting="bEnabledEvents"]').click();
+            cy.wait("@toggleSave");
             cy.get('.dashboard-feature-toggle[data-setting="bEnabledEvents"]').should(
                 wasChecked ? "be.checked" : "not.be.checked",
             );
@@ -37,10 +40,12 @@ describe("Admin Feature Toggles page", () => {
     });
 
     it("saves a toggle and persists it after reload", () => {
+        cy.intercept("POST", "**/admin/api/system/feature-toggles").as("toggleSave");
         cy.visit("admin/system/feature-toggles");
         cy.get('.feature-toggle[data-setting="bEnabledEvents"]').then(($cb) => {
             const wasChecked = $cb.prop("checked");
             cy.wrap($cb).click();
+            cy.wait("@toggleSave");
             cy.contains(".status-badge", "Saved").should("be.visible");
             cy.url().should("include", "/admin/system/feature-toggles");
             cy.get('.feature-toggle[data-setting="bEnabledEvents"]').should(
@@ -48,6 +53,7 @@ describe("Admin Feature Toggles page", () => {
             );
             // restore
             cy.get('.feature-toggle[data-setting="bEnabledEvents"]').click();
+            cy.wait("@toggleSave");
             cy.contains(".status-badge", "Saved").should("be.visible");
         });
     });
