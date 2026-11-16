@@ -66,7 +66,7 @@ function hasUntranslatedValues(terms) {
     );
 }
 
-function getBatchFiles(poEditorCode) {
+function getBatchFiles(poEditorCode, { includeFilled = false } = {}) {
     const localeDir = path.join(config.terms.missing, poEditorCode);
     if (!fs.existsSync(localeDir)) return [];
     return fs.readdirSync(localeDir)
@@ -75,7 +75,7 @@ function getBatchFiles(poEditorCode) {
         .map(f => path.join(localeDir, f))
         .filter(fp => {
             const data = loadJSON(fp);
-            return data && hasUntranslatedValues(data);
+            return data && (includeFilled || hasUntranslatedValues(data));
         });
 }
 
@@ -268,9 +268,9 @@ function cmdApplyBulk(translationsJson) {
         if (incoming === null || typeof incoming !== 'object' || Array.isArray(incoming)) {
             exitWith(`${code}: expected an object of term: translation pairs`);
         }
-        const files = getBatchFiles(code);
+        const files = getBatchFiles(code, { includeFilled: true });
         if (files.length === 0) {
-            console.error(`❌ ${code}: no batch files with untranslated terms`);
+            console.error(`❌ ${code}: no batch files`);
             process.exitCode = 1;
             continue;
         }

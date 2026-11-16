@@ -22615,10 +22615,6 @@ msgid "Search by family name or envelope #"
 msgstr "Szukaj według nazwiska rodziny lub nr koperty"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Nie można usunąć rodziny, która ma zobowiązania lub wpłaty. Najpierw przenieś lub usuń zapisy finansowe."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Nie możesz usunąć własnego konta."
 
@@ -27331,4 +27327,689 @@ msgstr "Twoje dane należą do Ciebie. Raporty dotyczą oprogramowania, nigdy Tw
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Twoje dane należą do Ciebie. Aby zliczać instalacje, ChurchCRM zgłasza, że został zainstalowany lub zaktualizowany i czy się to udało, wysyła sygnał raz dziennie podczas używania, a także numer wersji, Twój kraj, rodzaj bazy danych i losowy identyfikator instalacji. Nigdy nie zgłasza danych członków, ofiar ani innych danych wspólnoty, nazwy Twojej wspólnoty, adresu strony lub nazwy serwera ani adresów e-mail. Możesz to wyłączyć w dowolnym momencie w Administracja → Telemetria; nieudana instalacja lub aktualizacja nadal jest zgłaszana. Ostrzeżenia, szczegóły błędów i odsłony stron są udostępniane tylko wtedy, gdy tak wybierzesz."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d wpłata jest nadal otwarta. Zamknij ją, aby każda darowizna była ostateczna przed wysłaniem zestawień."
+msgstr[1] "%1$s: %2$d wpłaty są nadal otwarte. Zamknij je, aby każda darowizna była ostateczna przed wysłaniem zestawień."
+msgstr[2] "%1$s: %2$d wpłat jest nadal otwartych. Zamknij je, aby każda darowizna była ostateczna przed wysłaniem zestawień."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "Zapisano %d numer koperty."
+msgstr[1] "Zapisano %d numery kopert."
+msgstr[2] "Zapisano %d numerów kopert."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d rodzina"
+msgstr[1] "%d rodziny"
+msgstr[2] "%d rodzin"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: wszystkie wpłaty są zamknięte. Zestawienia są gotowe do przygotowania."
+
+#: 
+msgid "12 months"
+msgstr "12 miesięcy"
+
+#: 
+msgid "30 days"
+msgstr "30 dni"
+
+#: 
+msgid "90 days"
+msgstr "90 dni"
+
+#: 
+msgid "Add Property"
+msgstr "Dodaj właściwość"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Dodaj jeszcze kilka znaków lub symbol."
+
+#: 
+msgid "Add and edit events"
+msgstr "Dodawanie i edytowanie wydarzeń"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Dodaj więcej znaków lub użyj cyfr i symboli."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Dodaj więcej znaków oraz użyj wielkich i małych liter, cyfr i symboli."
+
+#: 
+msgid "Add people and families"
+msgstr "Dodawanie osób i rodzin"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Administratorzy mają wszystkie uprawnienia, dopóki funkcja jest włączona."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Wyłącz także logowanie, aby nie mogli korzystać z Portalu członka"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Zanim wyślesz zestawienia"
+
+#: 
+msgid "Birthday today"
+msgstr "Dziś urodziny"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Nie można utworzyć prywatnego pliku podpisu podatkowego. Sprawdź, czy folder przechowywania jest zapisywalny."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Nie można utworzyć folderu %s do przechowywania podpisu podatkowego. Upewnij się, że serwer WWW może w nim zapisywać, albo ustaw zapisywalny folder w ustawieniu ścieżki przechowywania podpisu podatkowego."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Nie można usunąć rodziny, która ma zobowiązania lub wpłaty. Zamiast tego dezaktywuj rodzinę, aby zachować historię finansową. Przenieś zapisy finansowe tylko wtedy, gdy jest to właściwe."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Nie można zakodować prywatnego podpisu podatkowego."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Nie można przenieść pola w tym kierunku"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Nie można odczytać prywatnego podpisu podatkowego."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Nie można usunąć prywatnego podpisu."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Nie można usunąć prywatnego pliku podpisu podatkowego."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Nie można ustalić folderu aplikacji do przechowywania podpisu podatkowego."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Nie można zapisać prywatnego podpisu."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Nie można zapisać zabezpieczenia dostępu %s w folderze przechowywania podpisu podatkowego."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Zmień rolę wybranych członków: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Rok finansowy Kościoła"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "Kontrola systemu ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "Nie znaleziono pola niestandardowego"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Zamiast tego dezaktywuj rodzinę"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Dezaktywuj rodzinę zamiast ją usuwać."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Dezaktywuj osobę zamiast ją usuwać."
+
+#: 
+msgid "Delete people and families"
+msgstr "Usuwanie osób i rodzin"
+
+#: 
+msgid "Delete the login for"
+msgstr "Usuń login dla"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Zakres czasu wykresu wpłat"
+
+#: 
+msgid "Disabled at"
+msgstr "Wyłączono"
+
+#: 
+msgid "Disabled by"
+msgstr "Wyłączył(a)"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Pobieranie wysyła wszystkich darczyńców z danego roku. Przegląd i filtr najpierw pokazuje sumy i pozwala zawęzić według rodziny, funduszu, klasy lub daty."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Zduplikowany numer koperty"
+
+#: 
+msgid "Edit people and families"
+msgstr "Edytowanie osób i rodzin"
+
+#: 
+msgid "Email people and groups"
+msgstr "Wysyłanie e-maili do osób i grup"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Włącz brakujące rozszerzenia PHP w konfiguracji serwera WWW, uruchom ponownie serwer i odśwież tę stronę. Jeśli korzystasz z hostingu, poproś dostawcę o włączenie wymienionych rozszerzeń."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Wprowadź klucz konfiguracji ręcznie"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Wpisz numer początkowy od 0 do %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Włącz pełny ekran"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Wprowadź ten klucz w aplikacji uwierzytelniającej lub menedżerze haseł, używając kodów czasowych (TOTP), 6-cyfrowych, z 30-sekundowym interwałem. Zachowaj ten klucz w tajemnicy."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Wpisz nazwę użytkownika lub adres e-mail"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Numery kopert muszą być liczbami całkowitymi od 0 do %d. Nic nie zostało zapisane."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Wydarzenia są wyłączone dla tego Kościoła"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Wyłącz pełny ekran"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Nie udało się usunąć pola niestandardowego"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Nie udało się przenieść pola niestandardowego"
+
+#: 
+msgid "Fair"
+msgstr "Przeciętne"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Rodziny, które złożyły zobowiązanie na %s i nie mają zobowiązania na %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Rodziny z co najmniej jednym członkiem w"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Finanse są wyłączone dla tego Kościoła"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Znajdź rodziny, które złożyły zobowiązanie w jednym roku finansowym, a w innym nie."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Folder, w którym przechowywany jest prywatny podpis na zestawieniach darowizn. Pozostaw puste, aby użyć wbudowanego folderu prywatnego Images/TaxSignatures, który blokuje bezpośredni dostęp z sieci. Aby użyć innego folderu, wpisz ścieżkę bezwzględną poza folderem ChurchCRM, do której serwer WWW może zapisywać."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Zbiórki funduszy są wyłączone dla tego Kościoła"
+
+#: 
+msgid "Good"
+msgstr "Dobre"
+
+#: 
+msgid "Have an email"
+msgstr "Ma adres e-mail"
+
+#: 
+msgid "Hide setup key"
+msgstr "Ukryj klucz konfiguracji"
+
+#: 
+msgid "How to respond"
+msgstr "Jak odpowiedzieć"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Pomysły czekające na Twoją ocenę"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Nieaktywne rodziny są pomijane. Wpłaty nie liczą się jako zobowiązania."
+
+#: 
+msgid "Invalid request."
+msgstr "Nieprawidłowe żądanie."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Nieprawidłowe dane obrazu podpisu."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Nieprawidłowy zapisany identyfikator podpisu podatkowego."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Nieprawidłowe miejsce przechowywania podpisu podatkowego."
+
+#: 
+msgid "Last successful login"
+msgstr "Ostatnie udane logowanie"
+
+#: 
+msgid "Lockout state"
+msgstr "Stan blokady"
+
+#: 
+msgid "Login deleted"
+msgstr "Login usunięty"
+
+#: 
+msgid "Mail only"
+msgstr "Tylko poczta"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Zarządzaj wszystkimi posługami"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Członkowie przeniesieni do roli {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Członkowie bez zmian, ponieważ opuścili grupę lub ich rolą zarządza posługa: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Koordynator posługi"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Minuty do automatycznego odblokowania"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Brakujące zobowiązania"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Nie masz konta GitHub? Napisz do nas na Discordzie"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Żadna aktywna rodzina nie złożyła zobowiązania na %s bez zobowiązania na %s."
+
+#: 
+msgid "No families found."
+msgstr "Nie znaleziono rodzin."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Brak przypisanej posługi"
+
+#: 
+msgid "No open deposit"
+msgstr "Brak otwartej wpłaty"
+
+#: 
+msgid "No pledge for"
+msgstr "Brak zobowiązania na"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Nie przyznano temu kontu"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Nie prowadzi zespołu wolontariuszy"
+
+#: 
+msgid "Not locked"
+msgstr "Niezablokowane"
+
+#: 
+msgid "Number of Payments"
+msgstr "Liczba płatności"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Jedna minuta. Nie udostępniamy tego, co wysyłasz."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Otwórz pomysł. Zagłosuj 👍, jeśli Twój Kościół go potrzebuje, i dodaj krótki komentarz o tym, jak pracujesz dziś."
+
+#: 
+msgid "Open deposit"
+msgstr "Otwarta wpłata"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Wymagana zmiana hasła przy następnym logowaniu"
+
+#: 
+msgid "Password strength"
+msgstr "Siła hasła"
+
+#: 
+msgid "People & Families"
+msgstr "Osoby i rodziny"
+
+#: 
+msgid "Pledged for"
+msgstr "Zobowiązanie na"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Przygotuj zestawienia darowizn"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Podgląd przykładowego listu"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Prywatny identyfikator zasobu podpisu na kanadyjskich zestawieniach darowizn. Zarządzany przez przesłanie podpisu."
+
+#: 
+msgid "Property Type"
+msgstr "Typ właściwości"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Podaj tylko dane obrazu podpisu w formacie PNG lub JPEG."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Zapisana historia: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Zgłoś problem"
+
+#: 
+msgid "Requirement"
+msgstr "Wymaganie"
+
+#: 
+msgid "Return Home"
+msgstr "Wróć do strony głównej"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Przejrzyj rok finansowy, a następnie pobierz zestawienia darowizn."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Przejrzyj i zamknij wpłatę"
+
+#: 
+msgid "Review and Filter"
+msgstr "Przegląd i filtr"
+
+#: 
+msgid "Review and vote"
+msgstr "Przejrzyj i zagłosuj"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Przejrzyj rok, a następnie pobierz zestawienia darowizn."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Zobacz, co rozważamy"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Role i uprawnienia"
+
+#: 
+msgid "Select at least one member."
+msgstr "Wybierz co najmniej jednego członka."
+
+#: 
+msgid "Setup key"
+msgstr "Klucz konfiguracji"
+
+#: 
+msgid "Sign-in status"
+msgstr "Stan logowania"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Folder przechowywania podpisu"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Podpis zaktualizowano, ale nie udało się usunąć poprzedniego prywatnego pliku podpisu."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Brakuje niektórych wymagań PHP. ChurchCRM potrzebuje ich, aby kontynuować."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Rozpocznij wpłatę, a następnie dodaj do niej każdą płatność."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Początkowy numer koperty"
+
+#: 
+msgid "Strong"
+msgstr "Silne"
+
+#: 
+msgid "Support"
+msgstr "Wsparcie"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Ustawienia NIP i PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Nie udało się wczytać listy. Nadal możesz otworzyć pomysły na GitHubie."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Nazwa może mieć co najwyżej %d znaków"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Nie znaleziono żądanej strony. Mogła zostać przeniesiona, zmieniona lub już nie istnieje."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Polecenie może mieć co najwyżej %d znaków"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Wybrani członkowie mają już tę rolę."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Nie udało się zdekodować obrazu podpisu."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Obraz podpisu nie może być większy niż 2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Obraz podpisu musi mieścić się w 2000 × 1000 pikseli."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Serwer WWW nie może zapisywać w folderze %s do przechowywania podpisu podatkowego."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Folder przechowywania podpisu podatkowego nie może być dowiązaniem symbolicznym."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Ścieżka przechowywania podpisu podatkowego musi znajdować się poza folderem ChurchCRM. Pozostaw ustawienie puste, aby użyć wbudowanego folderu prywatnego."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Ustawienie ścieżki przechowywania podpisu podatkowego musi być bezwzględną ścieżką folderu."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Te numery kopert nie zostaną zapisane, dopóki nie wybierzesz Aktualizuj dane rodzin."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Nie mogą logować się jako personel ani do Portalu członka, a ich sesje, urządzenia i klucze dostępu zostaną usunięte."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Tej rodziny nie można usunąć, ponieważ ma notatki. Zamiast tego dezaktywuj rodzinę, aby zachować jej historię."
+
+#: 
+msgid "This password looks strong."
+msgstr "To hasło wygląda na silne."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Tej osoby nie można usunąć, ponieważ ma zapisane aktywności. Zamiast tego dezaktywuj osobę, aby zachować jej historię."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "To usuwa tylko login. Osoba i jej notatki pozostają."
+
+#: 
+msgid "Time Range"
+msgstr "Zakres czasu"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Uwierzytelnianie dwuskładnikowe skonfigurowane"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Nie można skopiować automatycznie. Zaznacz i skopiuj klucz konfiguracji ręcznie."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Prześlij obraz podpisu w formacie PNG lub JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Aby zmienić to ustawienie, użyj przesłania lub usunięcia podpisu."
+
+#: 
+msgid "User Details"
+msgstr "Dane użytkownika"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Nazwa użytkownika lub adres e-mail"
+
+#: 
+msgid "View all ideas"
+msgstr "Zobacz wszystkie pomysły"
+
+#: 
+msgid "View events"
+msgstr "Wyświetlanie wydarzeń"
+
+#: 
+msgid "View people and families"
+msgstr "Wyświetlanie osób i rodzin"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Zarządzanie wolontariuszami jest wyłączone dla tego Kościoła"
+
+#: 
+msgid "Weak"
+msgstr "Słabe"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Co to konto może teraz robić (tylko do odczytu)"
+
+#: 
+msgid "You must select a class"
+msgstr "Musisz wybrać klasę"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Rok finansowy Twojego Kościoła nie zaczyna się 1 stycznia. Urzędy skarbowe często chcą pokwitowań za rok kalendarzowy: wybierz Przegląd i filtr i ustaw daty od 1 stycznia do 31 grudnia."
+
+#: 
+msgid "attendance"
+msgstr "obecność"
+
+#: 
+msgid "financial history"
+msgstr "historia finansowa"
+
+#: 
+msgid "notes"
+msgstr "notatki"
+
+#: 
+msgid "recorded activities"
+msgstr "zapisane aktywności"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "klucz API użytkownika systemowego został wygenerowany ponownie"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "użytkownik systemowy zresetował hasło z linku w e-mailu"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "użytkownik systemowy wyłączył uwierzytelnianie dwuskładnikowe"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "użytkownik systemowy włączył uwierzytelnianie dwuskładnikowe"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "uwierzytelnianie dwuskładnikowe użytkownika systemowego wyłączone przez administratora"
+
+#: 
+msgid "volunteer service history"
+msgstr "historia służby wolontariackiej"
 

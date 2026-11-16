@@ -22588,10 +22588,6 @@ msgid "Search by family name or envelope #"
 msgstr "Пошук за назвою родини або номером конверта"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Не можна видалити родину, яка має зобов’язання або платежі. Спочатку перемістіть або видаліть фінансові записи."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Ви не можете видалити власний обліковий запис."
 
@@ -27306,4 +27302,692 @@ msgstr "Ваші дані належать вам. Звіти стосуютьс
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Ваші дані належать вам. Щоб підраховувати встановлення, ChurchCRM повідомляє, що його встановлено чи оновлено і чи вдалося це, раз на день надсилає сигнал під час використання, а також номер версії, вашу країну, тип бази даних і випадковий ідентифікатор встановлення. Він ніколи не повідомляє записи про членів, пожертви чи інші записи громади, назву вашої громади, вашу вебадресу чи ім'я сервера, а також адреси електронної пошти. Ви можете вимкнути це будь-коли в розділі Адміністрування → Телеметрія; про невдале встановлення чи оновлення все одно буде повідомлено. Попередження, відомості про помилки та перегляди сторінок передаються, лише якщо ви це виберете."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d внесок досі відкритий. Закрийте його, щоб кожне пожертвування стало остаточним до надсилання виписок."
+msgstr[1] "%1$s: %2$d внески досі відкриті. Закрийте їх, щоб кожне пожертвування стало остаточним до надсилання виписок."
+msgstr[2] "%1$s: %2$d внесків досі відкрито. Закрийте їх, щоб кожне пожертвування стало остаточним до надсилання виписок."
+msgstr[3] "%1$s: %2$d внеску досі відкрито. Закрийте їх, щоб кожне пожертвування стало остаточним до надсилання виписок."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "Збережено %d номер конверта."
+msgstr[1] "Збережено %d номери конвертів."
+msgstr[2] "Збережено %d номерів конвертів."
+msgstr[3] "Збережено %d номера конвертів."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d родина"
+msgstr[1] "%d родини"
+msgstr[2] "%d родин"
+msgstr[3] "%d родини"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: усі внески закрито. Виписки готові до підготовки."
+
+#: 
+msgid "12 months"
+msgstr "12 місяців"
+
+#: 
+msgid "30 days"
+msgstr "30 днів"
+
+#: 
+msgid "90 days"
+msgstr "90 днів"
+
+#: 
+msgid "Add Property"
+msgstr "Додати властивість"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Додайте ще кілька символів або знак."
+
+#: 
+msgid "Add and edit events"
+msgstr "Додавання та редагування подій"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Додайте більше символів або використайте цифри та знаки."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Додайте більше символів, використовуйте великі й малі літери, цифри та знаки."
+
+#: 
+msgid "Add people and families"
+msgstr "Додавання людей і родин"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Адміністратори мають усі дозволи, поки функцію ввімкнено."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Також вимкнути вхід, щоб вони не могли користуватися порталом учасників"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Перш ніж надсилати виписки"
+
+#: 
+msgid "Birthday today"
+msgstr "Сьогодні день народження"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Не вдалося створити приватний файл податкового підпису. Перевірте, чи папка зберігання доступна для запису."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Не вдалося створити папку %s для зберігання податкового підпису. Переконайтеся, що вебсервер може писати в неї, або вкажіть папку, доступну для запису, у налаштуванні шляху зберігання податкового підпису."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Не можна видалити родину, яка має зобов’язання або платежі. Натомість деактивуйте родину, щоб зберегти фінансову історію. Переносьте фінансові записи лише за потреби."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Не вдалося закодувати приватний податковий підпис."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Поле не можна перемістити в цьому напрямку"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Не вдалося прочитати приватний податковий підпис."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Не вдалося видалити приватний підпис."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Не вдалося видалити приватний файл податкового підпису."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Не вдалося визначити папку застосунку для зберігання податкового підпису."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Не вдалося зберегти приватний підпис."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Не вдалося записати захист доступу %s у папку зберігання податкового підпису."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Змінити роль вибраних учасників: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Фінансовий рік церкви"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "Перевірка системи ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "Користувацьке поле не знайдено"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Натомість деактивувати родину"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Деактивуйте родину замість видалення."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Деактивуйте особу замість видалення."
+
+#: 
+msgid "Delete people and families"
+msgstr "Видалення людей і родин"
+
+#: 
+msgid "Delete the login for"
+msgstr "Видалити обліковий запис для"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Часовий діапазон діаграми внесків"
+
+#: 
+msgid "Disabled at"
+msgstr "Вимкнено"
+
+#: 
+msgid "Disabled by"
+msgstr "Вимкнув(ла)"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Завантаження надсилає всіх жертводавців за рік. «Переглянути й відфільтрувати» спершу показує підсумки та дає змогу звузити вибір за родиною, фондом, класом або датою."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Дублікат номера конверта"
+
+#: 
+msgid "Edit people and families"
+msgstr "Редагування людей і родин"
+
+#: 
+msgid "Email people and groups"
+msgstr "Надсилання листів людям і групам"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Увімкніть відсутні розширення PHP у конфігурації вебсервера, перезапустіть вебсервер і оновіть сторінку. Якщо ви користуєтеся хостингом, попросіть провайдера увімкнути перелічені розширення."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Ввести ключ налаштування вручну"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Введіть початковий номер від 0 до %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "На весь екран"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Введіть цей ключ у застосунку-автентифікаторі або менеджері паролів, використовуючи часові (TOTP) 6-значні коди з інтервалом 30 секунд. Зберігайте цей ключ у таємниці."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Введіть ім’я користувача або адресу ел. пошти"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Номери конвертів мають бути цілими числами від 0 до %d. Нічого не збережено."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Події вимкнено для цієї церкви"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Вийти з повноекранного режиму"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Не вдалося видалити користувацьке поле"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Не вдалося перемістити користувацьке поле"
+
+#: 
+msgid "Fair"
+msgstr "Задовільно"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Родини, які зобов’язалися на %s і не мають зобов’язання на %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Родини, у яких є принаймні один учасник у"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Фінанси вимкнено для цієї церкви"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Знайдіть родини, які зобов’язалися в одному фінансовому році й не зобов’язалися в іншому."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Папка, де зберігається приватний підпис на виписках про пожертвування. Залиште порожнім, щоб використати вбудовану приватну папку Images/TaxSignatures, яка блокує прямий вебдоступ. Щоб використати іншу папку, введіть абсолютний шлях поза папкою ChurchCRM, у яку вебсервер може писати."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Збір коштів вимкнено для цієї церкви"
+
+#: 
+msgid "Good"
+msgstr "Добре"
+
+#: 
+msgid "Have an email"
+msgstr "Мають адресу ел. пошти"
+
+#: 
+msgid "Hide setup key"
+msgstr "Сховати ключ налаштування"
+
+#: 
+msgid "How to respond"
+msgstr "Як відповісти"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Ідеї, що чекають на ваш розгляд"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Неактивні родини виключено. Платежі не вважаються зобов’язаннями."
+
+#: 
+msgid "Invalid request."
+msgstr "Недійсний запит."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Недійсні дані зображення підпису."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Недійсний збережений ідентифікатор податкового підпису."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Недійсне сховище податкового підпису."
+
+#: 
+msgid "Last successful login"
+msgstr "Останній успішний вхід"
+
+#: 
+msgid "Lockout state"
+msgstr "Стан блокування"
+
+#: 
+msgid "Login deleted"
+msgstr "Обліковий запис видалено"
+
+#: 
+msgid "Mail only"
+msgstr "Лише пошта"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Керувати всіма служіннями"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Учасників переведено на роль {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Учасників не змінено, бо вони залишили групу або їхньою роллю керує служіння: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Координатор служіння"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Хвилин до автоматичного розблокування"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Відсутні зобов’язання"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Немає облікового запису GitHub? Напишіть нам у Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Жодна активна родина не зобов’язалася на %s без зобов’язання на %s."
+
+#: 
+msgid "No families found."
+msgstr "Родин не знайдено."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Служіння не призначено"
+
+#: 
+msgid "No open deposit"
+msgstr "Немає відкритого внеску"
+
+#: 
+msgid "No pledge for"
+msgstr "Немає зобов’язання на"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Не надано цьому обліковому запису"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Не очолює команду волонтерів"
+
+#: 
+msgid "Not locked"
+msgstr "Не заблоковано"
+
+#: 
+msgid "Number of Payments"
+msgstr "Кількість платежів"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Одна хвилина. Ми не передаємо те, що ви надсилаєте."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Відкрийте ідею. Проголосуйте 👍, якщо вона потрібна вашій церкві, і додайте короткий коментар про те, як ви працюєте сьогодні."
+
+#: 
+msgid "Open deposit"
+msgstr "Відкритий внесок"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Потрібна зміна пароля під час наступного входу"
+
+#: 
+msgid "Password strength"
+msgstr "Надійність пароля"
+
+#: 
+msgid "People & Families"
+msgstr "Люди та родини"
+
+#: 
+msgid "Pledged for"
+msgstr "Зобов’язання на"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Підготувати виписки про пожертвування"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Переглянути зразок листа"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Приватний ідентифікатор підпису на канадських виписках про пожертвування. Керується через завантаження підпису."
+
+#: 
+msgid "Property Type"
+msgstr "Тип властивості"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Надайте лише дані зображення підпису у форматі PNG або JPEG."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Записана історія: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Повідомити про проблему"
+
+#: 
+msgid "Requirement"
+msgstr "Вимога"
+
+#: 
+msgid "Return Home"
+msgstr "На головну"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Перегляньте фінансовий рік, а потім завантажте виписки про пожертвування."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Переглянути й закрити внесок"
+
+#: 
+msgid "Review and Filter"
+msgstr "Переглянути й відфільтрувати"
+
+#: 
+msgid "Review and vote"
+msgstr "Переглянути й проголосувати"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Перегляньте рік, а потім завантажте виписки про пожертвування."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Дізнайтеся, що ми розглядаємо"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Ролі та дозволи"
+
+#: 
+msgid "Select at least one member."
+msgstr "Виберіть принаймні одного учасника."
+
+#: 
+msgid "Setup key"
+msgstr "Ключ налаштування"
+
+#: 
+msgid "Sign-in status"
+msgstr "Стан входу"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Папка зберігання підпису"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Підпис оновлено, але попередній приватний файл підпису не вдалося видалити."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Бракує деяких вимог PHP. Вони потрібні ChurchCRM, щоб продовжити."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Почніть внесок, а потім додавайте до нього кожен платіж."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Початковий номер конверта"
+
+#: 
+msgid "Strong"
+msgstr "Надійний"
+
+#: 
+msgid "Support"
+msgstr "Підтримка"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Податковий номер і налаштування PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Не вдалося завантажити список. Ви все одно можете відкрити ідеї на GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Назва може містити щонайбільше %d символів"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Запитану сторінку не знайдено. Її могли перемістити, перейменувати, або її більше не існує."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Запит може містити щонайбільше %d символів"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Вибрані учасники вже мають цю роль."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Не вдалося декодувати зображення підпису."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Зображення підпису не має перевищувати 2 МіБ."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Зображення підпису має вміщатися в 2000 × 1000 пікселів."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Вебсервер не може писати в папку %s для зберігання податкового підпису."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Папка зберігання податкового підпису не може бути символічним посиланням."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Шлях зберігання податкового підпису має бути поза папкою ChurchCRM. Залиште налаштування порожнім, щоб використати вбудовану приватну папку."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Налаштування шляху зберігання податкового підпису має бути абсолютним шляхом до папки."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Ці номери конвертів не збережуться, доки ви не виберете «Оновити записи родини»."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Вони не зможуть увійти як співробітники чи до порталу учасників, а їхні сеанси, пристрої та ключі доступу буде видалено."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Цю родину не можна видалити, бо вона має нотатки. Натомість деактивуйте родину, щоб зберегти її історію."
+
+#: 
+msgid "This password looks strong."
+msgstr "Цей пароль виглядає надійним."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Цю особу не можна видалити, бо вона має записані дії. Натомість деактивуйте особу, щоб зберегти її історію."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Це видаляє лише обліковий запис. Особа та її нотатки залишаються."
+
+#: 
+msgid "Time Range"
+msgstr "Часовий діапазон"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Двофакторну автентифікацію налаштовано"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Не вдалося скопіювати автоматично. Виділіть ключ налаштування й скопіюйте вручну."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Завантажте зображення підпису у форматі PNG або JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Щоб змінити це налаштування, завантажте або видаліть підпис."
+
+#: 
+msgid "User Details"
+msgstr "Відомості про користувача"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Ім’я користувача або адреса ел. пошти"
+
+#: 
+msgid "View all ideas"
+msgstr "Показати всі ідеї"
+
+#: 
+msgid "View events"
+msgstr "Перегляд подій"
+
+#: 
+msgid "View people and families"
+msgstr "Перегляд людей і родин"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Керування волонтерами вимкнено для цієї церкви"
+
+#: 
+msgid "Weak"
+msgstr "Слабкий"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Що цей обліковий запис може робити зараз (лише читання)"
+
+#: 
+msgid "You must select a class"
+msgstr "Потрібно вибрати клас"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Фінансовий рік вашої церкви починається не 1 січня. Податкові органи часто вимагають квитанції за календарний рік: виберіть «Переглянути й відфільтрувати» та задайте дати з 1 січня по 31 грудня."
+
+#: 
+msgid "attendance"
+msgstr "відвідуваність"
+
+#: 
+msgid "financial history"
+msgstr "фінансова історія"
+
+#: 
+msgid "notes"
+msgstr "нотатки"
+
+#: 
+msgid "recorded activities"
+msgstr "записані дії"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "API-ключ системного користувача створено заново"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "системний користувач скинув пароль за посиланням з листа"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "системний користувач вимкнув двофакторну автентифікацію"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "системний користувач увімкнув двофакторну автентифікацію"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "адміністратор вимкнув двофакторну автентифікацію системного користувача"
+
+#: 
+msgid "volunteer service history"
+msgstr "історія волонтерського служіння"
 
