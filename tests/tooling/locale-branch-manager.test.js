@@ -53,8 +53,9 @@ test('checkpoints only the locale and backs it up remotely, including its emptie
     ok(f.checkpoint());
     const files = f.git('show', '--pretty=', '--name-only', 'HEAD');
     assert.match(files, /src\/locale\/i18n\/fr_FR.json/);
-    assert.match(files, /messages.po/);
-    assert.match(files, /messages.mo/);
+    // Translate commits carry JSON + queue only; the generated .po/.mo are
+    // rebuilt on master after merge (Locale: rebuild generated files).
+    assert.doesNotMatch(files, /textdomain/);
     assert.match(files, /locale\/terms\/missing\/fr\/fr-1.json/);
     assert.doesNotMatch(files, /unrelated/);
     assert.equal(f.git('rev-parse', 'HEAD'), f.git('rev-parse', '@{u}'));

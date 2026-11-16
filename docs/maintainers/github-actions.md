@@ -48,7 +48,7 @@ The prefix says who made the branch and what it is for.
 
 ### Locale
 
-`Locale: extract terms`: see [locale-pipeline.md](locale-pipeline.md#workflows). Translations are reviewed in repository PRs.
+`Locale: extract terms`, `Locale: rebuild generated files` and `Locale: check translations`: see [locale-pipeline.md](locale-pipeline.md#workflows). The POEditor workflows are removed ([#11416](https://github.com/ChurchCRM/CRM/issues/11416)); translations live in the repo and are reviewed in repository PRs.
 
 ### Release
 

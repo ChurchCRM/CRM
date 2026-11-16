@@ -35,6 +35,9 @@ const LocaleConfig = {
     terms: {
         root: path.join(PROJECT_ROOT, 'locale/terms'),
         missing: path.join(PROJECT_ROOT, 'locale/terms/missing'),
+        // Where each queued term is used in the code (path:line), written by
+        // locale:missing for the translator; see lib/locale-context.js.
+        context: path.join(PROJECT_ROOT, 'locale/terms/context.json'),
         // Terms where value=key is intentionally correct (proper nouns, brand names, etc.)
         // Shared allowlist for intentionally English translations.
         englishOk: path.join(PROJECT_ROOT, 'locale/terms/english-ok.json'),
