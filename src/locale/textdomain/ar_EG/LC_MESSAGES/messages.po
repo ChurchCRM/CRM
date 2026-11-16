@@ -28005,3 +28005,51 @@ msgstr "فعّل مستخدم النظام المصادقة الثنائية"
 msgid "system user two-factor authentication disabled by admin"
 msgstr "عطّل المسؤول المصادقة الثنائية لمستخدم النظام"
 
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "لا يمكن حذف عائلة لديها تعهدات أو مدفوعات. عطّل العائلة بدلاً من ذلك للحفاظ على السجل المالي. انقل السجلات المالية فقط عند الحاجة."
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "عطّل العائلة بدلاً من ذلك"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "عطّل العائلة بدلاً من حذفها."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "عطّل الشخص بدلاً من حذفه."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "السجل المسجَّل: %s."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "لا يمكن حذف هذه العائلة لأن لديها ملاحظات. عطّل العائلة للحفاظ على سجلها."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "لا يمكن حذف هذا الشخص لأن لديه أنشطة مسجَّلة. عطّل الشخص للحفاظ على سجله."
+
+#: 
+msgid "attendance"
+msgstr "الحضور"
+
+#: 
+msgid "financial history"
+msgstr "السجل المالي"
+
+#: 
+msgid "notes"
+msgstr "ملاحظات"
+
+#: 
+msgid "recorded activities"
+msgstr "الأنشطة المسجَّلة"
+
+#: 
+msgid "volunteer service history"
+msgstr "سجل الخدمة التطوعية"
+

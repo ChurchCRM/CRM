@@ -6897,5 +6897,17 @@
   "system user reset their password from an emailed link": "stelselgebruiker het hul wagwoord via ’n skakel in ’n e-pos teruggestel",
   "system user turned off two-factor authentication": "stelselgebruiker het tweefaktor-verifikasie afgeskakel",
   "system user turned on two-factor authentication": "stelselgebruiker het tweefaktor-verifikasie aangeskakel",
-  "system user two-factor authentication disabled by admin": "stelselgebruiker-tweefaktor-verifikasie gedeaktiveer deur admin"
+  "system user two-factor authentication disabled by admin": "stelselgebruiker-tweefaktor-verifikasie gedeaktiveer deur admin",
+  "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate.": "'n Familie met beloftes of betalings kan nie uitgevee word nie. Deaktiveer die familie eerder om die finansiële geskiedenis te bewaar. Skuif die finansiële rekords slegs indien gepas.",
+  "Deactivate the family instead": "Deaktiveer eerder die familie",
+  "Deactivate the family instead of deleting it.": "Deaktiveer die familie eerder as om dit uit te vee.",
+  "Deactivate the person instead of deleting them.": "Deaktiveer die persoon eerder as om hulle uit te vee.",
+  "Recorded history: %s.": "Aangetekende geskiedenis: %s.",
+  "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history.": "Hierdie familie kan nie uitgevee word nie omdat dit notas het. Deaktiveer die familie eerder om hul geskiedenis te bewaar.",
+  "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history.": "Hierdie persoon kan nie uitgevee word nie omdat hulle aangetekende aktiwiteite het. Deaktiveer die persoon eerder om hul geskiedenis te bewaar.",
+  "attendance": "bywoning",
+  "financial history": "finansiële geskiedenis",
+  "notes": "notas",
+  "recorded activities": "aangetekende aktiwiteite",
+  "volunteer service history": "geskiedenis van vrywilligerdiens"
 }
