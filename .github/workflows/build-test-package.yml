@@ -1,4 +1,4 @@
-name: 'CI: build, test and package'
+name: 'CI: build, test and package (quick)'
 
 concurrency:
   # PRs: de-dup by PR number (cancel superseded runs).
