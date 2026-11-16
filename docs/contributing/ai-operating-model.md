@@ -43,3 +43,30 @@ covers commit and push). External replies, issue creation, releases and
 publication need the maintainer's specific authorization or existing
 explicitly granted scope.
 A role assignment is not permission to merge, close issues or send a message.
+
+## Token economics
+
+Tokens are a shared, finite budget across every agent lane. Spend them where judgment is needed; scripts and CI spend none.
+
+### Model and effort tiers
+
+| Tier | Use for |
+|---|---|
+| Script / CI (no LLM) | Counts, checks, builds, link validation, bookkeeping, watching successful runs |
+| Small / low effort | Search, triage, classification, mechanical edits, running named checks and reporting results |
+| Mid / standard effort | Scoped implementation of an agreed spec, test authoring, docs grounded in released behavior |
+| High effort / frontier | Novel design, cross-layer debugging, security- or data-sensitive work, ambiguous failures with no identified cause |
+
+Default to the lowest tier that clears the bar. Escalate when the lower tier has failed or the task's risk demands it — not by default. A handoff names the tier; an agent that believes the named tier is wrong says so before starting instead of silently upgrading.
+
+### Subagents
+
+- A subagent costs more than the same work inline — each one starts cold and re-reads context — and parallel fan-out multiplies the burn against the same pool.
+- Use subagents for isolation (keeping exploration out of the main context) or genuine parallelism: cheapest model that clears the bar, one tight task each, a distilled result back — never raw logs.
+- Never send several subagents to re-explore the same files.
+
+### Sessions and context
+
+- One task per session. Start fresh (`/clear`) at task boundaries — between PR reviews, between issues. Carried context is re-billed on every turn, and a previous PR's diff bleeding into the next review produces stale, cross-contaminated reviews.
+- Mid-task, if the context fills, compact once (`/compact`). After repeated compaction with drifting quality, write the state to a file and start fresh.
+- Durable context lives in files — the issue, the spec, the skill cards — never only in a chat. Load only the skill card the task needs, read file ranges instead of whole trees, and keep command output bounded (named checks, not full-suite dumps).

@@ -49,6 +49,8 @@ Before triaging or implementing an issue, read [`docs/contributing/issue-readine
 
 ## Session hygiene
 
+- One task per session: `/clear` between PR reviews and between issues — never carry one PR's diff into the next review (see [Token economics](docs/contributing/ai-operating-model.md))
+- Mid-task context pressure: `/compact` once; if quality drifts after repeated compaction, write the state to a file and start fresh
 - Confirm `git branch --show-current` before committing docs
 - Do not land cross-cutting skill edits on an unrelated feature branch
 - After a push that fixes review comments, resolve every thread it fixed before you report done: check each against the pushed code, reply with the SHA when unclear, leave unfixed threads open (`git-workflow.md`)
