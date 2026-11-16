@@ -43,7 +43,7 @@ describe("2FA required for one user", () => {
         setRequired(true).its("body.required").should("eq", true);
 
         signInAsStandardUser();
-        cy.url({ timeout: 15000 }).should("not.include", "manage2fa");
+        cy.url({ timeout: 15000 }).should("not.include", "/account/2fa");
         cy.get("#two-fa-grace-banner", { timeout: 10000 }).should("exist");
     });
 
@@ -52,7 +52,7 @@ describe("2FA required for one user", () => {
         setRequired(true);
 
         signInAsStandardUser();
-        cy.url({ timeout: 15000 }).should("include", "manage2fa");
+        cy.url({ timeout: 15000 }).should("include", "/account/2fa");
     });
 
     it("stops asking once the requirement is removed", () => {
@@ -61,7 +61,7 @@ describe("2FA required for one user", () => {
         setRequired(false).its("body.required").should("eq", false);
 
         signInAsStandardUser();
-        cy.url({ timeout: 15000 }).should("not.include", "manage2fa");
+        cy.url({ timeout: 15000 }).should("not.include", "/account/2fa");
         cy.get("#two-fa-grace-banner").should("not.exist");
     });
 
