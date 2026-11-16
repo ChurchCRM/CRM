@@ -1,4 +1,4 @@
-name: "Security: CodeQL"
+name: "Security: CodeQL & Semgrep"
 
 on:
   push:

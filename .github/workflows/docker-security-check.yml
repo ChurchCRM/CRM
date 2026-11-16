@@ -1,4 +1,4 @@
-name: Validate Docker development boundaries
+name: "CI: validate Docker development boundaries"
 
 on:
   pull_request:

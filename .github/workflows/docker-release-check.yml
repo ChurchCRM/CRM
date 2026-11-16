@@ -1,4 +1,4 @@
-name: Validate production Docker images
+name: "CI: validate production Docker images"
 
 on:
   pull_request:
