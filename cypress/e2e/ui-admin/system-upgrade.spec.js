@@ -626,7 +626,7 @@ describe("System Upgrade Page", () => {
                 body: multiReleaseFixture,
             }).as("previewRequest");
 
-            cy.intercept("GET", "**/admin/api/upgrade/download-latest-release?version=5.0.2", {
+            cy.intercept("POST", "**/admin/api/upgrade/download-latest-release?version=5.0.2", {
                 statusCode: 200,
                 body: {
                     fileName: "ChurchCRM-5.0.2.zip",

@@ -67,7 +67,7 @@ require_once __DIR__ . '/Include/Header.php';
         <p class="lead"><?= gettext('Please confirm deletion of this Property Type') ?>: <strong><?= InputUtils::escapeHTML($prt_Name) ?></strong></p>
 
         <form method="post" action="PropertyTypeDelete.php">
-            <input type="hidden" name="PropertyTypeID" value="<?= $iPropertyTypeID ?>">
+            <input type="hidden" name="PropertyTypeID" value="<?= (int) $iPropertyTypeID ?>">
             <?= CSRFUtils::getTokenInputField() ?>
             <button type="submit" class="btn btn-danger"><?= gettext('Yes, delete') ?></button>
             <a href="PropertyTypeList.php" class="btn btn-secondary ms-2"><?= gettext('No, cancel this deletion') ?></a>

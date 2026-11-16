@@ -86,6 +86,11 @@ function ministryByName(name) {
         .then((resp) => resp.body.ministries.find((ministry) => ministry.name === name));
 }
 
+function removeAssignment(personId, opportunityId) {
+    const url = `/people/view/${personId}`;
+    cy.sessionCsrfToken(url).then((csrf_token) => cy.request({ method: "POST", url, form: true, body: { csrf_token, RemoveVO: opportunityId } }));
+}
+
 function cleanUp() {
     setVersion("both");
     cy.makePrivateAdminAPICall("GET", "/api/ministries/ministries", null, 200).then((resp) => {
@@ -103,7 +108,7 @@ function cleanUp() {
         }
         freshAdminLogin();
         [...Object.values(people), DECEASED_SALVADOR_BERRY].forEach((personId) =>
-            mine.forEach((opportunity) => cy.request(`/people/view/${personId}?RemoveVO=${opportunity.id}`)),
+            mine.forEach((opportunity) => removeAssignment(personId, opportunity.id)),
         );
         mine.forEach((opportunity) => cy.makePrivateAdminAPICall("DELETE", `${V1_API}/${opportunity.id}`, null, 200));
     });
