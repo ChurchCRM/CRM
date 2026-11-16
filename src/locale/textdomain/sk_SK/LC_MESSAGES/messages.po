@@ -27934,3 +27934,27 @@ msgstr "dvojfázové overenie systémového používateľa vypol správca"
 msgid "volunteer service history"
 msgstr "história dobrovoľníckej služby"
 
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d vklad je stále otvorený. Uzavrite ho, aby bol každý dar konečný skôr, než sa odošlú výkazy."
+msgstr[1] "%1$s: %2$d vklady sú stále otvorené. Uzavrite ich, aby bol každý dar konečný skôr, než sa odošlú výkazy."
+msgstr[2] "%1$s: %2$d vkladu je stále otvoreného. Uzavrite ho, aby bol každý dar konečný skôr, než sa odošlú výkazy."
+msgstr[3] "%1$s: %2$d vkladov je stále otvorených. Uzavrite ich, aby bol každý dar konečný skôr, než sa odošlú výkazy."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "Uložené %d číslo obálky."
+msgstr[1] "Uložené %d čísla obálok."
+msgstr[2] "Uloženého %d čísla obálky."
+msgstr[3] "Uložených %d čísel obálok."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d rodina"
+msgstr[1] "%d rodiny"
+msgstr[2] "%d rodiny"
+msgstr[3] "%d rodín"
+

@@ -6957,5 +6957,23 @@
   "system user turned off two-factor authentication": "systémový používateľ vypol dvojfázové overenie",
   "system user turned on two-factor authentication": "systémový používateľ zapol dvojfázové overenie",
   "system user two-factor authentication disabled by admin": "dvojfázové overenie systémového používateľa vypol správca",
-  "volunteer service history": "história dobrovoľníckej služby"
+  "volunteer service history": "história dobrovoľníckej služby",
+  "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out.": {
+    "one": "%1$s: %2$d vklad je stále otvorený. Uzavrite ho, aby bol každý dar konečný skôr, než sa odošlú výkazy.",
+    "few": "%1$s: %2$d vklady sú stále otvorené. Uzavrite ich, aby bol každý dar konečný skôr, než sa odošlú výkazy.",
+    "many": "%1$s: %2$d vkladu je stále otvoreného. Uzavrite ho, aby bol každý dar konečný skôr, než sa odošlú výkazy.",
+    "other": "%1$s: %2$d vkladov je stále otvorených. Uzavrite ich, aby bol každý dar konečný skôr, než sa odošlú výkazy."
+  },
+  "%d envelope number saved.": {
+    "one": "Uložené %d číslo obálky.",
+    "few": "Uložené %d čísla obálok.",
+    "many": "Uloženého %d čísla obálky.",
+    "other": "Uložených %d čísel obálok."
+  },
+  "%d family": {
+    "one": "%d rodina",
+    "few": "%d rodiny",
+    "many": "%d rodiny",
+    "other": "%d rodín"
+  }
 }
