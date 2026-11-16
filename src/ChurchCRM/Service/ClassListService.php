@@ -116,9 +116,6 @@ class ClassListService
 
     private static function address(Family $family): string
     {
-        $street = trim($family->getAddress1() . ' ' . $family->getAddress2());
-        $region = trim($family->getState() . ' ' . $family->getZip());
-
-        return implode(', ', array_filter([$street, (string) $family->getCity(), $region]));
+        return Family::formatAddressBlock($family->getPrimaryAddressParts(), ', ');
     }
 }
