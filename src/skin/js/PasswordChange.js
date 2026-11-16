@@ -10,13 +10,13 @@ $(document).ready(() => {
       }
     });
 
-    const resetPasswordInput = $("#setPasswordForm #password");
+  const resetPasswordInput = $("#setPasswordForm #password");
 
-    if (resetPasswordInput.length) {
-      resetPasswordInput.on("input", function () {
-        UpdatePasswordStrength(this.value);
-      });
-    }
+  if (resetPasswordInput.length) {
+    resetPasswordInput.on("input", function () {
+      UpdatePasswordStrength(this.value);
+    });
+  }
 });
 
 function PasswordMismatchText() {
