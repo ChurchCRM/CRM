@@ -27924,3 +27924,31 @@ msgstr "administraator keelas süsteemikasutaja kaheastmelise autentimise"
 msgid "volunteer service history"
 msgstr "vabatahtliku teenistuse ajalugu"
 
+#: 
+msgid "%s by %s"
+msgstr "%s %s poolt"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Kahefaktorilise autentimise muutmiseks sisestage oma parool või autentimisrakenduse kood."
+
+#: 
+msgid "Latest Notes"
+msgstr "Uusimad märkmed"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Märkmeid pole veel lisatud."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "QR-koodi saamiseks alustage registreerimist."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "See parool või kood ei ole õige. Kahefaktoriline autentimine on endiselt sisse lülitatud."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Kahefaktoriline autentimine on juba seadistatud. Selle saladus kuvatakse ainult registreerimise ajal."
+

@@ -27890,3 +27890,31 @@ msgstr "autentikasi dua faktor pengguna sistem dinonaktifkan oleh admin"
 msgid "volunteer service history"
 msgstr "riwayat pelayanan relawan"
 
+#: 
+msgid "%s by %s"
+msgstr "%s oleh %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Masukkan kata sandi Anda atau kode dari aplikasi autentikator Anda untuk mengubah autentikasi dua faktor."
+
+#: 
+msgid "Latest Notes"
+msgstr "Catatan Terbaru"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Belum ada catatan yang ditambahkan."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Mulai pendaftaran untuk mendapatkan kode QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Kata sandi atau kode itu tidak benar. Autentikasi dua faktor masih aktif."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Autentikasi dua faktor sudah disiapkan. Rahasianya hanya ditampilkan selama pendaftaran."
+

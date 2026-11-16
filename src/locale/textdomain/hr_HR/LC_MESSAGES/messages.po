@@ -27923,3 +27923,31 @@ msgstr "administrator je isključio dvofaktorsku autentifikaciju sistemskog kori
 msgid "volunteer service history"
 msgstr "povijest volonterske službe"
 
+#: 
+msgid "%s by %s"
+msgstr "%s od %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Unesite svoju lozinku ili kod iz autentifikacijske aplikacije da biste promijenili dvofaktorsku autentifikaciju."
+
+#: 
+msgid "Latest Notes"
+msgstr "Najnovije bilješke"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Još nisu dodane bilješke."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Započnite upis da biste dobili QR kod."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Ta lozinka ili kod nije točan. Dvofaktorska autentifikacija i dalje je uključena."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Dvofaktorska autentifikacija već je postavljena. Njezina se tajna prikazuje samo tijekom upisa."
+

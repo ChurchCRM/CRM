@@ -1,4 +1,4 @@
-name: "Marketing: check English captures"
+name: "CI: marketing capture check"
 
 # Daily follow-up to the 03:17 UTC nightly. Captures English only: the setup
 # videos and every English screenshot. It does not capture the other locales

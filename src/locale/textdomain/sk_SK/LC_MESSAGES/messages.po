@@ -27958,3 +27958,31 @@ msgstr[1] "%d rodiny"
 msgstr[2] "%d rodiny"
 msgstr[3] "%d rodín"
 
+#: 
+msgid "%s by %s"
+msgstr "%s od %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Zadajte svoje heslo alebo kód z autentifikačnej aplikácie, ak chcete zmeniť dvojfaktorovú autentifikáciu."
+
+#: 
+msgid "Latest Notes"
+msgstr "Najnovšie poznámky"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Zatiaľ neboli pridané žiadne poznámky."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Spustite registráciu a získajte QR kód."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Toto heslo alebo kód nie je správne. Dvojfaktorová autentifikácia je stále zapnutá."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Dvojfaktorová autentifikácia je už nastavená. Jej tajomstvo sa zobrazuje iba počas registrácie."
+

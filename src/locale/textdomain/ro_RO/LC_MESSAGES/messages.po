@@ -28017,3 +28017,31 @@ msgstr "autentificarea în doi pași a utilizatorului de sistem a fost dezactiva
 msgid "volunteer service history"
 msgstr "istoric de serviciu voluntar"
 
+#: 
+msgid "%s by %s"
+msgstr "%s de %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Introduceți parola sau un cod din aplicația de autentificare pentru a schimba autentificarea cu doi factori."
+
+#: 
+msgid "Latest Notes"
+msgstr "Cele mai recente note"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Nu au fost adăugate note încă."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Începeți înscrierea pentru a obține un cod QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Parola sau codul respectiv nu este corect. Autentificarea cu doi factori este încă activată."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Autentificarea cu doi factori este deja configurată. Secretul acesteia este afișat doar în timpul înscrierii."
+
