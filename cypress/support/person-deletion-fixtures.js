@@ -48,6 +48,16 @@ export const countVolunteerNotifications = (personId) =>
     query("SELECT COUNT(*) AS n FROM volunteer_notification_vntf WHERE vntf_per_ID = ?", [personId])
         .then((rows) => Number(rows[0].n));
 
+// The note KioskGuestService writes in the same transaction as a walk-in
+// guest's check-in: a system 'event' entry, authored by self-registration
+// (Person::SELF_REGISTER = -1). Mirrors the real row so the deletion guard
+// is tested against what the kiosk actually leaves behind.
+export const recordKioskGuestNote = (personId) =>
+    query(
+        "INSERT INTO note_nte (nte_per_ID, nte_fam_ID, nte_Private, nte_Text, nte_DateEntered, nte_EnteredBy, nte_Type) VALUES (?, 0, 0, ?, NOW(), -1, 'event')",
+        [personId, "Registered as a walk-in guest at the kiosk during event: deletion history test"],
+    );
+
 export const recordWhyCame = (personId) =>
     query("INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs) VALUES (?, 'joined', 'visited', 'recommended', 'friend')", [personId]);
 
