@@ -130,10 +130,13 @@ class Ethiopia extends AbstractProvider
             Holiday::TYPE_OFFICIAL
         ));
 
+        // The Ethiopian calendar adds a day in the Gregorian year before a leap year.
+        $enkutatash = checkdate(2, 29, $this->year + 1) ? 12 : 11;
+
         $this->addHoliday(new Holiday(
             'enkutatash',
             ['en' => "Enkutatash (Ethiopian New Year)"],
-            new DateTime("{$this->year}-09-11", $tz),
+            new DateTime(sprintf('%d-09-%02d', $this->year, $enkutatash), $tz),
             $this->locale,
             Holiday::TYPE_OFFICIAL
         ));
@@ -141,7 +144,7 @@ class Ethiopia extends AbstractProvider
         $this->addHoliday(new Holiday(
             'meskel',
             ['en' => "Meskel (Finding of the True Cross)"],
-            new DateTime("{$this->year}-09-27", $tz),
+            new DateTime(sprintf('%d-09-%02d', $this->year, $enkutatash + 16), $tz),
             $this->locale,
             Holiday::TYPE_OFFICIAL
         ));

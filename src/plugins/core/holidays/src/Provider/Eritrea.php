@@ -146,10 +146,13 @@ class Eritrea extends AbstractProvider
             Holiday::TYPE_OFFICIAL
         ));
 
+        // The Ethiopian calendar adds a day in the Gregorian year before a leap year.
+        $geezNewYear = checkdate(2, 29, $this->year + 1) ? 12 : 11;
+
         $this->addHoliday(new Holiday(
             'geezNewYear',
             ['en' => "Geez New Year (Kiddus Yohannes)"],
-            new DateTime("{$this->year}-09-11", $tz),
+            new DateTime(sprintf('%d-09-%02d', $this->year, $geezNewYear), $tz),
             $this->locale,
             Holiday::TYPE_OFFICIAL
         ));
@@ -157,7 +160,7 @@ class Eritrea extends AbstractProvider
         $this->addHoliday(new Holiday(
             'meskel',
             ['en' => "Meskel (Finding of the True Cross)"],
-            new DateTime("{$this->year}-09-27", $tz),
+            new DateTime(sprintf('%d-09-%02d', $this->year, $geezNewYear + 16), $tz),
             $this->locale,
             Holiday::TYPE_OFFICIAL
         ));
