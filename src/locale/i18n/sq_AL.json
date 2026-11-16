@@ -6897,5 +6897,17 @@
   "system user reset their password from an emailed link": "Përdoruesi i sistemit  rivendos fjalëkalimin e tij nga një lidhje e dërguar me email",
   "system user turned off two-factor authentication": "Përdoruesi i sistemit  çaktivizoi vërtetimin me dy faktorë",
   "system user turned on two-factor authentication": "Përdoruesi i sistemit  aktivizoi vërtetimin me dy faktorë",
-  "system user two-factor authentication disabled by admin": "Vërtetimi me dy faktorë i përdoruesit të sistemit është çaktivizuar nga administratori"
+  "system user two-factor authentication disabled by admin": "Vërtetimi me dy faktorë i përdoruesit të sistemit është çaktivizuar nga administratori",
+  "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate.": "Një familje me premtime ose pagesa nuk mund të fshihet. Çaktivizoni familjen në vend të kësaj për të ruajtur historikun financiar. Zhvendosni regjistrimet financiare vetëm nëse është e përshtatshme.",
+  "Deactivate the family instead": "Çaktivizo familjen në vend të kësaj",
+  "Deactivate the family instead of deleting it.": "Çaktivizoni familjen në vend që ta fshini.",
+  "Deactivate the person instead of deleting them.": "Çaktivizoni personin në vend që ta fshini.",
+  "Recorded history: %s.": "Historiku i regjistruar: %s.",
+  "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history.": "Kjo familje nuk mund të fshihet sepse ka shënime. Çaktivizoni familjen për të ruajtur historikun e saj.",
+  "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history.": "Ky person nuk mund të fshihet sepse ka aktivitete të regjistruara. Çaktivizoni personin për të ruajtur historikun e tij.",
+  "attendance": "pjesëmarrja",
+  "financial history": "historiku financiar",
+  "notes": "shënime",
+  "recorded activities": "aktivitete të regjistruara",
+  "volunteer service history": "historiku i shërbimit vullnetar"
 }

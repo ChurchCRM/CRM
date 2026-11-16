@@ -10,6 +10,10 @@ Feature Proposals and RFC Reviews Discussions: [`docs/decisions/0003-rfc-communi
 
 Read [the AI operating model](docs/contributing/ai-operating-model.md) for task owners, handoffs and approval boundaries.
 
+## Token economics
+
+Follow [Token economics](docs/contributing/ai-operating-model.md): lowest model tier that clears the bar, one task per session with a fresh session (`/clear`) between PR reviews and between issues, subagents only for isolation or real parallelism on the cheapest tier.
+
 ## Skills
 
 Index: [`.agents/skills/churchcrm/SKILL.md`](.agents/skills/churchcrm/SKILL.md).
