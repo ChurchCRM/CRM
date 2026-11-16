@@ -27887,3 +27887,31 @@ msgstr "관리자가 시스템 사용자의 2단계 인증을 비활성화했습
 msgid "volunteer service history"
 msgstr "봉사 활동 이력"
 
+#: 
+msgid "%s by %s"
+msgstr "%s, %s 작성"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "이중 인증을 변경하려면 비밀번호 또는 인증 앱의 코드를 입력하세요."
+
+#: 
+msgid "Latest Notes"
+msgstr "최신 메모"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "아직 추가된 메모가 없습니다."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "QR 코드를 받으려면 등록을 시작하세요."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "해당 비밀번호나 코드가 올바르지 않습니다. 이중 인증이 계속 켜져 있습니다."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "이중 인증이 이미 설정되어 있습니다. 비밀 키는 등록 중에만 표시됩니다."
+

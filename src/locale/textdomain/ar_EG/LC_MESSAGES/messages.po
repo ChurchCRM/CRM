@@ -28053,3 +28053,31 @@ msgstr "الأنشطة المسجَّلة"
 msgid "volunteer service history"
 msgstr "سجل الخدمة التطوعية"
 
+#: 
+msgid "%s by %s"
+msgstr "%s بواسطة %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "أدخل كلمة المرور أو رمزًا من تطبيق المصادقة لتغيير المصادقة الثنائية."
+
+#: 
+msgid "Latest Notes"
+msgstr "أحدث الملاحظات"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "لم تتم إضافة أي ملاحظات بعد."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "ابدأ التسجيل للحصول على رمز QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "كلمة المرور أو الرمز هذا غير صحيح. المصادقة الثنائية ما زالت مفعّلة."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "المصادقة الثنائية مفعّلة بالفعل. يظهر سرّها فقط أثناء التسجيل."
+

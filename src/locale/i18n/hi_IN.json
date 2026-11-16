@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "सिस्टम उपयोगकर्ता ने दो-चरणीय प्रमाणीकरण बंद किया",
   "system user turned on two-factor authentication": "सिस्टम उपयोगकर्ता ने दो-चरणीय प्रमाणीकरण चालू किया",
   "system user two-factor authentication disabled by admin": "सिस्टम उपयोगकर्ता का दो-चरणीय प्रमाणीकरण व्यवस्थापक द्वारा अक्षम किया गया",
-  "volunteer service history": "स्वयंसेवक सेवा का इतिहास"
+  "volunteer service history": "स्वयंसेवक सेवा का इतिहास",
+  "%s by %s": "%s द्वारा %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "टू-फैक्टर ऑथेंटिकेशन बदलने के लिए अपना पासवर्ड या अपने ऑथेंटिकेटर ऐप का कोड दर्ज करें।",
+  "Latest Notes": "नवीनतम नोट्स",
+  "No notes have been added yet.": "अभी तक कोई नोट नहीं जोड़ा गया है।",
+  "Start enrollment to get a QR code.": "QR कोड पाने के लिए नामांकन शुरू करें।",
+  "That password or code is not right. Two-factor authentication is still on.": "वह पासवर्ड या कोड सही नहीं है। टू-फैक्टर ऑथेंटिकेशन अभी भी चालू है।",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "टू-फैक्टर ऑथेंटिकेशन पहले से सेट है। इसका सीक्रेट केवल नामांकन के दौरान दिखाया जाता है।"
 }

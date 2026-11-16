@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "systembrukeren slo av tofaktorautentisering",
   "system user turned on two-factor authentication": "systembrukeren slo på tofaktorautentisering",
   "system user two-factor authentication disabled by admin": "tofaktorautentiseringen til systembrukeren ble slått av av administrator",
-  "volunteer service history": "historikk for frivillig tjeneste"
+  "volunteer service history": "historikk for frivillig tjeneste",
+  "%s by %s": "%s av %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Skriv inn passordet ditt eller en kode fra autentiseringsappen din for å endre totrinnsverifiseringen.",
+  "Latest Notes": "Nyeste notater",
+  "No notes have been added yet.": "Ingen notater er lagt til ennå.",
+  "Start enrollment to get a QR code.": "Start registreringen for å få en QR-kode.",
+  "That password or code is not right. Two-factor authentication is still on.": "Passordet eller koden er ikke riktig. Totrinnsverifisering er fortsatt på.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Totrinnsverifisering er allerede satt opp. Hemmeligheten vises bare under registreringen."
 }
