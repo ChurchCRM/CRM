@@ -302,6 +302,15 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
           </div>
         </div>
 
+        <!-- RFC feedback: icon only, count from /api/community-feedback -->
+        <div class="nav-item ms-1">
+          <a class="nav-link px-0 position-relative" href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/community-feedback') ?>"
+             title="<?= gettext('Review what we are considering') ?>">
+            <i class="fa-solid fa-comments"></i>
+            <span class="badge bg-primary position-absolute top-0 end-0 small d-none" id="communityFeedbackCount">0</span>
+          </a>
+        </div>
+
         <!-- Support -->
         <div class="nav-item dropdown ms-1">
           <a class="nav-link px-0" data-bs-toggle="dropdown" href="#" id="supportMenu">
@@ -321,6 +330,10 @@ $_currencySymbolCss = json_encode(CurrencyFormatter::symbol(), JSON_UNESCAPED_UN
             <a href="https://discord.gg/tuWyFzj3Nj" target="_blank" class="dropdown-item"
                title="<?= gettext('Discord Chat') ?>">
               <i class="fa-brands fa-discord me-2"></i><?= gettext('Discord Chat') ?>
+            </a>
+            <a href="<?= InputUtils::escapeAttribute(SystemURLs::getRootPath() . '/v2/community-feedback') ?>" class="dropdown-item"
+               title="<?= gettext('Review what we are considering') ?>">
+              <i class="fa-solid fa-comments me-2"></i><?= gettext('Review what we are considering') ?>
             </a>
             <div class="dropdown-divider"></div>
             <a href="<?= InputUtils::escapeAttribute(SystemURLs::attributed('https://docs.churchcrm.io/contributing', 'help_menu_contributing')) ?>" target="_blank" class="dropdown-item"

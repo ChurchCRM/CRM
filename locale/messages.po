@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-15 19:26+0000\n"
+"POT-Creation-Date: 2026-11-15 23:41+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1106,6 +1106,9 @@ msgstr ""
 msgid "Add a family member"
 msgstr ""
 
+msgid "Add a few more characters or a symbol."
+msgstr ""
+
 msgid "Add a passkey"
 msgstr ""
 
@@ -1164,6 +1167,12 @@ msgid "Add from Cart"
 msgstr ""
 
 msgid "Add its meetings first with New recurring event on the Calendar tab"
+msgstr ""
+
+msgid "Add more characters or mix in numbers and symbols."
+msgstr ""
+
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
 msgstr ""
 
 msgid "Add new roles, but not modify or rename the Student and the Teacher roles."
@@ -2917,6 +2926,9 @@ msgstr ""
 msgid "Cannot execute query."
 msgstr ""
 
+msgid "Cannot move field in that direction"
+msgstr ""
+
 msgid "Cannot move property in that direction"
 msgstr ""
 
@@ -4528,6 +4540,9 @@ msgid "Custom Person Fields Editor"
 msgstr ""
 
 msgid "Custom field columns you have not configured are ignored — nothing is created on the fly."
+msgstr ""
+
+msgid "Custom field not found"
 msgstr ""
 
 msgid "Custom fields and properties are supported"
@@ -6685,6 +6700,9 @@ msgstr ""
 msgid "Failed to delete class. Please try again."
 msgstr ""
 
+msgid "Failed to delete custom field"
+msgstr ""
+
 msgid "Failed to delete donation fund"
 msgstr ""
 
@@ -6830,6 +6848,9 @@ msgid "Failed to load recipients. Please try again."
 msgstr ""
 
 msgid "Failed to load recovery codes. Please refresh the page."
+msgstr ""
+
+msgid "Failed to move custom field"
 msgstr ""
 
 msgid "Failed to move donations."
@@ -6983,6 +7004,9 @@ msgid "Failed to upload letterhead"
 msgstr ""
 
 msgid "Failed to upload person photo"
+msgstr ""
+
+msgid "Fair"
 msgstr ""
 
 #. Context: countries
@@ -8042,6 +8066,9 @@ msgstr ""
 msgid "Going"
 msgstr ""
 
+msgid "Good"
+msgstr ""
+
 msgid "Goods and services"
 msgstr ""
 
@@ -8576,6 +8603,9 @@ msgstr ""
 msgid "How to Fix"
 msgstr ""
 
+msgid "How to respond"
+msgstr ""
+
 #. Context: locales
 msgid "Hungarian"
 msgstr ""
@@ -8610,6 +8640,9 @@ msgstr ""
 
 #. Context: countries
 msgid "Iceland (Ísland)"
+msgstr ""
+
+msgid "Ideas waiting for your review"
 msgstr ""
 
 msgid "Identify"
@@ -11119,6 +11152,9 @@ msgstr ""
 msgid "No Events Today"
 msgstr ""
 
+msgid "No GitHub account? Tell us on Discord"
+msgstr ""
+
 msgid "No Group"
 msgstr ""
 
@@ -12118,6 +12154,9 @@ msgstr ""
 msgid "One label for each couple."
 msgstr ""
 
+msgid "One minute. We do not share what you send."
+msgstr ""
+
 msgid "One occurrence is made for each calendar event whose Linked Group is this class."
 msgstr ""
 
@@ -12278,6 +12317,9 @@ msgid "Open a ministry from the Ministries menu, create a schedule and generate 
 msgstr ""
 
 msgid "Open a ministry to make someone its coordinator, or a leader of one of its teams."
+msgstr ""
+
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
 msgstr ""
 
 msgid "Open deposit"
@@ -12709,6 +12751,9 @@ msgid "Password reset not available.  Please contact your system administrator"
 msgstr ""
 
 msgid "Password status"
+msgstr ""
+
+msgid "Password strength"
 msgstr ""
 
 msgid "Password successfully changed for"
@@ -14406,6 +14451,9 @@ msgstr ""
 msgid "Review and clean up files not associated with any record"
 msgstr ""
 
+msgid "Review and vote"
+msgstr ""
+
 msgid "Review date"
 msgstr ""
 
@@ -14443,6 +14491,9 @@ msgid "Review the year, then download giving statements."
 msgstr ""
 
 msgid "Review this request"
+msgstr ""
+
+msgid "Review what we are considering"
 msgstr ""
 
 msgid "Role"
@@ -16068,6 +16119,9 @@ msgstr ""
 msgid "Street address is required."
 msgstr ""
 
+msgid "Strong"
+msgstr ""
+
 msgid "Stuck Events"
 msgstr ""
 
@@ -16957,6 +17011,9 @@ msgstr ""
 msgid "The list could not be loaded."
 msgstr ""
 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr ""
+
 msgid "The list of eligible volunteers could not be loaded"
 msgstr ""
 
@@ -17770,6 +17827,9 @@ msgid "This passkey is already on record."
 msgstr ""
 
 msgid "This passkey will no longer sign the person in. They can sign in by email and add a new one."
+msgstr ""
+
+msgid "This password looks strong."
 msgstr ""
 
 msgid "This permission cannot be given on the person page."
@@ -19213,6 +19273,9 @@ msgstr ""
 msgid "View all families on an interactive map"
 msgstr ""
 
+msgid "View all ideas"
+msgstr ""
+
 msgid "View all results"
 msgstr ""
 
@@ -19567,6 +19630,9 @@ msgid "We're so glad you're here! It takes about three minutes."
 msgstr ""
 
 msgid "We're so glad your family has joined us! Your registration has been received. Our team will be in touch soon to personally welcome you."
+msgstr ""
+
+msgid "Weak"
 msgstr ""
 
 msgid "Web Server"

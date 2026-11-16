@@ -59,6 +59,33 @@ class CentralServices
     public const NOTIFICATIONS_URL = 'https://raw.githubusercontent.com/ChurchCRM/CRM/External/notifications.json';
 
     /**
+     * Curated community-feedback topics shown on the "We Need Your Help" page.
+     *
+     * Maintainers curate this list by hand — installs never call the GitHub
+     * API. Updating this file on the External branch updates the ballot on
+     * every install at its next login, with no release required.
+     *
+     * JSON schema:
+     * {
+     *   "TTL": 300,
+     *   "items": [
+     *     {
+     *       "id":            "unique-never-reuse",
+     *       "title":         "...",
+     *       "summary":       "plain-language 1-2 sentences",
+     *       "category":      "Feature Proposal|RFC Review",
+     *       "discussionUrl": "https://github.com/ChurchCRM/CRM/discussions/<n>",
+     *       "expiresAt":     "YYYY-MM-DD or null"
+     *     }
+     *   ]
+     * }
+     *
+     * The 20-item cap is enforced by the consumer
+     * (CommunityFeedbackService), not by this file.
+     */
+    public const FEEDBACK_URL = 'https://raw.githubusercontent.com/ChurchCRM/CRM/External/feedback.json';
+
+    /**
      * Registry of community plugins approved for URL-based install.
      * Adding an entry requires a maintainer-reviewed PR — see approved-plugins.json schema.
      */
