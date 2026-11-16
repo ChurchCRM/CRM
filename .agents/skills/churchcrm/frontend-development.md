@@ -34,7 +34,13 @@ Name the role and the goal before you lay out a page ("treasurer finds the open 
 ## Must
 
 - Asset URLs: `SystemURLs::getRootPath()` — see any current view under `src/views/` or `src/admin/views/`
-- Notify: `window.CRM.notify()` + `i18next.t()`. Confirm with bootbox or a Bootstrap modal
+- Dialogs and messages go through three helpers in `webpack/common/confirm-action.ts` and `window.CRM.notify()`. Never call `alert()`, `confirm()`, `prompt()`, `bootbox.confirm()`, `bootbox.alert()` or `bootbox.prompt()` (`npm run lint` fails on them):
+  - Yes/no: `confirmAction(title, message, onConfirm, { tone: "danger" | "warning" | "primary", confirmLabel, cancelLabel, onCancel, className })`. In webpack import it; in page or PHP inline scripts use `window.CRM.confirmAction`. Run the action inside `onConfirm`; `onCancel` also runs on Escape and the close button. The 4th argument may be a boolean (`true` danger, `false` primary).
+  - One value: `promptAction(title, onSubmit, { message, value, inputType: "text" | "select" | "textarea" | "number", inputOptions, confirmLabel, cancelLabel })` (`window.CRM.promptAction`). `onSubmit` runs only on confirm.
+  - Short result or error: `window.CRM.notify(escapedMessage, { type: "danger" | "success" | "warning" | "info" })`; webpack modules import `notifySuccess`, `notifyError`, `notifyWarning` from `webpack/common/notify.ts` and do not define their own.
+  - A message that must stay until dismissed (credentials, long help): `alertAction(title, message, { onClose, className, backdrop })` (`window.CRM.alertAction`).
+  - Escape interpolated user data in the message and labels (`window.CRM.escapeHtml`).
+  - Multi-field forms and other rich flows use `bootbox.dialog()` or a Bootstrap modal. A confirm that cannot fit the wrapper is marked `// confirm-action-exempt: <why>` on the line above the call.
 - API from webpack: `webpack/api-utils.ts` (`buildAPIUrl`, `buildAdminAPIUrl`, `fetchAPIJSON`). Take the root path from those helpers
 - Admin jQuery pages: `window.CRM.AdminAPIRequest()`; path `'database/reset'` → `/admin/api/database/reset`
 - DataTables page length: merge `window.CRM.plugin.dataTable` last so the user preference wins (`src/Include/Header.php`)

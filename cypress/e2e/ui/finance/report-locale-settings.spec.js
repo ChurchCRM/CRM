@@ -2,7 +2,7 @@
 
 import { pdfText } from "../../../support/pdf-text";
 
-// Seed: family 20 (Black) has gifts in March 2018.
+// Seed: family 20 (Black) has gifts in March 2018; family 9 (Diaz) pledged for fiscal year 23 only.
 describe("Report PDFs print dates and money in the church's locale settings", () => {
     const settings = {
         sDateFormatLong: "d.m.Y",
@@ -39,6 +39,16 @@ describe("Report PDFs print dates and money in the church's locale settings", ()
                 expect(text).to.match(/\d,\d{2}\s?€/);
                 expect(text).not.to.include("$");
                 expect(text).to.match(/Generated \d{2} [A-Za-z]+ \d{4}/);
+            });
+    });
+
+    it("missing pledges prints amounts in the configured currency", () => {
+        cy.request({ url: "/finance/reports/missing-pledges/download", qs: { pledgedFY: 23, missingFY: 22 }, encoding: "binary" })
+            .then((response) => pdfText(response.body))
+            .then((lines) => {
+                const text = lines.join("\n");
+                expect(text).to.match(/344,00\s?€/);
+                expect(text).not.to.include("$");
             });
     });
 });

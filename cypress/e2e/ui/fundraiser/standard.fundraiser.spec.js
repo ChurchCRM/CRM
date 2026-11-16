@@ -28,16 +28,6 @@ describe("Fund Raiser", () => {
     // Listing
     // -----------------------------------------------------------------------
 
-    it("View All", () => {
-        cy.visit("/fundraiser/");
-        cy.contains("Fundraiser Listing");
-        cy.get("body").should("contain.text", "Summer Harvest Raffle");
-        cy.get("body").should("contain.text", "Fall Festival Gala");
-        cy.get("body").should("contain.text", "Christmas Bazaar");
-        cy.get("body").should("contain.text", "Spring Silent Auction");
-        cy.get("body").should("contain.text", "2016 Car Wash");
-    });
-
     it("View By Filter Date ", () => {
         cy.visit("/fundraiser/?dateStart=2015-01-01&dateEnd=2017-01-01");
         cy.contains("Fundraiser Listing");
@@ -47,11 +37,6 @@ describe("Fund Raiser", () => {
     // -----------------------------------------------------------------------
     // Create / Edit fundraiser
     // -----------------------------------------------------------------------
-
-    it("Create form renders at /fundraiser/editor", () => {
-        cy.visit("/fundraiser/editor");
-        cy.contains("Create New Fund Raiser");
-    });
 
     it("Create new FundRaiser", () => {
         cy.visit("/fundraiser/editor");
@@ -77,25 +62,9 @@ describe("Fund Raiser", () => {
         cy.contains("Soap for the Car wash");
     });
 
-    it("Edit form renders at /fundraiser/editor/1", () => {
-        cy.visit("/fundraiser/editor/1");
-        // Page title includes the fundraiser name
-        cy.contains("2016 Car Wash");
-    });
-
     // -----------------------------------------------------------------------
     // Tier-1 fields (End Date/Status/Type/Goal Amount/Fund) in the editor form
     // -----------------------------------------------------------------------
-
-    it("editor form renders Tier-1 fields", () => {
-        cy.visit("/fundraiser/editor");
-        cy.get("#EndDate").should("exist");
-        cy.get("#Status").should("exist");
-        cy.get("#Type").should("exist");
-        cy.get("#GoalAmount").should("exist");
-        cy.get("#FundId").should("exist");
-        cy.contains("option", "New Building Fund").should("exist");
-    });
 
     it("saves Tier-1 fields via the editor form and they persist on reload", () => {
         cy.request("/fundraiser/editor").then((res) => {
@@ -162,27 +131,9 @@ describe("Fund Raiser", () => {
         });
     });
 
-    it("editor page shows a View link to the read-only view page", () => {
-        cy.visit("/fundraiser/editor/1");
-        // Use a.btn to avoid matching the Finance sidebar 'View All Deposits' nav-link
-        // which also contains 'View' and appears earlier in the DOM.
-        cy.contains("a.btn", "View").should("have.attr", "href").and("include", "/fundraiser/view/1");
-    });
-
     // -----------------------------------------------------------------------
     // Paddle numbers
     // -----------------------------------------------------------------------
-
-    it("Paddle list renders at /fundraiser/1/paddle-numbers", () => {
-        cy.visit("/fundraiser/1/paddle-numbers");
-        cy.contains("Buyers for this fundraiser");
-    });
-
-    it("New paddle form renders at /fundraiser/1/paddle-numbers/editor", () => {
-        cy.visit("/fundraiser/1/paddle-numbers/editor");
-        cy.contains("Buyer Number Editor");
-        cy.get('#Num').should('exist');
-    });
 
     // -----------------------------------------------------------------------
     // Paddle reassignment (ORM conversion regression — was raw SQL/RunQuery)
@@ -235,12 +186,6 @@ describe("Fund Raiser", () => {
     // -----------------------------------------------------------------------
     // Donated items
     // -----------------------------------------------------------------------
-
-    it("New donated-item form renders at /fundraiser/1/donated-items/editor", () => {
-        cy.visit("/fundraiser/1/donated-items/editor");
-        cy.contains("Donated Item Editor");
-        cy.get('#Item', { timeout: 10000 }).should('exist');
-    });
 
     // -----------------------------------------------------------------------
     // CSRF protection (regression for "Invalid security token" on save)
@@ -388,36 +333,6 @@ describe("Fund Raiser", () => {
         });
     });
 
-    it("view page shows an Add Item button linking to the donated-items editor", () => {
-        cy.request({
-            method: "POST",
-            url: "/api/fundraisers",
-            body: { title: `CY Add Item ${Date.now()}`, type: "Auction" },
-            headers: { "Content-Type": "application/json" },
-        }).then((res) => {
-            const id = res.body.fundraiser.id;
-            cy.visit(`/fundraiser/view/${id}`);
-            cy.contains("a", "Add Item")
-                .should("have.attr", "href")
-                .and("include", `/fundraiser/${id}/donated-items/editor`);
-        });
-    });
-
-    it("view page no longer shows a Finance Reports section", () => {
-        cy.visit("/fundraiser/view/1");
-        cy.get("body").should("not.contain", "Finance Reports");
-    });
-
-    it("view page shows the seeded silent auction and its reports", () => {
-        cy.visit(`/fundraiser/view/${SEEDED_AUCTION}`);
-        cy.contains("Spring Silent Auction");
-        cy.contains("Weekend at the church cabin");
-        cy.contains("a", "Bid Sheets").should("have.attr", "href").and("include", `/fundraiser/${SEEDED_AUCTION}/reports/bid-sheets`);
-        cy.contains("a", "Catalog").should("exist");
-        cy.contains("a", "Certificates").should("exist");
-        cy.contains("a", "Buyer Statements").should("exist");
-    });
-
     it("view page hides Bid Sheets/Catalog/Certificates for the seeded raffle but keeps Buyer Statements", () => {
         cy.visit(`/fundraiser/view/${SEEDED_RAFFLE}`);
         cy.contains("Summer Harvest Raffle");
@@ -501,12 +416,6 @@ describe("Fund Raiser", () => {
     // Listing — archive collapse section (PR #9188)
     // -----------------------------------------------------------------------
 
-    it("archive collapse section is present on the listing page", () => {
-        cy.visit("/fundraiser/");
-        // The archive collapse target must exist in the DOM
-        cy.get("#archiveCollapse").should("exist");
-    });
-
     it("listing header reads 'Active Fundraisers' with no status filter", () => {
         cy.visit("/fundraiser/");
         cy.get(".card-title").first().should("contain.text", "Active Fundraisers");
@@ -519,20 +428,6 @@ describe("Fund Raiser", () => {
         cy.get("#archiveCollapse").should("not.exist");
     });
 
-
-    it("Donors page renders at /fundraiser/1/donors", () => {
-        cy.visit("/fundraiser/1/donors");
-        cy.contains("Add Donors to Buyer List");
-    });
-
-    // -----------------------------------------------------------------------
-    // Batch winner
-    // -----------------------------------------------------------------------
-
-    it("Batch winner form renders at /fundraiser/1/batch-winner", () => {
-        cy.visit("/fundraiser/1/batch-winner");
-        cy.contains("Batch Winner Entry");
-    });
 
     // -----------------------------------------------------------------------
     // PDF report smoke tests

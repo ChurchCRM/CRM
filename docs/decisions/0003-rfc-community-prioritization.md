@@ -4,6 +4,7 @@
 > Church users give feedback in two GitHub Discussions categories that maintainers fill: **Feature Proposals** (the church outcome, in plain language) and **RFC Reviews** (an invitation to review a technical design in its pull request). A reaction or comment shows demand. Maintainers approve designs and set the schedule. Issue readiness, sizing and PR gates stay in [RFC 0001](0001-issue-quality-and-contributor-readiness.md) and the [issue-readiness guide](../contributing/issue-readiness.md).
 
 **Status:** Accepted  
+**Audience:** Technical — maintainer only; no community discussion.
 **Date:** 2026-10-17  
 **Owner:** George Dawoud  
 **Index:** [#10550](https://github.com/ChurchCRM/CRM/issues/10550) lists each proposal and its status. Decisions live in the RFC.  

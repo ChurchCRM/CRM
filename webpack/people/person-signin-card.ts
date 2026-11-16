@@ -5,6 +5,7 @@
  * which posts to /api/person/{id}/sign-in/confirm-email. Each reloads the page.
  */
 
+import { confirmAction } from "../common/confirm-action";
 import { reloadSignInCard } from "./person-portal-access";
 
 interface ApiError {
@@ -116,18 +117,16 @@ function wireSignOutEverywhere(card: HTMLElement): void {
   };
 
   button.addEventListener("click", () => {
-    window.bootbox?.confirm({
-      title: t("Sign out everywhere"),
-      message: t(
+    confirmAction(
+      t("Sign out everywhere"),
+      t(
         "End every Member Portal session of this person and forget their remembered devices? Their passkeys stay, so they can sign in again.",
       ),
-      buttons: { confirm: { label: t("Sign out everywhere"), className: "btn-danger" } },
-      callback: (result: boolean) => {
-        if (result) {
-          void signOut();
-        }
+      () => {
+        void signOut();
       },
-    });
+      { confirmLabel: t("Sign out everywhere"), cancelLabel: t("Cancel") },
+    );
   });
 }
 
@@ -157,18 +156,16 @@ function wireConfirmEmail(card: HTMLElement): void {
   };
 
   button.addEventListener("click", () => {
-    window.bootbox?.confirm({
-      title: t("Confirm Email Address"),
-      message: t(
+    confirmAction(
+      t("Confirm Email Address"),
+      t(
         "Confirm this email only after checking, in person or by phone, that it is this person's own address. Once confirmed, it can be used to sign in to the Member Portal.",
       ),
-      buttons: { confirm: { label: t("Confirm Email Address"), className: "btn-primary" } },
-      callback: (result: boolean) => {
-        if (result) {
-          void confirmEmail();
-        }
+      () => {
+        void confirmEmail();
       },
-    });
+      { tone: "primary", confirmLabel: t("Confirm Email Address"), cancelLabel: t("Cancel") },
+    );
   });
 }
 

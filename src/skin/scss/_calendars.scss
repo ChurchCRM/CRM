@@ -38,3 +38,31 @@
     color: var(--tblr-body-color);
   }
 }
+
+// Forma's button classes outrank Tabler's .btn variants, so the toolbar colors come from Tabler tokens here and follow light and dark.
+.crm-fc-header-toolbar,
+.crm-fc-footer-toolbar {
+  .btn {
+    color: var(--tblr-body-color);
+    background: transparent;
+    border-color: transparent;
+
+    &:hover:not(:disabled):not(.btn-primary) {
+      background: var(--tblr-bg-surface-secondary);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+
+  .btn-outline-secondary {
+    border-color: var(--tblr-border-color);
+  }
+
+  .btn-primary {
+    color: var(--tblr-primary-fg);
+    background: var(--tblr-primary);
+    border-color: var(--tblr-primary);
+  }
+}

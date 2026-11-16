@@ -2,7 +2,6 @@
 
 use ChurchCRM\dto\ChurchMetaData;
 use ChurchCRM\dto\SystemURLs;
-use ChurchCRM\Service\ChurchLogoService;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\ChurchLogo;
 
@@ -11,6 +10,9 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 ?>
 
 <!-- Kiosk Status Container - shown when waiting for event or acceptance -->
+<div id="kioskChurchBrand" class="d-none"
+     data-church-name="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchName()) ?>"
+     data-church-logo="<?= InputUtils::escapeAttribute(ChurchMetaData::getChurchLogoPath()) ?>"></div>
 <div id="noEvent" class="kiosk-status-container">
   <!-- Content populated by JavaScript -->
 </div>
@@ -28,14 +30,10 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
     <div class="kiosk-header">
       <div class="d-flex justify-content-between align-items-start flex-wrap">
         <div>
-          <?php if (ChurchMetaData::getChurchName() !== '' || ChurchLogoService::hasCustomLogo()) : ?>
           <div class="kiosk-church d-flex align-items-center mb-1">
-            <?php if (ChurchLogoService::hasCustomLogo()) : ?>
-              <?= ChurchLogo::img(['class' => 'kiosk-church-logo']) ?>
-            <?php endif; ?>
-            <span class="kiosk-church-name"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName()) ?></span>
+            <?= ChurchLogo::img(['class' => 'kiosk-church-logo']) ?>
+            <span class="kiosk-church-name"><?= InputUtils::escapeHTML(ChurchMetaData::getChurchName() ?: 'ChurchCRM') ?></span>
           </div>
-          <?php endif; ?>
           <h1 id="eventTitle"></h1>
           <div class="kiosk-time-info">
             <i class="fa-solid fa-tablet-screen-button me-1"></i>

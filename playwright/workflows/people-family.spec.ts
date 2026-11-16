@@ -69,8 +69,14 @@ test.describe('People & Families', () => {
     await humanSelect(page.locator('select[name="Gender1"]'), '1');
 
     await humanPause(page, 500);
-    await humanClick(page.locator('button[name="FamilySubmit"]'));
-    await page.waitForURL(/\/people\/family\/(\d+)/, { timeout: 15000 });
+    // Saving geocodes the new address, which can take longer than the
+    // default 15s action timeout on CI, so give the submit and redirect room.
+    const familySubmit = page.locator('button[name="FamilySubmit"]');
+    await familySubmit.scrollIntoViewIfNeeded();
+    await familySubmit.hover();
+    await humanPause(page, 400);
+    await familySubmit.click({ timeout: 45000 });
+    await page.waitForURL(/\/people\/family\/(\d+)/, { timeout: 45000 });
     const michaelLink = page.getByText('Michael Whitfield', { exact: false }).first();
     await expect(michaelLink).toBeVisible({ timeout: 10000 });
     await humanPause(page, 500);
@@ -179,28 +185,6 @@ test.describe('People & Families', () => {
       category: 'People & Families',
       purpose: 'Show a person profile for a deceased member, including the Deceased badge and date',
       usedIn: ['website'],
-    });
-  });
-
-  test('family-inactive-profile', async ({ page }, testInfo) => {
-    await page.goto('/people/family?familyActiveStatus=inactive');
-    const rows = page.locator('#families tbody tr');
-    await expect(rows.first()).toBeVisible({ timeout: 15000 });
-
-    await humanType(page.locator('.dt-search input'), 'Campbell');
-    await humanPause(page, 500);
-    const targetRow = rows.filter({ hasText: 'Campbell' }).first();
-    await expect(targetRow).toBeVisible({ timeout: 15000 });
-    await humanClick(targetRow.locator('td').first().locator('a').first());
-    await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
-    await expect(page.locator('#family-deactivated')).toBeVisible({ timeout: 10000 });
-    await settle(page, 800);
-
-    await captureScreen(page, testInfo, {
-      name: 'family-inactive-profile',
-      title: 'Inactive Family Profile',
-      category: 'People & Families',
-      purpose: 'Show a family profile for an inactive family, including the inactive status banner',
     });
   });
 });

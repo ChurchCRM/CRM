@@ -1,3 +1,5 @@
+import { confirmAction } from "./common/confirm-action";
+
 /**
  * Event utility functions for ChurchCRM event management
  */
@@ -129,20 +131,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!msg) return;
     e.preventDefault();
     e.stopPropagation();
-    bootbox.confirm({
-      title: i18next.t("Confirm"),
-      message: msg,
-      buttons: {
-        cancel: { label: `<i class="fa-solid fa-xmark"></i> ${i18next.t("Cancel")}` },
-        confirm: { label: `<i class="fa-solid fa-check"></i> ${i18next.t("OK")}`, className: "btn-danger" },
+    confirmAction(
+      i18next.t("Confirm"),
+      msg,
+      () => {
+        $btn.data("bb-confirmed", true);
+        $btn.trigger("click");
       },
-      callback: (result) => {
-        if (result) {
-          $btn.data("bb-confirmed", true);
-          $btn.trigger("click");
-        }
+      {
+        confirmLabel: `<i class="fa-solid fa-check"></i> ${i18next.t("OK")}`,
+        cancelLabel: `<i class="fa-solid fa-xmark"></i> ${i18next.t("Cancel")}`,
       },
-    });
+    );
   });
 
   if (cfg.mode === "new") {

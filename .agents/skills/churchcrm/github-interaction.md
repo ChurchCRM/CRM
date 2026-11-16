@@ -34,7 +34,7 @@ rm -f src/logs/$(date +%Y-%m-%d)-*.log
 
 ## Create a PR
 
-- Push the branch once the latest user message approves it (`git-workflow.md` → Commit freely, push only on approval): `git push origin <branch>`
+- Push the branch under the task approval (`git-workflow.md` → Task approval covers commit and push): `git push origin <branch>`
 - Create the PR from the template:
 
 ```bash

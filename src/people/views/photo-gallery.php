@@ -34,7 +34,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
             <i class="fa-solid fa-users me-2"></i>
             <?= gettext('Photo Directory') ?>
         </h3>
-        <div class="card-options ms-auto">
+        <div class="card-options">
             <span class="badge bg-primary-lt text-primary fs-6 px-3 py-2">
                 <?= sprintf(ngettext('%d person', '%d people', $totalPeople), $totalPeople) ?>
             </span>

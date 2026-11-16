@@ -29,17 +29,8 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
         cy.contains(".dropdown-item", "Verify Info").click();
         cy.get("#confirm-verify").should("be.visible");
 
-        // Should show instruction text about emailing
-        cy.get(".modal-body").should("contain", "email");
-    });
-
-    it("should display URL button for verification", () => {
-        cy.get("#family-actions-dropdown").click();
-        cy.contains(".dropdown-item", "Verify Info").click();
-        cy.get("#confirm-verify").should("be.visible");
-
-        // URL button should always be present
-        cy.get("#verifyURL").should("be.visible").should("contain", "URL");
+        // Should explain that the email links to the member portal
+        cy.get("#confirm-verify .modal-body").should("contain", "member portal");
     });
 
     it("should display all verification action buttons", () => {
@@ -48,18 +39,22 @@ describe("Family Verification Modal (Admin/Staff View)", () => {
         cy.get("#confirm-verify").should("be.visible");
 
         // Check for verification action buttons
-        cy.get("#verifyURL").should("be.visible");
+        cy.get("#verifyURL").should("not.exist");
         cy.get("#verifyDownloadPDF").should("be.visible").should("contain", "PDF");
         cy.get("#verifyNow").should("be.visible").should("contain", "Verified");
     });
 
-    it("should display email PDF button when SMTP configured and emails present", () => {
+    it("should offer one email button, with no URL or PDF email, when SMTP is configured and emails are present", () => {
         cy.get("#family-actions-dropdown").click();
         cy.contains(".dropdown-item", "Verify Info").click();
         cy.get("#confirm-verify").should("be.visible");
 
         // Email buttons should be visible for families with emails
-        cy.get("#onlineVerify").should("be.visible").should("contain", "Online");
-        cy.get("#verifyEmailPDF").should("be.visible").should("contain", "Email");
+        cy.get("#onlineVerify").should("be.visible").should("contain", "Portal Link");
+        cy.get("#verifyEmailPDF").should("not.exist");
+    });
+
+    it("shows when the family was last verified, invited and signed in", () => {
+        cy.get("#family-verification-card").should("contain", "Last verified").and("contain", "Last invited").and("contain", "Last portal sign-in");
     });
 });

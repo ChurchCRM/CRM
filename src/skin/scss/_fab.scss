@@ -62,32 +62,8 @@
   }
 }
 
-// Opens the sidebar on mobile/tablet.
-.fab-menu-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border: none;
-  border-radius: 50%;
-  background-color: #6c757d;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.4);
-  font-size: 1.125rem;
-  cursor: pointer;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
-
-  &:hover {
-    background-color: #565e64;
-    box-shadow: 0 6px 20px rgba(108, 117, 125, 0.5);
-    transform: translateY(-2px);
-  }
-}
-
 @media (max-width: 767.98px) {
-  .fab-button,
-  .fab-menu-toggle {
+  .fab-button {
     width: 3.5rem;
     height: 3.5rem;
   }

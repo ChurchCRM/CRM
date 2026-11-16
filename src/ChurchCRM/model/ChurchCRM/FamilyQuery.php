@@ -3,6 +3,7 @@
 namespace ChurchCRM\model\ChurchCRM;
 
 use ChurchCRM\model\ChurchCRM\Base\FamilyQuery as BaseFamilyQuery;
+use Propel\Runtime\ActiveQuery\Criteria;
 
 /**
  * Skeleton subclass for performing query and update operations on the 'family_fam' table.
@@ -15,4 +16,8 @@ use ChurchCRM\model\ChurchCRM\Base\FamilyQuery as BaseFamilyQuery;
  */
 class FamilyQuery extends BaseFamilyQuery
 {
+    public function filterByActive(): self
+    {
+        return $this->filterByDateDeactivated(null, Criteria::ISNULL);
+    }
 }

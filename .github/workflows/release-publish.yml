@@ -343,7 +343,7 @@ jobs:
           VERSION: ${{ needs.publish.outputs.release_tag }}
           NEXT_VERSION: ${{ inputs.next_version }}
           MERGE: 'false'
-        run: ./scripts/release/notify-docs-release.sh
+        run: node scripts/release/notify-docs-release.js
 
   start_next:
     needs: publish

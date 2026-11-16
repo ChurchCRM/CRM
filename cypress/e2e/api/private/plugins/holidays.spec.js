@@ -214,6 +214,76 @@ describe("Holiday Calendar Plugin API", () => {
             });
         });
 
+        describe("in a church time zone west of New York", () => {
+            let savedTimeZone;
+
+            before(() => {
+                cy.getSystemConfig("sTimeZone").then((zone) => {
+                    savedTimeZone = zone;
+                });
+                cy.setSystemConfig("sTimeZone", "America/Chicago");
+            });
+
+            after(() => {
+                cy.restoreSystemConfig("sTimeZone", savedTimeZone);
+            });
+
+            it("shows each holiday on its own date", () => {
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    `/api/systemcalendars/${usaCalendarId}/fullcalendar?start=2026-11-01&end=2026-12-01`,
+                ).then((resp) => {
+                    expect(resp.status).to.eq(200);
+                    const starts = Object.fromEntries(resp.body.map((event) => [event.title, event.start]));
+                    expect(starts).to.have.property("Veterans Day", "2026-11-11");
+                    expect(starts).to.have.property("Thanksgiving Day", "2026-11-26");
+                });
+            });
+
+            it("includes a holiday that falls on the first day of the range", () => {
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    `/api/systemcalendars/${usaCalendarId}/fullcalendar?start=2026-11-26&end=2026-11-27`,
+                ).then((resp) => {
+                    expect(resp.status).to.eq(200);
+                    expect(resp.body.map((event) => event.title)).to.deep.eq(["Thanksgiving Day"]);
+                });
+            });
+        });
+
+        describe("in German", () => {
+            const decemberUrl = () => `/api/systemcalendars/${usaCalendarId}/fullcalendar?start=2026-12-01&end=2027-01-01`;
+            // The request's language comes from the admin's own ui.locale setting.
+            const localeUrl = "/api/user/1/setting/ui.locale";
+            let savedLocale;
+            let englishChristmas;
+
+            before(() => {
+                cy.makePrivateAdminAPICall("GET", decemberUrl()).then((resp) => {
+                    englishChristmas = resp.body.find((event) => event.title === "Christmas");
+                    expect(englishChristmas, "English Christmas event").to.exist;
+                });
+                cy.makePrivateAdminAPICall("GET", localeUrl).then((resp) => {
+                    savedLocale = resp.body.value;
+                });
+                cy.makePrivateAdminAPICall("POST", localeUrl, { value: "de_DE" });
+            });
+
+            after(() => {
+                cy.makePrivateAdminAPICall("POST", localeUrl, { value: savedLocale || "en_US" });
+            });
+
+            it("titles holidays in German with the same ID and date", () => {
+                cy.makePrivateAdminAPICall("GET", decemberUrl()).then((resp) => {
+                    expect(resp.status).to.eq(200);
+                    const christmas = resp.body.find((event) => event.id === englishChristmas.id);
+                    expect(christmas, "Christmas keeps its ID").to.exist;
+                    expect(christmas.title).to.eq("1. Weihnachtsfeiertag");
+                    expect(christmas.start).to.eq(englishChristmas.start);
+                });
+            });
+        });
+
         it("marks all events as non-editable", () => {
             cy.makePrivateAdminAPICall(
                 "GET",
@@ -306,4 +376,68 @@ describe("Holiday Calendar Plugin API", () => {
             });
         });
     });
+
+    // -------------------------------------------------------------------------
+    // African country holiday calendars
+    // -------------------------------------------------------------------------
+    describe("African country holiday calendars", () => {
+        const testAfricanCountries = [
+            "Nigeria",
+            "Kenya",
+            "Egypt",
+            "Ghana",
+            "SouthAfrica",
+            "Ethiopia",
+            "Tanzania",
+            "Senegal",
+            "Morocco",
+            "Uganda",
+            "Rwanda",
+        ];
+
+        before(() => {
+            cy.makePrivateAdminAPICall("POST", "/plugins/api/plugins/holidays/enable");
+        });
+
+        it("configures multiple African countries and registers distinct system calendars", () => {
+            cy.makePrivateAdminAPICall("POST", "/plugins/api/plugins/holidays/settings", {
+                settings: { countries: testAfricanCountries.join(","), categories: "official" },
+            }).then((resp) => {
+                expect(resp.status).to.eq(200);
+                expect(resp.body).to.have.property("success", true);
+            });
+
+            cy.makePrivateAdminAPICall("GET", "/api/systemcalendars").then((resp) => {
+                expect(resp.status).to.eq(200);
+                const holidayCalendars = resp.body.Calendars.filter((c) =>
+                    c.Name.toLowerCase().includes("holidays"),
+                );
+                expect(holidayCalendars.length).to.be.at.least(testAfricanCountries.length);
+            });
+        });
+
+        it("loads FullCalendar events for an African custom provider without error", () => {
+            cy.makePrivateAdminAPICall("POST", "/plugins/api/plugins/holidays/settings", {
+                settings: { countries: "Nigeria", categories: "official" },
+            });
+
+            cy.makePrivateAdminAPICall("GET", "/api/systemcalendars").then((resp) => {
+                const cal = resp.body.Calendars.find((c) => c.Name.includes("Nigeria"));
+                expect(cal, "Nigeria holiday calendar should be registered").to.exist;
+
+                cy.makePrivateAdminAPICall(
+                    "GET",
+                    `/api/systemcalendars/${cal.Id}/fullcalendar?start=2025-01-01&end=2026-01-01`,
+                ).then((fcResp) => {
+                    expect(fcResp.status).to.eq(200);
+                    expect(fcResp.body).to.be.an("array").and.have.length.greaterThan(0);
+                    const event = fcResp.body[0];
+                    expect(event).to.have.property("title");
+                    expect(event).to.have.property("start");
+                    expect(event.extendedProps).to.have.property("calendarName").and.include("Nigeria");
+                });
+            });
+        });
+    });
 });
+

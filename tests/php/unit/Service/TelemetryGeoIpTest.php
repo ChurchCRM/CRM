@@ -11,11 +11,12 @@ use Monolog\LogRecord;
 use Tester\Assert;
 
 require dirname(__DIR__, 2) . '/bootstrap.php';
+(new \ReflectionProperty(\ChurchCRM\Service\TelemetryService::class, 'logDedupeDirectory'))->setValue(null, sys_get_temp_dir() . '/crm-telemetry-test-' . bin2hex(random_bytes(6)));
 
 // Inspect serialized requests without opening a network connection.
 function curl_init(string $url): object
 {
-    Assert::same(TelemetryService::POSTHOG_CAPTURE_ENDPOINT, $url);
+    Assert::same(TelemetryService::POSTHOG_CAPTURE_ENDPOINT . '?ip=0', $url);
     return new \stdClass();
 }
 
@@ -59,19 +60,18 @@ $configs->setValue(null, [
     'sTelemetryLevel' => $value('none'),
     'sSystemID' => $value('install-id'),
 ]);
-TelemetryService::captureInstallFailure('RuntimeException');
+TelemetryService::captureInstallFailure('schema_import_failed');
 TelemetryService::captureUpgradeFailure('7.8.3', 'RuntimeException');
 TelemetryService::captureUpgradeSqlError('7.8.3', 10, 'Database error');
 TelemetryService::captureUpgradeInterruption('7.8.3', 10);
 
 $payloads = $GLOBALS['telemetryPayloads'];
-Assert::same(['page_view', 'log_error', 'install_observed', 'upgrade_completed', 'upgrade_sql_completed', 'upgrade_sql_failed', 'install_failed', 'upgrade_failed', 'upgrade_sql_failed', 'upgrade_script_interrupted'], array_column($payloads, 'event'));
+Assert::same(['page_view', 'log_error', 'install_observed', 'upgrade_completed', 'upgrade_sql_completed', 'upgrade_sql_failed', 'install_failed', 'upgrade_failed', 'upgrade_failed', 'upgrade_failed'], array_column($payloads, 'event'));
 foreach ($payloads as $payload) {
     Assert::true($payload['properties']['$geoip_disable']);
     Assert::false(array_key_exists('$ip', $payload['properties']));
     Assert::same(TelemetryService::POSTHOG_KEY, $payload['api_key']);
 }
-foreach (array_slice($payloads, 6) as $payload) {
-    Assert::false($payload['properties']['$process_person_profile']);
-    Assert::same('churchcrm-aggregate-failures', $payload['distinct_id']);
+foreach ($payloads as $payload) {
+    Assert::match($payload['event'] === 'install_failed' ? 'install-%h%' : 'install-id', $payload['distinct_id']);
 }

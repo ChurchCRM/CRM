@@ -6,7 +6,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Calendar;
 use ChurchCRM\model\ChurchCRM\User;
-use ChurchCRM\Volunteer\Service\VolunteerAuthorizationService;
+use ChurchCRM\Volunteer\Service\VolunteerCalendarService;
 use ChurchCRM\Slim\Middleware\BrowserRequestTrait;
 use ChurchCRM\Utils\LoggerUtils;
 use Laminas\Diactoros\Response;
@@ -20,11 +20,7 @@ use Psr\Http\Server\RequestHandlerInterface;
  *
  * `AddEventsRoleAuthMiddleware` answers a global question and is the right gate for
  * creating a calendar, which belongs to nobody yet. Administering an EXISTING calendar is
- * a per-row question once ministries own calendars, and this middleware is the answer:
- *
- *     allowed = canManageEvents()                                   // the global right, unchanged
- *            || (rollout on && calendar.ministry_id !== null
- *                           && canManageMinistry(user, calendar.ministry_id))
+ * a per-row question once ministries own calendars: `VolunteerCalendarService::mayAdminister()`.
  *
  * Pinning is a wider question (`VolunteerCalendarService::mayPin()`, D25): a church calendar
  * an administrator opened to a ministry takes that ministry's events, yet only the ministry's
@@ -81,20 +77,11 @@ class CalendarWriteRoleAuthMiddleware implements MiddlewareInterface
 
     private function mayWrite(User $user, ?Calendar $calendar): bool
     {
-        if ($user->canManageEvents()) {
-            return true;
+        if ($calendar === null) {
+            return $user->canManageEvents();
         }
 
-        if ($calendar === null || !User::isVolunteerV2Enabled()) {
-            return false;
-        }
-
-        $ministryId = $calendar->getMinistryId();
-        if ($ministryId === null) {
-            return false;
-        }
-
-        return (new VolunteerAuthorizationService())->canManageMinistry($user, (int) $ministryId);
+        return (new VolunteerCalendarService())->mayAdminister($user, $calendar);
     }
 
     private function refuse(Request $request, string $message, int $status, string $role): ResponseInterface

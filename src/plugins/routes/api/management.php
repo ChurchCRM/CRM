@@ -461,7 +461,7 @@ $group->get('/approved', function (Request $request, Response $response) use ($w
     } catch (\Throwable $e) {
         return SlimUtils::renderErrorJSON(
             $response,
-            gettext('Failed to load approved plugin list'),
+            gettext('Failed to load approved plugin list.'),
             [],
             500,
             $e,

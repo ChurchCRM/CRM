@@ -23,7 +23,7 @@ Reference: `src/admin/routes/people.php`, `src/admin/views/people.php`.
 
 1. Route in `src/admin/routes/<area>.php`, required from `src/admin/index.php`. That app already applies `AdminRoleAuthMiddleware`; add none per route.
 2. Sections are arrays of `ConfigItem` keys. Build them with `SystemConfig::getSettingsConfig()` so label, tooltip and choices come from the `ConfigItem`.
-3. One `new window.CRM.SettingsPanel().init({ ..., autoSave: true, showAllSettingsLink: false })` per section. Auto-save posts one field to `POST /admin/api/system/config/{key}`; no Save button.
+3. One `new window.CRM.SettingsPanel().init({ ..., autoSave: true, showAllSettingsLink: false })` per section. Auto-save posts one field to `POST /admin/api/system/config/{key}`; no Save button. Keep `autoSave` off only when the fields are one batch: several values apply together and the page reloads or redraws from the whole set (ministry timing, statement wording), or the form is a credential set (Email SMTP). Map zoom is one field, so it auto-saves.
 4. Panel types: `boolean`, `text`, `number`, `choice`, `textarea`, `persons` (stores comma-separated person IDs, picked by name; pass `selected: [{id, text}]` from the route).
 5. Top of the hub: cards linking to the area's list and editor pages.
 6. Every area admin page gets a header button back to the hub (`PageHeader::peopleSettingsButton()` is the pattern; add a sibling per area) and a breadcrumb through it.
@@ -50,4 +50,4 @@ No reporting app. A report lives in the module that owns its data and permission
 - Specs: hub renders and saves, admin-only, the key absent from `/SystemSettings.php`, any new endpoint has happy and error cases.
 - Tablet and mobile pass stated in the PR body.
 - PR body links the issue, lists new msgids with the reason, and notes follow-ups.
-- Playwright capture issue and docs issue opened after push (`CLAUDE.md` → Session hygiene).
+- Docs issue opened after push (`CLAUDE.md` → Session hygiene). A settings page earns no Playwright capture.

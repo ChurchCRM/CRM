@@ -38,6 +38,7 @@
  * (U5/E-7).
  */
 
+import { confirmAction } from "../common/confirm-action";
 import { attachToModal } from "../common/person-select";
 import {
   errorMessage,
@@ -232,30 +233,19 @@ function saveCoordinator(personId: number, personName: string): void {
     });
 }
 
-/** Revoking authority is destructive, so it goes behind a bootbox confirm (U3). */
+/** Revoking authority is destructive, so it goes behind a confirmation (U3). */
 function confirmRemove(target: HTMLElement): void {
   const scopeId = Number(target.dataset.scopeId);
   const personName = target.dataset.scopePerson ?? "";
   const targetName = target.dataset.scopeTarget ?? "";
 
-  window.bootbox?.confirm({
-    title: i18next.t("Remove coordinator"),
-    message: i18next.t(
-      "Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched.",
-      {
-        name: personName,
-        ministry: targetName,
-      },
-    ),
-    buttons: {
-      confirm: { label: i18next.t("Yes"), className: "btn-danger" },
-      cancel: { label: i18next.t("No"), className: "btn-default" },
-    },
-    callback: (result: boolean) => {
-      if (!result) {
-        return;
-      }
-
+  confirmAction(
+    i18next.t("Remove coordinator"),
+    i18next.t("Stop {{name}} coordinating {{ministry}}? Their login and their own assignments are untouched.", {
+      name: personName,
+      ministry: targetName,
+    }),
+    () => {
       revokeScope(scopeId)
         .then(() => {
           notifySuccess(i18next.t("Coordinator removed"));
@@ -267,7 +257,7 @@ function confirmRemove(target: HTMLElement): void {
           notifyError(errorMessage(error, i18next.t("The grant could not be removed")));
         });
     },
-  });
+  );
 }
 
 // ─── Wiring ──────────────────────────────────────────────────────────────────

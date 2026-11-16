@@ -37,7 +37,7 @@ Never present a queue item to the maintainer with an unverified caveat. If the e
 
 One approval from the maintainer covers the whole bundle for a ticket (reopen + labels + comment + type). Execute through the sandbox/write path the maintainer has approved; verify the live state after, because a timed-out write may still have landed.
 
-- **ABSENT, maintainer says reopen**: reopen, strip `Stale` and `needs-manual-review`, post a status comment with the verified evidence and the bounded scope, and set the issue type (Bug / Feature / Task / Question / Epic). Add `good first issue` when the fix is simple and bounded. Set the target-release milestone when it needs addressing ASAP — breakage a church hits in normal use (errors, wrong data, blocked workflow).
+- **ABSENT, maintainer says reopen**: reopen, strip `Stale` and `needs-manual-review`, post a status comment with the verified evidence and the bounded scope, and set the issue type (Bug / Feature / Task / Question / Epic). Add `good first issue` when the fix is simple and bounded and the issue passes the readiness checks for the label (one task, spec'd enough to start cold — see `docs/contributing/issue-readiness.md`). Set the target-release milestone when it needs addressing ASAP — breakage a church hits in normal use (errors, wrong data, blocked workflow).
 - **PRESENT, outside reporter**: run the retest flow — reopen, strip both labels, set the type, and comment naming what shipped and in which version (or that the fix is on master for the next release), asking the reporter to retest on the latest version and confirm; then close as completed. The comment promises a reopen if it still happens.
 - **PRESENT, internal reporter** (maintainers and the project's own reporting accounts): silent cleanup only — strip both labels, set the type, no comment, issue stays closed.
 - **KEEP-CLOSED**: strip both labels and set the type. No comment unless a pointer helps (a fold or a covering issue worth linking).
@@ -48,6 +48,7 @@ One approval from the maintainer covers the whole bundle for a ticket (reopen + 
 ## Hygiene
 
 - Decided means labels off: any issue with a disposition loses `Stale` and `needs-manual-review`. Only genuinely undecided items keep them — the labels are the marker of work still owed.
+- Never let any disposition land label-less: reopen, fold, keep-closed, and covered dispositions all leave at least one area label on the issue. Many pool issues carry only the stale markers, so the carried-forward set can be empty — when it has no area label ("Feature: …", Security, Documentation, Installation / Upgrade; "enhancement" and "good first issue" don't count), add the correct one in the same write.
 - Set the issue type on every issue you touch.
 - On every closure as completed, judge whether the user docs cover the behavior. Not every change needs a docs update. When coverage is missing, file the docs issue in ChurchCRM/docs.churchcrm.io — never in this repo — and link it from the closed issue.
 - Record every decision with its evidence in the triage decision log, so the next reader does not re-derive it.

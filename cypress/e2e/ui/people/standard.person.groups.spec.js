@@ -96,7 +96,7 @@ describe("Person Group Interactions", () => {
             cy.get(".bootbox").should("contain", "remove");
 
             // Cancel the removal
-            cy.get(".bootbox .btn-ghost-secondary").click();
+            cy.get(".bootbox-cancel").click();
         });
     });
 

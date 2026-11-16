@@ -1,3 +1,4 @@
+import { confirmAction } from "../../common/confirm-action";
 /**
  * The Schedules table, its Add / Edit dialog (with the staffing-needs editor) and
  * the Generate occurrences action (#9708's API, surfaced by #9711, design §5.4).
@@ -76,7 +77,6 @@ import { offsetSummary, readOffsets, renderOffsetFields, writeOffsets } from "./
 import {
   actionMenu,
   byId,
-  confirmDelete,
   destroyDataTable,
   escapeAttribute,
   escapeHtml,
@@ -1310,7 +1310,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
         if (activate) {
           run();
         } else {
-          confirmDelete(
+          confirmAction(
             i18next.t("Deactivate schedule"),
             i18next.t(
               "Deactivate {{name}}? No new occurrences are made for it, by Generate or the daily top-up. Its existing occurrences and assignments stay, and it can be reactivated.",
@@ -1333,7 +1333,7 @@ export function createSchedulesTable(options: SchedulesTableOptions): SchedulesT
       }
 
       const scheduleId = Number(target.dataset.scheduleId);
-      confirmDelete(
+      confirmAction(
         i18next.t("Delete schedule"),
         i18next.t("Delete {{name}}? This cannot be undone.", { name: target.dataset.scheduleName ?? "" }),
         () => {

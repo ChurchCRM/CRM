@@ -1,3 +1,5 @@
+import { confirmAction } from "./common/confirm-action";
+
 /**
  * Finance: Deposit Search
  *
@@ -126,19 +128,12 @@
       var ids = getSelectedIds();
       if (!ids.length) return;
 
-      bootbox.confirm({
-        title: i18next.t("Confirm Delete"),
-        message:
-          `<p>${i18next.t("Are you sure you want to delete the selected")} ${ids.length} ${i18next.t("Deposit(s)")}?</p>` +
+      confirmAction(
+        i18next.t("Confirm Delete"),
+        `<p>${i18next.t("Are you sure you want to delete the selected")} ${ids.length} ${i18next.t("Deposit(s)")}?</p>` +
           `<p>${i18next.t("This will also delete all payments associated with this deposit")}</p>` +
           `<p class="text-danger fw-bold">${i18next.t("This action CANNOT be undone, and may have legal implications!")}</p>`,
-        buttons: {
-          cancel: { label: i18next.t("Close"), className: "btn-secondary" },
-          confirm: { label: i18next.t("Delete"), className: "btn-danger" },
-        },
-        callback: (result) => {
-          if (!result) return;
-
+        () => {
           var deletePromises = ids.map((id) =>
             window.CRM.APIRequest({
               method: "DELETE",
@@ -151,7 +146,8 @@
             window.location.reload();
           });
         },
-      });
+        { confirmLabel: i18next.t("Delete"), cancelLabel: i18next.t("Close") },
+      );
     });
   }
 
@@ -237,19 +233,14 @@
       };
 
       if (!newDeposit.depositComment.trim()) {
-        bootbox.confirm({
-          title: i18next.t("Add New Deposit"),
-          message: i18next.t("You are about to add a new deposit without a comment"),
-          buttons: {
-            cancel: { label: i18next.t("Cancel") },
-            confirm: { label: i18next.t("Confirm") },
+        confirmAction(
+          i18next.t("Add New Deposit"),
+          i18next.t("You are about to add a new deposit without a comment"),
+          () => {
+            createDepositRequest(newDeposit);
           },
-          callback: (confirmed) => {
-            if (confirmed) {
-              createDepositRequest(newDeposit);
-            }
-          },
-        });
+          { confirmLabel: i18next.t("Confirm"), cancelLabel: i18next.t("Cancel") },
+        );
       } else {
         createDepositRequest(newDeposit);
       }

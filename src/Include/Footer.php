@@ -43,12 +43,6 @@ $rootPath = InputUtils::escapeAttribute(SystemURLs::getRootPath());
       </div>
     </a>
     <?php endif; ?>
-    <button class="fab-menu-toggle d-xl-none" id="fab-menu-toggle" type="button"
-            data-bs-toggle="collapse" data-bs-target="#sidebar-menu"
-            aria-controls="sidebar-menu" aria-expanded="false"
-            aria-label="<?= InputUtils::escapeAttribute(gettext('Toggle navigation')) ?>">
-      <i class="fa-solid fa-bars"></i>
-    </button>
   </div>
 
 </div><!-- /.page -->
@@ -58,6 +52,8 @@ $rootPath = InputUtils::escapeAttribute(SystemURLs::getRootPath());
      data-message="<?= InputUtils::escapeAttribute((string) $sGlobalMessage) ?>"
      data-type="<?= InputUtils::escapeAttribute((string) ($sGlobalMessageClass ?? 'info')) ?>"></div>
 <?php } ?>
+
+<?php require __DIR__ . '/partials/toast-container.php'; ?>
 
 <?= PluginManager::getPluginFooterContent() ?>
 </body>

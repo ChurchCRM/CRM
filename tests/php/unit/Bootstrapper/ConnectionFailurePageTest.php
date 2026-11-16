@@ -19,6 +19,8 @@ $page = (string) shell_exec(sprintf(
     escapeshellarg($script)
 ));
 
-Assert::contains('Database Connection Failure', $page);
+Assert::contains('Database Connection Failed', $page);
+Assert::contains('card-status-top bg-danger', $page, 'the page uses the shared error layout');
+Assert::notContains('127.0.0.1', substr($page, (int) strpos($page, 'issues/new')), 'the public issue link names no server');
 Assert::contains('as <strong>&lt;b&gt;admin&lt;/b&gt;</strong>', $page, 'the database user is shown as text');
 Assert::notContains('<b>admin</b>', $page, 'markup from the settings is never written into the page');

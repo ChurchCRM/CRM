@@ -15,6 +15,7 @@ export const COVERAGE = {
     "src/admin/index.php": { rows: ["admin-app"] },
     "src/admin/routes/api/import.php": APP_GATE,
     "src/admin/routes/api/system/system-config.php": APP_GATE,
+    "src/admin/routes/api/system/tax-signature.php": APP_GATE,
     "src/admin/routes/api/user-admin.php": APP_GATE,
     "src/admin/routes/import.php": APP_GATE,
 
@@ -45,8 +46,8 @@ export const COVERAGE = {
             "people-properties-family-api",
         ],
     },
-    "src/api/routes/people/people-families.php": { rows: ["families-self-verify-api", "families-pending-self-verify-api", "families-verify-email-preview-api"] },
-    "src/api/routes/people/people-family.php": { rows: ["family-photo-upload-api", "family-photo-delete-api", "family-verify-api", "family-verify-url-api", "family-verify-now-api", "family-activate-api", "family-approve-review-api", "family-geocode-api", "family-delete-api"] },
+    "src/api/routes/people/people-families.php": { rows: ["families-self-verify-api", "families-verify-email-preview-api"] },
+    "src/api/routes/people/people-family.php": { rows: ["family-photo-upload-api", "family-photo-delete-api", "family-verify-api", "family-verify-now-api", "family-activate-api", "family-approve-review-api", "family-geocode-api", "family-delete-api"] },
     "src/api/routes/people/people-groups.php": RECORD_ROUTES,
     "src/api/routes/people/people-person.php": { rows: ["person-photo-upload-api", "person-activate-api", "person-role-api", "person-approve-review-api", "person-add-to-cart-api", "person-photo-delete-api", "person-delete-api"] },
     "src/api/routes/people/people-sign-in-email.php": { rows: ["sign-in-email-api"] },

@@ -4,6 +4,7 @@
 const LETTERHEAD_PNG_BASE64 =
     "iVBORw0KGgoAAAANSUhEUgAAAHgAAAAoCAIAAAC6iKlyAAAAUklEQVR42u3QQQ0AAAgEoOtjJhsZ2hbOBxsJSPVwIApEi0a0aNEWRItGtGjRFkSLRrRo0YgWjWjRohEtGtGiRSNaNKJFi0a0aESLFo1o0Yj+ZwGy/zgts+HrHQAAAABJRU5ErkJggg==";
 
+import { buildBlankPng } from "../../support/synthetic-png";
 import { absoluteUrl } from "../../support/urls";
 
 const LETTERHEAD_API_URL = "/admin/api/system/letterhead";
@@ -53,15 +54,14 @@ describe("Admin - Report Settings page", () => {
         cy.visit("/admin/system/report-settings");
         cy.get('#sidebar a[href$="/finance/statements/settings"]').should("have.length", 1);
         cy.get('#sidebar a[href$="/finance/statements/settings"]')
-            .parents("li.nav-item")
-            .eq(1)
-            .children(".nav-row")
+            .closest(".dropdown")
+            .children(".dropdown-toggle")
             .find(".nav-link-title")
             .should("have.text", "Admin");
         cy.get('#sidebar a[href$="/finance/statements/settings"]')
-            .parents("li.nav-item")
-            .last()
-            .children(".nav-row")
+            .closest(".dropdown")
+            .parent(".dropdown-menu")
+            .prev(".nav-link")
             .find(".nav-link-title")
             .should("have.text", "Finance");
     });
@@ -163,5 +163,134 @@ describe("Admin - Report Settings page", () => {
         cy.setupPersonaSession("finance-only");
         cy.visit("/admin/system/report-settings", { failOnStatusCode: false });
         cy.url().should("include", "/v2/access-denied");
+    });
+});
+
+describe("Private Canadian giving-statement signature", () => {
+    const endpoint = "/admin/api/system/tax-signature";
+    let originalImage = null;
+    let originalStoragePath;
+
+    before(() => {
+        cy.getSystemConfig("sTaxSignatureStoragePath").then((value) => {
+            originalStoragePath = value;
+        });
+        cy.makePrivateAdminAPICall("GET", endpoint, null, 200).then(({ body }) => {
+            if (body.hasSignature) {
+                cy.readEnv("admin.api.key").then((key) => {
+                    cy.request({ url: absoluteUrl(`${endpoint}/image`), headers: { "X-API-Key": key }, encoding: "base64" }).then(({ body }) => {
+                        originalImage = body;
+                    });
+                });
+            }
+        });
+    });
+
+    beforeEach(() => cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200));
+
+    after(() => {
+        cy.restoreSystemConfig("sTaxSignatureStoragePath", originalStoragePath);
+        if (originalImage !== null) {
+            cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${originalImage}` }, 200);
+        } else {
+            cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200);
+        }
+    });
+
+    it("stores a re-encoded private image with an opaque random identifier and removes it", () => {
+        cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${LETTERHEAD_PNG_BASE64}` }, 200);
+        cy.getSystemConfig("sCanadianTaxSignatureAsset").then((firstIdentifier) => {
+            expect(firstIdentifier).to.match(/^[a-f0-9]{64}\.png$/);
+            cy.readEnv("admin.api.key").then((key) => {
+                cy.request({ url: absoluteUrl(`${endpoint}/image`), headers: { "X-API-Key": key }, encoding: "base64" }).then((image) => {
+                    expect(image.headers["content-type"]).to.include("image/png");
+                    expect(image.headers["cache-control"]).to.include("no-store");
+                    expect(image.body).not.to.eq(LETTERHEAD_PNG_BASE64);
+                    expect(Cypress.Buffer.from(image.body, "base64").subarray(1, 4).toString()).to.eq("PNG");
+                });
+            });
+            // The stored file sits in the deny-all Images/TaxSignatures folder; only the route serves it.
+            cy.request({ url: absoluteUrl(`/Images/TaxSignatures/${firstIdentifier}`), failOnStatusCode: false }).its("status").should("be.oneOf", [403, 404]);
+            cy.request({ url: absoluteUrl("/Images/TaxSignatures/"), failOnStatusCode: false }).its("status").should("be.oneOf", [403, 404]);
+            cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${LETTERHEAD_PNG_BASE64}` }, 200);
+            cy.getSystemConfig("sCanadianTaxSignatureAsset").should("not.eq", firstIdentifier);
+            cy.request({ url: absoluteUrl(`/Images/${firstIdentifier}`), failOnStatusCode: false }).its("status").should("eq", 404);
+        });
+        cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200);
+        cy.getSystemConfig("sCanadianTaxSignatureAsset").should("eq", "");
+        cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200);
+        cy.readEnv("admin.api.key").then((key) => {
+            cy.request({ url: absoluteUrl(`${endpoint}/image`), headers: { "X-API-Key": key }, failOnStatusCode: false }).its("status").should("eq", 404);
+        });
+    });
+
+    it("rejects SVG, malformed data, remote URLs, paths, mismatched image types and oversized uploads", () => {
+        for (const imgBase64 of ["https://example.com/signature.png", "../../Include/Config.php", "data:image/svg+xml;base64,PHN2Zy8+", "data:image/png;base64,bm90IGFuIGltYWdl", `data:image/jpeg;base64,${LETTERHEAD_PNG_BASE64}`]) {
+            cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64 }, 400);
+        }
+        cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${"A".repeat(4 * Math.ceil((2 * 1024 * 1024 + 1) / 3))}` }, 413);
+        for (const [width, height] of [[2001, 1000], [2000, 1001]]) {
+            cy.then(() => buildBlankPng(width, height)).then((imgBase64) => {
+                cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64 }, 413);
+            });
+        }
+        cy.makePrivateAdminAPICall("GET", endpoint, null, 200).its("body.hasSignature").should("eq", false);
+    });
+
+    it("accepts JPEG and the PNG dimension boundary", () => {
+        cy.freshAdminFormLogin({ enabled: true });
+        cy.visit("/admin/system/report-settings");
+        cy.document().then((document) => {
+            const canvas = document.createElement("canvas");
+            canvas.width = 100;
+            canvas.height = 40;
+            cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: canvas.toDataURL("image/jpeg") }, 200);
+        });
+        cy.then(() => buildBlankPng(2000, 1000)).then((imgBase64) => {
+            cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64 }, 200);
+        });
+    });
+
+    it("stores signatures in a configured folder and explains an unusable one", () => {
+        const setting = "sTaxSignatureStoragePath";
+        const upload = (status) =>
+            cy.makePrivateAdminAPICall("POST", endpoint, { imgBase64: `data:image/png;base64,${LETTERHEAD_PNG_BASE64}` }, status);
+        cy.then(() => {
+            cy.setSystemConfig(setting, `/tmp/churchcrm-tax-signatures-${Date.now()}`);
+            upload(200);
+            cy.makePrivateAdminAPICall("GET", endpoint, null, 200).its("body.hasSignature").should("eq", true);
+            cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200);
+
+            for (const [value, message] of [
+                ["relative/signatures", "absolute folder path"],
+                ["/tmp/../etc/signatures", "absolute folder path"],
+                ["/proc/churchcrm-tax-signatures", "Cannot create the tax signature storage folder"],
+            ]) {
+                cy.setSystemConfig(setting, value);
+                upload(500).its("body.message").should("include", message);
+            }
+            cy.restoreSystemConfig(setting, originalStoragePath);
+        });
+        upload(200);
+        cy.makePrivateAdminAPICall("DELETE", endpoint, null, 200);
+    });
+
+    it("blocks direct asset-setting writes", () => {
+        for (const value of ["https://example.com/signature.png", "../../Include/Config.php", "a".repeat(64) + ".png", ""]) {
+            cy.makePrivateAdminAPICall("POST", "/admin/api/system/config/sCanadianTaxSignatureAsset", { value }, 400);
+        }
+        cy.getSystemConfig("sCanadianTaxSignatureAsset").should("eq", "");
+    });
+
+    it("rejects session writes without CSRF and denies finance-only access", () => {
+        cy.freshAdminFormLogin({ enabled: true });
+        for (const method of ["POST", "DELETE"]) {
+            cy.request({ method, url: endpoint, body: { imgBase64: `data:image/png;base64,${LETTERHEAD_PNG_BASE64}` }, failOnStatusCode: false }).its("status").should("eq", 403);
+        }
+        cy.setupPersonaSession("finance-only");
+        cy.request({ url: endpoint, failOnStatusCode: false, followRedirect: false }).its("status").should("eq", 403);
+        cy.request({ url: `${endpoint}/image`, failOnStatusCode: false, followRedirect: false }).its("status").should("eq", 403);
+        cy.clearCookies();
+        cy.request({ url: `${endpoint}/image`, failOnStatusCode: false, followRedirect: false }).its("status").should("be.oneOf", [302, 401]);
     });
 });

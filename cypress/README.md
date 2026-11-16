@@ -35,6 +35,12 @@ Best practices
 - Keep secrets out of repo; use `cypress.env.json` or CI environment variables.
 - Ensure `cypress/videos/`, `cypress/screenshots/`, and `cypress/downloads/` are in `.gitignore`.
 
+Page coverage
+- Detailed workflow specs cover the pages they visit. Add URLs to `cypress/support/page-health-pages.js` only where detailed coverage is missing; remove them as workflow tests land.
+- The staff and admin health specs check document status, same-origin 5xx responses, missing scripts/styles, and uncaught JavaScript exceptions. Informational pages may keep health-only coverage.
+- Keep page-load checks free of page-specific content and control assertions. Put user workflows, saved results, permissions, and validation in focused feature specs.
+- Track missing actionable workflows in focused issues. The sweeps run in `test:ui` and `test:ui-admin`, respectively. `mvc-pages.js` serves authentication boundaries and install-path checks, not workflow coverage gaps.
+
 Local setup (recommended)
 - Create a `cypress.env.json` in your local checkout (gitignored) to store non-secret test values:
 

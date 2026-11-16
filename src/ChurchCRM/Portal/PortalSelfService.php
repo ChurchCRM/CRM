@@ -407,11 +407,8 @@ class PortalSelfService
     /**
      * Record that the member has looked over their family's details.
      *
-     * The note is the one `/external/verify` writes — same type, same author,
-     * same text — so the People → Verify dashboard, which selects on
-     * `EnteredBy = Person::SELF_VERIFY`, lists a portal confirmation exactly as
-     * it lists a token-link one. That is what "appears on the admin side as
-     * today" means, and it is why the confirming member's own id is not used.
+     * The People → Verify dashboard selects on `EnteredBy = Person::SELF_VERIFY`, so the note
+     * carries that author and not the confirming member's own id.
      *
      * @throws PortalSelfServiceException when the member has no family
      */
@@ -716,20 +713,6 @@ class PortalSelfService
         return $birthDate instanceof DateTimeImmutable ? $birthDate->format('Y-m-d') : '';
     }
 
-    /**
-     * The photo endpoint for a person, cache-busted by the file's own
-     * modification time so a fresh upload is visible immediately.
-     *
-     * It is always a `/api/portal/*` URL, never `/api/person/{id}/photo`:
-     * `AuthMiddleware::isLimitedAccessAllowedPath()` confines a self-service
-     * session to `/portal` and `/api/portal`, so the person endpoint answers
-     * the very members these pages are for with 403 and every avatar renders
-     * broken. The portal serves its own bytes instead.
-     *
-     * Empty when nobody has uploaded a photo: the endpoint 404s in that case,
-     * and a template that is told there is no URL renders initials instead of
-     * a broken image.
-     */
     public static function getPhotoUrl(Person $person, Person $actor): string
     {
         $personId = (int) $person->getId();
