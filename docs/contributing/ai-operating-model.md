@@ -70,3 +70,10 @@ Default to the lowest tier that clears the bar. Escalate when the lower tier has
 - One task per session. Start fresh (`/clear`) at task boundaries — between PR reviews, between issues. Carried context is re-billed on every turn, and a previous PR's diff bleeding into the next review produces stale, cross-contaminated reviews.
 - Mid-task, if the context fills, compact once (`/compact`). After repeated compaction with drifting quality, write the state to a file and start fresh.
 - Durable context lives in files — the issue, the spec, the skill cards — never only in a chat. Load only the skill card the task needs, read file ranges instead of whole trees, and keep command output bounded (named checks, not full-suite dumps).
+
+### Background and scheduled work
+
+- Scripts watch; LLMs judge. A recurring check polls and diffs state with a script or CI — zero LLM tokens — and wakes an agent only when something changed: a new failure, a reply, a crossed threshold. Never run a full agent session on a schedule just to confirm nothing changed.
+- Match the check cadence to how fast a human would act on the alert; doubling frequency doubles the burn for the same protection.
+- Delta-only: each run reads its state file, processes only what is new, and exits. No re-scanning history.
+- Silent by default. A no-change report costs tokens twice — once to produce it, once to deliver and read it.
