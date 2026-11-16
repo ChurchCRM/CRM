@@ -28012,3 +28012,31 @@ msgstr "systemanvändarens tvåstegsverifiering inaktiverades av administratör"
 msgid "volunteer service history"
 msgstr "historik över volontärtjänst"
 
+#: 
+msgid "%s by %s"
+msgstr "%s av %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Ange ditt lösenord eller en kod från din autentiseringsapp för att ändra tvåfaktorsautentiseringen."
+
+#: 
+msgid "Latest Notes"
+msgstr "Senaste anteckningarna"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Inga anteckningar har lagts till ännu."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Starta registreringen för att få en QR-kod."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Lösenordet eller koden är inte korrekt. Tvåfaktorsautentisering är fortfarande på."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Tvåfaktorsautentisering är redan konfigurerad. Hemligheten visas bara under registreringen."
+

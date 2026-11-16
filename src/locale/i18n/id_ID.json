@@ -6876,5 +6876,12 @@
   "system user turned off two-factor authentication": "pengguna sistem mematikan autentikasi dua faktor",
   "system user turned on two-factor authentication": "pengguna sistem menyalakan autentikasi dua faktor",
   "system user two-factor authentication disabled by admin": "autentikasi dua faktor pengguna sistem dinonaktifkan oleh admin",
-  "volunteer service history": "riwayat pelayanan relawan"
+  "volunteer service history": "riwayat pelayanan relawan",
+  "%s by %s": "%s oleh %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Masukkan kata sandi Anda atau kode dari aplikasi autentikator Anda untuk mengubah autentikasi dua faktor.",
+  "Latest Notes": "Catatan Terbaru",
+  "No notes have been added yet.": "Belum ada catatan yang ditambahkan.",
+  "Start enrollment to get a QR code.": "Mulai pendaftaran untuk mendapatkan kode QR.",
+  "That password or code is not right. Two-factor authentication is still on.": "Kata sandi atau kode itu tidak benar. Autentikasi dua faktor masih aktif.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Autentikasi dua faktor sudah disiapkan. Rahasianya hanya ditampilkan selama pendaftaran."
 }

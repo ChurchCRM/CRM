@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "in-off ng system user ang two-factor authentication",
   "system user turned on two-factor authentication": "in-on ng system user ang two-factor authentication",
   "system user two-factor authentication disabled by admin": "na-disable ng admin ang two-factor authentication ng system user",
-  "volunteer service history": "kasaysayan ng paglilingkod bilang boluntaryo"
+  "volunteer service history": "kasaysayan ng paglilingkod bilang boluntaryo",
+  "%s by %s": "%s ni %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Ilagay ang iyong password o isang code mula sa iyong authenticator app para baguhin ang two-factor authentication.",
+  "Latest Notes": "Pinakabagong Mga Tala",
+  "No notes have been added yet.": "Wala pang naidagdag na mga tala.",
+  "Start enrollment to get a QR code.": "Simulan ang pag-enroll para makakuha ng QR code.",
+  "That password or code is not right. Two-factor authentication is still on.": "Hindi tama ang password o code na iyon. Naka-on pa rin ang two-factor authentication.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Naka-set up na ang two-factor authentication. Ipinapakita lang ang secret nito habang nag-e-enroll."
 }

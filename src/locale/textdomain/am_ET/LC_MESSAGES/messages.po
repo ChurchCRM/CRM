@@ -27931,3 +27931,31 @@ msgstr "የሥርዓት ተጠቃሚ ባለሁለት ደረጃ ማረጋገጫ �
 msgid "volunteer service history"
 msgstr "የበጎ ፈቃድ አገልግሎት ታሪክ"
 
+#: 
+msgid "%s by %s"
+msgstr "%s በ %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "ባለሁለት-ደረጃ ማረጋገጫን ለመቀየር የይለፍ ቃልዎን ወይም ከማረጋገጫ መተግበሪያዎ ኮድ ያስገቡ።"
+
+#: 
+msgid "Latest Notes"
+msgstr "የቅርብ ጊዜ ማስታወሻዎች"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "እስካሁን ምንም ማስታወሻዎች አልተጨመሩም።"
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "የQR ኮድ ለማግኘት ምዝገባን ይጀምሩ።"
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "ያ የይለፍ ቃል ወይም ኮድ ትክክል አይደለም። ባለሁለት-ደረጃ ማረጋገጫ አሁንም በርቷል።"
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "ባለሁለት-ደረጃ ማረጋገጫ አስቀድሞ ተዘጋጅቷል። ሚስጥሩ የሚታየው በምዝገባ ጊዜ ብቻ ነው።"
+

@@ -27958,3 +27958,31 @@ msgstr "系统用户的双重身份验证已被管理员停用"
 msgid "volunteer service history"
 msgstr "志愿服务历史"
 
+#: 
+msgid "%s by %s"
+msgstr "%s 由 %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "输入您的密码或验证器应用中的代码，以更改双重身份验证。"
+
+#: 
+msgid "Latest Notes"
+msgstr "最新备注"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "尚未添加任何备注。"
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "开始注册以获取二维码。"
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "该密码或代码不正确。双重身份验证仍处于启用状态。"
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "双重身份验证已设置。其密钥仅在注册期间显示。"
+

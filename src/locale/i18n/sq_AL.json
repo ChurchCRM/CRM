@@ -6909,5 +6909,12 @@
   "financial history": "historiku financiar",
   "notes": "shënime",
   "recorded activities": "aktivitete të regjistruara",
-  "volunteer service history": "historiku i shërbimit vullnetar"
+  "volunteer service history": "historiku i shërbimit vullnetar",
+  "%s by %s": "%s nga %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Vendosni fjalëkalimin tuaj ose një kod nga aplikacioni juaj i vërtetimit për të ndryshuar vërtetimin dyfaktorësh.",
+  "Latest Notes": "Shënimet më të fundit",
+  "No notes have been added yet.": "Ende nuk janë shtuar shënime.",
+  "Start enrollment to get a QR code.": "Filloni regjistrimin për të marrë një kod QR.",
+  "That password or code is not right. Two-factor authentication is still on.": "Ai fjalëkalim ose kod nuk është i saktë. Vërtetimi dyfaktorësh është ende aktiv.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Vërtetimi dyfaktorësh është konfiguruar tashmë. Sekreti i tij shfaqet vetëm gjatë regjistrimit."
 }
