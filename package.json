@@ -114,7 +114,7 @@
         "datatables.net-select": "^4.1.1",
         "datatables.net-select-bs5": "^4.1.1",
         "dompurify": "^3.4.17",
-        "fullcalendar": "^7.1.4",
+        "fullcalendar": "^7.1.5",
         "heic2any": "^0.0.4",
         "i18next": "^26.5.11",
         "inputmask": "^5.0.9",
