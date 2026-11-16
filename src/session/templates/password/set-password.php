@@ -29,7 +29,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
 
     <div class="mb-3" id="PasswordStrengthContainer" hidden>
         <span>
-            <?= gettext('Password strength') ?>:
+            <?= InputUtils::escapeHTML(gettext('Password strength')) ?>:
             <span id="PasswordStrengthLabel" aria-live="polite"></span>
         </span>
 
@@ -37,7 +37,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
             <div class="progress-bar"
                 id="PasswordStrengthBar"
                 role="progressbar"
-                aria-label="<?= gettext('Password strength') ?>"
+                aria-label="<?= InputUtils::escapeAttribute(gettext('Password strength')) ?>"
                 aria-valuemin="0"
                 aria-valuemax="100"
                 aria-valuenow="0"></div>
