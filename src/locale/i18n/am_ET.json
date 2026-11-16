@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "የሥርዓት ተጠቃሚ ባለሁለት ደረጃ ማረጋገጫን አጥፍቷል",
   "system user turned on two-factor authentication": "የሥርዓት ተጠቃሚ ባለሁለት ደረጃ ማረጋገጫን አብርቷል",
   "system user two-factor authentication disabled by admin": "የሥርዓት ተጠቃሚ ባለሁለት ደረጃ ማረጋገጫ በአስተዳዳሪ ተሰናክሏል",
-  "volunteer service history": "የበጎ ፈቃድ አገልግሎት ታሪክ"
+  "volunteer service history": "የበጎ ፈቃድ አገልግሎት ታሪክ",
+  "%s by %s": "%s በ %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "ባለሁለት-ደረጃ ማረጋገጫን ለመቀየር የይለፍ ቃልዎን ወይም ከማረጋገጫ መተግበሪያዎ ኮድ ያስገቡ።",
+  "Latest Notes": "የቅርብ ጊዜ ማስታወሻዎች",
+  "No notes have been added yet.": "እስካሁን ምንም ማስታወሻዎች አልተጨመሩም።",
+  "Start enrollment to get a QR code.": "የQR ኮድ ለማግኘት ምዝገባን ይጀምሩ።",
+  "That password or code is not right. Two-factor authentication is still on.": "ያ የይለፍ ቃል ወይም ኮድ ትክክል አይደለም። ባለሁለት-ደረጃ ማረጋገጫ አሁንም በርቷል።",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "ባለሁለት-ደረጃ ማረጋገጫ አስቀድሞ ተዘጋጅቷል። ሚስጥሩ የሚታየው በምዝገባ ጊዜ ብቻ ነው።"
 }

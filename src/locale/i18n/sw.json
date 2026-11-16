@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "mtumiaji wa mfumo amezima uthibitishaji wa hatua mbili",
   "system user turned on two-factor authentication": "mtumiaji wa mfumo amewasha uthibitishaji wa hatua mbili",
   "system user two-factor authentication disabled by admin": "uthibitishaji wa hatua mbili wa mtumiaji wa mfumo umezimwa na msimamizi",
-  "volunteer service history": "historia ya huduma ya kujitolea"
+  "volunteer service history": "historia ya huduma ya kujitolea",
+  "%s by %s": "%s na %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Ingiza nenosiri lako au nambari kutoka kwa programu yako ya uthibitishaji ili kubadilisha uthibitishaji wa hatua mbili.",
+  "Latest Notes": "Vidokezo vya Hivi Karibuni",
+  "No notes have been added yet.": "Hakuna vidokezo vilivyoongezwa bado.",
+  "Start enrollment to get a QR code.": "Anza kujiandikisha ili kupata nambari ya QR.",
+  "That password or code is not right. Two-factor authentication is still on.": "Nenosiri au nambari hiyo si sahihi. Uthibitishaji wa hatua mbili bado umewashwa.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Uthibitishaji wa hatua mbili tayari umewekwa. Siri yake huonyeshwa tu wakati wa kujiandikisha."
 }

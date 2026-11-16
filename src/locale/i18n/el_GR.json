@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "ο χρήστης συστήματος απενεργοποίησε την ταυτοποίηση δύο παραγόντων",
   "system user turned on two-factor authentication": "ο χρήστης συστήματος ενεργοποίησε την ταυτοποίηση δύο παραγόντων",
   "system user two-factor authentication disabled by admin": "η ταυτοποίηση δύο παραγόντων του χρήστη συστήματος απενεργοποιήθηκε από διαχειριστή",
-  "volunteer service history": "ιστορικό εθελοντικής διακονίας"
+  "volunteer service history": "ιστορικό εθελοντικής διακονίας",
+  "%s by %s": "%s από %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Εισαγάγετε τον κωδικό πρόσβασής σας ή έναν κωδικό από την εφαρμογή ελέγχου ταυτότητας για να αλλάξετε τον έλεγχο ταυτότητας δύο παραγόντων.",
+  "Latest Notes": "Τελευταίες σημειώσεις",
+  "No notes have been added yet.": "Δεν έχουν προστεθεί σημειώσεις ακόμη.",
+  "Start enrollment to get a QR code.": "Ξεκινήστε την εγγραφή για να λάβετε έναν κωδικό QR.",
+  "That password or code is not right. Two-factor authentication is still on.": "Αυτός ο κωδικός πρόσβασης ή κωδικός δεν είναι σωστός. Ο έλεγχος ταυτότητας δύο παραγόντων παραμένει ενεργός.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Ο έλεγχος ταυτότητας δύο παραγόντων έχει ήδη ρυθμιστεί. Το μυστικό του εμφανίζεται μόνο κατά την εγγραφή."
 }

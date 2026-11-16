@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "സിസ്റ്റം ഉപയോക്താവ് ടു-ഫാക്ടർ ഓതന്റിക്കേഷൻ ഓഫാക്കി",
   "system user turned on two-factor authentication": "സിസ്റ്റം ഉപയോക്താവ് ടു-ഫാക്ടർ ഓതന്റിക്കേഷൻ ഓണാക്കി",
   "system user two-factor authentication disabled by admin": "സിസ്റ്റം ഉപയോക്താവിന്റെ ടു-ഫാക്ടർ ഓതന്റിക്കേഷൻ അഡ്മിൻ പ്രവർത്തനരഹിതമാക്കി",
-  "volunteer service history": "സന്നദ്ധസേവന ചരിത്രം"
+  "volunteer service history": "സന്നദ്ധസേവന ചരിത്രം",
+  "%s by %s": "%s, %s എഴുതിയത്",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "ഇരട്ടഘടക ആധികാരികത മാറ്റാൻ നിങ്ങളുടെ പാസ്‌വേഡോ ഓതന്റിക്കേറ്റർ ആപ്പിൽ നിന്നുള്ള കോഡോ നൽകൂ.",
+  "Latest Notes": "ഏറ്റവും പുതിയ കുറിപ്പുകൾ",
+  "No notes have been added yet.": "ഇതുവരെ കുറിപ്പുകളൊന്നും ചേർത്തിട്ടില്ല.",
+  "Start enrollment to get a QR code.": "ഒരു QR കോഡ് ലഭിക്കാൻ എൻറോൾമെന്റ് ആരംഭിക്കൂ.",
+  "That password or code is not right. Two-factor authentication is still on.": "ആ പാസ്‌വേഡോ കോഡോ ശരിയല്ല. ഇരട്ടഘടക ആധികാരികത ഇപ്പോഴും ഓണാണ്.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "ഇരട്ടഘടക ആധികാരികത ഇതിനകം സജ്ജീകരിച്ചിട്ടുണ്ട്. അതിന്റെ രഹസ്യം എൻറോൾമെന്റ് സമയത്ത് മാത്രമേ കാണിക്കൂ."
 }
