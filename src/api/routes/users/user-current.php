@@ -45,7 +45,7 @@ function twoFactorChangeConfirmed(Request $request, User $user): bool
 
     $body = $request->getParsedBody();
     $confirmation = is_array($body) && is_string($body['confirmation'] ?? null) ? trim($body['confirmation']) : '';
-    if ($confirmation === '' || SignInThrottle::isAccountLocked($user)) {
+    if ($confirmation === '' || SignInThrottle::isIpThrottled() || SignInThrottle::isAccountLocked($user)) {
         return false;
     }
     $valid = (preg_match('/^\d{6}$/', $confirmation) === 1 && $user->isTwoFACodeValid($confirmation))
