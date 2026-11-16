@@ -27845,3 +27845,51 @@ msgstr "o usuário do sistema ativou a autenticação de dois fatores"
 msgid "system user two-factor authentication disabled by admin"
 msgstr "autenticação de dois fatores do usuário do sistema desativada pelo administrador"
 
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Não é possível excluir uma família que tem promessas ou pagamentos. Desative a família para preservar o histórico financeiro. Mova os registros financeiros apenas se apropriado."
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Desativar a família em vez disso"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Desative a família em vez de excluí-la."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Desative a pessoa em vez de excluí-la."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Histórico registrado: %s."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Esta família não pode ser excluída porque tem anotações. Desative a família para preservar o histórico dela."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Esta pessoa não pode ser excluída porque tem atividades registradas. Desative a pessoa para preservar o histórico dela."
+
+#: 
+msgid "attendance"
+msgstr "presenças"
+
+#: 
+msgid "financial history"
+msgstr "histórico financeiro"
+
+#: 
+msgid "notes"
+msgstr "anotações"
+
+#: 
+msgid "recorded activities"
+msgstr "atividades registradas"
+
+#: 
+msgid "volunteer service history"
+msgstr "histórico de serviço voluntário"
+
