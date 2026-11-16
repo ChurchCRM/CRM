@@ -5492,7 +5492,6 @@
   "{{name}} registered and checked in!": "{{name}} si è registrato e ha effettuato il check-in!",
   "Search by family name": "Cerca per cognome della famiglia",
   "Search by family name or envelope #": "Cerca per cognome della famiglia o n. busta",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Impossibile eliminare una famiglia che ha impegni o pagamenti. Sposta o rimuovi prima i registri finanziari.",
   "You cannot delete your own account.": "Non puoi eliminare il tuo account.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Un evento ricorrente richiede una data di fine, quindi torna al {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Aggiungi tutti nella selezione a {{ministry}}",

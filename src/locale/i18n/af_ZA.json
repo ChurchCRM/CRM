@@ -5492,7 +5492,6 @@
   "{{name}} registered and checked in!": "{{name}} is geregistreer en ingecheckt!",
   "Search by family name": "Soek volgens gesinsnaam",
   "Search by family name or envelope #": "Soek volgens gesinsnaam of koevertnr.",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Kan nie 'n gesin uitvee wat beloftes of betalings het nie. Skuif of verwyder eers die finansiële rekords.",
   "You cannot delete your own account.": "Jy kan nie jou eie rekening uitvee nie.",
   "A recurring event needs a last date, so it is back to {{date}}.": "’n Herhalende gebeurtenis het ’n laaste datum nodig, daarom is dit terug na {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Voeg almal in die keuse by {{ministry}}",

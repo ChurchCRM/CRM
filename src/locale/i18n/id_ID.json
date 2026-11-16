@@ -5464,7 +5464,6 @@
   "{{name}} registered and checked in!": "{{name}} telah mendaftar dan login!",
   "Search by family name": "Cari berdasarkan nama keluarga",
   "Search by family name or envelope #": "Cari berdasarkan nama keluarga atau no. amplop",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Keluarga yang memiliki janji persembahan atau pembayaran tidak dapat dihapus. Pindahkan atau hapus dahulu catatan keuangannya.",
   "You cannot delete your own account.": "Anda tidak dapat menghapus akun Anda sendiri.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Acara berulang memerlukan tanggal terakhir, jadi dikembalikan ke {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Tambahkan semua orang di Keranjang ke {{ministry}}",

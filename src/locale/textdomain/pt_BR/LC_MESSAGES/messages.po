@@ -22500,10 +22500,6 @@ msgid "Search by family name or envelope #"
 msgstr "Pesquisar por nome da família ou n.º do envelope"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Não é possível excluir uma família que tem promessas ou pagamentos. Mova ou remova primeiro os registros financeiros."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Você não pode excluir a sua própria conta."
 
