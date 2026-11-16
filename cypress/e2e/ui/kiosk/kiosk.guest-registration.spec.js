@@ -86,7 +86,7 @@ describe("Kiosk - walk-in guest registration in the browser", () => {
         });
         cy.cleanupEvents(createdEventIds);
         if (guestId !== null) {
-            api("DELETE", `/api/person/${guestId}`, null, [200, 404]);
+            cy.cleanupPeople([guestId]);
         }
         if (groupId !== null) {
             api("DELETE", `/api/groups/${groupId}`);

@@ -1471,8 +1471,8 @@ CREATE TABLE `volunteer_calendar_vcal` (
 
 CREATE TABLE `email_log_eml` (
   `eml_ID`        int(10) unsigned      NOT NULL AUTO_INCREMENT,
-  `eml_per_ID`    mediumint(8) unsigned DEFAULT NULL,
-  `eml_fam_ID`    mediumint(8) unsigned DEFAULT NULL,
+  `eml_per_ID`    mediumint(9) unsigned DEFAULT NULL,
+  `eml_fam_ID`    mediumint(9) unsigned DEFAULT NULL,
   `eml_usr_ID`    mediumint(9) unsigned DEFAULT NULL,
   `eml_Address`   varchar(255)          NOT NULL,
   `eml_Kind`      varchar(50)           NOT NULL,
@@ -1490,7 +1490,11 @@ CREATE TABLE `email_log_eml` (
   KEY `idx_eml_fam_ID`   (`eml_fam_ID`),
   KEY `idx_eml_DateSent` (`eml_DateSent`),
   KEY `idx_eml_Status`   (`eml_Status`),
-  KEY `idx_eml_Batch`    (`eml_Batch`)
+  KEY `idx_eml_Batch`    (`eml_Batch`),
+  CONSTRAINT `fk_eml_person` FOREIGN KEY (`eml_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_eml_family` FOREIGN KEY (`eml_fam_ID`)
+      REFERENCES `family_fam` (`fam_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
