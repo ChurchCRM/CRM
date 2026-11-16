@@ -82,7 +82,7 @@ class NoteService
         if (!$viewer->canReadNotes($person?->getId(), $familyId > 0 ? $familyId : null)) {
             return null;
         }
-        if ($familyId > 0 && !$viewer->canViewFamily($familyId)) {
+        if ($familyId > 0 && !$viewer->canReadFamily($familyId)) {
             return null;
         }
 
