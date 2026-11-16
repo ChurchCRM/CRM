@@ -24,14 +24,6 @@
       "category": "Feature Proposal",
       "discussionUrl": "https://github.com/ChurchCRM/CRM/discussions/10657",
       "expiresAt": null
-    },
-    {
-      "id": "rbac-rfc-0002",
-      "title": "Module-based access control (RFC 0002)",
-      "summary": "Decide who can see and change what, module by module, instead of a few broad roles. This is the technical review thread for RFC 0002; comments here go straight into the design.",
-      "category": "RFC Review",
-      "discussionUrl": "https://github.com/ChurchCRM/CRM/discussions/10643",
-      "expiresAt": null
     }
   ]
 }
