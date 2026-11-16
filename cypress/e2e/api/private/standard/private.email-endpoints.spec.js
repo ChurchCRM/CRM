@@ -345,6 +345,7 @@ describe("GET /api/groups/:id/emails", () => {
             const comment = `enabled test ${Date.now()}`;
             cy.setSystemConfig('bEnableDepositPostedNotification', "true");
             cy.setSystemConfig('sToEmailAddress', "churchcrm@example.com");
+            cy.setSystemConfig('sDateFormat', 'Y-m-d');
             cy.task("resetSentEmails");
             cy.makePrivateAdminAPICall("POST", "/api/deposits", {
                 depositType: "Bank",
