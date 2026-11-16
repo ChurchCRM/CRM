@@ -6975,5 +6975,12 @@
     "few": "%d rodiny",
     "many": "%d rodiny",
     "other": "%d rodín"
-  }
+  },
+  "%s by %s": "%s od %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Zadajte svoje heslo alebo kód z autentifikačnej aplikácie, ak chcete zmeniť dvojfaktorovú autentifikáciu.",
+  "Latest Notes": "Najnovšie poznámky",
+  "No notes have been added yet.": "Zatiaľ neboli pridané žiadne poznámky.",
+  "Start enrollment to get a QR code.": "Spustite registráciu a získajte QR kód.",
+  "That password or code is not right. Two-factor authentication is still on.": "Toto heslo alebo kód nie je správne. Dvojfaktorová autentifikácia je stále zapnutá.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Dvojfaktorová autentifikácia je už nastavená. Jej tajomstvo sa zobrazuje iba počas registrácie."
 }

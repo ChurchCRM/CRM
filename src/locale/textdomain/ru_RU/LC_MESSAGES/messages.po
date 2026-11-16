@@ -28044,3 +28044,31 @@ msgstr "двухфакторная аутентификация системно
 msgid "volunteer service history"
 msgstr "история волонтёрского служения"
 
+#: 
+msgid "%s by %s"
+msgstr "%s от %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Введите пароль или код из приложения аутентификации, чтобы изменить двухфакторную аутентификацию."
+
+#: 
+msgid "Latest Notes"
+msgstr "Последние заметки"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Заметки ещё не добавлены."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Начните регистрацию, чтобы получить QR-код."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Этот пароль или код неверен. Двухфакторная аутентификация по-прежнему включена."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Двухфакторная аутентификация уже настроена. Её секрет показывается только во время регистрации."
+
