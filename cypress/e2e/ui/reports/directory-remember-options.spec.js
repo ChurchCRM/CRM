@@ -83,4 +83,56 @@ describe("Directory report - remember options (#11465)", () => {
         cy.get("#bDirBirthday").should("be.checked");
         cy.get("#sDirLayoutPages").should("be.checked");
     });
+
+    it("stores classification lists that exceed one user_settings value across chunks", () => {
+        // 40 ids → CSV longer than VARCHAR(50); prefs must split and restore every id.
+        const many = Array.from({ length: 40 }, (_, i) => String(i));
+        const params = new URLSearchParams();
+        many.forEach((id) => params.append("sDirClassifications[]", id));
+        params.set("sDirRoleHead[]", "1");
+        params.set("sDirRoleSpouse[]", "2");
+        params.set("bDirAddress", "1");
+        params.set("NumCols", "2");
+        params.set("PageSize", "letter");
+        params.set("FSize", "10");
+        params.set("Submit", "Create Directory");
+
+        cy.request({
+            method: "POST",
+            url: "people/reports/directory",
+            headers: { "content-type": "application/x-www-form-urlencoded" },
+            body: params.toString(),
+            encoding: "binary",
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+            expect(response.headers["content-type"]).to.include("application/pdf");
+        });
+
+        cy.makePrivateAdminAPICall("GET", "/api/user/1/setting/reports.directory.classifications", null, 200).then(
+            ({ body }) => {
+                expect(Number(body.value)).to.be.greaterThan(1);
+            },
+        );
+        cy.makePrivateAdminAPICall("GET", "/api/user/1/setting/reports.directory.classifications.1", null, 200).then(
+            ({ body }) => {
+                expect(String(body.value).length).to.be.at.most(50);
+                expect(String(body.value).length).to.be.greaterThan(0);
+            },
+        );
+        cy.makePrivateAdminAPICall("GET", "/api/user/1/setting/reports.directory.classifications.2", null, 200).then(
+            ({ body }) => {
+                expect(String(body.value).length).to.be.at.most(50);
+                expect(String(body.value).length).to.be.greaterThan(0);
+            },
+        );
+
+        cy.visit("DirectoryReports.php");
+        cy.get('select[name="sDirClassifications[]"]').then(($select) => {
+            const available = [...$select.find("option")].map((opt) => opt.value);
+            const expected = many.filter((id) => available.includes(id));
+            cy.wrap($select).invoke("val").should("deep.equal", expected);
+            expect(expected.length).to.be.greaterThan(1);
+        });
+    });
 });

@@ -9,6 +9,8 @@ use ChurchCRM\model\ChurchCRM\User;
  *
  * user_settings.setting_value is VARCHAR(50), so each DirectoryReportService
  * option key is stored as its own compact setting rather than one JSON blob.
+ * ID lists that do not fit in one value are split across numbered keys
+ * ({base}.1, {base}.2, …) with the base key holding the chunk count.
  * Layout, title page, paper, font, and child roles are intentionally omitted.
  */
 class DirectoryReportPreferences
@@ -42,6 +44,8 @@ class DirectoryReportPreferences
     private const MAX_VALUE = 50;
 
     /**
+     * Primary setting names (list bases hold a chunk count; data lives in {base}.N).
+     *
      * @return list<string>
      */
     public static function settingNames(): array
@@ -59,6 +63,22 @@ class DirectoryReportPreferences
     }
 
     /**
+     * Bases that store integer lists across numbered chunk keys.
+     *
+     * @return list<string>
+     */
+    public static function listSettingBases(): array
+    {
+        return [
+            self::CLASSIFICATIONS,
+            self::GROUPS,
+            self::HEAD_ROLES,
+            self::SPOUSE_ROLES,
+            self::CUSTOM_FIELDS,
+        ];
+    }
+
+    /**
      * @param array<string, mixed> $options DirectoryReportService option keys only
      */
     public function save(User $user, array $options): void
@@ -68,21 +88,24 @@ class DirectoryReportPreferences
             $classifications = [];
         }
 
-        $user->setSetting(self::CLASSIFICATIONS, $this->packIds($classifications));
-        $user->setSetting(self::GROUPS, $this->packIds($options['groups'] ?? []));
+        $this->saveIdList($user, self::CLASSIFICATIONS, $classifications);
+        $this->saveIdList($user, self::GROUPS, $options['groups'] ?? []);
         $user->setSetting(self::EXCLUDE_INACTIVE, !empty($options['excludeInactive']) ? '1' : '0');
-        $user->setSetting(self::HEAD_ROLES, $this->packIds($options['headRoles'] ?? []));
-        $user->setSetting(self::SPOUSE_ROLES, $this->packIds($options['spouseRoles'] ?? []));
+        $this->saveIdList($user, self::HEAD_ROLES, $options['headRoles'] ?? []);
+        $this->saveIdList($user, self::SPOUSE_ROLES, $options['spouseRoles'] ?? []);
         $user->setSetting(self::SHOW, $this->packShow((array) ($options['show'] ?? [])));
-        $user->setSetting(self::CUSTOM_FIELDS, $this->packIds($options['customFieldOrders'] ?? []));
+        $this->saveIdList($user, self::CUSTOM_FIELDS, $options['customFieldOrders'] ?? []);
         $user->setSetting(self::SAVED, '1');
     }
 
     public function clear(User $user): void
     {
-        foreach (self::settingNames() as $name) {
-            $user->setSetting($name, '');
+        foreach (self::listSettingBases() as $base) {
+            $this->clearIdList($user, $base);
         }
+        $user->setSetting(self::EXCLUDE_INACTIVE, '');
+        $user->setSetting(self::SHOW, '');
+        $user->setSetting(self::SAVED, '');
     }
 
     public function hasSaved(User $user): bool
@@ -108,23 +131,82 @@ class DirectoryReportPreferences
         }
 
         return [
-            'classifications' => $this->unpackIds($user->getSettingValue(self::CLASSIFICATIONS)),
-            'groups' => $this->unpackIds($user->getSettingValue(self::GROUPS)),
+            'classifications' => $this->loadIdList($user, self::CLASSIFICATIONS),
+            'groups' => $this->loadIdList($user, self::GROUPS),
             'excludeInactive' => $user->getSettingValue(self::EXCLUDE_INACTIVE) === '1',
-            'headRoles' => $this->unpackIds($user->getSettingValue(self::HEAD_ROLES)),
-            'spouseRoles' => $this->unpackIds($user->getSettingValue(self::SPOUSE_ROLES)),
+            'headRoles' => $this->loadIdList($user, self::HEAD_ROLES),
+            'spouseRoles' => $this->loadIdList($user, self::SPOUSE_ROLES),
             'show' => $this->unpackShow($user->getSettingValue(self::SHOW)),
-            'customFieldOrders' => $this->unpackIds($user->getSettingValue(self::CUSTOM_FIELDS)),
+            'customFieldOrders' => $this->loadIdList($user, self::CUSTOM_FIELDS),
         ];
     }
 
     /**
      * @param array<int|string> $ids
      */
-    private function packIds(array $ids): string
+    private function saveIdList(User $user, string $base, array $ids): void
     {
+        $chunks = $this->chunkIds($ids);
+        $previous = $user->getSettingValue($base);
+        $previousCount = ctype_digit($previous) ? (int) $previous : 0;
+        $count = max(count($chunks), 1);
+        $clearUntil = max($previousCount, $count);
+
+        for ($i = 1; $i <= $clearUntil; $i++) {
+            $user->setSetting($base . '.' . $i, $chunks[$i - 1] ?? '');
+        }
+        $user->setSetting($base, (string) $count);
+    }
+
+    /**
+     * @return list<int>
+     */
+    private function loadIdList(User $user, string $base): array
+    {
+        $raw = $user->getSettingValue($base);
+        // Legacy single-value writes stored the CSV in the base key itself.
+        if ($raw !== '' && !ctype_digit($raw)) {
+            return $this->unpackIds($raw);
+        }
+
+        $count = $raw === '' ? 0 : (int) $raw;
+        if ($count < 1) {
+            return [];
+        }
+
+        $ids = [];
+        for ($i = 1; $i <= $count; $i++) {
+            foreach ($this->unpackIds($user->getSettingValue($base . '.' . $i)) as $id) {
+                $ids[] = $id;
+            }
+        }
+
+        return $ids;
+    }
+
+    private function clearIdList(User $user, string $base): void
+    {
+        $raw = $user->getSettingValue($base);
+        $count = ctype_digit($raw) ? (int) $raw : 0;
+        $clearUntil = max($count, 1);
+        for ($i = 1; $i <= $clearUntil; $i++) {
+            $user->setSetting($base . '.' . $i, '');
+        }
+        $user->setSetting($base, '');
+    }
+
+    /**
+     * Split IDs into CSV chunks that each fit in VARCHAR(50). Never drops IDs.
+     *
+     * @param array<int|string> $ids
+     * @return list<string>
+     */
+    private function chunkIds(array $ids): array
+    {
+        $chunks = [];
         $parts = [];
         $length = 0;
+
         foreach ($ids as $id) {
             if (!is_numeric($id)) {
                 continue;
@@ -132,13 +214,22 @@ class DirectoryReportPreferences
             $piece = (string) (int) $id;
             $extra = $parts === [] ? strlen($piece) : strlen($piece) + 1;
             if ($length + $extra > self::MAX_VALUE) {
-                break;
+                if ($parts !== []) {
+                    $chunks[] = implode(',', $parts);
+                }
+                $parts = [$piece];
+                $length = strlen($piece);
+                continue;
             }
             $parts[] = $piece;
             $length += $extra;
         }
 
-        return implode(',', $parts);
+        if ($parts !== []) {
+            $chunks[] = implode(',', $parts);
+        }
+
+        return $chunks;
     }
 
     /**
