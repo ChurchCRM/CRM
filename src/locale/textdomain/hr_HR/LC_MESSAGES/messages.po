@@ -2135,10 +2135,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Ovo će prepisati obiteljske brojeve kuverta u bazi podataka s onima odabranim na ovoj stranici. Nastaviti?"
 
 #: 
-msgid "Family Select"
-msgstr "Odabir obitelji"
-
-#: 
 msgid "Welcome to"
 msgstr "Dobrodošli u"
 
@@ -15490,10 +15486,6 @@ msgid "user"
 msgstr "korisnik"
 
 #: 
-msgid "with at least one"
-msgstr "s najmanje jednim"
-
-#: 
 msgid "Also send to church address ({{email}})"
 msgstr "Pošalji i na adresu crkve ({{email}})"
 
@@ -17266,10 +17258,6 @@ msgstr "Prikupljeno ove fiskalne godine"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s mora biti potpuna https:// web adresa, na primjer https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Račun ima ograničena dopuštenja. Obratite se administratoru."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -22537,10 +22525,6 @@ msgid "Search by family name or envelope #"
 msgstr "Pretraži po imenu obitelji ili br. omotnice"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Nije moguće izbrisati obitelj koja ima zavjete ili uplate. Prvo premjestite ili uklonite financijske zapise."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Ne možete izbrisati vlastiti račun."
 
@@ -27253,4 +27237,689 @@ msgstr "Vaši su podaci vaši. Ovo izvještava o softveru, nikad o vašoj crkvi 
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Vaši su podaci vaši. Kako bi brojio instalacije, ChurchCRM prijavljuje da je instaliran ili nadograđen i je li to uspjelo, prijavu jednom dnevno tijekom korištenja te broj verzije, vašu državu, vrstu baze podataka i nasumični ID instalacije. Nikad ne prijavljuje podatke o članovima, darovima ili druge podatke crkve, naziv vaše crkve, vašu web adresu ili naziv poslužitelja niti adrese e-pošte. To možete isključiti u bilo kojem trenutku u Administracija → Telemetrija; neuspjela instalacija ili nadogradnja i dalje se prijavljuje. Upozorenja, pojedinosti o pogreškama i pregledi stranica dijele se samo ako to odaberete."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d uplata je još otvorena. Zatvorite je kako bi svaki dar bio konačan prije slanja izvještaja."
+msgstr[1] "%1$s: %2$d uplate su još otvorene. Zatvorite ih kako bi svaki dar bio konačan prije slanja izvještaja."
+msgstr[2] "%1$s: %2$d uplata je još otvoreno. Zatvorite ih kako bi svaki dar bio konačan prije slanja izvještaja."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "Spremljen je %d broj omotnice."
+msgstr[1] "Spremljena su %d broja omotnica."
+msgstr[2] "Spremljeno je %d brojeva omotnica."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d obitelj"
+msgstr[1] "%d obitelji"
+msgstr[2] "%d obitelji"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: sve uplate su zatvorene. Izvještaji su spremni za pripremu."
+
+#: 
+msgid "12 months"
+msgstr "12 mjeseci"
+
+#: 
+msgid "30 days"
+msgstr "30 dana"
+
+#: 
+msgid "90 days"
+msgstr "90 dana"
+
+#: 
+msgid "Add Property"
+msgstr "Dodaj svojstvo"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Dodajte još nekoliko znakova ili simbol."
+
+#: 
+msgid "Add and edit events"
+msgstr "Dodavanje i uređivanje događaja"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Dodajte više znakova ili upotrijebite brojeve i simbole."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Dodajte više znakova te kombinirajte velika i mala slova, brojeve i simbole."
+
+#: 
+msgid "Add people and families"
+msgstr "Dodavanje osoba i obitelji"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Administratori imaju sva dopuštenja dok je značajka uključena."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Onemogući i prijavu kako ne bi mogli koristiti portal za članove"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Prije slanja izvještaja"
+
+#: 
+msgid "Birthday today"
+msgstr "Danas ima rođendan"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Nije moguće stvoriti privatnu datoteku poreznog potpisa. Provjerite može li se pisati u mapu za pohranu."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Nije moguće stvoriti mapu %s za pohranu poreznog potpisa. Pobrinite se da web poslužitelj može pisati u nju ili postavite mapu s pravom pisanja u postavci putanje pohrane poreznog potpisa."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Obitelj koja ima obveze ili uplate ne može se izbrisati. Umjesto toga deaktivirajte obitelj kako biste sačuvali financijsku povijest. Financijske zapise premjestite samo ako je prikladno."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Nije moguće kodirati privatni porezni potpis."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Polje se ne može pomaknuti u tom smjeru"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Nije moguće pročitati privatni porezni potpis."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Nije moguće ukloniti privatni potpis."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Nije moguće ukloniti privatnu datoteku poreznog potpisa."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Nije moguće odrediti mapu aplikacije za pohranu poreznog potpisa."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Nije moguće pohraniti privatni potpis."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Nije moguće zapisati zaštitu pristupa %s u mapu za pohranu poreznog potpisa."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Promijeni ulogu odabranih članova: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Fiskalna godina crkve"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "Provjera sustava ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "Prilagođeno polje nije pronađeno"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Umjesto toga deaktiviraj obitelj"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Deaktivirajte obitelj umjesto da je brišete."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Deaktivirajte osobu umjesto da je brišete."
+
+#: 
+msgid "Delete people and families"
+msgstr "Brisanje osoba i obitelji"
+
+#: 
+msgid "Delete the login for"
+msgstr "Izbriši prijavu za"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Vremenski raspon grafikona uplata"
+
+#: 
+msgid "Disabled at"
+msgstr "Onemogućeno"
+
+#: 
+msgid "Disabled by"
+msgstr "Onemogućio/la"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Preuzimanje šalje sve darovatelje u godini. Pregled i filtar prvo prikazuje zbrojeve i omogućuje sužavanje po obitelji, fondu, razredu ili datumu."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Duplikat broja omotnice"
+
+#: 
+msgid "Edit people and families"
+msgstr "Uređivanje osoba i obitelji"
+
+#: 
+msgid "Email people and groups"
+msgstr "Slanje e-pošte osobama i grupama"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Omogućite nedostajuća PHP proširenja u konfiguraciji web poslužitelja, ponovno pokrenite web poslužitelj i ponovno učitajte ovu stranicu. Ako koristite hosting, zamolite pružatelja da omogući navedena proširenja."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Ručno unesite ključ za postavljanje"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Unesite početni broj od 0 do %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Uključi cijeli zaslon"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Unesite ovaj ključ u svoju aplikaciju za autentifikaciju ili upravitelj lozinki koristeći vremenski utemeljene (TOTP) 6-znamenkaste kodove s intervalom od 30 sekundi. Čuvajte ovaj ključ privatnim."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Unesite korisničko ime ili e-adresu"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Brojevi omotnica moraju biti cijeli brojevi od 0 do %d. Ništa nije spremljeno."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Događaji su isključeni za ovu crkvu"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Izađi iz cijelog zaslona"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Brisanje prilagođenog polja nije uspjelo"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Premještanje prilagođenog polja nije uspjelo"
+
+#: 
+msgid "Fair"
+msgstr "Zadovoljavajuće"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Obitelji koje su se obvezale za %s, a nemaju obvezu za %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Obitelji s barem jednim članom u"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Financije su isključene za ovu crkvu"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Pronađite obitelji koje su se obvezale u jednoj fiskalnoj godini, a u drugoj nisu."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Mapa u kojoj se pohranjuje privatni potpis na izvještajima o darovima. Ostavite prazno za uporabu ugrađene privatne mape Images/TaxSignatures, koja blokira izravan pristup webom. Za drugu mapu unesite apsolutnu putanju izvan mape ChurchCRM u koju web poslužitelj može pisati."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Prikupljanje sredstava isključeno je za ovu crkvu"
+
+#: 
+msgid "Good"
+msgstr "Dobro"
+
+#: 
+msgid "Have an email"
+msgstr "Imaju e-adresu"
+
+#: 
+msgid "Hide setup key"
+msgstr "Sakrij ključ za postavljanje"
+
+#: 
+msgid "How to respond"
+msgstr "Kako odgovoriti"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Ideje koje čekaju vaš pregled"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Neaktivne obitelji su izostavljene. Uplate se ne računaju kao obveze."
+
+#: 
+msgid "Invalid request."
+msgstr "Nevažeći zahtjev."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Nevažeći podaci slike potpisa."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Nevažeći pohranjeni identifikator poreznog potpisa."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Nevažeća pohrana poreznog potpisa."
+
+#: 
+msgid "Last successful login"
+msgstr "Posljednja uspješna prijava"
+
+#: 
+msgid "Lockout state"
+msgstr "Stanje zaključavanja"
+
+#: 
+msgid "Login deleted"
+msgstr "Prijava izbrisana"
+
+#: 
+msgid "Mail only"
+msgstr "Samo pošta"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Upravljaj svim službama"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Članovi premješteni u ulogu {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Članovi koji nisu promijenjeni jer su napustili grupu ili njihovom ulogom upravlja služba: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Koordinator službe"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Minute do automatskog otključavanja"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Nedostajuće obveze"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Nemate GitHub račun? Javite nam na Discordu"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Nijedna aktivna obitelj nije se obvezala za %s bez obveze za %s."
+
+#: 
+msgid "No families found."
+msgstr "Nisu pronađene obitelji."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Nije dodijeljena služba"
+
+#: 
+msgid "No open deposit"
+msgstr "Nema otvorene uplate"
+
+#: 
+msgid "No pledge for"
+msgstr "Nema obveze za"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Nije dodijeljeno ovom računu"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Ne vodi tim volontera"
+
+#: 
+msgid "Not locked"
+msgstr "Nije zaključano"
+
+#: 
+msgid "Number of Payments"
+msgstr "Broj uplata"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Jedna minuta. Ne dijelimo ono što pošaljete."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Otvorite ideju. Glasajte s 👍 ako je vašoj crkvi potrebna i dodajte kratak komentar o tome kako danas radite."
+
+#: 
+msgid "Open deposit"
+msgstr "Otvorena uplata"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Potrebna promjena lozinke pri sljedećoj prijavi"
+
+#: 
+msgid "Password strength"
+msgstr "Jačina lozinke"
+
+#: 
+msgid "People & Families"
+msgstr "Osobe i obitelji"
+
+#: 
+msgid "Pledged for"
+msgstr "Obvezano za"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Pripremi izvještaje o darovima"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Pregled primjera pisma"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Privatni identifikator potpisa na kanadskim izvještajima o darovima. Upravlja se prijenosom potpisa."
+
+#: 
+msgid "Property Type"
+msgstr "Vrsta svojstva"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Navedite samo podatke slike potpisa u formatu PNG ili JPEG."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Zabilježena povijest: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Prijavi problem"
+
+#: 
+msgid "Requirement"
+msgstr "Zahtjev"
+
+#: 
+msgid "Return Home"
+msgstr "Povratak na početnu"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Pregledajte fiskalnu godinu, a zatim preuzmite izvještaje o darovima."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Pregledaj i zatvori uplatu"
+
+#: 
+msgid "Review and Filter"
+msgstr "Pregled i filtar"
+
+#: 
+msgid "Review and vote"
+msgstr "Pregledaj i glasaj"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Pregledajte godinu, a zatim preuzmite izvještaje o darovima."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Pogledajte što razmatramo"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Uloge i dopuštenja"
+
+#: 
+msgid "Select at least one member."
+msgstr "Odaberite barem jednog člana."
+
+#: 
+msgid "Setup key"
+msgstr "Ključ za postavljanje"
+
+#: 
+msgid "Sign-in status"
+msgstr "Status prijave"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Mapa za pohranu potpisa"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Potpis je ažuriran, ali prethodna privatna datoteka potpisa nije mogla biti uklonjena."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Nedostaju neki PHP zahtjevi. ChurchCRM ih treba prije nego što može nastaviti."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Započnite uplatu, a zatim joj dodajte svako plaćanje."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Početni broj omotnice"
+
+#: 
+msgid "Strong"
+msgstr "Jaka"
+
+#: 
+msgid "Support"
+msgstr "Podrška"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Postavke poreznog ID-a i PDF-a"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Popis nije mogao biti učitan. Ideje i dalje možete otvoriti na GitHubu."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Naziv može imati najviše %d znakova"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Tražena stranica nije pronađena. Možda je premještena, preimenovana ili više ne postoji."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Upit može imati najviše %d znakova"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Odabrani članovi već imaju tu ulogu."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Slika potpisa nije mogla biti dekodirana."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Slika potpisa ne smije biti veća od 2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Slika potpisa mora stati u 2000 × 1000 piksela."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Web poslužitelj ne može pisati u mapu %s za pohranu poreznog potpisa."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Mapa za pohranu poreznog potpisa ne može biti simbolička veza."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Putanja pohrane poreznog potpisa mora biti izvan mape ChurchCRM. Ostavite postavku praznom za uporabu ugrađene privatne mape."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Postavka putanje pohrane poreznog potpisa mora biti apsolutna putanja mape."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Ovi brojevi omotnica neće biti spremljeni dok ne odaberete Ažuriraj zapise obitelji."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Ne mogu se prijaviti kao osoblje ni na portal za članove, a njihove sesije, uređaji i pristupni ključevi bit će uklonjeni."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Ova obitelj ne može se izbrisati jer ima bilješke. Umjesto toga deaktivirajte obitelj kako biste sačuvali njezinu povijest."
+
+#: 
+msgid "This password looks strong."
+msgstr "Ova lozinka izgleda jako."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Ova osoba ne može se izbrisati jer ima zabilježene aktivnosti. Umjesto toga deaktivirajte osobu kako biste sačuvali njezinu povijest."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Ovo uklanja samo prijavu. Osoba i njezine bilješke ostaju."
+
+#: 
+msgid "Time Range"
+msgstr "Vremenski raspon"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Dvofaktorska autentifikacija postavljena"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Automatsko kopiranje nije moguće. Odaberite i ručno kopirajte ključ za postavljanje."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Prenesite sliku potpisa u formatu PNG ili JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Za promjenu ove postavke upotrijebite prijenos ili uklanjanje potpisa."
+
+#: 
+msgid "User Details"
+msgstr "Podaci o korisniku"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Korisničko ime ili e-adresa"
+
+#: 
+msgid "View all ideas"
+msgstr "Prikaži sve ideje"
+
+#: 
+msgid "View events"
+msgstr "Pregledavanje događaja"
+
+#: 
+msgid "View people and families"
+msgstr "Pregledavanje osoba i obitelji"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Upravljanje volonterima isključeno je za ovu crkvu"
+
+#: 
+msgid "Weak"
+msgstr "Slaba"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Što ovaj račun trenutno može raditi (samo za čitanje)"
+
+#: 
+msgid "You must select a class"
+msgstr "Morate odabrati razred"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Fiskalna godina vaše crkve ne počinje 1. siječnja. Porezne uprave često traže potvrde za kalendarsku godinu: odaberite Pregled i filtar i postavite datume na 1. siječnja – 31. prosinca."
+
+#: 
+msgid "attendance"
+msgstr "prisutnost"
+
+#: 
+msgid "financial history"
+msgstr "financijska povijest"
+
+#: 
+msgid "notes"
+msgstr "bilješke"
+
+#: 
+msgid "recorded activities"
+msgstr "zabilježene aktivnosti"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "API ključ sistemskog korisnika ponovno je generiran"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "sistemski korisnik poništio je lozinku putem poveznice iz e-pošte"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "sistemski korisnik isključio je dvofaktorsku autentifikaciju"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "sistemski korisnik uključio je dvofaktorsku autentifikaciju"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "administrator je isključio dvofaktorsku autentifikaciju sistemskog korisnika"
+
+#: 
+msgid "volunteer service history"
+msgstr "povijest volonterske službe"
 

@@ -29,11 +29,8 @@
  *   person 900 `plainauth.api.key`              no volunteer rights → 403
  *
  * The team leader is person 902, an ordinary staff account, because this spec is
- * about the COORDINATOR dashboard. Since the D14 revision (#9867) an
- * EditSelf-exclusive account may hold a `team` scope and be a team leader — but
- * it still cannot open this dashboard: `User::isVolunteerCoordinatorEnabled()`
- * keeps its own EditSelf short-circuit, and that account leads its team from the
- * Member Portal instead. `private.volunteer.scopes.spec.js` covers that persona.
+ * about the COORDINATOR dashboard. Members lead their teams through the Member Portal;
+ * `private.volunteer.scopes.spec.js` covers that persona.
  *
  * Cleanup runs in `before` as well as `after` (cypress-testing.md): an `after`
  * hook does not run when the runner crashes mid-spec. Deletion order is FK-safe.

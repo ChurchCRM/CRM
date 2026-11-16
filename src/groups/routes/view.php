@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerMinistryQuery;
+use ChurchCRM\Service\FlashService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
@@ -155,10 +156,10 @@ function viewGroup(Request $request, Response $response, array $args): Response
     // ------------------------------------------------------------------ //
     $sGlobalMessage      = '';
     $sGlobalMessageClass = 'success';
-    if (isset($_SESSION['sGlobalMessage'])) {
-        $sGlobalMessage      = $_SESSION['sGlobalMessage'];
-        $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
-        unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
+    $flash = FlashService::take();
+    if ($flash !== null) {
+        $sGlobalMessage      = $flash['message'];
+        $sGlobalMessageClass = $flash['class'];
         // Include/Footer.php interpolates these values directly into a JS
         // double-quoted string literal:
         //   showGlobalMessage("... $sGlobalMessage ...", "... $sGlobalMessageClass ...")

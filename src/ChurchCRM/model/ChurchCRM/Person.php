@@ -8,7 +8,6 @@ use ChurchCRM\dto\Photo;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Emails\notifications\NewPersonOrFamilyEmail;
-use ChurchCRM\Exceptions\PersonDeletionBlockedException;
 use ChurchCRM\model\ChurchCRM\Base\Person as BasePerson;
 use ChurchCRM\model\ChurchCRM\Map\PersonTableMap;
 use ChurchCRM\PhotoInterface;
@@ -17,6 +16,7 @@ use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Service\CustomFieldService;
 use ChurchCRM\Service\GradeService;
 use ChurchCRM\Service\GroupService;
+use ChurchCRM\Service\PersonDeletionService;
 use ChurchCRM\Service\UserService;
 use ChurchCRM\Utils\AnnualDate;
 use ChurchCRM\Utils\CustomFieldUtils;
@@ -910,10 +910,14 @@ class Person extends BasePerson implements PhotoInterface
 
     public function preDelete(?ConnectionInterface $con = null): bool
     {
-        $blockedReason = $this->getLoginDeletionBlockedReason();
-        if ($blockedReason !== null) {
-            throw new PersonDeletionBlockedException($blockedReason);
-        }
+        PersonDeletionService::assertCanDelete($this, $con);
+
+        EventQuery::create()
+            ->filterByPrimaryContactPersonId($this->getId())
+            ->update(['PrimaryContactPersonId' => null], $con);
+        EventQuery::create()
+            ->filterBySecondaryContactPersonId($this->getId())
+            ->update(['SecondaryContactPersonId' => null], $con);
 
         // Snapshot before the cleanup below removes the rows toArray() reads
         // (the photo behind HasPhoto), so PERSON_DELETED listeners see the
@@ -922,11 +926,8 @@ class Person extends BasePerson implements PhotoInterface
             ? $this->toArray()
             : null;
 
-        // Remove the uploaded image from disk. Call Photo::delete() directly
-        // rather than $this->deletePhoto(), which gates on the current user's
-        // delete-records permission and writes a Note that NoteQuery below
-        // would immediately delete. See GH issue #1697.
-        $this->getPhoto()->delete();
+        // Photo cleanup runs after the deleting API transaction commits.
+        // Unlinking here would not roll back with a failed family cascade.
 
         $obj = Person2group2roleP2g2rQuery::create()->filterByPerson($this)->find($con);
         if ($obj->count() > 0) {
@@ -945,6 +946,10 @@ class Person extends BasePerson implements PhotoInterface
         if ($user !== null) {
             $user->delete($con);
         }
+
+        // Onboarding answers are profile data rather than protected history.
+        // The legacy whycame_why table has no physical FK on person_per.
+        \ChurchCRM\model\ChurchCRM\WhyCameQuery::create()->filterByPerId($this->getId())->delete($con);
 
         PersonVolunteerOpportunityQuery::create()->filterByPersonId($this->getId())->delete($con);
 
@@ -1284,6 +1289,23 @@ class Person extends BasePerson implements PhotoInterface
         }
         $family = $this->getFamily();
         return $family?->getCountry() ?? '';
+    }
+
+    /**
+     * Format the person's physical address with personal-field overrides and
+     * family primary-address fallback. The family's secondary/mailing address
+     * is intentionally kept separate from this physical address.
+     */
+    public function getResolvedAddress(string $separator = ' '): string
+    {
+        return Family::formatAddressBlock([
+            'Address1' => $this->getResolvedAddress1(),
+            'Address2' => $this->getResolvedAddress2(),
+            'City' => $this->getResolvedCity(),
+            'State' => $this->getResolvedState(),
+            'Zip' => $this->getResolvedZip(),
+            'Country' => $this->getResolvedCountry(),
+        ], $separator);
     }
 
     public function getResolvedHomePhone(): string

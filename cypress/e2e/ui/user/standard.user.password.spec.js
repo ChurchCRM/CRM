@@ -75,6 +75,24 @@ describe("Standard User Password", () => {
         cy.get("#NewPassword1").should("have.value", "changeyou");
     });
 
+    it("Shows a password strength meter while typing", () => {
+        cy.visit("/account/password");
+        cy.get("#PasswordStrengthContainer").should("not.be.visible");
+        cy.get("#NewPassword1").type("abc");
+        cy.get("#PasswordStrengthContainer").should("be.visible");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Weak");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "25");
+        cy.get("#PasswordStrengthHint").should("not.be.empty");
+        cy.get("#NewPassword1").clear().type("P@ssw0rd!2026");
+        cy.get("#PasswordStrengthLabel").should("have.text", "Strong");
+        cy.get("#PasswordStrengthBar").should("have.attr", "aria-valuenow", "100");
+        cy.get("#NewPassword2").type("P@ssw0rd!2027");
+        cy.get("#passwordChangeForm").submit();
+        cy.get("#NewPasswordError").should("have.text", "You must enter the same password in both boxes");
+        cy.get("#NewPassword1").clear();
+        cy.get("#PasswordStrengthContainer").should("not.be.visible");
+    });
+
     it("Server refuses a confirmation that does not match", () => {
         cy.visit("/account/password");
         cy.get("input[name=csrf_token]")

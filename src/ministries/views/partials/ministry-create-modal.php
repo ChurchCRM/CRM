@@ -42,9 +42,7 @@ use ChurchCRM\Utils\InputUtils;
           </label>
           <div class="form-text"><?= gettext('Turn this on for a ministry whose teams teach Sunday School classes. Its teams can then be linked to a class, and its schedules and events can use one.') ?></div>
         </div>
-        <div class="alert alert-danger d-none" role="alert" id="ministry-create-form-error">
-          <i class="fa-solid fa-circle-exclamation me-1"></i><span class="volunteer-error-text"></span>
-        </div>
+        <div class="d-none" id="ministry-create-form-error"></div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"><?= gettext('Cancel') ?></button>
