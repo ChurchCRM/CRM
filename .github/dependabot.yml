@@ -94,6 +94,12 @@ updates:
     commit-message:
       prefix: "chore(deps)"
     open-pull-requests-limit: 5
+    ignore:
+      # Pinned at 2.7.0: perpl 2.8+ breaks the app at runtime (PR #11635 —
+      # 8 of 10 Cypress shards fail). Root cause tracked in #11672; remove
+      # this entry when that issue resolves and the upgrade is taken.
+      - dependency-name: "perplorm/perpl"
+        versions: [">= 2.8.0, < 3.0.0"]
     groups:
       # Named groups come first; the dev and runtime minor/patch groups take the
       # rest.
