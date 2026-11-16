@@ -55,22 +55,44 @@ export const countWhyCame = (personId) =>
     query("SELECT COUNT(*) AS n FROM whycame_why WHERE why_per_ID = ?", [personId])
         .then((rows) => Number(rows[0].n));
 
-// Select a seeded volunteer occurrence/position. The API test stack seeds
-// volunteer v2 rows; these fixture-only inserts exercise the legacy statuses.
+const FIXTURE_MINISTRY = "Deletion history fixture";
+
+// The test stack seeds no volunteer schedule, so the fixture owns one ministry
+// with a team, position and occurrence. Removing the ministry cascades to all of it.
+const ensureVolunteerOccurrence = () =>
+    query("SELECT vmin_ID FROM volunteer_ministry_vmin WHERE vmin_Name = ?", [FIXTURE_MINISTRY]).then((found) => {
+        if (found.length === 0) {
+            return query("INSERT INTO volunteer_ministry_vmin (vmin_Name, vmin_CreatedDate) VALUES (?, NOW())", [FIXTURE_MINISTRY])
+                .then(() => query("SELECT vmin_ID FROM volunteer_ministry_vmin WHERE vmin_Name = ?", [FIXTURE_MINISTRY]))
+                .then((rows) => Number(rows[0].vmin_ID))
+                .then((ministryId) =>
+                    query("INSERT INTO volunteer_team_vtem (vtem_vmin_ID, vtem_Name) VALUES (?, ?)", [ministryId, FIXTURE_MINISTRY])
+                        .then(() => query("SELECT vtem_ID FROM volunteer_team_vtem WHERE vtem_vmin_ID = ?", [ministryId]))
+                        .then((teams) => Number(teams[0].vtem_ID))
+                        .then((teamId) =>
+                            query("INSERT INTO volunteer_position_vpos (vpos_vmin_ID, vpos_vtem_ID, vpos_Name) VALUES (?, ?, ?)", [ministryId, teamId, FIXTURE_MINISTRY])
+                                .then(() => query("INSERT INTO volunteer_schedule_vsch (vsch_vmin_ID, vsch_vtem_ID, vsch_Name, vsch_LinkMode, vsch_WindowStart) VALUES (?, ?, ?, 'ministry', CURDATE())", [ministryId, teamId, FIXTURE_MINISTRY])),
+                        )
+                        .then(() => query("SELECT vsch_ID FROM volunteer_schedule_vsch WHERE vsch_vmin_ID = ?", [ministryId]))
+                        .then((schedules) => query("INSERT INTO volunteer_occurrence_vocc (vocc_vsch_ID, vocc_OccurrenceDate, vocc_GeneratedDate) VALUES (?, CURDATE(), NOW())", [schedules[0].vsch_ID])),
+                );
+        }
+        return null;
+    }).then(() =>
+        query("SELECT o.vocc_ID, p.vpos_ID FROM volunteer_ministry_vmin m JOIN volunteer_position_vpos p ON p.vpos_vmin_ID = m.vmin_ID JOIN volunteer_schedule_vsch s ON s.vsch_vmin_ID = m.vmin_ID JOIN volunteer_occurrence_vocc o ON o.vocc_vsch_ID = s.vsch_ID WHERE m.vmin_Name = ? LIMIT 1", [FIXTURE_MINISTRY]),
+    ).then((rows) => {
+        expect(rows, "volunteer fixture occurrence").to.have.length(1);
+        return rows[0];
+    });
+
 export const recordVolunteerAssignment = (personId, status) => {
     expect(status).to.be.oneOf(["pending", "accepted", "declined", "cancelled", "substituted", "completed"]);
-    return query("SELECT vocc_ID FROM volunteer_occurrence_vocc ORDER BY vocc_ID LIMIT 1")
-        .then((occurrences) => {
-            expect(occurrences, "seeded volunteer occurrence").to.have.length.greaterThan(0);
-            return query("SELECT vpos_ID FROM volunteer_position_vpos ORDER BY vpos_ID LIMIT 1")
-                .then((positions) => {
-                    expect(positions, "seeded volunteer position").to.have.length.greaterThan(0);
-                    return query(
-                        "INSERT INTO volunteer_assignment_vasg (vasg_vocc_ID, vasg_vpos_ID, vasg_per_ID, vasg_Status, vasg_AssignedDate) VALUES (?, ?, ?, ?, NOW())",
-                        [occurrences[0].vocc_ID, positions[0].vpos_ID, personId, status],
-                    );
-                });
-        });
+    return ensureVolunteerOccurrence().then(({ vocc_ID, vpos_ID }) =>
+        query(
+            "INSERT INTO volunteer_assignment_vasg (vasg_vocc_ID, vasg_vpos_ID, vasg_per_ID, vasg_Status, vasg_AssignedDate) VALUES (?, ?, ?, ?, NOW())",
+            [vocc_ID, vpos_ID, personId, status],
+        ),
+    );
 };
 
 export const recordVolunteerResponse = (personId, status = "declined", responderId = personId) =>
@@ -132,7 +154,8 @@ export const cleanupDeletionFixture = (personId, propertyId) =>
         .then(() => query("DELETE FROM person2group2role_p2g2r WHERE p2g2r_per_ID = ?", [personId]))
         .then(() => query("DELETE FROM person2volunteeropp_p2vo WHERE p2vo_per_ID = ?", [personId]))
         .then(() => query("DELETE FROM record2property_r2p WHERE r2p_pro_ID = ? AND r2p_record_ID = ?", [propertyId, personId]))
-        .then(() => query("DELETE FROM property_pro WHERE pro_ID = ?", [propertyId]));
+        .then(() => query("DELETE FROM property_pro WHERE pro_ID = ?", [propertyId]))
+        .then(() => query("DELETE FROM volunteer_ministry_vmin WHERE vmin_Name = ?", [FIXTURE_MINISTRY]));
 
 // Remove the history rows that block deleting test people, so a spec that leaves
 // photos, grades, kiosk check-ins or logins behind can still clean up through HTTP.
