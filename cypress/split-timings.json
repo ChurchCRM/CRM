@@ -2025,10 +2025,6 @@
       "duration": 12000
     },
     {
-      "spec": "cypress/e2e/ui/security/limited-access.spec.js",
-      "duration": 6000
-    },
-    {
       "spec": "cypress/e2e/ui/security/persona-sessions.spec.js",
       "duration": 20000
     },

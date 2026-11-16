@@ -16,9 +16,9 @@ use Slim\Routing\RouteCollectorProxy;
  */
 
 $allowedKeys = [
-    'sTaxReport1',
-    'sTaxReport2',
-    'sTaxReport3',
+    'sGivingStatementOpening',
+    'sGivingStatementClosing',
+    'sGivingStatementQuestions',
     'sTaxSigner',
     'sChurchTaxId',
     'iPDFOutputType',

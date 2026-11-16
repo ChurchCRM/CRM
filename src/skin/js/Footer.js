@@ -195,6 +195,7 @@ function initializeApp() {
 
   // Load open deposit count once on page load (replaces session-cached badge)
   window.CRM.dashboard?.loadOpenDepositCount();
+  window.CRM.dashboard?.loadCommunityFeedback();
 
   window.CRM.dashboard?.loadSelfRegisterPendingCount();
 

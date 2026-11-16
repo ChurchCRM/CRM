@@ -144,7 +144,7 @@ describe("Person Attendance History API", () => {
 
     context("GET /api/attendance/person/:id — 403 IDOR (noperm.user)", () => {
         it("returns 403 when caller cannot edit the target person (IDOR)", () => {
-            // noperm.user has usr_EditRecords=0, usr_EditSelf=0, usr_Admin=0
+            // noperm.user has usr_EditRecords=0, usr_Admin=0
             // → canEditPerson(anyone else) returns false → strict 403.
             cy.makePrivateNoPermAPICall("GET", "/api/attendance/person/26", null, 403);
         });

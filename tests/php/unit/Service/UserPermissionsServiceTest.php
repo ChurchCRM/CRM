@@ -5,6 +5,7 @@ declare(strict_types=1);
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\Service\UserPermissionsService;
+use ChurchCRM\Portal\Auth\PortalMemberUser;
 use Tester\Assert;
 
 require dirname(__DIR__, 2) . '/bootstrap.php';
@@ -42,10 +43,10 @@ Assert::true($admin['Add and edit events']['granted']);
 Assert::same('Volunteer Management is turned off for this church', $admin['Manage all ministries']['reason']);
 Assert::true($admin['Email people and groups']['granted']);
 
-$member = $rows((new User())->setAdmin(false)->setEditSelf(true)->setAddRecords(true)->setManageFundraisers(true));
-Assert::false($member['Add people and families']['granted'], 'a self-service account holds no staff permission, whatever its flags say');
-Assert::same('This account uses the Member Portal only', $member['Add people and families']['reason']);
-Assert::same('This account uses the Member Portal only', $member['Manage Fundraisers']['reason']);
+$member = $rows(PortalMemberUser::forPerson(1)->setAddRecords(true)->setManageFundraisers(true));
+Assert::false($member['Add people and families']['granted'], 'a portal principal holds no staff permission, whatever its flags say');
+Assert::same('Not granted to this account', $member['Add people and families']['reason']);
+Assert::same('Not granted to this account', $member['Manage Fundraisers']['reason']);
 Assert::same('Finance is turned off for this church', $member['Manage Donations and Finance']['reason']);
 Assert::same('Events are turned off for this church', $member['Add and edit events']['reason']);
 

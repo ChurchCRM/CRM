@@ -2156,10 +2156,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Ini akan menimpa nomor amplop keluarga dalam database dengan yang dipilih pada halaman ini. Terus?"
 
 #: 
-msgid "Family Select"
-msgstr "Keluarga Pilih"
-
-#: 
 msgid "Welcome to"
 msgstr "Selamat Datang di"
 
@@ -2458,10 +2454,6 @@ msgstr "Lihat Semua Setoran"
 #: 
 msgid "Deposit Reports"
 msgstr "Laporan Setoran"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Edit Slip Setoran"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6059,14 +6051,6 @@ msgid "Close All Deposits"
 msgstr "Tutup Semua Setoran"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Ditutup vs Total"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Selesaikan tugas ini untuk memastikan pelaporan donasi akhir tahun yang akurat."
-
-#: 
 msgid "Configure Email"
 msgstr "Konfigurasi Email"
 
@@ -6083,28 +6067,12 @@ msgid "Create First Deposit"
 msgstr "Buat Setoran Pertama"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Buat atau buka setoran terlebih dahulu"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Buat atau pilih setoran untuk memulai."
-
-#: 
-msgid "Current Deposit"
-msgstr "Setoran Saat Ini"
-
-#: 
 msgid "Day"
 msgstr "Hari"
 
 #: 
 msgid "Dec"
 msgstr "Des"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Statistik Setoran"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6133,10 +6101,6 @@ msgstr "Ubah Pembayaran"
 #: 
 msgid "Edit Person"
 msgstr "Ubah Jemaat"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Pastikan semua setoran tahun tersebut telah ditutup sebelum membuat laporan."
 
 #: 
 msgid "F"
@@ -6243,10 +6207,6 @@ msgid "New Pledge"
 msgstr "Janji Iman Baru"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Tidak Ada Setoran Aktif"
-
-#: 
 msgid "No active funds configured."
 msgstr "Tidak ada dana aktif yang dikonfigurasi."
 
@@ -6279,10 +6239,6 @@ msgid "Pledge Reports"
 msgstr "Laporan Janji Iman"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Cetak atau kirim email laporan donasi tahunan ke donatur."
-
-#: 
 msgid "Quick Actions"
 msgstr "Tindakan Cepat"
 
@@ -6313,10 +6269,6 @@ msgstr "Pulihkan"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Pulihkan dari cadangan. Menghapus data saat ini."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Tinjau Dana Donasi"
 
 #: 
 msgid "Save and Add New Family"
@@ -6355,14 +6307,6 @@ msgid "System Info"
 msgstr "Info Sistem"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Redaksi Laporan Donasi"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Daftar Periksa Laporan Tahun Pajak"
-
-#: 
 msgid "Total"
 msgstr "Total"
 
@@ -6383,10 +6327,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Pengguna harus Admin atau memiliki izin Keuangan"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Pastikan nama dana dan deskripsi sudah akurat."
-
-#: 
 msgid "YTD Payments"
 msgstr "Pembayaran Tahun Berjalan"
 
@@ -6403,20 +6343,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Ekstensi ZipArchive diperlukan untuk pembaruan"
 
 #: 
-msgid "active"
-msgstr "aktif"
-
-#: 
 msgid "found"
 msgstr "ditemukan"
 
 #: 
 msgid "issues"
 msgstr "masalah"
-
-#: 
-msgid "open"
-msgstr "terbuka"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15393,10 +15325,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Terjemahan ChurchCRM dikelola oleh komunitas di POEditor. Anda dapat membantu dengan"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Setoran Ditutup"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Nilai $URL[0] saat ini"
 
@@ -15537,10 +15465,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Ada orang yang ditugaskan ke Kesempatan Sukarela ini. Penghapusan akan mencabut penugasan"
 
 #: 
-msgid "Total Deposits"
-msgstr "Total Setoran"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Perbarui ke URL yang valid yang"
 
@@ -15567,10 +15491,6 @@ msgstr "untuk dana-dana"
 #: 
 msgid "user"
 msgstr "pengguna"
-
-#: 
-msgid "with at least one"
-msgstr "dengan setidaknya satu"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17341,10 +17261,6 @@ msgstr "Dana Terkumpul Tahun Fiskal Ini"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s harus berupa alamat web https:// yang lengkap, misalnya https://example.org/gerejaanda."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Akun memiliki izin terbatas. Hubungi administrator."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -23968,10 +23884,6 @@ msgid "%s Giving Statement"
 msgstr "Laporan Pemberian %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Sesuaikan teks yang muncul pada laporan pemberian (sTaxReport1, sTaxReport2, dan seterusnya)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -23994,10 +23906,6 @@ msgstr "Kirim surel Laporan Pemberian %s"
 #: 
 msgid "Envelope Numbers"
 msgstr "Nomor Amplop"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Buat Laporan Pemberian"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24038,10 +23946,6 @@ msgstr "Tidak dapat mengirim surel laporan pemberian: keluarga ini tidak memilik
 #: 
 msgid "Undesignated"
 msgstr "Tanpa peruntukan"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Pastikan nama gereja, alamat, dan info kontak muncul pada laporan pemberian."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24256,10 +24160,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d pembayaran belum masuk ke setoran mana pun."
 
 #: 
-msgid "Can be emailed"
-msgstr "Dapat dikirim melalui surel"
-
-#: 
 msgid "Closing line"
 msgstr "Baris penutup"
 
@@ -24288,16 +24188,8 @@ msgid "Opening line"
 msgstr "Baris pembuka"
 
 #: 
-msgid "Print and mail"
-msgstr "Cetak dan kirim pos"
-
-#: 
 msgid "Qty"
 msgstr "Jml"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Tinjau tahun tersebut, lalu cetak atau kirim surel laporan pemberian."
 
 #: 
 msgid "Signed by"
@@ -24306,10 +24198,6 @@ msgstr "Ditandatangani oleh"
 #: 
 msgid "Thank-you line"
 msgstr "Baris terima kasih"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Pastikan nama gereja, alamat, dan info kontak muncul pada laporan pajak."
 
 #: 
 msgid "Year-End Giving"

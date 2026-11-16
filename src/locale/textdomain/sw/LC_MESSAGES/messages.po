@@ -2156,10 +2156,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Hii itafuta nambari za bahasha za familia kwenye hifadhidata na zile zilizochaguliwa kwenye ukurasa huu. Ungependa kuendelea?"
 
 #: 
-msgid "Family Select"
-msgstr "Chagua Familia"
-
-#: 
 msgid "Welcome to"
 msgstr "Karibu"
 
@@ -2456,10 +2452,6 @@ msgstr "Tazama Amana Zote"
 #: 
 msgid "Deposit Reports"
 msgstr "Ripoti za amana"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Badilisha Kipande cha Amana"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6061,14 +6053,6 @@ msgid "Close All Deposits"
 msgstr "Funga Amana Zote"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Zilizofungwa dhidi ya Jumla"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Kamilisha kazi hizi ili kuhakikisha ripoti sahihi za kodi za mwisho wa mwaka kwa wafadhili wako."
-
-#: 
 msgid "Configure Email"
 msgstr "Sanidi Barua Pepe"
 
@@ -6085,28 +6069,12 @@ msgid "Create First Deposit"
 msgstr "Unda Amana ya Kwanza"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Unda au fungua amana kwanza"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Unda au chagua amana ili kuanza."
-
-#: 
-msgid "Current Deposit"
-msgstr "Amana ya Sasa"
-
-#: 
 msgid "Day"
 msgstr "Siku"
 
 #: 
 msgid "Dec"
 msgstr "Des"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Takwimu za Amana"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6135,10 +6103,6 @@ msgstr "Hariri Malipo"
 #: 
 msgid "Edit Person"
 msgstr "Hariri Mtu"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Hakikisha amana zote za mwaka wa kodi zimefungwa kabla ya kutengeneza taarifa."
 
 #: 
 msgid "F"
@@ -6245,10 +6209,6 @@ msgid "New Pledge"
 msgstr "Ahadi Mpya"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Hakuna Amana Inayotumika"
-
-#: 
 msgid "No active funds configured."
 msgstr "Hakuna mifuko inayotumika iliyosanidiwa."
 
@@ -6281,10 +6241,6 @@ msgid "Pledge Reports"
 msgstr "Ripoti za Ahadi"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Chapa au tuma barua pepe za taarifa za utoaji za kila mwaka kwa wafadhili wote."
-
-#: 
 msgid "Quick Actions"
 msgstr "Hatua za Haraka"
 
@@ -6315,10 +6271,6 @@ msgstr "Rejesha"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Rejesha kutoka faili la nakala. Inafuta data zilizopo."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Kagua Mifuko ya Michango"
 
 #: 
 msgid "Save and Add New Family"
@@ -6357,14 +6309,6 @@ msgid "System Info"
 msgstr "Taarifa za Mfumo"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Maandishi ya Ripoti ya Kodi"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Orodha ya Ukaguzi wa Ripoti ya Mwaka wa Kodi"
-
-#: 
 msgid "Total"
 msgstr "Jumla"
 
@@ -6385,10 +6329,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Mtumiaji lazima awe Msimamizi au awe na ruhusa ya Fedha"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Thibitisha majina ya mifuko na maelezo ni sahihi kwa ajili ya taarifa."
-
-#: 
 msgid "YTD Payments"
 msgstr "Malipo ya Mwaka Mpaka Sasa"
 
@@ -6405,20 +6345,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Kiendelezi cha ZipArchive kinahitajika kwa ajili ya sasisho"
 
 #: 
-msgid "active"
-msgstr "hai"
-
-#: 
 msgid "found"
 msgstr "imepatikana"
 
 #: 
 msgid "issues"
 msgstr "matatizo"
-
-#: 
-msgid "open"
-msgstr "wazi"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15404,10 +15336,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Tafsiri za ChurchCRM zinasimamiwa na jamii kwenye POEditor. Unaweza kusaidia kwa"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Amana Zilizofungwa"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Thamani ya sasa ya $URL[0]"
 
@@ -15548,10 +15476,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Kuna watu waliowekwa kwenye Fursa hii ya Kujitolea. Kufuta kutawaacha bila mgawo"
 
 #: 
-msgid "Total Deposits"
-msgstr "Jumla ya Amana"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Isasisha hadi URL halali ambayo"
 
@@ -15578,10 +15502,6 @@ msgstr "kwa mifuko"
 #: 
 msgid "user"
 msgstr "mtumiaji"
-
-#: 
-msgid "with at least one"
-msgstr "na angalau moja"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17354,10 +17274,6 @@ msgstr "Kiasi Kilichokusanywa Mwaka huu wa Fedha"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s lazima iwe anwani kamili ya wavuti ya https://, kwa mfano https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Akaunti ina ruhusa chache. Wasiliana na msimamizi."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -23994,10 +23910,6 @@ msgid "%s Giving Statement"
 msgstr "Taarifa ya utoaji ya %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Badilisha maandishi yanayoonekana kwenye taarifa za utoaji (sTaxReport1, sTaxReport2, n.k.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24020,10 +23932,6 @@ msgstr "Tuma kwa barua pepe taarifa ya utoaji ya %s"
 #: 
 msgid "Envelope Numbers"
 msgstr "Nambari za bahasha"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Tengeneza taarifa za utoaji"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24064,10 +23972,6 @@ msgstr "Imeshindwa kutuma taarifa ya utoaji kwa barua pepe: familia hii haina an
 #: 
 msgid "Undesignated"
 msgstr "Haijateuliwa"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Thibitisha kuwa jina la kanisa, anwani, na maelezo ya mawasiliano yanaonekana kwenye taarifa za utoaji."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24282,10 +24186,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "Malipo %d bado hayako kwenye amana yoyote."
 
 #: 
-msgid "Can be emailed"
-msgstr "Inaweza kutumwa kwa barua pepe"
-
-#: 
 msgid "Closing line"
 msgstr "Mstari wa kufunga"
 
@@ -24314,16 +24214,8 @@ msgid "Opening line"
 msgstr "Mstari wa kufungua"
 
 #: 
-msgid "Print and mail"
-msgstr "Chapisha na tuma kwa barua"
-
-#: 
 msgid "Qty"
 msgstr "Idadi"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Kagua mwaka, kisha chapisha au tuma taarifa za utoaji kwa barua pepe."
 
 #: 
 msgid "Signed by"
@@ -24332,10 +24224,6 @@ msgstr "Imesainiwa na"
 #: 
 msgid "Thank-you line"
 msgstr "Mstari wa shukrani"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Thibitisha kuwa jina la kanisa, anwani, na maelezo ya mawasiliano yanaonekana kwenye taarifa za kodi."
 
 #: 
 msgid "Year-End Giving"

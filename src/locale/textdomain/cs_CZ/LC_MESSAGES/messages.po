@@ -2156,10 +2156,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Tím se čísla obálek rodin v databázi přepíší čísly vybranými na této stránce.  Pokračovat?"
 
 #: 
-msgid "Family Select"
-msgstr "Výběr rodiny"
-
-#: 
 msgid "Welcome to"
 msgstr "Vítá Vás"
 
@@ -2455,10 +2451,6 @@ msgstr "Zobrazit všechny vklady"
 #: 
 msgid "Deposit Reports"
 msgstr "Zprávy o vkladech"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Upravit doklad o vkladu"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6058,14 +6050,6 @@ msgid "Close All Deposits"
 msgstr "Uzavřít všechny vklady"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Uzavřené vs Celkově"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Proveďte tyto úkoly, abyste zajistili přesné vykazování daní na konci roku pro vaše dárce."
-
-#: 
 msgid "Configure Email"
 msgstr "Nastavit e-mail"
 
@@ -6082,28 +6066,12 @@ msgid "Create First Deposit"
 msgstr "Vytvořit první vklad"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Nejdříve vytvořte nebo otevřete vklad"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Vytvořte nebo vyberte vklad, abyste začali."
-
-#: 
-msgid "Current Deposit"
-msgstr "Aktuální vklad"
-
-#: 
 msgid "Day"
 msgstr "den"
 
 #: 
 msgid "Dec"
 msgstr "pro"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Statistika vkladu"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6132,10 +6100,6 @@ msgstr "Upravit platbu"
 #: 
 msgid "Edit Person"
 msgstr "Upravit osobu"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Před vygenerováním výpisů se ujistěte, že jsou všechny vklady za dané daňové období uzavřeny."
 
 #: 
 msgid "F"
@@ -6242,10 +6206,6 @@ msgid "New Pledge"
 msgstr "Nový sálib"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Aktivní vklad"
-
-#: 
 msgid "No active funds configured."
 msgstr "Není nakonfigurován žádný aktivní fond."
 
@@ -6278,10 +6238,6 @@ msgid "Pledge Reports"
 msgstr "Zprávy o sálibě"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Vytiskněte nebo zašlete e-mailem výroční výkazy darů všem dárcům."
-
-#: 
 msgid "Quick Actions"
 msgstr "Rychlé akce"
 
@@ -6312,10 +6268,6 @@ msgstr "Obnovit"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Obnovit ze souboru zálohy. Smaže stávající data."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Zkontrolovat finanČní prostředky darů"
 
 #: 
 msgid "Save and Add New Family"
@@ -6354,14 +6306,6 @@ msgid "System Info"
 msgstr "Informace o systému"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Slovní zpráva o daních"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Kontrolní seznam zprávy daněního roku"
-
-#: 
 msgid "Total"
 msgstr "Celkem"
 
@@ -6382,10 +6326,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Uživatel musí být správcem nebo mít oprávnění Finance"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Ověřte, zda jsou názvy a popisy fondů ve výpisech správné."
-
-#: 
 msgid "YTD Payments"
 msgstr "YTD platby"
 
@@ -6402,20 +6342,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "Pro aktualizace je nutné rozšíření ZipArchive"
 
 #: 
-msgid "active"
-msgstr "aktivní"
-
-#: 
 msgid "found"
 msgstr "nalezeno"
 
 #: 
 msgid "issues"
 msgstr "problémy"
-
-#: 
-msgid "open"
-msgstr "otevřeno"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15410,10 +15342,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "Překlady ChurchCRM spravuje komunita na POEditor. Můžete pomoci"
 
 #: 
-msgid "Closed Deposits"
-msgstr "Uzavřené vklady"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Aktuální hodnota $URL[0]"
 
@@ -15554,10 +15482,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "K této dobrovolnické příležitosti jsou přiřazeny osoby. Smazáním dojde k jejich odebrání"
 
 #: 
-msgid "Total Deposits"
-msgstr "Celkové vklady"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Aktualizujte na platnou URL adresu, která"
 
@@ -15584,10 +15508,6 @@ msgstr "pro fondy"
 #: 
 msgid "user"
 msgstr "uživatel"
-
-#: 
-msgid "with at least one"
-msgstr "s alespoň jedním"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17362,10 +17282,6 @@ msgstr "Vybráno v tomto fiskálním roce"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s musí být úplná webová adresa https://, například https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Účet má omezená oprávnění. Kontaktujte administrátora."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -24015,10 +23931,6 @@ msgid "%s Giving Statement"
 msgstr "Výpis darů %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Přizpůsobte text, který se zobrazuje na výpisech darů (sTaxReport1, sTaxReport2 atd.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24041,10 +23953,6 @@ msgstr "Odeslat výpis darů %s e-mailem"
 #: 
 msgid "Envelope Numbers"
 msgstr "Čísla obálek"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Generovat výpisy darů"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24085,10 +23993,6 @@ msgstr "Nelze odeslat výpis darů e-mailem: tato rodina nemá registrovanou e-m
 #: 
 msgid "Undesignated"
 msgstr "Neurčeno"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Ověřte, že se název církve, adresa a kontaktní údaje zobrazují na výpisech darů."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24303,10 +24207,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "Plateb, které ještě nejsou na žádném vkladu: %d."
 
 #: 
-msgid "Can be emailed"
-msgstr "Lze odeslat e-mailem"
-
-#: 
 msgid "Closing line"
 msgstr "Závěrečná věta"
 
@@ -24335,16 +24235,8 @@ msgid "Opening line"
 msgstr "Úvodní věta"
 
 #: 
-msgid "Print and mail"
-msgstr "Vytisknout a odeslat poštou"
-
-#: 
 msgid "Qty"
 msgstr "Počet"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Zkontrolujte rok a poté vytiskněte nebo odešlete potvrzení o darech."
 
 #: 
 msgid "Signed by"
@@ -24353,10 +24245,6 @@ msgstr "Podepsal(a)"
 #: 
 msgid "Thank-you line"
 msgstr "Poděkování"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Ověřte, že se na daňových potvrzeních zobrazuje název sboru, adresa a kontaktní údaje."
 
 #: 
 msgid "Year-End Giving"

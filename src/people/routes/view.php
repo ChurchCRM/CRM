@@ -48,7 +48,7 @@ $app->post('/view/{personID:[0-9]+}', function (Request $request, Response $resp
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/person/not-found?id=' . $iPersonID);
     }
 
-    if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
+    if (!$currentUser->isEditRecordsEnabled()) {
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/access-denied?role=PersonView');
     }
 
@@ -336,11 +336,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $fam_Name = $personData['fam_Name'] ?? '';
 
     // Edit permission
-    $bOkToEdit = (
-        $currentUser->isEditRecordsEnabled() ||
-        ($currentUser->isEditSelfEnabled() && $iPersonID === $currentUser->getId()) ||
-        ($currentUser->isEditSelfEnabled() && $fam_ID !== '' && (int)$fam_ID === (int)$currentUser->getPerson()->getFamId())
-    );
+    $bOkToEdit = $currentUser->isEditRecordsEnabled();
 
     // ── Map configuration ────────────────────────────────────────────────────
     $personMapConfig = null;

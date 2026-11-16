@@ -11,8 +11,7 @@ describe("Financial Reports", () => {
         cy.visit("/finance/");
         cy.contains("Finance Dashboard");
 
-        // Click Reports from action buttons
-        cy.get('.card a.btn[href$="/finance/reports"]').first().click();
+        cy.get('a[href$="/finance/reports"]').first().click();
         cy.url().should("contain", "/finance/reports");
         cy.contains("Financial Reports");
     });

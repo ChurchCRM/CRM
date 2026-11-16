@@ -375,6 +375,7 @@ $app->group('/system', function (RouteCollectorProxy $group): void {
             'sDear'             => gettext('Greeting'),
             'sConfirmSincerely' => gettext('Closing'),
             'sConfirmSigner'    => gettext('Signer'),
+            'sTaxSignatureStoragePath' => gettext('Signature storage folder'),
         ];
         $letterSettings = array_map(function (array $setting) use ($labels): array {
             $setting['label'] = $labels[$setting['name']];
@@ -892,9 +893,38 @@ function adminViewUserAccount(Request $request, Response $response, array $args)
         throw new HttpNotFoundException($request, gettext('User not found'));
     }
 
-    return (new PhpRenderer(__DIR__ . '/../../account/views/'))->render($response, 'account.php', [
+    $isLocked = $user->isLocked();
+    $canAdminister = AuthenticationManager::getCurrentUser()->isAdmin();
+    $statusRows = [
+        ['label' => gettext('Sign-in status'), 'value' => $user->getSignInBlockedLabel() ?? gettext('Enabled')],
+        ['label' => gettext('Last successful login'), 'value' => $user->getLastLogin(SystemConfig::getValue('sDateTimeFormat')) ?: gettext('Never')],
+        ['label' => gettext('Failed login attempts'), 'value' => (string) $user->getFailedLogins()],
+        ['label' => gettext('Lockout state'), 'value' => $isLocked ? gettext('Locked') : gettext('Not locked')],
+        ['label' => gettext('Password change required at next login'), 'value' => $user->getNeedPasswordChange() ? gettext('Yes') : gettext('No')],
+        ['label' => gettext('Two-factor authentication enrolled'), 'value' => $user->is2FactorAuthEnabled() ? gettext('Yes') : gettext('No')],
+    ];
+    if ($isLocked) {
+        $statusRows[] = ['label' => gettext('Minutes until automatic unlock'), 'value' => (string) \ChurchCRM\Authentication\SignInThrottle::minutesUntilUnlock($user)];
+    }
+    if ($user->getPerson() !== null) {
+        $portalStatus = (new \ChurchCRM\Service\PersonSignInService())->statusFor($user->getPerson(), $canAdminister);
+        $statusRows[] = ['label' => gettext('Portal sign-in'), 'value' => $portalStatus['reasonLabel'] ?? gettext('Enabled')];
+        if ($portalStatus['signInDisabled']) {
+            $statusRows[] = ['label' => gettext('Reason'), 'value' => $portalStatus['disabledReason'] ?? gettext('Not set')];
+            $statusRows[] = ['label' => gettext('Disabled by'), 'value' => $portalStatus['disabledBy']['name'] ?? gettext('Not set')];
+            $statusRows[] = ['label' => gettext('Disabled at'), 'value' => $portalStatus['disabledAt'] ?? gettext('Not set')];
+        }
+    }
+
+    return (new PhpRenderer(__DIR__ . '/../views/'))->render($response, 'user-view.php', [
         'sRootPath' => SystemURLs::getRootPath(),
+        'sPageTitle' => gettext('User Details'),
+        'sPageSubtitle' => $user->getFullName(),
         'user' => $user,
+        'statusRows' => $statusRows,
+        'canAdminister' => $canAdminister,
+        'canDelete' => $canAdminister && (new UserService())->getUserDeletionBlockedReason($user, AuthenticationManager::getCurrentUser()) === null,
+        'canResetPassword' => $canAdminister && SystemConfig::isEmailEnabled() && !empty($user->getEmail()),
         'permissionGroups' => (new UserPermissionsService())->getEffectivePermissions($user),
         'loginAsPersonHistory' => (new LoginAsPersonHistoryService())->cardForUser($personId),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
@@ -1013,7 +1043,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
             $pageArgs['showPersonSelect'] = true;
             $pageArgs['people']           = $userService->getAssignablePeople();
             $pageArgs['sUserName']        = '';
-            $pageArgs['perms']            = ['admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
+            $pageArgs['perms']            = ['admin' => 0, 'addRecords' => 0,
                                              'editRecords' => 0, 'deleteRecords' => 0,
                                              'manageGroups' => 0,
                                              'finance' => 0, 'manageFundraisers' => 0,
@@ -1065,7 +1095,7 @@ function adminUserEditorNew(Request $request, Response $response): Response
     }
 
     $pageArgs['perms'] = [
-        'admin' => 0, 'editSelf' => 0, 'addRecords' => 0,
+        'admin' => 0, 'addRecords' => 0,
         'editRecords' => 0, 'deleteRecords' => 0,
         'manageGroups' => 0,
         'finance' => 0, 'manageFundraisers' => 0, 'manageMinistries' => 0, 'manageMyMinistries' => 0, 'notes' => 0,
@@ -1151,7 +1181,6 @@ function adminUserEditorEdit(Request $request, Response $response, array $args):
     $pageArgs['sUserName']  = $user->getUserName();
     $pageArgs['perms']      = [
         'admin'        => $user->getAdmin(),
-        'editSelf'     => $user->getEditSelf(),
         'addRecords'   => $user->getAddRecords(),
         'editRecords'  => $user->getEditRecords(),
         'deleteRecords' => $user->getDeleteRecords(),
