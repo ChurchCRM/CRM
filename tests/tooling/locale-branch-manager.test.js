@@ -132,3 +132,19 @@ assert.equal(execFileSync('git', ['rev-parse', '--show-toplevel'], { encoding: '
     ok(result);
     assert.match(result.stdout, /pre-push: lint passed/);
 });
+
+test('bulk translation retries include filled batches and keep rejected values available for correction', (t) => {
+    const f = fixture(t);
+    f.write('locale/terms/missing/fr/fr-2.json', '{"Total: %d":""}\n');
+    const payload = path.join(f.cwd, 'translations.json');
+    const apply = () => spawnSync(process.execPath, ['locale/scripts/locale-translate.js', '--apply-bulk', '--translations-file', payload], { cwd: f.cwd, env: fixtureEnv, encoding: 'utf8' });
+    f.write('translations.json', '{"fr":{"Hello":"Salut","Total: %d":"Total"}}');
+    assert.notEqual(apply().status, 0);
+    f.write('translations.json', '{"fr":{"Hello":"Bonjour","Total: %d":"Total : %d"}}');
+    ok(apply());
+    ok(apply());
+    assert.deepEqual(JSON.parse(fs.readFileSync(path.join(f.cwd, 'locale/terms/missing/fr/fr-1.json'))), { Hello: 'Bonjour' });
+    assert.deepEqual(JSON.parse(fs.readFileSync(path.join(f.cwd, 'locale/terms/missing/fr/fr-2.json'))), { 'Total: %d': 'Total : %d' });
+    f.write('translations.json', '{"fr":{"Unknown":"Inconnu"}}');
+    assert.notEqual(apply().status, 0);
+});
