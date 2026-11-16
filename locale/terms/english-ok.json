@@ -526,7 +526,8 @@
     "SMTP test",
     "Kiosk Settings",
     "{{team}}: {{staffing}}",
-    "HTTP Status: {{status}}"
+    "HTTP Status: {{status}}",
+    "Setup key"
   ],
   "fr": [
     "AM / PM",

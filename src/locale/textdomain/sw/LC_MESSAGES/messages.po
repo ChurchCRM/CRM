@@ -27239,3 +27239,685 @@ msgstr "Data yako ni yako. Hii inaripoti kuhusu programu, kamwe si kuhusu kanisa
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Data yako ni yako. Ili kuhesabu usakinishaji, ChurchCRM huripoti kwamba ilisakinishwa au kusasishwa na kama ilifanikiwa, ripoti mara moja kwa siku wakati inatumika, pamoja na nambari ya toleo, nchi yako, aina ya hifadhidata na kitambulisho cha usakinishaji cha nasibu. Kamwe haiwasilishi kumbukumbu za washirika, sadaka au kumbukumbu nyingine za kanisa, jina la kanisa lako, anwani yako ya wavuti au jina la seva, wala anwani za barua pepe. Unaweza kuzima hili wakati wowote katika Msimamizi → Telemetry; usakinishaji au usasishaji ulioshindwa bado huripotiwa. Maonyo, maelezo ya hitilafu na mionekano ya kurasa hushirikiwa tu ukichagua."
 
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: amana %2$d bado iko wazi. Ifunge ili kila sadaka iwe ya mwisho kabla ya taarifa kutumwa."
+msgstr[1] "%1$s: amana %2$d bado ziko wazi. Zifunge ili kila sadaka iwe ya mwisho kabla ya taarifa kutumwa."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "Nambari %d ya bahasha imehifadhiwa."
+msgstr[1] "Nambari %d za bahasha zimehifadhiwa."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "Familia %d"
+msgstr[1] "Familia %d"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: amana zote zimefungwa. Taarifa ziko tayari kuandaliwa."
+
+#: 
+msgid "12 months"
+msgstr "Miezi 12"
+
+#: 
+msgid "30 days"
+msgstr "Siku 30"
+
+#: 
+msgid "90 days"
+msgstr "Siku 90"
+
+#: 
+msgid "Add Property"
+msgstr "Ongeza Sifa"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Ongeza herufi chache zaidi au alama."
+
+#: 
+msgid "Add and edit events"
+msgstr "Kuongeza na kuhariri matukio"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Ongeza herufi zaidi au changanya nambari na alama."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Ongeza herufi zaidi, na changanya herufi kubwa na ndogo, nambari na alama."
+
+#: 
+msgid "Add people and families"
+msgstr "Kuongeza watu na familia"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Wasimamizi wana ruhusa zote wakati kipengele kimewashwa."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Zima pia kuingia, ili wasiweze kutumia Lango la Washiriki"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Kabla ya Kutuma Taarifa"
+
+#: 
+msgid "Birthday today"
+msgstr "Siku ya kuzaliwa leo"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Haiwezekani kuunda faili ya sahihi ya kodi ya faragha. Hakikisha folda ya hifadhi inaweza kuandikwa."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Haiwezekani kuunda folda ya hifadhi ya sahihi ya kodi %s. Hakikisha seva ya wavuti inaweza kuandika ndani yake, au weka folda inayoweza kuandikwa katika mipangilio ya njia ya hifadhi ya sahihi ya kodi."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Familia yenye ahadi au malipo haiwezi kufutwa. Zima familia badala yake ili kuhifadhi historia ya kifedha. Hamisha rekodi za fedha tu inapofaa."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Haiwezekani kusimba sahihi ya kodi ya faragha."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Haiwezekani kuhamisha sehemu kuelekea upande huo"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Haiwezekani kusoma sahihi ya kodi ya faragha."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Haiwezekani kuondoa sahihi ya faragha."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Haiwezekani kuondoa faili ya sahihi ya kodi ya faragha."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Haiwezekani kubaini folda ya programu kwa ajili ya hifadhi ya sahihi ya kodi."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Haiwezekani kuhifadhi sahihi ya faragha."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Haiwezekani kuandika kinga ya ufikiaji %s katika folda ya hifadhi ya sahihi ya kodi."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Badilisha jukumu la washiriki waliochaguliwa: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Mwaka wa Fedha wa Kanisa"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "Ukaguzi wa Mfumo wa ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "Sehemu maalum haikupatikana"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Zima familia badala yake"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Zima familia badala ya kuifuta."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Zima mtu badala ya kumfuta."
+
+#: 
+msgid "Delete people and families"
+msgstr "Kufuta watu na familia"
+
+#: 
+msgid "Delete the login for"
+msgstr "Futa akaunti ya kuingia ya"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Kipindi cha chati ya amana"
+
+#: 
+msgid "Disabled at"
+msgstr "Ilizimwa mnamo"
+
+#: 
+msgid "Disabled by"
+msgstr "Ilizimwa na"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Kupakua hutuma kila mtoaji katika mwaka. Kagua na Chuja huonyesha jumla kwanza na hukuruhusu kupunguza kwa familia, mfuko, darasa au tarehe."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Nambari ya bahasha imejirudia"
+
+#: 
+msgid "Edit people and families"
+msgstr "Kuhariri watu na familia"
+
+#: 
+msgid "Email people and groups"
+msgstr "Kutuma barua pepe kwa watu na vikundi"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Washa viendelezi vya PHP vinavyokosekana katika usanidi wa seva yako ya wavuti, anzisha upya seva ya wavuti, kisha pakia ukurasa huu upya. Ikiwa unatumia mtoa huduma wa hosting, waombe wawashe viendelezi vilivyoorodheshwa."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Ingiza ufunguo wa usanidi kwa mkono"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Ingiza nambari ya kuanzia kutoka 0 hadi %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Ingia skrini nzima"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Ingiza ufunguo huu kwenye programu yako ya uthibitishaji au kidhibiti cha nenosiri ukitumia misimbo ya tarakimu 6 inayotegemea wakati (TOTP) na muda wa sekunde 30. Weka ufunguo huu kuwa siri."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Ingiza jina lako la mtumiaji au barua pepe"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Nambari za bahasha lazima ziwe namba nzima kutoka 0 hadi %d. Hakuna kilichohifadhiwa."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Matukio yamezimwa kwa kanisa hili"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Toka skrini nzima"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Imeshindwa kufuta sehemu maalum"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Imeshindwa kuhamisha sehemu maalum"
+
+#: 
+msgid "Fair"
+msgstr "Wastani"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Familia zilizoahidi kwa %s na hazina ahadi kwa %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Familia zenye angalau mshiriki mmoja katika"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Fedha zimezimwa kwa kanisa hili"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Tafuta familia zilizoahidi katika mwaka mmoja wa fedha na si katika mwingine."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Folda ambamo sahihi ya faragha ya taarifa za utoaji huhifadhiwa. Acha wazi ili kutumia folda ya faragha iliyojengewa ndani, Images/TaxSignatures, inayozuia ufikiaji wa moja kwa moja wa wavuti. Ili kutumia folda nyingine, ingiza njia kamili iliyo nje ya folda ya ChurchCRM ambayo seva ya wavuti inaweza kuandika."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Michango ya kuchangisha fedha imezimwa kwa kanisa hili"
+
+#: 
+msgid "Good"
+msgstr "Nzuri"
+
+#: 
+msgid "Have an email"
+msgstr "Wana barua pepe"
+
+#: 
+msgid "Hide setup key"
+msgstr "Ficha ufunguo wa usanidi"
+
+#: 
+msgid "How to respond"
+msgstr "Jinsi ya kujibu"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Mawazo yanayosubiri ukaguzi wako"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Familia zisizotumika zimeachwa. Malipo hayahesabiwi kama ahadi."
+
+#: 
+msgid "Invalid request."
+msgstr "Ombi si halali."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Data ya picha ya sahihi si halali."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Kitambulisho kilichohifadhiwa cha sahihi ya kodi si halali."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Hifadhi ya sahihi ya kodi si halali."
+
+#: 
+msgid "Last successful login"
+msgstr "Kuingia kwa mwisho kulikofanikiwa"
+
+#: 
+msgid "Lockout state"
+msgstr "Hali ya kufungwa"
+
+#: 
+msgid "Login deleted"
+msgstr "Akaunti ya kuingia imefutwa"
+
+#: 
+msgid "Mail only"
+msgstr "Barua pekee"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Simamia huduma zote"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Washiriki wamehamishiwa {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Washiriki wasiobadilishwa kwa sababu waliondoka kwenye kikundi au huduma inasimamia jukumu lao: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Mratibu wa huduma"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Dakika hadi kufunguliwa kiotomatiki"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Ahadi Zinazokosekana"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Huna akaunti ya GitHub? Tuambie kwenye Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Hakuna familia hai iliyoahidi kwa %s bila ahadi kwa %s."
+
+#: 
+msgid "No families found."
+msgstr "Hakuna familia zilizopatikana."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Hakuna huduma iliyokabidhiwa"
+
+#: 
+msgid "No open deposit"
+msgstr "Hakuna amana iliyo wazi"
+
+#: 
+msgid "No pledge for"
+msgstr "Hakuna ahadi kwa"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Haijatolewa kwa akaunti hii"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Haongozi timu ya wajitolea"
+
+#: 
+msgid "Not locked"
+msgstr "Haijafungwa"
+
+#: 
+msgid "Number of Payments"
+msgstr "Idadi ya Malipo"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Dakika moja. Hatushiriki unachotuma."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Fungua wazo. Piga kura kwa 👍 ikiwa kanisa lako linalihitaji, na ongeza maoni mafupi kuhusu jinsi unavyofanya kazi leo."
+
+#: 
+msgid "Open deposit"
+msgstr "Amana iliyo wazi"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Mabadiliko ya nenosiri yanahitajika kwenye kuingia kunakofuata"
+
+#: 
+msgid "Password strength"
+msgstr "Nguvu ya nenosiri"
+
+#: 
+msgid "People & Families"
+msgstr "Watu na Familia"
+
+#: 
+msgid "Pledged for"
+msgstr "Iliyoahidiwa kwa"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Andaa Taarifa za Utoaji"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Hakiki Barua ya Mfano"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Kitambulisho cha rasilimali ya sahihi ya faragha ya taarifa za utoaji za Kanada. Husimamiwa kwa kupakia sahihi."
+
+#: 
+msgid "Property Type"
+msgstr "Aina ya Sifa"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Toa data ya picha ya sahihi ya PNG au JPEG pekee."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Historia iliyorekodiwa: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Ripoti Tatizo"
+
+#: 
+msgid "Requirement"
+msgstr "Mahitaji"
+
+#: 
+msgid "Return Home"
+msgstr "Rudi Mwanzo"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Kagua mwaka wa fedha, kisha pakua taarifa za utoaji."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Kagua na Funga Amana"
+
+#: 
+msgid "Review and Filter"
+msgstr "Kagua na Chuja"
+
+#: 
+msgid "Review and vote"
+msgstr "Kagua na upige kura"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Kagua mwaka, kisha pakua taarifa za utoaji."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Angalia tunachozingatia"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Majukumu na ruhusa"
+
+#: 
+msgid "Select at least one member."
+msgstr "Chagua angalau mshiriki mmoja."
+
+#: 
+msgid "Setup key"
+msgstr "Ufunguo wa usanidi"
+
+#: 
+msgid "Sign-in status"
+msgstr "Hali ya kuingia"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Folda ya hifadhi ya sahihi"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Sahihi imesasishwa lakini faili ya awali ya sahihi ya faragha haikuweza kuondolewa."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Baadhi ya mahitaji ya PHP yanakosekana. ChurchCRM inayahitaji kabla ya kuendelea."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Anzisha amana, kisha ongeza kila malipo kwake."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Nambari ya kuanzia ya bahasha"
+
+#: 
+msgid "Strong"
+msgstr "Imara"
+
+#: 
+msgid "Support"
+msgstr "Msaada"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Mipangilio ya Kitambulisho cha Kodi na PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Orodha haikuweza kupakiwa. Bado unaweza kufungua mawazo kwenye GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Jina linaweza kuwa na herufi zisizozidi %d"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Ukurasa ulioomba haukupatikana. Huenda ulihamishwa, ukabadilishwa jina, au haupo tena."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Maelekezo yanaweza kuwa na herufi zisizozidi %d"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Washiriki waliochaguliwa tayari wana jukumu hilo."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Picha ya sahihi haikuweza kusimbuliwa."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Picha ya sahihi isizidi MiB 2."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Picha ya sahihi lazima itoshee ndani ya pikseli 2000 × 1000."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Seva ya wavuti haiwezi kuandika katika folda ya hifadhi ya sahihi ya kodi %s."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Folda ya hifadhi ya sahihi ya kodi haiwezi kuwa kiungo cha ishara."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Njia ya hifadhi ya sahihi ya kodi lazima iwe nje ya folda ya ChurchCRM. Acha mpangilio wazi ili kutumia folda ya faragha iliyojengewa ndani."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Mpangilio wa njia ya hifadhi ya sahihi ya kodi lazima uwe njia kamili ya folda."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Nambari hizi za bahasha hazihifadhiwi hadi uchague Sasisha Rekodi za Familia."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Hawawezi kuingia kama wafanyakazi wala kwenye Lango la Washiriki, na vipindi, vifaa na funguo zao za siri huondolewa."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Familia hii haiwezi kufutwa kwa sababu ina madokezo. Zima familia badala yake ili kuhifadhi historia yake."
+
+#: 
+msgid "This password looks strong."
+msgstr "Nenosiri hili linaonekana imara."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Mtu huyu hawezi kufutwa kwa sababu ana shughuli zilizorekodiwa. Zima mtu huyu badala yake ili kuhifadhi historia yake."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Hii huondoa akaunti ya kuingia tu. Mtu na madokezo yake hubaki."
+
+#: 
+msgid "Time Range"
+msgstr "Kipindi cha Muda"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Uthibitishaji wa hatua mbili umesajiliwa"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Haiwezi kunakili kiotomatiki. Chagua na unakili ufunguo wa usanidi kwa mkono."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Pakia picha ya sahihi ya PNG au JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Tumia kupakia au kuondoa sahihi ili kubadilisha mpangilio huu."
+
+#: 
+msgid "User Details"
+msgstr "Maelezo ya Mtumiaji"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Jina la Mtumiaji au Anwani ya Barua Pepe"
+
+#: 
+msgid "View all ideas"
+msgstr "Tazama mawazo yote"
+
+#: 
+msgid "View events"
+msgstr "Kutazama matukio"
+
+#: 
+msgid "View people and families"
+msgstr "Kutazama watu na familia"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Usimamizi wa Wajitolea umezimwa kwa kanisa hili"
+
+#: 
+msgid "Weak"
+msgstr "Dhaifu"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Kile ambacho akaunti hii inaweza kufanya sasa hivi (kusoma tu)"
+
+#: 
+msgid "You must select a class"
+msgstr "Lazima uchague darasa"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Mwaka wa fedha wa kanisa lako haanzi Januari 1. Mamlaka za kodi mara nyingi huhitaji risiti za mwaka wa kalenda: chagua Kagua na Chuja na weka tarehe kuwa Januari 1 – Desemba 31."
+
+#: 
+msgid "attendance"
+msgstr "mahudhurio"
+
+#: 
+msgid "financial history"
+msgstr "historia ya kifedha"
+
+#: 
+msgid "notes"
+msgstr "madokezo"
+
+#: 
+msgid "recorded activities"
+msgstr "shughuli zilizorekodiwa"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "ufunguo wa API wa mtumiaji wa mfumo umeundwa upya"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "mtumiaji wa mfumo amerejesha nenosiri lake kutoka kwa kiungo cha barua pepe"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "mtumiaji wa mfumo amezima uthibitishaji wa hatua mbili"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "mtumiaji wa mfumo amewasha uthibitishaji wa hatua mbili"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "uthibitishaji wa hatua mbili wa mtumiaji wa mfumo umezimwa na msimamizi"
+
+#: 
+msgid "volunteer service history"
+msgstr "historia ya huduma ya kujitolea"
+
