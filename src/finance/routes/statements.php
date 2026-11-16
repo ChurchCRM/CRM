@@ -12,7 +12,7 @@ $app->get('/statements/settings', function (Request $request, Response $response
 
     $sectionDefinitions = [
         'statementWording' => [gettext('Statement Wording'), 'fa-solid fa-file-lines', [
-            'sTaxReport1', 'sTaxReport2', 'sTaxReport3', 'sTaxSigner',
+            'sGivingStatementOpening', 'sGivingStatementClosing', 'sGivingStatementQuestions', 'sTaxSigner',
         ]],
         'statementTax' => [gettext('Tax Information'), 'fa-solid fa-building-columns', [
             'sChurchTaxId',
@@ -23,9 +23,9 @@ $app->get('/statements/settings', function (Request $request, Response $response
     ];
 
     $labels = [
-        'sTaxReport1'    => gettext('Opening Line'),
-        'sTaxReport2'    => gettext('Closing Line'),
-        'sTaxReport3'    => gettext('Questions Line'),
+        'sGivingStatementOpening' => gettext('Opening Line'),
+        'sGivingStatementClosing' => gettext('Closing Line'),
+        'sGivingStatementQuestions' => gettext('Questions Line'),
         'sTaxSigner'     => gettext('Signer'),
         'sChurchTaxId'   => gettext('Church Tax ID (EIN)'),
         'iPDFOutputType' => gettext('PDF Handling'),
@@ -39,7 +39,7 @@ $app->get('/statements/settings', function (Request $request, Response $response
                 unset($setting['tooltip']);
             }
 
-            if (in_array($setting['name'], ['sTaxReport1', 'sTaxReport2', 'sTaxReport3'], true)) {
+            if (in_array($setting['name'], ['sGivingStatementOpening', 'sGivingStatementClosing', 'sGivingStatementQuestions'], true)) {
                 $setting['type'] = 'textarea';
             }
 
@@ -54,7 +54,7 @@ $app->get('/statements/settings', function (Request $request, Response $response
         'sPageTitle'   => gettext('Statement Settings'),
         'sPageSubtitle' => gettext('Wording, tax ID and PDF handling for giving statements'),
         'aBreadcrumbs' => PageHeader::breadcrumbs([
-            [gettext('Finance'), '/finance/'],
+            [gettext('Year-End Giving'), '/finance/reports/year-end'],
             [gettext('Statement Settings')],
         ]),
         'sections'     => $sections,

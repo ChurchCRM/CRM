@@ -2135,10 +2135,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "ഈ പേജിൽ തിരഞ്ഞെടുത്ത കുടുംബ കവർ നമ്പറുകൾ ഡേറ്റാബേസിൽ നിലവിലുള്ളതിന്റെ സ്ഥാനത്ത് വരും. തുടരണോ?"
 
 #: 
-msgid "Family Select"
-msgstr "കുടുംബം തിരഞ്ഞെടുക്കുക"
-
-#: 
 msgid "Welcome to"
 msgstr "സ്വാഗതം"
 
@@ -2433,10 +2429,6 @@ msgstr "എല്ലാ ഡിപ്പോസിറ്റുകളും കാ�
 #: 
 msgid "Deposit Reports"
 msgstr "ഡിപ്പോസിറ്റ് റിപ്പോർട്ടുകൾ"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "ഡിപ്പോസിറ്റ് സ്ലിപ്പ് എഡിറ്റ് ചെയ്യുക"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6032,14 +6024,6 @@ msgid "Close All Deposits"
 msgstr "എല്ലാ ഡിപ്പോസിറ്റുകളും അടയ്ക്കുക"
 
 #: 
-msgid "Closed vs Total"
-msgstr "അടഞ്ഞത് vs ആകെ"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "ദാതാക്കൾക്ക് കൃത്യമായ വർഷ-അന്ത നികുതി റിപ്പോർട്ടിംഗ് ഉറപ്പ് വരുത്താൻ ഈ ജോലികൾ പൂർത്തിയാക്കൂ."
-
-#: 
 msgid "Configure Email"
 msgstr "ഇമെയിൽ ക്രമീകരിക്കുക"
 
@@ -6056,28 +6040,12 @@ msgid "Create First Deposit"
 msgstr "ആദ്യ ഡിപ്പോസിറ്റ് ഉണ്ടാക്കുക"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "ആദ്യം ഒരു ഡിപ്പോസിറ്റ് ഉണ്ടാക്കൂ അല്ലെങ്കിൽ തുറക്കൂ"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "ആരംഭിക്കാൻ ഒരു ഡിപ്പോസിറ്റ് ഉണ്ടാക്കൂ അല്ലെങ്കിൽ തിരഞ്ഞെടുക്കൂ."
-
-#: 
-msgid "Current Deposit"
-msgstr "നിലവിലെ ഡിപ്പോസിറ്റ്"
-
-#: 
 msgid "Day"
 msgstr "ദിവസം"
 
 #: 
 msgid "Dec"
 msgstr "ഡിസ"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "ഡിപ്പോസിറ്റ് സ്ഥിതിവിവരം"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6106,10 +6074,6 @@ msgstr "പേമെന്റ് എഡിറ്റ് ചെയ്യുക"
 #: 
 msgid "Edit Person"
 msgstr "വ്യക്തി എഡിറ്റ് ചെയ്യുക"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "സ്റ്റേറ്റ്‌മെന്റ് ഉണ്ടാക്കുന്നതിന് മുൻപ് നികുതി വർഷത്തിലെ എല്ലാ ഡിപ്പോസിറ്റുകളും അടഞ്ഞതാണെന്ന് ഉറപ്പ് വരുത്തൂ."
 
 #: 
 msgid "F"
@@ -6216,10 +6180,6 @@ msgid "New Pledge"
 msgstr "പുതിയ സംഭാവന പ്രതിജ്ഞ"
 
 #: 
-msgid "No Active Deposit"
-msgstr "സജീവ ഡിപ്പോസിറ്റ് ഇല്ല"
-
-#: 
 msgid "No active funds configured."
 msgstr "സജീവ ഫണ്ടുകൾ ക്രമീകരിച്ചിട്ടില്ല."
 
@@ -6252,10 +6212,6 @@ msgid "Pledge Reports"
 msgstr "സംഭാവന പ്രതിജ്ഞ റിപ്പോർട്ടുകൾ"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "എല്ലാ ദാതാക്കൾക്കും വാർഷിക ദക്ഷിണ സ്റ്റേറ്റ്‌മെന്റ് പ്രിന്റ് ചെയ്യൂ അല്ലെങ്കിൽ ഇമെയിൽ ചെയ്യൂ."
-
-#: 
 msgid "Quick Actions"
 msgstr "ദ്രുത പ്രവർത്തനങ്ങൾ"
 
@@ -6286,10 +6242,6 @@ msgstr "പുനഃസ്ഥാപിക്കുക"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "ഒരു ബാക്കപ്പ് ഫയലിൽ നിന്ന് പുനഃസ്ഥാപിക്കൂ. നിലവിലുള്ള ഡേറ്റ മായ്ക്കും."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "സംഭാവന ഫണ്ടുകൾ അവലോകനം ചെയ്യുക"
 
 #: 
 msgid "Save and Add New Family"
@@ -6328,14 +6280,6 @@ msgid "System Info"
 msgstr "സിസ്റ്റം വിവരം"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "നികുതി റിപ്പോർട്ട് ഉള്ളടക്കം"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "നികുതി വർഷ റിപ്പോർട്ടിംഗ് ചെക്‌ലിസ്‌റ്റ്"
-
-#: 
 msgid "Total"
 msgstr "ആകെ"
 
@@ -6356,10 +6300,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "ഉപയോക്താവ് അഡ്‌മിൻ ആകണം അല്ലെങ്കിൽ ധനകാര്യ അനുമതി ഉണ്ടായിരിക്കണം"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "സ്റ്റേറ്റ്‌മെന്റിൽ ഫണ്ട് പേരുകളും വിവരണങ്ങളും കൃത്യമാണെന്ന് ഉറപ്പ് വരുത്തൂ."
-
-#: 
 msgid "YTD Payments"
 msgstr "ഇക്കൊല്ലം (YTD) പേമെന്റ്"
 
@@ -6376,20 +6316,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "അപ്‌ഗ്രേഡിന് ZipArchive എക്സ്‌റ്റൻഷൻ ആവശ്യമാണ്"
 
 #: 
-msgid "active"
-msgstr "സജീവം"
-
-#: 
 msgid "found"
 msgstr "കണ്ടെത്തി"
 
 #: 
 msgid "issues"
 msgstr "പ്രശ്‌നങ്ങൾ"
-
-#: 
-msgid "open"
-msgstr "തുറക്കുക"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15375,10 +15307,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM വിവർത്തനങ്ങൾ POEditor-ല്‍ കമ്മ്യൂണിറ്റി നിയന്ത്രിക്കുന്നു. നിങ്ങൾക്ക് സഹായിക്കാം"
 
 #: 
-msgid "Closed Deposits"
-msgstr "അടഞ്ഞ നിക്ഷേപങ്ങൾ"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "നിലവിലെ $URL[0] മൂല്യം"
 
@@ -15519,10 +15447,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "ഈ സന്നദ്ധ അവസരത്തിലേക്ക് ആളുകൾ നിയോഗിക്കപ്പെട്ടിരിക്കുന്നു. ഇല്ലാതാക്കൽ നിയോഗം റദ്ദാക്കും"
 
 #: 
-msgid "Total Deposits"
-msgstr "മൊത്തം നിക്ഷേപങ്ങൾ"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "ഒരു സാധുവായ URL-ലേക്ക് അപ്‌ഡേറ്റ് ചെയ്യുക"
 
@@ -15549,10 +15473,6 @@ msgstr "ഫണ്ടുകൾക്കായി"
 #: 
 msgid "user"
 msgstr "ഉപയോക്താവ്"
-
-#: 
-msgid "with at least one"
-msgstr "കുറഞ്ഞത് ഒന്നെങ്കിലും"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17325,10 +17245,6 @@ msgstr "ഈ സാമ്പത്തിക വർഷത്തിൽ സമാഹ
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s ഒരു പൂർണ്ണമായ https:// വെബ് വിലാസം ആയിരിക്കണം, ഉദാഹരണത്തിന് https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "അക്കൗണ്ടിന് പരിമിതമായ അനുമതികൾ മാത്രമേയുള്ളൂ. ഒരു അഡ്മിനിസ്ട്രേറ്ററെ ബന്ധപ്പെടുക."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -23965,10 +23881,6 @@ msgid "%s Giving Statement"
 msgstr "%s ദാന പ്രസ്താവന"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "ദാന പ്രസ്താവനകളിൽ കാണുന്ന വാചകം ഇഷ്ടാനുസൃതമാക്കുക (sTaxReport1, sTaxReport2 മുതലായവ)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -23991,10 +23903,6 @@ msgstr "%s ദാന പ്രസ്താവന ഇമെയിൽ ചെയ്
 #: 
 msgid "Envelope Numbers"
 msgstr "എൻവലപ്പ് നമ്പറുകൾ"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "ദാന പ്രസ്താവനകൾ സൃഷ്ടിക്കുക"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24035,10 +23943,6 @@ msgstr "ദാന പ്രസ്താവന ഇമെയിൽ ചെയ്യ
 #: 
 msgid "Undesignated"
 msgstr "നിയോഗിക്കാത്തത്"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "പള്ളിയുടെ പേര്, വിലാസം, ബന്ധപ്പെടാനുള്ള വിവരം ദാന പ്രസ്താവനകളിൽ കാണുന്നുണ്ടെന്ന് ഉറപ്പാക്കുക."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24253,10 +24157,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d പേയ്‌മെന്റുകൾ ഇതുവരെ ഒരു നിക്ഷേപത്തിലും ഇല്ല."
 
 #: 
-msgid "Can be emailed"
-msgstr "ഇമെയിൽ ചെയ്യാം"
-
-#: 
 msgid "Closing line"
 msgstr "അവസാന വരി"
 
@@ -24285,16 +24185,8 @@ msgid "Opening line"
 msgstr "ആരംഭ വരി"
 
 #: 
-msgid "Print and mail"
-msgstr "അച്ചടിച്ച് തപാൽ ചെയ്യുക"
-
-#: 
 msgid "Qty"
 msgstr "എണ്ണം"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "വർഷം പരിശോധിച്ച്, ദാന പ്രസ്താവനകൾ അച്ചടിക്കുക അല്ലെങ്കിൽ ഇമെയിൽ ചെയ്യുക."
 
 #: 
 msgid "Signed by"
@@ -24303,10 +24195,6 @@ msgstr "ഒപ്പിട്ടത്"
 #: 
 msgid "Thank-you line"
 msgstr "നന്ദി വരി"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "പള്ളിയുടെ പേര്, വിലാസം, ബന്ധപ്പെടാനുള്ള വിവരം നികുതി പ്രസ്താവനകളിൽ കാണുന്നുണ്ടെന്ന് ഉറപ്പാക്കുക."
 
 #: 
 msgid "Year-End Giving"

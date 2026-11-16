@@ -293,7 +293,7 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
-     * Make API request as a plain authenticated user (john.plainauth, no EditSelf/EditRecords/Admin)
+     * Make API request as a plain authenticated user (john.plainauth, no EditRecords/Admin)
      * Used for testing that read access is available to all authenticated users by default.
      * User has Notes=1 (passes AuthMiddleware) but no edit or admin capabilities.
      * @param method - HTTP method
@@ -348,7 +348,7 @@ declare namespace Cypress {
 
     /**
      * Zero-permission user (noperm.user, id=901): every permission flag 0,
-     * usr_EditSelf=0, non-admin. Passes AuthMiddleware under the read-default
+     * Non-admin. Passes AuthMiddleware under the read-default
      * policy (#9003) with read-only access, so every write route must answer
      * 403 for it. Use to prove a write route carries a role gate at all.
      */
@@ -405,6 +405,13 @@ declare namespace Cypress {
      * @param name - The name of the person to delete
      */
     deletePersonByName(name: string): Chainable<void>;
+
+    /**
+     * Store a family's envelope number through the Envelope Manager as the admin, then sign out
+     * @param familyId - The family to number
+     * @param envelope - The envelope number; 0 clears it
+     */
+    setFamilyEnvelope(familyId: number, envelope: number): Chainable<void>;
 
     /**
      * Create multiple people via CSV import to bypass UI validation
