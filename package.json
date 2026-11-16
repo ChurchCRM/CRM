@@ -129,7 +129,7 @@
         "tom-select": "^2.6.2"
     },
     "devDependencies": {
-        "@biomejs/biome": "^2.6.5",
+        "@biomejs/biome": "^2.6.7",
         "@playwright/test": "^1.65.0",
         "@types/jquery": "^3.5.33",
         "archiver": "^7.0.1",

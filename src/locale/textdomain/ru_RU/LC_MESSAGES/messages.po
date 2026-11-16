@@ -27356,3 +27356,691 @@ msgstr "Ваши данные принадлежат вам. Отчеты кас
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Ваши данные принадлежат вам. Чтобы подсчитывать установки, ChurchCRM сообщает, что был установлен или обновлен и прошло ли это успешно, раз в день отправляет сигнал во время использования, а также номер версии, вашу страну, тип базы данных и случайный идентификатор установки. Он никогда не сообщает записи о членах, пожертвованиях и другие записи общины, название вашей общины, ваш веб-адрес или имя сервера, а также адреса электронной почты. Вы можете отключить это в любое время в разделе Администрирование → Телеметрия; о неудачной установке или обновлении по-прежнему будет сообщено. Предупреждения, сведения об ошибках и просмотры страниц передаются, только если вы это выберете."
 
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d взнос всё ещё открыт. Закройте его, чтобы каждое пожертвование стало окончательным до отправки выписок."
+msgstr[1] "%1$s: %2$d взноса всё ещё открыты. Закройте их, чтобы каждое пожертвование стало окончательным до отправки выписок."
+msgstr[2] "%1$s: %2$d взносов всё ещё открыто. Закройте их, чтобы каждое пожертвование стало окончательным до отправки выписок."
+msgstr[3] "%1$s: %2$d взноса всё ещё открыто. Закройте их, чтобы каждое пожертвование стало окончательным до отправки выписок."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "Сохранён %d номер конверта."
+msgstr[1] "Сохранено %d номера конвертов."
+msgstr[2] "Сохранено %d номеров конвертов."
+msgstr[3] "Сохранено %d номера конвертов."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d семья"
+msgstr[1] "%d семьи"
+msgstr[2] "%d семей"
+msgstr[3] "%d семьи"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: все взносы закрыты. Выписки готовы к подготовке."
+
+#: 
+msgid "12 months"
+msgstr "12 месяцев"
+
+#: 
+msgid "30 days"
+msgstr "30 дней"
+
+#: 
+msgid "90 days"
+msgstr "90 дней"
+
+#: 
+msgid "Add Property"
+msgstr "Добавить свойство"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Добавьте ещё несколько символов или знак."
+
+#: 
+msgid "Add and edit events"
+msgstr "Добавление и изменение событий"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Добавьте больше символов или используйте цифры и знаки."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Добавьте больше символов, используйте заглавные и строчные буквы, цифры и знаки."
+
+#: 
+msgid "Add people and families"
+msgstr "Добавление людей и семей"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "У администраторов есть все права, пока функция включена."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Также отключить вход, чтобы они не могли пользоваться порталом участников"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Перед отправкой выписок"
+
+#: 
+msgid "Birthday today"
+msgstr "Сегодня день рождения"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Не удалось создать приватный файл налоговой подписи. Проверьте, доступна ли папка хранения для записи."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Не удалось создать папку %s для хранения налоговой подписи. Убедитесь, что веб-сервер может в неё писать, или укажите доступную для записи папку в настройке пути хранения налоговой подписи."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Нельзя удалить семью, у которой есть обязательства или платежи. Вместо этого деактивируйте семью, чтобы сохранить финансовую историю. Переносите финансовые записи только при необходимости."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Не удалось закодировать приватную налоговую подпись."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Поле нельзя переместить в этом направлении"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Не удалось прочитать приватную налоговую подпись."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Не удалось удалить приватную подпись."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Не удалось удалить приватный файл налоговой подписи."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Не удалось определить папку приложения для хранения налоговой подписи."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Не удалось сохранить приватную подпись."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Не удалось записать защиту доступа %s в папку хранения налоговой подписи."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Изменить роль выбранных участников: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Финансовый год церкви"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "Проверка системы ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "Пользовательское поле не найдено"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Вместо этого деактивировать семью"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Деактивируйте семью вместо удаления."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Деактивируйте человека вместо удаления."
+
+#: 
+msgid "Delete people and families"
+msgstr "Удаление людей и семей"
+
+#: 
+msgid "Delete the login for"
+msgstr "Удалить учётную запись для"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Период диаграммы взносов"
+
+#: 
+msgid "Disabled at"
+msgstr "Отключено"
+
+#: 
+msgid "Disabled by"
+msgstr "Отключил(а)"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Загрузка отправляет всех жертвователей за год. «Проверить и отфильтровать» сначала показывает итоги и позволяет сузить выбор по семье, фонду, классу или дате."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Повторяющийся номер конверта"
+
+#: 
+msgid "Edit people and families"
+msgstr "Изменение людей и семей"
+
+#: 
+msgid "Email people and groups"
+msgstr "Отправка писем людям и группам"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Включите недостающие расширения PHP в конфигурации веб-сервера, перезапустите веб-сервер и обновите страницу. Если вы используете хостинг, попросите провайдера включить перечисленные расширения."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Ввести ключ настройки вручную"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Введите начальный номер от 0 до %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Во весь экран"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Введите этот ключ в приложении-аутентификаторе или менеджере паролей, используя временные (TOTP) 6-значные коды с интервалом 30 секунд. Храните этот ключ в тайне."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Введите имя пользователя или адрес эл. почты"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Номера конвертов должны быть целыми числами от 0 до %d. Ничего не сохранено."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "События отключены для этой церкви"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Выйти из полноэкранного режима"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Не удалось удалить пользовательское поле"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Не удалось переместить пользовательское поле"
+
+#: 
+msgid "Fair"
+msgstr "Средний"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Семьи, которые дали обязательство на %s и не имеют обязательства на %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Семьи, в которых есть хотя бы один участник в"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Финансы отключены для этой церкви"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Найдите семьи, которые дали обязательство в одном финансовом году и не дали в другом."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Папка, где хранится приватная подпись на выписках о пожертвованиях. Оставьте пустым, чтобы использовать встроенную приватную папку Images/TaxSignatures, которая блокирует прямой веб-доступ. Чтобы использовать другую папку, введите абсолютный путь вне папки ChurchCRM, в которую веб-сервер может писать."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Сбор средств отключён для этой церкви"
+
+#: 
+msgid "Good"
+msgstr "Хороший"
+
+#: 
+msgid "Have an email"
+msgstr "Есть адрес эл. почты"
+
+#: 
+msgid "Hide setup key"
+msgstr "Скрыть ключ настройки"
+
+#: 
+msgid "How to respond"
+msgstr "Как ответить"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Идеи, ожидающие вашей оценки"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Неактивные семьи исключены. Платежи не считаются обязательствами."
+
+#: 
+msgid "Invalid request."
+msgstr "Недопустимый запрос."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Недопустимые данные изображения подписи."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Недопустимый сохранённый идентификатор налоговой подписи."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Недопустимое хранилище налоговой подписи."
+
+#: 
+msgid "Last successful login"
+msgstr "Последний успешный вход"
+
+#: 
+msgid "Lockout state"
+msgstr "Состояние блокировки"
+
+#: 
+msgid "Login deleted"
+msgstr "Учётная запись удалена"
+
+#: 
+msgid "Mail only"
+msgstr "Только почта"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Управлять всеми служениями"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Участники переведены на роль {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Участники без изменений, так как они покинули группу или их ролью управляет служение: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Координатор служения"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Минут до автоматической разблокировки"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Отсутствующие обязательства"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Нет аккаунта GitHub? Напишите нам в Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Ни одна активная семья не дала обязательство на %s без обязательства на %s."
+
+#: 
+msgid "No families found."
+msgstr "Семьи не найдены."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Служение не назначено"
+
+#: 
+msgid "No open deposit"
+msgstr "Нет открытого взноса"
+
+#: 
+msgid "No pledge for"
+msgstr "Нет обязательства на"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Не предоставлено этой учётной записи"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Не возглавляет команду волонтёров"
+
+#: 
+msgid "Not locked"
+msgstr "Не заблокировано"
+
+#: 
+msgid "Number of Payments"
+msgstr "Количество платежей"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Одна минута. Мы не передаём то, что вы отправляете."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Откройте идею. Проголосуйте 👍, если она нужна вашей церкви, и добавьте короткий комментарий о том, как вы работаете сегодня."
+
+#: 
+msgid "Open deposit"
+msgstr "Открытый взнос"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Требуется смена пароля при следующем входе"
+
+#: 
+msgid "Password strength"
+msgstr "Надёжность пароля"
+
+#: 
+msgid "People & Families"
+msgstr "Люди и семьи"
+
+#: 
+msgid "Pledged for"
+msgstr "Обязательство на"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Подготовить выписки о пожертвованиях"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Просмотреть образец письма"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Приватный идентификатор подписи на канадских выписках о пожертвованиях. Управляется через загрузку подписи."
+
+#: 
+msgid "Property Type"
+msgstr "Тип свойства"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Предоставьте только данные изображения подписи в формате PNG или JPEG."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Записанная история: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Сообщить о проблеме"
+
+#: 
+msgid "Requirement"
+msgstr "Требование"
+
+#: 
+msgid "Return Home"
+msgstr "На главную"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Проверьте финансовый год, затем скачайте выписки о пожертвованиях."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Проверить и закрыть взнос"
+
+#: 
+msgid "Review and Filter"
+msgstr "Проверить и отфильтровать"
+
+#: 
+msgid "Review and vote"
+msgstr "Просмотреть и проголосовать"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Проверьте год, затем скачайте выписки о пожертвованиях."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Узнайте, что мы рассматриваем"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Роли и права"
+
+#: 
+msgid "Select at least one member."
+msgstr "Выберите хотя бы одного участника."
+
+#: 
+msgid "Setup key"
+msgstr "Ключ настройки"
+
+#: 
+msgid "Sign-in status"
+msgstr "Статус входа"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Папка хранения подписи"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Подпись обновлена, но прежний приватный файл подписи не удалось удалить."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Не хватает некоторых требований PHP. Они нужны ChurchCRM, чтобы продолжить."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Начните взнос, затем добавляйте в него каждый платёж."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Начальный номер конверта"
+
+#: 
+msgid "Strong"
+msgstr "Надёжный"
+
+#: 
+msgid "Support"
+msgstr "Поддержка"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Налоговый номер и настройки PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Не удалось загрузить список. Вы всё равно можете открыть идеи на GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Название может содержать не более %d символов"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Запрошенная страница не найдена. Возможно, она была перемещена, переименована или больше не существует."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Запрос может содержать не более %d символов"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "У выбранных участников уже есть эта роль."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Не удалось декодировать изображение подписи."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Изображение подписи не должно быть больше 2 МиБ."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Изображение подписи должно помещаться в 2000 × 1000 пикселей."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Веб-сервер не может писать в папку %s для хранения налоговой подписи."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Папка хранения налоговой подписи не может быть символической ссылкой."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Путь хранения налоговой подписи должен находиться вне папки ChurchCRM. Оставьте настройку пустой, чтобы использовать встроенную приватную папку."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Настройка пути хранения налоговой подписи должна быть абсолютным путём к папке."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Эти номера конвертов не сохраняются, пока вы не выберете «Обновить записи семьи»."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Они не смогут войти как сотрудники или на портал участников, а их сеансы, устройства и ключи доступа будут удалены."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Эту семью нельзя удалить, так как у неё есть заметки. Вместо этого деактивируйте семью, чтобы сохранить её историю."
+
+#: 
+msgid "This password looks strong."
+msgstr "Этот пароль выглядит надёжным."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Этого человека нельзя удалить, так как у него есть записанные действия. Вместо этого деактивируйте человека, чтобы сохранить его историю."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Это удаляет только учётную запись. Человек и его заметки останутся."
+
+#: 
+msgid "Time Range"
+msgstr "Период"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Двухфакторная аутентификация настроена"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Не удалось скопировать автоматически. Выделите ключ настройки и скопируйте вручную."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Загрузите изображение подписи в формате PNG или JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Чтобы изменить эту настройку, загрузите или удалите подпись."
+
+#: 
+msgid "User Details"
+msgstr "Сведения о пользователе"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Имя пользователя или адрес эл. почты"
+
+#: 
+msgid "View all ideas"
+msgstr "Показать все идеи"
+
+#: 
+msgid "View events"
+msgstr "Просмотр событий"
+
+#: 
+msgid "View people and families"
+msgstr "Просмотр людей и семей"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Управление волонтёрами отключено для этой церкви"
+
+#: 
+msgid "Weak"
+msgstr "Слабый"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Что эта учётная запись может делать сейчас (только чтение)"
+
+#: 
+msgid "You must select a class"
+msgstr "Необходимо выбрать класс"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Финансовый год вашей церкви начинается не 1 января. Налоговые органы часто требуют квитанции за календарный год: выберите «Проверить и отфильтровать» и задайте даты с 1 января по 31 декабря."
+
+#: 
+msgid "attendance"
+msgstr "посещаемость"
+
+#: 
+msgid "financial history"
+msgstr "финансовая история"
+
+#: 
+msgid "notes"
+msgstr "заметки"
+
+#: 
+msgid "recorded activities"
+msgstr "записанные действия"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "API-ключ системного пользователя создан заново"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "системный пользователь сбросил пароль по ссылке из письма"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "системный пользователь отключил двухфакторную аутентификацию"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "системный пользователь включил двухфакторную аутентификацию"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "двухфакторная аутентификация системного пользователя отключена администратором"
+
+#: 
+msgid "volunteer service history"
+msgstr "история волонтёрского служения"
+
