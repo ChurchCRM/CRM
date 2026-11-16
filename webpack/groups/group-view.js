@@ -543,6 +543,10 @@ function initDataTable() {
         orderable: false,
         searchable: false,
         className: "text-end w-1 no-export",
+        // The row actions must never be collapsed away by the responsive
+        // table: without a priority they are the rightmost column and the
+        // first hidden when wider columns (Address, Home Phone) overflow.
+        responsivePriority: 1,
         render: (_data, _type, full) => {
           // GHSA-m649-24q9-q6r4: escapeAttribute for the data-name attribute context (encodes quotes)
           const escapedName = window.CRM.escapeAttribute(full.Person.FullName || "");
