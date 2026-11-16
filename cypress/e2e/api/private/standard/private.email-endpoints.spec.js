@@ -322,17 +322,19 @@ describe("GET /api/groups/:id/emails", () => {
 
         it("skips deposit posted notification when disabled in settings", () => {
             cy.makePrivateAdminAPICall("POST", "/api/system/config/bEnableDepositPostedNotification", "false", 200);
-            cy.request("POST", "/api/deposits", {
+            cy.intercept('POST', '**/notification**').as('notify');
+            cy.makePrivateAdminAPICall("POST", "/api/deposits", {
                 depositType: "Bank",
                 depositComment: `disabled test ${Date.now()}`,
                 depositDate: "2025-10-25",
-            }).its("body.Id").then((id) => {
-                cy.request("POST", `/api/deposits/${id}`, {
+            }, 200).its("body.Id").then((id) => {
+                cy.makePrivateAdminAPICall("POST", `/api/deposits/${id}`, {
                     depositClosed: true,
                     depositType: "Bank",
                     depositComment: "disabled test",
                     depositDate: "2025-10-25",
-                });
+                }, 200);
+                cy.get('@notify').should('not.have.been.called');
             });
         });
     });

@@ -63,7 +63,7 @@ describe("Deposit editor: what a treasurer does", () => {
             cy.get("#paymentsTable tbody .row-select").should("have.length", 1);
             cy.get("#Comment").clear().type(comment);
             cy.get("#Closed").check();
-            cy.intercept('POST', '**/notification**').as('notify');
+            cy.intercept('POST', `/api/deposits/${id}`).as('saveDeposit');
             cy.get("#saveDeposit").click();
 
             cy.get("#Comment", { timeout: 10000 }).should("have.value", comment);
@@ -72,7 +72,7 @@ describe("Deposit editor: what a treasurer does", () => {
             cy.contains("a.btn", "Add Payment").should("not.exist");
             cy.get("#paymentsTable tbody .row-select").should("not.exist");
 
-            cy.wait('@notify');
+            cy.wait('@saveDeposit');
             cy.request(`/api/deposits/${id}`).its("body.Closed").should("be.oneOf", [true, 1, "1"]);
         });
     });
