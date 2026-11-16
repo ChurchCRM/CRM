@@ -20,6 +20,11 @@ if [ ! -f package.json ]; then
     exit 0
 fi
 
+# Fixture repositories used by lint must resolve their own Git paths.
+while IFS= read -r name; do
+    unset "$name"
+done < <(git rev-parse --local-env-vars)
+
 echo "→ pre-push: running lint (npm run lint)…"
 
 if ! npm run --silent lint; then

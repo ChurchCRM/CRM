@@ -6,6 +6,7 @@ const path = require('node:path');
 const { test } = require('node:test');
 
 const root = path.resolve(__dirname, '../..');
+const fixtureEnv = Object.fromEntries(Object.entries(process.env).filter(([key]) => !key.startsWith('GIT_')));
 
 function fixture(t) {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'locale-checkpoint-'));
@@ -26,7 +27,7 @@ function fixture(t) {
     write('src/locale/locales.json', JSON.stringify({ French: { poEditor: 'fr', locale: 'fr_FR', languageCode: 'fr', scripts: ['Latin'] } }));
     write('src/locale/i18n/fr_FR.json', '{}\n');
     write('locale/terms/missing/fr/fr-1.json', '{"Hello":"Bonjour"}\n');
-    const git = (...args) => execFileSync('git', args, { cwd, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
+    const git = (...args) => execFileSync('git', args, { cwd, env: fixtureEnv, encoding: 'utf8', stdio: ['ignore', 'pipe', 'pipe'] }).trim();
     git('init', '-b', 'master');
     git('config', 'user.email', 'test@example.com');
     git('config', 'user.name', 'Test');
@@ -34,9 +35,9 @@ function fixture(t) {
     git('add', '--', '.gitignore', 'package.json', 'locale', 'src');
     git('commit', '-m', 'Seed');
     const remote = path.join(dir, 'remote.git');
-    execFileSync('git', ['init', '--bare', remote], { stdio: 'ignore' });
+    execFileSync('git', ['init', '--bare', remote], { env: fixtureEnv, stdio: 'ignore' });
     git('remote', 'add', 'origin', remote);
-    const cli = (...args) => spawnSync(process.execPath, ['locale/scripts/locale-branch-manager.js', ...args], { cwd, encoding: 'utf8' });
+    const cli = (...args) => spawnSync(process.execPath, ['locale/scripts/locale-branch-manager.js', ...args], { cwd, env: fixtureEnv, encoding: 'utf8' });
     const checkpoint = () => cli('--commit-and-push', '--locale', 'fr', '--language', 'French', '--terms', '1');
     return { cwd, dir, write, git, remote, cli, checkpoint };
 }
@@ -110,4 +111,24 @@ test('keeps rejected values in the batch without committing or pushing them', (t
     assert.match(fs.readFileSync(path.join(f.cwd, 'locale/terms/missing/fr/fr-1.json'), 'utf8'), /Total/);
     assert.equal(f.git('rev-parse', 'HEAD'), sha);
     assert.equal(f.git('rev-parse', '@{u}'), sha);
+});
+
+test('pre-push clears inherited repository paths before lint starts', (t) => {
+    const f = fixture(t);
+    const bin = path.join(f.dir, 'bin');
+    fs.mkdirSync(bin);
+    fs.writeFileSync(path.join(bin, 'npm'), `#!${process.execPath}
+const assert = require('node:assert/strict');
+const { execFileSync } = require('node:child_process');
+assert.equal(process.env.GIT_DIR, undefined);
+assert.equal(process.env.GIT_INDEX_FILE, undefined);
+assert.equal(execFileSync('git', ['rev-parse', '--show-toplevel'], { encoding: 'utf8' }).trim(), process.cwd());
+`, { mode: 0o755 });
+    const result = spawnSync('bash', [path.join(root, '.githooks/pre-push')], {
+        cwd: f.cwd,
+        encoding: 'utf8',
+        env: { ...fixtureEnv, CI: '', GITHUB_ACTIONS: '', PATH: bin + path.delimiter + process.env.PATH, GIT_DIR: f.git('rev-parse', '--absolute-git-dir'), GIT_INDEX_FILE: path.join(f.dir, 'hook-index') },
+    });
+    ok(result);
+    assert.match(result.stdout, /pre-push: lint passed/);
 });
