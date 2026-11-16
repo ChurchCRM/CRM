@@ -1,4 +1,4 @@
-name: Documentation
+name: "Docs: generate & publish OpenAPI specs"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
