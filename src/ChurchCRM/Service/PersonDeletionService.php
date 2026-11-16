@@ -143,9 +143,16 @@ final class PersonDeletionService
 
     private static function hasSubstantiveNotes(NoteQuery $query, ?ConnectionInterface $connection): bool
     {
+        // Only user-authored notes are recorded history. Every other type
+        // is a system/audit entry the app writes itself ('create', 'edit',
+        // 'event', 'photo', 'verify', ...) -- the same split TimelineService
+        // uses. Counting them made a checked-in kiosk walk-in guest
+        // undeletable even after their attendance was removed: checking in
+        // writes an 'event' note in the same transaction (KioskGuestService).
+        // Legacy rows with no type predate the taxonomy and still count.
         $allNotes = clone $query;
 
-        return $query->filterByType(['create', 'edit'], Criteria::NOT_IN)->exists($connection)
+        return $query->filterByType('note')->exists($connection)
             || $allNotes->filterByType(null, Criteria::ISNULL)->exists($connection);
     }
 }
