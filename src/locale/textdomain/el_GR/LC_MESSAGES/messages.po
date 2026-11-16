@@ -22532,10 +22532,6 @@ msgid "Search by family name or envelope #"
 msgstr "Αναζήτηση με όνομα οικογένειας ή αρ. φακέλου"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Δεν είναι δυνατή η διαγραφή οικογένειας που έχει δεσμεύσεις ή πληρωμές. Μετακινήστε ή αφαιρέστε πρώτα τις οικονομικές εγγραφές."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Δεν μπορείτε να διαγράψετε τον δικό σας λογαριασμό."
 

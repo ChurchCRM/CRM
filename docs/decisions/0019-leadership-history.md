@@ -4,6 +4,7 @@
 > ChurchCRM can tell you who is in a group today, but it cannot answer "who served as an elder in 2019?", "whose terms end this year?", or "show me this person's service record" — because leadership in ChurchCRM is only a present-tense group role, and removing someone from a group deletes the only trace they were ever in it. Churches, meanwhile, run leadership on **dated terms**: elders, deacons and trustees are elected or appointed to terms (commonly three years, in staggered classes), installed or ordained in recorded ceremonies, sometimes term-limited, and sometimes honoured as emeritus after service. Their clerks publish officer rosters by class in annual reports and answer denominational reports from these records. Mainstream church software does not model this either — with one niche exception, competitors offer group leaders, volunteer positions, or (in Rock RMS) a membership audit trail, but no terms of office. This RFC proposes **first-class leadership term records** — a person, a body, an office, a start, an end, and a status — with roster, rotation and service-record reporting, and leaves the taxonomy and visibility decisions below to the maintainer.
 
 **Status:** Draft for maintainer review (no decision yet); no release commitment
+**Audience:** Workflow feature — community feedback via its Feature Proposal discussion.
 **Date:** 2026-11-14
 **Owner:** @dawoudio
 **Proposal issues:** [#1088](https://github.com/ChurchCRM/CRM/issues/1088) (History of Church leadership)

@@ -5548,7 +5548,6 @@
   "{{name}} registered and checked in!": "{{name}} зарегистрирован и отметил присутствие!",
   "Search by family name": "Поиск по названию семьи",
   "Search by family name or envelope #": "Поиск по названию семьи или номеру конверта",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Нельзя удалить семью, у которой есть обязательства или платежи. Сначала переместите или удалите финансовые записи.",
   "You cannot delete your own account.": "Вы не можете удалить свою учётную запись.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Повторяющемуся событию нужна конечная дата, поэтому оно возвращено к {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Добавить всех из корзины в {{ministry}}",
