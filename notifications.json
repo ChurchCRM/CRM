@@ -13,6 +13,18 @@
             "timeout": 8000,
             "placement": "bottom",
             "align": "right"
+        },
+        {
+            "id": "community-feedback-ballot-2026-11",
+            "title": "We need your help — what should ChurchCRM build next?",
+            "message": "Your staff work in ChurchCRM every day: keeping people and groups up to date, recording giving, planning events. We are deciding which feature to build next, and your church's day-to-day experience should drive that choice. Vote on the topics we are considering and tell us how your staff do the work today — the most-needed features get built first.",
+            "icon": "message-circle",
+            "type": "info",
+            "link": "https://github.com/ChurchCRM/CRM/discussions/categories/feature-proposals",
+            "adminOnly": false,
+            "targetVersionPattern": "*",
+            "placement": "bottom",
+            "align": "right"
         }
     ]
 }
