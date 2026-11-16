@@ -294,3 +294,45 @@ describe("Private Canadian giving-statement signature", () => {
         cy.request({ url: `${endpoint}/image`, failOnStatusCode: false, followRedirect: false }).its("status").should("be.oneOf", [302, 401]);
     });
 });
+
+describe("Admin - Tax signature control", () => {
+    beforeEach(() => {
+        cy.makePrivateAdminAPICall("DELETE", "/admin/api/system/tax-signature", null, 200);
+        cy.freshAdminFormLogin({ enabled: true });
+    });
+    after(() => cy.makePrivateAdminAPICall("DELETE", "/admin/api/system/tax-signature", null, 200));
+    it("uploads, replaces and removes the private signature through Report Settings", () => {
+        cy.intercept("GET", "**/admin/api/system/tax-signature").as("signatureStatus");
+        cy.intercept("POST", "**/admin/api/system/tax-signature").as("signatureUpload");
+        cy.intercept("DELETE", "**/admin/api/system/tax-signature").as("signatureRemove");
+        cy.visit("/admin/system/report-settings");
+        cy.wait("@signatureStatus");
+        cy.get("#tax-signature-status").should("contain", "No signature on file");
+        for (const fileName of ["signature.png", "replacement.png"]) {
+            cy.get("#tax-signature-file").selectFile({ contents: Cypress.Buffer.from(LETTERHEAD_PNG_BASE64, "base64"), fileName, mimeType: "image/png" });
+            cy.wait("@signatureUpload").its("response.statusCode").should("eq", 200);
+            cy.get("#tax-signature-status").should("have.text", "Signature on file");
+        }
+        cy.get("#tax-signature-remove").click();
+        cy.get(".bootbox .btn-danger").contains("Remove").click();
+        cy.wait("@signatureRemove");
+        cy.get("#tax-signature-status").should("contain", "No signature on file");
+        cy.get("#tax-signature-remove").should("be.disabled");
+        for (const theme of ["light", "dark"]) {
+            for (const width of [1440, 820, 390]) {
+                cy.viewport(width, 1000);
+                cy.document().then((document) => document.documentElement.setAttribute("data-bs-theme", theme));
+                cy.get("#canadian-settings-card").scrollIntoView().should("be.visible");
+                cy.document().then((document) => expect(document.documentElement.scrollWidth).to.be.at.most(width));
+                cy.screenshot(`canadian-settings-${theme}-${width}`);
+            }
+        }
+    });
+    it("shows the API validation error for a rejected file", () => {
+        cy.intercept("POST", "**/admin/api/system/tax-signature").as("badSignature");
+        cy.visit("/admin/system/report-settings");
+        cy.get("#tax-signature-file").selectFile({ contents: Cypress.Buffer.from("<svg></svg>"), fileName: "signature.svg", mimeType: "image/svg+xml" });
+        cy.wait("@badSignature").its("response.statusCode").should("eq", 400);
+        cy.get("#tax-signature-error").should("not.be.empty");
+    });
+});

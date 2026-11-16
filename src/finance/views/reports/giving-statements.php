@@ -14,6 +14,78 @@ $byDeposit = $criteria['byDepositDate'];
 $base = SystemURLs::getRootPath() . '/finance/reports/giving-statements';
 ?>
 
+<?php if ($canadianEnabled) : ?>
+<nav class="d-flex gap-2 mb-3" aria-label="<?= InputUtils::escapeAttribute(gettext('Statement Template')) ?>">
+    <a class="btn btn-outline-primary" href="<?= InputUtils::escapeAttribute($base) ?>"><?= gettext('Standard Giving Statement') ?></a>
+    <a class="btn btn-outline-primary" href="<?= InputUtils::escapeAttribute($base . '?template=canadian') ?>"><?= gettext('Canadian Official Receipt') ?></a>
+</nav>
+<?php endif; ?>
+<?php if ($canadian) : ?>
+<div class="alert alert-info" role="note"><?= gettext('This option formats a Canadian receipt but does not keep a receipt register or retain PDFs. Keep the original PDF and an external receipt log at the charity\'s Canadian records location. Do not reuse a number for a different receipt, receipt the same gifts twice, or regenerate changed information as an unchanged original. This tool has no cancellation/replacement workflow; use your existing CRA-compliant process for corrections/lost-receipt replacements. A signature image is not a secure digital signature.') ?></div>
+<p><?= gettext('Historical envelope changes are unsupported. Mixed-donor family payment sets cannot be split here; handle them outside this feature. If a retained original is unavailable or different, use your external CRA cancellation/replacement procedures.') ?></p>
+<?php if ($canadianError !== '') : ?><div class="alert alert-danger" role="alert"><?= InputUtils::escapeHTML($canadianError) ?></div><?php endif; ?>
+<form method="post" action="<?= InputUtils::escapeAttribute($base . '?template=canadian') ?>" id="canadianReportForm">
+    <?= \ChurchCRM\Utils\CSRFUtils::getTokenInputField() ?>
+    <input type="hidden" name="template" value="canadian">
+    <?php if ($canadianReview !== []) : ?>
+    <input type="hidden" name="calendarYear" value="<?= (int) $query['calendarYear'] ?>">
+    <input type="hidden" name="copyKind" value="<?= InputUtils::escapeAttribute($query['copyKind'] ?? 'original') ?>">
+    <?php foreach ($canadianReview as $review) : ?><input type="hidden" name="family[]" value="<?= (int) $review['id'] ?>"><?php endforeach; ?>
+    <p><a href="<?= InputUtils::escapeAttribute($base . '?template=canadian') ?>"><?= gettext('Change Selection') ?></a></p>
+    <?php endif; ?>
+    <div class="card mb-3"><div class="card-body">
+        <label class="form-label" for="calendarYear"><?= gettext('Gift Calendar Year') ?></label>
+        <input class="form-control mb-3" type="number" id="calendarYear" <?= $canadianReview !== [] ? 'disabled' : 'name="calendarYear"' ?> min="1991" max="<?= (int) DateTimeUtils::getToday()->format('Y') ?>" value="<?= InputUtils::escapeAttribute((string) ($query['calendarYear'] ?? ((int) DateTimeUtils::getToday()->format('Y') - 1))) ?>" required>
+        <label class="form-label" for="canadianFamily"><?= gettext('Filter by Family') ?></label>
+        <select class="form-select mb-3" <?= $canadianReview !== [] ? 'disabled' : 'name="family[]"' ?> id="canadianFamily" multiple size="8" required>
+            <?php foreach ($families as $family) : ?>
+            <option value="<?= (int) $family['id'] ?>" <?= in_array((string) $family['id'], array_map('strval', (array) ($query['family'] ?? [])), true) ? 'selected' : '' ?>><?= InputUtils::escapeHTML($family['label']) ?></option>
+            <?php endforeach; ?>
+        </select>
+        <label class="form-label" for="copyKind"><?= gettext('Copy Kind') ?></label>
+        <select class="form-select mb-3" <?= $canadianReview !== [] ? 'disabled' : 'name="copyKind"' ?> id="copyKind">
+            <option value="original" <?= ($query['copyKind'] ?? '') !== 'duplicate' ? 'selected' : '' ?>><?= gettext('Original') ?></option>
+            <option value="duplicate" <?= ($query['copyKind'] ?? '') === 'duplicate' ? 'selected' : '' ?>><?= gettext('Duplicate') ?></option>
+        </select>
+        <button class="btn btn-primary" type="submit" name="review" value="1" formnovalidate><?= gettext('Review Selected Families') ?></button>
+        <a class="btn btn-outline-secondary" target="_blank" rel="noopener" href="<?= InputUtils::escapeAttribute($base . '/sample?template=canadian') ?>"><?= gettext('Preview PDF') ?></a>
+    </div></div>
+    <?php if ($canadianReview !== []) : ?>
+    <div class="card mb-3"><div class="card-body">
+        <label class="form-label" for="issueDate"><?= ($query['copyKind'] ?? '') === 'duplicate' ? gettext('Original Issue Date (enter from retained original)') : gettext('Issue Date') ?></label>
+        <input class="form-control mb-3" type="date" name="issueDate" id="issueDate" max="<?= DateTimeUtils::getTodayDate() ?>" value="<?= InputUtils::escapeAttribute(($query['copyKind'] ?? '') === 'duplicate' ? '' : DateTimeUtils::getTodayDate()) ?>" required>
+        <?php foreach ($canadianReview as $review) : ?>
+        <fieldset class="border rounded p-3 mb-3">
+            <legend class="float-none w-auto fs-4"><?= InputUtils::escapeHTML($review['name']) ?></legend>
+            <p><?= nl2br(InputUtils::escapeHTML($review['address'])) ?></p>
+            <label class="form-label" for="donor-<?= (int) $review['id'] ?>"><?= gettext('Verified Full Donor Name(s)') ?></label>
+            <input class="form-control mb-2" id="donor-<?= (int) $review['id'] ?>" name="donorNames[<?= (int) $review['id'] ?>]" maxlength="300" required>
+            <label class="form-label" for="mixed-<?= (int) $review['id'] ?>"><?= gettext('Do all selected-year gifts belong to the donor(s) named together above?') ?></label>
+            <select class="form-select mb-2" id="mixed-<?= (int) $review['id'] ?>" name="mixedDonors[<?= (int) $review['id'] ?>]" required>
+                <option value=""><?= gettext('Select') ?></option><option value="no"><?= gettext('Yes — one verified donor set') ?></option><option value="yes"><?= gettext('No — different donors; handle outside this feature') ?></option>
+            </select>
+            <label class="form-check"><input class="form-check-input" type="checkbox" name="donorVerified[<?= (int) $review['id'] ?>]" value="1" required><span class="form-check-label"><?= gettext('These are the true donors for every gift in this family/calendar year, and the mailing address is correct.') ?></span></label>
+        </fieldset>
+        <?php endforeach; ?>
+        <?php foreach ([
+            'signerAuthorized' => gettext('The printed giving-statement signer is authorized to sign these receipts.'),
+            'monetaryOnly' => gettext('All included rows are monetary gifts with no advantage.'),
+            'receivedDatesVerified' => gettext('Payment dates reflect gift-received dates, including documented mailed-cheque postmark treatment.'),
+            'noOverlap' => gettext('No overlapping individual or cumulative receipt exists.'),
+            'retainOriginal' => gettext('I will retain the issued PDF and an external receipt log at the charity\'s Canadian records location.'),
+        ] as $key => $label) : ?>
+        <label class="form-check mb-2"><input class="form-check-input" type="checkbox" name="<?= InputUtils::escapeAttribute($key) ?>" value="1" required><span class="form-check-label"><?= InputUtils::escapeHTML($label) ?></span></label>
+        <?php endforeach; ?>
+        <label class="form-check mb-2"><input class="form-check-input" type="checkbox" name="includeMemo" value="1"><span class="form-check-label"><?= gettext('Include payment memos: I reviewed them as suitable for the donor.') ?></span></label>
+        <?php if (($query['copyKind'] ?? '') === 'duplicate') : ?>
+        <label class="form-check mb-2"><input class="form-check-input" type="checkbox" name="duplicateCompared" value="1" required><span class="form-check-label"><?= gettext('I compared with the retained original: donor, amount, serial and text are unchanged. This is not a correction or replacement.') ?></span></label>
+        <?php endif; ?>
+        <button class="btn btn-primary" type="submit" formaction="<?= InputUtils::escapeAttribute($base . '/download') ?>" formtarget="_blank" id="canadianDownload"><?= gettext('Download PDF') ?></button>
+    </div></div>
+    <?php endif; ?>
+</form>
+<?php else : ?>
+
 <?php if ($summary !== null && $summary['gifts'] === 0) : ?>
 <div class="alert alert-warning" role="alert">
     <i class="fa-solid fa-triangle-exclamation me-1"></i>
@@ -203,5 +275,6 @@ $base = SystemURLs::getRootPath() . '/finance/reports/giving-statements';
     </div>
 </div>
 
+<?php endif; ?>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/finance-report-options.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

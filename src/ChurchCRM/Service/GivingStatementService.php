@@ -5,12 +5,14 @@ namespace ChurchCRM\Service;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\model\ChurchCRM\DepositQuery;
 use ChurchCRM\model\ChurchCRM\Family;
+use ChurchCRM\model\ChurchCRM\FamilyQuery;
 use ChurchCRM\model\ChurchCRM\Pledge;
 use ChurchCRM\model\ChurchCRM\PledgeQuery;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
+use InvalidArgumentException;
 
 /**
  * Year-end giving statements: the Finance report and the Member Portal build the same
@@ -223,7 +225,7 @@ class GivingStatementService
         return [
             'letterhead' => $graphic !== null ? 'graphic' : 'address',
             'letterhead_image' => $graphic,
-            'title' => gettext('Giving Statement'),
+            'title' => SystemConfig::getBooleanValue('bCanadianGivingStatement') ? gettext('Giving statement — not an official donation receipt') : gettext('Giving Statement'),
             'date_range' => $dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end),
             'opening' => trim(SystemConfig::getValue('sGivingStatementOpening') . ' ' . ($dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end)) . '.'),
             'closing' => SystemConfig::getValue('sGivingStatementClosing'),
@@ -296,6 +298,180 @@ class GivingStatementService
         }
 
         return ['families' => count($groups), 'gifts' => $gifts, 'total' => CurrencyFormatter::format($cents / 100)];
+    }
+
+    public static function canadianSampleDocument(): array
+    {
+        $document = self::sampleDocument();
+        $family = $document['families'][0];
+        $family['salutation'] = 'Élodie Marie Tremblay (fictional)';
+        $family['address'] = "123 rue Exemple\nMontréal, QC H2X 1Y4\nCanada";
+        $family['serial'] = '2025-459';
+        $family['total'] = 'CAD 150.00';
+        foreach ($family['gifts'] as $index => &$gift) {
+            $gift['memo'] = '';
+            $gift['amount'] = $index === 0 ? 'CAD 100.00' : 'CAD 50.00';
+        }
+        unset($gift);
+        return array_merge($document, [
+            'canadian' => true, 'sample' => true, 'families' => [$family],
+            'title' => gettext('Official Receipt / Reçu officiel'),
+            'legal_name' => 'Sample Canadian Charity (fictional)',
+            'registered_address' => "456 Sample Street\nOttawa, ON K1A 0A1\nCanada",
+            'registration' => '123456789RR0001', 'locality' => 'Ottawa',
+            'gift_year' => 2025, 'issue_date' => DateTimeUtils::formatDate('2026-01-15'),
+            'duplicate' => false, 'signature' => null, 'sincerely' => 'Sincerely / Cordialement',
+            'signer' => 'Sample Authorized Signer (fictional)',
+        ]);
+    }
+
+    public static function canadianOptions(array $input): array
+    {
+        if (!SystemConfig::getBooleanValue('bCanadianGivingStatement')) {
+            throw new InvalidArgumentException(gettext('Canadian giving statements are disabled.'));
+        }
+        foreach (['funds', 'classList', 'DateStart', 'DateEnd', 'deposit'] as $key) {
+            if (!empty($input[$key])) {
+                throw new InvalidArgumentException(gettext('Canadian receipts require the entire calendar year and all funds, without other filters.'));
+            }
+        }
+        if (self::exactCents(self::scalar($input['minimum'] ?? '0')) !== 0 || self::scalar($input['datetype'] ?? 'Payment') !== 'Payment'
+            || self::scalar($input['remittance'] ?? 'no') !== 'no' || self::scalar($input['output'] ?? 'pdf') !== 'pdf') {
+            throw new InvalidArgumentException(gettext('Canadian receipts require the entire calendar year and all funds, without other filters.'));
+        }
+        $year = filter_var($input['calendarYear'] ?? null, FILTER_VALIDATE_INT);
+        if ($year === false || $year < 1991 || $year > (int) DateTimeUtils::getToday()->format('Y')) {
+            throw new InvalidArgumentException(gettext('Choose a valid donation calendar year.'));
+        }
+        $ids = self::intList($input['family'] ?? []);
+        if ($ids === []) {
+            throw new InvalidArgumentException(gettext('Select the families to review.'));
+        }
+        $copy = self::scalar($input['copyKind'] ?? 'original');
+        if (!in_array($copy, ['original', 'duplicate'], true)) {
+            throw new InvalidArgumentException(gettext('Choose original or duplicate.'));
+        }
+        return ['year' => $year, 'familyIds' => $ids, 'copyKind' => $copy];
+    }
+
+    public static function canadianReview(array $options): array
+    {
+        $families = [];
+        foreach ($options['familyIds'] as $id) {
+            $family = FamilyQuery::create()->findPk($id);
+            if (!$family instanceof Family) {
+                throw new InvalidArgumentException(gettext('A selected family no longer exists.'));
+            }
+            $families[] = ['id' => $id, 'name' => $family->getName(), 'address' => $family->getMailingAddressLines()];
+        }
+        return $families;
+    }
+
+    public static function canadianDocument(array $input): array
+    {
+        $options = self::canadianOptions($input);
+        foreach (['donorNames', 'donorVerified', 'mixedDonors'] as $key) {
+            if (!is_array($input[$key] ?? null)) {
+                throw new InvalidArgumentException(gettext('Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature.'));
+            }
+        }
+        $issueDate = DateTimeUtils::parseIsoDate(self::scalar($input['issueDate'] ?? ''), 1991);
+        if ($issueDate === '' || $issueDate > DateTimeUtils::getTodayDate()) {
+            throw new InvalidArgumentException(gettext('Supply an issue date no later than today.'));
+        }
+        foreach (['signerAuthorized', 'monetaryOnly', 'receivedDatesVerified', 'noOverlap', 'retainOriginal'] as $key) {
+            if (($input[$key] ?? '') !== '1') {
+                throw new InvalidArgumentException(gettext('Complete every receipt acknowledgment before downloading.'));
+            }
+        }
+        if ($options['copyKind'] === 'duplicate' && ($input['duplicateCompared'] ?? '') !== '1') {
+            throw new InvalidArgumentException(gettext('Compare the duplicate with the retained original and confirm all receipt information is unchanged.'));
+        }
+        $currency = strtoupper(trim(SystemConfig::getValue('sCurrencySymbol')));
+        if (!in_array($currency, ['CAD', 'CAD $', 'CAD$', '$ CAD', '$CAD', 'CA$', 'C$'], true)) {
+            throw new InvalidArgumentException(gettext('The system currency must explicitly identify CAD for Canadian receipts.'));
+        }
+        $legal = [];
+        foreach (['sCanadianCharityLegalName', 'sCanadianCharityRegisteredAddress', 'sCanadianCharityRegistrationNumber', 'sCanadianReceiptIssueLocality', 'sTaxSigner'] as $key) {
+            $legal[$key] = trim(SystemConfig::getValue($key));
+            if ($legal[$key] === '') {
+                throw new InvalidArgumentException(gettext('Complete the required Canadian charity settings and printed signer.'));
+            }
+        }
+        $legal['sCanadianCharityRegistrationNumber'] = strtoupper(preg_replace('/\s+/u', '', $legal['sCanadianCharityRegistrationNumber']));
+        if (!preg_match('/^[0-9]{9}RR[0-9]{4}$/D', $legal['sCanadianCharityRegistrationNumber'])) {
+            throw new InvalidArgumentException(gettext('The Canadian registration number must have the format 123456789RR0001. This does not verify registration status.'));
+        }
+        if (!TaxSignatureService::hasUploaded() || ($image = TaxSignatureService::image()) === null) {
+            throw new InvalidArgumentException(gettext('Upload the authorized tax signature in Report Settings.'));
+        }
+        $year = $options['year'];
+        $groups = [];
+        foreach (PledgeQuery::create()->filterForTaxReport("$year-01-01", "$year-12-31", [], $options['familyIds'])->find() as $payment) {
+            $groups[(int) $payment->getFamId()][] = $payment;
+        }
+        $families = [];
+        foreach (self::canadianReview($options) as $review) {
+            $id = $review['id'];
+            if (empty($groups[$id])) {
+                throw new InvalidArgumentException(sprintf(gettext('No payments in the selected calendar year for family %s. No receipt was generated.'), $review['name']));
+            }
+            $name = trim(self::scalar($input['donorNames'][$id] ?? ''));
+            if (!mb_check_encoding($name, 'UTF-8') || mb_strlen($name) < 1 || mb_strlen($name) > 300
+                || ($input['donorVerified'][$id] ?? '') !== '1' || ($input['mixedDonors'][$id] ?? '') !== 'no') {
+                throw new InvalidArgumentException(gettext('Verify the full donor name and address for every family. Mixed-donor payment sets must be handled outside this feature.'));
+            }
+            $family = $groups[$id][0]->getFamily();
+            $parts = $family->getMailingAddressParts();
+            foreach (['Address1', 'City', 'State', 'Zip', 'Country'] as $part) {
+                if (trim((string) ($parts[$part] ?? '')) === '') {
+                    throw new InvalidArgumentException(gettext('A complete mailing address is required for every donor.'));
+                }
+            }
+            $envelope = (int) $family->getEnvelope();
+            if ($envelope > 0 && FamilyQuery::create()->filterByEnvelope($envelope)->count() > 1) {
+                throw new InvalidArgumentException(gettext('Shared-envelope conflict: another family currently has this envelope number.'));
+            }
+            $total = 0;
+            $gifts = [];
+            foreach ($groups[$id] as $payment) {
+                $cents = self::exactCents($payment->getAmount());
+                if ($cents <= 0 || self::exactCents($payment->getNondeductible()) !== 0 || $payment->getProblem()
+                    || (in_array($payment->getMethod(), ['CREDITCARD', 'BANKDRAFT'], true) && !$payment->getAutCleared())) {
+                    throw new InvalidArgumentException(gettext('Every included payment must be positive, cleared, monetary and without an advantage or problem. No rows were skipped.'));
+                }
+                $total += $cents;
+                $gifts[] = ['date' => DateTimeUtils::formatDate($payment->getDate('Y-m-d')),
+                    'fund' => $payment->getDonationFund()?->getName() ?? gettext('Undesignated'),
+                    'memo' => ($input['includeMemo'] ?? '') === '1' ? $payment->getComment() : '',
+                    'amount' => self::canadianAmount($cents)];
+            }
+            $families[] = ['salutation' => $name, 'address' => $review['address'],
+                'serial' => $year . '-' . ($envelope > 0 ? $envelope : 'F' . $id),
+                'total' => self::canadianAmount($total), 'gifts' => $gifts];
+        }
+        return array_merge(self::document($families, "$year-01-01", "$year-12-31"), [
+            'canadian' => true, 'title' => gettext('Official Receipt / Reçu officiel'),
+            'legal_name' => $legal['sCanadianCharityLegalName'], 'registered_address' => $legal['sCanadianCharityRegisteredAddress'],
+            'registration' => $legal['sCanadianCharityRegistrationNumber'], 'locality' => $legal['sCanadianReceiptIssueLocality'],
+            'gift_year' => $year, 'issue_date' => DateTimeUtils::formatDate($issueDate),
+            'duplicate' => $options['copyKind'] === 'duplicate', 'sincerely' => SystemConfig::getValue('sCanadianTaxSincerely'),
+            'signature' => 'data:image/png;base64,' . base64_encode($image), 'generated_on' => '',
+        ]);
+    }
+
+    private static function exactCents(mixed $value): int
+    {
+        if (!is_string($value) || !preg_match('/^(-?)([0-9]{1,8})(?:\.([0-9]{1,2}))?$/D', $value, $match)) {
+            throw new InvalidArgumentException(gettext('A payment has an invalid monetary amount.'));
+        }
+        $cents = (int) $match[2] * 100 + (int) str_pad($match[3] ?? '', 2, '0');
+        return ($match[1] === '-' ? -1 : 1) * $cents;
+    }
+
+    private static function canadianAmount(int $cents): string
+    {
+        return 'CAD ' . number_format($cents / 100, 2, SystemConfig::getValue('sDecimalSeparator'), SystemConfig::getValue('sThousandsSeparator'));
     }
 
     public static function fileLabel(int $year, string $familyName = ''): string

@@ -120,3 +120,35 @@ describe("Giving statements", () => {
         cy.contains("No Data Found");
     });
 });
+
+describe("Canadian statement review form", () => {
+    let previousFlag;
+    before(() => {
+        cy.getSystemConfig("bCanadianGivingStatement").then((value) => { previousFlag = value; });
+        cy.setSystemConfig("bCanadianGivingStatement", "1");
+    });
+    after(() => cy.restoreSystemConfig("bCanadianGivingStatement", previousFlag));
+    beforeEach(() => cy.freshAdminFormLogin({ enabled: true }));
+    it("requires donor review without selecting members or carrying standard filters", () => {
+        cy.visit(`${statementsPath}?template=canadian`);
+        cy.get("#calendarYear").clear().type("2025");
+        cy.get("#canadianFamily").select("1");
+        cy.get("#copyKind").select("duplicate");
+        cy.get('[name="review"]').click();
+        cy.get('[name="donorNames[1]"]').should("have.value", "");
+        cy.get('[name="donorVerified[1]"]').should("not.be.checked");
+        cy.get("#issueDate").should("have.value", "");
+        cy.get("#DateStart, #DateEnd, #fundsList, #deposit, #minimum").should("not.exist");
+        cy.get("#canadianDownload").should("have.attr", "formaction").and("include", "/download");
+        cy.get("#canadianReportForm").should("have.attr", "method", "post");
+        for (const theme of ["light", "dark"]) {
+            for (const width of [1440, 820, 390]) {
+                cy.viewport(width, 1000);
+                cy.document().then((document) => document.documentElement.setAttribute("data-bs-theme", theme));
+                cy.get("#canadianReportForm").should("be.visible");
+                cy.document().then((document) => expect(document.documentElement.scrollWidth).to.be.at.most(width));
+                cy.screenshot(`canadian-review-${theme}-${width}`);
+            }
+        }
+    });
+});

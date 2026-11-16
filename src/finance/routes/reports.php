@@ -71,8 +71,22 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     });
 
     // Giving Statements: choose filters, preview the result, then download.
-    $group->get('/giving-statements', function (Request $request, Response $response): Response {
-        $query = $request->getQueryParams();
+    $group->map(['GET', 'POST'], '/giving-statements', function (Request $request, Response $response): Response {
+        $query = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
+        $canadianEnabled = SystemConfig::getBooleanValue('bCanadianGivingStatement');
+        $canadian = ($query['template'] ?? '') === 'canadian' && $canadianEnabled;
+        $canadianReview = [];
+        $canadianError = '';
+        if ($canadian && ($query['review'] ?? '') === '1') {
+            if (!CSRFUtils::verifyRequest($query)) {
+                return SlimUtils::renderErrorJSON($response, gettext('Invalid or missing CSRF token'), [], 403);
+            }
+            try {
+                $canadianReview = GivingStatementService::canadianReview(GivingStatementService::canadianOptions($query));
+            } catch (InvalidArgumentException $error) {
+                $canadianError = $error->getMessage();
+            }
+        }
         $remembered = FiscalYearUtils::rememberedEndYear();
         if ($remembered !== null && ($query['year'] ?? '') === '' && ($query['DateStart'] ?? '') === '' && ($query['DateEnd'] ?? '') === '') {
             $query['year'] = $remembered;
@@ -92,6 +106,10 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
                 [gettext('Year-End Giving'), '/finance/reports/year-end'],
                 [gettext('Giving Statements')],
             ]),
+            'canadianEnabled' => $canadianEnabled,
+            'canadian' => $canadian,
+            'canadianReview' => $canadianReview,
+            'canadianError' => $canadianError,
             'query' => $query,
             'criteria' => $criteria,
             'summary' => $summary,
@@ -113,7 +131,9 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     });
 
     $group->get('/giving-statements/sample', function (Request $request, Response $response): Response {
-        $pdf = (new MpdfRenderer())->renderToString('tax-report', GivingStatementService::sampleDocument());
+        $document = ($request->getQueryParams()['template'] ?? '') === 'canadian'
+            ? GivingStatementService::canadianSampleDocument() : GivingStatementService::sampleDocument();
+        $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
 
         return PdfResponse::create($response, $pdf, 'GivingStatement-Sample');
     });
@@ -121,6 +141,18 @@ $app->group('/reports', function (RouteCollectorProxy $group): void {
     // Giving Statement: PDF or CSV for the chosen filters, from the report form or a family link.
     $group->map(['GET', 'POST'], '/giving-statements/download', function (Request $request, Response $response): Response {
         $input = $request->getMethod() === 'POST' ? (array) $request->getParsedBody() : $request->getQueryParams();
+        if (($input['template'] ?? '') === 'canadian') {
+            if ($request->getMethod() !== 'POST' || !CSRFUtils::verifyRequest($input)) {
+                return SlimUtils::renderErrorJSON($response, gettext('A reviewed POST with a valid CSRF token is required.'), [], 403);
+            }
+            try {
+                $document = GivingStatementService::canadianDocument($input);
+                $pdf = (new MpdfRenderer())->renderToString('tax-report', $document);
+                return PdfResponse::create($response, $pdf, 'CanadianReceipts-' . $document['gift_year']);
+            } catch (InvalidArgumentException $error) {
+                return SlimUtils::renderErrorJSON($response, $error->getMessage(), [], 400);
+            }
+        }
         $criteria = GivingStatementService::criteriaFromQuery($input);
         $groups = GivingStatementService::paymentsByFamily($criteria);
         if ($groups === []) {

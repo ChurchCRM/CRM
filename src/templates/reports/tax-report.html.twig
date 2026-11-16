@@ -1,6 +1,42 @@
 {% extends "_letter.html.twig" %}
-{% set show_tax_id = true %}
+{% set show_tax_id = not canadian|default(false) %}
 {% block letter_body %}
+  {% if canadian|default(false) %}
+    {% for family in families %}
+      {% if not loop.first %}{% include "_letter-break.html.twig" %}{% endif %}
+      <htmlpagefooter name="receipt-{{ loop.index }}"><div>{{ family.serial }} — {{ gettext('Page') }} {PAGENO}</div></htmlpagefooter>
+      <sethtmlpagefooter name="receipt-{{ loop.index }}" value="on" show-this-page="1" />
+      <div class="meta">
+        <strong>{{ legal_name }}</strong><br>{{ registered_address|nl2br }}<br>
+        {{ gettext('Registration Number') }}: {{ registration }}
+        {% if sample|default(false) %}<h1>SAMPLE — NOT VALID FOR TAX PURPOSES</h1>{% endif %}
+        <h1>{{ title }}</h1>
+        <p>Official receipt for income tax purposes / Reçu officiel aux fins de l’impôt sur le revenu</p>
+        <p>{{ gettext('Receipt No.') }}: {{ family.serial }}<br>
+        {{ gettext('Gift Calendar Year') }}: {{ gift_year }}<br>
+        {{ gettext('Issue Date') }}: {{ issue_date }}<br>
+        {{ gettext('Issue Locality') }}: {{ locality }}<br>{{ gettext('Currency') }}: CAD</p>
+        {% if duplicate %}<strong>Duplicate copy / Copie duplicata</strong>{% endif %}
+      </div>
+      <div class="recipient"><strong>{{ family.salutation }}</strong><br>{{ family.address|nl2br }}</div>
+      <table class="gifts">
+        <thead><tr><th>{{ gettext('Date received') }}</th><th>{{ gettext('Fund') }}</th><th>{{ gettext('Memo') }}</th><th class="right">{{ gettext('Amount (CAD)') }}</th></tr></thead>
+        <tbody>{% for gift in family.gifts %}<tr><td>{{ gift.date }}</td><td>{{ gift.fund }}</td><td>{{ gift.memo }}</td><td class="right">{{ gift.amount }}</td></tr>{% endfor %}</tbody>
+      </table>
+      <p>{{ gettext('Amount of gifts') }}: {{ family.total }}<br>
+      {{ gettext('Amount of advantages') }}: CAD 0.00 — None / Aucun<br>
+      <strong>{{ gettext('Eligible amount of gifts for income tax purposes') }}: {{ family.total }}</strong></p>
+      <div class="closing" style="page-break-inside: avoid;">
+        {% if closing %}<p>{{ closing }}</p>{% endif %}
+        {% if questions %}<p>{{ questions }}</p>{% endif %}
+        <p>{{ sincerely }}</p>
+        {% if signature %}<img src="{{ signature }}" style="max-width: 50mm; max-height: 20mm;" alt="{{ gettext('Authorized Signature') }}">{% else %}<p>{{ gettext('Sample signature placeholder') }}</p>{% endif %}
+        <p>{{ signer }}</p>
+        <p>Canada Revenue Agency — <a href="https://www.canada.ca/charities-giving">canada.ca/charities-giving</a></p>
+      </div>
+    {% endfor %}
+  {% else %}
+
   {% for family in families %}
     {% if not loop.first %}{% include "_letter-break.html.twig" %}{% endif %}
 
@@ -87,4 +123,5 @@
       </div>
     {% endif %}
   {% endfor %}
+  {% endif %}
 {% endblock %}
