@@ -35,7 +35,7 @@ $releases = array_reverse($preview['upgradePath'] ?? []); // Same newest-first o
                             </a>
                         <?php endif; ?>
                     </div>
-                    <div class="release-notes p-3 border rounded" style="white-space: pre-wrap"><?= InputUtils::escapeHTML($release['notes'] ?? '') ?></div>
+                    <div class="release-notes release-notes-plain p-3 border rounded"><?= InputUtils::escapeHTML($release['notes'] ?? '') ?></div>
                 </section>
             <?php endforeach; ?>
             </div>
