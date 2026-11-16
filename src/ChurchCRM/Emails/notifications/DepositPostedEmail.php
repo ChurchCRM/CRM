@@ -5,7 +5,7 @@ namespace ChurchCRM\Emails\notifications;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Deposit;
 use ChurchCRM\Utils\CurrencyFormatter;
-use ChurchCRM\Utils\OutputUtils;
+use ChurchCRM\Utils\DateTimeUtils;
 
 class DepositPostedEmail extends NotificationEmail
 {
@@ -30,7 +30,7 @@ class DepositPostedEmail extends NotificationEmail
 
     public function getTokens(): array
     {
-        $date = OutputUtils::FormatDate($this->deposit->getDate());
+        $date = DateTimeUtils::formatDate($this->deposit->getDate());
         $total = $this->deposit->getTotalAmount();
         $formattedTotal = CurrencyFormatter::format($total);
         $body = gettext('A new deposit has been posted.') . "\n\n" .
@@ -48,7 +48,7 @@ class DepositPostedEmail extends NotificationEmail
 
     protected function getFullURL(): string
     {
-        return SystemURLs::getAbsoluteURL('/finance/deposit/' . $this->deposit->getId());
+        return SystemURLs::getURL('/finance/deposit/' . $this->deposit->getId());
     }
 
     protected function getButtonText(): string
