@@ -1212,7 +1212,7 @@ paths:
         '200':
           description: 'Family deleted'
         '403':
-          description: 'DeleteRecord role required, family has donations, or a member has a login the current user may not delete'
+          description: 'DeleteRecord role required, family has donations, or a member has protected history or a login the current user may not delete'
         '404':
           description: 'Family not found'
       security:
