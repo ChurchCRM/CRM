@@ -33,9 +33,9 @@ const login = (role) => {
 };
 
 // CSRF tokens are session-wide (CSRFUtils), so any token rendered on a page
-// in this session validates against the v2 CSRF middleware. The admin
-// dashboard always renders one (same harvest pattern as
-// admin.login-as-person.spec.js).
+// in this session validates against the v2 CSRF middleware. The admin users
+// table always renders one; the dashboard and header only render one inside
+// conditional notices.
 const csrfFrom = (html) => {
     const match = html.match(/data-csrf-token="([^"]+)"/);
     expect(match, "CSRF token on the page").to.not.eq(null);
@@ -96,7 +96,7 @@ describe("System update notice for all staff", () => {
             body: {},
             failOnStatusCode: false,
         }).its("status").should("eq", 403);
-        cy.request("/admin/").then(({ body }) => {
+        cy.request("/admin/system/users").then(({ body }) => {
             cy.request({
                 method: "POST",
                 url: "/v2/releases/dismiss-update-notice",
