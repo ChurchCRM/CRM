@@ -15,13 +15,13 @@ Assert::same(
     NotificationService::dismissalSettingKey('system-update-available')
 );
 
-$boundaryId = str_repeat('a', 28);
+$boundaryId = str_repeat('a', 27);
 Assert::same('notification.dismissed.' . $boundaryId, NotificationService::dismissalSettingKey($boundaryId));
 
 $ballotId = 'community-feedback-ballot-2026-11';
 $key = NotificationService::dismissalSettingKey($ballotId);
 Assert::same(50, strlen($key));
-Assert::same('notification.dismissed.d2fa1db07ef75272d4cdfba18d24', $key);
+Assert::same('notification.dismissed.d2fa1db07ef75272d4cdfba18d2', $key);
 Assert::same(1, preg_match('/^[A-Za-z0-9_.-]{1,50}$/', $key));
 Assert::same($key, NotificationService::dismissalSettingKey($ballotId));
 Assert::notSame($key, NotificationService::dismissalSettingKey('community-feedback-ballot-2026-12'));

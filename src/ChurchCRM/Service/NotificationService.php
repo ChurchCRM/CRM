@@ -64,7 +64,7 @@ class NotificationService
         $prefix = 'notification.dismissed.';
         $key = $prefix . $id;
         // Keep existing dismissals; long remote IDs must fit user_settings.setting_name.
-        return strlen($key) <= 50 ? $key : $prefix . substr(hash('sha256', $id), 0, 28);
+        return strlen($key) <= 50 ? $key : $prefix . substr(hash('sha256', $id), 0, 50 - strlen($prefix));
     }
 
     /**
