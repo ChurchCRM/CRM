@@ -27950,3 +27950,51 @@ msgstr "Systembenutzer hat die Zwei-Faktor-Authentifizierung aktiviert"
 msgid "system user two-factor authentication disabled by admin"
 msgstr "Zwei-Faktor-Authentifizierung des Systembenutzers durch Administrator deaktiviert"
 
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Eine Familie mit Zusagen oder Zahlungen kann nicht gelöscht werden. Deaktivieren Sie die Familie stattdessen, um die Finanzhistorie zu erhalten. Verschieben Sie die Finanzdaten nur, wenn es angemessen ist."
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Familie stattdessen deaktivieren"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Deaktivieren Sie die Familie, statt sie zu löschen."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Deaktivieren Sie die Person, statt sie zu löschen."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Erfasste Historie: %s."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Diese Familie kann nicht gelöscht werden, da Notizen vorhanden sind. Deaktivieren Sie die Familie stattdessen, um ihre Historie zu erhalten."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Diese Person kann nicht gelöscht werden, da erfasste Aktivitäten vorhanden sind. Deaktivieren Sie die Person stattdessen, um ihre Historie zu erhalten."
+
+#: 
+msgid "attendance"
+msgstr "Anwesenheit"
+
+#: 
+msgid "financial history"
+msgstr "Finanzhistorie"
+
+#: 
+msgid "notes"
+msgstr "Notizen"
+
+#: 
+msgid "recorded activities"
+msgstr "erfasste Aktivitäten"
+
+#: 
+msgid "volunteer service history"
+msgstr "Verlauf des ehrenamtlichen Einsatzes"
+
