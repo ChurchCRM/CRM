@@ -27921,3 +27921,31 @@ msgstr "uthibitishaji wa hatua mbili wa mtumiaji wa mfumo umezimwa na msimamizi"
 msgid "volunteer service history"
 msgstr "historia ya huduma ya kujitolea"
 
+#: 
+msgid "%s by %s"
+msgstr "%s na %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Ingiza nenosiri lako au nambari kutoka kwa programu yako ya uthibitishaji ili kubadilisha uthibitishaji wa hatua mbili."
+
+#: 
+msgid "Latest Notes"
+msgstr "Vidokezo vya Hivi Karibuni"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Hakuna vidokezo vilivyoongezwa bado."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Anza kujiandikisha ili kupata nambari ya QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Nenosiri au nambari hiyo si sahihi. Uthibitishaji wa hatua mbili bado umewashwa."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Uthibitishaji wa hatua mbili tayari umewekwa. Siri yake huonyeshwa tu wakati wa kujiandikisha."
+

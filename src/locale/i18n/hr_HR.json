@@ -6942,5 +6942,12 @@
   "system user turned off two-factor authentication": "sistemski korisnik isključio je dvofaktorsku autentifikaciju",
   "system user turned on two-factor authentication": "sistemski korisnik uključio je dvofaktorsku autentifikaciju",
   "system user two-factor authentication disabled by admin": "administrator je isključio dvofaktorsku autentifikaciju sistemskog korisnika",
-  "volunteer service history": "povijest volonterske službe"
+  "volunteer service history": "povijest volonterske službe",
+  "%s by %s": "%s od %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Unesite svoju lozinku ili kod iz autentifikacijske aplikacije da biste promijenili dvofaktorsku autentifikaciju.",
+  "Latest Notes": "Najnovije bilješke",
+  "No notes have been added yet.": "Još nisu dodane bilješke.",
+  "Start enrollment to get a QR code.": "Započnite upis da biste dobili QR kod.",
+  "That password or code is not right. Two-factor authentication is still on.": "Ta lozinka ili kod nije točan. Dvofaktorska autentifikacija i dalje je uključena.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Dvofaktorska autentifikacija već je postavljena. Njezina se tajna prikazuje samo tijekom upisa."
 }

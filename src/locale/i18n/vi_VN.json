@@ -6876,5 +6876,12 @@
   "system user turned off two-factor authentication": "người dùng hệ thống đã tắt xác thực hai yếu tố",
   "system user turned on two-factor authentication": "người dùng hệ thống đã bật xác thực hai yếu tố",
   "system user two-factor authentication disabled by admin": "xác thực hai yếu tố của người dùng hệ thống đã bị quản trị viên vô hiệu hóa",
-  "volunteer service history": "lịch sử phục vụ tình nguyện"
+  "volunteer service history": "lịch sử phục vụ tình nguyện",
+  "%s by %s": "%s bởi %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Nhập mật khẩu của bạn hoặc mã từ ứng dụng xác thực để thay đổi xác thực hai yếu tố.",
+  "Latest Notes": "Ghi chú mới nhất",
+  "No notes have been added yet.": "Chưa có ghi chú nào được thêm.",
+  "Start enrollment to get a QR code.": "Bắt đầu đăng ký để nhận mã QR.",
+  "That password or code is not right. Two-factor authentication is still on.": "Mật khẩu hoặc mã đó không đúng. Xác thực hai yếu tố vẫn đang bật.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Xác thực hai yếu tố đã được thiết lập. Bí mật của nó chỉ hiển thị trong quá trình đăng ký."
 }

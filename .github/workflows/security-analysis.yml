@@ -1,4 +1,4 @@
-name: "Security: CodeQL"
+name: "Security: CodeQL & Semgrep"
 
 on:
   push:
@@ -13,6 +13,9 @@ on:
       - '**/*.yaml'
       - '**/*.sql'
   pull_request:
+    # ready_for_review included so a draft marked ready gets its first scan then;
+    # the jobs below skip drafts.
+    types: [opened, synchronize, reopened, ready_for_review]
     branches: [master]
     paths:
       - '**/*.php'
@@ -37,6 +40,7 @@ permissions:
 
 jobs:
   codeql-analysis:
+    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     name: 'CodeQL (JS/TS)'
     timeout-minutes: 30
     runs-on: ubuntu-24.04
@@ -61,6 +65,7 @@ jobs:
           category: "/language:javascript-typescript"
 
   semgrep-analysis:
+    if: ${{ github.event_name != 'pull_request' || !github.event.pull_request.draft }}
     name: 'Semgrep (PHP/JS/Config)'
     timeout-minutes: 20
     runs-on: ubuntu-24.04

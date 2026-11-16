@@ -6876,5 +6876,12 @@
   "system user turned off two-factor authentication": "시스템 사용자가 2단계 인증을 껐습니다",
   "system user turned on two-factor authentication": "시스템 사용자가 2단계 인증을 켰습니다",
   "system user two-factor authentication disabled by admin": "관리자가 시스템 사용자의 2단계 인증을 비활성화했습니다",
-  "volunteer service history": "봉사 활동 이력"
+  "volunteer service history": "봉사 활동 이력",
+  "%s by %s": "%s, %s 작성",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "이중 인증을 변경하려면 비밀번호 또는 인증 앱의 코드를 입력하세요.",
+  "Latest Notes": "최신 메모",
+  "No notes have been added yet.": "아직 추가된 메모가 없습니다.",
+  "Start enrollment to get a QR code.": "QR 코드를 받으려면 등록을 시작하세요.",
+  "That password or code is not right. Two-factor authentication is still on.": "해당 비밀번호나 코드가 올바르지 않습니다. 이중 인증이 계속 켜져 있습니다.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "이중 인증이 이미 설정되어 있습니다. 비밀 키는 등록 중에만 표시됩니다."
 }

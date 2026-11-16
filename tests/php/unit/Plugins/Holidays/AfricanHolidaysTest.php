@@ -93,3 +93,20 @@ foreach (['Ethiopia', 'Eritrea', 'Egypt'] as $country) {
 }
 Assert::same('2026-04-10', (new \ChurchCRM\Plugins\Holidays\Provider\Ethiopia(2026))->getHolidays()['goodFriday']->format('Y-m-d'));
 Assert::same('2026-04-10', (new \ChurchCRM\Plugins\Holidays\Provider\Eritrea(2026))->getHolidays()['goodFriday']->format('Y-m-d'));
+
+// Enkutatash, Geez New Year, and Meskel move one day later in the year before a Gregorian leap year.
+$geezSeptember = [
+    2026 => ['09-11', '09-27'],
+    2027 => ['09-12', '09-28'],
+    2028 => ['09-11', '09-27'],
+    2031 => ['09-12', '09-28'],
+];
+foreach ($geezSeptember as $year => [$newYear, $meskel]) {
+    $ethiopia = (new \ChurchCRM\Plugins\Holidays\Provider\Ethiopia($year))->getHolidays();
+    Assert::same("{$year}-{$newYear}", $ethiopia['enkutatash']->format('Y-m-d'), "Ethiopia Enkutatash {$year}");
+    Assert::same("{$year}-{$meskel}", $ethiopia['meskel']->format('Y-m-d'), "Ethiopia Meskel {$year}");
+
+    $eritrea = (new \ChurchCRM\Plugins\Holidays\Provider\Eritrea($year))->getHolidays();
+    Assert::same("{$year}-{$newYear}", $eritrea['geezNewYear']->format('Y-m-d'), "Eritrea Geez New Year {$year}");
+    Assert::same("{$year}-{$meskel}", $eritrea['meskel']->format('Y-m-d'), "Eritrea Meskel {$year}");
+}

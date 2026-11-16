@@ -27871,3 +27871,31 @@ msgstr "ผู้ดูแลระบบปิดใช้งานการย
 msgid "volunteer service history"
 msgstr "ประวัติการรับใช้อาสาสมัคร"
 
+#: 
+msgid "%s by %s"
+msgstr "%s โดย %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "ป้อนรหัสผ่านของคุณหรือรหัสจากแอปยืนยันตัวตนเพื่อเปลี่ยนการยืนยันตัวตนแบบสองปัจจัย"
+
+#: 
+msgid "Latest Notes"
+msgstr "บันทึกย่อล่าสุด"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "ยังไม่มีการเพิ่มบันทึกย่อ"
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "เริ่มการลงทะเบียนเพื่อรับรหัส QR"
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "รหัสผ่านหรือรหัสนั้นไม่ถูกต้อง การยืนยันตัวตนแบบสองปัจจัยยังคงเปิดอยู่"
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "การยืนยันตัวตนแบบสองปัจจัยได้รับการตั้งค่าแล้ว ความลับของมันจะแสดงเฉพาะระหว่างการลงทะเบียนเท่านั้น"
+

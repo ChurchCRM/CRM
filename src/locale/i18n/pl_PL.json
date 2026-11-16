@@ -6942,5 +6942,12 @@
   "system user turned off two-factor authentication": "użytkownik systemowy wyłączył uwierzytelnianie dwuskładnikowe",
   "system user turned on two-factor authentication": "użytkownik systemowy włączył uwierzytelnianie dwuskładnikowe",
   "system user two-factor authentication disabled by admin": "uwierzytelnianie dwuskładnikowe użytkownika systemowego wyłączone przez administratora",
-  "volunteer service history": "historia służby wolontariackiej"
+  "volunteer service history": "historia służby wolontariackiej",
+  "%s by %s": "%s autorstwa %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Wprowadź swoje hasło lub kod z aplikacji uwierzytelniającej, aby zmienić uwierzytelnianie dwuskładnikowe.",
+  "Latest Notes": "Najnowsze notatki",
+  "No notes have been added yet.": "Nie dodano jeszcze żadnych notatek.",
+  "Start enrollment to get a QR code.": "Rozpocznij rejestrację, aby uzyskać kod QR.",
+  "That password or code is not right. Two-factor authentication is still on.": "To hasło lub kod jest nieprawidłowe. Uwierzytelnianie dwuskładnikowe jest nadal włączone.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Uwierzytelnianie dwuskładnikowe jest już skonfigurowane. Jego sekret jest pokazywany tylko podczas rejestracji."
 }
