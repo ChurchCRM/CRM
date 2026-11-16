@@ -10,6 +10,10 @@ Feature Proposals and RFC Reviews Discussions: [`docs/decisions/0003-rfc-communi
 
 Read [the AI operating model](docs/contributing/ai-operating-model.md) for task owners, handoffs and approval boundaries.
 
+## Token economics
+
+Follow [Token economics](docs/contributing/ai-operating-model.md): lowest model tier that clears the bar, one task per session with a fresh session (`/clear`) between PR reviews and between issues, subagents only for isolation or real parallelism on the cheapest tier.
+
 ## Skills
 
 Index: [`.agents/skills/churchcrm/SKILL.md`](.agents/skills/churchcrm/SKILL.md).
@@ -59,6 +63,12 @@ Plugin registry URL: `CentralServices::PLUGIN_REGISTRY_URL` (External branch tod
 ## Issue and PR readiness
 
 Before triaging or implementing an issue, read [`docs/contributing/issue-readiness.md`](docs/contributing/issue-readiness.md). Check existing issues/PRs first, size work by review burden and risk, use epics for independently meaningful outcomes or cross-subsystem work, and treat `good first issue` as a maintainer certification. Keep issue intake friendly and PRs focused. Human maintainers remain accountable for decisions and approvals.
+
+## Pull requests
+
+- Open every PR from a fork with maintainer edits enabled (`maintainer_can_modify: true` when creating it through the API). Maintainers refresh branches with `master` so CI runs on current code; a PR that blocks maintainer edits waits on its author for every update.
+- Keep your PR branch current yourself: merge `master` in before pushing new commits, and resolve the conflicts. Never leave a stale or conflicted branch for a maintainer to repair.
+- Open the PR as a draft. Mark it ready for review only when the work is finished and its tests pass — ready means ready to merge.
 
 ## Session hygiene
 

@@ -850,8 +850,8 @@ class User extends BaseUser
 
     public function remove2FAKey(): void
     {
-        $this->setTwoFactorAuthSecret(null);
-        $this->save();
+        // Reuse the central disable flow to clear recovery codes and preserve 2FA grace handling.
+        $this->disableTwoFactorAuthentication();
     }
 
     public function getDecryptedTwoFactorAuthSecret(): string
@@ -874,11 +874,15 @@ class User extends BaseUser
 
     public function disableTwoFactorAuthentication(): void
     {
+        $wasEnabled = $this->is2FactorAuthEnabled();
         $this->setTwoFactorAuthRecoveryCodes(null);
         $this->setTwoFactorAuthSecret(null);
         // If 2FA is required for this user, stamp a fresh grace period start so
         // they get a new window rather than being instantly locked out after disabling.
-        if ($this->isTwoFactorAuthMandated()) {
+        // Only a real enabled-to-disabled transition earns that fresh window: with
+        // no secret set there is nothing to disable, and restamping would let an
+        // unenrolled user postpone a pending enrollment deadline indefinitely.
+        if ($wasEnabled && $this->isTwoFactorAuthMandated()) {
             $this->setTwoFactorAuthGracePeriodStart(DateTimeUtils::getToday());
         }
         $this->save();

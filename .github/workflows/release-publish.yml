@@ -1,4 +1,4 @@
-name: Release & Start Next
+name: "Release: publish & start next"
 
 permissions:
   contents: read

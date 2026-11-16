@@ -27877,3 +27877,79 @@ msgstr "stelselgebruiker het tweefaktor-verifikasie aangeskakel"
 msgid "system user two-factor authentication disabled by admin"
 msgstr "stelselgebruiker-tweefaktor-verifikasie gedeaktiveer deur admin"
 
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "'n Familie met beloftes of betalings kan nie uitgevee word nie. Deaktiveer die familie eerder om die finansiële geskiedenis te bewaar. Skuif die finansiële rekords slegs indien gepas."
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Deaktiveer eerder die familie"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Deaktiveer die familie eerder as om dit uit te vee."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Deaktiveer die persoon eerder as om hulle uit te vee."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Aangetekende geskiedenis: %s."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Hierdie familie kan nie uitgevee word nie omdat dit notas het. Deaktiveer die familie eerder om hul geskiedenis te bewaar."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Hierdie persoon kan nie uitgevee word nie omdat hulle aangetekende aktiwiteite het. Deaktiveer die persoon eerder om hul geskiedenis te bewaar."
+
+#: 
+msgid "attendance"
+msgstr "bywoning"
+
+#: 
+msgid "financial history"
+msgstr "finansiële geskiedenis"
+
+#: 
+msgid "notes"
+msgstr "notas"
+
+#: 
+msgid "recorded activities"
+msgstr "aangetekende aktiwiteite"
+
+#: 
+msgid "volunteer service history"
+msgstr "geskiedenis van vrywilligerdiens"
+
+#: 
+msgid "%s by %s"
+msgstr "%s deur %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Voer jou wagwoord of 'n kode van jou verifikasie-app in om twee-faktor-verifikasie te verander."
+
+#: 
+msgid "Latest Notes"
+msgstr "Jongste notas"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Nog geen notas is bygevoeg nie."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Begin inskrywing om 'n QR-kode te kry."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Daardie wagwoord of kode is nie reg nie. Twee-faktor-verifikasie is steeds aan."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Twee-faktor-verifikasie is reeds opgestel. Die geheim daarvan word slegs tydens inskrywing gewys."
+

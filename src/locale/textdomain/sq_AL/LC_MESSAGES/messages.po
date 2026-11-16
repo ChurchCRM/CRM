@@ -27868,3 +27868,79 @@ msgstr "Përdoruesi i sistemit  aktivizoi vërtetimin me dy faktorë"
 msgid "system user two-factor authentication disabled by admin"
 msgstr "Vërtetimi me dy faktorë i përdoruesit të sistemit është çaktivizuar nga administratori"
 
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Një familje me premtime ose pagesa nuk mund të fshihet. Çaktivizoni familjen në vend të kësaj për të ruajtur historikun financiar. Zhvendosni regjistrimet financiare vetëm nëse është e përshtatshme."
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Çaktivizo familjen në vend të kësaj"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Çaktivizoni familjen në vend që ta fshini."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Çaktivizoni personin në vend që ta fshini."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Historiku i regjistruar: %s."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Kjo familje nuk mund të fshihet sepse ka shënime. Çaktivizoni familjen për të ruajtur historikun e saj."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Ky person nuk mund të fshihet sepse ka aktivitete të regjistruara. Çaktivizoni personin për të ruajtur historikun e tij."
+
+#: 
+msgid "attendance"
+msgstr "pjesëmarrja"
+
+#: 
+msgid "financial history"
+msgstr "historiku financiar"
+
+#: 
+msgid "notes"
+msgstr "shënime"
+
+#: 
+msgid "recorded activities"
+msgstr "aktivitete të regjistruara"
+
+#: 
+msgid "volunteer service history"
+msgstr "historiku i shërbimit vullnetar"
+
+#: 
+msgid "%s by %s"
+msgstr "%s nga %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Vendosni fjalëkalimin tuaj ose një kod nga aplikacioni juaj i vërtetimit për të ndryshuar vërtetimin dyfaktorësh."
+
+#: 
+msgid "Latest Notes"
+msgstr "Shënimet më të fundit"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Ende nuk janë shtuar shënime."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Filloni regjistrimin për të marrë një kod QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Ai fjalëkalim ose kod nuk është i saktë. Vërtetimi dyfaktorësh është ende aktiv."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Vërtetimi dyfaktorësh është konfiguruar tashmë. Sekreti i tij shfaqet vetëm gjatë regjistrimit."
+

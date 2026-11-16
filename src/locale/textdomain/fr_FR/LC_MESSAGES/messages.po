@@ -27874,3 +27874,79 @@ msgstr "l'utilisateur système a activé l'authentification à deux facteurs"
 msgid "system user two-factor authentication disabled by admin"
 msgstr "authentification à deux facteurs de l'utilisateur système désactivée par un administrateur"
 
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Impossible de supprimer une famille ayant des promesses de don ou des paiements. Désactivez plutôt la famille pour conserver l'historique financier. Ne déplacez les données financières que si c'est approprié."
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Désactiver plutôt la famille"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Désactivez la famille au lieu de la supprimer."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Désactivez la personne au lieu de la supprimer."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Historique enregistré : %s."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Cette famille ne peut pas être supprimée car elle a des notes. Désactivez plutôt la famille pour conserver son historique."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Cette personne ne peut pas être supprimée car elle a des activités enregistrées. Désactivez plutôt la personne pour conserver son historique."
+
+#: 
+msgid "attendance"
+msgstr "présences"
+
+#: 
+msgid "financial history"
+msgstr "historique financier"
+
+#: 
+msgid "notes"
+msgstr "notes"
+
+#: 
+msgid "recorded activities"
+msgstr "activités enregistrées"
+
+#: 
+msgid "volunteer service history"
+msgstr "historique de service bénévole"
+
+#: 
+msgid "%s by %s"
+msgstr "%s par %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Saisissez votre mot de passe ou un code de votre application d'authentification pour modifier l'authentification à deux facteurs."
+
+#: 
+msgid "Latest Notes"
+msgstr "Dernières notes"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Aucune note n'a encore été ajoutée."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Commencez l'inscription pour obtenir un code QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Ce mot de passe ou ce code n'est pas correct. L'authentification à deux facteurs reste activée."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "L'authentification à deux facteurs est déjà configurée. Son secret n'est affiché que pendant l'inscription."
+

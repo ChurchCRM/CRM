@@ -27242,3 +27242,713 @@ msgstr "Sinu andmed kuuluvad sulle. See annab teavet tarkvara kohta, mitte kunag
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Sinu andmed kuuluvad sulle. Paigalduste loendamiseks teatab ChurchCRM, et see paigaldati või uuendati ja kas see õnnestus, saadab kasutamise ajal kord päevas olekuteate ning lisaks versiooninumbri, sinu riigi, andmebaasi tüübi ja juhusliku paigalduse ID. See ei teata kunagi liikmete, annetuste ega muid koguduse andmeid, sinu koguduse nime, veebiaadressi ega serveri nime ega e-posti aadresse. Saad selle igal ajal välja lülitada jaotises Admin → Telemeetria; ebaõnnestunud paigaldusest või uuendusest teatatakse siiski. Hoiatusi, vigade üksikasju ja lehevaatamisi jagatakse ainult siis, kui sa seda valid."
 
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d sissemakse on endiselt avatud. Sulgege see, et iga annetus oleks lõplik enne ülevaadete saatmist."
+msgstr[1] "%1$s: %2$d sissemakset on endiselt avatud. Sulgege need, et iga annetus oleks lõplik enne ülevaadete saatmist."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "%d ümbriku number salvestatud."
+msgstr[1] "%d ümbriku numbrit salvestatud."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d perekond"
+msgstr[1] "%d perekonda"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: kõik sissemaksed on suletud. Ülevaated on koostamiseks valmis."
+
+#: 
+msgid "12 months"
+msgstr "12 kuud"
+
+#: 
+msgid "30 days"
+msgstr "30 päeva"
+
+#: 
+msgid "90 days"
+msgstr "90 päeva"
+
+#: 
+msgid "Add Property"
+msgstr "Lisa omadus"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Lisage veel mõned märgid või sümbol."
+
+#: 
+msgid "Add and edit events"
+msgstr "Sündmuste lisamine ja muutmine"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Lisage rohkem märke või kasutage numbreid ja sümboleid."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Lisage rohkem märke ning kasutage suur- ja väiketähti, numbreid ja sümboleid."
+
+#: 
+msgid "Add people and families"
+msgstr "Inimeste ja perekondade lisamine"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Administraatoritel on kõik õigused, kuni funktsioon on sisse lülitatud."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Keela ka sisselogimine, et nad ei saaks liikmeportaali kasutada"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Enne ülevaadete saatmist"
+
+#: 
+msgid "Birthday today"
+msgstr "Täna on sünnipäev"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Privaatset maksuallkirja faili ei saa luua. Kontrollige, kas salvestuskaust on kirjutatav."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Maksuallkirja salvestuskausta %s ei saa luua. Veenduge, et veebiserver saab sinna kirjutada, või määrake maksuallkirja salvestustee seadistuses kirjutatav kaust."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Perekonda, millel on lubadusi või makseid, ei saa kustutada. Rahandusajaloo säilitamiseks desaktiveerige pere hoopis. Teisaldage rahandusekirjed ainult siis, kui see on sobiv."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Privaatset maksuallkirja ei saa kodeerida."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Välja ei saa selles suunas liigutada"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Privaatset maksuallkirja ei saa lugeda."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Privaatset allkirja ei saa eemaldada."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Privaatset maksuallkirja faili ei saa eemaldada."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Maksuallkirja salvestuse rakenduse kausta ei saa tuvastada."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Privaatset allkirja ei saa salvestada."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Juurdepääsukaitset %s ei saa maksuallkirja salvestuskausta kirjutada."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Muuda valitud liikmete rolli: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Koguduse eelarveaasta"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ChurchCRM-i süsteemikontroll"
+
+#: 
+msgid "Custom field not found"
+msgstr "Kohandatud välja ei leitud"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Desaktiveeri pere hoopis"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Desaktiveerige pere kustutamise asemel."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Desaktiveerige inimene kustutamise asemel."
+
+#: 
+msgid "Delete people and families"
+msgstr "Inimeste ja perekondade kustutamine"
+
+#: 
+msgid "Delete the login for"
+msgstr "Kustuta sisselogimine kasutajale"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Sissemaksete diagrammi ajavahemik"
+
+#: 
+msgid "Disabled at"
+msgstr "Keelatud"
+
+#: 
+msgid "Disabled by"
+msgstr "Keelaja"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Allalaadimine saadab kõik aasta annetajad. Ülevaatus ja filter näitab esmalt kogusummasid ning lubab kitsendada pere, fondi, klassi või kuupäeva järgi."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Korduv ümbriku number"
+
+#: 
+msgid "Edit people and families"
+msgstr "Inimeste ja perekondade muutmine"
+
+#: 
+msgid "Email people and groups"
+msgstr "E-kirjade saatmine inimestele ja gruppidele"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Lubage puuduvad PHP laiendused veebiserveri seadistuses, taaskäivitage veebiserver ja laadige see leht uuesti. Kui kasutate veebimajutust, paluge pakkujal loetletud laiendused lubada."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Sisesta seadistusvõti käsitsi"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Sisestage algnumber vahemikus 0 kuni %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Täisekraanile"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Sisestage see võti oma autentimisrakendusse või paroolihaldurisse, kasutades ajapõhiseid (TOTP) 6-kohalisi koode ja 30-sekundilist intervalli. Hoidke see võti privaatsena."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Sisestage kasutajanimi või e-posti aadress"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Ümbrike numbrid peavad olema täisarvud vahemikus 0 kuni %d. Midagi ei salvestatud."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Sündmused on selle koguduse jaoks välja lülitatud"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Välju täisekraanilt"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Kohandatud välja kustutamine ebaõnnestus"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Kohandatud välja teisaldamine ebaõnnestus"
+
+#: 
+msgid "Fair"
+msgstr "Rahuldav"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Perekonnad, kes lubasid perioodiks %s ja kellel pole lubadust perioodiks %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Perekonnad, kus on vähemalt üks liige grupis"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Rahandus on selle koguduse jaoks välja lülitatud"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Leidke perekonnad, kes lubasid ühel eelarveaastal, kuid mitte teisel."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Kaust, kuhu salvestatakse annetusülevaadete privaatne allkiri. Jätke tühjaks, et kasutada sisseehitatud privaatset kausta Images/TaxSignatures, mis blokeerib otsese veebipöörduse. Muu kausta kasutamiseks sisestage ChurchCRM-i kaustast väljaspool asuv absoluutne tee, kuhu veebiserver saab kirjutada."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Rahakogumised on selle koguduse jaoks välja lülitatud"
+
+#: 
+msgid "Good"
+msgstr "Hea"
+
+#: 
+msgid "Have an email"
+msgstr "On e-posti aadress"
+
+#: 
+msgid "Hide setup key"
+msgstr "Peida seadistusvõti"
+
+#: 
+msgid "How to respond"
+msgstr "Kuidas vastata"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Ideed, mis ootavad teie ülevaatust"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Mitteaktiivsed perekonnad jäetakse välja. Maksed ei loe lubadusena."
+
+#: 
+msgid "Invalid request."
+msgstr "Kehtetu päring."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Kehtetud allkirjapildi andmed."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Kehtetu salvestatud maksuallkirja identifikaator."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Kehtetu maksuallkirja salvestus."
+
+#: 
+msgid "Last successful login"
+msgstr "Viimane edukas sisselogimine"
+
+#: 
+msgid "Lockout state"
+msgstr "Lukustuse olek"
+
+#: 
+msgid "Login deleted"
+msgstr "Sisselogimine kustutatud"
+
+#: 
+msgid "Mail only"
+msgstr "Ainult post"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Halda kõiki teenistusi"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Liikmed viidi rolli {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Liikmed, keda ei muudetud, sest nad lahkusid grupist või nende rolli haldab teenistus: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Teenistuse koordinaator"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Minuteid automaatse lukustuse avamiseni"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Puuduvad lubadused"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Pole GitHubi kontot? Andke meile Discordis teada"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Ükski aktiivne perekond ei lubanud perioodiks %s ilma lubaduseta perioodiks %s."
+
+#: 
+msgid "No families found."
+msgstr "Perekondi ei leitud."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Teenistust pole määratud"
+
+#: 
+msgid "No open deposit"
+msgstr "Avatud sissemakset pole"
+
+#: 
+msgid "No pledge for"
+msgstr "Lubadust pole perioodiks"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Sellele kontole pole antud"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Ei juhi vabatahtlike meeskonda"
+
+#: 
+msgid "Not locked"
+msgstr "Pole lukustatud"
+
+#: 
+msgid "Number of Payments"
+msgstr "Maksete arv"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Üks minut. Me ei jaga seda, mida saadate."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Avage idee. Hääletage 👍, kui teie kogudus seda vajab, ja lisage lühike kommentaar selle kohta, kuidas te täna töötate."
+
+#: 
+msgid "Open deposit"
+msgstr "Avatud sissemakse"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Järgmisel sisselogimisel on vaja parooli vahetada"
+
+#: 
+msgid "Password strength"
+msgstr "Parooli tugevus"
+
+#: 
+msgid "People & Families"
+msgstr "Inimesed ja perekonnad"
+
+#: 
+msgid "Pledged for"
+msgstr "Lubatud perioodiks"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Koosta annetusülevaated"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Eelvaata näidiskirja"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Kanada annetusülevaadete privaatse allkirja varaidentifikaator. Hallatakse allkirja üleslaadimisega."
+
+#: 
+msgid "Property Type"
+msgstr "Omaduse tüüp"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Esitage ainult PNG- või JPEG-vormingus allkirjapildi andmed."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Salvestatud ajalugu: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Teata probleemist"
+
+#: 
+msgid "Requirement"
+msgstr "Nõue"
+
+#: 
+msgid "Return Home"
+msgstr "Tagasi avalehele"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Vaadake eelarveaasta üle ja laadige seejärel alla annetusülevaated."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Vaata üle ja sulge sissemakse"
+
+#: 
+msgid "Review and Filter"
+msgstr "Ülevaatus ja filter"
+
+#: 
+msgid "Review and vote"
+msgstr "Vaata üle ja hääleta"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Vaadake aasta üle ja laadige seejärel alla annetusülevaated."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Vaadake, mida me kaalume"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Rollid ja õigused"
+
+#: 
+msgid "Select at least one member."
+msgstr "Valige vähemalt üks liige."
+
+#: 
+msgid "Setup key"
+msgstr "Seadistusvõti"
+
+#: 
+msgid "Sign-in status"
+msgstr "Sisselogimise olek"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Allkirja salvestuskaust"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Allkiri uuendati, kuid eelmist privaatset allkirjafaili ei õnnestunud eemaldada."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Mõned PHP nõuded puuduvad. ChurchCRM vajab neid enne jätkamist."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Alustage sissemaksega ja lisage sellele iga makse."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Ümbrike algnumber"
+
+#: 
+msgid "Strong"
+msgstr "Tugev"
+
+#: 
+msgid "Support"
+msgstr "Tugi"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Maksukood ja PDF-i seaded"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Loendit ei õnnestunud laadida. Ideid saate siiski GitHubis avada."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Nimi võib olla kuni %d märki pikk"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Soovitud lehte ei leitud. See võidi teisaldada, ümber nimetada või seda pole enam olemas."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Viip võib olla kuni %d märki pikk"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Valitud liikmetel on see roll juba olemas."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Allkirjapilti ei õnnestunud dekodeerida."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Allkirjapilt ei tohi olla suurem kui 2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Allkirjapilt peab mahtuma 2000 × 1000 pikslisse."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Veebiserver ei saa maksuallkirja salvestuskausta %s kirjutada."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Maksuallkirja salvestuskaust ei tohi olla sümboolne link."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Maksuallkirja salvestustee peab asuma ChurchCRM-i kaustast väljaspool. Sisseehitatud privaatse kausta kasutamiseks jätke seade tühjaks."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Maksuallkirja salvestustee seade peab olema absoluutne kaustatee."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Neid ümbrike numbreid ei salvestata enne, kui valite Uuenda perekirjeid."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Nad ei saa sisse logida töötajatena ega liikmeportaali ning nende seansid, seadmed ja pääsuvõtmed eemaldatakse."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Seda perekonda ei saa kustutada, sest sellel on märkmeid. Ajaloo säilitamiseks desaktiveerige pere hoopis."
+
+#: 
+msgid "This password looks strong."
+msgstr "See parool tundub tugev."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Seda inimest ei saa kustutada, sest tal on salvestatud tegevusi. Ajaloo säilitamiseks desaktiveerige inimene hoopis."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "See eemaldab ainult sisselogimise. Inimene ja tema märkmed jäävad alles."
+
+#: 
+msgid "Time Range"
+msgstr "Ajavahemik"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Kaheastmeline autentimine seadistatud"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Automaatne kopeerimine ei õnnestunud. Valige seadistusvõti ja kopeerige see käsitsi."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Laadige üles PNG- või JPEG-vormingus allkirjapilt."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Selle seade muutmiseks kasutage allkirja üleslaadimist või eemaldamist."
+
+#: 
+msgid "User Details"
+msgstr "Kasutaja üksikasjad"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Kasutajanimi või e-posti aadress"
+
+#: 
+msgid "View all ideas"
+msgstr "Vaata kõiki ideid"
+
+#: 
+msgid "View events"
+msgstr "Sündmuste vaatamine"
+
+#: 
+msgid "View people and families"
+msgstr "Inimeste ja perekondade vaatamine"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Vabatahtlike haldus on selle koguduse jaoks välja lülitatud"
+
+#: 
+msgid "Weak"
+msgstr "Nõrk"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Mida see konto praegu teha saab (kirjutuskaitstud)"
+
+#: 
+msgid "You must select a class"
+msgstr "Peate valima klassi"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Teie koguduse eelarveaasta ei alga 1. jaanuaril. Maksuametid soovivad sageli kviitungeid kalendriaasta kohta: valige Ülevaatus ja filter ning määrake kuupäevad 1. jaanuar – 31. detsember."
+
+#: 
+msgid "attendance"
+msgstr "osalemine"
+
+#: 
+msgid "financial history"
+msgstr "rahandusajalugu"
+
+#: 
+msgid "notes"
+msgstr "märkmed"
+
+#: 
+msgid "recorded activities"
+msgstr "salvestatud tegevused"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "süsteemikasutaja API võti loodi uuesti"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "süsteemikasutaja lähtestas oma parooli e-kirjas oleva lingi kaudu"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "süsteemikasutaja lülitas kaheastmelise autentimise välja"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "süsteemikasutaja lülitas kaheastmelise autentimise sisse"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "administraator keelas süsteemikasutaja kaheastmelise autentimise"
+
+#: 
+msgid "volunteer service history"
+msgstr "vabatahtliku teenistuse ajalugu"
+
+#: 
+msgid "%s by %s"
+msgstr "%s %s poolt"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Kahefaktorilise autentimise muutmiseks sisestage oma parool või autentimisrakenduse kood."
+
+#: 
+msgid "Latest Notes"
+msgstr "Uusimad märkmed"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Märkmeid pole veel lisatud."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "QR-koodi saamiseks alustage registreerimist."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "See parool või kood ei ole õige. Kahefaktoriline autentimine on endiselt sisse lülitatud."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Kahefaktoriline autentimine on juba seadistatud. Selle saladus kuvatakse ainult registreerimise ajal."
+

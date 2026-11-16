@@ -27210,3 +27210,713 @@ msgstr "Iyo ang iyong data. Tungkol ito sa software, hindi kailanman tungkol sa 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Iyo ang iyong data. Para mabilang ang mga installation, iniuulat ng ChurchCRM na ito ay na-install o na-upgrade at kung gumana iyon, isang check-in minsan sa isang araw habang ginagamit, pati ang numero ng bersyon, iyong bansa, uri ng database, at isang random na installation ID. Hindi nito kailanman iniuulat ang mga rekord ng miyembro, pagbibigay, o iba pang rekord ng simbahan, pangalan ng iyong simbahan, iyong web address o pangalan ng server, o mga email address. Maaari mo itong i-off anumang oras sa Admin → Telemetry; iniuulat pa rin ang nabigong pag-install o pag-upgrade. Ibinabahagi lamang ang mga babala, detalye ng error, at page view kung pipiliin mo."
 
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d deposito ang bukas pa rin. Isara ito upang pinal ang bawat handog bago ipadala ang mga pahayag."
+msgstr[1] "%1$s: %2$d deposito ang bukas pa rin. Isara ang mga ito upang pinal ang bawat handog bago ipadala ang mga pahayag."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "%d numero ng sobre ang na-save."
+msgstr[1] "%d numero ng sobre ang na-save."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d pamilya"
+msgstr[1] "%d pamilya"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: sarado na ang lahat ng deposito. Handa na ang mga pahayag para ihanda."
+
+#: 
+msgid "12 months"
+msgstr "12 buwan"
+
+#: 
+msgid "30 days"
+msgstr "30 araw"
+
+#: 
+msgid "90 days"
+msgstr "90 araw"
+
+#: 
+msgid "Add Property"
+msgstr "Magdagdag ng Katangian"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Magdagdag pa ng ilang karakter o isang simbolo."
+
+#: 
+msgid "Add and edit events"
+msgstr "Magdagdag at mag-edit ng mga kaganapan"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Magdagdag ng mas maraming karakter o maghalo ng mga numero at simbolo."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Magdagdag ng mas maraming karakter, at paghaluin ang malalaki at maliliit na titik, numero, at simbolo."
+
+#: 
+msgid "Add people and families"
+msgstr "Magdagdag ng mga tao at pamilya"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "May lahat ng pahintulot ang mga tagapangasiwa habang naka-on ang tampok."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "I-disable din ang pag-sign in, para hindi nila magamit ang Portal ng Miyembro"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Bago Magpadala ng mga Pahayag"
+
+#: 
+msgid "Birthday today"
+msgstr "Kaarawan ngayon"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Hindi magawa ang pribadong file ng lagda sa buwis. Tiyaking nasusulatan ang folder ng imbakan."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Hindi magawa ang folder ng imbakan ng lagda sa buwis na %s. Tiyaking makakasulat ang web server dito, o magtakda ng nasusulatang folder sa setting ng path ng imbakan ng lagda sa buwis."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "Hindi matatanggal ang pamilyang may mga pangako o bayad. I-deactivate na lang ang pamilya para mapanatili ang kasaysayang pinansyal. Ilipat lang ang mga talaan ng pananalapi kung angkop."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Hindi ma-encode ang pribadong lagda sa buwis."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Hindi mailipat ang field sa direksyong iyon"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Hindi mabasa ang pribadong lagda sa buwis."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Hindi maalis ang pribadong lagda."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Hindi maalis ang pribadong file ng lagda sa buwis."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Hindi matukoy ang folder ng aplikasyon para sa imbakan ng lagda sa buwis."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Hindi maitago ang pribadong lagda."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Hindi maisulat ang access guard na %s sa folder ng imbakan ng lagda sa buwis."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Baguhin ang tungkulin ng mga napiling miyembro: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Taong Piskal ng Simbahan"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "Pagsusuri ng Sistema ng ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "Hindi nahanap ang custom na field"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "I-deactivate na lang ang pamilya"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "I-deactivate ang pamilya sa halip na tanggalin ito."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "I-deactivate ang tao sa halip na tanggalin siya."
+
+#: 
+msgid "Delete people and families"
+msgstr "Magtanggal ng mga tao at pamilya"
+
+#: 
+msgid "Delete the login for"
+msgstr "Tanggalin ang login para kay"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Saklaw ng oras ng tsart ng deposito"
+
+#: 
+msgid "Disabled at"
+msgstr "Na-disable noong"
+
+#: 
+msgid "Disabled by"
+msgstr "Na-disable ni"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Ipinapadala ng pag-download ang bawat nag-abuloy sa taon. Unang ipinapakita ng Suriin at Salain ang mga kabuuan at hinahayaan kang paliitin ayon sa pamilya, pondo, klase, o petsa."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Dobleng numero ng sobre"
+
+#: 
+msgid "Edit people and families"
+msgstr "Mag-edit ng mga tao at pamilya"
+
+#: 
+msgid "Email people and groups"
+msgstr "Mag-email sa mga tao at grupo"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "I-enable ang mga nawawalang extension ng PHP sa configuration ng web server mo, i-restart ang web server, pagkatapos ay i-reload ang pahinang ito. Kung gumagamit ka ng hosting provider, hilingin sa kanilang i-enable ang mga nakalistang extension."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Manu-manong ilagay ang setup key"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Maglagay ng panimulang numero mula 0 hanggang %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Pumasok sa fullscreen"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Ilagay ang key na ito sa authenticator o password manager mo gamit ang time-based (TOTP) na 6-digit na code at 30-segundong pagitan. Panatilihing pribado ang key na ito."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Ilagay ang username o email mo"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Ang mga numero ng sobre ay dapat buong numero mula 0 hanggang %d. Walang na-save."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Naka-off ang mga kaganapan para sa simbahang ito"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Lumabas sa fullscreen"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Nabigong tanggalin ang custom na field"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Nabigong ilipat ang custom na field"
+
+#: 
+msgid "Fair"
+msgstr "Katamtaman"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Mga pamilyang nangako para sa %s at walang pangako para sa %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Mga pamilyang may kahit isang miyembro sa"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Naka-off ang pananalapi para sa simbahang ito"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Hanapin ang mga pamilyang nangako sa isang taong piskal at hindi sa iba."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Folder kung saan nakaimbak ang pribadong lagda ng pahayag ng pag-aabuloy. Iwanang blangko para gamitin ang built-in na pribadong folder, ang Images/TaxSignatures, na humaharang sa direktang web access. Para gumamit ng ibang folder, maglagay ng absolute path sa labas ng folder ng ChurchCRM na masusulatan ng web server."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Naka-off ang mga fundraiser para sa simbahang ito"
+
+#: 
+msgid "Good"
+msgstr "Mabuti"
+
+#: 
+msgid "Have an email"
+msgstr "May email"
+
+#: 
+msgid "Hide setup key"
+msgstr "Itago ang setup key"
+
+#: 
+msgid "How to respond"
+msgstr "Paano tumugon"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Mga ideyang naghihintay ng pagsusuri mo"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Hindi isinasama ang mga hindi aktibong pamilya. Hindi binibilang na pangako ang mga bayad."
+
+#: 
+msgid "Invalid request."
+msgstr "Di-wastong kahilingan."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Di-wastong data ng larawan ng lagda."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Di-wastong nakaimbak na identifier ng lagda sa buwis."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Di-wastong imbakan ng lagda sa buwis."
+
+#: 
+msgid "Last successful login"
+msgstr "Huling matagumpay na pag-login"
+
+#: 
+msgid "Lockout state"
+msgstr "Estado ng lockout"
+
+#: 
+msgid "Login deleted"
+msgstr "Natanggal ang login"
+
+#: 
+msgid "Mail only"
+msgstr "Koreo lang"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Pamahalaan ang lahat ng ministeryo"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Mga miyembrong inilipat sa {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Mga miyembrong hindi binago dahil umalis sila sa grupo o ministeryo ang namamahala sa tungkulin nila: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Koordineytor ng ministeryo"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Minuto bago ang awtomatikong pag-unlock"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Mga Nawawalang Pangako"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Walang GitHub account? Sabihin sa amin sa Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Walang aktibong pamilyang nangako para sa %s nang walang pangako para sa %s."
+
+#: 
+msgid "No families found."
+msgstr "Walang nahanap na pamilya."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Walang nakatalagang ministeryo"
+
+#: 
+msgid "No open deposit"
+msgstr "Walang bukas na deposito"
+
+#: 
+msgid "No pledge for"
+msgstr "Walang pangako para sa"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Hindi ipinagkaloob sa account na ito"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Hindi namumuno sa pangkat ng boluntaryo"
+
+#: 
+msgid "Not locked"
+msgstr "Hindi naka-lock"
+
+#: 
+msgid "Number of Payments"
+msgstr "Bilang ng mga Bayad"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Isang minuto lang. Hindi namin ibinabahagi ang ipinapadala mo."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Magbukas ng ideya. Bumoto gamit ang 👍 kung kailangan ito ng simbahan mo, at magdagdag ng maikling komento kung paano kayo nagtatrabaho ngayon."
+
+#: 
+msgid "Open deposit"
+msgstr "Bukas na deposito"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Kailangang palitan ang password sa susunod na pag-login"
+
+#: 
+msgid "Password strength"
+msgstr "Lakas ng password"
+
+#: 
+msgid "People & Families"
+msgstr "Mga Tao at Pamilya"
+
+#: 
+msgid "Pledged for"
+msgstr "Ipinangako para sa"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Ihanda ang mga Pahayag ng Pag-aabuloy"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "I-preview ang Sample na Liham"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Identifier ng asset ng pribadong lagda ng pahayag ng pag-aabuloy sa Canada. Pinamamahalaan sa pamamagitan ng pag-upload ng lagda."
+
+#: 
+msgid "Property Type"
+msgstr "Uri ng Katangian"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Magbigay lang ng data ng larawan ng lagda na PNG o JPEG."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Naitalang kasaysayan: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Mag-ulat ng Isyu"
+
+#: 
+msgid "Requirement"
+msgstr "Kinakailangan"
+
+#: 
+msgid "Return Home"
+msgstr "Bumalik sa Home"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Suriin ang isang taong piskal, pagkatapos ay i-download ang mga pahayag ng pag-aabuloy."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Suriin at Isara ang Deposito"
+
+#: 
+msgid "Review and Filter"
+msgstr "Suriin at Salain"
+
+#: 
+msgid "Review and vote"
+msgstr "Suriin at bumoto"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Suriin ang taon, pagkatapos ay i-download ang mga pahayag ng pag-aabuloy."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Tingnan ang pinag-iisipan namin"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Mga tungkulin at pahintulot"
+
+#: 
+msgid "Select at least one member."
+msgstr "Pumili ng kahit isang miyembro."
+
+#: 
+msgid "Setup key"
+msgstr "Setup key"
+
+#: 
+msgid "Sign-in status"
+msgstr "Estado ng pag-sign in"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Folder ng imbakan ng lagda"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Na-update ang lagda ngunit hindi maalis ang dating pribadong file ng lagda."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "May mga nawawalang kinakailangan sa PHP. Kailangan ito ng ChurchCRM bago ito makapagpatuloy."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Magsimula ng deposito, pagkatapos ay idagdag dito ang bawat bayad."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Panimulang numero ng sobre"
+
+#: 
+msgid "Strong"
+msgstr "Malakas"
+
+#: 
+msgid "Support"
+msgstr "Suporta"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Mga Setting ng Tax ID at PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Hindi ma-load ang listahan. Maaari mo pa ring buksan ang mga ideya sa GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Ang pangalan ay maaaring hanggang %d karakter lang"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Hindi nahanap ang hiniling mong pahina. Maaaring inilipat, pinalitan ng pangalan, o wala na ito."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Ang prompt ay maaaring hanggang %d karakter lang"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "Mayroon na ng tungkuling iyon ang mga napiling miyembro."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Hindi ma-decode ang larawan ng lagda."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Ang larawan ng lagda ay hindi dapat lumampas sa 2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Ang larawan ng lagda ay dapat magkasya sa 2000 × 1000 pixel."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Hindi masusulatan ng web server ang folder ng imbakan ng lagda sa buwis na %s."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Ang folder ng imbakan ng lagda sa buwis ay hindi maaaring symbolic link."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Ang path ng imbakan ng lagda sa buwis ay dapat nasa labas ng folder ng ChurchCRM. Iwanang blangko ang setting para gamitin ang built-in na pribadong folder."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Ang setting ng path ng imbakan ng lagda sa buwis ay dapat absolute na path ng folder."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Hindi nase-save ang mga numero ng sobre na ito hangga't hindi mo pinipili ang I-update ang mga Talaan ng Pamilya."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "Hindi sila makakapag-sign in bilang staff o sa Portal ng Miyembro, at aalisin ang kanilang mga session, device, at passkey."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Hindi matatanggal ang pamilyang ito dahil may mga tala ito. I-deactivate na lang ang pamilya para mapanatili ang kasaysayan nito."
+
+#: 
+msgid "This password looks strong."
+msgstr "Mukhang malakas ang password na ito."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Hindi matatanggal ang taong ito dahil may mga naitalang aktibidad siya. I-deactivate na lang ang tao para mapanatili ang kasaysayan niya."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Ang login lang ang inaalis nito. Mananatili ang tao at ang kanyang mga tala."
+
+#: 
+msgid "Time Range"
+msgstr "Saklaw ng Oras"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Naka-enroll ang two-factor authentication"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Hindi awtomatikong makopya. Piliin at manu-manong kopyahin ang setup key."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Mag-upload ng larawan ng lagda na PNG o JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Gamitin ang pag-upload o pag-alis ng lagda para baguhin ang setting na ito."
+
+#: 
+msgid "User Details"
+msgstr "Mga Detalye ng User"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Username o Email Address"
+
+#: 
+msgid "View all ideas"
+msgstr "Tingnan ang lahat ng ideya"
+
+#: 
+msgid "View events"
+msgstr "Tingnan ang mga kaganapan"
+
+#: 
+msgid "View people and families"
+msgstr "Tingnan ang mga tao at pamilya"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Naka-off ang Pamamahala ng Boluntaryo para sa simbahang ito"
+
+#: 
+msgid "Weak"
+msgstr "Mahina"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Ang kayang gawin ng account na ito ngayon (read-only)"
+
+#: 
+msgid "You must select a class"
+msgstr "Dapat kang pumili ng klase"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Hindi nagsisimula sa Enero 1 ang taong piskal ng simbahan mo. Madalas humingi ang mga awtoridad sa buwis ng resibo para sa taon ng kalendaryo: piliin ang Suriin at Salain at itakda ang mga petsa sa Enero 1 – Disyembre 31."
+
+#: 
+msgid "attendance"
+msgstr "pagdalo"
+
+#: 
+msgid "financial history"
+msgstr "kasaysayang pinansyal"
+
+#: 
+msgid "notes"
+msgstr "mga tala"
+
+#: 
+msgid "recorded activities"
+msgstr "mga naitalang aktibidad"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "muling nabuo ang API key ng system user"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "nag-reset ng password ang system user mula sa link na ipinadala sa email"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "in-off ng system user ang two-factor authentication"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "in-on ng system user ang two-factor authentication"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "na-disable ng admin ang two-factor authentication ng system user"
+
+#: 
+msgid "volunteer service history"
+msgstr "kasaysayan ng paglilingkod bilang boluntaryo"
+
+#: 
+msgid "%s by %s"
+msgstr "%s ni %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Ilagay ang iyong password o isang code mula sa iyong authenticator app para baguhin ang two-factor authentication."
+
+#: 
+msgid "Latest Notes"
+msgstr "Pinakabagong Mga Tala"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Wala pang naidagdag na mga tala."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Simulan ang pag-enroll para makakuha ng QR code."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Hindi tama ang password o code na iyon. Naka-on pa rin ang two-factor authentication."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Naka-set up na ang two-factor authentication. Ipinapakita lang ang secret nito habang nag-e-enroll."
+
