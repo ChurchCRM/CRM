@@ -278,4 +278,32 @@ class LabelSheetService
 
         return max(4, min($size, $fitting));
     }
+
+    /**
+     * Builds label cells from families for the naming method.
+     * Individual name yields one per living person; family modes
+     * yield one per family (as today).
+     *
+     * @param array $families
+     * @return array<int, array{text: string}>
+     */
+    public static function generateLabels(array $families, string $namingMethod): array
+    {
+        $cells = [];
+        foreach ($families as $family) {
+            if ($namingMethod === 'individualname') {
+                foreach ($family->getLivingPeople() as $person) {
+                    $cells[] = ['text' => $person->getFullName() . "\n" . $family->getMailingAddressLines()];
+                }
+                continue;
+            }
+            if (in_array($namingMethod, ['salutationutility', 'formalname'], true)) {
+                $name = $family->getSalutation();
+            } else {
+                $name = $family->getName();
+            }
+            $cells[] = ['text' => $name . "\n" . $family->getMailingAddressLines()];
+        }
+        return $cells;
+    }
 }

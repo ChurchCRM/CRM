@@ -39,4 +39,16 @@ describe("Letters and Labels", () => {
             });
         });
     });
+
+    it("supports Individual name recipient naming method", () => {
+        cy.get("#recipientnamingmethod").select("individualname");
+        cy.get("form[target=_blank]").then(($form) => {
+            const query = new URLSearchParams(new FormData($form[0])).toString();
+            const newsletter = $form[0].action;
+            cy.request({ url: `${newsletter}?${query}`, encoding: "binary" }).then((response) => {
+                expect(response.headers["content-type"]).to.include("application/pdf");
+                expect(response.body.slice(0, 5)).to.eq("%PDF-");
+            });
+        });
+    });
 });

@@ -40,8 +40,10 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
         <div class="col-md-6 col-lg-3">
           <label class="form-label" for="recipientnamingmethod"><?= gettext('Recipient Naming Method') ?></label>
           <select class="form-select" name="recipientnamingmethod" id="recipientnamingmethod">
-            <option value="salutationutility"><?= gettext('Salutation Utility') ?></option>
-            <option value="familyname"><?= gettext('Family Name') ?></option>
+            <option value="salutationutility" <?= $recipientNamingMethod === 'salutationutility' ? 'selected' : '' ?>><?= gettext('Salutation Utility') ?></option>
+            <option value="familyname" <?= $recipientNamingMethod === 'familyname' ? 'selected' : '' ?>><?= gettext('Family Name') ?></option>
+            <option value="individualname" <?= $recipientNamingMethod === 'individualname' ? 'selected' : '' ?>><?= gettext('Individual Name') ?></option>
+            <option value="formalname" <?= $recipientNamingMethod === 'formalname' ? 'selected' : '' ?>><?= gettext('Formal Name') ?></option>
           </select>
         </div>
       </div>
