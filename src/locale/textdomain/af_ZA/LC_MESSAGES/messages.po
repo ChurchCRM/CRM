@@ -27925,3 +27925,31 @@ msgstr "aangetekende aktiwiteite"
 msgid "volunteer service history"
 msgstr "geskiedenis van vrywilligerdiens"
 
+#: 
+msgid "%s by %s"
+msgstr "%s deur %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Voer jou wagwoord of 'n kode van jou verifikasie-app in om twee-faktor-verifikasie te verander."
+
+#: 
+msgid "Latest Notes"
+msgstr "Jongste notas"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Nog geen notas is bygevoeg nie."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Begin inskrywing om 'n QR-kode te kry."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Daardie wagwoord of kode is nie reg nie. Twee-faktor-verifikasie is steeds aan."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Twee-faktor-verifikasie is reeds opgestel. Die geheim daarvan word slegs tydens inskrywing gewys."
+

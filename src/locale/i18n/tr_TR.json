@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "sistem kullanıcısı iki adımlı doğrulamayı kapattı",
   "system user turned on two-factor authentication": "sistem kullanıcısı iki adımlı doğrulamayı açtı",
   "system user two-factor authentication disabled by admin": "sistem kullanıcısının iki adımlı doğrulaması yönetici tarafından devre dışı bırakıldı",
-  "volunteer service history": "gönüllü hizmet geçmişi"
+  "volunteer service history": "gönüllü hizmet geçmişi",
+  "%s by %s": "%s, yazan %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "İki faktörlü doğrulamayı değiştirmek için parolanızı veya kimlik doğrulama uygulamanızdan bir kodu girin.",
+  "Latest Notes": "En Son Notlar",
+  "No notes have been added yet.": "Henüz not eklenmedi.",
+  "Start enrollment to get a QR code.": "QR kodu almak için kaydı başlatın.",
+  "That password or code is not right. Two-factor authentication is still on.": "Bu parola veya kod doğru değil. İki faktörlü doğrulama hâlâ açık.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "İki faktörlü doğrulama zaten kuruldu. Gizli anahtarı yalnızca kayıt sırasında gösterilir."
 }

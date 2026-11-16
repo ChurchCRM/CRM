@@ -27925,3 +27925,31 @@ msgstr "sistem kullanıcısının iki adımlı doğrulaması yönetici tarafınd
 msgid "volunteer service history"
 msgstr "gönüllü hizmet geçmişi"
 
+#: 
+msgid "%s by %s"
+msgstr "%s, yazan %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "İki faktörlü doğrulamayı değiştirmek için parolanızı veya kimlik doğrulama uygulamanızdan bir kodu girin."
+
+#: 
+msgid "Latest Notes"
+msgstr "En Son Notlar"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Henüz not eklenmedi."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "QR kodu almak için kaydı başlatın."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Bu parola veya kod doğru değil. İki faktörlü doğrulama hâlâ açık."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "İki faktörlü doğrulama zaten kuruldu. Gizli anahtarı yalnızca kayıt sırasında gösterilir."
+

@@ -1,4 +1,4 @@
-name: Validate production Docker images
+name: "CI: validate Docker images & compose security"
 
 on:
   pull_request:
@@ -45,3 +45,11 @@ jobs:
         env:
           FLAVOR: ${{ matrix.flavor }}
         run: node tests/docker/test-production-image.js "churchcrm-check:$FLAVOR" "$FLAVOR"
+
+  compose:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - run: node --test tests/docker/test-compose-security.test.js

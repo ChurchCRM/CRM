@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "அமைப்புப் பயனர் இரு-காரணி அங்கீகாரத்தை அணைத்தார்",
   "system user turned on two-factor authentication": "அமைப்புப் பயனர் இரு-காரணி அங்கீகாரத்தை இயக்கினார்",
   "system user two-factor authentication disabled by admin": "அமைப்புப் பயனரின் இரு-காரணி அங்கீகாரம் நிர்வாகியால் முடக்கப்பட்டது",
-  "volunteer service history": "தன்னார்வ சேவை வரலாறு"
+  "volunteer service history": "தன்னார்வ சேவை வரலாறு",
+  "%s by %s": "%s, எழுதியவர் %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "இரண்டு-காரணி அங்கீகாரத்தை மாற்ற உங்கள் கடவுச்சொல் அல்லது உங்கள் அங்கீகரிப்பு பயன்பாட்டிலிருந்து ஒரு குறியீட்டை உள்ளிடவும்.",
+  "Latest Notes": "சமீபத்திய குறிப்புகள்",
+  "No notes have been added yet.": "இன்னும் குறிப்புகள் எதுவும் சேர்க்கப்படவில்லை.",
+  "Start enrollment to get a QR code.": "QR குறியீட்டைப் பெற பதிவைத் தொடங்கவும்.",
+  "That password or code is not right. Two-factor authentication is still on.": "அந்தக் கடவுச்சொல் அல்லது குறியீடு சரியல்ல. இரண்டு-காரணி அங்கீகாரம் இன்னும் இயக்கத்தில் உள்ளது.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "இரண்டு-காரணி அங்கீகாரம் ஏற்கனவே அமைக்கப்பட்டுள்ளது. அதன் ரகசியம் பதிவின் போது மட்டுமே காட்டப்படும்."
 }

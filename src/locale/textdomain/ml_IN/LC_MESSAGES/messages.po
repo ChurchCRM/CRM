@@ -27892,3 +27892,31 @@ msgstr "സിസ്റ്റം ഉപയോക്താവിന്റെ ട�
 msgid "volunteer service history"
 msgstr "സന്നദ്ധസേവന ചരിത്രം"
 
+#: 
+msgid "%s by %s"
+msgstr "%s, %s എഴുതിയത്"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "ഇരട്ടഘടക ആധികാരികത മാറ്റാൻ നിങ്ങളുടെ പാസ്‌വേഡോ ഓതന്റിക്കേറ്റർ ആപ്പിൽ നിന്നുള്ള കോഡോ നൽകൂ."
+
+#: 
+msgid "Latest Notes"
+msgstr "ഏറ്റവും പുതിയ കുറിപ്പുകൾ"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "ഇതുവരെ കുറിപ്പുകളൊന്നും ചേർത്തിട്ടില്ല."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "ഒരു QR കോഡ് ലഭിക്കാൻ എൻറോൾമെന്റ് ആരംഭിക്കൂ."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "ആ പാസ്‌വേഡോ കോഡോ ശരിയല്ല. ഇരട്ടഘടക ആധികാരികത ഇപ്പോഴും ഓണാണ്."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "ഇരട്ടഘടക ആധികാരികത ഇതിനകം സജ്ജീകരിച്ചിട്ടുണ്ട്. അതിന്റെ രഹസ്യം എൻറോൾമെന്റ് സമയത്ത് മാത്രമേ കാണിക്കൂ."
+
