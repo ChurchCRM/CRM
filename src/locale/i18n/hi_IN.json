@@ -5492,7 +5492,6 @@
   "{{name}} registered and checked in!": "{{name}} पंजीकृत और चेक इन किया गया!",
   "Search by family name": "परिवार के नाम से खोजें",
   "Search by family name or envelope #": "परिवार के नाम या लिफ़ाफ़ा क्र. से खोजें",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "जिस परिवार के पास प्रतिज्ञाएँ या भुगतान हैं, उसे हटाया नहीं जा सकता। पहले वित्तीय रिकॉर्ड स्थानांतरित करें या हटाएँ।",
   "You cannot delete your own account.": "आप अपना स्वयं का खाता नहीं हटा सकते।",
   "A recurring event needs a last date, so it is back to {{date}}.": "आवर्ती कार्यक्रम के लिए अंतिम तिथि चाहिए, इसलिए यह {{date}} पर वापस है।",
   "Add Everyone in Cart to {{ministry}}": "कार्ट के सभी लोगों को {{ministry}} में जोड़ें",

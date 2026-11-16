@@ -5492,7 +5492,6 @@
   "{{name}} registered and checked in!": "{{name}} registrert og sjekket inn!",
   "Search by family name": "Søk etter familienavn",
   "Search by family name or envelope #": "Søk etter familienavn eller konvoluttnr.",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Du kan ikke slette en familie som har løfter eller betalinger. Flytt eller fjern de økonomiske postene først.",
   "You cannot delete your own account.": "Du kan ikke slette din egen konto.",
   "A recurring event needs a last date, so it is back to {{date}}.": "En gjentakende hendelse trenger en sluttdato, derfor er den tilbake til {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Legg til alle i utvalget i {{ministry}}",

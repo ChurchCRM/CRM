@@ -5604,7 +5604,6 @@
   "{{name}} registered and checked in!": "تم تسجيل {{name}} وتسجيل حضوره!",
   "Search by family name": "البحث باسم العائلة",
   "Search by family name or envelope #": "البحث باسم العائلة أو رقم المظروف",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "لا يمكن حذف عائلة لديها تعهدات أو مدفوعات. انقل السجلات المالية أو احذفها أولاً.",
   "You cannot delete your own account.": "لا يمكنك حذف حسابك الخاص.",
   "A recurring event needs a last date, so it is back to {{date}}.": "الحدث المتكرر محتاج تاريخ آخر، فرجع لـ {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "ضيف كل اللي في السلة إلى {{ministry}}",

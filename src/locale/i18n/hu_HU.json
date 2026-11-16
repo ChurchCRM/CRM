@@ -5492,7 +5492,6 @@
   "{{name}} registered and checked in!": "{{name}} regisztrálva és jelölve van!",
   "Search by family name": "Keresés családnév szerint",
   "Search by family name or envelope #": "Keresés családnév vagy boríték száma szerint",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Nem törölhető olyan család, amelynek vannak felajánlásai vagy befizetései. Előbb helyezze át vagy távolítsa el a pénzügyi rekordokat.",
   "You cannot delete your own account.": "Nem törölheti a saját fiókját.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Az ismétlődő eseményhez záró dátum kell, ezért visszaáll {{date}} dátumra.",
   "Add Everyone in Cart to {{ministry}}": "A kosár minden tagjának hozzáadása a(z) {{ministry}} szolgálathoz",

@@ -5492,7 +5492,6 @@
   "{{name}} registered and checked in!": "{{name}} kayıtlı ve giriş yapıldı!",
   "Search by family name": "Aile adına göre ara",
   "Search by family name or envelope #": "Aile adına veya zarf numarasına göre ara",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Taahhüdü veya ödemesi olan bir aile silinemez. Önce mali kayıtları taşıyın veya kaldırın.",
   "You cannot delete your own account.": "Kendi hesabınızı silemezsiniz.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Yinelenen bir etkinliğin bitiş tarihi olmalıdır, bu yüzden {{date}} tarihine döner.",
   "Add Everyone in Cart to {{ministry}}": "Sepetteki herkesi {{ministry}} hizmetine ekle",

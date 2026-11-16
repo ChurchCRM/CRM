@@ -22483,10 +22483,6 @@ msgid "Search by family name or envelope #"
 msgstr "ค้นหาตามชื่อครอบครัวหรือเลขที่ซองถวาย"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "ไม่สามารถลบครอบครัวที่มีคำปฏิญาณถวายหรือการชำระเงินได้ โปรดย้ายหรือลบบันทึกการเงินก่อน"
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "คุณไม่สามารถลบบัญชีของตนเองได้"
 

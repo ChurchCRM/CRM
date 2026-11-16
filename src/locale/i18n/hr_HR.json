@@ -5520,7 +5520,6 @@
   "{{name}} registered and checked in!": "{{name}} registriran i proveravan!",
   "Search by family name": "Pretraži po imenu obitelji",
   "Search by family name or envelope #": "Pretraži po imenu obitelji ili br. omotnice",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Nije moguće izbrisati obitelj koja ima zavjete ili uplate. Prvo premjestite ili uklonite financijske zapise.",
   "You cannot delete your own account.": "Ne možete izbrisati vlastiti račun.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Ponavljajući događaj treba završni datum, pa se vraća na {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Dodaj sve iz košarice u službu {{ministry}}",
