@@ -27895,3 +27895,31 @@ msgstr "actividades registradas"
 msgid "volunteer service history"
 msgstr "historial de servicio voluntario"
 
+#: 
+msgid "%s by %s"
+msgstr "%s por %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Ingrese su contraseña o un código de su aplicación de autenticación para cambiar la autenticación de dos factores."
+
+#: 
+msgid "Latest Notes"
+msgstr "Últimas notas"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Aún no se han añadido notas."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Inicie la inscripción para obtener un código QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Esa contraseña o código no es correcto. La autenticación de dos factores sigue activada."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "La autenticación de dos factores ya está configurada. Su secreto se muestra solo durante la inscripción."
+

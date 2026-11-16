@@ -6876,5 +6876,12 @@
   "system user turned off two-factor authentication": "系統使用者關閉了雙重驗證",
   "system user turned on two-factor authentication": "系統使用者開啟了雙重驗證",
   "system user two-factor authentication disabled by admin": "系統使用者的雙重驗證已被管理員停用",
-  "volunteer service history": "志工服事歷史"
+  "volunteer service history": "志工服事歷史",
+  "%s by %s": "%s 由 %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "輸入您的密碼或驗證器應用程式中的代碼，以變更二階段驗證。",
+  "Latest Notes": "最新備註",
+  "No notes have been added yet.": "尚未新增任何備註。",
+  "Start enrollment to get a QR code.": "開始註冊以取得 QR 碼。",
+  "That password or code is not right. Two-factor authentication is still on.": "該密碼或代碼不正確。二階段驗證仍處於啟用狀態。",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "二階段驗證已設定。其密鑰僅在註冊期間顯示。"
 }

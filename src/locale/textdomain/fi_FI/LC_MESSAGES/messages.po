@@ -27896,3 +27896,31 @@ msgstr "ylläpitäjä poisti järjestelmäkäyttäjän kaksivaiheisen todennukse
 msgid "volunteer service history"
 msgstr "vapaaehtoispalvelun historia"
 
+#: 
+msgid "%s by %s"
+msgstr "%s, kirjoittanut %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Anna salasanasi tai koodi todennussovelluksestasi muuttaaksesi kaksivaiheista todentamista."
+
+#: 
+msgid "Latest Notes"
+msgstr "Uusimmat muistiinpanot"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Muistiinpanoja ei ole vielä lisätty."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Aloita rekisteröinti saadaksesi QR-koodin."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Tuo salasana tai koodi ei ole oikein. Kaksivaiheinen todentaminen on edelleen käytössä."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Kaksivaiheinen todentaminen on jo määritetty. Sen salaisuus näytetään vain rekisteröinnin aikana."
+
