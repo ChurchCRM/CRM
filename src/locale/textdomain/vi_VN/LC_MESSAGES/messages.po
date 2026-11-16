@@ -27901,3 +27901,31 @@ msgstr "xác thực hai yếu tố của người dùng hệ thống đã bị q
 msgid "volunteer service history"
 msgstr "lịch sử phục vụ tình nguyện"
 
+#: 
+msgid "%s by %s"
+msgstr "%s bởi %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Nhập mật khẩu của bạn hoặc mã từ ứng dụng xác thực để thay đổi xác thực hai yếu tố."
+
+#: 
+msgid "Latest Notes"
+msgstr "Ghi chú mới nhất"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Chưa có ghi chú nào được thêm."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Bắt đầu đăng ký để nhận mã QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Mật khẩu hoặc mã đó không đúng. Xác thực hai yếu tố vẫn đang bật."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Xác thực hai yếu tố đã được thiết lập. Bí mật của nó chỉ hiển thị trong quá trình đăng ký."
+
