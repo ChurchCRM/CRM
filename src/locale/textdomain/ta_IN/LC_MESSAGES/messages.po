@@ -27255,3 +27255,685 @@ msgstr "உங்கள் தரவு உங்களுடையது. இ�
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "உங்கள் தரவு உங்களுடையது. நிறுவல்களை எண்ண, ChurchCRM நிறுவப்பட்டதா அல்லது மேம்படுத்தப்பட்டதா, அது வெற்றியடைந்ததா என்பதையும், பயன்பாட்டில் இருக்கும்போது நாளுக்கு ஒருமுறை சரிபார்ப்பையும், பதிப்பு எண், உங்கள் நாடு, தரவுத்தள வகை, ஒரு சீரற்ற நிறுவல் ஐடி ஆகியவற்றையும் தெரிவிக்கிறது. உறுப்பினர், கொடை அல்லது பிற சபைப் பதிவுகள், உங்கள் சபையின் பெயர், உங்கள் இணைய முகவரி அல்லது சேவையகப் பெயர், மின்னஞ்சல் முகவரிகள் ஆகியவற்றை ஒருபோதும் தெரிவிப்பதில்லை. நிர்வாகம் → தொலைமிதி என்பதில் எப்போது வேண்டுமானாலும் இதை முடக்கலாம்; தோல்வியடைந்த நிறுவல் அல்லது மேம்படுத்தல் தொடர்ந்து தெரிவிக்கப்படும். எச்சரிக்கைகள், பிழை விவரங்கள், பக்கப் பார்வைகள் நீங்கள் தேர்ந்தெடுத்தால் மட்டுமே பகிரப்படும்."
 
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d வைப்பு இன்னும் திறந்துள்ளது. அறிக்கைகள் அனுப்பப்படுவதற்கு முன் ஒவ்வொரு காணிக்கையும் இறுதியாக இருக்க அதை மூடவும்."
+msgstr[1] "%1$s: %2$d வைப்புகள் இன்னும் திறந்துள்ளன. அறிக்கைகள் அனுப்பப்படுவதற்கு முன் ஒவ்வொரு காணிக்கையும் இறுதியாக இருக்க அவற்றை மூடவும்."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "%d உறை எண் சேமிக்கப்பட்டது."
+msgstr[1] "%d உறை எண்கள் சேமிக்கப்பட்டன."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d குடும்பம்"
+msgstr[1] "%d குடும்பங்கள்"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: அனைத்து வைப்புகளும் மூடப்பட்டுள்ளன. அறிக்கைகளைத் தயாரிக்கத் தயாராக உள்ளன."
+
+#: 
+msgid "12 months"
+msgstr "12 மாதங்கள்"
+
+#: 
+msgid "30 days"
+msgstr "30 நாட்கள்"
+
+#: 
+msgid "90 days"
+msgstr "90 நாட்கள்"
+
+#: 
+msgid "Add Property"
+msgstr "பண்பைச் சேர்"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "இன்னும் சில எழுத்துகளை அல்லது ஒரு குறியீட்டைச் சேர்க்கவும்."
+
+#: 
+msgid "Add and edit events"
+msgstr "நிகழ்வுகளைச் சேர்த்தல் மற்றும் திருத்துதல்"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "மேலும் எழுத்துகளைச் சேர்க்கவும் அல்லது எண்கள் மற்றும் குறியீடுகளைக் கலக்கவும்."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "மேலும் எழுத்துகளைச் சேர்க்கவும், பெரிய-சிறிய எழுத்துகள், எண்கள் மற்றும் குறியீடுகளைக் கலக்கவும்."
+
+#: 
+msgid "Add people and families"
+msgstr "நபர்கள் மற்றும் குடும்பங்களைச் சேர்த்தல்"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "அம்சம் இயக்கத்தில் இருக்கும் வரை நிர்வாகிகளுக்கு எல்லா அனுமதிகளும் உண்டு."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "உறுப்பினர் தளத்தைப் பயன்படுத்த முடியாதபடி உள்நுழைவையும் முடக்கு"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "அறிக்கைகளை அனுப்புவதற்கு முன்"
+
+#: 
+msgid "Birthday today"
+msgstr "இன்று பிறந்தநாள்"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "தனிப்பட்ட வரி கையொப்பக் கோப்பை உருவாக்க முடியவில்லை. சேமிப்பக கோப்புறை எழுதத்தக்கதா என்று சரிபார்க்கவும்."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "வரி கையொப்ப சேமிப்பக கோப்புறை %s ஐ உருவாக்க முடியவில்லை. வலை சேவையகம் அதில் எழுத முடியும் என்பதை உறுதிசெய்யவும், அல்லது வரி கையொப்ப சேமிப்பகப் பாதை அமைப்பில் எழுதத்தக்க கோப்புறையை அமைக்கவும்."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "உறுதிமொழிகள் அல்லது கொடுப்பனவுகள் உள்ள குடும்பத்தை நீக்க முடியாது. நிதி வரலாற்றைப் பாதுகாக்க அதற்குப் பதிலாக குடும்பத்தை செயலிழக்கச் செய்யவும். நிதிப் பதிவுகளைப் பொருத்தமானால் மட்டுமே நகர்த்தவும்."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "தனிப்பட்ட வரி கையொப்பத்தை குறியாக்க முடியவில்லை."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "புலத்தை அந்தத் திசையில் நகர்த்த முடியாது"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "தனிப்பட்ட வரி கையொப்பத்தைப் படிக்க முடியவில்லை."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "தனிப்பட்ட கையொப்பத்தை அகற்ற முடியவில்லை."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "தனிப்பட்ட வரி கையொப்பக் கோப்பை அகற்ற முடியவில்லை."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "வரி கையொப்ப சேமிப்பகத்திற்கான பயன்பாட்டுக் கோப்புறையைத் தீர்மானிக்க முடியவில்லை."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "தனிப்பட்ட கையொப்பத்தைச் சேமிக்க முடியவில்லை."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "வரி கையொப்ப சேமிப்பக கோப்புறையில் அணுகல் பாதுகாப்பு %s ஐ எழுத முடியவில்லை."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "தேர்ந்தெடுத்த உறுப்பினர்களின் பங்கை மாற்று: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "திருச்சபையின் நிதி ஆண்டு"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ChurchCRM அமைப்புச் சரிபார்ப்பு"
+
+#: 
+msgid "Custom field not found"
+msgstr "தனிப்பயன் புலம் கிடைக்கவில்லை"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "அதற்குப் பதிலாக குடும்பத்தை செயலிழக்கச் செய்"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "குடும்பத்தை நீக்குவதற்குப் பதிலாக செயலிழக்கச் செய்யவும்."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "நபரை நீக்குவதற்குப் பதிலாக செயலிழக்கச் செய்யவும்."
+
+#: 
+msgid "Delete people and families"
+msgstr "நபர்கள் மற்றும் குடும்பங்களை நீக்குதல்"
+
+#: 
+msgid "Delete the login for"
+msgstr "இவருக்கான உள்நுழைவை நீக்கு:"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "வைப்பு விளக்கப்பட நேர வரம்பு"
+
+#: 
+msgid "Disabled at"
+msgstr "முடக்கப்பட்ட நேரம்"
+
+#: 
+msgid "Disabled by"
+msgstr "முடக்கியவர்"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "பதிவிறக்கம் ஆண்டின் ஒவ்வொரு நன்கொடையாளரையும் அனுப்புகிறது. மதிப்பாய்வு செய்து வடிகட்டு முதலில் மொத்தங்களைக் காட்டுகிறது, குடும்பம், நிதி, வகுப்பு அல்லது தேதி மூலம் சுருக்க அனுமதிக்கிறது."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "உறை எண் நகல்"
+
+#: 
+msgid "Edit people and families"
+msgstr "நபர்கள் மற்றும் குடும்பங்களைத் திருத்துதல்"
+
+#: 
+msgid "Email people and groups"
+msgstr "நபர்கள் மற்றும் குழுக்களுக்கு மின்னஞ்சல் அனுப்புதல்"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "உங்கள் வலை சேவையக உள்ளமைவில் காணாமல் போன PHP நீட்டிப்புகளை இயக்கி, வலை சேவையகத்தை மறுதொடக்கம் செய்து, பின்னர் இந்தப் பக்கத்தை மீண்டும் ஏற்றவும். நீங்கள் ஹோஸ்டிங் வழங்குநரைப் பயன்படுத்தினால், பட்டியலிடப்பட்ட நீட்டிப்புகளை இயக்கும்படி அவர்களிடம் கேளுங்கள்."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "அமைவு விசையை கைமுறையாக உள்ளிடு"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "0 முதல் %d வரையிலான தொடக்க எண்ணை உள்ளிடவும்."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "முழுத்திரைக்குச் செல்"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "நேர அடிப்படையிலான (TOTP) 6 இலக்கக் குறியீடுகள் மற்றும் 30 வினாடி இடைவெளியைப் பயன்படுத்தி இந்த விசையை உங்கள் அங்கீகரிப்பான் அல்லது கடவுச்சொல் நிர்வாகியில் உள்ளிடவும். இந்த விசையை ரகசியமாக வைக்கவும்."
+
+#: 
+msgid "Enter your username or email"
+msgstr "உங்கள் பயனர்பெயர் அல்லது மின்னஞ்சலை உள்ளிடவும்"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "உறை எண்கள் 0 முதல் %d வரையிலான முழு எண்களாக இருக்க வேண்டும். எதுவும் சேமிக்கப்படவில்லை."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "இந்தத் திருச்சபைக்கு நிகழ்வுகள் அணைக்கப்பட்டுள்ளன"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "முழுத்திரையிலிருந்து வெளியேறு"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "தனிப்பயன் புலத்தை நீக்குவதில் தோல்வி"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "தனிப்பயன் புலத்தை நகர்த்துவதில் தோல்வி"
+
+#: 
+msgid "Fair"
+msgstr "சராசரி"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "%s க்கு உறுதிமொழி அளித்து %s க்கு உறுதிமொழி இல்லாத குடும்பங்கள்."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "இதில் குறைந்தது ஒரு உறுப்பினர் உள்ள குடும்பங்கள்:"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "இந்தத் திருச்சபைக்கு நிதி அணைக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "ஒரு நிதி ஆண்டில் உறுதிமொழி அளித்து மற்றொன்றில் அளிக்காத குடும்பங்களைக் கண்டறியவும்."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "காணிக்கை அறிக்கைகளின் தனிப்பட்ட கையொப்பம் சேமிக்கப்படும் கோப்புறை. நேரடி வலை அணுகலைத் தடுக்கும் உள்ளமைந்த தனிப்பட்ட கோப்புறை Images/TaxSignatures ஐப் பயன்படுத்த வெறுமையாக விடவும். வேறு கோப்புறையைப் பயன்படுத்த, வலை சேவையகம் எழுதக்கூடிய ChurchCRM கோப்புறைக்கு வெளியே உள்ள முழுமையான பாதையை உள்ளிடவும்."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "இந்தத் திருச்சபைக்கு நிதி திரட்டல் அணைக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Good"
+msgstr "நல்லது"
+
+#: 
+msgid "Have an email"
+msgstr "மின்னஞ்சல் உள்ளது"
+
+#: 
+msgid "Hide setup key"
+msgstr "அமைவு விசையை மறை"
+
+#: 
+msgid "How to respond"
+msgstr "எவ்வாறு பதிலளிப்பது"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "உங்கள் மதிப்பாய்வுக்காகக் காத்திருக்கும் யோசனைகள்"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "செயலற்ற குடும்பங்கள் விலக்கப்படுகின்றன. கொடுப்பனவுகள் உறுதிமொழிகளாகக் கணக்கிடப்படாது."
+
+#: 
+msgid "Invalid request."
+msgstr "தவறான கோரிக்கை."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "தவறான கையொப்பப் படத் தரவு."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "சேமிக்கப்பட்ட வரி கையொப்ப அடையாளங்காட்டி தவறானது."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "வரி கையொப்ப சேமிப்பகம் தவறானது."
+
+#: 
+msgid "Last successful login"
+msgstr "கடைசி வெற்றிகரமான உள்நுழைவு"
+
+#: 
+msgid "Lockout state"
+msgstr "பூட்டு நிலை"
+
+#: 
+msgid "Login deleted"
+msgstr "உள்நுழைவு நீக்கப்பட்டது"
+
+#: 
+msgid "Mail only"
+msgstr "அஞ்சல் மட்டும்"
+
+#: 
+msgid "Manage all ministries"
+msgstr "அனைத்து ஊழியங்களையும் நிர்வகி"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "உறுப்பினர்கள் {{role}} பங்குக்கு மாற்றப்பட்டனர்: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "குழுவை விட்டு வெளியேறியதால் அல்லது ஊழியம் அவர்களின் பங்கை நிர்வகிப்பதால் மாற்றப்படாத உறுப்பினர்கள்: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "ஊழிய ஒருங்கிணைப்பாளர்"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "தானியங்கி திறப்புக்கு மீதமுள்ள நிமிடங்கள்"
+
+#: 
+msgid "Missing Pledges"
+msgstr "காணாமல் போன உறுதிமொழிகள்"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "GitHub கணக்கு இல்லையா? Discord இல் எங்களிடம் சொல்லுங்கள்"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "%s க்கு உறுதிமொழி அளித்து %s க்கு உறுதிமொழி இல்லாத செயலில் உள்ள குடும்பம் எதுவும் இல்லை."
+
+#: 
+msgid "No families found."
+msgstr "குடும்பங்கள் எதுவும் கிடைக்கவில்லை."
+
+#: 
+msgid "No ministry assigned"
+msgstr "ஊழியம் ஒதுக்கப்படவில்லை"
+
+#: 
+msgid "No open deposit"
+msgstr "திறந்த வைப்பு இல்லை"
+
+#: 
+msgid "No pledge for"
+msgstr "இதற்கு உறுதிமொழி இல்லை:"
+
+#: 
+msgid "Not granted to this account"
+msgstr "இந்தக் கணக்கிற்கு வழங்கப்படவில்லை"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "தன்னார்வலர் குழுவை வழிநடத்தவில்லை"
+
+#: 
+msgid "Not locked"
+msgstr "பூட்டப்படவில்லை"
+
+#: 
+msgid "Number of Payments"
+msgstr "கொடுப்பனவுகளின் எண்ணிக்கை"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "ஒரு நிமிடம். நீங்கள் அனுப்புவதை நாங்கள் பகிரமாட்டோம்."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "ஒரு யோசனையைத் திறக்கவும். உங்கள் திருச்சபைக்குத் தேவையென்றால் 👍 மூலம் வாக்களிக்கவும், இன்று நீங்கள் எவ்வாறு பணியாற்றுகிறீர்கள் என்பது பற்றி ஒரு சிறிய கருத்தைச் சேர்க்கவும்."
+
+#: 
+msgid "Open deposit"
+msgstr "திறந்த வைப்பு"
+
+#: 
+msgid "Password change required at next login"
+msgstr "அடுத்த உள்நுழைவில் கடவுச்சொல் மாற்றம் தேவை"
+
+#: 
+msgid "Password strength"
+msgstr "கடவுச்சொல் வலிமை"
+
+#: 
+msgid "People & Families"
+msgstr "நபர்கள் மற்றும் குடும்பங்கள்"
+
+#: 
+msgid "Pledged for"
+msgstr "உறுதிமொழி அளிக்கப்பட்டது:"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "காணிக்கை அறிக்கைகளைத் தயாரி"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "மாதிரிக் கடிதத்தை முன்னோட்டமிடு"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "கனடிய காணிக்கை அறிக்கையின் தனிப்பட்ட கையொப்ப சொத்து அடையாளங்காட்டி. கையொப்பப் பதிவேற்றம் மூலம் நிர்வகிக்கப்படுகிறது."
+
+#: 
+msgid "Property Type"
+msgstr "பண்பு வகை"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "PNG அல்லது JPEG கையொப்பப் படத் தரவை மட்டும் வழங்கவும்."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "பதிவு செய்யப்பட்ட வரலாறு: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "சிக்கலைப் புகாரளி"
+
+#: 
+msgid "Requirement"
+msgstr "தேவை"
+
+#: 
+msgid "Return Home"
+msgstr "முகப்புக்குத் திரும்பு"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "ஒரு நிதி ஆண்டை மதிப்பாய்வு செய்து, பின்னர் காணிக்கை அறிக்கைகளைப் பதிவிறக்கவும்."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "வைப்பை மதிப்பாய்வு செய்து மூடு"
+
+#: 
+msgid "Review and Filter"
+msgstr "மதிப்பாய்வு செய்து வடிகட்டு"
+
+#: 
+msgid "Review and vote"
+msgstr "மதிப்பாய்வு செய்து வாக்களி"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "ஆண்டை மதிப்பாய்வு செய்து, பின்னர் காணிக்கை அறிக்கைகளைப் பதிவிறக்கவும்."
+
+#: 
+msgid "Review what we are considering"
+msgstr "நாங்கள் பரிசீலிப்பதைப் பாருங்கள்"
+
+#: 
+msgid "Roles & permissions"
+msgstr "பங்குகள் மற்றும் அனுமதிகள்"
+
+#: 
+msgid "Select at least one member."
+msgstr "குறைந்தது ஒரு உறுப்பினரைத் தேர்ந்தெடுக்கவும்."
+
+#: 
+msgid "Setup key"
+msgstr "அமைவு விசை"
+
+#: 
+msgid "Sign-in status"
+msgstr "உள்நுழைவு நிலை"
+
+#: 
+msgid "Signature storage folder"
+msgstr "கையொப்ப சேமிப்பக கோப்புறை"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "கையொப்பம் புதுப்பிக்கப்பட்டது, ஆனால் முந்தைய தனிப்பட்ட கையொப்பக் கோப்பை அகற்ற முடியவில்லை."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "சில PHP தேவைகள் இல்லை. தொடர்வதற்கு முன் ChurchCRM க்கு இவை தேவை."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "ஒரு வைப்பைத் தொடங்கி, பின்னர் ஒவ்வொரு கொடுப்பனவையும் அதில் சேர்க்கவும்."
+
+#: 
+msgid "Starting envelope number"
+msgstr "தொடக்க உறை எண்"
+
+#: 
+msgid "Strong"
+msgstr "வலுவானது"
+
+#: 
+msgid "Support"
+msgstr "ஆதரவு"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "வரி அடையாள எண் மற்றும் PDF அமைப்புகள்"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "பட்டியலை ஏற்ற முடியவில்லை. நீங்கள் இன்னும் GitHub இல் யோசனைகளைத் திறக்கலாம்."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "பெயர் அதிகபட்சம் %d எழுத்துகளாக இருக்கலாம்"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "நீங்கள் கோரிய பக்கம் கிடைக்கவில்லை. அது நகர்த்தப்பட்டிருக்கலாம், மறுபெயரிடப்பட்டிருக்கலாம் அல்லது இனி இல்லாமல் இருக்கலாம்."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "தூண்டுதல் அதிகபட்சம் %d எழுத்துகளாக இருக்கலாம்"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "தேர்ந்தெடுத்த உறுப்பினர்களுக்கு ஏற்கனவே அந்தப் பங்கு உள்ளது."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "கையொப்பப் படத்தை டிகோட் செய்ய முடியவில்லை."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "கையொப்பப் படம் 2 MiB ஐ விட பெரியதாக இருக்கக்கூடாது."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "கையொப்பப் படம் 2000 × 1000 பிக்சல்களுக்குள் பொருந்த வேண்டும்."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "வரி கையொப்ப சேமிப்பக கோப்புறை %s இல் வலை சேவையகம் எழுத முடியாது."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "வரி கையொப்ப சேமிப்பக கோப்புறை குறியீட்டு இணைப்பாக இருக்கக்கூடாது."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "வரி கையொப்ப சேமிப்பகப் பாதை ChurchCRM கோப்புறைக்கு வெளியே இருக்க வேண்டும். உள்ளமைந்த தனிப்பட்ட கோப்புறையைப் பயன்படுத்த அமைப்பை வெறுமையாக விடவும்."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "வரி கையொப்ப சேமிப்பகப் பாதை அமைப்பு முழுமையான கோப்புறைப் பாதையாக இருக்க வேண்டும்."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "குடும்பப் பதிவுகளைப் புதுப்பி என்பதைத் தேர்ந்தெடுக்கும் வரை இந்த உறை எண்கள் சேமிக்கப்படாது."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "அவர்களால் பணியாளராக அல்லது உறுப்பினர் தளத்தில் உள்நுழைய முடியாது, அவர்களின் அமர்வுகள், சாதனங்கள் மற்றும் கடவுச்சாவிகள் அகற்றப்படும்."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "இந்தக் குடும்பத்திற்கு குறிப்புகள் இருப்பதால் நீக்க முடியாது. வரலாற்றைப் பாதுகாக்க அதற்குப் பதிலாக குடும்பத்தை செயலிழக்கச் செய்யவும்."
+
+#: 
+msgid "This password looks strong."
+msgstr "இந்தக் கடவுச்சொல் வலுவாகத் தெரிகிறது."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "இந்த நபருக்கு பதிவு செய்யப்பட்ட செயல்பாடுகள் இருப்பதால் நீக்க முடியாது. வரலாற்றைப் பாதுகாக்க அதற்குப் பதிலாக நபரை செயலிழக்கச் செய்யவும்."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "இது உள்நுழைவை மட்டும் அகற்றும். நபரும் அவரது குறிப்புகளும் இருக்கும்."
+
+#: 
+msgid "Time Range"
+msgstr "நேர வரம்பு"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "இரு-காரணி அங்கீகாரம் பதிவு செய்யப்பட்டது"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "தானாக நகலெடுக்க முடியவில்லை. அமைவு விசையைத் தேர்ந்தெடுத்து கைமுறையாக நகலெடுக்கவும்."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "PNG அல்லது JPEG கையொப்பப் படத்தைப் பதிவேற்றவும்."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "இந்த அமைப்பை மாற்ற கையொப்பப் பதிவேற்றம் அல்லது அகற்றலைப் பயன்படுத்தவும்."
+
+#: 
+msgid "User Details"
+msgstr "பயனர் விவரங்கள்"
+
+#: 
+msgid "Username or Email Address"
+msgstr "பயனர்பெயர் அல்லது மின்னஞ்சல் முகவரி"
+
+#: 
+msgid "View all ideas"
+msgstr "அனைத்து யோசனைகளையும் காண்க"
+
+#: 
+msgid "View events"
+msgstr "நிகழ்வுகளைப் பார்த்தல்"
+
+#: 
+msgid "View people and families"
+msgstr "நபர்கள் மற்றும் குடும்பங்களைப் பார்த்தல்"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "இந்தத் திருச்சபைக்கு தன்னார்வலர் மேலாண்மை அணைக்கப்பட்டுள்ளது"
+
+#: 
+msgid "Weak"
+msgstr "பலவீனமானது"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "இந்தக் கணக்கு இப்போது என்ன செய்ய முடியும் (படிக்க மட்டும்)"
+
+#: 
+msgid "You must select a class"
+msgstr "நீங்கள் ஒரு வகுப்பைத் தேர்ந்தெடுக்க வேண்டும்"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "உங்கள் திருச்சபையின் நிதி ஆண்டு ஜனவரி 1 அன்று தொடங்கவில்லை. வரி அதிகாரிகள் பெரும்பாலும் நாட்காட்டி ஆண்டுக்கான ரசீதுகளை விரும்புவார்கள்: மதிப்பாய்வு செய்து வடிகட்டு என்பதைத் தேர்ந்தெடுத்து தேதிகளை ஜனவரி 1 – டிசம்பர் 31 என அமைக்கவும்."
+
+#: 
+msgid "attendance"
+msgstr "வருகை"
+
+#: 
+msgid "financial history"
+msgstr "நிதி வரலாறு"
+
+#: 
+msgid "notes"
+msgstr "குறிப்புகள்"
+
+#: 
+msgid "recorded activities"
+msgstr "பதிவு செய்யப்பட்ட செயல்பாடுகள்"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "அமைப்புப் பயனரின் API விசை மீண்டும் உருவாக்கப்பட்டது"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "அமைப்புப் பயனர் மின்னஞ்சல் இணைப்பிலிருந்து தனது கடவுச்சொல்லை மீட்டமைத்தார்"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "அமைப்புப் பயனர் இரு-காரணி அங்கீகாரத்தை அணைத்தார்"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "அமைப்புப் பயனர் இரு-காரணி அங்கீகாரத்தை இயக்கினார்"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "அமைப்புப் பயனரின் இரு-காரணி அங்கீகாரம் நிர்வாகியால் முடக்கப்பட்டது"
+
+#: 
+msgid "volunteer service history"
+msgstr "தன்னார்வ சேவை வரலாறு"
+
