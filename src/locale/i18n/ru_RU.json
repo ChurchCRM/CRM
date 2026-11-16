@@ -6975,5 +6975,12 @@
   "system user turned off two-factor authentication": "системный пользователь отключил двухфакторную аутентификацию",
   "system user turned on two-factor authentication": "системный пользователь включил двухфакторную аутентификацию",
   "system user two-factor authentication disabled by admin": "двухфакторная аутентификация системного пользователя отключена администратором",
-  "volunteer service history": "история волонтёрского служения"
+  "volunteer service history": "история волонтёрского служения",
+  "%s by %s": "%s от %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Введите пароль или код из приложения аутентификации, чтобы изменить двухфакторную аутентификацию.",
+  "Latest Notes": "Последние заметки",
+  "No notes have been added yet.": "Заметки ещё не добавлены.",
+  "Start enrollment to get a QR code.": "Начните регистрацию, чтобы получить QR-код.",
+  "That password or code is not right. Two-factor authentication is still on.": "Этот пароль или код неверен. Двухфакторная аутентификация по-прежнему включена.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Двухфакторная аутентификация уже настроена. Её секрет показывается только во время регистрации."
 }

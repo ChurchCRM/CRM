@@ -6942,5 +6942,12 @@
   "system user turned off two-factor authentication": "systémový uživatel vypnul dvoufázové ověření",
   "system user turned on two-factor authentication": "systémový uživatel zapnul dvoufázové ověření",
   "system user two-factor authentication disabled by admin": "dvoufázové ověření systémového uživatele vypnul správce",
-  "volunteer service history": "historie dobrovolnické služby"
+  "volunteer service history": "historie dobrovolnické služby",
+  "%s by %s": "%s od %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Zadejte své heslo nebo kód z ověřovací aplikace, chcete-li změnit dvoufaktorové ověřování.",
+  "Latest Notes": "Nejnovější poznámky",
+  "No notes have been added yet.": "Zatím nebyly přidány žádné poznámky.",
+  "Start enrollment to get a QR code.": "Zahajte registraci a získejte QR kód.",
+  "That password or code is not right. Two-factor authentication is still on.": "Toto heslo nebo kód není správný. Dvoufaktorové ověřování je stále zapnuté.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Dvoufaktorové ověřování je již nastaveno. Jeho tajný klíč se zobrazí pouze během registrace."
 }

@@ -28013,3 +28013,31 @@ msgstr "uwierzytelnianie dwuskładnikowe użytkownika systemowego wyłączone pr
 msgid "volunteer service history"
 msgstr "historia służby wolontariackiej"
 
+#: 
+msgid "%s by %s"
+msgstr "%s autorstwa %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Wprowadź swoje hasło lub kod z aplikacji uwierzytelniającej, aby zmienić uwierzytelnianie dwuskładnikowe."
+
+#: 
+msgid "Latest Notes"
+msgstr "Najnowsze notatki"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Nie dodano jeszcze żadnych notatek."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Rozpocznij rejestrację, aby uzyskać kod QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "To hasło lub kod jest nieprawidłowe. Uwierzytelnianie dwuskładnikowe jest nadal włączone."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Uwierzytelnianie dwuskładnikowe jest już skonfigurowane. Jego sekret jest pokazywany tylko podczas rejestracji."
+

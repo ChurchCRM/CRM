@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "సిస్టమ్ వినియోగదారు రెండు-కారకాల ప్రమాణీకరణను ఆఫ్ చేశారు",
   "system user turned on two-factor authentication": "సిస్టమ్ వినియోగదారు రెండు-కారకాల ప్రమాణీకరణను ఆన్ చేశారు",
   "system user two-factor authentication disabled by admin": "సిస్టమ్ వినియోగదారు రెండు-కారకాల ప్రమాణీకరణను అడ్మిన్ నిలిపివేశారు",
-  "volunteer service history": "స్వచ్ఛంద సేవ చరిత్ర"
+  "volunteer service history": "స్వచ్ఛంద సేవ చరిత్ర",
+  "%s by %s": "%s, %s ద్వారా",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "రెండు-కారకాల ప్రమాణీకరణను మార్చడానికి మీ పాస్‌వర్డ్‌ను లేదా మీ ప్రమాణీకరణ అనువర్తనం నుండి కోడ్‌ను నమోదు చేయండి.",
+  "Latest Notes": "తాజా గమనికలు",
+  "No notes have been added yet.": "ఇంకా గమనికలు ఏవీ జోడించబడలేదు.",
+  "Start enrollment to get a QR code.": "QR కోడ్‌ను పొందడానికి నమోదును ప్రారంభించండి.",
+  "That password or code is not right. Two-factor authentication is still on.": "ఆ పాస్‌వర్డ్ లేదా కోడ్ సరైనది కాదు. రెండు-కారకాల ప్రమాణీకరణ ఇంకా ఆన్‌లోనే ఉంది.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "రెండు-కారకాల ప్రమాణీకరణ ఇప్పటికే సెటప్ చేయబడింది. దాని రహస్యం నమోదు సమయంలో మాత్రమే చూపబడుతుంది."
 }

@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "systeemgebruiker heeft tweestapsverificatie uitgeschakeld",
   "system user turned on two-factor authentication": "systeemgebruiker heeft tweestapsverificatie ingeschakeld",
   "system user two-factor authentication disabled by admin": "tweestapsverificatie van systeemgebruiker uitgeschakeld door beheerder",
-  "volunteer service history": "geschiedenis van vrijwilligersdienst"
+  "volunteer service history": "geschiedenis van vrijwilligersdienst",
+  "%s by %s": "%s door %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Voer uw wachtwoord of een code uit uw authenticator-app in om tweefactorauthenticatie te wijzigen.",
+  "Latest Notes": "Nieuwste notities",
+  "No notes have been added yet.": "Er zijn nog geen notities toegevoegd.",
+  "Start enrollment to get a QR code.": "Start de inschrijving om een QR-code te krijgen.",
+  "That password or code is not right. Two-factor authentication is still on.": "Dat wachtwoord of die code is niet juist. Tweefactorauthenticatie staat nog steeds aan.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Tweefactorauthenticatie is al ingesteld. Het geheim wordt alleen tijdens de inschrijving getoond."
 }
