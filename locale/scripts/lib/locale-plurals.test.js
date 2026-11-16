@@ -7,9 +7,9 @@ const {
     parsePoEntries,
     loadSourceTermKinds,
     repairJoinedPlural,
-    buildPoeditorPayload,
+    buildPluralPayload,
     buildPluralPo,
-} = require('./poeditor-plurals');
+} = require('./locale-plurals');
 
 const SOURCE_PO = `msgid ""
 msgstr ""
@@ -85,8 +85,8 @@ test('repairJoinedPlural leaves normal values alone', () => {
     assert.equal(repairJoinedPlural('Ctrl | Cmd'), 'Ctrl | Cmd');
 });
 
-test('buildPoeditorPayload never pipe-joins plurals', () => {
-    const { payload, pluralEntries, skipped } = buildPoeditorPayload(
+test('buildPluralPayload never pipe-joins plurals', () => {
+    const { payload, pluralEntries, skipped } = buildPluralPayload(
         {
             Save: 'Speichern',
             'Email sent to %d family.': { one: 'E-Mail an %d Familie gesendet.', other: 'E-Mail an %d Familien gesendet.' },
@@ -114,14 +114,14 @@ test('buildPluralPo writes msgctxt pairs and msgid_plural forms', () => {
     assert.match(po, /msgid "%d day"\nmsgid_plural "%d days"\nmsgstr\[0\] "a"\nmsgstr\[1\] "b"\nmsgstr\[2\] "c"\nmsgstr\[3\] "d"/);
 });
 
-test('buildPoeditorPayload keeps every gettext form the language has', () => {
+test('buildPluralPayload keeps every gettext form the language has', () => {
     const ru = { one: 'А', few: 'Б', many: 'В', other: 'Г' };
-    const { pluralEntries } = buildPoeditorPayload({ 'Email sent to %d family.': ru }, kinds);
+    const { pluralEntries } = buildPluralPayload({ 'Email sent to %d family.': ru }, kinds);
     assert.deepEqual(pluralEntries[0].forms, ru);
 });
 
-test('buildPoeditorPayload skips plurals it cannot place', () => {
-    const { payload, pluralEntries, skipped } = buildPoeditorPayload(
+test('buildPluralPayload skips plurals it cannot place', () => {
+    const { payload, pluralEntries, skipped } = buildPluralPayload(
         {
             'Unknown {{count}} thing': { one: 'x', other: 'y' },
             'Copied {{count}} members': { one: 'a', few: 'b', other: 'c' },
