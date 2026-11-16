@@ -15,12 +15,8 @@ use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
-// The directory lists contact details of the whole congregation: staff users only.
+// Last-used Directory Report Options for this user (issue #11465).
 $currentUser = AuthenticationManager::getCurrentUser();
-if ($currentUser->isEditSelfExclusive()) {
-    RedirectUtils::securityRedirect('Staff');
-}
-
 $directoryPrefs = new DirectoryReportPreferences();
 if (isset($_GET['resetDirectoryOptions'])) {
     $directoryPrefs->clear($currentUser);

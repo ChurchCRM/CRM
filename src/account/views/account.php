@@ -124,7 +124,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </div>
               </div>
               <div class="col-sm-9">
-                <?php $canEditUserPerson = AuthenticationManager::getCurrentUser()->canEditPerson($viewedPersonId, $user->getPerson()?->getFamId() ?? 0); ?>
+                <?php $canEditUserPerson = AuthenticationManager::getCurrentUser()->isEditRecordsEnabled(); ?>
                 <div class="row mb-2">
                   <div class="col-sm-4 text-body-secondary"><?= gettext("Username") ?></div>
                   <div class="col-sm-8"><?= InputUtils::escapeHTML($user->getUserName()) ?></div>

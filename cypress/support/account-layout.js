@@ -10,6 +10,9 @@ export function captureAccountLayout(name, mode) {
     cy.get("body").then(($body) => {
         const avatar = $body.find("#userAvatar");
         if (avatar.length) {
+            if (avatar.is(":visible")) {
+                cy.wrap(avatar).scrollIntoView();
+            }
             cy.wrap(avatar).should(($image) => {
                 expect($image[0].complete && $image[0].naturalWidth > 0, "account photo loaded").to.eq(true);
             });

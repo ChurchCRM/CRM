@@ -37,6 +37,7 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
             [
                 'title' => gettext('Giving Reports'),
                 'reports' => [
+                    ['href' => '/finance/reports/year-end', 'title' => gettext('Year-End Giving'), 'description' => gettext('Review a fiscal year, then download giving statements.')],
                     ['href' => '/finance/reports/giving-statements', 'title' => gettext('Giving Statements'), 'description' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.')],
                     ['href' => '/FinancialReports.php?ReportType=Zero%20Givers', 'title' => gettext('Zero Givers'), 'description' => gettext('Identify members who have not made any donations within a date range.')],
                 ],

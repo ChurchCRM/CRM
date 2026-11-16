@@ -2225,10 +2225,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "這將用此頁面上選擇的系列信封覆蓋資料庫中的系列信封號碼。繼續嗎？"
 
 #: 
-msgid "Family Select"
-msgstr "家庭選擇"
-
-#: 
 msgid "Welcome to"
 msgstr "歡迎來到"
 
@@ -2534,10 +2530,6 @@ msgstr "查看所有存款"
 #: 
 msgid "Deposit Reports"
 msgstr "存款報告"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "編輯存款單"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6200,14 +6192,6 @@ msgid "Close All Deposits"
 msgstr "關閉所有存款"
 
 #: 
-msgid "Closed vs Total"
-msgstr "已關閉與總計"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "完成這些任務，以確保為您的捐贈者提供準確的年終稅務報告。"
-
-#: 
 msgid "Configure Email"
 msgstr "配置電子郵件"
 
@@ -6224,28 +6208,12 @@ msgid "Create First Deposit"
 msgstr "建立第一筆存款"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "請先建立或打開一筆存款"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "建立或選擇一筆存款以開始。"
-
-#: 
-msgid "Current Deposit"
-msgstr "當前存款"
-
-#: 
 msgid "Day"
 msgstr "日"
 
 #: 
 msgid "Dec"
 msgstr "十二月"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "存款統計"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6274,10 +6242,6 @@ msgstr "編輯付款"
 #: 
 msgid "Edit Person"
 msgstr "編輯個人"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "在生成聲明之前，確保稅務年度的所有存款都已關閉。"
 
 #: 
 msgid "F"
@@ -6384,10 +6348,6 @@ msgid "New Pledge"
 msgstr "新認獻"
 
 #: 
-msgid "No Active Deposit"
-msgstr "無活動中的存款"
-
-#: 
 msgid "No active funds configured."
 msgstr "未配置活動基金。"
 
@@ -6420,10 +6380,6 @@ msgid "Pledge Reports"
 msgstr "認獻報告"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "為所有捐贈者列印或發送年度奉獻聲明。"
-
-#: 
 msgid "Quick Actions"
 msgstr "快速操作"
 
@@ -6454,10 +6410,6 @@ msgstr "還原"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "從備份檔案還原。將擦除現有數據。"
-
-#: 
-msgid "Review Donation Funds"
-msgstr "審查捐款基金"
 
 #: 
 msgid "Save and Add New Family"
@@ -6496,14 +6448,6 @@ msgid "System Info"
 msgstr "系統資訊"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "稅務報告用詞"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "稅務年度報告檢查清單"
-
-#: 
 msgid "Total"
 msgstr "總計"
 
@@ -6524,10 +6468,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "使用者必須是管理員或具有財務權限"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "核實聲明中的基金名稱和描述是否準確。"
-
-#: 
 msgid "YTD Payments"
 msgstr "今年以來付款"
 
@@ -6544,20 +6484,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "升級需要 ZipArchive 擴充功能"
 
 #: 
-msgid "active"
-msgstr "活動中"
-
-#: 
 msgid "found"
 msgstr "找到"
 
 #: 
 msgid "issues"
 msgstr "問題"
-
-#: 
-msgid "open"
-msgstr "開啟"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -15534,10 +15466,6 @@ msgid "ChurchCRM translations are managed by the community on POEditor. You can 
 msgstr "ChurchCRM 的翻譯由社群在 POEditor 上共同維護，您可以透過以下方式協助"
 
 #: 
-msgid "Closed Deposits"
-msgstr "已結算奉獻"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "目前的 $URL[0] 值"
 
@@ -15678,10 +15606,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "此義工機會已有人員指派，刪除將取消指派"
 
 #: 
-msgid "Total Deposits"
-msgstr "奉獻總計"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "請將其更新為有效的 URL，"
 
@@ -15708,10 +15632,6 @@ msgstr "適用於基金"
 #: 
 msgid "user"
 msgstr "使用者"
-
-#: 
-msgid "with at least one"
-msgstr "至少包含一個"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17482,10 +17402,6 @@ msgstr "本會計年度募得金額"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s 必須是完整的 https:// 網址，例如 https://example.org/yourchurch。"
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "此帳號權限受限，請聯絡管理員。"
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -22727,10 +22643,6 @@ msgid "Search by family name or envelope #"
 msgstr "依家庭名稱或信封編號搜尋"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "無法刪除有認獻或付款紀錄的家庭。請先轉移或刪除財務紀錄。"
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "您無法刪除自己的帳號。"
 
@@ -24109,10 +24021,6 @@ msgid "%s Giving Statement"
 msgstr "%s 奉獻報表"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "自訂奉獻報表上顯示的文字（sTaxReport1、sTaxReport2 等）。"
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24135,10 +24043,6 @@ msgstr "透過電子郵件傳送 %s 奉獻報表"
 #: 
 msgid "Envelope Numbers"
 msgstr "信封編號"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "產生奉獻報表"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24179,10 +24083,6 @@ msgstr "無法透過電子郵件傳送奉獻報表：此家庭沒有記錄的電
 #: 
 msgid "Undesignated"
 msgstr "未指定"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "驗證教會名稱、地址和聯絡資訊是否出現在奉獻報表上。"
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24397,10 +24297,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "有 %d 筆付款尚未列入任何存款。"
 
 #: 
-msgid "Can be emailed"
-msgstr "可以電子郵件寄送"
-
-#: 
 msgid "Closing line"
 msgstr "結尾語"
 
@@ -24429,16 +24325,8 @@ msgid "Opening line"
 msgstr "開頭語"
 
 #: 
-msgid "Print and mail"
-msgstr "列印並郵寄"
-
-#: 
 msgid "Qty"
 msgstr "數量"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "先檢視年度資料，再列印或電子郵件寄送奉獻證明。"
 
 #: 
 msgid "Signed by"
@@ -24447,10 +24335,6 @@ msgstr "簽署人"
 #: 
 msgid "Thank-you line"
 msgstr "感謝語"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "請確認教會名稱、地址與聯絡資訊會顯示在稅務證明上。"
 
 #: 
 msgid "Year-End Giving"
@@ -27467,4 +27351,683 @@ msgstr "您的資料屬於您。回報內容僅涉及軟體，絕不涉及您的
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "您的資料屬於您。為統計安裝數，ChurchCRM 會回報它已安裝或升級以及是否成功、使用期間每天一次的回報，以及版本號碼、您的國家、資料庫類型和隨機安裝識別碼。它絕不會回報會友、奉獻或其他教會記錄、您的教會名稱、您的網址或伺服器名稱、電子郵件地址。您可以隨時在 管理 → 遙測 中關閉此功能；失敗的安裝或升級仍會被回報。警告、錯誤詳細資料和頁面瀏覽只有在您選擇後才會分享。"
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s:還有 %2$d 筆存款尚未關閉。請先關閉,讓每筆奉獻在寄出對帳單之前成為最終記錄。"
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "已儲存 %d 個信封編號。"
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d 個家庭"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s:所有存款都已關閉。可以準備對帳單了。"
+
+#: 
+msgid "12 months"
+msgstr "12 個月"
+
+#: 
+msgid "30 days"
+msgstr "30 天"
+
+#: 
+msgid "90 days"
+msgstr "90 天"
+
+#: 
+msgid "Add Property"
+msgstr "新增屬性"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "再多加幾個字元或一個符號。"
+
+#: 
+msgid "Add and edit events"
+msgstr "新增和編輯活動"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "加入更多字元,或混合使用數字和符號。"
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "加入更多字元,並混合使用大小寫字母、數字和符號。"
+
+#: 
+msgid "Add people and families"
+msgstr "新增人員和家庭"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "功能開啟期間,管理員擁有所有權限。"
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "同時停用登入,讓他們無法使用成員入口網站"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "寄出對帳單之前"
+
+#: 
+msgid "Birthday today"
+msgstr "今天生日"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "無法建立私有稅務簽名檔案。請檢查儲存資料夾是否可寫入。"
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "無法建立稅務簽名儲存資料夾 %s。請確認網頁伺服器可以寫入,或在稅務簽名儲存路徑設定中指定可寫入的資料夾。"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "無法刪除有認捐或付款記錄的家庭。請改為停用該家庭以保留財務歷史。僅在適當時才移轉財務記錄。"
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "無法編碼私有稅務簽名。"
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "無法往該方向移動欄位"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "無法讀取私有稅務簽名。"
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "無法移除私有簽名。"
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "無法移除私有稅務簽名檔案。"
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "無法解析稅務簽名儲存所用的應用程式資料夾。"
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "無法儲存私有簽名。"
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "無法在稅務簽名儲存資料夾中寫入存取防護檔 %s。"
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "變更所選成員的角色:{{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "教會會計年度"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ChurchCRM 系統檢查"
+
+#: 
+msgid "Custom field not found"
+msgstr "找不到自訂欄位"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "改為停用該家庭"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "請停用該家庭,而不是刪除。"
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "請停用該人員,而不是刪除。"
+
+#: 
+msgid "Delete people and families"
+msgstr "刪除人員和家庭"
+
+#: 
+msgid "Delete the login for"
+msgstr "刪除以下對象的登入:"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "存款圖表時間範圍"
+
+#: 
+msgid "Disabled at"
+msgstr "停用時間"
+
+#: 
+msgid "Disabled by"
+msgstr "停用者"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "下載會傳送當年所有奉獻者。「檢視並篩選」會先顯示總計,並可依家庭、基金、班級或日期縮小範圍。"
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "信封編號重複"
+
+#: 
+msgid "Edit people and families"
+msgstr "編輯人員和家庭"
+
+#: 
+msgid "Email people and groups"
+msgstr "寄送電子郵件給人員和小組"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "請在網頁伺服器設定中啟用缺少的 PHP 擴充功能,重新啟動網頁伺服器,然後重新載入此頁面。如果您使用主機代管服務,請請對方啟用所列的擴充功能。"
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "手動輸入設定金鑰"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "請輸入 0 到 %d 之間的起始編號。"
+
+#: 
+msgid "Enter fullscreen"
+msgstr "進入全螢幕"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "請使用以時間為基礎的 (TOTP) 6 位數驗證碼和 30 秒間隔,將此金鑰輸入您的驗證器或密碼管理員。請妥善保密此金鑰。"
+
+#: 
+msgid "Enter your username or email"
+msgstr "輸入您的使用者名稱或電子郵件"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "信封編號必須是 0 到 %d 之間的整數。未儲存任何內容。"
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "本教會已關閉活動功能"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "結束全螢幕"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "刪除自訂欄位失敗"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "移動自訂欄位失敗"
+
+#: 
+msgid "Fair"
+msgstr "普通"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "已為 %s 認捐但沒有為 %s 認捐的家庭。"
+
+#: 
+msgid "Families with at least one member in"
+msgstr "至少有一位成員屬於以下項目的家庭:"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "本教會已關閉財務功能"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "尋找在一個會計年度認捐而在另一個年度未認捐的家庭。"
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "儲存奉獻對帳單私有簽名的資料夾。留空則使用內建私有資料夾 Images/TaxSignatures,該資料夾會封鎖直接的網頁存取。若要使用其他資料夾,請輸入位於 ChurchCRM 資料夾之外且網頁伺服器可寫入的絕對路徑。"
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "本教會已關閉募款功能"
+
+#: 
+msgid "Good"
+msgstr "良好"
+
+#: 
+msgid "Have an email"
+msgstr "有電子郵件"
+
+#: 
+msgid "Hide setup key"
+msgstr "隱藏設定金鑰"
+
+#: 
+msgid "How to respond"
+msgstr "如何回應"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "等待您檢閱的想法"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "不包含停用的家庭。付款不計為認捐。"
+
+#: 
+msgid "Invalid request."
+msgstr "無效的要求。"
+
+#: 
+msgid "Invalid signature image data."
+msgstr "簽名圖片資料無效。"
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "已儲存的稅務簽名識別碼無效。"
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "稅務簽名儲存位置無效。"
+
+#: 
+msgid "Last successful login"
+msgstr "上次成功登入"
+
+#: 
+msgid "Lockout state"
+msgstr "鎖定狀態"
+
+#: 
+msgid "Login deleted"
+msgstr "登入已刪除"
+
+#: 
+msgid "Mail only"
+msgstr "僅郵寄"
+
+#: 
+msgid "Manage all ministries"
+msgstr "管理所有事工"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "成員已移至 {{role}}:{{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "因已離開小組或由事工管理其角色而未變更的成員:{{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "事工協調人"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "距離自動解鎖的分鐘數"
+
+#: 
+msgid "Missing Pledges"
+msgstr "缺少的認捐"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "沒有 GitHub 帳號?請到 Discord 告訴我們"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "沒有任何活躍家庭為 %s 認捐卻未為 %s 認捐。"
+
+#: 
+msgid "No families found."
+msgstr "找不到家庭。"
+
+#: 
+msgid "No ministry assigned"
+msgstr "未指派事工"
+
+#: 
+msgid "No open deposit"
+msgstr "沒有未關閉的存款"
+
+#: 
+msgid "No pledge for"
+msgstr "沒有認捐:"
+
+#: 
+msgid "Not granted to this account"
+msgstr "未授予此帳號"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "未帶領志工團隊"
+
+#: 
+msgid "Not locked"
+msgstr "未鎖定"
+
+#: 
+msgid "Number of Payments"
+msgstr "付款筆數"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "只需一分鐘。我們不會分享您傳送的內容。"
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "開啟一個想法。如果您的教會需要,請用 👍 投票,並簡短說明您目前的工作方式。"
+
+#: 
+msgid "Open deposit"
+msgstr "未關閉的存款"
+
+#: 
+msgid "Password change required at next login"
+msgstr "下次登入時需要變更密碼"
+
+#: 
+msgid "Password strength"
+msgstr "密碼強度"
+
+#: 
+msgid "People & Families"
+msgstr "人員和家庭"
+
+#: 
+msgid "Pledged for"
+msgstr "認捐給:"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "準備奉獻對帳單"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "預覽範例信函"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "加拿大奉獻對帳單私有簽名的資產識別碼。透過上傳簽名來管理。"
+
+#: 
+msgid "Property Type"
+msgstr "屬性類型"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "僅提供 PNG 或 JPEG 格式的簽名圖片資料。"
+
+#: 
+msgid "Recorded history: %s."
+msgstr "已記錄的歷史:%s。"
+
+#: 
+msgid "Report Issue"
+msgstr "回報問題"
+
+#: 
+msgid "Requirement"
+msgstr "需求"
+
+#: 
+msgid "Return Home"
+msgstr "返回首頁"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "檢視一個會計年度,然後下載奉獻對帳單。"
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "檢視並關閉存款"
+
+#: 
+msgid "Review and Filter"
+msgstr "檢視並篩選"
+
+#: 
+msgid "Review and vote"
+msgstr "檢視並投票"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "檢視該年度,然後下載奉獻對帳單。"
+
+#: 
+msgid "Review what we are considering"
+msgstr "看看我們正在考慮的內容"
+
+#: 
+msgid "Roles & permissions"
+msgstr "角色和權限"
+
+#: 
+msgid "Select at least one member."
+msgstr "請至少選擇一位成員。"
+
+#: 
+msgid "Setup key"
+msgstr "設定金鑰"
+
+#: 
+msgid "Sign-in status"
+msgstr "登入狀態"
+
+#: 
+msgid "Signature storage folder"
+msgstr "簽名儲存資料夾"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "簽名已更新,但無法移除先前的私有簽名檔案。"
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "缺少一些 PHP 需求。ChurchCRM 需要它們才能繼續。"
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "先建立一筆存款,然後將每筆付款加入其中。"
+
+#: 
+msgid "Starting envelope number"
+msgstr "起始信封編號"
+
+#: 
+msgid "Strong"
+msgstr "強"
+
+#: 
+msgid "Support"
+msgstr "支援"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "稅號和 PDF 設定"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "無法載入清單。您仍可在 GitHub 上開啟這些想法。"
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "名稱最多可包含 %d 個字元"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "找不到您要求的頁面。它可能已被移動、重新命名或不再存在。"
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "提示最多可包含 %d 個字元"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "所選成員已擁有該角色。"
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "無法解碼簽名圖片。"
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "簽名圖片不得超過 2 MiB。"
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "簽名圖片必須符合 2000 × 1000 像素。"
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "網頁伺服器無法寫入稅務簽名儲存資料夾 %s。"
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "稅務簽名儲存資料夾不能是符號連結。"
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "稅務簽名儲存路徑必須位於 ChurchCRM 資料夾之外。將設定留空以使用內建私有資料夾。"
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "稅務簽名儲存路徑設定必須是絕對資料夾路徑。"
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "在您選擇「更新家庭記錄」之前,這些信封編號不會被儲存。"
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "他們無法以員工身分或登入成員入口網站,其工作階段、裝置和通行金鑰將被移除。"
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "無法刪除該家庭,因為它有備註。請改為停用該家庭以保留其歷史。"
+
+#: 
+msgid "This password looks strong."
+msgstr "此密碼看起來很強。"
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "無法刪除此人,因為其有已記錄的活動。請改為停用此人以保留其歷史。"
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "這只會移除登入。此人及其備註會保留。"
+
+#: 
+msgid "Time Range"
+msgstr "時間範圍"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "已註冊雙重驗證"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "無法自動複製。請選取並手動複製設定金鑰。"
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "上傳 PNG 或 JPEG 簽名圖片。"
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "請使用上傳或移除簽名來變更此設定。"
+
+#: 
+msgid "User Details"
+msgstr "使用者詳細資料"
+
+#: 
+msgid "Username or Email Address"
+msgstr "使用者名稱或電子郵件地址"
+
+#: 
+msgid "View all ideas"
+msgstr "檢視所有想法"
+
+#: 
+msgid "View events"
+msgstr "檢視活動"
+
+#: 
+msgid "View people and families"
+msgstr "檢視人員和家庭"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "本教會已關閉志工管理"
+
+#: 
+msgid "Weak"
+msgstr "弱"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "此帳號目前可以執行的操作(唯讀)"
+
+#: 
+msgid "You must select a class"
+msgstr "您必須選擇一個班級"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "您教會的會計年度不是從 1 月 1 日開始。稅務機關通常需要曆年的收據:請選擇「檢視並篩選」,並將日期設定為 1 月 1 日至 12 月 31 日。"
+
+#: 
+msgid "attendance"
+msgstr "出席"
+
+#: 
+msgid "financial history"
+msgstr "財務歷史"
+
+#: 
+msgid "notes"
+msgstr "備註"
+
+#: 
+msgid "recorded activities"
+msgstr "已記錄的活動"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "系統使用者的 API 金鑰已重新產生"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "系統使用者透過電子郵件連結重設了密碼"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "系統使用者關閉了雙重驗證"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "系統使用者開啟了雙重驗證"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "系統使用者的雙重驗證已被管理員停用"
+
+#: 
+msgid "volunteer service history"
+msgstr "志工服事歷史"
 

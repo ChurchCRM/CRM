@@ -12,7 +12,6 @@ use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\UserQuery;
-use ChurchCRM\Portal\PortalAccountPages;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
 use Endroid\QrCode\QrCode;
@@ -54,25 +53,11 @@ class LocalAuthentication implements IAuthenticationProvider
 
     public function getPasswordChangeURL(): string
     {
-        $user = $this->getCurrentUser();
-
-        return SystemURLs::getRootPath() . ($user instanceof User ? self::passwordChangePath($user) : self::STAFF_PASSWORD_PATH);
+        return SystemURLs::getRootPath() . self::STAFF_PASSWORD_PATH;
     }
 
     public const STAFF_PASSWORD_PATH = '/account/password';
     public const STAFF_TWO_FACTOR_PATH = '/account/2fa';
-
-    /** A self-service login changes its password in the Member Portal; staff on their account page. */
-    public static function passwordChangePath(User $user): string
-    {
-        return $user->isEditSelfExclusive() ? PortalAccountPages::PASSWORD_PATH : self::STAFF_PASSWORD_PATH;
-    }
-
-    public static function twoFactorEnrollmentPath(User $user): string
-    {
-        return $user->isEditSelfExclusive() ? PortalAccountPages::TWO_FACTOR_PATH : self::STAFF_TWO_FACTOR_PATH;
-    }
-
 
     public static function getTwoFactorQRCode($username, $secret): QrCode
     {
@@ -336,7 +321,7 @@ class LocalAuthentication implements IAuthenticationProvider
         // matched with str_contains because web servers differ on trailing slashes and
         // query strings (#8405).
         $requestUri = $_SERVER['REQUEST_URI'] ?? '';
-        $passwordChangePath = self::passwordChangePath($user);
+        $passwordChangePath = self::STAFF_PASSWORD_PATH;
         if ($user->getNeedPasswordChange() && !str_contains($requestUri, $passwordChangePath)) {
             LoggerUtils::getAuthLogger()->info('User needs password change; redirecting to password change', $logCtx);
             $authenticationResult->isAuthenticated = false;
@@ -345,7 +330,7 @@ class LocalAuthentication implements IAuthenticationProvider
 
         // If 2FA is required and user hasn't enrolled, check grace period status.
         // block only when the grace window has expired or no grace period is configured.
-        $enrollmentPath = self::twoFactorEnrollmentPath($user);
+        $enrollmentPath = self::STAFF_TWO_FACTOR_PATH;
         $enrollmentURL = SystemURLs::getRootPath() . $enrollmentPath;
         $isOnEnrollmentPage = str_contains($requestUri, $enrollmentPath);
         if (!$user->getNeedPasswordChange() && SystemConfig::getBooleanValue('bRequire2FA') && !$user->is2FactorAuthEnabled() && !$isOnEnrollmentPage) {

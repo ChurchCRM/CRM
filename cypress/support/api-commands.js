@@ -8,6 +8,8 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+import { clearPersonHistory } from "./person-deletion-fixtures";
+
 // -- Modern API command patterns --
 
 function privateApiCall(keyName) {
@@ -106,7 +108,7 @@ Cypress.Commands.add("makePrivatePlainAuthAPICall", privateApiCall("plainauth.ap
 // return 200 to authenticated users but strip note items (e.g. timeline).
 Cypress.Commands.add("makePrivateEditRecordsAPICall", privateApiCall("editrecords.api.key"));
 
-// noperm.user (id=901): every permission flag 0, usr_EditSelf=0,
+// noperm.user (id=901): every permission flag 0,
 // non-admin. The genuinely zero-permission user — it passes
 // AuthMiddleware under the read-default policy (#9003) and gets
 // read-only access, so every write route must answer 403 for it.
@@ -298,6 +300,7 @@ Cypress.Commands.add("cleanupNotes", (noteIds) => {
  * @param {Array<number|string>} personIds
  */
 Cypress.Commands.add("cleanupPeople", (personIds) => {
+    cy.then(() => clearPersonHistory(numericIds(personIds)));
     numericIds(personIds).forEach((personId) => {
         const label = `person ${personId}`;
         cleanupRequest(label, "DELETE", `/api/person/${personId}`);
@@ -311,6 +314,7 @@ Cypress.Commands.add("cleanupPeople", (personIds) => {
  * @param {Array<number|string>} familyIds
  */
 Cypress.Commands.add("cleanupFamilies", (familyIds) => {
+    cy.then(() => clearPersonHistory([], numericIds(familyIds)));
     numericIds(familyIds).forEach((familyId) => {
         const label = `family ${familyId}`;
         cleanupRequest(label, "DELETE", `/api/family/${familyId}?deleteMembers=true`);

@@ -35,14 +35,6 @@ function noteToArray(Note $note): array
     ];
 }
 
-// ---------------------------------------------------------------------------
-// Person notes — READ + WRITE
-// Both GET and POST are in the same group under NotesRoleAuthMiddleware.
-// The inline canEditPerson() check on POST further restricts who may write:
-//   - EditRecords/Admin: any person
-//   - EditSelf: own family's persons only
-//   - Notes=1 alone (no EditRecords/EditSelf): cannot write person notes
-// ---------------------------------------------------------------------------
 $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): void {
     /**
      * @OA\Get(
@@ -81,15 +73,6 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $person = $request->getAttribute('person');
         $currentUser = AuthenticationManager::getCurrentUser();
 
-        // EditSelf-only scope: restrict to own family.
-        // (ABAC hook for future per-record holds — EditSelf+Notes users
-        //  are not currently allowed past the isEditSelfExclusive() entry gate,
-        //  but this check ensures correctness if that ever changes.)
-        $personFamilyId = (int) $person->getFamId();
-        if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {
-            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
-        }
-
         $notes = NoteQuery::create()
             ->filterByPerId($person->getId())
             ->filterByType('note')
@@ -114,7 +97,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     path="/person/{personId}/note",
      *     operationId="createPersonNote",
      *     summary="Create a note for a person",
-     *     description="Creates a note on a person's record. Requires Notes=1 or Admin (via NotesRoleAuthMiddleware) plus canEditPerson() to scope writes: EditRecords/Admin may write on any person; EditSelf users only on their own family members; Notes=1-only users (no EditRecords/EditSelf) are blocked.",
+     *     description="Creates a note on a person's record. Requires Notes permission and Edit Records, or Admin.",
      *     tags={"People"},
      *     security={{"ApiKeyAuth":{}}},
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer", example=1)),
@@ -130,7 +113,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     ),
      *     @OA\Response(response=400, description="Note text is required"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Notes permission required or canEditPerson() denied"),
+     *     @OA\Response(response=403, description="Notes and Edit Records permissions required"),
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
@@ -140,12 +123,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $currentUser = AuthenticationManager::getCurrentUser();
         $input = (array) $request->getParsedBody();
 
-        // Write gate: canEditPerson() enforces EditRecords/Admin (any person) or
-        // EditSelf (own-family persons only). Notes=1 alone is not sufficient —
-        // the Notes flag grants read access to notes, not write access to person records.
-        // The outer NotesRoleAuthMiddleware already ensures Notes=1 or Admin,
-        // so a Notes=1+EditRecords user passes both checks correctly.
-        if (!$currentUser->canEditPerson((int) $person->getId(), (int) $person->getFamId())) {
+        if (!$currentUser->isEditRecordsEnabled()) {
             return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
         }
 
@@ -209,13 +187,6 @@ $app->group('/family/{familyId:[0-9]+}', function (RouteCollectorProxy $group): 
         /** @var Family $family */
         $family = $request->getAttribute('family');
         $currentUser = AuthenticationManager::getCurrentUser();
-
-        // EditSelf-only scope: restrict to own family.
-        // Mirrors the person notes GET guard — prevents EditSelf+Notes=1 users
-        // from enumerating notes on families they don't belong to.
-        if (!$currentUser->canViewFamily((int) $family->getId())) {
-            return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
-        }
 
         $notes = NoteQuery::create()
             ->filterByFamId($family->getId())
