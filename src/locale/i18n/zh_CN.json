@@ -5464,7 +5464,6 @@
   "{{name}} registered and checked in!": "{{name}} 已注册并签到！",
   "Search by family name": "按家庭名称搜索",
   "Search by family name or envelope #": "按家庭名称或信封编号搜索",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "无法删除有认捐或付款记录的家庭。请先转移或删除财务记录。",
   "You cannot delete your own account.": "您不能删除自己的账户。",
   "A recurring event needs a last date, so it is back to {{date}}.": "重复活动必须有结束日期，因此已恢复为 {{date}}。",
   "Add Everyone in Cart to {{ministry}}": "将购物车中的所有人加入 {{ministry}}",

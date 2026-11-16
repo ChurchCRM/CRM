@@ -4,6 +4,7 @@
 > Churches run repeatable, multi-step processes — hospital visitation follow-up, bereavement care, newcomer assimilation, discipleship pathways, membership preparation — and ChurchCRM gives them no system support for any of it. Issue #348 (filed from real CCB usage) asks for "process queues": define a process once, move people through its stages, assign an owner at each stage, and optionally automate a step such as a mail-merge email. There is no workflow or process engine on master today, so these processes live in spreadsheets, notebooks and memory. This RFC proposes a **general process engine — reusable process definitions made of ordered, owned steps, and per-person/family instances with per-step state** — and poses the design questions a maintainer/community decision must answer before any implementation is specced. RFC 0016 (visitation tracking) is positioned as a candidate first consumer of the engine, not a competitor to it.
 
 **Status:** Draft for maintainer review (no decision yet); no release commitment
+**Audience:** Technical — maintainer only; no community discussion.
 **Date:** 2026-11-14
 **Owner:** @dawoudio
 **Proposal issue:** [#348](https://github.com/ChurchCRM/CRM/issues/348) (Process Queue idea)

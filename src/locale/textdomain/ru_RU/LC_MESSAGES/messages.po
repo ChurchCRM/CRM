@@ -22641,10 +22641,6 @@ msgid "Search by family name or envelope #"
 msgstr "Поиск по названию семьи или номеру конверта"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Нельзя удалить семью, у которой есть обязательства или платежи. Сначала переместите или удалите финансовые записи."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Вы не можете удалить свою учётную запись."
 

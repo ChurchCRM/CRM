@@ -195,6 +195,7 @@ function initializeApp() {
 
   // Load open deposit count once on page load (replaces session-cached badge)
   window.CRM.dashboard?.loadOpenDepositCount();
+  window.CRM.dashboard?.loadCommunityFeedback();
 
   window.CRM.dashboard?.loadSelfRegisterPendingCount();
 
@@ -214,6 +215,7 @@ function initializeApp() {
         fetch(`${window.CRM.root}/v2/releases/dismiss-update-notice`, {
           method: "POST",
           credentials: "same-origin",
+          headers: { "X-CSRF-Token": btn.dataset.csrfToken || "" },
         });
         return;
       }

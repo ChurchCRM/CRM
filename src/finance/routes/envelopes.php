@@ -3,6 +3,7 @@
 use ChurchCRM\dto\Classification;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Service\EnvelopeService;
+use ChurchCRM\Service\FlashService;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
@@ -64,8 +65,7 @@ function financeEnvelopeManager(Request $request, Response $response): Response
 
         if ($invalidFamilyIds === []) {
             $updated = EnvelopeService::saveChanged($toSave);
-            $_SESSION['sGlobalMessage'] = sprintf(ngettext('%d envelope number saved.', '%d envelope numbers saved.', $updated), $updated);
-            $_SESSION['sGlobalMessageClass'] = 'success';
+            FlashService::set(sprintf(ngettext('%d envelope number saved.', '%d envelope numbers saved.', $updated), $updated));
 
             return SlimUtils::renderRedirect(
                 $response,
@@ -96,9 +96,9 @@ function financeEnvelopeManager(Request $request, Response $response): Response
     }
     unset($row);
 
-    $sGlobalMessage = $_SESSION['sGlobalMessage'] ?? '';
-    $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
-    unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
+    $flash = FlashService::take();
+    $sGlobalMessage = $flash['message'] ?? '';
+    $sGlobalMessageClass = $flash['class'] ?? 'success';
 
     $classifications = [];
     foreach (Classification::getAll() as $option) {

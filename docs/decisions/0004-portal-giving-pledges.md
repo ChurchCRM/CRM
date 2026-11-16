@@ -4,6 +4,7 @@
 > Members record pledges in the Member Portal: a fund, an amount per gift, a schedule and a start date. They can edit or end a pledge and see it beside what they have given. Each pledge is an ordinary `pledge_plg` row of type `Pledge`, so the pledge pages and reports staff use today show it. No money moves: no gateway, deposit, fee, receipt or tax statement is involved. Per-person credit (#9313) and four shared finance fixes come first and are specified here. Online payments are [RFC 0005](0005-online-payments.md), which builds on this RFC. The maintainer's decisions on the five questions are recorded below (2026-10-30).
 
 **Status:** Accepted with changes (maintainer decision, 2026-10-30); no release commitment  
+**Audience:** Workflow feature — community feedback via its Feature Proposal discussion.
 **Date:** 2026-10-17  
 **Owner:** @cwhorton  
 **Proposal issue:** [#10033](https://github.com/ChurchCRM/CRM/issues/10033) · **Related:** [#9313](https://github.com/ChurchCRM/CRM/issues/9313) (per-person gifts), [#8977](https://github.com/ChurchCRM/CRM/issues/8977) (Member Portal), [#10550](https://github.com/ChurchCRM/CRM/issues/10550)  

@@ -15,7 +15,11 @@ $releases = array_reverse($preview['upgradePath'] ?? []); // Same newest-first o
         <p class="text-secondary">
             <?= sprintf(gettext('Installed version: %s'), InputUtils::escapeHTML($preview['installedVersion'])) ?>
         </p>
-        <?php if (empty($releases)): ?>
+        <?php if (!empty($preview['unavailable'])): ?>
+            <div class="alert alert-warning" id="releases-unavailable">
+                <?= gettext('Release notes are unavailable right now.') ?>
+            </div>
+        <?php elseif (empty($releases)): ?>
             <div class="alert alert-success" id="releases-up-to-date">
                 <?= gettext('You\'re up to date.') ?>
             </div>

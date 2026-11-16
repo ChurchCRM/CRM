@@ -23,7 +23,7 @@ const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 const BASELINE_FILE = path.join(__dirname, 'ui-conventions-baseline.json');
-const SKIP = ['skin/v2/', 'skin/external', '/vendor/', 'node_modules', '/locale/', 'templates/email', 'templates/reports', '.min.'];
+const SKIP = ['skin/v2/', 'skin/external', '/vendor/', 'node_modules', '/locale/', 'templates/email', 'templates/reports', 'src/logs/', '.min.'];
 const MARKUP = /\.(php|twig|js|ts|html)$/;
 const STYLES = /\.(css|scss)$/;
 const SKIP_DIR = /(?:^|\/)(?:Base|Map)\//;
@@ -34,7 +34,7 @@ function walk(dir, out = []) {
         const rel = path.relative(ROOT, full) + (entry.isDirectory() ? '/' : '');
         if (SKIP.some((s) => rel.includes(s)) || SKIP_DIR.test(rel)) continue;
         if (entry.isDirectory()) walk(full, out);
-        else out.push(full);
+        else if (entry.isFile() && (MARKUP.test(full) || STYLES.test(full))) out.push(full);
     }
     return out;
 }

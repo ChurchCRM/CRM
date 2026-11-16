@@ -422,7 +422,7 @@ class Family extends BaseFamily implements PhotoInterface
      */
     public function preDelete(?ConnectionInterface $con = null): bool
     {
-        // Snapshot before the photo is unlinked, so FAMILY_DELETED listeners
+        // Snapshot before the record is deleted, so FAMILY_DELETED listeners
         // see the family as it actually was. (The API route unlinks or deletes
         // the members before it deletes the family, so the derived
         // FamilyString key reflects that emptied membership — the persisted
@@ -431,8 +431,7 @@ class Family extends BaseFamily implements PhotoInterface
             ? $this->toArray()
             : null;
 
-        $this->getPhoto()->delete();
-
+        // The API removes the photo only after the delete transaction commits.
         return parent::preDelete($con);
     }
 

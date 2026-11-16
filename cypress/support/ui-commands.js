@@ -17,9 +17,19 @@ Cypress.Commands.add('dismissSystemNotifications', () => {
         if ($buttons.length === 0) {
             return;
         }
-        cy.intercept('POST', '**/api/user/*/setting/notification.dismissed.*').as('dismissNotification');
+        const $session = $buttons.filter((_, el) => el.closest('[data-notification-id]')?.dataset.notificationId === 'system-update-available');
+        const $persistent = $buttons.not($session);
+        const aliases = [];
+        if ($persistent.length > 0) {
+            cy.intercept('POST', '**/api/user/*/setting/notification.dismissed.*').as('dismissNotification');
+            aliases.push(...Array($persistent.length).fill('@dismissNotification'));
+        }
+        if ($session.length > 0) {
+            cy.intercept('POST', '**/v2/releases/dismiss-update-notice').as('dismissUpdateNotice');
+            aliases.push(...Array($session.length).fill('@dismissUpdateNotice'));
+        }
         cy.wrap($buttons).click({ multiple: true });
-        cy.wait(Array($buttons.length).fill('@dismissNotification'));
+        cy.wait(aliases);
         cy.get('.crm-system-notification').should('not.exist');
     });
 });
@@ -216,6 +226,17 @@ Cypress.Commands.add('createPersonWithBirthday', (personData) => {
     cy.get('#FirstName').type(personData.name);
     cy.get('#LastName').type(personData.lastName ?? 'TestUser');
     cy.get('#Gender').select('1');
+    if (personData.email) {
+        cy.get('#Email').type(personData.email);
+    }
+
+    if (personData.createFamily) {
+        cy.get('#familyId').select('-1', { force: true });
+        cy.get('#FamilyRole').select('1', { force: true });
+    } else if (personData.familyId) {
+        cy.get('#familyId').select(String(personData.familyId), { force: true });
+        cy.get('#FamilyRole').select(String(personData.familyRole ?? 2), { force: true });
+    }
 
     if (personData.month > 0) {
         cy.get('#BirthMonth').select(padded(personData.month));
