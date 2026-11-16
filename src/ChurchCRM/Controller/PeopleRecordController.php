@@ -34,10 +34,7 @@ class PeopleRecordController
         if ($personId > 0 && $person === null) {
             throw new HttpNotFoundException($request, gettext('Person not found'));
         }
-        if ($person !== null && !$user->canEditPerson($personId, (int) $person->getFamId())) {
-            return $this->denied($request, $response);
-        }
-        if ($familyId > 0 && (!$user->canViewFamily($familyId) || FamilyQuery::create()->findPk($familyId) === null)) {
+        if ($familyId > 0 && FamilyQuery::create()->findPk($familyId) === null) {
             throw new HttpNotFoundException($request, gettext('Family not found'));
         }
         $submitted = $request->getMethod() === 'POST';
@@ -78,7 +75,7 @@ class PeopleRecordController
     {
         $familyId = $this->id($request, $request->getQueryParams(), 'familyId');
         $user = AuthenticationManager::getCurrentUser();
-        if (!($familyId > 0 ? $user->isEditRecordsEnabled() : $user->isAddRecordsEnabled()) || !$user->canViewFamily($familyId)) {
+        if (!($familyId > 0 ? $user->isEditRecordsEnabled() : $user->isAddRecordsEnabled())) {
             return $this->denied($request, $response);
         }
         $family = $familyId > 0 ? FamilyQuery::create()->findPk($familyId) : null;
