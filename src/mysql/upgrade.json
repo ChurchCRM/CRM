@@ -138,6 +138,7 @@
       "/mysql/upgrade/7.8.5-user-settings-cascade.sql",
       "/mysql/upgrade/7.8.5-giving-statement-wording.sql",
       "/mysql/upgrade/7.8.5-drop-editself.sql",
+      "/mysql/upgrade/7.8.5-email-log-cascade.sql",
       "/mysql/upgrade/7.8.5-per-user-2fa.sql"
     ],
     "dbVersion": "7.8.5"

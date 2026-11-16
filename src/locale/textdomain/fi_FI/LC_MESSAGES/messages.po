@@ -22503,10 +22503,6 @@ msgid "Search by family name or envelope #"
 msgstr "Hae perheen nimellä tai kuoren numerolla"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Perhettä, jolla on lupauksia tai maksuja, ei voi poistaa. Siirrä tai poista ensin talouskirjaukset."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Et voi poistaa omaa tiliäsi."
 

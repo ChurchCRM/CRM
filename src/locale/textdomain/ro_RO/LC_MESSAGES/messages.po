@@ -22619,10 +22619,6 @@ msgid "Search by family name or envelope #"
 msgstr "Caută după numele familiei sau nr. plicului"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Nu se poate șterge o familie care are angajamente sau plăți. Mutați sau eliminați mai întâi înregistrările financiare."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Nu vă puteți șterge propriul cont."
 
