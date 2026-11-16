@@ -108,15 +108,22 @@ function sameMo(a, b) {
 
 /**
  * Writes JSON, .po and .mo for a locale from `ctx.translations`. Returns what changed; with
- * `dryRun` nothing is written.
+ * `dryRun` nothing is written. With `jsonOnly` only the JSON is written: translate PRs carry
+ * just the JSON (the source of truth), and the generated .po/.mo are rebuilt on master by
+ * the Locale rebuild workflow after merge.
  */
-function writeLocale(ctx, entries, { dryRun = false } = {}) {
+function writeLocale(ctx, entries, { dryRun = false, jsonOnly = false } = {}) {
     const { paths: p, translations, shapes, poText, target } = ctx;
     const changes = { json: false, po: false, mo: false, po_added: 0, po_updated: 0, po_removed: 0 };
 
     const nextJson = jsonText(translations);
     const currentJson = readIfPresent(p.json, 'utf8');
     changes.json = nextJson !== currentJson;
+
+    if (jsonOnly) {
+        if (!dryRun && changes.json) fs.writeFileSync(p.json, nextJson, 'utf8');
+        return changes;
+    }
 
     const header = files.poHeader(target.languageCode, ctx.forms.length);
     const po = files.renderLocalePo(poText, entries, shapes, translations, header);

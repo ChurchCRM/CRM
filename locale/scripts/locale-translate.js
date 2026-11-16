@@ -340,7 +340,14 @@ function cmdExport(localeMap, localeArg) {
             }
         }
     }
-    console.log(JSON.stringify({ strings, plurals }, null, 2));
+    // Where each term is used in the code (locale/terms/context.json, written
+    // by locale:missing), so a translator can resolve ambiguous short strings.
+    const allContext = loadJSON(config.terms.context) || {};
+    const context = {};
+    for (const key of [...Object.keys(strings), ...Object.values(plurals).flatMap(p => Object.keys(p))]) {
+        if (allContext[key]) context[key] = allContext[key];
+    }
+    console.log(JSON.stringify({ strings, plurals, context }, null, 2));
 }
 
 // ---------------------------------------------------------------------------
