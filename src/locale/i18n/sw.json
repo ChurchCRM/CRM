@@ -5492,7 +5492,6 @@
   "{{name}} registered and checked in!": "{{name}} amesajiliwa na ameingizwa!",
   "Search by family name": "Tafuta kwa jina la familia",
   "Search by family name or envelope #": "Tafuta kwa jina la familia au namba ya bahasha",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Huwezi kufuta familia yenye ahadi au malipo. Hamisha au ondoa kwanza rekodi za fedha.",
   "You cannot delete your own account.": "Huwezi kufuta akaunti yako mwenyewe.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Tukio linalojirudia linahitaji tarehe ya mwisho, kwa hiyo limerudishwa hadi {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Ongeza kila mtu kwenye Kigari kwenye {{ministry}}",

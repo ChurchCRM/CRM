@@ -54,6 +54,7 @@ class GroupReportService
             $query->filterByRoleId($roleId);
         }
         $personQuery = $query->joinWithPerson()->usePersonQuery()
+            ->leftJoinWithFamily()
             ->filterByNeedsReview(false)
             ->orderByLastName()
             ->orderByFirstName();
@@ -86,7 +87,7 @@ class GroupReportService
                 $lines = array_merge($lines, self::addressLines($person));
             }
             foreach ([
-                'HomePhone' => [gettext('Phone'), $person->getHomePhone()],
+                'HomePhone' => [gettext('Phone'), $person->getResolvedHomePhone()],
                 'WorkPhone' => [gettext('Work'), $person->getWorkPhone()],
                 'CellPhone' => [gettext('Cell'), $person->getCellPhone()],
                 'Email' => [gettext('Email'), $person->getEmail()],
@@ -117,23 +118,16 @@ class GroupReportService
     }
 
     /**
-     * The person's own address only: each person enters their own information, so a family
-     * address is never filled in for them.
+     * Use the same person-over-family physical address resolution as group rosters.
      *
      * @return array<int, array{label: string, value: string}>
      */
     private static function addressLines(Person $person): array
     {
-        $lines = [];
-        foreach ([$person->getAddress1(), $person->getAddress2()] as $line) {
-            if ((string) $line !== '') {
-                $lines[] = ['label' => '', 'value' => (string) $line];
-            }
+        $address = $person->getResolvedAddress("\n");
+        if ($address === '') {
+            return [];
         }
-        if ((string) $person->getCity() !== '') {
-            $lines[] = ['label' => '', 'value' => $person->getCity() . ', ' . $person->getState() . ' ' . $person->getZip()];
-        }
-
-        return $lines;
+        return array_map(static fn (string $line): array => ['label' => '', 'value' => $line], explode("\n", $address));
     }
 }

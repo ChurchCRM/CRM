@@ -129,6 +129,7 @@ module.exports = {
     'people-self-register': './webpack/people/self-register',
     'people-labels-modal': './webpack/people/labels-modal',
     'people-sign-in-email': './webpack/people/sign-in-email.ts',
+    'people-custom-fields-editor': './webpack/people/custom-fields-editor',
     'email-history-modal': './webpack/people/email-history-modal',
     'email-delete-queue': './webpack/people/email-delete-queue',
     'email-log-table': './webpack/people/email-log-table',

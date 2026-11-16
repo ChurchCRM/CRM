@@ -22557,10 +22557,6 @@ msgid "Search by family name or envelope #"
 msgstr "Keresés családnév vagy boríték száma szerint"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Nem törölhető olyan család, amelynek vannak felajánlásai vagy befizetései. Előbb helyezze át vagy távolítsa el a pénzügyi rekordokat."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Nem törölheti a saját fiókját."
 

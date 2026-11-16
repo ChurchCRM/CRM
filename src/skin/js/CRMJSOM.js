@@ -587,6 +587,93 @@ window.CRM.dashboard = {
    * Load active fundraiser count once on page load for menu badge.
    * Replaces session-cached count, ensuring always fresh data.
    */
+  /**
+   * Topic count for the Support menu, and the topic cards on the feedback page.
+   * Any signed-in staff user. Hidden when the count is zero.
+   */
+  loadCommunityFeedback: () => {
+    const badge = document.getElementById("communityFeedbackCount");
+    const list = document.getElementById("communityFeedbackList");
+    if (!badge && !list) return;
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "community-feedback",
+      suppressErrorDialog: true,
+    })
+      .done((data) => {
+        const items = Array.isArray(data.items) ? data.items : [];
+        const count = Number(data.count) || items.length;
+        if (badge) {
+          badge.innerText = String(count);
+          badge.classList.toggle("d-none", count === 0);
+        }
+        if (list) {
+          window.CRM.dashboard.renderCommunityFeedback(list, items);
+        }
+      })
+      .fail(() => {
+        if (list) {
+          window.CRM.dashboard.renderCommunityFeedback(list, []);
+        }
+      });
+  },
+
+  renderCommunityFeedback: (list, items) => {
+    list.replaceChildren();
+    if (items.length === 0) {
+      const col = document.createElement("div");
+      col.className = "col-12";
+      const card = document.createElement("div");
+      card.className = "card";
+      const body = document.createElement("div");
+      body.className = "card-body";
+      const empty = document.createElement("p");
+      empty.textContent = list.dataset.empty || "";
+      const link = document.createElement("a");
+      link.className = "btn btn-outline-primary";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.href = list.dataset.discussionsUrl || "https://github.com/ChurchCRM/CRM/discussions";
+      link.textContent = list.dataset.viewAll || "";
+      body.append(empty, link);
+      card.append(body);
+      col.append(card);
+      list.append(col);
+      return;
+    }
+
+    items.forEach((item) => {
+      const col = document.createElement("div");
+      col.className = "col-12";
+      const card = document.createElement("div");
+      card.className = "card h-100";
+      const body = document.createElement("div");
+      body.className = "card-body d-flex flex-column";
+      if (item.category) {
+        const badge = document.createElement("span");
+        badge.className = "badge bg-primary align-self-start mb-2";
+        badge.textContent = item.category;
+        body.append(badge);
+      }
+      const title = document.createElement("h3");
+      title.className = "card-title";
+      title.textContent = item.title || "";
+      const summary = document.createElement("p");
+      summary.className = "text-body-secondary flex-fill";
+      summary.textContent = item.summary || "";
+      const link = document.createElement("a");
+      link.className = "btn btn-primary mt-auto";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.href = item.discussionUrl || "#";
+      link.textContent = list.dataset.voteLabel || "";
+      body.append(title, summary, link);
+      card.append(body);
+      col.append(card);
+      list.append(col);
+    });
+  },
+
   loadFundraiserCount: () => {
     const el = document.getElementById("activeFundraisers");
     if (!el) return; // Fundraiser menu badge not present for this user (feature disabled or no permission)

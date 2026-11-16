@@ -5464,7 +5464,6 @@
   "{{name}} registered and checked in!": "{{name}} đã đăng ký và đăng nhập!",
   "Search by family name": "Tìm theo tên gia đình",
   "Search by family name or envelope #": "Tìm theo tên gia đình hoặc số phong bì",
-  "Cannot delete a family that has pledges or payments. Move or remove the finance records first.": "Không thể xóa gia đình có cam kết dâng hiến hoặc khoản thanh toán. Hãy chuyển hoặc xóa các bản ghi tài chính trước.",
   "You cannot delete your own account.": "Bạn không thể xóa tài khoản của chính mình.",
   "A recurring event needs a last date, so it is back to {{date}}.": "Sự kiện lặp lại cần ngày kết thúc, nên đã được đưa về {{date}}.",
   "Add Everyone in Cart to {{ministry}}": "Thêm mọi người trong giỏ chọn vào {{ministry}}",

@@ -22499,10 +22499,6 @@ msgid "Search by family name or envelope #"
 msgstr "Maghanap ayon sa pangalan ng pamilya o envelope #"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Hindi mabubura ang pamilyang may mga pangako o bayad. Ilipat o alisin muna ang mga talaan ng pananalapi."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Hindi mo mabubura ang sarili mong account."
 

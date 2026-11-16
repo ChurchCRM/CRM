@@ -104,12 +104,14 @@ describe("School grades", () => {
     it("People by Grade lists a range of grades in grade order and adds them to the cart", () => {
         setGrades({ kinder: 5, second: 7, seventh: 12 });
         cy.request({ method: "DELETE", url: "/api/cart/", body: {} });
+        cy.intercept("POST", "**/api/cart/").as("addToCart");
         cy.visit("/people/reports/people-by-grade?gradeFrom=7&gradeTo=5");
         reportRows().should("have.length", 2);
         reportRows().eq(0).should("contain", "Kindergarten").and("contain", "Kim Gradeling");
         reportRows().eq(1).should("contain", "2nd").and("contain", "Sam Gradeling");
 
         cy.get("#addAllToCart").click();
+        cy.wait("@addToCart").its("response.statusCode").should("eq", 200);
         cy.request("/api/cart/").its("body.PeopleCart").should("include.members", [people.kinder, people.second]);
         cy.request("/api/cart/").its("body.PeopleCart").should("not.include", people.seventh);
         cy.request({ method: "DELETE", url: "/api/cart/", body: {} });
