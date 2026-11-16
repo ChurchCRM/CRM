@@ -125,6 +125,15 @@ runs:
         retention-days: 1
         if-no-files-found: ignore
 
+    - name: Upload account layout screenshots
+      if: always()
+      uses: ./.github/actions/upload-artifact
+      with:
+        name: account-layout-php${{ inputs.php-version }}-${{ inputs.deployment }}-${{ inputs.test-name }}-${{ github.run_id }}
+        path: cypress/screenshots/**/account-layout/**
+        retention-days: 14
+        if-no-files-found: ignore
+
     - name: Test Report
       uses: ./.github/actions/test-reporter
       if: always()

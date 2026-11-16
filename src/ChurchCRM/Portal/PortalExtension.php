@@ -342,7 +342,7 @@ class PortalExtension extends AbstractExtension implements GlobalsInterface
             // Kept for themes written before portal_can(); new templates ask
             // portal_can('volunteer.team.manage') instead.
             'isTeamLeader' => $this->portalCan(CorePortalCapabilities::TEAM_MANAGE),
-            'isStaff' => $staffUser !== null && !$staffUser->isEditSelfExclusive(),
+            'isStaff' => $staffUser !== null,
             // The password and two-factor pages exist only for a staff session (§6.4).
             'signedInWithPassword' => $staffUser !== null,
             // During Login as Person the only way back is the banner's Stop (§6.5).

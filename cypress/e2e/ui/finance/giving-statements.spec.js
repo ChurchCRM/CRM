@@ -21,9 +21,12 @@ const expectPdf = (response) => {
 describe("Giving statements", () => {
     beforeEach(() => cy.setupAdminSession());
 
-    it("the Finance menu and the dashboard lead to the page", () => {
-        cy.visit("/finance/");
-        cy.get(`a[href$='${statementsPath}']`).should("exist");
+    it("Year-End Giving leads to the page and Back returns to Year-End Giving", () => {
+        cy.visit("/finance/reports/year-end?year=2018");
+        cy.get("#customStatements").click();
+        cy.location("pathname").should("include", statementsPath);
+        cy.contains("a.btn", "Back").click();
+        cy.location("pathname").should("include", "/finance/reports/year-end");
     });
 
     it("treasurer previews the families and total in a popup, then gets the download links", () => {
@@ -115,10 +118,5 @@ describe("Giving statements", () => {
     it("the minimum applies to a family's total for the period", () => {
         cy.visit(`${statementsPath}?preview=1&${seedYear}&minimum=999999999`);
         cy.contains("No Data Found");
-    });
-
-    it("the old Financial Reports form hands the Giving Report to this page", () => {
-        cy.visit("/FinancialReports.php?ReportType=Giving%20Report");
-        cy.location("pathname").should("include", statementsPath);
     });
 });

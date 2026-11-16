@@ -68,14 +68,8 @@ if (isset($_POST['Submit'])) {
         $currentUser = AuthenticationManager::getCurrentUser();
         // Are we adding or editing?
         if ($iNoteID <= 0) {
-            // Write gate for new person note: canEditPerson() (EditRecords/Admin=any person;
-            // EditSelf=own family only). Notes=1 alone is not sufficient for person notes.
-            // The redirectHomeIfFalse(isNotesEnabled()) at the top already ensures the user
-            // has Notes=1; canEditPerson() is the additional object-level scope check.
             if ($iPersonID > 0) {
-                $targetPerson = PersonQuery::create()->findPk($iPersonID);
-                $targetFamId  = $targetPerson !== null ? (int) $targetPerson->getFamId() : 0;
-                if (!$currentUser->canEditPerson($iPersonID, $targetFamId)) {
+                if (!$currentUser->isEditRecordsEnabled()) {
                     $sNoteTextError = '<br><span class="text-danger">' . gettext('You do not have permission to add a note for this person.') . '</span>';
                     $bErrorFlag = true;
                 }

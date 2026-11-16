@@ -1,4 +1,3 @@
-/** `"danger"`, never `"error"`: `"error"` renders blue in Notyf. */
 export function notifyError(message: string): void {
   window.CRM?.notify?.(message, { type: "danger" });
 }
@@ -11,3 +10,5 @@ export function notifySuccess(message: string): void {
 export function notifyWarning(message: string): void {
   window.CRM?.notify?.(message, { type: "warning" });
 }
+
+export { clearInlineError, type InlineErrorOptions, renderInlineError } from "./inline-error";

@@ -241,7 +241,7 @@ function renderPending(rows: VolunteerDashboardPending[]): void {
                   type: "link",
                   href: `${root()}/people/view/${row.personId}`,
                   icon: "fa-solid fa-user",
-                  label: i18next.t("View person"),
+                  label: i18next.t("View Person"),
                 },
               ])}
             </div>
@@ -378,7 +378,7 @@ function renderUpcoming(rows: VolunteerDashboardOccurrence[], openableMinistryId
     .map((occurrence) => {
       const cancelled = occurrence.status === "cancelled";
       const status = cancelled
-        ? `<span class="badge bg-secondary-lt text-secondary">${i18next.t("Cancelled")}</span>`
+        ? `<span class="badge bg-secondary-lt text-secondary">${i18next.t("Canceled")}</span>`
         : `<span class="badge bg-green-lt text-green">${i18next.t("Scheduled")}</span>`;
 
       return `

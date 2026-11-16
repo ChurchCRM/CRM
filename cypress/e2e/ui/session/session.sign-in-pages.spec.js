@@ -82,6 +82,8 @@ describe("Sign-in pages", () => {
             cy.visit("/admin/");
             cy.location("pathname").should("match", /\/admin\/$/);
             cy.get("#UserBox").should("be.visible");
+            cy.get('label[for="UserBox"]').should("have.text", "Username or Email Address");
+            cy.get("#UserBox").should("have.attr", "type", "text").and("have.attr", "placeholder", "Enter your username or email");
             cy.get("#PasswordBox").should("be.visible");
             cy.request({ url: "/admin/system/users", followRedirect: false }).then((response) => {
                 expect(response.status).to.eq(302);

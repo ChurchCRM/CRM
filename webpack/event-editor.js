@@ -6,6 +6,7 @@
  */
 
 import { confirmAction } from "./common/confirm-action";
+import { renderInlineError } from "./common/inline-error";
 import { deleteEvent, renderEventEditor, saveEvent, toWallClockString } from "./event-form.js";
 import { escapeHtml } from "./utils/escape-html";
 
@@ -23,9 +24,7 @@ function fetchJSON(url, fallback = null) {
 }
 
 function showError(message) {
-  const mount = document.getElementById("event-editor-mount");
-  if (!mount) return;
-  mount.innerHTML = `<div class="alert alert-danger mb-0"><i class="fa-solid fa-triangle-exclamation me-1"></i>${escapeHtml(message)}</div>`;
+  renderInlineError(document.getElementById("event-editor-mount"), message);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

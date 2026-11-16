@@ -14,7 +14,7 @@
  * 
  * Options:
  *   --name <name>          Language name (e.g., "Korean", "French")
- *   --code <code>          POEditor language code (e.g., "ko", "fr")
+ *   --code <code>          Language code, also the batch folder name (e.g., "ko", "fr")
  *   --locale <locale>      Full locale code (e.g., "ko_KR", "fr_FR")
  *   --country <country>    Country code (e.g., "KR", "FR")
  *   --datatables <name>    DataTables locale name (e.g., "Korean", "French")
@@ -97,7 +97,7 @@ Usage: node locale/locale-add.js [options]
 
 Options:
   --name <name>          Language name (e.g., "Korean", "French")
-  --code <code>          POEditor language code (e.g., "ko", "fr")
+  --code <code>          Language code, also the batch folder name (e.g., "ko", "fr")
   --locale <locale>      Full locale code (e.g., "ko_KR", "fr_FR")
   --country <country>    Country code (e.g., "KR", "FR")
   --datatables <name>    DataTables locale name (e.g., "Korean", "French")
@@ -141,7 +141,7 @@ Examples:
         const config = {};
         
         config.name = await question('Language name (e.g., Korean, French): ');
-        config.code = await question('POEditor language code (e.g., ko, fr): ');
+        config.code = await question('Language code (e.g., ko, fr): ');
         
         // Auto-generate suggestions based on code
         const suggestedLocale = `${config.code}_${config.code.toUpperCase()}`;
@@ -212,10 +212,10 @@ Examples:
                 return true;
             }
 
-            // Check by POEditor code
+            // Check by language code (the poEditor field)
             for (const [name, locale] of Object.entries(locales)) {
                 if (locale.poEditor === config.code) {
-                    console.error(`❌ POEditor code "${config.code}" already used by "${name}"`);
+                    console.error(`❌ Code "${config.code}" already used by "${name}"`);
                     return true;
                 }
                 if (locale.locale === config.locale) {
@@ -334,7 +334,7 @@ msgstr ""
             },
             {
                 path: `src/locale/i18n/${config.locale}.json`,
-                content: '{\n    "": "Empty translation file - translations will be populated from POEditor"\n}'
+                content: '{}\n'
             }
         ];
 
@@ -359,9 +359,10 @@ msgstr ""
         console.log(`\n🎉 Language setup ${this.dryRun ? 'planned' : 'completed'} for ${config.name}!\n`);
         
         console.log('📋 **Next Steps:**\n');
-        console.log('1. **Download translations from POEditor:**');
-        console.log('   npm run locale:download');
-        console.log('   (This will populate the actual translations)\n');
+        console.log('1. **Translate it in the repo:**');
+        console.log(`   npm run locale:missing -- --locale ${config.code}`);
+        console.log(`   /locale-translate --locale ${config.code}, then npm run locale:apply`);
+        console.log('   (This writes the translations into the JSON, .po and .mo files)\n');
 
         console.log('2. **Verify the setup:**');
         console.log('   npm run locale:audit');
@@ -404,7 +405,7 @@ msgstr ""
             // Show configuration
             console.log('\n📋 Language Configuration:');
             console.log(`   Name: ${config.name}`);
-            console.log(`   POEditor Code: ${config.code}`);
+            console.log(`   Code: ${config.code}`);
             console.log(`   Locale: ${config.locale}`);
             console.log(`   Country: ${config.country}`);
             console.log(`   DataTables: ${config.datatables}`);

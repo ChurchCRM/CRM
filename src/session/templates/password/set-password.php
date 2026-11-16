@@ -31,7 +31,7 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
         <input id="passwordConfirmation" name="passwordConfirmation" type="password" class="form-control" autocomplete="new-password" required>
       </div>
       <button id="setPassword" type="submit" class="btn-reset"><?= gettext('Reset Password') ?></button>
-      <div class="form-footer justify-content-center"><a href="<?= $sRootPath ?>/session/begin"><?= gettext('Back to login') ?></a></div>
+      <div class="form-footer justify-content-center"><a href="<?= $sRootPath ?>/session/begin"><?= gettext('Back to Login') ?></a></div>
     </form>
   </div>
 </main>

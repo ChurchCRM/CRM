@@ -90,9 +90,12 @@ class EmailLogService
                 if ($address === '') {
                     continue;
                 }
+                // A family-wide send (verification, confirm report) names the family
+                // but not the person; find the person behind each address so the
+                // email also shows in that person's history.
                 $link = ['personId' => $personId, 'familyId' => $familyId];
-                if ($personId === null && $familyId === null) {
-                    $link = $this->resolveAddress($address);
+                if ($personId === null) {
+                    $link['personId'] = $this->resolveAddress($address)['personId'];
                 }
 
                 $row = new EmailLog();

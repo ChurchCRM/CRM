@@ -144,9 +144,26 @@ describe("Person Attendance History API", () => {
 
     context("GET /api/attendance/person/:id — 403 IDOR (noperm.user)", () => {
         it("returns 403 when caller cannot edit the target person (IDOR)", () => {
-            // noperm.user has usr_EditRecords=0, usr_EditSelf=0, usr_Admin=0
+            // noperm.user has usr_EditRecords=0, usr_Admin=0
             // → canEditPerson(anyone else) returns false → strict 403.
             cy.makePrivateNoPermAPICall("GET", "/api/attendance/person/26", null, 403);
+        });
+    });
+
+    context("GET /api/timeline/person/:id — attended events follow the attendance rule", () => {
+        const attendedEventItems = (response) =>
+            Object.values(response.body.timeline).filter((item) => item.type === "cal");
+
+        it("lists attended events for a caller who may edit the person", () => {
+            cy.makePrivateAdminAPICall("GET", `/api/timeline/person/${PERSON_WITH_ATTENDANCE}`, null, 200).then((response) => {
+                expect(attendedEventItems(response)).to.not.be.empty;
+            });
+        });
+
+        it("omits attended events for a caller who may not edit the person", () => {
+            cy.makePrivateNoPermAPICall("GET", `/api/timeline/person/${PERSON_WITH_ATTENDANCE}`, null, 200).then((response) => {
+                expect(attendedEventItems(response)).to.be.empty;
+            });
         });
     });
 

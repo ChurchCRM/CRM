@@ -98,24 +98,11 @@ class VolunteerAuthorizationService
 
     // ── Tier predicates ────────────────────────────────────────────────────
 
-    /**
-     * Administrator or global Volunteer Manager.
-     *
-     * Delegates to the User model so the administrator bypass, the EditSelf-exclusive
-     * short-circuit and the `sVolunteerVersion` rollout gate are all decided once.
-     */
     public function isGlobalManager(User $user): bool
     {
         return $user->isManageMinistriesEnabled();
     }
 
-    /**
-     * Does this user hold at least one ministry or team scope row?
-     *
-     * Pure data: it answers "is there a grant", not "is this person allowed to be a
-     * coordinator". The tier rules (rollout state, EditSelf exclusivity, admin bypass)
-     * live in User::isVolunteerCoordinatorEnabled(), which calls this last.
-     */
     public function hasAnyScope(User $user): bool
     {
         $scopes = $this->loadScopes($user);
@@ -562,21 +549,6 @@ class VolunteerAuthorizationService
         return array_values(array_unique($personIds));
     }
 
-    /**
-     * Everyone who holds global volunteer authority — the people to tell when a
-     * ministry has no coordinator of its own (D19's "help wanted" fallback).
-     *
-     * Read from `user_usr`, because that is where the tier lives: a global volunteer
-     * manager is a FLAG on a login (`usr_ManageMinistries`, #9706) and an administrator
-     * is `usr_Admin`, neither of which has a `volunteer_scope_vscp` row. `User::getId()`
-     * IS the person id (F4), so no join is needed.
-     *
-     * EditSelf-exclusive logins are excluded: §4.3 says the volunteer persona is never a
-     * manager, and `isManageMinistriesEnabled()` would refuse them anyway — filtering
-     * here keeps a mail from being addressed to somebody the rest of V2 would turn away.
-     *
-     * @return int[] person ids, deduplicated
-     */
     public function getGlobalManagerPersonIds(): array
     {
         $personIds = [];
@@ -588,9 +560,6 @@ class VolunteerAuthorizationService
             ->find();
 
         foreach ($users as $user) {
-            if ($user->isEditSelfExclusive()) {
-                continue;
-            }
             $personIds[] = (int) $user->getId();
         }
 
@@ -745,27 +714,6 @@ class VolunteerAuthorizationService
         );
     }
 
-    /**
-     * The raw grants held by one user, memoised for the request.
-     *
-     * Short-circuits to no grants when V2 is switched off — a rolled-back
-     * installation grants nothing — and that is now the ONLY short-circuit here.
-     *
-     * **D14 as revised by the Member Portal (P17, #9867).** This method used to
-     * discard every grant held by an EditSelf-exclusive account, on the reasoning
-     * that "the volunteer persona is never a coordinator". The first half of that
-     * is still true and is still enforced — by
-     * `User::isVolunteerCoordinatorEnabled()`, which has its own
-     * `isEditSelfExclusive()` short-circuit, so the admin dashboard and the
-     * sidebar's Ministries heading stay shut to a self-service login. The second
-     * half was wrong: a team leader with a member login (Member Portal UC2) is a
-     * real person in a real church, and silently dropping their `team` grant made
-     * the scope row a lie — an administrator could grant it, see it listed, and
-     * have it do nothing. Scopes now load for every account; what an account may
-     * *reach* with them is decided where it always was, one layer up.
-     *
-     * @return array{ministry: int[], team: int[]}
-     */
     private function loadScopes(User $user): array
     {
         $personId = (int) $user->getId();

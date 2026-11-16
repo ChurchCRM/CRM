@@ -17,7 +17,6 @@ use Propel\Runtime\Connection\ConnectionInterface;
  */
 class Token extends BaseToken
 {
-    public const TYPE_FAMILY_VERIFY = 'verifyFamily';
     public const TYPE_PASSWORD = 'password';
 
     public function build($type, $referenceId): void
@@ -25,10 +24,6 @@ class Token extends BaseToken
         $this->setReferenceId($referenceId);
         $this->setToken(bin2hex(random_bytes(32)));
         switch ($type) {
-            case 'verifyFamily':
-                $this->setValidUntilDate(strtotime('+1 week'));
-                $this->setRemainingUses(5);
-                break;
             case 'password':
                 $this->setValidUntilDate(strtotime('+1 day'));
                 $this->setRemainingUses(1);
@@ -40,11 +35,6 @@ class Token extends BaseToken
     public static function passwordResetStorageKey(string $token): string
     {
         return 'sha256:' . hash('sha256', $token);
-    }
-
-    public function isVerifyFamilyToken(): bool
-    {
-        return self::TYPE_FAMILY_VERIFY === $this->getType();
     }
 
     public function isPasswordResetToken(): bool

@@ -5,32 +5,16 @@ describe("New payment: family lookup by envelope number (issue #11190)", () => {
     const ENVELOPE = 9190;
     let originalSetting;
 
-    const assignEnvelope = (envelope) => {
-        cy.clearCookies();
-        cy.readEnv("admin.username").then((username) =>
-            cy.readEnv("admin.password").then((password) =>
-                cy.request({ method: "POST", url: "/session/begin", form: true, body: { User: username, Password: password } }),
-            ),
-        );
-        cy.request({
-            method: "POST",
-            url: "/ManageEnvelopes.php",
-            form: true,
-            body: { Classification: "0", Confirm: "Confirm", [`EnvelopeID_${FAMILY_ID}`]: String(envelope) },
-        });
-        cy.clearCookies();
-    };
-
     before(() => {
         cy.getSystemConfig("bUseDonationEnvelopes").then((v) => {
             originalSetting = v;
         });
         cy.makePrivateAdminAPICall("POST", "admin/api/system/config/bUseDonationEnvelopes", { value: "1" }, 200);
-        assignEnvelope(ENVELOPE);
+        cy.setFamilyEnvelope(FAMILY_ID, ENVELOPE);
     });
 
     after(() => {
-        assignEnvelope(0);
+        cy.setFamilyEnvelope(FAMILY_ID, 0);
         cy.restoreSystemConfig("bUseDonationEnvelopes", originalSetting);
     });
 

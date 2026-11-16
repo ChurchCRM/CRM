@@ -106,13 +106,13 @@ describe("Group and Sunday School actions show the server's reason (#10126)", ()
             cy.wait(["@roleOrder", "@roleOrder"]).each(({ response }) => {
                 expect(response.statusCode).to.eq(200);
             });
-            cy.get(".notyf__toast").should("not.exist");
+            cy.get("#crm-toasts .toast").should("not.exist");
 
             deleteFromPage(`groups/${editorOrderId}`);
             cy.get("#groupRoleTable .rollOrder").first().click();
             cy.wait("@roleOrder");
             expectServerReason("@roleOrder");
-            cy.get(".notyf__toast").should("have.length", 1);
+            cy.get("#crm-toasts .toast").should("have.length", 1);
         });
 
         it("Group View: Active toggle after the group was deleted elsewhere", () => {
@@ -170,7 +170,7 @@ describe("Group and Sunday School actions show the server's reason (#10126)", ()
             cy.visit(`/groups/sundayschool/class/${classId}`);
             cy.get("#quickCreateTodaysEventBtn").click();
             expectServerReason("@quickCreate");
-            cy.get(".notyf__toast").should("have.length", 1);
+            cy.get("#crm-toasts .toast").should("have.length", 1);
         });
     });
 });

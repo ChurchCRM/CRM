@@ -34,7 +34,7 @@ Letter is the default page. Pass landscape or report-specific format/margins thr
 | PDF document | `src/templates/reports/<report-name>.html.twig` |
 | Shared PDF partial | `src/templates/reports/_<purpose>.html.twig` |
 | Regression | Existing report specs under `cypress/e2e/`; follow `cypress-testing.md` |
-| Workflow capture | `playwright/workflows/`; follow `marketing-visuals-pipeline.md` |
+| Workflow capture (only if it passes the value test) | `playwright/workflows/`; follow `marketing-visuals-pipeline.md` |
 
 Pass the fixed template stem to the renderer: `'tax-report'` selects `tax-report.html.twig`. Keep template stems and module URLs stable, untranslated and in kebab-case. Keep namespaces and PHP class names in their existing PascalCase convention. Translate displayed titles and labels independently.
 

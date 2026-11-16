@@ -68,6 +68,11 @@ class UpgradeService
             return true;
         }
 
+        $databaseNotice = DatabaseVersionService::getUpgradeWarningMessage();
+        if ($databaseNotice !== null) {
+            $logger->warning('Upgrading a database below the supported minimum: ' . $databaseNotice);
+        }
+
         // An older release manager may still be loaded during deployment. Its
         // no-argument call must leave database work for the next HTTP request.
         if ($oneScriptPerRequest === null && PHP_SAPI !== 'cli') {
@@ -78,6 +83,7 @@ class UpgradeService
 
         //the database isn't at the current version.  Start the upgrade
         $lockName = null;
+        $failureReason = 'other';
         try {
             $connection = Propel::getConnection();
             $lockName = 'churchcrm-upgrade-' . sha1((string) $connection->query('SELECT DATABASE()')->fetchColumn());
@@ -124,6 +130,7 @@ class UpgradeService
                                         TelemetryService::captureUpgradeInterruption($dbUpdate['dbVersion'], $elapsedMs);
                                     }
                                 }
+                                $failureReason = 'script_interrupted';
                                 throw new \RuntimeException("Upgrade file $dbScript failed or was interrupted. Check the server logs and repair or restore the database before retrying.");
                             }
                             if ($oneScriptPerRequest && $scriptsThisRequest === 1) {
@@ -187,6 +194,7 @@ class UpgradeService
             }
 
             if ($upgradeScriptsExecuted === 0) {
+                $failureReason = 'no_upgrade_path';
                 throw new \RuntimeException('No upgrade path for ' . VersionUtils::getDBVersion() . ' to ' . $installed_version);
             }
 
@@ -214,7 +222,11 @@ class UpgradeService
             return true;
         } catch (\Throwable $exc) {
             if (!$exc instanceof SQLImportException && $exc->getCode() !== 409) {
-                TelemetryService::captureUpgradeFailure($installed_version, $exc::class);
+                TelemetryService::captureUpgradeFailure(
+                    isset($version) ? $version->getVersion() : $installed_version,
+                    $failureReason,
+                    isset($scriptName) ? self::upgradeScriptPath($scriptName) : null
+                );
             }
             $logger->error(
                 'Database upgrade failed: ' . $exc->getMessage(),
@@ -228,5 +240,23 @@ class UpgradeService
                 $release->execute([$lockName]);
             }
         }
+    }
+
+    /**
+     * Repo-relative path of the upgrade script that was running (e.g. mysql/upgrade/7.8.4.sql),
+     * for failure reporting. Null when no script had started. The document root is stripped so
+     * no server path ever leaves the installation.
+     */
+    private static function upgradeScriptPath(?string $scriptName): ?string
+    {
+        if ($scriptName === null || $scriptName === '') {
+            return null;
+        }
+        $documentRoot = (string) SystemURLs::getDocumentRoot();
+        if ($documentRoot === '' || !str_starts_with($scriptName, $documentRoot)) {
+            return null;
+        }
+
+        return ltrim(substr($scriptName, strlen($documentRoot)), '/');
     }
 }

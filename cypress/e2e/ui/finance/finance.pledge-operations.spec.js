@@ -103,7 +103,7 @@ describe("Pledge Operations", () => {
 
             cy.get("#savePledgeBtn").click();
 
-            cy.get(".notyf__toast--success").should("contain.text", "Saved successfully");
+            cy.get("#crm-toasts .toast[data-type='success']").should("contain.text", "Saved successfully");
         });
     });
 

@@ -5,6 +5,7 @@ require_once __DIR__ . '/../../Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
@@ -47,7 +48,7 @@ $app->post('/view/{personID:[0-9]+}', function (Request $request, Response $resp
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/person/not-found?id=' . $iPersonID);
     }
 
-    if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
+    if (!$currentUser->isEditRecordsEnabled()) {
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/access-denied?role=PersonView');
     }
 
@@ -106,10 +107,10 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
             $headerButtons[] = ['label' => gettext('Make User'), 'url' => '/admin/system/users/new?personId=' . $iPersonID, 'icon' => 'fa-person-chalkboard'];
         } else {
             $headerButtons[] = ['label' => gettext('Edit User'), 'url' => '/admin/system/users/' . $iPersonID . '/edit', 'icon' => 'fa-user-secret'];
-            $headerButtons[] = ['label' => gettext('View User'), 'url' => '/v2/user/' . $iPersonID, 'icon' => 'fa-eye'];
+            $headerButtons[] = ['label' => gettext('View User'), 'url' => '/admin/system/users/' . $iPersonID, 'icon' => 'fa-eye'];
         }
     } elseif ($person->isUser() && $person->getId() === $currentUser->getId()) {
-        $headerButtons[] = ['label' => gettext('View User'), 'url' => '/v2/user/' . $iPersonID, 'icon' => 'fa-eye', 'adminOnly' => false];
+        $headerButtons[] = ['label' => gettext('View User'), 'url' => '/account', 'icon' => 'fa-eye', 'adminOnly' => false];
     }
     $sPageHeaderButtons = PageHeader::buttons($headerButtons);
 
@@ -149,6 +150,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $rsAssignedGroups     = RunQuery($sSQL);
     $assignedGroupsData   = [];
     while ($row = mysqli_fetch_array($rsAssignedGroups, MYSQLI_ASSOC)) {
+        $row['viewUri'] = Group::getViewURIForId((int) $row['grp_ID'], (int) $row['grp_Type'] === 4);
         $assignedGroupsData[] = $row;
     }
 
@@ -334,11 +336,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $fam_Name = $personData['fam_Name'] ?? '';
 
     // Edit permission
-    $bOkToEdit = (
-        $currentUser->isEditRecordsEnabled() ||
-        ($currentUser->isEditSelfEnabled() && $iPersonID === $currentUser->getId()) ||
-        ($currentUser->isEditSelfEnabled() && $fam_ID !== '' && (int)$fam_ID === (int)$currentUser->getPerson()->getFamId())
-    );
+    $bOkToEdit = $currentUser->isEditRecordsEnabled();
 
     // ── Map configuration ────────────────────────────────────────────────────
     $personMapConfig = null;
