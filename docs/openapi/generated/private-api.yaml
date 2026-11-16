@@ -9878,6 +9878,31 @@ paths:
       security:
         -
           ApiKeyAuth: []
+  /api/user/current/2fa/confirm:
+    post:
+      tags:
+        - 2FA
+      summary: 'Confirm the current password or an authenticator code before changing existing 2FA'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              required:
+                - confirmation
+              properties:
+                confirmation:
+                  description: 'Current password or 6-digit authenticator code'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: 'Confirmed for the next few minutes of this session'
+        '403':
+          description: 'Wrong or missing confirmation'
+      security:
+        -
+          ApiKeyAuth: []
   /api/user/current/refresh2fasecret:
     post:
       tags:
@@ -9893,6 +9918,8 @@ paths:
                   TwoFAQRCodeDataUri: { type: string }
                   TwoFASecret: { type: string }
                 type: object
+        '403':
+          description: '2FA is set up and the confirmation (password or authenticator code) is missing or wrong'
       security:
         -
           ApiKeyAuth: []
@@ -9910,6 +9937,8 @@ paths:
                 properties:
                   TwoFARecoveryCodes: { type: array, items: { type: string } }
                 type: object
+        '403':
+          description: '2FA is set up and the confirmation (password or authenticator code) is missing or wrong'
       security:
         -
           ApiKeyAuth: []
@@ -9921,6 +9950,8 @@ paths:
       responses:
         '200':
           description: '2FA secret removed'
+        '403':
+          description: '2FA is set up and the confirmation (password or authenticator code) is missing or wrong'
       security:
         -
           ApiKeyAuth: []
@@ -9928,12 +9959,12 @@ paths:
     get:
       tags:
         - 2FA
-      summary: "Get the current user's 2FA QR code as a PNG image"
+      summary: 'Retired: the 2FA QR code is returned only by refresh2fasecret during enrollment'
       responses:
-        '200':
-          description: 'PNG image of the 2FA QR code'
-          content:
-            image/png: {  }
+        '404':
+          description: 'Not enrolled: start enrollment with refresh2fasecret'
+        '409':
+          description: 'Already enrolled: the live secret is never shown again'
       security:
         -
           ApiKeyAuth: []
@@ -9960,6 +9991,8 @@ paths:
                 properties:
                   IsEnrollmentCodeValid: { type: boolean }
                 type: object
+        '403':
+          description: '2FA is set up and the confirmation (password or authenticator code) is missing or wrong'
       security:
         -
           ApiKeyAuth: []
