@@ -2,11 +2,13 @@
 
 namespace ChurchCRM\Slim\Middleware\Request\Auth;
 
+use ChurchCRM\Portal\Auth\PortalMemberUser;
+
 class StaffRoleAuthMiddleware extends BaseAuthRoleMiddleware
 {
     protected function hasRole(): bool
     {
-        return !$this->user->isEditSelfExclusive();
+        return !($this->user instanceof PortalMemberUser);
     }
 
     protected function noRoleMessage(): string

@@ -189,7 +189,7 @@ final class OpenApiPaths
 
         for ($i = 0; $i < $count; $i++) {
             $token = $tokens[$i];
-            if ($token === '{') {
+            if ($token === '{' || (is_array($token) && in_array($token[0], [T_CURLY_OPEN, T_DOLLAR_OPEN_CURLY_BRACES], true))) {
                 $brace++;
                 continue;
             }

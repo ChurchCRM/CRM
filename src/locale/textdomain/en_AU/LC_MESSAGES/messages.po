@@ -452,10 +452,6 @@ msgid "Not authorized to grant this scope"
 msgstr "Not authorised to grant this scope"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Customise the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-
-#: 
 msgid "Print the selected deposit in full, with cash and check totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
 msgstr "Print the selected deposit in full, with cash and cheque totals, count sheets and witness lines. Report filters are ignored. Electronic payments stay in the summary and are excluded from the physical bank ticket total."
 

@@ -17,6 +17,7 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Views\PhpRenderer;
 
 $app->get('/dashboard', 'viewDashboard');
+$app->get('/community-feedback', 'viewCommunityFeedback');
 $app->get('/access-denied', 'viewAccessDenied');
 
 function viewAccessDenied(Request $request, Response $response, array $args): Response
@@ -123,4 +124,20 @@ function viewDashboard(Request $request, Response $response, array $args): Respo
     ];
 
     return $renderer->render($response, 'dashboard.php', $pageArgs);
+}
+
+function viewCommunityFeedback(Request $request, Response $response, array $args): Response
+{
+    $renderer = new PhpRenderer('templates/root/');
+
+    $pageArgs = [
+        'sRootPath'       => SystemURLs::getRootPath(),
+        'sPageTitle'      => gettext('Review what we are considering'),
+        'aBreadcrumbs'    => PageHeader::breadcrumbs([
+            [gettext('Review what we are considering')],
+        ]),
+        'sDiscussionsUrl' => 'https://github.com/ChurchCRM/CRM/discussions',
+    ];
+
+    return $renderer->render($response, 'community-feedback.php', $pageArgs);
 }
