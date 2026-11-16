@@ -747,10 +747,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                 <div class="tab-content">
 
                     <div class="tab-pane active timeline-container" id="timeline">
-                        <?php
-                        $timeline = $personTimeline;
-                        include __DIR__ . '/timeline-events.php';
-                        ?>
+                        <?php $timeline = $personTimeline; include __DIR__ . '/timeline-events.php'; ?>
                     </div>
 
                     <div class="tab-pane" id="groups">

@@ -113,14 +113,6 @@ if (empty($timeline)) { ?>
                                     <small class="text-muted"><?= InputUtils::escapeHTML((string) $item['datetime']) ?></small>
                                 </div>
                             </div>
-                            <?php if (($item['category'] ?? '') === 'email') : ?>
-                                <div class="text-secondary small">
-                                    <?= gettext('Sent by') ?>:
-                                    <?= $item['emailSentBy'] !== null
-                                        ? InputUtils::escapeHTML((string) $item['emailSentBy'])
-                                        : gettext('Automatic') ?>
-                                </div>
-                            <?php endif; ?>
                             <?php if (!empty($item['text'])) { ?>
                                 <div class="note-preview text-secondary fs-4" data-note-id="<?= htmlspecialchars((string)$noteId) ?>"><?= $item['text'] ?></div>
                             <?php } ?>
