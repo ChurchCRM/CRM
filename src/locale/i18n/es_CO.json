@@ -6942,5 +6942,12 @@
   "financial history": "historial financiero",
   "notes": "notas",
   "recorded activities": "actividades registradas",
-  "volunteer service history": "historial de servicio voluntario"
+  "volunteer service history": "historial de servicio voluntario",
+  "%s by %s": "%s por %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Ingrese su contraseña o un código de su aplicación de autenticación para cambiar la autenticación de dos factores.",
+  "Latest Notes": "Últimas notas",
+  "No notes have been added yet.": "Aún no se han añadido notas.",
+  "Start enrollment to get a QR code.": "Inicie la inscripción para obtener un código QR.",
+  "That password or code is not right. Two-factor authentication is still on.": "Esa contraseña o código no es correcto. La autenticación de dos factores sigue activada.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "La autenticación de dos factores ya está configurada. Su secreto se muestra solo durante la inscripción."
 }

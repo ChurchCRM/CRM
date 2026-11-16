@@ -27991,3 +27991,31 @@ msgstr "адміністратор вимкнув двофакторну авт�
 msgid "volunteer service history"
 msgstr "історія волонтерського служіння"
 
+#: 
+msgid "%s by %s"
+msgstr "%s від %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Введіть пароль або код із програми автентифікації, щоб змінити двофакторну автентифікацію."
+
+#: 
+msgid "Latest Notes"
+msgstr "Останні нотатки"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Нотаток ще не додано."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Почніть реєстрацію, щоб отримати QR-код."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Цей пароль або код неправильний. Двофакторна автентифікація все ще ввімкнена."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Двофакторну автентифікацію вже налаштовано. Її секрет показується лише під час реєстрації."
+

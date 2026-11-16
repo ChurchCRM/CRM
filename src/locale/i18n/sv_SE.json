@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "systemanvändaren stängde av tvåstegsverifiering",
   "system user turned on two-factor authentication": "systemanvändaren aktiverade tvåstegsverifiering",
   "system user two-factor authentication disabled by admin": "systemanvändarens tvåstegsverifiering inaktiverades av administratör",
-  "volunteer service history": "historik över volontärtjänst"
+  "volunteer service history": "historik över volontärtjänst",
+  "%s by %s": "%s av %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Ange ditt lösenord eller en kod från din autentiseringsapp för att ändra tvåfaktorsautentiseringen.",
+  "Latest Notes": "Senaste anteckningarna",
+  "No notes have been added yet.": "Inga anteckningar har lagts till ännu.",
+  "Start enrollment to get a QR code.": "Starta registreringen för att få en QR-kod.",
+  "That password or code is not right. Two-factor authentication is still on.": "Lösenordet eller koden är inte korrekt. Tvåfaktorsautentisering är fortfarande på.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Tvåfaktorsautentisering är redan konfigurerad. Hemligheten visas bara under registreringen."
 }

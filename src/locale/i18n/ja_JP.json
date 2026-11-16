@@ -6876,5 +6876,12 @@
   "system user turned off two-factor authentication": "システムユーザーが二要素認証をオフにしました",
   "system user turned on two-factor authentication": "システムユーザーが二要素認証をオンにしました",
   "system user two-factor authentication disabled by admin": "システムユーザーの二要素認証が管理者によって無効にされました",
-  "volunteer service history": "ボランティア奉仕の履歴"
+  "volunteer service history": "ボランティア奉仕の履歴",
+  "%s by %s": "%s、%sより",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "二要素認証を変更するには、パスワードまたは認証アプリのコードを入力してください。",
+  "Latest Notes": "最新のメモ",
+  "No notes have been added yet.": "メモはまだ追加されていません。",
+  "Start enrollment to get a QR code.": "QRコードを取得するには、登録を開始してください。",
+  "That password or code is not right. Two-factor authentication is still on.": "そのパスワードまたはコードが正しくありません。二要素認証は引き続き有効です。",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "二要素認証はすでに設定されています。そのシークレットは登録時にのみ表示されます。"
 }

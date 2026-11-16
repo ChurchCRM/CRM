@@ -6909,5 +6909,12 @@
   "system user turned off two-factor authentication": "järjestelmäkäyttäjä poisti kaksivaiheisen todennuksen käytöstä",
   "system user turned on two-factor authentication": "järjestelmäkäyttäjä otti kaksivaiheisen todennuksen käyttöön",
   "system user two-factor authentication disabled by admin": "ylläpitäjä poisti järjestelmäkäyttäjän kaksivaiheisen todennuksen käytöstä",
-  "volunteer service history": "vapaaehtoispalvelun historia"
+  "volunteer service history": "vapaaehtoispalvelun historia",
+  "%s by %s": "%s, kirjoittanut %s",
+  "Enter your password or a code from your authenticator app to change two-factor authentication.": "Anna salasanasi tai koodi todennussovelluksestasi muuttaaksesi kaksivaiheista todentamista.",
+  "Latest Notes": "Uusimmat muistiinpanot",
+  "No notes have been added yet.": "Muistiinpanoja ei ole vielä lisätty.",
+  "Start enrollment to get a QR code.": "Aloita rekisteröinti saadaksesi QR-koodin.",
+  "That password or code is not right. Two-factor authentication is still on.": "Tuo salasana tai koodi ei ole oikein. Kaksivaiheinen todentaminen on edelleen käytössä.",
+  "Two-factor authentication is already set up. Its secret is shown only during enrollment.": "Kaksivaiheinen todentaminen on jo määritetty. Sen salaisuus näytetään vain rekisteröinnin aikana."
 }
