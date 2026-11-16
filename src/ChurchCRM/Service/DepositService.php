@@ -101,6 +101,9 @@ class DepositService {
                     ->filterByAutCleared(0)
                     ->delete();
             }
+            if ($depositClosed && SystemConfig::getBooleanValue('bEnableDepositPostedNotification')) {
+                NotificationService::notify('deposit-posted', $deposit);
+            }
         } else {
             $deposit = new Deposit();
             $deposit
