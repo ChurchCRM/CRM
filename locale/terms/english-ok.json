@@ -856,7 +856,8 @@
     "Max",
     "Min",
     "Team",
-    "{{team}}: {{staffing}}"
+    "{{team}}: {{staffing}}",
+    "Support"
   ],
   "sw": [
     "AM / PM",
