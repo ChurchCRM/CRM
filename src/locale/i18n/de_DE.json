@@ -6897,5 +6897,17 @@
   "system user reset their password from an emailed link": "Systembenutzer hat sein Passwort über einen Link aus einer E-Mail zurückgesetzt",
   "system user turned off two-factor authentication": "Systembenutzer hat die Zwei-Faktor-Authentifizierung deaktiviert",
   "system user turned on two-factor authentication": "Systembenutzer hat die Zwei-Faktor-Authentifizierung aktiviert",
-  "system user two-factor authentication disabled by admin": "Zwei-Faktor-Authentifizierung des Systembenutzers durch Administrator deaktiviert"
+  "system user two-factor authentication disabled by admin": "Zwei-Faktor-Authentifizierung des Systembenutzers durch Administrator deaktiviert",
+  "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate.": "Eine Familie mit Zusagen oder Zahlungen kann nicht gelöscht werden. Deaktivieren Sie die Familie stattdessen, um die Finanzhistorie zu erhalten. Verschieben Sie die Finanzdaten nur, wenn es angemessen ist.",
+  "Deactivate the family instead": "Familie stattdessen deaktivieren",
+  "Deactivate the family instead of deleting it.": "Deaktivieren Sie die Familie, statt sie zu löschen.",
+  "Deactivate the person instead of deleting them.": "Deaktivieren Sie die Person, statt sie zu löschen.",
+  "Recorded history: %s.": "Erfasste Historie: %s.",
+  "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history.": "Diese Familie kann nicht gelöscht werden, da Notizen vorhanden sind. Deaktivieren Sie die Familie stattdessen, um ihre Historie zu erhalten.",
+  "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history.": "Diese Person kann nicht gelöscht werden, da erfasste Aktivitäten vorhanden sind. Deaktivieren Sie die Person stattdessen, um ihre Historie zu erhalten.",
+  "attendance": "Anwesenheit",
+  "financial history": "Finanzhistorie",
+  "notes": "Notizen",
+  "recorded activities": "erfasste Aktivitäten",
+  "volunteer service history": "Verlauf des ehrenamtlichen Einsatzes"
 }
