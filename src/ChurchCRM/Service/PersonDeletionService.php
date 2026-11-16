@@ -63,8 +63,15 @@ final class PersonDeletionService
         // A coordinator may have recorded the append-only response for a
         // volunteer's declined assignment. Deleting the volunteer would
         // cascade that response even though the responder is someone else.
+        // Response writers lock the assignment row inside their transaction
+        // before appending audit history. Lock those same rows here and keep
+        // the locks until the deletion commits, so a response cannot arrive
+        // between the history check and the assignment's FK cascade.
+        // Locking reads also see committed rows despite an earlier RR snapshot.
         $assignmentIds = VolunteerAssignmentQuery::create()
             ->filterByPersonId($personId)
+            ->orderById()
+            ->lockForUpdate()
             ->select(['Id'])
             ->find($connection)
             ->toArray();
@@ -72,7 +79,8 @@ final class PersonDeletionService
         if (VolunteerAssignmentQuery::create()->filterByPersonId($personId)
             ->filterByStatus(['accepted', 'substituted', 'completed'], Criteria::IN)->exists($connection)
             || ($assignmentIds !== [] && VolunteerResponseQuery::create()
-                ->filterByAssignmentId($assignmentIds, Criteria::IN)->exists($connection))
+                ->filterByAssignmentId($assignmentIds, Criteria::IN)
+                ->lockForUpdate()->findOne($connection) !== null)
             || VolunteerResponseQuery::create()->filterByPersonId($personId)->exists($connection)
             || VolunteerSwapQuery::create()
                 ->filterByProposedByPersonId($personId)
