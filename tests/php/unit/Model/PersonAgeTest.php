@@ -2,10 +2,17 @@
 
 declare(strict_types=1);
 
+use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Person;
 use Tester\Assert;
 
 require dirname(__DIR__, 2) . '/bootstrap.php';
+
+SystemURLs::init('', ['https://crm.example.org'], APP_ROOT);
+SystemConfig::init();
+(new ReflectionProperty(SystemConfig::getConfigItem('sTimeZone'), 'value'))
+    ->setValue(SystemConfig::getConfigItem('sTimeZone'), date_default_timezone_get());
 
 $born = static function (int $year, int $month, int $day): Person {
     $person = new Person();
