@@ -96,6 +96,8 @@ Rules:
 
 Write the notes to `changelog/$TAG.md` in the main checkout from the first draft, and keep that file current as sections are added, so the maintainer reads them there. Do not keep the draft in a scratch directory. Leave the file uncommitted until the maintainer approves.
 
+**The agreement happens BEFORE Release & Start Next is dispatched — never after.** Once approved, the notes file is committed to `changelog/$TAG.md` on the branch being released, and the release workflow reads that file at the target commit and uses it as the draft body when it exists (GitHub's generated notes are only the fallback when it doesn't). Do not dispatch first and rewrite the draft afterwards.
+
 ### Template
 
 ```markdown
@@ -178,6 +180,8 @@ The release workflow builds the CHANGELOG.md summary from the `**Theme**:` line,
 - Leave out developer vocabulary (refactor, middleware, endpoint, TomSelect, CI, lint, chore) unless users need it. The two Behind the Scenes lines may name libraries and advisories.
 - **Workflow and impact first** (the marketing repo's Translation Rule, applied to notes): every user-facing bullet opens with the person's work and what changes for them — who is doing what, and what is different when they do it next. The feature or mechanism is the proof, never the lead. Test: if the bullet could be pasted into another product's release notes unchanged, rewrite it around the church task.
 - **No implementation vocabulary in user-facing sections:** no URL routes (`/account`, `/finance/envelopes`), no library, tool or vendor names the reader does not operate (KeePassXC, TomSelect, POEditor), no schema, column, API or back-end terms. Write menu paths in words (**Finance → Envelopes**) when the reader needs to find the thing; a route is not a menu path.
+- **Plain words, short lines — warnings above all.** Write like you're explaining it to a smart neighbour, not an engineer: short sentences, everyday words, one idea per line. A warning section (`## ⚠️ Before You Upgrade`) is never a paragraph wall: a bold lead line, a short list, then what happens and what to do, in that order. If a church secretary has to re-read a sentence, rewrite it. Check every bullet for the right audience, too — who does this, and who receives it: the 7.8.5 notes first said the feedback page invited "your congregation to share feedback with your church"; it invites the people who use ChurchCRM to give the ChurchCRM team feedback.
+- **Theme names say what shipped.** The themed title names the release's actual contents (e.g. "Staff Accounts and Sign-In"). A slogan that could fit any release ("Safer Records, Smoother Days") means nothing and is banned.
 - Weight notes by reach: a change seen on every screen is a feature; a capability few use yet gets one line.
 - Never claim a benefit the change does not deliver. A refactor is not "faster"; a dependency bump is not "more secure" unless it fixes an advisory.
 - State breaking changes, removed features, new runtime requirements and required upgrade steps plainly, in their own `## ⚠️ Before You Upgrade` section placed above New Features.
@@ -242,6 +246,8 @@ gh release view "$TAG" -R ChurchCRM/CRM --json tagName,isDraft,targetCommitish
 ```
 
 `--tag "$TAG"` is required. A draft has no git tag yet, and editing it without an explicit tag can leave it on GitHub's placeholder tag (`untagged-<hash>`). Publishing would then ship that as the version, and every ChurchCRM install reads the version from the tag. 7.7.1 shipped that way. Stop if `tagName` is not exactly `$TAG`.
+
+The same applies through the API: editing a draft's body resets its tag to a fresh `untagged-…` placeholder, so set `tag_name` again as the LAST edit, after the final body change, and re-read to confirm.
 
 Only edit a **draft**. If the release is already published, show George the diff and apply it only after George explicitly approves. Never publish from this skill: publishing is George's separate approval in `release-management.md`.
 
