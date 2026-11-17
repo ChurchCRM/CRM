@@ -2652,7 +2652,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Utilizați această cheie pentru a autentifica cererile API. Regenerarea va invalida cheia curentă.",
   "User Config": "Configurare utilizator",
   "Version %s is available. Please upgrade your installation.": "Versiunea %s este disponibilă. Vă rugăm să actualizați instalarea.",
-  "View All": "Vizualizați toate",
   "Yellow": "Galben",
   "%d repeat event created successfully.": {
     "one": "%d eveniment repetat a fost creat cu succes.",
@@ -4976,7 +4975,6 @@
   "Qualify them for a position.": "Calificați-i pentru un post.",
   "Reactivate": "Reactivează",
   "Read the theme authoring guide": "Citiți ghidul de creare a temelor",
-  "Recent Emails": "E-mailuri recente",
   "Recipient": "Destinatar",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Numărul de destinatari (%d) depășește maximul permis per trimitere (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Destinatarii trebuie dați ca personIds și familyIds, nu ca adrese de e-mail",

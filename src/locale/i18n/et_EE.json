@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Kasutage seda võtit API-päringute autentimiseks. Taasloomisel muutub praegune võti kehtetuks.",
   "User Config": "Kasutaja seaded",
   "Version %s is available. Please upgrade your installation.": "Versioon %s on saadaval. Palun uuendage oma paigaldust.",
-  "View All": "Vaata kõiki",
   "Yellow": "Kollane",
   "%d repeat event created successfully.": {
     "one": "%d korduv sündmus loodi edukalt.",
@@ -4952,7 +4951,6 @@
   "Qualify them for a position.": "Kvalifitseeri nad ülesandele.",
   "Reactivate": "Aktiveeri uuesti",
   "Read the theme authoring guide": "Loe teemade koostamise juhendit",
-  "Recent Emails": "Hiljutised e-kirjad",
   "Recipient": "Saaja",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Saajate arv (%d) ületab ühe saatmise lubatud maksimumi (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Saajad tuleb anda personId ja familyId väärtustena, mitte e-posti aadressidena",

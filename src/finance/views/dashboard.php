@@ -210,7 +210,7 @@ $sRootPath = SystemURLs::getRootPath();
                 <div class="card-header d-flex align-items-center">
                     <h3 class="card-title"><i class="fa-solid fa-clock-rotate-left me-2"></i><?= gettext('Recent Deposits') ?></h3>
                     <a href="<?= $sRootPath ?>/finance/deposit/search" class="btn btn-sm btn-outline-secondary ms-auto">
-                        <i class="fa-solid fa-list me-1"></i><?= gettext('View All') ?>
+                        <i class="fa-solid fa-list me-1"></i><?= gettext('View All Deposits') ?>
                     </a>
                 </div>
                 <div class="card-body p-0">

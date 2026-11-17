@@ -2634,7 +2634,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "このキーを使用してAPIリクエストを認証してください。再生成すると現在のキーは無効になります。",
   "User Config": "ユーザー設定",
   "Version %s is available. Please upgrade your installation.": "バージョン%sが利用可能です。インストールをアップグレードしてください。",
-  "View All": "すべて表示",
   "Yellow": "黄",
   "%d repeat event created successfully.": {
     "other": "%d 件の繰り返しイベントが正常に作成されました。"
@@ -4928,7 +4927,6 @@
   "Qualify them for a position.": "役割の資格を付与してください。",
   "Reactivate": "再有効化",
   "Read the theme authoring guide": "テーマ作成ガイドを読む",
-  "Recent Emails": "最近のメール",
   "Recipient": "宛先",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "宛先の数（%d）が、1回の送信で許可される最大数（%d）を超えています",
   "Recipients must be given as personIds and familyIds, not as email addresses": "宛先は、メールアドレスではなく personIds と familyIds で指定する必要があります",

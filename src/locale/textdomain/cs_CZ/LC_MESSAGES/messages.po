@@ -11199,10 +11199,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Je dostupná verze %s. Aktualizujte svou instalaci."
 
 #: 
-msgid "View All"
-msgstr "Zobrazit vše"
-
-#: 
 msgid "Yellow"
 msgstr "Žlutá"
 
@@ -20343,10 +20339,6 @@ msgstr "Znovu aktivovat"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Přečtěte si průvodce tvorbou motivů"
-
-#: 
-msgid "Recent Emails"
-msgstr "Poslední e-maily"
 
 #: 
 msgid "Recipient"

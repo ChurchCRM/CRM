@@ -11206,10 +11206,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "ስሪት %s አለ። እባክዎ ጭነቱን ያዘምኑ።"
 
 #: 
-msgid "View All"
-msgstr "ሁሉንም ይመልከቱ"
-
-#: 
 msgid "Yellow"
 msgstr "ቢጫ"
 
@@ -20336,10 +20332,6 @@ msgstr "እንደገና አግብር"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "የገጽታ ማዘጋጃ መመሪያውን አንብብ"
-
-#: 
-msgid "Recent Emails"
-msgstr "የቅርብ ጊዜ ኢሜይሎች"
 
 #: 
 msgid "Recipient"

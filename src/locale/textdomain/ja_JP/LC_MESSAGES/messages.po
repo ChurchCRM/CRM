@@ -11159,10 +11159,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "バージョン%sが利用可能です。インストールをアップグレードしてください。"
 
 #: 
-msgid "View All"
-msgstr "すべて表示"
-
-#: 
 msgid "Yellow"
 msgstr "黄"
 
@@ -20273,10 +20269,6 @@ msgstr "再有効化"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "テーマ作成ガイドを読む"
-
-#: 
-msgid "Recent Emails"
-msgstr "最近のメール"
 
 #: 
 msgid "Recipient"

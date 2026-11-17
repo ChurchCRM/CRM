@@ -11172,10 +11172,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versio %s on saatavilla. Päivitä asennuksesi."
 
 #: 
-msgid "View All"
-msgstr "Näytä kaikki"
-
-#: 
 msgid "Yellow"
 msgstr "Keltainen"
 
@@ -20301,10 +20297,6 @@ msgstr "Ota uudelleen käyttöön"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Lue teemojen laatimisopas"
-
-#: 
-msgid "Recent Emails"
-msgstr "Viimeisimmät sähköpostit"
 
 #: 
 msgid "Recipient"

@@ -11201,10 +11201,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Phiên bản %s đã có sẵn. Vui lòng nâng cấp cài đặt của bạn."
 
 #: 
-msgid "View All"
-msgstr "Xem tất cả"
-
-#: 
 msgid "Yellow"
 msgstr "Vàng"
 
@@ -20315,10 +20311,6 @@ msgstr "Kích hoạt lại"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Đọc hướng dẫn tạo giao diện"
-
-#: 
-msgid "Recent Emails"
-msgstr "Email gần đây"
 
 #: 
 msgid "Recipient"

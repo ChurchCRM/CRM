@@ -11331,10 +11331,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "版本 %s 已可用，請升級您的安裝。"
 
 #: 
-msgid "View All"
-msgstr "檢視全部"
-
-#: 
 msgid "Yellow"
 msgstr "黃色"
 
@@ -20445,10 +20441,6 @@ msgstr "重新啟用"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "閱讀主題製作指南"
-
-#: 
-msgid "Recent Emails"
-msgstr "最近的電子郵件"
 
 #: 
 msgid "Recipient"

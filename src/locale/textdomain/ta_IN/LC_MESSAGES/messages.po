@@ -11211,10 +11211,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "பதிப்பு %s கிடைக்கிறது. உங்கள் நிறுவலை மேம்படுத்தவும்."
 
 #: 
-msgid "View All"
-msgstr "அனைத்தையும் காண்க"
-
-#: 
 msgid "Yellow"
 msgstr "மஞ்சள்"
 
@@ -20342,10 +20338,6 @@ msgstr "மீண்டும் செயல்படுத்து"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "தீம் உருவாக்க வழிகாட்டியைப் படிக்கவும்"
-
-#: 
-msgid "Recent Emails"
-msgstr "சமீபத்திய மின்னஞ்சல்கள்"
 
 #: 
 msgid "Recipient"

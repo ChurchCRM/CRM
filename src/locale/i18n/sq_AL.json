@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Përdorni këtë çelës për të vërtetuar kërkesat API. Rigjenerimi do të bëjë të pavlefshëm çelësin aktual.",
   "User Config": "Konfigurimi i Përdoruesit",
   "Version %s is available. Please upgrade your installation.": "Versioni %s është i disponueshëm. Ju lutemi përditësoni instalimin tuaj.",
-  "View All": "Shiko Të Gjitha",
   "Yellow": "Verdhë",
   "%d repeat event created successfully.": {
     "one": "%d ngjarje e përsëritur u krijua me sukses.",
@@ -4952,7 +4951,6 @@
   "Qualify them for a position.": "Kualifikoje për një pozicion.",
   "Reactivate": "Riaktivizo",
   "Read the theme authoring guide": "Lexoni udhëzuesin e krijimit të temave",
-  "Recent Emails": "Email-et e fundit",
   "Recipient": "Marrësi",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Numri i marrësve (%d) tejkalon maksimumin e lejuar për dërgim (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Marrësit duhet të jepen si personId dhe familyId, jo si adresa email-i",

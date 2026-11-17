@@ -11168,10 +11168,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "പതിപ്പ് %s ലഭ്യമാണ്. നിങ്ങളുടെ ഇൻസ്റ്റലേഷൻ നവീകരിക്കുക."
 
 #: 
-msgid "View All"
-msgstr "എല്ലാം കാണുക"
-
-#: 
 msgid "Yellow"
 msgstr "മഞ്ഞ"
 
@@ -20297,10 +20293,6 @@ msgstr "വീണ്ടും സജീവമാക്കുക"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "തീം രചനാ ഗൈഡ് വായിക്കുക"
-
-#: 
-msgid "Recent Emails"
-msgstr "സമീപകാല ഇമെയിലുകൾ"
 
 #: 
 msgid "Recipient"

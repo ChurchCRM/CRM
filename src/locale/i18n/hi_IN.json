@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "API अनुरोधों को प्रमाणित करने के लिए इस कुंजी का उपयोग करें। पुनः उत्पन्न करने से वर्तमान कुंजी अमान्य हो जाएगी।",
   "User Config": "उपयोगकर्ता कॉन्फ़िगरेशन",
   "Version %s is available. Please upgrade your installation.": "संस्करण %s उपलब्ध है। कृपया अपनी स्थापना को अपग्रेड करें।",
-  "View All": "सभी देखें",
   "Yellow": "पीला",
   "%d repeat event created successfully.": {
     "one": "%d आवर्ती कार्यक्रम सफलतापूर्वक बनाया गया।",
@@ -4952,7 +4951,6 @@
   "Qualify them for a position.": "उन्हें किसी पद के लिए योग्य बनाएँ।",
   "Reactivate": "फिर सक्रिय करें",
   "Read the theme authoring guide": "थीम बनाने की मार्गदर्शिका पढ़ें",
-  "Recent Emails": "हाल के ईमेल",
   "Recipient": "प्राप्तकर्ता",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "प्राप्तकर्ताओं की संख्या (%d) प्रति भेजने की अधिकतम अनुमत संख्या (%d) से अधिक है",
   "Recipients must be given as personIds and familyIds, not as email addresses": "प्राप्तकर्ता personIds और familyIds के रूप में दिए जाने चाहिए, ईमेल पतों के रूप में नहीं",

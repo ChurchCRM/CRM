@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Tumia ufunguo huu kuthibitisha maombi ya API. Kuzalisha upya kutabatilisha ufunguo wa sasa.",
   "User Config": "Usanidi wa Mtumiaji",
   "Version %s is available. Please upgrade your installation.": "Toleo %s linapatikana. Tafadhali sasisha usakinishaji wako.",
-  "View All": "Ona Yote",
   "Yellow": "Njano",
   "%d repeat event created successfully.": {
     "one": "Tukio %d la kurudia limeundwa kwa mafanikio.",
@@ -4952,7 +4951,6 @@
   "Qualify them for a position.": "Wape sifa kwa nafasi.",
   "Reactivate": "Washa tena",
   "Read the theme authoring guide": "Soma mwongozo wa kuandika mandhari",
-  "Recent Emails": "Barua pepe za Hivi Karibuni",
   "Recipient": "Mpokeaji",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Idadi ya wapokeaji (%d) inazidi kiwango cha juu kinachoruhusiwa kwa kila utumaji (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Wapokeaji lazima watolewe kama personIds na familyIds, si kama anwani za barua pepe",
