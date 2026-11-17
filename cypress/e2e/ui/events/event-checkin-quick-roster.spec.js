@@ -49,30 +49,41 @@ describe("Quick roster check-in", () => {
         });
     });
 
-    it("undo removes the check-in and restores the row", () => {
-        cy.get("#notCheckedInList .roster-member").first().find('[data-action="checkin"]').click();
-        cy.get("#notCheckedInList .roster-member").first().find('[data-action="undo"]').click();
+    const waitingRow = () =>
+        cy.get('#notCheckedInList [data-action="checkin"]').first().closest(".roster-member");
 
-        cy.get("#notCheckedInList .roster-member").first().should("not.have.class", "bg-success-subtle");
-        cy.get("#checkedInCount").should("have.text", "0");
-        cy.reload();
-        cy.get("#rosterGrid", { timeout: 15000 }).should("not.have.class", "d-none");
-        cy.get("#checkedInCount").should("have.text", "0");
+    it("undo removes the check-in and restores the row", () => {
+        cy.get("#checkedInCount").invoke("text").then((before) => {
+            const count = before.trim();
+            waitingRow().then(($row) => {
+                const personId = $row.attr("data-person-id");
+                cy.wrap($row).find('[data-action="checkin"]').click();
+                cy.get(`#notCheckedInList .roster-member[data-person-id="${personId}"]`).find('[data-action="undo"]').click();
+                cy.get(`#notCheckedInList .roster-member[data-person-id="${personId}"]`).should("not.have.class", "bg-success-subtle");
+                cy.get("#checkedInCount").should("have.text", count);
+            });
+            cy.reload();
+            cy.get("#rosterGrid", { timeout: 15000 }).should("not.have.class", "d-none");
+            cy.get("#checkedInCount").should("have.text", count);
+        });
     });
 
     it("check out leaves the row in the list marked checked out", () => {
-        cy.get("#notCheckedInList .roster-member").first().find('[data-action="checkin"]').click();
-        cy.get("#notCheckedInList .roster-member").first().find('[data-action="checkout"]').click();
-
-        cy.get("#notCheckedInList .roster-member")
-            .first()
-            .should("not.have.class", "bg-success-subtle")
-            .and("contain.text", "Checked out");
-        cy.get("#checkedInCount").should("have.text", "0");
+        cy.get("#checkedInCount").invoke("text").then((before) => {
+            waitingRow().then(($row) => {
+                const personId = $row.attr("data-person-id");
+                cy.wrap($row).find('[data-action="checkin"]').click();
+                cy.get(`#notCheckedInList .roster-member[data-person-id="${personId}"]`).find('[data-action="checkout"]').click();
+                cy.get(`#notCheckedInList .roster-member[data-person-id="${personId}"]`)
+                    .should("not.have.class", "bg-success-subtle")
+                    .and("contain.text", "Checked out");
+                cy.get("#checkedInCount").should("have.text", before.trim());
+            });
+        });
     });
 
     it("updates the People Checked In table without a reload", () => {
-        cy.get("#notCheckedInList .roster-member").first().then(($row) => {
+        waitingRow().then(($row) => {
             const personId = $row.attr("data-person-id");
             cy.wrap($row).find('[data-action="checkin"]').click();
             cy.get(`#checkedinTable tbody tr[data-person-id="${personId}"]`, { timeout: 10000 }).should("exist");
