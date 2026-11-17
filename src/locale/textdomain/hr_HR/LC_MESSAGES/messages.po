@@ -11046,10 +11046,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Nevažeća JSON vrijednost — postavka nije spremljena. Ispravite i pokušajte ponovo."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Pridružite se projektu prijevoda na POEditoru"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Jezične i regionalne postavke"
 
@@ -15312,10 +15308,6 @@ msgstr "Kupci za ovu dobrotvoru akciju"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Izvori za ugrađivanje kalendara"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Prijevodi ChurchCRM-a njima upravlja zajednica na POEditoru. Možete pomoći na"
 
 #: 
 msgid "Current $URL[0] value"

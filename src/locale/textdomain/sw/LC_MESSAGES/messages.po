@@ -11068,10 +11068,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Thamani batili ya JSON — mipangilio haikuhifadhiwa. Tafadhali irekebisha na ujaribu tena."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Jiunge na Mradi wa Tafsiri kwenye POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Mipangilio ya lugha na eneo"
 
@@ -15330,10 +15326,6 @@ msgstr "Wanunuzi wa ukusanyaji fedha huu"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Asili za Kuingiza Kalenda"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Tafsiri za ChurchCRM zinasimamiwa na jamii kwenye POEditor. Unaweza kusaidia kwa"
 
 #: 
 msgid "Current $URL[0] value"

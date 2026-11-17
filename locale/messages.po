@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 20:04+0000\n"
+"POT-Creation-Date: 2026-11-17 01:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3632,7 +3632,7 @@ msgstr ""
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
 msgstr ""
 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
 msgstr ""
 
 msgid "ChurchCRM version"
@@ -8427,6 +8427,9 @@ msgstr ""
 msgid "Help Improve Translations"
 msgstr ""
 
+msgid "Help Translate on GitHub"
+msgstr ""
+
 msgid "Help Wanted"
 msgstr ""
 
@@ -9312,9 +9315,6 @@ msgid "Jersey"
 msgstr ""
 
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
-msgstr ""
-
-msgid "Join the Translation Project on POEditor"
 msgstr ""
 
 #. Context: countries
