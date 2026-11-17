@@ -113,7 +113,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     ),
      *     @OA\Response(response=400, description="Note text is required"),
      *     @OA\Response(response=401, description="Unauthorized"),
-     *     @OA\Response(response=403, description="Notes permission required"),
+     *     @OA\Response(response=403, description="Notes and Edit Records permissions required"),
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
@@ -123,8 +123,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $currentUser = AuthenticationManager::getCurrentUser();
         $input = (array) $request->getParsedBody();
 
-        // Same gate as the deleted NoteEditor page: Notes, not EditRecords.
-        if (!$currentUser->isNotesEnabled()) {
+        if (!$currentUser->isEditRecordsEnabled()) {
             return SlimUtils::renderErrorJSON($response, gettext('Access denied'), [], 403);
         }
 

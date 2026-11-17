@@ -38,6 +38,7 @@ export const COVERAGE = {
         spec: "cypress/e2e/api/private/standard/private.notes.visibility.spec.js",
         note: "the single-note group needs a note id",
     },
+    "src/api/routes/people/why-came.php": { rows: ["why-came-api"] },
     "src/api/routes/people/people-properties.php": {
         rows: [
             "people-properties-person-definitions-api",
