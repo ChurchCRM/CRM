@@ -5,7 +5,7 @@
 
 export const MVC_PAGES = {
     v2: ["/v2/dashboard", "/v2/search"],
-    account: ["/account", "/account/password", "/account/2fa"],
+    account: ["/account", "/account/password", "/account/2fa", "/account/settings"],
     people: [
         "/people/",
         "/people/dashboard",
