@@ -319,6 +319,8 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
             <?php include __DIR__ . '/partials/portal-signin-card.php'; ?>
         <?php endif; ?>
 
+        <?php $importantDatesOwner = 'person'; $importantDatesOwnerId = (int) $iPersonID; include __DIR__ . '/partials/important-dates-card.php'; ?>
+
         <!-- Properties Card (sidebar) -->
         <div class="card">
             <div class="card-header d-flex align-items-center">

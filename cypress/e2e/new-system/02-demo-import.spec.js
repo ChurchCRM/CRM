@@ -108,6 +108,16 @@ describe('02 - Demo Data Import', () => {
             });
         });
 
+        it("records important dates under the installed common types", () => {
+            cy.request("/admin/api/important-date-types").its("body.types").then((types) => {
+                const byKey = Object.fromEntries(types.map((t) => [t.key, t]));
+                expect(Object.keys(byKey)).to.include.members(["baptism", "dedication", "confirmation", "first-communion", "spiritual-birthday", "ordination", "house-blessing"]);
+                expect(byKey.baptism.usage).to.be.greaterThan(0);
+                expect(byKey.dedication.usage).to.be.greaterThan(0);
+                expect(byKey["house-blessing"].usage).to.be.greaterThan(0);
+            });
+        });
+
         it('should have families in the system after demo import', () => {
             // Check families API - use /latest endpoint which returns recent families
             cy.request({

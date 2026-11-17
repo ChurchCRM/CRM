@@ -20,6 +20,9 @@ DELETE FROM `config_cfg`;
 DELETE FROM `donationfund_fun`;
 DELETE FROM `eventcountnames_evctnm`;
 DELETE FROM `event_types`;
+DELETE FROM `family_important_date_fid`;
+DELETE FROM `person_important_date_pid`;
+DELETE FROM `important_date_type_idt`;
 DELETE FROM `list_lst`;
 DELETE FROM `person_per`;
 DELETE FROM `propertytype_prt`;
@@ -1989,6 +1992,24 @@ ON DUPLICATE KEY UPDATE
     `per_fam_ID` = VALUES(`per_fam_ID`),
     `per_DateDeactivated` = NULL;
 
+INSERT INTO `important_date_type_idt` (`idt_ID`, `idt_Key`, `idt_Name`, `idt_AppliesTo`, `idt_AllowMultiple`, `idt_ShowOnCalendar`, `idt_Active`, `idt_Order`) VALUES
+(1,'baptism','Baptism','person',0,1,1,0),
+(2,'dedication','Dedication','person',0,1,1,1),
+(3,'confirmation','Confirmation','person',0,1,1,2),
+(4,'first-communion','First Communion','person',0,1,1,3),
+(5,'spiritual-birthday','Spiritual Birthday','person',0,1,1,4),
+(6,'ordination','Ordination','person',0,1,1,5),
+(7,'house-blessing','House Blessing','family',0,1,1,6);
+INSERT INTO `person_important_date_pid` (`pid_ID`, `pid_per_ID`, `pid_idt_ID`, `pid_Month`, `pid_Day`, `pid_Year`, `pid_Note`, `pid_DateEntered`, `pid_EnteredBy`, `pid_DateLastEdited`, `pid_EditedBy`) VALUES
+(1,6,1,4,6,1980,'Easter service','2026-11-01 10:00:00',1,NULL,NULL),
+(2,7,1,6,15,1975,NULL,'2026-11-01 10:00:00',1,NULL,NULL),
+(3,8,2,9,18,2016,NULL,'2026-11-01 10:00:00',1,NULL,NULL),
+(4,14,1,5,21,NULL,'Year not recorded','2026-11-01 10:00:00',1,NULL,NULL),
+(5,16,3,5,15,2016,NULL,'2026-11-01 10:00:00',1,NULL,NULL),
+(6,28,5,2,29,2024,NULL,'2026-11-01 10:00:00',1,NULL,NULL);
+INSERT INTO `family_important_date_fid` (`fid_ID`, `fid_fam_ID`, `fid_idt_ID`, `fid_Month`, `fid_Day`, `fid_Year`, `fid_Note`, `fid_DateEntered`, `fid_EnteredBy`, `fid_DateLastEdited`, `fid_EditedBy`) VALUES
+(1,3,7,10,7,2012,NULL,'2026-11-01 10:00:00',1,NULL,NULL);
+
 -- Next ids. family_custom and person_custom keep rows past the last family and person, so a
 -- counter left at max+1 hands a new family an id that table already holds.
 ALTER TABLE `calendars` AUTO_INCREMENT = 95;
@@ -2002,6 +2023,9 @@ ALTER TABLE `events_event` AUTO_INCREMENT = 5;
 ALTER TABLE `event_attend` AUTO_INCREMENT = 3;
 ALTER TABLE `family_fam` AUTO_INCREMENT = 46;
 ALTER TABLE `group_grp` AUTO_INCREMENT = 25;
+ALTER TABLE `important_date_type_idt` AUTO_INCREMENT = 8;
+ALTER TABLE `person_important_date_pid` AUTO_INCREMENT = 7;
+ALTER TABLE `family_important_date_fid` AUTO_INCREMENT = 2;
 ALTER TABLE `menu_links` AUTO_INCREMENT = 4;
 ALTER TABLE `pledge_plg` AUTO_INCREMENT = 36;
 ALTER TABLE `propertytype_prt` AUTO_INCREMENT = 5;
