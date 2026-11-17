@@ -59,9 +59,7 @@ window.CRM.onLocalesReady(() => {
               opt.value = id;
               const member = memberMap[id];
               opt.textContent =
-                typeof member === "object" && member !== null
-                  ? member.name || member.text || ""
-                  : String(member);
+                typeof member === "object" && member !== null ? member.name || member.text || "" : String(member);
               personSelect.appendChild(opt);
             });
           })
