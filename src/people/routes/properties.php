@@ -105,11 +105,19 @@ function listPropertyTypes(Request $request, Response $response, array $args): R
     $types = [];
     foreach ($query->find() as $pt) {
         $propCount = PropertyQuery::create()->filterByProPrtId($pt->getPrtId())->count();
+        $assignmentCount = 0;
+        if ($propCount > 0) {
+            $propertyIds = PropertyQuery::create()->filterByProPrtId($pt->getPrtId())->select(['ProId'])->find()->toArray();
+            if (!empty($propertyIds)) {
+                $assignmentCount = RecordPropertyQuery::create()->filterByPropertyId($propertyIds)->count();
+            }
+        }
         $types[] = [
             'id' => $pt->getPrtId(),
             'class' => $pt->getPrtClass(),
             'name' => $pt->getPrtName(),
             'properties' => $propCount,
+            'assignments' => $assignmentCount,
         ];
     }
 

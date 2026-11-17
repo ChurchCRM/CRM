@@ -97,7 +97,9 @@ require_once __DIR__ . '/../../Include/Header.php';
                                 <button class="dropdown-item text-danger delete-type-btn"
                                         data-id="<?= (int) $type['id'] ?>"
                                         data-name="<?= InputUtils::escapeAttribute($type['name']) ?>"
-                                        data-in-use="<?= $type['properties'] > 0 ? '1' : '0' ?>">
+                                        data-class="<?= $type['class'] ?>"
+                                        data-properties="<?= (int) $type['properties'] ?>"
+                                        data-assignments="<?= (int) ($type['assignments'] ?? 0) ?>">
                                     <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                 </button>
                             </div>
@@ -117,10 +119,21 @@ document.addEventListener('DOMContentLoaded', function () {
         btn.addEventListener('click', function () {
             const id = this.dataset.id;
             const name = this.dataset.name;
-            const inUse = this.dataset.inUse === '1';
+            const cls = this.dataset.class;
+            const props = parseInt(this.dataset.properties || '0', 10);
+            const assigns = parseInt(this.dataset.assignments || '0', 10);
+            const recordLabel = cls === 'p' ? '<?= gettext("people") ?>' : (cls === 'f' ? '<?= gettext("families") ?>' : '<?= gettext("groups") ?>');
             let message = '<p><?= gettext("Please confirm deletion of this Property Type") ?>: <strong>' + name + '</strong></p>';
-            if (inUse) {
-                message = '<div class="alert alert-warning"><strong><?= gettext("Warning") ?>:</strong> <?= gettext("This property type is still being used by at least one property.") ?> <?= gettext("If you delete this type, you will also remove all properties using it and lose any corresponding property assignments.") ?></div>' + message;
+            if (props > 0 || assigns > 0) {
+                let warn = '<div class="alert alert-warning"><strong><?= gettext("Warning") ?>:</strong> ';
+                if (assigns > 0) {
+                    warn += assigns + ' ' + recordLabel + ' <?= gettext("currently have properties of this type.") ?> ';
+                }
+                if (props > 0) {
+                    warn += '<?= gettext("Deleting it will also remove") ?> ' + props + ' <?= gettext("properties and all their assignments so nothing is left hanging.") ?>';
+                }
+                warn += '</div>';
+                message = warn + message;
             }
             window.CRM.confirmAction(
                 '<?= gettext("Delete Confirmation") ?>',
