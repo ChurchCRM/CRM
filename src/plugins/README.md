@@ -176,9 +176,9 @@ if ($portalArea === 'pages') {
 
 ---
 
-## Plugin Localization (no POeditor)
+## Plugin Localization
 
-Community plugins are **not** added to the ChurchCRM POeditor project.
+Community plugins ship their own translation catalogs.
 Ship translations inside the plugin directory:
 
 ```
@@ -199,7 +199,7 @@ locale/
 - Missing locales fall back to `en_US.json`.
 
 Full guide:
-[`plugin-development.md → Plugin Localization`](../../.agents/skills/churchcrm/plugin-development.md#plugin-localization-independent-of-poeditor).
+[`plugin-development.md → Plugin Localization`](../../.agents/skills/churchcrm/plugin-development.md#plugin-localization).
 
 ---
 

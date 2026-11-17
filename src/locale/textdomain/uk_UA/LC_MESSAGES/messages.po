@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Призначте нову можливість для волонтерів"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Інформація про електронні транзакції"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Сума, що не підлягає відшкодуванню, не може бути більшою за загальну суму."
 
@@ -9440,10 +9436,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Слідкуйте за сімейними обіцянками та внесками фондів за фінансовим роком"
 
 #: 
-msgid "Transaction Details"
-msgstr "Деталі операції"
-
-#: 
 msgid "Unmapped"
 msgstr "Не картирований"
 
@@ -9526,10 +9518,6 @@ msgstr "Переглядайте зведення сімейних обіцян�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Переглядайте членів групи, ролі та властивості"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Переглядайте деталі операції для платежу обіцянки"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11088,10 +11076,6 @@ msgstr "Індиго"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Недійсне значення JSON — налаштування не збережено. Будь ласка, виправте та спробуйте ще раз."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Приєднайтеся до проекту перекладу на POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15360,10 +15344,6 @@ msgstr "Покупці цього збору коштів"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Джерела вбудовування календаря"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Переклади ChurchCRM керуються спільнотою на POEditor. Ви можете допомогти,"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20398,10 +20378,6 @@ msgstr "Активувати знову"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Прочитати посібник зі створення тем"
-
-#: 
-msgid "Recent Emails"
-msgstr "Нещодавні листи"
 
 #: 
 msgid "Recipient"
@@ -27990,4 +27966,32 @@ msgstr "адміністратор вимкнув двофакторну авт�
 #: 
 msgid "volunteer service history"
 msgstr "історія волонтерського служіння"
+
+#: 
+msgid "%s by %s"
+msgstr "%s від %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Введіть пароль або код із програми автентифікації, щоб змінити двофакторну автентифікацію."
+
+#: 
+msgid "Latest Notes"
+msgstr "Останні нотатки"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Нотаток ще не додано."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Почніть реєстрацію, щоб отримати QR-код."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Цей пароль або код неправильний. Двофакторна автентифікація все ще ввімкнена."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Двофакторну автентифікацію вже налаштовано. Її секрет показується лише під час реєстрації."
 

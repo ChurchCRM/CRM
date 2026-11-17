@@ -1512,10 +1512,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Rendelni egy új Önkéntes lehetőség"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Electronic Transaction Details"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "NonDeductible összeg nem lehet nagyobb, mint a teljes összeg."
 
@@ -9447,10 +9443,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Családi felajánlások és alap-hozzájárulások követése pénzügyi évenként"
 
 #: 
-msgid "Transaction Details"
-msgstr "Tranzakció részletei"
-
-#: 
 msgid "Unmapped"
 msgstr "Nincs hozzárendelve"
 
@@ -9533,10 +9525,6 @@ msgstr "Családi felajánlás-összefoglalók és alap-felosztások megtekintés
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Csoporttagok, szerepek és tulajdonságok megtekintése"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Felajánlási befizetés tranzakciós részleteinek megtekintése"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11095,10 +11083,6 @@ msgstr "Indigókék"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Érvénytelen JSON-érték – a beállítás nem lett mentve. Kérjük, javítsa ki, és próbálja újra."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Csatlakozzon a fordítási projekthez a POEditor-on"
 
 #: 
 msgid "Language and regional settings"
@@ -15359,10 +15343,6 @@ msgstr "Vevők ehhez az adománygyűjtőhöz"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Naptár beágyazási források"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "A ChurchCRM fordításait a közösség kezeli a POEditor oldalon. Segíthet azzal, hogy"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20375,10 +20355,6 @@ msgstr "Újraaktiválás"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Olvasd el a témakészítési útmutatót"
-
-#: 
-msgid "Recent Emails"
-msgstr "Legutóbbi e-mailek"
 
 #: 
 msgid "Recipient"
@@ -27949,4 +27925,32 @@ msgstr "a rendszerfelhasználó kétlépcsős hitelesítését a rendszergazda l
 #: 
 msgid "volunteer service history"
 msgstr "önkéntes szolgálati előzmények"
+
+#: 
+msgid "%s by %s"
+msgstr "%s, írta %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Adja meg jelszavát vagy a hitelesítő alkalmazásból származó kódot a kétlépcsős azonosítás módosításához."
+
+#: 
+msgid "Latest Notes"
+msgstr "Legújabb jegyzetek"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Még nincsenek hozzáadott jegyzetek."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Kezdje el a regisztrációt a QR-kód megszerzéséhez."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Ez a jelszó vagy kód nem helyes. A kétlépcsős azonosítás továbbra is be van kapcsolva."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "A kétlépcsős azonosítás már be van állítva. A titka csak a regisztráció során jelenik meg."
 

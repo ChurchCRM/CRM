@@ -1504,10 +1504,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Assegna una nuova opportunità di volontariato"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Dettagli sulla transazione elettronica"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Importo detraibile non può essere superiore totale."
 
@@ -9441,10 +9437,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Monitora gli impegni finanziari della famiglia e i contributi ai fondi per anno fiscale"
 
 #: 
-msgid "Transaction Details"
-msgstr "Dettagli transazione"
-
-#: 
 msgid "Unmapped"
 msgstr "Non mappato"
 
@@ -9527,10 +9519,6 @@ msgstr "Visualizza i riepiloghi degli impegni finanziari della famiglia e le all
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Visualizza i fedeli del gruppo, i ruoli e le proprietà"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Visualizza i dettagli della transazione per un pagamento di impegno finanziario"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11089,10 +11077,6 @@ msgstr "Indaco"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Valore JSON non valido — l'impostazione non è stata salvata. Correggerlo e riprovare."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Partecipa al progetto di traduzione su POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15353,10 +15337,6 @@ msgstr "Acquirenti per questa raccolta fondi"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Origini incorporamento calendario"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Le traduzioni di ChurchCRM sono gestite dalla comunità su POEditor. Puoi contribuire"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20370,10 +20350,6 @@ msgstr "Riattiva"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Leggi la guida alla creazione dei temi"
-
-#: 
-msgid "Recent Emails"
-msgstr "Email recenti"
 
 #: 
 msgid "Recipient"
@@ -27944,4 +27920,32 @@ msgstr "attività registrate"
 #: 
 msgid "volunteer service history"
 msgstr "storico del servizio di volontariato"
+
+#: 
+msgid "%s by %s"
+msgstr "%s di %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Inserisci la tua password o un codice dalla tua app di autenticazione per modificare l'autenticazione a due fattori."
+
+#: 
+msgid "Latest Notes"
+msgstr "Note più recenti"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Non sono ancora state aggiunte note."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Avvia la registrazione per ottenere un codice QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "La password o il codice non sono corretti. L'autenticazione a due fattori è ancora attiva."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "L'autenticazione a due fattori è già configurata. Il suo segreto viene mostrato solo durante la registrazione."
 

@@ -1535,10 +1535,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Назначьте Возможность Нью-добровольцев"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Электронные детали сделки"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "NonDeductible сумма не может быть больше общей суммы."
 
@@ -9493,10 +9489,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Отслеживать обязательства по пожертвованиям семьи и взносы в фонды по финансовому году"
 
 #: 
-msgid "Transaction Details"
-msgstr "Детали транзакции"
-
-#: 
 msgid "Unmapped"
 msgstr "Несопоставлено"
 
@@ -9579,10 +9571,6 @@ msgstr "Просмотреть сводки обязательств по пож
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Просмотреть участников группы, роли и свойства"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Просмотреть детали транзакции для платежа по обязательству"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11141,10 +11129,6 @@ msgstr "Индиго"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Недопустимое значение JSON — настройка не была сохранена. Пожалуйста, исправьте и попробуйте снова."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Присоединитесь к проекту перевода на POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15413,10 +15397,6 @@ msgstr "Покупатели для этого сбора средств"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Источники для встраивания календаря"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Переводы ChurchCRM управляются сообществом на POEditor. Вы можете помочь, если"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20451,10 +20431,6 @@ msgstr "Активировать снова"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Прочитать руководство по созданию тем"
-
-#: 
-msgid "Recent Emails"
-msgstr "Недавние письма"
 
 #: 
 msgid "Recipient"
@@ -28043,4 +28019,32 @@ msgstr "двухфакторная аутентификация системно
 #: 
 msgid "volunteer service history"
 msgstr "история волонтёрского служения"
+
+#: 
+msgid "%s by %s"
+msgstr "%s от %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Введите пароль или код из приложения аутентификации, чтобы изменить двухфакторную аутентификацию."
+
+#: 
+msgid "Latest Notes"
+msgstr "Последние заметки"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Заметки ещё не добавлены."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Начните регистрацию, чтобы получить QR-код."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Этот пароль или код неверен. Двухфакторная аутентификация по-прежнему включена."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Двухфакторная аутентификация уже настроена. Её секрет показывается только во время регистрации."
 

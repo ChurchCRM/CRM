@@ -1497,10 +1497,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "አዲስ የበጎ ፈቃደኞች እድል መድብ"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "የኤሌክትሮኒክስ ግብይት ዝርዝሮች"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "ተቀናሽ ያልሆነ መጠን ከጠቅላላ መጠን መብለጥ አይችልም."
 
@@ -9427,10 +9423,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "ቤተሰብ ተቀባይነት እና ገንዘብ ደሚያ በገንዘብ ዓመት ሙሙ"
 
 #: 
-msgid "Transaction Details"
-msgstr "ሰበአት ዝርዝር"
-
-#: 
 msgid "Unmapped"
 msgstr "ካርታ አለ"
 
@@ -9513,10 +9505,6 @@ msgstr "ቤተሰብ ተቀባይነት ማጠቃለያ እና ገንዘብ ተ�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "ቡድን አባላት ሚና እና ምንጭ ይተንትን"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "ተቀባይነት ገንዘብ ለ ሰበአት ዝርዝር ይተንትን"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11075,10 +11063,6 @@ msgstr "ኢንዲጎ"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "ልክ ያልሆነ JSON ዋጋ — ቅንብሩ አልተቀመጠም። እባክዎ ያስተካክሉ እና እንደገና ይሞክሩ።"
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "በ POEditor ላይ የትርጉም ፕሮጀክቱን ይቀላቀሉ"
 
 #: 
 msgid "Language and regional settings"
@@ -15340,10 +15324,6 @@ msgstr "ለዚህ ፈንድ ሰብሳቢ ፕሮግራም ገዢዎች"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "የቀን መቁጠሪያ ማካተቻ ምንጮች"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM ትርጉሞች በማህበረሰቡ በ POEditor ላይ ይተዳደራሉ። እርስዎ ሊረዱ ይችላሉ"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20356,10 +20336,6 @@ msgstr "እንደገና አግብር"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "የገጽታ ማዘጋጃ መመሪያውን አንብብ"
-
-#: 
-msgid "Recent Emails"
-msgstr "የቅርብ ጊዜ ኢሜይሎች"
 
 #: 
 msgid "Recipient"
@@ -27930,4 +27906,32 @@ msgstr "የሥርዓት ተጠቃሚ ባለሁለት ደረጃ ማረጋገጫ �
 #: 
 msgid "volunteer service history"
 msgstr "የበጎ ፈቃድ አገልግሎት ታሪክ"
+
+#: 
+msgid "%s by %s"
+msgstr "%s በ %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "ባለሁለት-ደረጃ ማረጋገጫን ለመቀየር የይለፍ ቃልዎን ወይም ከማረጋገጫ መተግበሪያዎ ኮድ ያስገቡ።"
+
+#: 
+msgid "Latest Notes"
+msgstr "የቅርብ ጊዜ ማስታወሻዎች"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "እስካሁን ምንም ማስታወሻዎች አልተጨመሩም።"
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "የQR ኮድ ለማግኘት ምዝገባን ይጀምሩ።"
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "ያ የይለፍ ቃል ወይም ኮድ ትክክል አይደለም። ባለሁለት-ደረጃ ማረጋገጫ አሁንም በርቷል።"
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "ባለሁለት-ደረጃ ማረጋገጫ አስቀድሞ ተዘጋጅቷል። ሚስጥሩ የሚታየው በምዝገባ ጊዜ ብቻ ነው።"
 

@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "새 사역 배정"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "전자 거래 상세"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "공제 불가 금액은 총액보다 클 수 없습니다."
 
@@ -9408,10 +9404,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "회계연도별 가족 서약 및 기금 기부 추적"
 
 #: 
-msgid "Transaction Details"
-msgstr "거래 세부 정보"
-
-#: 
 msgid "Unmapped"
 msgstr "매핑 안 됨"
 
@@ -9494,10 +9486,6 @@ msgstr "가족 서약 요약 및 기금 배분 보기"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "그룹 교인, 역할 및 속성 보기"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "서약 납부의 거래 세부 정보 보기"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11056,10 +11044,6 @@ msgstr "남색"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "유효하지 않은 JSON 값입니다 — 설정이 저장되지 않았습니다. 수정 후 다시 시도해 주세요."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "POEditor에서 번역 프로젝트에 참여하세요"
 
 #: 
 msgid "Language and regional settings"
@@ -15316,10 +15300,6 @@ msgstr "이 모금 행사의 구매자"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "캘린더 임베드 출처"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM 번역은 POEditor의 커뮤니티에서 관리됩니다."
 
 #: 
 msgid "Current $URL[0] value"
@@ -20321,10 +20301,6 @@ msgstr "다시 활성화"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "테마 제작 안내서 읽기"
-
-#: 
-msgid "Recent Emails"
-msgstr "최근 이메일"
 
 #: 
 msgid "Recipient"
@@ -27886,4 +27862,32 @@ msgstr "관리자가 시스템 사용자의 2단계 인증을 비활성화했습
 #: 
 msgid "volunteer service history"
 msgstr "봉사 활동 이력"
+
+#: 
+msgid "%s by %s"
+msgstr "%s, %s 작성"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "이중 인증을 변경하려면 비밀번호 또는 인증 앱의 코드를 입력하세요."
+
+#: 
+msgid "Latest Notes"
+msgstr "최신 메모"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "아직 추가된 메모가 없습니다."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "QR 코드를 받으려면 등록을 시작하세요."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "해당 비밀번호나 코드가 올바르지 않습니다. 이중 인증이 계속 켜져 있습니다."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "이중 인증이 이미 설정되어 있습니다. 비밀 키는 등록 중에만 표시됩니다."
 

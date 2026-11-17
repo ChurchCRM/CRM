@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Tetapkan Peluang Relawan Baru"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Rincian Transaksi Elektronik"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Jumlah yang tidak dapat dikurangi tidak boleh lebih besar dari jumlah total."
 
@@ -9411,10 +9407,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Lacak janji persembahan keluarga dan kontribusi dana berdasarkan tahun fiskal"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detail Transaksi"
-
-#: 
 msgid "Unmapped"
 msgstr "Belum dipetakan"
 
@@ -9497,10 +9489,6 @@ msgstr "Lihat ringkasan janji persembahan keluarga dan alokasi dana"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Lihat anggota grup, peran, dan properti"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Lihat detail transaksi untuk pembayaran janji persembahan"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11059,10 +11047,6 @@ msgstr "Nila"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Nilai JSON tidak valid — pengaturan tidak disimpan. Silakan perbaiki dan coba lagi."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Bergabunglah dengan Proyek Terjemahan di POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15319,10 +15303,6 @@ msgstr "Pembeli untuk penggalangan dana ini"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Asal Sematkan Kalender"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Terjemahan ChurchCRM dikelola oleh komunitas di POEditor. Anda dapat membantu dengan"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20324,10 +20304,6 @@ msgstr "Aktifkan kembali"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Baca panduan pembuatan tema"
-
-#: 
-msgid "Recent Emails"
-msgstr "Email Terbaru"
 
 #: 
 msgid "Recipient"
@@ -27889,4 +27865,32 @@ msgstr "autentikasi dua faktor pengguna sistem dinonaktifkan oleh admin"
 #: 
 msgid "volunteer service history"
 msgstr "riwayat pelayanan relawan"
+
+#: 
+msgid "%s by %s"
+msgstr "%s oleh %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Masukkan kata sandi Anda atau kode dari aplikasi autentikator Anda untuk mengubah autentikasi dua faktor."
+
+#: 
+msgid "Latest Notes"
+msgstr "Catatan Terbaru"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Belum ada catatan yang ditambahkan."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Mulai pendaftaran untuk mendapatkan kode QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Kata sandi atau kode itu tidak benar. Autentikasi dua faktor masih aktif."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Autentikasi dua faktor sudah disiapkan. Rahasianya hanya ditampilkan selama pendaftaran."
 

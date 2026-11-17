@@ -1537,10 +1537,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Atribui o oportunitate Voluntar nou"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Electronice detaliile tranzactiei"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Suma nedeductibile nu poate fi mai mare decât suma totală."
 
@@ -9490,10 +9486,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Urmăriți angajamentele familiale și contribuțiile la fonduri pe an fiscal"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detalii tranzacție"
-
-#: 
 msgid "Unmapped"
 msgstr "Nemapat"
 
@@ -9576,10 +9568,6 @@ msgstr "Vizualizați sumarele angajamentelor familiale și alocările fondurilor
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Vizualizați membrii grupului, rolurile și proprietățile"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Vizualizează detaliile tranzacției pentru o plată de angajament"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11138,10 +11126,6 @@ msgstr "Indigo"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Valoare JSON invalidă — setarea nu a fost salvată. Vă rugăm să o corectați și să încercați din nou."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Alăturați-vă proiectului de traducere pe POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15406,10 +15390,6 @@ msgstr "Cumparatori pentru aceasta strangere de fonduri"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Origini de incorporare calendar"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Traducerile ChurchCRM sunt gestionate de comunitate pe POEditor. Puteti ajuta"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20433,10 +20413,6 @@ msgstr "Reactivează"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Citiți ghidul de creare a temelor"
-
-#: 
-msgid "Recent Emails"
-msgstr "E-mailuri recente"
 
 #: 
 msgid "Recipient"
@@ -28016,4 +27992,32 @@ msgstr "autentificarea în doi pași a utilizatorului de sistem a fost dezactiva
 #: 
 msgid "volunteer service history"
 msgstr "istoric de serviciu voluntar"
+
+#: 
+msgid "%s by %s"
+msgstr "%s de %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Introduceți parola sau un cod din aplicația de autentificare pentru a schimba autentificarea cu doi factori."
+
+#: 
+msgid "Latest Notes"
+msgstr "Cele mai recente note"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Nu au fost adăugate note încă."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Începeți înscrierea pentru a obține un cod QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Parola sau codul respectiv nu este corect. Autentificarea cu doi factori este încă activată."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Autentificarea cu doi factori este deja configurată. Secretul acesteia este afișat doar în timpul înscrierii."
 

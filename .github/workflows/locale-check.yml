@@ -1,0 +1,67 @@
+name: "Locale: check translations"
+
+# The merge gate for locale PRs, which the quick gate path-ignores today.
+# Every locale PR: the locale script tests pass and the checked-in queue
+# (locale/terms) is exactly what locale:missing generates from the PR's own
+# JSON + messages.po — a term left untranslated, or a queue edited by hand,
+# fails here. A PR that carries generated files (terms and rebuild PRs) is
+# also checked with locale:apply --check, so its .po/.mo must match its JSON;
+# translate PRs carry no generated files by design and skip that half.
+
+on:
+  pull_request:
+    paths:
+      - 'src/locale/i18n/**'
+      - 'src/locale/textdomain/**'
+      - 'locale/terms/**'
+      - 'locale/scripts/**'
+      - 'locale/messages.po'
+      - '.github/workflows/locale-check.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    timeout-minutes: 15
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout the PR
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js (from .nvmrc)
+        uses: ./.github/actions/setup-node
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run the locale script tests
+        run: npm run locale:test
+
+      - name: Check the queue is in sync (npm run locale:missing leaves no diff)
+        run: |
+          npm run locale:missing
+          if ! git diff --exit-code -- locale/terms; then
+            echo "::error::locale/terms is out of sync with the locale JSON and locale/messages.po. Run 'npm run locale:missing' and commit the result (a term may be left untranslated)."
+            exit 1
+          fi
+
+      - name: Detect generated files in this PR
+        id: generated
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if git diff --name-only "$BASE_SHA...HEAD" | grep -q '^src/locale/textdomain/'; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check generated files match the JSON (npm run locale:apply -- --check)
+        if: steps.generated.outputs.present == 'true'
+        run: npm run locale:apply -- --check

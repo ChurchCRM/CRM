@@ -1484,10 +1484,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "एक नया स्वयंसेवक अवसर सौंपें"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "इलेक्ट्रॉनिक लेनदेन विवरण"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "गैर-कटौती योग्य राशि कुल राशि से अधिक नहीं हो सकती।"
 
@@ -9391,10 +9387,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "वित्तीय वर्ष के अनुसार पारिवारिक प्रतिज्ञाओं और कोष योगदान को ट्रैक करें"
 
 #: 
-msgid "Transaction Details"
-msgstr "लेनदेन विवरण"
-
-#: 
 msgid "Unmapped"
 msgstr "मैप नहीं किया गया"
 
@@ -9477,10 +9469,6 @@ msgstr "पारिवारिक प्रतिज्ञा सारां�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "समूह सदस्य, भूमिकाएँ और विशेषताएँ देखें"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "प्रतिज्ञा भुगतान के लिए लेनदेन विवरण देखें"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11039,10 +11027,6 @@ msgstr "इंडिगो"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "अमान्य JSON मान — सेटिंग सहेजी नहीं गई। कृपया इसे सुधारें और पुनः प्रयास करें।"
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "POEditor पर अनुवाद परियोजना में शामिल हों"
 
 #: 
 msgid "Language and regional settings"
@@ -15303,10 +15287,6 @@ msgstr "इस धन-संग्रह के खरीदार"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "कैलेंडर एम्बेड उत्पत्ति"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM के अनुवाद POEditor पर समुदाय द्वारा प्रबंधित किए जाते हैं। आप इस प्रकार सहायता कर सकते हैं"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20319,10 +20299,6 @@ msgstr "फिर सक्रिय करें"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "थीम बनाने की मार्गदर्शिका पढ़ें"
-
-#: 
-msgid "Recent Emails"
-msgstr "हाल के ईमेल"
 
 #: 
 msgid "Recipient"
@@ -27893,4 +27869,32 @@ msgstr "सिस्टम उपयोगकर्ता का दो-चर�
 #: 
 msgid "volunteer service history"
 msgstr "स्वयंसेवक सेवा का इतिहास"
+
+#: 
+msgid "%s by %s"
+msgstr "%s द्वारा %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "टू-फैक्टर ऑथेंटिकेशन बदलने के लिए अपना पासवर्ड या अपने ऑथेंटिकेटर ऐप का कोड दर्ज करें।"
+
+#: 
+msgid "Latest Notes"
+msgstr "नवीनतम नोट्स"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "अभी तक कोई नोट नहीं जोड़ा गया है।"
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "QR कोड पाने के लिए नामांकन शुरू करें।"
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "वह पासवर्ड या कोड सही नहीं है। टू-फैक्टर ऑथेंटिकेशन अभी भी चालू है।"
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "टू-फैक्टर ऑथेंटिकेशन पहले से सेट है। इसका सीक्रेट केवल नामांकन के दौरान दिखाया जाता है।"
 

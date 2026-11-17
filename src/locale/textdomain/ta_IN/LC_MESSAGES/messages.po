@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "ஒரு புதிய தன்னார்வ வாய்ப்பை வழங்கவும்"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "மின்னணு பரிவர்த்தனை விவரங்கள்"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "கழிக்க முடியாத தொகை மொத்த தொகையை விட அதிகமாக இருக்கக்கூடாது."
 
@@ -9428,10 +9424,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "நிதி ஆண்டு வாரியாக குடும்ப நிதி உறுதிமொழிகள் மற்றும் நிதி பங்களிப்புகளை கண்காணிக்கவும்"
 
 #: 
-msgid "Transaction Details"
-msgstr "பரிவர்த்தனை விவரங்கள்"
-
-#: 
 msgid "Unmapped"
 msgstr "வரைபடமிடப்படாதது"
 
@@ -9514,10 +9506,6 @@ msgstr "குடும்ப நிதி உறுதிமொழி சுர
 #: 
 msgid "View group members, roles, and properties"
 msgstr "குழு உறுப்பினர்கள், பாத்திரங்கள் மற்றும் பண்புகளைக் காண்"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "நிதி உறுதிமொழி பணம் செலுத்தலின் பரிவர்த்தனை விவரங்களைக் காண்"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11080,10 +11068,6 @@ msgstr "இண்டிகோ"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "தவறான JSON மதிப்பு — அமைப்பு சேமிக்கப்படவில்லை. சரிசெய்து மீண்டும் முயற்சிக்கவும்."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "POEditor-இல் மொழிபெயர்ப்பு திட்டத்தில் சேரவும்"
 
 #: 
 msgid "Language and regional settings"
@@ -15346,10 +15330,6 @@ msgstr "இந்த நிதி திரட்டலுக்கான வா
 #: 
 msgid "Calendar Embed Origins"
 msgstr "நாட்காட்டி உட்பொதிப்பு மூலங்கள்"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM மொழிபெயர்ப்புகள் POEditor-இல் சமூகத்தால் நிர்வகிக்கப்படுகின்றன. நீங்கள் உதவலாம்"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20362,10 +20342,6 @@ msgstr "மீண்டும் செயல்படுத்து"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "தீம் உருவாக்க வழிகாட்டியைப் படிக்கவும்"
-
-#: 
-msgid "Recent Emails"
-msgstr "சமீபத்திய மின்னஞ்சல்கள்"
 
 #: 
 msgid "Recipient"
@@ -27936,4 +27912,32 @@ msgstr "அமைப்புப் பயனரின் இரு-காரண
 #: 
 msgid "volunteer service history"
 msgstr "தன்னார்வ சேவை வரலாறு"
+
+#: 
+msgid "%s by %s"
+msgstr "%s, எழுதியவர் %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "இரண்டு-காரணி அங்கீகாரத்தை மாற்ற உங்கள் கடவுச்சொல் அல்லது உங்கள் அங்கீகரிப்பு பயன்பாட்டிலிருந்து ஒரு குறியீட்டை உள்ளிடவும்."
+
+#: 
+msgid "Latest Notes"
+msgstr "சமீபத்திய குறிப்புகள்"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "இன்னும் குறிப்புகள் எதுவும் சேர்க்கப்படவில்லை."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "QR குறியீட்டைப் பெற பதிவைத் தொடங்கவும்."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "அந்தக் கடவுச்சொல் அல்லது குறியீடு சரியல்ல. இரண்டு-காரணி அங்கீகாரம் இன்னும் இயக்கத்தில் உள்ளது."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "இரண்டு-காரணி அங்கீகாரம் ஏற்கனவே அமைக்கப்பட்டுள்ளது. அதன் ரகசியம் பதிவின் போது மட்டுமே காட்டப்படும்."
 

@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "הקצה הזדמנות התנדבות חדשה"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "פרטי עסקה אלקטרונית"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "סכום שאינו ניתן לניכוי לא יכול להיות גדול מהסכום הכולל."
 
@@ -9420,10 +9416,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "מעקב אחר התחייבויות כספיות משפחתיות ותרומות לקרנות לפי שנת כספים"
 
 #: 
-msgid "Transaction Details"
-msgstr "פרטי עסקה"
-
-#: 
 msgid "Unmapped"
 msgstr "לא ממופה"
 
@@ -9506,10 +9498,6 @@ msgstr "צפייה בסיכומי התחייבויות כספיות משפחתי
 #: 
 msgid "View group members, roles, and properties"
 msgstr "צפייה בחברי קבוצה, תפקידים ומאפיינים"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "צפייה בפרטי עסקה עבור תשלום התחייבות כספית"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11068,10 +11056,6 @@ msgstr "אינדיגו"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "ערך JSON לא תקין — ההגדרה לא נשמרה. אנא תקן ונסה שוב."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "הצטרף לפרויקט התרגום ב-POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15332,10 +15316,6 @@ msgstr "קונים לגיוס כספים זה"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "מקורות הטמעת לוח שנה"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "תרגומי ChurchCRM מנוהלים על ידי הקהילה ב-POEditor. תוכל לעזור על ידי"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20348,10 +20328,6 @@ msgstr "הפעלה מחדש"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "קראו את מדריך כתיבת ערכות הנושא"
-
-#: 
-msgid "Recent Emails"
-msgstr "דוא\"ל אחרון"
 
 #: 
 msgid "Recipient"
@@ -27922,4 +27898,32 @@ msgstr "האימות הדו-שלבי של משתמש המערכת הושבת ע�
 #: 
 msgid "volunteer service history"
 msgstr "היסטוריית שירות התנדבותי"
+
+#: 
+msgid "%s by %s"
+msgstr "%s מאת %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "הזן את הסיסמה שלך או קוד מאפליקציית האימות כדי לשנות את האימות הדו-שלבי."
+
+#: 
+msgid "Latest Notes"
+msgstr "ההערות האחרונות"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "עדיין לא נוספו הערות."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "התחל את ההרשמה כדי לקבל קוד QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "הסיסמה או הקוד הזה אינם נכונים. האימות הדו-שלבי עדיין פעיל."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "האימות הדו-שלבי כבר מוגדר. הסוד שלו מוצג רק במהלך ההרשמה."
 

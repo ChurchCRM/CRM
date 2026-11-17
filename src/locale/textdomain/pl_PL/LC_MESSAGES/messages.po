@@ -1535,10 +1535,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Przypisz Nowe Zadanie dla Wolontariusza"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Szczegóły Płatności Elektronicznej"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Nie Odliczalna Wartość nie może przekraczać całości Kwoty"
 
@@ -9486,10 +9482,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Śledź zobowiązania rodzinne i wpłaty na fundusze według roku obrachunkowego"
 
 #: 
-msgid "Transaction Details"
-msgstr "Szczegóły transakcji"
-
-#: 
 msgid "Unmapped"
 msgstr "Nieprzypisane"
 
@@ -9572,10 +9564,6 @@ msgstr "Wyświetl podsumowania zobowiązań rodziny i alokacje funduszy"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Wyświetl członków grupy, role i właściwości"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Wyświetl szczegóły transakcji wpłaty zobowiązania"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11134,10 +11122,6 @@ msgstr "Indygo"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Nieprawidłowa wartość JSON — ustawienie nie zostało zapisane. Proszę poprawić i spróbować ponownie."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Dołącz do projektu tłumaczenia na POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15402,10 +15386,6 @@ msgstr "Nabywcy w tej zbiórce"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Źródła osadzania kalendarza"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Tłumaczenia ChurchCRM są zarządzane przez społeczność na platformie POEditor. Możesz pomóc, korzystając z"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20429,10 +20409,6 @@ msgstr "Aktywuj ponownie"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Przeczytaj poradnik tworzenia motywów"
-
-#: 
-msgid "Recent Emails"
-msgstr "Ostatnie e-maile"
 
 #: 
 msgid "Recipient"
@@ -28012,4 +27988,32 @@ msgstr "uwierzytelnianie dwuskładnikowe użytkownika systemowego wyłączone pr
 #: 
 msgid "volunteer service history"
 msgstr "historia służby wolontariackiej"
+
+#: 
+msgid "%s by %s"
+msgstr "%s autorstwa %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Wprowadź swoje hasło lub kod z aplikacji uwierzytelniającej, aby zmienić uwierzytelnianie dwuskładnikowe."
+
+#: 
+msgid "Latest Notes"
+msgstr "Najnowsze notatki"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Nie dodano jeszcze żadnych notatek."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Rozpocznij rejestrację, aby uzyskać kod QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "To hasło lub kod jest nieprawidłowe. Uwierzytelnianie dwuskładnikowe jest nadal włączone."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Uwierzytelnianie dwuskładnikowe jest już skonfigurowane. Jego sekret jest pokazywany tylko podczas rejestracji."
 

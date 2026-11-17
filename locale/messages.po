@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-16 02:41+0000\n"
+"POT-Creation-Date: 2026-11-17 16:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -300,6 +300,10 @@ msgstr ""
 
 #, php-format
 msgid "%s Giving Statement"
+msgstr ""
+
+#, php-format
+msgid "%s by %s"
 msgstr ""
 
 #, php-format
@@ -3628,7 +3632,7 @@ msgstr ""
 msgid "ChurchCRM supports a plugin architecture for extending functionality."
 msgstr ""
 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
+msgid "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by"
 msgstr ""
 
 msgid "ChurchCRM version"
@@ -5658,9 +5662,6 @@ msgstr ""
 msgid "El Salvador"
 msgstr ""
 
-msgid "Electronic Transaction Details"
-msgstr ""
-
 msgid "Email"
 msgstr ""
 
@@ -6168,6 +6169,9 @@ msgid "Enter your new password"
 msgstr ""
 
 msgid "Enter your password"
+msgstr ""
+
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
 msgstr ""
 
 msgid "Enter your username and password as usual"
@@ -8420,6 +8424,9 @@ msgstr ""
 msgid "Help Improve Translations"
 msgstr ""
 
+msgid "Help Translate on GitHub"
+msgstr ""
+
 msgid "Help Wanted"
 msgstr ""
 
@@ -9307,9 +9314,6 @@ msgstr ""
 msgid "Join the ChurchCRM community and help us improve by sharing your information. It takes less than a minute!"
 msgstr ""
 
-msgid "Join the Translation Project on POEditor"
-msgstr ""
-
 #. Context: countries
 msgid "Jordan (‫الأردن‬‎)"
 msgstr ""
@@ -9591,6 +9595,9 @@ msgid "Latest"
 msgstr ""
 
 msgid "Latest Families"
+msgstr ""
+
+msgid "Latest Notes"
 msgstr ""
 
 msgid "Latest People"
@@ -11456,6 +11463,9 @@ msgstr ""
 
 msgctxt "other"
 msgid "No new occurrences. All {{count}} events through {{through}} already have one."
+msgstr ""
+
+msgid "No notes have been added yet."
 msgstr ""
 
 msgid "No one checked in yet"
@@ -13910,9 +13920,6 @@ msgstr ""
 msgid "Recent Deposits"
 msgstr ""
 
-msgid "Recent Emails"
-msgstr ""
-
 msgid "Recent Friends"
 msgstr ""
 
@@ -16054,6 +16061,9 @@ msgstr ""
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr ""
 
+msgid "Start enrollment to get a QR code."
+msgstr ""
+
 msgid "Start typing a name"
 msgstr ""
 
@@ -16657,6 +16667,9 @@ msgid "That page had been open too long. Please try again."
 msgstr ""
 
 msgid "That passkey is removed. It can no longer sign you in."
+msgstr ""
+
+msgid "That password or code is not right. Two-factor authentication is still on."
 msgstr ""
 
 msgid "That person already holds this position on this occurrence"
@@ -18325,9 +18338,6 @@ msgstr ""
 msgid "Track family pledges and fund contributions by fiscal year"
 msgstr ""
 
-msgid "Transaction Details"
-msgstr ""
-
 msgid "Translating missing strings to improve coverage"
 msgstr ""
 
@@ -18455,6 +18465,9 @@ msgid "Two-factor authentication enrolled"
 msgstr ""
 
 msgid "Two-factor authentication has been disabled"
+msgstr ""
+
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
 msgstr ""
 
 msgid "Two-factor authentication is one of the best ways to protect your account. We strongly recommend keeping it enabled."
@@ -19286,6 +19299,9 @@ msgstr ""
 msgid "View active only"
 msgstr ""
 
+msgid "View all"
+msgstr ""
+
 msgid "View all (including inactive)"
 msgstr ""
 
@@ -19350,9 +19366,6 @@ msgid "View the event"
 msgstr ""
 
 msgid "View this email"
-msgstr ""
-
-msgid "View transaction details for a pledge payment"
 msgstr ""
 
 msgid "Visitors can sign up on your public registration form."

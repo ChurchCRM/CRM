@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Cakto një re Vullnetare Opportunity"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Details elektronike Transaksionit"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Shuma pazbritshme nuk mund të jetë më i madh se shuma e përgjithshme."
 
@@ -9413,10 +9409,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Ndiqni premtimet e familjeve dhe kontributet e fondeve sipas vitit fiskal"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detajet e Transaksionit"
-
-#: 
 msgid "Unmapped"
 msgstr "E pahartuar"
 
@@ -9499,10 +9491,6 @@ msgstr "Shiko përmbledhjet e premtimeve të familjeve dhe shpërndarjet e fonde
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Shiko anëtarët e grupit, rolet, dhe vetitë"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Shiko detajet e transaksionit për një pagesë premtimi"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11061,10 +11049,6 @@ msgstr "Indigo"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Vlerë JSON e pavlefshme — cilësimi nuk u ruajt. Ju lutemi korrigjoni dhe provoni përsëri."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Bashkohuni me Projektin e Përkthimit në POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15325,10 +15309,6 @@ msgstr "Blerësit për këtë mbledhje fondesh"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Origjina e integrimit të kalendarit"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Përkthimet e ChurchCRM menaxhohen nga komuniteti në POEditor. Mund të ndihmoni duke"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20341,10 +20321,6 @@ msgstr "Riaktivizo"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Lexoni udhëzuesin e krijimit të temave"
-
-#: 
-msgid "Recent Emails"
-msgstr "Email-et e fundit"
 
 #: 
 msgid "Recipient"
@@ -27915,4 +27891,32 @@ msgstr "aktivitete të regjistruara"
 #: 
 msgid "volunteer service history"
 msgstr "historiku i shërbimit vullnetar"
+
+#: 
+msgid "%s by %s"
+msgstr "%s nga %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Vendosni fjalëkalimin tuaj ose një kod nga aplikacioni juaj i vërtetimit për të ndryshuar vërtetimin dyfaktorësh."
+
+#: 
+msgid "Latest Notes"
+msgstr "Shënimet më të fundit"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Ende nuk janë shtuar shënime."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Filloni regjistrimin për të marrë një kod QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Ai fjalëkalim ose kod nuk është i saktë. Vërtetimi dyfaktorësh është ende aktiv."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Vërtetimi dyfaktorësh është konfiguruar tashmë. Sekreti i tij shfaqet vetëm gjatë regjistrimit."
 

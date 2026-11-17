@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Määrake uus vabatahtliku võimalus"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Elektroonilise tehingu üksikasjad"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Mahaarvatud summa ei saa olla suurem kui kogusumma."
 
@@ -9421,10 +9417,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Jälgige perekonna lubadusi ja fondi panuseid majandusaasta kaupa"
 
 #: 
-msgid "Transaction Details"
-msgstr "Tehingu üksikasjad"
-
-#: 
 msgid "Unmapped"
 msgstr "Seostamata"
 
@@ -9507,10 +9499,6 @@ msgstr "Vaadake perekonna lubaduste kokkuvõtteid ja fondide jaotusi"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Vaadake grupi liikmeid, rolle ja omadusi"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Vaadake lubaduse makse tehingu üksikasju"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11069,10 +11057,6 @@ msgstr "Indigosinine"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Vigane JSON-väärtus — seadet ei salvestatud. Palun parandage see ja proovige uuesti."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Liituge tõlkeprojektiga POEditoris"
 
 #: 
 msgid "Language and regional settings"
@@ -15333,10 +15317,6 @@ msgstr "Selle korjandusaktsiooni ostjad"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Kalendri manustamise päritolud"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM tõlkeid haldab kogukond POEditoris. Saad aidata"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20349,10 +20329,6 @@ msgstr "Aktiveeri uuesti"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Loe teemade koostamise juhendit"
-
-#: 
-msgid "Recent Emails"
-msgstr "Hiljutised e-kirjad"
 
 #: 
 msgid "Recipient"
@@ -27923,4 +27899,32 @@ msgstr "administraator keelas süsteemikasutaja kaheastmelise autentimise"
 #: 
 msgid "volunteer service history"
 msgstr "vabatahtliku teenistuse ajalugu"
+
+#: 
+msgid "%s by %s"
+msgstr "%s %s poolt"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Kahefaktorilise autentimise muutmiseks sisestage oma parool või autentimisrakenduse kood."
+
+#: 
+msgid "Latest Notes"
+msgstr "Uusimad märkmed"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Märkmeid pole veel lisatud."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "QR-koodi saamiseks alustage registreerimist."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "See parool või kood ei ole õige. Kahefaktoriline autentimine on endiselt sisse lülitatud."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Kahefaktoriline autentimine on juba seadistatud. Selle saladus kuvatakse ainult registreerimise ajal."
 

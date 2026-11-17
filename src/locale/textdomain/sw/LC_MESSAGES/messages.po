@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Weka Fursa Mpya ya Kujitolea"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Maelezo ya Muamala wa Kielektroniki"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Kiasi kisichoweza kukatwa hakiwezi kuwa kikubwa kuliko jumla ya kiasi."
 
@@ -9418,10 +9414,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Fuatilia ahadi za sadaka za familia na michango ya mifuko kwa mwaka wa fedha"
 
 #: 
-msgid "Transaction Details"
-msgstr "Maelezo ya Muamala"
-
-#: 
 msgid "Unmapped"
 msgstr "Haijaunganishwa"
 
@@ -9504,10 +9496,6 @@ msgstr "Tazama muhtasari wa ahadi za sadaka za familia na mgawanyo wa mifuko"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Tazama washiriki wa kikundi, majukumu, na sifa"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Tazama maelezo ya muamala kwa malipo ya ahadi ya sadaka"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11066,10 +11054,6 @@ msgstr "Indigo"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Thamani batili ya JSON — mipangilio haikuhifadhiwa. Tafadhali irekebisha na ujaribu tena."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Jiunge na Mradi wa Tafsiri kwenye POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15330,10 +15314,6 @@ msgstr "Wanunuzi wa ukusanyaji fedha huu"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Asili za Kuingiza Kalenda"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Tafsiri za ChurchCRM zinasimamiwa na jamii kwenye POEditor. Unaweza kusaidia kwa"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20346,10 +20326,6 @@ msgstr "Washa tena"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Soma mwongozo wa kuandika mandhari"
-
-#: 
-msgid "Recent Emails"
-msgstr "Barua pepe za Hivi Karibuni"
 
 #: 
 msgid "Recipient"
@@ -27920,4 +27896,32 @@ msgstr "uthibitishaji wa hatua mbili wa mtumiaji wa mfumo umezimwa na msimamizi"
 #: 
 msgid "volunteer service history"
 msgstr "historia ya huduma ya kujitolea"
+
+#: 
+msgid "%s by %s"
+msgstr "%s na %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Ingiza nenosiri lako au nambari kutoka kwa programu yako ya uthibitishaji ili kubadilisha uthibitishaji wa hatua mbili."
+
+#: 
+msgid "Latest Notes"
+msgstr "Vidokezo vya Hivi Karibuni"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Hakuna vidokezo vilivyoongezwa bado."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Anza kujiandikisha ili kupata nambari ya QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Nenosiri au nambari hiyo si sahihi. Uthibitishaji wa hatua mbili bado umewashwa."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Uthibitishaji wa hatua mbili tayari umewekwa. Siri yake huonyeshwa tu wakati wa kujiandikisha."
 
