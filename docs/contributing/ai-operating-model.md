@@ -44,6 +44,10 @@ publication need the maintainer's specific authorization or existing
 explicitly granted scope.
 A role assignment is not permission to merge, close issues or send a message.
 
+## Worker run protocol
+
+Standing rules for any agent implementing an assigned issue — assign-on-start, draft PR on the first push, never wait mid-task, flip to Ready when finished and green, PR-body contents — live in the skill agents load for this work: `.agents/skills/churchcrm/git-workflow.md` → Worker run protocol. They are not duplicated here.
+
 ## Token economics
 
 Tokens are a shared, finite budget across every agent lane. Spend them where judgment is needed; scripts and CI spend none.
