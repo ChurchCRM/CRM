@@ -15,6 +15,8 @@ class Scope
     public const TEAM = 'team';
     public const MINISTRY = 'ministry';
     public const GROUP = 'group';
+    public const ALL = 'all';
+    public const MY_MINISTRIES = 'my-ministries';
 
     public const CORE_TYPES = [self::NONE, self::FAMILY, self::TEAM, self::MINISTRY, self::GROUP];
 
