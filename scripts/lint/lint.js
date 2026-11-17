@@ -34,6 +34,7 @@ const checks = {
     typecheck: npx('tsc', '--noEmit', '--pretty'),
     'tabler icons': script('lint/validate-no-tabler-icons.js'),
     'namespace case': script('lint/validate-namespace-case.js'),
+    'legacy permission reads': script('lint/validate-legacy-permission-reads.js'),
     'use-statement case': script('lint/validate-use-statement-case.js'),
     'orm base classes': script('lint/validate-orm-base-classes.js'),
     'font awesome icons': script('lint/validate-fa-icons-exist.js'),
