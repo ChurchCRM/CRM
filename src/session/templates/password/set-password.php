@@ -26,6 +26,28 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
         <input id="password" name="password" type="password" class="form-control" autocomplete="new-password" required minlength="<?= (int) $minPasswordLength ?>" aria-describedby="password-help">
         <div id="password-help" class="form-text"><?= InputUtils::escapeHTML(gettext('Your new password must be at least') . ' ' . $minPasswordLength . ' ' . gettext('characters')) ?></div>
       </div>
+
+    <div class="mb-3" id="PasswordStrengthContainer" hidden>
+        <span>
+            <?= InputUtils::escapeHTML(gettext('Password strength')) ?>:
+            <span id="PasswordStrengthLabel" aria-live="polite"></span>
+        </span>
+
+        <div class="progress mt-1">
+            <div class="progress-bar"
+                id="PasswordStrengthBar"
+                role="progressbar"
+                aria-label="<?= InputUtils::escapeAttribute(gettext('Password strength')) ?>"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"></div>
+        </div>
+
+        <small id="PasswordStrengthHint"
+              class="text-body-secondary"
+              aria-live="polite"></small>
+    </div>
+
       <div class="mb-3">
         <label for="passwordConfirmation" class="form-label"><?= gettext('Confirm Password') ?></label>
         <input id="passwordConfirmation" name="passwordConfirmation" type="password" class="form-control" autocomplete="new-password" required>
@@ -35,4 +57,5 @@ require SystemURLs::getDocumentRoot() . '/Include/HeaderNotLoggedIn.php';
     </form>
   </div>
 </main>
+<script src="<?= SystemURLs::assetVersioned('/skin/js/PasswordChange.js') ?>"></script>
 <?php require SystemURLs::getDocumentRoot() . '/Include/FooterNotLoggedIn.php';

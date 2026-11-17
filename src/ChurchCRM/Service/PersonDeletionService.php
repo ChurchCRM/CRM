@@ -143,9 +143,14 @@ final class PersonDeletionService
 
     private static function hasSubstantiveNotes(NoteQuery $query, ?ConnectionInterface $connection): bool
     {
-        $allNotes = clone $query;
+        // Every note type except the automatic 'create'/'edit' entries is
+        // recorded history; legacy rows with no type predate the taxonomy and
+        // count too.
+        $typedNotes = clone $query;
+        if ($typedNotes->filterByType(['create', 'edit'], Criteria::NOT_IN)->exists($connection)) {
+            return true;
+        }
 
-        return $query->filterByType(['create', 'edit'], Criteria::NOT_IN)->exists($connection)
-            || $allNotes->filterByType(null, Criteria::ISNULL)->exists($connection);
+        return $query->filterByType(null, Criteria::ISNULL)->exists($connection);
     }
 }

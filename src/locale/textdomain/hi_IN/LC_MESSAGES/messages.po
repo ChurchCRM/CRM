@@ -1484,10 +1484,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "एक नया स्वयंसेवक अवसर सौंपें"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "इलेक्ट्रॉनिक लेनदेन विवरण"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "गैर-कटौती योग्य राशि कुल राशि से अधिक नहीं हो सकती।"
 
@@ -9391,10 +9387,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "वित्तीय वर्ष के अनुसार पारिवारिक प्रतिज्ञाओं और कोष योगदान को ट्रैक करें"
 
 #: 
-msgid "Transaction Details"
-msgstr "लेनदेन विवरण"
-
-#: 
 msgid "Unmapped"
 msgstr "मैप नहीं किया गया"
 
@@ -9477,10 +9469,6 @@ msgstr "पारिवारिक प्रतिज्ञा सारां�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "समूह सदस्य, भूमिकाएँ और विशेषताएँ देखें"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "प्रतिज्ञा भुगतान के लिए लेनदेन विवरण देखें"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11041,10 +11029,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "अमान्य JSON मान — सेटिंग सहेजी नहीं गई। कृपया इसे सुधारें और पुनः प्रयास करें।"
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "POEditor पर अनुवाद परियोजना में शामिल हों"
-
-#: 
 msgid "Language and regional settings"
 msgstr "भाषा और क्षेत्रीय सेटिंग्स"
 
@@ -11184,10 +11168,6 @@ msgstr "उपयोगकर्ता कॉन्फ़िगरेशन"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "संस्करण %s उपलब्ध है। कृपया अपनी स्थापना को अपग्रेड करें।"
-
-#: 
-msgid "View All"
-msgstr "सभी देखें"
 
 #: 
 msgid "Yellow"
@@ -15303,10 +15283,6 @@ msgstr "इस धन-संग्रह के खरीदार"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "कैलेंडर एम्बेड उत्पत्ति"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM के अनुवाद POEditor पर समुदाय द्वारा प्रबंधित किए जाते हैं। आप इस प्रकार सहायता कर सकते हैं"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20319,10 +20295,6 @@ msgstr "फिर सक्रिय करें"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "थीम बनाने की मार्गदर्शिका पढ़ें"
-
-#: 
-msgid "Recent Emails"
-msgstr "हाल के ईमेल"
 
 #: 
 msgid "Recipient"
