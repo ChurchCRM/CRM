@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use ChurchCRM\dto\SystemConfig;
+use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Plugin\Hook\HookManager;
@@ -57,6 +58,8 @@ final class TestConfessionPlugin extends ConfessionPlugin
         $this->config[$key] = $value;
     }
 }
+
+SystemURLs::init('', [], APP_ROOT);
 
 $legacyFatherConfig = new ConfessionConfigRow('iPersonConfessionFatherCustomField', '51');
 $legacyDateConfig = new ConfessionConfigRow('iPersonConfessionDateCustomField', '52');
