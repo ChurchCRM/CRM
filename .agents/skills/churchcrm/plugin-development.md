@@ -264,9 +264,9 @@ $enabled = $this->getBooleanConfigValue('enabled');
 $this->setConfigValue('lastSync', date('c'));
 ```
 
-## Plugin Localization (Independent of POeditor)
+## Plugin Localization
 
-Plugin strings ship inside the plugin directory and ChurchCRM loads them automatically. The core POeditor project holds core strings only.
+Plugin strings ship inside the plugin directory and ChurchCRM loads them automatically. The core catalog holds core strings only.
 
 ```
 plugins/community/my-plugin/
