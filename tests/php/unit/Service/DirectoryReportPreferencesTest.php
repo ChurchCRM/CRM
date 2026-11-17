@@ -115,7 +115,6 @@ $forged->setSetting(DirectoryReportPreferences::CLASSIFICATIONS . '.1', '10,11')
 $forged->setSetting(DirectoryReportPreferences::EXCLUDE_INACTIVE, '0');
 $forged->setSetting(DirectoryReportPreferences::SHOW, str_repeat('0', count(DirectoryReportPreferences::SHOW_KEYS)));
 
-$beforeKeys = array_keys($forged->allSettings());
 $forgedLoaded = $prefs->load($forged);
 Assert::notNull($forgedLoaded);
 Assert::same([10, 11], $forgedLoaded['classifications'], 'load must stop at the first missing chunk');
@@ -127,9 +126,13 @@ Assert::null(
     $forged->getSetting(DirectoryReportPreferences::CLASSIFICATIONS . '.2'),
     'clear must not invent empty chunk keys for a forged count'
 );
+$forgedChunkKeys = array_filter(
+    array_keys($forged->allSettings()),
+    static fn (string $name): bool => str_starts_with($name, DirectoryReportPreferences::CLASSIFICATIONS . '.')
+);
 Assert::true(
-    count($forged->allSettings()) <= count($beforeKeys) + 2,
-    'clear against a forged count must stay bounded'
+    count($forgedChunkKeys) <= 1,
+    'clear against a forged count must not invent numbered chunk keys'
 );
 
 $resave = new DirectoryReportPreferencesMemoryUser();
