@@ -21,11 +21,9 @@ describe("API Event Check-in Endpoints", () => {
     // calendar_events rows, so the events list is all that needs tracking.
     const createdEventIds = [];
 
-    // Only events are tracked. Checking a person in or out also writes a note on
-    // that person's timeline (Event::addTimelineNote()), but that note is the
-    // person's attendance history: it deliberately outlives the event and no
-    // API removes it, which is why the row-count guard reports note_nte rather
-    // than failing on it (#9769).
+    // Only events are tracked. Checking a person in or out writes no timeline
+    // note (#11696): attendance lives in the event_attend rows, which the
+    // event deletion cascades away, so no note_nte rows are left behind.
     after(() => {
         cy.cleanupEvents(createdEventIds);
     });

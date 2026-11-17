@@ -1557,10 +1557,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Tilldela en ny frivillig möjlighet"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Elektronisk överföring detaljer"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Ej avdragsgiltig summa kan inte vara störer än slutsumman"
 
@@ -9509,10 +9505,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Spåra familjens givarlöften och fondinsatser per räkenskapsår"
 
 #: 
-msgid "Transaction Details"
-msgstr "Transaktionsdetaljer"
-
-#: 
 msgid "Unmapped"
 msgstr "Omappad"
 
@@ -9595,10 +9587,6 @@ msgstr "Visa familjens givarlöftessammanfattningar och fondfördelningar"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Visa gruppmedlemmar, roller och egenskaper"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Visa transaktionsdetaljer för en givarlöftesbetalning"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11159,10 +11147,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Ogiltigt JSON-värde – inställningen sparades inte. Vänligen korrigera det och försök igen."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Gå med i översättningsprojektet på POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Språk- och regioninställningar"
 
@@ -11302,10 +11286,6 @@ msgstr "Användarkonfiguration"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Version %s är tillgänglig. Vänligen uppgradera din installation."
-
-#: 
-msgid "View All"
-msgstr "Visa alla"
 
 #: 
 msgid "Yellow"
@@ -15421,10 +15401,6 @@ msgstr "Köpare för denna insamling"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Kalender-inbäddningsursprung"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM-översättningar hanteras av gemenskapen på POEditor. Du kan hjälpa till genom att"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20437,10 +20413,6 @@ msgstr "Återaktivera"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Läs guiden för att skapa teman"
-
-#: 
-msgid "Recent Emails"
-msgstr "Senaste e-postmeddelanden"
 
 #: 
 msgid "Recipient"

@@ -7,6 +7,7 @@
  * Fails (exit 1):
  *   - the Propel schema or Install.sql changed without a src/mysql/upgrade/ script that upgrade.json lists
  *   - a workflow or action passes untrusted GitHub context straight into a `run:` script
+ *   - a removed element id is still a Playwright selector (`#id` under playwright/) and is no longer rendered
  * Warns (exit 0, printed): behavior changes without a Cypress spec or script test, a changed
  * workflow without a script test, and UI files that need the light/dark, tablet/phone pass.
  *
@@ -92,6 +93,34 @@ function workflowFiles() {
     });
 }
 
+function orphanedCaptureIds(removedLines, stillRendered, playwrightHas) {
+    const removed = new Set();
+    for (const line of removedLines) {
+        for (const match of line.matchAll(/\bid\s*=\s*["']([A-Za-z][\w:-]*)["']/g)) {
+            removed.add(match[1]);
+        }
+    }
+    return [...removed].filter((id) => !stillRendered(id) && playwrightHas(id));
+}
+
+function gitOk(args) {
+    try {
+        execFileSync('git', args, { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] });
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+function removedIdLines(base) {
+    const diff = execFileSync('git', ['diff', '-U0', base, '--', '.', ':(exclude)playwright'], {
+        cwd: root,
+        encoding: 'utf8',
+        stdio: ['ignore', 'pipe', 'ignore'],
+    });
+    return diff.split('\n').filter((line) => line.startsWith('-') && !line.startsWith('---'));
+}
+
 function changedFiles() {
     const git = (...args) => execFileSync('git', args, { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
     for (const ref of ['origin/master', 'master']) {
@@ -112,12 +141,29 @@ if (require.main === module) {
     const files = changedFiles();
     const { fail, warn } = files ? gates(files) : { fail: [], warn: [] };
     problems.push(...fail);
+    if (files) {
+        try {
+            const base = execFileSync('git', ['merge-base', 'HEAD', 'origin/master'], {
+                cwd: root,
+                encoding: 'utf8',
+                stdio: ['ignore', 'pipe', 'ignore'],
+            }).trim();
+            const stuck = orphanedCaptureIds(
+                removedIdLines(base),
+                (id) => gitOk(['grep', '-F', '-q', '-e', `id="${id}"`, '-e', `id='${id}'`, '--', 'src', 'webpack']),
+                (id) => gitOk(['grep', '-F', '-q', `#${id}`, '--', 'playwright']),
+            );
+            stuck.forEach((id) => problems.push(`#${id} was removed and playwright/ still selects it. Update the capture in this PR.`));
+        } catch {
+            // no merge base: the selector scan needs a master ref
+        }
+    }
     warn.forEach((message) => console.log(`note: ${message}`));
     problems.forEach((message) => console.error(message));
-    if (problems.length) {
+    if (problems.some((message) => message.includes('untrusted') || message.startsWith('Schema'))) {
         console.error('\nPass untrusted values through env: and quote "$VAR"; mark a safe case with # inject-ok: <reason>.');
     }
     process.exit(problems.length ? 1 : 0);
 }
 
-module.exports = { gates, injections };
+module.exports = { gates, injections, orphanedCaptureIds };

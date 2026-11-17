@@ -56,6 +56,18 @@ class NotificationService
         return count(self::$notifications) > 0;
     }
 
+    public static function dismissalSettingKey(string $id): string
+    {
+        if ($id === '') {
+            return '';
+        }
+
+        $prefix = 'notification.dismissed.';
+        $key = $prefix . $id;
+        // Keep existing dismissals; long remote IDs must fit user_settings.setting_name.
+        return strlen($key) <= 50 ? $key : $prefix . substr(hash('sha256', $id), 0, 50 - strlen($prefix));
+    }
+
     /**
      * Hydrate the registry from all session-cached notification sources.
      * Called on every page load from Header.php — reads session only, no HTTP.
@@ -92,9 +104,10 @@ class NotificationService
                 ? sprintf(gettext('Version %s is available. Please ask your administrator to upgrade your installation.'), $version)
                 : gettext('A system update is available. Please ask your administrator to upgrade your installation.'));
 
+        $id = 'system-update-available';
         self::add(new UiNotification(
-            'system-update-available',
-            'notification.dismissed.system-update-available',
+            $id,
+            self::dismissalSettingKey($id),
             gettext('System Update Available'),
             $message . ' ' . gettext('Security updates and support are provided for the latest version only.'),
             SystemURLs::getRootPath() . ($isAdmin ? '/admin/system/upgrade' : '/v2/releases'),
@@ -153,7 +166,7 @@ class NotificationService
             }
 
             $id = $message->id ?? '';
-            $dismissKey = $id !== '' ? 'notification.dismissed.' . $id : '';
+            $dismissKey = self::dismissalSettingKey($id);
 
             self::add(new UiNotification(
                 $id,
