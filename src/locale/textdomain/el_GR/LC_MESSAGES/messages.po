@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Αναθέστε μια Νέα Εθελοντική Ευκαιρία"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Στοιχεία Ηλεκτρονικής Συναλλαγής"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Το μη εκπιπτόμενο ποσό δεν μπορεί να είναι μεγαλύτερο από το συνολικό ποσό."
 
@@ -9422,10 +9418,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Παρακολούθηση οικονομικών δεσμεύσεων οικογένειας και συνεισφορών ανά οικονομικό έτος"
 
 #: 
-msgid "Transaction Details"
-msgstr "Λεπτομέρειες συναλλαγής"
-
-#: 
 msgid "Unmapped"
 msgstr "Χωρίς αντιστοίχιση"
 
@@ -9508,10 +9500,6 @@ msgstr "Προβολή συνόψεων οικονομικών δεσμεύσε�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Προβολή μελών ομάδας, ρόλων και ιδιοτήτων"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Προβολή λεπτομερειών συναλλαγής για πληρωμή οικονομικής δέσμευσης"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11072,10 +11060,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Μη έγκυρη τιμή JSON — η ρύθμιση δεν αποθηκεύτηκε. Παρακαλώ διορθώστε την και προσπαθήστε ξανά."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Συμμετέχετε στο Έργο Μετάφρασης στο POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Ρυθμίσεις γλώσσας και περιοχής"
 
@@ -11215,10 +11199,6 @@ msgstr "Διαμόρφωση Χρήστη"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Η έκδοση %s είναι διαθέσιμη. Παρακαλώ αναβαθμίστε την εγκατάστασή σας."
-
-#: 
-msgid "View All"
-msgstr "Προβολή Όλων"
 
 #: 
 msgid "Yellow"
@@ -15334,10 +15314,6 @@ msgstr "Αγοραστές για αυτή την εκδήλωση συγκέν�
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Προελεύσεις ενσωμάτωσης ημερολογίου"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Οι μεταφράσεις του ChurchCRM διαχειρίζονται από την κοινότητα στο POEditor. Μπορείτε να βοηθήσετε"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20350,10 +20326,6 @@ msgstr "Επανενεργοποίηση"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Διαβάστε τον οδηγό δημιουργίας θεμάτων"
-
-#: 
-msgid "Recent Emails"
-msgstr "Πρόσφατα email"
 
 #: 
 msgid "Recipient"
@@ -27924,4 +27896,32 @@ msgstr "η ταυτοποίηση δύο παραγόντων του χρήστ�
 #: 
 msgid "volunteer service history"
 msgstr "ιστορικό εθελοντικής διακονίας"
+
+#: 
+msgid "%s by %s"
+msgstr "%s από %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Εισαγάγετε τον κωδικό πρόσβασής σας ή έναν κωδικό από την εφαρμογή ελέγχου ταυτότητας για να αλλάξετε τον έλεγχο ταυτότητας δύο παραγόντων."
+
+#: 
+msgid "Latest Notes"
+msgstr "Τελευταίες σημειώσεις"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Δεν έχουν προστεθεί σημειώσεις ακόμη."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Ξεκινήστε την εγγραφή για να λάβετε έναν κωδικό QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Αυτός ο κωδικός πρόσβασης ή κωδικός δεν είναι σωστός. Ο έλεγχος ταυτότητας δύο παραγόντων παραμένει ενεργός."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Ο έλεγχος ταυτότητας δύο παραγόντων έχει ήδη ρυθμιστεί. Το μυστικό του εμφανίζεται μόνο κατά την εγγραφή."
 

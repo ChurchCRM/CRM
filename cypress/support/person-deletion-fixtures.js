@@ -48,6 +48,7 @@ export const countVolunteerNotifications = (personId) =>
     query("SELECT COUNT(*) AS n FROM volunteer_notification_vntf WHERE vntf_per_ID = ?", [personId])
         .then((rows) => Number(rows[0].n));
 
+
 export const recordWhyCame = (personId) =>
     query("INSERT INTO whycame_why (why_per_ID, why_join, why_come, why_suggest, why_hearOfUs) VALUES (?, 'joined', 'visited', 'recommended', 'friend')", [personId]);
 

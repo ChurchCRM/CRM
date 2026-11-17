@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Priradiť novú dobrovoľnícku príležitosť"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Detaily elektronickej transakcie"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Neodpočítateľná suma nemôže byť väčšia ako celková suma."
 
@@ -9407,10 +9403,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Sledovať záväzky rodiny a príspevky do fondov podľa fiškálneho roka"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detaily transakcie"
-
-#: 
 msgid "Unmapped"
 msgstr "Nepriradené"
 
@@ -9493,10 +9485,6 @@ msgstr "Zobraziť súhrny záväzkov rodiny a pridelenia fondov"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Zobraziť členov skupiny, roly a vlastnosti"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Zobraziť detaily transakcie pre platbu záväzku"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11057,10 +11045,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Neplatná hodnota JSON — nastavenie nebolo uložené. Opravte ho a skúste znova."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Pridajte sa k prekladateľskému projektu na POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Jazykové a regionálne nastavenia"
 
@@ -11200,10 +11184,6 @@ msgstr "Konfigurácia používateľa"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Verzia %s je dostupná. Upgradujte vašu inštaláciu."
-
-#: 
-msgid "View All"
-msgstr "Zobraziť všetko"
 
 #: 
 msgid "Yellow"
@@ -15327,10 +15307,6 @@ msgstr "Kupujúci pre túto zbierku"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Pôvody vkladania kalendára"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Preklady ChurchCRM spravuje komunita na POEditor. Môžete pomôcť"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20365,10 +20341,6 @@ msgstr "Znova aktivovať"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Prečítajte si príručku k tvorbe tém"
-
-#: 
-msgid "Recent Emails"
-msgstr "Nedávne e-maily"
 
 #: 
 msgid "Recipient"
@@ -27957,4 +27929,32 @@ msgstr[0] "%d rodina"
 msgstr[1] "%d rodiny"
 msgstr[2] "%d rodiny"
 msgstr[3] "%d rodín"
+
+#: 
+msgid "%s by %s"
+msgstr "%s od %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Zadajte svoje heslo alebo kód z autentifikačnej aplikácie, ak chcete zmeniť dvojfaktorovú autentifikáciu."
+
+#: 
+msgid "Latest Notes"
+msgstr "Najnovšie poznámky"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Zatiaľ neboli pridané žiadne poznámky."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Spustite registráciu a získajte QR kód."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Toto heslo alebo kód nie je správne. Dvojfaktorová autentifikácia je stále zapnutá."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Dvojfaktorová autentifikácia je už nastavená. Jej tajomstvo sa zobrazuje iba počas registrácie."
 

@@ -1553,10 +1553,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Tildele en ny frivillig Opportunity"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Elektronisk transaksjon detaljer"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Nondeductible beløpet kan ikke være større enn totalbeløpet."
 
@@ -9491,10 +9487,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Spor familiens giverløfter og fondsbidrag etter regnskapsår"
 
 #: 
-msgid "Transaction Details"
-msgstr "Transaksjonsdetaljer"
-
-#: 
 msgid "Unmapped"
 msgstr "Ikke tilordnet"
 
@@ -9577,10 +9569,6 @@ msgstr "Vis sammendrag av familiens giverløfter og fondstildelinger"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Vis gruppemedlemmer, roller og egenskaper"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Vis transaksjonsdetaljer for en giverløfteinnbetaling"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11141,10 +11129,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Ugyldig JSON-verdi — innstillingen ble ikke lagret. Vennligst korriger den og prøv igjen."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Bli med i oversettelsesprosjektet på POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Språk- og regionsinnstillinger"
 
@@ -11284,10 +11268,6 @@ msgstr "Brukerkonfigurasjon"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versjon %s er tilgjengelig. Vennligst oppgrader installasjonen din."
-
-#: 
-msgid "View All"
-msgstr "Vis alle"
 
 #: 
 msgid "Yellow"
@@ -15403,10 +15383,6 @@ msgstr "Kjøpere for denne innsamlingen"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Kalenderinnbygging – tillatte opprinnelser"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM-oversettelser administreres av fellesskapet på POEditor. Du kan bidra ved å"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20419,10 +20395,6 @@ msgstr "Reaktiver"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Les veiledningen for å lage temaer"
-
-#: 
-msgid "Recent Emails"
-msgstr "Nylige e-poster"
 
 #: 
 msgid "Recipient"
@@ -27993,4 +27965,32 @@ msgstr "tofaktorautentiseringen til systembrukeren ble slått av av administrato
 #: 
 msgid "volunteer service history"
 msgstr "historikk for frivillig tjeneste"
+
+#: 
+msgid "%s by %s"
+msgstr "%s av %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Skriv inn passordet ditt eller en kode fra autentiseringsappen din for å endre totrinnsverifiseringen."
+
+#: 
+msgid "Latest Notes"
+msgstr "Nyeste notater"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Ingen notater er lagt til ennå."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Start registreringen for å få en QR-kode."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Passordet eller koden er ikke riktig. Totrinnsverifisering er fortsatt på."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Totrinnsverifisering er allerede satt opp. Hemmeligheten vises bare under registreringen."
 

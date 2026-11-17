@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Italaga ang Bagong Pagkakataon bilang Boluntaryo"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Mga Detalye ng Electronic na Transaksyon"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Ang halagang Hindi Mababawas ay hindi maaaring mas malaki kaysa sa kabuuang halaga."
 
@@ -9389,10 +9385,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Subaybayan ang mga pangako ng pamilya at mga kontribusyon ng pondo ayon sa taong piskal"
 
 #: 
-msgid "Transaction Details"
-msgstr "Mga Detalye ng Transaksyon"
-
-#: 
 msgid "Unmapped"
 msgstr "Hindi Na-mapa"
 
@@ -9475,10 +9467,6 @@ msgstr "Tingnan ang mga buod ng pangako ng pamilya at mga alokasyon ng pondo"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Tingnan ang mga miyembro ng grupo, mga papel, at mga katangian"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Tingnan ang mga detalye ng transaksyon para sa isang pagbabayad ng pangako"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11039,10 +11027,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Di-wastong JSON value — hindi na-save ang setting. Mangyaring itama ito at subukang muli."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Sumali sa Translation Project sa POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Mga setting ng wika at rehiyon"
 
@@ -11182,10 +11166,6 @@ msgstr "Pagsasaayos ng Gumagamit"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Ang bersyon %s ay available na. Mangyaring i-upgrade ang inyong installation."
-
-#: 
-msgid "View All"
-msgstr "Tingnan Lahat"
 
 #: 
 msgid "Yellow"
@@ -15301,10 +15281,6 @@ msgstr "Mga bumibili para sa fundraiser na ito"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Mga Pinagmulan ng Calendar Embed"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Ang mga pagsasalin ng ChurchCRM ay pinamamahalaan ng komunidad sa POEditor. Maaari kang tumulong sa pamamagitan ng"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20317,10 +20293,6 @@ msgstr "I-reactivate"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Basahin ang gabay sa paggawa ng tema"
-
-#: 
-msgid "Recent Emails"
-msgstr "Kamakailang Mga Email"
 
 #: 
 msgid "Recipient"
@@ -27891,4 +27863,32 @@ msgstr "na-disable ng admin ang two-factor authentication ng system user"
 #: 
 msgid "volunteer service history"
 msgstr "kasaysayan ng paglilingkod bilang boluntaryo"
+
+#: 
+msgid "%s by %s"
+msgstr "%s ni %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Ilagay ang iyong password o isang code mula sa iyong authenticator app para baguhin ang two-factor authentication."
+
+#: 
+msgid "Latest Notes"
+msgstr "Pinakabagong Mga Tala"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Wala pang naidagdag na mga tala."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Simulan ang pag-enroll para makakuha ng QR code."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Hindi tama ang password o code na iyon. Naka-on pa rin ang two-factor authentication."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Naka-set up na ang two-factor authentication. Ipinapakita lang ang secret nito habang nag-e-enroll."
 

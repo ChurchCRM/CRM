@@ -1483,10 +1483,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Asignar una nueva oportunidad de voluntariado"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Detalle de transacciones electrónicas"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "El monto no deducible no puede ser mayor que el monto total"
 
@@ -9391,10 +9387,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Seguimiento de los compromisos de donación familiares y las aportaciones a fondos por año fiscal"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detalles de la transacción"
-
-#: 
 msgid "Unmapped"
 msgstr "Sin asignar"
 
@@ -9477,10 +9469,6 @@ msgstr "Ver resúmenes de compromisos de donación familiares y asignaciones de 
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Ver los miembros del grupo, los roles y las propiedades"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Ver los detalles de la transacción de un pago de compromiso de donación"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11041,10 +11029,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Valor JSON inválido — la configuración no fue guardada. Por favor, corregílo e intentá de nuevo."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Unite al proyecto de traducción en POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Configuración de idioma y región"
 
@@ -11184,10 +11168,6 @@ msgstr "Configuración de usuario"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "La versión %s está disponible. Por favor, actualizá tu instalación."
-
-#: 
-msgid "View All"
-msgstr "Ver todo"
 
 #: 
 msgid "Yellow"
@@ -15304,10 +15284,6 @@ msgstr "Compradores de esta colecta"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Orígenes de incrustación del calendario"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Las traducciones de ChurchCRM son gestionadas por la comunidad en POEditor. Podés colaborar"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20320,10 +20296,6 @@ msgstr "Reactivar"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Lee la guía de autoría del tema"
-
-#: 
-msgid "Recent Emails"
-msgstr "Correos recientes"
 
 #: 
 msgid "Recipient"
@@ -27894,4 +27866,32 @@ msgstr "actividades registradas"
 #: 
 msgid "volunteer service history"
 msgstr "historial de servicio voluntario"
+
+#: 
+msgid "%s by %s"
+msgstr "%s por %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Ingrese su contraseña o un código de su aplicación de autenticación para cambiar la autenticación de dos factores."
+
+#: 
+msgid "Latest Notes"
+msgstr "Últimas notas"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Aún no se han añadido notas."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Inicie la inscripción para obtener un código QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Esa contraseña o código no es correcto. La autenticación de dos factores sigue activada."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "La autenticación de dos factores ya está configurada. Su secreto se muestra solo durante la inscripción."
 

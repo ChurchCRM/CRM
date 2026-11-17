@@ -1540,10 +1540,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "分配一個新的義工機會"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "電子交易詳情"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "不可扣除的金額不能大於總金額。"
 
@@ -9552,10 +9548,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "依會計年度追蹤家庭奉獻承諾和基金捐獻"
 
 #: 
-msgid "Transaction Details"
-msgstr "交易詳情"
-
-#: 
 msgid "Unmapped"
 msgstr "未對應"
 
@@ -9638,10 +9630,6 @@ msgstr "檢視家庭奉獻承諾摘要和基金分配"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "檢視小組成員、角色和屬性"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "檢視奉獻承諾付款的交易詳情"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11202,10 +11190,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "JSON 值無效，設定未儲存，請修正後再試一次。"
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "加入 POEditor 上的翻譯專案"
-
-#: 
 msgid "Language and regional settings"
 msgstr "語言與地區設定"
 
@@ -11345,10 +11329,6 @@ msgstr "使用者設定"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "版本 %s 已可用，請升級您的安裝。"
-
-#: 
-msgid "View All"
-msgstr "檢視全部"
 
 #: 
 msgid "Yellow"
@@ -15460,10 +15440,6 @@ msgstr "此募款活動的買家"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "行事曆嵌入來源"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM 的翻譯由社群在 POEditor 上共同維護，您可以透過以下方式協助"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20465,10 +20441,6 @@ msgstr "重新啟用"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "閱讀主題製作指南"
-
-#: 
-msgid "Recent Emails"
-msgstr "最近的電子郵件"
 
 #: 
 msgid "Recipient"
@@ -28030,4 +28002,32 @@ msgstr "系統使用者的雙重驗證已被管理員停用"
 #: 
 msgid "volunteer service history"
 msgstr "志工服事歷史"
+
+#: 
+msgid "%s by %s"
+msgstr "%s 由 %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "輸入您的密碼或驗證器應用程式中的代碼，以變更二階段驗證。"
+
+#: 
+msgid "Latest Notes"
+msgstr "最新備註"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "尚未新增任何備註。"
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "開始註冊以取得 QR 碼。"
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "該密碼或代碼不正確。二階段驗證仍處於啟用狀態。"
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "二階段驗證已設定。其密鑰僅在註冊期間顯示。"
 

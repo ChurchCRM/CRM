@@ -1487,10 +1487,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Määritä uusi vapaaehtoistyömahdollisuus"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Sähköisen tapahtuman tiedot"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Vähennyskelvoton summa ei voi olla suurempi kuin kokonaissumma."
 
@@ -9393,10 +9389,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Seuraa perheen lupauksia ja rahastomaksuja tilivuosittain"
 
 #: 
-msgid "Transaction Details"
-msgstr "Tapahtuman tiedot"
-
-#: 
 msgid "Unmapped"
 msgstr "Yhdistämätön"
 
@@ -9479,10 +9471,6 @@ msgstr "Näytä perheen lupausyhteenvedot ja rahastojako"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Näytä ryhmän jäsenet, roolit ja ominaisuudet"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Näytä lupausmaksun tapahtumatiedot"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11043,10 +11031,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Virheellinen JSON-arvo — asetusta ei tallennettu. Korjaa se ja yritä uudelleen."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Liity käännösprojektiin POEditorissa"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Kieli- ja aluekohtaiset asetukset"
 
@@ -11186,10 +11170,6 @@ msgstr "Käyttäjän asetukset"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versio %s on saatavilla. Päivitä asennuksesi."
-
-#: 
-msgid "View All"
-msgstr "Näytä kaikki"
 
 #: 
 msgid "Yellow"
@@ -15305,10 +15285,6 @@ msgstr "Tämän varainhankintatapahtuman ostajat"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Kalenterin upotuslähteet"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM-käännöksiä hallinnoi yhteisö POEditorissa. Voit auttaa"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20321,10 +20297,6 @@ msgstr "Ota uudelleen käyttöön"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Lue teemojen laatimisopas"
-
-#: 
-msgid "Recent Emails"
-msgstr "Viimeisimmät sähköpostit"
 
 #: 
 msgid "Recipient"
@@ -27895,4 +27867,32 @@ msgstr "ylläpitäjä poisti järjestelmäkäyttäjän kaksivaiheisen todennukse
 #: 
 msgid "volunteer service history"
 msgstr "vapaaehtoispalvelun historia"
+
+#: 
+msgid "%s by %s"
+msgstr "%s, kirjoittanut %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Anna salasanasi tai koodi todennussovelluksestasi muuttaaksesi kaksivaiheista todentamista."
+
+#: 
+msgid "Latest Notes"
+msgstr "Uusimmat muistiinpanot"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Muistiinpanoja ei ole vielä lisätty."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Aloita rekisteröinti saadaksesi QR-koodin."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Tuo salasana tai koodi ei ole oikein. Kaksivaiheinen todentaminen on edelleen käytössä."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Kaksivaiheinen todentaminen on jo määritetty. Sen salaisuus näytetään vain rekisteröinnin aikana."
 

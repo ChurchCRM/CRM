@@ -1509,10 +1509,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Thêm thành viên mới vào Mục vụ"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Chi tiết giao dịch điện tử"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Số tiền không được khấu trừ không được lớn hơn tổng số tiền."
 
@@ -9422,10 +9418,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Theo dõi cam kết dâng hiến của gia đình và đóng góp quỹ theo năm tài chính"
 
 #: 
-msgid "Transaction Details"
-msgstr "Chi tiet giao dich"
-
-#: 
 msgid "Unmapped"
 msgstr "Chua ghep noi"
 
@@ -9508,10 +9500,6 @@ msgstr "Xem tóm tắt cam kết dâng hiến của gia đình và phân bổ qu
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Xem thanh vien nhom, vai tro va thuoc tinh"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Xem chi tiết giao dịch cho khoản thanh toán cam kết dâng hiến"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11072,10 +11060,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Giá trị JSON không hợp lệ — cài đặt chưa được lưu. Vui lòng sửa và thử lại."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Tham gia Dự án Dịch thuật trên POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Cài đặt ngôn ngữ và khu vực"
 
@@ -11215,10 +11199,6 @@ msgstr "Cấu hình người dùng"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Phiên bản %s đã có sẵn. Vui lòng nâng cấp cài đặt của bạn."
-
-#: 
-msgid "View All"
-msgstr "Xem tất cả"
 
 #: 
 msgid "Yellow"
@@ -15330,10 +15310,6 @@ msgstr "Người mua cho chương trình gây quỹ này"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Nguồn gốc nhúng lịch"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Bản dịch ChurchCRM được cộng đồng quản lý trên POEditor. Bạn có thể đóng góp bằng cách"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20335,10 +20311,6 @@ msgstr "Kích hoạt lại"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Đọc hướng dẫn tạo giao diện"
-
-#: 
-msgid "Recent Emails"
-msgstr "Email gần đây"
 
 #: 
 msgid "Recipient"
@@ -27900,4 +27872,32 @@ msgstr "xác thực hai yếu tố của người dùng hệ thống đã bị q
 #: 
 msgid "volunteer service history"
 msgstr "lịch sử phục vụ tình nguyện"
+
+#: 
+msgid "%s by %s"
+msgstr "%s bởi %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Nhập mật khẩu của bạn hoặc mã từ ứng dụng xác thực để thay đổi xác thực hai yếu tố."
+
+#: 
+msgid "Latest Notes"
+msgstr "Ghi chú mới nhất"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Chưa có ghi chú nào được thêm."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Bắt đầu đăng ký để nhận mã QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Mật khẩu hoặc mã đó không đúng. Xác thực hai yếu tố vẫn đang bật."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Xác thực hai yếu tố đã được thiết lập. Bí mật của nó chỉ hiển thị trong quá trình đăng ký."
 

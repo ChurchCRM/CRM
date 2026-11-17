@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Nieuw vrijwilligerswerk koppelen"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Electronische Transactie Details"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Niet Aftrekbaar bedrag kan niet groter zijn dan het totale bedrag."
 
@@ -9392,10 +9388,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Gezinstoezeggingen en fondsbijdragen bijhouden per boekjaar"
 
 #: 
-msgid "Transaction Details"
-msgstr "Transactiedetails"
-
-#: 
 msgid "Unmapped"
 msgstr "Niet gekoppeld"
 
@@ -9478,10 +9470,6 @@ msgstr "Overzichten van gezinstoezeggingen en fondstoewijzingen bekijken"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Groepsleden, rollen en eigenschappen bekijken"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Transactiedetails bekijken voor een toegezegde betaling"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11042,10 +11030,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Ongeldige JSON-waarde — instelling is niet opgeslagen. Corrigeer het en probeer het opnieuw."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Doe mee aan het vertaalproject op POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Taal- en regionale instellingen"
 
@@ -11185,10 +11169,6 @@ msgstr "Gebruikersconfiguratie"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Versie %s is beschikbaar. Werk uw installatie bij."
-
-#: 
-msgid "View All"
-msgstr "Alles weergeven"
 
 #: 
 msgid "Yellow"
@@ -15304,10 +15284,6 @@ msgstr "Kopers voor deze fondsenwerving"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Kalender insluit-origins"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM-vertalingen worden door de gemeenschap beheerd op POEditor. U kunt helpen door"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20320,10 +20296,6 @@ msgstr "Heractiveren"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Lees de handleiding voor het schrijven van thema's"
-
-#: 
-msgid "Recent Emails"
-msgstr "Recente e-mails"
 
 #: 
 msgid "Recipient"
@@ -27894,4 +27866,32 @@ msgstr "tweestapsverificatie van systeemgebruiker uitgeschakeld door beheerder"
 #: 
 msgid "volunteer service history"
 msgstr "geschiedenis van vrijwilligersdienst"
+
+#: 
+msgid "%s by %s"
+msgstr "%s door %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Voer uw wachtwoord of een code uit uw authenticator-app in om tweefactorauthenticatie te wijzigen."
+
+#: 
+msgid "Latest Notes"
+msgstr "Nieuwste notities"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Er zijn nog geen notities toegevoegd."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Start de inschrijving om een QR-code te krijgen."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Dat wachtwoord of die code is niet juist. Tweefactorauthenticatie staat nog steeds aan."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Tweefactorauthenticatie is al ingesteld. Het geheim wordt alleen tijdens de inschrijving getoond."
 
