@@ -324,7 +324,7 @@ describe("GET /api/groups/:id/emails", () => {
 
         it("skips deposit posted notification when disabled in settings", () => {
             cy.setSystemConfig('bEnableDepositPostedNotification', "false");
-            cy.task("resetSentEmails");
+            cy.task("mail:clear");
             cy.makePrivateAdminAPICall("POST", "/api/deposits", {
                 depositType: "Bank",
                 depositComment: `disabled test ${Date.now()}`,
@@ -337,7 +337,7 @@ describe("GET /api/groups/:id/emails", () => {
                     depositComment: "disabled test",
                     depositDate: "2025-10-25",
                 }, 200);
-                cy.task("getSentEmails").should("have.length", 0);
+                cy.task("mail:list").its("body.messages").should("have.length", 0);
             });
         });
 
@@ -345,8 +345,8 @@ describe("GET /api/groups/:id/emails", () => {
             const comment = `enabled test ${Date.now()}`;
             cy.setSystemConfig('bEnableDepositPostedNotification', "true");
             cy.setSystemConfig('sToEmailAddress', "churchcrm@example.com");
-            cy.setSystemConfig('sDateFormat', 'Y-m-d');
-            cy.task("resetSentEmails");
+            cy.setSystemConfig('sDateFormatLong', 'm/d/Y');
+            cy.task("mail:clear");
             cy.makePrivateAdminAPICall("POST", "/api/deposits", {
                 depositType: "Bank",
                 depositComment: comment,
@@ -359,18 +359,21 @@ describe("GET /api/groups/:id/emails", () => {
                     depositComment: comment,
                     depositDate: "2025-10-25",
                 }, 200);
-                cy.task("getSentEmails").then((emails) => {
-                    expect(emails).to.have.length(1);
-                    const email = emails[0];
-                    expect(email.to).to.include("churchcrm@example.com");
-                    expect(email.body).to.contain("2025-10-25");
-                    expect(email.body).to.contain("Total");
-                    expect(email.body).to.contain(`/finance/deposit/${id}`);
+                cy.task("mail:list").its("body.messages").then((messages) => {
+                    expect(messages).to.have.length(1);
+                    const message = messages[0];
+                    cy.task("mail:get", message.id).then((email) => {
+                        expect(email.to).to.include("churchcrm@example.com");
+                        expect(email.body).to.contain("10/25/2025");
+                        expect(email.body).to.contain("Total");
+                        expect(email.body).to.contain(`/finance/deposit/${id}`);
+                    });
                 });
             });
         });
 
         after(() => {
+            cy.setSystemConfig('sDateFormatLong', 'Y-m-d');
             cy.setupAdminSession();
             testDepositIds.forEach((id) => {
                 cy.request("POST", `/api/deposits/${id}`, {

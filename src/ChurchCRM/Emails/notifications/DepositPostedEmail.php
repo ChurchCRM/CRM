@@ -48,7 +48,7 @@ class DepositPostedEmail extends NotificationEmail
 
     protected function getFullURL(): string
     {
-        return SystemURLs::getURL('/finance/deposit/' . $this->deposit->getId());
+        return SystemURLs::getURL() . '/finance/deposit/' . $this->deposit->getId();
     }
 
     protected function getButtonText(): string
