@@ -153,7 +153,7 @@ Community plugins keep translations inside the plugin directory.
 - Ship `en_US` in both formats as the fallback.
 - Extract with `xgettext --keyword=dgettext:2`.
 
-Guide: [`plugin-development.md → Plugin Localization`](./plugin-development.md#plugin-localization-independent-of-poeditor).
+Guide: [`plugin-development.md → Plugin Localization`](./plugin-development.md#plugin-localization).
 
 ## 6. Self-scan
 

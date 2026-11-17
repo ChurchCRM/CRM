@@ -16,6 +16,7 @@ intent: How agents commit and push on ChurchCRM.
 - `npm run lint` and the matching build before you push, when the session's environment can run them. A check the environment cannot run never blocks a commit (see Sessions without a toolchain)
 - UI change: check the pages in a real browser before you push, in light and dark themes, at desktop, tablet (about 820px), and phone width (browsers stop near 500px), when the session has a browser and the stack. Look for column widths, wrapping, horizontal scroll, and working menus. Fix what is off, then look again
 - UI PR: attach screenshots of the important pages (desktop, plus tablet or phone) to the PR description. Take them in that browser pass on seeded data, never real names or emails. State in the PR body that the light/dark and tablet/mobile pass was done — or, when no browser pass was possible, that it was not done
+- A removed element id that `playwright/` still selects fails `npm run lint` (`pr gates`). Update that capture in the same PR as the Cypress spec. A new capture waits for the value test in `marketing-visuals-pipeline.md`.
 - Before you push, run every Cypress spec the change touches (new and existing) against the seeded test stack when the session has one: `npm run docker:test:reset:db`, then `npx cypress run --config-file cypress/configs/docker.config.ts --spec "a.spec.js,b.spec.js"`. Report the pass counts. With a local stack, push CI is not where a spec first fails; without one, CI is the first run and the PR body says so
 - Stage files by explicit path, never `git add -A` / `.`. Before commit, `git status --short` and `git diff --cached --name-status` must list only files the task expects; unstage or delete strays (editor/`sed -i` backups like `*-E`, generated files, symlinks) first
 - The diff goes in the PR body, not in a pre-commit approval stop. Report the PR link after the push
@@ -50,6 +51,16 @@ Still needs a specific yes, every time:
 - Merge, closing an issue by hand, a release, or publishing
 - A push to `master` or another protected branch, a push to someone else's branch, or a plain `--force`
 - Anything outside the assigned task's scope — a new issue, an unrelated fix, a scope expansion. Stop and ask there; that is where the decision is.
+
+## Worker run protocol
+
+Applies to any agent implementing an assigned issue, whatever the tool.
+
+- The issue is the spec. A handoff names the issue, the tool, and the model/effort tier — nothing else needs restating. If an issue lacks acceptance criteria or scope, that is a defect in the issue: fix the issue, not a side prompt.
+- First action: assign the issue to DawoudIO — assignment is the in-progress signal. If it is already assigned to anyone else, do not start and do not reassign; report and move on.
+- The run never waits for the maintainer mid-task: no step needs approval, review, or a reply beyond the task approval above. Blockers are written into the PR body, not sent back as questions.
+- Flip the PR to Ready yourself when the work is finished and CI is green — a finished PR left in draft is a defect, and the maintainer's only click is merge. If the session ends with CI still running, flip it at the next check that shows green.
+- PR body for user-facing changes includes a task-flow walkthrough: the task a staff member or user is trying to do, the exact steps with this change, and where the flow can snag. The maintainer reviews by trying the task. (Verification itself is Cypress E2E only — see `cypress-testing.md`.)
 
 ## Sessions without a toolchain
 

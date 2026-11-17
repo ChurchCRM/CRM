@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Dodijeli novu volontersku mogućnost"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Detalji elektroničke transakcije"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Neodbatljivi iznos ne može biti veći od ukupnog iznosa."
 
@@ -9396,10 +9392,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Pratite obiteljske zavjete i doprinose fondu po fiskalnoj godini"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detalji transakcije"
-
-#: 
 msgid "Unmapped"
 msgstr "Nemapirano"
 
@@ -9482,10 +9474,6 @@ msgstr "Pregledajte sažetke obiteljskih zavjeta i raspodjele fonda"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Pregledajte članove skupini, uloge i svojstva"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Prikaži detalje transakcije za plaćanje zavjeta"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11046,10 +11034,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Nevažeća JSON vrijednost — postavka nije spremljena. Ispravite i pokušajte ponovo."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Pridružite se projektu prijevoda na POEditoru"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Jezične i regionalne postavke"
 
@@ -11189,10 +11173,6 @@ msgstr "Konfiguracija korisnika"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Verzija %s je dostupna. Molim nadogradite vašu instalaciju."
-
-#: 
-msgid "View All"
-msgstr "Prikaži sve"
 
 #: 
 msgid "Yellow"
@@ -15312,10 +15292,6 @@ msgstr "Kupci za ovu dobrotvoru akciju"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Izvori za ugrađivanje kalendara"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Prijevodi ChurchCRM-a njima upravlja zajednica na POEditoru. Možete pomoći na"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20339,10 +20315,6 @@ msgstr "Ponovno aktiviraj"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Pročitajte vodič za izradu tema"
-
-#: 
-msgid "Recent Emails"
-msgstr "Nedavna e-pošta"
 
 #: 
 msgid "Recipient"

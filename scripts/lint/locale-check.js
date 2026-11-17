@@ -13,10 +13,7 @@ const FILE_EXTS = ['.php', '.js', '.jsx', '.ts', '.tsx', '.vue', '.po', '.json',
 
 // ---- i18next extractor coverage -------------------------------------------
 //
-// An i18next.t('…') call in a file the extractor does not scan is silently
-// untranslatable: it never reaches locale/messages.po, so POEditor never offers
-// it and the string renders in English in every locale. That is exactly how 226
-// call sites across 19 .php views went unnoticed (#9723).
+// Calls outside the extractor's scan never reach locale/messages.po or the missing-terms queue.
 //
 // Rather than hard-coding a list of directories here, read the globs out of the
 // extractor's own config — both `extract.input` and `extract.ignore` — so the
