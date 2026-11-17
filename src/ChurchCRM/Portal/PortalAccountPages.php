@@ -15,10 +15,8 @@ use Psr\Http\Message\ResponseInterface;
  * A member-facing page never wears the admin shell, for any role: the portal
  * owns both pages at `/portal/profile/password` and `/portal/profile/two-factor`
  * (see `src/portal/routes/profile.php`), and they render the same way for a
- * member, for staff and for an administrator. They are also where
- * `LocalAuthentication` sends a self-service login for a forced password change
- * or a forced 2FA enrollment; staff are sent to `/account/password` and
- * `/account/2fa`.
+ * staff member or an administrator. Staff account pages also live at
+ * `/account/password` and `/account/2fa`.
  *
  * The password change itself has one implementation —
  * `User::userChangePassword()` — and both the portal and `/account` reach it through

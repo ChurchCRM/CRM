@@ -1537,10 +1537,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "分配一个新的义工机会"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "电子交易详情"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "不可扣除的金额不能大于总金额。"
 
@@ -2219,10 +2215,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "这将用此页面上选择的系列信封覆盖数据库中的系列信封号码。继续吗？"
 
 #: 
-msgid "Family Select"
-msgstr "家庭选择"
-
-#: 
 msgid "Welcome to"
 msgstr "欢迎来到"
 
@@ -2521,10 +2513,6 @@ msgstr "查看所有存款"
 #: 
 msgid "Deposit Reports"
 msgstr "存款报告"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "编辑存款单"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6127,14 +6115,6 @@ msgid "Close All Deposits"
 msgstr "关闭所有存款"
 
 #: 
-msgid "Closed vs Total"
-msgstr "已关闭对比总计"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "完成这些任务，以确保为您的捐助者提供准确的年终税务报告。"
-
-#: 
 msgid "Configure Email"
 msgstr "配置电子邮件"
 
@@ -6151,28 +6131,12 @@ msgid "Create First Deposit"
 msgstr "创建第一笔存款"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "请先创建或打开一笔存款"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "创建或选择一笔存款以开始。"
-
-#: 
-msgid "Current Deposit"
-msgstr "当前存款"
-
-#: 
 msgid "Day"
 msgstr "日"
 
 #: 
 msgid "Dec"
 msgstr "十二月"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "存款统计"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6201,10 +6165,6 @@ msgstr "编辑付款"
 #: 
 msgid "Edit Person"
 msgstr "编辑个人"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "在生成声明之前，确保税务年度的所有存款都已关闭。"
 
 #: 
 msgid "F"
@@ -6311,10 +6271,6 @@ msgid "New Pledge"
 msgstr "新认献"
 
 #: 
-msgid "No Active Deposit"
-msgstr "无活动存款"
-
-#: 
 msgid "No active funds configured."
 msgstr "未配置活动基金。"
 
@@ -6347,10 +6303,6 @@ msgid "Pledge Reports"
 msgstr "认献报告"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "为所有捐助者打印或发送年度奉献声明。"
-
-#: 
 msgid "Quick Actions"
 msgstr "快速操作"
 
@@ -6381,10 +6333,6 @@ msgstr "还原"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "从备份文件还原。将擦除现有数据。"
-
-#: 
-msgid "Review Donation Funds"
-msgstr "审查捐款基金"
 
 #: 
 msgid "Save and Add New Family"
@@ -6423,14 +6371,6 @@ msgid "System Info"
 msgstr "系统信息"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "税务报告措辞"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "税务年度报告检查清单"
-
-#: 
 msgid "Total"
 msgstr "总计"
 
@@ -6451,10 +6391,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "用户必须是管理员或具有财务权限"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "核实声明中的基金名称和描述是否准确。"
-
-#: 
 msgid "YTD Payments"
 msgstr "今年以来付款"
 
@@ -6471,20 +6407,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "升级需要 ZipArchive 扩展"
 
 #: 
-msgid "active"
-msgstr "活动"
-
-#: 
 msgid "found"
 msgstr "找到"
 
 #: 
 msgid "issues"
 msgstr "问题"
-
-#: 
-msgid "open"
-msgstr "开启"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -9547,10 +9475,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "按财年跟踪家庭奉献承诺和基金捐献"
 
 #: 
-msgid "Transaction Details"
-msgstr "交易详情"
-
-#: 
 msgid "Unmapped"
 msgstr "未映射"
 
@@ -9633,10 +9557,6 @@ msgstr "查看家庭奉献承诺摘要和基金分配"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "查看小组成员、角色和属性"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "查看奉献承诺付款的交易详情"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11195,10 +11115,6 @@ msgstr "靛蓝色"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "JSON 值无效——设置未保存。请更正后重试。"
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "加入 POEditor 上的翻译项目"
 
 #: 
 msgid "Language and regional settings"
@@ -15457,14 +15373,6 @@ msgid "Calendar Embed Origins"
 msgstr "日历嵌入来源"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM 的翻译由社区在 POEditor 上管理，您可以通过以下方式参与贡献"
-
-#: 
-msgid "Closed Deposits"
-msgstr "已关闭的存款"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "当前 $URL[0] 值"
 
@@ -15605,10 +15513,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "此义工机会已有人员分配，删除将取消分配"
 
 #: 
-msgid "Total Deposits"
-msgstr "存款总计"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "将其更新为有效的 URL，该 URL"
 
@@ -15635,10 +15539,6 @@ msgstr "适用于奉献基金"
 #: 
 msgid "user"
 msgstr "用户"
-
-#: 
-msgid "with at least one"
-msgstr "至少含有一个"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17409,10 +17309,6 @@ msgstr "本财政年度已筹集金额"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s 必须是完整的 https:// 网址，例如 https://example.org/yourchurch。"
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "账户权限受限，请联系管理员。"
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -20478,10 +20374,6 @@ msgid "Read the theme authoring guide"
 msgstr "阅读主题制作指南"
 
 #: 
-msgid "Recent Emails"
-msgstr "最近的电子邮件"
-
-#: 
 msgid "Recipient"
 msgstr "收件人"
 
@@ -22654,10 +22546,6 @@ msgid "Search by family name or envelope #"
 msgstr "按家庭名称或信封编号搜索"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "无法删除有认捐或付款记录的家庭。请先转移或删除财务记录。"
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "您不能删除自己的账户。"
 
@@ -24036,10 +23924,6 @@ msgid "%s Giving Statement"
 msgstr "%s 奉献报表"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "自定义奉献报表上显示的文本（sTaxReport1、sTaxReport2 等）。"
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24062,10 +23946,6 @@ msgstr "通过电子邮件发送 %s 奉献报表"
 #: 
 msgid "Envelope Numbers"
 msgstr "信封编号"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "生成奉献报表"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24106,10 +23986,6 @@ msgstr "无法通过电子邮件发送奉献报表：此家庭没有记录的电
 #: 
 msgid "Undesignated"
 msgstr "未指定"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "验证教会名称、地址和联系信息是否出现在奉献报表上。"
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24324,10 +24200,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "有 %d 笔付款尚未记入任何存款。"
 
 #: 
-msgid "Can be emailed"
-msgstr "可以电邮"
-
-#: 
 msgid "Closing line"
 msgstr "结束语"
 
@@ -24356,16 +24228,8 @@ msgid "Opening line"
 msgstr "开场语"
 
 #: 
-msgid "Print and mail"
-msgstr "打印并邮寄"
-
-#: 
 msgid "Qty"
 msgstr "数量"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "核对年度后，打印或电邮奉献报表。"
 
 #: 
 msgid "Signed by"
@@ -24374,10 +24238,6 @@ msgstr "签署人"
 #: 
 msgid "Thank-you line"
 msgstr "致谢语"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "请确认教会名称、地址和联系信息显示在税务报表上。"
 
 #: 
 msgid "Year-End Giving"
@@ -27394,4 +27254,711 @@ msgstr "您的数据属于您。报告内容仅涉及软件，绝不涉及您的
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "您的数据属于您。为统计安装数，ChurchCRM 会报告它已安装或升级以及是否成功、使用期间每天一次的签到，以及版本号、您的国家、数据库类型和随机安装 ID。它绝不会报告会友、奉献或其他教会记录、您的教会名称、您的网址或服务器名称、电子邮件地址。您可以随时在 管理 → 遥测 中关闭此功能；失败的安装或升级仍会被报告。警告、错误详情和页面访问只有在您选择后才会共享。"
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s:还有 %2$d 笔存款未关闭。请先关闭,使每笔奉献在发送对账单之前成为最终记录。"
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "已保存 %d 个信封编号。"
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d 个家庭"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s:所有存款均已关闭。可以准备对账单了。"
+
+#: 
+msgid "12 months"
+msgstr "12 个月"
+
+#: 
+msgid "30 days"
+msgstr "30 天"
+
+#: 
+msgid "90 days"
+msgstr "90 天"
+
+#: 
+msgid "Add Property"
+msgstr "添加属性"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "再多添加几个字符或一个符号。"
+
+#: 
+msgid "Add and edit events"
+msgstr "添加和编辑活动"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "添加更多字符,或混合使用数字和符号。"
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "添加更多字符,并混合使用大小写字母、数字和符号。"
+
+#: 
+msgid "Add people and families"
+msgstr "添加人员和家庭"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "功能开启期间,管理员拥有所有权限。"
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "同时禁用登录,使其无法使用成员门户"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "发送对账单之前"
+
+#: 
+msgid "Birthday today"
+msgstr "今天生日"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "无法创建私有税务签名文件。请检查存储文件夹是否可写。"
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "无法创建税务签名存储文件夹 %s。请确保 Web 服务器可以写入该文件夹,或在税务签名存储路径设置中指定一个可写文件夹。"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "无法删除有认捐或付款记录的家庭。请改为停用该家庭以保留财务历史。仅在合适时才迁移财务记录。"
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "无法对私有税务签名进行编码。"
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "无法向该方向移动字段"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "无法读取私有税务签名。"
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "无法移除私有签名。"
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "无法移除私有税务签名文件。"
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "无法解析用于存储税务签名的应用程序文件夹。"
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "无法存储私有签名。"
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "无法在税务签名存储文件夹中写入访问保护文件 %s。"
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "更改所选成员的角色:{{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "教会财政年度"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ChurchCRM 系统检查"
+
+#: 
+msgid "Custom field not found"
+msgstr "未找到自定义字段"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "改为停用该家庭"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "请停用该家庭,而不是删除。"
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "请停用该人员,而不是删除。"
+
+#: 
+msgid "Delete people and families"
+msgstr "删除人员和家庭"
+
+#: 
+msgid "Delete the login for"
+msgstr "删除以下对象的登录:"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "存款图表时间范围"
+
+#: 
+msgid "Disabled at"
+msgstr "停用时间"
+
+#: 
+msgid "Disabled by"
+msgstr "停用者"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "下载会发送当年所有奉献者。“查看并筛选”会先显示合计,并允许按家庭、基金、班级或日期缩小范围。"
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "信封编号重复"
+
+#: 
+msgid "Edit people and families"
+msgstr "编辑人员和家庭"
+
+#: 
+msgid "Email people and groups"
+msgstr "向人员和小组发送电子邮件"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "请在 Web 服务器配置中启用缺少的 PHP 扩展,重启 Web 服务器,然后重新加载此页面。如果您使用托管服务商,请联系他们启用所列扩展。"
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "手动输入设置密钥"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "请输入 0 到 %d 之间的起始编号。"
+
+#: 
+msgid "Enter fullscreen"
+msgstr "进入全屏"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "请使用基于时间的 (TOTP) 6 位验证码和 30 秒间隔,将此密钥输入您的验证器或密码管理器。请妥善保密此密钥。"
+
+#: 
+msgid "Enter your username or email"
+msgstr "输入您的用户名或电子邮件"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "信封编号必须是 0 到 %d 之间的整数。未保存任何内容。"
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "本教会已关闭活动功能"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "退出全屏"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "删除自定义字段失败"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "移动自定义字段失败"
+
+#: 
+msgid "Fair"
+msgstr "一般"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "已为 %s 认捐但没有为 %s 认捐的家庭。"
+
+#: 
+msgid "Families with at least one member in"
+msgstr "至少有一名成员属于以下项目的家庭:"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "本教会已关闭财务功能"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "查找在一个财政年度认捐而在另一个年度未认捐的家庭。"
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "存储奉献对账单私有签名的文件夹。留空则使用内置私有文件夹 Images/TaxSignatures,该文件夹会阻止直接的网页访问。要使用其他文件夹,请输入位于 ChurchCRM 文件夹之外且 Web 服务器可写入的绝对路径。"
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "本教会已关闭募捐功能"
+
+#: 
+msgid "Good"
+msgstr "良好"
+
+#: 
+msgid "Have an email"
+msgstr "有电子邮件"
+
+#: 
+msgid "Hide setup key"
+msgstr "隐藏设置密钥"
+
+#: 
+msgid "How to respond"
+msgstr "如何回应"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "等待您审阅的想法"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "不包括停用的家庭。付款不计为认捐。"
+
+#: 
+msgid "Invalid request."
+msgstr "请求无效。"
+
+#: 
+msgid "Invalid signature image data."
+msgstr "签名图像数据无效。"
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "已存储的税务签名标识符无效。"
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "税务签名存储无效。"
+
+#: 
+msgid "Last successful login"
+msgstr "上次成功登录"
+
+#: 
+msgid "Lockout state"
+msgstr "锁定状态"
+
+#: 
+msgid "Login deleted"
+msgstr "登录已删除"
+
+#: 
+msgid "Mail only"
+msgstr "仅邮寄"
+
+#: 
+msgid "Manage all ministries"
+msgstr "管理所有事工"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "成员已移至 {{role}}:{{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "因已离开小组或由事工管理其角色而未更改的成员:{{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "事工协调人"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "距离自动解锁的分钟数"
+
+#: 
+msgid "Missing Pledges"
+msgstr "缺少的认捐"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "没有 GitHub 账号?请在 Discord 告诉我们"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "没有任何活跃家庭为 %s 认捐却未为 %s 认捐。"
+
+#: 
+msgid "No families found."
+msgstr "未找到家庭。"
+
+#: 
+msgid "No ministry assigned"
+msgstr "未分配事工"
+
+#: 
+msgid "No open deposit"
+msgstr "没有未关闭的存款"
+
+#: 
+msgid "No pledge for"
+msgstr "没有认捐:"
+
+#: 
+msgid "Not granted to this account"
+msgstr "未授予此账号"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "未带领志愿者团队"
+
+#: 
+msgid "Not locked"
+msgstr "未锁定"
+
+#: 
+msgid "Number of Payments"
+msgstr "付款笔数"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "只需一分钟。我们不会分享您发送的内容。"
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "打开一个想法。如果您的教会需要,请用 👍 投票,并简短说明您目前的工作方式。"
+
+#: 
+msgid "Open deposit"
+msgstr "未关闭的存款"
+
+#: 
+msgid "Password change required at next login"
+msgstr "下次登录时需要更改密码"
+
+#: 
+msgid "Password strength"
+msgstr "密码强度"
+
+#: 
+msgid "People & Families"
+msgstr "人员和家庭"
+
+#: 
+msgid "Pledged for"
+msgstr "认捐给:"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "准备奉献对账单"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "预览示例信函"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "加拿大奉献对账单私有签名的资源标识符。通过上传签名进行管理。"
+
+#: 
+msgid "Property Type"
+msgstr "属性类型"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "仅提供 PNG 或 JPEG 格式的签名图像数据。"
+
+#: 
+msgid "Recorded history: %s."
+msgstr "已记录的历史:%s。"
+
+#: 
+msgid "Report Issue"
+msgstr "报告问题"
+
+#: 
+msgid "Requirement"
+msgstr "要求"
+
+#: 
+msgid "Return Home"
+msgstr "返回首页"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "查看一个财政年度,然后下载奉献对账单。"
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "查看并关闭存款"
+
+#: 
+msgid "Review and Filter"
+msgstr "查看并筛选"
+
+#: 
+msgid "Review and vote"
+msgstr "查看并投票"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "查看该年度,然后下载奉献对账单。"
+
+#: 
+msgid "Review what we are considering"
+msgstr "查看我们正在考虑的内容"
+
+#: 
+msgid "Roles & permissions"
+msgstr "角色和权限"
+
+#: 
+msgid "Select at least one member."
+msgstr "请至少选择一名成员。"
+
+#: 
+msgid "Setup key"
+msgstr "设置密钥"
+
+#: 
+msgid "Sign-in status"
+msgstr "登录状态"
+
+#: 
+msgid "Signature storage folder"
+msgstr "签名存储文件夹"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "签名已更新,但无法移除之前的私有签名文件。"
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "缺少一些 PHP 要求。ChurchCRM 需要它们才能继续。"
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "先创建一笔存款,然后将每笔付款添加到其中。"
+
+#: 
+msgid "Starting envelope number"
+msgstr "起始信封编号"
+
+#: 
+msgid "Strong"
+msgstr "强"
+
+#: 
+msgid "Support"
+msgstr "支持"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "税号和 PDF 设置"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "无法加载列表。您仍可在 GitHub 上打开这些想法。"
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "名称最多可包含 %d 个字符"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "找不到您请求的页面。它可能已被移动、重命名或不再存在。"
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "提示最多可包含 %d 个字符"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "所选成员已拥有该角色。"
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "无法解码签名图像。"
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "签名图像不得超过 2 MiB。"
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "签名图像必须适合 2000 × 1000 像素。"
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Web 服务器无法写入税务签名存储文件夹 %s。"
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "税务签名存储文件夹不能是符号链接。"
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "税务签名存储路径必须位于 ChurchCRM 文件夹之外。将设置留空以使用内置私有文件夹。"
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "税务签名存储路径设置必须是绝对文件夹路径。"
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "在您选择“更新家庭记录”之前,这些信封编号不会被保存。"
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "他们无法以员工身份或登录成员门户,其会话、设备和通行密钥将被移除。"
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "无法删除该家庭,因为它有备注。请改为停用该家庭以保留其历史。"
+
+#: 
+msgid "This password looks strong."
+msgstr "此密码看起来很强。"
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "无法删除此人,因为其有已记录的活动。请改为停用此人以保留其历史。"
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "这只会移除登录。此人及其备注会保留。"
+
+#: 
+msgid "Time Range"
+msgstr "时间范围"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "已注册双重身份验证"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "无法自动复制。请选中并手动复制设置密钥。"
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "上传 PNG 或 JPEG 签名图像。"
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "请使用上传或移除签名来更改此设置。"
+
+#: 
+msgid "User Details"
+msgstr "用户详情"
+
+#: 
+msgid "Username or Email Address"
+msgstr "用户名或电子邮件地址"
+
+#: 
+msgid "View all ideas"
+msgstr "查看所有想法"
+
+#: 
+msgid "View events"
+msgstr "查看活动"
+
+#: 
+msgid "View people and families"
+msgstr "查看人员和家庭"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "本教会已关闭志愿者管理"
+
+#: 
+msgid "Weak"
+msgstr "弱"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "此账号目前可以执行的操作(只读)"
+
+#: 
+msgid "You must select a class"
+msgstr "您必须选择一个班级"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "您教会的财政年度不是从 1 月 1 日开始。税务机关通常需要日历年度的收据:请选择“查看并筛选”,并将日期设置为 1 月 1 日至 12 月 31 日。"
+
+#: 
+msgid "attendance"
+msgstr "出席"
+
+#: 
+msgid "financial history"
+msgstr "财务历史"
+
+#: 
+msgid "notes"
+msgstr "备注"
+
+#: 
+msgid "recorded activities"
+msgstr "已记录的活动"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "系统用户的 API 密钥已重新生成"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "系统用户通过邮件链接重置了密码"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "系统用户关闭了双重身份验证"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "系统用户开启了双重身份验证"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "系统用户的双重身份验证已被管理员停用"
+
+#: 
+msgid "volunteer service history"
+msgstr "志愿服务历史"
+
+#: 
+msgid "%s by %s"
+msgstr "%s 由 %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "输入您的密码或验证器应用中的代码，以更改双重身份验证。"
+
+#: 
+msgid "Latest Notes"
+msgstr "最新备注"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "尚未添加任何备注。"
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "开始注册以获取二维码。"
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "该密码或代码不正确。双重身份验证仍处于启用状态。"
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "双重身份验证已设置。其密钥仅在注册期间显示。"
 

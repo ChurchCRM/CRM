@@ -2,6 +2,8 @@
 
 namespace ChurchCRM\Volunteer\Service;
 
+use ChurchCRM\Portal\Auth\PortalMemberUser;
+
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Exceptions\EventDeleteRefusedException;
 use ChurchCRM\model\ChurchCRM\CalendarEventQuery;
@@ -54,7 +56,6 @@ class VolunteerEventService
 {
     /** Hard cap on one Calendar tab listing, the occurrence list's number (design M9). */
     public const MAX_EVENT_LIST = VolunteerScheduleService::MAX_OCCURRENCE_LIST;
-
 
     /** The event type added for a ministry's own events when V2 is turned on (D31, #10357). */
     public const OTHER_EVENT_TYPE_NAME = 'Other';
@@ -186,7 +187,7 @@ class VolunteerEventService
      */
     private function assertMayManageEvents(int $ministryId, User $actor, string $message): void
     {
-        if ($actor->isEditSelfExclusive() || !$this->authz->canManageMinistry($actor, $ministryId)) {
+        if ($actor instanceof PortalMemberUser || !$this->authz->canManageMinistry($actor, $ministryId)) {
             throw VolunteerException::forbidden($message);
         }
     }
@@ -1110,7 +1111,7 @@ class VolunteerEventService
     {
         foreach ($events as $event) {
             $ministryId = $event->getMinistryId() === null ? null : (int) $event->getMinistryId();
-            if ($actor->isEditSelfExclusive() || !$this->authz->canWriteEvent($actor, $ministryId)) {
+            if ($actor instanceof PortalMemberUser || !$this->authz->canWriteEvent($actor, $ministryId)) {
                 throw VolunteerException::forbidden(sprintf(gettext('Not authorized to change the event %s'), $event->getTitle()));
             }
         }
@@ -1187,7 +1188,7 @@ class VolunteerEventService
 
         $total = array_sum(array_column($counts, 'count'));
         $ministryId = $event->getMinistryId() === null ? null : (int) $event->getMinistryId();
-        $mayEdit = !$viewer->isEditSelfExclusive() && $this->authz->canWriteEvent($viewer, $ministryId);
+        $mayEdit = !($viewer instanceof PortalMemberUser) && $this->authz->canWriteEvent($viewer, $ministryId);
 
         return [
             'recorded' => $total > 0,

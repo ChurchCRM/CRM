@@ -1553,10 +1553,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Tildele en ny frivillig Opportunity"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Elektronisk transaksjon detaljer"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Nondeductible beløpet kan ikke være større enn totalbeløpet."
 
@@ -2239,10 +2235,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "Dette vil overskrive familiens konvoluttnummer i databasen med de som er valgt på denne siden. Fortsette?"
 
 #: 
-msgid "Family Select"
-msgstr "Velg familie"
-
-#: 
 msgid "Welcome to"
 msgstr "Velkommen til"
 
@@ -2537,10 +2529,6 @@ msgstr "Vis alle innskudd"
 #: 
 msgid "Deposit Reports"
 msgstr "Innskuddsrapporter"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "Rediger innskuddsblankett"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6134,14 +6122,6 @@ msgid "Close All Deposits"
 msgstr "Lukk alle innskudd"
 
 #: 
-msgid "Closed vs Total"
-msgstr "Lukkede mot totalt"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "Fullfør disse oppgavene for å sikre nøyaktig skatterapportering for dine givere ved årsslutt."
-
-#: 
 msgid "Configure Email"
 msgstr "Konfigurer e-post"
 
@@ -6158,28 +6138,12 @@ msgid "Create First Deposit"
 msgstr "Opprett første innskudd"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "Opprett eller åpne et innskudd først"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "Opprett eller velg et innskudd for å komme i gang."
-
-#: 
-msgid "Current Deposit"
-msgstr "Gjeldende innskudd"
-
-#: 
 msgid "Day"
 msgstr "Dag"
 
 #: 
 msgid "Dec"
 msgstr "des."
-
-#: 
-msgid "Deposit Statistics"
-msgstr "Innskuddsstatistikk"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6208,10 +6172,6 @@ msgstr "Rediger betaling"
 #: 
 msgid "Edit Person"
 msgstr "Rediger person"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "Forsikre deg om at alle innskudd for skatteåret er lukket før du genererer årsoppgaver."
 
 #: 
 msgid "F"
@@ -6318,10 +6278,6 @@ msgid "New Pledge"
 msgstr "Nytt løfte"
 
 #: 
-msgid "No Active Deposit"
-msgstr "Ingen aktivt innskudd"
-
-#: 
 msgid "No active funds configured."
 msgstr "Ingen aktive fond er konfigurert."
 
@@ -6354,10 +6310,6 @@ msgid "Pledge Reports"
 msgstr "Løfterapporter"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "Skriv ut eller send årlige gaveoversikter til alle givere per e-post."
-
-#: 
 msgid "Quick Actions"
 msgstr "Hurtighandlinger"
 
@@ -6388,10 +6340,6 @@ msgstr "Gjenopprett"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "Gjenopprett fra en sikkerhetskopifil. Sletter eksisterende data."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "Se over gavefond"
 
 #: 
 msgid "Save and Add New Family"
@@ -6430,14 +6378,6 @@ msgid "System Info"
 msgstr "Systeminfo"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "Tekst på årsoppgave"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "Sjekkliste for rapportering av skatteår"
-
-#: 
 msgid "Total"
 msgstr "Totalt"
 
@@ -6458,10 +6398,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "Bruker må være administrator eller ha økonomitillatelse"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "Verifiser at fondnavn og beskrivelser er nøyaktige for oppgavene."
-
-#: 
 msgid "YTD Payments"
 msgstr "Betalinger hittil i år"
 
@@ -6478,20 +6414,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ZipArchive-utvidelse kreves for oppgraderinger"
 
 #: 
-msgid "active"
-msgstr "aktiv"
-
-#: 
 msgid "found"
 msgstr "funnet"
 
 #: 
 msgid "issues"
 msgstr "problemer"
-
-#: 
-msgid "open"
-msgstr "åpne"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -9559,10 +9487,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Spor familiens giverløfter og fondsbidrag etter regnskapsår"
 
 #: 
-msgid "Transaction Details"
-msgstr "Transaksjonsdetaljer"
-
-#: 
 msgid "Unmapped"
 msgstr "Ikke tilordnet"
 
@@ -9645,10 +9569,6 @@ msgstr "Vis sammendrag av familiens giverløfter og fondstildelinger"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Vis gruppemedlemmer, roller og egenskaper"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Vis transaksjonsdetaljer for en giverløfteinnbetaling"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11207,10 +11127,6 @@ msgstr "Indigo"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "Ugyldig JSON-verdi — innstillingen ble ikke lagret. Vennligst korriger den og prøv igjen."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Bli med i oversettelsesprosjektet på POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15473,14 +15389,6 @@ msgid "Calendar Embed Origins"
 msgstr "Kalenderinnbygging – tillatte opprinnelser"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM-oversettelser administreres av fellesskapet på POEditor. Du kan bidra ved å"
-
-#: 
-msgid "Closed Deposits"
-msgstr "Avsluttede innskudd"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "Gjeldende $URL[0]-verdi"
 
@@ -15621,10 +15529,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "Det er personer tilknyttet denne frivilligoppgaven. Sletting vil fjerne tilknytningen"
 
 #: 
-msgid "Total Deposits"
-msgstr "Totale innskudd"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "Oppdater det til en gyldig URL som"
 
@@ -15651,10 +15555,6 @@ msgstr "for fond"
 #: 
 msgid "user"
 msgstr "bruker"
-
-#: 
-msgid "with at least one"
-msgstr "med minst én"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17427,10 +17327,6 @@ msgstr "Innsamlet dette regnskapsåret"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s må være en fullstendig https://-nettadresse, for eksempel https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "Kontoen har begrensede rettigheter. Kontakt en administrator."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -20505,10 +20401,6 @@ msgid "Read the theme authoring guide"
 msgstr "Les veiledningen for å lage temaer"
 
 #: 
-msgid "Recent Emails"
-msgstr "Nylige e-poster"
-
-#: 
 msgid "Recipient"
 msgstr "Mottaker"
 
@@ -22685,10 +22577,6 @@ msgid "Search by family name or envelope #"
 msgstr "Søk etter familienavn eller konvoluttnr."
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "Du kan ikke slette en familie som har løfter eller betalinger. Flytt eller fjern de økonomiske postene først."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "Du kan ikke slette din egen konto."
 
@@ -24067,10 +23955,6 @@ msgid "%s Giving Statement"
 msgstr "%s Gaveoppgave"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "Tilpass teksten som vises på gaveoppgaver (sTaxReport1, sTaxReport2 osv.)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24093,10 +23977,6 @@ msgstr "Send %s Gaveoppgave på e-post"
 #: 
 msgid "Envelope Numbers"
 msgstr "Konvoluttnumre"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "Generer gaveoppgaver"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24137,10 +24017,6 @@ msgstr "Kan ikke sende gaveoppgave på e-post: denne familien har ingen e-postad
 #: 
 msgid "Undesignated"
 msgstr "Ikke angitt"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "Verifiser at kirkens navn, adresse og kontaktinformasjon vises på gaveoppgaver."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24355,10 +24231,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d betalinger er ikke på noe innskudd ennå."
 
 #: 
-msgid "Can be emailed"
-msgstr "Kan sendes på e-post"
-
-#: 
 msgid "Closing line"
 msgstr "Avslutningslinje"
 
@@ -24387,16 +24259,8 @@ msgid "Opening line"
 msgstr "Åpningslinje"
 
 #: 
-msgid "Print and mail"
-msgstr "Skriv ut og send i posten"
-
-#: 
 msgid "Qty"
 msgstr "Ant."
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "Gå gjennom året, og skriv deretter ut eller send giveroppgaver på e-post."
 
 #: 
 msgid "Signed by"
@@ -24405,10 +24269,6 @@ msgstr "Signert av"
 #: 
 msgid "Thank-you line"
 msgstr "Takkelinje"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "Kontroller at kirkens navn, adresse og kontaktinformasjon vises på skatteoppgavene."
 
 #: 
 msgid "Year-End Giving"
@@ -27427,4 +27287,714 @@ msgstr "Dataene dine er dine. Dette rapporterer om programvaren, aldri om menigh
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "Dataene dine er dine. For å telle installasjoner rapporterer ChurchCRM at det er installert eller oppgradert og om det fungerte, en innsjekking én gang om dagen under bruk, i tillegg til versjonsnummeret, landet ditt, databasetypen og en tilfeldig installasjons-ID. Det rapporterer aldri medlems-, gave- eller andre menighetsopplysninger, navnet på menigheten, nettadressen eller servernavnet ditt eller e-postadresser. Du kan slå dette av når som helst under Admin → Telemetri; en mislykket installasjon eller oppgradering rapporteres fortsatt. Advarsler, feildetaljer og sidevisninger deles bare hvis du velger det."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d innskudd er fortsatt åpent. Lukk det slik at hver gave er endelig før oppgavene sendes ut."
+msgstr[1] "%1$s: %2$d innskudd er fortsatt åpne. Lukk dem slik at hver gave er endelig før oppgavene sendes ut."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "%d konvoluttnummer lagret."
+msgstr[1] "%d konvoluttnumre lagret."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d familie"
+msgstr[1] "%d familier"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: alle innskudd er lukket. Oppgavene er klare til å forberedes."
+
+#: 
+msgid "12 months"
+msgstr "12 måneder"
+
+#: 
+msgid "30 days"
+msgstr "30 dager"
+
+#: 
+msgid "90 days"
+msgstr "90 dager"
+
+#: 
+msgid "Add Property"
+msgstr "Legg til egenskap"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "Legg til noen flere tegn eller et symbol."
+
+#: 
+msgid "Add and edit events"
+msgstr "Legge til og redigere arrangementer"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "Legg til flere tegn eller bland inn tall og symboler."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "Legg til flere tegn, og bland store og små bokstaver, tall og symboler."
+
+#: 
+msgid "Add people and families"
+msgstr "Legge til personer og familier"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "Administratorer har alle tillatelser så lenge funksjonen er slått på."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "Deaktiver også innlogging, slik at de ikke kan bruke medlemsportalen"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "Før du sender oppgaver"
+
+#: 
+msgid "Birthday today"
+msgstr "Bursdag i dag"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "Kan ikke opprette den private skattesignaturfilen. Kontroller at lagringsmappen er skrivbar."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "Kan ikke opprette lagringsmappen %s for skattesignaturen. Sørg for at webserveren kan skrive til den, eller angi en skrivbar mappe i innstillingen for lagringsbane for skattesignaturen."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "En familie med løfter eller betalinger kan ikke slettes. Deaktiver familien i stedet for å bevare den økonomiske historikken. Flytt de økonomiske postene bare hvis det passer."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "Kan ikke kode den private skattesignaturen."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "Kan ikke flytte feltet i den retningen"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "Kan ikke lese den private skattesignaturen."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "Kan ikke fjerne den private signaturen."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "Kan ikke fjerne den private skattesignaturfilen."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "Kan ikke finne programmappen for lagring av skattesignaturen."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "Kan ikke lagre den private signaturen."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "Kan ikke skrive tilgangsvakten %s i lagringsmappen for skattesignaturen."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "Endre rolle for valgte medlemmer: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "Kirkens regnskapsår"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ChurchCRM systemkontroll"
+
+#: 
+msgid "Custom field not found"
+msgstr "Egendefinert felt ble ikke funnet"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "Deaktiver familien i stedet"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "Deaktiver familien i stedet for å slette den."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "Deaktiver personen i stedet for å slette den."
+
+#: 
+msgid "Delete people and families"
+msgstr "Slette personer og familier"
+
+#: 
+msgid "Delete the login for"
+msgstr "Slett påloggingen for"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "Tidsrom for innskuddsdiagram"
+
+#: 
+msgid "Disabled at"
+msgstr "Deaktivert"
+
+#: 
+msgid "Disabled by"
+msgstr "Deaktivert av"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "Nedlasting sender alle givere i året. Gjennomgå og filtrer viser summene først og lar deg begrense etter familie, fond, klasse eller dato."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "Duplisert konvoluttnummer"
+
+#: 
+msgid "Edit people and families"
+msgstr "Redigere personer og familier"
+
+#: 
+msgid "Email people and groups"
+msgstr "Sende e-post til personer og grupper"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "Aktiver de manglende PHP-utvidelsene i webserverkonfigurasjonen, start webserveren på nytt og last siden på nytt. Bruker du en vertstjeneste, be dem aktivere utvidelsene som er oppført."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "Skriv inn en oppsettsnøkkel manuelt"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "Skriv inn et startnummer fra 0 til %d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "Vis i fullskjerm"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "Skriv inn denne nøkkelen i autentiseringsappen eller passordbehandleren din med tidsbaserte koder (TOTP), 6 sifre og 30 sekunders intervall. Hold nøkkelen privat."
+
+#: 
+msgid "Enter your username or email"
+msgstr "Skriv inn brukernavn eller e-postadresse"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "Konvoluttnumre må være hele tall fra 0 til %d. Ingenting ble lagret."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "Arrangementer er slått av for denne kirken"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "Avslutt fullskjerm"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "Kunne ikke slette det egendefinerte feltet"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "Kunne ikke flytte det egendefinerte feltet"
+
+#: 
+msgid "Fair"
+msgstr "Greit"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "Familier som har gitt løfte for %s og ikke har løfte for %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "Familier med minst ett medlem i"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "Økonomi er slått av for denne kirken"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "Finn familier som ga løfte i ett regnskapsår og ikke i et annet."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "Mappe der den private signaturen for gaveoppgaver lagres. La stå tomt for å bruke den innebygde private mappen Images/TaxSignatures, som blokkerer direkte webtilgang. For å bruke en annen mappe, skriv inn en absolutt bane utenfor ChurchCRM-mappen som webserveren kan skrive til."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "Innsamlinger er slått av for denne kirken"
+
+#: 
+msgid "Good"
+msgstr "God"
+
+#: 
+msgid "Have an email"
+msgstr "Har e-postadresse"
+
+#: 
+msgid "Hide setup key"
+msgstr "Skjul oppsettsnøkkel"
+
+#: 
+msgid "How to respond"
+msgstr "Slik svarer du"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "Ideer som venter på din gjennomgang"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "Inaktive familier utelates. Betalinger regnes ikke som løfter."
+
+#: 
+msgid "Invalid request."
+msgstr "Ugyldig forespørsel."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "Ugyldige data for signaturbildet."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "Ugyldig lagret identifikator for skattesignaturen."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "Ugyldig lagring av skattesignaturen."
+
+#: 
+msgid "Last successful login"
+msgstr "Siste vellykkede pålogging"
+
+#: 
+msgid "Lockout state"
+msgstr "Låsestatus"
+
+#: 
+msgid "Login deleted"
+msgstr "Påloggingen er slettet"
+
+#: 
+msgid "Mail only"
+msgstr "Bare post"
+
+#: 
+msgid "Manage all ministries"
+msgstr "Administrer alle tjenester"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "Medlemmer flyttet til {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "Medlemmer som ikke ble endret fordi de forlot gruppen eller en tjeneste styrer rollen deres: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "Tjenestekoordinator"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "Minutter til automatisk opplåsing"
+
+#: 
+msgid "Missing Pledges"
+msgstr "Manglende løfter"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "Ingen GitHub-konto? Si fra til oss på Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "Ingen aktiv familie ga løfte for %s uten et løfte for %s."
+
+#: 
+msgid "No families found."
+msgstr "Fant ingen familier."
+
+#: 
+msgid "No ministry assigned"
+msgstr "Ingen tjeneste tilordnet"
+
+#: 
+msgid "No open deposit"
+msgstr "Ingen åpne innskudd"
+
+#: 
+msgid "No pledge for"
+msgstr "Ingen løfte for"
+
+#: 
+msgid "Not granted to this account"
+msgstr "Ikke gitt til denne kontoen"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "Leder ikke et frivillig team"
+
+#: 
+msgid "Not locked"
+msgstr "Ikke låst"
+
+#: 
+msgid "Number of Payments"
+msgstr "Antall betalinger"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "Ett minutt. Vi deler ikke det du sender."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "Åpne en idé. Stem med 👍 hvis kirken din trenger den, og legg til en kort kommentar om hvordan dere jobber i dag."
+
+#: 
+msgid "Open deposit"
+msgstr "Åpent innskudd"
+
+#: 
+msgid "Password change required at next login"
+msgstr "Passordendring kreves ved neste pålogging"
+
+#: 
+msgid "Password strength"
+msgstr "Passordstyrke"
+
+#: 
+msgid "People & Families"
+msgstr "Personer og familier"
+
+#: 
+msgid "Pledged for"
+msgstr "Løfte gitt for"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "Forbered gaveoppgaver"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "Forhåndsvis eksempelbrev"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "Identifikator for den private kanadiske signaturen for gaveoppgaver. Styres via opplasting av signatur."
+
+#: 
+msgid "Property Type"
+msgstr "Egenskapstype"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "Oppgi bare PNG- eller JPEG-bildedata for signaturen."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "Registrert historikk: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "Rapporter problem"
+
+#: 
+msgid "Requirement"
+msgstr "Krav"
+
+#: 
+msgid "Return Home"
+msgstr "Tilbake til start"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "Gå gjennom et regnskapsår, og last deretter ned gaveoppgaver."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "Gjennomgå og lukk innskudd"
+
+#: 
+msgid "Review and Filter"
+msgstr "Gjennomgå og filtrer"
+
+#: 
+msgid "Review and vote"
+msgstr "Gjennomgå og stem"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "Gå gjennom året, og last deretter ned gaveoppgaver."
+
+#: 
+msgid "Review what we are considering"
+msgstr "Se hva vi vurderer"
+
+#: 
+msgid "Roles & permissions"
+msgstr "Roller og tillatelser"
+
+#: 
+msgid "Select at least one member."
+msgstr "Velg minst ett medlem."
+
+#: 
+msgid "Setup key"
+msgstr "Oppsettsnøkkel"
+
+#: 
+msgid "Sign-in status"
+msgstr "Påloggingsstatus"
+
+#: 
+msgid "Signature storage folder"
+msgstr "Lagringsmappe for signatur"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "Signaturen er oppdatert, men den forrige private signaturfilen kunne ikke fjernes."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "Noen PHP-krav mangler. ChurchCRM trenger disse før det kan fortsette."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "Start et innskudd, og legg deretter hver betaling til det."
+
+#: 
+msgid "Starting envelope number"
+msgstr "Startnummer for konvolutter"
+
+#: 
+msgid "Strong"
+msgstr "Sterkt"
+
+#: 
+msgid "Support"
+msgstr "Støtte"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "Skatte-ID og PDF-innstillinger"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "Listen kunne ikke lastes. Du kan fortsatt åpne ideene på GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "Navnet kan være maksimalt %d tegn"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "Siden du ba om ble ikke funnet. Den kan ha blitt flyttet, omdøpt eller finnes ikke lenger."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "Ledeteksten kan være maksimalt %d tegn"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "De valgte medlemmene har allerede den rollen."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "Signaturbildet kunne ikke dekodes."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "Signaturbildet kan ikke være større enn 2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "Signaturbildet må passe innenfor 2000 × 1000 piksler."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "Lagringsmappen %s for skattesignaturen er ikke skrivbar for webserveren."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "Lagringsmappen for skattesignaturen kan ikke være en symbolsk lenke."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "Lagringsbanen for skattesignaturen må ligge utenfor ChurchCRM-mappen. La innstillingen stå tom for å bruke den innebygde private mappen."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "Innstillingen for lagringsbane for skattesignaturen må være en absolutt mappebane."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "Disse konvoluttnumrene lagres ikke før du velger Oppdater familieposter."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "De kan ikke logge inn som ansatte eller i medlemsportalen, og øktene, enhetene og tilgangsnøklene deres fjernes."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "Denne familien kan ikke slettes fordi den har notater. Deaktiver familien i stedet for å bevare historikken."
+
+#: 
+msgid "This password looks strong."
+msgstr "Dette passordet ser sterkt ut."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "Denne personen kan ikke slettes fordi den har registrerte aktiviteter. Deaktiver personen i stedet for å bevare historikken."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "Dette fjerner bare påloggingen. Personen og notatene beholdes."
+
+#: 
+msgid "Time Range"
+msgstr "Tidsrom"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "Tofaktorautentisering er satt opp"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "Kan ikke kopiere automatisk. Marker og kopier oppsettsnøkkelen manuelt."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "Last opp et PNG- eller JPEG-bilde av signaturen."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "Bruk opplasting eller fjerning av signatur for å endre denne innstillingen."
+
+#: 
+msgid "User Details"
+msgstr "Brukerdetaljer"
+
+#: 
+msgid "Username or Email Address"
+msgstr "Brukernavn eller e-postadresse"
+
+#: 
+msgid "View all ideas"
+msgstr "Vis alle ideer"
+
+#: 
+msgid "View events"
+msgstr "Vis arrangementer"
+
+#: 
+msgid "View people and families"
+msgstr "Vis personer og familier"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "Frivilligadministrasjon er slått av for denne kirken"
+
+#: 
+msgid "Weak"
+msgstr "Svakt"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "Hva denne kontoen kan gjøre akkurat nå (skrivebeskyttet)"
+
+#: 
+msgid "You must select a class"
+msgstr "Du må velge en klasse"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "Kirkens regnskapsår starter ikke 1. januar. Skattemyndigheter vil ofte ha kvitteringer for kalenderåret: velg Gjennomgå og filtrer og sett datoene til 1. januar – 31. desember."
+
+#: 
+msgid "attendance"
+msgstr "oppmøte"
+
+#: 
+msgid "financial history"
+msgstr "økonomisk historikk"
+
+#: 
+msgid "notes"
+msgstr "notater"
+
+#: 
+msgid "recorded activities"
+msgstr "registrerte aktiviteter"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "API-nøkkelen til systembrukeren ble generert på nytt"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "systembrukeren tilbakestilte passordet sitt fra en lenke i en e-post"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "systembrukeren slo av tofaktorautentisering"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "systembrukeren slo på tofaktorautentisering"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "tofaktorautentiseringen til systembrukeren ble slått av av administrator"
+
+#: 
+msgid "volunteer service history"
+msgstr "historikk for frivillig tjeneste"
+
+#: 
+msgid "%s by %s"
+msgstr "%s av %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Skriv inn passordet ditt eller en kode fra autentiseringsappen din for å endre totrinnsverifiseringen."
+
+#: 
+msgid "Latest Notes"
+msgstr "Nyeste notater"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Ingen notater er lagt til ennå."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Start registreringen for å få en QR-kode."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Passordet eller koden er ikke riktig. Totrinnsverifisering er fortsatt på."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Totrinnsverifisering er allerede satt opp. Hemmeligheten vises bare under registreringen."
 

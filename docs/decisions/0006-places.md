@@ -4,6 +4,7 @@
 > A church keeps each building or address once: a name, an address, and contact details. The list is shared. A person manages it only with the Manage places permission, which is not the same as adding an event. Events are the first feature that will pick from it, and that work is [RFC 0007](0007-event-locations.md). This RFC does not add an event picker, a room, or a calendar. The place list, its API, and its admin pages can ship on their own.
 
 **Status:** Proposed, open for review; no release commitment
+**Audience:** Technical — maintainer only; no community discussion.
 **Date:** 2026-10-23
 **Owner:** George Dawoud
 **Replaces:** the place half of [#5238](https://github.com/ChurchCRM/CRM/issues/5238) and sub-issues #8575, #8576, #8577, #8578, #8579 · **Related:** [RFC 0007](0007-event-locations.md), closed [#4223](https://github.com/ChurchCRM/CRM/issues/4223)

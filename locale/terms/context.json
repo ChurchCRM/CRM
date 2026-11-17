@@ -1,0 +1,13 @@
+{
+  "ChurchCRM translations are managed in the ChurchCRM GitHub repository. You can help by": [
+    "src/account/views/account.php:349"
+  ],
+  "Help Translate on GitHub": [
+    "src/account/views/account.php:356"
+  ],
+  "View all": [
+    "src/people/routes/map.php:88",
+    "src/people/views/person-list.php:192",
+    "src/people/views/timeline-events.php:58"
+  ]
+}

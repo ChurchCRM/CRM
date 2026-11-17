@@ -54,13 +54,11 @@ describe("Self Registrations review page", () => {
 
     const row = (text) => cy.get("#selfRegistrations tbody tr", { timeout: 10000 }).contains("tr", text);
 
+    // The cleanup helpers clear any history the guard would refuse (#10485)
+    // and check each record is gone.
     after(() => {
-        created.persons.forEach((id) => {
-            cy.makePrivateAdminAPICall("DELETE", `/api/person/${id}`, null, [200, 404]);
-        });
-        created.families.forEach((id) => {
-            cy.makePrivateAdminAPICall("DELETE", `/api/family/${id}?deleteMembers=true`, null, [200, 404]);
-        });
+        cy.cleanupPeople(created.persons);
+        cy.cleanupFamilies(created.families);
     });
 
     describe("Navigation", () => {

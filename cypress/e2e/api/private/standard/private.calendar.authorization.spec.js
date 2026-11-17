@@ -15,7 +15,7 @@
  * omission cannot come back.
  *
  * Fixtures:
- *   - noperm.user    (id=901) every permission flag 0, EditSelf=0 — read-only
+ *   - noperm.user    (id=901) every permission flag 0 — read-only
  *   - john.plainauth (id=900) Notes=1 only — read-only
  *   - Admin          (id=1)   canManageEvents() === true via isAdmin()
  */

@@ -1,0 +1,82 @@
+name: "Locale: rebuild generated files"
+
+# Stage 3 of the locale flow: translate PRs carry only the locale JSON (the
+# source of truth) and the queue. Once one merges, this workflow rebuilds the
+# generated .po/.mo from the JSON on master and opens or updates ONE rolling
+# rebuild PR, the same pattern as the terms PR. The rebuild is verified with
+# locale:apply --check before the PR is opened, so a rebuild PR always
+# carries .po/.mo that match the JSON exactly.
+#
+# Loop safety: this workflow triggers only on src/locale/i18n and
+# locale/messages.po. A rebuild PR touches only src/locale/textdomain, so
+# merging it never retriggers this workflow, and the terms workflow already
+# excludes src/locale/textdomain.
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/locale/i18n/**'
+      - 'locale/messages.po'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  rebuild:
+    concurrency:
+      group: locale-rebuild
+      cancel-in-progress: false
+    timeout-minutes: 20
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: master
+
+      - name: Setup Node.js (from .nvmrc)
+        uses: ./.github/actions/setup-node
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Rebuild .po/.mo from the locale JSON (npm run locale:apply)
+        run: npm run locale:apply
+
+      - name: Verify the generated files match the JSON
+        run: npm run locale:apply -- --check
+
+      - name: Read the version for the rolling branch
+        id: version
+        run: echo "version=$(node -p "require('./package.json').version")" >> "$GITHUB_OUTPUT"
+
+      # Rolling branch: while a rebuild PR is open, a later translate merge
+      # updates the same PR instead of opening another.
+      - name: Open or update the rebuild PR
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8
+        with:
+          base: master
+          branch: 'locale/rebuild/${{ steps.version.outputs.version }}'
+          delete-branch: true
+          add-paths: |
+            src/locale/textdomain
+          labels: |
+            Localization
+          title: 'locale: rebuild generated .po/.mo files'
+          commit-message: 'locale: rebuild generated .po/.mo files'
+          body: |
+            Generated files only: each locale's `.po`/`.mo` rebuilt from its
+            `src/locale/i18n/*.json` by `npm run locale:apply`, after a
+            translate (or terms) PR changed the JSON on master.
+
+            Verified in the workflow run: `npm run locale:apply -- --check`
+            passed, so every `.po`/`.mo` here matches its JSON.

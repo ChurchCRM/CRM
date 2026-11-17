@@ -148,6 +148,7 @@ jobs:
           add-paths: |
             locale/messages.po
             locale/terms/missing
+            locale/terms/context.json
             src/locale/i18n
             src/locale/textdomain
           labels: |

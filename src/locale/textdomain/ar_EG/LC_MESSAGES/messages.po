@@ -1496,10 +1496,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "تعيين المتطوعين الفرص جديد"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "تفاصيل العملية الإلكترونية"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "كمية NonDeductible لا يمكن أن يكون أكبر من المبلغ الإجمالي."
 
@@ -2154,10 +2150,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "سيؤدي هذا إلى استبدال الأرقام المغلف الأسرة في قاعدة البيانات مع أولئك الذين يتم اختيارهم على هذه الصفحة. استمر؟"
 
 #: 
-msgid "Family Select"
-msgstr "اختر الأسرة"
-
-#: 
 msgid "Welcome to"
 msgstr "مرحبا بك في"
 
@@ -2456,10 +2448,6 @@ msgstr "مشاهدة جميع الودائع"
 #: 
 msgid "Deposit Reports"
 msgstr "تقارير الودائع"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "تحرير الإيداع زلة"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6077,14 +6065,6 @@ msgid "Close All Deposits"
 msgstr "إغلاق جميع الودائع"
 
 #: 
-msgid "Closed vs Total"
-msgstr "المغلق مقابل الإجمالي"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "أكمل هذه المهام لضمان إعداد تقارير ضريبية دقيقة في نهاية السنة للمانحين."
-
-#: 
 msgid "Configure Email"
 msgstr "تكوين البريد الإلكتروني"
 
@@ -6101,28 +6081,12 @@ msgid "Create First Deposit"
 msgstr "إنشاء الإيداع الأول"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "أنشئ أو افتح إيداع أولا"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "أنشئ أو حدد إيداع للبدء."
-
-#: 
-msgid "Current Deposit"
-msgstr "الإيداع الحالي"
-
-#: 
 msgid "Day"
 msgstr "اليوم"
 
 #: 
 msgid "Dec"
 msgstr "ديسمبر"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "إحصائيات الإيداع"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6151,10 +6115,6 @@ msgstr "تحرير الدفع"
 #: 
 msgid "Edit Person"
 msgstr "تعديل الشخص"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "تأكد من إغلاق جميع الودائع للسنة الضريبية قبل إنشاء البيانات."
 
 #: 
 msgid "F"
@@ -6261,10 +6221,6 @@ msgid "New Pledge"
 msgstr "تعهد جديد"
 
 #: 
-msgid "No Active Deposit"
-msgstr "لا يوجد إيداع نشط"
-
-#: 
 msgid "No active funds configured."
 msgstr "لم يتم تكوين صناديق نشطة."
 
@@ -6297,10 +6253,6 @@ msgid "Pledge Reports"
 msgstr "تقارير التعهدات"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "اطبع أو أرسل بالبريد الإلكتروني بيانات الإعطاء السنوية لجميع المانحين."
-
-#: 
 msgid "Quick Actions"
 msgstr "الإجراءات السريعة"
 
@@ -6331,10 +6283,6 @@ msgstr "استعادة"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "استعادة من ملف نسخة احتياطية. يمسح البيانات الموجودة."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "مراجعة صناديق التبرعات"
 
 #: 
 msgid "Save and Add New Family"
@@ -6373,14 +6321,6 @@ msgid "System Info"
 msgstr "معلومات النظام"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "صياغة تقرير الضريبة"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "قائمة تحقق من تقارير السنة الضريبية"
-
-#: 
 msgid "Total"
 msgstr "الإجمالي"
 
@@ -6401,10 +6341,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "يجب أن يكون المستخدم مسؤولا أو لديه إذن مالي"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "تحقق من أن أسماء الصناديق والأوصاف دقيقة للبيانات."
-
-#: 
 msgid "YTD Payments"
 msgstr "المدفوعات من بداية السنة"
 
@@ -6421,20 +6357,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ملحق ZipArchive مطلوب للترقيات"
 
 #: 
-msgid "active"
-msgstr "نشط"
-
-#: 
 msgid "found"
 msgstr "وجدت"
 
 #: 
 msgid "issues"
 msgstr "المشاكل"
-
-#: 
-msgid "open"
-msgstr "مفتوح"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -9522,10 +9450,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "تتبع تعهدات العائلة ومساهمات الصندوق حسب السنة المالية"
 
 #: 
-msgid "Transaction Details"
-msgstr "تفاصيل المعاملة"
-
-#: 
 msgid "Unmapped"
 msgstr "غير مرسوم"
 
@@ -9608,10 +9532,6 @@ msgstr "عرض ملخصات التعهدات العائلية وتخصيصات �
 #: 
 msgid "View group members, roles, and properties"
 msgstr "عرض أعضاء المجموعة والأدوار والخصائص"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "عرض تفاصيل المعاملة لدفعة التعهد"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11170,10 +11090,6 @@ msgstr "نيلي"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "قيمة JSON غير صالحة — لم يتم حفظ الإعداد. يُرجى تصحيحه والمحاولة مرة أخرى."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "انضم إلى مشروع الترجمة على POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15452,14 +15368,6 @@ msgid "Calendar Embed Origins"
 msgstr "مصادر تضمين التقويم"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ترجمات ChurchCRM تُدار من قبل المجتمع على POEditor. يمكنك المساعدة من خلال"
-
-#: 
-msgid "Closed Deposits"
-msgstr "الإيداعات المغلقة"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "قيمة $URL[0] الحالية"
 
@@ -15600,10 +15508,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "يوجد أشخاص مُعَيَّنون لفرصة التطوع هذه. سيؤدي الحذف إلى إلغاء تعيينهم"
 
 #: 
-msgid "Total Deposits"
-msgstr "إجمالي الإيداعات"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "قم بتحديثه إلى رابط URL صحيح"
 
@@ -15630,10 +15534,6 @@ msgstr "للصناديق"
 #: 
 msgid "user"
 msgstr "مستخدم"
-
-#: 
-msgid "with at least one"
-msgstr "مع واحد على الأقل"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17414,10 +17314,6 @@ msgstr "المبلغ المجمّع في هذه السنة المالية"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "يجب أن يكون %s عنوان ويب كاملاً بصيغة https://‎، على سبيل المثال https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "الحساب لديه صلاحيات محدودة. يرجى التواصل مع أحد المسؤولين."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -20528,10 +20424,6 @@ msgid "Read the theme authoring guide"
 msgstr "اقرأ دليل تأليف السمات"
 
 #: 
-msgid "Recent Emails"
-msgstr "الرسائل الأخيرة"
-
-#: 
 msgid "Recipient"
 msgstr "المستلم"
 
@@ -22724,10 +22616,6 @@ msgid "Search by family name or envelope #"
 msgstr "البحث باسم العائلة أو رقم المظروف"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "لا يمكن حذف عائلة لديها تعهدات أو مدفوعات. انقل السجلات المالية أو احذفها أولاً."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "لا يمكنك حذف حسابك الخاص."
 
@@ -24106,10 +23994,6 @@ msgid "%s Giving Statement"
 msgstr "كشف عطايا %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "خصص النص الذي يظهر على كشوف العطايا (sTaxReport1 و sTaxReport2 وما إلى ذلك)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24132,10 +24016,6 @@ msgstr "إرسال كشف عطايا %s عبر البريد الإلكتروني
 #: 
 msgid "Envelope Numbers"
 msgstr "أرقام المظاريف"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "إنشاء كشوف العطايا"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24176,10 +24056,6 @@ msgstr "تعذر إرسال كشف العطايا عبر البريد الإلك
 #: 
 msgid "Undesignated"
 msgstr "غير مخصص"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "تحقق من ظهور اسم الكنيسة والعنوان ومعلومات الاتصال على كشوف العطايا."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24394,10 +24270,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d مدفوعات ليست مدرجة في أي إيداع بعد."
 
 #: 
-msgid "Can be emailed"
-msgstr "يمكن إرسالها بالبريد الإلكتروني"
-
-#: 
 msgid "Closing line"
 msgstr "سطر الختام"
 
@@ -24426,16 +24298,8 @@ msgid "Opening line"
 msgstr "سطر الافتتاح"
 
 #: 
-msgid "Print and mail"
-msgstr "طباعة وإرسال بالبريد"
-
-#: 
 msgid "Qty"
 msgstr "الكمية"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "راجعوا العام، ثم اطبعوا كشوف العطاء أو أرسلوها بالبريد الإلكتروني."
 
 #: 
 msgid "Signed by"
@@ -24444,10 +24308,6 @@ msgstr "بتوقيع"
 #: 
 msgid "Thank-you line"
 msgstr "سطر الشكر"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "تحققوا من ظهور اسم الكنيسة والعنوان وبيانات الاتصال على الكشوف الضريبية."
 
 #: 
 msgid "Year-End Giving"
@@ -27474,4 +27334,726 @@ msgstr "بياناتك ملك لك. تتعلق هذه التقارير بالب�
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "بياناتك ملك لك. لاحتساب عمليات التثبيت، يبلّغ ChurchCRM بأنه ثُبّت أو رُقّي وما إذا نجح ذلك، وإشارة مرة يوميًا أثناء الاستخدام، بالإضافة إلى رقم الإصدار وبلدك ونوع قاعدة البيانات ومعرف تثبيت عشوائي. ولا يبلّغ أبدًا عن سجلات الأعضاء أو العطايا أو غيرها من سجلات الكنيسة، أو اسم كنيستك، أو عنوان موقعك أو اسم الخادم، أو عناوين البريد الإلكتروني. يمكنك إيقاف ذلك في أي وقت من الإدارة → القياس عن بُعد؛ ويظل التثبيت أو الترقية الفاشلة يُبلّغ عنهما. لا تتم مشاركة التحذيرات وتفاصيل الأخطاء ومشاهدات الصفحات إلا إذا اخترت ذلك."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: لا تزال هناك إيداعات مفتوحة: %2$d. أغلقها لاعتماد جميع التبرعات قبل إرسال الكشوف."
+msgstr[1] "%1$s: لا تزال هناك إيداعات مفتوحة: %2$d. أغلقها لاعتماد جميع التبرعات قبل إرسال الكشوف."
+msgstr[2] "%1$s: لا تزال هناك إيداعات مفتوحة: %2$d. أغلقها لاعتماد جميع التبرعات قبل إرسال الكشوف."
+msgstr[3] "%1$s: لا تزال هناك إيداعات مفتوحة: %2$d. أغلقها لاعتماد جميع التبرعات قبل إرسال الكشوف."
+msgstr[4] "%1$s: لا تزال هناك إيداعات مفتوحة: %2$d. أغلقها لاعتماد جميع التبرعات قبل إرسال الكشوف."
+msgstr[5] "%1$s: لا تزال هناك إيداعات مفتوحة: %2$d. أغلقها لاعتماد جميع التبرعات قبل إرسال الكشوف."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "تم حفظ أرقام المظاريف: %d."
+msgstr[1] "تم حفظ أرقام المظاريف: %d."
+msgstr[2] "تم حفظ أرقام المظاريف: %d."
+msgstr[3] "تم حفظ أرقام المظاريف: %d."
+msgstr[4] "تم حفظ أرقام المظاريف: %d."
+msgstr[5] "تم حفظ أرقام المظاريف: %d."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "عدد الأسر: %d"
+msgstr[1] "عدد الأسر: %d"
+msgstr[2] "عدد الأسر: %d"
+msgstr[3] "عدد الأسر: %d"
+msgstr[4] "عدد الأسر: %d"
+msgstr[5] "عدد الأسر: %d"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: جميع الإيداعات مغلقة. يمكن الآن إعداد الكشوف."
+
+#: 
+msgid "12 months"
+msgstr "12 شهرًا"
+
+#: 
+msgid "30 days"
+msgstr "30 يومًا"
+
+#: 
+msgid "90 days"
+msgstr "90 يومًا"
+
+#: 
+msgid "Add Property"
+msgstr "إضافة خاصية"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "أضف بضعة أحرف أخرى أو رمزًا."
+
+#: 
+msgid "Add and edit events"
+msgstr "إضافة الأحداث وتعديلها"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "أضف مزيدًا من الأحرف أو امزج الأرقام والرموز."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "أضف مزيدًا من الأحرف وامزج الأحرف الكبيرة والصغيرة والأرقام والرموز."
+
+#: 
+msgid "Add people and families"
+msgstr "إضافة الأشخاص والأسر"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "يتمتع المسؤولون بجميع الصلاحيات ما دامت الميزة المرتبطة بها مفعّلة."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "تعطيل تسجيل الدخول أيضًا لمنع استخدام بوابة الأعضاء"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "قبل إرسال الكشوف"
+
+#: 
+msgid "Birthday today"
+msgstr "عيد ميلاد اليوم"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "تعذر إنشاء ملف التوقيع الضريبي الخاص. تأكد من أن مجلد التخزين قابل للكتابة."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "تعذر إنشاء مجلد تخزين التوقيع الضريبي %s. تأكد من أن خادم الويب يستطيع الكتابة فيه، أو حدّد مجلدًا قابلًا للكتابة في إعداد مسار تخزين التوقيع الضريبي."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "تعذر ترميز التوقيع الضريبي الخاص."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "تعذر نقل الحقل في هذا الاتجاه"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "تعذرت قراءة التوقيع الضريبي الخاص."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "تعذر حذف التوقيع الخاص."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "تعذر حذف ملف التوقيع الضريبي الخاص."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "تعذر تحديد مجلد التطبيق لتخزين التوقيع الضريبي."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "تعذر تخزين التوقيع الخاص."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "تعذرت كتابة ملف حماية الوصول %s في مجلد تخزين التوقيع الضريبي."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "تغيير دور الأعضاء المحددين: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "السنة المالية للكنيسة"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "فحص نظام ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "لم يُعثر على الحقل المخصص"
+
+#: 
+msgid "Delete people and families"
+msgstr "حذف الأشخاص والأسر"
+
+#: 
+msgid "Delete the login for"
+msgstr "حذف بيانات الدخول الخاصة بـ"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "الفترة الزمنية لمخطط الإيداعات"
+
+#: 
+msgid "Disabled at"
+msgstr "تاريخ التعطيل"
+
+#: 
+msgid "Disabled by"
+msgstr "عطّله"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "يشمل التنزيل جميع المتبرعين خلال السنة. يعرض خيار «مراجعة وتصفية» الإجماليات أولًا، ويتيح التصفية حسب الأسرة أو الصندوق أو الفئة أو التاريخ."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "رقم مظروف مكرر"
+
+#: 
+msgid "Edit people and families"
+msgstr "تعديل الأشخاص والأسر"
+
+#: 
+msgid "Email people and groups"
+msgstr "إرسال بريد إلكتروني إلى الأشخاص والمجموعات"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "فعّل إضافات PHP المفقودة في إعدادات خادم الويب، ثم أعد تشغيل الخادم وأعد تحميل هذه الصفحة. إذا كنت تستخدم مزوّد استضافة، فاطلب منه تفعيل الإضافات المدرجة."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "إدخال مفتاح إعداد يدويًا"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "أدخل رقم بداية بين 0 و%d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "الدخول إلى وضع ملء الشاشة"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "أدخل هذا المفتاح في تطبيق المصادقة أو مدير كلمات المرور باستخدام رموز زمنية (TOTP) من 6 أرقام بفاصل 30 ثانية. احتفظ بهذا المفتاح بسرية."
+
+#: 
+msgid "Enter your username or email"
+msgstr "أدخل اسم المستخدم أو البريد الإلكتروني"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "يجب أن تكون أرقام المظاريف أعدادًا صحيحة بين 0 و%d. لم يُحفظ أي شيء."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "الأحداث معطّلة لهذه الكنيسة"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "الخروج من وضع ملء الشاشة"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "فشل حذف الحقل المخصص"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "فشل نقل الحقل المخصص"
+
+#: 
+msgid "Fair"
+msgstr "متوسطة"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "الأسر التي تعهّدت بالتبرع للسنة %s وليس لديها تعهّد للسنة %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "الأسر التي تضم عضوًا واحدًا على الأقل في"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "المالية معطّلة لهذه الكنيسة"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "ابحث عن الأسر التي تعهّدت بالتبرع في سنة مالية دون أخرى."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "المجلد الذي يُخزَّن فيه التوقيع الخاص بكشوف التبرعات. اتركه فارغًا لاستخدام المجلد الخاص المدمج Images/TaxSignatures الذي يحظر الوصول المباشر عبر الويب. لاستخدام مجلد آخر، أدخل مسارًا مطلقًا خارج مجلد ChurchCRM يستطيع خادم الويب الكتابة فيه."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "حملات جمع التبرعات معطّلة لهذه الكنيسة"
+
+#: 
+msgid "Good"
+msgstr "جيدة"
+
+#: 
+msgid "Have an email"
+msgstr "لديهم بريد إلكتروني"
+
+#: 
+msgid "Hide setup key"
+msgstr "إخفاء مفتاح الإعداد"
+
+#: 
+msgid "How to respond"
+msgstr "كيفية الرد"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "أفكار بانتظار مراجعتك"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "تُستبعد الأسر غير النشطة. لا تُحتسب المدفوعات تعهّدات بالتبرع."
+
+#: 
+msgid "Invalid request."
+msgstr "طلب غير صالح."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "بيانات صورة التوقيع غير صالحة."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "معرّف التوقيع الضريبي المخزّن غير صالح."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "تخزين التوقيع الضريبي غير صالح."
+
+#: 
+msgid "Last successful login"
+msgstr "آخر تسجيل دخول ناجح"
+
+#: 
+msgid "Lockout state"
+msgstr "حالة القفل"
+
+#: 
+msgid "Login deleted"
+msgstr "حُذفت بيانات الدخول"
+
+#: 
+msgid "Mail only"
+msgstr "بريد عادي فقط"
+
+#: 
+msgid "Manage all ministries"
+msgstr "إدارة جميع الخدمات الكنسية"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "الأعضاء الذين أُسند إليهم الدور {{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "الأعضاء الذين لم يتغير دورهم لأنهم غادروا المجموعة أو لأن خدمة كنسية تدير دورهم: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "منسّق الخدمة الكنسية"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "الدقائق المتبقية حتى إلغاء القفل تلقائيًا"
+
+#: 
+msgid "Missing Pledges"
+msgstr "تعهّدات التبرع المفقودة"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "ليس لديك حساب GitHub؟ أخبرنا عبر Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "لا توجد أسرة نشطة تعهّدت بالتبرع للسنة %s دون تعهّد للسنة %s."
+
+#: 
+msgid "No families found."
+msgstr "لم يُعثر على أسر."
+
+#: 
+msgid "No ministry assigned"
+msgstr "لم تُسند خدمة كنسية"
+
+#: 
+msgid "No open deposit"
+msgstr "لا يوجد إيداع مفتوح"
+
+#: 
+msgid "No pledge for"
+msgstr "لا يوجد تعهّد للسنة"
+
+#: 
+msgid "Not granted to this account"
+msgstr "غير ممنوح لهذا الحساب"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "لا يقود فريقًا للمتطوعين"
+
+#: 
+msgid "Not locked"
+msgstr "غير مقفل"
+
+#: 
+msgid "Number of Payments"
+msgstr "عدد المدفوعات"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "دقيقة واحدة. لا نشارك ما ترسله."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "افتح فكرة. صوّت باستخدام 👍 إذا كانت كنيستك بحاجة إليها، وأضف تعليقًا قصيرًا يوضح أسلوب عملكم حاليًا."
+
+#: 
+msgid "Open deposit"
+msgstr "إيداع مفتوح"
+
+#: 
+msgid "Password change required at next login"
+msgstr "يلزم تغيير كلمة المرور عند تسجيل الدخول التالي"
+
+#: 
+msgid "Password strength"
+msgstr "قوة كلمة المرور"
+
+#: 
+msgid "People & Families"
+msgstr "الأشخاص والأسر"
+
+#: 
+msgid "Pledged for"
+msgstr "تعهّد للسنة"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "إعداد كشوف التبرعات"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "معاينة نموذج خطاب"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "معرّف ملف التوقيع الخاص بكشوف التبرعات الكندية. يُدار من خلال رفع التوقيع."
+
+#: 
+msgid "Property Type"
+msgstr "نوع الخاصية"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "قدّم بيانات صورة توقيع بصيغة PNG أو JPEG فقط."
+
+#: 
+msgid "Report Issue"
+msgstr "الإبلاغ عن مشكلة"
+
+#: 
+msgid "Requirement"
+msgstr "المتطلب"
+
+#: 
+msgid "Return Home"
+msgstr "العودة إلى الرئيسية"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "راجع سنة مالية، ثم نزّل كشوف التبرعات."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "مراجعة الإيداع وإغلاقه"
+
+#: 
+msgid "Review and Filter"
+msgstr "مراجعة وتصفية"
+
+#: 
+msgid "Review and vote"
+msgstr "مراجعة وتصويت"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "راجع السنة، ثم نزّل كشوف التبرعات."
+
+#: 
+msgid "Review what we are considering"
+msgstr "مراجعة الأفكار التي ندرسها"
+
+#: 
+msgid "Roles & permissions"
+msgstr "الأدوار والصلاحيات"
+
+#: 
+msgid "Select at least one member."
+msgstr "حدّد عضوًا واحدًا على الأقل."
+
+#: 
+msgid "Setup key"
+msgstr "مفتاح الإعداد"
+
+#: 
+msgid "Sign-in status"
+msgstr "حالة تسجيل الدخول"
+
+#: 
+msgid "Signature storage folder"
+msgstr "مجلد تخزين التوقيعات"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "حُدّث التوقيع، لكن تعذر حذف ملف التوقيع الخاص السابق."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "بعض متطلبات PHP غير متوفرة. يحتاجها ChurchCRM للمتابعة."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "أنشئ إيداعًا، ثم أضف إليه كل دفعة."
+
+#: 
+msgid "Starting envelope number"
+msgstr "رقم المظروف الأول"
+
+#: 
+msgid "Strong"
+msgstr "قوية"
+
+#: 
+msgid "Support"
+msgstr "الدعم"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "المعرّف الضريبي وإعدادات PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "تعذر تحميل القائمة. ما زال بإمكانك فتح الأفكار على GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "الحد الأقصى لطول الاسم هو %d حرفًا"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "تعذر العثور على الصفحة المطلوبة. ربما نُقلت أو أُعيدت تسميتها أو لم تعد موجودة."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "الحد الأقصى لطول نص الحقل هو %d حرفًا"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "الأعضاء المحددون لديهم هذا الدور بالفعل."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "تعذر فك ترميز صورة التوقيع."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "يجب ألا يتجاوز حجم صورة التوقيع 2 ميبيبايت."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "يجب ألا تتجاوز أبعاد صورة التوقيع 2000 × 1000 بكسل."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "لا يستطيع خادم الويب الكتابة في مجلد تخزين التوقيع الضريبي %s."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "لا يمكن أن يكون مجلد تخزين التوقيع الضريبي رابطًا رمزيًا."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "يجب أن يكون مسار تخزين التوقيع الضريبي خارج مجلد ChurchCRM. اترك الإعداد فارغًا لاستخدام المجلد الخاص المدمج."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "يجب أن يكون إعداد مسار تخزين التوقيع الضريبي مسار مجلد مطلقًا."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "لن تُحفظ أرقام المظاريف هذه حتى تختار «تحديث سجلات الأسر»."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "لن يتمكن هذا الشخص من تسجيل الدخول كموظف أو عبر بوابة الأعضاء، وستُحذف جلساته وأجهزته ومفاتيح مروره."
+
+#: 
+msgid "This password looks strong."
+msgstr "تبدو كلمة المرور هذه قوية."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "يُحذف الوصول فقط. يبقى الشخص وملاحظاته."
+
+#: 
+msgid "Time Range"
+msgstr "الفترة الزمنية"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "تم إعداد المصادقة الثنائية"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "تعذر النسخ تلقائيًا. حدّد مفتاح الإعداد وانسخه يدويًا."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "ارفع صورة توقيع بصيغة PNG أو JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "استخدم رفع التوقيع أو حذفه لتغيير هذا الإعداد."
+
+#: 
+msgid "User Details"
+msgstr "تفاصيل المستخدم"
+
+#: 
+msgid "Username or Email Address"
+msgstr "اسم المستخدم أو عنوان البريد الإلكتروني"
+
+#: 
+msgid "View all ideas"
+msgstr "عرض جميع الأفكار"
+
+#: 
+msgid "View events"
+msgstr "عرض الأحداث"
+
+#: 
+msgid "View people and families"
+msgstr "عرض الأشخاص والأسر"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "إدارة المتطوعين معطّلة لهذه الكنيسة"
+
+#: 
+msgid "Weak"
+msgstr "ضعيفة"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "ما يمكن لهذا الحساب فعله حاليًا (للقراءة فقط)"
+
+#: 
+msgid "You must select a class"
+msgstr "يجب تحديد فئة"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "لا تبدأ السنة المالية لكنيستك في 1 يناير. غالبًا ما تطلب الجهات الضريبية إيصالات للسنة الميلادية: اختر «مراجعة وتصفية» وحدّد الفترة من 1 يناير إلى 31 ديسمبر."
+
+#: 
+msgid "system user API key regenerated"
+msgstr "أُعيد إنشاء مفتاح API لمستخدم النظام"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "أعاد مستخدم النظام تعيين كلمة مروره من رابط أُرسل بالبريد الإلكتروني"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "عطّل مستخدم النظام المصادقة الثنائية"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "فعّل مستخدم النظام المصادقة الثنائية"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "عطّل المسؤول المصادقة الثنائية لمستخدم النظام"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "لا يمكن حذف عائلة لديها تعهدات أو مدفوعات. عطّل العائلة بدلاً من ذلك للحفاظ على السجل المالي. انقل السجلات المالية فقط عند الحاجة."
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "عطّل العائلة بدلاً من ذلك"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "عطّل العائلة بدلاً من حذفها."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "عطّل الشخص بدلاً من حذفه."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "السجل المسجَّل: %s."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "لا يمكن حذف هذه العائلة لأن لديها ملاحظات. عطّل العائلة للحفاظ على سجلها."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "لا يمكن حذف هذا الشخص لأن لديه أنشطة مسجَّلة. عطّل الشخص للحفاظ على سجله."
+
+#: 
+msgid "attendance"
+msgstr "الحضور"
+
+#: 
+msgid "financial history"
+msgstr "السجل المالي"
+
+#: 
+msgid "notes"
+msgstr "ملاحظات"
+
+#: 
+msgid "recorded activities"
+msgstr "الأنشطة المسجَّلة"
+
+#: 
+msgid "volunteer service history"
+msgstr "سجل الخدمة التطوعية"
+
+#: 
+msgid "%s by %s"
+msgstr "%s بواسطة %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "أدخل كلمة المرور أو رمزًا من تطبيق المصادقة لتغيير المصادقة الثنائية."
+
+#: 
+msgid "Latest Notes"
+msgstr "أحدث الملاحظات"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "لم تتم إضافة أي ملاحظات بعد."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "ابدأ التسجيل للحصول على رمز QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "كلمة المرور أو الرمز هذا غير صحيح. المصادقة الثنائية ما زالت مفعّلة."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "المصادقة الثنائية مفعّلة بالفعل. يظهر سرّها فقط أثناء التسجيل."
 

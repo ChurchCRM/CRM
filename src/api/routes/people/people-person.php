@@ -4,6 +4,7 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\Photo;
 use ChurchCRM\Exceptions\PhotoSizeException;
+use ChurchCRM\Exceptions\PersonDeletionBlockedException;
 use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Note;
 use ChurchCRM\model\ChurchCRM\Person;
@@ -112,14 +113,14 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->get('/photo', function (Request $request, Response $response, array $args): Response {
         $personId = (int)$args['personId'];
         $photo = new Photo('Person', $personId);
-        
+
         if (!$photo->hasUploadedPhoto()) {
             return SlimUtils::renderErrorJSON($response, 'No uploaded photo exists for this person', [], 404);
         }
-        
+
         return SlimUtils::renderPhoto($response, $photo);
     })->add(new Cache('private', Photo::CACHE_DURATION_SECONDS));
-    
+
     // Avatar info endpoint - returns JSON with initials, gravatar info for client-side rendering
     // Returns fallback data even for invalid person IDs (no PersonMiddleware needed)
     $group->get('/avatar', function (Request $request, Response $response, array $args): Response {
@@ -164,14 +165,14 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
             return SlimUtils::renderErrorJSON($response, gettext('Failed to upload person photo'), [], 400, $e, $request);
         }
     })->add(EditRecordsRoleAuthMiddleware::class);
-    
+
     // Delete photo endpoint
     $group->delete('/photo', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $deleted = $person->deletePhoto();
         return SlimUtils::renderJSON($response, ['success' => $deleted]);
     })->add(DeleteRecordRoleAuthMiddleware::class);
-    
+
     /**
      * @OA\Get(
      *     path="/person/{personId}",
@@ -225,10 +226,6 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     $group->get('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
         $currentUser = AuthenticationManager::getCurrentUser();
-        $personFamilyId = (int) $person->getFamId();
-        if ($personFamilyId > 0 && !$currentUser->canViewFamily($personFamilyId)) {
-            throw new HttpForbiddenException($request, gettext('You do not have permission to view this person'));
-        }
 
         // Filter custom fields by field-level permissions (GHSA-p6xx-xx98-f323)
         //
@@ -241,7 +238,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         $personJSON = $person->exportTo('JSON');
         $personData = json_decode($personJSON, true);
         $personData['singlePersonCustom'] = $person->getVisibleCustomFieldValues();
-        if (!$currentUser->canEditPerson((int) $person->getId(), $personFamilyId)) {
+        if (!$currentUser->isEditRecordsEnabled()) {
             unset($personData['Flags']);
             if ($person->hideAge()) {
                 $personData['BirthYear'] = null;
@@ -254,18 +251,22 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
     // Delete person
     $group->delete('', function (Request $request, Response $response, array $args): Response {
         $person = $request->getAttribute('person');
-        $blockedReason = $person->getLoginDeletionBlockedReason();
-        if ($blockedReason !== null) {
-            throw new HttpForbiddenException($request, $blockedReason);
-        }
         // PERSON_DELETED is dispatched from Person::postDelete() so that the
         // family-member cascade in DELETE /family/{id}?deleteMembers=true
         // fires it too. See #9768.
-        $person->delete();
+        $photo = $person->getPhoto();
+        try {
+            $person->delete();
+        } catch (PersonDeletionBlockedException $exception) {
+            return SlimUtils::renderErrorJSON($response, $exception->getMessage(), [], 403, $exception, $request);
+        }
+
+        // Filesystem deletions cannot be rolled back; remove photos only
+        // after the ORM deletion has committed successfully.
+        $photo->delete();
 
         return SlimUtils::renderSuccessJSON($response);
     })->add(DeleteRecordRoleAuthMiddleware::class);
-
 
     /**
      * @OA\Post(

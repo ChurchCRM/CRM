@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "הקצה הזדמנות התנדבות חדשה"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "פרטי עסקה אלקטרונית"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "סכום שאינו ניתן לניכוי לא יכול להיות גדול מהסכום הכולל."
 
@@ -2156,10 +2152,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "זה יחליף את מספרי המעטפות של המשפחה במסד הנתונים עם אלה שנבחרו בדף זה. להמשיך?"
 
 #: 
-msgid "Family Select"
-msgstr "בחירת משפחה"
-
-#: 
 msgid "Welcome to"
 msgstr "ברוך הבא ל"
 
@@ -2456,10 +2448,6 @@ msgstr "הצג את כל ההפקדות"
 #: 
 msgid "Deposit Reports"
 msgstr "דוחות הפקדה"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "עריכת שובר הפקדה"
 
 #: 
 msgid "Create New Fundraiser"
@@ -6063,14 +6051,6 @@ msgid "Close All Deposits"
 msgstr "סגור את כל ההפקדות"
 
 #: 
-msgid "Closed vs Total"
-msgstr "סגורות מול סה\"כ"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "השלם משימות אלו כדי להבטיח דוחות מס מדויקים לתורמים שלך בסוף השנה."
-
-#: 
 msgid "Configure Email"
 msgstr "הגדר אימייל"
 
@@ -6087,28 +6067,12 @@ msgid "Create First Deposit"
 msgstr "צור הפקדה ראשונה"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "צור או פתח הפקדה תחילה"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "צור או בחר הפקדה כדי להתחיל."
-
-#: 
-msgid "Current Deposit"
-msgstr "הפקדה נוכחית"
-
-#: 
 msgid "Day"
 msgstr "יום"
 
 #: 
 msgid "Dec"
 msgstr "דצמ'"
-
-#: 
-msgid "Deposit Statistics"
-msgstr "סטטיסטיקת הפקדות"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6137,10 +6101,6 @@ msgstr "ערוך תשלום"
 #: 
 msgid "Edit Person"
 msgstr "ערוך אדם"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "ודא שכל ההפקדות לשנת המס סגורות לפני הפקת הצהרות."
 
 #: 
 msgid "F"
@@ -6247,10 +6207,6 @@ msgid "New Pledge"
 msgstr "התחייבות חדשה"
 
 #: 
-msgid "No Active Deposit"
-msgstr "אין הפקדה פעילה"
-
-#: 
 msgid "No active funds configured."
 msgstr "אין קרנות פעילות מוגדרות."
 
@@ -6283,10 +6239,6 @@ msgid "Pledge Reports"
 msgstr "דוחות התחייבויות"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "הדפס או שלח במייל דוחות תרומה שנתיים לכל התורמים."
-
-#: 
 msgid "Quick Actions"
 msgstr "פעולות מהירות"
 
@@ -6317,10 +6269,6 @@ msgstr "שחזור"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "שחזר מקובץ גיבוי. מוחק נתונים קיימים."
-
-#: 
-msgid "Review Donation Funds"
-msgstr "בדוק קרנות תרומה"
 
 #: 
 msgid "Save and Add New Family"
@@ -6359,14 +6307,6 @@ msgid "System Info"
 msgstr "פרטי מערכת"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "נוסח דוח מס"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "רשימת ביקורת לדיווח שנת מס"
-
-#: 
 msgid "Total"
 msgstr "סה\"כ"
 
@@ -6387,10 +6327,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "המשתמש חייב להיות מנהל או בעל הרשאת כספים"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "ודא ששמות הקרנות והתיאורים מדויקים."
-
-#: 
 msgid "YTD Payments"
 msgstr "תשלומים מתחילת השנה"
 
@@ -6407,20 +6343,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "נדרשת הרחבת ZipArchive לשדרוגים"
 
 #: 
-msgid "active"
-msgstr "פעיל"
-
-#: 
 msgid "found"
 msgstr "נמצא"
 
 #: 
 msgid "issues"
 msgstr "בעיות"
-
-#: 
-msgid "open"
-msgstr "פתוח"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -9488,10 +9416,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "מעקב אחר התחייבויות כספיות משפחתיות ותרומות לקרנות לפי שנת כספים"
 
 #: 
-msgid "Transaction Details"
-msgstr "פרטי עסקה"
-
-#: 
 msgid "Unmapped"
 msgstr "לא ממופה"
 
@@ -9574,10 +9498,6 @@ msgstr "צפייה בסיכומי התחייבויות כספיות משפחתי
 #: 
 msgid "View group members, roles, and properties"
 msgstr "צפייה בחברי קבוצה, תפקידים ומאפיינים"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "צפייה בפרטי עסקה עבור תשלום התחייבות כספית"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11136,10 +11056,6 @@ msgstr "אינדיגו"
 #: 
 msgid "Invalid JSON value — setting was not saved. Please correct it and try again."
 msgstr "ערך JSON לא תקין — ההגדרה לא נשמרה. אנא תקן ונסה שוב."
-
-#: 
-msgid "Join the Translation Project on POEditor"
-msgstr "הצטרף לפרויקט התרגום ב-POEditor"
 
 #: 
 msgid "Language and regional settings"
@@ -15402,14 +15318,6 @@ msgid "Calendar Embed Origins"
 msgstr "מקורות הטמעת לוח שנה"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "תרגומי ChurchCRM מנוהלים על ידי הקהילה ב-POEditor. תוכל לעזור על ידי"
-
-#: 
-msgid "Closed Deposits"
-msgstr "פיקדונות סגורים"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "ערך $URL[0] נוכחי"
 
@@ -15550,10 +15458,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "יש אנשים שהוקצו להזדמנות ההתנדבות זו. המחיקה תבטל את הקצאתם"
 
 #: 
-msgid "Total Deposits"
-msgstr "סך הפיקדונות"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "עדכן אותו לכתובת URL תקנית ש"
 
@@ -15580,10 +15484,6 @@ msgstr "לקרנות"
 #: 
 msgid "user"
 msgstr "משתמש"
-
-#: 
-msgid "with at least one"
-msgstr "עם לפחות אחד"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -17356,10 +17256,6 @@ msgstr "נאסף בשנת הכספים הנוכחית"
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s חייב להיות כתובת אינטרנט מלאה בפורמט https://, לדוגמה https://example.org/yourchurch."
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "לחשבון יש הרשאות מוגבלות. יש לפנות למנהל המערכת."
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -20434,10 +20330,6 @@ msgid "Read the theme authoring guide"
 msgstr "קראו את מדריך כתיבת ערכות הנושא"
 
 #: 
-msgid "Recent Emails"
-msgstr "דוא\"ל אחרון"
-
-#: 
 msgid "Recipient"
 msgstr "נמען"
 
@@ -22614,10 +22506,6 @@ msgid "Search by family name or envelope #"
 msgstr "חיפוש לפי שם משפחה או מס' מעטפה"
 
 #: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "לא ניתן למחוק משפחה שיש לה התחייבויות או תשלומים. העבירו או הסירו תחילה את הרשומות הכספיות."
-
-#: 
 msgid "You cannot delete your own account."
 msgstr "אי אפשר למחוק את החשבון שלך."
 
@@ -23996,10 +23884,6 @@ msgid "%s Giving Statement"
 msgstr "דוח תרומות %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "התאימו את הטקסט שמופיע בדוחות התרומות (sTaxReport1, sTaxReport2 וכו׳)."
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24022,10 +23906,6 @@ msgstr "שליחת דוח תרומות %s בדוא״ל"
 #: 
 msgid "Envelope Numbers"
 msgstr "מספרי מעטפות"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "הפקת דוחות תרומות"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24066,10 +23946,6 @@ msgstr "לא ניתן לשלוח את דוח התרומות בדוא״ל: למש
 #: 
 msgid "Undesignated"
 msgstr "ללא ייעוד"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "ודאו ששם הקהילה, הכתובת ופרטי הקשר מופיעים בדוחות התרומות."
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24284,10 +24160,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "%d תשלומים עדיין אינם על שום הפקדה."
 
 #: 
-msgid "Can be emailed"
-msgstr "ניתן לשליחה בדוא״ל"
-
-#: 
 msgid "Closing line"
 msgstr "שורת סיום"
 
@@ -24316,16 +24188,8 @@ msgid "Opening line"
 msgstr "שורת פתיחה"
 
 #: 
-msgid "Print and mail"
-msgstr "הדפסה ומשלוח בדואר"
-
-#: 
 msgid "Qty"
 msgstr "כמות"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "סקרו את השנה, ואז הדפיסו או שלחו בדוא״ל דוחות תרומות."
 
 #: 
 msgid "Signed by"
@@ -24334,10 +24198,6 @@ msgstr "חתום על ידי"
 #: 
 msgid "Thank-you line"
 msgstr "שורת תודה"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "ודאו ששם הקהילה, הכתובת ופרטי הקשר מופיעים בדוחות המס."
 
 #: 
 msgid "Year-End Giving"
@@ -27356,4 +27216,714 @@ msgstr "הנתונים שלך שייכים לך. הדיווח עוסק בתוכ�
 #: 
 msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
 msgstr "הנתונים שלך שייכים לך. כדי לספור התקנות, ChurchCRM מדווחת שהיא הותקנה או שודרגה והאם זה הצליח, שולחת דיווח פעם ביום בזמן השימוש, וכן את מספר הגרסה, המדינה שלך, סוג מסד הנתונים ומזהה התקנה אקראי. היא לעולם לא מדווחת על רשומות חברים, תרומות או רשומות אחרות של הקהילה, שם הקהילה שלך, כתובת האתר או שם השרת שלך, או כתובות דוא\"ל. אפשר לכבות זאת בכל עת בניהול → טלמטריה; התקנה או שדרוג שנכשלו עדיין מדווחים. אזהרות, פרטי שגיאות וצפיות בדפים משותפים רק אם תבחרו בכך."
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: %2$d הפקדה עדיין פתוחה. סגרו אותה כדי שכל תרומה תהיה סופית לפני שליחת הדוחות."
+msgstr[1] "%1$s: %2$d הפקדות עדיין פתוחות. סגרו אותן כדי שכל תרומה תהיה סופית לפני שליחת הדוחות."
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "נשמר %d מספר מעטפה."
+msgstr[1] "נשמרו %d מספרי מעטפות."
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "משפחה %d"
+msgstr[1] "%d משפחות"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: כל ההפקדות סגורות. הדוחות מוכנים להכנה."
+
+#: 
+msgid "12 months"
+msgstr "12 חודשים"
+
+#: 
+msgid "30 days"
+msgstr "30 ימים"
+
+#: 
+msgid "90 days"
+msgstr "90 ימים"
+
+#: 
+msgid "Add Property"
+msgstr "הוספת מאפיין"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "הוסיפו עוד כמה תווים או סימן."
+
+#: 
+msgid "Add and edit events"
+msgstr "הוספה ועריכה של אירועים"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "הוסיפו עוד תווים או שלבו ספרות וסימנים."
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "הוסיפו עוד תווים ושלבו אותיות גדולות וקטנות, ספרות וסימנים."
+
+#: 
+msgid "Add people and families"
+msgstr "הוספת אנשים ומשפחות"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "למנהלים יש את כל ההרשאות כל עוד התכונה פעילה."
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "השבת גם את הכניסה, כדי שלא יוכלו להשתמש בפורטל החברים"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "לפני שליחת דוחות"
+
+#: 
+msgid "Birthday today"
+msgstr "יום הולדת היום"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "לא ניתן ליצור את קובץ חתימת המס הפרטי. ודאו שתיקיית האחסון ניתנת לכתיבה."
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "לא ניתן ליצור את תיקיית האחסון של חתימת המס %s. ודאו ששרת האינטרנט יכול לכתוב בה, או הגדירו תיקייה הניתנת לכתיבה בהגדרת נתיב האחסון של חתימת המס."
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "לא ניתן למחוק משפחה שיש לה התחייבויות או תשלומים. השביתו את המשפחה במקום זאת כדי לשמור על ההיסטוריה הכספית. העבירו רשומות כספיות רק אם זה מתאים."
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "לא ניתן לקודד את חתימת המס הפרטית."
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "לא ניתן להזיז את השדה לכיוון הזה"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "לא ניתן לקרוא את חתימת המס הפרטית."
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "לא ניתן להסיר את החתימה הפרטית."
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "לא ניתן להסיר את קובץ חתימת המס הפרטי."
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "לא ניתן לאתר את תיקיית היישום לאחסון חתימת המס."
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "לא ניתן לאחסן את החתימה הפרטית."
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "לא ניתן לכתוב את מגן הגישה %s בתיקיית האחסון של חתימת המס."
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "שינוי תפקיד של חברים שנבחרו: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "שנת הכספים של הכנסייה"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "בדיקת מערכת ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "שדה מותאם אישית לא נמצא"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "השבתת המשפחה במקום זאת"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "השביתו את המשפחה במקום למחוק אותה."
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "השביתו את האדם במקום למחוק אותו."
+
+#: 
+msgid "Delete people and families"
+msgstr "מחיקת אנשים ומשפחות"
+
+#: 
+msgid "Delete the login for"
+msgstr "מחיקת הכניסה של"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "טווח זמן של תרשים ההפקדות"
+
+#: 
+msgid "Disabled at"
+msgstr "הושבת ב"
+
+#: 
+msgid "Disabled by"
+msgstr "הושבת על ידי"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "ההורדה שולחת כל תורם בשנה. סקירה וסינון מציגים קודם את הסכומים ומאפשרים לצמצם לפי משפחה, קרן, כיתה או תאריך."
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "מספר מעטפה כפול"
+
+#: 
+msgid "Edit people and families"
+msgstr "עריכת אנשים ומשפחות"
+
+#: 
+msgid "Email people and groups"
+msgstr "שליחת אימייל לאנשים ולקבוצות"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "הפעילו את הרחבות ה-PHP החסרות בתצורת שרת האינטרנט, הפעילו מחדש את השרת וטענו מחדש את הדף. אם אתם משתמשים בספק אחסון, בקשו ממנו להפעיל את ההרחבות המפורטות."
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "הזנת מפתח הגדרה ידנית"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "הזינו מספר התחלה בין 0 ל-%d."
+
+#: 
+msgid "Enter fullscreen"
+msgstr "מסך מלא"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "הזינו את המפתח הזה באפליקציית האימות או במנהל הסיסמאות שלכם באמצעות קודים מבוססי זמן (TOTP) בני 6 ספרות ומרווח של 30 שניות. שמרו את המפתח בסוד."
+
+#: 
+msgid "Enter your username or email"
+msgstr "הזינו את שם המשתמש או האימייל"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "מספרי מעטפות חייבים להיות מספרים שלמים בין 0 ל-%d. דבר לא נשמר."
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "אירועים כבויים עבור הכנסייה הזו"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "יציאה ממסך מלא"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "מחיקת השדה המותאם אישית נכשלה"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "הזזת השדה המותאם אישית נכשלה"
+
+#: 
+msgid "Fair"
+msgstr "סביר"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "משפחות שהתחייבו עבור %s ואין להן התחייבות עבור %s."
+
+#: 
+msgid "Families with at least one member in"
+msgstr "משפחות עם לפחות חבר אחד ב"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "כספים כבויים עבור הכנסייה הזו"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "מצאו משפחות שהתחייבו בשנת כספים אחת ולא באחרת."
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "התיקייה שבה נשמרת החתימה הפרטית של דוחות התרומות. השאירו ריק כדי להשתמש בתיקייה הפרטית המובנית Images/TaxSignatures החוסמת גישה ישירה מהאינטרנט. לתיקייה אחרת, הזינו נתיב מוחלט מחוץ לתיקיית ChurchCRM שבה שרת האינטרנט יכול לכתוב."
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "גיוסי כספים כבויים עבור הכנסייה הזו"
+
+#: 
+msgid "Good"
+msgstr "טוב"
+
+#: 
+msgid "Have an email"
+msgstr "יש אימייל"
+
+#: 
+msgid "Hide setup key"
+msgstr "הסתרת מפתח ההגדרה"
+
+#: 
+msgid "How to respond"
+msgstr "איך להגיב"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "רעיונות שממתינים לסקירה שלכם"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "משפחות לא פעילות אינן נכללות. תשלומים אינם נספרים כהתחייבויות."
+
+#: 
+msgid "Invalid request."
+msgstr "בקשה לא חוקית."
+
+#: 
+msgid "Invalid signature image data."
+msgstr "נתוני תמונת החתימה אינם חוקיים."
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "מזהה חתימת המס השמור אינו חוקי."
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "אחסון חתימת המס אינו חוקי."
+
+#: 
+msgid "Last successful login"
+msgstr "כניסה מוצלחת אחרונה"
+
+#: 
+msgid "Lockout state"
+msgstr "מצב נעילה"
+
+#: 
+msgid "Login deleted"
+msgstr "הכניסה נמחקה"
+
+#: 
+msgid "Mail only"
+msgstr "דואר בלבד"
+
+#: 
+msgid "Manage all ministries"
+msgstr "ניהול כל השירותים"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "חברים הועברו ל-{{role}}: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "חברים שלא שונו כי עזבו את הקבוצה או ששירות מנהל את התפקיד שלהם: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "רכז שירות"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "דקות עד לביטול הנעילה האוטומטי"
+
+#: 
+msgid "Missing Pledges"
+msgstr "התחייבויות חסרות"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "אין חשבון GitHub? ספרו לנו ב-Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "אף משפחה פעילה לא התחייבה עבור %s בלי התחייבות עבור %s."
+
+#: 
+msgid "No families found."
+msgstr "לא נמצאו משפחות."
+
+#: 
+msgid "No ministry assigned"
+msgstr "לא הוקצה שירות"
+
+#: 
+msgid "No open deposit"
+msgstr "אין הפקדה פתוחה"
+
+#: 
+msgid "No pledge for"
+msgstr "אין התחייבות עבור"
+
+#: 
+msgid "Not granted to this account"
+msgstr "לא ניתן לחשבון הזה"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "לא מוביל צוות מתנדבים"
+
+#: 
+msgid "Not locked"
+msgstr "לא נעול"
+
+#: 
+msgid "Number of Payments"
+msgstr "מספר תשלומים"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "דקה אחת. אנחנו לא משתפים את מה שתשלחו."
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "פתחו רעיון. הצביעו ב-👍 אם הכנסייה שלכם זקוקה לו, והוסיפו הערה קצרה על האופן שבו אתם עובדים היום."
+
+#: 
+msgid "Open deposit"
+msgstr "הפקדה פתוחה"
+
+#: 
+msgid "Password change required at next login"
+msgstr "נדרש שינוי סיסמה בכניסה הבאה"
+
+#: 
+msgid "Password strength"
+msgstr "חוזק הסיסמה"
+
+#: 
+msgid "People & Families"
+msgstr "אנשים ומשפחות"
+
+#: 
+msgid "Pledged for"
+msgstr "התחייבות עבור"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "הכנת דוחות תרומות"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "תצוגה מקדימה של מכתב לדוגמה"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "מזהה נכס החתימה הפרטית של דוחות התרומות הקנדיים. מנוהל באמצעות העלאת חתימה."
+
+#: 
+msgid "Property Type"
+msgstr "סוג מאפיין"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "ספקו רק נתוני תמונת חתימה בפורמט PNG או JPEG."
+
+#: 
+msgid "Recorded history: %s."
+msgstr "היסטוריה מתועדת: %s."
+
+#: 
+msgid "Report Issue"
+msgstr "דיווח על בעיה"
+
+#: 
+msgid "Requirement"
+msgstr "דרישה"
+
+#: 
+msgid "Return Home"
+msgstr "חזרה לדף הבית"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "סקרו שנת כספים אחת, ואז הורידו דוחות תרומות."
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "סקירה וסגירת הפקדה"
+
+#: 
+msgid "Review and Filter"
+msgstr "סקירה וסינון"
+
+#: 
+msgid "Review and vote"
+msgstr "סקירה והצבעה"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "סקרו את השנה, ואז הורידו דוחות תרומות."
+
+#: 
+msgid "Review what we are considering"
+msgstr "ראו מה אנחנו שוקלים"
+
+#: 
+msgid "Roles & permissions"
+msgstr "תפקידים והרשאות"
+
+#: 
+msgid "Select at least one member."
+msgstr "בחרו לפחות חבר אחד."
+
+#: 
+msgid "Setup key"
+msgstr "מפתח הגדרה"
+
+#: 
+msgid "Sign-in status"
+msgstr "מצב כניסה"
+
+#: 
+msgid "Signature storage folder"
+msgstr "תיקיית אחסון חתימה"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "החתימה עודכנה אך לא ניתן היה להסיר את קובץ החתימה הפרטי הקודם."
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "חסרות כמה דרישות PHP. ChurchCRM זקוק להן כדי להמשיך."
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "התחילו הפקדה, ואז הוסיפו אליה כל תשלום."
+
+#: 
+msgid "Starting envelope number"
+msgstr "מספר מעטפה התחלתי"
+
+#: 
+msgid "Strong"
+msgstr "חזק"
+
+#: 
+msgid "Support"
+msgstr "תמיכה"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "הגדרות מספר מזהה למס ו-PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "לא ניתן היה לטעון את הרשימה. עדיין אפשר לפתוח את הרעיונות ב-GitHub."
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "השם יכול להכיל לכל היותר %d תווים"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "הדף שביקשתם לא נמצא. ייתכן שהוא הועבר, שונה שמו או שאינו קיים עוד."
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "ההנחיה יכולה להכיל לכל היותר %d תווים"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "לחברים שנבחרו כבר יש את התפקיד הזה."
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "לא ניתן היה לפענח את תמונת החתימה."
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "תמונת החתימה לא יכולה להיות גדולה מ-2 MiB."
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "תמונת החתימה חייבת להיכנס ל-2000 × 1000 פיקסלים."
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "שרת האינטרנט לא יכול לכתוב בתיקיית האחסון של חתימת המס %s."
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "תיקיית האחסון של חתימת המס לא יכולה להיות קישור סימלי."
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "נתיב האחסון של חתימת המס חייב להיות מחוץ לתיקיית ChurchCRM. השאירו את ההגדרה ריקה כדי להשתמש בתיקייה הפרטית המובנית."
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "הגדרת נתיב האחסון של חתימת המס חייבת להיות נתיב תיקייה מוחלט."
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "מספרי המעטפות האלה לא נשמרים עד שתבחרו עדכון רשומות משפחה."
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "הם לא יוכלו להיכנס כצוות או לפורטל החברים, וההפעלות, המכשירים ומפתחות הגישה שלהם יוסרו."
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "לא ניתן למחוק את המשפחה הזו כי יש לה הערות. השביתו את המשפחה במקום זאת כדי לשמור על ההיסטוריה שלה."
+
+#: 
+msgid "This password looks strong."
+msgstr "הסיסמה הזו נראית חזקה."
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "לא ניתן למחוק את האדם הזה כי יש לו פעילויות מתועדות. השביתו את האדם במקום זאת כדי לשמור על ההיסטוריה שלו."
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "פעולה זו מסירה רק את הכניסה. האדם וההערות שלו נשארים."
+
+#: 
+msgid "Time Range"
+msgstr "טווח זמן"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "אימות דו-שלבי נרשם"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "לא ניתן להעתיק אוטומטית. בחרו והעתיקו את מפתח ההגדרה ידנית."
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "העלו תמונת חתימה בפורמט PNG או JPEG."
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "השתמשו בהעלאת חתימה או בהסרתה כדי לשנות את ההגדרה הזו."
+
+#: 
+msgid "User Details"
+msgstr "פרטי משתמש"
+
+#: 
+msgid "Username or Email Address"
+msgstr "שם משתמש או כתובת אימייל"
+
+#: 
+msgid "View all ideas"
+msgstr "הצגת כל הרעיונות"
+
+#: 
+msgid "View events"
+msgstr "הצגת אירועים"
+
+#: 
+msgid "View people and families"
+msgstr "הצגת אנשים ומשפחות"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "ניהול מתנדבים כבוי עבור הכנסייה הזו"
+
+#: 
+msgid "Weak"
+msgstr "חלש"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "מה החשבון הזה יכול לעשות כרגע (לקריאה בלבד)"
+
+#: 
+msgid "You must select a class"
+msgstr "עליכם לבחור כיתה"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "שנת הכספים של הכנסייה שלכם אינה מתחילה ב-1 בינואר. רשויות המס מבקשות לעיתים קבלות לשנה הקלנדרית: בחרו סקירה וסינון והגדירו את התאריכים ל-1 בינואר – 31 בדצמבר."
+
+#: 
+msgid "attendance"
+msgstr "נוכחות"
+
+#: 
+msgid "financial history"
+msgstr "היסטוריה כספית"
+
+#: 
+msgid "notes"
+msgstr "הערות"
+
+#: 
+msgid "recorded activities"
+msgstr "פעילויות מתועדות"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "מפתח ה-API של משתמש המערכת נוצר מחדש"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "משתמש מערכת איפס את הסיסמה שלו מקישור באימייל"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "משתמש מערכת כיבה אימות דו-שלבי"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "משתמש מערכת הפעיל אימות דו-שלבי"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "האימות הדו-שלבי של משתמש המערכת הושבת על ידי מנהל"
+
+#: 
+msgid "volunteer service history"
+msgstr "היסטוריית שירות התנדבותי"
+
+#: 
+msgid "%s by %s"
+msgstr "%s מאת %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "הזן את הסיסמה שלך או קוד מאפליקציית האימות כדי לשנות את האימות הדו-שלבי."
+
+#: 
+msgid "Latest Notes"
+msgstr "ההערות האחרונות"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "עדיין לא נוספו הערות."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "התחל את ההרשמה כדי לקבל קוד QR."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "הסיסמה או הקוד הזה אינם נכונים. האימות הדו-שלבי עדיין פעיל."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "האימות הדו-שלבי כבר מוגדר. הסוד שלו מוצג רק במהלך ההרשמה."
 

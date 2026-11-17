@@ -68,6 +68,10 @@
         "cypress/support/password-reset-fixtures.js": {
             "kind": "fixture",
             "reason": "Deterministic password-reset token fixtures (including legacy/expired links) and exact user/token snapshots and restoration for #10201. Password hashes and token uses have no HTTP read surface; the spec exercises GET and POST through HTTP."
+        },
+        "cypress/support/person-deletion-fixtures.js": {
+            "kind": "fixture",
+            "reason": "Deterministic legacy history fixtures and stored relationship snapshots for #10485 where no complete HTTP surface exists. The behavior spec uses HTTP for supported operations and person/family deletion."
         }
     },
     "baseline": {
@@ -138,7 +142,6 @@
         "cypress/e2e/ui/portal/member.portal-volunteer.spec.js": 46,
         "cypress/e2e/ui/portal/portal.e2e-member-week.spec.js": 42,
         "cypress/e2e/ui/portal/portal.e2e-team-leader.spec.js": 37,
-        "cypress/e2e/ui/security/limited-access.spec.js": 7,
         "cypress/e2e/ui/session/session.empty-password.spec.js": 8
     }
 }
