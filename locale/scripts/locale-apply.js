@@ -8,6 +8,8 @@
  *   npm run locale:apply                       move every filled term of the batch files
  *                                              (locale/terms/missing/<code>/*.json) into the locale files,
  *                                              then drop it from the batch; empty terms stay
+ *   npm run locale:apply -- --json-only        write only the locale JSON (translate PRs carry
+ *                                              JSON + queue; .po/.mo are rebuilt on master after merge)
  *   npm run locale:apply -- --locale de,fr     some locales only
  *   npm run locale:apply -- --prune            also drop translations of terms that are no longer in
  *                                              locale/messages.po (the terms workflow runs this)
@@ -26,11 +28,12 @@ const { obsoleteTerms } = require('./lib/locale-files');
 const { validateTranslation } = require('./lib/translation-checks');
 
 function parseArgs(argv) {
-    const opts = { locale: null, prune: false, check: false };
+    const opts = { locale: null, prune: false, check: false, jsonOnly: false };
     for (let i = 0; i < argv.length; i++) {
         if (argv[i] === '--locale') opts.locale = argv[++i];
         else if (argv[i] === '--prune') opts.prune = true;
         else if (argv[i] === '--check') opts.check = true;
+        else if (argv[i] === '--json-only') opts.jsonOnly = true;
         else if (argv[i] === '--help' || argv[i] === '-h') {
             console.log(fs.readFileSync(__filename, 'utf8').match(/\/\*\*([\s\S]*?)\*\//)[1].replace(/^ \* ?/gm, ''));
             process.exit(0);
@@ -57,9 +60,15 @@ function shapeProblems(shape, value) {
     return Object.keys(value).sort().join() === want ? [] : [`plural forms must be exactly: ${want}`];
 }
 
-/** Moves the filled batch terms of one locale into ctx.translations. */
+/**
+ * Moves the filled batch terms of one locale into ctx.translations (memory only).
+ * The batch files on disk are NOT touched here: they are returned as
+ * result.pendingWrites and flushed by flushPendingWrites() only after the
+ * locale files (JSON, .po, .mo) have been written successfully, so a failure
+ * while writing or compiling a locale can never consume filled batches.
+ */
 function applyBatches(ctx, { prune }) {
-    const result = { applied: 0, kept: 0, stale: 0, rejected: [] };
+    const result = { applied: 0, kept: 0, stale: 0, rejected: [], pendingWrites: [] };
     for (const { file, terms } of repo.readBatches(ctx.paths.batches)) {
         const remaining = {};
         for (const [term, value] of Object.entries(terms)) {
@@ -82,13 +91,33 @@ function applyBatches(ctx, { prune }) {
             ctx.translations[term] = value;
             result.applied++;
         }
-        repo.writeBatch(file, remaining);
+        result.pendingWrites.push({ file, remaining });
     }
     return result;
 }
 
+/** Writes the batch files collected by applyBatches. Call only after the locale files are safely written. */
+function flushPendingWrites(pendingWrites) {
+    for (const { file, remaining } of pendingWrites) repo.writeBatch(file, remaining);
+}
+
+/**
+ * One preflight for every run, whatever its size (1 term or 1,000): the .mo
+ * compiler must be installed before anything is read or written, so a
+ * checkout without dependencies fails here instead of mid-apply.
+ */
+function preflight() {
+    try {
+        require.resolve('gettext-parser');
+    } catch {
+        console.error('❌ Missing dependency: gettext-parser. Run `npm ci` first — no files were changed.');
+        process.exit(1);
+    }
+}
+
 function main() {
     const opts = parseArgs(process.argv.slice(2));
+    preflight();
     const entries = repo.loadSource();
     if (entries.length === 0) {
         console.error('❌ locale/messages.po has no terms; refusing to touch the locale files');
@@ -101,9 +130,11 @@ function main() {
     for (const target of repo.selectLocales(repo.targetLocales(), opts.locale)) {
         const ctx = repo.loadLocale(target, entries);
         const notes = [];
+        let pendingWrites = [];
 
         if (!opts.check) {
             const r = applyBatches(ctx, opts);
+            pendingWrites = r.pendingWrites;
             applied += r.applied;
             if (r.applied) notes.push(`${r.applied} applied`);
             if (r.kept) notes.push(`${r.kept} still empty`);
@@ -120,7 +151,11 @@ function main() {
             }
         }
 
-        const changes = repo.writeLocale(ctx, entries, { dryRun: opts.check });
+        const changes = repo.writeLocale(ctx, entries, { dryRun: opts.check, jsonOnly: opts.jsonOnly && !opts.check });
+        // The locale files are written; only now may the batches be consumed.
+        // If writeLocale threw, this line never runs and the filled batches
+        // are still on disk for the next run.
+        flushPendingWrites(pendingWrites);
         const files = ['json', 'po', 'mo'].filter((k) => changes[k]);
         if (opts.check && (changes.po || changes.mo)) outOfSync.push(`${target.locale} (${files.join(', ')})`);
         if (files.length) notes.push(`${opts.check ? 'out of sync' : 'wrote'}: ${files.join(', ')}`);
@@ -139,4 +174,6 @@ function main() {
     console.log(`\nApplied ${applied} translations${opts.prune ? `, removed ${pruned} obsolete` : ''}.`);
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = { applyBatches, flushPendingWrites, preflight };
