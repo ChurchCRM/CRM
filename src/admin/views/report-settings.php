@@ -62,16 +62,16 @@ unset($setting);
 </div>
 
 <div class="card mt-3" id="canadian-settings-card">
-    <div class="card-header"><h3 class="card-title"><?= gettext('Canadian Giving Statements') ?></h3></div>
+    <div class="card-header"><h3 class="card-title"><?= gettext('Charity details') ?></h3></div>
     <div class="card-body">
-        <p class="form-text"><?= gettext('Required for official Canadian receipts. Registration format validation does not verify active CRA registration. The system currency must explicitly identify CAD.') ?></p>
+        <p class="form-text"><?= gettext('Legal name, registered address, registration number, and issue locality are stored for any church. Canadian official receipts require a CRA number in the form 123456789RR0001, a currency symbol that identifies CAD, and a signature. Saving the number does not check that format or CRA registration status.') ?></p>
         <?php
         $canadianSettings = \ChurchCRM\dto\SystemConfig::getSettingsConfig([
-            'bCanadianGivingStatement', 'sCanadianCharityLegalName', 'sCanadianCharityRegisteredAddress',
-            'sCanadianCharityRegistrationNumber', 'sCanadianReceiptIssueLocality', 'sCanadianTaxSincerely', 'sTaxSigner',
+            'bCanadianGivingStatement', 'sCharityLegalName', 'sCharityRegisteredAddress',
+            'sCharityRegistrationNumber', 'sReceiptIssueLocality', 'sReceiptClosing', 'sTaxSigner',
         ]);
         foreach ($canadianSettings as &$setting) {
-            if ($setting['name'] === 'sCanadianCharityRegisteredAddress') {
+            if ($setting['name'] === 'sCharityRegisteredAddress') {
                 $setting['type'] = 'textarea';
             }
             if ($setting['name'] === 'sTaxSigner') {
@@ -81,7 +81,7 @@ unset($setting);
         }
         unset($setting);
         ?>
-        <div id="canadian-settings-panel" data-title="<?= InputUtils::escapeAttribute(gettext('Canadian Giving Statements')) ?>" data-settings="<?= InputUtils::escapeAttribute(json_encode($canadianSettings, JSON_THROW_ON_ERROR)) ?>"></div>
+        <div id="canadian-settings-panel" data-title="<?= InputUtils::escapeAttribute(gettext('Charity details')) ?>" data-settings="<?= InputUtils::escapeAttribute(json_encode($canadianSettings, JSON_THROW_ON_ERROR)) ?>"></div>
         <hr>
         <h4><?= gettext('Tax Signature') ?></h4>
         <p id="tax-signature-status" role="status" aria-live="polite"></p>

@@ -307,10 +307,10 @@ class GivingStatementService
         $family['salutation'] = 'Élodie Marie Tremblay (fictional)';
         $family['address'] = "123 rue Exemple\nMontréal, QC H2X 1Y4\nCanada";
         $family['serial'] = '2025-459';
-        $family['total'] = 'CAD 150.00';
+        $family['total'] = CurrencyFormatter::format(150);
         foreach ($family['gifts'] as $index => &$gift) {
             $gift['memo'] = '';
-            $gift['amount'] = $index === 0 ? 'CAD 100.00' : 'CAD 50.00';
+            $gift['amount'] = CurrencyFormatter::format($index === 0 ? 100 : 50);
         }
         unset($gift);
         return array_merge($document, [
@@ -320,7 +320,8 @@ class GivingStatementService
             'registered_address' => "456 Sample Street\nOttawa, ON K1A 0A1\nCanada",
             'registration' => '123456789RR0001', 'locality' => 'Ottawa',
             'gift_year' => 2025, 'issue_date' => DateTimeUtils::formatDate('2026-01-15'),
-            'duplicate' => false, 'signature' => null, 'sincerely' => 'Sincerely / Cordialement',
+            'advantage' => CurrencyFormatter::format(0),
+            'duplicate' => false, 'signature' => null, 'sincerely' => gettext('Sincerely'),
             'signer' => 'Sample Authorized Signer (fictional)',
         ]);
     }
@@ -392,14 +393,14 @@ class GivingStatementService
             throw new InvalidArgumentException(gettext('The system currency must explicitly identify CAD for Canadian receipts.'));
         }
         $legal = [];
-        foreach (['sCanadianCharityLegalName', 'sCanadianCharityRegisteredAddress', 'sCanadianCharityRegistrationNumber', 'sCanadianReceiptIssueLocality', 'sTaxSigner'] as $key) {
+        foreach (['sCharityLegalName', 'sCharityRegisteredAddress', 'sCharityRegistrationNumber', 'sReceiptIssueLocality', 'sTaxSigner'] as $key) {
             $legal[$key] = trim(SystemConfig::getValue($key));
             if ($legal[$key] === '') {
-                throw new InvalidArgumentException(gettext('Complete the required Canadian charity settings and printed signer.'));
+                throw new InvalidArgumentException(gettext('Complete the charity legal name, registered address, registration number, issue locality, and printed signer.'));
             }
         }
-        $legal['sCanadianCharityRegistrationNumber'] = strtoupper(preg_replace('/\s+/u', '', $legal['sCanadianCharityRegistrationNumber']));
-        if (!preg_match('/^[0-9]{9}RR[0-9]{4}$/D', $legal['sCanadianCharityRegistrationNumber'])) {
+        $legal['sCharityRegistrationNumber'] = strtoupper(preg_replace('/\s+/u', '', $legal['sCharityRegistrationNumber']));
+        if (!preg_match('/^[0-9]{9}RR[0-9]{4}$/D', $legal['sCharityRegistrationNumber'])) {
             throw new InvalidArgumentException(gettext('The Canadian registration number must have the format 123456789RR0001. This does not verify registration status.'));
         }
         if (!TaxSignatureService::hasUploaded() || ($image = TaxSignatureService::image()) === null) {
@@ -440,22 +441,27 @@ class GivingStatementService
                     || (in_array($payment->getMethod(), ['CREDITCARD', 'BANKDRAFT'], true) && !$payment->getAutCleared())) {
                     throw new InvalidArgumentException(gettext('Every included payment must be positive, cleared, monetary and without an advantage or problem. No rows were skipped.'));
                 }
+                $paidOn = $payment->getDate('Y-m-d');
+                if (!is_string($paidOn) || $paidOn > $issueDate) {
+                    throw new InvalidArgumentException(gettext('The issue date must be on or after every included payment date.'));
+                }
                 $total += $cents;
-                $gifts[] = ['date' => DateTimeUtils::formatDate($payment->getDate('Y-m-d')),
+                $gifts[] = ['date' => DateTimeUtils::formatDate($paidOn),
                     'fund' => $payment->getDonationFund()?->getName() ?? gettext('Undesignated'),
                     'memo' => ($input['includeMemo'] ?? '') === '1' ? $payment->getComment() : '',
-                    'amount' => self::canadianAmount($cents)];
+                    'amount' => CurrencyFormatter::format($cents / 100)];
             }
             $families[] = ['salutation' => $name, 'address' => $review['address'],
                 'serial' => $year . '-' . ($envelope > 0 ? $envelope : 'F' . $id),
-                'total' => self::canadianAmount($total), 'gifts' => $gifts];
+                'total' => CurrencyFormatter::format($total / 100), 'gifts' => $gifts];
         }
         return array_merge(self::document($families, "$year-01-01", "$year-12-31"), [
             'canadian' => true, 'title' => gettext('Official Receipt / Reçu officiel'),
-            'legal_name' => $legal['sCanadianCharityLegalName'], 'registered_address' => $legal['sCanadianCharityRegisteredAddress'],
-            'registration' => $legal['sCanadianCharityRegistrationNumber'], 'locality' => $legal['sCanadianReceiptIssueLocality'],
+            'legal_name' => $legal['sCharityLegalName'], 'registered_address' => $legal['sCharityRegisteredAddress'],
+            'registration' => $legal['sCharityRegistrationNumber'], 'locality' => $legal['sReceiptIssueLocality'],
             'gift_year' => $year, 'issue_date' => DateTimeUtils::formatDate($issueDate),
-            'duplicate' => $options['copyKind'] === 'duplicate', 'sincerely' => SystemConfig::getValue('sCanadianTaxSincerely'),
+            'advantage' => CurrencyFormatter::format(0),
+            'duplicate' => $options['copyKind'] === 'duplicate', 'sincerely' => SystemConfig::getValue('sReceiptClosing'),
             'signature' => 'data:image/png;base64,' . base64_encode($image), 'generated_on' => '',
         ]);
     }
@@ -467,11 +473,6 @@ class GivingStatementService
         }
         $cents = (int) $match[2] * 100 + (int) str_pad($match[3] ?? '', 2, '0');
         return ($match[1] === '-' ? -1 : 1) * $cents;
-    }
-
-    private static function canadianAmount(int $cents): string
-    {
-        return 'CAD ' . number_format($cents / 100, 2, SystemConfig::getValue('sDecimalSeparator'), SystemConfig::getValue('sThousandsSeparator'));
     }
 
     public static function fileLabel(int $year, string $familyName = ''): string

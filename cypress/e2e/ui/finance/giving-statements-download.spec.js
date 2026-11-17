@@ -65,10 +65,10 @@ describe("Giving statements download", () => {
 describe("Canadian reviewed receipts", () => {
     const settings = {
         bCanadianGivingStatement: "1",
-        sCanadianCharityLegalName: "Sample Canadian Charity",
-        sCanadianCharityRegisteredAddress: "456 Sample Street\nOttawa ON K1A 0A1\nCanada",
-        sCanadianCharityRegistrationNumber: "123456789 rr 0001",
-        sCanadianReceiptIssueLocality: "Ottawa",
+        sCharityLegalName: "Sample Canadian Charity",
+        sCharityRegisteredAddress: "456 Sample Street\nOttawa ON K1A 0A1\nCanada",
+        sCharityRegistrationNumber: "123456789 rr 0001",
+        sReceiptIssueLocality: "Ottawa",
         sTaxSigner: "Authorized Treasurer",
         sConfirmSigner: "Confirmation Officer",
         sCurrencySymbol: "CAD $",
@@ -145,7 +145,7 @@ describe("Canadian reviewed receipts", () => {
     it("prints the verified annual CAD 150 receipt without inferring the donor or including private memos", () => {
         receipt().then((response) => pdfText(response.body)).then((lines) => {
             const text = lines.join(" ");
-            ["2025-459", "Élodie Marie Tremblay", "CAD 150.00", "CAD 0.00", "Reçu officiel", "123456789RR0001", "Authorized Treasurer"].forEach((value) => expect(text).to.include(value));
+            ["2025-459", "Élodie Marie Tremblay", "150.00", "0.00", "CAD $", "Reçu officiel", "123456789RR0001", "Authorized Treasurer"].forEach((value) => expect(text).to.include(value));
             expect(text).to.not.include("Private <memo>");
             expect(text).to.not.include("intangible religious benefits");
         });
@@ -185,10 +185,10 @@ describe("Canadian reviewed receipts", () => {
         cy.freshAdminFormLogin({ enabled: true });
         receipt({}, 400).then((response) => expect(response.body).to.include("Shared-envelope conflict"));
         setEnvelope(1, otherEnvelope);
-        cy.setSystemConfig("sCanadianCharityLegalName", "");
+        cy.setSystemConfig("sCharityLegalName", "");
         cy.freshAdminFormLogin({ enabled: true });
         receipt({}, 400);
-        cy.setSystemConfig("sCanadianCharityLegalName", settings.sCanadianCharityLegalName);
+        cy.setSystemConfig("sCharityLegalName", settings.sCharityLegalName);
         cy.setSystemConfig("sCurrencySymbol", "USD");
         cy.freshAdminFormLogin({ enabled: true });
         receipt({}, 400);

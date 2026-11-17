@@ -107,11 +107,8 @@ function setConfigValueByNameAPI(Request $request, Response $response, array $ar
         }
     }
 
-    if ($configName === 'sCanadianCharityRegistrationNumber') {
-        $value = is_string($value) ? strtoupper(preg_replace('/\s+/u', '', $value)) : '';
-        if ($value !== '' && preg_match('/^[0-9]{9}RR[0-9]{4}$/D', $value) !== 1) {
-            return SlimUtils::renderErrorJSON($response, gettext('The Canadian registration number must have the format 123456789RR0001. This does not verify registration status.'), [], 400, null, $request);
-        }
+    if ($configName === 'sCharityRegistrationNumber' && !is_string($value)) {
+        return SlimUtils::renderErrorJSON($response, gettext('The charity registration number must be text.'), [], 400, null, $request);
     }
 
     if ($configName === 'sPDFTempDir') {
