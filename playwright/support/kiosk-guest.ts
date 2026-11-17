@@ -86,9 +86,10 @@ export async function setUpKioskDemo(browser: Browser): Promise<KioskDemo> {
         const { people } = await (await ok(await api.get('/api/persons/self-register'), 'List self-registrations')).json();
         for (const person of people as Array<{ Id: number; LastName: string }>) {
           if (person.LastName === KIOSK_GUEST.lastName) {
-            // A checked-in guest has attendance history, and deleting a
-            // person with recorded history is refused (#11107), so remove
-            // the guest's attendance for this demo event before deleting.
+            // A checked-in guest has attendance history, and attendance
+            // blocks person deletion, so remove the guest's attendance for
+            // this demo event before deleting. (Check-in writes no timeline
+            // note anymore, #11696 — attendance is the only blocker.)
             await api.delete(`/api/events/${eventId}/attendance/${person.Id}`);
             const deleted = await api.delete(`/api/person/${person.Id}`);
             if (!deleted.ok()) {

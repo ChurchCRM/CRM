@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "新しいボランティア機会を割り当て"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "電子取引の詳細"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "控除対象外金額を合計金額より大きくすることはできません。"
 
@@ -9380,10 +9376,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "会計年度別に家族の献金誓約と基金への拠出を追跡"
 
 #: 
-msgid "Transaction Details"
-msgstr "取引詳細"
-
-#: 
 msgid "Unmapped"
 msgstr "未マッピング"
 
@@ -9466,10 +9458,6 @@ msgstr "家族の献金誓約概要と基金配分を表示"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "グループメンバー、役割、プロパティを表示"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "献金誓約の入金の取引詳細を表示"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11030,10 +11018,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "無効なJSON値 — 設定が保存されませんでした。修正してもう一度お試しください。"
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "POEditorの翻訳プロジェクトに参加する"
-
-#: 
 msgid "Language and regional settings"
 msgstr "言語および地域設定"
 
@@ -11173,10 +11157,6 @@ msgstr "ユーザー設定"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "バージョン%sが利用可能です。インストールをアップグレードしてください。"
-
-#: 
-msgid "View All"
-msgstr "すべて表示"
 
 #: 
 msgid "Yellow"
@@ -15288,10 +15268,6 @@ msgstr "この募金活動の購入者"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "カレンダー埋め込み元"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM の翻訳は POEditor のコミュニティによって管理されています。次の方法でご協力いただけます："
 
 #: 
 msgid "Current $URL[0] value"
@@ -20293,10 +20269,6 @@ msgstr "再有効化"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "テーマ作成ガイドを読む"
-
-#: 
-msgid "Recent Emails"
-msgstr "最近のメール"
 
 #: 
 msgid "Recipient"

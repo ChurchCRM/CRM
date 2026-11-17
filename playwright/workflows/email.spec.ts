@@ -212,7 +212,9 @@ async function dismissHeaderNotices(page: Page): Promise<void> {
 
 async function openEmailHistoryPage(page: Page): Promise<void> {
   await openAndrew(page);
-  await humanClick(page.locator('#email-history-show-all'));
+  const personId = page.url().match(/\/people\/view\/(\d+)/)?.[1];
+  expect(personId, 'person id from the open person view').toBeTruthy();
+  await page.goto(`/people/view/${personId}/emails`);
   await page.waitForURL(/\/people\/view\/\d+\/emails/, { timeout: 15000 });
   await dismissHeaderNotices(page);
   await expect(page.locator('[data-email-history-table] [data-email-log-row]').first()).toBeVisible({ timeout: 15000 });
@@ -261,8 +263,8 @@ test.describe('Email history', () => {
   });
 
   test('email-history-modal', modal, async ({ page }, testInfo) => {
-    await openAndrew(page);
-    const row = page.locator('#email-history-card [data-email-log-row]').filter({ hasText: 'Volunteers needed for the fall festival' });
+    await openEmailHistoryPage(page);
+    const row = page.locator('[data-email-history-table] [data-email-log-row]').filter({ hasText: 'Volunteers needed for the fall festival' });
     await expect(row.first()).toBeVisible({ timeout: 15000 });
     await openEmailHistoryModal(page, row.first());
     await expect(page.locator('#email-history-modal-body')).toHaveAttribute('srcdoc', /.+/, { timeout: 15000 });

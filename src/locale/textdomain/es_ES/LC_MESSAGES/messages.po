@@ -1492,10 +1492,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Asignar una nueva oportunidad de voluntariado"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Detalle de transacciones electrónicas"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "El monto no deducible no puede ser mayor que el monto total"
 
@@ -9434,10 +9430,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Seguimiento de los compromisos de donación familiares y las aportaciones a fondos por año fiscal"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detalles de la transacción"
-
-#: 
 msgid "Unmapped"
 msgstr "Sin asignar"
 
@@ -9520,10 +9512,6 @@ msgstr "Ver resúmenes de compromisos de donación familiares y asignaciones de 
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Ver los miembros del grupo, los roles y las propiedades"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Ver los detalles de la transacción de un pago de compromiso de donación"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11084,10 +11072,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Valor JSON no válido — la configuración no se ha guardado. Por favor, corríjalo e inténtelo de nuevo."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Únase al proyecto de traducción en POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Configuración de idioma y región"
 
@@ -11227,10 +11211,6 @@ msgstr "Configuración de usuario"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "La versión %s está disponible. Por favor, actualice su instalación."
-
-#: 
-msgid "View All"
-msgstr "Ver todo"
 
 #: 
 msgid "Yellow"
@@ -15347,10 +15327,6 @@ msgstr "Compradores de esta recaudación de fondos"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Orígenes de incrustación del calendario"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Las traducciones de ChurchCRM son gestionadas por la comunidad en POEditor. Puede ayudar"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20363,10 +20339,6 @@ msgstr "Reactivar"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Lea la guía de autoría del tema"
-
-#: 
-msgid "Recent Emails"
-msgstr "Correos recientes"
 
 #: 
 msgid "Recipient"
