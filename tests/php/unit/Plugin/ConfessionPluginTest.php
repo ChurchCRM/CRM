@@ -7,9 +7,14 @@ use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\Plugin\Hooks;
 use ChurchCRM\Plugin\Hook\HookManager;
 use ChurchCRM\Plugins\Confession\ConfessionPlugin;
+use Composer\Autoload\ClassLoader;
 use Tester\Assert;
 
 require dirname(__DIR__, 2) . '/bootstrap.php';
+
+$pluginLoader = new ClassLoader();
+$pluginLoader->addPsr4('ChurchCRM\\Plugins\\Confession\\', APP_ROOT . '/plugins/core/confession/src');
+$pluginLoader->register();
 
 final class ConfessionConfigRow
 {
