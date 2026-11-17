@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Yeni bir gönüllü fırsat atayın"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Elektronik işlem detayları"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Azaltılamaz miktar toplam tutardan daha fazla olamaz."
 
@@ -9422,10 +9418,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Aile bağış taahhütlerini ve fon katkılarını mali yıla göre takip et"
 
 #: 
-msgid "Transaction Details"
-msgstr "İşlem Ayrıntıları"
-
-#: 
 msgid "Unmapped"
 msgstr "Eşlenmemiş"
 
@@ -9508,10 +9500,6 @@ msgstr "Aile bağış taahhüdü özetlerini ve fon dağılımlarını görünt�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Grup üyelerini, rolleri ve özellikleri görüntüle"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Bir bağış taahhüdü ödemesi için işlem ayrıntılarını görüntüle"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11072,10 +11060,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Geçersiz JSON değeri — ayar kaydedilmedi. Lütfen düzeltin ve tekrar deneyin."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "POEditor'daki Çeviri Projesine Katılın"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Dil ve bölgesel ayarlar"
 
@@ -11215,10 +11199,6 @@ msgstr "Kullanıcı Yapılandırması"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "%s sürümü mevcut. Lütfen kurulumunuzu güncelleyin."
-
-#: 
-msgid "View All"
-msgstr "Tümünü Görüntüle"
 
 #: 
 msgid "Yellow"
@@ -15334,10 +15314,6 @@ msgstr "Bu bağış kampanyasının alıcıları"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Takvim Gömme Kaynakları"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM çevirileri topluluk tarafından POEditor üzerinde yönetilmektedir. Katkıda bulunabilirsiniz:"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20350,10 +20326,6 @@ msgstr "Yeniden etkinleştir"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Tema yazım kılavuzunu okuyun"
-
-#: 
-msgid "Recent Emails"
-msgstr "Son E-postalar"
 
 #: 
 msgid "Recipient"

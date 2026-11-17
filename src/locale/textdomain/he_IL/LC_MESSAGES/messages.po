@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "הקצה הזדמנות התנדבות חדשה"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "פרטי עסקה אלקטרונית"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "סכום שאינו ניתן לניכוי לא יכול להיות גדול מהסכום הכולל."
 
@@ -9420,10 +9416,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "מעקב אחר התחייבויות כספיות משפחתיות ותרומות לקרנות לפי שנת כספים"
 
 #: 
-msgid "Transaction Details"
-msgstr "פרטי עסקה"
-
-#: 
 msgid "Unmapped"
 msgstr "לא ממופה"
 
@@ -9506,10 +9498,6 @@ msgstr "צפייה בסיכומי התחייבויות כספיות משפחתי
 #: 
 msgid "View group members, roles, and properties"
 msgstr "צפייה בחברי קבוצה, תפקידים ומאפיינים"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "צפייה בפרטי עסקה עבור תשלום התחייבות כספית"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11070,10 +11058,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "ערך JSON לא תקין — ההגדרה לא נשמרה. אנא תקן ונסה שוב."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "הצטרף לפרויקט התרגום ב-POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "הגדרות שפה ואזור"
 
@@ -11213,10 +11197,6 @@ msgstr "הגדרות משתמש"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "גרסה %s זמינה. אנא שדרג את ההתקנה שלך."
-
-#: 
-msgid "View All"
-msgstr "הצג הכל"
 
 #: 
 msgid "Yellow"
@@ -15332,10 +15312,6 @@ msgstr "קונים לגיוס כספים זה"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "מקורות הטמעת לוח שנה"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "תרגומי ChurchCRM מנוהלים על ידי הקהילה ב-POEditor. תוכל לעזור על ידי"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20348,10 +20324,6 @@ msgstr "הפעלה מחדש"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "קראו את מדריך כתיבת ערכות הנושא"
-
-#: 
-msgid "Recent Emails"
-msgstr "דוא\"ל אחרון"
 
 #: 
 msgid "Recipient"

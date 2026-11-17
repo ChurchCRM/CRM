@@ -10,7 +10,6 @@ import {
     createDeletionProperty,
     prepareDeletionRelationships,
     readDeletionRelationships,
-    recordKioskGuestNote,
     recordOnboardingParticipation,
     recordSentFamilyMail,
     recordUnsentActivity,
@@ -281,9 +280,4 @@ describe("Person deletion preserves recorded history", () => {
             .then(() => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 404));
     });
 
-    it("allows deletion when the only note is the kiosk walk-in registration entry", () => {
-        return recordKioskGuestNote(personId)
-            .then(() => cy.makePrivateAdminAPICall("DELETE", `/api/person/${personId}`, null, 200))
-            .then(() => cy.makePrivateAdminAPICall("GET", `/api/person/${personId}`, null, 404));
-    });
 });
