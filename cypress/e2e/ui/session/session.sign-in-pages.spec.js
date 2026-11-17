@@ -168,11 +168,11 @@ describe("Sign-in pages", () => {
             cy.location("pathname").should("match", /\/groups\/dashboard$/);
 
             cy.clearCookies();
-            cy.visit("/people/properties?Type=p");
+            cy.visit("/people/properties/p");
             cy.location("pathname").should("match", /\/admin\/$/);
             signInAtAdmin(admin());
-            cy.location("pathname").should("match", /\/people/properties$/);
-            cy.location("search").should("eq", "?Type=p");
+            cy.location("pathname").should("match", /\/people\/properties\/[pfg]$/);
+            cy.location("pathname").should("match", /\/people\/properties\/p$/);
         });
     });
 

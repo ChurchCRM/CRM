@@ -135,10 +135,10 @@ function deletePropertyType(Request $request, Response $response, array $args): 
         return SlimUtils::renderErrorJSON($response, gettext('Property type not found'), [], 404);
     }
 
-    // Cascade delete properties and assignments (same as legacy)
+    // Cascade: delete record-property mappings, then properties, then the type (matches legacy)
     $propertyIds = PropertyQuery::create()->filterByProPrtId($id)->select(['ProId'])->find()->toArray();
     if (!empty($propertyIds)) {
-        // RecordProperty cleanup would go here if model available; simplified for now
+        RecordPropertyQuery::create()->filterByPropertyId($propertyIds)->delete();
     }
     PropertyQuery::create()->filterByProPrtId($id)->delete();
     $pt->delete();

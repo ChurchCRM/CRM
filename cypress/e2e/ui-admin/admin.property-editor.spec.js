@@ -16,7 +16,7 @@ describe("Admin defines the properties families and people can carry", () => {
     const personPropertyCount = () => cy.request("/api/people/properties/person").its("body.length");
 
     it("adds a family property from the property list and edits it", () => {
-        cy.visit("/people/properties?Type=f");
+        cy.visit("/people/properties/f");
         cy.get('a[href$="/admin/properties/family/new"]').first().click();
         cy.location("pathname").should("match", /\/admin\/properties\/family\/new$/);
         cy.contains("Family Property Editor");
