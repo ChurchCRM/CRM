@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\model\ChurchCRM\PropertyTypeQuery;
 use ChurchCRM\model\ChurchCRM\RecordPropertyQuery;
 use ChurchCRM\Slim\Middleware\CSRFMiddleware;
+use ChurchCRM\Slim\Middleware\Request\Auth\AdminRoleAuthMiddleware;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
@@ -21,7 +22,7 @@ $app->group('/properties', function (RouteCollectorProxy $group): void {
     $group->get('/{type:[pfg]}', 'listProperties');
     // Delete action as API
     $group->delete('/types/{id:[0-9]+}', 'deletePropertyType')->add(new CSRFMiddleware('property_type_delete'));
-});
+})->add(AdminRoleAuthMiddleware::class);
 
 function listProperties(Request $request, Response $response, array $args): Response
 {

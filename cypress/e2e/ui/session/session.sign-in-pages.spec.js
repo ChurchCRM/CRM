@@ -226,7 +226,7 @@ describe("Sign-in pages", () => {
             emailSignIn(judith.email);
             cy.visit("/");
             cy.location("pathname").should("match", /\/portal\/$/);
-            ["/v2/dashboard", "/admin/system/users", "/people/view/2", "/people/properties"].forEach(expectStaffSignInRedirect);
+            ["/v2/dashboard", "/admin/system/users", "/people/view/2", "/people/properties/p"].forEach(expectStaffSignInRedirect);
             cy.request({ url: "/api/persons/latest", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.request({ url: "/admin/api/member-portal/sign-in", failOnStatusCode: false }).its("status").should("eq", 401);
             cy.visit("/admin/");

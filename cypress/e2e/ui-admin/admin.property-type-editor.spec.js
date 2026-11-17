@@ -24,7 +24,7 @@ describe("Admin organizes properties into property types", () => {
         cy.get("#description").type("Skills a family can offer");
         cy.get("#save-property-type").click();
 
-        cy.location("pathname").should("match", /\/people/properties/types$/);
+        cy.location("pathname").should("match", /\/people\/properties\/types$/);
         cy.contains("tr", typeName)
             .should("contain", "Family")
             .find('a[href*="/admin/property-types/"]')
@@ -38,7 +38,7 @@ describe("Admin organizes properties into property types", () => {
         cy.get("#name").should("have.value", typeName).clear().type(renamedTypeName);
         cy.get("#save-property-type").click();
 
-        cy.location("pathname").should("match", /\/people/properties/types$/);
+        cy.location("pathname").should("match", /\/people\/properties\/types$/);
         cy.contains("tr", renamedTypeName).should("exist");
         cy.then(() => cy.request(`/admin/api/property-types/${propertyTypeId}`))
             .its("body.propertyType")

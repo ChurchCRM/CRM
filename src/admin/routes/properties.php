@@ -53,7 +53,7 @@ function adminPropertyEditor(Request $request, Response $response, array $args):
     $description = (string) $property->getProDescription();
     $prompt = (string) $property->getProPrompt();
     $errors = [];
-    $listUrl = '/people/properties/' . $class;
+    $listPath = '/people/properties/' . $class; // subdir-ok: callers prefix SystemURLs::getRootPath()
 
     if ($request->getMethod() === 'POST') {
         $body = (array) $request->getParsedBody();
@@ -64,7 +64,7 @@ function adminPropertyEditor(Request $request, Response $response, array $args):
 
         $errors = PropertyService::saveDefinition($property, $propertyTypeId, $name, $description, $prompt);
         if ($errors === []) {
-            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . $listUrl);
+            return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . $listPath);
         }
     }
 
@@ -86,12 +86,12 @@ function adminPropertyEditor(Request $request, Response $response, array $args):
             $class === PropertyService::CLASS_GROUP
                 ? [gettext('Groups'), '/groups/dashboard']
                 : [gettext('People'), '/people/dashboard'],
-            [$recordTypeName . ' ' . gettext('Properties'), $listUrl],
+            [$recordTypeName . ' ' . gettext('Properties'), $listPath],
             [$isNew ? gettext('Add Property') : gettext('Edit Property')],
         ]),
         'isNew' => $isNew,
         'formAction' => $formAction,
-        'listUrl' => SystemURLs::getRootPath() . $listUrl,
+        'listUrl' => SystemURLs::getRootPath() . $listPath,
         'recordTypeName' => $recordTypeName,
         'propertyTypes' => PropertyService::getTypes($class),
         'nameMaxLength' => PropertyService::NAME_MAX_LENGTH,

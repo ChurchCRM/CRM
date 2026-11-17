@@ -1,7 +1,10 @@
 <?php
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
+
+$csrfToken = CSRFUtils::generateToken();
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
     [gettext('Admin'), '/admin/'],
@@ -114,7 +117,8 @@ require_once __DIR__ . '/../../Include/Header.php';
                                         data-name="<?= InputUtils::escapeAttribute($type['name']) ?>"
                                         data-class="<?= $type['class'] ?>"
                                         data-properties="<?= (int) $type['properties'] ?>"
-                                        data-assignments="<?= (int) ($type['assignments'] ?? 0) ?>">
+                                        data-assignments="<?= (int) ($type['assignments'] ?? 0) ?>"
+                                        data-csrf-token="<?= InputUtils::escapeAttribute($csrfToken) ?>">
                                     <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
                                 </button>
                             </div>
@@ -137,8 +141,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const cls = this.dataset.class;
             const props = parseInt(this.dataset.properties || '0', 10);
             const assigns = parseInt(this.dataset.assignments || '0', 10);
+            const csrfToken = this.dataset.csrfToken || '';
             const recordLabel = cls === 'p' ? '<?= gettext("people") ?>' : (cls === 'f' ? '<?= gettext("families") ?>' : '<?= gettext("groups") ?>');
-            let message = '<p><?= gettext("Please confirm deletion of this Property Type") ?>: <strong>' + name + '</strong></p>';
+            let message = '<p><?= gettext("Please confirm deletion of this Property Type") ?>: <strong>' + window.CRM.escapeHtml(name) + '</strong></p>';
             if (props > 0 || assigns > 0) {
                 let warn = '<div class="alert alert-warning"><strong><?= gettext("Warning") ?>:</strong> ';
                 if (assigns > 0) {
@@ -156,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 () => {
                     fetch('<?= $sRootPath ?>/people/properties/types/' + id, {
                         method: 'DELETE',
-                        headers: { 'X-CSRF-Token': window.CRM.csrfToken || '' }
+                        headers: { 'X-CSRF-Token': csrfToken }
                     }).then(r => {
                         if (r.ok) {
                             this.closest('tr').remove();
