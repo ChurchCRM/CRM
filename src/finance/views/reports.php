@@ -37,6 +37,7 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
             [
                 'title' => gettext('Giving Reports'),
                 'reports' => [
+                    ['href' => '/finance/reports/year-end', 'title' => gettext('Year-End Giving'), 'description' => gettext('Review a fiscal year, then download giving statements.')],
                     ['href' => '/finance/reports/giving-statements', 'title' => gettext('Giving Statements'), 'description' => gettext('Generate annual tax-deductible giving statements for donors. Can be printed or emailed.')],
                     ['href' => '/FinancialReports.php?ReportType=Zero%20Givers', 'title' => gettext('Zero Givers'), 'description' => gettext('Identify members who have not made any donations within a date range.')],
                 ],
@@ -46,6 +47,8 @@ $fyMonthName = $monthNames[$iFYMonth] ?? '';
                 'reports' => [
                     ['href' => '/finance/pledge/dashboard', 'title' => gettext('Pledge Summary'), 'description' => gettext('Interactive pledges-vs-payments summary by fund with sort, search, and export.')],
                     ['href' => '/FinancialReports.php?ReportType=Pledge%20Family%20Summary', 'title' => gettext('Pledge Family Summary'), 'description' => gettext('Detailed breakdown of pledges and payments by family.')],
+                    ['href' => '/finance/reports/pledge-comparison', 'title' => gettext('Pledge Comparison'), 'description' => gettext('Compare family pledge totals for two fiscal years.')],
+                    ['href' => '/finance/reports/missing-pledges', 'title' => gettext('Missing Pledges'), 'description' => gettext('Find families that pledged in one fiscal year and not in another.')],
                     ['href' => '/FinancialReports.php?ReportType=Pledge%20Reminders', 'title' => gettext('Pledge Reminders'), 'description' => gettext('Generate reminder letters for families with outstanding pledges.')],
                 ],
             ],

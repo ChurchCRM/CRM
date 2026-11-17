@@ -1,3 +1,4 @@
+import { confirmAction } from "../../common/confirm-action";
 /**
  * The Positions table and its Add / Edit dialog (design §5.4).
  *
@@ -29,7 +30,6 @@ import {
 import {
   actionMenu,
   byId,
-  confirmDelete,
   destroyDataTable,
   escapeHtml,
   hideModal,
@@ -328,7 +328,7 @@ export function createPositionsTable(options: PositionsTableOptions): PositionsT
       }
 
       const positionId = Number(target.dataset.positionId);
-      confirmDelete(
+      confirmAction(
         i18next.t("Delete position"),
         i18next.t(
           "Delete {{name}}? Its qualifications, staffing needs and assignments — past service records included — are removed with it. To keep the history, deactivate the position instead. This cannot be undone.",

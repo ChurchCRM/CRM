@@ -143,3 +143,10 @@ export const ageFamilyConfirmations = (familyId, text, days) =>
         familyId,
         text,
     ]);
+
+/** A confirmation an emailed link recorded before those links were retired (#11145): the verify note, written by no route today. */
+export const recordLinkConfirmation = (familyId, text) =>
+    db(
+        "INSERT INTO note_nte (nte_per_ID, nte_fam_ID, nte_Private, nte_Text, nte_DateEntered, nte_EnteredBy, nte_Type) VALUES (0, ?, 0, ?, NOW(), -2, 'verify')",
+        [familyId, text],
+    );

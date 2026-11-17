@@ -253,27 +253,6 @@ export function exportButtons(buttons: unknown): unknown {
 }
 
 /**
- * Destructive actions go behind a bootbox confirm (U3). The 409 the API raises
- * when the record is still referenced is surfaced verbatim, because its message
- * names the counts and tells the coordinator to deactivate instead.
- */
-export function confirmDelete(title: string, message: string, onConfirm: () => void): void {
-  window.bootbox?.confirm({
-    title,
-    message,
-    buttons: {
-      confirm: { label: i18next.t("Yes"), className: "btn-danger" },
-      cancel: { label: i18next.t("No"), className: "btn-default" },
-    },
-    callback: (result: boolean) => {
-      if (result) {
-        onConfirm();
-      }
-    },
-  });
-}
-
-/**
  * Keep a sideways-scrolling table's heading row in view while the page scrolls.
  *
  * A sticky cell inside the sideways-scrolling wrapper sticks to the wrapper, not the page, so

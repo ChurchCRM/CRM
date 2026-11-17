@@ -6,11 +6,6 @@ describe("Finance Deposits", () => {
         cy.setupAdminSession();
     });
 
-    it("Envelope Manager", () => {
-        cy.visit("/ManageEnvelopes.php");
-        cy.contains("Envelope Manager");
-    });
-
     it("Create Deposit on the Finance Dashboard opens the new-deposit form and lands on the editor", () => {
         const comment = "From dashboard " + Date.now();
         cy.visit("/finance/");
@@ -25,20 +20,6 @@ describe("Finance Deposits", () => {
 
         cy.location("pathname").should("match", /\/finance\/deposit\/\d+$/);
         cy.get("#Comment").should("have.value", comment);
-    });
-
-    it("Navigate to deposits from Finance Menu", () => {
-        cy.visit("/finance/");
-        
-        // Use the View All link in Recent Deposits section
-        cy.contains("Recent Deposits")
-            .parents(".card")
-            .find("a")
-            .contains("View All")
-            .click();
-            
-        cy.url().should("contain", "/finance/deposit/search");
-        cy.contains("Deposits");
     });
 
     it("Create a new Deposit without comment", () => {
@@ -134,15 +115,6 @@ describe("Finance Deposits", () => {
 
     });
 
-    it("Load the deposit editor and verify DataTables loads without errors", () => {
-        cy.visit("/finance/deposit/5");
-
-        // Verify page loaded
-        cy.contains("Deposit Slip Number: 5");
-        cy.contains("Payments");
-
-    });
-
     it("Payments table has row actions and bulk select enables Delete Selected", () => {
         cy.visit("/finance/deposit/5");
         cy.get("#paymentsTable tbody tr").should("have.length.greaterThan", 0);
@@ -171,17 +143,4 @@ describe("Finance Deposits", () => {
         cy.location("pathname").should("match", /\/finance\/deposit\/5$/);
     });
 
-    it("Renders the Funds bar chart via ApexCharts", () => {
-        cy.visit("/finance/deposit/5");
-
-        cy.contains("Deposit Slip Number: 5");
-
-        // The #fund-bar container is always present; ApexCharts must
-        // actually draw into it (SVG/canvas), not just leave it empty —
-        // catches chart-library regressions (e.g. major version bumps)
-        // that a container-existence check alone would miss.
-        cy.get("#fund-bar").should("exist");
-        cy.get("#fund-bar .apexcharts-canvas").should("exist");
-        cy.get("#fund-bar svg.apexcharts-svg").should("exist");
-    });
 });

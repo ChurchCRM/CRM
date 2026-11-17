@@ -586,7 +586,7 @@ async function doSendEmail(submitBtn: HTMLButtonElement): Promise<void> {
   const submitIcon = submitBtn.querySelector("i");
   if (submitIcon) submitIcon.className = "spinner-border spinner-border-sm me-1";
   const submitLabel = submitBtn.lastChild;
-  if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Sending…");
+  if (submitLabel instanceof Text) submitLabel.nodeValue = i18next.t("Sending...");
   const resetSubmit = () => {
     submitBtn.disabled = false;
     if (submitIcon) submitIcon.className = "fa-solid fa-paper-plane me-1";
@@ -1379,6 +1379,28 @@ async function openFromEndpoint(endpoint: string, title: string): Promise<void> 
 //  Auto-wire delegated handler for [data-email-composer]
 // ─────────────────────────────────────────────
 
+function parseRecipients(json: string | undefined): CRMEmailRecipient[] {
+  if (!json) return [];
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(json);
+  } catch {
+    return [];
+  }
+  if (!Array.isArray(parsed)) return [];
+  const recipients: CRMEmailRecipient[] = [];
+  for (const item of parsed) {
+    if (!item || typeof item !== "object") continue;
+    const r = item as Record<string, unknown>;
+    const email = typeof r.email === "string" ? r.email.trim() : "";
+    if (email === "") continue;
+    const personId = typeof r.personId === "number" && r.personId > 0 ? r.personId : null;
+    const familyId = typeof r.familyId === "number" && r.familyId > 0 ? r.familyId : null;
+    recipients.push({ personId, familyId, name: typeof r.name === "string" ? r.name : "", email });
+  }
+  return recipients;
+}
+
 function wireDataAttributes(): void {
   document.addEventListener("click", (e) => {
     if (!(e.target instanceof Element)) return;
@@ -1408,6 +1430,14 @@ function wireDataAttributes(): void {
           },
         ],
       });
+      return;
+    }
+
+    // A list the page already holds: <button data-email-composer
+    //   data-email-recipients='[{"personId":12,"name":"Jane Doe","email":"a@b.c"}]'>.
+    const listed = parseRecipients(btn.dataset.emailRecipients);
+    if (listed.length > 0) {
+      openEmailComposer({ title, emails: listed.map((r) => r.email), recipients: listed });
       return;
     }
 

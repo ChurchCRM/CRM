@@ -29,6 +29,7 @@
 import { wireAuditTab } from "./admin-member-portal/audit-tab";
 import { refreshMemberLists, wireMembersTab } from "./admin-member-portal/members-tab";
 import { loadPermissionsCatalog, wirePermissionsTab } from "./admin-member-portal/permissions-tab";
+import { confirmAction } from "./common/confirm-action";
 
 interface ThemeFinding {
   file: string;
@@ -597,19 +598,17 @@ function confirmMemberSignIn(turningOn: boolean, ruleWarning: string): Promise<b
       resolve(false);
       return;
     }
-    window.bootbox.confirm({
-      title: turningOn ? t("Turn on member sign-in?") : t("Turn off member sign-in?"),
+    confirmAction(
+      turningOn ? t("Turn on member sign-in?") : t("Turn off member sign-in?"),
       message,
-      buttons: {
-        cancel: { label: t("Cancel") },
-        confirm: turningOn
-          ? { label: t("Turn on"), className: "btn-primary" }
-          : { label: t("Turn off"), className: "btn-danger" },
+      () => resolve(true),
+      {
+        tone: turningOn ? "primary" : "danger",
+        confirmLabel: turningOn ? t("Turn on") : t("Turn off"),
+        cancelLabel: t("Cancel"),
+        onCancel: () => resolve(false),
       },
-      callback: (result: boolean) => {
-        resolve(result === true);
-      },
-    });
+    );
   });
 }
 

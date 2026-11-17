@@ -9,7 +9,6 @@ use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\ListOption;
 use ChurchCRM\model\ChurchCRM\PersonCustomMaster;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
-use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CustomFieldUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
@@ -266,84 +265,7 @@ require_once __DIR__ . '/Include/Header.php'; ?>
 
     // Construct the form
     ?>
-    <script nonce="<?= SystemURLs::getCSPNonce() ?>">
-        function confirmDeleteField(fieldName, fieldId) {
-            var msg = <?= InputUtils::jsonEncodeForScript(gettext('Are you sure you want to delete')) ?> + '"' + fieldName + '"?';
-            msg += '<br><br><strong>' + <?= InputUtils::jsonEncodeForScript(gettext('Warning')) ?> + ':</strong> ';
-            msg += <?= InputUtils::jsonEncodeForScript(gettext('By deleting this field, you will irrevocably lose all person data assigned for this field!')) ?>;
-            bootbox.confirm({
-                title: <?= InputUtils::jsonEncodeForScript(gettext('Delete Confirmation')) ?>,
-                message: msg,
-                buttons: {
-                    cancel: { label: <?= InputUtils::jsonEncodeForScript(gettext('Cancel')) ?>, className: 'btn-secondary' },
-                    confirm: { label: <?= InputUtils::jsonEncodeForScript(gettext('Delete')) ?>, className: 'btn-danger' }
-                },
-                callback: function(result) {
-                    if (result) {
-                        // Submit deletion as a POST request with CSRF protection
-                        var form = document.createElement('form');
-                        form.method = 'POST';
-                        form.action = 'PersonCustomFieldsRowOps.php';
-
-                        var fieldInput = document.createElement('input');
-                        fieldInput.type = 'hidden';
-                        fieldInput.name = 'Field';
-                        fieldInput.value = fieldId;
-                        form.appendChild(fieldInput);
-
-                        var actionInput = document.createElement('input');
-                        actionInput.type = 'hidden';
-                        actionInput.name = 'Action';
-                        actionInput.value = 'delete';
-                        form.appendChild(actionInput);
-
-                        var csrfInput = document.createElement('input');
-                        csrfInput.type = 'hidden';
-                        csrfInput.name = 'csrf_token';
-                        csrfInput.value = <?= InputUtils::jsonEncodeForScript(CSRFUtils::generateToken('personCustomFieldsAction')) ?>;
-                        form.appendChild(csrfInput);
-
-                        document.body.appendChild(form);
-                        form.submit();
-                    }
-                }
-            });
-            return false;
-        }
-
-        $(document).on('click', '.js-delete-field', function () {
-            var btn = $(this);
-            confirmDeleteField(btn.data('field-name'), btn.data('field-id'));
-        });
-
-        // Reorder (up/down) — POST with CSRF so the 405 guard in RowOps is satisfied.
-        $(document).on('click', '.js-reorder-field', function () {
-            var btn = $(this);
-            var form = document.createElement('form');
-            form.method = 'POST';
-            form.action = 'PersonCustomFieldsRowOps.php';
-            [['OrderID', btn.data('order-id')], ['Field', btn.data('field-id')],
-             ['Action', btn.data('direction')], ['csrf_token', <?= InputUtils::jsonEncodeForScript(CSRFUtils::generateToken('personCustomFieldsAction')) ?>]]
-            .forEach(function (p) {
-                var inp = document.createElement('input');
-                inp.type = 'hidden'; inp.name = p[0]; inp.value = p[1];
-                form.appendChild(inp);
-            });
-            document.body.appendChild(form);
-            form.submit();
-        });
-
-        <?php if (isset($_GET['deleted']) && $_GET['deleted'] === '1'): ?>
-        $(document).ready(function() {
-            window.CRM.notify(
-                <?= InputUtils::jsonEncodeForScript(gettext('Field deleted successfully')) ?>,
-                { type: 'success' }
-            );
-        });
-        <?php endif; ?>
-    </script>
-
-    <form method="post" action="PersonCustomFieldsEditor.php" name="PersonCustomFieldsEditor">
+    <form method="post" action="PersonCustomFieldsEditor.php" name="PersonCustomFieldsEditor" data-custom-field-type="person">
         <div class="card mb-4">
             <div class="card-status-top bg-success"></div>
             <div class="card-header">
@@ -498,10 +420,10 @@ require_once __DIR__ . '/Include/Header.php'; ?>
                                     <div class="dropdown-menu dropdown-menu-end">
                                         <?php
                                         if ($row != 1) {
-                                            echo '<button type="button" class="dropdown-item js-reorder-field" data-order-id="' . $row . '" data-field-id="' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '" data-direction="up"><i class="fa-solid fa-arrow-up me-2"></i>' . gettext('Move up') . '</button>';
+                                            echo '<button type="button" class="dropdown-item js-reorder-field" data-field-id="' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '" data-direction="up"><i class="fa-solid fa-arrow-up me-2"></i>' . gettext('Move up') . '</button>';
                                         }
                                         if ($row < $numRows) {
-                                            echo '<button type="button" class="dropdown-item js-reorder-field" data-order-id="' . $row . '" data-field-id="' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '" data-direction="down"><i class="fa-solid fa-arrow-down me-2"></i>' . gettext('Move down') . '</button>';
+                                            echo '<button type="button" class="dropdown-item js-reorder-field" data-field-id="' . htmlspecialchars($aFieldFields[$row], ENT_QUOTES, 'UTF-8') . '" data-direction="down"><i class="fa-solid fa-arrow-down me-2"></i>' . gettext('Move down') . '</button>';
                                         }
                                         if ($row != 1 || $row < $numRows) {
                                             echo '<div class="dropdown-divider"></div>';
@@ -532,5 +454,6 @@ require_once __DIR__ . '/Include/Header.php'; ?>
         <?php
         } ?>
     </form>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/people-custom-fields-editor.min.js') ?>"></script>
 <?php
 require_once __DIR__ . '/Include/Footer.php';

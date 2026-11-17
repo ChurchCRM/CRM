@@ -68,7 +68,7 @@ function initializeIssueReporter() {
       })
       .fail(function () {
         $btn.prop("disabled", false).html('<i class="fa-brands fa-github me-1"></i>Open GitHub Issue');
-        alert("Could not gather system info. Please try again.");
+        window.CRM.notify(i18next.t("Could not gather system info. Please try again."), { type: "danger" });
       })
       .always(function () {
         // Reset button and textarea when modal is fully hidden

@@ -4,6 +4,7 @@
  * just reloads the page.
  */
 import { buildAdminAPIUrl } from "./api-utils";
+import { confirmAction } from "./common/confirm-action";
 
 const LETTERHEAD_API_PATH = "system/letterhead";
 
@@ -24,21 +25,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.getElementById("church-letterhead-remove-btn")?.addEventListener("click", () => {
-    window.bootbox.confirm({
-      title: t("Letterhead"),
-      message: t("Remove the letterhead? Letters will print the church name and address."),
-      buttons: {
-        cancel: { label: t("Cancel"), className: "btn-secondary" },
-        confirm: { label: t("Remove"), className: "btn-danger" },
+    confirmAction(
+      t("Letterhead"),
+      t("Remove the letterhead? Letters will print the church name and address."),
+      () => {
+        window.CRM.AdminAPIRequest({ method: "DELETE", path: LETTERHEAD_API_PATH }).done(() =>
+          window.location.reload(),
+        );
       },
-      callback: (confirmed) => {
-        if (confirmed) {
-          window.CRM.AdminAPIRequest({ method: "DELETE", path: LETTERHEAD_API_PATH }).done(() =>
-            window.location.reload(),
-          );
-        }
-      },
-    });
+      { confirmLabel: t("Remove"), cancelLabel: t("Cancel") },
+    );
   });
 
   const uploadBtn = document.getElementById("church-letterhead-upload-btn");

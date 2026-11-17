@@ -28,6 +28,11 @@ Use an epic when work has multiple meaningful outcomes, crosses subsystems, or n
 
 Apply the existing label when design is settled, scope is bounded and low-risk, relevant paths and validation guidance are clear, acceptance criteria are observable, and a human reviewer is available.
 
+Two checks make "bounded" concrete:
+
+- **One task.** The issue is a single outcome that lands in one PR. If the body needs three or more distinct tasks, it is not one issue — split it first (native sub-issues when the parts are independent) and apply the label to the split issues, not the bundle.
+- **Spec'd enough to start cold.** The body states the current behavior, the wanted behavior, and a starting path (where the work lives). A one-line feature wish is not a good first issue until a maintainer writes it up.
+
 ## Review for church value and simple UX
 
 - Start with the real job a church staff member or volunteer is trying to do. Prefer outcomes and complete workflows over feature lists or implementation-led explanations.
@@ -41,8 +46,8 @@ Apply the existing label when design is settled, scope is bounded and low-risk, 
 - Documentation, screenshots/video, and marketing content are valuable follow-ups for user-visible features, not routine code-PR merge gates.
 - During review, note the useful follow-up and link or create one focused issue when it needs tracking. Keep it proportional; bug fixes and security-only changes may not need marketing.
 - File documentation issues in the docs repository ([ChurchCRM/docs.churchcrm.io](https://github.com/ChurchCRM/docs.churchcrm.io/issues)), never in this repository. When a CRM issue closes with a documentation gap, file the docs issue there and add a comment on the CRM issue linking to it.
-- User documentation must describe released behavior and follow the docs repository's release process. Prepare screenshots/video from the real product with safe demo data.
-- Invite non-code contributors to help with how-to guides, screenshots, short walkthroughs, blog posts, and translations. Give them the user problem, confirmed behavior, and a clear destination to contribute.
+- User documentation must describe released behavior and follow the docs repository's release process. Write the outcome, the decision, and the gotcha rather than click-by-click steps. Add a screenshot or video only when it makes the page clearly easier to follow, taken from the real product with safe demo data.
+- Invite non-code contributors to help with how-to guides, short walkthroughs, blog posts, and translations. Give them the user problem, confirmed behavior, and a clear destination to contribute.
 - Marketing should explain the church outcome and when the feature is available. Do not turn planned or proposed work into a current-product claim.
 
 ## Write for the human first

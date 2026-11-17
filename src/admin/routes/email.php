@@ -7,6 +7,7 @@ use ChurchCRM\Emails\TestEmail;
 use ChurchCRM\model\ChurchCRM\PropertyQuery;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\EmailLogService;
+use ChurchCRM\Service\FlashService;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -59,13 +60,9 @@ function adminEmailSettingsPageArgs(array $settings, string $message, string $me
 $app->get('/email', function (Request $request, Response $response): Response {
     $renderer = new PhpRenderer(__DIR__ . '/../views/');
 
-    $message      = '';
-    $messageClass = 'success';
-    if (isset($_SESSION['sGlobalMessage'])) {
-        $message      = $_SESSION['sGlobalMessage'];
-        $messageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
-        unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
-    }
+    $flash = FlashService::take();
+    $message      = $flash['message'] ?? '';
+    $messageClass = $flash['class'] ?? 'success';
 
     return $renderer->render($response, 'email.php', adminEmailSettingsPageArgs(adminEmailSettingsFromConfig(), $message, $messageClass, ''));
 });
@@ -128,8 +125,7 @@ $app->post('/email', function (Request $request, Response $response): Response {
         SystemConfig::setValue('sSMTPPass', $password);
     }
 
-    $_SESSION['sGlobalMessage']      = gettext('Email settings saved successfully');
-    $_SESSION['sGlobalMessageClass'] = 'success';
+    FlashService::set(gettext('Email settings saved successfully'));
 
     return $response
         ->withHeader('Location', SystemURLs::getRootPath() . '/admin/email')

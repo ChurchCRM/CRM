@@ -333,15 +333,10 @@ class DirectoryReportService
 
         $lines = [];
         if ($this->on('address')) {
-            $address1 = trim($person->getResolvedAddress1() . '  ' . $person->getResolvedAddress2());
-            if ($address1 !== '') {
-                $lines[] = ['text' => $address1, 'level' => 0];
-            }
-            if ($person->getResolvedCity() !== '') {
-                $lines[] = ['text' => $person->getResolvedCity() . ', ' . $person->getResolvedState() . ' ' . $person->getResolvedZip(), 'level' => 0];
-            }
-            if (Countries::isForeign($person->getResolvedCountry())) {
-                $lines[] = ['text' => Countries::toName($person->getResolvedCountry()), 'level' => 0];
+            foreach (explode("\n", $person->getResolvedAddress("\n")) as $addressLine) {
+                if ($addressLine !== '') {
+                    $lines[] = ['text' => $addressLine, 'level' => 0];
+                }
             }
             if ($family !== null) {
                 $lines = array_merge($lines, $this->mailingLines($family));
@@ -450,15 +445,10 @@ class DirectoryReportService
     {
         $lines = [];
         if ($this->on('address')) {
-            $street = trim($family->getAddress1() . '  ' . $family->getAddress2());
-            if ($street !== '') {
-                $lines[] = ['text' => $street, 'level' => 0];
-            }
-            if ((string) $family->getCity() !== '') {
-                $lines[] = ['text' => $family->getCity() . ', ' . $family->getState() . ' ' . $family->getZip(), 'level' => 0];
-            }
-            if (Countries::isForeign((string) $family->getCountry())) {
-                $lines[] = ['text' => Countries::toName($family->getCountry()), 'level' => 0];
+            foreach (explode("\n", Family::formatAddressBlock($family->getPrimaryAddressParts())) as $addressLine) {
+                if ($addressLine !== '') {
+                    $lines[] = ['text' => $addressLine, 'level' => 0];
+                }
             }
             $lines = array_merge($lines, $this->mailingLines($family));
         }

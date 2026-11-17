@@ -54,27 +54,15 @@ describe("Self Registrations review page", () => {
 
     const row = (text) => cy.get("#selfRegistrations tbody tr", { timeout: 10000 }).contains("tr", text);
 
+    // The cleanup helpers clear any history the guard would refuse (#10485)
+    // and check each record is gone.
     after(() => {
-        created.persons.forEach((id) => {
-            cy.makePrivateAdminAPICall("DELETE", `/api/person/${id}`, null, [200, 404]);
-        });
-        created.families.forEach((id) => {
-            cy.makePrivateAdminAPICall("DELETE", `/api/family/${id}?deleteMembers=true`, null, [200, 404]);
-        });
+        cy.cleanupPeople(created.persons);
+        cy.cleanupFamilies(created.families);
     });
 
     describe("Navigation", () => {
         beforeEach(() => cy.setupAdminSession());
-
-        it("lists Self Registrations in the People menu", () => {
-            cy.visit("people/dashboard");
-            cy.get('a.nav-link[href$="people/self-register"]').should("exist").and("contain", "Self Registrations");
-        });
-
-        it("no longer links to the page from the dashboard quick actions", () => {
-            cy.visit("people/dashboard");
-            cy.contains(".card-title", "Quick Actions").closest(".card").find('a[href*="self-register"]').should("not.exist");
-        });
 
         it("shows a review action on the home dashboard when registrations are waiting", () => {
             registerPerson();
@@ -93,14 +81,10 @@ describe("Self Registrations review page", () => {
     describe("Status and counters", () => {
         beforeEach(() => cy.setupAdminSession());
 
-        it("shows the registration status with a link to People Settings for admins", () => {
+        it("shows the registration status, a People Settings link and the counters", () => {
             cy.visit("people/self-register");
             cy.contains(".alert", "Self-registration is enabled");
             cy.contains(".alert a", "Change in People Settings").should("have.attr", "href").and("include", "/admin/people");
-        });
-
-        it("shows pending, approved and total counters", () => {
-            cy.visit("people/self-register");
             cy.contains(".card-sm", "Pending review");
             cy.contains(".card-sm", "Approved");
             cy.contains(".card-sm", "Total registrations");
@@ -255,15 +239,11 @@ describe("Self Registrations review page without EditRecords", () => {
         cy.get("#selectAll").should("not.exist");
         cy.get("#bulkBar").should("have.class", "d-none");
         cy.get(".approve-review").should("not.exist");
+        cy.contains(".alert a", "Change in People Settings").should("not.exist");
     });
 
     it("does not show the review action on the home dashboard", () => {
         cy.visit("v2/dashboard");
         cy.get("#selfRegisterDashboardAlert").should("not.exist");
-    });
-
-    it("does not offer the settings link to non-admins", () => {
-        cy.visit("people/self-register");
-        cy.contains(".alert a", "Change in People Settings").should("not.exist");
     });
 });

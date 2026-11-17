@@ -1,4 +1,4 @@
-name: Release & Start Next
+name: "Release: publish & start next"
 
 permissions:
   contents: read
@@ -19,6 +19,10 @@ concurrency:
 #                   failed run stops the release), then downloads that
 #                   build's ChurchCRM-<version>.zip and creates a draft GitHub
 #                   Release. The tag is read from package.json on that commit.
+#                   If changelog/<tag>.md exists at that commit — the release
+#                   notes file agreed with the maintainer before this run was
+#                   dispatched (see the release-notes skill) — it becomes the
+#                   draft body; otherwise GitHub's generated notes are used.
 #
 #   2. notes      — writes release-notes-context-<tag>.md (every PR in the
 #                   release with its full description, bucketed by the files
@@ -233,12 +237,20 @@ jobs:
             exit 1
           fi
 
+          # Agreed notes win: changelog/$TAG.md at the target commit is the
+          # notes file agreed with the maintainer before dispatch.
+          notes_args=(--generate-notes --notes-start-tag "$PREVIOUS_TAG")
+          if notes_b64=$(gh api "repos/$GH_REPO/contents/changelog/$TAG.md?ref=$TARGET_COMMIT" --jq '.content' 2>/dev/null) && [ -n "$notes_b64" ]; then
+            echo "$notes_b64" | base64 -d > "agreed-notes-$TAG.md"
+            notes_args=(--notes-file "agreed-notes-$TAG.md")
+            echo "Using agreed release notes from changelog/$TAG.md."
+          fi
+
           echo "Creating draft release $TAG targeting $TARGET_COMMIT."
           gh release create "$TAG" "$ZIP_NAME" \
             --title "$TAG" \
             --target "$TARGET_COMMIT" \
-            --generate-notes \
-            --notes-start-tag "$PREVIOUS_TAG" \
+            "${notes_args[@]}" \
             --draft || {
             echo "::error::Failed to create release. Check token permissions."
             exit 1
@@ -343,7 +355,7 @@ jobs:
           VERSION: ${{ needs.publish.outputs.release_tag }}
           NEXT_VERSION: ${{ inputs.next_version }}
           MERGE: 'false'
-        run: ./scripts/release/notify-docs-release.sh
+        run: node scripts/release/notify-docs-release.js
 
   start_next:
     needs: publish

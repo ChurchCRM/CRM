@@ -21,8 +21,6 @@ const ALLOWED = new Set([
     'src/ChurchCRM/Service/CustomFieldService.php',
     'src/PersonCustomFieldsEditor.php',
     'src/FamilyCustomFieldsEditor.php',
-    'src/PersonCustomFieldsRowOps.php',
-    'src/FamilyCustomFieldsRowOps.php',
     'src/admin/routes/api/import.php',
 ]);
 

@@ -2315,7 +2315,7 @@ class VolunteerAssignmentService
     private function assertOccurrenceAssignable(VolunteerOccurrence $occurrence): void
     {
         if ($occurrence->getStatus() === VolunteerOccurrence::STATUS_CANCELLED) {
-            throw VolunteerException::conflict(gettext('This occurrence has been cancelled'));
+            throw VolunteerException::conflict(gettext('This occurrence has been canceled'));
         }
 
         $end = $this->occurrenceEnd($occurrence);

@@ -45,20 +45,24 @@ describe("Calendar access-token feedback", () => {
                 };
             });
             const alert = cy.stub(win.bootbox, "alert");
+            const notify = cy.stub(win.CRM, "notify");
 
             // Call the production handler, which receives the fake success.
             win.calendarPropertiesModal.newAccessToken();
 
             expect(request).to.have.been.calledOnce;
-            expect(alert).to.have.been.calledOnce;
-            const alertHtml = alert.firstCall.args[0];
-            const alertText = win.$("<div>").html(alertHtml).text();
-            expect(alertText).to.include(expectedSuccess);
-
             if (externalAccessEnabled) {
-                expect(alertText).not.to.include(expectedWarning);
-                expect(alertHtml).not.to.include("text-warning");
+                expect(alert).not.to.have.been.called;
+                expect(notify).to.have.been.calledOnce;
+                const [message, options] = notify.firstCall.args;
+                expect(message).to.equal(expectedSuccess);
+                expect(options.type).to.equal("success");
             } else {
+                expect(notify).not.to.have.been.called;
+                expect(alert).to.have.been.calledOnce;
+                const alertHtml = alert.firstCall.args[0].message;
+                const alertText = win.$("<div>").html(alertHtml).text();
+                expect(alertText).to.include(expectedSuccess);
                 expect(alertText).to.include(expectedWarning);
                 expect(alertHtml).to.include("text-warning");
             }

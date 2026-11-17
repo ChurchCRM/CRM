@@ -120,9 +120,7 @@ describe("Kiosk device - walk-in guest registration", () => {
                 .forEach((k) => api("DELETE", `/kiosk/api/devices/${k.Id}`));
         });
         cy.cleanupEvents(createdEventIds);
-        createdPersonIds.forEach((personId) => {
-            api("DELETE", `/api/person/${personId}`, null, [200, 404]);
-        });
+        cy.cleanupPeople(createdPersonIds);
         if (groupId !== null) {
             api("DELETE", `/api/groups/${groupId}`);
         }
@@ -152,15 +150,20 @@ describe("Kiosk device - walk-in guest registration", () => {
         });
     });
 
-    it("notes the kiosk registration on the timeline, queues the guest for review, and clears on approval", () => {
+    it("shows the check-in on the timeline, queues the guest for review, and clears on approval", () => {
         registerGuest({ FirstName: "Walkin", LastName: `Review${runId}`, Email: "walkin@example.com" }).then((response) => {
             const guestId = Number(response.body.Id);
             createdPersonIds.push(guestId);
 
             api("GET", `/api/timeline/person/${guestId}`).then((timeline) => {
-                const texts = timeline.body.timeline.map((item) => item.text);
-                expect(texts.some((t) => /Registered as a walk-in guest at the kiosk during event: /.test(t))).to.equal(true);
-                expect(texts.some((t) => /Checked in to event: /.test(t))).to.equal(true);
+                // The timeline renders the check-in from the attendance
+                // record (a 'cal' item); check-in writes no timeline notes
+                // (#11696), so the old note texts must NOT appear.
+                const items = timeline.body.timeline;
+                expect(items.some((item) => item.type === "cal")).to.equal(true);
+                const texts = items.map((item) => item.text);
+                expect(texts.some((t) => /Registered as a walk-in guest at the kiosk/.test(t))).to.equal(false);
+                expect(texts.some((t) => /Checked in to event: /.test(t))).to.equal(false);
             });
 
             api("GET", "/api/persons/self-register").then((queue) => {
@@ -277,6 +280,23 @@ describe("Kiosk device - walk-in guest registration", () => {
             rosterGuests().then((after) => {
                 expect(after).to.have.length(before.length);
             });
+        });
+    });
+
+    it("lets a checked-in guest be deleted once their attendance is removed", () => {
+        registerGuest({ FirstName: "Walkin", LastName: `Cleanup${runId}`, Email: "walkin@example.com" }).then((response) => {
+            const guestId = Number(response.body.Id);
+            createdPersonIds.push(guestId);
+
+            // Attendance is recorded history: deletion is refused while it stands.
+            api("DELETE", `/api/person/${guestId}`, null, 403);
+
+            // The kiosk cleanup path: remove the attendance, then delete.
+            // What remains on the guest is only the system timeline entries
+            // from registration and check-in, which are not recorded history.
+            api("DELETE", `/api/events/${eventId}/attendance/${guestId}`);
+            api("DELETE", `/api/person/${guestId}`);
+            api("GET", `/api/person/${guestId}`, null, 404);
         });
     });
 

@@ -4,6 +4,7 @@
  */
 
 import { fetchAdminAPIJSON } from "./api-utils";
+import { confirmAction } from "./common/confirm-action";
 
 document.addEventListener("DOMContentLoaded", () => {
   window.CRM.refreshGradePromotion = refreshGradePromotion;
@@ -119,17 +120,10 @@ function promoteGrades(button) {
     .join("");
   const confirmMessage = warning + message;
 
-  window.bootbox.confirm({
-    title: t("Promote Grades"),
-    message: confirmMessage,
-    buttons: {
-      cancel: { label: t("Cancel"), className: "btn-secondary" },
-      confirm: { label: t("Promote Now"), className: "btn-primary" },
-    },
-    callback: (confirmed) => {
-      if (!confirmed) {
-        return;
-      }
+  confirmAction(
+    t("Promote Grades"),
+    confirmMessage,
+    () => {
       button.disabled = true;
       window.CRM.AdminAPIRequest({
         method: "POST",
@@ -142,5 +136,6 @@ function promoteGrades(button) {
           button.disabled = false;
         });
     },
-  });
+    { tone: "primary", confirmLabel: t("Promote Now"), cancelLabel: t("Cancel") },
+  );
 }

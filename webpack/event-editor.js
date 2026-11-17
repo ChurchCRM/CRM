@@ -5,6 +5,8 @@
  * identical between the two entry points.
  */
 
+import { confirmAction } from "./common/confirm-action";
+import { renderInlineError } from "./common/inline-error";
 import { deleteEvent, renderEventEditor, saveEvent, toWallClockString } from "./event-form.js";
 import { escapeHtml } from "./utils/escape-html";
 
@@ -22,9 +24,7 @@ function fetchJSON(url, fallback = null) {
 }
 
 function showError(message) {
-  const mount = document.getElementById("event-editor-mount");
-  if (!mount) return;
-  mount.innerHTML = `<div class="alert alert-danger mb-0"><i class="fa-solid fa-triangle-exclamation me-1"></i>${escapeHtml(message)}</div>`;
+  renderInlineError(document.getElementById("event-editor-mount"), message);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -121,17 +121,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (deleteBtn && cfg.eventId > 0) {
         deleteBtn.addEventListener("click", () => {
-          window.bootbox.confirm({
-            title: t("Delete this event?"),
-            message:
-              t("Deleting this event will also delete all attendance records. This cannot be undone.") +
+          confirmAction(
+            t("Delete this event?"),
+            t("Deleting this event will also delete all attendance records. This cannot be undone.") +
               ` <strong>${escapeHtml(event.Title || "")}</strong>`,
-            buttons: {
-              cancel: { label: `<i class="fa-solid fa-xmark"></i> ${t("Cancel")}` },
-              confirm: { label: `<i class="fa-solid fa-trash"></i> ${t("Delete")}`, className: "btn-danger" },
-            },
-            callback: (confirmed) => {
-              if (!confirmed) return;
+            () => {
               deleteEvent(cfg.eventId, CRMRoot)
                 .then(() => {
                   window.location.href = cfg.redirectUrl;
@@ -144,7 +138,11 @@ document.addEventListener("DOMContentLoaded", () => {
                   }
                 });
             },
-          });
+            {
+              confirmLabel: `<i class="fa-solid fa-trash"></i> ${t("Delete")}`,
+              cancelLabel: `<i class="fa-solid fa-xmark"></i> ${t("Cancel")}`,
+            },
+          );
         });
       }
     })

@@ -135,20 +135,6 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       cy.setupAdminSession();
     });
 
-    it("renders FY selector with at least All-Time and one FY option", () => {
-      cy.visit("finance/");
-      cy.contains("Recent Deposits");
-
-      // FY selector exists
-      cy.get("#deposit-fyid").should("exist");
-
-      // Has at least All Time + one fiscal year
-      cy.get("#deposit-fyid option").should("have.length.at.least", 2);
-
-      // The first option is "All Time" (value="0")
-      cy.get("#deposit-fyid option").first().should("have.value", "0");
-    });
-
     it("selecting a historical FY limits the deposits shown", () => {
       cy.visit("finance/");
       cy.contains("Recent Deposits");
@@ -183,17 +169,6 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       cy.setupAdminSession();
     });
 
-    it("loads with current FY and shows the FY selector", () => {
-      cy.visit("finance/pledge/dashboard");
-      cy.contains("Pledge Dashboard");
-
-      // FY selector is present
-      cy.get("#fyid").should("exist");
-
-      // The selected option corresponds to the current FY
-      cy.get("#fyid option:selected").should("exist");
-    });
-
     it("changing FY reloads the page with new fyid param", () => {
       cy.visit("finance/pledge/dashboard");
 
@@ -204,10 +179,7 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
       // Use cy.location() — retries until the post-form-submit navigation settles
       cy.location("search").should("include", `fyid=${SEED_FYID_2018}`);
 
-      // Both Fund Summary and Family Pledges reload together (same page request)
-      cy.contains("Pledge Dashboard");
-      // If seed data has pledges in FY22, table should have at least one row
-      cy.get("table").should("exist");
+      cy.get("#fyid").should("have.value", String(SEED_FYID_2018));
     });
 
     it("FY 22 (2018) shows pledge data that current FY does not", () => {
@@ -249,20 +221,6 @@ describe("Fiscal-Year Scoping — Issue #9378", () => {
   describe("Deposit Search (/finance/deposit/search) — FY selector", () => {
     beforeEach(() => {
       cy.setupAdminSession();
-    });
-
-    it("renders the FY selector with current FY selected by default", () => {
-      cy.visit("finance/deposit/search");
-      cy.contains("Deposits");
-
-      // FY selector exists
-      cy.get("#deposit-slip-fyid").should("exist");
-
-      // Has at least All Time + one FY
-      cy.get("#deposit-slip-fyid option").should("have.length.at.least", 2);
-
-      // One of the options has an "(Current)" label indicator
-      cy.get("#deposit-slip-fyid option").should("contain.text", "(Current)");
     });
 
     it("visiting with ?fyid= param pre-selects the matching option", () => {

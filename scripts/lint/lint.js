@@ -24,6 +24,7 @@ const scriptTests = fs
     .readdirSync(path.join(root, 'tests', 'tooling'))
     .filter((name) => /\.test\.m?js$/.test(name))
     .map((name) => path.join('tests', 'tooling', name));
+scriptTests.push('tests/docker/test-release-context.test.js');
 
 const checks = {
     'composer lock': script('lint/validate-composer-lock.js'),
@@ -36,6 +37,7 @@ const checks = {
     'use-statement case': script('lint/validate-use-statement-case.js'),
     'orm base classes': script('lint/validate-orm-base-classes.js'),
     'font awesome icons': script('lint/validate-fa-icons-exist.js'),
+    'native dialogs': script('lint/validate-native-dialogs.js'),
     'ui conventions': script('lint/validate-ui-conventions.js'),
     'pinned actions': script('lint/validate-actions-pinned.js'),
     'cypress api keys': script('lint/validate-cypress-api-keys.js'),
@@ -50,9 +52,12 @@ const checks = {
     'capture used-in': script('lint/validate-capture-used-in.js'),
     'seed data only': script('lint/validate-seed-data-only.js'),
     'mysql upgrade syntax': script('lint/validate-mysql-upgrade-syntax.js'),
+    'mysql index length': script('lint/validate-mysql-index-length.js'),
+    'upgrade handoff': script('lint/validate-upgrade-handoff.js'),
     'upgrade locale list': script('lint/validate-upgrade-locales.js'),
     'supported databases': script('ci/sync-supported-databases.js', '--check'),
     'locale script tests': [node, ['--test', ...localeTests]],
+    'locale files in sync': [node, [path.join(root, 'locale', 'scripts', 'locale-apply.js'), '--check']],
     'tooling script tests': [node, ['--test', ...scriptTests]],
 };
 

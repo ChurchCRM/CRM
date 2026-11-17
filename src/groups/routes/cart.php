@@ -2,6 +2,7 @@
 
 use ChurchCRM\dto\Cart;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\Service\FlashService;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\view\PageHeader;
@@ -34,23 +35,21 @@ $app->get('/cart/add', function (Request $request, Response $response) {
             $iCount = count($_SESSION['aPeopleCart']);
             Cart::emptyToGroup($iGroupID, 0);
 
-            $_SESSION['sGlobalMessage']      = sprintf(
+            FlashService::set(sprintf(
                 ngettext(
                     '%d Person successfully added to selected Group.',
                     '%d People successfully added to selected Group.',
                     $iCount
                 ),
                 $iCount
-            );
-            $_SESSION['sGlobalMessageClass'] = 'success';
+            ));
 
             return $response
                 ->withHeader('Location', SystemURLs::getRootPath() . '/groups/view/' . $iGroupID)
                 ->withStatus(302);
         } else {
             // Group no longer exists (deleted between creation and redirect).
-            $_SESSION['sGlobalMessage']      = gettext('The group could not be found. Please try again.');
-            $_SESSION['sGlobalMessageClass'] = 'danger';
+            FlashService::set(gettext('The group could not be found. Please try again.'), 'danger');
         }
     }
 
@@ -71,10 +70,10 @@ $app->get('/cart/add', function (Request $request, Response $response) {
     // Escape for safe interpolation into the JS string in Include/Footer.php.
     $sGlobalMessage      = '';
     $sGlobalMessageClass = 'success';
-    if (isset($_SESSION['sGlobalMessage'])) {
-        $sGlobalMessage      = $_SESSION['sGlobalMessage'];
-        $sGlobalMessageClass = $_SESSION['sGlobalMessageClass'] ?? 'success';
-        unset($_SESSION['sGlobalMessage'], $_SESSION['sGlobalMessageClass']);
+    $flash = FlashService::take();
+    if ($flash !== null) {
+        $sGlobalMessage      = $flash['message'];
+        $sGlobalMessageClass = $flash['class'];
         $flags               = JSON_INVALID_UTF8_SUBSTITUTE;
         $sGlobalMessage      = substr(json_encode($sGlobalMessage,      $flags), 1, -1);
         $sGlobalMessageClass = substr(json_encode($sGlobalMessageClass, $flags), 1, -1);
@@ -123,8 +122,7 @@ $app->post('/cart/add', function (Request $request, Response $response) {
                 $iGroupRole > 0 ? $iGroupRole : (int) $group->getDefaultRole()
             );
             if ($teacherLock !== null) {
-                $_SESSION['sGlobalMessage']      = $teacherLock->getMessage();
-                $_SESSION['sGlobalMessageClass'] = 'danger';
+                FlashService::set($teacherLock->getMessage(), 'danger');
 
                 return $response
                     ->withHeader('Location', SystemURLs::getRootPath() . '/groups/cart/add')
@@ -133,15 +131,14 @@ $app->post('/cart/add', function (Request $request, Response $response) {
 
             Cart::emptyToGroup($iGroupID, $iGroupRole);
 
-            $_SESSION['sGlobalMessage']      = sprintf(
+            FlashService::set(sprintf(
                 ngettext(
                     '%d Person successfully added to selected Group.',
                     '%d People successfully added to selected Group.',
                     $iCount
                 ),
                 $iCount
-            );
-            $_SESSION['sGlobalMessageClass'] = 'success';
+            ));
 
             return $response
                 ->withHeader('Location', SystemURLs::getRootPath() . '/groups/view/' . $iGroupID)
@@ -153,12 +150,10 @@ $app->post('/cart/add', function (Request $request, Response $response) {
     if ($iGroupID > 0) {
         if (empty($_SESSION['aPeopleCart'])) {
             // Cart was emptied between page load and submit.
-            $_SESSION['sGlobalMessage']      = gettext('Your cart is empty. Add people to your cart first.');
-            $_SESSION['sGlobalMessageClass'] = 'warning';
+            FlashService::set(gettext('Your cart is empty. Add people to your cart first.'), 'warning');
         } else {
             // GroupID supplied but the group was not found (deleted since page load).
-            $_SESSION['sGlobalMessage']      = gettext('The selected group was not found. Please select a valid group.');
-            $_SESSION['sGlobalMessageClass'] = 'danger';
+            FlashService::set(gettext('The selected group was not found. Please select a valid group.'), 'danger');
         }
     }
     // No message for $iGroupID === 0: the browser-side 'required' attribute

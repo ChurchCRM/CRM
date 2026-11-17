@@ -53,7 +53,9 @@ reviews:
     override_requested_reviewers_only: true
     title:
       mode: warning
-      requirements: Imperative subject under 72 characters.
+      requirements: >-
+        Imperative subject under 72 characters. The PR title becomes the
+        squash-merge commit subject on master.
     issue_assessment:
       mode: warning
     docstrings:
