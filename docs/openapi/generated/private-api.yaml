@@ -9,7 +9,7 @@ info:
   license:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
-  version: 7.8.5
+  version: 7.8.6
 servers:
   -
     url: '{scheme}://{host}{basePath}'
@@ -1330,6 +1330,8 @@ paths:
               schema:
                 properties:
                   success: { type: boolean }
+                  invited: { description: 'Whether the member portal invitation was emailed', type: boolean }
+                  cannotSignIn: { description: 'Present when no member of the family may sign in to the member portal, so nobody was invited', properties: { message: { type: string }, members: { type: array, items: { properties: { name: { type: string }, reason: { type: string } }, type: object } } }, type: object }
                 type: object
       security:
         -
