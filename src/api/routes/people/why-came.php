@@ -97,4 +97,4 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
 
         return SlimUtils::renderJSON($response, ['whyCame' => whyCameToArray($whyCame)], $isNew ? 201 : 200);
     })->add(EditRecordsRoleAuthMiddleware::class);
-})->add(PersonMiddleware::class);
+})->add(new PersonMiddleware());
