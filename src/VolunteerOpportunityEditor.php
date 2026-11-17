@@ -7,9 +7,9 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
-use ChurchCRM\model\ChurchCRM\User;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunity;
 use ChurchCRM\model\ChurchCRM\VolunteerOpportunityQuery;
+use ChurchCRM\Service\VolunteerV1Service;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\RedirectUtils;
@@ -20,10 +20,8 @@ use ChurchCRM\view\PageHeader;
 // Future ... $bManageVol
 AuthenticationManager::redirectHomeIfNotAdmin();
 
-// Volunteer rollout (#9704): in v2-only mode this legacy editor is retired from
-// the UI, so enforce that server-side rather than relying on the hidden menu
-// item. 'both' keeps it reachable for the duration of the migration (#9702).
-if (User::getVolunteerVersion() === 'v2') {
+// Reachable only while V1 is in use (#10606), enforced here as well as in the menu.
+if (!VolunteerV1Service::isInUse()) {
     RedirectUtils::redirect('ministries/dashboard');
 }
 
@@ -230,7 +228,8 @@ $sPageTitle = gettext('Volunteer Opportunity Editor');
 $sPageSubtitle = gettext('Create or edit volunteer positions');
 
 $aBreadcrumbs = PageHeader::breadcrumbs([
-    [gettext('Admin'), '/admin/'],
+    [gettext('People'), '/people/dashboard'],
+    [gettext('People Settings'), '/admin/people'],
     [gettext('Volunteer Opportunities')],
 ]);
 $sPageHeaderButtons = PageHeader::peopleSettingsButton();
@@ -238,6 +237,11 @@ require_once __DIR__ . '/Include/Header.php';
 ?>
 
 <p class="text-body-secondary mb-3"><?= gettext('Manage volunteer opportunities and assign members') ?></p>
+
+<?php
+$volunteerV1Notice = VolunteerV1Service::noticeFacts();
+require __DIR__ . '/admin/views/partials/volunteer-v1-notice.php';
+?>
 
 <?php
 

@@ -55,6 +55,18 @@ class NotificationService
         return count(self::$notifications) > 0;
     }
 
+    public static function dismissalSettingKey(string $id): string
+    {
+        if ($id === '') {
+            return '';
+        }
+
+        $prefix = 'notification.dismissed.';
+        $key = $prefix . $id;
+        // Keep existing dismissals; long remote IDs must fit user_settings.setting_name.
+        return strlen($key) <= 50 ? $key : $prefix . substr(hash('sha256', $id), 0, 50 - strlen($prefix));
+    }
+
     /**
      * Hydrate the registry from all session-cached notification sources.
      * Called on every page load from Header.php — reads session only, no HTTP.
@@ -88,7 +100,7 @@ class NotificationService
         $id = 'system-update-available';
         self::add(new UiNotification(
             $id,
-            'notification.dismissed.' . $id,
+            self::dismissalSettingKey($id),
             gettext('System Update Available'),
             $version !== ''
                 ? sprintf(gettext('Version %s is available. Please upgrade your installation.'), $version)
@@ -110,7 +122,9 @@ class NotificationService
     {
         try {
             $url = CentralServices::NOTIFICATIONS_URL;
-            $contents = file_get_contents($url);
+            // Runs inside the sign-in request, so never let a slow remote host hold up the redirect.
+            $context = stream_context_create(['http' => ['timeout' => 5]]);
+            $contents = @file_get_contents($url, false, $context);
             if ($contents === false) {
                 LoggerUtils::getAppLogger()->warning('Failed to fetch remote notifications', ['url' => $url]);
 
@@ -147,7 +161,7 @@ class NotificationService
             }
 
             $id = $message->id ?? '';
-            $dismissKey = $id !== '' ? 'notification.dismissed.' . $id : '';
+            $dismissKey = self::dismissalSettingKey($id);
 
             self::add(new UiNotification(
                 $id,

@@ -26,6 +26,7 @@ use ChurchCRM\Service\RateLimiter;
 use ChurchCRM\Service\RememberedDeviceService;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\EmailAddress;
 use DateTimeImmutable;
 use DateTimeInterface;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -235,8 +236,8 @@ final class SignInEmailPolicy
         if ($newEmail === '') {
             return new EmailChangeRefusedException(gettext('Your email address cannot be removed here. Please contact the church office.'), 400);
         }
-        if (mb_strlen($newEmail) > self::EMAIL_MAX_LENGTH || filter_var($newEmail, FILTER_VALIDATE_EMAIL) === false) {
-            return new EmailChangeRefusedException(gettext('That is not a valid email address.'), 400);
+        if (mb_strlen($newEmail) > self::EMAIL_MAX_LENGTH || !EmailAddress::isValid($newEmail)) {
+            return new EmailChangeRefusedException(EmailAddress::validationMessage(), 400);
         }
         if (!$this->memberMayChange($person, $staffActor)) {
             return new EmailChangeRefusedException(gettext('To change this email, please contact the church office.'), 403);

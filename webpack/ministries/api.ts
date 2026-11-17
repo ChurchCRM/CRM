@@ -530,19 +530,7 @@ export function errorMessage(error: unknown, fallback: string): string {
   return fallback;
 }
 
-/** Toast helper — `"danger"`, never `"error"`: `"error"` renders blue (U5/E-7). */
-export function notifyError(message: string): void {
-  window.CRM?.notify?.(message, { type: "danger" });
-}
-
-export function notifySuccess(message: string): void {
-  window.CRM?.notify?.(message, { type: "success" });
-}
-
-/** Toast helper for "nothing broke, but nothing happened either" — an existing grant, say. */
-export function notifyWarning(message: string): void {
-  window.CRM?.notify?.(message, { type: "warning" });
-}
+export { notifyError, notifySuccess, notifyWarning } from "../common/notify";
 
 /** Toast helper for a neutral outcome that is neither a success nor a problem. */
 export function notifyInfo(message: string): void {

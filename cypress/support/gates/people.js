@@ -61,7 +61,6 @@ export const RECORD_GATES = [
     recordRow("family-photo-upload-api", "POST", "/api/family/1/photo", "edit"),
     recordRow("family-photo-delete-api", "DELETE", "/api/family/1/photo", "edit"),
     recordRow("family-verify-api", "POST", "/api/family/1/verify", "edit"),
-    recordRow("family-verify-url-api", "GET", "/api/family/1/verify/url", "edit", null),
     recordRow("family-verify-now-api", "POST", "/api/family/1/verify/now", "edit"),
     recordRow("family-activate-api", "POST", "/api/family/1/activate/false", "edit"),
     recordRow("family-approve-review-api", "POST", "/api/family/1/approve-review", "edit"),
@@ -70,7 +69,6 @@ export const RECORD_GATES = [
     recordRow("persons-duplicate-emails-api", "GET", "/api/persons/duplicate/emails", "edit", null),
     recordRow("persons-self-register-approve-api", "POST", "/api/persons/self-register/approve", "edit"),
     recordRow("families-self-verify-api", "GET", "/api/families/self-verify", "edit", null),
-    recordRow("families-pending-self-verify-api", "GET", "/api/families/pending-self-verify", "edit", null),
     recordRow("families-verify-email-preview-api", "GET", "/api/families/verify-email-preview", "edit", null),
 ];
 

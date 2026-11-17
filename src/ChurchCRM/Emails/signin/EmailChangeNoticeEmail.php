@@ -55,7 +55,7 @@ final class EmailChangeNoticeEmail extends BaseEmail
         $church = ChurchMetaData::getChurchName();
         if ($this->by === self::BY_MEMBER) {
             return sprintf(
-                gettext('A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used.'),
+                gettext('A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used.'),
                 $church,
                 $this->oldEmail,
                 $this->newEmail

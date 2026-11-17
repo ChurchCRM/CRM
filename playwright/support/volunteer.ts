@@ -1,4 +1,4 @@
-import { type Browser, expect, type Page } from '@playwright/test';
+import { type APIRequestContext, type Browser, expect, type Page } from '@playwright/test';
 import path from 'node:path';
 
 import { BASE_URL } from './env';
@@ -57,7 +57,7 @@ export interface VolunteerSeed {
 let seed: VolunteerSeed | null = null;
 let restoreMemberSignIn: (() => Promise<void>) | null = null;
 
-function isoDate(offsetDays: number): string {
+export function isoDate(offsetDays: number): string {
   const d = new Date();
   d.setHours(12, 0, 0, 0);
   d.setDate(d.getDate() + offsetDays);
@@ -89,7 +89,7 @@ export async function waitForFloatingButtonsToTuck(page: Page): Promise<void> {
   }
 }
 
-/** The V1 / V2 switch lives on Feature Toggles and new installations start on V2, so specs set it through the Config API. */
+/** The V1 / V2 / Both switch (Admin → Feature Toggles), set through its API so `v1` works even where the page no longer offers it. */
 export async function setVolunteerVersion(page: Page, version: 'v1' | 'v2'): Promise<void> {
   await api(page, 'POST', '/admin/api/system/config/sVolunteerVersion', { value: version });
 }
@@ -286,6 +286,66 @@ export async function ensureVolunteerSeed(page: Page): Promise<VolunteerSeed> {
 
   seed = { ministryId, personIds, positionIds, eventIds: events.map((e) => e.id), coffeeOccurrenceId };
   return seed;
+}
+
+export interface DemoTeam {
+  ministryId: number;
+  teamId: number;
+  classGroupId: number | null;
+}
+
+async function demoApi<T>(request: APIRequestContext, url: string): Promise<T> {
+  const response = await request.get(url);
+  if (!response.ok()) {
+    throw new Error(`GET ${url} failed: ${response.status()} ${await response.text()}`);
+  }
+  return (await response.json()) as T;
+}
+
+/** A team the demo import brought, found by its ministry's and its own name (the data does not change with the language). */
+export async function findDemoTeam(request: APIRequestContext, ministryName: string, teamName: string): Promise<DemoTeam> {
+  const { ministries } = await demoApi<{ ministries: Array<{ id: number; name: string }> }>(request, `${API}/ministries`);
+  const ministry = ministries.find((m) => m.name === ministryName);
+  if (!ministry) {
+    throw new Error(`Demo ministry "${ministryName}" not found`);
+  }
+  const { teams } = await demoApi<{ teams: Array<{ id: number; name: string; classGroupId?: number | null }> }>(
+    request,
+    `${API}/ministries/${ministry.id}`
+  );
+  const team = teams.find((t) => t.name === teamName);
+  if (!team) {
+    throw new Error(`Demo team "${teamName}" not found in "${ministryName}"`);
+  }
+  return { ministryId: ministry.id, teamId: team.id, classGroupId: team.classGroupId ?? null };
+}
+
+/** One calendar event on the ministry's calendar, `offsetDays` from today, still without any staffing. */
+export async function createUnstaffedEvent(page: Page, ministryId: number, title: string, offsetDays: number): Promise<number> {
+  const { eventTypes } = await api<{ eventTypes: Array<{ id: number; name: string }> }>(page, 'GET', `${API}/event-types`);
+  const eventType = eventTypes.find((t) => t.name === 'Church Service') ?? eventTypes[0];
+  const { events } = await api<{ events: Array<{ id: number }> }>(page, 'POST', `${API}/ministries/${ministryId}/events`, {
+    title,
+    eventTypeId: eventType.id,
+    description: '',
+    startTime: '18:30',
+    endTime: '20:00',
+    date: isoDate(offsetDays),
+  });
+  return events[0].id;
+}
+
+/** Takes back the events a capture made, whatever the dialog or the API named them. */
+export async function deleteMinistryEventsTitled(page: Page, ministryId: number, title: string): Promise<void> {
+  const { events } = await api<{ events: Array<{ id: number; title: string }> }>(
+    page,
+    'GET',
+    `${API}/ministries/${ministryId}/events`
+  );
+  const ids = events.filter((e) => e.title === title).map((e) => e.id);
+  if (ids.length > 0) {
+    await api(page, 'DELETE', `${API}/ministries/${ministryId}/events`, { eventIds: ids });
+  }
 }
 
 /** Seeds from a context of its own, so a recording starts on the first real step. */

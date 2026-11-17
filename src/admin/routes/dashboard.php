@@ -8,6 +8,7 @@ use ChurchCRM\model\ChurchCRM\UserQuery;
 use ChurchCRM\Plugin\PluginManager;
 use ChurchCRM\Service\MemberSignInSettingsService;
 use ChurchCRM\Service\SystemService;
+use ChurchCRM\Service\VolunteerV1Service;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\view\PageHeader;
 use Psr\Http\Message\ResponseInterface as Response;
@@ -147,6 +148,7 @@ $app->get('/', function (Request $request, Response $response) {
         ]),
         'pdfSettings' => array_map(static function (array $setting): array {
             $setting['label'] = gettext('PDF Temporary Directory');
+            $setting['tooltip'] = gettext($setting['tooltip']);
             return $setting;
         }, SystemConfig::getSettingsConfig(['sPDFTempDir'])),
         'setupChecklist'   => $setupChecklist,
@@ -159,6 +161,7 @@ $app->get('/', function (Request $request, Response $response) {
         'timerJobsCronCommand' => '/usr/bin/php ' . SystemURLs::getDocumentRoot() . '/cli/timerjobs.php',
         'formerPortalAccounts' => (new MemberSignInSettingsService())->formerAccountsToNotify(),
         'hasEmail'             => $hasEmail,
+        'volunteerV1Notice'    => VolunteerV1Service::dashboardNotice(),
         'csrfToken'            => CSRFUtils::generateToken(),
     ];
 

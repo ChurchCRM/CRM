@@ -3,6 +3,7 @@
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Service\VolunteerV1Service;
 
 include SystemURLs::getDocumentRoot() . '/Include/Header.php';
 
@@ -26,13 +27,15 @@ $featureGroups = [
         ],
         'sVolunteerVersion' => [
             'label' => gettext('Volunteer Management'),
-            'description' => gettext('Which volunteer experience this church uses'),
+            'description' => VolunteerV1Service::isInUse()
+                ? gettext('Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027.')
+                : gettext('Which volunteer experience this church uses'),
             'helpOffcanvas' => '#ministry-experience-help',
-            'choices' => [
+            'choices' => array_filter([
                 'v1' => gettext('V1 — Volunteer Opportunities (legacy)'),
                 'v2' => gettext('V2 — Ministries'),
                 'both' => gettext('Both (transition)'),
-            ],
+            ], static fn (string $choice): bool => $choice === 'v2' || VolunteerV1Service::isInUse(), ARRAY_FILTER_USE_KEY),
         ],
     ],
     gettext('Communication & Email') => [
@@ -176,7 +179,7 @@ $featureGroups = [
   </div>
   <div class="offcanvas-body">
     <p class="mb-2">
-      <?= gettext('ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back.') ?>
+      <?= gettext('ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list.') ?>
     </p>
     <h4 class="mt-3"><?= gettext('V1 — Volunteer Opportunities (legacy)') ?></h4>
     <p class="mb-2">
@@ -185,11 +188,11 @@ $featureGroups = [
     </p>
     <h4 class="mt-3"><?= gettext('V2 — Ministries') ?></h4>
     <p class="mb-2">
-      <?= gettext('Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry\'s pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help.') ?>
+      <?= gettext('Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry\'s pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help.') ?>
     </p>
     <h4 class="mt-3"><?= gettext('Both') ?></h4>
     <p class="mb-0">
-      <?= gettext('A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only.') ?>
+      <?= gettext('A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only.') ?>
     </p>
   </div>
 </div>

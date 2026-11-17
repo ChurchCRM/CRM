@@ -138,6 +138,21 @@ describe("Deposit editor: what a treasurer does", () => {
             cy.get("#paymentsTable tbody .row-select").should("have.length", 1);
         });
     });
+
+    it("folds the funds chart away on a phone and shows it on desktop", () => {
+        createDeposit("funds collapse").then((id) => {
+            addPayment(id, 1, 10);
+            cy.viewport(390, 800);
+            cy.visit(`/finance/deposit/${id}`);
+            cy.get("#fundsBody").should("not.be.visible");
+            cy.get("#fundsToggle").click();
+            cy.get("#fundsBody").should("be.visible");
+            cy.get("#fund-bar svg").invoke("width").should("be.gt", 200);
+            cy.viewport(1280, 800);
+            cy.get("#fundsToggle").should("not.be.visible");
+            cy.get("#fundsBody").should("be.visible");
+        });
+    });
 });
 
 describe("Deposit search: deleting deposits", () => {

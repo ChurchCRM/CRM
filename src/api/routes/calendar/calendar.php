@@ -62,7 +62,7 @@ $app->group('/systemcalendars', function (RouteCollectorProxy $group): void {
  *     path="/systemcalendars",
  *     operationId="getSystemCalendars",
  *     summary="List all system calendars",
- *     description="Returns built-in system calendars (birthdays, anniversaries, events).",
+ *     description="Returns built-in system calendars (birthdays, anniversaries, events). Fundraisers is listed, and its events served, only to users who may manage fundraisers; for anyone else /systemcalendars/{id} answers 404 for it.",
  *     tags={"Calendar"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Array of system calendar objects"),
@@ -71,7 +71,7 @@ $app->group('/systemcalendars', function (RouteCollectorProxy $group): void {
  */
 function getSystemCalendars(Request $request, Response $response, array $args): Response
 {
-    return SlimUtils::renderStringJSON($response, SystemCalendars::getCalendarList()->toJSON());
+    return SlimUtils::renderStringJSON($response, SystemCalendars::getCalendarList(AuthenticationManager::getCurrentUser())->toJSON());
 }
 
 /**
@@ -91,7 +91,7 @@ function getSystemCalendars(Request $request, Response $response, array $args): 
  */
 function getSystemCalendarEvents(Request $request, Response $response, array $args): Response
 {
-    $Calendar = SystemCalendars::getCalendarById((int) $args['id']);
+    $Calendar = SystemCalendars::getCalendarById((int) $args['id'], AuthenticationManager::getCurrentUser());
     if (!$Calendar) {
         throw new HttpNotFoundException($request, 'Calendar ID not found!');
     }
@@ -120,7 +120,7 @@ function getSystemCalendarEvents(Request $request, Response $response, array $ar
  */
 function getSystemCalendarEventById(Request $request, Response $response, array $args): Response
 {
-    $Calendar = SystemCalendars::getCalendarById((int) $args['id']);
+    $Calendar = SystemCalendars::getCalendarById((int) $args['id'], AuthenticationManager::getCurrentUser());
     if (!$Calendar) {
         throw new HttpNotFoundException($request, 'Calendar ID not found!');
     }
@@ -155,7 +155,7 @@ function getSystemCalendarFullCalendarEvents(Request $request, Response $respons
     }
 
     $calendarId = (int) $args['id'];
-    $Calendar = SystemCalendars::getCalendarById($calendarId);
+    $Calendar = SystemCalendars::getCalendarById($calendarId, AuthenticationManager::getCurrentUser());
     if (!$Calendar) {
         throw new HttpNotFoundException($request, 'Calendar ID not found!');
     }
@@ -175,7 +175,7 @@ function getSystemCalendarFullCalendarEvents(Request $request, Response $respons
  *     path="/calendars",
  *     operationId="getUserCalendars",
  *     summary="List user-created calendars",
- *     description="Returns all user calendars. Optionally filter by ID using GET /calendars/{id}.",
+ *     description="Returns all user calendars. Optionally filter by ID using GET /calendars/{id}. AccessToken (the public feed link) is null unless the caller may administer that calendar.",
  *     tags={"Calendar"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Response(response=200, description="Array of calendar objects"),
@@ -205,12 +205,22 @@ function getUserCalendars(Request $request, Response $response, array $args): Re
         throw new HttpNotFoundException($request, 'No calendars returned');
     }
 
-    // Prevent caching of calendar API responses
+    $user = AuthenticationManager::getCurrentUser();
+    $calendarService = new VolunteerCalendarService();
+    $rows = [];
+    foreach ($Calendars as $calendar) {
+        $row = $calendar->toArray();
+        if (!$calendarService->mayAdminister($user, $calendar)) {
+            $row['AccessToken'] = null;
+        }
+        $rows[] = $row;
+    }
+
     $response = $response
         ->withHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0')
         ->withHeader('Pragma', 'no-cache');
 
-    return SlimUtils::renderStringJSON($response, $Calendars->toJSON());
+    return SlimUtils::renderJSON($response, ['Calendars' => $rows]);
 }
 
 /**

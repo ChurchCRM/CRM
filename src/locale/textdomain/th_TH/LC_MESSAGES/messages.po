@@ -717,10 +717,6 @@ msgid "Not a valid Wedding Date"
 msgstr "วันแต่งงานไม่ถูกต้อง"
 
 #: 
-msgid "Email is Not Valid"
-msgstr "อีเมลไม่ถูกต้อง"
-
-#: 
 msgid "Family Info"
 msgstr "ข้อมูลครอบครัว"
 
@@ -895,10 +891,6 @@ msgstr "คุณกำลังจะลบรูปโปรไฟล์ ข�
 #: 
 msgid "Do you want to proceed?"
 msgstr "คุณต้องการดำเนินการต่อหรือไม่?"
-
-#: 
-msgid "You are about to email copy of the family information to the following emails"
-msgstr "คุณกำลังจะส่งอีเมลสำเนาข้อมูลครอบครัวไปยังอีเมลต่อไปนี้"
 
 #: 
 msgid "Financial Reports"
@@ -1445,10 +1437,6 @@ msgid "Not a valid Membership Date"
 msgstr "วันที่สมาชิกไม่ถูกต้อง"
 
 #: 
-msgid "Work Email is Not Valid"
-msgstr "อีเมลที่ทำงานไม่ถูกต้อง"
-
-#: 
 msgid "Birth Month"
 msgstr "เดือนเกิด"
 
@@ -1503,10 +1491,6 @@ msgstr "กำหนดกลุ่มใหม่"
 #: 
 msgid "Assign a New Volunteer Opportunity"
 msgstr "กำหนดโอกาสอาสาสมัครใหม่"
-
-#: 
-msgid "Electronic Transaction Details"
-msgstr "รายละเอียดธุรกรรมอิเล็กทรอนิกส์"
 
 #: 
 msgid "NonDeductible amount can't be greater than total amount."
@@ -1824,10 +1808,6 @@ msgstr "หมายเลขโทรศัพท์"
 #: 
 msgid "Custom Drop-Down List"
 msgstr "รายการดรอปดาวน์กำหนดเอง"
-
-#: 
-msgid "PDF successfully emailed to family members."
-msgstr "ส่งอีเมล PDF ไปยังสมาชิกครอบครัวสำเร็จ"
 
 #: 
 msgid "Failed to email PDF to family members."
@@ -2163,10 +2143,6 @@ msgid "This will overwrite the family envelope numbers in the database with thos
 msgstr "การดำเนินการนี้จะเขียนทับหมายเลขซองจดหมายครอบครัวในฐานข้อมูลด้วยที่เลือกในหน้านี้ ดำเนินการต่อ?"
 
 #: 
-msgid "Family Select"
-msgstr "เลือกครอบครัว"
-
-#: 
 msgid "Welcome to"
 msgstr "ยินดีต้อนรับสู่"
 
@@ -2461,10 +2437,6 @@ msgstr "ดูการฝากทั้งหมด"
 #: 
 msgid "Deposit Reports"
 msgstr "รายงานการฝาก"
-
-#: 
-msgid "Edit Deposit Slip"
-msgstr "แก้ไขใบนำฝาก"
 
 #: 
 msgid "Create New Fundraiser"
@@ -3868,10 +3840,6 @@ msgid "Please verify your family's information"
 msgstr "กรุณาตรวจสอบข้อมูลครอบครัวของคุณ"
 
 #: 
-msgid "Unable to load verification info"
-msgstr "ไม่สามารถโหลดข้อมูลการยืนยันได้"
-
-#: 
 msgid "No Changes"
 msgstr "ไม่มีการเปลี่ยนแปลง"
 
@@ -3884,24 +3852,8 @@ msgid "Oops! Page not found."
 msgstr "อุ๊ปส์! ไม่พบหน้า"
 
 #: 
-msgid "Please enter the following to start your family's verification"
-msgstr "กรุณาป้อนข้อมูลต่อไปนี้เพื่อเริ่มการยืนยันครอบครัวของคุณ"
-
-#: 
-msgid "Family Verification"
-msgstr "การยืนยันครอบครัว"
-
-#: 
 msgid "Request Family Info Verification"
 msgstr "ขอการยืนยันข้อมูลครอบครัว"
-
-#: 
-msgid "Select how do you want to request the family information to be verified"
-msgstr "เลือกวิธีที่คุณต้องการขอให้ตรวจสอบข้อมูลครอบครัว"
-
-#: 
-msgid "Online Verification"
-msgstr "การยืนยันออนไลน์"
 
 #: 
 msgid "Verified In Person"
@@ -4081,10 +4033,6 @@ msgstr "ยกเลิกการกำหนดคุณสมบัติส
 #: 
 msgid "The property could not be unassigned."
 msgstr "ไม่สามารถยกเลิกการกำหนดคุณสมบัติได้"
-
-#: 
-msgid "Select event"
-msgstr "เลือกกิจกรรม"
 
 #: 
 msgid "Text before name in emails/reports"
@@ -4291,10 +4239,6 @@ msgid "Kiosk Manager"
 msgstr "ตัวจัดการคีออสก์"
 
 #: 
-msgid "Report an issue"
-msgstr "รายงานปัญหา"
-
-#: 
 msgid "Self Verification"
 msgstr "การยืนยันตนเอง"
 
@@ -4323,10 +4267,6 @@ msgstr "อาหรับ - อียิปต์"
 #: 
 msgid "Thai"
 msgstr "ไทย"
-
-#: 
-msgid "Pending Self Verify"
-msgstr "รอการยืนยันตนเอง"
 
 #: 
 msgid "Self Verify"
@@ -4708,16 +4648,8 @@ msgid "User must have Delete Records permission"
 msgstr "ผู้ใช้ต้องมีสิทธิ์ลบระเบียน"
 
 #: 
-msgid "invalid event type id"
-msgstr "ID ประเภทกิจกรรมไม่ถูกต้อง"
-
-#: 
 msgid "invalid calendar pinning"
 msgstr "การปักหมุดปฏิทินไม่ถูกต้อง"
-
-#: 
-msgid "invalid status value"
-msgstr "ค่าสถานะไม่ถูกต้อง"
 
 #: 
 msgid "invalid export value"
@@ -4897,10 +4829,6 @@ msgid "Portuguese - Portugal"
 msgstr "โปรตุเกส - โปรตุเกส"
 
 #: 
-msgid "Specify the application name to be displayed in authenticator app"
-msgstr "ระบุชื่อแอปพลิเคชันที่จะแสดงในแอปยืนยันตัวตน"
-
-#: 
 msgid "Review"
 msgstr "ตรวจสอบ"
 
@@ -5029,10 +4957,6 @@ msgstr "ดูหน้าครอบครัว"
 #: 
 msgid "View Person Page"
 msgstr "ดูหน้าบุคคล"
-
-#: 
-msgid "Verify"
-msgstr "ยืนยัน"
 
 #: 
 msgid "Family has no emails to use"
@@ -5326,10 +5250,6 @@ msgstr "กำลังใช้การอัปเดตระบบ..."
 
 #: 
 msgid "Back to Login"
-msgstr "กลับไปที่การเข้าสู่ระบบ"
-
-#: 
-msgid "Back to login"
 msgstr "กลับไปที่การเข้าสู่ระบบ"
 
 #: 
@@ -6108,14 +6028,6 @@ msgid "Close All Deposits"
 msgstr "ปิดการฝากทั้งหมด"
 
 #: 
-msgid "Closed vs Total"
-msgstr "ปิดเทียบกับทั้งหมด"
-
-#: 
-msgid "Complete these tasks to ensure accurate year-end tax reporting for your donors."
-msgstr "ทำงานเหล่านี้เพื่อให้แน่ใจว่าการรายงานภาษีสิ้นปีสำหรับผู้บริจาคของคุณถูกต้อง"
-
-#: 
 msgid "Configure Email"
 msgstr "กำหนดค่าอีเมล"
 
@@ -6132,28 +6044,12 @@ msgid "Create First Deposit"
 msgstr "สร้างการฝากแรก"
 
 #: 
-msgid "Create or open a deposit first"
-msgstr "สร้างหรือเปิดการฝากก่อน"
-
-#: 
-msgid "Create or select a deposit to get started."
-msgstr "สร้างหรือเลือกการฝากเพื่อเริ่มต้น"
-
-#: 
-msgid "Current Deposit"
-msgstr "การฝากปัจจุบัน"
-
-#: 
 msgid "Day"
 msgstr "วัน"
 
 #: 
 msgid "Dec"
 msgstr "ธ.ค."
-
-#: 
-msgid "Deposit Statistics"
-msgstr "สถิติการฝาก"
 
 #: 
 msgid "Detailed breakdown of pledges and payments by family."
@@ -6182,10 +6078,6 @@ msgstr "แก้ไขการชำระเงิน"
 #: 
 msgid "Edit Person"
 msgstr "แก้ไขบุคคล"
-
-#: 
-msgid "Ensure all deposits for the tax year are closed before generating statements."
-msgstr "ตรวจสอบให้แน่ใจว่าการฝากทั้งหมดสำหรับปีภาษีปิดแล้วก่อนสร้างใบแจ้ง"
 
 #: 
 msgid "F"
@@ -6292,10 +6184,6 @@ msgid "New Pledge"
 msgstr "คำมั่นสัญญาใหม่"
 
 #: 
-msgid "No Active Deposit"
-msgstr "ไม่มีการฝากที่ใช้งานอยู่"
-
-#: 
 msgid "No active funds configured."
 msgstr "ไม่มีกองทุนที่ใช้งานอยู่ที่กำหนดค่า"
 
@@ -6328,10 +6216,6 @@ msgid "Pledge Reports"
 msgstr "รายงานคำมั่นสัญญา"
 
 #: 
-msgid "Print or email annual giving statements to all donors."
-msgstr "พิมพ์หรือส่งอีเมลใบแจ้งการให้ประจำปีถึงผู้บริจาคทั้งหมด"
-
-#: 
 msgid "Quick Actions"
 msgstr "การดำเนินการด่วน"
 
@@ -6362,10 +6246,6 @@ msgstr "กู้คืน"
 #: 
 msgid "Restore from a backup file. Erases existing data."
 msgstr "กู้คืนจากไฟล์สำรองข้อมูล ลบข้อมูลที่มีอยู่"
-
-#: 
-msgid "Review Donation Funds"
-msgstr "ตรวจสอบกองทุนบริจาค"
 
 #: 
 msgid "Save and Add New Family"
@@ -6404,14 +6284,6 @@ msgid "System Info"
 msgstr "ข้อมูลระบบ"
 
 #: 
-msgid "Tax Report Verbiage"
-msgstr "ถ้อยคำรายงานภาษี"
-
-#: 
-msgid "Tax Year Reporting Checklist"
-msgstr "รายการตรวจสอบการรายงานปีภาษี"
-
-#: 
 msgid "Total"
 msgstr "ทั้งหมด"
 
@@ -6432,10 +6304,6 @@ msgid "User must be an Admin or have Finance permission"
 msgstr "ผู้ใช้ต้องเป็นผู้ดูแลระบบหรือมีสิทธิ์การเงิน"
 
 #: 
-msgid "Verify fund names and descriptions are accurate for statements."
-msgstr "ยืนยันว่าชื่อและคำอธิบายกองทุนถูกต้องสำหรับใบแจ้ง"
-
-#: 
 msgid "YTD Payments"
 msgstr "การชำระเงิน YTD"
 
@@ -6452,20 +6320,12 @@ msgid "ZipArchive extension required for upgrades"
 msgstr "ต้องมีส่วนขยาย ZipArchive สำหรับการอัปเกรด"
 
 #: 
-msgid "active"
-msgstr "ใช้งานอยู่"
-
-#: 
 msgid "found"
 msgstr "พบ"
 
 #: 
 msgid "issues"
 msgstr "ปัญหา"
-
-#: 
-msgid "open"
-msgstr "เปิด"
 
 #: 
 msgid "Base URL configuration is invalid. Please check your Config.php file."
@@ -6564,10 +6424,6 @@ msgid "Additional Information"
 msgstr "ข้อมูลเพิ่มเติม"
 
 #: 
-msgid "All information is correct"
-msgstr "ข้อมูลทั้งหมดถูกต้อง"
-
-#: 
 msgid "Assign Opportunities"
 msgstr "มอบหมายโอกาส"
 
@@ -6580,20 +6436,12 @@ msgid "Choose opportunities..."
 msgstr "เลือกโอกาส..."
 
 #: 
-msgid "Confirm Family Information"
-msgstr "ยืนยันข้อมูลครอบครัว"
-
-#: 
 msgid "Contact & Personal Info"
 msgstr "ติดต่อและข้อมูลส่วนตัว"
 
 #: 
 msgid "Edited"
 msgstr "แก้ไขแล้ว"
-
-#: 
-msgid "Email PDF"
-msgstr "ส่งอีเมล PDF"
 
 #: 
 msgid "Newsletter"
@@ -6604,40 +6452,12 @@ msgid "Personal"
 msgstr "ส่วนตัว"
 
 #: 
-msgid "Please update our records with corrections"
-msgstr "กรุณาอัปเดตระเบียนของเราด้วยการแก้ไข"
-
-#: 
-msgid "Provide any corrections or additional information here..."
-msgstr "ให้การแก้ไขหรือข้อมูลเพิ่มเติมที่นี่..."
-
-#: 
 msgid "Select Opportunities"
 msgstr "เลือกโอกาส"
 
 #: 
-msgid "Submit Verification"
-msgstr "ส่งการยืนยัน"
-
-#: 
-msgid "Thank You!"
-msgstr "ขอบคุณ!"
-
-#: 
-msgid "Visit Our Website"
-msgstr "เยี่ยมชมเว็บไซต์ของเรา"
-
-#: 
 msgid "Volunteer"
 msgstr "อาสาสมัคร"
-
-#: 
-msgid "We encountered an error processing your verification. Please try again or contact us directly."
-msgstr "เราพบข้อผิดพลาดในการประมวลผลการยืนยันของคุณ กรุณาลองอีกครั้งหรือติดต่อเราโดยตรง"
-
-#: 
-msgid "Your verification request has been received. Thank you for keeping your information up to date."
-msgstr "ได้รับคำขอการยืนยันของคุณแล้ว ขอบคุณที่อัปเดตข้อมูลของคุณให้เป็นปัจจุบัน"
 
 #: 
 msgid "An error occurred. Please contact your system administrator."
@@ -8001,10 +7821,6 @@ msgid "Calendar not found"
 msgstr "ไม่พบปฏิทิน"
 
 #: 
-msgid "Continue to Dashboard"
-msgstr "ดำเนินการต่อไปยังแดชบอร์ด"
-
-#: 
 msgid "Current Password"
 msgstr "รหัสผ่านปัจจุบัน"
 
@@ -8091,10 +7907,6 @@ msgstr "ต้องระบุชื่อคริสตจักร"
 #: 
 msgid "City is required."
 msgstr "ต้องระบุเมือง"
-
-#: 
-msgid "Clear filter"
-msgstr "ล้างตัวกรอง"
 
 #: 
 msgid "Configuration item not found"
@@ -8364,10 +8176,6 @@ msgstr "เพิ่มบุคคล"
 #: 
 msgid "Add all cart items to a group"
 msgstr "เพิ่มรายการทั้งหมดไปยังกลุ่ม"
-
-#: 
-msgid "Add all to Cart"
-msgstr "เพิ่มทั้งหมดไปยังรายการ"
 
 #: 
 msgid "Add cart items to a family"
@@ -8874,10 +8682,6 @@ msgid "Family Profile"
 msgstr "ข้อมูลครอบครัว"
 
 #: 
-msgid "Family roles (Head of Household, Spouse, Child, etc.) help organise your records."
-msgstr "บทบาทในครอบครัว (หัวหน้าครัวเรือน คู่สมรส บุตร ฯลฯ) ช่วยจัดระเบียบข้อมูลของคุณ"
-
-#: 
 msgid "Family vs Person"
 msgstr "ครอบครัว กับ บุคคล"
 
@@ -9376,10 +9180,6 @@ msgid "Record why attendees visited your church"
 msgstr "บันทึกเหตุผลที่ผู้เข้าร่วมมาเยี่ยมคริสตจักร"
 
 #: 
-msgid "Remove all from Cart"
-msgstr "ลบทั้งหมดออกจากรายการ"
-
-#: 
 msgid "Remove from Class"
 msgstr "ลบออกจากชั้นเรียน"
 
@@ -9588,10 +9388,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "ติดตามคำปฏิญาณถวายของครอบครัวและการบริจาคกองทุนตามปีงบประมาณ"
 
 #: 
-msgid "Transaction Details"
-msgstr "รายละเอียดธุรกรรม"
-
-#: 
 msgid "Unmapped"
 msgstr "ยังไม่จับคู่"
 
@@ -9674,10 +9470,6 @@ msgstr "ดูสรุปคำปฏิญาณถวายของครอ
 #: 
 msgid "View group members, roles, and properties"
 msgstr "ดูสมาชิกกลุ่ม บทบาท และคุณสมบัติ"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "ดูรายละเอียดธุรกรรมสำหรับการถวายตามคำปฏิญาณ"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -9850,10 +9642,6 @@ msgstr "กิจกรรมปีนี้"
 #: 
 msgid "Everyone"
 msgstr "ทุกคน"
-
-#: 
-msgid "Failed to delete note"
-msgstr "ไม่สามารถลบบันทึกได้"
 
 #: 
 msgid "Files not part of the official release were found on your server."
@@ -11242,10 +11030,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "ค่า JSON ไม่ถูกต้อง — ไม่ได้บันทึกการตั้งค่า กรุณาแก้ไขและลองอีกครั้ง"
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "เข้าร่วมโครงการแปลบน POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "การตั้งค่าภาษาและภูมิภาค"
 
@@ -11387,16 +11171,8 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "เวอร์ชัน %s พร้อมใช้งาน กรุณาอัปเกรดการติดตั้งของคุณ"
 
 #: 
-msgid "View All"
-msgstr "ดูทั้งหมด"
-
-#: 
 msgid "Yellow"
 msgstr "สีเหลือง"
-
-#: 
-msgid "Your current access levels (read-only)"
-msgstr "ระดับการเข้าถึงปัจจุบันของคุณ (อ่านอย่างเดียว)"
 
 #: 
 msgid "%d repeat event created successfully."
@@ -11752,10 +11528,6 @@ msgid "Range start must be a valid YYYY-MM-DD date."
 msgstr "วันที่เริ่มต้นช่วงต้องเป็นวันที่ YYYY-MM-DD ที่ถูกต้อง"
 
 #: 
-msgid "Range start must be before range end"
-msgstr "วันที่เริ่มต้นช่วงต้องอยู่ก่อนวันที่สิ้นสุดช่วง"
-
-#: 
 msgid "Range start must be before range end."
 msgstr "วันที่เริ่มต้นช่วงต้องอยู่ก่อนวันที่สิ้นสุดช่วง"
 
@@ -11976,10 +11748,6 @@ msgid "Cannot move property in that direction"
 msgstr "ไม่สามารถย้ายคุณสมบัตินั้นในทิศทางนั้นได้"
 
 #: 
-msgid "Confirm Family Info"
-msgstr "ยืนยันข้อมูลครอบครัว"
-
-#: 
 msgid "Delete failed"
 msgstr "การลบล้มเหลว"
 
@@ -12020,20 +11788,12 @@ msgid "Invalid target family"
 msgstr "ครอบครัวเป้าหมายไม่ถูกต้อง"
 
 #: 
-msgid "Log Out"
-msgstr "ออกจากระบบ"
-
-#: 
 msgid "Membership not found"
 msgstr "ไม่พบการเป็นสมาชิก"
 
 #: 
 msgid "Password successfully changed for"
 msgstr "เปลี่ยนรหัสผ่านสำเร็จสำหรับ"
-
-#: 
-msgid "Please review your family information below and confirm or request changes."
-msgstr "โปรดตรวจสอบข้อมูลครอบครัวของคุณด้านล่างและยืนยันหรือขอเปลี่ยนแปลง"
 
 #: 
 msgid "Please select a target family."
@@ -12716,10 +12476,6 @@ msgid "Failed to install plugin from URL"
 msgstr "ไม่สามารถติดตั้งปลั๊กอินจาก URL ได้"
 
 #: 
-msgid "Failed to load approved plugin list"
-msgstr "ไม่สามารถโหลดรายการปลั๊กอินที่ผ่านการรับรองได้"
-
-#: 
 msgid "Failed to load approved plugin list."
 msgstr "ไม่สามารถโหลดรายการปลั๊กอินที่ผ่านการรับรองได้"
 
@@ -12778,10 +12534,6 @@ msgstr "รูปแบบ kebab-case ต้องตรงกับชื่อ
 #: 
 msgid "Loading approved plugin list…"
 msgstr "กำลังโหลดรายการปลั๊กอินที่ผ่านการรับรอง…"
-
-#: 
-msgid "Loading…"
-msgstr "กำลังโหลด…"
 
 #: 
 msgid "Matches an entry on the approved plugin list"
@@ -13229,10 +12981,6 @@ msgid "Change Your Locale"
 msgstr "เปลี่ยนภาษาของคุณ"
 
 #: 
-msgid "Change role"
-msgstr "เปลี่ยนบทบาท"
-
-#: 
 msgid "Check Number"
 msgstr "หมายเลขเช็ค"
 
@@ -13247,10 +12995,6 @@ msgstr "การลงทะเบียนล้มเหลว กรุณ�
 #: 
 msgid "Check-out failed. Please try again."
 msgstr "การลงทะเบียนออกล้มเหลว กรุณาลองอีกครั้ง"
-
-#: 
-msgid "City is required"
-msgstr "ต้องมีเมือง"
 
 #: 
 msgid "Click Save to apply."
@@ -13319,10 +13063,6 @@ msgstr "คัดลอกหมายเลขทั้งหมด"
 #: 
 msgid "Copy Members to Group"
 msgstr "คัดลอกสมาชิกไปยังกลุ่ม"
-
-#: 
-msgid "Creating Backup..."
-msgstr "กำลังสร้างข้อมูลสำรอง..."
 
 #: 
 msgid "Creating..."
@@ -13507,10 +13247,6 @@ msgstr "เพิ่มลงในตะกร้าล้มเหลว"
 #: 
 msgid "Failed to cancel enrollment. Please try again."
 msgstr "ไม่สามารถยกเลิกการลงทะเบียนได้ กรุณาลองอีกครั้ง"
-
-#: 
-msgid "Failed to copy URL"
-msgstr "คัดลอก URL ล้มเหลว"
 
 #: 
 msgid "Failed to create backup."
@@ -13901,10 +13637,6 @@ msgid "One-Time Code"
 msgstr "รหัสใช้ครั้งเดียว"
 
 #: 
-msgid "Open in New Tab"
-msgstr "เปิดในแท็บใหม่"
-
-#: 
 msgid "Open your authenticator app and scan this QR code"
 msgstr "เปิดแอปตรวจสอบความถูกต้องและสแกนรหัส QR นี้"
 
@@ -13971,10 +13703,6 @@ msgstr "กรุณายืนยันการลบระเบียนก
 #: 
 msgid "Please confirm disabling 2 Factor Auth for this user"
 msgstr "กรุณายืนยันการปิดใช้งานการยืนยันตัวตนแบบ 2 ปัจจัยสำหรับผู้ใช้นี้"
-
-#: 
-msgid "Please confirm removal of user status from"
-msgstr "กรุณายืนยันการลบสถานะผู้ใช้จาก"
 
 #: 
 msgid "Please confirm reset failed login count"
@@ -14181,10 +13909,6 @@ msgid "Setup Complete"
 msgstr "การตั้งค่าเสร็จสมบูรณ์"
 
 #: 
-msgid "Share this URL with family members to verify their information"
-msgstr "แบ่งปัน URL นี้กับสมาชิกครอบครัวเพื่อยืนยันข้อมูลของพวกเขา"
-
-#: 
 msgid "Show more options"
 msgstr "แสดงตัวเลือกเพิ่มเติม"
 
@@ -14337,10 +14061,6 @@ msgid "Validation pending"
 msgstr "รอการตรวจสอบ"
 
 #: 
-msgid "Verification URL"
-msgstr "URL การยืนยัน"
-
-#: 
 msgid "Verification failed. Please try again."
 msgstr "การยืนยันล้มเหลว กรุณาลองอีกครั้ง"
 
@@ -14405,10 +14125,6 @@ msgid "You'll receive backup codes that can be used if you lose access to your a
 msgstr "คุณจะได้รับรหัสสำรองที่สามารถใช้ได้หากสูญเสียการเข้าถึงแอป"
 
 #: 
-msgid "Your Cart is Empty"
-msgstr "ตะกร้าของคุณว่างเปล่า"
-
-#: 
 msgid "Your account is now protected"
 msgstr "บัญชีของคุณได้รับการปกป้องแล้ว"
 
@@ -14427,10 +14143,6 @@ msgstr "การตั้งค่าภาษาในเบราว์เซ
 #: 
 msgid "Your database already contains data"
 msgstr "ฐานข้อมูลของคุณมีข้อมูลอยู่แล้ว"
-
-#: 
-msgid "Zip code is required"
-msgstr "ต้องมีรหัสไปรษณีย์"
 
 #: 
 msgid "added"
@@ -14603,10 +14315,6 @@ msgid "Date Picker Format"
 msgstr "รูปแบบตัวเลือกวันที่"
 
 #: 
-msgid "Date Picker Placeholder"
-msgstr "ข้อความตัวอย่างตัวเลือกวันที่"
-
-#: 
 msgid "Date Without Year"
 msgstr "วันที่ไม่มีปี"
 
@@ -14637,10 +14345,6 @@ msgstr "รูปแบบวันที่สำหรับชื่อไฟ
 #: 
 msgid "Fully translated."
 msgstr "แปลครบถ้วนแล้ว"
-
-#: 
-msgid "Hint text shown in date inputs. Default: yyyy-mm-dd"
-msgstr "ข้อความคำแนะนำในช่องวันที่ ค่าเริ่มต้น: ปปปป-ดด-วว"
 
 #: 
 msgid "Home/Work Phone Format"
@@ -14812,10 +14516,6 @@ msgid "Access level"
 msgstr "ระดับการเข้าถึง"
 
 #: 
-msgid "Administrators have full access to all features and data. Individual permissions do not apply."
-msgstr "ผู้ดูแลระบบมีสิทธิ์เข้าถึงฟีเจอร์และข้อมูลทั้งหมดอย่างสมบูรณ์ สิทธิ์รายบุคคลไม่มีผลบังคับใช้"
-
-#: 
 msgid "All users can view congregation members. This permission cannot be removed."
 msgstr "ผู้ใช้ทุกคนสามารถดูรายชื่อสมาชิกคริสตจักรได้ สิทธิ์นี้ไม่สามารถถอดถอนได้"
 
@@ -14858,10 +14558,6 @@ msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึ
 #: 
 msgid "You do not have permission to add a note for this person."
 msgstr "คุณไม่มีสิทธิ์เพิ่มบันทึกสำหรับบุคคลนี้"
-
-#: 
-msgid "You do not have permission to edit this note"
-msgstr "คุณไม่มีสิทธิ์แก้ไขบันทึกนี้"
 
 #: 
 msgid "Account locked"
@@ -15586,14 +15282,6 @@ msgid "Calendar Embed Origins"
 msgstr "แหล่งที่มาของการฝังปฏิทิน"
 
 #: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "การแปล ChurchCRM ดูแลโดยชุมชนบน POEditor คุณสามารถช่วยได้โดย"
-
-#: 
-msgid "Closed Deposits"
-msgstr "เงินฝากที่ปิดแล้ว"
-
-#: 
 msgid "Current $URL[0] value"
 msgstr "ค่า $URL[0] ปัจจุบัน"
 
@@ -15682,10 +15370,6 @@ msgid "Please confirm deletion of this family record"
 msgstr "กรุณายืนยันการลบบันทึกครอบครัวนี้"
 
 #: 
-msgid "Please confirm your family information"
-msgstr "กรุณายืนยันข้อมูลครอบครัวของคุณ"
-
-#: 
 msgid "Please select another family with whom to associate these donations"
 msgstr "กรุณาเลือกครอบครัวอื่นเพื่อเชื่อมโยงการถวายทรัพย์เหล่านี้"
 
@@ -15738,10 +15422,6 @@ msgid "There are people assigned to this Volunteer Opportunity. Deletion will un
 msgstr "มีคนถูกกำหนดให้กับโอกาสอาสาสมัครนี้ การลบจะยกเลิกการกำหนด"
 
 #: 
-msgid "Total Deposits"
-msgstr "เงินฝากทั้งหมด"
-
-#: 
 msgid "Update it to a valid URL that"
 msgstr "อัปเดตเป็น URL ที่ถูกต้องซึ่ง"
 
@@ -15768,10 +15448,6 @@ msgstr "สำหรับกองทุน"
 #: 
 msgid "user"
 msgstr "ผู้ใช้"
-
-#: 
-msgid "with at least one"
-msgstr "พร้อมอย่างน้อยหนึ่งรายการ"
 
 #: 
 msgid "Also send to church address ({{email}})"
@@ -15904,10 +15580,6 @@ msgstr "เลือกจังหวัด/รัฐ"
 #: 
 msgid "Select a person"
 msgstr "เลือกบุคคล"
-
-#: 
-msgid "Select role"
-msgstr "เลือกบทบาท"
 
 #: 
 msgid "Select type (optional)"
@@ -16066,10 +15738,6 @@ msgid "At least one fund allocation is required"
 msgstr "ต้องมีการจัดสรรกองทุนอย่างน้อยหนึ่งรายการ"
 
 #: 
-msgid "At least one fund must have a non-zero amount"
-msgstr "กองทุนอย่างน้อยหนึ่งรายการต้องมีจำนวนเงินที่ไม่ใช่ศูนย์"
-
-#: 
 msgid "Automatically send a birthday greeting email to people on their birthday"
 msgstr "ส่งอีเมลอวยพรวันเกิดโดยอัตโนมัติถึงสมาชิกในวันเกิดของพวกเขา"
 
@@ -16146,18 +15814,6 @@ msgid "Editing a Pledge"
 msgstr "กำลังแก้ไขคำมั่นสัญญา"
 
 #: 
-msgid "Enable (full)"
-msgstr "เปิดใช้งาน (เต็มรูปแบบ)"
-
-#: 
-msgid "Errors only"
-msgstr "เฉพาะข้อผิดพลาด"
-
-#: 
-msgid "Errors — server errors and JS exceptions"
-msgstr "ข้อผิดพลาด — ข้อผิดพลาดเซิร์ฟเวอร์และข้อยกเว้น JS"
-
-#: 
 msgid "Failed to create pledge"
 msgstr "ไม่สามารถสร้างคำมั่นสัญญาได้"
 
@@ -16196,10 +15852,6 @@ msgstr "ต้องระบุคีย์กลุ่ม"
 #: 
 msgid "Happy Birthday"
 msgstr "สุขสันต์วันเกิด"
-
-#: 
-msgid "Help improve ChurchCRM"
-msgstr "ช่วยพัฒนา ChurchCRM"
 
 #: 
 msgid "IP addresses"
@@ -16270,16 +15922,8 @@ msgid "None (disabled)"
 msgstr "ไม่มี (ปิดใช้งาน)"
 
 #: 
-msgid "OS family"
-msgstr "ตระกูล OS"
-
-#: 
 msgid "Overpaid"
 msgstr "ถวายเกิน"
-
-#: 
-msgid "PHP version"
-msgstr "เวอร์ชัน PHP"
 
 #: 
 msgid "Page route"
@@ -16316,10 +15960,6 @@ msgstr "ไม่พบกลุ่มคำมั่นสัญญา"
 #: 
 msgid "Pledges & Payments"
 msgstr "คำมั่นสัญญาและการถวาย"
-
-#: 
-msgid "Prioritise translations"
-msgstr "ให้ความสำคัญกับการแปล"
 
 #: 
 msgid "Purpose"
@@ -16384,10 +16024,6 @@ msgstr "ชื่อผู้ใช้ อีเมล หรือบทบา�
 #: 
 msgid "View pledge or payment details"
 msgstr "ดูรายละเอียดคำมั่นสัญญาหรือการถวาย"
-
-#: 
-msgid "Warnings — warnings, errors, and JS exceptions"
-msgstr "คำเตือน — คำเตือน ข้อผิดพลาด และข้อยกเว้น JS"
 
 #: 
 msgid "What is sent"
@@ -16581,11 +16217,6 @@ msgstr "ไม่พบการชำระเงินสำหรับรา
 #: 
 msgid "No valid deposit IDs provided"
 msgstr "ไม่มีรหัสรายการฝากที่ถูกต้อง"
-
-#: 
-msgid "PDF successfully emailed to %d family."
-msgid_plural "PDFs successfully emailed to %d families."
-msgstr[0] "ส่ง PDF ทางอีเมลถึง %d ครอบครัวเรียบร้อยแล้ว"
 
 #: 
 msgid "Partial Send"
@@ -17125,10 +16756,6 @@ msgid "Creating and uploading backup. This may take several minutes..."
 msgstr "กำลังสร้างและอัปโหลดไฟล์สำรองข้อมูล อาจใช้เวลาสักครู่..."
 
 #: 
-msgid "Database reset failed."
-msgstr "การรีเซ็ตฐานข้อมูลล้มเหลว"
-
-#: 
 msgid "Deceased"
 msgstr "เสียชีวิตแล้ว"
 
@@ -17325,10 +16952,6 @@ msgid "Log settings saved"
 msgstr "บันทึกการตั้งค่าไฟล์บันทึกแล้ว"
 
 #: 
-msgid "Login Name is Required"
-msgstr "จำเป็นต้องระบุชื่อผู้ใช้สำหรับเข้าสู่ระบบ"
-
-#: 
 msgid "Marked the Person as Active"
 msgstr "ทำเครื่องหมายบุคคลนี้ว่าใช้งานอยู่แล้ว"
 
@@ -17453,10 +17076,6 @@ msgid "Sending..."
 msgstr "กำลังส่ง..."
 
 #: 
-msgid "Sending…"
-msgstr "กำลังส่ง…"
-
-#: 
 msgid "Settings reset"
 msgstr "รีเซ็ตการตั้งค่าแล้ว"
 
@@ -17525,16 +17144,8 @@ msgid "Upcoming"
 msgstr "กำลังจะถึง"
 
 #: 
-msgid "Valid Until"
-msgstr "ใช้ได้ถึง"
-
-#: 
 msgid "View active only"
 msgstr "ดูเฉพาะที่ใช้งานอยู่"
-
-#: 
-msgid "View all"
-msgstr "ดูทั้งหมด"
 
 #: 
 msgid "View all (including inactive)"
@@ -17607,10 +17218,6 @@ msgstr "ยอดระดมทุนในปีงบประมาณนี
 #: 
 msgid "%s must be a full https:// web address, for example https://example.org/yourchurch."
 msgstr "%s ต้องเป็นที่อยู่เว็บแบบเต็มรูปแบบ https:// เช่น https://example.org/yourchurch"
-
-#: 
-msgid "Account has limited permissions. Contact an administrator."
-msgstr "บัญชีมีสิทธิ์การใช้งานจำกัด กรุณาติดต่อผู้ดูแลระบบ"
 
 #: 
 msgid "An error occurred while rendering the error page."
@@ -18313,10 +17920,6 @@ msgid "Your fiscal year starts in %s."
 msgstr "ปีงบประมาณของคุณเริ่มต้นในเดือน %s"
 
 #: 
-msgid "An error occurred"
-msgstr "เกิดข้อผิดพลาด"
-
-#: 
 msgid "Approve"
 msgstr "อนุมัติ"
 
@@ -18486,11 +18089,6 @@ msgstr "%1$s: จำนวนสูงสุดคือ %2$d แต่เลื
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d วัน"
-
-#: 
-msgid "%d default skipped for another reason (the occurrence is over, cancelled or full)"
-msgid_plural "%d defaults skipped for another reason (the occurrence is over, cancelled or full)"
-msgstr[0] "%d ค่าเริ่มต้นถูกข้ามไปด้วยเหตุผลอื่น (การเกิดขึ้นหมดสิ้น ถูกยกเลิก หรือเต็ม)"
 
 #: 
 msgid "%d default skipped: qualification revoked"
@@ -18747,10 +18345,6 @@ msgid "A theme is a folder your church uploads to Include/themes/ on the server.
 msgstr "ธีมคือโฟลเดอร์ที่คริสตจักรของคุณอัปโหลดไปที่ Include/themes/ บนเซิร์ฟเวอร์ ค่าเริ่มต้นของระบบมาพร้อมกับ ChurchCRM"
 
 #: 
-msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labelled. Use it while you move a church from V1 to V2, then switch to V2 only."
-msgstr "การตั้งค่าช่วงเปลี่ยนผ่าน หน้าโอกาสรับใช้แบบเดิมและหน้าพันธกิจแบบใหม่ใช้งานได้ทั้งคู่ และระเบียนบุคคลจะแสดงแท็บอาสาสมัครทั้งสองพร้อมป้ายกำกับชัดเจน ใช้ระหว่างย้ายคริสตจักรจาก V1 ไป V2 แล้วเปลี่ยนเป็น V2 อย่างเดียว"
-
-#: 
 msgid "A volunteer"
 msgstr "อาสาสมัคร"
 
@@ -18955,10 +18549,6 @@ msgid "Assigned outside the current plan"
 msgstr "มอบหมายนอกแผนปัจจุบัน"
 
 #: 
-msgid "Assignment cancelled"
-msgstr "ยกเลิกการมอบหมายแล้ว"
-
-#: 
 msgid "Assignment not found"
 msgstr "ไม่พบการมอบหมาย"
 
@@ -19065,10 +18655,6 @@ msgstr "ยกเลิกการมอบหมาย"
 #: 
 msgid "Cancel this assignment"
 msgstr "ยกเลิกการมอบหมายนี้"
-
-#: 
-msgid "Cancelled"
-msgstr "ยกเลิกแล้ว"
 
 #: 
 msgid "Change the password you sign in with, or add a second step so a password alone is not enough."
@@ -19225,10 +18811,6 @@ msgstr "เว็บไซต์คริสตจักร"
 #: 
 msgid "Close event details"
 msgstr "ปิดรายละเอียดกิจกรรม"
-
-#: 
-msgid "Colour"
-msgstr "สี"
 
 #: 
 msgid "Completed"
@@ -19475,10 +19057,6 @@ msgid "Each staffing need must name a position"
 msgstr "ความต้องการกำลังคนแต่ละรายการต้องระบุตำแหน่ง"
 
 #: 
-msgid "Edit event"
-msgstr "แก้ไขกิจกรรม"
-
-#: 
 msgid "Edit ministry"
 msgstr "แก้ไขพันธกิจ"
 
@@ -19563,10 +19141,6 @@ msgstr "ส่งอีเมลให้ผู้รับ {{count}} คน"
 #: 
 msgid "Emails"
 msgstr "อีเมล"
-
-#: 
-msgid "End time"
-msgstr "เวลาสิ้นสุด"
 
 #: 
 msgid "Enter counts"
@@ -20709,10 +20283,6 @@ msgid "Read the theme authoring guide"
 msgstr "อ่านคู่มือการสร้างธีม"
 
 #: 
-msgid "Recent Emails"
-msgstr "อีเมลล่าสุด"
-
-#: 
 msgid "Recipient"
 msgstr "ผู้รับ"
 
@@ -20843,10 +20413,6 @@ msgstr "รันงานเบื้องหลังตอนนี้"
 #: 
 msgid "SMTP test"
 msgstr "ทดสอบ SMTP"
-
-#: 
-msgid "Save changes"
-msgstr "บันทึกการเปลี่ยนแปลง"
 
 #: 
 msgid "Saved — this ministry is no longer asking for help"
@@ -21131,10 +20697,6 @@ msgstr "บันทึกความต้องการกำลังคน
 #: 
 msgid "Start by creating a ministry, then add the teams and positions that serve in it."
 msgstr "เริ่มต้นด้วยการสร้างพันธกิจ แล้วเพิ่มทีมและตำแหน่งที่รับใช้ในนั้น"
-
-#: 
-msgid "Start time"
-msgstr "เวลาเริ่มต้น"
 
 #: 
 msgid "Start typing a name"
@@ -21483,10 +21045,6 @@ msgstr "เลือกที่อยู่แล้ว — คัดลอก�
 #: 
 msgid "The asset path \"%s\" is not allowed."
 msgstr "ไม่อนุญาตเส้นทางสินทรัพย์ \"%s\""
-
-#: 
-msgid "The assignment could not be cancelled"
-msgstr "ไม่สามารถยกเลิกการมอบหมายได้"
 
 #: 
 msgid "The assignment message will be sent again"
@@ -22011,10 +21569,6 @@ msgid "This occurrence has already happened and its assignments can no longer be
 msgstr "รอบนี้เกิดขึ้นไปแล้วและเปลี่ยนการมอบหมายไม่ได้อีก"
 
 #: 
-msgid "This occurrence has been cancelled"
-msgstr "รอบนี้ถูกยกเลิกแล้ว"
-
-#: 
 msgid "This occurrence has its own staffing needs, set apart from its schedule."
 msgstr "รอบนี้มีความต้องการกำลังคนของตนเอง แยกจากตารางเวลา"
 
@@ -22183,16 +21737,8 @@ msgid "Validation"
 msgstr "การตรวจสอบความถูกต้อง"
 
 #: 
-msgid "View event"
-msgstr "ดูกิจกรรม"
-
-#: 
 msgid "View my schedule"
 msgstr "ดูตารางของฉัน"
-
-#: 
-msgid "View person"
-msgstr "ดูข้อมูลบุคคล"
 
 #: 
 msgid "View the event"
@@ -22241,10 +21787,6 @@ msgstr "เวลาของอาสาสมัคร"
 #: 
 msgid "Volunteering"
 msgstr "การอาสา"
-
-#: 
-msgid "Volunteering organised the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
-msgstr "การอาสาที่จัดตามแบบที่คริสตจักรทำงาน แต่ละพันธกิจมีทีมและตำแหน่ง บุคคลมีคุณสมบัติสำหรับตำแหน่งและอยู่ในกลุ่มอาสาสมัครของพันธกิจ ตารางเวลาติดตามกิจกรรมในปฏิทินและสร้างรอบที่มีวันที่พร้อมความต้องการกำลังคน ผู้ประสานงานมอบหมายบุคคล ซึ่งตอบรับ ปฏิเสธ หรือเสนอผู้แทน การเตือนและการแจ้งเตือนส่งทางอีเมล ผู้ดูแลระบบและผู้ใช้ที่มีสิทธิ์จัดการพันธกิจเห็นทุกพันธกิจและสร้าง ปิดใช้งาน และลบได้ ผู้ประสานงานพันธกิจจะได้รับสิทธิ์จัดการพันธกิจของฉันแทน หัวข้อพันธกิจในแถบด้านข้างจึงแสดงเฉพาะพันธกิจที่เขาประสานงาน หัวหน้าทีมดูแลทีมของตนจากพอร์ทัลสมาชิก สมาชิกใช้พอร์ทัลสมาชิกเพื่อดูตารางของตน ตอบกลับ สมัคร และเสนอความช่วยเหลือ"
 
 #: 
 msgid "Volunteers assigned: {{total}}"
@@ -22781,10 +22323,6 @@ msgid "Cancel this occurrence"
 msgstr "ยกเลิกการเกิดขึ้นนี้"
 
 #: 
-msgid "Cancelling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is cancelled, and nobody can be assigned until it is restored."
-msgstr "การยกเลิกไม่แจ้งให้ผู้ใดทราบ: ไม่มีการส่งอีเมล งานที่มอบหมายจะถูกเก็บไว้ ไม่มีการกำหนดเวลาการแจ้งเตือนขณะยกเลิก และไม่มีใครสามารถมอบหมายได้จนกว่าจะคืนสถานะ"
-
-#: 
 msgid "Deleted events leave every calendar, with their check-ins and headcounts, and this ministry's staffing of them keeps only its date. This cannot be undone."
 msgstr "กิจกรรมที่ถูกลบออกจากปฏิทินทั้งหมด พร้อมด้วยการลงชื่อและจำนวนผู้เข้าร่วม และการจัดเตรียมบุคลากรของหน่วยงานนี้เก็บเฉพาะวันที่เท่านั้น ไม่สามารถเลิกทำได้"
 
@@ -22795,10 +22333,6 @@ msgstr "ลบกิจกรรม: {{total}}"
 #: 
 msgid "Events to delete: {{total}}"
 msgstr "กิจกรรมที่จะลบ: {{total}}"
-
-#: 
-msgid "Occurrence cancelled"
-msgstr "ยกเลิกการเกิดขึ้น"
 
 #: 
 msgid "Occurrence restored"
@@ -22815,10 +22349,6 @@ msgstr "คืนสถานะการเกิดขึ้น"
 #: 
 msgid "Restore this occurrence"
 msgstr "คืนสถานะการเกิดขึ้นนี้"
-
-#: 
-msgid "The occurrence could not be cancelled"
-msgstr "ไม่สามารถยกเลิกการเกิดขึ้นได้"
 
 #: 
 msgid "The occurrence could not be restored"
@@ -22873,16 +22403,12 @@ msgid "Invalid birth date"
 msgstr "วันเกิดไม่ถูกต้อง"
 
 #: 
-msgid "Invalid email address"
-msgstr "ที่อยู่อีเมลไม่ถูกต้อง"
-
-#: 
 msgid "Kiosk Settings"
 msgstr "การตั้งค่า Kiosk"
 
 #: 
 msgid "Please enter a check number"
-msgstr "โปรดใส่หมายเลขตรวจสอบ"
+msgstr "โปรดใส่หมายเลขเช็ค"
 
 #: 
 msgid "Register & Check In"
@@ -22903,12 +22429,6 @@ msgstr "ลงทะเบียนเป็นผู้เยี่ยมชม
 #: 
 msgid "Registering..."
 msgstr "กำลังลงทะเบียน..."
-
-#: 
-msgid "Require a check number when recording check payments on deposit entries.\n"
-"Note: disabling this also disables duplicate check-number detection — the same physical check may be entered more than once."
-msgstr "ต้องใช้หมายเลขตรวจสอบเมื่อบันทึกการชำระเช็คในรายการเงินฝาก\n"
-"หมายเหตุ: การปิดใช้งานนี้ยังปิดใช้งานการตรวจหาหมายเลขตรวจสอบที่ซ้ำกัน — เช็คเดียวกันอาจถูกป้อนมากกว่าครั้งเดียว"
 
 #: 
 msgid "This event has ended"
@@ -22933,10 +22453,6 @@ msgstr "ค้นหาตามชื่อครอบครัว"
 #: 
 msgid "Search by family name or envelope #"
 msgstr "ค้นหาตามชื่อครอบครัวหรือเลขที่ซองถวาย"
-
-#: 
-msgid "Cannot delete a family that has pledges or payments. Move or remove the finance records first."
-msgstr "ไม่สามารถลบครอบครัวที่มีคำปฏิญาณถวายหรือการชำระเงินได้ โปรดย้ายหรือลบบันทึกการเงินก่อน"
 
 #: 
 msgid "You cannot delete your own account."
@@ -23547,10 +23063,6 @@ msgstr "เลือกว่าจะจัดคนในกำหนดกา
 #: 
 msgid "Choose someone already in the church directory. They join this ministry's volunteers and its coordinators are emailed. Only a coordinator can take someone out."
 msgstr "เลือกคนที่มีอยู่ในสารบบคริสตจักรแล้ว คนนั้นจะเข้าร่วมอาสาสมัครของพันธกิจนี้ และผู้ประสานงานจะได้รับอีเมล มีเพียงผู้ประสานงานที่นำคนออกได้"
-
-#: 
-msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries — it never deletes data, so you can switch back."
-msgstr "ChurchCRM มีสองวิธีจัดการอาสาสมัคร ใช้ได้ครั้งละวิธี การตั้งค่าประสบการณ์อาสาสมัครเป็นตัวกำหนดว่าคริสตจักรนี้จะเห็นวิธีใด การสลับจะซ่อนหรือแสดงหน้าและรายการเมนู โดยไม่ลบข้อมูล จึงสลับกลับได้"
 
 #: 
 msgid "Daily unfilled-position email time"
@@ -24321,10 +23833,6 @@ msgid "%s Giving Statement"
 msgstr "ใบแจ้งการถวาย %s"
 
 #: 
-msgid "Customize the text that appears on giving statements (sTaxReport1, sTaxReport2, etc)."
-msgstr "ปรับแต่งข้อความที่ปรากฏบนใบแจ้งการถวาย (sTaxReport1, sTaxReport2 ฯลฯ)"
-
-#: 
 msgid "Dear %s Family,\n"
 "\n"
 "Please find your %s giving statement from %s attached to this email.\n"
@@ -24347,10 +23855,6 @@ msgstr "ส่งใบแจ้งการถวาย %s ทางอีเ�
 #: 
 msgid "Envelope Numbers"
 msgstr "หมายเลขซอง"
-
-#: 
-msgid "Generate Giving Statements"
-msgstr "สร้างใบแจ้งการถวาย"
 
 #: 
 msgid "Generate reports for giving statements, pledge tracking, and financial analysis."
@@ -24391,10 +23895,6 @@ msgstr "ส่งใบแจ้งการถวายทางอีเมล
 #: 
 msgid "Undesignated"
 msgstr "ไม่ได้ระบุกองทุน"
-
-#: 
-msgid "Verify church name, address, and contact info appears on giving statements."
-msgstr "ตรวจว่าชื่อ ที่อยู่ และข้อมูลติดต่อของคริสตจักรปรากฏบนใบแจ้งการถวาย"
 
 #: 
 msgid "The position is now assigned to %s, who has accepted it."
@@ -24609,10 +24109,6 @@ msgid "%d payments are not on any deposit yet."
 msgstr "การชำระเงิน %d รายการยังไม่อยู่ในรายการนำฝากใด"
 
 #: 
-msgid "Can be emailed"
-msgstr "ส่งอีเมลได้"
-
-#: 
 msgid "Closing line"
 msgstr "บรรทัดปิด"
 
@@ -24641,16 +24137,8 @@ msgid "Opening line"
 msgstr "บรรทัดเปิด"
 
 #: 
-msgid "Print and mail"
-msgstr "พิมพ์และส่งไปรษณีย์"
-
-#: 
 msgid "Qty"
 msgstr "จำนวน"
-
-#: 
-msgid "Review the year, then print or email giving statements."
-msgstr "ตรวจทานปีนั้น แล้วพิมพ์หรือส่งใบแจ้งการถวายทางอีเมล"
 
 #: 
 msgid "Signed by"
@@ -24659,10 +24147,6 @@ msgstr "ลงนามโดย"
 #: 
 msgid "Thank-you line"
 msgstr "บรรทัดขอบคุณ"
-
-#: 
-msgid "Verify church name, address, and contact info appears on tax statements."
-msgstr "ตรวจว่าชื่อ ที่อยู่ และข้อมูลติดต่อของคริสตจักรปรากฏบนใบแจ้งภาษี"
 
 #: 
 msgid "Year-End Giving"
@@ -24833,28 +24317,12 @@ msgid "Closing Line"
 msgstr "บรรทัดปิด"
 
 #: 
-msgid "Controls optional telemetry. Install and database upgrade failures send limited diagnostics to PostHog even when telemetry is off. These failure reports include software and environment versions and a sanitized database error, but no installation ID or SQL statement."
-msgstr "ควบคุมข้อมูลการใช้งานที่ไม่บังคับ ความล้มเหลวของการติดตั้งและการอัปเกรดฐานข้อมูลจะส่งข้อมูลวินิจฉัยอย่างจำกัดไปยัง PostHog แม้ปิดข้อมูลการใช้งาน รายงานความล้มเหลวเหล่านี้รวมเวอร์ชันของซอฟต์แวร์และสภาพแวดล้อม และข้อผิดพลาดของฐานข้อมูลที่ทำให้ปลอดภัยแล้ว แต่ไม่มีรหัสการติดตั้งหรือคำสั่ง SQL"
-
-#: 
-msgid "Diagnose failed installs and database upgrades"
-msgstr "วินิจฉัยการติดตั้งและการอัปเกรดฐานข้อมูลที่ล้มเหลว"
-
-#: 
-msgid "Install and upgrade failure details"
-msgstr "รายละเอียดความล้มเหลวของการติดตั้งและการอัปเกรด"
-
-#: 
 msgid "Open in browser window"
 msgstr "เปิดในหน้าต่างเบราว์เซอร์"
 
 #: 
 msgid "Opening Line"
 msgstr "บรรทัดเปิด"
-
-#: 
-msgid "Optional usage telemetry is sent only when enabled. Install and database upgrade failures always send a limited diagnostic to help the community, even if you choose No thanks. Failure reports include software and environment versions and a sanitized database error, without an installation ID or SQL statement."
-msgstr "ข้อมูลการใช้งานที่ไม่บังคับจะถูกส่งเฉพาะเมื่อเปิดใช้ ความล้มเหลวของการติดตั้งและการอัปเกรดฐานข้อมูลจะส่งข้อมูลวินิจฉัยอย่างจำกัดเสมอเพื่อช่วยชุมชน แม้คุณเลือกไม่ขอบคุณ รายงานความล้มเหลวรวมเวอร์ชันของซอฟต์แวร์และสภาพแวดล้อม และข้อผิดพลาดของฐานข้อมูลที่ทำให้ปลอดภัยแล้ว โดยไม่มีรหัสการติดตั้งหรือคำสั่ง SQL"
 
 #: 
 msgid "PDF Handling"
@@ -24891,18 +24359,6 @@ msgstr "ถ้อยคำในใบแจ้ง"
 #: 
 msgid "Tax Information"
 msgstr "ข้อมูลภาษี"
-
-#: 
-msgid "Telemetry is sent to PostHog in the United States. Install and upgrade failure reports are sent even when optional telemetry is disabled."
-msgstr "ส่งข้อมูลการใช้งานไปที่ PostHog ในสหรัฐอเมริกา รายงานความล้มเหลวของการติดตั้งและการอัปเกรดจะถูกส่งแม้ปิดข้อมูลการใช้งานที่ไม่บังคับ"
-
-#: 
-msgid "This date was cancelled. Nothing more is needed from you."
-msgstr "วันที่ยกเลิกแล้ว คุณไม่ต้องทำอะไรเพิ่มครับ"
-
-#: 
-msgid "always sent"
-msgstr "ส่งเสมอ"
 
 #: 
 msgid "Failed to remove letterhead"
@@ -25015,10 +24471,6 @@ msgstr "คนที่เสียที่อยู่นี้จะไม่
 #: 
 msgid "A person whose record hides their age never shows a birth year."
 msgstr "คนที่ระเบียนซ่อนอายุจะไม่แสดงปีเกิด"
-
-#: 
-msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to %3$s is used."
-msgstr "มีคำขอในพอร์ทัลสมาชิกให้เปลี่ยนที่อยู่อีเมลของคุณเวลา %s จาก %s เป็น %s การเปลี่ยนจะเกิดขึ้นเมื่อใช้ลิงก์ที่ส่งไปยัง %s"
 
 #: 
 msgid "A row is not in the expected form."
@@ -25371,10 +24823,6 @@ msgstr "อีเมลต้องได้รับการดูแล"
 #: 
 msgid "Email problem"
 msgstr "ปัญหาอีเมล"
-
-#: 
-msgid "Emailed sign-in code and link cancelled"
-msgstr "ยกเลิกรหัสและลิงก์ลงชื่อเข้าใช้ที่ส่งทางอีเมลแล้ว"
 
 #: 
 msgid "Emailed verification link"
@@ -25969,10 +25417,6 @@ msgid "Only people with their own email can be added."
 msgstr "เพิ่มได้เฉพาะคนที่มีอีเมลของตนเอง"
 
 #: 
-msgid "Optional telemetry may include page routes, active locale, CRM version, PHP version, OS family, the country from your church information settings, and a random installation ID. Failure reports do not include the installation ID. Data is sent to PostHog in the United States."
-msgstr "ข้อมูลการใช้งานที่ไม่บังคับอาจรวมเส้นทางหน้า ภาษาที่ใช้งาน เวอร์ชัน CRM เวอร์ชัน PHP ตระกูล OS ประเทศจากการตั้งค่าข้อมูลคริสตจักร และรหัสการติดตั้งแบบสุ่ม รายงานความล้มเหลวไม่มีรหัสการติดตั้ง ข้อมูลถูกส่งไปที่ PostHog ในสหรัฐอเมริกา"
-
-#: 
 msgid "Passkey"
 msgstr "พาสคีย์"
 
@@ -26443,10 +25887,6 @@ msgstr "นำรายการนั้นออกไม่ได้"
 #: 
 msgid "That device is signed out."
 msgstr "อุปกรณ์นั้นออกจากระบบแล้ว"
-
-#: 
-msgid "That is not a valid email address."
-msgstr "นั่นไม่ใช่ที่อยู่อีเมลที่ถูกต้อง"
 
 #: 
 msgid "That page had been open too long. Please try again."
@@ -27139,4 +26579,1295 @@ msgstr "หรือ"
 #: 
 msgid "until %s"
 msgstr "จนถึง %s"
+
+#: 
+msgid "A request was made in the Member Portal to change your email address at %1$s from %2$s to %3$s. The change happens only when the link sent to the new address is used."
+msgstr "มีคำขอในพอร์ทัลสมาชิกให้เปลี่ยนที่อยู่อีเมลของคุณที่ %1$s จาก %2$s เป็น %3$s การเปลี่ยนแปลงจะเกิดขึ้นเมื่อใช้ลิงก์ที่ส่งไปยังที่อยู่ใหม่เท่านั้น"
+
+#: 
+msgid "Review Family Information"
+msgstr "ตรวจสอบข้อมูลครอบครัว"
+
+#: 
+msgid "A ministry called \"%s\" already exists. Choose it from the list, or pick another name."
+msgstr "มีพันธกิจชื่อ \"%s\" อยู่แล้ว เลือกจากรายการ หรือเลือกชื่ออื่น"
+
+#: 
+msgid "A new ministry"
+msgstr "พันธกิจใหม่"
+
+#: 
+msgid "A position"
+msgstr "ตำแหน่ง"
+
+#: 
+msgid "Add {{total}} volunteers to positions converted before?"
+msgstr "เพิ่มอาสาสมัคร {{total}} คนในตำแหน่งที่แปลงไว้ก่อนหน้านี้หรือไม่"
+
+#: 
+msgid "Already converted"
+msgstr "แปลงแล้ว"
+
+#: 
+msgid "An existing ministry"
+msgstr "พันธกิจที่มีอยู่"
+
+#: 
+msgid "Becomes"
+msgstr "กลายเป็น"
+
+#: 
+msgid "ChurchCRM has two ways of managing volunteers. Only one is meant to be in use at a time; the Volunteer experience setting decides which one this church sees. Switching hides or shows pages and menu entries and never deletes data. V1 and Both are offered only while Volunteer Opportunities are in use: once every opportunity is converted and the church is on V2, they leave this list."
+msgstr "ChurchCRM มีวิธีจัดการอาสาสมัครสองแบบ ควรใช้เพียงแบบเดียวในแต่ละครั้ง โดยการตั้งค่า \"รูปแบบอาสาสมัคร\" จะกำหนดว่าคริสตจักรนี้เห็นแบบใด การสลับจะซ่อนหรือแสดงหน้าและเมนูเท่านั้น และไม่ลบข้อมูลใดๆ ตัวเลือก V1 และทั้งสองจะมีให้เฉพาะเมื่อยังใช้โอกาสอาสาสมัครอยู่ เมื่อแปลงโอกาสทั้งหมดแล้วและคริสตจักรใช้ V2 ตัวเลือกเหล่านี้จะหายไปจากรายการ"
+
+#: 
+msgid "Convert"
+msgstr "แปลง"
+
+#: 
+msgid "Convert Volunteer Opportunities"
+msgstr "แปลงโอกาสอาสาสมัคร"
+
+#: 
+msgid "Convert {{total}} opportunities now? The V1 data is kept as it is until Volunteer Opportunities are retired."
+msgstr "แปลงโอกาส {{total}} รายการตอนนี้หรือไม่ ข้อมูล V1 จะถูกเก็บไว้ตามเดิมจนกว่าโอกาสอาสาสมัครจะถูกยกเลิก"
+
+#: 
+msgid "Converted"
+msgstr "แปลงแล้ว"
+
+#: 
+msgid "Converted: {{positions}} positions and {{ministries}} ministries, {{qualifications}} volunteers qualified."
+msgstr "แปลงแล้ว: {{positions}} ตำแหน่งและ {{ministries}} พันธกิจ อาสาสมัครได้รับสิทธิ์ {{qualifications}} คน"
+
+#: 
+msgid "Each opportunity becomes a position on the first team of one ministry, and everyone linked to it becomes qualified for that position. Self sign-up starts off on these positions."
+msgstr "แต่ละโอกาสจะกลายเป็นตำแหน่งในทีมแรกของพันธกิจหนึ่ง และทุกคนที่เชื่อมโยงอยู่จะได้รับสิทธิ์ในตำแหน่งนั้น การสมัครด้วยตนเองจะปิดอยู่ในตอนแรกสำหรับตำแหน่งเหล่านี้"
+
+#: 
+msgid "Everything is converted."
+msgstr "แปลงทั้งหมดแล้ว"
+
+#: 
+msgid "Existing ministry"
+msgstr "พันธกิจที่มีอยู่"
+
+#: 
+msgid "Give the new ministry a name of up to 100 characters."
+msgstr "ตั้งชื่อพันธกิจใหม่ไม่เกิน 100 ตัวอักษร"
+
+#: 
+msgid "Its own ministry"
+msgstr "พันธกิจของตัวเอง"
+
+#: 
+msgid "Linked since: {{names}}"
+msgstr "เชื่อมโยงหลังจากนั้น: {{names}}"
+
+#: 
+msgid "Links that cannot convert"
+msgstr "การเชื่อมโยงที่แปลงไม่ได้"
+
+#: 
+msgid "New ministries of their own"
+msgstr "พันธกิจใหม่ของแต่ละรายการ"
+
+#: 
+msgid "New ministry name"
+msgstr "ชื่อพันธกิจใหม่"
+
+#: 
+msgid "No email is sent, and Volunteer Opportunities stay as they are until they are retired."
+msgstr "จะไม่มีการส่งอีเมล และโอกาสอาสาสมัครจะคงอยู่ตามเดิมจนกว่าจะถูกยกเลิก"
+
+#: 
+msgid "No name"
+msgstr "ไม่มีชื่อ"
+
+#: 
+msgid "Not converted"
+msgstr "ยังไม่แปลง"
+
+#: 
+msgid "Open Feature Toggles"
+msgstr "เปิดสวิตช์คุณลักษณะ"
+
+#: 
+msgid "Open Ministries"
+msgstr "เปิดพันธกิจ"
+
+#: 
+msgid "Opportunities"
+msgstr "โอกาส"
+
+#: 
+msgid "Opportunity"
+msgstr "โอกาส"
+
+#: 
+msgid "Opportunity #%d"
+msgstr "โอกาส #%d"
+
+#: 
+msgid "People linked to converted Volunteer Opportunities since the conversion: %d. Add them to their positions before Volunteer Opportunities are retired in early 2027."
+msgstr "ผู้ที่เชื่อมโยงกับโอกาสอาสาสมัครที่แปลงแล้วหลังการแปลง: %d คน เพิ่มพวกเขาในตำแหน่งของตนก่อนที่โอกาสอาสาสมัครจะถูกยกเลิกในต้นปี 2027"
+
+#: 
+msgid "Preview the conversion first, and send the revision it returned."
+msgstr "ดูตัวอย่างการแปลงก่อน แล้วส่งรุ่นแก้ไขที่ได้รับกลับมา"
+
+#: 
+msgid "Renamed to keep names unique"
+msgstr "เปลี่ยนชื่อเพื่อไม่ให้ชื่อซ้ำกัน"
+
+#: 
+msgid "Review the conversion"
+msgstr "ตรวจสอบการแปลง"
+
+#: 
+msgid "Send the conversion choice as a JSON object."
+msgstr "ส่งตัวเลือกการแปลงเป็นออบเจ็กต์ JSON"
+
+#: 
+msgid "Send the opportunities that become ministries as a list of ids."
+msgstr "ส่งโอกาสที่จะกลายเป็นพันธกิจเป็นรายการ ID"
+
+#: 
+msgid "That ministry does not exist."
+msgstr "ไม่มีพันธกิจนั้น"
+
+#: 
+msgid "The ChurchCRM version on which an administrator dismissed the Volunteer Opportunities retirement notice."
+msgstr "เวอร์ชัน ChurchCRM ที่ผู้ดูแลระบบปิดประกาศการยกเลิกโอกาสอาสาสมัคร"
+
+#: 
+msgid "The Volunteer Opportunities changed since the preview. Check the preview again, then convert."
+msgstr "โอกาสอาสาสมัครมีการเปลี่ยนแปลงตั้งแต่ดูตัวอย่าง ตรวจสอบตัวอย่างอีกครั้ง แล้วจึงแปลง"
+
+#: 
+msgid "The confirmation could not open. Reload the page and try again."
+msgstr "ไม่สามารถเปิดการยืนยันได้ โหลดหน้าใหม่แล้วลองอีกครั้ง"
+
+#: 
+msgid "The conversion could not be previewed."
+msgstr "ไม่สามารถดูตัวอย่างการแปลงได้"
+
+#: 
+msgid "The conversion failed. Nothing was changed."
+msgstr "การแปลงล้มเหลว ไม่มีการเปลี่ยนแปลงใดๆ"
+
+#: 
+msgid "The ministry \"%s\" has no team to hold the positions."
+msgstr "พันธกิจ \"%s\" ไม่มีทีมสำหรับตำแหน่งเหล่านี้"
+
+#: 
+msgid "The server could not be reached. Reload the page to see whether the conversion ran."
+msgstr "ไม่สามารถติดต่อเซิร์ฟเวอร์ได้ โหลดหน้าใหม่เพื่อดูว่าการแปลงทำงานแล้วหรือไม่"
+
+#: 
+msgid "There are no Volunteer Opportunities to convert."
+msgstr "ไม่มีโอกาสอาสาสมัครให้แปลง"
+
+#: 
+msgid "Volunteer Management switches to Both, so the new ministries are visible next to Volunteer Opportunities."
+msgstr "การจัดการอาสาสมัครจะสลับเป็นทั้งสอง เพื่อให้พันธกิจใหม่แสดงข้างโอกาสอาสาสมัคร"
+
+#: 
+msgid "Volunteer Opportunities are being retired"
+msgstr "โอกาสอาสาสมัครกำลังจะถูกยกเลิก"
+
+#: 
+msgid "Volunteer Opportunities converted"
+msgstr "แปลงโอกาสอาสาสมัครแล้ว"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert them to Ministries to keep who volunteers for what."
+msgstr "โอกาสอาสาสมัครจะถูกยกเลิกในต้นปี 2027 แปลงเป็นพันธกิจเพื่อเก็บข้อมูลว่าใครรับใช้ในส่วนใด"
+
+#: 
+msgid "Volunteer Opportunities will be retired in early 2027. Convert your %1$d opportunities and %2$d volunteers to Ministries now. You can preview the result before anything changes."
+msgstr "โอกาสอาสาสมัครจะถูกยกเลิกในต้นปี 2027 แปลงโอกาส %1$d รายการและอาสาสมัคร %2$d คนของคุณเป็นพันธกิจตอนนี้ คุณดูตัวอย่างผลลัพธ์ได้ก่อนที่จะมีการเปลี่ยนแปลง"
+
+#: 
+msgid "Volunteers qualified"
+msgstr "อาสาสมัครที่ได้รับสิทธิ์"
+
+#: 
+msgid "Volunteers to add to converted positions"
+msgstr "อาสาสมัครที่ต้องเพิ่มในตำแหน่งที่แปลงแล้ว"
+
+#: 
+msgid "What it becomes"
+msgstr "จะกลายเป็นอะไร"
+
+#: 
+msgid "What will happen"
+msgstr "จะเกิดอะไรขึ้น"
+
+#: 
+msgid "Where they go"
+msgstr "จะไปที่ใด"
+
+#: 
+msgid "Which legacy Volunteer Opportunities have been converted, and the position each became."
+msgstr "โอกาสอาสาสมัครเดิมรายการใดที่แปลงแล้ว และแต่ละรายการกลายเป็นตำแหน่งใด"
+
+#: 
+msgid "Which volunteer experience this church uses. Volunteer Opportunities (V1) will be retired in early 2027."
+msgstr "รูปแบบอาสาสมัครที่คริสตจักรนี้ใช้ โอกาสอาสาสมัคร (V1) จะถูกยกเลิกในต้นปี 2027"
+
+#: 
+msgid "Your Volunteer Opportunities are converted to Ministries. Switch Volunteer Management to V2 before Volunteer Opportunities are retired in early 2027."
+msgstr "โอกาสอาสาสมัครของคุณถูกแปลงเป็นพันธกิจแล้ว สลับการจัดการอาสาสมัครเป็น V2 ก่อนที่โอกาสอาสาสมัครจะถูกยกเลิกในต้นปี 2027"
+
+#: 
+msgid "into a new ministry, {{name}}"
+msgstr "เป็นพันธกิจใหม่ {{name}}"
+
+#: 
+msgid "into the ministry {{name}}"
+msgstr "เข้าพันธกิจ {{name}}"
+
+#: 
+msgid "no longer in ChurchCRM"
+msgstr "ไม่อยู่ใน ChurchCRM แล้ว"
+
+#: 
+msgid "Collapse sidebar"
+msgstr "ยุบแถบด้านข้าง"
+
+#: 
+msgid "Expand sidebar"
+msgstr "ขยายแถบด้านข้าง"
+
+#: 
+msgid "Enter a valid email address using only ASCII characters before @."
+msgstr "กรอกที่อยู่อีเมลที่ถูกต้องซึ่งใช้เฉพาะอักขระ ASCII ก่อน @"
+
+#: 
+msgid "Their email address is not valid"
+msgstr "ที่อยู่อีเมลของบุคคลนี้ไม่ถูกต้อง"
+
+#: 
+msgid "Are you sure you want to delete {{name}}?"
+msgstr "แน่ใจหรือไม่ว่าต้องการลบ {{name}}"
+
+#: 
+msgid "Could not gather system info. Please try again."
+msgstr "ไม่สามารถรวบรวมข้อมูลระบบได้ โปรดลองอีกครั้ง"
+
+#: 
+msgid "No payments found for this period."
+msgstr "ไม่พบการชำระเงินในช่วงเวลานี้"
+
+#: 
+msgid "Payments by Fund"
+msgstr "การชำระเงินตามกองทุน"
+
+#: 
+msgid "Unknown Fund"
+msgstr "กองทุนที่ไม่รู้จัก"
+
+#: 
+msgid "Ask your host to move the database to a supported version, then try again."
+msgstr "โปรดขอให้ผู้ให้บริการโฮสติ้งย้ายฐานข้อมูลไปยังเวอร์ชันที่รองรับ แล้วลองอีกครั้ง"
+
+#: 
+msgid "Ask your host to move the database to a supported version."
+msgstr "โปรดขอให้ผู้ให้บริการโฮสติ้งย้ายฐานข้อมูลไปยังเวอร์ชันที่รองรับ"
+
+#. plugin:holidays:section:3:content
+#: 
+msgid "Holiday names follow each user's language setting. When a holiday has no name in that language, it is shown in English."
+msgstr "ชื่อวันหยุดจะแสดงตามการตั้งค่าภาษาของผู้ใช้แต่ละคน หากวันหยุดใดไม่มีชื่อในภาษานั้น จะแสดงเป็นภาษาอังกฤษ"
+
+#. plugin:holidays:section:3:title
+#: 
+msgid "Holiday names in your language"
+msgstr "ชื่อวันหยุดในภาษาของคุณ"
+
+#: 
+msgid "Require a check number when recording check payments on deposit entries. When off, a check can be saved with a blank or 0 check number, and those are not checked for duplicates."
+msgstr "กำหนดให้ต้องระบุหมายเลขเช็คเมื่อบันทึกการชำระด้วยเช็คในรายการฝาก หากปิดไว้ เช็คสามารถบันทึกโดยเว้นหมายเลขเช็คว่างหรือเป็น 0 ได้ และเช็คเหล่านั้นจะไม่ถูกตรวจสอบรายการซ้ำ"
+
+#: 
+msgid "Require check number on check payments"
+msgstr "ต้องระบุหมายเลขเช็คสำหรับการชำระด้วยเช็ค"
+
+#: 
+msgid "The upgrade was not started, so nothing changed."
+msgstr "ยังไม่ได้เริ่มการอัปเกรด จึงไม่มีอะไรเปลี่ยนแปลง"
+
+#: 
+msgid "This upgrade cannot run on your database."
+msgstr "ไม่สามารถเรียกใช้การอัปเกรดนี้กับฐานข้อมูลของคุณได้"
+
+#: 
+msgid "Your database server (%1$s %2$s) is older than ChurchCRM supports (MySQL %3$s or MariaDB %4$s and later)."
+msgstr "เซิร์ฟเวอร์ฐานข้อมูลของคุณ (%1$s %2$s) เก่ากว่าที่ ChurchCRM รองรับ (MySQL %3$s หรือ MariaDB %4$s ขึ้นไป)"
+
+#: 
+msgid "Approve this self-registered family before sending it a verification email"
+msgstr "อนุมัติครอบครัวที่ลงทะเบียนด้วยตนเองนี้ก่อนส่งอีเมลยืนยัน"
+
+#: 
+msgid "Compare family pledge totals for two fiscal years."
+msgstr "เปรียบเทียบยอดรวมคำปฏิญาณถวายของครอบครัวในสองปีงบประมาณ"
+
+#: 
+msgid "Email Portal Link"
+msgstr "ส่งลิงก์พอร์ทัลทางอีเมล"
+
+#: 
+msgid "Email the family a link to the member portal, where they can review and update their information, or record that you verified it in person."
+msgstr "ส่งอีเมลลิงก์ไปยังพอร์ทัลสมาชิกให้ครอบครัว ซึ่งพวกเขาสามารถตรวจสอบและอัปเดตข้อมูลได้ หรือบันทึกว่าคุณได้ยืนยันข้อมูลด้วยตนเองแล้ว"
+
+#: 
+msgid "Family is inactive"
+msgstr "ครอบครัวไม่ใช้งาน"
+
+#: 
+msgid "First Fiscal Year"
+msgstr "ปีงบประมาณแรก"
+
+#: 
+msgid "Fiscal Years"
+msgstr "ปีงบประมาณ"
+
+#: 
+msgid "Giving Statement — Sample Only"
+msgstr "ใบแจ้งการถวาย — ตัวอย่างเท่านั้น"
+
+#: 
+msgid "Last invited"
+msgstr "เชิญล่าสุด"
+
+#: 
+msgid "Last portal sign-in"
+msgstr "ลงชื่อเข้าใช้พอร์ทัลล่าสุด"
+
+#: 
+msgid "Last verified"
+msgstr "ยืนยันล่าสุด"
+
+#: 
+msgid "No active, approved member of this family has an email address. Verify it in person instead."
+msgstr "ไม่มีสมาชิกที่ใช้งานอยู่และได้รับอนุมัติของครอบครัวนี้คนใดมีที่อยู่อีเมล โปรดยืนยันข้อมูลด้วยตนเองแทน"
+
+#: 
+msgid "No pledges were found for these fiscal years."
+msgstr "ไม่พบคำปฏิญาณถวายสำหรับปีงบประมาณเหล่านี้"
+
+#: 
+msgid "Pledge Comparison"
+msgstr "การเปรียบเทียบคำปฏิญาณถวาย"
+
+#: 
+msgid "Preview PDF"
+msgstr "ดูตัวอย่าง PDF"
+
+#: 
+msgid "Second Fiscal Year"
+msgstr "ปีงบประมาณที่สอง"
+
+#: 
+msgid "Sign in to the member portal with this email address to review your family information. Confirm that everything is correct, or update your details, from the My Family page."
+msgstr "ลงชื่อเข้าใช้พอร์ทัลสมาชิกด้วยที่อยู่อีเมลนี้เพื่อตรวจสอบข้อมูลครอบครัวของคุณ ในหน้าครอบครัวของฉัน ให้ยืนยันว่าทุกอย่างถูกต้อง หรืออัปเดตรายละเอียดของคุณ"
+
+#: 
+msgid "This family is inactive, so it is not sent verification emails."
+msgstr "ครอบครัวนี้ไม่ใช้งาน จึงไม่มีการส่งอีเมลยืนยันไปให้"
+
+#: 
+msgid "This self-registered family is waiting for approval. Approving it emails the family an invitation to sign in to the member portal and review its information."
+msgstr "ครอบครัวที่ลงทะเบียนด้วยตนเองนี้กำลังรอการอนุมัติ เมื่ออนุมัติแล้ว ครอบครัวจะได้รับอีเมลเชิญให้ลงชื่อเข้าใช้พอร์ทัลสมาชิกและตรวจสอบข้อมูลของตน"
+
+#: 
+msgid "Uses saved settings and fictional sample gifts only."
+msgstr "ใช้เฉพาะการตั้งค่าที่บันทึกไว้และรายการถวายตัวอย่างที่สมมติขึ้นเท่านั้น"
+
+#: 
+msgid "Verification"
+msgstr "การยืนยัน"
+
+#: 
+msgid "Verification email sent to %d family."
+msgid_plural "Verification emails sent to %d families."
+msgstr[0] "ส่งอีเมลยืนยันไปยัง %d ครอบครัวแล้ว"
+
+#: 
+msgid "Verification email sent to family members."
+msgstr "ส่งอีเมลยืนยันไปยังสมาชิกครอบครัวแล้ว"
+
+#: 
+msgid "by the family in the portal"
+msgstr "โดยครอบครัวผ่านพอร์ทัล"
+
+#: 
+msgid "in person by staff"
+msgstr "ด้วยตนเองโดยเจ้าหน้าที่"
+
+#: 
+msgid "%d default skipped for another reason (the occurrence is over, canceled or full)"
+msgid_plural "%d defaults skipped for another reason (the occurrence is over, canceled or full)"
+msgstr[0] "%d ค่าเริ่มต้นถูกข้ามไปด้วยเหตุผลอื่น (การเกิดขึ้นหมดสิ้น ถูกยกเลิก หรือเต็ม)"
+
+#: 
+msgid "A transition setting. The legacy Volunteer Opportunities pages and the new Ministries pages are both available, and a person record shows both Volunteer tabs, clearly labeled. Use it while you move a church from V1 to V2, then switch to V2 only."
+msgstr "การตั้งค่าช่วงเปลี่ยนผ่าน หน้าโอกาสรับใช้แบบเดิมและหน้าพันธกิจแบบใหม่ใช้งานได้ทั้งคู่ และระเบียนบุคคลจะแสดงแท็บอาสาสมัครทั้งสองพร้อมป้ายกำกับชัดเจน ใช้ระหว่างย้ายคริสตจักรจาก V1 ไป V2 แล้วเปลี่ยนเป็น V2 อย่างเดียว"
+
+#: 
+msgid "Assignment canceled"
+msgstr "ยกเลิกการมอบหมายแล้ว"
+
+#: 
+msgid "Canceled"
+msgstr "ยกเลิกแล้ว"
+
+#: 
+msgid "Canceling tells nobody: no email is sent. Assignments are kept, no reminders are scheduled while it is canceled, and nobody can be assigned until it is restored."
+msgstr "การยกเลิกไม่แจ้งให้ผู้ใดทราบ: ไม่มีการส่งอีเมล งานที่มอบหมายจะถูกเก็บไว้ ไม่มีการกำหนดเวลาการแจ้งเตือนขณะยกเลิก และไม่มีใครสามารถมอบหมายได้จนกว่าจะคืนสถานะ"
+
+#: 
+msgid "Color"
+msgstr "สี"
+
+#: 
+msgid "Emailed sign-in code and link canceled"
+msgstr "ยกเลิกรหัสและลิงก์ลงชื่อเข้าใช้ที่ส่งทางอีเมลแล้ว"
+
+#: 
+msgid "Family roles (Head of Household, Spouse, Child, etc.) help organize your records."
+msgstr "บทบาทในครอบครัว (หัวหน้าครัวเรือน คู่สมรส บุตร ฯลฯ) ช่วยจัดระเบียบข้อมูลของคุณ"
+
+#: 
+msgid "Occurrence canceled"
+msgstr "ยกเลิกการเกิดขึ้น"
+
+#: 
+msgid "Prioritize translations"
+msgstr "ให้ความสำคัญกับการแปล"
+
+#: 
+msgid "The assignment could not be canceled"
+msgstr "ไม่สามารถยกเลิกการมอบหมายได้"
+
+#: 
+msgid "The occurrence could not be canceled"
+msgstr "ไม่สามารถยกเลิกการเกิดขึ้นได้"
+
+#: 
+msgid "This date was canceled. Nothing more is needed from you."
+msgstr "วันที่ยกเลิกแล้ว คุณไม่ต้องทำอะไรเพิ่มครับ"
+
+#: 
+msgid "This occurrence has been canceled"
+msgstr "รอบนี้ถูกยกเลิกแล้ว"
+
+#: 
+msgid "Volunteering organized the way a church runs it. Each ministry has teams and positions; people are qualified for positions and belong to the ministry's pool group; schedules follow the events on the calendar and produce dated occurrences with staffing requirements; coordinators assign people, who accept, decline or propose a substitute; reminders and alerts go out by email. Administrators and users with the Manage Ministries permission see every ministry and may create, deactivate and delete them. A ministry coordinator is given the Manage My Ministries permission instead: the Ministries heading in the sidebar then shows only the ministries they coordinate. A team leader runs their team from the Member Portal. Members use the Member Portal to see their schedule, respond, sign up and offer help."
+msgstr "การอาสาที่จัดตามแบบที่คริสตจักรทำงาน แต่ละพันธกิจมีทีมและตำแหน่ง บุคคลมีคุณสมบัติสำหรับตำแหน่งและอยู่ในกลุ่มอาสาสมัครของพันธกิจ ตารางเวลาติดตามกิจกรรมในปฏิทินและสร้างรอบที่มีวันที่พร้อมความต้องการกำลังคน ผู้ประสานงานมอบหมายบุคคล ซึ่งตอบรับ ปฏิเสธ หรือเสนอผู้แทน การเตือนและการแจ้งเตือนส่งทางอีเมล ผู้ดูแลระบบและผู้ใช้ที่มีสิทธิ์จัดการพันธกิจเห็นทุกพันธกิจและสร้าง ปิดใช้งาน และลบได้ ผู้ประสานงานพันธกิจจะได้รับสิทธิ์จัดการพันธกิจของฉันแทน หัวข้อพันธกิจในแถบด้านข้างจึงแสดงเฉพาะพันธกิจที่เขาประสานงาน หัวหน้าทีมดูแลทีมของตนจากพอร์ทัลสมาชิก สมาชิกใช้พอร์ทัลสมาชิกเพื่อดูตารางของตน ตอบกลับ สมัคร และเสนอความช่วยเหลือ"
+
+#: 
+msgid "Count active installations and upgrade outcomes"
+msgstr "นับการติดตั้งที่ใช้งานอยู่และผลการอัปเกรด"
+
+#: 
+msgid "Database engine and major/minor version"
+msgstr "เอนจินฐานข้อมูลและเวอร์ชันหลัก/รอง"
+
+#: 
+msgid "Errors — install statistics, warnings, errors, and JS exceptions"
+msgstr "ข้อผิดพลาด — สถิติการติดตั้ง คำเตือน ข้อผิดพลาด และข้อยกเว้น JS"
+
+#: 
+msgid "Help us find and fix problems?"
+msgstr "ช่วยเราค้นหาและแก้ไขปัญหาไหม"
+
+#: 
+msgid "Install shares minimal installation and upgrade statistics. Errors adds warnings and error reports. Full adds page views. None sends only failed installs and upgrades."
+msgstr "การติดตั้ง แชร์สถิติการติดตั้งและอัปเกรดขั้นต่ำ ข้อผิดพลาด เพิ่มคำเตือนและรายงานข้อผิดพลาด เต็มรูปแบบ เพิ่มการดูหน้าเพจ ไม่มี ส่งเฉพาะการติดตั้งและอัปเกรดที่ล้มเหลว"
+
+#: 
+msgid "Install — installation and upgrade statistics (default)"
+msgstr "การติดตั้ง — สถิติการติดตั้งและอัปเกรด (ค่าเริ่มต้น)"
+
+#: 
+msgid "Installation and upgrade results, previous version on upgrades, and a daily check-in while in use"
+msgstr "ผลการติดตั้งและอัปเกรด เวอร์ชันก่อนหน้าเมื่ออัปเกรด และการแจ้งสถานะวันละครั้งขณะใช้งาน"
+
+#: 
+msgid "Installation profile"
+msgstr "โปรไฟล์การติดตั้ง"
+
+#: 
+msgid "Locale (Errors and Full)"
+msgstr "ภาษาและภูมิภาค (ข้อผิดพลาดและเต็มรูปแบบ)"
+
+#: 
+msgid "Never shared: member, giving, or other church records, your church name, your web address or server name, or email addresses. Your country is the one in your church settings, not looked up from your network."
+msgstr "ไม่มีการแชร์: ข้อมูลสมาชิก การถวาย หรือบันทึกอื่นของคริสตจักร ชื่อคริสตจักร ที่อยู่เว็บหรือชื่อเซิร์ฟเวอร์ของคุณ หรือที่อยู่อีเมล ประเทศของคุณคือประเทศในการตั้งค่าคริสตจักร ไม่ได้ค้นหาจากเครือข่ายของคุณ"
+
+#: 
+msgid "OS family (Errors and Full)"
+msgstr "ตระกูลระบบปฏิบัติการ (ข้อผิดพลาดและเต็มรูปแบบ)"
+
+#: 
+msgid "PHP version (Errors and Full)"
+msgstr "เวอร์ชัน PHP (ข้อผิดพลาดและเต็มรูปแบบ)"
+
+#: 
+msgid "See exactly what is shared, or change your choice, in Admin → Telemetry."
+msgstr "ดูว่ามีการแชร์อะไรบ้าง หรือเปลี่ยนตัวเลือกของคุณ ได้ที่ ผู้ดูแลระบบ → การรวบรวมข้อมูล"
+
+#: 
+msgid "Separate production, demo, and test installs"
+msgstr "แยกการติดตั้งสำหรับใช้งานจริง สาธิต และทดสอบ"
+
+#: 
+msgid "Share anonymous install statistics?"
+msgstr "แชร์สถิติการติดตั้งแบบไม่ระบุตัวตนไหม"
+
+#: 
+msgid "Share error and usage reports"
+msgstr "แชร์รายงานข้อผิดพลาดและการใช้งาน"
+
+#: 
+msgid "Share install statistics"
+msgstr "แชร์สถิติการติดตั้ง"
+
+#: 
+msgid "Shared in addition: warnings, error details, and which pages are opened."
+msgstr "แชร์เพิ่มเติม: คำเตือน รายละเอียดข้อผิดพลาด และหน้าที่ถูกเปิด"
+
+#: 
+msgid "Shared: that ChurchCRM was installed or upgraded and whether it worked, a once-a-day check-in while it is in use, the version number, your country, and the type of database. A random installation ID counts each install once."
+msgstr "สิ่งที่แชร์: การที่ ChurchCRM ถูกติดตั้งหรืออัปเกรดและสำเร็จหรือไม่ การแจ้งสถานะวันละครั้งขณะใช้งาน หมายเลขเวอร์ชัน ประเทศของคุณ และประเภทฐานข้อมูล รหัสการติดตั้งแบบสุ่มช่วยนับแต่ละการติดตั้งเพียงครั้งเดียว"
+
+#: 
+msgid "Understand database compatibility"
+msgstr "ทำความเข้าใจความเข้ากันได้ของฐานข้อมูล"
+
+#: 
+msgid "Your choice is asked once. You can change it at any time. With No thanks, only a failed install or upgrade is reported."
+msgstr "ระบบจะถามตัวเลือกนี้เพียงครั้งเดียว คุณเปลี่ยนได้ทุกเมื่อ หากเลือก ไม่ขอบคุณ จะรายงานเฉพาะการติดตั้งหรืออัปเกรดที่ล้มเหลว"
+
+#: 
+msgid "Your data is yours. Install shares only installation and upgrade results, installation ID, software version, installation profile, configured country, and database engine and major/minor version. Errors adds warnings and error details. Full adds page views. None sends only failed installs and upgrades. No level sends your web address or server name. Test installations send nothing. Telemetry is sent to PostHog in the United States."
+msgstr "ข้อมูลของคุณเป็นของคุณ การติดตั้ง แชร์เฉพาะผลการติดตั้งและอัปเกรด รหัสการติดตั้ง เวอร์ชันซอฟต์แวร์ โปรไฟล์การติดตั้ง ประเทศที่ตั้งค่าไว้ และเอนจินฐานข้อมูลพร้อมเวอร์ชันหลัก/รอง ข้อผิดพลาด เพิ่มคำเตือนและรายละเอียดข้อผิดพลาด เต็มรูปแบบ เพิ่มการดูหน้าเพจ ไม่มี ส่งเฉพาะการติดตั้งและอัปเกรดที่ล้มเหลว ไม่มีระดับใดส่งที่อยู่เว็บหรือชื่อเซิร์ฟเวอร์ของคุณ การติดตั้งเพื่อทดสอบจะไม่ส่งอะไรเลย ข้อมูลจะถูกส่งไปยัง PostHog ในสหรัฐอเมริกา"
+
+#: 
+msgid "Your data is yours. This reports on the software, never on your church or its people."
+msgstr "ข้อมูลของคุณเป็นของคุณ รายงานนี้เกี่ยวกับซอฟต์แวร์ ไม่เคยเกี่ยวกับคริสตจักรของคุณหรือผู้คนในคริสตจักร"
+
+#: 
+msgid "Your data is yours. To count installs, ChurchCRM reports that it was installed or upgraded and whether that worked, a once-a-day check-in while it is in use, plus the version number, your country, the type of database, and a random installation ID. It never reports member, giving, or other church records, your church name, your web address or server name, or email addresses. You can turn this off at any time in Admin → Telemetry; a failed install or upgrade is still reported. Warnings, error details, and page views are only shared if you choose."
+msgstr "ข้อมูลของคุณเป็นของคุณ เพื่อนับจำนวนการติดตั้ง ChurchCRM จะรายงานว่าถูกติดตั้งหรืออัปเกรดและสำเร็จหรือไม่ การแจ้งสถานะวันละครั้งขณะใช้งาน รวมถึงหมายเลขเวอร์ชัน ประเทศของคุณ ประเภทฐานข้อมูล และรหัสการติดตั้งแบบสุ่ม โดยจะไม่รายงานข้อมูลสมาชิก การถวาย หรือบันทึกอื่นของคริสตจักร ชื่อคริสตจักร ที่อยู่เว็บหรือชื่อเซิร์ฟเวอร์ของคุณ หรือที่อยู่อีเมล คุณปิดได้ทุกเมื่อที่ ผู้ดูแลระบบ → การรวบรวมข้อมูล โดยการติดตั้งหรืออัปเกรดที่ล้มเหลวจะยังคงถูกรายงาน คำเตือน รายละเอียดข้อผิดพลาด และการดูหน้าเพจจะถูกแชร์เฉพาะเมื่อคุณเลือกเท่านั้น"
+
+#: 
+msgid "%1$s: %2$d deposit is still open. Close it so every gift is final before statements go out."
+msgid_plural "%1$s: %2$d deposits are still open. Close them so every gift is final before statements go out."
+msgstr[0] "%1$s: ยังมีรายการนำฝาก %2$d รายการที่เปิดอยู่ โปรดปิดเพื่อให้ทุกเงินถวายเป็นข้อมูลสุดท้ายก่อนส่งใบสรุป"
+
+#: 
+msgid "%d envelope number saved."
+msgid_plural "%d envelope numbers saved."
+msgstr[0] "บันทึกหมายเลขซอง %d รายการแล้ว"
+
+#: 
+msgid "%d family"
+msgid_plural "%d families"
+msgstr[0] "%d ครอบครัว"
+
+#: 
+msgid "%s: every deposit is closed. Statements are ready to prepare."
+msgstr "%s: รายการนำฝากทั้งหมดปิดแล้ว ใบสรุปพร้อมให้จัดเตรียม"
+
+#: 
+msgid "12 months"
+msgstr "12 เดือน"
+
+#: 
+msgid "30 days"
+msgstr "30 วัน"
+
+#: 
+msgid "90 days"
+msgstr "90 วัน"
+
+#: 
+msgid "Add Property"
+msgstr "เพิ่มคุณสมบัติ"
+
+#: 
+msgid "Add a few more characters or a symbol."
+msgstr "เพิ่มอักขระอีกเล็กน้อยหรือเพิ่มสัญลักษณ์"
+
+#: 
+msgid "Add and edit events"
+msgstr "เพิ่มและแก้ไขกิจกรรม"
+
+#: 
+msgid "Add more characters or mix in numbers and symbols."
+msgstr "เพิ่มอักขระให้มากขึ้นหรือผสมตัวเลขและสัญลักษณ์"
+
+#: 
+msgid "Add more characters, and mix upper and lower case, numbers, and symbols."
+msgstr "เพิ่มอักขระให้มากขึ้น และผสมตัวพิมพ์ใหญ่ ตัวพิมพ์เล็ก ตัวเลข และสัญลักษณ์"
+
+#: 
+msgid "Add people and families"
+msgstr "เพิ่มบุคคลและครอบครัว"
+
+#: 
+msgid "Administrators have every permission while its feature is turned on."
+msgstr "ผู้ดูแลระบบมีสิทธิ์ทั้งหมดตราบเท่าที่เปิดใช้ฟีเจอร์นี้อยู่"
+
+#: 
+msgid "Also disable sign-in, so they can't use the Member Portal"
+msgstr "ปิดใช้งานการลงชื่อเข้าใช้ด้วย เพื่อให้ไม่สามารถใช้พอร์ทัลสมาชิกได้"
+
+#: 
+msgid "Before You Send Statements"
+msgstr "ก่อนส่งใบสรุป"
+
+#: 
+msgid "Birthday today"
+msgstr "วันเกิดวันนี้"
+
+#: 
+msgid "Cannot create the private tax signature file. Check that the storage folder is writable."
+msgstr "ไม่สามารถสร้างไฟล์ลายเซ็นภาษีส่วนตัวได้ โปรดตรวจสอบว่าโฟลเดอร์จัดเก็บเขียนได้"
+
+#: 
+msgid "Cannot create the tax signature storage folder %s. Make sure the web server can write to it, or set a writable folder in the tax signature storage path setting."
+msgstr "ไม่สามารถสร้างโฟลเดอร์จัดเก็บลายเซ็นภาษี %s ได้ โปรดตรวจสอบว่าเว็บเซิร์ฟเวอร์เขียนลงได้ หรือกำหนดโฟลเดอร์ที่เขียนได้ในการตั้งค่าพาธจัดเก็บลายเซ็นภาษี"
+
+#: 
+msgid "Cannot delete a family that has pledges or payments. Deactivate the family instead to preserve financial history. Move the finance records only if appropriate."
+msgstr "ไม่สามารถลบครอบครัวที่มีคำมั่นสัญญาหรือการชำระเงินได้ ให้ปิดใช้งานครอบครัวแทนเพื่อเก็บประวัติการเงินไว้ ย้ายบันทึกการเงินเฉพาะเมื่อเหมาะสม"
+
+#: 
+msgid "Cannot encode the private tax signature."
+msgstr "ไม่สามารถเข้ารหัสลายเซ็นภาษีส่วนตัวได้"
+
+#: 
+msgid "Cannot move field in that direction"
+msgstr "ไม่สามารถย้ายฟิลด์ไปในทิศทางนั้นได้"
+
+#: 
+msgid "Cannot read the private tax signature."
+msgstr "ไม่สามารถอ่านลายเซ็นภาษีส่วนตัวได้"
+
+#: 
+msgid "Cannot remove the private signature."
+msgstr "ไม่สามารถลบลายเซ็นส่วนตัวได้"
+
+#: 
+msgid "Cannot remove the private tax signature file."
+msgstr "ไม่สามารถลบไฟล์ลายเซ็นภาษีส่วนตัวได้"
+
+#: 
+msgid "Cannot resolve the application folder for tax signature storage."
+msgstr "ไม่สามารถระบุโฟลเดอร์แอปพลิเคชันสำหรับจัดเก็บลายเซ็นภาษีได้"
+
+#: 
+msgid "Cannot store the private signature."
+msgstr "ไม่สามารถจัดเก็บลายเซ็นส่วนตัวได้"
+
+#: 
+msgid "Cannot write the access guard %s in the tax signature storage folder."
+msgstr "ไม่สามารถเขียนตัวป้องกันการเข้าถึง %s ลงในโฟลเดอร์จัดเก็บลายเซ็นภาษีได้"
+
+#: 
+msgid "Change role of selected members: {{total}}"
+msgstr "เปลี่ยนบทบาทของสมาชิกที่เลือก: {{total}}"
+
+#: 
+msgid "Church Fiscal Year"
+msgstr "ปีงบประมาณของคริสตจักร"
+
+#: 
+msgid "ChurchCRM System Check"
+msgstr "ตรวจสอบระบบ ChurchCRM"
+
+#: 
+msgid "Custom field not found"
+msgstr "ไม่พบฟิลด์กำหนดเอง"
+
+#: 
+msgid "Deactivate the family instead"
+msgstr "ปิดใช้งานครอบครัวแทน"
+
+#: 
+msgid "Deactivate the family instead of deleting it."
+msgstr "ปิดใช้งานครอบครัวแทนการลบ"
+
+#: 
+msgid "Deactivate the person instead of deleting them."
+msgstr "ปิดใช้งานบุคคลนี้แทนการลบ"
+
+#: 
+msgid "Delete people and families"
+msgstr "ลบบุคคลและครอบครัว"
+
+#: 
+msgid "Delete the login for"
+msgstr "ลบการเข้าสู่ระบบของ"
+
+#: 
+msgid "Deposit chart time range"
+msgstr "ช่วงเวลาของแผนภูมิการนำฝาก"
+
+#: 
+msgid "Disabled at"
+msgstr "ปิดใช้งานเมื่อ"
+
+#: 
+msgid "Disabled by"
+msgstr "ปิดใช้งานโดย"
+
+#: 
+msgid "Download sends every donor in the year. Review and Filter shows the totals first and lets you narrow by family, fund, class or date."
+msgstr "การดาวน์โหลดจะส่งผู้ถวายทุกคนในปีนั้น ตรวจสอบและกรองจะแสดงยอดรวมก่อนและให้คุณจำกัดตามครอบครัว กองทุน ชั้นเรียน หรือวันที่ได้"
+
+#: 
+msgid "Duplicate envelope number"
+msgstr "หมายเลขซองซ้ำ"
+
+#: 
+msgid "Edit people and families"
+msgstr "แก้ไขบุคคลและครอบครัว"
+
+#: 
+msgid "Email people and groups"
+msgstr "ส่งอีเมลถึงบุคคลและกลุ่ม"
+
+#: 
+msgid "Enable the missing PHP extensions in your web server configuration, restart the web server, then reload this page. If you use a hosting provider, ask them to enable the listed extensions."
+msgstr "เปิดใช้งานส่วนขยาย PHP ที่ขาดอยู่ในการกำหนดค่าเว็บเซิร์ฟเวอร์ รีสตาร์ตเว็บเซิร์ฟเวอร์ แล้วโหลดหน้านี้ใหม่ หากคุณใช้ผู้ให้บริการโฮสติ้ง ให้ขอให้เขาเปิดใช้งานส่วนขยายที่ระบุ"
+
+#: 
+msgid "Enter a setup key manually"
+msgstr "ป้อนรหัสตั้งค่าด้วยตนเอง"
+
+#: 
+msgid "Enter a starting number from 0 to %d."
+msgstr "ป้อนหมายเลขเริ่มต้นตั้งแต่ 0 ถึง %d"
+
+#: 
+msgid "Enter fullscreen"
+msgstr "เข้าสู่โหมดเต็มหน้าจอ"
+
+#: 
+msgid "Enter this key in your authenticator or password manager using time-based (TOTP), 6-digit codes and a 30-second interval. Keep this key private."
+msgstr "ป้อนรหัสนี้ลงในแอปยืนยันตัวตนหรือตัวจัดการรหัสผ่านของคุณ โดยใช้รหัส 6 หลักตามเวลา (TOTP) และช่วงเวลา 30 วินาที โปรดเก็บรหัสนี้เป็นความลับ"
+
+#: 
+msgid "Enter your username or email"
+msgstr "ป้อนชื่อผู้ใช้หรืออีเมลของคุณ"
+
+#: 
+msgid "Envelope numbers must be whole numbers from 0 to %d. Nothing was saved."
+msgstr "หมายเลขซองต้องเป็นจำนวนเต็มตั้งแต่ 0 ถึง %d ไม่ได้บันทึกสิ่งใด"
+
+#: 
+msgid "Events are turned off for this church"
+msgstr "กิจกรรมถูกปิดสำหรับคริสตจักรนี้"
+
+#: 
+msgid "Exit fullscreen"
+msgstr "ออกจากโหมดเต็มหน้าจอ"
+
+#: 
+msgid "Failed to delete custom field"
+msgstr "ลบฟิลด์กำหนดเองไม่สำเร็จ"
+
+#: 
+msgid "Failed to move custom field"
+msgstr "ย้ายฟิลด์กำหนดเองไม่สำเร็จ"
+
+#: 
+msgid "Fair"
+msgstr "พอใช้"
+
+#: 
+msgid "Families that pledged for %s and have no pledge for %s."
+msgstr "ครอบครัวที่ให้คำมั่นสำหรับ %s และไม่มีคำมั่นสำหรับ %s"
+
+#: 
+msgid "Families with at least one member in"
+msgstr "ครอบครัวที่มีสมาชิกอย่างน้อยหนึ่งคนใน"
+
+#: 
+msgid "Finance is turned off for this church"
+msgstr "การเงินถูกปิดสำหรับคริสตจักรนี้"
+
+#: 
+msgid "Find families that pledged in one fiscal year and not in another."
+msgstr "ค้นหาครอบครัวที่ให้คำมั่นในปีงบประมาณหนึ่งแต่ไม่ได้ให้ในอีกปีหนึ่ง"
+
+#: 
+msgid "Folder where the private giving-statement signature is stored. Leave blank to use the built-in private folder, Images/TaxSignatures, which blocks direct web access. To use another folder, enter an absolute path outside the ChurchCRM folder that the web server can write to."
+msgstr "โฟลเดอร์ที่จัดเก็บลายเซ็นส่วนตัวของใบสรุปเงินถวาย เว้นว่างไว้เพื่อใช้โฟลเดอร์ส่วนตัวในตัว Images/TaxSignatures ซึ่งบล็อกการเข้าถึงผ่านเว็บโดยตรง หากต้องการใช้โฟลเดอร์อื่น ให้ป้อนพาธสัมบูรณ์ที่อยู่นอกโฟลเดอร์ ChurchCRM และเว็บเซิร์ฟเวอร์เขียนลงได้"
+
+#: 
+msgid "Fundraisers are turned off for this church"
+msgstr "การระดมทุนถูกปิดสำหรับคริสตจักรนี้"
+
+#: 
+msgid "Good"
+msgstr "ดี"
+
+#: 
+msgid "Have an email"
+msgstr "มีอีเมล"
+
+#: 
+msgid "Hide setup key"
+msgstr "ซ่อนรหัสตั้งค่า"
+
+#: 
+msgid "How to respond"
+msgstr "วิธีตอบกลับ"
+
+#: 
+msgid "Ideas waiting for your review"
+msgstr "ไอเดียที่รอการตรวจสอบของคุณ"
+
+#: 
+msgid "Inactive families are left out. Payments do not count as pledges."
+msgstr "ไม่รวมครอบครัวที่ไม่ใช้งาน การชำระเงินไม่นับเป็นคำมั่น"
+
+#: 
+msgid "Invalid request."
+msgstr "คำขอไม่ถูกต้อง"
+
+#: 
+msgid "Invalid signature image data."
+msgstr "ข้อมูลรูปภาพลายเซ็นไม่ถูกต้อง"
+
+#: 
+msgid "Invalid stored tax signature identifier."
+msgstr "ตัวระบุลายเซ็นภาษีที่จัดเก็บไว้ไม่ถูกต้อง"
+
+#: 
+msgid "Invalid tax signature storage."
+msgstr "ที่จัดเก็บลายเซ็นภาษีไม่ถูกต้อง"
+
+#: 
+msgid "Last successful login"
+msgstr "การเข้าสู่ระบบสำเร็จล่าสุด"
+
+#: 
+msgid "Lockout state"
+msgstr "สถานะการล็อก"
+
+#: 
+msgid "Login deleted"
+msgstr "ลบการเข้าสู่ระบบแล้ว"
+
+#: 
+msgid "Mail only"
+msgstr "ทางไปรษณีย์เท่านั้น"
+
+#: 
+msgid "Manage all ministries"
+msgstr "จัดการงานรับใช้ทั้งหมด"
+
+#: 
+msgid "Members moved to {{role}}: {{total}}"
+msgstr "ย้ายสมาชิกไปที่ {{role}} แล้ว: {{total}}"
+
+#: 
+msgid "Members not changed because they left the group or a ministry manages their role: {{total}}"
+msgstr "สมาชิกที่ไม่เปลี่ยนแปลงเพราะออกจากกลุ่มแล้วหรืองานรับใช้เป็นผู้จัดการบทบาทของเขา: {{total}}"
+
+#: 
+msgid "Ministry coordinator"
+msgstr "ผู้ประสานงานงานรับใช้"
+
+#: 
+msgid "Minutes until automatic unlock"
+msgstr "นาทีจนกว่าจะปลดล็อกอัตโนมัติ"
+
+#: 
+msgid "Missing Pledges"
+msgstr "คำมั่นที่ขาดหาย"
+
+#: 
+msgid "No GitHub account? Tell us on Discord"
+msgstr "ไม่มีบัญชี GitHub? บอกเราที่ Discord"
+
+#: 
+msgid "No active family pledged for %s without a pledge for %s."
+msgstr "ไม่มีครอบครัวที่ใช้งานอยู่ที่ให้คำมั่นสำหรับ %s โดยไม่มีคำมั่นสำหรับ %s"
+
+#: 
+msgid "No families found."
+msgstr "ไม่พบครอบครัว"
+
+#: 
+msgid "No ministry assigned"
+msgstr "ไม่มีงานรับใช้ที่มอบหมาย"
+
+#: 
+msgid "No open deposit"
+msgstr "ไม่มีรายการนำฝากที่เปิดอยู่"
+
+#: 
+msgid "No pledge for"
+msgstr "ไม่มีคำมั่นสำหรับ"
+
+#: 
+msgid "Not granted to this account"
+msgstr "ไม่ได้ให้สิทธิ์แก่บัญชีนี้"
+
+#: 
+msgid "Not leading a volunteer team"
+msgstr "ไม่ได้นำทีมอาสาสมัคร"
+
+#: 
+msgid "Not locked"
+msgstr "ไม่ถูกล็อก"
+
+#: 
+msgid "Number of Payments"
+msgstr "จำนวนการชำระเงิน"
+
+#: 
+msgid "One minute. We do not share what you send."
+msgstr "หนึ่งนาที เราไม่แบ่งปันสิ่งที่คุณส่ง"
+
+#: 
+msgid "Open an idea. Vote with 👍 if your church needs it, and add a short comment about how you work today."
+msgstr "เปิดไอเดีย โหวตด้วย 👍 หากคริสตจักรของคุณต้องการ และเพิ่มความเห็นสั้น ๆ ว่าตอนนี้คุณทำงานอย่างไร"
+
+#: 
+msgid "Open deposit"
+msgstr "รายการนำฝากที่เปิดอยู่"
+
+#: 
+msgid "Password change required at next login"
+msgstr "ต้องเปลี่ยนรหัสผ่านเมื่อเข้าสู่ระบบครั้งถัดไป"
+
+#: 
+msgid "Password strength"
+msgstr "ความแข็งแรงของรหัสผ่าน"
+
+#: 
+msgid "People & Families"
+msgstr "บุคคลและครอบครัว"
+
+#: 
+msgid "Pledged for"
+msgstr "ให้คำมั่นสำหรับ"
+
+#: 
+msgid "Prepare Giving Statements"
+msgstr "จัดเตรียมใบสรุปเงินถวาย"
+
+#: 
+msgid "Preview Sample Letter"
+msgstr "ดูตัวอย่างจดหมาย"
+
+#: 
+msgid "Private Canadian giving-statement signature asset identifier. Managed by signature upload."
+msgstr "ตัวระบุแอสเซ็ตลายเซ็นส่วนตัวของใบสรุปเงินถวายแคนาดา จัดการโดยการอัปโหลดลายเซ็น"
+
+#: 
+msgid "Property Type"
+msgstr "ประเภทคุณสมบัติ"
+
+#: 
+msgid "Provide only PNG or JPEG signature image data."
+msgstr "ระบุเฉพาะข้อมูลรูปภาพลายเซ็นแบบ PNG หรือ JPEG"
+
+#: 
+msgid "Recorded history: %s."
+msgstr "ประวัติที่บันทึกไว้: %s"
+
+#: 
+msgid "Report Issue"
+msgstr "รายงานปัญหา"
+
+#: 
+msgid "Requirement"
+msgstr "ข้อกำหนด"
+
+#: 
+msgid "Return Home"
+msgstr "กลับหน้าแรก"
+
+#: 
+msgid "Review a fiscal year, then download giving statements."
+msgstr "ตรวจสอบปีงบประมาณหนึ่งปี แล้วดาวน์โหลดใบสรุปเงินถวาย"
+
+#: 
+msgid "Review and Close Deposit"
+msgstr "ตรวจสอบและปิดรายการนำฝาก"
+
+#: 
+msgid "Review and Filter"
+msgstr "ตรวจสอบและกรอง"
+
+#: 
+msgid "Review and vote"
+msgstr "ตรวจสอบและโหวต"
+
+#: 
+msgid "Review the year, then download giving statements."
+msgstr "ตรวจสอบปีนั้น แล้วดาวน์โหลดใบสรุปเงินถวาย"
+
+#: 
+msgid "Review what we are considering"
+msgstr "ดูสิ่งที่เรากำลังพิจารณา"
+
+#: 
+msgid "Roles & permissions"
+msgstr "บทบาทและสิทธิ์"
+
+#: 
+msgid "Select at least one member."
+msgstr "เลือกสมาชิกอย่างน้อยหนึ่งคน"
+
+#: 
+msgid "Setup key"
+msgstr "รหัสตั้งค่า"
+
+#: 
+msgid "Sign-in status"
+msgstr "สถานะการลงชื่อเข้าใช้"
+
+#: 
+msgid "Signature storage folder"
+msgstr "โฟลเดอร์จัดเก็บลายเซ็น"
+
+#: 
+msgid "Signature updated but the previous private signature file could not be removed."
+msgstr "อัปเดตลายเซ็นแล้ว แต่ไม่สามารถลบไฟล์ลายเซ็นส่วนตัวก่อนหน้าได้"
+
+#: 
+msgid "Some PHP requirements are missing. ChurchCRM needs these before it can continue."
+msgstr "ขาดข้อกำหนด PHP บางอย่าง ChurchCRM ต้องการสิ่งเหล่านี้ก่อนจึงจะดำเนินการต่อได้"
+
+#: 
+msgid "Start a deposit, then add each payment to it."
+msgstr "เริ่มรายการนำฝาก แล้วเพิ่มการชำระเงินแต่ละรายการลงไป"
+
+#: 
+msgid "Starting envelope number"
+msgstr "หมายเลขซองเริ่มต้น"
+
+#: 
+msgid "Strong"
+msgstr "แข็งแรง"
+
+#: 
+msgid "Support"
+msgstr "การสนับสนุน"
+
+#: 
+msgid "Tax ID and PDF Settings"
+msgstr "การตั้งค่าเลขประจำตัวผู้เสียภาษีและ PDF"
+
+#: 
+msgid "The list could not be loaded. You can still open the ideas on GitHub."
+msgstr "ไม่สามารถโหลดรายการได้ คุณยังเปิดไอเดียบน GitHub ได้"
+
+#: 
+msgid "The name can be at most %d characters"
+msgstr "ชื่อยาวได้ไม่เกิน %d อักขระ"
+
+#: 
+msgid "The page you requested could not be found. It may have been moved, renamed, or no longer exists."
+msgstr "ไม่พบหน้าที่คุณร้องขอ อาจถูกย้าย เปลี่ยนชื่อ หรือไม่มีอยู่อีกต่อไป"
+
+#: 
+msgid "The prompt can be at most %d characters"
+msgstr "พรอมต์ยาวได้ไม่เกิน %d อักขระ"
+
+#: 
+msgid "The selected members already have that role."
+msgstr "สมาชิกที่เลือกมีบทบาทนั้นอยู่แล้ว"
+
+#: 
+msgid "The signature image could not be decoded."
+msgstr "ไม่สามารถถอดรหัสรูปภาพลายเซ็นได้"
+
+#: 
+msgid "The signature image must be no larger than 2 MiB."
+msgstr "รูปภาพลายเซ็นต้องมีขนาดไม่เกิน 2 MiB"
+
+#: 
+msgid "The signature image must fit within 2000 × 1000 pixels."
+msgstr "รูปภาพลายเซ็นต้องอยู่ภายใน 2000 × 1000 พิกเซล"
+
+#: 
+msgid "The tax signature storage folder %s is not writable by the web server."
+msgstr "เว็บเซิร์ฟเวอร์เขียนลงโฟลเดอร์จัดเก็บลายเซ็นภาษี %s ไม่ได้"
+
+#: 
+msgid "The tax signature storage folder cannot be a symbolic link."
+msgstr "โฟลเดอร์จัดเก็บลายเซ็นภาษีไม่สามารถเป็นลิงก์สัญลักษณ์ได้"
+
+#: 
+msgid "The tax signature storage path must be outside the ChurchCRM folder. Leave the setting blank to use the built-in private folder."
+msgstr "พาธจัดเก็บลายเซ็นภาษีต้องอยู่นอกโฟลเดอร์ ChurchCRM เว้นว่างการตั้งค่าไว้เพื่อใช้โฟลเดอร์ส่วนตัวในตัว"
+
+#: 
+msgid "The tax signature storage path setting must be an absolute folder path."
+msgstr "การตั้งค่าพาธจัดเก็บลายเซ็นภาษีต้องเป็นพาธโฟลเดอร์แบบสัมบูรณ์"
+
+#: 
+msgid "These envelope numbers are not saved until you select Update Family Records."
+msgstr "หมายเลขซองเหล่านี้จะไม่ถูกบันทึกจนกว่าคุณจะเลือกอัปเดตข้อมูลครอบครัว"
+
+#: 
+msgid "They can't sign in as staff or to the Member Portal, and their sessions, devices and passkeys are removed."
+msgstr "เขาไม่สามารถลงชื่อเข้าใช้ในฐานะเจ้าหน้าที่หรือพอร์ทัลสมาชิกได้ และเซสชัน อุปกรณ์ และพาสคีย์ของเขาจะถูกลบ"
+
+#: 
+msgid "This family can't be deleted because it has notes. Deactivate the family instead to preserve their history."
+msgstr "ไม่สามารถลบครอบครัวนี้ได้เพราะมีบันทึก ให้ปิดใช้งานครอบครัวแทนเพื่อเก็บประวัติไว้"
+
+#: 
+msgid "This password looks strong."
+msgstr "รหัสผ่านนี้ดูแข็งแรง"
+
+#: 
+msgid "This person can't be deleted because they have recorded activities. Deactivate the person instead to preserve their history."
+msgstr "ไม่สามารถลบบุคคลนี้ได้เพราะมีกิจกรรมที่บันทึกไว้ ให้ปิดใช้งานบุคคลนี้แทนเพื่อเก็บประวัติไว้"
+
+#: 
+msgid "This removes the login only. The person and their notes stay."
+msgstr "การดำเนินการนี้ลบเฉพาะการเข้าสู่ระบบ บุคคลและบันทึกของเขายังคงอยู่"
+
+#: 
+msgid "Time Range"
+msgstr "ช่วงเวลา"
+
+#: 
+msgid "Two-factor authentication enrolled"
+msgstr "ลงทะเบียนการยืนยันตัวตนสองขั้นตอนแล้ว"
+
+#: 
+msgid "Unable to copy automatically. Select and copy the setup key manually."
+msgstr "ไม่สามารถคัดลอกอัตโนมัติได้ โปรดเลือกและคัดลอกรหัสตั้งค่าด้วยตนเอง"
+
+#: 
+msgid "Upload a PNG or JPEG signature image."
+msgstr "อัปโหลดรูปภาพลายเซ็นแบบ PNG หรือ JPEG"
+
+#: 
+msgid "Use signature upload or removal to change this setting."
+msgstr "ใช้การอัปโหลดหรือลบลายเซ็นเพื่อเปลี่ยนการตั้งค่านี้"
+
+#: 
+msgid "User Details"
+msgstr "รายละเอียดผู้ใช้"
+
+#: 
+msgid "Username or Email Address"
+msgstr "ชื่อผู้ใช้หรือที่อยู่อีเมล"
+
+#: 
+msgid "View all ideas"
+msgstr "ดูไอเดียทั้งหมด"
+
+#: 
+msgid "View events"
+msgstr "ดูกิจกรรม"
+
+#: 
+msgid "View people and families"
+msgstr "ดูบุคคลและครอบครัว"
+
+#: 
+msgid "Volunteer Management is turned off for this church"
+msgstr "การจัดการอาสาสมัครถูกปิดสำหรับคริสตจักรนี้"
+
+#: 
+msgid "Weak"
+msgstr "อ่อน"
+
+#: 
+msgid "What this account can do right now (read-only)"
+msgstr "สิ่งที่บัญชีนี้ทำได้ในขณะนี้ (อ่านอย่างเดียว)"
+
+#: 
+msgid "You must select a class"
+msgstr "คุณต้องเลือกชั้นเรียน"
+
+#: 
+msgid "Your church fiscal year does not start on January 1. Tax authorities often want receipts for the calendar year: choose Review and Filter and set the dates to January 1 – December 31."
+msgstr "ปีงบประมาณของคริสตจักรไม่ได้เริ่มวันที่ 1 มกราคม หน่วยงานภาษีมักต้องการใบเสร็จตามปีปฏิทิน: เลือกตรวจสอบและกรอง แล้วตั้งวันที่เป็น 1 มกราคม – 31 ธันวาคม"
+
+#: 
+msgid "attendance"
+msgstr "การเข้าร่วม"
+
+#: 
+msgid "financial history"
+msgstr "ประวัติการเงิน"
+
+#: 
+msgid "notes"
+msgstr "บันทึก"
+
+#: 
+msgid "recorded activities"
+msgstr "กิจกรรมที่บันทึกไว้"
+
+#: 
+msgid "system user API key regenerated"
+msgstr "สร้างคีย์ API ของผู้ใช้ระบบใหม่แล้ว"
+
+#: 
+msgid "system user reset their password from an emailed link"
+msgstr "ผู้ใช้ระบบรีเซ็ตรหัสผ่านจากลิงก์ในอีเมล"
+
+#: 
+msgid "system user turned off two-factor authentication"
+msgstr "ผู้ใช้ระบบปิดการยืนยันตัวตนสองขั้นตอน"
+
+#: 
+msgid "system user turned on two-factor authentication"
+msgstr "ผู้ใช้ระบบเปิดการยืนยันตัวตนสองขั้นตอน"
+
+#: 
+msgid "system user two-factor authentication disabled by admin"
+msgstr "ผู้ดูแลระบบปิดใช้งานการยืนยันตัวตนสองขั้นตอนของผู้ใช้ระบบ"
+
+#: 
+msgid "volunteer service history"
+msgstr "ประวัติการรับใช้อาสาสมัคร"
+
+#: 
+msgid "%s by %s"
+msgstr "%s โดย %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "ป้อนรหัสผ่านของคุณหรือรหัสจากแอปยืนยันตัวตนเพื่อเปลี่ยนการยืนยันตัวตนแบบสองปัจจัย"
+
+#: 
+msgid "Latest Notes"
+msgstr "บันทึกย่อล่าสุด"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "ยังไม่มีการเพิ่มบันทึกย่อ"
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "เริ่มการลงทะเบียนเพื่อรับรหัส QR"
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "รหัสผ่านหรือรหัสนั้นไม่ถูกต้อง การยืนยันตัวตนแบบสองปัจจัยยังคงเปิดอยู่"
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "การยืนยันตัวตนแบบสองปัจจัยได้รับการตั้งค่าแล้ว ความลับของมันจะแสดงเฉพาะระหว่างการลงทะเบียนเท่านั้น"
 

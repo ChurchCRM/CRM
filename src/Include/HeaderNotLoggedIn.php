@@ -22,15 +22,7 @@ $localeInfo = Bootstrapper::getCurrentLocale(); // always returns a LocaleInfo o
     <meta http-equiv="Content-Type" content="text/html">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Core ChurchCRM bundle (includes jQuery) -->
-    <script src="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.js') ?>"></script>
-    <?php if ($localeInfo->isRTL()): ?>
-    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm-rtl.min.css') ?>">
-    <?php else: ?>
-    <link rel="stylesheet" href="<?= SystemURLs::assetVersioned('/skin/v2/churchcrm.min.css') ?>">
-    <?php endif; ?>
-
-    <title>ChurchCRM: <?= InputUtils::escapeHTML($sPageTitle) ?></title>
+    <?php require __DIR__ . '/partials/head-assets.php'; ?>
 
     <?= PluginManager::getPluginHeadContent() ?>
 

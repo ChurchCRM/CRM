@@ -107,6 +107,7 @@ Community feedback policy (Feature Proposals and RFC Reviews Discussions): [`doc
 | [Maintainer Review Gates](./maintainer-review-gates.md) | Review a PR |
 | [PR Review](./pr-review.md) | Standards checklist |
 | [Church Review](./church-review.md) | Review an issue from the church user's workflow |
+| [Stale Issue Triage](./stale-issue-triage.md) | Re-triage stale-closed issues |
 | [Dependabot PR Review](./dependabot-review.md) | `/dependabot-review <PR>`: npm or Composer upgrade review |
 | [PR Review Fix](../pr-review-fix.md) | Address review comments |
 | [Skill architecture](./skill-architecture.md) | Edit a skill |

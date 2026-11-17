@@ -9,6 +9,7 @@ use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonSignin;
 use ChurchCRM\model\ChurchCRM\PersonSigninQuery;
 use ChurchCRM\Utils\DateTimeUtils;
+use ChurchCRM\Utils\EmailAddress;
 use DateTimeImmutable;
 use Propel\Runtime\ActiveQuery\Criteria;
 
@@ -71,7 +72,12 @@ final class MemberSignInRule
 
     public static function normalizeEmail(string $email): string
     {
-        return mb_strtolower(trim($email));
+        $email = trim($email);
+        $at = strrpos($email, '@');
+
+        return $at === false
+            ? strtolower($email)
+            : strtolower(substr($email, 0, $at)) . '@' . mb_strtolower(substr($email, $at + 1));
     }
 
     /** The member rule alone; the blocks for everyone are PortalSignInRules'. */
@@ -143,19 +149,26 @@ final class MemberSignInRule
     public function findSignInCandidate(string $typedEmail): SignInCandidate
     {
         $email = self::normalizeEmail($typedEmail);
-        if ($email === '') {
+        if (!EmailAddress::isValid($email)) {
             return SignInCandidate::refused($email, SignInReason::NO_MATCH);
         }
 
         $people = PersonQuery::create()
-            ->where('LOWER(TRIM(Person.Email)) = ?', $email)
+            ->where('CONVERT(LOWER(TRIM(Person.Email)) USING utf8mb4) COLLATE utf8mb4_bin = ?', $email)
             ->orderById()
             ->find();
-        if ($people->isEmpty()) {
+        $matches = [];
+        foreach ($people as $person) {
+            $storedEmail = (string) $person->getEmail();
+            // Database LOWER() can turn legacy Unicode local parts into ASCII.
+            if (EmailAddress::isValid($storedEmail) && self::normalizeEmail($storedEmail) === $email) {
+                $matches[] = $person;
+            }
+        }
+        if ($matches === []) {
             return SignInCandidate::refused($email, SignInReason::NO_MATCH);
         }
 
-        $matches = iterator_to_array($people);
         $matchedIds = array_map(static fn (Person $person): int => (int) $person->getId(), $matches);
 
         return $this->candidateFromMatches($email, $matches, $this->statesById($matchedIds));
@@ -213,6 +226,10 @@ final class MemberSignInRule
             return SignInReason::NO_EMAIL;
         }
 
+        if (!EmailAddress::isValid($email)) {
+            return SignInReason::INVALID_EMAIL;
+        }
+
         return $this->findSignInCandidate($email)->refusal;
     }
 
@@ -243,7 +260,7 @@ final class MemberSignInRule
             $everyone[(int) $person->getId()] = $person;
         }
         if ($emails !== []) {
-            $sharing = PersonQuery::create()->where('LOWER(TRIM(Person.Email)) IN ?', array_values($emails))->orderById()->find();
+            $sharing = PersonQuery::create()->where('CONVERT(LOWER(TRIM(Person.Email)) USING utf8mb4) COLLATE utf8mb4_bin IN ?', array_values($emails))->orderById()->find();
             foreach ($sharing as $person) {
                 $byEmail[self::normalizeEmail((string) $person->getEmail())][] = $person;
                 $everyone[(int) $person->getId()] ??= $person;
@@ -261,7 +278,9 @@ final class MemberSignInRule
                 $email = self::normalizeEmail((string) $person->getEmail());
                 $reason = $email === ''
                     ? SignInReason::NO_EMAIL
-                    : $this->candidateFromMatches($email, $byEmail[$email] ?? [$person], $states)->refusal;
+                    : (!EmailAddress::isValid($email)
+                        ? SignInReason::INVALID_EMAIL
+                        : $this->candidateFromMatches($email, $byEmail[$email] ?? [$person], $states)->refusal);
             }
             $statuses[$personId] = $reason;
         }

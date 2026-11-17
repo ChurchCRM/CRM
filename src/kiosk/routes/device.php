@@ -14,6 +14,7 @@ use ChurchCRM\Service\KioskGuestService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
+use ChurchCRM\Utils\EmailAddress;
 use ChurchCRM\Utils\LoggerUtils;
 use ChurchCRM\Utils\MiscUtils;
 use Propel\Runtime\ActiveQuery\Criteria;
@@ -631,8 +632,8 @@ $app->group('/device', function (RouteCollectorProxy $group) use ($getKioskFromC
 
         $phone = InputUtils::sanitizeText($input['Phone'] ?? '');
         $email = InputUtils::sanitizeText($input['Email'] ?? '');
-        if ($email !== '' && filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-            return SlimUtils::renderErrorJSON($response, gettext('Invalid email address'), [], 400);
+        if ($email !== '' && !EmailAddress::isValid($email)) {
+            return SlimUtils::renderErrorJSON($response, EmailAddress::validationMessage(), [], 400);
         }
 
         if ($phone === '' && $email === '') {

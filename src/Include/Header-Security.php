@@ -30,11 +30,7 @@ use ChurchCRM\Utils\RequestUtils;
 
 $telemetryEnabled = TelemetryService::isEnabled();
 
-// Derive PostHog domains from the configured endpoint (e.g., https://us.i.posthog.com)
-// Assets use -assets subdomain: https://us-assets.i.posthog.com
-$posthogDomain = $telemetryEnabled
-    ? str_replace('://', '://', TelemetryService::POSTHOG_ENDPOINT)  // extract domain from endpoint
-    : '';
+// PostHog serves assets from the -assets subdomain: https://us-assets.i.posthog.com
 $posthogAssetsDomain = $telemetryEnabled
     ? preg_replace('/(.i\.posthog\.com)/', '-assets$1', TelemetryService::POSTHOG_ENDPOINT)
     : '';

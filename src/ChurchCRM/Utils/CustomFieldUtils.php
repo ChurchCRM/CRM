@@ -162,7 +162,7 @@ class CustomFieldUtils
             case 2:
                 echo '<div class="input-group">' .
                 '<span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>' .
-                '<input class="form-control date-picker" type="text" id="' . $fieldAttr . '" name="' . $fieldAttr . '" value="' . InputUtils::escapeAttribute(DateTimeUtils::formatForDatePicker($data)) . '" placeholder="' . SystemConfig::getValueForAttr("sDatePickerPlaceHolder") . '"> ' .
+                '<input class="form-control date-picker" type="text" id="' . $fieldAttr . '" name="' . $fieldAttr . '" value="' . InputUtils::escapeAttribute(DateTimeUtils::formatForDatePicker($data)) . '" placeholder="' . InputUtils::escapeAttribute(DateTimeUtils::datePickerJsFormat()) . '"> ' .
                 '</div>';
                 break;
 
@@ -318,7 +318,7 @@ class CustomFieldUtils
 
         switch ($type) {
             case 2:
-                $data = InputUtils::filterDate($data);
+                $data = trim((string) $data);
                 if (strlen($data) > 0) {
                     $dateString = DateTimeUtils::parseAndValidate($data);
                     if ($dateString === false) {

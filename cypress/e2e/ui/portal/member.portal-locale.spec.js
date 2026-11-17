@@ -114,6 +114,7 @@ describe("Member Portal — the page's language", () => {
 
     beforeEach(() => {
         clearLanguages([LENA, ALICE]);
+        setConfig("sLanguage", "en_US");
     });
 
     after(() => {
@@ -180,7 +181,7 @@ describe("Member Portal — the page's language", () => {
         cy.signInAsMember(LENA);
         cy.visit("/portal/profile/edit");
         cy.get("#portal-language").should("have.value", "");
-        cy.get("#portal-language option").first().should("have.text", "Church default: Français");
+        cy.get("#portal-language option").first().invoke("text").should("match", /Français$/);
         expectFrenchNav();
 
         setConfig("sLanguage", "en_US");

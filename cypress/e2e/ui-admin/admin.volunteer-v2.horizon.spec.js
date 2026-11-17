@@ -57,7 +57,12 @@ function isoDate(offsetDays) {
 
 /** The screen's own short date (webpack/ministries/components/ui.ts shortDate). */
 function shortDate(offsetDays) {
-    return localDate(offsetDays).toLocaleDateString(undefined, { month: "short", day: "numeric" });
+    const date = localDate(offsetDays);
+    return date.toLocaleDateString(undefined, {
+        year: date.getFullYear() === new Date().getFullYear() ? undefined : "numeric",
+        month: "short",
+        day: "numeric",
+    });
 }
 
 function weekly(title, from, to, extra = {}) {

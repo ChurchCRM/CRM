@@ -1,0 +1,85 @@
+name: 'CI: root test suite'
+
+on:
+  workflow_call:
+    inputs:
+      php-version:
+        required: true
+        type: string
+      test-name:
+        required: true
+        type: string
+      config-file:
+        required: true
+        type: string
+      spec:
+        required: true
+        type: string
+      shard-total:
+        required: true
+        type: number
+      shard-index:
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  checks: write
+
+jobs:
+  test:
+    name: Cypress
+    timeout-minutes: 40
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - uses: ./.github/actions/checkout-node-npm
+      with:
+        cache-cypress: 'true'
+
+    - name: Download build artifact
+      uses: ./.github/actions/download-artifact
+      with:
+        name: build-${{ github.run_id }}
+        path: .
+
+    - name: Load Docker image
+      env:
+        PHP_VERSION: ${{ inputs.php-version }}
+      run: |
+        docker load < "temp/docker-image-${PHP_VERSION}.tar.gz"
+        docker tag "churchcrm/crm:php${PHP_VERSION}-test" churchcrm/crm:php8-debian
+
+    - name: Start Docker (root path)
+      run: |
+        cp docker/Config.root.php src/Include/Config.php
+        docker compose -f docker/docker-compose.yaml -f docker/docker-compose.parallel.yaml --profile ci-root up -d
+
+    - name: Wait for server (root path)
+      uses: ./.github/actions/wait-for-server
+      with:
+        url: 'http://127.0.0.1/api/public/echo'
+        docker-compose-profile: 'ci-root'
+        docker-compose-files: 'docker/docker-compose.yaml,docker/docker-compose.parallel.yaml'
+
+    - name: Run Cypress ${{ inputs.test-name }} tests (root, PHP ${{ inputs.php-version }})
+      uses: ./.github/actions/run-cypress-tests
+      with:
+        config-file: ${{ inputs.config-file }}
+        spec: ${{ inputs.spec }}
+        test-name: ${{ inputs.test-name }}
+        php-version: ${{ inputs.php-version }}
+        deployment: root
+        shard-total: ${{ inputs.shard-total }}
+        shard-index: ${{ inputs.shard-index }}
+        docker-compose-profile: ci-root
+        # ci-root publishes MySQL on 3306. The guard reads this inside the action.
+        extra-env: |
+          ROW_GUARD_DB_PORT=3306
+          ROW_GUARD_REQUIRED=1
+
+    - name: Stop Docker
+      if: always()
+      run: npm run docker:ci:root:down

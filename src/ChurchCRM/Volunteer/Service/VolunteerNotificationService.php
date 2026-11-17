@@ -25,6 +25,7 @@ use ChurchCRM\model\ChurchCRM\VolunteerScheduleQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerSwap;
 use ChurchCRM\model\ChurchCRM\VolunteerSwapQuery;
 use ChurchCRM\model\ChurchCRM\VolunteerTeamQuery;
+use ChurchCRM\Service\EmailQueueService;
 use ChurchCRM\Service\PersonService;
 use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\LoggerUtils;
@@ -904,6 +905,10 @@ class VolunteerNotificationService
      * 4. retry is implicit — a row below the cap is still `pending` and still due, so the
      *    next drain picks it up. `failed` is terminal and never re-selected.
      *
+     * No delivery starts after `EmailQueueService::runSeconds()`, the limit composer
+     * email uses, so a slow mail server cannot hold the request for minutes; the rows
+     * the run does not reach stay `pending`.
+     *
      * Every row is wrapped in its own `try/catch (\Throwable)` — the per-channel
      * isolation pattern from `dto\Notification::send()` (N4) — so one unreachable SMTP
      * server, one deleted person or one malformed address cannot stop the batch. Nothing
@@ -915,6 +920,7 @@ class VolunteerNotificationService
     private function drain(int $batchSize): array
     {
         $counts = ['sent' => 0, 'skipped' => 0, 'failed' => 0];
+        $deadline = microtime(true) + EmailQueueService::runSeconds();
 
         $rows = $this->dueRowsQuery()
             ->orderByScheduledFor(Criteria::ASC)
@@ -935,6 +941,11 @@ class VolunteerNotificationService
         foreach ($rows as $row) {
             if (isset($handled[(int) $row->getId()])) {
                 continue;
+            }
+            if (microtime(true) >= $deadline) {
+                $this->logger->info('Volunteer notification outbox reached its time limit; the rest waits for the next run', $counts);
+
+                break;
             }
 
             try {

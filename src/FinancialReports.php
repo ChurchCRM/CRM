@@ -7,10 +7,10 @@ use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\model\ChurchCRM\DonationFundQuery;
 use ChurchCRM\Service\DonationFundService;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\FiscalYearUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\Utils\MiscUtils;
-use ChurchCRM\Utils\RedirectUtils;
 use ChurchCRM\view\PageHeader;
 
 // Security
@@ -24,20 +24,6 @@ if (array_key_exists('ReportType', $_POST)) {
 
 if ($sReportType === '' && array_key_exists('ReportType', $_GET)) {
     $sReportType = InputUtils::legacyFilterInput($_GET['ReportType']);
-}
-
-if ($sReportType === 'Voting Members') {
-    RedirectUtils::redirect('finance/reports/voting-members');
-}
-
-if ($sReportType === 'Giving Report') {
-    RedirectUtils::redirect('finance/reports/giving-statements');
-}
-
-if (in_array($sReportType, ['Individual Deposit Report', 'Advanced Deposit Report'], true)) {
-    $input = array_merge($_GET, $_POST);
-    unset($input['ReportType']);
-    RedirectUtils::redirect('finance/reports/deposits?' . http_build_query($input));
 }
 
 $sPageTitle = gettext('Financial Reports');
@@ -73,7 +59,7 @@ if (array_key_exists('datetype', $_POST)) {
     $datetype = InputUtils::legacyFilterInput($_GET['datetype']);
 }
 ?>
-<div class="card">
+<div class="card financial-reports">
   <div class="card-body">
 <!-- Styles for this page moved into the project's SCSS: `src/skin/scss/_financial-reports.scss` -->
 <?php
@@ -97,7 +83,6 @@ if ($sReportType === '') {
           <option selected disabled value="0"><?= gettext('Select Report Type') ?></option>
           <option value="Pledge Family Summary"><?= gettext('Pledge Family Summary') ?></option>
           <option value="Pledge Reminders"><?= gettext('Pledge Reminders') ?></option>
-          <option value="Voting Members"><?= gettext('Voting Members') ?></option>
           <option value="Zero Givers"><?= gettext('Zero Givers') ?></option>
         </select>
       </div>
@@ -190,11 +175,11 @@ if ($sReportType === '') {
       <div class="row g-3 mb-3">
         <div class="col-md-4">
           <label class="form-label" for="DateStart"><?= gettext('Report Start Date') ?></label>
-          <input type="text" class="form-control date-picker" name="DateStart" id="DateStart" maxlength="10" value="<?= InputUtils::escapeHTML($startVal) ?>">
+          <input type="text" class="form-control date-picker" name="DateStart" id="DateStart" maxlength="10" value="<?= InputUtils::escapeHTML(DateTimeUtils::formatForDatePicker($startVal)) ?>">
         </div>
         <div class="col-md-4">
           <label class="form-label" for="DateEnd"><?= gettext('Report End Date') ?></label>
-          <input type="text" class="form-control date-picker" name="DateEnd" id="DateEnd" maxlength="10" value="<?= InputUtils::escapeHTML($endVal) ?>">
+          <input type="text" class="form-control date-picker" name="DateEnd" id="DateEnd" maxlength="10" value="<?= InputUtils::escapeHTML(DateTimeUtils::formatForDatePicker($endVal)) ?>">
         </div>
       </div>
 

@@ -202,64 +202,9 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
         </div>
     </div>
 
-    <!-- Toast feedback -->
-    <div id="pledge-toast-container" class="toast-container position-fixed bottom-0 end-0 p-3 toast-container-top">
-        <div id="pledge-toast" class="toast align-items-center text-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body" id="pledge-toast-body"></div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-        </div>
-    </div>
 </div>
 
-<script nonce="<?= SystemURLs::getCSPNonce() ?>">
-(function () {
-    'use strict';
-
-    const ROOT = window.CRM.root;
-
-    function showToast(message, isError) {
-        const toastEl = document.getElementById('pledge-toast');
-        const bodyEl  = document.getElementById('pledge-toast-body');
-        toastEl.classList.remove('bg-success', 'bg-danger');
-        toastEl.classList.add(isError ? 'bg-danger' : 'bg-success');
-        bodyEl.textContent = message;
-        const toast = new bootstrap.Toast(toastEl, { delay: 4000 });
-        toast.show();
-    }
-
-    const deleteBtn = document.getElementById('deletePledgeBtn');
-    if (deleteBtn) {
-        deleteBtn.addEventListener('click', async function () {
-            const groupKey = this.dataset.groupKey;
-            const confirmMsg = <?= InputUtils::jsonEncodeForScript(
-                $isPledge
-                    ? gettext('Are you sure you want to permanently delete this pledge record?')
-                    : gettext('Are you sure you want to permanently delete this payment record?')
-            ) ?>;
-            if (!confirm(confirmMsg)) return;
-
-            try {
-                const res = await fetch(ROOT + '/api/payments/' + encodeURIComponent(groupKey), {
-                    method: 'DELETE'
-                });
-                if (res.ok) {
-                    showToast(<?= InputUtils::jsonEncodeForScript(gettext('Deleted successfully')) ?>, false);
-                    setTimeout(function () {
-                        window.location.href = ROOT + '/finance/';
-                    }, 800);
-                } else {
-                    const data = await res.json().catch(function () { return {}; });
-                    const msg = (data && (data.error || data.message)) || <?= InputUtils::jsonEncodeForScript(gettext('Delete failed')) ?>;
-                    showToast(msg, true);
-                }
-            } catch (err) {
-                showToast(<?= InputUtils::jsonEncodeForScript(gettext('Network error, please try again')) ?>, true);
-            }
-        });
-    }
-}());
-</script>
+<script nonce="<?= SystemURLs::getCSPNonce() ?>">window.CRM.pledgeDetail = <?= InputUtils::jsonEncodeForScript(['isPledge' => $isPledge]) ?>;</script>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/finance-pledge-detail.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
 
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

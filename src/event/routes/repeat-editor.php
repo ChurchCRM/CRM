@@ -5,6 +5,7 @@ use ChurchCRM\model\ChurchCRM\CalendarQuery;
 use ChurchCRM\model\ChurchCRM\EventTypeQuery;
 use ChurchCRM\model\ChurchCRM\GroupQuery;
 use ChurchCRM\Service\EventService;
+use ChurchCRM\Service\FlashService;
 use ChurchCRM\Service\RecurrenceDateGenerator;
 use ChurchCRM\Slim\Middleware\Request\Auth\AddEventsRoleAuthMiddleware;
 use ChurchCRM\Utils\DateTimeUtils;
@@ -122,8 +123,8 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
     // produce wrong results, and an unparseable date would later throw inside
     // EventService::createRepeatEvents() (caught as InvalidArgumentException
     // there now, but better to validate up front and give a clear error here).
-    $startParsed = !empty($sRangeStart) ? \DateTimeImmutable::createFromFormat('!Y-m-d', $sRangeStart) : false;
-    $endParsed = !empty($sRangeEnd) ? \DateTimeImmutable::createFromFormat('!Y-m-d', $sRangeEnd) : false;
+    $startIso = DateTimeUtils::parseIsoDate($sRangeStart);
+    $endIso = DateTimeUtils::parseIsoDate($sRangeEnd);
 
     if (empty($iTypeID)) {
         $errorMsg = gettext('You must select an event type.');
@@ -133,17 +134,16 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
         $errorMsg = gettext('You must select a valid recurrence pattern.');
     } elseif (empty($sRangeStart) || empty($sRangeEnd)) {
         $errorMsg = gettext('You must specify a date range.');
-    } elseif ($startParsed === false || $startParsed->format('Y-m-d') !== $sRangeStart) {
+    } elseif ($startIso === '') {
         $errorMsg = gettext('Range start must be a valid YYYY-MM-DD date.');
-    } elseif ($endParsed === false || $endParsed->format('Y-m-d') !== $sRangeEnd) {
+    } elseif ($endIso === '') {
         $errorMsg = gettext('Range end must be a valid YYYY-MM-DD date.');
-    } elseif ($startParsed > $endParsed) {
+    } elseif ($startIso > $endIso) {
         $errorMsg = gettext('Range start must be before range end.');
     }
 
     if (!empty($errorMsg)) {
-        $_SESSION['sGlobalMessage'] = $errorMsg;
-        $_SESSION['sGlobalMessageClass'] = 'danger';
+        FlashService::set($errorMsg, 'danger');
         $target = SystemURLs::getRootPath() . '/event/repeat-editor';
         if ($iTypeID > 0) {
             $target .= '/' . $iTypeID;
@@ -173,18 +173,15 @@ $app->post('/repeat-editor', function (Request $request, Response $response) {
             'inactive'        => InputUtils::filterInt($body['EventStatus'] ?? 0),
         ]);
         $count = count($createdIds);
-        $_SESSION['sGlobalMessage'] = sprintf(
+        FlashService::set(sprintf(
             ngettext('%d repeat event created successfully.', '%d repeat events created successfully.', $count),
             $count
-        );
-        $_SESSION['sGlobalMessageClass'] = 'success';
+        ));
     } catch (\InvalidArgumentException $e) {
-        $_SESSION['sGlobalMessage'] = $e->getMessage();
-        $_SESSION['sGlobalMessageClass'] = 'danger';
+        FlashService::set($e->getMessage(), 'danger');
     } catch (\Throwable $e) {
         LoggerUtils::getAppLogger()->error('Repeat event creation failed', ['exception' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
-        $_SESSION['sGlobalMessage'] = gettext('Repeat events could not be created. Check the application log for details.');
-        $_SESSION['sGlobalMessageClass'] = 'danger';
+        FlashService::set(gettext('Repeat events could not be created. Check the application log for details.'), 'danger');
     }
 
     return $response

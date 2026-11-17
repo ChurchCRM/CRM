@@ -25,13 +25,13 @@ test.describe('People & Families', () => {
     await expect(rows.first()).toBeVisible({ timeout: 15000 });
     await humanPause(page, 500);
 
-    // Two families are named "Baker" in the seed data — the unique contact
-    // email (visible in the row's Email column) picks the one with a real
+    // Two families are named "Baker" in the seed data — the head of household's
+    // email (shown in the row's Email column) picks the one with a real
     // family portrait and photographed parents (src/admin/demo/people.json),
     // not the other, photo-less Baker family.
-    await humanType(page.locator('.dt-search input'), 'family.baker7');
+    await humanType(page.locator('.dt-search input'), 'andrew.baker@demo.churchcrm.io');
     await humanPause(page, 500);
-    const bakerRow = rows.filter({ hasText: 'family.baker7' }).first();
+    const bakerRow = rows.filter({ hasText: 'andrew.baker@demo.churchcrm.io' }).first();
     await expect(bakerRow).toBeVisible({ timeout: 15000 });
     await humanClick(bakerRow.locator('td').first().locator('a').first());
     await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
@@ -63,15 +63,20 @@ test.describe('People & Families', () => {
     await humanSelect(page.locator('#State'), 'IL');
     await humanType(page.locator('#Zip'), '62704');
     await humanType(page.locator('#HomePhone'), '(555) 010-1000');
-    await humanType(page.locator('#Email'), 'family.whitfield@demo.churchcrm.io');
 
     await humanType(page.locator('input[name="FirstName1"]'), 'Michael');
     await humanType(page.locator('input[name="LastName1"]'), 'Whitfield');
     await humanSelect(page.locator('select[name="Gender1"]'), '1');
 
     await humanPause(page, 500);
-    await humanClick(page.locator('button[name="FamilySubmit"]'));
-    await page.waitForURL(/\/people\/family\/(\d+)/, { timeout: 15000 });
+    // Saving geocodes the new address, which can take longer than the
+    // default 15s action timeout on CI, so give the submit and redirect room.
+    const familySubmit = page.locator('button[name="FamilySubmit"]');
+    await familySubmit.scrollIntoViewIfNeeded();
+    await familySubmit.hover();
+    await humanPause(page, 400);
+    await familySubmit.click({ timeout: 45000 });
+    await page.waitForURL(/\/people\/family\/(\d+)/, { timeout: 45000 });
     const michaelLink = page.getByText('Michael Whitfield', { exact: false }).first();
     await expect(michaelLink).toBeVisible({ timeout: 10000 });
     await humanPause(page, 500);
@@ -180,28 +185,6 @@ test.describe('People & Families', () => {
       category: 'People & Families',
       purpose: 'Show a person profile for a deceased member, including the Deceased badge and date',
       usedIn: ['website'],
-    });
-  });
-
-  test('family-inactive-profile', async ({ page }, testInfo) => {
-    await page.goto('/people/family?familyActiveStatus=inactive');
-    const rows = page.locator('#families tbody tr');
-    await expect(rows.first()).toBeVisible({ timeout: 15000 });
-
-    await humanType(page.locator('.dt-search input'), 'Campbell');
-    await humanPause(page, 500);
-    const targetRow = rows.filter({ hasText: 'Campbell' }).first();
-    await expect(targetRow).toBeVisible({ timeout: 15000 });
-    await humanClick(targetRow.locator('td').first().locator('a').first());
-    await page.waitForURL(/\/people\/family\/\d+/, { timeout: 15000 });
-    await expect(page.locator('#family-deactivated')).toBeVisible({ timeout: 10000 });
-    await settle(page, 800);
-
-    await captureScreen(page, testInfo, {
-      name: 'family-inactive-profile',
-      title: 'Inactive Family Profile',
-      category: 'People & Families',
-      purpose: 'Show a family profile for an inactive family, including the inactive status banner',
     });
   });
 });

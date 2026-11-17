@@ -5,6 +5,7 @@ require_once __DIR__ . '/../../Include/PageInit.php';
 use ChurchCRM\Authentication\AuthenticationManager;
 use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\dto\SystemURLs;
+use ChurchCRM\model\ChurchCRM\Group;
 use ChurchCRM\model\ChurchCRM\PersonCustomMasterQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
 use ChurchCRM\model\ChurchCRM\PersonVolunteerOpportunityQuery;
@@ -17,6 +18,7 @@ use ChurchCRM\Service\EmailLogService;
 use ChurchCRM\Service\LoginAsPersonHistoryService;
 use ChurchCRM\Service\PersonPortalAccessService;
 use ChurchCRM\Service\PersonService;
+use ChurchCRM\Service\VolunteerV1Service;
 use ChurchCRM\Service\PersonSignInService;
 use ChurchCRM\Service\PortalGrantService;
 use ChurchCRM\Service\PropertyService;
@@ -46,11 +48,11 @@ $app->post('/view/{personID:[0-9]+}', function (Request $request, Response $resp
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/person/not-found?id=' . $iPersonID);
     }
 
-    if (!$currentUser->canEditPerson($iPersonID, $person->getFamId())) {
+    if (!$currentUser->isEditRecordsEnabled()) {
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/v2/access-denied?role=PersonView');
     }
 
-    if ($currentUser->isEditRecordsEnabled()) {
+    if ($currentUser->isEditRecordsEnabled() && VolunteerV1Service::isInUse()) {
         $personService = new PersonService();
         $parsedBody    = $request->getParsedBody();
         $volIDs        = is_array($parsedBody) ? ($parsedBody['VolunteerOpportunityIDs'] ?? []) : [];
@@ -82,7 +84,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     // Handle volunteer-opportunity removal (RemoveVO query param)
     $queryParams = $request->getQueryParams();
     $iRemoveVO   = (int) ($queryParams['RemoveVO'] ?? 0);
-    if ($iRemoveVO > 0 && $currentUser->isEditRecordsEnabled()) {
+    if ($iRemoveVO > 0 && $currentUser->isEditRecordsEnabled() && VolunteerV1Service::isInUse()) {
         $personService = new PersonService();
         $personService->removeVolunteerOpportunity($iPersonID, $iRemoveVO);
         return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/people/view/' . $iPersonID);
@@ -105,10 +107,10 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
             $headerButtons[] = ['label' => gettext('Make User'), 'url' => '/admin/system/users/new?personId=' . $iPersonID, 'icon' => 'fa-person-chalkboard'];
         } else {
             $headerButtons[] = ['label' => gettext('Edit User'), 'url' => '/admin/system/users/' . $iPersonID . '/edit', 'icon' => 'fa-user-secret'];
-            $headerButtons[] = ['label' => gettext('View User'), 'url' => '/v2/user/' . $iPersonID, 'icon' => 'fa-eye'];
+            $headerButtons[] = ['label' => gettext('View User'), 'url' => '/admin/system/users/' . $iPersonID, 'icon' => 'fa-eye'];
         }
     } elseif ($person->isUser() && $person->getId() === $currentUser->getId()) {
-        $headerButtons[] = ['label' => gettext('View User'), 'url' => '/v2/user/' . $iPersonID, 'icon' => 'fa-eye', 'adminOnly' => false];
+        $headerButtons[] = ['label' => gettext('View User'), 'url' => '/account', 'icon' => 'fa-eye', 'adminOnly' => false];
     }
     $sPageHeaderButtons = PageHeader::buttons($headerButtons);
 
@@ -148,6 +150,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $rsAssignedGroups     = RunQuery($sSQL);
     $assignedGroupsData   = [];
     while ($row = mysqli_fetch_array($rsAssignedGroups, MYSQLI_ASSOC)) {
+        $row['viewUri'] = Group::getViewURIForId((int) $row['grp_ID'], (int) $row['grp_Type'] === 4);
         $assignedGroupsData[] = $row;
     }
 
@@ -162,23 +165,28 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         $allGroupsData[] = $row;
     }
 
-    // ── Volunteer opportunities ──────────────────────────────────────────────
+    // ── Volunteer opportunities (V1, while in use) ────────────────────────────
     // Get IDs of opportunities assigned to this person (no FK relation in
     // schema.xml, so a join isn't auto-generated — use a two-step query).
+    $volunteerV1InUse = VolunteerV1Service::isInUse();
     $assignedVolOppIds = [];
-    foreach (PersonVolunteerOpportunityQuery::create()->filterByPersonId($iPersonID)->find() as $pvo) {
-        $assignedVolOppIds[] = $pvo->getVolunteerOpportunityId();
-    }
-    $assignedVolunteerOppsData = empty($assignedVolOppIds)
-        ? []
-        : VolunteerOpportunityQuery::create()
-            ->filterById($assignedVolOppIds)
+    $assignedVolunteerOppsData = [];
+    $allVolunteerOppsData = [];
+    if ($volunteerV1InUse) {
+        foreach (PersonVolunteerOpportunityQuery::create()->filterByPersonId($iPersonID)->find() as $pvo) {
+            $assignedVolOppIds[] = $pvo->getVolunteerOpportunityId();
+        }
+        $assignedVolunteerOppsData = empty($assignedVolOppIds)
+            ? []
+            : VolunteerOpportunityQuery::create()
+                ->filterById($assignedVolOppIds)
+                ->orderByOrder()
+                ->find();
+
+        $allVolunteerOppsData = VolunteerOpportunityQuery::create()
             ->orderByOrder()
             ->find();
-
-    $allVolunteerOppsData = VolunteerOpportunityQuery::create()
-        ->orderByOrder()
-        ->find();
+    }
 
     // ── Volunteer v2 pane (#9711, design §3.5 / §3.8 surface 2) ──────────────
     //
@@ -328,11 +336,7 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     $fam_Name = $personData['fam_Name'] ?? '';
 
     // Edit permission
-    $bOkToEdit = (
-        $currentUser->isEditRecordsEnabled() ||
-        ($currentUser->isEditSelfEnabled() && $iPersonID === $currentUser->getId()) ||
-        ($currentUser->isEditSelfEnabled() && $fam_ID !== '' && (int)$fam_ID === (int)$currentUser->getPerson()->getFamId())
-    );
+    $bOkToEdit = $currentUser->isEditRecordsEnabled();
 
     // ── Map configuration ────────────────────────────────────────────────────
     $personMapConfig = null;
@@ -348,9 +352,6 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
     // ── Timeline ─────────────────────────────────────────────────────────────
     $timelineService = new TimelineService();
     $personTimeline  = $timelineService->getForPerson($iPersonID);
-
-    // ── Email history (5 most recent; the full list is /people/view/{id}/emails) ──
-    $emailHistory = (new EmailLogService())->getForPerson($iPersonID, 1, 5);
 
     // ── Portal sign-in card (member sign-in design §11.3) ───────────────────
     $portalSignIn = $currentUser->isEditRecordsEnabled()
@@ -420,10 +421,11 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         // Volunteer opps
         'assignedVolunteerOppsData' => $assignedVolunteerOppsData,
         'allVolunteerOppsData'      => $allVolunteerOppsData,
-        // Volunteer rollout state (#9704): 'v1' | 'v2' | 'both'. Decides which
-        // Volunteer tab(s) the view renders; the POST / RemoveVO handlers above
-        // are untouched, the flag only decides whether the form reaches them.
+        // Volunteer rollout state (#9704): 'v1' | 'v2' | 'both', and whether the
+        // legacy V1 tab shows (#10606: while V1 is in use).
         'volunteerVersion'          => User::getVolunteerVersion(),
+        'volunteerV1InUse'          => $volunteerV1InUse,
+        'volunteerV1Notice'         => $volunteerV1InUse ? VolunteerV1Service::noticeFacts() : null,
         // #9711: the V2 pane's data (design §3.5). Empty arrays in `v1` mode,
         // where the pane is not rendered at all.
         'volunteerV2Qualifications' => $volunteerV2Qualifications,
@@ -435,8 +437,8 @@ $app->get('/view/{personID:[0-9]+}', function (Request $request, Response $respo
         'personMapConfig'        => $personMapConfig,
         'familyHasCoords'        => $familyHasCoords,
         'personTimeline'         => $personTimeline,
-        // Email history
-        'emailHistory'           => $emailHistory,
+        // Email history URL used by the person timeline
+        'emailHistoryUrl'        => SystemURLs::getRootPath() . '/people/view/' . (int) $iPersonID . '/emails',
         // Portal sign-in card: null when the viewer lacks Edit Records
         'portalSignIn'           => $portalSignIn,
         'portalSignInCanManage'  => $currentUser->isAdmin(),

@@ -44,14 +44,15 @@ function assertDropdownVisible(triggerSelector, context, containerFinder) {
   cy.get(triggerSelector, { timeout: 10000 })
     .first()
     .as("trigger")
-    .click();
+    .click({ scrollBehavior: "center" });
 
-  cy.get(".dropdown-menu.show")
+  cy.get(".dropdown-menu.show:not(.navbar-vertical .dropdown-menu)")
     .as("menu")
     .should("be.visible");
 
   // If a container assertion is provided, run it while the dropdown is open.
   if (containerFinder) {
+    cy.get("@menu").should("not.have.class", "dropdown-menu-fixed");
     containerFinder(context);
   }
 
@@ -64,7 +65,7 @@ function assertDropdownVisible(triggerSelector, context, containerFinder) {
     .should("not.have.class", "disabled");
 
   // Close the menu before next iteration to avoid state leakage.
-  cy.get("@trigger").click();
+  cy.get("@trigger").click({ scrollBehavior: "center" });
 }
 
 /**
@@ -75,7 +76,7 @@ function assertDropdownVisible(triggerSelector, context, containerFinder) {
  * @param {string} context - Label for assertion messages
  */
 function assertContainerOverflow(context) {
-  cy.get(".dropdown-menu.show")
+  cy.get(".dropdown-menu.show:not(.navbar-vertical .dropdown-menu)")
     .closest(".table-clip-x")
     .then(($el) => {
       // Use ownerDocument.defaultView rather than window — window in a .then()
@@ -99,11 +100,9 @@ function assertContainerOverflow(context) {
 // .btn[data-bs-toggle='dropdown'] ellipsis trigger inside a wrapper fixed with
 // `.table-clip-x` (`overflow-x: clip; overflow-y: visible`).
 //
-// 375px is intentionally excluded: the 5-column table (NAME, ROLE, BIRTHDAY,
-// EMAIL, ACTIONS) is wider than 375px, and overflow-x:clip hides the ACTIONS
-// column off-screen at that width. 768px and 1920px are sufficient to verify
-// the dropdown-clipping fix at the widths where the button is reachable.
-const SCENARIO1_VIEWPORTS = VIEWPORTS.filter(({ width }) => width >= 768);
+// The 5-column table is wider than 375px. Scenario 2 covers table dropdowns at
+// tablet and phone widths; this scenario covers the Key People table at desktop.
+const SCENARIO1_VIEWPORTS = VIEWPORTS.filter(({ width }) => width === 1920);
 
 describe("Scenario 1 — Family View member table dropdown", () => {
   beforeEach(() => cy.setupStandardSession());

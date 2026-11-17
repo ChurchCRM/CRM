@@ -24,7 +24,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td colspan="5" class="text-secondary"><?= gettext('Loading…') ?></td></tr>
+                    <tr><td colspan="5" class="text-secondary"><?= gettext('Loading...') ?></td></tr>
                 </tbody>
             </table>
         </div>

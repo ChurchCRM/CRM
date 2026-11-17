@@ -2,12 +2,16 @@
 use ChurchCRM\dto\SystemURLs;
 use ChurchCRM\Utils\CSRFUtils;
 use ChurchCRM\Utils\CurrencyFormatter;
+use ChurchCRM\Utils\DateTimeUtils;
 use ChurchCRM\Utils\InputUtils;
 
 $sRootPath = $sRootPath ?? SystemURLs::getRootPath();
 // Normalise dates to strings for form display
 $dateValue    = ($dDate instanceof \DateTime) ? $dDate->format('Y-m-d') : (string) $dDate;
+$isoOrRaw     = fn (string $v): string => preg_match('/^\d{4}-\d{2}-\d{2}$/', $v) ? DateTimeUtils::formatForDatePicker($v) : $v;
+$dateValue    = $isoOrRaw($dateValue);
 $endDateValue = (($dEndDate ?? null) instanceof \DateTime) ? $dEndDate->format('Y-m-d') : (string) ($dEndDate ?? '');
+$endDateValue = $isoOrRaw($endDateValue);
 $fundraiserTypes = ['Auction', 'Silent Auction', 'Live Auction', 'Raffle', 'Gala', 'Mixed'];
 // Bid sheets are a silent-auction bidding artifact — not applicable to other types.
 $showBidSheets = in_array($sType, ['Auction', 'Silent Auction'], true);
@@ -194,7 +198,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     </a>
                     <div class="dropdown-divider"></div>
                     <form method="post" action="<?= $sRootPath ?>/fundraiser/<?= $fundraiserId ?>/donated-items/<?= (int) $item->getId() ?>/delete"
-                          onsubmit="return confirm(<?= InputUtils::escapeAttribute(InputUtils::jsonEncodeForScript(gettext('Delete this item?'))) ?>)">
+                          data-confirm="<?= InputUtils::escapeAttribute(gettext('Delete this item?')) ?>">
                       <?= $csrfItemDeleteField ?>
                       <button type="submit" class="dropdown-item text-danger border-0 bg-transparent">
                         <i class="fa-solid fa-trash me-2"></i><?= gettext('Delete') ?>
@@ -211,4 +215,6 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
   </div>
 </div>
 <?php endif; ?>
+<script src="<?= SystemURLs::assetVersioned('/skin/v2/fundraiser-confirm.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
+
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>

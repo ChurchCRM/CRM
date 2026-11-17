@@ -93,6 +93,19 @@ class EmailQueueService
         return $batch;
     }
 
+    /**
+     * How long a run that sends mail may keep starting sends: the web or command-line
+     * limit, or half of `max_execution_time` when that is shorter, so the request ends
+     * cleanly instead of being killed mid-send.
+     */
+    public static function runSeconds(?int $maxSeconds = null): int
+    {
+        $maxSeconds ??= PHP_SAPI === 'cli' ? self::CLI_MAX_SECONDS : self::WEB_MAX_SECONDS;
+        $phpLimit = (int) ini_get('max_execution_time');
+
+        return $phpLimit > 0 ? min($maxSeconds, max(1, intdiv($phpLimit, 2))) : $maxSeconds;
+    }
+
     /** The timer job: every due row, within the limits of the current kind of run. */
     public static function runTimerJob(): void
     {
@@ -114,14 +127,8 @@ class EmailQueueService
             return $counts;
         }
 
-        $cli = PHP_SAPI === 'cli';
-        $maxSeconds ??= $cli ? self::CLI_MAX_SECONDS : self::WEB_MAX_SECONDS;
-        $maxMessages ??= $cli ? self::CLI_MAX_MESSAGES : self::WEB_MAX_MESSAGES;
-        $phpLimit = (int) ini_get('max_execution_time');
-        if ($phpLimit > 0) {
-            $maxSeconds = min($maxSeconds, max(1, intdiv($phpLimit, 2)));
-        }
-        $deadline = microtime(true) + $maxSeconds;
+        $maxMessages ??= PHP_SAPI === 'cli' ? self::CLI_MAX_MESSAGES : self::WEB_MAX_MESSAGES;
+        $deadline = microtime(true) + self::runSeconds($maxSeconds);
 
         $this->releaseAbandonedClaims();
 

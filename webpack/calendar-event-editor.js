@@ -6,6 +6,7 @@
  * surface can render the identical form inline.
  */
 
+import { confirmAction } from "./common/confirm-action";
 import { deleteEvent, renderEventEditor, renderEventViewer, saveEvent, toWallClockString } from "./event-form.js";
 import { escapeHtml } from "./utils/escape-html";
 
@@ -273,17 +274,11 @@ function bindDeleteHandler(event) {
   }
 
   deleteBtn.addEventListener("click", () => {
-    window.bootbox.confirm({
-      title: t("Delete this event?"),
-      message:
-        t("Deleting this event will also delete all attendance records. This cannot be undone.") +
+    confirmAction(
+      t("Delete this event?"),
+      t("Deleting this event will also delete all attendance records. This cannot be undone.") +
         ` <strong>${escapeHtml(event.Title || "")}</strong>`,
-      buttons: {
-        cancel: { label: `<i class="fa-solid fa-xmark"></i> ${t("Cancel")}` },
-        confirm: { label: `<i class="fa-solid fa-trash"></i> ${t("Delete")}`, className: "btn-danger" },
-      },
-      callback: (confirmed) => {
-        if (!confirmed) return;
+      () => {
         deleteEvent(event.Id, CRMRoot)
           .then(() => closeModal())
           .catch((err) => {
@@ -294,7 +289,11 @@ function bindDeleteHandler(event) {
             }
           });
       },
-    });
+      {
+        confirmLabel: `<i class="fa-solid fa-trash"></i> ${t("Delete")}`,
+        cancelLabel: `<i class="fa-solid fa-xmark"></i> ${t("Cancel")}`,
+      },
+    );
   });
 }
 

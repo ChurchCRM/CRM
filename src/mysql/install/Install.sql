@@ -306,6 +306,7 @@ CREATE TABLE `family_fam` (
   `fam_DateDeactivated` date default NULL,
   `fam_Latitude` double default NULL,
   `fam_Longitude` double default NULL,
+  `fam_GeocodeTriedAt` timestamp NULL default NULL,
   `fam_Envelope` mediumint(9) NOT NULL default '0',
   `fam_NeedsReview` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`fam_ID`)
@@ -599,6 +600,9 @@ CREATE TABLE `person_per` (
   `per_DateDeactivated` date DEFAULT NULL,
   `per_NeedsReview` tinyint(1) unsigned NOT NULL default '0',
   `per_grd_ID` mediumint(8) unsigned default NULL,
+  `per_Latitude` double default NULL,
+  `per_Longitude` double default NULL,
+  `per_GeocodeTriedAt` timestamp NULL default NULL,
   PRIMARY KEY  (`per_ID`),
   INDEX `idx_per_fam_ID` (`per_fam_ID`),
   INDEX `idx_per_cls_ID` (`per_cls_ID`),
@@ -807,7 +811,6 @@ CREATE TABLE `user_usr` (
   `usr_currentDeposit` mediumint(9) NOT NULL default '0',
   `usr_UserName` varchar(50) default NULL,
   `usr_apiKey` VARCHAR(255) default NULL,
-  `usr_EditSelf` tinyint(1) unsigned NOT NULL default '0',
   `usr_CalStart` date default NULL,
   `usr_CalEnd` date default NULL,
   `usr_CalNoSchool1` date default NULL,
@@ -840,18 +843,18 @@ INSERT INTO `user_usr` (`usr_per_ID`, `usr_Password`, `usr_NeedPasswordChange`, 
                         `usr_LoginCount`, `usr_FailedLogins`, `usr_AddRecords`, `usr_EditRecords`, `usr_DeleteRecords`,
                         `usr_ManageGroups`, `usr_Finance`, `usr_Notes`, `usr_Admin`,
                         `usr_SearchLimit`, `usr_Style`, `usr_showPledges`,
-                        `usr_showPayments`, `usr_showSince`, `usr_defaultFY`, `usr_currentDeposit`, `usr_UserName`, `usr_EditSelf`,
+                        `usr_showPayments`, `usr_showSince`, `usr_defaultFY`, `usr_currentDeposit`, `usr_UserName`,
                         `usr_CalStart`, `usr_CalEnd`, `usr_CalNoSchool1`, `usr_CalNoSchool2`, `usr_CalNoSchool3`, `usr_CalNoSchool4`,
                         `usr_CalNoSchool5`, `usr_CalNoSchool6`, `usr_CalNoSchool7`, `usr_CalNoSchool8`, `usr_SearchFamily`)
 VALUES
-  (1, '$2y$12$oBq/URJVlaV58kIVAN9oHuDenAzFz8Xe1GneeFdIWEtNdclehz6Hu', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
+  (1, '$2y$12$oBq/URJVlaV58kIVAN9oHuDenAzFz8Xe1GneeFdIWEtNdclehz6Hu', 1, '2016-01-01 00:00:00', 0, 0, 0, 0, 0, 0, 0, 0, 1, 10, 'skin-red', 0, 0, '2016-01-01', 10, 0, 'Admin', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 0);
 
 --
 -- Table structure for table `user_settings`
 --
 
 CREATE TABLE `user_settings` (
-  `user_id` int(11) NOT NULL,
+  `user_id` mediumint(9) unsigned NOT NULL,
   `setting_name` varchar(50) NOT NULL,
   `setting_value` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -871,7 +874,8 @@ INSERT INTO `user_settings` (`user_id`, `setting_name`, `setting_value`) VALUES
 -- Indexes for table `user_settings`
 --
 ALTER TABLE `user_settings`
-  ADD PRIMARY KEY (`user_id`,`setting_name`);
+  ADD PRIMARY KEY (`user_id`,`setting_name`),
+  ADD CONSTRAINT `fk_user_settings_user` FOREIGN KEY (`user_id`) REFERENCES `user_usr` (`usr_per_ID`) ON DELETE CASCADE;
 
 -- --------------------------------------------------------
 
@@ -1467,8 +1471,8 @@ CREATE TABLE `volunteer_calendar_vcal` (
 
 CREATE TABLE `email_log_eml` (
   `eml_ID`        int(10) unsigned      NOT NULL AUTO_INCREMENT,
-  `eml_per_ID`    mediumint(8) unsigned DEFAULT NULL,
-  `eml_fam_ID`    mediumint(8) unsigned DEFAULT NULL,
+  `eml_per_ID`    mediumint(9) unsigned DEFAULT NULL,
+  `eml_fam_ID`    mediumint(9) unsigned DEFAULT NULL,
   `eml_usr_ID`    mediumint(9) unsigned DEFAULT NULL,
   `eml_Address`   varchar(255)          NOT NULL,
   `eml_Kind`      varchar(50)           NOT NULL,
@@ -1486,7 +1490,11 @@ CREATE TABLE `email_log_eml` (
   KEY `idx_eml_fam_ID`   (`eml_fam_ID`),
   KEY `idx_eml_DateSent` (`eml_DateSent`),
   KEY `idx_eml_Status`   (`eml_Status`),
-  KEY `idx_eml_Batch`    (`eml_Batch`)
+  KEY `idx_eml_Batch`    (`eml_Batch`),
+  CONSTRAINT `fk_eml_person` FOREIGN KEY (`eml_per_ID`)
+      REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE,
+  CONSTRAINT `fk_eml_family` FOREIGN KEY (`eml_fam_ID`)
+      REFERENCES `family_fam` (`fam_ID`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -1628,7 +1636,7 @@ CREATE TABLE `portal_signin_audit_psa` (
   PRIMARY KEY (`psa_ID`),
   KEY `psa_person_time_idx` (`psa_per_ID`, `psa_Time`),
   KEY `psa_time_idx`        (`psa_Time`),
-  KEY `psa_email_time_idx`  (`psa_Email`, `psa_Time`),
+  KEY `psa_email_time_idx`  (`psa_Email`(190), `psa_Time`),
   KEY `psa_ip_time_idx`     (`psa_IP`, `psa_Time`),
   CONSTRAINT `fk_psa_person` FOREIGN KEY (`psa_per_ID`)
       REFERENCES `person_per` (`per_ID`) ON DELETE CASCADE

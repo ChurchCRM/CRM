@@ -148,3 +148,5 @@ Generic language skills may live on a developer's own machine. ChurchCRM overrid
 ---
 
 **Last updated:** September 2026
+
+Task ownership and cross-tool handoffs: [AI operating model](../../docs/contributing/ai-operating-model.md).

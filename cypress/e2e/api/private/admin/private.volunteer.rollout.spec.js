@@ -4,7 +4,7 @@
  * Volunteer v2 rollout states — issue #9704, epic #9701.
  *
  * `sVolunteerVersion` is a three-state `choice` SystemConfig item (`v1` | `v2` |
- * `both`, default `v1`). This spec proves the rollout decision is enforced
+ * `both`, default `v2`; the seed stores `v1`). This spec proves the rollout decision is enforced
  * SERVER-SIDE at every boundary the flag touches:
  *
  *   - `GET /api/ministries/status`        — V2 API, gated by VolunteerV2EnabledMiddleware

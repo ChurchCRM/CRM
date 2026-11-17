@@ -32,9 +32,9 @@ $app->get('/', function (Request $request, Response $response): Response {
     if (!empty($params['dateStart'])) {
         $dateStart = InputUtils::legacyFilterInput($params['dateStart']);
         if ($dateStart !== '') {
-            $dateStartObj = \DateTime::createFromFormat($sDateFormat, $dateStart, DateTimeUtils::getConfiguredTimezone());
-            if ($dateStartObj !== false) {
-                $fundraisersQuery->filterByDate($dateStartObj, Criteria::GREATER_EQUAL);
+            $dateStartIso = DateTimeUtils::parseDatePicker($dateStart);
+            if ($dateStartIso !== null) {
+                $fundraisersQuery->filterByDate($dateStartIso, Criteria::GREATER_EQUAL);
             }
         }
     }
@@ -42,9 +42,9 @@ $app->get('/', function (Request $request, Response $response): Response {
     if (!empty($params['dateEnd'])) {
         $dateEnd = InputUtils::legacyFilterInput($params['dateEnd']);
         if ($dateEnd !== '') {
-            $dateEndObj = \DateTime::createFromFormat($sDateFormat, $dateEnd, DateTimeUtils::getConfiguredTimezone());
-            if ($dateEndObj !== false) {
-                $fundraisersQuery->filterByDate($dateEndObj, Criteria::LESS_EQUAL);
+            $dateEndIso = DateTimeUtils::parseDatePicker($dateEnd);
+            if ($dateEndIso !== null) {
+                $fundraisersQuery->filterByDate($dateEndIso, Criteria::LESS_EQUAL);
             }
         }
     }
@@ -293,6 +293,7 @@ $app->post('/editor[/{fundraiserId}]', function (Request $request, Response $res
     $body         = (array) $request->getParsedBody();
 
     $dDate        = InputUtils::legacyFilterInput($body['Date'] ?? '');
+    $dDate        = DateTimeUtils::normalizeDate($dDate) ?: $dDate;
     $sTitle       = InputUtils::legacyFilterInput($body['Title'] ?? '');
     $sDescription = InputUtils::legacyFilterInput($body['Description'] ?? '');
     $sEndDate     = InputUtils::legacyFilterInput($body['EndDate'] ?? '');

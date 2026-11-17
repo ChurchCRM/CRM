@@ -86,7 +86,7 @@ describe("Kiosk - walk-in guest registration in the browser", () => {
         });
         cy.cleanupEvents(createdEventIds);
         if (guestId !== null) {
-            api("DELETE", `/api/person/${guestId}`, null, [200, 404]);
+            cy.cleanupPeople([guestId]);
         }
         if (groupId !== null) {
             api("DELETE", `/api/groups/${groupId}`);
@@ -127,6 +127,9 @@ describe("Kiosk - walk-in guest registration in the browser", () => {
                 cy.get(".kiosk-header .kiosk-church-name", { timeout: 15000 }).should("contain", name);
             }
         });
+        cy.get(".kiosk-header .kiosk-church-logo", { timeout: 15000 })
+            .should("have.attr", "src")
+            .and("include", "/Images/");
 
         cy.get("#registerGuestBtn", { timeout: 15000 }).should("be.visible").click();
         cy.get("#guestRegistrationModal.show").should("be.visible");

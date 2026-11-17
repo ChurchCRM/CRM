@@ -6,6 +6,7 @@ use ChurchCRM\model\ChurchCRM\ListOptionQuery;
 use ChurchCRM\model\ChurchCRM\Person;
 use ChurchCRM\model\ChurchCRM\Person2group2roleP2g2rQuery;
 use ChurchCRM\model\ChurchCRM\PersonQuery;
+use ChurchCRM\Service\FlashService;
 use ChurchCRM\Slim\SlimUtils;
 use ChurchCRM\Utils\InputUtils;
 use ChurchCRM\view\PageHeader;
@@ -91,8 +92,7 @@ $app->post('/{groupID:[0-9]+}/members/{personID:[0-9]+}/role', function (Request
             $p2g2r->save();
         } catch (VolunteerException $e) {
             // Volunteer v2 (D23): the Teacher role of a linked class is managed by a team.
-            $_SESSION['sGlobalMessage']      = $e->getMessage();
-            $_SESSION['sGlobalMessageClass'] = 'danger';
+            FlashService::set($e->getMessage(), 'danger');
 
             return SlimUtils::renderRedirect($response, SystemURLs::getRootPath() . '/groups/view/' . $iGroupID);
         }

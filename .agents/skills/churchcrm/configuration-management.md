@@ -56,7 +56,7 @@ Boolean keys use the `b` prefix (`bEmailMailto`, `bEnableLostPassword`). Always 
 
 ### Resetting to the default
 
-`ConfigItem::setValue()` deletes the `config_cfg` row when the value equals the default and leaves the in-memory value untouched. Within that request `getValue()` still returns the previous value, and a `POST /admin/api/system/config/{name}` response echoes it. Assert with a separate `GET`.
+`ConfigItem::setValue()` deletes the `config_cfg` row when the value equals the default and clears the in-memory value, so `getValue()` returns the default at once.
 
 ### Cross-checking `buildCategories()`
 

@@ -25,3 +25,13 @@ export function absoluteUrl(path, base = Cypress.config("baseUrl")) {
     }
     return href;
 }
+
+/** The install path without a trailing slash: "" for a root install, "/churchcrm" for a subdirectory one. */
+export function basePath(base = Cypress.config("baseUrl")) {
+    return new URL(base).pathname.replace(/\/+$/, "");
+}
+
+/** An href from the app with the install path removed, so `/churchcrm/portal/teams` reads as `/portal/teams`. */
+export function stripBasePath(href, base = Cypress.config("baseUrl")) {
+    return String(href).replace(basePath(base), "");
+}

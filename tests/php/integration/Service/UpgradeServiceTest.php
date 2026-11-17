@@ -24,6 +24,7 @@ $tempRoot = sys_get_temp_dir() . '/crm-upgrade-batches-' . bin2hex(random_bytes(
 mkdir($tempRoot . '/mysql', 0700, true);
 mkdir($tempRoot . '/scripts');
 symlink($root . '/locale', $tempRoot . '/locale');
+symlink($root . '/vendor', $tempRoot . '/vendor');
 file_put_contents($tempRoot . '/composer.json', '{"version":"7.8.1"}');
 SystemURLs::init('', [], $root);
 SystemConfig::init();
@@ -43,7 +44,7 @@ $newDatabase = static function () use ($dsn, $admin, $user, $password, &$schemas
     $container->setConnectionManager($manager);
     $container->setDefaultDatasource('default');
     Propel::disableInstancePooling();
-    require APP_ROOT . '/Include/LoadDatabaseMap.php';
+    require APP_ROOT . '/ChurchCRM/Config/PropelDatabaseMap.php';
     return $db;
 };
 $manifest = static function (array $steps, string $installed = '7.8.1') use ($tempRoot): void {
@@ -109,6 +110,7 @@ try {
         $admin->exec("DROP DATABASE `$schema`");
     }
     unlink($tempRoot . '/locale');
+    unlink($tempRoot . '/vendor');
     foreach (glob($tempRoot . '/scripts/*') as $file) { unlink($file); }
     foreach (glob($tempRoot . '/mysql/*') as $file) { unlink($file); }
     rmdir($tempRoot . '/scripts');

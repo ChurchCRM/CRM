@@ -1,6 +1,5 @@
 const clipsOverflow = (el: Element): boolean => {
-  const { overflowX, overflowY } = getComputedStyle(el);
-  return overflowX !== "visible" || overflowY !== "visible";
+  return getComputedStyle(el).overflowY !== "visible";
 };
 
 const hasClippingAncestor = (toggle: Element): boolean => {

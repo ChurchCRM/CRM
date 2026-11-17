@@ -82,9 +82,9 @@ describe("Member Portal mail in the member's language", () => {
     });
 
     after(() => {
+        setAdminLanguage("en_US");
         signInWithCode();
         saveProfile({ language: "" });
-        setAdminLanguage("en_US");
         restoreSettings(saved);
     });
 

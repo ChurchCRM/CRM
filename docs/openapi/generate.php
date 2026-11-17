@@ -49,6 +49,8 @@ use OpenApi\Generator;
 use OpenApi\Loggers\DefaultLogger;
 use Symfony\Component\Finder\Finder;
 
+require_once __DIR__ . '/OpenApiPaths.php';
+
 $usage = <<<USAGE
 Usage: php generate.php <info-file> [paths...] [options]
 
@@ -289,6 +291,14 @@ $openapi = $generator->generate($filesToScan);
 
 if ($openapi === null) {
     fwrite(STDERR, "Failed to generate OpenAPI spec.\n");
+    exit(1);
+}
+
+try {
+    OpenApiPaths::rewrite($openapi);
+    OpenApiPaths::assertMatchesRoutes($openapi, $filesToScan);
+} catch (RuntimeException $e) {
+    fwrite(STDERR, $e->getMessage() . "\n");
     exit(1);
 }
 

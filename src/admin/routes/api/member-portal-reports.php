@@ -1,6 +1,7 @@
 <?php
 
 use ChurchCRM\Authentication\AuthenticationManager;
+use ChurchCRM\Service\EmailAddressAuditService;
 use ChurchCRM\Service\MemberSignInListService;
 use ChurchCRM\Service\PortalGrantService;
 use ChurchCRM\Service\PortalPermissionsService;
@@ -14,6 +15,20 @@ use Slim\Routing\RouteCollectorProxy;
 // AdminRoleAuthMiddleware gates every route in this app. Every route here only
 // reads.
 $app->group('/api/member-portal', function (RouteCollectorProxy $group): void {
+    /**
+     * @OA\Get(
+     *     path="/admin/api/member-portal/email-audit",
+     *     summary="List invalid stored emails and personal-email collation collisions",
+     *     description="Read-only cleanup report. Collisions use the stored column's case/accent folding; they do not establish a shared sign-in identity.",
+     *     tags={"Member Portal"},
+     *     security={{"ApiKeyAuth":{}}},
+     *     @OA\Response(response=200, description="Invalid personal/work emails and groups of colliding personal emails, with person IDs"),
+     *     @OA\Response(response=403, description="Administrator required")
+     * )
+     */
+    $group->get('/email-audit', function (Request $request, Response $response): Response {
+        return SlimUtils::renderJSON($response, (new EmailAddressAuditService())->report());
+    });
     $group->get('/lists', 'getMemberPortalListSummaryAPI');
     $group->get('/lists/{list}', 'getMemberPortalListAPI');
     $group->get('/audit', 'getMemberSignInAuditAPI');
@@ -71,14 +86,14 @@ function getMemberPortalListSummaryAPI(Request $request, Response $response): Re
  *     path="/admin/api/member-portal/lists/{list}",
  *     operationId="getMemberPortalList",
  *     summary="One page of a Member Portal list (Admin role required)",
- *     description="may-sign-in: the blocks, the member rule and the email rule all let them in. everyone: anyone on file with a maySignIn flag and reasonLabel. signed-in-recently: a portal sign-in in the last 30 days. never-signed-in: may sign in but never has. email-attention: the member rule lets them in but their email does not (no_email, shared_email or email_unconfirmed); an unconfirmed row says whether the caller may confirm it (canConfirmEmail, confirmEmailRefusal) through POST /api/person/{id}/sign-in/confirm-email. families-confirmed: a member confirmed the family's details in the last 30 days. family-emails-not-moved: the 7.8.3 upgrade could not give the family email to a person.",
+ *     description="may-sign-in: the blocks, the member rule and the email rule all let them in. everyone: anyone on file with a maySignIn flag and reasonLabel. signed-in-recently: a portal sign-in in the last 30 days. never-signed-in: may sign in but never has. email-attention: the member rule lets them in but their email does not (no_email, invalid_email, shared_email or email_unconfirmed); an unconfirmed row says whether the caller may confirm it (canConfirmEmail, confirmEmailRefusal) through POST /api/person/{id}/sign-in/confirm-email. families-confirmed: a member confirmed the family's details in the last 30 days. family-emails-not-moved: the 7.8.3 upgrade could not give the family email to a person.",
  *     tags={"Admin"},
  *     security={{"ApiKeyAuth":{}}},
  *     @OA\Parameter(name="list", in="path", required=true, @OA\Schema(type="string", enum={"everyone", "may-sign-in", "signed-in-recently", "never-signed-in", "email-attention", "families-confirmed", "family-emails-not-moved"})),
  *     @OA\Parameter(name="start", in="query", @OA\Schema(type="integer", default=0)),
  *     @OA\Parameter(name="length", in="query", @OA\Schema(type="integer", default=25, maximum=100)),
  *     @OA\Parameter(name="search", in="query", description="Part of a name or email", @OA\Schema(type="string")),
- *     @OA\Parameter(name="problem", in="query", description="email-attention only", @OA\Schema(type="string", enum={"no_email", "shared_email", "email_unconfirmed"})),
+ *     @OA\Parameter(name="problem", in="query", description="email-attention only", @OA\Schema(type="string", enum={"no_email", "invalid_email", "shared_email", "email_unconfirmed"})),
  *     @OA\Parameter(name="kind", in="query", description="email-attention with problem=email_unconfirmed only: moved from the family email, or a replacement after the first sign-in", @OA\Schema(type="string", enum={"family_email", "replacement"})),
  *     @OA\Response(response=200, description="The page",
  *         @OA\JsonContent(

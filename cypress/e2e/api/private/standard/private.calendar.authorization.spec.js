@@ -15,7 +15,7 @@
  * omission cannot come back.
  *
  * Fixtures:
- *   - noperm.user    (id=901) every permission flag 0, EditSelf=0 — read-only
+ *   - noperm.user    (id=901) every permission flag 0 — read-only
  *   - john.plainauth (id=900) Notes=1 only — read-only
  *   - Admin          (id=1)   canManageEvents() === true via isAdmin()
  */
@@ -183,6 +183,25 @@ describe("API Private Calendar Authorization", () => {
                     response.body.Calendars[0].AccessToken,
                     "token survives the rejected delete",
                 ).to.be.a("string").and.not.be.empty;
+            });
+        });
+    });
+
+    describe("GET /api/calendars public feed token", () => {
+        it("Returns the token only to a caller who may administer the calendar", () => {
+            const id = calendarId;
+            cy.makePrivateAdminAPICall("POST", `/api/calendars/${id}/NewAccessToken`, null, 200).then((minted) => {
+                const token = minted.body.AccessToken;
+                cy.makePrivateAdminAPICall("GET", `/api/calendars/${id}`, null, 200).then((response) => {
+                    expect(response.body.Calendars[0].AccessToken).to.eq(token);
+                });
+                cy.makePrivateNoPermAPICall("GET", `/api/calendars/${id}`, null, 200).then((response) => {
+                    expect(response.body.Calendars[0].Name).to.be.a("string").and.not.be.empty;
+                    expect(response.body.Calendars[0].AccessToken).to.be.null;
+                });
+                cy.makePrivateNoPermAPICall("GET", "/api/calendars", null, 200).then((response) => {
+                    expect(response.body.Calendars.map((c) => c.AccessToken)).to.not.include(token);
+                });
             });
         });
     });

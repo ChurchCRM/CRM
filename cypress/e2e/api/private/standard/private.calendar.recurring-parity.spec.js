@@ -221,6 +221,15 @@ describe("API Recurring Event Parity (#9735)", () => {
         );
     });
 
+    it("Rejects a non-ISO date on POST /events/generate-recurring", () => {
+        cy.makePrivateAdminAPICall(
+            "POST",
+            "/api/events/generate-recurring",
+            { eventTypeId, startDate: "June 1, 2040", endDate: "2040-06-30" },
+            400,
+        );
+    });
+
     describe("Shared 366-occurrence cap", () => {
         // Weekly for ten years is ~522 occurrences — over the cap on either
         // endpoint. The old code rejected this on /generate-recurring with a

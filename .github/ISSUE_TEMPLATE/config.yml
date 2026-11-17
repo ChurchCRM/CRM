@@ -6,6 +6,9 @@ contact_links:
   - name: 📚 Documentation
     url: https://docs.churchcrm.io/?utm_source=github&utm_medium=referral&utm_campaign=github_issue_templates&utm_content=config_docs
     about: Check our documentation for answers to common questions before opening an issue
+  - name: 📝 File a Documentation Issue
+    url: https://github.com/ChurchCRM/docs.churchcrm.io/issues/new
+    about: Documentation issues live in the docs repository — report a missing, wrong, or unclear page there, not here
   - name: 💬 Discord — talk it through
     url: https://discord.gg/tuWyFzj3Nj
     about: Live help and conversation. Use Discord when you want support or to chat, instead of only opening a GitHub issue

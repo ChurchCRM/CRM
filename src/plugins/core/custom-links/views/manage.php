@@ -141,33 +141,29 @@ $(document).ready(function() {
         var row = $(this).closest('tr');
         var name = table.row(row).data().Name;
         
-        bootbox.confirm({
-            message: i18next.t("Are you sure you want to delete the link") + ': <strong>' + $('<div>').text(name).html() + '</strong>?',
-            buttons: {
-                confirm: { label: i18next.t('Yes'), className: 'btn-danger' },
-                cancel: { label: i18next.t('No'), className: 'btn-secondary' }
-            },
-            callback: function(result) {
-                if (result) {
-                    fetch(window.CRM.root + '/plugins/custom-links/api/links/' + id, {
-                        method: 'DELETE',
-                        headers: { 'Content-Type': 'application/json' }
-                    })
-                    .then(function(response) { return response.json(); })
-                    .then(function(data) {
-                        if (data.success) {
-                            window.CRM.notify(i18next.t('Link deleted'), { type: 'success' });
-                            table.ajax.reload();
-                        } else {
-                            window.CRM.notify(data.message || i18next.t('Failed to delete link'), { type: 'error' });
-                        }
-                    })
-                    .catch(function() {
-                        window.CRM.notify(i18next.t('Failed to delete link'), { type: 'error' });
-                    });
+        window.CRM.confirmAction(
+          "",
+          i18next.t("Are you sure you want to delete the link") + ': <strong>' + $('<div>').text(name).html() + '</strong>?',
+          () => {
+            fetch(window.CRM.root + '/plugins/custom-links/api/links/' + id, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(function(response) { return response.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    window.CRM.notify(i18next.t('Link deleted'), { type: 'success' });
+                    table.ajax.reload();
+                } else {
+                    window.CRM.notify(data.message || i18next.t('Failed to delete link'), { type: 'error' });
                 }
-            }
-        });
+            })
+            .catch(function() {
+                window.CRM.notify(i18next.t('Failed to delete link'), { type: 'error' });
+            });
+          },
+          { confirmLabel: i18next.t('Yes'), cancelLabel: i18next.t('No') },
+        );
     });
 
     // Form submission

@@ -6,7 +6,7 @@
  * Manages git branch creation, detection, and resumption for /locale-translate skill.
  * Prevents data loss on cloud system timeouts by:
  * - Creating a dedicated locale branch (locale/translate/{VERSION}-{DATE}-{TIME})
- * - Committing and pushing after every locale
+ * - One preflight, then a single commit + push for the whole run, at any size
  * - Supporting resume from interrupted sessions
  *
  * Usage:
@@ -24,7 +24,7 @@ const path = require('path');
 function run(program, args = [], options = {}) {
     try {
         const out = execFileSync(program, args, { encoding: 'utf8', ...options });
-        return out.trim();
+        return (out ?? '').trim();
     } catch (err) {
         if (options.allowFail) return null;
         throw err;
@@ -33,6 +33,22 @@ function run(program, args = [], options = {}) {
 
 function sanitize(str) {
     return String(str).replace(/[\r\n]/g, ' ');
+}
+
+/**
+ * One preflight for the whole run, whatever its size (1 term or 1,000):
+ * dependencies installed and a git identity configured, checked once
+ * before any branch is created or any batch is consumed, so a broken
+ * checkout fails here instead of mid-run.
+ */
+function preflight() {
+    const config = require('./locale-config');
+    if (!fs.existsSync(path.join(config.projectRoot, 'node_modules', 'gettext-parser'))) {
+        throw new Error('Missing dependency: gettext-parser. Run `npm ci` first — nothing was changed.');
+    }
+    if (!run('git', ['config', 'user.name'], { allowFail: true }) || !run('git', ['config', 'user.email'], { allowFail: true })) {
+        throw new Error('Git identity is not configured. Set `git config user.name` and `git config user.email` first — nothing was changed.');
+    }
 }
 
 /**
@@ -95,7 +111,7 @@ function getAutoVersion() {
  * A HHMMSS suffix is appended to guarantee each invocation produces a
  * fresh, unique branch — never reusing a prior day's or prior run's branch.
  * Example: locale/translate/7.1.0-2026-04-01-174530
- * The `locale/translate/` prefix triggers .github/workflows/locale-upload-missing.yml.
+ * The branch becomes a normal PR once the translations are in (no upload happens on push).
  */
 function buildBranchName(version) {
     const date = getTodayDate();
@@ -145,6 +161,7 @@ function getCurrentBranch() {
  * Auto-detects version from package.json if not provided.
  */
 function initBranch(version) {
+    preflight();
     const current = getCurrentBranch();
 
     if (isLocaleBranch(current)) {
@@ -177,32 +194,78 @@ function initBranch(version) {
 }
 
 /**
- * Commit and push translations for one locale or a comma-separated family of locales.
- * Stages explicit paths only: each locale's batch folder plus the english-ok allowlist.
+ * Write the filled batches into the locale JSON (npm run locale:apply -- --json-only),
+ * then commit and push — one pass for the whole run, the same for 1 term or 1,000.
+ * With no locale list (or "all") every locale is applied and committed in a
+ * single commit; a locale list scopes the same flow to one locale or family.
+ * The generated .po/.mo are not carried by translate PRs: the Locale rebuild
+ * workflow regenerates them on master after merge.
+ * Stages explicit paths only: each locale's JSON plus the english-ok allowlist,
+ * the term-context file and the locales' queue folders under
+ * locale/terms/missing (applied terms leave them, so deletions are staged too).
  */
 function commitAndPush(localeCodes, label, termCount) {
-    const codes = String(localeCodes).split(',').map(c => c.trim()).filter(Boolean);
-    const invalid = codes.find(c => !/^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,4})?$/.test(c));
-    if (codes.length === 0 || invalid) {
-        throw new Error(`Invalid locale code: ${sanitize(invalid ?? localeCodes)}`);
+    preflight();
+
+    const repo = require('./lib/locale-repo');
+    const config = require('./locale-config');
+    const allTargets = repo.targetLocales();
+
+    let codes;
+    if (!localeCodes || localeCodes === 'all') {
+        codes = allTargets.map(t => t.code);
+    } else {
+        codes = String(localeCodes).split(',').map(c => c.trim()).filter(Boolean);
+        const invalid = codes.find(c => !/^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,4})?$/.test(c));
+        if (codes.length === 0 || invalid) {
+            throw new Error(`Invalid locale code: ${sanitize(invalid ?? localeCodes)}`);
+        }
     }
 
     const branch = getCurrentBranch();
-    const message = `locale: translate ${codes.join(', ')} (${label}, ${termCount} terms)`;
+    if (!isLocaleBranch(branch)) throw new Error('Use a locale/translate branch before committing translations.');
+    if (!/^\d+$/.test(String(termCount))) throw new Error('Term count must be a non-negative integer.');
+    const message = codes.length <= 8
+        ? `locale: translate ${codes.join(', ')} (${label}, ${termCount} terms)`
+        : `locale: translate ${codes.length} locales (${label}, ${termCount} terms)\n\nLocales: ${codes.join(', ')}`;
 
+    const targets = repo.selectLocales(allTargets, codes.join(','));
+    const allowed = targets.map((t) => path.relative(config.projectRoot, repo.paths(t).json));
+    allowed.push('locale/terms/english-ok.json', 'locale/terms/context.json');
+    const queues = targets.map((t) => path.relative(config.projectRoot, repo.paths(t).batches));
+    const staged = run('git', ['diff', '--cached', '--name-only', '-z']).split('\0').filter(Boolean);
+    if (staged.some((f) => !allowed.includes(f) && !queues.some((q) => f.startsWith(q + '/')))) {
+        throw new Error('Commit or unstage unrelated staged files before committing translations.');
+    }
+
+    console.log(`\n  🧩 Writing ${codes.join(', ')} into the locale JSON...`);
+    execFileSync(process.execPath, [path.join(__dirname, 'locale-apply.js'), '--locale', codes.join(','), '--json-only'], { stdio: 'inherit' });
+
+    const files = targets.map((t) => path.relative(config.projectRoot, repo.paths(t).json));
     console.log(`\n  📝 Committing to ${branch}...`);
-    run('git', ['add', ...codes.map(c => `locale/terms/missing/${c}/`), 'locale/terms/english-ok.json']);
-    run('git', ['commit', '-m', message]);
+    const extra = ['locale/terms/english-ok.json', 'locale/terms/context.json']
+        .filter((f) => fs.existsSync(path.join(config.projectRoot, f)));
+    run('git', ['add', '--', ...files, ...extra], { cwd: config.projectRoot });
+    const queueFiles = run('git', ['ls-files', '--cached', '--others', '--exclude-standard', '-z', '--', ...queues], { cwd: config.projectRoot })
+        .split('\0').filter(Boolean);
+    if (queueFiles.length) run('git', ['add', '--', ...queueFiles], { cwd: config.projectRoot });
+    if (run('git', ['diff', '--cached', '--name-only'])) {
+        run('git', ['status', '--short'], { stdio: 'inherit' });
+        run('git', ['diff', '--cached', '--name-status'], { stdio: 'inherit' });
+        run('git', ['commit', '-m', message]);
+    } else {
+        console.log('  ✅ Locale already committed; retrying the push.');
+    }
 
     console.log(`  ⬆️  Pushing to origin/${branch}...`);
-    run('git', ['push', 'origin', branch]);
+    run('git', ['push', '-u', 'origin', branch]);
 
     console.log(`  ✅ Committed and pushed\n`);
 }
 
 /**
  * Get list of already-translated locales on current branch
- * by checking what has been pushed
+ * from local checkpoints, including commits waiting for a push
  */
 function getTranslatedLocales() {
     const branch = getCurrentBranch();
@@ -210,17 +273,24 @@ function getTranslatedLocales() {
 
     // Get commits unique to this branch vs master
     const commits = run(
-        'git', ['log', `origin/master..origin/${branch}`, '--pretty=format:%B'],
+        'git', ['log', 'master..HEAD', '--pretty=format:%B'],
         { allowFail: true }
     );
     if (!commits) return [];
 
     // Extract locale codes from commit messages
-    // Format: "locale: translate xx (Language Name, NNN terms)" or "locale: translate xx, yy (Family, NNN terms)"
-    const regex = /locale: translate ([^(\n]+) \(/g;
+    // Formats: "locale: translate xx (Language Name, NNN terms)",
+    // "locale: translate xx, yy (Family, NNN terms)", and the whole-run form
+    // "locale: translate N locales (..., NNN terms)" with a "Locales: xx, yy" body line.
     const locales = [];
+    const regex = /locale: translate ([^(\n]+) \(/g;
     let match;
     while ((match = regex.exec(commits)) !== null) {
+        if (/^\d+ locales$/.test(match[1].trim())) continue;
+        locales.push(...match[1].split(',').map(code => code.trim()).filter(Boolean));
+    }
+    const bodyRegex = /(?:^|\n)Locales: ([^\n]+)/g;
+    while ((match = bodyRegex.exec(commits)) !== null) {
         locales.push(...match[1].split(',').map(code => code.trim()).filter(Boolean));
     }
     return [...new Set(locales)]; // dedupe
@@ -289,11 +359,15 @@ Usage:
     Extract version from current locale branch (e.g., 7.1.0)
 
   node locale/scripts/locale-branch-manager.js --commit-and-push \\
-    --locale <code[,code...]> --language "<name>" --terms <count>
-    Commit and push translations for one locale or a language family
-    Stages only the locales' batch folders and locale/terms/english-ok.json
+    [--locale <code[,code...]> --language "<name>"] --terms <count>
+    One pass for the whole run (the same for 1 term or 1,000): applies the
+    filled batches to the locale JSON and commits + pushes once. Omit
+    --locale/--language to commit every locale in a single commit; a locale
+    list scopes the same flow to one locale or a language family.
+    Stages only the locales' JSON, queue folders, locale/terms/english-ok.json
+    and locale/terms/context.json (generated .po/.mo are rebuilt on master)
+    Example: --commit-and-push --terms 301
     Example: --commit-and-push --locale fr --language "French - France" --terms 154
-    Example: --commit-and-push --locale es,es-MX,es-AR --language "Spanish" --terms 190
 
   node locale/scripts/locale-branch-manager.js --get-translated
     List locale codes that have been translated on current branch
@@ -341,11 +415,11 @@ function main() {
                 break;
 
             case 'commit-and-push':
-                if (!opts.locale || !opts.language || !opts.terms) {
-                    console.error('❌ --locale, --language, and --terms required');
+                if (!opts.terms || (opts.locale && !opts.language)) {
+                    console.error('❌ --terms required; --language required when --locale is given (omit both to commit the whole run)');
                     process.exit(1);
                 }
-                commitAndPush(opts.locale, opts.language, opts.terms);
+                commitAndPush(opts.locale || null, opts.language || 'All locales', opts.terms);
                 break;
 
             case 'get-translated':

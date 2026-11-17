@@ -48,6 +48,7 @@ declare namespace Cypress {
      * Assert a staff page is signed in: the user menu is there and the sign-in form is not.
      */
     expectStaffSignedIn(options?: { timeout?: number }): Chainable<void>;
+    dismissSystemNotifications(): Chainable<void>;
 
     setupLoginSession(
       sessionName: string,
@@ -131,7 +132,7 @@ declare namespace Cypress {
      * an authenticated browser session for that user.
      *
      * localeValue must be the locale field from src/locale/locales.json
-     * (e.g. 'ar_EG', 'zh_CN', 'de_DE' — NOT the poEditor code).
+     * (e.g. 'ar_EG', 'zh_CN', 'de_DE' — NOT the locale code).
      *
      * Designed for locale smoke tests only; never touches system-wide sLanguage config.
      * @param localeValue - The locale field value from locales.json
@@ -286,7 +287,7 @@ declare namespace Cypress {
     ): Chainable<any>;
 
     /**
-     * Make API request as a plain authenticated user (john.plainauth, no EditSelf/EditRecords/Admin)
+     * Make API request as a plain authenticated user (john.plainauth, no EditRecords/Admin)
      * Used for testing that read access is available to all authenticated users by default.
      * User has Notes=1 (passes AuthMiddleware) but no edit or admin capabilities.
      * @param method - HTTP method
@@ -341,7 +342,7 @@ declare namespace Cypress {
 
     /**
      * Zero-permission user (noperm.user, id=901): every permission flag 0,
-     * usr_EditSelf=0, non-admin. Passes AuthMiddleware under the read-default
+     * Non-admin. Passes AuthMiddleware under the read-default
      * policy (#9003) with read-only access, so every write route must answer
      * 403 for it. Use to prove a write route carries a role gate at all.
      */
@@ -387,10 +388,14 @@ declare namespace Cypress {
      */
     createPersonWithBirthday(personData: {
       name: string;
-      month: number;
-      day: number;
+      month?: number;
+      day?: number;
       year?: number | null;
       lastName?: string;
+      email?: string;
+      createFamily?: boolean;
+      familyId?: number;
+      familyRole?: number;
     }): Chainable<number>;
 
     /**
@@ -398,6 +403,13 @@ declare namespace Cypress {
      * @param name - The name of the person to delete
      */
     deletePersonByName(name: string): Chainable<void>;
+
+    /**
+     * Store a family's envelope number through the Envelope Manager as the admin, then sign out
+     * @param familyId - The family to number
+     * @param envelope - The envelope number; 0 clears it
+     */
+    setFamilyEnvelope(familyId: number, envelope: number): Chainable<void>;
 
     /**
      * Create multiple people via CSV import to bypass UI validation
@@ -628,7 +640,7 @@ declare namespace Cypress {
     endDeviceTokenGrace(personId: number): Chainable<void>;
 
     /**
-     * Wait for a Notyf notification with specific text
+     * Wait for a toast notification with specific text
      * Ensures locales are loaded first (for i18next translations) and verifies notification content
      * @param expectedText - The text to find in the notification
      * @param options - Optional config { timeout: 5000 }

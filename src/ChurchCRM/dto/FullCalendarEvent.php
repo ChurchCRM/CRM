@@ -58,8 +58,15 @@ class FullCalendarEvent
             $fce->url = $url;
         }
 
-        // Build extendedProps from description and holiday metadata
-        $extendedProps = [];
+        // Identity of the calendar this copy was loaded from. The staff calendar
+        // fetches one feed per calendar, so an event pinned to two calendars
+        // arrives twice; the client collapses those copies and uses this to
+        // show both calendars on the one chip that remains.
+        $extendedProps = [
+            'calendarId' => (int) $CRMCalendar->getId(),
+            'calendarName' => (string) $CRMCalendar->getName(),
+            'calendarColor' => '#' . $CRMCalendar->getBackgroundColor(),
+        ];
 
         $desc = $CRMEvent->getDesc();
         if ($desc) {
@@ -87,9 +94,7 @@ class FullCalendarEvent
             $extendedProps['volunteerStaffed'] = (bool) $volunteerStaffing['staffed'];
         }
 
-        if (!empty($extendedProps)) {
-            $fce->extendedProps = $extendedProps;
-        }
+        $fce->extendedProps = $extendedProps;
 
         return $fce;
     }

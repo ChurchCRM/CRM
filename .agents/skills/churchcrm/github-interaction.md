@@ -9,6 +9,12 @@ complexity: "beginner"
 
 Actionable companion to `git-workflow.md` (policy). Full PR review workflow: [`pr-review.md`](./pr-review.md). PR body structure: `.agents/skills/pr-description-guidelines.md`.
 
+## Where issues live
+
+- Product bugs, features, and tasks: this repository (ChurchCRM/CRM).
+- Documentation issues — a missing, wrong, or unclear page, or a how-to request: the docs repository, [ChurchCRM/docs.churchcrm.io](https://github.com/ChurchCRM/docs.churchcrm.io/issues). Never file a documentation issue in this repository.
+- When a CRM issue closes and leaves a documentation gap, file the docs issue in the docs repository and comment on the CRM issue with the link, so the trail runs both ways.
+
 ## Addressing reviews
 
 - Read comments and ask clarifying questions where needed
@@ -28,7 +34,7 @@ rm -f src/logs/$(date +%Y-%m-%d)-*.log
 
 ## Create a PR
 
-- Push the branch once the latest user message approves it (`git-workflow.md` → Commit freely, push only on approval): `git push origin <branch>`
+- Push the branch under the task approval (`git-workflow.md` → Task approval covers commit and push): `git push origin <branch>`
 - Create the PR from the template:
 
 ```bash

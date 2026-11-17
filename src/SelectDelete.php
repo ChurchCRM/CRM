@@ -130,7 +130,7 @@ require_once __DIR__ . '/Include/Header.php';
             function moveDonations() {
                 var targetFamilyId = document.querySelector('select[name=DonationFamilyID]').value;
                 if (!targetFamilyId || targetFamilyId == '0') {
-                    bootbox.alert(<?= InputUtils::jsonEncodeForScript(gettext('Please select a target family.')) ?>);
+                    window.CRM.notify(<?= InputUtils::jsonEncodeForScript(gettext('Please select a target family.')) ?>, { type: "danger", delay: 6000 });
                     return;
                 }
                 fetch(window.CRM.root + '/api/family/<?= (int)$iFamilyID ?>/donations/move', {
@@ -141,10 +141,10 @@ require_once __DIR__ . '/Include/Header.php';
                 .then(function(r) { return r.json(); })
                 .then(function(data) {
                     if (data.success) { window.location.reload(); }
-                    else { bootbox.alert(data.message || <?= InputUtils::jsonEncodeForScript(gettext('Failed to move donations.')) ?>); }
+                    else { window.CRM.notify(window.CRM.escapeHtml(data.message ||  <?= InputUtils::jsonEncodeForScript(gettext('Failed to move donations.')) ?>), { type: "danger", delay: 6000 }); }
                 })
                 .catch(function() {
-                    bootbox.alert(<?= InputUtils::jsonEncodeForScript(gettext('An error occurred while moving donations.')) ?>);
+                    window.CRM.notify(<?= InputUtils::jsonEncodeForScript(gettext('An error occurred while moving donations.')) ?>, { type: "danger", delay: 6000 });
                 });
             }
             </script>
@@ -250,11 +250,11 @@ require_once __DIR__ . '/Include/Header.php';
                         if (data.success) {
                             window.location.href = window.CRM.root + '/people/family';
                         } else {
-                            bootbox.alert(data.message || <?= InputUtils::jsonEncodeForScript(gettext('Delete failed')) ?>);
+                            window.CRM.notify(window.CRM.escapeHtml(data.message ||  <?= InputUtils::jsonEncodeForScript(gettext('Delete failed')) ?>), { type: "danger", delay: 6000 });
                         }
                     })
                     .catch(function() {
-                        bootbox.alert(<?= InputUtils::jsonEncodeForScript(gettext('An error occurred while deleting the family.')) ?>);
+                        window.CRM.notify(<?= InputUtils::jsonEncodeForScript(gettext('An error occurred while deleting the family.')) ?>, { type: "danger", delay: 6000 });
                     });
                 }
                 </script>

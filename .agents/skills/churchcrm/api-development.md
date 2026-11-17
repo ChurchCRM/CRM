@@ -180,7 +180,9 @@ Run: `npx cypress run --config-file cypress/configs/docker.config.ts --spec "<pa
 
 ## OpenAPI documentation
 
-`zircote/swagger-php` generates OpenAPI 3.0 specs from `@OA\*` DocBlock annotations; the specs power the public API reference. Add or update the annotation for every API endpoint. `.github/workflows/docs.yml` regenerates and validates the spec on API-touching PRs. Required content: path, request/response schemas, parameter descriptions and types, error codes (400, 401, 403, 404), example payloads.
+`zircote/swagger-php` generates OpenAPI 3.0 specs from `@OA\*` DocBlock annotations. There are two specs: public (no auth) and private (API key). Add or update the annotation for every API endpoint. `.github/workflows/docs.yml` regenerates the spec on API-touching PRs and fails when a documented path is not a Slim route. Required content: path, request/response schemas, parameter descriptions and types, error codes (400, 401, 403, 404), example payloads.
+
+Write the annotation path the way the Slim app registers it (`/events` under `src/api/routes/`, `/api/user/{userId}/` under `src/admin/routes/api/`). The generator rewrites it to the site path and the spec server is the install root, `{scheme}://{host}{basePath}`. `docs.churchcrm.io` serves the spec from the tag in `crm-release.json`.
 
 Named functions take the DocBlock immediately above the `function`:
 

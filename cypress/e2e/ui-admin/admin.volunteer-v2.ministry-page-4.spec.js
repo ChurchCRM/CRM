@@ -420,7 +420,7 @@ describe("Volunteer v2 ministry page, round four (#9701)", () => {
             positionRow(POSITION_QUIET).should("not.contain", "Deactivate");
             positionRow(POSITION_QUIET).find(".volunteer-position-cart").should("contain", "Add Volunteers to Cart").click();
             // The core cart's own notification is the signal the POST came back.
-            cy.get(".notyf__toast", { timeout: 10000 }).should("be.visible");
+            cy.get("#crm-toasts .toast", { timeout: 10000 }).should("be.visible");
 
             adminApi("GET", "/api/cart/", null, 200).then((resp) => {
                 expect(resp.body.PeopleCart.map((row) => Number(row.PersonID ?? row.personId ?? row))).to.include(4);

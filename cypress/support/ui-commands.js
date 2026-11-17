@@ -8,6 +8,22 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
+// A remote notice (External/notifications.json) can land on the first page after sign-in and push the
+// layout down. Dismiss it the way a user does so it is saved per user and never rendered again.
+Cypress.Commands.add('dismissSystemNotifications', () => {
+    cy.window().its('CRM.userId').should('exist');
+    cy.get('body').then($body => {
+        const $buttons = $body.find('.crm-system-notification .js-dismiss-notification');
+        if ($buttons.length === 0) {
+            return;
+        }
+        cy.intercept('POST', '**/api/user/*/setting/notification.dismissed.*').as('dismissNotification');
+        cy.wrap($buttons).click({ multiple: true });
+        cy.wait(Array($buttons.length).fill('@dismissNotification'));
+        cy.get('.crm-system-notification').should('not.exist');
+    });
+});
+
 // Staff sign-in lives at /session/begin; a successful login is proved by the
 // user menu's Sign out link.
 Cypress.Commands.add('expectStaffSignedIn', (options = {}) => {
@@ -43,6 +59,7 @@ Cypress.Commands.add('setupLoginSession', (sessionName, username, password, opti
             cy.get('input[name=User]').type(username);
             cy.get('input[name=Password]').type(password + '{enter}');
             cy.expectStaffSignedIn();
+            cy.dismissSystemNotifications();
         },
         {
             validate: validate ?? defaultValidate
@@ -199,6 +216,17 @@ Cypress.Commands.add('createPersonWithBirthday', (personData) => {
     cy.get('#FirstName').type(personData.name);
     cy.get('#LastName').type(personData.lastName ?? 'TestUser');
     cy.get('#Gender').select('1');
+    if (personData.email) {
+        cy.get('#Email').type(personData.email);
+    }
+
+    if (personData.createFamily) {
+        cy.get('#familyId').select('-1', { force: true });
+        cy.get('#FamilyRole').select('1', { force: true });
+    } else if (personData.familyId) {
+        cy.get('#familyId').select(String(personData.familyId), { force: true });
+        cy.get('#FamilyRole').select(String(personData.familyRole ?? 2), { force: true });
+    }
 
     if (personData.month > 0) {
         cy.get('#BirthMonth').select(padded(personData.month));
@@ -217,6 +245,28 @@ Cypress.Commands.add('createPersonWithBirthday', (personData) => {
     cy.url().should('match', /people\/view\/\d+/);
 
     return cy.url().then((url) => Number(/\/people\/view\/(\d+)/.exec(url)[1]));
+});
+
+/**
+ * Stores a family's envelope number through the Envelope Manager as the admin, then signs out.
+ */
+Cypress.Commands.add('setFamilyEnvelope', (familyId, envelope) => {
+    cy.clearCookies();
+    cy.readEnv('admin.username').then((username) =>
+        cy.readEnv('admin.password').then((password) =>
+            cy.request({ method: 'POST', url: '/session/begin', form: true, body: { User: username, Password: password } }),
+        ),
+    );
+    cy.request('/finance/envelopes').then(({ body }) => {
+        const csrfToken = body.match(/name="csrf_token" value="([^"]+)"/)[1];
+        cy.request({
+            method: 'POST',
+            url: '/finance/envelopes',
+            form: true,
+            body: { csrf_token: csrfToken, action: 'save', [`envelopes[${familyId}]`]: String(envelope) },
+        });
+    });
+    cy.clearCookies();
 });
 
 /**
@@ -542,7 +592,7 @@ Cypress.Commands.add('waitForLocales', (timeout = 10000) => {
 });
 
 /**
- * Wait for a Notyf notification with specific text
+ * Wait for a toast notification with specific text
  * Ensures locales are loaded first (for i18next translations) and verifies notification content
  * @param {string} expectedText - The text to find in the notification
  * @param {object} options - Optional config { timeout: 5000 }
@@ -555,7 +605,7 @@ Cypress.Commands.add('waitForNotification', (expectedText, options = {}) => {
     cy.waitForLocales(timeout);
     
     // Wait for notification toast to appear and contain the expected text
-    cy.get('.notyf__toast', { timeout })
+    cy.get('#crm-toasts .toast', { timeout })
         .should('be.visible')
         .should('contain', expectedText);
 });

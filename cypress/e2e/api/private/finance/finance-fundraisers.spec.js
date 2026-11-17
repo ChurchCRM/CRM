@@ -178,6 +178,12 @@ describe("API Private Fundraisers", () => {
                     expect(updateResp.body.fundraiser.date).to.equal(
                         "2026-12-31",
                     );
+                    cy.makePrivateAdminAPICall(
+                        "PUT",
+                        `/api/fundraisers/${id}`,
+                        { date: updateResp.body.fundraiser.date },
+                        200,
+                    );
                 });
                 cy.makePrivateAdminAPICall(
                     "DELETE",
@@ -381,6 +387,18 @@ describe("API Private Fundraisers", () => {
                 const calendar = response.body.Calendars.find((c) => c.Name === "Fundraisers");
                 expect(calendar).to.exist;
                 expect(calendar).to.have.property("Id");
+            });
+        });
+
+        it("Is hidden from a user who may not manage fundraisers", () => {
+            cy.makePrivateNoManageFundraisersAPICall("GET", "/api/systemcalendars", null, 200).then((response) => {
+                expect(response.body.Calendars.map((c) => c.Name)).to.not.include("Fundraisers");
+            });
+            cy.makePrivateAdminAPICall("GET", "/api/systemcalendars", null, 200).then((response) => {
+                const calendar = response.body.Calendars.find((c) => c.Name === "Fundraisers");
+                ["events", "events/1", "fullcalendar"].forEach((path) => {
+                    cy.makePrivateNoManageFundraisersAPICall("GET", `/api/systemcalendars/${calendar.Id}/${path}`, null, 404);
+                });
             });
         });
 

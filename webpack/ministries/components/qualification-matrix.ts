@@ -1,3 +1,4 @@
+import { confirmAction } from "../../common/confirm-action";
 /**
  * The qualification matrix — people down the side, positions across the top, a
  * checkbox in every cell (#9707, design §5.4).
@@ -38,7 +39,6 @@ import {
 import {
   actionMenu,
   byId,
-  confirmDelete,
   escapeAttribute,
   escapeHtml,
   hideModal,
@@ -387,7 +387,7 @@ export function createQualificationMatrix(options: QualificationMatrixOptions): 
       const personId = Number(target.dataset.personId);
       const personName = target.dataset.personName ?? "";
 
-      confirmDelete(
+      confirmAction(
         i18next.t("Remove Volunteer"),
         i18next.t(
           "Remove {{name}} from {{ministry}}? This removes all their qualifications here, takes them off every future occurrence, clears them as a default volunteer on this ministry's schedules, and removes them from the volunteer pool.",

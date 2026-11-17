@@ -2,6 +2,7 @@
 
 namespace ChurchCRM\Utils;
 
+use ChurchCRM\Bootstrapper;
 use ChurchCRM\dto\SystemConfig;
 
 class FunctionsUtils
@@ -17,16 +18,16 @@ class FunctionsUtils
      */
     public static function runQuery(string $sSQL, bool $bStopOnError = true)
     {
-        global $cnInfoCentral;
+        $connection = Bootstrapper::getMysqliConnection();
+
+        mysqli_query($connection, "SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
         
-        mysqli_query($cnInfoCentral, "SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
-        
-        if ($result = mysqli_query($cnInfoCentral, $sSQL)) {
+        if ($result = mysqli_query($connection, $sSQL)) {
             return $result;
         } elseif ($bStopOnError) {
-            LoggerUtils::getAppLogger()->error(gettext('Cannot execute query.') . " " . $sSQL . " -|- " . mysqli_error($cnInfoCentral));
+            LoggerUtils::getAppLogger()->error(gettext('Cannot execute query.') . " " . $sSQL . " -|- " . mysqli_error($connection));
             if (SystemConfig::getValue('sLogLevel') == "100") { // debug level
-                throw new \Exception(gettext('Cannot execute query.') . "<p>$sSQL<p>" . mysqli_error($cnInfoCentral));
+                throw new \Exception(gettext('Cannot execute query.') . "<p>$sSQL<p>" . mysqli_error($connection));
             } else {
                 throw new \Exception('Database error or invalid data, change sLogLevel to debug to see more.');
             }
@@ -49,16 +50,16 @@ class FunctionsUtils
      */
     public static function runPreparedQuery(string $sSQL, string $types = '', array $params = [], bool $bStopOnError = true)
     {
-        global $cnInfoCentral;
+        $connection = Bootstrapper::getMysqliConnection();
 
-        mysqli_query($cnInfoCentral, "SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
+        mysqli_query($connection, "SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
 
-        $stmt = mysqli_prepare($cnInfoCentral, $sSQL);
+        $stmt = mysqli_prepare($connection, $sSQL);
         if ($stmt === false) {
             if ($bStopOnError) {
-                LoggerUtils::getAppLogger()->error(gettext('Cannot prepare query.') . ' ' . $sSQL . ' -|- ' . mysqli_error($cnInfoCentral));
+                LoggerUtils::getAppLogger()->error(gettext('Cannot prepare query.') . ' ' . $sSQL . ' -|- ' . mysqli_error($connection));
                 if (SystemConfig::getValue('sLogLevel') == '100') {
-                    throw new \Exception(gettext('Cannot prepare query.') . "<p>$sSQL<p>" . mysqli_error($cnInfoCentral));
+                    throw new \Exception(gettext('Cannot prepare query.') . "<p>$sSQL<p>" . mysqli_error($connection));
                 } else {
                     throw new \Exception('Database error or invalid data, change sLogLevel to debug to see more.');
                 }

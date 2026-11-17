@@ -139,23 +139,22 @@ function cleanupFixtures() {
 }
 
 /**
- * The collapse container of a top-level sidebar heading, found by its own
- * label. `MenuRenderer::renderSubMenuItem()` gives the heading an anchor with
- * `data-bs-toggle="collapse"` whose href is the `#menu-N` id of the container,
- * and nothing else on the page carries an id — so the href IS the selector.
+ * The dropdown menu of a sidebar heading, found by its own label.
+ * `MenuRenderer` gives the heading an anchor with `data-bs-toggle="dropdown"`
+ * whose href is the `#menu-N` id of the menu.
  */
 function menuSection(title) {
     return cy
-        .get("a[data-bs-toggle='collapse'] .nav-link-title")
+        .get("#sidebar a[data-bs-toggle='dropdown'] .nav-link-title")
         .filter((_i, el) => el.textContent.trim() === title)
         .should("have.length", 1)
-        .parents("a[data-bs-toggle='collapse']")
+        .parents("a[data-bs-toggle='dropdown']")
         .invoke("attr", "href")
         .then((href) => cy.get(href));
 }
 
 function menuSectionShouldNotExist(title) {
-    cy.get("a[data-bs-toggle='collapse'] .nav-link-title")
+    cy.get("#sidebar a[data-bs-toggle='dropdown'] .nav-link-title")
         .filter((_i, el) => el.textContent.trim() === title)
         .should("have.length", 0);
 }
@@ -225,8 +224,8 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
                 // ministry page — never a member page. The count itself is not
                 // asserted: an administrator sees every ministry, and another
                 // spec's fixture may still be around. The nested Deactivated
-                // Ministries group's own toggle is a collapse anchor, not a link.
-                cy.get("a.nav-link:not([data-bs-toggle])").each(($link) => {
+                // Ministries group's own toggle is a dropdown anchor, not a link.
+                cy.get("a.dropdown-item:not([data-bs-toggle])").each(($link) => {
                     expect($link.attr("href")).to.match(
                         /\/(ministries\/(dashboard|\d+)|admin\/ministry-settings)$/,
                     );
@@ -411,8 +410,8 @@ describe("Volunteer v2 — the Ministries sidebar heading", () => {
         it("sees the Ministries heading with Dashboard and their team's ministry, opening the team view (#10530)", () => {
             menuSection("Ministries").within(() => {
                 cy.get(`a[href$="${DASHBOARD_URL}"]`).should("exist");
-                cy.get("a.nav-link").should("have.length", 2);
-                cy.contains("a.nav-link", MINISTRY_A).click();
+                cy.get("a.dropdown-item").should("have.length", 2);
+                cy.contains("a.dropdown-item", MINISTRY_A).click();
             });
             cy.location("pathname").should("match", new RegExp(`/ministries/${ministryA}$`));
             cy.contains("Your teams:").should("exist");

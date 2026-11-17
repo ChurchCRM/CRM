@@ -89,9 +89,6 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
 
                                     <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Date Picker Format') ?></dt>
                                     <dd class="col-5 mb-1 text-end fw-medium format-preview-value" data-source="sDatePickerFormat" data-kind="date">&mdash;</dd>
-
-                                    <dt class="col-7 fw-normal text-body-secondary"><?= gettext('Date Picker Placeholder') ?></dt>
-                                    <dd class="col-5 mb-0 text-end fw-medium format-preview-value" data-source="sDatePickerPlaceHolder" data-kind="literal">&mdash;</dd>
                                 </dl>
                             </div>
                         </div>
@@ -305,19 +302,6 @@ $sGlobalMessageClass = $sGlobalMessageClass ?? 'success';
                                    placeholder="Y-m-d">
                             <small class="form-text text-body-secondary">
                                 <?= gettext('PHP format for date picker inputs. Default: Y-m-d') ?>
-                            </small>
-                        </div>
-                        <div class="mb-3 col-md-4">
-                            <label class="form-label" for="sDatePickerPlaceHolder"><?= gettext('Date Picker Placeholder') ?></label>
-                            <input type="text"
-                                   class="form-control"
-                                   id="sDatePickerPlaceHolder"
-                                   name="sDatePickerPlaceHolder"
-                                   value="<?= InputUtils::escapeHTML($localeSettings['sDatePickerPlaceHolder']) ?>"
-                                   maxlength="50"
-                                   placeholder="yyyy-mm-dd">
-                            <small class="form-text text-body-secondary">
-                                <?= gettext('Hint text shown in date inputs. Default: yyyy-mm-dd') ?>
                             </small>
                         </div>
                     </div>

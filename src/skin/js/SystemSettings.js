@@ -5,7 +5,7 @@ function getRender(key, value, depth) {
     .css("margin-left", depth * 15 + "px");
   if (value instanceof Object) {
     $("<label>").text(key).appendTo(sr);
-    $.each(value, function (key, value) {
+    $.each(value, (key, value) => {
       sr.append(getRender(key, value, depth + 1));
     });
   } else {
@@ -20,7 +20,7 @@ $(".jsonSettingsEdit").on("click", function (event) {
   cfgid = $(this).data("cfgid");
   var cfgvalue = jQuery.parseJSON($("input[name='new_value[" + cfgid + "]']").val());
   $("#JSONSettingsDiv").html("");
-  $.each(cfgvalue, function (key, value) {
+  $.each(cfgvalue, (key, value) => {
     $("#JSONSettingsDiv").append(getRender(key, value, 0));
   });
 
@@ -47,8 +47,8 @@ function updateDropDrownFromAjax(selectObj) {
     url: window.CRM.root + selectObj.data("url"),
     dataType: "json",
     encode: true,
-  }).done(function (data) {
-    $.each(data, function (index, config) {
+  }).done((data) => {
+    $.each(data, (index, config) => {
       var optSelected = config.id == selectObj.data("value");
       var opt = new Option(config.value, config.id, optSelected, optSelected);
       selectObj.append(opt);
@@ -56,7 +56,7 @@ function updateDropDrownFromAjax(selectObj) {
   });
 }
 
-$(".jsonSettingsClose").on("click", function (event) {
+$(".jsonSettingsClose").on("click", (event) => {
   var settings = getFormValue($("#JSONSettingsDiv"));
   $("input[name='new_value[" + cfgid + "]']").val(JSON.stringify(settings));
   $("#JSONSettingsModal").modal("hide");
@@ -64,11 +64,7 @@ $(".jsonSettingsClose").on("click", function (event) {
 });
 
 $(".setting-tip").click(function () {
-  bootbox.alert({
-    message: $(this).data("tip"),
-    backdrop: true,
-    className: "setting-tip-box",
-  });
+  window.CRM.alertAction("", $(this).data("tip"), { backdrop: true, className: "setting-tip-box" });
 });
 
 $("#sendTestBirthdayEmail").on("click", function (event) {
@@ -84,14 +80,14 @@ $("#sendTestBirthdayEmail").on("click", function (event) {
     url: window.CRM.root + "/admin/api/admin/birthday-emails/test",
     dataType: "json",
   })
-    .done(function (data) {
+    .done((data) => {
       $result.addClass("text-success").text(data.message);
     })
-    .fail(function (jqXHR) {
+    .fail((jqXHR) => {
       var msg = (jqXHR.responseJSON && jqXHR.responseJSON.message) || "Failed to send test email.";
       $result.addClass("text-danger").text(msg);
     })
-    .always(function () {
+    .always(() => {
       $btn.prop("disabled", false);
     });
 });

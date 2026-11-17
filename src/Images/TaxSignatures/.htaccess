@@ -1,0 +1,4 @@
+# Deny direct HTTP access to the private giving-statement signature.
+# It is served only through the authenticated admin route:
+#   GET /admin/api/system/tax-signature/image
+Require all denied

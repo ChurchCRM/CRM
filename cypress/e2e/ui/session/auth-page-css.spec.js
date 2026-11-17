@@ -71,8 +71,8 @@ describe("Auth Page CSS Regression", () => {
             setSelfReg("0");
             cy.visit("/portal/login");
             cy.contains("Register your family").should("not.exist");
-            cy.request({ url: "/portal/register", failOnStatusCode: false }).its("status").should("eq", 403);
-            cy.request({ url: "/external/register/", followRedirect: false, failOnStatusCode: false }).its("status").should("eq", 404);
+            cy.request({ url: "/portal/register", followRedirect: false, failOnStatusCode: false }).its("status").should("eq", 404);
+            cy.request({ url: "/external/register/", failOnStatusCode: false }).its("status").should("eq", 404);
         });
 
         it("offers family registration from the portal sign-in when enabled", () => {

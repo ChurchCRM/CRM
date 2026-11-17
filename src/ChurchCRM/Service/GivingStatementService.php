@@ -20,6 +20,38 @@ class GivingStatementService
 {
     private const FIRST_YEAR = 1990;
 
+    /** Sample data stays independent of the donor/payment query and model paths. */
+    public static function sampleDocument(): array
+    {
+        $family = [
+            'salutation' => 'Sample Family (fictional)',
+            'address' => '123 Sample Street' . "\n" . 'Sample City',
+            'envelope' => '',
+            'total' => CurrencyFormatter::format(150),
+            'goods_services' => CurrencyFormatter::format(0),
+            'deductible' => CurrencyFormatter::format(150),
+            'disclosure' => gettext('No goods or services were provided in exchange for these contributions, other than intangible religious benefits.'),
+            'gifts' => [
+                [
+                    'date' => DateTimeUtils::formatDate('2025-01-12'),
+                    'fund' => 'Sample General Fund',
+                    'method' => gettext('Cash'),
+                    'amount' => CurrencyFormatter::format(100),
+                ],
+                [
+                    'date' => DateTimeUtils::formatDate('2025-06-15'),
+                    'fund' => 'Sample Missions Fund',
+                    'method' => gettext('Check') . ' #1234',
+                    'amount' => CurrencyFormatter::format(50),
+                ],
+            ],
+        ];
+        $document = self::document([$family], '2025-01-01', '2025-12-31');
+        $document['title'] = gettext('Giving Statement — Sample Only');
+
+        return $document;
+    }
+
     /**
      * Turn untrusted query values into the criteria every other method takes.
      *
@@ -35,8 +67,8 @@ class GivingStatementService
             $familyIds[] = $familyId;
         }
 
-        $dateStart = self::validDate(self::scalar($query['DateStart'] ?? ''));
-        $dateEnd = self::validDate(self::scalar($query['DateEnd'] ?? ''));
+        $dateStart = DateTimeUtils::parseIsoDate(DateTimeUtils::normalizeDate(self::scalar($query['DateStart'] ?? '')), self::FIRST_YEAR);
+        $dateEnd = DateTimeUtils::parseIsoDate(DateTimeUtils::normalizeDate(self::scalar($query['DateEnd'] ?? '')), self::FIRST_YEAR);
         if ($year >= self::FIRST_YEAR && $year <= $currentEndYear) {
             $fy = FiscalYearUtils::getFiscalYearDatesForCalendarYear($year);
             $dateStart = $fy['startDate'];
@@ -193,9 +225,9 @@ class GivingStatementService
             'letterhead_image' => $graphic,
             'title' => gettext('Giving Statement'),
             'date_range' => $dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end),
-            'opening' => trim(SystemConfig::getValue('sTaxReport1') . ' ' . ($dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end)) . '.'),
-            'closing' => SystemConfig::getValue('sTaxReport2'),
-            'questions' => SystemConfig::getValue('sTaxReport3'),
+            'opening' => trim(SystemConfig::getValue('sGivingStatementOpening') . ' ' . ($dateStart === $dateEnd ? $start : sprintf(gettext('%s through %s'), $start, $end)) . '.'),
+            'closing' => SystemConfig::getValue('sGivingStatementClosing'),
+            'questions' => SystemConfig::getValue('sGivingStatementQuestions'),
             'sincerely' => SystemConfig::getValue('sConfirmSincerely'),
             'signer' => SystemConfig::getValue('sTaxSigner'),
             'empty_message' => gettext('No contributions were recorded for this period.'),
@@ -295,15 +327,6 @@ class GivingStatementService
         return is_scalar($value) ? (string) $value : '';
     }
 
-    private static function validDate(string $value): string
-    {
-        $date = InputUtils::filterDate($value);
-        if (!preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $date, $m) || !checkdate((int) $m[2], (int) $m[3], (int) $m[1]) || (int) $m[1] < self::FIRST_YEAR) {
-            return '';
-        }
-
-        return $date;
-    }
 
     /**
      * @return int[]

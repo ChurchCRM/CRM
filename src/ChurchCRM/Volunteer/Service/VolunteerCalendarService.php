@@ -24,8 +24,8 @@ use Psr\Log\LoggerInterface;
  * rule; the event API asks it for every pin a write adds or removes, and the event editor asks
  * `pinnableCalendarIds()` which calendars to offer.
  *
- * Administering a calendar (name, colours, public link, delete) is a different question and
- * stays with `CalendarWriteRoleAuthMiddleware`: a grant lets a ministry add events, nothing more.
+ * Administering a calendar (name, colours, public link, delete) is a different question,
+ * answered by `mayAdminister()`: a grant lets a ministry add events, nothing more.
  */
 class VolunteerCalendarService
 {
@@ -73,6 +73,27 @@ class VolunteerCalendarService
         }
 
         return in_array((int) $calendar->getId(), $this->grantedCalendarIds($eventMinistryId), true);
+    }
+
+    /**
+     * May this user administer `$calendar` (name, colours, public link, delete)?
+     *
+     *     allowed = canManageEvents()
+     *            || (rollout on && calendar.ministry_id !== null
+     *                           && canManageMinistry(user, calendar.ministry_id))
+     */
+    public function mayAdminister(User $user, Calendar $calendar): bool
+    {
+        if ($user->canManageEvents()) {
+            return true;
+        }
+
+        $ministryId = $calendar->getMinistryId();
+        if ($ministryId === null || !User::isVolunteerV2Enabled()) {
+            return false;
+        }
+
+        return $this->authz->canManageMinistry($user, (int) $ministryId);
     }
 
     /**

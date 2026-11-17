@@ -6,19 +6,17 @@ import formaTheme from "fullcalendar/themes/forma";
 import "fullcalendar/skeleton.css";
 import "fullcalendar/themes/forma/theme.css";
 import "fullcalendar/themes/forma/palettes/blue.css";
+import { alertAction, confirmAction } from "./common/confirm-action";
 import { applyFcLocale } from "./common/fc-locale";
 import { escapeHtml } from "./utils/escape-html";
 
 window.moveEventModal = {
-  getButtons: (confirmLabel, confirmClass) => ({
-    cancel: {
-      label: `<i class="fa-solid fa-xmark me-1"></i>${i18next.t("Cancel")}`,
-      className: "btn-secondary",
-    },
-    confirm: {
-      label: `<i class="fa-solid fa-check me-1"></i>${i18next.t(confirmLabel || "Confirm")}`,
-      className: confirmClass || "btn-primary",
-    },
+  getOptions: (confirmLabel) => ({
+    tone: "primary",
+    className: "modal-sm",
+    cancelLabel: `<i class="fa-solid fa-xmark me-1"></i>${i18next.t("Cancel")}`,
+    confirmLabel: `<i class="fa-solid fa-check me-1"></i>${i18next.t(confirmLabel || "Confirm")}`,
+    onCancel: () => window.moveEventModal.revertFunc(),
   }),
   buildMessage: (_eventTitle, fromLabel, fromDate, toLabel, toDate) =>
     '<p class="text-muted mb-3">' +
@@ -45,27 +43,23 @@ window.moveEventModal = {
     "</div>" +
     "</div></div>" +
     "</div>",
-  modalCallBack: (result) => {
-    if (result === true) {
-      const evt = window.moveEventModal.event;
-      // Storage convention: wall-clock-in-sTimeZone (matches all existing
-      // events). FullCalendar's `startStr`/`endStr` already carry the time
-      // in the calendar's configured tz (sTimeZone). Strip any trailing Z
-      // or +HH:MM offset so PHP/Propel stores the wall-clock numbers as-is
-      // and hydrates them back in sTimeZone for display. Using `toISOString()`
-      // here would send UTC and double-shift the time on read.
-      const stripTz = (s) => (typeof s === "string" ? s.replace(/(?:Z|[+-]\d{2}:\d{2})$/, "") : s);
-      window.CRM.APIRequest({
-        method: "POST",
-        path: `events/${evt.id}/time`,
-        data: JSON.stringify({
-          startTime: evt.allDay ? evt.startStr : stripTz(evt.startStr),
-          endTime: evt.end ? stripTz(evt.endStr) : null,
-        }),
-      });
-    } else {
-      window.moveEventModal.revertFunc();
-    }
+  applyMove: () => {
+    const evt = window.moveEventModal.event;
+    // Storage convention: wall-clock-in-sTimeZone (matches all existing
+    // events). FullCalendar's `startStr`/`endStr` already carry the time
+    // in the calendar's configured tz (sTimeZone). Strip any trailing Z
+    // or +HH:MM offset so PHP/Propel stores the wall-clock numbers as-is
+    // and hydrates them back in sTimeZone for display. Using `toISOString()`
+    // here would send UTC and double-shift the time on read.
+    const stripTz = (s) => (typeof s === "string" ? s.replace(/(?:Z|[+-]\d{2}:\d{2})$/, "") : s);
+    window.CRM.APIRequest({
+      method: "POST",
+      path: `events/${evt.id}/time`,
+      data: JSON.stringify({
+        startTime: evt.allDay ? evt.startStr : stripTz(evt.startStr),
+        endTime: evt.end ? stripTz(evt.endStr) : null,
+      }),
+    });
   },
   // Format a FullCalendar event Date for display in the church's wall-clock.
   // FullCalendar uses "marker" Dates: a JS Date whose UTC components encode
@@ -102,13 +96,12 @@ window.moveEventModal = {
     const newStart = event.start ? fmt(event.start) : event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
-    bootbox.confirm({
-      title: `<i class="fa-solid fa-calendar-days me-2 text-primary"></i>${event.title}`,
-      message: window.moveEventModal.buildMessage(event.title, "From", originalStart, "To", newStart),
-      buttons: window.moveEventModal.getButtons("Move"),
-      callback: window.moveEventModal.modalCallBack,
-      className: "modal-sm",
-    });
+    confirmAction(
+      `<i class="fa-solid fa-calendar-days me-2 text-primary"></i>${escapeHtml(event.title)}`,
+      window.moveEventModal.buildMessage(event.title, "From", originalStart, "To", newStart),
+      window.moveEventModal.applyMove,
+      window.moveEventModal.getOptions("Move"),
+    );
   },
   handleEventResize: (info) => {
     const event = info.event;
@@ -122,13 +115,12 @@ window.moveEventModal = {
     const newEnd = event.end ? fmt(event.end) : event.endStr || event.startStr;
     window.moveEventModal.revertFunc = revertFunc;
     window.moveEventModal.event = event;
-    bootbox.confirm({
-      title: `<i class="fa-solid fa-clock me-2 text-primary"></i>${event.title}`,
-      message: window.moveEventModal.buildMessage(event.title, "Old End", originalEnd, "New End", newEnd),
-      buttons: window.moveEventModal.getButtons("Resize"),
-      callback: window.moveEventModal.modalCallBack,
-      className: "modal-sm",
-    });
+    confirmAction(
+      `<i class="fa-solid fa-clock me-2 text-primary"></i>${escapeHtml(event.title)}`,
+      window.moveEventModal.buildMessage(event.title, "Old End", originalEnd, "New End", newEnd),
+      window.moveEventModal.applyMove,
+      window.moveEventModal.getOptions("Resize"),
+    );
   },
 };
 
@@ -238,16 +230,18 @@ window.calendarPropertiesModal = {
             document.body.removeChild(fallbackTextarea);
           } catch (_e) {
             document.body.removeChild(fallbackTextarea);
-            if (typeof bootbox !== "undefined") {
-              bootbox.alert(i18next.t("Unable to copy to clipboard. Please copy the URL manually."));
-            }
+            window.CRM.notify(i18next.t("Unable to copy to clipboard. Please copy the URL manually."), {
+              type: "danger",
+              delay: 6000,
+            });
           }
         });
     } else {
       // Fallback for non-secure contexts
-      if (typeof bootbox !== "undefined") {
-        bootbox.alert(i18next.t("Clipboard API not available. Please copy the URL manually."));
-      }
+      window.CRM.notify(i18next.t("Clipboard API not available. Please copy the URL manually."), {
+        type: "warning",
+        delay: 6000,
+      });
     }
   },
   getBootboxContent: (calendar) => {
@@ -473,13 +467,16 @@ window.calendarPropertiesModal = {
         // generated token should show it immediately, without a page refresh.
         const $warning = $("#calendarApiWarning").removeClass("d-none");
         const warningMessage = $warning.find("p").text().trim();
-        bootbox.alert(
-          warningMessage
-            ? `${escapeHtml(createdMessage)}<p class="mt-2 text-warning">${escapeHtml(warningMessage)}</p>`
-            : createdMessage,
-        );
+        if (warningMessage) {
+          alertAction(
+            "",
+            `${escapeHtml(createdMessage)}<p class="mt-2 text-warning">${escapeHtml(warningMessage)}</p>`,
+          );
+        } else {
+          window.CRM.notify(createdMessage, { type: "success", delay: 6000 });
+        }
       } else {
-        bootbox.alert(createdMessage);
+        window.CRM.notify(createdMessage, { type: "success", delay: 6000 });
       }
       window.calendarPropertiesModal.calendar = newcalendar;
     });
@@ -679,6 +676,12 @@ function initializeCalendar() {
     locale: window.CRM.lang || "en",
     timeZone: window.CRM.calendarJSArgs.sTimeZone || "local",
     now: churchNow,
+    initialView: window.innerWidth < 768 ? "listMonth" : "dayGridMonth",
+    buttonClass: (button) => {
+      if (button.isIconOnly) return "btn btn-sm btn-icon btn-ghost-secondary";
+      if (button.buttonGroup) return `btn btn-sm ${button.isSelected ? "btn-primary" : "btn-ghost-secondary"}`;
+      return "btn btn-sm btn-outline-secondary";
+    },
     headerToolbar: window.innerWidth < 768 ? mobileHeaderToolbar : desktopHeaderToolbar,
     footerToolbar: window.innerWidth < 768 ? mobileFooterToolbar : false,
     contentHeight: "auto",
@@ -711,15 +714,19 @@ function initializeCalendar() {
         window.CRM.notify(parts.join(" · "), { type: "info", delay: 10000, close: true });
       }
     },
+    eventContent: (info) => pinnedEventContent(info),
     eventDidMount: (info) => {
-      // Long event titles get clipped by FullCalendar's default
-      // `overflow:hidden;text-overflow:ellipsis` styling on month-grid events.
-      // Set the native HTML `title` attribute so hovering reveals the full
-      // text via a browser tooltip — no JS dependency, accessible by default.
-      // Closes #8792.
-      if (info.event.title) {
+      const pins = info.event.extendedProps.pinnedCalendars;
+      const names = Array.isArray(pins) ? pins.map((pin) => pin.name).filter(Boolean) : [];
+      if (info.event.title && names.length > 1) {
+        info.el.setAttribute("title", `${info.event.title} (${names.join(", ")})`);
+      } else if (info.event.title) {
         info.el.setAttribute("title", info.event.title);
       }
+    },
+    eventsSet: () => {
+      // After this render, so setProp/setExtendedProp are not called mid-render.
+      schedulePinCollapse();
     },
     loading: (isLoading) => {
       window.CRM.isCalendarLoading = isLoading;
@@ -850,6 +857,129 @@ function getCalendarFilterElement(calendar, type) {
 }
 
 /**
+ * One chip per event on the staff calendar.
+ *
+ * Each visible user calendar is its own event source, and an event pinned to
+ * two of them is the same row twice. System calendars (birthdays, unpinned
+ * events) reuse numeric ids from other tables, so they stay in their own
+ * groups and are never folded into a church event.
+ */
+function pinnedEventGroupKey(event) {
+  const sourceId = event.source && event.source.id ? String(event.source.id) : "";
+  if (sourceId.startsWith("user-")) {
+    return `user-event-${event.id}`;
+  }
+  return `${sourceId}-${event.id}`;
+}
+
+function calendarPinFromEvent(event) {
+  const props = event.extendedProps || {};
+  return {
+    id: props.calendarId,
+    name: getLocalizedCalendarName(props.calendarName || ""),
+    color: props.calendarColor || event.backgroundColor || "#206bc4",
+  };
+}
+
+// One follow-up scan covers every setProp eventsSet fires during a collapse.
+let pinCollapseScheduled = false;
+let pinCollapseAgain = false;
+
+function schedulePinCollapse() {
+  if (pinCollapseScheduled) {
+    pinCollapseAgain = true;
+    return;
+  }
+  pinCollapseScheduled = true;
+  queueMicrotask(() => {
+    pinCollapseAgain = false;
+    collapsePinnedCalendarEvents();
+    pinCollapseScheduled = false;
+    if (pinCollapseAgain) {
+      schedulePinCollapse();
+    }
+  });
+}
+
+function collapsePinnedCalendarEvents() {
+  const calendar = window.CRM.fullcalendar;
+  if (!calendar) {
+    return;
+  }
+
+  const groups = new Map();
+  for (const event of calendar.getEvents()) {
+    const key = pinnedEventGroupKey(event);
+    const group = groups.get(key);
+    if (group) {
+      group.push(event);
+    } else {
+      groups.set(key, [event]);
+    }
+  }
+
+  for (const group of groups.values()) {
+    const pins = [];
+    const seen = new Set();
+    for (const event of group) {
+      const pin = calendarPinFromEvent(event);
+      const pinKey = String(pin.id ?? "");
+      if (pinKey === "" || seen.has(pinKey)) {
+        continue;
+      }
+      seen.add(pinKey);
+      pins.push(pin);
+    }
+
+    const keep = group[0];
+    const current = JSON.stringify(keep.extendedProps.pinnedCalendars || []);
+    if (current !== JSON.stringify(pins)) {
+      keep.setExtendedProp("pinnedCalendars", pins);
+    }
+    if (keep.display === "none") {
+      keep.setProp("display", "auto");
+    }
+    for (let i = 1; i < group.length; i++) {
+      if (group[i].display !== "none") {
+        group[i].setProp("display", "none");
+      }
+    }
+  }
+}
+
+function pinnedEventContent(info) {
+  const pins = info.event.extendedProps.pinnedCalendars;
+  const named = Array.isArray(pins) ? pins.filter((pin) => pin.name) : [];
+  if (named.length < 2) {
+    return true;
+  }
+
+  const nodes = [];
+  if (info.timeText) {
+    const time = document.createElement("span");
+    time.className = "fc-event-time";
+    time.textContent = info.timeText;
+    nodes.push(time);
+  }
+  const title = document.createElement("span");
+  title.className = "fc-event-title";
+  title.textContent = info.event.title;
+  nodes.push(title);
+
+  const marks = document.createElement("span");
+  marks.className = "crm-cal-pin-marks";
+  for (const pin of named) {
+    const dot = document.createElement("span");
+    dot.className = "crm-cal-pin-mark";
+    dot.style.backgroundColor = pin.color;
+    dot.title = pin.name;
+    marks.appendChild(dot);
+  }
+  nodes.push(marks);
+  return { domNodes: nodes };
+}
+
+/**
  * Remove all existing FullCalendar event sources to prevent duplicates.
  */
 function clearAllEventSources() {
@@ -905,7 +1035,8 @@ function registerCalendarSelectionEvents() {
       if (calendar && typeof calendar.AccessToken !== "undefined") {
         window.calendarPropertiesModal.show(calendar);
       } else {
-        bootbox.alert(
+        alertAction(
+          "",
           i18next.t(
             "Calendar properties could not be loaded. This calendar may be missing an access token or is not configured correctly.",
           ),

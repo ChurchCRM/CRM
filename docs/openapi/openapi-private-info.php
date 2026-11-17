@@ -4,40 +4,26 @@
  * @OA\Info(
  *     title="ChurchCRM Private API",
  *     version="__CHURCHCRM_VERSION__",
- *     description="Authenticated REST API for ChurchCRM. All endpoints require an API key passed via the x-api-key header. Obtain your API key from Profile → API Key inside the application, or via POST /public/user/login. Many endpoints require specific role permissions beyond basic authentication.",
+ *     description="Authenticated REST API for ChurchCRM. All endpoints require an API key passed via the x-api-key header. Obtain your API key from Profile → API Key inside the application, or via POST /api/public/user/login. Many endpoints require specific role permissions beyond basic authentication. Paths are site paths from the install root.",
  *     @OA\Contact(name="ChurchCRM", email="info@churchcrm.io", url="https://churchcrm.io"),
  *     @OA\License(name="MIT", url="https://opensource.org/licenses/MIT")
  * )
  *
  * @OA\Server(
- *     url="{scheme}://{host}/api",
- *     description="Self-hosted ChurchCRM API (/api)",
+ *     url="{scheme}://{host}{basePath}",
+ *     description="ChurchCRM install root. Join this URL with a path to get the request URL.",
  *     @OA\ServerVariable(serverVariable="scheme", enum={"https","http"}, default="https", description="Protocol (https for production, http for local)"),
- *     @OA\ServerVariable(serverVariable="host", default="your-server.com", description="Your ChurchCRM server hostname")
+ *     @OA\ServerVariable(serverVariable="host", default="your-server.com", description="Your ChurchCRM server hostname"),
+ *     @OA\ServerVariable(serverVariable="basePath", default="", description="Install path. Empty when ChurchCRM is at the domain root, or /churchcrm for a subdirectory install.")
  * )
- * @OA\Server(
- *     url="{scheme}://{host}/admin",
- *     description="Self-hosted ChurchCRM Admin (/admin)",
- *     @OA\ServerVariable(serverVariable="scheme", enum={"https","http"}, default="https", description="Protocol (https for production, http for local)"),
- *     @OA\ServerVariable(serverVariable="host", default="your-server.com", description="Your ChurchCRM server hostname")
- * )
- * @OA\Server(
- *     url="{scheme}://{host}",
- *     description="Self-hosted ChurchCRM root (for /kiosk and /plugins)",
- *     @OA\ServerVariable(serverVariable="scheme", enum={"https","http"}, default="https", description="Protocol (https for production, http for local)"),
- *     @OA\ServerVariable(serverVariable="host", default="your-server.com", description="Your ChurchCRM server hostname")
- * )
- *
- * @OA\Server(url="http://localhost/churchcrm/api", description="Local development — API (/api)")
- * @OA\Server(url="http://localhost/churchcrm/admin", description="Local development — Admin (/admin)")
- * @OA\Server(url="http://localhost/churchcrm", description="Local development — root (for /kiosk and /plugins)")
+ * @OA\Server(url="http://localhost/churchcrm", description="Local development at /churchcrm")
  *
  * @OA\SecurityScheme(
  *     securityScheme="ApiKeyAuth",
  *     type="apiKey",
  *     in="header",
  *     name="x-api-key",
- *     description="API key obtained from Profile → API Key in ChurchCRM, or via POST /public/user/login"
+ *     description="API key obtained from Profile → API Key in ChurchCRM, or via POST /api/public/user/login"
  * )
  *
  * @OA\Tag(name="Calendar", description="Calendar and event management")

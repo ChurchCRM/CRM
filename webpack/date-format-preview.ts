@@ -109,14 +109,10 @@ export function formatPhpDate(format: string, date: Date): string {
  *
  * @param inputEl - The <input> element containing the PHP date format string
  * @param presets - Array of preset objects to render as buttons (optional)
- * @param literal - When true, display the raw input value instead of token-expanding it.
- *                  Use for fields like sDatePickerPlaceHolder that hold a literal
- *                  pattern (e.g. yyyy-mm-dd), not a PHP date format string.
  */
 export function attachDatePreview(
   inputEl: HTMLInputElement,
   presets: ReadonlyArray<{ label: string; format: string }> = DATE_PRESETS,
-  literal = false,
 ): void {
   const wrapper = document.createElement("div");
   wrapper.className = "date-format-preview-wrapper mt-1";
@@ -163,10 +159,7 @@ export function attachDatePreview(
       previewSpan.textContent = "";
       return;
     }
-    // literal fields (e.g. sDatePickerPlaceHolder) hold a raw pattern string,
-    // not a PHP date format — display the value as-is, no token expansion.
-    const rendered = literal ? fmt : formatPhpDate(fmt, new Date());
-    previewSpan.textContent = `Preview: ${rendered}`;
+    previewSpan.textContent = `Preview: ${formatPhpDate(fmt, new Date())}`;
   }
 
   inputEl.addEventListener("input", updatePreview);
@@ -273,7 +266,7 @@ export function initPhonePresets(): void {
  *
  * Every element with class `.format-preview-value` declares a `data-source`
  * (the id of the format input it mirrors) and a `data-kind` of
- * "date" | "literal" | "phone". When the source input is empty, the input's
+ * "date" | "phone". When the source input is empty, the input's
  * placeholder (the documented default) is previewed instead.
  *
  * Call this once from localization.js after DOMContentLoaded.
@@ -288,8 +281,6 @@ export function initFormatSummaryPreview(): void {
     }
     if (kind === "phone") {
       el.textContent = formatPhonePreview(fmt);
-    } else if (kind === "literal") {
-      el.textContent = fmt;
     } else {
       el.textContent = formatPhpDate(fmt, new Date());
     }
@@ -323,9 +314,6 @@ export function initDateFormatPreviews(): void {
   // DateTime fields (use DATETIME_PRESETS)
   const datetimeFields: string[] = ["sDateTimeFormat", "sDateFilenameFormat"];
 
-  // DatePicker placeholder — no presets, just a plain preview
-  const plainFields: string[] = ["sDatePickerPlaceHolder"];
-
   for (const id of dateFields) {
     const el = document.getElementById(id) as HTMLInputElement | null;
     if (el) {
@@ -337,14 +325,6 @@ export function initDateFormatPreviews(): void {
     const el = document.getElementById(id) as HTMLInputElement | null;
     if (el) {
       attachDatePreview(el, DATETIME_PRESETS);
-    }
-  }
-
-  for (const id of plainFields) {
-    const el = document.getElementById(id) as HTMLInputElement | null;
-    if (el) {
-      // literal=true: this field holds a raw placeholder pattern, not a PHP date format
-      attachDatePreview(el, [], true);
     }
   }
 }

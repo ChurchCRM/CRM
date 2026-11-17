@@ -24,7 +24,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                 </ul>
             </div>
             <div class="card-footer">
-                <a href="<?= SystemURLs::getRootPath() ?>/CSVExport.php" class="btn btn-primary w-100">
+                <a href="<?= SystemURLs::getRootPath() ?>/admin/export/csv" class="btn btn-primary w-100">
                     <i class="fa-solid fa-file-export me-2"></i><?= gettext('Open CSV Export') ?>
                 </a>
             </div>

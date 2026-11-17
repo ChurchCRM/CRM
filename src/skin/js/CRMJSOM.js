@@ -99,8 +99,12 @@ window.CRM.VerifyThenLoadAPIContent = (url) => {
   const showError = (msg) => {
     if (window.CRM && typeof window.CRM.notify === "function") {
       window.CRM.notify(msg, { type: "danger", delay: 6000 });
-    } else if (typeof alert === "function") {
-      alert(msg);
+    } else {
+      const notice = document.createElement("div");
+      notice.className = "alert alert-danger";
+      notice.setAttribute("role", "alert");
+      notice.textContent = msg;
+      (document.getElementById("main-content") || document.body).prepend(notice);
     }
   };
 
@@ -462,22 +466,9 @@ window.CRM.groups = {
       path: "groups/" + GroupID + "/removeperson/" + PersonID,
     }),
   addGroup: (callbackM) => {
-    bootbox.prompt({
-      title: i18next.t("Add A Group Name"),
-      value: i18next.t("Default Name Group"),
-      onEscape: true,
-      closeButton: true,
-      buttons: {
-        confirm: {
-          label: i18next.t("Yes"),
-          className: "btn-success",
-        },
-        cancel: {
-          label: i18next.t("No"),
-          className: "btn-danger",
-        },
-      },
-      callback: (result) => {
+    window.CRM.promptAction(
+      i18next.t("Add A Group Name"),
+      (result) => {
         if (!result) {
           return;
         }
@@ -494,7 +485,8 @@ window.CRM.groups = {
           }
         });
       },
-    });
+      { value: i18next.t("Default Name Group") },
+    );
   },
 };
 
@@ -595,6 +587,93 @@ window.CRM.dashboard = {
    * Load active fundraiser count once on page load for menu badge.
    * Replaces session-cached count, ensuring always fresh data.
    */
+  /**
+   * Topic count for the Support menu, and the topic cards on the feedback page.
+   * Any signed-in staff user. Hidden when the count is zero.
+   */
+  loadCommunityFeedback: () => {
+    const badge = document.getElementById("communityFeedbackCount");
+    const list = document.getElementById("communityFeedbackList");
+    if (!badge && !list) return;
+    window.CRM.APIRequest({
+      method: "GET",
+      path: "community-feedback",
+      suppressErrorDialog: true,
+    })
+      .done((data) => {
+        const items = Array.isArray(data.items) ? data.items : [];
+        const count = Number(data.count) || items.length;
+        if (badge) {
+          badge.innerText = String(count);
+          badge.classList.toggle("d-none", count === 0);
+        }
+        if (list) {
+          window.CRM.dashboard.renderCommunityFeedback(list, items);
+        }
+      })
+      .fail(() => {
+        if (list) {
+          window.CRM.dashboard.renderCommunityFeedback(list, []);
+        }
+      });
+  },
+
+  renderCommunityFeedback: (list, items) => {
+    list.replaceChildren();
+    if (items.length === 0) {
+      const col = document.createElement("div");
+      col.className = "col-12";
+      const card = document.createElement("div");
+      card.className = "card";
+      const body = document.createElement("div");
+      body.className = "card-body";
+      const empty = document.createElement("p");
+      empty.textContent = list.dataset.empty || "";
+      const link = document.createElement("a");
+      link.className = "btn btn-outline-primary";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.href = list.dataset.discussionsUrl || "https://github.com/ChurchCRM/CRM/discussions";
+      link.textContent = list.dataset.viewAll || "";
+      body.append(empty, link);
+      card.append(body);
+      col.append(card);
+      list.append(col);
+      return;
+    }
+
+    items.forEach((item) => {
+      const col = document.createElement("div");
+      col.className = "col-12";
+      const card = document.createElement("div");
+      card.className = "card h-100";
+      const body = document.createElement("div");
+      body.className = "card-body d-flex flex-column";
+      if (item.category) {
+        const badge = document.createElement("span");
+        badge.className = "badge bg-primary align-self-start mb-2";
+        badge.textContent = item.category;
+        body.append(badge);
+      }
+      const title = document.createElement("h3");
+      title.className = "card-title";
+      title.textContent = item.title || "";
+      const summary = document.createElement("p");
+      summary.className = "text-body-secondary flex-fill";
+      summary.textContent = item.summary || "";
+      const link = document.createElement("a");
+      link.className = "btn btn-primary mt-auto";
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.href = item.discussionUrl || "#";
+      link.textContent = list.dataset.voteLabel || "";
+      body.append(title, summary, link);
+      card.append(body);
+      col.append(card);
+      list.append(col);
+    });
+  },
+
   loadFundraiserCount: () => {
     const el = document.getElementById("activeFundraisers");
     if (!el) return; // Fundraiser menu badge not present for this user (feature disabled or no permission)
@@ -942,25 +1021,22 @@ window.CRM.dashboard = {
       // attribute escaping buildActionMenu() applied is undone here. Re-escape
       // before embedding into the bootbox HTML message to prevent XSS.
       const eventTitle = window.CRM.escapeHtml(String($btn.data("event_title") || ""));
-      bootbox.confirm({
-        title: i18next.t("Delete this event?"),
-        message:
-          i18next.t("Deleting an event will also delete all attendance counts. This cannot be undone.") +
+      window.CRM.confirmAction(
+        i18next.t("Delete this event?"),
+        i18next.t("Deleting an event will also delete all attendance counts. This cannot be undone.") +
           " <b>" +
           eventTitle +
           "</b>",
-        buttons: {
-          cancel: { label: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel") },
-          confirm: { label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
+        () => {
+          window.CRM.APIRequest({ method: "DELETE", path: "events/" + eventId }).done(() => {
+            location.reload();
+          });
         },
-        callback: (result) => {
-          if (result) {
-            window.CRM.APIRequest({ method: "DELETE", path: "events/" + eventId }).done(() => {
-              location.reload();
-            });
-          }
+        {
+          confirmLabel: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"),
+          cancelLabel: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel"),
         },
-      });
+      );
     });
 
     function setEventStatus(eventId, active) {
@@ -1002,30 +1078,27 @@ window.CRM.dashboard = {
       e.stopPropagation();
       const $btn = window.jQuery(this);
       if ($btn.attr("aria-disabled") === "true") {
-        bootbox.alert(window.CRM.escapeHtml(String($btn.attr("title") || "")));
+        window.CRM.alertAction("", window.CRM.escapeHtml(String($btn.attr("title") || "")));
         return;
       }
       const personId = $btn.data("person_id");
       const personName = $btn.data("person_name");
-      bootbox.confirm({
-        title: i18next.t("Delete this person?"),
-        message:
-          i18next.t("Do you want to delete this person?  This cannot be undone.") +
+      window.CRM.confirmAction(
+        i18next.t("Delete this person?"),
+        i18next.t("Do you want to delete this person?  This cannot be undone.") +
           " <b>" +
           window.CRM.escapeHtml(String(personName || "")) +
           "</b>",
-        buttons: {
-          cancel: { label: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel") },
-          confirm: { label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
+        () => {
+          window.CRM.APIRequest({ method: "DELETE", path: "person/" + personId }).done(() => {
+            window.location.href = window.CRM.root + "/people/list";
+          });
         },
-        callback: (result) => {
-          if (result) {
-            window.CRM.APIRequest({ method: "DELETE", path: "person/" + personId }).done(() => {
-              window.location.href = window.CRM.root + "/people/list";
-            });
-          }
+        {
+          confirmLabel: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"),
+          cancelLabel: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel"),
         },
-      });
+      );
     });
   }
   if (window.CRM && window.CRM.localesLoaded) {
@@ -1045,21 +1118,19 @@ window.CRM.dashboard = {
       e.stopPropagation();
       const $btn = window.jQuery(this);
       const familyId = $btn.data("family_id");
-      bootbox.confirm({
-        title: i18next.t("Delete this family?"),
-        message: i18next.t(
+      window.CRM.confirmAction(
+        i18next.t("Delete this family?"),
+        i18next.t(
           "Do you want to delete this family? You'll be taken to a page to choose what to delete. This cannot be undone.",
         ),
-        buttons: {
-          cancel: { label: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel") },
-          confirm: { label: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"), className: "btn-danger" },
+        () => {
+          window.location.href = window.CRM.root + "/SelectDelete.php?FamilyID=" + familyId;
         },
-        callback: (result) => {
-          if (result) {
-            window.location.href = window.CRM.root + "/SelectDelete.php?FamilyID=" + familyId;
-          }
+        {
+          confirmLabel: '<i class="fa-solid fa-trash"></i>' + i18next.t("Delete"),
+          cancelLabel: '<i class="fa-solid fa-xmark"></i>' + i18next.t("Cancel"),
         },
-      });
+      );
     });
   }
   if (window.CRM && window.CRM.localesLoaded) {
@@ -1074,6 +1145,20 @@ window.CRM.dashboard = {
  * @param {string} text - The text to copy
  * @param {string} [successMsg] - Optional toast message on success
  */
+const showManualCopy = (text) => {
+  window.CRM.alertAction(
+    "",
+    `<p>${i18next.t("Press CTRL + C to copy")}</p><textarea class="form-control" rows="2" readonly>${window.CRM.escapeHtml(text)}</textarea>`,
+    {
+      onShown: (modal) => {
+        const field = modal.querySelector("textarea");
+        field.focus();
+        field.select();
+      },
+    },
+  );
+};
+
 window.CRM.copyToClipboard = (text, successMsg) => {
   const msg = successMsg || i18next.t("Copied to clipboard");
   if (navigator.clipboard) {
@@ -1083,9 +1168,9 @@ window.CRM.copyToClipboard = (text, successMsg) => {
         window.CRM.notify(msg, { type: "success", delay: 3000 });
       })
       .catch(() => {
-        prompt(i18next.t("Press CTRL + C to copy"), text);
+        showManualCopy(text);
       });
   }
-  prompt(i18next.t("Press CTRL + C to copy"), text);
+  showManualCopy(text);
   return Promise.resolve();
 };

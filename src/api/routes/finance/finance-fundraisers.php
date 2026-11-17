@@ -7,7 +7,6 @@ use ChurchCRM\model\ChurchCRM\FundRaiserQuery;
 use ChurchCRM\Service\FundRaiserService;
 use ChurchCRM\Utils\CurrencyFormatter;
 use ChurchCRM\Utils\LoggerUtils;
-use ChurchCRM\dto\SystemConfig;
 use ChurchCRM\Slim\Middleware\InputSanitizationMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Auth\ManageFundraisersRoleAuthMiddleware;
 use ChurchCRM\Slim\Middleware\Request\Setting\FundraiserEnabledMiddleware;
@@ -32,21 +31,19 @@ function fundraiserToArray(FundRaiser $fr): array
 {
     $goalAmount = $fr->getGoalAmount() !== null ? (float) $fr->getGoalAmount() : null;
 
-    $dateFmt = SystemConfig::getValue('sDatePickerFormat');
-
     return [
         'id'                    => (int) $fr->getId(),
         'title'                 => $fr->getTitle(),
         'description'           => $fr->getDescription(),
-        'date'                  => $fr->getDate() !== null ? $fr->getDate()->format($dateFmt) : null,
-        'endDate'               => $fr->getEndDate() !== null ? $fr->getEndDate()->format($dateFmt) : null,
+        'date'                  => $fr->getDate() !== null ? $fr->getDate()->format('Y-m-d') : null,
+        'endDate'               => $fr->getEndDate() !== null ? $fr->getEndDate()->format('Y-m-d') : null,
         'status'                => $fr->getStatus(),
         'goalAmount'            => $goalAmount,
         'goalAmount_formatted'  => $goalAmount !== null ? CurrencyFormatter::format($goalAmount) : null,
         'type'                  => $fr->getType(),
         'fundId'                => $fr->getFundId() !== null ? (int) $fr->getFundId() : null,
         'enteredBy'             => (int) $fr->getEnteredBy(),
-        'enteredDate'           => $fr->getEnteredDate() !== null ? $fr->getEnteredDate()->format($dateFmt) : null,
+        'enteredDate'           => $fr->getEnteredDate() !== null ? $fr->getEnteredDate()->format('Y-m-d') : null,
     ];
 }
 
@@ -107,12 +104,10 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             }
 
             if ($date !== '') {
-                $dateFmt = SystemConfig::getValue('sDatePickerFormat');
-                $parsed  = \DateTime::createFromFormat($dateFmt, $date, DateTimeUtils::getConfiguredTimezone());
-                if ($parsed === false || $parsed->format($dateFmt) !== $date) {
+                $date = DateTimeUtils::parseIsoDate($date);
+                if (!$date) {
                     return SlimUtils::renderErrorJSON($response, gettext('Not a valid date'), [], 400);
                 }
-                $date = $parsed->format('Y-m-d'); // normalise to ISO for DB storage
             } else {
                 $date = DateTimeUtils::getToday()->format('Y-m-d');
             }
@@ -202,12 +197,11 @@ $app->group('/fundraisers', function (RouteCollectorProxy $group): void {
             if (array_key_exists('date', $input)) {
                 $date = trim((string) $input['date']);
                 if ($date !== '') {
-                    $dateFmt = SystemConfig::getValue('sDatePickerFormat');
-                    $parsed  = \DateTime::createFromFormat($dateFmt, $date, DateTimeUtils::getConfiguredTimezone());
-                    if ($parsed === false || $parsed->format($dateFmt) !== $date) {
+                    $iso = DateTimeUtils::parseIsoDate($date);
+                    if (!$iso) {
                         return SlimUtils::renderErrorJSON($response, gettext('Not a valid date'), [], 400);
                     }
-                    $fr->setDate($parsed->format('Y-m-d'));
+                    $fr->setDate($iso);
                 }
             }
             $fieldErr = (new FundRaiserService())->applyFields($fr, $input);
