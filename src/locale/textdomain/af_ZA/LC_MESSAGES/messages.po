@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Ken 'n nuwe geleentheid vir vrywilligers toe"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Besonderhede oor elektroniese transaksies"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Nie-aftrekbare bedrag mag nie groter wees as die totale bedrag nie."
 
@@ -9422,10 +9418,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Volg gesinne se toeseggings en fondsbydraes per fiskale jaar"
 
 #: 
-msgid "Transaction Details"
-msgstr "Transaksiebesonderhede"
-
-#: 
 msgid "Unmapped"
 msgstr "Nie gekarteer"
 
@@ -9508,10 +9500,6 @@ msgstr "Bekyk gesin-toeseggingsopsommings en fondstoekennings"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Bekyk groeplede, rolle, en eienskappe"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Kyk transaksie-besonderhede vir 'n verbintenis-betaling"
 
 #: 
 msgid "We could not find the family you were looking for."

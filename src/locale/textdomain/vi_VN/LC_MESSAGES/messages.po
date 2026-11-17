@@ -1509,10 +1509,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Thêm thành viên mới vào Mục vụ"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Chi tiết giao dịch điện tử"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Số tiền không được khấu trừ không được lớn hơn tổng số tiền."
 
@@ -9422,10 +9418,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Theo dõi cam kết dâng hiến của gia đình và đóng góp quỹ theo năm tài chính"
 
 #: 
-msgid "Transaction Details"
-msgstr "Chi tiet giao dich"
-
-#: 
 msgid "Unmapped"
 msgstr "Chua ghep noi"
 
@@ -9508,10 +9500,6 @@ msgstr "Xem tóm tắt cam kết dâng hiến của gia đình và phân bổ qu
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Xem thanh vien nhom, vai tro va thuoc tinh"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Xem chi tiết giao dịch cho khoản thanh toán cam kết dâng hiến"
 
 #: 
 msgid "We could not find the family you were looking for."

@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "新しいボランティア機会を割り当て"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "電子取引の詳細"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "控除対象外金額を合計金額より大きくすることはできません。"
 
@@ -9380,10 +9376,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "会計年度別に家族の献金誓約と基金への拠出を追跡"
 
 #: 
-msgid "Transaction Details"
-msgstr "取引詳細"
-
-#: 
 msgid "Unmapped"
 msgstr "未マッピング"
 
@@ -9466,10 +9458,6 @@ msgstr "家族の献金誓約概要と基金配分を表示"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "グループメンバー、役割、プロパティを表示"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "献金誓約の入金の取引詳細を表示"
 
 #: 
 msgid "We could not find the family you were looking for."

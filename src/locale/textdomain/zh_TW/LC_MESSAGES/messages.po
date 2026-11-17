@@ -1540,10 +1540,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "分配一個新的義工機會"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "電子交易詳情"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "不可扣除的金額不能大於總金額。"
 
@@ -9552,10 +9548,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "依會計年度追蹤家庭奉獻承諾和基金捐獻"
 
 #: 
-msgid "Transaction Details"
-msgstr "交易詳情"
-
-#: 
 msgid "Unmapped"
 msgstr "未對應"
 
@@ -9638,10 +9630,6 @@ msgstr "檢視家庭奉獻承諾摘要和基金分配"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "檢視小組成員、角色和屬性"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "檢視奉獻承諾付款的交易詳情"
 
 #: 
 msgid "We could not find the family you were looking for."

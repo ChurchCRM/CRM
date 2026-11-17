@@ -1512,10 +1512,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Rendelni egy új Önkéntes lehetőség"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Electronic Transaction Details"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "NonDeductible összeg nem lehet nagyobb, mint a teljes összeg."
 
@@ -9447,10 +9443,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Családi felajánlások és alap-hozzájárulások követése pénzügyi évenként"
 
 #: 
-msgid "Transaction Details"
-msgstr "Tranzakció részletei"
-
-#: 
 msgid "Unmapped"
 msgstr "Nincs hozzárendelve"
 
@@ -9533,10 +9525,6 @@ msgstr "Családi felajánlás-összefoglalók és alap-felosztások megtekintés
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Csoporttagok, szerepek és tulajdonságok megtekintése"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Felajánlási befizetés tranzakciós részleteinek megtekintése"
 
 #: 
 msgid "We could not find the family you were looking for."

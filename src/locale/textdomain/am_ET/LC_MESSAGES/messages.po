@@ -1497,10 +1497,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "አዲስ የበጎ ፈቃደኞች እድል መድብ"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "የኤሌክትሮኒክስ ግብይት ዝርዝሮች"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "ተቀናሽ ያልሆነ መጠን ከጠቅላላ መጠን መብለጥ አይችልም."
 
@@ -9427,10 +9423,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "ቤተሰብ ተቀባይነት እና ገንዘብ ደሚያ በገንዘብ ዓመት ሙሙ"
 
 #: 
-msgid "Transaction Details"
-msgstr "ሰበአት ዝርዝር"
-
-#: 
 msgid "Unmapped"
 msgstr "ካርታ አለ"
 
@@ -9513,10 +9505,6 @@ msgstr "ቤተሰብ ተቀባይነት ማጠቃለያ እና ገንዘብ ተ�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "ቡድን አባላት ሚና እና ምንጭ ይተንትን"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "ተቀባይነት ገንዘብ ለ ሰበአት ዝርዝር ይተንትን"
 
 #: 
 msgid "We could not find the family you were looking for."

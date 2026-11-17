@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Cakto një re Vullnetare Opportunity"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Details elektronike Transaksionit"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Shuma pazbritshme nuk mund të jetë më i madh se shuma e përgjithshme."
 
@@ -9413,10 +9409,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Ndiqni premtimet e familjeve dhe kontributet e fondeve sipas vitit fiskal"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detajet e Transaksionit"
-
-#: 
 msgid "Unmapped"
 msgstr "E pahartuar"
 
@@ -9499,10 +9491,6 @@ msgstr "Shiko përmbledhjet e premtimeve të familjeve dhe shpërndarjet e fonde
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Shiko anëtarët e grupit, rolet, dhe vetitë"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Shiko detajet e transaksionit për një pagesë premtimi"
 
 #: 
 msgid "We could not find the family you were looking for."

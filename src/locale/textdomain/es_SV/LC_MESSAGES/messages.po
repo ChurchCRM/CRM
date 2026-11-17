@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Asignar una nueva oportunidad de voluntariado"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Detalle de transacciones electrónicas"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "El monto no deducible no puede ser mayor que el monto total"
 
@@ -9389,10 +9385,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Seguimiento de los compromisos de donación familiares y las aportaciones a fondos por año fiscal"
 
 #: 
-msgid "Transaction Details"
-msgstr "Detalles de la transacción"
-
-#: 
 msgid "Unmapped"
 msgstr "Sin asignar"
 
@@ -9475,10 +9467,6 @@ msgstr "Ver resúmenes de compromisos de donación familiares y asignaciones de 
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Ver los miembros del grupo, los roles y las propiedades"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Ver los detalles de la transacción de un pago de compromiso de donación"
 
 #: 
 msgid "We could not find the family you were looking for."

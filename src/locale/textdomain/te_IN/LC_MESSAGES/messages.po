@@ -1492,10 +1492,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "కొత్త వాలంటీర్ అవకాశాన్ని కేటాయించండి"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "ఎలక్ట్రానిక్ లావాదేవీ వివరాలు"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "తగ్గింపు పొందని మొత్తం మొత్తం మొత్తం కంటే ఎక్కువ ఉండకూడదు."
 
@@ -9400,10 +9396,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "ఆర్థిక సంవత్సరం ప్రకారం కుటుంబ వాగ్దానాలు మరియు నిధి సహకారాలను ట్రాక్ చేయండి"
 
 #: 
-msgid "Transaction Details"
-msgstr "లావాదేవీ వివరాలు"
-
-#: 
 msgid "Unmapped"
 msgstr "మ్యాప్ చేయబడలేదు"
 
@@ -9486,10 +9478,6 @@ msgstr "కుటుంబ ప్రతిజ్ఞ సారాంశాలు 
 #: 
 msgid "View group members, roles, and properties"
 msgstr "గ్రూప్ సభ్యులు, పాత్రలు మరియు లక్షణాలు చూడండి"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "ప్రతిజ్ఞ చెల్లింపు లావాదేవీ వివరాలు చూడండి"
 
 #: 
 msgid "We could not find the family you were looking for."
