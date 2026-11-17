@@ -144,10 +144,7 @@
   },
   "current": {
     "versions": ["7.8.5"],
-    "scripts": [
-      "/mysql/upgrade/7.8.6-remove-event-notes.sql",
-      "/mysql/upgrade/7.8.6-role-tables.sql"
-    ],
+    "scripts": ["/mysql/upgrade/7.8.6-remove-event-notes.sql", "/mysql/upgrade/7.8.6-role-tables.sql"],
     "dbVersion": "7.8.6"
   }
 }
