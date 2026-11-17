@@ -38,15 +38,14 @@ describe("Person Profile", () => {
         cy.visit(`/people/view/${personId}`);
 
         // "Add Note" is a standalone toolbar button, not inside the Actions dropdown
-        cy.contains('a.btn', 'Add Note').click();
-        cy.url().should("contain", `NoteEditor.php?PersonID=${personId}`);
+        cy.contains("button", "Add Note").click();
+        cy.get("#noteWhyCameModal").should("be.visible");
 
         const currentDateString = new Date().toISOString();
         const noteText = `This is a test note: ${currentDateString}`;
-        cy.typeInQuill("NoteText", noteText);
-        // Click the submit button (it's an <input type="submit">, not a <button>)
-        cy.get('input[type="submit"][name="Submit"]').click();
-        cy.url().should("contain", `people/view/${personId}`);
+        cy.get("#noteText").type(noteText);
+        cy.get("#noteWhyCameSave").click();
+        cy.get("#noteWhyCameModal").should("not.be.visible");
 
         cy.get("#nav-item-timeline").click();
         cy.contains(noteText);
@@ -55,20 +54,19 @@ describe("Person Profile", () => {
     it("Edit Why Came", () => {
         cy.visit(`/people/view/${personId}`);
 
-        // Open Actions dropdown, then click Why Came
         cy.get("#person-actions-dropdown").click();
         cy.get("#editWhyCame").click();
-        cy.url().should("contain", `WhyCameEditor.php?PersonID=${personId}`);
-        cy.get('textarea[name="Join"]').clear().type('I love the lord ');
-        cy.get('textarea[name="Come"]').clear().type('the feeling of being included');
-        cy.get('textarea[name="Suggest"]').clear().type('More Youth Meetings');
-        cy.get('textarea[name="HearOfUs"]').clear().type('The website ');
-        // Use text-based save to avoid relying on button style class
-        cy.contains('button', 'Save').click();
+        cy.get("#whyJoin").should("be.enabled");
+        cy.get("#whyJoin").clear().type("I love the lord ");
+        cy.get("#whyCome").clear().type("the feeling of being included");
+        cy.get("#whySuggest").clear().type("More Youth Meetings");
+        cy.get("#whyHear").clear().type("The website ");
+        cy.get("#noteWhyCameSave").click();
+        cy.get("#noteWhyCameModal").should("not.be.visible");
 
-        cy.url().should('contains', 'WhyCameEditor.php');
-        cy.contains('More Youth Meetings');
-
+        cy.get("#person-actions-dropdown").click();
+        cy.get("#editWhyCame").click();
+        cy.get("#whySuggest").should("have.value", "More Youth Meetings");
     });
 });
 
@@ -80,10 +78,13 @@ describe("Why Came editor for an Edit Records-only user", () => {
         cy.visit("/people/view/2");
         cy.get("#person-actions-dropdown").click();
         cy.get("#editWhyCame").click();
-        cy.url().should("contain", "WhyCameEditor.php?PersonID=2");
-        cy.get('textarea[name="Join"]').clear().type(note);
-        cy.contains("button", "Save").click();
-        cy.reload();
-        cy.get('textarea[name="Join"]').should("have.value", note);
+        cy.get("#whyJoin").should("be.enabled");
+        cy.get("#whyJoin").clear().type(note);
+        cy.get("#noteWhyCameSave").click();
+        cy.get("#noteWhyCameModal").should("not.be.visible");
+
+        cy.get("#person-actions-dropdown").click();
+        cy.get("#editWhyCame").click();
+        cy.get("#whyJoin").should("have.value", note);
     });
 });

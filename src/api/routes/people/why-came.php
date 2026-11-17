@@ -37,6 +37,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
      *     @OA\Parameter(name="personId", in="path", required=true, @OA\Schema(type="integer")),
      *     @OA\Response(response=200, description="Why-came entry or null"),
      *     @OA\Response(response=401, description="Unauthorized"),
+     *     @OA\Response(response=403, description="EditRecords required"),
      *     @OA\Response(response=404, description="Person not found")
      * )
      */
@@ -48,7 +49,7 @@ $app->group('/person/{personId:[0-9]+}', function (RouteCollectorProxy $group): 
         return SlimUtils::renderJSON($response, [
             'whyCame' => $whyCame ? whyCameToArray($whyCame) : null,
         ]);
-    });
+    })->add(EditRecordsRoleAuthMiddleware::class);
 
     /**
      * @OA\Post(

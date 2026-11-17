@@ -447,7 +447,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
             <button class="btn btn-ghost-secondary" id="printPerson" title="<?= gettext("Print") ?>"><i class="fa-solid fa-print me-1"></i><?= gettext("Print") ?></button>
             <button class="btn btn-ghost-success AddToCart" id="AddPersonToCart" data-cart-id="<?= $iPersonID ?>" data-cart-type="person" title="<?= gettext("Add to Cart") ?>"><i class="fa-solid fa-cart-plus me-1"></i><span class="cartActionDescription"><?= gettext("Cart") ?></span></button>
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-            <button type="button" class="btn btn-ghost-info" onclick="openNoteEditor(<?= $iPersonID ?>, 0)">
+            <button type="button" class="btn btn-ghost-info" data-open-note-person="<?= (int) $iPersonID ?>">
                 <i class="fa-solid fa-note-sticky me-1"></i><?= gettext("Add Note") ?>
             </button>
             <?php } ?>
@@ -457,7 +457,7 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
                     <?php if (AuthenticationManager::getCurrentUser()->isEditRecordsEnabled()) { ?>
-                        <button type="button" class="dropdown-item" id="editWhyCame" onclick="openWhyCameEditor(<?= $iPersonID ?>)"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></button>
+                        <button type="button" class="dropdown-item" id="editWhyCame" data-open-why-came="<?= (int) $iPersonID ?>"><i class="fa-solid fa-circle-question me-2"></i><?= gettext("Why Came") ?></button>
                     <?php } ?>
                     <?php if ($bOkToEdit && $fam_ID !== '') { ?>
                         <a class="dropdown-item" href="<?= SystemURLs::getRootPath() ?>/FamilyEditor.php?FamilyID=<?= $fam_ID ?>"><i class="fa-solid fa-people-roof me-2"></i><?= gettext("Edit Family") ?></a>
@@ -1170,4 +1170,5 @@ $canSendEmail = AuthenticationManager::getCurrentUser()->isEmailEnabled() && Sys
 <?php require_once __DIR__ . '/delete-note-modal.php'; ?>
 
 <?php
+echo '<script src="' . SystemURLs::assetVersioned('/skin/v2/note-why-came-modal.js') . '"></script>';
 require_once SystemURLs::getDocumentRoot() . '/Include/Footer.php';

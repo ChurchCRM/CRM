@@ -159,7 +159,7 @@ $taxEmailError = filter_input(INPUT_GET, 'TaxEmailError', FILTER_DEFAULT);
                 <i class="fa-solid fa-cart-plus me-1"></i><span class="cartActionDescription"><?= gettext('Cart') ?></span>
             </button>
             <?php if (AuthenticationManager::getCurrentUser()->isNotesEnabled()) { ?>
-            <button type="button" class="btn btn-ghost-info" onclick="openNoteEditor(0, <?= $family->getId() ?>)">
+            <button type="button" class="btn btn-ghost-info" data-open-note-family="<?= (int) $family->getId() ?>">
                 <i class="fa-solid fa-note-sticky me-1"></i><?= gettext('Add Note') ?>
             </button>
             <?php } ?>
