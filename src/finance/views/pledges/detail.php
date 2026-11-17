@@ -79,6 +79,19 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
                 </div>
 
                 <div class="col-sm-6 col-lg-3">
+                    <div class="text-muted small mb-1"><?= $isPledge ? gettext('Pledged By') : gettext('Paid By') ?></div>
+                    <div class="fw-bold">
+                        <?php if (!empty($pledge['personId']) && !empty($pledge['personName'])): ?>
+                        <a href="<?= $sRootPath ?>/people/person/<?= (int) $pledge['personId'] ?>">
+                            <?= InputUtils::escapeHTML($pledge['personName']) ?>
+                        </a>
+                        <?php else: ?>
+                        <span class="badge bg-secondary-lt text-secondary"><?= gettext('Entire Family') ?></span>
+                        <?php endif; ?>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-lg-3">
                     <div class="text-muted small mb-1"><?= gettext('Date') ?></div>
                     <div class="fw-bold"><?= InputUtils::escapeHTML($pledge['date']) ?></div>
                 </div>
@@ -163,7 +176,7 @@ $methodLabel = $methodLabels[$pledge['method']] ?? InputUtils::escapeHTML($pledg
                             <td class="text-end fw-bold">$<?= number_format((float) $f['amount'], 2) ?></td>
                             <?php if ($hasNonDeductible): ?>
                             <td class="text-end text-muted">
-                                <?= (float) $f['nonDeductible'] > 0 ? '$' . number_format((float) $f['nonDeductible'], 2) : '—' ?>
+                                <?= (float) $f['nonDeductible'] > 0 ? '$' . number_format((float) $f['nonDeductible'], 2) : '-' ?>
                             </td>
                             <?php endif; ?>
                             <td class="text-muted"><?= InputUtils::escapeHTML($f['comment']) ?></td>

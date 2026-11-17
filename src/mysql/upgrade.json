@@ -128,7 +128,8 @@
     "scripts": [
       "/mysql/upgrade/7.8.4-person-coordinates.sql",
       "/mysql/upgrade/7.8.4-verify-tokens.sql",
-      "/mysql/upgrade/7.8.4-telemetry-levels.sql"
+      "/mysql/upgrade/7.8.4-telemetry-levels.sql",
+      "/mysql/upgrade/7.8.4-person-pledge-map.sql"
     ],
     "dbVersion": "7.8.4"
   },

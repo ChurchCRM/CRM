@@ -33,6 +33,39 @@ window.CRM.onLocalesReady(() => {
       },
       onChange: (value) => {
         document.getElementById("FamilyID").value = value;
+        const personSelect = document.getElementById("PersonID");
+        if (!personSelect) {
+          return;
+        }
+        const unassignedLabel = i18next.t("Entire Family / Unassigned");
+        const resetPersonSelect = () => {
+          personSelect.replaceChildren();
+          const blank = document.createElement("option");
+          blank.value = "0";
+          blank.textContent = unassignedLabel;
+          personSelect.appendChild(blank);
+        };
+        if (!value) {
+          resetPersonSelect();
+          return;
+        }
+        fetch(ROOT + "/api/payments/family/" + encodeURIComponent(value) + "/members")
+          .then((res) => res.json())
+          .then((data) => {
+            resetPersonSelect();
+            const memberMap = data && data.members ? data.members : {};
+            Object.keys(memberMap).forEach((id) => {
+              const opt = document.createElement("option");
+              opt.value = id;
+              const member = memberMap[id];
+              opt.textContent =
+                typeof member === "object" && member !== null ? member.name || member.text || "" : String(member);
+              personSelect.appendChild(opt);
+            });
+          })
+          .catch(() => {
+            resetPersonSelect();
+          });
       },
     });
     if (!GROUP_KEY && !familyNameEl.value) {
@@ -197,8 +230,12 @@ window.CRM.onLocalesReady(() => {
       return null;
     }
 
+    const personEl = document.getElementById("PersonID");
+    const personId = personEl ? parseInt(personEl.value, 10) || 0 : 0;
+
     return {
       FamilyID: familyId || null,
+      PersonId: personId,
       Date: date,
       FYID: fyid,
       type: PLEDGE_TYPE,

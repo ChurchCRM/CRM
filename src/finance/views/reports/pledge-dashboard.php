@@ -236,6 +236,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                     <thead>
                         <tr>
                             <th><?= gettext('Family Name') ?></th>
+                            <th><?= gettext('Pledged By') ?></th>
                             <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                             <th><?= gettext('Envelope') ?></th>
                             <?php endif; ?>
@@ -274,6 +275,15 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                             <?= InputUtils::escapeHTML($family['family_name']) ?>
                                         </a>
                                     </td>
+                                    <td>
+                                        <?php if (!empty($pledge['person_id']) && !empty($pledge['person_name'])): ?>
+                                            <a href="<?= SystemURLs::getRootPath() ?>/people/person/<?= (int) $pledge['person_id'] ?>">
+                                                <?= InputUtils::escapeHTML($pledge['person_name']) ?>
+                                            </a>
+                                        <?php else: ?>
+                                            <span class="badge bg-secondary-lt text-secondary"><?= gettext('Entire Family') ?></span>
+                                        <?php endif; ?>
+                                    </td>
                                     <?php if (SystemConfig::getBooleanValue('bUseDonationEnvelopes')): ?>
                                     <td class="text-body-secondary small">
                                         <?= InputUtils::escapeHTML($family['envelope'] ?? '') ?>
@@ -287,7 +297,7 @@ require SystemURLs::getDocumentRoot() . '/Include/Header.php';
                                         <?= CurrencyFormatter::formatHtml($pledge['payment_amount']) ?>
                                     </td>
                                     <td class="text-end <?= $statusClass ?>" data-order="<?= InputUtils::escapeAttribute($remaining ?? 0) ?>">
-                                        <?= $remaining !== null ? CurrencyFormatter::formatHtml($remaining) : '<span class="text-body-secondary">—</span>' ?>
+                                        <?= $remaining !== null ? CurrencyFormatter::formatHtml($remaining) : '<span class="text-body-secondary">-</span>' ?>
                                         <small class="d-block text-body-secondary"><?= $remaining !== null ? number_format($percentComplete, 0) . '%' : gettext('No pledge') ?></small>
                                     </td>
                                 </tr>
@@ -310,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Currency config for footerCallback — mirrors PHP CurrencyFormatter::format()
+    // Currency config for footerCallback, mirrors PHP CurrencyFormatter::format()
     var _crmCur = {
         sym: <?= InputUtils::jsonEncodeForScript(CurrencyFormatter::symbol()) ?>,
         pos: <?= InputUtils::jsonEncodeForScript(CurrencyFormatter::position()) ?>,

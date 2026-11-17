@@ -77,13 +77,31 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
             <div class="row g-3">
 
                 <!-- Family Selector -->
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                     <label class="form-label" for="FamilyName"><?= gettext('Family') ?></label>
                     <input type="hidden" id="FamilyID" name="FamilyID" value="<?= (int) $familyId ?>">
                     <select class="form-select" id="FamilyName" name="FamilyName" placeholder="<?= InputUtils::escapeAttribute($familySearchHint) ?>">
                         <?php if ($familyId && $familyName): ?>
                             <option value="<?= (int) $familyId ?>" selected><?= InputUtils::escapeHTML($familyName) ?></option>
                         <?php endif; ?>
+                    </select>
+                </div>
+
+                <!-- Individual Person Selector -->
+                <div class="col-lg-4">
+                    <label class="form-label" for="PersonID"><?= $isPledge ? gettext('Pledged By (Individual)') : gettext('Paid By (Individual)') ?></label>
+                    <select class="form-select" id="PersonID" name="PersonID">
+                        <option value="0"><?= gettext('Entire Family / Unassigned') ?></option>
+                        <?php
+                        if ($familyId) {
+                            $familyMembers = \ChurchCRM\Service\PersonPledgeService::getFamilyMembers((int)$familyId);
+                            $selectedPersonId = $personId ?? 0;
+                            foreach ($familyMembers as $perId => $perName) {
+                                $selected = ($perId === $selectedPersonId) ? 'selected' : '';
+                                echo '<option value="' . (int)$perId . '" ' . $selected . '>' . InputUtils::escapeHTML($perName) . '</option>';
+                            }
+                        }
+                        ?>
                     </select>
                 </div>
 
@@ -340,5 +358,4 @@ $familySearchHint = SystemConfig::getBooleanValue('bUseDonationEnvelopes')
 
 <script nonce="<?= SystemURLs::getCSPNonce() ?>">window.CRM.pledgeEditor = <?= InputUtils::jsonEncodeForScript(['groupKey' => $groupKey, 'type' => $type, 'linkBack' => $linkBack, 'linkBackTarget' => $linkBack !== '' ? $linkBackTarget : '', 'requireCheckNumber' => $requireCheckNumber]) ?>;</script>
 <script src="<?= SystemURLs::assetVersioned('/skin/v2/finance-pledge-editor.min.js') ?>" nonce="<?= SystemURLs::getCSPNonce() ?>"></script>
-
 <?php require SystemURLs::getDocumentRoot() . '/Include/Footer.php'; ?>
