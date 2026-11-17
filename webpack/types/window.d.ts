@@ -290,6 +290,10 @@ interface CRMNamespace {
       cancelLabel?: string;
     },
   ) => void;
+  showNoInvitationNotice?: (
+    cannotSignIn: { message: string; members: { name: string; reason: string }[] },
+    onClose?: () => void,
+  ) => void;
   alertAction?: (
     title: string,
     message: string,

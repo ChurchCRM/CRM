@@ -11328,14 +11328,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "비활성 이벤트에서는 체크인이 비활성화됩니다. 이벤트 대시보드에서 이벤트를 활성화하여 체크인을 활성화하세요."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "이벤트 체크인: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "이벤트 체크아웃: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "멈춘 이벤트 모두 닫기"
 
@@ -22437,10 +22429,6 @@ msgstr "방문객 등록"
 #: 
 msgid "Register walk-in guest"
 msgstr "방문객 등록"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "행사 중 키오스크에서 방문객으로 등록됨: %s"
 
 #: 
 msgid "Registering..."

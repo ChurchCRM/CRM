@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-17 18:06+0000\n"
+"POT-Creation-Date: 2026-11-17 19:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3262,10 +3262,6 @@ msgstr ""
 msgid "Checked in"
 msgstr ""
 
-#, php-format
-msgid "Checked in to event: %s"
-msgstr ""
-
 msgid "Checked in {{count}} people."
 msgstr ""
 
@@ -3274,10 +3270,6 @@ msgid "Checked in: %1$d of %2$d on the class roster"
 msgstr ""
 
 msgid "Checked out"
-msgstr ""
-
-#, php-format
-msgid "Checked out from event: %s"
 msgstr ""
 
 msgid "Checked-in-by person is not an adult family member"
@@ -14083,10 +14075,6 @@ msgid "Register your family"
 msgstr ""
 
 msgid "Registered"
-msgstr ""
-
-#, php-format
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
 msgstr ""
 
 msgid "Registering..."

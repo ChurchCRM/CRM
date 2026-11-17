@@ -624,6 +624,51 @@ class UserService
     }
 
     /**
+     * The user's per-user config rows they may change themselves: every row
+     * for an administrator, only rows whose permission is 'TRUE' otherwise.
+     *
+     * @return ObjectCollection<UserConfig>
+     */
+    public function getEditableUserConfigs(User $user): ObjectCollection
+    {
+        $query = UserConfigQuery::create()
+            ->filterByPeronId($user->getId())
+            ->orderById();
+        if (!$user->isAdmin()) {
+            $query->filterByPermission('TRUE');
+        }
+
+        return $query->find();
+    }
+
+    /**
+     * Write new values to the rows getEditableUserConfigs() returns. Any other
+     * ucfg_id in $newValues is ignored, and each value is filtered by the type
+     * stored on its row.
+     *
+     * @param array $newValues Keyed by ucfg_id — new setting value
+     */
+    public function saveEditableUserConfigs(User $user, array $newValues): void
+    {
+        foreach ($this->getEditableUserConfigs($user) as $userConfig) {
+            $rawValue = $newValues[$userConfig->getId()] ?? null;
+            if (!is_string($rawValue)) {
+                continue;
+            }
+
+            $value = match ($userConfig->getType()) {
+                'text', 'textarea' => InputUtils::sanitizeText($rawValue),
+                'number'           => (string) InputUtils::legacyFilterInput($rawValue, 'float'),
+                'date'             => InputUtils::legacyFilterInput($rawValue, 'date'),
+                'boolean'          => $rawValue === '1' ? '1' : '',
+            };
+
+            $userConfig->setValue($value);
+            $userConfig->save();
+        }
+    }
+
+    /**
      * Emails a reset link when the login name belongs to an account that may
      * sign in and has an email. Callers answer the same way whatever happens.
      */
