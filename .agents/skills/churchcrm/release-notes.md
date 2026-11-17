@@ -62,8 +62,7 @@ Put each PR in exactly one place:
 | **🔒 Security & Sign-In** | Every change a user can feel in security or login: password reset, who receives account email, who can reach what, hardened install and web-server rules, patched runtimes. One plain-language bullet each. No advisory IDs until they are published. |
 | **🛠️ Enhancements & Improvements** | Usability polish and visible behavior changes, grouped by the categories below. |
 | **🐛 Bug Fixes** | Everything that used to be broken for a user: errors, wrong output, layouts that broke, links that went to the wrong place. One bullet each, before → after. |
-| **🌍 Global Language Polish** | Translation fixes, plural/wording fixes and the standard localization line. |
-| **🧰 Behind the Scenes** | Exactly **two lines**: one for *Security & Dependencies* (library bumps and build-tool advisories only; user-facing security goes in its own section), one for *Testing & Tooling*. |
+| **🌍 Global Polish** | Translation fixes, plural/wording fixes, the standard localization line, and regional calendar and holiday correctness (for example, Ethiopian and Eritrean holiday dates). |
 | **🤝 For Contributors & AI Agents** | Optional, at most two lines: developer/agent onboarding and project automation changes that matter to contributors (for example, fewer agent tokens or automation that makes no model call). |
 | **🙌 See It for Yourself** | Marketing-capture PRs become at most one line: website and docs screenshots come from the real app and are refreshed *after* publication, never before. |
 | Omitted | Bot syncs (locale imports, marketing visuals, OpenAPI regeneration, changelog sync), version bumps, and docs/agent-guidance changes that don't change how people contribute. |
@@ -80,8 +79,8 @@ Enhancement categories. Use only the ones that have content, and add one when no
 Rules:
 
 - Bug fixes never go under New Features. They go under Bug Fixes, not Enhancements.
-- Security, login, UX and bug fixes each get their own visible section so a non-technical reader can find them. Do not fold them into Behind the Scenes.
-- A user-impacting security fix (a permission check that now blocks access, a safer reset flow, hardened install rules) goes under Security & Sign-In. Only dependency bumps and build-tool advisories collapse into the Behind the Scenes security line.
+- Security, login, UX and bug fixes each get their own visible section so a non-technical reader can find them. Do not fold them into other sections.
+- A user-impacting security fix (a permission check that now blocks access, a safer reset flow, hardened install rules) goes under Security & Sign-In. Dependency bumps and build-tool advisories are not listed in the notes at all; the Full Technical Changelog link covers them.
 - A flaw in a runtime the administrator maintains (PHP, the database) that the release does not fix on its own goes under Before You Upgrade with the action to take.
 - Merge PRs that ship one outcome, such as two favicon PRs, into one bullet.
 - **Weight by reach, not by PR size.** Ask who notices the change on day one:
@@ -135,15 +134,9 @@ Write the notes to `changelog/$TAG.md` in the main checkout from the first draft
 
 ---
 
-## 🌍 Global Language Polish
+## 🌍 Global Polish
 * **Complete Localization:** ChurchCRM is available in [verified count] languages, and the new features and updates in this release are ready for translation in all of them.
 * [Specific translation fixes, if any.]
-
----
-
-## 🧰 Behind the Scenes
-* **Security & Dependencies:** [One line: notable library updates, advisories fixed, hardening.]
-* **Testing & Tooling:** [One line: test coverage added or repaired, CI/build changes.]
 
 ---
 
@@ -155,7 +148,6 @@ Write the notes to `changelog/$TAG.md` in the main checkout from the first draft
 ## 🙌 See It for Yourself
 * **Real Screenshots, True to the Release:** [Only when relevant. Website and docs screenshots are refreshed after the release is published, never before. Describe what the refresh adds (for example, new languages) as something that follows the release.]
 * **Documentation Caught Up:** [Only when docs.churchcrm.io changed since the last release. One line on what users can now find there, whether or not it's tied to this release's features.]
-* **Try It:** [Try the demo](https://churchcrm.io/demo.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_release_VERSION_demo) or [install ChurchCRM](https://churchcrm.io/install.html?utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_release_VERSION_install).
 
 ---
 
@@ -177,7 +169,7 @@ The release workflow builds the CHANGELOG.md summary from the `**Theme**:` line,
 ### Writing rules
 
 - Write for church administrators, staff and volunteers. Say where things are (**Admin → System → Church Information**) and what changed ("used to print blank labels; now uses the family address").
-- Leave out developer vocabulary (refactor, middleware, endpoint, TomSelect, CI, lint, chore) unless users need it. The two Behind the Scenes lines may name libraries and advisories.
+- Leave out developer vocabulary (refactor, middleware, endpoint, TomSelect, CI, lint, chore) unless users need it.
 - **Workflow and impact first** (the marketing repo's Translation Rule, applied to notes): every user-facing bullet opens with the person's work and what changes for them — who is doing what, and what is different when they do it next. The feature or mechanism is the proof, never the lead. Test: if the bullet could be pasted into another product's release notes unchanged, rewrite it around the church task.
 - **No implementation vocabulary in user-facing sections:** no URL routes (`/account`, `/finance/envelopes`), no library, tool or vendor names the reader does not operate (KeePassXC, TomSelect, POEditor), no schema, column, API or back-end terms. Write menu paths in words (**Finance → Envelopes**) when the reader needs to find the thing; a route is not a menu path.
 - **Plain words, short lines — warnings above all.** Write like you're explaining it to a smart neighbour, not an engineer: short sentences, everyday words, one idea per line. A warning section (`## ⚠️ Before You Upgrade`) is never a paragraph wall: a bold lead line, a short list, then what happens and what to do, in that order. If a church secretary has to re-read a sentence, rewrite it. Check every bullet for the right audience, too — who does this, and who receives it: the 7.8.5 notes first said the feedback page invited "your congregation to share feedback with your church"; it invites the people who use ChurchCRM to give the ChurchCRM team feedback.
@@ -201,7 +193,7 @@ The release workflow builds the CHANGELOG.md summary from the `**Theme**:` line,
 Release notes are the third source in the marketing evidence hierarchy, after the running app and the docs. Blog posts, social posts and the Discord announcement all reuse them, so they follow the marketing strategy in the private `ChurchCRM/marketing` repo (`strategy/marketing-strategy.md`, `product-truth.md`, `Brand_Voice_System_Prompt.md`, `ai-writing-quality-and-anti-slop.md`). Read those files when you have access. When you don't, these rules cover the release notes:
 
 - **Lead with the human benefit.** Name the church job that got easier before the feature, then use the feature as proof. Voice: warm, capable, uncomplicated; "we" and "your church".
-- **No tech-speak in the user-facing sections.** Avoid SQL, schema, API, endpoint, back-end and optimization; describe what the admin or volunteer sees. Only the two Behind the Scenes lines may be technical.
+- **No tech-speak in the user-facing sections.** Avoid SQL, schema, API, endpoint, back-end and optimization; describe what the admin or volunteer sees.
 - **Product Truth vocabulary.** Say "giving and financial tracking", not "online giving" or "payments", unless payment processing actually shipped. Don't describe ChurchCRM as a native mobile app or as cloud/SaaS. Never state download, install or church counts.
 - **Today only.** The notes describe what shipped in this release. Planned work is left out, or labeled "Coming" when it genuinely helps the reader.
 - **Anti-slop pass.** Before handing the notes to George, remove:
@@ -209,7 +201,6 @@ Release notes are the third source in the marketing evidence hierarchy, after th
   - "empower", "seamlessly", "unlock", "transform", "robust" and "powerful",
   - three-item lists used only for rhythm, and "not just X, but Y",
   - generic sentences that could describe any product.
-- **Adoption is the goal.** Keep the *See It for Yourself* Demo/Install links, given equal weight. Tag them `utm_source=github&utm_medium=referral&utm_campaign=github_content&utm_content=crm_release_<VERSION>_<demo|install>`, matching the other CRM-to-website links, and leave out UTMs on github.com links.
 
 ---
 
@@ -219,12 +210,11 @@ Release notes are the third source in the marketing evidence hierarchy, after th
 - [ ] Every claim traces to a PR description or diff, and menu paths match the code.
 - [ ] Bug fixes are under Bug Fixes, not New Features or Enhancements.
 - [ ] Every user-facing security and login change is in Security & Sign-In, in plain words.
-- [ ] Behind the Scenes has exactly two lines.
 - [ ] Localization count was verified at `TARGET`.
 - [ ] The compare link uses `PREV...TAG`.
 - [ ] No HTML, citation markers or model/tool metadata.
 - [ ] Breaking changes and upgrade actions, if any, are stated first.
-- [ ] Marketing alignment: benefit-first, no tech-speak outside Behind the Scenes, Product Truth wording, anti-slop pass done, Demo/Install links carry the release UTM.
+- [ ] Marketing alignment: benefit-first, no tech-speak anywhere in the notes, Product Truth wording, anti-slop pass done.
 
 ---
 
