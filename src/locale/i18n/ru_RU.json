@@ -5000,7 +5000,6 @@
   "Qualify them for a position.": "Присвойте им квалификацию для позиции.",
   "Reactivate": "Активировать снова",
   "Read the theme authoring guide": "Прочитать руководство по созданию тем",
-  "Recent Emails": "Недавние письма",
   "Recipient": "Получатель",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Число получателей (%d) превышает максимум на одну рассылку (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Получатели должны задаваться как personIds и familyIds, а не как адреса эл. почты",

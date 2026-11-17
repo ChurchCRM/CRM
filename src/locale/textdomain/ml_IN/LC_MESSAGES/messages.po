@@ -20299,10 +20299,6 @@ msgid "Read the theme authoring guide"
 msgstr "തീം രചനാ ഗൈഡ് വായിക്കുക"
 
 #: 
-msgid "Recent Emails"
-msgstr "സമീപകാല ഇമെയിലുകൾ"
-
-#: 
 msgid "Recipient"
 msgstr "സ്വീകർത്താവ്"
 

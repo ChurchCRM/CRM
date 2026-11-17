@@ -20328,10 +20328,6 @@ msgid "Read the theme authoring guide"
 msgstr "Soma mwongozo wa kuandika mandhari"
 
 #: 
-msgid "Recent Emails"
-msgstr "Barua pepe za Hivi Karibuni"
-
-#: 
 msgid "Recipient"
 msgstr "Mpokeaji"
 

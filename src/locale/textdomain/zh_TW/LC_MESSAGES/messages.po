@@ -20447,10 +20447,6 @@ msgid "Read the theme authoring guide"
 msgstr "閱讀主題製作指南"
 
 #: 
-msgid "Recent Emails"
-msgstr "最近的電子郵件"
-
-#: 
 msgid "Recipient"
 msgstr "收件人"
 

@@ -20374,10 +20374,6 @@ msgid "Read the theme authoring guide"
 msgstr "阅读主题制作指南"
 
 #: 
-msgid "Recent Emails"
-msgstr "最近的电子邮件"
-
-#: 
 msgid "Recipient"
 msgstr "收件人"
 

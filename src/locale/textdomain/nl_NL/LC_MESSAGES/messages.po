@@ -20302,10 +20302,6 @@ msgid "Read the theme authoring guide"
 msgstr "Lees de handleiding voor het schrijven van thema's"
 
 #: 
-msgid "Recent Emails"
-msgstr "Recente e-mails"
-
-#: 
 msgid "Recipient"
 msgstr "Ontvanger"
 

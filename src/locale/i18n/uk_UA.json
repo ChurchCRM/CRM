@@ -5000,7 +5000,6 @@
   "Qualify them for a position.": "Надайте їм кваліфікацію для позиції.",
   "Reactivate": "Активувати знову",
   "Read the theme authoring guide": "Прочитати посібник зі створення тем",
-  "Recent Emails": "Нещодавні листи",
   "Recipient": "Отримувач",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "Кількість отримувачів (%d) перевищує максимум на одне розсилання (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "Отримувачі мають задаватися як personIds і familyIds, а не як адреси ел. пошти",

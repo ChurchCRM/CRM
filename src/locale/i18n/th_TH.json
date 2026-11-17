@@ -4928,7 +4928,6 @@
   "Qualify them for a position.": "ให้เขามีคุณสมบัติสำหรับตำแหน่ง",
   "Reactivate": "เปิดใช้งานอีกครั้ง",
   "Read the theme authoring guide": "อ่านคู่มือการสร้างธีม",
-  "Recent Emails": "อีเมลล่าสุด",
   "Recipient": "ผู้รับ",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "จำนวนผู้รับ (%d) เกินจำนวนสูงสุดที่อนุญาตต่อการส่งหนึ่งครั้ง (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "ต้องระบุผู้รับเป็น personIds และ familyIds ไม่ใช่ที่อยู่อีเมล",

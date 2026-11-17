@@ -1,6 +1,6 @@
 const assert = require('node:assert/strict');
 const { test } = require('node:test');
-const { gates, injections } = require('../../scripts/lint/validate-pr-gates');
+const { gates, injections, orphanedCaptureIds } = require('../../scripts/lint/validate-pr-gates');
 
 test('fails a schema change without an upgrade script and upgrade.json', () => {
     assert.equal(gates(['orm/schema.xml']).fail.length, 1);
@@ -50,6 +50,14 @@ test('accepts env indirection, trusted context and an inject-ok marker', () => {
     const trusted = ['  - run: |', '      echo "${{ github.event.number }} ${{ github.sha }}"'].join('\n');
     const marked = ['  - run: |', '      echo "${{ github.head_ref }}" # inject-ok: validated earlier'].join('\n');
     [env, trusted, marked].forEach((source) => assert.equal(injections(source).length, 0, source));
+});
+
+test('fails when a removed id is still a Playwright selector and is no longer rendered', () => {
+    const removed = ['-        <div class="card mb-3" id="email-history-card">'];
+    const gone = orphanedCaptureIds(removed, () => false, (id) => id === 'email-history-card');
+    assert.deepEqual(gone, ['email-history-card']);
+    assert.deepEqual(orphanedCaptureIds(removed, () => true, () => true), []);
+    assert.deepEqual(orphanedCaptureIds(removed, () => false, () => false), []);
 });
 
 test('stops scanning a run block at the next key', () => {

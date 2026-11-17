@@ -4952,7 +4952,6 @@
   "Qualify them for a position.": "Képesítsd őket egy pozícióra.",
   "Reactivate": "Újraaktiválás",
   "Read the theme authoring guide": "Olvasd el a témakészítési útmutatót",
-  "Recent Emails": "Legutóbbi e-mailek",
   "Recipient": "Címzett",
   "Recipient count (%d) exceeds the maximum allowed per send (%d)": "A címzettek száma (%d) meghaladja a küldésenként megengedett maximumot (%d)",
   "Recipients must be given as personIds and familyIds, not as email addresses": "A címzetteket personId és familyId értékként kell megadni, nem e-mail-címként",

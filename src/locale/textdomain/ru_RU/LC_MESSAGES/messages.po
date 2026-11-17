@@ -20433,10 +20433,6 @@ msgid "Read the theme authoring guide"
 msgstr "Прочитать руководство по созданию тем"
 
 #: 
-msgid "Recent Emails"
-msgstr "Недавние письма"
-
-#: 
 msgid "Recipient"
 msgstr "Получатель"
 

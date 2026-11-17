@@ -20411,10 +20411,6 @@ msgid "Read the theme authoring guide"
 msgstr "Przeczytaj poradnik tworzenia motywów"
 
 #: 
-msgid "Recent Emails"
-msgstr "Ostatnie e-maile"
-
-#: 
 msgid "Recipient"
 msgstr "Adresat"
 

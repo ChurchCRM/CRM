@@ -20317,10 +20317,6 @@ msgid "Read the theme authoring guide"
 msgstr "Đọc hướng dẫn tạo giao diện"
 
 #: 
-msgid "Recent Emails"
-msgstr "Email gần đây"
-
-#: 
 msgid "Recipient"
 msgstr "Người nhận"
 

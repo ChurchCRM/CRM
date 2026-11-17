@@ -20299,10 +20299,6 @@ msgid "Read the theme authoring guide"
 msgstr "Basahin ang gabay sa paggawa ng tema"
 
 #: 
-msgid "Recent Emails"
-msgstr "Kamakailang Mga Email"
-
-#: 
 msgid "Recipient"
 msgstr "Tatanggap"
 
