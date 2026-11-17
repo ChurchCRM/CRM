@@ -48,6 +48,7 @@ import "../src/skin/js/form-utils.js";
 
 import { notifyAPIError } from "./api-utils";
 import { alertAction, confirmAction, promptAction } from "./common/confirm-action";
+import { showNoInvitationNotice } from "./common/no-invitation-notice";
 // Shared AJAX person-search TomSelect (#9819)
 import { initAllPersonSelects, initPersonSelect } from "./common/person-select";
 import { installPageConfig } from "./crm-bootstrap";
@@ -71,6 +72,7 @@ if (typeof window !== "undefined") {
   window.CRM.confirmAction = confirmAction;
   window.CRM.alertAction = alertAction;
   window.CRM.promptAction = promptAction;
+  window.CRM.showNoInvitationNotice = showNoInvitationNotice;
   window.CRM.notifyAPIError = notifyAPIError;
   window.CRM.showPhotoLightbox = showPhotoLightbox;
   window.CRM.deletePhoto = deletePhoto;
