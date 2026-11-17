@@ -11412,14 +11412,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "Innsjekking er deaktivert for inaktive arrangementer. Aktiver arrangementet fra arrangementsdashbordet for å aktivere innsjekking."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "Sjekket inn på arrangement: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Sjekket ut fra arrangement: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "Lukk alle stoppede arrangementer"
 
@@ -22539,10 +22531,6 @@ msgstr "Registrer Walk-in-gjest"
 #: 
 msgid "Register walk-in guest"
 msgstr "Registrer walk-in-gjest"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Registrert som walk-in-gjest på kiosken under arrangementet: %s"
 
 #: 
 msgid "Registering..."
