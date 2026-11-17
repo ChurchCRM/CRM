@@ -1481,10 +1481,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "പുതിയ സ്വമേധയാ അവസരം നൽകുക"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "ഇലക്ട്രോണിക് ഇടപാട് വിശദാംശങ്ങൾ"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "കിഴിവ് ലഭിക്കാത്ത തുക ആകെ തുകയേക്കാൾ കൂടാൻ കഴിയില്ല."
 
@@ -9389,10 +9385,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "സാമ്പത്തിക വർഷം അനുസരിച്ച് കുടുംബ സാമ്പത്തിക പ്രതിബദ്ധതകളും ഫണ്ട് സംഭാവനകളും ട്രാക്ക് ചെയ്യുക"
 
 #: 
-msgid "Transaction Details"
-msgstr "ഇടപാട് വിശദാംശങ്ങൾ"
-
-#: 
 msgid "Unmapped"
 msgstr "മാപ്പ് ചെയ്തിട്ടില്ല"
 
@@ -9475,10 +9467,6 @@ msgstr "കുടുംബ സാമ്പത്തിക പ്രതിബദ�
 #: 
 msgid "View group members, roles, and properties"
 msgstr "ഗ്രൂപ്പ് അംഗങ്ങൾ, റോളുകൾ, ഗുണങ്ങൾ കാണുക"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "ഒരു സാമ്പത്തിക പ്രതിബദ്ധത പേമെന്റിന്റെ ഇടപാട് വിശദാംശങ്ങൾ കാണുക"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11039,10 +11027,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Invalid JSON value — setting save ആയില്ല. ശരിയാക്കി വീണ്ടും ശ്രമിക്കുക."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "POEditor-ലെ Translation Project-ൽ ചേരുക"
-
-#: 
 msgid "Language and regional settings"
 msgstr "ഭാഷ, regional ക്രമീകരണങ്ങൾ"
 
@@ -11182,10 +11166,6 @@ msgstr "ഉപയോക്തൃ കോൺഫിഗ്"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "പതിപ്പ് %s ലഭ്യമാണ്. നിങ്ങളുടെ ഇൻസ്റ്റലേഷൻ നവീകരിക്കുക."
-
-#: 
-msgid "View All"
-msgstr "എല്ലാം കാണുക"
 
 #: 
 msgid "Yellow"
@@ -15301,10 +15281,6 @@ msgstr "ഈ ഫണ്ട്‍റൈസറ്കായി വാങ്ങുന�
 #: 
 msgid "Calendar Embed Origins"
 msgstr "കലണ്ഡർ ഉൾചേർക്കൽ ഉറവിടങ്ങൾ"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "ChurchCRM വിവർത്തനങ്ങൾ POEditor-ല്‍ കമ്മ്യൂണിറ്റി നിയന്ത്രിക്കുന്നു. നിങ്ങൾക്ക് സഹായിക്കാം"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20317,10 +20293,6 @@ msgstr "വീണ്ടും സജീവമാക്കുക"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "തീം രചനാ ഗൈഡ് വായിക്കുക"
-
-#: 
-msgid "Recent Emails"
-msgstr "സമീപകാല ഇമെയിലുകൾ"
 
 #: 
 msgid "Recipient"
@@ -27891,4 +27863,32 @@ msgstr "സിസ്റ്റം ഉപയോക്താവിന്റെ ട�
 #: 
 msgid "volunteer service history"
 msgstr "സന്നദ്ധസേവന ചരിത്രം"
+
+#: 
+msgid "%s by %s"
+msgstr "%s, %s എഴുതിയത്"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "ഇരട്ടഘടക ആധികാരികത മാറ്റാൻ നിങ്ങളുടെ പാസ്‌വേഡോ ഓതന്റിക്കേറ്റർ ആപ്പിൽ നിന്നുള്ള കോഡോ നൽകൂ."
+
+#: 
+msgid "Latest Notes"
+msgstr "ഏറ്റവും പുതിയ കുറിപ്പുകൾ"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "ഇതുവരെ കുറിപ്പുകളൊന്നും ചേർത്തിട്ടില്ല."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "ഒരു QR കോഡ് ലഭിക്കാൻ എൻറോൾമെന്റ് ആരംഭിക്കൂ."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "ആ പാസ്‌വേഡോ കോഡോ ശരിയല്ല. ഇരട്ടഘടക ആധികാരികത ഇപ്പോഴും ഓണാണ്."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "ഇരട്ടഘടക ആധികാരികത ഇതിനകം സജ്ജീകരിച്ചിട്ടുണ്ട്. അതിന്റെ രഹസ്യം എൻറോൾമെന്റ് സമയത്ത് മാത്രമേ കാണിക്കൂ."
 

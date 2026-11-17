@@ -181,6 +181,18 @@ class TimelineService
             ->orderByDateSent(Criteria::DESC)
             ->limit(200)
             ->find();
+        $senderIds = [];
+        foreach ($rows as $row) {
+            if ($row->getUsrId() !== null) {
+                $senderIds[(int) $row->getUsrId()] = true;
+            }
+        }
+        $senderNames = [];
+        if ($senderIds !== []) {
+            foreach (PersonQuery::create()->filterById(array_keys($senderIds), Criteria::IN)->find() as $sender) {
+                $senderNames[(int) $sender->getId()] = $sender->getFullName();
+            }
+        }
         foreach ($rows as $row) {
             $label = EmailLogService::kindLabel((string) $row->getKind());
             $status = (string) $row->getStatus();
@@ -202,6 +214,9 @@ class TimelineService
             );
             $item['emailLogId'] = (int) $row->getId();
             $item['emailStatus'] = $status;
+            $item['emailSentBy'] = $row->getUsrId() === null
+                ? null
+                : ($senderNames[(int) $row->getUsrId()] ?? null);
             $timeline[$item['key']] = $item;
         }
 

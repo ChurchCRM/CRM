@@ -1498,10 +1498,6 @@ msgid "Assign a New Volunteer Opportunity"
 msgstr "Přiřadit novou dobrovolnickou příležitost"
 
 #: 
-msgid "Electronic Transaction Details"
-msgstr "Detaily elektronické transakce"
-
-#: 
 msgid "NonDeductible amount can't be greater than total amount."
 msgstr "Neodečitatelná částka nesmí být vyšší než celková částka."
 
@@ -9420,10 +9416,6 @@ msgid "Track family pledges and fund contributions by fiscal year"
 msgstr "Sledovat rodinné závazky a příspěvky do fondů podle fiskálního roku"
 
 #: 
-msgid "Transaction Details"
-msgstr "Podrobnosti transakce"
-
-#: 
 msgid "Unmapped"
 msgstr "Nepřiřazeno"
 
@@ -9506,10 +9498,6 @@ msgstr "Zobrazit přehledy závazků rodin a alokace fondů"
 #: 
 msgid "View group members, roles, and properties"
 msgstr "Zobrazit členy skupiny, role a vlastnosti"
-
-#: 
-msgid "View transaction details for a pledge payment"
-msgstr "Zobrazit podrobnosti transakce pro platbu závazku"
 
 #: 
 msgid "We could not find the family you were looking for."
@@ -11070,10 +11058,6 @@ msgid "Invalid JSON value — setting was not saved. Please correct it and try a
 msgstr "Neplatná hodnota JSON — nastavení nebylo uloženo. Opravte ji prosím a zkuste to znovu."
 
 #: 
-msgid "Join the Translation Project on POEditor"
-msgstr "Připojte se k projektu překladu na POEditor"
-
-#: 
 msgid "Language and regional settings"
 msgstr "Jazyková a regionální nastavení"
 
@@ -11213,10 +11197,6 @@ msgstr "Konfigurace uživatele"
 #: 
 msgid "Version %s is available. Please upgrade your installation."
 msgstr "Je dostupná verze %s. Aktualizujte svou instalaci."
-
-#: 
-msgid "View All"
-msgstr "Zobrazit vše"
 
 #: 
 msgid "Yellow"
@@ -15336,10 +15316,6 @@ msgstr "Kupující pro tento fundraising"
 #: 
 msgid "Calendar Embed Origins"
 msgstr "Zdroje pro vložení kalendáře"
-
-#: 
-msgid "ChurchCRM translations are managed by the community on POEditor. You can help by"
-msgstr "Překlady ChurchCRM spravuje komunita na POEditor. Můžete pomoci"
 
 #: 
 msgid "Current $URL[0] value"
@@ -20363,10 +20339,6 @@ msgstr "Znovu aktivovat"
 #: 
 msgid "Read the theme authoring guide"
 msgstr "Přečtěte si průvodce tvorbou motivů"
-
-#: 
-msgid "Recent Emails"
-msgstr "Poslední e-maily"
 
 #: 
 msgid "Recipient"
@@ -27946,4 +27918,32 @@ msgstr "dvoufázové ověření systémového uživatele vypnul správce"
 #: 
 msgid "volunteer service history"
 msgstr "historie dobrovolnické služby"
+
+#: 
+msgid "%s by %s"
+msgstr "%s od %s"
+
+#: 
+msgid "Enter your password or a code from your authenticator app to change two-factor authentication."
+msgstr "Zadejte své heslo nebo kód z ověřovací aplikace, chcete-li změnit dvoufaktorové ověřování."
+
+#: 
+msgid "Latest Notes"
+msgstr "Nejnovější poznámky"
+
+#: 
+msgid "No notes have been added yet."
+msgstr "Zatím nebyly přidány žádné poznámky."
+
+#: 
+msgid "Start enrollment to get a QR code."
+msgstr "Zahajte registraci a získejte QR kód."
+
+#: 
+msgid "That password or code is not right. Two-factor authentication is still on."
+msgstr "Toto heslo nebo kód není správný. Dvoufaktorové ověřování je stále zapnuté."
+
+#: 
+msgid "Two-factor authentication is already set up. Its secret is shown only during enrollment."
+msgstr "Dvoufaktorové ověřování je již nastaveno. Jeho tajný klíč se zobrazí pouze během registrace."
 

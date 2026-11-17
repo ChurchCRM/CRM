@@ -6,7 +6,8 @@
  * straight from the repo: a term is missing when locale/messages.po has it and the locale JSON has no
  * complete translation for it. The batch files are the checked-in queue: the terms workflow runs this after
  * every extraction, /locale-translate fills them and `npm run locale:apply` writes them into the locale
- * files and removes the applied terms.
+ * files and removes the applied terms. A full run also writes locale/terms/context.json with the code
+ * location of each queued term, so translators can see where a string is used.
  *
  *   npm run locale:missing                          every locale
  *   npm run locale:missing -- --locale de,fr        some locales
@@ -23,6 +24,7 @@ const path = require('path');
 const config = require('./locale-config');
 const repo = require('./lib/locale-repo');
 const { findMissing } = require('./lib/locale-files');
+const { writeContext } = require('./lib/locale-context');
 
 const BATCH_SIZE = config.settings.missingTermsBatchSize;
 
@@ -77,10 +79,14 @@ function main() {
 
     let total = 0;
     let locales = 0;
+    const queuedTerms = new Set();
     for (const target of repo.selectLocales(repo.targetLocales(), opts.locale)) {
         if (target.skipAudit) continue;
         const ctx = repo.loadLocale(target, entries);
         const missing = findMissing(ctx.shapes, ctx.translations);
+        for (const [term, value] of Object.entries(missing)) {
+            if (!isFilled(value) || (typeof value === 'object' && Object.values(value).some((s) => s === ''))) queuedTerms.add(term);
+        }
         for (const term of opts.terms) {
             if (!(term in missing)) missing[term] = '';
         }
@@ -97,6 +103,12 @@ function main() {
             total += count;
             console.log(`📄 ${target.code.padEnd(6)} ${String(count).padStart(5)} missing${kept ? `, ${kept} filled and not applied yet` : ''}`);
         }
+    }
+    // Translator context (where each queued term is used) is a whole-queue
+    // file: only a full run may write it, a --locale run would truncate it.
+    if (!opts.locale) {
+        const withContext = writeContext(config.terms.context, [...queuedTerms]);
+        if (withContext) console.log(`🧭 Code locations for ${withContext} queued terms → ${path.relative(config.projectRoot, config.terms.context)}`);
     }
     console.log(total === 0
         ? '✅ Nothing to translate: every locale has every term.'
