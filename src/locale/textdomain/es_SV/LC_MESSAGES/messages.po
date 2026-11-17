@@ -11310,14 +11310,6 @@ msgid "Check-in is disabled for inactive events. Activate the event from the Eve
 msgstr "El registro de entrada está deshabilitado para eventos inactivos. Active el evento desde el Panel de Eventos para habilitar el registro de entrada."
 
 #: 
-msgid "Checked in to event: %s"
-msgstr "Registrado en el evento: %s"
-
-#: 
-msgid "Checked out from event: %s"
-msgstr "Salida registrada del evento: %s"
-
-#: 
 msgid "Close All Stuck Events"
 msgstr "Cerrar todos los eventos bloqueados"
 
@@ -22438,10 +22430,6 @@ msgstr "Registrar visitante que llega"
 #: 
 msgid "Register walk-in guest"
 msgstr "Registrar visitante que llega"
-
-#: 
-msgid "Registered as a walk-in guest at the kiosk during event: %s"
-msgstr "Registrado como visitante que llega en el quiosco durante el evento: %s"
 
 #: 
 msgid "Registering..."
