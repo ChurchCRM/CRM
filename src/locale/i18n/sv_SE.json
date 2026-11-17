@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Använd denna nyckel för att autentisera API-förfrågningar. En omgenerering ogiltigförklarar den nuvarande nyckeln.",
   "User Config": "Användarkonfiguration",
   "Version %s is available. Please upgrade your installation.": "Version %s är tillgänglig. Vänligen uppgradera din installation.",
-  "View All": "Visa alla",
   "Yellow": "Gul",
   "%d repeat event created successfully.": {
     "one": "%d återkommande händelse skapades.",

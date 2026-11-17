@@ -11175,10 +11175,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "Verzija %s je dostupna. Molim nadogradite vašu instalaciju."
 
 #: 
-msgid "View All"
-msgstr "Prikaži sve"
-
-#: 
 msgid "Yellow"
 msgstr "Žuta"
 

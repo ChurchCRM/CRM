@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "API கோரிக்கைகளை அங்கீகரிக்க இந்த திறவுகோலை பயன்படுத்தவும். மீண்டும் உருவாக்குவது தற்போதைய திறவுகோலை செல்லாதாக்கும்.",
   "User Config": "பயனர் கட்டமைப்பு",
   "Version %s is available. Please upgrade your installation.": "பதிப்பு %s கிடைக்கிறது. உங்கள் நிறுவலை மேம்படுத்தவும்.",
-  "View All": "அனைத்தையும் காண்க",
   "Yellow": "மஞ்சள்",
   "%d repeat event created successfully.": {
     "one": "%d மீண்டும் நிகழும் நிகழ்வு வெற்றிகரமாக உருவாக்கப்பட்டது.",

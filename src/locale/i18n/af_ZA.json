@@ -2643,7 +2643,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Gebruik hierdie sleutel om API-versoeke te verifieer. Hergenerering sal die huidige sleutel ongeldig maak.",
   "User Config": "Gebruikersinstellings",
   "Version %s is available. Please upgrade your installation.": "Weergawe %s is beskikbaar. Gradeer asseblief u installasie op.",
-  "View All": "Sien Alles",
   "Yellow": "Geel",
   "%d repeat event created successfully.": {
     "one": "%d herhalingsgeleentheid suksesvol geskep.",

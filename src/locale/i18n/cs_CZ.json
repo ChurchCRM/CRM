@@ -2652,7 +2652,6 @@
   "Use this key to authenticate API requests. Regenerating will invalidate the current key.": "Použijte tento klíč k ověřování požadavků API. Obnova klíče zneplatní aktuální klíč.",
   "User Config": "Konfigurace uživatele",
   "Version %s is available. Please upgrade your installation.": "Je dostupná verze %s. Aktualizujte svou instalaci.",
-  "View All": "Zobrazit vše",
   "Yellow": "Žlutá",
   "%d repeat event created successfully.": {
     "one": "Byla úspěšně vytvořena %d opakující se událost.",

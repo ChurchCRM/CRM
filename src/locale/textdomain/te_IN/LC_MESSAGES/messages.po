@@ -11179,10 +11179,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "వెర్షన్ %s అందుబాటులో ఉంది. దయచేసి మీ ఇన్‌స్టాలేషన్‌ను అప్‌గ్రేడ్ చేయండి."
 
 #: 
-msgid "View All"
-msgstr "అన్నీ చూడండి"
-
-#: 
 msgid "Yellow"
 msgstr "పసుపు రంగు"
 

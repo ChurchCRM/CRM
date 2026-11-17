@@ -11233,10 +11233,6 @@ msgid "Version %s is available. Please upgrade your installation."
 msgstr "الإصدار %s متاح. يُرجى تحديث التثبيت."
 
 #: 
-msgid "View All"
-msgstr "عرض الكل"
-
-#: 
 msgid "Yellow"
 msgstr "أصفر"
 
